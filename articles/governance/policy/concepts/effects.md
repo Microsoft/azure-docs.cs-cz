@@ -3,12 +3,12 @@ title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079655"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425530"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -156,7 +156,8 @@ Vlastnost **Details** AuditIfNotExists efektů má všechny podvlastnosti, kter�
   - Pokud **Details. Type** je typ prostředku pod prostředkem podmínky **if** , zásady se dotazují na prostředky tohoto **typu** v rámci oboru vyhodnoceného prostředku. V opačném případě se zásady dotazují ve stejné skupině prostředků jako vyhodnocený prostředek.
 - **Název** (volitelné)
   - Určuje přesný název prostředku, který se má shodovat, a způsobí, že zásada načte jeden konkrétní prostředek místo všech prostředků zadaného typu.
-  - Pokud jsou hodnoty podmínky pro **if. Field. Type** a **then. details. Type** matched **Name** , pak se musí _zadat_ název `[field('name')]` . Místo toho by se ale měl zvážit efekt [auditu](#audit) .
+  - Pokud jsou hodnoty podmínek pro **if. Field. Type** a **pak. details. Type** Match, pak se **název** bude _vyžadovat_ a musí být `[field('name')]` nebo `[field('fullName')]` pro podřízený prostředek.
+    Místo toho by se ale měl zvážit efekt [auditu](#audit) .
 - **ResourceGroupName** (volitelné)
   - Umožňuje porovnání souvisejícího prostředku s jinou skupinou prostředků.
   - Neplatí, pokud **typ** je prostředek, který by byl pod zdrojem podmínky **if** .
@@ -277,7 +278,7 @@ Vlastnost **Details** efektu DeployIfNotExists má všechny podvlastnosti definu
   - Spustí se tak, že se pokusí načíst prostředek pod prostředkem podmínky **if** a pak se dotazuje ve stejné skupině prostředků jako prostředek podmínky **if** .
 - **Název** (volitelné)
   - Určuje přesný název prostředku, který se má shodovat, a způsobí, že zásada načte jeden konkrétní prostředek místo všech prostředků zadaného typu.
-  - Pokud jsou hodnoty podmínky pro **if. Field. Type** a **then. details. Type** matched **Name** , pak se musí _zadat_ název `[field('name')]` .
+  - Pokud jsou hodnoty podmínek pro **if. Field. Type** a **pak. details. Type** Match, pak se **název** bude _vyžadovat_ a musí být `[field('name')]` nebo `[field('fullName')]` pro podřízený prostředek.
 - **ResourceGroupName** (volitelné)
   - Umožňuje porovnání souvisejícího prostředku s jinou skupinou prostředků.
   - Neplatí, pokud **typ** je prostředek, který by byl pod zdrojem podmínky **if** .
@@ -645,7 +646,7 @@ Příklad 3: Ujistěte se, že účet úložiště nepovoluje veřejný přístu
 
 ## <a name="layering-policy-definitions"></a>Definice zásad vrstvení
 
-Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Příklad:
+Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Například:
 
 - Zásady 1
   - Omezí umístění prostředku na ' westus '.

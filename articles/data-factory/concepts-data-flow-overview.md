@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 08/12/2020
-ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/02/2020
+ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212070"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419959"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mapování toků dat v Azure Data Factory
 
@@ -41,7 +41,7 @@ Mapování toku dat má jedinečné plátno pro vytváření, které usnadňuje 
 
 ### <a name="graph"></a>Graph
 
-Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace.
+Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace. Přečtěte si další informace o tom, jak [Spravovat Graf toku dat](concepts-data-flow-manage-graph.md).
 
 ![Plátno](media/data-flow/canvas2.png "Plátno")
 
@@ -109,7 +109,7 @@ Datové toky mapování jsou k dispozici v následujících oblastech:
 | Australia Southeast   | ✓ | ✓ |
 | Brazil South  | ✓ |  |
 | Střední Kanada | ✓ |  |
-| Central India | ✓ |   ✓ |
+| Indie – střed | ✓ |   ✓ |
 | Střední USA    | ✓ |   ✓ |
 | Čína – východ |      | ✓ |
 | Čína – východ 2  |   |    |

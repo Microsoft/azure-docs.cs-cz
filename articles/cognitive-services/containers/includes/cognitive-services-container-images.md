@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: ac8e49c85147576e489b16a3a421c75d60ad4aee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff039d6d5879e036aecc63b46359d84673f84a0e
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104401"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424632"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
@@ -66,11 +66,12 @@ Následující chráněné kontejnery Preview jsou hostovány v registru Preview
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|
-| [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Čtení | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
+| [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Číst | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
 | [Rozpoznávání tváře](../../face/face-how-to-install-containers.md) | Rozpoznávání tváře | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Nástroj pro rozpoznávání formulářů](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Rozpoznávání formulářů | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=stt) | Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=cstt) | Custom Speech na text | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=tts) | Převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=ctts) | Vlastní převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` |
-| [Analýza textu pro stav](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Analýza textu pro stav | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |
+| [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=ntts) | Neuronové převodu textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech` |
+| [Analýza textu pro stav](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Analýza textu pro zdravotnictví | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |

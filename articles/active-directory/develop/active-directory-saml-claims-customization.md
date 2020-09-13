@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552828"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421454"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -88,11 +88,11 @@ Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakou
 
 1. Zadejte konstantní hodnotu bez uvozovek ve **zdrojovém atributu** dle vaší organizace a klikněte na **Uložit**.
 
-    ![V Azure Portal otevřete část atributy uživatele & deklarace identity.](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Atributy org & deklarace identity v Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. Hodnota konstanty se zobrazí, jak je uvedeno níže.
 
-    ![V Azure Portal otevřete část atributy uživatele & deklarace identity.](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![Úprava atributů & deklarací v části Azure Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Speciální deklarace – transformace
 
@@ -121,7 +121,7 @@ Chcete-li použít transformaci na atribut uživatele:
 2. Vyberte funkci z rozevíracího seznamu transformace. V závislosti na vybrané funkci budete muset zadat parametry a konstantní hodnotu pro vyhodnocení v transformaci. Další informace o dostupných funkcích najdete v následující tabulce.
 3. Chcete-li použít více transformací, klikněte na tlačítko **Přidat transformaci**. Můžete použít maximálně dvě transformace na deklaraci identity. Například můžete nejprve extrahovat předponu e-mailu `user.mail` . Pak zadejte řetězec na velká písmena.
 
-   ![Upravit hodnotu NameID (identifikátor názvu)](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![Transformace více deklarací identity](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 K transformaci deklarací lze použít následující funkce.
 
@@ -129,8 +129,8 @@ K transformaci deklarací lze použít následující funkce.
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
 | **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |
-| **ToLower ()** | Převede znaky vybraného atributu na malá písmena. |
-| **ToUpper ()** | Převede znaky vybraného atributu na velká písmena. |
+| **ToLowercase ()** | Převede znaky vybraného atributu na malá písmena. |
+| **ToUppercase ()** | Převede znaky vybraného atributu na velká písmena. |
 | **Obsahuje ()** | Vytvoří výstup atributu nebo konstanty, pokud vstup odpovídá zadané hodnotě. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota e-mailová adresa uživatele, pokud obsahuje doménu " @contoso.com ", jinak chcete vytvořit výstup hlavního názvu uživatele. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. email<br/>*Hodnota*: " @contoso.com "<br/>Parametr 2 (výstup): User. email<br/>Parametr 3 (výstup, pokud se neshoduje): User. userPrincipalName |
 | **EndWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota končí zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud ID zaměstnance končí na "000", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. ČísloZaměstnance<br/>*Hodnota*: "000"<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
 | **StartWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstup začíná zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud země nebo oblast začíná řetězcem "US", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. Country<br/>*Hodnota*: US<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
@@ -179,4 +179,4 @@ Nejdřív Microsoft Identity Platform ověří, jestli je typ uživatele Britta 
 
 * [Správa aplikací v Azure AD](../manage-apps/what-is-application-management.md)
 * [Konfigurace jednotného přihlašování u aplikací, které nejsou v galerii aplikací Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [Řešení potíží s jednotným přihlašováním založeném na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Řešení potíží s jednotným přihlašováním založeným na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

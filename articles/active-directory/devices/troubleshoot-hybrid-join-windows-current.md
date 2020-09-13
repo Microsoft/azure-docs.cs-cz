@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268770"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433649"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join
 
@@ -99,7 +99,7 @@ Toto pole indikuje, jestli je zařízení připojené k místní službě Active
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined: ne
 
-Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD jako osobní zařízení (označené jako *připojené k pracovišti*). Tato hodnota by neměla **být pro počítač** připojený k doméně, který je taky připojený k hybridní službě Azure AD. Pokud je hodnota **Ano**, přidal se pracovní nebo školní účet před dokončením připojení k hybridní službě Azure AD. V takovém případě se účet ignoruje při použití aktualizace výročí Windows 10 (1607).
+Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD jako osobní zařízení (označené jako *připojené k pracovišti*). Tato hodnota by neměla **být pro počítač** připojený k doméně, který je taky připojený k hybridní službě Azure AD. Pokud je hodnota **Ano**, přidal se pracovní nebo školní účet před dokončením připojení k hybridní službě Azure AD. V takovém případě se účet ignoruje při použití Windows 10 verze 1607 nebo novější.
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: Ano
 

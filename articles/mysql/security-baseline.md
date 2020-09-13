@@ -1,32 +1,32 @@
 ---
 title: Základní hodnoty zabezpečení Azure pro Azure Database for MySQL
-description: Základní hodnoty zabezpečení Azure pro Azure Database for MySQL
+description: Základní Azure Database for MySQL zabezpečení poskytuje postupy a prostředky pro implementaci doporučení zabezpečení uvedených v srovnávacím testu zabezpečení Azure.
 author: msmbaldwin
-ms.service: security
+ms.service: mysql
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 414c8dc0a9e6c7aa47287fe49a3f21ee28605f78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 80a7067b1d8d5417a6a448ee8a3be563344e9a72
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89244700"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420247"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Základní hodnoty zabezpečení Azure pro Azure Database for MySQL
 
 Základní plán zabezpečení Azure pro Azure Database for MySQL obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
 **Pokyny**: konfigurace privátního odkazu pro Azure Database for MySQL se soukromými koncovými body. Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). Přenosy mezi vaší virtuální sítí a instancí MySQL cestují v páteřní síti Microsoftu.
 
@@ -34,25 +34,25 @@ Alternativně můžete použít koncové body služby Virtual Network k ochraně
 
 Můžete také zabezpečit Azure Database for MySQL server pomocí pravidel brány firewall. Brána firewall serveru znemožní přístup k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Bránu firewall nakonfigurujete tak, že vytvoříte pravidla brány firewall určující rozsahy přípustných IP adres. Pravidla brány firewall můžete vytvořit na úrovni serveru.
 
-Postup konfigurace privátního odkazu pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal
+- [Postup konfigurace privátního odkazu pro Azure Database for MySQL](howto-configure-privatelink-portal.md)
 
-Jak vytvořit a spravovat koncové body služby virtuální sítě a pravidla virtuální sítě v Azure Database for MySQL: https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview
+- [Jak vytvořit a spravovat koncové body služby virtuální sítě a pravidla virtuální sítě v Azure Database for MySQL](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
 
-Jak nakonfigurovat Azure Database for MySQL pravidla brány firewall: https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal
+- [Postup konfigurace Azure Database for MySQL pravidel brány firewall](howto-manage-firewall-using-portal.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
 **Zodpovědnost**: zákazník
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuální sítě, podsítí a síťových karet.
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových rozhraní
 
 **Doprovodné**materiály: Pokud je vaše instance Azure Database for MySQL zabezpečená pro soukromý koncový bod, můžete virtuální počítače nasadit ve stejné virtuální síti. Ke snížení rizika exfiltrace dat můžete použít skupinu zabezpečení sítě (NSG). Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Postup konfigurace privátního odkazu pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal
+- [Postup konfigurace privátního odkazu pro Azure Database for MySQL](howto-configure-privatelink-portal.md)
 
-Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+- [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-Jak povolit a použít Analýza provozu: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+- [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -72,21 +72,21 @@ Jak povolit a použít Analýza provozu: https://docs.microsoft.com/azure/networ
 
 Povolte DDoS Protection Standard ve virtuálních sítích přidružených k vašim Azure Database for MySQL instancím, abyste se mohli chránit před útoky DDoS. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL](howto-database-threat-protection-portal.md)
 
-Jak nakonfigurovat DDoS Protection: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+- [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
 
 **Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1,5: záznam síťových paketů a protokolů toků
+### <a name="15-record-network-packets"></a>1,5: zaznamenání síťových paketů
 
 **Doprovodné**materiály: Pokud je vaše instance Azure Database for MySQL zabezpečená pro soukromý koncový bod, můžete virtuální počítače nasadit ve stejné virtuální síti. Pak můžete nakonfigurovat skupinu zabezpečení sítě (NSG), aby se snížilo riziko exfiltrace dat. Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+- [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-Jak povolit a použít Analýza provozu: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+- [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -96,7 +96,7 @@ Jak povolit a použít Analýza provozu: https://docs.microsoft.com/azure/networ
 
 **Pokyny**: použití rozšířené ochrany před internetovými útoky pro Azure Database for MySQL. Rozšířená ochrana před internetovými útoky detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL](howto-database-threat-protection-portal.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -116,9 +116,9 @@ Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure D
 
 Poznámka: Azure Database for MySQL používá značky služby Microsoft. SQL.
 
-Další informace o použití značek služeb: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+- [Další informace o použití značek služeb](../virtual-network/service-tags-overview.md)
 
-Pochopení použití značek služby pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet#terminology-and-description
+- [Pochopení použití značek služby pro Azure Database for MySQL](concepts-data-access-and-security-vnet.md#terminology-and-description)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -132,11 +132,11 @@ Pochopení použití značek služby pro Azure Database for MySQL: https://docs.
 
 - Pro databázové servery MySQL by mělo být povoleno připojení SSL vynutilo.
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-Azure Policy ukázky pro síťové služby: https://docs.microsoft.com/azure/governance/policy/samples/
+- [Ukázky Azure Policy pro sítě](/azure/governance/policy/samples/)
 
-Postup vytvoření Azure Blueprint: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+- [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -146,11 +146,11 @@ Postup vytvoření Azure Blueprint: https://docs.microsoft.com/azure/governance/
 
 **Doprovodné**materiály: používejte značky pro prostředky, které se týkají zabezpečení sítě a toku provozu pro vaše Azure Database for MySQL instance pro poskytování metadat a logické organizace.
 
-Použijte některou z předdefinovaných Azure Policy definic souvisejících s označováním, jako je "vyžadovat značku a její hodnotu", aby se zajistilo, že všechny prostředky budou vytvořeny pomocí značek, a upozorní vás na stávající neoznačené prostředky.
+Použijte libovolné předdefinované Azure Policy definice týkající se označování, jako je například **vyžadovat značku a její hodnotu** , aby se zajistilo, že všechny prostředky jsou vytvořeny pomocí značek, a upozorní vás na stávající neoznačené prostředky.
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -160,9 +160,9 @@ Vytváření a používání značek: https://docs.microsoft.com/azure/azure-res
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi Azure Database for MySQL instancemi. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-Jak zobrazit a načíst události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
 
-Postup při vytváření výstrah v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -170,7 +170,7 @@ Postup při vytváření výstrah v Azure Monitor: https://docs.microsoft.com/az
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
@@ -184,9 +184,9 @@ Postup při vytváření výstrah v Azure Monitor: https://docs.microsoft.com/az
 
 **Pokyny**: povolení nastavení diagnostiky a protokolů serveru a příjem protokolů pro agregaci dat zabezpečení generovaných vašimi Azure Database for MySQL instancemi. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé nebo archivní úložiště. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-Vysvětlení protokolů serveru pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs
+- [Vysvětlení protokolů serveru pro Azure Database for MySQL](concepts-monitoring.md#server-logs)
 
-Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -196,13 +196,13 @@ Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quicksta
 
 **Pokyny**: povolení nastavení diagnostiky na instancích Azure Database for MySQL pro přístup k protokolům pro audit, pomalé dotazy a MySQL. Ujistěte se, že jste konkrétně povolili protokol auditu MySQL. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. Můžete také povolit nastavení diagnostiky protokolů aktivit Azure a odesílat protokoly do stejného Log Analytics pracovního prostoru nebo účtu úložiště.
 
-Vysvětlení protokolů serveru pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs
+- [Vysvětlení protokolů serveru pro Azure Database for MySQL](concepts-monitoring.md#server-logs)
 
-Jak nakonfigurovat a přistupovat k protokolům pomalým dotazům pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-configure-server-logs-in-portal
+- [Jak nakonfigurovat a přistupovat k protokolům pomalým dotazům pro Azure Database for MySQL](howto-configure-server-logs-in-portal.md)
 
-Postup konfigurace a přístup k protokolům auditu pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-configure-audit-logs-portal
+- [Postup konfigurace a přístup k protokolům auditu pro Azure Database for MySQL](howto-configure-audit-logs-portal.md)
 
-Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+- [Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -220,9 +220,9 @@ Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure: https://do
 
 **Doprovodné**materiály: v rámci Azure monitor pro pracovní prostor Log Analytics, který se používá k ukládání protokolů Azure Database for MySQL, nastavte dobu uchování podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-Ukládání protokolů prostředků do účtu Azure Storage: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+- [Ukládání protokolů prostředků v Azure Storagem účtu](/azure/azure-monitor/platform/resource-logs-collect-storage)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -232,33 +232,33 @@ Ukládání protokolů prostředků do účtu Azure Storage: https://docs.micros
 
 **Pokyny**: analýza a sledování protokolů z Azure Database for MySQL instancí pro chování neobvyklé. Pomocí Log Analytics Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo jiného dodavatele SIEM.
 
-Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-Další informace o Log Analytics: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+- [Další informace o Log Analytics](../azure-monitor/log-query/get-started-portal.md)
 
-Postup provádění vlastních dotazů v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
+### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
 **Pokyny**: povolení rozšířené ochrany před internetovými útoky pro Azure Database for MySQL. Rozšířená ochrana před internetovými útoky detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
 Kromě toho můžete povolit protokoly serveru a nastavení diagnostiky pro MySQL a odesílat protokoly do pracovního prostoru Log Analytics. Připojte pracovní prostor Log Analytics do Azure Sentinel, protože poskytuje řešení pro automatizované odpovědi na orchestraci zabezpečení (společnosti). To umožňuje vytvořit playbooky (automatizovaná řešení) a použít je k nápravě problémů zabezpečení.
 
-Jak povolit rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL (Preview): https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL (Preview)](howto-database-threat-protection-portal.md)
 
-Vysvětlení protokolů serveru pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs
+- [Vysvětlení protokolů serveru pro Azure Database for MySQL](concepts-monitoring.md#server-logs)
 
-Jak nakonfigurovat a přistupovat k protokolům pomalým dotazům pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-configure-server-logs-in-portal
+- [Jak nakonfigurovat a přistupovat k protokolům pomalým dotazům pro Azure Database for MySQL](howto-configure-server-logs-in-portal.md)
 
-Postup konfigurace a přístup k protokolům auditu pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-configure-audit-logs-portal
+- [Postup konfigurace a přístup k protokolům auditu pro Azure Database for MySQL](howto-configure-audit-logs-portal.md)
 
-Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+- [Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
-Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -290,7 +290,7 @@ Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quicksta
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -298,11 +298,11 @@ Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quicksta
 
 Azure Database for MySQL nepodporuje integrované řízení přístupu založené na rolích, ale můžete vytvořit vlastní role na základě konkrétních možností poskytovatele prostředků.
 
-Porozumění vlastním rolím pro předplatné Azure: https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
+- [Porozumění vlastním rolím pro předplatné Azure](../role-based-access-control/custom-roles.md) 
 
-Principy Azure Database for MySQL operací poskytovatele prostředků: https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbformysql
+- [Principy Azure Database for MySQL operací poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdbformysql)
 
-Pochopení správy přístupu pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-security#access-management
+- [Pochopení správy přístupu pro Azure Database for MySQL](concepts-security.md#access-management)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -314,9 +314,9 @@ Pochopení správy přístupu pro Azure Database for MySQL: https://docs.microso
 
 Při vytváření samotného Azure Database for MySQL prostředku vynutí Azure vytvoření administrativního uživatele se silným heslem. Po vytvoření instance MySQL ale můžete použít první účet správce serveru, který jste vytvořili, a vytvořit další uživatele a udělit jim přístup pro správu. Při vytváření těchto účtů se ujistěte, že pro každý účet nakonfigurujete jiné silné heslo.
 
-Postup vytvoření dalších účtů pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-create-users
+- [Vytvoření dalších účtů pro Azure Database for MySQL](howto-create-users.md)
 
-Postup aktualizace hesla správce: https://docs.microsoft.com/azure/mysql/howto-create-manage-server-portal#update-admin-password
+- [Postup aktualizace hesla správce](howto-create-manage-server-portal.md#update-admin-password)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -326,25 +326,25 @@ Postup aktualizace hesla správce: https://docs.microsoft.com/azure/mysql/howto-
 
 **Doprovodné**materiály: vytvořte standardní operační postupy kolem použití vyhrazených účtů pro správu, které mají přístup k vašim instancím Azure Database for MySQL. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu.
 
-Pochopení Azure Security Center identity a přístupu: https://docs.microsoft.com/azure/security-center/security-center-identity-access
+- [Pochopení Azure Security Center identity a přístupu](../security-center/security-center-identity-access.md)
 
-Princip vytváření uživatelů s oprávněními správce v Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-create-users
+- [Naučte se vytvářet uživatele správců v Azure Database for MySQL](howto-create-users.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: použijte Azure Active Directory jednotné přihlašování (SSO).
 
 **Doprovodné**materiály: přihlášení k Azure Database for MySQL je podporované pomocí uživatelského jména a hesla, které je nakonfigurované přímo v databázi, a také pomocí Azure Active Directory (AD) identity a využití tokenu Azure AD k připojení. Při použití tokenu Azure AD se podporují různé metody, jako je například uživatel Azure AD, skupina Azure AD nebo aplikace Azure AD připojující se k databázi.
 
 Přístup k řídicí rovině pro MySQL je k dispozici samostatně prostřednictvím REST API a podporuje jednotné přihlašování. Pro ověření nastavte hlavičku autorizace pro vaše požadavky na JSON Web Token, které získáte z Azure Active Directory.
 
-Pro ověřování pomocí Azure Database for MySQL použijte Azure Active Directory: https://docs.microsoft.com/azure/mysql/howto-configure-sign-in-azure-ad-authentication
+- [Použití Azure Active Directory k ověřování pomocí Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)
 
-Pochopení Azure Database for MySQL REST API: https://docs.microsoft.com/rest/api/mysql/
+- [Pochopení Azure Database for MySQL REST API](/rest/api/mysql/)
 
-Vysvětlení jednotného přihlašování pomocí služby Azure AD: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+- [Vysvětlení jednotného přihlašování pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -354,29 +354,29 @@ Vysvětlení jednotného přihlašování pomocí služby Azure AD: https://docs
 
 **Doprovodné**materiály: povolte Azure Active Directory Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu. Při použití tokenů Azure AD pro přihlášení k vaší databázi vám to umožní vyžadovat vícefaktorové ověřování pro přihlášení k databázi.
 
-Jak povolit vícefaktorové ověřování v Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-Pro ověřování pomocí Azure Database for MySQL použijte Azure Active Directory: https://docs.microsoft.com/azure/mysql/howto-configure-sign-in-azure-ad-authentication
+- [Použití Azure Active Directory k ověřování pomocí Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)
 
-Jak monitorovat identitu a přístup v rámci Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
+- [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: Používejte zabezpečené pracovní stanice spravované Azure pro úlohy správy
 
 **Pokyny**: použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s nakonfigurovaným Multi-Factor Authentication (MFA), které jsou nakonfigurovány pro přihlášení a konfiguraci prostředků Azure.
 
-Další informace o pracovních stanicích s privilegovaným přístupem: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+- [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-Jak povolit vícefaktorové ověřování v Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: protokolovat a upozornit na podezřelé aktivity z účtů pro správu
 
 **Doprovodné**materiály: povolení rozšířené ochrany před internetovými útoky pro Azure Database for MySQL pro generování výstrah pro podezřelou aktivitu.
 
@@ -384,11 +384,11 @@ Kromě toho můžete použít Azure AD Privileged Identity Management (PIM) pro 
 
 Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL](howto-database-threat-protection-portal.md)
 
-Postup nasazení Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+- [Postup nasazení Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-Vysvětlení zjišťování rizik Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+- [Vysvětlení zjišťování rizik Azure AD](/azure/active-directory/reports-monitoring/concept-risk-events)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -398,7 +398,7 @@ Vysvětlení zjišťování rizik Azure AD: https://docs.microsoft.com/azure/act
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu umožněte portálu a Azure Resource Manager přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-Jak nakonfigurovat pojmenovaná umístění v Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+- [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -412,7 +412,7 @@ Pro přihlášení k Azure Database for MySQL se doporučuje používat Azure AD
 
 Přihlašovací údaje Azure AD se můžou používat taky pro správu na úrovni roviny správy (například Azure Portal) k řízení účtů správce MySQL.
 
-Pro ověřování pomocí Azure Database for MySQL použijte Azure Active Directory: https://docs.microsoft.com/azure/mysql/howto-configure-sign-in-azure-ad-authentication
+- [Použití Azure Active Directory k ověřování pomocí Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -422,29 +422,29 @@ Pro ověřování pomocí Azure Database for MySQL použijte Azure Active Direct
 
 **Doprovodné**materiály: Přečtěte si protokoly Azure Active Directory, které vám pomůžou zjistit zastaralé účty, které můžou zahrnovat Azure Database for MySQL administrativních rolí. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím, které se dají použít pro přístup k Azure Database for MySQL a přiřazení rolí. Přístup uživatelů by se měl pravidelně kontrolovat, například každých 90 dní, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-Pochopení sestav Azure AD https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
 
-Jak používat kontroly přístupu Azure identity: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+- [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 
 **Zodpovědnost**: zákazník
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
+### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
 **Doprovodné**materiály: povolení nastavení diagnostiky pro Azure Database for MySQL a Azure Active Directory a posílání všech protokolů do log Analyticsho pracovního prostoru. Nakonfigurujte požadovaná upozornění (například neúspěšné pokusy o ověření) v rámci Log Analytics.
 
-Jak nakonfigurovat a přistupovat k protokolům pomalým dotazům pro Azure Database for MySQL: https://docs.microsoft.com/Azure/mysql/howto-configure-server-logs-in-portal
+- [Jak nakonfigurovat a přistupovat k protokolům pomalým dotazům pro Azure Database for MySQL](/Azure/mysql/howto-configure-server-logs-in-portal)
 
-Postup konfigurace a přístup k protokolům auditu pro Azure Database for MySQL: https://docs.microsoft.com/Azure/mysql/howto-configure-audit-logs-portal
+- [Postup konfigurace a přístup k protokolům auditu pro Azure Database for MySQL](/Azure/mysql/howto-configure-audit-logs-portal)
 
-Jak integrovat protokoly aktivit Azure do Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+- [Jak integrovat protokoly aktivit Azure do Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
 **Zodpovědnost**: zákazník
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: výstraha při odchylce chování při přihlašování k účtu
 
 **Doprovodné**materiály: povolení rozšířené ochrany před internetovými útoky pro Azure Database for MySQL pro generování výstrah pro podezřelou aktivitu.
 
@@ -452,13 +452,13 @@ Pomocí funkcí Azure Active Directory Identity Protection a detekce rizik můž
 
 K dalšímu zkoumání můžete také ingestovat protokoly do Azure Sentinel.
 
-Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MySQL](howto-database-threat-protection-portal.md)
 
-Přehled Azure AD Identity Protection: https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
+- [Přehled Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)
 
-Jak zobrazit rizikové přihlašování Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+- [Jak zobrazit rizikové přihlašování Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -468,7 +468,7 @@ Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quicksta
 
 **Doprovodné**materiály: nepoužitelné; Customer Lockbox ještě není pro Azure Database for MySQL podporovaná.
 
-Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+- [Seznam podporovaných služeb Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -476,13 +476,13 @@ Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [srovnávací testy zabezpečení Azure: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
 **Doprovodné**materiály: pomocí značek pomáhají při sledování Azure Database for MySQLch instancí nebo souvisejících prostředků, které ukládají nebo zpracovávají citlivé informace.
 
-Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -492,16 +492,15 @@ Vytváření a používání značek: https://docs.microsoft.com/azure/azure-res
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Pomocí kombinace privátních odkazů, koncových bodů služby a/nebo pravidel brány firewall můžete izolovat a omezit síťový přístup k instancím Azure Database for MySQL.
 
-Jak vytvořit další předplatná Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
+- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
-Postup vytvoření Skupiny pro správu: https://docs.microsoft.com/azure/governance/management-groups/create
+- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
 
-Postup konfigurace privátního odkazu pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link
+- [Postup konfigurace privátního odkazu pro Azure Database for MySQL](concepts-data-access-security-private-link.md)
 
-Jak vytvořit a spravovat koncové body služby virtuální sítě a pravidla virtuální sítě v Azure Database for MySQL: https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview
+- [Jak vytvořit a spravovat koncové body služby virtuální sítě a pravidla virtuální sítě v Azure Database for MySQL](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
 
-Jak nakonfigurovat Azure Database for MySQL pravidla brány firewall: https://docs.microsoft.com/azure/mysql/concepts-firewall-rules
-
+- [Postup konfigurace Azure Database for MySQL pravidel brány firewall](concepts-firewall-rules.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -513,9 +512,9 @@ Jak nakonfigurovat Azure Database for MySQL pravidla brány firewall: https://do
 
 Společnost Microsoft spravuje základní infrastrukturu pro Azure Database for MySQL a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Jak zmírnit exfiltrace dat pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link#data-exfiltration-prevention
+- [Jak zmírnit exfiltrace dat pro Azure Database for MySQL](concepts-data-access-security-private-link.md#data-exfiltration-prevention)
 
-Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -527,7 +526,7 @@ Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/
 
 V současné době je verze TLS podporovaná pro Azure Database for MySQL TLS 1,0, TLS 1,1, TLS 1,2.
 
-Postup konfigurace šifrování při přenosu pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-ssl-connection-security
+- [Postup konfigurace šifrování při přenosu pro Azure Database for MySQL](concepts-ssl-connection-security.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -539,19 +538,19 @@ Postup konfigurace šifrování při přenosu pro Azure Database for MySQL: http
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
+### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
 
 **Pokyny**: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k Azure Database for MySQL rovině ovládacího prvku (např. Azure Portal). Pro přístup k rovině dat (v samotné databázi) použijte dotazy SQL k vytvoření uživatelů a konfiguraci oprávnění uživatele. Azure RBAC nemá vliv na uživatelská oprávnění v rámci databáze.
 
-Jak nakonfigurovat službu Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-Jak nakonfigurovat přístup uživatelů pomocí SQL pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-create-users
+- [Jak nakonfigurovat přístup uživatelů pomocí SQL pro Azure Database for MySQL](howto-create-users.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -563,7 +562,7 @@ Jak nakonfigurovat přístup uživatelů pomocí SQL pro Azure Database for MySQ
 
 Společnost Microsoft spravuje základní infrastrukturu pro Azure Database for MySQL a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -577,9 +576,9 @@ Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/
 
 AskAzureDBforMySQL@service.microsoft.com
 
-Vysvětlení šifrování v klidovém umístění pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-security
+- [Vysvětlení šifrování v klidovém umístění pro Azure Database for MySQL](concepts-security.md)
 
-Postup konfigurace klíčů spravovaných zákazníkem pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-data-encryption-mysql
+- [Postup konfigurace klíčů spravovaných zákazníkem pro Azure Database for MySQL](concepts-data-encryption-mysql.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -589,7 +588,7 @@ Postup konfigurace klíčů spravovaných zákazníkem pro Azure Database for My
 
 **Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure Database for MySQL a dalších důležitých nebo souvisejících prostředcích.
 
-Vytváření upozornění pro události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -597,17 +596,21 @@ Vytváření upozornění pro události protokolu aktivit Azure: https://docs.mi
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v článku [Srovnávací test zabezpečení Azure: Správa ohrožení zabezpečení](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Doprovodné**materiály: aktuálně není k dispozici; Azure Security Center ještě nepodporuje posouzení ohrožení zabezpečení pro Azure Database for MySQL.
+**Doprovodné**materiály: dodržujte doporučení od Azure Security Center o zabezpečení Azure Database for MySQL a souvisejících prostředků.
 
-Pokrytí funkcí pro služby Azure PaaS v Azure Security Center: https://docs.microsoft.com/azure/security-center/features-paas
+Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Database for MySQL.
+
+- [Pochopení Azure Security Center doporučení](../security-center/recommendations-reference.md)
+
+- [Pokrytí funkcí pro služby Azure PaaS v Azure Security Center](../security-center/features-paas.md)
 
 **Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: sdílená
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 
@@ -617,7 +620,7 @@ Pokrytí funkcí pro služby Azure PaaS v Azure Security Center: https://docs.mi
 
 **Zodpovědnost**: není k dispozici
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
+### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: nasazení automatizovaného řešení pro správu oprav pro softwarové tituly třetích stran
 
 **Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
@@ -637,24 +640,23 @@ Pokrytí funkcí pro služby Azure PaaS v Azure Security Center: https://docs.mi
 
 **Pokyny**: Společnost Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Database for MySQL.
 
-
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: Microsoft
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [testování výkonnosti Azure Security: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
-### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
+### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
 **Pokyny**: pomocí Azure Resource graphu se můžete dotazovat a zjišťovat všechny prostředky (včetně instancí Azure Database for MySQL) v rámci vašich předplatných. Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
 
-Jak vytvářet dotazy pomocí Azure Resource graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+- [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
-Jak zobrazit vaše předplatná Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-Porozumění službě Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
+- [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -664,7 +666,7 @@ Porozumění službě Azure RBAC: https://docs.microsoft.com/azure/role-based-ac
 
 **Doprovodné**materiály: použití značek pro Azure Database for MySQL instancí a dalších souvisejících prostředků, které dávají metadata k logickému uspořádání do taxonomie.
 
-Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -674,17 +676,17 @@ Vytváření a používání značek: https://docs.microsoft.com/azure/azure-res
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování Azure Database for MySQLch instancí a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-Jak vytvořit další předplatná Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
+- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
-Postup vytvoření Skupiny pro správu: https://docs.microsoft.com/azure/governance/management-groups/create
+- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
 
-Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: udržování inventáře schválených prostředků Azure a softwarových titulů
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
 **Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky a Azure jako celek.
 
@@ -700,11 +702,11 @@ Vytváření a používání značek: https://docs.microsoft.com/azure/azure-res
 
 - Povolené typy prostředků
 
-Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných.
+Kromě toho se pomocí grafu prostředků Azure Dotazujte na prostředky v rámci předplatných a vyhledejte je.
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+- [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -742,15 +744,15 @@ Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/gov
 
 - Povolené typy prostředků
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-Jak odepřít konkrétní typ prostředku s Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
-### <a name="610-implement-approved-application-list"></a>6,10: Implementujte schválený seznam aplikací
+### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: udržování inventáře schválených softwarových titulů
 
 **Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
@@ -758,11 +760,11 @@ Jak odepřít konkrétní typ prostředku s Azure Policy: https://docs.microsoft
 
 **Zodpovědnost**: není k dispozici
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6,11: Omezte schopnost uživatelů pracovat se správcem prostředků Azure prostřednictvím skriptů
+### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: Omezte schopnost uživatelů pracovat s Azure Resource Manager
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management. To může zabránit vytváření a změnám prostředků v prostředí s vysokým zabezpečením, jako jsou například instance Azure Database for MySQL obsahující citlivé údaje.
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+- [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -786,17 +788,17 @@ Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resou
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [Konfigurace zabezpečení Azure Security test: zabezpečení](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Azure Database for MySQL instance pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforMySQL můžete vytvořit vlastní zásady, které budou auditovat nebo vymáhat konfiguraci sítě vašich Azure Database for MySQL instancí. Můžete také využít integrované definice zásad související s vašimi Azure Database for MySQL instancemi, například:
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Azure Database for MySQL instance pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů **Microsoft. DBforMySQL** můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich Azure Database for MySQLch instancí. Můžete také využít integrované definice zásad související s vašimi Azure Database for MySQL instancemi, například:
 
 Pro databázové servery MySQL by mělo být povoleno připojení SSL vynutilo.
 
-Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -814,9 +816,9 @@ Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/go
 
 **Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-Pochopení Azure Policych účinků: https://docs.microsoft.com/azure/governance/policy/concepts/effects
+- [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -834,9 +836,9 @@ Pochopení Azure Policych účinků: https://docs.microsoft.com/azure/governance
 
 **Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy pro vaše Azure Database for MySQL instance a související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-Jak ukládat kód v Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -850,17 +852,17 @@ Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?vie
 
 **Zodpovědnost**: není k dispozici
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
+### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: nasazení nástrojů pro správu konfigurace pro prostředky Azure
 
 **Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforMySQL můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
+### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: nasazení nástrojů pro správu konfigurace pro operační systémy
 
 **Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
@@ -868,11 +870,11 @@ Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/go
 
 **Zodpovědnost**: není k dispozici
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
+### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
-**Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforMySQL můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro vaše Azure Database for MySQL instance a související prostředky použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
+**Pokyny**: použijte aliasy Azure Policy v oboru názvů **Microsoft. DBforMySQL** k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro vaše Azure Database for MySQL instance a související prostředky použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -890,11 +892,11 @@ Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/go
 
 **Doprovodné**materiály: u Azure Virtual Machines nebo webových aplikací běžících na Azure App Service se používá pro přístup k instancím Azure Database for MySQL použijte identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů Azure Database for MySQL. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [Integrace se spravovanými identitami Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-Postup vytvoření Key Vault: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+- [Vytvoření Key Vault](../key-vault/general/quick-create-portal.md)
 
-Jak zajistit Key Vault ověřování pomocí spravované identity: https://docs.microsoft.com/azure/key-vault/managed-identity
+- [Jak zajistit Key Vault ověřování pomocí spravované identity](/azure/key-vault/general/managed-identity)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -908,9 +910,9 @@ V případě Azure Virtual Machines nebo webových aplikací běžících na Azu
 
 Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
-Postup konfigurace spravovaných identit: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+- [Postup konfigurace spravovaných identit](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [Integrace se spravovanými identitami Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -920,7 +922,7 @@ Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azu
 
 **Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
-Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
+- [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -928,9 +930,9 @@ Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použijte centrálně spravovaný antimalwarový software
 
 **Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
@@ -962,36 +964,35 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
 **Doprovodné**materiály: Azure Database for MySQL přebírají zálohy datových souborů a transakčního protokolu. V závislosti na podporované maximální velikosti úložiště vezmeme úplné a rozdílové zálohy (4 TB max. servery úložiště) nebo zálohy snímků (až 16 TB maximálních úložných serverů). Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
-Principy zálohování pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-backup
+- [Principy zálohování pro Azure Database for MySQL](concepts-backup.md)
 
-Principy počáteční konfigurace Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/tutorial-design-database-using-portal
+- [Principy počáteční konfigurace Azure Database for MySQL](tutorial-design-database-using-portal.md)
 
 **Monitorování Azure Security Center**: Ano
 
 **Odpovědnost**: sdílená
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny klíče spravované zákazníkem.
 
 **Doprovodné**materiály: Azure Database for MySQL automaticky vytvoří zálohy serveru a uloží je do místně redundantního nebo geograficky redundantního úložiště v závislosti na volbě uživatele. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním. 
 
 Pokud chcete ukládat přihlašovací údaje pro instance Azure Database for MySQL pomocí Azure Key Vault, zajistěte pravidelné automatizované zálohování vašich klíčů. 
 
-Principy zálohování pro Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-restore-server-portal 
+- [Principy zálohování pro Azure Database for MySQL](howto-restore-server-portal.md) 
 
-Postup zálohování klíčů Key Vault:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
-
+- [Postup zálohování klíčů Key Vault](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Monitorování Azure Security Center**: Ano
 
 **Odpovědnost**: sdílená
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: Ověřte všechny zálohy včetně spravovaných klíčů zákazníků.
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
 **Doprovodné**materiály: v Azure Database for MySQL obnovení vytvoří nový server ze zálohy původního serveru. K dispozici jsou dva typy obnovení: obnovení k bodu v čase a geografické obnovení. Obnovení k určitému bodu v čase je dostupné s možností redundance zálohy a vytvoří nový server ve stejné oblasti jako původní server. Geografické obnovení je k dispozici pouze v případě, že jste server nakonfigurovali pro geograficky redundantní úložiště a máte možnost obnovit server do jiné oblasti.
 
@@ -999,17 +1000,17 @@ Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí 
 
 Pravidelně testujte obnovení instancí Azure Database for MySQL.
 
-Principy zálohování a obnovení v Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-backup
+- [Principy zálohování a obnovení v Azure Database for MySQL](concepts-backup.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
 **Zodpovědnost**: zákazník
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
 **Doprovodné**materiály: Azure Database for MySQL přebírá úplné a rozdílové zálohy a zálohování protokolů transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Principy zálohování a obnovení v Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/concepts-backup
+- [Principy zálohování a obnovení v Azure Database for MySQL](concepts-backup.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1017,19 +1018,19 @@ Principy zálohování a obnovení v Azure Database for MySQL: https://docs.micr
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v odpovědi na [incidenty Azure Security test:](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
 **Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
 
-Postup konfigurace automatizace pracovních postupů v rámci Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+- [Postup konfigurace automatizace pracovních postupů v rámci služby Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
-Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- [Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-Anatomie centra Microsoft Security Response Center: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- [Anatomie centra Microsoft Security Response Center](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+- [Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty.](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1049,7 +1050,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 **Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
-Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+- [Přečtěte si téma publikace NIST: Průvodce testováním, školením a cvičením programů pro plány a možnosti IT](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1059,7 +1060,7 @@ Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvi�
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana.  Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-Jak nastavit Azure Security Center kontakt zabezpečení: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+- [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1069,9 +1070,9 @@ Jak nastavit Azure Security Center kontakt zabezpečení: https://docs.microsoft
 
 **Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
 
-Postup konfigurace průběžného exportu: https://docs.microsoft.com/azure/security-center/continuous-export
+- [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-Jak streamovat výstrahy do Azure Sentinel: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+- [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1081,7 +1082,7 @@ Jak streamovat výstrahy do Azure Sentinel: https://docs.microsoft.com/azure/sen
 
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps: https://docs.microsoft.com/azure/security-center/workflow-automation
+- [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1089,13 +1090,13 @@ Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps: https://docs.
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [testy zabezpečení Azure – testování průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
 **Doprovodné**materiály: Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem:  https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+- [V této části najdete další informace o strategii Microsoftu a provádění testování v rámci červeného seskupování a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1103,5 +1104,5 @@ V této části najdete další informace o strategii a provádění testování
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
+- Další informace o [plánech zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)

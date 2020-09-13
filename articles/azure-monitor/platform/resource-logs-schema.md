@@ -3,13 +3,13 @@ title: Protokoly prostředků Azure podporují služby a schémata.
 description: Pochopte podporované služby a schéma událostí pro protokoly prostředků Azure.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/15/2020
-ms.openlocfilehash: acd661467e90b4915daa2f3eb31f34fd350dc9f5
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/01/2020
+ms.openlocfilehash: d0f78b858da51838aacd9e3be9b0a069918710a7
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226459"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421913"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Společné schéma pro protokoly prostředků Azure a schématu pro konkrétní služby
 
@@ -23,7 +23,7 @@ Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category`
 
 ## <a name="top-level-common-schema"></a>Společné schéma nejvyšší úrovně
 
-| Název | Požadováno/volitelné | Popis |
+| Name | Požadováno/volitelné | Popis |
 |---|---|---|
 | time | Vyžadováno | Časové razítko (UTC) události. |
 | resourceId | Vyžadováno | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
@@ -49,7 +49,7 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Služba | Schéma & docs |
 | --- | --- |
 | Azure Active Directory | [Přehled](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schéma protokolu auditu](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) a [schéma přihlášení](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
-| Analysis Services | https://docs.microsoft.com/azure/analysis-services/analysis-services-logging |
+| Analysis Services | [Protokolování diagnostiky Azure Analysis Servicesho nastavení](../../analysis-services/analysis-services-logging.md) |
 | API Management | [Protokoly prostředků API Management](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
 | Brány Application Gateway |[Protokolování pro Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Log Analytics pro Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
@@ -64,8 +64,8 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Průzkumník dat Azure | [Protokoly Průzkumník dat Azure](/azure/data-explorer/using-diagnostic-logs) |
 | Azure Database for MySQL | [Protokoly diagnostiky Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Protokoly Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#resource-logs) |
-| Azure Databricks | [Protokolování diagnostiky v Azure Databricks](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
-| Digital Twins | [Nastavit diagnostiku digitálních vláken](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
+| Azure Databricks | [Protokolování diagnostiky v Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Digital Twins | [Nastavení diagnostiky digitálních vláken Azure](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Protokoly Event Hubs Azure](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | Schéma není k dispozici. |
 | Azure Firewall | Schéma není k dispozici. |
@@ -80,7 +80,7 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
 | Search |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
 | Service Bus |[Protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
+| Databáze SQL | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Schéma Traffic Managerho protokolu](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuální sítě | Schéma není k dispozici. |
