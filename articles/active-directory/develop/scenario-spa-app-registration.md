@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311564"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434533"
 ---
 # <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
 
@@ -32,7 +32,7 @@ U aplikací založených na MSAL.js 1,0 a 2,0 začněte provedením následujíc
 1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
-1. Vyberte **Nová registrace**, zadejte **název** aplikace a zvolte **podporované typy účtů** pro aplikaci. Nezadávejte **identifikátor URI přesměrování**. **NOT** Popis různých typů účtů najdete v tématu [Registrace nové aplikace pomocí Azure Portal](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
+1. Vyberte **Nová registrace**, zadejte **název** aplikace a zvolte **podporované typy účtů** pro aplikaci. Nezadávejte **identifikátor URI přesměrování**. **NOT** Popis různých typů účtů najdete v tématu [Registrace nové aplikace pomocí Azure Portal](quickstart-register-app.md).
 1. Kliknutím na **Registrovat** vytvořte registraci aplikace.
 
 V dalším kroku nakonfigurujte registraci aplikace pomocí **identifikátoru URI přesměrování** , abyste určili, kde má platforma Microsoft identity by měla přesměrovat klienta spolu s případnými tokeny zabezpečení. Použijte postup, který je vhodný pro verzi MSAL.js, kterou používáte ve vaší aplikaci:

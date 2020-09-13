@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6adfd9bc778318b406d5ce27cadccdad02d73d69
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049685"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437458"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Řešení potíží s připojením k síti virtuálních počítačů z Azure do Azure
 
@@ -18,7 +18,7 @@ Tento článek popisuje běžné problémy související s připojením k síti 
 
 Aby mohla replikace Site Recovery fungovat, z virtuálního počítače se vyžaduje odchozí připojení ke konkrétním adresám URL nebo rozsahům IP adres. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů.
 
-| **Name**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete použít seznam povolených adres pro konkrétní adresy URL účtu úložiště. Například `cache1.blob.core.windows.net` a `cache2.blob.core.windows.net` místo `*.blob.core.windows.net` . |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery. |
@@ -108,7 +108,7 @@ Nepovedlo se navázat připojení k Azure Site Recovery koncovým bodům služby
 
 #### <a name="resolution"></a>Řešení
 
-Azure Site Recovery vyžaduje přístup k [rozsahům IP adres služby Site Recovery](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) v závislosti na konkrétní oblasti. Ujistěte se, že virtuální počítač má přístup k požadovaným rozsahům IP adres.
+Pokud k řízení odchozího připojení k síti na počítači používáte pravidlo skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, je potřeba, abyste mohli povolit několik značek služby. [Přečtěte si další informace](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
 
 ### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Problém 4: replikace z Azure do Azure se nezdařila, když síťový provoz projde místními proxy server (151072)
 

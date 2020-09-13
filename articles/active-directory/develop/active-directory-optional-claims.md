@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/03/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068722"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436846"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -130,7 +130,7 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
 
 **Konfigurace volitelných deklarací prostřednictvím uživatelského rozhraní:**
 
-[![Ukazuje, jak nakonfigurovat volitelné deklarace identity pomocí uživatelského rozhraní.](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
+[![Konfigurace volitelných deklarací v uživatelském rozhraní](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. V části **Správa** vyberte **Konfigurace tokenu**.
 1. Vyberte **přidat volitelnou deklaraci identity**.
@@ -238,7 +238,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 1. Vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity v seznamu.
 1. V části **Spravovat** vyberte **Konfigurace tokenu** .
 1. Vyberte **přidat deklaraci identity skupin** .
-1. Vyberte typy skupin, které se mají vrátit (**všechny skupiny, skupiny** **zabezpečení**nebo **DirectoryRole**). Možnost **všechny skupiny** zahrnuje skupinu **zabezpečení**, **DirectoryRole**a **DistributionList** .
+1. Vyberte typy skupin, které se mají vrátit (**skupiny zabezpečení**nebo **role adresáře**, **všechny skupiny**a/nebo **skupiny přiřazené k aplikaci**). Možnost **skupiny přiřazené k aplikaci** zahrnuje jenom skupiny přiřazené k aplikaci. Možnost **všechny skupiny** zahrnuje skupinu **zabezpečení**, **DirectoryRole**a **DistributionList**, ale ne **skupiny přiřazené k aplikaci**. 
 1. Volitelné: vyberte vlastnosti konkrétního typu tokenu, abyste mohli změnit hodnotu deklarace skupiny, aby obsahovala atributy místních skupin nebo aby se typ deklarace identity změnila na roli.
 1. Vyberte **Uložit**.
 
@@ -256,8 +256,9 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - All (Tato možnost zahrnuje zabezpečení, DirectoryRole a DistributionList)
    - "Zabezpečení"
    - "DirectoryRole"
+   - "Skupina aplikací" (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci)
 
-   Příklad:
+   Například:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -307,7 +308,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
     **Konfigurace uživatelského rozhraní:**
 
-    [![Ukazuje, jak nakonfigurovat volitelné deklarace identity pomocí uživatelského rozhraní.](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
+    [![Konfigurace volitelných deklarací identity](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
     **Položka manifestu aplikace:**
 
@@ -328,7 +329,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
     **Konfigurace uživatelského rozhraní:**
 
-    [![Ukazuje, jak nakonfigurovat volitelné deklarace identity pomocí uživatelského rozhraní.](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+    [![Volitelné deklarace identity v manifestu](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
 
     **Položka manifestu aplikace:**
 
@@ -394,11 +395,11 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 1. Vyberte **přidat volitelnou deklaraci identity**, vyberte typ tokenu **SAML** , v seznamu deklarací identity vyberte **EXTn. skypeID** (platí jenom v případě, že jste vytvořili objekt uživatele Azure AD s názvem skypeID) a pak vyberte **Přidat**.
 
-    [![Ukazuje, jak nakonfigurovat volitelné deklarace identity pomocí uživatelského rozhraní.](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+    [![Volitelné deklarace identity pro token SAML](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Konfigurace manifestu:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a vyberte ji.

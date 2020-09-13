@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 16e15976c6f09881b75dcec207833f48aa1c4e7a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189941"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437662"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,17 +91,17 @@ Redundantní verze architektury s vysokou dostupností v zóně je znázorněna 
 
 ## <a name="accelerated-database-recovery-adr"></a>Urychlené obnovení databáze (ADR)
 
-[Zrychlené obnovení databáze (ADR)](../accelerated-database-recovery.md) je nová funkce databázového stroje, která významně vylepšuje dostupnost databáze, zejména v případě dlouhotrvajících transakcí. Pravidla automatického nasazení jsou v tuto chvíli k dispozici pro Azure SQL Database, Azure SQL Managed instance a Azure SQL Data Warehouse.
+[Zrychlené obnovení databáze (ADR)](../accelerated-database-recovery.md) je nová funkce databázového stroje, která významně vylepšuje dostupnost databáze, zejména v případě dlouhotrvajících transakcí. Pravidla automatického nasazení jsou v tuto chvíli k dispozici pro Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics (dřív SQL Data Warehouse).
 
 ## <a name="testing-application-fault-resiliency"></a>Testování odolnosti proti chybám aplikace
 
-Vysoká dostupnost je základní součástí SQL Database a platforma spravované instance SQL, která funguje transparentně pro vaši databázovou aplikaci. Nicméně víme, že možná budete chtít otestovat, jak budou operace automatického převzetí služeb při selhání iniciované během plánovaných nebo neplánovaných událostí mít vliv na aplikaci předtím, než ji nasadíte do produkčního prostředí. Převzetí služeb při selhání můžete aktivovat ručně voláním speciálního rozhraní API pro restartování databáze, elastického fondu nebo spravované instance. V případě redundantní databáze nebo elastického fondu zóny by volání rozhraní API mělo za následek přesměrování připojení klientů k nové primární databázi v zóně dostupnosti odlišnou od zóny dostupnosti staré primární služby. Takže kromě testování toho, jak převzetí služeb při selhání ovlivňuje stávající databázové relace, můžete také ověřit, jestli se v důsledku změn v latenci sítě změní na koncový výkon. Vzhledem k tomu, že operace restartování je rušivá a velké množství těchto prostředků by mohlo navýšit platformu, pro každou databázi, elastický fond nebo spravovanou instanci je každých 30 minut povoleno pouze jedno volání převzetí služeb při selhání.
+Vysoká dostupnost je základní součástí služby SQL Database a platformy SQL Managed Instance, která funguje pro vaši databázovou aplikaci transparentně. Nicméně chápeme, že možná budete chtít otestovat, jaký budou operace automatického převzetí služeb při selhání iniciované během plánovaných nebo neplánovaných událostí mít vliv na aplikaci předtím, než ji nasadíte do produkčního prostředí. Převzetí služeb při selhání můžete aktivovat ručně voláním speciálního rozhraní API pro restartování databáze, elastického fondu nebo spravované instance. V případě redundantní databáze nebo elastického fondu zóny by volání rozhraní API mělo za následek přesměrování připojení klientů k nové primární databázi v zóně dostupnosti odlišnou od zóny dostupnosti staré primární služby. Takže kromě testování toho, jak převzetí služeb při selhání ovlivňuje stávající databázové relace, můžete také ověřit, jestli se v důsledku změn v latenci sítě změní na koncový výkon. Vzhledem k tomu, že operace restartování je rušivá a velké množství těchto prostředků by mohlo navýšit platformu, pro každou databázi, elastický fond nebo spravovanou instanci je každých 30 minut povoleno pouze jedno volání převzetí služeb při selhání.
 
 Převzetí služeb při selhání se dá iniciovat pomocí PowerShellu, REST API nebo Azure CLI:
 
 |Typ nasazení|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|databáze|[Invoke – AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Převzetí služeb při selhání databáze](/rest/api/sql/databases(failover)/failover/)|[AZ REST](https://docs.microsoft.com/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
+|Database|[Invoke – AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Převzetí služeb při selhání databáze](/rest/api/sql/databases(failover)/failover/)|[AZ REST](https://docs.microsoft.com/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
 |Elastický fond|[Invoke – AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Převzetí služeb při selhání elastického fondu](/rest/api/sql/elasticpools(failover)/failover/)|[AZ REST](https://docs.microsoft.com/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
 |MI|[Invoke – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Spravované instance – převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[AZ SQL mi Failover převzetí služeb při selhání](/cli/azure/sql/mi/#az-sql-mi-failover)|
 

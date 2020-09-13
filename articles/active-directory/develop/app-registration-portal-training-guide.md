@@ -13,12 +13,12 @@ ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13242a41e1d10b0df031bf10fd646d9ec3cf47c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478157"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437764"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Nové prostředí pro registraci aplikací Azure Portal
 
@@ -77,12 +77,12 @@ V novém prostředí byly **tajné klíče aplikace** přejmenovány na **certif
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformy/ověřování: adresy URL odpovědí/identifikátory URI pro přesměrování
 Ve starém prostředí obsahovala aplikace platformy pro web, nativní a webové rozhraní API ke konfiguraci adres URL pro přesměrování, adresy URL pro odhlášení a implicitního toku.
 
-V novém prostředí se adresy URL odpovědí dají najít v \' části ověřování aplikace. Kromě toho se označují jako identifikátory URI přesměrování a změna formátu identifikátorů URI pro přesměrování se změnila. Musí být přidružené k typu aplikace (webový nebo veřejný klient – mobilní zařízení a Desktop). [Další informace](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+V novém prostředí se adresy URL odpovědí dají najít v \' části ověřování aplikace. Kromě toho se označují jako identifikátory URI přesměrování a změna formátu identifikátorů URI pro přesměrování se změnila. Musí být přidružené k typu aplikace (webový nebo veřejný klient – mobilní zařízení a Desktop). [Další informace](quickstart-register-app.md#add-a-redirect-uri)
 
 Webová rozhraní API jsou nakonfigurovaná na stránce vystavení rozhraní API.
 
 > [!NOTE]
-> Vyzkoušejte si nové prostředí nastavení ověřování, kde můžete nakonfigurovat nastavení pro svou aplikaci na základě platformy nebo zařízení, na které chcete cílit. [Další informace](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
+> Vyzkoušejte si nové prostředí nastavení ověřování, kde můžete nakonfigurovat nastavení pro svou aplikaci na základě platformy nebo zařízení, na které chcete cílit. [Další informace](quickstart-register-app.md#configure-platform-settings)
 
 ## <a name="microsoft-graph-permissionsapi-permissions"></a>Oprávnění Microsoft Graph/oprávnění rozhraní API
 

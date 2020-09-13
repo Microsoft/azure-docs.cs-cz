@@ -11,20 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 827d66b51aa2080c4fb10209439d7781ddf787a7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210391"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436921"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli Server pro vaše databáze a elastické fondy v [Azure SQL Database](sql-database-paas-overview.md) nebo pro databáze v [Azure synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s databází v Azure SQL Database a SQL Data Warehouse.
+*Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli Server pro vaše databáze a elastické fondy v [Azure SQL Database](sql-database-paas-overview.md) nebo pro databáze v [Azure synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s databází v Azure SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse).
 
 > [!NOTE]
-> Tento článek se týká Azure SQL Database a analýzy Azure synapse (dřív SQL Data Warehouse). Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics.
+> Tento článek se týká Azure SQL Database a Azure synapse Analytics. Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics.
 
 Aby bylo možné vytvořit pravidlo virtuální sítě, musí být nejprve [koncovým bodem služby virtuální sítě][vm-virtual-network-service-endpoints-overview-649d] pro pravidlo, na které se má odkazovat.
 
@@ -104,13 +104,13 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Dopad použití koncových bodů služby virtuální sítě se službou Azure Storage
 
-Ve službě Azure Storage je implementovaná stejná funkce, která umožňuje omezit připojení k vašemu účtu služby Azure Storage. Pokud se rozhodnete tuto funkci využít u účtu služby Azure Storage, který používá služba Azure SQL Database, může dojít k problémům. Dál je seznam a diskuzi o funkcích Azure SQL Database a Azure SQL Data Warehouse, na které má vliv.
+Ve službě Azure Storage je implementovaná stejná funkce, která umožňuje omezit připojení k vašemu účtu služby Azure Storage. Pokud se rozhodnete tuto funkci využít u účtu služby Azure Storage, který používá služba Azure SQL Database, může dojít k problémům. Dál je seznam a diskuze o funkcích Azure SQL Database a službě Azure synapse Analytics, na které se to týká.
 
 ### <a name="azure-synapse-polybase-and-copy-statement"></a>Příkaz Base a COPY pro Azure synapse
 
 Základ a příkaz COPY se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage pro příjem dat s vysokou propustností. Pokud účet Azure Storage, ze kterého načítáte data, přistupuje jenom k sadě virtuálních sítí VNet, připojení při použití základny a příkazu COPY pro účet úložiště dojde k přerušení. Pokud chcete povolit scénáře importu a exportu pomocí kopírování a základu s připojením služby Azure synapse Analytics k Azure Storage, která je zabezpečená pro virtuální síť, postupujte podle následujících kroků:
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps) nainstalujte Azure PowerShell.
 - Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) upgradovat na účet úložiště pro obecné účely verze 2.
@@ -119,7 +119,7 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
 > [!IMPORTANT]
 > Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-#### <a name="steps"></a>Kroky
+#### <a name="steps"></a>Postup
 
 1. V prostředí PowerShell **Zaregistrujte server** hostující službu Azure Synapse pomocí Azure Active Directory (AAD):
 
@@ -227,7 +227,7 @@ Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání roz
 
 - [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *typu* koncového bodu služby, který je relevantní pro Azure SQL Database.
 
@@ -238,7 +238,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se na web [Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se na [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Vyhledejte a vyberte **SQL servery**a pak vyberte svůj server. V části **zabezpečení**vyberte možnost **brány firewall a virtuální sítě**.
 

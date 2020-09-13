@@ -1,20 +1,20 @@
 ---
-title: Použití Azure Firewall k ochraně nasazení služby Azure Kubernetes Service (AKS)
+title: Zajištění ochrany nasazení služby Azure Kubernetes Service (AKS) s využitím služby Azure Firewall
 description: Naučte se používat Azure Firewall k ochraně nasazení AKS (Azure Kubernetes Service).
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/03/2020
 ms.author: victorh
-ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87412945"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437849"
 ---
-# <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Použití Azure Firewall k ochraně nasazení služby Azure Kubernetes Service (AKS)
+# <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Zajištění ochrany nasazení služby Azure Kubernetes Service (AKS) s využitím služby Azure Firewall
 
 Služba Azure Kubernetes Service (AKS) nabízí spravovaný cluster Kubernetes v Azure. Snižuje složitost a provozní režii při správě Kubernetes tím, že přenese velkou část této zodpovědnosti do Azure. AKS zpracovává kritické úlohy, jako je monitorování stavu a údržba, a poskytuje cluster na podnikové úrovni a zabezpečený cluster s usnadněním správného řízení.
 
@@ -24,7 +24,7 @@ Pro účely správy a provozu musí uzly v clusteru AKS přistupovat k určitým
 
 Postupujte podle pokynů v tomto článku a poskytněte vám dodatečnou ochranu pro cluster Azure Kubernetes pomocí Azure Firewall.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Nasazený cluster Azure Kubernetes se spuštěnou aplikací.
 
@@ -47,7 +47,13 @@ Azure Firewall poskytuje značku plně kvalifikovaného názvu domény AKS pro z
    - TCP [*IPAddrOfYourAPIServer*]: 443 se vyžaduje v případě, že máte aplikaci, která potřebuje komunikovat se serverem API. Tuto změnu lze nastavit po vytvoření clusteru.
    - Port TCP 9000 a port UDP 1194 pro front-endu tunelu pro komunikaci s koncovým tunelovým zakončením na serveru rozhraní API.
 
-      Pokud chcete být konkrétnější, přečtěte si **. HCP. <location> azmk8s.io* a adresy v následující tabulce.
+      Pokud chcete být konkrétnější, přečtěte si **. HCP. <location> azmk8s.io* a adresy v následující tabulce:
+
+   | Cílový koncový bod                                                             | Protokol | Port    | Použití  |
+   |----------------------------------------------------------------------------------|----------|---------|------|
+   | **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+   | **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+
    - Port UDP 123 pro synchronizaci času NTP (Network Time Protocol) (uzly Linux).
    - Port UDP 53 pro DNS se vyžaduje i v případě, že máte k dispozici přímý přístup k serveru rozhraní API.
 

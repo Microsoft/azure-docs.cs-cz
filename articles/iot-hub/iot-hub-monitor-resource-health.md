@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022135"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438394"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá diagnostika potíží
 
@@ -61,7 +61,7 @@ Kategorie připojení sleduje události připojení zařízení a odpojení od s
             "operationName": "deviceConnect",
             "category": "Connections",
             "level": "Information",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
             "location": "Resource location"
         }
     ]
@@ -426,7 +426,7 @@ V `properties` části Tento protokol obsahuje další informace o příchozím 
 
 #### <a name="configurations"></a>Konfigurace
 
-Protokoly konfigurace IoT Hub sledují události a chyby pro sadu funkcí automatické správy zařízení.
+Protokoly konfigurace IoT Hub sledují události a chybu pro sadu funkcí automatické správy zařízení.
 
 ```json
 {
@@ -470,6 +470,42 @@ Kategorie streamy zařízení sleduje interakce požadavků a odpovědí odeslan
          }
     ]
 }
+```
+
+### <a name="sdk-version"></a>SDK version (Verze sady SDK)
+
+Některé operace vrátí `sdkVersion` vlastnost ve svém `properties` objektu. Pro tyto operace, když zařízení nebo aplikace back-end používá jednu ze sad SDK služby Azure IoT, obsahuje tato vlastnost informace o používané sadě SDK, verzi sady SDK a platformě, na které je sada SDK spuštěná. Následující příklad ukazuje vlastnost, která byla `sdkVersion` generována pro `deviceConnect` operaci při použití sady Node.js SDK pro zařízení: `"azure-iot-device/1.17.1 (node v10.16.0; Windows_NT 10.0.18363; x64)"` . Tady je příklad hodnoty emitované pro sadu .NET (C#) SDK: `".NET/1.21.2 (.NET Framework 4.8.4200.0; Microsoft Windows 10.0.17763 WindowsProduct:0x00000004; X86)"` .
+
+V následující tabulce je uveden název sady SDK používané pro různé sady SDK Azure IoT:
+
+| Název sady SDK ve vlastnosti sdkVersion | Jazyk |
+|----------|----------|
+| .NET | .NET (C#) |
+| Microsoft. Azure. Devices | Sada SDK služby .NET (C#) |
+| Microsoft. Azure. Devices. Client | Sada SDK pro zařízení .NET (C#) |
+| iothubclient | C nebo Python V1 (nepoužívané) sada SDK pro zařízení |
+| iothubserviceclient | C nebo Python V1 (nepoužívané) sada SDK služby |
+| Azure-IoT-Device-iothub-py | Sada SDK pro zařízení Python |
+| azure-iot-device | Sada SDK pro Node.js zařízení |
+| azure-iothub | Sada SDK služby Node.js |
+| com. Microsoft. Azure. iothub-Java-Client | Sada SDK pro zařízení Java |
+| com. Microsoft. Azure. iothub. Service. SDK | Sada SDK služby Java |
+| com. Microsoft. Azure. SDK. IoT. IoT-Device-Client | Sada SDK pro zařízení Java |
+| com. Microsoft. Azure. SDK. IoT. IoT-Service-Client | Sada SDK služby Java |
+| C | Vložené C |
+| C + (OSSimplified = Azure RTO) | Azure RTOS |
+
+Vlastnost verze sady SDK můžete extrahovat při provádění dotazů v diagnostických protokolech. Následující dotaz extrahuje vlastnost verze sady SDK (a ID zařízení) z vlastností vrácených událostmi připojení. Tyto dvě vlastnosti se zapisují do výsledků společně s časem události a ID prostředku centra IoT, ke kterému se zařízení připojuje.
+
+```kusto
+// SDK version of devices
+// List of devices and their SDK versions that connect to IoT Hub
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s) 
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId)
+| distinct DeviceId, SDKVersion, TimeGenerated, _ResourceId
 ```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Čtení protokolů z Azure Event Hubs

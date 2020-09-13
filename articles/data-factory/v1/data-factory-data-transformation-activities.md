@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522359"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436293"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Transformace dat ve verzi Azure Data Factory 1
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Prediktivní modely v Machine Learning experimenty bodování musí být v průb
 Podrobnosti o těchto Machine Learningch aktivitách najdete v tématu [použití Machine Learning aktivit](data-factory-azure-ml-batch-execution-activity.md) . 
 
 ## <a name="stored-procedure-activity"></a>Aktivita uložené procedury
-Pomocí aktivity uložená procedura SQL Server v kanálu Data Factory můžete vyvolat uloženou proceduru v jednom z následujících úložišť dat: Azure SQL Database, Azure SQL Data Warehouse, SQL Server databáze ve vašem podniku nebo virtuálním počítači Azure. Podrobnosti najdete v článku [aktivita uložených procedur](data-factory-stored-proc-activity.md) .  
+Pomocí aktivity uložená procedura SQL Server v kanálu Data Factory můžete vyvolat uloženou proceduru v jednom z následujících úložišť dat: Azure SQL Database, Azure synapse Analytics (dříve SQL Data Warehouse), SQL Server databáze ve vašem podniku nebo na virtuálním počítači Azure. Podrobnosti najdete v článku [aktivita uložených procedur](data-factory-stored-proc-activity.md) .  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita Data Lake Analytics U-SQL
 Aktivita Data Lake Analytics U-SQL spouští skript U-SQL v clusteru Azure Data Lake Analytics. Podrobnosti najdete v článku o [aktivitě data Analytics U-SQL](data-factory-usql-activity.md) . 
@@ -83,7 +83,7 @@ Vytvoříte propojenou službu pro výpočetní prostředí a pak při definová
 
 Seznamte se s výpočetními službami podporovanými nástrojem Data Factory v článku věnovaném [výpočetním propojeným službám](data-factory-compute-linked-services.md) . 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Azure Data Factory podporuje následující aktivity transformace dat a výpočetní prostředí pro aktivity. Transformační aktivity lze přidat do kanálů buď individuálně, nebo pomocí zřetězení s jinou aktivitou.
 
 | Aktivita transformace dat | Výpočetní prostředí |
@@ -93,7 +93,7 @@ Azure Data Factory podporuje následující aktivity transformace dat a výpoče
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Streamování Hadoop](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |Virtuální počítač Azure |
-| [Uložená procedura](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse nebo SQL Server |
+| [Uložená procedura](data-factory-stored-proc-activity.md) |Azure SQL, Azure synapse Analytics nebo SQL Server |
 | [U-SQL Data Lake Analytics](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] nebo Azure Batch |
 

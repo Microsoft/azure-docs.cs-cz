@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857643"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438445"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformace se službou Azure Databricks
 
@@ -28,7 +28,7 @@ V tomto kurzu vytvoříte kompletní kanál obsahující **ověřování**, **ko
 
 - **Kopírování dat** duplikuje zdrojovou datovou sadu do úložiště jímky, které je připojené jako DBFS do poznámkového bloku Azure Databricks. Tímto způsobem lze datovou sadu přímo spotřebovat pomocí Sparku.
 
-- **Poznámkový blok** spustí Poznámkový blok datacihly, který transformuje datovou sadu. Také přidá datovou sadu do zpracované složky nebo Azure SQL Data Warehouse.
+- **Poznámkový blok** spustí Poznámkový blok datacihly, který transformuje datovou sadu. Také přidá datovou sadu do zpracované složky nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse).
 
 V případě jednoduchosti šablona v tomto kurzu nevytvoří plánovanou aktivační událost. V případě potřeby ho můžete přidat.
 

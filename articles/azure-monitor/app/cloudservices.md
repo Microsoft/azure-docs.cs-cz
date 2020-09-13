@@ -4,19 +4,19 @@ description: Efektivní sledování webových rolí a rolí pracovních procesů
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 2de853655524e99e958f043b7801ee73e937e7ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923853"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437322"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 [Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../platform/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, budete potřebovat:
 
 * Předplatné [Azure](https://azure.com) . Přihlaste se pomocí účet Microsoft pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. 
@@ -66,6 +66,8 @@ Pokud pro další funkci vyvíjíte vlastní událostí a předchozí verze bě�
 Chcete-li se této situaci vyhnout, vytvořte samostatné prostředky pro každou konfiguraci sestavení nebo "razítko" (vývoj, testování, produkce atd.) systému. Prostředky pro každou konfiguraci sestavení umístěte do samostatné skupiny prostředků. 
 
 Chcete-li odeslat telemetrii do příslušných prostředků, můžete nastavit sadu Application Insights SDK tak, aby v závislosti na konfiguraci sestavení vystavila jiný klíč instrumentace. 
+
+Naučte se [dynamicky nastavovat klíč instrumentace](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey) pro různé fáze. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Vytvoření prostředku Application Insights pro každou roli
 
@@ -243,7 +245,7 @@ Pro prostředí s bohatou diagnostikou si můžete zobrazit, co vedlo k žádost
 
 Chcete-li dosáhnout tohoto zobrazení pro role pracovního procesu, můžete použít vlastní inicializátor telemetrie k nastavení běžného atributu kontextu Operation.Id pro všechny telemetrie. To vám umožní zobrazit na první pohled, zda došlo k potížím s latencí nebo chybou v důsledku závislosti nebo kódu. 
 
-Zde je uveden postup:
+Jak na to:
 
 * Nastavte ID korelace na CallContext [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). V tomto případě používáme ID žádosti jako ID korelace.
 * Přidejte vlastní implementaci TelemetryInitializer, abyste mohli nastavit Operation.Id na ID korelace, které bylo dříve nastaveno. Příklad naleznete v tématu [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).

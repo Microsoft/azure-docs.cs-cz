@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212029"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434227"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -126,7 +126,7 @@ Ceny datových toků se účtují za Vcore, což znamená, že do této funkce p
 
 ### <a name="time-to-live"></a>Hodnota TTL (Time to Live)
 
-Ve výchozím nastavení každá aktivita toku dat natočí nový cluster na základě konfigurace IR. Doba spuštění clusteru trvá několik minut a zpracování dat nepůjde spustit, dokud nebude dokončeno. Pokud vaše kanály obsahují více **sekvenčních** toků dat, můžete povolit hodnotu TTL (Time to Live). Zadání hodnoty TTL (Time to Live) udržuje cluster aktivní po určitou dobu po dokončení jeho spuštění. Pokud se nová úloha začne používat v čase TTL během času TTL, bude znovu použit stávající cluster a čas spuštění bude v sekundách, nikoli v minutách. Po dokončení druhé úlohy zůstane cluster opět aktivní pro dobu TTL.
+Ve výchozím nastavení každá aktivita toku dat natočí nový cluster na základě konfigurace IR. Doba spuštění clusteru trvá několik minut a zpracování dat nepůjde spustit, dokud nebude dokončeno. Pokud vaše kanály obsahují více **sekvenčních** toků dat, můžete povolit hodnotu TTL (Time to Live). Zadání hodnoty TTL (Time to Live) udržuje cluster aktivní po určitou dobu po dokončení jeho spuštění. Pokud se nová úloha začne používat v čase TTL během času TTL, bude se výrazně snižovat i po opětovném spuštění stávajícího clusteru. Po dokončení druhé úlohy zůstane cluster opět aktivní pro dobu TTL.
 
 V jednom clusteru může běžet jenom jedna úloha. Pokud je k dispozici cluster, ale dva toky dat se spustí, použije se živý cluster jenom s jedním. Druhá úloha si vytočí svůj vlastní izolovaný cluster.
 

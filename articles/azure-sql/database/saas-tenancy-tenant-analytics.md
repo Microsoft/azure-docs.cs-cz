@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043508"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437390"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Analýza mezi klienty pomocí extrahované aplikace pro jednoho tenanta
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Víceklientské aplikace SaaS mají obvykle velké množství dat tenantů ulož
 
 Přístup k datům pro všechny klienty je jednoduchý, pokud jsou všechna data v jediné databázi s více klienty. Ale přístup je složitější, pokud je distribuovaný ve velkém rozsahu napříč potenciálně tisíci databázemi. Jedním ze způsobů, jak zkrotit složitost a minimalizovat dopad analytických dotazů na transakční data, je extrahovat data do Účelově navržené analytické databáze nebo datového skladu.
 
-V tomto kurzu se seznámíte s úplným scénářem analýzy pro aplikaci Wingtip Tickets SaaS. Za prvé, *elastické úlohy* se používají k extrakci dat z každé databáze tenanta a jejich načtení do pracovních tabulek v analytickém úložišti. Úložiště analýzy může být buď SQL Database, nebo SQL Data Warehouse. Pro extrakci dat ve velkém měřítku se doporučuje [Azure Data Factory](../../data-factory/introduction.md) .
+V tomto kurzu se seznámíte s úplným scénářem analýzy pro aplikaci Wingtip Tickets SaaS. Za prvé, *elastické úlohy* se používají k extrakci dat z každé databáze tenanta a jejich načtení do pracovních tabulek v analytickém úložišti. Úložiště analýzy může být buď SQL Database, nebo fond SQL. Pro extrakci dat ve velkém měřítku se doporučuje [Azure Data Factory](../../data-factory/introduction.md) .
 
 V dalším kroku se agregovaná data transformují do sady tabulek se [schématem hvězdiček](https://www.wikipedia.org/wiki/Star_schema) . Tabulky sestávají z centrální tabulky faktů a souvisejících tabulek dimenzí.  Pro lístky Wingtip:
 

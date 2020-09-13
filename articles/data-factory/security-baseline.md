@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 57786aa343fd2ea863b17f65253e5d4a4a6b88ce
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226824"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437934"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Základní hodnoty zabezpečení Azure pro Azure Data Factory
 
@@ -542,7 +542,7 @@ Použijte funkci zjišťování a klasifikace dat Azure SQL Database. Zjišťov�
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Prostředí Integration runtime by mělo být oddělené virtuální sítí (VNet)/Subnet a odpovídajícím způsobem označeno.
 
- K izolaci sítě můžete použít také soukromé koncové body. Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě.
+ K izolaci sítě můžete použít také soukromé koncové body. Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu vaší virtuální sítě a tím vlastně přináší službu do vaší virtuální sítě.
 
 * [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -578,7 +578,7 @@ Pokud je k dispozici privátní odkaz, použijte privátní koncové body k zabe
 
 **Doprovodné**materiály: Pokud cloudové úložiště dat podporuje protokol HTTPS nebo TLS, všechna přenosová data mezi službami přesunu dat v Data Factory a cloudovým úložištěm dat jsou prostřednictvím zabezpečeného kanálu HTTPS nebo TLS. Použitá verze protokolu TLS je 1,2.
 
-Všechna připojení k Azure SQL Database a Azure SQL Data Warehouse vyžadovat šifrování (SSL/TLS) při přenosu dat do a z databáze. Když vytváříte kanál pomocí formátu JSON, přidejte vlastnost šifrování a nastavte ji na hodnotu true v připojovacím řetězci. V případě Azure Storage můžete v připojovacím řetězci použít HTTPS.
+Všechna připojení k Azure SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) vyžadují šifrování (SSL/TLS) při přenosu dat do a z databáze. Když vytváříte kanál pomocí formátu JSON, přidejte vlastnost šifrování a nastavte ji na hodnotu true v připojovacím řetězci. V případě Azure Storage můžete v připojovacím řetězci použít HTTPS.
 
 * [Principy šifrování při přenosu v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
@@ -896,7 +896,7 @@ Všimněte si, že to platí jenom v případě, že vaše Integration Runtime b
 
 * [Co je brána Azure Firewall?](https://docs.microsoft.com/azure/firewall/overview)
 
-* [Co je Firewall webových aplikací Azure?](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Co je firewall webových aplikací Azure?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
 * [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview)
 
@@ -1050,7 +1050,9 @@ Přihlašovací údaje nebo tajné hodnoty můžete také ukládat do Azure Key 
 
 * [Vytvoření Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [Jak zajistit Key Vault ověřování pomocí spravované identity](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Ověření Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Postup přiřazení zásady přístupu Key Vault](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 * [Použití tajných kódů služby Azure Key Vault v aktivitách kanálu](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 

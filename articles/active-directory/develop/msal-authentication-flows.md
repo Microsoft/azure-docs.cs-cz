@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 0dbd7eb9203f31b580f586a8a7d1fa216533628c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170509"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437866"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -70,7 +70,7 @@ V předchozím diagramu aplikace:
 1. Požádá o autorizační kód, který je uplatněn pro přístupový token.
 2. Pomocí přístupového tokenu zavolá webové rozhraní API.
 
-### <a name="considerations"></a>Co je potřeba vzít v úvahu
+### <a name="considerations"></a>Požadavky
 
 - Autorizační kód můžete použít jenom jednou pro uplatnění tokenu. Nepokusit se vícekrát získat token se stejným autorizačním kódem, protože je výslovně zakázaný standardní specifikací protokolu. Pokud kód několikrát přiřadíte, ať už úmyslně, nebo vzhledem k tomu, že si nejste vědomi, že to architektura provede za vás, zobrazí se tato chyba:
 
@@ -219,7 +219,7 @@ Vzhledem k tomu, že IWA je tichý tok, musí být jedna z následujících podm
 To znamená, že jedna z následujících možností je pravdivá:
 
 - Jako vývojář jste zvolili možnost **udělit** v Azure Portal pro sebe.
-- Správce tenanta vybral na kartě **oprávnění rozhraní API** pro registraci aplikace v tomto Azure Portal **souhlas správce grant/REVOKE pro {doména klienta}** (viz [Přidání oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
+- Správce tenanta vybral na kartě **oprávnění rozhraní API** registrace aplikace v tomto Azure Portal **souhlas správce grant/REVOKE pro doménu {tenant}** (viz [Přidání oprávnění pro přístup k webovému rozhraní API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)).
 - Poskytli jste způsob, jak uživatelům udělit souhlas s aplikací. Přečtěte si téma [vyžádání souhlasu jednotlivých uživatelů](v2-permissions-and-consent.md#requesting-individual-user-consent).
 - Poskytli jste způsob, jak může správce tenanta pro aplikaci vyjádřit souhlas. viz [souhlas správce](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
