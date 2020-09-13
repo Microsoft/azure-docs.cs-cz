@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a61a298b3b1d9e129b0ef3bbfff12f34d0ba09a8
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908401"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668969"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti Azure Active Directoryho uživatele spolupráce B2B
 
@@ -104,11 +104,11 @@ Je možné vypnout výchozí omezení, aby uživatel typu Host v adresáři spol
 ![Snímek obrazovky s možností externích uživatelů v uživatelském nastavení](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Je možné uživatele typu Host zobrazit v globálním seznamu adres systému Exchange?
-Ano. Ve výchozím nastavení nejsou objekty hosta viditelné v globálním seznamu adres vaší organizace, ale pomocí Azure Active Directory PowerShellu je můžete zobrazit. Podrobnosti najdete v tématu **jak se dají objekty hosta zobrazit v globálním seznamu adres?** v tématu [Správa přístupu hosta ve skupinách Office 365](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups).
+Yes. Ve výchozím nastavení nejsou objekty hosta viditelné v globálním seznamu adres vaší organizace, ale pomocí Azure Active Directory PowerShellu je můžete zobrazit. Podrobnosti najdete v tématu **jak se dají objekty hosta zobrazit v globálním seznamu adres?** v tématu [Správa přístupu hosta ve skupinách Office 365](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups).
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Můžu aktualizovat e-mailovou adresu uživatele typu Host?
 
-Pokud uživatel typu Host přijme vaši pozvánku a následně změní svou e-mailovou adresu, nový e-mail se automaticky nesynchronizuje s objektem uživatele hosta v adresáři. Vlastnost mail se vytvoří prostřednictvím [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0). Vlastnost mail můžete aktualizovat prostřednictvím centra pro správu Exchange nebo [PowerShellu pro Exchange Online](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)a tato změna se projeví v objektu uživatele hosta Azure AD.
+Pokud uživatel typu Host přijme vaši pozvánku a následně změní svou e-mailovou adresu, nový e-mail se automaticky nesynchronizuje s objektem uživatele hosta v adresáři. Vlastnost mail se vytvoří prostřednictvím [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0). Vlastnost mail můžete aktualizovat prostřednictvím rozhraní Microsoft Graph API, centra pro správu Exchange nebo [prostředí PowerShell pro Exchange Online](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps). Tato změna se projeví v objektu uživatele hosta Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 

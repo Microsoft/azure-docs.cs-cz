@@ -4,12 +4,12 @@ description: Naučte se, jak povolit a zobrazit protokoly pro hlavní uzel Kuber
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a0207ebbb1596e41ad65e21a769d7041a239f767
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048274"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004863"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -69,42 +69,43 @@ pod/nginx created
 
 Povolení a zobrazení diagnostických protokolů může trvat několik minut. V Azure Portal přejděte na svůj cluster AKS a na levé straně vyberte **protokoly** . Pokud se zobrazí okno *příklady dotazů* , zavřete ho.
 
-
 Na levé straně vyberte **protokoly**. Chcete-li zobrazit protokoly *Kube-audit* , zadejte do textového pole následující dotaz:
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
 ```
 
 Je nejspíš vráceno mnoho protokolů. Chcete-li určit rozsah dotazu pro zobrazení protokolů NGINX pod vytvořením v předchozím kroku, přidejte další příkaz *WHERE* pro hledání *Nginx* , jak je znázorněno v následujícím příkladu dotazu:
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| where log_s contains "nginx"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
+| where Name contains "nginx"
 ```
-
-Pokud chcete zobrazit další protokoly, můžete aktualizovat dotaz pro název *kategorie* na *Kube-Controller-Manager* nebo *Kube-Scheduler*v závislosti na tom, jaké další protokoly jste povolili. Další příkazy *WHERE* lze použít k upřesnění událostí, které hledáte.
 
 Další informace o tom, jak zadávat dotazy a filtrovat data protokolu, najdete v tématu [zobrazení nebo analýza dat shromážděných pomocí prohledávání protokolů Log Analytics][analyze-log-analytics].
 
 ## <a name="log-event-schema"></a>Schéma událostí protokolu
 
-Následující tabulka podrobně popisuje schéma používané pro každou událost, aby bylo možné analyzovat data protokolu:
+AKS zaznamená následující události:
 
-| Název pole               | Popis |
-|--------------------------|-------------|
-| *Prostředku*             | Prostředek Azure, který vytvořil protokol |
-| *interval*                   | Časové razítko odeslání protokolu |
-| *kategorií*               | Název kontejneru nebo komponenty generující protokol |
-| *operationName*          | Vždy *Microsoft. ContainerService/managedClusters/diagnosticLogs/Read* |
-| *vlastnosti. log*         | Úplný text protokolu z komponenty |
-| *vlastnosti. Stream*      | *stderr* nebo *stdout* |
-| *vlastnosti. pod*         | Pod názvem, ze kterého pochází protokol |
-| *Properties. containerID* | ID kontejneru Docker, ze kterého pochází tento protokol |
+* [AzureActivity][log-schema-azureactivity]
+* [AzureMetrics][log-schema-azuremetrics]
+* [ContainerImageInventory][log-schema-containerimageinventory]
+* [ContainerInventory][log-schema-containerinventory]
+* [ContainerLog][log-schema-containerlog]
+* [ContainerNodeInventory][log-schema-containernodeinventory]
+* [ContainerServiceLog][log-schema-containerservicelog]
+* [Tep][log-schema-heartbeat]
+* [InsightsMetrics][log-schema-insightsmetrics]
+* [KubeEvents][log-schema-kubeevents]
+* [KubeHealth][log-schema-kubehealth]
+* [KubeMonAgentEvents][log-schema-kubemonagentevents]
+* [KubeNodeInventory][log-schema-kubenodeinventory]
+* [KubePodInventory][log-schema-kubepodinventory]
+* [KubeServices][log-schema-kubeservices]
+* [Výkon][log-schema-perf]
 
 ## <a name="log-roles"></a>Role protokolu
 
@@ -131,3 +132,19 @@ V tomto článku jste zjistili, jak povolit a zkontrolovat protokoly pro hlavní
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
+[log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
+[log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory
+[log-schema-containerlog]: /azure/azure-monitor/reference/tables/containerlog
+[log-schema-containernodeinventory]: /azure/azure-monitor/reference/tables/containernodeinventory
+[log-schema-containerservicelog]: /azure/azure-monitor/reference/tables/containerservicelog
+[log-schema-heartbeat]: /azure/azure-monitor/reference/tables/heartbeat
+[log-schema-insightsmetrics]: /azure/azure-monitor/reference/tables/insightsmetrics
+[log-schema-kubeevents]: /azure/azure-monitor/reference/tables/kubeevents
+[log-schema-kubehealth]: /azure/azure-monitor/reference/tables/kubehealth
+[log-schema-kubemonagentevents]: /azure/azure-monitor/reference/tables/kubemonagentevents
+[log-schema-kubenodeinventory]: /azure/azure-monitor/reference/tables/kubenodeinventory
+[log-schema-kubepodinventory]: /azure/azure-monitor/reference/tables/kubepodinventory
+[log-schema-kubeservices]: /azure/azure-monitor/reference/tables/kubeservices
+[log-schema-perf]: /azure/azure-monitor/reference/tables/perf

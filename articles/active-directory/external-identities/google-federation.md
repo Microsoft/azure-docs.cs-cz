@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4b895054f8fa81526bf72cadd2fea1a3691d758
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908640"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669384"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
@@ -51,39 +51,43 @@ Uživatelům Google hosta můžete také poskytnout přímý odkaz na aplikaci n
 ## <a name="step-1-configure-a-google-developer-project"></a>Krok 1: konfigurace projektu pro vývojáře Google
 Nejdřív vytvořte nový projekt v konzole pro vývojáře Google, abyste získali ID klienta a tajný klíč klienta, které můžete později přidat do Azure AD. 
 1. Přejít na rozhraní Google API na adrese https://console.developers.google.com a přihlaste se pomocí svého účtu Google. Doporučujeme použít sdílený týmový účet Google.
-2. Vytvořit nový projekt: na řídicím panelu vyberte **vytvořit projekt**a pak vyberte **vytvořit**. Na stránce Nový projekt zadejte **název projektu**a pak vyberte **vytvořit**.
+2. Pokud se zobrazí výzva, přijměte podmínky služby.
+3. Vytvořit nový projekt: na řídicím panelu vyberte **vytvořit projekt**, zadejte název projektu (například Azure AD B2B) a pak vyberte **vytvořit**. 
    
    ![Snímek obrazovky s novou stránkou projektu pro Google](media/google-federation/google-new-project.png)
 
-3. Ujistěte se, že je váš nový projekt vybraný v nabídce projekt. Pak v části **rozhraní api & služby**vyberte **obrazovka pro vyjádření souhlasu OAuth**.
+4. Na stránce **rozhraní api & služby** , která vám teď prezentuje, klikněte na **Zobrazit** pod novým projektem.
 
-4. Vyberte **externí**a pak vyberte **vytvořit**. 
-5. Na **obrazovce pro vyjádření souhlasu OAuth**zadejte **název aplikace**. (Ponechte ostatní nastavení.)
+5. Na kartě rozhraní API klikněte na **Přejít na rozhraní API** . Vyberte **obrazovku pro vyjádření souhlasu OAuth**.
+
+6. Vyberte **externí**a pak vyberte **vytvořit**. 
+
+7. Na **obrazovce pro vyjádření souhlasu OAuth**zadejte **název aplikace**. 
 
    ![Snímek obrazovky s možností zobrazení souhlasu Google OAuth](media/google-federation/google-oauth-consent-screen.png)
 
-6. Přejděte do části **autorizované domény** a zadejte microsoftonline.com.
+8. Přejděte do části **autorizované domény** a zadejte microsoftonline.com.
 
-   ![Snímek obrazovky se sekcí autorizovaných domén](media/google-federation/google-oauth-authorized-domains.png)
+   ![Snímek obrazovky se sekcí autorizovaných domén](media/google-federation/google-oauth-authorized-domains.PNG)
 
-7. Vyberte **Uložit**.
+9. Vyberte **Uložit**.
 
-8. Vyberte **přihlašovací údaje**. V nabídce **vytvořit pověření** vyberte **ID klienta OAuth**.
+10. Vyberte **přihlašovací údaje**. V nabídce **vytvořit pověření** vyberte **ID klienta OAuth**.
 
-   ![Snímek obrazovky s možností vytvoření přihlašovacích údajů rozhraní Google API](media/google-federation/google-api-credentials.png)
+    ![Snímek obrazovky s možností vytvoření přihlašovacích údajů rozhraní Google API](media/google-federation/google-api-credentials.png)
 
-9. V části **Typ aplikace**zvolte **Webová aplikace**a v části **autorizované identifikátory URI pro přesměrování**zadejte následující identifikátory URI:
-   - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(kde `<directory id>` je ID vašeho adresáře)
+11. V části **Typ aplikace**zvolte možnost **Webová aplikace** , zadejte vhodný název, například "Azure AD B2B" a potom v části **autorizované identifikátory URI pro přesměrování**zadejte následující identifikátory URI:
+    - `https://login.microsoftonline.com` 
+    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(kde `<directory id>` je ID vašeho adresáře)
    
-     > [!NOTE]
-     > ID adresáře zjistíte tak, že přejdete na adresu https://portal.azure.com a v části **Azure Active Directory**zvolíte **vlastnosti** a zkopírujete **ID adresáře**.
+    > [!NOTE]
+    > ID adresáře zjistíte tak, že přejdete na adresu https://portal.azure.com a v části **Azure Active Directory**zvolíte **vlastnosti** a zkopírujete **ID adresáře**.
 
-   ![Snímek obrazovky s povoleným oddílem identifikátorů URI pro přesměrování](media/google-federation/google-create-oauth-client-id.png)
+    ![Snímek obrazovky s povoleným oddílem identifikátorů URI pro přesměrování](media/google-federation/google-create-oauth-client-id.png)
 
-10. Vyberte **Vytvořit**. Zkopírujte ID klienta a tajný klíč klienta, které budete používat při přidávání zprostředkovatele identity na portálu Azure AD.
+12. Vyberte **Vytvořit**. Zkopírujte ID klienta a tajný klíč klienta, které budete používat při přidávání zprostředkovatele identity na portálu Azure AD.
 
-   ![Snímek obrazovky zobrazující ID klienta OAuth a tajný klíč klienta](media/google-federation/google-auth-client-id-secret.png)
+    ![Snímek obrazovky zobrazující ID klienta OAuth a tajný klíč klienta](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>Krok 2: Konfigurace Google federace ve službě Azure AD 
 Teď nastavíte ID klienta Google a tajný kód klienta, a to tak, že ho zadáte na portálu Azure AD nebo pomocí PowerShellu. Ujistěte se, že jste otestovali konfiguraci Google Federation, a to tak, že na adresu Gmail pozvánku vyzkoušíte a zkusíte uplatnit pozvání k vašemu pozvanému účtu Google. 
@@ -92,7 +96,7 @@ Teď nastavíte ID klienta Google a tajný kód klienta, a to tak, že ho zadát
 1. Přejděte na web [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **externí identity**.
 3. Vyberte **všichni zprostředkovatelé identity**a pak klikněte na tlačítko **Google** .
-4. Zadejte název. Pak zadejte ID klienta a tajný klíč klienta, které jste získali dříve. Vyberte **Uložit**. 
+4. Pak zadejte ID klienta a tajný klíč klienta, které jste získali dříve. Vyberte **Uložit**. 
 
    ![Snímek obrazovky se stránkou přidat poskytovatele identity Google](media/google-federation/google-identity-provider.png)
 

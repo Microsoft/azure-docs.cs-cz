@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291796"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667504"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -143,7 +143,7 @@ Podrobnosti hodnoty vlastnosti:
 - **azPowerShellVersion** / **azCliVersion**: Zadejte verzi modulu, která se má použít. Seznam podporovaných verzí PowerShellu a rozhraní příkazového řádku najdete v tématu [požadavky](#prerequisites).
 - **argumenty**: zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
 
-    Skripty nasazení rozdělí argumenty do pole řetězců vyvoláním [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) systému. To je nezbytné, protože argumenty jsou předány jako [vlastnost příkazu](/rest/api/container-instances/containergroups/createorupdate#containerexec) službě Azure Container instance a vlastnost Command je pole řetězce.
+    Skripty nasazení rozdělí argumenty do pole řetězců vyvoláním [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) systému. To je nezbytné, protože argumenty jsou předány jako [vlastnost příkazu](/rest/api/container-instances/containergroups/createorupdate#containerexec) službě Azure Container instance a vlastnost Command je pole řetězce.
 
     Pokud argumenty obsahují řídicí znaky, použijte [JsonEscaper](https://www.jsonescaper.com/) pro dvojitou sekvenci znaků. Vložte původní řídicí řetězec do nástroje a pak vyberte **Escape**.  Nástroj vypíše řetězec s dvojitým řídicím znakem. Například v předchozí ukázkové šabloně je argumentem **název \\ "Jan dole \\ "**.  Řetězec s řídicím řetězcem je **name \\ \\ \\ "Jan dole \\ \\ \\ "**.
 
@@ -181,7 +181,7 @@ Následující šablona má definován jeden prostředek s `Microsoft.Resources/
 > [!NOTE]
 > Vzhledem k tomu, že vložené skripty pro nasazení jsou uzavřeny do dvojitých uvozovek, musí být řetězce uvnitř skriptů nasazení uvozeny pomocí **&#92;** nebo uzavřeny v jednoduchých uvozovkách. Můžete také zvážit použití náhrady řetězce, jak je znázorněno v předchozí ukázce JSON.
 
-Skript přijímá jeden parametr a výstupní hodnotu parametru. **DeploymentScriptOutputs** se používá k ukládání výstupů.  V části výstupy zobrazuje řádek **hodnoty** jak získat přístup k uloženým hodnotám. `Write-Output`se používá pro účely ladění. Informace o tom, jak získat přístup k výstupnímu souboru, najdete v tématu [monitorování a odstraňování potíží se skripty nasazení](#monitor-and-troubleshoot-deployment-scripts).  Popis vlastností naleznete v tématu [Sample Templates](#sample-templates).
+Skript přijímá jeden parametr a výstupní hodnotu parametru. **DeploymentScriptOutputs** se používá k ukládání výstupů.  V části výstupy zobrazuje řádek **hodnoty** jak získat přístup k uloženým hodnotám. `Write-Output` se používá pro účely ladění. Informace o tom, jak získat přístup k výstupnímu souboru, najdete v tématu [monitorování a odstraňování potíží se skripty nasazení](#monitor-and-troubleshoot-deployment-scripts).  Popis vlastností naleznete v tématu [Sample Templates](#sample-templates).
 
 Chcete-li spustit skript, vyberte příkaz **zkusit** pro otevření Cloud Shell a poté vložte následující kód do podokna prostředí.
 
@@ -197,7 +197,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-Výstup bude vypadat následovně:
+Výstup vypadá takto:
 
 ![Výstup skriptu Hello World pro Správce prostředků šablon nasazení](./media/deployment-script-template/resource-manager-template-deployment-script-helloworld-output.png)
 
@@ -217,7 +217,7 @@ Zodpovídáte za zajištění integrity skriptů, které jsou odkazovány pomoc�
 
 ## <a name="use-supporting-scripts"></a>Použití podpůrných skriptů
 
-Složité logiky můžete oddělit do jednoho nebo více podpůrných souborů skriptu. `supportingScriptURI`Vlastnost umožňuje v případě potřeby zadat pole identifikátorů URI pro podpůrné soubory skriptu:
+Složité logiky můžete oddělit do jednoho nebo více podpůrných souborů skriptu. `supportingScriptUris`Vlastnost umožňuje v případě potřeby zadat pole identifikátorů URI pro podpůrné soubory skriptu:
 
 ```json
 "scriptContent": "
@@ -263,7 +263,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 
 - Podporované typy účtů úložiště:
 
-    | Skladová položka             | Podporovaný druh     |
+    | SKU             | Podporovaný druh     |
     |-----------------|--------------------|
     | Premium_LRS     | Úložiště        |
     | Premium_ZRS     | Úložiště        |

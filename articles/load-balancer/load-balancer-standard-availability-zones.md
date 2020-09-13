@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420307"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669190"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
 Azure Standard Load Balancer podporuje scénáře zón dostupnosti. Pomocí nástroje Load Balancer úrovně Standard můžete zvýšit dostupnost v celém scénáři tím, že zarovnáte prostředky k a rozmístěte mezi zónami. Zóny dostupnosti v kombinaci s nástrojem Load Balancer úrovně Standard jsou obsáhlém a flexibilní sada funkcí, která může vytvářet mnoho různých scénářů.  Přečtěte si tento dokument, abyste pochopili tyto [Koncepty](#concepts) a základní [pokyny k návrhu](#design)scénářů.
 
-## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a>Zóny dostupnosti koncepty použité pro Load Balancer
+## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a> Zóny dostupnosti koncepty použité pro Load Balancer
 
 Nástroj pro vyrovnávání zatížení dědí konfiguraci zóny z jeho součástí: 
 
@@ -67,7 +67,7 @@ Kromě toho se podporuje použití oblastí front-endu přímo pro koncové body
   <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Virtual Network NAT">
 </p>
 
-*Obrázek: oblast redundantního nástroje pro vyrovnávání zatížení*
+*Obrázek: oblast pro vyrovnávání zatížení*
 
 Pokud chcete tyto koncepty (zóny redundantní a oblasti pro stejný back-end) kombinovat, Projděte si téma [více front-endu pro Azure Load Balancer](load-balancer-multivip-overview.md).
 
@@ -101,7 +101,7 @@ Při použití zón redundantních ve front-endu Nástroj pro vyrovnávání zat
 
 Jiné zóny, které se můžou připojit k tomuto virtuálnímu počítači, můžou dál obsluhovat virtuální počítač ze svých front-endu. V průběhu událostí selhání mohou mít každá zóna různé distribuce nových toků a současně chránit celkový stav služby.
 
-## <a name="design-considerations"></a><a name="design"></a>Faktory návrhu
+## <a name="design-considerations"></a><a name="design"></a> Faktory návrhu
 
 Nástroj pro vyrovnávání zatížení je flexibilní v kontextu zón dostupnosti. Pro každé pravidlo můžete vybrat, že se mají zarovnat do zón nebo být redundantní pro zónu. Vyšší dostupnost se může zvýšit na cenu zvýšené složitosti. Návrh dostupnosti pro zajištění optimálního výkonu.
 
@@ -113,7 +113,7 @@ Zóna – redundance neznamená hitlessou datacestu nebo rovinu ovládacího prv
 
 Může to ovlivnit přenos toků v době selhání zóny, ale může se stát, že se aplikace obnoví. Provoz pokračuje v nefunkčních zónách v oblasti po opětovném přenosu, když se Azure Sblíženo okolo selhání zóny.
 
-### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a>Hranice mezi zónami
+### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a> Hranice mezi zónami
 
 Je důležité si uvědomit, že kdykoli služba protíná zóny, můžete sdílet osud bez jedné zóny, ale potenciálně více zón. V důsledku toho vaše služba pravděpodobně nezískala žádnou dostupnost v rámci nasazení mimo oblast.
 

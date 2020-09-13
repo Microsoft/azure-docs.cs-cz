@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606512"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669236"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Příprava zdrojového počítače na nabízenou instalaci agenta mobility
 
@@ -25,8 +25,12 @@ Na každém počítači s Windows, který chcete chránit, udělejte toto:
 1. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet by měl mít práva správce, a to buď místní, nebo doména. Tento účet používejte pouze pro nabízenou instalaci a pro aktualizace agenta.
 2. Pokud nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele následujícím způsobem:
     - V části HKEY_LOCAL_MACHINE klíč registru \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidejte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
-    -  Pokud to chcete provést na příkazovém řádku, spusťte následující příkaz:  
-   ' REG ADD HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
+    -  Pokud to chcete provést na příkazovém řádku, spusťte následující příkaz:
+    
+       ```
+       REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
+       ```
+
 3. V bráně Windows Firewall na počítači, který chcete chránit, vyberte možnost **povolení aplikace nebo funkce přes bránu firewall**. Povolte **sdílení souborů a tiskáren** a **rozhraní WMI (Windows Management Instrumentation) (WMI)**. Pro počítače, které patří do domény, můžete nakonfigurovat nastavení brány firewall pomocí objektu Zásady skupiny (GPO).
 
    ![Nastavení brány firewall](./media/vmware-azure-install-mobility-service/mobility1.png)

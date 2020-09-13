@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083680"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669766"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Řešení běžných problémů s jarním cloudem v Azure
 
@@ -48,18 +48,23 @@ Při ladění selhání aplikace Začněte kontrolou stavu spuštění a stavu z
 * Pokud je stav _zjišťování zapnutý, můžete_přejít na metriky a ověřit stav aplikace. Zkontrolujte následující metriky:
 
 
-  - `TomcatErrorCount`(_Tomcat. Global. Error_): zde se počítají všechny výjimky aplikace pružiny. Pokud je toto číslo velké, vyhledejte v protokolech aplikací Azure Log Analytics.
+  - `TomcatErrorCount` (_Tomcat. Global. Error_): zde se počítají všechny výjimky aplikace pružiny. Pokud je toto číslo velké, vyhledejte v protokolech aplikací Azure Log Analytics.
 
-  - `AppMemoryMax`(_JVM. Memory. Max_): maximální množství paměti, které aplikace je k dispozici. Velikost může být nedefinovaná nebo se může v průběhu času změnit, pokud je definována. Pokud je tato hodnota definována, je velikost použité a potvrzené paměti vždy menší než nebo rovna hodnotě max. Přidělení paměti může ale selhat se `OutOfMemoryError` zprávou, pokud se přidělení pokusy o zvýšení využité paměti, jako je například využívané *> potvrzené*, i když *použití <= Max* stále platí. V takové situaci zkuste zvýšit maximální velikost haldy pomocí `-Xmx` parametru.
+  - `AppMemoryMax` (_JVM. Memory. Max_): maximální množství paměti, které aplikace je k dispozici. Velikost může být nedefinovaná nebo se může v průběhu času změnit, pokud je definována. Pokud je tato hodnota definována, je velikost použité a potvrzené paměti vždy menší než nebo rovna hodnotě max. Přidělení paměti může ale selhat se `OutOfMemoryError` zprávou, pokud se přidělení pokusy o zvýšení využité paměti, jako je například využívané *> potvrzené*, i když *použití <= Max* stále platí. V takové situaci zkuste zvýšit maximální velikost haldy pomocí `-Xmx` parametru.
 
-  - `AppMemoryUsed`(_JVM. Memory .Ed_): množství paměti v bajtech, které aplikace aktuálně používá. V případě normálního zatížení aplikace v jazyce Java Tato metrika tvoří model *vede pilovému efektu* , ve kterém se využití paměti neustále zvětšuje a klesá v malých přírůstcích a náhle se neuvolní a pak se vzor opakuje. Tato řada metrik je způsobena uvolňováním paměti uvnitř virtuálního počítače Java, kde akce shromažďování reprezentují vede pilovému efektu vzor.
+  - `AppMemoryUsed` (_JVM. Memory .Ed_): množství paměti v bajtech, které aplikace aktuálně používá. V případě normálního zatížení aplikace v jazyce Java Tato metrika tvoří model *vede pilovému efektu* , ve kterém se využití paměti neustále zvětšuje a klesá v malých přírůstcích a náhle se neuvolní a pak se vzor opakuje. Tato řada metrik je způsobena uvolňováním paměti uvnitř virtuálního počítače Java, kde akce shromažďování reprezentují vede pilovému efektu vzor.
     
     Tato metrika je důležitá k identifikaci potíží s pamětí, například:
     * Nárůst paměti na začátku.
     * Přidělení paměti přepětí pro konkrétní logickou cestu.
     * Postupný únik paměti.
-
   Další informace najdete v tématu [metriky](spring-cloud-concept-metrics.md).
+  
+* Pokud se aplikace nespustí, ověřte, zda má aplikace platné parametry JVM. Pokud je paměť JVM nastavena příliš vysoká, může se v protokolech zobrazit následující chybová zpráva:
+
+  >"požadovaná paměť 2728741K je větší než 2000M k dispozici pro přidělení"
+
+
 
 Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
 
@@ -138,7 +143,7 @@ Pokud dojde k přerušení dotazování, stále můžete načíst protokoly sest
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Upozorňujeme však, že jedna instance služby jarní cloudová služba Azure může najednou aktivovat pouze jednu úlohu sestavení pro jeden zdrojový balíček. Další informace najdete v tématu [nasazení aplikace](spring-cloud-quickstart-launch-app-portal.md) a [Nastavení přípravného prostředí ve jarním cloudu Azure](spring-cloud-howto-staging-environment.md).
+Upozorňujeme však, že jedna instance služby jarní cloudová služba Azure může najednou aktivovat pouze jednu úlohu sestavení pro jeden zdrojový balíček. Další informace najdete v tématu [nasazení aplikace](spring-cloud-quickstart.md) a [Nastavení přípravného prostředí ve jarním cloudu Azure](spring-cloud-howto-staging-environment.md).
 
 ### <a name="my-application-cant-be-registered"></a>Moje aplikace se nedá zaregistrovat.
 
@@ -193,7 +198,7 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
 Vyhledejte podřízený uzel s názvem `systemEnvironment` .  Tento uzel obsahuje proměnné prostředí vaší aplikace.
 
 > [!IMPORTANT]
-> Nezapomeňte zrušit vystavení proměnných prostředí před tím, než aplikaci zpřístupníte veřejnosti.  Přejít na Azure Portal, vyhledat stránku konfigurace aplikace a odstranit tuto proměnnou `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` prostředí:
+> Nezapomeňte zrušit vystavení proměnných prostředí před tím, než aplikaci zpřístupníte veřejnosti.  Přejít na Azure Portal, vyhledat stránku konfigurace aplikace a odstranit tuto proměnnou  `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` prostředí:
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Nemůžu najít metriky nebo protokoly pro moji aplikaci
 

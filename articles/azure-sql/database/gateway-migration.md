@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507494"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004268"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,14 @@ Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli z
 ## <a name="status-updates"></a>Aktualizace stavu
 
 # <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
+### <a name="october-2020"></a>Říjen 2020
+
+Nové brány SQL se přidávají do následujících oblastí:
+
+- Německo – středozápad: 51.116.240.0, 51.116.248.0
+
+Tyto brány SQL začnou přijímat provoz zákazníků 12. října 2020. 
+
 ### <a name="september-2020"></a>Září 2020
 Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků 15. **září 2020**:
 

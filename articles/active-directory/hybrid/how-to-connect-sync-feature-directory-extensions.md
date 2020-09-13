@@ -16,18 +16,18 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019757"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662495"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronizace: přípony adresářů
-K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy lze spotřebovat prostřednictvím [rozšíření](https://docs.microsoft.com/graph/extensibility-overview
+K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy lze spotřebovat prostřednictvím [rozšíření](/graph/extensibility-overview
 ). Dostupné atributy můžete zobrazit pomocí [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer). Tuto funkci můžete také použít k vytvoření dynamických skupin ve službě Azure AD.
 
-V současné době žádné úlohy Office 365 nevyužívají tyto atributy.
+V současnosti žádné úlohy Microsoft 365 nevyužívají tyto atributy.
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Přizpůsobení atributů, které se mají synchronizovat se službou Azure AD
 
@@ -69,11 +69,11 @@ Tyto atributy jsou nyní k dispozici prostřednictvím rozhraní Microsoft Graph
 >[!NOTE]
 > V rozhraní Microsoft Graph API musíte požádat o vrácení atributů. Explicitně vyberte atributy takto: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` .
 >
-> Další informace najdete v tématu [Microsoft Graph: použití parametrů dotazu](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
+> Další informace najdete v tématu [Microsoft Graph: použití parametrů dotazu](/graph/query-parameters#select-parameter).
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>Použití atributů v dynamických skupinách
 
-Jedním z užitečnějších scénářů je použití těchto atributů v části dynamické zabezpečení nebo skupiny Office 365.
+Jedním z užitečnějších scénářů je použití těchto atributů v dynamickém zabezpečení nebo ve skupinách Microsoft 365.
 
 1. Vytvoří novou skupinu ve službě Azure AD. Dejte mu dobrý název a ujistěte se, že je **typ členství** **dynamický uživatel**.
 

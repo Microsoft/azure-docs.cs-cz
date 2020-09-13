@@ -3,25 +3,25 @@ title: Sestavy výběrů – komerční tržiště Microsoftu
 description: V sestavách výběr se zobrazí podrobnosti o peníze, které jste získali s vaší nabídkou, včetně objemu platby a o tom, kdy budete platit.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 62de9380578ca5a97f7b72f9939d5c2dd7392c0d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502626"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004217"
 ---
 # <a name="payout-summaries"></a>Přehledy plateb
 
 Souhrn výběrů vám ukáže podrobnosti o peníze, které jste získali od Microsoftu. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
 
-Pokud prodáváte produkty v Azure Marketplace, zobrazí se také informace o úspěšných výběrech v souhrnu výběrů. Podrobnosti najdete v tématu [zásady pro účast Microsoft Azure Marketplace](https://docs.microsoft.com/legal/marketplace/participation-policy) a [smlouvu Microsoft Azure Marketplace vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
+Pokud prodáváte produkty v Azure Marketplace, zobrazí se také informace o úspěšných výběrech v souhrnu výběrů. Další informace o platbě Azure Marketplace najdete v tématu o tom, [jak se zaplatí na komerčním webu Marketplace](./get-paid.md) a v rámci [smlouvy Microsoft Publisher](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout [prahové hodnoty pro platbu](payment-thresholds-methods-timeframes.md) $50. Podrobnosti o prahové hodnotě platby najdete na této stránce a Projděte si smlouvu pro vývojáře aplikací.
+> Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout prahové hodnoty pro platbu $50. Podrobnosti najdete v článku o [smlouvě Microsoft Publisher](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
 > Pokud hledáte podporu týkající se vydaných výběrů, včetně konfigurace účtů pro výběr, chybějících výběrů, podržení výběrů nebo cokoli jiného, obraťte se [na podporu.](https://developer.microsoft.com/windows/support)
@@ -31,22 +31,14 @@ Pokud prodáváte produkty v Azure Marketplace, zobrazí se také informace o ú
 Chcete-li otevřít jednu ze stránek souhrnu výběr:
 
 1. V pravém horním rohu vyberte ikonu výběr.
-2. Vyberte historii transakcí, platby nebo exportovat data.
-
-## <a name="transaction-history-page"></a>Stránka historie transakcí
-
-Na této stránce se zobrazí všechny vaše tržby, včetně data, typu a příjmu každého z nich. Můžete vybrat časové období, které chcete zobrazit, a můžete také filtrovat podle ID registrace, programu, ID platby, typu trvání, páky a stavu. Data jsou k dispozici pro aktuální fiskální rok (1. června 30) a předchozí dva fiskální roky.
-
-Chcete-li zobrazit další podrobnosti o objektu k dispozici, vyberte šipku dolů na pravé straně stránky. Tím se zobrazí páčka, objem výnosů a produkt. Pokud některá z těchto dat není k dispozici, ale potřebujete k ní přístup, obraťte se na [podporu](https://developer.microsoft.com/windows/support). Pokud je procento výsledkem úpravy a nikoli transakcí, pole produktu se nezobrazí.
-
-Chcete-li na této stránce Exportovat data transakcí, použijte stránku **exportovat data** .
+2. Vyberte **historii transakcí**, **platby**nebo **exportovat data**.
 
 ## <a name="payments-page"></a>Stránka platby
 
 Součty na této stránce reprezentují všechny programy, které se účastníte. Můžete je filtrovat podle ID účastníka, programu, ID platby a typu příjmu. Částky jsou uvedené v USD. Zaplacené částky jsou uvedené také v měně příjemce.
 
-| Oblast                   | Description                                                                                |
-|------------------------|---------------------------------------------------------------------------------------------|
+| Oblast  | Popis |
+| --- | --- |
 | Celkem placené letos   | Celková částka za tento rok, ve Spojených dolarech, pro všechny vaše programy       |
 | Další odhadovaná platba | Jedna další platba přichází vám (i v případě, že už brzy někdo přijde), v amerických dolarech. |
 | Poslední platba           | Částka (v amerických dolarech), název programu a program vaší poslední platby           |
@@ -66,19 +58,19 @@ Pokud chcete na této stránce Exportovat data transakcí, vyberte **exportovat*
 
 ## <a name="payment-status"></a>Stav platby
 
-| Stav vystavení           | Důvod                                                                                                                                      | Je vyžadována akce partnera?                                   |
-|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| Stav vystavení | Důvod | Je vyžadována akce partnera? |
+| --- | --- | --- |
 | Nezpracované              | Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. | No                                                         |
 | Nadcházející                 | Platební objednávka vygenerovala nevyřízené interní recenze před zpracováním platby.                                                               | No                                                         |
 | Nevyřízená daňová faktura      | Vaše daňová faktura je neúplná nebo neplatná.                                                                                                  | Abyste mohli platit, musíte si nejdřív aktualizovat svou daňovou fakturu. |
 | Zamítnuto během revize   | Platba byla během revize odmítnuta.                                                                                                     | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
-| Neúspěšný                   | Platba se nezdařila z důvodu chyby systému Microsoft.                                                                                         | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
+| Neúspěšný                   | Platba se nezdařila z důvodu chyby systému Microsoft.                                                                                         | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support)  .                      |
 | Rozpracované              | Platba probíhá.                                                                                                                 | No                                                         |
 | Nesprávná platba        | Recouping platby probíhá.                                                                                                       | No                                                         |
 | Odesláno                     | Platba byla odeslána do vaší banky.                                                                                                     | No                                                         |
 | Opětovného zpracování             | V platbě došlo k systémové chybě společnosti Microsoft a probíhá její zpracování.                                                                  | No                                                         |
 | Reversed                 | Platba byla stornována vaší bankou a bude odeslána znovu v dalším platebním cyklu.                                                     | No                                                         |
-| Daňová faktura odmítnuta     | Vaše daňová faktura byla během revize odmítnuta. Všechny probíhající platby budou pozastaveny, dokud se nedokončí kontrola daňové faktury.                 | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
+| Daňová faktura odmítnuta     | Vaše daňová faktura byla během revize odmítnuta. Všechny probíhající platby budou pozastaveny, dokud se nedokončí kontrola daňové faktury.                 | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support)  .                      |
 | Daňová faktura pod kontrolou | Vaše daňové faktury se přezkoumávají. Po schválení daňové faktury se vaše platba uvolní.                                   | No                                                         |
 | Zamítnuto                 | Platba byla odmítnuta vaší bankou.                                                                                                      | Podrobnosti získáte od své banky.                             |
 |||
@@ -97,8 +89,8 @@ Výsledkem vašeho filtru může být chyba, že **není k dispozici žádná da
 
 Tato možnost nabízí stažení plateb, které jste obdrželi v bance, pro daný program, přidruženou daň a agregovanou částku. Tato sestava se používá pro mnoho programů partnerského centra, takže některé sloupce mohou být pro vaši sestavu nerelevantní. Tyto sloupce jsou označeny níže.
 
-| Název sloupce              | Description                                                                                                                               |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------  |
+| Název sloupce | Popis |
+| --- | --- |
 | participantID            | Primární identita partnera v rámci programu                                                                             |
 | participantIDType        | Obvykle ID programu pro pobídkové programy a ID prodejce pro aplikace ze Storu                                                                |
 | účastník          | Název partnerského partnera                                                                                                               |
@@ -123,8 +115,8 @@ Tato možnost nabízí stažení plateb, které jste obdrželi v bance, pro dan�
 
 Tato možnost poskytuje stažení každé položky řádku pro přijetí dat, která se zobrazí na stránce Historie transakcí, typ, datum, přidružená částka transakce, zákazník, produkt a další transakční údaje, které se vztahují k vašim programům.
 
-| Název sloupce                    | Description                                                                                                                              | Použitelnost pro motivaci/uložení/Azure Marketplace           |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| Název sloupce | Popis | Použitelnost pro motivaci/uložení/Azure Marketplace |
+| --- | --- | --- |
 | earningId                      | Jedinečný identifikátor pro každý z nich                                                                                                       | Vše                                                            |
 | participantId                  | Primární identita partnera v rámci programu                                                                            | Vše                                                            |
 | participantIdType              | Převážně ID programu pro pobídkové programy a prodejce, pokud je to pro aplikace ze Storu a Azure Marketplace                                          | Vše                                                            |
@@ -209,8 +201,8 @@ Historie transakcí od 1. července 1 2019 se zpracovává samostatně. Příkaz
 > [!NOTE]
 > Filtry, jako jsou 3M, 6 min nebo 12M, se nebudou vztahovat na oddíl **historická prohlášení** .
 
-| Název pole              | Description                                                                                                                                                             |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Název pole | Popis |
+| --- | --- |
 | Zdroj výnosů          | Zdroj výnosů na základě toho, kde transakce proběhla, například Microsoft Store, úložiště Windows Phone, Windows Store 8 nebo inzerce                  |
 | ID objednávky                | Jedinečný identifikátor objednávky Toto ID umožňuje identifikovat nákupní transakce s příslušnými transakcemi, které nepatří do nákupních transakcí, jako jsou refundace nebo vratek. Obě budou mít stejné ID objednávky. V případě rozděleného za poplatek, u kterého bylo použito více způsobů platby pro jeden nákup, vám také umožní propojit transakce nákupu. |
 | ID transakce          | Jedinečný identifikátor transakce.                                                                                                                                          |

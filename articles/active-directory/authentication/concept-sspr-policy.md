@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b0684735b32e03abe525b19dce6d9d887afe513b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194068"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005016"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení účtů v Azure Active Directory
 
@@ -43,13 +43,13 @@ Následující tabulka popisuje zásady uživatelského jména, které se vztahu
 
 Zásady hesel se aplikují na všechny uživatelské účty, které se vytváří a spravují přímo ve službě Azure AD. Tato zásada hesla se nedá upravit, i když můžete [nakonfigurovat vlastní zakázaná hesla pro ochranu heslem Azure AD](tutorial-configure-custom-password-protection.md).
 
-Zásady hesla se nevztahují na uživatelské účty synchronizované z místního prostředí služba AD DS pomocí Azure AD Connect.
+Zásady hesla se nevztahují na uživatelské účty synchronizované z místního služba AD DS prostředí pomocí Azure AD Connect, pokud EnforceCloudPasswordPolicyForPasswordSyncedUsers nepovolíte.
 
 Jsou definovány následující možnosti zásad hesla:
 
 | Vlastnost | Požadavky |
 | --- | --- |
-| Povolené znaky |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \:,. ? / \`~ " ( ) ;</li> <li>prázdné místo</li></ul> |
+| Povolené znaky |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \:,. ? / \` ~ " ( ) ;</li> <li>prázdné místo</li></ul> |
 | Nepovolené znaky | Znaky Unicode. |
 | Omezení hesla |<ul><li>Minimálně 8 znaků a maximálně 256 znaků.</li><li>Vyžaduje tři ze čtyř z následujících možností:<ul><li>Malými písmeny.</li><li>Velká písmena.</li><li>Čísla (0-9).</li><li>Symboly (viz předchozí omezení hesla).</li></ul></li></ul> |
 | Doba platnosti hesla vypršela (maximální stáří hesla) |<ul><li>Výchozí hodnota: **90** dní.</li><li>Hodnota se dá nakonfigurovat pomocí `Set-MsolPasswordPolicy` rutiny z modulu Azure Active Directory pro Windows PowerShell.</li></ul> |

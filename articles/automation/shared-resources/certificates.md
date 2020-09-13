@@ -2,23 +2,19 @@
 title: Správa certifikátů v Azure Automation
 description: Tento článek obsahuje informace o tom, jak pracovat s certifikáty pro přístup pomocí runbooků a konfigurací DSC.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/02/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 61e2cdf63e5553ba8d796115284dad9a538c2b81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6220cfb5649995e54338f245b4cb62511b89a2c
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056281"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004693"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Správa certifikátů v Azure Automation
 
-Azure Automation ukládá certifikáty bezpečně pro přístup pomocí runbooků a konfigurací DSC pomocí rutiny [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) pro prostředky Azure Resource Manager. Zabezpečené úložiště certifikátů umožňuje vytvářet Runbooky a konfigurace DSC, které používají certifikáty k ověřování, nebo je přidat do prostředků Azure nebo třetích stran.
+Azure Automation ukládá certifikáty bezpečně pro přístup pomocí runbooků a konfigurací DSC pomocí rutiny [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) pro prostředky Azure Resource Manager. Zabezpečené úložiště certifikátů umožňuje vytvářet Runbooky a konfigurace DSC, které používají certifikáty k ověřování, nebo je přidat do prostředků Azure nebo třetích stran.
 
 >[!NOTE]
 >Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou šifrované a uložené v automatizaci pomocí jedinečného klíče, který se generuje pro každý účet Automation. Služba Automation ukládá klíč do služby Key Vault spravované systémem. Před uložením zabezpečeného prostředku Automation načte klíč z Key Vault a pak ho použije k zašifrování assetu. 
@@ -29,10 +25,10 @@ Rutiny v následující tabulce vytvářejí a spravují certifikáty služby Au
 
 |Rutina |Popis|
 | --- | ---|
-|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Načte informace o certifikátu, který se má použít v sadě Runbook nebo konfiguraci DSC. Samotný certifikát můžete načíst jenom pomocí interní `Get-AutomationCertificate` rutiny.|
-|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Vytvoří nový certifikát ve službě Automation.|
-|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Odebere certifikát z automatizace.|
-|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Nastaví vlastnosti pro existující certifikát, včetně nahrání souboru certifikátu a nastavení hesla pro soubor **. pfx** .|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate)|Načte informace o certifikátu, který se má použít v sadě Runbook nebo konfiguraci DSC. Samotný certifikát můžete načíst jenom pomocí interní `Get-AutomationCertificate` rutiny.|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)|Vytvoří nový certifikát ve službě Automation.|
+|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate)|Odebere certifikát z automatizace.|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate)|Nastaví vlastnosti pro existující certifikát, včetně nahrání souboru certifikátu a nastavení hesla pro soubor **. pfx** .|
 
 Pomocí rutiny [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) lze také nahrát certifikát služby pro zadanou cloudovou službu.
 
@@ -64,7 +60,8 @@ Když vytváříte nový certifikát, nahrajete soubor. cer nebo. pfx pro automa
 
 ### <a name="create-a-new-certificate-with-the-azure-portal"></a>Vytvořit nový certifikát s Azure Portal
 
-1. Z účtu Automation vyberte certifikáty **assetů**  >  **Certificates**  >  **Přidat certifikát**.
+1. Z účtu Automation v levém podokně vyberte **certifikáty** pod **sdíleným prostředkem**.
+1. Na stránce **certifikáty** vyberte **Přidat certifikát**.
 1. Do pole **název** zadejte název certifikátu.
 1. Chcete-li vyhledat soubor **. cer** nebo **. pfx** , v části **nahrát soubor certifikátu**zvolte **možnost vybrat soubor**. Pokud vyberete soubor **. pfx** , zadejte heslo a určete, jestli se dá exportovat.
 1. Vyberte **vytvořit** a uložte nový prostředek certifikátu.
@@ -127,7 +124,7 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -Te
 
 ## <a name="get-a-certificate"></a>Získat certifikát
 
-K načtení certifikátu použijte interní `Get-AutomationCertificate` rutinu. Nemůžete použít rutinu [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) , protože vrací informace o prostředku certifikátu, ale ne samotný certifikát.
+K načtení certifikátu použijte interní `Get-AutomationCertificate` rutinu. Nemůžete použít rutinu [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) , protože vrací informace o prostředku certifikátu, ale ne samotný certifikát.
 
 ### <a name="textual-runbook-example"></a>Příklad textového Runbooku
 
@@ -147,7 +144,7 @@ Přidejte aktivitu pro interní `Get-AutomationCertificate` rutinu do grafickéh
 
 ![Snímek obrazovky s přidáním certifikátu na plátno](../media/certificates/automation-certificate-add-to-canvas.png)
 
-Následující obrázek ukazuje příklad použití certifikátu v grafickém Runbooku. 
+Následující obrázek ukazuje příklad použití certifikátu v grafickém Runbooku.
 
 ![Snímek obrazovky s příkladem vytváření grafického obsahu](../media/certificates/graphical-runbook-add-certificate.png)
 
@@ -167,5 +164,4 @@ print cert
 
 * Další informace o rutinách používaných pro přístup k certifikátům najdete v tématu [Správa modulů v Azure Automation](modules.md).
 * Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
-* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md). 
-
+* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md).

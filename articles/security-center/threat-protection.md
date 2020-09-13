@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e2f72cc0ea6851caaf5d0db2f17f8e16473d420e
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272497"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667543"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -25,7 +25,7 @@ Ochrana před hrozbami Azure Security Center poskytuje komplexní ochranu vašeh
 
 * **Ochrana před hrozbami pro výpočetní prostředky Azure**: počítače s Windows, počítače se systémem Linux, Azure App Service a kontejnery Azure
 
-* **Ochrana před hrozbami pro datové prostředky Azure**: SQL Database a SQL Data Warehouse, Azure Storage a Azure Cosmos DB
+* **Ochrana před hrozbami pro datové prostředky Azure**: SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse), Azure Storage a Azure Cosmos DB
 
 * **Ochrana před hrozbami pro vrstvy služeb Azure**: síťová vrstva Azure, vrstva správy azure (Azure Resource Manager) (Preview) a Azure Key Vault (Preview)
 
@@ -119,7 +119,7 @@ Další informace o plánech App Service najdete v tématu [plány App Service](
 |Stav vydaných verzí:|Všeobecně dostupné|
 |Stanov|Úroveň Standard|
 |Požadované role a oprávnění:|**Správce zabezpečení** může zrušit výstrahy.<br>**Čtenář zabezpečení** může zobrazit zjištění.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
@@ -131,19 +131,19 @@ Další informace o plánech App Service najdete v tématu [plány App Service](
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Ochrana před hrozbami pro SQL Database a SQL Data Warehouse <a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-azure-synapse-analytics-formerly-sql-data-warehouse"></a>Ochrana před hrozbami pro SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse) <a name="data-sql"></a>
 
 Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
 Výstrahy se zobrazí, když dojde k podezřelým databázovým aktivitám, potenciálním ohrožením zabezpečení nebo útokům prostřednictvím injektáže SQL a k neobvyklé přístupu k databázi a ke vzorům dotazů.
 
-Rozšířená ochrana před internetovými útoky pro Azure SQL Database a SQL je součástí sjednoceného balíčku [zabezpečení dat (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) pro pokročilé funkce zabezpečení SQL, zahrnující Azure SQL Database, spravované instance Azure SQL, Azure SQL Data Warehouse databáze a SQL servery na Virtual Machines Azure.
+Rozšířená ochrana před internetovými útoky pro Azure SQL Database a SQL je součástí sjednoceného balíčku [zabezpečení dat (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) pro pokročilé funkce zabezpečení SQL, zahrnující Azure SQL Database, spravované instance Azure SQL, databáze Azure synapse Analytics (dřív SQL Data Warehouse) a SQL servery na Virtual Machines Azure.
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro SQL servery na Azure Virtual Machines](security-center-iaas-advanced-data.md)
-* [Seznam výstrah ochrany před hrozbami pro SQL Database a SQL Data Warehouse](alerts-reference.md#alerts-sql-db-and-warehouse)
+* [Seznam výstrah ochrany před hrozbami pro SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 
 
@@ -155,7 +155,7 @@ Další informace:
 |----|:----|
 |Stav vydaných verzí:|[BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) (Obecná dostupnost)<br>[Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Preview)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Preview)|
 |Stanov|Úroveň Standard|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 
@@ -164,8 +164,6 @@ Další informace:
 Ochrana před hrozbami pro Azure Storage detekuje na vašich Azure Storage účtech potenciálně škodlivé aktivity. Data je možné chránit bez ohledu na to, jestli jsou uložená jako kontejnery objektů blob, sdílené složky nebo datová jezera.
 
 Tato vrstva ochrany umožňuje řešit hrozby, *aniž* byste museli být odborníkem na zabezpečení a pomáhají spravovat systémy monitorování zabezpečení.
-
-Vaše účty úložiště jsou chráněné 
 
 ### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Jaký typ výstrah ochrana před hrozbami pro Azure Storage poskytnout?
 
@@ -189,7 +187,7 @@ Pokud je podezření, že se jedná o malware, Security Center zobrazí výstrah
 
 Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na stránce s [cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Seznam výstrah ochrany před hrozbami pro Azure Storage](alerts-reference.md#alerts-azurestorage)
@@ -204,11 +202,11 @@ Další informace:
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Ochrana před hrozbami pro Azure Cosmos DB <a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Ochrana před hrozbami pro Azure Cosmos DB (Preview) <a name="cosmos-db"></a>
 
 Výstrahy Azure Cosmos DB jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití.
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB (Preview)](alerts-reference.md#alerts-azurecosmos)

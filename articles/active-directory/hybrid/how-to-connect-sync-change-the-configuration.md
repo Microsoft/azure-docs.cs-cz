@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357864"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662569"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
 Tento článek vás seznámí s postupem, jak provést změny ve výchozí konfiguraci v Azure Active Directory (Azure AD) Connect Sync. Poskytuje kroky pro některé běžné scénáře. S tímto vědomím byste měli být schopni provádět jednoduché změny vlastní konfigurace na základě vašich vlastních obchodních pravidel.
@@ -113,7 +113,7 @@ Pokud je vše podle očekávání, můžete znovu povolit Plánovač. Z PowerShe
 Předchozí část popisuje, jak provést změny toku atributů. V této části jsou k dispozici některé další příklady. Postup vytvoření pravidla synchronizace je zkrácený, ale můžete najít kompletní kroky v předchozí části.
 
 ### <a name="use-an-attribute-other-than-the-default"></a>Použijte jiný atribut než výchozí.
-V tomto scénáři Fabrikam je k dispozici doménová struktura, kde se používá místní abeceda pro křestní jméno, příjmení a zobrazované jméno. Znaková reprezentace těchto atributů v latince se dá najít v atributech rozšíření. Pro vytváření globálních adres v Azure AD a v Office 365 chce organizace místo toho použít tyto atributy.
+V tomto scénáři Fabrikam je k dispozici doménová struktura, kde se používá místní abeceda pro křestní jméno, příjmení a zobrazované jméno. Znaková reprezentace těchto atributů v latince se dá najít v atributech rozšíření. Pro vytvoření globálního seznamu adres ve službě Azure AD a Microsoft 365 chce organizace místo toho použít tyto atributy.
 
 S výchozí konfigurací vypadá objekt z místní doménové struktury takto:  
 ![Tok atributů 1](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)
@@ -265,11 +265,11 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
     | Name | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
-    | Description | *Zadejte popis.* |  |
+    | Popis | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
-    | Typ objektu úložiště metaverse | **Person (Osoba)** |  |
-    | Typ odkazu | **Připojit** |  |
+    | Typ objektu úložiště metaverse | **Osoba** |  |
+    | Typ odkazu | **Join** (Spojení) |  |
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
 
 5. Přejít na kartu **obor filtru** a přidejte **jednu skupinu filtru oborů** s následující klauzulí:
@@ -307,11 +307,11 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
     | Name | *Zadat název* | Například pro *AAD – uživatel – usertype* |
-    | Description | *Zadejte popis.* ||
+    | Popis | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
-    | Typ objektu úložiště metaverse | **Person (Osoba)** ||
-    | Typ odkazu | **Připojit** ||
+    | Typ objektu úložiště metaverse | **Osoba** ||
+    | Typ odkazu | **Join** (Spojení) ||
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
 
 5. Přejít na kartu **obor filtru** a přidejte **jednu skupinu filtru oborů** se dvěma klauzulemi:
@@ -319,7 +319,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | True |
+    | cloudMastered | NOTEQUAL | Pravda |
 
     Filtr oboru určuje, které objekty služby Azure AD toto pravidlo odchozí synchronizace používá. V tomto příkladu použijeme stejný filtr pro vytváření oborů z pravidla *pro synchronizaci od pro AD – aktuální identita uživatele* . Zabraňuje použití synchronizačního pravidla pro uživatelské objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 

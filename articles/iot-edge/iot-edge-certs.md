@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1d4abbcc0768915d7d2e693cfc76a699ed21a91
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210592"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669628"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
@@ -34,7 +34,7 @@ Následující obrázek ukazuje IoT Edge využití certifikátů. Mezi certifik�
 ![Diagram typických vztahů certifikátů](./media/iot-edge-certs/edgeCerts-general.png)
 
 > [!NOTE]
-> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050. Toto omezení se vztahuje na certifikát certifikační autority zařízení, všechny certifikáty v sadě prostředků trustu a na certifikáty ID zařízení, které se používají pro metody zřizování X. 509.
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2038. Toto omezení se vztahuje na certifikát certifikační autority zařízení, všechny certifikáty v sadě prostředků trustu a na certifikáty ID zařízení, které se používají pro metody zřizování X. 509.
 
 ### <a name="certificate-authority"></a>Certifikační autorita
 

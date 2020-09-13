@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258785"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669609"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -41,7 +41,7 @@ IoT Edge zařízení mohou být od maliny PI až po přenosný počítač na vir
 Každé IoT Edge zařízení v produkčním prostředí potřebuje certifikát certifikační autority zařízení (CA), který je na něm nainstalovaný. Tento certifikát certifikační autority se pak deklaruje jako modul runtime IoT Edge v souboru config. yaml. Pro scénáře vývoje a testování vytvoří modul runtime IoT Edge dočasné certifikáty, pokud nejsou v souboru config. yaml deklarovány žádné certifikáty. Platnost těchto dočasných certifikátů však vyprší po třech měsících a nejsou zabezpečené pro produkční scénáře. V produkčních scénářích byste měli zadat vlastní certifikát certifikační autority pro zařízení, a to buď od certifikační autority podepsané svým držitelem, nebo zakoupené od Komerční certifikační autority.
 
 > [!NOTE]
-> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050.
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2038.
 
 Informace o [tom, jak Azure IoT Edge používá certifikáty](iot-edge-certs.md), najdete v tématu How of a Certificate of Certificate CA.
 
@@ -231,7 +231,7 @@ Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
 Některá z těchto pravidel brány firewall jsou zděděná z Azure Container Registry. Další informace najdete v tématu [Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall](../container-registry/container-registry-firewall-access-rules.md).
 
 > [!NOTE]
-> Pokud chcete zajistit konzistentní plně kvalifikovaný název domény mezi koncovými body REST a daty od **15. června 2020** , změní se koncový bod služby Microsoft Container Registry data z `*.cdn.mscr.io` na.`*.data.mcr.microsoft.com`  
+> Pokud chcete zajistit konzistentní plně kvalifikovaný název domény mezi koncovými body REST a daty od **15. června 2020** , změní se koncový bod služby Microsoft Container Registry data z `*.cdn.mscr.io` na. `*.data.mcr.microsoft.com`  
 > Další informace najdete v tématu [Konfigurace pravidel brány firewall klienta Microsoft Container Registry](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md) .
 
 Pokud nechcete bránu firewall nakonfigurovat tak, aby povolovala přístup k veřejným registrům kontejnerů, můžete ukládat image do soukromého registru kontejnerů, jak je popsáno v [kontejnerech runtime úložiště v privátním registru](#store-runtime-containers-in-your-private-registry).
@@ -285,7 +285,7 @@ Aby se změny projevily, musí být modul kontejneru restartován.
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Možnost: upravit nastavení protokolu pro každý modul kontejneru
 
-To můžete provést v **createOptions** každého modulu. Příklad:
+To můžete provést v **createOptions** každého modulu. Například:
 
 ```yml
 "createOptions": {
@@ -321,9 +321,9 @@ To můžete provést v **createOptions** každého modulu. Příklad:
 
 ### <a name="consider-tests-and-cicd-pipelines"></a>Zvažte testy a kanály CI/CD.
 
-Pro nejúčinnější scénář nasazení IoT Edge zvažte integraci nasazení v produkčním prostředí do kanálů pro testování a CI/CD. Azure IoT Edge podporuje několik platforem CI/CD, včetně Azure DevOps. Další informace najdete v tématu [průběžná integrace a průběžné nasazování do Azure IoT Edge](how-to-ci-cd.md).
+Pro nejúčinnější scénář nasazení IoT Edge zvažte integraci nasazení v produkčním prostředí do kanálů pro testování a CI/CD. Azure IoT Edge podporuje několik platforem CI/CD, včetně Azure DevOps. Další informace najdete v tématu [průběžná integrace a průběžné nasazování do Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [IoT Edge automatickém nasazení](module-deployment-monitoring.md).
-* Podívejte se, jak IoT Edge podporuje [průběžnou integraci a průběžné nasazování](how-to-ci-cd.md).
+* Podívejte se, jak IoT Edge podporuje [průběžnou integraci a průběžné nasazování](how-to-continuous-integration-continuous-deployment.md).

@@ -3,12 +3,12 @@ title: Zachytávání událostí streamování – Azure Event Hubs | Microsoft 
 description: Tento článek poskytuje přehled funkce Capture, která umožňuje zachytit streamování událostí prostřednictvím Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522121"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667449"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí prostřednictvím Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
 Azure Event Hubs umožňuje automaticky zachytit streamovaná data v Event Hubs v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo v účtu, který si využijete [Azure Data Lake Storage obecné 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) s přidanou flexibilitou zadání času nebo velikosti intervalu. Nastavení zachytávání je rychlé, neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují s Event Hubs [jednotkami propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs Capture je nejjednodušší způsob, jak načíst streamovaná data do Azure, a umožňuje se zaměřit na zpracování dat, nikoli na shromažďování dat.
@@ -132,7 +132,7 @@ Capture nespotřebovává kvótu pro odchozí přenosy, protože se účtuje sam
 
 ## <a name="integration-with-event-grid"></a>Integrace s Event Grid 
 
-Jako zdroj můžete vytvořit předplatné Azure Event Grid s oborem názvů Event Hubs. V následujícím kurzu se dozvíte, jak vytvořit předplatné Event Grid s centrem událostí jako zdrojovou a Azure Functionsovou aplikací jako jímku: [zpracování a migrace zachycených Event Hubs dat do SQL Data Warehouse pomocí Event Grid a Azure Functions](store-captured-data-data-warehouse.md).
+Jako zdroj můžete vytvořit předplatné Azure Event Grid s oborem názvů Event Hubs. V následujícím kurzu se dozvíte, jak vytvořit předplatné Event Grid s centrem událostí jako zdrojovou a Azure Functionsovou aplikací jako jímku: [zpracování a migrace zachycených Event Hubs dat do analýzy Azure synapse pomocí Event Grid a Azure Functions](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>Další kroky
 Event Hubs Capture je nejjednodušší způsob, jak získat data do Azure. Pomocí Azure Data Lake, Azure Data Factory a Azure HDInsight můžete provádět dávkové zpracování a další analýzy s využitím známých nástrojů a platforem dle vašeho výběru, a to v jakémkoli měřítku, které potřebujete.
@@ -147,7 +147,7 @@ Přečtěte si, jak tuto funkci povolit pomocí šablony Azure Portal a Azure Re
 [Apache Drill]: https://drill.apache.org/
 [Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
+[Azure Storage Explorer]: https://github.com/microsoft/AzureStorageExplorer/releases
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html

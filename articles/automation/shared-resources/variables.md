@@ -2,19 +2,15 @@
 title: Správa proměnných v Azure Automation
 description: Tento článek popisuje, jak pracovat s proměnnými v sadách Runbook a konfiguracích DSC.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/14/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 300bfa2ed801b810bcaaeb5bc4d04775d590015b
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055288"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004558"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -30,7 +26,7 @@ Proměnné automatizace jsou užitečné pro následující scénáře:
 
 Azure Automation uchovává proměnné a zpřístupňuje je i v případě, že dojde k chybě Runbooku nebo konfigurace DSC. Toto chování umožňuje, aby jedna konfigurace sady Runbook nebo DSC nastavila hodnotu, kterou používá jiná sada Runbook nebo stejná sada Runbook nebo konfigurace DSC při příštím spuštění.
 
-Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Když vytvoříte proměnnou, můžete její šifrování a úložiště zadat Azure Automation jako zabezpečený prostředek. Po vytvoření proměnné nemůžete změnit její stav šifrování, aniž byste museli znovu vytvořit proměnnou. Azure Security Center doporučení je šifrovat všechny Azure Automation proměnné, jak je popsané v tématu [proměnné účtu Automation by měly být šifrované](../../security-center/recommendations-reference.md#recs-computeapp). 
+Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Když vytvoříte proměnnou, můžete její šifrování a úložiště zadat Azure Automation jako zabezpečený prostředek. Po vytvoření proměnné nemůžete změnit její stav šifrování, aniž byste museli znovu vytvořit proměnnou. Azure Security Center doporučení je šifrovat všechny Azure Automation proměnné, jak je popsané v tématu [proměnné účtu Automation by měly být šifrované](../../security-center/recommendations-reference.md#recs-computeapp).
 
 >[!NOTE]
 >Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku. 
@@ -41,11 +37,11 @@ Když vytvoříte proměnnou pomocí Azure Portal, je nutné zadat datový typ z
 
 * Řetězec
 * Integer
-* DateTime
+* Datum a čas
 * Logická hodnota
 * Null
 
-Proměnná není omezena na zadaný datový typ. Pokud chcete zadat hodnotu jiného typu, je nutné nastavit proměnnou pomocí prostředí Windows PowerShell. Pokud označíte `Not defined` , hodnota proměnné je nastavená na null. Hodnotu je nutné nastavit pomocí rutiny [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) nebo interní `Set-AutomationVariable` rutiny.
+Proměnná není omezena na zadaný datový typ. Pokud chcete zadat hodnotu jiného typu, je nutné nastavit proměnnou pomocí prostředí Windows PowerShell. Pokud označíte `Not defined` , hodnota proměnné je nastavená na null. Hodnotu je nutné nastavit pomocí rutiny [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) nebo interní `Set-AutomationVariable` rutiny.
 
 Nemůžete použít Azure Portal k vytvoření nebo změně hodnoty pro komplexní typ proměnné. Pomocí Windows PowerShellu ale můžete zadat hodnotu libovolného typu. Komplexní typy jsou načteny jako [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
@@ -60,10 +56,10 @@ Rutiny v následující tabulce vytvářejí a spravují proměnné automatizace
 
 | Rutina | Popis |
 |:---|:---|
-|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, `PSCustomObject` načte se typ. <br>**Poznámka:**  Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady Runbook nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
-|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Vytvoří novou proměnnou a nastaví její hodnotu.|
-|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| Odstraní existující proměnnou.|
-|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| Nastaví hodnotu pro existující proměnnou. |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, `PSCustomObject` načte se typ. <br>**Poznámka:**  Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady Runbook nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
+|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable) | Vytvoří novou proměnnou a nastaví její hodnotu.|
+|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable)| Odstraní existující proměnnou.|
+|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable)| Nastaví hodnotu pro existující proměnnou. |
 
 ## <a name="internal-cmdlets-to-access-variables"></a>Interní rutiny pro přístup k proměnným
 
@@ -77,7 +73,7 @@ Interní rutiny v následující tabulce se používají pro přístup k proměn
 > [!NOTE]
 > Vyhněte se použití proměnných v `Name` parametru `Get-AutomationVariable` v sadě Runbook nebo konfiguraci DSC. Použití proměnných může zkomplikovat zjišťování závislostí mezi sadami Runbook a proměnnými automatizace v době návrhu.
 
-`Get-AutomationVariable`nefunguje v prostředí PowerShell, ale pouze v sadě Runbook nebo konfiguraci DSC. Chcete-li například zobrazit hodnotu zašifrované proměnné, můžete vytvořit sadu Runbook, která získá proměnnou a následně ji zapsat do výstupního datového proudu:
+`Get-AutomationVariable` nefunguje v prostředí PowerShell, ale pouze v sadě Runbook nebo konfiguraci DSC. Chcete-li například zobrazit hodnotu zašifrované proměnné, můžete vytvořit sadu Runbook, která získá proměnnou a následně ji zapsat do výstupního datového proudu:
  
 ```powershell
 $mytestencryptvar = Get-AutomationVariable -Name TestVariable
@@ -103,16 +99,16 @@ Funkce v následující tabulce se používají pro přístup k proměnným v sa
 
 ### <a name="create-and-get-a-variable-using-the-azure-portal"></a>Vytvoření a získání proměnné pomocí Azure Portal
 
-1. Z účtu Automation klikněte na dlaždici **assety** , pak na okno **assety** a vyberte **proměnné**.
-2. Na dlaždici **proměnné** vyberte **přidat proměnnou**.
-3. V okně **Nová proměnná** dokončete možnosti a potom kliknutím na **vytvořit** uložte novou proměnnou.
+1. Z účtu Automation v levém podokně vyberte **proměnné** v části **sdílené prostředky**.
+2. Na stránce **proměnné** vyberte **přidat proměnnou**.
+3. Dokončete možnosti na stránce **Nová proměnná** a pak výběrem možnosti **vytvořit** uložte novou proměnnou.
 
 > [!NOTE]
 > Jakmile uložíte zašifrovanou proměnnou, nelze ji zobrazit na portálu. Dá se aktualizovat jenom.
 
 ### <a name="create-and-get-a-variable-in-windows-powershell"></a>Vytvoření a získání proměnné v prostředí Windows PowerShell
 
-Vaše sada Runbook nebo konfigurace DSC pomocí `New-AzAutomationVariable` rutiny vytvoří novou proměnnou a nastaví její počáteční hodnotu. Pokud je proměnná zašifrovaná, volání by mělo použít `Encrypted` parametr. Váš skript může načíst hodnotu proměnné pomocí `Get-AzAutomationVariable` . 
+Vaše sada Runbook nebo konfigurace DSC pomocí `New-AzAutomationVariable` rutiny vytvoří novou proměnnou a nastaví její počáteční hodnotu. Pokud je proměnná zašifrovaná, volání by mělo použít `Encrypted` parametr. Váš skript může načíst hodnotu proměnné pomocí `Get-AzAutomationVariable` .
 
 >[!NOTE]
 >Skript PowerShellu nemůže načíst šifrovanou hodnotu. Jediným způsobem, jak to provést, je použití interní `Get-AutomationVariable` rutiny.
@@ -127,7 +123,7 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Následující příklad ukazuje, jak vytvořit proměnnou se složitým typem a pak načíst jeho vlastnosti. V takovém případě se použije objekt virtuálního počítače z [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) .
+Následující příklad ukazuje, jak vytvořit proměnnou se složitým typem a pak načíst jeho vlastnosti. V takovém případě se použije objekt virtuálního počítače z [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) .
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"
@@ -188,7 +184,7 @@ V grafickém Runbooku můžete přidat aktivity pro interní rutiny `Get-Automat
 
 ![Přidat proměnnou na plátno](../media/variables/runbook-variable-add-canvas.png)
 
-Následující obrázek ukazuje ukázkové aktivity pro aktualizaci proměnné s jednoduchou hodnotou v grafickém Runbooku. V tomto příkladu aktivita `Get-AzVM` načte jeden virtuální počítač Azure a uloží název počítače do existující proměnné řetězce Automation. Nezáleží na tom, zda [je odkaz kanálem nebo sekvencí](../automation-graphical-authoring-intro.md#use-links-for-workflow) , protože kód očekává pouze jeden objekt ve výstupu.
+Následující obrázek ukazuje ukázkové aktivity pro aktualizaci proměnné s jednoduchou hodnotou v grafickém Runbooku. V tomto příkladu aktivita `Get-AzVM`  načte jeden virtuální počítač Azure a uloží název počítače do existující proměnné řetězce Automation. Nezáleží na tom, zda [je odkaz kanálem nebo sekvencí](../automation-graphical-authoring-intro.md#use-links-for-workflow) , protože kód očekává pouze jeden objekt ve výstupu.
 
 ![Nastavit jednoduchou proměnnou](../media/variables/runbook-set-simple-variable.png)
 

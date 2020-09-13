@@ -1,5 +1,5 @@
 ---
-title: Vytváření výpočetních prostředků pomocí sady Python SDK
+title: Vytvoření výpočtů pro školení & nasazení (Python)
 titleSuffix: Azure Machine Learning
 description: Použití sady Azure Machine Learning Python SDK k vytváření školicích a nasazování výpočetních prostředků (cíle výpočtů) pro Machine Learning
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96aa6839fe51bb8a8c26f411c1a1f9df6b8c5a7f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147424"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662531"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Vytváření výpočetních cílů pro školení modelů a nasazení pomocí sady Python SDK
 
@@ -28,11 +28,15 @@ V tomto článku vytvoříte a spravujete výpočetní cíle pomocí sady Azure 
 * [Vs Code rozšíření](how-to-manage-resources-vscode.md#compute-clusters) pro Azure Machine Learning.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
-* [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
+
+## <a name="limitations"></a>Omezení
+
+Některé scénáře uvedené v tomto dokumentu jsou označeny jako __Náhled__. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="whats-a-compute-target"></a>Co je cílový výpočetní výkon?
 
@@ -55,16 +59,33 @@ Pro konfiguraci těchto výpočetních cílů použijte následující části:
 * [Vzdálené virtuální počítače](#vm)
 * [Azure HDInsight](#hdinsight)
 
+## <a name="compute-targets-for-inference"></a>Výpočetní cíle pro odvození
+
+Při vykonávání odvození Azure Machine Learning vytvoří kontejner Docker, který je hostitelem modelu a přidružených prostředků potřebných k jeho použití. Tento kontejner se pak použije v jednom z následujících scénářů nasazení:
+
+* Jako __webovou službu__ , která se používá pro odvození v reálném čase. Nasazení webové služby používají jeden z následujících výpočetních cílů:
+
+    * [Místní počítač](#local)
+    * [Výpočetní instance Azure Machine Learningu](#instance)
+    * [Azure Container Instances](#aci)
+    * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
+    * Azure Functions (Preview). Nasazení na Azure Functions spoléhá jenom na Azure Machine Learning k sestavení kontejneru Docker. Odtud je nasazena pomocí Azure Functions. Další informace najdete v tématu [nasazení modelu Machine Learning do Azure Functions (Preview)](how-to-deploy-functions.md).
+
+* Jako koncový bod __odvození dávky__ , který slouží k pravidelnému zpracování dávek dat. Odvození dávky využívají [Azure Machine Learning výpočetní cluster](#amlcompute).
+
+* Do __zařízení IoT__ (Preview). Nasazení do zařízení IoT spoléhá jenom na Azure Machine Learning k sestavení kontejneru Docker. Odtud je nasazena pomocí Azure IoT Edge. Další informace najdete v tématu [nasazení jako modulu IoT Edge (Preview)](/azure/iot-edge/tutorial-deploy-machine-learning).
 
 ## <a name="local-computer"></a><a id="local"></a>Místní počítač
 
-Pokud používáte místní počítač pro školení, není nutné vytvářet cíl výpočtů.  Stačí jenom [Odeslat školicí běh](how-to-set-up-training-targets.md) z místního počítače.
+Pokud používáte místní počítač pro **školení**, není nutné vytvářet cíl výpočtů.  Stačí jenom [Odeslat školicí běh](how-to-set-up-training-targets.md) z místního počítače.
+
+Použijete-li místní počítač pro **odvození**, je nutné mít nainstalovaný Docker. Chcete-li provést nasazení, použijte [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) a definujte port, který bude webová služba používat. Pak použijte normální proces nasazení, jak je popsáno v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning výpočetní cluster
 
 Výpočetní cluster Azure Machine Learning je spravovaná výpočetní infrastruktura, která umožňuje snadno vytvořit výpočetní prostředí s jedním uzlem nebo několika uzly. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru jako prostředek, který se dá sdílet s ostatními uživateli v pracovním prostoru. Výpočetní výkon se při odeslání úlohy automaticky škáluje a dá se umístit do Azure Virtual Network. Výpočetní výkon se spouští v kontejnerovém prostředí a zabalí závislosti vašich modelů v [kontejneru Docker](https://www.docker.com/why-docker).
 
-Azure Machine Learning COMPUTE můžete použít k distribuci školicích procesů napříč clusterem výpočetních uzlů procesoru nebo GPU v cloudu. Další informace o velikostech virtuálních počítačů, které zahrnují GPU, najdete v tématu [velikosti virtuálních počítačů optimalizované pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
+Azure Machine Learning výpočetní prostředí můžete použít k distribuci procesu vybírání školení nebo dávek v rámci clusteru výpočetních uzlů procesoru nebo GPU v cloudu. Další informace o velikostech virtuálních počítačů, které zahrnují GPU, najdete v tématu [velikosti virtuálních počítačů optimalizované pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
 Azure Machine Learning COMPUTE má výchozí omezení, například počet jader, které se dají přidělit. Další informace najdete v tématu [Správa a vyžádání kvót pro prostředky Azure](how-to-manage-quotas.md).
 
@@ -87,7 +108,7 @@ Azure Machine Learning výpočetní prostředí je možné znovu použít v rám
 
     Nebo můžete vytvořit a připojit trvalé Azure Machine Learning výpočetní prostředky v [Azure Machine Learning Studiu](how-to-create-attach-compute-studio.md#portal-create).
 
-Teď, když jste připojili výpočetní prostředky, je dalším krokem [odeslání školicího běhu](how-to-set-up-training-targets.md).
+Teď, když jste připojili výpočetní prostředky, je dalším krokem [odeslání školicího běhu](how-to-set-up-training-targets.md) nebo [spuštění odvození dávky](how-to-use-parallel-run-step.md).
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Snižte náklady na výpočetní cluster.
 
@@ -201,8 +222,15 @@ Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním sí�
         instance.wait_for_completion(show_output=True)
     ```
 
-Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](how-to-set-up-training-targets.md) .
+Teď, když jste připojili výpočetní prostředky a nakonfigurovali vaše spuštění, je dalším krokem [odeslání školicího běhu](how-to-set-up-training-targets.md) nebo [nasazení modelu pro odvození](how-to-deploy-local-container-notebook-vm.md).
 
+## <a name="azure-container-instance"></a><a id="aci"></a>Instance kontejneru Azure
+
+Azure Container Instances (ACI) se vytváří dynamicky při nasazení modelu. Nemůžete vytvořit ani připojit ACI k pracovnímu prostoru jiným způsobem. Další informace najdete v tématu [nasazení modelu pro Azure Container Instances](how-to-deploy-azure-container-instance.md).
+
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+Služba Azure Kubernetes Service (AKS) umožňuje různým možnostem konfigurace při použití s Azure Machine Learning. Další informace najdete v tématu [Vytvoření a připojení služby Azure Kubernetes](how-to-create-attach-kubernetes.md).
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Vzdálené virtuální počítače
 
@@ -437,7 +465,7 @@ except ComputeTargetException:
 Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka.ms/pl-adla) na GitHubu.
 
 > [!TIP]
-> Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud jsou data, se kterými pracujete, v nevýchozím úložišti, můžete použít [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) ke zkopírování dat před školeními.
+> Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud jsou data, se kterými pracujete, v nevýchozím úložišti, můžete použít [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) ke zkopírování dat před školeními.
 
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 

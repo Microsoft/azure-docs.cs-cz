@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aafaeb1143049b14f0a2fe2d867a951355d1ba61
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501010"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667591"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
@@ -32,15 +32,12 @@ Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili 
 > [!IMPORTANT]
 > Pokud se aplikaci udělí souhlas správce na úrovni tenanta, všichni uživatelé se budou moct k aplikaci přihlásit, pokud není nakonfigurovaná tak, aby vyžadovala přiřazení uživatele. Chcete-li omezit, kteří uživatelé se mohou přihlašovat k aplikaci, vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci. Další informace najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
 >
-> K poskytnutí souhlasu správce Microsoft Graph rozhraní API je potřeba role globálního správce.
->
-
+> Role globálního správce je nutná k poskytnutí souhlasu správce pro oprávnění aplikace Microsoft Graph API.
 
 > [!WARNING]
 > Udělení souhlasu správce na úrovni tenanta aplikaci udělí aplikaci a vydavateli aplikace přístup k datům vaší organizace. Pečlivě zkontrolujte oprávnění, která aplikace požaduje před udělením souhlasu.
 >
-> K poskytnutí souhlasu správce Microsoft Graph rozhraní API je potřeba role globálního správce.
->
+> Role globálního správce je nutná k poskytnutí souhlasu správce pro oprávnění aplikace Microsoft Graph API.
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Udělit souhlas správce od Azure Portal
 
@@ -56,6 +53,9 @@ Udělení souhlasu správce na úrovni tenanta k aplikaci uvedené v **podnikov�
 4. Vyberte **oprávnění** a pak klikněte na **udělit souhlas správce**.
 5. Pečlivě zkontrolujte oprávnění, která aplikace vyžaduje.
 6. Pokud souhlasíte s oprávněními, které aplikace vyžaduje, udělte souhlas. V takovém případě klikněte na tlačítko **Storno** nebo zavřete okno.
+
+> [!WARNING]
+> Udělení souhlasu správce na úrovni tenanta prostřednictvím **podnikových aplikací** odvolá všechna oprávnění, která byla dříve udělena v rámci tenanta. Oprávnění, která byla dříve udělena uživateli na jejich vlastním jménem, nebudou ovlivněna. 
 
 ### <a name="grant-admin-consent-in-app-registrations"></a>Udělení souhlasu správce v Registrace aplikací
 
@@ -82,10 +82,13 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 kde:
 
-* `{client-id}`je ID klienta aplikace (označované také jako ID aplikace).
-* `{tenant-id}`je ID tenanta nebo libovolný ověřený název domény vaší organizace.
+* `{client-id}` je ID klienta aplikace (označované také jako ID aplikace).
+* `{tenant-id}` je ID tenanta nebo libovolný ověřený název domény vaší organizace.
 
 Jako vždy pečlivě zkontrolujte oprávnění, která aplikace požaduje, před udělením souhlasu.
+
+> [!WARNING]
+> Udělení souhlasu správce na úrovni tenanta prostřednictvím této adresy URL odvolá všechna oprávnění, která byla dříve udělena v rámci tenanta. Oprávnění, která byla dříve ggranted uživateli na jejich vlastním jménem, nebudou ovlivněna. 
 
 ## <a name="next-steps"></a>Další kroky
 
