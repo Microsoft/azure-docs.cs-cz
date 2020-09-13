@@ -1,18 +1,18 @@
 ---
-title: Migrace z Azure Red Hat OpenShift 3,11 na Azure Red Hat OpenShift 4
-description: Migrace z Azure Red Hat OpenShift 3,11 na Azure Red Hat OpenShift 4
+title: Migrace z Azure Red Hat OpenShiftu 3.11 na Azure Red Hat OpenShift 4
+description: Migrace z Azure Red Hat OpenShiftu 3.11 na Azure Red Hat OpenShift 4
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: migrace, ARO, OpenShift, Red Hat
-ms.openlocfilehash: 68e8be24273dfab490d2423b76c372f2ff9f2b38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513131"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469741"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrace z Azure Red Hat OpenShift 3,11 na Azure Red Hat OpenShift 4
 
@@ -100,7 +100,7 @@ Informace o konfiguraci těchto typů úložišť najdete v tématu [Konfigurace
 
 Azure Red Hat OpenShift 4 dokáže sestavovat image ze zdrojového kódu, nasazovat je a spravovat jejich životní cyklus. Pokud to chcete povolit, Azure Red Hat OpenShift poskytuje 4 [interní integrovaný registr kontejnerů imagí](https://docs.openshift.com/aro/4/registry/registry-options.html) , který se dá nasadit do prostředí Azure Red Hat OpenShift pro místní správu imagí.
 
-Pokud používáte externí Registry, například [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/), [Red Hat Quay Registry](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)nebo [ověřování s povoleným ověřováním Red Hat](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), postupujte podle pokynů pro zadání přihlašovacích údajů do clusteru, aby cluster mohl přistupovat k úložištím.
+Pokud používáte externí Registry, například [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay Registry](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)nebo [ověřování s povoleným ověřováním Red Hat](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), postupujte podle pokynů pro zadání přihlašovacích údajů do clusteru, aby cluster mohl přistupovat k úložištím.
 
 ### <a name="monitoring"></a>Monitorování
 
@@ -128,4 +128,3 @@ az openshift delete --name $CLUSTER_NAME
 ```
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na dokumentaci k Azure Red Hat [OpenShift, kterou](https://docs.openshift.com/aro/4/welcome/index.html)poskytuje Red Hat.
-

@@ -2,14 +2,13 @@
 title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
-author: davidsmatlak
-ms.date: 06/04/2020
-ms.openlocfilehash: 86c9958818b5439502ab37471ed7a51fb3f21bf9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/02/2020
+ms.openlocfilehash: b9b2b7217b854153f03d61713d8b4a1bcf5bfd9d
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854095"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470166"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -27,6 +26,9 @@ Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https:/
 > V případě, že je možné upravit limit, tabulky obsahují **výchozí limit** a **maximální počet** hlaviček. Limit je možné vyvýšený nad výchozí limit, ale ne nad maximálním limitem.
 >
 > Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](../templates/error-resource-quota.md)zdarma.
+>
+> Podmínky *podmíněného omezení* a *pevného omezení* často slouží k popisu aktuálního, upravitelného limitu (měkkého limitu) a maximálního limitu (pevně stanoveného limitu). Pokud je limit nepřizpůsobitelný, nebude se jednat o částečný limit, ale jenom na pevný limit.
+>
 
 [Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](../../cost-management-billing/manage/upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi předplatného](https://azure.microsoft.com/free/free-account-faq).
 
@@ -75,6 +77,10 @@ Následující omezení App Service zahrnují omezení pro Web Apps, Mobile Apps
 ## <a name="automation-limits"></a>Omezení automatizace
 
 [!INCLUDE [automation-limits](../../../includes/azure-automation-service-limits.md)]
+
+## <a name="azure-app-configuration"></a>Azure App Configuration
+
+[!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Mezipaměť Azure pro limity Redis
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874754"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462237"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight
 
@@ -38,7 +38,7 @@ HDInsight také zahrnuje Jython, což je implementace Pythonu napsaná v jazyce 
 
 ## <a name="storage-configuration"></a>Konfigurace úložiště
 
-Pokud je účet úložiště použitý jako typ nebo, není nutná žádná `Storage (general purpose v1)` Akce `StorageV2 (general purpose v2)` .  Proces v tomto článku bude mít výstup alespoň do `/tezstaging` .  Výchozí konfigurace Hadoop bude obsažena `/tezstaging` v `fs.azure.page.blob.dir` konfigurační proměnné v nástroji `core-site.xml` for Service `HDFS` .  Tato konfigurace způsobí, že se výstup do adresáře načte do objektů blob stránky, které se nepodporují pro druh účtu úložiště `BlobStorage` .  Chcete-li použít `BlobStorage` Tento článek, odeberte `/tezstaging` z `fs.azure.page.blob.dir` konfigurační proměnné.  Ke konfiguraci je možné přistupovat z [uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva:`Page blob is not supported for this account type.`
+Pokud je účet úložiště použitý jako typ nebo, není nutná žádná `Storage (general purpose v1)` Akce `StorageV2 (general purpose v2)` .  Proces v tomto článku bude mít výstup alespoň do `/tezstaging` .  Výchozí konfigurace Hadoop bude obsažena `/tezstaging` v `fs.azure.page.blob.dir` konfigurační proměnné v nástroji `core-site.xml` for Service `HDFS` .  Tato konfigurace způsobí, že se výstup do adresáře načte do objektů blob stránky, které se nepodporují pro druh účtu úložiště `BlobStorage` .  Chcete-li použít `BlobStorage` Tento článek, odeberte `/tezstaging` z `fs.azure.page.blob.dir` konfigurační proměnné.  Ke konfiguraci je možné přistupovat z [uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva: `Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > Kroky v tomto dokumentu provedou následující předpoklady:  
@@ -300,8 +300,8 @@ Skript Pythonu se dá použít jako UDF z prasete prostřednictvím `GENERATE` p
 
 K určení interpretu Pythonu použijte `register` při odkazování na skript Pythonu. V následujících příkladech jsou registrovány skripty pomocí prasete jako `myfuncs` :
 
-* **Použití Jython**:`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **Použití jazyka C Python**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Použití Jython**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **Použití jazyka C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Při použití Jython může být cesta k souboru pig_jython buď místní cesta, nebo cesta WASBS://. Při použití jazyka C Python však musíte odkazovat na soubor v místním systému souborů uzlu, který používáte k odeslání úlohy prasete.
@@ -319,7 +319,7 @@ Tady je příklad:
 
 1. První řádek načte Ukázkový datový soubor `sample.log` do `LOGS` . Také definuje každý záznam jako `chararray` .
 2. Další řádek filtruje všechny hodnoty null a ukládá výsledek operace do `LOG` .
-3. Dále provede iteraci záznamů v `LOG` a používá `GENERATE` k vyvolání `create_structure` metody obsažené v skriptu Python/Jython, který byl načten jako `myfuncs` . `LINE`slouží k předání aktuálního záznamu do funkce.
+3. Dále provede iteraci záznamů v `LOG` a používá `GENERATE` k vyvolání `create_structure` metody obsažené v skriptu Python/Jython, který byl načten jako `myfuncs` . `LINE` slouží k předání aktuálního záznamu do funkce.
 4. Nakonec jsou výstupy do STDOUT pomocí `DUMP` příkazu. Tento příkaz zobrazí výsledky po dokončení operace.
 
 ### <a name="create-file"></a>Vytvořit soubor
@@ -594,7 +594,7 @@ Informace o chybě (STDERR) a výsledek úlohy (STDOUT) jsou také protokolován
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 
-Pokud potřebujete načíst moduly Pythonu, které nejsou k dispozici ve výchozím nastavení, přečtěte si téma [nasazení modulu do Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
+Pokud potřebujete načíst moduly Pythonu, které nejsou k dispozici ve výchozím nastavení, přečtěte si téma [nasazení modulu do Azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight).
 
 Další způsoby použití prasete, podregistru a informací o použití MapReduce najdete v následujících dokumentech:
 

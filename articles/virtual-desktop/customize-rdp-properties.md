@@ -3,15 +3,15 @@ title: Přizpůsobení vlastností protokolu RDP pomocí prostředí PowerShell 
 description: Postup přizpůsobení vlastností protokolu RDP pro virtuální počítače s Windows pomocí rutin prostředí PowerShell.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009099"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462220"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) pro fond hostitelů
 
@@ -21,6 +21,16 @@ ms.locfileid: "88009099"
 Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu hostitelů, jako je například prostředí pro více monitorů a přesměrování zvuku, umožňuje poskytovat optimální prostředí pro uživatele podle svých potřeb. Vlastnosti protokolu RDP na virtuálním počítači s Windows můžete přizpůsobit buď pomocí Azure Portal, nebo pomocí parametru *-CustomRdpProperty* v rutině **Update-AzWvdHostPool** .
 
 Úplný seznam podporovaných vlastností a jejich výchozích hodnot najdete v tématu [podporované nastavení souboru RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
+
+## <a name="default-rdp-file-properties"></a>Výchozí vlastnosti souboru RDP
+
+Soubory RDP mají ve výchozím nastavení následující vlastnosti:
+
+|Vlastnost RDP|Na ploše|Jako Vzdálená aplikace RemoteApp|
+|---|---|---|
+|Režim více monitorů|Povoleno|–|
+|Přesměrování jednotky povolena|Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty|Jednotky, schránka a tiskárny|
+|Režim vzdáleného zvuku|Přehrát místně|Přehrát místně|
 
 ## <a name="prerequisites"></a>Požadavky
 

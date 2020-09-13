@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 10d901f73006051e8b1ddd02aeb36b229c6a7761
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270061"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482313"
 ---
 # <a name="how-to-export-fhir-data"></a>Jak exportovat FHIR data
 
@@ -38,7 +38,14 @@ Příkaz $export lze také použít k exportu neidentifikovaných dat ze serveru
 |Parametr dotazu            | Příklad |Volitelnost| Popis|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |DemoConfig.jsna|Požadováno pro neidentifikovaný export |Název konfiguračního souboru [Tady](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)najdete formát konfiguračního souboru. Tento soubor by měl být uložený v kontejneru s názvem **Anonyme** v rámci stejného účtu úložiště Azure, který je nakonfigurovaný jako umístění exportu. |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Volitelné pro neidentifikovaný export|Toto je značka ETag konfiguračního souboru. Značku ETag můžete získat pomocí Průzkumníka služby Azure Storage z vlastnosti objektu BLOB.|
+| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Volitelné pro neidentifikovaný export|Toto je značka ETag konfiguračního souboru. Značku ETag můžete získat pomocí Průzkumník služby Azure Storage z vlastnosti objektu BLOB.|
 
 > [!IMPORTANT]
 > Počítejte s tím, že při exportování nezpracovaných i neidentifikovaných operací exportu do stejného účtu úložiště Azure zadaného jako součást konfigurace exportu. Doporučuje se používat různé kontejnery odpovídající různým neidentifikovaným konfiguracím a spravovat přístup uživatelů na úrovni kontejneru.
+
+## <a name="next-steps"></a>Další kroky
+
+V tomto článku jste zjistili, jak exportovat FHIR prostředky pomocí příkazu $export, včetně neidentifikovaných dat. V dalším kroku můžete nakonfigurovat exportovaná data:
+ 
+>[!div class="nextstepaction"]
+>[konfigurovat exportovaná data](configure-export-data.md)

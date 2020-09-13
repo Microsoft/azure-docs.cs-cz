@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286652"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468653"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 
@@ -33,7 +33,7 @@ K Cloud Shell můžete přistupovat třemi způsoby:
 
     ![Ikona pro spuštění Cloud Shell z Azure Portal](media/overview/portal-launch-icon.png)
 
-- **Fragmenty kódu**: v [docs.Microsoft.com](https://docs.microsoft.com) a [Microsoft Learn](https://docs.microsoft.com/learn/)vyberte tlačítko **vyzkoušet** , které se zobrazí v rozhraní příkazového řádku Azure CLI a Azure PowerShell fragmenty kódu:
+- **Fragmenty kódu**: v [docs.Microsoft.com]() a [Microsoft Learn](/learn/)vyberte tlačítko **vyzkoušet** , které se zobrazí v rozhraní příkazového řádku Azure CLI a Azure PowerShell fragmenty kódu:
 
     ```azurecli-interactive
     az account show
@@ -87,8 +87,8 @@ Cloud Shell je flexibilní nástroj, který lze použít z:
 
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure)
-* [Dokumentace k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/)
+* [Dokumentace k Azure CLI](/cli/azure)
+* [Dokumentace k Azure PowerShellu](/powershell/azure/)
 * [Mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code rozšíření účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
@@ -111,7 +111,7 @@ Přečtěte si další informace o tom, jak připojit [Nový nebo existující �
 * Cloud Shell přetrvává $HOME použití image o velikosti 5 GB uchovávané ve sdílené složce
 * Oprávnění se nastaví jako běžný uživatel se systémem Linux v bash.
 
-Přečtěte si další informace o funkcích v [bash v Cloud Shell](features.md) a [powershellu v Cloud Shell](features-powershell.md).
+Přečtěte si další informace o funkcích v [bash v Cloud Shell](features.md) a [powershellu v Cloud Shell](./features.md).
 
 ## <a name="pricing"></a>Ceny
 

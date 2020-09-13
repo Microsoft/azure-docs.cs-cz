@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482526"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462645"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
@@ -27,7 +27,7 @@ A. Azure synapse je analytická služba, která přináší dohromady datové sk
 
 Otázka: Co se stalo s Azure SQL Data Warehouse?
 
-A. Azure synapse je vyvíjejí se Azure SQL Data Warehouse (SQL DW). Provedli jsme stejný oborový datový sklad na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v produkčním prostředí s využitím Azure synapse. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure synapse se Azure SQL Data Warehouse vyvinul. Provedli jsme stejný oborový datový sklad na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v produkčním prostředí s využitím Azure synapse. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 Otázka: Co je synapse fond SQL?
 
@@ -75,7 +75,7 @@ A. [Lístky podpory](sql-data-warehouse-get-started-create-support-ticket.md) mo
 
 Otázka: Jaké datové typy jsou podporovány?
 
-A. Podívejte se na [datové typy](sql-data-warehouse-tables-data-types.md).
+A. Podívejte se na  [datové typy](sql-data-warehouse-tables-data-types.md).
 
 Otázka: Jaké funkce tabulky podporujete?
 
@@ -85,7 +85,7 @@ A. Je podporováno mnoho funkcí. Funkce, které nejsou podporované, najdete v 
 
 Otázka: Podporuje synapse fond SQL rozhraní REST API?
 
-A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je k dispozici také v synapse fondu SQL. Informace o rozhraní API najdete v rámci stránek nebo [databází](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)v dokumentaci k REST.
+A. Yes. Většina funkcí REST, které je možné používat s SQL Database, je k dispozici také v synapse fondu SQL. Informace o rozhraní API najdete v rámci stránek nebo [databází](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)v dokumentaci k REST.
 
 ## <a name="loading"></a>Načítá
 

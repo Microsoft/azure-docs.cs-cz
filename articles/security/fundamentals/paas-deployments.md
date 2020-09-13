@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461697"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462356"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -101,10 +101,10 @@ V následující tabulce jsou uvedeny hrozby pro rozteč a jejich ukázková ome
 | Hrozba | Vlastnost zabezpečení | Potenciální omezení na platformě Azure |
 | --- | --- | --- |
 | Falšování identity | Ověřování | Vyžadovat připojení HTTPS. |
-| Falšování | Integrita | Ověřte certifikáty TLS/SSL. |
-| Popírání odpovědnosti | Neodmítnutí | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure. |
-| Zpřístupnění informací | Důvěrnost | Šifrování citlivých dat v klidovém formátu pomocí [certifikátů služby](/rest/api/appservice/certificates). |
-| Odmítnutí služby | Dostupnost | Monitoruje metriky výkonu pro potenciální podmínky odepření služeb. Implementujte filtry připojení. |
+| Manipulace | Integrita | Ověřte certifikáty TLS/SSL. |
+| Popírání odpovědnosti | Neodvolatelnost | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure. |
+| Zveřejnění informací | Důvěrnost | Šifrování citlivých dat v klidovém formátu pomocí [certifikátů služby](/rest/api/appservice/certificates). |
+| Odepření služby | Dostupnost | Monitoruje metriky výkonu pro potenciální podmínky odepření služeb. Implementujte filtry připojení. |
 | Zvýšení oprávnění | Autorizace | Použijte [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
 
 ## <a name="develop-on-azure-app-service"></a>Vývoj na Azure App Service
@@ -151,10 +151,10 @@ Fuzzy testuje je metoda pro hledání chyb programu (chyby kódu) tím, že posk
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jsme se zaměřili na výhody zabezpečení nasazení Azure PaaS a osvědčené postupy zabezpečení pro cloudové aplikace. Dále se seznamte s doporučenými postupy pro zabezpečení webových a mobilních řešení PaaS pomocí konkrétních služeb Azure. Začneme s Azure App Service, Azure SQL Database a Azure SQL Data Warehouse a Azure Storage. V případě, že budou k dispozici články o doporučených postupech pro jiné služby Azure, budou odkazy uvedeny v následujícím seznamu:
+V tomto článku jsme se zaměřili na výhody zabezpečení nasazení Azure PaaS a osvědčené postupy zabezpečení pro cloudové aplikace. Dále se seznamte s doporučenými postupy pro zabezpečení webových a mobilních řešení PaaS pomocí konkrétních služeb Azure. Začneme s Azure App Service, Azure SQL Database a Azure synapse Analytics a Azure Storage. V případě, že budou k dispozici články o doporučených postupech pro jiné služby Azure, budou odkazy uvedeny v následujícím seznamu:
 
 - [Azure App Service](paas-applications-using-app-services.md)
-- [Azure SQL Database a Azure SQL Data Warehouse](paas-applications-using-sql.md)
+- [Azure SQL Database a Azure synapse Analytics](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
 - Azure Cache for Redis
 - Azure Service Bus
@@ -166,4 +166,4 @@ V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and
 
 K dispozici jsou následující prostředky, které poskytují obecnější informace o zabezpečení Azure a souvisejících službách Microsoftu:
 * [Blog týmu pro zabezpečení Azure](https://blogs.msdn.microsoft.com/azuresecurity/) – aktuální informace o nejnovější verzi v zabezpečení Azure
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu.secure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu. secure@microsoft.com

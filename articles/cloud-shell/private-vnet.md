@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114655"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468534"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Nasazení Cloud Shell do služby Azure Virtual Network
 > [!NOTE]
@@ -52,7 +52,7 @@ V rámci vybrané virtuální sítě je nutné použít vyhrazenou podsíť pro 
 Profil sítě je šablona konfigurace sítě pro prostředky Azure, které určují určité vlastnosti sítě pro daný prostředek.
 
 ### <a name="azure-relay"></a>Azure Relay
-[Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) umožňuje dva koncové body, které nejsou přímo dosažitelné pro komunikaci. V tomto případě se používá k tomu, aby prohlížeč správce mohl komunikovat s kontejnerem v privátní síti.
+[Azure Relay](../azure-relay/relay-what-is-it.md) umožňuje dva koncové body, které nejsou přímo dosažitelné pro komunikaci. V tomto případě se používá k tomu, aby prohlížeč správce mohl komunikovat s kontejnerem v privátní síti.
 
 Instanci Azure Relay použitou pro Cloud Shell lze nakonfigurovat tak, aby mohla určovat, které sítě mají přístup k prostředkům kontejneru: 
 - Přístup z veřejného Internetu: v této konfiguraci Cloud Shell poskytuje způsob, jak oslovit jiné interní prostředky zvenčí. 
@@ -66,7 +66,7 @@ Stejně jako ve standardních Cloud Shell se při použití Cloud Shell ve virtu
 
 * V rámci verze Preview se pro Cloud Shell ve virtuální síti podporuje méně oblastí. V současné době je to omezeno na: WestUS a WestCentralUS.
 
-* [Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) není bezplatná služba, podívejte se prosím na jejich [ceny](https://azure.microsoft.com/pricing/details/service-bus/). Ve scénáři Cloud Shell se jedno hybridní připojení používá pro každého správce, zatímco používají Cloud Shell. Po dokončení relace Cloud Shell bude připojení automaticky ukončeno.
+* [Azure Relay](../azure-relay/relay-what-is-it.md) není bezplatná služba, podívejte se prosím na jejich [ceny](https://azure.microsoft.com/pricing/details/service-bus/). Ve scénáři Cloud Shell se jedno hybridní připojení používá pro každého správce, zatímco používají Cloud Shell. Po dokončení relace Cloud Shell bude připojení automaticky ukončeno.
 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
@@ -114,4 +114,4 @@ Připojení k Cloud Shell se zobrazí výzva s prvním prostředím pro spuště
 ![Ukazuje nastavení pro první prostředí s izolací virtuální sítě Cloud Shell.](media/private-vnet/vnet-settings.png)
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o virtuálních sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+[Další informace o virtuálních sítích Azure](../virtual-network/virtual-networks-overview.md)

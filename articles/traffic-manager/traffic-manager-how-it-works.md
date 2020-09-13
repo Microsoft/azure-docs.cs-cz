@@ -3,7 +3,7 @@ title: Jak funguje Azure Traffic Manager | Microsoft Docs
 description: Tento článek vám pomůže pochopit, jak Traffic Manager směrovat provoz pro zajištění vysokého výkonu a dostupnosti webových aplikací.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: rohink
-ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294854"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462628"
 ---
 # <a name="how-traffic-manager-works"></a>Jak Traffic Manager funguje
 
@@ -62,8 +62,8 @@ Když klient požádá o stránku `https://partners.contoso.com/login.aspx` , pr
     - Aktuální stav každého koncového bodu, jak je stanoven Traffic Managermi kontrolami stavu. Další informace najdete v tématu [Traffic Manager monitorování koncového bodu](traffic-manager-monitoring.md).
     - Vybraná metoda směrování provozu. Další informace najdete v tématu [metody směrování Traffic Manager](traffic-manager-routing-methods.md).
 
-5. Zvolený koncový bod se vrátí jako jiný záznam CNAME DNS. V takovém případě se vám budeme vracet contoso-us.cloudapp.net.
-6. V dalším kroku najde rekurzivní služba DNS názvové servery pro doménu cloudapp.net. Kontaktuje tyto názvové servery, aby požádaly o záznam DNS ' contoso-us.cloudapp.net '. Vrátí se záznam DNS, který obsahuje IP adresu koncového bodu služby založeného na USA.
+5. Zvolený koncový bod se vrátí jako jiný záznam CNAME DNS. V takovém případě se vám budeme vracet contoso-eu.cloudapp.net.
+6. V dalším kroku najde rekurzivní služba DNS názvové servery pro doménu cloudapp.net. Kontaktuje tyto názvové servery, aby požádaly o záznam DNS ' contoso-eu.cloudapp.net '. Vrátí se záznam DNS, který obsahuje IP adresu koncového bodu služby založeného na EU.
 7. Rekurzivní služba DNS slučuje výsledky a vrátí jednu odpověď DNS klientovi.
 8. Klient obdrží výsledky DNS a připojí se k dané IP adrese. Klient se připojí ke koncovému bodu služby Application Service přímo, nikoli prostřednictvím Traffic Manager. Vzhledem k tomu, že se jedná o koncový bod HTTPS, klient provede nezbytnou metodu handshake protokolu SSL/TLS a pak vytvoří požadavek HTTP GET na stránku/Login.aspx.
 

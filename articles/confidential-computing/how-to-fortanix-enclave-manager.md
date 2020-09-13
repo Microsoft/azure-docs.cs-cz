@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826289"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462424"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Postupy: spuštění aplikace pomocí Fortanix enklávy Manageru 
 
@@ -24,7 +24,7 @@ Spusťte aplikaci v důvěrné výpočetní službě Azure pomocí [Fortanix enk
 Fortanix je dodavatel softwaru od jiného výrobce s produkty a službami postavenými nad infrastrukturou Azure. Jiní poskytovatelé třetích stran nabízejí podobné důvěrné výpočetní služby v Azure.
 
 > [!Note] 
- > PRODUKTY, NA KTERÉ SE ODKAZUJE V TOMTO DOKUMENTU, NEJSOU POD KONTROLOU MICROSOFTU. SPOLEČNOST MICROSOFT POSKYTUJE TYTO INFORMACE JENOM JAKO POHODLÍ A ODKAZ NA TYTO PRODUKTY OD JINÝCH VÝROBCŮ NEPŘEDPOKLÁDÁ, ŽE MICROSOFT.
+ > Produkty, na které se odkazuje v tomto dokumentu, nejsou pod kontrolou Microsoftu. Společnost Microsoft poskytuje tyto informace jenom jako pohodlí a odkaz na tyto produkty od jiných výrobců nepředpokládá, že Microsoft.
 
 
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak převést Image aplikace na tajnou bitovou kopii 
  Pro podporu specifickou pro Fortanix se připojte k [komunitě pracovní rezervy Fortanix](https://fortanix.com/community/) a použijte #enclavemanager kanálu.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Pokud nemáte účet správce Fortanix enklávy, [Zaregistrujte](https://em.fortanix.com/auth/sign-up) se před tím, než začnete.
 1. Soukromý registr [Docker](https://docs.docker.com/) pro nabízení převedených imagí aplikace
@@ -43,7 +43,7 @@ V tomto kurzu se dozvíte, jak převést Image aplikace na tajnou bitovou kopii 
 > Bezplatné zkušební účty nemají přístup k virtuálním počítačům použitým v tomto kurzu. Upgradujte prosím na předplatné s průběžnými platbami.
 
 ## <a name="add-an-application-to-fortanix-enclave-manager"></a>Přidání aplikace do Fortanix enklávy Manageru
-1. Přihlaste se k [FORTANIX em](https://fortanix.com)
+1. Přihlášení k [Fortanix enklávy Manageru (FORTANIX em)](https://em.fortanix.com)
 1. Přejděte na stránku **účty** a vyberte **Přidat účet** a vytvořte nový účet. 
     
 ![Vytvoření účtu](media/how-to-fortanix-enclave-manager/create-account.png)
@@ -120,7 +120,7 @@ Když se vytvoří agent uzlu Fortanix, nasadí se virtuální počítač, síť
 1. Na této stránce budete zadávat informace pro nasazení virtuálního počítače. Konkrétně tento virtuální počítač je virtuální počítač s podporou Intel SGX (DCsv2-Series) z Azure s nainstalovaným softwarem agenta Fortanix. Agent uzlu umožní, aby se převedená image bezpečně spouštěla na uzlech Intel SGX v Azure.  Vyberte **předplatné** a **skupinu prostředků** , do kterých chcete nasadit virtuální počítač a přidružené prostředky. 
  
     > [!NOTE]
-    > Existují omezení při nasazování virtuálních počítačů řady DCsv2-Series v Azure. Možná budete muset požádat o kvótu pro další jádra. Další informace najdete v tématu věnovaném [důvěrným výpočetním řešením na virtuálních počítačích Azure](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solution) . 
+    > Existují omezení při nasazování virtuálních počítačů řady DCsv2-Series v Azure. Možná budete muset požádat o kvótu pro další jádra. Další informace najdete v tématu věnovaném [důvěrným výpočetním řešením na virtuálních počítačích Azure](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) . 
 
 1. Vyberte dostupnou oblast.
 1. Do pole **název uzlu** zadejte název vašeho virtuálního počítače. 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/01/2020
+ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229867"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469860"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -39,7 +39,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Uživatelé v rolích správce zabezpečení, čtenář zabezpečení, čtenář sestav, Správce aplikací a role správce cloudové aplikace
@@ -85,7 +85,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -95,11 +95,11 @@ Ve výchozím zobrazení můžete vybrat následující filtry:
 
 - Identita
 - Datum
-- Status
+- Stav
 - Akce
 
 
-![Filtr](./media/concept-provisioning-logs/default-filter.png "Filtrovat")
+![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtr")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -131,7 +131,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Další
+- Jiné
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -172,10 +172,10 @@ Podrobnosti jsou seskupené podle následujících kategorií:
 
 - Upravené vlastnosti
 
-- Souhrn
+- Shrnutí
 
 
-![Filtr](./media/concept-provisioning-logs/provisioning-tabs.png "Karty")
+![Podrobnosti zřizování](./media/concept-provisioning-logs/provisioning-tabs.png "Karty")
 
 
 
@@ -190,7 +190,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Filtr](./media/concept-provisioning-logs/steps.png "Filtrovat")
+![Postup](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -204,7 +204,7 @@ Karta **Poradce při potížích a doporučeních** poskytuje kód chyby a důvo
 **Změněné vlastnosti** zobrazují starou hodnotu a novou hodnotu. V případech, kdy není k dispozici stará hodnota sloupce stará hodnota je prázdná. 
 
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro objekt ve zdrojovém a cílovém systému. 
 
@@ -214,11 +214,13 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 - Atribut Change ID můžete použít jako jedinečný identifikátor. To je například užitečné při interakci s produktovou podporou.
 
-- V tuto chvíli není k dispozici možnost stahovat data zřizování.
+- V tuto chvíli není k dispozici možnost stahovat data zřizování jako soubor CSV, ale data můžete exportovat pomocí [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http).
 
 - Služba Log Analytics momentálně není podporovaná.
 
 - Pro uživatele, kteří nejsou v oboru, se můžou zobrazit vynechané události. To je očekáváno, zejména v případě, že je rozsah synchronizace nastaven na všechny uživatele a skupiny. Naše služba vyhodnotí všechny objekty v tenantovi, a to i ty, které jsou mimo rozsah. 
+
+- Protokoly zřizování nejsou aktuálně k dispozici v cloudu pro státní správu. Pokud nemůžete získat přístup k protokolům zřizování, použijte prosím jako dočasné řešení protokoly auditu.  
 
 ## <a name="error-codes"></a>Kódy chyb
 
@@ -244,6 +246,7 @@ Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, kte
 |DuplicateSourceEntries | Operaci nelze dokončit, protože byl nalezen více než jeden uživatel s nakonfigurovanými shodnými atributy. Odeberte duplicitního uživatele nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](../app-provisioning/customize-application-attributes.md).|
 |ImportSkipped | Při vyhodnocování každého uživatele se pokusíme importovat uživatele ze zdrojového systému. K této chybě obvykle dochází v případě, že uživatel, který naimportoval, nemá vlastnost Matching definovanou v mapování atributů. Bez hodnoty přítomné v objektu User pro atribut Matching nemůžeme vyhodnotit rozsahy, shodující se ani exportovat změny. Všimněte si, že přítomnost této chyby neindikuje, že se uživatel nachází v oboru, protože pro uživatele zatím nehodnotili rozsah.|
 |EntrySynchronizationSkipped | Služba zřizování úspěšně provedla dotaz na zdrojový systém a identifikovala uživatele. U uživatele se neuskutečnila žádná další akce, která se přeskočila. Přeskočení může být způsobeno tím, že uživatel je mimo rozsah nebo uživatel, který už v cílovém systému existuje, a nevyžaduje žádné další změny.|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Při provádění požadavku GET k načtení uživatele nebo skupiny přijali v odpovědi více uživatelů nebo skupin. Očekávali jsme, že odpověď bude v odpovědi dostávat jenom jeden uživatel nebo skupina. Pokud [například](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)provedeme požadavek GET na načtení skupiny a poskytneme filtr pro vyloučení členů a váš koncový bod SCIM vrátí členy, vygenerujeme tuto chybu.|
 
 ## <a name="next-steps"></a>Další kroky
 

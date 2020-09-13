@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855118"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483265"
 ---
 # <a name="data-storage"></a>Úložiště dat
 
@@ -24,7 +24,7 @@ Když vytvoříte prostředí Azure Time Series Insights Gen2, vytvoříte dva p
 * Prostředí Azure Time Series Insights Gen2, které se dá nakonfigurovat pro úložiště dat s teplou.
 * Účet Azure Storage pro úložiště studených dat.
 
-Data v teplém úložišti jsou k dispozici pouze prostřednictvím [rozhraní API pro dotazování časové řady](./time-series-insights-update-tsq.md) a v [Průzkumníkovi Azure Time Series Insights TSI](./time-series-insights-update-explorer.md). Vaše teplé úložiště bude obsahovat poslední data v rámci [doby uchování](./time-series-insights-update-plan.md#the-preview-environment) vybrané při vytváření prostředí Azure Time Series Insights Gen2.
+Data v teplém úložišti jsou dostupná jenom prostřednictvím [rozhraní API pro dotazy Time Series](./time-series-insights-update-tsq.md) a [Azure Time Series Insights Exploreru](./time-series-insights-update-explorer.md). Vaše teplé úložiště bude obsahovat poslední data v rámci [doby uchování](./time-series-insights-update-plan.md#the-preview-environment) vybrané při vytváření prostředí Azure Time Series Insights Gen2.
 
 Azure Time Series Insights Gen2 ukládá data z chladírny do úložiště objektů BLOB v Azure ve [formátu souboru Parquet](#parquet-file-format-and-folder-structure). Azure Time Series Insights Gen2 spravuje tato data studeného úložiště výhradně, ale je k dispozici pro čtení přímo jako standardních souborů Parquet.
 
@@ -58,7 +58,7 @@ Aby se zajistil výkon dotazů a dostupnost dat, neupravujte ani neodstraňujte 
 
 #### <a name="accessing-cold-store-data"></a>Přístup k datům z chladírenského úložiště
 
-Kromě přístupu ke svým datům z rozhraní API pro [Azure Time Series Insights TSI](./time-series-insights-update-explorer.md) a [dotazů časových řad](./time-series-insights-update-tsq.md)můžete také chtít získat přístup k datům přímo ze souborů Parquet uložených v chladírenském úložišti. Můžete například číst, transformovat a čistit data v Jupyter poznámkovém bloku a pak je použít ke školení modelu Azure Machine Learning ve stejném pracovním postupu Spark.
+Kromě přístupu k datům z rozhraní API [Azure Time Series Insights Exploreru](./time-series-insights-update-explorer.md) a [dotazů časových řad](./time-series-insights-update-tsq.md)můžete také chtít získat přístup k datům přímo ze souborů Parquet uložených v chladírenském úložišti. Můžete například číst, transformovat a čistit data v Jupyter poznámkovém bloku a pak je použít ke školení modelu Azure Machine Learning ve stejném pracovním postupu Spark.
 
 Pokud chcete získat přístup k datům přímo z účtu Azure Storage, potřebujete přístup pro čtení k účtu, který se používá k ukládání dat Azure Time Series Insights Gen2. Následně si můžete přečíst vybraná data na základě doby vytvoření souboru Parquet ve `PT=Time` složce popsané níže v části [Formát souboru Parquet](#parquet-file-format-and-folder-structure) .  Další informace o povolení přístupu pro čtení k vašemu účtu úložiště najdete v tématu [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9ae42bb29d1273e4f0f9c25803e8cc97b56ad95
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514446"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462407"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Výpis prostředků Azure Storage v C++
 
@@ -34,7 +34,7 @@ Každá z těchto metod je zobrazena pomocí různých přetížení pro různé
 
 ## <a name="asynchronous-versus-synchronous"></a>Asynchronní versus synchronní
 
-Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [knihovně REST jazyka c++](https://github.com/Microsoft/cpprestsdk), podstatně podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Příklad:
+Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [knihovně REST jazyka c++](https://github.com/Microsoft/cpprestsdk), podstatně podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Například:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -200,5 +200,5 @@ Další informace o Azure Storage a klientské knihovně pro C++ najdete v násl
 * [Použití Table Storage z C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Používání úložiště Queue z C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Dokumentace klientské knihovny Azure Storage pro C++ API.](https://azure.github.io/azure-storage-cpp/)
-* [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Blog týmu Azure Storage](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

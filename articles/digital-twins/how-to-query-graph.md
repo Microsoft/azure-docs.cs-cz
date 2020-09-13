@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055630"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468704"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -169,11 +169,47 @@ AND Room.$dtId IN ['room1', 'room2']
 
 Můžete **zkombinovat** libovolný z výše uvedených typů dotazu pomocí operátorů kombinace pro zahrnutí více podrobností v jednom dotazu. Tady jsou některé další příklady složených dotazů, které dotazují na více než jeden typ zdvojeného popisovače najednou.
 
-| Popis | Dotaz |
+| Popis | Dotazy |
 | --- | --- |
 | Ze zařízení, která jsou v *místnosti 123* , se vrátí zařízení MxChip, která obsluhují roli operátora. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Získejte vlákna, která mají relaci s názvem, *obsahuje* další nevlákenný identifikátor *ID1* | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | Získat všechny místnosti tohoto modelu místnosti, které jsou obsaženy v *floor11* | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
+
+## <a name="reference-expressions-and-conditions"></a>Reference: výrazy a podmínky
+
+Tato část obsahuje referenční informace o operátorech a funkcích, které jsou k dispozici při psaní dotazů digitálních vláken Azure.
+
+### <a name="operators"></a>Operátory
+
+Podporovány jsou následující operátory:
+
+| Rodina | Operátory |
+| --- | --- |
+| Logické |A, NEBO, NOT |
+| Porovnání |=,! =, <, >, <=, >= |
+| Contains | V NZA |
+
+### <a name="functions"></a>Functions
+
+Podporují se následující funkce kontroly a přetypování typů:
+
+| Funkce | Popis |
+| -------- | ----------- |
+| IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . Hodnoty DateTime, typy objektů a pole nejsou podporovány. |
+| IS_OF_MODEL | Vrátí logickou hodnotu, která označuje, jestli zadaný typ vlákna odpovídá zadanému typu modelu. |
+| IS_BOOL | Vrací logickou hodnotu označující, zda je typ zadaného výrazu logická hodnota. |
+| IS_NUMBER | Vrací logickou hodnotu označující, zda je typ zadaného výrazu číslo. |
+| IS_STRING | Vrací logickou hodnotu označující, zda je typ zadaného výrazu řetězec. |
+| IS_NULL | Vrací logickou hodnotu označující, zda je typ zadaného výrazu null. |
+| IS_PRIMITIVE | Vrací logickou hodnotu označující, zda je typ zadaného výrazu primitivní (řetězec, logická hodnota, číselná hodnota nebo `null` ). |
+| IS_OBJECT | Vrací logickou hodnotu označující, zda je typ zadaného výrazu objekt JSON. |
+
+Podporovány jsou následující řetězcové funkce:
+
+| Funkce | Popis |
+| -------- | ----------- |
+| STARTS_WITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
+| ENDS_WITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |
 
 ## <a name="run-queries-with-an-api-call"></a>Spouštění dotazů pomocí volání rozhraní API
 

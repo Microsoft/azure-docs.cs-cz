@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085867"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462560"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrávání dat pro úlohy Apache Hadoop v HDInsight
 
@@ -68,7 +68,7 @@ nebo
 
 `wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
-Seznam dalších příkazů Hadoop, které pracují se soubory, najdete v tématu.[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Seznam dalších příkazů Hadoop, které pracují se soubory, najdete v tématu. [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
 > V clusterech Apache HBA je výchozí velikost bloku použitá při zápisu dat 256 KB. I když při použití rozhraní API HBA nebo rozhraní REST API funguje bez použití `hadoop` příkazů nebo `hdfs dfs` k zápisu dat větších než ~ 12 GB, dojde k chybě. Další informace najdete v tématu [výjimka úložiště pro zápis do objektu BLOB](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
@@ -80,7 +80,7 @@ K dispozici je také několik aplikací, které poskytují grafické rozhraní p
 | Klient | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio nástroje pro HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [CloudBerry Explorer pro Microsoft Azure](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
@@ -88,7 +88,7 @@ K dispozici je také několik aplikací, které poskytují grafické rozhraní p
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Připojit Azure Storage jako místní disk
 
-Viz možnost [připojit Azure Storage jako místní disk](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Viz možnost [připojit Azure Storage jako místní disk](https://docs.microsoft.com/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
 
 ## <a name="upload-using-services"></a>Nahrávání pomocí služeb
 

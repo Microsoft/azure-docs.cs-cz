@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f59f8af3f9a845f7e8663877f6d806c33b216a41
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612550"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482840"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On SQL Server v Azure Virtual Machines
 
@@ -40,7 +40,7 @@ Zobrazit související články:
 
 Procházením tohoto článku vytvoříte a nakonfigurujete nástroj pro vyrovnávání zatížení v Azure Portal. Po dokončení procesu nakonfigurujete cluster tak, aby používal IP adresu z nástroje pro vyrovnávání zatížení pro naslouchací proces skupiny dostupnosti.
 
-## <a name="create-and-configure-the-load-balancer-in-the-azure-portal"></a>Vytvoření a konfigurace nástroje pro vyrovnávání zatížení v Azure Portal
+## <a name="create--configure-load-balancer"></a>Vytvoření & konfigurace nástroje pro vyrovnávání zatížení 
 
 V této části úlohy proveďte následující kroky:
 
@@ -71,7 +71,7 @@ Nejdřív vytvořte Nástroj pro vyrovnávání zatížení.
    | --- | --- |
    | **Název** |Textový název představující Nástroj pro vyrovnávání zatížení. Například **sqlLB**. |
    | **Typ** |**Interní**: většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí**: umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
-   | **Skladová jednotka (SKU)** |**Standard**: vyžaduje se v případě, že instance SQL jsou v jiné skupině dostupnosti než Nástroj pro vyrovnávání zatížení. </br> **Basic**: výchozí možnost. |
+   | **Skladová jednotka (SKU)** |**Basic**: výchozí možnost. Platí pouze v případě, že instance SQL Server jsou ve stejné skupině dostupnosti. </br> **Standardní**: upřednostňovaná. Platí, pokud jsou instance SQL Server ve stejné skupině dostupnosti. Vyžaduje se, pokud jsou vaše SQL Server instance v různých zónách dostupnosti. |
    | **Virtuální síť** |Vyberte virtuální síť, ve které se nacházejí instance SQL Server. |
    | **Podsíť** |Vyberte podsíť, ve které jsou instance SQL Server. |
    | **Přiřazení IP adresy** |**staticky**. |

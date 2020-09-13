@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688078"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469911"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Vytvoření vnitřních map pomocí autora
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak vytvořit mapy vnitřních. V tomto kurzu se nau�
 > * Vytvoření funkce stateset pomocí vašich funkcí mapy a dat v datové sadě
 > * Aktualizace stateset funkcí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vytvoření vnitřních map:
 
@@ -117,10 +117,10 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
 
     :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Zkopírujte hodnotu klíče umístění.":::
 
-4. Spusťte novou metodu **Get** http na kartě tvůrce. do přidejte Azure Maps klíč primárního předplatného `status URL` . Vytvořte požadavek **Get** `status URL` v umístění, které jste zkopírovali v kroku 3. `status URL`Vypadá to jako následující adresa URL:
+4. Spusťte novou metodu **Get** http na kartě tvůrce. Přidejte k adresáři Azure Maps primární klíč předplatného `status URL` . Vytvořte požadavek **Get** `status URL` v umístění, které jste zkopírovali v kroku 3. `status URL`Vypadá to jako následující adresa URL:
 
     ```http
-    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
     Pokud se proces převodu ještě nedokončí, může se zobrazit něco podobného jako u následující odpovědi JSON:
@@ -208,7 +208,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 3. Vytvořte si požadavek **Get** na `statusURL` TILESET. K ověřování přidejte svůj primární klíč předplatného Azure Maps. Požadavek by měl vypadat jako na následující adrese URL:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 4. Po úspěšném dokončení požadavku **Get** http bude hlavička odpovědi obsahovat `tilesetId` pro vytvořenou TILESET. Zkopírujte `tilesetId` .

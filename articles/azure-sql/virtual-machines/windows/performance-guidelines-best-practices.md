@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a2ba89a9adec5443ed8ae2a10e0230874b571f46
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9abc6574117b194a626c2697f5297a13566e0447
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690234"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481786"
 ---
-# <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Pokyny k výkonu pro SQL Server v Azure Virtual Machines
+# <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Průvodce výkonem SQL Serveru ve službě Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Tento článek poskytuje pokyny pro optimalizaci SQL Serverho výkonu v Microsoft Azure Virtual Machines.
@@ -197,6 +197,19 @@ Pokud používáte prostory úložiště, při přidávání uzlů do clusteru n
 ![Zrušit kontrolu oprávněného úložiště](./media/performance-guidelines-best-practices/uncheck-eligible-cluster-storage.png)
 
 Pokud používáte prostory úložiště a nechcete zrušit kontrolu **Přidat do clusteru všechny opravňující úložiště**, systém Windows virtuální disky během procesu clusteringu odpojí. V důsledku toho se neobjeví ve Správci disků nebo v Průzkumníkovi, dokud se prostory úložiště z clusteru neodstraní a znovu nepřipojí přes PowerShell. Prostory úložiště seskupují více disků do fondů úložiště. Další informace najdete v tématu [prostory úložiště](/windows-server/storage/storage-spaces/overview).
+
+## <a name="multiple-instances"></a>Několik instancí 
+
+Při nasazování více instancí SQL Server do jednoho virtuálního počítače Vezměte v úvahu následující osvědčené postupy: 
+
+- Nastavte maximální velikost paměti serveru pro každou instanci SQL Server a zajistěte, aby existovala zbývající paměť pro operační systém. Nezapomeňte aktualizovat omezení paměti pro instance SQL Server, pokud změníte, kolik paměti je přiděleno virtuálnímu počítači. 
+- Mít samostatné logické jednotky (LUN) pro data, protokoly a databázi TempDB, protože všechny mají různé vzory úloh a nechcete je navzájem ovlivňovat. 
+- Důkladně otestujte své prostředí v rámci velkých produkčních úloh, abyste se ujistili, že dokáže zvládnout kapacitu zátěže ve špičce v rámci vaší aplikace jako SLA. 
+
+Příznaky přetížených systémů mohou zahrnovat, ale nejsou omezeny na vyčerpání pracovního vlákna, pomalých dob odezvy a/nebo v systémové paměti dispečera. 
+
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 46e2563b0d1c26c984616b523a367c8b2cff7aaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038497"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482793"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Konfigurace skupiny dostupnosti pro SQL Server na virtuálním počítači Azure (Azure Portal-Preview)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ Pomocí Azure Portal vytvořte nový cluster nebo zaveďte existující cluster 
    > Tato funkce je aktuálně ve verzi Preview a je nasazená, takže pokud vaše požadovaná oblast není k dispozici, vraťte se brzy. 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci skupiny dostupnosti Always On pomocí Azure Portal musíte mít následující požadavky: 
 
@@ -74,9 +74,14 @@ Pokud ještě nemáte existující cluster, vytvořte ho pomocí Azure Portal s 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Zadejte přihlašovací údaje pro účet služby SQL, účet operátora clusteru a účet Bootstrap clusteru.":::
 
 1. Vyberte SQL Server virtuálních počítačů, které chcete přidat do clusteru. Všimněte si, zda je vyžadováno restartování, a postupujte opatrně. Budou viditelné jenom virtuální počítače, které jsou zaregistrované u poskytovatele prostředků virtuálních počítačů SQL VM v režimu úplné správy a jsou ve stejném umístění, doméně a ve stejné virtuální síti jako primární virtuální počítač SQL Server. 
-1. Vyberte **použít** a vytvořte cluster. 
+1. Vyberte **použít** a vytvořte cluster. Stav nasazení můžete zjistit v **protokolu aktivit** , který je přístupný z ikony zvonku v horním navigačním panelu. 
+1. Aby byl cluster s podporou převzetí služeb při selhání podporovaný společností Microsoft, musí projít ověřením clusteru. Připojte se k virtuálnímu počítači pomocí upřednostňované metody (například protokol RDP (Remote Desktop Protocol) (RDP)) a před dalším pokračováním ověřte, že cluster projde ověřením. Pokud to neuděláte, zastavte cluster v nepodporovaném stavu. Cluster můžete ověřit pomocí Správce clusteru s podporou převzetí služeb při selhání (FCM) nebo následujícího příkazu PowerShellu:
 
-Stav nasazení můžete zjistit v **protokolu aktivit** , který je přístupný z ikony zvonku v horním navigačním panelu. 
+    ```powershell
+    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+    ```
+    
+
 
 ### <a name="onboard-existing-cluster"></a>Připojit existující cluster
 
@@ -93,6 +98,8 @@ Postup je následující:
 
 1. Zkontrolujte nastavení clusteru. 
 1. Pokud chcete pokračovat, vyberte **použít** pro připojení clusteru a pak na výzvu vyberte **Ano** .
+
+
 
 
 ## <a name="create-availability-group"></a>Vytvořit skupinu dostupnosti

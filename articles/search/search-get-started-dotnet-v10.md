@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002432"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462084"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí knihovny Microsoft. Azure. Search v10 za účelem Client Library
 
@@ -27,12 +27,12 @@ Pro nová řešení doporučujeme novou Azure.Search.Docknihovnu uments. Úvodn�
 
 Vytvořte konzolovou aplikaci .NET Core v jazyce C#, která vytvoří, načte a zadá dotaz na index služby Azure Kognitivní hledání pomocí sady Visual Studio a [Microsoft. Azure. Search Client](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)Library. 
 
-Tento článek vysvětluje, jak vytvořit aplikaci. Můžete si také [Stáhnout a spustit úplnou aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10).
+Tento článek vysvětluje, jak vytvořit aplikaci. Můžete si také [Stáhnout a spustit úplnou aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10).
 
 > [!NOTE]
 > Ukázkový kód v tomto článku používá pro jednoduchost synchronní metody Azure Kognitivní hledání verze 10 .NET SDK. U produkčních scénářů ale doporučujeme používat asynchronní metody ve vašich vlastních aplikacích, abyste je zachovali a mohli reagovat. Můžete například použít `CreateAsync` a `DeleteAsync` místo `Create` a `Delete` .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
@@ -107,9 +107,9 @@ Tento krok je nutný k vytváření smysluplného výstupu v konzole nástroje. 
 
 1. Přidejte do projektu dvě prázdné definice tříd: Address.Methods.cs, Hotel.Methods.cs
 
-1. V Address.Methods.cs přepište výchozí obsah následujícím kódem, [řádky 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
+1. V Address.Methods.cs přepište výchozí obsah následujícím kódem, [řádky 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
 
-1. Na Hotel.Methods.cs zkopírujte [řádky 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
+1. Na Hotel.Methods.cs zkopírujte [řádky 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
 
 ## <a name="1---create-index"></a>1. vytvoření indexu
 
@@ -553,7 +553,7 @@ V této části se přidávají dvě části funkčnosti: logika dotazů a výsl
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

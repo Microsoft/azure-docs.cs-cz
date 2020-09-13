@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/13/2020
-ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/03/2020
+ms.openlocfilehash: 87ccb28f527082dccee338396b460124652c0e76
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539206"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462696"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Podporované funkce Edge SQL Azure (Preview) 
 
@@ -67,8 +67,8 @@ Následující seznam obsahuje SQL Server 2019 o funkcích systému Linux, kter�
 | Oblast | Nepodporovaná funkce nebo služba |
 |-----|-----|
 | **Návrh databáze** | OLTP v paměti a související příkazy DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy. |
-| &nbsp; | `HierarchyID`datový typ a související příkazy jazyka DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy. |
-| &nbsp; | `Spatial`datový typ a související příkazy jazyka DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy. |
+| &nbsp; | `HierarchyID` datový typ a související příkazy jazyka DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy. |
+| &nbsp; | `Spatial` datový typ a související příkazy jazyka DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy. |
 | &nbsp; | Stretch DB a souvisejících příkazů DDL a funkcí jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy. |
 | &nbsp; | Fulltextové indexy a hledání a související příkazy jazyka DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy.|
 | &nbsp; | `FileTable`, `FILESTREAM` a související příkazy DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy.|
@@ -89,6 +89,10 @@ Následující seznam obsahuje SQL Server 2019 o funkcích systému Linux, kter�
 | &nbsp; | Zobrazení katalogu data a času závislá na CLR, funkce a klauzule dotazu. |
 | &nbsp; | Rozšíření fondu vyrovnávací paměti. |
 | &nbsp; | Databázový e-mail. |
+| &nbsp; | Service Broker |
+| &nbsp; | Správa na základě zásad |
+| &nbsp; | Datový sklad pro správu |
+| &nbsp; | Databáze s omezením |
 | **Agent SQL Server** |  Subsystémy: CmdExec, PowerShell, čtečka front, SSIS, SSAS a SSRS. |
 | &nbsp; | Generoval. |
 | &nbsp; | Spravovaná záloha. |

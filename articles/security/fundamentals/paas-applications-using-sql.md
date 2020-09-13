@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení databází PaaS v Azure | Microsoft Docs
-description: 'Přečtěte si o Azure SQL Database a SQL Data Warehouse osvědčených postupech zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. '
+description: 'Přečtěte si o Azure SQL Database a Azure synapse Analytics Security – osvědčené postupy pro zabezpečení webových a mobilních aplikací v PaaS. '
 services: security
 documentationcenter: na
 author: techlake
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 9c821a8898b61517dd5d6c872c8516bad6db6968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012955"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462526"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Osvědčené postupy pro zabezpečení databází PaaS v Azure
 
-V tomto článku probereme kolekci [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) a [SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) osvědčených postupů zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS (Platform as a Service). Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
+V tomto článku probereme kolekci [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Security Best Practices pro zabezpečení vašich webových a mobilních aplikací (PaaS) platforem typu platforma jako služba (). Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
 
-Azure SQL Database a SQL Data Warehouse poskytují službu relačních databází pro aplikace založené na internetu. Pojďme se podívat na služby, které vám pomůžou chránit vaše aplikace a data při použití Azure SQL Database a SQL Data Warehouse v nasazení PaaS:
+Azure SQL Database a Azure synapse Analytics poskytují službu relačních databází pro aplikace založené na internetu. Pojďme se podívat na služby, které vám pomůžou chránit vaše aplikace a data při použití Azure SQL Database a Azure synapse Analytics v nasazení PaaS:
 
 - Ověřování Azure Active Directory (místo ověřování SQL Server)
 - Azure SQL firewall
@@ -38,9 +38,9 @@ Azure SQL Database můžete nakonfigurovat tak, aby používaly jeden ze dvou ty
 
 - **Ověřování SQL** používá uživatelské jméno a heslo. Při vytváření serveru pro vaši databázi jste zadali přihlašovací jméno správce serveru pomocí uživatelského jména a hesla. Pomocí těchto přihlašovacích údajů se můžete na tomto serveru ověřit jako vlastník databáze.
 
-- **Ověřování Azure Active Directory** používá identity spravované pomocí Azure Active Directory a je podporované pro spravované a integrované domény. Pokud chcete použít Azure Active Directory ověřování, musíte vytvořit jiného správce serveru, který se nazývá správce Azure AD, což může spravovat uživatele a skupiny Azure AD. Tento správce také smí provádět všechny operace jako běžný správce serveru.
+- **Ověřování Azure Active Directory** používá identity spravované pomocí Azure Active Directory a je podporované pro spravované a integrované domény. Pokud chcete použít Azure Active Directory ověřování, musíte vytvořit jiného správce serveru, který se nazývá správce Azure AD, což může spravovat uživatele a skupiny Azure AD. Tento správce může také provádět všechny operace jako běžný správce serveru.
 
-[Ověřování Azure Active Directory](../../active-directory/develop/authentication-scenarios.md) je mechanismus připojení k Azure SQL Database a SQL Data Warehouse pomocí identit v Azure Active Directory (AD). Azure AD poskytuje alternativu k ověřování SQL Server, abyste mohli zastavit šíření uživatelských identit mezi databázovými servery. Ověřování Azure AD umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.  
+[Ověřování Azure Active Directory](../../active-directory/develop/authentication-scenarios.md) je mechanismus připojení k Azure SQL Database a Azure synapse Analytics pomocí identit v Azure Active Directory (AD). Azure AD poskytuje alternativu k ověřování SQL Server, abyste mohli zastavit šíření uživatelských identit mezi databázovými servery. Ověřování Azure AD umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>Výhody použití Azure AD místo ověřování SQL
 
@@ -50,12 +50,12 @@ Azure SQL Database můžete nakonfigurovat tak, aby používaly jeden ze dvou ty
 - Používá uživatele databáze s omezením k ověřování identit na úrovni databáze.
 - Podporuje ověřování založené na tokenech pro aplikace, které se připojují k SQL Database.
 - Podporuje federaci doménové federace s Active Directory Federation Services (AD FS) (ADFS) nebo nativním ověřováním uživatele a hesla pro místní službu Azure AD bez synchronizace domén.
-- Podporuje připojení z SQL Server Management Studio, která používají univerzální ověřování služby Active Directory, což zahrnuje [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). MFA zahrnuje silné ověřování s využitím celé řady možností ověření – telefonických hovorů, textových zpráv, čipových karet s kódem PIN nebo oznámení mobilní aplikace. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a SQL Data Warehouse](../../azure-sql/database/authentication-mfa-ssms-overview.md).
+- Podporuje připojení z SQL Server Management Studio, která používají univerzální ověřování služby Active Directory, což zahrnuje [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). MFA zahrnuje silné ověřování s využitím celé řady možností ověření – telefonických hovorů, textových zpráv, čipových karet s kódem PIN nebo oznámení mobilní aplikace. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a Azure synapse Analytics](../../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 Další informace o ověřování Azure AD najdete tady:
 
-- [Ověřování pomocí Azure Active Directory ověřování pomocí SQL Database, spravované instance nebo SQL Data Warehouse](../../azure-sql/database/authentication-aad-overview.md)
-- [Ověřování do Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
+- [Ověřování pomocí Azure Active Directory ověřování s využitím SQL Database, spravované instance nebo Azure synapse Analytics](../../azure-sql/database/authentication-aad-overview.md)
+- [Ověřování do Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
 - [Podpora ověřování na základě tokenů pro Azure SQL Database pomocí ověřování Azure AD](../../azure-sql/database/authentication-aad-overview.md)
 
 > [!NOTE]
@@ -69,12 +69,12 @@ SQL Database výchozí omezení zdrojové IP adresy umožňují přístup z jak�
 
 Další informace o bráně firewall Azure SQL a omezeních IP adres najdete v těchto tématech:
 
-- [Řízení přístupu Azure SQL Database a SQL Data Warehouse](../../azure-sql/database/logins-create-manage.md)
-- [Pravidla brány firewall služeb Azure SQL Database a SQL Data Warehouse](../../azure-sql/database/firewall-configure.md)
+- [Azure SQL Database a Azure synapse Analytics Access Control](../../azure-sql/database/logins-create-manage.md)
+- [Pravidla firewallu pro Azure SQL Database a Azure synapse Analytics](../../azure-sql/database/firewall-configure.md)
 
 ## <a name="encrypt-data-at-rest"></a>Šifrování neaktivních uložených dat
 
-Ve výchozím nastavení je povolená [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) . TDE transparentně šifruje data a soubory protokolů SQL Server, Azure SQL Database a Azure SQL Data Warehouse. TDE chrání před ohrožením přímého přístupu k souborům nebo jejich záloze. To umožňuje šifrování neaktivních dat bez změny stávajících aplikací. TDE by měl vždycky zůstat zapnuté. Tím se ale nezastaví útočník s použitím cesty Normal (běžný přístup). TDE poskytuje možnost dodržovat řadu zákonů, předpisů a pokynů v různých oborech.
+Ve výchozím nastavení je povolená [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) . TDE transparentně šifruje data a soubory protokolů SQL Server, Azure SQL Database a Azure synapse Analytics. TDE chrání před ohrožením přímého přístupu k souborům nebo jejich záloze. To umožňuje šifrování neaktivních dat bez změny stávajících aplikací. TDE by měl vždycky zůstat zapnuté. Tím se ale nezastaví útočník s použitím cesty Normal (běžný přístup). TDE poskytuje možnost dodržovat řadu zákonů, předpisů a pokynů v různých oborech.
 
 Azure SQL spravuje klíčové problémy související s TDE. Stejně jako u TDE musí být pro zajištění možnosti obnovy a při přesunu databází nutná zvláštní péče o místní péči. Ve složitějších scénářích je možné klíče v Azure Key Vault explicitně spravovat prostřednictvím správy rozšiřitelných klíčů. Přečtěte si téma [povolení TDE na SQL Server pomocí EKM](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm). To také umožňuje Bring Your Own Key (BYOK) prostřednictvím BYOK funkce trezory klíčů Azure.
 
@@ -86,7 +86,7 @@ Další opatření můžete použít k zabezpečení databáze, jako je napřík
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek vás zavedl do shromažďování SQL Database a SQL Data Warehousech osvědčených postupů zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. Další informace o zabezpečení nasazení PaaS najdete v těchto tématech:
+Tento článek vás zavedl do kolekce SQL Database a Azure synapse Analytics Security Best Practices pro zabezpečení webových a mobilních aplikací v PaaS. Další informace o zabezpečení nasazení PaaS najdete v těchto tématech:
 
 - [Zabezpečení nasazení PaaS](paas-deployments.md)
 - [Zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Services](paas-applications-using-app-services.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636122"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462730"
 ---
 # <a name="speech-service-for-telephony-data"></a>Služba řeči pro data telefonního subsystému
 
@@ -60,7 +60,7 @@ Nejedná se o neobvyklou hodnotu 35 procent volání podpory, které by volalo n
 
 ### <a name="translation"></a>Překlad
 
-Některé společnosti experimentují s poskytováním překladných přepisů z volání podpory cizích jazyků, takže správci doručování mohou pochopit, jak se zákazníci setkávají na celém světě. Naše možnosti [překladu](translation.md) se překročí. Pro velké množství národních prostředí můžeme přeložit zvuk na zvuk nebo zvuk na text.
+Některé společnosti experimentují s poskytováním překladných přepisů z volání podpory cizích jazyků, takže správci doručování mohou pochopit, jak se zákazníci setkávají na celém světě. Naše možnosti [překladu](/azure/cognitive-services/speech-service/speech-translation) se překročí. Pro velké množství národních prostředí můžeme přeložit zvuk na zvuk nebo zvuk na text.
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
@@ -70,7 +70,7 @@ Naše kompletní latence je výrazně nízká pro různé technologie, jako je n
 
 Naše nové hlasy jsou také odlišitelné od lidského hlasy. Naše hlasy vám umožní dát své robot své jedinečné preference.
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Search
 
 Další sešívání analýz je identifikace interakcí, u kterých došlo k určité události nebo zkušenostem. To se obvykle provádí s jedním ze dvou přístupů; buď vyhledávání ad hoc, kde uživatel jednoduše zadá frázi a systém odpoví, nebo více strukturovaný dotaz, kde analytik může vytvořit sadu logických příkazů, které identifikují scénář ve volání, a potom každé volání může být indexováno proti této sadě dotazů. Dobrým příkladem hledání je příkaz všudypřítomný dodržování předpisů "Toto volání se bude zaznamenávat z hlediska kvality... ". Mnohé společnosti chtějí zajistit, aby jejich agenti poskytovali tomuto právnímu omezení zákazníkům před tím, než se volání skutečně zaznamená. Většina analytických systémů má schopnost trendu chování zjištěného pomocí algoritmů dotazu nebo vyhledávání a vytváření sestav trendů je nakonec jednou z nejdůležitějších funkcí analytického systému. V [adresáři služby pro rozpoznávání](https://azure.microsoft.com/services/cognitive-services/directory/search/) koncových služeb je možné výrazně zvýšit možnosti indexování a vyhledávání.
 
@@ -103,7 +103,7 @@ Interně používáme výše uvedené technologie k podpoře zákaznických hovo
 
 Některé firmy se vyžadují pro přepisovat konverzací v reálném čase. Přepis v reálném čase se dá použít k identifikaci klíčových slov a triggerů, které jsou relevantní pro konverzaci, pro monitorování mínění, ke zlepšení dostupnosti nebo k poskytování překladů pro zákazníky a agenty, kteří nejsou nativními reproduktory.
 
-Pro scénáře, které vyžadují přepis v reálném čase, doporučujeme použít [sadu Speech SDK](speech-sdk.md). V současné době je převod řeči na text k dispozici ve [více než 20 jazycích](language-support.md)a sada SDK je k dispozici v jazycích C++, C#, Java, Python, Node. js, objektivní-C a JavaScript. Ukázky jsou k dispozici v každém jazyku na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Nejnovější novinky a aktualizace najdete v [poznámkách k verzi](releasenotes.md).
+Pro scénáře, které vyžadují přepis v reálném čase, doporučujeme použít [sadu Speech SDK](speech-sdk.md). V současné době je převod řeči na text k dispozici ve [více než 20 jazycích](language-support.md)a sada SDK je k dispozici v jazyce C++, C#, Java, Python, Node.js, objektivní-C a JavaScriptu. Ukázky jsou k dispozici v každém jazyku na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Nejnovější novinky a aktualizace najdete v [poznámkách k verzi](releasenotes.md).
 
 Interně používáme výše uvedené technologie k analýze v reálném čase zákaznických hovorů od Microsoftu, jak je znázorněno v následujícím diagramu.
 

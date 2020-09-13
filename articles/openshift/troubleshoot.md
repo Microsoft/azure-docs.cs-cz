@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55360ef295ff80b700b059d053203458f9f384db
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76274935"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469078"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Řešení potíží pro Azure Red Hat OpenShift
 
@@ -30,7 +30,7 @@ V současné době `Microsoft.ContainerService/openShiftManagedClusters` je pros
 
 ## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>Při vytváření clusteru dojde k chybě, že se nenašel žádný registrovaný poskytovatel prostředků.
 
-Pokud při vytváření clusteru dojde k chybě, `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` měli byste být součástí verze Preview a teď je potřeba [koupit rezervované instance virtuálních počítačů Azure](https://aka.ms/openshift/buy) , aby používaly všeobecně dostupný produkt. Rezervace snižuje vaši útratu tím, že se předem platíte za plně spravované služby Azure. Další informace o rezervacích a způsobu, jakým vám ušetří peníze, najdete v tématu [*co je Azure reservations*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) .
+Pokud při vytváření clusteru dojde k chybě, `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` měli byste být součástí verze Preview a teď je potřeba [koupit rezervované instance virtuálních počítačů Azure](https://aka.ms/openshift/buy) , aby používaly všeobecně dostupný produkt. Rezervace snižuje vaši útratu tím, že se předem platíte za plně spravované služby Azure. Další informace o rezervacích a způsobu, jakým vám ušetří peníze, najdete v tématu [*co je Azure reservations*](../cost-management-billing/reservations/save-compute-costs-reservations.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75647709"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462543"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
@@ -78,7 +78,7 @@ Ano, nové vzdálené monitorování je k dispozici ve stejných geografických 
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Můžu dál využívat svoje stávající investice do akcelerátorů řešení Azure IoT?
 
-Ano. Jakékoli řešení, které dnes existuje, bude v předplatném Azure fungovat a zdrojový kód zůstane dostupný na GitHubu.
+Yes. Jakékoli řešení, které dnes existuje, bude v předplatném Azure fungovat a zdrojový kód zůstane dostupný na GitHubu.
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Kolik instancí IoT Hub můžu zřídit v předplatném?
 
@@ -101,7 +101,7 @@ V současné době nemůžete vytvořit akcelerátor řešení s [Microsoft Azur
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Návody odstranit tenanta Azure AD?
 
-[Postup odstranění tenanta Azure AD](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)najdete v příspěvku na blogu pro Eric Golpe.
+[Postup odstranění tenanta Azure AD](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)najdete v příspěvku na blogu pro Eric Golpe.
 
 ### <a name="next-steps"></a>Další kroky
 

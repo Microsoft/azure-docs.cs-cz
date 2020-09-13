@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025876"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468602"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární obnovovací token?
 
@@ -86,6 +86,10 @@ PRT se obnovuje dvěma různými způsoby:
 * **Modul plug-in Azure AD WAM během žádosti o tokeny aplikace**: modul plug-in WAM umožňuje jednotné přihlašování na zařízeních s Windows 10 povolením požadavků na tiché tokeny Modul plug-in WAM může obnovit PRT během těchto požadavků na tokeny dvěma různými způsoby:
    * Aplikace požaduje u přístupového tokenu služby WAM v tichém režimu, ale pro tuto aplikaci není k dispozici žádný obnovovací token. V tomto případě WAM používá PRT k vyžádání tokenu pro aplikaci a vrátí nový PRT v odpovědi.
    * Aplikace požaduje službu WAM pro přístupový token, ale PRT je neplatná nebo služba Azure AD vyžaduje další autorizaci (například Azure Multi-Factor Authentication). V tomto scénáři vytvoří WAM interaktivní přihlášení, které vyžaduje opětovné ověření uživatele nebo poskytnutí dalšího ověřování a nové PRT se vydá po úspěšném ověření.
+
+V prostředí AD FS není pro obnovení PRT nutná přímá čára pohledu na řadič domény. Obnovení PRT vyžaduje, aby byl na proxy serveru povolen pouze koncový bod/ADFS/Services/Trust/2005/usernamemixed a/ADFS/Services/Trust/13/usernamemixed pomocí protokolu WS-Trust.
+
+Koncové body přenosů systému Windows se vyžadují pro ověřování hesla, jenom když se změní heslo, ne pro obnovení PRT.
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91b7c58890518559c046023bd78c9248e9840f9f
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513015"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468745"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Rychlý Start pro bash v Azure Cloud Shell
 
@@ -84,7 +84,7 @@ Vaše uživatelské jméno na tomto VIRTUÁLNÍm počítači bude vaše uživate
 Při navazování připojení SSH by se měla zobrazit úvodní výzva Ubuntu. <br>
 ![Snímek obrazovky s inicializací Ubuntu a úvodní výzvou po navázání připojení S hod.](media/quickstart/ubuntu-welcome.png)
 
-## <a name="cleaning-up"></a>Čištění 
+## <a name="cleaning-up"></a>Vyčištění 
 1. Ukončete relaci SSH.
    ```
    exit
@@ -97,5 +97,5 @@ Při navazování připojení SSH by se měla zobrazit úvodní výzva Ubuntu. <
 
 ## <a name="next-steps"></a>Další kroky
 [Další informace o trvalém ukládání souborů pro bash v Cloud Shell](persisting-shell-storage.md) <br>
-[Další informace o Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[Další informace o Azure CLI](/cli/azure/) <br>
 [Další informace o službě Azure Files Storage](../storage/files/storage-files-introduction.md) <br>

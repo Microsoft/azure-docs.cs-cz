@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
-ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72328712"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469894"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Použití spravovaných identit pro prostředky Azure v Azure Cloud Shell
 
@@ -43,8 +43,8 @@ Místní subsystém MSI ukládá tokeny do mezipaměti. Proto ji můžete zavola
 
 Pokud token ukládáte do mezipaměti v kódu, měli byste se připravit na zpracování scénářů, kde prostředek indikuje, že platnost tokenu vypršela.
 
-Chcete-li zpracovat chyby tokenu, navštivte [stránku MSI s přístupovými tokeny MSI pro oblé](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling)služby.
+Chcete-li zpracovat chyby tokenu, navštivte [stránku MSI s přístupovými tokeny MSI pro oblé](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling)služby.
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[Získání přístupových tokenů z virtuálních počítačů MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+[Další informace o MSI](../active-directory/managed-identities-azure-resources/overview.md)  
+[Získání přístupových tokenů z virtuálních počítačů MSI](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
