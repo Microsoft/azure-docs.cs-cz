@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a62694790505dcf8355b3011387d9bdfd036b6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057180"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018488"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: archiv Historie vydání verze
 
@@ -166,7 +166,7 @@ Azure AD Connect upgrade se nepovede, pokud je pro ADSync DB nakonfigurovaná do
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
-- Azure AD Connect federovat je teď dostupná pro obecnou dostupnost. [Přečtěte si další informace o federovaném Azure AD pomocí testu federovat](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- Azure AD Connect federovat je teď dostupná pro obecnou dostupnost. [Přečtěte si další informace o federovaném Azure AD pomocí testu federovat](./plan-connect-user-signin.md#federation-with-pingfederate)
 - Azure AD Connect teď vytvoří zálohu vztahu důvěryhodnosti služby Azure AD v AD FS pokaždé, když se provede aktualizace, a v případě potřeby ji uloží do samostatného souboru, aby se snadno obnovila. [Přečtěte si další informace o nových funkcích a správě důvěryhodnosti Azure AD v Azure AD Connect](https://aka.ms/fedtrustinaadconnect).
 - Nové nástroje pro řešení potíží pomáhají při odstraňování potíží se změnou primární e-mailové adresy a skrytím účtu z globálního seznamu adres.
 - Azure AD Connect se aktualizovala tak, aby obsahovala nejnovější verzi SQL Server 2012 Native Client.
@@ -355,19 +355,19 @@ Do Azure AD Connect verze 1.1.654.0 (a After) bylo přidáno vylepšení, aby se
 
 >[!NOTE]
 >Tato verze odstraní pouze ohrožení zabezpečení pro nové instalace Azure AD Connect, kde je účet služby vytvořen procesem instalace. V případě existujících instalací nebo v případech, kdy účet poskytnete sami, je nutné zajistit, že tato chyba zabezpečení neexistuje.
-#### <a name="lock-down-access-to-the-ad-ds-account"></a><a name="lock"></a>Uzamknout přístup k účtu služba AD DS
+#### <a name="lock-down-access-to-the-ad-ds-account"></a><a name="lock"></a> Uzamknout přístup k účtu služba AD DS
 Pomocí následujících změn oprávnění v místní službě AD Zablokujte přístup k účtu služba AD DS.  
 
 *   Zakázat dědění pro zadaný objekt
 *   Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe. Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do sebe.
 *   Přiřaďte tato konkrétní oprávnění:
 
-Typ     | Název                          | Access               | Platí pro
+Typ     | Name                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SYSTEM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
 Povolit    | Domain Admins                 | Úplné řízení         | Tento objekt  |
-Povolit    | Administrators                | Úplné řízení         | Tento objekt  |
+Povolit    | Správci                | Úplné řízení         | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Vypsat obsah        | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Číst všechny vlastnosti  | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Oprávnění ke čtení     | Tento objekt  |
@@ -402,7 +402,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 Pokud chcete zjistit, jestli se tato chyba zabezpečení použila k ohrožení konfigurace Azure AD Connect, měli byste ověřit poslední datum resetování hesla účtu služby.  Pokud má být pro tuto událost resetování hesla provedena časová razítka v neočekávaném a dalším zkoumání, je třeba provést další šetření prostřednictvím protokolu událostí.
 
-Další informace najdete v článku [informační zpravodaj zabezpečení společnosti Microsoft 4056318](https://technet.microsoft.com/library/security/4056318)
+Další informace najdete v článku [informační zpravodaj zabezpečení společnosti Microsoft 4056318](/security-updates/securityadvisories/2017/4056318)
 
 ## <a name="116490"></a>1.1.649.0
 Stav: Říjen 27 2017
@@ -443,7 +443,7 @@ Stav: říjen 19 2017
 
 * Opravili jsme problém, který způsobil, že Azure AD Connect upgrade selže, a dojde k chybě "*nepovedlo se upgradovat synchronizační službu*". Synchronizační služba již nadále nemůže začínat chybou události "*službu nebylo možné spustit, protože verze databáze je novější než verze nainstalovaná v binárních souborech*". K tomuto problému dochází, pokud správce, který provádí upgrade, nemá oprávnění správce systému pro SQL Server, který používá Azure AD Connect. Tato oprava Azure AD Connect vyžaduje, aby správce měl během upgradu db_owner oprávnění k databázi ADSync.
 
-* Opravili jsme problém s upgradem Azure AD Connect, který ovlivnil zákazníky, kteří mají povolené [bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). Po upgradu Azure AD Connect se bezproblémové jednotné přihlašování nesprávně zobrazuje jako zakázané v průvodci Azure AD Connect, i když funkce zůstane zapnutá a plně funkční. V této opravě se tato funkce teď v průvodci zobrazí správně, jak je zapnutá.
+* Opravili jsme problém s upgradem Azure AD Connect, který ovlivnil zákazníky, kteří mají povolené [bezproblémové jednotné přihlašování](./how-to-connect-sso.md). Po upgradu Azure AD Connect se bezproblémové jednotné přihlašování nesprávně zobrazuje jako zakázané v průvodci Azure AD Connect, i když funkce zůstane zapnutá a plně funkční. V této opravě se tato funkce teď v průvodci zobrazí správně, jak je zapnutá.
 
 * Opravili jsme problém, který způsobil, že Průvodce Azure AD Connect, aby na stránce *připraveno ke konfiguraci* vždycky zobrazoval výzvu "*konfigurace zdrojového ukotvení*", i když se neudělaly žádné změny související se zdrojovým ukotvením.
 
@@ -457,7 +457,7 @@ Stav: říjen 19 2017
 
 ### <a name="azure-ad-connect-sync"></a>Synchronizace služby Azure AD Connect
 > [!NOTE]
-> Poznámka: synchronizační služba má rozhraní WMI, které umožňuje vyvíjet vlastní Plánovač. Toto rozhraní je nyní zastaralé a bude odebráno z budoucích verzí Azure AD Connect dodaných po 30. června 2018. Zákazníci, kteří chtějí přizpůsobit plán synchronizace, by měli používat [integrovaný Plánovač](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
+> Poznámka: synchronizační služba má rozhraní WMI, které umožňuje vyvíjet vlastní Plánovač. Toto rozhraní je nyní zastaralé a bude odebráno z budoucích verzí Azure AD Connect dodaných po 30. června 2018. Zákazníci, kteří chtějí přizpůsobit plán synchronizace, by měli používat [integrovaný Plánovač](./how-to-connect-sync-feature-scheduler.md).
 #### <a name="fixed-issues"></a>Opravené problémy
 * Když průvodce Azure AD Connect vytvoří účet konektoru služby AD potřebný k synchronizaci změn z místní služby Active Directory, účet k tomu nesprávně přiřadí oprávnění potřebné ke čtení objektů PublicFolder. Tento problém má vliv na expresní instalaci i na vlastní instalaci. Tato změna opravuje problém.
 
@@ -470,7 +470,7 @@ Stav: říjen 19 2017
 
 ### <a name="ad-fs-management"></a>Správa AD FS
 #### <a name="fixed-issue"></a>Oprava potíží 
-* Opravili jsme problém týkající se použití funkce [MS-DS-ConsistencyGuid jako zdrojového ukotvení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . Tento problém má vliv na zákazníky, kteří mají nakonfigurovanou *federaci s AD FS* jako způsob přihlašování uživatele. Když v průvodci vykonáte úlohu *konfigurace zdrojového ukotvení* , Azure AD Connect se pro immutableId přepnou pomocí atributu source * ms-DS-ConsistencyGuid as source. V rámci této změny se Azure AD Connect pokusí aktualizovat pravidla deklarace identity pro ImmutableId v AD FS. Tento krok se ale nezdařil, protože Azure AD Connect neměl oprávnění správce, která jsou nutná ke konfiguraci AD FS. Tato oprava Azure AD Connect nyní vyzve k zadání přihlašovacích údajů správce pro AD FS při spuštění úlohy *konfigurace zdrojového ukotvení* .
+* Opravili jsme problém týkající se použití funkce [MS-DS-ConsistencyGuid jako zdrojového ukotvení](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) . Tento problém má vliv na zákazníky, kteří mají nakonfigurovanou *federaci s AD FS* jako způsob přihlašování uživatele. Když v průvodci vykonáte úlohu *konfigurace zdrojového ukotvení* , Azure AD Connect se pro immutableId přepnou pomocí atributu source * ms-DS-ConsistencyGuid as source. V rámci této změny se Azure AD Connect pokusí aktualizovat pravidla deklarace identity pro ImmutableId v AD FS. Tento krok se ale nezdařil, protože Azure AD Connect neměl oprávnění správce, která jsou nutná ke konfiguraci AD FS. Tato oprava Azure AD Connect nyní vyzve k zadání přihlašovacích údajů správce pro AD FS při spuštění úlohy *konfigurace zdrojového ukotvení* .
 
 
 
@@ -485,7 +485,7 @@ Stav: září 05 2017
 * Došlo k známému problému s Azure AD Connect upgradem, který má vliv na zákazníky, kteří mají povolené [bezproblémové jednotné přihlašování](how-to-connect-sso.md). Po upgradu Azure AD Connect se tato funkce v průvodci zobrazí jako zakázaná, i když tato funkce zůstane zapnutá. Oprava tohoto problému bude k dispozici v budoucí verzi. Zákazníci, kteří mají obavy z tohoto problému, ho můžou ručně opravit tak, že v průvodci povolí bezproblémové jednotné přihlašování.
 
 #### <a name="fixed-issues"></a>Opravené problémy
-* Opravili jsme problém, který zabránil Azure AD Connect aktualizaci pravidel deklarací v místních AD FS při povolování funkce [MS-DS-ConsistencyGuid jako zdrojového ukotvení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . K tomuto problému dochází, pokud se pokusíte povolit funkci pro existující nasazení Azure AD Connect, které má AD FS nakonfigurován jako metoda přihlašování. K tomuto problému dochází, protože průvodce nezobrazuje výzvu k zadání přihlašovacích údajů služby ADFS předtím, než se pokusí aktualizovat pravidla deklarace identity v AD FS.
+* Opravili jsme problém, který zabránil Azure AD Connect aktualizaci pravidel deklarací v místních AD FS při povolování funkce [MS-DS-ConsistencyGuid jako zdrojového ukotvení](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) . K tomuto problému dochází, pokud se pokusíte povolit funkci pro existující nasazení Azure AD Connect, které má AD FS nakonfigurován jako metoda přihlašování. K tomuto problému dochází, protože průvodce nezobrazuje výzvu k zadání přihlašovacích údajů služby ADFS předtím, než se pokusí aktualizovat pravidla deklarace identity v AD FS.
 * Opravili jsme problém, který způsobil, že Azure AD Connect neúspěšná instalace, pokud má místní doménová struktura AD zakázaný protokol NTLM. Příčinou tohoto problému je Azure AD Connect, že Průvodce při vytváření kontextů zabezpečení vyžadovaných pro ověřování pomocí protokolu Kerberos neposkytuje plně kvalifikované přihlašovací údaje. Tím dojde k selhání ověřování protokolem Kerberos a Azure AD Connect průvodce, aby se vrátil k použití protokolu NTLM.
 
 ### <a name="azure-ad-connect-sync"></a>Synchronizace služby Azure AD Connect
@@ -631,16 +631,16 @@ K tomuto problému dochází, když při spuštění Průvodce vždycky vyberete
 
 #### <a name="fixed-issues"></a>Opravené problémy
 
-* Opravili jsme problém se zpětným zápisem hesla, který správci Azure AD umožňuje resetovat heslo k místnímu uživatelskému účtu s oprávněním AD. K tomuto problému dochází, když Azure AD Connect k privilegovanému účtu udělili oprávnění k resetování hesla. Tento problém je řešený v této verzi Azure AD Connect tím, že neumožní správci Azure AD resetovat heslo libovolného místního privilegovaného uživatelského účtu, pokud správce není vlastníkem tohoto účtu. Další informace najdete v tématu [Security advisor 4033453](https://technet.microsoft.com/library/security/4033453).
+* Opravili jsme problém se zpětným zápisem hesla, který správci Azure AD umožňuje resetovat heslo k místnímu uživatelskému účtu s oprávněním AD. K tomuto problému dochází, když Azure AD Connect k privilegovanému účtu udělili oprávnění k resetování hesla. Tento problém je řešený v této verzi Azure AD Connect tím, že neumožní správci Azure AD resetovat heslo libovolného místního privilegovaného uživatelského účtu, pokud správce není vlastníkem tohoto účtu. Další informace najdete v tématu [Security advisor 4033453](/security-updates/SecurityAdvisories/2017/4033453).
 
-* Opravili jsme problém týkající se funkce [MS-DS-ConsistencyGuid jako zdrojového ukotvení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) , kde se Azure AD Connect nezpětný zápis do místního atributu AD ms-DS-ConsistencyGuid. K tomuto problému dochází, když je na Azure AD Connect přidáno několik místních doménových struktur AD a je vybrána *možnost identity uživatelů v rámci více adresářů* . Při použití této konfigurace výsledná pravidla synchronizace neplní atribut sourceAnchorBinary v úložišti Metaverse. Atribut sourceAnchorBinary se používá jako zdrojový atribut pro atribut ms-DS-ConsistencyGuid. V důsledku toho neproběhne zpětný zápis do atributu MS-DSConsistencyGuid. Pokud chcete problém vyřešit, aktualizují se následující pravidla synchronizace, aby se zajistilo, že atribut sourceAnchorBinary v úložišti metaverse je vždycky vyplněný:
+* Opravili jsme problém týkající se funkce [MS-DS-ConsistencyGuid jako zdrojového ukotvení](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) , kde se Azure AD Connect nezpětný zápis do místního atributu AD ms-DS-ConsistencyGuid. K tomuto problému dochází, když je na Azure AD Connect přidáno několik místních doménových struktur AD a je vybrána *možnost identity uživatelů v rámci více adresářů* . Při použití této konfigurace výsledná pravidla synchronizace neplní atribut sourceAnchorBinary v úložišti Metaverse. Atribut sourceAnchorBinary se používá jako zdrojový atribut pro atribut ms-DS-ConsistencyGuid. V důsledku toho neproběhne zpětný zápis do atributu MS-DSConsistencyGuid. Pokud chcete problém vyřešit, aktualizují se následující pravidla synchronizace, aby se zajistilo, že atribut sourceAnchorBinary v úložišti metaverse je vždycky vyplněný:
   * V nástroji ze služby AD-InetOrgPerson AccountEnabled.xml
   * V nástroji ze služby AD-InetOrgPerson Common.xml
   * V nástroji ze služby AD-User AccountEnabled.xml
   * V nástroji ze služby AD-User Common.xml
   * V nástroji ze služby AD – připojení uživatele SOAInAAD.xml
 
-* Dříve i v případě, že funkce [MS-DS-ConsistencyGuid as source kotvy](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) není povolená, je synchronizační pravidlo "odchozí na uživatele ImmutableId" stále přidáno do Azure AD Connect. Účinek je neškodný a nezpůsobí, že by došlo ke zpětnému zápisu atributu ms-DS-ConsistencyGuid. Aby nedocházelo k omylům, přidala se logika, která zajistí, že se pravidlo synchronizace přidá jenom v případě, že je funkce povolená.
+* Dříve i v případě, že funkce [MS-DS-ConsistencyGuid as source kotvy](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) není povolená, je synchronizační pravidlo "odchozí na uživatele ImmutableId" stále přidáno do Azure AD Connect. Účinek je neškodný a nezpůsobí, že by došlo ke zpětnému zápisu atributu ms-DS-ConsistencyGuid. Aby nedocházelo k omylům, přidala se logika, která zajistí, že se pravidlo synchronizace přidá jenom v případě, že je funkce povolená.
 
 * Opravili jsme problém, který způsobil, že se synchronizace hodnot hash hesel nezdařila s chybovou událostí 611. K tomuto problému dochází po odebrání jednoho nebo více řadičů domény z místní služby AD. Na konci každého cyklu synchronizace hesel obsahuje synchronizační soubor cookie vydaný místní službou AD ID vyvolání odebraných řadičů domény s hodnotou USN (číslo sekvence aktualizace) 0. Správce synchronizace hesel nemůže uchovat synchronizující soubor cookie s hodnotou USN 0 a v případě chyby dojde k chybě 611. Během dalšího cyklu synchronizace Správce synchronizace hesel znovu použije poslední trvale uložený soubor cookie synchronizace, který neobsahuje hodnotu USN 0. To způsobí, že se stejné změny hesla budou znovu synchronizovat. V této opravě ukládá Správce synchronizace hesel správně soubor cookie synchronizace.
 
@@ -648,12 +648,12 @@ K tomuto problému dochází, když při spuštění Průvodce vždycky vyberete
 
 #### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
-* Dříve byla funkce [MS-DS-ConsistencyGuid as source Anchor](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) dostupná jenom pro nová nasazení. Teď je dostupná pro existující nasazení. A konkrétně:
+* Dříve byla funkce [MS-DS-ConsistencyGuid as source Anchor](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dostupná jenom pro nová nasazení. Teď je dostupná pro existující nasazení. A konkrétně:
   * Chcete-li získat přístup k této funkci, spusťte Průvodce Azure AD Connect a vyberte možnost *aktualizace zdrojového ukotvení* .
   * Tato možnost je viditelná jenom pro existující nasazení, která používají objectGuid jako atribut sourceAnchor.
   * Při konfiguraci možnosti ověří Průvodce stav atributu ms-DS-ConsistencyGuid ve vaší místní službě Active Directory. Pokud atribut není nakonfigurován na žádném objektu uživatele v adresáři, průvodce použije jako atribut sourceAnchor ms-DS-ConsistencyGuid. Pokud je atribut nakonfigurován na jednom nebo více objektech uživatelů v adresáři, průvodce uzavře atribut je používán jinými aplikacemi a není vhodný jako atribut sourceAnchor a nepovoluje pokračování změny zdrojového kotvy. Pokud jste si jisti, že atribut není používán existujícími aplikacemi, je třeba kontaktovat podporu a získat informace o tom, jak chybu potlačit.
 
-* V případě **userCertificate** atributu v objektech zařízení teď Azure AD Connect vyhledá hodnoty certifikátů potřebné pro [připojení zařízení připojených k doméně k Azure AD pro prostředí Windows 10](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy) a odfiltruje zbytek před synchronizací do Azure AD. Chcete-li toto chování povolit, bylo aktualizováno pravidlo synchronizace, které se dokončí s názvem "připojení k AAD – zařízení SOAInAD".
+* V případě **userCertificate** atributu v objektech zařízení teď Azure AD Connect vyhledá hodnoty certifikátů potřebné pro [připojení zařízení připojených k doméně k Azure AD pro prostředí Windows 10](../devices/hybrid-azuread-join-plan.md) a odfiltruje zbytek před synchronizací do Azure AD. Chcete-li toto chování povolit, bylo aktualizováno pravidlo synchronizace, které se dokončí s názvem "připojení k AAD – zařízení SOAInAD".
 
 * Azure AD Connect teď podporuje zpětný zápis atributu Exchange online **cloudPublicDelegates** do místního atributu AD **publicDelegates** . To umožňuje situaci, kdy je možné poštovní schránce Exchange Online udělit oprávnění SendOnBehalfTo uživatelům s místní poštovní schránkou Exchange. Aby se tato funkce podporovala, přidalo se nové předem připravené pravidlo synchronizace "odchozí na službu AD – User Exchange Hybrid PublicDelegates zpětného zápisu". Toto pravidlo synchronizace se přidá jenom do Azure AD Connect, když je povolená funkce hybridního serveru Exchange.
 
@@ -844,7 +844,7 @@ Synchronizace služby Azure AD Connect
 * V tenantovi Azure AD existuje konfigurace služby, která indikuje, jestli je funkce synchronizace hesel pro vašeho tenanta povolená, nebo ne. V předchozích krocích je konfigurace služby snadno nakonfigurovaná Azure AD Connect, když máte aktivní a pracovní server. Nyní se Azure AD Connect pokusí zachovat konfiguraci služby konzistentní s aktivním Azure AD Connectm serverem.
 * Průvodce Azure AD Connect nyní detekuje a vrátí upozornění, pokud místní služba AD nemá povolenu složku Koš služby AD.
 * Dřív se export do Azure AD vyprší a dojde k chybě, pokud celková velikost objektů v dávce překročí určitou prahovou hodnotu. Nyní se synchronizační služba pokusí znovu odeslat objekty v samostatných, menších dávkách, pokud dojde k problému.
-* Aplikace správy klíčů synchronizační služby byla odebrána z nabídky Start systému Windows. Správa šifrovacího klíče bude nadále podporována prostřednictvím rozhraní příkazového řádku pomocí miiskmu.exe. Informace o správě šifrovacího klíče najdete [v článku opuštění Azure AD Connect synchronizaci šifrovacího klíče](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key).
+* Aplikace správy klíčů synchronizační služby byla odebrána z nabídky Start systému Windows. Správa šifrovacího klíče bude nadále podporována prostřednictvím rozhraní příkazového řádku pomocí miiskmu.exe. Informace o správě šifrovacího klíče najdete [v článku opuštění Azure AD Connect synchronizaci šifrovacího klíče](./how-to-connect-sync-change-serviceacct-pass.md#abandoning-the-adsync-service-account-encryption-key).
 * Pokud jste dřív změnili heslo účtu služby Azure AD Connect Sync, synchronizační služba nebude moct správně spustit, dokud jste nezrušili šifrovací klíč a znovu nevytvořili heslo účtu služby Azure AD Connect synchronizace. Nyní se tento proces už nepožaduje.
 
 Jednotné přihlašování k ploše
@@ -1072,7 +1072,7 @@ Vydáno: listopadu 2015
 
 **Nový podporovaný scénář:**
 
-* Podporuje několik místních organizací Exchange. Další informace najdete v tématu [hybridní nasazení s několika doménovými strukturami služby Active Directory](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150)).
+* Podporuje několik místních organizací Exchange. Další informace najdete v tématu [hybridní nasazení s několika doménovými strukturami služby Active Directory](/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150)).
 
 **Opravené problémy:**
 
@@ -1181,7 +1181,7 @@ Vydáno: prosinec 2014
 **Nové funkce:**
 
 * Synchronizace hesel pomocí filtrování založeného na atributu je teď podporovaná. Další informace najdete v tématu [Synchronizace hesel s filtrováním](how-to-connect-sync-configure-filtering.md).
-* Atribut ms-DS-ExternalDirectoryObjectID se zapisuje zpátky do služby Active Directory. Tato funkce přidává podporu pro aplikace Office 365. Používá OAuth2 k přístupu k online a místním poštovním schránkám v hybridním nasazení Exchange.
+* Atribut ms-DS-ExternalDirectoryObjectID se zapisuje zpátky do služby Active Directory. Tato funkce přidá podporu pro aplikace Microsoft 365. Používá OAuth2 k přístupu k online a místním poštovním schránkám v hybridním nasazení Exchange.
 
 **Vyřešené problémy s upgradem:**
 

@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355909"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016261"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -29,7 +29,7 @@ Tento článek vám pomůže najít informace o řešení běžných problémů 
 - V několika případech může trvat až 30 minut, než se povolí bezproblémové jednotné přihlašování.
 - Pokud ve svém tenantovi zakážete a znovu povolíte bezproblémové přihlašování (SSO), uživatelé nebudou mít k dispozici jednotné přihlašování do mezipaměti protokolu Kerberos, obvykle platnost po dobu 10 hodin.
 - Pokud je úspěšné bezproblémové přihlašování, uživatel nemá možnost vybrat **si možnost zůstat přihlášeni**. Z důvodu tohoto chování nefungují [scénáře mapování SharePointu a OneDrivu](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) .
-- Klienti Win32 Office 365 (Outlook, Word, Excel a další) s verzemi 16.0.8730. xxxx a novější se podporují pomocí neinteraktivního toku. Jiné verze se nepodporují. na těchto verzích uživatelé zadají své uživatelské jméno, ale ne hesla, aby se mohli přihlásit. Pro OneDrive budete muset pro tiché přihlašování aktivovat [funkci bezobslužné konfigurace OneDrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
+- Microsoft 365 klienti Win32 (Outlook, Word, Excel a další) s verzemi 16.0.8730. xxxx a vyšší se podporují pomocí neinteraktivního toku. Jiné verze se nepodporují. na těchto verzích uživatelé zadají své uživatelské jméno, ale ne hesla, aby se mohli přihlásit. Pro OneDrive budete muset pro tiché přihlašování aktivovat [funkci bezobslužné konfigurace OneDrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - Bezproblémové jednotné přihlašování v prohlížeči Firefox nefunguje v privátním režimu procházení.
 - Bezproblémové jednotné přihlašování v Internet Exploreru nefunguje, když je zapnutý Rozšířený chráněný režim.
 - Bezproblémové jednotné přihlašování nefunguje na mobilních prohlížečích v iOS a Androidu.
@@ -74,9 +74,9 @@ Pokud má tenant přidruženou licenci Azure AD Premium, můžete se také podí
 Pomocí následujícího kontrolního seznamu můžete vyřešit bezproblémové problémy jednotného přihlašování:
 
 - Ujistěte se, že je funkce bezproblémového jednotného přihlašování povolená v Azure AD Connect. Pokud tuto funkci nemůžete povolit (třeba kvůli blokovanému portu), ujistěte se, že jsou splněné všechny [požadavky](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) .
-- Pokud jste ve svém tenantovi povolili [připojení ke službě Azure AD](../active-directory-azureadjoin-overview.md) a bezproblémové jednotné přihlašování, zajistěte, aby tento problém nebyl s Azure AD JOIN. JEDNOTNÉ přihlašování z Azure AD má přednost před bezproblémové jednotné přihlašování, pokud je zařízení registrované ve službě Azure AD a připojené k doméně. Pomocí jednotného přihlašování z Azure AD se uživateli zobrazí dlaždice přihlášení, která říká "připojené k Windows".
+- Pokud jste ve svém tenantovi povolili [připojení ke službě Azure AD](../devices/overview.md) a bezproblémové jednotné přihlašování, zajistěte, aby tento problém nebyl s Azure AD JOIN. JEDNOTNÉ přihlašování z Azure AD má přednost před bezproblémové jednotné přihlašování, pokud je zařízení registrované ve službě Azure AD a připojené k doméně. Pomocí jednotného přihlašování z Azure AD se uživateli zobrazí dlaždice přihlášení, která říká "připojené k Windows".
 - Ujistěte se, že adresa URL služby Azure AD ( `https://autologon.microsoftazuread-sso.com` ) je součástí nastavení zóny intranetu uživatele.
-- Ujistěte se, že je firemní zařízení připojené k doméně služby Active Directory. _Zařízení nemusí_ být [připojené k Azure AD](../active-directory-azureadjoin-overview.md) , aby fungovalo bez bezproblémového jednotného přihlašování.
+- Ujistěte se, že je firemní zařízení připojené k doméně služby Active Directory. _Zařízení nemusí_ být [připojené k Azure AD](../devices/overview.md) , aby fungovalo bez bezproblémového jednotného přihlašování.
 - Ujistěte se, že je uživatel přihlášený k zařízení prostřednictvím účtu domény služby Active Directory.
 - Zajistěte, aby byl účet uživatele z doménové struktury služby Active Directory, kde bylo nastaveno bezproblémové jednotné přihlašování.
 - Ujistěte se, že je zařízení připojené k podnikové síti.
@@ -106,7 +106,7 @@ Pokud se vám řešení potíží nepovedlo, můžete funkci v tenantovi ručně
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Krok 1: import bezproblémového modulu pro jednotné přihlašování do PowerShellu
 
-1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
 2. Přejděte do `%programfiles%\Microsoft Azure Active Directory Connect` složky.
 3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
 

@@ -3,12 +3,12 @@ title: Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 description: Zjistěte, jak efektivně spravovat Sentinel Azure na delegovaných zákaznických zdrojích.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050807"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019729"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 
@@ -65,7 +65,7 @@ Pokud spravujete prostředky služby Azure Sentinel pro více zákazníků, mů�
 
 [Azure monitor sešitů v Azure Sentinel](../../sentinel/overview.md#workbooks) vám pomůžou vizualizovat a monitorovat data z připojených zdrojů dat a získat přehledy. Můžete použít předdefinované šablony sešitu ve službě Azure Sentinel nebo vytvářet vlastní sešity pro vaše scénáře.
 
-Můžete nasazovat sešity ve vašem tenantovi pro správu a vytvářet na úrovni řídicích panelů pro monitorování a dotazování dat napříč klienty zákazníka. Další informace najdete v tématu [monitorování mezi pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). Všimněte si, že některé možnosti nejsou [podporovány napříč více pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
+Můžete nasazovat sešity ve vašem tenantovi pro správu a vytvářet na úrovni řídicích panelů pro monitorování a dotazování dat napříč klienty zákazníka. Další informace najdete v tématu [monitorování mezi pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). 
 
 Sešity můžete nasadit také přímo do samostatného tenanta, který spravujete pro scénáře specifické pro daného zákazníka.
 
@@ -76,8 +76,6 @@ Vytvářejte a neukládejte Log Analytics dotazy pro detekci hrozeb centrálně 
 ## <a name="use-automation-for-cross-workspace-management"></a>Použití automatizace pro správu mezi jednotlivými pracovními prostory
 
 Službu Automation můžete použít ke správě několika pracovních prostorů služby Azure Sentinel a ke konfiguraci [loveckých dotazů](../../sentinel/hunting.md), playbooky a sešitů. Další informace najdete v tématu [Správa mezi jednotlivými pracovními prostory pomocí automatizace](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
-
-Všimněte si, že některé možnosti se [v současné době nepodporují napříč několika pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
 
 ## <a name="manage-security-of-office-365-environments"></a>Správa zabezpečení prostředí Office 365
 

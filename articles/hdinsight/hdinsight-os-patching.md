@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: ddc70ccbbb5c964f16b078470517ce667bc878f1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082637"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019661"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurace plánu oprav operačního systému pro clustery HDInsight se systémem Linux
 
@@ -22,8 +22,8 @@ ms.locfileid: "86082637"
 
 HDInsight poskytuje podporu pro provádění běžných úloh v clusteru, jako je například instalace oprav operačního systému, aktualizace zabezpečení a restartování uzlů. Tyto úlohy se provádějí pomocí následujících dvou skriptů, které se dají spustit jako [akce skriptu](hdinsight-hadoop-customize-cluster-linux.md), a nakonfigurují se pomocí parametrů:
 
-- `schedule-reboots.sh`– Proveďte okamžité restartování nebo naplánujte restart na uzlech clusteru.
-- `install-updates-schedule-reboots.sh`– Nainstaluje všechny aktualizace, jenom aktualizace jádra a zabezpečení, nebo jenom aktualizace jádra.
+- `schedule-reboots.sh` – Proveďte okamžité restartování nebo naplánujte restart na uzlech clusteru.
+- `install-updates-schedule-reboots.sh` – Nainstaluje všechny aktualizace, jenom aktualizace jádra a zabezpečení, nebo jenom aktualizace jádra.
 
 > [!NOTE]  
 > Akce skriptu nebudou automaticky používat aktualizace pro všechny budoucí aktualizační cykly. Spusťte skripty pokaždé, když se musí použít nové aktualizace, aby se nainstalovaly aktualizace, a pak se virtuální počítač restartuje.
@@ -32,11 +32,16 @@ HDInsight poskytuje podporu pro provádění běžných úloh v clusteru, jako j
 
 Oprava v reprezentativním neprodukčním prostředí před nasazením do produkčního prostředí. Vytvořte plán pro odpovídající testování vašeho systému před skutečným opravou.
 
-Od času po dobu od relace SSH s vaším clusterem se může zobrazit zpráva, že je k dispozici upgrade. Zpráva může vypadat nějak takto:
+Od času po dobu od relace SSH s vaším clusterem se může zobrazit zpráva, že aktualizace zabezpečení jsou k dispozici. Zpráva může vypadat nějak takto:
 
 ```
-New release '18.04.3 LTS' available.
-Run 'do-release-upgrade' to upgrade it
+89 packages can be updated.
+82 updates are security updates.
+
+*** System restart required ***
+
+Welcome to Spark on HDInsight.
+
 ```
 
 Oprava je volitelná a podle vašeho uvážení.
@@ -64,6 +69,9 @@ Skript [install-Updates-Schedule-Reboots.sh](https://hdiconfigactions.blob.core.
 
 > [!NOTE]
 > Po použití v existujícím clusteru musíte označit skript jako trvalý. Jinak budou všechny nové uzly vytvořené prostřednictvím operací škálování používat výchozí plán oprav. Použijete-li skript jako součást procesu vytváření clusteru, bude automaticky trvalý.
+
+> [!NOTE]
+> Možnost naplánovaného restartování provádí automatizované restartování clusterových uzlů s opravenými intervaly v období od 12 do 24 hodin a bere v úvahu otázky vysoké dostupnosti, aktualizace domény a domény selhání. Při plánovaném restartování se neukončí spuštěné úlohy, ale v dočasném případě může dojít k vyřízení kapacity clusteru, pokud jsou uzly nedostupné, což vede k delší době zpracování. 
 
 ## <a name="next-steps"></a>Další kroky
 

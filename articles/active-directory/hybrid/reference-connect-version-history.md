@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: Historie vydání verze | Microsoft Docs'
-description: V tomto článku jsou uvedené všechny verze Azure AD Connect a Azure AD Sync
+description: V tomto článku jsou uvedené všechny verze Azure AD Connect a Azure AD Sync.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b0b0a98e80fb7f343411b49ff2ccd11046bcdc5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88052925"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018437"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -48,7 +48,7 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 >
 >Pokud jste povolili Azure AD Connect pro synchronizaci, brzy automaticky zahájíte přijímání oznámení o stavu, která vás upozorní na nadcházející vyřazení, pokud používáte některou ze starších verzí.
 >
->Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) .
+>Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](./how-to-upgrade-previous-version.md) .
 >
 >Informace o historii verzí u zastaralých verzí najdete v článku [archiv Historie verzí Azure AD Connect](reference-connect-version-history-archive.md) .
 
@@ -74,7 +74,7 @@ Toto je verze opravy chyb. V této verzi nejsou žádné funkční změny.
 ### <a name="functional-changes"></a>Funkční změny
 Tato verze zahrnuje veřejnou verzi Preview funkce pro export konfigurace existujícího serveru Azure AD Connect do. Soubor JSON, který se pak dá použít při instalaci nového serveru Azure AD Connect pro vytvoření kopie původního serveru.
 
-Podrobný popis této nové funkce najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config) .
+Podrobný popis této nové funkce najdete v [tomto článku](./how-to-connect-import-export-config.md) .
 
 ### <a name="fixed-issues"></a>Opravené problémy
 - Opravili jsme chybu, kdy by došlo k nepravdivému upozornění na velikost místní databáze v lokalizovaných sestaveních během upgradu.
@@ -244,13 +244,13 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->Došlo k známému problému s upgradem Azure AD Connect ze starší verze na 1.3.21.0, kde portál O365 neodráží aktualizovanou verzi, i když Azure AD Connect úspěšně upgradována.
+>Došlo k známému problému s upgradem Azure AD Connect ze starší verze na 1.3.21.0, kde Microsoft 365 portál neodráží aktualizovanou verzi, i když Azure AD Connect upgradovat úspěšně.
 >
 > Pokud to chcete vyřešit, musíte importovat modul **AdSync** a pak na `Set-ADSyncDirSyncConfiguration` serveru Azure AD Connect spustit rutinu PowerShellu.  Můžete použít následující postup:
 >
 >1. Otevřete PowerShell v režimu správce.
->2. Spusťte příkaz `Import-Module "ADSync"`.
->3. Spusťte příkaz `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`.
+>2. Spusťte `Import-Module "ADSync"`.
+>3. Spusťte `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`.
  
 ### <a name="release-status"></a>Stav verze 
 

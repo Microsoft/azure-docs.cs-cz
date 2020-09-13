@@ -5,18 +5,18 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 58db7dcade7567d632fb405b31c4ff7bdbc6e71a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236790"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018965"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Čtení z kanálu změn služby Azure Cosmos DB
 
-S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo modelu Pull. Při použití modelu nabízených oznámení se server (kanál změn) doručí na práci klienta, který má obchodní logiku pro zpracování této práce. Složitá kontrola práce a ukládání stavu pro poslední zpracovávanou práci se však zpracovává na serveru.
+S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo modelu Pull. Při použití modelu nabízeného oznámení Server (procesor změn kanálu) přenáší práci do klienta, který má obchodní logiku pro zpracování této práce. Složitá kontrola práce a ukládání stavu pro poslední zpracovávanou práci se však zpracovává na serveru.
 
 U modelu Pull musí klient vyžádat si práci ze serveru. Klient, v tomto případě má nejen obchodní logiku pro zpracování práce, ale také ukládá stav pro poslední zpracovávanou práci, zpracovává vyrovnávání zatížení mezi více klienty zpracovávajících práci paralelně a zpracovává chyby.
 
@@ -27,7 +27,7 @@ Při čtení z kanálu změn Azure Cosmos DB obvykle doporučujeme použít mode
 - Vyrovnávání zatížení mezi více klienty, které spotřebovávají změny. Například pokud jeden klient nemůže uchovávat změny zpracování a další má dostupnou kapacitu.
 - [Zpracování chyb](change-feed-processor.md#error-handling). Například automatické opakování neúspěšných změn, které nebyly správně zpracovány po neošetřené výjimce v kódu nebo přechodný problém sítě.
 
-Většina scénářů, které používají kanál změny Azure Cosmos DB, bude používat jednu z možností modelu nabízených oznámení. Existují však situace, kdy můžete chtít další řízení nízké úrovně pro model Pull. Tady jsou některé z nich:
+Většina scénářů, které používají kanál změny Azure Cosmos DB, bude používat jednu z možností modelu nabízených oznámení. Existují však situace, kdy můžete chtít další řízení nízké úrovně pro model Pull. Zde jsou některé z nich:
 
 - Čtení změn z konkrétního klíče oddílu
 - Řízení tempa, ve kterém klient přijímá změny ke zpracování
@@ -68,7 +68,7 @@ Můžete paralelizovat zpracování změn napříč více klienty, stejně jako 
 Pro model Pull není k dispozici žádná předdefinovaná "záruka na doručení" alespoň jednou ". Model pro vyžádání obsahu poskytuje řízení nízké úrovně pro rozhodování o tom, jakým způsobem chcete zpracovávat chyby.
 
 > [!NOTE]
-> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.9.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
+> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Změna kanálu rozhraní API pro Cassandra a MongoDB
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755904"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018573"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Vynutila minimální požadovanou verzi protokolu TLS (Transport Layer Security) pro požadavky na účet úložiště.
 
@@ -92,11 +92,13 @@ Pokud jste si jisti, že provoz od klientů používajících starší verze pro
 Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště, nastavte pro tento účet verzi **MinimumTlsVersion** . Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace o modelu nasazení Azure Resource Manager najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
 
 > [!NOTE]
-> Vlastnost **minimumTlsVersion** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje žádosti odesílané pomocí protokolu TLS verze 1,0 nebo vyšší, pokud je hodnota vlastnosti **null**.
+> Vlastnost **MinimumTlsVersion** je v tuto chvíli dostupná jenom pro účty úložiště ve veřejném cloudu Azure.
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
 
-Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště s Azure Portal, postupujte následovně:
+Když vytvoříte účet úložiště s Azure Portal, je minimální verze protokolu TLS ve výchozím nastavení nastavená na 1,2.
+
+Pokud chcete nakonfigurovat minimální verzi TLS pro existující účet úložiště pomocí Azure Portal, postupujte takto:
 
 1. Na webu Azure Portal přejděte na svůj účet úložiště.
 1. Vyberte nastavení **Konfigurace** .
@@ -108,6 +110,8 @@ Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště s Azur
 
 Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště pomocí PowerShellu, nainstalujte [Azure PowerShell verze 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) nebo novější. Dále nakonfigurujte vlastnost **MinimumTLSVersion** pro nový nebo existující účet úložiště. Platné hodnoty pro **MinimumTlsVersion** jsou `TLS1_0` , `TLS1_1` a `TLS1_2` .
 
+Vlastnost **MinimumTlsVersion** se ve výchozím nastavení nenastavuje při vytváření účtu úložiště pomocí PowerShellu. Tato vlastnost nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje žádosti odesílané pomocí protokolu TLS verze 1,0 nebo vyšší, pokud je hodnota vlastnosti **null**.
+
 Následující příklad vytvoří účet úložiště a nastaví **MinimumTLSVersion** na TLS 1,1, potom tento účet aktualizuje a nastaví **MinimumTLSVersion** na TLS 1,2. Příklad také načte hodnotu vlastnosti v každém případě. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```powershell
@@ -116,18 +120,18 @@ $accountName = "<storage-account>"
 $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
-New-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
-    -Location $location \
-    -SkuName Standard_GRS \
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS `
     -MinimumTlsVersion TLS1_1
 
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
-Set-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
     -MinimumTlsVersion TLS1_2
 
 # Read the MinimumTlsVersion property.
@@ -137,6 +141,8 @@ Set-AzStorageAccount -ResourceGroupName $rgName \
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště pomocí Azure CLI, nainstalujte Azure CLI verze 2.9.0 nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Dále nakonfigurujte vlastnost **minimumTlsVersion** pro nový nebo existující účet úložiště. Platné hodnoty pro **minimumTlsVersion** jsou `TLS1_0` , `TLS1_1` a `TLS1_2` .
+
+Vlastnost **minimumTlsVersion** se ve výchozím nastavení nenastavuje při vytváření účtu úložiště pomocí Azure CLI. Tato vlastnost nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje žádosti odesílané pomocí protokolu TLS verze 1,0 nebo vyšší, pokud je hodnota vlastnosti **null**.
 
 Následující příklad vytvoří účet úložiště a nastaví **minimumTLSVersion** na TLS 1,1. Pak aktualizuje účet a nastaví vlastnost **minimumTLSVersion** na TLS 1,2. Příklad také načte hodnotu vlastnosti v každém případě. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 

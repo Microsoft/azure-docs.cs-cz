@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758245"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016839"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Připojení zařízení brány 500 Rigado do IoT Central k aplikaci Azure
 
-*Tento článek se týká tvůrců řešení a vývojářů zařízení.*
+*Tento článek se týká tvůrců řešení.*
 
 Tento článek popisuje, jak jako tvůrce řešení můžete připojit Rigado zařízení brány 500 k vaší aplikaci Microsoft Azure IoT Central. 
 
@@ -51,7 +51,7 @@ Přidání šablony zařízení s kaskádovou 500:
 
 Teď budete muset pro aplikaci Azure IoT Central načíst **ID oboru** a **primární klíč** , aby bylo možné propojit zařízení s kaskádou 500. 
 
-1. V levém podokně přejděte do části **Správa** a klikněte na **připojení zařízení**. 
+1. V levém podokně přejděte do části **Správa**  a klikněte na **připojení zařízení**. 
 2. Poznamenejte si **ID oboru** pro vaši aplikaci IoT Central.
 ![ID oboru aplikace](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
 3. Nyní klikněte na **Zobrazit klíče** a poznamenejte si primární klíč **primárního klíče**. 
@@ -65,7 +65,7 @@ Jakmile je zařízení připojené k Internetu, Rigado bude moct přes zabezpeč
 
 Tato aktualizace použije informace o IoT Central připojení na zařízení s kaskádovou 500 a zobrazí se v seznamu zařízení. 
 
-![Primární klíč](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
+![Seznam zařízení](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
 
 Teď jste připraveni použít zařízení C500 v aplikaci IoT Central!
 

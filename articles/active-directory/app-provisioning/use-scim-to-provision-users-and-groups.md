@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/07/2020
+ms.date: 09/10/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8fa409a8ee66cd69016b7978f0d5f0194b338c4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: d0f67f9052467e5d1a89fc4c520bd39821403bbe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959149"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015445"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -147,7 +147,7 @@ Pokud vytváříte aplikaci, která podporuje rozhraní API pro správu uživate
 V rámci [specifikace protokolu SCIM 2,0](http://www.simplecloud.info/#Specification)musí vaše aplikace splňovat tyto požadavky:
 
 * Podporuje vytváření uživatelů a volitelně také skupiny podle oddílu [3,3 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.3).  
-* Podporuje úpravu uživatelů nebo skupin s požadavky na opravy podle [oddílu 3.5.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
+* Podporuje úpravu uživatelů nebo skupin s požadavky na opravy podle [oddílu 3.5.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.5.2). Podpora zajišťuje, že skupiny a uživatelé jsou zřízeny způsobem. 
 * Podporuje načítání známého prostředku pro uživatele nebo skupinu vytvořené dříve, podle [oddílu 3.4.1 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
 * Podporuje dotazování uživatelů nebo skupin podle části [3.4.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Ve výchozím nastavení jsou uživatelé načítáni pomocí `id` a dotazováni jejich `username` a a `externalId` skupiny jsou dotazovány nástrojem `displayName` .  
 * Podporuje dotazování uživatele podle ID a podle manažera podle části 3.4.2 protokolu SCIM.  
@@ -746,7 +746,7 @@ Minimální pruh šifrovacích sad TLS 1,2:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>Rozsahy IP adres
-Služba zřizování Azure AD aktuálně funguje pod rozsahy IP adres pro Azureactivedirectory selhala a AzureActiveDirectoryDomainServices, jak je uvedeno [tady](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all). Probíhající práce se konsoliduje jenom do rozsahů IP adres pod Azureactivedirectory selhala. 
+Služba zřizování Azure AD aktuálně funguje pod rozsahy IP adres pro Azureactivedirectory selhala, jak je uvedeno [tady](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all). Rozsahy IP adres uvedené pod značkou Azureactivedirectory selhala můžete přidat, pokud chcete, aby byl do vaší aplikace povolený provoz ze služby zřizování Azure AD. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Krok 3: Vytvoření koncového bodu SCIM
 
@@ -1175,7 +1175,7 @@ Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, mů�
 Postupujte podle níže uvedeného kontrolního seznamu a ujistěte se, že je vaše aplikace rychlá a zákazníci mají hladké prostředí pro nasazení. Informace budou shromažďovány od vás při připojování k galerii. 
 > [!div class="checklist"]
 > * Podpora koncového bodu uživatelů a skupin [SCIM 2,0 ](#step-2-understand-the-azure-ad-scim-implementation) (je vyžadována pouze jedna, ale doporučuje se obě)
-> * Podpora minimálně 25 požadavků za sekundu na tenanta (povinné)
+> * Podpora aspoň 25 požadavků za sekundu na tenanta, aby se zajistilo zřízení a zrušení zřízení uživatelů a skupin bez prodlení (povinné)
 > * Navázání technologických kontaktů a vedení a podpory pro zákazníky po registraci galerie (povinné)
 > * 3 přihlašovací údaje pro vaši aplikaci bez vypršení platnosti (povinné)
 > * Podpora udělení autorizačního kódu OAuth nebo dlouhého nedlouhodobého tokenu, jak je popsáno níže (povinné)

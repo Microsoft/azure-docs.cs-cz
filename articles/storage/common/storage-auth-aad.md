@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a098d4bab4ea8cb083658b205dcb73da619fdbde
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2fd0269744c7ee49c72806e3cb0e1227035de4f0
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035701"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019168"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory
 
@@ -79,7 +79,7 @@ Když se pokusíte o přístup k datům objektů BLOB nebo front, Azure Portal n
 
 Pokud chcete získat přístup k datům objektů BLOB nebo front z Azure Portal pomocí svého účtu služby Azure AD, potřebujete oprávnění pro přístup k datům objektů BLOB a Queue a Vy taky potřebujete oprávnění k procházení prostředků účtu úložiště v Azure Portal. Předdefinované role poskytované Azure Storage udělují přístup k prostředkům BLOB a Queue, ale neudělují oprávnění k prostředkům účtu úložiště. Z tohoto důvodu přístup k portálu vyžaduje taky přiřazení role Azure Resource Manager, jako je například role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) , vymezená na úrovni účtu úložiště nebo vyšší. Role **Čtenář** uděluje nejvyšší omezení oprávnění, ale také je přijatelná jiná role Azure Resource Manager, která uděluje přístup k prostředkům správy účtu úložiště. Další informace o tom, jak přiřadit oprávnění uživatelům k přístupu k datům v Azure Portal s účtem služby Azure AD, najdete [v tématu udělení přístupu k datům objektů blob Azure a frontě pomocí RBAC v Azure Portal](storage-auth-aad-rbac-portal.md).
 
-Azure Portal určuje, které schéma autorizace se používá, když přejdete do kontejneru nebo fronty. Další informace o přístupu k datům na portálu najdete v tématu [použití Azure Portal k přístupu k datům objektů BLOB nebo Queue](storage-access-blobs-queues-portal.md).
+Azure Portal určuje, které schéma autorizace se používá, když přejdete do kontejneru nebo fronty. Další informace o přístupu k datům na portálu najdete v tématu [Volba způsobu autorizace přístupu k datům objektu BLOB v Azure Portal](../blobs/authorize-blob-access-portal.md) a [Výběr způsobu autorizace přístupu k datům ve frontě v Azure Portal](../queues/authorize-queue-access-portal.md).
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Přístup k datům z PowerShellu nebo Azure CLI
 

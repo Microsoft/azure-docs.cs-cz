@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533992"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017927"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD do SAP SuccessFactors
 Cílem tohoto kurzu je Ukázat kroky pro atributy zpětného zápisu z Azure AD do SAP SuccessFactors Employee Central. 
@@ -40,7 +40,7 @@ Můžete nakonfigurovat aplikaci SAP SuccessFactors zpětného zápisu pro zápi
 
 Toto řešení pro zajištění zpětného zápisu uživatelů SuccessFactors se ideálním způsobem hodí pro:
 
-* Organizace, které používají Office 365 a které chtějí použít autoritativní atributy se zpětným zápisem (jako je e-mailová adresa, telefon, uživatelské jméno) zpátky na SuccessFactors zaměstnance – střed
+* Organizace, které používají Microsoft 365, které chtějí použít autoritativní atributy se zpětným zápisem (jako je e-mailová adresa, telefon, uživatelské jméno) zpátky na SuccessFactors zaměstnance – střed
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Konfigurace SuccessFactors pro integraci
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: 1b5c756fed5d172593b23c2a157c280caa614940
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e512c233ccfd793b87f203f837b11e97966d8102
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097154"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016241"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 finance a ověřování funkčnosti operací
 
@@ -35,7 +35,7 @@ Certifikační tým Microsoftu zkontroluje video a soubory a pak buď schválí 
 
 ### <a name="option-1-30-minute-conference-call"></a>Možnost 1:30-minuta konferenční hovor
 
-Chcete-li naplánovat konečný hovor na revizi, kontaktujte [appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com) s názvem vaší nabídky a několika potenciálními časovými sloty mezi 8 hodinami. a 5 hodin Tichomořského času.
+Chcete-li naplánovat konečný hovor na revizi, kontaktujte [appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com) s názvem vaší nabídky a několika potenciálními časovými sloty mezi 8 dop. a 5 hodin tichomořského času.
 
 ### <a name="option-2-upload-a-demo-video-and-lcs-screenshots"></a>Možnost 2: nahrání ukázkového videa a snímků obrazovky LCS
 
@@ -60,7 +60,7 @@ Chcete-li naplánovat konečný hovor na revizi, kontaktujte [appsourceCRM@micro
     | --- | --- |
     | Přehled balíčku | [![Obrazovka s přehledem balíčku](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Schvalovatelé řešení</li></ul> | [![Obrazovka s přehledem balíčku](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Obsah balíčku<ul><li>Modelování</li><li>Balíček s nasazením softwaru</li></ul> | [![Obrazovka obsahu balíčku 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Obsah balíčku<ul><li>Model</li><li>Balíček s nasazením softwaru</li></ul> | [![Obrazovka obsahu balíčku 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>Konfigurace GER</li><li>Zálohování databáze</li></ul><br>V **konfiguračním oddílu GER** se nevyžadují artefakty. | [![Obrazovka obsahu balíčku 2](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Model sestavy Power BI</li><li>Artefakt BPM</li></ul><br>Artefakty nejsou v oddílu **Power BI** požadovány. | [![Obrazovka obsahu balíčku – tři](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Zpracovat balíček dat</li><li>Licenční smlouva k řešení a zásady ochrany osobních údajů</li></ul><br>Části **GER Configuration** and **Power BI model sestavy** jsou volitelné, aby se zahrnuly do nabídek finance a operace. | [![Obrazovka obsahu balíčku – čtyři](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526826"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017468"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD na Workday
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zpětném zápisu atributů z Azure AD do Workday. Aplikace pro zřizování zpětného zápisu do pracovního dne podporuje přiřazení hodnot k následujícím atributům Workday:
@@ -34,7 +34,7 @@ Když nastavíte příchozí integraci zřizování pomocí [Workday do místní
 
 Toto řešení pro zpětný zápis uživatelů v pracovní den je ideální pro:
 
-* Organizace používající Office 365, které chtějí vracet autoritativní atributy, které jí spravuje (například e-mailová adresa, uživatelské jméno a telefonní číslo) zpátky do Workday
+* Organizace, které používají Microsoft 365, které chtějí ke zpětným voláním používat autoritativní atributy (jako je e-mailová adresa, uživatelské jméno a telefonní číslo) zpátky do Workday
 
 ## <a name="configure-integration-system-user-in-workday"></a>Konfigurace uživatele integračního systému v Workday
 

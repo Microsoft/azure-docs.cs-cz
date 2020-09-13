@@ -7,15 +7,17 @@ ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
+manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+- device-developer
+ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337088"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018178"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -147,10 +149,10 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Skupinový primární klíč ze skupiny SAS-IoT-Devices skupina pro registraci":::
 
-1. Použijte nástroj [DPS-keygen](https://www.npmjs.com/package/dps-keygen) k vygenerování klíčů SAS zařízení. Použijte primární klíč skupiny z předchozího kroku. ID zařízení musí být malá písmena:
+1. Pomocí `az iot central device compute-device-key` příkazu vygenerujte klíče SAS zařízení. Použijte primární klíč skupiny z předchozího kroku. ID zařízení musí být malá písmena:
 
-    ```cmd
-    dps-keygen -mk:<group primary key> -di:<device ID>
+    ```azurecli
+    az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
     ```
 
 1. Výrobce OEM pokaždé zařízení pokaždé, když má ID zařízení, vygenerovanou klíč SAS zařízení a hodnotu **rozsahu ID** aplikace.
@@ -195,12 +197,12 @@ IoT Central podporuje následující mechanismy ověřování identity pro jedno
 - **Ověření identity symetrického klíče:** Symetrický ověření identity je jednoduchý přístup k ověřování zařízení s instancí DPS. Pokud chcete vytvořit jednotlivou registraci s použitím symetrických klíčů, otevřete stránku **připojení zařízení** , jako způsob připojení vyberte **jednotlivou registraci** a jako mechanismus zadejte **sdílený přístupový podpis (SAS)** . Zadejte primární a sekundární klíč kódovaný v kódování Base64 a uložte provedené změny. Připojte zařízení pomocí **oboru ID**, **ID zařízení**a primárního nebo sekundárního klíče.
 
     > [!TIP]
-    > Pro účely testování můžete použít **OpenSSL** k vygenerování klíčů kódovaných v kódování Base64:`openssl rand -base64 64`
+    > Pro účely testování můžete použít **OpenSSL** k vygenerování klíčů kódovaných v kódování Base64: `openssl rand -base64 64`
 
 - **Certifikáty X. 509:** Pokud chcete vytvořit jednotlivou registraci pomocí certifikátů X. 509, otevřete stránku **připojení zařízení** , jako způsob připojení vyberte **jednotlivou registraci** a jako mechanismus zvolte **certifikáty (X. 509)** . Certifikáty zařízení používané s jednotlivou položkou registrace mají požadavek, aby byl Vydavatel a předmět CN nastaven na ID zařízení.
 
     > [!TIP]
-    > Pro účely testování můžete použít [Nástroje pro sadu SDK zařízení pro zřizování zařízení Azure IoT pro Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) k vygenerování certifikátu podepsaného svým držitelem:`node create_test_cert.js device "mytestdevice"`
+    > Pro účely testování můžete použít [Nástroje pro sadu SDK zařízení pro zřizování zařízení Azure IoT pro Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) k vygenerování certifikátu podepsaného svým držitelem: `node create_test_cert.js device "mytestdevice"`
 
 - **Ověření identity čipu TPM (Trusted Platform Module):** [Čip TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) je typ modulu hardwarového zabezpečení. Používání čipu TPM je jedním z nejbezpečnější způsobů, jak připojit zařízení. V tomto článku se předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Software emulující čipy TPM je vhodný pro vytváření prototypů nebo testování, ale neposkytuje stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované čipy TPM. Nepoužívejte software čipy TPM v produkčním prostředí. Pokud chcete vytvořit jednotlivou registraci, která používá čip TPM, otevřete stránku **připojení zařízení** , jako způsob připojení vyberte **jednotlivou registraci** a jako mechanismus vytvořte **TPM** . Zadejte ověřovací klíč čipu TPM a uložte informace o připojení zařízení.
 

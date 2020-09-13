@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, fasttrack-edit
+ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121166"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015802"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
@@ -42,9 +42,9 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Jednostránkové aplikace (JavaScript)
 
-Mnohé moderní aplikace mají front-end samoobslužnou aplikaci vytvořenou hlavně v JavaScriptu, často i v rámci architektury, jako je například úhlová, reakce nebo Vue. Koncový bod platformy Microsoft identity podporuje tyto aplikace pomocí [toku autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
+Mnohé moderní aplikace mají front-end samoobslužnou aplikaci vytvořenou hlavně v JavaScriptu, často i v rámci architektury, jako je například úhlová, reakce nebo Vue. Služba Microsoft Identity Platform Endpoint podporuje tyto aplikace pomocí protokolu [OpenID Connect](v2-protocols-oidc.md) pro ověřování a buď [toku OAuth 2,0 implicitního udělení](v2-oauth2-implicit-grant-flow.md) identity, nebo novějšího [autorizačního kódu OAuth 2,0 + PKCE toku](v2-oauth2-auth-code-flow.md) pro autorizaci (viz níže).
 
-V tomto toku aplikace obdrží kód z `authorize` koncového bodu Microsoft Identity Platform a uplatní ho pro tokeny a aktualizace tokenů pomocí webových požadavků mezi weby. Obnovovací token vyprší každých 24 hodin a aplikace musí požádat o jiný kód.
+Flowový diagram níže znázorňuje udělení autorizačního kódu OAuth 2,0 (s podrobnostmi o PKCE vynechán), kde aplikace přijímá kód z koncového bodu Microsoft Identity Platform `authorize` a uplatňuje ho pro tokeny a aktualizační tokeny pomocí webových požadavků pro různé weby. Obnovovací token vyprší každých 24 hodin a aplikace musí požádat o jiný kód. Kromě přístupového tokenu, `id_token` který představuje přihlášeného uživatele ke klientské aplikaci, se obvykle také požaduje prostřednictvím stejného toku nebo samostatné žádosti OpenID Connect (tady není zobrazená).
 
 ![Tok kódu pro aplikace SPA](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 

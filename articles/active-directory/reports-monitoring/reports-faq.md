@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231040"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015326"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Nejčastější dotazy týkající se Azure Active Directory sestav
 
@@ -37,7 +37,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **Otázka: teď používáme `https://graph.windows.net/<tenant-name>/reports/` rozhraní API koncových bodů k vyžádání sestav zabezpečení Azure AD (konkrétní typy detekcí, jako jsou nevrácená pověření nebo přihlášení z anonymních IP adres) do našich systémů vytváření sestav prostřednictvím kódu programu. Co mám přepnout na?**
 
-**A:**  [Rozhraní API detekce rizik v rámci Identity Protection](../identity-protection/howto-identity-protection-graph-api.md)můžete použít   k přístupu k detekcím zabezpečení prostřednictvím Microsoft Graph. Tento nový formát poskytuje větší flexibilitu v tom, jak můžete zadávat dotazy na data, s využitím pokročilého filtrování, výběru polí a dalších možností a standardizovat detekci rizik do jednoho typu pro snazší integraci do systémů Siem a dalších nástrojů pro shromažďování dat. Vzhledem k tomu, že data jsou v jiném formátu, nemůžete pro staré dotazy použít nový dotaz. [Nové rozhraní API ale používá Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta), což je standard Microsoftu pro taková rozhraní API jako O365 nebo Azure AD. To znamená, že požadovaná práce může buď rozšířila vaše aktuální Microsoft Graph investice, nebo vám umožní začít přejít na tuto novou standardní platformu.
+**A:**  [Rozhraní API detekce rizik v rámci Identity Protection](../identity-protection/howto-identity-protection-graph-api.md)můžete použít   k přístupu k detekcím zabezpečení prostřednictvím Microsoft Graph. Tento nový formát poskytuje větší flexibilitu v tom, jak můžete zadávat dotazy na data, s využitím pokročilého filtrování, výběru polí a dalších možností a standardizovat detekci rizik do jednoho typu pro snazší integraci do systémů Siem a dalších nástrojů pro shromažďování dat. Vzhledem k tomu, že data jsou v jiném formátu, nemůžete pro staré dotazy použít nový dotaz. [Nové rozhraní API ale používá Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta), což je standard Microsoftu pro taková rozhraní api jako Microsoft 365 nebo Azure AD. To znamená, že požadovaná práce může buď rozšířila vaše aktuální Microsoft Graph investice, nebo vám umožní začít přejít na tuto novou standardní platformu.
 
 ---
 
@@ -81,15 +81,15 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 ---
 
-**Otázka: mohu získat informace o protokolu aktivit Office 365 prostřednictvím Azure Portal?**
+**Otázka: mohu získat informace o Microsoft 365 protokolu aktivit prostřednictvím Azure Portal?**
 
-**A:** I když aktivity Office 365 a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, pokud chcete zobrazit úplné zobrazení protokolů aktivit Office 365, měli byste přejít do [centra pro správu Microsoft 365](https://admin.microsoft.com) a získat informace o protokolu aktivit Office 365.
+**A:** I když Microsoft 365 aktivity a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, pokud chcete úplné zobrazení protokolů aktivit Microsoft 365, měli byste přejít do [centra pro správu Microsoft 365](https://admin.microsoft.com) a získat informace o protokolu aktivit Office 365.
 
 ---
 
-**Otázka: jaká rozhraní API mám použít k získání informací o protokolech aktivit Office 365?**
+**Otázka: jaká rozhraní API mám použít k získání informací o Microsoft 365ch protokolů aktivit?**
 
-**A:** Použijte [rozhraní API pro správu sady office 365](/office/office-365-management-api/office-365-management-apis-overview) k přístupu k protokolům aktivit Office 365 prostřednictvím rozhraní API.
+**A:** [Rozhraní API pro správu Microsoft 365](/office/office-365-management-api/office-365-management-apis-overview) slouží k přístupu k protokolům aktivit Microsoft 365 prostřednictvím rozhraní API.
 
 ---
 
