@@ -7,32 +7,48 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 476af7dd40cd1f31d03f3bd80affac0ce10ef900
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927200"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660289"
 ---
-# <a name="adjust-capacity-in-azure-cognitive-search"></a>Nastavení kapacity v Azure Kognitivní hledání
+# <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>Úprava kapacity služby Azure Kognitivní hledání
 
-Než [zřídíte službu vyhledávání](search-create-service-portal.md) a zamknete ji v konkrétní cenové úrovni, pochopíte úlohu replik a oddílů ve službě a způsob, jakým můžete službu upravit tak, aby vyhovovala špičkám a nedorozuměním na vyžádání prostředků.
+Než [zřídíte službu vyhledávání](search-create-service-portal.md) a zamknete ji v konkrétní cenové úrovni, pochopíte si, jak kapacita funguje a jak můžete upravovat repliky a oddíly, abyste vyhověli výkyvům úloh.
 
-Kapacita je funkce zvolené [úrovně](search-sku-tier.md) (úrovně určují hardwarové charakteristiky) a kombinaci repliky a oddílu potřebné pro plánované úlohy. V závislosti na vrstvě a velikosti úpravy může přidání nebo snížení kapacity trvat až 15 minut až několik hodin. 
+Kapacita je funkce zvolené [úrovně](search-sku-tier.md) (úrovně určují hardwarové charakteristiky) a kombinaci repliky a oddílu potřebné pro plánované úlohy. Počet replik nebo oddílů můžete zvýšit nebo snížit jednotlivě. V závislosti na vrstvě a velikosti úpravy může přidání nebo snížení kapacity trvat až 15 minut až několik hodin.
 
 Při úpravách přidělení replik a oddílů doporučujeme použít Azure Portal. Portál vynutil omezení povolených kombinací, které jsou nižší než maximální limity vrstvy. Nicméně pokud vyžadujete přístup založený na skriptech nebo způsobu zřizování na základě kódu, [Azure PowerShell](search-manage-powershell.md) nebo [REST API správy](/rest/api/searchmanagement/services) jsou alternativní řešení.
 
-## <a name="terminology-replicas-and-partitions"></a>Terminologie: repliky a oddíly
+## <a name="concepts-search-units-replicas-partitions-shards"></a>Koncepty: jednotky hledání, repliky, oddíly, horizontálních oddílů
 
-|||
-|-|-|
-|*Oddíly* | Poskytuje úložiště indexu a vstupně-výstupní operace pro operace čtení/zápisu (například při opakovaném sestavování nebo obnovování indexu). Každý oddíl má podíl celkového indexu. Pokud přidělíte tři oddíly, váš index je rozdělen na třetiny. |
-|*Repliky* | Instance vyhledávací služby, které se primárně používají k vyrovnávání zatížení operací dotazů. Každá replika je jednou kopií indexu. Pokud přidělíte tři repliky, budete mít k dispozici tři kopie indexu pro obsluhu požadavků dotazů.|
+Kapacita se vyjadřuje v *jednotkách vyhledávání* , které se dají přidělit v kombinaci *oddílů* a *replik*, a to pomocí základního mechanismu *horizontálního dělení* pro podporu flexibilních konfigurací:
+
+| Koncepce  | Definice|
+|----------|-----------|
+|*Jednotka vyhledávání* | Jeden přírůstek celkové dostupné kapacity (jednotky 36). Je to také fakturační jednotka služby Azure Kognitivní hledání. Ke spuštění služby se vyžaduje minimálně jedna jednotka.|
+|*Replika* | Instance vyhledávací služby, které se primárně používají k vyrovnávání zatížení operací dotazů. Každá replika hostuje jednu kopii indexu. Pokud přidělíte tři repliky, budete mít k dispozici tři kopie indexu pro obsluhu požadavků dotazů.|
+|*Oddíl* | Fyzické úložiště a vstupně-výstupní operace pro operace čtení/zápisu (například při opakovaném sestavování nebo obnovování indexu). Každý oddíl má řez celkového indexu. Pokud přidělíte tři oddíly, váš index je rozdělen na třetiny. |
+|*Horizontálních oddílů* | Blok indexu. Azure Kognitivní hledání rozdělí každý index na horizontálních oddílů, aby proces přidávání oddílů rychlejší (přesunutím horizontálních oddílů na nové jednotky pro hledání).|
+
+Následující diagram znázorňuje vztah mezi replikami, oddíly, horizontálních oddílů a jednotkami pro hledání. Ukazuje příklad toho, jak je jeden index rozložen mezi čtyři jednotky vyhledávání ve službě se dvěma replikami a dvěma oddíly. Každá ze čtyř jednotek hledání uchovává pouze polovinu horizontálních oddílůy indexu. Jednotky vyhledávání v levém sloupci ukládají první polovinu horizontálních oddílů, včetně prvního oddílu, zatímco ta v pravém sloupci ukládají druhou polovinu horizontálních oddílů, která zahrnuje druhý oddíl. Vzhledem k tomu, že existují dvě repliky, existují dvě kopie každého indexu horizontálních oddílů. Jednotky vyhledávání v horním řádku ukládají jednu kopii, která se skládá z první repliky, zatímco ta v dolním řádku ukládá další kopii, která se skládá z druhé repliky.
+
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Vyhledávací indexy se horizontálně dělené napříč oddíly.":::
+
+Výše uvedený diagram je pouze jeden příklad. Je možné mnoha kombinací oddílů a replik, maximálně až 36 jednotek hledání (celkem až).
+
+V Kognitivní hledání je Správa horizontálních oddílůa detailem implementace a nedá se konfigurovat, ale s vědomím, že index je horizontálně dělené, pomáhá pochopit občasné anomálie v pořadí a chování při automatickém dokončování:
+
++ Řazení anomálií: skóre hledání se nejprve vypočítávají na úrovni horizontálních oddílů a pak se agreguje do jedné sady výsledků. V závislosti na charakteristikách horizontálních oddílů obsahu může být shoda z jedné horizontálních oddílů seřazená na vyšší hodnotu než shoda v jiném typu. Pokud si všimnete, že ve výsledcích hledání nenajdete intuitivní hodnocení, je nejpravděpodobnější vzhledem k efektům horizontálního dělení, zejména pokud jsou indexy malé. Těmto anomáliím se můžete vyhnout tak, že vyberete možnost [vypočítat skóre globálně napříč celým indexem](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions), ale dojde k snížení výkonu.
+
++ Gramatiky automatického dokončování: Automatické dokončování dotazů, kde se shody provádějí na prvních několika znakech částečně zadaného výrazu, přijměte přibližný parametr, který forgives malé odchylky v pravopisu. Pro automatické dokončování je přibližné porovnání omezené na výrazy v rámci aktuální horizontálních oddílů. Například pokud horizontálních oddílů obsahuje "Microsoft" a částečný výraz "micor", vyhledávací web bude v tomto horizontálních oddílů odpovídat "Microsoft", ale ne v jiném horizontálních oddílů, které obsahují zbývající části indexu.
 
 ## <a name="when-to-add-nodes"></a>Kdy přidat uzly
 
-Zpočátku je služba přidělena minimální úroveň prostředků, které se skládají z jednoho oddílu a jedné repliky. 
+Zpočátku je služba přidělena minimální úroveň prostředků, které se skládají z jednoho oddílu a jedné repliky.
 
 Jedna služba musí mít dostatek prostředků pro zpracování všech úloh (indexování a dotazů). Na pozadí se nespouští žádné úlohy. Indexování můžete naplánovat na časy, kdy jsou požadavky na dotazy přirozeně méně časté, ale služba nebude jinak určovat prioritu jednoho úkolu v jiném. Kromě toho určité množství redundance vyplynule výkon dotazů při interní aktualizaci služeb nebo uzlů.
 
@@ -59,7 +75,7 @@ V rámci obecného pravidla hledají aplikace za následek větší repliky než
 
    ![Přidat repliky a oddíly](media/search-capacity-planning/2-add-2-each.png "Přidat repliky a oddíly")
 
-1. Potvrďte změny kliknutím na **Uložit** .
+1. Vyberte **Uložit** a potvrďte změny.
 
    ![Potvrďte změny ve škálování a fakturaci](media/search-capacity-planning/3-save-confirm.png "Potvrďte změny ve škálování a fakturaci")
 

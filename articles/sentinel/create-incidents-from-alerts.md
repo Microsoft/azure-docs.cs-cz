@@ -13,18 +13,18 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: 1593b96ae8412632120e8977635a4193996ca88d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4c631360417afda41b7f48a46b618e7a4328aef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025114"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660708"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatické vytváření incidentů z výstrah zabezpečení společnosti Microsoft
 
-Výstrahy aktivované v řešeních zabezpečení Microsoftu, která jsou připojená ke službě Azure Sentinel, jako je Microsoft Cloud App Security a Rozšířená ochrana před internetovými útoky, nevytvářejí v Azure Sentinel automaticky incidenty. Ve výchozím nastavení platí, že když připojíte řešení Microsoftu ke službě Azure Sentinel, všechna upozornění vygenerovaná v této službě se uloží jako nezpracovaná data v Azure Sentinel v tabulce výstrahy zabezpečení v pracovním prostoru Azure Sentinel. Tato data pak můžete použít stejně jako jakákoli jiná nezpracovaná data, ke kterým se připojíte pomocí ověřovacích dat.
+Výstrahy aktivované v řešeních zabezpečení Microsoftu, která jsou připojená ke službě Azure Sentinel, jako je například Microsoft Cloud App Security a Microsoft Defender pro identitu (dříve Azure ATP), nevytvářejí v Azure Sentinel automaticky incidenty. Ve výchozím nastavení platí, že když připojíte řešení Microsoftu ke službě Azure Sentinel, všechna upozornění vygenerovaná v této službě se uloží jako nezpracovaná data v Azure Sentinel v tabulce výstrahy zabezpečení v pracovním prostoru Azure Sentinel. Tato data pak můžete použít stejně jako jakákoli jiná nezpracovaná data, ke kterým se připojíte pomocí ověřovacích dat.
 
 Pomocí pokynů v tomto článku můžete snadno nakonfigurovat službu Azure Sentinel tak, aby automaticky vytvářela incidenty pokaždé, když se aktivuje výstraha v rámci připojeného řešení zabezpečení Microsoftu.
 
@@ -33,7 +33,7 @@ Aby bylo možné vytvářet incidenty z výstrah služby zabezpečení, je nutn�
 
 ## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>Pomocí analytických pravidel pro vytváření incidentů zabezpečení Microsoftu
 
-Pomocí předdefinovaných pravidel dostupných v Azure Sentinel můžete zvolit, která připojená řešení zabezpečení Microsoftu by měla v reálném čase vytvářet incidenty Sentinel Azure automaticky. Můžete také upravit pravidla a definovat konkrétnější možnosti pro filtrování, které výstrahy vygenerované řešením zabezpečení Microsoftu by měly vytvářet incidenty v Azure Sentinel. Můžete se třeba rozhodnout vytvořit incidenty Sentinel Azure automaticky jenom z Azure Security Center výstrahy s vysokou závažností.
+Pomocí předdefinovaných pravidel dostupných v Azure Sentinel můžete zvolit, která připojená řešení zabezpečení Microsoftu by měla v reálném čase vytvářet incidenty Sentinel Azure automaticky. Můžete také upravit pravidla a definovat konkrétnější možnosti pro filtrování, které výstrahy vygenerované řešením zabezpečení Microsoftu by měly vytvářet incidenty v Azure Sentinel. Můžete se třeba rozhodnout vytvořit incidenty Sentinel Azure automaticky jenom z výstrah s vysokou závažností pro Azure Defender (dřív Azure Security Center).
 
 1. V Azure Portal v části Azure Sentinel vyberte **Analytics**.
 
@@ -47,7 +47,7 @@ Pomocí předdefinovaných pravidel dostupných v Azure Sentinel můžete zvolit
 
 1. Můžete upravit podrobnosti pravidla a vybrat, jestli se mají filtrovat výstrahy, které vytvoří incidenty podle závažnosti výstrahy nebo podle textu obsaženého v názvu výstrahy.  
       
-    Pokud například **v poli** filtr podle závažnosti zvolíte možnost **Azure Security Center** a v poli **filtrovat podle závažnosti** zvolíte možnost **Vysoká** , budou automaticky ve službě Azure Sentinel automaticky vytvořeny pouze vysoké závažnost Azure Security Center výstrahy.  
+    Pokud například **v poli** filtr podle závažnosti zvolíte možnost **Azure Defender** (může se i nadále volat Azure Security Center) a v poli **filtrovat podle závažnosti** zvolit možnost **Vysoká** , budou se v nástroji Azure Sentinel automaticky vytvářet incidenty jenom s vysokou závažností výstrahy Azure Defenderu.  
 
     ![Průvodce vytvořením pravidla](media/incidents-from-alerts/create-rule-wizard.png)
 

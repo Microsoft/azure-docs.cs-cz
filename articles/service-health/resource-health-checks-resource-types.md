@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím Azure Resource Health | 
 description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: d797b9fb9b843f114e01820fa666e56749c7983f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9aedc115a29f11d4d54715d51bb6231ea1ea9e03
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230156"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660653"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
 Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -51,7 +51,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/DomainNames
 |Provedené kontroly|
 |---|
-|<ul><li>Je nasazení produkčního slotu v rámci všech instancí rolí v pořádku?</li><li>Je role v pořádku napříč všemi jejími instancemi virtuálních počítačů?</li><li>Jaký je stav každého virtuálního počítače v rámci role cloudové služby?</li><li>Změnil se stav virtuálního počítače v důsledku operace iniciované platformou nebo zákazníkem?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
+|<ul><li>Je nasazení produkčního slotu v rámci všech instancí rolí v pořádku?</li><li>Je role v pořádku napříč všemi jejími instancemi virtuálních počítačů?</li><li>Jaký je stav každého virtuálního počítače v rámci role cloudové služby?</li><li>Změnil se stav virtuálního počítače v důsledku operace iniciované platformou nebo zákazníkem?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li><li>[Další informace](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services) o provedených kontrolách</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices Account/účty
 |Provedené kontroly|

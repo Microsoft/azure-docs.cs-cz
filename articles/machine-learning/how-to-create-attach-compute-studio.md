@@ -1,5 +1,5 @@
 ---
-title: Vytváření výpočetních prostředků v studiu
+title: Vytvoření školicích & nasazení výpočetních prostředků (Studio)
 titleSuffix: Azure Machine Learning
 description: Použití studia k vytvoření výpočetních prostředků pro školení a nasazení (cíle výpočtů) pro Machine Learning
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 2e32eb9a2a13b8e247388e8da80dd5f5967fdc6d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147407"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661965"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Vytváření výpočetních cílů pro školení a nasazení modelů v Azure Machine Learning Studiu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak vytvářet a spravovat výpočetní cíle v Az
 * [Vs Code rozšíření](how-to-manage-resources-vscode.md#compute-clusters) pro Azure Machine Learning.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
@@ -71,7 +71,7 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
   * [Odvození clusterů](#inference-clusters)
   * [Připojené výpočetní prostředky](#attached-compute)
 
-1. Vyberte __Create__ (Vytvořit).
+1. Vyberte __Vytvořit__.
 
 1. Stav operace vytvoření si zobrazíte tak, že v seznamu vyberete cíl služby Compute:
 
@@ -120,6 +120,9 @@ Při vytváření clusteru nebo při úpravách podrobností výpočetního clus
 
 ### <a name="inference-clusters"></a>Odvození clusterů
 
+> [!IMPORTANT]
+> Použití služby Azure Kubernetes s Azure Machine Learning má několik možností konfigurace. Některé scénáře, například sítě, vyžadují další nastavení a konfiguraci. Další informace o používání AKS se službou Azure ML najdete v tématu [Vytvoření a připojení clusteru služby Azure Kubernetes](how-to-create-attach-kubernetes.md).
+
 Vytvořte nebo připojte cluster Azure Kubernetes Service (AKS) pro velké měřítko Inferencing. Pomocí [výše uvedeného postupu](#portal-create) vytvořte cluster AKS.  Pak vyplňte formulář následujícím způsobem:
 
 
@@ -127,7 +130,7 @@ Vytvořte nebo připojte cluster Azure Kubernetes Service (AKS) pro velké měř
 |---------|---------|
 |Název výpočetních prostředků     |  <li>Název je povinný. Název musí mít 2 až 16 znaků. </li><li>Platné znaky jsou velká písmena a malá písmena, číslice a  **-** znak.</li><li>Název musí začínat písmenem.</li><li>Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.</li><li>Pokud **-**  se používá znak, musí následovat aspoň jedno písmeno později v názvu.</li>     |
 |Kubernetes Service | Vyberte **vytvořit novou** a vyplňte zbytek formuláře.  Nebo vyberte **použít existující** a pak z předplatného vyberte existující cluster AKS.
-|Oblast |  Vyberte oblast, ve které se cluster vytvoří. |
+|Region (Oblast) |  Vyberte oblast, ve které se cluster vytvoří. |
 |Velikost virtuálního počítače     |  Podporované velikosti virtuálních počítačů můžou být ve vaší oblasti omezené. Kontrolovat [seznam dostupnosti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Účel clusteru  | Vybrat **produkci** nebo **vývoj a testování** |
 |Počet uzlů | Počet uzlů vynásobený počtem jader (vCPU) virtuálního počítače musí být větší nebo roven 12. |

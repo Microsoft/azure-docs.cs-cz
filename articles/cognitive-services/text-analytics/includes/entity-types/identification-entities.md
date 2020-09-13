@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8e0798f75aaa79031ca7cc03814282daa049fbfe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010928"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662912"
 ---
 Tato kategorie entit zahrnuje finanční informace a oficiální formy identifikace. K dispozici počínaje verzí modelu `2019-10-01` . Níže jsou uvedeny podtypy. 
 
@@ -34,7 +34,7 @@ Tato kategorie entit zahrnuje finanční informace a oficiální formy identifik
 > * Čísla Passport
 > * Daňové identifikátory
 
-Níže uvedené entity jsou seskupené podle země:
+Následující entity jsou seskupené a uvedené podle země:
 
 Argentina
 * Číslo argentinské National identity (DNI)
@@ -116,7 +116,7 @@ Francie
 * Karta National ID Francie (CNI)
 * Francouzský pas číslo
 * Francouzský rodné číslo (INSEE)
-* Daňové identifikační číslo pro Francii (numéro SPI.)
+* Daňové identifikační číslo pro Francii (numéro SPI)
 * Daňové číslo přidané hodnoty Francie
 
 Německo

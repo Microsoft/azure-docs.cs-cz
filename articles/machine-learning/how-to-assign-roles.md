@@ -11,14 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079582"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661921"
 ---
-# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
+# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak spravovat přístup k pracovnímu prostoru Azure Machine Learning. [Řízení přístupu na základě role Azure (Azure RBAC)](/azure/role-based-access-control/overview) se používá ke správě přístupu k prostředkům Azure. Uživatelům v Azure Active Directory jsou přiřazeny konkrétní role, které udělují přístup k prostředkům. Azure poskytuje jak předdefinované role, tak i možnost vytvářet vlastní role.
@@ -46,7 +46,7 @@ Pokud jste vlastníkem pracovního prostoru, můžete přidat a odebrat role pro
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Šablony Azure Resource Manageru](/azure/role-based-access-control/role-assignments-template)
+- [Šablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
 
 Pokud jste nainstalovali [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), můžete k přiřazení rolí uživatelům použít příkazy rozhraní příkazového řádku:
 
@@ -135,16 +135,16 @@ Následující tabulka představuje souhrn Azure Machine Learningch aktivit a op
 | Aktivita | Rozsah na úrovni předplatného | Rozsah na úrovni skupiny prostředků | Rozsah na úrovni pracovního prostoru |
 | ----- | ----- | ----- | ----- |
 | Vytvořit nový pracovní prostor | Nevyžadováno | Vlastník nebo přispěvatel | Není k dispozici (vlastník nebo zdědí vyšší obor role po vytvoření) |
-| Aktualizace edice pracovního prostoru | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/write` |
-| Požádat o kvótu Amlcompute na úrovni předplatného nebo nastavit kvótu úrovně pracovního prostoru | Vlastník, přispěvatel nebo vlastní role </br>která`/locations/updateQuotas/action`</br> v oboru předplatného | Neautorizováno | Neautorizováno |
-| Vytvořit nový výpočetní cluster | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/computes/write` |
-| Vytvořit novou výpočetní instanci | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/computes/write` |
-| Odeslání libovolného typu běhu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| Publikování koncového bodu kanálu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
-| Nasazení registrovaného modelu do prostředku AKS/ACI | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
+| Aktualizace edice pracovního prostoru | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/write` |
+| Požádat o kvótu Amlcompute na úrovni předplatného nebo nastavit kvótu úrovně pracovního prostoru | Vlastník, přispěvatel nebo vlastní role </br>která `/locations/updateQuotas/action`</br> v oboru předplatného | Neautorizováno | Neautorizováno |
+| Vytvořit nový výpočetní cluster | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/computes/write` |
+| Vytvořit novou výpočetní instanci | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/computes/write` |
+| Odeslání libovolného typu běhu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
+| Publikování koncového bodu kanálu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| Nasazení registrovaného modelu do prostředku AKS/ACI | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Bodování před nasazeným koncovým bodem AKS | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role umožňující: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Pokud nepoužíváte Azure Active Directory ověřování) nebo `"/workspaces/read"` (Pokud používáte ověřování tokenů) |
-| Přístup k úložišti pomocí interaktivních poznámkových bloků | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
-| Vytvořit novou vlastní roli | Povolení vlastníka, přispěvatele nebo vlastní role`Microsoft.Authorization/roleDefinitions/write` | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/computes/write` |
+| Přístup k úložišti pomocí interaktivních poznámkových bloků | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Vytvořit novou vlastní roli | Povolení vlastníka, přispěvatele nebo vlastní role `Microsoft.Authorization/roleDefinitions/write` | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/computes/write` |
 
 > [!TIP]
 > Pokud při prvním pokusu o vytvoření pracovního prostoru dojde k chybě, ujistěte se, že vaše role povoluje `Microsoft.MachineLearningServices/register/action` . Tato akce vám umožní zaregistrovat poskytovatele prostředků Azure Machine Learning s vaším předplatným Azure.
@@ -429,6 +429,6 @@ K provedení jakékoli operace související s kvótou v pracovním prostoru pot
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled zabezpečení podniku](concept-enterprise-security.md)
-- [Zabezpečené spouštění experimentů a odvozování/vystavení ve virtuální síti](how-to-enable-virtual-network.md)
+- [Přehled izolace a ochrany osobních údajů virtuální sítě](how-to-network-security-overview.md)
 - [Kurz: modely vlaků](tutorial-train-models-with-aml.md)
 - [Operace poskytovatele prostředků](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

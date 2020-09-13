@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe9fe10b66aa6eb5fcdaafbf8e0132918e9645c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356675"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662425"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -42,11 +42,11 @@ K úspěšnému provedení kroků pro migraci na synchronizaci hodnot hash hesel
 > [!IMPORTANT]
 > V případě, že převedete domény ze federované identity na spravovanou identitu, můžete si přečíst v zastaralých dokumentaci, nástrojích a blogůch, které převod uživatele vyžaduje. *Převod uživatelů* již není vyžadován. Microsoft pracuje na aktualizaci dokumentace a nástrojů k tomu, aby odrážela tuto změnu.
 
-Chcete-li aktualizovat Azure AD Connect, proveďte kroky v [Azure AD Connect: upgrade na nejnovější verzi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+Chcete-li aktualizovat Azure AD Connect, proveďte kroky v [Azure AD Connect: upgrade na nejnovější verzi](./how-to-upgrade-previous-version.md).
 
 ### <a name="password-hash-synchronization-required-permissions"></a>Požadovaná oprávnění pro synchronizaci hodnot hash hesel
 
-Azure AD Connect můžete nakonfigurovat pomocí expresního nastavení nebo vlastní instalace. Pokud jste použili možnost vlastní instalace, nemusí být k dismístě [požadovaná oprávnění](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-accounts-permissions) pro synchronizaci hodnot hash hesel.
+Azure AD Connect můžete nakonfigurovat pomocí expresního nastavení nebo vlastní instalace. Pokud jste použili možnost vlastní instalace, nemusí být k dismístě [požadovaná oprávnění](./reference-connect-accounts-permissions.md) pro synchronizaci hodnot hash hesel.
 
 Účet služby Azure AD Connect Active Directory Domain Services (služba AD DS) vyžaduje následující oprávnění pro synchronizaci hodnot hash hesel:
 
@@ -59,7 +59,7 @@ Teď je vhodná doba k ověření, že jsou tato oprávnění platná pro všech
 
 Můžete si vybrat ze dvou způsobů migrace ze správy federovaných identit na synchronizaci hodnot hash hesel a bezproblémového jednotného přihlašování (SSO). Použitá metoda závisí na tom, jak byla instance AD FS původně nakonfigurovaná.
 
-* **Azure AD Connect**. Pokud jste původně nakonfigurovali AD FS pomocí Azure AD Connect, *musíte* pomocí Průvodce Azure AD Connect změnit na synchronizaci hodnot hash hesel.
+* **Azure AD Connect:** Pokud jste původně nakonfigurovali AD FS pomocí Azure AD Connect, *musíte* pomocí Průvodce Azure AD Connect změnit na synchronizaci hodnot hash hesel.
 
    Když změníte metodu přihlašování uživatele, Azure AD Connect automaticky spustí rutinu **set-MsolDomainAuthentication** . Azure AD Connect automaticky unfederates všechny ověřené federované domény v tenantovi Azure AD.
 
@@ -114,8 +114,8 @@ Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh feder
 
 Další informace najdete v těchto článcích:
 
-* [AD FS Prompt = podpora parametrů přihlášení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [AD FS Prompt = podpora parametrů přihlášení](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
 > Pokud je **SupportsMfa** nastavené na **hodnotu true**, použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Po převedení této domény z federovaného na spravované ověřování už nebude tato instalace fungovat pro scénáře ověřování Azure AD. Po zakázání federace narušíte vztah k vaší místní federaci a k tomu patří místní adaptéry MFA. 
@@ -124,9 +124,9 @@ Další informace najdete v těchto článcích:
 
 #### <a name="back-up-federation-settings"></a>Zálohování nastavení federace
 
-I když v rámci procesů popsaných v tomto článku nejsou provedeny žádné změny u jiných předávající strany ve vaší AD FS farmě, doporučujeme, abyste měli aktuální platnou zálohu vaší AD FS farmy, kterou můžete obnovit z. Pomocí bezplatného [nástroje Microsoft AD FS Rapid Restore](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool)můžete vytvořit aktuální platnou zálohu. Pomocí tohoto nástroje můžete zálohovat AD FS a obnovit existující farmu nebo vytvořit novou farmu.
+I když v rámci procesů popsaných v tomto článku nejsou provedeny žádné změny u jiných předávající strany ve vaší AD FS farmě, doporučujeme, abyste měli aktuální platnou zálohu vaší AD FS farmy, kterou můžete obnovit z. Pomocí bezplatného [nástroje Microsoft AD FS Rapid Restore](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool)můžete vytvořit aktuální platnou zálohu. Pomocí tohoto nástroje můžete zálohovat AD FS a obnovit existující farmu nebo vytvořit novou farmu.
 
-Pokud se rozhodnete, že nástroj AD FS Rapid Restore nepoužíváte, je třeba exportovat vztah důvěryhodnosti předávající strany systém Microsoft Office 365 identity a všechna přidružená vlastní pravidla deklarace identity, která jste přidali. Vztah důvěryhodnosti předávající strany a přidružená pravidla deklarace identity můžete exportovat pomocí následujícího příkladu PowerShellu:
+Pokud se rozhodnete, že nástroj AD FS Rapid Restore nepoužíváte, je třeba exportovat vztah důvěryhodnosti předávající strany Microsoft 365 identity a všechna přidružená vlastní pravidla deklarace identity, která jste přidali. Vztah důvěryhodnosti předávající strany a přidružená pravidla deklarace identity můžete exportovat pomocí následujícího příkladu PowerShellu:
 
 ``` PowerShell
 (Get-AdfsRelyingPartyTrust -Name "Microsoft Office 365 Identity Platform") | Export-CliXML "C:\temp\O365-RelyingPartyTrust.xml"
@@ -138,15 +138,15 @@ Tato část popisuje požadavky na nasazení a podrobnosti o používání AD FS
 
 ### <a name="current-ad-fs-use"></a>Aktuální AD FS použití
 
-Před převodem z federované identity na spravovanou identitu si pečlivě prohlédněte, jak aktuálně používáte AD FS pro Azure AD, Office 365 a další aplikace (vztahy důvěryhodnosti předávající strany). Konkrétně Vezměte v úvahu scénáře, které jsou popsány v následující tabulce:
+Před převedením z federované identity na spravovanou identitu si pečlivě prohlédněte, jak aktuálně používáte AD FS pro Azure AD, Microsoft 365 a další aplikace (vztahy důvěryhodnosti předávající strany). Konkrétně Vezměte v úvahu scénáře, které jsou popsány v následující tabulce:
 
 | Pokud uživatel | Pak... |
 |-|-|
-| Plánujete dál používat AD FS s jinými aplikacemi (kromě Azure AD a Office 365). | Po převedení domén budete používat AD FS i Azure AD. Vezměte v úvahu činnost koncového uživatele. V některých scénářích může být potřeba, aby se uživatelé museli ověřovat dvakrát: jednou pro Azure AD (kde uživatel získá přístup SSO k ostatním aplikacím, jako je třeba Office 365), a znovu pro všechny aplikace, které jsou pořád vázané na AD FS jako vztah důvěryhodnosti předávající strany. |
+| Plánujete dál používat AD FS s jinými aplikacemi (kromě Azure AD a Microsoft 365). | Po převedení domén budete používat AD FS i Azure AD. Vezměte v úvahu činnost koncového uživatele. V některých scénářích se uživatelé můžou muset ověřit dvakrát: jednou do Azure AD (kde uživatel získá přístup SSO k ostatním aplikacím, třeba Microsoft 365), a znovu pro všechny aplikace, které jsou pořád vázané na AD FS jako vztah důvěryhodnosti předávající strany. |
 | Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru onload.js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé jako uživatelské jméno používali jenom formát **sAMAccountName** , a ne hlavní název uživatele (UPN), nebo vaše organizace intenzivně přihlásila vaše prostředí. Soubor onload.js nejde duplikovat v Azure AD. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
-| K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [pravidel přístupu klienta Exchange Online](https://aka.ms/EXOCAR). |
+| K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](../conditional-access/concept-conditional-access-conditions.md) a [pravidel přístupu klienta Exchange Online](https://aka.ms/EXOCAR). |
 | Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication Azure, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
-| V AD FS v tuto chvíli používáte k řízení přístupu k Office 365 zásady řízení přístupu (pravidla AuthZ).| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) Azure AD a [pravidly přístupu klienta Exchange Online](https://aka.ms/EXOCAR).|
+| V tuto chvíli používáte k řízení přístupu k Microsoft 365 zásady řízení přístupu (pravidla AuthZ) v AD FS.| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](../conditional-access/overview.md) Azure AD a [pravidly přístupu klienta Exchange Online](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Společná přizpůsobení AD FS
 
@@ -154,13 +154,13 @@ Tato část popisuje běžné AD FS přizpůsobení.
 
 #### <a name="insidecorporatenetwork-claim"></a>Deklarace identity InsideCorporateNetwork
 
-AD FS vystaví deklaraci identity **InsideCorporateNetwork** , pokud se uživatel, který ověřuje, nachází ve firemní síti. Tato deklarace se pak může předat do Azure AD. Deklarace identity se používá pro obejít službu Multi-Factor Authentication na základě síťového umístění uživatele. Informace o tom, jak zjistit, jestli je tato funkce v AD FS aktuálně povolená, najdete v tématu [důvěryhodné IP adresy pro federované uživatele](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud).
+AD FS vystaví deklaraci identity **InsideCorporateNetwork** , pokud se uživatel, který ověřuje, nachází ve firemní síti. Tato deklarace se pak může předat do Azure AD. Deklarace identity se používá pro obejít službu Multi-Factor Authentication na základě síťového umístění uživatele. Informace o tom, jak zjistit, jestli je tato funkce v AD FS aktuálně povolená, najdete v tématu [důvěryhodné IP adresy pro federované uživatele](../authentication/howto-mfa-adfs.md).
 
-Deklarace **InsideCorporateNetwork** není k dispozici po převedení domén na synchronizaci hodnot hash hesel. Pomocí [pojmenovaných umístění ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) můžete tuto funkci nahradit.
+Deklarace **InsideCorporateNetwork** není k dispozici po převedení domén na synchronizaci hodnot hash hesel. Pomocí [pojmenovaných umístění ve službě Azure AD](../reports-monitoring/quickstart-configure-named-locations.md) můžete tuto funkci nahradit.
 
 Po nakonfigurování pojmenovaných umístění musíte aktualizovat všechny zásady podmíněného přístupu, které byly nakonfigurovány tak, aby zahrnovaly nebo vyloučily **všechna důvěryhodná umístění** nebo hodnoty **důvěryhodných IP adres MFA** tak, aby odrážely nová pojmenovaná umístění.
 
-Další informace o podmínkách **umístění** v podmíněném přístupu najdete v tématu věnovaném [umístěním podmíněného přístupu služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+Další informace o podmínkách **umístění** v podmíněném přístupu najdete v tématu věnovaném [umístěním podmíněného přístupu služby Active Directory](../conditional-access/location-condition.md).
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>Zařízení připojená k hybridní službě Azure AD
 
@@ -170,16 +170,16 @@ Aby bylo zajištěno, že hybridní připojení bude i nadále fungovat pro vše
 
 Pro účty počítačů s Windows 8 a Windows 7 používá hybridní připojení k registraci počítače ve službě Azure AD bezproblémové přihlašování. Nemusíte synchronizovat účty počítačů s Windows 8 a Windows 7, jako je tomu u zařízení s Windows 10. Je ale potřeba nasadit aktualizovaný soubor workplacejoin.exe (prostřednictvím souboru. msi) do klientů Windows 8 a Windows 7, aby se mohli sami zaregistrovat pomocí bezproblémového jednotného přihlašování. [Stáhněte soubor. msi](https://www.microsoft.com/download/details.aspx?id=53554).
 
-Další informace najdete v tématu [Konfigurace hybridních zařízení připojených k Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
+Další informace najdete v tématu [Konfigurace hybridních zařízení připojených k Azure AD](../devices/hybrid-azuread-join-plan.md).
 
-#### <a name="branding"></a>Branding
+#### <a name="branding"></a>Značka
 
-Pokud vaše organizace [přizpůsobila vaše AD FS přihlašovací stránky](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) , aby zobrazovaly informace, které jsou pro organizaci důležitější, zvažte na [přihlašovací stránce služby Azure AD podobné možnosti přizpůsobení](https://docs.microsoft.com/azure/active-directory/customize-branding).
+Pokud vaše organizace [přizpůsobila vaše AD FS přihlašovací stránky](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) , aby zobrazovaly informace, které jsou pro organizaci důležitější, zvažte na [přihlašovací stránce služby Azure AD podobné možnosti přizpůsobení](../fundamentals/customize-branding.md).
 
 Přestože jsou k dispozici podobná přizpůsobení, je nutné po převodu očekávat některé vizuální změny na přihlašovacích stránkách. Může být vhodné poskytnout uživatelům informace o očekávaných změnách v komunikaci.
 
 > [!NOTE]
-> Branding organizace je k dispozici pouze v případě, že zakoupíte licenci Premium nebo Basic pro Azure Active Directory nebo máte licenci Office 365.
+> Branding organizace je k dispozici pouze v případě, že zakoupíte licenci Premium nebo Basic pro Azure Active Directory nebo máte licenci Microsoft 365.
 
 ## <a name="plan-deployment-and-support"></a>Plánování nasazení a podpory
 
@@ -194,7 +194,7 @@ Budou ovlivněny pouze uživatelé, kteří během tohoto okna po převádění 
 Klienti moderního ověřování (aplikace Office 2016 a Office 2013, iOS a Android) používají k získání nových přístupových tokenů pro pokračování přístupu k prostředkům nové přístupové tokeny namísto návratu do AD FS. Tito klienti jsou imunní na jakékoli výzvy k zadání hesla vyplývající z procesu převodu domény. Klienti budou i nadále fungovat bez další konfigurace.
 
 > [!IMPORTANT]
-> Nevypněte prostředí AD FS nebo odeberte vztah důvěryhodnosti předávající strany Office 365, dokud neověříte, jestli se všichni uživatelé můžou úspěšně ověřit pomocí cloudového ověřování.
+> Nevypněte prostředí AD FS, nebo odeberte Microsoft 365 vztah důvěryhodnosti předávající strany, dokud neověříte, jestli se všichni uživatelé můžou úspěšně ověřit pomocí cloudového ověřování.
 
 ### <a name="plan-for-rollback"></a>Plánování vrácení zpět
 
@@ -211,7 +211,7 @@ Pokud chcete naplánovat vrácení zpět, podívejte se na dokumentaci pro návr
 
 Důležitou součástí plánování nasazení a podpory je zajistit, že uživatelé budou proaktivní informování o nadcházejících změnách. Uživatelé by měli znát, co se může setkat a co se jim vyžaduje. 
 
-Po nasazení synchronizace hodnot hash hesel a bezproblémového jednotného přihlašování se přihlásí uživatelské prostředí pro přístup k Office 365 a dalším prostředkům, které jsou ověřeny prostřednictvím služby Azure AD. Uživatelé mimo síť uvidí pouze přihlašovací stránku služby Azure AD. Tito uživatelé nejsou přesměrováni na stránku založenou na formulářích, která je prezentována externími proxy servery webových aplikací.
+Po nasazení synchronizace hodnot hash hesel a bezproblémového jednotného přihlašování se přihlašuje uživatelské prostředí pro přístup k Microsoft 365 a dalším prostředkům, které jsou ověřeny prostřednictvím služby Azure AD. Uživatelé mimo síť uvidí pouze přihlašovací stránku služby Azure AD. Tito uživatelé nejsou přesměrováni na stránku založenou na formulářích, která je prezentována externími proxy servery webových aplikací.
 
 Do strategie komunikace zahrňte tyto prvky:
 
@@ -262,7 +262,7 @@ Chcete-li ověřit, zda synchronizace hodnot hash hesel funguje správně, dokon
 6. V hlavní nabídce vyberte **řešit potíže se synchronizací hodnot hash hesel**.
 7. V podnabídce vyberte možnost **synchronizace hodnot hash hesel nefunguje vůbec**.
 
-Informace o řešení potíží najdete v tématu [řešení potíží se synchronizací hodnot hash hesel pomocí Azure AD Connect synchronizace](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization).
+Informace o řešení potíží najdete v tématu [řešení potíží se synchronizací hodnot hash hesel pomocí Azure AD Connect synchronizace](./tshoot-connect-password-hash-synchronization.md).
 
 ### <a name="step-2-prepare-for-seamless-sso"></a>Krok 2: Příprava na bezproblémové přihlašování
 
@@ -270,7 +270,7 @@ Aby zařízení používalo bezproblémové jednotné přihlašování, musíte 
 
 Ve výchozím nastavení webové prohlížeče automaticky vypočítávají správnou zónu, buď Internet, nebo intranet, z adresy URL. Například **http: \/ \/ Contoso/** Maps do zóny intranetu a **http: \/ \/ intranet.contoso.com** se mapuje na zónu Internetu (protože adresa URL obsahuje tečku). Prohlížeče odesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, jenom v případě, že explicitně přidáte adresu URL do zóny intranetu prohlížeče.
 
-Dokončete kroky k [zavedení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) požadovaných změn vašich zařízení.
+Dokončete kroky k [zavedení](./how-to-connect-sso-quick-start.md) požadovaných změn vašich zařízení.
 
 > [!IMPORTANT]
 > Provedení této změny nemění způsob, jakým se uživatelé přihlásí ke službě Azure AD. Je ale důležité, abyste tuto konfiguraci před pokračováním použili pro všechna vaše zařízení. Uživatelům, kteří se přihlásí v zařízeních, které tuto konfiguraci neobdrželi, je nutné zadat uživatelské jméno a heslo pro přihlášení ke službě Azure AD.
@@ -431,14 +431,14 @@ Test synchronizace hodnot hash hesel:
 3. Uživatel je přesměrován a úspěšně přihlášen k přístupovému panelu:
 
    > [!NOTE]
-   > Bezproblémové jednotné přihlašování funguje na službách Office 365, které podporují doporučení k doméně (například myapps.microsoft.com/contoso.com). V současné době portál Office 365 (portal.office.com) nepodporuje doporučení k doméně. Uživatelé musí zadat hlavní název uživatele (UPN). Po zadání hlavního názvu uživatele (UPN) dojde k bezproblémovému přihlášení SSO jménem uživatele k načtení lístku protokolu Kerberos. Uživatel je přihlášený bez zadání hesla.
+   > Bezproblémové jednotné přihlašování funguje na Microsoft 365 Services, které podporují doporučení k doméně (například myapps.microsoft.com/contoso.com). Portál Microsoft 365 (portal.office.com) v současné době nepodporuje doporučení domény. Uživatelé musí zadat hlavní název uživatele (UPN). Po zadání hlavního názvu uživatele (UPN) dojde k bezproblémovému přihlášení SSO jménem uživatele k načtení lístku protokolu Kerberos. Uživatel je přihlášený bez zadání hesla.
 
    > [!TIP]
-   > Pro vylepšené prostředí jednotného přihlašování zvažte nasazení [služby Azure AD Hybrid JOIN ve Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) .
+   > Pro vylepšené prostředí jednotného přihlašování zvažte nasazení [služby Azure AD Hybrid JOIN ve Windows 10](../devices/overview.md) .
 
 ### <a name="remove-the-relying-party-trust"></a>Odebrat vztah důvěryhodnosti předávající strany
 
-Po ověření, že všichni uživatelé a klienti se úspěšně ověřují přes Azure AD, je bezpečné odebrat vztah důvěryhodnosti předávající strany Office 365.
+Po ověření úspěšného ověření všech uživatelů a klientů prostřednictvím služby Azure AD je bezpečné odebrat Microsoft 365 vztah důvěryhodnosti předávající strany.
 
 Pokud nepoužíváte AD FS pro jiné účely (tj. pro jiné vztahy důvěryhodnosti předávající strany), je v tuto chvíli bezpečné vyřazení z provozu AD FS.
 
@@ -458,15 +458,15 @@ Historická aktualizace atributu **userPrincipalName** , který používá synch
 * Uživatel se nachází ve spravované (nefederované) doméně identity.
 * Uživatel nemá přiřazenou licenci.
 
-Informace o tom, jak tuto funkci ověřit nebo zapnout, najdete v tématu [synchronizace aktualizací userPrincipalName](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features).
+Informace o tom, jak tuto funkci ověřit nebo zapnout, najdete v tématu [synchronizace aktualizací userPrincipalName](./how-to-connect-syncservice-features.md).
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
 Váš tým podpory by měl pochopit, jak řešit problémy s ověřováním, které vznikají během nebo po změně federace na spravovanou. Následující dokumentaci k řešení potíží vám pomohou týmu podpory seznámení s běžnými kroky při řešení potíží a s příslušnými akcemi, které vám mohou pomoci izolovat a vyřešit problém.
 
-[Řešení potíží s Azure Active Directory synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization)
+[Řešení potíží s Azure Active Directory synchronizace hodnot hash hesel](./tshoot-connect-password-hash-synchronization.md)
 
-[Řešení potíží Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sso)
+[Řešení potíží Azure Active Directory bezproblémové jednotné přihlašování](./tshoot-connect-sso.md)
 
 ## <a name="roll-over-the-seamless-sso-kerberos-decryption-key"></a>Převeďte bezproblémové dešifrovací klíč Kerberos pro jednotné přihlašování.
 
@@ -474,10 +474,10 @@ Je důležité často vymezit dešifrovací klíč protokolu Kerberos účtu po�
 
 Zahajte výměnu nebezproblémového dešifrovacího klíče Kerberos pro jednotné přihlašování na místním serveru, na kterém běží Azure AD Connect.
 
-Další informace najdete v tématu [návody převádění dešifrovacího klíče protokolu Kerberos účtu počítače s AZUREADSSOACC?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq).
+Další informace najdete v tématu [návody převádění dešifrovacího klíče protokolu Kerberos účtu počítače s AZUREADSSOACC?](./how-to-connect-sso-faq.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o [Azure AD Connect konceptech návrhu](plan-connect-design-concepts.md).
-* Vyberte [správné ověřování](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+* Vyberte [správné ověřování](./choose-ad-authn.md).
 * Přečtěte si o [podporovaných topologiích](plan-connect-design-concepts.md).

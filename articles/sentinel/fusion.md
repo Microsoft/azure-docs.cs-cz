@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
-ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f415294c77b743996993f1f00be45e36f9d6002
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77587919"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660669"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Rozšířená detekce útoků s více fázemi v Azure Sentinel
 
@@ -51,13 +51,13 @@ Tato detekce je ve výchozím nastavení povolená v Azure Sentinel. Pokud chcet
 > [!NOTE]
 > Služba Azure Sentinel aktuálně používá ke studiu systémů strojového učení 30 dní historických dat. Tato data se vždycky šifrují pomocí klíčů Microsoftu při jejich předávání prostřednictvím kanálu strojového učení. Školicí data se ale nešifrují pomocí [zákaznických klíčů (CMK)](customer-managed-keys.md) , pokud jste v pracovním prostoru Sentinel Azure povolili CMK. Pokud se chcete odhlásit z fúze, přejděte na **Azure Sentinel**   \>  **Configuration**   \>  **Analytics \> aktivní pravidla \> Upřesnit detekci útoků ve více fázích** a ve sloupci **stav** vyberte **zakázat.**
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fúze pomocí Palo Alto Networks a ATP v programu Microsoft Defender
+## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Fúze pomocí Palo Alto Networks a programu Microsoft Defender pro koncový bod (dříve Microsoft Defender ATP)
 
-Tyto scénáře kombinují dva ze základních protokolů používaných analytiky zabezpečení: protokoly brány firewall z Palo Alto Networks a protokoly detekce koncových bodů z ATP v programu Microsoft Defender. Ve všech scénářích uvedených níže se v koncovém bodě, který zahrnuje externí IP adresu, detekuje podezřelá aktivita, a pak se za ní potom neobvyklé provoz z externí IP adresy zpátky do brány firewall. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires).
+Tyto scénáře kombinují dva základní protokoly používané analytiky zabezpečení: protokoly brány firewall z Palo Alto Networks a protokoly detekce koncových bodů z Microsoft Defenderu pro koncový bod. Ve všech scénářích uvedených níže se v koncovém bodě, který zahrnuje externí IP adresu, detekuje podezřelá aktivita, a pak se za ní potom neobvyklé provoz z externí IP adresy zpátky do brány firewall. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires).
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Požadavek na síť na službu pro samoobslužné zpracování dat následovaný provozem neobvyklé označeným příznakem Palo Alto Networks firewall.
 
-V tomto scénáři Azure Sentinel nejdřív detekuje výstrahu, že služba Microsoft Defender Advanced Threat Protection zjistila požadavek na síť pro službu anonymity v rámci MANDÁTu, která vede k neobvyklé aktivity. To bylo iniciováno v účtu {account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}.
+V tomto scénáři Azure Sentinel nejdřív detekuje výstrahu, že Microsoft Defender pro koncové body (dříve Microsoft Defender pro ATP) zjistil požadavek na síť pro službu pro automatizaci systému, která vede na neobvyklé aktivitu. To bylo iniciováno v účtu {account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}.
 Pak se zjistila neobvyklá aktivita v bráně firewall sítě Palo Alto na adrese {TimeGenerated}. To znamená, že se škodlivý provoz zadaný v síti cílová IP adresa pro síťový provoz je {DestinationIP}.
 
 Tento scénář je aktuálně ve verzi Public Preview.
@@ -65,13 +65,13 @@ Tento scénář je aktuálně ve verzi Public Preview.
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Prostředí PowerShell provedlo podezřelé síťové připojení, po kterém následují přenosy neobvyklé s příznakem Palo Alto Networks firewall.
 
-V tomto scénáři Azure Sentinel nejprve detekuje výstrahu, že služba Microsoft Defender Advanced Threat Protection zjistila, že prostředí PowerShell provedlo podezřelé síťové připojení, které vedlo k neobvyklé aktivitě, kterou zjistila brána firewall Palo Alto Network. Toto spustil účet {Account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}. Pak se zjistila neobvyklá aktivita v bráně firewall sítě Palo Alto na adrese {TimeGenerated}. To znamená, že škodlivý provoz vstoupil do vaší sítě. Cílová IP adresa pro síťový provoz je {DestinationIP}.
+V tomto scénáři Azure Sentinel nejprve detekuje výstrahu, že program Microsoft Defender pro koncové body (dříve Microsoft Defender pro ATP) zjistil, že prostředí PowerShell provedlo podezřelé síťové připojení, které vedlo k neobvyklé aktivitě, kterou zjistila Palo Alto Network firewall. Toto spustil účet {Account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}. Pak se zjistila neobvyklá aktivita v bráně firewall sítě Palo Alto na adrese {TimeGenerated}. To znamená, že škodlivý provoz vstoupil do vaší sítě. Cílová IP adresa pro síťový provoz je {DestinationIP}.
 
 Tento scénář je aktuálně ve verzi Public Preview.
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup následovaných neobvyklé provozem označenými příznakem Palo Alto Networks firewall
 
-V tomto scénáři Azure Sentinel detekuje výstrahu, že služba Microsoft Defender Advanced Threat Protection zjistila odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup, které vedou k detekci aktivit neobvyklé pomocí brány firewall Palo Alto Networks. Toto spustil účet {Account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}. Po této instalaci zjistila brána firewall sítě Palo Alto v lokalitě {TimeGenerated} neobvyklé aktivity. To znamená, že škodlivý provoz vstoupil do vaší sítě. Cílová IP adresa pro síťový provoz je {DestinationIP}.
+V tomto scénáři služba Azure Sentinel detekuje výstrahu, že program Microsoft Defender pro koncové body (dříve Microsoft Defender pro ATP) zjistil odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup, které v bráně firewall Palo Alto Networks zavedly detekci neobvyklé aktivit. Toto spustil účet {Account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}. Po této instalaci zjistila brána firewall sítě Palo Alto v lokalitě {TimeGenerated} neobvyklé aktivity. To znamená, že škodlivý provoz vstoupil do vaší sítě. Cílová IP adresa pro síťový provoz je {DestinationIP}.
 
 Tento scénář je aktuálně ve verzi Public Preview.
 
@@ -97,7 +97,7 @@ K dispozici je sedm možných incidentů Sentinel Azure, které spojují nepravd
 
 - **Nemožná cesta do netypických míst, která vedou k exfiltrace poštovní schránky Office 365**
     
-    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých umístění, po kterém následuje pravidlo pro přeposílání podezřelé doručené pošty, které je nastaveno v doručené poště uživatele.
+    Tato výstraha je označením události přihlášení \<*account name*>  z nemožného cestování do \<*location*> neobvyklých umístění, po kterém následuje pravidlo pro přeposílání podezřelé doručené pošty, které je nastaveno v doručené poště uživatele.
     
     To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> .
 

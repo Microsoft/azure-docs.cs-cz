@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185396"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660438"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Příklad koncového na konci najdete v [kurzu Vytvoření modelu klasifikace po
 
 V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azure Machine Learning SDK [nakonfigurovat experimenty automatizovaného strojového učení](how-to-configure-auto-train.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -69,7 +69,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Výběrem **Další** otevřete **formulář úložiště dat a výběr souboru**. V tomto formuláři vyberte, kam chcete datovou sadu nahrát; výchozí kontejner úložiště, který se automaticky vytvoří s vaším pracovním prostorem, nebo vyberte kontejner úložiště, který chcete pro experiment použít. 
     
-        1. Pokud jsou vaše data za virtuální sítí, musíte povolit funkci **přeskočení ověřování** , aby se zajistilo, že pracovní prostor bude mít přístup k vašim datům. Přečtěte si další informace o [izolaci sítě a ochraně osobních údajů](how-to-enable-virtual-network.md#machine-learning-studio). 
+        1. Pokud jsou vaše data za virtuální sítí, musíte povolit funkci **přeskočení ověřování** , aby se zajistilo, že pracovní prostor bude mít přístup k vašim datům. Další informace najdete v tématu [použití Azure Machine Learning studia ve službě Azure Virtual Network](how-to-enable-studio-virtual-network.md). 
     
     1. Vyberte **Procházet** a nahrajte datový soubor pro datovou sadu. 
 
@@ -104,7 +104,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     Pole|Popis
     ---|---
-    Název výpočtu| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
+    Název výpočetních prostředků| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Priorita virtuálního počítače| Virtuální počítače s nízkou prioritou jsou levnější, ale nezaručují výpočetní uzly. 
     Typ virtuálního počítače| Vyberte procesor nebo GPU pro typ virtuálního počítače.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
@@ -120,11 +120,14 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Ve formuláři **typ úlohy a nastavení** vyberte typ úkolu: klasifikace, regrese nebo prognózování. Další informace najdete v tématu [podporované typy úloh](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) .
 
-    1. V případě **klasifikace**můžete také povolit obsáhlý Learning, který se používá pro text featurizations.
+    1. V případě **klasifikace**můžete také povolit hloubkové učení.
+    
+        Pokud je možnost hloubkového učení povolená, je ověřování omezené na _train_validation rozdělení_. [Přečtěte si další informace o možnostech ověřování](how-to-configure-cross-validation-data-splits.md).
+
 
     1. Pro **Prognózování** můžete, 
     
-        1. Povolit hloubkové učení
+        1. Povolte hloubkové učení.
     
         1. Výběr *sloupce pro čas*: Tento sloupec obsahuje časová data, která se mají použít.
 
@@ -135,10 +138,10 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Další konfigurace|Popis
     ------|------
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#primary-metric).
-    Vysvětlete nejlepší model | Tuto možnost vyberte, pokud chcete povolit nebo zakázat, aby se zobrazila vysvětlení doporučeného nejlepšího modelu.
-    Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení.
+    Vysvětlete nejlepší model | Tuto možnost vyberte, pokud chcete povolit nebo zakázat, aby se zobrazila vysvětlení doporučeného nejlepšího modelu. <br> Tato funkce není aktuálně k dispozici pro [určité algoritmy prognózy](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
+    Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení. <br><br> Povolení algoritmů je dostupné jenom pro [experimenty sady SDK](how-to-configure-auto-train.md#supported-models). <br> Podívejte se na [podporované modely pro každý typ úkolu](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true).
     Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)*: dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky*: minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
-    Ověřování vstupů (validace)| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-cross-validation-data-splits.md#prerequisites).
+    Ověřování| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. <br> [Další informace o vzájemném ověřování](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Prognózování podporuje pouze k přeložení pro křížové ověření.
     Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací.
 
 1. Volitelné Zobrazit nastavení featurization: Pokud se rozhodnete povolit **Automatické featurization** ve formuláři **Další nastavení konfigurace** , uplatní se výchozí techniky featurization. V **Nastavení zobrazení featurization** můžete změnit tyto výchozí hodnoty a odpovídajícím způsobem je přizpůsobit. Přečtěte si, jak [přizpůsobit featurizations](#customize-featurization). 
@@ -156,13 +159,13 @@ V rámci datové sady můžete získat velké množství různých souhrnných s
 
 Statistický údaj|Popis
 ------|------
-Funkce| Název sloupce, který je sumarizován.
+Příznak| Název sloupce, který je sumarizován.
 Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
 Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
 Maximum| Maximální hodnota sloupce 
-Count| Celkový počet chybějících a nechybějících položek ve sloupci
+Počet| Celkový počet chybějících a nechybějících položek ve sloupci
 Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 Kvantily| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
 Mean| Aritmetický průměr nebo průměr sloupce
@@ -205,9 +208,9 @@ Podrobnější informace o všech dokončených modelech získáte v podrobnoste
 
 ## <a name="deploy-your-model"></a>Nasazení modelu
 
-Jakmile budete mít nejlepší model na ruce, je čas ho nasadit jako webovou službu pro předpověď na nová data.
+Jakmile budete mít nejlepší model, je čas ho nasadit jako webovou službu, která bude vytvářet předpovědi na základě nových dat.
 
-Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
+Automatizované strojové učení pomáhá s nasazením modelu bez psaní kódu:
 
 1. Máte několik možností nasazení. 
 
@@ -217,7 +220,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
         1. V levém horním rohu okna vyberte **nasadit** . 
 
     + Možnost 2: Pokud chcete z tohoto experimentu nasadit konkrétní iteraci modelu.
-        1. Na kartě **modely** vyberte požadovaný model.
+        1. Na kartě **Modely** vyberte požadovaný model.
         1. V levém horním rohu okna vyberte **nasadit** .
 
 1. Naplňte podokno **nasazení modelu** .
@@ -226,20 +229,20 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
     ----|----
     Název| Zadejte jedinečný název pro vaše nasazení.
     Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
-    Typ výpočtu| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)*.
-    Název výpočtu| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
+    Typ výpočetních prostředků| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)*.
+    Název výpočetních prostředků| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
     Povolit ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.
-    Použití vlastních prostředků nasazení| Tuto funkci povolte, pokud chcete nahrát vlastní skript bodování a soubor prostředí. [Přečtěte si další informace o skriptech bodování](how-to-deploy-and-where.md).
+    Použití vlastních prostředků nasazení| Tuto funkci povolte, pokud chcete nahrát vlastní skript bodování a soubor prostředí. [Další informace o hodnoticích skriptech](how-to-deploy-and-where.md)
 
     >[!Important]
-    > Názvy souborů musí být pod 32 znaků a musí začínat a končit alfanumerickými znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Mezery nejsou povoleny.
+    > Názvy souborů musí být pod 32 znaků a musí začínat a končit alfanumerickými znaky. Jinak můžou obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky. Mezery nejsou povolené.
 
-    Nabídka *Upřesnit* nabízí výchozí funkce pro nasazení, jako je například [shromažďování dat](how-to-enable-app-insights.md) a nastavení využití prostředků. Pokud si přejete přepsat tato výchozí nastavení, udělejte to v této nabídce.
+    Nabídka *Upřesnit* nabízí výchozí funkce nasazení, jako jsou nastavení [shromažďování dat](how-to-enable-app-insights.md) nebo využití prostředků. Pokud chcete tato výchozí nastavení přepsat, můžete to udělat v této nabídce.
 
 1. Vyberte **Nasadit**. Dokončení nasazení může trvat přibližně 20 minut.
-    Po zahájení nasazení se zobrazí karta **Souhrn modelu** . Postup nasazení najdete v části **stav** nasazení. 
+    Po zahájení nasazení se zobrazí karta **Shrnutí modelu**. Průběh nasazení můžete sledovat v části **Stav nasazení**. 
 
-Nyní máte provozní webovou službu, která generuje předpovědi. Předpovědi můžete testovat pomocí dotazování služby z [integrované Azure Machine Learning podpory v Power BI](how-to-consume-web-service.md#consume-the-service-from-power-bi).
+Teď máte funkční webovou službu pro generování předpovědí. Předpovědi můžete otestovat dotazováním služby s využitím [integrované podpory služby Azure Machine Learning v Power BI](how-to-consume-web-service.md#consume-the-service-from-power-bi).
 
 ## <a name="next-steps"></a>Další kroky
 

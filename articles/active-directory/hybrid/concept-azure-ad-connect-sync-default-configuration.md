@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548862"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661851"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace služby Azure AD Connect: Principy výchozí konfigurace
 Tento článek vysvětluje předem připravená konfigurační pravidla. Dokumentuje pravidla a způsob, jakým tato pravidla ovlivňují konfiguraci. Také vás provede výchozí konfigurací Azure AD Connect synchronizace. Cílem je, aby čtenář pochopil, jak model konfigurace s názvem deklarativní zřizování funguje v reálném příkladu. V tomto článku se předpokládá, že jste už nainstalovali a nakonfigurovali Azure AD Connect synchronizaci pomocí Průvodce instalací nástroje.
@@ -148,7 +148,7 @@ Vzhledem k tomu, že toto pravidlo je předem nastavené pravidlo, při otevřen
 
 Synchronizační pravidlo má čtyři konfigurační oddíly: Popis, filtr oboru, pravidla spojování a transformace.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 První část uvádí základní informace, jako je název a popis.
 
 ![Karta Popis v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -223,7 +223,7 @@ Nyní ví, že pravidla synchronizace jsou schopná pochopit, jak konfigurace fu
 | Name | Komentář |
 |:--- |:--- |
 | Ve službě AD – připojení uživatele |Pravidlo pro spojování objektů prostoru konektoru s úložištěm Metaverse |
-| V nástroji ze služby AD – UserAccount povoleno |Atributy vyžadované pro přihlášení k Azure AD a Office 365. Chceme tyto atributy z povoleného účtu. |
+| V nástroji ze služby AD – UserAccount povoleno |Atributy vyžadované pro přihlášení k Azure AD a Microsoft 365. Chceme tyto atributy z povoleného účtu. |
 | V nástroji ze služby AD – uživatel společný ze systému Exchange |V globálním seznamu adres byly nalezeny atributy. Předpokládáme, že kvalita dat je nejlepší v doménové struktuře, ve které jsme našli poštovní schránku uživatele. |
 | V nástroji ze služby AD – společná pro uživatele |V globálním seznamu adres byly nalezeny atributy. V případě, že jsme nenašli poštovní schránku, může hodnota atributu přispívat libovolný jiný připojený objekt. |
 | V nástroji ze služby AD – uživatel Exchange |Existuje pouze v případě, že byl zjištěn server Exchange. Natéká všechny atributy výměny infrastruktury. |

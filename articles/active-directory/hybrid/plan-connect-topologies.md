@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509075"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658518"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají Azure AD Connect synchronizaci jako klíčové řešení pro integraci. Tento článek zahrnuje podporované i nepodporované konfigurace.
@@ -117,15 +117,15 @@ V topologii doménové struktury prostředků účtů máte jednu nebo více dom
 
 V tomto scénáři jedna (nebo víc) doménová struktura prostředků důvěřuje všem doménovým strukturám účtů. Doménová struktura prostředků má obvykle rozšířené schéma služby Active Directory se systémem Exchange a Lync. Všechny služby Exchange a Lync spolu s dalšími sdílenými službami se nacházejí v této doménové struktuře. Uživatelé mají v této doménové struktuře zakázaný uživatelský účet a poštovní schránka je propojená s doménovou strukturou účtu.
 
-## <a name="office-365-and-topology-considerations"></a>Otázky k sadě Office 365 a topologii
-Některé úlohy Office 365 mají určitá omezení pro podporované topologie:
+## <a name="microsoft-365-and-topology-considerations"></a>Otázky Microsoft 365 a topologie
+Některé Microsoft 365 úlohy mají určitá omezení pro podporované topologie:
 
 | Úloha | Omezení |
 | --------- | --------- |
-| Exchange Online | Další informace o hybridních topologiích podporovaných systémem Exchange Online najdete v tématu [hybridní nasazení s několika doménovými strukturami služby Active Directory](https://technet.microsoft.com/library/jj873754.aspx). |
-| Skype pro firmy | Pokud používáte více místních doménových struktur, je podporována pouze topologie doménové struktury prostředků účtů. Další informace najdete v tématu [požadavky na životní prostředí pro Skype pro firmy Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
+| Exchange Online | Další informace o hybridních topologiích podporovaných systémem Exchange Online najdete v tématu [hybridní nasazení s několika doménovými strukturami služby Active Directory](/Exchange/hybrid-deployment/hybrid-with-multiple-forests). |
+| Skype pro firmy | Pokud používáte více místních doménových struktur, je podporována pouze topologie doménové struktury prostředků účtů. Další informace najdete v tématu [požadavky na životní prostředí pro Skype pro firmy Server 2015](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements). |
 
-Pokud jste větší organizaci, měli byste zvážit použití funkce [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) . Umožňuje definovat, ve které oblasti datacentra se nacházejí prostředky uživatele.
+Pokud jste větší organizaci, měli byste zvážit použití funkce [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) . Umožňuje definovat, ve které oblasti datacentra se nacházejí prostředky uživatele.
 
 ## <a name="staging-server"></a>Pracovní server
 ![Pracovní server v topologii](./media/plan-connect-topologies/MultiForestStaging.png)
@@ -165,7 +165,7 @@ Tato topologie má následující omezení pro jiné podporované scénáře:
 * Zařízení s Windows 10 se dají přidružit jenom k jednomu klientovi Azure AD.
 * Možnost jednotného přihlašování (SSO) pro synchronizaci hodnot hash hesel a předávací ověřování se dá použít jenom s jedním tenanta Azure AD.
 
-Požadavek na vzájemně exkluzivní sadu objektů platí také pro zpětný zápis. Některé funkce zpětného zápisu nejsou v této topologii podporované, protože předpokládají jednu místní konfiguraci. Mezi tyto funkce patří:
+Požadavek na vzájemně exkluzivní sadu objektů platí také pro zpětný zápis. Některé funkce zpětného zápisu nejsou v této topologii podporované, protože předpokládají jednu místní konfiguraci. Patří k nim:
 
 * Zpětný zápis skupin s výchozí konfigurací.
 * Zpětný zápis zařízení

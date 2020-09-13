@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115758"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658749"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
@@ -40,7 +40,7 @@ Ujistěte se, že jsou splněné následující požadavky:
    - Pokud vaše brána firewall nebo proxy server povolí, přidejte připojení do seznamu povolených adres URL ** \* . msappproxy.NET** přes port 443. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
 
     >[!NOTE]
-    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) , _kde najdete další_ informace.
+    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](./reference-connect-version-history.md) , _kde najdete další_ informace.
 
 * **Použití podporované topologie Azure AD Connect**: Ujistěte se, že používáte jednu z podporovaných topologií Azure AD Connect, které jsou popsané [tady](plan-connect-topologies.md).
 
@@ -51,9 +51,9 @@ Ujistěte se, že jsou splněné následující požadavky:
     * Synchronizujete se do Azure AD prostřednictvím Azure AD Connect.
     * Obsahuje uživatele, které chcete povolit pro bezproblémové přihlašování.
     
-* **Povolit moderní ověřování**: aby tato funkce fungovala, musíte ve svém tenantovi povolit [moderní ověřování](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) .
+* **Povolit moderní ověřování**: aby tato funkce fungovala, musíte ve svém tenantovi povolit [moderní ověřování](/office365/enterprise/modern-auth-for-office-2013-and-2016) .
 
-* **Použijte nejnovější verze klientů office 365**: Chcete-li získat tiché přihlašování pomocí klientů Office 365 (Outlook, Word, Excel a další), musí uživatelé používat verze 16.0.8730. xxxx nebo vyšší.
+* **Použijte nejnovější verze Microsoft 365 klientů**: Pokud chcete získat tiché přihlašování s Microsoft 365 klienty (Outlook, Word, Excel a další), musí uživatelé používat verze 16.0.8730. xxxx nebo vyšší.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: povolení funkce
 
@@ -132,7 +132,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
      Výsledek vypadá takto:
 
-     Název hodnoty:`https://autologon.microsoftazuread-sso.com`
+     Název hodnoty: `https://autologon.microsoftazuread-sso.com`
   
      Hodnota (data): 1
 
@@ -187,11 +187,11 @@ Ujistěte se, že počítač, na kterém běží macOS, je připojený ke služb
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge na základě chromu (všechny platformy)
 
-Pokud jste ve svém prostředí přepsali nastavení zásad [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) nebo [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) , ujistěte se, že jste do nich přidali taky adresu URL služby Azure AD `https://autologon.microsoftazuread-sso.com` .
+Pokud jste ve svém prostředí přepsali nastavení zásad [AuthNegotiateDelegateAllowlist](/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) nebo [AuthServerAllowlist](/DeployEdge/microsoft-edge-policies#authserverallowlist) , ujistěte se, že jste do nich přidali taky adresu URL služby Azure AD `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Microsoft Edge na základě chromu (macOS a dalších platforem mimo systém Windows)
 
-Informace o tom, jak přidat adresu URL služby Azure AD pro integrované ověřování do seznamu povolených aplikací, najdete v tématu [Microsoft Edge na](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) bázi MacOS a dalších platformách jiných než Windows.
+Informace o tom, jak přidat adresu URL služby Azure AD pro integrované ověřování do seznamu povolených aplikací, najdete v tématu [Microsoft Edge na](/DeployEdge/microsoft-edge-policies#authserverallowlist) bázi MacOS a dalších platformách jiných než Windows.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 
@@ -211,7 +211,7 @@ Bezproblémové jednotné přihlašování nefunguje v privátním režimu proch
 
 Chcete-li otestovat funkci pro konkrétního uživatele, ujistěte se, že jsou splněny všechny následující podmínky:
   - Uživatel se přihlásí v podnikovém zařízení.
-  - Zařízení je připojené k doméně služby Active Directory. Zařízení _není_ nutné [připojit k Azure AD](../active-directory-azureadjoin-overview.md).
+  - Zařízení je připojené k doméně služby Active Directory. Zařízení _není_ nutné [připojit k Azure AD](../devices/overview.md).
   - Zařízení má přímé připojení k řadiči domény (DC) v podnikové kabelové nebo bezdrátové síti nebo prostřednictvím připojení vzdáleného přístupu, jako je třeba připojení k síti VPN.
   - Tuto [funkci](#step-3-roll-out-the-feature) jste do tohoto uživatele zavedli prostřednictvím zásady skupiny.
 

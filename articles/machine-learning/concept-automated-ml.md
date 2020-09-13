@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652096"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658566"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -174,7 +174,7 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
  K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. Některé z těchto funkcí jsou k dispozici pouze v pracovním prostoru Enterprise.
 
-| Funkce                                                    | Vzdálené | Místní | Nutné <br>Pracovní prostor Enterprise |
+| Příznak                                                    | Vzdálené | Místní | Nutné <br>Pracovní prostor Enterprise |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | ✓                             |
 | Featurization a školení textu založeného na DNN-BERT             | ✓      |       | ✓                             |
@@ -204,9 +204,9 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 
 ## <a name="automl-in-azure-machine-learning"></a>AutoML v Azure Machine Learning
 
-Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML.
+Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML:
 
-* Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+* Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 
 
 * Pro zákazníky s omezením a nezkušeným kódem se Azure Machine Learning Studio na [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -277,7 +277,7 @@ Kurzy představují ucelené Úvodní příklady scénářů AutoML.
 
  + V **případě nedostatku nebo prostředí bez kódu**si přečtěte [kurz: vytváření automatizovaných modelů klasifikace ml pomocí Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md).
 
-Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Příklad: 
+Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Třeba 
 
 + Konfigurovat nastavení pro automatické experimenty školení
     + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md). 
@@ -289,9 +289,9 @@ Kurzy představují ucelené Úvodní příklady scénářů AutoML.
 
 Přečtěte si podrobné příklady kódu a případy použití v [úložišti notebook GitHub pro automatizované ukázky strojového učení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
 
-### <a name="python-sdk-reference"></a>Referenční dokumentace sady Python SDK 
+### <a name="python-sdk-reference"></a>Referenční dokumentace sady Python SDK
 
-Prohloubte své znalosti vzorů návrhu sady SDK a specifikace tříd pomocí [Referenční dokumentace třídy AutoML](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). 
+Prohloubte své znalosti vzorů návrhu sady SDK a specifikace tříd pomocí [Referenční dokumentace třídy AutoML](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true). 
 
 > [!Note]
 > Automatizované funkce strojového učení jsou dostupné i v dalších řešeních Microsoftu, jako jsou [ml.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

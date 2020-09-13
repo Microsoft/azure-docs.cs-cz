@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266965"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660270"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -33,7 +33,7 @@ Pokud chcete migrovat virtuální počítače VMware do Azure, přečtěte si [m
 
 **VMware** | **Podrobnosti**
 --- | ---
-**vCenter Server** | Počítače, které chcete zjišťovat a hodnotit, se musí spravovat pomocí vCenter Server verze 5,5, 6,0, 6,5 nebo 6,7.
+**vCenter Server** | Počítače, které chcete zjišťovat a hodnotit, se musí spravovat pomocí vCenter Server verze 5,5, 6,0, 6,5, 6,7 nebo 7,0.<br/><br/> Zjišťování virtuálních počítačů VMware poskytnutím podrobností hostitele ESXi v zařízení není aktuálně podporováno.
 **Oprávnění** | Vyhodnocování serveru vyžaduje pro zjišťování a hodnocení účet vCenter Server jen pro čtení.<br/><br/> Pokud chcete provádět zjišťování aplikací nebo vizualizaci závislostí, účet potřebuje oprávnění povolit pro **Virtual Machines**  >  **operace hostů**.
 
 ## <a name="vm-requirements"></a>Požadavky na virtuální počítače
@@ -89,7 +89,7 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 **vCenter Server přihlašovací údaje** | Vizualizace závislosti vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >.
 **Oprávnění virtuálních počítačů s Windows** |  Pro analýzu závislostí potřebuje zařízení Azure Migrate účet správce domény nebo účet místního správce pro přístup k virtuálním počítačům s Windows.
 **Virtuální počítače s Linuxem** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Účet Linux** | Pro analýzu závislostí se v počítačích se systémem Linux Azure Migrate zařízení vyžaduje uživatelský účet s oprávněním root.<br/><br/> V alternativním případě uživatelský účet potřebuje tato oprávnění pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
+**Účet Linux** | Pro analýzu závislostí se v počítačích se systémem Linux Azure Migrate zařízení vyžaduje uživatelský účet s oprávněním root.<br/><br/> V alternativním případě uživatelský účet potřebuje tato oprávnění pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE. Tyto možnosti nastavte pomocí následujících příkazů: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/LS <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
 **Vyžadovaná agenti** | Na počítačích, které chcete analyzovat, není vyžadován žádný agent.
 **Nástroje VMware** | Na každém virtuálním počítači, který chcete analyzovat, se musí nainstalovat a spustit nástroje VMware (novější než 10,2).
 

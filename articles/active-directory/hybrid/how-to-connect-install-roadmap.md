@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee5ba92f6795df6635dc98a19cabaeb9692a470
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358731"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662151"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
 
@@ -49,14 +49,14 @@ Azure AD Connect si můžete stáhnout ze stránek [Stažení softwaru](https://
 |Po instalaci | [Ověření instalace a přiřazení licencí](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Další informace o instalaci Azure AD Connect
-Také asi bude chtít připravit na problematiku [provozu](how-to-connect-sync-operations.md). Možná byste měli mít pohotovostní server, abyste mohli jednoduše převzít funkce při selhání v případě [havárie](how-to-connect-sync-staging-server.md#disaster-recovery). Pokud plánujete často měnit konfiguraci, měli byste uvažovat o serveru v [pracovním režimu](how-to-connect-sync-staging-server.md).
+Také asi bude chtít připravit na problematiku [provozu](./how-to-connect-sync-staging-server.md). Možná byste měli mít pohotovostní server, abyste mohli jednoduše převzít funkce při selhání v případě [havárie](how-to-connect-sync-staging-server.md#disaster-recovery). Pokud plánujete často měnit konfiguraci, měli byste uvažovat o serveru v [pracovním režimu](how-to-connect-sync-staging-server.md).
 
 |Téma |Odkaz|  
 | --- | --- |
 |Podporované topologie | [Topologie pro Azure AD Connect](plan-connect-topologies.md)|
 |Koncepty návrhu | [Koncepty návrhu Azure AD Connect](plan-connect-design-concepts.md)|
 |Účty použité k instalaci | [Další informace o účtech a oprávněních služby Azure AD Connect](reference-connect-accounts-permissions.md)|
-|Provozní plánování | [Synchronizace Azure AD Connect: Provozní úlohy a požadavky](how-to-connect-sync-operations.md)|
+|Provozní plánování | [Synchronizace Azure AD Connect: Provozní úlohy a požadavky](./how-to-connect-sync-staging-server.md)|
 |Možnosti přihlášení uživatele | [Azure AD Connect možností přihlášení uživatele](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>Konfigurace synchronizačních funkcí
@@ -66,7 +66,7 @@ Azure AD Connect obsahuje několik funkcí, které můžete volitelně zapnout n
 
 [Synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md) synchronizuje hodnoty hash hesel ve službě Active Directory do služby Azure AD. Koncový uživatel může používat stejné heslo v místní síti i na cloudu, a přitom ho spravovat pouze na jednom místě. Protože se jako autorita používá vaše místní služba Active Directory, můžete také použít vlastní zásady hesel.
 
-[Zpětný zápis hesel](../authentication/quickstart-sspr.md) umožňuje uživatelům měnit a resetovat vlastní hesla v cloudu a používat přitom vaše místní zásady hesel.
+[Zpětný zápis hesel](../authentication/tutorial-enable-sspr.md) umožňuje uživatelům měnit a resetovat vlastní hesla v cloudu a používat přitom vaše místní zásady hesel.
 
 [Zpětný zápis zařízení](how-to-connect-device-writeback.md) umožní, aby se zařízení zaregistrované ve službě Azure AD zapsalo zpátky do místní služby Active Directory, aby se mohlo použít pro podmíněný přístup.
 
@@ -80,7 +80,7 @@ Funkce pro [prevenci náhodného odstranění](how-to-connect-sync-feature-preve
 |Konfigurace filtrování | [Synchronizace Azure AD Connect: Konfigurace filtrování](how-to-connect-sync-configure-filtering.md)|
 |Synchronizace hodnot hash hesel | [Synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md)|
 |Předávací ověřování | [Předávací ověřování](how-to-connect-pta.md)
-|Zpětný zápis hesla | [Začínáme se správou hesel](../authentication/quickstart-sspr.md)|
+|Zpětný zápis hesla | [Začínáme se správou hesel](../authentication/tutorial-enable-sspr.md)|
 |Zpětný zápis zařízení | [Povolení zpětného zápisu zařízení v Azure AD Connect](how-to-connect-device-writeback.md)|
 |Prevence náhodného odstranění | [Synchronizace Azure AD Connect: Prevence náhodného odstranění](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
 |Automatický upgrade | [Azure AD Connect: Automatický upgrade](how-to-connect-install-automatic-upgrade.md)|
@@ -124,7 +124,7 @@ Pokud server AD FS nemá nakonfigurované automatické aktualizace certifikátů
 |Všechny články o službě AD FS | [Azure AD Connect a federace](how-to-connect-fed-whatis.md)|
 |Konfigurace služby ADFS se subdoménami | [Podpora více domén pro federaci s Azure AD](how-to-connect-install-multiple-domains.md)|
 |Správa farmy služby AD FS | [Správa služby AD FS a vlastní nastavení se službou Azure AD Connect](how-to-connect-fed-management.md)|
-|Ruční aktualizace federačních certifikátů | [Obnovení federačních certifikátů pro Office 365 a Azure AD](how-to-connect-fed-o365-certs.md)|
+|Ruční aktualizace federačních certifikátů | [Obnovení federačních certifikátů pro Microsoft 365 a Azure AD](how-to-connect-fed-o365-certs.md)|
 
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Začínáme se službou Azure AD Connect Health

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ca76ec5bef1d908ca3cea6ce0f58b1205c1676ca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: da48b593b8f645566b2f9775fabc5d8e62e625b6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144086"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661569"
 ---
 # <a name="submit-a-training-run-to-a-compute-target"></a>Odeslání školicího běhu do cíle výpočetní technologie
 
@@ -28,10 +28,10 @@ Po školení je běžné spustit na místním počítači a později spustit ten
 
 Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění skriptu**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
-* [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning pracovní prostor](how-to-manage-workspace.md),`ws`
 * Cíl výpočtů, `my_compute_target` .  Vytvořte cíl výpočtů pomocí:
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
@@ -39,11 +39,11 @@ Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpoč
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Co je konfigurace spuštění skriptu?
 
-Odešlete experiment školení s objektem [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) .  Tento objekt obsahuje:
+Odešlete experiment školení s objektem [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) .  Tento objekt obsahuje:
 
 * **source_directory**: zdrojový adresář, který obsahuje školicí skript.
 * **skript**: identifikace školicího skriptu
-* **run_config**: [Konfigurace spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py), která zase definuje, kde se bude probíhat školení. V rámci `run_config` zadáte cílový výpočetní výkon a prostředí, které se má použít při spuštění školicího skriptu.  
+* **run_config**: [Konfigurace spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true), která zase definuje, kde se bude probíhat školení. V rámci `run_config` zadáte cílový výpočetní výkon a prostředí, které se má použít při spuštění školicího skriptu.  
 
 ## <a name="whats-an-environment"></a>Co je prostředí?
 
@@ -167,7 +167,7 @@ Příklady školení s různými cíli výpočtů najdete v těchto poznámkový
 ## <a name="next-steps"></a>Další kroky
 
 * [Kurz: výuka modelu](tutorial-train-models-with-aml.md) používá ke školení modelu spravovaný výpočetní cíl.
-* Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.
+* Přečtěte si, jak [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.? zobrazení = Azure-ml-py&Preserve-View = true)
 * Jakmile budete mít školený model, zjistěte, [jak a kde nasadit modely](how-to-deploy-and-where.md).
-* Zobrazit odkaz na sadu SDK [třídy RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)
+* Zobrazit odkaz na sadu SDK [třídy RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true)
 * [Použití Azure Machine Learning s Azure Virtual Networks](how-to-enable-virtual-network.md)

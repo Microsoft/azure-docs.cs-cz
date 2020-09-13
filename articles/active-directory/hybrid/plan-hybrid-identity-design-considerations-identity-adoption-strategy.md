@@ -1,6 +1,6 @@
 ---
 title: Návrh hybridní identity – strategie přijetí Azure | Microsoft Docs
-description: Při použití řízení podmíněného přístupu Azure Active Directory kontroluje konkrétní podmínky, které vyberete při ověřování uživatele, a před povolením přístupu k aplikaci. Po splnění těchto podmínek bude uživatel ověřený a povolený přístup k aplikaci.
+description: Díky řízení podmíněného přístupu Azure AD kontroluje konkrétní podmínky, které vyberete při ověřování uživatele, a před povolením přístupu k aplikaci.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555381"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659522"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definice strategie přijetí hybridní identity
 V této úloze definujete strategii přijetí hybridní identity pro vaše řešení hybridní identity, která bude vyhovovat obchodním požadavkům, které byly popsané v tématu:
@@ -32,7 +32,7 @@ V této úloze definujete strategii přijetí hybridní identity pro vaše řeš
 * [Určení požadavků na službu Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>Definování strategie obchodních potřeb
-První úkol řeší obchodní potřeby organizace.  To může být velmi široké a v případě, že nebudete opatrní, může dojít k nárůstu rozsahu.  Na začátku mějte jednoduché, ale vždycky nezapomeňte naplánovat návrh, který bude přizpůsoben a v budoucnu usnadňuje změnu.  Bez ohledu na to, jestli se jedná o jednoduchý návrh nebo extrémně složitou, Azure Active Directory je platforma Microsoftu identity, která podporuje Office 365, online služby Microsoftu a aplikace pracující s cloudem.
+První úkol řeší obchodní potřeby organizace.  To může být velmi široké a v případě, že nebudete opatrní, může dojít k nárůstu rozsahu.  Na začátku mějte jednoduché, ale vždycky nezapomeňte naplánovat návrh, který bude přizpůsoben a v budoucnu usnadňuje změnu.  Bez ohledu na to, jestli se jedná o jednoduchý návrh nebo extrémně složitou, Azure Active Directory je platforma pro identity Microsoftu, která podporuje Microsoft 365, online služby Microsoftu a aplikace pracující s cloudem.
 
 ## <a name="define-an-integration-strategy"></a>Definování strategie integrace
 Společnost Microsoft má tři hlavní scénáře integrace, které jsou cloudové identity, synchronizované identity a federované identity.  Měli byste naplánovat přijetí jedné z těchto strategií integrace.  Strategie, kterou si zvolíte, se může lišit a rozhodnutí o jejich výběru může zahrnovat, jaký typ uživatelského prostředí chcete poskytnout, jak máte stávající infrastrukturu a jaké jsou náklady na maximum.  
@@ -171,7 +171,7 @@ Následující možnost není podporována a neměla by být vybrána jako imple
 * Adresáře Azure AD jsou v izolovaném designu. Změna konfigurace Azure AD Connect synchronizace pro čtení dat z jiného adresáře služby Azure AD se nezdařila při pokusu o vytvoření společného a sjednoceného globálního globálního adresáře mezi adresáři. Také se nedoporučuje exportovat uživatele jako kontakty do jiné místní služby AD pomocí Azure AD Connect synchronizace.
 
 > [!NOTE]
-> Pokud vaše organizace omezuje počítače v síti tak, aby se připojovaly k Internetu, v tomto článku jsou uvedené koncové body (rozsahy názvů FQDN, IPv4 a IPv6), které byste měli zahrnout do seznamů odchozích povolení a důvěryhodných lokalit v Internet Exploreru klientských počítačů, aby bylo zajištěno, že vaše počítače budou moci úspěšně používat sadu Office 365. Další informace najdete v tématu [adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
+> Pokud vaše organizace omezuje počítače v síti tak, aby se připojovaly k Internetu, v tomto článku jsou uvedeny koncové body (plně kvalifikované názvy domén, IPv4 a rozsahy adres IPv6), které byste měli zahrnout do seznamů odchozích povolení a důvěryhodných lokalit v Internet Exploreru klientských počítačů, aby bylo zajištěno, že vaše počítače budou moci úspěšně používat Microsoft 365. Další informace najdete v tématu [adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
 > 
 > 
 

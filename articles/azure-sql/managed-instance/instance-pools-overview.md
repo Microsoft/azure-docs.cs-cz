@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c49f751bae048d2faf7047e538eebcac5d818b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708837"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658733"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Co je fond spravovaných instancí Azure SQL (Preview)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -79,6 +79,7 @@ Na fondy instancí a instance v rámci fondů se vztahuje několik omezení pros
 - Kromě omezení na úrovni instance platí také dvě omezení *na úrovni fondu instancí*:
   - Celková velikost úložiště na fond (8 TB).
   - Celkový počet databází na fond (100).
+- Správce AAD nelze nastavit pro instance nasazené uvnitř fondu instancí, nelze proto použít ověřování AAD.
 
 Celkové přidělení úložiště a počet databází napříč všemi instancemi musí být nižší než nebo rovno omezením vystaveným fondy instancí.
 

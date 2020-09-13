@@ -1,150 +1,244 @@
 ---
-title: Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview) | Microsoft Docs
-description: K načtení podmnožiny dat z vašeho účtu úložiště použijte akceleraci dotazů (Preview).
+title: Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů | Microsoft Docs
+description: Pomocí akcelerace dotazů načtěte podmnožinu dat z vašeho účtu úložiště.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6de6661e5c970c7c3cbfc944b8539060b8844a36
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005220"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659876"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview)
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů
 
-V tomto článku se dozvíte, jak pomocí akcelerace dotazů (Preview) načíst podmnožinu dat z vašeho účtu úložiště. 
+V tomto článku se dozvíte, jak pomocí akcelerace dotazů načíst podmnožinu dat z vašeho účtu úložiště. 
 
-Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tím, že načte jenom data, která potřebují k provedení dané operace. Další informace najdete v tématu [akcelerace dotazů Azure Data Lake Storage (Preview)](data-lake-storage-query-acceleration.md).
+Zrychlení dotazů umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tím, že načte jenom data, která potřebují k provedení dané operace. Další informace najdete v tématu [Azure Data Lake Storage zrychlení dotazů](data-lake-storage-query-acceleration.md).
 
-> [!NOTE]
-> Funkce zrychlení dotazů je ve verzi Public Preview a je dostupná v oblastech Kanada – střed a Francie – střed. Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) . Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adls/qa-preview-signup).  
-
-## <a name="prerequisites"></a>Předpoklady
-
-### <a name="net"></a>[.NET](#tab/dotnet)
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 - Účet úložiště pro **obecné účely v2** . viz [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 
-- [sada .NET SDK](https://dotnet.microsoft.com/download). 
+- Vyberte kartu pro zobrazení všech požadavků specifických pro sadu SDK.
 
-### <a name="java"></a>[Java](#tab/java)
+  ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-- Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+  Není
 
-- Účet úložiště pro **obecné účely v2** . viz [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+  ### <a name="net"></a>[.NET](#tab/dotnet)
 
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší.
+  [Sada .NET SDK](https://dotnet.microsoft.com/download) 
 
-- [Apache Maven](https://maven.apache.org/download.cgi) 
+  ### <a name="java"></a>[Java](#tab/java)
 
-  > [!NOTE] 
-  > V tomto článku se předpokládá, že jste vytvořili projekt Java pomocí Apache Maven. Příklad toho, jak vytvořit projekt pomocí Apache Maven, najdete v tématu [Nastavení](storage-quickstart-blobs-java.md#setting-up).
+  - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) verze 8 nebo vyšší
+
+  - [Apache Maven](https://maven.apache.org/download.cgi) 
+
+    > [!NOTE] 
+    > V tomto článku se předpokládá, že jste vytvořili projekt Java pomocí Apache Maven. Příklad toho, jak vytvořit projekt pomocí Apache Maven, najdete v tématu [Nastavení](storage-quickstart-blobs-java.md#setting-up).
   
+  ### <a name="python"></a>[Python](#tab/python)
+
+  [Python](https://www.python.org/downloads/) 3,8 nebo vyšší.
+
+  ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+  Pro použití sady Node.js SDK nejsou vyžadovány žádné další požadavky.
+
 ---
 
-## <a name="install-packages"></a>Nainstalovat balíčky 
+## <a name="enable-query-acceleration"></a>Povolit zrychlení dotazů
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+Pokud chcete použít zrychlení dotazů, musíte u svého předplatného zaregistrovat funkci zrychlení dotazů. Po ověření, zda je funkce zaregistrována, je nutné zaregistrovat poskytovatele prostředků Azure Storage. 
 
-1. Stáhněte si balíčky pro zrychlení dotazů. Komprimovaný soubor zip, který obsahuje tyto balíčky, můžete získat pomocí tohoto odkazu: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net) . 
+### <a name="step-1-register-the-query-acceleration-feature"></a>Krok 1: registrace funkce zrychlení dotazů
 
-2. Extrahujte obsah tohoto souboru do adresáře projektu.
+Pokud chcete použít zrychlení dotazů, musíte nejdřív zaregistrovat funkci zrychlení dotazů u svého předplatného. 
 
-3. V textovém editoru otevřete soubor projektu (*. csproj*) a přidejte tyto odkazy na balíčky uvnitř \<Project\> elementu.
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-   ```xml
-   <ItemGroup>
-       <PackageReference Include="Azure.Storage.Blobs" Version="12.5.0-preview.1" />
-       <PackageReference Include="Azure.Storage.Common" Version="12.4.0-preview.1" />
-       <PackageReference Include="Azure.Storage.QuickQuery" Version="12.0.0-preview.1" />
-   </ItemGroup>
+1. Otevřete okno příkazového řádku Windows PowerShellu.
+
+1. Přihlaste se ke svému předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
+
+   ```powershell
+   Connect-AzAccount
    ```
 
-4. Obnovte balíčky sady SDK pro Preview. Tento ukázkový příkaz obnoví balíčky sady SDK verze Preview pomocí `dotnet restore` příkazu. 
+2. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné.
+
+   ```powershell
+   $context = Get-AzSubscription -SubscriptionId <subscription-id>
+   Set-AzContext $context
+   ```
+
+   Nahraďte `<subscription-id>` hodnotu zástupného symbolu číslem ID vašeho předplatného.
+
+3. Zaregistrujte funkci zrychlení dotazů pomocí příkazu [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) .
+
+   ```powershell
+   Register-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
+   ```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)nebo pokud máte rozhraní příkazového řádku Azure místně [nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli) , otevřete konzolovou aplikaci, například Windows PowerShell.
+
+2. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště.
+
+   ```azurecli-interactive
+   az account set --subscription <subscription-id>
+   ```
+
+   Nahraďte `<subscription-id>` hodnotu zástupného symbolu číslem ID vašeho předplatného.
+
+3. Zaregistrujte funkci zrychlení dotazů pomocí příkazu [AZ Feature Register](/cli/azure/feature#az-feature-register) .
+
+   ```azurecli
+   az feature register --namespace Microsoft.Storage --name BlobQuery
+   ```
+
+---
+
+### <a name="step-2-verify-that-the-feature-is-registered"></a>Krok 2: Ověření registrace funkce
+
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Pokud chcete ověřit, že se registrace dokončila, použijte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
+```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Chcete-li ověřit, zda byla registrace dokončena, použijte příkaz [AZ Feature](/cli/azure/feature#az-feature-show) .
+
+```azurecli
+az feature show --namespace Microsoft.Storage --name BlobQuery
+```
+
+---
+
+### <a name="step-3-register-the-azure-storage-resource-provider"></a>Krok 3: registrace poskytovatele prostředků Azure Storage
+
+Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. 
+
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Chcete-li zaregistrovat poskytovatele prostředků, použijte příkaz [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) .
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
+```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Chcete-li zaregistrovat poskytovatele prostředků, použijte příkaz [AZ Provider Register](/cli/azure/provider#az-provider-register) .
+
+```azurecli
+az provider register --namespace 'Microsoft.Storage'
+```
+
+---
+
+## <a name="set-up-your-environment"></a>Nastavení prostředí
+
+### <a name="step-1-install-packages"></a>Krok 1: Instalace balíčků 
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Nainstalujte modul AZ Module verze 4.6.0 nebo vyšší.
+
+```powershell
+Install-Module -Name Az -Repository PSGallery -Force
+```
+
+Chcete-li provést aktualizaci ze starší verze AZ, spusťte následující příkaz:
+
+```powershell
+Update-Module -Name Az
+```
+
+#### <a name="net"></a>[.NET](#tab/dotnet)
+
+1. Otevřete příkazový řádek a změňte adresář ( `cd` ) na složku projektu, například:
 
    ```console
-   dotnet restore --source C:\Users\contoso\myProject
+   cd myProject
    ```
 
-5. Obnovte všechny ostatní závislosti z veřejného úložiště NuGet.
+2. `12.5.0-preview.6`Pomocí příkazu nainstalujte verzi balíčku klienta Azure Blob Storage pro balíček .NET `dotnet add package` . 
 
    ```console
-   dotnet restore
+   dotnet add package Azure.Storage.Blobs -v 12.6.0
    ```
 
-### <a name="java"></a>[Java](#tab/java)
+3. Příklady, které se zobrazí v tomto článku, analyzují soubor CSV pomocí knihovny [CsvHelper](https://www.nuget.org/packages/CsvHelper/) . K použití této knihovny použijte následující příkaz.
 
-1. Vytvořte adresář v kořenu projektu. Kořenový adresář je adresář, který obsahuje soubor **pom.xml** .
+   ```console
+   dotnet add package CsvHelper
+   ```
 
-   > [!NOTE]
-   > V příkladech v tomto článku se předpokládá, že název adresáře je **lib**.
+#### <a name="java"></a>[Java](#tab/java)
 
-2. Stáhněte si balíčky pro zrychlení dotazů. Komprimovaný soubor zip, který obsahuje tyto balíčky, můžete získat pomocí tohoto odkazu: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) . 
-
-3. Extrahujte soubory v tomto souboru zip do adresáře, který jste vytvořili. V našem příkladu má tento adresář název **lib**. 
-
-4. Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvky závislosti do skupiny závislostí. 
+1. Otevřete soubor *pom.xml* projektu v textovém editoru. Přidejte následující prvky závislosti do skupiny závislostí. 
 
    ```xml
    <!-- Request static dependencies from Maven -->
    <dependency>
        <groupId>com.azure</groupId>
        <artifactId>azure-core</artifactId>
-       <version>1.3.0</version>
+       <version>1.6.0</version>
    </dependency>
-   <dependency>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-csv</artifactId>
+        <version>1.8</version>
+    </dependency>    
+    <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-core-http-netty</artifactId>
-      <version>1.3.0</version>
-   </dependency>
-   <dependency>
-      <groupId>org.apache.avro</groupId>
-      <artifactId>avro</artifactId>
-      <version>1.9.2</version>
-   </dependency>
-   <dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-csv</artifactId>
-    <version>1.8</version>
-   </dependency>
-   <!-- Local dependencies -->
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-blob</artifactId>
-       <version>12.5.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-blob-12.5.0-beta.1.jar</systemPath>
-   </dependency>
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-common</artifactId>
-       <version>12.5.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-common-12.5.0-beta.1.jar</systemPath>
-   </dependency>
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-quickquery</artifactId>
-       <version>12.0.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-quickquery-12.0.0-beta.1.jar</systemPath>
-   </dependency>
+      <artifactId>azure-storage-blob</artifactId>
+      <version>12.8.0-beta.1</version>
+    </dependency>
    ```
+
+#### <a name="python"></a>[Python](#tab/python)
+
+Nainstalujte klientskou knihovnu Azure Data Lake Storage pro Python pomocí [PIP](https://pypi.org/project/pip/).
+
+```
+pip install azure-storage-blob==12.4.0
+```
+
+#### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Nainstalujte Data Lake klientské knihovny pro JavaScript tak, že otevřete okno terminálu a pak zadáte následující příkaz.
+
+```javascript
+    npm install @azure/storage-blob
+    npm install @fast-csv/parse
+```
 
 ---
 
-## <a name="add-statements"></a>Přidat příkazy
+### <a name="step-2-add-statements"></a>Krok 2: Přidání příkazů
 
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+Není
+
+#### <a name="net"></a>[.NET](#tab/dotnet)
 
 Přidejte tyto `using` příkazy do horní části souboru kódu.
 
@@ -152,8 +246,6 @@ Přidejte tyto `using` příkazy do horní části souboru kódu.
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
-using Azure.Storage.QuickQuery;
-using Azure.Storage.QuickQuery.Models;
 ```
 
 Zrychlení dotazů načte data ve formátu CSV a JSON. Proto nezapomeňte přidat příkazy using pro jakékoli knihovny pro analýzu CSV nebo JSON, které se rozhodnete použít. Příklady, které se zobrazí v tomto článku, analyzují soubor CSV pomocí knihovny [CsvHelper](https://www.nuget.org/packages/CsvHelper/) , která je dostupná na NuGet. Proto přidáme tyto `using` příkazy do horní části souboru kódu.
@@ -169,22 +261,43 @@ Chcete-li zkompilovat příklady uvedené v tomto článku, budete také muset p
 using System.Threading.Tasks;
 using System.IO;
 using System.Globalization;
-using System.Threading;
-using System.Linq;
 ```
 
-### <a name="java"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 Přidejte tyto `import` příkazy do horní části souboru kódu.
 
 ```java
 import com.azure.storage.blob.*;
+import com.azure.storage.blob.options.*;
 import com.azure.storage.blob.models.*;
 import com.azure.storage.common.*;
-import com.azure.storage.quickquery.*;
-import com.azure.storage.quickquery.models.*;
 import java.io.*;
+import java.util.function.Consumer;
 import org.apache.commons.csv.*;
+```
+
+#### <a name="python"></a>[Python](#tab/python)
+
+Přidejte tyto příkazy pro import do horní části souboru kódu.
+
+```python
+import sys, csv
+from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, DelimitedTextDialect, BlobQueryError
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Zahrňte `storage-blob` modul vložením tohoto příkazu do horní části souboru kódu. 
+
+```javascript
+const { BlobServiceClient } = require("@azure/storage-blob");
+```
+
+Zrychlení dotazů načte data ve formátu CSV a JSON. Proto je nutné přidat příkazy pro jakékoli moduly pro analýzu CSV nebo JSON, které se rozhodnete použít. Příklady, které se zobrazí v tomto článku, analyzují soubor CSV pomocí modulu [Fast-CSV](https://www.npmjs.com/package/fast-csv) . Proto přidáme tento příkaz na začátek souboru kódu.
+
+```javascript
+const csv = require('@fast-csv/parse');
 ```
 
 ---
@@ -197,14 +310,30 @@ Pomocí jazyka SQL můžete zadat predikáty filtru řádků a projekce sloupců
 
 - Odkazy na sloupce jsou zadány jako `_N` v případě prvního sloupce `_1` . Pokud zdrojový soubor obsahuje řádek záhlaví, můžete odkazovat na sloupce podle názvu, který je uveden v řádku záhlaví. 
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$blob = "csv/csv-general/seattle-library.csv"
+Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'" $false
+
+```
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Asynchronní metoda `BlobQuickQueryClient.QueryAsync` pošle dotaz do rozhraní API zrychlení dotazů a potom streamuje výsledky zpátky do aplikace jako objekt [streamu](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) .
+Asynchronní metoda `BlobQuickQueryClient.QueryAsync` pošle dotaz do rozhraní API zrychlení dotazů a potom streamuje výsledky zpátky do aplikace jako objekt [streamu](https://docs.microsoft.com/dotnet/api/system.io.stream) .
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
 {
-    string query = @"SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest'";
+    string query = @"SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
     await DumpQueryCsv(blob, query, false);
 }
 
@@ -212,25 +341,26 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
 {
     try
     {
-        using (var reader = new StreamReader((await blob.GetQuickQueryClient().QueryAsync(query,
-                new CsvTextConfiguration() { HasHeaders = headers }, 
-                new CsvTextConfiguration() { HasHeaders = false }, 
-                new ErrorHandler(),
-                new BlobRequestConditions(), 
-                new ProgressHandler(),
-                CancellationToken.None)).Value.Content))
+        var options = new BlobQueryOptions() {
+            InputTextConfiguration = new BlobQueryCsvTextOptions() { HasHeaders = headers },
+            OutputTextConfiguration = new BlobQueryCsvTextOptions() { HasHeaders = true },
+            ProgressHandler = new Progress<long>((finishedBytes) => Console.Error.WriteLine($"Data read: {finishedBytes}"))
+        };
+        options.ErrorHandler += (BlobQueryError err) => {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Error.WriteLine($"Error: {err.Position}:{err.Name}:{err.Description}");
+            Console.ResetColor();
+        };
+        // BlobDownloadInfo exposes a Stream that will make results available when received rather than blocking for the entire response.
+        using (var reader = new StreamReader((await blob.QueryAsync(
+                query,
+                options)).Value.Content))
         {
-            using (var parser = new CsvReader(reader, new CsvConfiguration(CultureInfo.CurrentCulture) 
-            { HasHeaderRecord = false }))
+            using (var parser = new CsvReader(reader, new CsvConfiguration(CultureInfo.CurrentCulture) { HasHeaderRecord = true }))
             {
                 while (await parser.ReadAsync())
                 {
-                    parser.Context.Record.All(cell =>
-                    {
-                        Console.Out.Write(cell + "  ");
-                        return true;
-                    });
-                    Console.Out.WriteLine();
+                    Console.Out.WriteLine(String.Join(" ", parser.Context.Record));
                 }
             }
         }
@@ -238,22 +368,6 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
     catch (Exception ex)
     {
         Console.Error.WriteLine("Exception: " + ex.ToString());
-    }
-}
-
-class ErrorHandler : IBlobQueryErrorReceiver
-{
-    public void ReportError(BlobQueryError err)
-    {
-        Console.Error.WriteLine($"Error: {err.Name}:{ err.Description }");
-    }
-}
-
-class ProgressHandler : IProgress<long>
-{
-    public void Report(long value)
-    {
-        Console.Error.WriteLine("Bytes scanned: " + value.ToString());
     }
 }
 
@@ -265,49 +379,98 @@ Metoda `BlobQuickQueryClient.openInputStream()` pošle dotaz do rozhraní API pr
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
-    String expression = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest'";
-    DumpQueryCsv(blobClient, expression, false);
+    String expression = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
+    DumpQueryCsv(blobClient, expression, true);
 }
 
 static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
     try {
-    
-        BlobQuickQueryDelimitedSerialization input = new BlobQuickQueryDelimitedSerialization()
+        BlobQuerySerialization input = new BlobQueryDelimitedSerialization()
             .setRecordSeparator('\n')
             .setColumnSeparator(',')
             .setHeadersPresent(headers)
             .setFieldQuote('\0')
             .setEscapeChar('\\');
-
-        BlobQuickQueryDelimitedSerialization output = new BlobQuickQueryDelimitedSerialization()
+        BlobQuerySerialization output = new BlobQueryDelimitedSerialization()
             .setRecordSeparator('\n')
             .setColumnSeparator(',')
-            .setHeadersPresent(false)
+            .setHeadersPresent(true)
             .setFieldQuote('\0')
             .setEscapeChar('\n');
-                
-        BlobRequestConditions requestConditions = null;
-        /* ErrorReceiver determines what to do on errors. */
-        ErrorReceiver<BlobQuickQueryError> errorReceiver = System.out::println;
+        Consumer<BlobQueryError> errorConsumer = System.out::println;
+        Consumer<BlobQueryProgress> progressConsumer = progress -> System.out.println("total bytes read: " + progress.getBytesScanned());
+        BlobQueryOptions queryOptions = new BlobQueryOptions(query)
+            .setInputSerialization(input)
+            .setOutputSerialization(output)
+            .setErrorConsumer(errorConsumer)
+            .setProgressConsumer(progressConsumer);            
 
-        /* ProgressReceiver details how to log progress*/
-        com.azure.storage.common.ProgressReceiver progressReceiver = System.out::println;
-    
-        /* Create a query acceleration client to the blob. */
-        BlobQuickQueryClient qqClient = new BlobQuickQueryClientBuilder(blobClient)
-            .buildClient();
         /* Open the query input stream. */
-        InputStream stream = qqClient.openInputStream(query, input, output, requestConditions, errorReceiver, progressReceiver);
-            
+        InputStream stream = blobClient.openQueryInputStream(queryOptions).getValue();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             /* Read from stream like you normally would. */
-            for (CSVRecord record : CSVParser.parse(reader, CSVFormat.EXCEL)) {
+            for (CSVRecord record : CSVParser.parse(reader, CSVFormat.EXCEL.withHeader())) {
                 System.out.println(record.toString());
             }
         }
     } catch (Exception e) {
         System.err.println("Exception: " + e.toString());
+        e.printStackTrace(System.err);
     }
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_hemingway(blob: BlobClient):
+    query = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'"
+    dump_query_csv(blob, query, False)
+
+def dump_query_csv(blob: BlobClient, query: str, headers: bool):
+    qa_reader = blob.query_blob(query, blob_format=DelimitedTextDialect(has_header=headers), on_error=report_error, encoding='utf-8')
+    # records() returns a generator that will stream results as received. It will not block pending all results.
+    csv_reader = csv.reader(qa_reader.records())
+    for row in csv_reader:
+        print("*".join(row))
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Tento příklad odešle dotaz do rozhraní API akcelerace dotazů a potom streamuje výsledky zpět.
+
+```javascript
+async function queryHemingway(blob)
+{
+    const query = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
+    await dumpQueryCsv(blob, query, false);
+}
+
+async function dumpQueryCsv(blob, query, headers)
+{
+    var response = await blob.query(query, {
+        inputTextConfiguration: {
+            kind: "csv",
+            recordSeparator: '\n',
+            hasHeaders: headers
+        },
+        outputTextConfiguration: {
+            kind: "csv",
+            recordSeparator: '\n',
+            hasHeaders: true
+        },
+        onProgress: (progress) => console.log(`Data read: ${progress.loadedBytes}`),
+        onError: (err) => console.error(`Error: ${err.position}:${err.name}:${err.description}`)});
+    return new Promise(
+        function (resolve, reject) {
+            csv.parseStream(response.readableStreamBody)
+                .on('data', row => console.log(row))
+                .on('error', error => {
+                    console.error(error);
+                    reject(error);
+                })
+                .on('end', rowCount => resolve());
+    });
 }
 ```
 
@@ -317,15 +480,30 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 Můžete nastavit rozsah výsledků na podmnožinu sloupců. Tímto způsobem načtete pouze sloupce potřebné k provedení daného výpočtu. To zlepšuje výkon aplikace a snižuje náklady, protože v síti je přenášeno méně dat. 
 
-Tento kód načte pouze `PublicationYear` sloupec pro všechny knihy v sadě dat. Používá také informace z řádku záhlaví ve zdrojovém souboru pro odkaz na sloupce v dotazu.
+Tento kód načte pouze `BibNum` sloupec pro všechny knihy v sadě dat. Používá také informace z řádku záhlaví ve zdrojovém souboru pro odkaz na sloupce v dotazu.
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$blob = "csv/csv-general/seattle-library-with-headers.csv"
+Get-QueryCsv $ctx $container $blob "SELECT BibNum FROM BlobStorage" $true
+
+```
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 ```cs
-static async Task QueryPublishDates(BlockBlobClient blob)
+static async Task QueryBibNum(BlockBlobClient blob)
 {
-    string query = @"SELECT PublicationYear FROM BlobStorage";
+    string query = @"SELECT BibNum FROM BlobStorage";
     await DumpQueryCsv(blob, query, true);
 }
 ```
@@ -333,10 +511,28 @@ static async Task QueryPublishDates(BlockBlobClient blob)
 ### <a name="java"></a>[Java](#tab/java)
 
 ```java
-static void QueryPublishDates(BlobClient blobClient)
+static void QueryBibNum(BlobClient blobClient)
 {
-    String expression = "SELECT PublicationYear FROM BlobStorage";
+    String expression = "SELECT BibNum FROM BlobStorage";
     DumpQueryCsv(blobClient, expression, true);
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_bibnum(blob: BlobClient):
+    query = "SELECT BibNum FROM BlobStorage"
+    dump_query_csv(blob, query, True)
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+async function queryBibNum(blob)
+{
+    const query = "SELECT BibNum FROM BlobStorage";
+    await dumpQueryCsv(blob, query, true);
 }
 ```
 
@@ -344,12 +540,35 @@ static void QueryPublishDates(BlobClient blobClient)
 
 Následující kód kombinuje filtrování řádků a sloupcové projekce do stejného dotazu. 
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Get-QueryCsv $ctx $container $blob $query $true
+
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType 
+            FROM BlobStorage 
+            WHERE ItemType IN 
+                ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')"
+
+```
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 ```cs
-static async Task QueryMysteryBooks(BlockBlobClient blob)
+static async Task QueryDvds(BlockBlobClient blob)
 {
-    string query = @"SELECT BibNum, Title, Author, ISBN, Publisher FROM BlobStorage WHERE Subjects LIKE '%Mystery%'";
+    string query = @"SELECT BibNum, Title, Author, ISBN, Publisher, ItemType 
+        FROM BlobStorage 
+        WHERE ItemType IN 
+            ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
     await DumpQueryCsv(blob, query, true);
 }
 ```
@@ -357,10 +576,37 @@ static async Task QueryMysteryBooks(BlockBlobClient blob)
 ### <a name="java"></a>[Java](#tab/java)
 
 ```java
-static void QueryMysteryBooks(BlobClient blobClient)
+static void QueryDvds(BlobClient blobClient)
 {
-    String expression = "SELECT BibNum, Title, Author, ISBN, Publisher FROM BlobStorage WHERE Subjects LIKE '%Mystery%'";
+    String expression = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType " +
+                        "FROM BlobStorage " +
+                        "WHERE ItemType IN " +
+                        "   ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
     DumpQueryCsv(blobClient, expression, true);
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_dvds(blob: BlobClient):
+    query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType "\
+        "FROM BlobStorage "\
+        "WHERE ItemType IN "\
+        "   ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')"
+    dump_query_csv(blob, query, True)
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+async function queryDvds(blob)
+{
+    const query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType " +
+                  "FROM BlobStorage " +
+                  "WHERE ItemType IN " + 
+                  " ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
+    await dumpQueryCsv(blob, query, true);
 }
 ```
 
@@ -368,6 +614,5 @@ static void QueryMysteryBooks(BlobClient blobClient)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Registrační formulář pro dotaz na zrychlení](https://aka.ms/adls/qa-preview-signup)    
-- [Akcelerace dotazů Azure Data Lake Storage (Preview)](data-lake-storage-query-acceleration.md)
-- [Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)](query-acceleration-sql-reference.md)
+- [Akcelerace dotazů Azure Data Lake Storage](data-lake-storage-query-acceleration.md)
+- [Referenční dokumentace jazyka SQL pro zrychlení dotazů](query-acceleration-sql-reference.md)

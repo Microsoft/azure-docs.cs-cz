@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65950893"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660571"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na identitu pro vaše řešení hybridní identity
 Prvním krokem při návrhu řešení hybridní identity je určení požadavků pro obchodní organizaci, které budou využívat toto řešení.  Hybridní identita se spouští jako podpůrná role (podporuje všechna ostatní cloudová řešení tím, že poskytuje ověřování) a přejde k poskytování nových a zajímavých možností, které pro uživatele odemknou nové úlohy.  Tyto úlohy nebo služby, které chcete pro uživatele přijmout, budou určovat požadavky na návrh hybridní identity.  Tyto služby a úlohy potřebují využívat hybridní identitu místně i v cloudu.  
@@ -72,10 +72,10 @@ Dále je nutné vyhodnotit požadavky na integraci identity. Toto vyhodnocení j
   * Vaše společnost má místní aplikace (buď integrované, nebo třetí strany), které využívají funkce SAML nebo podobné federace.
   * MFA prostřednictvím čipových karet. RSA SecurID atd.
   * Pravidla přístupu klienta, která řeší otázky níže:
-    1. Můžu všem externím přístupům k Office 365 blokovat přístup na základě IP adresy klienta?
-    2. Můžu zablokovat veškerý externí přístup k Office 365 s výjimkou Exchange ActiveSync?
-    3. Můžu zablokovat veškerý externí přístup k Office 365 s výjimkou aplikací založených na prohlížeči (OWA, SPO).
-    4. Můžu zablokovat veškerý externí přístup k Office 365 pro členy určených skupin AD.
+    1. Je možné blokovat veškerý externí přístup k Microsoft 365 na základě IP adresy klienta?
+    2. Můžu blokovat veškerý externí přístup k Microsoft 365, s výjimkou Exchange ActiveSync?
+    3. Můžu zablokovat veškerý externí přístup k Microsoft 365, s výjimkou aplikací založených na prohlížeči (OWA, SPO).
+    4. Můžu zablokovat všem externím přístupům Microsoft 365 pro členy určených skupin AD.
 * Otázky zabezpečení/auditování
 * Již existující investice do federovaného ověřování
 * Jaký název bude naše organizace používat pro naši doménu v cloudu?
@@ -110,6 +110,6 @@ Je také nutné vyhodnotit požadavky uživatele. Toto vyhodnocení je důležit
 ## <a name="next-steps"></a>Další kroky
 [Určení požadavků na synchronizaci adresářů](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 [Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

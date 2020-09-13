@@ -2,13 +2,13 @@
 title: Koncept – integrace nasazení řešení Azure VMware v architektuře hub a paprsků
 description: Přečtěte si o doporučeních pro integraci nasazení řešení Azure VMware do existující nebo nové architektury hub a paprsků v Azure.
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/09/2020
+ms.openlocfilehash: 1862b98b40788b6b71d05eb4be43bdacd39e927f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684484"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659215"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
@@ -24,9 +24,9 @@ Scénář centra a paprsků předpokládá hybridní cloudové prostředí s úl
 
 *Centrum* je Virtual Network Azure, která funguje jako centrální bod připojení k místnímu a privátnímu cloudu řešení Azure VMware. *Paprsky* jsou virtuální sítě, které jsou v partnerském vztahu s rozbočovačem a umožňují komunikaci mezi virtuálními sítěmi.
 
-Přenosy dat mezi místním datacentrem, privátním cloudem řešení Azure VMware a centrem procházejí ExpressRoute připojeními. Paprskové virtuální sítě obvykle obsahují úlohy založené na IaaS, ale můžou mít PaaS služby, jako je [App Service Environment](../app-service/environment/intro.md), které mají přímou integraci s Virtual Network nebo jiné PaaS služby s povoleným [privátním propojením Azure](../private-link/index.yml) . 
+Přenosy dat mezi místním datacentrem, privátním cloudem řešení Azure VMware a centrem procházejí prostřednictvím připojení Azure ExpressRoute. Paprskové virtuální sítě obvykle obsahují úlohy založené na IaaS, ale můžou mít PaaS služby, jako je [App Service Environment](../app-service/environment/intro.md), které mají přímou integraci s Virtual Network nebo jiné PaaS služby s povoleným [privátním propojením Azure](../private-link/index.yml) .
 
-Diagram znázorňuje příklad nasazení centra a paprsků v Azure připojeného k místnímu a řešení Azure VMware prostřednictvím ExpressRoute.
+Diagram znázorňuje příklad nasazení centra a paprsků v Azure připojeného k místnímu a řešení Azure VMware prostřednictvím ExpressRoute Global Reach.
 
 :::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false":::
 
@@ -36,10 +36,14 @@ Architektura má následující hlavní součásti:
 
 -   **Privátní cloud řešení Azure VMware:** Řešení Azure VMware SDDC vytvořené jedním nebo několika clustery vSphere, přičemž každý z nich má maximálně 16 uzlů.
 
--   **ExpressRoute brána:** Umožňuje komunikaci mezi privátním cloudem řešení Azure VMware, místní sítí, sdílenými službami ve virtuální síti centrální sítě a úlohami spuštěnými ve virtuálních sítích s paprsky.
+-   **ExpressRoute brána:** Umožňuje komunikaci mezi privátním cloudem řešení Azure VMware, sdílenými službami v centrální virtuální síti a úlohami spuštěnými ve virtuálních sítích s paprsky.
 
-    > [!NOTE]
-    > **Předpoklady S2S VPN:** Pro nasazení v produkčním prostředí Azure VMware není Azure S2S podporován z důvodu požadavků na síť pro HCX. Pro nasazení ověření koncepce nebo neprodukční nasazení, které nevyžaduje HCX, je ale možné ho použít.
+-   **ExpressRoute Global REACH:** Umožňuje připojení mezi místním prostředím a privátním cloudem řešení Azure VMware.
+
+
+  > [!NOTE]
+  > **Předpoklady S2S VPN:** Pro nasazení v produkčním prostředí Azure VMware se Azure S2S VPN nepodporuje kvůli požadavkům sítě pro VMware HCX. Dá se ale použít pro nasazení podle ověření koncepce.
+
 
 -   **Virtuální síť centra:** Funguje jako centrální bod připojení k vaší místní síti a privátnímu cloudu řešení Azure VMware.
 
@@ -49,7 +53,7 @@ Architektura má následující hlavní součásti:
 
     -   **PaaS paprsk:** PaaS uzel hostuje služby Azure PaaS pomocí privátního [koncového bodu s privátním koncovým bodem](../private-link/private-endpoint-overview.md) a [soukromým odkazem](../private-link/private-link-overview.md).
 
--   **Azure firewall:** Funguje jako centrální kus pro segmentování provozu mezi paprsky, místním prostředím a řešením Azure VMware.
+-   **Azure firewall:** Funguje jako centrální kus pro segmentování provozu mezi paprsky a řešením Azure VMware.
 
 -   **Application Gateway:** Zpřístupňuje a chrání webové aplikace, které běží na Azure IaaS/PaaS nebo virtuálních počítačích řešení Azure VMware. Integruje se s dalšími službami, jako je API Management.
 
@@ -57,7 +61,7 @@ Architektura má následující hlavní součásti:
 
 Připojení ExpressRoute umožňují tok dat do toku mezi místním prostředím, řešením Azure VMware a síťovými prostředky infrastruktury Azure. Řešení Azure VMware používá [Global REACH ExpressRoute](../expressroute/expressroute-global-reach.md) k implementaci tohoto připojení.
 
-K místnímu připojení můžou ExpressRoute Global Reach také použít, ale není to povinné.
+Vzhledem k tomu, že brána ExpressRoute neposkytuje tranzitivní směrování mezi připojenými okruhy, místní připojení musí ke komunikaci mezi místním prostředím vSphere a řešením Azure VMware použít taky ExpressRoute Global Reach. 
 
 * **Tok provozu řešení VMware z místního prostředí do Azure**
 
@@ -69,11 +73,11 @@ K místnímu připojení můžou ExpressRoute Global Reach také použít, ale n
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Tok provozu řešení Azure VMware do centra přenosů dat virtuální sítě" border="false":::
 
 
-Další podrobnosti o sítích řešení Azure VMware a konceptech vzájemné propojení najdete v [dokumentaci k produktu řešení Azure VMware](./concepts-networking.md).
+Další podrobnosti o sítích řešení Azure VMware a konceptech připojení najdete v dokumentaci k [produktu řešení Azure VMware](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Segmentace provozu
 
-[Azure firewall](../firewall/index.yml) je střední část topologie hub a paprsků, která je nasazená ve virtuální síti rozbočovače. Pomocí Azure Firewall nebo jiného síťového virtuálního zařízení s podporou Azure navažte pravidla provozu a segmentujte komunikaci mezi různými paprsky, místními počítači a úlohami řešení Azure VMware.
+[Azure firewall](../firewall/index.yml) je střední část topologie hub a paprsků, která je nasazená ve virtuální síti rozbočovače. Pomocí Azure Firewall nebo jiného síťového virtuálního zařízení s podporou Azure navažte pravidla provozu a segmentujte komunikaci mezi různými paprsky a úlohami řešení Azure VMware.
 
 Vytvořte směrovací tabulky a nasměrujte provoz na Azure Firewall.  U virtuálních sítí paprsků vytvořte trasu, která nastaví výchozí trasu k internímu rozhraní Azure Firewall. Tento způsob, kdy zatížení v Virtual Network potřebuje přístup k adresnímu prostoru řešení Azure VMware, ho může Brána firewall vyhodnotit a použít odpovídající pravidlo provozu pro povolení nebo zamítnutí.  
 
@@ -83,16 +87,20 @@ Vytvořte směrovací tabulky a nasměrujte provoz na Azure Firewall.  U virtuá
 > [!IMPORTANT]
 > Trasa s předponou adresy 0.0.0.0/0 není v nastavení **GatewaySubnet** podporována.
 
-Nastavte trasy pro konkrétní sítě v odpovídající směrovací tabulce. Například trasy, které mají přístup k Azure VMware pro správu řešení a úlohám z místních a naopak, směrují veškerý provoz z místního prostředí do privátního cloudu řešení Azure VMware prostřednictvím Azure Firewall.
+Nastavte trasy pro konkrétní sítě v odpovídající směrovací tabulce. Například trasy pro přístup ke správě řešení Azure VMware a úlohám předpony IP adres z úloh paprsků a naopak.
 
 :::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Nastavte trasy pro konkrétní sítě v odpovídající tabulce směrování.":::
 
-Druhá úroveň segmentace přenosu dat pomocí skupin zabezpečení sítě v Paprskech a v centru pro vytváření podrobnějších přenosových zásad. 
+Druhá úroveň segmentace přenosu dat pomocí skupin zabezpečení sítě v Paprskech a v centru pro vytváření podrobnějších přenosových zásad.
 
+> [!NOTE]
+> **Řešení provozu z místního prostředí do Azure VMware:** Provoz mezi místními úlohami, ať už vSphere nebo jinými, je povolený Global Reach, ale přenos neprojde Azure Firewall na rozbočovači. V tomto scénáři musíte implementovat mechanismy segmentace provozu buď místně, nebo v řešení Azure VMware.
 
 ### <a name="application-gateway"></a>Application Gateway
 
 Azure Application Gateway V1 a v2 byly testovány pomocí webových aplikací, které běží na virtuálních počítačích řešení VMware Azure jako fond back-end. Application Gateway je aktuálně jedinou podporovanou metodou pro vystavení webových aplikací běžících na virtuálních počítačích řešení VMware Azure na internetu. Můžou aplikace bezpečně zveřejnit i pro interní uživatele.
+
+Podrobnosti a požadavky najdete v článku týkajícím se řešení Azure VMware pro [Application Gateway](./protect-avs-web-apps-with-app-gateway.md) .
 
 :::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Druhá úroveň segmentace provozu pomocí skupin zabezpečení sítě" border="false":::
 
@@ -137,8 +145,6 @@ Místní a servery řešení Azure VMware je možné nakonfigurovat s použitím
 Pro účely identity je nejlepší přístup k nasazení aspoň jednoho řadiče domény služby Active Directory v centru pomocí podsítě sdílené služby, která je v ideálním případě dvě v rámci distribuované zóny nebo skupiny dostupnosti virtuálního počítače. Další informace najdete v tématu [cetrum architektury Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain) pro rozšíření místní domény AD do Azure.
 
 Navíc můžete nasadit jiný řadič domény na straně řešení Azure VMware, aby fungoval jako identita a zdroj DNS v prostředí vSphere.
-
-V případě vCenter a jednotného přihlašování nastavte zdroj identity v Azure Portal pro **správu \> \> zdrojů identity identity**.
 
 Jako osvědčený postup doporučujeme integrovat [doménu AD s Azure Active Directory](/azure/architecture/reference-architectures/identity/azure-ad).
 

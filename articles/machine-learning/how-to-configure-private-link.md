@@ -10,17 +10,17 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/28/2020
-ms.openlocfilehash: 9ce139131e2c6cbfd73f9160b986d9886ae4844b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/03/2020
+ms.openlocfilehash: b9b256a3d3c1636cac55bcb1790182240d2199c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181948"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661873"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning (Preview)
 
-V tomto dokumentu se dozvíte, jak pomocí privátního propojení Azure s vaším pracovním prostorem Azure Machine Learning. 
+V tomto dokumentu se dozvíte, jak pomocí privátního propojení Azure s vaším pracovním prostorem Azure Machine Learning. Informace o nastavení virtuální sítě pro Azure Machine Learning najdete v tématu [Přehled izolace a ochrany osobních údajů ve virtuální síti](how-to-network-security-overview.md) .
 
 > [!IMPORTANT]
 > Používání privátního odkazu Azure s Azure Machine Learning pracovním prostorem je v současnosti ve verzi Public Preview. Tato funkce je k dispozici pouze v oblastech **USA – východ**, **USA (střed) – jih** a **USA – západ 2** . Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -28,7 +28,7 @@ V tomto dokumentu se dozvíte, jak pomocí privátního propojení Azure s vaš�
 Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí privátního koncového bodu. Soukromý koncový bod je sada privátních IP adres v rámci vaší virtuální sítě. Přístup k pracovnímu prostoru pak můžete omezit tak, aby se nacházet jenom přes privátní IP adresy. Soukromý odkaz pomáhá snižovat riziko exfiltrace dat. Další informace o privátních koncových bodech najdete v článku věnovaném [privátním odkazům Azure](/azure/private-link/private-link-overview) .
 
 > [!IMPORTANT]
-> Privátní propojení Azure neovlivňuje plochu ovládacího prvku Azure (operace správy), jako je například odstranění pracovního prostoru nebo Správa výpočetních prostředků. Například vytvoření, aktualizace nebo odstranění cíle služby Compute. Tyto operace se provádějí na veřejném Internetu jako normální.
+> Privátní propojení Azure neovlivňuje plochu ovládacího prvku Azure (operace správy), jako je například odstranění pracovního prostoru nebo Správa výpočetních prostředků. Například vytvoření, aktualizace nebo odstranění cíle služby Compute. Tyto operace se provádějí na veřejném Internetu jako normální. Operace roviny dat, jako je například použití Azure Machine Learning studia, rozhraní API (včetně publikovaných kanálů) nebo sady SDK, používají privátní koncový bod.
 >
 > Pokud používáte Mozilla Firefox, může dojít k potížím při pokusu o přístup k privátnímu koncovému bodu pro váš pracovní prostor. Tento problém může souviset s DNS přes HTTPS v Mozilla. Jako alternativní řešení doporučujeme používat Microsoft Edge Google Chrome.
 
@@ -54,87 +54,6 @@ Vzhledem k tomu, že komunikace s pracovním prostorem je povolená jenom z virt
 Informace o službě Azure Virtual Machines najdete v [dokumentaci k Virtual Machines](/azure/virtual-machines/).
 
 
-## <a name="using-azure-storage"></a>S využitím Azure Storage
-
-Pokud chcete zabezpečit účet Azure Storage používaný vaším pracovním prostorem, umístěte ho do virtuální sítě.
-
-Informace o tom, jak vložit účet úložiště ve virtuální síti, najdete v tématu [použití účtu úložiště pro váš pracovní prostor](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace).
-
-> [!WARNING]
-> Azure Machine Learning nepodporuje použití účtu Azure Storage s povoleným privátním odkazem.
-
-## <a name="using-azure-key-vault"></a>Použití Azure Key Vault
-
-Pokud chcete zabezpečit Azure Key Vault používané vaším pracovním prostorem, můžete ho buď umístit do virtuální sítě, nebo pro něj Povolit privátní propojení.
-
-Informace o vložení trezoru klíčů ve virtuální síti najdete v tématu [použití instance trezoru klíčů v pracovním prostoru](how-to-enable-virtual-network.md#key-vault-instance).
-
-Informace o povolení privátního odkazu pro Trezor klíčů najdete v tématu věnovaném [integraci Key Vault s privátním odkazem Azure](/azure/key-vault/private-link-service).
-
-## <a name="using-azure-kubernetes-services"></a>Používání služeb Azure Kubernetes Services
-
-Pokud chcete zabezpečit službu Azure Kubernetes, kterou používá váš pracovní prostor, umístěte ji do virtuální sítě. Další informace najdete v tématu [použití služeb Azure Kubernetes Services s vaším pracovním prostorem](how-to-enable-virtual-network.md#aksvnet).
-
-Azure Machine Learning teď podporuje používání služby Azure Kubernetes s povoleným privátním odkazem.
-Pokud chcete vytvořit privátní cluster AKS, postupujte podle dokumentů [zde](https://docs.microsoft.com/azure/aks/private-clusters) .
-
-## <a name="azure-container-registry"></a>Azure Container Registry
-
-Informace o zabezpečení Azure Container Registry v rámci virtuální sítě najdete v tématu [použití Azure Container Registry](how-to-enable-virtual-network.md#azure-container-registry).
-
-> [!IMPORTANT]
-> Pokud pro váš pracovní prostor Azure Machine Learning používáte privátní odkaz a Azure Container Registry pro svůj pracovní prostor ve virtuální síti, musíte použít také následující šablonu Azure Resource Manager. Tato šablona umožňuje vašemu pracovnímu prostoru komunikovat s ACR prostřednictvím privátního odkazu.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-      "keyVaultArmId": {
-      "type": "string"
-      },
-      "workspaceName": {
-      "type": "string"
-      },
-      "containerRegistryArmId": {
-      "type": "string"
-      },
-      "applicationInsightsArmId": {
-      "type": "string"
-      },
-      "storageAccountArmId": {
-      "type": "string"
-      },
-      "location": {
-      "type": "string"
-      }
-  },
-  "resources": [
-      {
-      "type": "Microsoft.MachineLearningServices/workspaces",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('workspaceName')]",
-      "location": "[parameters('location')]",
-      "identity": {
-          "type": "SystemAssigned"
-      },
-      "sku": {
-          "tier": "enterprise",
-          "name": "enterprise"
-      },
-      "properties": {
-          "sharedPrivateLinkResources":
-  [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
-          "keyVault": "[parameters('keyVaultArmId')]",
-          "containerRegistry": "[parameters('containerRegistryArmId')]",
-          "applicationInsights": "[parameters('applicationInsightsArmId')]",
-          "storageAccount": "[parameters('storageAccountArmId')]"
-      }
-      }
-  ]
-}
-```
-
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zabezpečení Azure Machine Learning pracovního prostoru najdete v článku o [podnikovém zabezpečení](concept-enterprise-security.md) .
+Další informace o zabezpečení Azure Machine Learning pracovního prostoru najdete v článku věnovaném [izolaci virtuální sítě a ochraně osobních údajů](how-to-network-security-overview.md) .

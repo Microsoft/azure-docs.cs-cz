@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924482"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662271"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Podobnost a bodování v Azure Kognitivní hledání
 
@@ -40,7 +40,7 @@ Profil vyhodnocování je součástí definice indexu, která se skládá z vá�
 
 ## <a name="scoring-statistics-and-sticky-sessions"></a>Statistiky bodování a rychlé relace
 
-Z důvodu škálovatelnosti Azure Kognitivní hledání distribuuje každý index vodorovně prostřednictvím procesu horizontálního dělení, což znamená, že části indexu jsou fyzicky oddělené.
+Z důvodu škálovatelnosti Azure Kognitivní hledání distribuuje každý index vodorovně prostřednictvím procesu horizontálního dělení, což znamená, že [části indexu jsou fyzicky oddělené](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards).
 
 Ve výchozím nastavení se skóre dokumentu počítá na základě statistických vlastností dat *v rámci horizontálních oddílů*. Tento přístup obecně není problémem pro velké corpusy dat a poskytuje lepší výkon než výpočet skóre na základě informací v rámci všech horizontálních oddílů. To, že použití této optimalizace výkonu může způsobit, že se dva velmi podobné dokumenty (nebo dokonce identické dokumenty) ukončí s různou závažností, pokud končí v různých horizontálních oddílů.
 

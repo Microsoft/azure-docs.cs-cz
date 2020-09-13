@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319622"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661597"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Přeučování modelů s využitím návrháře služby Azure Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Tento článek také předpokládá, že máte základní znalosti o sestavován
 
 ### <a name="sample-pipeline"></a>Vzorový kanál
 
-Kanál použitý v tomto článku je upravená verze [Sample 3: předpověď příjmů](samples-designer.md#classification). Kanál používá místo ukázkové datové sady modul [Import dat](algorithm-module-reference/import-data.md) , který vám ukáže, jak naučit modely pomocí vlastních dat.
+Kanál použitý v tomto článku je upravená verze [předpovědi pro příjem](samples-designer.md#classification) kanálu na domovské stránce návrháře. Kanál používá místo ukázkové datové sady modul [Import dat](algorithm-module-reference/import-data.md) , který vám ukáže, jak naučit modely pomocí vlastních dat.
 
 ![Snímek obrazovky zobrazující upravený vzorový kanál s polem, které zvýrazní modul importu dat](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -83,7 +83,8 @@ Návrhář uloží výstup kanálu včetně školených modelů do výchozího �
 1. Model můžete najít v **dalších výstupech** společně s protokoly spuštění.
 1. Případně vyberte ikonu **Zobrazit výstup** . Odtud můžete postupovat podle pokynů v dialogovém okně a přejít přímo do úložiště dat. 
 
-![Snímek obrazovky, který ukazuje stažení naučeného modelu](./media/how-to-retrain-designer/trained-model-view-output.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky, který ukazuje stažení naučeného modelu](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>Publikování školicího kanálu
 
@@ -101,9 +102,9 @@ Publikování kanálu do koncového bodu kanálu, aby bylo možné kanály snadn
 
 Teď, když máte publikovaný školicí kanál, můžete ho použít k revýuce modelu na nová data. Spuštění můžete odeslat z koncového bodu kanálu z pracovního prostoru studia nebo programově.
 
-### <a name="submit-runs-by-using-the-designer"></a>Odeslat běh pomocí návrháře
+### <a name="submit-runs-by-using-the-studio-portal"></a>Odeslat běh pomocí portálu studia
 
-Pomocí následujícího postupu odešlete parametrizované spuštění koncového bodu kanálu z návrháře:
+Následující postup použijte k odeslání parametrizovaného koncového bodu kanálu na portálu Studio:
 
 1. V pracovním prostoru studia přejdete na stránku **koncové body** .
 1. Vyberte kartu **koncové body kanálu** . Pak vyberte svůj koncový bod kanálu.

@@ -1,10 +1,10 @@
 ---
 title: Připojení zdrojů dat ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se, jak propojit zdroje dat, jako je Microsoft Threat Protection, Microsoft 365 a Office 365, Azure AD, ATP a Cloud App Security, do Azure Sentinel.
+description: Naučte se, jak propojit zdroje dat, jako je Microsoft 365 Defender (dříve Microsoft Threat Protection), Microsoft 365 a Office 365, Azure AD, ATP a Cloud App Security do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,32 +13,31 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555517"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659635"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
-Jakmile povolíte Azure Sentinel, je nejdřív potřeba udělat připojení ke zdrojům dat. Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, které jsou dostupné okamžitě a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky, Microsoft 365 zdrojů (včetně Office 365), Azure AD, Azure ATP, Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pomocí protokolu CEF (Common Event Format), syslog nebo REST-API můžete také připojit zdroje dat k Azure Sentinel.
+Jakmile povolíte Azure Sentinel, je nejdřív potřeba udělat připojení ke zdrojům dat. Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, které jsou dostupné mimo pole, a poskytuje integraci v reálném čase, včetně Microsoft 365 Defender (dříve Microsoft Threat Protection), Microsoft 365ch zdrojů (včetně Office 365), Azure AD, Microsoft Defenderu pro identitu (dřív Azure ATP), Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pomocí protokolu CEF (Common Event Format), syslog nebo REST-API můžete také připojit zdroje dat k Azure Sentinel.
 
 1. V nabídce vyberte **datové konektory**. Tato stránka vám umožní zobrazit úplný seznam konektorů, které poskytuje Azure Sentinel, a jejich stav. Vyberte konektor, který chcete připojit, a vyberte **stránku otevřít konektor**. 
 
-   ![Sběrače dat](./media/collect-data/collect-data-page.png)
+   ![Galerie datových konektorů](./media/collect-data/collect-data-page.png)
 
 1. Na stránce konkrétní konektor se ujistěte, že jste splnili všechny předpoklady, a postupujte podle pokynů pro připojení dat ke službě Azure Sentinel. Může chvíli trvat, než se protokoly spustí synchronizace s Sentinel Azure. Po připojení se zobrazí souhrn dat v grafu **přijatá data** a stav připojení datových typů.
 
-   ![Kolektory připojení](./media/collect-data/opened-connector-page.png)
+   ![Konfigurace datových konektorů](./media/collect-data/opened-connector-page.png)
   
 1. Kliknutím na kartu **Další kroky** zobrazíte seznam předem připraveného obsahu Azure Sentinel pro konkrétní datový typ.
 
-   ![Sběrače dat](./media/collect-data/data-insights.png)
+   ![Další kroky pro konektory](./media/collect-data/data-insights.png)
  
-
 ## <a name="data-connection-methods"></a>Metody datového připojení
 
 Služba Azure Sentinel podporuje následující metody datového připojení:
@@ -48,13 +47,13 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Aktivita Azure](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) – protokoly auditu a protokoly přihlášení
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Rozšířená ochrana před internetovými útoky Azure](connect-azure-atp.md)
+    - [Microsoft Defender pro identitu](connect-azure-atp.md) (dříve Rozšířená ochrana před internetovými útoky Azure)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
+    - [Azure Defender](connect-azure-security-center.md) (dřív Azure Security Center)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Server DNS](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Ochrana ATP v programu Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Defender pro koncový bod](connect-microsoft-defender-advanced-threat-protection.md) (dříve Rozšířená ochrana před internetovými útoky v programu Microsoft Defender)
     - [Firewall webových aplikací Microsoft](connect-microsoft-waf.md)
     - [Brána Windows Firewall](connect-windows-firewall.md)
     - [Události zabezpečení systému Windows](connect-windows-security-events.md)
@@ -96,7 +95,7 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - Řešení ochrany před únikem informací
     - [Poskytovatelé analýzy hrozeb](connect-threat-intelligence.md)
     - [Počítače DNS](connect-dns.md) – agent nainstalovaný přímo na počítači DNS
-    - Servery Linux
+    - Servery s Linuxem
     - Další cloudy
     
 ## <a name="agent-connection-options"></a>Možnosti připojení agenta<a name="agent-options"></a>
@@ -135,8 +134,8 @@ Případně můžete agenta nasadit ručně na existující virtuální počíta
 | WireData | [Připojení dat o kabelech](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Připojit bránu Windows Firewall](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Připojení Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [Připojení Azure ATP](connect-azure-atp.md) | &#10003; | |
-| SecurityAlert ASC  | [Připojení služby Azure Security Center](connect-azure-security-center.md)  | &#10003; | |
+| AATP SecurityAlert  | [Připojení programu Microsoft Defender k identitě](connect-azure-atp.md) (dříve atp. Azure) | &#10003; | |
+| SecurityAlert ASC  | [Připojit Azure Defender](connect-azure-security-center.md) (dřív Azure Security Center)  | &#10003; | |
 | MCAS SecurityAlert  | [Připojit Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (událost) | [Připojit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Připojit události systému Windows](../azure-monitor/platform/data-sources-windows-events.md) <br> [Získání analyzátoru Sysmon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Kolekce Sysmon není ve výchozím nastavení ve virtuálních počítačích nainstalovaná. Další informace o tom, jak nainstalovat agenta Sysmon, najdete v tématu [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |

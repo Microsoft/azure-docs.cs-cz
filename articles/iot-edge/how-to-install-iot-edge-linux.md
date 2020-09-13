@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 09/04/2020
 ms.author: kgremban
-ms.openlocfilehash: 4078d7e6c20571db2387cfd138ecb325fc3469e7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 21fde76dc5791030a7afa280e00642119cbe464c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022084"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660044"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian
 
@@ -25,7 +25,7 @@ V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge
 > [!NOTE]
 > Balíčky v úložištích softwaru Linux podléhají licenčním podmínkám, které jsou umístěny v každém balíčku (/usr/share/doc/*název balíčku*). Přečtěte si licenčních podmínek před použitím balíčku. Vaše instalace a používání balíčku znamená přijetí těchto podmínek. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
 
-## <a name="install-iot-edge-and-container-runtimes"></a>Instalace IoT Edge a modulu runtime kontejnerů
+## <a name="install-container-runtime-and-iot-edge"></a>Instalace modulu runtime kontejneru a IoT Edge
 
 Pomocí následujících částí můžete nainstalovat nejnovější verzi Azure IoT Edge runtime do svého zařízení.
 
@@ -272,7 +272,7 @@ Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Po in
 
 U zařízení s omezeným prostředkem se důrazně doporučuje nastavit proměnnou prostředí *OptimizeForPerformance* na *hodnotu false* podle pokynů v [Průvodci odstraňováním potíží](troubleshoot.md).
 
-Pokud vaše síť obsahuje proxy server, postupujte podle kroků v části [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md).
+Pokud se vaše zařízení nemůže připojit k IoT Hub a vaše síť má proxy server, postupujte podle pokynů v části [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md).
 
 ### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Ověření kompatibility se systémem Linux v jádře Moby
 
@@ -290,13 +290,15 @@ Tento příkaz poskytuje podrobný výstup, který obsahuje stav funkcí jádra 
 
 Postup v této části použijte, pokud chcete nainstalovat určitou verzi Azure IoT Edge runtime, která není dostupná prostřednictvím `apt-get install` . Seznam balíčků Microsoft obsahuje jenom omezené sady posledních verzí a jejich dílčích verzí, takže tento postup je pro kohokoli, kdo chce nainstalovat starší verzi nebo Release Candidate verzi.
 
-Pomocí příkazů oblé můžete cílit na soubory součásti přímo z úložiště GitHub IoT Edge. K instalaci libiothsm a procesu démona zabezpečení IoT Edge použijte následující postup. Nainstalujte modul Moby a rozhraní příkazového řádku pomocí kroků v části [Instalace modulu runtime kontejneru](#install-a-container-runtime) .
+Pomocí příkazů oblé můžete cílit na soubory součásti přímo z úložiště GitHub IoT Edge. K instalaci libiothsm a procesu démona zabezpečení IoT Edge použijte následující postup.
 
-1. Přejděte do vydaných verzí [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)a vyhledejte verzi pro vydání, na kterou chcete cílit.
+1. Připravte zařízení s nainstalovaným kontejnerovým modulem. Pokud nemáte modul kontejnerů, postupujte podle pokynů k registraci úložiště Microsoft a instalaci Moby do části [Instalace modulu runtime kontejneru a IoT Edge](#install-container-runtime-and-iot-edge) v tomto článku.
 
-2. Rozbalte část **assets (prostředky** ) pro danou verzi.
+2. Přejděte do vydaných verzí [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)a vyhledejte verzi pro vydání, na kterou chcete cílit.
 
-3. Každé vydání by mělo mít nové soubory pro démona zabezpečení IoT Edge a hsmlib. Tyto součásti můžete aktualizovat pomocí následujících příkazů.
+3. Rozbalte část **assets (prostředky** ) pro danou verzi.
+
+4. Každé vydání by mělo mít nové soubory pro démona zabezpečení IoT Edge a hsmlib. Tyto součásti můžete aktualizovat pomocí následujících příkazů.
 
    1. Vyhledejte soubor **libiothsm-STD** , který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
 

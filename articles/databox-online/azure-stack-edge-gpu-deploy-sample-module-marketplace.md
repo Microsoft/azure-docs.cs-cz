@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: ac9ff084476f37348b72bdb42b9b74660132b762
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7d29408c126844615666a4ab217027b6ae1d037d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254623"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659947"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>Nasazení modulu IoT s povoleným GPU z Azure Marketplace na zařízení s grafickým procesorem Azure Stack Edge
 
@@ -33,9 +33,7 @@ Vzorový modul GPU v tomto článku zahrnuje vzorový kód PyTorch a TensorFlow 
 Než začnete, ujistěte se, že máte následující:
 
 - Máte přístup k zařízení s povoleným grafickým procesorem s jedním uzlem Azure Stack Edge. Toto zařízení je aktivované pomocí prostředku v Azure. 
-- Na tomto zařízení jste nakonfigurovali výpočetní výkon. 
-    - Postupujte podle kroků v [kurzu: Konfigurace výpočtů na zařízení Azure Stack Edge](azure-stack-edge-gpu-deploy-configure-compute.md).
-    - Nezapomeňte 
+- Na tomto zařízení jste nakonfigurovali výpočetní výkon. Postupujte podle kroků v [kurzu: Konfigurace výpočtů na zařízení Azure Stack Edge](azure-stack-edge-gpu-deploy-configure-compute.md).
 - Následující prostředky pro vývoj na klientovi Windows:
     - [Visual Studio Code](https://code.visualstudio.com/)  
     - [Azure IoT Edge rozšíření pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)   

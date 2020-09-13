@@ -8,971 +8,987 @@ ms.author: luquinta
 ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 07/08/2020
-ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: reference
+ms.date: 09/03/2020
+ms.openlocfilehash: 4ae96976f81aab9a0949594551c82d3a3fec4f0a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012208"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662087"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning v nich uspořádaná prostředí
 
 V tomto článku jsou uvedena seznamovaná prostředí v Azure Machine Learning a balíčky a kanály, které jsou v nich předem nainstalované. Dodaná prostředí jsou poskytována Azure Machine Learning a jsou ve výchozím nastavení k dispozici ve vašem pracovním prostoru. Jsou zajištěny pomocí imagí Docker uložených v mezipaměti, což snižuje náklady na přípravu za běhu a umožňují rychlejší nasazení. Pomocí těchto prostředí můžete rychle začít s různými architekturami strojového učení.
 
 > [!NOTE]
-> Tento seznam se aktualizuje od června 2020. Seznam nejvyšších aktualizovaných seznamů získáte pomocí sady Python SDK. Další informace najdete v článku o [prostředích](./how-to-use-environments.md#use-a-curated-environment).
-
-## <a name="azure-automl"></a>AutoML Azure
-
-- [AutoML](#azureml-automl)
-- [PROCESOR AzureML AutoML](#azureml-automl-gpu)
-- [AutoML DNN](#azureml-automl-dnn)
-- [DNN GPU AzureML AutoML](#azureml-automl-dnn-gpu)
-- [Grafický procesor Azure AutoML DNN Vision](#azureml-automl-dnn-vision-gpu)
-
-### <a name="azureml-automl"></a>AutoML
-
-kanály balíčků:
-- Anaconda
-- conda – zfalšovat
-- pytorch
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML-Pipeline-Core = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-Interpret = = 1.8.0
-  - AzureML-vysvětlit-model = = 1.8.0
-  - AzureML-automl-Core = = 1.8.0
-  - AzureML-automl-runtime = = 1.8.0
-  - AzureML-vlak-automl-Client = = 1.8.0
-  - AzureML-vlak-automl-runtime = = 1.8.0. post1
-  - odvození – schéma
-  - pyarrow = = 0.17.0
-  - py – cpuinfo = = 5.0.0
-- numpy>= 1.16.0, <= 1.16.2
-- PANDAS>= 0.21.0, <= 0.23.4
-- py – xgboost<= 0,90
-- fbprophet = = 0.5
-- setuptools – Git
-- psutil>5.0.0, <6.0.0
-
-### <a name="azureml-automl-gpu"></a>PROCESOR AzureML AutoML
-
-kanály balíčků:
-- Anaconda
-- conda – zfalšovat
-- pytorch
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML-Pipeline-Core = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-Interpret = = 1.8.0
-  - AzureML-vysvětlit-model = = 1.8.0
-  - AzureML-automl-Core = = 1.8.0
-  - AzureML-automl-runtime = = 1.8.0
-  - AzureML-vlak-automl-Client = = 1.8.0
-  - AzureML-vlak-automl-runtime = = 1.8.0. post1
-  - odvození – schéma
-  - pyarrow = = 0.17.0
-  - py – cpuinfo = = 5.0.0
-- numpy>= 1.16.0, <= 1.16.2
-- PANDAS>= 0.21.0, <= 0.23.4
-- fbprophet = = 0.5
-- setuptools – Git
-- psutil>5.0.0, <6.0.0
-
-### <a name="azureml-automl-dnn"></a>AutoML DNN
-
-kanály balíčků:
-- Anaconda
-- conda – zfalšovat
-- pytorch
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML-Pipeline-Core = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-Interpret = = 1.8.0
-  - AzureML-vysvětlit-model = = 1.8.0
-  - AzureML-automl-Core = = 1.8.0
-  - AzureML-automl-runtime = = 1.8.0
-  - AzureML-vlak-automl-Client = = 1.8.0
-  - AzureML-vlak-automl-runtime = = 1.8.0. post1
-  - odvození – schéma
-  - pytorch-transformes = = 1.0.0
-  - spacy = = 2.1.8
-  - https://aka.ms/automl-resources/packages/en_core_web_sm-2.1.0.tar.gz
-  - pyarrow = = 0.17.0
-  - py – cpuinfo = = 5.0.0
-- PANDAS>= 0.21.0, <= 0.23.4
-- numpy>= 1.16.0, <= 1.16.2
-- py – xgboost<= 0,90
-- fbprophet = = 0.5
-- setuptools – Git
-- pytorch = 1.4.0
-- cudatoolkit = 10.0.130
-- psutil>5.0.0, <6.0.0
-
-### <a name="azureml-automl-dnn-gpu"></a>DNN GPU AzureML AutoML
-
-kanály balíčků:
-- Anaconda
-- conda – zfalšovat
-- pytorch
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML-Pipeline-Core = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-Interpret = = 1.8.0
-  - AzureML-vysvětlit-model = = 1.8.0
-  - AzureML-automl-Core = = 1.8.0
-  - AzureML-automl-runtime = = 1.8.0
-  - AzureML-vlak-automl-Client = = 1.8.0
-  - AzureML-vlak-automl-runtime = = 1.8.0. post1
-  - odvození – schéma
-  - horovod = = 0.19.4
-  - pytorch-transformes = = 1.0.0
-  - spacy = = 2.1.8
-  - https://aka.ms/automl-resources/packages/en_core_web_sm-2.1.0.tar.gz
-  - pyarrow = = 0.17.0
-  - py – cpuinfo = = 5.0.0
-- PANDAS>= 0.21.0, <= 0.23.4
-- numpy>= 1.16.0, <= 1.16.2
-- fbprophet = = 0.5
-- setuptools – Git
-- pytorch = 1.4.0
-- cudatoolkit = 10.0.130
-- psutil>5.0.0, <6.0.0
-
-### <a name="azureml-automl-dnn-vision-gpu"></a>AutoML DNN Vision – GPU
-
-závislosti
-- Python = 3.7
-- PIP
-  - AzureML-automl-Core = = 1.8.0
-  - AzureML-Core = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-automl-Client = = 1.8.0
-  - AzureML-automl-runtime = = 1.8.0
-  - AzureML-Interpret = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-vysvětlit-model = = 1.8.0
-  - AzureML-vlak-automl-runtime = = 1.8.0. post1
-  - AzureML-vlak-automl = = 1.8.0
-  - AzureML-contrib-DataSet = = 1.8.0
-  - AzureML-Pipeline-Core = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - AzureML-Pipeline-kroky = = 1.8.0
-  - AzureML-Pipeline = = 1.8.0
-  - AzureML-vlak = = 1.8.0
-  - AzureML-SDK = = 1.8.0
-  - AzureML-contrib-automl-DNN-Vision = = 1.8.0
-
-## <a name="azure-ml-designer"></a>Návrhář Azure ML
-
-- [Návrhář AzureML](#azureml-designer)
-- [ŽIVOTOPIS návrháře AzureML](#azureml-designer-cv)
-- [Transformace ŽIVOTOPISu nástroje AzureML Designer](#azureml-designer-cv-transform)
-- [V/v návrháře nástroje AzureML](#azureml-designer-io)
-- [NLP návrháře nástroje AzureML](#azureml-designer-nlp)
-- [PyTorch návrháře nástroje AzureML](#azureml-designer-pytorch)
-- [Výukový program nástroje AzureML Designer PyTorch](#azureml-designer-pytorch-train)
-- [Návrhář AzureML R](#azureml-designer-r)
-- [Doporučení nástroje AzureML Designer](#azureml-designer-recommender)
-- [Skóre návrháře AzureML](#azureml-designer-score)
-- [Transformace návrháře AzureML](#azureml-designer-transform)
-
-### <a name="azureml-designer"></a>Návrhář AzureML
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.8
-- scikit-neočekávaně = 1.0.6
-- PIP
-  - AzureML-Designer-Classic-modules = = 0.0.124
-  - https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz#egg=en_core_web_sm
-  - spacy = = 2.1.7
-
-### <a name="azureml-designer-cv"></a>ŽIVOTOPIS návrháře AzureML
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.8
-- PIP
-  - AzureML-Designer-CV-modules = = 0.0.6
-
-### <a name="azureml-designer-cv-transform"></a>Transformace ŽIVOTOPISu nástroje AzureML Designer
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.8
-- PIP
-  - AzureML-Designer-CV-modules [pytorch] = = 0.0.6
-
-### <a name="azureml-designer-io"></a>V/v návrháře nástroje AzureML
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.8
-- PIP
-  - AzureML-dataprep>= 1,6
-  - AzureML-Designer-DataIO-modules = 0.0.30
-
-### <a name="azureml-designer-nlp"></a>NLP návrháře nástroje AzureML
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.8
-- PIP
-  - AzureML-Designer-Classic-modules = = 0.0.121
-  - https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz#egg=en_core_web_sm
-  - spacy = = 2.1.7
-
-### <a name="azureml-designer-pytorch"></a>PyTorch návrháře nástroje AzureML
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.8
-- PIP
-  - AzureML-Designer-pytorch-modules = 0.0.8
-
-### <a name="azureml-designer-pytorch-train"></a>Výukový program nástroje AzureML Designer PyTorch
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.8
-- PIP
-  - AzureML-Designer-pytorch-modules = 0.0.8
-
-### <a name="azureml-designer-r"></a>Návrhář AzureML R
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.8
-- r-stříška = 6.0
-- r-catools = 1.17.1
-- r-cluster = 2.1.0
-- r-dplyr = 0.8.5
-- r-e1071 = 1.7
-- r-forcats = 0.5.0
-- r-předpověď = 8.12
-- r-glmnet = 2.0
-- r-igraph = 1.2.4
-- r-Matrix = 1.2
-- r-mclust = 5.4.6
-- r-mgcv = 1.8
-- r-nlme = 3.1
-- r-sladký = 7.3
-- r-plyr = 1.8.6
-- r-randomforest = 4.6
-- r-reticulate = 1.12
-- r-ROCR = 1.0
-- r-rodbc = 1.3
-- r-rpart = 4.1
-- r-Stringer = 1.4.0
-- r-tidyverse = 1.2.1
-- r-timedate = 3043.102
-- r-tseries = 0.10
-- r = 3.5.1
-- PIP
-  - AzureML-Designer-Classic-modules = = 0.0.124
-
-### <a name="azureml-designer-recommender"></a>Doporučení nástroje AzureML Designer
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.8
-- PIP
-  - AzureML-Designer-modules = = 0.0.5
-
-### <a name="azureml-designer-score"></a>Skóre návrháře AzureML
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- conda
-- Python = 3.6.8
-- PIP
-  - AzureML-Designer-skore-modules = = 0.0.5
-
-### <a name="azureml-designer-transform"></a>Transformace návrháře AzureML
-
-kanály balíčků:
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.8
-- PIP
-  - AzureML-Designer-datatransformes-modules = = 0.0.49
-
-## <a name="azureml-hyperdrive-forecastdnn"></a>Hyperdrive ForecastDNN
-
-závislosti
-- Python = 3.7
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML-Pipeline-Core = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-automl-Core = = 1.8.0
-  - AzureML-automl-runtime = = 1.8.0
-  - AzureML-vlak-automl-Client = = 1.8.0
-  - AzureML-vlak-automl-runtime = = 1.8.0. post1
-  - AzureML-contrib-automl-DNN-FORECAST = = 1.8.0
-
-## <a name="azureml-minimal"></a>AzureML minimální
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-
-## <a name="azureml-sidecar"></a>AzureML
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-
-## <a name="azureml-tutorial"></a>Kurz AzureML
-
-kanály balíčků:
-- Anaconda
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - AzureML-widgets = = 1.8.0
-  - AzureML-Pipeline-Core = = 1.8.0
-  - AzureML-Pipeline-kroky = = 1.8.0
-  - AzureML-opendatasets = = 1.8.0
-  - AzureML-automl-Core = = 1.8.0
-  - AzureML-automl-runtime = = 1.8.0
-  - AzureML-vlak-automl-Client = = 1.8.0
-  - AzureML-vlak-automl-runtime = = 1.8.0. post1  
-  - AzureML-vlak-automl = = 1.8.0
-  - AzureML-vlak = = 1.8.0
-  - AzureML-SDK = = 1.8.0
-  - AzureML-Interpret = = 1.8.0
-  - AzureML-tensorboard = = 1.8.0
-  - AzureML-mlflow = = 1.8.0
-  - mlflow
-  - skriptu sklearn – PANDAS
-- pandas
-- numpy
-- tqdm
-- scikit-learn
-- matplotlib
-
-## <a name="azureml-vowpalwabbit-880"></a>VowpalWabbit 8.8.0
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-dataprep [pojistka, PANDAS]
-
-## <a name="dask"></a>Dask
-
-- [PROCESOR AzureML dAsK](#azureml-dask-cpu)
-- [PROCESOR AzureML dAsK](#azureml-dask-gpu)
-
-### <a name="azureml-dask-cpu"></a>PROCESOR AzureML dAsK
-
-kanály balíčků:
-- conda – zfalšovat
-- pytorch
-- výchozí hodnoty
-
-závislosti
-- Python = 3.6.9
-- PIP
-  - adlfs
-  - AzureML-Core = = 1.8.0
-  - azureml-dataprep
-  - dAsK [dokončeno]
-  - dAsK-ml [dokončeno]
-  - místě
-  - fastparquet
-  - fsspec
-  - joblib
-  - jupyterlab
-  - lz4
-  - mpi4py
-  - poznámkového bloku
-  - pyarrow
-
-### <a name="azureml-dask-gpu"></a>PROCESOR AzureML dAsK
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.9
-- PIP
-  - AzureML – výchozí = = 1.8.0
-  - adlfs
-  - AzureML-Core = = 1.8.0
-  - azureml-dataprep
-  - dAsK [dokončeno]
-  - dAsK-ml [dokončeno]
-  - místě
-  - fastparquet
-  - fsspec
-  - joblib
-  - jupyterlab
-  - lz4
-  - mpi4py
-  - poznámkového bloku
-  - pyarrow
-- matplotlib
-
-## <a name="chainer"></a>Chainer
-
-- [CPU 5.1.0 chainer](#azureml-chainer-510-cpu)
-- [5.1.0 GPU řetězu AzureML](#azureml-chainer-510-gpu)
-
-### <a name="azureml-chainer-510-cpu"></a>CPU 5.1.0 chainer
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - chainer = = 5.1.0
-  - mpi4py = = 3.0.0
-
-### <a name="azureml-chainer-510-gpu"></a>5.1.0 GPU řetězu AzureML
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - chainer = = 5.1.0
-  - Cupy-cuda90 = = 5.1.0
-  - mpi4py = = 3.0.0
-
-## <a name="pyspark"></a>PySpark
-
-### <a name="azureml-pyspark-mmlspark-015"></a>AzureML PySpark MmlSpark 0,15
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-
-## <a name="pytorch"></a>PyTorch
-
-- [PROCESOR AzureML PyTorch 1,0](#azureml-pytorch-10-cpu)
-- [PROCESOR AzureML PyTorch 1,0](#azureml-pytorch-10-gpu)
-- [PROCESOR AzureML PyTorch 1,1](#azureml-pytorch-11-cpu)
-- [PROCESOR AzureML PyTorch 1,1](#azureml-pytorch-11-gpu)
-- [PROCESOR AzureML PyTorch 1,2](#azureml-pytorch-12-cpu)
-- [PROCESOR AzureML PyTorch 1,2](#azureml-pytorch-12-gpu)
-- [PROCESOR AzureML PyTorch 1,3](#azureml-pytorch-13-cpu)
-- [PROCESOR AzureML PyTorch 1,3](#azureml-pytorch-13-gpu)
-- [PROCESOR AzureML PyTorch 1,4](#azureml-pytorch-14-cpu)
-- [PROCESOR AzureML PyTorch 1,4](#azureml-pytorch-14-gpu)
-- [PROCESOR AzureML PyTorch 1,5](#azureml-pytorch-15-cpu)
-- [PROCESOR AzureML PyTorch 1,5](#azureml-pytorch-15-gpu)
-
-### <a name="azureml-pytorch-10-cpu"></a>PROCESOR AzureML PyTorch 1,0
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1,0
-  - torchvision = = 0.2.1
-  - MKL = = 2018.0.3
-  - horovod = = 0.16.1
-
-### <a name="azureml-pytorch-10-gpu"></a>PROCESOR AzureML PyTorch 1,0
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1,0
-  - torchvision = = 0.2.1
-  - MKL = = 2018.0.3
-  - horovod = = 0.16.1
-
-### <a name="azureml-pytorch-11-cpu"></a>PROCESOR AzureML-PyTorch 1,1
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.1
-  - torchvision = = 0.2.1
-  - MKL = = 2018.0.3
-  - horovod = = 0.16.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-11-gpu"></a>PROCESOR AzureML PyTorch 1,1
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.1
-  - torchvision = = 0.2.1
-  - MKL = = 2018.0.3
-  - horovod = = 0.16.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-12-cpu"></a>PROCESOR AzureML PyTorch 1,2
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.2
-  - torchvision = = 0.4.0
-  - MKL = = 2018.0.3
-  - horovod = = 0.16.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-12-gpu"></a>PROCESOR AzureML PyTorch 1,2
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.2
-  - torchvision = = 0.4.0
-  - MKL = = 2018.0.3
-  - horovod = = 0.16.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-13-cpu"></a>PROCESOR AzureML PyTorch 1,3
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.3
-  - torchvision = = 0.4.1
-  - MKL = = 2018.0.3
-  - horovod = = 0.18.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-13-gpu"></a>PROCESOR AzureML PyTorch 1,3
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.3
-  - torchvision = = 0.4.1
-  - MKL = = 2018.0.3
-  - horovod = = 0.18.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-14-cpu"></a>PROCESOR AzureML PyTorch 1,4
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.4.0
-  - torchvision = = 0.5.0
-  - MKL = = 2018.0.3
-  - horovod = = 0.18.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-14-gpu"></a>PROCESOR AzureML PyTorch 1,4
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.4.0
-  - torchvision = = 0.5.0
-  - MKL = = 2018.0.3
-  - horovod = = 0.18.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-15-cpu"></a>PROCESOR AzureML PyTorch 1,5
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.5.0
-  - torchvision = = 0.5.0
-  - MKL = = 2018.0.3
-  - horovod = = 0.19.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-### <a name="azureml-pytorch-15-gpu"></a>PROCESOR AzureML PyTorch 1,5
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - Torch = = 1.5.0
-  - torchvision = = 0.5.0
-  - MKL = = 2018.0.3
-  - horovod = = 0.19.1
-  - tensorboard = = 1.14.0
-  - budoucnost = = 0.17.1
-
-## <a name="scikit-learn"></a>Scikit – informace
-
-### <a name="azureml-scikit-learn-0203"></a>AzureML Scikit – Přečtěte si 0.20.3
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - scikit-učení = = 0.20.3
-  - scipy = = 1.2.1
-  - joblib = = 0.13.2
-
-## <a name="tensorflow"></a>TensorFlow
-
-- [PROCESOR Azure ML TensorFlow 1,10](#azureml-tensorflow-110-cpu)
-- [Grafický procesor Azure ML TensorFlow 1,10](#azureml-tensorflow-110-gpu)
-- [PROCESOR Azure ML TensorFlow 1,12](#azureml-tensorflow-112-cpu)
-- [Grafický procesor Azure ML TensorFlow 1,12](#azureml-tensorflow-112-gpu)
-- [PROCESOR Azure ML TensorFlow 1,13](#azureml-tensorflow-113-cpu)
-- [Grafický procesor Azure ML TensorFlow 1,13](#azureml-tensorflow-113-gpu)
-- [PROCESOR Azure ML TensorFlow 2,0](#azureml-tensorflow-20-cpu)
-- [Grafický procesor Azure ML TensorFlow 2,0](#azureml-tensorflow-20-gpu)
-- [PROCESOR Azure ML TensorFlow 2,1](#azureml-tensorflow-21-cpu)
-- [Grafický procesor Azure ML TensorFlow 2,1](#azureml-tensorflow-21-gpu)
-
-### <a name="azureml-tensorflow-110-cpu"></a>PROCESOR AzureML TensorFlow 1,10
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow = = 1,10
-  - horovod = = 0.15.2
-
-### <a name="azureml-tensorflow-110-gpu"></a>PROCESOR AzureML TensorFlow 1,10
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow-GPU = = 1.10.0
-  - horovod = = 0.15.2
-
-### <a name="azureml-tensorflow-112-cpu"></a>PROCESOR AzureML TensorFlow 1,12
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow = = 1.12
-  - horovod = = 0.15.2
-
-### <a name="azureml-tensorflow-112-gpu"></a>PROCESOR AzureML TensorFlow 1,12
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow-GPU = = 1.12.0
-  - horovod = = 0.15.2
-
-### <a name="azureml-tensorflow-113-cpu"></a>PROCESOR AzureML-TensorFlow 1,13
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow = = 1.13.1
-  - horovod = = 0.16.1
-
-### <a name="azureml-tensorflow-113-gpu"></a>PROCESOR AzureML TensorFlow 1,13
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow-GPU = = 1.13.1
-  - horovod = = 0.16.1
-
-### <a name="azureml-tensorflow-20-cpu"></a>PROCESOR AzureML TensorFlow 2,0
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow = = 2.0
-  - horovod = = 0.18.1
-
-### <a name="azureml-tensorflow-20-gpu"></a>PROCESOR AzureML TensorFlow 2,0
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow-GPU = = 2.0.0
-  - horovod = = 0.18.1
-
-### <a name="azureml-tensorflow-21-cpu"></a>PROCESOR AzureML TensorFlow 2,1
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow = = 2.1.0
-  - horovod = = 0.19.1
-
-### <a name="azureml-tensorflow-21-gpu"></a>PROCESOR AzureML TensorFlow 2,1
-
-kanály balíčků:
-- conda – zfalšovat
-
-závislosti
-- Python = 3.6.2
-- PIP
-  - AzureML-Core = = 1.8.0
-  - AzureML – výchozí = = 1.8.0
-  - AzureML-telemetrie = = 1.8.0
-  - AzureML-vlak-restclients-Hyperdrive = = 1.8.0
-  - AzureML-vlak-Core = = 1.8.0
-  - tensorflow-GPU = = 2.1.0
-  - horovod = = 0.19.1
+> Tento seznam se aktualizuje od září 2020. Seznam nejvyšších aktualizovaných seznamů získáte pomocí sady Python SDK. Další informace najdete v článku o [prostředích](./how-to-use-environments.md#use-a-curated-environment).
+
+## <a name="azureml-automl"></a>AzureML-AutoML
+
+**Kanály balíčků:**
+
+* Anaconda
+* conda – zfalšovat
+* pytorch
+
+**Conda balíčky:**
+
+* python
+* numpy
+* scikit-learn
+* pandas
+* py – xgboost
+* fbprophet
+* svátků
+* setuptools – Git
+* psutil
+
+**Balíčky PIP:**
+
+* azureml-core
+* azureml-pipeline-core
+* azureml-telemetry
+* AzureML – výchozí
+* azureml-interpret
+* azureml-explain-model
+* azureml-automl-core
+* azureml-automl-runtime
+* azureml-train-automl-client
+* azureml-train-automl-runtime
+* odvození – schéma
+* py – cpuinfo
+
+## <a name="azureml-automl-dnn"></a>AzureML-AutoML-DNN
+
+**Kanály balíčků:**
+
+* Anaconda
+* conda – zfalšovat
+* pytorch
+
+**Conda balíčky:**
+
+* python
+* numpy
+* scikit-learn
+* pandas
+* py – xgboost
+* fbprophet
+* svátků
+* setuptools – Git
+* pytorch
+* cudatoolkit
+* psutil
+
+**Balíčky PIP:**
+
+* azureml-core
+* azureml-pipeline-core
+* azureml-telemetry
+* AzureML – výchozí
+* azureml-interpret
+* azureml-explain-model
+* azureml-automl-core
+* azureml-automl-runtime
+* azureml-train-automl-client
+* azureml-train-automl-runtime
+* odvození – schéma
+* pytorch – transformátory
+* spacy
+* en_core_web_sm
+* py – cpuinfo
+
+## <a name="azureml-automl-dnn-gpu"></a>AzureML-AutoML-DNN-GPU
+
+**Kanály balíčků:**
+
+* Anaconda
+* conda – zfalšovat
+* pytorch
+
+**Conda balíčky:**
+
+* python
+* numpy
+* scikit-learn
+* pandas
+* fbprophet
+* svátků
+* setuptools – Git
+* pytorch
+* cudatoolkit
+* psutil
+
+**Balíčky PIP:**
+
+* azureml-core
+* azureml-pipeline-core
+* azureml-telemetry
+* AzureML – výchozí
+* azureml-interpret
+* azureml-explain-model
+* azureml-automl-core
+* azureml-automl-runtime
+* azureml-train-automl-client
+* azureml-train-automl-runtime
+* odvození – schéma
+* horovod
+* pytorch – transformátory
+* spacy
+* en_core_web_sm
+* py – cpuinfo
+
+## <a name="azureml-automl-dnn-vision-gpu"></a>AzureML-AutoML-DNN-Vision-GPU
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
 
+* azureml-core
+* AzureML-DataSet – modul runtime
+* azureml-contrib-dataset
+* azureml-telemetry
+* azureml-automl-core
+* azureml-automl-runtime
+* azureml-train-automl-client
+* AzureML – výchozí
+* azureml-interpret
+* azureml-explain-model
+* azureml-train-automl-runtime
+* azureml-train-automl
+* AzureML-contrib-automl-DNN-Vision
+
+## <a name="azureml-automl-gpu"></a>AzureML-AutoML – GPU
+
+**Kanály balíčků:**
+
+* Anaconda
+* conda – zfalšovat
+* pytorch
+
+**Conda balíčky:**
+
+* python
+* numpy
+* scikit-learn
+* pandas
+* fbprophet
+* svátků
+* setuptools – Git
+* psutil
+
+**Balíčky PIP:**
+
+* azureml-core
+* azureml-pipeline-core
+* azureml-telemetry
+* AzureML – výchozí
+* azureml-interpret
+* azureml-explain-model
+* azureml-automl-core
+* azureml-automl-runtime
+* azureml-train-automl-client
+* azureml-train-automl-runtime
+* odvození – schéma
+* py – cpuinfo
+
+## <a name="azureml-chainer-510-cpu"></a>AzureML-chainer – 5.1.0-CPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* chainer
+* mpi4py
+
+## <a name="azureml-chainer-510-gpu"></a>AzureML-chainer – 5.1.0-GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* chainer
+* cupy-cuda90
+* mpi4py
+
+## <a name="azureml-dask-cpu"></a>AzureML-dAsK-CPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+* pytorch
+* výchozí hodnoty
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* adlfs
+* azureml-core
+* AzureML-DataSet – modul runtime
+* dAsK [dokončeno]
+* dAsK-ml [dokončeno]
+* místě
+* fastparquet
+* fsspec
+* joblib
+* jupyterlab
+* lz4
+* mpi4py
+* poznámkového bloku
+* pyarrow
+
+## <a name="azureml-dask-gpu"></a>AzureML-dAsK – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+* matplotlib
+
+**Balíčky PIP:**
+
+* AzureML – výchozí
+* adlfs
+* azureml-core
+* dAsK [dokončeno]
+* dAsK-ml [dokončeno]
+* místě
+* fastparquet
+* fsspec
+* joblib
+* jupyterlab
+* lz4
+* mpi4py
+* poznámkového bloku
+* pyarrow
+
+## <a name="azureml-hyperdrive-forecastdnn"></a>AzureML-Hyperdrive-ForecastDNN
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* azureml-pipeline-core
+* azureml-telemetry
+* AzureML – výchozí
+* azureml-automl-core
+* azureml-automl-runtime
+* azureml-train-automl-client
+* azureml-train-automl-runtime
+* AzureML-contrib-automl-DNN-prognózování
+
+## <a name="azureml-minimal"></a>AzureML-minimální
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+
+## <a name="azureml-pyspark-mmlspark-015"></a>AzureML-PySpark-MmlSpark-0,15
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+
+## <a name="azureml-pytorch-10-cpu"></a>AzureML-PyTorch-1,0 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+
+## <a name="azureml-pytorch-10-gpu"></a>AzureML-PyTorch-1,0 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+
+## <a name="azureml-pytorch-11-cpu"></a>AzureML-PyTorch-1,1 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-11-gpu"></a>AzureML-PyTorch-1,1 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-12-cpu"></a>AzureML-PyTorch-1,2 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-12-gpu"></a>AzureML-PyTorch-1,2 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-13-cpu"></a>AzureML-PyTorch-1,3 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-13-gpu"></a>AzureML-PyTorch-1,3 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-14-cpu"></a>AzureML-PyTorch-1,4 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-14-gpu"></a>AzureML-PyTorch-1,4 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-15-cpu"></a>AzureML-PyTorch-1,5 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-15-gpu"></a>AzureML-PyTorch-1,5 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-16-cpu"></a>AzureML-PyTorch-1,6 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-pytorch-16-gpu"></a>AzureML-PyTorch-1,6 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* torch
+* torchvision
+* mkl
+* horovod
+* tensorboard
+* pozdější
+
+## <a name="azureml-scikit-learn-0203"></a>AzureML-Scikit-učení-0.20.3
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* scikit-learn
+* scipy
+* joblib
+
+## <a name="azureml-tensorflow-110-cpu"></a>AzureML-TensorFlow-1,10 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow
+* horovod
+
+## <a name="azureml-tensorflow-110-gpu"></a>AzureML-TensorFlow-1,10 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow – GPU
+* horovod
+
+## <a name="azureml-tensorflow-112-cpu"></a>AzureML-TensorFlow-1,12 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow
+* horovod
+
+## <a name="azureml-tensorflow-112-gpu"></a>AzureML-TensorFlow-1,12 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow – GPU
+* horovod
+
+## <a name="azureml-tensorflow-113-cpu"></a>AzureML-TensorFlow-1,13 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow
+* horovod
+
+## <a name="azureml-tensorflow-113-gpu"></a>AzureML-TensorFlow-1,13 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow – GPU
+* horovod
+
+## <a name="azureml-tensorflow-20-cpu"></a>AzureML-TensorFlow-2,0 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow
+* horovod
+
+## <a name="azureml-tensorflow-20-gpu"></a>AzureML-TensorFlow-2,0 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow – GPU
+* horovod
+
+## <a name="azureml-tensorflow-21-cpu"></a>AzureML-TensorFlow-2,1 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow
+* horovod
+
+## <a name="azureml-tensorflow-21-gpu"></a>AzureML-TensorFlow-2,1 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow – GPU
+* horovod
+
+## <a name="azureml-tensorflow-22-cpu"></a>AzureML-TensorFlow-2,2 – procesor
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow
+* horovod
+
+## <a name="azureml-tensorflow-22-gpu"></a>AzureML-TensorFlow-2,2 – GPU
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* tensorflow – GPU
+* horovod
+
+## <a name="azureml-tutorial"></a>AzureML – kurz
+
+**Kanály balíčků:**
+
+* Anaconda
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+* pandas
+* numpy
+* tqdm
+* scikit-learn
+* matplotlib
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* azureml-telemetry
+* AzureML-vlak-restclients-HyperDrive
+* azureml-train-core
+* azureml-widgets
+* azureml-pipeline-core
+* azureml-pipeline-steps
+* azureml-opendatasets
+* azureml-automl-core
+* azureml-automl-runtime
+* azureml-train-automl-client
+* azureml-train-automl-runtime
+* azureml-train-automl
+* AzureML-vlak
+* AzureML-SDK
+* azureml-interpret
+* azureml-tensorboard
+* azureml-mlflow
+* mlflow
+* skriptu sklearn – PANDAS
+
+## <a name="azureml-vowpalwabbit-880"></a>AzureML-VowpalWabbit-8.8.0
+
+**Kanály balíčků:**
+
+* conda – zfalšovat
+
+**Conda balíčky:**
+
+* python
+
+**Balíčky PIP:**
+
+* azureml-core
+* AzureML – výchozí
+* AzureML-DataSet-runtime [zapékací, PANDAS]
