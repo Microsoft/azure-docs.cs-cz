@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653303"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651587"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -63,6 +63,8 @@ Poradce identifikuje tabulky, které nemají aktuální [statistiku tabulek](../
 
 Analýza Advisor může znamenat, že vaše aplikace připojující se k serveru MySQL nemusí efektivně spravovat připojení. Tato podmínka by mohla vést k zbytečným spotřebám prostředků a celkové vyšší latenci aplikace. Pokud chcete zlepšit správu připojení, doporučujeme snížit počet krátkodobých připojení a eliminovat zbytečná nečinná připojení. Tato vylepšení můžete udělat konfigurací Pooler připojení na straně serveru, jako je ProxySQL.
 
+## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Aktualizace stávající verze sady SDK pro správu výpočtů na nejnovější verzi
+Advisor identifikuje odběry, které mají operace používající zastaralé verze sady Management SDK pro sadu Compute. To může mít vliv na zabezpečení a výkon vašich úloh, a proto Advisor doporučuje přepnout na nejnovější verzi sady COMPUTE Management SDK. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Horizontální navýšení kapacity pro optimalizaci využití mezipaměti v tabulkách Azure synapse Analytics ke zvýšení výkonu dotazů
 
@@ -165,7 +167,7 @@ Toto doporučení ukazuje tabulky Azure Data Exploreru s velkým počtem dotazů
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>Zvýšení výkonu optimalizací velikosti dočasné tabulky MySQL
 Analýza Advisor indikuje, že váš server MySQL může vydávat zbytečné vstupně-výstupní režii kvůli nízkým nastavením parametrů pro dočasné tabulky. To může vést ke zbytečným transakcím na disku a snížení výkonu. Pokud chcete snížit počet transakcí na disku, doporučujeme zvýšit hodnoty parametrů tmp_table_size a max_heap_table_size. [Další informace](https://aka.ms/azure_mysql_tmp_table)
 
-## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Distribuce dat ve skupině serverů pro distribuci úloh mezi uzly
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Distribuce dat ve skupině serverů za účelem distribuce zatížení mezi uzly
 Poradce identifikuje skupiny serverů, na kterých nebyla data distribuována, ale zůstává v koordinátorovi. Na základě tohoto doporučení doporučuje poradce, aby Citus výhody distribuce dat na pracovních uzlech pro skupiny serverů. Tím se vylepšit výkon dotazů pomocí prostředku každého uzlu ve skupině serverů. [Další informace](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučením k výkonu v Advisoru

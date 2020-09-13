@@ -1,26 +1,23 @@
 ---
-title: Akcelerace dotazů Azure Data Lake Storage (Preview)
-description: Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tak, že načte jenom data, která jsou potřebná pro zpracování operace.
+title: Akcelerace dotazů Azure Data Lake Storage
+description: Zrychlení dotazů umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tak, že načte jenom data, která jsou potřebná pro zpracování operace.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176698"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657638"
 ---
-# <a name="azure-data-lake-storage-query-acceleration-preview"></a>Akcelerace dotazů Azure Data Lake Storage (Preview)
+# <a name="azure-data-lake-storage-query-acceleration"></a>Akcelerace dotazů Azure Data Lake Storage
 
-Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tím, že načte jenom data, která potřebují k provedení dané operace. Tím se snižuje čas a výpočetní výkon, který je potřeba k získání důležitých přehledů uložených dat.
-
-> [!NOTE]
-> Funkce zrychlení dotazů je ve verzi Public Preview a je dostupná v oblastech Kanada – střed a Francie – střed. Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) . Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adls/qa-preview-signup).  
+Zrychlení dotazů umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tím, že načte jenom data, která potřebují k provedení dané operace. Tím se snižuje čas a výpočetní výkon, který je potřeba k získání důležitých přehledů uložených dat.
 
 ## <a name="overview"></a>Přehled
 
@@ -57,7 +54,7 @@ Pro výpočet agregované hodnoty aplikace běžně načítají **všechna** dat
 
 I když Azure nabízí špičkovou síť, a to z hlediska propustnosti i latence, zbytečně přenosu dat napříč touto sítí je pro výkon aplikace stále nákladné. Filtrováním nežádoucích dat během žádosti o úložiště vyloučí akcelerace dotazu tyto náklady.
 
-Zatížení procesoru potřebné k analýze a filtrování nepotřebných dat navíc vyžaduje, aby vaše aplikace mohla zřídit větší počet a větší virtuální počítače, aby to fungovalo. Díky přenosu tohoto výpočetního zatížení na urychlení dotazů můžou aplikace realizovat výrazné úspory nákladů.
+Zatížení procesoru, které je nutné k analýze a filtrování nepotřebných dat, vyžaduje, aby vaše aplikace mohla zřídit větší počet a větší virtuální počítače, aby bylo možné svou práci provést. Díky přenosu tohoto výpočetního zatížení na urychlení dotazů můžou aplikace realizovat výrazné úspory nákladů.
 
 ## <a name="applications-that-can-benefit-from-query-acceleration"></a>Aplikace, které můžou využívat akceleraci dotazů
 
@@ -65,7 +62,7 @@ Zrychlení dotazů je navržené pro distribuované analytické architektury a a
 
 Distribuované analytické architektury, jako jsou Apache Spark a Apache Hive, zahrnují vrstvu abstrakce úložiště v rámci rozhraní. Tyto moduly také obsahují optimalizaci dotazů, které mohou zahrnovat znalosti základních možností vstupně-výstupních služeb při určování optimálního plánu dotazů na dotazy uživatelů. Tyto architektury začínají integrovat urychlení dotazů. Výsledkem je, že uživatelé těchto platforem uvidí lepší latenci dotazů a nižší celkové náklady na vlastnictví, aniž by museli dělat změny v dotazech. 
 
-Akcelerace dotazů je také navržena pro aplikace pro zpracování dat. Tyto typy aplikací obvykle provádějí transformace dat ve velkém měřítku, které by neměly přímo vést k analytickým přehledům, takže nikdy nepoužívají zavedené distribuované analytické architektury. Tyto aplikace často poskytují přímý vztah s podkladovou službou úložiště, takže můžou těžit přímo z funkcí, jako je například zrychlení dotazů. 
+Akcelerace dotazů je také navržena pro aplikace pro zpracování dat. Tyto typy aplikací obvykle provádějí rozsáhlou transformaci dat, která by nemusela přímo vést k analytickým přehledům, takže nikdy nepoužívají zavedené distribuované analytické architektury. Tyto aplikace často poskytují přímý vztah s podkladovou službou úložiště, takže můžou těžit přímo z funkcí, jako je například zrychlení dotazů. 
 
 Příklad toho, jak může aplikace integrovat akceleraci dotazů, najdete v tématu [filtrování dat pomocí Azure Data Lake Storage akceleraci dotazů](data-lake-storage-query-acceleration-how-to.md).
 
@@ -77,8 +74,7 @@ Bez ohledu na změnu modelu fakturace je cenový model zrychlení dotazu navrže
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Registrační formulář pro dotaz na zrychlení](https://aka.ms/adls/qa-preview-signup)    
-- [Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview)](data-lake-storage-query-acceleration-how-to.md)
-- [Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)](query-acceleration-sql-reference.md)
+- [Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů](data-lake-storage-query-acceleration-how-to.md)
+- [Referenční dokumentace jazyka SQL pro zrychlení dotazů](query-acceleration-sql-reference.md)
 
 

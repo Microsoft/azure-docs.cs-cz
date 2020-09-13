@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 89fe1d80fb7282a72bde6bcafa070f2d7461b02f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0a41aa062cf4804587b97ce224f80c0bc4bf2b3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320829"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650573"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Vysvětlení výsledků automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,14 +59,14 @@ Po spuštění automatizovaného experimentu machine learningu se v pracovním p
 
    [![Experiment model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
-Stejné výsledky se zobrazí také při spuštění při použití `RunDetails` [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
+Stejné výsledky se zobrazí také při spuštění při použití `RunDetails` [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true).
 
-## <a name="classification-results"></a><a name="classification"></a>Výsledky klasifikace
+## <a name="classification-results"></a><a name="classification"></a> Výsledky klasifikace
 
 Thee následující metriky a grafy jsou k dispozici pro každý model klasifikace, který sestavíte pomocí možností automatizovaného strojového učení Azure Machine Learning
 
 + [Metriky](#classification-metrics)
-+ [Nejasná matice](#confusion-matrix)
++ [Konfuzní matice](#confusion-matrix)
 + [Přesnost – graf odvolání](#precision-recall-chart)
 + [Provozní charakteristiky přijímače (nebo ROC)](#roc)
 + [Zvednutí křivky](#lift-curve)
@@ -108,7 +108,7 @@ Konkrétní příklad usnadňuje zrušení tohoto rozlišení: místo výpočtu 
 
 <a name="confusion-matrix"></a>
 
-### <a name="confusion-matrix"></a>Nejasná matice
+### <a name="confusion-matrix"></a>Konfuzní matice
 
 #### <a name="what-is-a-confusion-matrix"></a>Co je nejasná matice?
 K popisu výkonu modelu klasifikace se používá nejasná matice. Každý řádek zobrazí v datové sadě instance hodnoty true nebo actual, přičemž každý sloupec představuje instance třídy, která byla předpovězena modelem. 
@@ -211,7 +211,7 @@ Dobře kalibrovaný model zarovnává se čárou y = x, kde správně předpoví
 ##### <a name="example-2-an-over-confident-model"></a>Příklad 2: model s nadjistým využitím
 ![Model s vysokou jistotou](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression-results"></a><a name="regression"></a>Výsledky regrese
+## <a name="regression-results"></a><a name="regression"></a> Výsledky regrese
 
 Thee následující metriky a grafy jsou k dispozici pro každý regresní model, který sestavíte pomocí možností automatizovaného strojového učení Azure Machine Learning
 
@@ -220,7 +220,7 @@ Thee následující metriky a grafy jsou k dispozici pro každý regresní model
 + [Histogram zbytků](#histo)
 
 
-### <a name="regression-metrics"></a><a name="reg-metrics"></a>Regresní metriky
+### <a name="regression-metrics"></a><a name="reg-metrics"></a> Regresní metriky
 
 Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu regrese nebo předpovědi.
 
@@ -238,7 +238,7 @@ normalized_root_mean_squared_error|Normalizovaný základní Průměrná chyba j
 root_mean_squared_log_error|Hodnota původní střední Chyba protokolu je druhá odmocnina očekávaného čtvercového logaritmu chyby.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Žádné|
 normalized_root_mean_squared_log_error|Normalizovaná chyba na čtvercovém středním významu protokolu je chyba v kořenovém středním významu protokolu dělená rozsahem dat|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
 
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a>Předpokládaný vs. pravdivý graf
+### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> Předpokládaný vs. pravdivý graf
 #### <a name="what-is-a-predicted-vs-true-chart"></a>Co je předpokládaný graf vs. true?
 Předpovězené vs. hodnota true zobrazuje vztah mezi předpokládanou hodnotou a korelaci pravdivé hodnoty pro problém regrese. Tento graf lze použít k měření výkonu modelu jako blíže řádku y = x, protože jsou předpovězené hodnoty lepší přesností prediktivního modelu.
 
@@ -254,7 +254,7 @@ Po každém spuštění můžete zobrazit předpokládaný a pravdivý graf pro 
 
 
 
-### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>Histogram grafu zbytků
+### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> Histogram grafu zbytků
 #### <a name="what-is-a-residuals-chart"></a>Co je graf zbytků?
 Reziduální je rozdíl mezi předpověď a skutečnou hodnotou ( `y_pred - y_true` ). Chcete-li zobrazit marži chyby s nízkou špičkou, histogram zbytku by měl být ve tvaru špičky uprostřed na střed 0. 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Co dělá automatizované ML s grafem zbytků?
@@ -268,7 +268,7 @@ Dobrým modelem budou obvykle blízko sebe nula.
 ##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Příklad 2: regresní model s větší rovnoměrné distribucí chyb
 ![Regresní model s větší rovnoměrné distribucí chyb](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a>Závažnost modelu a důležitost funkcí
+## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> Závažnost modelu a důležitost funkcí
 Automatizované ML poskytuje řídicí panel pro vyhodnocení pro vaše běhy na strojovém učení.
 Další informace o povolení funkcí pro interpretaci najdete v tématu [postup](how-to-machine-learning-interpretability-automl.md) při povolování interpretace v rámci automatizovaných experimentů ml.
 

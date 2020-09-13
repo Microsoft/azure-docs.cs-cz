@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759610"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650489"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Konfigurace využití a dat diagnostiky Azure SQL Edge
 
@@ -72,7 +72,7 @@ Pokud chcete zakázat shromažďování dat o využití a diagnostice na Edge SQ
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>Zakázání používání a diagnostiky pomocí souboru MSSQL. conf
 
-Pokud chcete zakázat shromažďování dat o využití a diagnostice na Edge SQL Azure, přidejte do souboru MSSQL. conf na trvalé jednotce úložiště, která je namapovaná do složky/var/opt/MSSQL/v modulu SQL Edge, následující soubory. Další informace o konfiguraci Azure SQL Edge pomocí souboru MSSQL. conf najdete v tématu [Konfigurace pomocí souboru MSSQL. conf](configure.md#configure-by-using-an-mssqlconf-file).
+Pokud chcete zakázat shromažďování dat o využití a diagnostice na Edge SQL Azure, přidejte následující řádky do souboru MSSQL. conf na trvalé jednotce úložiště, která je namapovaná na složku/var/opt/MSSQL/v modulu SQL Edge. Další informace o konfiguraci Azure SQL Edge pomocí souboru MSSQL. conf najdete v tématu [Konfigurace pomocí souboru MSSQL. conf](configure.md#configure-by-using-an-mssqlconf-file).
 
 ```ini
 [telemetry]

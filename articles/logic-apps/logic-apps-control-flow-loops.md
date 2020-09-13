@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495603"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657478"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytváření smyček opakujících akce pracovních postupů nebo zpracovávajících pole v Azure Logic Apps
 
@@ -40,12 +40,12 @@ Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můž
 
 * Chcete-li získat předvídatelné výsledky z operací na proměnné během každé iterace smyčky, spusťte cykly postupně. Například když cyklus končí souběžně, operace zvýšení, snížení a připojení k proměnným operaci vrátí předvídatelné výsledky. Během každé iterace v souběžně běžící smyčce ale můžou tyto operace vracet nepředvídatelné výsledky. 
 
-* Akce ve smyčce foreach používají[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
+* Akce ve smyčce foreach používají [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
 výraz pro odkazování a zpracování každé položky v poli. Pokud zadáte data, která nejsou v poli, pracovní postup aplikace logiky se nezdařil. 
 
 Tato ukázková aplikace logiky pošle denní souhrn informačního kanálu RSS webu. Aplikace používá smyčku foreach, která pro každou novou položku pošle e-mail.
 
-1. [Vytvořte tuto ukázkovou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) s účtem Outlook.com nebo Office 365 Outlook.
+1. [Tuto ukázkovou aplikaci logiky vytvoříte](../logic-apps/quickstart-create-first-logic-app-workflow.md) pomocí účtu Outlook.com nebo pracovního nebo školního účtu.
 
 2. Mezi akcí aktivace a odeslání e-mailu RSS přidejte smyčku foreach. 
 
@@ -232,7 +232,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Schopn** | *\<email-address\@domain>* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
+      | **Záměr** | *\<email-address\@domain>* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
       | **Předmět** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
       | **Text** | <*e-mail – obsah*> | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
       |||| 
@@ -333,7 +333,7 @@ V tomto příkladu "dokud" smyčka volá koncový bod HTTP, který vytvoří pro
 }
 ```
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, [Azure Logic Apps Web zpětné vazby uživatelů](https://aka.ms/logicapps-wish).

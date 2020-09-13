@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651722"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650697"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -213,7 +213,7 @@ Během této fáze obvykle nasazujete vývojové systémy, systémy testování 
 12. Jak zatížení platí, zaznamenejte spotřebu prostředků systémů v Azure. Porovnejte tuto spotřebu se záznamy z vaší staré platformy. Pokud zjistíte, že máte velké rozdíly, upravte velikost virtuálních počítačů v budoucích nasazeních. Pamatujte na to, že když se klidnějších, úložiště a šířka pásma sítě virtuálních počítačů, sníží se i.
     - [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Sizes for Linux virtual machines in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. Experimentujte s funkcí a procesy systémové kopie. Cílem je zjednodušit zkopírování vývojového systému nebo testovacího systému, takže projektové týmy můžou rychle získat nové systémy. Zvažte použití [SAP Lama](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) pro tyto úlohy.
+13. Experimentujte s funkcí a procesy systémové kopie. Cílem je zjednodušit zkopírování vývojového systému nebo testovacího systému, takže projektové týmy můžou rychle získat nové systémy. 
 14. Optimalizujte a doladit přístup, oprávnění a procesy založené na rolích týmu do Azure, abyste se ujistili, že máte oddělení povinností. Ve stejnou chvíli se ujistěte, že všechny týmy můžou provádět své úkoly v infrastruktuře Azure.
 15. Cvičení, testování a dokumentace postupů vysoké dostupnosti a zotavení po havárii, které zaměstnancům umožní provádět tyto úlohy. Identifikujte nedostatky a přizpůsobte nové funkce Azure, které Integrujte do svých nasazení.
 

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357745"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658353"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -53,22 +53,22 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 - Přihlašovací uživatelské jméno může být buď místní výchozí uživatelské jméno ( `userPrincipalName` ), nebo jiný atribut nakonfigurovaný v Azure AD Connect ( `Alternate ID` ). Jak fungují případy použití, protože bezproblémová služba jednotného přihlašování používá `securityIdentifier` deklaraci identity v lístku protokolu Kerberos k vyhledání odpovídajícího objektu uživatele v Azure AD.
 - Bezproblémové jednotné přihlašování je příležitostné funkce. Pokud z nějakého důvodu dojde k chybě, přihlašovací prostředí uživatele se vrátí k běžnému chování – tzn. uživatel musí na přihlašovací stránce zadat heslo.
-- Pokud aplikace (například `https://myapps.microsoft.com/contoso.com` ) předá `domain_hint` parametr (OpenID Connect) nebo `whr` (SAML), který identifikuje vašeho tenanta, nebo `login_hint` Parametr-identifikuje uživatele, v jeho žádosti o přihlášení k Azure AD se uživatelé automaticky přihlásí, aniž by museli zadávat uživatelská jména nebo hesla.
+- Pokud aplikace (například  `https://myapps.microsoft.com/contoso.com` ) předá `domain_hint` parametr (OpenID Connect) nebo `whr` (SAML), který identifikuje vašeho tenanta, nebo `login_hint` Parametr-identifikuje uživatele, v jeho žádosti o přihlášení k Azure AD se uživatelé automaticky přihlásí, aniž by museli zadávat uživatelská jména nebo hesla.
 - Uživatelé také získají tiché přihlašování, pokud aplikace (například `https://contoso.sharepoint.com` ) odesílá žádosti o přihlášení koncovým bodům služby Azure AD nastaveným jako klienti – to znamená `https://login.microsoftonline.com/contoso.com/<..>` nebo `https://login.microsoftonline.com/<tenant_ID>/<..>` – místo společného koncového bodu služby Azure AD – to znamená `https://login.microsoftonline.com/common/<...>` .
 - Odhlášení se podporuje. To umožňuje uživatelům zvolit si jiný účet služby Azure AD pro přihlášení, místo aby se automaticky přihlásili pomocí bezproblémového jednotného přihlašování automaticky.
-- Klienti Win32 Office 365 (Outlook, Word, Excel a další) s verzemi 16.0.8730. xxxx a novější se podporují pomocí neinteraktivního toku. Pro OneDrive budete muset pro tiché přihlašování aktivovat [funkci bezobslužné konfigurace OneDrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
+- Microsoft 365 klienti Win32 (Outlook, Word, Excel a další) s verzemi 16.0.8730. xxxx a vyšší se podporují pomocí neinteraktivního toku. Pro OneDrive budete muset pro tiché přihlašování aktivovat [funkci bezobslužné konfigurace OneDrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - Dá se povolit prostřednictvím Azure AD Connect.
 - Je to bezplatná funkce a nepotřebujete žádné placené edice Azure AD, abyste ji mohli používat.
-- Podporuje se u klientů a klientů Office využívajících webový prohlížeč, kteří podporují [moderní ověřování](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) na platformách a prohlížečích, které podporují ověřování protokolem Kerberos:
+- Podporuje se u klientů a klientů Office využívajících webový prohlížeč, kteří podporují [moderní ověřování](/office365/enterprise/modern-auth-for-office-2013-and-2016) na platformách a prohlížečích, které podporují ověřování protokolem Kerberos:
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Ano|Yes|Ano\*\*\*|Není k dispozici
-|Windows 8.1|Yes\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
-|Windows 8|Yes\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
-|Windows 7|Ano\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
-|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
-|Mac OS X|Není k dispozici|Není k dispozici|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
+|Windows 10|Ano\*|Yes|Yes|Ano\*\*\*|–
+|Windows 8.1|Ano\*|–|Yes|Ano\*\*\*|–
+|Windows 8|Ano\*|–|Yes|Ano\*\*\*|–
+|Windows 7|Ano\*|–|Yes|Ano\*\*\*|–
+|Windows Server 2012 R2 nebo novější|Ano\*\*|–|Yes|Ano\*\*\*|–
+|Mac OS X|N/A|N/A|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 
 \*Vyžaduje Internet Explorer verze 10 nebo vyšší.
@@ -88,4 +88,3 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 - [**Nejčastější dotazy**](how-to-connect-sso-faq.md) – odpovědi na nejčastější dotazy
 - [**Řešení potíží**](tshoot-connect-sso.md) – Naučte se řešit běžné problémy s touto funkcí.
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – pro nové žádosti o funkce
-

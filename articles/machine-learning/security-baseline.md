@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 168aec49dc9b14af57df98ebc4c997f8dfb27c9e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228354"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657352"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -28,7 +28,7 @@ Základní plán zabezpečení Azure pro Microsoft Azure Machine Learning obsahu
 
 Azure Firewall lze použít k řízení přístupu k pracovnímu prostoru Azure Machine Learning a k veřejnému Internetu.
 
-- [Postup bezpečného spuštění experimentů a odvození v izolované virtuální síti](how-to-enable-virtual-network.md)
+- [Přehled izolace a ochrany osobních údajů virtuální sítě](how-to-network-security-overview.md)
 
 - [Použít pracovní prostor za Azure Firewall Azure Machine Learning](how-to-access-azureml-behind-firewall.md)
 
@@ -58,7 +58,7 @@ Povolte protokolování toku skupin zabezpečení sítě a odešlete protokoly d
 
 - [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 
-- [Izolace sítě během vyučování školení &amp; s privátními virtuálními sítěmi](how-to-enable-virtual-network.md)
+- [Přehled izolace a ochrany osobních údajů virtuální sítě](how-to-network-security-overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -122,7 +122,7 @@ Služba Azure Machine Learning documentuje seznam značek služeb pro výpočetn
 
 - [Další informace o použití značek služeb](../virtual-network/service-tags-overview.md)
 
-- [Pro Azure Machine Learning virtuální sítě](how-to-enable-virtual-network.md)
+- [Přehled izolace a ochrany osobních údajů virtuální sítě](how-to-network-security-overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -326,7 +326,7 @@ K vyhledání účtů, které jsou členy skupin pro správu, můžete také pou
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Pokyny**: Azure Machine Learning se při vytvoření nového pracovního prostoru dokončí třemi výchozími rolemi, vytvořte standardní operační postupy kolem použití účtů vlastníka.
+**Pokyny**: Azure Machine Learning při vytvoření nového pracovního prostoru dokončí tři výchozí role a vytvoří standardní operační postupy kolem použití účtů vlastníka.
 
 Můžete také povolit přístup za běhu k účtům pro správu pomocí Azure AD Privileged Identity Management a Azure Resource Manager. 
 
@@ -402,7 +402,7 @@ Můžete také povolit přístup za běhu k účtům pro správu pomocí Azure A
  
 Přístup k rolím může být v Azure omezený na více úrovní. V případě Machine Learning se role dají spravovat na úrovni pracovního prostoru, například máte přístup vlastníka k pracovnímu prostoru, ale nemáte oprávnění vlastníka k této skupině prostředků, která tento pracovní prostor obsahuje. Tato funkce poskytuje podrobnější řízení přístupu k samostatným rolím v rámci stejné skupiny prostředků. 
 
-- [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md) 
+- [Správa přístupu k pracovnímu prostoru služby Azure Machine Learning](how-to-assign-roles.md) 
  
 - [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -527,7 +527,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: Azure Machine Learning podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Machine Learning prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) Azure k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instančního objektu aplikace.
 
-- [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md)
+- [Správa přístupu k pracovnímu prostoru služby Azure Machine Learning](how-to-assign-roles.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -979,7 +979,9 @@ Pomocí Azure Key Vault můžete předávat tajné kódy do vzdáleného spoušt
 
 - [Vytvoření Key Vault](/azure/key-vault/quick-create-portal)
 
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](/azure/key-vault/managed-identity)
+- [Ověření Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+- [Postup přiřazení zásady přístupu Key Vault](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -990,7 +992,7 @@ Pomocí Azure Key Vault můžete předávat tajné kódy do vzdáleného spoušt
 **Doprovodné**materiály: Azure Machine Learning podporuje jak předdefinované role, tak i možnost vytvářet vlastní role. Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů v kódu.
 
  
-- [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md)
+- [Správa přístupu k pracovnímu prostoru služby Azure Machine Learning](how-to-assign-roles.md)
 
 - [Postup konfigurace spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 

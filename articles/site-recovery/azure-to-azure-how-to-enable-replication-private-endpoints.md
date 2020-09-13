@@ -1,25 +1,22 @@
 ---
 title: Povolení replikace privátních koncových bodů v Azure Site Recovery
 description: Tento článek popisuje, jak nakonfigurovat replikaci pro virtuální počítače s privátními koncovými body z jedné oblasti Azure do jiné pomocí Site Recovery.
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 16cde1cf43c6463cbbe640d9e0a80a9ea88f1f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096781"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658263"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>Replikace počítačů pomocí privátních koncových bodů
 
-Azure Site Recovery umožňuje používat privátní koncové body [privátního propojení Azure](../private-link/private-endpoint-overview.md) pro replikaci vašich počítačů do izolované virtuální sítě. Podpora přístupu privátního koncového bodu k trezoru obnovení je podporovaná v následujících oblastech:
-
-- Azure Commercial: Střed USA – jih, Západní USA 2 Východní USA
-- Azure Government: US Gov – Virginie, US Gov – Arizona, US Gov – Texas, US DoD – východ, US DoD – střed
+Azure Site Recovery umožňuje používat privátní koncové body [privátního propojení Azure](../private-link/private-endpoint-overview.md) pro replikaci vašich počítačů do izolované virtuální sítě. Přístup privátního koncového bodu k trezoru obnovení se podporuje ve všech oblastech pro státní správu Azure Commercial &.
 
 V tomto článku najdete pokyny k provedení následujících kroků:
 
@@ -140,7 +137,7 @@ Před povolením replikace virtuálních počítačů musí mít spravovaná ide
 
 - Účty úložiště založené na Správce prostředků (standardní typ):
   - [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)
-  - [Přispěvatel dat objektu BLOB služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Přispěvatel dat v objektech blob služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Účty úložiště založené na Správce prostředků (typ Premium):
   - [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)
   - [Vlastník dat objektu BLOB služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -209,7 +206,7 @@ Vytvořte jednu privátní zónu DNS, abyste mohli agent mobility přeložit na 
 
    1. Na stránce Přidat sadu záznamů, která se otevře, přidejte položku pro každý plně kvalifikovaný název domény a soukromou _IP adresu jako záznam typu._ Seznam plně kvalifikovaných názvů domén a IP adres se dá získat ze stránky privátního koncového bodu v **přehledu**. Jak je znázorněno v následujícím příkladu, do sady záznamů v privátní zóně DNS se přidá první plně kvalifikovaný název domény z privátního koncového bodu.
 
-      Vzor těchto plně kvalifikovaných názvů domén odpovídá vzoru:`{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
+      Vzor těchto plně kvalifikovaných názvů domén odpovídá vzoru: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
       :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Zobrazí stránku, kde můžete přidat záznam typu DNS pro plně kvalifikovaný název domény do privátního koncového bodu v Azure Portal.":::
 

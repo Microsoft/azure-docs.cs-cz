@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358442"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657119"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a Správa Azure AD Connect
 Použijte provozní postupy v tomto článku k přizpůsobení služby Azure Active Directory (Azure AD) k tomu, aby splňovaly potřeby a požadavky vaší organizace.  
@@ -30,7 +30,7 @@ Použijte provozní postupy v tomto článku k přizpůsobení služby Azure Act
 Ve výchozím nastavení můžou nainstalovaná synchronizační modul spravovat jenom uživatel, který měl instalaci a místní správci. Aby mohli uživatelé získat přístup k synchronizačnímu modulu a spravovat ho, vyhledejte skupinu s názvem ADSyncAdmins na místním serveru a přidejte je do této skupiny.
 
 ## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Přiřazení licencí k Azure AD Premium a uživatelům sady Enterprise Mobility Suite
-Teď, když byli vaši uživatelé synchronizováni do cloudu, musíte jim přiřadit licenci, aby se mohli dostat k cloudovým aplikacím, jako je například Office 365.
+Teď, když byli vaši uživatelé synchronizováni do cloudu, musíte jim přiřadit licenci, aby se mohli dostat k cloudovým aplikacím, jako je Microsoft 365.
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Přiřazení licence Azure AD Premium nebo sady Enterprise Mobility Suite
 
@@ -59,7 +59,7 @@ Pokud potřebujete spustit úlohu synchronizace, můžete to udělat takto:
 2. Klikněte na **Konfigurovat**.
 3. Na obrazovce úlohy vyberte **Možnosti přizpůsobení synchronizace** a klikněte na **Další** .
 4. Zadejte svoje přihlašovací údaje služby Azure AD.
-5. Klikněte na **Další**. Klikněte na **Další**.  Klikněte na **Další**.
+5. Klikněte na **Next** (Další). Klikněte na **Next** (Další).  Klikněte na **Next** (Další).
 5.  Na obrazovce **připraveno ke konfiguraci** zajistěte, aby bylo zaškrtnuto políčko **spustit proces synchronizace po dokončení konfigurace** .
 6.  Klikněte na **Konfigurovat**.
 
@@ -72,7 +72,7 @@ Následující tabulka poskytuje souhrn těchto úkolů a stručný popis jednot
 
 ![Seznam dalších úloh](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Další úloha | Description |
+| Další úloha | Popis |
 | --- | --- |
 |**Nastavení ochrany osobních údajů**|Podívejte se, jaká data telemetrie se s Microsoftem sdílí.|
 |**Zobrazit aktuální konfiguraci**|Podívejte se na vaše aktuální řešení Azure AD Connect.  To zahrnuje obecná nastavení, synchronizované adresáře a nastavení synchronizace. |
@@ -82,7 +82,7 @@ Následující tabulka poskytuje souhrn těchto úkolů a stručný popis jednot
 |**Konfigurovat pracovní režim** |Informace o fázi, která není hned synchronizována a není exportována do služby Azure AD ani do místní služby Active Directory.  Pomocí této funkce můžete zobrazit náhled synchronizací dřív, než k nim dojde. |
 |**Změna přihlášení uživatele**|Změna metody ověřování, kterou uživatelé používají k přihlášení|
 |**Správa federace**|Správa infrastruktury AD FS, obnovení certifikátů a přidání serverů AD FS|
-|**Řešení potíží**|Pomoc s řešením problémů s Azure AD Connect|
+|**Odstraňování potíží**|Pomoc s řešením problémů s Azure AD Connect|
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [integraci místních identit s Azure Active Directory](whatis-hybrid-identity.md).

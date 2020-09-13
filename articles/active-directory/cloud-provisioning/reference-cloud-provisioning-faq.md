@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518466"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658378"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Nejčastější dotazy k zřizování cloudu Azure Active Directory Connect
 
@@ -74,7 +74,7 @@ Když konfiguraci odstraníte, zřizování cloudu neodstraní automaticky synch
 
 **Otázka: co znamená, že systém Exchange Hybrid není podporován?**
 
-Funkce Hybridní nasazení systému Exchange umožňuje souběžnou existenci poštovních schránek serveru Exchange jak místně, tak v Office 365. Azure AD Connect synchronizuje konkrétní sadu atributů z Azure AD zpátky do místního adresáře.  Agent zřizování cloudu v současné době nesynchronizuje tyto atributy zpátky do místního adresáře, takže není podporován jako náhrada za Azure AD Connect.
+Funkce hybridního nasazení serveru Exchange umožňuje souběžnou existenci poštovních schránek Exchange místních i v Microsoft 365. Azure AD Connect synchronizuje konkrétní sadu atributů z Azure AD zpátky do místního adresáře.  Agent zřizování cloudu v současné době nesynchronizuje tyto atributy zpátky do místního adresáře, takže není podporován jako náhrada za Azure AD Connect.
 
 **Otázka: mohu nainstalovat agenta zřizování cloudu na Windows serveru Core?**
 

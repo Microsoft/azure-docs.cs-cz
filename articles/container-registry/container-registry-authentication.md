@@ -3,12 +3,12 @@ title: Možnosti ověřování v registru
 description: Možnosti ověřování privátního služby Azure Container Registry, včetně přihlašování pomocí Azure Active Directory identity, pomocí instančních objektů a použití volitelných přihlašovacích údajů správce.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7c8176d0cdca5d74ed3201071f83ed1181d94b8d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926316"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657075"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Ověřování pomocí služby Azure Container Registry
 
@@ -22,12 +22,12 @@ Následující tabulka obsahuje seznam dostupných metod ověřování a typick�
 
 | Metoda                               | Ověřování                                           | Scénáře                                                            | RBAC                             | Omezení                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
-| [Individuální identita AD](#individual-login-with-azure-ad)                | `az acr login` v Azure CLI                             | Interaktivní nabízení a vyžádané sdílení pro vývojáře, testery                                    | Ano                              | Token AD se musí obnovit každé 3 hodiny.     |
-| [Instanční objekt služby AD](#service-principal)                  | `docker login`<br/><br/>`az acr login`v Azure CLI<br/><br/> Nastavení přihlášení do registru v rozhraních API nebo nástrojích<br/><br/> [Tajný kód pro vyžádání obsahu Kubernetes](container-registry-auth-kubernetes.md)                                           | Bezobslužné vkládání z kanálu CI/CD<br/><br/> Bezobslužné stažení do Azure nebo externích služeb  | Ano                              | Výchozí platnost hesla SP je 1 rok.       |                                                           
+| [Individuální identita AD](#individual-login-with-azure-ad)                | `az acr login` v Azure CLI                             | Interaktivní nabízení a vyžádané sdílení pro vývojáře, testery                                    | Yes                              | Token AD se musí obnovit každé 3 hodiny.     |
+| [Instanční objekt služby AD](#service-principal)                  | `docker login`<br/><br/>`az acr login` v Azure CLI<br/><br/> Nastavení přihlášení do registru v rozhraních API nebo nástrojích<br/><br/> [Tajný kód pro vyžádání obsahu Kubernetes](container-registry-auth-kubernetes.md)                                           | Bezobslužné vkládání z kanálu CI/CD<br/><br/> Bezobslužné stažení do Azure nebo externích služeb  | Yes                              | Výchozí platnost hesla SP je 1 rok.       |                                                           
 | [Integrace s AKS](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | Připojit registr při vytvoření nebo aktualizaci clusteru AKS  | Bezobslužné stažení do clusteru AKS                                                  | Ne, jenom přístup pro vyžádání             | K dispozici pouze v clusteru AKS            |
-| [Spravovaná identita pro prostředky Azure](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` v Azure CLI                                       | Bezobslužné vkládání z kanálu CI/CD z Azure<br/><br/> Bezobslužné získání dat do služeb Azure<br/><br/>   | Ano                              | Používejte jenom ze služeb Azure, které [podporují spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) .              |
+| [Spravovaná identita pro prostředky Azure](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` v Azure CLI                                       | Bezobslužné vkládání z kanálu CI/CD z Azure<br/><br/> Bezobslužné získání dat do služeb Azure<br/><br/>   | Yes                              | Používejte jenom ze služeb Azure, které [podporují spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) .              |
 | [Uživatel s oprávněními správce](#admin-account)                            | `docker login`                                          | Interaktivní nabízená oznámení nebo vyžádaná osoba pro jednotlivé vývojáře nebo testery<br/><br/>Nasazení bitové kopie z registru portálu do Azure App Service nebo Azure Container Instances                      | Ne, vždycky získávat a nabízet přístup  | Jeden účet na registr, nedoporučuje se pro více uživatelů         |
-| [Přístupový token s oborem úložiště](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login`v Azure CLI   | Interaktivní nabízená oznámení nebo vyžádání do úložiště podle individuálního vývojáře nebo testerů<br/><br/> Bezobslužné odeslání/vyžádání do úložiště podle individuálního systému nebo externího zařízení                  | Ano                              | Aktuálně není integrováno se službou AD identity  |
+| [Přístupový token s oborem úložiště](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login` v Azure CLI   | Interaktivní nabízená oznámení nebo vyžádání do úložiště podle individuálního vývojáře nebo testerů<br/><br/> Bezobslužné odeslání/vyžádání do úložiště podle individuálního systému nebo externího zařízení                  | Yes                              | Aktuálně není integrováno se službou AD identity  |
 
 ## <a name="individual-login-with-azure-ad"></a>Individuální přihlášení pomocí Azure AD
 
@@ -37,7 +37,7 @@ Při přímém práci s registrem, jako je například navýšení a vkládání
 az acr login --name <acrName>
 ```
 
-Při přihlášení pomocí `az acr login` rozhraní příkazového řádku použije token vytvořený při provedení [AZ Login](/cli/azure/reference-index#az-login) k bezproblémovému ověření relace s registrem. K dokončení toku ověřování musí být ve vašem prostředí nainstalovaný a spuštěný démon Docker CLI a Docker. `az acr login`k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Po přihlášení tohoto postupu jsou vaše přihlašovací údaje uložené v mezipaměti a následné `docker` příkazy ve vaší relaci nevyžadují uživatelské jméno ani heslo.
+Při přihlášení pomocí `az acr login` rozhraní příkazového řádku použije token vytvořený při provedení [AZ Login](/cli/azure/reference-index#az-login) k bezproblémovému ověření relace s registrem. K dokončení toku ověřování musí být ve vašem prostředí nainstalovaný a spuštěný démon Docker CLI a Docker. `az acr login` k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Po přihlášení tohoto postupu jsou vaše přihlašovací údaje uložené v mezipaměti a následné `docker` příkazy ve vaší relaci nevyžadují uživatelské jméno ani heslo.
 
 > [!TIP]
 > Slouží také `az acr login` k ověření individuální identity v případě, že chcete vyžádat nebo načíst artefakty jiné než Image Docker do registru, například [artefakty OCI](container-registry-oci-artifacts.md).  
@@ -53,7 +53,7 @@ V některých případech může být nutné provést ověření v `az acr login
 Pro tento scénář spusťte `az acr login` nejprve `--expose-token` parametr. Tato možnost zpřístupňuje přístupový token místo přihlášení prostřednictvím Docker CLI.
 
 ```azurecli
-az acr login -name <acrName> --expose-token
+az acr login --name <acrName> --expose-token
 ```
 
 Výstup zobrazuje přístupový token, který se tady zkracuje:

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146772"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651252"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -110,7 +110,7 @@ Například konfigurace spuštění najdete v tématu [použití výpočetní c�
 
 ### <a name="estimators"></a>Odhady
 
-Pro usnadnění školení modelů s oblíbenými rozhraními vám třída Estimator umožňuje snadno sestavit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení).
+Pro usnadnění školení modelů s oblíbenými rozhraními vám třída Estimator umožňuje snadno sestavit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení).
 
 Další informace o odhady najdete v tématu o [modelech vlak ml pomocí odhady](how-to-train-ml-models.md).
 
@@ -121,9 +121,11 @@ Další informace o odhady najdete v tématu o [modelech vlak ml pomocí odhady]
 Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor ZIP jako snímek jako součást záznamu spuštění. Kdokoli s přístupem k pracovnímu prostoru může procházet záznam spuštění a stáhnout snímek.
 
 
-### <a name="logging"></a>Protokolování
+### <a name="logging"></a>protokolování
 
-Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vašem skriptu Pythonu k protokolování libovolných metrik. Po spuštění dotazu na metriky určete, zda běh vytvořil model, který chcete nasadit.
+Azure Machine Learning automaticky zaznamená standardní metriky běhu za vás. Můžete ale také [použít sadu Python SDK k protokolování libovolných metrik](how-to-track-experiments.md).
+
+Existují různé způsoby zobrazení protokolů: sledování stavu spuštění v reálném čase nebo zobrazení výsledků po dokončení. Další informace najdete v tématu [monitorování a zobrazování protokolů spuštění ml](how-to-monitor-view-training-logs.md).
 
 
 > [!NOTE]
@@ -189,6 +191,17 @@ Pokud jste povolili automatické škálování, Azure automaticky škáluje vaš
 
 Příklad nasazení modelu jako webové služby najdete [v tématu nasazení modelu klasifikace imagí v Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
+#### <a name="real-time-endpoints"></a>Koncové body v reálném čase
+
+Když nasadíte školený model v Návrháři (Preview), můžete [model nasadit jako koncový bod v reálném čase](tutorial-designer-automobile-price-deploy.md). Koncový bod v reálném čase obvykle přijímá jednu žádost prostřednictvím koncového bodu REST a vrací předpovědi v reálném čase. To je na rozdíl od dávkového zpracování, který zpracovává více hodnot najednou a ukládá výsledky po dokončení do úložiště dat.
+
+#### <a name="pipeline-endpoints"></a>Koncové body kanálu
+
+Koncové body kanálu umožňují volat [kanály ml](#ml-pipelines) programově prostřednictvím koncového bodu REST. Koncové body kanálu umožňují automatizovat vaše pracovní postupy kanálu.
+
+Koncový bod kanálu je kolekcí publikovaných kanálů. Tato logická organizace vám umožní spravovat a volat víc kanálů pomocí stejného koncového bodu. Každý publikovaný kanál v koncovém bodu kanálu je ve verzi. Můžete vybrat výchozí kanál pro koncový bod nebo zadat verzi ve volání REST.
+ 
+
 #### <a name="iot-module-endpoints"></a>Koncové body modulu IoT
 
 Nasazený koncový bod modulu IoT je kontejner Docker, který obsahuje váš model a přidružený skript nebo aplikaci a všechny další závislosti. Tyto moduly nasadíte pomocí Azure IoT Edge na hraničních zařízeních.
@@ -212,12 +225,13 @@ Kroky kanálu jsou opakovaně použitelné a je možné je spustit bez nutnosti 
 
 ### <a name="studio"></a>Studio
 
-[Azure Machine Learning Studio](https://ml.azure.com) poskytuje webové zobrazení všech artefaktů ve vašem pracovním prostoru.  Můžete zobrazit výsledky a podrobnosti vašich datových sad, experimentů, kanálů, modelů a koncových bodů.  V studiu můžete také spravovat výpočetní prostředky a úložiště dat.
+[Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) poskytuje webové zobrazení všech artefaktů ve vašem pracovním prostoru.  Můžete zobrazit výsledky a podrobnosti vašich datových sad, experimentů, kanálů, modelů a koncových bodů.  V studiu můžete také spravovat výpočetní prostředky a úložiště dat.
 
-Studio také umožňuje přístup k interaktivním nástrojům, které jsou součástí Azure Machine Learning:
+Nástroj Studio také umožňuje přístup k interaktivním nástrojům, které jsou součástí Azure Machine Learning:
 
 + [Azure Machine Learning Designer (Preview)](concept-designer.md) k provedení kroků pracovního postupu bez psaní kódu
 + Webové prostředí pro [automatizované strojové učení](concept-automated-ml.md)
++ [Azure Machine Learning poznámkových blocích](how-to-run-jupyter-notebooks.md) pro psaní a spouštění vlastního kódu na integrovaných serverech Jupyter notebook.
 + Vytváření, Správa a monitorování projektů k označování dat v [projektech](how-to-create-labeling-projects.md)
 
 ### <a name="programming-tools"></a>Programovací nástroje
@@ -226,7 +240,7 @@ Studio také umožňuje přístup k interaktivním nástrojům, které jsou sou�
 > Nástroje označené (Preview) jsou momentálně ve verzi Public Preview.
 > Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
++  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 + Interakci se službou v jakémkoli prostředí R s [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Preview).
 + Pro automatizaci použijte [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) .
 + [Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.

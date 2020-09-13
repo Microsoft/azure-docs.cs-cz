@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 18c7e5b3a1401540d7a94186fda647d413d562c0
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723839"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650619"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Povolit protokolování v běhu školicích kurzů Azure ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,17 +37,17 @@ Protokoly vám můžou pomáhat při diagnostice chyb a upozornění nebo sledov
 
 ## <a name="data-types"></a>Typy dat
 
-Můžete protokolovat více datových typů, včetně skalárních hodnot, seznamů, tabulek, obrázků, adresářů a dalších. Další informace a příklady kódu Pythonu pro různé datové typy najdete na stránce s [odkazem na třídu spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
+Můžete protokolovat více datových typů, včetně skalárních hodnot, seznamů, tabulek, obrázků, adresářů a dalších. Další informace a příklady kódu Pythonu pro různé datové typy najdete na stránce s [odkazem na třídu spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true).
 
 ## <a name="interactive-logging-session"></a>Relace interaktivního protokolování
 
-Relace interaktivního protokolování se obvykle používají v prostředích poznámkových bloků. Metoda [experiment. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) spustí interaktivní relaci protokolování. Všechny metriky zaznamenávané během relace jsou přidány do záznamu spuštění v experimentu. Metoda [Run. Complete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) ukončí relace a označí běh jako dokončený.
+Relace interaktivního protokolování se obvykle používají v prostředích poznámkových bloků. Metoda [experiment. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) spustí interaktivní relaci protokolování. Všechny metriky zaznamenávané během relace jsou přidány do záznamu spuštění v experimentu. Metoda [Run. Complete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) ukončí relace a označí běh jako dokončený.
 
 ## <a name="scriptrunconfig-logs"></a>Protokoly ScriptRunConfig
 
-V této části se dozvíte, jak přidat kód protokolování do ScriptConfigch spuštění. Třídu [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) můžete použít k zapouzdření skriptů a prostředí pro opakující se běhy. Tuto možnost můžete použít také k zobrazení widgetu vizuálních poznámkových bloků Jupyter pro monitorování.
+V této části se dozvíte, jak přidat kód protokolování do ScriptConfigch spuštění. Třídu [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) můžete použít k zapouzdření skriptů a prostředí pro opakující se běhy. Tuto možnost můžete použít také k zobrazení widgetu vizuálních poznámkových bloků Jupyter pro monitorování.
 
-V tomto příkladu se provádí rozmazání parametrů přes alfa hodnoty a zachycuje výsledky pomocí metody [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) .
+V tomto příkladu se provádí rozmazání parametrů přes alfa hodnoty a zachycuje výsledky pomocí metody [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----) .
 
 1. Vytvořte školicí skript, který obsahuje logiku protokolování, `train.py` .
 

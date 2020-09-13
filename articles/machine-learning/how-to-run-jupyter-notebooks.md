@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a59905c1d410ae0ffd4520f3b61fd37e649012e7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386448"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650916"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,12 +30,12 @@ Podívejte se, jak můžete:
 * Změna prostředí poznámkového bloku
 * Vyhledání podrobností o výpočetních instancích použitých ke spouštění vašich poznámkových bloků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-## <a name="create-notebooks"></a><a name="create"></a>Vytvoření poznámkových bloků
+## <a name="create-notebooks"></a><a name="create"></a> Vytvoření poznámkových bloků
 
 V pracovním prostoru Azure Machine Learning vytvořte nový Poznámkový blok Jupyter a začněte pracovat. Nově vytvořený Poznámkový blok je uložený ve výchozím úložišti pracovního prostoru. Tento Poznámkový blok můžete sdílet s kýmkoli, kdo má přístup k pracovnímu prostoru. 
 
@@ -43,12 +43,12 @@ Vytvoření nového poznámkového bloku:
 
 1. Otevřete pracovní prostor v [Azure Machine Learning Studiu](https://ml.azure.com).
 1. Na levé straně vyberte **poznámkové bloky**. 
-1. Vyberte ikonu **vytvořit nový soubor** nad seznamem **uživatelských souborů** v části **Moje soubory** .
+1. Vyberte ikonu  **vytvořit nový soubor** nad seznamem **uživatelských souborů** v části **Moje soubory** .
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Create new file":::
 
 1. Pojmenujte soubor. 
-1. Pro Jupyter Notebook soubory vyberte jako typ souboru **Poznámkový blok Python** .
+1. Pro Jupyter Notebook soubory vyberte jako typ souboru **Poznámkový blok** .
 1. Vyberte adresář souborů.
 1. Vyberte **Vytvořit**.
 
@@ -65,7 +65,7 @@ Váš pracovní prostor obsahuje složku **ukázek** s poznámkami, které jsou 
 
 Příklad najdete v tématu [kurz: vytvoření prvního experimentu ml](tutorial-1st-experiment-sdk-setup.md#azure).
 
-### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a>Použít soubory z Gitu a verze moje soubory
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> Použít soubory z Gitu a verze moje soubory
 
 Ke všem operacím Git můžete přistupovat pomocí okna terminálu. Všechny soubory a složky Git budou uložené v systému souborů pracovního prostoru.
 
@@ -82,7 +82,7 @@ Přístup k terminálu:
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Otevření terminálu":::
 
-1. Pokud ikonu nevidíte, vyberte **...** napravo od cíle výpočtů a pak vyberte **otevřít terminál** .
+1. Pokud ikonu nevidíte, vyberte **...** napravo od cíle výpočtů a pak vyberte **otevřít terminál**.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Otevřít terminál z...":::
 
@@ -92,7 +92,7 @@ Přečtěte si další informace o [klonování úložišť Git do systému soub
 
 ### <a name="share-notebooks-and-other-files"></a>Sdílení poznámkových bloků a dalších souborů
 
-Zkopírujte a vložte adresu URL pro sdílení poznámkového bloku nebo souboru.  K této adrese URL budou mít přístup jenom jiní uživatelé pracovního prostoru.  Přečtěte si další informace o tom, jak [udělit přístup k pracovnímu prostoru](how-to-assign-roles.md).
+Zkopírujte a vložte adresu URL pro sdílení poznámkového bloku nebo souboru.  K této adrese URL mají přístup pouze jiní uživatelé pracovního prostoru.  Přečtěte si další informace o tom, jak [udělit přístup k pracovnímu prostoru](how-to-assign-roles.md).
 
 ## <a name="edit-a-notebook"></a>Úprava poznámkového bloku
 
@@ -109,6 +109,22 @@ Na panelu nástrojů poznámkového bloku můžete také spustit Jupyter nebo Ju
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) je podpora dokončování kódu, která zahrnuje několik funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Tyto funkce vám pomůžou získat další informace o kódu, který používáte, sledovat parametry, které píšete, a přidávat volání vlastností a metod s pouze několika klávesami.  
 
 Při psaní kódu použijte kombinaci kláves CTRL + mezerník pro aktivaci technologie IntelliSense.
+
+### <a name="clean-your-notebook-preview"></a>Vyčištění poznámkového bloku (Preview)
+
+> [!IMPORTANT]
+> Funkce Shromážděte je aktuálně ve verzi Public Preview.
+> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+V průběhu vytváření poznámkového bloku obvykle skončíte s buňkami, které jste použili pro zkoumání nebo ladění dat. Funkce *shromáždit* vám pomůže vytvořit čistý Poznámkový blok bez těchto cizích buněk.
+
+1. Spusťte všechny buňky v poznámkovém bloku.
+1. Vyberte buňku obsahující kód, který chcete spustit pro nový Poznámkový blok. Například kód, který odesílá experiment, nebo možná kód, který registruje model.
+1. Vyberte ikonu **shromáždit** , která se zobrazí na panelu nástrojů buňky.
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Snímek obrazovky: výběr ikony shromáždění":::
+1. Zadejte název nového poznámkového bloku "shromážděného".  
+
+Nový Poznámkový blok obsahuje jenom buňky kódu se všemi buňkami, které jsou potřebné k vytvoření stejných výsledků jako buňky, kterou jste vybrali pro shromažďování.
 
 ### <a name="save-and-checkpoint-a-notebook"></a>Uložení a vytvoření kontrolního bodu poznámkového bloku
 
@@ -141,7 +157,7 @@ Výběrem **kontrolního bodu** v nabídce Poznámkový blok vytvořte pojmenova
 Poznámkové bloky **uživatelských souborů** *můžete* odstranit některým z těchto způsobů:
 
 * V nástroji Studio vyberte **...** na konci složky nebo souboru.  Ujistěte se, že používáte podporovaný prohlížeč (Microsoft Edge, Chrome nebo Firefox).
-* Z libovolného panelu nástrojů poznámkového bloku vyberte [**otevřít terminál**](#terminal) pro přístup k oknu terminálu pro instanci Compute.
+* Z libovolného panelu nástrojů poznámkového bloku vyberte [**otevřít terminál**](#terminal)  pro přístup k oknu terminálu pro instanci Compute.
 * V Jupyter nebo JupyterLab s jejich nástroji.
 
 ## <a name="run-an-experiment"></a>Spuštění experimentu
@@ -157,7 +173,7 @@ Pouze můžete zobrazit a použít výpočetní instance, které vytvoříte.  V
 
 ### <a name="view-logs-and-output"></a>Zobrazit protokoly a výstup
 
-Pomocí [widgetů poznámkového bloku](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) můžete zobrazit průběh běhu a protokolů. Pomůcka je asynchronní a poskytuje aktualizace až do dokončení školení. Pomůcky Azure Machine Learning jsou také podporovány v Jupyter a JupterLab.
+Pomocí [widgetů poznámkového bloku](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) můžete zobrazit průběh běhu a protokolů. Pomůcka je asynchronní a poskytuje aktualizace až do dokončení školení. Pomůcky Azure Machine Learning jsou také podporovány v Jupyter a JupterLab.
 
 ## <a name="change-the-notebook-environment"></a>Změna prostředí poznámkového bloku
 

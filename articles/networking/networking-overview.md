@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037248"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651739"
 ---
 # <a name="azure-networking-services-overview"></a>Přehled služby Azure Networking Services
 
@@ -31,14 +31,14 @@ Tato část popisuje služby, které poskytují připojení mezi prostředky Azu
 
 |Služba|Proč použít?|Scénáře|
 |---|---|---|
-|[Virtuální síť](#vnet)|Umožňuje prostředkům Azure zabezpečeně komunikovat mezi sebou, internetem a místními sítěmi.| <p>[Filtrování síťového provozu](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Směrování síťového provozu](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Omezení síťového přístupu k prostředkům](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Propojení virtuálních sítí](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
+|[Virtuální síť](#vnet)|Umožňuje prostředkům Azure zabezpečeně komunikovat mezi sebou, internetem a místními sítěmi.| <p>[Filtrování provozu sítě](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Směrování provozu sítě](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Omezení síťového přístupu k prostředkům](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Připojení virtuálních sítí](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Rozšiřuje vaše místní sítě do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení.|<p>[Vytvoření a úprava okruhu ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[Propojení virtuální sítě s okruhem ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[Konfigurace a Správa filtrů tras pro okruhy ExpressRoute](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN Gateway](#vpngateway)|Odesílá zašifrovaný provoz mezi virtuální sítí Azure a místním umístěním přes veřejný Internet.|<p>[Připojení typu site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Připojení Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
 |[Virtual WAN](#virtualwan)|Optimalizuje a automatizuje připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím.|<p>[Připojení Site-to-site](../virtual-wan/virtual-wan-site-to-site-portal.md), [připojení ExpressRoute](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Hostuje domény DNS, které poskytují překlad názvů pomocí Microsoft Azure infrastruktury.|<p>[Hostování vaší domény v Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Vytvoření záznamů DNS pro webovou aplikaci](../dns/dns-web-sites-custom-domain.md)</p> <p>[Vytvořit záznam aliasu pro Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Vytvořit záznam aliasu pro veřejnou IP adresu](../dns/tutorial-alias-pip.md)</p> <p>[Vytvoří záznam aliasu pro záznam prostředku zóny.](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Nakonfigurujte zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům přímo v Azure Portal přes TLS. Když se připojujete přes Azure bastionu, virtuální počítače nepotřebují veřejnou IP adresu.|<p>[Vytvoření hostitele služby Azure Bastion](../bastion/bastion-create-host-portal.md)</p><p>[Připojení pomocí SSH k virtuálnímu počítači se systémem Linux](../bastion/bastion-connect-vm-ssh.md)</p><p>[Připojení pomocí protokolu RDP k virtuálnímu počítači s Windows](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Brána NAT služby Virtual Network](#nat)|Vytvořte bránu NAT pro zajištění odchozího připojení pro virtuální počítač.|<p>[Vytvoření brány NAT](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
-|[Služba partnerského vztahu Azure (Preview)](#azurepeeringservice)|Spolupráci s poskytovateli služeb pro zajištění optimálního a spolehlivého směrování do cloudu Microsoftu prostřednictvím veřejné sítě.|<p>[Registrovat službu Azure peering Service](../peering-service/azure-portal.md)</p>|
+|[Azure Peering Service](#azurepeeringservice)|Spolupráci s poskytovateli služeb pro zajištění optimálního a spolehlivého směrování do cloudu Microsoftu prostřednictvím veřejné sítě.|<p>[Registrovat službu Azure peering Service](../peering-service/azure-portal.md)</p>|
 ||||
 
 
@@ -83,7 +83,7 @@ Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Int
 
 ![Brána NAT služby Virtual Network](./media/networking-overview/flow-map.png)
 
-### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a>Služba partnerských vztahů Azure
+### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Služba partnerských vztahů Azure
 Služba Azure peering vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Office 365, Dynamics 365, software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. Další informace najdete v tématu [co je služba Azure peering Service?](../peering-service/about.md).
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Služby ochrany aplikací
@@ -113,7 +113,7 @@ Zákazníci se můžou rozhodnout nasadit [Azure WAF s Application Gateway](../a
 ![Firewall webových aplikací](./media/networking-overview/waf-overview.png)
 
 
-### <a name="azure-firewall"></a><a name="firewall"></a>Brána Azure Firewall
+### <a name="azure-firewall"></a><a name="firewall"></a>Azure Firewall
 Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Pomocí Azure Firewall můžete centrálně vytvářet, vysazovat a protokolovat zásady pro připojení aplikací a sítí napříč předplatnými a virtuálními sítěmi. Brána Azure Firewall používá statickou veřejnou IP adresu pro prostředky virtuální sítě a díky tomu umožňuje venkovním bránám firewall identifikovat provoz pocházející z vaší virtuální sítě. 
 
 Další informace o Azure Firewall najdete v dokumentaci k [Azure firewall](../firewall/overview.md).

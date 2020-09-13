@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d68323bb72779ec5978c721b5258d4c8a8d4940d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163947"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650805"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrace na nové verze rozhraní API Azure Time Series Insights Gen2
 
@@ -39,7 +39,7 @@ Aby uživatelé mohli migrovat [proměnné modelu časové řady](./concepts-var
 
 1. V Průzkumníkovi se zobrazí výzva, aby se aktualizovala syntaxe používaná proměnnými modelu časové řady a uloženými dotazy.
 
-    [![Výzva](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
+    [![Výzv](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
 
     Pokud oznámení omylem uzavřete, najdete ho na panelu oznámení.
 
@@ -56,7 +56,7 @@ Aby uživatelé mohli migrovat [proměnné modelu časové řady](./concepts-var
 
     [![Aktualizovat proměnné](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-1. Klikněte na **aktualizovat uložené dotazy**. Nástroj vás upozorní, když byly proměnné aktualizovány.
+1. Klikněte na **aktualizovat uložené dotazy**. Tento nástroj vás upozorní na to, že byly uložené dotazy aktualizované.
 
     [![Aktualizace uložených dotazů](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
@@ -86,7 +86,7 @@ Pokud vaše vlastní aplikace provádí volání následujících koncových bod
   - Rozhraní API instancí
     - [Všechny operace Batch](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
     - [Seznam](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
-    - [Vyhledávání](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
+    - [Hledání](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
     - [Návrh](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - Rozhraní API hierarchie
     - [Všechny operace Batch](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)

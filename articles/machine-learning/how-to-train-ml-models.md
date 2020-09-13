@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 69987210d69855b0fcaa676e406ec6a1c02a4d85
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146585"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650604"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Výuka modelů pomocí Azure Machine Learning s využitím Estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "89146585"
 Pomocí Azure Machine Learning můžete snadno odeslat školicí skript do [různých výpočetních cílů](how-to-set-up-training-targets.md), a to pomocí [objektu RunConfiguration](how-to-set-up-training-targets.md#whats-a-run-configuration) a [objektu ScriptRunConfig](how-to-set-up-training-targets.md#submit). Tento model poskytuje značnou flexibilitu a maximální kontrolu.
 
 
-Třída Estimator usnadňuje výuce modelů pomocí obsáhlého učení a posílení učení. Poskytuje abstrakci vysoké úrovně, která umožňuje snadno vytvořit konfiguraci spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odeslání školicího skriptu pomocí libovolného vzdělávacího rozhraní, které zvolíte (například scikit-učení) na jakémkoli cílovém výpočetním prostředí, ať už se jedná o místní počítač, jeden virtuální počítač v Azure nebo cluster GPU v Azure. Pro PyTorch, TensorFlow, řetězení a posílení výukových úkolů Azure Machine Learning také poskytuje odpovídající [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)a [výztuže Learning](how-to-use-reinforcement-learning.md) odhady, aby bylo možné tyto architektury zjednodušit.
+Třída Estimator usnadňuje výuce modelů pomocí obsáhlého učení a posílení učení. Poskytuje abstrakci vysoké úrovně, která umožňuje snadno vytvořit konfiguraci spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) k odeslání školicího skriptu pomocí libovolného vzdělávacího rozhraní, které zvolíte (například scikit-učení) na jakémkoli cílovém výpočetním prostředí, ať už se jedná o místní počítač, jeden virtuální počítač v Azure nebo cluster GPU v Azure. Pro PyTorch, TensorFlow, řetězení a posílení výukových úkolů Azure Machine Learning také poskytuje odpovídající [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true), [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true)a [výztuže Learning](how-to-use-reinforcement-learning.md) odhady, aby bylo možné tyto architektury zjednodušit.
 
 ## <a name="train-with-an-estimator"></a>Výuka s Estimator
 
@@ -116,7 +116,7 @@ Parametr | Popis | Výchozí
 `custom_docker_image`| Název obrázku, který chcete použít. Poskytněte jenom image dostupné ve veřejných úložištích Docker (v tomto případě Docker Hub). Pokud chcete použít image z privátního úložiště Docker, použijte `environment_definition` místo toho parametr konstruktoru.| `None`
 `node_count`| Počet uzlů, které se mají použít pro úlohu školení | `1`
 `process_count_per_node`| Počet procesů (nebo "pracovní procesy"), které mají být spuštěny na jednotlivých uzlech. V takovém případě použijete `2` k dispozici GPU na jednotlivých uzlech.| `1`
-`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objekt pro spouštění distribuovaného školení pomocí back-endu MPI.  | `None`
+`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) objekt pro spouštění distribuovaného školení pomocí back-endu MPI.  | `None`
 
 
 Nakonec odešlete školicí úlohu:
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 Po proškolení modelu ho můžete uložit a zaregistrovat do svého pracovního prostoru. Registrace modelu umožňuje ukládat a modelovat vaše modely do svého pracovního prostoru, aby bylo možné zjednodušit [správu modelů a nasazení](concept-model-management-and-deployment.md).
 
-Spuštění následujícího kódu zaregistruje model do vašeho pracovního prostoru a zpřístupní ho pro referenci podle názvu ve vzdálených výpočetních kontextech nebo ve skriptech nasazení. [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)Další informace a další parametry najdete v referenční dokumentaci.
+Spuštění následujícího kódu zaregistruje model do vašeho pracovního prostoru a zpřístupní ho pro referenci podle názvu ve vzdálených výpočetních kontextech nebo ve skriptech nasazení. [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)Další informace a další parametry najdete v referenční dokumentaci.
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)

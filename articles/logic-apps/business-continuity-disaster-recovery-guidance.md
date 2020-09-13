@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066531"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658197"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Provozní kontinuita a zotavení po havárii pro Azure Logic Apps
 
@@ -69,7 +69,7 @@ Tento příklad ukazuje předchozí primární a sekundární instance aplikace 
 
 ## <a name="connections-to-resources"></a>Připojení k prostředkům
 
-Azure Logic Apps poskytuje [integrované triggery a akce a také stovky spravovaných konektorů](../connectors/apis-list.md) , které může vaše aplikace logiky použít k práci s jinými aplikacemi, službami, systémy a dalšími prostředky, jako jsou účty Azure Storage, SQL Server databáze, e-mailové účty Office 365 Outlook a tak dále. Pokud vaše aplikace logiky potřebuje k těmto prostředkům přístup, vytvoříte připojení, která ověřují přístup k těmto prostředkům. Každé připojení je samostatný prostředek Azure, který existuje v určitém umístění a nemůže ho používat prostředky v jiných umístěních.
+Azure Logic Apps poskytuje [integrované triggery a akce a také stovky spravovaných konektorů](../connectors/apis-list.md) , které může vaše aplikace logiky použít k práci s jinými aplikacemi, službami, systémy a dalšími prostředky, jako jsou účty Azure Storage, SQL Server databáze, pracovní nebo školní e-mailové účty atd. Pokud vaše aplikace logiky potřebuje k těmto prostředkům přístup, vytvoříte připojení, která ověřují přístup k těmto prostředkům. Každé připojení je samostatný prostředek Azure, který existuje v určitém umístění a nemůže ho používat prostředky v jiných umístěních.
 
 Pro vaši strategii zotavení po havárii zvažte umístění, kde existují závislé prostředky relativní vzhledem k instancím vaší aplikace logiky:
 
@@ -102,8 +102,8 @@ Můžete nastavit primární a sekundární umístění, aby instance aplikace l
 
 | Role primárního-sekundárního | Popis |
 |------------------------|-------------|
-| *Aktivní – aktivní* | Primární a sekundární instance aplikace logiky v obou umístěních aktivně zpracovávají požadavky následujícími způsoby: <p><p>- *Vyrovnávání zatížení*: obě instance můžou na každou instanci naslouchat i vyrovnávání zatížení, a to v případě potřeby. <p>- *Konkurenční spotřebitelé*: obě instance můžou fungovat jako konkurenční spotřebitelé, takže instance budou soutěžit na zprávy z fronty. Pokud dojde k selhání jedné instance, převezme další instance úlohu. |
-| *Aktivní – pasivní* | Primární instance aplikace logiky aktivně zpracovává celou úlohu, zatímco sekundární instance je pasivní (zakázaná nebo neaktivní). Sekundární čeká na signál, že primární je nedostupný nebo nefunguje kvůli přerušení nebo selhání a přebírá úlohu jako aktivní instanci. |
+| *Aktivní-aktivní* | Primární a sekundární instance aplikace logiky v obou umístěních aktivně zpracovávají požadavky následujícími způsoby: <p><p>- *Vyrovnávání zatížení*: obě instance můžou na každou instanci naslouchat i vyrovnávání zatížení, a to v případě potřeby. <p>- *Konkurenční spotřebitelé*: obě instance můžou fungovat jako konkurenční spotřebitelé, takže instance budou soutěžit na zprávy z fronty. Pokud dojde k selhání jedné instance, převezme další instance úlohu. |
+| *Aktivní-pasivní* | Primární instance aplikace logiky aktivně zpracovává celou úlohu, zatímco sekundární instance je pasivní (zakázaná nebo neaktivní). Sekundární čeká na signál, že primární je nedostupný nebo nefunguje kvůli přerušení nebo selhání a přebírá úlohu jako aktivní instanci. |
 | Vrchní | Některé Logic Apps hrají roli aktivní-aktivní, zatímco jiné aplikace logiky hrají roli aktivní-pasivní. |
 |||
 

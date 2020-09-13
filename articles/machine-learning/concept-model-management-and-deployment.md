@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543380"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651082"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -153,12 +153,12 @@ Služba Azure ML poskytuje možnost sledovat kompletní záznam auditu všech pr
 - Možnost [Interpretace](how-to-machine-learning-interpretability.md) vám umožní vysvětlit vaše modely, dodržovat dodržování předpisů a pochopit, jak modely dorazí ve výsledku pro daný vstup.
 - Historie spuštění Azure ML ukládá snímek kódu, dat a výpočtů používaných pro výuku modelu.
 - Registr modelu Azure ML zachycuje všechna metadata přidružená k vašemu modelu (které experiment vyškole, pokud je nasazený, pokud je jeho nasazení v pořádku).
-- [Integrace s Azure](how-to-use-event-grid.md) umožňuje působit na události v průběhu životního cyklu ml. Například události registrace modelu, nasazení, posunu dat a školení (spustit).
+- [Integrace s Azure](how-to-use-event-grid.md)  umožňuje působit na události v průběhu životního cyklu ml. Například události registrace modelu, nasazení, posunu dat a školení (spustit).
 
 > [!TIP]
 > I když jsou některé informace o modelech a datových sadách automaticky zachyceny, můžete přidat další informace pomocí __značek__. Při hledání registrovaných modelů a datových sad v pracovním prostoru můžete použít značky jako filtr.
 >
-> Přidružení datové sady k registrovanému modelu je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v tématu [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) Class reference.
+> Přidružení datové sady k registrovanému modelu je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v tématu [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) Class reference.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Upozornění, automatizace a upozornění na události v životním cyklu ML

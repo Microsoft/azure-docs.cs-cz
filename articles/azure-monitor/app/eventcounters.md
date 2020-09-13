@@ -4,18 +4,18 @@ description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Appli
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3082c90f3e9f7a150206e1df8806af0de1c17024
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f8ae36545eecbbad2a6695ca979fb7da8380e8cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936482"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657020"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
 `EventCounter` je základní mechanismus .NET/.NET pro publikování a používání čítačů nebo statistik. [Tento](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument obsahuje přehled `EventCounters` a příklady, jak je publikovat a využívat. EventCounters jsou podporované na všech platformách OS – Windows, Linux a macOS. Můžeme si představit jako ekvivalent pro [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter) pro různé platformy, který je podporován pouze v systémech Windows.
 
-I když uživatelé mohou publikovat jakékoli vlastní `EventCounters` , aby splnili požadavky, modul runtime .NET Core 3,0 ve výchozím nastavení publikuje sadu těchto čítačů. Dokument vás provede kroky potřebnými ke shromáždění a zobrazení `EventCounters` (definované systémem nebo uživatelem) v Azure Application Insights.
+I když uživatelé mohou publikovat jakékoli vlastní `EventCounters` , aby splnili požadavky, .NET Core 3,0 a vyšší běhový modul zveřejňuje ve výchozím nastavení sadu těchto čítačů. Tento dokument vás provede kroky potřebnými ke shromáždění a zobrazení `EventCounters` (definované systémem nebo uživatelem definovanému) v Azure Application Insights.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>Shromažďování EventCounters pomocí Application Insights
 
@@ -23,7 +23,7 @@ Application Insights podporuje shromažďování `EventCounters` s jeho `EventCo
 
 ## <a name="default-counters-collected"></a>Shromážděny výchozí čítače
 
-Pro aplikace běžící v .NET Core 3,0 se sada SDK automaticky shromáždí následující čítače. Název čítačů bude ve formátu "kategorie | Čítač ".
+Pro aplikace běžící v rozhraní .NET Core 3,0 nebo vyšší jsou následující čítače shromažďovány automaticky sadou SDK. Název čítačů bude ve formátu "kategorie | Čítač ".
 
 |Kategorie | Čítač|
 |---------------|-------|
@@ -48,7 +48,7 @@ Pro aplikace běžící v .NET Core 3,0 se sada SDK automaticky shromáždí ná
 |`System.Runtime` | `active-timer-count` |
 
 > [!NOTE]
-> Čítače kategorie Microsoft. AspNetCore. Hosting se přidávají jenom v aplikacích ASP.NET Core.
+> Od verze 2.15.0-beta3 sady [ASPNETCORE SDK](asp-net-core.md) nebo [sady WorkerService SDK](worker-service.md)nejsou ve výchozím nastavení shromažďovány žádné čítače. Samotný modul je povolený, takže uživatelé mohou jednoduše přidat požadované čítače a shromáždit je.
 
 ## <a name="customizing-counters-to-be-collected"></a>Přizpůsobení čítačů, které se mají shromažďovat
 
@@ -56,12 +56,14 @@ Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přiz
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
+    using Microsoft.Extensions.DependencyInjection;
 
     public void ConfigureServices(IServiceCollection services)
     {
         //... other code...
 
-        // The following code shows several customizations done to EventCounterCollectionModule.
+        // The following code shows how to configure the module to collect
+        // additional counters.
         services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
@@ -75,15 +77,36 @@ Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přiz
                 module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
             }
         );
-
-        // The following code removes EventCounterCollectionModule to disable the module completely.
-        var eventCounterModule = services.FirstOrDefault<ServiceDescriptor>
-                    (t => t.ImplementationType == typeof(EventCounterCollectionModule));
-        if (eventCounterModule != null)
-        {
-            services.Remove(eventCounterModule);
-        }
     }
+```
+
+## <a name="disabling-eventcounter-collection-module"></a>Zakazuje se modul EventCounter Collection.
+
+`EventCounterCollectionModule` lze zakázat pomocí `ApplicationInsightsServiceOptions` . Příklad použití ASP.NET Core SDK je uveden níže.
+
+```csharp
+    using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+    using Microsoft.Extensions.DependencyInjection;
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        //... other code...
+
+        var applicationInsightsServiceOptions = new ApplicationInsightsServiceOptions();
+        applicationInsightsServiceOptions.EnableEventCounterCollectionModule = false;
+        services.AddApplicationInsightsTelemetry(applicationInsightsServiceOptions);
+    }
+```
+
+Podobný přístup lze také použít pro WorkerService SDK, ale obor názvů musí být změněn, jak je znázorněno v následujícím příkladu.
+
+```csharp
+    using Microsoft.ApplicationInsights.WorkerService;
+    using Microsoft.Extensions.DependencyInjection;
+
+    var applicationInsightsServiceOptions = new ApplicationInsightsServiceOptions();
+    applicationInsightsServiceOptions.EnableEventCounterCollectionModule = false;
+    services.AddApplicationInsightsTelemetryWorkerService(applicationInsightsServiceOptions);
 ```
 
 ## <a name="event-counters-in-metric-explorer"></a>Čítače událostí v Průzkumníkovi metrik
@@ -91,7 +114,7 @@ Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přiz
 Pokud chcete v [Průzkumníkovi metriky](../platform/metrics-charts.md)zobrazit EventCounter metriky, vyberte Application Insights prostředek a zvolte metriky založené na protokolu jako obor názvů metriky. Pak se metriky EventCounter zobrazí v kategorii vlastní.
 
 > [!div class="mx-imgBorder"]
-> ![Čítače událostí hlášené v Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
+> ![Čítače událostí hlášené v Průzkumníkovi metrik Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Čítače událostí v analýzách
 
@@ -104,7 +127,7 @@ customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Čítače událostí hlášené v Application Insights](./media/event-counters/analytics-event-counters.png)
+> ![Čítače událostí hlášené v Application Insights Analytics](./media/event-counters/analytics-event-counters.png)
 
 Chcete-li získat graf určitého čítače (například: `ThreadPool Completed Work Item Count` ) za poslední období, spusťte následující dotaz.
 
@@ -128,16 +151,6 @@ Podobně jako u jiných metrik můžete [nastavit výstrahu](../platform/alerts-
 ### <a name="can-i-see-eventcounters-in-live-metrics"></a>Můžu v živých metrikách zobrazit EventCounters?
 
 Živé metriky nezobrazují EventCounters k dnešnímu dni. K zobrazení telemetrie použijte Průzkumníka metrik nebo analýzu.
-
-### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>Jaké platformy se můžu podívat na výchozí seznam čítačů .NET Core 3,0?
-
-EventCounter nevyžaduje žádná zvláštní oprávnění a podporuje se na všech platformách .NET Core 3,0. Sem patří:
-
-* **Operační systém**: Windows, Linux nebo MacOS.
-* **Metoda hostování**: v procesu nebo mimo proces.
-* **Metoda nasazení**: závislá na architektuře nebo samostatně obsažená.
-* **Webový server**: IIS (Internet Information Server) nebo Kestrel.
-* **Hostující platforma**: funkce Web Apps Azure App Service, virtuální počítač Azure, Docker, Azure Kubernetes Service (AKS) a tak dále.
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Na portálu webové aplikace Azure jsem Application Insights povolit. Ale nevidím EventCounters.?
 

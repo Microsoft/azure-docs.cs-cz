@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6b40130fb1d965abf76ba9ed1f6ebd45d94c8e01
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144834"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651024"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -42,13 +42,13 @@ Každá z těchto metod školení může pro školení použít různé typy vý
 
 Sada SDK Azure Machine Learning pro Python umožňuje sestavovat a spouštět pracovní postupy strojového učení s Azure Machine Learning. Můžete komunikovat se službou z interaktivní relace Pythonu, poznámkových bloků Jupyter, Visual Studio Code nebo jiného integrovaného vývojového prostředí (IDE).
 
-* [Co je sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Instalace/aktualizace sady SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Co je sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+* [Instalace/aktualizace sady SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Konfigurace vývojového prostředí pro Azure Machine Learning](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Konfigurace spuštění
 
-Úlohu obecného školení s Azure Machine Learning lze definovat pomocí [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py). Pak se použije konfigurace spuštění společně se školicími skripty pro výuku modelu na výpočetním cíli.
+Úlohu obecného školení s Azure Machine Learning lze definovat pomocí [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true). Pak se použije konfigurace spuštění společně se školicími skripty pro výuku modelu na výpočetním cíli.
 
 Můžete začít s konfigurací spuštění pro místní počítač a pak v případě potřeby přejít na jeden pro cloudový cíl výpočtů. Když měníte cíl výpočtů, změníte jenom konfiguraci spuštění, kterou použijete. Spuštění také zaznamená informace o úloze školení, jako jsou vstupy, výstupy a protokoly.
 
@@ -123,7 +123,7 @@ Další informace najdete v následujících článcích:
 * [Kurz: vytvoření modelu logistické regrese](tutorial-1st-r-experiment.md)
 * [Referenční informace o Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/index.html)
 
-## <a name="azure-machine-learning-designer"></a>Návrhář Azure Machine Learning
+## <a name="azure-machine-learning-designer"></a>Návrhář služby Azure Machine Learning
 
 Návrhář umožňuje výukové modely pomocí rozhraní přetažení ve webovém prohlížeči.
 
@@ -147,7 +147,7 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 
 Další informace najdete v tématu o [mnoha modelech řešení modelů](https://aka.ms/many-models) na GitHubu.
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>Rozhraní příkazového řádku
 
 Machine Learning CLI je rozšířením rozhraní příkazového řádku Azure CLI. Poskytuje příkazy rozhraní příkazového řádku pro různé platformy pro práci s Azure Machine Learning. Typicky k automatizaci úloh, jako je například školení modelu strojového učení, použijete rozhraní příkazového řádku.
 

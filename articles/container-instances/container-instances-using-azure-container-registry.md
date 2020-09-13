@@ -4,14 +4,13 @@ description: Naučte se nasazovat kontejnery v Azure Container Instances tím, �
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927432"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657005"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení ze služby Azure Container Registry do služby Azure Container Instances
 
@@ -31,6 +30,9 @@ Azure Container Registry poskytuje další [Možnosti ověřování](../containe
 
 > [!NOTE]
 > Pomocí [spravované identity](container-instances-managed-identity.md) nakonfigurované ve stejné skupině kontejnerů se nemůžete ověřit, aby se při nasazení skupiny kontejnerů načetly image Azure Container Registry.
+
+> [!NOTE]
+> V tuto chvíli nemůžete načítat image z [Azure Container Registry](../container-registry/container-registry-vnet.md) nasazených do Azure Virtual Network.
 
 V následující části vytvoříte Trezor klíčů Azure a instanční objekt a uložíte přihlašovací údaje instančního objektu do trezoru. 
 

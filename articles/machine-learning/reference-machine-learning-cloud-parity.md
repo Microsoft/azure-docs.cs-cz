@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: c899d14b6e0eea8135b996aadfe2a7388a8fcb89
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860952"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657575"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Parita cloudu Azure Machine Learning svrchovan
 
@@ -34,7 +34,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ## <a name="azure-government"></a>Azure Government 
 
-| Funkce | Stav veřejného cloudu  | US –) – Virginia | US – Arizona| 
+| Příznak | Stav veřejného cloudu  | US –) – Virginia | US – Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Automatizované strojové učení** | | | |
 | Vytváření a spouštění experimentů v poznámkových blocích                                    | GA                   | ANO                | ANO         |
@@ -96,7 +96,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | vlastní značky v Azure Machine Learning k implementaci datových listů              | GA                   | NO                 | NO          |
 | Spravedlivá integrace AzureML                                               | Public Preview       | NO                 | NO          |
 | Sada SDK pro vyhodnocení                                                      | GA                   | ANO                | ANO         |
-| **Absolv** |   | | |
+| **Školení** |   | | |
 | Streamování protokolů experimentování                                              | GA                   | ANO                | ANO         |
 | Posílení učení                                                     | Public Preview       | NO                 | NO          |
 | Uživatelské rozhraní experimentování                                                         | GA                   | ANO                | ANO         |
@@ -136,7 +136,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 * V případě Azure Machine Learning výpočetních instancí není v Azure Government dostupná možnost aktualizace tokenu trvajícího více než 24 hodin.
 * Profilace modelů nepodporuje 4 procesory v oblasti US-Arizona.   
 * Ukázkové poznámkové bloky nemusí v Azure Government fungovat, pokud potřebují přístup k veřejným datům.
-* IP adresy: příkaz CLI použitý ve virtuální síti [a pokyny pro vynucené tunelování](how-to-enable-virtual-network.md#forced-tunneling) nevrací ROZSAHy IP adres. Místo toho použijte [rozsahy IP adres Azure a značky služeb pro Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) .
+* IP adresy: příkaz CLI použitý ve virtuální síti [a pokyny pro vynucené tunelování](how-to-secure-training-vnet.md#forced-tunneling) nevrací ROZSAHy IP adres. Místo toho použijte [rozsahy IP adres Azure a značky služeb pro Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) .
 * U naplánovaných kanálů poskytujeme i mechanismus triggeru založený na objektech blob. Tento mechanismus není podporován pro CMK pracovní prostory. Pro povolení triggeru založeného na objektu BLOB pro pracovní prostory CMK je nutné provést další nastavení. Další informace najdete v tématu spuštění [kanálu strojového učení z aplikace logiky](how-to-trigger-published-pipeline.md).
 * Brány firewall: při použití Azure Government oblasti přidejte do nastavení brány firewall následující další hostitele:
 
@@ -147,7 +147,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ## <a name="azure-china-21vianet"></a>Azure (Čína) 21Vianet 
 
-| Funkce                                       | Stav veřejného cloudu | CH – východ – 2 | CH-sever-3 |
+| Příznak                                       | Stav veřejného cloudu | CH – východ – 2 | CH-sever-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Automatizované strojové učení** |    | | |
 | Vytváření a spouštění experimentů v poznámkových blocích                                    | GA               | ANO       | –        |
@@ -209,7 +209,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | vlastní značky v Azure Machine Learning k implementaci datových listů              | GA               | NO        | –        |
 | Spravedlivá integrace AzureML                                               | Public Preview   | NO        | –        |
 | Sada SDK pro vyhodnocení                                                      | GA               | ANO       | –        |
-| **Absolv** |    | | |
+| **Školení** |    | | |
 | Streamování protokolů experimentování                                              | GA               | ANO       | –        |
 | Posílení učení                                                     | Public Preview   | NO        | –        |
 | Uživatelské rozhraní experimentování                                                         | GA               | ANO       | –        |
@@ -236,7 +236,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * Ukázkový Poznámkový blok nemusí fungovat, pokud potřebuje přístup k veřejným datům.
-* Rozsahy IP adres: příkaz CLI použitý v pokynech pro [vynucené tunelování virtuální](how-to-enable-virtual-network.md#forced-tunneling) sítě nevrací rozsahy IP adres. Místo toho použijte [rozsahy IP adres Azure a značky služeb pro Azure Čína](https://www.microsoft.com//download/details.aspx?id=57062) .
+* Rozsahy IP adres: příkaz CLI použitý v pokynech pro [vynucené tunelování virtuální](how-to-secure-training-vnet.md#forced-tunneling) sítě nevrací rozsahy IP adres. Místo toho použijte [rozsahy IP adres Azure a značky služeb pro Azure Čína](https://www.microsoft.com//download/details.aspx?id=57062) .
 * Služba Azure Machine Learning COMPUTE Instances Preview není podporovaná v pracovním prostoru, kde je aktuálně povolený privátní odkaz, ale CI se bude podporovat v dalším nasazení pro rozšíření služby pro všechny oblasti AML.
 
 ## <a name="next-steps"></a>Další kroky

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 8ad22abdf17c68c93a6189db839fe357e7acc91e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144885"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650823"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 * [Visual Studio Code](#vscode): Používáte-li Visual Studio Code, zahrnuje [rozšíření Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) rozsáhlou jazykovou podporu Pythonu a také funkce, které umožňují pracovat s Azure Machine Learning mnohem pohodlnější a produktivní.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s vlastním [cloudovým notebookem](#compute-instance), [DSVM](#dsvm)nebo [Azure Databricks](#aml-databricks).
 
@@ -63,7 +63,7 @@ Další informace o výpočetních instancích, včetně postupu instalace balí
 
 Pokud chcete zastavit náklady na výpočetní výkon, [zastavte výpočetní instanci](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
-## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
+## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Virtuální počítač pro datové vědy
 
 DSVM je přizpůsobená image virtuálního počítače (VM). Je navržená pro práci v oblasti datové vědy, která je předem nakonfigurovaná:
 
@@ -81,7 +81,7 @@ Použití DSVM jako vývojového prostředí:
 
     * Azure Portal:
 
-        * [Vytvoření prostředí Data Science Virtual Machine s Ubuntu](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+        * [Vytvoření Data Science Virtual Machine Ubuntu](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
 
         * [Vytvoření prostředí Data Science Virtual Machine s Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
 
@@ -185,7 +185,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   Instalace sady SDK bude trvat několik minut. Další informace o možnostech instalace najdete v příručce pro [instalaci](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+   Instalace sady SDK bude trvat několik minut. Další informace o možnostech instalace najdete v příručce pro [instalaci](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
 
 1. Nainstalujte další balíčky pro experimentování ve službě Machine Learning.
 
@@ -361,7 +361,7 @@ Chcete-li použít tento soubor ze svého kódu, použijte `ws=Workspace.from_co
 
 Konfigurační soubor můžete vytvořit třemi způsoby:
 
-* **Použijte  [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: k zápisu *config.js* do souboru. Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. *config.js* můžete stáhnout nebo zkopírovat do jiných vývojových prostředí.
+* **Použijte  [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)**: k zápisu *config.js* do souboru. Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. *config.js* můžete stáhnout nebo zkopírovat do jiných vývojových prostředí.
 
 * **Stažení souboru**: v [Azure Portal](https://ms.portal.azure.com)vyberte  **Stáhnout config.jsv** části **Přehled** v pracovním prostoru.
 
@@ -389,4 +389,4 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
 ## <a name="next-steps"></a>Další kroky
 
 - [Výuka modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning s využitím datové sady mnist ručně zapsaných
-- Referenční informace o sadě [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- Referenční informace o sadě [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)

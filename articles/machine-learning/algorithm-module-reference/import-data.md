@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68bf47f370a57fe277d4ab9679af0b920a0d81ec
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611811"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658121"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
@@ -45,7 +45,7 @@ Jakmile definujete požadovaná data a připojíte se ke zdroji, **[importujte d
 Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a přidat nová data tak, že znovu spustíte [importovaná data](./import-data.md).
 
 > [!WARNING]
-> Pokud je váš pracovní prostor ve virtuální síti, musíte nakonfigurovat úložiště dat tak, aby používalo funkce vizualizace dat daného návrháře. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [izolace sítě během školení & odvození s privátními virtuálními sítěmi](../how-to-enable-virtual-network.md#machine-learning-studio).
+> Pokud je váš pracovní prostor ve virtuální síti, musíte nakonfigurovat úložiště dat tak, aby používalo funkce vizualizace dat daného návrháře. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [použití Azure Machine Learning studia ve službě Azure Virtual Network](../how-to-enable-studio-virtual-network.md).
 
 
 ## <a name="how-to-configure-import-data"></a>Jak konfigurovat importovaná data

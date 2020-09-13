@@ -3,12 +3,12 @@ title: Aktualizace existujícího přiřazení z portálu
 description: Přečtěte si o mechanismu Aktualizace existujícího přiřazení podrobného plánu z portálu v Azure Modrotiskys.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051419"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651368"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -26,17 +26,17 @@ Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje 
 
 1. V seznamu modrotisky vyberte přiřazení podrobného plánu. Pak použijte tlačítko **Aktualizovat přiřazení** nebo klikněte pravým tlačítkem na přiřazení podrobného plánu a vyberte **Aktualizovat přiřazení**.
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Aktualizuje existující přiřazení podrobného plánu." border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Snímek stránky přiřazení podrobného plánu se zvýrazněným tlačítkem aktualizovat přiřazení" border="false":::
 
 1. Stránka **přiřadit podrobný plán** načte předem vyplněnou všechny hodnoty z původního přiřazení. Můžete změnit **verzi definice**podrobného plánu, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Po dokončení změn vyberte **přiřadit** .
 
 1. Na stránce aktualizované Podrobnosti přiřazení se podívejte na nový stav. V tomto příkladu jsme přidali **uzamykání** k přiřazení.
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Aktualizace existujícího přiřazení podrobného plánu – změna režimu zámku" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Snímek obrazovky aktualizovaného přiřazení podrobného plánu ukazující změnu režimu zámku" border="false":::
 
 1. Prozkoumejte podrobnosti o dalších **operacích přiřazení** pomocí rozevíracího seznamu. Tabulka s aktualizacemi **spravovaných prostředků** podle vybrané operace přiřazení
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Operace přiřazení přiřazení podrobného plánu" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Snímek obrazovky aktualizovaného přiřazení podrobného plánu znázorňující operace přiřazení a jejich stav" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Pravidla aktualizace přiřazení
 
