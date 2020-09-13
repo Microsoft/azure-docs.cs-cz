@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 11043d6686bd762b1c0a9827c7edb2230487cc72
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263202"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595440"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
 V tomto tématu se dozvíte, jak zobrazit a pochopit doporučení v Azure Security Center, která vám pomůžou chránit vaše prostředky Azure.
@@ -57,6 +57,7 @@ Security Center analyzuje stav zabezpečení vašich prostředků, aby identifik
 
     Stránka obsahuje:
 
+    - **Vynutilit** a **Odepřít** tlačítka pro podporovaná doporučení (viz [Ochrana před neoprávněnými konfiguracemi s doporučeními pro vymáhání/zamítnutí](prevent-misconfigurations.md)
     - **Indikátor závažnosti**
     - **Interval aktuálnosti**  (tam, kde je relevantní) 
     - **Popis** – stručný popis problému
@@ -68,10 +69,19 @@ Security Center analyzuje stav zabezpečení vašich prostředků, aby identifik
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Z důvodů nelze použít prostředky.":::
 
+## <a name="preview-recommendations"></a>Doporučení pro verzi Preview
 
+Doporučení, která jsou označená jako **Náhled** , nejsou zahrnutá do výpočtů zabezpečeného skóre.
+
+Měly by se pořád opravit všude, kde je to možné, takže po skončení období Preview budou přispět ke svému skóre.
+
+Příklad doporučení verze Preview:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Doporučení s příznakem Preview":::
  
 ## <a name="next-steps"></a>Další kroky
 
 V tomto dokumentu jste se zavedli k doporučením zabezpečení v Security Center. Další informace o řešení těchto doporučení:
 
-* [Opravit doporučení](security-center-remediate-recommendations.md) – Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Opravit doporučení](security-center-remediate-recommendations.md) – Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Zabraňuje neoprávněným konfiguracím s doporučeními pro vymáhání nebo zakazování](prevent-misconfigurations.md).

@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: požadavky na směrování'
 description: Tato stránka obsahuje podrobné požadavky pro konfiguraci a správu směrování pro okruhy ExpressRoute.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.author: cherylmc
-ms.openlocfilehash: 7e70348ba1638057fdab579c1f2799a0f5aa77a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341352"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569607"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -83,7 +83,7 @@ Pro nastavení relací protokolu BGP musíte použít veřejné IP adresy, kter�
 Pro soukromý partnerský vztah si můžete zvolit použití veřejných nebo privátních IPv4 adres. Poskytujeme kompletní izolaci provozu, takže v případě soukromého partnerského vztahu není možné překrývání adres s jinými zákazníky. Tyto adresy nejsou inzerované na internetu. 
 
 ### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
-Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým službám Microsoftu. Seznam služeb zahrnuje služby Office 365, jako je Exchange Online, SharePoint Online, Skype pro firmy a Microsoft Teams. Microsoft v partnerském vztahu Microsoftu podporuje obousměrné připojení. Přenosy směřující do cloudových služeb Microsoftu musí před vstupem do služby MSN používat platné veřejné IPv4 adresy.
+Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým službám Microsoftu. Seznam služeb zahrnuje Microsoft 365 služby, jako je Exchange Online, SharePoint Online, Skype pro firmy a Microsoft Teams. Microsoft v partnerském vztahu Microsoftu podporuje obousměrné připojení. Přenosy směřující do cloudových služeb Microsoftu musí před vstupem do služby MSN používat platné veřejné IPv4 adresy.
 
 Ujistěte se, že vaše IP adresa a číslo AS jsou registrované na vás v jednom z následujících registrů:
 
@@ -100,7 +100,7 @@ Pokud vám ve výše uvedených registrech nejsou přiřazeny vaše předpony a 
 U partnerského vztahu Microsoftu je povoleno soukromé číslo AS, které ale také vyžaduje ruční ověření. Kromě toho v AS PATH odebereme soukromá čísla AS pro přijaté předpony. V důsledku toho nebudete moct připojit soukromá čísla AS k AS PATH, abyste [ovlivnili směrování pro partnerský vztah Microsoftu](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Neinzerovat stejnou veřejnou trasu IP k veřejnému Internetu a přes ExpressRoute. Aby se snížilo riziko nesprávné konfigurace, která způsobuje asymetrické směrování, důrazně doporučujeme, aby [IP adresy NAT](expressroute-nat.md) inzerované Microsoftu přes ExpressRoute byly z rozsahu, který není inzerovaný pro Internet vůbec. Pokud to není možné dosáhnout, je nutné zajistit, abyste inzerovali konkrétnější rozsah přes ExpressRoute, než je ten v připojení k Internetu. Kromě veřejné trasy pro překlad adres (NAT) můžete také inzerovat ExpressRoute veřejné IP adresy používané servery ve vaší místní síti, které komunikují s koncovými body Office 365 v rámci Microsoftu. 
+> Neinzerovat stejnou veřejnou trasu IP k veřejnému Internetu a přes ExpressRoute. Aby se snížilo riziko nesprávné konfigurace, která způsobuje asymetrické směrování, důrazně doporučujeme, aby [IP adresy NAT](expressroute-nat.md) inzerované Microsoftu přes ExpressRoute byly z rozsahu, který není inzerovaný pro Internet vůbec. Pokud to není možné dosáhnout, je nutné zajistit, abyste inzerovali konkrétnější rozsah přes ExpressRoute, než je ten v připojení k Internetu. Kromě veřejné trasy pro překlad adres (NAT) můžete také inzerovat ExpressRoute veřejné IP adresy používané servery ve vaší místní síti, které komunikují s Microsoft 365mi koncovými body v rámci Microsoftu. 
 > 
 > 
 
@@ -138,7 +138,7 @@ Výchozí trasy jsou povolené jenom na relacích soukromého partnerského vzta
 * Používáte uživatelsky definované směrování umožňující připojení k internetu pro každou podsíť, která připojení k internetu vyžaduje.
 
 > [!NOTE]
-> Inzerování výchozích tras poruší aktivaci licencí pro Windows a jiné virtuální počítače. Náhradní řešení najdete [zde](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx).
+> Inzerování výchozích tras poruší aktivaci licencí pro Windows a jiné virtuální počítače. Náhradní řešení najdete [zde](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling).
 > 
 > 
 
@@ -156,21 +156,21 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | **Oblast Microsoft Azure** | **Oblastní komunita protokolu BGP** | **Komunita protokolu BGP úložiště** | **Komunita protokolu BGP SQL** | **Cosmos DB komunita protokolu BGP** | **Záloha komunity protokolu BGP** |
 | --- | --- | --- | --- | --- | --- |
 | **Severní Amerika** | |
-| USA – východ | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 | 12076:55004 |
+| East US | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 | 12076:55004 |
 | USA – východ 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 | 12076:55005 |
 | USA – západ | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 | 12076:55006 |
-| USA – západ 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 | 12076:55026 |
+| Západní USA 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 | 12076:55026 |
 | USA – středozápad | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
 | USA – středosever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
-| USA – středojih | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
-| USA – střed | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
+| Středojižní USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
+| Střední USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
 | Střední Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 | 12076:55020 |
 | Kanada – východ | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 | 12076:55021 |
 | **Jižní Amerika** | |
-| Brazílie – jih | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 | 12076:55014 |
+| Brazil South | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 | 12076:55014 |
 | **Evropa** | |
 | Severní Evropa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 | 12076:55003 |
-| Západní Evropa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 | 12076:55002 |
+| West Europe | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 | 12076:55002 |
 | Spojené království – jih | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 | 12076:55024 |
 | Spojené království – západ | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 | 12076:55025 |
 | Francie – střed | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 | 12076:55030 |
@@ -183,13 +183,13 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Norsko – západ | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 12076:55043 | 
 | **Asie a Tichomoří** | |
 | Východní Asie | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 | 12076:55010 |
-| Jihovýchodní Asie | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
+| Southeast Asia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
 | **Japonsko** | |
-| Japonsko – východ | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
+| Japan East | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
 | Japonsko – západ | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 | 12076:55013 |
 | **Austrálie** | |
 | Austrálie – východ | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 | 12076:55015 |
-| Austrálie – jihovýchod | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
+| Australia Southeast | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
 | **Australská vláda** | |
 | Austrálie – střed | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 | 12076:55032 |
 | Austrálie – střed 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 | 12076:55033 |
@@ -229,10 +229,10 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | Azure Resource Manager |12076:5070 |
 | Další online služby Office 365 * * | 12076:5100 |
 
-\*Služba Azure Global Services v tuto chvíli obsahuje jenom Azure DevOps. \
-\*\*Autorizace požadovaná od Microsoftu, viz [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-portal.md)\
-\*\*\*Tato komunita také zveřejňuje potřebné trasy pro Microsoft Team Services. \
-\*\*\*\*CRM Online podporuje Dynamics v 8.2 a nižší. V případě vyšších verzí vyberte oblastní komunitu pro nasazení Dynamics.
+\* Služba Azure Global Services v tuto chvíli obsahuje jenom Azure DevOps. \
+\*\* Autorizace požadovaná od Microsoftu, viz [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-portal.md)\
+\*\*\* Tato komunita také zveřejňuje potřebné trasy pro Microsoft Team Services. \
+\*\*\*\* CRM Online podporuje Dynamics v 8.2 a nižší. V případě vyšších verzí vyberte oblastní komunitu pro nasazení Dynamics.
 
 > [!NOTE]
 > Microsoft nectí žádné hodnoty komunity protokolu BGP, které jste přiřadili trasám inzerovaným Microsoftu.

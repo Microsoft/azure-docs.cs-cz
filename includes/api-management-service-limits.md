@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 072f13f5a0884cf95fe760e17ff0d770111f4da0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204517"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570048"
 ---
 | Prostředek | Omezení |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "82204517"
 | Maximální počet předplatných na instanci služby<sup>8</sup> | 500 |
 | Maximální počet klientských certifikátů na instanci služby<sup>8</sup> | 50 |
 | Maximální počet rozhraní API na instanci služby<sup>8</sup> | 50 |
-| Maximální počet operací rozhraní API na instanci služby<sup>8</sup> | 1 000 |
+| Maximální počet operací rozhraní API na instanci služby<sup>8</sup> | 1 000 |
 | Maximální celková doba trvání žádosti<sup>8</sup> | 30 sekund |
 | Maximální velikost datové části vyrovnávací paměti<sup>8</sup> | 2 MiB |
 | Maximální velikost adresy URL požadavku<sup>9</sup> | 4096 bajtů |
@@ -42,6 +42,6 @@ ms.locfileid: "82204517"
 <sup>5</sup> . Toto omezení se vztahuje na úrovně Basic, Standard a Premium. V úrovni spotřeby je velikost dokumentu zásad omezená na 4 KiB.<br/>
 <sup>6</sup> Více vlastních domén je podporováno pouze v úrovni pro vývojáře a úrovně Premium.<br/>
 <sup>7</sup> Certifikáty certifikační autority se v úrovni spotřeby nepodporují.<br/>
-<sup>8</sup> Tento prostředek se vztahuje pouze na úroveň spotřeby.<br/>
+<sup>8</sup> Toto omezení se vztahuje pouze na úroveň spotřeby. V těchto kategoriích neexistují žádná omezení pro jiné úrovně.<br/>
 <sup>9</sup> Platí jenom pro úroveň spotřeby. Zahrnuje až 2048 bajtů dlouhého řetězce dotazu.<br/>
 <sup>10</sup> Samoobslužné brány se podporují jenom v úrovních pro vývojáře a úrovně Premium. Omezení platí pro počet [prostředků samoobslužné brány](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway). Pokud chcete tento limit zvýšit, obraťte se prosím na [podporu](https://azure.microsoft.com/support/options/). Všimněte si, že počet uzlů (nebo replik) přidružených k prostředku samoobslužné brány je neomezený na úrovni Premium a omezené v jednom uzlu ve vrstvě pro vývojáře.

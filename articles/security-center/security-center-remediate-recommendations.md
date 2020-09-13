@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 9beb617ed8626b1fda1c9db98d626ca70ee01755
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042913"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569131"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Zpracování doporučení ve službě Azure Security Center
 
 Doporučení vám poskytnou návrhy na to, jak lépe zabezpečit prostředky. Doporučení můžete implementovat podle kroků pro nápravu, které jsou uvedené v doporučení.
 
-## <a name="remediation-steps"></a>Postup odstranění problému<a name="remediation-steps"></a>
+## <a name="remediation-steps"></a>Postup odstranění problému <a name="remediation-steps"></a>
 
 Po kontrole všech doporučení se rozhodněte, která z nich se má opravit jako první. Doporučujeme, abyste používali [dopad bezpečného skóre](security-center-recommendations.md#monitor-recommendations) , abyste lépe určili prioritu toho, co udělat jako první.
 
@@ -65,34 +65,10 @@ Postup implementace rychlé nápravy opravy:
 
 1. Po dokončení se zobrazí oznámení o tom, jestli se oprava úspěšně provedla.
 
-## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>Rychlá oprava protokolování nápravy v protokolu aktivit<a name="activity-log"></a>
+## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>Rychlá oprava protokolování nápravy v protokolu aktivit <a name="activity-log"></a>
 
 Operace opravy používá volání rozhraní API pro nasazení šablony nebo opravu REST API k aplikování konfigurace na prostředku. Tyto operace se zaznamenávají do [protokolu aktivit Azure](../azure-resource-manager/management/view-activity-logs.md).
 
-
-## <a name="recommendations-with-quick-fix-remediation"></a>Doporučení s rychlou opravou nápravy
-
-|Doporučení|Nepřímo|
-|---|---|
-|Auditování u SQL Database by mělo být povoleno.|Tato akce umožní auditování SQL na těchto serverech a jejich databázích. <br>**Poznámka**: <ul><li>U každé oblasti vybrané SQL Database se vytvoří účet úložiště pro ukládání protokolů auditu a sdílí se se všemi servery v této oblasti.</li><li>Chcete-li zajistit správné auditování, neodstraňujte ani neměňte skupinu prostředků ani účty úložiště.</li></ul>|
-|V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat|Tato akce povolí SQL Advanced Data Security (ADS) na vybraných instancích SQL. <br>**Poznámka**: <ul><li>Pro každou oblast a skupinu prostředků vybrané spravované instance SQL se vytvoří účet úložiště pro ukládání výsledků kontroly a sdílí se se všemi instancemi v této oblasti.</li><li> REKLAMY se účtují na základě spravované instance SQL $15.</li></ul>|
-|Posouzení ohrožení zabezpečení by mělo být povoleno na spravované instanci SQL|Tato akce povolí posouzení ohrožení zabezpečení SQL u vybrané spravované instance SQL. <br>**Poznámka**:<ul><li>Posouzení ohrožení zabezpečení SQL je součástí balíčku SQL Advanced Data Security (ADS). Pokud již není služba ADS povolena, bude na spravované instanci automaticky povolena.</li><li>Pro každou oblast a skupinu prostředků vybrané spravované instance SQL se vytvoří účet úložiště pro ukládání výsledků kontroly a sdílí se se všemi instancemi v této oblasti.</li><li>Na reklamu se účtuje $15 na SQL Database.</li></ul>||
-|V SQL Database by mělo být povolené rozšířené zabezpečení dat|Tato akce povolí rozšířené zabezpečení dat (ADS) na těchto vybraných serverech a jejich databázích. <br>**Poznámka**:<ul><li>Pro každou oblast a skupinu prostředků vybraného SQL Database se vytvoří účet úložiště pro ukládání výsledků kontroly a sdílí se se všemi servery v této oblasti. <</li><li>Na reklamu se účtuje $15 na SQL Database.</li></ul>||
-|V SQL Database by mělo být povolené posouzení ohrožení zabezpečení|Tato akce povolí posouzení ohrožení zabezpečení SQL na těchto vybraných serverech a jejich databázích. <br>**Poznámka**:<ul><li>Posouzení ohrožení zabezpečení SQL je součástí balíčku SQL Advanced Data Security (ADS). Pokud již není služba ADS povolena, bude na SQL Database automaticky povolena.</li><li>Pro každou oblast a skupinu prostředků vybraného SQL Database se vytvoří účet úložiště pro ukládání výsledků kontroly a sdílí se se všemi instancemi v této oblasti.</li><li>Na reklamu se účtuje $15 na SQL Database.</li></ul>||
-|Mělo by být povolené transparentní šifrování dat na SQL Database.|Tato akce povolí ve vybraných databázích SQL Database transparentní šifrování dat (TDE). <br>**Poznámka**: ve výchozím nastavení se použijí klíče TDE spravované službou.
-|Měl by se povolit zabezpečený přenos do účtů úložiště|Tato akce aktualizuje zabezpečení účtu úložiště tak, aby povolovala požadavky pouze pomocí zabezpečených připojení. (HTTPS). <br>**Poznámka**:<ul><li>Všechny požadavky využívající protokol HTTP budou odmítnuty.</li><li>Pokud používáte službu souborů Azure, připojení bez šifrování selže, včetně scénářů využívajících SMB 2,1, SMB 3,0 bez šifrování a některých charakterů klienta SMB systému Linux. Další informace.</li></ul>|
-|Webová aplikace by měla být přístupná jen přes protokol HTTPS|Tato akce přesměruje veškerý provoz z HTTP na HTTPS na vybraných prostředcích. <br>**Poznámka**:<ul><li>Koncový bod HTTPS, který nemá certifikát SSL, se v prohlížeči zobrazí se stavem "Chyba ochrany osobních údajů". Takže uživatelé s vlastní doménou musí ověřit, jestli si nastavili certifikát SSL.</li><li>Zajistěte, aby brána firewall paketů a webových aplikací chránila službu App Service a umožnila předávání relací HTTPS.</li></ul>|
-|Function App by měl být přístupný jenom přes HTTPS|Tato akce přesměruje veškerý provoz z HTTP na HTTPS na vybraných prostředcích. <br>**Poznámka**:<ul><li>Koncový bod HTTPS, který nemá certifikát SSL, se v prohlížeči zobrazí se stavem "Chyba ochrany osobních údajů". Takže uživatelé s vlastní doménou musí ověřit, jestli si nastavili certifikát SSL.</li><li>Zajistěte, aby brána firewall paketů a webových aplikací chránila službu App Service a umožnila předávání relací HTTPS.</li></ul>|
-|Aplikace API by měla být přístupná jen přes protokol HTTPS|Tato akce přesměruje veškerý provoz z HTTP na HTTPS na vybraných prostředcích. <br>**Poznámka**:<ul><li>Koncový bod HTTPS, který nemá certifikát SSL, se v prohlížeči zobrazí se stavem "Chyba ochrany osobních údajů". Takže uživatelé s vlastní doménou musí ověřit, jestli si nastavili certifikát SSL.</li><li>Zajistěte, aby brána firewall paketů a webových aplikací chránila službu App Service a umožnila předávání relací HTTPS.</li></ul>|
-|Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.|Tato akce zakáže vzdálené ladění.|
-|Vzdálené ladění by mělo být pro Function App vypnuté.|Tato akce zakáže vzdálené ladění.|
-|Pro aplikaci API by mělo být vypnuto vzdálené ladění.|Tato akce zakáže vzdálené ladění.|
-|CORS by neměl umožňovat každému prostředku přístup k vaší webové aplikaci|Tato akce blokuje přístup k vaší webové aplikaci dalším doménám. Pokud chcete povolit konkrétní domény, zadejte je do pole povolené zdroje (oddělené čárkami). <br>**Poznámka**: když necháte pole prázdné, zablokuje se všechna volání mezi zdroji. název pole PARAM: povolené zdroje|
-|CORS by neměl umožňovat každému prostředku přístup k vašemu Function App|Tato akce blokuje přístup k vaší aplikaci funkcí jiným doménám. Pokud chcete povolit konkrétní domény, zadejte je do pole povolené zdroje (oddělené čárkami). <br>**Poznámka**: když necháte pole prázdné, zablokuje se všechna volání mezi zdroji. název pole PARAM: povolené zdroje|
-|CORS by neměl umožňovat každému prostředku přístup k vaší aplikaci API.|Tato akce zablokuje ostatním doménám přístup k vaší aplikaci API. Pokud chcete povolit konkrétní domény, zadejte je do pole povolené zdroje (oddělené čárkami). <br>**Poznámka**: když necháte pole prázdné, zablokuje se všechna volání mezi zdroji. název pole PARAM: povolené zdroje|
-|Na virtuálních počítačích by měl být povolený agent monitorování.|Tato akce nainstaluje agenta monitorování na vybrané virtuální počítače. Vyberte pracovní prostor, do kterého má agent nahlásit.<ul><li>Pokud je vaše zásada aktualizace nastavená na hodnotu automaticky, nasadí se na nové existující instance.</li><li>Pokud je vaše zásada aktualizace nastavená na ruční a přejete si nainstalovat agenta na existující instance, zaškrtněte políčko u možnosti zaškrtávací políčko. [Další informace](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
-|Měly by být povolené diagnostické protokoly v Key Vault.|Tato akce povolí diagnostické protokoly pro trezory klíčů. Diagnostické protokoly a metriky se ukládají ve vybraném pracovním prostoru.|
-|Měly by být povolené diagnostické protokoly ve službě Service Bus.|Tato akce povolí diagnostické protokoly ve službě Service Bus. Diagnostické protokoly a metriky se ukládají ve vybraném pracovním prostoru.|
 
 ## <a name="next-steps"></a>Další kroky
 

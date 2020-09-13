@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: eb20fe91a54007f24c56a95e67942728674471ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592283"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566632"
 ---
 # <a name="translator-30-detect"></a>Překladatel 3,0: zjištění
 
@@ -67,7 +67,7 @@ Hlavičky požadavku zahrnují:
 
 ## <a name="request-body"></a>Text požadavku
 
-Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text` . Rozpoznávání jazyka je použito pro hodnotu `Text` Vlastnosti. Vzorový text žádosti vypadá nějak takto:
+Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text` . Rozpoznávání jazyka je použito pro hodnotu `Text` Vlastnosti. Automatické zjišťování jazyka funguje lépe s delším vstupním textem. Vzorový text žádosti vypadá nějak takto:
 
 ```json
 [
@@ -78,7 +78,6 @@ Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností �
 Platí následující omezení:
 
 * Pole může mít maximálně 100 prvků.
-* Textová hodnota prvku pole nesmí být delší než 10 000 znaků včetně mezer.
 * Celý text zahrnutý v požadavku nesmí být delší než 50 000 znaků včetně mezer.
 
 ## <a name="response-body"></a>Text odpovědi

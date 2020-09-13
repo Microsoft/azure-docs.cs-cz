@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 125da04c9fafe33c7f3de3a5849e4238b3b45d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f2abd2a42fb15b994803a48b97679ee8927233
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976536"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594420"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Vytvoření certifikátů pro povolení back-endu s Azure Application Gateway
 
@@ -21,10 +21,9 @@ Aby se to stalo, Application Gateway vyžaduje, aby se back-end instance povolil
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
->
-> - Export ověřovacího certifikátu z back-endu certifikátu (pro SKU V1)
-> - Export důvěryhodného kořenového certifikátu z back-endu certifikátu (SKU verze 2)
+
+- Export ověřovacího certifikátu z back-endu certifikátu (pro SKU V1)
+- Export důvěryhodného kořenového certifikátu z back-endu certifikátu (SKU verze 2)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -62,7 +61,7 @@ Z certifikátu TLS/SSL exportujte soubor. cer veřejného klíče (ne privátní
 
 7. Váš certifikát byl úspěšně exportován.
 
-   ![Úspěch](./media/certificates-for-backend-authentication/success.png)
+   ![Success](./media/certificates-for-backend-authentication/success.png)
 
    Exportovaný certifikát vypadá nějak takto:
 

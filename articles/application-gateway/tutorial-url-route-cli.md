@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502694"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595219"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Směrování webového provozu na základě adresy URL pomocí Azure CLI
 
@@ -23,17 +23,16 @@ Jako správce IT, který má na starosti správu webového provozu, chcete záka
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvoření skupiny prostředků pro síťové prostředky, které budete potřebovat
-> * Vytvoření síťových prostředků
-> * Vytvoření aplikační brány pro provoz přicházející z vaší aplikace
-> * Určení fondů serverů a pravidel směrování pro různé typy provozu
-> * Vytvoření škálovacích sad pro jednotlivé fondy, aby se mohly automaticky škálovat
-> * Spuštění testu, abyste mohli ověřit směrování různých typů provozu do správných fondů
+* Vytvoření skupiny prostředků pro síťové prostředky, které budete potřebovat
+* Vytvoření síťových prostředků
+* Vytvoření aplikační brány pro provoz přicházející z vaší aplikace
+* Určení fondů serverů a pravidel směrování pro různé typy provozu
+* Vytvoření škálovacích sad pro jednotlivé fondy, aby se mohly automaticky škálovat
+* Spuštění testu, abyste mohli ověřit směrování různých typů provozu do správných fondů
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-url-route-powershell.md) nebo [Azure Portal](create-url-route-portal.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -14,20 +14,20 @@ ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815993"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567346"
 ---
 # <a name="start-using-privileged-identity-management"></a>Zahájení využití technologie Privileged Identity Management
 
 Tento článek popisuje, jak povolit Privileged Identity Management (PIM) a jak ho začít používat.
 
-Pomocí Privileged Identity Management (PIM) můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace Azure Active Directory (Azure AD). S PIM můžete poskytovat přístup k prostředkům Azure, prostředkům Azure AD a dalším službám Microsoft online služby jako je třeba sada Office 365 nebo Microsoft Intune, a to za běhu.
+Pomocí Privileged Identity Management (PIM) můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace Azure Active Directory (Azure AD). S PIM můžete poskytovat přístup k prostředkům Azure, prostředkům Azure AD a jiným online služby Microsoftu, jako je třeba Microsoft 365 nebo Microsoft Intune, pomocí přístupu za běhu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li použít Privileged Identity Management, je nutné mít jednu z následujících licencí:
 
@@ -72,7 +72,7 @@ Jakmile Privileged Identity Management nastavíte, můžete se naučit, jak se p
 
 Pokud chcete usnadnit otevírání Privileged Identity Management, přidejte do řídicího panelu Azure Portal dlaždici PIM.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **všechny služby** a vyhledejte službu **Azure AD Privileged Identity Management** .
 

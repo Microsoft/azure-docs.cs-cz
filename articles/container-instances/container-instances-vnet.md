@@ -3,14 +3,13 @@ title: Nasazení skupiny kontejnerů do služby Azure Virtual Network
 description: Naučte se, jak nasadit skupinu kontejnerů do nové nebo existující virtuální sítě Azure pomocí rozhraní příkazového řádku Azure.
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f1678dee9c43d2ce9652018f0d09fe1738659f54
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c5eff486299a3974e8fb9b4b12d6bb74880c48d8
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407145"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569386"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do virtuální sítě Azure
 
@@ -78,7 +77,7 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Příklad:
+Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Například:
 
 ```console
 10.0.0.4

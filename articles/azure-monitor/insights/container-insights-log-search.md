@@ -3,12 +3,12 @@ title: Dotazování protokolů z Azure Monitor pro kontejnery | Microsoft Docs
 description: Azure Monitor pro kontejnery shromažďuje metriky a data protokolů a tento článek popisuje záznamy a obsahuje vzorové dotazy.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 12c32c84f2c2aef5d6d0817c11e1ef010f30ffcb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f9b30f11ae6a2f64601b9595bfb1d45493209849
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320285"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569675"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
 
@@ -18,18 +18,17 @@ Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a 
 
 V následující tabulce jsou uvedeny podrobnosti o záznamech shromažďovaných Azure Monitor pro kontejnery. 
 
-| Data | Zdroj dat | Datový typ | Fields (Pole) |
+| Data | Zdroj dat | Datový typ | Pole |
 |------|-------------|-----------|--------|
-| Výkon pro hostitele a kontejnery | Metriky využití se získávají z cAdvisor a omezení z rozhraní Kube API. | `Perf` | Počítač, ObjectName, CounterName &#40;% času procesoru, čtení z disku MB, zápisy na disk MB, využití paměti MB, počet přijatých bajtů sítě, počet bajtů pro odesílání, využití procesoru sec, síť&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem |
-| Inventář kontejneru | Docker | `ContainerInventory` | TimeGenerated, počítač, název kontejneru, ContainerHostname, image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Inventář kontejneru | Kubelet | `ContainerInventory` | TimeGenerated, počítač, název kontejneru, ContainerHostname, image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
 | Protokol kontejneru | Docker | `ContainerLog` | TimeGenerated, počítač, ID image, název kontejneru, LogEntrySource, LogEntry, SourceSystem, ContainerID |
 | Inventář uzlů kontejneru | Rozhraní API pro Kube | `ContainerNodeInventory`| TimeGenerated, počítač, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
 | Inventář lusků v clusteru Kubernetes | Rozhraní API pro Kube | `KubePodInventory` | TimeGenerated, Computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, Controller, ContainerStatus, ContainerStatusReason, ContainerID, ContainerName, název, PodLabel, obor názvů, PodStatus, název_clusteru, PodIp, SourceSystem |
 | Část inventáře uzlů v clusteru Kubernetes | Rozhraní API pro Kube | `KubeNodeInventory` | TimeGenerated, Computer, název_clusteru, ClusterId, LastTransitionTimeReady, Labels, status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
 | Události Kubernetes | Rozhraní API pro Kube | `KubeEvents` | TimeGenerated, počítač, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, zpráva, SourceSystem | 
 | Služby v clusteru Kubernetes | Rozhraní API pro Kube | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Metriky výkonu pro uzly součástí clusteru Kubernetes || &#124; výkonu, kde ObjectName = = "K8SNode" | Počítač, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
-| Metriky výkonu pro kontejnery část clusteru Kubernetes || &#124; výkonu, kde ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Metriky výkonu pro uzly součástí clusteru Kubernetes | Metriky využití se získávají z cAdvisor a omezení z rozhraní Kube API. | &#124; výkonu, kde ObjectName = = "K8SNode" | Počítač, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Metriky výkonu pro kontejnery část clusteru Kubernetes | Metriky využití se získávají z cAdvisor a omezení z rozhraní Kube API. | &#124; výkonu, kde ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
 | Vlastní metriky ||`InsightsMetrics` | Počítač, název, obor názvů, počátek, SourceSystem, značky<sup>1</sup>, TimeGenerated, Type, Va, _ResourceId | 
 
 <sup>1</sup> vlastnost *tagss* představuje [více dimenzí](../platform/data-platform-metrics.md#multi-dimensional-metrics) pro odpovídající metriku. Další informace o metrikách shromážděných a uložených v `InsightsMetrics` tabulce a popisu vlastností záznamu naleznete v tématu [InsightsMetrics Overview](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
@@ -48,7 +47,7 @@ Výstup protokolu kontejnerů, který se předává do vašeho pracovního prost
 
 Často je užitečné vytvářet dotazy, které začínají s příkladem nebo dvěma, a pak je upravit tak, aby vyhovovaly vašim požadavkům. Pro lepší sestavování pokročilejších dotazů můžete experimentovat s následujícími ukázkovými dotazy:
 
-| Dotaz | Popis | 
+| Dotazy | Popis | 
 |-------|-------------|
 | ContainerInventory<br> &#124; projektový počítač, název, obrázek, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; vykreslit tabulku | Vypsat všechny informace o životním cyklu kontejneru| 
 | KubeEvents_CL<br> &#124;, kde ne (neprázdné (Namespace_s))<br> &#124; seřadit podle TimeGenerated DESC<br> &#124; vykreslit tabulku | Události Kubernetes|

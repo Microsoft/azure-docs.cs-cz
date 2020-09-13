@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/08/2020
 ms.author: b-juche
-ms.openlocfilehash: e7bdf6ce35e2649a068de234b4b52e13efe72c44
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ca17dccd8b17a2e0ff7e9b960c74b4c5a36018f5
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690540"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567315"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -50,8 +50,8 @@ Tato část poskytuje odkazy na aplikace systému Windows a SQL Server řešení
 ### <a name="sql-server"></a>SQL Server
 
 * [Nasazení SQL Server přes protokol SMB pomocí Azure NetApp Files](https://www.youtube.com/watch?v=x7udfcYbibs)
-* [Nasazení SQL Server vždy aktivního clusteru s podporou převzetí služeb při selhání přes protokol SMB s Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q)
-* [Nasazení skupin dostupnosti Always On s Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc)
+<!-- * [Deploy SQL Server Always-On Failover Cluster over SMB with Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) --> 
+<!-- * [Deploy Always-On Availability Groups with Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) --> 
 
 ## <a name="sap-on-azure-solutions"></a>Řešení SAP v Azure
 
@@ -89,7 +89,7 @@ V této části najdete odkazy na řešení infrastruktury virtuálních klients
 * [Výhody použití Azure NetApp Files s Windows Virtual Desktopem](solutions-windows-virtual-desktop.md)
 * [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
-* [Virtuální plocha Windows na podnikové úrovni](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [Windows Virtual Desktop v podnikovém měřítku](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 
 ## <a name="hpc-solutions"></a>Řešení HPC
 

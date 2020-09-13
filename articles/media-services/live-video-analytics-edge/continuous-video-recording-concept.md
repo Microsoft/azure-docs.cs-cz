@@ -3,12 +3,12 @@ title: Nepřetržité nahrávání videa – Azure
 description: Záznam průběžného nahrávání videa (CVR) označuje proces průběžného zaznamenávání videa ze zdroje videa. Toto téma popisuje, co je CVR.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043303"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566686"
 ---
 # <a name="continuous-video-recording"></a>Nepřetržité nahrávání videa  
 
@@ -21,7 +21,8 @@ ms.locfileid: "87043303"
 
 Záznam průběžného nahrávání videa (CVR) označuje proces průběžného zaznamenávání videa ze zdroje videa. Live video Analytics na IoT Edge podporuje nepřetržité nahrávání videa z kamery CCTV prostřednictvím [mediálního grafu](media-graph-concept.md) , který se skládá ze zdrojového uzlu RTSP a uzlu jímky assetu. Následující diagram znázorňuje grafické znázornění takového grafu médií. Obrázek JSON [topologie grafu](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances) takového mediálního grafu najdete [tady](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset).
 
-![Nepřetržité nahrávání videa](./media/continuous-video-recording/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Nepřetržité nahrávání videa":::
 
 Graf Media Graph zobrazený výše se dá spustit na hraničním zařízení a video s nahráváním jímky assetu na Azure Media Services [assetu](terminology.md#asset). Video se bude zaznamenávat tak dlouho, dokud mediální graf zůstane v aktivovaném stavu. Vzhledem k tomu, že se video zaznamenává jako prostředek, můžete ho přehrát pomocí stávajících možností streamování Media Services. Další podrobnosti najdete v tématu [přehrávání zaznamenaného obsahu](video-playback-concept.md) .
 
@@ -30,10 +31,11 @@ Graf Media Graph zobrazený výše se dá spustit na hraničním zařízení a v
 Live video Analytics na IoT Edge podporuje provoz v rámci méně než dokonalé síťové podmínky, kdy hraniční zařízení občas ztratí připojení ke cloudu nebo se může vyskytnout jako vyřazení dostupné šířky pásma. Z toho vyplývá, že video ze zdroje se místně ukládá do mezipaměti a v pravidelných intervalech se automaticky synchronizuje s Assetem. Pokud prohlížíte [JSON topologie grafu](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset/topology.json), uvidíte, že má definované následující vlastnosti:
 
 ```
-    "segmentLength": "PT30S",
-    "localMediaCacheMaximumSizeMiB": "2048",
-    "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
+"segmentLength": "PT30S",
+"localMediaCacheMaximumSizeMiB": "2048",
+"localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
+
 Tyto dvě vlastnosti jsou relevantní pro odolný záznam (pro uzel jímky assetu jsou také vyžadovány vlastnosti). Vlastnost localMediaCachePath instruuje jímku assetů, aby používala tuto cestu ke složce k ukládání dat médií do mezipaměti před odesláním do assetu. V tomto článku se seznámíte s [tím](../../iot-edge/how-to-access-host-storage-from-module.md) , jak může modul Edge využít místní úložiště vašeho zařízení. Vlastnost localMediaCacheMaximumSizeMiB definuje, kolik místa na disku může jímka assetů použít jako mezipaměť (1 MiB = 1024 × 1024 bajtů). 
 
 Pokud váš modul Edge ztratí připojení po dlouhou dobu a obsah uložený ve složce mezipaměti dosáhne hodnoty localMediaCacheMaximumSizeMiB, bude jímka assetu začít zahození dat z mezipaměti, počínaje nejstarší daty. Například pokud zařízení ztratilo připojení na 10AM a mezipaměť dosáhne maximálního limitu na 18:00, pak se jímka assetu začne odstraňovat data zaznamenaná na 10AM. 
@@ -48,15 +50,13 @@ Jak je popsáno výše, uzel jímka assetu bude nahrávat video do místní mezi
 
 Vlastnost segmentLength zajišťuje, aby modul Edge nahrál video najednou za segmentLength sekund. Tato vlastnost má minimální hodnotu 30 sekund (výchozí nastavení) a dá se zvýšit o 30 sekundových zvýšení na maximálně 5 minut.
 
->[!NOTE]
->V [tomto](playback-recordings-how-to.md) článku se zobrazí efekt, který segmentLength při přehrávání.
-
+> [!NOTE]
+> Účinek, který segmentLength má na přehrávání, najdete v článku věnovaném [přehrávání záznamů](playback-recordings-how-to.md) .
 
 ## <a name="see-also"></a>Viz také
 
 * [Nahrávání videa na základě událostí](event-based-video-recording-concept.md)
 * [Přehrávání zaznamenaného obsahu](video-playback-concept.md)
-
 
 ## <a name="next-steps"></a>Další kroky
 

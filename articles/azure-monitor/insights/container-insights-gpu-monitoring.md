@@ -3,12 +3,12 @@ title: Konfigurace monitorování GPU pomocí Azure Monitor pro kontejnery | Mic
 description: Tento článek popisuje, jak můžete nakonfigurovat monitorování clusterů Kubernetes s použitím uzlů NVIDIA a GPU s povoleným grafickým procesorem AMD pomocí Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 958f5ab33edcd280f5673391eba907728f1153c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373307"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569692"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>Konfigurace monitorování GPU pomocí Azure Monitor pro kontejnery
 
@@ -22,7 +22,10 @@ Azure Monitor for Containers podporuje monitorování clusterů GPU od následuj
 
 - [AMD](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-Azure Monitor for Containers automaticky spouští monitorování využití GPU na uzlech a GPU, který požaduje lusky a zatížení, shromažďováním následujících metrik v intervalech 60sec a jejich ukládání do tabulky **InsightMetrics** :
+Azure Monitor for Containers automaticky spouští monitorování využití GPU na uzlech a GPU, který požaduje lusky a zatížení, shromažďováním následujících metrik v intervalech 60sec a jejich ukládání do tabulky **InsightMetrics** .
+
+>[!NOTE]
+>Po zřízení clusteru s uzly GPU zajistěte, aby byl pro spuštění úloh GPU nainstalovaný [ovladač GPU](../../aks/gpu-cluster.md) , jak to vyžaduje AKS. Azure Monitor pro kontejnery shromažďují metriky GPU prostřednictvím ovladače GPU, které běží v uzlu. 
 
 |Název metriky |Dimenze metriky (značky) |Popis |
 |------------|------------------------|------------|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 91935e8c052a9130d0a40ed292ca466bc1ab5427
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272276"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567620"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Rozšířené zabezpečené skóre v Azure Security Center
 
@@ -45,17 +45,17 @@ Stránka zabezpečeného skóre Security Center zahrnuje:
 > Dřívější verze Security Center v úrovni doporučení přijaly body: když opravíte doporučení pro jeden prostředek, zlepší se vaše zabezpečené skóre. V dnešní době se vaše skóre zlepšuje jenom v případě, že opravíte *všechna* doporučení pro jeden prostředek v rámci ovládacího prvku. Takže se vaše skóre zvyšuje jenom v případě, že jste vylepšili zabezpečení prostředku.
 
 
-## <a name="accessing-your-secure-score"></a>Přístup k zabezpečenému skóre
+## <a name="access-your-secure-score"></a>Přístup k zabezpečenému skóre
 
 Celkové výsledky zabezpečení a také skóre na předplatné můžete najít prostřednictvím Azure Portal nebo programově s Azure Security Center REST API.
 
-### <a name="getting-your-secure-score-from-the-portal"></a>Načítají se vaše zabezpečené skóre z portálu.
+### <a name="get-your-secure-score-from-the-portal"></a>Získat zabezpečené skóre z portálu
 
 Security Center zobrazuje vaše skóre na portálu na portálu: první věc zobrazená na stránce Přehled. Pokud kliknete na stránku vyhrazeného zabezpečeného skóre, zobrazí se skóre, které je rozdělené podle předplatného. Kliknutím na jedno předplatné zobrazíte podrobný seznam doporučení s upřednostněním a potenciální dopad, který by oprava na skóre předplatného.
 
 ![Celkové bezpečné skóre, jak je znázorněno na portálu](media/secure-score-security-controls/single-secure-score-via-ui.png)
 
-### <a name="getting-your-secure-score-from-the-rest-api"></a>Získání zabezpečeného skóre z REST API
+### <a name="get-your-secure-score-from-the-rest-api"></a>Získat zabezpečené skóre z REST API
 
 K vašemu skóre můžete přistupovat prostřednictvím [rozhraní API pro zabezpečené skóre](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (aktuálně ve verzi Preview). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Můžete například použít rozhraní API pro **zabezpečení skóre** k získání skóre pro konkrétní předplatné. Kromě toho můžete použít rozhraní API **ovládacích prvků bezpečného řízení skóre** k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných.
 
@@ -91,13 +91,22 @@ Maximální skóre tohoto ovládacího prvku, použít aktualizace systému, je 
 |**Bezpečnostní skóre**<br>Několik předplatných|<br>Přidávají se aktuální skóre pro všechny prostředky ve všech předplatných a výpočet je stejný jako u jednoho předplatného.<br><br>Při prohlížení více předplatných vyhodnotí zabezpečené skóre všechny prostředky ve všech povolených zásadách a seskupují jejich kombinovaný dopad na maximální skóre každého ovládacího prvku zabezpečení.<br>![Bezpečné skóre pro více předplatných se zapnutými všemi ovládacími prvky](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Kombinované skóre **nepředstavuje průměr** ; místo toho se jedná o vyhodnocený stav stavu všech prostředků ve všech předplatných.<br>Pokud se zobrazí stránka doporučení a přidáte potenciální dostupné body, zjistíte, že se jedná o rozdíl mezi aktuálním skóre (24) a maximálním dostupným skóre (60).|
 ||||
 
-## <a name="improving-your-secure-score"></a>Vylepšení zabezpečeného skóre
+### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Která doporučení jsou zahrnutá ve výpočtech zabezpečeného skóre?
+
+Bezpečnostní skóre mají dopad jenom na integrovaná doporučení.
+
+Doporučení, která jsou označená jako **Preview** , nejsou zahrnutá do výpočtů zabezpečeného skóre. Měly by se pořád opravit všude, kde je to možné, takže po skončení období Preview budou přispět ke svému skóre.
+
+Příklad doporučení verze Preview:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Doporučení s příznakem Preview":::
+
+
+## <a name="improve-your-secure-score"></a>Zlepšení skóre Secure Score
 
 Pokud chcete vylepšit vaše zabezpečené skóre, napravte doporučení zabezpečení ze seznamu doporučení. Každé doporučení můžete opravit ručně pro každý prostředek nebo pomocí **rychlé opravy.** možnost (Pokud je dostupná), pokud chcete použít nápravu pro doporučení na skupinu prostředků rychle. Další informace najdete v tématu o [opravách doporučení](security-center-remediate-recommendations.md).
 
->[!IMPORTANT]
-> Bezpečnostní skóre mají dopad jenom na integrovaná doporučení.
-
+Dalším způsobem, jak vylepšit skóre a zajistit, aby uživatelé nevytvářeli prostředky, které negativně ovlivňují vaše skóre, je nakonfigurovat možnosti vyhovět a odepřít na relevantních doporučeních. Další informace o tom, jak [zabránit v neoprávněných konfiguracích s doporučeními pro vymáhání](prevent-misconfigurations.md)
 
 ## <a name="security-controls-and-their-recommendations"></a>Ovládací prvky zabezpečení a jejich doporučení
 
@@ -144,7 +153,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Opravit konfigurace zabezpečení (maximální skóre 4)</p></strong>Nesprávně nakonfigurované prostředky IT mají vyšší riziko útoku. Základní akce posílení zabezpečení jsou často zapomenuté při nasazení prostředků a musí být splněné termíny. Nezabezpečené konfigurace zabezpečení můžou být na jakékoli úrovni infrastruktury: od operačních systémů a síťových zařízení až po cloudové prostředky.<br>Azure Security Center průběžně porovnává konfiguraci vašich prostředků s požadavky v oborových normách, nařízeních a srovnávacích testech. Když jste nakonfigurovali relevantní "balíčky dodržování předpisů" (standardy a směrné plány), které jsou v souladu s vaší organizací, budou mít všechny mezery doporučení zabezpečení, která zahrnují CCEID a vysvětlení potenciálního dopadu na zabezpečení.<br>Běžně používané balíčky jsou <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure Security test</a> a <a href="https://www.cisecurity.org/benchmark/azure/">CI Microsoft Azure 1.1.0 Foundation – testování verze</a></td>
-    <td class="tg-lboi"; width=55%>- Zásady zabezpečení by měly být definované v Kubernetes Services<br>- Ohrožení zabezpečení v konfiguraci zabezpečení kontejneru by mělo být opraveno<br>- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno<br>- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.<br>- Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>- Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>- Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>- Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).<br>- Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>- Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.</td>
+    <td class="tg-lboi"; width=55%>- Ohrožení zabezpečení v konfiguraci zabezpečení kontejneru by mělo být opraveno<br>- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno<br>- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.<br>- Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>- Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>- Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>- Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).<br>- Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>- Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Omezit neautorizovaný přístup k síti (maximální skóre 4)</p></strong>Koncové body v rámci organizace poskytují přímé připojení z vaší virtuální sítě k podporovaným službám Azure. Virtuální počítače v podsíti můžou komunikovat se všemi prostředky. Pokud chcete omezit komunikaci s prostředky v rámci jedné podsítě a z nich, vytvořte skupinu zabezpečení sítě a přidružte ji k podsíti. Organizace můžou omezit a chránit před neoprávněným provozem vytvořením příchozích a odchozích pravidel.</td>

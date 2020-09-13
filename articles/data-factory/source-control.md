@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/08/2020
+ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949129"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595072"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -242,13 +242,13 @@ Níže jsou uvedeny některé příklady situací, které mohou způsobit zastar
 
 ## <a name="switch-to-a-different-git-repository"></a>Přepnout na jiné úložiště Git
 
-Pokud chcete přepnout na jiné úložiště Git, klikněte na ikonu **Nastavení úložiště Git** v pravém horním rohu stránky přehled Data Factory. Pokud ikonu nevidíte, vymažte místní mezipaměť prohlížeče. Výběrem ikony odeberte přidružení s aktuálním úložištěm.
+Pokud chcete přepnout na jiné úložiště Git, přejděte na stránku konfigurace Git v centru správy pod správou **zdrojových kódů**. Vyberte **Odpojit**. 
 
-![Ikona Git](media/author-visually/remove-repo.png)
+![Ikona Git](media/author-visually/remove-repository.png)
 
-Jakmile se zobrazí podokno nastavení úložiště, vyberte **Odebrat Git**. Zadejte název datové továrny a kliknutím na **Potvrdit** odeberte úložiště Git přidružené k vaší datové továrně.
+Zadejte název datové továrny a kliknutím na **Potvrdit** odeberte úložiště Git přidružené k vaší datové továrně.
 
-![Odebere přidružení k aktuálnímu úložišti Git.](media/author-visually/remove-repo2.png)
+![Odebere přidružení k aktuálnímu úložišti Git.](media/author-visually/remove-repository-2.png)
 
 Po odebrání přidružení s aktuálním úložištěm můžete nakonfigurovat nastavení Gitu tak, aby používalo jiné úložiště, a pak do nového úložiště importovat existující Data Factory prostředky.
 

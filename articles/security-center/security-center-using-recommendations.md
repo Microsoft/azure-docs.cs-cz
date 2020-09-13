@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783227"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569046"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití doporučení služby Azure Security Center k vylepšení zabezpečení
+
 Můžete snížit pravděpodobnost významné události zabezpečení konfigurací zásad zabezpečení a následnou implementací doporučení Azure Security Center. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení v Security Center, abyste mohli zmírnit útok na zabezpečení. 
 
 Security Center automaticky spouští nepřetržité prohledávání a analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků zabezpečení. Security Center aktualizuje doporučení během 24 hodin, s následujícími výjimkami:
@@ -66,6 +67,11 @@ V rámci každodenních aktivit monitorování se Jan přihlásí k Azure a otev
 6. Má Jan spousta internetových virtuálních počítačů a protože jejich porty jsou vystavené, jsou obavy, že by útočník mohl získat kontrolu nad servery. Takže Jan rozhodne použít [**přístup k virtuálnímu počítači za běhu**](security-center-just-in-time.md).
 
 Jan nadále přechází přes doporučení s vysokou prioritou a střední prioritou a provede rozhodnutí o implementaci. U každého doporučení si Jan podíváme na podrobné informace, které Security Center, a dozvíte se, které prostředky jsou ovlivněny, co je to vliv na zabezpečení skóre, co jednotlivé doporučení znamená a nápravné kroky, jak tento problém zmírnit.
+
+### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>Vynutilit doporučení, aby nedocházelo k nezabezpečeným nastavením zabezpečení
+
+Aby uživatelé nevytvářeli prostředky, které by negativně ovlivnily skóre Jan, nakonfigurují možnosti vymáhat a odepřít doporučení, která jsou pro ně nejdůležitější. Další informace o tom, jak [zabránit v neoprávněných konfiguracích s doporučeními pro vymáhání](prevent-misconfigurations.md)
+
 
 ## <a name="conclusion"></a>Závěr
 Doporučení pro monitorování v Security Center pomáhají eliminovat ohrožení zabezpečení před tím, než dojde k útoku. Když opravíte doporučení, vaše zabezpečené skóre a vaše zatížení stav vylepšit. Security Center automaticky zjistí nové prostředky, které nasadíte, posuzuje je na základě zásad zabezpečení a poskytuje nová doporučení pro jejich zabezpečení.

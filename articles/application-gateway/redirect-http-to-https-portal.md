@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07689f7d16cd1df451fdab28f188e5c4a324486e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804348"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594811"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření služby Application Gateway s použitím přesměrování HTTP na HTTPS pomocí Azure Portal
 
@@ -20,20 +20,19 @@ Pomocí Azure Portal můžete vytvořit [Aplikační bránu](overview.md) s cert
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-> * Nastavit síť
-> * Vytvořit aplikační bránu s certifikátem
-> * Přidat pravidlo naslouchacího procesu a přesměrování
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
+* Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+* Nastavit síť
+* Vytvořit aplikační bránu s certifikátem
+* Přidat pravidlo naslouchacího procesu a přesměrování
+* Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Tento kurz vyžaduje, aby modul Azure PowerShell verze 1.0.0 nebo novější vytvořil certifikát a nainstaloval službu IIS. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Chcete-li spustit příkazy v tomto kurzu, je nutné spustit také `Login-AzAccount` pro vytvoření připojení k Azure.
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) pomocí rutiny [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). K exportu souboru pfx z certifikátu můžete použít rutinu [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) s vráceným kryptografickým otiskem.
 
@@ -63,7 +62,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 Pro komunikaci mezi prostředky, které vytvoříte, je potřeba virtuální síť. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro back-endové servery. Virtuální síť můžete vytvořit současně s aplikační bránou.
 
@@ -126,7 +125,7 @@ Nejprve přidejte naslouchací proces s názvem *MyListener* pro port 80.
 6. V případě **cíle přesměrování**vyberte **naslouchací proces**.
 7. Zajistěte, aby byl **cílový naslouchací proces** nastavený na **appGatewayHttpListener**.
 8. Pro **řetězec dotazu include** a možnost **zahrnout cestu** vyberte *Ano*.
-9. Vyberte možnost **Přidat**.
+9. Vyberte **Přidat**.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
@@ -170,10 +169,10 @@ Uživatelské rozhraní portálu pro sadu škálování virtuálního počítač
 Nakonec musíte upgradovat sadu škálování pomocí těchto změn.
 
 1. Vyberte **myvmss** sadu škálování.
-2. V části **Nastavení** vyberte **Instance**.
+2. V části **Nastavení** vyberte **Počet instancí**.
 3. Vyberte obě instance a pak vyberte **upgradovat**.
-4. Výběrem **Ano** potvrďte.
-5. Po dokončení tohoto procesu se vraťte k **myAppGateway** a vyberte **back-end fondy**. Nyní byste měli vidět, že **appGatewayBackendPool** má dva cíle a **myAppGatewaymyvmss** nemá žádné cíle.
+4. Akci potvrďte výběrem **Ano**.
+5. Po dokončení tohoto procesu se vraťte k **myAppGateway** a vyberte **back-end fondy**. Nyní byste měli vidět, že **appGatewayBackendPool** má dva cíle a  **myAppGatewaymyvmss** nemá žádné cíle.
 6. Vyberte **myAppGatewaymyvmss**a pak vyberte **Odstranit**.
 7. Vyberte **OK**. Tím akci potvrdíte.
 
@@ -204,11 +203,11 @@ Update-AzVmss `
 Po změně instancí služby IIS musíte znovu upgradovat sadu škálování s touto změnou.
 
 1. Vyberte **myvmss** sadu škálování.
-2. V části **Nastavení** vyberte **Instance**.
+2. V části **Nastavení** vyberte **Počet instancí**.
 3. Vyberte obě instance a pak vyberte **upgradovat**.
-4. Výběrem **Ano** potvrďte.
+4. Akci potvrďte výběrem **Ano**.
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 Veřejnou IP adresu aplikace můžete získat ze stránky přehled služby Application Gateway.
 

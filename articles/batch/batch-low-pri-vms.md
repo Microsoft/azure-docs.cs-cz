@@ -3,14 +3,14 @@ title: Spouštění úloh na nákladově efektivních virtuálních počítačí
 description: Naučte se zřizovat virtuální počítače s nízkou prioritou a snížit tak náklady na Azure Batch úlohy.
 author: mscurrell
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bd5b73cf55110985a2e7eecbc161c77ca6d645cb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816690"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568451"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
 
@@ -18,7 +18,7 @@ Azure Batch nabízí virtuálním počítačům s nízkou prioritou snížit ná
 
 Virtuální počítače s nízkou prioritou využívají nadbytečné kapacity v Azure. Když ve fondech zadáte virtuální počítače s nízkou prioritou, Azure Batch můžou tento přebytečný přístup použít, pokud je k dispozici.
 
-Kompromisy pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být k dispozici, aby je bylo možné přidělit nebo kdykoli zrušit v závislosti na dostupné kapacitě. Z tohoto důvodu jsou virtuální počítače s nízkou prioritou vhodné pro určité typy úloh. Používejte virtuální počítače s nízkou prioritou pro úlohy dávkového a asynchronního zpracování, kde je čas dokončení úlohy flexibilní a práce se distribuuje napříč mnoha virtuálními počítači.
+Kompromisy pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být vždy k dispozici, aby je bylo možné přidělit, nebo mohou být v závislosti na dostupné kapacitě přerušeny kdykoli. Z tohoto důvodu jsou virtuální počítače s nízkou prioritou vhodné pro určité typy úloh. Používejte virtuální počítače s nízkou prioritou pro úlohy dávkového a asynchronního zpracování, kde je čas dokončení úlohy flexibilní a práce se distribuuje napříč mnoha virtuálními počítači.
 
 Virtuální počítače s nízkou prioritou se v porovnání s vyhrazenými virtuálními počítači nabízejí výrazně snížené ceny. Podrobnosti o cenách najdete v tématu [ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
 
@@ -123,7 +123,7 @@ Uzly fondu mají vlastnost, která určuje, jestli je uzel vyhrazený virtuáln�
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Když dojde k přerušení jednoho nebo více uzlů ve fondu, operace výpisu uzlů ve fondu stále tyto uzly vrátí. Aktuální počet uzlů s nízkou prioritou zůstane beze změny, ale u těchto uzlů je stav nastaven na přerušený **stav.** Batch se pokusí najít náhradní virtuální počítače a v případě úspěchu uzly procházejí **vytvořením** a následným **spuštěním** stavů, než se stane k dispozici pro spuštění úlohy, stejně jako u nových uzlů.
+V případě fondů konfigurace virtuálních počítačů se při přerušení jednoho nebo více uzlů operace výpisu uzlů ve fondu pořád vrátí do těchto uzlů. Aktuální počet uzlů s nízkou prioritou zůstane beze změny, ale u těchto uzlů je stav nastaven na přerušený **stav.** Batch se pokusí najít náhradní virtuální počítače a v případě úspěchu uzly procházejí **vytvořením** a následným **spuštěním** stavů, než se stane k dispozici pro spuštění úlohy, stejně jako u nových uzlů.
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Škálování fondu obsahujícího virtuální počítače s nízkou prioritou
 
@@ -155,10 +155,11 @@ Vzorec automatického škálování fondu podporuje virtuální počítače s n�
 
 ## <a name="handling-preemption"></a>Přerušení zpracování
 
-Je možné, že virtuální počítače budou občas zrušené. Když dojde k přerušení, Batch provede toto:
+Virtuální počítače se občas můžou považovat za příležitostné přerušení. Pokud k tomu dojde, úlohy, které byly spuštěny na virtuálních počítačích s přerušeným uzlem, se znovu zařadí do fronty a spustí se znovu.
+
+V případě fondů konfigurace virtuálních počítačů Batch provede také následující akce:
 
 -   Zrušené virtuální **počítače mají stav aktualizace na**přerušeno.
--   Pokud úlohy běžely na virtuálních počítačích s přerušeným uzlem, tyto úlohy se znovu zařadí do fronty a znovu se spustí.
 -   Virtuální počítač se efektivně odstraní, což vede ke ztrátě všech dat uložených místně na VIRTUÁLNÍm počítači.
 -   Fond se neustále pokouší spojit s cílovým počtem dostupných uzlů s nízkou prioritou. Když se najde náhradní kapacita, uzly zachovají jejich ID, ale budou se znovu inicializovat, a to tak, že procházejí **vytvořením** a **spuštěním** stavů, než budou k dispozici pro plánování úloh.
 -   Počty přerušení jsou k dispozici jako metrika v Azure Portal.
@@ -168,7 +169,7 @@ Je možné, že virtuální počítače budou občas zrušené. Když dojde k p�
 Nové metriky jsou k dispozici v [Azure Portal](https://portal.azure.com) pro uzly s nízkou prioritou. Tyto metriky jsou:
 
 - Počet uzlů s nízkou prioritou
-- Počet jader s nízkou prioritou 
+- Počet jader s nízkou prioritou
 - Počet zrušených uzlů
 
 Chcete-li zobrazit metriky v Azure Portal:
@@ -177,10 +178,10 @@ Chcete-li zobrazit metriky v Azure Portal:
 2. V části **monitorování** vyberte **metriky** .
 3. V seznamu **dostupné metriky** vyberte metriky, které si přejete.
 
-![Metriky pro uzly s nízkou prioritou](media/batch-low-pri-vms/low-pri-metrics.png)
+![Snímek obrazovky znázorňující výběr metriky pro uzly s nízkou prioritou](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
-* Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
-* Začněte naplánování přesunu z virtuálních počítačů s nízkou prioritou na místo virtuálních počítačů. Pokud používáte virtuální počítače s nízkou prioritou s fondy **konfigurace cloudové služby** , naplánujte přesun na fondy **Konfigurace virtuálních počítačů** .
+- Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
+- Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
+- Začněte naplánování přesunu z virtuálních počítačů s nízkou prioritou na místo virtuálních počítačů. Pokud používáte virtuální počítače s nízkou prioritou s fondy **konfigurace cloudové služby** , naplánujte přesun na fondy **Konfigurace virtuálních počítačů** .

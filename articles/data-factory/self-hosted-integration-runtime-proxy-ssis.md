@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 1eac86e856840d5cb78313fb4d61751066d6886b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 09/09/2020
+ms.openlocfilehash: d135320d8dd9f86fbc313b17b8b55ed3c609e9dc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184000"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595015"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace prostředí IR v místním prostředí jako proxy serveru pro Azure-SSIS IR v Azure Data Factory
 
@@ -27,9 +27,11 @@ Tento článek popisuje, jak spustit balíčky služba SSIS (SQL Server Integrat
 
 Pomocí této funkce můžete získat přístup k místním datům, aniž byste se museli [připojit k Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Tato funkce je užitečná v případě, že vaše podniková síť má příliš složitou konfiguraci nebo je zásada příliš omezující, takže se do ní Azure-SSIS IR vložit.
 
-Tato funkce rozdělí všechny úlohy toku dat SSIS s místním zdrojem dat na dvě pracovní úlohy: 
-* První úkol, který běží v místním prostředí IR, nejprve přesune data z místního zdroje dat do pracovní oblasti v úložišti objektů BLOB v Azure.
-* Druhý úkol, který běží na vašem Azure-SSIS IR, pak přesune data z pracovní oblasti do zamýšleného data cíle.
+Tato funkce rozdělí úlohu toku dat SSIS na dvě pracovní úlohy, kdykoli je to možné: 
+* **Místní pracovní úloha**: Tato úloha spustí komponentu toku dat, která se připojuje k místnímu úložišti dat na místním prostředí IR. Přesouvá data z místního úložiště dat do pracovní oblasti ve službě Azure Blob Storage nebo naopak.
+* **Pracovní úloha cloudu**: Tato úloha spustí komponentu toku dat, která se nepřipojuje k místnímu úložišti dat na vašem Azure-SSIS IR. Přesouvá data z pracovní oblasti v úložišti objektů BLOB v Azure do cloudového úložiště dat nebo naopak.
+
+Pokud Váš úkol toku dat přesouvá data z místního prostředí do cloudu, pak první a druhá pracovní úkoly budou místní a cloudové úlohy v uvedeném pořadí. Pokud Váš úkol toku dat přesouvá data z cloudu do místního prostředí, pak první a druhá pracovní úkoly budou cloudové a místní pracovní úkoly, v uvedeném pořadí. Pokud úloha toku dat přesouvá data z místního prostředí do místního počítače, první a druhá pracovní úkoly budou místní pracovní úlohy. Pokud úloha toku dat přesouvá data z cloudu do cloudu, tato funkce se nedá použít.
 
 Další výhody a funkce této funkce umožňují například nastavit vaše místní prostředí IR v oblastech, které ještě nejsou podporované Azure-SSIS IR, a umožnit veřejnou statickou IP adresu místního prostředí IR v bráně firewall vašich zdrojů dat.
 
@@ -41,13 +43,13 @@ Potom nastavíte místní prostředí IR ve stejné datové továrně, kde je na
 
 Nakonec stáhnete a nainstalujete nejnovější verzi prostředí IR v místním prostředí a také další ovladače a modul runtime, na místním počítači nebo virtuálním počítači Azure (VM) následujícím způsobem:
 - Stáhněte a nainstalujte si nejnovější verzi prostředí IR pro místní [hostování](https://www.microsoft.com/download/details.aspx?id=39717).
-- Pokud ve svých balíčcích používáte konektory objektů Linking and Embedding Database (OLEDB), Stáhněte a nainstalujte příslušné ovladače OLEDB do stejného počítače, ve kterém je nainstalovaný modul IR pro místní hostování, pokud jste to ještě neudělali.  
+- Pokud používáte konektory rozhraní ODBC (Object Linking and Embedding Database)/Open do balíčků, Stáhněte a nainstalujte příslušné ovladače do stejného počítače, ve kterém je nainstalováno prostředí IR pro místní hostování, pokud jste to ještě neudělali.  
 
   Pokud používáte starší verzi ovladače OLEDB pro SQL Server (SQL Server Native Client [SQLNCLI]), [Stáhněte si 64 verzi](https://www.microsoft.com/download/details.aspx?id=50402).  
 
   Pokud používáte nejnovější verzi ovladače OLEDB pro SQL Server (MSOLEDBSQL), [Stáhněte si 64 verzi](https://www.microsoft.com/download/details.aspx?id=56730).  
   
-  Pokud používáte ovladače OLEDB pro jiné databázové systémy, jako jsou PostgreSQL, MySQL, Oracle a tak dále, můžete si stáhnout 64 verzí ze svých webů.
+  Pokud používáte ovladače OLEDB/ODBC pro jiné databázové systémy, jako jsou PostgreSQL, MySQL, Oracle a tak dále, můžete si stáhnout 64 verzí ze svých webů.
 - Pokud jste to ještě neudělali, [Stáhněte a nainstalujte 64 Visual C++ (VC) runtime](https://www.microsoft.com/download/details.aspx?id=40784) na stejném počítači, na kterém je nainstalované prostředí IR pro místní hostování.
 
 ## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Příprava služby Azure Blob Storage – propojená služba pro přípravu
@@ -78,7 +80,7 @@ Připravili jste místní prostředí IR a službu Azure Blob Storage – propoj
 
    1. V poli **pracovní cesta** Určete kontejner objektů BLOB ve vybraném účtu služby Azure Blob Storage nebo ho nechte prázdný, aby se pro přípravu použil výchozí.
 
-   1. Vyberte **Pokračovat**.
+   1. Vyberte **pokračovat**.
 
    ![Rozšířená nastavení s místním prostředím IR](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -118,11 +120,11 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>Povolit SSIS balíčky pro připojení pomocí proxy
 
-Pomocí nejnovější SSDT s rozšířením projektů SSIS pro Visual Studio nebo samostatného instalačního programu můžete najít novou `ConnectByProxy` vlastnost, která byla přidána do Správce připojení OLEDB nebo plochých souborů.
-* [Stažení SSDT s rozšířením projektů SSIS pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
+Pomocí nejnovějšího SSDT jako rozšíření projektů SSIS pro Visual Studio nebo samostatného instalačního programu můžete najít novou `ConnectByProxy` vlastnost, která byla přidána do Správce připojení pro podporované součásti toku dat.
+* [Stažení rozšíření projektů SSIS pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [Stažení samostatného instalačního programu](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
-Když navrhujete nové balíčky, které obsahují úlohy toku dat se zdroji OLEDB nebo plochých souborů, které umožňují přístup k databázím nebo souborům v místním prostředí, můžete tuto vlastnost povolit nastavením na *hodnotu true* v podokně **vlastnosti** příslušných správců připojení.
+Když navrhujete nové balíčky obsahující úlohy toku dat pomocí komponent, které přistupují k datům v místním prostředí, můžete tuto vlastnost povolit nastavením na *hodnotu true* v podokně **vlastnosti** příslušných správců připojení.
 
 ![Povolit vlastnost ConnectByProxy](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
@@ -131,7 +133,7 @@ Tuto vlastnost můžete povolit také při spuštění existujících balíčků
 
   ![Povolit ConnectByProxy Vlastnost2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
-  Vlastnost můžete povolit také tak, že ji nastavíte na *hodnotu true* pro příslušné Správce připojení, které se zobrazí na kartě **Správci připojení** v rámci [aktivity balíčku pro spuštění SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) při spouštění balíčků v kanálu Data Factory.
+  Vlastnost můžete povolit také tak, že ji nastavíte na *hodnotu true* pro příslušné Správce připojení, které se zobrazí na kartě **Správci připojení** v rámci [aktivity balíčku pro spuštění SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) , když spouštíte balíčky v kanálu Data Factory.
   
   ![Povolit ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
@@ -143,27 +145,27 @@ Tuto vlastnost můžete povolit také při spuštění existujících balíčků
   
   ![Povolit ConnectByProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
-## <a name="debug-the-first-and-second-staging-tasks"></a>Ladění první a druhé pracovní úlohy
+## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>Ladění pracovních úloh místních i cloudových úloh
 
-V místním prostředí IR můžete najít protokoly za běhu ve složce *C:\ProgramData\SSISTelemetry* a protokoly spouštění pro první pracovní úlohy ve složce *C:\ProgramData\SSISTelemetry\ExecutionLog* .  V závislosti na tom, jestli vaše balíčky ukládáte do SSISDB nebo systému souborů, sdílených složek nebo souborů Azure, můžete najít protokoly spouštění druhých pracovních úloh v SSISDB nebo zadané cesty protokolování. Můžete také najít jedinečné identifikátory prvních pracovních úloh v protokolech spouštění druhé pracovní úlohy. 
+V místním prostředí IR můžete najít protokoly za běhu ve složce *C:\ProgramData\SSISTelemetry* a protokoly spuštění místních pracovních úloh ve složce *C:\ProgramData\SSISTelemetry\ExecutionLog* .  V závislosti na tom, jestli vaše balíčky ukládáte do SSISDB, můžete najít protokoly spuštění pracovních úloh cloudu v SSISDB nebo zadané cesty protokolování. Můžete také najít jedinečné identifikátory místních pracovních úloh v protokolech spouštění pracovních úloh cloudu. 
 
 ![Jedinečné ID první pracovní úlohy](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="use-windows-authentication-in-staging-tasks"></a>Použití ověřování systému Windows v pracovních úlohách
+## <a name="use-windows-authentication-in-on-premises-staging-tasks"></a>Použití ověřování systému Windows v místních pracovních úlohách
 
-Pokud pracovní úkoly v místním prostředí IR vyžadují ověřování systému Windows, [nakonfigurujte balíčky SSIS tak, aby používaly stejné ověřování systému Windows](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+Pokud místní pracovní úkoly v místním prostředí IR vyžadují ověřování systému Windows, [nakonfigurujte balíčky SSIS tak, aby používaly stejné ověřování systému Windows](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
 
-Vaše pracovní úkoly budou vyvolány s účtem služby IR v místním prostředí (*NT SERVICE\DIAHostService*ve výchozím nastavení) a vaše úložiště dat budou k dispozici s účtem ověřování systému Windows. Oba účty vyžadují, aby jim byly přiřazeny určité zásady zabezpečení. V místním počítači IR použijte místní zásady **zabezpečení**  >  **místní zásady**  >  **přiřazení uživatelských práv**a pak postupujte takto:
+Vaše místní pracovní úkoly budou vyvolány s účtem služby IR v místním prostředí (*NT SERVICE\DIAHostService*ve výchozím nastavení) a vaše úložiště dat budou k dispozici s účtem ověřování systému Windows. Oba účty vyžadují, aby jim byly přiřazeny určité zásady zabezpečení. V místním počítači IR použijte místní zásady **zabezpečení**  >  **místní zásady**  >  **přiřazení uživatelských práv**a pak postupujte takto:
 
 1. Přiřaďte *kvóty pro úpravu paměti pro proces* a *nahraďte zásady tokenu na úrovni procesu* na účet služby IR pro místní hostování. Tato situace by se měla provádět automaticky při instalaci místního prostředí IR s výchozím účtem služby. Pokud tomu tak není, přiřaďte tyto zásady ručně. Pokud používáte jiný účet služby, přiřaďte k němu stejné zásady.
 
 1. Přiřaďte k účtu ověřování systému Windows zásadu *přihlášení jako služby* .
 
-## <a name="billing-for-the-first-and-second-staging-tasks"></a>Faktura za první a druhý pracovní úkol
+## <a name="billing-for-the-on-premises-and-cloud-staging-tasks"></a>Fakturace za místní a cloudové úlohy pro pracovní účely
 
-První pracovní úkoly, které běží na vašem místním prostředí IR, se účtují samostatně, stejně jako všechny aktivity přesunu dat, které běží v místním prostředí IR, se účtují. Tento údaj je uvedený v článku [Azure Data Factory ceny datového kanálu](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) .
+Místní pracovní úkoly, které běží na vašem místním prostředí IR, se účtují samostatně, stejně jako všechny aktivity přesunu dat, které běží na místním prostředí IR, se účtují. Tento údaj je uvedený v článku [Azure Data Factory ceny datového kanálu](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) .
 
-Druhé pracovní úkoly, které běží na vašem Azure-SSIS IR, se neúčtují samostatně, ale vaše běžící Azure-SSIS IR se fakturují tak, jak je uvedeno v článku [Azure-SSIS IR ceny](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
+Pracovní úkoly v cloudu, které běží na vašem Azure-SSIS IR, se neúčtují samostatně, ale vaše běžící Azure-SSIS IR se účtují tak, jak je uvedeno v článku [Azure-SSIS IR ceny](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
 
 ## <a name="enabling-tls-12"></a>Povolení protokolu TLS 1.2
 
@@ -173,9 +175,9 @@ Pokud potřebujete používat protokol TLS 1,2 a zakažte starší verze protoko
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- V současné době jsou podporovány pouze úlohy toku dat s/OLEDB/Flatmi zdroji souborů rozhraní ODBC (Open Database Connectivity) nebo cílem OLEDB. 
+- V současné době jsou podporovány pouze úlohy toku dat se zdroji OLEDB/ODBC/plochými soubory nebo cílem OLEDB.
 - V současné době jsou podporovány pouze propojené služby Azure Blob Storage, které jsou konfigurovány pomocí *klíče účtu*, *identifikátoru URI sdíleného přístupového podpisu (SAS)* nebo ověřování *instančního objektu* .
-- *ParameterMapping* ve zdroji OLEDB ještě není podporovaný. Jako alternativní řešení prosím použijte *příkaz SQL z proměnné* jako *AccessMode* a použijte *výraz* pro vložení proměnných/parametrů do příkazu SQL. Ilustraci najdete v balíčku *ParameterMappingSample. dtsx* , který se nachází ve složce *SelfHostedIRProxy/omezení* našeho veřejného Preview kontejneru. Pomocí Průzkumník služby Azure Storage se můžete připojit k našemu kontejneru veřejné verze Preview tak, že zadáte výše uvedený identifikátor URI SAS.
+- *ParameterMapping* ve zdroji OLEDB se momentálně nepodporuje. Jako alternativní řešení prosím použijte *příkaz SQL z proměnné* jako *AccessMode* a použijte *výraz* pro vložení proměnných/parametrů do příkazu SQL. Ilustraci najdete v balíčku *ParameterMappingSample. dtsx* , který se nachází ve složce *SelfHostedIRProxy/omezení* našeho veřejného Preview kontejneru. Pomocí Průzkumník služby Azure Storage se můžete připojit k našemu kontejneru veřejné verze Preview tak, že zadáte výše uvedený identifikátor URI SAS.
 
 ## <a name="next-steps"></a>Další kroky
 

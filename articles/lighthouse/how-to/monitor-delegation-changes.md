@@ -1,14 +1,14 @@
 ---
 title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589737"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567601"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
@@ -48,6 +48,9 @@ Vzhledem k tomu, že se jedná o širokou úroveň přístupu, doporučujeme př
 - Ujistěte se, že tento instanční objekt nemá přístup k žádným delegovaným zákaznickým prostředkům.
 - [Použijte certifikát k ověření](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) a [bezpečnému jeho uložení v Azure Key Vault](../../key-vault/general/best-practices.md).
 - Omezte uživatele, kteří mají přístup ke službě Act jménem instančního objektu.
+
+> [!NOTE]
+> Můžete také přiřadit integrovanou roli Azure Monitoring Reader v kořenovém oboru pro jednotlivé uživatele nebo skupiny uživatelů. To může být užitečné, pokud chcete, aby uživatel mohl [Zobrazit informace o delegování přímo v Azure Portal](#view-delegation-changes-in-the-azure-portal). Pokud to uděláte, uvědomte si, že se jedná o širokou úroveň přístupu, která by se měla omezit na nejmenší možný počet uživatelů.
 
 Pomocí jedné z následujících metod proveďte přiřazení kořenového oboru.
 
@@ -164,6 +167,15 @@ else {
 
 > [!TIP]
 > I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](../concepts/enterprise.md) , používat stejné procesy.
+
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Zobrazit změny delegování v Azure Portal
+
+Uživatelé, kterým byla přiřazena integrovaná role Azure Monitoring Reader v kořenovém oboru, mohou zobrazit změny delegování přímo v Azure Portal.
+
+1. Přejděte na stránku **moji zákazníci** a potom v navigační nabídce vlevo vyberte **Protokol aktivit** .
+1. Ujistěte se, že je ve filtru v horní části obrazovky vybraná **aktivita adresáře** .
+
+Zobrazí se seznam změn delegování. Můžete vybrat **Upravit sloupce** a zobrazit nebo skrýt **stav**, **kategorii události**, **čas**, **časové razítko**, **předplatné**, **událost iniciované**, **skupinu prostředků**, **typ prostředku**a hodnoty **prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 

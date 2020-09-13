@@ -1,29 +1,26 @@
 ---
-title: Zpracování kanálu změn ve službě Azure Blob Storage (Preview) | Microsoft Docs
+title: Postup změny kanálu v Azure Blob Storage | Microsoft Docs
 description: Informace o zpracování protokolů změn kanálu v klientské aplikaci .NET
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018956"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568247"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Zpracování kanálu změn ve službě Azure Blob Storage (Preview)
+# <a name="process-change-feed-in-azure-blob-storage"></a>Zpracování kanálu změn v Azure Blob Storage
 
 Změna kanálu poskytuje transakční protokoly všech změn, ke kterým dojde, do objektů BLOB a metadat objektů BLOB ve vašem účtu úložiště. V tomto článku se dozvíte, jak číst záznamy kanálu změn pomocí knihovny změn v modulu BLOB Change feed Processor.
 
-Další informace o kanálu změn najdete v tématu [Změna kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md).
-
-> [!NOTE]
-> Kanál změn je ve verzi Public Preview a je dostupný v omezených oblastech. Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Změna podpory kanálu v Azure Blob Storage](storage-blob-change-feed.md). Knihovna Change feed Processor se může změnit mezi nyní a až bude tato knihovna všeobecně dostupná.
+Další informace o kanálu změn najdete v tématu [Změna kanálu v Azure Blob Storage](storage-blob-change-feed.md).
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Získání knihovny pro změnu objektu BLOB Processor
 
@@ -219,4 +216,4 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o protokolech změn kanálu. Viz [Změna kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md)
+Přečtěte si další informace o protokolech změn kanálu. Viz [Změna kanálu v Azure Blob Storage](storage-blob-change-feed.md)

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f6480bdd5139d5bc7a5a1887b80f43c3903bf579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55b5b5419734999ebd50ca364251602112e29987
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804595"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594284"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Vytvoření aplikační brány s externím přesměrování pomocí Azure PowerShell
 
@@ -21,12 +21,11 @@ Prostředí Azure PowerShell můžete použít ke konfiguraci [přesměrování 
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření naslouchacího procesu a pravidla přesměrování
-> * Vytvoření služby Application Gateway
+* Nastavit síť
+* Vytvoření naslouchacího procesu a pravidla přesměrování
+* Vytvoření brány Application Gateway
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,7 +62,7 @@ $pip = New-AzPublicIpAddress `
   -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
@@ -145,7 +144,7 @@ $appgw = New-AzApplicationGateway `
   -Sku $sku
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy služby Application Gateway můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
@@ -162,4 +161,4 @@ V tomto článku jste zjistili, jak:
 > [!div class="checklist"]
 > * Nastavit síť
 > * Vytvoření naslouchacího procesu a pravidla přesměrování
-> * Vytvoření služby Application Gateway
+> * Vytvoření brány Application Gateway

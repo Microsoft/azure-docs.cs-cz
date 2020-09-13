@@ -3,12 +3,12 @@ title: Konfigurace vlastního kontejneru Linux
 description: Přečtěte si, jak nakonfigurovat vlastní kontejner Linux v Azure App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 2f26f1b041b2d369b68aeb11755c8e8053862b16
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 9a27abe5457cf8adf2963db545c629134ae53709
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082954"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566972"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru Linux pro Azure App Service
 
@@ -54,7 +54,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby mohl vlastní kontejner podporovat SSH, musíte ho přidat do samotného souboru dockerfileu.
 
 > [!TIP]
-> Všechny integrované kontejnery Linux přidaly instrukce SSH do úložišť imagí. Pomocí následujících pokynů můžete v [úložištiNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14) zjistit, jak je tato funkce povolená.
+> Všechny integrované kontejnery Linux přidaly instrukce SSH do úložišť imagí. Pomocí následujících pokynů můžete v [ úložištiNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14) zjistit, jak je tato funkce povolená.
 
 - Použijte instrukci [Run](https://docs.docker.com/engine/reference/builder/#run) k instalaci serveru SSH a nastavte heslo pro kořenový účet na `"Docker!"` . Například pro Image založenou na systému [Alpine Linux](https://hub.docker.com/_/alpine)budete potřebovat následující příkazy:
 
@@ -88,7 +88,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby mohl vl
     /usr/sbin/sshd
     ```
 
-    Příklad najdete v tématu Jak výchozí [kontejnerNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) SPUSTÍ Server SSH.
+    Příklad najdete v tématu Jak výchozí [ kontejnerNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) SPUSTÍ Server SSH.
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
@@ -147,6 +147,7 @@ Vícenásobný kontejner je aktuálně ve verzi Preview. Následující funkce A
 
 - Ověřování/autorizace
 - Spravované identity
+- CORS
 
 ### <a name="docker-compose-options"></a>Možnosti Docker Compose
 

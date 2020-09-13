@@ -4,12 +4,12 @@ description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a
 ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258433"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595559"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -137,13 +137,15 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače  | **Ano** | No | No |
+| Virtuální počítače<sup>1</sup>  | **Ano** | No | No |
 | Databáze systému SQL Server | **Ano** | **Ano** | **Ano** |
 | Elastické fondy SQL serveru | **Ano** | **Ano** | **Ano** |
 | Fondy kapacity souborů NetApp | **Ano** | **Ano** | **Ano** |
 | Svazky NetApp souborů | **Ano** | **Ano** | **Ano** |
 | Trezory klíčů | **Ano** | **Ano** | **Ano** |
 | Hraniční zařízení datového boxu | **Ano** | **Ano** | **Ano** |
+
+<sup>1</sup> není podporováno pro metriky sítě virtuálních počítačů (celkem v síti, celkový počet příchozích toků, příchozí toky, odchozí toky, maximální rychlost vytváření toků, maximální rychlost vytváření odchozích toků).
 
 Můžete určit rozsah monitorování jedním pravidlem výstrahy metriky jedním ze tří způsobů. Například u virtuálních počítačů můžete obor zadat jako:  
 

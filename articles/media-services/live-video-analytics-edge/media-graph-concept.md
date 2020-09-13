@@ -3,12 +3,12 @@ title: Koncept Media graphu – Azure
 description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048414"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567927"
 ---
 # <a name="media-graph"></a>Graf médií
 
@@ -21,7 +21,8 @@ ms.locfileid: "89048414"
 
 Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. To provedete tak, že podle potřeby propojíte součásti nebo uzly. Diagram níže poskytuje grafické znázornění grafu médií.  
 
-![Grafická reprezentace mediálního grafu](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="Graf médií":::
 
 Live video Analytics na IoT Edge podporuje různé typy zdrojů, procesorů a jímky.
 
@@ -39,7 +40,8 @@ Hodnoty pro parametry v topologii jsou určeny při vytváření instancí grafu
 
 Životní cyklus topologií grafu a instancí grafu je zobrazený v následujícím diagramu stavu.
 
-![Životní cyklus topologie grafu a životního cyklu instance grafu](./media/media-graph/graph-topology-lifecycle.svg)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Životní cyklus topologie grafu a životního cyklu instance grafu":::
 
 Začnete s [vytvářením topologie grafu](direct-methods.md#graphtopologyset). Potom pro každý živý informační kanál videa, který chcete s touto topologií zpracovávat, [vytvoříte instanci grafu](direct-methods.md#graphinstanceset). 
 
@@ -88,11 +90,11 @@ Uzel procesor filtru frekvence snímků umožňuje vzorkovat snímky z příchoz
 
 #### <a name="http-extension-processor"></a>Procesor rozšíření HTTP
 
-Uzel procesoru rozšíření HTTP umožňuje připojit vlastní modul IoT Edge k mediálnímu grafu. Tento uzel přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu HTTP REST vystaveného vaším modulem. V případě potřeby je možné tento uzel ověřit pomocí koncového bodu REST. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem do koncového bodu REST. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
+Uzel procesoru rozšíření HTTP umožňuje připojit vlastní modul IoT Edge k mediálnímu grafu. Tento uzel přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu HTTP REST vystaveného vaším modulem. V případě potřeby je možné tento uzel ověřit pomocí koncového bodu REST. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem do koncového bodu REST. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP. Přečtěte si další informace [o procesoru.](media-graph-extension-concept.md#http-extension-processor)
 
 #### <a name="grpc-extension-processor"></a>procesor rozšíření gRPC
 
-Uzel procesoru rozšíření gRPC přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu [gRPC](terminology.md#grpc) vystaveného vaším modulem. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem na koncový bod gRPC. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
+Uzel procesoru rozšíření gRPC přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu [gRPC](terminology.md#grpc) vystaveného vaším modulem. Uzel podporuje přenos dat pomocí [sdílené paměti](https://en.wikipedia.org/wiki/Shared_memory) nebo přímý vkládání obsahu do textu zpráv gRPC. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem na koncový bod gRPC. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP. Přečtěte si další informace [o procesoru.](media-graph-extension-concept.md#grpc-extension-processor)
 
 #### <a name="signal-gate-processor"></a>Procesor brány signálu  
 

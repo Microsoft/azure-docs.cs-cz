@@ -3,14 +3,12 @@ title: Konfigurace statické odchozí IP adresy
 description: Konfigurace brány Azure firewall a uživatelem definovaných tras pro Azure Container Instances úlohy, které používají veřejnou IP adresu brány firewall pro příchozí a odchozí přenosy
 ms.topic: article
 ms.date: 07/16/2020
-author: dlepow
-ms.author: danlep
-ms.openlocfilehash: d748e3e6239ba913afc5b8aadd7e85dcd1027c04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023700"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566564"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>Konfigurace jedné veřejné IP adresy pro odchozí a příchozí provoz do skupiny kontejnerů
 
@@ -33,7 +31,7 @@ V typickém případě je možné, že už máte virtuální síť Azure, do kte
 
 Skupina kontejnerů spustí z image malou webovou aplikaci `aci-helloworld` . Jak je vidět v dalších článcích v dokumentaci, tento obrázek zabalí malou webovou aplikaci napsanou v Node.js, která slouží jako statická stránka HTML.
 
-Pokud ho potřebujete, nejdřív vytvořte skupinu prostředků Azure pomocí příkazu [AZ Group Create][az-group-create] . Příklad:
+Pokud ho potřebujete, nejdřív vytvořte skupinu prostředků Azure pomocí příkazu [AZ Group Create][az-group-create] . Například:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

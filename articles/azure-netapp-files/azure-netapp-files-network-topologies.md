@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8d81acc0fcb4afa0f981fca3fd099296a0361df
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797437"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569488"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -27,7 +27,7 @@ Plánování síťové architektury je klíčovým prvkem návrhu jakékoli apli
 
 Azure NetApp Files svazky jsou navržené tak, aby se obsahovaly v podsíti pro zvláštní účely označované jako [delegovaná podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) v rámci Azure Virtual Network. Proto můžete ke svazkům přistupovat přímo z vaší virtuální sítě, ze virtuální sítě partnerských uzlů ve stejné oblasti nebo z místní sítě přes bránu Virtual Network (ExpressRoute nebo VPN Gateway) podle potřeby. Podsíť je vyhrazená pro Azure NetApp Files a neexistuje žádné připojení k ostatním službám Azure nebo Internetu.
 
-## <a name="considerations"></a>Důležité informace  
+## <a name="considerations"></a>Požadavky  
 
 Při plánování Azure NetApp Files sítě byste měli pochopit několik důležitých informací.
 
@@ -42,6 +42,7 @@ Následující funkce jsou aktuálně pro Azure NetApp Files nepodporované:
 * Azure Virtual WAN 
 * Zóny redundantní Virtual Network Branch (SKU brány pomocí AZ) 
 * Aktivní/aktivní Virtual Network GWs 
+* Síť VNet Dual Stack (IPv4 a IPv6)
 
 Následující omezení sítě platí pro Azure NetApp Files:
 
@@ -57,7 +58,7 @@ Následující tabulka popisuje síťové topologie podporované nástrojem Azur
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Připojení ke svazku v místní síti VNet    |    Yes    |         |
 |    Připojení ke svazku ve virtuální síti s partnerským vztahem (stejná oblast)    |    Yes    |         |
-|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    No    |    Žádná    |
+|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    No    |    Žádné    |
 |    Připojení ke svazku přes ExpressRoute bránu    |    Yes    |         |
 |    Připojení z místního prostředí ke svazku ve virtuální síti rozbočovače prostřednictvím brány ExpressRoute a partnerského vztahu virtuálních sítí s přenosem brány    |    Yes    |        |
 |    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače přes bránu VPN    |    Yes    |         |

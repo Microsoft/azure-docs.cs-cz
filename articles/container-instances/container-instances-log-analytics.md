@@ -3,13 +3,12 @@ title: Shromažďovat & analyzovat protokoly prostředků
 description: Přečtěte si, jak odesílat protokoly prostředků a data událostí ze skupin kontejnerů v Azure Container Instances do protokolů Azure Monitor
 ms.topic: article
 ms.date: 07/13/2020
-ms.author: danlep
-ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b39cf31dc28ece7d4e4f938dae21a4fbf6a1a832
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524008"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566666"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor
 
@@ -24,7 +23,7 @@ Následující části popisují, jak vytvořit skupinu kontejnerů s povoleným
 > [!NOTE]
 > V současné době můžete odesílat data událostí z instancí kontejnerů Linux pouze do Log Analytics.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli povolit protokolování ve vašich instancích kontejnerů, potřebujete následující:
 
@@ -107,7 +106,7 @@ Chcete-li zobrazit protokoly skupiny kontejnerů v `ContainerInstanceLog_CL` tab
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
 1. V části **Obecné**vyberte **protokoly** .  
-1. Zadejte následující dotaz:`ContainerInstanceLog_CL | limit 50`
+1. Zadejte následující dotaz: `ContainerInstanceLog_CL | limit 50`
 1. Vyberte **Spustit** .
 
 Měl by se zobrazit několik výsledků zobrazených dotazem. Pokud nevidíte žádné výsledky, počkejte pár minut a pak znovu spusťte dotaz kliknutím na tlačítko **Spustit** . Ve výchozím nastavení se položky protokolu zobrazují ve formátu **tabulky** . Pak můžete rozbalením řádku zobrazit obsah příslušné položky protokolu.
@@ -120,7 +119,7 @@ Události pro instance kontejnerů můžete zobrazit také v Azure Portal. Udál
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
 1. V části **Obecné**vyberte **protokoly** .  
-1. Zadejte následující dotaz:`ContainerEvent_CL | limit 50`
+1. Zadejte následující dotaz: `ContainerEvent_CL | limit 50`
 1. Vyberte **Spustit** .
 
 Měl by se zobrazit několik výsledků zobrazených dotazem. Pokud nevidíte žádné výsledky, počkejte pár minut a pak znovu spusťte dotaz kliknutím na tlačítko **Spustit** . Ve výchozím nastavení se položky zobrazují ve formátu **tabulky** . Potom můžete rozbalit řádek a zobrazit obsah jednotlivé položky.

@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003180"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594255"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -280,7 +280,7 @@ Zřídit virtuální síť se dvěma samostatnými podsítěmi, jednu pro cluste
 
 Vytvořte skupinu prostředků pro uložení všech prostředků.
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -294,6 +294,7 @@ Vytvořte virtuální síť se dvěma podsítěmi pro hostování clusteru AKS a
 az network vnet create \
     --resource-group $RG \
     --name $VNET_NAME \
+    --location $LOC \
     --address-prefixes 10.42.0.0/16 \
     --subnet-name $AKSSUBNET_NAME \
     --subnet-prefix 10.42.1.0/24
@@ -320,12 +321,12 @@ Musí být nakonfigurovaná pravidla příchozího a odchozího Azure Firewall. 
 
 Vytvořte prostředek veřejné IP adresy standardní SKU, který bude použit jako Azure Firewall adresa front-endu.
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Zaregistrujte verzi Preview rozhraní příkazového řádku pro vytvoření Azure Firewall.
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -340,7 +341,7 @@ IP adresa, kterou jste vytvořili dříve, se teď dá přiřadit ke front-endu 
 > Nastavení veřejné IP adresy na Azure Firewall může trvat několik minut.
 > Aby bylo možné využít plně kvalifikovaný název domény u pravidel sítě, potřebujeme povolený proxy server DNS, pokud je povolená brána firewall, bude naslouchat na portu 53 a předává požadavky DNS na výše uvedený server DNS. To umožní bráně firewall automaticky přeložit tento plně kvalifikovaný název domény.
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -364,10 +365,10 @@ Azure automaticky směruje provoz mezi podsítěmi Azure, virtuálními sítěmi
 
 Vytvořte prázdnou směrovací tabulku, kterou chcete přidružit k dané podsíti. Směrovací tabulka bude definovat další segment směrování, jak Azure Firewall vytvořili výše. Každá podsíť může mít přidruženou žádnou nebo jednu směrovací tabulku.
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -398,7 +399,7 @@ Další informace o službě Azure Firewall najdete v [dokumentaci k Azure firew
 
 K přidružení clusteru k bráně firewall musí vyhrazená podsíť pro podsíť clusteru odkazovat na tabulku směrování vytvořenou výše. Přidružení se dá udělat vyvoláním příkazu do virtuální sítě, která drží cluster i bránu firewall k aktualizaci směrovací tabulky podsítě clusteru.
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -414,7 +415,7 @@ Cluster AKS se teď dá nasadit do existující virtuální sítě. Použijeme t
 
 Objekt služby používá AKS k vytváření prostředků clusteru. Instanční objekt, který se předává v čase vytvoření, se používá k vytvoření základních prostředků AKS, jako jsou prostředky úložiště, IP adresy a nástroje pro vyrovnávání zatížení používané v AKS (místo toho můžete také použít [spravovanou identitu](use-managed-identity.md) ). Pokud nejsou níže udělená příslušná oprávnění, nebudete moct zřídit cluster AKS.
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -422,7 +423,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 Nyní nahraďte `APPID` a `PASSWORD` níže objektem AppID a heslo instančního objektu, které jsou automaticky generovány předchozím výstupem příkazu. Odkaz na ID prostředku virtuální sítě vám poskytne oprávnění k instančnímu objektu, aby AKS mohli do něj nasadit prostředky.
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -460,7 +461,7 @@ Budete definovat typ odchozího připojení pro použití UDR, který již v pod
 >
 > Funkci AKS pro [**rozsahy IP adres autorizovaných serverem API**](api-server-authorized-ip-ranges.md) lze přidat k omezení přístupu serveru rozhraní API pouze k veřejnému koncovému bodu brány firewall. Funkce povolených rozsahů IP adres je v diagramu označena jako volitelná. Když povolíte funkci schváleného rozsahu IP adres pro omezení přístupu k serveru rozhraní API, nástroje pro vývojáře musí použít JumpBox z virtuální sítě brány firewall nebo musíte přidat všechny koncové body pro vývojáře do povoleného rozsahu IP adres.
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
   --node-count 3 --generate-ssh-keys \
   --network-plugin $PLUGIN \
@@ -491,7 +492,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
  K nakonfigurování `kubectl` připojení k nově vytvořenému clusteru Kubernetes použijte příkaz [az AKS Get-Credentials] [az-AKS-Get-Credentials]. 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
@@ -754,7 +755,7 @@ SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].
 ```
 
 Přidejte pravidlo překladu adres (NAT) tak, že spustíte:
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
@@ -772,7 +773,7 @@ Měla by se zobrazit hlasovací aplikace AKS. V tomto příkladu byla veřejná 
 
 Pokud chcete vyčistit prostředky Azure, odstraňte skupinu prostředků AKS.
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 

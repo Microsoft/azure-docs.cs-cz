@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933660"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595647"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor    
 
@@ -160,13 +160,16 @@ Je také možné zadat různá nastavení uchovávání pro jednotlivé datové 
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
 ```
 
-Všimněte si, že datový typ (tabulka) rozlišuje velká a malá písmena.  Chcete-li získat aktuální nastavení pro uchování dat určitého datového typu (v tomto příkladu SecurityEvent), použijte:
+Všimněte si, že datový typ (tabulka) rozlišuje velká a malá písmena.  Chcete-li získat aktuální nastavení uchovávání dat pro konkrétní datový typ (v tomto příkladu SecurityEvent), použijte:
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
 ```
 
-Chcete-li pro všechny typy dat v pracovním prostoru získat aktuální nastavení pro uchování dat, stačí vynechat konkrétní datový typ, například:
+> [!NOTE]
+> Uchování je vráceno pouze pro datový typ, pokud bylo uchovávání pro něj explicitně nastaveno.  Datové typy, které nemají explicitně nastavené uchovávání (a tedy dědí uchování v pracovním prostoru), nebudou vracet žádné z těchto volání. 
+
+Pokud chcete získat aktuální nastavení uchovávání dat pro všechny datové typy v pracovním prostoru, které mají svou sadu pro uchovávání dat typu pro jednotlivé datové typy, stačí vynechat konkrétní datový typ, například:
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables?api-version=2017-04-26-preview
@@ -575,9 +578,9 @@ Chcete-li upozornit, zda byl objem fakturovatelných dat zobrazený za poslední
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor služby Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . 
+   - **Vyhledávací dotaz** na `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Pokud chcete differetn 
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než***Prahová hodnota***0*.
-   - **Časové období** *1440* minut a **frekvence upozornění** každé *1440* minut, které se spustí jednou denně.
+   - **Časové období** *1440* minut a **frekvence upozornění** každé *1440* minutesto spustit jednou denně.
 - **Definujte podrobnosti upozornění** – Zadejte následující:
    - **Název** pro *fakturovatelný objem dat větší než 50 GB za 24 hodin*
    - **Závažnost** na *Upozornění*.
@@ -604,7 +607,7 @@ Když se shromažďování dat zastaví, stav OperationStatus je **Upozornění*
 |Kolekce důvodů – zastavení| Řešení| 
 |-----------------------|---------|
 |Dosáhlo se denního limitu pracovního prostoru.|Počkejte na automatické restartování kolekce nebo zvyšte počet denních objemů dat popsaných v tématu Správa maximálního denního objemu dat. Doba obnovení denního limitu se zobrazí na stránce **denní limit** . |
-| V pracovním prostoru se dosáhlo [míry objemu příjmu dat](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) . | Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) se vztahuje na pracovní prostory, které jsou přibližně **6 GB/min** nekomprimované – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Tato prahová hodnota se vztahuje na všechna přijatá data, ať už jsou odesílána z prostředků Azure pomocí [nastavení diagnostiky](diagnostic-settings.md), [rozhraní API kolekce dat](data-collector-api.md) nebo agentů. Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost přijímání dat i nadále překračuje prahovou hodnotu nebo jste se k tomu již neočekávali, můžete požádat o jeho zvýšení v pracovním prostoru otevřením žádosti o podporu. Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](alerts-log.md) pomocí následujícího dotazu s logikou výstrahy na základě počtu výsledků, který je větší než nula, zkušební období 5 minut a frekvence 5 minut. Rychlost příjmu se dosáhla 80% prahové hodnoty: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Prahová hodnota dosažené míry objemu přijímání: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
+| V pracovním prostoru se dosáhlo [míry objemu příjmu dat](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) . | Výchozí limit objemu a rychlosti příjmu dat odesílaných z prostředků Azure využívajících nastavení diagnostiky je přibližně 6 GB za sekundu na pracovní prostor. Tato hodnota je přibližná, protože skutečná velikost se může u jednotlivých datových typů lišit v závislosti na délce protokolu a jeho kompresním poměru. Tento limit se nevztahuje na data odesílaná z agentů nebo rozhraní API kolektoru dat. Pokud do jednoho pracovního prostoru odesíláte data vyšší rychlostí, některá data se zahodí a po dobu, kdy bude pokračovat překročení prahové hodnoty, se každých 6 hodin bude odesílat událost do tabulky Operation ve vašem pracovním prostoru. Pokud váš objem příjmu dat dál překračuje limit přenosové rychlosti nebo pokud očekáváte, že ho brzy dosáhnete, můžete požádat o zvětšení pracovního prostoru, a to odesláním e-mailu na adresu LAIngestionRate@microsoft.com nebo vytvořením žádosti o podporu. Událost, která indikuje dosažení limitu rychlosti příjmu dat, najdete dotazem `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"`. |
 |Dosáhlo se denního limitu starší verze bezplatné cenové úrovně. |Počkejte prosím, než se automaticky restartuje kolekce, nebo se změní na placenou cenovou úroveň.|
 |Předplatné Azure je v pozastaveném stavu z důvodu:<br> Zkušební verze skončila.<br> Platnost Azure Pass vypršela.<br> Dosáhlo se limitu měsíčního útraty (například na předplatném MSDN nebo Visual Studio).|Přechod na placené předplatné<br> Odebrat limit nebo počkat na obnovení limitu|
 

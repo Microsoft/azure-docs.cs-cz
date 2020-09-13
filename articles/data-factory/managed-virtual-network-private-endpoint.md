@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225678"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594352"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory spravované Virtual Network (Preview)
 
@@ -59,7 +59,7 @@ Privátní koncový bod používá privátní IP adresu ve spravovaném Virtual 
 > Doporučuje se vytvořit spravované privátní koncové body pro připojení ke všem zdrojům dat Azure. 
  
 > [!WARNING]
-> Pokud je v úložišti dat PaaS (objekt blob, ADLS Gen2, SQL DW) již vytvořený privátní koncový bod, a to i v případě, že umožňuje přístup ze všech sítí, může k němu přistupovat pomocí spravovaného privátního koncového bodu. Ujistěte se, že v takových scénářích vytvoříte privátní koncový bod. 
+> Pokud je úložiště dat PaaS (objekt blob, ADLS Gen2, Azure synapse Analytics) již pro něj vytvořen soukromý koncový bod, a to i v případě, že umožňuje přístup ze všech sítí, může k němu přistupovat pouze pomocí spravovaného privátního koncového bodu. Ujistěte se, že v takových scénářích vytvoříte privátní koncový bod. 
 
 Při vytváření spravovaného privátního koncového bodu v Azure Data Factory se připojení privátního koncového bodu vytvoří ve stavu čeká na vyřízení. Byl zahájen pracovní postup schválení. Vlastník prostředku privátního propojení zodpovídá za schválení nebo odmítnutí připojení.
 
@@ -83,6 +83,23 @@ Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátní
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Služba privátního propojení Azure
+- Azure Search
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+
+### <a name="supported-regions"></a>Podporované oblasti
+- East US
+- USA – východ 2
+- USA – středozápad
+- Západní USA 2
+- Středojižní USA
+- Střední USA
+- Severní Evropa
+- West Europe
+- Spojené království – jih
+- Southeast Asia
+- Austrálie – východ
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Odchozí komunikace prostřednictvím veřejného koncového bodu ze spravovaného ADF Virtual Network
 - Pro odchozí komunikaci je otevřen pouze port 443.

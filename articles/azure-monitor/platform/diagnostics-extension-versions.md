@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9fa0fbea9a6c0e95eb9bec2795ae12e5fae36bfb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305087"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568656"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Verze a historie schématu konfigurace rozšíření Windows Azure Diagnostics (WAD)
 Tento článek uvádí historii verzí verzí schématu [rozšíření Azure Diagnostics pro Windows (WAD)](diagnostics-extension-overview.md) , která se dodává jako součást sady SDK Microsoft Azure.  
@@ -21,17 +21,17 @@ Tento článek uvádí historii verzí verzí schématu [rozšíření Azure Dia
 
 |Verze sady Azure SDK | Verze rozšíření diagnostiky | Model|  
 |------------------|-------------------------------|------|  
-|verze               |1.0                            |modul plug-in|  
-|2,0 – 2,4         |1.0                            |modul plug-in|  
-|2.5               |1.2                            |přípona|  
+|verze               |1,0                            |modul plug-in|  
+|2,0 – 2,4         |1,0                            |modul plug-in|  
+|2,5               |1,2                            |přípona|  
 |2,6               |1.3                            |"|  
 |2.7               |1.4                            |"|  
 |2,8               |1.5                            |"|  
 |2.9               |1.6                            |"|
-|2,96              |1.7                            |"|
+|2,96              |1,7                            |"|
 |2,96              |1.8                            |"|
 |2,96              |1.8.1                          |"|
-|2,96              |1.9                            |"|
+|2,96              |1,9                            |"|
 |2,96              |1,11                           |"|
 
 
@@ -160,7 +160,7 @@ Přidání prvku jímky a možnosti odesílání diagnostických dat, aby bylo m
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Sada Azure SDK 2,6 a rozšíření diagnostiky 1,3
 Pro projekty cloudových služeb v aplikaci Visual Studio byly provedeny následující změny. (Tyto změny platí také pro novější verze sady Azure SDK.)
 
-* Místní emulátor teď podporuje diagnostiku. Tato změna znamená, že můžete shromažďovat diagnostická data a zajistit, aby vaše aplikace vytvářela správné trasování při vývoji a testování v aplikaci Visual Studio. Připojovací řetězec `UseDevelopmentStorage=true` umožňuje shromažďování diagnostických dat při spuštění projektu cloudové služby v sadě Visual Studio pomocí emulátoru úložiště Azure. Všechna diagnostická data se shromažďují v účtu úložiště (úložiště pro vývoj).
+* Místní emulátor teď podporuje diagnostiku. Tato změna znamená, že můžete shromažďovat diagnostická data a zajistit, aby vaše aplikace vytvářela správné trasování při vývoji a testování v aplikaci Visual Studio. Připojovací řetězec `UseDevelopmentStorage=true` umožňuje shromažďování diagnostických dat při spuštění projektu cloudové služby v sadě Visual Studio pomocí emulátoru Azure Storage. Všechna diagnostická data se shromažďují v účtu úložiště (úložiště pro vývoj).
 * Připojovací řetězec účtu úložiště diagnostiky (Microsoft. WindowsAzure. plugins. Diagnostics. ConnectionString) se do konfiguračního souboru služby (. cscfg) uloží znovu. V sadě Azure SDK 2,5 byl v souboru Diagnostics. wadcfgx zadaný účet úložiště diagnostiky.
 
 Existují významné rozdíly mezi tím, jak připojovací řetězec pracoval v sadě Azure SDK 2,4 a starší, a jak funguje v Azure SDK 2,6 a novějším.

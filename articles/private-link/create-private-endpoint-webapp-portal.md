@@ -1,19 +1,19 @@
 ---
 title: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
-description: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
+description: Tento článek vysvětluje, jak soukromě připojit k webové aplikaci pomocí privátního koncového bodu Azure.
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 09/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d547546c3c0e0bbcdde65a654bf373ab7407be3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737389"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569443"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure (Preview)
 
@@ -65,7 +65,7 @@ V této části vytvoříte virtuální síť a podsíť.
 1. V nástroji vytvořit virtuální počítač základy zadejte nebo vyberte tyto informace:
 
    > [!div class="mx-imgBorder"]
-   >![Základní virtuální počítač][4]
+   >![Základní virtuální počítač ][4]
 
 1. Vyberte **Další: disky.**
 
@@ -94,7 +94,7 @@ V této části vytvoříte soukromou webovou aplikaci s použitím privátního
 1. V nástroji vytvořit webovou aplikaci – základy zadejte nebo vyberte tyto informace:
 
    > [!div class="mx-imgBorder"]
-   >![Web App Basic][6]
+   >![Web App Basic ][6]
 
 1. Vyberte **"zkontrolovat + vytvořit"**
 
@@ -138,13 +138,13 @@ V této části vytvoříte soukromou webovou aplikaci s použitím privátního
 
 1. Otevřete stažený soubor. RDP.
 
-- Pokud se zobrazí výzva, vyberte Připojit.
-- Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+   - Pokud se zobrazí výzva, vyberte Připojit.
+   - Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-> [!Note]
-> Možná budete muset vybrat další volby > použít jiný účet a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+   > [!Note]
+   > Možná budete muset vybrat další volby > použít jiný účet a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
-- Vyberte OK.
+   - Vyberte OK.
 
 1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte Ano nebo pokračovat.
 
@@ -174,12 +174,21 @@ V této části se soukromě připojíte k webové aplikaci pomocí privátního
 1. V myVM ověřte, že webová aplikace není přístupná prostřednictvím veřejné IP adresy. Otevřete prohlížeč a vložte název webové aplikace, musíte mít chybovou stránku 403 zakázáno.
 
    > [!div class="mx-imgBorder"]
-   >![Zakázáno][17]
+   >![Při pokusu o použití IP adresy je zakázaná chyba.][17]
 
-> [!Important]
-> Vzhledem k tomu, že je tato funkce ve verzi Preview, je nutné ručně spravovat položku DNS.
+   > [!Important]
+   > Vzhledem k tomu, že je tato funkce ve verzi Preview, je nutné ručně spravovat položku DNS.
 
-1. Vytvořte položku hostitele, otevřete Průzkumníka souborů a vyhledejte soubor Hosts.
+   Pro DNS máte dvě možnosti:
+   - použít hostitelský soubor virtuálního počítače 
+   - nebo použijte službu Azure DNS privátní zóna.
+
+1. První řešení: můžete vytvořit privátní zónu DNS s názvem privatelink.azurewebsites.net a propojit ji s virtuální sítí.
+1. Pak je potřeba vytvořit dva záznamy A (název aplikace a název SCM) s IP adresou vašeho privátního koncového bodu.
+   > [!div class="mx-imgBorder"]
+   >![Záznamy privátní zóny DNS][21]
+
+1. Druhé řešení: Vytvořte položku hostitele, otevřete Průzkumníka souborů a vyhledejte soubor Hosts.
 
    > [!div class="mx-imgBorder"]
    >![Soubor hostitelů][18]
@@ -189,7 +198,7 @@ V této části se soukromě připojíte k webové aplikaci pomocí privátního
    > [!div class="mx-imgBorder"]
    >![Obsah hostitelů][19]
 
-1. Soubor uložte
+1. Soubor uložte.
 
 1. Otevřete prohlížeč a zadejte adresu URL vaší webové aplikace.
 
@@ -214,7 +223,7 @@ V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální s�
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png
 [2]: ./media/create-private-endpoint-webapp-portal/ipaddresses.png
 [3]: ./media/create-private-endpoint-webapp-portal/subnet.png
-[4]: ./media/create-private-endpoint-webapp-portal/virtualmachine.png
+[4]: ./media/create-private-endpoint-webapp-portal/virtual-machine.png
 [5]: ./media/create-private-endpoint-webapp-portal/vmnetwork.png
 [6]: ./media/create-private-endpoint-webapp-portal/webapp.png
 [7]: ./media/create-private-endpoint-webapp-portal/webappnetworking.png
@@ -231,6 +240,8 @@ V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální s�
 [18]: ./media/create-private-endpoint-webapp-portal/explorer.png
 [19]: ./media/create-private-endpoint-webapp-portal/hosts.png
 [20]: ./media/create-private-endpoint-webapp-portal/webappwithpe.png
+[21]: ./media/create-private-endpoint-webapp-portal/dns-private-zone-records.png
+
 
 <!--Links-->
 [privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

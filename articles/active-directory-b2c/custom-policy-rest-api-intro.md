@@ -11,20 +11,20 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388931"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594182"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrace REST APIch výměn deklarací identity do vlastních zásad Azure AD B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Architektura prostředí identity, která je Azure Active Directory B2C (Azure AD B2C), se dá integrovat s rozhraními API RESTful v rámci cesty uživatele. Tento článek ukazuje, jak vytvořit cestu uživatele, která spolupracuje se službou RESTful s využitím [technického profilu RESTful](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster).
+Architektura prostředí identity, která je Azure Active Directory B2C (Azure AD B2C), se dá integrovat s rozhraními API RESTful v rámci cesty uživatele. Tento článek ukazuje, jak vytvořit cestu uživatele, která spolupracuje se službou RESTful s využitím [technického profilu RESTful](restful-technical-profile.md).
 
-Pomocí Azure AD B2C můžete přidat vlastní obchodní logiku k cestě uživatele voláním vlastní služby RESTful. Rozhraní identity Experience Framework může odesílat a přijímat data ze služby RESTful k výměně deklarací identity. Můžete například provést následující věci:
+Pomocí Azure AD B2C můžete přidat vlastní obchodní logiku k cestě uživatele voláním vlastní služby RESTful. Rozhraní identity Experience Framework může odesílat a přijímat data ze služby RESTful k výměně deklarací identity. Můžete například:
 
 - **Ověřte vstupní data uživatele**. Můžete třeba ověřit, že e-mailová adresa zadaná uživatelem existuje v databázi vašeho zákazníka, a pokud ne, zobrazí se chyba.
 - **Zpracovat deklarace identity**. Pokud uživatel zadá své křestní jméno do všech malých písmen nebo ze všech velkých písmen, může REST API formátovat název jenom s prvním písmenem velkými písmeny a vrátit ho do Azure AD B2C.
@@ -125,9 +125,9 @@ Výstupní deklarace by měly vypadat takto:
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts.0.person.name" />
-  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts.0.person.emails.0.email" />
-  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts.0.person.loyaltyNumber" />
+  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts[0].person.name" />
+  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts[0].person.emails[0].email" />
+  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts[0].person.loyaltyNumber" />
 </OutputClaims>
 ```
 

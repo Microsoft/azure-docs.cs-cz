@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81422097"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570222"
 ---
 Umístění virtuálních počítačů v jedné oblasti omezuje fyzickou vzdálenost mezi instancemi. Jejich umístění v rámci jedné zóny dostupnosti se také fyzicky přiblíží dohromady. Pokud se ale nároky na Azure rozroste, může jedna zóna dostupnosti zahrnovat několik fyzických datových center, což může způsobit, že vaše aplikace bude mít vliv na latenci sítě. 
 
@@ -34,7 +34,7 @@ Skupina umístění blízkosti je logické seskupení, které se používá k za
 
 Skupina umístění blízkosti je nový typ prostředku v Azure. Musíte ho vytvořit ještě před tím, než ho použijete s jinými prostředky. Po vytvoření se dá použít s virtuálními počítači, skupinami dostupnosti nebo Virtual Machine Scale Sets. Skupina umístění blízkosti se určuje při vytváření výpočetních prostředků, které poskytují ID skupiny umístění blízkosti. 
 
-Existující prostředek můžete také přesunout do skupiny umístění blízkosti. Při přesunu prostředku do skupiny umístění blízkosti byste měli nejprve zastavit (zrušit přidělení) Asset, protože se znovu nasadí do jiného datového centra v oblasti, aby splňovalo omezení umístění. 
+Existující prostředek můžete také přesunout do skupiny umístění blízkosti. Při přesunu prostředku do skupiny umístění blízkosti byste měli nejprve zastavit (zrušit přidělení) Asset, protože se znovu nasadí do jiného datového centra v oblasti, aby bylo splněno omezení pro společné umístění. 
 
 V případě sad dostupnosti a sady škálování virtuálních počítačů byste měli nastavit skupinu umístění blízkosti na úrovni prostředků, nikoli na jednotlivých virtuálních počítačích. 
 

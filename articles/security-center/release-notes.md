@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: 0c0e286ac9f94768541bb40b9ccca01e0469e0c8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: f3aeccd30a9c89c2a43dfb85d4a57274037ec05f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177240"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569250"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -28,6 +28,104 @@ Zabezpečení Azure je v aktivním vývoji a průběžně přijímá vylepšení
 - Zastaralé funkce
 
 Tato stránka se pravidelně aktualizuje, takže ji můžete často znovu navštěvovat. Pokud hledáte položky starší než šest měsíců, najdete je v archivu, kde najdete novinky [v Azure Security Center](release-notes-archive.md).
+
+
+## <a name="september-2020"></a>Září 2020
+
+Aktualizace v září zahrnují:
+
+- [Výsledky posouzení ohrožení zabezpečení jsou nyní k dispozici při průběžném exportu](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
+- [Zabránit neoprávněným konfiguracím zabezpečení vynucováním doporučení při vytváření nových prostředků](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
+- [Vylepšení doporučení skupiny zabezpečení sítě](#network-security-group-recommendations-improved)
+- [Doporučení AKS inverze Preview "pod" zásady zabezpečení by měly být definované v Kubernetes Services "](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
+- [Vylepšená e-mailová oznámení z Azure Security Center](#email-notifications-from-azure-security-center-improved)
+- [Zabezpečené skóre nezahrnuje doporučení pro verzi Preview.](#secure-score-doesnt-include-preview-recommendations)
+- [Doporučení nyní obsahují indikátor závažnosti a interval aktuálnosti.](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Výsledky posouzení ohrožení zabezpečení jsou nyní k dispozici při průběžném exportu
+
+Používejte průběžný export ke streamování výstrah a doporučení v reálném čase do služby Azure Event Hubs, Log Analytics pracovních prostorů nebo Azure Monitor. Odtud můžete tato data integrovat s systémů Siem (například Azure Sentinel, Power BI, Azure Průzkumník dat a dalšími.
+
+Nástroje pro posouzení ohrožení zabezpečení Security Center v rámci "nadřazených" doporučení vracet informace o vašich prostředcích jako užitečná doporučení, jako je třeba ohrožení zabezpečení ve virtuálních počítačích. 
+
+Výsledky zabezpečení jsou nyní k dispozici pro export prostřednictvím průběžného exportu, když vyberete možnost doporučení a povolíte možnost **Zahrnout zjištění zabezpečení** .
+
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu" :::
+
+Související stránky:
+
+- [Integrované řešení posouzení ohrožení zabezpečení Security Center pro virtuální počítače Azure](deploy-vulnerability-assessment-vm.md)
+- [Integrované řešení posouzení ohrožení zabezpečení Security Center pro bitové kopie Azure Container Registry](monitor-container-security.md)
+- [Průběžný export](continuous-export.md)
+
+### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Zabránit neoprávněným konfiguracím zabezpečení vynucováním doporučení při vytváření nových prostředků
+
+Nezabezpečené konfigurace zabezpečení představují hlavní příčinu incidentů zabezpečení. Security Center nyní mají schopnost *zabránit* v neúspěšně konfiguracích nových prostředků s ohledem na konkrétní doporučení. 
+
+Tato funkce vám může přispět k zabezpečení vašich úloh a ke stabilizaci zabezpečeného skóre.
+
+Vynucování zabezpečené konfigurace na základě konkrétního doporučení se nabízí ve dvou režimech:
+
+- Pomocí efektu **odepření** Azure Policy můžete zastavit vytváření špatných prostředků.
+
+- Pomocí možnosti **Vynutilit** můžete využít **DeployIfNotExist** efektu zásad Azure a automaticky opravovat prostředky, které nedodržují předpisy při tvorbě.
+ 
+Tato možnost je k dispozici pro vybraná doporučení zabezpečení a nachází se v horní části stránky s podrobnostmi o prostředku.
+
+Další informace o tom, jak [zabránit v neoprávněných konfiguracích s doporučeními pro vymáhání](prevent-misconfigurations.md)
+
+###  <a name="network-security-group-recommendations-improved"></a>Vylepšení doporučení skupiny zabezpečení sítě
+
+Byla vylepšena následující doporučení zabezpečení související se skupinami zabezpečení sítě, aby se snížily některé výskyty falešně pozitivních hodnot.
+
+- Všechny síťové porty by se měly omezit na NSG přidružených k vašemu VIRTUÁLNÍmu počítači.
+- Porty pro správu by měly být uzavřeny na virtuálních počítačích
+- Virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě
+- Podsítě by měly být přidružené ke skupině zabezpečení sítě.
+
+
+### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Doporučení AKS inverze Preview "pod" zásady zabezpečení by měly být definované v Kubernetes Services "
+
+Doporučení pro verzi Preview "pod zásadou zabezpečení by se měly definovat na Kubernetes Services", jak je popsáno v dokumentaci ke [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/use-pod-security-policies) .
+
+Funkce zásady zabezpečení pod (Preview) je nastavena pro vyřazení a nebude již k dispozici po 15. říjnu 2020 ve prospěch Azure Policy pro AKS.
+
+Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
+
+
+### <a name="email-notifications-from-azure-security-center-improved"></a>Vylepšená e-mailová oznámení z Azure Security Center
+
+Vylepšili jsme následující oblasti e-mailů týkajících se výstrah zabezpečení: 
+
+- Přidání možnosti odesílání e-mailových oznámení o výstrahách pro všechny úrovně závažnosti
+- Přidali jsme možnost informovat uživatele o různých rolích RBAC v předplatném.
+- Ve výchozím nastavení oznamujeme, že vlastníci předplatného budou upozorňováni na výstrahy s vysokou závažností (s vysokou pravděpodobností, že se jedná o pravé porušení předpisů).
+- Odebrali jsme pole telefonní číslo ze stránky Konfigurace e-mailových oznámení.
+
+Další informace najdete v [Nastavení e-mailových oznámení pro výstrahy zabezpečení](security-center-provide-security-contact-details.md).
+
+
+### <a name="secure-score-doesnt-include-preview-recommendations"></a>Zabezpečené skóre nezahrnuje doporučení pro verzi Preview. 
+
+Security Center průběžně vyhodnocuje vaše prostředky, odběry a organizace pro problémy se zabezpečením. Pak agreguje všechna zjištění do jediného skóre, abyste na první pohled mohli sdělit aktuální situaci zabezpečení: čím vyšší je skóre, tím se sníží zjištěná úroveň rizika.
+
+Nově zjištěné hrozby jsou v Security Center k dispozici nové Rady zabezpečení prostřednictvím nových doporučení. Pokud se chcete vyhnout nedarovaným změnám v zabezpečeném skóre a poskytnout období odkladu, ve kterém můžete prozkoumat nová doporučení předtím, než budou mít dopad na vaše skóre, doporučení označená jako **verze Preview** už nejsou zahrnutá do výpočtů zabezpečeného skóre. Měly by se pořád opravit všude, kde je to možné, takže po skončení období Preview budou přispět ke svému skóre.
+
+Doporučení **verze Preview** navíc nevykreslují prostředek "není v pořádku".
+
+Příklad doporučení verze Preview:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Doporučení s příznakem Preview":::
+
+[Přečtěte si další informace o zabezpečeném skóre](secure-score-security-controls.md).
+
+
+### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>Doporučení nyní obsahují indikátor závažnosti a interval aktuálnosti.
+
+Stránka s podrobnostmi pro doporučení nyní obsahuje indikátor intervalu aktuálnosti (kdykoli je to relevantní) a jasné zobrazení závažnosti doporučení.
+
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Stránka s doporučeními ukazující aktuálnost a závažnost":::
+
 
 
 ## <a name="august-2020"></a>Srpen 2020
@@ -107,7 +205,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 ||||
 
 
-|Zásada|Obor|
+|Zásady|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Integrované|
 |**Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.**<br>ID zásady: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -122,7 +220,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 |**Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Předdefinované + BYOL|
 ||||
 
-|Zásada|Obor|
+|Zásady|Obor|
 |----|:----|
 |[**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Předdefinované + BYOL|
 ||||
@@ -326,7 +424,7 @@ K nasazení konfigurací automatizace napříč vaší organizací použijte tyt
 Zásady najdete v části zásady Azure:
 
 
-|Cíl  |Zásada  |ID zásady  |
+|Cíl  |Zásady  |ID zásady  |
 |---------|---------|---------|
 |Průběžný export do centra událostí|[Nasazení exportu do centra událostí pro Azure Security Center výstrahy a doporučení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
 |Průběžný export do pracovního prostoru Log Analytics|[Nasazení exportu do Log Analytics pracovního prostoru pro Azure Security Center výstrahy a doporučení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
@@ -359,7 +457,7 @@ Nové zásady níže byly přidány do výchozí iniciativy ASC a jsou určeny p
 Zásady najdete v části zásady Azure:
 
 
-| Zásada                                                                                                                                                                                                                                                                | ID zásady                            |
+| Zásady                                                                                                                                                                                                                                                                | ID zásady                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [V Azure SQL Databasech serverech by mělo být povolené rozšířené zabezpečení dat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [Rozšířené zabezpečení dat by mělo být povoleno na serverech SQL na počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
@@ -489,7 +587,7 @@ Vytvořte vlastní iniciativu v zásadách Azure, přidejte do ní zásady a př
 
 Nyní jsme také přidali možnost Upravit metadata vlastního doporučení. Mezi možnosti metadat patří závažnost, nápravný postup, informace o hrozbách a další.  
 
-Přečtěte si další [informace o vylepšení vlastních doporučení s podrobnými informacemi](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
+Přečtěte si další [informace o vylepšení vlastních doporučení s podrobnými informacemi](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information).
 
 
 
@@ -550,79 +648,3 @@ Pokud máte předplatné na cenové úrovni Free, jejich zabezpečená skóre bu
 Další informace o [identitě a doporučeních pro přístup](recommendations-reference.md#recs-identity).
 
 Přečtěte si další informace o [identitě a přístupu k monitorování](security-center-identity-access.md).
-
-
-## <a name="march-2020"></a>Březen 2020
-
-Aktualizace v březnu zahrnují:
-- [Automatizace pracovních postupů je teď všeobecně dostupná.](#workflow-automation-is-now-generally-available)
-- [Integrace Azure Security Center s centrem pro správu Windows](#integration-of-azure-security-center-with-windows-admin-center)
-- [Ochrana pro službu Azure Kubernetes](#protection-for-azure-kubernetes-service)
-- [Vylepšené prostředí za běhu](#improved-just-in-time-experience)
-- [Dvě bezpečnostní doporučení pro webové aplikace, které jsou zastaralé](#two-security-recommendations-for-web-applications-deprecated)
-
-
-### <a name="workflow-automation-is-now-generally-available"></a>Automatizace pracovních postupů je teď všeobecně dostupná.
-
-Funkce automatizace pracovního postupu Azure Security Center je teď všeobecně dostupná. Použijte ji k automatické aktivaci Logic Apps výstrah zabezpečení a doporučení. Kromě toho jsou k dispozici ruční aktivační události pro výstrahy a všechna doporučení, která mají možnost Rychlá oprava k dispozici.
-
-Každý program zabezpečení zahrnuje několik pracovních postupů pro reakci na incidenty. Tyto procesy mohou zahrnovat oznamování relevantních účastníků, spuštění procesu správy změn a uplatnění specifických kroků k nápravě. Odborníci na zabezpečení doporučují automatizovat tolik kroků těchto postupů, jako je to možné. Automatizace snižuje režijní náklady a může zvýšit zabezpečení tím, že zajistí, že kroky procesu budou provedeny rychle, konzistentně a podle vašich předdefinovaných požadavků.
-
-Další informace o funkcích automatických a ručních Security Center pro spouštění pracovních postupů najdete v tématu [automatizace pracovních postupů](workflow-automation.md).
-
-Přečtěte si další informace o [vytváření Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
-
-
-### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Integrace Azure Security Center s centrem pro správu Windows
-
-Je teď možné přesunout místní servery Windows z centra pro správu Windows přímo na Azure Security Center. Security Center pak se v jednom podokně skla zobrazí informace o zabezpečení pro všechny prostředky centra pro správu systému Windows, včetně místních serverů, virtuálních počítačů a dalších PaaS úloh.
-
-Po přesunutí serveru z centra pro správu Windows na Azure Security Center budete moct:
-
-- Zobrazení výstrah zabezpečení a doporučení v rozšíření Security Center centra pro správu systému Windows.
-- Prohlédněte si stav zabezpečení a načtěte další podrobné informace o spravovaných serverech centra pro správu Windows v Security Center v rámci Azure Portal (nebo přes rozhraní API).
-
-Přečtěte si další informace o [tom, jak integrovat Azure Security Center s centrem pro správu Windows](windows-admin-center-integration.md).
-
-
-### <a name="protection-for-azure-kubernetes-service"></a>Ochrana pro službu Azure Kubernetes
-
-Azure Security Center rozšiřuje své funkce zabezpečení kontejnerů, aby chránily službu Azure Kubernetes Service (AKS).
-
-Oblíbená Open Source platforma Kubernetes byla přijata, takže je teď v oboru standard pro orchestraci kontejnerů. Navzdory této rozšířené implementaci se stále ještě nepředpokládá, jak zabezpečit Kubernetes prostředí. Ochrana předních ploch v kontejnerových aplikacích vyžaduje, aby bylo zajištěno zabezpečené a nepřetržité monitorování infrastruktury pro potenciální hrozby.
-
-Security Center obrany zahrnuje:
-
-- **Zjišťování a viditelnost** – nepřetržité zjišťování spravovaných instancí AKS v rámci předplatných registrovaných pro Security Center.
-- **Doporučení zabezpečení** – doporučení pro dodržování předpisů, která vám pomůžou dodržovat osvědčené postupy zabezpečení pro AKS. Tato doporučení jsou zahrnutá ve vašem zabezpečeném skóre, abyste se ujistili, že se zobrazují jako součást stav zabezpečení vaší organizace. Příklad doporučení týkající se AKS najdete v tématu řízení přístupu na základě role by mělo sloužit k omezení přístupu ke clusteru služby Kubernetes.
-- **Ochrana před hrozbami** – prostřednictvím průběžné analýzy nasazení AKS vás Security Center vás upozorní na hrozby a škodlivou aktivitu zjištěnou na úrovni clusteru host a AKS.
-
-Přečtěte si další informace o [integraci služeb Azure Kubernetes Services s Security Center](azure-kubernetes-service-integration.md).
-
-Přečtěte si další informace o [funkcích zabezpečení kontejnerů v Security Center](container-security.md).
-
-
-### <a name="improved-just-in-time-experience"></a>Vylepšené prostředí za běhu
-
-Funkce, operace a uživatelské rozhraní pro nástroje Azure Security Center za běhu, které zabezpečují vaše porty pro správu, jsou vylepšené následujícím způsobem: 
-
-- **Pole odůvodnění** – při žádosti o přístup k virtuálnímu počítači (VM) na stránce Azure Portal za běhu je k dispozici nové volitelné pole, ve kterém můžete zadat odůvodnění žádosti. Informace zadané do tohoto pole lze sledovat v protokolu aktivit. 
-- **Automatické čištění redundantních pravidel JIT (just-in-time)** – při každé aktualizaci zásad JIT se automaticky spustí nástroj pro vyčištění, který kontroluje platnost celého RuleSet. Nástroj vyhledá neshody mezi pravidly v zásadách a pravidly v NSG. Pokud nástroj pro vyčištění najde neshodu, určí příčinu a v případě, že je to bezpečné, odstraní předdefinovaná pravidla, která už nepotřebujete. Čisticí nikdy neodstraní pravidla, která jste vytvořili. 
-
-Přečtěte si další informace o [funkci přístupu JIT](security-center-just-in-time.md).
-
-
-### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Dvě bezpečnostní doporučení pro webové aplikace, které jsou zastaralé
-
-Nepoužívá se dvě doporučení zabezpečení související s webovými aplikacemi: 
-
-- Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by měla být zpřísněná.
-    (Související zásady: pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by měla být Posílená.)
-
-- Přístup k App Services by měl být omezený.
-    (Související zásady: přístup k App Services by měl být omezený [Preview])
-
-Tato doporučení se už nebudou zobrazovat v seznamu Security Centerch doporučení. Související zásady již nebudou zahrnuty v iniciativě s názvem "Security Center výchozí".
-
-Přečtěte si další informace o [doporučeních zabezpečení](recommendations-reference.md).
-

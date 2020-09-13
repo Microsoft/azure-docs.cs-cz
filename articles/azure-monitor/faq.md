@@ -7,16 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782936"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569199"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
-Toto je seznam nejčastějších dotazů k Azure Monitor.
+Toto je seznam nejčastějších dotazů k Azure Monitor. Pokud máte nějaké další dotazy, navštivte [diskuzní fórum](https://docs.microsoft.com/answers/questions/topics/single/24223.html) a Vystavte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
+
 
 ## <a name="general"></a>Obecné
 
@@ -36,7 +37,7 @@ Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a
 Přístup ke všem funkcím Azure Monitor a datům z nabídky **monitor** v Azure Portal. Část **monitorování** v nabídce různých služeb Azure poskytuje přístup ke stejným nástrojům, které obsahují data filtrovaná pro konkrétní prostředek. Data Azure Monitor jsou také přístupná pro celou řadu scénářů pomocí rozhraní příkazového řádku, PowerShellu a REST API.
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Existuje místní verze Azure Monitor?
-Ne. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
+No. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Může Azure Monitor monitorovat místní prostředky?
 Ano, kromě shromažďování dat monitorování z prostředků Azure Azure Monitor můžou shromažďovat data z virtuálních počítačů a aplikací v jiných cloudech i v místním prostředí. Další informace najdete v tématu [zdroje dat monitorování pro Azure monitor](platform/data-sources.md).
@@ -98,7 +99,7 @@ Tlačítka **Průzkumník dotazů**, **Uložit** a **Nová pravidla výstrahy** 
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Proč se mi zobrazuje chyba: "zaregistrovat poskytovatele prostředků" Microsoft. Insights "pro toto předplatné povolíte tento dotaz" při otevírání Log Analytics z virtuálního počítače? 
 Mnoho poskytovatelů prostředků se registruje automaticky, ale možná budete muset některé poskytovatele prostředků zaregistrovat ručně. Obor pro registraci je vždy předplatné. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Proč se při otevírání Log Analytics z virtuálního počítače zobrazuje chybová zpráva o přístupu? 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Proč se při otevírání Log Analytics z virtuálního počítače zobrazuje chybová zpráva o přístupu? 
 Chcete-li zobrazit protokoly virtuálních počítačů, je třeba udělit oprávnění ke čtení pro pracovní prostory, ve kterých jsou uloženy protokoly virtuálních počítačů. V těchto případech vám správce musí udělit oprávnění v Azure.
 
 ## <a name="metrics"></a>Metriky
@@ -398,7 +399,7 @@ Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik pů
 ```
 
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 #### <a name="configuring-application-insights"></a>Konfigurace Application Insights
 
@@ -523,9 +524,54 @@ Existují však i případy, kdy je na webovém serveru aplikace povoleno monito
 
 V tomto scénáři by bylo možné klientovi vrátit odpověď 502 nebo 503 z důvodu problému ve vrstvě reverzního proxy serveru a to by nebylo zachyceno předem Application Insights. K detekci problémů v této vrstvě možná budete muset přesměrovat protokoly ze reverzního proxy serveru na Log Analytics a vytvořit vlastní pravidlo pro kontrolu odpovědí 502/503. Další informace o běžných příčinách chyb 502 a 503 najdete v [článku věnovaném řešení potíží s Azure App Service pro "502 Bad Gateway" a "503 Služba není k dispozici"](../app-service/troubleshoot-http-502-http-503.md).     
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
 
-Toto je seznam nejčastějších dotazů týkajících se Azure Monitor kontejnerů. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
+## <a name="opentelemetry"></a>OpenTelemetry
+
+### <a name="what-is-opentelemetry"></a>Co je OpenTelemetry
+
+Nové Open Source standard pro pozorování. Další informace najdete na adrese [https://opentelemetry.io/](https://opentelemetry.io/) .
+
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>Proč Microsoft/Azure Monitor investici v OpenTelemetry?
+
+Domníváme se, že zákazníkům lépe obsluhuje tři důvody:
+   1. Povolit podporu pro více zákaznických scénářů.
+   2. Instrumentace bez obav od zamčení dodavatele.
+   3. Zvyšte transparentnost a zapojení zákazníků.
+
+Také zarovnává se strategií Microsoftu, aby vyrovnala [Open Source](https://opensource.microsoft.com/).
+
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>Jakou další hodnotu mi OpenTelemetry?
+
+Kromě výše uvedených důvodů je OpenTelemetry efektivnějším způsobem v měřítku a poskytuje konzistentní návrh a konfigurace napříč jazyky.
+
+### <a name="how-can-i-test-out-opentelemetry"></a>Jak můžu otestovat OpenTelemetry?
+
+Zaregistrujte se a připojte se k naší Azure Monitor Application Insights na [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) .
+
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>Co znamená GA v kontextu OpenTelemetry?
+
+Komunita OpenTelemetry definuje všeobecně dostupné ( [GA).](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302) OpenTelemetry "GA" ale neznamená paritu funkcí existujícími sadami Application Insights SDK. Azure Monitor bude pro zákazníky, kteří vyžadují funkce, jako jsou [předem agregované metriky](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics), [živé metriky](app/live-stream.md), [adaptivní vzorkování](app/sampling.md#adaptive-sampling), [Profiler](app/profiler-overview.md)a [Snapshot Debugger](app/snapshot-debugger.md) , dál doporučit naše aktuální Application Insights sady SDK, dokud nedosáhne zralosti sady OpenTelemetry SDK.
+
+### <a name="can-i-use-preview-builds-in-production-environments"></a>Můžu používat buildy Preview v produkčním prostředí?
+
+Nedoporučuje se. Další informace najdete v tématu věnovaném [dodatečným podmínkám použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
+
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>Jaký je rozdíl mezi OpenTelemetry SDK a automatickou instrumentací?
+
+Specifikace OpenTelemetry definuje [sadu SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk). Zkratka "SDK" je balíček pro konkrétní jazyk, který shromažďuje data telemetrie napříč různými komponentami vaší aplikace a odesílá data Azure Monitor prostřednictvím vývozce.
+
+Koncept automatické instrumentace (někdy označovaný jako vkládání v bajtech, bez kódu nebo založené na agentech) odkazuje na schopnost instrumentovat aplikaci beze změny kódu. Další informace najdete například v [souboru Readme pro automatickou instrumentaci OpenTelemetry Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) .
+
+### <a name="whats-the-opentelemetry-collector"></a>Co je kolekce OpenTelemetry?
+
+Kolektor OpenTelemetry je popsaný v [souboru Readme pro GitHub](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector). V současné době společnost Microsoft nevyužívá kolektor OpenTelemetry a závisí na přímých vývozcůch, které odesílají Application Insights Azure Monitor.
+
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>Jaký je rozdíl mezi OpenCensus a OpenTelemetry?
+
+[OpenCensus](https://opencensus.io/) je ukazatel na [OpenTelemetry](https://opentelemetry.io/). Microsoft pomáhá společně s [OpenTracing](https://opentracing.io/) a OpenCensus vytvořit OpenTelemetry, což je standardní standard pro dodržování standardů na světě. Stávající provozní prostředí [Python SDK](app/opencensus-python.md) pro Azure monitor je založené na OpenCensus, ale nakonec budou všechny sady Azure monitor SDK založené na OpenTelemetry.
+
+
+## <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
 
 ### <a name="health-feature-is-in-private-preview"></a>Funkce Health je v privátní verzi Preview.
 
@@ -533,7 +579,7 @@ Plánujeme vytvořit řadu změn pro přidání funkcí a řešení vašich náz
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Co *jiné procesy* reprezentují v rámci zobrazení uzlu?
 
-**Další procesy** vám pomůžou jasně pochopit hlavní příčinu vysokého využití prostředků na vašem uzlu. To umožňuje rozlišovat využití mezi kontejnerové procesy vs bez kontejnerových procesů.
+**Další procesy** jsou určené k tomu, aby vám pomohla jasně pochopit hlavní příčinu vysokého využití prostředků na vašem uzlu. To umožňuje rozlišovat využití mezi kontejnerové procesy vs bez kontejnerových procesů.
 
 Jaké jsou tyto **Další procesy**? 
 
@@ -660,12 +706,12 @@ Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požad
 
 Pokud po povolení Azure Monitor pro kontejnery pro cluster AKS odstraníte pracovní prostor Log Analytics, který cluster odeslal do, při pokusu o upgrade clusteru se nezdaří. Pokud chcete tento problém obejít, budete muset zakázat monitorování a pak ho znovu povolit odkazování na jiný platný pracovní prostor v rámci vašeho předplatného. Pokud se pokusíte upgradovat cluster znovu, měl by se zpracovat a dokončit úspěšně.  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Které porty a domény potřebuji k otevření nebo seznamu povolených pro agenta?
+### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Které porty a domény potřebuji pro agenta otevřít nebo povolit?
 
 Podívejte se na [požadavky na bránu firewall sítě](insights/container-insights-onboard.md#network-firewall-requirements) pro informace o konfiguraci proxy serveru a brány firewall vyžadované pro kontejnerový agent s Azure, vládou USA a Azure Čína 21Vianet cloudy.
 
+
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
-Toto je seznam nejčastějších dotazů k Azure Monitor pro virtuální počítače. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Můžu se připojit k existujícímu pracovnímu prostoru?
 Pokud jsou vaše virtuální počítače už připojené k pracovnímu prostoru Log Analytics, můžete tento pracovní prostor i nadále používat při připojování k Azure Monitor pro virtuální počítače za předpokladu, že je v některé z [podporovaných oblastí](insights/vminsights-configure-workspace.md#supported-regions).

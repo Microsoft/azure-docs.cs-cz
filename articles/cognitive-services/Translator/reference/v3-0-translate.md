@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903982"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566598"
 ---
 # <a name="translator-30-translate"></a>Překladatel 3,0: překlad
 
@@ -95,7 +95,7 @@ Parametry žádosti předané řetězci dotazu jsou:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje. Možné hodnoty jsou: <code>true</code> (výchozí) nebo <code>false</code> .<br/><br/><code>allowFallback=false</code>Určuje, že překlad by měl používat pouze systémy vyškolené pro <code>category</code> zadaný požadavek. Pokud překlad pro jazyk X na jazyk Y vyžaduje řetězení pomocí jazyka pivotu E, pak všechny systémy v řetězu (X->E a E->Y) budou muset být vlastní a musí mít stejnou kategorii. Pokud se s konkrétní kategorií nenajde žádný systém, bude požadavek vracet kód stavu 400. <code>allowFallback=true</code>Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje.
+    <td><em>Volitelný parametr</em>.<br/>Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje. Možné hodnoty jsou: <code>true</code> (výchozí) nebo <code>false</code> .<br/><br/><code>allowFallback=false</code> Určuje, že překlad by měl používat pouze systémy vyškolené pro <code>category</code> zadaný požadavek. Pokud překlad pro jazyk X na jazyk Y vyžaduje řetězení pomocí jazyka pivotu E, pak všechny systémy v řetězu (X->E a E->Y) budou muset být vlastní a musí mít stejnou kategorii. Pokud se s konkrétní kategorií nenajde žádný systém, bude požadavek vracet kód stavu 400. <code>allowFallback=true</code> Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje.
 </td>
   </tr>
 </table> 
@@ -174,7 +174,7 @@ Platí následující omezení:
 
     Hranice věty jsou zahrnuté jenom v případě, že parametr Request `includeSentenceLength` je `true` .
 
-  * `sourceText`: Objekt s jedinou řetězcovou vlastností s názvem `text` , která poskytuje vstupní text ve výchozím skriptu zdrojového jazyka. `sourceText`vlastnost je přítomna pouze v případě, že vstup je vyjádřen ve skriptu, který není obvyklým skriptem pro daný jazyk. Pokud byl například vstup ve skriptu latinky napsaný arabsko, pak `sourceText.text` bude stejný arabský text, který se převedl na arabskou skript.
+  * `sourceText`: Objekt s jedinou řetězcovou vlastností s názvem `text` , která poskytuje vstupní text ve výchozím skriptu zdrojového jazyka. `sourceText` vlastnost je přítomna pouze v případě, že vstup je vyjádřen ve skriptu, který není obvyklým skriptem pro daný jazyk. Pokud byl například vstup ve skriptu latinky napsaný arabsko, pak `sourceText.text` bude stejný arabský text, který se převedl na arabskou skript.
 
 Příklad odpovědí JSON je uveden v části [Příklady](#examples) .
 
@@ -280,7 +280,7 @@ Tělo odpovědi:
     }
 ]
 ```
-Odpověď je podobná odpovědi z předchozího příkladu. Vzhledem k tomu, že se požadovalo automatické zjišťování jazyka, odpověď obsahuje také informace o jazyce zjištěném pro vstupní text. 
+Odpověď je podobná odpovědi z předchozího příkladu. Vzhledem k tomu, že se požadovalo automatické zjišťování jazyka, odpověď obsahuje také informace o jazyce zjištěném pro vstupní text. Automatické zjišťování jazyka funguje lépe s delším vstupním textem.
 
 ### <a name="translate-with-transliteration"></a>Převod s využitím převodu na více než litry
 
@@ -391,7 +391,7 @@ V případě <code>ProfanityMarker=Tag</code> vulgárních slov jsou slova ohran
   </tr>
 </table> 
 
-Příklad:
+Například:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

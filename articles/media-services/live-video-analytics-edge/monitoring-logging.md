@@ -3,12 +3,12 @@ title: Monitorování a protokolování – Azure
 description: Tento článek poskytuje přehled živé analýzy videí na IoT Edge monitorování a protokolování.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934289"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567550"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
@@ -20,7 +20,8 @@ Naučíte se také, jak můžete řídit protokoly, které modul generuje.
 
 Live video Analytics na IoT Edge generuje události nebo data telemetrie podle následující taxonomie.
 
-![Live video Analytics ve schématu telemetrie IoT Edge](./media/telemetry-schema/taxonomy.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Taxonomie událostí":::
 
 * Provozní: události, které jsou generovány jako součást akcí prováděných uživatelem nebo během provádění [mediálního grafu](media-graph-concept.md).
    
@@ -71,6 +72,7 @@ Live video Analytics na IoT Edge generuje události nebo data telemetrie podle n
    * Příklady:
       
       Byl zjištěn pohyb (níže), odvozený výsledek.
+
    ```      
    {
      "body": {
@@ -98,15 +100,19 @@ Live video Analytics na IoT Edge generuje události nebo data telemetrie podle n
      }
    }
    ```
+
 Události generované modulem jsou odesílány do [centra IoT Edge](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)a v takovém případě je lze směrovat do jiných cílů. 
 
 ### <a name="timestamps-in-analytic-events"></a>Časová razítka v analytických událostech
+
 Jak je uvedeno výše, události vygenerované jako součást analýzy videa mají přidružené časové razítko. Pokud jste jako součást vaší topologie grafu [nahráli živé video](video-recording-concept.md) , toto časové razítko vám pomůže najít, kde v zaznamenaném videu došlo k určité události. V následující části najdete pokyny k mapování časového razítka v analytické události na časovou osu videa zaznamenaného v [prostředku Azure Media Service](terminology.md#asset).
 
 Nejprve rozbalte `eventTime` hodnotu. Tuto hodnotu použijte v rámci [filtru časového rozsahu](playback-recordings-how-to.md#time-range-filters) k načtení vhodné části záznamu. Například můžete chtít načíst video, které spustí 30 sekund před `eventTime` a končí 30 sekund. U výše uvedeného příkladu, kde `eventTime` je 2020-05-12T23:33:09.381 z, požadavek na manifest HLS pro okno +/-30 s by vypadal takto:
+
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
+
 Výše uvedená adresa URL by vrátila [hlavní seznam](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)testů s názvem, který obsahuje adresy URL pro seznamy skladeb multimédií. Seznam stop média obsahuje následující položky:
 
 ```
