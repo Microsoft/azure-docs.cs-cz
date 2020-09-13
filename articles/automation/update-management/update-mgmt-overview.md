@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c95bd7523a57c2de02686d3cd06190e60550de0a
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660904"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024126"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -18,8 +18,8 @@ Update Management v Azure Automation můžete použít ke správě aktualizací 
 
 Update Management pro virtuální počítače můžete povolit následujícími způsoby:
 
-* Z [účtu Azure Automation](update-mgmt-enable-automation-account.md) pro jeden nebo více počítačů Azure.
-* Ručně pro počítače mimo Azure.
+* Z [účtu Azure Automation](update-mgmt-enable-automation-account.md) pro jeden nebo více počítačů s Azure a mimo Azure.
+* Ručně pro počítače mimo Azure, včetně počítačů nebo serverů zaregistrovaných u [serverů s podporou ARC Azure](../../azure-arc/servers/overview.md) (Preview).
 * Pro jeden virtuální počítač Azure ze stránky virtuálního počítače v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy [Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) a [Windows](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) .
 * Pro [více virtuálních počítačů Azure](update-mgmt-enable-portal.md) je můžete vybrat ze stránky virtuální počítače v Azure Portal.
 
@@ -40,21 +40,17 @@ Počítače spravované pomocí Update Management pro vyhodnocení a nasazení a
 * Funkci Hybrid Runbook Worker služby Automation
 * Microsoft Update nebo Windows Server Update Services (WSUS) pro počítače se systémem Windows
 
-Následující diagram znázorňuje, jak Update Management vyhodnocuje a aplikuje aktualizace zabezpečení na všechny připojené počítače s Windows serverem a Linux v pracovním prostoru:
+Následující diagram znázorňuje, jak Update Management vyhodnocuje a aplikuje aktualizace zabezpečení na všechny připojené servery se systémem Windows Server a Linux v pracovním prostoru:
 
 ![Pracovní postup Update Management](./media/update-mgmt-overview/update-mgmt-updateworkflow.png)
 
-Update Management lze použít k nativně nasazení počítačů ve více předplatných ve stejném tenantovi.
+Update Management lze použít k nasazování nativně do počítačů ve více předplatných ve stejném tenantovi.
 
-Po uvolnění balíčku trvá tato oprava 2 až 3 hodiny, než se oprava zobrazí pro počítače se systémem Linux pro posouzení. U počítačů s Windows trvá 12 až 15 hodin, než se oprava zobrazí po jejím vydání.
-
-Jakmile počítač dokončí kontrolu kompatibility aktualizací, agent přepošle informace hromadně do Azure Monitor protokolů. V počítači s Windows se kontrola kompatibility ve výchozím nastavení spouští každých 12 hodin.
+Po uvolnění balíčku trvá tato oprava 2 až 3 hodiny, než se oprava zobrazí pro počítače se systémem Linux pro posouzení. U počítačů s Windows trvá 12 až 15 hodin, než se oprava zobrazí po jejím vydání. Když počítač dokončí kontrolu kompatibility aktualizací, agent přepošle informace hromadně do Azure Monitor protokolů. V počítači s Windows se kontrola kompatibility ve výchozím nastavení spouští každých 12 hodin. U počítače se systémem Linux se kontrola dodržování předpisů provádí ve výchozím nastavení každou hodinu. Pokud je agent Log Analytics restartován, spustí se kontrola kompatibility do 15 minut.
 
 Kromě plánu skenování je vyhledávání kompatibility aktualizací spuštěno během 15 minut od restartování agenta Log Analytics, před instalací aktualizace a po instalaci aktualizace.
 
-U počítače se systémem Linux se kontrola dodržování předpisů provádí ve výchozím nastavení každou hodinu. Pokud je agent Log Analytics restartován, spustí se kontrola kompatibility do 15 minut.
-
-Update Management oznamuje, jak aktuální je počítač založený na zdroji, se kterým jste nakonfigurovali synchronizaci. Pokud je počítač s Windows nakonfigurovaný tak, aby hlásil službu WSUS, v závislosti na tom, kdy se služba WSUS naposledy synchronizoval s Microsoft Update, se výsledky můžou lišit od toho, co Microsoft Update zobrazuje. Toto chování je stejné pro počítače se systémem Linux, které jsou nakonfigurované tak, aby hlásily do místního úložiště místo do veřejného úložiště.
+Update Management oznamuje, jak aktuální je počítač založený na zdroji, se kterým jste nakonfigurovali synchronizaci. Pokud je počítač s Windows nakonfigurovaný tak, aby hlásil [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS), v závislosti na tom, kdy se služba WSUS naposledy synchronizuje s Microsoft Update, se výsledky můžou lišit od toho, co Microsoft Update zobrazuje. Toto chování je stejné pro počítače se systémem Linux, které jsou nakonfigurované tak, aby hlásily do místního úložiště místo do veřejného úložiště.
 
 > [!NOTE]
 > Aby bylo možné řádně ohlásit službu, Update Management vyžaduje, aby byly povoleny určité adresy URL a porty. Další informace o těchto požadavcích najdete v tématu [Konfigurace sítě](../automation-hybrid-runbook-worker.md#network-planning).
@@ -168,15 +164,15 @@ Následující tabulka popisuje připojené zdroje, které Update Management pod
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
-| Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| Agenti systému Windows |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
+| Agenti systému Linux |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
+| Skupina pro správu Operations Manageru |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
 Update Management prohledává spravované počítače pro data pomocí následujících pravidel. Může trvat 30 minut a 6 hodin, než se na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
 
-* Každý počítač se systémem Windows Update Management provádí kontrolu dvakrát denně pro každý počítač. Každých 15 minut se dotazuje rozhraní Windows API na čas poslední aktualizace, aby se zjistilo, jestli se změnil stav. Pokud se stav změnil, Update Management spustí kontrolu kompatibility.
+* Každý počítač se systémem Windows Update Management provádí kontrolu dvakrát denně pro každý počítač.
 
 * Každý počítač se systémem Linux – Update Management prohledává každou hodinu.
 
@@ -256,9 +252,10 @@ K dispozici je [Šablona Azure správce prostředků](update-mgmt-enable-templat
 
 Tady jsou způsoby, jak můžete povolit Update Management a vybrat počítače, které se mají spravovat:
 
-* [Z virtuálního počítače](update-mgmt-enable-vm.md)
-* [Z prohlížení více počítačů](update-mgmt-enable-portal.md)
+* [Z virtuálního počítače Azure](update-mgmt-enable-vm.md)
+* [Z prohlížení více virtuálních počítačů Azure](update-mgmt-enable-portal.md)
 * [Z účtu Azure Automation](update-mgmt-enable-automation-account.md)
+* U serverů s podporou ARC (ve verzi Preview) nebo počítačů mimo Azure nainstalujte [agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) a [Povolte Update Management počítačů v pracovním prostoru](update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace) .
 
 ## <a name="next-steps"></a>Další kroky
 

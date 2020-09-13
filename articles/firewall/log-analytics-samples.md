@@ -1,20 +1,20 @@
 ---
-title: Azure Firewall ukázek Log Analytics
+title: Protokoly Azure Monitor pro Azure Firewall
 description: K analýze Azure Firewall lze použít protokoly Azure Monitor. Vzorový soubor je sestavený v Návrháři zobrazení v Azure Monitor.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 01/23/2020
+ms.topic: how-to
+ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705963"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023869"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ukázek Log Analytics
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Protokoly Azure Monitor pro Azure Firewall
 
 Následující příklady protokolů Azure Monitor lze použít k analýze protokolů Azure Firewall. Vzorový soubor je sestaven v Návrháři zobrazení v Azure Monitor, [Návrhář zobrazení v Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článku obsahuje další informace o konceptu zobrazení návrhu.
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 Následující ukázky protokolu zobrazují data zahrnutá v záznamu protokolu.
 
-![Položka protokolu](media/log-analytics-samples/log1.png)
+![protokolovat jednu položku](media/log-analytics-samples/log1.png)
 
-![Položka protokolu](media/log-analytics-samples/log2.png)
+![Položka protokolu dvě ](media/log-analytics-samples/log2.png)
 
-![Položka protokolu](media/log-analytics-samples/log3.png)
+![Položka protokolu – tři](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Firewall monitorování a diagnostiku najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](tutorial-diagnostics.md).

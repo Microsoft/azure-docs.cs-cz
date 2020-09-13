@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61320241"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019899"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Konceptuální porozumění certifikátům CA X. 509 v oboru IoT
 
@@ -28,6 +28,8 @@ Tento článek popisuje:
 * Postup nastavení výrobního dodavatelského řetězce pro ověřování na základě CA X. 509
 
 * Způsob, jakým se zařízení podepsaná pomocí certifikační autority X. 509 připojují k IoT Hub
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -63,13 +65,13 @@ Podrobnosti o tom, jak tento postup provést, se liší od různých poskytovate
 
 ### <a name="purchasing-an-x509-ca-certificate"></a>Zakoupení certifikátu certifikační autority X. 509
 
-Zakoupení certifikátu certifikační autority má výhodu, že by měla dobře známá kořenová certifikační autorita fungovat jako důvěryhodná třetí strana, která vám při připojování zařízení ručí za legitimitu zařízení IoT. Společnost – X tuto možnost zvolí, pokud chtějí s produkty nebo službami třetích stran komunikovat s produkty nebo službami jiných výrobců po počátečním připojení k IoT Hub.
+Zakoupení certifikátu certifikační autority má výhodu, že by měla dobře známá kořenová certifikační autorita fungovat jako důvěryhodná třetí strana, která vám při připojování zařízení ručí za legitimitu zařízení IoT. Společnost – X zvolí tuto možnost, pokud chtějí s produkty nebo službami třetích stran komunikovat s produkty nebo službami jiných výrobců po počátečním připojení k IoT Hub.
 
 Pokud chcete koupit certifikát CA X. 509, společnost-X zvolí poskytovatele kořenových certifikátů. Hledání v Internetu fráze "Kořenová certifikační autorita" poskytne dobrá zájem. Kořenová certifikační autorita povede společnost-X o tom, jak vytvořit pár veřejného a privátního klíče a jak vygenerovat žádost o podepsání certifikátu pro své služby. CSR je formální proces, který se používá pro certifikát od certifikační autority. Výsledek tohoto nákupu je certifikát, který se použije jako certifikát autority. Vzhledem k všudypřítomnosti výrazněí certifikátů X. 509 je pravděpodobně certifikát správně formátován na standard RFC 5280 specifikace IETF.
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>Vytvoření certifikátu CA X. 509 podepsaného svým držitelem
 
-Proces vytvoření certifikátu podepsaného svým držitelem X. 509 se podobá nákupu s výjimkou, že se týká i registrace třetí strany, jako je například kořenová certifikační autorita. V našem příkladu společnost-X podepíše svůj certifikát autority namísto kořenové certifikační autority. Společnost – X může zvolit tuto možnost testování, dokud nebudou připravené k nákupu certifikátu autority. Společnost-X může také v produkčním prostředí používat certifikát CA X. 509 podepsaný svým držitelem, pokud inteligentní-X-widget není určený k připojení k žádným službám třetích stran mimo IoT Hub.
+Proces vytvoření certifikátu certifikační autority X. 509 podepsaný svým držitelem se podobá nákupu s výjimkou, že se týká registrace třetí strany, jako je například kořenová certifikační autorita. V našem příkladu společnost-X podepíše svůj certifikát autority namísto kořenové certifikační autority. Společnost – X může zvolit tuto možnost testování, dokud nebudou připravené k nákupu certifikátu autority. Společnost-X může také v produkčním prostředí používat certifikát CA X. 509 podepsaný svým držitelem, pokud inteligentní-X-widget není určený k připojení k žádným službám třetích stran mimo IoT Hub.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Zaregistrujte certifikát X. 509, aby bylo možné IoT Hub
 

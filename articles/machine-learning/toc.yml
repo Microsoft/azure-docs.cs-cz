@@ -535,6 +535,9 @@
       href: reference-pipeline-yaml.md
     - name: Parita suverénního cloudu
       href: reference-machine-learning-cloud-parity.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"

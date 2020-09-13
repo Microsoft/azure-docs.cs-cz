@@ -3,12 +3,12 @@ title: Výstrahy metriky od Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek kontroluje Doporučené výstrahy metriky, které jsou dostupné z Azure Monitor pro kontejnery ve verzi Public Preview.
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563360"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019882"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Doporučené výstrahy metriky (Preview) z Azure Monitor pro kontejnery
 
@@ -18,7 +18,7 @@ Tento článek popisuje prostředí a poskytuje pokyny ke konfiguraci a správě
 
 Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si téma [Přehled výstrah v Microsoft Azure](../platform/alerts-overview.md) před tím, než začnete. Další informace o výstrahách metrik najdete [v tématu výstrahy metrik v Azure monitor](../platform/alerts-metric-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, zkontrolujte následující:
 
@@ -144,7 +144,7 @@ Základní postup je následující:
 
 2. Chcete-li nasadit přizpůsobenou šablonu prostřednictvím portálu, vyberte možnost **vytvořit prostředek** z [Azure Portal](https://portal.azure.com).
 
-3. Vyhledejte **šablonu**a pak vyberte **Šablona**. prostředí.
+3. Vyhledejte **šablonu**a pak vyberte **template Deployment**.
 
 4. Vyberte **Vytvořit**.
 

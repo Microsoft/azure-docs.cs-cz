@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9c8c4a1209b8bb5be7af87ef22aeab0ffd90b79
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021880"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023767"
 ---
 # <a name="models"></a>Modely
 
@@ -28,7 +28,6 @@ Každá entita může mít připojené [součásti](components.md) . V nejběžn
 Vytváření modelů pro modul runtime je dosaženo [převodem vstupních modelů](../how-tos/conversion/model-conversion.md) z formátů souborů, jako jsou FBX a GLTF. Proces převodu extrahuje všechny prostředky, jako jsou textury, materiály a sítě, a převede je na optimalizované formáty modulu runtime. Také extrahuje strukturální informace a převede je na strukturu grafu entit/komponent v ARR.
 
 > [!IMPORTANT]
->
 > [Převod modelu](../how-tos/conversion/model-conversion.md) je jediným způsobem, jak vytvořit [sítě](meshes.md). I když lze sdílet sítě mezi entitami za běhu, neexistuje žádný jiný způsob, jak získat síť do modulu runtime, kromě načítání modelu.
 
 ## <a name="loading-models"></a>Načítání modelů
@@ -118,6 +117,13 @@ Následně můžete procházet hierarchii entit a upravit entity a komponenty. N
 
 > [!CAUTION]
 > Všechny *asynchronní* funkce v ARR vrací objekty asynchronní operace. Odkaz na tyto objekty je nutné uložit, dokud není operace dokončena. V opačném případě může systém uvolňování paměti C# operaci nejdříve odstranit a nemůže být nikdy dokončen. V ukázkovém kódu nad rámec použití *operátoru await* zaručuje, že místní proměnná ' loadOp ' drží odkaz, dokud není dokončeno načítání modelu. Pokud jste však místo toho použili *dokončenou* událost, bude nutné uložit asynchronní operaci do členské proměnné.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [C# RemoteManager. LoadModelAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C# RemoteManager. LoadModelFromSASAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C++ RemoteManager:: LoadModelAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C++ RemoteManager:: LoadModelFromSASAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>Další kroky
 

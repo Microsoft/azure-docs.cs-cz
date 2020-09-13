@@ -3,20 +3,20 @@ title: Přední vrátka Azure – ukládání do mezipaměti | Microsoft Docs
 description: Tento článek vám pomůže pochopit, jak přední dveře Azure monitorují stav back-endu.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056954"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024277"
 ---
 # <a name="caching-with-azure-front-door"></a>Ukládání do mezipaměti s předními dvířky Azure
 Následující dokument určuje chování před dveřmi pomocí pravidel směrování s povoleným ukládáním do mezipaměti. Přední dvířka jsou moderní Content Delivery Network (CDN), a to společně s akcelerací a vyrovnáváním zatížení na dynamickém webu, ale také podporuje chování ukládání do mezipaměti stejně jako jakékoli jiné CDN.
@@ -88,13 +88,22 @@ S předními dvířky můžete řídit, jak jsou soubory ukládány do mezipamě
 - **Ukládat do mezipaměti každou jedinečnou adresu URL**: v tomto režimu se každý požadavek s jedinečnou adresou URL, včetně řetězce dotazu, považuje za jedinečný prostředek s vlastní mezipamětí. Například odpověď z back-endu pro požadavek na `www.example.ashx?q=test1` se ukládá do mezipaměti v prostředí front-endu a vrátí se pro následné mezipaměti se stejným řetězcem dotazu. Požadavek na `www.example.ashx?q=test2` aplikaci se ukládá do mezipaměti jako samostatný prostředek s vlastním nastavením Time to Live.
 
 ## <a name="cache-purge"></a>Vyprázdnění mezipaměti
-Přední dveře budou prostředky ukládat do mezipaměti, dokud nevyprší hodnota TTL (Time to Live) prostředku. Po vypršení hodnoty TTL prostředku, když si klient vyžádá prostředek, prostředí front-dveří načte novou aktualizovanou kopii assetu, která bude obsluhovat požadavek klienta a uloží mezipaměť do úložiště.
-</br>Osvědčeným postupem je zajistit, aby vaši uživatelé měli vždycky přístup k nejnovější kopii vašich assetů, aby si mohli každou aktualizaci nastavovat vaše prostředky a publikovat je jako nové adresy URL. Přední dvířka okamžitě načtou nové prostředky pro další požadavky klientů. Někdy možná budete chtít vyprázdnit obsah uložený v mezipaměti ze všech hraničních uzlů a pokaždé, když budou všechny získávat nové aktualizované prostředky. Důvodem může být aktualizace webové aplikace nebo rychlé aktualizace prostředků, které obsahují nesprávné informace.
 
-</br>Vyberte prostředky, které chcete vymazat z hraničních uzlů. Pokud chcete vymazat všechny prostředky, klikněte na zaškrtávací políčko Odstranit vše. V opačném případě zadejte cestu každého assetu, který chcete vyprázdnit, do textového pole cesta. Následující formáty jsou v cestě podporované.
-1. **Vymazání jedné cesty**: vyprázdnit jednotlivé prostředky zadáním úplné cesty k prostředku (bez protokolu a domény) s příponou souboru, například/Pictures/strasbourg.png;
-2. **Zástupné znaky**: hvězdička ( \* ) se dá použít jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v rámci koncového bodu pomocí/ \* v cestě nebo vyprázdnit všechny podsložky a soubory v konkrétní složce zadáním složky následovaný/ \* , například/Pictures/ \* .
-3. **Kořenová doména vyprázdnění**: vyprázdní kořen koncového bodu znakem "/" v cestě.
+Přední dveře ukládá prostředky do mezipaměti, dokud nevyprší hodnota TTL (Time to Live) prostředku. Po vypršení časového limitu TTL prostředku načte aplikace front-end novou aktualizovanou kopii assetu, která bude obsluhovat požadavky klienta a uloží mezipaměť do úložiště.
+
+Osvědčeným postupem je zajistit, aby vaši uživatelé měli vždycky přístup k nejnovější kopii vašich assetů, aby si mohli každou aktualizaci nastavovat vaše prostředky a publikovat je jako nové adresy URL. Přední dvířka okamžitě načtou nové prostředky pro další požadavky klientů. Někdy možná budete chtít vyprázdnit obsah uložený v mezipaměti ze všech hraničních uzlů a pokaždé, když budou všechny získávat nové aktualizované prostředky. Důvodem může být aktualizace webové aplikace nebo rychlé aktualizace prostředků, které obsahují nesprávné informace.
+
+Vyberte prostředky, které chcete vymazat z hraničních uzlů. Pokud chcete zrušit výběr všech prostředků, vyberte **Vymazat vše**. V opačném případě zadejte cestu k jednotlivým assetům **, které**chcete vymazat.
+
+Tyto formáty jsou podporované v seznamech cest, které se mají vyprázdnit:
+
+- **Vyprázdnit jednu cestu**: vyprázdnit jednotlivé prostředky zadáním úplné cesty prostředku (bez protokolu a domény) s příponou souboru, například/Pictures/strasbourg.png;
+- **Zástupné znaky**: hvězdička ( \* ) se dá použít jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v rámci koncového bodu pomocí/ \* v cestě nebo vyprázdnit všechny podsložky a soubory v konkrétní složce zadáním složky následovaný/ \* , například/Pictures/ \* .
+- **Kořenová doména vyprázdnění**: vyprázdní kořen koncového bodu znakem "/" v cestě.
+
+> [!NOTE]
+> **Vymazání domén se zástupnými znaky**: zadání cest v mezipaměti pro vymazání, jak je popsáno v této části, se nevztahuje na žádné domény se zástupnými znaky, které jsou přidruženy k V současné době nepodporujeme přímé vyprazdňování domén se zástupnými znaky. Cesty můžete z konkrétních subdomén vyprázdnit tak, že zadáte tuto subdoménu určitou skupinu a cestu vyprázdnění. Pokud má například moje přední dveře `*.contoso.com` možnost vyprázdnit prostředky subdomény `foo.contoso.com` zadáním `foo.contoso.com/path/*` . V současné době určení názvů hostitelů v cestě k obsahu vyprázdnění je imited k subdoménám domén se zástupnými znaky (Pokud je k dispozici).
+>
 
 Mezipaměť vyprázdnění na frontách v mezipaměti nerozlišuje velká a malá písmena. Kromě toho jsou dotazy řetězce nezávislá, což znamená, že při vymazání adresy URL se odstraní všechny variace řetězce dotazu. 
 
@@ -102,7 +111,7 @@ Mezipaměť vyprázdnění na frontách v mezipaměti nerozlišuje velká a mal�
 Následující pořadí hlaviček se používá k určení, jak dlouho bude položka uložená v naší mezipaměti:</br>
 1. Cache-Control: s-maxage =\<seconds>
 2. Řízení mezipaměti: max. stáří =\<seconds>
-3. Expires\<http-date>
+3. Expires \<http-date>
 
 Hlavičky odpovědí, které určují, že odpověď nebude ukládána do mezipaměti, jako je například řízení mezipaměti: soukromé, Cache-Control: no-cache a Cache-Control: No-Store se nerespektuje. Pokud je ale pro stejnou adresu URL víc požadavků za letu na jednom místě, můžou tuto odpověď sdílet. Pokud není k dispozici žádný ovládací prvek Cache-Control, znamená to, že AFD bude prostředek ukládat do mezipaměti za X dobu, kdy je X náhodně vyskladněno mezi 1 až 3 dny.
 

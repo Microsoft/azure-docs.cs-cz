@@ -6,19 +6,19 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 420ff7ed838bc9fa14c1276ae0a70220fc7e11a9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003520"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024056"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Použití rozhraní API front-endu Azure pro ověřování
 
 V této části popíšeme, jak používat rozhraní API pro ověřování a správu relací.
 
 > [!CAUTION]
-Funkce popsané v této kapitole vydávají interní volání REST na serveru. Stejně jako u všech volání REST odesílají tyto příkazy příliš často, což způsobí, že server bude omezovat a vracet chybu nakonec. Hodnota `SessionGeneralContext.HttpResponseCode` člena v tomto případě je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
+> Funkce popsané v této kapitole vydávají interní volání REST na serveru. Stejně jako u všech volání REST odesílají tyto příkazy příliš často, což způsobí, že server bude omezovat a vracet chybu nakonec. Hodnota `SessionGeneralContext.HttpResponseCode` člena v tomto případě je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
 
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo

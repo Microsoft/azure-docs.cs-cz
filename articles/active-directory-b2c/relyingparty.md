@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521259"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023784"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ Element **SingleSignon** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Rozsah | Yes | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed` , `Tenant` , `Application` , nebo `Policy` . `Suppressed`Hodnota znamená, že se chování potlačí a uživatel se vždy zobrazí výzva k výběru poskytovatele identity.  `Tenant`Hodnota označuje, že se chování použije u všech zásad v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. `Application`Hodnota označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. `Policy`Hodnota znamená, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
+| Obor | Yes | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed` , `Tenant` , `Application` , nebo `Policy` . `Suppressed`Hodnota znamená, že se chování potlačí a uživatel se vždy zobrazí výzva k výběru poskytovatele identity.  `Tenant`Hodnota označuje, že se chování použije u všech zásad v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. `Application`Hodnota označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. `Policy`Hodnota znamená, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
 | KeepAliveInDays | Yes | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](custom-policy-keep-me-signed-in.md). |
 |EnforceIdTokenHintOnLogout| No|  Vynutí předání dříve vydaného tokenu ID koncovému bodu pro odhlášení jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí), nebo `true` . Další informace najdete v tématu věnovaném [webovému přihlášení pomocí OpenID Connect](openid-connect.md).  |
 
@@ -138,7 +138,7 @@ Element **JourneyInsights** obsahuje následující atributy:
 | --------- | -------- | ----------- |
 | TelemetryEngine | Yes | Hodnota musí být `ApplicationInsights` . |
 | InstrumentationKey | Yes | Řetězec, který obsahuje klíč instrumentace pro element Application Insights. |
-| DeveloperMode | Yes | Možné hodnoty: `true` nebo `false` . Pokud `true` Application Insights zrychlí telemetrii prostřednictvím kanálu zpracování. Toto nastavení je vhodné pro vývoj, ale je omezené na vysoké objemy. podrobné protokoly aktivit jsou navržené jenom na podporu vývoje vlastních zásad. Nepoužívejte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace, které během vývoje odesílají a od nich od poskytovatelů identity. Pokud se v produkčním prostředí používá, vývojář předpokládá zodpovědnost za PII (soukromě identifikovatelné informace) shromážděné v protokolu App Insights, který vlastní. Tyto podrobné protokoly jsou shromažďovány, pouze pokud je tato hodnota nastavena na `true` .|
+| DeveloperMode | Yes | Možné hodnoty: `true` nebo `false` . Pokud `true` Application Insights zrychlí telemetrii prostřednictvím kanálu zpracování. Toto nastavení je vhodné pro vývoj, ale je omezené na vysoké objemy. Podrobné protokoly aktivit jsou navržené jenom k podpoře vývoje vlastních zásad. Nepoužívejte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace, které během vývoje odesílají a od nich od poskytovatelů identity. Pokud se v produkčním prostředí používá, vývojář předpokládá zodpovědnost za PII (soukromě identifikovatelné informace) shromážděné v protokolu App Insights, který vlastní. Tyto podrobné protokoly jsou shromažďovány, pouze pokud je tato hodnota nastavena na `true` .|
 | ClientEnabled | Yes | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle Application Insights skript na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. |
 | ServerEnabled | Yes | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle existující USERJOURNEYRECORDER JSON jako vlastní událost pro Application Insights. |
 | TelemetryVersion | Yes | Hodnota musí být `1.0.0` . |
@@ -198,7 +198,12 @@ Pokud je protokol `SAML` , element metadata obsahuje následující prvky.
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | No | Označuje, zda je podporován tok iniciované IDP. Možné hodnoty: `true` nebo `false` (výchozí). | 
 | XmlSignatureAlgorithm | No | Metoda, kterou Azure AD B2C používá k podepsání odpovědi SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Pokud chcete nakonfigurovat kontrolní výraz SAML, přečtěte si [metadata Technical profil vystavitele SAML](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | No | Určuje metodu, kterou Azure AD B2C používá k šifrování dat pomocí algoritmu standard AES (Advanced Encryption Standard) (AES). Metadata řídí hodnotu `<EncryptedData>` prvku v odpovědi SAML. Možné hodnoty: `Aes256` (výchozí), `Aes192` , `Sha512` nebo ` Aes128` . |
+| KeyEncryptionMethod| No | Určuje metodu, kterou Azure AD B2C používá k zašifrování kopie klíče, který se použil k zašifrování dat. Metadata řídí hodnotu  `<EncryptedKey>` prvku v odpovědi SAML. Možné hodnoty: ` Rsa15` (výchozí) – algoritmus 1,5 PKCS (Public Key Cryptography Standard) standardu RSA ( ` RsaOaep` výplně OAEP) – optimální šifrování asymetrického šifrování (). |
+| UseDetachedKeys | No |  Možné hodnoty: `true` , nebo `false` (výchozí). Pokud je hodnota nastavena na `true` , Azure AD B2C změní formát šifrovaných kontrolních výrazů. Použití odpojených klíčů přidá šifrovaný kontrolní výraz jako podřízený objekt EncrytedAssertion, a to na rozdíl od EncryptedData. |
+| WantsSignedResponses| No | Určuje, zda Azure AD B2C podepíše `Response` oddíl odpovědi SAML. Možné hodnoty: `true` (výchozí) nebo `false` .  |
 
 ### <a name="outputclaims"></a>OutputClaims
 

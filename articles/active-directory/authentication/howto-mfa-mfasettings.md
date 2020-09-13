@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179399"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023835"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
@@ -242,7 +242,10 @@ Funkce _důvěryhodných IP adres_ v Azure Multi-Factor Authentication obchází
 
 Pokud vaše organizace nasadí rozšíření serveru NPS za účelem poskytování MFA pro místní aplikace, Všimněte si, že zdrojová IP adresa se vždy jeví jako server NPS, se kterým se snaží ověřování natékat.
 
-| Typ tenanta Azure AD | Možnosti důvěryhodných IP adres | |:---|:---| dva kroky | Spravované | **Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které mohou obejít službu Multi-Factor Authentication pro uživatele, kteří se přihlásí z intranetu společnosti. Lze nakonfigurovat maximálně 50 rozsahů důvěryhodných IP adres. | | Federované | **Všichni federované uživatelé**: všichni federované uživatelé, kteří se přihlásí z organizace, můžou obejít službu Multi-Factor Authentication. Uživatel obejít ověřování pomocí deklarace identity, která je vydaná Active Directory Federation Services (AD FS) (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které mohou obejít službu Multi-Factor Authentication pro uživatele, kteří se přihlásí z intranetu společnosti. |
+| Typ tenanta Azure AD | Možnosti funkcí důvěryhodné IP adresy |
+|:--- |:--- |
+| Spravované |**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které mohou obejít službu Multi-Factor Authentication pro uživatele, kteří se přihlásí z intranetu společnosti. Lze nakonfigurovat maximálně 50 důvěryhodných rozsahů IP adres.|
+| Federovaní |**Všichni federované uživatelé**: všichni federované uživatelé, kteří se přihlásí z organizace, můžou obejít službu Multi-Factor Authentication. Uživatel obejít ověřování pomocí deklarace identity, která je vydaná Active Directory Federation Services (AD FS) (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které mohou obejít službu Multi-Factor Authentication pro uživatele, kteří se přihlásí z intranetu společnosti. |
 
 Důvěryhodná IP adresa funguje jenom v intranetu společnosti. Pokud vyberete možnost **všechny federované uživatele** a uživatel se přihlásí mimo intranet společnosti, musí se uživatel ověřit pomocí služby Multi-Factor Authentication. Proces je stejný i v případě, že uživatel prezentuje AD FS deklarací identity.
 
@@ -265,7 +268,7 @@ Pravidla podmíněného přístupu můžete použít k definování pojmenovaný
 1. Zadejte název umístění.
 1. Vyberte **Označit jako důvěryhodné umístění**.
 1. Zadejte rozsah IP adres v notaci CIDR pro vaše prostředí, například *40.77.182.32/27*.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Povolení funkce důvěryhodných IP adres pomocí podmíněného přístupu
 

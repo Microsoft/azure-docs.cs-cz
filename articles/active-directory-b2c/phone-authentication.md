@@ -1,5 +1,5 @@
 ---
-title: Registrace a přihlášení k telefonnímu programu s vlastními zásadami (Preview)
+title: Registrace a přihlášení k telefonnímu programu s vlastními zásadami
 titleSuffix: Azure AD B2C
 description: Odesílat jednorázová hesla (JEDNORÁZOVé heslo) v textových zprávách telefonům uživatelů vaší aplikace s vlastními zásadami v Azure Active Directory B2C.
 services: active-directory-b2c
@@ -8,27 +8,85 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/25/2020
+ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a429314d4a992ea93f4c068203371cda769a4ff
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385344"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029131"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Nastavení registrace a přihlášení k telefonu pomocí vlastních zásad v Azure AD B2C (Preview)
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Nastavte si registraci a přihlašování telefonem pomocí vlastních zásad v Azure AD B2C
 
 Registrace a přihlášení k telefonnímu programu v Azure Active Directory B2C (Azure AD B2C) umožňuje vašim uživatelům se zaregistrovat a přihlásit k vašim aplikacím pomocí JEDNORÁZOVého hesla, které se v textové zprávě pošle na telefon. Jednorázová hesla můžou přispět k minimalizaci rizika vašich uživatelů forgetting nebo k ohrožení zabezpečení vašich hesel.
 
 Postupujte podle kroků v tomto článku a použijte vlastní zásady, které zákazníkům umožňují registraci a přihlášení k vašim aplikacím pomocí jednorázového hesla odeslaného na telefon.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="pricing"></a>Ceny
 
 Jednorázová hesla se uživatelům odesílají pomocí textových zpráv SMS a můžete se vám účtovat každou odeslanou zprávu. Informace o cenách naleznete v části **samostatné poplatky** [Azure Active Directory B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+
+## <a name="user-experience-for-phone-sign-up-and-sign-in"></a>Uživatelské prostředí pro registraci a přihlašování telefonem
+
+Když se přihlásíte a přihlásíte telefon, uživatel se může přihlásit k aplikaci pomocí telefonního čísla jako jeho primárního identifikátoru. Činnost koncového uživatele při registraci a přihlašování jsou popsána níže.
+
+> [!NOTE]
+> Důrazně doporučujeme, abyste zahrnuli informace o souhlasu do svého přihlašovacího a přihlašovacího prostředí, které je podobné následujícímu ukázkovému textu. Tento ukázkový text slouží pouze k informativním účelům. V tématu Stručná příručka k monitorování kódu na [webu CTIA](https://www.ctia.org/programs) a Projděte si své vlastní specialisty nebo odborníky na dodržování předpisů, které vám poradí s vaším konečným textem a konfigurací funkcí, aby splnily Vaše požadavky na dodržování předpisů:
+>
+> *Když zadáte telefonní číslo, vyjadřujete tím souhlas s přijetím jednorázového hesla odesílaného pomocí textové zprávy, které vám pomůžou přihlásit se a * &lt; Vložit: &gt; název vaší aplikace*. Mohou platit standardní zprávy a sazby dat.*
+>
+> *&lt;Vložit: odkaz na vaše prohlášení o zásadách ochrany osobních údajů&gt;*<br/>*&lt;vložení: odkaz na vaše podmínek služby&gt;*
+
+Pokud chcete přidat vlastní informace o souhlasu, přizpůsobte si následující ukázku a zahrňte ji do LocalizedResources pro ContentDefinition, který používá samoobslužná stránka, s ovládacím prvkem zobrazení (soubor Phone-Email-Base.xml v registračním programu Starter & pro přihlášení k telefonní sadě):
+
+```xml
+<LocalizedResources Id="phoneSignUp.en">        
+    <LocalizedStrings>
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_url">{insert your terms and conditions URL}</LocalizedString>          
+    <LocalizedString ElementType="UxElement" StringId="initial_intro">Please verify your country code and phone number</LocalizedString>        
+    </LocalizedStrings>      
+</LocalizedResources>
+   ```
+
+### <a name="phone-sign-up-experience"></a>Přihlašovací možnosti pro telefon
+
+Pokud uživatel ještě nemá účet pro vaši aplikaci, může ho vytvořit kliknutím na odkaz **zaregistrovat** se. Zobrazí se stránka pro registraci, kde uživatel vybere svou **zemi**, zadá jejich telefonní číslo a vybere **Odeslat kód**.
+
+![Uživatel spustí registraci telefonu.](media/phone-authentication/phone-signup-start.png)
+
+Do telefonního čísla uživatele se pošle jednorázový ověřovací kód. Uživatel zadá **ověřovací kód** na stránce pro registraci a pak vybere příkaz **ověřit kód**. (Pokud uživatel nedokázal načíst kód, může vybrat **Odeslat nový kód**.)
+
+![Uživatel ověřuje kód při registraci telefonu.](media/phone-authentication/phone-signup-verify-code.png)
+
+ Uživatel zadá jakékoli další informace požadované na stránce pro registraci, například **zobrazované jméno**, **křestní jméno**a **příjmení** (země a telefonní číslo zůstávají naplněny). Pokud chce uživatel použít jiné telefonní číslo, může zvolit možnost **změnit číslo** a restartovat registraci. Po dokončení vybere uživatel **pokračovat**.
+
+![Uživatel poskytuje další informace](media/phone-authentication/phone-signup-additional-info.png)
+
+V dalším kroku se uživateli zobrazí výzva k zadání e-mailu pro obnovení. Uživatel zadá svou e-mailovou adresu a pak vybere **Odeslat ověřovací kód**. Do e-mailové schránky uživatele se pošle kód, který se může načíst a zadat do pole **ověřovací kód** . Pak uživatel vybere **ověřit kód**. 
+
+Po ověření kódu uživatel vybere **vytvořit** a vytvoří svůj účet. Nebo pokud chce uživatel použít jinou e-mailovou adresu, můžou zvolit **změnit e-mail**.
+
+![Uživatel vytvoří účet](media/phone-authentication/email-verification.png)
+
+### <a name="phone-sign-in-experience"></a>Přihlašovací prostředí pro telefonování
+
+Pokud má uživatel existující účet s telefonním číslem jako svůj identifikátor, uživatel zadá své telefonní číslo a vybere **pokračovat**. Po výběru možnosti **pokračovat**potvrdí zemi a telefonní číslo a na telefonu se pošle jednorázový ověřovací kód. Uživatel zadá ověřovací kód a vybere **pokračovat** pro přihlášení.
+
+![Uživatelské prostředí přihlašování k telefonu](media/phone-authentication/phone-signin-screens.png)
+
+## <a name="deleting-a-user-account"></a>Odstranění uživatelského účtu
+
+V některých případech může být nutné odstranit uživatele a přidružená data z adresáře Azure AD B2C. Podrobnosti o tom, jak odstranit uživatelský účet prostřednictvím Azure Portal, najdete v [těchto pokynech](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete). 
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
+
+
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -86,7 +144,7 @@ Pomocí [Microsoft Graph](manage-user-accounts-graph-api.md)můžete najít uži
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Příklad:
+Například:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
@@ -94,12 +152,7 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete najít registrační sadu vlastních zásad pro registraci a přihlašování pro vlastní zásady (a další úvodní balíčky) na GitHubu:
-
-[Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/scénáře/telefonní číslo – nejenom hesla][starter-pack-phone]
-
-Soubory zásad počátečního sady používají technické profily Multi-Factor Authentication a transformace deklarací v telefonním čísle:
-
+V GitHubu můžete najít registrační sadu vlastních zásad pro registraci a přihlašování pro vlastní zásady (a další úvodní balíčky) na GitHubu: [Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/scénáře/Phone-number-Password][starter-pack-phone] – soubory zásad sady počátečního ověřování a transformace deklarací v telefonním čísle:
 * [Definování technického profilu Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md)
 * [Definovat transformace deklarací telefonního čísla](phone-number-claims-transformations.md)
 

@@ -3,12 +3,12 @@ title: Koncepty – úložiště
 description: Seznamte se s možnostmi úložiště klíčů ve službě Azure VMware Preview v privátních cloudech.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752215"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024311"
 ---
 # <a name="azure-vmware-solution-preview-storage-concepts"></a>Koncepty úložiště Azure VMware Preview
 
@@ -28,7 +28,7 @@ Místní úložiště v hostitelích clusteru se používá v síti vSAN úloži
 
 ## <a name="data-at-rest-encryption"></a>Šifrování při neaktivním umístění dat
 
-úložiště dat síti vSAN ve výchozím nastavení používají šifrování neaktivních dat. Řešení šifrování je založené na službě správy klíčů a podporuje operace vCenter pro správu klíčů. Klíče jsou uloženy zašifrované, zabalené Azure Key Vault hlavní klíč založený na HSM. Pokud z jakéhokoli důvodu dojde k odebrání hostitele z clusteru, data v SSD se okamžitě zruší.
+úložiště dat síti vSAN ve výchozím nastavení používají šifrování neaktivních dat. Řešení šifrování je založené na službě správy klíčů a podporuje operace vCenter pro správu klíčů. Klíčové šifrovací klíče se ukládají do Azure Key Vault a když se z nějakého důvodu odebere hostitel z clusteru, data v SSD se okamžitě zruší.
 
 ## <a name="scaling"></a>Škálování
 

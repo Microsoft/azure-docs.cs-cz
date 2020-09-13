@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbe3af30963791891f0ceee4e18c34e078c0ac7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0e217676f5e1f4dcba24917cb140d9d4d8fcc422
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013176"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024362"
 ---
 # <a name="z-fighting-mitigation"></a>Zmírnění Z-fightingu
 
@@ -21,9 +21,9 @@ Pokud se dva povrchy překrývají, není jasné, které z nich by měly být vy
 
 |Status                        | Výsledek                               |
 |---------------------------------|:-------------------------------------|
-|Normální z-boj               |![Z-boj](./media/zfighting-0.png)|
-|Z-boj povoleno zmírnění    |![Z-boj](./media/zfighting-1.png)|
-|Zvýrazňování šachovnice povoleno|![Z-boj](./media/zfighting-2.png)|
+|Normální z-boj               |![Žádná deterministické priorita mezi červenou a zelenou Quad](./media/zfighting-0.png)|
+|Z-boj povoleno zmírnění    |![Červená čtyřnásobná priorita](./media/zfighting-1.png)|
+|Zvýrazňování šachovnice povoleno|![Červená a zelená Čtyřjádrová předvolba v šachovnicovém vzoru](./media/zfighting-2.png)|
 
 Následující kód povoluje zmírnění omezení z boje:
 
@@ -53,7 +53,6 @@ void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
 }
 ```
 
-
 > [!NOTE]
 > Z-boje proti zmírnění je globální nastavení, které ovlivňuje všechny vygenerované sítě.
 
@@ -76,6 +75,11 @@ K dispozici je nejlepší úsilí z hlediska zmírnění omezení z hlediska boj
 
 * Povolením z boje proti zmírnění rizik dojde k nedostatečnému výkonu.
 * Kromě povolení překrytí z-boje platí netriviální režie výkonu, i když se může lišit v závislosti na scéně.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Vlastnost C# RemoteManager. ZFightingMitigationSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
+* [C++ RemoteManager:: ZFightingMitigationSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>Další kroky
 

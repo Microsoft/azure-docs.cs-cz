@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d52673f1c66c8e053639b24bb31a3159a75736b9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436694"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029048"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -65,7 +65,7 @@ Kód vaší aplikace, nebo častěji knihovny ověřování používané v aplik
 
 Identifikátor URI přesměrování je umístění, kde rozhraní Microsoft Identity Platform přesměruje klienta uživatele a odesílá tokeny zabezpečení po ověření.
 
-V produkční webové aplikaci je například identifikátor URI přesměrování často veřejným koncovým bodem, ve kterém je vaše aplikace spuštěná, třeba `https://contoso.com/auth-response` . Během vývoje je běžné také přidat koncový bod, ve kterém aplikaci spouštíte místně, například `https://127.0.0.1/auth-response` .
+V produkční webové aplikaci je například identifikátor URI přesměrování často veřejným koncovým bodem, ve kterém je vaše aplikace spuštěná, třeba `https://contoso.com/auth-response` . Během vývoje je běžné také přidat koncový bod, ve kterém aplikaci spouštíte místně, například `https://127.0.0.1/auth-response` nebo `http://localhost/auth-response` .
 
 Můžete přidat a upravit identifikátory URI pro přesměrování registrovaných aplikací konfigurací jejich [Nastavení platformy](#configure-platform-settings).
 

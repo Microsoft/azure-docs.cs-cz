@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f57c212dfc44d84640224b1526ab770fe97230
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009453"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024396"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
 
-V mnoha případech je nutné dynamicky měnit vzhled částí [modelu](../../concepts/models.md), například skrýt Podgrafy nebo přepínat části na transparentní vykreslování. Změna materiálů jednotlivých zúčastněných částí není praktická, protože vyžaduje iteraci v celém grafu scény a správu klonování a přiřazování materiálů na jednotlivých uzlech.
+V mnoha případech je nutné dynamicky měnit vzhled částí [modelu](../../concepts/models.md), například skrývání dílčích grafů nebo přepnutí částí na transparentní vykreslování. Změna materiálů jednotlivých zúčastněných částí není praktická, protože vyžaduje iteraci v celém grafu scény a správu klonování a přiřazování materiálů na jednotlivých uzlech.
 
 K dosažení tohoto případu použití s minimální možnou režií použijte `HierarchicalStateOverrideComponent` . Tato součást implementuje hierarchické aktualizace stavu na libovolných větvích grafu scény. To znamená, že stav může být definován na libovolné úrovni grafu scény a trickles hierarchii, dokud není přepsána novým stavem nebo použit pro objekt typu list.
 
@@ -31,20 +31,23 @@ Pevná sada stavů, které lze přepsat, jsou následující:
 * **`Hidden`**: Odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
 * **`Tint color`**: Vykreslený objekt může mít barevný nádech s jeho individuálním barevným nádechem a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
   
-  ![Barevný nádech](./media/color-tint.png)
+  ![Barevný nádech použitý k zapnutí objektu zeleně](./media/color-tint.png)
 
 * **`See-through`**: Geometrie se vykresluje s poloviční transparentní, například k zobrazení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
 
-  ![Viz-through](./media/see-through.png)
+  ![Režim zobrazení, který slouží k výběru vybraných objektů jako transparentní](./media/see-through.png)
 
   > [!IMPORTANT]
   > Efekt převádění funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
 
 * **`Selected`**: Geometrie je vykreslena s [obrysem výběru](outlines.md).
 
-  ![Obrys výběru](./media/selection-outline.png)
+  ![Možnost obrysu, která slouží k zvýraznění vybrané části](./media/selection-outline.png)
 
 * **`DisableCollision`**: Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
+
+> [!TIP]
+> Jako alternativu k vypnutí viditelnosti a prostorových dotazů pro úplný dílčí graf `enabled` lze stav herního objektu přepnout. Pokud je hierarchie zakázaná, má přednost před jakýmkoli `HierarchicalStateOverrideComponent` .
 
 ## <a name="hierarchical-overrides"></a>Hierarchická přepsání
 
@@ -95,6 +98,11 @@ component->SetState(
 Instance `HierarchicalStateOverrideComponent` sama sebe nepřidává spoustu zatížení za běhu. Je ale vždy dobrým zvykem udržet počet aktivních komponent na nízké úrovni. Například při implementaci systému výběru, který zvýrazní vydaný objekt, se doporučuje odstranit komponentu při odebrání zvýraznění. Udržování komponent kolem neutrálních funkcí se může rychle přidat.
 
 Transparentní vykreslování přináší více úloh na GPU serveru než standardní vykreslování. Pokud jsou velké části grafu scény přepnuty, aby se *zobrazilo*více vrstev geometrie, může se stát, že se zobrazí problém s výkonem. Totéž platí pro objekty s [obrysy výběru](../../overview/features/outlines.md#performance).
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída C# HierarchicalStateOverrideComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [Třída C++ HierarchicalStateOverrideComponent](https://docs.microsoft.com/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>Další kroky
 
