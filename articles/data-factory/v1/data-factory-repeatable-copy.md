@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707289"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441625"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Opakující se kopírování v Azure Data Factory
 
@@ -104,7 +104,7 @@ Aktivita kopírování spustila skript vyčištění, který odstraní odpovída
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mechanismus 2: použití sliceIdentifierColumnName
 > [!IMPORTANT]
-> SliceIdentifierColumnName se v současné době nepodporuje pro Azure SQL Data Warehouse. 
+> V současné době se pro Azure synapse Analytics (dřív SQL Data Warehouse) nepodporuje sliceIdentifierColumnName. 
 
 Druhým mechanismem, který se má dosáhnout opakovatelnosti, je vytvoření vyhrazeného sloupce (sliceIdentifierColumnName) v cílové tabulce. Tento sloupec Azure Data Factory použít k tomu, aby bylo zajištěno, že zůstane synchronizován zdroj a cíl. Tento přístup funguje v případě, že dojde k flexibilitě při změně nebo definování schématu cílové tabulky SQL. 
 
@@ -151,5 +151,5 @@ Podobně jako mechanismus – aktivita kopírování automaticky vyčistí data 
 Přečtěte si následující články konektoru, které jsou kompletními příklady JSON: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

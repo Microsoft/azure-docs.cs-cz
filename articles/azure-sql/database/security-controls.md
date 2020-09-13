@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97d2cd8e9ba51e4fc6ebab8459b04f4f37e876d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eec032ad56d00778627fc147761f61c03ba8bafd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668419"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442084"
 ---
 # <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>Ovládací prvky zabezpečení pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -46,7 +46,7 @@ Tento článek popisuje ovládací prvky zabezpečení, které jsou integrované
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
 | Authentication| Yes | Azure Active Directory (Azure AD) |
-| Autorizace| Yes | Žádná |
+| Autorizace| Yes | Žádné |
 
 ## <a name="data-protection"></a>Ochrana dat
 
@@ -62,14 +62,14 @@ Tento článek popisuje ovládací prvky zabezpečení, které jsou integrované
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace, jako je například Správa verzí konfigurace| No  | Žádná |
+| Podpora správy konfigurace, jako je například Správa verzí konfigurace| No  | Žádné |
 
 ## <a name="additional-security-controls-for-sql-database"></a>Další ovládací prvky zabezpečení pro SQL Database
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
 | Preventivní: posouzení ohrožení zabezpečení | Yes | Další informace najdete v tématu [Služba posouzení ohrožení zabezpečení SQL vám pomůže identifikovat slabá místa databáze](sql-vulnerability-assessment.md). |
-| Preventivní: zjišťování a klasifikace dat  | Yes | Viz [Azure SQL Database a SQL Data Warehouse klasifikace & zjišťování dat](data-discovery-and-classification-overview.md). |
+| Preventivní: zjišťování a klasifikace dat  | Yes | Přečtěte si téma [Azure SQL Database a Azure synapse Analytics data discovery & klasifikací](data-discovery-and-classification-overview.md). |
 | Detekce: detekce hrozeb | Yes | Viz [Rozšířená ochrana před internetovými útoky pro Azure SQL Database](threat-detection-overview.md). |
 
 ## <a name="next-steps"></a>Další kroky

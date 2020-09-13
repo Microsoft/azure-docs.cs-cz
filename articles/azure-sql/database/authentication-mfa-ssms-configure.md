@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018275"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442645"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace služby Multi-Factor Authentication pro SQL Server Management Studio a Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-V tomto článku se dozvíte, jak používat službu Multi-Factor Authentication služby Azure Active Directory (Azure AD) s SQL Server Management Studio (SSMS). Azure AD MFA se dá použít při připojení SSMS nebo SqlPackage.exe k [Azure SQL Database](sql-database-paas-overview.md), [spravované instanci Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [azure synapse Analytics (dřív Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled služby Multi-Factor Authentication najdete v tématech [univerzální ověřování pomocí SQL Database, spravovaná instance SQL a Azure synapse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md).
+V tomto článku se dozvíte, jak používat službu Multi-Factor Authentication služby Azure Active Directory (Azure AD) s SQL Server Management Studio (SSMS). Azure AD MFA se dá použít při připojení SSMS nebo SqlPackage.exe k [Azure SQL Database](sql-database-paas-overview.md), [spravované instanci Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [azure synapse Analytics (dřív SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled služby Multi-Factor Authentication najdete v tématech [univerzální ověřování pomocí SQL Database, spravovaná instance SQL a Azure synapse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
-> Databáze v Azure SQL Database, Azure SQL Managed instance a Azure synapse (dříve Azure SQL Data Warehouse) se ve zbývající části tohoto článku společně označují jako databáze a server odkazuje na [Server](logical-servers.md) , který je hostitelem databází pro Azure SQL Database a Azure synapse.
+> Databáze v Azure SQL Database, Azure SQL Managed instance a Azure synapse (dříve SQL Data Warehouse) se ve zbývající části tohoto článku společně označují jako databáze a server odkazuje na [Server](logical-servers.md) , který je hostitelem databází pro Azure SQL Database a Azure synapse.
 
 ## <a name="configuration-steps"></a>Postup konfigurace
 
@@ -52,7 +52,7 @@ Následující kroky ukazují, jak se připojit pomocí nejnovější SSMS.
 
    ![MFA – tenant – SSMS](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. Vyberte **Možnosti** a zadejte databázi v dialogovém okně **Možnosti** . (Pokud je připojený uživatel uživatel typu Host (tj. joe@outlook.com ), musíte zaškrtnout políčko a jako součást možností přidat aktuální název domény služby AD nebo ID tenanta. Viz [univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md). Pak klikněte na **Connect** (Připojit).  
+4. Vyberte **Možnosti** a zadejte databázi v dialogovém okně **Možnosti** . (Pokud je připojený uživatel uživatel typu Host (tj. joe@outlook.com ), musíte zaškrtnout políčko a jako součást možností přidat aktuální název domény služby AD nebo ID tenanta. Podívejte [se na téma Univerzální ověřování pomocí SQL Database a Azure synapse Analytics (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md). Pak klikněte na **Connect** (Připojit).  
 5. Po zobrazení dialogového okna **Přihlásit se k účtu** zadejte účet a heslo vaší Azure Active Directory identity. Pokud je uživatel součástí domény federované se službou Azure AD, není nutné žádné heslo.
 
    ![2mfa – přihlášení](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845693"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440197"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Vědecké zpracování týmových dat v akci: používání Azure synapse Analytics
 V tomto kurzu Vás provedeme vytvořením a nasazením modelu strojového učení s využitím Azure synapse Analytics pro veřejně dostupnou datovou sadu, která je datovou sadou [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) . Model binární klasifikace vytváří předpověď bez ohledu na to, jestli je pro cestu placené nebo ne.  Mezi modely patří klasifikace s více třídami (bez ohledu na to, zda existuje Tip) a regrese (rozdělení pro placené částky Tip).
@@ -91,14 +91,14 @@ Pokud chcete nastavit prostředí pro datové vědy v Azure, postupujte podle t�
   * **Název kontejneru** (který má ukládat data do úložiště objektů BLOB v Azure)
 
 **Zřiďte svou instanci Azure synapse Analytics.**
-Pokud chcete zřídit instanci Azure synapse Analytics, postupujte podle dokumentace v části [Vytvoření a dotazování Azure SQL Data Warehouse v Azure Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) . Ujistěte se, že jste provedli zápisy následujících přihlašovacích údajů služby Azure synapse Analytics, které budou použity v pozdějších krocích.
+Pokud chcete zřídit instanci Azure synapse Analytics, postupujte podle dokumentace v části [Vytvoření a dotazování analýzy Azure synapse v Azure Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) . Ujistěte se, že jste provedli zápisy následujících přihlašovacích údajů služby Azure synapse Analytics, které budou použity v pozdějších krocích.
 
 * **Název serveru**: \<server Name> . Database.Windows.NET
 * **Název SQLDW (databáze)**
 * **Uživatelské jméno**
 * **Heslo**
 
-**Nainstalujte Visual Studio a SQL Server Data Tools.** Pokyny najdete v tématu [Začínáme se sadou Visual Studio 2019 pro SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
+**Nainstalujte Visual Studio a SQL Server Data Tools.** Pokyny najdete v tématu [Začínáme se sadou Visual Studio 2019 pro Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
 
 **Připojte se k Azure synapse Analytics pomocí sady Visual Studio.** Pokyny najdete v krocích 1 & 2 v tématu [připojení k SQL Analytics v Azure synapse Analytics](../../synapse-analytics/sql/connect-overview.md).
 
@@ -966,7 +966,7 @@ V tomto cvičení jsme už prozkoumali a provedli analýzu dat ve službě Azure
 
     ![Import dat z Azure ML][17]
 2. Na panelu **vlastnosti** vyberte možnost **Azure SQL Database** jako **zdroj dat** .
-3. Do pole **název databázového serveru** zadejte název DNS databáze. Formátovat`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Do pole **název databázového serveru** zadejte název DNS databáze. Formátovat `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Do příslušného pole zadejte **název databáze** .
 5. Zadejte *uživatelské jméno SQL* do pole **název uživatelského účtu serveru**a *heslo* v **hesle uživatelského účtu serveru**.
 7. V textové oblasti **dotaz do databáze** vložte dotaz, který extrahuje potřebná databázová pole (včetně všech vypočítaných polí, jako jsou popisky), a dolů vyvzorkuje data do požadované velikosti vzorku.
@@ -1006,13 +1006,13 @@ Na následujícím obrázku je k dispozici ukázkový experiment pro bodování.
 
 ![Publikování v Azure ML][11]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Abyste rekapitulacei, co jsme udělali v tomto výukovém kurzu, vytvořili jste prostředí pro datové vědy v Azure, které pracovalo s velkou veřejnou datovou sadou, provedli jsme to prostřednictvím vědeckého procesu pro týmovou práci, veškerého způsobu získávání dat a následného nasazení Azure Machine Learning webové služby.
 
 ### <a name="license-information"></a>Informace o licenci
 Tento ukázkový návod a příslušné doprovodné skripty a IPython Poznámkový blok sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v souboru LICENSE.txt v adresáři ukázkového kódu na GitHubu.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 - [Stránka stahování Andrés Monroy NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/)
 - [FÓLIE NYC data taxislužby na cestách pomocí Chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC taxislužby a výzkum a statistika Komise Limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

@@ -2,13 +2,13 @@
 title: Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události
 description: Popisuje, jak můžete použít Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/03/2020
+ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105689"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440792"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede několik dalších akcí zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovával události a **Azure Service Bus** je jednou z nich. 
@@ -32,7 +32,7 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
 ```
 
-## <a name="service-bus-topics"></a>Service Bus témata
+## <a name="service-bus-topics"></a>Témata služby Service Bus
 
 Události v Event Grid můžete směrovat přímo do Service Busch témat pro zpracování událostí systému Azure pomocí Service Bus témata nebo pro scénáře zasílání zpráv pomocí příkazů řízení &.
 
@@ -53,7 +53,7 @@ az eventgrid event-subscription create \
 ## <a name="message-properties"></a>Vlastnosti zprávy
 Použijete-li **Service Bus téma nebo frontu** jako obslužnou rutinu události z Event Grid, nastavte následující záhlaví zpráv: 
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ------------- | ----------- | 
 | AEG-Subscription-Name | Název odběru události |
 | AEG – počet doručení | <p>Počet pokusů o provedení události.</p> <p>Příklad: "1"</p> |
@@ -62,9 +62,9 @@ Použijete-li **Service Bus téma nebo frontu** jako obslužnou rutinu události
 | AEG-data-verze | <p>Verze dat události</p><p>Příklad: "1".</p><p>Pro **Event Grid schéma událostí**Tato vlastnost představuje verzi dat a pro **schéma cloudových událostí**se nepoužije.</p> |
 
 ## <a name="message-headers"></a>Záhlaví zpráv
-Při odesílání události do fronty Service Bus nebo tématu jako zprostředkované zprávy `messageid` je ID zprostředkované zprávy **ID události**.
+Při odesílání události do fronty Service Bus nebo tématu jako zprostředkované zprávy je ve službě zprostředkované zprávy `messageid` interní ID systému.
 
-ID události bude zachováno v průběhu Redistribuce události, takže se můžete vyhnout duplicitním dodávkám zapnutím **duplicity v** entitě Service Bus. Doporučujeme povolit dobu trvání duplicity u Service Bus entity tak, aby byla buď hodnota TTL (Time to Live) pro událost nebo maximální doba opakování, podle toho, co je delší.
+Interní ID systému pro zprávu bude udržováno v průběhu předoručení události, takže se můžete vyhnout duplicitním dodávkám zapnutím **duplicity v** entitě Service Bus. Doporučujeme povolit dobu trvání duplicity u Service Bus entity tak, aby byla buď hodnota TTL (Time to Live) pro událost nebo maximální doba opakování, podle toho, co je delší.
 
 ## <a name="rest-examples-for-put"></a>Příklady REST (pro PUT)
 

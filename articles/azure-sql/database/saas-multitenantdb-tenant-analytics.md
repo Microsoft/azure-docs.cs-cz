@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249140"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442901"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analýza mezi klienty pomocí extrahovaných dat – více tenantů aplikace
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ SaaS aplikace, které vyvíjíte, mají přístup k obrovskému množství dat t
 
 Přístup k datům pro všechny klienty je jednoduchý, pokud jsou všechna data v jediné databázi s více klienty. Ale přístup je složitější v případě distribuované škály v tisících databází. Jedním ze způsobů, jak zkrotit složitosti, je extrahovat data do analytické databáze nebo datového skladu. Pak se Dotazujte na datový sklad, abyste mohli shromažďovat přehledy z dat lístků všech tenantů.
 
-Tento kurz představuje kompletní scénář analýzy pro tuto ukázkovou aplikaci SaaS. Za prvé, elastické úlohy se používají k naplánování extrakce dat z každé databáze tenanta. Data se odesílají do úložiště analýz. Úložiště analýzy může být buď SQL Database, nebo SQL Data Warehouse. Pro extrakci dat ve velkém měřítku [Azure Data Factory](../../data-factory/introduction.md) Commended.
+Tento kurz představuje kompletní scénář analýzy pro tuto ukázkovou aplikaci SaaS. Za prvé, elastické úlohy se používají k naplánování extrakce dat z každé databáze tenanta. Data se odesílají do úložiště analýz. Úložiště analýz může být buď SQL Database, nebo Azure synapse Analytics (dřív SQL Data Warehouse). Pro extrakci dat ve velkém měřítku [Azure Data Factory](../../data-factory/introduction.md) Commended.
 
 V dalším kroku jsou agregovaná data skartována do sady tabulek se [schématem hvězdiček](https://www.wikipedia.org/wiki/Star_schema) . Tabulky sestávají z centrální tabulky faktů a souvisejících tabulek dimenzí:
 

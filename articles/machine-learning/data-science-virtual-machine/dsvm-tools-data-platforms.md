@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012481"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440350"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Datové platformy podporované v Data Science Virtual Machine
 
@@ -53,7 +53,7 @@ Pokud chcete spustit SQL Server Management Studio, můžete v seznamu programů 
 
 Ve výchozím nastavení se databázový server s výchozí instancí databáze spustí automaticky. K místnímu přístupu k databázi SQL Server můžete použít nástroje, jako je SQL Server Management Studio na virtuálním počítači. Účty místních správců mají v databázi přístup správce.
 
-Součástí DSVM jsou taky ovladače ODBC a JDBC, které vám pomůžou komunikovat s SQL Server, databázemi SQL Azure a Azure SQL Data Warehouse z aplikací napsaných v několika jazycích, včetně Pythonu a Machine Learning Server.
+Součástí DSVM jsou taky ovladače ODBC a JDBC, které vám pomůžou komunikovat s SQL Server, databázemi SQL Azure a Azure synapse Analytics z aplikací napsaných v několika jazycích, včetně Pythonu a Machine Learning Server.
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Jak je nakonfigurovaná a nainstalovaná na DSVM? 
 

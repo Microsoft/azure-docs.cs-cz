@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226038"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441472"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -404,6 +404,9 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ## <a name="create-a-server-endpoint"></a>Vytvoření koncového bodu serveru
 Koncový bod serveru představuje konkrétní umístění na zaregistrovaném serveru, například složku na svazku serveru. Koncový bod serveru musí být cestou na zaregistrovaném serveru (spíše než připojená sdílená složka) a používat vrstvení cloudu, cesta musí být na nesystémovém svazku. Úložiště připojené k síti (NAS) není podporováno.
 
+> [!NOTE]
+> Změna cesty nebo písmene jednotky po vytvoření koncového bodu serveru na svazku není podporována. Ujistěte se, že používáte konečnou cestu na zaregistrovaném serveru.
+
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud chcete přidat koncový bod serveru, přejdete do nově vytvořené skupiny synchronizace a pak vyberete **přidat koncový bod serveru**.
 
@@ -571,7 +574,7 @@ Pokud ale změníte plán způsobem, který bude mít za následek dostupný sn�
 
 Výchozí maximální počet snímků služby VSS na svazek (64) a také výchozí plán, který je bude možné provést, má za následek maximálně 45 dní předchozích verzí, které může pracovník s informacemi obnovit v závislosti na tom, kolik snímků VSS můžete na svazku Uložit.
 
-If Max. 64 snímků VSS na svazek není správné nastavení, můžete [tuto hodnotu změnit pomocí klíče registru](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Pokud maximální počet 64 snímků VSS na svazek není správným nastavením, můžete [tuto hodnotu změnit pomocí klíče registru](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Aby se nový limit mohl projevit, musíte rutinu znovu spustit, aby se zajistila kompatibilita předchozí verze na všech dříve povolených svazcích s příznakem-Force, který zabere nový maximální počet snímků VSS na svazek v rámci účtu. Výsledkem bude nově vypočtený počet kompatibilních dnů. Upozorňujeme, že tato změna se projeví jenom u nově vrstvených souborů a přepíše všechna vlastní nastavení plánu VSS, který jste mohli udělat.
 
 <a id="proactive-recall"></a>

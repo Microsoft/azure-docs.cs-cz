@@ -1,27 +1,29 @@
 ---
 title: Podporované oblasti pro propojený pracovní prostor Log Analytics
-description: Tento článek popisuje podporovaná mapování oblastí mezi účtem služby Automation a pracovním prostorem Log Analytics.
+description: Tento článek popisuje podporovaná mapování oblastí mezi účtem služby Automation a pracovním prostorem Log Analytics v souvislosti s některými funkcemi Azure Automation.
+ms.date: 09/03/2020
 services: automation
-ms.service: automation
-ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 06/12/2020
 ms.topic: conceptual
-manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447854"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440656"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
-V Azure Automation můžete pro své virtuální počítače povolit Update Management, Change Tracking a inventář a Start/Stop VMs during off-hours funkce. Propojení Log Analyticsho pracovního prostoru a účtu Automation v rámci předplatného ale podporuje jenom některé oblasti. Mapování oblastí platí pouze pro účet Automation a pracovní prostor Log Analytics. Pracovní prostor Log Analytics a účet Automation musí být ve stejném předplatném, ale můžou být v různých skupinách prostředků nasazených do stejné oblasti. Další informace najdete v tématu [Log Analytics pracovní prostor a účet Automation](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
+V Azure Automation můžete povolit Update Management, Change Tracking a inventář a Start/Stop VMs during off-hours funkce pro vaše servery a virtuální počítače. Tyto funkce mají závislost na pracovním prostoru Log Analytics, a proto vyžadují propojení pracovního prostoru s účtem Automation. Pouze některé oblasti jsou však podporovány, aby je bylo možné propojit dohromady. Mapování se obecně *nedá* použít, pokud plánujete propojit účet Automation s pracovním prostorem, který tyto funkce nemá povolený.
+
+Tento článek obsahuje podporovaná mapování, aby bylo možné úspěšně povolit a používat tyto funkce ve vašem účtu Automation.
+
+Další informace najdete v tématu [Log Analytics pracovní prostor a účet Automation](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
 
 ## <a name="supported-mappings"></a>Podporovaná mapování
+
+> [!NOTE]
+> Jak je znázorněno v následující tabulce, může mezi Log Analytics a Azure Automation existovat pouze jedno mapování.
 
 V následující tabulce jsou uvedena podporovaná mapování:
 
@@ -52,7 +54,7 @@ V následující tabulce jsou uvedena podporovaná mapování:
 
 ## <a name="unlink-a-workspace"></a>Zrušit propojení pracovního prostoru
 
-Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal. Než budete pokračovat, musíte nejdřív [odebrat](move-account.md#remove-features) Update Management, Change Tracking a inventář a Start/Stop VMS during off-hours, pokud je používáte. Pokud je neodeberete, nemůžete dokončit operaci odpojování. 
+Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal. Než budete pokračovat, musíte nejdřív [odebrat](move-account.md#remove-features) Update Management, Change Tracking a inventář a Start/Stop VMS during off-hours, pokud je používáte. Pokud je neodeberete, nemůžete dokončit operaci odpojování.
 
 Po odebrání funkcí můžete pomocí následujících kroků zrušit propojení svého účtu Automation.
 
@@ -68,7 +70,7 @@ Po odebrání funkcí můžete pomocí následujících kroků zrušit propojen�
 4. Pokud jste použili Update Management, můžete taky chtít odebrat následující položky, které už nepotřebujete:
 
     * Plány aktualizací: každý má název, který odpovídá nasazení aktualizace, kterou jste vytvořili.
-    * Skupiny hybridních pracovních procesů vytvořené pro funkci: každý má název podobný `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8` .
+    * Skupiny hybridních pracovních procesů vytvořené pro funkci: každý má název podobný  `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8` .
 
 5. Pokud jste použili Start/Stop VMs during off-hours, můžete volitelně odebrat následující položky, které už nepotřebujete:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd49993e6825c47bbae8f034715c03191e06ab2d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509048"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441659"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Řešení potíží se spouštěním virtuálních počítačů s Linuxem z důvodu chyb fstab
 
@@ -107,7 +107,7 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
 ### <a name="using-single-user-mode"></a>Použití režimu Single User
 
 1. Připojte se ke [konzole sériového portu](./serial-console-linux.md).
-2. Použití konzoly sériového režimu pro jeden [uživatelský](../linux/serial-console-grub-single-user-mode.md) režim single user
+2. Použití konzoly sériového režimu pro jeden [uživatelský](serial-console-grub-single-user-mode.md) režim single user
 3. Po spuštění virtuálního počítače do režimu jednoho uživatele. K otevření souboru fstab použijte oblíbený textový editor. 
 
    ```
@@ -119,7 +119,7 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
    > [!Note]
    > * Pole na každém řádku jsou oddělená tabulátory nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Řádky s komentářem mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste fstab řádky, na které si nejste jisti, místo odebrání řádků.
    > * Aby se virtuální počítač mohl zotavit a spustit, měly by být oddíly systému souborů jedinými požadovanými oddíly. Virtuální počítač může zaznamenat chyby aplikace o dalších oddílech s komentářem. Virtuální počítač by se ale měl spustit bez dalších oddílů. Později můžete odkomentovat všechny řádky s komentářem.
-   > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * Chcete-li zjistit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid.
    > * Možnost neúspěchu pomáhá zajistit, že se virtuální počítač spustí i v případě, že je systém souborů poškozený nebo když systém souborů neexistuje při spuštění. Doporučujeme, abyste v souboru fstab použili možnost neúspěšného spuštění, abyste mohli v případě výskytu chyb v oddílech, které nejsou nutné k tomu, aby se virtuální počítač spustil, pokračovat v práci.
 
@@ -172,7 +172,7 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
    > [!Note]
    > * Pole na každém řádku jsou oddělená tabulátory nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Řádky s komentářem mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste fstab řádky, na které si nejste jisti, místo odebrání řádků.
    > * Aby se virtuální počítač mohl zotavit a spustit, měly by být oddíly systému souborů jedinými požadovanými oddíly. Virtuální počítač může zaznamenat chyby aplikace o dalších oddílech s komentářem. Virtuální počítač by se ale měl spustit bez dalších oddílů. Později můžete odkomentovat všechny řádky s komentářem.
-   > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * Chcete-li zjistit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid.
    > * Možnost neúspěchu pomáhá zajistit, že se virtuální počítač spustí i v případě, že je systém souborů poškozený nebo když systém souborů neexistuje při spuštění. Doporučujeme, abyste v souboru fstab použili možnost neúspěšného spuštění, abyste mohli v případě výskytu chyb v oddílech, které nejsou nutné k tomu, aby se virtuální počítač spustil, pokračovat v práci.
 
@@ -216,7 +216,7 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
    > [!Note]
    > * Pole na každém řádku jsou oddělená tabulátory nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Řádky s komentářem mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste fstab řádky, na které si nejste jisti, místo odebrání řádků.
    > * Aby se virtuální počítač mohl zotavit a spustit, měly by být oddíly systému souborů jedinými požadovanými oddíly. Virtuální počítač může zaznamenat chyby aplikace o dalších oddílech s komentářem. Virtuální počítač by se ale měl spustit bez dalších oddílů. Později můžete odkomentovat všechny řádky s komentářem.
-   > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * Chcete-li zjistit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid. Všimněte si, že disk, který chcete obnovit, je nyní připojen k novému virtuálnímu počítači. I když by identifikátory UUID měly být konzistentní, ID oddílů zařízení (například "/dev/sda1") se na tomto virtuálním počítači liší. Oddíly systému souborů původního neúspěšného virtuálního počítače, které jsou umístěné na nesystémovém virtuálním pevném disku, nejsou k dispozici pro virtuální počítač pro obnovení [pomocí příkazů rozhraní příkazového řádku](./troubleshoot-recovery-disks-linux.md).
    > * Možnost neúspěchu pomáhá zajistit, že se virtuální počítač spustí i v případě, že je systém souborů poškozený nebo když systém souborů neexistuje při spuštění. Doporučujeme, abyste v souboru fstab použili možnost neúspěšného spuštění, abyste mohli v případě výskytu chyb v oddílech, které nejsou nutné k tomu, aby se virtuální počítač spustil, pokračovat v práci.
 
@@ -235,7 +235,7 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
 13. Jakmile znovu vytvoříte virtuální počítač a můžete se k němu připojit přes SSH, proveďte následující akce:
     * Projděte si všechny fstab řádky, které se změnily nebo Zakomentovat při obnovení.
     * Ujistěte se, že používáte UUID a možnost neúspěchu.
-    * Před restartováním virtuálního počítače otestujte všechny fstab změny. K tomu použijte následující příkaz:``$ sudo mount -a``
+    * Před restartováním virtuálního počítače otestujte všechny fstab změny. K tomu použijte následující příkaz: ``$ sudo mount -a``
     * Vytvořte další kopii opraveného souboru fstab pro použití v budoucích scénářích obnovení.
 
 ## <a name="next-steps"></a>Další kroky

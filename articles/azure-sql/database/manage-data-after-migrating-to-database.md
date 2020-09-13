@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249274"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439771"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -65,7 +65,7 @@ Nevytváříte zálohy na Azure SQL Database a je to proto, že je nemusíte mí
 
 |Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
-|Základní|7|
+|Basic|7|
 |Standard|35|
 |Premium|35|
 |||
@@ -102,11 +102,13 @@ SQL Database zabezpečení a ochrany osobních údajů velmi vážně. Zabezpeč
 V SQL Database jsou k dispozici dvě metody ověřování:
 
 - [Ověřování Azure Active Directory](authentication-aad-overview.md)
-- [Ověřování pomocí SQL](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [Ověřování SQL](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-Tradiční ověřování systému Windows není podporováno. Azure Active Directory (Azure AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. Azure AD podporuje [azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) a [pár kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. Tato možnost také umožňuje SQL Database a SQL Data Warehouse nabízet účty uživatelů Multi-Factor Authentication a hosta v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
+Tradiční ověřování systému Windows není podporováno. Azure Active Directory (Azure AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. 
 
-|**Pokud...**|**SQL Database/SQL Data Warehouse**|
+Azure AD podporuje [azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) a [pár kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. Tato možnost také umožňuje SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) k poskytování Multi-Factor Authentication a uživatelských účtů hostů v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
+
+|**Pokud...**|**SQL Database/Azure synapse Analytics**|
 |---|---|
 |Raději nepoužívejte Azure Active Directory (Azure AD) v Azure.|Použít [ověřování SQL](security-overview.md)|
 |Služba AD se používá v místní SQL Server.|[FEDEROVAT AD s Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md)a používejte ověřování Azure AD. Díky tomu můžete použít jednotné přihlašování.|
@@ -114,7 +116,7 @@ Tradiční ověřování systému Windows není podporováno. Azure Active Direc
 |Mít účty hostů z účtů Microsoft (live.com, outlook.com) nebo jiné domény (gmail.com).|Využijte [Azure AD Universal Authentication](authentication-mfa-ssms-overview.md) v SQL Database/datovém skladu, který využívá [spolupráci Azure AD B2B](../../active-directory/b2b/what-is-b2b.md).|
 |Přihlášení k systému Windows pomocí přihlašovacích údajů Azure AD ze federované domény|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
 |Přihlášení k systému Windows pomocí přihlašovacích údajů z domény, která není federované s Azure|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
-|Musí mít služby střední vrstvy, které se musí připojit k SQL Database nebo SQL Data Warehouse|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
+|Musí mít služby střední vrstvy, které se musí připojit k SQL Database nebo Azure synapse Analytics.|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
 |||
 
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>Omezení Návody nebo řízení přístupu k databázi v síti
@@ -122,7 +124,7 @@ Tradiční ověřování systému Windows není podporováno. Azure Active Direc
 K dispozici je více postupů, které můžete použít k dosažení optimální organizace pro připojení pro vaši aplikaci.
 
 - Pravidla brány firewall
-- Koncové body služby virtuální sítě
+- Koncové body služeb virtuální sítě
 - Vyhrazené IP adresy
 
 #### <a name="firewall"></a>Brána firewall
@@ -137,7 +139,7 @@ Ve výchozím nastavení je vaše databáze nakonfigurovaná na "umožňuje slu�
 
 Koncové body služby (SE) umožňují zveřejnit důležité prostředky Azure jenom pro vaši vlastní privátní virtuální síť v Azure. Tím byste v podstatě vyloučili veřejný přístup k vašim prostředkům. Provoz mezi vaší virtuální sítí do Azure zůstane v páteřní síti Azure. Bez SE vám nedostalo směrování paketů vynucené tunelování. Vaše virtuální síť vynutí internetový provoz do vaší organizace a provoz služeb Azure tak, aby přešel přes stejnou trasu. S koncovými body služby je můžete optimalizovat, protože tok paketů je přímo z vaší virtuální sítě do služby v páteřní síti Azure.
 
-![Koncové body služeb virtuální sítě](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
+![Koncové body služby virtuální sítě](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Vyhrazené IP adresy
 
@@ -167,7 +169,7 @@ Díky [detekci hrozeb](threat-detection-configure.md)získáte možnost reagovat
 Ve výchozím nastavení jsou vaše neaktivní data a soubory protokolů v subsystému úložiště v SQL Database zcela a vždy šifrované prostřednictvím [transparentní šifrování dat [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Vaše zálohy jsou také šifrované. V TDE se na straně aplikace nevyžadují žádné změny, které mají přístup k těmto datům. Šifrování a dešifrování je transparentní; Proto název.
 V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Database poskytuje funkci nazvanou [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE je forma šifrování na straně klienta, která šifruje citlivé sloupce v databázi (takže jsou v šifrovaném textu u správců databáze a neautorizovaných uživatelů). Server obdrží zašifrovaná data, která mají začít. Klíč pro Always Encrypted je také uložen na straně klienta, takže pouze oprávnění klienti mohou dešifrovat citlivé sloupce. Správci serveru a dat nemohou zobrazit citlivá data, protože šifrovací klíče jsou uloženy v klientovi. AE šifruje citlivé sloupce v tabulce na konci, od neautorizovaných klientů po fyzický disk. AE v současné době podporuje porovnání rovnosti, takže specializující může v rámci svých příkazů SQL nadále dotazovat šifrované sloupce. Always Encrypted lze použít s nejrůznějšími možnostmi úložiště klíčů, jako jsou [Azure Key Vault](always-encrypted-azure-key-vault-configure.md), úložiště certifikátů Windows a místní moduly hardwarového zabezpečení.
 
-|**Vlastnosti**|**Funkce Always Encrypted**|**transparentní šifrování dat**|
+|**Vlastnosti**|**Funkce Always Encrypted**|**Transparentní šifrování dat**|
 |---|---|---|
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
 |**Server má přístup k citlivým datům**|No|Ano, protože šifrování je pro neaktivní neaktivní data|
@@ -299,9 +301,9 @@ Komplexní sadu doporučení pro ladění problémů s výkonem najdete v témat
 
 SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Na každé úrovni služby získáte zaručený předvídatelný výkon, který je svázán s danou úrovní služeb. V závislosti na vašich úlohách můžete mít shluky aktivity, kde využití prostředků může dosáhnout stropu aktuální velikosti výpočtů, ke které jste v. V takových případech je vhodné nejdřív začít tím, že vyhodnotí, jestli může nějaké ladění pomoct (například přidání nebo změna indexu atd.). Pokud stále dochází k problémům s omezením, zvažte přechod na vyšší úroveň služby nebo výpočetní velikost.
 
-|**Úroveň služby**|**Běžné scénáře použití**|
+|**Úroveň služeb**|**Běžné scénáře použití**|
 |---|---|
-|**Základní**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
+|**Basic**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
 |**Standard**|Aplikace se značnými požadavky na souběžnost, škálování a výkon, které jsou v případě požadavků s nízkým až středním vstupem/výstupem. |
 |**Premium**|Aplikace s velkým počtem souběžných uživatelů, vysokým PROCESORem/pamětí a vysokými nároky na vstupně-výstupní operace. Vysoká úroveň souběžnosti, vysoké propustnosti a aplikace citlivé na latenci můžou využívat úrovně Premium. |
 |||

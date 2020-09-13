@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: řešení potíží s připojením Point-to-site: Klienti Mac OS X'
 description: Naučte se řešit potíže s připojením typu Point-to-Site z Mac OS X pomocí nativního klienta VPN a IKEv2.
 services: vpn-gateway
-author: kumudD
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030656"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442798"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Řešení potíží s připojením VPN typu Point-to-Site z Mac OS X klientů VPN
 
@@ -25,7 +25,7 @@ Tento článek vám pomůže vyřešit problémy s připojením typu Point-to-Si
 * Verze operačního systému (10,11 nebo vyšší)
 
 
-## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a>Řešení potíží s ověřováním na základě certifikátů
+## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a> Řešení potíží s ověřováním na základě certifikátů
 1. Ověřte nastavení klienta VPN. Stisknutím příkazu + SHIFT a zadáním "VPN" **Zkontrolujte nastavení klienta** VPN. V seznamu klikněte na položku sítě VPN, kterou je třeba prozkoumat.
 
    ![Ověřování založené na certifikátech IKEv2](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)

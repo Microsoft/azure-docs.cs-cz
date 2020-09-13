@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846339"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440537"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Funkce optimalizace výkonu aktivity kopírování
 
@@ -42,7 +42,7 @@ V zobrazení monitorování nebo výstupu aktivity můžete zobrazit DIUs, kter�
 
 Bude se vám účtovat počet **využitých \* jednotek doby trvání kopírování DIUs \* a cena za diú za hodinu**. [Tady se můžete](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)podívat na aktuální ceny. Pro každý typ předplatného se můžou použít místní měna a samostatná sleva.
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -91,7 +91,7 @@ V následující tabulce je uveden postup paralelního kopírování:
 
 | Scénář kopírování | Chování paralelního kopírování |
 | --- | --- |
-| Mezi úložišti souborů | `parallelCopies`Určuje paralelismus **na úrovni souboru**. Bloky dat v každém souboru se nacházejí pod automatickým a transparentně. Je navržena tak, aby používala nejvhodnější velikost bloku dat pro daný typ úložiště dat k paralelnímu načtení dat. <br/><br/>Skutečný počet paralelních kopií, které aktivita kopírování používá v době běhu, není vyšší než počet souborů, které máte. Pokud je chování kopírování **mergeFile** do jímky souborů, aktivita kopírování nemůže využít paralelismus na úrovni souborů. |
+| Mezi úložišti souborů | `parallelCopies` Určuje paralelismus **na úrovni souboru**. Bloky dat v každém souboru se nacházejí pod automatickým a transparentně. Je navržena tak, aby používala nejvhodnější velikost bloku dat pro daný typ úložiště dat k paralelnímu načtení dat. <br/><br/>Skutečný počet paralelních kopií, které aktivita kopírování používá v době běhu, není vyšší než počet souborů, které máte. Pokud je chování kopírování **mergeFile** do jímky souborů, aktivita kopírování nemůže využít paralelismus na úrovni souborů. |
 | Z úložiště souborů do jiného než souborového úložiště | – Při kopírování dat do Azure SQL Database nebo Azure Cosmos DB závisí výchozí paralelní kopírování i na úrovni jímky (počet DTU/ru).<br>– Při kopírování dat do tabulky Azure je výchozí paralelní kopírování 4. |
 | Z jiného než souborového úložiště do úložiště souborů | – Při kopírování dat z úložiště dat s povolenými možnostmi volby oddílu (včetně [Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source), [spravované instance Azure SQL](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [otevřeného centra SAP](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [tabulky SAP](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)a [Teradata](connector-teradata.md#teradata-as-source)) je výchozí paralelní kopírování 4. Skutečný počet paralelních kopií, které aktivita kopírování používá v době běhu, není vyšší než počet oddílů dat, které máte. Pokud používáte místní Integration Runtime a kopírujete do Azure Blob/ADLS Gen2, poznamenejte si maximální efektivní paralelní kopírování 4 nebo 5 na uzel IR.<br>– Pro jiné scénáře se paralelní kopírování neprojeví. I v případě, že je zadán paralelismu, není použit. |
 | Mezi úložištěmi bez souborů | – Při kopírování dat do Azure SQL Database nebo Azure Cosmos DB závisí výchozí paralelní kopírování i na úrovni jímky (počet DTU/ru).<br/>– Při kopírování dat z úložiště dat s povolenými možnostmi volby oddílu (včetně [Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source), [spravované instance Azure SQL](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [otevřeného centra SAP](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [tabulky SAP](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)a [Teradata](connector-teradata.md#teradata-as-source)) je výchozí paralelní kopírování 4.<br>– Při kopírování dat do tabulky Azure je výchozí paralelní kopírování 4. |
@@ -100,7 +100,7 @@ Pro řízení zatížení počítačů, které hostují vaše úložiště dat n
 
 Když zadáte hodnotu `parallelCopies` vlastnosti, požádejte o navýšení zatížení pro úložiště dat zdroje a jímky v účtu. Zvažte také zvýšení zatížení v místním prostředí Integration runtime, pokud je aktivita kopírování oprávněná. Toto zvýšení zatížení nastane hlavně v případě, že máte více aktivit nebo souběžných spuštění stejných aktivit, které se spouštějí ve stejném úložišti dat. Pokud si všimnete, že úložiště dat nebo místní prostředí Integration runtime je zahlcené zatížením, snižte `parallelCopies` hodnotu pro uvolnění zátěže.
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -126,7 +126,7 @@ Když zadáte hodnotu `parallelCopies` vlastnosti, požádejte o navýšení zat
 
 Když kopírujete data ze zdrojového úložiště dat do úložiště dat jímky, můžete použít úložiště objektů BLOB jako dočasné pracovní úložiště. Příprava je užitečná hlavně v následujících případech:
 
-- **Chcete ingestovat data z různých úložišť dat do služby Azure synapse Analytics (dříve SQL Data Warehouse) prostřednictvím základu.** Azure synapse Analytics používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do Azure synapse Analytics. Zdrojová data musí být ve službě BLOB Storage nebo Azure Data Lake Store a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů BLOB nebo z Azure Data Lake Store můžete aktivovat kopírování dat přes dočasné pracovní úložiště objektů BLOB. V takovém případě Azure Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak používá základnu k efektivnímu načítání dat do služby Azure synapse Analytics. Další informace najdete v tématu [použití základny k načtení dat do Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **Chcete ingestovat data z různých úložišť dat do služby Azure synapse Analytics (dříve SQL Data Warehouse) prostřednictvím základu.** Azure synapse Analytics používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do Azure synapse Analytics. Zdrojová data musí být ve službě BLOB Storage nebo Azure Data Lake Store a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů BLOB nebo z Azure Data Lake Store můžete aktivovat kopírování dat přes dočasné pracovní úložiště objektů BLOB. V takovém případě Azure Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak používá základnu k efektivnímu načítání dat do služby Azure synapse Analytics. Další informace najdete v tématu [použití základny k načtení dat do služby Azure synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
 - **V některých případech trvá i v průběhu provádění hybridního přesunu dat (tedy kopírování z místního úložiště dat do cloudového úložiště dat) prostřednictvím pomalého síťového připojení.** Za účelem zvýšení výkonu můžete pomocí připravené kopie komprimovat data v místním prostředí, aby při přesunu dat do pracovního úložiště dat v cloudu trvalo méně času. Pak můžete data v pracovním úložišti dekomprimovat ještě předtím, než se načtou do cílového úložiště dat.
 - **Nechcete v bráně firewall otevírat jiné porty než port 80 a port 443 kvůli podnikovým zásadám IT.** Když například kopírujete data z místního úložiště dat do jímky Azure SQL Database nebo do jímky služby Azure synapse Analytics, musíte aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři může připravené kopírování využít výhod místního prostředí Integration runtime k prvnímu kopírování dat do pracovní instance úložiště objektů BLOB přes protokol HTTP nebo HTTPS na portu 443. Pak může data načíst do SQL Database nebo Azure synapse Analytics z přípravy úložiště objektů BLOB. V tomto toku nemusíte povolit port 1433.
 
@@ -144,12 +144,12 @@ V současné době nemůžete kopírovat data mezi dvěma datovými úložišti,
 
 Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování, abyste určili, jestli chcete data připravit v úložišti objektů blob, než je načtete do cílového úložiště dat. Při nastavování **enableStaging** na `TRUE` Zadejte další vlastnosti uvedené v následující tabulce. Je také potřeba vytvořit sdílenou službu Azure Storage nebo sdílený přístupový podpis s úložištěm pro přípravu, pokud ji ještě nemáte.
 
-| Vlastnost | Popis | Výchozí hodnota | Povinné |
+| Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
-| enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Ne |Ne |
+| enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Nepravda |No |
 | linkedServiceName |Zadejte název propojené služby [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem se nedá použít k načtení dat do služby Azure synapse Analytics prostřednictvím základu. Můžete ho použít ve všech ostatních scénářích. |– |Ano, pokud je **enableStaging** nastavené na true |
-| program |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |– |Ne |
-| Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Ne |Ne |
+| program |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |– |No |
+| Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Nepravda |No |
 
 >[!NOTE]
 > Pokud použijete připravené kopírování s povolenou kompresí, instanční objekt nebo ověřování MSI pro propojenou službu pracovního objektu BLOB se nepodporuje.

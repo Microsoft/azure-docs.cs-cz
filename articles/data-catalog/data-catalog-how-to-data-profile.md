@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 0d0f3a45842638915947f5df04e06e2c81a7f5f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081181"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442067"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Jak zdroje dat profilů dat v Azure Data Catalog
 
@@ -29,7 +29,7 @@ Profilace dat ověřuje data ve zdroji dat, který se zaregistruje, a shromažď
 
 Profilace dat podporují následující zdroje dat:
 
-* SQL Server (včetně tabulek a zobrazení Azure SQL DB a Azure SQL Data Warehouse)
+* SQL Server (včetně tabulek a zobrazení Azure SQL DB a Azure synapse Analytics)
 * Tabulky a zobrazení Oracle
 * Tabulky a zobrazení Teradata
 * Tabulky Hive

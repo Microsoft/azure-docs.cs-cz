@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: Konfigurace upozornění na události protokolu diagnostických prostředků'
 description: Naučte se, jak nastavit výstrahy na základě událostí protokolu prostředků z Azure VPN Gateway pomocí Azure Monitor Log Analytics.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/12/2019
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: f8c688adda3924d0cea3c9b57d2d24ed3b3b1e68
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e2451796cb99f57501ed74aba1dc7a3077b51881
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033169"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441608"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Nastavení upozornění na události protokolu prostředků z VPN Gateway
 

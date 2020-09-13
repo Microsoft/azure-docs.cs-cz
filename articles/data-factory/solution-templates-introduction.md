@@ -11,12 +11,12 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 515de0fed987f412adb060a3ba58978f0400ae0d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628942"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441948"
 ---
 # <a name="templates"></a>Šablony
 
@@ -56,7 +56,7 @@ Data Factory používá šablony Azure Resource Manager pro ukládání šablon 
 
     -   [Rozdílová kopie z databáze](solution-template-delta-copy-with-control-table.md)
 
-    -   Kopírovat z \<source\> do\<destination\>
+    -   Kopírovat z \<source\> do \<destination\>
 
         -   [Z Amazon S3 do Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
@@ -68,9 +68,9 @@ Data Factory používá šablony Azure Resource Manager pro ukládání šablon 
 
         -   Z SQL Server místně do Azure SQL Database
 
-        -   Z SQL Server místně do Azure SQL Data Warehouse
+        -   Z SQL Server v místním prostředí do služby Azure synapse Analytics (dřív SQL Data Warehouse)
 
-        -   Od Oracle místně po Azure SQL Data Warehouse
+        -   Od Oracle místně po Azure synapse Analytics (dříve SQL Data Warehouse)
 
 -   Šablony SSIS
 

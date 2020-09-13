@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201629"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441217"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Osvědčené postupy načítání dat pomocí synapse fondu SQL
 
@@ -175,6 +175,6 @@ V příslušných externích zdrojích dat se nevyžadují žádné další změ
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o příkazu COPY nebo o základu při navrhování procesu extrakce, načítání a transformace (ELT) najdete v tématu [design ELT for SQL Data Warehouse](design-elt-data-loading.md).
+- Další informace o příkazu COPY nebo o základu při navrhování procesu extrakce, načítání a transformace (ELT) najdete v tématu [design ELT for Azure synapse Analytics](design-elt-data-loading.md).
 - Pro kurz načítání [použijte příkaz Copy k načtení dat z úložiště objektů BLOB v Azure do synapse SQL](load-data-from-azure-blob-storage-using-polybase.md).
 - Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md).

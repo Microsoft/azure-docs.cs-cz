@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187276"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440503"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy ke službě Azure Data Factory
 
@@ -22,7 +22,7 @@ ms.locfileid: "84187276"
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Data Factory.  
 
-## <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory? 
+## <a name="what-is-azure-data-factory"></a>Co je Azure Data Factory? 
 Data Factory je plně spravovaná cloudová služba ETL Integration data, která automatizuje přesun a transformaci dat. Podobně jako továrna, která spouští vybavení pro transformaci surovin na dokončené zboží, Azure Data Factory orchestruje existující služby, které shromažďují nezpracované údaje a transformují je na informace připravené k použití. 
 
 Pomocí Azure Data Factory můžete vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními a cloudovým úložištěm dat. A můžete zpracovávat a transformovat data pomocí toků dat. ADF také podporuje externí výpočetní moduly pro ručně kódované transformace pomocí výpočetních služeb, jako je Azure HDInsight, Azure Databricks a prostředí Integration runtime služba SSIS (SQL Server Integration Services) (SSIS). 
@@ -110,7 +110,7 @@ Neexistuje žádné pevné omezení počtu instancí prostředí Integration run
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory obsahuje čtyři klíčové komponenty, které společně fungují jako platforma, na které můžete vytvářet pracovní postupy řízené daty s kroky pro přesun a transformaci dat.
 
 ### <a name="pipelines"></a>Pipelines
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádí pracovní jednotku. Aktivity v kanálu společně provádí úlohy. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustí dotaz na podregistr v clusteru HDInsight, aby data mohla rozdělit. Výhodou je, že pomocí kanálu můžete spravovat aktivity jako sadu, aniž byste museli spravovat jednotlivé aktivity jednotlivě. Můžete zřetězit aktivity v kanálu, abyste je mohli postupně provozovat, nebo je můžete provozovat samostatně, paralelně.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádí pracovní jednotku. Aktivity v kanálu společně provádějí úlohu. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustí dotaz na podregistr v clusteru HDInsight, aby data mohla rozdělit. Výhodou je, že pomocí kanálu můžete spravovat aktivity jako sadu, aniž byste museli spravovat jednotlivé aktivity jednotlivě. Můžete zřetězit aktivity v kanálu, abyste je mohli postupně provozovat, nebo je můžete provozovat samostatně, paralelně.
 
 ### <a name="data-flows"></a>Toky dat
 Toky dat jsou objekty, které sestavíte vizuálně v Data Factory které transformují data ve velkém měřítku na back-endové služby Spark. Nemusíte porozumět programování nebo interním seznámení s Sparkem. Stačí navrhnout svůj záměr transformace dat pomocí grafů (mapování) nebo tabulek (tahání).
@@ -171,13 +171,13 @@ K naplánování kanálu můžete použít aktivační událost plánovače nebo
 Ano, parametry jsou první třídou, koncept nejvyšší úrovně v Data Factory. Můžete definovat parametry na úrovni kanálu a předat argumenty při spuštění kanálu na vyžádání nebo pomocí triggeru.  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Můžu definovat výchozí hodnoty pro parametry kanálu? 
-Ano. Můžete definovat výchozí hodnoty pro parametry v kanálech. 
+Yes. Můžete definovat výchozí hodnoty pro parametry v kanálech. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Může aktivita v kanálu spotřebovat argumenty, které se předávají do spuštění kanálu? 
-Ano. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spouštěna s `@parameter` konstrukcí. 
+Yes. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spouštěna s `@parameter` konstrukcí. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Je možné vlastnost výstup aktivity spotřebovat v jiné aktivitě? 
-Ano. Výstup aktivity lze spotřebovat v následné aktivitě s `@activity` konstrukcí.
+Yes. Výstup aktivity lze spotřebovat v následné aktivitě s `@activity` konstrukcí.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Návody řádně zpracovat hodnoty null ve výstupu aktivity? 
 `@coalesce`Konstrukce ve výrazech slouží k řádnému zpracování hodnot null. 
@@ -190,7 +190,7 @@ Když Microsoft poskytuje pomoc nebo řešení potíží s toky dat, zadejte pro
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Návody přístup k datům pomocí dalších typů datových sad 90 v Data Factory?
 
-Funkce mapování toku dat v současné době umožňuje Azure SQL Database, Azure SQL Data Warehouse, oddělený text soubory ze služby Azure Blob Storage nebo Azure Data Lake Storage Gen2 a Parquet soubory ze služby Blob Storage nebo nativně Data Lake Storage Gen2 pro zdroj a jímku. 
+Funkce mapování toku dat v současné době umožňuje Azure SQL Database, Azure synapse Analytics (dřív SQL Data Warehouse), soubory s oddělenými texty z Azure Blob Storage nebo Azure Data Lake Storage Gen2 a Parquet soubory ze služby Blob Storage nebo nativně Data Lake Storage Gen2 pro zdroj a jímku. 
 
 Použijte aktivitu kopírování pro přípravu dat z jiných konektorů a potom spusťte aktivitu toku dat pro transformaci dat po jejím přípravě. Například váš kanál se nejdřív nakopíruje do úložiště objektů BLOB a pak aktivita toku dat použije ve zdroji datovou sadu k transformaci těchto dat.
 
@@ -210,17 +210,17 @@ Tok dat tahání se v tuto chvíli podporuje v datových továrnách vytvořený
 * Austrálie – východ
 * Střední Kanada
 * Indie – střed
-* USA – východ
+* East US
 * USA – východ 2
-* Japonsko – východ
+* Japan East
 * Severní Evropa
 * Jihovýchodní Asie
-* USA – středojih
+* Středojižní USA
 * Spojené království – jih
 * USA – středozápad
-* Západní Evropa
+* West Europe
 * USA – západ
-* USA – západ 2
+* Západní USA 2
 
 ### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Jaká jsou omezení a omezení pomocí toku dat tahání?
 
@@ -260,7 +260,7 @@ Tok dat tahání podporuje v SQL následující datové typy. Při použití dat
 * celé číslo
 * int
 * bit
-* Boolean
+* boolean
 * smallint
 * tinyint
 * bigint

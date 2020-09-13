@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416459"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442833"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Použití Azure Data Factory k migraci dat z místního serveru Netezza do Azure 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory poskytuje výkonný, robustní a nákladově efektivní mechanismus pro migraci dat ve velkém měřítku z místního Netezza serveru do svého účtu služby Azure Storage nebo Azure SQL Data Warehouse databáze. 
+Azure Data Factory poskytuje výkonný, robustní a nákladově efektivní mechanismus pro migraci dat se škálováním z místního serveru Netezza k vašemu účtu služby Azure Storage nebo k databázi Azure synapse Analytics (dřív SQL Data Warehouse). 
 
 Tento článek poskytuje následující informace pro inženýry dat a vývojáře:
 
@@ -57,7 +57,7 @@ Při Azure Data Factory aktivity kopírování se při kopírování dat mezi zd
 
 ## <a name="network-security"></a>Zabezpečení sítě 
 
-Ve výchozím nastavení Azure Data Factory přenáší data z místního serveru Netezza do účtu služby Azure Storage nebo do databáze Azure SQL Data Warehouse pomocí šifrovaného připojení přes protokol HTTPS (Hypertext Transfer Protocol Secure). Protokol HTTPS zajišťuje šifrování dat při přenosu a znemožňuje odposlouchávání a útoky prostředníkem.
+Ve výchozím nastavení Azure Data Factory přenáší data z místního serveru Netezza do účtu služby Azure Storage nebo do databáze Azure synapse Analytics pomocí šifrovaného připojení přes protokol HTTPS (Hypertext Transfer Protocol Secure). Protokol HTTPS zajišťuje šifrování dat při přenosu a znemožňuje odposlouchávání a útoky prostředníkem.
 
 Případně, pokud nechcete, aby se data přenesla prostřednictvím veřejného Internetu, můžete přispět k vyššímu zabezpečení prostřednictvím přenosu dat prostřednictvím privátního partnerského propojení prostřednictvím trasy Azure Express. 
 
@@ -109,7 +109,7 @@ Předchozí diagram lze interpretovat následujícím způsobem:
    
    - Můžete také použít [instanční objekt](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) nebo [klíč účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication). 
 
-- Ověření pro Azure SQL Data Warehouse:
+- Ověření ve službě Azure synapse Analytics:
 
    - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
    
@@ -131,7 +131,7 @@ Pro větší tabulky (tj. tabulky se svazkem 100 GB nebo vyšší nebo, které *
 
 Pokud dojde k selhání jakékoli úlohy kopírování z důvodu přechodného problému sítě nebo úložiště dat, můžete znovu spustit úlohu, která se nezdařila, a znovu načíst konkrétní oddíl z tabulky. Jiné úlohy kopírování, které načítají jiné oddíly, nejsou ovlivněny.
 
-Když nahráváte data do databáze Azure SQL Data Warehouse, doporučujeme, abyste v rámci úlohy kopírování v úložišti objektů BLOB v Azure jako fázování povolili základ.
+Při načítání dat do databáze Azure synapse Analytics doporučujeme, abyste v rámci úlohy kopírování ve službě Azure Blob Storage povolili základ databáze jako pracovní.
 
 ### <a name="migrate-delta-data"></a>Migrace rozdílových dat 
 
@@ -162,7 +162,7 @@ Když narazíte na chyby omezování, jak je uvedeno v Azure Data Factory aktivi
 
 ### <a name="estimate-your-pricing"></a>Odhad ceny 
 
-Vezměte v úvahu následující kanál, který je vytvořený k migraci dat z místního serveru Netezza do databáze Azure SQL Data Warehouse:
+Vezměte v úvahu následující kanál, který je vytvořený k migraci dat z místního serveru Netezza do databáze Azure synapse Analytics:
 
 ![Cenový kanál](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
@@ -196,7 +196,7 @@ Další informace najdete v následujících článcích a příručkách:
 - [Konektor ODBC](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Konektor služby Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Konektor Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Konektor Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Konektor Azure synapse Analytics](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [Průvodce laděním výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Vytvoření a konfigurace místního prostředí Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [Vysoce hostované prostředí Integration runtime – HA a škálovatelnost](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)

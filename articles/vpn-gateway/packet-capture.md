@@ -1,36 +1,36 @@
 ---
-title: 'Azure VPN Gateway: Konfigurace zachycení paketů'
-description: Přečtěte si o funkcích zachytávání paketů, které můžete používat na branách VPN.
+title: 'Azure VPN Gateway: Konfigurace zachytávání paketů'
+description: Přečtěte si o funkcích zachytávání paketů, které můžete použít v bránách VPN, abyste mohli zúžit příčinu problému.
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/15/2019
+ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3ba3046367ceece6bf0ddf157451025c79977324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077211"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441591"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>Konfigurace zachycení paketů pro brány VPN
+# <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurace zachytávání paketů pro brány VPN
 
-Problémy související s připojením a výkonem jsou často složité a využívají velký čas a úsilí jenom k zúžení příčiny problému. Schopnost zachytávání paketů významně pomáhá snižovat čas při zúžení rozsahu problému na určité části sítě, třeba na tom, jestli je problém na straně zákazníka sítě, na straně Azure v síti nebo někde mezi. Po zúžení problému je mnohem efektivnější ladit a provádět nápravné akce.
+Problémy související s připojením a výkonem jsou často složité. Může trvat poměrně dlouhou dobu a úsilí, abyste mohli zúžit příčinu problému. Zachytávání paketů vám může přispět k zúžení rozsahu problému na určité části sítě. Může vám to usnadnit určení toho, jestli se problém nachází na straně zákazníka sítě, na straně Azure v síti nebo někde mezi. Po zúžení problému je efektivnější ladit a provádět nápravné akce.
 
-K dispozici jsou některé běžně dostupné nástroje pro zachytávání paketů. Získání relevantních zachycení paketů pomocí těchto nástrojů může být náročné, zejména při práci s vysokými scénáři provozu. Funkce filtrování, které poskytuje zachytávání paketů brány VPN, se staly významnými odlišnostmi. Kromě běžně dostupných nástrojů pro zachytávání paketů můžete použít také zachytávání paketů brány VPN.
+K dispozici jsou některé běžně dostupné nástroje pro zachytávání paketů. Získání relevantních zachycení paketů pomocí těchto nástrojů může být náročné, zejména ve scénářích s vysokým objemem provozu. Možnosti filtrování, které poskytuje zachycení paketů služby Azure VPN Gateway, jsou zásadním rozdílem. Můžete použít VPN Gateway zachytávání paketů společně s běžně dostupnými nástroji pro zachytávání paketů.
 
-## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Možnosti filtrování zachytávání paketů brány VPN
+## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Možnosti filtrování zachytávání paketů VPN Gateway
 
-Zachytávání paketů služby VPN Gateway můžete v bráně nebo konkrétním připojení spustit v závislosti na potřebách zákazníka. Zachytávání paketů můžete také spouštět na více tunelech současně. Můžete zachytit provoz s jedním nebo obousměrným směrováním, provoz IKE a ESP a vnitřní pakety spolu s filtrováním v bráně VPN.
+V závislosti na vašich potřebách můžete spustit zachytávání paketů VPN Gateway pro bránu nebo konkrétní připojení. Zachytávání paketů můžete také spustit na více tunelech současně. Můžete zachytit jednosměrná nebo obousměrná provozu, provoz IKE a ESP a vnitřní pakety spolu s filtrováním v bráně VPN.
 
-Při izolaci potíží s vysokým objemem přenosů je užitečné použít filtr s pěti řazenými kolekcemi členů (zdrojová podsíť, cílová podsíť, zdrojový port, cílový port, protokol) a příznaky TCP (SYN, ACK, FIN, URG, PSH, RST).
+Při izolaci potíží s vysokým objemem dat je užitečné použít filtr s pěti řazenými kolekcemi členů (zdrojová podsíť, cílová podsíť, zdrojový port, cílový port, protokol) a příznaky TCP (SYN, ACK, FIN, URG, PSH, RST).
 
-Viz příklad schématu JSON a JSON s vysvětlením jednotlivých vlastností. Všimněte si také některých omezení při spuštění zachycení paketů:
-- Ve schématu se filtr zobrazuje jako pole, ale v současné době lze použít pouze jeden filtr.
-- Více zachycení paketů v rámci brány se nepovoluje.
-- V jednom okamžiku není povoleno více zachycení paketů na jednom připojení. Můžete spustit zachycení paketů v různých připojeních současně.
-- Pro každou bránu je možné souběžně spustit maximálně pět zachycení paketů. Tato zachycení paketů můžou obsahovat kombinaci zachycení paketů v rámci brány nebo zachytávání paketů pro připojení.
+Následující příklady JSON a schématu JSON poskytují vysvětlení jednotlivých vlastností. Tady jsou některá omezení, která je potřeba vzít v úvahu při spuštění zachycení paketů:
+- V níže uvedeném schématu je filtr pole, ale v současné době lze použít pouze jeden filtr.
+- Nemůžete současně spustit více zachycení paketů v rámci brány.
+- V jednom připojení nemůžete současně spustit více zachycení paketů. Můžete spustit více zachycení paketů v různých připojeních současně.
+- Pro každou bránu je možné souběžně spustit maximálně pět zachycení paketů. Těmito zachyceními paketů může být kombinace zachycení paketů v rámci brány a zachytávání paketů vázané na připojení.
 
 ### <a name="example-json"></a>Ukázkový kód JSON
 ```JSON-interactive
@@ -316,9 +316,9 @@ Viz příklad schématu JSON a JSON s vysvětlením jednotlivých vlastností. V
 }
 ```
 
-## <a name="setup-packet-capture-using-powershell"></a>Nastavení zachytávání paketů pomocí prostředí PowerShell
+## <a name="set-up-packet-capture-by-using-powershell"></a>Nastavení zachycení paketů pomocí prostředí PowerShell
 
-Pokud chcete spustit a zastavit zachytávání paketů, podívejte se na příklady níže pro příkazy prostředí PowerShell. Další informace o možnostech parametrů najdete v tomto [dokumentu](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)PowerShellu.
+Následující příklady znázorňují příkazy prostředí PowerShell, které spouští a zakazují zachytávání paketů. Další informace o možnostech parametrů najdete v [tomto dokumentu PowerShellu](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Spustit zachytávání paketů pro bránu sítě VPN
 
@@ -326,7 +326,7 @@ Pokud chcete spustit a zastavit zachytávání paketů, podívejte se na příkl
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Volitelný parametr **-fulltextových** lze použít k použití filtru.
+Pomocí volitelného parametru můžete `-FilterData` použít filtr.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Zastavení zachytávání paketů pro bránu sítě VPN
 
@@ -340,7 +340,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Volitelný parametr **-fulltextových** lze použít k použití filtru.
+Pomocí volitelného parametru můžete `-FilterData` použít filtr.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Zastavit zachytávání paketů u připojení brány sítě VPN
 
@@ -350,10 +350,11 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 ## <a name="key-considerations"></a>Klíčové aspekty
 
-- Spuštění zachycení paketů může mít vliv na výkon. Nezapomeňte zachytávání paketů zastavit, pokud není potřeba.
-- Navrhovaná minimální doba zachytávání paketů je 600 sekund. Pokud má kratší doba trvání zachytávání paketů, nesmí doplňovat kompletní data kvůli synchronizaci problémů mezi několika součástmi v cestě.
+- Spuštění zachytávání paketů může mít vliv na výkon. Nezapomeňte zachytávání paketů zastavit, pokud ho nepotřebujete.
+- Navrhovaná minimální doba zachytávání paketů je 600 sekund. Kvůli problémům s synchronizací mezi několika součástmi na cestě nemusí být zachytávání paketů poskytovat úplná data.
 - Soubory dat zachycení paketů se generují ve formátu PCAP. K otevření souborů PCAP použijte Wireshark nebo jiné běžně dostupné aplikace.
+- Zachytávání paketů nejsou podporovány u bran založených na zásadách.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o VPN Gateway najdete v tématu [o VPN Gateway](vpn-gateway-about-vpngateways.md)
+Další informace o VPN Gateway najdete v tématu [co je VPN Gateway?](vpn-gateway-about-vpngateways.md).

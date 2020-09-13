@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978998"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438938"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – protokol změn rozhraní .NET API
 > [!NOTE]
@@ -75,7 +75,7 @@ Přidání funkcí:
 ### <a name="feature-additions"></a>Přidání funkcí
 * Byl přidán nový typ StorageFormat typu [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) ke kopírování souborů ve formátu optimalizované řádky (Orc).
 * Přidejte vlastnosti [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) a PolyBaseSettings do SqlDWSink.
-  * Umožňuje použití základny ke kopírování dat do SQL Data Warehouse.
+  * Umožňuje použití základny ke kopírování dat do služby Azure synapse Analytics (dříve SQL Data Warehouse).
 
 ## <a name="version-461"></a>Verze 4.6.1
 ### <a name="bug-fixes"></a>Opravy chyb
@@ -154,7 +154,7 @@ Následující třídy byly přejmenovány. Nové názvy byly původní názvy t
 | Starý název | Nové jméno |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| Tabulka |[Integrován](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| Tabulka |[Datová sada](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
@@ -163,7 +163,7 @@ Následující třídy byly přejmenovány. Nové názvy byly původní názvy t
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* Metody **seznamu** vrátí aktuálně stránkované výsledky. Pokud odpověď obsahuje neprázdnou vlastnost **NextLink** , musí klientská aplikace pokračovat v načítání další stránky, dokud nebudou vráceny všechny stránky.  Zde naleznete příklad:
+* Metody **seznamu** vrátí aktuálně stránkované výsledky. Pokud odpověď obsahuje neprázdnou vlastnost **NextLink** , musí klientská aplikace pokračovat v načítání další stránky, dokud nebudou vráceny všechny stránky.  Tady je příklad:
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
@@ -181,5 +181,5 @@ Následující třídy byly přejmenovány. Nové názvy byly původní názvy t
 * API kanálu **seznamu** vrátí pouze souhrn kanálu namísto úplných podrobností. Například aktivity v souhrnu kanálu obsahují pouze název a typ.
 
 ### <a name="feature-additions"></a>Přidání funkcí
-* Třída [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) podporuje dvě nové vlastnosti, **SliceIdentifierColumnName** a **SqlWriterCleanupScript**, aby podporovaly idempotentní kopírování do Azure SQL Data Warehouse. Podrobnosti o těchto vlastnostech najdete v článku o [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) .
-* Nyní podporujeme provoz uloženou proceduru pro Azure SQL Database a zdroje Azure SQL Data Warehouse v rámci aktivity kopírování. Třídy [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) a [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) mají následující vlastnosti: **SqlReaderStoredProcedureName** a **StoredProcedureParameters**. Podrobnosti o těchto vlastnostech najdete v článcích [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) a [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) na Azure.com.  
+* Třída [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) podporuje dvě nové vlastnosti, **SliceIdentifierColumnName** a **SqlWriterCleanupScript**, aby podporovaly Idempotentní kopírování do Azure Azure synapse Analytics. Podrobnosti o těchto vlastnostech najdete v článku o [službě Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) .
+* Nyní podporujeme provoz uloženou proceduru pro Azure SQL Database a zdroje analýzy Azure synapse jako součást aktivity kopírování. Třídy [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) a [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) mají následující vlastnosti: **SqlReaderStoredProcedureName** a **StoredProcedureParameters**. Podrobnosti o těchto vlastnostech najdete v článcích [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) a [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) na Azure.com.  

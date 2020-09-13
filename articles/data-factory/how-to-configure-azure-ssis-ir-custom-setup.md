@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/11/2020
-ms.openlocfilehash: 3bc8458aa009920f183b076d12185295ef294e07
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186076"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440571"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
@@ -48,7 +48,7 @@ Následující omezení platí pouze pro standardní vlastní nastavení:
 
 - Ovladač IBM iSeries Access ODBC není podporován na Azure-SSIS IR. Při vlastní instalaci se může zobrazit chyba instalace. Pokud to uděláte, požádejte o pomoc podporu společnosti IBM.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -147,9 +147,9 @@ Pokud vyberete možnost **instalovat licencovaný typ součásti** pro aplikaci 
 
    * Pokud vyberete komponentu **oh22's SQLPhonetics.NET** , můžete nainstalovat komponentu [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) Data Quality/Matching z oh22 na svém Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **1.0.45**.
 
-   * Pokud vyberete komponentu **KingswaySoft Integration Toolkit pro SSIS** , můžete nainstalovat konektory sady [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) pro aplikace CRM/ERP/marketing a spolupráci, jako je například Microsoft Dynamics/SharePoint/Project Server, marketingový Cloud Oracle nebo Salesforce, atd. z KingswaySoft na Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **2019,2**.
+   * Pokud vyberete komponentu **KingswaySoft Integration Toolkit pro SSIS** , můžete nainstalovat konektory sady [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) pro aplikace CRM/ERP/marketing a spolupráci, jako je například Microsoft Dynamics/SharePoint/Project Server, marketingový Cloud Oracle nebo Salesforce, atd. z KingswaySoft na Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **2020,1**.
 
-   * Pokud vyberete komponentu **SSIS produktivního balíku KingswaySoft** , můžete nainstalovat sadu funkcí pro [SSIS produktivní](https://www.kingswaysoft.com/products/ssis-productivity-pack) sadu komponent z KingswaySoft na své Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **10,0**.
+   * Pokud vyberete komponentu **SSIS produktivního balíku KingswaySoft** , můžete nainstalovat sadu funkcí pro [SSIS produktivní](https://www.kingswaysoft.com/products/ssis-productivity-pack) sadu komponent z KingswaySoft na své Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **20,1**.
 
    * Pokud vyberete **Xtrahovat software Theobald** , můžete nainstalovat [xtrahovat je](https://theobald-software.com/en/xtract-is/) sada konektorů pro systémy SAP (ERP, s/4HANA, černobílý) od Theobald softwaru na vašich Azure-SSIS IR. Provedete to tak, že přetáhnete & přetáhněte nebo nahrajte soubor licence produktu, který jste si z nich koupili, do vstupního pole **soubor s licencí** . Aktuální integrovaná verze je **6.1.1.3**.
 
@@ -325,7 +325,7 @@ Pokud chcete zobrazit a znovu použít některé ukázky standardních vlastníc
 
       * Složka *Teradata* , která obsahuje skript vlastního nastavení (*Main. cmd*), přidružený soubor (*install. cmd*) a instalační balíčky (*. msi*). Tyto soubory instalují konektory Teradata, rozhraní API Teradata Parallel Transporter (TPT) a ovladač ODBC na každém uzlu vaší Azure-SSIS IR Enterprise Edition. Tato instalace vám umožní připojit se k serveru Teradata pomocí Správce připojení Teradata, zdroj a cíl. 
       
-        Nejprve [si stáhněte soubor zip Tools a Utilities 15. x](http://partnerintelligence.teradata.com) (například *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*) a pak ho nahrajte společně s dříve uvedenými soubory *. cmd* a *. msi* do kontejneru.
+        Nejprve [si stáhněte soubor zip Tools a Utilities 15. x](http://partnerintelligence.teradata.com) (například  *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*) a pak ho nahrajte společně s dříve uvedenými soubory *. cmd* a *. msi* do kontejneru.
 
       * Složka *TLS 1,2* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro použití silné kryptografie a bezpečnějšího síťového protokolu (TLS 1,2) na každém uzlu vašeho Azure-SSIS IR. Skript také zakáže starší verze protokolu SSL/TLS.
 

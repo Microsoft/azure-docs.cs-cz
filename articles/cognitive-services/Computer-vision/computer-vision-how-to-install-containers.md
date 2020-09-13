@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13d483507092892187bc13dd23bfa51ed516c890
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545637"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441149"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Instalace a spuštění kontejnerů pro čtení (Preview)
 
@@ -55,6 +55,7 @@ Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) pro vy
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
+
 > [!WARNING]
 > K podpoře AVX2 se *vyžaduje* hostitelský počítač. *Kontejner nebude* správně fungovat bez podpory AVX2.
 
@@ -68,14 +69,14 @@ K dispozici jsou image kontejneru pro čtení.
 
 | Kontejner | Název Container Registry/úložiště/image |
 |-----------|------------|
-| Číst | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Číst | `containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0` |
 
 Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu Stáhněte image kontejneru.
 
 ### <a name="docker-pull-for-the-read-container"></a>Pull Docker pro kontejner pro čtení
 
 ```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
 ```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -186,13 +187,16 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
 }
 ```
 
+> [!IMPORTANT]
+> Pokud nasadíte více kontejnerů pro čtení za nástroj pro vyrovnávání zatížení, například v části Docker Compose nebo Kubernetes, musíte mít externí mezipaměť. Vzhledem k tomu, že kontejner zpracování a kontejner požadavků GET nemusí být stejné, externí mezipaměť ukládá výsledky a sdílí je napříč kontejnery. Podrobnosti o nastavení mezipaměti najdete v tématu [konfigurace kontejnerů docker počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+
 ### <a name="synchronous-read"></a>Synchronní čtení
 
 Operaci můžete použít `POST /vision/v2.0/read/core/Analyze` k synchronnímu čtení obrázku. Když se image načte v celém rozsahu, pak rozhraní API pak vrátí odpověď JSON. Jedinou výjimkou je situace, kdy dojde k chybě. Pokud dojde k chybě, vrátí se následující JSON:
 
 ```json
 {
-    status: "Failed"
+    "status": "Failed"
 }
 ```
 
@@ -283,7 +287,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si téma [konfigurace kontejnerů](computer-vision-resource-container-config.md) pro nastavení konfigurace
-* Přečtěte si [počítačové zpracování obrazu přehled](Home.md) , kde najdete další informace o rozpoznávání vytištěného a rukopisného textu.
+* Přečtěte si [počítačové zpracování obrazu přehled](overview.md) , kde najdete další informace o rozpoznávání vytištěného a rukopisného textu.
 * Podrobnosti o metodách podporovaných kontejnerem najdete v [rozhraní API pro počítačové zpracování obrazu](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 * Přečtěte si [Nejčastější dotazy](FAQ.md) k řešení problémů souvisejících se počítačové zpracování obrazu funkcemi.
 * Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)

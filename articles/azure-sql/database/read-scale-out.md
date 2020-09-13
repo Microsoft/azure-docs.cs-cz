@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 06/26/2020
-ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 09/03/2020
+ms.openlocfilehash: 2e7c931d6d99187b4ee7985be19374048c226312
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135893"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442186"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Přesměrování zatížení dotazů jen pro čtení pomocí replik jen pro čtení
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-V rámci [architektury vysoké dostupnosti](high-availability-sla.md#premium-and-business-critical-service-tier-availability)se každá databáze a spravovaná instance v úrovni služeb Premium a pro důležité obchodní informace automaticky zřídí s primární replikou pro čtení a zápis a několika sekundárními replikami jen pro čtení. Sekundární repliky se zřídí se stejnou výpočetní velikostí jako primární replika. Funkce *škálování čtení* na více instancí umožňuje přesměrovat úlohy jen pro čtení pomocí výpočetní kapacity jedné z replik jen pro čtení namísto jejich spuštění v replice pro čtení i zápis. Tímto způsobem mohou být některé úlohy jen pro čtení izolované od úloh pro čtení a zápis a nebudou mít vliv na jejich výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako je například analýza. V úrovních služeb Premium a Pro důležité obchodní informace můžou aplikace získat výhody výkonu na základě této další kapacity bez dalších poplatků.
+V rámci [architektury vysoké dostupnosti](high-availability-sla.md#premium-and-business-critical-service-tier-availability)se každá samostatná databáze, databáze elastického fondu a spravovaná instance v úrovni služeb Premium a pro důležité obchodní informace automaticky zřídí s primární replikou pro čtení a zápis a několika sekundárními replikami jen pro čtení. Sekundární repliky se zřídí se stejnou výpočetní velikostí jako primární replika. Funkce *škálování čtení* na více instancí umožňuje přesměrovat úlohy jen pro čtení pomocí výpočetní kapacity jedné z replik jen pro čtení namísto jejich spuštění v replice pro čtení i zápis. Tímto způsobem mohou být některé úlohy jen pro čtení izolované od úloh pro čtení a zápis a nebudou mít vliv na jejich výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako je například analýza. V úrovních služeb Premium a Pro důležité obchodní informace můžou aplikace získat výhody výkonu na základě této další kapacity bez dalších poplatků.
 
 Funkce *škálování pro čtení* je k dispozici také v úrovni služby škálování na více instancí, pokud je vytvořena alespoň jedna sekundární replika. Pro úlohy vyrovnávání zatížení, které vyžadují více prostředků, než je k dispozici v jedné sekundární replice, lze použít více sekundárních replik.
 
@@ -45,7 +45,7 @@ Pokud chcete zajistit, aby se aplikace připojovala k primární replice bez ohl
 
 ## <a name="data-consistency"></a>Konzistence dat
 
-Jednou z výhod repliky je, že repliky jsou vždycky v konzistentním stavu, ale v různých časových okamžicích může dojít k malé latenci mezi různými replikami. Škálování na více instancí podporuje konzistenci na úrovni relace. To znamená, že pokud se relace jen pro čtení znovu připojí po chybě připojení způsobené nedostupností repliky, může být přesměrována do repliky, která není 100%, s replikou pro čtení i zápis. Podobně platí, že pokud aplikace zapisuje data pomocí relace čtení i zápisu a hned ji načte pomocí relace jen pro čtení, je možné, že nejnovější aktualizace nejsou hned viditelné v replice. Latence je způsobena operací opakování asynchronního transakčního protokolu.
+Jednou z výhod repliky je, že repliky jsou vždycky v konzistentním stavu, ale v různých časových okamžicích může dojít k malé latenci mezi různými replikami. Škálování na více instancí podporuje konzistenci na úrovni relace. To znamená, že pokud se relace jen pro čtení znovu připojí po chybě připojení způsobené nedostupností repliky, může být přesměrována do repliky, která není 100%, s replikou pro čtení i zápis. Podobně platí, že pokud aplikace zapisuje data pomocí relace čtení i zápisu a hned ji přečte pomocí relace jen pro čtení, je možné, že nejnovější aktualizace nejsou v replice hned viditelné. Latence je způsobena operací opakování asynchronního transakčního protokolu.
 
 > [!NOTE]
 > Latence replikace v rámci oblasti je nízká a tato situace je vzácná. Pokud chcete monitorovat latenci replikace, přečtěte si téma [monitorování a řešení potíží s replikou jen pro čtení](#monitoring-and-troubleshooting-read-only-replicas).
@@ -87,11 +87,11 @@ Běžně používaná zobrazení:
 
 | Name | Účel |
 |:---|:---|
-|[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Poskytuje metriky využití prostředků za poslední hodinu, včetně CPU, v/v v/v, a využití zápisu do protokolu vzhledem k omezením cíle služby.|
-|[sys. dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Poskytuje agregované statistiky čekání pro instanci databázového stroje. |
+|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Poskytuje metriky využití prostředků za poslední hodinu, včetně CPU, v/v v/v, a využití zápisu do protokolu vzhledem k omezením cíle služby.|
+|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Poskytuje agregované statistiky čekání pro instanci databázového stroje. |
 |[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Poskytuje stav repliky a statistiku synchronizace. Velikost fronty znovu a rychlost opakování slouží jako indikátory latence dat v replice jen pro čtení. |
 |[sys. dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Poskytuje čítače výkonu databázového stroje.|
-|[sys. dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Poskytuje statistiku spouštění podle dotazů, jako je počet spuštění, použitý čas procesoru atd.|
+|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Poskytuje statistiku spouštění podle dotazů, jako je počet spuštění, použitý čas procesoru atd.|
 |[sys. dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Poskytuje plány dotazů v mezipaměti. |
 |[sys. dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Poskytuje text dotazu pro plán dotazů v mezipaměti.|
 |[sys. dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje dotaz v reálném čase během provádění dotazů.|
@@ -166,7 +166,7 @@ Opětovné povolení horizontálního navýšení kapacity pro čtení v existuj
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Chcete-li vytvořit databázi s vypnutým škálováním pro čtení nebo změnit nastavení pro existující databázi, použijte následující metodu s `readScale` vlastností nastavenou na `Enabled` nebo `Disabled` , jako v následujícím ukázkovém požadavku.
 

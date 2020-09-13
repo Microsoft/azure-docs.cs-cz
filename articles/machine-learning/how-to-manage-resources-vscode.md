@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 07/09/2020
-ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/03/2020
+ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306141"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440114"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Správa prostředků Azure Machine Learning s rozšířením VS Code (Preview)
 
@@ -48,6 +48,7 @@ Další informace najdete v tématu [pracovní prostory](concept-workspace.md).
 
 Mezi alternativní metody vytvoření pracovního prostoru patří:
 
+- Otevřete zobrazení palety příkazů **> paleta příkazů** a zadejte text do příkazového řádku **Azure ml: vytvořit pracovní prostor**.
 - Klikněte na `+` ikonu v horní části zobrazení Azure Machine Learning.
 - Po zobrazení výzvy k výběru pracovního prostoru během zřizování jiných prostředků vytvořte nový pracovní prostor.
 
@@ -243,6 +244,39 @@ Po dokončení běhu budete možná chtít stáhnout protokoly a prostředky, ja
 
 V rozšíření můžete zkontrolovat metadata, jako je například konfigurace spuštění používaná pro běh a také podrobnosti o spuštění.
 
+## <a name="compute-instances"></a>Instance služby Compute
+
+Další informace najdete v tématu [výpočetní instance](concept-compute-instance.md).
+
+### <a name="create-compute-instance"></a>Vytvořit výpočetní instanci
+
+1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
+1. Rozbalte uzel pracovního prostoru, ve kterém chcete vytvořit výpočetní instanci.
+1. Klikněte pravým tlačítkem na uzel **výpočetní instance** a vyberte **vytvořit výpočetní instanci**.
+1. Na příkazovém řádku:
+    1. Zadejte název instance služby Compute.
+    1. V seznamu vyberte velikost virtuálního počítače.
+    1. Vyberte, jestli chcete povolit přístup přes SSH.
+        1. Pokud povolíte přístup přes SSH, budete muset zadat také veřejný klíč SSH nebo soubor obsahující klíč. Další informace najdete v příručce k [vytváření a používání klíčů ssh v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+
+### <a name="stop-or-restart-compute-instance"></a>Zastavení nebo restartování výpočetní instance
+
+1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
+1. Rozbalte uzel **výpočetní instance** do svého pracovního prostoru.
+1. Pravým tlačítkem myši klikněte na výpočetní instanci, kterou chcete zastavit nebo restartovat, a vyberte **zastavit výpočetní instanci** nebo **restartovat výpočetní instanci** v uvedeném pořadí.
+
+### <a name="view-compute-instance-configuration"></a>Zobrazit konfiguraci výpočetní instance
+
+1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
+1. Rozbalte uzel **výpočetní instance** do svého pracovního prostoru.
+1. Klikněte pravým tlačítkem na výpočetní instanci, kterou chcete zkontrolovat, a vyberte **Zobrazit vlastnosti instance COMPUTE**.
+
+### <a name="delete-compute-instance"></a>Odstranit výpočetní instanci
+
+1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
+1. Rozbalte uzel **výpočetní instance** do svého pracovního prostoru.
+1. Klikněte pravým tlačítkem na výpočetní instanci, kterou chcete odstranit, a vyberte **Odstranit výpočetní instanci**.
+
 ## <a name="compute-clusters"></a>Výpočetní clustery
 
 Rozšíření podporuje následující výpočetní typy:
@@ -362,7 +396,7 @@ Další informace najdete v tématu [koncové body webové služby](concept-azur
 1. Klikněte pravým tlačítkem myši na uzel **koncové body** a vyberte **nasadit službu**.
 1. Na příkazovém řádku:
     1. Vyberte, zda chcete použít již registrovaný model nebo místní soubor modelu.
-    1. Výběr modelu
+    1. Vyberte svůj model.
     1. Vyberte cíl nasazení, do kterého chcete model nasadit.
     1. Zadejte název pro svůj model.
     1. Zadejte skript, který se má spustit při bodování modelu.

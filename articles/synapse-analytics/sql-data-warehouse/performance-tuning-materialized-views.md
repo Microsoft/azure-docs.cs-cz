@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956385"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441200"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Optimalizace výkonu s využitím materializovaná zobrazení
 
@@ -36,8 +36,8 @@ Většina požadavků na standardní zobrazení se stále vztahuje na materializ
 |Zobrazení definice                 | Uloženo ve fondu SQL.              | Uloženo ve fondu SQL.
 |Zobrazení obsahu                    | Vygenerováno pokaždé, když je použito zobrazení.   | Během vytváření zobrazení se předem zpracoval a uloží ve fondu SQL. Aktualizováno při přidání dat do podkladových tabulek.
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno
-|Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalé                                         | Světl  
-|Dodatečné úložiště                   | No                                           | Ano
+|Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalá                                         | Rychlý  
+|Dodatečné úložiště                   | No                                           | Yes
 |Syntax                          | VYTVOŘIT ZOBRAZENÍ                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
 
 ## <a name="benefits-of-using-materialized-views"></a>Výhody použití materializovaná zobrazení
@@ -52,13 +52,13 @@ Správně navržené materializované zobrazení přináší následující výh
 
 Materializovaná zobrazení implementovaná ve fondu SQL poskytují také tyto další výhody:
 
-V porovnání s jinými poskytovateli datového skladu poskytují materializovaná zobrazení, která jsou implementována v Azure SQL Data Warehouse, také následující další výhody:
+V porovnání s jinými poskytovateli datového skladu poskytují materializovaná zobrazení implementovaná ve službě Azure synapse Analytics také tyto další výhody:
 
 - Automatická a synchronní aktualizace dat se změnami dat v základních tabulkách Není vyžadována žádná akce uživatele.
 - Podpora široké agregační funkce Viz téma [Vytvoření materializované zobrazení jako Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 - Podpora doporučení pro materializované zobrazení pro konkrétní dotazy  Viz [vysvětlení (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Typické scénáře  
+## <a name="common-scenarios"></a>Obvyklé scénáře  
 
 Materializovaná zobrazení se obvykle používají v následujících scénářích:
 
@@ -115,7 +115,7 @@ Možnosti snížení počtu materializovaná zobrazení:
 
 - Vyřadit materializovaná zobrazení, která mají nízké využití nebo již nejsou potřebná.  Zakázané zobrazení s materializací není zachováno, ale stále stojí náklady na úložiště.  
 
-- Zkombinujte materializovaná zobrazení vytvořená ve stejných nebo podobných základních tabulkách i v případě, že se jejich data nepřekrývají.  Kombinování zobrazení s materializací může mít za následek větší zobrazení velikosti, než součet samostatných zobrazení, ale náklady na údržbu by se měly snížit.  Příklad:
+- Zkombinujte materializovaná zobrazení vytvořená ve stejných nebo podobných základních tabulkách i v případě, že se jejich data nepřekrývají.  Kombinování zobrazení s materializací může mít za následek větší zobrazení velikosti, než součet samostatných zobrazení, ale náklady na údržbu by se měly snížit.  Například:
 
 ```sql
 

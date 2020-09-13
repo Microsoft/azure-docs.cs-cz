@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e0f1cc446b6b957b17153dd538922d2b9acd891f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047669"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442730"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrovat mobilní aplikace, které volají webová rozhraní API
 
@@ -30,7 +30,7 @@ Typy účtů, které vaše mobilní aplikace podporují, závisí na prostředí
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Cílová skupina pro získání interaktivního tokenu
 
-Většina mobilních aplikací používá interaktivní ověřování. Pokud vaše aplikace používá tuto formu ověřování, můžete se přihlásit z libovolného [typu účtu](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
+Většina mobilních aplikací používá interaktivní ověřování. Pokud vaše aplikace používá tuto formu ověřování, můžete se přihlásit z libovolného [typu účtu](quickstart-register-app.md).
 
 ### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Cílová skupina pro integrované ověřování systému Windows, uživatelské jméno a heslo a B2C
 

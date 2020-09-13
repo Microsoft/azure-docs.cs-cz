@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 18ded2713ec89a9a0666cd00221d437c1c9ef090
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092418"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440014"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Přesunout data z databáze SQL Server do SQL Database pomocí Azure Data Factory
 
@@ -47,7 +47,7 @@ Nastavili jsme kanál ADF, který bude vytvářet dvě aktivity migrace dat. Spo
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
 V tomto kurzu se předpokládá, že máte následující:
 
 * **Předplatné Azure** Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -60,12 +60,12 @@ V tomto kurzu se předpokládá, že máte následující:
 >
 >
 
-## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Nahrajte data do instance SQL Server.
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a> Nahrajte data do instance SQL Server.
 K předvedení procesu migrace používáme [datovou sadu NYC taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/) . Datová sada taxislužby NYC je k dispozici, jak je uvedeno v tomto příspěvku, v datech Azure Blob Storage [NYC taxislužby](https://www.andresmh.com/nyctaxitrips/). Data obsahují dva soubory, trip_data.csv soubor, který obsahuje podrobnosti o cestě, a soubor trip_far.csv, který obsahuje podrobnosti o tarifu placeného pro každou cestu. Ukázka a popis těchto souborů jsou k dispozici v [popisu datové sady NYC taxislužby TRIPS](sql-walkthrough.md#dataset).
 
 Můžete buď upravit proceduru, která je zde uvedena, do sady vlastních dat nebo postupovat podle kroků popsaných v datové sadě taxislužby NYC. Pokud chcete nahrát datovou sadu taxislužby NYC do databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do SQL Server databáze](sql-walkthrough.md#dbload).
 
-## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Vytvoření Azure Data Factory
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> Vytvoření Azure Data Factory
 K dispozici jsou pokyny pro vytvoření nové Azure Data Factory a skupiny prostředků v [Azure Portal](https://portal.azure.com/) [Vytvoření Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Pojmenujte novou instanci ADF *adfdsp* a pojmenujte skupinu prostředků, kterou vytvořila *adfdsprg*.
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Instalace a konfigurace Azure Data Factory Integration Runtime
@@ -232,7 +232,7 @@ Pomocí výše uvedených definic tabulek je definice kanálu pro ADF uvedená n
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
+        "description" : "This pipeline has two activities: the first one copies data from SQL Server to Azure Blob, and the second one copies from Azure Blob to Azure Database Table",
         "activities":
         [
             {

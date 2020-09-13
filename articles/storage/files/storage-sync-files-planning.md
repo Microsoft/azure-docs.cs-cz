@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553103"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441095"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -136,9 +136,8 @@ Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamesp
  
 Zobrazení výsledků ve formátu CSV:
 ```powershell
-$errors = Invoke-AzStorageSyncCompatibilityCheck […]
-$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path
-    C:\results.csv -Encoding utf8
+$validation = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results.csv -Encoding utf8
 ```
 
 ### <a name="file-system-compatibility"></a>Kompatibilita systému souborů
@@ -148,7 +147,7 @@ Podporovány jsou pouze svazky NTFS. ReFS, FAT, FAT32 a jiné systémy souborů 
 
 V následující tabulce je uveden stav spolupráce funkcí systému souborů NTFS: 
 
-| Funkce | Stav podpory | Poznámky |
+| Příznak | Stav podpory | Poznámky |
 |---------|----------------|-------|
 | Seznamy ACL | Plně podporováno | Windows – volitelné seznamy řízení přístupu se uchovávají Azure File Sync a vynutily Windows Server na koncových bodech serveru. Seznamy ACL je taky možné vyhovět při přímém připojení sdílené složky Azure, ale to vyžaduje další konfiguraci. Další informace najdete v [části Identita](#identity) . |
 | Pevné odkazy | Přeskočeno | |
@@ -304,37 +303,37 @@ Azure File Sync je k dispozici v následujících oblastech:
 
 | Cloud Azure | Zeměpisná oblast | Oblast Azure | Kód oblasti |
 |-------------|-------------------|--------------|-------------|
-| Veřejný | Asie | Východní Asie | `eastasia` |
-| Veřejný | Asie | Southeast Asia | `southeastasia` |
-| Veřejný | Austrálie | Austrálie – východ | `australiaeast` |
-| Veřejný | Austrálie | Australia Southeast | `australiasoutheast` |
-| Veřejný | Brazílie | Brazil South | `brazilsouth` |
-| Veřejný | Kanada | Střední Kanada | `canadacentral` |
-| Veřejný | Kanada | Kanada – východ | `canadaeast` |
-| Veřejný | Evropa | Severní Evropa | `northeurope` |
-| Veřejný | Evropa | West Europe | `westeurope` |
-| Veřejný | Francie | Francie – střed | `francecentral` |
-| Veřejný | Francie | Francie – jih * | `francesouth` |
-| Veřejný | Indie | Indie – střed | `centralindia` |
-| Veřejný | Indie | Indie – jih | `southindia` |
-| Veřejný | Japonsko | Japan East | `japaneast` |
-| Veřejný | Japonsko | Japonsko – západ | `japanwest` |
-| Veřejný | Jižní Korea | Jižní Korea – střed | `koreacentral` |
-| Veřejný | Jižní Korea | Jižní Korea – jih | `koreasouth` |
-| Veřejný | Jižní Afrika | Jižní Afrika – sever | `southafricanorth` |
-| Veřejný | Jižní Afrika | Jižní Afrika – západ * | `southafricawest` |
-| Veřejný | Spojené arabské emiráty | Spojené arabské emiráty střed * | `uaecentral` |
-| Veřejný | Spojené arabské emiráty | Spojené arabské emiráty sever | `uaenorth` |
-| Veřejný | UK | Spojené království – jih | `uksouth` |
-| Veřejný | UK | Spojené království – západ | `ukwest` |
-| Veřejný | USA | Střední USA | `centralus` |
-| Veřejný | USA | East US | `eastus` |
-| Veřejný | USA | USA – východ 2 | `eastus2` |
-| Veřejný | USA | USA – středosever | `northcentralus` |
-| Veřejný | USA | Středojižní USA | `southcentralus` |
-| Veřejný | USA | USA – středozápad | `westcentralus` |
-| Veřejný | USA | USA – západ | `westus` |
-| Veřejný | USA | Západní USA 2 | `westus2` |
+| Public | Asie | Východní Asie | `eastasia` |
+| Public | Asie | Southeast Asia | `southeastasia` |
+| Public | Austrálie | Austrálie – východ | `australiaeast` |
+| Public | Austrálie | Australia Southeast | `australiasoutheast` |
+| Public | Brazílie | Brazil South | `brazilsouth` |
+| Public | Kanada | Střední Kanada | `canadacentral` |
+| Public | Kanada | Kanada – východ | `canadaeast` |
+| Public | Evropa | Severní Evropa | `northeurope` |
+| Public | Evropa | West Europe | `westeurope` |
+| Public | Francie | Francie – střed | `francecentral` |
+| Public | Francie | Francie – jih * | `francesouth` |
+| Public | Indie | Indie – střed | `centralindia` |
+| Public | Indie | Indie – jih | `southindia` |
+| Public | Japonsko | Japan East | `japaneast` |
+| Public | Japonsko | Japonsko – západ | `japanwest` |
+| Public | Jižní Korea | Jižní Korea – střed | `koreacentral` |
+| Public | Jižní Korea | Jižní Korea – jih | `koreasouth` |
+| Public | Jižní Afrika | Jižní Afrika – sever | `southafricanorth` |
+| Public | Jižní Afrika | Jižní Afrika – západ * | `southafricawest` |
+| Public | Spojené arabské emiráty | Spojené arabské emiráty střed * | `uaecentral` |
+| Public | Spojené arabské emiráty | Spojené arabské emiráty sever | `uaenorth` |
+| Public | UK | Spojené království – jih | `uksouth` |
+| Public | UK | Spojené království – západ | `ukwest` |
+| Public | USA | Střední USA | `centralus` |
+| Public | USA | East US | `eastus` |
+| Public | USA | USA – východ 2 | `eastus2` |
+| Public | USA | USA – středosever | `northcentralus` |
+| Public | USA | Středojižní USA | `southcentralus` |
+| Public | USA | USA – středozápad | `westcentralus` |
+| Public | USA | USA – západ | `westus` |
+| Public | USA | Západní USA 2 | `westus2` |
 | US Gov | USA | USA (Gov) – Arizona | `usgovarizona` |
 | US Gov | USA | USA (Gov) – Texas | `usgovtexas` |
 | US Gov | USA | USA (Gov) – Virginia | `usgovvirginia` |

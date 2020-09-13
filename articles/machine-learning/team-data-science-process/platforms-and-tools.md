@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028131"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439993"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty pro datové vědy
 
@@ -63,11 +63,11 @@ Když vytvoříte cluster Spark v HDInsight, vytvoříte výpočetní prostředk
 TDSP tým od Microsoftu publikoval dva ucelené návody k tomu, jak pomocí Azure HDInsight Spark clusterů sestavovat řešení pro datové vědy, jednu pomocí Pythonu a druhý Scala. Další informace o **clusterech**Azure HDInsight Spark najdete v tématu [Přehled: Apache Spark v prostředí HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Informace o tom, jak vytvořit řešení pro datové vědy pomocí **Pythonu** na Azure HDInsight Sparkm clusteru, najdete v tématu [Přehled datové vědy pomocí Sparku v Azure HDInsight](spark-overview.md). Informace o tom, jak vytvořit řešení pro datové vědy pomocí **Scala** v clusteru Azure HDInsight Spark, najdete v tématu věnovaném [datové vědy pomocí Scala a Sparku v Azure](scala-walkthrough.md). 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL Data Warehouse umožňuje snadno a v sekundách škálovat výpočetní prostředky, aniž by došlo k nadměrnému zřizování nebo nadměrnému placení. Nabízí také jedinečnou možnost pozastavit používání výpočetních prostředků, což vám dává volnost v tom, že vám umožní lépe spravovat náklady na Cloud. Možnost nasazení škálovatelných výpočetních prostředků umožňuje přenést všechna vaše data do Azure SQL Data Warehouse. Náklady na úložiště jsou minimální a můžete spouštět výpočetní prostředky jenom na částech datových sad, které chcete analyzovat. 
+Azure synapse Analytics umožňuje snadno a v sekundách škálovat výpočetní prostředky, aniž by došlo k nadměrnému zřizování nebo nadměrnému placení. Nabízí také jedinečnou možnost pozastavit používání výpočetních prostředků, což vám dává volnost v tom, že vám umožní lépe spravovat náklady na Cloud. Možnost nasazení škálovatelných výpočetních prostředků umožňuje přenést všechna vaše data do služby Azure synapse Analytics. Náklady na úložiště jsou minimální a můžete spouštět výpočetní prostředky jenom na částech datových sad, které chcete analyzovat. 
 
-Další informace o Azure SQL Data Warehouse najdete na webu [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) . Další informace o tom, jak pomocí SQL Data Warehouse sestavit ucelená řešení pro pokročilé analýzy, najdete v článku [vědecké zpracování týmových dat v akci: použití SQL Data Warehouse](sqldw-walkthrough.md).
+Další informace o službě Azure synapse Analytics najdete na webu [Azure synapse Analytics](https://azure.microsoft.com/services/sql-data-warehouse) . Další informace o tom, jak sestavit komplexní řešení pro pokročilou analýzu pomocí Azure synapse Analytics, najdete [v článku vědecké zpracování týmových dat v akci: použití Azure synapse Analytics](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake

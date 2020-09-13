@@ -1,6 +1,6 @@
 ---
 title: Transformace dat
-description: Naučte se transformovat data nebo zpracovávat data v Azure Data Factory pomocí Hadoop, Machine Learning nebo Azure Data Lake Analytics.
+description: Transformujte data nebo zpracujte data v Azure Data Factory pomocí Hadoop, Machine Learning nebo Azure Data Lake Analytics.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606611"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442781"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
 
@@ -78,7 +78,7 @@ Prediktivní modely v Machine Learning experimenty bodování musí být v průb
 Podrobnosti o těchto Machine Learningch aktivitách najdete v tématu [použití Machine Learning aktivit](transform-data-using-machine-learning.md) . 
 
 ### <a name="stored-procedure-activity"></a>Aktivita uložené procedury
-Pomocí aktivity uložená procedura SQL Server v kanálu Data Factory můžete vyvolat uloženou proceduru v jednom z následujících úložišť dat: Azure SQL Database, Azure SQL Data Warehouse, SQL Server databáze ve vašem podniku nebo virtuálním počítači Azure. Podrobnosti najdete v článku [aktivita uložených procedur](transform-data-using-stored-procedure.md) .  
+Pomocí aktivity uložená procedura SQL Server v kanálu Data Factory můžete vyvolat uloženou proceduru v jednom z následujících úložišť dat: Azure SQL Database, Azure synapse Analytics (dříve SQL Data Warehouse), SQL Server databáze ve vašem podniku nebo na virtuálním počítači Azure. Podrobnosti najdete v článku [aktivita uložených procedur](transform-data-using-stored-procedure.md) .  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Aktivita Data Lake Analytics U-SQL
 Aktivita Data Lake Analytics U-SQL spouští skript U-SQL v clusteru Azure Data Lake Analytics. Podrobnosti najdete v článku o [aktivitě data Analytics U-SQL](transform-data-using-data-lake-analytics.md) . 

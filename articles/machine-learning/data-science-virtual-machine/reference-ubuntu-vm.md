@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816299"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440333"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenční informace: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -232,7 +232,7 @@ Na virtuálním počítači jsou nainstalované následující nástroje Azure:
 * **Průzkumník služby Azure Storage**: Průzkumník služby Azure Storage je grafický nástroj, pomocí kterého můžete procházet objekty, které jste uložili v účtu úložiště Azure, a nahrávat a stahovat data do a z objektů blob Azure. K Průzkumník služby Storage můžete přistupovat pomocí ikony zástupce na ploše. Můžete ho také otevřít z příkazového řádku prostředí zadáním **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít nastavené přesměrování X11.
 * **Knihovny Azure**: Níže jsou uvedené některé z předem nainstalovaných knihoven.
   
-  * **Python**: knihovny související s Azure v Pythonu jsou *Azure*, *AzureML*, *pydocumentdb*a *pyodbc*. Pomocí prvních tří knihoven můžete přistupovat ke službám Azure Storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtá knihovna pyodbc (spolu s ovladačem Microsoft ODBC Driver for SQL Server) umožňuje přístup k SQL Server, Azure SQL Database a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadáním **seznamu PIP** zobrazíte všechny uvedené knihovny. Nezapomeňte spustit tento příkaz v prostředí Python 2,7 a 3,5.
+  * **Python**: knihovny související s Azure v Pythonu jsou *Azure*, *AzureML*, *pydocumentdb*a *pyodbc*. Pomocí prvních tří knihoven můžete přistupovat ke službám Azure Storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtá knihovna pyodbc (spolu s ovladačem Microsoft ODBC Driver for SQL Server) umožňuje přístup k SQL Server, Azure SQL Database a Azure synapse Analytics z Pythonu pomocí rozhraní ODBC. Zadáním **seznamu PIP** zobrazíte všechny uvedené knihovny. Nezapomeňte spustit tento příkaz v prostředí Python 2,7 a 3,5.
   * **R**: knihovny související s Azure v jazyce R jsou AZUREML a RODBC.
   * **Java**: seznam knihoven Azure Java najdete v adresáři/DSVM/SDK/AZURESDKJAVA na virtuálním počítači. Knihovny klíčů jsou služby Azure Storage a API pro správu, Azure Cosmos DB a ovladače JDBC pro SQL Server.  
 

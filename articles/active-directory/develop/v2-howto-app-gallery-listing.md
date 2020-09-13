@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891857"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439740"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
 
@@ -61,7 +61,7 @@ Postup publikování aplikace v galerii aplikací Azure AD:
 6. Připojte se k programu Microsoft Partner Network.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat trvalý účet pro testování s alespoň dvěma registrovanými uživateli.
 
@@ -78,9 +78,9 @@ V následující tabulce jsou porovnávány hlavní standardy: Otevřete ověřo
 | Jednotné odhlašování na základě webu| √| √ |
 | Jednotné přihlašování prostřednictvím mobilního telefonu| √| √* |
 | Jednotné odhlašování pomocí mobilních zařízení| √| √* |
-| Zásady podmíněného přístupu pro mobilní aplikace| √| × |
-| Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| × |
-| Přístup Microsoft Graph| √| × |
+| Zásady podmíněného přístupu pro mobilní aplikace| √| X |
+| Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| X |
+| Přístup Microsoft Graph| √| X |
 
 *, Ale Microsoft neposkytuje ukázky ani doprovodné materiály.
 
@@ -278,5 +278,5 @@ Microsoft Partner Network poskytuje okamžitý přístup k exkluzivním prostře
 
 
 ## <a name="next-steps"></a>Další kroky
-
-Další informace o vytváření aplikací podporujících přihlášení k Azure AD najdete v tématu [scénáře ověřování pro Azure AD](authentication-flows-app-scenarios.md).
+* [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Scénáře ověřování pro Azure AD](authentication-flows-app-scenarios.md)

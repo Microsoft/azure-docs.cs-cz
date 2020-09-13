@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534341"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440588"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -129,7 +129,7 @@ Následující šablona aktivity kopírování obsahuje úplný seznam podporova
 
 | Vlastnost | Popis | Povinné? |
 |:--- |:--- |:--- |
-| typ | U aktivity kopírování nastavte na`Copy` | Yes |
+| typ | U aktivity kopírování nastavte na `Copy` | Yes |
 | vztahují | Určete datovou sadu, kterou jste vytvořili, která odkazuje na zdrojová data. Aktivita kopírování podporuje pouze jeden vstup. | Yes |
 | činnosti | Určete datovou sadu, kterou jste vytvořili, která odkazuje na data jímky. Aktivita kopírování podporuje pouze jeden výstup. | Yes |
 | typeProperties | Zadejte vlastnosti pro konfiguraci aktivity kopírování. | Yes |
@@ -183,7 +183,7 @@ Informace o tom, jak aktivita kopírování mapuje vaše zdrojová data do jímk
 
 ## <a name="add-additional-columns-during-copy"></a>Přidat další sloupce během kopírování
 
-Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Příklad:
+Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Například:
 
 - Při kopírování ze zdroje založeného na souborech uložte relativní cestu k souboru jako další sloupec, ze kterého se data pocházejí.
 - Přidejte sloupec s výrazem ADF pro připojení systémových proměnných ADF, jako je název kanálu nebo ID kanálu, nebo uložte jinou dynamickou hodnotu z výstupu nadřazeného aktivity.
@@ -200,9 +200,9 @@ Pokud ho chcete nakonfigurovat programově, přidejte `additionalColumns` do zdr
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| additionalColumns | Přidejte další datové sloupce ke zkopírování do jímky.<br><br>Každý objekt v poli `additionalColumns` představuje sloupec navíc. `name`Definuje název sloupce a `value` Určuje hodnotu dat daného sloupce.<br><br>Povolené hodnoty dat jsou:<br>- **`$$FILEPATH`**– Rezervovaná proměnná Určuje relativní cestu zdrojových souborů k cestě ke složce zadané v datové sadě. Platí pro zdroj založený na souborech.<br>- **Vyjádření**<br>- **Statická hodnota** | No |
+| additionalColumns | Přidejte další datové sloupce ke zkopírování do jímky.<br><br>Každý objekt v poli `additionalColumns` představuje sloupec navíc. `name`Definuje název sloupce a `value` Určuje hodnotu dat daného sloupce.<br><br>Povolené hodnoty dat jsou:<br>- **`$$FILEPATH`** – Rezervovaná proměnná Určuje relativní cestu zdrojových souborů k cestě ke složce zadané v datové sadě. Platí pro zdroj založený na souborech.<br>- **Vyjádření**<br>- **Statická hodnota** | No |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -248,8 +248,8 @@ Když kopírujete data do služby SQL Database/Azure synapse Analytics, pokud c�
 Tato funkce se podporuje při kopírování dat z libovolného zdroje do následujících úložišť dat jímky. Můžete najít možnost v *uživatelském rozhraní pro vytváření ADF* – >á *jímka aktivity kopírování* – > *možnost Tabulka* – > *Automatické vytvoření tabulky*nebo prostřednictvím `tableOption` vlastnosti v datové části jímky aktivity kopírování.
 
 - [Azure SQL Database](connector-azure-sql-database.md)
-- [Azure SQL Database spravovaná instance](connector-azure-sql-managed-instance.md)
-- [Analýza Azure synapse (dříve Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [Spravovaná instance Azure SQL Database](connector-azure-sql-managed-instance.md)
+- [Azure Synapse Analytics (dříve SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![Vytvoření tabulek jímky](media/copy-activity-overview/create-sink-table.png)

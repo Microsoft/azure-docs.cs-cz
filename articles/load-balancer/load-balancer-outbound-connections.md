@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4368a025ecc158afa1ee78b8abd86bd6db42ba75
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706060"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438661"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -44,7 +44,7 @@ Azure Load Balancer poskytuje odchozí připojení prostřednictvím různých m
 
 Azure používá algoritmus k určení počtu předem přidělených portů SNAT na základě velikosti back-endu při použití PAT. Pro každou veřejnou IP adresu přidruženou k nástroji pro vyrovnávání zatížení jsou porty 64 000 dostupné jako porty SNAT pro každý transportní protokol IP. Stejný počet portů SNAT se má předběžně přidělit pro UDP a TCP a spotřebovat nezávisle na IP přenosový protokol.  Použití portu SNAT se ale liší v závislosti na tom, jestli je tok UDP nebo TCP. Při vytváření odchozích toků se tyto porty spotřebují dynamicky (až do limitu před přidělením) a vydávají se v případě, že dojde k ukončení toku nebo [vypršení nečinnosti](../load-balancer/troubleshoot-outbound-connection.md#idletimeout) . Porty se spotřebují jenom v případě, že je potřeba, aby toky byly jedinečné.
 
-#### <a name="default-snat-ports-allocated"></a><a name="snatporttable"></a> Přiřazené výchozí porty SNAT
+#### <a name="dynamic-snat-ports-allocated"></a><a name="snatporttable"></a> Přidělené dynamické porty SNAT
 
 V následující tabulce jsou uvedena předalokace portů SNAT pro vrstvy velikostí back-endu:
 

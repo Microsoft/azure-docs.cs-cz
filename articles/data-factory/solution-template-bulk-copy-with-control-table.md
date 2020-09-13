@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 46e81242c1fba463f547015a244650ae6e574580
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629078"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441064"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadné kopírování z databáze pomocí řídicí tabulky
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Chcete-li kopírovat data z datového skladu v Oracle serveru, Netezza, Teradata nebo SQL Server Azure SQL Data Warehouse, je nutné načíst obrovský objem dat z více tabulek. Data musí být obvykle rozdělená do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
+Pokud chcete kopírovat data z datového skladu v Oracle serveru, Netezza, Teradata nebo SQL Server do služby Azure synapse Analytics (dřív SQL Data Warehouse), musíte načíst velké objemy dat z více tabulek. Data musí být obvykle rozdělená do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
 
- >! Poznámka: Pokud chcete kopírovat data z malého počtu tabulek s relativně malým objemem dat do SQL Data Warehouse, je efektivnější použít [nástroj Azure Data Factory kopírování dat](copy-data-tool.md). Šablona popsaná v tomto článku je více, než kolik jich v tomto scénáři potřebujete.
+ >! Poznámka: Pokud chcete kopírovat data z malého počtu tabulek s relativně malým objemem dat do služby Azure synapse Analytics, je efektivnější použít [nástroj Kopírování dat Azure Data Factory](copy-data-tool.md). Šablona popsaná v tomto článku je více, než kolik jich v tomto scénáři potřebujete.
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 
@@ -44,7 +44,7 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 - *Data_Destination_Container* je cesta ke kořenové složce, do které se zkopírují data do cílového úložiště. 
 - *Data_Destination_Directory* je cesta k adresáři v kořenovém adresáři, kam se zkopírují data do cílového úložiště. 
 
-Poslední tři parametry, které definují cestu v cílovém úložišti, jsou viditelné pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud jako cílové úložiště zvolíte Azure synapse Analytics (dřív SQL DW), tyto parametry se nevyžadují. Názvy tabulek a schématu v SQL Data Warehouse musí být stejné jako ty ve zdrojové databázi.
+Poslední tři parametry, které definují cestu v cílovém úložišti, jsou viditelné pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud jako cílové úložiště zvolíte Azure synapse Analytics (dřív SQL DW), tyto parametry se nevyžadují. Názvy tabulek a schéma ve službě Azure synapse Analytics ale musí být stejné jako ty ve zdrojové databázi.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
@@ -94,7 +94,7 @@ Poslední tři parametry, které definují cestu v cílovém úložišti, jsou v
 
     ![Kontrola výsledku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Volitelné Pokud jste jako cíl dat vybrali Azure synapse Analytics (dřív SQL DW), musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje SQL Data Warehouse báze. Šablona automaticky vygeneruje cestu kontejneru pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
+9. Volitelné Pokud jste jako cíl dat vybrali Azure synapse Analytics (dřív SQL DW), musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje základ služby Azure synapse Analytics. Šablona automaticky vygeneruje cestu kontejneru pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
     
     ![Základní nastavení](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

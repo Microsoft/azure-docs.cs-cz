@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: b506d56f8aff2204c705ae8685f475654c1b1705
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640476"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441914"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Konfigurace jednotného přihlašování pomocí SAML
 
@@ -51,7 +51,6 @@ Měli byste získat hodnoty od dodavatele aplikace. Můžete ručně zadat hodno
 | **Přihlašovací adresa URL** | Vyžadováno | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Office 365 nebo Azure AD moje aplikace. Pokud je prázdné, Azure AD provede IdP přihlášení iniciované, když uživatel spustí aplikaci z Office 365, Azure AD moje aplikace nebo adresy URL jednotného přihlašování Azure AD.|
 | **Stav přenosu** | Volitelné | Volitelné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je hodnota platnou adresou URL pro aplikaci. Některé aplikace ale používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
 | **Odhlašovací adresa URL** | Volitelné | Volitelné | Slouží k odeslání odpovědí na odhlášení SAML zpět do aplikace.
-
 
 ## <a name="user-attributes-and-claims"></a>Atributy a deklarace uživatele 
 
@@ -112,7 +111,7 @@ Jakmile nakonfigurujete aplikaci tak, aby používala Azure AD jako zprostředko
 
 Vyberte **test** a pak zvolte možnost testovat s aktuálně přihlášeným uživatelem nebo jako někdo jiný. 
 
-Pokud je přihlášení úspěšné, budete připraveni přiřadit uživatele a skupiny do aplikace SAML. Congratulations!
+Pokud je přihlášení úspěšné, budete připraveni přiřadit uživatele a skupiny do aplikace SAML. Gratulujeme!
 
 Pokud se zobrazí chybová zpráva, proveďte následující kroky:
 

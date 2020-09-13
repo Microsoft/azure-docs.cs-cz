@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650464"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440690"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -88,7 +88,7 @@ Doporučení pro ukládání do mezipaměti pro disky Azure Premium níže jsou 
 **Doporučení: Výsledkem těchto pozorovaných vstupně-výstupních vzorů SAP HANA je ukládání do mezipaměti pro různé svazky pomocí služby Azure Premium Storage, jako třeba:**
 
 - **/Hana/data** – žádné ukládání do mezipaměti nebo čtení do mezipaměti
-- **/Hana/log** – žádné ukládání do mezipaměti – výjimka pro M-a Mv2-Series, kde by měla být povolena akcelerátor zápisu bez mezipaměti pro čtení. 
+- **/Hana/log** – žádné ukládání do mezipaměti – výjimka pro virtuální počítače řady M a Mv2, kde by mělo být povoleno Azure akcelerátor zápisu 
 - mezipaměť pro čtení **/Hana/Shared**
 - **Disk s operačním systémem** – neměňte výchozí ukládání do mezipaměti, které se nastavuje v Azure v době vytváření virtuálního počítače.
 
@@ -236,6 +236,10 @@ V této konfiguraci se svazky **/Hana/data** a **/Hana/log** udržují samostatn
 
 Doporučení často překračují minimální požadavky SAP, jak je uvedeno výše v tomto článku. Uvedená doporučení představují kompromis mezi doporučeními velikosti podle SAP a maximální propustností úložiště, kterou poskytují různé typy virtuálních počítačů.
 
+> [!NOTE]
+> Azure Ultra disk vynucuje minimálně 2 IOPS na kapacitu disku za gigabajt.
+
+
 | Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /Hana/data svazek | /Hana/data v/v – propustnost | /Hana/data IOPS | /Hana/log svazek | /Hana/log v/v – propustnost | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E20ds_v4 | 160 GiB | 480 MB/s | 200 GB | 400 MB/s | 2,500 | 80 GB | 250 MB | 1 800 |
@@ -249,11 +253,11 @@ Doporučení často překračují minimální požadavky SAP, jak je uvedeno vý
 | M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MB/s | 5 000 | 512 GB | 250 MB/s  | 2,500 |
 | M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MB/s | 5 000 | 512 GB | 250 MB/s  | 2,500 |
 | M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 750 MB/s | 7 000 | 512 GB | 250 MB/s  | 2,500 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 750 MB/s |7 000 | 512 GB | 250 MB/s  | 2,500 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 750 MB/s |9 600 | 512 GB | 250 MB/s  | 2,500 | 
 | M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 750 MB/s | 7 000 | 512 GB | 250 MB/s  | 2,500 | 
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 750 MB/s | 7 000 | 512 GB | 250 MB/s  | 2,500 | 
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 000 MB/s | 9 000 | 512 GB | 400 MB/s  | 4 000 | 
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MB/s | 9 000 | 512 GB | 400 MB/s  | 4 000 |   
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 750 MB/s | 14 400 | 512 GB | 250 MB/s  | 2,500 | 
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 000 MB/s | 14 400 | 512 GB | 400 MB/s  | 4 000 | 
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MB/s | 28 800 | 512 GB | 400 MB/s  | 4 000 |   
 
 **Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům.** Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.   
 

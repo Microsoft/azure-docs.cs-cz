@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629027"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441999"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Rozdílová kopie z databáze s řídicí tabulkou
 
@@ -140,7 +140,7 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
 
     Uvidíte, že do cílového umístění se zkopírovaly jenom nové řádky.
 
-15. Volitelné Pokud jako cíl dat vyberete Azure synapse Analytics (dříve SQL DW), musíte taky pro přípravu zadat připojení k úložišti objektů BLOB v Azure, které vyžaduje SQL Data Warehouse báze. Šablona vygeneruje cestu kontejneru. Po spuštění kanálu ověřte, jestli se kontejner vytvořil v úložišti objektů BLOB.
+15. Volitelné Pokud jako cíl dat vyberete Azure synapse Analytics (dřív SQL DW), musíte taky pro přípravu zadat připojení k úložišti objektů BLOB v Azure, které vyžaduje základ služby Azure synapse Analytics (dříve SQL Data Warehouse). Šablona vygeneruje cestu kontejneru. Po spuštění kanálu ověřte, jestli se kontejner vytvořil v úložišti objektů BLOB.
     
     ![Konfigurovat základ](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
