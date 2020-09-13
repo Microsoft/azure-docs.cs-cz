@@ -3,7 +3,7 @@ title: Hierarchie zemí/oblastí používaná geografickým směrováním – Az
 description: Tento článek uvádí hierarchii zemí nebo oblastí, kterou používá služba Azure Traffic Manager zeměpisný typ směrování.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: rohink
-ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 83300a5c518a3acf853968164031a80e1c882187
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938647"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401233"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchie zemí/oblastí používaná službou Azure Traffic Manager pro metodu směrování geografických přenosů
 
-V tomto článku jsou uvedené země a oblasti používané metodou směrování **geografického** provozu v Azure Traffic Manager. Tyto informace můžete získat také programově voláním [REST API Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
+V tomto článku jsou uvedené země a oblasti používané metodou směrování **geografického**  provozu v Azure Traffic Manager. Tyto informace můžete získat také programově voláním [REST API Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
 - SVĚT (svět)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6045c491ea68d759b2a1739e20aa2f12b8520c87
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c72ff14246f3f96980fe1de2fdef16794bf23e4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006481"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399986"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Scénář: Route to Shared Services virtuální sítě
 
@@ -24,7 +24,7 @@ Další informace o směrování virtuálních rozbočovačů najdete v tématu 
 
 ## <a name="design"></a><a name="design"></a>Návrh
 
-K sumarizaci požadavků tohoto scénáře můžeme použít matrici připojení. V matici každá buňka popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů.
+K sumarizaci požadavků tohoto scénáře můžeme použít matrici připojení. V matici každá buňka popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů. "X" znamená, že připojení poskytuje virtuální síť WAN:
 
 **Matice připojení**
 

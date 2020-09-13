@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227028"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400540"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Přenos předplatného Azure do jiného adresáře Azure AD (Preview)
 
@@ -69,25 +69,25 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 
 | Služba nebo prostředek | Ovlivněné | Obnovitelné | Máte vliv na to? | Co můžete dělat |
 | --------- | --------- | --------- | --------- | --------- |
-| Přiřazení rolí | Ano | Ano | [Zobrazení seznamu přiřazení rolí](#save-all-role-assignments) | Všechna přiřazení rolí se trvale odstraní. Je nutné mapovat uživatele, skupiny a instanční objekty k odpovídajícím objektům v cílovém adresáři. Je nutné znovu vytvořit přiřazení rolí. |
-| Vlastní role | Ano | Ano | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
-| Spravované identity přiřazené systémem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
-| Spravované identity přiřazené uživatelem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
-| Azure Key Vault | Ano | Ano | [Seznam Key Vault zásad přístupu](#list-key-vaults) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
-| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Ano | Ne | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
-| Azure Storage a Azure Data Lake Storage Gen2 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Azure Data Lake Storage Gen1 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Soubory Azure | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Synchronizace souborů Azure | Ano | Ano |  |  |
-| Spravované disky Azure | Ano | – |  |  |
-| Azure Container Services pro Kubernetes | Ano | Ano |  |  |
-| Azure Active Directory Domain Services | Ano | Ne |  |  |
-| Registrace aplikací | Ano | Ano |  |  |
+| Přiřazení rolí | Yes | Yes | [Zobrazení seznamu přiřazení rolí](#save-all-role-assignments) | Všechna přiřazení rolí se trvale odstraní. Je nutné mapovat uživatele, skupiny a instanční objekty k odpovídajícím objektům v cílovém adresáři. Je nutné znovu vytvořit přiřazení rolí. |
+| Vlastní role | Yes | Yes | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
+| Spravované identity přiřazené systémem | Yes | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
+| Spravované identity přiřazené uživatelem | Yes | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
+| Azure Key Vault | Yes | Yes | [Seznam Key Vault zásad přístupu](#list-key-vaults) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
+| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Yes | No | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure Storage a Azure Data Lake Storage Gen2 | Yes | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Azure Data Lake Storage Gen1 | Ano | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Soubory Azure | Yes | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Synchronizace souborů Azure | Yes | Yes |  |  |
+| Spravované disky Azure | Yes | – |  |  |
+| Azure Container Services pro Kubernetes | Yes | Yes |  |  |
+| Azure Active Directory Domain Services | Yes | No |  |  |
+| Registrace aplikací | Yes | Yes |  |  |
 
 > [!WARNING]
 > Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není **ve stejném** předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení těchto kroků budete potřebovat:
 
@@ -224,7 +224,7 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 > [!WARNING]
 > Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není **ve stejném** předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
 
-- Pokud máte Trezor klíčů, použijte příkaz [AZ Key trezor show k zobrazení](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) seznamu zásad přístupu. Další informace najdete v tématu [poskytnutí Key Vault ověřování pomocí zásad řízení přístupu](../key-vault/key-vault-group-permissions-for-apps.md).
+- Pokud máte Trezor klíčů, použijte příkaz [AZ Key trezor show k zobrazení](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) seznamu zásad přístupu. Další informace najdete v tématu [přiřazení zásad Key Vaultho přístupu](../key-vault/general/assign-access-policy-cli.md).
 
     ```azurecli
     az keyvault show --name MyKeyVault

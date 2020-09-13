@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7a0b2afa8b566ec82fc638291c43f3e0419f654c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267849"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400683"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
 
@@ -70,7 +70,7 @@ Podporované distribuce a verze:
 * **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](./update-linux-agent.md) .
 * Rozhraní příkazového **řádku Azure** Nastavte na svém počítači prostředí [Azure CLI](/cli/azure/install-azure-cli) .
 * Příkaz wget, pokud ho ještě nemáte: Spusťte `sudo apt-get install wget` .
-* Existující předplatné Azure a existující účet úložiště v rámci něj pro ukládání dat.
+* Existující předplatné Azure a existující účet úložiště pro obecné účely, ve kterém se budou ukládat data.  Účty úložiště pro obecné účely podporují úložiště tabulek, které je povinné.  Účet Blob Storage nebude fungovat.
 
 ### <a name="sample-installation"></a>Ukázková instalace
 
@@ -432,7 +432,7 @@ Prvek | Hodnota
 ------- | -----
 namespace | volitelné Obor názvů OMI, ve kterém má být dotaz proveden. Je-li tento parametr zadán, je použita výchozí hodnota "root/SCX", kterou implementuje [poskytovatelé služeb System Center pro různé platformy](https://github.com/Microsoft/SCXcore).
 query | Dotaz OMI, který se má spustit.
-table | volitelné Tabulka úložiště Azure v určeném účtu úložiště (viz [Nastavení chráněná](#protected-settings)).
+stolu | volitelné Tabulka úložiště Azure v určeném účtu úložiště (viz [Nastavení chráněná](#protected-settings)).
 frequency | volitelné Počet sekund mezi provedením dotazu. Výchozí hodnota je 300 (5 minut); minimální hodnota je 15 sekund.
 jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které by měly být publikovány nezpracované ukázkové výsledky metriky. Žádná agregace těchto nezpracovaných vzorků se počítá rozšířením nebo metrikami Azure.
 
@@ -458,7 +458,7 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 Prvek | Hodnota
 ------- | -----
  – soubor | Úplná cesta k souboru protokolu, který má být sledován a zachycen. Cesta musí pojmenovat jeden soubor. nemůže obsahovat název adresáře ani zástupné znaky. Uživatelský účet omsagent musí mít k této cestě k souboru přístup pro čtení.
-table | volitelné Tabulka úložiště Azure v určeném účtu úložiště (jak je uvedeno v chráněných konfiguracích), do kterého se zapisují nové řádky z "koncového" souboru.
+stolu | volitelné Tabulka úložiště Azure v určeném účtu úložiště (jak je uvedeno v chráněných konfiguracích), do kterého se zapisují nové řádky z "koncového" souboru.
 jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které se odesílají řádky protokolu.
 
 Je třeba zadat buď Table, nebo "jímky", nebo obojí.

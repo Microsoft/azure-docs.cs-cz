@@ -3,20 +3,20 @@ title: Nejčastější dotazy ke službě Azure na přední dveře
 description: Na této stránce najdete odpovědi na nejčastější dotazy týkající se služby Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
-author: sohamnchatterjee
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
-ms.author: sohamnc
-ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.author: duau
+ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760409"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399731"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -79,7 +79,7 @@ Přední dvířka Azure je globálně distribuovaná služba pro více tenantů.
 
 ### <a name="is-http-https-redirection-supported"></a>Je podporováno přesměrování HTTP->HTTPS?
 
-Ano. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
+Yes. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>V jakém pořadí jsou pravidla směrování zpracovaná?
 
@@ -92,7 +92,7 @@ Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrét
 - Nakonfigurujte IP funkce acling pro vaše back-endy pro příjem provozu z adresního prostoru IP adres back-endu na front-endu a Azure služby infrastruktury. Přečtěte si následující podrobnosti o IP adrese pro funkce acling back-end:
  
     - Přečtěte si část *AzureFrontDoor. back-end* v tématu [rozsahy IP adres Azure a značky služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro rozsah IP adres back-endu IPv4 front-endu nebo můžete ve svých [skupinách zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)použít také značku služby *AzureFrontDoor. back-end* .
-    - IP adresa back-endu **IPv6** front-endu, která je popsaná ve značce služby, není uvedená v souboru JSON rozsahy IP adres Azure. Pokud hledáte explicitní rozsah adres IPv6, je aktuálně omezen na`2a01:111:2050::/44`
+    - IP adresa back-endu **IPv6** front-endu, která je popsaná ve značce služby, není uvedená v souboru JSON rozsahy IP adres Azure. Pokud hledáte explicitní rozsah adres IPv6, je aktuálně omezen na `2a01:111:2050::/44`
     - [Základní služby infrastruktury](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) Azure prostřednictvím virtualizované IP adresy hostitele: `168.63.129.16` a`169.254.169.254`
 
     > [!WARNING]

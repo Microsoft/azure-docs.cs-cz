@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5546fc63b01d1da6b4033e071ac071574ab9699a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987190"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400003"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Scénář: směrování provozu prostřednictvím síťová virtuální zařízení-Custom (Preview)
 
@@ -35,12 +35,12 @@ Následující matice připojení shrnuje toky podporované v tomto scénáři:
 
 | Z          | Do:|*SÍŤOVÉ virtuální zařízení paprsky*|*Virtuální síť služby*|*Virtuální síť DMZ*|*Statické větve*|
 |---|---|---|---|---|---|
-| **SÍŤOVÉ virtuální zařízení paprsky**| &#8594;|      X |            X |   Partnerské vztahy |    Statická    |
+| **SÍŤOVÉ virtuální zařízení paprsky**| &#8594;|      X |            X |   Partnerské vztahy |    Static    |
 | **Virtuální síť služby**| &#8594;|    X |            X |      X    |      X       |
 | **Virtuální síť DMZ** | &#8594;|       X |            X |      X    |      X       |
-| **Větve** | &#8594;|  Statická |            X |      X    |      X       |
+| **Větve** | &#8594;|  Static |            X |      X    |      X       |
 
-Každá z buněk v matici připojení popisuje, jestli připojení k virtuální síti WAN (strana "od", záhlaví řádků) obsahuje předponu cíle (stranu "do" toku, záhlaví sloupců v kurzívě) pro konkrétní tok přenosů. Podívejme se na podrobnosti na různé řádky:
+Každá z buněk v matici připojení popisuje, jestli připojení k virtuální síti WAN (strana "od", záhlaví řádků) obsahuje předponu cíle (stranu "do" toku, záhlaví sloupců v kurzívě) pro konkrétní tok přenosů. "X" znamená, že připojení je nativně zajištěno službou Virtual WAN a "static" znamená, že připojení je zajištěno přes virtuální síť WAN pomocí statických tras. Podívejme se na podrobnosti na různé řádky:
 
 * SÍŤOVÉ virtuální zařízení paprsky:
   * Paprsky dostanou k ostatním paprskům přímý přístup k virtuálním rozbočovačům WAN.

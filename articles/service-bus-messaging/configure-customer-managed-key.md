@@ -3,12 +3,12 @@ title: Konfigurace vlastního klíče pro šifrování Azure Service Busch dat v
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování Azure Service Bus data REST.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 97de8df336367a74f66628675569c06d7726f2a4
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: e3da167fcdd3bac53de86dae07242cf8bccb621c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067235"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400581"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal
 Azure Service Bus Premium poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Service Bus Premium spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -28,7 +28,7 @@ Pomocí Azure Key Vault můžete spravovat klíče a auditovat používání kl�
 V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure Portal. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Použití klíčů spravovaných zákazníkem s Azure Service Bus vyžaduje, aby měl Trezor klíčů nakonfigurované dvě požadované vlastnosti. Jsou to: **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Použití klíčů spravovaných zákazníkem s Azure Service Bus vyžaduje, aby měl Trezor klíčů nakonfigurované dvě požadované vlastnosti. Jsou to:  **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
 
 ## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupujte následovně:
@@ -82,12 +82,12 @@ Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravov
     > 
     >   * Pokud je pro obor názvů Service Bus povolené [geografické zotavení po havárii](service-bus-geo-dr.md) a chcete povolit spravovaný klíč zákazníka, 
     >     * Přerušení párování
-    >     * [Nastavte zásady přístupu](../key-vault/general/managed-identity.md) pro spravovanou identitu pro primární i sekundární obory názvů do trezoru klíčů.
+    >     * [Nastavte zásady přístupu](../key-vault/general/assign-access-policy-portal.md) pro spravovanou identitu pro primární i sekundární obory názvů do trezoru klíčů.
     >     * Nastavte šifrování v primárním oboru názvů.
     >     * Přespárujte primární a sekundární obory názvů.
     > 
     >   * Pokud chcete povolit geografickou možnost DR pro obor názvů Service Bus, kde je už nastavený zákazníkem spravovaný klíč, pak –
-    >     * [Nastavte zásady přístupu](../key-vault/general/managed-identity.md) pro spravovanou identitu pro sekundární obor názvů do trezoru klíčů.
+    >     * [Nastavte zásady přístupu](../key-vault/general/assign-access-policy-portal.md) pro spravovanou identitu pro sekundární obor názvů do trezoru klíčů.
     >     * Spáruje primární a sekundární obory názvů.
 
 
@@ -164,8 +164,8 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s iden
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
-    > - `<ServiceBusNamespaceName>`– Název oboru názvů Service Bus
-    > - `<Location>`– Umístění vašeho oboru názvů Service Bus
+    > - `<ServiceBusNamespaceName>` – Název oboru názvů Service Bus
+    > - `<Location>` – Umístění vašeho oboru názvů Service Bus
 
     ```json
     {
@@ -287,10 +287,10 @@ V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o t
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
-    > - `<ServiceBusNamespaceName>`– Název oboru názvů Service Bus
-    > - `<Location>`– Umístění vašeho oboru názvů Service Bus
-    > - `<KeyVaultName>`– Název vašeho trezoru klíčů
-    > - `<KeyName>`– Název klíče v trezoru klíčů  
+    > - `<ServiceBusNamespaceName>` – Název oboru názvů Service Bus
+    > - `<Location>` – Umístění vašeho oboru názvů Service Bus
+    > - `<KeyVaultName>` – Název vašeho trezoru klíčů
+    > - `<KeyName>` – Název klíče v trezoru klíčů  
 
     ```json
     {

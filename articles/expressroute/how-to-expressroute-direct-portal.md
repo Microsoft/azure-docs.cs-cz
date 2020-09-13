@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct: portál'
 description: Tato stránka vám pomůže nakonfigurovat ExpressRoute Direct pomocí portálu.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.author: cherylmc
-ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.author: duau
+ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903591"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401465"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Vytvoření ExpressRoute s přímým přístupem pomocí Azure Portal
 
@@ -61,7 +61,7 @@ Ověřte, jestli je ve vašem předplatném zaregistrovaný poskytovatel prostř
 
 1. Zadejte všechny značky prostředku a pak vyberte **zkontrolovat + vytvořit** a ověřte nastavení prostředků ExpressRoute Direct.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Zkontrolovat a vytvořit":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Podokno Zkontrolovat a vytvořit":::
 
 1. Vyberte **Vytvořit**. Zobrazí se zpráva s informacemi o tom, že probíhá nasazení. Stav se zobrazí na této stránce při vytváření prostředků. 
 
@@ -105,7 +105,7 @@ Následující kroky vám pomůžou vytvořit okruh ExpressRoute z pracovního p
 
 1. Zadejte všechny značky prostředků, vyberte **zkontrolovat + vytvořit** , aby bylo možné hodnoty před vytvořením prostředku ověřit.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Zkontrolovat a vytvořit":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Podokno Zkontrolovat a vytvořit":::
 
 1. Vyberte **Vytvořit**. Zobrazí se zpráva s informacemi o tom, že probíhá nasazení. Stav se zobrazí na této stránce při vytváření prostředků. 
 

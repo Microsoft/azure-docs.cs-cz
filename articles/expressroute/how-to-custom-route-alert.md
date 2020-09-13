@@ -2,17 +2,17 @@
 title: 'ExpressRoute: jak nakonfigurovat vlastní výstrahy pro inzerované trasy'
 description: V tomto článku se dozvíte, jak pomocí Azure Automation a Logic Apps monitorovat počet tras inzerovaných z brány ExpressRoute do místních sítí, aby se předešlo tomu, že se zasáhne limit trasy 200.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.author: cherylmc
-ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738477"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401720"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních upozornění pro monitorování inzerovaných tras
 
@@ -22,7 +22,7 @@ Tento článek vám pomůže s použitím Azure Automation a Logic Apps k nepře
 
 **Azure Logic Apps** naplánuje vlastní pracovní postup, který volá sadu Runbook Azure Automation. Spuštění Runbooku se provádí pomocí úlohy. Po spuštění shromažďování dat Azure Logic Apps pracovní postup tato data roztřídí a na základě kritérií shody v počtu předpon sítě nad nebo pod předdefinovaným prahem odesílá informace do cílové e-mailové adresy.
 
-### <a name="workflow"></a><a name="workflow"></a>Pracovního postupu
+### <a name="workflow"></a><a name="workflow"></a>Pracovní postup
 
 Nastavení vlastní výstrahy je založené na třech hlavních krocích:
 
@@ -78,7 +78,7 @@ Ve výchozím nastavení je role **přispěvatele** přiřazena k instančnímu 
 
 2. Vyberte **role** pro zobrazení používané definice role.
 
-   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Přiřadit roli":::
+   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Přiřazení role":::
 
 ## <a name="create-and-configure-runbooks"></a><a name="runbooks"></a>Vytváření a konfigurace runbooků
 
@@ -247,7 +247,7 @@ Při spuštění skriptu PowerShellu se shromáždí seznam hodnot:
 
 * Počet předpon sítě inzerovaných od brány ExpressRoute k druhému partnerskému uzlu protokolu BGP (peer2)
 
-* Časové razítko
+* Timestamp
 
 * Stav klasifikovaný jako:
 
@@ -257,7 +257,7 @@ Při spuštění skriptu PowerShellu se shromáždí seznam hodnot:
 
 * Zpráva s upozorněním pro podrobný popis stavu (OK, VÝSTRAHa, upozornění)
 
-Skript prostředí PowerShell převede shromážděné informace na výstup JSON. Sada Runbook pomocí rutiny PowerShellu [Write-Output](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?) jako výstupní Stream oznamuje informace klientovi.
+Skript prostředí PowerShell převede shromážděné informace na výstup JSON. Sada Runbook pomocí rutiny PowerShellu [Write-Output](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  jako výstupní Stream oznamuje informace klientovi.
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. ověření Runbooku
 
@@ -314,7 +314,7 @@ Aplikace logiky přistupuje k jiným aplikacím, službám a platformě i přes 
 
    :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="Přihlásit":::
 
-4. Zadejte **název připojení**, přidejte **ID klienta** (ID aplikace), **tajný klíč klienta**a **ID vašeho tenanta**. Pak vyberte **vytvořit**.
+4. Zadejte **název připojení**, přidejte **ID klienta** (ID aplikace), **tajný klíč klienta**a **ID vašeho tenanta**. Potom vyberte **Vytvořit**.
 
    :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Připojit s instančním objektem":::
 
@@ -431,7 +431,7 @@ Logic Apps poskytuje spoustu e-mailových konektorů. V tomto příkladu přidá
 
 1. Vyberte **Office 365 Outlook**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="Poslat e-mail":::
+   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="Odeslání e-mailu":::
 
 2. V seznamu **Akce** vyberte **Odeslat e-mail (v2)**.
 

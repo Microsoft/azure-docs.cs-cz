@@ -1,21 +1,21 @@
 ---
 title: Ověření propustnosti sítě VPN pro Microsoft Azure Virtual Network
-description: Účelem tohoto dokumentu je pomáhat uživateli ověřit propustnost sítě z místních prostředků na virtuální počítač Azure.
+description: Tento článek vám pomůže ověřit propustnost sítě z vašich místních prostředků na virtuální počítač Azure.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 05/29/2019
+ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998472"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398503"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
 
@@ -127,7 +127,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
 
 Stáhněte si nejnovější verzi [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 
-Zvažte vložení Latte.exe do samostatné složky, jako je například`c:\tools`
+Zvažte vložení Latte.exe do samostatné složky, jako je například `c:\tools`
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Povolení Latte.exe přes bránu Windows Firewall
 
@@ -217,7 +217,7 @@ Vytvoření instalace je rychlé
 
 > [!Note]
 > Ujistěte se, že během testování propustnosti mezi virtuálním počítačem a bránou neexistují žádné zprostředkující segmenty (např. virtuální zařízení).
-> Pokud existují špatné výsledky (z hlediska celkové propustnosti) pocházející z výše uvedených testů iPERF/NTTTCP, přečtěte si následující článek, který vám pomůže pochopit klíčové faktory za možnými hlavními příčinami problému:https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Pokud existují špatné výsledky (z hlediska celkové propustnosti) pocházející z výše uvedených testů iPERF/NTTTCP, přečtěte si následující článek, který vám pomůže pochopit klíčové faktory za možnými hlavními příčinami problému: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
 Konkrétně analýza trasování paketů (Wireshark/Sledování sítě) shromážděných paralelně od klienta a serveru během těchto testů pomůže při posuzování špatného výkonu. Tato trasování můžou zahrnovat ztrátu paketů, vysokou latenci a velikost MTU. fragmentace, okno protokolu TCP 0, fragmenty mimo pořadí a tak dále.
 
@@ -253,7 +253,7 @@ Latenci můžete kontrolovat pomocí následujících nástrojů:
 
 * WinMTR
 * TCPTraceroute
-* `ping`a `psping` (tyto nástroje můžou poskytovat dobrý odhad času RTT, ale nedají se použít ve všech případech.)
+* `ping` a `psping` (tyto nástroje můžou poskytovat dobrý odhad času RTT, ale nedají se použít ve všech případech.)
 
 ![Kontrolovat latenci](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 

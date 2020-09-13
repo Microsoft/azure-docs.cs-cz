@@ -1,28 +1,29 @@
 ---
-title: Překlad řeči pomocí služby Speech
+title: Přehled překladu řeči – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Služba Speech umožňuje přidat do aplikací, nástrojů a zařízení komplexní překlady řeči v reálném čase na více jazyků. Stejné rozhraní API lze použít pro překlad řeči na řeč i řeči na text.
+description: Překlad řeči umožňuje přidat do aplikací, nástrojů a zařízení komplexní překlady řeči v reálném čase, který nabízí více jazyků. Stejné rozhraní API lze použít pro překlad řeči na řeč i řeči na text. Tento článek představuje přehled výhod a možností služby překladu řeči.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/01/2020
 ms.author: erhopf
-ms.custom: devx-track-csharp
-ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
+keywords: Překlad řeči
+ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055528"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401210"
 ---
 # <a name="what-is-speech-translation"></a>Co je překlad řeči?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Překlad řeči ze služby Speech umožňuje v reálném čase využívat překlady zvukových streamů a převodů řeči na text v reálném čase. Pomocí sady Speech SDK mají vaše aplikace, nástroje a zařízení přístup ke zdroji přepisů a výstupům překladu pro daný zvuk. Průběžné výsledky přepisu a překladu se vrátí, protože se detekuje řeč a konečné výsledky je možné převést na syntetizované řeč.
+V tomto přehledu se dozvíte o výhodách a funkcích služby překladu řeči, která umožňuje překlad zvukových datových proudů v reálném čase na řeč a převod řeči na text. Pomocí sady Speech SDK mají vaše aplikace, nástroje a zařízení přístup ke zdroji přepisů a výstupům překladu pro daný zvuk. Průběžné výsledky přepisu a překladu se vrátí, protože se detekuje řeč a konečné výsledky je možné převést na syntetizované řeč.
 
 Překladatelské modul společnosti Microsoft používá dva různé přístupy: statistická strojové překlady (SMT) a neuronové Machine Translation (NMT). SMT používá pokročilou statistickou analýzu k odhadu nejlepší možné překlady s ohledem na kontext několika slov. Pomocí NMT se sítě neuronové používají k zajištění přesnější a přirozeného akustického překladu pomocí úplného kontextu vět k překladu slov.
 

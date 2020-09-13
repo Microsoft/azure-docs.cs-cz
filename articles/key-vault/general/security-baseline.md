@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d939c03aef8d155d83d20c7d8211e04fae26c228
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230275"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400462"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Standardní hodnoty zabezpečení Azure pro službu Key Vault
 
@@ -411,7 +411,7 @@ Plánování cloudového nasazení Azure Multi-Factor Authentication: https://do
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
 
-**Doprovodné**materiály: použijte Azure Active Directory (AAD) PRIVILEGED Identity Management (PIM) pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě. Detekce rizik AAD slouží k zobrazení výstrah a sestav na základě rizikového chování uživatelů. Pro další protokolování odešlete výstrahy Azure Security Center detekce rizik do Azure Monitor a nakonfigurujte vlastní výstrahy a oznámení pomocí skupin akcí.
+**Doprovodné**materiály: použijte Azure Active Directory (Azure AD) PRIVILEGED Identity Management (PIM) pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě. Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy týkající se rizikového chování uživatelů. Pro další protokolování odešlete výstrahy Azure Security Center detekce rizik do Azure Monitor a nakonfigurujte vlastní výstrahy a oznámení pomocí skupin akcí.
 
 Povolit rozšířenou ochranu před internetovými útoky (ATP) pro Azure Key Vault pro generování výstrah pro podezřelou aktivitu.
 
@@ -445,7 +445,7 @@ Jaká je podmínka umístění v Azure Active Directory podmíněný přístup?:
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Doprovodné**materiály: jako centrální ověřování a systém autorizací pro prostředky Azure, jako je například Key Vault, použijte Azure Active Directory (AAD). To umožňuje řízení přístupu na základě role (RBAC) spravovat citlivé prostředky.
+**Doprovodné**materiály: použití Azure Active Directory (Azure AD) jako centrálního ověřování a autorizačního systému pro prostředky Azure, jako je například Key Vault. To umožňuje řízení přístupu na základě role (RBAC) spravovat citlivé prostředky.
 
  
 
@@ -460,7 +460,7 @@ https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Pokyny**: Projděte si protokoly Azure Active Directory (AAD), které vám pomůžou zjistit zastaralé účty s Azure Key Vault administrativními rolemi. Pomocí kontrol přístupu AAD můžete navíc efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím, které se dají použít pro přístup k Azure Key Vault a přiřazení rolí. Přístup uživatelů by se měl pravidelně kontrolovat, například každých 90 dní, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
+**Pokyny**: Projděte si protokoly Azure Active Directory (Azure AD), které vám pomůžou zjistit zastaralé účty s Azure Key Vault administrativní role. Navíc můžete pomocí kontrol přístupu Azure AD efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím, které se dají použít pro přístup k Azure Key Vault a přiřazení rolí. Přístup uživatelů by se měl pravidelně kontrolovat, například každých 90 dní, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
 Azure Active Directory sestavy a monitorovací dokumentace:
 
@@ -1009,11 +1009,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 Postup vytvoření Key Vault:
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Jak zajistit Key Vault ověřování pomocí spravované identity: 
+Ověření Key Vault:
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Jak přiřadit zásadu přístupu Key Vault:
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1025,16 +1029,13 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
   
 
-Jak integrovat se spravovanými identitami Azure: 
+* [Integrace se spravovanými identitami Azure](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
+* [Vytvoření Key Vault](quick-create-portal.md)
 
-Postup vytvoření Key Vault: 
+* [Ověření Key Vault](authentication.md)
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal    
-
-Jak zajistit Key Vault ověřování pomocí spravované identity:  
-https://docs.microsoft.com/azure/key-vault/managed-identity
+* [Postup přiřazení zásady přístupu Key Vault](assign-access-policy-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

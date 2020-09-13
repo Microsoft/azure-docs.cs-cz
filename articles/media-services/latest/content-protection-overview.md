@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 81ec96d244c36c0328134b415465d632ef6c1dd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267917"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401380"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrana obsahu pomocí Media Services dynamického šifrování
 
@@ -156,6 +156,10 @@ Protokol Smooth Streaming podporuje následující formáty kontejneru a schéma
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
+|fMP4 | PIFF 1,1 (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> Podpora PIFF 1,1 je poskytována jako zpětně kompatibilní řešení pro inteligentní TV (Samsung, LG), které implementovalo úvodní verzi programu Common Encryption. Doporučuje se používat jenom formát PIFF, pokud je to potřeba pro podporu inteligentních televizorů legacey Samsung nebo LG dodaných mezi 2009-2015, které podporují verzi PIFF 1,1 šifrování PlayReady. 
 
 ### <a name="browsers"></a>Browsers
 
@@ -238,7 +242,7 @@ Následující šablony použijte, pokud chcete zadat jinou službu pro doručov
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: Totéž jako předchozí šablona, pouze pro Widevine. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: Totéž jako předchozí šablona, pouze pro FairPlay.  
 
-Příklad:
+Například:
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
@@ -251,7 +255,7 @@ Příklady REST, které používají vlastní licence nebo adresy URL pro získ�
 > [!NOTE]
 > Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstraňování potíží
 
 Pokud se zobrazí `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` Chyba, ujistěte se, že zadáváte vhodné zásady streamování.
 

@@ -2,17 +2,17 @@
 title: Připojit kořenovou nebo vrcholovou doménu k existujícímu frontě Azure Portal
 description: Naučte se, jak připojit kořenovou nebo vrcholovou doménu k existujícím předním dveřím pomocí Azure Portal.
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 05267ad43f6e7f89ec50b1765d2475a02fae1702
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743588"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399568"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Onboarding kořenové nebo vrcholové domény ve službě Front Door
 Přední dveře Azure pomocí záznamů CNAME ověří vlastnictví domény pro připojování vlastních domén. Přední dveře také nezveřejňují front-end IP adresu přidruženou k profilu front-endu, takže nemůžete mapovat svou doménu vrcholu na IP adresu, pokud je cílem připojit se do front-endu Azure.
@@ -62,7 +62,7 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="enable-https-on-your-custom-domain"></a>Povolení HTTPS pro vlastní doménu
 
 1. Klikněte na vlastní doménu, kterou jste přidali, a v části **vlastní doména https**změňte stav na **povoleno**.
-2. Vyberte **typ správy certifikátů** použít vlastní _certifikát_.
+2. Vyberte  **typ správy certifikátů** použít vlastní _certifikát_.
 
 > [!WARNING]
 > Typ správy certifikátů na předních dveřích se v současné době pro vrcholy nebo kořenové domény nepodporuje. Jediná možnost, která je k dispozici pro povolení protokolu HTTPS ve vrcholu nebo kořenové doméně pro přední dveře, používá vlastní certifikát TLS/SSL hostovaný na Azure Key Vault.

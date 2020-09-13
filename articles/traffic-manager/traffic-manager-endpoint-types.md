@@ -3,20 +3,20 @@ title: Traffic Manager typy koncových bodů | Microsoft Docs
 description: Tento článek popisuje různé typy koncových bodů, které je možné používat s Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: rohink
-ms.openlocfilehash: cd5c6968425c64bd670e56bbe7ae016c59662169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698661"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401278"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 

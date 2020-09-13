@@ -3,20 +3,20 @@ title: Konfigurace pro vícehodnotové směrování provozu – Azure Traffic Ma
 description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager pro směrování provozu do koncových bodů A/AAAA.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: rohink
-ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706813"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401040"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurace metody směrování s více hodnotami v Traffic Manager
 
@@ -44,7 +44,7 @@ Vytvořte profil Traffic Manager, který směruje provoz uživatele odesláním 
     | ---                     | ---                                                |
     | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Vyberte metodu směrování s více **hodnotami** .                                       |
-    | Předplatné            | Vyberte své předplatné.                          |
+    | Předplatné            | Vyberte předplatné.                          |
     | Skupina prostředků          | Vyberte *myResourceGroupTM1*. |
     | Umístění                | Toto nastavení se týká umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.                              |
    |        |           | 

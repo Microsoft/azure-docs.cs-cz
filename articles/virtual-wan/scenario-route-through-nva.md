@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852090"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400020"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scénář: směrování provozu přes síťové virtuální zařízení
 
@@ -42,11 +42,11 @@ Následující matice připojení shrnuje toky podporované v tomto scénáři:
 | Z             | Do:|   *SÍŤOVÉ virtuální zařízení paprsky*|*SÍŤOVÉ virtuální zařízení virtuální sítě*|*Virtuální sítě bez síťové virtuální zařízení*|*Větve*|
 |---|---|---|---|---|---|
 | **SÍŤOVÉ virtuální zařízení paprsky**   | &#8594; | 0/0 UDR  |  Partnerské vztahy |   0/0 UDR    |  0/0 UDR  |
-| **SÍŤOVÉ virtuální zařízení virtuální sítě**    | &#8594; |   Statická |      X   |        X     |      X    |
-| **Virtuální sítě bez síťové virtuální zařízení**| &#8594; |   Statická |      X   |        X     |      X    |
-| **Větve**     | &#8594; |   Statická |      X   |        X     |      X    |
+| **SÍŤOVÉ virtuální zařízení virtuální sítě**    | &#8594; |   Static |      X   |        X     |      X    |
+| **Virtuální sítě bez síťové virtuální zařízení**| &#8594; |   Static |      X   |        X     |      X    |
+| **Větve**     | &#8594; |   Static |      X   |        X     |      X    |
 
-Každá z buněk v matici připojení popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů. Zvažte použití těchto zdrojů:
+Každá z buněk v matici připojení popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů. "X" znamená, že připojení je nativně zajištěno službou Virtual WAN a "static" znamená, že připojení je zajištěno přes virtuální síť WAN pomocí statických tras. Zvažte použití těchto zdrojů:
 
 * SÍŤOVÉ virtuální zařízení paprsky nespravuje virtuální síť WAN. V důsledku toho bude uživatel spravovat mechanismy, se kterými budou komunikovat s ostatními virtuální sítě nebo větvemi. Připojení k virtuální síti síťové virtuální zařízení je zajišťováno partnerským vztahem virtuální sítě a výchozí trasa s hodnotou 0.0.0.0/0 ukazující na síťové virtuální zařízení jako další směrování by se měla týkat připojení k Internetu, k ostatním paprskům a k větvím.
 * SÍŤOVÉ virtuální zařízení virtuální sítě ví o svých vlastních paprskech síťové virtuální zařízení, ale ne o síťové virtuální zařízení paprsky, které jsou připojené k ostatním síťové virtuální zařízení virtuální sítě. Například v tabulce 1 virtuální síť 2 zná informace o virtuální síti 5 a virtuální síti 6, ale ne o ostatních paprskech, jako jsou virtuální sítě 7 a virtuální síť 8. Pro vložení předpon ostatních paprsků do síťové virtuální zařízení virtuální sítě se vyžaduje statická trasa.
