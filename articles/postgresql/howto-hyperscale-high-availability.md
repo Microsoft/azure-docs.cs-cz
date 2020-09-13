@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/04/2019
-ms.openlocfilehash: 0c7702c8832e22d889a5d785dad845430bfb7d17
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: f08fb01cf26ddf73d31b575242b27d7d8b4017d9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116875"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033267"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Konfigurace vysoké dostupnosti Citus (High-Scale)
 
@@ -21,7 +21,7 @@ Azure Database for PostgreSQL – Citus (vysoká úroveň) poskytuje vysokou dos
 > [!IMPORTANT]
 > Vzhledem k tomu, že HA nazdvojnásobuje počet serverů ve skupině, bude také dvojnásobek nákladů.
 
-Povolení vysoké dostupnosti je možné během vytváření skupiny serverů nebo později na kartě **Konfigurace** pro skupinu serverů v Azure Portal. Uživatelské rozhraní vypadá podobně v obou případech. Přetáhněte posuvník pro **vysokou dostupnost** na Ano:
+Povolení vysoké dostupnosti je možné během vytváření skupiny serverů nebo později na kartě **COMPUTE + úložiště** pro skupinu serverů v Azure Portal. Uživatelské rozhraní vypadá podobně v obou případech. Přetáhněte posuvník pro **vysokou dostupnost** z ne na Ano:
 
 ![posuvník ha](./media/howto-hyperscale-high-availability/01-ha-slider.png)
 

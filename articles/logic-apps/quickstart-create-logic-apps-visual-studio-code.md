@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 019c78236ed0cc689de09a9ee04ebb6a0b9243b1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131476"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033587"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Rychlé zprovoznění: Vytváření a správa definic pracovních postupů aplikací logiky pomocí Visual Studio Code
 
@@ -130,7 +130,7 @@ Než začnete, ujistěte se, že máte tyto položky:
    Například tady je ukázková definice pracovního postupu aplikace logiky, která začíná triggerem RSS a akcí Office 365 Outlook. Prvky JSON se obvykle zobrazují abecedně v jednotlivých oddílech. Tato ukázka ale tyto prvky zobrazuje přibližně v pořadí, ve kterém se v Návrháři objeví kroky aplikace logiky.
 
    > [!IMPORTANT]
-   > Pokud chcete tuto ukázkovou definici aplikace logiky použít znovu, budete potřebovat účet organizace Office 365, například @fabrikam.com . Zajistěte, aby se fiktivní e-mailová adresa nahradila vlastní e-mailovou adresou. Pokud chcete použít jiný e-mailový konektor, jako je Outlook.com nebo Gmail, nahraďte `Send_an_email_action` akci podobnou akcí dostupnou z [e-mailového konektoru, který podporuje Azure Logic Apps](../connectors/apis-list.md).
+   > Pokud chcete tuto ukázkovou definici aplikace logiky použít znovu, budete potřebovat účet organizace, například @fabrikam.com . Zajistěte, aby se fiktivní e-mailová adresa nahradila vlastní e-mailovou adresou. Pokud chcete použít jiný e-mailový konektor, jako je Outlook.com nebo Gmail, nahraďte `Send_an_email_action` akci podobnou akcí dostupnou z [e-mailového konektoru, který podporuje Azure Logic Apps](../connectors/apis-list.md).
    >
    > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. 
    > Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). 

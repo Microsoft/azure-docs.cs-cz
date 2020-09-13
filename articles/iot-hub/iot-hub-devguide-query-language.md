@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022441"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031173"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modulů, úlohy a směrování zpráv
 
@@ -234,7 +234,7 @@ Objekt dotazu zpřístupňuje více **dalších** hodnot v závislosti na možno
 ### <a name="limitations"></a>Omezení
 
 > [!IMPORTANT]
-> Výsledkem dotazu může být několik minut zpoždění s ohledem na nejnovější hodnoty v nevlákenách zařízení. Pokud se dotazuje jednotlivé zařízení na základě ID, použijte [REST API získat dvojitou](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin). Toto rozhraní API vždycky vrátí nejnovější hodnoty a má vyšší omezení omezování. REST API můžete vystavit přímo nebo použít ekvivalentní funkce v jedné ze [sad SDK služby Azure IoT Hub](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
+> Výsledkem dotazu může být několik minut zpoždění s ohledem na nejnovější hodnoty v nevlákenách zařízení. Pokud se dotazuje jednotlivé zařízení na základě ID, použijte [REST API získat dvojitou](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Toto rozhraní API vždycky vrátí nejnovější hodnoty a má vyšší omezení omezování. REST API můžete vystavit přímo nebo použít ekvivalentní funkce v jedné ze [sad SDK služby Azure IoT Hub](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
 V současné době jsou porovnání podporovány pouze mezi primitivními typy (žádné objekty), například `... WHERE properties.desired.config = properties.reported.config` je podporována pouze v případě, že tyto vlastnosti mají primitivní hodnoty.
 
@@ -450,9 +450,9 @@ Podporovány jsou následující operátory:
 
 | Rodina | Operátory |
 | --- | --- |
-| Průměr |+, -, *, /, % |
-| Logický |A, NEBO, NOT |
-| Porovnání |=,! =, <, >, <=, >=,  <> |
+| Aritmetické |+, -, *, /, % |
+| Logické |A, NEBO, NOT |
+| Porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
 

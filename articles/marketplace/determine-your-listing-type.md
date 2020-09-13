@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484863"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032380"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 
@@ -45,7 +45,7 @@ V následující tabulce jsou uvedeny možnosti publikování pro typy nabídek 
 
 &#42; SaaS aplikace v režimu Transact v Microsoft AppSource jsou momentálně pouze kreditními kartami.
 
-Nabídky &#42;&#42; Microsoft 365 jsou zdarma a je možné je můžou finančně zhodnocovat prostřednictvím SaaS nabídky jako licenční služba. Další informace najdete v tématu [monetizovat vašeho doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Nabídky &#42;&#42; Microsoft 365 jsou zdarma a je možné je můžou finančně zhodnocovat prostřednictvím SaaS nabídky jako licenční služba. Další informace najdete v tématu [monetizovat Microsoft 365ho doplňku prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ## <a name="choose-a-listing-option"></a>Zvolit možnost výpisu
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320592"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032992"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Preview)
 
@@ -85,7 +85,7 @@ Clustery nasazené ve dvou oblastech budou za běžných okolností fungovat nez
 - [Azure Traffic Manager](../traffic-manager/index.yml) pro oblast detekuje sondu stavu a přepne koncový bod do spárované oblasti.
 - Existující připojení nebudou fungovat a budou se zobrazovat interní chyby serveru nebo problémy s časovým limitem.
 - Všechny operace roviny ovládacího prvku budou zablokovány. Zákazníci nebudou moct vytvářet poskytovatele ověření identity a zásady aktualizace v primární oblasti.
-- Všechny operace roviny dat, včetně ověření identity, budou i nadále fungovat v primární oblasti.
+- Všechny operace roviny dat, včetně volání ověřování, budou i nadále fungovat v primární oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 - Seznamte se se [základními koncepty Azure Attestation](basic-concepts.md)

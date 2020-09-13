@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b14dd4aa44620f2b13891a18fc473acbcb0f3245
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084680"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033026"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Jak vyřešit Azure Advisor doporučení
 
@@ -34,7 +34,7 @@ Postup při povolování ověřovacího prostředí:
 
 2. V dalším kroku vyberte fond hostitelů, který chcete změnit z provozního prostředí, na prostředí ověřování.
 
-3. Ve fondu hostitelů vyberte kartu **vlastnosti** ve sloupci na pravé straně obrazovky. V dalším kroku se posuňte dolů, dokud se nezobrazí "prostředí pro ověřování". Vyberte **Ano**a pak vyberte **použít**.
+3. Ve fondu hostitelů vyberte v levém sloupci položku **vlastnosti** . V dalším kroku se posuňte dolů, dokud se nezobrazí "prostředí pro ověřování". Vyberte **Ano**a pak vyberte **použít**.
 
 >[!div class="mx-imgBorder"]
 >![Snímek obrazovky nabídky vlastností "Prostředí pro ověřování" je zvýrazněné červeně a je vybráno "Ano" bublinu.](media/validation-yes.png)

@@ -7,16 +7,16 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: c6cc09a0396d20e06371e85ef6d83744a94b856c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2db9649fd52c96ded5233311f3cf275da5d5ea86
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648916"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033145"
 ---
 # <a name="monitor-and-manage-wunderlist-in-azure-logic-apps"></a>Monitorování a Správa Wunderlistu v Azure Logic Apps
 
-Od 6. května 2020 [Služba wunderlistu vypnula](https://www.wunderlist.com/) a požádala zákazníky o [migraci svých dat a začít používat k tomu Microsoft](https://www.wunderlist.com/blog/goodbye-from-wunderlist/). K nahrazení zastaralého konektoru Wunderlistu můžete použít [konektor Microsoft to](/connectors/todo/) do.
+Od 6. května 2020 [Služba wunderlistu vypnula](https://www.wunderlist.com/) a požádala zákazníky o [migraci svých dat a začít používat k tomu Microsoft](https://www.wunderlist.com/blog/goodbye-from-wunderlist/). K nahrazení zastaralého [konektoru wunderlistu](https://preview.flow.microsoft.com/connectors/shared_wunderlist/wunderlist/)můžete použít [konektor Microsoft to](/connectors/todo/) do.
 
 ## <a name="next-steps"></a>Další kroky
 

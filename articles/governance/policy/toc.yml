@@ -184,9 +184,9 @@
     - name: Azure PowerShell
       items:
         - name: Zásada
-          href: /powershell/module/az.resources/#policies
+          href: /powershell/module/az.resources#policy
         - name: Policy Insights
-          href: /powershell/module/az.policyinsights#policy_insights
+          href: /powershell/module/az.policyinsights
         - name: Konfigurace hosta
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
     - name: Sada Azure SDK pro .NET

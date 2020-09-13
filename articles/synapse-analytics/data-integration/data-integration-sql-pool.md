@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 63e83e69e5e09c17b2a2ddb5ca7bee6474e2fddd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 02efaf3f0382a7af63717e777036637de2bbec25
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386669"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033196"
 ---
 # <a name="ingest-data-into-a-sql-pool"></a>Ingestování dat do fondu SQL
 
 V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úložiště Gen 2 do fondu SQL pomocí Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet úložiště Azure**: Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
@@ -28,28 +28,28 @@ V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úlo�
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
-V Azure synapse Analytics je propojená služba, kde můžete definovat informace o připojení k ostatním službám. V této části přidáte do služby Azure synapse Analytics a Azure Data Lake Storage Gen2 propojenou službu.
+V Azure synapse Analytics je propojená služba, kde můžete definovat informace o připojení k ostatním službám. V této části přidáte propojenou službu Azure synapse Analytics a Azure Data Lake Storage Gen2.
 
 1. Otevřete uživatelské prostředí Azure synapse Analytics a na kartě **Spravovat** .
 1. V části **externí připojení**vyberte **propojené služby**.
-1. Chcete-li přidat propojenou službu, klikněte na tlačítko **Nový**.
-1. V seznamu Vyberte dlaždici Azure Data Lake Storage Gen2 a klikněte na **pokračovat**.
-1. Zadejte přihlašovací údaje pro ověření. Typy ověřování aktuálně podporují klíč účtu, instanční objekt a spravovanou identitu. Kliknutím na test připojení ověřte správnost vašich přihlašovacích údajů. Po dokončení klikněte na **vytvořit** .
+1. Chcete-li přidat propojenou službu, vyberte možnost **Nový**.
+1. V seznamu Vyberte dlaždici Azure Data Lake Storage Gen2 a vyberte **pokračovat**.
+1. Zadejte přihlašovací údaje pro ověření. Typy ověřování aktuálně podporují klíč účtu, instanční objekt a spravovanou identitu. Vyberte test připojení a ověřte správnost vašich přihlašovacích údajů. Po dokončení vyberte **Vytvořit**.
 1. Opakujte kroky 3-5, ale místo Azure Data Lake Storage Gen2 vyberte dlaždici Azure synapse Analytics a zadejte do odpovídajících přihlašovacích údajů pro připojení. Pro Azure synapse Analytics se v současné době podporuje ověřování SQL, spravovaná identita a instanční objekt.
 
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
 Kanál obsahuje logický tok pro spuštění sady aktivit. V této části vytvoříte kanál s aktivitou kopírování, která ingestuje data z ADLS Gen2 do fondu SQL.
 
-1. Přejděte na kartu **Orchestration** . klikněte na ikonu plus vedle záhlaví kanály a vyberte **kanál**.
+1. Přejít na kartu **Orchestration** . Vyberte ikonu plus vedle záhlaví kanály a vyberte **kanál**.
 1. V části **přesunout a transformovat** v podokně aktivity přetáhněte **Kopírovat data** na plátno kanálu.
-1. Klikněte na aktivitu kopírování a přejděte na kartu **zdroj** . Kliknutím na **Nový** vytvořte novou zdrojovou datovou sadu.
-1. Jako úložiště dat vyberte Azure Data Lake Storage Gen2 a klikněte na pokračovat.
-1. Jako formát vyberte DelimitedText a klikněte na pokračovat.
-1. V podokně nastavit vlastnosti vyberte propojenou službu ADLS, kterou jste vytvořili. Zadejte cestu k souboru zdrojových dat a určete, zda má první řádek záhlaví. Schéma můžete importovat z úložiště souborů nebo z ukázkového souboru. Po dokončení klikněte na OK.
-1. Přejděte na kartu **jímka** . Kliknutím na **Nový** vytvořte novou datovou sadu jímky.
-1. Jako úložiště dat vyberte Azure synapse Analytics a klikněte na pokračovat.
-1. V podokně nastavit vlastnosti vyberte propojenou službu Azure synapse Analytics, kterou jste vytvořili. Pokud píšete do existující tabulky, vyberte ji z rozevíracího seznamu. V opačném případě klikněte na příkaz **Upravit** a zadejte nový název tabulky. Po dokončení klikněte na OK.
+1. Vyberte aktivitu kopírování a přejít na kartu **zdroj** . Pokud chcete vytvořit novou zdrojovou datovou sadu, vyberte **Nový** .
+1. Jako úložiště dat vyberte Azure Data Lake Storage Gen2 a vyberte pokračovat.
+1. Jako formát vyberte DelimitedText a vyberte pokračovat.
+1. V podokně nastavit vlastnosti vyberte propojenou službu ADLS, kterou jste vytvořili. Zadejte cestu k souboru zdrojových dat a určete, zda má první řádek záhlaví. Schéma můžete importovat z úložiště souborů nebo z ukázkového souboru. Po dokončení vyberte OK.
+1. Přejít na kartu **jímka** . Vyberte **Nový** , chcete-li vytvořit novou datovou sadu jímky.
+1. Jako úložiště dat vyberte Azure synapse Analytics a vyberte pokračovat.
+1. V podokně nastavit vlastnosti vyberte propojenou službu Azure synapse Analytics, kterou jste vytvořili. Pokud píšete do existující tabulky, vyberte ji z rozevíracího seznamu. V opačném případě klikněte na příkaz **Upravit** a zadejte nový název tabulky. Po dokončení vyberte OK.
 1. Pokud vytváříte tabulku, povolte **automaticky vytvořit tabulku** v poli možnost tabulky.
 
 ## <a name="debug-and-publish-pipeline"></a>Ladění a publikování kanálu
@@ -58,7 +58,7 @@ Po dokončení konfigurace kanálu můžete spustit ladění před publikování
 
 1. K ladění kanálu vyberte na panelu nástrojů **Ladit**. Na kartě **Výstup** v dolní části okna se zobrazí stav spuštění kanálu. 
 1. Po úspěšném spuštění kanálu klikněte na horním panelu nástrojů na **publikovat vše**. Tato akce publikuje entity (datové sady a kanály), které jste vytvořili ve službě synapse Analytics.
-1. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. Chcete-li zobrazit oznamovací zprávy, klikněte na tlačítko zvonku vpravo nahoře. 
+1. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. Pokud chcete zobrazit oznamovací zprávy, vyberte v pravém horním rohu tlačítko zvonku. 
 
 
 ## <a name="trigger-and-monitor-the-pipeline"></a>Aktivace a monitorování kanálu
@@ -73,4 +73,4 @@ V tomto kroku ručně aktivujete kanál publikovaný v předchozím kroku.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o integraci dat pro synapse Analytics najdete v článku ingestování [dat do Azure Data Lake Storage Gen2](data-integration-data-lake.md) článku.
+Další informace o integraci dat pro synapse Analytics najdete v článku ingestování [dat do Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) článku.

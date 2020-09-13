@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104227"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033247"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Možnost spoluprodeje v Partnerském centru
 
@@ -62,11 +62,11 @@ Můžete přidat až tři oblasti řešení pro vaši nabídku. Pro každou obla
 
 ## <a name="documents"></a>Dokumenty
 
-Pro účely vyhodnocení zákaznických potřeb můžete společnosti Microsoft poskytnout materiály.
+Máte možnost poskytnout dokumentaci, kterou Microsoft bude používat k získání dalších informací o vaší nabídce, a vyhodnotit, co vyhovuje vašim potřebám zákazníků. Všechny dokumenty uvedené v následující tabulce jsou volitelné.
 
 | **Dokumenty**    | **Popis**  |
 | :------------------- | :-------------------|
-| *Zákazník – jeden – pager* | Popis vaší nabídky připravené pro zákazníka Prodejní týmy Microsoftu můžou tyto informace sdílet se zákazníky, aby zjistili, jestli vaše nabídka může být dobrá a aby se zajistilo, že je připravená na zákazníka. <br> <br> Použijte jednu z relevantních šablon, které jsou k dispozici v partnerském centru: <br> <ul> <li> Microsoft Azure šablonu s jedním stránkováním </li> <li> Microsoft Dynamics 365 1 – Šablona stránkování </li> <li> Office 365 1 – Šablona stránkování </li> <li> Windows 10 1 – Šablona stránkování </li> </ul> |
+| *Zákazník – jeden – pager* | Popis vaší nabídky připravené pro zákazníka Prodejní týmy Microsoftu můžou tyto informace sdílet se zákazníky, aby zjistili, jestli vaše nabídka může být dobrá a aby se zajistilo, že je připravená na zákazníka. <br> <br> Použijte jednu z relevantních šablon, které jsou k dispozici v partnerském centru: <br> <ul> <li> Microsoft Azure šablonu s jedním stránkováním </li> <li> Microsoft Dynamics 365 1 – Šablona stránkování </li> <li> Microsoft 365 1 – Šablona stránkování </li> <li> Windows 10 1 – Šablona stránkování </li> </ul> |
 | *Prezentace zákazníků* | Posunutí balíčku k rozteči vašeho řešení a jeho umístění hodnoty Když si zajistěte, aby vaše nabídka byla připravená pro zákazníky, prodejní týmy Microsoftu můžou prezentaci sdílet se zákazníky, aby vyjadřují hodnotu, kterou obě společnosti přinášejí při nasazování společného řešení. Prezentace by měla zahrnovat to, co vaše řešení dělá, jak může pomáhat zákazníkům, v jakém odvětví je řešení a jak se porovnává s konkurenčními řešeními. <br> <br> Použijte šablonu dostupnou v partnerském centru.|
 | *Případová studie zákazníka* | Tyto informace zobrazují potenciální zákazníky, jak vy a Microsoft úspěšně nasadili toto řešení v předchozích případech. <br> <br> Použijte šablonu dostupnou v partnerském centru. |
 | *Ověřitelné odběratele služby WINS (volitelné)* | Konkrétní příklady úspěšnosti zákazníků po nasazení vašeho řešení |
@@ -79,14 +79,14 @@ Pro účely vyhodnocení zákaznických potřeb můžete společnosti Microsoft 
 
 Vaše kontaktní informace umožní prodejcům v oddělení Microsoftu a prodejcům kanálů požádat o další informace z příslušného zdroje ve vaší organizaci. Kontaktní údaje jsou k dispozici pro všechny prodejní týmy Microsoftu. Pokud se rozhodnete zpřístupnit nabídku v programu CSP, jsou tyto kontaktní informace k dispozici také pro prodejce kanálů.
 
-Tento dokument poskytuje pokyny k různým rolím pro partnery a jejich výběr. Kontakty můžete zadat stažením šablony CSV z partnerského centra, vyplněním každého řádku a zadáním informací o kontaktu a importem tohoto souboru CSV. Import souboru CSV přepíše existující kontakty.
+Kontakty můžete zadat stažením šablony CSV z partnerského centra, vyplněním každého řádku a zadáním informací o kontaktu a importem tohoto souboru CSV. Import souboru CSV přepíše existující kontakty.
 
 Můžete také exportovat existující seznam kontaktů nabídky a následně provést změny v tomto souboru.
 
 * *Název (povinné)*: jméno kontaktu.
 * *E-mailová adresa (povinné)*: e-mailová adresa kontaktu
 * *Pozice úlohy (povinné)*: pracovní pozice.
-* *Role (povinné)*: v tomto poli v šabloně použijte jednu z následujících rolí.
+* *Role (povinné)*: použijte některou z následujících rolí.
 
     | **Role**    | **Popis**  |
     | :------------------- | :-------------------|

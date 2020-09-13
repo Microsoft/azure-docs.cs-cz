@@ -6,14 +6,14 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 38678c795b0ce7534de0ca8602c1198bc35f0e05
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a9e5660e6fbf1e1329af8622e982d44a4da3d86b
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206192"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033604"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Kurz: vytvoření definice úlohy Apache Spark v synapse studiu
 
@@ -27,7 +27,7 @@ Tento kurz se zabývá následujícími úkony:
 * Odeslání definice úlohy Apache Spark jako úlohy služby Batch
 * Přidání definice úlohy Apache Spark do kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 

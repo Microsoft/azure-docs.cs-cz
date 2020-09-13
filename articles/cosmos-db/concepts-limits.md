@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400309"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033009"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -163,7 +163,17 @@ Cosmos DB používá pro autorizaci HMAC. K prostředkům, jako jsou kontejnery,
 | Maximální doba vypršení platnosti tokenu prostředku | ve výchozím nastavení je 24 h. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .|
 | Maximální časové zkosení pro autorizaci tokenů| 15 min |
 
-Cosmos DB podporuje provádění triggerů během zápisu. Služba podporuje maximálně jednu aktivační událost a jednu operaci post-Trigger na operaci zápisu. 
+Cosmos DB podporuje provádění triggerů během zápisu. Služba podporuje maximálně jednu aktivační událost a jednu operaci post-Trigger na operaci zápisu.
+
+## <a name="metadata-request-limits"></a>Omezení požadavků na metadata
+
+Azure Cosmos DB udržuje systémová metadata pro každý účet. Tato metadata vám umožní vytvořit výčet kolekcí, databází, dalších Azure Cosmos DBch prostředků a jejich konfigurací zdarma.
+
+| Prostředek | Výchozí omezení |
+| --- | --- |
+|Maximální počet vytvoření kolekce ZNO minuta| 5|
+|Maximální počet vytvoření databáze za minutu|   5|
+|Maximální zajištěná četnost aktualizací propustnosti za minutu| 5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Omezení pro zřízenou propustnost automatického škálování
 

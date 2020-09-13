@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b546e6ba6967edcf41e2830a639e69d436827c40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a4ce92278d5f6704fec4a5b9d30b44ddf89b0ad
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429600"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033434"
 ---
 # <a name="dynamic-sql-in-synapse-sql"></a>Dynamické SQL v synapse SQL
 V tomto článku najdete tipy pro použití dynamického SQL a vývoj řešení pomocí synapse SQL.

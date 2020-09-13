@@ -1,21 +1,22 @@
 ---
-title: Připojit k účtu SFTP
-description: Automatizace úloh a procesů, které sledují, vytváří, spravují, odesílají a přijímají soubory pro server SFTP prostřednictvím SSH pomocí Azure Logic Apps
+title: Připojit k účtu SFTP (zastaralé)
+description: Automatizace úloh a procesů, které sledují, vytváří, spravují, odesílají a přijímají soubory pro server SFTP pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: divswa, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ROBOTS: NOINDEX
+ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789269"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033298"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí Azure Logic Apps
+# <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP v Azure Logic Apps
 
 > [!IMPORTANT]
 > Použijte prosím [konektor SFTP-SSH](../connectors/connectors-sftp-ssh.md) , protože konektor SFTP je zastaralý. V návrháři aplikace logiky už nemůžete vybírat triggery a akce protokolu SFTP.
@@ -116,7 +117,7 @@ Tato akce načte obsah ze souboru na serveru SFTP. Například můžete přidat 
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/sftpconnector/)konektoru.
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/azure/data-factory/connector-sftp)konektoru.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272895"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033519"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -226,6 +226,8 @@ Vlastní koncový bod služby Service Bus je teď nastavený tak, aby používal
 
 Funkce nahrávání souborů IoT Hub umožňuje zařízením nahrávat soubory do účtu úložiště ve vlastnictví zákazníka. Aby mohl nahrávání souboru fungovat, musí mít obě zařízení i IoT Hub připojení k účtu úložiště. Pokud jsou na účtu úložiště zavedena omezení brány firewall, musí vaše zařízení získat připojení pomocí některého z podporovaných mechanismů účtu úložiště (včetně [privátních koncových bodů](../private-link/create-private-endpoint-storage-portal.md), [koncových bodů služby](../virtual-network/virtual-network-service-endpoints-overview.md)nebo [přímé konfigurace brány firewall](../storage/common/storage-network-security.md)). Podobně platí, že pokud jsou na účtu úložiště zavedena omezení brány firewall, IoT Hub musí být nakonfigurovaná pro přístup k prostředku úložiště přes důvěryhodnou výjimku služby Microsoftu. Pro tento účel IoT Hub nutné mít spravovanou identitu. Po zřízení spravované identity postupujte podle následujících kroků a udělte vašemu účtu úložiště oprávnění RBAC k identitě prostředku vašeho rozbočovače.
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
 1. V Azure Portal přejděte na kartu **řízení přístupu (IAM)** účtu úložiště a v části **Přidat přiřazení role** klikněte na **Přidat** .
 
 2. Vyberte **Přispěvatel dat objektu BLOB úložiště** ([*ne* přispěvatel nebo přispěvatel účtu úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) jako **role**, **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
@@ -250,7 +252,7 @@ Tato funkce vyžaduje připojení z IoT Hub k účtu úložiště. Aby bylo mož
 
 3. V účtu úložiště přejděte na kartu **brány firewall a virtuální sítě** a povolte možnost **Povolit přístup z vybraných sítí** . V seznamu **výjimek** zaškrtněte políčko pro **Povolení přístupu k tomuto účtu úložiště důvěryhodným službám Microsoftu**. Klikněte na tlačítko **Uložit**.
 
-Teď můžete použít rozhraní REST API Azure IoT pro [vytváření úloh importu exportu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) , kde najdete informace o tom, jak používat funkce hromadného importu a exportu. V textu žádosti budete muset zadat a `storageAuthenticationType="identityBased"` použít `inputBlobContainerUri="https://..."` a `outputBlobContainerUri="https://..."` jako vstupní a výstupní adresy URL vašeho účtu úložiště.
+Teď můžete použít rozhraní REST API Azure IoT pro [vytváření úloh importu exportu](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) , kde najdete informace o tom, jak používat funkce hromadného importu a exportu. V textu žádosti budete muset zadat a `storageAuthenticationType="identityBased"` použít `inputBlobContainerUri="https://..."` a `outputBlobContainerUri="https://..."` jako vstupní a výstupní adresy URL vašeho účtu úložiště.
 
 Sady SDK pro Azure IoT Hub podporují tuto funkci také ve Správci registru klienta služby. Následující fragment kódu ukazuje, jak iniciovat úlohu importu nebo úlohu exportu v rámci používání sady C# SDK.
 

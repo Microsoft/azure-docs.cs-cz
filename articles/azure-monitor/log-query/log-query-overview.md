@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539597"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033162"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled dotazů protokolu v Azure Monitor
 Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v [protokolech Azure monitor](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz.
@@ -38,10 +38,7 @@ Rychlý návod k jazyku s použitím dat z protokolů Azure Monitor najdete [v t
 V tématu [Azure monitor rozdíly v jazyce dotazů protokolu](data-explorer-difference.md) pro drobné rozdíly ve verzi KQL používané v Azure monitor.
 
 ## <a name="what-data-is-available-to-log-queries"></a>Jaká data jsou k dispozici pro dotazy protokolů?
-Všechna data shromážděná v protokolech Azure Monitor jsou k dispozici pro načtení a analýzu v protokolových dotazech. Různé zdroje dat zapisují svá data do různých tabulek, ale k analýze dat napříč více zdroji můžete použít více tabulek v jednom dotazu. Když vytváříte dotaz, začnete tím, že určíte, které tabulky mají data, která hledáte, takže byste měli mít aspoň základní znalosti o tom, jak jsou data v Azure Monitorch protokolech strukturovaná.
-
-Seznam různých zdrojů dat, které naplňují protokoly Azure Monitor, najdete v tématu [zdroje protokolů Azure monitor](../platform/data-platform-logs.md#sources-of-azure-monitor-logs).<br>
-Vysvětlení způsobu strukturování dat najdete v tématu [Struktura protokolů Azure monitor](logs-structure.md) .
+Všechna data shromážděná v protokolech Azure Monitor jsou k dispozici pro načtení a analýzu v protokolových dotazech. Různé zdroje dat zapisují svá data do různých tabulek, ale k analýze dat napříč více zdroji můžete použít více tabulek v jednom dotazu. Když vytváříte dotaz, začnete tím, že určíte, které tabulky mají data, která hledáte. Vysvětlení způsobu strukturování dat najdete v tématu [Struktura protokolů Azure monitor](logs-structure.md) .
 
 ## <a name="what-does-a-log-query-look-like"></a>Jak vypadá dotaz protokolu?
 Dotaz může být jednoduchý jako název jedné tabulky pro načtení všech záznamů z této tabulky:

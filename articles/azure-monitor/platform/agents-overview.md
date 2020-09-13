@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/21/2020
-ms.openlocfilehash: 6eb4aee1cfe62b09210f62d016028485594a9474
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/02/2020
+ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000783"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033451"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -79,7 +79,7 @@ Mezi omezení agenta Azure Monitor patří:
 Agenta Log Analytics použijte v případě, že potřebujete:
 
 * Shromažďovat protokoly a data o výkonu z virtuálních nebo fyzických počítačů uvnitř nebo mimo Azure. 
-* Odešlete data do pracovního prostoru Log Analytics, abyste mohli využívat funkce podporované [Azure monitor protokoly](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) , jako jsou například [dotazy protokolu](../log-query/log-query-overview.md).
+* Odešlete data do pracovního prostoru Log Analytics, abyste mohli využívat funkce podporované [Azure monitor protokoly](data-platform-logs.md) , jako jsou například [dotazy protokolu](../log-query/log-query-overview.md).
 * Použijte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) , které vám umožní monitorovat vaše virtuální počítače ve velkém měřítku a monitorovat jejich procesy a závislosti na dalších prostředcích a externích procesech.  
 * Spravujte zabezpečení virtuálních počítačů pomocí [Azure Security Center](../../security-center/security-center-intro.md)  nebo [Azure Sentinel](../../sentinel/overview.md).
 * Pro zajištění komplexní správy virtuálních počítačů Azure použijte [Azure Automation správu aktualizací](../../automation/update-management/update-mgmt-overview.md), [konfiguraci Azure Automation](../../automation/automation-dsc-overview.md)nebo [Azure Automation Change Tracking a inventarizaci](../../automation/change-tracking.md) .
@@ -144,11 +144,11 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 |:---|:---:|:---:|:---:|:---:|
 | Windows Server 2019                                      | X | X | X | X |
 | Windows Server 2016                                      | X | X | X | X |
-| Windows Server 2016 Core                                 |   |   |   | × |
+| Windows Server 2016 Core                                 |   |   |   | X |
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(včetně více relací) a pro  |   | X | X | X |
+| Windows 10 Enterprise<br>(včetně více relací) a pro  | X | X | X | X |
 | Windows 8 Enterprise a pro                             |   | X | X |   |
 | Windows 7 SP1                                            |   | X | X |   |
 
@@ -157,24 +157,25 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 
 | Provozní systém | Agent Azure Monitoru | Agent Log Analytics | Agent závislostí | Rozšíření diagnostiky | 
 |:---|:---:|:---:|:---:|:---:
-| Amazon Linux 2017,09                                     |   | × |   |   |
+| Amazon Linux 2017,09                                     |   | X |   |   |
 | CentOS Linux 7                                           | X | X |   | X |
+| CentOS Linux 7,8                                         | X | X | X | X |
 | CentOS Linux 7,6                                         | X | X | X | X |
 | CentOS Linux 6                                           | X | X |   |   |
 | CentOS Linux 6.5 +                                        | X | X |   | X |
-| Debian 10                                                | × |   |   |   |
-| Debian 9                                                 | X | X | x | × |
+| Debian 10                                                | X |   |   |   |
+| Debian 9                                                 | X | X | x | X |
 | Debian 8                                                 |   | X | X | X |
-| Debian 7                                                 |   |   |   | × |
-| OpenSUSE 13.1 +                                           |   |   |   | × |
+| Debian 7                                                 |   |   |   | X |
+| OpenSUSE 13.1 +                                           |   |   |   | X |
 | Oracle Linux 7                                           | X | X |   | X |
 | Oracle Linux 6                                           | X | X |   |   |
 | Oracle Linux 6.4 +                                        | X | X |   | X |
-| Server Red Hat Enterprise Linux 8                        | X | X |   |   |
+| Server Red Hat Enterprise Linux 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        | X | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 +                     | X | X | X | X |
-| SUSE Linux Enterprise Server 15                          | X | X | X |   |
+| SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
 | Ubuntu 18,04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |

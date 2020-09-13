@@ -1,25 +1,25 @@
 ---
-title: Řešení potíží s toky dat
+title: Řešení potíží s daty mapování toků
 description: Naučte se řešit problémy toku dat v Azure Data Factory.
 services: data-factory
 ms.author: makromer
 author: kromerm
-manager: anandsub
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/16/2020
-ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 09/11/2020
+ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263465"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031853"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Řešení potíží s toky dat v Azure Data Factory
+# <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Řešení potíží s mapováním toků dat v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure Data Factory.
+Tento článek popisuje běžné metody řešení potíží pro mapování toků dat v Azure Data Factory.
 
 ## <a name="common-errors-and-messages"></a>Běžné chyby a zprávy
 
@@ -31,7 +31,7 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>Kód chyby: DF-exekutor-SystemImplicitCartesian
 
 - **Zpráva**: implicitní kartézském produkt pro vnitřní spojení není podporován, místo toho použijte vzájemné spojení. Sloupce používané ve spojení by měly vytvořit jedinečný klíč pro řádky.
-- **Příčiny**: implicitní kartézském produkt pro vnitřní spojení mezi logickými plány není podporován. Pokud sloupce používané ve spojení vytvoří jedinečný klíč, je nutné aspoň jeden sloupec z obou stran relace.
+- **Příčiny**: implicitní kartézském produkt pro vnitřní spojení mezi logickými plány není podporován. Pokud se ve sloupcích použitých při spojování vytvoří jedinečný klíč, vyžaduje se aspoň jeden sloupec z obou stran relace.
 - **Doporučení**: u spojení, která nejsou založená na rovnosti, musíte vyjádřit souhlas s vlastním VZÁJEMNÝm spojením.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Kód chyby: DF-exekutor-SystemInvalidJson
@@ -43,8 +43,10 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 ### <a name="error-code-df-executor-broadcasttimeout"></a>Kód chyby: DF-exekutor-BroadcastTimeout
 
 - **Zpráva**: Chyba vypršení časového limitu spojení všesměrového vysílání, ujistěte se, že Stream všesměrového vysílání generuje data během 60 sekund v ladění běhu a 300 s ve spuštění úlohy
-- **Příčiny**: všesměrové vysílání má výchozí časový limit 60 sekund v ladicích běhůch a 300 sekund ve spuštění úlohy. Datový proud, který se vybral pro vysílání, se jeví jako velký a v rámci tohoto omezení vytváří data.
-- **Doporučení**: Podívejte se na kartu optimalizace v části transformace toku dat pro spojení, EXISTS a vyhledávání. Výchozí možnost pro vysílání je "auto". Pokud je tato možnost nastavená nebo pokud ručně nastavujete levou nebo pravou stranu na všesměrové vysílání v části "pevná", můžete buď nastavit větší konfiguraci Azure Integration Runtime, nebo vypnout všesměrové vysílání. Doporučený postup pro nejlepší výkon v datových tocích je, aby Spark mohl vysílat pomocí příkazu "auto" a používat paměťově optimalizovanou Azure IR.
+- **Příčiny**: všesměrové vysílání má výchozí časový limit 60 sekund v ladicích běhů a 300 sekund ve spuštění úlohy. Stream vybraný pro vysílání je moc velký pro vytváření dat v rámci tohoto limitu.
+- **Doporučení**: Podívejte se na kartu optimalizace v části transformace toku dat pro spojení, EXISTS a vyhledávání. Výchozí možnost pro vysílání je "auto". Pokud je nastavená možnost automaticky, nebo pokud ručně nastavujete levou nebo pravou stranu na všesměrové vysílání v části "pevná", můžete buď nastavit větší konfiguraci Azure Integration Runtime, nebo vypnout všesměrové vysílání. Doporučený postup pro nejlepší výkon v datových tocích je, aby Spark mohl vysílat pomocí příkazu "auto" a používat paměťově optimalizovanou Azure IR.
+
+Spouštíte-li tok dat při spuštění testu ladění z běhu ladicího kanálu, můžete se do této podmínky spouštět častěji. Důvodem je to, že ADF omezuje časový limit všesměrového vysílání na 60 sekund, aby bylo možné udržet rychlejší ladicí prostředí. Pokud byste chtěli tento časový limit 300 sekund od aktivovaného spuštění napřed zadat, můžete použít možnost ladění > použít aktivitu použít k využití Azure IR definovaného v aktivitě kanálu vykonání toku dat.
 
 ### <a name="error-code-df-executor-conversion"></a>Kód chyby: DF-prováděcí-převod
 
@@ -57,6 +59,46 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 - **Zpráva**: v dotazu je nutné zadat název sloupce, nastavit alias, pokud se používá funkce SQL.
 - **Příčiny**: nebyl zadán žádný název sloupce.
 - **Doporučení**: Pokud používáte funkci SQL, jako je například min ()/Max (), nastavte alias ().
+
+ ### <a name="error-code-df-executor-drivererror"></a>Kód chyby: DF-exekutor-DriverError
+- **Zpráva**: INT96 je starší typ časového razítka, který není podporován TOKEM dat ADF. Zvažte prosím možnost upgradovat typ sloupce na nejnovější typy.
+- **Příčiny**: Chyba ovladače
+- **Doporučení**: INT96 je starší typ časového razítka, který není podporován TOKEM dat ADF. Zvažte možnost upgradovat typ sloupce na nejnovější typy.
+
+ ### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Kód chyby: DF-exekutor-BlockCountExceedsLimitError
+- **Zpráva**: počet nepotvrzených bloků nemůže překročit maximální limit 100 000 bloků. Ověřte konfiguraci objektu BLOB.
+- **Příčiny**: v objektu BLOB může být maximálně 100 000 nepotvrzených bloků.
+- **Doporučení**: Další podrobnosti vám poskytne tým produktů Microsoftu týkající se tohoto problému.
+
+ ### <a name="error-code-df-executor-partitiondirectoryerror"></a>Kód chyby: DF-exekutor-PartitionDirectoryError
+- **Zpráva**: Zadaná cesta ke zdroji má buď více adresářů s oddíly (například <Source Path> /<kořenový adresář 1>/a = 10/b = 20, <Source Path> /<kořenového adresáře oddílu 2>/c = 10/d = 30) nebo adresář s oddíly s jiným souborem nebo nerozděleným adresářem (například <Source Path> /<kořenový adresář 1>/a = 10/b = 20, <Source Path> /Directory 2/Soubor1), odeberte kořenový adresář oddílu ze zdrojové cesty a přečtěte ho pomocí samostatné transformace zdroje.
+- **Příčiny**: zdrojová cesta má buď více oddílů v děleném oddílu, nebo oddíl s oddíly s jiným souborem nebo adresářem bez oddílů.
+- **Doporučení**: Odeberte kořenový adresář rozdělený na oddíly ze zdrojové cesty a přečtěte ho pomocí samostatné transformace zdroje.
+
+ ### <a name="error-code-df-executor-outofmemoryerror"></a>Kód chyby: DF-exekutor-OutOfMemoryError
+- **Zpráva**: během provádění došlo k chybě clusteru z důvodu nedostatku paměti, zkuste to prosím znovu s prostředím Integration runtime s větším počtem jader nebo s paměťově optimalizovaným výpočetním typem.
+- **Příčiny**: v clusteru dochází paměť
+- **Doporučení**: clustery ladění jsou určeny pro účely vývoje. Využijte vzorkování dat, vhodný výpočetní typ a velikost pro spuštění datové části. Chcete-li dosáhnout nejlepšího výkonu, přečtěte si [Průvodce výkonem toku dat mapování](concepts-data-flow-performance.md) pro ladění.
+
+ ### <a name="error-code-df-executor-illegalargument"></a>Kód chyby: DF-exekutor-illegalArgument
+- **Zpráva**: Ujistěte se prosím, že přístupový klíč v propojené službě je správný.
+- **Příčiny**: nesprávný název účtu nebo přístupový klíč
+- **Doporučení**: Ujistěte se, že název účtu nebo přístupový klíč zadaný v propojené službě jsou správné. 
+
+ ### <a name="error-code-df-executor-invalidtype"></a>Kód chyby: DF-exekutor-InvalidType
+- **Zpráva**: Ujistěte se prosím, že typ parametrů odpovídá typu předané hodnoty. Předávání parametrů float z kanálů není aktuálně podporováno.
+- **Příčiny**: nekompatibilní datové typy mezi deklarovaným typem a skutečnou hodnotou parametru
+- **Doporučení**: Ověřte, že hodnoty parametrů předané do toku dat odpovídají deklarovanému typu.
+
+ ### <a name="error-code-df-executor-columnunavailable"></a>Kód chyby: DF-exekutor-ColumnUnavailable
+- **Zpráva**: název sloupce použitý ve výrazu není k dispozici nebo je neplatný.
+- **Příčiny**: neplatný nebo nedostupný název sloupce použitý ve výrazech
+- **Doporučení**: ve výrazech ověřte názvy sloupců, které se používají.
+
+ ### <a name="error-code-df-executor-parseerror"></a>Kód chyby: DF-exekutor-ParseError
+- **Zpráva**: výraz nejde analyzovat.
+- **Příčiny**: výraz obsahuje chyby při analýze z důvodu formátování
+- **Doporučení**: Podívejte se na formátování ve výrazu
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Kód chyby: GetCommand OutputAsync se nezdařilo.
 

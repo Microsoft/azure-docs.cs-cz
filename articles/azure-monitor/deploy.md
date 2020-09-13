@@ -1,19 +1,19 @@
 ---
-title: Nasazení Azure Monitor
+title: Nasazení Azure Monitoru
 description: V této části najdete popis různých kroků nezbytných pro kompletní implementaci Azure Monitor pro monitorování všech prostředků ve vašem předplatném Azure.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 34a048c702b62caeecaf21e710a9dcd9156e4aea
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87801568"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033468"
 ---
-# <a name="deploy-azure-monitor"></a>Nasazení Azure Monitor
+# <a name="deploy-azure-monitor"></a>Nasazení Azure Monitoru
 Povolením Azure Monitor monitorování všech vašich prostředků Azure je kombinace konfigurace Azure Monitor komponent a konfigurace prostředků Azure pro generování dat monitorování pro Azure Monitor shromažďování. Tento článek popisuje různé kroky potřebné k dokončení implementace Azure Monitor s využitím společné konfigurace pro monitorování všech prostředků ve vašem předplatném Azure. Základní popisy jednotlivých kroků jsou k dispozici s odkazy na další dokumentaci pro podrobné požadavky na konfiguraci.
 
 > [!IMPORTANT]
@@ -48,7 +48,7 @@ Při vytváření předplatného Azure jsou povolené následující funkce Azur
 
 
 ### <a name="create-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
-K povolení [protokolů Azure monitor](platform/data-platform-logs.md)potřebujete aspoň jeden Log Analytics pracovní prostor, který se vyžaduje pro shromažďování takových dat jako protokolů z prostředků Azure, shromažďování dat z hostovaného operačního systému virtuálních počítačů Azure a pro většinu Azure monitor přehledů. Jiné služby, například Azure Sentinel a Azure Security Center, používají také pracovní prostor Log Analytics a můžou sdílet stejný, který používáte pro Azure Monitor. Můžete začít s jedním pracovním prostorem pro podporu tohoto monitorování, ale v tématu [navrhování Azure Monitorch protokolů nasazení](platform/design-logs-deployment.md) získáte pokyny k používání více pracovních prostorů.
+K povolení [protokolů Azure monitor](platform/data-platform-logs.md)potřebujete aspoň jeden Log Analytics pracovní prostor, který se vyžaduje pro shromažďování takových dat jako protokolů z prostředků Azure, shromažďování dat z hostovaného operačního systému virtuálních počítačů Azure a pro většinu Azure monitor přehledů. Jiné služby, například Azure Sentinel a Azure Security Center, používají také pracovní prostor Log Analytics a můžou sdílet stejný, který používáte pro Azure Monitor. Můžete začít s jedním pracovním prostorem pro podporu tohoto monitorování, ale v tématu  [navrhování Azure Monitorch protokolů nasazení](platform/design-logs-deployment.md) získáte pokyny k používání více pracovních prostorů.
 
 Při vytváření Log Analyticsho pracovního prostoru se neúčtují žádné náklady, ale po nastavování dat, která se mají do ní shromažďovat, se může účtovat případný poplatek. Podrobnosti najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](platform/manage-cost-storage.md) .  
 
@@ -118,9 +118,9 @@ Podrobnosti o instalaci a konfiguraci těchto agentů najdete v tématu [instala
 Azure Monitor monitoruje vlastní aplikace pomocí [Application Insights](app/app-insights-overview.md), které je nutné nakonfigurovat pro každou aplikaci, kterou chcete monitorovat. Proces konfigurace se bude lišit v závislosti na typu monitorované aplikace a typu monitorování, které chcete provést. Data shromážděná pomocí Application Insights jsou uložená v Azure Monitor metrikách, protokoly Azure Monitor a Azure Blob Storage v závislosti na funkci. Údaje o výkonu jsou uloženy v Azure Monitor metrikách i v protokolech Azure Monitor bez nutnosti další konfigurace.
 
 ### <a name="create-an-application-resource"></a>Vytvoření prostředku aplikace
-Pro každou aplikaci, kterou se chystáte monitorovat, musíte vytvořit prostředek v Application Insights. Data protokolu shromážděná pomocí Application Insights jsou uložená v protokolech Azure Monitor, ale jsou oddělená od vašeho pracovního prostoru Log Analytics, jak je popsáno v tématu [jak se strukturují data v protokolech Azure monitor](platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured). V současné době je ve verzi Preview, ale možnost ukládat data aplikací přímo do Log Analyticsho pracovního prostoru s ostatními daty. Tím se zjednoduší vaše konfigurace a aplikace umožňuje využívat všechny funkce Log Analytics pracovního prostoru.
+Pro každou aplikaci, kterou se chystáte monitorovat, musíte vytvořit prostředek v Application Insights. Data protokolu shromažďovaná pomocí Application Insights jsou uložená v protokolech Azure Monitor pro aplikaci založenou na pracovních prostorech. Data protokolu pro klasické aplikace se ukládají odděleně od Log Analytics pracovního prostoru, jak je popsáno v [části struktura dat](platform/data-platform-logs.md#structure-of-data).
 
- Když vytváříte aplikaci, musíte vybrat, jestli se má používat klasický nebo pracovní prostor založený na pracovním prostoru (Preview). Pokud chcete vytvořit klasickou aplikaci, přečtěte si téma [vytvoření prostředku Application Insights](app/create-new-resource.md) . Pokud chcete vytvořit aplikaci založenou na pracovních prostorech, přečtěte si téma [zdroje Application Insights založené na pracovním prostoru (Preview)](app/create-workspace-resource.md) .
+ Když vytváříte aplikaci, musíte vybrat, jestli se má používat klasický nebo založený na pracovních prostorech. Pokud chcete vytvořit klasickou aplikaci, přečtěte si téma [vytvoření prostředku Application Insights](app/create-new-resource.md) . Pokud chcete vytvořit aplikaci založenou na pracovních prostorech, přečtěte si téma [zdroje Application Insights založené na pracovním prostoru (Preview)](app/create-workspace-resource.md) .
 
 ### <a name="configure-codeless-or-code-based-monitoring"></a>Konfigurace monitorování na základě kódu nebo kódu
 Chcete-li povolit monitorování pro aplikaci, je nutné se rozhodnout, zda budete používat monitorování bez kódu nebo monitorování založené na kódu. Proces konfigurace se bude lišit v závislosti na tomto rozhodnutí a typu aplikace, kterou budete monitorovat.

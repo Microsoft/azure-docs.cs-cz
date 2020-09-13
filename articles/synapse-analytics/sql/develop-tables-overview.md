@@ -6,16 +6,16 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3bf180c2b70a686879082888e45e67936cdbec67
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d225511bb78a5773ce4ed5866f6ffc1257921e96
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799226"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032159"
 ---
 # <a name="design-tables-using-synapse-sql"></a>Návrh tabulek pomocí synapse SQL
 
@@ -27,27 +27,27 @@ V následující tabulce jsou uvedena témata týkající se fondu SQL a SQL na 
 
 | Téma                                                        | Fond SQL | SQL na vyžádání |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
-| [Určení kategorie tabulky](#determine-table-category)        | Ano                | Ne                      |
-| [Názvy schémat](#schema-names)                                | Ano                | Ano                     |
-| [Názvy tabulek](#table-names)                                  | Ano                | Ne                      |
-| [Trvalost tabulek](#table-persistence)                      | Ano                | Ne                      |
-| [Běžná tabulka](#regular-table)                              | Ano                | Ne                      |
-| [Dočasná tabulka](#temporary-table)                          | Ano                | Ano                     |
-| [Externí tabulka](#external-table)                            | Ano                | Ano                     |
-| [Datové typy](#data-types)                                    | Ano                | Ano                     |
-| [Distribuované tabulky](#distributed-tables)                    | Ano                | Ne                      |
-| [Distribuované zatřiďovací tabulky (distribuce hodnot hash)](#hash-distributed-tables)          | Ano                | Ne                      |
-| [Replikované tabulky](#replicated-tables)                      | Ano                | Ne                      |
-| [Tabulky kruhového dotazování](#round-robin-tables)                    | Ano                | Ne                      |
-| [Běžné metody distribuce pro tabulky](#common-distribution-methods-for-tables) | Ano                | Ne                      |
-| [Oddíly](#partitions)                                    | Ano                | Ano                     |
-| [Indexy Columnstore](#columnstore-indexes)                  | Ano                | Ne                      |
-| [Statistika](#statistics)                                    | Ano                | Ano                     |
-| [Primární klíč a jedinečný klíč](#primary-key-and-unique-key)    | Ano                | Ne                      |
-| [Příkazy pro vytváření tabulek](#commands-for-creating-tables) | Ano                | Ne                      |
-| [Zarovnávání zdrojových dat s datovým skladem](#align-source-data-with-the-data-warehouse) | Ano                | Ne                      |
-| [Nepodporované funkce tabulky](#unsupported-table-features)    | Ano                | Ne                      |
-| [Dotazy na velikost tabulky](#table-size-queries)                    | Ano                | Ne                      |
+| [Určení kategorie tabulky](#determine-table-category)        | Yes                | No                      |
+| [Názvy schémat](#schema-names)                                | Yes                | Yes                     |
+| [Názvy tabulek](#table-names)                                  | Yes                | No                      |
+| [Trvalost tabulek](#table-persistence)                      | Yes                | No                      |
+| [Běžná tabulka](#regular-table)                              | Yes                | No                      |
+| [Dočasná tabulka](#temporary-table)                          | Yes                | Yes                     |
+| [Externí tabulka](#external-table)                            | Yes                | Yes                     |
+| [Datové typy](#data-types)                                    | Yes                | Yes                     |
+| [Distribuované tabulky](#distributed-tables)                    | Yes                | No                      |
+| [Distribuované zatřiďovací tabulky (distribuce hodnot hash)](#hash-distributed-tables)          | Yes                | No                      |
+| [Replikované tabulky](#replicated-tables)                      | Yes                | No                      |
+| [Tabulky kruhového dotazování](#round-robin-tables)                    | Yes                | No                      |
+| [Běžné metody distribuce pro tabulky](#common-distribution-methods-for-tables) | Yes                | No                      |
+| [Oddíly](#partitions)                                    | Yes                | Yes                     |
+| [Indexy Columnstore](#columnstore-indexes)                  | Yes                | No                      |
+| [Statistika](#statistics)                                    | Yes                | Yes                     |
+| [Primární klíč a jedinečný klíč](#primary-key-and-unique-key)    | Yes                | No                      |
+| [Příkazy pro vytváření tabulek](#commands-for-creating-tables) | Yes                | No                      |
+| [Zarovnávání zdrojových dat s datovým skladem](#align-source-data-with-the-data-warehouse) | Yes                | No                      |
+| [Nepodporované funkce tabulky](#unsupported-table-features)    | Yes                | No                      |
+| [Dotazy na velikost tabulky](#table-size-queries)                    | Yes                | No                      |
 
 ## <a name="determine-table-category"></a>Určení kategorie tabulky
 
@@ -75,7 +75,7 @@ Chcete-li zobrazit organizaci tabulek ve fondu SQL, můžete použít fakt, Dim 
 
 | Tabulka WideWorldImportersDW  | Typ tabulky | Fond SQL |
 |:-----|:-----|:------|:-----|
-| City | Dimenze | WWI. DimCity |
+| City (Město) | Rozměr | WWI. DimCity |
 | Objednání | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Trvalost tabulek
@@ -143,7 +143,7 @@ Kategorie tabulka často určuje optimální možnost pro distribuci tabulky.
 | Kategorie tabulky | Možnost Doporučené distribuce |
 |:---------------|:--------------------|
 | Fact           | Použijte distribuci algoritmem hash s clusterovaným indexem columnstore. Zvýšení výkonu se zvyšuje, když se do stejného distribučního sloupce spojí dvě zatřiďovací tabulky. |
-| Dimenze      | Použijte replikovaný pro menší tabulky. Pokud jsou tabulky příliš velké pro uložení na každém výpočetním uzlu, použijte distribuované pomocí algoritmu hash. |
+| Rozměr      | Použijte replikovaný pro menší tabulky. Pokud jsou tabulky příliš velké pro uložení na každém výpočetním uzlu, použijte distribuované pomocí algoritmu hash. |
 | Příprava        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí CTAS je rychlé. Jakmile jsou data v pracovní tabulce, použijte příkaz INSERT... Tuto možnost vyberte, pokud chcete přesunout data do provozních tabulek. |
 
 ## <a name="partitions"></a>Oddíly
@@ -360,9 +360,6 @@ SELECT *
 FROM size
 ;
 ```
-
->[!TIP]
-> Pro zlepšení výkonu v synapse SQL zvažte použití **Sys. pdw_permanent_table_mappings** místo **Sys. pdw_table_mappings** v trvalých uživatelských tabulkách. Další informace najdete v tématu **[Sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 ### <a name="table-space-summary"></a>Souhrn prostoru tabulky
 

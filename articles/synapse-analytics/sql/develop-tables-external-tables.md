@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 070d933394b19ea38a9632f25909812943f7bff8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c0373e8a476e65a61ef4b3ea945b98e0763c0a22
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255826"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032924"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -96,7 +96,7 @@ data_source_name
 Určuje uživatelsky definovaný název pro zdroj dat. Název musí být v rámci databáze jedinečný.
 
 #### <a name="location"></a>Umístění
-LOCATION = `'<prefix>://<path>'` – poskytuje protokol připojení a cestu k externímu zdroji dat. V umístění lze použít následující vzory:
+LOCATION = `'<prefix>://<path>'`   – poskytuje protokol připojení a cestu k externímu zdroji dat. V umístění lze použít následující vzory:
 
 | Externí zdroj dat        | Předpona umístění | Cesta k umístění                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
@@ -105,7 +105,7 @@ LOCATION = `'<prefix>://<path>'` – poskytuje protokol připojení a cestu k ex
 | Azure Data Lake Store Gen 1 | `http[s]`       | `<storage_account>.azuredatalakestore.net/webhdfs/v1` |
 | Azure Data Lake Store Gen 2 | `http[s]`       | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
 
-`https:`prefix umožňuje použít v cestě podsložku.
+`https:` prefix umožňuje použít v cestě podsložku.
 
 #### <a name="credential"></a>Přihlašovací údaj
 CREDENTIAL = `<database scoped credential>` je volitelné přihlašovací údaje, které se použijí k ověření v Azure Storage. Externí zdroj dat bez přihlašovacích údajů má přístup ke veřejnému účtu úložiště. 
@@ -345,7 +345,7 @@ SELECT TOP 1 * FROM census_external_table
 
 Pomocí Data Lake možností průzkumu teď můžete vytvořit a zadat dotaz na externí tabulku pomocí fondu SQL nebo SQL na vyžádání s jednoduchým kliknutím pravým tlačítkem myši na soubor.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Musíte mít přístup k pracovnímu prostoru, který má alespoň roli přístupu pro přispěvatele dat objektů BLOB úložiště k účtu ADLS Gen2.
 

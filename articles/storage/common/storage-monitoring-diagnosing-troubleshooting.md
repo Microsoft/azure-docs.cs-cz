@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 93015427dddfe2b311783c20587792e34c098ce8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011034"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031479"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -134,7 +134,7 @@ Metriky úložiště pouze ukládají metriky kapacity pro službu BLOB Service,
 >
 >
 
-Nápovědu k odhadu velikosti různých objektů úložiště, jako jsou objekty blob, najdete v příspěvku na blogu [principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
+Nápovědu k odhadu velikosti různých objektů úložiště, jako jsou objekty blob, najdete v příspěvku na blogu [principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Monitorování dostupnosti
 Dostupnost služeb úložiště ve vašem účtu úložiště byste měli sledovat monitorováním hodnoty ve sloupci **dostupnost** v tabulkách hodinové nebo minutové metriky – **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Sloupec **dostupnosti** obsahuje procentuální hodnotu, která indikuje dostupnost služby nebo operace rozhraní API reprezentované řádkem ( **RowKey** ukazuje, jestli řádek obsahuje metriky pro službu jako celek nebo pro konkrétní operaci rozhraní API).
@@ -220,7 +220,7 @@ Klientská knihovna pro úložiště pro .NET umožňuje shromažďovat data pro
 Můžete zachytit provoz mezi klientem a serverem a poskytnout podrobné informace o datech, které klient a server vyměňuje, a o základních síťových podmínkách. K užitečným nástrojům pro protokolování sítě patří:
 
 * [Fiddler](https://www.telerik.com/fiddler) je bezplatný webový proxy server pro ladění, který umožňuje kontrolovat hlavičky a data datové části požadavků HTTP a HTTPS a zprávy s odpovědí. Další informace najdete v [dodatku 1: použití Fiddler k zachycení přenosů http a HTTPS](#appendix-1).
-* [Microsoft sledování sítě (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) a [Wireshark](https://www.wireshark.org/) jsou bezplatné nástroje pro analyzátor síťových protokolů, které umožňují zobrazit podrobné informace o paketech pro nejrůznější síťové protokoly. Další informace o nástroji Wireshark najdete v[dodatku 2: použití nástroje Wireshark k zachycení síťového provozu](#appendix-2).
+* [Microsoft sledování sítě (Netmon)](https://cnet-downloads.com/network-monitor) a [Wireshark](https://www.wireshark.org/) jsou bezplatné nástroje pro analyzátor síťových protokolů, které umožňují zobrazit podrobné informace o paketech pro nejrůznější síťové protokoly. Další informace o nástroji Wireshark najdete v[dodatku 2: použití nástroje Wireshark k zachycení síťového provozu](#appendix-2).
 * Microsoft Message Analyzer je nástroj od Microsoftu, který nahrazuje Netmon a který kromě zachytávání dat síťových paketů vám pomůže zobrazit a analyzovat data protokolu zaznamenaná z jiných nástrojů. Další informace najdete v[dodatku 3: použití nástroje Microsoft Message Analyzer k zachycení síťového provozu](#appendix-3).
 * Pokud chcete provést základní test připojení, abyste zkontrolovali, jestli se Váš klientský počítač může připojit ke službě Azure Storage přes síť, nemůžete to udělat pomocí standardního nástroje **příkazového** testu na klientovi. K zkontrolování připojení ale můžete použít [Nástroj **tcping** ](https://www.elifulkerson.com/projects/tcping.php) .
 
@@ -559,7 +559,7 @@ Pokud se klientská aplikace pokusí použít klíč SAS, který neobsahuje pot�
 
 Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru ze souboru protokolu protokolování úložiště:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 | Čas zahájení požadavku | 2014-05-30T06:17:48.4473697 Z |
 | Typ operace     | GetBlobProperties            |
@@ -619,7 +619,7 @@ Protokol na straně serveru také obsahuje další položku se stejnou hodnotou 
 
 Nejpravděpodobnější příčinou tohoto scénáře je, že klient odeslal žádost o odstranění pro entitu službě Table Service, která byla úspěšná, ale neobdržela potvrzení ze serveru (možná kvůli dočasnému problému v síti). Klient pak automaticky znovu vyzkoušel operaci (pomocí stejného **ID klienta-požadavku**) a tento pokus se nezdařil, protože entita již byla odstraněna.
 
-Pokud k těmto potížím dochází často, měli byste prozkoumat, proč se klientovi nedaří přijímat potvrzení od služby Table Service. Pokud je problém přerušovaný, měli byste zachytit chybu "HTTP (404) Nenalezeno" a zaznamenat ji do klienta, ale umožněte klientovi, aby pokračoval.
+Pokud k těmto potížím dochází často, měli byste prozkoumat, proč se klientovi nedaří přijímat potvrzení ze služby Table Service. Pokud je problém přerušovaný, měli byste zachytit chybu "HTTP (404) Nenalezeno" a zaznamenat ji do klienta, ale umožněte klientovi, aby pokračoval.
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>Klient dostává stavové kód HTTP 409 (Konflikt)
 Následující tabulka ukazuje extrakci z protokolu na straně serveru pro dvě operace klienta: **DeleteIfExists** , za kterým následuje **CreateIfNotExists** , pomocí stejného názvu kontejneru objektů BLOB. Každá operace klienta má za následek odeslání dvou požadavků na server, nejprve **GetContainerProperties** požadavek na kontrolu existence kontejneru a za ním požadavek **DeleteContainer** nebo **CreateContainer** .

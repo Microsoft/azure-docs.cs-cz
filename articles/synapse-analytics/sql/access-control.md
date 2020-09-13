@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6dc0bb08e3d824c1d3fea155d1b3d4c52e1af4a6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499836"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031309"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
 
@@ -32,8 +32,8 @@ V případě produkčního nasazení do pracovního prostoru Azure synapse dopor
 
 ### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>Krok 1: nastavení skupin zabezpečení s názvy za tímto vzorem
 
-1. Vytvořit skupinu zabezpečení nazvanou`Synapse_WORKSPACENAME_Users`
-2. Vytvořit skupinu zabezpečení nazvanou`Synapse_WORKSPACENAME_Admins`
+1. Vytvořit skupinu zabezpečení nazvanou `Synapse_WORKSPACENAME_Users`
+2. Vytvořit skupinu zabezpečení nazvanou `Synapse_WORKSPACENAME_Admins`
 3. Přidání `Synapse_WORKSPACENAME_Admins` do `Synapse_WORKSPACENAME_Users`
 
 > [!NOTE]
@@ -64,7 +64,7 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data La
 
 1. Přejít do [ **webového uživatelského rozhraní Azure synapse**](https://web.azuresynapse.net)
 2. Přejít na **Správa**   >  **Security**  >  **řízení přístupu** zabezpečení
-3. Klikněte na **přidat správce**a vyberte`Synapse_WORKSPACENAME_Admins`
+3. Klikněte na **přidat správce**a vyberte `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Krok 4: Konfigurace přístupu správce SQL pro pracovní prostor
 
@@ -81,8 +81,8 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data La
 
 ### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>Krok 5: Přidání a odebrání uživatelů a správců do skupin zabezpečení
 
-1. Přidat uživatele, kteří potřebují přístup správce k`Synapse_WORKSPACENAME_Admins`
-2. Přidat všechny ostatní uživatele do`Synapse_WORKSPACENAME_Users`
+1. Přidat uživatele, kteří potřebují přístup správce k `Synapse_WORKSPACENAME_Admins`
+2. Přidat všechny ostatní uživatele do `Synapse_WORKSPACENAME_Users`
 
 > [!NOTE]
 > Naučte se, jak přidat uživatele jako člena do skupiny zabezpečení v [tomto článku](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal) .

@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429041"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032295"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>SESKUPENÍ podle možností v synapse SQL
 Synapse SQL umožňuje vývoj řešení implementací různých možností pro skupinu. 
@@ -58,7 +58,7 @@ Pomocí SOUHRNu si předchozí příklad vyžádá následující agregace:
 
 * Země a oblast
 * Země
-* Grand Total
+* Celkový součet
 
 Chcete-li nahradit souhrn a vrátit stejné výsledky, můžete použít příkaz UNION ALL a explicitně zadat požadované agregace:
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: ab6842fe6787b9e1a61b3c25fabb6c64c2597b9a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141291"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032805"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -38,7 +38,7 @@ Webové rozhraní API je definováno pomocí `scopes` . Bez ohledu na možnosti,
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
-                                            // if the app manages is at most one account  
+                                            // if the app manages is at most one account
 try
 {
  result = await app.AcquireTokenSilent(scopes, account)
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Povinné parametry
 
-`AcquireTokenInteractive`má pouze jeden povinný parametr, ``scopes`` , který obsahuje výčet řetězců definujících obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, požadované obory najdete v referenčních informacích k rozhraní API každého Microsoft Graph API v části s názvem "oprávnění". Pokud například chcete [Zobrazit seznam kontaktů uživatele](/graph/api/user-list-contacts), je nutné použít rozsah "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](/graph/permissions-reference).
+`AcquireTokenInteractive` má pouze jeden povinný parametr, ``scopes`` , který obsahuje výčet řetězců definujících obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, požadované obory najdete v referenčních informacích k rozhraní API každého Microsoft Graph API v části s názvem "oprávnění". Pokud například chcete [Zobrazit seznam kontaktů uživatele](/graph/api/user-list-contacts), je nutné použít rozsah "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](/graph/permissions-reference).
 
 V systému Android je také nutné zadat nadřazenou aktivitu pomocí `.WithParentActivityOrWindow` , jak je znázorněno, aby se token vrátil zpět k této nadřazené aktivitě po interakci. Pokud ho nezadáte, vyvolá se při volání výjimka `.ExecuteAsync()` .
 
@@ -183,7 +183,7 @@ V systému Android je také nutné zadat nadřazenou aktivitu pomocí `.WithPare
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Uživatelské rozhraní je důležité, protože je interaktivní. `AcquireTokenInteractive`má jeden konkrétní volitelný parametr, který může určit, pro platformy, které ho podporují, nadřazené uživatelské rozhraní. Při použití v desktopové aplikaci `.WithParentActivityOrWindow` má jiný typ, který závisí na platformě.
+Uživatelské rozhraní je důležité, protože je interaktivní. `AcquireTokenInteractive` má jeden konkrétní volitelný parametr, který může určit, pro platformy, které ho podporují, nadřazené uživatelské rozhraní. Při použití v desktopové aplikaci `.WithParentActivityOrWindow` má jiný typ, který závisí na platformě. Alternativně můžete vynechat volitelný parametr nadřazeného okna a vytvořit tak okno, pokud nechcete ovládat, kde se přihlašovací dialog zobrazí na obrazovce. To se dá použít pro aplikace, které jsou založené na příkazovém řádku, které se používají k předávání volání do jakékoli jiné back-end služby a nepotřebují žádná okna pro interakci s uživatelem. 
 
 ```csharp
 // net45
@@ -211,17 +211,17 @@ Mark
 
 #### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()`slouží k řízení interaktivity s uživatelem zadáním výzvy.
+`WithPrompt()` slouží k řízení interaktivity s uživatelem zadáním výzvy.
 
 ![Obrázek znázorňující pole ve struktuře výzvy Tyto konstantní hodnoty řídí interakce s uživatelem tím, že definují typ výzvy zobrazený metodou WithPrompt ().](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 Třída definuje následující konstanty:
 
-- ``SelectAccount``vynutí, aby služba STS obsahovala dialogové okno Výběr účtu, které obsahuje účty, pro které má uživatel relaci. Tato možnost je užitečná, když vývojáři aplikací chtějí umožnit uživatelům výběr mezi různými identitami. Tato možnost Drives MSAL se pošle ``prompt=select_account`` poskytovateli identity. Tato možnost je výchozí. Na základě dostupných informací, jako je například účet a přítomnost relace pro uživatele, je vhodné zajistit nejlepší možné prostředí. Neměňte ho, pokud nemáte dobrý důvod to udělat.
-- ``Consent``umožňuje vývojáři aplikace vynutit, aby se uživateli zobrazila výzva k vyjádření souhlasu, a to i v případě, že byl souhlas udělen dříve. V takovém případě MSAL odesílá `prompt=consent` poskytovateli identity. Tato možnost se dá použít v některých aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživateli zobrazovalo dialogové okno souhlasu při každém použití aplikace.
-- ``ForceLogin``umožňuje, aby vývojář aplikace uživateli zobrazil výzvu k zadání přihlašovacích údajů, a to i v případě, že se tato výzva uživateli nemusí potřebovat. Tato možnost může být užitečná, pokud chcete, aby se uživatel znovu přihlásil, pokud se nepovede k získání tokenu. V takovém případě MSAL odesílá `prompt=login` poskytovateli identity. Někdy se používá v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživatel znovu přihlásí při každém přístupu k určitým částem aplikace.
-- ``Never``(jenom pro .NET 4,5 a WinRT) se uživatel nevyzve, ale pokusí se použít soubor cookie uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu věnovaném webovým zobrazením v MSAL.NET. Použití této možnosti může selhat. V takovém případě `AcquireTokenInteractive` vyvolá výjimku, která oznamuje, že je potřeba interakce uživatelského rozhraní. Budete muset použít jiný `Prompt` parametr.
-- ``NoPrompt``nepošle žádné výzvy poskytovateli identity. Tato možnost je užitečná jenom pro Azure Active Directory (Azure AD) B2C upravit zásady profilu. Další informace najdete v tématu [Azure AD B2C specifických](https://aka.ms/msal-net-b2c-specificities)pro.
+- ``SelectAccount`` vynutí, aby služba STS obsahovala dialogové okno Výběr účtu, které obsahuje účty, pro které má uživatel relaci. Tato možnost je užitečná, když vývojáři aplikací chtějí umožnit uživatelům výběr mezi různými identitami. Tato možnost Drives MSAL se pošle ``prompt=select_account`` poskytovateli identity. Tato možnost je výchozí. Na základě dostupných informací, jako je například účet a přítomnost relace pro uživatele, je vhodné zajistit nejlepší možné prostředí. Neměňte ho, pokud nemáte dobrý důvod to udělat.
+- ``Consent`` umožňuje vývojáři aplikace vynutit, aby se uživateli zobrazila výzva k vyjádření souhlasu, a to i v případě, že byl souhlas udělen dříve. V takovém případě MSAL odesílá `prompt=consent` poskytovateli identity. Tato možnost se dá použít v některých aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživateli zobrazovalo dialogové okno souhlasu při každém použití aplikace.
+- ``ForceLogin`` umožňuje, aby vývojář aplikace uživateli zobrazil výzvu k zadání přihlašovacích údajů, a to i v případě, že se tato výzva uživateli nemusí potřebovat. Tato možnost může být užitečná, pokud chcete, aby se uživatel znovu přihlásil, pokud se nepovede k získání tokenu. V takovém případě MSAL odesílá `prompt=login` poskytovateli identity. Někdy se používá v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživatel znovu přihlásí při každém přístupu k určitým částem aplikace.
+- ``Never`` (jenom pro .NET 4,5 a WinRT) se uživatel nevyzve, ale pokusí se použít soubor cookie uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu věnovaném webovým zobrazením v MSAL.NET. Použití této možnosti může selhat. V takovém případě `AcquireTokenInteractive` vyvolá výjimku, která oznamuje, že je potřeba interakce uživatelského rozhraní. Budete muset použít jiný `Prompt` parametr.
+- ``NoPrompt`` nepošle žádné výzvy poskytovateli identity. Tato možnost je užitečná jenom pro Azure Active Directory (Azure AD) B2C upravit zásady profilu. Další informace najdete v tématu [Azure AD B2C specifických](https://aka.ms/msal-net-b2c-specificities)pro.
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
@@ -253,7 +253,7 @@ Hostitel `end Url` je vždy `redirectUri` . K zachycení `end Url` proveďte jed
 
 ##### <a name="withcustomwebui-is-an-extensibility-point"></a>WithCustomWebUi je bod rozšiřitelnosti.
 
-`WithCustomWebUi`je bod rozšiřitelnosti, který můžete použít k poskytnutí vlastního uživatelského rozhraní ve veřejných klientských aplikacích. Můžete také nechat uživatele projít koncovým bodem/Authorize poskytovatele identity a nechat si ho přihlašovat a vyjádřit souhlas. MSAL.NET může následně uplatnit ověřovací kód a získat token. Například se používá v aplikaci Visual Studio k tomu, aby aplikace Electrons (například zpětná vazba sady Visual Studio) poskytovala webové interakce, ale ponechala MSAL.NET, aby provede většinu práce. Můžete ji také použít, pokud chcete poskytnout automatizaci uživatelského rozhraní. Ve veřejných klientských aplikacích MSAL.NET používá ověřovací klíč pro výměnu kódu (PKCE) Standard k zajištění dodržování zabezpečení. Jenom MSAL.NET můžou uplatnit kód. Další informace najdete v [dokumentu RFC 7636-kontrolní klíč pro výměnu kódu pomocí veřejných klientů OAuth](https://tools.ietf.org/html/rfc7636).
+`WithCustomWebUi` je bod rozšiřitelnosti, který můžete použít k poskytnutí vlastního uživatelského rozhraní ve veřejných klientských aplikacích. Můžete také nechat uživatele projít koncovým bodem/Authorize poskytovatele identity a nechat si ho přihlašovat a vyjádřit souhlas. MSAL.NET může následně uplatnit ověřovací kód a získat token. Například se používá v aplikaci Visual Studio k tomu, aby aplikace Electrons (například zpětná vazba sady Visual Studio) poskytovala webové interakce, ale ponechala MSAL.NET, aby provede většinu práce. Můžete ji také použít, pokud chcete poskytnout automatizaci uživatelského rozhraní. Ve veřejných klientských aplikacích MSAL.NET používá ověřovací klíč pro výměnu kódu (PKCE) Standard k zajištění dodržování zabezpečení. Jenom MSAL.NET můžou uplatnit kód. Další informace najdete v [dokumentu RFC 7636-kontrolní klíč pro výměnu kódu pomocí veřejných klientů OAuth](https://tools.ietf.org/html/rfc7636).
 
   ```csharp
   using Microsoft.Identity.Client.Extensions;
@@ -370,7 +370,7 @@ if accounts:
 if not result:
     result = app.acquire_token_by_authorization_code(
          request.args['code'],
-         scopes=config["scope"])    
+         scopes=config["scope"])
 
 ```
 
@@ -433,7 +433,7 @@ Pokud se chcete přihlásit k doméně uživatele v doméně nebo počítači p�
   - Nebo je nutné, aby správce tenanta předtím souhlasil se všemi uživateli v tenantovi, aby mohli aplikaci používat.
   - Jinými slovy:
     - Vy jako vývojář jste vybrali tlačítko **udělit** v Azure Portal pro sebe.
-    - Nebo správce tenanta na kartě **oprávnění API** registrace pro aplikaci vybral tlačítko **udělení a odvolání souhlasu správce pro {tenant Domain}** . Další informace najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+    - Nebo správce tenanta na kartě **oprávnění API** registrace pro aplikaci vybral tlačítko **udělení a odvolání souhlasu správce pro {tenant Domain}** . Další informace najdete v tématu [Přidání oprávnění pro přístup k webovému rozhraní API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api).
     - Nebo jste poskytli způsob, jak uživatelům udělit souhlas s aplikací. Další informace najdete v tématu [vyžádání souhlasu jednotlivých uživatelů](./v2-permissions-and-consent.md#requesting-individual-user-consent).
     - Nebo jste poskytli způsob, jak správci tenanta udělit souhlas s aplikací. Další informace najdete v tématu [souhlas správce](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
@@ -925,7 +925,7 @@ Tento tok není podporován v MSAL pro macOS.
 
 Pokud píšete nástroj příkazového řádku, který nemá webové ovládací prvky, a nemůžete nebo nechcete používat předchozí toky, je nutné použít tok kódu zařízení.
 
-Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč. Další informace najdete v tématu [použití webových prohlížečů](https://aka.ms/msal-net-uses-web-browser). K ověřování uživatelů v zařízeních nebo operačních systémech, které neposkytují webový prohlížeč, tok kódu zařízení umožňuje uživateli používat k interaktivnímu přihlášení jiné zařízení, jako je například počítač nebo mobilní telefon. Pomocí toku kódu zařízení aplikace získá tokeny prostřednictvím procesu se dvěma kroky, který je navržený pro tato zařízení nebo operačních systémech. Příklady takových aplikací jsou aplikace, které běží na iOT nebo nástrojích příkazového řádku (CLI). Nápad je následující:
+Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč. Další informace najdete v tématu [použití webových prohlížečů](https://aka.ms/msal-net-uses-web-browser). K ověřování uživatelů v zařízeních nebo operačních systémech, které neposkytují webový prohlížeč, tok kódu zařízení umožňuje uživateli používat k interaktivnímu přihlášení jiné zařízení, jako je například počítač nebo mobilní telefon. Pomocí toku kódu zařízení aplikace získá tokeny prostřednictvím procesu se dvěma kroky, který je navržený pro tato zařízení nebo operační systémy. Příklady takových aplikací jsou aplikace, které běží na iOT nebo nástrojích příkazového řádku (CLI). Nápad je následující:
 
 1. Vždy, když je vyžadováno ověření uživatele, aplikace poskytuje kód pro uživatele. Uživatel se vyzve k použití jiného zařízení, jako je například smartphone připojeného k Internetu, k přechodu na adresu URL, například `https://microsoft.com/devicelogin` . Pak se uživateli zobrazí výzva k zadání kódu. To se provede, když webová stránka provede uživatele normálním prostředím ověřování, které zahrnuje výzvy k vyjádření souhlasu a službu Multi-Factor Authentication (v případě potřeby).
 
@@ -978,7 +978,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
         // If you want to provide a more complex user experience, check out ex.Classification
 
         return await AcquireByDeviceCodeAsync(pca);
-    }         
+    }
 }
 
 private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)
@@ -1161,8 +1161,8 @@ V případě .NET Framework a .NET Core neuděláte nic dalšího, mezipaměť t
 Třídy a rozhraní, které jsou součástí serializace mezipaměti tokenů, jsou následující typy:
 
 - ``ITokenCache``, který definuje události pro přihlášení k odběru požadavků na serializaci mezipaměti tokenů, a metody pro serializaci nebo deserializaci mezipaměti v různých formátech (ADAL v 3.0, MSAL 2. x a MSAL 3. x = ADAL v 5.0).
-- ``TokenCacheCallback``je zpětné volání předané do událostí, aby bylo možné zpracovat serializaci. Budou volány s argumenty typu ``TokenCacheNotificationArgs`` .
-- ``TokenCacheNotificationArgs``poskytuje pouze aplikaci ``ClientId`` a odkaz na uživatele, pro který je token k dispozici.
+- ``TokenCacheCallback`` je zpětné volání předané do událostí, aby bylo možné zpracovat serializaci. Budou volány s argumenty typu ``TokenCacheNotificationArgs`` .
+- ``TokenCacheNotificationArgs`` poskytuje pouze aplikaci ``ClientId`` a odkaz na uživatele, pro který je token k dispozici.
 
   ![Diagram serializace mezipaměti tokenů](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 

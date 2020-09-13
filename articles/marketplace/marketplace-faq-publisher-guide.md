@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/11/2020
+ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607337"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032108"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -42,11 +42,11 @@ Obchod na komerčním webu je k dispozici v oblastech 141, a to na základě jed
 
 Daňová platba se spravuje v mnoha zemích nebo oblastech a poskytujeme přístup k naší globální síti pro prodejce. Můžete použít zákaznickou smlouvu Microsoftu nebo smlouva Enterprise k prodeji organizacím, aniž byste museli vytvářet novou nákupní relaci.
 
-Pokud se chcete dozvědět víc, podívejte se na video při [prodeji přes web Marketplace](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace).
+Další informace najdete v [centru Microsoftu pro komerční tržišti](https://aka.ms/commercialmarketplacehub).
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Existuje poplatek za výpis pro komerční tržiště Microsoftu?
 
-Ne, v našem komerčním tržišti nejsou žádné náklady na publikování nabídek. Budeme udržovat malé procento prodeje, jako poplatek za transakce a investovat ho do programu na webu Marketplace, inovace platforem a komerční operace na webu Marketplace. Tento poplatek za transakce se snižuje pro nabídky [Azure IP pro spoluprodejní](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) motivovaní.
+Ne, v našem komerčním tržišti nejsou žádné náklady na publikování nabídek. Budeme udržovat malé procento prodeje, jako poplatek za transakce a investovat ho do programu na webu Marketplace, inovace platforem a komerční operace na webu Marketplace. Tento poplatek za transakce se snižuje pro nabídky [spoluprodávajících Azure IP](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) motivovaní a placené SaaS nabídky na AppSource, které jsou přidružené k jedné aplikaci Microsoft teams, nebo aspoň dvěma Microsoft 365 doplňky (Excel, PowerPoint, Word, Outlook a SharePoint).
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Návody se zaregistrovat jako Vydavatel na komerčním webu Microsoft Marketplace?
 
@@ -67,7 +67,7 @@ Způsoby použití vaší komerční nabídky na webu Marketplace závisí na to
 
 Po registraci a přijetí smlouvy vydavatele budete mít přístup na stránku komerčního tržiště v partnerském centru. Tady je místo, kde můžete vytvářet a spravovat nabídky a kde se zobrazují analytické sestavy. U Microsoft 365ch aplikací musíte také aktivovat program Office Store v rámci partnerského centra.
 
-Další informace najdete v tématu [Vítejte na komerčním webu Marketplace](index.yml) a [monetizovat doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Další informace najdete v tématu [Vítejte na komerčním webu Marketplace](index.yml) a [monetizovat svého doplňku Microsoft 365 prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Návody získat pomoc s pracovníky na komerčním webu Marketplace?
 
@@ -320,7 +320,7 @@ Tady je několik zdrojů, které vám pomohou začít:
 Doporučujeme tyto prostředky:
 
 - Pokud se chcete připojit k komunitě partnerů Microsoftu, přečtěte si téma [Microsoft AppSource a Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222).
-- Přečtěte si o [programu Microsoft Web Marketplace Insiders](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders)a připojte se k němu.
+- Přečtěte si o [programu Microsoft Web Marketplace Insiders](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/Commercial-Marketplace-Insiders-Program/td-p/13743)a připojte se k němu.
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Kde se mohu dozvědět více o partnerském centru?
 
@@ -329,7 +329,7 @@ Doporučujeme tyto prostředky:
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Kde se mohu dozvědět více o centru pro správu Microsoftu?
 
-Informace o centru pro správu Microsoftu najdete v tématu [Správa předplatných aplikací třetích stran ve vaší organizaci](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide).
+Informace o centru pro správu Microsoftu najdete v tématu [Správa předplatných aplikací třetích stran ve vaší organizaci](/microsoft-365/commerce/manage-saas-apps).
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Kde se dozvím Další informace o fakturaci Azure?
 

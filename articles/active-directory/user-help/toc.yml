@@ -106,8 +106,6 @@
   items:
     - name: Přihlášení k portálu Moje aplikace a jeho používání
       href: my-apps-portal-end-user-access.md
-    - name: Aktualizace informací o profilu a účtu
-      href: my-apps-portal-end-user-update-profile.md
     - name: Aktualizace informací o skupinách
       href: my-apps-portal-end-user-groups.md
     - name: Uspořádání aplikací pomocí kolekcí
