@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1dc9c39192dc478a4ffeba64983a498191417ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c3793daa820d0cb5b5b6900402704756f206425
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213580"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488384"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Správa úloh pomocí tříd prostředků v Azure synapse Analytics
 
@@ -67,9 +67,9 @@ Dynamické třídy prostředků jsou implementovány s těmito předem definovan
 
 Přidělení paměti pro jednotlivé třídy prostředků je následující.
 
-| Úroveň služby  | smallrc           | mediumrc               | largerc                | xlargerc               |
+| Úroveň služeb  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
-| DW100c         | 25 %               | 25 %                    | 25 %                    | 70 %                    |
+| DW100c         | 25%               | 25%                    | 25%                    | 70 %                    |
 | DW200c         | 12,5%             | 12,5%                  | 22                    | 70 %                    |
 | DW300c         | 8 %                | 10 %                    | 22                    | 70 %                    |
 | DW400c         | 6,25%             | 10 %                    | 22                    | 70 %                    |
@@ -133,7 +133,7 @@ Následující příkazy jsou vyjmuty z tříd prostředků a vždy se spouště
 - NÁSTROJI
 
 <!--
-Removed as these two are not confirmed / supported under SQL DW
+Removed as these two are not confirmed / supported under Azure Synapse Analytics
 - CREATE REMOTE TABLE AS SELECT
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
@@ -192,7 +192,7 @@ Doporučujeme vytvořit uživatele, který je vyhrazený pro spuštění konkré
 
 ### <a name="resource-classes-for-load-users"></a>Třídy prostředků pro načtení uživatelů
 
-`CREATE TABLE`používá ve výchozím nastavení clusterované indexy columnstore. Komprimace dat do indexu columnstore je operace náročná na paměť a zatížení paměti může snížit kvalitu indexu. Tlak paměti může vést k nutnosti větší třídy prostředků při načítání dat. Aby bylo zajištěno, že zatížení bude mít dostatek paměti, můžete vytvořit uživatele, který je určen ke spouštění zátěže, a přiřadit tohoto uživatele k vyšší třídě prostředků.
+`CREATE TABLE` používá ve výchozím nastavení clusterované indexy columnstore. Komprimace dat do indexu columnstore je operace náročná na paměť a zatížení paměti může snížit kvalitu indexu. Tlak paměti může vést k nutnosti větší třídy prostředků při načítání dat. Aby bylo zajištěno, že zatížení bude mít dostatek paměti, můžete vytvořit uživatele, který je určen ke spouštění zátěže, a přiřadit tohoto uživatele k vyšší třídě prostředků.
 
 Paměť potřebná ke zpracování zatížení efektivně závisí na povaze načtené tabulky a velikosti dat. Další informace o požadavcích na paměť najdete v tématu [maximalizace kvality skupiny řádků](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
@@ -243,9 +243,9 @@ Tady je účel této uložené procedury:
 Syntaxe:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU:Zadejte parametr s hodnotou NULL pro extrakci aktuálního DWU z databáze DW nebo poskytněte jakékoli podporované DWU ve formátu ' DW100c '.
-2. @SCHEMA_NAME:Zadejte název schématu pro tabulku.
-3. @TABLE_NAME:Zadejte název tabulky zájmu.
+1. @DWU: Zadejte parametr s hodnotou NULL pro extrakci aktuálního DWU z databáze DW nebo poskytněte jakékoli podporované DWU ve formátu ' DW100c '.
+2. @SCHEMA_NAME: Zadejte název schématu pro tabulku.
+3. @TABLE_NAME: Zadejte název tabulky zájmu.
 
 Příklady spouštění této uložené procedury:
 

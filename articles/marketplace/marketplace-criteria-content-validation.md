@@ -1,26 +1,26 @@
 ---
 title: Azure Marketplace nabídky a požadavky na výpis služby
-description: Tento článek vysvětluje požadavky a pokyny pro výpis nových nabídek a služeb v Azure Marketplace.
+description: Tento článek vysvětluje požadavky a pokyny pro výpis nových nabídek, služeb a dalších řešení IT na Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 07/14/2020
-ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/04/2020
+ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812865"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484268"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro výpis Azure Marketplace
 
-Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služeb v Azure Marketplace. Všechny nabídky musí splňovat požadavky uvedené v části [požadavky na výpis všech nabídek](#listing-requirements-for-all-offers) . Pomocí odkazů na pravé straně přejděte k požadavkům a kontrolním seznamům pro konkrétní typy seznamů.
+Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služeb v Azure Marketplace. Všechny nabídky musí splňovat níže uvedené [požadavky na výpis](#listing-requirements-for-all-offers) . Pomocí odkazů na pravé straně přejděte k dalším požadavkům a kontrolním seznamům pro konkrétní typy seznamů.
 
 ## <a name="listing-requirements-for-all-offers"></a>Výpis požadavků pro všechny nabídky
 
-| Ne. | Výpis elementu | Základní požadavek | Optimální požadavek |
+| No. | Výpis elementu | Základní požadavek | Optimální požadavek |
 |:--- |:--- |:--- |:--- |
 | 1 | Cíl zájemce | Má nakonfigurovaný cíl zájemce.| Katalog s jedním komerčním partnerem (OCP) obsahuje informace o cíli CRM, které jsou také uvedeny na kartě Partnerská řešení. |
 | 2 | Název nabídky | Stručně popisuje nabídku řešení. Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
@@ -29,7 +29,7 @@ Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služe
 | 5 | Kategorie a odvětví | <ul><li>Kategorie a podkategorie se musí shodovat s možnostmi nabídky. </li><li>Nevybírejte kategorie/podkategorie, které neodpovídají vašim možnostem nabídky. </li></ul> | <ul><li>Vyberte až dvě kategorie, včetně primární a sekundární kategorie (volitelné).</li><li>Vyberte až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není vybraná žádná podkategorie, vaše nabídka bude i nadále zjistitelná na vybrané kategorii.</li></ul> |
 | 6 | Image | <ul><li>Požadavky na Image jsou uvedené v partnerském centru.</li><li>Text zahrnutý na snímku obrazovky je čitelný a obrázek je jasný. | Nabídka řešení je snadno srozumitelná na první pohled. |
 | 7 | Videa | <ul><li>Není nutné žádné video, ale pokud je k dispozici, musí se přehrávat bez chyb.</li><li>Pokud je tato situace k dispozici, nemusí Neodkazovat na konkurenční společnosti, *Pokud* se nejedná o řešení migrace. |<ul><li>V ideálním případě je délka 3 min. nebo více.</li><li>Nabídka řešení je snadno srozumitelná prostřednictvím obsahu videa.</li><li>Poskytuje ukázku možností řešení. |
-| 8 | Stav seznamu (volání akce) | <ul><li>Musí být označena jako jeden z následujících typů: <ul><li>*Kontaktujte mě*</li><li>*Zkušební verze* / *Získat zkušební verzi hned* / *Spustit zkušební verzi* / *Testovací jednotka*</li><li>*Koupit hned* / *Získat hned*</li></ul></ul> | Zákazník může snadno pochopit, jaké jsou další kroky: <ol><li>Vyzkoušejte si zkušební verzi.</li><li>Kupte si hned.</li><li>Kontaktování e-mailem nebo telefonním číslem vám umožní zajistit testování konceptu (koncepce), posouzení nebo přehled.</li></ol> | 
+| 8 | Seznam stavů (možnosti výpisu) | <ul><li>Musí být označena jako jeden z následujících typů: <ul><li>*Kontaktujte mě*</li><li>*Zkušební verze* / *Získat zkušební verzi hned* / *Spustit zkušební verzi* / *Testovací jednotka*</li><li>*Koupit hned* / *Získat hned*</li></ul></ul> | Zákazník může snadno pochopit, jaké jsou další kroky: <ol><li>Vyzkoušejte si zkušební verzi.</li><li>Kupte si hned.</li><li>Kontaktování e-mailem nebo telefonním číslem vám umožní zajistit testování konceptu (koncepce), posouzení nebo přehled.</li></ol> | 
 | 9 | Ceny řešení | Musí mít kartu/Podrobnosti řešení a ceny musí být v místní měně nabídky partnerských řešení. | K dispozici je více možností fakturace s cenami za úrovně, které poskytují možnosti zákazníka. |
 | 10 | Další informace | Odkazy v dolní části (pod popisem, ne Azure Marketplace odkazy na levé straně) vedou k dalším informacím o řešení a jsou veřejně dostupné a zobrazují se správně. |    Odkazuje na konkrétní položky (například stránky specifikace na partnerském webu), nikoli jenom na domovskou stránku partnera. | 
 | 11 | Podpora řešení a pomoc | Odkaz alespoň na jednu z následujících možností: <ul><li>Telefonní čísla</li><li>E-mailová podpora</li><li>Chat agenti</li><li>Komunitní fóra |<ul><li>V seznamu jsou uvedeny všechny metody podpory.</li><li>Placená podpora se v průběhu *zkušebního* období nebo *zkušební jednotky* nabízí zdarma. |
@@ -38,14 +38,14 @@ Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služe
 
 ## <a name="trial-offer-requirements"></a>Požadavky na nabídku zkušební verze
 
-| Ne. | Výpis elementu | Základní požadavek | Optimální požadavek | 
+| No. | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
-|  | Stav seznamu (volání akce) | Odkaz musí vést k *vyzkoušení* zkušeností zákazníků. | K dispozici jsou také další volání akce (například *koupit nyní*). | 
+|  | Seznam stavů (možnost výpis) | Odkaz musí vést k *vyzkoušení* zkušeností zákazníků. | K dispozici jsou také další možnosti výpisu (například *koupit nyní*). | 
 |||
 
 ## <a name="saas-application-requirements"></a>Požadavky aplikace SaaS
 
-| Ne. | Výpis elementu | Základní požadavek | Optimální požadavek | 
+| No. | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
 | 1 | Název nabídky |<ul><li>Musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Po publikování se název nedá změnit.</li><li>Popisuje nabídku řešení.</li><li>Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
 | 2 | Technické informace: Konfigurace |<ul><li>V případě aplikací SaaS (software jako služba) vyberte, jestli chcete zobrazit jenom seznam aplikací, nebo pokud chcete, aby si zákazníci mohli koupit aplikaci prostřednictvím Azure.</li><li>Vyberte požadovaný text na tlačítku pro získání nabídky: *zdarma*, *bezplatná zkušební verze*nebo *kontaktujte mě*.</li><li>V automaticky otevíraném okně vyberte jenom jeden příslušný produkt, pokud vaše aplikace využívá technologii: Cortana Intelligence, Power BI šablony řešení nebo Power Apps. |  |
@@ -62,7 +62,7 @@ Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služe
 
 ## <a name="container-offer-requirements"></a>Požadavky na nabídky kontejneru
 
-| Ne. | Výpis elementu | Základní požadavek | Optimální požadavek |
+| No. | Výpis elementu | Základní požadavek | Optimální požadavek |
 |:--- |:--- |:--- |:--- |
 |1 |Nastavení nabídky | <ul><li>ID nabídky: max. 50 znaků.</li><li>ID vydavatele: vyberte ho v rozevíracím seznamu.</li><li>Název: max. 50 znaků. | Zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy. |
 | 2 | Plány | Partner vybere nové plány.| Nadpis zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy.  |
@@ -72,13 +72,13 @@ Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služe
 
 ## <a name="consulting-offer-requirements"></a>Požadavky na konzultační nabídky
 
-| Ne. | Výpis elementu | Základní požadavek | Optimální požadavek |
+| No. | Výpis elementu | Základní požadavek | Optimální požadavek |
 |:--- |:--- |:--- |:--- |
 | 1 | Název nabídky  |  Musí jasně vypsat typ služby a dobu trvání v *názvu formátu: typ trvání* (například "nabídka zapojení: 1-týden).  | <ul><li>Neopakuje název vydavatele.</li><li>Nadpis zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy. | 
 | 2 | Popis nabídky  |<ul><li>Zajistěte správné použití [názvů produktů společnosti Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx).</li><li>Nabídky označené jako *Price: odhad* musí obsahovat poznámku na nejvyšší nebo nejnižší úrovni, která vysvětlí proměnlivost (cestovné na klienta, počet migrovaných serverů atd.).</li><li>Každý typ nabídky má požadavky na popis, jak je znázorněno níže: <ul><li>Pro krátké potřeby je potřeba mít aspoň čtyři nebo pět odrážek s informacemi o tématech, která se mají pokrýt.</li><li>Všechny semináře potřebují agendu.</li><li>Všechny agendy musí být rozdělené podle dne nebo týdne v závislosti na době trvání dílny.</li><li>Posouzení, posuzování koncepce, neškolicí semináře a implementace nabídky vyžadují dodávky.</li><li>Školicí semináře nepotřebují dodávky, ale potřebují podrobnější agendu s tématy, která se potýkají.</li></ul></ul> | <ul><li>Každá nabídka obsahuje agendu a dodávky.</li><li>Nabídka obsahuje odstavec s kontextem o společnosti, která poskytuje službu v horní části.</li><li>Nabídka obsahuje odstavec týkající se hodnoty samotné služby jako horní části. |
 | 3 | Formátování Markdownu  | Všechny nabídky musí používat formátování Markdownu, aby se nabídka správně vykreslovat, když se převede na HTML.  |  |
 | 4 | Kategorie a odvětví | Kategorie nejsou relevantní. |  | 
-| 5 | Stav seznamu (volání akce) | Automaticky se zobrazí jako *kontakt mi*. |  | 
+| 5 | Seznam stavů (možnost výpis) | Automaticky se zobrazí jako *kontakt mi*. |  | 
 | 6 | Podpora řešení a pomoc  | Podpora a pomoc nejsou požadovány.  | | 
 | 7 | K dispozici jsou zásady ochrany osobních údajů a podmínek použití  |  Zásady nebo podmínky se nevyžadují.  | | 
 | 8 | Typy služeb | Zajistěte, aby se typ služby shodoval s názvem. | |

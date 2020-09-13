@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 04/15/2020
-ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 09/04/2020
+ms.openlocfilehash: cc6b040731cbeb7271d7a7c0de1c32fa2d007013
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837340"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484184"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Průvodce publikováním pro nabídky virtuálních počítačů
 
 Publikování imagí virtuálních počítačů je jedním z hlavních způsobů publikování řešení do Azure Marketplace. Tento průvodce vám pomůže pochopit požadavky tohoto typu nabídky. 
 
-Nabídky virtuálních počítačů jsou nabídky transakcí, které se nasazují a účtují prostřednictvím Azure Marketplace. Volání akce, které uživatel vidí, se *teď dostane*.
+Nabídky virtuálních počítačů jsou nabídky transakcí, které se nasazují a účtují prostřednictvím Azure Marketplace. Možnost výpisu, kterou uživatel vidí, se *teď získá*.
 
 ## <a name="free-trial"></a>Bezplatná zkušební verze 
 

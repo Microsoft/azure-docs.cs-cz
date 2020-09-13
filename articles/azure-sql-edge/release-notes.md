@@ -9,28 +9,49 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 07/27/2020
-ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 09/04/2020
+ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553406"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500347"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Poznámky k verzi Azure SQL Edge 
 
 Tento článek popisuje, co je nového a co se změnilo u každého nového buildu Azure SQL Edge.
 
+## <a name="ctp-23"></a>CTP 2,3
+### <a name="sql-engine-build-number---15020001549"></a>Číslo sestavení pro modul SQL Engine – 15.0.2000.1549
+### <a name="whats-new"></a>Co je nového?
+1. Podpora pro vlastní zdroje v funkci Date_Bucket (). 
+2. Podpora souborů BacPac jako součást nasazení SQL.
+3. Podpora pro vyčištění na základě zásad uchovávání dat.      
+   - Podpora jazyka DDL pro povolení zásad uchovávání informací 
+   - Vyčištění uložených procedur a úlohy čištění na pozadí
+   - Rozšířené události pro monitorování úloh čištění
+
+### <a name="fixes"></a>Opravy
+1. Další chybové zprávy a podrobnosti pro řešení potíží s operacemi streamování TSQL. 
+2. Imporvements pro zachování výdrže baterie v režimu nečinnosti. 
+3. Opravy modulu streamování TSQL: 
+   - Oprava potíží se zablokovaným vodoznakem v skákající okně podproudů 
+   - Oprava zpracování výjimek rozhraní, aby se zajistilo, že se shromáždí jako chyba při akci uživatele
+
+
 ## <a name="ctp-22"></a>CTP 2,2
 ### <a name="sql-engine-build-number---15020001546"></a>Číslo sestavení pro modul SQL Engine – 15.0.2000.1546
-### <a name="fixes"></a>Opravy
+### <a name="whats-new"></a>Co je nového?
 1. Podpora pro jiné než kořenové kontejnery 
 2. Podpora pro shromažďování dat využití a diagnostiky 
 3. Aktualizace pro streamování T-SQL
    - Podpora znaků Unicode pro názvy objektů streamu
+
+### <a name="fixes"></a>Opravy
+1. Aktualizace pro streamování T-SQL
    - Vylepšení čištění procesů
    - Vylepšení protokolování a diagnostiky
-4. Zlepšení výkonu pro přijímání dat
+2. Zlepšení výkonu pro přijímání dat
 
 ## <a name="ctp-21"></a>CTP 2,1 
 ### <a name="sql-engine-build-number---15020001545"></a>Číslo sestavení pro modul SQL Engine – 15.0.2000.1545

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871560"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488826"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -308,7 +308,7 @@ Pro Logic Apps, které vytvoříte a spustíte ve vyhrazeném [prostředí ISE (
         [![Azure Service Bus konektoru ISE pro ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![Azure SQL Data Warehouse služby ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse** konektoru ISE][azure-sql-data-warehouse-doc]
+        [![Azure synapse Analytics ISE Connector – ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
         [![Azure Table Storage ISE konektor Azure ][azure-table-storage-icon]<br> **Table <br> Storage**][azure-table-storage-doc]
@@ -572,7 +572,7 @@ I když vytvoříte připojení z aplikace logiky, připojení jsou samostatné 
 [azure-monitor-logs-doc]: /connectors/azuremonitorlogs/ "Spouštění dotazů na protokoly Azure Monitor napříč Log Analyticsmi pracovními prostory a Application Insights komponentami"
 [azure-queues-doc]: /connectors/azurequeues/ "Připojte se k účtu Azure Storage, abyste mohli vytvářet a spravovat fronty a zprávy."
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Odesílání zpráv z Service Bus front a témat a příjem zpráv z Service Busch front a předplatných"
-[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Připojte se k Azure SQL Data Warehouse, abyste mohli zobrazit data."
+[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Připojte se ke službě Azure synapse Analytics, abyste mohli zobrazit data."
 [azure-table-storage-doc]: /connectors/azuretables/ "Připojte se k účtu Azure Storage, abyste mohli vytvářet, aktualizovat a dotazovat tabulky a další."
 [biztalk-server-doc]: /connectors/biztalk/ "Připojte se k vašemu BizTalk Server, abyste mohli spouštět aplikace založené na BizTalku souběžně s Azure Logic Apps"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Připojení k místnímu systému souborů"

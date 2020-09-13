@@ -2,14 +2,14 @@
 title: Šifrování v klidovém případě pomocí klíče spravovaného zákazníkem
 description: Přečtěte si o šifrování v klidovém prostředí služby Azure Container registry a o tom, jak zašifrovat registr Premium pomocí klíče spravovaného zákazníkem, který je uložený v Azure Key Vault
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/26/2020
 ms.custom: ''
-ms.openlocfilehash: 67fb58d0e11709b3d801a81f15d856e9b3db922b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0e1810c8e3da334570dd1c4d6adb500e2cfa95e3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225882"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487228"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
@@ -22,10 +22,14 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 
 ## <a name="things-to-know"></a>Co je potřeba vědět
 
-* Klíč spravovaný zákazníkem teď můžete povolit jenom v případě, že vytváříte registr.
-* Po povolení klíče spravovaného zákazníkem v registru ho nemůžete zakázat.
+* Klíč spravovaný zákazníkem teď můžete povolit jenom v případě, že vytváříte registr. Při povolování klíče nakonfigurujete spravovanou identitu *přiřazenou uživatelem* pro přístup k trezoru klíčů.
+* Po povolení šifrování pomocí klíče spravovaného zákazníkem v registru nelze šifrování zakázat.  
 * V registru zašifrovaném pomocí klíče spravovaného zákazníkem v současné době není [vztah důvěryhodnosti obsahu](container-registry-content-trust.md) podporován.
 * V registru zašifrovaném pomocí klíče spravovaného zákazníkem jsou v současné době uchovávány protokoly pro [úlohy ACR](container-registry-tasks-overview.md) jenom na 24 hodin. Pokud potřebujete uchovat protokoly po delší dobu, přečtěte si téma pokyny k [exportu a ukládání protokolů spuštění úloh](container-registry-tasks-logs.md#alternative-log-storage).
+
+
+> [!NOTE]
+> Pokud je přístup k trezoru klíčů Azure omezený pomocí virtuální sítě s [bránou Key Vault firewall](../key-vault/general/network-security.md), je potřeba provést další kroky konfigurace. Po vytvoření registru a povolení klíče spravovaného zákazníkem nastavte přístup k tomuto klíči pomocí spravované identity *přiřazené systémem* v registru a nakonfigurujete registr tak, aby vynechal bránu Key Vault firewall. Postupujte podle kroků v tomto článku a povolte šifrování pomocí klíče spravovaného zákazníkem a pak se podívejte na pokyny pro [pokročilý scénář: Key Vault firewall](#advanced-scenario-key-vault-firewall) dále v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -372,7 +376,7 @@ Po povolení klíče spravovaného zákazníkem v registru můžete provádět s
 
 ## <a name="rotate-key"></a>Otočit klíč
 
-Otočte klíč spravovaný zákazníkem, který se používá k šifrování registru, do zásad dodržování předpisů. Vytvořte nový klíč, nebo aktualizujte verzi klíče a pak aktualizujte registr tak, aby šifroval data pomocí klíče. Tyto kroky můžete provést pomocí rozhraní příkazového řádku Azure nebo na portálu.
+V souladu se zásadami dodržování předpisů otočte klíč spravovaný zákazníkem, který se používá pro šifrování registru. Vytvořte nový klíč, nebo aktualizujte verzi klíče a pak aktualizujte registr tak, aby šifroval data pomocí klíče. Tyto kroky můžete provést pomocí rozhraní příkazového řádku Azure nebo na portálu.
 
 Při otáčení klíče obvykle zadáte stejnou identitu, která se používá při vytváření registru. Volitelně můžete nakonfigurovat novou identitu přiřazenou uživatelem pro přístup k klíči nebo povolit a zadat identitu přiřazenou systémem v registru.
 
@@ -439,9 +443,15 @@ az keyvault delete-policy \
 
 Odvolání klíče efektivně zablokuje přístup ke všem datům registru, protože registr nemá přístup k šifrovacímu klíči. Pokud je povolený přístup ke klíči nebo dojde k obnovení odstraněného klíče, váš registr vybere klíč, abyste mohli znovu přistupovat k šifrovaným datům registru.
 
-## <a name="advanced-scenarios"></a>Pokročilé scénáře
+## <a name="advanced-scenario-key-vault-firewall"></a>Pokročilý scénář: Key Vault firewall
 
-### <a name="system-assigned-identity"></a>Identita přiřazená systémem
+Pokud je váš Trezor klíčů Azure nasazený ve virtuální síti s bránou Key Vault firewall, proveďte následující další kroky po povolení šifrování klíče spravovaného zákazníkem v registru.
+
+1. Konfigurace šifrování registru pro použití identity přiřazené systémem v registru
+1. Povolení obejít Key Vault brány firewall v registru
+1. Otočit klíč spravovaný zákazníkem
+
+### <a name="configure-system-assigned-identity"></a>Konfigurace identity přiřazené systémem
 
 Pro přístup k trezoru klíčů pro šifrovací klíče můžete nakonfigurovat spravovanou identitu přiřazenou systémem registru. Pokud si nejste obeznámeni s různými spravovanými identitami pro prostředky Azure, přečtěte si [Přehled](../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -466,14 +476,18 @@ Aktualizace nastavení šifrování registru pro použití identity:
 1. V části **Nastavení**vyberte **Encryption**  >  **klíč pro změnu**šifrování.
 1. V položce **Identita**vyberte **přiřazeno systému**a vyberte **Uložit**.
 
-### <a name="key-vault-firewall"></a>Key Vault firewall
+### <a name="enable-key-vault-bypass"></a>Povolit obcházení trezoru klíčů
 
-Pokud je váš Trezor klíčů Azure nasazený ve virtuální síti s bránou Key Vault firewall, proveďte následující kroky:
+Pro přístup k trezoru klíčů nakonfigurovanému pomocí brány Key Vault firewall musí Registry obejít bránu firewall. Nakonfigurujte Trezor klíčů tak, aby povoloval přístup libovolné [důvěryhodné služby](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services). Azure Container Registry je jednou z důvěryhodných služeb.
 
-1. Nakonfigurujte šifrování registru tak, aby používalo identitu přiřazenou systémem v registru. Projděte si předchozí část.
-2. Nakonfigurujte Trezor klíčů tak, aby povoloval přístup libovolné [důvěryhodné služby](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services).
+1. Na portálu přejděte do svého trezoru klíčů.
+1. Vyberte **Nastavení**  >  **sítě**.
+1. Potvrďte, aktualizujte nebo přidejte nastavení virtuální sítě. Podrobný postup najdete v tématu [konfigurace Azure Key Vault bran firewall a virtuálních sítí](../key-vault/general/network-security.md).
+1. V nástroji **umožňuje důvěryhodným službám Microsoftu obejít tuto bránu firewall**. Vyberte **Ano**. 
 
-Podrobný postup najdete v tématu [konfigurace Azure Key Vault bran firewall a virtuálních sítí](../key-vault/general/network-security.md).
+### <a name="rotate-the-customer-managed-key"></a>Otočit klíč spravovaný zákazníkem
+
+Po dokončení předchozích kroků otočte klíč k novému klíči v trezoru klíčů za bránou firewall. Postup najdete v tématu [otočení klíče](#rotate-key) v tomto článku.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,21 +4,21 @@ description: Naučte se, jak přejít z Analýza úložiště metriky (klasické
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 09/04/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f0357c153a068b1f857e4595fa17a9ac6bc22104
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078244"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500262"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Přechod na metriky v Azure Monitor
 
-Od **31. srpna 2023** analýza úložiště metriky, označované také jako *klasické metriky* , budou vyřazeny. Pokud používáte klasické metriky, nezapomeňte přejít na metriky v Azure Monitor před tímto datem. Tento článek vám pomůže provést přechod.
+Od **31. srpna 2023** analýza úložiště metriky, označované také jako *klasické metriky* , budou vyřazeny. Další informace najdete v [oficiálním oznámení](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/). Pokud používáte klasické metriky, nezapomeňte přejít na metriky v Azure Monitor před tímto datem. Tento článek vám pomůže provést přechod. 
 
 ## <a name="steps-to-complete-the-transition"></a>Postup dokončení přechodu
 
@@ -59,7 +59,7 @@ Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azur
 
  Pomocí těchto tabulek můžete určit, které metriky v Azure Monitor poskytují stejná data jako metriky, které aktuálně používáte. 
 
-**Kapacitní metriky**
+**Metriky kapacity**
 
 | Klasická metrika | Metrika v Azure Monitor |
 | ------------------- | ----------------- |

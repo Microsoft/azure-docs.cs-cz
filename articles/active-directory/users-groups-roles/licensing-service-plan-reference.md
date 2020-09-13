@@ -16,12 +16,12 @@ ms.author: kakern
 ms.reviewer: kakern
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 505b42c9dae5c3ddf6e5621b13e29f15520604b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29542af04109e545423b9391ebc04222c3551264
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975907"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504362"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Názvy produktů a identifikátory plánu služby pro licencování
 
@@ -118,7 +118,7 @@ Při správě licencí v [Azure Portal](https://portal.azure.com/#blade/Microsof
 | PROJECT ONLINE S PROJECTEM PRO OFFICE 365    | PROJECTONLINE_PLAN_2  | f82a60b8-1ee3-4cfb-a4fe-1c6a53c2656c  | FORMS_PLAN_E1 (159f4cd6-E380-449f-A816-af1a9ef76344)<br/>PROJECT_CLIENT_SUBSCRIPTION (fafd7243-e5c1-4a3a-9e40-495efcb1d3c3)<br/>SHAREPOINT_PROJECT (fe71d6c3-A2EA-4499-9778-da042bf08063)<br/>SHAREPOINTENTERPRISE (5dbe027f-2339-4123-9542-606e4d348a72)<br/>SHAREPOINTWAC (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) | FORMULÁŘE MICROSOFT (plán E1) (159f4cd6-E380-449f-A816-af1a9ef76344)<br/>PROJECT_CLIENT_SUBSCRIPTION (fafd7243-e5c1-4a3a-9e40-495efcb1d3c3)<br/>SHAREPOINT_PROJECT (fe71d6c3-A2EA-4499-9778-da042bf08063)<br/>SHAREPOINT ONLINE (plán 2) (5dbe027f-2339-4123-9542-606e4d348a72)<br/>OFFICE ONLINE (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) |
 | SHAREPOINT ONLINE (PLÁN 1)    | SHAREPOINTSTANDARD    | 1fc08a02-8b3d-43b9-831e-f76859e04e1a  | SHAREPOINTSTANDARD (c7699d2e-19aa-44de-8edf-1736da088ca1) | SHAREPOINTSTANDARD (c7699d2e-19aa-44de-8edf-1736da088ca1) |
 | SHAREPOINT ONLINE (PLÁN 2)    | SHAREPOINTENTERPRISE  | a9732ec9-17d9-494c-a51c-d6b45b384dcb  | SHAREPOINTENTERPRISE (5dbe027f-2339-4123-9542-606e4d348a72) | SHAREPOINT ONLINE (plán 2) (5dbe027f-2339-4123-9542-606e4d348a72) |
-| PBX CLOUDOVÁ PBX PRO SKYPE PRO FIRMY  | MCOEV | e43b5b99-8dfb-405F-9987-dc307f34bcbd  | MCOEV (4828c8ec-dc2e-4779-B502-87ac9ce28ab7) | TELEFONNÍ systém (4828c8ec-dc2e-4779-B502-87ac9ce28ab7) |
+| SYSTÉM MICROSOFT 365 PHONE    | MCOEV | e43b5b99-8dfb-405F-9987-dc307f34bcbd  | MCOEV (4828c8ec-dc2e-4779-B502-87ac9ce28ab7) | TELEFONNÍ systém (4828c8ec-dc2e-4779-B502-87ac9ce28ab7) |
 | ONLINE SKYPE PRO FIRMY (PLÁN 1)    | MCOIMP    | b8b749f8-a4ef-4887-9539-c95b1eaa5db7  | MCOIMP (afc06cb0-b4f4-4473-8286-d644f70d8faf) | SKYPE pro firmy ONLINE (plán 1) (afc06cb0-b4f4-4473-8286-d644f70d8faf) |
 | ONLINE SKYPE PRO FIRMY (PLÁN 2)    | MCOSTANDARD   | d42c793f-6c78-4f43-92ca-e8f6a02b035f  | MCOSTANDARD (0feaeb32-d00e-4d66-bd5a-43b5b83db82c) | ONLINE SKYPE pro firmy (plán 2) (0feaeb32-d00e-4D66-bd5a-43b5b83db82c) |
 | VNITŘNÍ A MEZINÁRODNÍ VOLÁNÍ VEŘEJNÉ SÍTĚ PRO SKYPE PRO FIRMY    | MCOPSTN2  | d3b4fe1f-9992-4930-8acb-ca6ec609365e  | MCOPSTN2 (5a10155d-f5c1-411a-a8ec-e99aae125390) | VNITROSTÁTNÍ a mezinárodní volající plán (5a10155d-f5c1-411a-a8ec-e99aae125390) |

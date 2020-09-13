@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080688"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487296"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Průzkumník Gen1
 
 Tento článek popisuje funkce a možnosti pro [webovou aplikaci](https://insights.timeseries.azure.com/)Azure Time Series Insights Gen1 Explorer. Průzkumník Azure Time Series Insights ukazuje výkonné možnosti vizualizace dat poskytované službou a lze k němu přistupovat v rámci vašeho vlastního prostředí.
 
-Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech, který vám umožní rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Můžete zjišťovat skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase. 
+Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech, který vám umožní rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Můžete zjišťovat skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase.
 
 > [!TIP]
 > Prohlídku provedenou pomocí demonstračního prostředí si můžete přečíst v tématu [rychlý start Azure Time Series Insights](time-series-quickstart.md).
@@ -37,7 +37,7 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
 >[!NOTE]
 >Přehrajte si předchozí video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Začínáme s Azure Time Series Insights pomocí akcelerátoru řešení Azure IoT".</a>
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít Azure Time Series Insights Explorer, musíte:
 
@@ -74,7 +74,7 @@ Během několika minut od připojení zdroje událostí k vašemu Azure Time Ser
          |Operace  |Podporované typy  |Poznámky  |
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**, **DateTime**, **TimeSpan**       |         |
-         |**=**, **!=**,**<>**     | **String**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |         |
+         |**=**, **!=**, **<>**     | **String**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |         |
          |**PRO**     | **String**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |  Všechny operandy by měly být stejného typu nebo mít **nulovou** konstantu.        |
          |**MÁ**     | **Řetězec**        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a **hodnota null** nejsou povoleny.       |
 
@@ -108,7 +108,7 @@ Během několika minut od připojení zdroje událostí k vašemu Azure Time Ser
 
 1. Pomocí **heatmapu** můžete v daném dotazu rychle vymezit jedinečné nebo neobvyklé datové řady. Pouze jeden hledaný termín lze vizuálně rozčlenit jako heatmapu.
 
-    [![Vytváření grafů heatmapu v Průzkumníkovi Gen1](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![Vytváření grafů v Průzkumníkovi Time Series Insights heatmapu ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Když prozkoumáte události tak, že vyberete nebo kliknete pravým tlačítkem myši, zpřístupní se panel **události** . Tady můžete zkontrolovat všechny nezpracované události a vyexportovat události jako soubory JSON nebo CSV. Azure Time Series Insights ukládá všechna nezpracovaná data.
 

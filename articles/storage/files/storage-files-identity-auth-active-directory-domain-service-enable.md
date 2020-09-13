@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d4aad485741abc1c0f54e14e00cd8654a8addbca
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: contperfq1
+ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930790"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500313"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
@@ -24,7 +25,7 @@ Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přeč
 > Soubory Azure podporují ověřování pomocí protokolu Kerberos s Azure služba AD DS s šifrováním RC4-HMAC. Šifrování AES Kerberos ještě není podporované.
 > Služba soubory Azure podporuje ověřování pro Azure služba AD DS s plnou synchronizací s Azure AD. Pokud jste povolili synchronizaci s vymezeným oborem v Azure služba AD DS, že se jenom synchronizuje omezená sada identit z Azure AD, ověřování a autorizace se nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než povolíte Azure AD přes SMB pro sdílené složky Azure, ujistěte se, že jste dokončili následující požadavky:
 
@@ -58,7 +59,7 @@ Než povolíte Azure AD přes SMB pro sdílené složky Azure, ujistěte se, že
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Ověřování souborů Azure pomocí Azure služba AD DS je dostupné ve [všech veřejných oblastech Azure](https://azure.microsoft.com/global-infrastructure/locations/).
+Ověřování souborů Azure pomocí Azure služba AD DS je dostupné ve [všech oblastech veřejných a gov Azure](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="overview-of-the-workflow"></a>Přehled pracovního postupu
 

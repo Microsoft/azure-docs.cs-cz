@@ -1,24 +1,24 @@
 ---
 title: Průvodce publikováním nabídky pro Microsoft AppSource
-description: Podrobný průvodce a publikování kontrolních seznamů pro publikování aplikací Microsoft AppSource pro Office 365, Dynamics 365, Power Apps a Power BI.
+description: Podrobný průvodce a publikování kontrolních seznamů pro publikování aplikací Microsoft AppSource pro Microsoft 365, Dynamics 365, Power Apps a Power BI.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: c0052b515d87ecb744783d57942d2557fc1db913
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 68b11c672d362e7af7dfc01e2679d035d9e1e4c9
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110279"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484812"
 ---
-# <a name="offer-publishing-guide-for-office-365-dynamics-365-power-apps-and-power-bi"></a>Nabízet Průvodce publikováním pro Office 365, Dynamics 365, Power Apps a Power BI
+# <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Nabídka Průvodce publikováním pro Microsoft 365, Dynamics 365, Power Apps a Power BI
 
-Microsoft AppSource zahrnují nabídky, které sestaví nebo rozšíří Office 365, Dynamics 365, Power Apps a Power BI. Každý z těchto produktů má konkrétní dokumentaci, která vás provede procesem publikování. 
+Microsoft AppSource zahrnují nabídky, které sestavují nebo šíří Microsoft 365, Dynamics 365, Power Apps a Power BI. Každý z těchto produktů má konkrétní dokumentaci, která vás provede procesem publikování. 
 
-AppSource má nabídky k dispozici, seznam a zkušební verze s voláními k akci *získat nyní*, *kontaktujte mě*a *Vyzkoušejte si ji hned teď*.
+AppSource má nabídky k dispozici, seznam a zkušební verze *s možnostmi výpisu,* *kontaktujte mě*a vyzkoušejte si *ji*.
 
 ## <a name="product-specific-guides"></a>Příručky pro konkrétní produkt
 
@@ -26,7 +26,7 @@ Odkazy na procesy publikování a pokyny pro každý typ nabídky naleznete v n�
 
 | Produkt    | Doprovodné materiály pro publikování  |
 | :------------------- | :-------------------|
-| Office 365 | Projděte si [Postup publikování a pokyny](/office/dev/store/submit-to-appsource-via-partner-center). |
+| Microsoft 365 | Projděte si [Postup publikování a pokyny](/office/dev/store/submit-to-appsource-via-partner-center). |
 | Dynamics 365 Business Central | Pokud chcete publikovat nabídku v partnerském centru, přečtěte si téma [Vytvoření nové nabídky Business Central v Dynamics 365](./partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 for Finance and Operations | Když vytváříte edici Enterprise, Projděte si [Postup publikování a pokyny](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source).<br/>Pokud chcete publikovat nabídku v partnerském centru, přečtěte si téma [Vytvoření nové nabídky Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md).  |
 | Dynamics 365 for Customer Engagement | Projděte si [Postup publikování a pokyny](/dynamics365/customer-engagement/developer/publish-app-appsource).<br/>Pokud chcete publikovat nabídku v partnerském centru, přečtěte si téma [Vytvoření nového řešení Dynamics 365 for Customer Engagement & Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md).  |

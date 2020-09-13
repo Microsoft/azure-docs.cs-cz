@@ -9,14 +9,14 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2cc275028b64c3df06e2c0275bc0f4ac21fa0f6e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020146"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500415"
 ---
-# <a name="monitor-azure-storage"></a>Azure Storage monitorování
+# <a name="monitoring-azure-storage"></a>Azure Storage monitorování
 
 Pokud máte důležité aplikace a obchodní procesy, které spoléhají na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování generovaná nástrojem Azure Storage a způsob použití funkcí Azure Monitor k analýze výstrah na těchto datech.
 
@@ -30,7 +30,7 @@ Stránka **Přehled** v Azure Portal pro každý prostředek úložiště zahrnu
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
 Azure Storage vytvoří data monitorování pomocí [Azure monitor](../../azure-monitor/overview.md), což je plná služba monitorování zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků a prostředků Azure v jiných cloudech a v místním prostředí. 
 
-Další informace o Azure Monitor najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md). Článek popisuje následující témata:
+Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) , který popisuje následující informace:
 
 - Co je Azure Monitor?
 - Náklady spojené s monitorováním
@@ -40,7 +40,7 @@ Další informace o Azure Monitor najdete v tématu [monitorování prostředků
 
 Následující části jsou uvedené v tomto článku, které popisují konkrétní data získaná z Azure Storage. Příklady ukazují, jak nakonfigurovat shromažďování dat a analyzovat tato data pomocí nástrojů Azure.
 
-## <a name="monitor-data-from-azure-storage"></a>Monitorování dat z Azure Storage
+## <a name="monitoring-data-from-azure-storage"></a>Monitorování dat z Azure Storage
 
 Azure Storage shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). Další informace o protokolech a metrikách vytvořených pomocí Azure Storage naleznete v tématu [Azure Storage monitoring data reference](monitor-storage-reference.md).
 
@@ -90,7 +90,7 @@ Musíte také zadat kategorie operací, pro které chcete shromažďovat protoko
 | StorageWrite | Operace zápisu pro objekty. |
 | StorageDelete | Odstraní operace s objekty. |
 
-## <a name="analyze-metric-data"></a>Analýza dat metriky
+## <a name="analyzing-metric-data"></a>Analýza dat metriky
 
 Metriky můžete analyzovat pro Azure Storage s využitím metrik z jiných služeb Azure pomocí Průzkumník metrik. Otevřete Průzkumník metrik tím, že v nabídce **Azure monitor** vyberete **metriky** . Podrobnosti o používání tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md). 
 
@@ -115,7 +115,7 @@ Všechny metriky pro Azure Storage jsou umístěny v těchto oborech názvů:
 Seznam Azure Monitor všech metrik podpory, které zahrnují Azure Storage, najdete v článku [Azure monitor podporované metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
 
 
-### <a name="access-metrics"></a>Metriky přístupu
+### <a name="accessing-metrics"></a>Přístup k metrikám
 
 > [!TIP]
 > Pokud chcete zobrazit příklady rozhraní příkazového řádku Azure CLI nebo .NET, vyberte odpovídající karty, které jsou tady uvedené.
@@ -133,7 +133,7 @@ V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku ce
    Get-AzMetricDefinition -ResourceId $resourceId
 ```
 
-#### <a name="read-metric-values"></a>Čtení hodnot metriky
+#### <a name="reading-metric-values"></a>Čtení hodnot metriky
 
 Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte rutinu [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) .
 
@@ -203,7 +203,7 @@ Následující příklad ukazuje, jak zobrazit definici metriky na úrovni účt
 
 ```
 
-#### <a name="read-account-level-metric-values"></a>Číst hodnoty metrik na úrovni účtu
+#### <a name="reading-account-level-metric-values"></a>Čtení hodnot metrik na úrovni účtu
 
 Následující příklad ukazuje, jak číst `UsedCapacity` data na úrovni účtu:
 
@@ -249,7 +249,7 @@ Následující příklad ukazuje, jak číst `UsedCapacity` data na úrovni úč
 
 ```
 
-#### <a name="read-multidimensional-metric-values"></a>Čtení hodnot multidimenzionální metriky
+#### <a name="reading-multidimensional-metric-values"></a>Čtení hodnot multidimenzionální metriky
 
 Pro multidimenzionální metriky je nutné definovat filtry metadat, pokud chcete číst data metriky pro konkrétní hodnoty dimenze.
 
@@ -304,7 +304,7 @@ Následující příklad ukazuje, jak číst data metriky v metrikě podporujíc
 
 ---
 
-## <a name="analyze-log-data"></a>Analýza dat protokolů
+## <a name="analyzing-log-data"></a>Analýza dat protokolu
 
 Protokoly prostředků můžete přistupovat buď jako objekt BLOB v účtu úložiště, jako data události, nebo prostřednictvím analytických dotazů log.
 
@@ -313,7 +313,7 @@ Podrobný referenční informace o polích, která se zobrazují v těchto proto
 > [!NOTE]
 > Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [tuto stránku](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Tato verze Preview umožňuje protokoly pro objekty BLOB (včetně Azure Data Lake Storage Gen2), soubory, fronty, tabulky, účty Premium Storage pro obecné účely V1 a účty úložiště pro obecné účely v2. Klasické účty úložiště se nepodporují.
 
-### <a name="access-logs-in-a-storage-account"></a>Přístup k protokolům v účtu úložiště
+### <a name="accessing-logs-in-a-storage-account"></a>Přístup k protokolům v účtu úložiště
 
 Protokoly se zobrazí jako objekty blob uložené do kontejneru v cílovém účtu úložiště. Data se shromažďují a ukládají v jednom objektu BLOB jako datová část JSON s oddělenými řádky. Název objektu BLOB se řídí těmito zásadami vytváření názvů:
 
@@ -323,7 +323,7 @@ Tady je příklad:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
-### <a name="access-logs-in-an-event-hub"></a>Přístup k protokolům v centru událostí
+### <a name="accessing-logs-in-an-event-hub"></a>Přístup k protokolům v centru událostí
 
 Protokoly odeslané do centra událostí nejsou uloženy jako soubor, ale můžete ověřit, že centrum událostí obdrželo informace protokolu. V Azure Portal přejdete do centra událostí a ověříte, že počet **příchozích zpráv** je větší než nula. 
 
@@ -331,7 +331,7 @@ Protokoly odeslané do centra událostí nejsou uloženy jako soubor, ale může
 
 Data protokolu, která se odesílají do centra událostí, můžete otevřít a číst pomocí nástrojů pro správu a správu událostí a monitorování událostí a informací o zabezpečení. Další informace najdete v tématu [co se dá dělat s daty monitorování odesílanými do mého centra událostí?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 
-### <a name="access-logs-in-a-log-analytics-workspace"></a>Přístup k protokolům v pracovním prostoru Log Analytics
+### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Přístup k protokolům v pracovním prostoru Log Analytics
 
 K protokolům odesílaným do Log Analytics pracovního prostoru můžete přistupovat pomocí dotazů protokolu Azure Monitor.
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
-ms.openlocfilehash: 2cb06b6802fdc4cebd04f687266f5ac08dde82c0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270053"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490067"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Sdílení a příjem dat z Azure SQL Database a Azure synapse Analytics
 
@@ -34,7 +34,7 @@ Když se do tabulky přijímají data a cílová tabulka ještě neexistuje, vyt
 
 ### <a name="prerequisites-for-sql-source"></a>Předpoklady pro zdroj SQL
 
-* Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL Data Warehouse) s tabulkami a zobrazeními, které chcete sdílet.
+* Azure SQL Database nebo Azure synapse Analytics (dříve SQL Data Warehouse) s tabulkami a zobrazeními, které chcete sdílet.
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli Přispěvatel.
 * Oprávnění ke sdílení dat pro přístup k datovému skladu. To lze provést pomocí následujících kroků: 
     1. Nastavte jako správce Azure Active Directory pro SQL Server.
@@ -90,7 +90,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte možnost **začít sdílet data**.
 
-1. Vyberte **Create** (Vytvořit).   
+1. Vyberte **Vytvořit**.   
 
 1. Vyplňte podrobnosti pro vaši sdílenou složku. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
 
@@ -124,7 +124,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte **pokračovat**.
 
-1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Create** (Vytvořit).
+1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Vytvořit**.
 
 Vaše sdílená složka Azure je teď vytvořená a příjemce vaší sdílené složky je teď připravený přijmout vaše pozvání. 
 
@@ -150,7 +150,7 @@ Pokud se rozhodnete přijímat data do Azure Storage, níže je uvedený seznam 
 Pokud se rozhodnete přijímat data do Azure SQL Database, najdete níže seznam požadavků Azure synapse Analytics.
 
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli Přispěvatel. 
-* Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k Azure SQL Database nebo Azure SQL Data Warehouse. To lze provést pomocí následujících kroků: 
+* Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k Azure SQL Database nebo ke službě Azure synapse Analytics. To lze provést pomocí následujících kroků: 
     1. Nastavte jako správce Azure Active Directory pro SQL Server.
     1. Připojte se k Azure SQL Database/datový sklad pomocí Azure Active Directory.
     1. Pomocí Editoru dotazů (Preview) spusťte následující skript, který přidá spravovanou identitu pro sdílení dat jako db_datareader, db_datawriter db_ddladmin. Je nutné se připojit pomocí služby Active Directory a SQL Server ověřování. 

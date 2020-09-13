@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871390"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484290"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrace aktivního názvu DNS na Azure App Service
 
@@ -21,7 +21,7 @@ Když migrujete živý web a název domény DNS na App Service, tento název DNS
 
 Pokud se vám Neobáváte o výpadkech v překladu DNS, přečtěte si téma [Mapování existujícího vlastního názvu DNS na Azure App Service](app-service-web-tutorial-custom-domain.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončení tohoto postupu:
 
@@ -40,7 +40,7 @@ Když nakonec migrujete svůj vlastní název DNS z původního webu do aplikace
 
 ### <a name="get-domain-verification-id"></a>Získat ID ověření domény
 
-ID ověření domény pro vaši aplikaci získáte podle kroků uvedených v části [získání ID ověření domény](app-service-web-tutorial-custom-domain.md#get-domain-verification-id).
+ID ověření domény pro vaši aplikaci získáte podle kroků uvedených v části [získání ID ověření domény](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id).
 
 ### <a name="create-domain-verification-record"></a>Vytvořit záznam pro ověření domény
 
@@ -48,9 +48,9 @@ Chcete-li ověřit vlastnictví domény, přidejte záznam TXT pro ověření do
 
 | Příklad záznamu DNS | Hostitel TXT | Hodnota TXT |
 | - | - | - |
-| \@ zobrazuje | _asuid_ | [ID ověření domény pro vaši aplikaci](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| Webová (sub) | _asuid. www_ | [ID ověření domény pro vaši aplikaci](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| \* použity | _asuid_ | [ID ověření domény pro vaši aplikaci](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \@ zobrazuje | _asuid_ | [ID ověření domény pro vaši aplikaci](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| Webová (sub) | _asuid. www_ | [ID ověření domény pro vaši aplikaci](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \* použity | _asuid_ | [ID ověření domény pro vaši aplikaci](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
 
 Na stránce záznamy DNS si poznamenejte typ záznamu názvu DNS, který chcete migrovat. App Service podporuje mapování ze záznamů CNAME a a.
 

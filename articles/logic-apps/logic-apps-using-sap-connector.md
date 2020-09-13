@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833891"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488843"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -39,7 +39,7 @@ V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které s
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
@@ -124,7 +124,7 @@ Tyto požadavky platí v případě, že aplikace logiky běží v [prostředí 
 
 ### <a name="sap-client-library-prerequisites"></a>Požadavky na knihovnu klienta SAP
 
-* Ujistěte se, že jste nainstalovali nejnovější verzi nástroje [SAP Connector (NCo 3,0) pro Microsoft .NET 3.0.22.0 zkompilované pomocí .NET Framework 4,0-Windows 64-bit (x64)](https://softwaredownloads.sap.com/file/0020000001000932019). Starší verze můžou mít za následek problémy s kompatibilitou. Další informace najdete v tématu [verze klientské knihovny SAP](#sap-library-versions).
+* Ujistěte se, že jste nainstalovali nejnovější verzi nástroje [SAP Connector (NCo 3,0) pro Microsoft .NET 3.0.22.0 zkompilované pomocí .NET Framework 4,0-Windows 64-bit (x64)](https://support.sap.com/en/product/connectors/msnet.html). Starší verze můžou mít za následek problémy s kompatibilitou. Další informace najdete v tématu [verze klientské knihovny SAP](#sap-library-versions).
 
 * Ve výchozím nastavení instalační program SAP umístí soubory sestavení do výchozí instalační složky. Tyto soubory sestavení je nutné zkopírovat do jiného umístění na základě vašeho scénáře, a to takto:
 
@@ -396,7 +396,7 @@ V tomto příkladu se používá aplikace logiky, která se aktivuje, když apli
 
    Nebo můžete ručně zadat akci:
 
-   ![Zadat akci SAP ručně](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
+   ![Ručně zadejte akci SAP, kterou chcete použít.](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Tady je příklad, který ukazuje, jak se akce zobrazí při nastavení triggeru pro příjem více než jedné zprávy.
 
@@ -626,7 +626,7 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pom
 
 1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu [nastavte aplikaci logiky pomocí triggeru SAP](#receive-from-sap).
 
-   Příklad:
+   Například:
 
    ![Přidání triggeru SAP do aplikace logiky](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
@@ -808,12 +808,12 @@ K vygenerování jednoduchého schématu XML pro SAP IDoc použijte **přihlašo
 
 Tento příklad deklaruje kořenový uzel a obory názvů. Identifikátor URI v ukázkovém kódu `http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send` deklaruje následující konfiguraci:
 
-* `/IDoc`je kořenová Poznámka pro všechny IDocs
-* `/3`je verze typů záznamů pro společné definice segmentů.
-* `/ORDERS05`je IDoc typ
-* `//`je prázdný segment, protože není k dispozici rozšíření IDoc.
-* `/700`je verze SAP
-* `/Send`je akce odeslání informací do SAP
+* `/IDoc` je kořenová Poznámka pro všechny IDocs
+* `/3` je verze typů záznamů pro společné definice segmentů.
+* `/ORDERS05` je IDoc typ
+* `//` je prázdný segment, protože není k dispozici rozšíření IDoc.
+* `/700` je verze SAP
+* `/Send` je akce odeslání informací do SAP
 
 ```xml
 

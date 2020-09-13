@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816013"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500381"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -60,7 +60,7 @@ Když vytváříte a spouštíte Logic Apps v ISE, získáte stejné uživatelsk
   * Protokoly Azure Automation, Azure Key Vault, Azure Event Grid a Azure Monitor
   * FTP, SFTP – SSH, systém souborů a SMTP
   * SAP, IBM MQ, IBM DB2 a IBM 3270
-  * SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
+  * SQL Server, analýza Azure synapse, Azure Cosmos DB
   * AS2, X12 a EDIFACT
 
   Pokud je konektor ISE dostupný pro místní systém nebo zdroj dat, můžete se s vzácnými výjimkami připojit přímo bez použití [místní brány dat](../logic-apps/logic-apps-gateway-connection.md). Další informace najdete v části [přístup k místním systémům](#on-premises) dále v tomto tématu.
@@ -142,7 +142,7 @@ Logic Apps, integrované triggery, integrované akce a konektory, které běží
 
 ## <a name="integration-accounts-with-ise"></a>Účty pro integraci s ISE
 
-Účty pro integraci s Logic Apps můžete používat v prostředí ISE (Integration Service Environment). Tyto účty pro integraci ale musí používat *stejné ISE* jako propojené aplikace logiky. Logic Apps ve ISE můžou odkazovat jenom na účty pro integraci, které jsou ve stejném ISE. Při vytváření účtu pro integraci můžete jako umístění účtu pro integraci vybrat ISE. Informace o tom, jak ceny a fakturace pro účty pro integraci s ISE najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
+Účty pro integraci s Logic Apps můžete používat v prostředí ISE (Integration Service Environment). Tyto účty pro integraci ale musí používat *stejné ISE* jako propojené aplikace logiky. Logic Apps ve ISE můžou odkazovat jenom na účty pro integraci, které jsou ve stejném ISE. Při vytváření účtu pro integraci můžete jako umístění účtu pro integraci vybrat ISE. Informace o tom, jak ceny a fakturace pro účty pro integraci s ISE najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/). Omezení informací najdete v tématu [omezení účtu pro integraci](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.reviewer: ''
 ms.custom: sqldbrb=1
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0ba510d87764fde824b3fc7c594c230b880d05c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cceeef7e41e8fc5c48b4e67cdb1adf3aa4f02a1
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170320"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483860"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Video indexované a s poznámkami pro víceklientské aplikace SaaS pomocí Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ Následující názvy odkazují na jejich odpovídající části s poznámkami 
 - [32. distribuovaný dotaz napříč databázemi klientů, 1:12:21](#anchor-image-wtip-min11221)
 - [33. Ukázka generování lístku, 1:12:32](#anchor-image-wtip-min11232)
 - [34 SSMS ad hoc Analytics, 1:12:46](#anchor-image-wtip-min11246)
-- [35. extrahujte data tenanta do SQL DW, 1:16:32](#anchor-image-wtip-min11632)
+- [35. extrahujte data tenanta do služby Azure synapse Analytics, 1:16:32](#anchor-image-wtip-min11632)
 - [36. graf denní distribuce prodeje, 1:16:48](#anchor-image-wtip-min11648)
 - [37. zabalení a volání akce, 1:19:52](#anchor-image-wtip-min11952)
 - [38. prostředků pro další informace, 1:20:42](#anchor-image-wtip-min12042)
@@ -273,8 +273,8 @@ Kliknutím na libovolný snímek obrazovky přejdete do přesného časového um
 
 
 &nbsp; <a name="anchor-image-wtip-min11632"></a>
-#### <a name="35-extract-tenant-data-into-sql-dw-11546"></a>35. extrahujte data tenanta do SQL DW, 1:15:46
-[![Extrakce dat tenanta do SQL datového skladu][image-wtip-min11632-extract-tenant-data-sql-dw]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4546)
+#### <a name="35-extract-tenant-data-into-azure-synapse-analytics-11546"></a>35. extrahujte data tenanta do služby Azure synapse Analytics, 1:15:46
+[![Extrakce dat tenanta do Azure synapse Analytics][image-wtip-min11632-extract-tenant-data-sql-dw]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4546)
 
 
 &nbsp; <a name="anchor-image-wtip-min11648"></a>
@@ -383,7 +383,7 @@ Kliknutím na libovolný snímek obrazovky přejdete do přesného časového um
 
 [image-wtip-min11246-ssms-adhoc-analytics]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11246-tsql-adhoc-analystics-db-elastic-query.png "SSMS analýzy ad hoc"
 
-[image-wtip-min11632-extract-tenant-data-sql-dw]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11632-extract-tenant-data-analytics-db-dw.png "Extrakce dat tenanta do SQL datového skladu"
+[image-wtip-min11632-extract-tenant-data-sql-dw]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11632-extract-tenant-data-analytics-db-dw.png "Extrakce dat tenanta do Azure synapse Analytics"
 
 [image-wtip-min11648-graph-daily-sale-distribution]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11648-graph-daily-sale-contoso-concert-hall.png "Graf denní distribuce prodeje"
 

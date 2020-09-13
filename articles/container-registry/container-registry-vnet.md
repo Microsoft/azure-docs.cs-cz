@@ -3,12 +3,12 @@ title: Omezení přístupu pomocí koncového bodu služby
 description: Omezte přístup ke službě Azure Container Registry pomocí koncového bodu služby ve službě Azure Virtual Network. Přístup ke koncovému bodu služby je funkcí úrovně Premium Service.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371426"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488659"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Omezení přístupu k registru kontejneru pomocí koncového bodu služby ve službě Azure Virtual Network
 
@@ -28,6 +28,8 @@ Konfigurace koncového bodu služby registru je dostupná na úrovni služby **P
 * Jenom cluster [služby Azure Kubernetes](../aks/intro-kubernetes.md) nebo [virtuální počítač](../virtual-machines/linux/overview.md) Azure se dá použít jako hostitel pro přístup k registru kontejneru pomocí koncového bodu služby. *Další služby Azure, včetně Azure Container Instances, nejsou podporované.*
 * Každý registr podporuje maximálně 100 pravidel přístupu k síti.
 * Koncové body služby pro Azure Container Registry nejsou podporované v cloudu Azure USA nebo v cloudu Azure Čína.
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

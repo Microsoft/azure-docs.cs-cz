@@ -2,13 +2,13 @@
 title: Přehled úloh ACR
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087281"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488639"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -100,7 +100,7 @@ Přečtěte si o úlohách s více kroky při [spouštění více kroků sestave
 
 ## <a name="context-locations"></a>Umístění kontextu
 
-Následující tabulka ukazuje několik příkladů podporovaných umístění kontextu pro úlohy ACR:
+V následující tabulce jsou uvedeny příklady podporovaných umístění kontextu pro úlohy ACR:
 
 | Umístění kontextu | Popis | Příklad |
 | ---------------- | ----------- | ------- |
@@ -111,6 +111,7 @@ Následující tabulka ukazuje několik příkladů podporovaných umístění k
 | Potvrzení GitHubu | Konkrétní potvrzení ve veřejném nebo privátním úložišti GitHub. Příklad zobrazuje kombinaci specifikace SHA (commit hash) a podsložky. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Podsložka Azure DevOps | Soubory v podsložce ve veřejném nebo privátním úložišti Azure. Příklad ukazuje kombinaci specifikace větve a podsložek. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Vzdálená tarballu | Soubory v komprimovaném archivu na vzdáleném serveru webserver. | `http://remoteserver/myapp.tar.gz` |
+| Artefakt v registru kontejneru | Soubory [artefaktů OCI](container-registry-oci-artifacts.md) v úložišti registru kontejnerů. | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > Když jako kontext pro úlohu použijete privátní úložiště Git, musíte zadat token pro osobní přístup (PAT).

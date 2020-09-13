@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6fb7a6654f5917c0651ffba6e672b41d14fdbe20
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798427"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489642"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Omezení oprávnění k přístupu hosta (Preview) v Azure Active Directory
 
@@ -40,10 +40,7 @@ Abyste mohli nakonfigurovat externí nastavení spolupráce, musíte být v roli
 
 Provedli jsme změny stávajících Azure Portalch ovládacích prvků pro uživatelská oprávnění typu Host.
 
-> [!IMPORTANT]
-> V krátké době budou nové ovládací prvky portálu pro uživatelská oprávnění typu Host viditelné pouze pomocí adresy URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . PowerShell a Microsoft Graph se pořád dají použít k nastavení ovládacích prvků a změny se budou na portálu akceptovat.
-
-1. Přihlaste se k [centru pro správu Azure AD](https://aka.ms/AADRestrictedGuestAccess) pomocí oprávnění globálního správce.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí oprávnění globálního správce.
 1. Na stránce Přehled **Azure Active Directory** vaší organizace vyberte **nastavení uživatele**.
 1. V části **externí uživatelé**vyberte **Spravovat nastavení externí spolupráce**.
 1. Na stránce **externí nastavení spolupráce** vyberte možnost **přístup uživatelů typu Host je omezený na vlastnosti a členství v vlastní možnosti adresářových objektů** .
@@ -159,10 +156,10 @@ Otázka | Odpověď
 -------- | ------
 Kde se tato oprávnění vztahují? | Tato oprávnění na úrovni adresáře se vynutila napříč službami a portály Azure AD, včetně Microsoft Graph, PowerShell v2, Azure Portal a portálu moje aplikace. Ovlivněné jsou taky Microsoft 365 služby, které využívají skupiny Office 365 pro scénáře spolupráce, konkrétně Outlook, Microsoft teams a SharePoint.
 Na které části portálu moje aplikace bude tato funkce mít vliv? | Tato nová oprávnění budou respektovat funkce skupin na portálu moje aplikace. To zahrnuje všechny cesty pro zobrazení seznamu skupin a členství ve skupinách v mých aplikacích. V dostupnosti dlaždice skupiny nebyly provedeny žádné změny. Existující nastavení skupiny na portálu pro správu Azure pořád řídí dostupnost dlaždic skupiny.
-Potlačí tato oprávnění nastavení hostů pro SharePoint nebo Microsoft Teams? | Ne. Tato stávající nastavení stále ovládají prostředí a přístup k nim v těchto aplikacích. Pokud se například zobrazí problémy na SharePointu, zkontrolujte nastavení externího sdílení.
+Potlačí tato oprávnění nastavení hostů pro SharePoint nebo Microsoft Teams? | No. Tato stávající nastavení stále ovládají prostředí a přístup k nim v těchto aplikacích. Pokud se například zobrazí problémy na SharePointu, zkontrolujte nastavení externího sdílení.
 Jaké jsou známé problémy s kompatibilitou v Planneru a Yammeru? | <li>S oprávněním nastaveným na omezeno budou hosté přihlášení do aplikace plánovače nebo přístup k plánovači v Microsoft Teams mít přístup k jejich plánům ani úlohám.<li>S oprávněním nastaveným na hodnotu "omezeno" budou hosté přihlášení do Yammeru moci opustit skupinu.
 Budou se moje stávající oprávnění hostů v mém tenantovi měnit? | V aktuálním nastavení se neudělaly žádné změny. Udržujeme zpětnou kompatibilitu s vaším stávajícím nastavením. Rozhodnete, že chcete provést změny.
-Budou tato oprávnění nastavena ve výchozím nastavení? | Ne. Existující výchozí oprávnění zůstanou beze změny. Volitelně můžete nastavit oprávnění pro více omezující podmínky.
+Budou tato oprávnění nastavena ve výchozím nastavení? | No. Existující výchozí oprávnění zůstanou beze změny. Volitelně můžete nastavit oprávnění pro více omezující podmínky.
 Existují pro tuto funkci nějaké licenční požadavky? | Ne, s touto funkcí neexistují žádné nové licenční požadavky.
 
 ## <a name="next-steps"></a>Další kroky

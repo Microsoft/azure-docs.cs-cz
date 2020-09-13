@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/04/2020
+ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921380"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488605"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace
 
@@ -21,13 +21,13 @@ Tento článek vás provede procesem vytvoření cílové stránky pro bezplatno
 
 ## <a name="overview"></a>Přehled
 
-Cílovou stránku si můžete představit jako "předsálí" pro nabídku software jako službu (SaaS). Když se zákazník rozhodne získat vaši aplikaci, komerční tržiště je přesměruje na cílovou stránku, aby aktivovala a nakonfigurovala své předplatné vaší aplikace v SaaS. Když vytvoříte nabídku software jako službu (SaaS), můžete v partnerském centru zvolit, jestli chcete [prodávat přes Microsoft](partner-center-portal/create-new-saas-offer.md). Pokud chcete zobrazit seznam nabídek jenom na komerčním webu Microsoft Marketplace a neprodávat prostřednictvím Microsoftu, můžete určit, jak můžou potenciální zákazníci s nabídkou pracovat. Pokud povolíte možnost **získat nyní (zdarma)** nebo **bezplatná zkušební verze** výpisu, musíte zadat adresu URL cílové stránky, na kterou může uživatel přejít, abyste mohli získat přístup k bezplatnému nebo zkušebnímu předplatnému.
+Cílovou stránku si můžete představit jako "předsálí" pro nabídku software jako službu (SaaS). Když se zákazník rozhodne získat vaši aplikaci, komerční tržiště je přesměruje na cílovou stránku, aby aktivovala a nakonfigurovala své předplatné vaší aplikace v SaaS. Když vytvoříte nabídku software jako službu (SaaS), můžete v partnerském centru zvolit, jestli chcete [prodávat přes Microsoft](plan-saas-offer.md#listing-options). Pokud chcete zobrazit seznam nabídek jenom na komerčním webu Microsoft Marketplace a neprodávat prostřednictvím Microsoftu, můžete určit, jak můžou potenciální zákazníci s nabídkou pracovat. Pokud povolíte možnost **získat nyní (zdarma)** nebo **bezplatná zkušební verze** výpisu, musíte zadat adresu URL cílové stránky, na kterou může uživatel přejít, abyste mohli získat přístup k bezplatnému nebo zkušebnímu předplatnému.
 
 Účelem cílové stránky je jednoduše získat uživatele, aby mohl aktivovat bezplatnou zkušební verzi nebo bezplatné předplatné. Pomocí Azure Active Directory (Azure AD) a Microsoft Graph pro uživatele povolíte jednotné přihlašování (SSO) a získáte důležité informace o uživateli, které můžete použít k aktivaci bezplatné zkušební verze nebo bezplatného předplatného, včetně jejich jména, e-mailové adresy a organizace.
 
 Vzhledem k tomu, že informace potřebné k aktivaci předplatného jsou omezené a poskytované službou Azure AD a Microsoft Graph, neměli byste vyžadovat informace, které vyžadují více než základní souhlas. Pokud potřebujete informace o uživateli, které vyžadují další souhlas s vaší aplikací, měli byste tyto informace požádat po dokončení Aktivace předplatného. To umožňuje bezproblémovou aktivaci předplatného pro uživatele a snižuje riziko jeho zrušení.
 
-Cílová stránka obvykle obsahuje následující informace a volání akce:
+Cílová stránka obvykle obsahuje následující informace a možnosti výpisu:
 
 - Prezentovat název a podrobnosti bezplatné zkušební verze nebo bezplatného předplatného. Zadejte například omezení využití nebo dobu trvání zkušební verze.
 - Prezentovat podrobnosti o účtu uživatele, včetně křestního jména a příjmení, organizace a e-mailu.
@@ -38,12 +38,12 @@ Následující části tohoto článku vás provedou procesem vytvoření cílov
 
 1. [Vytvořte registraci aplikace Azure AD](#create-an-azure-ad-app-registration) pro cílovou stránku.
 2. [Jako výchozí bod pro aplikaci použijte ukázku kódu](#use-a-code-sample-as-a-starting-point) .
-3. [Přečtěte si informace z deklarací identity kódovaných v tokenu ID](#read-information-from-claims-encoded-in-the-id-token), které se od služby Azure AD po přihlášení poslaly s požadavkem.
+3. [Přečtěte si informace z deklarací identity kódovaných v tokenu ID](#read-information-from-claims-encoded-in-the-id-token), které se po přihlášení přijaly v Azure AD, které se odeslaly spolu s požadavkem.
 4. [Použijte rozhraní Microsoft Graph API](#use-the-microsoft-graph-api) k získání dalších informací, podle potřeby.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Vytvoření registrace aplikace Azure AD
 
-Obchod na komerčním webu je plně integrovaný s Azure AD. Uživatelé dorazí na web Marketplace ověřený pomocí [účtu Azure AD nebo účet Microsoft (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Po získání bezplatného nebo bezplatného zkušebního předplatného prostřednictvím nabídky jenom se seznamem přejde uživatel z komerčního tržiště na adresu URL vaší cílové stránky, kde můžete aktivovat a spravovat svoje předplatné s vaší aplikací SaaS. Je nutné, aby se uživatel přihlásil k aplikaci pomocí jednotného přihlašování služby Azure AD. (Adresa URL cílové stránky je uvedena na [stránce technické konfigurace](partner-center-portal/offer-creation-checklist.md#technical-configuration-page)nabídky).
+Obchod na komerčním webu je plně integrovaný s Azure AD. Uživatelé dorazí na web Marketplace ověřený pomocí [účtu Azure AD nebo účet Microsoft (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Po získání bezplatného nebo bezplatného zkušebního předplatného prostřednictvím nabídky jenom se seznamem přejde uživatel z komerčního tržiště na adresu URL vaší cílové stránky, kde můžete aktivovat a spravovat svoje předplatné s vaší aplikací SaaS. Je nutné, aby se uživatel přihlásil k aplikaci pomocí jednotného přihlašování služby Azure AD. (Adresa URL cílové stránky je uvedena na stránce [technické konfigurace](plan-saas-offer.md#technical-information) nabídky.
 
 Prvním krokem k použití identity je, abyste se ujistili, že je vaše cílová stránka registrovaná jako aplikace Azure AD. Registrace aplikace vám umožní pomocí Azure AD ověřovat uživatele a žádat o přístup k prostředkům uživatele. Může být považována za definici aplikace, která umožňuje službě zjistit, jak vydávat tokeny aplikaci na základě nastavení aplikace.
 
@@ -103,4 +103,4 @@ Většina aplikací zaregistrovaných ve službě Azure AD uděluje delegovaná 
 > Účty z klienta MSA (s ID tenanta `9188040d-6c67-4c5b-b112-36a304b66dad` ) nebudou vracet více informací, než již byly shromážděny pomocí tokenu ID. Toto volání Graph API pro tyto účty můžete přeskočit.
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření nabídky SaaS na komerčním webu Marketplace](./partner-center-portal/create-new-saas-offer.md)
+- [Jak vytvořit nabídku SaaS na komerčním webu Marketplace](create-new-saas-offer.md)

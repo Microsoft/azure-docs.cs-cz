@@ -3,12 +3,12 @@ title: Azure Lighthouse a spravované aplikace Azure
 description: Seznamte se s tím, jak můžou Azure Lighthouse a spravované aplikace Azure pomáhat při povolování různých scénářích a způsobu jejich použití společně.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163420"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483843"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse a spravované aplikace Azure
 
@@ -23,7 +23,7 @@ Spravované aplikace Azure i služba Azure Lighthouse fungují tak, že poskytov
 
 S [Azure Lighthouse](../overview.md)může poskytovatel služeb provádět nejrůznější úlohy správy přímo na předplatném zákazníka (nebo skupině prostředků). Tento přístup se dosahuje prostřednictvím logické projekce, která umožňuje poskytovatelům služeb přihlašovat se ke svému vlastnímu tenantovi a přistupovat k prostředkům, které patří do tenanta zákazníka. Zákazník může určit, která předplatná nebo skupiny prostředků delegovat poskytovateli služeb, a zákazník zachovává úplný přístup k těmto prostředkům. Můžou taky odebrat přístup poskytovatele služeb kdykoli.
 
-Aby bylo možné používat Azure Lighthouse, jsou zákazníci přihlášeni pro [správu delegovaných prostředků Azure](azure-delegated-resource-management.md) , a to [nasazením šablon ARM](../how-to/onboard-customer.md) nebo pomocí [nabídky spravované služby v Azure Marketplace](managed-services-offers.md). Svůj dopad na zapojení zákazníků můžete sledovat [propojením ID partnera](../../cost-management-billing/manage/link-partner-id.md).
+Aby bylo možné používat Azure Lighthouse, jsou zákazníci přihlášeni pro [správu delegovaných prostředků Azure](azure-delegated-resource-management.md) , a to [nasazením šablon ARM](../how-to/onboard-customer.md) nebo pomocí [nabídky spravované služby v Azure Marketplace](managed-services-offers.md). [Propojováním ID partnera](../how-to/partner-earned-credit.md)můžete sledovat svůj dopad na zapojení zákazníků a získat kredit získaný partnerem.
 
 Služba Azure Lighthouse se obvykle používá v případě, kdy poskytovatel služeb provede průběžné úlohy správy pro zákazníky.
 

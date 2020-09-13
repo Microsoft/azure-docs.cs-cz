@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8328fa9c9e32a22e8e5093aa343f333cd1914ddc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038545"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500296"
 ---
 # <a name="supported-authentication-methods"></a>Podporované metody ověřování
 
@@ -43,9 +43,13 @@ Toto jsou aktuálně podporované metody přihlašování:
 >[!NOTE]
 >Čipové karty a Windows Hello můžou k přihlášení použít jenom Kerberos. Přihlášení pomocí protokolu Kerberos vyžaduje pro řadič domény řadu kontrol.
 
+## <a name="hybrid-identity"></a>Hybridní identita
+
+Virtuální počítač s Windows podporuje [hybridní identity](../active-directory/hybrid/whatis-hybrid-identity.md) prostřednictvím Azure Active Directory (AD), včetně těch federovaných pomocí Active Directory Federation Services (AD FS) (ADFS). Vzhledem k tomu, že uživatelé musí být zjistitelní prostřednictvím Azure AD, virtuální plocha Windows nepodporuje samostatná nasazení služby Active Directory se službou AD FS.
+
 ## <a name="single-sign-on-sso"></a>Jednotné přihlašování (SSO)
 
-Virtuální klient Windows v současnosti nepodporuje Active Directory Federation Services (AD FS) (ADFS) pro ověřování nebo jednotné přihlašování.
+Virtuální klient Windows v současnosti nepodporuje Active Directory Federation Services (AD FS) (ADFS) pro jednotné přihlašování (SSO).
 
 Jediným způsobem, jak se vyhnout zobrazování výzvy k zadání přihlašovacích údajů pro hostitele relace, je uložit je v klientovi. Doporučujeme vám to udělat jenom se zabezpečenými zařízeními, abyste ostatním uživatelům zabránili v přístupu k prostředkům.
 

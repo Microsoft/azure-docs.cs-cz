@@ -1,19 +1,19 @@
 ---
 title: Extrakce, transformace a načítání (ETL) ve velkém měřítku – Azure HDInsight
 description: Přečtěte si, jak se v HDInsight s Apache Hadoop používá extrakce, transformace a načtení.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e048365ca589d452385607b902ee6b285de8165f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084116"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504311"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -27,7 +27,7 @@ Následující části obsahují všechny fáze ETL a jejich přidružené souč
 
 ## <a name="orchestration"></a>Orchestrace
 
-Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Příklad:
+Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Například:
 
 - Můžete použít Apache Hive k vyčištění části dat a Apache prasete k vyčištění další části.
 - Pomocí Azure Data Factory můžete načíst data do Azure SQL Database z Azure Data Lake Store.
@@ -48,7 +48,7 @@ Použít Azure Data Factory k:
 
 1. Vytvářejte a naplánujte pracovní postupy řízené daty. Tyto kanály ingestují data z různorodých úložišť dat.
 1. Zpracujte a Transformujte data pomocí výpočetních služeb, jako je HDInsight nebo Hadoop. Pro tento krok můžete použít také Spark, Azure Data Lake Analytics, Azure Batch nebo Azure Machine Learning.
-1. Publikujte výstupní data do úložišť dat, jako je Azure SQL Data Warehouse, aby se aplikace BI využily.
+1. Publikujte výstupní data do úložišť dat, jako je Azure synapse Analytics, pro využívání aplikací BI.
 
 Další informace o Azure Data Factory najdete v [dokumentaci](../../data-factory/introduction.md).
 
@@ -84,11 +84,11 @@ Pro nahrávání datových sad v rozsahu terabajtů může být latence sítě v
 
 - **Nahrávání dat z jednotek pevného disku:** [Službu Azure import/export](../../storage/common/storage-import-export-service.md) můžete použít k dodávání pevných diskových jednotek s daty do datacentra Azure. Vaše data se napřed nahrají do úložiště objektů BLOB v Azure. Pak můžete pomocí Azure Data Factory nebo nástroje AdlCopy kopírovat data ze služby Azure Blob Storage do Data Lake Storage.
 
-### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL Data Warehouse je vhodná volba k uložení připravených výsledků. K provádění těchto služeb pro SQL Data Warehouse můžete použít Azure HDInsight.
+Azure synapse Analytics je vhodná volba k uložení připravených výsledků. Azure HDInsight můžete použít k provádění těchto služeb pro Zure synapse Analytics.
 
-Azure SQL Data Warehouse je relační úložiště databáze optimalizované pro analytické úlohy. Škáluje se v závislosti na dělených tabulkách. Tabulky mohou být rozděleny mezi více uzlů. Uzly jsou vybrány v době vytváření. Můžou se škálovat po faktu, ale to je aktivní proces, který může vyžadovat přesun dat. Další informace najdete v tématu [Správa výpočetních prostředků v SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+Azure synapse Analytics je relační úložiště databáze optimalizované pro analytické úlohy. Škáluje se v závislosti na dělených tabulkách. Tabulky mohou být rozděleny mezi více uzlů. Uzly jsou vybrány v době vytváření. Můžou se škálovat po faktu, ale to je aktivní proces, který může vyžadovat přesun dat. Další informace najdete v tématu [Správa výpočetních prostředků ve službě Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 
 ### <a name="apache-hbase"></a>Apache HBase
 
@@ -107,7 +107,7 @@ Přizpůsobitelnost HBA závisí na počtu uzlů v clusteru HDInsight.
 Azure nabízí tři relační databáze PaaS:
 
 * [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) je implementace Microsoft SQL Server. Další informace o výkonu najdete v tématu [optimalizace výkonu v Azure SQL Database](../../azure-sql/database/performance-guidance.md).
-* [Azure Database for MySQL](../../mysql/overview.md) je implementace Oracle MySQL.
+* [Azure Database for MySQL](../../mysql/overview.md)  je implementace Oracle MySQL.
 * [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) je implementace PostgreSQL.
 
 Přidejte další procesor a paměť pro horizontální navýšení kapacity těchto produktů.  Můžete také použít prémiové disky s produkty pro lepší výkon vstupně-výstupních operací.

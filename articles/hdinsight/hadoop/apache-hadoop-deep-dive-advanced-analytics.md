@@ -1,19 +1,19 @@
 ---
 title: Rozsáhlá podrobněa – Pokročilá analýza – Azure HDInsight
 description: Přečtěte si, jak Pokročilá analýza používá algoritmy ke zpracování velkých objemů dat ve službě Azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: fa2909055259d7832942f9f47434963f7bbb2aa1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079356"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504345"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Rozsáhlá podrobněa – Pokročilá analýza
 
@@ -67,7 +67,7 @@ Existují tři škálovatelné knihovny strojového učení, které přinášej�
 
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib obsahuje původní rozhraní API postavené na Spark RDD.
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML je novější balíček, který poskytuje rozhraní API na vyšší úrovni sestavené nad datovými snímky Spark pro vytváření kanálů ml.
-* [**MMLSpark**](https://github.com/Azure/mmlspark) – knihovna Microsoft Machine Learning library for Apache Spark (MMLSpark) je navržená tak, aby se zvýšila produktivita vědeckých dat ve Sparku, zvýšila se rychlost experimentu a využila se špičkové techniky strojového učení, včetně hloubkového učení, u velmi rozsáhlých datových sad. Knihovna MMLSpark zjednodušuje běžné úlohy modelování pro vytváření modelů v PySpark.
+* [**MMLSpark**](https://github.com/Azure/mmlspark)  – knihovna Microsoft Machine Learning library for Apache Spark (MMLSpark) je navržená tak, aby se zvýšila produktivita vědeckých dat ve Sparku, zvýšila se rychlost experimentu a využila se špičkové techniky strojového učení, včetně hloubkového učení, u velmi rozsáhlých datových sad. Knihovna MMLSpark zjednodušuje běžné úlohy modelování pro vytváření modelů v PySpark.
 
 ### <a name="r-and-ml-services"></a>Služby R a ML
 

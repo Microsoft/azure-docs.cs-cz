@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835593"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488503"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Škálování Azure Stream Analytics úlohy za účelem zvýšení propustnosti
 V tomto článku se dozvíte, jak vyladit Stream Analytics dotaz, abyste zvýšili propustnost pro úlohy Stream Analytics. Následující průvodce vám umožní škálovat úlohy tak, aby zpracovávala větší zátěž a využila více systémových prostředků (například větší šířku pásma, více prostředků procesoru, více paměti).
@@ -23,7 +23,7 @@ Je možné, že budete potřebovat přečíst si následující články:
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Případ 1 – váš dotaz je ze své podstaty plně paralelizovat napříč vstupními oddíly
 Pokud je váš dotaz ze své podstaty plně paralelizovat napříč vstupními oddíly, můžete postupovat podle následujících kroků:
 1.  Vytvořte dotaz tak, aby se zpracovatelné paralelně pomocí klíčového slova **partition by** . Další podrobnosti najdete v části zpracovatelné Parallel Jobs [na této stránce](stream-analytics-parallelization.md).
-2.  V závislosti na typech výstupu použitých v dotazu nemusí být některé výstupy buď paralelizovat, nebo musí být další konfigurace zpracovatelné paralelně. Výstup PowerBI není například paralelizovat. Výstupy se vždycky sloučí před odesláním do výstupní jímky. Objekty blob, tabulky, ADLS, Service Bus a Azure Functions jsou automaticky paralelismud. Výstupy SQL a SQL DW mají možnost pro paralelní zpracování. V centru událostí musí být konfigurace PartitionKey shodná s polem **partition by** (obvykle PartitionID). V centru událostí taky věnujte mimořádnou pozornost, která bude odpovídat počtu oddílů pro všechny vstupy a výstupy, aby nedocházelo k přecházení mezi oddíly. 
+2.  V závislosti na typech výstupu použitých v dotazu nemusí být některé výstupy buď paralelizovat, nebo musí být další konfigurace zpracovatelné paralelně. Výstup PowerBI není například paralelizovat. Výstupy se vždycky sloučí před odesláním do výstupní jímky. Objekty blob, tabulky, ADLS, Service Bus a Azure Functions jsou automaticky paralelismud. Výstupy SQL a Azure synapse Analytics mají možnost paralelního zpracování. V centru událostí musí být konfigurace PartitionKey shodná s polem **partition by** (obvykle PartitionID). V centru událostí taky věnujte mimořádnou pozornost, která bude odpovídat počtu oddílů pro všechny vstupy a výstupy, aby nedocházelo k přecházení mezi oddíly. 
 3.  Spusťte dotaz s **6 Su** (což je plná kapacita jediného výpočetního uzlu), abyste měřili maximální dosažitelnou propustnost, a pokud používáte **Group by**, změřte si, kolik skupin (mohutnosti) může úloha zpracovat. V tomto případě jsou k dishlavnímu příznaků omezení systémových prostředků v úloze
     - Metrika využití SU% má více než 80%. To značí, že využití paměti je vysoké. Faktory přispívající k navýšení této metriky jsou popsány [zde](stream-analytics-streaming-unit-consumption.md). 
     -   Na výstupní časové razítko se zachází s ohledem na čas v chodu na zdi. V závislosti na vaší logice dotazu může mít výstupní časové razítko posunutí logiky od času chodu na zdi. Nicméně by měli postupovat přibližně na stejnou sazbu. Pokud je výstupní časové razítko ještě dál a ještě dál, je indikátorem, že systém je přepracovaná. Může to být výsledkem omezení pro výstup z výstupní jímky nebo vysokého využití procesoru. V tuto chvíli neposkytujeme metriku využití procesoru, takže to může být obtížné odlišit tyto dvě.

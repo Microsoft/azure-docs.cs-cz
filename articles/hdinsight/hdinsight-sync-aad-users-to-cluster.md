@@ -1,19 +1,19 @@
 ---
 title: Synchronizace Azure Active Directory uživatelů s clusterem HDInsight
 description: Synchronizace ověřených uživatelů z Azure Active Directory do clusteru HDInsight.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004416"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504651"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizace uživatelů Azure Active Directory do clusteru HDInsight
 
@@ -123,7 +123,7 @@ Následující metoda používá POST s REST API Ambari. Další informace najde
 1. Tento výsledek ukazuje, že stav byl **dokončen**, byl vytvořen jeden nový uživatel a uživatel byl přiřazen členství. V tomto příkladu je uživatel přiřazený k synchronizované skupině LDAP "HiveUsers", protože uživatel se přidal do stejné skupiny ve službě Azure AD.
 
     > [!NOTE]  
-    > Předchozí metoda synchronizuje jenom skupiny Azure AD, které jsou zadané ve vlastnosti **skupiny přístupového uživatele** v nastavení domény během vytváření clusteru. Další informace najdete v tématu [Vytvoření clusteru HDInsight](domain-joined/apache-domain-joined-configure.md).
+    > Předchozí metoda synchronizuje jenom skupiny Azure AD, které jsou zadané ve vlastnosti **skupiny přístupového uživatele** v nastavení domény během vytváření clusteru. Další informace najdete v tématu  [Vytvoření clusteru HDInsight](domain-joined/apache-domain-joined-configure.md).
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Ověření nově přidaného uživatele Azure AD
 
@@ -137,7 +137,7 @@ Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manag
 
     ![Nabídka uživatelů a skupin HDInsight](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
-3. Nový uživatel by měl být uveden v tabulce uživatelé. Typ je nastaven na `LDAP` místo `Local` .
+3. Nový uživatel by měl být uveden v tabulce uživatelé. Typ je nastaven na `LDAP` místo  `Local` .
 
     ![Přehled stránky uživatelé AAD AAD](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
@@ -146,7 +146,7 @@ Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manag
 Když se nový uživatel (nebo jiný uživatel domény) přihlásí k Ambari, použije své úplné uživatelské jméno a přihlašovací údaje domény služby Azure AD.  Ambari zobrazí alias uživatele, což je zobrazované jméno uživatele ve službě Azure AD.
 Nový ukázkový uživatel má uživatelské jméno `hiveuser3@contoso.com` . V Ambari se tento nový uživatel zobrazuje jako, `hiveuser3` ale uživatel se do Ambari přihlašuje jako `hiveuser3@contoso.com` .
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Konfigurace zásad Apache Hive ve službě HDInsight pomocí protokolu ESP](hdinsight-domain-joined-run-hive.md)
 * [Správa clusterů HDInsight pomocí protokolu ESP](hdinsight-domain-joined-manage.md)

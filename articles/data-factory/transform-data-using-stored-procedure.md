@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 8543276a338b523a290fb131a8f1b7a55affbd98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdab4f33852be6bfc2621e2cbecff76778567b1a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248968"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484727"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity SQL Server uložených procedur v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,13 +33,13 @@ Aktivity transformace dat v [kanálu](concepts-pipelines-activities.md) Data Fac
 Aktivitu uložené procedury můžete použít k vyvolání uložené procedury v jednom z následujících úložišť dat v podniku nebo na virtuálním počítači Azure (VM): 
 
 - Azure SQL Database
-- Azure Synapse Analytics (dříve Azure SQL Data Warehouse)
+- Azure Synapse Analytics (dříve SQL Data Warehouse)
 - SQL Server databázi.  Pokud používáte SQL Server, nainstalujte modul runtime integrace v místním prostředí do stejného počítače, který je hostitelem databáze, nebo na samostatném počítači, který má přístup k databázi. Místní prostředí Integration runtime je komponenta, která propojuje zdroje dat místně nebo na virtuálním počítači Azure s Cloud Services zabezpečeným a spravovaným způsobem. Podrobnosti najdete v článku věnovaném místnímu [prostředí Integration runtime](create-self-hosted-integration-runtime.md) .
 
 > [!IMPORTANT]
-> Při kopírování dat do Azure SQL Database nebo SQL Server můžete nakonfigurovat **SqlSink** v aktivitě kopírování a vyvolat uloženou proceduru pomocí vlastnosti **sqlWriterStoredProcedureName** . Podrobnosti o této vlastnosti naleznete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Vyvolání uložené procedury při kopírování dat do služby Azure synapse Analytics (dříve Azure SQL Data Warehouse) pomocí aktivity kopírování se nepodporuje. Můžete ale použít aktivitu uložená procedura k vyvolání uložené procedury v SQL Data Warehouse. 
+> Při kopírování dat do Azure SQL Database nebo SQL Server můžete nakonfigurovat **SqlSink** v aktivitě kopírování a vyvolat uloženou proceduru pomocí vlastnosti **sqlWriterStoredProcedureName** . Podrobnosti o této vlastnosti naleznete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Volání uložené procedury při kopírování dat do služby Azure synapse Analytics pomocí aktivity kopírování se nepodporuje. Můžete ale použít aktivitu uložená procedura k vyvolání uložené procedury ve službě Azure synapse Analytics. 
 >
-> Při kopírování dat z Azure SQL Database nebo SQL Server nebo analýzy Azure synapse (dříve Azure SQL Data Warehouse) můžete nakonfigurovat **SqlSource** v aktivitě kopírování k vyvolání uložené procedury pro čtení dat ze zdrojové databáze pomocí vlastnosti **sqlReaderStoredProcedureName** . Další informace najdete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md)a [Azure synapse Analytics (dříve Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md) .          
+> Při kopírování dat z Azure SQL Database nebo SQL Server nebo Azure synapse Analytics můžete nakonfigurovat **SqlSource** v aktivitě kopírování, aby se vyvolala uložená procedura pro čtení dat ze zdrojové databáze pomocí vlastnosti **sqlReaderStoredProcedureName** . Další informace najdete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md)a [Azure synapse Analytics](connector-azure-sql-data-warehouse.md) .          
 
  
 
@@ -68,12 +68,12 @@ Tady je formát JSON pro definování aktivity uložené procedury:
 
 Tyto vlastnosti JSON jsou popsány v následující tabulce:
 
-| Vlastnost                  | Popis                              | Vyžadováno |
+| Vlastnost                  | Popis                              | Povinné |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Název aktivity                     | Yes      |
-| description               | Text popisující, k čemu se aktivita používá | No       |
+| Popis               | Text popisující, k čemu se aktivita používá | No       |
 | typ                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Yes      |
-| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **Azure synapse Analytics (dříve Azure SQL Data Warehouse)** nebo **SQL Server** registrován jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
+| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **analýzy Azure synapse** nebo **SQL Server** v Data Factory zaregistrován jako propojená služba. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
 | storedProcedureName       | Zadejte název uložené procedury, která se má vyvolat. | Yes      |
 | storedProcedureParameters | Zadejte hodnoty parametrů uložených procedur. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu, které jsou podporovány zdrojem dat. Pokud pro parametr potřebujete předat hodnotu null, použijte `"param1": { "value": null }` (všechna malá písmena). | No       |
 
@@ -82,7 +82,7 @@ Datový typ, který zadáte pro parametr, je typ Azure Data Factory, který se m
 
 | Zdroj dat          | Mapování datových typů |
 | ---------------------|-------------------|
-| Azure Synapse Analytics (dříve Azure SQL Data Warehouse) | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |

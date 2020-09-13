@@ -3,21 +3,17 @@ title: Automatické opravy uzlů AKS (Azure Kubernetes Service)
 description: Přečtěte si o funkcích automatických oprav uzlů a o tom, jak AKS opravuje poškozené pracovní uzly.
 services: container-service
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 7fcb7b380f3694aaf34328019c3e09f5157c9e64
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 08/24/2020
+ms.openlocfilehash: 781a1ffebb40b0cce9f18699d308db90633e8626
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542038"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490101"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatická oprava uzlu služby Azure Kubernetes Service (AKS)
 
-AKS nepřetržitě kontroluje stav pracovních uzlů a provádí automatickou opravu uzlů, pokud se stanou stavem není v pořádku. Tento dokument informuje operátory o tom, jak se chová funkce Automatické opravy uzlů. Kromě oprav AKS provádí platforma virtuálních počítačů Azure [údržbu Virtual Machines, u][vm-updates] kterých dochází i k problémům. AKS a virtuální počítače Azure spolupracují na minimalizaci výpadků služeb pro clustery.
-
-## <a name="limitations"></a>Omezení
-
-* Fondy uzlů Windows se ještě nepodporují.
+AKS nepřetržitě kontroluje stav pracovních uzlů a provádí automatickou opravu uzlů, pokud se stanou stavem není v pořádku. Tento dokument informuje operátory o tom, jak se funkce automatických oprav uzlů chová pro uzly Windows i Linux. Kromě oprav AKS provádí platforma virtuálních počítačů Azure [údržbu Virtual Machines, u][vm-updates] kterých dochází i k problémům. AKS a virtuální počítače Azure spolupracují na minimalizaci výpadků služeb pro clustery.
 
 ## <a name="how-aks-checks-for-unhealthy-nodes"></a>Jak AKS kontroluje uzly, které nejsou v pořádku
 
@@ -37,9 +33,13 @@ kubectl get nodes
 > [!Note]
 > AKS inicializuje operace opravy pomocí uživatelského účtu **AKS-** revazovat.
 
-Pokud je zjištěno, že uzel není v pořádku na základě výše uvedených pravidel a zůstane v pořádku po dobu 10 po sobě jdoucích minut, AKS se uzel restartuje. Pokud uzly zůstanou po počáteční operaci opravy chybné, prošetří je další náprava AKS inženýry.
-  
-Pokud během kontroly stavu není v pořádku víc uzlů, každý uzel se opraví jednotlivě před zahájením další opravy.
+Pokud uzel není v pořádku na základě výše uvedených pravidel a zůstane v pořádku po dobu 10 po sobě jdoucích minut, budou provedeny následující akce.
+
+1. Restartovat uzel
+1. Pokud není restartování úspěšné, přeobrazte uzel
+1. Pokud se znovu nezdařila bitová kopie, vytvořte nový uzel a přeobrazte ho.
+
+Pokud žádná z těchto akcí není úspěšná, jsou další nápravy prozkoumány AKS technici. Pokud během kontroly stavu není v pořádku víc uzlů, každý uzel se opraví jednotlivě před zahájením další opravy.
 
 ## <a name="next-steps"></a>Další kroky
 

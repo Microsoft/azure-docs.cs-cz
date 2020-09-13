@@ -6,25 +6,28 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/14/2020
+ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432515"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486854"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 
-Statický obsah (HTML, CSS, JavaScript a soubory obrázků) můžete obsluhovat přímo z kontejneru úložiště s názvem *$Web*. Hostování obsahu v Azure Storage umožňuje používat architektury bez serveru, které zahrnují [Azure Functions](/azure/azure-functions/functions-overview) a jiné služby PaaS (Platform as a Service).
+Statický obsah (HTML, CSS, JavaScript a soubory obrázků) můžete obsluhovat přímo z kontejneru úložiště s názvem *$Web*. Hostování obsahu v Azure Storage umožňuje používat architektury bez serveru, které zahrnují [Azure Functions](/azure/azure-functions/functions-overview) a jiné služby PaaS (Platform as a Service). Azure Storage hostování statického webu je skvělou možností v případech, kdy pro vykreslování obsahu nepotřebujete webový server.
+
+[App Service statických Web Apps](https://azure.microsoft.com/services/app-service/static/) je skvělou alternativou Azure Storage statického hostování webů a je také vhodné v případech, kdy pro vykreslování obsahu nepotřebujete webový server. App Service static Web Apps poskytuje plně spravované pracovní postupy průběžné integrace a průběžného doručování (CI/CD) ze zdroje GitHub do globálního nasazení.
+
+Pokud k vykreslování obsahu potřebujete webový server, můžete použít [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> Pokud vaše lokalita závisí na kódu na straně serveru, použijte místo toho [Azure App Service](/azure/app-service/overview) .
-Ujistěte se, že jste vytvořili účet úložiště úrovně Standard pro obecné účely v2. Statické weby nejsou k dispozici v žádném jiném typu účtu úložiště.
+> Ujistěte se, že jste vytvořili účet úložiště úrovně Standard pro obecné účely v2. Statické weby nejsou k dispozici v žádném jiném typu účtu úložiště.
 
 ## <a name="setting-up-a-static-website"></a>Nastavení statického webu
 
@@ -46,7 +49,7 @@ Pomocí kteréhokoli z těchto nástrojů můžete nahrát obsah do kontejneru *
 > * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Modul Azure PowerShellu](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+> * [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Rozšíření editoru Visual Studio Code](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
@@ -103,6 +106,11 @@ Pokud je účet úložiště nakonfigurovaný tak, aby [vyžadoval zabezpečený
 V rámci funkce statického webu neexistuje žádný způsob, jak konfigurovat hlavičky. Můžete však použít Azure CDN k přidání hlaviček a k přidávání (nebo přepisování) hodnot hlaviček. Přečtěte si [referenční informace k modulu Standard rules pro Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
 
 Pokud chcete použít hlavičky k řízení ukládání do mezipaměti, přečtěte si téma [řízení Azure CDN chování při ukládání do mezipaměti s pravidly pro ukládání do](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)mezipaměti.
+
+## <a name="multi-region-website-hosting"></a>Hostování webů ve více oblastech
+
+Pokud máte v úmyslu hostovat web v několika geografických oblastech, doporučujeme použít [Content Delivery Network](https://docs.microsoft.com/azure/cdn/) pro regionální ukládání do mezipaměti. Pokud chcete v každé oblasti obsluhovat různé obsahy, použijte [přední dveře Azure](https://docs.microsoft.com/azure/frontdoor/) . Poskytuje taky možnosti převzetí služeb při selhání. Pokud plánujete používat vlastní doménu, nedoporučuje se [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) . Problémy mohou nastat kvůli tomu, jak Azure Storage ověřuje vlastní názvy domén.
+
 
 ## <a name="pricing"></a>Ceny
 

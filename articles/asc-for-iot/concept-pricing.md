@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/27/2019
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 98afd1eb1f8a73c2d6dd3f293a07cdb70780d238
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c76a79f09629b32767c1dcc78989dfa47c678fd
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004762"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504566"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
@@ -48,9 +48,9 @@ Postup změny nastavení:
 
 1. Otevřete IoT Hub.
 
-1. V části **zabezpečení**klikněte na **Přehled**.
+1. V části **zabezpečení**klikněte na **Nastavení**.
 
-1. Klikněte na **Nastavení**.
+1. Klikněte na **shromažďování dat**.
 
 Následující tabulka poskytuje souhrn souvisejících nákladů a dopadů jednotlivých možností.
 

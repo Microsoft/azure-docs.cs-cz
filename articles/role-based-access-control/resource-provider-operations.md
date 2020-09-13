@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/31/2020
+ms.date: 09/04/2020
 ms.custom: generated
-ms.openlocfilehash: 685fdf8180f54c87fe6677268bd289ee00912c96
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: cbf859baa79b6630dea44a23d2a0e6f9fb64b82a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227759"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489659"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -270,7 +270,7 @@ Služba Azure: jádro
 > | Microsoft. support/supportTickets/Communications/Read | Uvádí jednu nebo všechny komunikace lístků podpory. |
 > | Microsoft. support/supportTickets/Communications/Write | Přidá novou komunikaci k lístku podpory. |
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 
 ### <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -402,6 +402,23 @@ Služba Azure: [Virtual Machines](../virtual-machines/index.yml), [Virtual Machi
 > | Microsoft. COMPUTE/availabilitySets/Write | Vytvoří novou skupinu dostupnosti nebo aktualizuje stávající. |
 > | Microsoft. COMPUTE/availabilitySets/DELETE | Odstraní skupinu dostupnosti. |
 > | Microsoft. COMPUTE/availabilitySets/povolených velikostí/Read | Vypíše dostupné velikosti pro vytvoření nebo aktualizaci virtuálního počítače ve skupině dostupnosti. |
+> | Microsoft. COMPUTE/cloudServices/Read | Získá vlastnosti CloudService. |
+> | Microsoft. COMPUTE/cloudServices/Write | Vytvořili jste nový CloudService nebo aktualizovali stávající. |
+> | Microsoft. COMPUTE/cloudServices/DELETE | Odstraní CloudService. |
+> | Microsoft. COMPUTE/cloudServices/stavu PowerOff/Action | Vypínání CloudService. |
+> | Microsoft. COMPUTE/cloudServices/Start/Action | Spustí CloudService. |
+> | Microsoft. COMPUTE/cloudServices/restart/Action | Restartuje jednu nebo více instancí role v CloudService. |
+> | Microsoft. COMPUTE/cloudServices/ReImage/Action | Znovu sestaví všechny disky v instancích rolí ve CloudService. |
+> | Microsoft. COMPUTE/cloudServices/znovu sestavit/akce | Obnoví z image všechny instance rolí ve CloudService. |
+> | Microsoft. COMPUTE/cloudServices/Delete/Action | Odstraní instance rolí v CloudService. |
+> | Microsoft. COMPUTE/cloudServices/instanceView/Read | Získá stav CloudService. |
+> | Microsoft. COMPUTE/cloudServices/roleInstances/DELETE | Odstraní RoleInstance z CloudService. |
+> | Microsoft. COMPUTE/cloudServices/roleInstances/Read | Získá RoleInstance z CloudService. |
+> | Microsoft. COMPUTE/cloudServices/roleInstances/restart/Action | Restartování instance role CloudService |
+> | Microsoft. COMPUTE/cloudServices/roleInstances/ReImage/Action | Přeobrazování instance role CloudService. |
+> | Microsoft. COMPUTE/cloudServices/roleInstances/Rebuild/Action | Znovu sestavte všechny disky v CloudService. |
+> | Microsoft. COMPUTE/cloudServices/roleInstances/instanceView/Read | Získá stav instance role z CloudService. |
+> | Microsoft. COMPUTE/cloudServices/updateDomains/Read | Načte seznam všech aktualizačních domén ve CloudService. |
 > | Microsoft. COMPUTE/diskAccesses/Read | Získat vlastnosti prostředku DiskAccess |
 > | Microsoft. COMPUTE/diskAccesses/Write | Vytvořte nový prostředek DiskAccess nebo aktualizujte stávající. |
 > | Microsoft. COMPUTE/diskAccesses/DELETE | Odstranění prostředku DiskAccess |
@@ -1387,21 +1404,22 @@ Služba Azure: [Azure Data box](../databox/index.yml)
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
+> | Microsoft. DataBox/Jobs/číst | Vypsat nebo získat objednávky |
+> | Microsoft. DataBox/Jobs/DELETE | Odstranit objednávky |
+> | Microsoft. DataBox/Jobs/Write | Vytvořit nebo aktualizovat objednávky |
+> | Microsoft. DataBox/Locations/availableSkus/Read | Vypsat nebo získat dostupné SKU |
+> | Microsoft. DataBox/Locations/operationResults/Read | Vypsat nebo získat výsledky operace |
+> | Microsoft. DataBox/Operations/Read | Vypíše nebo získá operace. |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. DataBox/Register/Action | Registrovat poskytovatele Microsoft. Databox |
 > | Microsoft. DataBox/zrušit registraci/akce | Zrušit registraci poskytovatele Microsoft. Databox |
 > | Microsoft. DataBox/Jobs/Cancel/Action | Zruší probíhající objednávku. |
 > | Microsoft. DataBox/Jobs/bookShipmentPickUp/Action | Umožňuje rezervovat vyzvednutí pro návratové dodávky. |
-> | Microsoft. DataBox/Jobs/číst | Vypsat nebo získat objednávky |
-> | Microsoft. DataBox/Jobs/DELETE | Odstranit objednávky |
-> | Microsoft. DataBox/Jobs/Write | Vytvořit nebo aktualizovat objednávky |
 > | Microsoft. DataBox/Jobs/listCredentials/Action | Zobrazí nešifrované přihlašovací údaje související s objednávkou. |
 > | Microsoft. DataBox/Locations/validateInputs/Action | Tato metoda provádí všechny typy ověření. |
 > | Microsoft. DataBox/Locations/validateAddress/Action | Ověří dodací adresu a v případě potřeby poskytne alternativní adresy. |
 > | Microsoft. DataBox/Locations/availableSkus/Action | Tato metoda vrátí seznam dostupných skladových položek. |
 > | Microsoft. DataBox/Locations/regionConfiguration/Action | Tato metoda vrátí konfigurace pro oblast. |
-> | Microsoft. DataBox/Locations/availableSkus/Read | Vypsat nebo získat dostupné SKU |
-> | Microsoft. DataBox/Locations/operationResults/Read | Vypsat nebo získat výsledky operace |
-> | Microsoft. DataBox/Operations/Read | Vypíše nebo získá operace. |
 > | Microsoft. DataBox/Subscriptions/resourceGroups/moveResources/Action | Tato metoda provede přesunutí prostředku. |
 > | Microsoft. DataBox/Subscriptions/resourceGroups/validateMoveResources/Action | Tato metoda ověřuje, zda je povolený přesun prostředku. |
 
@@ -3286,6 +3304,7 @@ Služba Azure: [Azure Database for MariaDB](../mariadb/index.yml)
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
+> | Microsoft. DBforMariaDB/privateEndpointConnectionsApproval/Action | Určuje, jestli má uživatel povolený souhlas s připojením privátního koncového bodu. |
 > | Microsoft. DBforMariaDB/Register/Action | Zaregistrovat poskytovatele prostředků MariaDB |
 > | Microsoft. DBforMariaDB/checkNameAvailability/Action | Ověřte, jestli je zadaný název serveru k dispozici pro zřizování po celém světě pro dané předplatné. |
 > | Microsoft. DBforMariaDB/Locations/administratorAzureAsyncOperation/Read | Získá probíhající operace pro správce serveru MariaDB. |
@@ -3304,10 +3323,11 @@ Služba Azure: [Azure Database for MariaDB](../mariadb/index.yml)
 > | Microsoft. DBforMariaDB/Locations/serverKeyOperationResults/Read | Načte probíhající operace na transparentních klíčích serveru šifrovacího šifrování dat. |
 > | Microsoft. DBforMariaDB/Operations/Read | Vrátí seznam operací MariaDB. |
 > | Microsoft. DBforMariaDB/performanceTiers/Read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
-> | Microsoft. DBforMariaDB/servery/queryTexts/Action | Vrátí text pro seznam dotazů. |
-> | Microsoft. DBforMariaDB/servery/queryTexts/Action | Vrátí text dotazu. |
 > | Microsoft. DBforMariaDB/servery/spustit/akce | Spustí konkrétní server. |
 > | Microsoft. DBforMariaDB/servery/zastavit/akce | Zastaví konkrétní server. |
+> | Microsoft. DBforMariaDB/servery/queryTexts/Action | Vrátí text pro seznam dotazů. |
+> | Microsoft. DBforMariaDB/servery/queryTexts/Action | Vrátí text dotazu. |
+> | Microsoft. DBforMariaDB/servery/privateEndpointConnectionsApproval/Action | Určuje, jestli má uživatel povolený souhlas s připojením privátního koncového bodu. |
 > | Microsoft. DBforMariaDB/servery/číst | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | Microsoft. DBforMariaDB/servery/Write | Vytvoří server se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný server. |
 > | Microsoft. DBforMariaDB/servery/DELETE | Odstraní existující server. |
@@ -3366,6 +3386,7 @@ Služba Azure: [Azure Database for MySQL](../mysql/index.yml)
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
+> | Microsoft. DBforMySQL/privateEndpointConnectionsApproval/Action | Určuje, jestli má uživatel povolený souhlas s připojením privátního koncového bodu. |
 > | Microsoft. DBforMySQL/Register/Action | Registrovat poskytovatele prostředků MySQL |
 > | Microsoft. DBforMySQL/checkNameAvailability/Action | Ověřte, jestli je zadaný název serveru k dispozici pro zřizování po celém světě pro dané předplatné. |
 > | Microsoft. DBforMySQL/Locations/administratorAzureAsyncOperation/Read | Načte probíhající operace u správců serveru MySQL. |
@@ -3386,9 +3407,9 @@ Služba Azure: [Azure Database for MySQL](../mysql/index.yml)
 > | Microsoft. DBforMySQL/performanceTiers/Read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
 > | Microsoft. DBforMySQL/servery/spustit/akce | Spustí konkrétní server. |
 > | Microsoft. DBforMySQL/servery/zastavit/akce | Zastaví konkrétní server. |
-> | Microsoft. DBforMySQL/servery/export/akce |  |
 > | Microsoft. DBforMySQL/servery/queryTexts/Action | Vrátí text pro seznam dotazů. |
 > | Microsoft. DBforMySQL/servery/queryTexts/Action | Vrátí text dotazu. |
+> | Microsoft. DBforMySQL/servery/privateEndpointConnectionsApproval/Action | Určuje, jestli má uživatel povolený souhlas s připojením privátního koncového bodu. |
 > | Microsoft. DBforMySQL/servery/číst | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | Microsoft. DBforMySQL/servery/Write | Vytvoří server se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný server. |
 > | Microsoft. DBforMySQL/servery/DELETE | Odstraní existující server. |
@@ -3408,6 +3429,9 @@ Služba Azure: [Azure Database for MySQL](../mysql/index.yml)
 > | Microsoft. DBforMySQL/servery/databáze/číst | Vrátí seznam databází MySQL nebo získá vlastnosti zadané databáze. |
 > | Microsoft. DBforMySQL/servery/databáze/zapisovat | Vytvoří databázi MySQL se zadanými parametry nebo aktualizuje vlastnosti zadané databáze. |
 > | Microsoft. DBforMySQL/servery/databáze/odstranit | Odstraní existující databázi MySQL. |
+> | Microsoft. DBforMySQL/servery/EXPORTS/Write |  |
+> | Microsoft. DBforMySQL/servery/EXPORTS/Read |  |
+> | Microsoft. DBforMySQL/servery/EXPORTS/Read |  |
 > | Microsoft. DBforMySQL/servery/firewallRules/Read | Vrátí seznam pravidel brány firewall pro server nebo získá vlastnosti zadaného pravidla brány firewall. |
 > | Microsoft. DBforMySQL/servery/firewallRules/Write | Vytvoří pravidlo brány firewall se zadanými parametry nebo aktualizuje stávající pravidlo. |
 > | Microsoft. DBforMySQL/servery/firewallRules/DELETE | Odstraní existující pravidlo brány firewall. |
@@ -3447,8 +3471,16 @@ Služba Azure: [Azure Database for PostgreSQL](../postgresql/index.yml)
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
+> | Microsoft. DBforPostgreSQL/privateEndpointConnectionsApproval/Action | Určuje, jestli má uživatel povolený souhlas s připojením privátního koncového bodu. |
 > | Microsoft. DBforPostgreSQL/Register/Action | Zaregistrovat poskytovatele prostředků PostgreSQL |
 > | Microsoft. DBforPostgreSQL/checkNameAvailability/Action | Ověřte, jestli je zadaný název serveru k dispozici pro zřizování po celém světě pro dané předplatné. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Read | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Write | Vytvoří server se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný server. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/DELETE | Odstraní existující server. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení disagnostic prostředku. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro PostgreSQL servery. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Providers/Microsoft. Insights/metricDefinitions/Read | Návratové typy metrik, které jsou k dispozici pro databáze |
 > | Microsoft. DBforPostgreSQL/Locations/administratorAzureAsyncOperation/Read | Získá probíhající operace pro správce serveru PostgreSQL. |
 > | Microsoft. DBforPostgreSQL/Locations/administratorOperationResults/Read | Vrátit výsledky operace Správce serveru PostgreSQL |
 > | Microsoft. DBforPostgreSQL/Locations/azureAsyncOperation/Read | Vrátí výsledky operace PostgreSQL serveru. |
@@ -3466,6 +3498,7 @@ Služba Azure: [Azure Database for PostgreSQL](../postgresql/index.yml)
 > | Microsoft. DBforPostgreSQL/Operations/Read | Vrátí seznam operací PostgreSQL. |
 > | Microsoft. DBforPostgreSQL/performanceTiers/Read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
 > | Microsoft. DBforPostgreSQL/servery/queryTexts/Action | Vrátí text dotazu. |
+> | Microsoft. DBforPostgreSQL/servery/privateEndpointConnectionsApproval/Action | Určuje, jestli má uživatel povolený souhlas s připojením privátního koncového bodu. |
 > | Microsoft. DBforPostgreSQL/servery/číst | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | Microsoft. DBforPostgreSQL/servery/Write | Vytvoří server se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný server. |
 > | Microsoft. DBforPostgreSQL/servery/DELETE | Odstraní existující server. |
@@ -3765,7 +3798,7 @@ Služba Azure: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovaná instance azure SQL](../azure-sql/managed-instance/index.yml), [SQL Data Warehouse](../sql-data-warehouse/index.yml)
+Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL Managed instance](../azure-sql/managed-instance/index.yml), [azure synapse Analytics (dřív SQL Data Warehouse)](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -3938,13 +3971,11 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 > | Microsoft. SQL/managedInstances/vulnerabilityAssessments/Read | Načtení zásad posouzení ohrožení zabezpečení v dané spravované instanci |
 > | Microsoft. SQL/operace/čtení | Získá dostupné operace REST. |
 > | Microsoft. SQL/servery/tdeCertificates/Action | Vytvořit nebo aktualizovat certifikát TDE |
-> | Microsoft. SQL/servery/enableAzureADOnlyAuthentication/Action | Povolit ověřování pouze Azure Active Directory na logickém serveru |
-> | Microsoft. SQL/servery/disableAzureADOnlyAuthentication/Action | Zakázat ověřování pouze Azure Active Directory na logickém serveru |
+> | Microsoft. SQL/servery/import/akce | Importovat Azure SQL Database |
 > | Microsoft. SQL/servery/číst | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | Microsoft. SQL/servery/Write | Vytvoří server se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný server. |
 > | Microsoft. SQL/servery/odstranit | Odstraní existující server. |
 > | Microsoft. SQL/servery/privateEndpointConnectionsApproval/Action | Určuje, jestli má uživatel povolený souhlas s připojením privátního koncového bodu. |
-> | Microsoft. SQL/servery/import/akce | Vytvoření nové databáze na serveru a nasazení schématu a dat z balíčku DacPac |
 > | Microsoft. SQL/servery/administratorOperationResults/Read | Přijímá probíhající operace u správců serveru. |
 > | Microsoft. SQL/servery/správci/číst | Získá konkrétní objekt správce Azure Active Directory. |
 > | Microsoft. SQL/servery/správci/zapisovat | Přidá nebo aktualizuje určitý objekt správce Azure Active Directory. |
@@ -3953,18 +3984,17 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 > | Microsoft. SQL/servery/poradci/zapisovat | Aktualizuje stav automatického spuštění služby Advisor na úrovni serveru. |
 > | Microsoft. SQL/servery/poradci/recommendedActions/číst | Vrátí seznam doporučených akcí zadaného Poradce pro server. |
 > | Microsoft. SQL/servery/Advisory/recommendedActions/Write | Použití doporučené akce na serveru |
-> | Microsoft. SQL/servery/auditingPolicies/Read | Načte podrobnosti o výchozích zásadách auditování tabulek serveru nakonfigurovaných na daném serveru. |
-> | Microsoft. SQL/servery/auditingPolicies/Write | Změna výchozího auditování tabulky serveru pro daný server |
 > | Microsoft. SQL/servery/auditingSettings/Read | Načte podrobnosti o zásadách auditování objektů BLOB serveru nakonfigurovaných na daném serveru. |
 > | Microsoft. SQL/servery/auditingSettings/Write | Změna auditování objektů BLOB serveru pro daný server |
 > | Microsoft. SQL/servery/auditingSettings/operationResults/Read | Načíst výsledek operace nastavení zásad auditování objektu BLOB serveru |
 > | Microsoft. SQL/servery/automaticTuning/Read | Vrátí nastavení automatického ladění pro server. |
 > | Microsoft. SQL/servery/automaticTuning/Write | Aktualizuje nastavení automatického ladění pro server a vrátí aktualizované nastavení. |
+> | Microsoft. SQL/servery/azureADOnlyAuthentications/Read | Přečte konkrétní server Azure Active Directory jenom objekt ověřování. |
+> | Microsoft. SQL/servery/azureADOnlyAuthentications/Write | Přidá nebo aktualizuje určitý server Azure Active Directory jenom objekt ověřování. |
+> | Microsoft. SQL/servery/azureADOnlyAuthentications/DELETE | Odstraní určitý server Azure Active Directory jenom objekt ověřování. |
 > | Microsoft. SQL/servery/communicationLinks/Read | Vrátí seznam komunikačních propojení určeného serveru. |
 > | Microsoft. SQL/servery/communicationLinks/Write | Vytvoří nebo aktualizuje odkaz na komunikaci serveru. |
 > | Microsoft. SQL/servery/communicationLinks/DELETE | Odstraní existující odkaz na komunikaci serveru. |
-> | Microsoft. SQL/servery/connectionPolicies/Read | Vrátí seznam zásad připojení k serveru u zadaného serveru. |
-> | Microsoft. SQL/servery/connectionPolicies/Write | Vytvoří nebo aktualizuje zásadu připojení serveru. |
 > | Microsoft. SQL/servery/databáze/číst | Vrátí seznam databází nebo získá vlastnosti zadané databáze. |
 > | Microsoft. SQL/servery/databáze/zápis | Vytvoří databázi se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadanou databázi. |
 > | Microsoft. SQL/servery/databáze/odstranit | Odstraní existující databázi. |
@@ -3974,14 +4004,13 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 > | Microsoft. SQL/servery/databáze/upgradeDataWarehouse/Action | Upgrade databáze Azure SQL DataWarehouse |
 > | Microsoft. SQL/servery/databáze/přesunout/akce | Změňte název existující databáze. |
 > | Microsoft. SQL/servery/databáze/restorePoints/Action | Vytvoří nový bod obnovení. |
+> | Microsoft. SQL/servery/databáze/import/akce | Importovat Azure SQL Database |
 > | Microsoft. SQL/servery/databáze/převzetí služeb při selhání/akce | Převzetí služeb při selhání databáze iniciované zákazníkem. |
 > | Microsoft. SQL/servery/databáze/vulnerabilityAssessmentScans/Action | Provést kontrolu databáze posouzení ohrožení zabezpečení. |
 > | Microsoft. SQL/servery/databáze/poradci/číst | Vrátí seznam poradců dostupných pro databázi. |
 > | Microsoft. SQL/servery/databáze/poradci/zapisovat | Aktualizuje stav automatického spuštění služby Advisor na úrovni databáze. |
 > | Microsoft. SQL/servery/databáze/poradci/recommendedActions/Read | Vrátí seznam doporučených akcí zadaného Poradce pro databázi. |
 > | Microsoft. SQL/servery/databáze/poradci/recommendedActions/Write | Použití doporučené akce v databázi |
-> | Microsoft. SQL/servery/databáze/auditingPolicies/Read | Načíst podrobnosti o zásadách auditování tabulek konfigurovaných pro danou databázi |
-> | Microsoft. SQL/servery/databáze/auditingPolicies/Write | Změna zásad auditování v tabulce pro danou databázi |
 > | Microsoft. SQL/servery/databáze/auditingSettings/Read | Načte podrobnosti o zásadách auditování objektů BLOB konfigurovaných pro danou databázi. |
 > | Microsoft. SQL/servery/databáze/auditingSettings/Write | Změna zásad auditování objektů BLOB pro danou databázi |
 > | Microsoft. SQL/servery/databáze/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
@@ -3993,8 +4022,6 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 > | Microsoft. SQL/servery/databáze/backupShortTermRetentionPolicies/Read | Získá krátkodobé zásady uchovávání informací pro databázi. |
 > | Microsoft. SQL/servery/databáze/backupShortTermRetentionPolicies/Write | Aktualizuje krátkodobé zásady uchovávání informací pro databázi. |
 > | Microsoft. SQL/servery/databáze/sloupce/číst | Vrátí seznam sloupců pro databázi. |
-> | Microsoft. SQL/servery/databáze/connectionPolicies/Read | Načíst podrobnosti o zásadách připojení konfigurovaných pro danou databázi |
-> | Microsoft. SQL/servery/databáze/connectionPolicies/Write | Změna zásad připojení pro danou databázi |
 > | Microsoft. SQL/servery/databáze/currentSensitivityLabels/Read | Vypsat popisky citlivosti dané databáze |
 > | Microsoft. SQL/servery/databáze/currentSensitivityLabels/Write | Popisky citlivosti aktualizace v dávce |
 > | Microsoft. SQL/servery/databáze/dataMaskingPolicies/Read | Vrátí seznam zásad pro maskování dat databáze. |
@@ -4012,6 +4039,7 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 > | Microsoft. SQL/servery/databáze/rozšíření/importExtensionOperationResults/Read | Načte probíhající operace importu. |
 > | Microsoft. SQL/servery/databáze/geoBackupPolicies/Read | Načtení zásad geografického zálohování pro danou databázi |
 > | Microsoft. SQL/servery/databáze/geoBackupPolicies/Write | Vytvoření nebo aktualizace zásad pro biozálohování databáze |
+> | Microsoft. SQL/servery/databáze/importExportAzureAsyncOperation/Read | Načte probíhající operace importu a exportu. |
 > | Microsoft. SQL/servery/databáze/importExportOperationResults/Read | Načte probíhající operace importu a exportu. |
 > | Microsoft. SQL/servery/databáze/maintenanceWindowOptions/Read | Načte seznam dostupných oken údržby pro vybranou databázi. |
 > | Microsoft. SQL/servery/databáze/maintenanceWindows/Read | Získá nastavení systému Windows údržby pro vybranou databázi. |
@@ -4965,6 +4993,39 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/ImmersiveReader/getcontentmodelforreader/Action | Vytvoří relaci moderního čtenáře. |
 > | Microsoft. Cognitiveservices Account/Accounts/InkRecognizer/rozpoznat/Action | Vzhledem k sadě dat tahu analyzuje obsah a generuje seznam rozpoznaných entit, včetně rozpoznaného textu. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/předpověď/Action | Načte předpověď publikovaných koncových bodů pro daný dotaz. |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/Write | Vytvořit nebo aktualizovat konfiguraci upozornění na anomálii |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/DELETE | Odstranit konfiguraci upozornění na anomálii |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/Read | Dotazování na jednu konfiguraci upozorňující na anomálii |
+> | Microsoft. Cognitiveservices Account/účty/MetricsAdvisor/výstraha/anomálie/konfigurace/výstrahy/dotaz/akce | Dotazování výstrah pod konfigurací výstrahy anomálií |
+> | Microsoft. Cognitiveservices Account/účty/MetricsAdvisor/výstraha/anomálie/konfigurace/výstrahy/anomálie/čtení | Zjištění anomálií v rámci konkrétní výstrahy |
+> | Microsoft. Cognitiveservices Account/účty/MetricsAdvisor/výstraha/anomálie/konfigurace/výstrahy/incidenty/číst | Incidenty dotazů v rámci konkrétní výstrahy |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/datafeeds/Write | Vytvořte nebo aktualizujte datový kanál. |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/datafeeds/DELETE | Odstranění datového kanálu |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/datafeeds/Read | Získání datového kanálu podle jeho ID nebo seznamu všech datových kanálů |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/datafeeds/ingestionprogress/Read | Získat časová razítka úlohy příjmu dat z poslední úspěšnosti pomocí datového kanálu |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/datafeeds/ingestionprogress/Reset/Action | Resetovat stav příjmu dat pomocí datového kanálu na data pro zpětnou výplň |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/datafeeds/ingestionstatus/Query/Action | Získat stav příjmu dat pomocí datového kanálu |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/Configurations/Write | Vytvořit nebo aktualizovat konfiguraci detekce anomálií |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/Configurations/DELETE | Odstranit konfiguraci detekce anomálií |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/Configurations/Read | Dotazování na jednu konfiguraci detekce anomálií |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/Configurations/Alert/anomálie/Configurations/Read | Dotazování všech konfigurací upozorňujících na anomálie z důvodu specifické konfigurace detekce anomálií |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/konfigurace/anomálie/dotaz/akce | Zjištění anomálií v rámci konfigurace detekce anomálií |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/konfigurace/anomálie/dotaz/akce | Hodnoty dimenze pro dotaz na anomálie |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/konfigurace/incidenty/dotaz/akce | Incidenty dotazů pod konfigurací detekce anomálií |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/Configurations/Incidents/rootcause/Read | Hlavní příčina dotazu pro incident |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/obohacení/anomalydetection/Configurations/Series/Query/Action | Řady dotazů obohacené detekcí anomálií |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Feedback/metric/Write | Vytvoření nové zpětné vazby metriky |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Feedback/metric/Read | Získání zpětné vazby metriky podle jejího ID |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Feedback/metric/Query/Action | Zobrazit názory na danou metriku |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Hooks/Write | Vytvořit nebo aktualizovat zavěšení |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Hooks/DELETE | Odstranění zavěšení |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Hooks/Read | Získat zavěšení jeho ID nebo vypsat všechny háky |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/metriky/data/dotaz/Action | Získat data časové řady z metriky |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/metriky/Dimension/Query/Action | Zobrazit dimenzi z určité metriky |
+> | Microsoft. Cognitiveservices Account/účty/MetricsAdvisor/metriky/obohacení/rozšíření/anomalydetection/konfigurace/čtení | Dotazování všech konfigurací detekce anomálií pro specifickou metriku |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/metriky/Series/Query/Action | Seznam řad (kombinací dimenzí) z metriky |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/metriky/status/obohacení/anomalydetection/Query/Action | Stav detekce anomálií dotazů |
+> | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/stats/nejnovijší/Read | Získat nejnovější statistiku využití |
 > | Microsoft. Cognitiveservices Account/Accounts/NewsSearch/categorysearch/Action | Vrátí zprávy pro zadanou kategorii. |
 > | Microsoft. Cognitiveservices Account/Accounts/NewsSearch/Search/Action | Získejte články, které jsou relevantní pro daný dotaz. |
 > | Microsoft. Cognitiveservices Account/Accounts/NewsSearch/trendingtopics/Action | Získejte témata týkající se trendů identifikovaných bingem. Jedná se o stejná témata zobrazená v banneru v dolní části domovské stránky Bingu. |
@@ -5010,35 +5071,6 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/VideoSearch/Search/Action | Získejte videa relevantní pro daný dotaz. |
 > | Microsoft. Cognitiveservices Account/Accounts/VisualSearch/Search/Action | Vrátí seznam značek relevantních pro poskytnutý obrázek. |
 > | Microsoft. Cognitiveservices Account/Accounts/WebSearch/Search/Action | Získejte výsledky pro daný dotaz na webu, obrázky, novinky a & videa. |
-
-### <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
-
-Služba Azure: [Machine Learning Studio](../machine-learning/studio/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | Akce | Popis |
-> | --- | --- |
-> | Microsoft. MachineLearning/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků webové služby Machine Learning a povolí vytváření webových služeb. |
-> | Microsoft. MachineLearning/WebServices/Action | Vytvoření vlastností místních webových služeb pro podporované oblasti |
-> | Microsoft. MachineLearning/commitmentPlans/Read | Přečtěte si jakýkoliv plán závazku Machine Learning |
-> | Microsoft. MachineLearning/commitmentPlans/Write | Vytvořit nebo aktualizovat jakýkoliv plán závazku Machine Learning |
-> | Microsoft. MachineLearning/commitmentPlans/DELETE | Odstranit jakýkoli plán závazku Machine Learning |
-> | Microsoft. MachineLearning/commitmentPlans/JOIN/Action | Zapojit se do plánu závazku Machine Learning |
-> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Read | Přečtěte si Machine Learning přidružení plánu závazku. |
-> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Move/Action | Přesunout Machine Learning přidružení plánu závazku |
-> | Microsoft. MachineLearning/Locations/operationresults/Read | Získání výsledku operace Machine Learning |
-> | Microsoft. MachineLearning/Locations/operationsstatus/Read | Získat stav probíhající Machine Learning operace |
-> | Microsoft. MachineLearning/Operations/Read | Získat Machine Learning operace |
-> | Microsoft. MachineLearning/SKU/číst | Získat Machine Learning SKU plánu závazku |
-> | Microsoft. MachineLearning/WebServices/číst | Čtení libovolné Machine Learning webové služby |
-> | Microsoft. MachineLearning/WebServices/Write | Vytvoření nebo aktualizace jakékoli webové služby Machine Learning |
-> | Microsoft. MachineLearning/WebServices/DELETE | Odstranění jakékoli webové služby Machine Learning |
-> | Microsoft. MachineLearning/WebServices/klíče listkey/Read | Získání klíčů pro Machine Learning webovou službu |
-> | Microsoft. MachineLearning/pracovní prostory/číst | Číst všechny pracovní prostor Machine Learning |
-> | Microsoft. MachineLearning/pracovní prostory/zápis | Vytvořit nebo aktualizovat jakékoli pracovní prostor Machine Learning |
-> | Microsoft. MachineLearning/pracovní prostory/odstranit | Odstranit všechny pracovní prostor Machine Learning |
-> | Microsoft. MachineLearning/pracovní prostory/listworkspacekeys/Action | Seznam klíčů pro pracovní prostor Machine Learning |
-> | Microsoft. MachineLearning/pracovní prostory/resyncstoragekeys/Action | Opětovná synchronizace klíčů účtu úložiště nakonfigurovaného pro pracovní prostor Machine Learning |
 
 ### <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -5156,6 +5188,36 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/klíče listkey/Action | Seznam klíčů pro služby AKS Services v Machine Learning Servicesch pracovních prostorech |
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/DELETE | Odstraní služby AKS v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/skore/Action | Hodnocení služby AKS v pracovních prostorech v Machine Learning Services |
+
+
+### <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
+
+Služba Azure: [Machine Learning Studio (Classic)](../machine-learning/studio/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. MachineLearning/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků webové služby Machine Learning a povolí vytváření webových služeb. |
+> | Microsoft. MachineLearning/WebServices/Action | Vytvoření vlastností místních webových služeb pro podporované oblasti |
+> | Microsoft. MachineLearning/commitmentPlans/Read | Přečtěte si jakýkoliv plán závazku Machine Learning |
+> | Microsoft. MachineLearning/commitmentPlans/Write | Vytvořit nebo aktualizovat jakýkoliv plán závazku Machine Learning |
+> | Microsoft. MachineLearning/commitmentPlans/DELETE | Odstranit jakýkoli plán závazku Machine Learning |
+> | Microsoft. MachineLearning/commitmentPlans/JOIN/Action | Zapojit se do plánu závazku Machine Learning |
+> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Read | Přečtěte si Machine Learning přidružení plánu závazku. |
+> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Move/Action | Přesunout Machine Learning přidružení plánu závazku |
+> | Microsoft. MachineLearning/Locations/operationresults/Read | Získání výsledku operace Machine Learning |
+> | Microsoft. MachineLearning/Locations/operationsstatus/Read | Získat stav probíhající Machine Learning operace |
+> | Microsoft. MachineLearning/Operations/Read | Získat Machine Learning operace |
+> | Microsoft. MachineLearning/SKU/číst | Získat Machine Learning SKU plánu závazku |
+> | Microsoft. MachineLearning/WebServices/číst | Čtení libovolné Machine Learning webové služby |
+> | Microsoft. MachineLearning/WebServices/Write | Vytvoření nebo aktualizace jakékoli webové služby Machine Learning |
+> | Microsoft. MachineLearning/WebServices/DELETE | Odstranění jakékoli webové služby Machine Learning |
+> | Microsoft. MachineLearning/WebServices/klíče listkey/Read | Získání klíčů pro Machine Learning webovou službu |
+> | Microsoft. MachineLearning/pracovní prostory/číst | Číst všechny pracovní prostor Machine Learning |
+> | Microsoft. MachineLearning/pracovní prostory/zápis | Vytvořit nebo aktualizovat jakékoli pracovní prostor Machine Learning |
+> | Microsoft. MachineLearning/pracovní prostory/odstranit | Odstranit všechny pracovní prostor Machine Learning |
+> | Microsoft. MachineLearning/pracovní prostory/listworkspacekeys/Action | Seznam klíčů pro pracovní prostor Machine Learning |
+> | Microsoft. MachineLearning/pracovní prostory/resyncstoragekeys/Action | Opětovná synchronizace klíčů účtu úložiště nakonfigurovaného pro pracovní prostor Machine Learning |
 
 ## <a name="internet-of-things"></a>Internet věcí
 
@@ -5578,9 +5640,9 @@ Služba Azure: [API Management](../api-management/index.yml)
 > | Microsoft. ApiManagement/Service/Policy/DELETE | Odstranění konfigurace zásad na úrovni tenanta |
 > | Microsoft. ApiManagement/Service/policyDescriptions/Read | Zobrazí seznam všech popisů zásad. |
 > | Microsoft. ApiManagement/Service/policySnippets/Read | Vypíše všechny fragmenty zásad. |
-> | Microsoft. ApiManagement/Service/portalsettings/Read | Vypíše kolekci nastavení portálu. Můžete také získat nastavení pro přihlášení k portálu nebo získat nastavení pro registraci portálu nebo získat nastavení delegování pro portál. |
-> | Microsoft. ApiManagement/Service/portalsettings/Write | Aktualizujte nastavení přihlášení. nebo vytvořte nebo aktualizujte nastavení přihlášení. nebo aktualizovat nastavení registrace nebo aktualizovat nastavení registrace nebo aktualizovat nastavení delegování. nebo vytvořte nebo aktualizujte nastavení delegování. |
-> | Microsoft. ApiManagement/Service/portalsettings/listSecrets/Action | Získá ověřovací klíč nastavení delegování portálu. |
+> | Microsoft. ApiManagement/Service/portalSettings/Read | Vypíše kolekci nastavení portálu. Můžete také získat nastavení pro přihlášení k portálu nebo získat nastavení pro registraci portálu nebo získat nastavení delegování pro portál. |
+> | Microsoft. ApiManagement/Service/portalSettings/Write | Aktualizujte nastavení přihlášení. nebo vytvořte nebo aktualizujte nastavení přihlášení. nebo aktualizovat nastavení registrace nebo aktualizovat nastavení registrace nebo aktualizovat nastavení delegování. nebo vytvořte nebo aktualizujte nastavení delegování. |
+> | Microsoft. ApiManagement/Service/portalSettings/listSecrets/Action | Získá ověřovací klíč nastavení delegování portálu. nebo Získá identifikátor URI kontejneru objektů BLOB mediálního obsahu. |
 > | Microsoft. ApiManagement/Service/Products/Read | Vypíše kolekci produktů v zadané instanci služby. nebo získá podrobnosti o produktu určeném jeho identifikátorem. |
 > | Microsoft. ApiManagement/Service/Products/Write | Vytvoří nebo aktualizuje produkt. nebo aktualizuje existující podrobnosti o produktu. |
 > | Microsoft. ApiManagement/Service/Products/DELETE | Odstranit produkt |
@@ -6204,7 +6266,6 @@ Služba Azure: Azure Active Directory
 > | Microsoft. aadiam/privateLinkForAzureAD/Write | Vytvoření a aktualizace definice zásad privátního propojení |
 > | Microsoft. aadiam/privateLinkForAzureAD/DELETE | Odstranit definici zásad privátního propojení |
 > | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/Read | Číst proxy privátních odkazů |
-> | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/Write | Vytvoření a aktualizace proxy serverů privátního propojení |
 > | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/DELETE | Odstranit proxy privátních odkazů |
 > | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/ověřit/akce | Ověřit proxy privátních odkazů |
 > | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnections/Read | Číst PrivateEndpointConnections |
@@ -6559,6 +6620,14 @@ Služba Azure: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/threatintelligence/metriky/Action | Shromáždit metriky logiky hrozeb |
 > | Microsoft. SecurityInsights/threatintelligence/bulkDelete/Action | Analýza hrozeb hromadného odstranění |
 > | Microsoft. SecurityInsights/threatintelligence/bulkTag/Action | Inteligentní značky – Analýza hrozeb |
+> | Microsoft. SecurityInsights/threatintelligence/– indikátory/čtení | Získá indikátory analýzy hrozeb. |
+> | Microsoft. SecurityInsights/threatintelligence/indikátory/Write | Aktualizuje indikátory analýzy hrozeb. |
+> | Microsoft. SecurityInsights/threatintelligence/indikátory/DELETE | Odstraní indikátory analýzy hrozeb. |
+> | Microsoft. SecurityInsights/threatintelligence/indikátory/dotaz/akce | Dotazování na indikátory analýzy hrozeb |
+> | Microsoft. SecurityInsights/threatintelligence/indikátory/metriky/akce | Získat metriky indikátorů pro analýzu hrozeb |
+> | Microsoft. SecurityInsights/threatintelligence/ukazatelé/appendTags/Action | Připojit značky k indikátoru analýzy hrozeb |
+> | Microsoft. SecurityInsights/threatintelligence/ukazatelé/bulkDelete/Action | Hromadné odstranění indikátorů analýzy hrozeb |
+> | Microsoft. SecurityInsights/threatintelligence/ukazatelé/bulkTag/Action | Inteligentní značky – indikátory analýzy hrozeb |
 > | Microsoft. SecurityInsights/Watchlists/Read | Získá Watchlists |
 > | Microsoft. SecurityInsights/Watchlists/Write | Vytvořit Watchlists |
 > | Microsoft. SecurityInsights/Watchlists/DELETE | Odstraní Watchlists |
@@ -7695,6 +7764,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADTEventRoutesOperation/číst | Čtení dat z tabulky ADTEventRoutesOperation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADTModelsOperation/číst | Čtení dat z tabulky ADTModelsOperation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADTQueryOperation/číst | Čtení dat z tabulky ADTQueryOperation |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADXCommand/číst | Čtení dat z tabulky ADXCommand |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADXQuery/číst | Čtení dat z tabulky ADXQuery |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AegDeliveryFailureLogs/číst | Čtení dat z tabulky AegDeliveryFailureLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AegPublishFailureLogs/číst | Čtení dat z tabulky AegPublishFailureLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/výstraha/čtení | Čtení dat z tabulky výstrah |
@@ -8929,6 +9000,7 @@ Služba Azure: [Azure Policy](../governance/policy/index.yml)
 > | Microsoft. PolicyInsights/ověření/čtení | Získá ověření stavu dodržování předpisů. |
 > | Microsoft. PolicyInsights/Attestation/Write | Vytvoří nebo aktualizuje ověření stavu dodržování předpisů. |
 > | Microsoft. PolicyInsights/Attestation/DELETE | Odstraní ověření stavu dodržování předpisů. |
+> | Microsoft. PolicyInsights/checkPolicyRestrictions/Read | Získejte podrobnosti o omezeních, která zásada vynutila u prostředku. |
 > | Microsoft. PolicyInsights/Operations/Read | Načte podporované operace v oboru názvů Microsoft. PolicyInsights. |
 > | Microsoft. PolicyInsights/policyEvents/queryResults/Action | Dotaz na informace o událostech zásad. |
 > | Microsoft. PolicyInsights/policyEvents/queryResults/Read | Dotaz na informace o událostech zásad. |
@@ -9307,7 +9379,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Další
+## <a name="other"></a>Jiné
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 

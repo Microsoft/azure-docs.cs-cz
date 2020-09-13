@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d48ca3685dca36157307e7cb4b3d25261c243aa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 10108fdf4f2b7090eaeaa4b378992c2e94d3b04c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705737"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489574"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Architektura připojení Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -53,7 +53,7 @@ Servery v SQL Database a Azure synapse podporují následující tři možnosti 
 
 `Redirect` `Proxy` Pro nejnižší latenci a nejvyšší propustnost důrazně doporučujeme zásady připojení oproti zásadám připojení. Budete ale muset splnit další požadavky na povolení síťového provozu, jak je uvedeno výše. Pokud se jedná o virtuální počítač Azure, můžete to udělat pomocí skupin zabezpečení sítě (NSG) s [visačkami služby](../../virtual-network/security-overview.md#service-tags). Pokud se klient připojuje z místní pracovní stanice, možná budete muset spolupracovat se správcem sítě a zapnout síťový provoz přes bránu firewall vaší firmy.
 
-## <a name="connectivity-from-within-azure"></a>Připojení v rámci Azure
+## <a name="connectivity-from-within-azure"></a>Konektivita uvnitř Azure
 
 Pokud se připojujete z v rámci Azure, mají připojení `Redirect` ve výchozím nastavení zásady připojení. Zásada `Redirect` znamená, že po navázání relace TCP na Azure SQL Database se relace klienta přesměruje do správného databázového clusteru se změnou cílové virtuální IP adresy z této Azure SQL Database brány na cluster. Následně se všechny následné pakety nasměrují přímo do clusteru a vycházejí z Azure SQL Database brány. Tento tok přenosů znázorňuje následující diagram.
 
@@ -94,6 +94,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
 | Německo – sever východ   | 51.5.144.179       |
+| Německo – středozápad | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
 | Indie – střed        | 104.211.96.159     |
 | Indie – jih          | 104.211.224.146    |
 | Indie – západ           | 104.211.160.80     |

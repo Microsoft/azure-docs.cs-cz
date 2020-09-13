@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 53db53f60166c3b5afa117a60a99e3429a14576d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855196"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488554"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Model časové řady v Azure Time Series Insights Gen2
 
@@ -24,9 +24,9 @@ Tento článek popisuje model časových řad, možnosti a způsob, jak začít 
 > [!TIP]
 >
 > * Příklad modelu živé časové řady najdete v [ukázkovém prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) .
-> * Naučte se [pracovat s modelem časových řad](/azure/time-series-insights/how-to-edit-your-model) pomocí Průzkumníka Azure Time Series Insights TSI.
+> * Naučte se [pracovat s modelem časových řad](/azure/time-series-insights/how-to-edit-your-model) pomocí Azure Time Series Insights Exploreru.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Data shromážděná ze zařízení IoT neobsahují kontextové informace, což usnadňuje rychlé vyhledání a analýzu senzorů. Hlavním motivací pro model časových řad je zjednodušení hledání a analýza dat IoT nebo časových řad. Tento cíl dosahuje tím, že umožňuje zpracovat, udržovat a zdokonalovat data časových řad, což vám usnadní přípravu datových sad připravených pro zákazníky pro účely analýzy.
 
@@ -75,7 +75,7 @@ Tyto součásti jsou kombinovány pro určení modelu časové řady a k uspoř�
 
 [![Graf s přehledem modelu časové řady](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Model časových řad se dá vytvořit a spravovat pomocí [průzkumníka Azure Time Series Insights TSI](/azure/time-series-insights/concepts-model-overview). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
+Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Exploreru](/azure/time-series-insights/concepts-model-overview). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
 
 ## <a name="time-series-model-instances"></a>Instance modelů časových řad
 
@@ -87,7 +87,7 @@ Instance obsahují popisné informace spojené s názvem *vlastnosti instance*, 
 
 *Pole instancí* jsou kolekce popisných informací, které mohou obsahovat hodnoty pro úrovně hierarchie, a také výrobce, operátor a tak dále.
 
-Po nakonfigurování zdroje událostí pro prostředí Azure Time Series Insights Gen2 jsou instance automaticky zjišťovány a vytvořeny v modelu časové řady. Instance se dají vytvořit nebo aktualizovat prostřednictvím Průzkumníka Azure Time Series Insights TSI pomocí dotazů na model časových řad.
+Po nakonfigurování zdroje událostí pro prostředí Azure Time Series Insights Gen2 jsou instance automaticky zjišťovány a vytvořeny v modelu časové řady. Instance lze vytvořit nebo aktualizovat prostřednictvím aplikace Azure Time Series Insights Explorer pomocí dotazů na model časové řady.
 
 [Ukázková farma společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) nabízí několik příkladů instancí za provozu.
 
@@ -216,7 +216,7 @@ Vzhledem k polím instance použitým v předchozí definici a několika časov�
 | ID4 | "sestavování" = "1000", "patra" = "10"  |
 | ID5 | Není nastaven žádný z "budova", "patra" ani "místnost". |
 
-Time Series **ID1** a **ID4** se zobrazují jako součást hierarchie **H1** v [Průzkumníkovi Azure Time Series Insights TSI](time-series-insights-update-explorer.md) , protože mají plně definované a správně seřazené parametry *sestavení*, *podlah*a *místností* .
+Time Series **ID1** a **ID4** se zobrazují jako součást hierarchie **H1** v [Azure Time Series Insights Exploreru](time-series-insights-update-explorer.md) , protože mají plně definované a správně seřazené parametry *sestavení*, *podlah*a *místností* .
 
 Ostatní jsou klasifikovány v rámci *nenadřazených instancí* , protože neodpovídají zadané hierarchii dat.
 
