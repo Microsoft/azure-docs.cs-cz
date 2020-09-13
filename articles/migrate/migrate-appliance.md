@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927495"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514352"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -77,7 +77,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 
 ## <a name="appliance---physical"></a>Zařízení – fyzické
 
-**Požadavek** | **Fyzický** 
+**Požadavek** | **Fyzické** 
 --- | ---
 **Oprávnění** | Pokud chcete přistupovat k webové aplikaci místně nebo vzdáleně, musíte být správcem domény nebo místním správcem na počítači zařízení.
 **Součásti zařízení** | Zařízení má následující součásti: <br/><br/> - **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent kolektoru**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
@@ -121,7 +121,7 @@ download.microsoft.com/download | Povolí stahování ze služby Stažení softw
 graph.windows.net | Přihlaste se ke svému předplatnému Azure.
 login.microsoftonline.us  | Vytvořte Azure Active Directory (AD) aplikace pro zařízení, které budou komunikovat s Azure Migrate.
 management.usgovcloudapi.net | Vytvořte aplikace služby Azure AD, aby zařízení komunikovalo se službou Azure Migrate.
-dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
+*.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
 *. vault.usgovcloudapi.net | Správa tajných kódů v Azure Key Vault.
 aka.ms/* | Povolí přístup k odkazům. Používá se k aktualizaci Azure Migrate zařízení.
 download.microsoft.com/download | Povolí stahování ze služby Stažení softwaru společnosti Microsoft.
@@ -180,7 +180,7 @@ IPv6 adresy | síť. Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
-Název | vnitřního. GetType (). Jméno
+Name | vnitřního. GetType (). Jméno
 Typ podřízeného objektu | vnitřního. ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
@@ -227,7 +227,7 @@ Tady jsou funkce data, která zařízení shromažďuje z každého virtuálníh
 
 **Data**  | **Rutina PowerShellu** | **Vlastnost**
 --- | --- | ---
-Název  | Get – WindowsFeature  | Název
+Name  | Get – WindowsFeature  | Name
 Typ funkce | Get – WindowsFeature  | FeatureType
 Nadřazený  | Get – WindowsFeature  | Nadřazený
 
@@ -237,7 +237,7 @@ Tady jsou metadata SQL serveru, která zařízení shromažďuje z virtuálních
 
 **Data**  | **Umístění registru**  | **Klíč**
 --- | --- | ---
-Název  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Edice  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Edice 
 Aktualizace Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verze  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verze 
@@ -248,7 +248,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 Data  | Třída WMI  | Vlastnost třídy WMI
 --- | --- | ---
-Název  | Win32_operatingsystem  | Titulek
+Name  | Win32_operatingsystem  | Titulek
 Verze  | Win32_operatingsystem  | Verze
 Architektura  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každé
 
 Data  | Příkaz
 --- | --- 
-Název | ot./min., bázi dpkg – dotaz, přichycení
+Name | ot./min., bázi dpkg – dotaz, přichycení
 Verze | ot./min., bázi dpkg – dotaz, přichycení
 Poskytovatel | ot./min., bázi dpkg – dotaz, přichycení
 
@@ -268,7 +268,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 **Data**  | **Příkaz** 
 --- | --- | ---
-Název <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektura | uname
 
 
@@ -507,7 +507,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 
 1. Chcete-li vyhledat nejnovější verze služby zařízení, [stáhněte](https://aka.ms/latestapplianceservices) LatestComponents.jsv souboru.
 2.    Po stažení otevřete LatestComponents.jsv souboru poznámkového bloku.
-3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Příklad:
+3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Například:
 
     "Name": "ASRMigrationWebApp"; "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 

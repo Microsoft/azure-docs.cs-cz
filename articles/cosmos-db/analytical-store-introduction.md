@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: b3d1371f486a73b40d352007e3681fd451a8a8b7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: fdaffef6c682bd1f9c81f14af6cd949816f7555a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815823"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505518"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
 
@@ -156,9 +156,14 @@ Analytická hodnota TTL na kontejneru je nastavena pomocí `AnalyticalStoreTimeT
 
 Některé body ke zvážení:
 *   Až bude analytické úložiště povolené s analytickou hodnotou TTL, dá se později aktualizovat na jinou platnou hodnotu. 
-*   Zatímco transakční hodnotu TTL je možné nastavit na úrovni kontejneru nebo položky, analytická hodnota TTL se dá nastavit jenom na úrovni kontejneru v současnosti.
+*   Zatímco transakční hodnotu TTL je možné nastavit na úrovni kontejneru nebo položky, analytická hodnota TTL se dá na úrovni kontejneru nastavit jenom teď.
 *   Můžete dosáhnout delšího uchovávání provozních dat v analytickém úložišti nastavením analytického TTL >= transakční hodnota TTL na úrovni kontejneru.
-*   Analytické úložiště je možné provést zrcadlením transakčního úložiště nastavením analytického TTL = transakční hodnota TTL.
+*   Analytické úložiště je možné provést pro zrcadlení transakčního úložiště nastavením analytického TTL = transakční hodnota TTL.
+
+Když povolíte anaytical Store na kontejneru:
+ * pomocí webu Azure Portal je analytická hodnota TTL nastavená na výchozí hodnotu-1. Tuto hodnotu můžete změnit na n sekund, a to tak, že přejdete na nastavení kontejneru v části Průzkumník dat. 
+ 
+ * pomocí sady Azure SDK nebo prostředí PowerShell nebo rozhraní příkazového řádku (CLI) můžete analytickou hodnotu TTL povolit tak, že ji nastavíte na hodnotu-1 nebo n. 
 
 Další informace najdete v tématu [Postup konfigurace analytického TTL na kontejneru](configure-synapse-link.md#create-analytical-ttl).
 

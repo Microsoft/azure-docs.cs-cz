@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/06/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783650"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505079"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -100,22 +100,31 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
 
 1. Chcete-li určit, co se stane po dokončení kontroly, rozbalte část **nastavení po dokončení** .
 
-    ![Vytvoření kontroly přístupu s nastavením při dokončování](./media/create-access-review/upon-completion-settings.png)
+    ![Vytvoření kontroly přístupu s nastavením při dokončování](./media/create-access-review/upon-completion-settings-new.png)
 
-1. Pokud chcete automaticky odebrat přístup pro zamítnuté uživatele, nastavte **automatické použití výsledků na prostředek** , aby **bylo možné povolit**. Pokud chcete výsledky použít ručně po dokončení kontroly, nastavte přepínač na **Zakázat**.
+2. Pokud chcete automaticky odebrat přístup pro zamítnuté uživatele, nastavte **automatické použití výsledků na prostředek** , aby **bylo možné povolit**. Pokud chcete výsledky použít ručně po dokončení kontroly, nastavte přepínač na **Zakázat**.
 
-1. Seznam **by měl kontrolor bez odpovědi** použít k určení toho, co se stane pro uživatele, kteří kontrolor v rámci období revize nekontroloval. Toto nastavení nemá vliv na uživatele, kteří byli zkontrolováni ručně. Pokud je posledním rozhodnutím kontrolora zamítnutí, bude přístup uživatele odebrán.
+3. Použijte seznam **Pokud revidující nereagují** k určení toho, co se stane pro uživatele, kteří kontrolor v rámci období revize nekontroloval. Toto nastavení nemá vliv na uživatele, kteří byli zkontrolováni ručně. Pokud je posledním rozhodnutím kontrolora zamítnutí, bude přístup uživatele odebrán.
 
     - **Žádná změna** – opuštění přístupu uživatele nezměněné
     - **Odebrání přístupu** – odebrání přístupu uživatele
     - **Schválit přístup** – schválení přístupu uživatele
     - **Využijte doporučení** – Vezměte v úvahu doporučení systému při odepření nebo schvalování trvalého přístupu uživatele.
 
+4. Tisk Použijte akci, která se má použít u odepřených uživatelů k určení toho, co se stane uživatelům typu Host, pokud jsou odepřeni.
+    - **Možnost 1** odebere přístup zakázaného uživatele ke skupině nebo aplikaci, která se právě kontroluje, se stále bude moci přihlásit k tenantovi. 
+    - **Možnost 2** zablokuje uživatelům zamítnuté přihlášení k tenantovi bez ohledu na to, jestli mají přístup k jiným prostředkům. Pokud došlo k chybě nebo pokud se správce rozhodne znovu povolit přístup k jednomu z nich, může to provést do 30 dnů od zakázání uživatele. Pokud se u zakázaných uživatelů neprovede žádná akce, odstraní se z tenanta.
+
+Další informace o osvědčených postupech pro odebrání uživatelů typu Host, kteří už nemají přístup k prostředkům ve vaší organizaci, najdete v článku [s názvem použití Azure AD identity governance ke kontrole a odebírání externích uživatelů, kteří už nemají přístup](access-reviews-external-users.md)k prostředkům..
+
+>[!NOTE]
+> Akce, která se má použít na zamítnutých uživatelích funguje jenom v případě, že jste dříve zavedli kontrolu jenom uživatelům typu Host (viz krok **vytvoření jednoho nebo více kontrol přístupu** krok 8).
+
 ### <a name="advanced-settings"></a>Rozšířená nastavení
 
 1. Chcete-li zadat další nastavení, rozbalte oddíl **Upřesnit nastavení** .
 
-    ![Vytvoření kontroly přístupu – Pokročilá nastavení](./media/create-access-review/advanced-settings-preview.png)
+    ![Vytvoření kontroly přístupu – Pokročilá nastavení](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. Nastavením **Zobrazit doporučení** **umožníte, aby se** recenzenti zobrazovala doporučení k systému na základě informací o přístupu uživatele.
 

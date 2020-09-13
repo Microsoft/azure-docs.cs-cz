@@ -2,13 +2,13 @@
 title: Přesunout podporu operace podle typu prostředku
 description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079497"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566122"
 ---
 # <a name="move-operation-support-for-resources"></a>Podpora operace přesunutí pro prostředky
 
@@ -219,8 +219,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | diagnosticsettings | No | No |
 > | diagnosticsettingscategories | No | No |
 > | Operace | No | No |
-> | privatelinkforazuread | Ano | Ano |
-> | tenantů | Ano | Ano |
+> | privatelinkforazuread | Yes | Yes |
+> | tenantů | Yes | Yes |
 
 ## <a name="microsoftaddons"></a>Microsoft. addons
 
@@ -243,7 +243,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | konfigurace | No | No |
 > | Protokoly | No | No |
 > | Operace | No | No |
-> | sestavy | No | No |
+> | reports | No | No |
 > | servicehealthmetrics | No | No |
 > | services | No | No |
 
@@ -264,14 +264,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | actionrules | Ano | Ano |
+> | actionrules | Yes | Yes |
 > | výstrahy | No | No |
 > | alertslist | No | No |
 > | alertsmetadata | No | No |
 > | alertssummary | No | No |
 > | alertssummarylist | No | No |
 > | Operace | No | No |
-> | smartdetectoralertrules | Ano | Ano |
+> | smartdetectoralertrules | Yes | Yes |
 > | smartgroups | No | No |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
@@ -284,7 +284,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operationresults | No | No |
 > | umístění/operationstatuses | No | No |
 > | Operace | No | No |
-> | servery | Ano | Ano |
+> | servery | Yes | Yes |
 
 ## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
@@ -299,7 +299,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | checkservicenameavailability | No | No |
 > | Operace | No | No |
 > | reportfeedback | No | No |
-> | service | Ano | Ano |
+> | service | Yes | Yes |
 > | validateservicename | No | No |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
@@ -308,7 +308,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | No | No |
-> | configurationstores | Ano | Ano |
+> | configurationstores | Yes | Yes |
 > | configurationstores / eventgridfilters | No | No |
 > | polohy | No | No |
 > | umístění/operationsstatus | No | No |
@@ -324,7 +324,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operationresults | No | No |
 > | umístění/stav operationstatus | No | No |
 > | Operace | No | No |
-> | návratu | Ano | Ano |
+> | návratu | Yes | Yes |
 > | pružina/aplikace | No | No |
 > | Jarní/aplikace/nasazení | No | No |
 
@@ -345,7 +345,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | attestationproviders | Ano | Ano |
+> | attestationproviders | Yes | Yes |
 > | Operace | No | No |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
@@ -383,13 +383,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | automationaccounts | Ano | Ano |
-> | automationaccounts/konfigurace | Ano | Ano |
+> | automationaccounts | Yes | Yes |
+> | automationaccounts/konfigurace | Yes | Yes |
 > | automationaccounts/úlohy | No | No |
 > | automationaccounts / privateendpointconnectionproxies | No | No |
 > | automationaccounts / privateendpointconnections | No | No |
 > | automationaccounts / privatelinkresources | No | No |
-> | automationaccounts/Runbooky | Ano | Ano |
+> | automationaccounts/Runbooky | Yes | Yes |
 > | automationaccounts / softwareupdateconfigurations | No | No |
 > | automationaccounts nebo Webhooky | No | No |
 > | Operace | No | No |
@@ -403,7 +403,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/checkquotaavailability | No | No |
 > | umístění/checktrialavailability | No | No |
 > | Operace | No | No |
-> | privateclouds | Ano | Ano |
+> | privateclouds | Yes | Yes |
 > | privateclouds/clustery | No | No |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft. Azureactivedirectory selhala
@@ -411,7 +411,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | b2cdirectories | Ano | Ano |
+> | b2cdirectories | Yes | Yes |
 > | b2ctenants | No | No |
 > | checknameavailability | No | No |
 > | Operace | No | No |
@@ -428,7 +428,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | sqlinstances | No | No |
 > | sqlmanagedinstances | No | No |
 > | sqlserverinstances | No | No |
-> | sqlserverregistrations | Ano | Ano |
+> | sqlserverregistrations | Yes | Yes |
 > | sqlserverregistrations/SQLservers | No | No |
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
@@ -438,7 +438,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | cloudmanifestfiles | No | No |
 > | Operace | No | No |
-> | rozpoznávání | Ano | Ano |
+> | rozpoznávání | Yes | Yes |
 > | registrace/customersubscriptions | No | No |
 > | registrace/produkty | No | No |
 
@@ -455,7 +455,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | batchaccounts | Ano | Ano |
+> | batchaccounts | Yes | Yes |
 > | polohy | No | No |
 > | umístění/accountoperationresults | No | No |
 > | umístění/checknameavailability | No | No |
@@ -617,7 +617,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | botservices | Ano | Ano |
+> | botservices | Yes | Yes |
 > | botservices/kanály | No | No |
 > | botservices/připojení | No | No |
 > | checknameavailability | No | No |
@@ -637,7 +637,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operationresults | No | No |
 > | umístění/operationsstatus | No | No |
 > | Operace | No | No |
-> | Redis | Ano | Ano |
+> | Redis | Yes | Yes |
 > | Redis/eventgridfilters | No | No |
 > | Redis/privatelinkresources | No | No |
 > | redisenterprise | No | No |
@@ -680,7 +680,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallmanagedrulesets | No | No |
-> | cdnwebapplicationfirewallpolicies | Ano | Ano |
+> | cdnwebapplicationfirewallpolicies | Yes | Yes |
 > | checknameavailability | No | No |
 > | checkresourceusage | No | No |
 > | edgenodes | No | No |
@@ -691,8 +691,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | operationresults / profileresults / endpointresults / origingroupresults | No | No |
 > | operationresults / profileresults / endpointresults / originresults | No | No |
 > | Operace | No | No |
-> | uživatelů | Ano | Ano |
-> | profily/koncové body | Ano | Ano |
+> | uživatelů | Yes | Yes |
+> | profily/koncové body | Yes | Yes |
 > | profily/koncové body/customdomains | No | No |
 > | profily/koncové body/origingroups | No | No |
 > | profily/koncové body/zdroje | No | No |
@@ -706,7 +706,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | certificateorders | Ano | Ano |
+> | certificateorders | Yes | Yes |
 > | certificateorders/certifikáty | No | No |
 > | Operace | No | No |
 > | validatecertificateregistrationinformation | No | No |
@@ -744,7 +744,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | quotas | No | No |
 > | typ prostředků | No | No |
 > | validatesubscriptionmoveavailability | No | No |
-> | virtualmachines | Ano | No |
+> | virtualmachines | Yes | Yes |
 > | virtualmachines / diagnosticsettings | No | No |
 > | virtualmachines / metricdefinitions | No | No |
 > | VirtualMachines/metriky | No | No |
@@ -825,7 +825,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | accounts | Yes | Yes |
 > | checkdomainavailability | No | No |
 > | polohy | No | No |
 > | umístění/checkskuavailability | No | No |
@@ -850,16 +850,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | availabilitysets | Ano | Ano |
+> | availabilitysets | Yes | Yes |
 > | diskaccesses | No | No |
 > | diskencryptionsets | No | No |
-> | disků | Ano | Ano |
+> | disků | Yes | Yes |
 > | Galerie | No | No |
 > | Galerie/image | No | No |
 > | Galerie/image/verze | No | No |
 > | hostgroups | No | No |
 > | hostgroups/hostitelé | No | No |
-> | images | Ano | Ano |
+> | images | Yes | Yes |
 > | polohy | No | No |
 > | umístění/artifactpublishers | No | No |
 > | umístění/capsoperations | No | No |
@@ -873,19 +873,19 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/povolených velikostí | No | No |
 > | umístění/vsmoperations | No | No |
 > | Operace | No | No |
-> | proximityplacementgroups | Ano | Ano |
+> | proximityplacementgroups | Yes | Yes |
 > | restorepointcollections | No | No |
 > | restorepointcollections / restorepoints | No | No |
 > | sharedvmextensions | No | No |
 > | sharedvmimages | No | No |
 > | sharedvmimages/verze | No | No |
-> | snímky | Ano | Ano |
+> | snímky | Yes | Yes |
 > | sshpublickeys | No | No |
-> | virtualmachines | Ano | Ano |
-> | VirtualMachines/rozšíření | Ano | Ano |
+> | virtualmachines | Yes | Yes |
+> | VirtualMachines/rozšíření | Yes | Yes |
 > | virtualmachines / metricdefinitions | No | No |
 > | virtualmachines / runcommands | No | No |
-> | virtualmachinescalesets | Ano | Ano |
+> | virtualmachinescalesets | Yes | Yes |
 > | virtualmachinescalesets/rozšíření | No | No |
 > | virtualmachinescalesets/networkinterfaces | No | No |
 > | virtualmachinescalesets/publicipaddresses | No | No |
@@ -949,13 +949,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operationresults | No | No |
 > | umístění/setupauth | No | No |
 > | Operace | No | No |
-> | registr | Ano | Ano |
-> | Registry/agentpools | Ano | Ano |
+> | registr | Yes | Yes |
+> | Registry/agentpools | Yes | Yes |
 > | Registry/agentpools/listqueuestatus | No | No |
 > | Registry a sestavení | No | No |
 > | Registry/buildy/zrušit | No | No |
 > | Registry/buildy/getloglink | No | No |
-> | Registry/BuildTasks | Ano | Ano |
+> | Registry/BuildTasks | Yes | Yes |
 > | Registry/BuildTasks/listsourcerepositoryproperties | No | No |
 > | Registry/BuildTasks/kroky | No | No |
 > | Registry/BuildTasks/Steps/listbuildarguments | No | No |
@@ -978,7 +978,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Registry/QueueBuild | No | No |
 > | Registry/regeneratecredential | No | No |
 > | Registry/regeneratecredentials | No | No |
-> | Registry/replikace | Ano | Ano |
+> | Registry/replikace | Yes | Yes |
 > | Registry/běhy | No | No |
 > | Registry/spuštění/zrušit | No | No |
 > | Registry/běhy/listlogsasurl | No | No |
@@ -986,11 +986,11 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Registry/scopemaps | No | No |
 > | Registry/taskruns | No | No |
 > | Registry/taskruns/ListDetails | No | No |
-> | Registry/úlohy | Ano | Ano |
+> | Registry/úlohy | Yes | Yes |
 > | Registry/úlohy/ListDetails | No | No |
 > | Registry a tokeny | No | No |
 > | Registry/updatepolicies | No | No |
-> | Registry a Webhooky | Ano | Ano |
+> | Registry a Webhooky | Yes | Yes |
 > | Registry/Webhooky/getcallbackconfig | No | No |
 > | Registry/Webhooky/listevents | No | No |
 > | Registry/Webhooky/příkazy k odeslání | No | No |
@@ -1033,7 +1033,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | billingaccounts | No | No |
 > | projektů | No | No |
 > | cloudconnectors | No | No |
-> | konektory | Ano | Ano |
+> | konektory | Yes | Yes |
 > | oddělení | No | No |
 > | použijí | No | No |
 > | enrollmentaccounts | No | No |
@@ -1053,7 +1053,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | query | No | No |
 > | register | No | No |
 > | reportconfigs | No | No |
-> | sestavy | No | No |
+> | reports | No | No |
 > | nastavení | No | No |
 > | showbackrules | No | No |
 > | zobrazení | No | No |
@@ -1089,7 +1089,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | polohy | No | No |
 > | umístění/operationstatuses | No | No |
 > | Operace | No | No |
-> | resourceproviders | Ano | Ano |
+> | resourceproviders | Yes | Yes |
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
@@ -1112,7 +1112,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | availableskus | No | No |
-> | databoxedgedevices | Ano | Ano |
+> | databoxedgedevices | Yes | Yes |
 > | databoxedgedevices / checknameavailability | No | No |
 > | Operace | No | No |
 
@@ -1134,7 +1134,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | spustí | Ano | Ano |
+> | spustí | Yes | Yes |
 > | checknameavailability | No | No |
 > | datacatalogs | No | No |
 > | polohy | No | No |
@@ -1164,11 +1164,11 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | checkazuredatafactorynameavailability | No | No |
 > | checkdatafactorynameavailability | No | No |
-> | objekty DataFactory | Ano | Ano |
+> | objekty DataFactory | Yes | Yes |
 > | DataFactory/diagnosticsettings | No | No |
 > | DataFactory/metricdefinitions | No | No |
 > | datafactoryschema | No | No |
-> | továrny | Ano | Ano |
+> | továrny | Yes | Yes |
 > | továrny/integrationruntimes | No | No |
 > | polohy | No | No |
 > | umístění/configurefactoryrepo | No | No |
@@ -1187,7 +1187,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | accounts | Yes | Yes |
 > | účty/datalakestoreaccounts | No | No |
 > | účty/storageaccounts | No | No |
 > | účty/storageaccounts/kontejnery | No | No |
@@ -1204,7 +1204,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | accounts | Yes | Yes |
 > | účty/eventgridfilters | No | No |
 > | účty/firewallrules | No | No |
 > | polohy | No | No |
@@ -1243,7 +1243,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | accounts | Yes | Yes |
 > | účty/sdílené složky | No | No |
 > | účty/akcie/datové sady | No | No |
 > | účty/akcie/pozvánky | No | No |
@@ -1281,7 +1281,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/serverkeyazureasyncoperation | No | No |
 > | umístění/serverkeyoperationresults | No | No |
 > | Operace | No | No |
-> | servery | Ano | Ano |
+> | servery | Yes | Yes |
 > | servery/poradci | No | No |
 > | servery/privateendpointconnectionproxies | No | No |
 > | servery/privateendpointconnections | No | No |
@@ -1315,7 +1315,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/serverkeyazureasyncoperation | No | No |
 > | umístění/serverkeyoperationresults | No | No |
 > | Operace | No | No |
-> | servery | Ano | Ano |
+> | servery | Yes | Yes |
 > | servery/poradci | No | No |
 > | servery/klíče | No | No |
 > | servery/privateendpointconnectionproxies | No | No |
@@ -1351,7 +1351,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/serverkeyoperationresults | No | No |
 > | Operace | No | No |
 > | servergroups | No | No |
-> | servery | Ano | Ano |
+> | servery | Yes | Yes |
 > | servery/poradci | No | No |
 > | servery/klíče | No | No |
 > | servery/privateendpointconnectionproxies | No | No |
@@ -1362,38 +1362,38 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servery/topquerystatistics | No | No |
 > | servery/virtualnetworkrules | No | No |
 > | servery/waitstatistics | No | No |
-> | serversv2 | Ano | Ano |
-> | singleservers | Ano | Ano |
+> | serversv2 | Yes | Yes |
+> | singleservers | Yes | Yes |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | artifactsources | Ano | Ano |
+> | artifactsources | Yes | Yes |
 > | operationresults | No | No |
 > | Operace | No | No |
-> | uvádění | Ano | Ano |
-> | servicetopologies | Ano | Ano |
-> | servicetopologies/služby | Ano | Ano |
-> | servicetopologies/služby/serviceunits | Ano | Ano |
-> | kroky | Ano | Ano |
+> | uvádění | Yes | Yes |
+> | servicetopologies | Yes | Yes |
+> | servicetopologies/služby | Yes | Yes |
+> | servicetopologies/služby/serviceunits | Yes | Yes |
+> | kroky | Yes | Yes |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | applicationgroups | Ano | Ano |
+> | applicationgroups | Yes | Yes |
 > | applicationgroups/aplikace | No | No |
 > | applicationgroups/desktopy | No | No |
 > | applicationgroups / startmenuitems | No | No |
-> | hostpools | Ano | Ano |
+> | hostpools | Yes | Yes |
 > | hostpools / sessionhosts | No | No |
 > | hostpools / sessionhosts / usersessions | No | No |
 > | hostpools / usersessions | No | No |
 > | Operace | No | No |
-> | pracovní prostory | Ano | Ano |
+> | pracovní prostory | Yes | Yes |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -1404,12 +1404,12 @@ Přejít na obor názvů poskytovatele prostředků:
 > | checkprovisioningservicenameavailability | No | No |
 > | elasticpools | No | No |
 > | elasticpools / iothubtenants | No | No |
-> | iothubs | Ano | Ano |
+> | iothubs | Yes | Yes |
 > | iothubs/eventgridfilters | No | No |
 > | iothubs/SecuritySettings | No | No |
 > | operationresults | No | No |
 > | Operace | No | No |
-> | provisioningservices | Ano | Ano |
+> | provisioningservices | Yes | Yes |
 > | použití | No | No |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
@@ -1417,14 +1417,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | kanály | Ano | Ano |
+> | kanály | Yes | Yes |
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | kontrolery | Ano | Ano |
+> | kontrolery | Yes | Yes |
 > | řadiče/listconnectiondetails | No | No |
 > | polohy | No | No |
 > | umístění/checkcontainerhostmapping | No | No |
@@ -1438,13 +1438,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | labcenters | No | No |
 > | Labs | Yes | No |
-> | laboratoře/prostředí | Ano | Ano |
-> | Labs/servicerunners | Ano | Ano |
+> | laboratoře/prostředí | Yes | Yes |
+> | Labs/servicerunners | Yes | Yes |
 > | Labs/VirtualMachines | Yes | No |
 > | polohy | No | No |
 > | umístění/operace | No | No |
 > | Operace | No | No |
-> | časových | Ano | Ano |
+> | časových | Yes | Yes |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
@@ -1462,7 +1462,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | databaseaccountnames | No | No |
-> | databaseaccounts | Ano | Ano |
+> | databaseaccounts | Yes | Yes |
 > | polohy | No | No |
 > | umístění/deletevirtualnetworkorsubnets | No | No |
 > | umístění/operationresults | No | No |
@@ -1476,7 +1476,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | checkdomainavailability | No | No |
-> | doménu | Ano | Ano |
+> | doménu | Yes | Yes |
 > | domény/domainownershipidentifiers | No | No |
 > | generatessorequest | No | No |
 > | listdomainrecommendations | No | No |
@@ -1492,14 +1492,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | polohy | No | No |
 > | umístění/operationresults | No | No |
 > | Operace | No | No |
-> | services | Ano | Ano |
+> | services | Yes | Yes |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | doménu | Ano | Ano |
+> | doménu | Yes | Yes |
 > | domény a témata | No | No |
 > | eventsubscriptions | No – nejde přesunout nezávisle, ale automaticky se přesune s předplacený prostředkem. | No – nejde přesunout nezávisle, ale automaticky se přesune s předplacený prostředkem. |
 > | extensiontopics | No | No |
@@ -1511,14 +1511,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | operationresults | No | No |
 > | Operace | No | No |
 > | operationsstatus | No | No |
-> | partnernamespaces | Ano | Ano |
+> | partnernamespaces | Yes | Yes |
 > | partnernamespaces/eventchannels | No | No |
 > | partnerregistrations | No | No |
-> | partnertopics | Ano | Ano |
+> | partnertopics | Yes | Yes |
 > | partnertopics / eventsubscriptions | No | No |
-> | systemtopics | Ano | Ano |
+> | systemtopics | Yes | Yes |
 > | systemtopics / eventsubscriptions | No | No |
-> | popisující | Ano | Ano |
+> | popisující | Yes | Yes |
 > | topictypes | No | No |
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
@@ -1529,10 +1529,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | availableclusterregions | No | No |
 > | checknameavailability | No | No |
 > | checknamespaceavailability | No | No |
-> | existující | Ano | Ano |
+> | existující | Yes | Yes |
 > | polohy | No | No |
 > | umístění/deletevirtualnetworkorsubnets | No | No |
-> | obsažené | Ano | Ano |
+> | obsažené | Yes | Yes |
 > | obory názvů/autorizačních pravidel | No | No |
 > | obory názvů/disasterrecoveryconfigs | No | No |
 > | obory názvů/disasterrecoveryconfigs/checknameavailability | No | No |
@@ -1557,7 +1557,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | obsažené | Ano | Ano |
+> | obsažené | Yes | Yes |
 
 ## <a name="microsoftfeatures"></a>Microsoft. Features
 
@@ -1600,7 +1600,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operace | No | No |
 > | umístění/operationsstatus | No | No |
 > | Operace | No | No |
-> | sapmonitors | Ano | Ano |
+> | sapmonitors | Yes | Yes |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
@@ -1621,7 +1621,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | existující | Ano | Ano |
+> | existující | Yes | Yes |
 > | clustery/aplikace | No | No |
 > | clustery/operationresults | No | No |
 > | polohy | No | No |
@@ -1642,7 +1642,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | polohy | No | No |
 > | umístění/operationresults | No | No |
 > | Operace | No | No |
-> | services | Ano | Ano |
+> | services | Yes | Yes |
 > | služby/privateendpointconnections | No | No |
 > | služby/privatelinkresources | No | No |
 
@@ -1654,8 +1654,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | polohy | No | No |
 > | umístění/operationresults | No | No |
 > | umístění/stav operationstatus | No | No |
-> | virtuální | Ano | Ano |
-> | počítače/rozšíření | Ano | Ano |
+> | virtuální | Yes | Yes |
+> | počítače/rozšíření | Yes | Yes |
 > | Operace | No | No |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
@@ -1663,7 +1663,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | datamanagery | Ano | Ano |
+> | datamanagery | Yes | Yes |
 > | Operace | No | No |
 
 ## <a name="microsofthybridnetwork"></a>Microsoft. HybridNetwork
@@ -1692,7 +1692,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | úlohy | Ano | Ano |
+> | úlohy | Yes | Yes |
 > | polohy | No | No |
 > | umístění/operationresults | No | No |
 > | Operace | No | No |
@@ -1705,13 +1705,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | actiongroups | Ano | Ano |
+> | actiongroups | Yes | Yes |
 > | upozorněníprotokoluaktivit | No | No |
-> | alertrules | Ano | Ano |
-> | autoscalesettings | Ano | Ano |
+> | alertrules | Yes | Yes |
+> | autoscalesettings | Yes | Yes |
 > | standardní hodnoty | No | No |
 > | calculatebaseline | No | No |
-> | konstrukční | Ano | Ano |
+> | konstrukční | Yes | Yes |
 > | komponenty/události | No | No |
 > | komponenty/linkedstorageaccounts | No | No |
 > | komponenty/metadata | No | No |
@@ -1748,14 +1748,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | privatelinkscopes / privateendpointconnections | No | No |
 > | privatelinkscopes / scopedresources | No | No |
 > | rollbacktolegacypricingmodel | No | No |
-> | scheduledqueryrules | Ano | Ano |
+> | scheduledqueryrules | Yes | Yes |
 > | topologie | No | No |
 > | transactions | No | No |
 > | vminsightsonboardingstatuses | No | No |
-> | webové testy | Ano | Ano |
+> | webové testy | Yes | Yes |
 > | webtests/gettestresultfile | No | No |
-> | sešity | Ano | Ano |
-> | workbooktemplates | Ano | Ano |
+> | sešity | Yes | Yes |
+> | workbooktemplates | Yes | Yes |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
 
@@ -1765,7 +1765,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | apptemplates | No | No |
 > | checknameavailability | No | No |
 > | checksubdomainavailability | No | No |
-> | iotapps | Ano | Ano |
+> | iotapps | Yes | Yes |
 > | Operace | No | No |
 
 ## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
@@ -1773,8 +1773,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Ano | Ano |
-> | zapisovací | Ano | Ano |
+> | checknameavailability | Yes | Yes |
+> | zapisovací | Yes | Yes |
 > | Operace | No | No |
 
 ## <a name="microsoftkeyvault"></a>Trezor Microsoft.
@@ -1794,7 +1794,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operationresults | No | No |
 > | managedhsms | No | No |
 > | Operace | No | No |
-> | trezory | Ano | Ano |
+> | trezory | Yes | Yes |
 > | trezory/accesspolicies | No | No |
 > | trezory/eventgridfilters | No | No |
 > | trezory/tajné klíče | No | No |
@@ -1804,7 +1804,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | connectedclusters | Ano | Ano |
+> | connectedclusters | Yes | Yes |
 > | polohy | No | No |
 > | umístění/operationstatuses | No | No |
 > | Operace | No | No |
@@ -1822,7 +1822,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | existující | Ano | Ano |
+> | existující | Yes | Yes |
 > | clustery/attacheddatabaseconfigurations | No | No |
 > | clustery/databáze | No | No |
 > | clustery, databáze/datapřipojení | No | No |
@@ -1865,14 +1865,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | No | No |
-> | integrationaccounts | Ano | Ano |
+> | integrationaccounts | Yes | Yes |
 > | integrationserviceenvironments | Yes | No |
 > | integrationserviceenvironments/Inspirujte | Yes | No |
 > | isolatedenvironments | No | No |
 > | polohy | No | No |
 > | umístění/pracovní postupy | No | No |
 > | Operace | No | No |
-> | Zpracovávaný | Ano | Ano |
+> | Zpracovávaný | Yes | Yes |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
@@ -1885,7 +1885,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operationsstatus | No | No |
 > | Operace | No | No |
 > | WebServices | Yes | No |
-> | pracovní prostory | Ano | Ano |
+> | pracovní prostory | Yes | Yes |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
 
@@ -1937,7 +1937,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | applyupdates | No | No |
 > | configurationassignments | No | No |
-> | maintenanceconfigurations | Ano | Ano |
+> | maintenanceconfigurations | Yes | Yes |
 > | aktualizovány | No | No |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
@@ -1991,9 +1991,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | accounts | Yes | Yes |
 > | účty/eventgridfilters | No | No |
-> | účty/privateatlases | Ano | Ano |
+> | účty/privateatlases | Yes | Yes |
 > | Operace | No | No |
 
 ## <a name="microsoftmarketplace"></a>Microsoft. Marketplace
@@ -2048,18 +2048,18 @@ Přejít na obor názvů poskytovatele prostředků:
 > | checknameavailability | No | No |
 > | polohy | No | No |
 > | umístění/checknameavailability | No | No |
-> | MediaServices | Ano | Ano |
+> | MediaServices | Yes | Yes |
 > | MediaServices/accountfilters | No | No |
 > | MediaServices/assety | No | No |
 > | MediaServices/assety/assetfilters | No | No |
 > | MediaServices/contentkeypolicies | No | No |
 > | MediaServices/eventgridfilters | No | No |
 > | MediaServices/liveeventoperations | No | No |
-> | MediaServices/liveevents | Ano | Ano |
+> | MediaServices/liveevents | Yes | Yes |
 > | MediaServices/liveevents/liveoutputs | No | No |
 > | MediaServices/liveoutputoperations | No | No |
 > | MediaServices/streamingendpointoperations | No | No |
-> | MediaServices/starají | Ano | Ano |
+> | MediaServices/starají | Yes | Yes |
 > | MediaServices/streaminglocators | No | No |
 > | MediaServices/streamingpolicies | No | No |
 > | MediaServices/transformace | No | No |
@@ -2097,8 +2097,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/checknameavailability | No | No |
 > | objectunderstandingaccounts | No | No |
 > | Operace | No | No |
-> | remoterenderingaccounts | Ano | Ano |
-> | spatialanchorsaccounts | Ano | Ano |
+> | remoterenderingaccounts | Yes | Yes |
+> | spatialanchorsaccounts | Yes | Yes |
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
@@ -2128,19 +2128,19 @@ Přejít na obor názvů poskytovatele prostředků:
 > | applicationgatewayavailablewafrulesets | No | No |
 > | applicationgateways | No | No |
 > | applicationgatewaywebapplicationfirewallpolicies | No | No |
-> | applicationsecuritygroups | Ano | Ano |
+> | applicationsecuritygroups | Yes | Yes |
 > | azurefirewallfqdntags | No | No |
 > | azurefirewalls | No | No |
 > | bastionhosts | No | No |
 > | bgpservicecommunities | No | No |
 > | checkfrontdoornameavailability | No | No |
 > | checktrafficmanagernameavailability | No | No |
-> | připojení | Ano | Ano |
-> | ddoscustompolicies | Ano | Ano |
+> | připojení | Yes | Yes |
+> | ddoscustompolicies | Yes | Yes |
 > | ddosprotectionplans | No | No |
 > | dnsoperationresults | No | No |
 > | dnsoperationstatuses | No | No |
-> | dnszones | Ano | Ano |
+> | dnszones | Yes | Yes |
 > | dnszones/a | No | No |
 > | dnszones/AAAA | No | No |
 > | dnszones/vše | No | No |
@@ -2156,7 +2156,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | expressroutecircuits | No | No |
 > | expressroutegateways | No | No |
 > | expressrouteserviceproviders | No | No |
-> | firewallpolicies | Ano | Ano |
+> | firewallpolicies | Yes | Yes |
 > | frontdooroperationresults | No | No |
 > | frontdoors | No | No |
 > | frontdoors / frontendendpoints | No | No |
@@ -2164,10 +2164,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | frontdoorwebapplicationfirewallpolicies | No | No |
 > | getdnsresourcereference | No | No |
 > | internalnotify | No | No |
-> | ipallocations | Ano | Ano |
-> | ipgroups | Ano | Ano |
+> | ipallocations | Yes | Yes |
+> | ipgroups | Yes | Yes |
 > | loadbalancers | Ano – základní SKU<br>No – standardní SKU | Ano – základní SKU<br>No – standardní SKU |
-> | localnetworkgateways | Ano | Ano |
+> | localnetworkgateways | Yes | Yes |
 > | polohy | No | No |
 > | umístění/autoapprovedprivatelinkservices | No | No |
 > | umístění/availabledelegations | No | No |
@@ -2193,10 +2193,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/virtualnetworkavailableendpointservices | No | No |
 > | natgateways | No | No |
 > | networkexperimentprofiles | No | No |
-> | networkintentpolicies | Ano | Ano |
-> | networkinterfaces | Ano | Ano |
+> | networkintentpolicies | Yes | Yes |
+> | networkinterfaces | Yes | Yes |
 > | networkprofiles | No | No |
-> | networksecuritygroups | Ano | Ano |
+> | networksecuritygroups | Yes | Yes |
 > | networkwatchers | Yes | No |
 > | networkwatchers / connectionmonitors | Yes | No |
 > | networkwatchers / flowlogs | Yes | No |
@@ -2205,7 +2205,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | p2svpngateways | No | No |
 > | privatednsoperationresults | No | No |
 > | privatednsoperationstatuses | No | No |
-> | privatednszones | Ano | Ano |
+> | privatednszones | Yes | Yes |
 > | privatednszones/a | No | No |
 > | privatednszones/AAAA | No | No |
 > | privatednszones/vše | No | No |
@@ -2215,26 +2215,26 @@ Přejít na obor názvů poskytovatele prostředků:
 > | privatednszones/SOA | No | No |
 > | privatednszones/SRV | No | No |
 > | privatednszones/txt | No | No |
-> | privatednszones / virtualnetworklinks | Ano | Ano |
+> | privatednszones / virtualnetworklinks | Yes | Yes |
 > | privatednszonesinternal | No | No |
 > | privateendpointredirectmaps | No | No |
-> | privateendpoints | Ano | Ano |
+> | privateendpoints | Yes | Yes |
 > | privatelinkservices | No | No |
 > | publicipaddresses | Ano – základní SKU<br>No – standardní SKU | Ano – základní SKU<br>No – standardní SKU |
-> | publicipprefixes | Ano | Ano |
+> | publicipprefixes | Yes | Yes |
 > | routefilters | No | No |
-> | routetables | Ano | Ano |
-> | securitypartnerproviders | Ano | Ano |
-> | serviceendpointpolicies | Ano | Ano |
+> | routetables | Yes | Yes |
+> | securitypartnerproviders | Yes | Yes |
+> | serviceendpointpolicies | Yes | Yes |
 > | trafficmanagergeographichierarchies | No | No |
-> | trafficmanagerprofiles | Ano | Ano |
+> | trafficmanagerprofiles | Yes | Yes |
 > | trafficmanagerprofiles/Heat mapy | No | No |
 > | trafficmanagerusermetricskeys | No | No |
 > | virtualhubs | No | No |
-> | virtualnetworkgateways | Ano | Ano |
-> | virtualnetworks | Ano | Ano |
+> | virtualnetworkgateways | Yes | Yes |
+> | virtualnetworks | Yes | Yes |
 > | virtualnetworktaps | No | No |
-> | virtualrouters | Ano | Ano |
+> | virtualrouters | Yes | Yes |
 > | virtualwans | No | No |
 > | vpngateways (virtuální síť WAN) | No | No |
 > | vpnserverconfigurations | No | No |
@@ -2247,8 +2247,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | No | No |
 > | checknamespaceavailability | No | No |
-> | obsažené | Ano | Ano |
-> | obory názvů/notificationhubs | Ano | Ano |
+> | obsažené | Yes | Yes |
+> | obory názvů/notificationhubs | Yes | Yes |
 > | operationresults | No | No |
 > | Operace | No | No |
 
@@ -2257,7 +2257,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | osnamespaces | Ano | Ano |
+> | osnamespaces | Yes | Yes |
 
 ## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
@@ -2287,7 +2287,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operationstatuses | No | No |
 > | Operace | No | No |
 > | storageinsightconfigs | No | No |
-> | pracovní prostory | Ano | Ano |
+> | pracovní prostory | Yes | Yes |
 > | pracovní prostory/zdroje dat | No | No |
 > | pracovní prostory/linkedservices | No | No |
 > | pracovní prostory/linkedstorageaccounts | No | No |
@@ -2301,10 +2301,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | managementassociations | No | No |
-> | managementconfigurations | Ano | Ano |
+> | managementconfigurations | Yes | Yes |
 > | Operace | No | No |
-> | Řešení | Ano | Ano |
-> | zobrazení | Ano | Ano |
+> | Řešení | Yes | Yes |
+> | zobrazení | Yes | Yes |
 
 ## <a name="microsoftpeering"></a>Microsoft. peering
 
@@ -2340,7 +2340,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | Konzoly nástroje | No | No |
-> | řídicí panely | Ano | Ano |
+> | řídicí panely | Yes | Yes |
 > | polohy | No | No |
 > | umístění/konzoly | No | No |
 > | umístění/UserSettings | No | No |
@@ -2354,14 +2354,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | polohy | No | No |
 > | umístění/checknameavailability | No | No |
-> | workspacecollections | Ano | Ano |
+> | workspacecollections | Yes | Yes |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | schopností | Ano | Ano |
+> | schopností | Yes | Yes |
 > | polohy | No | No |
 > | umístění/checknameavailability | No | No |
 > | umístění/operationresults | No | No |
@@ -2428,7 +2428,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/checknameavailability | No | No |
 > | Operace | No | No |
 > | replicationeligibilityresults | No | No |
-> | trezory | Ano | Ano |
+> | trezory | Yes | Yes |
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft. RedHatOpenShift
 
@@ -2447,7 +2447,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | No | No |
-> | obsažené | Ano | Ano |
+> | obsažené | Yes | Yes |
 > | obory názvů/autorizačních pravidel | No | No |
 > | obory názvů/hybridconnections | No | No |
 > | obory názvů/hybridconnections/autorizačních pravidel | No | No |
@@ -2462,7 +2462,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | Operace | No | No |
-> | odešle | Ano | Ano |
+> | odešle | Yes | Yes |
 > | resourcechangedetails | No | No |
 > | resourcechanges | No | No |
 > | resources | No | No |
@@ -2523,7 +2523,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | aplikace | Ano | No |
+> | aplikace | Yes | No |
 > | checkmoderneligibility | No | No |
 > | checknameavailability | No | No |
 > | operationresults | No | No |
@@ -2542,7 +2542,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | checkservicenameavailability | No | No |
 > | Operace | No | No |
 > | resourcehealthmetadata | No | No |
-> | searchservices | Ano | Ano |
+> | searchservices | Yes | Yes |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
@@ -2557,7 +2557,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | assessmentmetadata | No | No |
 > | hodnocení | No | No |
 > | autodismissalertsrules | No | No |
-> | automatizace | Ano | Ano |
+> | automatizace | Yes | Yes |
 > | autoprovisioningsettings | No | No |
 > | complianceresults | No | No |
 > | předpisů | No | No |
@@ -2566,7 +2566,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | discoveredsecuritysolutions | No | No |
 > | externalsecuritysolutions | No | No |
 > | informationprotectionpolicies | No | No |
-> | iotsecuritysolutions | Ano | Ano |
+> | iotsecuritysolutions | Yes | Yes |
 > | iotsecuritysolutions / analyticsmodels | No | No |
 > | iotsecuritysolutions / analyticsmodels / aggregatedalerts | No | No |
 > | iotsecuritysolutions / analyticsmodels / aggregatedrecommendations | No | No |
@@ -2648,7 +2648,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | checknamespaceavailability | No | No |
 > | polohy | No | No |
 > | umístění/deletevirtualnetworkorsubnets | No | No |
-> | obsažené | Ano | Ano |
+> | obsažené | Yes | Yes |
 > | obory názvů/autorizačních pravidel | No | No |
 > | obory názvů/disasterrecoveryconfigs | No | No |
 > | obory názvů/disasterrecoveryconfigs/checknameavailability | No | No |
@@ -2670,7 +2670,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | aplikace | No | No |
-> | existující | Ano | Ano |
+> | existující | Yes | Yes |
 > | clustery/aplikace | No | No |
 > | containergroups | No | No |
 > | containergroupsets | No | No |
@@ -2691,19 +2691,19 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | aplikace | Ano | Ano |
+> | aplikace | Yes | Yes |
 > | containergroups | No | No |
-> | brány | Ano | Ano |
+> | brány | Yes | Yes |
 > | polohy | No | No |
 > | umístění/applicationoperations | No | No |
 > | umístění/gatewayoperations | No | No |
 > | umístění/networkoperations | No | No |
 > | umístění/secretoperations | No | No |
 > | umístění/volumeoperations | No | No |
-> | sítí | Ano | Ano |
+> | sítí | Yes | Yes |
 > | Operace | No | No |
-> | záleží | Ano | Ano |
-> | volumes | Ano | Ano |
+> | záleží | Yes | Yes |
+> | volumes | Yes | Yes |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
@@ -2723,7 +2723,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operationstatuses | No | No |
 > | umístění/použití | No | No |
 > | Operace | No | No |
-> | SignalR | Ano | Ano |
+> | SignalR | Yes | Yes |
 > | signál/eventgridfilters | No | No |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
@@ -2756,7 +2756,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | No | No |
 > | instancepools | No | No |
-> | polohy | Ano | Ano |
+> | polohy | Yes | Yes |
 > | umístění/administratorazureasyncoperation | No | No |
 > | umístění/administratoroperationresults | No | No |
 > | umístění/auditingsettingsazureasyncoperation | No | No |
@@ -2789,7 +2789,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/jobagentoperationresults | No | No |
 > | umístění/longtermretentionbackupazureasyncoperation | No | No |
 > | umístění/longtermretentionbackupoperationresults | No | No |
-> | umístění/longtermretentionbackups | No | No |
+> | umístění/longtermretentionbackups | Yes | Yes |
 > | umístění/longtermretentionmanagedinstancebackupazureasyncoperation | No | No |
 > | umístění/longtermretentionmanagedinstancebackupoperationresults | No | No |
 > | umístění/longtermretentionmanagedinstancebackups | No | No |
@@ -2856,7 +2856,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | managedinstances / tdecertificates | No | No |
 > | managedinstances / vulnerabilityassessments | No | No |
 > | Operace | No | No |
-> | servery | Ano | Ano |
+> | servery | Yes | Yes |
 > | servery/administratoroperationresults | No | No |
 > | servery/správci | No | No |
 > | servery/poradci | No | No |
@@ -2866,13 +2866,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servery/automatictuning | No | No |
 > | servery/communicationlinks | No | No |
 > | servery/connectionpolicies | No | No |
-> | servery/databáze | Ano | Ano |
+> | servery/databáze | Yes | Yes |
 > | servery/databáze/poradci | No | No |
 > | servery/databáze/auditingpolicies | No | No |
 > | servery/databáze/auditingsettings | No | No |
 > | servery/databáze/AuditRecords | No | No |
 > | servery/databáze/automatictuning | No | No |
-> | servery/databáze/backuplongtermretentionpolicies | No | No |
+> | servery/databáze/backuplongtermretentionpolicies | Yes | Yes |
 > | servery/databáze/backupshorttermretentionpolicies | No | No |
 > | servery/databáze/connectionpolicies | No | No |
 > | servery/databáze/datamaskingpolicies | No | No |
@@ -2897,7 +2897,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servery/disasterrecoveryconfiguration | No | No |
 > | servery/dnsaliases | No | No |
 > | servery/elasticpoolestimates | No | No |
-> | servery/elasticpools | Ano | Ano |
+> | servery/elasticpools | Yes | Yes |
 > | servery/elasticpools/poradci | No | No |
 > | servery/elasticpools/metricdefinitions | No | No |
 > | servery/elasticpools/metriky | No | No |
@@ -2906,8 +2906,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servery/failovergroups | No | No |
 > | servery/import | No | No |
 > | servery/importexportoperationresults | No | No |
-> | servery/jobaccounts | Ano | Ano |
-> | servery/jobagents | Ano | Ano |
+> | servery/jobaccounts | Yes | Yes |
+> | servery/jobagents | Yes | Yes |
 > | servery/jobagents/úlohy | No | No |
 > | servery/jobagents/úlohy/spuštění | No | No |
 > | servery/jobagents/úlohy/kroky | No | No |
@@ -2923,7 +2923,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servery/použití | No | No |
 > | servery/virtualnetworkrules | No | No |
 > | servery/vulnerabilityassessments | No | No |
-> | virtualclusters | Ano | Ano |
+> | virtualclusters | Yes | Yes |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
@@ -2936,9 +2936,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/sqlvirtualmachinegroupoperationresults | No | No |
 > | umístění/sqlvirtualmachineoperationresults | No | No |
 > | Operace | No | No |
-> | sqlvirtualmachinegroups | Ano | Ano |
+> | sqlvirtualmachinegroups | Yes | Yes |
 > | sqlvirtualmachinegroups / availabilitygrouplisteners | No | No |
-> | sqlvirtualmachines | Ano | Ano |
+> | sqlvirtualmachines | Yes | Yes |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -2952,7 +2952,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/deletevirtualnetworkorsubnets | No | No |
 > | umístění/použití | No | No |
 > | Operace | No | No |
-> | storageaccounts | Ano | Ano |
+> | storageaccounts | Yes | Yes |
 > | storageaccounts/blobservices | No | No |
 > | storageaccounts/služby | No | No |
 > | storageaccounts/listaccountsas | No | No |
@@ -2981,7 +2981,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operace | No | No |
 > | umístění/pracovní postupy | No | No |
 > | Operace | No | No |
-> | storagesyncservices | Ano | Ano |
+> | storagesyncservices | Yes | Yes |
 > | storagesyncservices/registeredserver | No | No |
 > | storagesyncservices / syncgroups | No | No |
 > | storagesyncservices / syncgroups / cloudendpoints | No | No |
@@ -3022,7 +3022,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | polohy | No | No |
 > | umístění/kvóty | No | No |
 > | Operace | No | No |
-> | streamingjobs | Ano | Ano |
+> | streamingjobs | Yes | Yes |
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft. StreamAnalyticsExplorer
 
@@ -3070,21 +3070,21 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | No | No |
 > | Operace | No | No |
-> | pracovní prostory | Ano | Ano |
-> | pracovní prostory/bigdatapools | Ano | Ano |
+> | pracovní prostory | Yes | Yes |
+> | pracovní prostory/bigdatapools | Yes | Yes |
 > | pracovní prostory/operationresults | No | No |
 > | pracovní prostory/operationstatuses | No | No |
-> | pracovní prostory/sqlpools | Ano | Ano |
+> | pracovní prostory/sqlpools | Yes | Yes |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | Environment | Ano | Ano |
+> | Environment | Yes | Yes |
 > | prostředí/accesspolicies | No | No |
-> | prostředí/EventSources | Ano | Ano |
-> | prostředí/referencedatasets | Ano | Ano |
+> | prostředí/EventSources | Yes | Yes |
+> | prostředí/referencedatasets | Yes | Yes |
 > | Operace | No | No |
 
 ## <a name="microsofttoken"></a>Microsoft. token
@@ -3092,7 +3092,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | Store | Ano | Ano |
+> | Store | Yes | Yes |
 > | obchody/accesspolicies | No | No |
 > | obchody/služby | No | No |
 > | úložiště/služby/tokeny | No | No |
@@ -3188,9 +3188,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | billingmeters | No | No |
 > | certifikáty | No | Yes |
 > | checknameavailability | No | No |
-> | connectiongateways | Ano | Ano |
-> | připojení | Ano | Ano |
-> | customapis | Ano | Ano |
+> | connectiongateways | Yes | Yes |
+> | připojení | Yes | Yes |
+> | customapis | Yes | Yes |
 > | deletedsites | No | No |
 > | deploymentlocations | No | No |
 > | geografická umístění | No | No |
@@ -3201,7 +3201,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ishostingenvironmentnameavailable | No | No |
 > | ishostnameavailable | No | No |
 > | isusernameavailable | No | No |
-> | kubeenvironments | Ano | Ano |
+> | kubeenvironments | Yes | Yes |
 > | listsitesassignedtohostname | No | No |
 > | polohy | No | No |
 > | umístění/apioperations | No | No |
@@ -3220,14 +3220,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | doporučit | No | No |
 > | resourcehealthmetadata | No | No |
 > | moduly runtime | No | No |
-> | serverových farem | Ano | Ano |
+> | serverových farem | Yes | Yes |
 > | serverových farem/eventgridfilters | No | No |
-> | místa | Ano | Ano |
+> | místa | Yes | Yes |
 > | lokality/eventgridfilters | No | No |
 > | lokality/hostnamebindings | No | No |
 > | lokality/networkconfig | No | No |
-> | lokality/premieraddons | Ano | Ano |
-> | lokality/sloty | Ano | Ano |
+> | lokality/premieraddons | Yes | Yes |
+> | lokality/sloty | Yes | Yes |
 > | lokality/sloty/eventgridfilters | No | No |
 > | lokality/sloty/hostnamebindings | No | No |
 > | lokality/sloty/networkconfig | No | No |

@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: modely připojení'
-description: Tento článek popisuje různé režimy připojení mezi sítí zákazníka a Microsoft Azure a službami Office 365. Zákazníci mohou využívat poskytovatele MPLS, cloudové výměny a poskytovatele ethernetových připojení.
+description: Zkontrolujte připojení mezi sítí zákazníka, Microsoft Azure a službami Microsoft 365. Zákazníci můžou používat poskytovatele MPLS, cloudové výměny a ethernetové.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: cherylmc
-ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f2a15b63e11d8ad93672a93fee4f327c47dd6277
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710452"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566462"
 ---
 # <a name="expressroute-connectivity-models"></a>Modely připojení ExpressRoute
 Připojení mezi místní sítí a cloudem Microsoftu můžete vytvořit třemi různými způsoby: [společné umístění CloudExchange](#CloudExchange), [ethernetové připojení typu point-to-point](#Ethernet) a [připojení typu any-to-any (IPVPN)](#IPVPN). Poskytovatelé připojení můžou nabízet jeden nebo víc modelů připojení. Můžete ve spolupráci s poskytovatelem připojení vybrat model, který vám bude nejlépe vyhovovat.
@@ -26,7 +26,7 @@ Pokud jste ve společném umístění s výměnou cloudu, můžete si objednat v
 ## <a name="point-to-point-ethernet-connections"></a><a name="Ethernet"></a>Ethernetová připojení typu Point-to-Point
 Místní datová centra nebo pobočky můžete připojit ke cloudu Microsoftu prostřednictvím ethernetových propojení typu point-to-point. Poskytovatelé ethernetových pripojení typu point-to-point můžou nabízet připojení vrstvy 2 nebo spravovaná připojení vrstvy 3 mezi vaší lokalitou a cloudem Microsoftu.
 
-## <a name="any-to-any-ipvpn-networks"></a><a name="IPVPN"></a>Sítě IPVPN (any-to-any)
+## <a name="any-to-any-ipvpn-networks"></a><a name="IPVPN"></a>Sítě typu any-to-any (IPVPN)
 S cloudem Microsoftu můžete integrovat vaši síť WAN. Poskytovatelé IPVPN (obvykle MPLS VPN) nabízejí připojení typu any-to-any mezi pobočkami a datovými centry. Cloud Microsoftu může být připojen do vaší sítě WAN, aby vypadal stejně jako jiné pobočky. Poskytovatelé sítě WAN obvykle nabízejí spravované připojení vrstvy 3. Funkce a možnosti ExpressRoute jsou u všech výše uvedených modelů připojení identické. 
 
 ## <a name="next-steps"></a>Další kroky

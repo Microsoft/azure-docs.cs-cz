@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak nakonfigurovat, iniciovat a sprav
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006291"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506623"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -274,6 +274,35 @@ Po dokončení operace vrátí 200 (OK) k obsahu chráněné položky v těle od
 
 Tím se potvrdí, že je pro virtuální počítač povolená ochrana, a první záloha se spustí podle plánu zásad.
 
+### <a name="excluding-disks-in-azure-vm-backup"></a>Vyloučení disků v zálohování virtuálních počítačů Azure
+
+Azure Backup taky nabízí způsob, jak selektivně zálohovat podmnožinu disků na virtuálním počítači Azure. Další podrobnosti najdete [tady](selective-disk-backup-restore.md). Pokud chcete selektivně zálohovat málo disků během povolování ochrany, měl by být [během povolování ochrany](#example-request-body)v následujícím fragmentu kódu tento text žádosti.
+
+```json
+{
+"properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "policyId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupPolicies/DefaultPolicy",
+    "extendedProperties":  {
+      "diskExclusionProperties":{
+          "diskLunList":[0,1],
+          "isInclusionList":true
+        }
+    }
+}
+}
+```
+
+V textu žádosti výše se seznam disků, které mají být zálohovány, uvádí v části rozšířené vlastnosti.
+
+|Vlastnost  |Hodnota  |
+|---------|---------|
+|diskLunList     | Seznam LOGICKÝch jednotek disku je seznam *logických jednotek datových disků*. **Disk s operačním systémem je vždycky zálohovaný a není potřeba ho zmínit**.        |
+|IsInclusionList     | Měla by být **true** , aby logické jednotky LUN byly zahrnuty během zálohování. Pokud je **hodnota false**, budou se výše uvedené logické jednotky LUN vyloučit.         |
+
+Pokud tedy požadavek zálohuje jenom disk s operačním systémem, _všechny_ datové disky by se měly vyloučit. Jednodušším způsobem je říci, že by neměly být zahrnuté žádné datové disky. Takže seznam logických jednotek disku bude prázdný a **IsInclusionList** bude **pravda**. Podobně můžete si představit, jaký je jednodušší způsob výběru podmnožiny: několik disků by se měly vždycky vyloučit nebo by se měly vždy zahrnout i některé disky. Vyberte seznam logických jednotek a hodnotu logické proměnné odpovídajícím způsobem.
+
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Aktivace zálohování na vyžádání pro chráněný virtuální počítač Azure
 
 Jakmile je virtuální počítač Azure nakonfigurovaný pro zálohování, zálohování proběhne podle plánu zásad. Můžete počkat na první naplánovanou zálohu nebo kdykoli aktivovat zálohování na vyžádání. Uchovávání záloh na vyžádání je oddělené od uchování zásad zálohování a je možné je zadat na konkrétní datum a čas. Pokud tento parametr nezadáte, předpokládá se, že se jedná o 30 dní od data triggeru zálohování na vyžádání.
@@ -389,7 +418,7 @@ Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, je
 
 Pokud chcete změnit zásadu, se kterou je virtuální počítač chráněný, můžete použít stejný formát jako [Povolení ochrany](#enabling-protection-for-the-azure-vm). V [textu žádosti](#example-request-body) jenom zadejte nové ID zásady a odešlete žádost. Příklad: Chcete-li změnit zásadu testVM z ' DefaultPolicy ' na ' ProdPolicy ', zadejte v textu žádosti ID ' ProdPolicy '.
 
-```http
+```json
 {
   "properties": {
     "protectedItemType": "Microsoft.Compute/virtualMachines",
@@ -400,6 +429,15 @@ Pokud chcete změnit zásadu, se kterou je virtuální počítač chráněný, m
 ```
 
 Odpověď bude následovat po stejném formátu, jak je uvedeno [pro povolení ochrany](#responses-to-create-protected-item-operation) .
+
+#### <a name="excluding-disks-during-azure-vm-protection"></a>Vyloučení disků během ochrany virtuálních počítačů Azure
+
+Pokud je virtuální počítač Azure již zálohovaný, můžete změnit zásadu ochrany a zadat seznam disků, které mají být zálohovány nebo vyloučeny. Stačí jenom připravit žádost ve stejném formátu jako při [povolování ochrany s výjimkou disků](#excluding-disks-in-azure-vm-backup) .
+
+> [!IMPORTANT]
+> Výše uvedený text žádosti je vždycky poslední kopie datových disků, které se mají vyloučit nebo zahrnout. Nepřidá *add* se do předchozí konfigurace. Příklad: Pokud nejprve aktualizujete ochranu jako "vyloučit datový disk 1" a pak se znovu pokusíte "vyloučit datový disk 2", v následujících zálohách se vyloučí *jenom datový disk 2* , který obsahuje datový disk 1. Toto je vždy konečný seznam, který bude zahrnut nebo vyloučen v následujících zálohách.
+
+Pokud chcete získat aktuální seznam disků, které jsou vyloučené nebo zahrnuté, Získejte informace o chráněných položkách, jak je uvedeno [zde](https://docs.microsoft.com/rest/api/backup/protecteditems/get). Odpověď poskytne seznam logických jednotek dat a označuje, zda jsou zahrnuty nebo vyloučeny.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Zastavit ochranu, ale zachovat existující data
 

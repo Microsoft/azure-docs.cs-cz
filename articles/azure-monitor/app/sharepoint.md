@@ -2,20 +2,20 @@
 title: Monitorování webu SharePointu pomocí Application Insights
 description: Zahájení monitorování nové aplikace s novým klíčem instrumentace
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.openlocfilehash: 392c0e0ee46e8acd540d498cbda1d240611d182e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/08/2020
+ms.openlocfilehash: 0d365e1fbcc52e14cfc727dd1de3e31a7d3e5d68
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326524"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536493"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorování webu SharePointu pomocí Application Insights
 
 Služba Azure Application Insights monitoruje dostupnost, výkon a využití vaší aplikace. Zde se dozvíte, jak připravit prostředí pro web SharePointu.
 
 > [!NOTE]
-> Kvůli problémům se zabezpečením nemůžete přímo přidat skript, který je popsaný v tomto článku, na vaše webové stránky v moderním uživatelském prostředí SharePointu. Alternativně můžete použít [SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) k sestavení vlastního rozšíření, které můžete použít k instalaci Application Insights na webech služby SharePoint. Další informace najdete v tématu [Postup vytvoření řešení rozšíření SPFx s AppInsights nainstalovanou od začátku](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) nebo [zobrazení ukázky](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample). 
+> Kvůli problémům se zabezpečením nemůžete přímo přidat skript, který je popsaný v tomto článku, na vaše webové stránky v moderním uživatelském prostředí SharePointu. Alternativně můžete použít [SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) k sestavení vlastního rozšíření, které můžete použít k instalaci Application Insights na webech služby SharePoint. Další informace najdete v tématu [Postup vytvoření řešení rozšíření SPFx s AppInsights nainstalovanou od začátku](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) nebo [zobrazení ukázky](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample-NPM). 
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 Na webu [Azure Portal](https://portal.azure.com) vytvořte nový prostředek Application Insights. Vyberte jako typ aplikace ASP.NET.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 60d3c9df270561c94b8eb162595e4fe01713c0b5
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752309"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536475"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -31,20 +31,20 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 
 |  Prostředek  |  Výchozí omezení  |  Nastavitelná prostřednictvím žádosti o podporu  |
 |----------------|---------------------|--------------------------------------|
-|  Počet účtů NetApp na oblast Azure   |  10    |  Ano   |
-|  Počet fondů kapacity na účet NetApp   |    25     |   Ano   |
-|  Počet svazků na předplatné   |    500     |   Ano   |
-|  Počet svazků na fond kapacity     |    500   |    Ano     |
-|  Počet snímků na svazek       |    255     |    Ne        |
-|  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    Ne    |
-|  Počet využitých IP adres ve virtuální síti (včetně okamžitě virtuální sítě partnerských vztahů) s Azure NetApp Files   |    1000   |    Ne   |
-|  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    Ne  |
-|  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   Ne   |
-|  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |
-|  Maximální velikost jednoho svazku     |    100 TiB    |    Ne    |
-|  Maximální velikost jednoho souboru     |    16 TiB    |    Ne    |    
-|  Maximální velikost metadat adresáře v jednom adresáři      |    320 MB    |    Ne    |    
-|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Ano    |    
+|  Počet účtů NetApp na oblast Azure   |  10    |  Yes   |
+|  Počet fondů kapacity na účet NetApp   |    25     |   Yes   |
+|  Počet svazků na předplatné   |    500     |   Yes   |
+|  Počet svazků na fond kapacity     |    500   |    Yes     |
+|  Počet snímků na svazek       |    255     |    No        |
+|  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    No    |
+|  Počet využitých IP adres ve virtuální síti (včetně okamžitě virtuální sítě partnerských vztahů) s Azure NetApp Files   |    1000   |    No   |
+|  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    No  |
+|  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   No   |
+|  Minimální velikost jednoho svazku    |    100 GiB    |    No    |
+|  Maximální velikost jednoho svazku     |    100 TiB    |    No    |
+|  Maximální velikost jednoho souboru     |    16 TiB    |    No    |    
+|  Maximální velikost metadat adresáře v jednom adresáři      |    320 MB    |    No    |    
+|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Yes    |    
 
 Další informace najdete v tématu [Nejčastější dotazy ke správě kapacity](azure-netapp-files-faqs.md#capacity-management-faqs).
 
@@ -56,11 +56,11 @@ Služba dynamicky upravuje limit maxfiles pro svazek na základě jeho zřízen�
 
 |    Velikost svazku (kvóta)     |  Automatické přizpůsobení limitu maxfiles    |
 |----------------------------|-------------------|
-|    < 1 TiB                 |    20 000 000     |
-|    >= 1 TiB, ale < 2 TiB    |    40 000 000     |
-|    >= 2 TiB, ale < 3 TiB    |    60 000 000     |
-|    >= 3 TiB, ale < 4 TiB    |    80 000 000     |
-|    >= 4 TiB                |    100 000 000    |
+|    <= 1 TiB                |    20 000 000     |
+|    > 1 TiB, ale <= 2 TiB    |    40 000 000     |
+|    > 2 TiB, ale <= 3 TiB    |    60 000 000     |
+|    > 3 TiB, ale <= 4 TiB    |    80 000 000     |
+|    > 4 TiB                 |    100 000 000    |
 
 Pokud jste už pro svazek nastavili aspoň 4 TiB kvót, můžete [žádost o podporu](#limit_increase) iniciovat tak, že zvýšíte maxfiles limit nad 100 000 000.
 

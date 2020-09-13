@@ -2,18 +2,18 @@
 title: 'ExpressRoute: filtry tras – partnerský vztah Microsoftu: Azure PowerShell'
 description: Tento článek popisuje, jak nakonfigurovat filtry tras pro partnerský vztah Microsoftu pomocí prostředí PowerShell.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f5a294a051350c4b08b34356abcd883b7580164e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ca4362f10ea6ed2fa7cc39370fc9b4c764ff3b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729298"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566190"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurace filtrů tras pro partnerský vztah Microsoftu: PowerShell
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "84729298"
 
 Filtry tras představují způsob, jak spotřebovat dílčí sadu podporovaných služeb přes partnerský vztah Microsoftu. Kroky v tomto článku vám pomůžou nakonfigurovat a spravovat filtry tras pro okruhy ExpressRoute.
 
-Služby Office 365 jako Exchange Online, SharePoint Online a Skype pro firmy a veřejné služby Azure, jako jsou Storage a SQL DB, jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Veřejné služby Azure je možné vybrat na základě jednotlivých oblastí a nelze je definovat pro jednu veřejnou službu.
+Služby Microsoft 365, jako jsou Exchange Online, SharePoint Online a Skype pro firmy, a veřejné služby Azure, jako jsou Storage a SQL DB, jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Veřejné služby Azure je možné vybrat na základě jednotlivých oblastí a nelze je definovat pro jednu veřejnou službu.
 
 Pokud je v okruhu ExpressRoute nakonfigurovaný partnerský vztah Microsoftu a je připojený filtr tras, všechny předpony, které jsou vybrané pro tyto služby, se inzerují prostřednictvím vytvořených relací protokolu BGP. Ke každé předponě je připojená hodnota komunity protokolu BGP, která identifikuje službu nabízenou prostřednictvím dané předpony. Seznam hodnot komunity protokolu BGP a služeb, na které se mapují, najdete v tématu [komunity protokolu BGP](expressroute-routing.md#bgp).
 
@@ -40,14 +40,14 @@ Když na okruhu ExpressRoute nakonfigurujete partnerský vztah Microsoftu, hrani
 
 Filtr tras umožňuje identifikovat služby, které chcete využívat prostřednictvím partnerského vztahu Microsoftu s vaším okruhem ExpressRoute. V podstatě je seznam povolených všech hodnot komunity protokolu BGP. Po definování prostředku filtru tras a jeho připojení k okruhu ExpressRoute se do vaší sítě budou inzerovat všechny předpony, které se mapují na hodnoty komunity protokolu BGP.
 
-Aby bylo možné k těmto službám Office 365 připojit filtry tras, musíte mít oprávnění k využívání služeb Office 365 prostřednictvím ExpressRoute. Pokud nemáte oprávnění ke využívání služeb Office 365 prostřednictvím ExpressRoute, operace připojení filtrů tras se nezdařila. Další informace o procesu autorizace najdete v tématu [Azure ExpressRoute pro Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
+Aby bylo možné připojit filtry směrování s Microsoft 365 službami, je nutné mít autorizaci ke využívání služeb Microsoft 365 prostřednictvím ExpressRoute. Pokud nemáte oprávnění ke využívání Microsoft 365ch služeb prostřednictvím ExpressRoute, operace připojení filtrů tras se nezdařila. Další informace o procesu autorizace najdete v tématu [Azure ExpressRoute for Microsoft 365](/microsoft-365/enterprise/azure-expressroute).
 
 > [!IMPORTANT]
 > Partnerské vztahy Microsoftu okruhů ExpressRoute, které byly nakonfigurované před 1. srpna 2017, budou mít všechny předpony služby inzerované prostřednictvím partnerského vztahu Microsoftu, a to i v případě, že nejsou definované filtry směrování. Partnerský vztah Microsoftu pro okruhy ExpressRoute, které jsou nakonfigurované na nebo od 1. srpna 2017, nebudou mít inzerované předpony, dokud není k okruhu připojen filtr tras.
 > 
 > 
 
-### <a name="workflow"></a><a name="workflow"></a>Pracovního postupu
+### <a name="workflow"></a><a name="workflow"></a>Pracovní postup
 
 Abyste se mohli úspěšně připojit ke službám prostřednictvím partnerského vztahu Microsoftu, musíte provést následující kroky konfigurace:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 57a981f4967bc58ca39067f94abdcf64d764ab87
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035021"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536187"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -207,7 +207,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 > ![SNĚH – definice OAuth systému](media/itsmc-connections/snow-system-oauth.png)
 > 3. Klikněte na odvolat přístup a než na odvolat.
 
-- Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Přečtěte si další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Vytvoření role uživatele integrace pro uživatelskou aplikaci nainstalovanou. [Tady najdete](#create-integration-user-role-in-servicenow-app)informace o tom, jak vytvořit roli uživatele Integration.
 
 ### <a name="connection-procedure"></a>**Postup připojení**
@@ -234,7 +234,7 @@ K vytvoření připojení ServiceNow použijte následující postup:
 | **Uživatelské jméno**   | Zadejte uživatelské jméno pro integraci, které jste vytvořili v aplikaci ServiceNow, aby se podporovalo připojení k ITSMC. Další informace: [vytvoření role uživatele aplikace ServiceNow](#create-integration-user-role-in-servicenow-app)|
 | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka**: uživatelské jméno a heslo se používají jenom k vytváření tokenů ověřování a nejsou uložené kdekoli v rámci služby ITSMC.  |
 | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, ke které se chcete připojit ITSMC. Adresa URL by měla ukazovat na podporovanou verzi SaaS s příponou. servicenow.com.|
-| **ID klienta**   | Zadejte ID klienta, které chcete použít pro OAuth2 ověřování, které jste vygenerovali dříve.  Další informace o generování ID klienta a tajného klíče: [instalace OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
+| **ID klienta**   | Zadejte ID klienta, které chcete použít pro OAuth2 ověřování, které jste vygenerovali dříve.  Další informace o generování ID klienta a tajného klíče:   [instalace OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Tajný kód klienta**   | Zadejte tajný klíč klienta generovaný pro toto ID.   |
 | **Rozsah synchronizace dat**   | Vyberte ServiceNow pracovní položky, které chcete synchronizovat s Azure Log Analytics prostřednictvím ITSMC.  Vybrané hodnoty se importují do Log Analytics.   **Možnosti:**  Incidenty a žádosti o změnu.|
 | **Synchronizovat data** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit**: 120 dní. |
@@ -265,7 +265,7 @@ Uživatel následující postup:
 2. Po instalaci navštivte levý navigační panel instance ServiceNow, vyhledejte a vyberte Microsoft OMS integrátor.  
 3. Klikněte na **Kontrolní seznam instalace**.
 
-   Stav se zobrazí jako **nedokončený** , pokud je role uživatele stále vytvořena.
+   Stav se zobrazí jako  **nedokončený** , pokud je role uživatele stále vytvořena.
 
 4. Do textových polí vedle pole **vytvořit uživatele integrace**zadejte uživatelské jméno pro uživatele, který se může připojit k ITSMC v Azure.
 5. Zadejte heslo pro tohoto uživatele a klikněte na tlačítko **OK**.  
@@ -298,6 +298,10 @@ Po úspěšném vytvoření uživatele se stav **kontrolního seznamu kontroly i
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt pro prokázání do ITSMC v Azure.
 
+> [!NOTE]
+> 
+> Od 1. října 2020 inITSM inprov-s výstrahou Azure už nebude pro nové zákazníky povolená. Nová připojení ITSM se nepodporují. 
+> Existující připojení ITSM budou podporována.
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -352,6 +356,11 @@ Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](./it
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt Cherwell k ITSMC v Azure.
 
+> [!NOTE]
+> 
+> Od 1. října 2020 Cherwell ITSM Integration s Azure Alert nebude už pro nové zákazníky povolený. Nová připojení ITSM se nepodporují. 
+> Existující připojení ITSM budou podporována.
+
 ### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
@@ -362,7 +371,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 
 ### <a name="connection-procedure"></a>Postup připojení
 
-Pomocí následujícího postupu vytvořte připojení k prokázání:
+K vytvoření připojení Cherwell použijte následující postup:
 
 1. V Azure Portal přejít na **všechny prostředky** a vyhledejte **partnera (YourWorkspaceName)** .
 

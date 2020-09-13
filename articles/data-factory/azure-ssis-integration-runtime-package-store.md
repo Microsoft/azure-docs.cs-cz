@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/20/2020
-ms.openlocfilehash: 6455c186e05fc98b1ec340c152f9b3e5710f1dd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/06/2020
+ms.openlocfilehash: 84a7a205e52ba37eb6fcb3b624e0f71a9b9bbc10
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087899"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505484"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Správa balíčků pomocí Azure-SSIS Integration Runtimeho úložiště balíčků
 
@@ -57,7 +57,7 @@ Po připojení k vašemu Azure-SSIS IR v SSMS můžete kliknout pravým tlačít
       > [!NOTE]
       > Import balíčků SSIS Azure-SSIS IR do úložiště balíčků se dá provést jenom jednou a jenom tak, že je zkopírujete do základního souboru MSDB/soubor/Azure a při zachování jejich verze SQL Server/SSIS. 
       >
-      > Vzhledem k tomu, že Azure-SSIS IR aktuálně má výchozí úroveň kompatibility 140, která se rovná **SQL Server 2017**, při spuštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují do balíčků SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
+      > Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017**, při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
       >
       > Vzhledem k tomu, že starší verze úložiště balíčků SSIS jsou vázány na konkrétní verzi SQL Server a jsou přístupné pouze v SSMS pro danou verzi, je třeba nejprve exportovat balíčky nižší verze ve starších úložištích balíčků SSIS pomocí určené verze SSMS, než je bude možné importovat do Azure-SSIS IRch úložišť pomocí SSMS 2019 nebo novějších verzí.
       >
@@ -72,7 +72,7 @@ Po připojení k vašemu Azure-SSIS IR v SSMS můžete kliknout pravým tlačít
       > [!NOTE]
       > Export balíčků SSIS Azure-SSIS IR z úložiště balíčků se dá udělat jenom jednou. stačí, když přepnete bez přepínání jejich úrovně ochrany, ale jednoduše je zkopírujete a zachováte jejich SQL Server/SSIS verzi, jinak se upgraduje na balíčky SSIS 2019 nebo novější verze.
       >
-      > Vzhledem k tomu, že Azure-SSIS IR aktuálně má výchozí úroveň kompatibility 140, která se rovná **SQL Server 2017**, při spuštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují do balíčků SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
+      > Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017**, při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
       >
       > Pokud chcete při přepínání úrovně ochrany exportovat víc balíčků SSIS z úložiště balíčků Azure-SSIS IR, můžete použít nástroj příkazového řádku [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) . Další informace najdete v tématu [nasazení více balíčků s dtutil](#deploying-multiple-packages-with-dtutil).
 
@@ -88,7 +88,7 @@ Po připojení k vašemu Azure-SSIS IR v SSMS můžete kliknout pravým tlačít
 
 ![Spustit stránky nástroje balíčku 3 & 4](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute2.png)
 
-Stránka **Obecné**, **Konfigurace**, **Možnosti spuštění**a **protokolování** v dialogovém okně **Spustit nástroj pro spuštění balíčku** odpovídají kartě **Nastavení** aktivity spustit balíček SSIS. Na těchto stránkách můžete zadat šifrovací heslo pro váš balíček a získat přístup k informacím pro konfigurační soubor balíčku. Můžete také zadat přihlašovací údaje a vlastnosti pro spuštění balíčku a také informace o přístupu pro složku protokolu.  Stránka **nastavit hodnoty** v dialogovém okně **Spustit nástroj balíčku** odpovídá kartě **přepsání vlastností** aktivity spustit balíček SSIS, kde můžete zadat existující vlastnosti balíčku, které chcete přepsat. Další informace najdete v tématu [spouštění balíčků SSIS jako aktivity balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Stránka **Obecné**, **Konfigurace**, **Možnosti spuštění**a **protokolování** v dialogovém okně **Spustit nástroj pro spuštění balíčku** odpovídají kartě  **Nastavení** aktivity spustit balíček SSIS. Na těchto stránkách můžete zadat šifrovací heslo pro váš balíček a získat přístup k informacím pro konfigurační soubor balíčku. Můžete také zadat přihlašovací údaje a vlastnosti pro spuštění balíčku a také informace o přístupu pro složku protokolu.  Stránka **nastavit hodnoty** v dialogovém okně **Spustit nástroj balíčku** odpovídá kartě **přepsání vlastností** aktivity spustit balíček SSIS, kde můžete zadat existující vlastnosti balíčku, které chcete přepsat. Další informace najdete v tématu [spouštění balíčků SSIS jako aktivity balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 
 Když vyberete tlačítko **Spustit** , automaticky se vygeneruje a aktivuje se nový kanál ADF s aktivitou spustit balíček SSIS. Pokud již existuje kanál ADF se stejným nastavením, bude znovu spuštěn a nebude vygenerován nový kanál. Aktivita kanálu ADF a spustit balíček SSIS budou pojmenovány `Pipeline_SSMS_YourPackageName_HashString` a v `Activity_SSMS_YourPackageName` uvedeném pořadí.
 
@@ -124,7 +124,7 @@ Pokud chcete převést & přesun místních úloh SSIS do SSIS v ADF při zachov
 
 K nasazení více balíčků v dávkách můžete použít nástroj příkazového řádku [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) , který je součástí instalace nástroje SQL Server/SSIS. Je svázána s konkrétní verzí SSIS, takže pokud ji použijete k nasazení balíčků nižší verze bez přepínání jejich úrovně ochrany, jednoduše je zkopírujete a zachováte svou SSIS verzi. Pokud ji použijete k jejich nasazení a zároveň přepnete úroveň ochrany, upgraduje se na její verzi SSIS.
 
- Vzhledem k tomu, že Azure-SSIS IR aktuálně má výchozí úroveň kompatibility 140, která se rovná **SQL Server 2017**, při spuštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují do balíčků SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
+ Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017**, při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
 
 Proto pokud chcete zabránit upgradům za běhu, nasazování balíčků ke spuštění na Azure-SSIS IR v modelu nasazení balíčku by měl používat dtutil 2017, který je součástí instalace SQL Server/SSIS 2017. Pro tento účel si můžete stáhnout a nainstalovat bezplatnou [edici SQL Server/SSIS 2017 Developer Edition](https://go.microsoft.com/fwlink/?linkid=853016) . Po instalaci můžete v této složce najít dtutil 2017: `YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn` .
 

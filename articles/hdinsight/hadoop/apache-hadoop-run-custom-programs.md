@@ -1,25 +1,25 @@
 ---
 title: Spouštění vlastních programů MapReduce – Azure HDInsight
 description: Kdy a jak spouštět vlastní programy Apache MapReduce v clusterech Azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 8751a54393f310c1d5a77ccbfdb553ee3643f74a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1dcc2a944fc527e4cbc8c7c1072503377ecb5798
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080104"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505263"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Spuštění vlastních programů MapReduce
 
 Apache Hadoop systémy velkých objemů dat, jako je HDInsight, umožňují zpracování dat pomocí široké škály nástrojů a technologií. Následující tabulka popisuje hlavní výhody a požadavky pro každé z nich.
 
-| Mechanismus dotazů | Výhody | Důležité informace |
+| Mechanismus dotazů | Výhody | Požadavky |
 | --- | --- | --- |
 | **Apache Hive pomocí HiveQL** | <ul><li>Skvělé řešení pro dávkové zpracování a analýzu velkých objemů neproměnlivých dat, pro shrnutí dat a pro dotazování na vyžádání. Používá známou syntaxi jako SQL.</li><li>Dá se použít k vytvoření trvalých tabulek dat, které je možné snadno rozdělit a indexovat.</li><li>Pro stejná data lze vytvořit více externích tabulek a zobrazení.</li><li>Podporuje jednoduchou implementaci datového skladu, která poskytuje rozsáhlé možnosti škálování na více instancí a odolnost proti chybám pro ukládání a zpracování dat.</li></ul> | <ul><li>Vyžaduje, aby zdrojová data měla aspoň určitou identifikovatelnou strukturu.</li><li>Není vhodný pro dotazy a aktualizace na úrovni řádků v reálném čase. Je nejvhodnější pro dávkové úlohy pro velké sady dat.</li><li>Nemusí být schopni provést některé typy složitých úloh zpracování.</li></ul> |
 | **Apache vepřové prase s latinkou** | <ul><li>Vynikající řešení pro manipulaci s daty jako sady, sloučení a filtrování datových sad, použití funkcí u záznamů nebo skupin záznamů a pro restrukturalizaci dat definováním sloupců, seskupením hodnot nebo převodem sloupců na řádky.</li><li>Může použít přístup na základě pracovního postupu jako posloupnost operací s daty.</li></ul> | <ul><li>Uživatelé SQL můžou najít pro vepřové prostředí latinku méně obeznámené a obtížnější je používat než HiveQL.</li><li>Výchozím výstupem je obvykle textový soubor a proto může být obtížné ho použít s nástroji vizualizace, jako je Excel. Obvykle budete navrstvit tabulku podregistru na výstup.</li></ul> |

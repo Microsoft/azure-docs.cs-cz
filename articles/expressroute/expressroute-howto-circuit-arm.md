@@ -2,24 +2,24 @@
 title: 'Azure ExpressRoute: Úprava okruhu: PowerShell'
 description: Vytvořit, zřídit, ověřit, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/08/2020
-ms.author: cherylmc
-ms.openlocfilehash: aba29c46a781c8e687c79a197d37758699a9acf5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.author: duau
+ms.openlocfilehash: e9bf9dbe0f4146101513ab9786b298ac6b43b6a3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984461"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566293"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava okruhu ExpressRoute pomocí PowerShellu
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
+> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
@@ -73,7 +73,7 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 Ujistěte se, že zadáte správnou úroveň SKU a řadu SKU:
 
-* Úroveň SKU určuje, jestli okruh ExpressRoute je [místní](expressroute-faqs.md#expressroute-local), Standard nebo [Premium](expressroute-faqs.md#expressroute-premium). Můžete zadat *Local*, *Standard* nebo *Premium*.
+* Úroveň SKU určuje, jestli okruh ExpressRoute je [místní](expressroute-faqs.md#expressroute-local), Standard nebo [Premium](expressroute-faqs.md#expressroute-premium). Můžete zadat *Local*, *Standard* nebo *Premium*. SKU nemůžete změnit z *úrovně Standard/Premium* na *místní*.
 * Rodina SKU určuje typ fakturace. Můžete zadat *Metereddata* pro měřený datový tarif a *Unlimiteddata* pro neomezený datový tarif. Typ fakturace můžete změnit z *Metereddata* na *Unlimiteddata*, ale nemůžete změnit typ z *Unlimiteddata* na *Metereddata*. *Místní* okruh je vždy *Unlimiteddata*.
 
 > [!IMPORTANT]
@@ -306,7 +306,7 @@ Můžete upravit některé vlastnosti okruhu ExpressRoute, aniž by to mělo vli
 
 Můžete provádět následující úlohy bez výpadku:
 
-* Povolí nebo zakáže doplněk ExpressRoute Premium pro okruh ExpressRoute.
+* Povolí nebo zakáže doplněk ExpressRoute Premium pro okruh ExpressRoute. Změna SKU z *úrovně Standard/Premium* na *místní* není podporována.
 * Zvyšte šířku pásma okruhu ExpressRoute, pokud je na portu k dispozici dostatek kapacity. Downgrade šířky pásma okruhu není podporována.
 * Změňte plán měření z měřených dat na neomezená data. Změna plánu měření z neomezených dat na měřená data není podporována.
 * Můžete povolit nebo zakázat *operace klasických operací*.

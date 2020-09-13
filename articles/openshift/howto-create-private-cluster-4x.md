@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056767"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505341"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Vytvoření privátního clusteru Azure Red Hat OpenShift 4
 
@@ -23,17 +23,35 @@ V tomto článku připravíte své prostředí, aby se vytvořily privátní clu
 > * Nastavení požadavků a vytvoření požadované virtuální sítě a podsítí
 > * Nasazení clusteru s privátním koncovým bodem serveru API a privátním adaptérem příchozího přenosu dat
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-### <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
+### <a name="register-the-resource-providers"></a>Registrovat poskytovatele prostředků
 
-Dál je potřeba zaregistrovat `Microsoft.RedHatOpenShift` poskytovatele prostředků ve vašem předplatném.
+1. Pokud máte více předplatných Azure, zadejte příslušné ID předplatného:
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. Zaregistrujte `Microsoft.RedHatOpenShift` poskytovatele prostředků:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+
+1. Zaregistrujte `Microsoft.Compute` poskytovatele prostředků:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. Zaregistrujte `Microsoft.Storage` poskytovatele prostředků:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Získání tajného kódu pro vyžádání Red Hat (volitelné)
 
@@ -141,7 +159,7 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Zakažte zásady privátního koncového bodu podsítě](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) v hlavní podsíti.** To je nutné, aby bylo možné připojit a spravovat cluster.
+5. **[Zakažte zásady privátního koncového bodu podsítě](../private-link/disable-private-link-service-network-policy.md) v hlavní podsíti.** To je nutné, aby bylo možné připojit a spravovat cluster.
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -197,7 +215,7 @@ Následující příklad výstupu ukazuje, že heslo bude v `kubeadminPassword` 
 }
 ```
 
-Adresu URL konzoly clusteru můžete najít spuštěním následujícího příkazu, který bude vypadat nějak takto:`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+Adresu URL konzoly clusteru můžete najít spuštěním následujícího příkazu, který bude vypadat nějak takto: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
 
 ```azurecli-interactive
  az aro show \
@@ -207,7 +225,7 @@ Adresu URL konzoly clusteru můžete najít spuštěním následujícího přík
 ```
 
 >[!IMPORTANT]
-> Abyste se mohli připojit k privátnímu clusteru Azure Red Hat OpenShift, budete muset provést následující krok z hostitele, který je buď ve Virtual Network, který jste vytvořili, nebo v Virtual Network s [partnerským vztahem](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Virtual Network byl nasazen cluster.
+> Abyste se mohli připojit k privátnímu clusteru Azure Red Hat OpenShift, budete muset provést následující krok z hostitele, který je buď ve Virtual Network, který jste vytvořili, nebo v Virtual Network s [partnerským vztahem](../virtual-network/virtual-network-peering-overview.md) Virtual Network byl nasazen cluster.
 
 V prohlížeči spusťte adresu URL konzoly a přihlaste se pomocí `kubeadmin` přihlašovacích údajů.
 
@@ -230,7 +248,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 ```
 
 >[!IMPORTANT]
-> Abyste se mohli připojit k privátnímu clusteru Azure Red Hat OpenShift, budete muset provést následující krok z hostitele, který je buď ve Virtual Network, který jste vytvořili, nebo v Virtual Network s [partnerským vztahem](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Virtual Network byl nasazen cluster.
+> Abyste se mohli připojit k privátnímu clusteru Azure Red Hat OpenShift, budete muset provést následující krok z hostitele, který je buď ve Virtual Network, který jste vytvořili, nebo v Virtual Network s [partnerským vztahem](../virtual-network/virtual-network-peering-overview.md) Virtual Network byl nasazen cluster.
 
 Přihlaste se k serveru rozhraní API OpenShift clusteru pomocí následujícího příkazu. Nahraďte **\<kubeadmin password>** heslem, které jste právě načetli.
 

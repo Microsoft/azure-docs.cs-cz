@@ -2,18 +2,18 @@
 title: 'Řešení potíží s výkonem síťového propojení: Azure'
 description: Tato stránka poskytuje standardizovanou metodu testování výkonu síťového propojení Azure.
 services: expressroute
-author: tracsman
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 12/20/2017
-ms.author: jonor
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521662"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566071"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
 ## <a name="overview"></a>Přehled
@@ -121,7 +121,7 @@ Pokud si nejste jistí, kde se skutečně nachází okraj cloudu, může být iz
 ![2][2]
 
 >[!NOTE]
-> Všimněte si, že MSEE není v cloudu Azure. ExpressRoute je ve skutečnosti na hranici sítě Microsoft, která není ve skutečnosti v Azure. Po připojení k ExpressRoute k MSEE jste připojeni k síti Microsoftu. potom můžete přejít na kteroukoli z cloudových služeb, jako je Office 365 (s partnerským vztahem Microsoftu) nebo Azure (s privátním a/nebo partnerským vztahem Microsoftu).
+> Všimněte si, že MSEE není v cloudu Azure. ExpressRoute je ve skutečnosti na hranici sítě Microsoft, která není ve skutečnosti v Azure. Až budete s ExpressRoute připojeni k MSEE, jste připojeni k síti společnosti Microsoft. potom můžete přejít k libovolné cloudové službě, jako je Microsoft 365 (se partnerským vztahem Microsoftu) nebo s Azure (s privátním a/nebo partnerským vztahem Microsoftu).
 >
 >
 
@@ -160,7 +160,7 @@ Nastavení testu:
  - Okruh peering – Premium ExpressRoute v umístění identifikovaném s povoleným privátním partnerským vztahem.
  - Virtuální síť Azure s bránou UltraPerformance v zadané oblasti.
  - Virtuální počítač s DS5v2, na kterém běží Windows Server 2016 ve virtuální síti. Virtuální počítač nebyl připojený k doméně, který je vytvořený z výchozí image Azure (bez optimalizace ani přizpůsobení) s nainstalovaným AzureCT.
- - Všechny testy používaly příkaz AzureCT Get-LinkPerformance s testem zatížení na 5 minut pro každý ze šesti testovacích běhů. Příklad:
+ - Všechny testy používaly příkaz AzureCT Get-LinkPerformance s testem zatížení na 5 minut pro každý ze šesti testovacích běhů. Například:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
@@ -177,7 +177,7 @@ Nastavení testu:
 >
 >
 
-| ExpressRoute<br/>Umístění|Azure<br/>Oblast | –<br/>Vzdálenost (km) | Latence|1 relace<br/>Šířka pásma | Maximum<br/>Šířka pásma |
+| ExpressRoute<br/>Umístění|Azure<br/>Region (Oblast) | –<br/>Vzdálenost (km) | Latence|1 relace<br/>Šířka pásma | Maximum<br/>Šířka pásma |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | Západní USA 2        |    191 km |   5 MS | 262,0 Mbit/s |  3,74 Gbits/s |
 | Seattle | USA – západ          |  1 094 km |  18 MS |  82,3 Mbit/s |  3,70 Gbits/s |
@@ -188,16 +188,16 @@ Nastavení testu:
 | Seattle | East US          |  3 699 km |  74 MS |  21,1 Mbit/s |  1,78 Gbits/s |
 | Seattle | Japan East       |  7 705 km | 106 MS |  14,6 Mbit/s |  1,22 Gbits/s |
 | Seattle | Spojené království – jih         |  7 708 km | 146 MS |  10,6 Mbit/s |   896 Mbit/s |
-| Seattle | Západní Evropa      |  7 834 km | 153 MS |  10,2 Mbit/s |   761 Mbit/s |
+| Seattle | West Europe      |  7 834 km | 153 MS |  10,2 Mbit/s |   761 Mbit/s |
 | Seattle | Austrálie – východ   | 12 484 km | 165 MS |   9,4 Mbit/s |   794 Mbit/s |
-| Seattle | Jihovýchodní Asie   | 12 989 km | 170 MS |   9,2 Mbit/s |   756 Mbit/s |
+| Seattle | Southeast Asia   | 12 989 km | 170 MS |   9,2 Mbit/s |   756 Mbit/s |
 | Seattle | Brazílie – jih *   | 10 930 km | 189 MS |   8,2 Mbit/s |   699 Mbit/s |
 | Seattle | Indie – jih      | 12 918 km | 202 MS |   7,7 Mbit/s |   634 Mbit/s |
 
-\*Latence pro Brazílie je dobrým příkladem, kdy se vzdálenost lineárního øádku významně liší od vzdálenosti optického běhu. Očekává se, že latence by byla v okolí 160 MS, ale ve skutečnosti je 189 MS. Tento rozdíl oproti očekávání by mohl poukazovat na problém v síti, ale s největší pravděpodobnější, že spuštění vlákna nevede k Brazílii v přímé linii a má další 1 000 km nebo cestu k Brazílii z Seattlu.
+\* Latence pro Brazílie je dobrým příkladem, kdy se vzdálenost lineárního øádku významně liší od vzdálenosti optického běhu. Očekává se, že latence by byla v okolí 160 MS, ale ve skutečnosti je 189 MS. Tento rozdíl oproti očekávání by mohl poukazovat na problém v síti, ale s největší pravděpodobnější, že spuštění vlákna nevede k Brazílii v přímé linii a má další 1 000 km nebo cestu k Brazílii z Seattlu.
 
 ## <a name="next-steps"></a>Další kroky
-1. Stáhněte si sadu nástrojů pro připojení k Azure z GitHubu na adrese[https://aka.ms/AzCT][ACT]
+1. Stáhněte si sadu nástrojů pro připojení k Azure z GitHubu na adrese [https://aka.ms/AzCT][ACT]
 2. Postupujte podle pokynů pro [propojení testu výkonu][Performance Doc] .
 
 <!--Image References-->

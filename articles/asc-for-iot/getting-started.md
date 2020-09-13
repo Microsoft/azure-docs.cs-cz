@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 452372f187e97a95b9eee88936b15a0409dd4fe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99936161039b05e5e6c00c129e81a35befaae961
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311372"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514454"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>Začínáme se službou Azure Security Center pro IoT
 
 Tento článek obsahuje vysvětlení různých komponent Azure Security Center pro službu IoT a vysvětluje, jak začít se službou pomocí dvou možných možností nasazení.
+
+Hledáte Začínáme s modulem zabezpečení pro Azure RTO? V části [rychlý Start pro modul zabezpečení pro Azure RTO](quickstart-azure-rtos-security-module.md) si projděte část. 
 
 ## <a name="deployment-options"></a>Možnosti nasazení
 

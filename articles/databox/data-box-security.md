@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483825"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565748"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
 
@@ -30,9 +30,13 @@ Data Box představuje bezpečné řešení pro přenos dat díky tomu, že prohl
 - **Klienti/hostitelé připojení k zařízení** – klienti ve vaší infrastruktuře připojující se k zařízení Data Box a obsahující data, která je třeba přenést a chránit.
 - **Cloudové úložiště** – umístění v cloudu Azure, kam se data uloží. Typicky jde o účet úložiště spojený s prostředkem Azure Data Box, který jste vytvořili.
 
-Následující schéma představuje tok dat přes řešení Azure Data Box od místních systémů až do Azure. Tento tok je určen pro pořadí importu Data Box.
+Následující diagram znázorňuje tok dat prostřednictvím Azure Data Box řešení z místního prostředí do Azure a různé funkce zabezpečení, které jsou k disřadě jako data v rámci řešení. Tento tok je určen pro pořadí importu Data Box.
 
-![Zabezpečení zařízení Data Box](media/data-box-security/data-box-security-2.png)
+![Data Box import zabezpečení](media/data-box-security/data-box-security-2.png)
+
+Následující diagram je určen pro pořadí exportu Data Box.
+
+![Data Box exportovat zabezpečení](media/data-box-security/data-box-security-3.png)
 
 Jak data přecházejí přes toto řešení, události se zaznamenávají a generují se protokoly. Další informace najdete tady:
 
@@ -84,7 +88,7 @@ Azure Data Box shromažďuje a zobrazuje osobní údaje v následujících klí�
   - Telefonní číslo
   - E-mail
   - Ulice a číslo
-  - Město
+  - City (Město)
   - PSČ
   - State
   - Provincie/kraj/oblast

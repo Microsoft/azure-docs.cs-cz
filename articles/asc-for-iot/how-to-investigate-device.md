@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab9b396f72ddd35638519ab69f17e034479e0d5a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311037"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504906"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Prozkoumat podezřelé zařízení IoT
 
@@ -39,7 +39,7 @@ Ve výchozím nastavení Azure Security Center pro IoT ukládá výstrahy a dopo
 Vyhledání pracovního prostoru Log Analytics pro úložiště dat:
 
 1. Otevřete Centrum IoT,
-1. V části **zabezpečení**klikněte na **Přehled**a pak vyberte **Nastavení**.
+1. V části **zabezpečení**vyberte **Nastavení**a potom vyberte **shromažďování dat**.
 1. Změňte podrobnosti konfigurace Log Analytics pracovního prostoru.
 1. Klikněte na **Uložit**.
 

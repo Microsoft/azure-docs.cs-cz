@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak spravovat operace obnovení zálo
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011185"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506673"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -242,6 +242,30 @@ Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnove
     }
   }
 }
+```
+
+### <a name="restore-disks-selectively"></a>Selektivní obnovení disků
+
+Pokud jste [selektivně zálohovali disky](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), pak je v [souhrnu bodů obnovení](#select-recovery-point) k dispozici aktuální seznam zálohovaných disků a [podrobná odpověď](https://docs.microsoft.com/rest/api/backup/recoverypoints/get). Můžete také selektivně obnovit disky a další podrobnosti najdete [tady](selective-disk-backup-restore.md#selective-disk-restore). Chcete-li selektivně obnovit disk ze seznamu zálohovaných disků, najděte logickou jednotku disku z odpovědi bodu obnovení a přidejte vlastnost **restoreDiskLunList** do [výše uvedeného textu žádosti](#example-request) , jak je uvedeno níže.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
 ```
 
 Jakmile Vysledujete odpověď, jak je vysvětleno [výše](#responses), a je dokončena dlouho spuštěná úloha, budou na daném účtu úložiště k dispozici disky a konfigurace zálohovaného virtuálního počítače ("VMConfig.json").

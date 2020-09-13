@@ -3,14 +3,14 @@ title: Jak používat klíč pro vytváření a modul runtime – LUIS
 description: Při prvním použití Language Understanding (LUIS) není nutné vytvářet klíč pro vytváření obsahu. Pokud máte v úmyslu publikovat aplikaci, pak použijte koncový bod za běhu, musíte pro aplikaci vytvořit a přiřadit klíč modulu runtime.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496895"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565901"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -25,14 +25,18 @@ Materiály pro modul runtime pro vytváření a předpověď dotazů poskytují 
 
 LUIS umožňuje tři typy prostředků Azure a jeden jiný prostředek než Azure:
 
-|Klíč|Účel|Služba rozpoznávání`kind`|Služba rozpoznávání`type`|
+|Prostředek|Účel|Služba rozpoznávání `kind`|Služba rozpoznávání `type`|
 |--|--|--|--|
-|Vytváření klíče|Přístup k datům aplikací a jejich správa pomocí vytváření, školení, publikování a testování. Pokud máte v úmyslu programově vytvářet aplikace LUIS, vytvořte si klíč pro vytváření LUIS.<br><br>Účelem `LUIS.Authoring` klíče je poskytnout tyto kroky:<br>* prostřednictvím kódu programu spravujte Language Understanding aplikace a modely, včetně školení a publikování<br> * řízení oprávnění k vytváření prostředků tím, že uživatelům přiřadíte [roli Přispěvatel](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
-|Klíč předpovědi dotazu| Požadavky koncového bodu předpovědi dotazu. Vytvořte klíč předpovědi LUIS před tím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytuje počáteční prostředek. |`LUIS`|`Cognitive Services`|
+|Vytváření prostředku|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Pokud máte v úmyslu vytvářet aplikace LUIS programtically nebo na portálu LUIS, [vytvořte prostředek pro vytváření Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal) . Aby bylo možné propojit prostředky Azure authroring s vaší aplikací, je třeba nejprve [migrovat účet Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) . Oprávnění k vytváření prostředků můžete řídit přiřazením osob k [roli Přispěvatel](#contributions-from-other-authors). <br><br> Pro prostředek pro vytváření LUIS je k dispozici jedna vrstva avialable:<br> * **F0 vytváření prostředků** , který vám poskytne až 1 milion bezplatných požadavků na vytváření koncových bodů a měsíčně 1000. |`LUIS.Authoring`|`Cognitive Services`|
+|Prostředek předpovědi| Po publikování aplikace LUIS použijte k vyřízení požadavků na koncový bod předpovědi pro dotazování prostředku nebo klíče předpovědi. Vytvořte LUIS předpověď prostředku předtím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytuje vytváření nebo spouštěcí prostředek. <br><br> Pro prostředek předpovědi jsou avialble dvě úrovně:<br> * **Prostředek předpovědi F0** , který vám dává 10 000 bezplatné požadavky na koncový bod předpovědi měsíčně<br> * **S0 předpověď prostředků** , což je placená úroveň. [Další informace o cenách najdete v podrobnostech.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Zdroj počáteční/zkušební verze|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Tato funkce se vytvoří pomocí výchozí, pokud při prvním přihlášení k LUIS TP zvolíte možnost prostředek Starter. Spouštěcí klíč bude ale nakonec zastaralý a všichni LUIS uživatelé budou muset [migrovat své účty](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) a propojit své Luis aplikace s prostředky pro vytváření obsahu. Tento prostředek vám neuděluje oprávnění k řízení přístupu na základě role, jako je prostředek pro vytváření. <br><br> Stejně jako u zdrojového prostředku vám počáteční zdroj poskytuje nemilion transakcí vytváření a 1000 požadavků koncových bodů předpovědi pro volné místo.|-|Nejedná se o prostředek Azure.|
 |[Klíč prostředku více služeb pro službu rozpoznávání](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Požadavky koncového bodu předpovědi dotazu sdílené s LUIS a dalšími podporovanými Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
-|Starter|Bezplatné vytváření (bez řízení přístupu na základě role) prostřednictvím portálu LUIS nebo rozhraní API (včetně sad SDK), bezplatné požadavky 1 000 předpovědi koncového bodu za měsíc prostřednictvím prohlížeče, rozhraní API nebo sad SDK|-|Nejedná se o prostředek Azure.|
 
-Po dokončení procesu vytváření prostředků Azure [přiřaďte klíč](#assign-a-resource-to-an-app) k aplikaci na portálu Luis.
+
+> [!Note]
+> Existují dva typy prostředků F0 (Free úrovně), které LUIS poskytuje. Jednu pro vytváření transakcí a jednu pro transakce předpovědi. Pokud máte vystaralou kvótu pro transakce předpovědi, ujistěte se, že jste ve skutečnosti používali prostředek předpovědi F0, který vám poskytne 10 000 bezplatných transakcí měsíčně, a ne prostředek pro vytváření, který vám poskytne 1000 předpověď transakcí měsíčně.
+
+Po dokončení procesu vytváření prostředků Azure [přiřaďte prostředek](#assign-a-resource-to-an-app) k aplikaci na portálu Luis.
 
 Je důležité vytvářet aplikace LUIS v [oblastech](luis-reference-regions.md#publishing-regions) , kde chcete publikovat a dotazovat.
 
@@ -111,7 +115,7 @@ Vlastník a všichni přispěvatelé mají přístup k vytváření aplikací.
 |Import verze||
 |Nastavit aplikaci jako veřejnou|Když je aplikace veřejná, může se uživatel dotazovat na aplikaci s vytvářením nebo klíčovým bodem.|
 |Upravit model|
-|Publikovat|
+|Publikování|
 |Kontrola služby Endpoint projevy pro [aktivní učení](luis-how-to-review-endpoint-utterances.md)|
 |Trénování|
 
@@ -173,8 +177,8 @@ Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/
 
 Prostředek `kind` :
 
-* Zdroj`LUIS.Authoring`
-* Předpovědi`LUIS`
+* Zdroj `LUIS.Authoring`
+* Předpovědi `LUIS`
 
 1. Přihlaste se k Azure CLI:
 
@@ -211,15 +215,19 @@ Můžete přiřadit prostředek pro vytváření obsahu pro jednu aplikaci nebo 
 
 ## <a name="assign-a-resource-to-an-app"></a>Přiřazení prostředku k aplikaci
 
-K aplikaci můžete přiřadit pomocí následujícího postupu.
+Upozorňujeme, že pokud nemáte předplatné Azure, nebudete moct přiřadit nebo vytvořit nový prostředek. Musíte nejdřív projít a vytvořit [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/en-us/free/) a pak se vrátit na Luis a vytvořit nový prostředek z portálu.
+
+K aplikaci můžete přiřadit nebo vytvořit předpověď nebo prostředek předpovědi pomocí následujícího postupu:
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai)a pak vyberte aplikaci ze seznamu **Moje aplikace** .
-1. Přejděte na stránku **Správa prostředků Azure spravovat >** .
+1. Přejděte na stránku **Správa prostředků Azure > pro správu** .
 
     ![Vyberte prostředky Azure spravovat > na portálu LUIS a přiřaďte k aplikaci prostředek.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
 1. Vyberte kartu předpověď nebo prostředek pro vytváření obsahu a pak vyberte tlačítko **Přidat prostředek předpovědi** nebo **Přidat prostředek pro vytváření** .
-1. Vyberte pole ve formuláři, abyste našli správný prostředek, a pak vyberte **Uložit**.
+1. Vyberte pole ve formuláři, abyste našli správný prostředek, a pak vyberte **Save (Uložit** ).
+1. Pokud nemáte existující prostředek, můžete ho vytvořit výběrem možnosti vytvořit nový prostředek LUIS?. z dolní části okna
+
 
 ### <a name="assign-query-prediction-runtime-resource-without-using-luis-portal"></a>Přiřazení prostředku modulu runtime předpovědi pro dotaz bez použití portálu LUIS
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 9/8/2020
+ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121353"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565085"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Výpočetní vrstva bez serveru pro izolovanou databázi v Azure SQL Database je
 - **Minimální virtuální jádra** a **Maximální virtuální jádra** jsou konfigurovatelné parametry, které definují rozsah výpočetní kapacity dostupné pro databázi. Limity paměti a vstupně-výstupních operací jsou úměrné zadanému rozsahu vCore.  
 - **Prodleva automatického pozastavení** je konfigurovatelný parametr definující časové období, po které musí být databáze neaktivní, než bude automaticky pozastavena. Databáze se automaticky obnoví, když dojde k dalšímu přihlášení nebo jiné aktivitě.  Alternativně je možné zakázat autopauzu.
 
-### <a name="cost"></a>Náklady
+### <a name="cost"></a>Cost
 
 - Náklady na databázi bez serveru jsou součtem nákladů na výpočetní prostředky a náklady na úložiště.
 - Pokud je využití COMPUTE mezi nakonfigurovanými minimálními a maximálními limity, náklady na výpočetní výkon vycházejí z vCore a využité paměti.
@@ -114,11 +114,12 @@ Automatické pauzy se aktivují, pokud jsou splněné všechny následující po
 
 V případě potřeby je k dispozici možnost pro vypnutí autopauzy.
 
-Následující funkce nepodporují automatické pozastavení, ale podporují automatické škálování.  To znamená, že pokud použijete některou z následujících funkcí, zůstane databáze online bez ohledu na dobu nečinnosti databáze:
+Následující funkce nepodporují automatické pozastavení, ale podporují automatické škálování.  Pokud použijete některou z následujících funkcí, je třeba zakázat možnost autopozastavit a databáze zůstane online bez ohledu na dobu nečinnosti databáze:
 
 - Geografická replikace (aktivní geografická replikace a skupiny s automatickým převzetím služeb při selhání).
 - Dlouhodobé uchovávání záloh (LTR).
 - Synchronizovaná databáze použitá v synchronizaci dat SQL  Na rozdíl od synchronizace databází databáze hub a členské databáze podporují automatické pozastavení.
+- Aliasy DNS
 - Databáze úlohy používaná v elastických úlohách (Preview).
 
 Při nasazování některých aktualizací služby, které vyžadují databázi online, se dočasně brání v dočasném pozastavení.  V takových případech se po dokončení aktualizace služby znovu povolí opětovné pozastavení.

@@ -2,18 +2,18 @@
 title: 'Vytvoření a úprava okruhu ExpressRoute: Azure CLI'
 description: Tento článek popisuje, jak pomocí rozhraní příkazového řádku vytvořit, zřídit, ověřit, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2d8ad6b90f533161835ab12a43865b177c24c14e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5f3270bbed5042ef89d5818523005dfc31589945
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503578"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566139"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -142,7 +142,7 @@ Následující příklad ukazuje, jak vytvořit okruh ExpressRoute 200 MB/s až 
 
 Ujistěte se, že zadáte správnou úroveň SKU a řadu SKU:
 
-* Úroveň SKU určuje, jestli okruh ExpressRoute je [místní](expressroute-faqs.md#expressroute-local), Standard nebo [Premium](expressroute-faqs.md#expressroute-premium). Můžete zadat *Local*, *Standard* nebo *Premium*.
+* Úroveň SKU určuje, jestli okruh ExpressRoute je [místní](expressroute-faqs.md#expressroute-local), Standard nebo [Premium](expressroute-faqs.md#expressroute-premium). Můžete zadat *Local*, *Standard* nebo *Premium*. SKU nemůžete změnit z *úrovně Standard/Premium* na *místní*.
 * Rodina SKU určuje typ fakturace. Můžete zadat *Metereddata* pro měřený datový tarif a *Unlimiteddata* pro neomezený datový tarif. Typ fakturace můžete změnit z *Metereddata* na *Unlimiteddata*, ale nemůžete změnit typ z *Unlimiteddata* na *Metereddata*. *Místní* okruh je jenom *Unlimiteddata* .
 
 
@@ -280,7 +280,7 @@ Potom propojte virtuální síť se svým okruhem ExpressRoute. Použijte [propo
 
 Můžete upravit některé vlastnosti okruhu ExpressRoute, aniž by to mělo vliv na připojení. Můžete provést následující změny bez výpadku:
 
-* Pro okruh ExpressRoute můžete povolit nebo zakázat doplněk ExpressRoute Premium.
+* Pro okruh ExpressRoute můžete povolit nebo zakázat doplněk ExpressRoute Premium. Změna SKU z *úrovně Standard/Premium* na *místní* není podporována.
 * Šířku pásma okruhu ExpressRoute můžete zvýšit, pokud je na portu k dispozici dostatek kapacity. Nicméně downgrading šířky pásma okruhu není podporován.
 * Plán měření z měřených dat můžete změnit na neomezená data. Nicméně Změna plánu měření z neomezených dat na měřená data není podporována.
 * Můžete povolit nebo zakázat *operace klasických operací*.

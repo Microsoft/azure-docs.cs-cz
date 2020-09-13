@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808609"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506657"
 ---
 # <a name="convert-models"></a>Převod modelů
 
@@ -21,9 +21,9 @@ Po převedení se model dá načíst z Azure Storage účtu.
 
 Služba konverze podporuje tyto formáty:
 
-- **FBX** (verze 2011 a vyšší)
+- **FBX**  (verze 2011 a vyšší)
 - **GLTF** (verze 2. x)
-- **GLB** (verze 2. x)
+- **GLB**  (verze 2. x)
 
 Existují drobné rozdíly mezi formáty s ohledem na převod vlastností materiálu, jak je uvedeno v kapitole [mapování materiálů pro formáty modelů](../../reference/material-mapping.md).
 
@@ -58,4 +58,5 @@ Různé možnosti převodu naleznete v [této kapitole](configure-model-conversi
 - [Použití služby Azure Blob Storage pro převod modelů](blob-storage.md)
 - [REST API převodu modelu](conversion-rest-api.md)
 - [Konfigurace převodu modelu](configure-model-conversion.md)
+- [Příprava souborů pro převod](layout-files-for-conversion.md)
 - [Mapování materiálu pro formáty modelů](../../reference/material-mapping.md)

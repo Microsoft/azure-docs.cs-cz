@@ -2,17 +2,17 @@
 title: Informace o Azure ExpressRoute Direct
 description: Seznamte se s klíčovými funkcemi Azure ExpressRoute Direct a informací, které jsou potřeba k tomu, aby ExpressRoute přímé, jako jsou dostupné SKU a technické požadavky.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: jaredro
-ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192344"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566394"
 ---
 # <a name="about-expressroute-direct"></a>O službě ExpressRoute Direct
 
@@ -44,7 +44,7 @@ Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat sv
 
 ## <a name="expressroute-direct-circuits"></a>Přímé okruhy ExpressRoute
 
-Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Office 365.
+Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Microsoft 365.
 
 Každé umístění partnerského vztahu má přístup ke globální síti Microsoftu a má ve výchozím nastavení přístup k libovolné oblasti v geopolitické zóně a má přístup ke všem globálním oblastem okruhu Premium.  
 

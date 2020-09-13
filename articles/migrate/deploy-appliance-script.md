@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pomocí skriptu
 description: Naučte se, jak nastavit zařízení Azure Migrate pomocí skriptu.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 43e47c6b4121a2f389dfec27873b90b7031c4f2c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5be6f161724b8ab555c406ebf6e75072d7902eda
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929971"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514403"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Nastavení zařízení pomocí skriptu
 
@@ -20,7 +20,7 @@ Zařízení pro virtuální počítače VMware a Hyper-V můžete nasadit pomoc�
 - K nastavení zařízení pro fyzické servery můžete použít jenom skript. Postupujte podle [tohoto článku](how-to-set-up-appliance-physical.md).
 - Pokud chcete zařízení nastavit v cloudu Azure Government, postupujte podle pokynů v [tomto článku](deploy-appliance-script-government.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Skript nastaví zařízení Azure Migrate na stávajícím fyzickém počítači nebo VIRTUÁLNÍm počítači.
 
@@ -51,7 +51,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
     **Algoritmus** | **Stáhnout** | **SHA256**
     --- | --- | ---
-    VMware (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140334) | 5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
+    VMware (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2116601) | 72fef66b8efd93106e626ea87354af0fb800893f9cb77edb5490490106c6a193
 
 
 
@@ -100,7 +100,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
     **Scénář** | **Stáhnout** | **SHA256**
     --- | --- | ---
-    Hyper-V (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140334) |  5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
+    Hyper-V (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2116657) |  bea013eab690ae3a476422c55becd87c369c14834e52f8cafe6ad0ed7f416b4f
 
 ### <a name="run-the-script"></a>Spuštění skriptu
 

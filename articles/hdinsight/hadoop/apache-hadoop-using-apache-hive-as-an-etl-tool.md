@@ -1,19 +1,19 @@
 ---
 title: Použití Apache Hive jako nástroje ETL – Azure HDInsight
 description: Použijte Apache Hive k extrakci, transformaci a načítání dat (ETL) ve službě Azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 1627fccb49f0ddbf7a3a0a42f5a483059101dae2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9b9dcd683915c17ae6909ebb88927d275e9a5896
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076058"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505280"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hive jako nástroje pro extrakci, transformaci a načítání (ETL)
 
@@ -69,19 +69,19 @@ Zdroje dat jsou obvykle externí data, která se dají spárovat se stávající
 Můžete použít podregistr pro výstup dat do různých druhů cílů, včetně:
 
 * Relační databáze, například SQL Server nebo Azure SQL Database.
-* Datový sklad, například Azure SQL Data Warehouse.
+* Datový sklad, jako je Azure synapse Analytics.
 * Excel.
 * Azure Table a BLOB Storage.
 * Aplikace nebo služby, které vyžadují zpracování dat do konkrétních formátů nebo jako soubory, které obsahují určité typy informačních struktur.
 * Úložiště dokumentů JSON, jako je Azure Cosmos DB.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Model ETL se obvykle používá, pokud chcete:
 
-`*`Načtěte data streamu nebo velké objemy částečně strukturovaných nebo nestrukturovaných dat z externích zdrojů do existující databáze nebo informačního systému.
-`*`Vyčistit, transformovat a ověřit data před jejich načtením, například pomocí více než jedné transformace projde clusterem.
-`*`Vygenerujte sestavy a vizualizace, které se pravidelně aktualizují. Například pokud sestava trvá příliš dlouho pro vygenerování během dne, můžete naplánovat, aby se sestava spouštěla v noci. Pokud chcete automaticky spustit dotaz na podregistr, můžete použít [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) a PowerShell.
+`*` Načtěte data streamu nebo velké objemy částečně strukturovaných nebo nestrukturovaných dat z externích zdrojů do existující databáze nebo informačního systému.
+`*` Vyčistit, transformovat a ověřit data před jejich načtením, například pomocí více než jedné transformace projde clusterem.
+`*` Vygenerujte sestavy a vizualizace, které se pravidelně aktualizují. Například pokud sestava trvá příliš dlouho pro vygenerování během dne, můžete naplánovat, aby se sestava spouštěla v noci. Pokud chcete automaticky spustit dotaz na podregistr, můžete použít [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) a PowerShell.
 
 Pokud cíl pro data není databáze, můžete vygenerovat soubor v příslušném formátu v rámci dotazu, například CSV. Tento soubor je pak možné importovat do aplikace Excel nebo Power BI.
 

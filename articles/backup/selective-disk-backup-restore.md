@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte o selektivním zálohování a obnoven
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961988"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506691"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektivní zálohování a obnovení disku pro virtuální počítače Azure
 
@@ -268,6 +268,10 @@ Konfigurace možnosti zálohování selektivních disků pro virtuální počít
 Pokud povolíte zálohování pomocí Azure Portal, můžete zvolit jenom možnost **zálohovat jenom disk s operačním systémem** . Takže můžete nakonfigurovat zálohování virtuálního počítače Azure pomocí disku s operačním systémem a vyloučit všechny datové disky, které jsou k němu připojené.
 
 ![Konfigurace zálohování jenom pro disk s operačním systémem](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
+
+## <a name="using-azure-rest-api"></a>Používání Azure REST API
+
+Zálohování virtuálního počítače Azure můžete nakonfigurovat na několik vybraných disků, nebo můžete upravit stávající ochranu virtuálního počítače tak, aby zahrnovala nebo vyloučila několik disků, jak je popsáno [zde](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup).
 
 ## <a name="selective-disk-restore"></a>Obnovení selektivního disku
 

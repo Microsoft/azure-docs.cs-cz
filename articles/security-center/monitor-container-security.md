@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8ec06fc23b147eb3e4a5922242aa922063f4172c
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038610"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514148"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>Monitorování zabezpečení kontejnerů
 
 Tato stránka vysvětluje použití funkcí zabezpečení kontejnerů popsaných v článku věnovaném [zabezpečení kontejnerů](container-security.md) v části koncepty.
 
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Kontrola registrů kontejnerů založených na ARM pro ohrožení zabezpečení 
+## <a name="scan-your-arm-based-container-registries-for-vulnerabilities"></a>Prověřování registrů kontejnerů založených na ARM pro ohrožení zabezpečení 
 
 1. Postup povolení kontroly ohrožení zabezpečení Azure Container Registry imagí:
 
@@ -30,13 +30,13 @@ Tato stránka vysvětluje použití funkcí zabezpečení kontejnerů popsaných
 
         Security Center je teď připravený ke skenování imagí, které se připravují do registru. 
 
-        >[!NOTE]
-        >Tato funkce se účtuje na základě obrázku.
+      >[!NOTE]
+      >Tato funkce se účtuje na základě obrázku.
 
 
 1. Pokud chcete spustit kontrolu obrázku, nahrajte ho do svého registru. 
 
-    Až se kontrola dokončí (obvykle přibližně 2 minuty, ale může to být až 15 minut), nálezy jsou dostupné jako Security Center doporučení, jako je:
+    Až se kontrola dokončí (obvykle po přibližně 2 minutách, ale může to být až 15 minut), výsledky jsou k dispozici jako Security Center doporučení.
 
 1. Pokud si chcete prohlédnout nálezy, navštivte stránku **doporučení** . Pokud byly zjištěny problémy, zobrazí se následující doporučení:
 
@@ -86,7 +86,7 @@ Tato stránka vysvětluje použití funkcí zabezpečení kontejnerů popsaných
     1. Když si jste jistí, že se aktualizovaná image nahrála, prohledala a už se nezobrazuje v doporučení, odstraňte z registru starou ohrožený image.
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>Posílení zabezpečení kontejnerů Docker
+## <a name="harden-your-containers-docker-hosts"></a>Posílit posílení hostitelů Docker kontejnerů
 
 Security Center nepřetržitě monitoruje konfiguraci hostitelů Docker a vygeneruje doporučení zabezpečení, která odpovídají oborovým standardům.
 

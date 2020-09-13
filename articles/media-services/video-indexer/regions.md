@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/08/2020
 ms.author: kumud
-ms.openlocfilehash: 45da0556d074fdb81002f73cd89d0c35cb37276e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd95f022e40b9ae6fa60a6536a87146049c53b68
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530045"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565323"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Oblasti Azure, ve kterých Video Indexer existuje
 
@@ -23,7 +23,7 @@ Rozhraní Video Indexer API obsahují parametr **Location** , který byste měli
 
 ## <a name="locations"></a>Umístění
 
-`location`Parametr musí mít jako svou hodnotu název kódu oblasti Azure. Pokud používáte Video Indexer v režimu náhledu, měli byste ho umístit `"trial"` jako hodnotu. `trial`je výchozí hodnota pro `location` parametr. Jinak, pokud chcete získat název kódu oblasti Azure, ve které je váš účet, a na to, že se má vaše volání směrovat, můžete v [Azure CLI](/cli/azure)spustit následující řádek:
+`location`Parametr musí mít jako svou hodnotu název kódu oblasti Azure. Pokud používáte Video Indexer v režimu náhledu, měli byste ho umístit `"trial"` jako hodnotu. `trial` je výchozí hodnota pro `location` parametr. Jinak, pokud chcete získat název kódu oblasti Azure, ve které je váš účet, a na to, že se má vaše volání směrovat, můžete v [Azure CLI](/cli/azure)spustit následující řádek:
 
 ```azurecli-interactive
 az account list-locations
@@ -36,7 +36,7 @@ Například pro oblast Azure Západní USA 2 (zobrazenou níže) budete pro para
 ```json
    {
       "displayName": "West US 2",
-      "id": "/subscriptions/35c2594a-23da-4fce-b59c-f6fb9513eeeb/locations/westus2",
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/locations/westus2",
       "latitude": "47.233",
       "longitude": "-119.852",
       "name": "westus2",

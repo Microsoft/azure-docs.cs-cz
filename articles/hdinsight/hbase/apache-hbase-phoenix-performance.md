@@ -1,19 +1,19 @@
 ---
 title: Výkon služby Phoenix v Azure HDInsight
 description: Osvědčené postupy pro optimalizaci Apache Phoenix výkonu pro clustery Azure HDInsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0dfb93db1af807459c37653189a90b754c933aa4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079492"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504787"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Osvědčené postupy pro Apache Phoenix z hlediska výkonu
 
@@ -52,7 +52,7 @@ S tímto novým primárním klíčem klíče řádků generované v Phoenixu bud
 
 V prvním řádku výše jsou data pro rowkey reprezentovaná, jak je znázorněno níže:
 
-|rowkey|       key|   hodnota|
+|rowkey|       key|   Hodnota|
 |------|--------------------|---|
 |  Dole – Jan až 111|adresa |1111 síť San Gabrielem Dr.|  
 |  Dole – Jan až 111|Android |1-425-000-0002|  

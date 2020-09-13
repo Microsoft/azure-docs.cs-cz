@@ -3,12 +3,12 @@ title: Instalace agenta připojeného počítače pomocí Windows PowerShell DSC
 description: V tomto článku se dozvíte, jak připojit počítače k Azure pomocí serverů s podporou Azure ARC (Preview) pomocí Windows PowerShell DSC.
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 675258ff95829c2dc9922571db5014b2ba93d336
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213084"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565816"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Postup instalace agenta připojeného počítače pomocí Windows PowerShell DSC
 
@@ -82,7 +82,7 @@ Po nainstalování agenta a jeho konfiguraci pro připojení k serverům s podpo
 
 Tento prostředek se dá přidat do stávajících konfigurací DSC, které budou představovat ucelenou konfiguraci pro počítač. Můžete například chtít přidat tento prostředek do konfigurace, která nastaví zabezpečené nastavení operačního systému.
 
-Modul [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) z Galerie prostředí PowerShell lze použít k vytvoření [složeného prostředku](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ukázkové konfigurace, aby bylo možné dále zjednodušit kombinování konfigurací.
+Modul [CompositeResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) z Galerie prostředí PowerShell lze použít k vytvoření [složeného prostředku](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ukázkové konfigurace, aby bylo možné dále zjednodušit kombinování konfigurací.
 
 ## <a name="next-steps"></a>Další kroky
 

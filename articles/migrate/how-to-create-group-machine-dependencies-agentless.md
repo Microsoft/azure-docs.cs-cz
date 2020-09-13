@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Asse
 description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771372"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536434"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Analýza závislostí počítačů (bez agentů)
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure 
 
 - V zobrazení analýzy závislostí nemůžete aktuálně přidat nebo odebrat server ze skupiny.
 - Mapování závislostí pro skupinu serverů není aktuálně k dispozici.
-- Data závislosti nelze stáhnout v tabulkovém formátu.
+- Shromažďování dat závislostí lze pro servery 400 nastavit současně. Můžete analyzovat větší počet serverů pomocí sekvenceování v dávkách 400.
 
 ## <a name="before-you-start"></a>Než začnete
 

@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478004"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535768"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Postupy: Konfigurace podmínek služby a prohlášení o zásadách ochrany osobních údajů pro aplikaci
 
@@ -45,7 +45,7 @@ Předtím, než přidáte odkazy na dokumenty k podmínkám služby a prohláše
 | Platná schémata | Protokoly HTTP a HTTPS<br/>Doporučujeme protokol HTTPS |
 | Maximální délka    | 2048 znaků                       |
 
-Příklady: `https://myapp.com/terms-of-service` a`https://myapp.com/privacy-statement`
+Příklady: `https://myapp.com/terms-of-service` a `https://myapp.com/privacy-statement`
 
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Přidání odkazů na podmínek služby a prohlášení o zásadách ochrany osobních údajů
 
@@ -58,7 +58,7 @@ Po přípravě podmínek služby a prohlášení o zásadách ochrany osobních 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Použití webu Azure Portal
 Postupujte podle následujících kroků v Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/)vyberte správného tenanta AzureAD (ne B2C).
 2. Přejděte do části **Registrace aplikací** a vyberte svou aplikaci.
 3. Otevřete podokno **branding** .
 4. Vyplňte pole **Adresa URL podmínek služby** a **Adresa URL prohlášení o zásadách ochrany osobních údajů** .
@@ -69,6 +69,11 @@ Postupujte podle následujících kroků v Azure Portal.
 ### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>Použití JSON objektu aplikace
 
 Pokud upřednostňujete úpravu JSON objektu aplikace přímo, můžete použít editor manifestu na portálu Azure Portal nebo portál pro registraci aplikací a zahrnout odkazy na podmínku služby a prohlášení o zásadách ochrany osobních údajů vaší aplikace.
+
+1. Přejděte do části **Registrace aplikací** a vyberte svou aplikaci.
+2. Otevřete podokno **manifest** .
+3. CTRL + F, vyhledejte "informationalUrls". Vyplňte informace.
+4. Uložte provedené změny.
 
 ```json
     "informationalUrls": { 
@@ -96,5 +101,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Dejte pozor, abyste nepřepsali všechny dříve existující hodnoty, které jste přiřadili k některým z těchto polí: `supportUrl` , `marketingUrl` a.`logoUrl`
+> * Dejte pozor, abyste nepřepsali všechny dříve existující hodnoty, které jste přiřadili k některým z těchto polí: `supportUrl` , `marketingUrl` a. `logoUrl`
 > * Rozhraní API pro Microsoft Graph funguje, jenom když se přihlašujete pomocí účtu Azure AD. Osobní účty Microsoft se nepodporují.

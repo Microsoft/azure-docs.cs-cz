@@ -4,12 +4,12 @@ description: Upozorňuje na neobvyklé změny v rychlosti neúspěšných požad
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420205"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565833"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](./app-insights-overview.md) vás automaticky upozorní téměř v reálném čase, pokud vaše webová aplikace působí abnormální nárůst frekvence neúspěšných žádostí. Detekuje neobvyklé zvýšení rychlosti požadavků HTTP nebo volání závislostí, která jsou hlášena jako neúspěšná. V případě požadavků mají neúspěšné požadavky obvykle kódy odpovědí 400 nebo vyšší. V podrobnostech výstrahy jsou k dispozici analýzy vlastností selhání a souvisejících dat aplikací, které vám pomůžou při třídění a diagnostikování problému. K dispozici jsou také odkazy na portál Application Insights pro další diagnostiku. Tato funkce nevyžaduje žádné nastavení ani konfiguraci, protože používá algoritmy strojového učení pro předpověď běžné míry selhání.
@@ -58,6 +58,7 @@ Výstrahy spouští náš proprietární algoritmus strojového učení, takže 
 * Porovnání procenta selhání za posledních 20 minut s sazbou za posledních 40 minut a posledních sedm dní a hledání významných odchylek, které překračují standardní odchylku, se rovná hodnotě X.
 * Použití adaptivního limitu pro minimální procento selhání, které se liší v závislosti na objemu požadavků a závislostí aplikace.
 * K dispozici je logika, která může automaticky vyřešit stav aktivovaného monitorování výstrah, pokud se tento problém již nedetekuje 8-24 hodin.
+  Poznámka: v aktuálním návrhu. oznámení nebo akce nebudou odeslány při vyřešení výstrahy inteligentního zjišťování. Můžete zjistit, zda byla v Azure Portal vyřešena výstraha inteligentního zjišťování.
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
 
@@ -332,11 +333,11 @@ Inteligentní zjišťování anomálií selhání doplňuje jiné podobné, ale 
 
 *Teď se díváte na moje data aplikací?*
 
-* Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).
+* No. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).
 
 *Musím se přihlásit k odběru této výstrahy?*
 
-* Ne. Každá aplikace, která odesílá data požadavku, má pravidlo výstrahy inteligentního zjišťování.
+* No. Každá aplikace, která odesílá data požadavku, má pravidlo výstrahy inteligentního zjišťování.
 
 *Můžu místo toho zrušit odběr nebo dostávat oznámení odesílaná kolegům?*
 

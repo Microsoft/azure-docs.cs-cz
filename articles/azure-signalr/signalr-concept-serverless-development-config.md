@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ce42c0ec75ebed52311fe6aa026f794d6c2f7584
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928560"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513932"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service
 
@@ -51,7 +51,9 @@ Další informace o tom, jak vytvořit ověřený token, najdete v tématu [pou�
 
 Použijte vazbu *triggeru signálu* ke zpracování zpráv odeslaných ze služby signalizace. Můžete se aktivovat, když klienti odesílají zprávy nebo se klienti připojí nebo odpojí.
 
-Další informace najdete v [odkazech na *triggery triggeru signálu* .](../azure-functions/functions-bindings-signalr-service-trigger.md)
+Další informace najdete v odkazu na [ *triggery triggeru signálu* ](../azure-functions/functions-bindings-signalr-service-trigger.md).
+
+Také je nutné nakonfigurovat koncový bod funkce jako nadřazený, aby služba aktivovala funkci, kde se nachází zpráva od klienta. Další informace o tom, jak nakonfigurovat nadřazený datový proud, najdete v tomto [dokumentu](concept-upstream.md).
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Odesílání zpráv a Správa členství ve skupinách
 
@@ -69,7 +71,7 @@ Návěstí má koncept "centra". Každé připojení klienta a každá zpráva o
 
 Model založený na třídě je vyhrazen pro C#. Model založený na třídě může mít konzistentní prostředí pro programování na straně serveru signalizace. Má následující funkce.
 
-* Méně konfigurace funguje: název třídy se používá jako `HubName` , název metody se používá jako `Event` a `Category` automaticky se určuje podle názvu metody.
+* Méně práce s konfigurací: název třídy se používá jako `HubName` , název metody se používá jako `Event` a `Category` automaticky se určuje podle názvu metody.
 * Automatická vazba parametrů: `ParameterNames` není ani atribut `[SignalRParameter]` není potřeba. Parametry jsou automaticky vázány na argumenty metody Azure Function v daném pořadí.
 * Pohodlné prostředí pro výstup a vyjednávání.
 
@@ -109,7 +111,7 @@ Všechny funkce, které chtějí využít model založený na třídách, musí 
 
 ### <a name="define-hub-method"></a>Definovat metodu centra
 
-Všechny metody centra **musí**  mít `[SignalRTrigger]` atribut a **musí** používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost**parametru.
+Všechny metody centra **musí** mít argument `InvocationContext` dekorované podle `[SignalRTrigger]` atributů a používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost**parametru.
 
 Ve výchozím nastavení, `category=messages` s výjimkou názvu metody, je jedním z následujících názvů:
 
@@ -202,7 +204,11 @@ Další informace o tom, jak používat klientskou sadu SDK pro signalizaci, naj
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>Posílání zpráv od klienta ke službě
 
-Přestože sada Signal SDK umožňuje klientským aplikacím vyvolat v centru signalizace back-end logiku, tato funkce se ještě nepodporuje, pokud používáte službu signalizace s Azure Functions. K vyvolání Azure Functions použijte požadavky HTTP.
+Pokud máte pro svůj prostředek signalizace nakonfigurované [nadřazené](concept-upstream.md) služby, můžete odesílat zprávy od klienta k vašemu Azure Functions pomocí libovolného klienta signalizace. Tady je příklad v JavaScriptu:
+
+```javascript
+connection.send('method1', 'arg1', 'arg2');
+```
 
 ## <a name="azure-functions-configuration"></a>Konfigurace Azure Functions
 

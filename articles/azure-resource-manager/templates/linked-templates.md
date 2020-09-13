@@ -2,13 +2,13 @@
 title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086808"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535554"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
@@ -19,7 +19,9 @@ Pro malá až středně střední řešení je jedinou šablonou snazší pochop
 Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
-> U propojených nebo vnořených šablon můžete použít pouze režim [přírůstkového](deployment-modes.md) nasazení.
+> U propojených nebo vnořených šablon můžete nastavit režim nasazení pouze na [přírůstkové](deployment-modes.md). Hlavní šablonu je však možné nasadit v úplném režimu. Pokud nasadíte hlavní šablonu v režimu úplného nasazení a propojená nebo vnořená šablona cílí na stejnou skupinu prostředků, budou se prostředky nasazené v propojené nebo vnořené šabloně zahrnout do vyhodnocování nasazení kompletního režimu. Kombinovaná kolekce prostředků nasazených v hlavní šabloně a propojených nebo vnořených šablon je porovnána s existujícími prostředky ve skupině prostředků. Všechny prostředky, které nejsou součástí této kombinované kolekce, se odstraní.
+>
+> Pokud je propojená nebo vnořená šablona cílí na jinou skupinu prostředků, používá toto nasazení přírůstkový režim.
 >
 
 ## <a name="nested-template"></a>Vnořená šablona
@@ -160,7 +162,7 @@ Následující šablona ukazuje, jak jsou řešeny výrazy šablony podle oboru.
 
 Hodnota `exampleVar` změny závisí na hodnotě `scope` vlastnosti v `expressionEvaluationOptions` . V následující tabulce jsou uvedeny výsledky pro oba obory.
 
-| `expressionEvaluationOptions`oboru | Výstup |
+| `expressionEvaluationOptions` oboru | Výstup |
 | ----- | ------ |
 | vnořen | z vnořené šablony |
 | vnější (nebo výchozí) | z nadřazené šablony |
@@ -312,14 +314,9 @@ Při odkazování na propojenou šablonu `uri` nemůže být hodnota nesmí být
 
 > [!NOTE]
 >
-> Můžete odkazovat na šablony pomocí parametrů, které jsou nakonec vyřešeny na něco, co používá **protokol HTTP** nebo **https**, například pomocí parametru, například `_artifactsLocation` :`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> Můžete odkazovat na šablony pomocí parametrů, které jsou nakonec vyřešeny na něco, co používá **protokol HTTP** nebo **https**, například pomocí parametru, například `_artifactsLocation` : `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku.
-
-[Specifikace šablon](./template-specs.md) (aktuálně v privátní verzi Preview) umožňují sdílet šablony ARM s ostatními uživateli ve vaší organizaci. K zabalení hlavní šablony a jejích propojených šablon lze také použít specifikace šablon. Další informace najdete tady:
-
-- [Kurz: Vytvoření specifikace šablony s propojenými šablonami](./template-specs-create-linked.md).
-- [Kurz: nasazení specifikace šablony jako propojené šablony](./template-specs-deploy-linked-template.md).
 
 ### <a name="parameters-for-linked-template"></a>Parametry pro propojenou šablonu
 
@@ -369,6 +366,15 @@ K předání hodnot parametrů do inline použijte vlastnost **Parameters** .
 ```
 
 Nemůžete použít vložené parametry ani odkaz na soubor parametrů. Nasazení se nepovede s chybou `parametersLink` , když `parameters` je zadán parametr a.
+
+## <a name="template-specs"></a>Specifikace šablon
+
+Místo udržování vašich propojených šablon v přístupném koncovém bodu můžete vytvořit [specifikaci šablony](template-specs.md) , která zabalí hlavní šablonu a její propojené šablony do jedné entity, kterou můžete nasadit. Specifikace šablony je prostředek ve vašem předplatném Azure. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. Řízení přístupu na základě role (RBAC) slouží k udělení přístupu ke specifikaci šablony. Tato funkce je aktuálně ve verzi Preview.
+
+Další informace naleznete v tématu:
+
+- [Kurz: Vytvoření specifikace šablony s propojenými šablonami](./template-specs-create-linked.md).
+- [Kurz: nasazení specifikace šablony jako propojené šablony](./template-specs-deploy-linked-template.md).
 
 ## <a name="contentversion"></a>Contentversion –
 
@@ -723,6 +729,9 @@ I když je propojená šablona musí být externě dostupná, nemusí být všeo
 Soubor parametrů může být také omezený pro přístup prostřednictvím tokenu SAS.
 
 V současné době nemůžete propojit šablonu v účtu úložiště, který je za [Azure Storage bránou firewall](../../storage/common/storage-network-security.md).
+
+> [!IMPORTANT]
+> Namísto zabezpečení propojené šablony s tokenem SAS zvažte vytvoření [specifikace šablony](template-specs.md). Specifikace šablony bezpečně ukládá hlavní šablonu a její propojené šablony jako prostředek ve vašem předplatném Azure. RBAC můžete použít k udělení přístupu uživatelům, kteří potřebují šablonu nasadit.
 
 Následující příklad ukazuje, jak předat token SAS při odkazování na šablonu:
 

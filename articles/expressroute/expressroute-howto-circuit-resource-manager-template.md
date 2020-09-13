@@ -2,17 +2,17 @@
 title: 'Šablona Azure ExpressRoute: vytvoření okruhu ExpressRoute'
 description: Přečtěte si, jak vytvořit okruh Azure ExpressRoute nasazením šablony Azure Resource Manager pomocí Azure PowerShell.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: charwen
-ms.openlocfilehash: 78318726a658b6e0dc966288f386c65ee4c6f0e4
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190442"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566173"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Vytvoření okruhu ExpressRoute pomocí šablony Azure Resource Manager
 
@@ -20,7 +20,7 @@ ms.locfileid: "88190442"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
+> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
@@ -63,7 +63,7 @@ Vytvoření okruhu ExpressRoute nasazením šablony:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **Úroveň SKU** určuje, jestli je okruh ExpressRoute [místní](expressroute-faqs.md#expressroute-local), Standard nebo [Premium](expressroute-faqs.md#expressroute-premium). Můžete zadat *místní*, * Standard nebo *Premium*.
+   * **Úroveň SKU** určuje, jestli je okruh ExpressRoute [místní](expressroute-faqs.md#expressroute-local), Standard nebo [Premium](expressroute-faqs.md#expressroute-premium). Můžete zadat *místní*, * Standard nebo *Premium*. SKU nemůžete změnit z *úrovně Standard/Premium* na *místní*.
    * **Rodina SKU** určuje typ fakturace. Můžete zadat *Metereddata* pro měřený datový tarif a *Unlimiteddata* pro neomezený datový tarif. Typ fakturace můžete změnit z *Metereddata* na *Unlimiteddata*, ale nemůžete změnit typ z *Unlimiteddata* na *Metereddata*. *Místní* okruh je jenom *Unlimiteddata* .
    * **Umístění partnerského vztahu** je fyzické umístění, kde se s Microsoftem pracujete jako partnerský vztah.
 

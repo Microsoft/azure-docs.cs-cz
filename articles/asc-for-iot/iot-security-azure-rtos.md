@@ -1,6 +1,6 @@
 ---
-title: Podpora Azure RTO
-description: Přečtěte si o podpoře Azure RTO v Azure Security Center pro službu IoT.
+title: Modul zabezpečení pro Azure RTO – přehled
+description: Přečtěte si další informace o modulu zabezpečení pro podporu a implementaci Azure RTO jako součást Azure Security Center pro službu IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/15/2020
+ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: af4579d25b94fc12f67cfc91d0f6a5af4b35c810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bcf98f503b0f0c8bf76435d9884297d5f53d65e6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096697"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514471"
 ---
-# <a name="azure-security-center-for-iot-security-solution-for-azure-rtos"></a>Řešení zabezpečení IoT pro Azure RTO Azure Security Center 
+# <a name="overview-security-module-for-azure-rtos-preview"></a>Přehled: modul zabezpečení pro Azure RTO (Preview)
 
-Modul zabezpečení Azure Security Center pro IoT poskytuje komplexní řešení zabezpečení pro zařízení Azure RTO. Azure RTO se dodává s integrovaným modulem zabezpečení, který se zabývá běžnými hrozbami na zařízeních s operačním systémem v reálném čase. 
+Modul zabezpečení Azure Security Center pro IoT RTO poskytuje komplexní řešení zabezpečení pro zařízení Azure RTO. Azure RTO se teď dodává s integrovaným modulem zabezpečení Azure IoT a poskytuje pokrytí pro běžné hrozby a potenciální škodlivé aktivity na zařízeních s operačním systémem v reálném čase. 
 
 ![Azure Security Center pro IoT Azure RTO](./media/architecture/azure-rtos-security-monitoring.png)
 
 
-Azure Security Center pro modul zabezpečení IoT se službou Azure RTO support nabízí tyto funkce: 
+Modul zabezpečení pro Azure RTO nabízí tyto funkce: 
 - Detekce škodlivé síťové aktivity
 - Vlastní upozornění založené na monitorování standardních hodnot chování zařízení
 - Zlepšení hygieny zabezpečení zařízení
@@ -43,20 +43,18 @@ Monitorování standardních hodnot umožňuje clusterování zařízení do sku
 
 ### <a name="improve-your-device-security-hygiene"></a>Vylepšení hygieny zabezpečení zařízení
 
-Využitím Doporučené infrastruktury Azure Security Center pro IoT získáte znalostní báze a přehled o problémech v prostředí, které mají dopad na stav zabezpečení vašich zařízení a jejich poškození. Špatné zabezpečení zařízení IoT stav může dovolit úspěšné útoky, pokud zůstane beze změny, protože zabezpečení se vždy měří podle nejslabšího odkazu v rámci jakékoli organizace. 
+Využitím Doporučené infrastruktury Azure Security Center pro IoT získáte znalostní báze a přehled o problémech v prostředí, které mají dopad na stav zabezpečení vašich zařízení a jejich poškození. Slabé zabezpečení zařízení IoT stav může dovolit úspěšné útoky, pokud zůstane beze změny, protože zabezpečení se vždy měří podle nejslabšího odkazu v rámci jakékoli organizace. 
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Začínáme s ochranou zařízení Azure RTO
 
-- Azure Security Center pro modul zabezpečení IoT pro Azure RTO je k dispozici jako bezplatné stažení pro vaše zařízení. Cloudová služba Azure Security Center for IoT je k dispozici se zkušební verzí na předplatné Azure za 30 dní. Pokud chcete začít, Stáhněte si [modul zabezpečení Azure Security Center for IoT pro Azure RTO](https://github.com/azure-rtos/iot-security-module-preview) . 
+Modul zabezpečení pro Azure RTO je k dispozici jako bezplatné stahování vašich zařízení. Cloudová služba Azure Security Center for IoT je k dispozici se zkušební verzí na předplatné Azure za 30 dní. Pokud chcete začít, Stáhněte si [modul zabezpečení pro Azure RTO](https://github.com/azure-rtos/iot-security-module-preview) . 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o Azure Security Center podpoře služby IoT Azure RTO. Informace o tom, jak začít a jak povolit řešení zabezpečení v IoT Hub, najdete v následujících článcích:
+V tomto článku jste se seznámili s modulem zabezpečení pro službu Azure RTO. Další informace o modulu zabezpečení a o tom, jak začít, najdete v následujících článcích:
 
-- [Požadavky služeb](service-prerequisites.md)
-- [Začínáme](getting-started.md)
-- [Konfigurace vašeho řešení](quickstart-configure-your-solution.md)
-- [Povolit zabezpečení v IoT Hub](quickstart-onboard-iot-hub.md)
-- [Nejčastější dotazy k Azure Security Center pro IoT](resources-frequently-asked-questions.md)
-- [Výstrahy zabezpečení ve službě Azure Security Center pro IoT](concept-security-alerts.md)
+- [Koncepce modulu zabezpečení Azure RTO IoT](concept-rtos-security-module.md)
+- [Rychlý Start: modul zabezpečení Azure RTO IoT](quickstart-azure-rtos-security-module.md)
+
+

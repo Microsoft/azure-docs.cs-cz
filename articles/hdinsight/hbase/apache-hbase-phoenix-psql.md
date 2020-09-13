@@ -1,19 +1,19 @@
 ---
 title: Hromadné načítání do Apache Phoenix s využitím psql – Azure HDInsight
 description: Načtení dat hromadného načtení do Apache Phoenix tabulek v Azure HDInsight pomocí nástroje psql
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: c46b15c6744ba9d3f83260ffaac24c4ee1cdd776
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 513d48114d73b2c91ebecf06f9492a6ebf0ba1cf
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079475"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504702"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Hromadné načtení dat do Apache Phoenixu s využitím psql
 
@@ -33,7 +33,7 @@ Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a ž
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Použít `psql` k hromadnému načítání tabulek
 
-1. Vytvořte soubor s názvem `createCustomersTable.sql` a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
+1. Vytvořte soubor s názvem `createCustomersTable.sql` a zkopírujte níže uvedený kód do souboru. Pak soubor uložte a zavřete ho.
 
     ```sql
     CREATE TABLE Customers (
@@ -44,13 +44,13 @@ Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a ž
         Country varchar);
     ```
 
-1. Vytvořte soubor s názvem `listCustomers.sql` a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
+1. Vytvořte soubor s názvem `listCustomers.sql` a zkopírujte níže uvedený kód do souboru. Pak soubor uložte a zavřete ho.
 
     ```sql
     SELECT * from Customers;
     ```
 
-1. Vytvořte soubor s názvem `customers.csv` a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
+1. Vytvořte soubor s názvem `customers.csv` a zkopírujte níže uvedený kód do souboru. Pak soubor uložte a zavřete ho.
 
     ```txt
     1,Samantha,260000.0,18,US
@@ -58,7 +58,7 @@ Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a ž
     3,Anton,550150.0,42,Norway
     ```
 
-1. Vytvořte soubor s názvem `customers2.csv` a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
+1. Vytvořte soubor s názvem `customers2.csv` a zkopírujte níže uvedený kód do souboru. Pak soubor uložte a zavřete ho.
 
     ```txt
     4,Nicolle,180000.0,22,US

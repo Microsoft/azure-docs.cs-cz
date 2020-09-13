@@ -1,22 +1,22 @@
 ---
 title: Rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF) | Microsoft Docs
-description: Tento článek vám pomůže pochopit, jak používat Firewall webových aplikací pomocí služby rezervované front dveří.
+description: Tento článek vám pomůže pochopit, jak používat Firewall webových aplikací ve službě Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
-author: tremansdoerfer
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/06/2020
-ms.author: rimansdo
-ms.openlocfilehash: 6f91a98372aa85a52a6013a121235ca354004a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a0252004b01e64b195b372d72682f6b777012258
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743537"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535427"
 ---
 # <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
 
@@ -26,7 +26,7 @@ K nastavení WAF v tomto kurzu budeme používat rozhraní příkazového řádk
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 Pokyny v tomto blogu používají rozhraní příkazového řádku Azure (CLI). Podívejte se na tento průvodce, abyste [mohli začít s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
@@ -119,7 +119,7 @@ Zpočátku se vlastní název domény vaší webové aplikace (například www.c
 
 Konkrétní kroky pro aktualizaci záznamů DNS budou záviset na poskytovateli služby DNS, ale pokud používáte Azure DNS k hostování názvu DNS, můžete v dokumentaci použít postup [aktualizace záznamu DNS](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) a nasměrovat na název hostitele AFD. 
 
-Jedním z klíčových věcí k poznámení je, že pokud potřebujete, aby vaši uživatelé mohli přejít na web pomocí vrcholu zóny, pro příkladu, contoso.com je nutné použít Azure DNS a [typ záznamu aliasu](https://docs.microsoft.com/azure/dns/dns-alias) pro hostování vašeho názvu DNS. 
+Jedním z klíčových věcí k poznámení je, že pokud potřebujete, aby vaši uživatelé mohli přejít na web pomocí vrcholu zóny, například contoso.com, musíte použít Azure DNS a [typ záznamu aliasu](https://docs.microsoft.com/azure/dns/dns-alias) pro hostování názvu DNS. 
 
 Kromě toho je také potřeba aktualizovat konfiguraci AFD, aby se do ní [přidala Tato vlastní doména](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) , aby AFD toto mapování pochopilo.
 

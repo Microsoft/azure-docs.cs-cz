@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: be7736d0c90d1c384e15e8c7dee29d016b052dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559443"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514233"
 ---
 # <a name="upstream-settings"></a>Nastavení pro upstream
 
-Nadřazený objekt je funkce, která umožňuje službě Azure Signal Service odesílat zprávy a události připojení do sady koncových bodů v režimu bez serveru. Pomocí nadřazeného datového proudu můžete vyvolat metodu rozbočovače z klientů v režimu bez serveru a koncovým bodům se dá upozornit, když jsou připojení klienta připojena nebo odpojena.
+Nadřazený objekt je funkce ve verzi Preview, která umožňuje službě Azure Signal Service odesílat zprávy a události připojení do sady koncových bodů v režimu bez serveru. Pomocí nadřazeného datového proudu můžete vyvolat metodu rozbočovače z klientů v režimu bez serveru a koncovým bodům se dá upozornit, když jsou připojení klienta připojena nebo odpojena.
 
 > [!NOTE]
 > Nastavení pro odesílání dat může konfigurovat jenom režim bez serveru.
@@ -34,13 +34,13 @@ V případě, že dojde k zadané události, jsou kontrolována pravidla položk
 
 Můžete parametrizovat adresu URL pro podporu různých vzorů. Existují tři předdefinované parametry:
 
-|Předdefinovaný parametr|Description|
+|Předdefinovaný parametr|Popis|
 |---------|---------|
 |zdroj| Centrum je koncept služby Azure Signal. Centrum je jednotka izolace. Rozsah uživatelů a doručování zpráv je omezen na centrum.|
 |kategorií| Kategorie může být jedna z následujících hodnot: <ul><li>**připojení**: události doby života připojení. Je aktivována, když je připojení klienta připojeno nebo odpojeno. Zahrnuje připojené a odpojené události.</li><li>**zprávy**: aktivuje se, když klienti vyvolají metodu rozbočovače. Zahrnuje všechny ostatní události kromě těch v kategorii **připojení** .</li></ul>|
 |událostí| Pro kategorii **zprávy** je událost cílem ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) , kterou klienti odesílají. Pro kategorii **připojení** se používají jenom *připojená* a *odpojená* .|
 
-Tyto předdefinované parametry lze použít ve vzoru adresy URL. Při hodnocení nadřazené adresy URL budou parametry nahrazeny zadanou hodnotou. Příklad: 
+Tyto předdefinované parametry lze použít ve vzoru adresy URL. Při hodnocení nadřazené adresy URL budou parametry nahrazeny zadanou hodnotou. Například: 
 ```
 http://host.com/{hub}/api/{category}/{event}
 ```
@@ -60,6 +60,10 @@ Můžete nastavit pravidla pro *pravidla centra*, *pravidla kategorie*a *pravidl
 - K připojení více událostí použijte čárku (,). Například se `connected, disconnected` shoduje s připojenými a odpojenými událostmi.
 - Pro vyhledání události použijte úplný název události. Například `connected` odpovídá připojené události.
 
+> [!NOTE]
+> Pokud používáte Azure Functions a [Trigger signálu](../azure-functions/functions-bindings-signalr-service-trigger.md), Trigger signálu Trigger vystaví jeden koncový bod v následujícím formátu: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>` .
+> Pro tuto adresu URL můžete pouze nakonfigurovat šablonu URL.
+
 ### <a name="authentication-settings"></a>Nastavení ověřování
 
 Ověřování můžete nakonfigurovat pro každou položku nastavení pro odesílání zvlášť. Když nakonfigurujete ověřování, v `Authentication` záhlaví nadřazeného zprávy se nastaví token. Služba signalizace Azure v současné době podporuje následující typy ověřování:
@@ -78,7 +82,7 @@ Když vyberete `ManagedIdentity` , musíte povolit spravovanou identitu ve služ
 3. Přidejte adresy URL pod **vzorem nadřazených adres URL**. Pak nastavení, jako jsou **pravidla centra** , se zobrazí jako výchozí hodnota.
 4. Pokud chcete nastavit nastavení pro **pravidla centra**, **pravidla událostí**, **pravidla kategorií**a **nadřazené ověřování**, vyberte hodnotu **pravidla rozbočovače**. Zobrazí se stránka, která umožňuje upravit nastavení:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Nastavení pro upstream":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Podrobnosti o nadřazeném nastavení":::
 
 5. Pokud chcete nastavit **nadřazené ověřování**, ujistěte se, že jste nejdřív povolili spravovanou identitu. Pak vyberte **použít spravovanou identitu**. Podle vašich potřeb můžete zvolit jakékoli možnosti v části **ID prostředku ověřování**. Podrobnosti najdete v tématu [spravované identity pro službu Azure Signal Service](howto-use-managed-identity.md) .
 
@@ -119,7 +123,7 @@ POST
 
 ### <a name="request-header"></a>Hlavička požadavku
 
-|Name |Description|
+|Název |Popis|
 |---------|---------|
 |X-ASRS-ID připojení |ID připojení pro připojení klienta.|
 |X – ASRS – rozbočovač |Centrum, do kterého patří klientské připojení.|
@@ -139,17 +143,17 @@ Content-Type: Application/JSON
 
 #### <a name="disconnected"></a>Propojení
 
-Typ obsahu:`application/json`
+Typ obsahu: `application/json`
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |Chyba |řetězec |Chybová zpráva uzavřeného připojení. Prázdné při zavření připojení bez chyby.|
 
 #### <a name="invocation-message"></a>Zpráva o vyvolání
 
-Typ obsahu: `application/json` nebo`application/x-msgpack`
+Typ obsahu: `application/json` nebo `application/x-msgpack`
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |InvocationId |řetězec | Volitelný řetězec, který představuje zprávu o vyvolání. Hledání podrobností ve [voláních](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Cíl |řetězec | Totéž jako u události a stejné jako cíl ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding). |

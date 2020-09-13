@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Migrate zařízením
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050671"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514539"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -21,7 +21,7 @@ Tento článek obsahuje odpovědi na běžné otázky týkající se zařízení
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Co je zařízení Azure Migrate?
 
-Zařízení Azure Migrate je odlehčené zařízení, které Azure Migrate: Nástroj pro vyhodnocení serveru používá ke zjišťování a vyhodnocení místních serverů. Azure Migrate: Nástroj pro migraci serveru používá také zařízení pro migraci místních virtuálních počítačů VMware bez agenta.
+Zařízení Azure Migrate je odlehčené zařízení, které Azure Migrate: Nástroj pro vyhodnocení serveru používá ke zjišťování a vyhodnocení fyzických nebo virtuálních serverů z místního prostředí nebo jakéhokoli cloudu. Azure Migrate: Nástroj pro migraci serveru používá také zařízení pro migraci místních virtuálních počítačů VMware bez agenta.
 
 Zde jsou další informace o zařízení Azure Migrate:
 
@@ -35,13 +35,14 @@ Zde jsou další informace o zařízení Azure Migrate:
 
 Zařízení se dá nasadit takto:
 
-- Použití šablony pro virtuální počítače VMware a virtuální počítače Hyper-V (šablona vajíček pro VMware nebo VHD pro Hyper-V).
-- Pokud nechcete používat šablonu nebo jste v Azure Government, můžete zařízení nasadit pro VMware nebo Hyper-V pomocí skriptu PowerShellu.
-- U fyzických serverů vždy nasadíte zařízení pomocí skriptu.
+- Použití šablony pro zjišťování virtuálních počítačů VMware (. Soubor vajíček) a virtuální počítače Hyper-V (. Soubor VHD) k vytvoření nového virtuálního počítače, který je hostitelem zařízení.
+- Pokud nechcete používat šablonu, můžete zařízení nasadit na existující fyzický nebo virtuální počítač pro zjišťování virtuálních počítačů VMware nebo virtuálních počítačů Hyper-V pomocí skriptu instalačního programu PowerShellu, který je k dispozici ke stažení v souboru zip z portálu.
+- U fyzických nebo virtuálních serverů v místním prostředí nebo v jakémkoli cloudu vždy nasadíte zařízení pomocí skriptu na existujícím serveru.
+- Pro Azure Government se všechna tři zařízení dají nasadit jenom pomocí skriptu PowerShellu pro instalační program.
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Jak se zařízení připojuje k Azure?
 
-Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute.
+Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute. Ujistěte se, že tyto [adresy URL](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) jsou na seznamu povolených, aby se zařízení mohlo připojit k Azure.
 
 - Pokud chcete používat Azure ExpressRoute pro Azure Migrate provozu replikace, vyžaduje se partnerský vztah Microsoftu nebo existující veřejný partnerský vztah (veřejný partnerský vztah je zastaralý pro nové vytváření ER).
 - Replikace přes Azure ExpressRoute jenom s povoleným privátním partnerským vztahem není podporovaná.
@@ -66,6 +67,7 @@ Informace o datech, která Azure Migrate zařízení shromažďuje na virtuáln�
 
 - **Virtuální počítač VMware**: [Projděte si](migrate-appliance.md#collected-data---vmware) shromážděná data.
 - **Virtuální počítač Hyper-V**: [Projděte si](migrate-appliance.md#collected-data---hyper-v) shromážděná data.
+- **Fyzické nebo virtuální servery**:[Prohlédněte si](migrate-appliance.md#collected-data---physical) shromážděná data.
 
 ## <a name="how-is-data-stored"></a>Jak se data ukládají?
 
@@ -107,8 +109,7 @@ K projektu může být připojeno více zařízení. Zařízení je však možn�
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Může se zařízení Azure Migrate/zařízení replikace připojit ke stejnému vCenter?
 
-Yes. Do stejného serveru vCenter můžete přidat Azure Migrate zařízení (používá se pro vyhodnocení a migraci VMware bez agentů) a zařízení replikace (používané pro migraci virtuálních počítačů VMware na základě agenta).
-
+Yes. Do stejného serveru vCenter můžete přidat Azure Migrate zařízení (používá se pro vyhodnocení a migraci VMware bez agentů) a zařízení replikace (používané pro migraci virtuálních počítačů VMware na základě agenta). Ujistěte se ale, že nenastavujete obě zařízení na jednom virtuálním počítači a že se v tuto chvíli nepodporuje.
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů nebo serverů můžu zjistit pomocí zařízení?
 
@@ -124,7 +125,9 @@ Odstraněním skupiny prostředků se ale odstraní taky další registrovaná z
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Můžu zařízení používat s jiným předplatným nebo projektem?
 
-Po použití zařízení k zahájení zjišťování nemůžete znovu nakonfigurovat zařízení tak, aby se používalo s jiným předplatným Azure, a nemůžete ho použít v jiném Azure Migrateovém projektu. Virtuální počítače nemůžete najít ani na jiné instanci vCenter Server. Nastavte nové zařízení pro tyto úlohy.
+Pokud chcete zařízení používat s jiným předplatným nebo projektem, budete muset znovu nakonfigurovat stávající zařízení spuštěním skriptu instalačního programu PowerShellu pro konkrétní scénář (VMware/Hyper-V/fyzický) na počítači zařízení. Skript vyčistí existující součásti a nastavení zařízení, aby se nasadilo nové zařízení. Než začnete používat nově nasazeného Správce konfigurace zařízení, nezapomeňte prosím vymazat mezipaměť prohlížeče.
+
+Také nelze znovu použít existující klíč projektu Azure Migrate na znovu nakonfigurovaném zařízení. Abyste dokončili registraci zařízení, ujistěte se, že jste vygenerovali nový klíč z požadovaného předplatného nebo projektu.
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Můžu zařízení nastavit na virtuálním počítači Azure?
 
