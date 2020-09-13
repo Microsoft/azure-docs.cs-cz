@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135521"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459517"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
 
@@ -36,7 +36,7 @@ Pomocí rozevíracích seznamů v horní části obrazovky změňte pracovní pr
 
 Pomocí následujícího postupu můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném.
 
-1. Přejděte na [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **řešení**.
+1. Přejděte na web [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **řešení**.
 1. Jsou uvedena řešení nainstalovaná ve všech pracovních prostorech. Za názvem řešení následuje název pracovního prostoru, ve kterém je nainstalovaný.
 1. Pomocí rozevíracích seznamů v horní části obrazovky můžete filtrovat podle předplatného nebo skupiny prostředků.
 
@@ -97,7 +97,7 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
    Před spuštěním příkazů odkazů CLI musíte [nainstalovat rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) .  Pokud budete chtít, můžete k dokončení kroků v tomto článku použít také Azure Cloud Shell.  Azure Cloud Shell je interaktivní prostředí prostředí, které používáte v prohlížeči.  Spusťte Cloud Shell pomocí jedné z následujících metod:
 
-   - Otevřete Cloud Shell tak, že na[https://shell.azure.com](https://shell.azure.com)
+   - Otevřete Cloud Shell tak, že na [https://shell.azure.com](https://shell.azure.com)
 
    - Vyberte tlačítko **Cloud Shell** na řádku nabídek v pravém horním rohu [Azure Portal](https://portal.azure.com)
 
@@ -109,18 +109,18 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
     az login
     ```
 
-1. Nainstalovat `log-analytics` rozšíření
+1. Nainstalovat `log-analytics-solution` rozšíření
 
-   `log-analytics`Příkaz je experimentálním rozšířením základního rozhraní příkazového řádku Azure. Další informace o odkazech na rozšíření v [používání rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview?).
+   `log-analytics-solution`Příkaz je experimentálním rozšířením základního rozhraní příkazového řádku Azure. Další informace o odkazech na rozšíření v [používání rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview?).
 
    ```azurecli
-   az extension add --name log-analytics
+   az extension add --name log-analytics-solution
    ```
 
    Očekává se následující upozornění.
 
    ```output
-   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   The installed extension `log-analytics-solution` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Instalace řešení pomocí Azure CLI
@@ -159,7 +159,6 @@ Všechna řešení monitorování vyžadují [Log Analytics pracovní prostor](.
 
 * Každá instalace řešení může použít jenom jeden Log Analytics pracovní prostor a jeden účet Automation. Řešení můžete nainstalovat samostatně do několika pracovních prostorů.
 * Pokud řešení vyžaduje účet Automation, musí být tento pracovní prostor Log Analytics a účet Automation vzájemně propojený. Log Analytics pracovní prostor může být propojený jenom s jedním účtem Automation a účet Automation se dá propojit jenom s jedním pracovním prostorem Log Analytics.
-* Aby bylo možné je propojit, musí být pracovní prostor Log Analytics a účet Automation ve stejném předplatném, ale mohou být v různých skupinách prostředků nasazených do stejné oblasti. Výjimkou je pracovní prostor v Východní USA oblasti a účet Automation v Východní USA 2.
 
 Když nainstalujete řešení prostřednictvím Azure Marketplace, budete vyzváni k zadání pracovního prostoru a účtu Automation. Propojení mezi nimi je vytvořeno, pokud již nejsou propojena.
 

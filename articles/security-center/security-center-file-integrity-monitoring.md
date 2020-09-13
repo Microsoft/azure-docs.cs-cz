@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 910d98558e5b949a76202cce48c2a210531d5c35
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042662"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459789"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů ve službě Azure Security Center
 Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security Center pomocí tohoto návodu.
@@ -31,7 +31,7 @@ Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security
 |Stav vydaných verzí:|Všeobecně dostupné|
 |Stanov|Úroveň Standard|
 |Požadované role a oprávnění:|**Vlastník pracovního prostoru** může povolit nebo zakázat FIM (Další informace najdete v tématu [role Azure pro Log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>**Čtenář** může zobrazit výsledky.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 
@@ -249,7 +249,7 @@ V tomto článku jste se dozvěděli o použití monitorování integrity soubor
 
 * [Nastavení zásad zabezpečení](tutorial-security-policy.md) – Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení](security-center-recommendations.md) – Přečtěte si, jak doporučení vám pomůžou chránit vaše prostředky Azure.
-* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) – Získejte nejnovější informace o zabezpečení Azure.
+* [Blog Azure Security](https://docs.microsoft.com/archive/blogs/azuresecurity/) – Získejte nejnovější informace o zabezpečení Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 85e95dc4138fd638c8db9f5c98a7064153c7ef17
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181642"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461829"
 ---
 # <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Správa zařízení GPU Azure Stackového grafického okraje prostřednictvím prostředí Windows PowerShell
 
@@ -22,7 +22,7 @@ ms.locfileid: "89181642"
 Tento článek se zaměřuje na to, jak se můžete připojit k rozhraní PowerShellu zařízení a úlohám, které můžete používat v tomto rozhraní. 
 
 
-## <a name="connect-to-the-powershell-interface"></a>Připojení k rozhraní PowerShell
+## <a name="connect-to-the-powershell-interface"></a>Připojte se k rozhraní PowerShellu.
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -30,24 +30,24 @@ Tento článek se zaměřuje na to, jak se můžete připojit k rozhraní PowerS
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>Nahrání certifikátu
+<!--## Upload certificate
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Můžete také nahrát IoT Edge certifikátů a povolit tak zabezpečené připojení mezi zařízením IoT Edge a zařízeními pro příjem dat, která se k němu mohou připojit. Existují tři certifikáty IoT Edge (formát *. pem* ), které je třeba nainstalovat:
+You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
 
-- Certifikát kořenové certifikační autority nebo certifikační autorita vlastníka
-- Certifikát certifikační autority zařízení
-- Certifikát klíče zařízení
+- Root CA certificate or the owner CA
+- Device CA certificate
+- Device key certificate
 
-Následující příklad ukazuje použití této rutiny k instalaci IoT Edgech certifikátů:
+The following example shows the usage of this cmdlet to install IoT Edge certificates:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-Při spuštění této rutiny se zobrazí výzva, abyste zadali heslo pro sdílenou síťovou složku.
+When you run this cmdlet, you will be prompted to provide the password for the network share.
 
-Další informace o certifikátech najdete v [Azure IoT Edge certifikáty](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) nebo [Instalace certifikátů na bránu](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
+For more information on certificates, go to [Azure IoT Edge certificates](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) or [Install certificates on a gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).-->
 
 ## <a name="view-device-information"></a>Zobrazit informace o zařízení
  
@@ -121,18 +121,45 @@ Pokud je v zařízení nakonfigurovaná výpočetní role, můžete získat výp
     - `FullLogCollection`: Tento parametr zajišťuje, že balíček protokolu bude obsahovat všechny protokoly výpočtů. Ve výchozím nastavení obsahuje balíček protokolu pouze podmnožinu protokolů.
 
 
+## <a name="change-kubernetes-pod-and-service-subnets"></a>Změna Kubernetes pod a podsítí služby
+
+Ve výchozím nastavení Kubernetes Azure Stack na zařízení Edge používá podsítě 172.27.0.0/16 a 172.28.0.0/16 pro pod a službu. Pokud se tyto podsítě už ve vaší síti používají, můžete spuštěním `Set-HcsKubeClusterNetworkInfo` rutiny tyto podsítě změnit.
+
+Tuto konfiguraci chcete provést před konfigurací výpočtů z Azure Portal, protože se v tomto kroku vytvoří cluster Kubernetes.
+
+1. Připojte se k rozhraní PowerShell zařízení.
+1. Z rozhraní PowerShellu zařízení spusťte:
+
+    `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
+
+    Nahraďte <subnet details> rozsahem podsítě, který chcete použít. 
+
+1. Po spuštění tohoto příkazu můžete pomocí `Get-HcsKubeClusterNetworkInfo` příkazu ověřit, zda byly podsítě pod a služby změněny.
+
+Zde je ukázkový výstup tohoto příkazu.
+
+```powershell
+[10.100.10.10]: PS>Set-HcsKubeClusterNetworkInfo -PodSubnet 10.96.0.1/16 -ServiceSubnet 10.97.0.1/16
+[10.100.10.10]: PS>Get-HcsKubeClusterNetworkInfo
+
+Id                                   PodSubnet    ServiceSubnet
+--                                   ---------    -------------
+6dbf23c3-f146-4d57-bdfc-76cad714cfd1 10.96.0.1/16 10.97.0.1/16
+[10.100.10.10]: PS>
+```
+
 
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>Ladění problémů s Kubernetes souvisejícími s IoT Edge
 
-Když se vytvoří cluster Kubernetes, vytvoří `aseuser` se taky výchozí uživatel přidružený k oboru názvů System `iotedge` . Chcete-li ladit všechny problémy související s IoT Edge, můžete použít tento uživatelský a systémový obor názvů.  
+<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
 
-### <a name="create-config-file-for-system-namespace"></a>Vytvořit konfigurační soubor pro obor názvů System
+<!--### Create config file for system namespace
 
-Chcete-li vyřešit potíže, nejprve vytvořte `config` soubor odpovídající `iotedge` oboru názvů pomocí `aseuser` .
+To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
 
-Spusťte `Get-HcsKubernetesUserConfig -AseUser` příkaz a uložte výstup jako `config` soubor (bez přípony souboru). Uložte soubor do `.kube` složky vašeho uživatelského profilu na místním počítači.
+Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
 
-Následuje ukázkový výstup `Get-HcsKubernetesUserConfig` příkazu.
+Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
 
 ```PowerShell
 [10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
@@ -158,11 +185,67 @@ users:
 
 [10.100.10.10]: PS>
 ```
+-->
+
+Na Azure Stack hraničním zařízení s nakonfigurovanou výpočetní rolí můžete zařízení řešit nebo monitorovat pomocí dvou různých sad příkazů.
+
+- Použití `iotedge` příkazů. Tyto příkazy jsou k dispozici pro základní operace vašeho zařízení.
+- Použití `kubectl` příkazů. Tyto příkazy jsou k dispozici pro rozsáhlou sadu operací pro vaše zařízení.
+
+Pokud chcete spustit některou z výše uvedených příkazů, musíte se [připojit k rozhraní PowerShell](#connect-to-the-powershell-interface).
+
+### <a name="use-iotedge-commands"></a>Použití `iotedge` příkazů
+
+Pokud chcete zobrazit seznam dostupných příkazů, [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface) a použijte `iotedge` funkci.
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                           
+Usage: iotedge COMMAND
+
+Commands:
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+Následující tabulka obsahuje stručný popis příkazů, které jsou k dispozici pro `iotedge` :
+
+|command  |Popis |
+|---------|---------|
+|`list`     | Seznam modulů         |
+|`logs`     | Načtení protokolů modulu        |
+|`restart`     | Zastavení a restartování modulu         |
+
+
+Pokud chcete zobrazit seznam všech modulů spuštěných v zařízení, použijte `iotedge list` příkaz.
+
+Zde je ukázkový výstup tohoto příkazu. Tento příkaz vypíše všechny moduly, přidruženou konfiguraci a externí IP adresy přidružené k modulům. Můžete například získat přístup k aplikaci **webserver** na adrese `https://10.128.44.244` . 
+
+
+```powershell
+[10.100.10.10]: PS>iotedge list
+
+NAME                   STATUS  DESCRIPTION CONFIG                                             EXTERNAL-IP
+----                   ------  ----------- ------                                             -----
+gettingstartedwithgpus Running Up 10 days  mcr.microsoft.com/intelligentedge/solutions:latest
+iotedged               Running Up 10 days  azureiotedge/azureiotedge-iotedged:0.1.0-beta10    <none>
+edgehub                Running Up 10 days  mcr.microsoft.com/azureiotedge-hub:1.0             10.128.44.243
+edgeagent              Running Up 10 days  azureiotedge/azureiotedge-agent:0.1.0-beta10
+webserverapp           Running Up 10 days  nginx:stable                                       10.128.44.244
+
+[10.100.10.10]: PS>
+```
+
+
+### <a name="use-kubectl-commands"></a>Použití příkazů kubectl
 
 Na Azure Stack hraničním zařízení s nakonfigurovanou výpočetní rolí `kubectl` jsou všechny příkazy k dispozici pro monitorování a odstraňování potíží s moduly. Pokud chcete zobrazit seznam dostupných příkazů, spusťte `kubectl --help` z příkazového řádku.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
+
 kubectl controls the Kubernetes cluster manager.
 
 Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
@@ -187,7 +270,7 @@ C:\Users\myuser>
 Úplný seznam `kubectl` příkazů najdete na [ `kubectl` k vytištění](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
 
-### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Získání IP adresy služby nebo modulu vystaveného mimo cluster Kubernetes
+#### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Získání IP adresy služby nebo modulu vystaveného mimo cluster Kubernetes
 
 Pokud chcete získat IP adresu služby Vyrovnávání zatížení nebo modulů vystavených mimo Kubernetes, spusťte následující příkaz:
 
@@ -197,39 +280,53 @@ Následuje ukázkový výstup všech služeb nebo modulů, které jsou vystaveny
 
 
 ```powershell
-C:\Users\user>kubectl get svc -n iotedge
+[10.100.10.10]: PS>kubectl get svc -n iotedge
 NAME           TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)                                       AGE
 edgehub        LoadBalancer   10.103.52.225   10.128.44.243   443:31987/TCP,5671:32336/TCP,8883:30618/TCP   34h
 iotedged       ClusterIP      10.107.236.20   <none>          35000/TCP,35001/TCP                           3d8h
 webserverapp   LoadBalancer   10.105.186.35   10.128.44.244   8080:30976/TCP                                16h
 
-C:\Users\user>
+[10.100.10.10]: PS>
 ```
 IP adresa ve sloupci externí IP adresa odpovídá externímu koncovému bodu pro službu nebo modul. [Externí IP adresu můžete získat i na řídicím panelu Kubernetes](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules).
 
 
-### <a name="to-check-if-module-deployed-successfully"></a>Postup kontroly úspěšného nasazení modulu
+#### <a name="to-check-if-module-deployed-successfully"></a>Postup kontroly úspěšného nasazení modulu
 
-Výpočetní moduly jsou kontejnery, které mají implementaci obchodní logiky. Kubernetes pod může mít spuštěno více kontejnerů. Pokud chcete zjistit, jestli je výpočetní modul úspěšně nasazený, spusťte `get pods` příkaz a ověřte, jestli je spuštěný kontejner (odpovídající modulu COMPUTE).
+Výpočetní moduly jsou kontejnery, které mají implementaci obchodní logiky. Kubernetes pod může mít spuštěno více kontejnerů. 
+
+Pokud chcete zjistit, jestli je výpočetní modul úspěšně nasazený, připojte se k rozhraní PowerShell zařízení.
+Spusťte `get pods` příkaz a ověřte, jestli je spuštěný kontejner (odpovídající modulu COMPUTE).
 
 Chcete-li získat seznam všech lusků spuštěných v určitém oboru názvů, spusťte následující příkaz:
 
 `get pods -n <namespace>`
 
+Chcete-li kontrolovat moduly nasazené pomocí IoT Edge, spusťte následující příkaz:
+
+`get pods -n iotedge`
+
 Následuje ukázkový výstup všech lusků spuštěných v `iotedge` oboru názvů.
 
 ```
-C:\Users\myuser>kubectl get pods -n iotedge
+[10.100.10.10]: PS>kubectl get pods -n iotedge
 NAME                        READY   STATUS    RESTARTS   AGE
 edgeagent-cf6d4ffd4-q5l2k   2/2     Running   0          20h
 edgehub-8c9dc8788-2mvwv     2/2     Running   0          56m
 filemove-66c49984b7-h8lxc   2/2     Running   0          56m
 iotedged-675d7f4b5f-9nml4   1/1     Running   0          20h
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
 
 **Stav stav označuje,** že všechny lusky v oboru názvů jsou spuštěné a kde **Ready** označuje počet kontejnerů nasazených v poli pod. V předchozí ukázce jsou spuštěny všechny lusky a jsou spuštěny všechny moduly nasazené v každém z obou lusků. 
+
+Pokud chcete kontrolovat moduly nasazené přes Azure ARC, spusťte následující příkaz:
+
+`get pods -n azure-arc`
+
+Alternativně se můžete [připojit k řídicímu panelu Kubernetes a zobrazit IoT Edge nebo nasazení ARC Azure](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#view-module-status).
+
 
 Podrobnější výstup konkrétního pole pod pro daný obor názvů můžete spustit pomocí následujícího příkazu:
 
@@ -238,7 +335,7 @@ Podrobnější výstup konkrétního pole pod pro daný obor názvů můžete sp
 Ukázkový výstup se zobrazí zde.
 
 ```
-C:\Users\myuser>kubectl describe pod filemove-66c49984b7 -n iotedge
+[10.100.10.10]: PS>kubectl describe pod filemove-66c49984b7 -n iotedge
 Name:           filemove-66c49984b7-h8lxc
 Namespace:      iotedge
 Priority:       0
@@ -295,12 +392,12 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
 Events:          <none>
 
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
 
-### <a name="to-get-container-logs"></a>Získání protokolů kontejnerů
+#### <a name="to-get-container-logs"></a>Získání protokolů kontejnerů
 
-Chcete-li získat protokoly pro modul, spusťte následující příkaz:
+Pokud chcete získat protokoly pro modul, spusťte následující příkaz z rozhraní PowerShell zařízení:
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
@@ -309,7 +406,7 @@ Vzhledem k tomu `all-containers` , že příznak vypíše všechny protokoly pro
 Následuje ukázkový výstup. 
 
 ```
-C:\Users\myuser>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
+[10.100.10.10]: PS>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
 DEBUG 2020-05-14T20:40:42Z: loop process - 0 events, 0.000s
 DEBUG 2020-05-14T20:40:44Z: loop process - 0 events, 0.000s
 DEBUG 2020-05-14T20:40:44Z: loop process - 0 events, 0.000s
@@ -325,8 +422,10 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 05/14/2020 19:46:45: Info: Initializing with input: /home/input, output: /home/output, protocol: Amqp.
 05/14/2020 19:46:45: Info: IoT Hub module client initialized.
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
+
+
 
 ## <a name="exit-the-remote-session"></a>Ukončit vzdálenou relaci
 

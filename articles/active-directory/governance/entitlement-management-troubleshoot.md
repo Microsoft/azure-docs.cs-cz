@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783327"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460792"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
 
@@ -47,7 +47,7 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Když odeberete člena týmu, odeberou se také z Microsoft 365 skupiny. Odebrání z týmového chatu může trvat o něco déle. Další informace najdete v tématu [členství ve skupině](/microsoftteams/office-365-groups#group-membership).
 
-* Ujistěte se, že váš adresář není nakonfigurovaný pro více geografických umístění. Správa nároků v současné době nepodporuje více geografických umístění pro SharePoint Online. Weby SharePointu Online musí být ve výchozím geografickém umístění, aby se mohly řídit pomocí správy nároků. Další informace najdete v tématu [s více geografickými možnostmi na OneDrivu a SharePointu Online](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+* Ujistěte se, že váš adresář není nakonfigurovaný pro více geografických umístění. Správa nároků v současné době nepodporuje více geografických umístění pro SharePoint Online. Weby SharePointu Online musí být ve výchozím geografickém umístění, aby se mohly řídit pomocí správy nároků. Další informace najdete v tématu [s více geografickými možnostmi na OneDrivu a SharePointu Online](/Microsoft 365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="access-packages"></a>Přístupové balíčky
 

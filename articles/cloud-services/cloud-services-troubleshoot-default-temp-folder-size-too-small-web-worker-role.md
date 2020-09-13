@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: bea9e163e9dde6c42de87048379d663222cb56e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c4f627668b91c4bc21ad73b3511c1775943229
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82734616"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460197"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Výchozí velikost složky TEMP je pro web nebo roli pracovního procesu cloudové služby moc malá.
 Výchozí dočasný adresář pracovního procesu cloudové služby nebo webové role má maximální velikost 100 MB, která může být v určitém okamžiku plná. Tento článek popisuje, jak se vyhnout nedostatku místa pro dočasný adresář.
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si blog, který popisuje, [jak zvýšit velikost ASP.NET dočasné složky webové role Azure](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+Přečtěte si blog, který popisuje, [jak zvýšit velikost ASP.NET dočasné složky webové role Azure](https://docs.microsoft.com/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder).
 
 Podívejte se na další články týkající se [řešení potíží](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) pro Cloud Services.
 
-Pokud se chcete dozvědět, jak řešit problémy s rolí cloudové služby pomocí dat diagnostiky počítačů Azure PaaS, podívejte se na [blogovou řadu Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Pokud se chcete dozvědět, jak řešit problémy s rolí cloudové služby pomocí dat diagnostiky počítačů Azure PaaS, podívejte se na [blogovou řadu Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

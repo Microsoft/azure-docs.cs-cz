@@ -8,28 +8,26 @@ ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2019
-ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 63b7ad84b0866c91e84007a188b82de65983790f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233295"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458846"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
-Tato funkce vrací hodnotu DateTime odpovídající začátku každého kontejneru DateTime z výchozí hodnoty Origin `1900-01-01 00:00:00.000` .
+Tato funkce vrací hodnotu DateTime odpovídající začátku každého kontejneru DateTime, z časového razítka definovaného `origin` parametrem nebo výchozí hodnotou, `1900-01-01 00:00:00.000` Pokud není zadán parametr Origin. 
 
 Přehled všech datových typů a dat v jazyce Transact-SQL najdete v tématu [datové typy a funkce data a času &#40;v jazyce Transact-sql&#41;](/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql/) .
 
 [Konvence syntaxe Transact-SQL](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql/)
 
-`DATE_BUCKET`používá výchozí hodnotu data původu, `1900-01-01 00:00:00.000` tj. 12:00 v pondělí, leden 1 1900.
-
 ## <a name="syntax"></a>Syntaxe
 
 ```sql
-DATE_BUCKET (datePart, number, date)
+DATE_BUCKET (datePart, number, date, origin)
 ```
 
 ## <a name="arguments"></a>Argumenty
@@ -39,7 +37,7 @@ DATE_BUCKET (datePart, number, date)
 Část *data* , která se používá s parametrem ' Number '. Například Rok, měsíc, minuta, druhý atd.
 
 > [!NOTE]
-> `DATE_BUCKET`nepřijímá uživatelsky definované proměnné ekvivalenty pro argumenty *datepPart* .
+> `DATE_BUCKET` nepřijímá uživatelsky definované proměnné ekvivalenty pro argumenty *datepPart* .
   
 |*datePart*|Zkratky|  
 |---|---|
@@ -67,15 +65,30 @@ Výraz, který může být přeložen na jednu z následujících hodnot:
 
 Pro *Datum* `DATE_BUCKET` bude akceptovat výraz sloupce, výraz nebo uživatelsky definovaná proměnná, pokud se přeloží na některý z výše uvedených typů dat.
 
+**Zdroji** 
+
+Volitelný výraz, který lze přeložit na jednu z následujících hodnot:
+
++ **Datum**
++ **datetime**
++ **DateTimeOffset**
++ **datetime2**
++ **smalldatetime**
++ **interval**
+
+Datový typ `Origin` by měl odpovídat datovému typu `Date` parametru. 
+
+`DATE_BUCKET` používá výchozí hodnotu data původu, `1900-01-01 00:00:00.000` tj. 12:00 dop. ledna 1 1900, pokud pro funkci není zadána žádná hodnota Origin.
+
 ## <a name="return-type"></a>Návratový typ
 
-Datový typ vrácené hodnoty pro tuto metodu je dynamický. Návratový typ závisí na argumentu dodaném pro `date` . Pokud je zadán platný datový typ Input pro `date` , `DATE_BUCKET` vrátí stejný datový typ. `DATE_BUCKET`vyvolá chybu, je-li pro parametr zadán řetězcový literál `date` .
+Datový typ vrácené hodnoty pro tuto metodu je dynamický. Návratový typ závisí na argumentu dodaném pro `date` . Pokud je zadán platný datový typ Input pro `date` , `DATE_BUCKET` vrátí stejný datový typ. `DATE_BUCKET` vyvolá chybu, je-li pro parametr zadán řetězcový literál `date` .
 
 ## <a name="return-values"></a>Návratové hodnoty
 
-### <a name="understanding-the-output-from-date_bucket"></a>Princip výstupu`DATE_BUCKET`
+### <a name="understanding-the-output-from-date_bucket"></a>Princip výstupu `DATE_BUCKET`
 
-`Date_Bucket`Vrátí nejnovější hodnotu data nebo času odpovídající parametru datePart a Number. Například ve výrazech níže `Date_Bucket` vrátí výstupní hodnotu `2020-04-13 00:00:00.0000000` , protože výstup se vypočítá na základě jednoho týdenního intervalu z výchozího počátečního času `1900-01-01 00:00:00.000` . Hodnota `2020-04-13 00:00:00.0000000` je 6276 týdnů od počáteční hodnoty `1900-01-01 00:00:00.000` . 
+`Date_Bucket` Vrátí nejnovější hodnotu data nebo času odpovídající parametru datePart a Number. Například ve výrazech níže `Date_Bucket` vrátí výstupní hodnotu `2020-04-13 00:00:00.0000000` , protože výstup se vypočítá na základě jednoho týdenního intervalu z výchozího počátečního času `1900-01-01 00:00:00.000` . Hodnota `2020-04-13 00:00:00.0000000` je 6276 týdnů od počáteční hodnoty `1900-01-01 00:00:00.000` . 
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
@@ -92,11 +105,19 @@ Select DATE_BUCKET(wk, 4, @date)
 Select DATE_BUCKET(wk, 6, @date)
 ```
 
-Výstup pro výraz níže, který je 6275 týdnů od počátečního času.
+Výstup níže uvedeného výrazu je `2020-04-06 00:00:00.0000000` , což je 6275 týdnů z výchozího času původu `1900-01-01 00:00:00.000` .
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
 Select DATE_BUCKET(wk, 5, @date)
+```
+
+Níže uvedený výstup výrazu je `2020-06-09 00:00:00.0000000` , což je 75 týdnů od zadaného počátečního času `2019-01-01 00:00:00` .
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(wk, 5, @date, @origin)
 ```
 
 ## <a name="datepart-argument"></a>Argument DatePart
@@ -121,11 +142,15 @@ Invalid bucket width value passed to date_bucket function. Only positive values 
 
 ## <a name="date-argument"></a>Argument data  
 
-`DATE_BUCKET`Vrátí základní hodnotu odpovídající datovému typu `date` argumentu. V následujícím příkladu je vrácena výstupní hodnota s datovým typem datetime2. 
+`DATE_BUCKET` Vrátí základní hodnotu odpovídající datovému typu `date` argumentu. V následujícím příkladu je vrácena výstupní hodnota s datovým typem datetime2. 
 
 ```sql
 Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 ```
+
+## <a name="origin-argument"></a>Argument Origin  
+
+Datový typ `origin` argumentů a v nástroji `date` musí být stejný. Pokud se používají různé datové typy, vygeneruje se chyba.
 
 ## <a name="remarks"></a>Poznámky
 
@@ -134,7 +159,7 @@ Použijte `DATE_BUCKET` v následujících klauzulích:
 + GROUP BY
 + HAVING
 + ORDER BY
-+ VYBRALI\<list>
++ VYBRALI \<list>
 + WHERE
 
 ## <a name="examples"></a>Příklady
@@ -239,7 +264,7 @@ Zde je sada výsledků.
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>Určení skalárních poddotazů a skalárních funkcí jako čísla a data
 
-V tomto příkladu se `MAX(OrderDate)` jako argumenty pro *číslo* a *Datum*používají skalární poddotazy. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)`slouží jako umělý argument pro parametr number, který ukazuje, jak vybrat *číselný* argument ze seznamu hodnot.
+V tomto příkladu se `MAX(OrderDate)` jako argumenty pro *číslo* a *Datum*používají skalární poddotazy. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` slouží jako umělý argument pro parametr number, který ukazuje, jak vybrat *číselný* argument ze seznamu hodnot.
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -268,6 +293,15 @@ Where ShipDate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 order by DateBucket
 GO  
 ``` 
+### <a name="c-using-a-non-default-origin-value"></a>C. Použití jiné než výchozí hodnoty počátku
+
+Tento příklad používá jinou než výchozí hodnotu orgin k vygenerování datových intervalů. 
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(hh, 2, @date, @origin)
+```
 
 ## <a name="see-also"></a>Viz také
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 141b19ca73c3465e59d8c94a3bdc3657d0900b8d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533151"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458909"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
@@ -87,7 +87,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** a v rozevírací nabídce vyberte zásadu snímku. 
+    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** , určete, jestli chcete cestu k snímku skrýt, a v rozevírací nabídce vyberte zásadu snímku. 
 
         Informace o vytváření zásad snímku najdete v tématu [Správa zásad snímků](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
@@ -121,7 +121,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 ## <a name="next-steps"></a>Další kroky  
 
 * [Konfigurace výchozí domény NFSv4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
-* [Konfigurace šifrování protokolu Kerberos NFSv 4.1](configure-kerberos-encryption.md)
+* [Konfigurace šifrování Kerberos NFSv4.1](configure-kerberos-encryption.md)
 * [Připojení nebo odpojení svazku pro virtuální počítače s Windows nebo Linuxem](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurace zásad exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)

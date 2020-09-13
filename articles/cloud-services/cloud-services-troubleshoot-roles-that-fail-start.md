@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71122733"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460112"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s rolemi cloudových služeb, které se nedaří spustit
 Tady jsou některé běžné problémy a řešení týkající se rolí Azure Cloud Services, které se nedaří spustit.
@@ -53,7 +53,7 @@ Zobrazení dalších úplných chyb bez použití funkce Vzdálená plocha:
     ```xml
     <customErrors mode="Off" />
     ```
-4. Uložte soubor.
+4. Soubor uložte.
 5. Znovu zabalit a znovu nasaďte službu.
 
 Po opětovném nasazení služby se zobrazí chybová zpráva s názvem chybějícího sestavení nebo knihovny DLL.
@@ -66,7 +66,7 @@ Pomocí vzdálené plochy můžete získat přístup k roli a vzdáleně zobrazi
 3. V portál Microsoft Azure, jakmile instance zobrazí stav **připraveno**, vzdáleně do instance. Další informace o používání vzdálené plochy s Cloud Services najdete v tématu [vzdálené instance rolí](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali při konfiguraci vzdálené plochy.
 6. Otevřete příkazové okno.
-7. Zadejte `IPconfig`.
+7. Zadejte příkaz `IPconfig`.
 8. Poznamenejte si hodnotu adresy IPV4.
 9. Otevřete Internet Explorer.
 10. Zadejte adresu a název webové aplikace. Například, `http://<IPV4 Address>/default.aspx`.
@@ -77,7 +77,7 @@ Když přejdete na web, budou se teď vracet explicitní chybové zprávy:
 * Popis: při provádění aktuálního webového požadavku došlo k neošetřené výjimce. Přečtěte si prosím trasování zásobníku, kde najdete další informace o chybě a kde vznikly v kódu.
 * Podrobnosti výjimky: System. IO. FIleNotFoundException: nelze načíst soubor nebo sestavení Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 nebo jedna z jeho závislostí. Systém nemůže najít zadaný soubor.
 
-Příklad:
+Například:
 
 ![Explicitní chyba serveru v aplikaci/](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
@@ -124,4 +124,4 @@ Jakmile ověříte, že byly všechny chyby opraveny, můžete službu nasadit b
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na další články týkající se [řešení potíží](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro Cloud Services.
 
-Informace o řešení potíží s rolemi cloudové služby pomocí dat diagnostiky počítačů Azure PaaS najdete v tématu [série blogů v Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Informace o řešení potíží s rolemi cloudové služby pomocí dat diagnostiky počítačů Azure PaaS najdete v tématu [série blogů v Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

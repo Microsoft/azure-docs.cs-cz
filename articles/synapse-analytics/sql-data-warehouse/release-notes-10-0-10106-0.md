@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047448"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457987"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Poznámky k verzi služby Azure synapse Analytics
 
@@ -35,7 +35,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (Formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
@@ -51,7 +51,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-|**Šifrování na úrovni sloupce (Public Preview)**|Chraňte citlivé informace v synapse SQL Data Warehouse pomocí symetrického šifrování pro sloupec dat pomocí jazyka Transact-SQL. Šifrování na úrovni sloupců obsahuje integrované funkce, které můžete použít k šifrování dat pomocí symetrických klíčů, které jsou dále chráněny pomocí certifikátu, hesla, symetrického klíče nebo asymetrického klíče. Další informace najdete v části [šifrování sloupce dat](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
+|**Šifrování na úrovni sloupce (Public Preview)**|Chraňte citlivé informace ve službě Azure synapse Analytics tím, že použijete symetrické šifrování na sloupec dat pomocí jazyka Transact-SQL. Šifrování na úrovni sloupců obsahuje integrované funkce, které můžete použít k šifrování dat pomocí symetrických klíčů, které jsou dále chráněny pomocí certifikátu, hesla, symetrického klíče nebo asymetrického klíče. Další informace najdete v části [šifrování sloupce dat](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
 |**Podpora úrovně kompatibility (GA)**|V této verzi teď uživatelé můžou nastavit úroveň kompatibility databáze a získat tak chování jazyka Transact-SQL a zpracování dotazů konkrétní verze synapse modulu SQL. Další informace najdete v tématu věnovaném konfiguraci oboru [Sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Zabezpečení na úrovni řádků**|Tato verze zahrnuje vylepšení operací aktualizace a odstranění na řádcích s vydanými RLS. S touto verzí, operace aktualizace a odstranění s vnitřními funkcemi, jako je is_rolemember, budou úspěšné, pokud vnitřní funkce neodkazuje na žádný sloupec v cílové tabulce DML. Před tímto vylepšením tyto operace selhaly kvůli omezení v podkladových operacích DML.|
 |**DBCC SHRINKDATABASE (GA)**|Teď můžete zmenšit velikost souborů dat a protokolů v zadané databázi. Další informace najdete v [dokumentaci](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15).|
@@ -144,7 +144,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-|**Klasifikace & Discovery Data**|Klasifikace & Discovery dat je teď dostupná ve verzi Public Preview pro synapse SQL. Je důležité chránit citlivá data a soukromí zákazníků. Vzhledem k tomu, že vaše podniková a zákaznická data jsou rostoucí, je možné, že je nebudete moct zjišťovat, klasifikovat a chránit vaše data. Funkce zjišťování a klasifikace dat, kterou zavádíme nativně s synapse SQL, pomáhá zajistit lepší správu vašich dat. Mezi Obecné výhody této funkce patří:<br/>&bull;&nbsp;Dodržování standardů ochrany osobních údajů a požadavků na dodržování předpisů v legislativních datech.<br/>&bull;&nbsp;Omezení přístupu a posílení zabezpečení datových skladů obsahujících vysoce citlivá data.<br/>&bull;&nbsp;Monitorování a upozorňování na neobvyklé přístup k citlivým datům.<br/>&bull;&nbsp;Vizualizace citlivých dat v centrálním řídicím panelu na Azure Portal. </br></br>Klasifikace & Discovery dat je dostupná ve všech oblastech Azure, je součástí pokročilých zabezpečení dat, včetně posouzení ohrožení zabezpečení a detekce hrozeb. Další informace o klasifikaci & Discovery dat najdete v [blogovém příspěvku](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/) a v online [dokumentaci](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).|
+|**Zjišťování a klasifikace dat**|Klasifikace & Discovery dat je teď dostupná ve verzi Public Preview pro synapse SQL. Je důležité chránit citlivá data a soukromí zákazníků. Vzhledem k tomu, že vaše podniková a zákaznická data jsou rostoucí, je možné, že je nebudete moct zjišťovat, klasifikovat a chránit vaše data. Funkce zjišťování a klasifikace dat, kterou zavádíme nativně s synapse SQL, pomáhá zajistit lepší správu vašich dat. Mezi Obecné výhody této funkce patří:<br/>&bull;&nbsp;Dodržování standardů ochrany osobních údajů a požadavků na dodržování předpisů v legislativních datech.<br/>&bull;&nbsp;Omezení přístupu a posílení zabezpečení datových skladů obsahujících vysoce citlivá data.<br/>&bull;&nbsp;Monitorování a upozorňování na neobvyklé přístup k citlivým datům.<br/>&bull;&nbsp;Vizualizace citlivých dat v centrálním řídicím panelu na Azure Portal. </br></br>Klasifikace & Discovery dat je dostupná ve všech oblastech Azure, je součástí pokročilých zabezpečení dat, včetně posouzení ohrožení zabezpečení a detekce hrozeb. Další informace o klasifikaci & Discovery dat najdete v [blogovém příspěvku](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/) a v online [dokumentaci](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).|
 |**SESKUPIT PODLE SOUHRNU**|KUMULATIVNÍ je teď podporovaná možnost seskupit podle.   Souhrn seskupit podle SOUHRNu vytvoří skupinu pro každou kombinaci výrazů sloupce. GROUP BY také "shrnuje" výsledky na mezisoučty a celkové součty. Funkce Seskupit podle funguje zprava doleva a snižuje počet výrazů sloupců, na které se vytvoří skupiny a agregace.  Pořadí sloupců má vliv na výstup SOUHRNu a může ovlivnit počet řádků v sadě výsledků dotazu.<br/><br/>Další informace o seskupení podle SOUHRNu naleznete v tématu [Group by (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 |**Vylepšená přesnost pro DWU použité a metriky na portálu CPU**|Synapse SQL významně vylepšuje přesnost metriky v Azure Portal.  Tato verze zahrnuje opravu CPU a DWU, která používá definici metriky k tomu, aby správně odrážela vaše zatížení napříč všemi výpočetními uzly. Před touto opravou byly hodnoty metriky s podsestavou. Očekává se, že se v Azure Portal použilo zvýšení v DWU a metriky procesoru. |
 |**Zabezpečení na úrovni řádků**|Do listopadu 2017 jsme zavedli funkce zabezpečení na úrovni řádků. Tato podpora se teď rozšířila i na externí tabulky. Kromě toho jsme přidali podporu pro volání nedeterministických funkcí do vložených funkcí vracející tabulky (inline TVF) vyžadovaných pro definování predikátu filtru zabezpečení. Toto přidání umožňuje zadat IS_ROLEMEMBER (), USER_NAME () atd. v predikátu filtru zabezpečení. Další informace najdete v příkladech v [dokumentaci zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).|

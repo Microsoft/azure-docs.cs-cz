@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056510"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460316"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -82,7 +82,7 @@ AKS má řídicí plochy vysoké úrovně, které se vertikálně škálují pod
     - https://github.com/helm/helm/issues/4543
 - **[Je interní provoz mezi uzly blokován?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
-## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Přijímám `TCP timeouts` , například`dial tcp <Node_IP>:10250: i/o timeout`
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Přijímám `TCP timeouts` , například `dial tcp <Node_IP>:10250: i/o timeout`
 
 Tyto časové limity můžou souviset s vnitřním přenosem mezi blokovanými uzly. Ověřte, že tento provoz není blokovaný, například [skupiny zabezpečení sítě](concepts-security.md#azure-network-security-groups) v podsíti pro uzly clusteru.
 
@@ -98,13 +98,17 @@ Důvodem upozornění je, že cluster má zapnutou RBAC a přístup k řídicím
 
 Zajistěte, aby byly porty 22, 9000 a 1194 otevřené pro připojení k serveru rozhraní API. Pomocí příkazu ověřte, zda `tunnelfront` `aks-link` je nebo pod spuštěno v oboru názvů *Kube-System* `kubectl get pods --namespace kube-system` . Pokud ne, vynutí odstranění položky pod a restartuje se.
 
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Získávám `"tls: client offered only unsupported versions"` klienta při připojování k rozhraní AKS API. Co bych měl/a dělat?
+
+Minimální podporovaná verze TLS v AKS je TLS 1,2.
+
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Snažím se upgradovat nebo škálovat a připravuje se `"Changing property 'imageReference' is not allowed"` Chyba. Návody tento problém vyřešit?
 
 K této chybě může dojít, protože jste změnili značky v uzlech agentů v clusteru AKS. Úprava nebo odstranění značek a dalších vlastností prostředků ve skupině prostředků MC_ * může vést k neočekávaným výsledkům. Změna prostředků v rámci skupiny MC_ * v clusteru AKS zruší cíl na úrovni služby (SLO).
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Zobrazují se chyby, že můj cluster je ve stavu selhání a upgrade nebo škálování nebude fungovat, dokud nebude vyřešeno.
 
-*Tato pomoc při řešení potíží je směrována zhttps://aka.ms/aks-cluster-failed*
+*Tato pomoc při řešení potíží je směrována z https://aka.ms/aks-cluster-failed*
 
 K této chybě dojde v případě, že clustery vstupují do neúspěšného stavu z více důvodů. Použijte následující postup, chcete-li vyřešit neúspěšný stav clusteru před opakováním dříve nezdařené operace:
 
@@ -115,7 +119,7 @@ K této chybě dojde v případě, že clustery vstupují do neúspěšného sta
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>Při pokusu o upgrade nebo škálování stavu, ve kterém se cluster aktualizuje nebo se nezdařil upgrade, dochází k chybám
 
-*Tato pomoc při řešení potíží je směrována zhttps://aka.ms/aks-pending-upgrade*
+*Tato pomoc při řešení potíží je směrována z https://aka.ms/aks-pending-upgrade*
 
  Cluster nebo fond uzlů nejde současně upgradovat a škálovat. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. V důsledku toho jsou operace omezené, když dojde k aktivnímu upgradu nebo operacím škálování nebo k pokusu. 
 
@@ -176,9 +180,9 @@ Pro tento problém použijte následující alternativní řešení:
 * Pokud používáte skripty pro automatizaci, přidejte časovou prodlevu mezi vytvořením instančního objektu a vytvořením clusteru AKS.
 * Pokud používáte Azure Portal, vraťte se do nastavení clusteru během vytváření a zkuste stránku ověření zopakovat po několika minutách.
 
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>Zobrazuje se `"AADSTS7000215: Invalid client secret is provided."` při používání rozhraní AKS API. Co bych měl/a dělat?
 
-
-
+Většinou je důvodem vypršení platnosti přihlašovacích údajů instančního objektu. [Aktualizujte přihlašovací údaje pro cluster AKS.](update-credentials.md)
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Po omezení odchozího provozu mi dochází k chybám
 
@@ -201,14 +205,14 @@ Ověřte, že vaše nastavení nejsou v konfliktu s žádným z požadovaných n
 
 V Kubernetes verze 1,10 může MountVolume. WaitForAttach selhat s opětovným připojením k disku Azure.
 
-V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Příklad:
+V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Například:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Příklad:
+Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Například:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -255,7 +259,7 @@ spec:
   >[!NOTE]
   > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastaveny jako neroot, například 1000, použije Kubernetes `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
 
-* Použijte `chown` v initContainers k nastavení GID a UID. Příklad:
+* Použijte `chown` v initContainers k nastavení GID a UID. Například:
 
 ```yaml
 initContainers:
@@ -414,13 +418,13 @@ Pokud se váš klíč účtu úložiště změnil, může se zobrazit chyba při
 
 Můžete zmírnit ruční aktualizací `azurestorageaccountkey` pole v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
 
-K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Příklad:
+K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Například:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Příklad:
+Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Například:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

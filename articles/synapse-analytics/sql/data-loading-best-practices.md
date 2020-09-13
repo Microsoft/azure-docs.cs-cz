@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486812"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459296"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Osvědčené postupy načítání dat pro datové sklady
 
@@ -144,6 +144,6 @@ V příslušných externích zdrojích dat se nevyžadují žádné další změ
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o PolyBase a návrhu procesu ELT (extrakce, načítání a transformace) najdete v tématu [Návrh ELT pro službu SQL Data Warehouse](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-- Kurz načítání najdete v tématu [Použití PolyBase k načítání dat z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- Další informace o základu a navrhování procesu extrakce, načítání a transformace (ELT) najdete v tématu [design ELT for Azure synapse Analytics](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- V rámci tohoto kurzu načítání [dat z úložiště objektů BLOB v Azure do služby Azure synapse Analytics použijte základnu](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b0df359a25810f09d530b5f0cca9cabbd485c795
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374129"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461980"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednotky datového skladu (DWU)
 
@@ -44,14 +44,14 @@ Zvyšování DWU:
 - Zvyšuje počet čtenářů a zapisovačů pro operace základního zatížení.
 - Zvyšuje maximální počet souběžných dotazů a souběžných slotů.
 
-## <a name="service-level-objective"></a>Service Level Objective
+## <a name="service-level-objective"></a>Service Level Objective (cíl úrovně služby)
 
 Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 se měří v jednotkách služby COMPUTE Data Warehouse (cDWU), například DW2000c. Úrovně služeb Gen1 se měří v DWU, například DW2000.
 
 Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu vašeho fondu SQL. Úrovně služeb pro Gen2 fond SQL se měří v jednotkách datového skladu (DWU), například DW2000c.
 
 > [!NOTE]
-> Azure SQL Data Warehouse Gen2 nedávno přidal další možnosti škálování pro podporu výpočetních úrovní, které jsou nízké jako 100 cDWU. Stávající datové sklady, které jsou aktuálně na Gen1, které vyžadují nižší výpočetní úrovně, teď můžou upgradovat na Gen2 v oblastech, které jsou momentálně dostupné bez dalších nákladů.  Pokud vaše oblast ještě není podporovaná, můžete i nadále upgradovat na podporovanou oblast. Další informace najdete v tématu [upgrade na Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Azure synapse Analytics Gen2 nedávno přidaly další možnosti škálování pro podporu výpočetních úrovní, které jsou nízké jako 100 cDWU. Stávající datové sklady, které jsou aktuálně na Gen1, které vyžadují nižší výpočetní úrovně, teď můžou upgradovat na Gen2 v oblastech, které jsou momentálně dostupné bez dalších nákladů.  Pokud vaše oblast ještě není podporovaná, můžete i nadále upgradovat na podporovanou oblast. Další informace najdete v tématu [upgrade na Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby a úroveň výkonu pro váš fond SQL.
 
@@ -141,7 +141,7 @@ Ke změně DWU použijte rutinu [set-AzSqlDatabase](/powershell/module/az.sql/se
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Další informace najdete v tématu [rutiny PowerShellu pro SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+Další informace najdete v tématu [rutiny PowerShellu pro Azure synapse Analytics](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Další příklady REST API najdete v tématu [rozhraní REST API pro SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Další příklady REST API najdete v tématu [rozhraní REST API pro Azure synapse Analytics](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="check-status-of-dwu-changes"></a>Kontrolovat stav DWU změn
 

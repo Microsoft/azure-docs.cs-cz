@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d4459547300f5dfc7b7c22d1e531b928a13aa66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b6dac5fba4bb8dfd8cf4a3bb4e5952f8388bb5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213427"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459143"
 ---
 # <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Použití popisků k instrumentaci dotazů v synapse fondu SQL
 
 V tomto článku najdete tipy pro vývoj řešení pomocí popisků pro instrumentaci dotazů ve fondu SQL.
 
-Tipy pro použití popisků k instrumentaci dotazů v Azure SQL Data Warehouse pro vývoj řešení.
+Tipy pro použití popisků k instrumentaci dotazů v Azure synapse Analytics pro vývoj řešení.
 
 ## <a name="what-are-labels"></a>Co jsou popisky?
 

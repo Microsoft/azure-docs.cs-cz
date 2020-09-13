@@ -5,21 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/25/2020
-ms.openlocfilehash: cb38dcba2f61a432decb56164b816688ad3192d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.date: 09/03/2020
+ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893702"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458633"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Auditovat dotazy v protokolech Azure Monitor (Preview)
 Protokoly auditu dotazů na protokol poskytují telemetrii o dotazech protokolů spouštěných v Azure Monitor. Obsahuje například informace o tom, kdy se dotaz spustil, kdo ho spustil, jaký nástroj se použil, text dotazu a Statistika výkonu popisující spuštění dotazu.
-
-## <a name="current-limitations"></a>Aktuální omezení
-Během veřejné verze Preview platí následující omezení:
-
-- Budou protokolovány pouze dotazy zaměřené na pracovní prostor. Dotazy spouštěné v režimu orientovaném na prostředky nebo spuštěné proti Application Insights nenakonfigurovanému jako založeném na pracovním prostoru nebudou protokolovány.
 
 
 ## <a name="configure-query-auditing"></a>Konfigurace auditování dotazů
@@ -55,10 +50,11 @@ Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešl
 | QueryTimeRangeEnd     | Konec časového rozsahu vybraného pro dotaz Tato hodnota nemusí být naplněna v některých případech, například když je dotaz spuštěn z Log Analytics a v dotazu není zadán časový rozsah místo pro výběr času.  |
 | QueryText             | Text dotazu, který byl spuštěn. |
 | RequestTarget         | Adresa URL rozhraní API se použila k odeslání dotazu.  |
-| Třída requestContext        | Seznam prostředků, na které byl dotaz požádán ke spuštění. Obsahuje až tři řetězcová pole: pracovní prostory, aplikace a prostředky. V rámci předplatného nebo skupiny prostředků se budou zobrazovat cílené dotazy jako *prostředky*. Zahrnuje cíl odvozený pomocí RequestTarget. |
+| Třída requestContext        | Seznam prostředků, na které byl dotaz požádán ke spuštění. Obsahuje až tři řetězcová pole: pracovní prostory, aplikace a prostředky. V rámci předplatného nebo skupiny prostředků se budou zobrazovat cílené dotazy jako *prostředky*. Zahrnuje cíl odvozený pomocí RequestTarget.<br>ID prostředku pro každý prostředek bude zahrnuto, pokud je možné ho vyřešit. Pokud se při přístupu k prostředku vrátí chyba, nemusí být možné ho vyřešit. V takovém případě bude použit konkrétní text z dotazu.<br>Pokud dotaz používá nejednoznačný název, například název pracovního prostoru existující ve více předplatných, bude použit tento dvojznačný název. |
 | RequestContextFilters | Sada filtrů zadaná jako součást vyvolání dotazu. Zahrnuje až tři možná pole řetězců:<br>-ResourceType-typ prostředku pro omezení oboru dotazu<br>-Pracovní prostory – seznam pracovních prostorů, na které se má dotaz omezit<br>-WorkspaceRegions-seznam oblastí pracovního prostoru pro omezení dotazu |
 | ResponseCode          | Kód odpovědi HTTP vrácený při odeslání dotazu. |
 | ResponseDurationMs    | Čas, který má být vrácen pro odpověď.  |
+| ResponseRowCount     | Celkový počet řádků vrácených dotazem. |
 | StatsCPUTimeMs       | Celkový výpočetní čas, který se používá pro výpočet, analýzu a načítání dat. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
 | StatsDataProcessedKB | Množství dat, ke kterým byl přidaný dotaz zpracován. Ovlivněno velikostí cílové tabulky, použitým časovým rozsahem, použitými filtry a počtem odkazovaných sloupců. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
 | StatsDataProcessedStart | Čas nejstarší dat, ke kterým byl přidaný dotaz zpracován. Ovlivněno explicitním časovým rozsahem dotazu a použitými filtry. To může být větší než explicitní časové období z důvodu dělení dat. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
@@ -66,7 +62,11 @@ Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešl
 | StatsWorkspaceCount | Počet pracovních prostorů, ke kterým dotaz přistupoval. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
 | StatsRegionCount | Počet oblastí, ke kterým dotaz přistupoval. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
 
+## <a name="considerations"></a>Požadavky
 
+- Statistiky výkonu nejsou k dispozici pro dotazy přicházející z proxy serveru Azure Průzkumník dat. Všechna ostatní data pro tyto dotazy budou i nadále naplněna.
+- Pomocný parametr *h* v řetězcích, který zapisuje [řetězcové literály](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) , nebude mít vliv na protokoly auditu dotazů. Dotazy budou zachyceny přesně tak, jak byly odeslány bez řetězce, který je zakódován. Měli byste zajistit, aby tato data mohli používat jenom uživatelé, kteří mají oprávnění k dodržování předpisů, a to v různých režimech RBAC, které jsou dostupné v Log Analytics pracovních prostorech.
+- Dotazy, které obsahují data z několika pracovních prostorů, budou zachyceny pouze v těch pracovních prostorech, ke kterým má uživatel přístup.
 
 ## <a name="next-steps"></a>Další kroky
 

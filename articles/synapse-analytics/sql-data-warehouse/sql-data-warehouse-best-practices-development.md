@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0bd15da523281a52d36c9ed1336244aa21eb48cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206695"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457902"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Osvědčené postupy vývoje pro synapse fond SQL
 
@@ -122,6 +122,6 @@ Pokud v tomto článku nenajdete, co hledáte, zkuste vyhledat všechny dokument
 
 [Microsoft Q&Stránka s otázkou pro Azure synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
 
-Pokud dáváte přednost pokládání otázek na Stack Overflow, máme také [Fórum pro Azure SQL Data Warehouse na Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
+Pokud dáváte přednost dotazování na Stack Overflow, máme také [fórum služby Azure synapse Analytics Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 
 K vytváření žádostí o funkce použijte stránku s [názory na Azure synapse](https://feedback.azure.com/forums/307516-sql-data-warehouse) .  Přidáním vlastních žádostí nebo hlasováním pro ostatní žádosti nám pomůžete určit prioritu funkcí.

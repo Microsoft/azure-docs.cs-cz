@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998068"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461506"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Vytváření Azure Machine Learning datových sad z Azure Open DataSets
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Otevřené datové sady Azure jsou podmnožinou veřejných datových sad, kter�
 Otevřené datové sady jsou v cloudu na Microsoft Azure a jsou zahrnuté v sadě [SDK pro Azure Machine Learning Python](#create-datasets-with-the-sdk) i v sadě [Azure Machine Learning Studio](#create-datasets-with-the-studio).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento článek potřebujete:
 
@@ -111,7 +111,7 @@ Můžete také vytvořit Azure Machine Learning datové sady z Azure Open DataSe
 
     ![Zvolit datovou sadu](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. Vyberte název, pod kterým chcete datovou sadu zaregistrovat, a volitelně data filtrujte pomocí dostupných filtrů. V tomto případě můžete pro datovou sadu **veřejných svátků** filtrovat časové období na jeden rok a směrové číslo země pouze na nás. Podrobnosti o datech najdete v [katalogu Open DataSets v Azure](https://azure.microsoft.com/services/op[en-datasets/catalog/) , jako jsou popisy polí a rozsahy dat. Vyberte **Vytvořit**.
+1. Vyberte název, pod kterým chcete datovou sadu zaregistrovat, a volitelně data filtrujte pomocí dostupných filtrů. V tomto případě můžete pro datovou sadu **veřejných svátků** filtrovat časové období na jeden rok a směrové číslo země pouze na nás. Podrobnosti o datech najdete v [katalogu Open DataSets v Azure](https://azure.microsoft.com/services/open-datasets/catalog) , jako jsou popisy polí a rozsahy dat. Vyberte **Vytvořit**.
 
     ![Nastavení parametrů datové sady a vytvoření datové sady](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

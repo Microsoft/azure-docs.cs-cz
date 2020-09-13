@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 8/11/2020
 ms.author: b-juche
-ms.openlocfilehash: f4cc253de0de9d099cfc4881f48182cf9b2a1616
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: dcdb3e8ce545227bc11cc60e3885c1a985ed34f4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134577"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459993"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -76,7 +76,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** a v rozevírací nabídce vyberte zásadu snímku. 
+    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** , určete, jestli chcete cestu k snímku skrýt, a v rozevírací nabídce vyberte zásadu snímku. 
 
         Informace o vytváření zásad snímku najdete v tématu [Správa zásad snímků](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
@@ -109,7 +109,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
 2.  Podle pokynů v [části zobrazení certifikátů pomocí modulu snap-](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) in MMC použijte modul snap-in konzoly MMC a nástroj Správce certifikátů.  
     Pomocí modulu snap-in Správce certifikátů vyhledejte kořenový nebo vydávající certifikát pro místní zařízení. V jednom z následujících nastavení byste měli spustit příkazy modulu snap-in Správa certifikátů:  
-    * Klient založený na systému Windows, který se připojil k doméně a má nainstalovaný kořenový certifikát 
+    * Klient se systémem Windows, který se připojil k doméně a má nainstalovaný kořenový certifikát 
     * Další počítač v doméně obsahující kořenový certifikát  
 
 3. Exportujte kořenový certifikát.  

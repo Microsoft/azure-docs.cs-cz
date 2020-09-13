@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: b0199af69eb5e7c05cee91a3a3cffd682aab75fd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084590"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458191"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>Jak skupiny zabezpečení sítě filtr síťového provozu
 <a name="network-security-groups"></a>
 
-Skupinu zabezpečení sítě Azure můžete použít k filtrování síťového provozu do a z prostředků Azure ve službě Azure Virtual Network. Skupina zabezpečení sítě obsahuje [pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview.md#security-rules) , která povolují nebo odmítají příchozí síťový provoz nebo odchozí síťový provoz z několika typů prostředků Azure. Pro každé pravidlo můžete určit zdroj a cíl, port a protokol.
+Skupinu zabezpečení sítě Azure můžete použít k filtrování síťového provozu do a z prostředků Azure ve službě Azure Virtual Network. Skupina zabezpečení sítě obsahuje [pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) , která povolují nebo odmítají příchozí síťový provoz nebo odchozí síťový provoz z několika typů prostředků Azure. Pro každé pravidlo můžete určit zdroj a cíl, port a protokol.
 
 Do virtuální sítě Azure můžete nasadit prostředky z několika služeb Azure. Úplný seznam najdete v tématu popisujícím [služby, které je možné nasadit do virtuální sítě](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Ke každé [podsíti](virtual-network-manage-subnet.md#change-subnet-settings) virtuální sítě a každému [síťovému rozhraní](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group) na virtuálním počítači můžete přiřadit jednu nebo žádnou skupinu zabezpečení sítě. Stejnou skupinu zabezpečení sítě můžete přidružit k libovolnému počtu podsítí a síťových rozhraní.
 
@@ -46,7 +46,7 @@ V případě příchozího provozu zpracuje Azure nejprve pravidla ve skupině z
 
 V případě odchozího provozu zpracuje Azure nejprve pravidla ve skupině zabezpečení sítě přidružené k příslušnému síťovému rozhraní, pokud taková skupina existuje, a pak pravidla ve skupině zabezpečení sítě přidružené k podsíti, pokud taková skupina existuje.
 
-- **VM1:** Zpracují se pravidla zabezpečení ve skupině *NSG2*. Pokud nevytvoříte pravidlo zabezpečení zakazující odchozí provoz přes port 80 do internetu, výchozí pravidlo zabezpečení [AllowInternetOutbound](https://docs.microsoft.com/azure/virtual-network/security-overview.md#allowinternetoutbound) ve skupině *NSG1* i *NSG2* provoz povolí. Pokud skupina *NSG2* obsahuje pravidlo zabezpečení zakazující port 80, provoz se odepře a skupina *NSG1* ho nikdy nevyhodnotí. Pokud chcete na virtuálním počítači zakázat odchozí provoz přes port 80, jedna ze skupin zabezpečení sítě nebo obě musí obsahovat pravidlo zakazující odchozí provoz přes port 80 do internetu.
+- **VM1:** Zpracují se pravidla zabezpečení ve skupině *NSG2*. Pokud nevytvoříte pravidlo zabezpečení zakazující odchozí provoz přes port 80 do internetu, výchozí pravidlo zabezpečení [AllowInternetOutbound](https://docs.microsoft.com/azure/virtual-network/security-overview#allowinternetoutbound) ve skupině *NSG1* i *NSG2* provoz povolí. Pokud skupina *NSG2* obsahuje pravidlo zabezpečení zakazující port 80, provoz se odepře a skupina *NSG1* ho nikdy nevyhodnotí. Pokud chcete na virtuálním počítači zakázat odchozí provoz přes port 80, jedna ze skupin zabezpečení sítě nebo obě musí obsahovat pravidlo zakazující odchozí provoz přes port 80 do internetu.
 - **VM2:** Veškerý provoz se odešle přes síťové rozhraní do podsítě, protože k síťovému rozhraní připojenému k virtuálnímu počítači *VM2* není přidružená žádná skupina zabezpečení sítě. Zpracují se pravidla ve skupině *NSG1*.
 - **VM3:** Pokud skupina *NSG2* obsahuje pravidlo zabezpečení zakazující port 80, provoz se odepře. Pokud skupina *NSG2* obsahuje pravidlo zabezpečení povolující port 80, povolí se odchozí provoz přes port 80 do internetu, protože k podsíti *Subnet2* není přidružená žádná skupina zabezpečení sítě.
 - **VM4:** Veškerý odchozí provoz z virtuálního počítače *VM4* se povolí, protože k síťovému rozhraní připojenému k virtuálnímu počítači ani k podsíti *Subnet3* není přidružená žádná skupina zabezpečení sítě.

@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798563"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460543"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Návrh tabulek v synapse fondu SQL
 
@@ -46,7 +46,7 @@ Chcete-li zobrazit organizaci tabulek ve fondu SQL, můžete použít fakt, Dim 
 
 | Tabulka WideWorldImportersDW  | Typ tabulky | Fond SQL |
 |:-----|:-----|:------|:-----|
-| City | Dimenze | WWI. DimCity |
+| City (Město) | Rozměr | WWI. DimCity |
 | Objednání | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Trvalost tabulek
@@ -106,12 +106,12 @@ Kategorie tabulka často určuje, která možnost se má zvolit pro distribuci t
 | Kategorie tabulky | Možnost Doporučené distribuce |
 |:---------------|:--------------------|
 | Fact           | Použijte distribuci algoritmem hash s clusterovaným indexem columnstore. Zvýšení výkonu se zvyšuje, když se do stejného distribučního sloupce spojí dvě zatřiďovací tabulky. |
-| Dimenze      | Použijte replikovaný pro menší tabulky. Pokud jsou tabulky příliš velké pro uložení na každém výpočetním uzlu, použijte distribuované pomocí algoritmu hash. |
+| Rozměr      | Použijte replikovaný pro menší tabulky. Pokud jsou tabulky příliš velké pro uložení na každém výpočetním uzlu, použijte distribuované pomocí algoritmu hash. |
 | Příprava        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí CTAS je rychlé. Jakmile jsou data v pracovní tabulce, použijte příkaz INSERT... Tuto možnost vyberte, pokud chcete přesunout data do provozních tabulek. |
 
 ## <a name="table-partitions"></a>Oddíly tabulky
 
-Dělená tabulka ukládá a provádí operace na řádcích tabulky podle rozsahů dat. Například tabulka může být rozdělená podle dne, měsíce nebo roku. Můžete zlepšit výkon dotazů prostřednictvím eliminace oddílu, což omezuje vyhledávání dotazů na data v rámci oddílu. Data můžete také udržovat pomocí přepínání oddílů. Vzhledem k tomu, že jsou data v SQL Data Warehouse již distribuována, může být příliš mnoho oddílů pomalý výkon dotazů. Další informace najdete v tématu [pokyny k dělení](sql-data-warehouse-tables-partition.md).  Při přepínání oddílu do oddílů tabulky, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET v příkazu [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , pokud se mají zkrátit existující data. Níže jsou uvedené přepínače kódu v podobě transformovaných denních dat do SalesFact, které Přepisuje všechna existující data.
+Dělená tabulka ukládá a provádí operace na řádcích tabulky podle rozsahů dat. Například tabulka může být rozdělená podle dne, měsíce nebo roku. Můžete zlepšit výkon dotazů prostřednictvím eliminace oddílu, což omezuje vyhledávání dotazů na data v rámci oddílu. Data můžete také udržovat pomocí přepínání oddílů. Vzhledem k tomu, že data ve službě Azure synapse Analytics jsou již distribuována, je možné, že příliš mnoho oddílů zpomaluje výkon dotazů. Další informace najdete v tématu [pokyny k dělení](sql-data-warehouse-tables-partition.md).  Při přepínání oddílu do oddílů tabulky, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET v příkazu [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , pokud se mají zkrátit existující data. Níže jsou uvedené přepínače kódu v podobě transformovaných denních dat do SalesFact, které Přepisuje všechna existující data.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -294,9 +294,6 @@ SELECT *
 FROM size
 ;
 ```
-
->[!TIP]
-> Pro zlepšení výkonu v synapse SQL zvažte použití **Sys. pdw_permanent_table_mappings** místo **Sys. pdw_table_mappings** v trvalých uživatelských tabulkách. Další informace najdete v tématu **[Sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 ### <a name="table-space-summary"></a>Souhrn prostoru tabulky
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903319"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461540"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Vzory řešení služby Azure Stream Analytics
 
@@ -102,7 +102,7 @@ Většina aktivit pro datové vědy a analýzy stále probíhá offline. Data je
 
 ## <a name="use-reference-data-for-enrichment"></a>Použít referenční data pro obohacení
 
-Rozšíření dat je často požadavkem pro moduly ETL. Azure Stream Analytics podporuje rozšíření dat pomocí [referenčních dat](stream-analytics-use-reference-data.md) z SQL Database a úložiště objektů BLOB v Azure. Rozšíření dat je možné provést pro data odpočívadla v Azure Data Lake i SQL Data Warehouse.
+Rozšíření dat je často požadavkem pro moduly ETL. Azure Stream Analytics podporuje rozšíření dat pomocí [referenčních dat](stream-analytics-use-reference-data.md) z SQL Database a úložiště objektů BLOB v Azure. Rozšíření dat je možné provést pro data odpočívadla v Azure Data Lake i ve službě Azure synapse Analytics.
 
 
 ![Offline Analýza ASA s obohacením dat](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
@@ -115,7 +115,7 @@ Pokud kombinujete model offline analýzy se vzorem aplikace téměř v reálném
 
 ## <a name="how-to-monitor-asa-jobs"></a>Jak monitorovat úlohy ASA
 
-Azure Stream Analytics úlohu lze spustit 24/7 a nepřetržitě zpracovávat příchozí události v reálném čase. Záruka na jeho dobu provozu je zásadní pro stav celkové aplikace. I když je Stream Analytics jedinou službou Stream Analytics v oboru, která nabízí [záruku dostupnosti 99,9%](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/), může se vám stále účtovat určitá úroveň času. V průběhu let Stream Analytics zavedla metriky, protokoly a stavy úloh, aby odrážely stav úloh. Všechny z nich jsou provedené prostřednictvím služby Azure Monitor a je možné je dál exportovat do OMS. Další informace najdete v tématu [pochopení Stream Analytics monitorování úloh a postup monitorování dotazů](stream-analytics-monitoring.md).
+Azure Stream Analytics úlohu lze spustit 24/7 a nepřetržitě zpracovávat příchozí události v reálném čase. Záruka na jeho dobu provozu je zásadní pro stav celkové aplikace. I když je Stream Analytics jedinou službou Stream Analytics v oboru, která nabízí  [záruku dostupnosti 99,9%](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/), může se vám stále účtovat určitá úroveň času. V průběhu let Stream Analytics zavedla metriky, protokoly a stavy úloh, aby odrážely stav úloh. Všechny z nich jsou provedené prostřednictvím služby Azure Monitor a je možné je dál exportovat do OMS. Další informace najdete v tématu [pochopení Stream Analytics monitorování úloh a postup monitorování dotazů](stream-analytics-monitoring.md).
 
 ![Monitorování ASA](media/stream-analytics-solution-patterns/monitoring.png)
 

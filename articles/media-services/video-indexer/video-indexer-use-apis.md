@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 09/03/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022424"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458293"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Používání rozhraní API Video Indexeru
 
@@ -36,7 +36,6 @@ Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API 
    > * Musíte použít stejného zprostředkovatele, jakého jste použili při registraci k Video Indexeru.
    > * Účty osobních účtů Google a Microsoft (Outlook/Live) se dají používat jenom pro zkušební účty. Účty připojené k Azure vyžadují Azure AD.
    > * V jednom e-mailu může být jenom jeden aktivní účet. Pokud se uživatel pokusí přihlásit pomocí user@gmail.com LinkedInu a novějšího s aplikací user@gmail.com pro Google, zobrazí se mu chybová stránka s oznámením, že uživatel už existuje.
-
 2. Přihlaste se k odběru.
 
     Vyberte kartu [produkty](https://api-portal.videoindexer.ai/products) . Pak vyberte autorizace a přihlášení k odběru.
@@ -46,7 +45,7 @@ Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API 
     > [!NOTE]
     > Noví uživatelé jsou k odběru API Authorization automaticky přihlášení.
     
-    Po přihlášení k odběru můžete zobrazit vaše předplatné a primární a sekundární klíče. Klíče by měly být chráněné. Klíče by měl používat jenom kód vašeho serveru. Neměly by být k dispozici na straně klienta (. js,. html atd.).
+    Po přihlášení k odběru můžete najít předplatné v části autorizace **produktů**  ->  **Authorization**. Na stránce předplatné najdete primární a sekundární klíče. Klíče by měly být chráněné. Klíče by měl používat jenom kód vašeho serveru. Neměly by být k dispozici na straně klienta (. js,. html atd.).
 
     ![Předplatné a klíče na portálu pro vývojáře Video Indexer](./media/video-indexer-use-apis/video-indexer-api03.png)
 

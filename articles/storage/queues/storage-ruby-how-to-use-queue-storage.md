@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: ac47747f7789b23801900804522681e5a4b10e5a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c29b864fb3a547599f32c00c9e8c27cbdb0e0a92
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078695"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459602"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Používání úložiště Queue z Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -151,7 +151,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili základní informace o službě Queue Storage, získáte další informace o složitějších úlohách úložiště pomocí těchto odkazů.
 
-* Navštívit [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
+* Navštívit [Blog týmu Azure Storage](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * Navštivte úložiště [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) na GitHubu.
 
 Srovnání služby front Azure popsané v tomto článku a Azure Service Bus frontách popsaných v článku [použití Service Busch front](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) najdete v tématu [fronty Azure a Service Bus fronty – porovnání a kontrast](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) .

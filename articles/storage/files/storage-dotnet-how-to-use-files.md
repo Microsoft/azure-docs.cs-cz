@@ -9,12 +9,12 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5c51bb052948c58d4849c556d0756240d6968ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 53f96d8988adfea6e14e3eb349276199afc444d7
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011527"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461914"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -37,7 +37,7 @@ Další informace o službě soubory Azure najdete v tématu [co je Azure Files?
 
 Soubory Azure poskytuje dva přístupy ke klientským aplikacím: protokol SMB (Server Message Block) a REST. V rozhraní .NET rozhraní `System.IO` `WindowsAzure.Storage` API a tyto přístupy abstraktní.
 
-rozhraní API | Kdy je použít | Poznámky
+Rozhraní API | Kdy je použít | Poznámky
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Vaše aplikace: <ul><li>Musí číst/zapisovat soubory pomocí protokolu SMB.</li><li>Je spuštěná v zařízení, které má prostřednictvím portu 445 přístup k vašemu účtu služby Soubory Azure.</li><li>Nemusí spravovat žádná nastavení pro správu sdílené složky.</li></ul> | I/O souborů implementovaných pomocí služby Azure Files přes SMB je obvykle stejné jako u vstupu a výstupu pomocí libovolné síťové sdílené složky nebo místního úložného zařízení. Úvod do řady funkcí v rozhraní .NET, včetně vstupně-výstupních operací se soubory, najdete v kurzu [konzolové aplikace](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) .
 [Microsoft. Azure. Storage. File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Vaše aplikace: <ul><li>K souborům Azure nelze přistupovat pomocí protokolu SMB na portu 445 z důvodu omezení brány firewall nebo poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `Microsoft.Azure.Storage.File` pro vstupně-výstupní operace se soubory pomocí REST místo SMB a správy sdílené složky.
@@ -71,7 +71,7 @@ Pro dokončení tohoto kurzu se podívejte na tyto balíčky v projektu:
 
   Tento balíček poskytuje třídu pro analýzu připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěna.
 
-K získání obou balíčků můžete použít balíček NuGet. Postupujte následovně:
+K získání obou balíčků můžete použít balíček NuGet. Postupujte takto:
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 1. V **nástroji Správce balíčků NuGet**vyberte **Procházet**. Pak vyhledejte a zvolte **Microsoft. Azure. Storage. blob**a pak vyberte **nainstalovat**.
@@ -495,7 +495,7 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 * [Začínáme s nástrojem AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Řešení potíží se službou Azure Files ve Windows](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Referenční informace
+### <a name="reference"></a>Reference
 
 * [Rozhraní API služby Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
 * [Rozhraní REST API služby File Service](/rest/api/storageservices/File-Service-REST-API)
@@ -504,5 +504,5 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 
 * [Azure File Storage, teď všeobecně dostupné](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Uvnitř Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Představení služby Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Nastavení trvalých připojení k Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Představení služby Microsoft Azure Files](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Nastavení trvalých připojení k Microsoft Azure Files](https://docs.microsoft.com/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)

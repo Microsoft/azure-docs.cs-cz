@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: e85a78582c0f7aac188198ad91f9ac91ddf62961
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9ac30bdcb137afb26a8461f98a36b568ebe179b0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950370"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459007"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -188,7 +188,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
 
     Zobrazí se připojení služby Active Directory, které jste vytvořili.
 
-    ![Připojení ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![Vytvořená připojení služby Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 ## <a name="add-an-smb-volume"></a>Přidat svazek SMB
 
@@ -230,7 +230,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** a v rozevírací nabídce vyberte zásadu snímku. 
+    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** , určete, jestli chcete cestu k snímku skrýt, a v rozevírací nabídce vyberte zásadu snímku. 
 
         Informace o vytváření zásad snímku najdete v tématu [Správa zásad snímků](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 

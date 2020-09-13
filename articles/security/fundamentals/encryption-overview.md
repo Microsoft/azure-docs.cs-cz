@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542955"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458616"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování v Azure
 
@@ -83,7 +83,7 @@ Nakonec můžete použít také klientskou knihovnu Azure Storage pro jazyk Java
 
 #### <a name="transparent-data-encryption"></a>Transparentní šifrování dat
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) se používá k šifrování datových souborů [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)a [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) v reálném čase pomocí šifrovacího klíče databáze (klíč DEK), který je uložený v záznamu spuštění databáze pro dostupnost během obnovení.
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) se používá k šifrování datových souborů služby [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) v reálném čase pomocí šifrovacího klíče databáze (klíč DEK), který je uložený v záznamu spuštění databáze pro dostupnost během obnovení.
 
 TDE chrání data a soubory protokolů pomocí šifrovacích algoritmů AES a Triple Data Encryption Standard (3DES). Šifrování databázového souboru se provádí na úrovni stránky. Stránky v zašifrované databázi jsou před zápisem na disk zašifrované a při jejich čtení do paměti se dešifrují. TDE je teď ve výchozím nastavení povolená u nově vytvořených databází Azure SQL.
 
@@ -179,7 +179,7 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace:
+Další informace naleznete v tématu:
 
 [Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
@@ -205,5 +205,5 @@ Key Vault zbavuje organizace nutnost konfigurovat, opravovat a udržovat moduly 
 - [Přehled zabezpečení sítě Azure](network-overview.md)
 - [Přehled zabezpečení Azure Database](database-security-overview.md)
 - [Přehled zabezpečení virtuálních počítačů Azure](virtual-machines-overview.md)
-- [Šifrování dat v klidovém stavu](encryption-atrest.md)
+- [Šifrování v klidovém stavu](encryption-atrest.md)
 - [Osvědčené postupy šifrování a zabezpečení dat](data-encryption-best-practices.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0e8d40f5543832dc3a76e44abc54f406cce1d4a6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 7fde4a82ff3a9e0cfa67e8ce5afeebc000757b7c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147444"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462050"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>Kurz: Konfigurace InVision pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v InVision i Azure Active D
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a InVision
 > * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/invision-tutorial) do Invision (povinné)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -144,10 +144,10 @@ Tato operace spustí počáteční cyklus synchronizace všech uživatelů a sku
 Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto prostředky:
 
 1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně nastavili.
-2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
+2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
 3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

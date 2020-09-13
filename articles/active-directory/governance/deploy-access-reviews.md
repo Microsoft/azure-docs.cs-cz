@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011340"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461030"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -93,7 +93,7 @@ V případě kontrol přístupu budete pravděpodobně zahrnovat zástupce z ná
 
 * **Správa IT** spravuje vaši IT infrastrukturu a spravuje vaše cloudové investice a aplikace SaaS (software jako služba). Tento tým bude:
 
-   * Projděte si privilegovaný přístup k infrastruktuře a aplikacím, včetně Office 365 a Azure AD.
+   * Projděte si privilegovaný přístup k infrastruktuře a aplikacím, včetně Microsoft 365 a Azure AD.
 
    * Naplánování a spuštění kontrol přístupu pro skupiny, které se používají k údržbě seznamů výjimek nebo projektů pilotního projektu, pro udržování aktuálnosti seznamů přístupu
 
@@ -180,7 +180,7 @@ Mezi obvyklé cíle pro kontrolu patří:
 
 * [Aplikace integrované do Azure AD pro jednotné přihlašování](../manage-apps/what-is-application-management.md) (například SaaS, obchodní).
 
-* [Členství](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) ve skupinách (synchronizované s Azure AD nebo vytvořené v Azure AD nebo Office 365, včetně Microsoft Teams).
+* [Členství](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) ve skupinách (synchronizované s Azure AD nebo vytvořené v Azure ad nebo Microsoft 365, včetně Microsoft Teams).
 
 * [Přístup k balíčku](/azure/active-directory/governance/entitlement-management-overview) , který seskupuje prostředky (skupiny, aplikace a weby) do jednoho balíčku pro správu přístupu.
 
@@ -304,7 +304,7 @@ Otevřete kartu životní cyklus a přejděte dolů k recenzím přístupu.
 
 ## <a name="plan-access-reviews-for-groups"></a>Plánování kontrol přístupu pro skupiny
 
-Kromě balíčků přístupu je kontrola členství ve skupinách nejúčinnějším způsobem řízení přístupu. Doporučujeme, aby byl přístup k prostředkům přiřazený prostřednictvím [skupin zabezpečení nebo skupin Office 365](../fundamentals/active-directory-manage-groups.md)a aby se uživatelé do těchto skupin přidali k získání přístupu.
+Kromě balíčků přístupu je kontrola členství ve skupinách nejúčinnějším způsobem řízení přístupu. Doporučujeme, aby byl přístup k prostředkům přiřazen prostřednictvím [skupin zabezpečení nebo skupin Microsoft 365](../fundamentals/active-directory-manage-groups.md)a aby se uživatelé do těchto skupin přidali k získání přístupu.
 
 Jednomu skupině se dá udělit přístup ke všem odpovídajícím prostředkům. Přístup ke skupině můžete přiřadit k jednotlivým prostředkům nebo balíčku pro přístup, který seskupuje aplikace a další prostředky. Pomocí této metody můžete zkontrolovat přístup ke skupině místo přístupu pro jednotlivé aplikace k jednotlivým aplikacím. 
 
@@ -322,9 +322,9 @@ Jednomu skupině se dá udělit přístup ke všem odpovídajícím prostředků
 
 Doporučujeme, aby vlastníci skupiny zkontrolovali členství, protože jsou nejlepší pro uživatele, kteří potřebují přístup. Vlastnictví skupin se liší od typu skupiny:
 
-Skupiny vytvořené v Office 365 a Azure AD mají jednoho nebo více dobře definovaných vlastníků. Ve většině případů mají tito vlastníci k dispozici dokonalé kontrolory pro vlastní skupiny, protože ví, kdo má mít přístup. 
+Skupiny vytvořené v Microsoft 365 a Azure AD mají jednoho nebo více dobře definovaných vlastníků. Ve většině případů mají tito vlastníci k dispozici dokonalé kontrolory pro vlastní skupiny, protože ví, kdo má mít přístup. 
 
-Microsoft Teams například používá skupiny Office 365 jako základní autorizační model, aby uživatelům udělil přístup k prostředkům, které jsou v SharePointu, Exchangi, OneNotu nebo jiných službách Office 365. Tvůrce týmu se automaticky stal vlastníkem a měl by být zodpovědný za ověřování členství v této skupině. 
+Microsoft Teams například používá Microsoft 365 skupiny jako základní autorizační model, aby uživatelům udělil přístup k prostředkům, které jsou v SharePointu, Exchangi, OneNotu nebo jiných službách Microsoft 365. Tvůrce týmu se automaticky stal vlastníkem a měl by být zodpovědný za ověřování členství v této skupině. 
 
 Skupiny vytvořené ručně na portálu Azure AD nebo prostřednictvím skriptování prostřednictvím Microsoft Graph nemusí nutně mít definované vlastníky. Doporučujeme, abyste je definovali buď prostřednictvím portálu Azure AD v části vlastníci skupiny, nebo pomocí grafu.
 
@@ -403,7 +403,7 @@ Kontroly přístupu umožňují kontrolorům ověřit, jestli se uživatelé po�
 
 * Správce zabezpečení
 
-* Všechny role pro správu služeb Office 365 a Dynamics
+* Všechny role Microsoft 365 a Dynamics Service Administrative
 
 Zde vybrané role zahrnují trvalou a oprávněnou roli. 
 

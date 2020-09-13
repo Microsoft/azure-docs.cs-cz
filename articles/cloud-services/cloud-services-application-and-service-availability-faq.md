@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2596d4f6a8aa9fb4c95dfb5a3ccab7d7206f3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386914"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461302"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s dostupností aplikací a služeb pro Azure Cloud Services: nejčastější dotazy
 
@@ -33,7 +33,7 @@ Přibližně jednou za měsíc vydává společnost Microsoft novou verzi hostov
 
 Podrobné informace o nejnovějších aktualizacích operačního systému hosta najdete v tématu [věnovaném vydání hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md).
 
-Další informace o restartech a ukazatelích na technické podrobnosti o aktualizacích hostovaného a hostitelského operačního systému najdete v tématu [restart instance role blogu MSDN z důvodu upgradů operačního systému](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
+Další informace o restartech a ukazatelích na technické podrobnosti o aktualizacích hostovaného a hostitelského operačního systému najdete v tématu [restart instance role blogu MSDN z důvodu upgradů operačního systému](https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Proč je první požadavek na moji cloudovou službu po nějakou dobu nečinný, trvat déle než obvykle?
 Když webový server obdrží první požadavek, nejprve znovu zkompiluje kód a potom zpracuje požadavek. To je důvod, proč první požadavek trvá déle než ostatní. Ve výchozím nastavení se fond aplikací vypne v případech nečinnosti uživatele. Ve výchozím nastavení se fond aplikací recykluje každých 1 740 minut (29 hodin).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 115a01fe0b1edc343ed9efd324c4be3b53251566
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9047309854df27ac0721eee51e20d7ccc989f443
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519503"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459687"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
 Aby zákazníci mohli zabránit, detekovat a reagovat na hrozby, Azure Security Center shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí a dalších. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
@@ -65,7 +65,7 @@ Pro virtuální počítače a servery spuštěné v jiných prostředích, např
 
 **Azure Security Center Storage:** Informace o výstrahách zabezpečení, včetně partnerských výstrah, se ukládají místně v závislosti na umístění souvisejícího prostředku Azure, zatímco informace o stavu zabezpečení a doporučení se ukládají centrálně v USA nebo v Evropě, v závislosti na umístění zákazníka. Artefakty počítačů se ukládají centrálně ve stejné oblasti jako virtuální počítač.
 
-## <a name="managing-data-collection-from-virtual-machines"></a>Správa shromažďování dat z virtuálních počítačů
+## <a name="manage-data-collection-from-virtual-machines"></a>Správa shromažďování dat z virtuálních počítačů
 
 Když povolíte službu Security Center v Azure, u každého vašeho předplatného Azure se zapne funkce shromažďování dat. Shromažďování dat pro předplatná můžete zapnout také v části Zásady zabezpečení služby Azure Security Center. Když je shromažďování dat zapnuté, Azure Security Center zřídí agenta Log Analytics na všech stávajících podporovaných virtuálních počítačích Azure a všech nově vytvořených.
 Agent Log Analytics vyhledává různé konfigurace a události související se zabezpečením v [trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW). Operační systém bude kromě toho během chodu počítače shromažďovat události protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Agent Log Analytics načte položky protokolu událostí a trasování ETW a zkopíruje je do vašich pracovních prostorů pro účely analýzy. Agent Log Analytics taky umožňuje události vytváření procesů a auditování na příkazovém řádku.
@@ -90,4 +90,4 @@ V tomto dokumentu jste se dozvěděli informace o způsobu správy a ochrany ve 
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů
+* [Blog o zabezpečení Azure](https://docs.microsoft.com/archive/blogs/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů

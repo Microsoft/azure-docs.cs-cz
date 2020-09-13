@@ -1,5 +1,5 @@
 ---
-title: Načtení maloobchodních dat Contoso do synapse SQL Data Warehouse
+title: Načtení maloobchodních dat Contoso do synapse SQL
 description: K načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL použijte příkazy jazyka T-SQL.
 services: synapse-analytics
 author: kevinvngo
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213308"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461693"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>Načtení maloobchodních dat Contoso do synapse SQL 
 
-V tomto kurzu se naučíte používat příkazy jazyka T-SQL k načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL Data Warehouse.
+V tomto kurzu se naučíte používat příkazy jazyka T-SQL k načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL.
 
 V tomto kurzu provedete tyto kroky:
 
@@ -30,11 +30,11 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ke spuštění tohoto kurzu potřebujete účet Azure, který už má synapse SQL Data Warehouse. Pokud nemáte zřízen datový sklad, přečtěte si téma [vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
+Ke spuštění tohoto kurzu potřebujete účet Azure, který už má synapse SQL. Pokud nemáte zřízen datový sklad, přečtěte si téma [vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Konfigurace zdroje dat
 
-Základna používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů se ukládají do služby synapse SQL Data Warehouse. Data jsou ukládána externě.
+Základna používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů jsou uloženy v synapse SQL. Data jsou ukládána externě.
 
 ## <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
 
@@ -122,7 +122,7 @@ GO
 
 Spusťte následující skript pro vytvoření externích tabulek DimProduct a FactOnlineSales. Tady je definování názvů sloupců a datových typů a jejich navázání na umístění a formát souborů úložiště objektů BLOB v Azure. Definice je uložena v datovém skladu a data jsou stále v Azure Storage Blob.
 
-Parametr **Location** je složka v kořenové složce Azure Storage BLOB. Každá tabulka je v jiné složce.
+Parametr  **Location** je složka v kořenové složce Azure Storage BLOB. Každá tabulka je v jiné složce.
 
 ```sql
 --DimProduct
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Optimalizace komprese columnstore
 
-Ve výchozím nastavení služba SQL Data Warehouse synapse ukládá tabulku jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  Existují různé důvody, proč k tomu může dojít. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
+Ve výchozím nastavení synapse SQL ukládá tabulku jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  Existují různé důvody, proč k tomu může dojít. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
 
 Pro optimalizaci výkonu dotazů a komprese columnstore po načtení znovu sestavte tabulku, aby index columnstore vynutil komprimaci všech řádků.
 

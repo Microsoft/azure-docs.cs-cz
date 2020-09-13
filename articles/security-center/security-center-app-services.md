@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec3fb8609612f3920e330da7922fdd1eb8883305
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080790"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459772"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Ochrana rozhraní API a webových aplikací Azure App Service
 
@@ -32,7 +32,7 @@ Když je povolený plán App Service, Security Center vyhodnocuje prostředky, n
 Security Center využívá škálování cloudu a viditelnost, kterou má Azure jako poskytovatel cloudu, ke sledování běžných útoků na webové aplikace. Security Center může zjišťovat útoky na vaše aplikace a identifikovat nově vznikající útoky – i když se útočníci nacházejí ve fázi rekognoskace, hledají chyby zabezpečení napříč několika aplikacemi hostovanými v Azure. Jako služba Azure-Native je Security Center také v jedinečné pozici, která nabízí analýzy zabezpečení založené na hostiteli, které se týkají základních výpočetních uzlů pro tento PaaS, což umožňuje Security Center detekovat útoky na webové aplikace, které už byly zneužity. Další podrobnosti najdete v tématu [Ochrana před hrozbami pro Azure App Service](threat-protection.md#app-services).
 
 
-## <a name="enabling-monitoring-and-protection-of-app-service"></a>Povolení monitorování a ochrany App Service
+## <a name="enable-monitoring-and-protection-of-app-service"></a>Povolit monitorování a ochranu App Service
 
 1. V Azure Portal vyberte možnost Security Center.
 2. Přejít na **Nastavení cenové &** a vyberte předplatné.
@@ -64,4 +64,4 @@ V tomto článku jste zjistili, jak ve službě Azure Security Center používat
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Aplikační služby](security-center-virtual-machine-protection.md#app-services): zobrazení seznamu služby App Service Environment s přehledy stavu.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak sledovat stav vašich partnerských řešení.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.
+* [Blog o zabezpečení Azure](https://docs.microsoft.com/archive/blogs/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.

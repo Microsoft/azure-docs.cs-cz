@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 03764dc9999b233153588f4908a2c10587697e40
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f56aac256407b179dae2ef421217658ac102bbb4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860892"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458837"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace cloudu SAP Analytics pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v cloudu SAP Analytics i Az
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a cloudem SAP Analytics
 > * [Jednotné přihlašování](sapboc-tutorial.md) ke službě SAP Analytics Cloud (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -91,7 +91,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-analytics-cloud-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Cloud SAP Analytics v Azure AD:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -123,12 +123,12 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    |Atribut|Typ|Podporováno pro filtrování|
    |---|---|---|
-   |userName|String|&check;|
-   |název. křestní jméno|String|
-   |název. rodina|String|
+   |userName|Řetězec|&check;|
+   |název. křestní jméno|Řetězec|
+   |název. rodina|Řetězec|
    |aktivně|Logická hodnota|
-   |e-maily [typ EQ "Work"]. Value|String|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|String|
+   |e-maily [typ EQ "Work"]. Value|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Řetězec|
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -150,7 +150,7 @@ Tato operace spustí počáteční cyklus synchronizace všech uživatelů a sku
 Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto prostředky:
 
 1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně nastavili.
-2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
+2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
 3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="additional-resources"></a>Další zdroje

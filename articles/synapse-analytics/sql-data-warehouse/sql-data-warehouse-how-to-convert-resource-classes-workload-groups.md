@@ -1,6 +1,6 @@
 ---
 title: Převést třídu prostředků na skupinu úloh
-description: Naučte se, jak vytvořit skupinu úloh, která je podobná třídě prostředků v Azure SQL Data Warehouse.
+description: Naučte se, jak vytvořit skupinu úloh, která je podobná třídě prostředků ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: fe65aa8c69bc4bd3837ea68bc48ffdbbeed87e0e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192323"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461370"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Převod tříd prostředků na skupiny úloh
 

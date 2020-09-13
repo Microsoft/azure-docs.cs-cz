@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54c10d7941e053bec928f8f43310218d89124f9a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77585267"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461727"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "77585267"
 
 V tomto článku najdete seznam prostředků, které vám pomůžou získat další informace o práci s Sentinel Azure Sentinel.
 
-Konektory Azure Logic Apps:<https://docs.microsoft.com/connectors/>
+Konektory Azure Logic Apps: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
@@ -68,7 +68,7 @@ Tato data můžete zobrazit jejich streamování z protokolu aktivit Azure do sl
 
 ## <a name="vendor-documentation"></a>Dokumentace dodavatele
 
-| **Dodavatel**  | **Použít incident v Azure Sentinel** | **Odkaz**|
+| **Dodavatel**  | **Použít incident v Azure Sentinel** | **Propojit**|
 |----|----|----|
 | GitHubu| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| Konfigurace CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
@@ -82,4 +82,4 @@ Prohlédněte si blogové příspěvky Azure Sentinel z [TechCommunity](https://
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu máte seznam prostředků, které jsou užitečné, když pracujete s ověřovacími službami Azure. Další informace o zabezpečení a dodržování předpisů Azure najdete na [blogu Microsoft Azure zabezpečení a dodržování předpisů](https://blogs.msdn.com/b/azuresecurity/).
+V tomto dokumentu máte seznam prostředků, které jsou užitečné, když pracujete s ověřovacími službami Azure. Další informace o zabezpečení a dodržování předpisů Azure najdete na [blogu Microsoft Azure zabezpečení a dodržování předpisů](https://docs.microsoft.com/archive/blogs/azuresecurity/).

@@ -1,6 +1,6 @@
 ---
 title: Prostředky pro vývoj synapse fondu SQL ve službě Azure synapse Analytics
-description: Koncepce vývoje, rozhodování o návrhu, doporučení a techniky kódování pro SQL Data Warehouse.
+description: Koncepce vývoje, rozhodování o návrhu, doporučení a techniky kódování pro Azure synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a3c0d7924fb550761d050c9c404b1065c7d3cf72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211489"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460605"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Rozhodnutí o návrhu a techniky kódování pro synapse fond SQL ve službě Azure synapse Analytics 
  V tomto článku najdete další materiály, které vám pomůžou lépe pochopit klíčová rozhodnutí pro návrh, doporučení a techniky kódování pro fond SQL ve službě Azure synapse.
@@ -38,7 +38,7 @@ Následující články obsahují konkrétní techniky kódování, tipy a dopor
 
 * [uložené procedury](sql-data-warehouse-develop-stored-procedures.md)
 * [popisky](sql-data-warehouse-develop-label.md)
-* [Náhled](sql-data-warehouse-develop-views.md)
+* [Náhled](performance-tuning-materialized-views.md)
 * [dočasné tabulky](sql-data-warehouse-tables-temporary.md)
 * [dynamické SQL](sql-data-warehouse-develop-dynamic-sql.md)
 * [opakování](sql-data-warehouse-develop-loops.md)

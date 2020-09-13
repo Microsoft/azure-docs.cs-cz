@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63872f3d62bcf62562cef7fd4ee02e9a0535da67
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3050d0c61b6278b32b8e9272f228a863c9a0a244
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756873"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458684"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -1255,7 +1255,9 @@ Podívejte se na rozdíl architektury mezi klasickým modelem a ARM, jak je pops
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Konfigurace systému SAP a připojení grafického uživatelského rozhraní SAP přes Internet
 
-V tomto článku najdete popis podrobností k tomuto tématu: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+V tomto článku najdete popis podrobností k tomuto tématu:
+
+<https://docs.microsoft.com/archive/blogs/saponsqlserver/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Změna nastavení brány firewall v rámci virtuálního počítače
 
@@ -1423,7 +1425,7 @@ $vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
-##### <a name="cli"></a>CLI
+##### <a name="cli"></a>Rozhraní příkazového řádku
 
 V systému Linux lze použít následující vzorový kód. V případě systému Windows buď použijte prostředí PowerShell, jak je popsáno výše, nebo tento příklad Přizpůsobte, aby místo $rgName používal% rgName%, a nastavte proměnnou prostředí pomocí *sady*příkazů systému Windows.
 
@@ -1980,7 +1982,7 @@ Další virtuální počítače v rámci systému SAP se dají zálohovat pomoc�
 
 Od Mid 2014 se rozšíření pro různé komponenty v rámci technologie Hyper-V, System Center a Azure povolilo používání Azure jako DR pro virtuální počítače, které jsou na místním počítači založené na technologii Hyper-V.
 
-Blog s podrobnostmi, jak nasadit toto řešení, je popsán zde: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx> .
+Blog s podrobnostmi, jak nasadit toto řešení, je popsán zde: <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> .
 
 ## <a name="summary"></a>Shrnutí
 

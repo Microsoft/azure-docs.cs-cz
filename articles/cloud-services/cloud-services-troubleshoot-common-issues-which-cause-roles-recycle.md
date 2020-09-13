@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4bf33db28d68b600d860a132027e5be440377b34
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920092"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460282"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Běžné potíže, které můžou způsobit recyklaci rolí
 Tento článek popisuje některé z běžných příčin problémů při nasazení a poskytuje tipy k odstraňování potíží, které vám pomůžou tyto problémy vyřešit. Označuje, že problém s aplikací existuje, když se instance role nepovede spustit, nebo se zacykluje mezi inicializací, zaneprázdněním a stavem zastavení.
@@ -65,7 +65,7 @@ Chcete-li spustit webovou roli v rámci TLS, je nutné zajistit, aby exportovan�
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na další články týkající se [řešení potíží](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro Cloud Services.
 
-Podívejte se na další scénáře recyklace rolí na [blogu Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Podívejte se na další scénáře recyklace rolí na [blogu Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
