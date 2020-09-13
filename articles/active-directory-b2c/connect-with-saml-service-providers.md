@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 09/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520205"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611605"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -267,7 +267,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -354,7 +354,8 @@ K dokončení tohoto kurzu použijte naši [aplikaci testu SAML][samltest]:
 
 Vyberte **přihlašovací údaje** , které byste měli mít k dispozici na přihlašovací obrazovce uživatele. Po přihlášení je kontrolní výraz SAML vydán zpět do ukázkové aplikace.
 
-## <a name="enable-encypted-assertions"></a>Povolit kontrolní výrazy zašifrována
+## <a name="enable-encrypted-assertions-optional"></a>Povolit šifrované kontrolní výrazy (volitelné)
+
 Chcete-li zašifrovat kontrolní výrazy SAML odeslané zpět poskytovateli služeb, Azure AD B2C použijí certifikát veřejného klíče poskytovatele služby. Veřejný klíč musí existovat v metadatech SAML popsaných výše v [části "samlMetadataUrl"](#samlmetadataurl) jako popisovač klíče s použitím šifrování.
 
 Následuje příklad popisovače šifry metadat SAML s použitím nastavení šifrování:
@@ -369,35 +370,50 @@ Následuje příklad popisovače šifry metadat SAML s použitím nastavení ši
 </KeyDescriptor>
 ```
 
-Pokud chcete povolit Azure AD B2C odesílat šifrované kontrolní výrazy, nastavte položku metadat **WantsEncryptedAssertion** na hodnotu true v technickém profilu předávající strany, jak je znázorněno níže.
+Pokud chcete povolit Azure AD B2C odesílat šifrované kontrolní výrazy, nastavte položku metadat **WantsEncryptedAssertion** na `true` [technický profil předávající strany](relyingparty.md#technicalprofile). Můžete také nakonfigurovat algoritmus použitý k zašifrování kontrolního výrazu SAML. Další informace najdete v tématu [metadata technického profilu předávající strany](relyingparty.md#metadata). 
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-  PolicySchemaVersion="0.3.0.0"
-  TenantId="contoso.onmicrosoft.com"
-  PolicyId="B2C_1A_signup_signin_saml"
-  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
- ..
- ..
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="SAML2"/>
-      <Metadata>
-          <Item Key="WantsEncryptedAssertions">true</Item>
-      </Metadata>
-     ..
-     ..
-     ..
-    </TechnicalProfile>
-  </RelyingParty>
-</TrustFrameworkPolicy>
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
 ```
+
+## <a name="enable-identity-provider-initiated-flow-optional"></a>Povolit tok iniciované zprostředkovatelem identity (volitelné)
+
+V toku iniciované zprostředkovatelem identity se proces přihlášení iniciuje zprostředkovatelem identity (Azure AD B2C), který pošle nevyžádaný odpověď SAML poskytovateli služby (vaší aplikace předávající strany). Pokud chcete povolit tok iniciované zprostředkovatelem identity, nastavte položku metadat **IdpInitiatedProfileEnabled** na `true` v [technickém profilu předávající strany](relyingparty.md#technicalprofile).
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="IdpInitiatedProfileEnabled">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+Pokud se chcete přihlásit nebo zaregistrovat uživatele prostřednictvím toku iniciované zprostředkovatelem identity, použijte tuto adresu URL:
+
+```
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+```
+
+Nahraďte následující hodnoty:
+
+* **název tenanta** s názvem tenanta
+* **název zásady** s názvem zásady předávající strany SAML
 
 ## <a name="sample-policy"></a>Ukázková zásada
 

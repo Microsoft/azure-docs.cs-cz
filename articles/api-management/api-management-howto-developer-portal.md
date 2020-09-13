@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852153"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614052"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -31,9 +31,9 @@ Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verz
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 > [!NOTE]
-> <a name="migrate-from-legacy"></a>Nový portál pro vývojáře není kompatibilní se starší verzí portálu pro vývojáře a automatizovaná migrace není možná. Je potřeba ručně znovu vytvořit obsah (stránky, text, multimediální soubory) a přizpůsobit vzhled nového portálu. Pokyny najdete [v kurzu na portálu pro vývojáře](api-management-howto-developer-portal-customize.md) .
+> <a name="migrate-from-legacy"></a> Nový portál pro vývojáře není kompatibilní se starší verzí portálu pro vývojáře a automatizovaná migrace není možná. Je potřeba ručně znovu vytvořit obsah (stránky, text, multimediální soubory) a přizpůsobit vzhled nového portálu. Pokyny najdete [v kurzu na portálu pro vývojáře](api-management-howto-developer-portal-customize.md) .
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>Spravované a samostatně hostované verze
+## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> Spravované a samostatně hostované verze
 
 Portál pro vývojáře můžete vytvořit dvěma způsoby:
 
@@ -67,27 +67,27 @@ Komponenty portálu mohou být logicky rozděleny do dvou kategorií: *kód* a *
 
 Portál je založen na upraveném rozvětvení [architektury Paperbits](https://paperbits.io/). Původní funkce Paperbits se rozšířily tak, aby poskytovaly widgety specifické pro API Management (například seznam rozhraní API, seznam produktů) a konektor pro API Management službu pro ukládání a načítání obsahu.
 
-## <a name="frequently-asked-questions"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="frequently-asked-questions"></a><a name="faq"></a> Nejčastější dotazy
 
 V této části odpovíme na běžné otázky k portálu pro vývojáře, které jsou obecné povahy. Otázky specifické pro samostatnou verzi najdete [v části wiki v úložišti GitHub](https://github.com/Azure/api-management-developer-portal/wiki).
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>Jak se dá migrovat z verze Preview portálu?
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a> Jak se dá migrovat z verze Preview portálu?
 
-Pomocí verze Preview portálu pro vývojáře jste v rámci služby API Management zřídili obsah verze Preview. Výchozí obsah byl významně upraven v všeobecně dostupné verzi pro lepší uživatelské prostředí. Obsahuje také nové pomůcky.
+Při prvním spuštění verze Preview portálu pro vývojáře jste ve službě API Management zřídili verzi Preview jejího výchozího obsahu. Výchozí obsah byl významně upraven v všeobecně dostupné verzi. Například verze Preview výchozího obsahu nezahrnuje tlačítka OAuth na přihlašovacích stránkách, používá různá widgety pro zobrazení rozhraní API a spoléhá na omezené možnosti pro strukturování stránek portálu pro vývojáře. I když existují rozdíly v obsahu, stroj portálu (včetně základních widgetů) se automaticky aktualizuje při každém publikování portálu pro vývojáře.
 
-Pokud používáte spravovanou verzi, obnovte obsah portálu kliknutím na **obnovit obsah** v části nabídka **operace** . Potvrzením této operace dojde k odebrání veškerého obsahu portálu a zřízení nového výchozího obsahu. V API Management službě se automaticky aktualizoval modul portálu.
+Pokud jste portál silně přizpůsobili na základě verze Preview obsahu, můžete ho i nadále používat a na stránkách na portálu umístit nové widgety ručně. V opačném případě doporučujeme nahradit obsah vašeho portálu novým výchozím obsahem.
+
+Chcete-li obnovit obsah na spravovaném portálu, klikněte na možnost **obnovit obsah** v části nabídka **operace** . Tato operace odstraní veškerý obsah portálu a zřídí nový výchozí obsah. Ztratíte všechna přizpůsobení a změny portálu pro vývojáře. **Tuto akci nelze vrátit zpět**.
 
 ![Resetování obsahu portálu](media/api-management-howto-developer-portal/reset-content.png)
 
-Pokud používáte samoobslužnou verzi, pomocí nástroje `scripts/cleanup.bat` a `scripts/generate.bat` z úložiště GitHub odeberte existující obsah a zřiďte nový obsah. Ujistěte se, že upgradujete kód vašeho portálu na nejnovější verzi z úložiště GitHub předem.
+Pokud používáte samoobslužnou verzi, spusťte `scripts.v2/cleanup.bat` `scripts.v2/generate.bat` skript a z úložiště GitHubu, abyste odebrali existující obsah a zřídili nový obsah. Nezapomeňte předem upgradovat kód vašeho portálu na nejnovější verzi z úložiště GitHub.
 
-Pokud nechcete obnovit obsah portálu, můžete zvážit použití nově dostupných pomůcek na všech stránkách. Stávající pomůcky se automaticky aktualizovaly na nejnovější verze.
-
-Pokud byl portál zřízen po oznámení obecné dostupnosti, měl by již být součástí nového výchozího obsahu. Z vaší strany se nevyžaduje žádná akce.
+Pokud jste na portál poprvé získali po oznámení o všeobecné dostupnosti v listopadu 2019, měl by již být součástí nového výchozího obsahu a nevyžaduje se žádná další akce.
 
 ### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Má portál všechny funkce starší verze portálu?
 
-Portál pro vývojáře už nepodporuje *aplikace* a *problémy*.
+Portál pro vývojáře už nepodporuje aplikace, *problémy*a přímou integraci s *aplikacemi*Facebook, Microsoft, Twitter a Google jako zprostředkovatelé identity (místo toho můžete použít Azure AD B2C).
 
 ### <a name="has-the-legacy-portal-been-deprecated"></a>Je starší verze portálu zastaralá?
 
@@ -115,11 +115,11 @@ Můžete mít jeden spravovaný portál a několik samoobslužných portálů. O
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Podporuje portál Azure Resource Manager šablony nebo je kompatibilní se sadou API Management DevOps Resource Kit?
 
-Ne.
+No.
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>Je obsah portálu uložený s funkcí zálohování a obnovení v API Management?
 
-Ne.
+No.
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Musím pro závislosti spravovaného portálu povolit další připojení VNet?
 
@@ -145,7 +145,7 @@ Po nastavení delegování je potřeba [znovu publikovat portál](api-management
 
 Většina změn konfigurace (například virtuální síť, přihlášení a podmínek produktu) vyžaduje [Opětovné publikování portálu](api-management-howto-developer-portal-customize.md#publish).
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a>Při použití interaktivní konzoly se mi zobrazuje chyba CORS
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> Při použití interaktivní konzoly se mi zobrazuje chyba CORS
 
 Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z prohlížeče. Přidejte [zásadu CORS](api-management-cross-domain-policies.md#CORS) do vašich rozhraní API a vyřešte problém s CORS.
 
@@ -217,7 +217,7 @@ Selhání volání může být způsobeno také certifikátem TLS/SSL, který je
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |
 | Microsoft Edge              | Ano<sup>1</sup> |
-| Microsoft Internet Explorer | Ne              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Ano<sup>1</sup> |
 
  <small><sup>1</sup> podporuje se v obou nejnovějších produkčních verzích.</small>

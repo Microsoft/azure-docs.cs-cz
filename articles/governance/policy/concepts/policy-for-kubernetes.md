@@ -3,12 +3,12 @@ title: Preview – informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509871"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645599"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
@@ -57,13 +57,13 @@ Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby 
 
      1. Zaregistrujte poskytovatele prostředků **Microsoft. ContainerService** a **Microsoft. PolicyInsights** . Postup najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-     1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+     1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby**a pak vyhledáte a vyberete **zásadu**.
 
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Vyhledat zásady ve všech službách" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Snímek obrazovky s vyhledáváním zásad ve všech službách" border="false":::
 
      1. Na levé straně stránky Azure Policy vyberte **Join Preview** .
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Připojte se k zásadě pro AKS ve verzi Preview" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Snímek obrazovky uzlu JOIN Preview na stránce zásad" border="false":::
 
      1. Vyberte řádek předplatného, které chcete přidat do verze Preview.
 
@@ -120,17 +120,17 @@ Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azu
 
 - portál Azure
 
-  1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
+  1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby**a pak vyhledáte a vyberete **služby Kubernetes**.
 
   1. Vyberte jeden z clusterů AKS.
 
   1. Na levé straně stránky služby Kubernetes vyberte **zásady (Preview)** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Definice zásad z clusteru AKS" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Snímek obrazovky uzlu policies (Preview) na stránce služby Kubernetes" border="false":::
 
   1. Na hlavní stránce vyberte tlačítko **Povolit doplněk** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Povolení Azure Policy pro doplněk AKS":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Snímek obrazovky s tlačítkem "Povolit doplněk" na stránce "připojení k Azure Policy pro službu Azure Kubernetes Services (A K).":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -460,17 +460,17 @@ Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Porta
 
 - portál Azure
 
-  1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
+  1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby**a pak vyhledáte a vyberete **služby Kubernetes**.
 
   1. Vyberte cluster AKS, ve kterém chcete zakázat doplněk Azure Policy.
 
   1. Na levé straně stránky služby Kubernetes vyberte **zásady (Preview)** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Definice zásad z clusteru AKS" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Snímek obrazovky uzlu policies (Preview) na stránce služby Kubernetes" border="false":::
 
   1. Na hlavní stránce vyberte tlačítko **zakázat doplněk** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Zakázat doplněk Azure Policy pro AKS" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Snímek obrazovky s tlačítkem "zakázat doplněk" na stránce "připojení k Azure Policy pro službu Azure Kubernetes Services (A K)." border="false":::
 
 - Azure CLI
 

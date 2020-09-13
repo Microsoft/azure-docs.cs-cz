@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808095"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595706"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurace App Service s využitím Application Gateway
 
@@ -23,10 +23,8 @@ Application Gateway poskytuje přepínač s názvem, `Pick host name from backen
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
->
-> - Vytvořte back-end fond a přidejte do něj App Service.
-> - Vytvoření nastavení HTTP a vlastního testu s povolenými přepínači vybrat hostitele
+- Vytvořte back-end fond a přidejte do něj App Service.
+- Vytvoření nastavení HTTP a vlastního testu s povolenými přepínači vybrat hostitele
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +41,7 @@ V tomto článku získáte informace o těchto tématech:
 
 4. V části **cíle**klikněte na rozevírací seznam a jako možnost vyberte **App Services** .
 
-5. Zobrazí se rozevírací seznam hned pod rozevíracím seznamem **cílů** , který bude obsahovat seznam App Services. V tomto rozevíracím seznamu vyberte App Service, který chcete přidat jako člena fondu back-end, a klikněte na Přidat.
+5. Zobrazí se rozevírací seznam hned pod rozevíracím seznamem **cílů**  , který bude obsahovat seznam App Services. V tomto rozevíracím seznamu vyberte App Service, který chcete přidat jako člena fondu back-end, a klikněte na Přidat.
 
    ![Back-end App Service](./media/configure-web-app-portal/backendpool.png)
    
@@ -61,9 +59,9 @@ V tomto článku získáte informace o těchto tématech:
    > [!NOTE]
    > Pokud vyberete HTTPS, nemusíte nahrávat žádný ověřovací certifikát ani důvěryhodný kořenový certifikát, aby bylo možné službu App Service povolit, protože App Service je důvěryhodná služba Azure.
 
-4. Zaškrtněte políčko pro **použití pro App Service** . Všimněte si, že přepínače `Create a probe with pick host name from backend address` a `Pick host name from backend address` budou automaticky povoleny.`Pick host name from backend address` přepíše hlavičku hostitele v žádosti s názvem hostitele back-endu, pokud je požadavek směrován z Application Gateway do back-endu.  
+4. Zaškrtněte políčko pro **použití pro App Service** . Všimněte si, že přepínače  `Create a probe with pick host name from backend address` a `Pick host name from backend address` budou automaticky povoleny.`Pick host name from backend address` přepíše hlavičku hostitele v žádosti s názvem hostitele back-endu, pokud je požadavek směrován z Application Gateway do back-endu.  
 
-   `Create a probe with pick host name from backend address`automaticky vytvoří sondu stavu a přidruží ho k tomuto nastavení HTTP. Pro toto nastavení HTTP nemusíte vytvářet žádné další testy stavu. Můžete ověřit, že se <HTTP Setting name> <Unique GUID> v seznamu sond stavu přidala nová sonda s názvem a že tento přepínač už má `Pick host name from backend http settings enabled` .
+   `Create a probe with pick host name from backend address` automaticky vytvoří sondu stavu a přidruží ho k tomuto nastavení HTTP. Pro toto nastavení HTTP nemusíte vytvářet žádné další testy stavu. Můžete ověřit, že se <HTTP Setting name> <Unique GUID> v seznamu sond stavu přidala nová sonda s názvem a že tento přepínač už má `Pick host name from backend http settings enabled` .
 
    Pokud už máte jedno nebo víc nastavení HTTP, které se používá pro App Service, a pokud tato nastavení HTTP používají stejný protokol jako ten, který používáte v jednom vytvořeném, pak místo `Create a probe with pick host name from backend address` přepínače získáte rozevírací seznam pro výběr jedné z vlastních sond. Důvodem je to, že už existuje nastavení HTTP ve službě App Service, proto by existovala také sonda stavu, která má přepínač `Pick host name from backend http settings enabled` . Z rozevíracího seznamu vyberte tento vlastní test paměti.
 

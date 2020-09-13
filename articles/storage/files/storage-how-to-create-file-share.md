@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 728db85e7b5afab676612d908e2ba420c7582194
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930668"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645573"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -32,7 +32,7 @@ Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otá
 
 Další informace o těchto třech volbách najdete v tématu [Plánování nasazení služby soubory Azure](storage-files-planning.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - V tomto článku se předpokládá, že jste už vytvořili předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -231,7 +231,7 @@ Tento příkaz selže, pokud je účet úložiště obsažen v rámci virtuáln�
 > Název vaší sdílené složky musí obsahovat jen malá písmena. Podrobné informace o pojmenovávání sdílených složek a souborů najdete v tématu [pojmenování a odkazování na sdílené složky, adresáře, soubory a metadata](https://msdn.microsoft.com/library/azure/dn167011.aspx).
 
 ### <a name="create-a-hot-or-cool-file-share"></a>Vytvoření horké nebo studené sdílené složky
-Sdílená složka v **účtu úložiště pro obecné účely v2 (GPv2)** může obsahovat transakce optimalizované, horké nebo studené sdílené složky (nebo jejich směs). Transakce optimalizované pro transakce jsou dostupné ve všech oblastech Azure, ale horká a studená sdílená složka je dostupná jenom [v podmnožině oblastí](storage-files-planning.md#storage-tiers). Horkou nebo studenou sdílenou složku můžete vytvořit pomocí modulu služby Azure PowerShell Preview nebo rozhraní příkazového řádku Azure CLI. 
+**Účet úložiště pro obecné účely v2 (GPv2)** může obsahovat transakce optimalizované, horké nebo studené sdílené složky (nebo jejich směs). Transakce optimalizované pro transakce jsou dostupné ve všech oblastech Azure, ale horká a studená sdílená složka je dostupná jenom [v podmnožině oblastí](storage-files-planning.md#storage-tiers). Horkou nebo studenou sdílenou složku můžete vytvořit pomocí modulu služby Azure PowerShell Preview nebo rozhraní příkazového řádku Azure CLI. 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Azure Portal ještě nepodporují vytváření Hot a studené sdílené složky nebo přesouvá stávající sdílené složky transakce na horkou nebo studenou. Podívejte se prosím na pokyny k vytvoření sdílené složky pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.

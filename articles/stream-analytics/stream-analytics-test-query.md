@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 04d86b0ef8202c1c544524dd2a7331d521245f12
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043951"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612150"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testování úlohy Azure Stream Analytics na portálu
 
@@ -23,7 +23,7 @@ V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení
 
 Azure Stream Analytics automaticky načítá události ze vstupů streamování. Můžete spustit dotazy ve výchozí ukázce nebo nastavit konkrétní časový rámec pro ukázku.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte a vyberte svou stávající úlohu Stream Analytics.
 
@@ -71,7 +71,7 @@ Azure Stream Analytics automaticky načítá události ze vstupů streamování.
 
 Místo používání živých dat můžete použít ukázková data z místního souboru a otestovat svůj Azure Stream Analytics dotaz.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
    
 2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
 
@@ -96,6 +96,21 @@ Místo používání živých dat můžete použít ukázková data z místního
    ![Azure Stream Analytics vybraný výstup](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
 10. Po ověření výsledků zobrazených v prohlížeči můžete úlohu **Spustit** .
+
+## <a name="limitations"></a>Omezení
+
+1.  Časové zásady se v testování portálu nepodporují:
+
+   * Mimo pořadí: budou objednány všechny příchozí události.
+   * Pozdní doručení: nebude k dispozici pozdní událost přijetí, protože Stream Analytics může použít pouze existující data pro testování.
+   
+2.  Jazyk C# UDF není podporován.
+
+3.  Všechny testy se spustí s úlohou, která má jednu jednotku streamování.
+
+4.  Velikost časového limitu je jedna minuta. Takže jakýkoli dotaz s velikostí okna větší než 1 minuta nemůže získat žádná data.
+
+5.  Strojové učení se nepodporuje.
 
 ## <a name="next-steps"></a>Další kroky
 * [Sestavte řešení IoT pomocí Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): Tento kurz vás provede vytvořením uceleného řešení s generátorem dat, který simuluje provoz v rámci bezplatného zasedacího stánku.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 17dcaee4f9cd4d889e585394362695ab31f0d012
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079730"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595780"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight pomocí Balíček zabezpečení podniku
 
@@ -47,7 +47,7 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
 Balíček zabezpečení podniku (dříve označované jako HDInsight Premium) poskytují více uživatelům přístup ke clusteru, ve kterém je ověřování prováděno pomocí služby Active Directory a ověřování pomocí seznamů ACL pro Apache Ranger a Storage (seznamy ACL pro ADLS). Autorizace zajišťuje zabezpečené hranice mezi více uživateli a umožňuje přístup k datům na základě zásad autorizace jenom privilegovaným uživatelům.
 
-Zabezpečení a izolace uživatelů jsou důležité pro cluster HDInsight s Balíček zabezpečení podniku. Aby bylo možné tyto požadavky splnit, je blokován přístup SSH ke clusteru s Balíček zabezpečení podniku. V následující tabulce jsou uvedeny doporučené metody přístupu pro jednotlivé typy clusterů:
+Zabezpečení a izolace uživatelů jsou důležité pro cluster HDInsight s Balíček zabezpečení podniku. Aby bylo možné splnit tyto požadavky, je podporován přístup SSH ke clusteru s Balíček zabezpečení podniku pro místního uživatele, který byl vybrán při vytváření clusteru, i uživatelům, kteří jsou k dispozici v AAD-DS (tj. Kerberos). V následující tabulce jsou uvedeny doporučené metody přístupu pro jednotlivé typy clusterů:
 
 |Úloha|Scénář|Metoda přístupu|
 |--------|--------|-------------|

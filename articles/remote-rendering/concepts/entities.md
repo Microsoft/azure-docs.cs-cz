@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020282"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613916"
 ---
 # <a name="entities"></a>Entity
 
@@ -21,7 +21,7 @@ ms.locfileid: "89020282"
 
 Entity mají transformaci definovanou polohou, otočením a škálováním. Vlastními entitami nemají žádné pozorovatelské funkce. Místo toho je chování přidáno prostřednictvím komponent, které jsou připojeny k entitám. Například připojením [CutPlaneComponent](../overview/features/cut-planes.md)  se vytvoří vyjmutá rovina na pozici entity.
 
-Nejdůležitější aspekt samotné entity je hierarchie a výsledná hierarchická transformace. Například pokud je více entit propojeno jako podřízené pro sdílenou nadřazenou entitu, všechny tyto entity lze přesunout, otočit a škálovat v úlohách změnou transformace nadřazené entity.
+Nejdůležitější aspekt samotné entity je hierarchie a výsledná hierarchická transformace. Například pokud je více entit propojeno jako podřízené pro sdílenou nadřazenou entitu, všechny tyto entity lze přesunout, otočit a škálovat v úlohách změnou transformace nadřazené entity. `enabled`Stav entity lze také použít k vypnutí viditelnosti a reakcí na přetypování paprsků pro úplný dílčí graf v hierarchii.
 
 Entita je jedinečně vlastněna její nadřazenou položkou, což znamená, že pokud je Nadřazená aktivita zničena s `Entity.Destroy()` , tak jsou její podřízené a všechny připojené [součásti](components.md). Proto je odebrání modelu z scény provedeno voláním `Destroy` na kořenový uzel modelu, vrácený `AzureSession.Actions.LoadModelAsync()` nebo jeho variantou SAS `AzureSession.Actions.LoadModelFromSASAsync()` .
 
@@ -95,7 +95,6 @@ Double3 translation = entity->GetPosition();
 Quaternion rotation = entity->GetRotation();
 ```
 
-
 ### <a name="querying-spatial-bounds"></a>Dotazování na prostorové meze
 
 Vázané dotazy jsou asynchronní volání, která fungují v celé hierarchii objektů a používají jednu entitu jako kořen. Viz vyhrazená kapitola o [objektových vazbách](object-bounds.md).
@@ -137,6 +136,13 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 ```
 
 Dotaz bude úspěšný i v případě, že objekt neobsahuje žádná metadata.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída entity C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# RemoteManager. CreateEntity ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [Třída entity C++](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
+* [C++ RemoteManager:: CreateEntity ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>Další kroky
 

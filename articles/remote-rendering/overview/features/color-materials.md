@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021377"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613770"
 ---
 # <a name="color-materials"></a>Barevné materiály
 
@@ -50,6 +50,13 @@ Následující vlastnosti jsou specifické pro barevné materiály:
   1. **AlphaBlended:** Tento režim je podobný režimu průhlednosti pro materiály PBR. Měl by se použít pro zobrazení materiálů jako skla.
 
   1. **Doplňková:** Tento režim je nejjednodušším a nejefektivnějším režimem transparentnosti. Příspěvek materiálu se přidá do vykreslené image. Tento režim lze použít k simulaci záře (ale stále transparentních) objektů, jako jsou například značky používané pro zvýraznění důležitých objektů.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída C# ColorMaterial](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# RemoteManager. CreateMaterial ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [Třída C++ ColorMaterial](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
+* [C++ RemoteManager:: CreateMaterial ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Další kroky
 

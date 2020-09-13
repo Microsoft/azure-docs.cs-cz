@@ -1,6 +1,5 @@
 ---
 title: Co je Azure SQL?
-titleSuffix: " "
 description: 'Seznamte se s různými možnostmi v rámci řady služeb Azure SQL: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálním počítači Azure.'
 services: sql-database
 ms.service: sql-database
@@ -13,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 344e52da8ef41e26ab0bfa7ef8e09a31f5d135ca
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280847"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611829"
 ---
 # <a name="what-is-azure-sql"></a>Co je Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,6 +31,11 @@ Azure SQL je rodina spravovaných, zabezpečených a inteligentních produktů, 
 Azure SQL je založený na známém SQL Server Engine, takže můžete snadno migrovat aplikace a dál používat nástroje, jazyky a prostředky, které znáte. Vaše dovednosti a zkušenosti se přenášejí do cloudu, takže můžete dělat ještě víc s tím, co už máte. 
 
 Přečtěte si, jak každý produkt zapadá do datové platformy Microsoft Azure SQL, aby odpovídal správné možnosti pro vaše podnikové požadavky. Bez ohledu na to, jestli upřednostňujete úspory nákladů nebo minimální správu, vám tento článek může pomáhat při rozhodování, jakým způsobem se většina obchodních požadavků zajímá.
+
+
+Pokud s Azure SQL začínáte, podívejte se na video *co je Azure SQL* z naší podrobné [série videí Azure SQL](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
 
 
 ## <a name="overview"></a>Přehled
@@ -85,7 +89,7 @@ Azure SQL Database nabízí následující možnosti nasazení:
   - Jako [*jediná databáze*](database/single-database-overview.md) s vlastní sadou prostředků spravovaných prostřednictvím [logického SQL serveru](database/logical-servers.md). Jedna databáze je podobná databázi s [omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) v SQL Server. Tato možnost je optimalizovaná pro vývoj moderních aplikací pro nové aplikace, které se zanesou do cloudu. K dispozici jsou možnosti s možností [škálování a bez](database/service-tier-hyperscale.md) [serveru](database/serverless-tier-overview.md) .
   - [*Elastický fond*](database/elastic-pool-overview.md), což je kolekce databází se sdílenou sadou prostředků spravovaných prostřednictvím [logického SQL serveru](database/logical-servers.md). Jednotlivé databáze lze přesunout do elastického fondu nebo z něj. Tato možnost je optimalizovaná pro vývoj moderních aplikací pro nové aplikace v cloudu pomocí modelu aplikace SaaS pro více tenantů. Elastické fondy poskytují cenově výhodné řešení pro správu výkonu více databází, které mají vzorce použití proměnných.
 
-### <a name="azure-sql-managed-instance"></a>Spravovaná instance Azure SQL
+### <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
 
 [Azure SQL Managed instance](managed-instance/sql-managed-instance-paas-overview.md) spadá do oborové kategorie *PaaS (Platform as-a-Service)*, která je nejlepší pro většinu migrací do cloudu. Spravovaná instance SQL je kolekce systémových a uživatelských databází se sdílenou sadou prostředků, která je připravená k přebírání a posunutí.  
 - Nejvhodnější pro nové aplikace nebo stávající místní aplikace, které chtějí využívat nejnovější stabilní funkce SQL Server a které jsou migrovány do cloudu s minimálními změnami. Instance spravované instance SQL je podobná instanci [databázového stroje Microsoft SQL Server](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview) , který nabízí sdílené prostředky pro databáze a další funkce v rozsahu instance. 
@@ -107,7 +111,7 @@ Obecně může SQL Database a SQL Managed instance významně zvýšit počet da
 
 ### <a name="comparison-table"></a>Srovnávací tabulka
 
-| Azure SQL Database | Spravovaná instance Azure SQL | SQL Server na virtuálním počítači Azure |
+| Azure SQL Database | Azure SQL Managed Instance | SQL Server na virtuálním počítači Azure |
 | :--- | :--- | :--- |
 |Podporuje většinu místních funkcí na úrovni databáze. K dispozici jsou nejčastěji používané SQL Server funkce.<br/>je zaručeno 99,995% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Možnost přiřazení nezbytných prostředků (CPU/úložiště) k jednotlivým databázím.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Podporuje téměř všechny místní funkce na úrovni instance a databáze. Vysoká kompatibilita s SQL Server.<br/>je zaručeno 99,99% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci Azure Virtual Network.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Máte plnou kontrolu nad SQL Server modulem. Podporuje všechny místní funkce.<br/>Až 99,99% dostupnost.<br/>Úplná parita se stejnou verzí místních SQL Server.<br/>Opravená, dobře známá verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci Azure Virtual Network.<br/>Máte možnost nasazovat aplikace nebo služby na hostitele, kde je umístěn SQL Server.|
 |Migrace z SQL Server může být náročná.<br/>Některé funkce SQL Server nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.<br/>Podpora privátních IP adres pomocí [privátního propojení Azure](database/private-endpoint-overview.md).|Stále je k dispozici nějaký minimální počet funkcí SQL Server, které nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.|Musíte spravovat zálohy a opravy.<br>Musíte implementovat vlastní řešení s vysokou dostupností.<br/>Při změně prostředků (CPU/úložiště) dochází k výpadku.|

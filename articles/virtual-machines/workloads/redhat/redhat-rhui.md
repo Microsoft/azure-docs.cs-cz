@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: dadfd3abfad0c588f53d47cb7ab1eb138d4f90ac
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869214"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612504"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Infrastruktura aktualizace Red Hat pro virtuální počítače na vyžádání Red Hat Enterprise Linux v Azure
  RHUI ( [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) ) umožňuje poskytovatelům cloudu, jako je Azure, zrcadlit obsah úložiště hostovaného na Red Hat, vytvářet vlastní úložiště pomocí obsahu specifického pro Azure a zpřístupňuje je pro virtuální počítače koncových uživatelů.
@@ -89,11 +89,11 @@ V době psaní tohoto zápisu skončila podpora EUS pro RHEL <= 7,4. Další pod
 * RHEL 7,6 EUS Podpora končí na 31. května 2021
 * RHEL 7,7 EUS Podpora končí 30. srpna 2021
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>Přepnutí virtuálního počítače s RHEL na EUS (pro zámek verze na konkrétní dílčí verzi)
-Následující pokyny použijte k uzamknutí virtuálního počítače s RHEL na určitou dílčí verzi (Spustit jako kořen):
+### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>Přepnutí virtuálního počítače s RHEL 7. x na EUS (pro zámek verze na konkrétní dílčí verzi)
+Pomocí následujících pokynů můžete uzamknout virtuální počítač RHEL 7. x do konkrétní dílčí verze (Spustit jako kořen):
 
 >[!NOTE]
-> To platí jenom pro verze RHEL, pro které je EUS k dispozici. V době psaní tohoto zápisu sem patří RHEL 7.2-7.7. Další podrobnosti jsou k dispozici na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .
+> To platí jenom pro RHEL verze 7. x, pro které je k dispozici EUS. V době psaní tohoto zápisu sem patří RHEL 7.2-7.7. Další podrobnosti jsou k dispozici na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .
 
 1. Zakázat úložiště bez EUS:
     ```bash
@@ -111,14 +111,52 @@ Následující pokyny použijte k uzamknutí virtuálního počítače s RHEL na
     ```
 
     >[!NOTE]
-    > Výše uvedená instrukce zamkne RHEL dílčí vydání na aktuální dílčí verzi. Pokud chcete upgradovat a uzamknout novější dílčí verzi, která není nejnovější, zadejte konkrétní dílčí verzi. Například `echo 7.5 > /etc/yum/vars/releasever` bude vaše verze RHEL uzamčena na RHEL 7,5
+    > Výše uvedená instrukce zamkne RHEL dílčí vydání na aktuální dílčí verzi. Pokud chcete upgradovat a uzamknout novější dílčí verzi, která není nejnovější, zadejte konkrétní dílčí verzi. Například `echo 7.5 > /etc/yum/vars/releasever` bude vaše verze RHEL uzamčena na RHEL 7,5.
 
 1. Aktualizace virtuálního počítače s RHEL
     ```bash
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>Přepnutí virtuálního počítače s RHEL zpět na jiný než EUS (odebrání zámku verze)
+### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>Přepnutí virtuálního počítače s RHEL 8. x na EUS (pro zámek verze na konkrétní dílčí verzi)
+Pomocí následujících pokynů můžete uzamknout virtuální počítač RHEL 8. x do konkrétní dílčí verze (Spustit jako kořen):
+
+>[!NOTE]
+> To platí jenom pro RHEL verze 8. x, pro které je EUS k dispozici. V době psaní tohoto textu to zahrnuje RHEL 8.1-8.2. Další podrobnosti jsou k dispozici na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .
+
+1. Zakázat úložiště bez EUS:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8'
+    ```
+
+1. Získání konfiguračního souboru úložišť EUS:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8-eus.config
+    ```
+
+1. Přidat úložišť EUS:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8-eus.config install rhui-azure-rhel8-eus
+    ```
+
+1. Uzamknout `releasever` proměnnou (Spustit jako kořen):
+    ```bash
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > Výše uvedená instrukce zamkne RHEL dílčí vydání na aktuální dílčí verzi. Pokud chcete upgradovat a uzamknout novější dílčí verzi, která není nejnovější, zadejte konkrétní dílčí verzi. Například `echo 8.1 > /etc/yum/vars/releasever` bude vaše verze RHEL uzamčena na RHEL 8,1.
+
+    >[!NOTE]
+    > Pokud existují problémy s oprávněními pro přístup k releasever, můžete soubor upravit pomocí příkazu nano/etc/yum/Vars/releaseve a přidat podrobnosti o verzi image a uložit (' Ctrl + o ' a pak stisknout klávesu CTRL + x ').  
+
+1. Aktualizace virtuálního počítače s RHEL
+    ```bash
+    sudo yum update
+    ```
+
+
+### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>Přepnutí virtuálního počítače se systémem RHEL 7. x zpět na jiný než EUS (odebrání zámku verze)
 Spusťte následující příkaz jako kořen:
 1. Odeberte `releasever` soubor:
     ```bash
@@ -135,6 +173,33 @@ Spusťte následující příkaz jako kořen:
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
     ```
 
+1. Aktualizace virtuálního počítače s RHEL
+    ```bash
+    sudo yum update
+    ```
+
+### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>Přepnout virtuální počítač s RHEL 8. x zpátky na jiný než EUS (odebrat zámek verze)
+Spusťte následující příkaz jako kořen:
+1. Odeberte `releasever` soubor:
+    ```bash
+    rm /etc/yum/vars/releasever
+     ```
+
+1. Zakázat úložiště EUS:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8-eus'
+   ```
+
+1. Získání konfiguračního souboru pravidelného úložiště:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8.config
+    ```
+
+1. Přidat úložišť EUS:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8.config install rhui-azure-rhel8
+    ```
+    
 1. Aktualizace virtuálního počítače s RHEL
     ```bash
     sudo yum update

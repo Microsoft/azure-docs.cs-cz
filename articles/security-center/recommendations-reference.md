@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8a0ead681c8b6cfbfbf820b546f1bcb320871c70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c3351931013fb9b4d4de25d12e358fbe27f05472
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587357"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613523"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení zabezpečení – referenční příručka
 
@@ -57,7 +57,6 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 |----|----|----|----|----|
 |**V clusterech služby Azure Kubernetes by měla být povolena rozšířená ochrana před internetovými útoky.**|Security Center poskytuje ochranu před internetovými útoky v reálném čase pro vaše kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.<br>Důležité: Oprava toto doporučení bude mít za následek poplatky za ochranu vašich clusterů AKS. Pokud v tomto předplatném nemáte žádné clustery AKS, neúčtují se žádné poplatky. Pokud v budoucnu vytvoříte v tomto předplatném všechny clustery AKS, budou automaticky chráněny a v tomto čase začnou platit poplatky.<br>(Související zásady: [v clusterech služby Azure Kubernetes by měla být povolena rozšířená ochrana před internetovými útoky](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a).)|Vysoké|**A**|Předplatné|
 |**Pro služby Kubernetes by měly být definované rozsahy povolených IP adres.**|Udělení přístupu k rozhraní API pro správu služeb Kubernetes udělením přístupu k rozhraním API jenom na IP adresy v určitých rozsahech. Doporučuje se nakonfigurovat schválené rozsahy IP adres, aby se ke clusteru mohly přistupovat jenom aplikace z povolených sítí.<br>(Související zásady: [Preview]: pro služby Kubernetes Services by měly být definované rozsahy povolených IP adres)|Vysoká|N|Výpočetní prostředky (kontejnery)|
-|**Zásady zabezpečení pod by měly být definované tak, aby se snížily vektor útoku odebráním zbytečných aplikačních oprávnění (Preview).**|Definováním zásad zabezpečení pod můžete omezit vektor útoku odebráním zbytečných oprávnění aplikace. Doporučuje se nakonfigurovat zásady zabezpečení pod tím, že lusky mají přístup jenom k prostředkům, ke kterým mají přístup.<br>(Související zásady: [Preview]: v Kubernetes službách by se měly definovat zásady zabezpečení.)|Střední|N|Výpočetní prostředky (kontejnery)|
 |**Pro omezení přístupu ke clusteru služby Kubernetes by se měla použít Access Control na základě rolí.**|K zajištění podrobného filtrování akcí, které mohou uživatelé provádět, použijte Access Control na základě rolí (RBAC) ke správě oprávnění v clusterech služby Kubernetes a ke konfiguraci relevantních zásad autorizace. Další informace najdete v tématu [řízení přístupu na základě role v Azure](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac).<br>(Související zásady: [Preview]: pro služby Kubernetes by se měla použít Access Control na základě rolí (RBAC))|Střední|N|Výpočetní prostředky (kontejnery)|
 |**Služba Kubernetes by se měla upgradovat na nejnovější verzi Kubernetes.**|Abyste mohli využívat aktualizované opravy ohrožení zabezpečení, upgradujte clustery služby Azure Kubernetes na nejnovější verzi Kubernetes. Podrobnosti o konkrétních chybách zabezpečení Kubernetes najdete v tématu [Kubernetes CVEs](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes).<br>(Související zásady: [Preview]: služby Kubernetes by měly být upgradovány na nezranitelnou verzi Kubernetes.)|Vysoká|N|Výpočetní prostředky (kontejnery)|
 |**V Azure Container Registry Registry by měla být povolena rozšířená ochrana před internetovými útoky.**|K vytváření zabezpečených kontejnerových úloh zajistěte, aby obrázky, na kterých jsou založené, nejsou známými chybami zabezpečení. Security Center vyhledá v registru chyby zabezpečení u jednotlivých nabízených imagí kontejneru a zpřístupňuje podrobné nálezy na bitovou kopii.<br>Důležité: Oprava toto doporučení bude mít za následek poplatky za ochranu ACR Registry. Pokud v tomto předplatném nemáte žádné Registry ACR, neúčtují se žádné poplatky. Pokud v budoucnu vytvoříte v tomto předplatném nějaké Registry ACR, budou automaticky chráněny a v této době začnou platit poplatky.<br>(Související zásady: [Rozšířená ochrana před internetovými útoky by měla být povolená v Azure Container Registry Registry](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4))|Vysoké|**A**|Předplatné|
@@ -191,7 +190,9 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 |----|----|----|----|----|
 |**Přístup k App Services by měl být omezený.**|Omezte přístup k vašemu App Services změnou konfigurace sítě tak, aby odepřela příchozí provoz z rozsahů, které jsou příliš široké.<br>(Související zásady: [Preview]: přístup k App Services by měl být omezený)|Vysoká|N|App Service|
 |**Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by se měla posílit.**|Posílit zabezpečení skupiny zabezpečení sítě (NSG) virtuálních počítačů, na kterých běží webové aplikace, s pravidly NSG, která jsou přesná, s ohledem na porty webových aplikací.<br>(Související zásady: pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by měla být Posílená.)|Vysoká|N|Virtuální počítač|
-
+|**Zásady zabezpečení pod by měly být definované tak, aby se snížily vektor útoku odebráním zbytečných aplikačních oprávnění (Preview).**|Definováním zásad zabezpečení pod můžete omezit vektor útoku odebráním zbytečných oprávnění aplikace. Doporučuje se nakonfigurovat zásady zabezpečení pod tím, že lusky mají přístup jenom k prostředkům, ke kterým mají přístup.<br>(Související zásady: [Preview]: v Kubernetes službách by se měly definovat zásady zabezpečení.)|Střední|N|Výpočetní prostředky (kontejnery)|
+|**Nainstalovat Azure Security Center pro modul zabezpečení IoT a získat tak lepší přehled o zařízeních IoT**|Nainstalujte Azure Security Center pro modul zabezpečení IoT, abyste získali lepší přehled o zařízeních IoT.|Nízká|N|Zařízení IoT|
+||||
 
 
 ## <a name="next-steps"></a>Další kroky

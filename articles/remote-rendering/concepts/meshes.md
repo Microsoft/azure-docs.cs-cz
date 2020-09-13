@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b800272a538243d39a89e4eed64bc5cbc2d53ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea43f48abef5e2b258251d46eca1061a2263519
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681763"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613830"
 ---
 # <a name="meshes"></a>Sítě
 
@@ -37,6 +37,13 @@ Sítě jsou neměnný [sdílený prostředek](../concepts/lifetime.md), který l
 * **Materiály:** Pole materiálů určené v samotné součásti sítě. Pole bude mít vždycky stejnou délku jako pole *materiálů* v prostředku sítě. Materiály, které se nepřepisují z výchozí mřížky, jsou v tomto poli nastavené na *hodnotu null* .
 
 * **UsedMaterials:** Pole skutečně použitých materiálů pro každou podmřížku. Bude totožný s daty v poli *materiál* pro hodnoty, které nejsou null. V opačném případě obsahuje hodnotu z pole *materiálů* v instanci sítě.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída sítě v jazyce C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
+* [Třída C# MeshComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
+* [Třída mřížky C++](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
+* [Třída C++ MeshComponent](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
 
 ## <a name="next-steps"></a>Další kroky
 

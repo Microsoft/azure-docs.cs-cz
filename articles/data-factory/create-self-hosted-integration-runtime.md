@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655860"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596107"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
 
@@ -36,7 +36,7 @@ Chcete-li vytvořit a nastavit prostředí Integration runtime v místním prost
 
 ### <a name="create-a-self-hosted-ir-via-azure-powershell"></a>Vytvoření prostředí IR s místním hostováním pomocí Azure PowerShell
 
-1. Pro tuto úlohu můžete použít Azure PowerShell. Zde naleznete příklad:
+1. Pro tuto úlohu můžete použít Azure PowerShell. Tady je příklad:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -107,7 +107,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 Zde jsou uvedeny podrobnosti o parametrech a vlastnostech aplikace: 
 
-| Vlastnost                                                    | Popis                                                  | Vyžadováno |
+| Vlastnost                                                    | Popis                                                  | Povinné |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode** "`<AuthenticationKey>`"                     | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem. | No       |
 | **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem a názvem uzlu. | No       |
@@ -320,6 +320,7 @@ Na úrovni brány firewall pro podnikové sítě je potřeba nakonfigurovat nás
 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
+
 Na úrovni brány firewall systému Windows nebo počítači jsou tyto Odchozí porty obvykle povoleny. Pokud ne, můžete nakonfigurovat domény a porty na počítači prostředí Integration runtime v místním prostředí.
 
 > [!NOTE]
@@ -331,13 +332,13 @@ Na úrovni brány firewall systému Windows nebo počítači jsou tyto Odchozí 
 
 Ujistěte se, že jste správně povolili pravidla brány firewall pro podnikovou bránu firewall, bránu Windows Firewall počítače v místním prostředí Integration runtime a samotné úložiště dat. Povolení těchto pravidel umožňuje, aby se místní prostředí Integration runtime úspěšně připojovalo ke zdroji i jímky. Povolte pravidla pro každé úložiště dat, které je součástí operace kopírování.
 
-Pokud například chcete kopírovat z místního úložiště dat do jímky SQL Database nebo jímky Azure SQL Data Warehouse, proveďte následující kroky:
+Pokud například chcete kopírovat z místního úložiště dat do jímky SQL Database nebo do jímky Azure synapse Analytics (dřív SQL Data Warehouse), proveďte následující kroky:
 
 1. Povolí odchozí komunikaci TCP na portu 1433 pro bránu firewall systému Windows i pro podnikovou bránu firewall.
 1. Nakonfigurujte nastavení brány firewall SQL Database a přidejte tak IP adresu počítače místního prostředí Integration runtime do seznamu povolených IP adres.
 
 > [!NOTE]
-> Pokud brána firewall nepovoluje odchozí port 1433, místní prostředí Integration runtime nemůže získat přímý přístup k databázi SQL. V takovém případě můžete použít [dvoufázové kopírování](copy-activity-performance.md) SQL Database a SQL Data Warehouse. V tomto scénáři budete pro přesun dat potřebovat jenom HTTPS (port 443).
+> Pokud brána firewall nepovoluje odchozí port 1433, místní prostředí Integration runtime nemůže získat přímý přístup k databázi SQL. V takovém případě můžete použít [dvoufázové kopírování](copy-activity-performance.md) SQL Database a Azure synapse Analytics. V tomto scénáři budete pro přesun dat potřebovat jenom HTTPS (port 443).
 
 ## <a name="proxy-server-considerations"></a>Požadavky na proxy server
 

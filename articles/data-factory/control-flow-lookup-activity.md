@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/09/2020
+ms.openlocfilehash: e75921e5ee5b148d81c637800f46403d3d410f42
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795877"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613473"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 
@@ -29,7 +29,9 @@ Aktivita vyhledávání načte a vrátí obsah konfiguračního souboru nebo tab
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. Největší počet řádků, které mohou být vráceny vyhledávací aktivitou, je 5 000, velikost až 2 MB. V současné době je nejdelší doba trvání aktivity vyhledávání před časovým limitem jedna hodina.
+Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. 
+
+Aktivita vyhledávání může vracet až 5000 řádků. Pokud sada výsledků obsahuje víc záznamů, vrátí se prvních 5000 řádků. Výstup aktivity vyhledávání podporuje až 2 MB velikosti, aktivita se nezdaří, pokud velikost překročí limit. V současné době je nejdelší doba trvání aktivity vyhledávání před časovým limitem jedna hodina.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -56,9 +58,9 @@ Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. Největ
 
 Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
-integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
-source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
-firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí formát je `true`.
+integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
+source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
+firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechny řádky. | Logická hodnota | No. Výchozí formát je `true`.
 
 > [!NOTE]
 > 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285624"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612328"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy konfigurace clusteru (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,26 +35,23 @@ Použijte jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sít
 
 I když cluster se dvěma uzly bude fungovat bez [prostředku kvora](/windows-server/storage/storage-spaces/understand-quorum), je nutné, aby zákazníci používali k podpoře produkčního prostředku prostředek kvora. Ověření clusteru neprojde žádný cluster bez prostředku kvora. 
 
-Technicky, cluster se třemi uzly může předržet jednu ztrátu uzlu (na dvou uzlech) bez prostředku kvora. I když je cluster nefunkční na dvou uzlech, existuje riziko, že je možné spustit: 
+Technicky, cluster se třemi uzly může předržet jednu ztrátu uzlu (na dvou uzlech) bez prostředku kvora. Ale po výpadku clusteru se dvěma uzly existuje riziko, že clusterované prostředky budou v případě ztráty uzlu v režimu offline nebo selhání komunikace, aby se zabránilo scénáři děleného mozku.
 
-- **Oddíl v prostoru** (dělené mozek): uzly clusteru se v síti rozdělují, protože se jedná o problém serveru, síťové karty nebo přepínače. 
-- **Oddíl v čase** (Amnesia): uzel se připojí nebo znovu připojí ke clusteru a pokusí se o to, aby vyžádat vlastnictví skupiny clusteru nebo role clusteru nevhodně. 
-
-Prostředek kvora chrání cluster proti jednomu z těchto problémů. 
+Konfigurace prostředku kvora umožní, aby cluster pokračoval online s pouze jedním uzlem online.
 
 V následující tabulce jsou uvedené možnosti kvora, které jsou k dispozici v pořadí doporučeném pro použití s virtuálním počítačem Azure, přičemž určující disk má upřednostňovanou volbu: 
 
 
 ||[Disk s kopií clusteru](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Disk s kopií cloudu](/windows-server/failover-clustering/deploy-cloud-witness)  |[Určující sdílená složka](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**Podporovaný operační systém**| Vše |Windows Server 2016 +| Windows Server 2012 +|
+|**Podporovaný operační systém**| Vše |Windows Server 2016 +| Vše|
 
 
 
 
 ### <a name="disk-witness"></a>Disk s kopií clusteru
 
-Disk s kopií clusteru je malý clusterovaný disk ve skupině úložišť dostupných v clusteru. Tento disk je vysoce dostupný a může převzít služby při selhání mezi uzly. Obsahuje kopii clusterové databáze s výchozí velikostí, která je obvykle menší než 1 GB. Disk s kopií clusteru je upřednostňovanou možností kvora pro virtuální počítač Azure, protože dokáže vyřešit problém oddílu v čase, na rozdíl od sdílené složky cloudu a určující sdílené složky. 
+Disk s kopií clusteru je malý clusterovaný disk ve skupině úložišť dostupných v clusteru. Tento disk je vysoce dostupný a může převzít služby při selhání mezi uzly. Obsahuje kopii clusterové databáze s výchozí velikostí, která je obvykle menší než 1 GB. Disk s kopií clusteru je upřednostňovanou možností kvora pro libovolný cluster, který používá sdílené disky Azure (nebo jakékoli řešení sdíleného disku, jako je například sdílené rozhraní SCSI, iSCSI nebo síť SAN s technologií Fibre Channel).  Sdílený svazek clusteru nelze použít jako určující disk.
 
 Nakonfigurujte sdílený disk Azure jako určující disk. 
 
@@ -95,8 +92,8 @@ Následující tabulka porovnává podporu připojení HADR:
 
 | |**Název virtuální sítě (VNN)**  |**Název distribuované sítě (DNN)**  |
 |---------|---------|---------|
-|**Minimální verze operačního systému**| Windows Server 2012 | Windows Server 2016|
-|**Minimální verze SQL Server** |SQL Server 2012 |SQL Server 2019 CU2|
+|**Minimální verze operačního systému**| Vše | Vše |
+|**Minimální verze SQL Server** |Vše |SQL Server 2019 CU2|
 |**Podporované řešení HADR** | Instance clusteru s podporou převzetí služeb při selhání <br/> Skupina dostupnosti | Instance clusteru s podporou převzetí služeb při selhání|
 
 
@@ -108,9 +105,9 @@ Při použití nástroje pro vyrovnávání zatížení existuje mírné zpožd�
 
 Pokud chcete začít, přečtěte si, jak [nakonfigurovat Azure Load Balancer pro FCI](hadr-vnn-azure-load-balancer-configure.md). 
 
-**Podporovaný operační systém**: Windows Server 2012 a novější   
-**Podporovaná verze SQL**: SQL Server 2012 a novější   
-**Podporované řešení hadr**: instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti 
+**Podporovaný operační systém**: vše   
+**Podporovaná verze SQL**: vše   
+**Podporované řešení hadr**: instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
 
 
 ### <a name="distributed-network-name-dnn"></a>Název distribuované sítě (DNN)
@@ -138,9 +135,10 @@ Pokud chcete začít, přečtěte si, jak [nakonfigurovat prostředek DNN pro FC
 Při práci s FCI nebo skupinami dostupnosti a SQL Server v Azure Virtual Machines Vezměte v úvahu následující omezení. 
 
 ### <a name="msdtc"></a>NÁSTROJE 
-Azure Virtual Machines podporuje Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm na sdílených svazcích clusteru (CSV) a v [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md).
 
-V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 2016 nebo starší, protože:
+Azure Virtual Machines podporuje Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm na sdílených svazcích clusteru (CSV) a [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) nebo na SQL Server virtuálních počítačích, které používají sdílené disky Azure. 
+
+V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 2016 nebo starší se sdílenými svazky clusteru, protože:
 
 - Clusterový prostředek MSDTC nejde nakonfigurovat tak, aby používal sdílené úložiště. Pokud v systému Windows Server 2016 vytvoříte prostředek MSDTC, nezobrazí se žádné sdílené úložiště dostupné pro použití, a to i v případě, že je úložiště k dispozici. Tento problém byl opravený v systému Windows Server 2019.
 - Nástroj pro vyrovnávání zatížení úrovně Basic nezpracovává porty RPC.

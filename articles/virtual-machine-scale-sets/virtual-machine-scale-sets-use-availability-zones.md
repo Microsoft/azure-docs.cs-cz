@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029310"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611918"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření sady škálování virtuálních počítačů, která používá Zóny dostupnosti
 
@@ -22,13 +22,17 @@ Pokud chcete ochránit vaše služby Virtual Machine Scale Sets před selháním
 
 ## <a name="availability-considerations"></a>Aspekty dostupnosti
 
-Když nasadíte sadu škálování do jedné nebo více zón jako rozhraní API verze *2017-12-01*, máte možnost nasazení nasadit s "maximálním rozprostřem" nebo "statickým 5 selháním doménou selhání". Díky maximálnímu rozprostření sada škálování rozšiřuje vaše virtuální počítače napříč tolik domén selhání v rámci každé zóny. Toto rozprostření může být v rozmezí větší nebo menší než pět domén selhání na zónu. Při "statickém rozšiřování domén selhání" se sada škálování rozšíří na vaše virtuální počítače v přesně pěti doménách selhání na zónu. Pokud sada škálování nemůže najít pět jedinečných domén selhání na zónu, aby splňovala požadavek na přidělení, požadavek selže.
+Když nasadíte škálu regionů (mimo oblast) do jedné nebo více zón jako rozhraní API verze *2017-12-01*, máte následující možnosti dostupnosti:
+- Maximální rozprostření (platformFaultDomainCount = 1)
+- Statické pevné rozprostření (platformFaultDomainCount = 5)
+- Rozprostření zarovnané k doménám selhání disků úložiště (platforFaultDomainCount = 2 nebo 3)
+
+Díky maximálnímu rozprostření sada škálování rozšiřuje vaše virtuální počítače napříč tolik domén selhání v rámci každé zóny. Toto rozprostření může být v rozmezí větší nebo menší než pět domén selhání na zónu. Při statickém pevném rozprostření sada škálování rozšíří vaše virtuální počítače napříč přesně pět domén selhání na zónu. Pokud sada škálování nemůže najít pět jedinečných domén selhání na zónu, aby splňovala požadavek na přidělení, požadavek selže.
 
 Doporučujeme, abyste nasadili **maximální rozprostření pro většinu úloh**, protože tento přístup ve většině případů poskytuje nejlepší rozprostření. Pokud potřebujete, aby byly repliky rozloženy v rámci různých jednotek izolace hardwaru, doporučujeme rozprostření napříč Zóny dostupnosti a využití maximálního rozprostření v rámci každé zóny.
 
-Při maximálním rozprostření se v zobrazení instance virtuálního počítače sady škálování a v metadatech instance zobrazí jenom jedna doména selhání, a to bez ohledu na to, kolik domén selhání jsou virtuální počítače rozdělené napříč. Rozprostření v rámci každé zóny je implicitní.
-
-Pokud chcete použít maximum rozprostření, nastavte *platformFaultDomainCount* na *1*. Pokud chcete použít statické rozprostření domén selhání, nastavte *platformFaultDomainCount* na *5*. V rozhraní API verze *2017-12-01*má *platformFaultDomainCount* výchozí hodnotu *1* pro sadu škálování s jednou zónou a mezi zónami. V současné době se pro regionální (negeograficky) sady škálování podporují jenom statické rozprostření domén selhání.
+> [!NOTE]
+> Při maximálním rozprostření se v zobrazení instance virtuálního počítače sady škálování a v metadatech instance zobrazí jenom jedna doména selhání, a to bez ohledu na to, kolik domén selhání jsou virtuální počítače rozdělené napříč. Rozprostření v rámci každé zóny je implicitní.
 
 ### <a name="placement-groups"></a>Skupiny umístění
 
@@ -39,7 +43,7 @@ Když nasadíte sadu škálování, máte také možnost nasazení s jedinou [sk
 
 ### <a name="zone-balancing"></a>Vyrovnávání zóny
 
-Pro škálované sady nasazené napříč několika zónami máte také možnost zvolit "nejlepší bilance zóny" nebo "striktní bilance zóny". Sada škálování se považuje za vyváženou, pokud každá zóna má stejný počet virtuálních počítačů nebo \\ virtuálních počítačů +-1 ve všech ostatních zónách pro sadu škálování. Příklad:
+Pro škálované sady nasazené napříč několika zónami máte také možnost zvolit "nejlepší bilance zóny" nebo "striktní bilance zóny". Sada škálování se považuje za vyváženou, pokud každá zóna má stejný počet virtuálních počítačů nebo \\ virtuálních počítačů +-1 ve všech ostatních zónách pro sadu škálování. Například:
 
 - Sada škálování se dvěma virtuálními počítači v zóně 1, 3 virtuálními počítači v zóně 2 a 3 virtuálními počítači v zóně 3 je považována za vyváženou. Existuje pouze jedna zóna s jiným počtem virtuálních počítačů a je pouze 1 méně než ostatní zóny. 
 - Sada škálování s 1 virtuálním počítačem v zóně 1, 3 virtuálními počítači v zóně 2 a 3 virtuálními počítači v zóně 3 se považují za nevyvážené. Zóna 1 má 2 méně virtuálních počítačů než zóny 2 a 3.

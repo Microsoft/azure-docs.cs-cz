@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0730148a3da41d0d72961ea521577fa370b183d
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806807"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596086"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s interním přesměrování pomocí Azure CLI
 
@@ -21,14 +21,13 @@ Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [přesm�
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření služby Application Gateway
-> * Přidat naslouchací procesy a pravidlo přesměrování
-> * Vytvoření sady škálování virtuálních počítačů s back-end fondem
-> * Vytvoření záznamu CNAME v doméně
+* Nastavit síť
+* Vytvoření brány Application Gateway
+* Přidat naslouchací procesy a pravidlo přesměrování
+* Vytvoření sady škálování virtuálních počítačů s back-end fondem
+* Vytvoření záznamu CNAME v doméně
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -66,7 +65,7 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. 
 
@@ -207,7 +206,7 @@ az network public-ip show \
   --output tsv
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 Do adresního řádku prohlížeče zadejte název domény. Například http: \/ /www.contoso.com.
 
@@ -220,7 +219,7 @@ Změňte adresu na jinou doménu, například http: \/ /www.contoso.org, a měli
 V tomto kurzu jste se naučili:
 
 > * Nastavit síť
-> * Vytvoření služby Application Gateway
+> * Vytvoření brány Application Gateway
 > * Přidat naslouchací procesy a pravidlo přesměrování
 > * Vytvoření sady škálování virtuálních počítačů s back-end fondem
 > * Vytvoření záznamu CNAME v doméně

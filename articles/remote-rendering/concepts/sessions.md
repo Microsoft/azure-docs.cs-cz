@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74fae6a8aa0c59043db0ab816e09b16affb63580
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2e7f441a727bea8d1a5d401fb5e9757dee1044fc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021829"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613808"
 ---
 # <a name="remote-rendering-sessions"></a>Relace Remote Renderingu
 
@@ -31,7 +31,7 @@ Jakmile budete *připojeni* k aktivní relaci, operace jako [načítání model�
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Správa více relací současně
 
-*Připojení* k několika relacím z jednoho zařízení není možné. V rámci jedné aplikace ale můžete vytvořit, sledovat a vypnout libovolný počet relací. Dokud se aplikace nechce připojit k relaci, nemusíte ji spouštět na zařízení jako HoloLens 2, a to buď. Případ použití pro takovou implementaci může být, pokud chcete řídit relace prostřednictvím centrálního mechanismu. Například jedna může vytvořit webovou aplikaci, do které se může přihlásit více tabletů a HoloLenses. Pak se aplikace může zobrazit na tabletech, například na to, který model CAD se má zobrazit. Pokud uživatel provede výběr, budou tyto informace sděleny všem HoloLenses, aby mohli vytvořit sdílené prostředí.
+*Připojení* k několika relacím z jednoho zařízení není možné. V rámci jedné aplikace ale můžete vytvořit, sledovat a vypnout libovolný počet relací. Dokud se aplikace nechce připojit k relaci, nemusíte ji spouštět na zařízení jako HoloLens 2, a to buď. Případ použití pro takovou implementaci může být, pokud chcete řídit relace prostřednictvím centrálního mechanismu. Například jedna může vytvořit webovou aplikaci, do které se může přihlásit víc tabletů a zařízení HoloLens. Pak se aplikace může zobrazit na tabletech, například na to, který model CAD se má zobrazit. Pokud uživatel provede výběr, budou tyto informace sděleny všem zařízením HoloLens, aby bylo možné vytvořit sdílené prostředí.
 
 ## <a name="session-phases"></a>Fáze relace
 
@@ -146,6 +146,15 @@ Více `AzureFrontend` `AzureSession` instancí a lze spravovat, manipulovat a do
 Na ID trvalé relace se dá dotazovat `AzureSession.SessionUUID()` místně pomocí mezipaměti. S tímto ID může aplikace volat `AzureFrontend.OpenSession` , aby se k této relaci navázala.
 
 Pokud `AzureSession.IsConnected` je hodnota true, `AzureSession.Actions` vrátí instanci `RemoteManager` , která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a dotazy na [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída C# AzureSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession)
+* [C# AzureFrontend. CreateNewRenderingSessionAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
+* [C# AzureFrontend. OpenRenderingSession ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
+* [Třída C++ AzureSession](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession)
+* [C++ AzureFrontend:: CreateNewRenderingSessionAsync](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
+* [C++ AzureFrontend:: OpenRenderingSession](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 647ab275fb7f34ee9721e4f085df0d22048fc04d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 85925369da8fec83a613226fe248b396fd88105a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044239"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613409"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI
 
@@ -155,7 +155,7 @@ Azure Resource Manager umožňuje plně automatizovat nasazení Stream Analytics
 
 ## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>Poskytněte pracovnímu prostoru Power BI přístup k úloze Stream Analytics.
 
-Teď, když je úloha Stream Analytics vytvořená, může být dána přístup k pracovnímu prostoru Power BI.
+Teď, když je úloha Stream Analytics vytvořená, může být dána přístup k pracovnímu prostoru Power BI. Jakmile budete mít přístup k úloze, počkejte několik minut, než se identita rozšíří.
 
 ### <a name="use-the-power-bi-ui"></a>Použití uživatelského rozhraní Power BI
 

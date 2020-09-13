@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 608b148dc3929065df44530da65e695df19be03e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fa4e94d6ec4c3e612d5a8a29db76e023957d583
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79486125"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89644076"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?
 Protokol BGP se podporuje u všech SKU Azure VPN Gateawy s výjimkou základní SKU.
@@ -55,13 +55,13 @@ Služby Azure VPN Gateway budou místním zařízením BGP prezentovat následuj
 
 * předpony adres sítí VNet
 * předpony Azure pro jednotlivé brány místních sítí připojené ke službě Azure VPN Gateway
-* směrování převzatá z jiných relací vytvoření partnerského vztahu protokolu BGP připojených ke službě Azure VPN Gateway, **kromě výchozího směrování nebo směrování překrytých jinými předponami sítě VNet**
+* Trasy získané z jiných relací partnerských vztahů protokolu BGP připojených ke službě Azure VPN Gateway **s výjimkou výchozích tras nebo tras překrytých předponou virtuální**sítě.
 
 ### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>Kolik předpon je možné inzerovat službě Azure VPN Gateway?
 Podporujeme až 4000 předpon. Pokud počet předpon překročí toto omezení, relace BGP se ukončí.
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Mohu inzerovat výchozí cestu (0.0.0.0/0) do bran Azure VPN Gateway?
-Ano.
+Yes.
 
 Poznámka: Tato akce vynutí převedení veškerého výchozího přenosu virtuální sítě směrem k místní lokalitě a zabrání virtuálním počítačům virtuální sítě v příjmu veřejné komunikace přímo z internetu, jako jsou přenosy RDP nebo SSH z internetu k virtuálním počítačům.
 
@@ -89,7 +89,7 @@ Pokud máte například dva redundantní tunely mezi službou Azure VPN Gateway 
 Ano, ale alespoň jedna z bran virtuální sítě musí být v konfiguraci aktivní–aktivní.
 
 ### <a name="can-i-use-bgp-for-s2s-vpn-in-an-expressroutes2s-vpn-co-existence-configuration"></a>Je možné použít protokol BGP pro síť VPN S2S provozovanou v koexistenci se sítí VPN ExpressRoute?
-Ano. 
+Yes. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Jakou adresu služba Azure VPN Gateway používá pro IP adresu partnera BGP?
 Brána Azure VPN Gateway přidělí jednu IP adresu z rozsahu GatewaySubnet pro brány VPN typu aktivní-pohotovostní nebo dvě IP adresy pro brány VPN typu aktivní-aktivní. Můžete získat vlastní IP adresy protokolu BGP přidělené pomocí prostředí PowerShell (Get-AzVirtualNetworkGateway, vyhledat vlastnost "bgpPeeringAddress") nebo v Azure Portal (pod vlastností "konfigurace ASN protokolu BGP" na stránce Konfigurace brány).

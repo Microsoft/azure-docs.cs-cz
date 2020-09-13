@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020350"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645646"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -147,7 +147,8 @@ K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. N
 
 ## <a name="dependency-visualization-in-azure-government"></a>Vizualizace závislostí v Azure Government
 
-Azure Migrate závisí na Service Map funkce Vizualizace závislostí. Protože Service Map v tuto chvíli není v Azure Government k dispozici, tato funkce není v Azure Government dostupná.
+Analýza závislostí založená na agentech není v Azure Government podporovaná. Použijte prosím analýzu závislostí bez agenta.
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>Po instalaci agenta se nezobrazují závislosti
 
@@ -160,7 +161,7 @@ Pro virtuální počítače s Windows:
 
     ![Stav MMA](./media/troubleshoot-assessment/mma-properties.png)
 
-Pro virtuální počítače se systémem Linux se ujistěte, že instalační příkazy pro MMA a agenta závislostí byly úspěšné.
+Pro virtuální počítače se systémem Linux se ujistěte, že instalační příkazy pro MMA a agenta závislostí byly úspěšné. Další pokyny k odstraňování potíží najdete [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues).
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -181,7 +182,6 @@ V Azure Migrate posouzení serveru s analýzou závislostí založenou na agente
 ## <a name="machines-show-install-agent"></a>Počítače zobrazují "instalovat agenta"
 
 Po migraci počítačů s povolenou vizualizací závislostí do Azure se můžou počítače místo příkazu "Zobrazit závislosti" Zobrazit akce "instalovat agenta", a to kvůli následujícímu chování:
-
 
 - Po migraci do Azure jsou místní počítače vypnuté a s ekvivalentními virtuálními počítači se prosazuje v Azure. Tyto počítače získají jinou adresu MAC.
 - Počítače mohou mít také jinou IP adresu, a to na základě toho, zda jste zachovali místní IP adresu nebo ne.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135823"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612906"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -217,7 +217,7 @@ Pokud váš scénář vyžaduje vstupní koncové body, máte dvě možnosti:
 
 Pokud jsou instance virtuálních počítačů nasazené ve více zónách ve stejné podsíti, nemůžete dosáhnout příslibu Zona s prostředky brány NAT.   A dokonce i v případě, že jsou k podsíti připojená několik bran NAT, instance virtuálního počítače by nevěděla, který prostředek brány NAT má vybrat.
 
-Does't příslib v oblasti a v případě, že se nerovná zóna instance virtuálního počítače a zóny služby NAT, se pro instance virtuálních počítačů používají místní prostředek brány NAT.
+Does't příslib v oblasti a v případě, že se nerovná zóna instance virtuálního počítače a zóna brány NAT v oblasti oblast, se pro instance virtuálních počítačů používá místní prostředek brány NAT.
 
 I když se zdá, že se tento scénář bude pracovat, jeho model stavu a režim selhání není definovaný v bodu zóny dostupnosti zobrazení. Zvažte místo toho použití zásobníků oblastí nebo všech oblastí.
 

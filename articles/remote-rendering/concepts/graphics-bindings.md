@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f769036ac9e5a6945e7ecad30e021d377cabd358
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d8dc4a3efb034c9428de32f0f975869e1044327
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020265"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613892"
 ---
 # <a name="graphics-binding"></a>Grafika – vazba
 
@@ -115,7 +115,6 @@ if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
     //...
 }
 ```
-
 
 Tam, kde výše `ptr` musí být ukazatel na nativní `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` objekt, který definuje systém souřadnic World Space, ve kterém jsou vyjádřeny souřadnice v rozhraní API.
 
@@ -231,6 +230,17 @@ else
     ...
 }
 ```
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [C# RemoteManagerStatic. StartupRemoteRendering ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanagerstatic.startupremoterendering)
+* [Třída C# GraphicsBinding](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbinding)
+* [Třída C# GraphicsBindingWmrD3d11](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbindingwmrd3d11)
+* [Třída C# GraphicsBindingSimD3d11](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbindingsimd3d11)
+* [Struktura C++ RemoteRenderingInitialization](https://docs.microsoft.com/cpp/api/remote-rendering/remoterenderinginitialization)
+* [Třída C++ GraphicsBinding](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbinding)
+* [Třída C++ GraphicsBindingWmrD3d11](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingwmrd3d11)
+* [Třída C++ GraphicsBindingSimD3d11](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingsimd3d11)
 
 ## <a name="next-steps"></a>Další kroky
 
