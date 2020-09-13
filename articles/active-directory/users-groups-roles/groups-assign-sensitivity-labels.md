@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d692b81d24b6c5088ffc42644ed1dd7f45b2d2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f056b34df0a70374e8bae909f210bfabf107ed4a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795317"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005934"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Přiřazení popisků citlivosti Microsoft 365 skupinám v Azure Active Directory
 
@@ -68,7 +68,7 @@ Pokud chcete použít publikované popisky na skupiny, musíte ji nejdřív povo
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-A je to! Tuto funkci jste povolili a můžete použít publikované popisky na skupiny.
+Budete taky muset synchronizovat popisky citlivosti do Azure AD. Pokyny najdete v tématu [Jak povolit popisky citlivosti pro kontejnery a synchronizovat popisky](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Přiřazení popisku nové skupině v Azure Portal
 
@@ -113,7 +113,8 @@ Po povolení této funkce se "klasické" klasifikace pro skupiny zobrazí jenom 
 Možnost popisek citlivosti se zobrazí pouze pro skupiny, pokud jsou splněny všechny následující podmínky:
 
 1. Štítky jsou publikované v centru dodržování předpisů v Microsoft 365 pro tuto organizaci Azure AD.
-1. Funkce je povolená, EnableMIPLabels je v PowerShellu nastavená na true.
+1. Tato funkce je povolená, EnableMIPLabels je v modulu Azure AD PowerShellu nastavená na hodnotu true.
+1. Zapnutou se synchronizují do Azure AD pomocí rutiny Execute-AzureAdLabelSync v modulu PowerShellu pro zabezpečení & dodržování předpisů.
 1. Skupina je skupina Microsoft 365.
 1. Organizace má aktivní licenci Azure Active Directory Premium P1.
 1. Aktuálně přihlášený uživatel má dostatečná oprávnění k přiřazování popisků. Uživatel musí být buď globální správce, správce skupiny, nebo vlastník skupiny.

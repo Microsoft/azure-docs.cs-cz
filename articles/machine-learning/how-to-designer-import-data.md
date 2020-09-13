@@ -5,17 +5,17 @@ description: Naučte se importovat data do návrháře Azure Machine Learning (P
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495367"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006980"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
 
@@ -38,19 +38,28 @@ Výstup můžete také zaregistrovat pro libovolný modul návrháře jako datov
 
 1. Vyberte modul, který vypíše data, která chcete zaregistrovat.
 
-1. V podokně Vlastnosti vyberte možnost **výstupy**pro  >  **registrační datovou sadu**.
+1. V podokně Vlastnosti vyberte **výstupy + protokoly**  >  **Registrovat datovou sadu**.
 
     ![Snímek obrazovky ukazující, jak přejít na možnost Registrovat datovou sadu](media/how-to-designer-import-data/register-dataset-designer.png)
 
+Pokud jsou výstupní data modulu v tabulkovém formátu, je nutné se rozhodnout zaregistrovat výstup jako **datovou sadu** nebo **tabulkovou datovou sadu**.
+
+ - **Datová sada souborů** registruje výstupní složku modulu jako datovou sadu souboru. Výstupní složka obsahuje datový soubor a meta soubory, které Návrhář používá interně. Tuto možnost vyberte, pokud chcete i nadále používat registrovanou datovou sadu v návrháři. 
+
+ - **Tabulková datová sada** registruje pouze výstupní datový soubor modulu jako tabelární datovou sadu. Tento formát je snadno využíván jinými nástroji, například v automatizovaných Machine Learning nebo v sadě Python SDK. Tuto možnost vyberte, pokud plánujete použít registrovanou datovou sadu mimo Návrhář.  
+
+
+
 ### <a name="use-a-dataset"></a>Použití datové sady
 
-Vaše registrované datové sady se dají najít v paletě modulu **v části datové sady**  >  **My Datasets**. Pokud chcete datovou sadu použít, přetáhněte ji na plátno kanálu. Pak připojte výstupní port datové sady k jiným modulům v paletě.
+Vaše registrované datové sady lze nalézt v paletě modulu v části **datové sady**. Pokud chcete datovou sadu použít, přetáhněte ji na plátno kanálu. Pak připojte výstupní port datové sady k ostatním modulům na plátně. 
 
 ![Snímek obrazovky znázorňující umístění uložených datových sad v paletě návrháře](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> Návrhář aktuálně podporuje pouze zpracování [tabelárních datových sad](how-to-create-register-datasets.md#dataset-types). Pokud chcete použít [souborové sady](how-to-create-register-datasets.md#dataset-types), použijte sadu SDK Azure Machine Learning dostupnou pro Python a R.
+> Návrhář podporuje [správu verzí datových sad](how-to-version-track-datasets.md). Zadejte verzi datové sady na panelu vlastností modulu DataSet.
+
 
 ## <a name="import-data-using-the-import-data-module"></a>Import dat pomocí modulu import dat
 
@@ -81,8 +90,8 @@ Návrhář podporuje tabulkové datové sady vytvořené z následujících zdro
 Návrhář interně rozpoznává následující typy dat:
 
 * Řetězec
-* Celé číslo
-* Desetinné číslo
+* Integer
+* Decimal
 * Logická hodnota
 * Datum
 
@@ -94,7 +103,7 @@ Moduly v návrháři jsou omezeny velikostí cíle výpočtů. U větších dato
 
 ## <a name="access-data-in-a-virtual-network"></a>Přístup k datům ve virtuální síti
 
-Pokud je váš pracovní prostor ve virtuální síti, musíte provést další kroky konfigurace, aby bylo možné vizualizovat data v návrháři. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [izolace sítě během školení & odvození s privátními virtuálními sítěmi](how-to-enable-virtual-network.md#machine-learning-studio).
+Pokud je váš pracovní prostor ve virtuální síti, musíte provést další kroky konfigurace, aby bylo možné vizualizovat data v návrháři. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [použití Azure Machine Learning studia ve službě Azure Virtual Network](how-to-enable-studio-virtual-network.md).
 
 ## <a name="next-steps"></a>Další kroky
 

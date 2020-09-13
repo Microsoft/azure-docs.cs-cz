@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d086f8f3a2f4939012691d5bd03cc92a50ac4613
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078312"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006393"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -146,7 +146,7 @@ V tomto scénáři Microsoft účtuje $100,00 pro softwarovou licenci a vyplatí
 
 ### <a name="reduced-service-fee"></a>Omezený poplatek za službu
 
-U některých nabídek, které publikujete na komerčním webu Marketplace, sníží společnost Microsoft svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu [smlouva Microsoft Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560)) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn alespoň pět pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a jakékoli další kvalifikované transakční IaaSové nabídky, které jsou dostupné prostřednictvím komerčního tržiště.
+U některých nabídek, které publikujete na komerčním webu Marketplace, sníží společnost Microsoft svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu [smlouva Microsoft Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560)) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn alespoň pět pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a jakékoli další kvalifikované transakční IaaSové nabídky, které jsou dostupné prostřednictvím komerčního tržiště. Placené SaaS nabídky spojené s jednou aplikací Microsoft Teams nebo alespoň dvěma Microsoft 365 doplňky (Excel, PowerPoint, Word, Outlook a SharePoint) a publikované v AppSource také obdrží tuto slevu.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Fakturace, platby, fakturace a kolekce zákazníků
 
@@ -185,6 +185,7 @@ V této části jsou popsány požadavky na transakční pro různé typy nabíd
 
 - Pro možnost publikování v režimu Transact se vyžadují účet Microsoft a finanční informace, bez ohledu na cenový model nabídky.
 - Povinné finanční informace zahrnují účet výběr a daňový profil.
+- Vydavatel musí být živý v [podporované zemi nebo oblasti](sell-from-countries.md).
 
 Další informace o nastavení těchto účtů najdete v tématu [Správa účtu komerčního tržiště v partnerském centru](partner-center-portal/manage-account.md).
 

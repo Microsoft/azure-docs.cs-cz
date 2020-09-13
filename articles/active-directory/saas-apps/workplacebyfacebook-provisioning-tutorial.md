@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526376"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006070"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
@@ -71,7 +71,7 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
 
 * Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -125,8 +125,16 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
    |phoneNumbers [typ EQ "fax"]. hodnota|Řetězec|
    |externalId|Řetězec|
    |preferredLanguage|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. Manager|Řetězec|
+   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. Department|Řetězec|
+   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. divize|Řetězec|
+   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. Organization|Řetězec|
+   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. costCenter|Řetězec|
+   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. employeeNumber|Řetězec|
+   |urn: SCIM: schemas: rozšíření: Facebook: auth_method: 1.0: auth_method|Řetězec|
+   |urn: SCIM: schemas: Extension: Facebook: prvotní: 1.0. is_frontline|Logická hodnota|
+   |urn: SCIM: schemas: Extension: Facebook: starttermdates: 1.0. startDate|Integer|
+
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -153,6 +161,10 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 *  Pokud se uživateli zobrazí zpráva, že uživatel nebyl úspěšně vytvořen a existuje událost protokolu auditu s kódem "1789003", znamená to, že uživatel pochází z neověřené domény.
+
+## <a name="change-log"></a>Protokol změn
+
+* 09/10/2020 – Přidali jsme podporu pro podnikové atributy "region", "Organization", "costCenter" a "employeeNumber". Přidání podpory pro vlastní atributy "startDate", "auth_method" a "prvotní"
 
 ## <a name="additional-resources"></a>Další zdroje
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1397aa350ccc3114954902a6bfd02826cdff965f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4983a4a637ae636c6a3ef4a485c1777fc9b8a77a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553275"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015140"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Kurz: Konfigurace PureCloud podle Genesys pro Automatické zřizování uživatelů
 
@@ -70,7 +70,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro PureCloud pomocí Genesys ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -110,7 +110,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
      |phoneNumbers [Type EQ "mobilní"]. Value|Řetězec|
      |phoneNumbers [typ EQ "Work"]. Value|Řetězec|
      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
+     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
+     
 
 10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do PureCloud podle Genesys**.
 
@@ -120,7 +122,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
       |---|---|
       |displayName|Řetězec|
       |externalId|Řetězec|
-      |členy|Referenční informace|
+      |členy|Reference|
 
 12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -144,6 +146,10 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 * Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně nastavili.
 * Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
 * Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+
+## <a name="change-log"></a>Protokol změn
+
+09/10 – přidala se podpora pro atribut Enterprise "employeeNumber".
 
 ## <a name="additional-resources"></a>Další zdroje
 

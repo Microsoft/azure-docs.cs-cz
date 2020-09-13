@@ -4,15 +4,15 @@ description: Replikace Azure Analysis Services serverů s možností horizontál
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716924"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007685"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
@@ -41,6 +41,8 @@ Při provádění následných operací škálování, například zvýšení po
 * *Před operací horizontálního* navýšení kapacity proveďte synchronizaci, aby nedocházelo k redundantnímu vysazování přidaných replik. Souběžná synchronizace a běžící operace škálování na více instancí se nepovolují ve stejnou dobu.
 
 * Při automatizaci operací zpracování *i* škálování je důležité nejprve zpracovat data na primárním serveru, pak provést synchronizaci a pak provést operaci škálování na více instancí. Tato sekvence zaručuje minimální dopad na QPU a paměťové prostředky.
+
+* Během operací škálování na více instancí jsou všechny servery ve fondu dotazů, včetně primárního serveru, dočasně offline.
 
 * Synchronizace je povolená i v případě, že ve fondu dotazů nejsou žádné repliky. Pokud provádíte horizontální navýšení kapacity z nuly na jednu nebo více replik s novými daty z operace zpracování na primárním serveru, proveďte nejprve synchronizaci bez replik ve fondu dotazů a pak navýšení kapacity. Synchronizace před změnou kapacity zabrání redundantnímu vysazování nově přidaných replik.
 
@@ -114,7 +116,7 @@ Operace synchronizace se musí provádět ručně nebo pomocí REST API.
 
 V **přehledu** > model > **synchronizovat model**.
 
-![Posuvník horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![Ikona synchronizace](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
 
@@ -170,7 +172,7 @@ V případě SSMS, sady Visual Studio a připojovacích řetězců v prostředí
 
 Cenovou úroveň můžete na serveru změnit několika replikami. Stejná cenová úroveň se vztahuje na všechny repliky. Operace škálování nejprve odnese všechny repliky najednou a pak zobrazí všechny repliky v nové cenové úrovni.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstraňování potíží
 
 **Problém:** Při načítání došlo ** \<Name of the server> k chybě. v režimu připojení se nepodařilo najít instanci serveru.**
 

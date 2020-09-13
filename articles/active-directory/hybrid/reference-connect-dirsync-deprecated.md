@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381174"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014799"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Upgrade Windows Azure Active Directory Sync a Azure Active Directory Sync
-Azure AD Connect je nejlepší způsob, jak propojit místní adresář s Azure AD a Office 365. Jedná se o skvělou dobu k upgradu na Azure AD Connect ze služby Windows Azure Active Directory Sync (DirSync) nebo Azure AD Sync, protože tyto nástroje jsou nyní zastaralé a již nejsou podporovány od 13. dubna 2017.
+Azure AD Connect je nejlepší způsob, jak propojit místní adresář s Azure AD a Microsoft 365. Jedná se o skvělou dobu k upgradu na Azure AD Connect ze služby Windows Azure Active Directory Sync (DirSync) nebo Azure AD Sync, protože tyto nástroje jsou nyní zastaralé a již nejsou podporovány od 13. dubna 2017.
 
-Pro zákazníky s jednou doménovou strukturou (DirSync) a pro více doménovou strukturu a další pokročilé zákazníky (Azure AD Sync) se nabídly dva nástroje pro synchronizaci identity, které jsou zastaralé. Tyto starší nástroje byly nahrazeny jedním řešením, který je k dispozici pro všechny scénáře: Azure AD Connect. Nabízí nové funkce, vylepšení funkcí a podporu pro nové scénáře. Aby bylo možné pokračovat v synchronizaci místních dat identity s Azure AD a Office 365, důrazně doporučujeme upgradovat na Azure AD Connect. Společnost Microsoft nezaručuje, že tyto starší verze budou fungovat až do 31. prosince 2017.
+Pro zákazníky s jednou doménovou strukturou (DirSync) a pro více doménovou strukturu a další pokročilé zákazníky (Azure AD Sync) se nabídly dva nástroje pro synchronizaci identity, které jsou zastaralé. Tyto starší nástroje byly nahrazeny jedním řešením, který je k dispozici pro všechny scénáře: Azure AD Connect. Nabízí nové funkce, vylepšení funkcí a podporu pro nové scénáře. Aby bylo možné pokračovat v synchronizaci vašich místních dat identity s Azure AD a Microsoft 365, důrazně doporučujeme upgradovat na Azure AD Connect. Společnost Microsoft nezaručuje, že tyto starší verze budou fungovat až do 31. prosince 2017.
 
 Poslední vydání DirSync bylo vydány v červenci 2014 a poslední vydání Azure AD Sync bylo vydáno v květnu 2015.
 
@@ -56,7 +56,7 @@ Pokud se chcete podívat, jak provést místní upgrade z DirSync na Azure AD Co
 >
 
 ## <a name="faq"></a>Nejčastější dotazy
-**Otázka: jsem přijal e-mailové oznámení z týmu Azure nebo zprávy z centra zpráv Office 365, ale používám Connect.**  
+**Otázka: jsem přijal e-mailové oznámení z týmu Azure nebo zprávy z centra zpráv Microsoft 365, ale používám Connect.**  
 Oznámení bylo odesláno také zákazníkům, kteří používají Azure AD Connect s číslem sestavení 1,0. \* . 0 (s využitím verze před 1,1). Microsoft doporučuje zákazníkům aktuálnost Azure AD Connect verzí. Funkce [automatického upgradu](how-to-connect-install-automatic-upgrade.md) představená v 1,1 usnadňuje vždy instalaci nejnovější verze Azure AD Connect.
 
 **Otázka: bude DirSync/Azure AD Sync přestat fungovat 13. dubna 2017?**  
@@ -68,5 +68,5 @@ Podporuje se upgrade z aktuálně používané verze DirSync.
 **Otázka: co je to konektor Azure AD pro FIM/MIM?**  
 Služba Azure AD Connector pro FIM/ **MIM se** neoznámila jako zastaralá. Je na **zablokované funkci**; nepřidaly se žádné nové funkce a neobdrží žádné opravy chyb. Microsoft doporučuje zákazníkům, aby se z něho naplánovali, aby se přesunuli na Azure AD Connect. Důrazně doporučujeme, abyste nespouštěli nová nasazení pomocí této aplikace. Tento konektor bude v budoucnu ohlášen jako zastaralý.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

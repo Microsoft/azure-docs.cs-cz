@@ -1,27 +1,27 @@
 ---
-title: Přehled souhrnu výběrů-Azure Marketplace
+title: Přehled souhrnu výběrů, Azure Marketplace
 description: Ve shrnutí výběr se zobrazí podrobnosti o peníze, které jste získali s vaší nabídkou. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 708fc2c0783bdefa4ac4fa4b73f10733bba0bc04
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479808"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006920"
 ---
 # <a name="payout-summary-overview"></a>Souhrnný přehled plateb
 
 [Souhrn výběrů](./payout-summary.md) vám ukáže podrobnosti o peníze, které jste získali od Microsoftu. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
 
-Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o úspěšných výběrech v souhrnu výběrů. Další informace o platbě Azure Marketplace najdete v tématu [Azure Marketplace zásady účasti](https://docs.microsoft.com/legal/marketplace/participation-policy) a [Microsoft Azure Marketplace smlouvu vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
+Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o úspěšných výběrech v souhrnu výběrů. Další informace o platbě Azure Marketplace najdete v tématu o tom, [jak se zaplatí na komerčním webu Marketplace](./get-paid.md) a v rámci [smlouvy Microsoft Publisher](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout [prahové hodnoty pro platbu](./payment-thresholds-methods-timeframes.md) $50. Podrobnosti o prahové hodnotě platby najdete v [Microsoft Azure Marketplace smlouvě vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
+> Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout prahové hodnoty pro platbu $50. Podrobnosti najdete v článku o [smlouvě Microsoft Publisher](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 Chcete-li zobrazit podrobnosti výběru, přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home) a v pravém horním rohu obrazovky vyberte ikonu výběr:
 
@@ -29,7 +29,7 @@ Chcete-li zobrazit podrobnosti výběru, přihlaste se k [partnerskému centru](
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění
 
-Jedná se o role a oprávnění pro přístup k sestavě výběr:
+Toto jsou role a oprávnění pro přístup k sestavě výběr:
 
 | Sestavy/stránky | Vlastník účtu | Manager | Vývojář | Obchodní Přispěvatel | Přispěvatel pro finance | Obchodník |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Jedná se o role a oprávnění pro přístup k sestavě výběr:
 
 ## <a name="payment-schedules"></a>Platební plány
 
-Diskuzi o platebních plánech, včetně časových období, viditelnosti partnerů a o tom, kdy zákazník používá platební kartu nebo fakturu, najdete v části [Platební kalendáře](./payout-policy-details.md#payment-schedules) v tématu **Výběr podrobností** .
+Diskuzi o platebních plánech, včetně časových období, viditelnosti partnerů a o tom, kdy zákazník používá platební kartu nebo fakturu, najdete v části [platební plány](./payout-policy-details.md#payment-schedules) v článku **Podrobnosti o výběrovém** seznamu.
 
 ## <a name="transaction-history-download-export"></a>Export stažení Historie transakcí
 

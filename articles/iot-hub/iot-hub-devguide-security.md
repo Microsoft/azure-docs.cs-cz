@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-javascript
 - devx-track-csharp
-ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e1de8b5c35c2f62c65b2bdd4751df86127010ad
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017681"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015122"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -65,7 +65,7 @@ Například v typickém řešení IoT:
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Azure IoT Hub udělí přístup koncovým bodům, když ověří token podle zásad sdíleného přístupu a bezpečnostních přihlašovacích údajů v registru identit.
 
@@ -361,7 +361,12 @@ Mezi podporované certifikáty patří:
 
 Zařízení může buď použít certifikát X. 509, nebo token zabezpečení pro ověřování, ale ne obojí.
 
-Další informace o ověřování pomocí certifikační autority najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509](iot-hub-x509ca-overview.md).
+Pro zařízení, která používají ověřování CA X. 509, se nepodporuje následující funkce:
+
+* Protokol HTTPS, MQTT přes objekty WebSockets a AMQP přes protokoly WebSockets.
+* Nahrávání souborů (všechny protokoly).
+
+Další informace o ověřování pomocí certifikační autority najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509](iot-hub-x509ca-overview.md). Informace o tom, jak nahrát a ověřit certifikační autoritu ve službě IoT Hub, najdete v tématu [nastavení zabezpečení X. 509 ve službě Azure IoT Hub](iot-hub-security-x509-get-started.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrace certifikátu X. 509 pro zařízení
 

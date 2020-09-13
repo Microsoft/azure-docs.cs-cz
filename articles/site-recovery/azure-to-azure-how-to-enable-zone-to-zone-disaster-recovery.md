@@ -5,16 +5,16 @@ author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 04/28/2019
 ms.author: sideeksh
-ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021643"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007787"
 ---
-# <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Povolení zotavení po havárii zóny pro virtuální počítače Azure
+# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Povolení zotavení po havárii virtuálních počítačů Azure mezi zónami dostupnosti
 
 Tento článek popisuje, jak replikovat, převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Azure z jedné zóny dostupnosti do druhé v rámci stejné oblasti Azure.
 
@@ -27,6 +27,8 @@ Služba Site Recovery přispívá k strategii pro provozní kontinuitu a zotaven
 
 Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každá zóna má jedno nebo více datových center. 
 
+Pokud chcete přesunout virtuální počítače do zóny dostupnosti v jiné oblasti, [Přečtěte si tento článek](../resource-mover/move-region-availability-zone.md).
+
 ## <a name="using-availability-zones-for-disaster-recovery"></a>Použití Zóny dostupnosti pro zotavení po havárii 
 
 Zóny dostupnosti se obvykle používají k nasazení virtuálních počítačů v konfiguraci s vysokou dostupností. Je možné, že jsou mezi sebou příliš blízko, aby sloužily jako řešení zotavení po havárii v případě přírodní havárie.
@@ -37,7 +39,7 @@ V některých scénářích se ale Zóny dostupnosti dá využít při zotavení
 
 - Mnoho dalších zákazníků má složitou síťovou infrastrukturu a nepřeje se ji znovu vytvořit v sekundární oblasti z důvodu přidružených nákladů a složitosti. Zotavení po havárii zóny do zóny snižuje složitost, protože využívá redundantní koncepty sítě v rámci Zóny dostupnosti významně jednodušších konfigurací. Tito zákazníci dávají přednost jednoduchosti a můžou Zóny dostupnosti použít taky k zotavení po havárii.
 
-- V některých oblastech, které nemají spárované oblasti v rámci stejné zákonné pravomoci (například jihovýchodní Asie), může řešení zotavení po havárii zóny na zónu sloužit jako řešení zotavení po havárii, protože pomáhá zajistit dodržování předpisů, protože vaše aplikace a data mezi národní hranice nespadají. 
+- V některých oblastech, které nemají spárované oblasti v rámci stejné právní pravomoci (například jihovýchodní Asie), může řešení pro zotavení po havárii zóny do zóny sloužit jako řešení zotavení po havárii, které pomáhá zajistit dodržování předpisů, protože vaše aplikace a data se nepřesunou mezi národní hranice. 
 
 - Zóna až po zotavení po havárii zóny zahrnuje replikaci dat napříč kratšími vzdálenostmi v porovnání s Azure až Azure pro zotavení po havárii, a proto se může zobrazit nižší latence a následně nižší RPO.
 
@@ -65,12 +67,12 @@ Jak je uvedeno výše, zóna pro zotavení po havárii zóny snižuje složitost
 
 Předtím, než nasadíte zónu do zóny zotavení po havárii pro vaše virtuální počítače, je důležité zajistit, aby byly na virtuálním počítači vzájemně ovladatelné další funkce s cílem zotavení po havárii zóny.
 
-|Funkce  | Příkaz support  |
+|Příznak  | Příkaz support  |
 |---------|---------|
 |Klasické virtuální počítače   |     Nepodporováno    |
 |Virtuální počítače ARM    |    Podporováno    |
-|Azure Disk Encryption V1 (Dual Pass, with AAD)     |     Podporováno |
-|Azure Disk Encryption v2 (Single Pass, bez AAD)    |    Podporováno    |
+|Azure Disk Encryption V1 (duální průchod, s Azure Active Directory (Azure AD))     |     Podporováno   |
+|Azure Disk Encryption v2 (Single Pass, bez Azure AD)    |    Podporováno    |
 |Nespravované disky    |    Nepodporováno    |
 |Spravované disky    |    Podporováno    |
 |Klíče spravované zákazníkem    |    Podporováno    |
@@ -82,7 +84,7 @@ Předtím, než nasadíte zónu do zóny zotavení po havárii pro vaše virtuá
 
 ### <a name="log-in"></a>Přihlášení
 
-Přihlaste se k Azure Portal.
+Přihlaste se k webu Azure Portal.
 
 ### <a name="enable-replication-for-the-zonal-azure-virtual-machine"></a>Povolení replikace pro virtuální počítač Azure v poli oblast
 
@@ -119,7 +121,7 @@ Tým Site Recovery týmu a Azure Capacity Management plánuje dostatečnou kapac
 Zotavení po havárii zóny do zóny podporuje stejné operační systémy jako Azure až Azure pro zotavení po havárii. Další informace najdete v [tématu](./azure-to-azure-support-matrix.md)věnovaném matici podpory.
 
 **5. může se jednat o stejné zdrojové a cílové skupiny prostředků?**
-Ne, je nutné převzít služeb při selhání do jiné skupiny prostředků.
+Ne, je nutné převzít služby při selhání do jiné skupiny prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -127,6 +129,6 @@ Kroky, které je třeba dodržovat při spuštění postupu zotavení po havári
 
 Pokud chcete provést postup zotavení po havárii, postupujte prosím podle kroků uvedených [tady](./azure-to-azure-tutorial-dr-drill.md).
 
-Pokud chcete provést převzetí služeb při selhání a znovu nastavit ochranu virtuálních počítačů v sekundární zóně, postupujte podle kroků popsaných [tady](./azure-to-azure-tutorial-failover-failback.md).
+Pokud chcete provést převzetí služeb při selhání a znovu nastavit ochranu virtuálních počítačů v sekundární zóně, postupujte podle kroků uvedených [tady](./azure-to-azure-tutorial-failover-failback.md).
 
 Pokud chcete navrátit služby po obnovení primární zóně, postupujte podle kroků popsaných [tady](./azure-to-azure-tutorial-failback.md).

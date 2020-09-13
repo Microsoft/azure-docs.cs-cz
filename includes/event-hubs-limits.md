@@ -5,21 +5,21 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8700bbfe697a6b5fb81380831950d704fcb1f5ff
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84317720"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90012819"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 Následující omezení jsou společná napříč úrovněmi Basic a Standard. 
 
-| Omezení | Rozsah | Poznámky | Hodnota |
+| Omezení | Obor | Poznámky | Hodnota |
 | --- | --- | --- | --- |
 | Počet Event Hubs oborů názvů na předplatné |Předplatné |- |100 |
 | Počet Center událostí na obor názvů |Obor názvů |Následné žádosti o vytvoření nového centra událostí budou odmítnuty. |10 |
@@ -33,20 +33,20 @@ Následující omezení jsou společná napříč úrovněmi Basic a Standard.
 | Počet pravidel virtuální sítě (VNet) a konfigurace protokolu IP | Entita | - | 128 | 
 
 ### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Event Hubs úrovně Basic a Standard-kvóty a omezení
-| Omezení | Rozsah | Poznámky | Basic | Standard |
+| Omezení | Obor | Poznámky | Basic | Standard |
 | --- | --- | --- | -- | --- |
 | Maximální velikost události Event Hubs|Entita | &nbsp; | 256 kB | 1 MB |
 | Počet skupin uživatelů na centrum událostí |Entita | &nbsp; |1 |20 |
 | Počet připojení AMQP na obor názvů |Obor názvů |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |100 |5 000|
 | Maximální doba uchování dat události |Entita | &nbsp; |1 den |1-7 dní |
-|Apache Kafka povolený obor názvů|Obor názvů |Event Hubs aplikace streamování v oboru názvů pomocí protokolu Kafka |No | Ano |
-|Zachycování |Entita | Když je tato možnost povolená, mikrodávky na stejném datovém proudu |No |Ano |
+|Apache Kafka povolený obor názvů|Obor názvů |Event Hubs v oboru názvů streamování aplikací pomocí protokolu Kafka. Další informace najdete v tématu [použití Azure Event Hubs z Apache Kafkach aplikací](../articles/event-hubs/event-hubs-for-kafka-ecosystem-overview.md). |No | Yes |
+|Zachytávání |Entita | Pokud je tato možnost povolená, mikrodávky se nacházejí ve stejném datovém proudu. Další informace najdete v tématu [zachycení událostí prostřednictvím azure Event Hubs v azure BLOB Storage nebo Azure Data Lake Storage](../articles/event-hubs/event-hubs-capture-overview.md). |No |Yes |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs úrovně Dedicated – kvóty a omezení
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
-| Funkce | Omezení |
+| Příznak | Omezení |
 | --- | ---|
 | Šířka pásma |  20 kapacitní jednotky |
 | Obory názvů | 50 za CU |
@@ -54,7 +54,7 @@ V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s m
 | Události příchozího přenosu dat | Zahrnuje |
 | Velikost zprávy | 1 MB |
 | Oddíly | 2000 za CU |
-| Skupiny příjemců | Bez omezení na CU, 1000 na každé centrum událostí |
+| Skupiny uživatelů | Bez omezení na CU, 1000 na každé centrum událostí |
 | Zprostředkovaná připojení | zahrnuto 100 K |
 | Uchovávání zpráv | 90 dní, zahrnutých 10 TB za CU |
-| Zachycování | Zahrnuje |
+| Zachytávání | Zahrnuje |

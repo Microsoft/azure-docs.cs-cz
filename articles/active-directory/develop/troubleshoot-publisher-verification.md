@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s ověřováním vydavatele – Microsoft Identity Platform | Azure
-description: Popisuje, jak řešit potíže s ověřováním vydavatele (Preview) pro platformu Microsoft Identity voláním Microsoft Graph rozhraní API.
+description: Popisuje řešení potíží s ověřováním vydavatele pro platformu Microsoft Identity voláním Microsoft Graph rozhraní API.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282972"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007549"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>Řešení potíží s ověřováním vydavatele (Preview)
-Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele (Preview)](publisher-verification-overview.md), měli byste začít následujícími kroky, pokud obdržíte chyby nebo neočekávané chování: 
+# <a name="troubleshoot-publisher-verification"></a>Řešení potíží s ověřením vydavatele
+Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele](publisher-verification-overview.md), měli byste začít následujícím způsobem, pokud obdržíte chyby nebo neočekávané chování: 
 
 1. Zkontrolujte [požadavky](publisher-verification-overview.md#requirements) a zajistěte, aby byly splněné.
 
@@ -62,7 +62,7 @@ Níže jsou uvedeny některé běžné problémy, ke kterým může dojít běhe
 
 ## <a name="making-microsoft-graph-api-calls"></a>Vytváření volání rozhraní API Microsoft Graph 
 
-Pokud máte problém, ale nemůžete pochopit, proč na základě toho, co vidíte v uživatelském rozhraní, může být užitečné provést další řešení potíží pomocí Microsoft Graph volání k provádění stejných operací, které můžete provádět na portálu pro registraci aplikací. Během fáze Preview budou tato rozhraní API k dispozici pouze v/betam koncovém bodu služby Microsoft Graph.  
+Pokud máte problém, ale nemůžete pochopit, proč na základě toho, co vidíte v uživatelském rozhraní, může být užitečné provést další řešení potíží pomocí Microsoft Graph volání k provádění stejných operací, které můžete provádět na portálu pro registraci aplikací.
 
 Nejjednodušší způsob, jak tyto požadavky udělat, je použití [Průzkumníka graphu](https://developer.microsoft.com/graph/graph-explorer). Můžete také zvážit další možnosti, jako je použití [post](https://www.postman.com/), nebo použití PowerShellu k [vyvolání webové žádosti](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7).  
 

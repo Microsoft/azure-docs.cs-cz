@@ -4,12 +4,12 @@ description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936516"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006755"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -31,7 +31,7 @@ Příklad, který budeme používat, je [aplikace MVC](/aspnet/core/tutorials/fi
 > [!NOTE]
 > ASP.NET Core 3. X vyžaduje [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo novější.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Funkční aplikace ASP.NET Core. Pokud potřebujete vytvořit aplikaci ASP.NET Core, postupujte podle tohoto [ASP.NET Core kurzu](/aspnet/core/getting-started/).
 - Platný klíč instrumentace Application Insights. Tento klíč je nutný k odeslání jakékoli telemetrie do Application Insights. Pokud potřebujete vytvořit nový prostředek Application Insights, abyste získali klíč instrumentace, přečtěte si téma [vytvoření prostředku Application Insights](./create-new-resource.md).
@@ -106,7 +106,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Příklad:
+    Například:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -122,6 +122,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 ### <a name="user-secrets-and-other-configuration-providers"></a>Uživatelské klíče a další poskytovatelé konfigurace
 
 Pokud chcete uložit klíč instrumentace v ASP.NET Core uživatelských tajných klíčích nebo si ho načíst z jiného poskytovatele konfigurace, můžete použít přetížení s `Microsoft.Extensions.Configuration.IConfiguration` parametrem. Například, `services.AddApplicationInsightsTelemetry(Configuration);`.
+Počínaje verzí Microsoft. ApplicationInsights. AspNetCore verze [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)se volání `services.AddApplicationInsightsTelemetry()` automaticky přečte klíč instrumentace z `Microsoft.Extensions.Configuration.IConfiguration` aplikace. Není nutné explicitně poskytnout `IConfiguration` .
 
 ## <a name="run-your-application"></a>Spusťte aplikaci
 
@@ -158,17 +159,17 @@ Předchozí kroky jsou dostatečné, aby vám pomohly začít shromažďovat tel
 
 1. Do `_ViewImports.cshtml` přidejte injektáže:
 
-    ```cshtml
-        @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-    ```
+```cshtml
+    @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+```
 
 2. V nástroji `_Layout.cshtml` vložte `HtmlHelper` na konec `<head>` oddílu, ale před jakýkoli jiný skript. Pokud chcete vykázat jakékoli vlastní telemetrie JavaScriptu ze stránky, zastavte ji za tento fragment kódu:
 
-    ```cshtml
-        @Html.Raw(JavaScriptSnippet.FullScript)
-        </head>
-    ```
-    
+```cshtml
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    </head>
+```
+
 Alternativně můžete použít `FullScript` sadu, která `ScriptBody` je k dispozici od verze sady SDK v 2.14. Tento postup použijte v případě, že potřebujete řídit `<script>` značku pro nastavení zásad zabezpečení obsahu:
 
 ```cshtml
@@ -183,7 +184,7 @@ Pokud váš projekt nezahrnuje `_Layout.cshtml` , můžete přesto přidat [moni
 
 ## <a name="configure-the-application-insights-sdk"></a>Konfigurace sady Application Insights SDK
 
-Můžete přizpůsobit sadu Application Insights SDK, aby ASP.NET Core změnila výchozí konfiguraci. Uživatelé sady Application Insights ASP.NET SDK mohou být obeznámeni se změnou konfigurace pomocí nástroje `ApplicationInsights.config` nebo úpravou `TelemetryConfiguration.Active` . Konfiguraci můžete změnit odlišně pro ASP.NET Core. Přidejte sadu ASP.NET Core SDK do aplikace a nakonfigurujte ji pomocí vkládání integrovaných [závislostí](/aspnet/core/fundamentals/dependency-injection)ASP.NET Core. Udělejte téměř všechny změny konfigurace v `ConfigureServices()` metodě vaší `Startup.cs` třídy, pokud nebudete přesměrováni jinak. Následující části obsahují další informace.
+Můžete přizpůsobit sadu Application Insights SDK, aby ASP.NET Core změnila výchozí konfiguraci. Uživatelé sady Application Insights ASP.NET SDK mohou být obeznámeni se změnou konfigurace pomocí nástroje `ApplicationInsights.config` nebo úpravou `TelemetryConfiguration.Active` . Pro ASP.NET Core se téměř všechny změny konfigurace provádí v `ConfigureServices()` metodě vaší `Startup.cs` třídy, pokud nebudete přesměrováni jinak. Následující části obsahují další informace.
 
 > [!NOTE]
 > V ASP.NET Corech aplikacích se změna konfigurace podle úpravy `TelemetryConfiguration.Active` nepodporuje.
@@ -221,8 +222,25 @@ public void ConfigureServices(IServiceCollection services)
 |EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartbeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true
 |AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true
 |RequestCollectionOptions.TrackExceptions | Povolí nebo zakáže vytváření sestav neošetřené sledování výjimek v modulu shromažďování požadavků. | false v NETSTANDARD 2.0 (protože výjimky jsou sledovány pomocí ApplicationInsightsLoggerProvider), v opačném případě true.
+|EnableDiagnosticsTelemetryModule | Povolit/zakázat `DiagnosticsTelemetryModule` . Zakázáním této možnosti dojde k ignorování následujících nastavení; `EnableHeartbeat`, `EnableAzureInstanceMetadataTelemetryModule`, `EnableAppServicesHeartbeatTelemetryModule` | true
 
 Seznam [konfigurovatelných nastavení v nástroji `ApplicationInsightsServiceOptions` najdete v](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) tématu seznam nejaktuálnějších dat.
+
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Doporučení konfigurace pro Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0-beta3 & výše
+
+Od verze Microsoft. ApplicationInsights. AspNetCore SDK Version [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) doporučujeme nakonfigurovat všechna nastavení dostupná v `ApplicationInsightsServiceOptions` , včetně instrumentationkey s použitím `IConfiguration` instance aplikace. Nastavení musí být v části "ApplicationInsights", jak je znázorněno v následujícím příkladu. Následující část appsettings.jsv tématu Konfigurace klíče instrumentace a také vypnutí adaptivního vzorkování a shromažďování čítačů výkonu.
+
+```json
+{
+    "ApplicationInsights": {
+    "InstrumentationKey": "putinstrumentationkeyhere",
+    "EnableAdaptiveSampling": false,
+    "EnablePerformanceCounterCollectionModule": false
+    }
+}
+```
+
+Pokud `services.AddApplicationInsightsTelemetry(aiOptions)` se použije, přepíše nastavení z `Microsoft.Extensions.Configuration.IConfiguration` .
 
 ### <a name="sampling"></a>Vzorkování
 
@@ -473,4 +491,3 @@ Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./relea
 * [Použijte rozhraní API](./api-custom-events-metrics.md) k posílání vlastních událostí a metrik pro podrobné zobrazení výkonu a využití vaší aplikace.
 * Pomocí [testů dostupnosti](./monitor-web-app-availability.md) můžete svou aplikaci průběžně kontrolovat z celého světa.
 * [Injektáž závislostí v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection)
-

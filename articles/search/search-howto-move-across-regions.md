@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/24/2020
-ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/10/2020
+ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926945"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007039"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Přesuňte službu Azure Kognitivní hledání do jiné oblasti Azure.
 
@@ -23,7 +23,13 @@ Zákazníci si občas vyžádají o přesunutí vyhledávací služby do jiné o
 > [!NOTE]
 > V Azure Portal všechny služby obsahují příkaz **Exportovat šablonu** . V případě Azure Kognitivní hledání tento příkaz vytvoří základní definici služby (název, umístění, úroveň, repliku a počet oddílů), ale nerozpozná obsah vaší služby, ani nepřenáší klíče, role nebo protokoly. I když tento příkaz existuje, nedoporučujeme ho používat pro přesun vyhledávací služby.
 
-## <a name="guidance-for-moving-a-service"></a>Pokyny pro přesun služby
+## <a name="prerequisites"></a>Požadavky
+
++ Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
+
++ V případě funkcí Preview se ujistěte, že je vaše předplatné v cílové oblasti uvedené na seznamu povolených.
+
+## <a name="prepare-and-move"></a>Příprava a přesun
 
 1. Identifikujte závislosti a související služby, abyste pochopili úplný dopad přemístění služby, pro případ, že budete potřebovat přesunout víc než jenom Azure Kognitivní hledání.
 
@@ -41,7 +47,9 @@ Zákazníci si občas vyžádají o přesunutí vyhledávací služby do jiné o
 
 1. Aktualizujte klientské aplikace a sady testů na použití nového názvu služby a klíčů rozhraní API a otestujte všechny aplikace.
 
-1. Po úplném otestování a provozu nové služby odstraňte starou službu.
+## <a name="discard-or-clean-up"></a>Zahození nebo vyčištění
+
+Po úplném otestování a provozu nové služby odstraňte starou službu. Odstranění služby automaticky odstraní veškerý obsah přidružený ke službě.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: d425953b278a98af35a172d8777ab758db52709e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0b3e1b3bc296676c44eddf34b35a0d4e06d3b8c4
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89257751"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007328"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostika spouštění Azure
 
@@ -24,7 +24,7 @@ Při vytváření virtuálního počítače v Azure Portal je ve výchozím nast
 Alternativním prostředím pro diagnostiku spouštění je použití účtu úložiště spravovaného uživatelem. Uživatel může buď vytvořit nový účet úložiště, nebo použít nějaký existující.
 
 > [!IMPORTANT]
-> Zákazníkům Azure se neúčtují náklady na úložiště associted diagnostikou spouštění pomocí spravovaného účtu úložiště v říjnu 2020.
+> Zákazníkům Azure se neúčtují náklady na úložiště spojené s diagnostikou spouštění pomocí spravovaného účtu úložiště do října 2020.
 
 ## <a name="boot-diagnostics-view"></a>Zobrazení diagnostiky spouštění
 V okně virtuální počítač je možnost Diagnostika spouštění v části *Podpora a řešení potíží* v Azure Portal. Když vyberete diagnostiku spouštění, zobrazí se informace o snímku obrazovky a sériového protokolu. Sériový protokol obsahuje zprávy jádra a snímek obrazovky je snímek aktuálního stavu virtuálních počítačů. V závislosti na tom, jestli je na virtuálním počítači spuštěný systém Windows nebo Linux, určuje, jak by měl vypadat očekávaný snímek obrazovky. V případě systému Windows uvidí uživatelé desktopové pozadí a pro Linux se zobrazí výzva k zadání přihlašovacích údajů.
@@ -36,6 +36,7 @@ V okně virtuální počítač je možnost Diagnostika spouštění v části *P
 ## <a name="limitations"></a>Omezení
 - Diagnostika spouštění je k dispozici pouze pro Azure Resource Manager virtuální počítače. 
 - Diagnostika spouštění nepodporuje účty úložiště úrovně Premium. Pokud se pro uživatele diagnostiky spouštění používá účet Premium Storage, `StorageAccountTypeNotSupported` při spuštění virtuálního počítače dojde k chybě. 
+- Spravované účty úložiště jsou podporované v Správce prostředků rozhraní API verze 2020-06-01 a novější.
 - Služba Azure Serial Console je aktuálně nekompatibilní se spravovaným účtem úložiště pro diagnostiku spouštění. Přečtěte si další informace o [službě Azure Serial Console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview).
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260319"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014935"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
@@ -128,9 +128,9 @@ V následující tabulce jsou uvedené správné verze cloudových cloudů Azure
 
 Jarní spouštěcí verze | Jarní cloudová verze | Verze počátečního cloudu pro Azure jaře pro klienta
 ---|---|---
-2.1 | Střední verze | 2.1.2
-2,2 | Hoxton.SR8 | Není potřeba
-2.3 | Hoxton.SR8 | Není potřeba
+2.1. x | Střední verze | 2.1.2
+2.2. x | Hoxton.SR8 | Není potřeba
+2.3. x | Hoxton.SR8 | Není potřeba
 
 Pokud používáte jarní spouštění 2,1, zahrňte do souboru pom.xml následující dependenciy.
 

@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256675"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014629"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
 
@@ -34,13 +34,13 @@ Společnost Microsoft doporučuje posílit Azure AD Connect Server, aby se sní�
 
 Další informace naleznete v tématu: 
 
-* [Zabezpečení skupin správců](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [Zabezpečení skupin správců](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [Zabezpečení předdefinovaných účtů správců](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [Zabezpečení předdefinovaných účtů správců](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [Vylepšení a udržování zabezpečení snížením počtu napadených ploch](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [Vylepšení a udržování zabezpečení snížením počtu napadených ploch](/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [Snížení prostoru pro útoky na službu Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [Snížení prostoru pro útoky na službu Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **Otázka: instalace bude fungovat, pokud má globální správce Azure Active Directory (Azure AD) povolený dvojúrovňové ověřování (2FA)?**  
 Od buildu únor 2016 je tento scénář podporován.
@@ -52,7 +52,7 @@ Instalace Azure AD Connect se podporuje jenom v případě, že použijete Prův
 Od buildu únor 2016 je tento scénář podporován.
 
 **Otázka: umožňuje Agent stavu Azure Active Directory Domain Services (Azure služba AD DS) pracovat v jádru serveru?**  
-Ano. Po instalaci agenta můžete dokončit proces registrace pomocí následující rutiny prostředí PowerShell: 
+Yes. Po instalaci agenta můžete dokončit proces registrace pomocí následující rutiny prostředí PowerShell: 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
@@ -117,7 +117,7 @@ Tady je informační dokument, který představuje některé z osvědčených po
 - Udržování konzistence verzí mezi Azure AD Connect servery co nejvíce 
 
 **Otázka: můžu Azure AD Connect vytvořit účet konektoru Azure AD na počítači pracovní skupiny?**
-Ne.  Aby bylo možné Azure AD Connect automaticky vytvořit účet konektoru služby Azure AD, musí být počítač připojený k doméně.  
+No.  Aby bylo možné Azure AD Connect automaticky vytvořit účet konektoru služby Azure AD, musí být počítač připojený k doméně.  
 
 ## <a name="network"></a>Síť
 **Otázka: Mám bránu firewall, síťové zařízení nebo něco jiného, co omezuje dobu, po kterou mohou připojení zůstat otevřená v síti. Co má prahová hodnota časového limitu na straně klienta při použití Azure AD Connect?**  
@@ -139,30 +139,30 @@ Ne, Azure AD Connect nepodporuje čistě prostředí IPv6.
 Ne, použití Azure AD Connect přes překlad adres (NAT) se nepodporuje. 
 
 ## <a name="federation"></a>metadata
-**Otázka: co mám dělat, když obstávám e-mail s výzvou k obnovení certifikátu Office 365?**  
+**Otázka: co mám dělat, když obstávám e-mail s výzvou k prodloužení Microsoft 365ho certifikátu?**  
 Pokyny k obnovení certifikátu najdete v tématu [obnovení certifikátů](how-to-connect-fed-o365-certs.md).
 
-**Otázka: Mám nastavenou možnost automaticky aktualizovat předávající stranu pro předávající stranu Office 365. Musím provést jakoukoli akci, když se podpisový certifikát tokenu automaticky zaregistruje?**  
+**Otázka: Mám nastavenou možnost automaticky aktualizovat předávající stranu u Microsoft 365 předávající strany. Musím provést jakoukoli akci, když se podpisový certifikát tokenu automaticky zaregistruje?**  
 Postupujte podle pokynů uvedených v článku [obnovení certifikátů](how-to-connect-fed-o365-certs.md).
 
 ## <a name="environment"></a>Prostředí
 **Otázka: je podporováno přejmenování serveru po instalaci nástroje Azure AD Connect?**  
-Ne. Změna názvu serveru vykresluje synchronizační modul se nemůže připojit k instanci databáze SQL a službu nelze spustit.
+No. Změna názvu serveru vykresluje synchronizační modul se nemůže připojit k instanci databáze SQL a službu nelze spustit.
 
 **Otázka: jsou podporovaná pravidla synchronizace služby NGC (Next Generation Cryptographic) podporovaná na počítači s podporou standardu FIPS?**  
-Ne.  Není to podporováno.
+No.  Není to podporováno.
 
-**Otázka. Pokud je v Azure Portal zakázané synchronizované zařízení (například: HAADJ), proč je znovu povolená?**<br>
+**Č. Pokud je v Azure Portal zakázané synchronizované zařízení (například: HAADJ), proč se znovu aktivuje?**<br>
 Synchronizovaná zařízení můžou být vytvořená nebo spravovaná místně. Pokud je synchronizované zařízení povolené místně, může se v Azure Portal znovu povolit, i když ho správce předtím zakázal. Pokud chcete zakázat synchronizované zařízení, použijte k zakázání účtu počítače místní službu Active Directory.
 
-**Dotaz. Pokud zablokujete přihlášení uživatelů na portálu Office 365 nebo Azure AD pro synchronizované uživatele, proč se při opětovném přihlášení odblokuje?**<br>
+**Č. Když zablokujem přihlášení uživatele na Microsoft 365 nebo na portálu Azure AD pro synchronizované uživatele, proč se při opětovném přihlášení odblokuje?**<br>
 Synchronizovaná uživatelé mohou být vytvořeni nebo v místním prostředí. Pokud je účet povolený místně, může odblokovat blok přihlášení umístěný správcem.
 
 ## <a name="identity-data"></a>Data identity
 **Otázka: Proč atribut userPrincipalName (UPN) ve službě Azure AD neodpovídá místnímu hlavnímu názvu uživatele (UPN)?**  
 Informace najdete v těchto článcích:
 
-* [Uživatelská jména v Office 365, Azure nebo Intune se neshodují s místním hlavním názvem uživatele (UPN) nebo alternativním přihlašovacím ID.](https://support.microsoft.com/kb/2523192)
+* [Uživatelská jména v Microsoft 365, Azure nebo Intune se neshodují s místním hlavním názvem uživatele (UPN) nebo alternativním přihlašovacím ID.](https://support.microsoft.com/kb/2523192)
 * [Po změně hlavního názvu uživatele (UPN) uživatelského účtu na používání jiné federované domény nejsou změny synchronizované nástrojem Azure Active Directory Sync.](https://support.microsoft.com/kb/2669550)
 
 Můžete taky nakonfigurovat službu Azure AD tak, aby synchronizačnímu modulu umožnila aktualizovat hlavní název uživatele (UPN), jak je popsáno v tématu [funkce služby Azure AD Connect Sync](how-to-connect-syncservice-features.md).
@@ -178,7 +178,7 @@ Ne, ručně nastavovat atribut ImmutableId u stávající skupiny Azure AD nebo 
 S výjimkou rutin, které jsou popsány v tomto webu, jiné rutiny prostředí PowerShell nalezené v Azure AD Connect nejsou podporovány pro použití zákazníkem.
 
 **Otázka: je možné použít možnost Import serveru/import serveru, která se nachází v Synchronization Service Manager pro přesunutí konfigurace mezi servery?**  
-Ne. Tato možnost nenačte všechna nastavení konfigurace a neměla by se používat. Místo toho použijte průvodce k vytvoření základní konfigurace na druhém serveru a pomocí editoru pravidla synchronizace vygenerujte skripty PowerShellu pro přesunutí libovolného vlastního pravidla mezi servery. Další informace najdete v tématu věnovaném [migraci](how-to-upgrade-previous-version.md#swing-migration).
+No. Tato možnost nenačte všechna nastavení konfigurace a neměla by se používat. Místo toho použijte průvodce k vytvoření základní konfigurace na druhém serveru a pomocí editoru pravidla synchronizace vygenerujte skripty PowerShellu pro přesunutí libovolného vlastního pravidla mezi servery. Další informace najdete v tématu věnovaném [migraci](how-to-upgrade-previous-version.md#swing-migration).
 
 **Otázka: je možné ukládat hesla do mezipaměti pro přihlašovací stránku Azure a může být ukládání do mezipaměti znemožněno, protože obsahuje element vstupu hesla s atributem *AutoComplete = "false"* ?**  
 V současné době není podporována změna atributů HTML pole **heslo** , včetně značky automatického dokončování. V současné době pracujeme na funkci, která umožňuje vlastní JavaScript, který umožňuje přidat libovolný atribut do pole **heslo** .
@@ -187,7 +187,7 @@ V současné době není podporována změna atributů HTML pole **heslo** , vč
 V současné době není podporována změna atributů HTML pole pro zadání **hesla** , včetně značky automatického dokončování. V současné době pracujeme na funkci, která umožňuje vlastní JavaScript, který umožňuje přidat libovolný atribut do pole **heslo** .
 
 **Otázka: existuje způsob, jak zabránit souběžným relacím?**  
-Ne.
+No.
 
 ## <a name="auto-upgrade"></a>Automatický upgrade
 
@@ -253,19 +253,19 @@ Ano, automatický upgrade také upgraduje Azure AD Connect Health.
 Ano, můžete automaticky upgradovat Azure AD Connect Server, který je v pracovním režimu.
 
 **Otázka: Pokud se automatický upgrade nepodaří a můj Azure AD Connect Server nezačne, co mám dělat?**  
-Ve výjimečných případech se služba Azure AD Connect po provedení upgradu nespustí. V těchto případech je obvykle problém vyřešen restartováním serveru. Pokud se služba Azure AD Connect ještě nespustí, otevřete lístek podpory. Další informace najdete v tématu [Vytvoření žádosti o službu pro kontaktování podpory Office 365](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/). 
+Ve výjimečných případech se služba Azure AD Connect po provedení upgradu nespustí. V těchto případech je obvykle problém vyřešen restartováním serveru. Pokud se služba Azure AD Connect ještě nespustí, otevřete lístek podpory. Další informace najdete v tématu [Vytvoření žádosti o službu pro kontaktování podpory Microsoft 365](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support). 
 
 **Otázka: Nejsem si jisti, jaká rizika jsou při upgradu na novější verzi Azure AD Connect. Můžete zavolat mi na pomoc s upgradem?**  
-Pokud potřebujete pomoc s upgradem na novější verzi Azure AD Connect, otevřete lístek podpory v tématu [Vytvoření žádosti o službu pro kontaktování podpory Office 365](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
+Pokud potřebujete pomoc s upgradem na novější verzi Azure AD Connect, otevřete lístek podpory v tématu [Vytvoření žádosti o službu, aby se kontaktovala Microsoft 365 podpora](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support).
 
 ## <a name="operational-best-practice"></a>Provozní osvědčený postup    
 Níže jsou uvedeny některé osvědčené postupy, které byste měli implementovat při synchronizaci mezi službou Windows Server Active Directory a Azure Active Directory.
 
-**Použít Multi-Factor Authentication u všech synchronizovaných účtů** Azure Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování prostřednictvím řady snadno použitelných metod ověřování. Na základě rozhodnutí týkajících se konfigurace, která správce provede, se uživatelé můžou nebo nemusí vyvolávat na MFA. Další informace o MFA získáte tady:https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**Použít Multi-Factor Authentication u všech synchronizovaných účtů** Azure Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování prostřednictvím řady snadno použitelných metod ověřování. Na základě rozhodnutí týkajících se konfigurace, která správce provede, se uživatelé můžou nebo nemusí vyvolávat na MFA. Další informace o MFA získáte tady: https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
-**Postupujte podle pokynů pro zabezpečení Azure AD Connect serveru** . Azure AD Connect Server obsahuje kritická data identity a měla by se považovat za součást vrstvy 0, jak je popsáno v [modelu vrstvy správy služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material). Přečtěte si prosím naše [pokyny k zabezpečení AADConnect serveru](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server).
+**Postupujte podle pokynů pro zabezpečení Azure AD Connect serveru** . Azure AD Connect Server obsahuje kritická data identity a měla by se považovat za součást vrstvy 0, jak je popsáno v [modelu vrstvy správy služby Active Directory](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material). Přečtěte si prosím naše [pokyny k zabezpečení AADConnect serveru](./how-to-connect-install-prerequisites.md#azure-ad-connect-server).
 
-**Povolit kosmetice pro detekci nevrácených přihlašovacích údajů** Synchronizace hodnot hash hesel taky umožňuje [zjišťování nevrácených přihlašovacích údajů](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) pro vaše hybridní účty. Společnost Microsoft spolupracuje s tmavými webovými výzkumníky a orgány činnými v oblasti a hledá veřejně dostupné páry uživatelského jména a hesla. Pokud některý z těchto párů odpovídá vašim uživatelům, je přidružený účet přesunutý na vysoké riziko. 
+**Povolit kosmetice pro detekci nevrácených přihlašovacích údajů** Synchronizace hodnot hash hesel taky umožňuje [zjišťování nevrácených přihlašovacích údajů](../identity-protection/concept-identity-protection-risks.md) pro vaše hybridní účty. Společnost Microsoft spolupracuje s tmavými webovými výzkumníky a orgány činnými v oblasti a hledá veřejně dostupné páry uživatelského jména a hesla. Pokud některý z těchto párů odpovídá vašim uživatelům, je přidružený účet přesunutý na vysoké riziko. 
 
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -275,11 +275,11 @@ Níže jsou uvedeny některé osvědčené postupy, které byste měli implement
 
 * Prohledejte v článku znalostní báze KB o běžných problémech s opravou chyb týkajících se podpory Azure AD Connect.
 
-[Microsoft Q&Stránka s otázkou pro Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Microsoft Q&Stránka s otázkou pro Azure Active Directory](/answers/topics/azure-active-directory.html)
 
-* Vyhledejte technické dotazy a odpovědi nebo položte své dotazy na [komunitu Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html).
+* Vyhledejte technické dotazy a odpovědi nebo položte své dotazy na [komunitu Azure AD](/answers/topics/azure-active-directory.html).
 
-[Získání podpory pro Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+[Získání podpory pro Azure AD](../fundamentals/active-directory-troubleshooting-support-howto.md)
 
 **Otázka: Proč se mi zobrazují události 6311 a 6401 po chybách kroku synchronizace?**
 

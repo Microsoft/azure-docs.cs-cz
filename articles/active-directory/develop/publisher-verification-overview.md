@@ -1,6 +1,6 @@
 ---
 title: Přehled ověření vydavatele – Microsoft Identity Platform | Azure
-description: Poskytuje přehled programu pro ověření vydavatele (Preview) pro platformu Microsoft identity. Obsahuje seznam výhod, požadavků programu a nejčastějších dotazů. Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu Microsoft Partner Network, který dokončil proces ověření a přidružil tento účet MPN k registraci aplikace.
+description: Poskytuje přehled programu pro ověřování vydavatele pro platformu Microsoft identity. Obsahuje seznam výhod, požadavků programu a nejčastějších dotazů. Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu Microsoft Partner Network, který dokončil proces ověření a přidružil tento účet MPN k registraci aplikace.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068469"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005787"
 ---
-# <a name="publisher-verification-preview"></a>Ověření vydavatele (Preview)
+# <a name="publisher-verification"></a>Ověření vydavatele
 
-Ověřování vydavatele (Preview) pomáhá správcům a koncovým uživatelům pochopit pravost vývojářů aplikací, které jsou integrovány s platformou Microsoft identity. Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu [Microsoft Partner Network](https://partner.microsoft.com/membership) , který dokončil proces [ověření](/partner-center/verification-responses) a přidružil tento účet MPN k registraci aplikace. 
+Ověřování vydavatele pomáhá správcům a koncovým uživatelům pochopit pravost vývojářů aplikací, které jsou integrovány s platformou Microsoft identity. Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu [Microsoft Partner Network](https://partner.microsoft.com/membership) , který dokončil proces [ověření](/partner-center/verification-responses) a přidružil tento účet MPN k registraci aplikace. 
 
 Modrá "ověřená" výzva se zobrazí na výzvu k vyjádření souhlasu služby Azure AD a na dalších obrazovkách: ![ výzva k vyjádření souhlasu](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -38,7 +38,7 @@ Ověřování vydavatele nabízí následující výhody:
 - **Vylepšené hodnocení rizik**– pro žádosti o udělení souhlasu společnosti Microsoft budou zjištěny požadavky na udělení souhlasu od vydavatele jako signál. 
 
 ## <a name="requirements"></a>Požadavky
-Je k dispozici několik požadavků na ověření vydavatele, některé z nich již byly dokončeny mnoha partnery společnosti Microsoft. Jedná se o tyto peeringy: 
+Je k dispozici několik požadavků na ověření vydavatele, některé z nich již byly dokončeny mnoha partnery společnosti Microsoft. Jsou to tyto: 
 
 -  ID MPN pro platný účet [Microsoft Partner Network](https://partner.microsoft.com/membership) , který dokončil proces [ověření](/partner-center/verification-responses) . Tento účet MPN musí být [globální účet partnera (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) pro vaši organizaci. 
 
