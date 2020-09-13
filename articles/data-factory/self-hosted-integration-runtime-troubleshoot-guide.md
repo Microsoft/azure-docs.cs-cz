@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/05/2020
+ms.date: 09/10/2020
 ms.author: abnarain
-ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800591"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033655"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -113,14 +113,14 @@ Když budeme zpracovávat případy související s metodou handshake SSL/TLS, m
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Příklad:
+        Například:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
     4. Ověřte, zda výstupní soubor txt neobsahuje chybu. Souhrn chyb najdete na konci souboru txt.
 
-        Příklad: 
+        Například: 
 
         ![Souhrn chyb](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 
@@ -152,7 +152,7 @@ Když budeme zpracovávat případy související s metodou handshake SSL/TLS, m
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Příklad: 
+Například: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -190,7 +190,7 @@ Další informace o globální mezipaměti sestavení (GAC) najdete v [tomto čl
 
 #### <a name="symptoms"></a>Příznaky
 
-Prostředí Integration runtime v místním prostředí se náhle přepne do režimu offline bez klíče, v protokolu událostí se zobrazí chybová zpráva:`Authentication Key is not assigned yet`
+Prostředí Integration runtime v místním prostředí se náhle přepne do režimu offline bez klíče, v protokolu událostí se zobrazí chybová zpráva: `Authentication Key is not assigned yet`
 
 ![Chybí ověřovací klíč.](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
@@ -351,7 +351,7 @@ Tlačítko **zaregistrovat** nebylo v uživatelském rozhraní Configuration Man
 
 #### <a name="cause"></a>Příčina
 
-Od vydání *Integration Runtime 3,0*se odebralo tlačítko **registrace** na existujícím uzlu Integration runtime, aby se povolilo čištění a bezpečnější prostředí. Pokud byl uzel zaregistrován na některé Integration Runtime (bez ohledu na to, zda je online nebo ne), chcete-li jej znovu zaregistrovat do jiného Integration Runtime, je nutné odinstalovat předchozí uzel a poté nainstalovat a zaregistrovat uzel.
+Od vydání *Integration Runtime 3,0*se odebralo tlačítko **registrace** na existujícím uzlu Integration runtime, aby se povolilo čištění a bezpečnější prostředí. Pokud je uzel zaregistrovaný k nějakému modulu runtime integrace (bez ohledu na to, jestli je online) a chcete ho znovu zaregistrovat k jinému modulu runtime integrace, musíte předchozí uzel odinstalovat a pak nainstalovat a zaregistrovat nový uzel.
 
 #### <a name="resolution"></a>Řešení
 
@@ -366,7 +366,7 @@ Od vydání *Integration Runtime 3,0*se odebralo tlačítko **registrace** na ex
 1. Nainstalujte soubor MSI a zaregistrujte Integration Runtime.
 
 
-### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>Nepovedlo se zaregistrovat prostředí IR v místním prostředí v důsledku místního hostitele.    
+### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>Místní prostředí IR nejde zaregistrovat kvůli místnímu hostiteli    
 
 #### <a name="symptoms"></a>Příznaky
 
@@ -519,7 +519,7 @@ K tomuto chování dochází, když uzly nemůžou vzájemně komunikovat.
 
 ### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Potíže s připojením mezi místním prostředím IR a Data Factorym nebo místním prostředím IR a zdrojem dat/jímky v místním prostředí
 
-Pokud chcete řešit potíže s připojením k síti, měli byste vědět, jak [shromažďovat trasování sítě](#how-to-collect-netmon-trace), pochopit, jak ho používat, a [analyzovat trasování Netmon](#how-to-analyze-netmon-trace) před použitím nástrojů Netmon v reálných případech z místního prostředí IR.
+Pokud chcete řešit potíže s připojením k síti, měli byste vědět, jak shromažďovat trasování sítě, pochopit, jak ho používat, a [analyzovat trasování Netmon](#how-to-analyze-netmon-trace) před použitím nástrojů Netmon v reálných případech z místního prostředí IR.
 
 #### <a name="symptoms"></a>Příznaky
 
@@ -577,7 +577,7 @@ Netmon trasování a proveďte další analýzu.
 
 ### <a name="how-to-collect-netmon-trace"></a>Jak shromažďovat Netmon trasování
 
-1.  Stáhněte si nástroje Netmon z [tohoto webu](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)a nainstalujte je na serverovém počítači (jakýkoli server s problémem) a klienta (jako je například prostředí IR pro místní hostování).
+1.  Stáhněte si nástroje Netmon z [tohoto webu](https://cnet-downloads.com/network-monitor)a nainstalujte je na serverovém počítači (jakýkoli server s problémem) a klienta (jako je například prostředí IR pro místní hostování).
 
 2.  Vytvořte složku, například v následující cestě: *D:\netmon*. Ujistěte se, že má dostatek místa pro uložení protokolu.
 
@@ -621,7 +621,10 @@ Netmon trasování a proveďte další analýzu.
 
 ### <a name="how-to-analyze-netmon-trace"></a>Jak analyzovat trasování Netmon
 
-Když se pokusíte o **8.8.8.8 888** s výše shromážděným trasováním Netmon, měli byste vidět pod trasováním:
+> [!NOTE] 
+> Níže uvedená instrukce se vztahuje na Netmon trasování. Vzhledem k tomu, že trasování Netmon je aktuálně mimo podporu, můžete Nástroj Wireshark využít jako stejný.
+
+Když se pokusíte o **8.8.8.8 888** s shromažďovaným trasováním Netmon, zobrazí se pod trasováním následující:
 
 ![Netmon trasování 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
 

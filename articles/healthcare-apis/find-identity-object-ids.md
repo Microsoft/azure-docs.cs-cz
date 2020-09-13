@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 5b42d61d59a3c816c3b664297470cfbf91f17439
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 706d7e081743f2bab1f593e00dc792f218a000ea
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851762"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033621"
 ---
 # <a name="find-identity-object-ids-for-authentication-configuration"></a>Vyhledat ID objektů identity pro konfiguraci ověřování
 
@@ -21,16 +21,16 @@ V tomto článku se naučíte, jak najít ID objektů identity potřebná při k
 
 ## <a name="find-user-object-id"></a>Najít ID objektu uživatele
 
-Pokud máte uživatele s uživatelským jménem `myuser@consoso.com` , můžete uživatele vyhledat `ObjectId` pomocí následujícího příkazu PowerShellu:
+Pokud máte uživatele s uživatelským jménem `myuser@contoso.com` , můžete uživatele vyhledat `ObjectId` pomocí následujícího příkazu PowerShellu:
 
 ```azurepowershell-interactive
-$(Get-AzureADUser -Filter "UserPrincipalName eq 'myuser@consoso.com'").ObjectId
+$(Get-AzureADUser -Filter "UserPrincipalName eq 'myuser@contoso.com'").ObjectId
 ```
 
 nebo můžete použít rozhraní příkazového řádku Azure:
 
 ```azurecli-interactive
-az ad user show --id myuser@consoso.com --query objectId --out tsv
+az ad user show --id myuser@contoso.com --query objectId --out tsv
 ```
 
 ## <a name="find-service-principal-object-id"></a>Najít ID instančního objektu služby
