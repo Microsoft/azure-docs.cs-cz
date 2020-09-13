@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705771"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030823"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -88,17 +88,19 @@ Agent Azure Monitor aktuálně podporuje následující operační systémy.
   - CentOS 6<sup>1</sup>, 7
   - Debian 9, 10
   - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>1</sup>, 7, 8
+  - RHEL 6<sup>1</sup>, 7
   - SLES 11, 12, 15
   - Ubuntu 14,04 LTS, 16,04 LTS, 18,04 LTS
 
 > [!IMPORTANT]
-> <sup>1</sup> Pro tyto distribuce, aby odesílaly data syslog, je nutné odebrat rsyslog a nainstalovat syslog-ng.
+> <sup>1</sup> Pro tyto distribuce, aby odesílaly data syslog, je nutné službu rsyslog restartovat jednou po instalaci agenta.
 
 
 ## <a name="security"></a>Zabezpečení
 Agent Azure Monitor nepotřebuje žádné klíče, ale místo toho vyžaduje [spravovanou identitu přiřazenou systémem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity). Před nasazením agenta musíte mít na každém virtuálním počítači povolenou spravovanou identitu přiřazenou systémem.
 
+## <a name="networking"></a>Sítě
+Agent Azure Monitor podporuje značky služeb Azure (vyžadují se značky AzureMonitor a AzureResourceManager), ale ještě nepracuje s Azure Monitormi obory privátních odkazů nebo přímými proxy servery.
 
 ## <a name="install-the-azure-monitor-agent"></a>Instalace agenta Azure Monitor
 Agent Azure Monitor se implementuje jako [rozšíření virtuálního počítače Azure](../../virtual-machines/extensions/overview.md) s podrobnostmi v následující tabulce. 
@@ -107,7 +109,7 @@ Agent Azure Monitor se implementuje jako [rozšíření virtuálního počítač
 |:---|:---|:---|
 | Publisher | Microsoft. Azure. monitor  | Microsoft. Azure. monitor |
 | Typ      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 1.5 |
+| TypeHandlerVersion  | 1,0 | 1.5 |
 
 Nainstalujte agenta Azure Monitor pomocí kterékoli z metod, jak nainstalovat agenty virtuálních počítačů, včetně těchto postupů: PowerShell nebo CLI. Případně můžete agenta nainstalovat a nakonfigurovat shromažďování dat na virtuálních počítačích v předplatném Azure pomocí portálu s postupem popsaným v části [Konfigurace shromažďování dat pro agenta Azure monitor (Preview)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal).
 

@@ -3,12 +3,12 @@ title: Export Jupyter Notebook projektu z Azure Notebooks Preview
 description: Rychle exportujte Jupyter Notebook projekt.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892095"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030442"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Rychlý Start: Export Jupyter Notebook projektu v Azure Notebooks Preview
 
@@ -16,7 +16,7 @@ ms.locfileid: "88892095"
 
 V tomto rychlém startu stáhnete Azure Notebooks projekt pro použití v jiných Jupyter Notebook řešení. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Existující projekt Azure Notebooks.
 
@@ -34,7 +34,7 @@ Existující projekt Azure Notebooks.
 
 Po stažení souborů projektu je můžete použít s jinými řešeními Jupyter Notebook. Některé možnosti jsou popsané v následujících částech: 
 - [Visual Studio Code](#use-notebooks-in-visual-studio-code)
-- [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces)
+- [Codespaces GitHubu](#use-notebooks-in-github-codespaces)
 - [Azure Machine Learning](#use-notebooks-with-azure-machine-learning)
 - [Azure Lab Services](#use-azure-lab-services)
 - [GitHub](#use-github)
@@ -58,14 +58,13 @@ Po [stažení](#export-an-azure-notebooks-project) souborů projektu je můžete
 
 Pomocí [skriptu Azure Notebooks prostředí](#create-an-environment-for-notebooks) s Visual Studio Code můžete také vytvořit prostředí, které odpovídá Azure Notebooks Preview.
 
-## <a name="use-notebooks-in-visual-studio-codespaces"></a>Použití poznámkových bloků v aplikaci Visual Studio Codespaces
+## <a name="use-notebooks-in-github-codespaces"></a>Použití poznámkových bloků v GitHub Codespaces
 
-Visual Studio Codespaces poskytuje prostředí hostovaná v cloudu, kde můžete upravovat svoje poznámkové bloky pomocí Visual Studio Code nebo webového prohlížeče. Nabízí stejné skvělé prostředí Jupyter jako VS Code, ale bez nutnosti nainstalovat na zařízení cokoli. Pokud nechcete nastavit místní prostředí a preferovat řešení, které je v cloudu, pak je vytvoření codespace Skvělé. Jak začít:
-
+GitHub Codespaces poskytuje prostředí hostovaná v cloudu, kde můžete poznámkové bloky upravovat pomocí Visual Studio Code nebo ve webovém prohlížeči. Nabízí stejné skvělé prostředí Jupyter jako VS Code, ale bez nutnosti nainstalovat na zařízení cokoli. Pokud nechcete nastavit místní prostředí a preferovat řešení, které je v cloudu, pak je vytvoření codespace Skvělé. Jak začít:
 1. [Stáhněte](#export-an-azure-notebooks-project) si soubory projektu.
-1. [Vytvořte úložiště GitHub](https://help.github.com/github/getting-started-with-github/create-a-repo) pro ukládání vašich poznámkových bloků. 
+1. [Vytvořte úložiště GitHub](https://help.github.com/github/getting-started-with-github/create-a-repo) pro ukládání vašich poznámkových bloků.   
 1. [Přidejte své soubory](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) do úložiště.
-1. Instalační program sady Visual Studio Codespaces v [prohlížeči](https://docs.microsoft.com/visualstudio/online/how-to/browser), v [aplikaci visual Studio](https://docs.microsoft.com/visualstudio/online/how-to/vside)nebo [Visual Studio Code](https://docs.microsoft.com/visualstudio/online/how-to/vscode).
+1. [Požádat o přístup ke službě GitHub Codespaces Preview](https://github.com/features/codespaces)
 
 ## <a name="use-notebooks-with-azure-machine-learning"></a>Použití poznámkových bloků s Azure Machine Learning
 
@@ -93,7 +92,7 @@ Pokud chcete získat další informace o Azure ML a spuštění poznámkových b
 
 ## <a name="use-github"></a>Použití GitHubu
 
-GitHub poskytuje bezplatný a zálohovaný způsob založený na zdrojovém řízení pro ukládání poznámkových bloků (a dalších souborů), sdílení vašich poznámkových bloků s ostatními a spolupráci. Pokud hledáte způsob, jak sdílet projekty a spolupracovat s ostatními, je GitHub skvělým parametrem a můžete ho kombinovat se sadou [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces) , abyste mohli Skvělé vývojové prostředí. Začínáme s GitHubem
+GitHub poskytuje bezplatný a zálohovaný způsob založený na zdrojovém řízení pro ukládání poznámkových bloků (a dalších souborů), sdílení vašich poznámkových bloků s ostatními a spolupráci. Pokud hledáte způsob, jak sdílet vaše projekty a spolupracovat s ostatními, je GitHub skvělým parametrem a můžete ho kombinovat s [Codespaces GitHubu](#use-notebooks-in-github-codespaces) , abyste mohli Skvělé vývojové prostředí. Začínáme s GitHubem
 
 1. [Stáhněte](#export-an-azure-notebooks-project) si soubory projektu.
 1. [Vytvořte úložiště GitHub](https://help.github.com/github/getting-started-with-github/create-a-repo) pro ukládání vašich poznámkových bloků. 
@@ -103,6 +102,6 @@ GitHub poskytuje bezplatný a zálohovaný způsob založený na zdrojovém ří
 
 - [Informace o Pythonu v Visual Studio Code](https://code.visualstudio.com/docs/python/python-tutorial)
 - [Další informace o Azure Machine Learning a poznámkových blocích Jupyter](../machine-learning/how-to-run-jupyter-notebooks.md)
-- [Další informace o Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)
+- [Další informace o GitHub Codespaces](https://github.com/features/codespaces)
 - [Informace o Azure Lab Services](https://azure.microsoft.com/services/lab-services/)
 - [Další informace o GitHubu](https://help.github.com/github/getting-started-with-github/)

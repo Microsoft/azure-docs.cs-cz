@@ -1,6 +1,6 @@
 ---
 title: Plánování sestav & nasazení monitorování – Azure AD
-description: Popisuje, jak naplánovat a spustit implmentation generování sestav a monitorování.
+description: Popisuje, jak naplánovat a spustit implementaci generování sestav a monitorování.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229748"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030986"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Plánování nasazení Azure Active Directory vytváření sestav a monitorování
 
@@ -133,7 +133,7 @@ Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktiv
 
 Směrování protokolů do centra událostí Azure umožňuje integraci s nástroji SIEM třetích stran. Tato integrace umožňuje kombinovat data protokolu aktivit Azure AD s jinými daty spravovanými vaším SIEM a poskytnout tak lepší přehled o vašem prostředí. 
 
-Informace o [streamování protokolů do centra událostí](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+Informace o [streamování protokolů do centra událostí](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Plánování operací a zabezpečení pro Azure AD Reporting a monitoring
 

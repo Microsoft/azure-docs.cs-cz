@@ -6,24 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326167"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030340"
 ---
-# <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure pomocí Azure Monitor
+# <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure s využitím služby Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
 
 > [!IMPORTANT]
 > Tento článek se týká všech služeb v Azure, které používají Azure Monitor. Výpočetní prostředky, včetně virtuálních počítačů a App Service, generují stejná data monitorování, ale také obsahují hostovaný operační systém, který může také generovat protokoly a metriky. Podrobnosti o tom, jak tato data shromažďovat a analyzovat, najdete v dokumentaci monitorování pro tyto služby.
 
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
-Azure Monitor je plná služba monitorování zásobníku v Azure, která poskytuje kompletní sadu funkcí pro monitorování prostředků Azure kromě prostředků v jiných cloudech a místních prostředích. [Datová platforma Azure monitor](../platform/data-platform.md) shromažďuje data do [protokolů](../platform/data-platform-logs.md) a [metrik](../platform/data-platform-metrics.md) , kde je lze analyzovat společně pomocí kompletní sady monitorovacích nástrojů, jak je popsáno v následujících částech.
-
-- [Co se dá dělat s Azure Monitor metrikami?](../platform/data-platform-metrics.md#what-can-you-do-with-azure-monitor-metrics)
-- [Co se dá dělat s protokoly Azure Monitor?](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)
+Azure Monitor je plná služba monitorování zásobníku v Azure, která poskytuje kompletní sadu funkcí pro monitorování prostředků Azure kromě prostředků v jiných cloudech a místních prostředích. [Datová platforma Azure monitor](../platform/data-platform.md) shromažďuje data do [protokolů](../platform/data-platform-logs.md) a [metrik](../platform/data-platform-metrics.md) , kde je lze analyzovat společně pomocí kompletní sady nástrojů pro monitorování. Seznamte se s úplnými aplikacemi a službami, které je možné monitorovat pomocí Azure Monitor v tématu [co je monitorované pomocí Azure monitor?](../monitor-reference.md).
 
 Jakmile vytvoříte prostředek Azure, Azure Monitor je povolený a začne shromažďovat metriky a protokoly aktivit, které můžete [Zobrazit a analyzovat v Azure Portal](#monitoring-in-the-azure-portal). V případě některých konfigurací můžete shromáždit další data monitorování a povolit další funkce. Podrobnosti o všech požadavcích na konfiguraci najdete níže v části [monitorování dat](#monitoring-data) .
 
@@ -100,7 +97,7 @@ Některé služby budou poskytovat nástroje nad rámec standardních funkcí Az
 
 Pokud má služba Azure Monitor přehled, můžete k ní přistupovat z **monitorování** v nabídce každého prostředku. Přístup ke všem přehledům a řešením z nabídky **Azure monitor** .
 
-![Insights](media/monitor-azure-resource/insights.png)
+![Přehledy v Azure Portal](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Metriky
 Analyzujte metriky v Azure Portal pomocí [Průzkumníka metrik](../platform/metrics-getting-started.md) , který je k dispozici z položky nabídky **metriky** pro většinu služeb. Tento nástroj umožňuje pracovat s jednotlivými metrikami nebo kombinovat více a identifikovat korelace a trendy. 
@@ -108,7 +105,7 @@ Analyzujte metriky v Azure Portal pomocí [Průzkumníka metrik](../platform/met
 - Základy používání Průzkumníka metrik najdete v tématu [Začínáme s Azure Průzkumník metrik](../platform/metrics-getting-started.md) .
 - V tématu [Pokročilé funkce služby Azure Průzkumník metrik](../platform/metrics-charts.md) najdete pokročilé funkce Průzkumníka metrik, jako je například použití několika metrik a použití filtrů a rozdělení.
 
-![Metriky](media/monitor-azure-resource/metrics.png)
+![Průzkumník metrik v Azure Portal](media/monitor-azure-resource/metrics.png)
 
 
 ### <a name="activity-log"></a>Protokol aktivit 
@@ -129,7 +126,7 @@ Protokoly Azure Monitor konsolidují protokoly a metriky z několika služeb a d
 - Vysvětlení způsobu strukturování dat protokolu prostředků v Azure Monitorch protokolech najdete v části [režim shromažďování](../platform/resource-logs.md#send-to-log-analytics-workspace) .
 - Podrobnosti o své tabulce v protokolu Azure Monitor najdete v dokumentaci ke každé službě Azure.
 
-![Protokoly](media/monitor-azure-resource/logs.png)
+![Log Analytics v Azure Portal](media/monitor-azure-resource/logs.png)
 
 ## <a name="monitoring-from-command-line"></a>Monitorování z příkazového řádku
 Data monitorování shromážděná z vašeho prostředku můžete získat z příkazového řádku nebo je zahrnout do skriptu pomocí [Azure PowerShell](/powershell/azure/) nebo [rozhraní příkazového řádku Azure](/cli/azure/). 

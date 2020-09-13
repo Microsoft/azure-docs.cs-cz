@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816520"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029698"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -27,7 +27,7 @@ Než začnete, [Vytvořte si účet pro komerční tržiště v partnerském cen
 Když publikujete své nabídky na Azure Marketplace, můžete:
 
 - Povýšit svoji společnost o technickou podporu společnosti Microsoft.
-- Dosahujte více než 100 000 000 Office 365 a Dynamics 365 uživatelů a více než 200 000 organizací.
+- Dosahujte více než 100 000 000 Microsoft 365 a uživatelů Dynamics 365 a více než 200 000 organizací.
 - Získejte vysoce kvalitní zájemce z těchto tržišť.
 - Získejte služby, které jsou povýšené na prodejní a prodejní týmy pole Microsoftu.
 
@@ -162,7 +162,7 @@ Zákazníkům musíte poskytnout podmínky nabídky a ujednání. Máte dvě mo�
 
        a. Do pole **vlastní výrazy pro změnu** zadejte vlastní výrazy. Můžete zadat neomezený počet znaků. Pouze zákazníci z ID tenanta, které zadáte pro tyto vlastní výrazy, se budou zobrazovat v toku nákupu nabídky v Azure Portal.
 
-       b. Požadovanou Zadejte **ID tenanta**. Každé vlastní změně může být cílem až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta, které identifikuje zákazníka v Azure. Vaše zákazníky to může najít v Azure výběrem **Azure Active Directory**  >  **vlastností**. Hodnota ID adresáře je ID tenanta (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete také najít pomocí webové adresy svého názvu domény na adrese [moje Microsoft Azure a ID tenanta Office 365?](https://www.whatismytenantid.com/).
+       b. Požadovanou Zadejte **ID tenanta**. Každé vlastní změně může být cílem až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta, které identifikuje zákazníka v Azure. Vaše zákazníky to může najít v Azure výběrem **Azure Active Directory**  >  **vlastností**. Hodnota ID adresáře je ID tenanta (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete také najít pomocí webové adresy svého názvu domény na adrese [moje Microsoft Azure a Microsoft 365 ID tenanta?](https://www.whatismytenantid.com/).
 
        c. Volitelné Zadejte popisný **Popis** ID tenanta, který vám pomůže identifikovat zákazníka, kterému cílíte na změnu.
 

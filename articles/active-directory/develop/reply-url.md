@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205927"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030306"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omezení a omezení URI pro přesměrování (adresa URL odpovědi)
 
@@ -65,6 +65,8 @@ Z pohledu vývoje to znamená několik věcí:
 * Neregistrujte více identifikátorů URI přesměrování, přičemž se liší pouze port. Přihlašovací server vybere jednu z nich a použije chování spojené s tímto identifikátorem URI přesměrování (například bez ohledu na to, zda se jedná o `web` `native` `spa` přesměrování typu).
 * Pokud potřebujete zaregistrovat více identifikátorů URI pro přesměrování na localhost pro testování různých toků během vývoje, rozlišit je pomocí komponenty *cesty* identifikátoru URI. Například `http://127.0.0.1/MyWebApp` neodpovídá `http://127.0.0.1/MyNativeApp` .
 * Pokyny pro RFC byste neměli používat `localhost` v identifikátoru URI přesměrování. Místo toho použijte skutečnou IP adresu zpětné smyčky, `127.0.0.1` . Tím se zabrání v přerušení vaší aplikace nenakonfigurovanými branami firewall nebo přejmenovanými síťovými rozhraními.
+
+    Chcete-li použít `http` schéma s adresou zpětné smyčky (127.0.0.1) namísto localhost, je nutné upravit [manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute). 
 
     Adresa zpětné smyčky IPv6 ( `[::1]` ) se momentálně nepodporuje.
 

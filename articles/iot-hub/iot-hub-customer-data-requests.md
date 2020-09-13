@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebc73c75d9a23a53ac94f28208251dcff83e684a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074702"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030697"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Funkce pro žádosti o zákaznických datech pro zařízení Azure IoT Hub
 
@@ -36,13 +36,13 @@ Pokud používáte funkci Azure Monitor Integration služby Azure IoT Hub k vytv
 
 Správci klientů mohou pomocí okna zařízení IoT v rozšíření Azure IoT Hub v Azure Portal odstranit zařízení, které odstraní data přidružená k tomuto zařízení.
 
-Je také možné provádět operace odstranění pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [Služba – odstranění zařízení](/rest/api/iothub/service/registrymanager/deletedevice).
+Je také možné provádět operace odstranění pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [Služba – odstranění zařízení](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice).
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
 
 Správci klientů můžou využít kopírování a vkládání v podokně zařízení IoT rozšíření Azure IoT Hub v Azure Portal k exportu dat přidružených k zařízení.
 
-Je také možné provádět operace exportu pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [Služba – získat zařízení](/rest/api/iothub/service/registrymanager/getdevice).
+Je také možné provádět operace exportu pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [Služba – získat zařízení](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice).
 
 > [!NOTE]
 > Když použijete podnikové služby společnosti Microsoft, vygeneruje společnost Microsoft nějaké informace, které se nazývají systémem generované protokoly. Některé protokoly generované systémem Azure IoT Hub nejsou pro správce klientů k dispozici nebo je můžou exportovat. Tyto protokoly představují věcné akce prováděné v rámci služby a diagnostická data související s jednotlivými zařízeními.

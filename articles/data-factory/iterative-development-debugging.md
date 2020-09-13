@@ -1,7 +1,7 @@
 ---
 title: Iterativní vývoj a ladění v Azure Data Factory
 description: Naučte se vyvíjet a ladit kanály Data Factory v uživatelském prostředí ADF iterativním způsobem.
-ms.date: 08/28/2020
+ms.date: 09/11/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -9,12 +9,12 @@ documentationcenter: ''
 ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: 7e27a9c11f6470a48f20d54ebbd32c06824940de
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e4c66055184b2ef0113aa0e25c02ad8635feddb3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079305"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031003"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterativní vývoj a ladění pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

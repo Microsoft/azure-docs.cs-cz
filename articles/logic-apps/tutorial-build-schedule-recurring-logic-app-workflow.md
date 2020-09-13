@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 41f7b1309a9c7fa9a5f2abb3e2e59f08ef31382d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9239196d26bcd4967b685fa7970c4d3bd706d4
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124846"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030527"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Kurz: vytvoření automatizovaných pracovních postupů založených na plánech pomocí Azure Logic Apps
 
@@ -36,7 +36,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 * Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-* E-mailový účet od poskytovatele e-mailu, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](/connectors/). V tomto rychlém startu se používá účet Office 365 Outlook. Pokud používáte jiný e-mailový účet, obecné kroky zůstanou stejné, ale vaše uživatelské rozhraní se může mírně lišit.
+* E-mailový účet od poskytovatele e-mailu, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](/connectors/). V tomto rychlém startu se používá pracovní nebo školní účet. Pokud používáte jiný e-mailový účet, obecné kroky zůstanou stejné, ale vaše uživatelské rozhraní se může mírně lišit.
 
   > [!IMPORTANT]
   > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
@@ -92,8 +92,8 @@ Dále přidejte [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Interval** | Ano | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
-   | **Frekvence** | Ano | Týden | Jednotka času pro opakování |
+   | **Interval** | Yes | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Frekvence** | Yes | Týden | Jednotka času pro opakování |
    |||||
 
 1. V části **interval** a **frekvence**otevřete seznam **Přidat nový parametr** a vyberte tyto vlastnosti, které chcete přidat do triggeru.
@@ -141,8 +141,8 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | PřipojeníMapyBing | Zadejte název připojení. V tomto příkladu se používá "BingMapsConnection". |
-   | **Klíč rozhraní API** | Ano | <*váš klíč-Bing-Maps-Key*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
+   | **Název připojení** | Yes | PřipojeníMapyBing | Zadejte název připojení. V tomto příkladu se používá "BingMapsConnection". |
+   | **Klíč rozhraní API** | Yes | <*váš klíč-Bing-Maps-Key*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
    |||||
 
 1. Přejmenujte akci s tímto popisem: `Get route and travel time with traffic`
@@ -161,11 +161,11 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Bod na trase 1** | Ano | <*Začátek – umístění*> | Počátek vaší cesty |
-   | **Bod na trase 2** | Ano | <*koncové umístění*> | Cíl vaší trasy |
-   | **Optimalizace** | Ne | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte parametr "timeWithTraffic". |
-   | **Jednotka vzdálenosti** | Ne | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá "km". |
-   | **Způsob cestování** | Ne | Autem | Způsob cestování pro danou trasu. Vyberte režim "řízení". |
+   | **Bod na trase 1** | Yes | <*Začátek – umístění*> | Počátek vaší cesty |
+   | **Bod na trase 2** | Yes | <*koncové umístění*> | Cíl vaší trasy |
+   | **Optimalizace** | No | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte parametr "timeWithTraffic". |
+   | **Jednotka vzdálenosti** | No | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá "km". |
+   | **Způsob cestování** | No | Autem | Způsob cestování pro danou trasu. Vyberte režim "řízení". |
    ||||
 
    Další informace o těchto parametrech najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route).
@@ -192,9 +192,9 @@ Ve výchozím nastavení vrátí předchozí akce **získat trasu** aktuální d
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | dobacesty | Název proměnné. V tomto příkladu se používá "Dobacesty". |
-   | **Typ** | Ano | Celé číslo | Datový typ proměnné |
-   | **Hodnota** | Ne| Výraz, který převede aktuální dobu trvání cesty ze sekund na minuty (viz postup pod touto tabulkou) | Počáteční hodnota proměnné |
+   | **Název** | Yes | dobacesty | Název proměnné. V tomto příkladu se používá "Dobacesty". |
+   | **Typ** | Yes | Integer | Datový typ proměnné |
+   | **Hodnota** | No| Výraz, který převede aktuální dobu trvání cesty ze sekund na minuty (viz postup pod touto tabulkou) | Počáteční hodnota proměnné |
    ||||
 
    1. Chcete-li vytvořit výraz pro vlastnost **Value** , klikněte do pole, aby se zobrazil seznam dynamického obsahu. V případě potřeby zvětšete okno prohlížeče, dokud se seznam nezobrazí. V seznamu dynamický obsah vyberte možnost **výraz**.
@@ -248,7 +248,7 @@ Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání ce
 
    1. V poli prostřední porovnání vyberte operátor **je větší než** .
 
-   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento limit:`15`
+   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento limit: `15`
 
       Jakmile budete hotovi, bude podmínka vypadat jako v tomto příkladu:
 

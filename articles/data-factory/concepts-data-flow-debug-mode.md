@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 09/11/2020
+ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475596"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030595"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
@@ -41,13 +41,15 @@ Až skončíte s laděním, vypněte přepínač ladění, aby se cluster Azure 
 
 ## <a name="debug-settings"></a>Nastavení ladění
 
-Nastavení ladění můžete upravit kliknutím na nastavení ladění na panelu nástrojů plátna toku dat. Tady můžete vybrat omezení počtu řádků nebo zdroj souborů, které se mají použít pro každou transformaci vašich zdrojů. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také vybrat pracovní propojenou službu, která se má použít pro zdroj dat SQL DW. 
+Jakmile zapnete režim ladění, můžete upravit způsob, jakým datový tok data zobrazí. Nastavení ladění můžete upravit kliknutím na nastavení ladění na panelu nástrojů plátna toku dat. Tady můžete vybrat omezení počtu řádků nebo zdroj souborů, které se mají použít pro každou transformaci vašich zdrojů. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také vybrat pracovní propojenou službu, která se má použít pro zdroj Azure synapse Analytics. 
 
 ![Nastavení ladění](media/data-flow/debug-settings.png "Nastavení ladění")
 
 Pokud máte v toku dat nebo kterékoli z jeho odkazovaných datových sad parametry, můžete určit, které hodnoty se mají použít během ladění, a to tak, že vyberete kartu **parametry** .
 
 ![Parametry nastavení ladění](media/data-flow/debug-settings2.png "Parametry nastavení ladění")
+
+Výchozím nastavením IR použitým pro režim ladění v datových proudech ADF je malý jeden pracovní uzel, který má jeden uzel s jedním ovladačem se čtyřmi jádry. Při testování logiky toku dat to funguje dobře s menšími ukázkami dat. Pokud rozbalíte omezení v nastavení ladění během období Preview nebo během ladění kanálu nastavíte větší počet vzorků řádků ve zdroji, budete možná chtít zvážit nastavení většího výpočetního prostředí v novém Azure Integration Runtime. Pak můžete relaci ladění restartovat pomocí rozsáhlejšího výpočetního prostředí.
 
 ## <a name="data-preview"></a>Náhled dat
 
@@ -59,6 +61,8 @@ S laděním na se na spodním panelu na kartě náhled dat zobrazí světlo. Bez
 > Zdroje souborů omezují pouze řádky, které vidíte, nikoli řádky, které jsou čteny. U velmi rozsáhlých datových sad se doporučuje, abyste vybrali malou část tohoto souboru a použili ho pro vaše testování. Můžete vybrat dočasný soubor v nastavení ladění pro každý zdroj, který je typem datové sady souboru.
 
 Při spuštění v režimu ladění v toku dat nebudou data zapsána do transformace jímky. Ladicí relace má sloužit jako testovací kabel pro vaše transformace. Během ladění nejsou požadovány jímky a jsou ignorovány v toku dat. Pokud chcete testovat zápisy dat do jímky, spusťte tok dat z kanálu Azure Data Factory a použijte ladění z kanálu.
+
+Data ve verzi Preview jsou snímky transformovaných dat s využitím omezení řádků a vzorkování dat z datových snímků v paměti Spark. Proto nejsou ovladače jímky v tomto scénáři použity ani testovány.
 
 ### <a name="testing-join-conditions"></a>Testování podmínek připojení
 

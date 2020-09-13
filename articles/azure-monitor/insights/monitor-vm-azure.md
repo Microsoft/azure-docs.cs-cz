@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326184"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029457"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat data monitorování z virtuálních počítačů Azure a udržovat jejich stav. Virtuální počítače je možné monitorovat z hlediska dostupnosti a výkonu pomocí Azure Monitor jako u jakéhokoli [jiného prostředku Azure](monitor-azure-resource.md), ale jsou jedinečné od jiných prostředků, protože potřebujete také monitorovat hostovaný operační systém a systémy a úlohy, které jsou v něm spuštěné. 
@@ -59,7 +59,7 @@ Chcete-li povolit všechny funkce Azure Monitor pro monitorování virtuálního
 | [Povolit Azure Monitor pro virtuální počítače](#enable-azure-monitor-for-vms) | -Log Analytics agenta nainstalováno.<br>– Byl nainstalován agent závislosti.<br>-Data o výkonu hosta shromážděna do protokolů.<br>-Podrobnosti o procesech a závislostech shromážděné do protokolů. | – Grafy výkonu a sešity pro data o výkonu hosta.<br>-V protokolu se dotazuje na data výkonu hostů.<br>– Výstrahy protokolu pro data výkonu hosta.<br>– Mapa závislostí. |
 | [Instalace diagnostického rozšíření a agenta telegraf](#enable-diagnostics-extension-and-telegraf-agent) | – Údaje o výkonu hosta shromážděné do metrik. | – Průzkumník metrik pro hosta.<br>– Výstrahy metrik pro hosta.  |
 | [Konfigurace pracovního prostoru Log Analytics](#configure-log-analytics-workspace) | -Události shromážděné z hosta. | -Zaznamenává dotaz na události typu Host.<br>– Výstrahy protokolu pro události typu Host. |
-| [Vytvořit nastavení diagnostiky pro virtuální počítač](#collect-platform-metrics-and-activity-log) | – Metriky platformy shromážděné do protokolů.<br>-Protokol aktivit byl shromážděn do protokolů. | – LOQ dotazy na metriky hostitele.<br>– Výstrahy protokolu pro metriky hostitele.<br>– Protokoluje dotazy pro protokol aktivit.
+| [Vytvořit nastavení diagnostiky pro virtuální počítač](#collect-platform-metrics-and-activity-log) | – Metriky platformy shromážděné do protokolů.<br>-Protokol aktivit byl shromážděn do protokolů. | – Dotazy protokolu pro metriky hostitele.<br>– Výstrahy protokolu pro metriky hostitele.<br>– Protokoluje dotazy pro protokol aktivit.
 
 Každý z těchto kroků konfigurace je popsaný v následujících částech.
 
@@ -70,9 +70,9 @@ Každý z těchto kroků konfigurace je popsaný v následujících částech.
 - Předem definované vývojové grafy a sešity výkonu, které umožňují analyzovat základní metriky výkonu z hostovaného operačního systému virtuálního počítače.
 - Mapa závislostí, která zobrazuje procesy běžící na každém virtuálním počítači a propojené součásti s ostatními počítači a externími zdroji.
 
-![Azure Monitor pro virtuální počítače](media/monitor-vm-azure/vminsights-01.png)
+![Zobrazení výkonu Azure Monitor pro virtuální počítače](media/monitor-vm-azure/vminsights-01.png)
 
-![Azure Monitor pro virtuální počítače](media/monitor-vm-azure/vminsights-02.png)
+![Zobrazení Azure Monitor pro virtuální počítačech map](media/monitor-vm-azure/vminsights-02.png)
 
 
 Povolte Azure Monitor pro virtuální počítače z možnosti **Insights** v nabídce virtuálního počítače Azure Portal. Podrobnosti a další metody konfigurace najdete v tématu [povolení Azure monitor pro virtuální počítače přehled](vminsights-enable-overview.md) .
@@ -80,7 +80,7 @@ Povolte Azure Monitor pro virtuální počítače z možnosti **Insights** v nab
 ![Povolit Azure Monitor pro virtuální počítače](media/monitor-vm-azure/enable-vminsights.png)
 
 ### <a name="configure-log-analytics-workspace"></a>Konfigurace pracovního prostoru Log Analytics
-Agent Log Analytics, který Azure Monitor pro virtuální počítače používá, odesílá data do [pracovního prostoru Log Analytics](../platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured). Konfigurací pracovního prostoru Log Analytics můžete povolit shromažďování dalších údajů o výkonu, událostí a dalších dat monitorování od agenta. Musí se nakonfigurovat jenom jednou, protože každý agent, který se připojuje k pracovnímu prostoru, automaticky stáhne konfiguraci a hned začne shromažďovat definovaná data. 
+Agent Log Analytics, který Azure Monitor pro virtuální počítače používá, odesílá data do [pracovního prostoru Log Analytics](../platform/data-platform-logs.md). Konfigurací pracovního prostoru Log Analytics můžete povolit shromažďování dalších údajů o výkonu, událostí a dalších dat monitorování od agenta. Musí se nakonfigurovat jenom jednou, protože každý agent, který se připojuje k pracovnímu prostoru, automaticky stáhne konfiguraci a hned začne shromažďovat definovaná data. 
 
 Ke konfiguraci pracovního prostoru můžete přistupovat přímo z Azure Monitor pro virtuální počítače tím **, že v části Začínáme**vyberete **Konfigurace pracovního prostoru** . Kliknutím na název pracovního prostoru otevřete jeho nabídku.
 
@@ -96,7 +96,7 @@ V nabídce pracovní prostor vyberte **Upřesnit nastavení** a potom **data** p
 
 
 ### <a name="enable-diagnostics-extension-and-telegraf-agent"></a>Povolit diagnostické rozšíření a agenta telegraf
-Azure Monitor pro virtuální počítače je založen na agentu Log Analytics, který shromažďuje data do Log Analyticsho pracovního prostoru. To podporuje [více funkcí Azure monitor](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) , jako jsou například [dotazy protokolu](../log-query/log-query-overview.md), [výstrahy protokolu](../platform/alerts-log.md)a [sešity](../platform/workbooks-overview.md). [Diagnostické rozšíření](../platform/diagnostics-extension-overview.md) shromažďuje údaje o výkonu z hostovaného operačního systému virtuálních počítačů s Windows a Azure Storage a volitelně odesílá údaje o výkonu do [Azure monitor metrik](../platform/data-platform-metrics.md). Pro virtuální počítače se systémem Linux je nutné, aby byl [Agent telegraf](../platform/collect-custom-metrics-linux-telegraf.md) k odesílání dat do metrik Azure.  To umožňuje další funkce Azure Monitor, jako jsou například výstrahy [Průzkumníka metrik](../platform/metrics-getting-started.md) a [metriky](../platform/alerts-metric.md). Můžete také nakonfigurovat diagnostické rozšíření pro posílání událostí a dat o výkonu mimo Azure Monitor pomocí Azure Event Hubs.
+Azure Monitor pro virtuální počítače je založen na agentu Log Analytics, který odesílá data do Log Analyticsho pracovního prostoru. To podporuje více funkcí Azure Monitor, jako jsou například [dotazy protokolu](../log-query/log-query-overview.md), [výstrahy protokolu](../platform/alerts-log.md)a [sešity](../platform/workbooks-overview.md). [Diagnostické rozšíření](../platform/diagnostics-extension-overview.md) shromažďuje údaje o výkonu z hostovaného operačního systému virtuálních počítačů s Windows a Azure Storage a volitelně odesílá údaje o výkonu do [Azure monitor metrik](../platform/data-platform-metrics.md). Pro virtuální počítače se systémem Linux je nutné, aby byl [Agent telegraf](../platform/collect-custom-metrics-linux-telegraf.md) k odesílání dat do metrik Azure.  To umožňuje další funkce Azure Monitor, jako jsou například výstrahy [Průzkumníka metrik](../platform/metrics-getting-started.md) a [metriky](../platform/alerts-metric.md). Můžete také nakonfigurovat diagnostické rozšíření pro posílání událostí a dat o výkonu mimo Azure Monitor pomocí Azure Event Hubs.
 
 Nainstalujte do Azure Portal rozšíření diagnostiky pro jeden virtuální počítač s Windows a z možnosti **nastavení diagnostiky** v nabídce virtuální počítač. Vyberte možnost povolení **Azure monitor** na kartě **jímky** . Pokud chcete povolit rozšíření ze šablony nebo příkazového řádku pro více virtuálních počítačů, přečtěte si téma [instalace a konfigurace](../platform/diagnostics-extension-overview.md#installation-and-configuration). Na rozdíl od agenta Log Analytics se data, která se mají shromáždit, definují v konfiguraci pro rozšíření na každém virtuálním počítači.
 
@@ -154,7 +154,7 @@ Virtuální počítače používají tři obory názvů pro metriky:
 | Host (klasický) | Omezená sada údajů o výkonu hostovaného operačního systému a aplikace. K dispozici v Průzkumníkovi metrik, ale ne jiné funkce Azure Monitor, jako jsou například výstrahy metriky.  | Bylo nainstalováno [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) . Data se čtou z Azure Storage.  |
 | Host virtuálního počítače | Data o výkonu hostovaného operačního systému a aplikací jsou dostupná všem funkcím Azure Monitor s využitím metrik. | Pro Windows je [nainstalovaná diagnostická rozšíření](../platform/diagnostics-extension-overview.md) nainstalovaná s povolenou Azure monitor jímka. Pro Linux se [nainstaluje agent telegraf](../platform/collect-custom-metrics-linux-telegraf.md). |
 
-![Metriky](media/monitor-vm-azure/metrics.png)
+![Průzkumník metrik v Azure Portal](media/monitor-vm-azure/metrics.png)
 
 ## <a name="analyzing-log-data"></a>Analýza dat protokolu
 Virtuální počítače Azure budou shromažďovat následující data pro Azure Monitor protokolů. 
@@ -212,7 +212,7 @@ Heartbeat
 | summarize max(TimeGenerated) by Computer
 ```
 
-![Výstraha protokolu](media/monitor-vm-azure/log-alert-01.png)
+![Výstraha protokolu pro zmeškaný prezenční signál](media/monitor-vm-azure/log-alert-01.png)
 
 Chcete-li vytvořit výstrahu v případě, že došlo k nadměrnému počtu neúspěšných přihlášení na libovolných virtuálních počítačích s Windows v rámci předplatného, použijte následující dotaz, který vrátí záznam pro každou událost neúspěšného přihlášení během poslední hodiny. Použijte prahovou hodnotu nastavenou na počet neúspěšných přihlášení, která povolíte. 
 
@@ -222,20 +222,20 @@ Event
 | where EventID == 4625
 ```
 
-![Výstraha protokolu](media/monitor-vm-azure/log-alert-02.png)
+![Výstraha protokolu pro neúspěšná přihlášení](media/monitor-vm-azure/log-alert-02.png)
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) poskytuje podrobné monitorování úloh na virtuálních počítačích. Porovnání monitorovacích platforem a různých strategií pro implementaci najdete v [Průvodci monitorováním cloudu](/azure/cloud-adoption-framework/manage/monitor/) .
+System Center Operations Manager poskytuje podrobné monitorování úloh na virtuálních počítačích. Porovnání monitorovacích platforem a různých strategií pro implementaci najdete v [Průvodci monitorováním cloudu](/azure/cloud-adoption-framework/manage/monitor/) .
 
-Pokud máte existující prostředí SCOM, které máte v úmyslu používat, můžete ho integrovat s Azure Monitor, abyste mohli poskytovat další funkce. Agent Log Analytics používaný v Azure Monitor je stejný jako používaný pro SCOM, abyste mohli monitorovat virtuální počítače, odesílat data do obou. Stále musíte přidat agenta Azure Monitor pro virtuální počítače a nakonfigurovat pracovní prostor pro shromažďování dalších dat, jak je uvedeno výše, ale virtuální počítače mohou nadále spouštět existující sady Management Pack v prostředí SCOM bez úprav.
+Pokud máte existující prostředí Operations Manager, které chcete dál používat, můžete ho integrovat s Azure Monitor a poskytnout další funkce. Agent Log Analytics používaný v Azure Monitor je stejný jako používaný pro Operations Manager, aby bylo možné monitorovat virtuální počítače, odesílat data do obou. Stále musíte přidat agenta Azure Monitor pro virtuální počítače a nakonfigurovat pracovní prostor pro shromažďování dalších dat, jak je uvedeno výše, ale virtuální počítače mohou nadále spouštět stávající sady Management Pack v prostředí Operations Manager bez úprav.
 
-Mezi funkce Azure Monitor, které rozšiřují existující funkce SCOM, patří následující:
+Mezi funkce Azure Monitor, které rozšiřují existující Operations Manager funkce, patří následující:
 
 - Pomocí Log Analytics můžete interaktivně analyzovat data protokolů a výkonu.
-- Používejte výstrahy protokolu k definování podmínek upozorňování napříč několika virtuálními počítači a používání dlouhodobých trendů, které neumožňují použití výstrah v SCOM.   
+- Používejte výstrahy protokolu k definování podmínek upozorňování napříč několika virtuálními počítači a používání dlouhodobých trendů, které neumožňují použití výstrah v Operations Manager.   
 
-Podrobnosti o připojení existující skupiny pro správu SCOM ke svému pracovnímu prostoru Log Analytics najdete v části [připojení Operations Manager k Azure monitor](../platform/om-agents.md) .
+Podrobnosti o připojení existující skupiny pro správu Operations Manager k pracovnímu prostoru Log Analytics najdete v tématu [připojení Operations Manager k Azure monitor](../platform/om-agents.md) .
 
 
 ## <a name="next-steps"></a>Další kroky

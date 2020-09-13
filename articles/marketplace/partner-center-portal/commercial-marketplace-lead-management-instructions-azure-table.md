@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
-ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855719"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030793"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Použití služby Azure Table Storage ke správě zájemců komerčních webů na webu Marketplace
 
@@ -135,7 +135,7 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
    V několika dalších krocích jste nastavili akci, která se má provést na základě výsledku podmínky:
 
    * Pokud se podmínka vyřeší na **ne**, neprovádějte nic.
-   * Pokud se podmínka přeloží na **hodnotu Ano**, spustí se akce, která připojí váš účet Office 365 k odeslání e-mailu.
+   * Pokud se podmínka přeloží na **hodnotu Ano**, spusťte akci, která připojí pracovní nebo školní účet k odeslání e-mailu. 
 
 1. **Pokud ano**, vyberte **přidat akci** .
 

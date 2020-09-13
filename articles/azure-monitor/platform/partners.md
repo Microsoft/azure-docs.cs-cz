@@ -4,12 +4,12 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142399"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030376"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -77,6 +77,8 @@ CloudMonix nabízí služby pro monitorování, automatizaci a samočinné oprav
 Služby Datadog je špičková služba monitorování pro aplikace v cloudovém měřítku. Spojuje data ze serverů, databází, nástrojů a služeb a prezentuje tak jednotný přehled o celém zásobníku. Tyto možnosti jsou k dispozici na platformě pro analýzu dat založené na SaaS. Tato služba umožňuje týmům pro vývoj a provoz spolupracovat, aby se předešlo výpadkům, vyřešila problémy s výkonem a zajistila, že se cykly vývoje a nasazení dokončí včas. Integrací služby Datadog a Azure můžete shromažďovat a zobrazovat metriky z celé infrastruktury. Vykorelujte metriky virtuálních počítačů s metrikami na úrovni aplikace. Rozřezání metrik a kostky pomocí libovolné kombinace vlastností a vlastních značek.
 
 [Přejít na dokumentaci.][datadog-doc]
+
+Nová integrace služby služby Datadog na webu Azure Marketplace je naplánována k vydání v rané 2020. října. Odkaz se sem přidá po vydání verze. 
 
 ## <a name="dynatrace"></a>Dynatrace
 

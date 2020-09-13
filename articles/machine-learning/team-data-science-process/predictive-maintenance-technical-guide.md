@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6677f9275d3b6f0569216eb16046d096c574beab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290708"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030897"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce řešením pro prediktivní údržbu v programu Aerospace
 
@@ -170,7 +170,7 @@ Následující postup vás provede postupem připojení souboru pbix k SQL Datab
    * Po **' Azure SQL Database '** v diagramu šablony řešení se změní na zelený, klikněte na něj a potom klikněte na **otevřít**.
    * Zobrazí se nová karta nebo okno prohlížeče, které zobrazí stránku Azure Portal. Na levém panelu klikněte na **skupiny prostředků** .
    * Vyberte předplatné, které používáte pro nasazení řešení, a pak vyberte **YourSolutionName \_ Resource**.
-   * V novém panelu pro místní vyjmutí klikněte na ![ ikonu ikona SQL ](./media/predictive-maintenance-technical-guide/icon-sql.png) pro přístup k databázi. Název databáze je vedle této ikony (například **' pmaintenancedb '**) a **název databázového serveru** je uveden ve vlastnosti název serveru a měl by vypadat podobně jako **YourSolutionName.Database.Windows.NET**.
+   * V novém panelu pro místní vyjmutí klikněte na  ![ ikonu ikona SQL ](./media/predictive-maintenance-technical-guide/icon-sql.png) pro přístup k databázi. Název databáze je vedle této ikony (například **' pmaintenancedb '**) a **název databázového serveru** je uveden ve vlastnosti název serveru a měl by vypadat podobně jako **YourSolutionName.Database.Windows.NET**.
    * **Uživatelské jméno** a **heslo** databáze jsou stejné jako uživatelské jméno a heslo, které jste dříve nahráli během nasazování řešení.
 2. Aktualizujte zdroj dat pro soubor sestavy studené cesty pomocí Power BI Desktop.
    
@@ -182,7 +182,7 @@ Následující postup vás provede postupem připojení souboru pbix k SQL Datab
    * V dalším okně místní nabídky se zobrazí dvě možnosti v levém podokně (**Windows** a **databáze**). Klikněte na **databáze**, vyplňte **uživatelské** jméno a **heslo** (uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvořili Azure SQL Database). V možnosti vybrat úroveň, pro kterou ***chcete použít tato nastavení***, zaškrtněte políčko na úrovni databáze. Pak klikněte na **připojit**.
    * Klikněte na druhou tabulku **PMResult** a potom klikněte na ![ ikonu navigace ](./media/predictive-maintenance-technical-guide/icon-navigation.png) vedle položky **zdroj** v části **použité kroky** na pravé straně **nastavení dotazu** a aktualizujte názvy serverů a databází jako v předchozích krocích a klikněte na OK.
    * Až budete s přechodem na předchozí stránku, okno zavřete. Zobrazí se zpráva – klikněte na **použít**. Nakonec kliknutím na tlačítko **Uložit** změny uložte. Váš soubor Power BI nyní navázal připojení k serveru. Pokud jsou vaše vizualizace prázdné, ujistěte se, že jste v pravém horním rohu legendy vymazali výběry pro vizualizaci všech dat kliknutím na ikonu gumy. Pomocí tlačítka Aktualizovat můžete odrážet nová data ve vizualizacích. Zpočátku se ve vašich vizualizacích zobrazí jenom data o počátečním stavu, ve kterém se naplánuje aktualizace služby Data Factory každé 3 hodiny. Po 3 hodinách se při aktualizaci dat v vizualizacích zobrazí nový předpovědi.
-3. Volitelné Publikujte řídicí panel pro studenou cestu a [Power BI online](https://www.powerbi.com/). Tento krok vyžaduje účet Power BI (nebo účet Office 365).
+3. Volitelné Publikujte řídicí panel pro studenou cestu a [Power BI online](https://www.powerbi.com/). Tento krok vyžaduje účet Power BI (nebo pracovní nebo školní účet).
    
    * Klikněte na tlačítko **' publikovat '** a později se zobrazí okno se zobrazením "publikování Power BI úspěšné!". se zeleným znakem zaškrtnutí. Klikněte na odkaz níže "otevřít PredictiveMaintenanceAerospace. pbix v Power BI". Podrobné pokyny najdete v tématu [publikování z Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Vytvoření nového řídicího panelu: **+** v levém podokně klikněte na symbol vedle části **řídicí panely** . Zadejte název "ukázka prediktivní údržby" pro tento nový řídicí panel.
@@ -208,7 +208,7 @@ Následující kroky popisují, jak vizualizovat výstup dat z Stream Analytics 
 1. Přidat výstup Power BI v Azure Stream Analytics (ASA).
    
    * Je nutné postupovat podle pokynů v tématu [Azure Stream Analytics & Power BI: řídicí panel analýzy pro zobrazení dat streamování v reálném čase](../../stream-analytics/stream-analytics-power-bi-dashboard.md) , který umožňuje nastavit výstup úlohy Azure Stream Analytics jako řídicí panel Power BI.
-   * Dotaz ASA obsahuje tři výstupy, které jsou **aircraftmonitor**, **aircraftalert**a **flightsbyhour**. Dotaz můžete zobrazit kliknutím na kartu dotaz. odpovídající jednotlivým tabulkám musíte přidat výstup do ASA. Když přidáte první výstup (**aircraftmonitor**), zajistěte, aby byl **alias výstupu**, **název datové sady** a **název tabulky** stejný (**aircraftmonitor**). Opakováním kroků přidejte výstupy pro **aircraftalert**a **flightsbyhour**. Po přidání všech tří výstupních tabulek a spuštění úlohy ASA byste měli obdržet potvrzovací zprávu ("spuštění Stream Analytics úlohy maintenancesa02asapbi úspěšné").
+   * Dotaz ASA obsahuje tři výstupy, které jsou **aircraftmonitor**, **aircraftalert**a **flightsbyhour**. Dotaz můžete zobrazit kliknutím na kartu dotaz. Odpovídající jednotlivým tabulkám, je nutné přidat výstup do ASA. Když přidáte první výstup (**aircraftmonitor**), zajistěte, aby byl **alias výstupu**, **název datové sady** a **název tabulky** stejný (**aircraftmonitor**). Opakováním kroků přidejte výstupy pro **aircraftalert**a **flightsbyhour**. Po přidání všech tří výstupních tabulek a spuštění úlohy ASA byste měli obdržet potvrzovací zprávu ("spuštění Stream Analytics úlohy maintenancesa02asapbi úspěšné").
 2. Přihlášení k [Power BI online](https://www.powerbi.com)
    
    * V levém oddílu datových sad na levém panelu v části pracovní prostor se musí zobrazit názvy ***datových sad*** **aircraftmonitor**, **aircraftalert**a **flightsbyhour** . Toto je streamovaná data, která jste odeslali z Azure Stream Analytics v předchozím kroku. Datová sada **flightsbyhour** se nemůže zobrazit současně s ostatními dvěma datovými sadami z důvodu povaze dotazu SQL za ním. Měl by se ale zobrazovat po celou hodinu.

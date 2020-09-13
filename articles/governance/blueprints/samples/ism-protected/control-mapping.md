@@ -1,14 +1,14 @@
 ---
-title: Přehled ukázkového podrobného plánu podrobného plánu australské vlády ISM
-description: Přehled ukázkového podrobného plánu podrobného plánu australské vlády ISM Tento ukázkový plán pomůže zákazníkům vyhodnotit konkrétní chráněné ovládací prvky ISM.
-ms.date: 08/03/2020
+title: Ukázkové ovládací prvky podrobného plánu podrobného plánu australské vlády ISM
+description: Mapování ovládacího prvku australského plánu CHRÁNĚNÉho plánu pro státní správu ISM Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760426"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030102"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Mapování ovládacího prvku pro ukázkovou verzi plánu CHRÁNĚNÉho plánu australské vlády ISM
 
@@ -350,6 +350,10 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ## <a name="next-steps"></a>Další kroky
 
 Další články věnované podrobným plánům a postupu jejich využití:
+
+> [!div class="nextstepaction"]
+> [Chráněný podrobný plán pro ISM – přehled](./index.md) 
+>  [Chráněný podrobný plán pro ISM – postup nasazení](./deploy.md)
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

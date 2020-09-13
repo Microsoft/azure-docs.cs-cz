@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 8507a53959e7d28cbcec2dec6783b2470696d59b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798104"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031088"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Upravit nebo odvolat oprávnění aplikace na portálu moje aplikace
 
@@ -28,9 +28,9 @@ Pokud používáte aplikace organizace na portálu **Moje aplikace** , často ud
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/access-panel-collections.md).
 
-## <a name="manage-app-permissions"></a>Správa oprávnění aplikací
+## <a name="manage-app-accounts"></a>Správa účtů aplikací
 
-Pokud si chcete zobrazit oprávnění, která jste poslali vy nebo váš správce, vyberte **...** při najetí myší na aplikaci na portálu **Moje aplikace** vyberte **Spravovat aplikaci**:
+Pokud si chcete zobrazit aplikace, které jste poslali vy nebo váš správce, vyberte **...** při najetí myší na aplikaci na portálu **Moje aplikace** vyberte **Spravovat aplikaci**:
 
 ![Správa aplikace na portálu moje aplikace](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
 

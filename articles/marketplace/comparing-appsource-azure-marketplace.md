@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 10560d1407d4e9f899578d6d4eb9cdf9b7fe7dc9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4da2e9120b9bfee78c9fa832d9a477a42493834c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607461"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030459"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Porovnávání Microsoft AppSource a Azure Marketplace
 
-Microsoft Commercial Marketplace zahrnuje [Microsoft AppSource](https://appsource.microsoft.com) a [Azure Marketplace](https://azuremarketplace.microsoft.com). Každý online obchod slouží jako jedinečné požadavky zákazníků a různé cílové skupiny, takže se můžete ujistit, že je vaše řešení nebo služba k dispozici pro správné zákazníky.
+Microsoft Commercial Marketplace zahrnuje [Microsoft AppSource](https://appsource.microsoft.com) a [Azure Marketplace](https://azuremarketplace.microsoft.com). Každý online obchod nabízí různé typy řešení s jedinečnými scénáři, takže se můžete ujistit, že je vaše řešení nebo služba k dispozici pro správné zákazníky.
 
 ## <a name="understanding-the-differences-between-online-stores"></a>Princip rozdílů mezi online obchody
 
-Chcete-li zvolit online obchod, nejprve identifikujte cílovou skupinu pro vaši nabídku. Pokud cílíte na cílové skupiny ve více online obchodech, můžete je publikovat v různých obchodech.
+Pokud chcete zvolit online obchod, nejdřív Identifikujte typ řešení, které nabízíte. Pokud vaše nabídka obsahuje řešení IT i firmy, můžete je publikovat ve více obchodech.
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
-| IT specialisté a vývojáři | Obchodní uživatelé a tvůrci podnikových rozhodnutí |
+| IT řešení | Obchodní řešení |
 
 V následující tabulce jsou popsány výhody použití online obchodu:
 
@@ -34,8 +34,8 @@ V následující tabulce jsou popsány výhody použití online obchodu:
 |**Připojení k ostatním partnerům**  | V současné době nemůžete propojit poskytovatele služeb od partnerů pro doručování s vaší nabídkou. | Propojí nezávislé výrobce softwaru, systémové integrátory a poskytovatele spravovaných služeb s konkrétními scénáři implementace. Můžete spolupracovat na nové zákazníky. |
 | **Automation** | V současné době nemůžete propojit poskytovatele služeb od partnerů pro doručování s vaší nabídkou. Využijte automatizovaný software jako službu (SaaS) se zřizováním doplňků. Pro automatizaci scénářů pro shromažďování a nasazování dat založeného na SaaS použijte možnost publikování aplikací Azure: řešení publikování šablon řešení. | Propojí nezávislé výrobce softwaru, systémové integrátory a poskytovatele spravovaných služeb s konkrétními scénáři implementace. Můžete spolupracovat na nové zákazníky. |
 | **Více typů cloudu** | Publikujte řešení pro veřejný i místní cloud pomocí následujících typů:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionální cloudy, včetně Číny a Německa</li></ul> | V současné době nepodporuje Azure Stack, Azure Government nebo regionální cloudy. |
-| **Prezentace v kontextu zákazníkům** | Zpřístupněte vaše řešení v prostředí Azure v rámci portálu pro kontextové hledání. Použijte virtuální počítač a aplikace Azure: možnosti publikování šablon řešení. | Využijte prostředí v aplikaci pro produkty Microsoftu, jako je Dynamics 365, Power BI a Office 365, můžete oslovit víc zákazníků. |
+| **Prezentace v kontextu zákazníkům** | Zpřístupněte vaše řešení v prostředí Azure v rámci portálu pro kontextové hledání. Použijte virtuální počítač a aplikace Azure: možnosti publikování šablon řešení. | Využijte prostředí v aplikaci pro produkty Microsoftu, jako je Dynamics 365, Power BI a Microsoft 365, oslovit více zákazníků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si [příručku pro publikování komerčního tržiště](./marketplace-publishers-guide.md).
+* [Příručka pro publikování na komerčním webu Marketplace](marketplace-publishers-guide.md)

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: da84fee4e974f02f29dc9006fe740c415632ae53
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181154"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029014"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Následující tabulka obsahuje odkazy na ukázky pro aplikace, včetně ukázek
 | Ukázka | Popis |
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Ukázka pro iOS v jazyce Swift, která ověřuje uživatele Azure AD B2C a volá rozhraní API s použitím OAuth 2.0 |
-| [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | Jednoduchá aplikace pro Android, která ukazuje použití MSAL k ověřování uživatelů prostřednictvím Azure Active Directory B2C a přístup k webovému rozhraní API s použitím výsledných tokenů. |
+| [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | Jednoduchá aplikace pro Android, která ukazuje použití MSAL k ověřování uživatelů prostřednictvím Azure Active Directory B2C a přístup k webovému rozhraní API s použitím výsledných tokenů. |
 | [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Ukázka způsobu použití knihovny třetí strany k sestavení aplikace pro iOS v Objective-C, která ověřuje uživatele s identitou Microsoft ve službě identit Azure AD B2C. |
 | [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Ukázka způsobu použití knihovny třetí strany k sestavení aplikace pro Android, která ověřuje uživatele s identitou Microsoft ve službě identit Azure AD B2C a volá webové rozhraní API s použitím přístupových tokenů OAuth 2.0. |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Ukázka způsobu, jakým desktopová aplikace .NET pro Windows (WPF) může přihlásit uživatele pomocí Azure AD B2C, získat přístupový token pomocí MSAL.NET a volat rozhraní API. |

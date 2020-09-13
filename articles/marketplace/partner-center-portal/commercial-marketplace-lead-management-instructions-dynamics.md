@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120367"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030748"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurace správy zájemců pro Dynamics 365 Customer Engagement
 
@@ -27,7 +27,7 @@ K dokončení kroků v tomto článku jsou nutná následující uživatelská o
 
 * Oprávnění správce vaší instance služby Customer Engagement pro Dynamics 365, aby bylo možné nainstalovat řešení.
 * Oprávnění správce tenanta pro vytvoření nového účtu služby pro službu zájemce, který slouží k odesílání zájemců z komerčních nabídek Marketplace.
-* Přístup k portálu pro správu sady Office 365.
+* Přístup k portálu pro správu.
 * Přístup k Azure Portal.
 
 ## <a name="install-the-solution"></a>Instalace řešení
@@ -68,7 +68,7 @@ Tuto možnost doporučujeme, protože nikdy nebudete muset aktualizovat své už
 
 Konfigurace Azure Active Directory pro zákaznickou zapojení Dynamics 365:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**.
 
 1. Vyberte **vlastnosti**a ZKOPÍRUJTE hodnotu **ID adresáře** na stránce **vlastností adresáře** . Tuto hodnotu uložte, protože ji budete muset poskytnout na portálu pro publikování a získat tak potenciální zákazníky pro vaši nabídku na webu Marketplace.
 

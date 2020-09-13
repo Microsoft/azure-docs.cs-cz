@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327748"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029830"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
 
@@ -84,7 +84,7 @@ Pomocí asynchronních operací na [koncovém bodu poskytovatele prostředků Io
 
 Další informace o rozhraních API pro import a export najdete v tématu [IoT Hub rozhraní REST API poskytovatele prostředků](/rest/api/iothub/iothubresource). Další informace o spouštění úloh importu a exportu najdete v tématu [Hromadná Správa identit zařízení IoT Hub](iot-hub-bulk-identity-mgmt.md).
 
-Identity zařízení se taky dají exportovat a importovat z IoT Hub přes rozhraní API služby prostřednictvím [REST API](/rest/api/iothub/service/jobclient/createimportexportjob) nebo jedné ze [sad SDK služby](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)IoT Hub.
+Identity zařízení se taky dají exportovat a importovat z IoT Hub přes rozhraní API služby prostřednictvím [REST API](/rest/api/iothub/service/jobs/createimportexportjob) nebo jedné ze [sad SDK služby](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)IoT Hub.
 
 ## <a name="device-provisioning"></a>Zřizování zařízení
 
@@ -112,7 +112,7 @@ Vlastnosti: vlastnosti systému zprávy jsou předpony s `$` symbolem.
 
 Zpráva oznámení pro zařízení:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 |$content – typ | application/json |
 |$iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -124,7 +124,7 @@ Zpráva oznámení pro zařízení:
 |operationTimestamp | ISO8601 časové razítko operace |
 |iothub-Message-Schema | deviceLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Příklad:
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Třeba
 
 ```json
 {
@@ -148,7 +148,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 ```
 Zpráva oznámení pro modul:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 $content – typ | application/json |
 $iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -160,7 +160,7 @@ moduleId | ID modulu |
 operationTimestamp | ISO8601 časové razítko operace |
 iothub-Message-Schema | moduleLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Příklad:
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Třeba
 
 ```json
 {
