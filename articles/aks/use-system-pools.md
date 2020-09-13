@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949775"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647502"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Správa fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
 
@@ -46,6 +46,7 @@ Fondy systémových uzlů mají následující omezení:
 * Fondy systémových uzlů vyžadují SKU virtuálního počítače minimálně 2 vCPU a 4 GB paměti.
 * Fondy systémových uzlů musí podporovat aspoň 30 lusků, jak je popsáno v části [vzorec minimální a maximální hodnoty pro lusky][maximum-pods].
 * Fondy uzlů bodu musí vyžadovat fondy uživatelských uzlů.
+* Přidání dalšího fondu uzlů systému nebo změna fondu uzlů, který je fondem uzlů systému, nebude *automaticky přesouvat* systémové lusky. Systémové lusky mohou běžet na stejném fondu uzlů i v případě, že je změníte na fond uživatelských uzlů. Pokud odstraníte nebo zmenšíte rozsah uzlů, na kterých je spuštěný systém lusky, který byl dřív ve fondu uzlů systému, znovu nasadí tyto systémové lusky s preferovaným plánováním do nového fondu uzlů systému.
 
 S fondy uzlů můžete provádět následující operace:
 

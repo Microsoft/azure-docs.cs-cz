@@ -3,16 +3,16 @@ title: Vytvoření nabídky aplikací Azure – Microsoft Commercial Marketplace
 description: Přečtěte si postup a požadavky pro vytvoření nové nabídky aplikací Azure na portálu pro komerční tržišti v partnerském centru. Nabídku aplikací Azure můžete zobrazit nebo prodávat v Azure Marketplace nebo prostřednictvím programu Cloud Solution Provider (CSP).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815657"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646941"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -72,7 +72,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Do vývojového prostředí doporučujeme přidat následující nástroje:
 
-* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Průzkumník služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/) s následujícími příponami:
     * Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

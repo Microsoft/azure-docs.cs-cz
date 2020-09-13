@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079026"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648720"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -17,7 +17,7 @@ Přečtěte si další informace o [podmínkách](#conditions).
 
 Definováním konvencí můžete řídit náklady a snadněji spravovat prostředky. Můžete například určit, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby prostředky měly konkrétní značku. Přiřazení zásad se dědí prostřednictvím podřízených prostředků. Pokud se pro skupinu prostředků použije přiřazení zásady, vztahuje se na všechny prostředky v této skupině prostředků.
 
-Schéma definice zásad najdete tady: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+_PolicyRule_ schéma definice zásad najdete tady:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 K vytvoření definice zásady použijete JSON. Definice zásad obsahuje prvky pro:
 
@@ -540,7 +540,7 @@ Příklad 5: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem 
 }
 ```
 
-### <a name="effect"></a>Efekt
+### <a name="effect"></a>Účinek
 
 Azure Policy podporuje následující typy účinku:
 
@@ -619,7 +619,7 @@ Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou akt
 
   Pomocí [rozšíření Azure Policy pro Visual Studio Code](../how-to/extension-for-vscode.md) můžete zobrazit a vyhledat aliasy pro vlastnosti prostředku.
 
-  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Policy rozšíření pro Visual Studio Code" border="false":::
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Snímek obrazovky s příponou Azure Policy pro Visual Studio Code najetí myší na vlastnost, která zobrazuje názvy aliasů." border="false":::
 
 - Azure Resource Graph
 
@@ -679,7 +679,7 @@ Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou akt
 
 ### <a name="understanding-the--alias"></a>Princip aliasu [*]
 
-Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Příklad:
+Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Například:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

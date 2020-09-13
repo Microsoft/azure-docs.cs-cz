@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0354010297942c3b9e18dc6f556cb0afa075ff5f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114910"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649094"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Režim sdíleného zařízení pro zařízení s iOS
 
@@ -61,7 +61,7 @@ Vaše zařízení musí být nakonfigurované tak, aby podporovalo režim sdíle
     - **Typ**: přesměrování
     - **ID rozšíření**: com. Microsoft. azureauthenticator. ssoextension
     - **ID týmu**: SGGM6D27TK
-    - **Adresy URL**:https://login.microsoftonline.com
+    - **Adresy URL**: https://login.microsoftonline.com
     - Další data ke konfiguraci:
       - Klíč: sharedDeviceMode
       - Typ: Boolean

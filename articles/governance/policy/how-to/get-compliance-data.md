@@ -3,12 +3,12 @@ title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 08/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 7795bba9fec79ee13600d9c72f68e9c763b169e4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 57e508048b5e628911db90b0b6835f88b5ebd8fb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054648"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648342"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -94,7 +94,7 @@ V rámci asynchronního procesu koncový bod REST ke spuštění kontroly neček
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
-- `{YourRG}`– Nahraďte názvem vaší skupiny prostředků.
+- `{YourRG}` – Nahraďte názvem vaší skupiny prostředků.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 Kontrola podporuje vyhodnocení prostředků v rámci předplatného nebo ve skupině prostředků. Spusťte kontrolu pomocí příkazu REST API **post** pomocí následujících struktur identifikátorů URI:
@@ -117,7 +117,7 @@ Volání vrátí stav **přijato 202** . Zahrnuté v hlavičce odpovědi je vlas
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
-`{ResourceContainerGUID}`je staticky generován pro požadovaný rozsah. Pokud je v oboru již spuštěno prohledávání na vyžádání, nová kontrola není spuštěna. Místo toho se nové žádosti dodávají stejnému `{ResourceContainerGUID}` identifikátoru URI **umístění** pro stav. Příkaz REST API **Get** do identifikátoru URI pro **umístění** vrací **202 přijatý** , zatímco probíhá vyhodnocení. Po dokončení kontroly vyhodnocení vrátí stav **200 OK** . Tělo dokončeného prohledávání je odpověď JSON se stavem:
+`{ResourceContainerGUID}` je staticky generován pro požadovaný rozsah. Pokud je v oboru již spuštěno prohledávání na vyžádání, nová kontrola není spuštěna. Místo toho se nové žádosti dodávají stejnému `{ResourceContainerGUID}` identifikátoru URI **umístění** pro stav. Příkaz REST API **Get** do identifikátoru URI pro **umístění** vrací **202 přijatý** , zatímco probíhá vyhodnocení. Po dokončení kontroly vyhodnocení vrátí stav **200 OK** . Tělo dokončeného prohledávání je odpověď JSON se stavem:
 
 ```json
 {
@@ -132,21 +132,25 @@ Následující tabulka ukazuje, jak různé účinky zásad fungují s hodnocen�
 
 | Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ano | Neodpovídající |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ne | Odpovídající |
-| Nová | Audit, AuditIfNotExist\* | Ano | Neodpovídající |
-| Nová | Audit, AuditIfNotExist\* | Ne | Odpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Pravda | Neodpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Nová | Audit, AuditIfNotExist\* | Pravda | Neodpovídající |
+| Nová | Audit, AuditIfNotExist\* | Nepravda | Odpovídající |
 
 \* Účinky Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE.
 Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
 
 Předpokládejme například, že máte skupinu prostředků – ContsoRG s některými účty úložiště (zvýrazněné červeně), které jsou vystaveny veřejným sítím.
 
-:::image type="content" source="../media/getting-compliance-data/resource-group01.png" alt-text="Účty úložiště zveřejněné pro veřejné sítě" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group01.png" alt-text="Diagram účtů úložiště zveřejněných pro veřejné sítě ve skupině prostředků contoso R G" border="false":::
+   Diagram znázorňující obrázky pro pět účtů úložiště ve skupině prostředků contoso R G  Účty úložiště One a tři jsou modré, zatímco účty úložiště dvě, čtyři a pět jsou červené.
+:::image-end:::
 
 V tomto příkladu je třeba přistupují opatrně rizika zabezpečení. Teď, když jste vytvořili přiřazení zásady, se vyhodnotí pro všechny účty úložiště ve skupině prostředků ContosoRG. Audituje tři účty úložiště, které nedodržují předpisy, proto mění stavy na **nevyhovující předpisům.**
 
-:::image type="content" source="../media/getting-compliance-data/resource-group03.png" alt-text="Auditované účty úložiště, které nedodržují předpisy" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Diagram dodržování předpisů účtu úložiště ve skupině prostředků contoso R G" border="false":::
+   Diagram znázorňující obrázky pro pět účtů úložiště ve skupině prostředků contoso R G Účty úložiště: 1 a tři teď mají zelenou zaškrtnutí pod nimi, zatímco účty úložiště dvě, čtyři a pět nyní mají červené upozornění pod nimi.
+:::image-end:::
 
 Kromě **kompatibilních** a **nekompatibilních**zásad a prostředků mají tři další stavy:
 
@@ -159,7 +163,7 @@ Azure Policy používá pole **typ** a **název** v definici k určení, jestli 
 Procento dodržování předpisů je určeno vydělením **odpovídajících** prostředků _celkovými prostředky_.
 _Celkem prostředků_ je definováno jako součet **kompatibilních**, **nekompatibilních**a **konfliktních** prostředků. Celková čísla dodržování předpisů jsou součtem různých prostředků, **které jsou v souladu s** hodnotou součet všech různých prostředků. Na následujícím obrázku je více než 20 různých prostředků, které jsou k dispozici, a pouze jeden z nich **nedodržuje předpisy**. Celkové dodržování předpisů prostředků je 95% (19 z 20).
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Příklad dodržování zásad na stránce dodržování předpisů" border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Snímek obrazovky s podrobnostmi o dodržování předpisů zásad ze stránky dodržování předpisů." border="false":::
 
 > [!NOTE]
 > Dodržování legislativních předpisů v Azure Policy je funkce ve verzi Preview. Vlastnosti dodržování předpisů ze sady SDK a stránky na portálu se liší od povolených iniciativ. Další informace najdete v tématu [dodržování legislativních předpisů](../concepts/regulatory-compliance.md) .
@@ -168,11 +172,11 @@ _Celkem prostředků_ je definováno jako součet **kompatibilních**, **nekompa
 
 Azure Portal prezentuje grafické prostředí pro vizualizaci a porozumění stavu dodržování předpisů ve vašem prostředí. Možnost **Přehled** na stránce **zásady** poskytuje podrobnosti pro dostupné obory kompatibility obou zásad i iniciativ. Spolu se stavem a počtem dodržování předpisů na přiřazení obsahuje graf, který zobrazuje dodržování předpisů během posledních sedmi dnů. Stránka **dodržování předpisů** obsahuje mnoho stejných informací (s výjimkou grafu), ale nabízí další možnosti filtrování a řazení.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Příklad stránky dodržování předpisů Azure Policy" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Obrazovka stránky dodržování předpisů, možnosti filtrování a podrobnosti." border="false":::
 
-Vzhledem k tomu, že může být zásada nebo iniciativa přiřazena k různým oborům, tabulka zahrnuje rozsah pro každé přiřazení a typ definice, která byla přiřazena. K dispozici je také počet neodpovídajících prostředků a nevyhovujících zásad pro každé přiřazení. Kliknutím na zásadu nebo iniciativu v tabulce získáte hlubší přehled o dodržování předpisů pro příslušné přiřazení.
+Vzhledem k tomu, že může být zásada nebo iniciativa přiřazena k různým oborům, tabulka zahrnuje rozsah pro každé přiřazení a typ definice, která byla přiřazena. K dispozici je také počet neodpovídajících prostředků a nevyhovujících zásad pro každé přiřazení. Výběr zásad nebo iniciativ v tabulce vám poskytne hlubší přehled o dodržování předpisů pro příslušné přiřazení.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Příklad stránky s podrobnostmi o kompatibilitě Azure Policy" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Snímek obrazovky s podrobnostmi o kompatibilitě, včetně počtů a podrobností odpovídajících prostředkům." border="false":::
 
 Seznam prostředků na kartě **Kompatibilita prostředků** zobrazuje stav vyhodnocení existujících prostředků pro aktuální přiřazení. Karta je standardně **nekompatibilní**, lze ji však filtrovat.
 Události (připojit, audit, odepřít, nasadit) aktivované žádostí o vytvoření prostředku se zobrazí na kartě **události** .
@@ -180,15 +184,15 @@ Události (připojit, audit, odepřít, nasadit) aktivované žádostí o vytvo�
 > [!NOTE]
 > Pro zásady stroje AKS je zobrazený prostředek skupina prostředků.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Příklad událostí dodržování předpisů Azure Policy" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Snímek obrazovky karty události na stránce s podrobnostmi o dodržování předpisů" border="false":::
 
 V případě prostředků [režimu poskytovatele prostředků](../concepts/definition-structure.md#resource-provider-modes) na kartě **Kompatibilita prostředků** vyberte prostředek, klikněte na něj pravým tlačítkem myši a vyberte **Zobrazit podrobnosti** o dodržování předpisů. otevře se podrobnosti o kompatibilitě komponent. Tato stránka také nabízí karty k zobrazení zásad, které jsou přiřazeny k tomuto prostředku, událostem, událostem komponenty a historii změn.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Příklad podrobností o kompatibilitě komponent Azure Policy" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Snímek obrazovky karty dodržování předpisů pro součásti a podrobnosti o dodržování předpisů pro přiřazení režimu poskytovatele prostředků." border="false":::
 
 Zpět na stránce kompatibilita prostředků klikněte pravým tlačítkem na řádek události, pro kterou chcete získat další podrobnosti, a vyberte **Zobrazit protokoly aktivit**. Otevře se stránka protokolu aktivit a je předem filtrována na hledání, které zobrazuje podrobnosti o přiřazení a událostech. Protokol aktivit poskytuje další kontext a informace o těchto událostech.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Příklad protokolu aktivit Azure Policy dodržování předpisů" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Snímek obrazovky protokolu aktivit pro Azure Policy aktivity a hodnocení." border="false":::
 
 ### <a name="understand-non-compliance"></a>Pochopení nedodržování předpisů
 
@@ -639,7 +643,7 @@ Trent Baker
 
 Pokud máte [pracovní prostor Log Analytics](../../../azure-monitor/log-query/log-query-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log.md) , které je svázáno s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu pomocí jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Policy dodržování předpisů pomocí protokolů Azure Monitor" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Snímek obrazovky Azure Monitor protokolů se zobrazenými Azure Policy akcemi v tabulce AzureActivity" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

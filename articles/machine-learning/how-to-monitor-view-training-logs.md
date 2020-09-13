@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d06186b2ce4d8bb9143663d41f03b9508e4bd00e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005951"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649276"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -58,7 +58,7 @@ Po dokončení běhu se již na této stránce nebude zobrazovat. Chcete-li zobr
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Monitorování běhů pomocí widgetu pro Poznámkový blok Jupyter
 
-Když použijete metodu **ScriptRunConfig** k odeslání spuštění, můžete sledovat průběh běhu pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
+Když použijete metodu **ScriptRunConfig** k odeslání spuštění, můžete sledovat průběh běhu pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true). Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
 
 Zobrazit widget Jupyter při čekání na dokončení běhu.
     

@@ -1,20 +1,20 @@
 ---
 title: Azure Monitor pro sítě (Preview)
-description: Rychlý přehled Azure Monitor pro síť, který poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky bez jakékoli konfigurace.
+description: Rychlý přehled Azure Monitor pro síť, který poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky bez jakýchkoli konfigurací.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 080952752dc5abfd7cf61ae1c5b00b539af58b99
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128671"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646569"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor pro sítě (Preview)
-Azure Monitor pro síť poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky bez jakékoli konfigurace. Rozšířené možnosti vyhledávání pomáhají identifikovat závislosti prostředků, jako je například identifikace prostředků, které hostují web, pouhým hledáním názvu hostovaného webu.
+Azure Monitor pro síť poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky bez jakékoli konfigurace. Rozšířené možnosti vyhledávání pomáhají identifikovat závislosti prostředků, které umožňují scénáře jako identifikaci prostředků, které hostují web, hledáním názvu hostovaného webu.
 
 Stránka **přehled** Azure monitor pro sítě nabízí snadnou představu o inventáři síťových prostředků spolu se stavem prostředků a výstrahami. Je rozdělen na čtyři klíčové oblasti:
 
@@ -30,7 +30,7 @@ Zobrazení stavu prostředku a upozornění je možné přizpůsobit pomocí fil
 
 Vyhledávací pole lze použít k vyhledání prostředků a přidružených prostředků. Například veřejná IP adresa je přidružená k Application Gateway. Při hledání názvu DNS veřejných IP adres se určí jak veřejná, tak přidružená Application Gateway.
 
-![Hledat](media/network-insights-overview/search.png)
+![Search](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Resource Health a metrika
@@ -52,11 +52,11 @@ Zobrazení **závislostí** pomáhá vizualizovat způsob konfigurace prostředk
 
 ![Zobrazení Application Gateway](media/network-insights-overview/application-gateway.png)
 
-Zobrazení **závislostí** pro Application Gateway poskytuje zjednodušený přehled o tom, jak jsou IP adresy front-endu připojené ke posluchačům, pravidlům a back-endovému fondu. Připojené okraje jsou barevně kódované a poskytují další podrobnosti na základě stavu fondu back-endu. Zobrazení také nabízí podrobné zobrazení Application Gateway metrik a metrik pro všechny související back-end fondy, jako jsou VMSS a instance virtuálních počítačů.
+Zobrazení **závislostí** pro Application Gateway poskytuje zjednodušený přehled o tom, jak jsou IP adresy front-endu připojené ke posluchačům, pravidlům a back-endovému fondu. Připojené okraje jsou barevně kódované a poskytují další podrobnosti na základě stavu fondu back-endu. Toto zobrazení také nabízí podrobné zobrazení Application Gateway metrik a metrik pro všechny související fondy back-end, jako jsou třeba sady škálování virtuálních počítačů a instance virtuálních počítačů.
 
 ![Zobrazení závislostí](media/network-insights-overview/dependency-view.png)
 
-Graf závislosti umožňuje snadnou navigaci na nastavení konfigurace. Kliknutím pravým tlačítkem na back-end fond získáte přístup k dalším funkcím. Pokud je například back-end fond virtuálním počítačem, můžete k řešení problémů s připojením získat přímý přístup k VIRTUÁLNÍm počítačům s Network Watcher a k potížím s připojením.
+Graf závislosti umožňuje snadnou navigaci na nastavení konfigurace. Kliknutím pravým tlačítkem na fond back-end získáte přístup k dalším funkcím. Pokud je například fond back-end virtuálním počítačem, můžete k řešení potíží a identifikaci potíží s připojením získat přímý přístup k virtuálnímu počítači Insights a k Network Watchermu připojení.
 
 ![Nabídka zobrazení závislostí](media/network-insights-overview/dependency-view-menu.png)
 
@@ -66,7 +66,7 @@ Panel hledání a filtrování v zobrazení závislostí nabízí snadnou možno
 
 Různé filtry poskytují lepší informace o konkrétní cestě a stavu. Například vyberte v rozevíracím seznamu **stav** pouze není v *pořádku* , aby se zobrazily všechny hrany, ve kterých stav není v *pořádku*.
 
-Kliknutím na **podrobné zobrazení metriky** spustíte předem nakonfigurovaný sešit s podrobnými metrikami pro aplikační bránu, všechny prostředky back-end fondu a IP adresy front-endu. 
+Kliknutím na **podrobné zobrazení metriky** spustíte předem nakonfigurovaný sešit s podrobnými metrikami pro aplikační bránu, všechny prostředky fondu back-endu a IP adresy front-endu. 
 
 ## <a name="next-steps"></a>Další kroky 
 

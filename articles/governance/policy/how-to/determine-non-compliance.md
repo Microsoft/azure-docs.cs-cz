@@ -3,12 +3,12 @@ title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Přečtěte si, jak zjistit, co způsobilo nedodržení předpisů.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512023"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648564"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -30,17 +30,17 @@ Pokud prostředek nedodržuje předpisy, podrobnosti o kompatibilitě tohoto pro
 
 Chcete-li zobrazit podrobnosti o kompatibilitě, postupujte takto:
 
-1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby**a pak vyhledáte a vyberete **zásadu**.
 
 1. Na stránce **Přehled** nebo **dodržování předpisů** vyberte zásadu ve **stavu dodržování předpisů** , který _nedodržuje předpisy_.
 
 1. Na kartě **Kompatibilita prostředků** na stránce **dodržování zásad** klikněte pravým tlačítkem myši nebo vyberte tři tečky prostředku ve **stavu dodržování předpisů** , který _nedodržuje předpisy_. Pak vyberte **Zobrazit podrobnosti o kompatibilitě**.
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Zobrazit podrobnosti kompatibility – možnost" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
 
 1. V podokně **podrobností o dodržování předpisů** se zobrazují informace z posledního vyhodnocení prostředku na aktuální přiřazení zásad. V tomto příkladu se v poli **Microsoft. SQL/servery/verze** našla _12,0_ , zatímco definice zásady očekávala hodnotu _14,0_. Pokud prostředek z více důvodů není kompatibilní, každá z nich je uvedena v tomto podokně.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Podokno podrobností o dodržování předpisů a důvody pro nedodržování předpisů" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Snímek obrazovky s podoknem podrobností o dodržování předpisů a důvody pro nedodržování předpisů, které jsou aktuální hodnotou 12 a cílová hodnota je 14." border="false":::
 
    V případě definice zásady **auditIfNotExists** nebo **deployIfNotExists** obsahuje podrobnosti informace o vlastnosti **Details. Type** a všech volitelných vlastnostech. Seznam najdete v tématu [vlastnosti auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) a [vlastnosti deployIfNotExists](../concepts/effects.md#deployifnotexists-properties). **Poslední vyhodnocený prostředek** je související prostředek z oddílu **podrobností** definice.
 
@@ -69,7 +69,7 @@ Chcete-li zobrazit podrobnosti o kompatibilitě, postupujte takto:
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Podokno podrobností o dodržování předpisů – * ifNotExists" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Snímek obrazovky s podoknem podrobností o dodržování předpisů pro ifNotExists, včetně vyhodnoceného počtu prostředků" border="false":::
 
 > [!NOTE]
 > Pokud chcete chránit data, když je hodnota vlastnosti _tajná_ , aktuální hodnota zobrazí hvězdičky.
@@ -80,7 +80,7 @@ Tyto podrobnosti vysvětlují, proč je prostředek aktuálně nekompatibilní, 
 
 V následující matrici je možné podle příslušné [podmínky](../concepts/definition-structure.md#conditions) v definici zásady mapovat tyto _důvody_ :
 
-|Důvod | Podmínka |
+|Důvod | Stav |
 |-|-|
 |Aktuální hodnota musí obsahovat cílovou hodnotu jako klíč. |ContainsKey – nebo **ne** notContainsKey |
 |Aktuální hodnota musí obsahovat cílovou hodnotu. |obsahuje nebo **není** notContains |
@@ -114,13 +114,13 @@ Je také možné, že nebudete mít přístup k virtuálnímu počítači přím
 
 Začněte podle stejných kroků v části výše pro zobrazení podrobností o dodržování zásad.
 
-V zobrazení podokna podrobností o dodržování předpisů klikněte na odkaz **naposledy vyhodnocený prostředek**.
+V zobrazení podokna podrobností o dodržování předpisů vyberte odkaz **Poslední vyhodnocený prostředek**.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Zobrazit podrobnosti definice auditIfNotExists" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Snímek obrazovky se zobrazením podrobností o kompatibilitě definicí auditIfNotExists" border="false":::
 
 Na stránce **přiřazení hosta** se zobrazí všechny dostupné podrobnosti o dodržování předpisů. Každý řádek v zobrazení představuje hodnocení, které bylo provedeno uvnitř počítače. Ve sloupci **důvod** se zobrazí fráze popisující, proč není přiřazení hostů _kompatibilní_. Pokud například provádíte audit zásad hesel, sloupec **důvod** by zobrazil text, včetně aktuální hodnoty pro každé nastavení.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Zobrazit podrobnosti o kompatibilitě" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Snímek obrazovky s podrobnostmi o dodržování předpisů pro přiřazení hostů" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -191,7 +191,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k dispozici pro všechny prostředky Azure, které podporují [odstranění režimu úplného režimu](../../../azure-resource-manager/templates/complete-mode-deletion.md). Historie změn poskytuje podrobnosti o tom, kdy byla zjištěna změna, a _vizuální rozdíl_ pro každou změnu. Detekce změn se aktivuje, když se přidají, odeberou nebo změní vlastnosti Azure Resource Manager.
 
-1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby**a pak vyhledáte a vyberete **zásadu**.
 
 1. Na stránce **Přehled** nebo **dodržování předpisů** vyberte zásadu v jakémkoli **stavu dodržování předpisů**.
 
@@ -199,11 +199,11 @@ V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k d
 
 1. Na stránce **Kompatibilita prostředků** vyberte kartu **historie změn (Preview)** . Zobrazí se seznam zjištěných změn, pokud existují.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Karta historie změn Azure Policy na stránce dodržování předpisů prostředků" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Snímek obrazovky karty historie změn a zjištěné časy změny na stránce dodržování předpisů pro prostředky" border="false":::
 
 1. Vyberte jednu z zjištěných změn. _Rozdíly ve vizuálním_ zdroji se zobrazí na stránce **historie změn** .
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Změna vizuálního rozdílu ve Azure Policy historii změn na stránce Historie změn" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Snímek obrazovky s vizuálním rozdílem v historii změn stavu před a po stavu na stránce Historie změn" border="false":::
 
 _Vizuální rozdíl_ Aides při identifikaci změn prostředku. Zjištěné změny nemůžou souviset s aktuálním stavem dodržování předpisů daného prostředku.
 

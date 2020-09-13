@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6a37aaa2eee3151087ce33815d37bf5537578329
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: fe562b8202c508c13f4127d14aeb5f994d15f962
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782749"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649612"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V této příručce se dozvíte, jak definovat různé konfigurační nastavení pro automatizované experimenty strojového učení pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Automatický strojové učení vybere pro vás algoritmus a parametry a vygeneruje model připravený pro nasazení. K dispozici je několik možností, pomocí kterých můžete nakonfigurovat automatizované experimenty strojového učení.
+V této příručce se dozvíte, jak definovat různé konfigurační nastavení pro automatizované experimenty strojového učení pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Automatický strojové učení vybere pro vás algoritmus a parametry a vygeneruje model připravený pro nasazení. K dispozici je několik možností, pomocí kterých můžete nakonfigurovat automatizované experimenty strojového učení.
 
 Příklady automatických experimentů strojového učení najdete v tématu [kurz: výuka modelu klasifikace pomocí automatizovaného strojového učení](tutorial-auto-train-models.md) nebo [výukových modelů pomocí automatizovaného strojového učení v cloudu](how-to-auto-train-remote.md).
 
@@ -31,13 +31,13 @@ Možnosti konfigurace dostupné v automatizovaném strojovém učení:
 * Zdroj dat, formáty a načítání dat
 * Výběr cílového výpočetního prostředí: místní nebo vzdálené
 * Automatické nastavení experimentování ve strojovém učení
-* Spuštění automatizovaného experimentu machine learningu
+* Spuštění experimentu automatizovaného strojového učení
 * Prozkoumat metriky modelu
 * Registrace a nasazení modelu
 
 Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento článek potřebujete, 
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
@@ -46,7 +46,7 @@ Pro tento článek potřebujete,
     Pro instalaci sady SDK můžete buď 
     * Vytvořte výpočetní instanci, která automaticky nainstaluje sadu SDK a je předem nakonfigurovaná pro pracovní postupy ML. Další informace najdete v tématu [co je instance služby compute Azure Machine Learning?](concept-compute-instance.md#managing-a-compute-instance) . 
 
-    * [Nainstalujte sadu SDK sami](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Stačí, abyste zahrnuli `automl` extra. 
+    * [Nainstalujte sadu SDK sami](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Stačí, abyste zahrnuli `automl` extra. 
 
 ## <a name="select-your-experiment-type"></a>Výběr typu experimentu
 
@@ -69,7 +69,7 @@ Požadavky na školicí data:
 - Data musí být v tabulkovém formátu.
 - Hodnota pro předpověď, cílový sloupec musí být v datech.
 
-**Pro vzdálené experimenty**musí být školicí data dostupná ze vzdáleného výpočetního prostředí. AutoML přijímá pouze [Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) při práci na vzdáleném výpočetním prostředí. 
+**Pro vzdálené experimenty**musí být školicí data dostupná ze vzdáleného výpočetního prostředí. AutoML přijímá pouze [Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) při práci na vzdáleném výpočetním prostředí. 
 
 Azure Machine Learning datové sady zpřístupňují funkce:
 
@@ -312,7 +312,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 Existuje několik možností, které můžete definovat pro ukončení experimentu.
 
-|Kritéria| description
+|Kritéria| Popis
 |----|----
 Žádná &nbsp; kritéria | Pokud nedefinujete žádné parametry ukončení, experiment pokračuje, dokud neproběhne další postup u primární metriky.
 Po &nbsp; &nbsp; delší &nbsp; &nbsp; dobu| Pomocí `experiment_timeout_minutes` Možnosti v nastavení můžete určit, jak dlouho má experiment běžet v řádu minut. <br><br> Aby se zabránilo chybám při experimentování, je k dispozici minimálně 15 minut nebo 60 minut, pokud řádek podle velikosti sloupce překračuje 10 000 000.

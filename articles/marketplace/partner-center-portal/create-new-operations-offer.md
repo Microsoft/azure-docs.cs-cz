@@ -3,16 +3,16 @@ title: Vytvoření nabídky Dynamics 365 for Operations na komerčním webu Mark
 description: Postup vytvoření nové nabídky Dynamics 365 for Operations pro výpis nebo prodej v Azure Marketplace, AppSource nebo prostřednictvím programu Cloud Solution Provider (CSP) prostřednictvím portálu pro komerční tržiště v partnerském centru Microsoftu.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e5fb00eadaa8d1702b46a03c03b55bbd0ef693f6
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816996"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646698"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
 

@@ -5,14 +5,14 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814260"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646840"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -101,7 +101,7 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
     - Analýzy
     - Modernizace aplikací
     - Archiv
-    - AI a Machine Learning
+    - AI a strojové učení
     - Backup
     - Velký objem dat
     - Datová platforma

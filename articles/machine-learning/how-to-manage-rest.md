@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8c97ee9782f728e39175ed2517b64020ca4169f4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846696"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649396"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)nebo [sadu Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
+K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)nebo [sadu Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
 
 V tomto článku získáte informace o těchto tématech:
 

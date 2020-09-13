@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456586"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646263"
 ---
 # <a name="convert-to-dataset"></a>Převod na datovou sadu
 
@@ -35,13 +35,13 @@ Než použijete převod na datovou sadu, doporučujeme použít modul [Upravit m
 
 2. Připojte ho ke všem modulům, které výstupují datovou sadu.   
 
-    Pokud jsou data [tabulková](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py), můžete je převést na datovou sadu. To zahrnuje data načtená pomocí [importu dat](import-data.md), data vytvořená prostřednictvím [ručního zadání dat](enter-data-manually.md)nebo datové sady [transformované pomocí transformace použít](apply-transformation.md).
+    Pokud jsou data [tabulková](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true), můžete je převést na datovou sadu. To zahrnuje data načtená pomocí [importu dat](import-data.md), data vytvořená prostřednictvím [ručního zadání dat](enter-data-manually.md)nebo datové sady [transformované pomocí transformace použít](apply-transformation.md).
 
 3.  V rozevíracím seznamu **Akce** určete, zda chcete provést čištění dat před uložením datové sady:  
   
     - **Žádné**: použijte data tak, jak je.  
   
-    - **SetMissingValue**: nastavte určitou hodnotu na chybějící hodnotu v datové sadě. Výchozí zástupný symbol je znak otazníku (?), ale můžete použít možnost **vlastní chybějící hodnota** a zadat jinou hodnotu. Pokud například zadáte **taxislužby** pro **vlastní chybějící hodnotu**, všechny instance **taxislužby** v datové sadě budou změněny na chybějící hodnotu.
+    - **SetMissingValue**: nastavte určitou hodnotu na chybějící hodnotu v datové sadě. Výchozí zástupný symbol je znak otazníku (?), ale můžete použít možnost  **vlastní chybějící hodnota** a zadat jinou hodnotu. Pokud například zadáte **taxislužby** pro **vlastní chybějící hodnotu**, všechny instance **taxislužby** v datové sadě budou změněny na chybějící hodnotu.
   
     - **ReplaceValues**: tuto možnost použijte, pokud chcete zadat jedinou hodnotu, která se má nahradit jakoukoliv jinou přesnou hodnotu. Chybějící hodnoty nebo vlastní hodnoty můžete nahradit nastavením metody **Replace** :
 
