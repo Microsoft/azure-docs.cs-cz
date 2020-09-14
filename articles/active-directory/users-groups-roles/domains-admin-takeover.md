@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015880"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054700"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzetí nespravovaného adresáře v roli správce v Azure Active Directory
 
@@ -34,7 +34,7 @@ Během procesu převzetí správce můžete vlastnictví prokázat způsobem pop
 
 ## <a name="internal-admin-takeover"></a>Převzetí interním správcem
 
-Některé produkty, které zahrnují SharePoint a OneDrive, jako je například Office 365, nepodporují externí převzetí. Pokud se jedná o váš scénář, nebo pokud jste správcem a chcete převzít nespravovanou nebo "stínovou" organizaci Azure AD, kterou vytvořili uživatelé, kteří použili samoobslužné registrace, můžete to udělat pomocí interního převzetí služeb správce.
+Některé produkty, které zahrnují SharePoint a OneDrive, jako je například Microsoft 365, nepodporují externí převzetí. Pokud se jedná o váš scénář, nebo pokud jste správcem a chcete převzít nespravovanou nebo "stínovou" organizaci Azure AD, kterou vytvořili uživatelé, kteří použili samoobslužné registrace, můžete to udělat pomocí interního převzetí služeb správce.
 
 1. Vytvořte uživatelský kontext v nespravované organizaci pomocí registrace Power BI. Pro pohodlí například tyto kroky předpokládají tuto cestu.
 
@@ -52,7 +52,7 @@ Některé produkty, které zahrnují SharePoint a OneDrive, jako je například 
 
 Při ověřování záznamů TXT DNS ve vašem registrátoru názvů domén můžete spravovat organizaci Azure AD.
 
-Po dokončení předchozích kroků teď jste globálním správcem čtvrté kávy v sadě Office 365. Pokud chcete název domény integrovat s ostatními službami Azure, můžete ho odebrat ze sady Office 365 a přidat ho do jiné spravované organizace v Azure.
+Po dokončení předchozích kroků teď jste globálním správcem čtvrté kávy v Microsoft 365. Pokud chcete název domény integrovat s ostatními službami Azure, můžete ho odebrat z Microsoft 365 a přidat ho do jiné spravované organizace v Azure.
 
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Přidání názvu domény do spravované organizace ve službě Azure AD
 
@@ -61,9 +61,9 @@ Po dokončení předchozích kroků teď jste globálním správcem čtvrté ká
 3. Ujistěte se, že nový uživatelský účet má pro organizaci Azure AD oprávnění globálního správce.
 4. Otevřete kartu **domény** v centru pro správu Microsoft 365, vyberte název domény a vyberte **Odebrat**. 
   
-   ![odebrat název domény z Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![Odebrat název domény z Microsoft 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Pokud máte v sadě Office 365 nějaké uživatele nebo skupiny, které odkazují na odebraný název domény, musí být přejmenovány do domény. onmicrosoft.com. Pokud vynutíte odstranění názvu domény, všichni uživatelé budou automaticky přejmenováni v tomto příkladu *na \@ fourthcoffeexyz.onmicrosoft.com uživatele*.
+5. Pokud máte v Microsoft 365 nějaké uživatele nebo skupiny, které odkazují na odebraný název domény, musí být přejmenovány do domény. onmicrosoft.com. Pokud vynutíte odstranění názvu domény, všichni uživatelé budou automaticky přejmenováni v tomto příkladu *na \@ fourthcoffeexyz.onmicrosoft.com uživatele*.
   
 6. Přihlaste se k [centru pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem pro organizaci Azure AD.
   
@@ -72,11 +72,11 @@ Po dokončení předchozích kroků teď jste globálním správcem čtvrté ká
    ![Doména ověřena jako přidaná do Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v organizaci Office 365, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je například *uživatel \@ fourthcoffeexyz.onmicrosoft.com* *, nikoli User \@ fourthcoffee. xyz*.
+> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v Microsoft 365 organizaci, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je například *uživatel \@ fourthcoffeexyz.onmicrosoft.com* *, nikoli User \@ fourthcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Převzetí externím správcem
 
-Pokud jste už organizaci se službami Azure nebo Office 365 spravovali, nemůžete přidat vlastní název domény, pokud už je ověřený v jiné organizaci Azure AD. Ze spravované organizace ve službě Azure AD se ale můžete přebírat nespravovanou organizaci jako převzetí externích správců. Obecný postup najdete v článku [Přidání vlastní domény do Azure AD](../fundamentals/add-custom-domain.md).
+Pokud už organizaci spravujete se službami Azure nebo Microsoft 365, nemůžete přidat vlastní název domény, pokud už je ověřený v jiné organizaci Azure AD. Ze spravované organizace ve službě Azure AD se ale můžete přebírat nespravovanou organizaci jako převzetí externích správců. Obecný postup najdete v článku [Přidání vlastní domény do Azure AD](../fundamentals/add-custom-domain.md).
 
 Když ověříte vlastnictví názvu domény, Azure AD Odebere název domény z nespravované organizace a přesune ji do vaší stávající organizace. Převzetí externích správců nespravovaného adresáře vyžaduje stejný proces ověření TXT DNS jako interní převzetí správce. Rozdíl je v tom, že se v rámci názvu domény přesunuly taky následující:
 
@@ -120,7 +120,7 @@ rutiny | Využití
 `new-msoldomain –name <domainname>` | Přidá název domény do organizace jako Neověřeno (zatím se neprovede žádné ověření DNS).
 `get-msoldomain` | Název domény je teď zahrnutý v seznamu názvů domén přidružených ke spravované organizaci, ale je uvedený jako **Neověřeno**.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Poskytuje informace, které se vloží do nového záznamu TXT DNS pro doménu (MS = xxxxx). K ověření se nemusí okamžitě docházet, protože nějaký čas může rozšířit záznam TXT, takže Počkejte pár minut, než se pustíte do úvahy možnosti **-ForceTakeover** . 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Pokud se název domény stále neověřuje, můžete pokračovat s možností **-ForceTakeover** . Ověřuje, že byl vytvořen záznam TXT a je odpojený od procesu převzetí.<li>Možnost **-ForceTakeover** by měla být přidána do rutiny pouze v případě, že je vynuceno převzetí externích správců, například když má nespravovaná organizace služby Office 365 blokující převzetí.
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Pokud se název domény stále neověřuje, můžete pokračovat s možností **-ForceTakeover** . Ověřuje, že byl vytvořen záznam TXT a je odpojený od procesu převzetí.<li>Možnost **-ForceTakeover** by se měla přidat do rutiny jenom v případě, že je vynucené převzetí externích správců, například když má nespravovaná organizace Microsoft 365 Services blokující převzetí.
 `get-msoldomain` | Seznam domén nyní zobrazuje název domény jako **ověřený**.
 
 > [!NOTE]
@@ -144,12 +144,12 @@ rutiny | Využití
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    Příklad:
+    Například:
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Zkopírujte hodnotu (Challenge), která se vrátí z tohoto příkazu. Příklad:
+4. Zkopírujte hodnotu (Challenge), která se vrátí z tohoto příkazu. Například:
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -160,7 +160,7 @@ rutiny | Využití
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Příklad:
+   Například:
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force

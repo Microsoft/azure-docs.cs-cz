@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797985"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053969"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace připojení k účtu LinkedIn v Azure Active Directory
 
@@ -29,7 +29,7 @@ Uživatelům ve vaší organizaci můžete dovolit přístup k jejich připojen�
 >
 > Výjimky:
 >
-> * Toto nastavení není k dispozici pro zákazníky, kteří používají Microsoft Cloud pro státní správu USA, Microsoft Cloud Německo nebo Azure a Office 365 provozovaný společností 21Vianet v Číně.
+> * Toto nastavení není k dispozici pro zákazníky, kteří používají Microsoft Cloud pro státní správu USA, Microsoft Cloud Německo nebo Azure a Microsoft 365 provozované společností 21Vianet v Číně.
 > * Toto nastavení je ve výchozím nastavení vypnuté pro organizace Azure AD zřízené v Německu. Všimněte si, že toto nastavení není k dispozici pro zákazníky, kteří používají Microsoft Cloud Německo.
 > * Toto nastavení je ve výchozím nastavení vypnuté pro organizace zřízené ve Francii.
 >
@@ -94,12 +94,12 @@ Pokud chcete použít skupinu z kroku 2 jako vybranou skupinu v nastavení přip
 1. Vytvořte objekt Zásady skupiny s následujícím nastavením: **Konfigurace uživatele**  >  **šablony pro správu**  >  **systém Microsoft Office 2016**  >  **různé**  >  **Zobrazit funkce LinkedInu v aplikacích Office**.
 1. Vyberte možnost **povoleno** nebo **zakázáno**.
   
-   Stav | Efekt
+   State | Účinek
    ------ | ------
    **Povoleno** | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je povolené. Uživatelé ve vaší organizaci můžou používat funkce LinkedInu v aplikacích Office 2016.
    **Zakázáno** | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je zakázané a koncoví uživatelé toto nastavení nemůžou změnit. Uživatelé ve vaší organizaci nemůžou ve svých aplikacích Office 2016 používat funkce LinkedIn.
 
-Tato zásada skupiny ovlivňuje jenom aplikace Office 2016 pro místní počítač. Pokud uživatelé vypnou LinkedIn ve svých aplikacích Office 2016, můžou pořád zobrazit funkce LinkedIn v sadě Office 365.
+Tato zásada skupiny ovlivňuje jenom aplikace Office 2016 pro místní počítač. Pokud uživatelé vypnou LinkedIn ve svých aplikacích Office 2016, můžou pořád zobrazit funkce LinkedInu v Microsoft 365.
 
 ## <a name="next-steps"></a>Další kroky
 

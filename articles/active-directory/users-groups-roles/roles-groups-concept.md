@@ -1,6 +1,6 @@
 ---
 title: Pomocí skupin cloudu můžete spravovat přiřazení rolí v Azure Active Directory | Microsoft Docs
-description: Zobrazte si náhled vlastních rolí Azure AD pro delegování správy identit. Spravujte role Azure v Azure Portal, PowerShellu nebo Graph API.
+description: Zobrazte si náhled vlastních rolí Azure AD pro delegování správy identit. Správa přiřazení rolí Azure v Azure Portal, PowerShellu nebo Graph API.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798308"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053765"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Použití skupin cloudů ke správě přiřazení rolí v Azure Active Directory (Preview)
 
@@ -28,7 +28,7 @@ Vezměte v úvahu tento příklad: contoso přijal lidem v geografických oblast
 
 ## <a name="how-this-feature-works"></a>Jak tato funkce funguje
 
-Vytvořte novou sadu Office 365 nebo skupinu zabezpečení s vlastností ' isAssignableToRole ' nastavenou na hodnotu ' true '. Tuto vlastnost můžete také povolit při vytváření skupiny v Azure Portal zapnutím **rolí Azure AD je můžete přiřadit ke skupině**. V obou případech můžete skupinu přiřadit k jedné nebo více rolím Azure AD stejným způsobem, jako přiřadíte role uživatelům. V jedné organizaci Azure AD (tenant) se dá vytvořit maximálně 200 skupin s přiřazením role.
+Vytvořte novou Microsoft 365 nebo skupinu zabezpečení s vlastností ' isAssignableToRole ' nastavenou na hodnotu ' true '. Tuto vlastnost můžete také povolit při vytváření skupiny v Azure Portal zapnutím **rolí Azure AD je můžete přiřadit ke skupině**. V obou případech můžete skupinu přiřadit k jedné nebo více rolím Azure AD stejným způsobem, jako přiřadíte role uživatelům. V jedné organizaci Azure AD (tenant) se dá vytvořit maximálně 200 skupin s přiřazením role.
 
 Pokud nechcete, aby členové skupiny měli stálý přístup k této roli, můžete použít Azure AD Privileged Identity Management. Přiřaďte skupinu jako oprávněného člena role Azure AD. Každý člen skupiny pak má nárok na aktivaci jejich přiřazení pro roli, ke které je skupina přiřazená. Pak můžou aktivovat přiřazení rolí po dobu trvání pevného času.
 

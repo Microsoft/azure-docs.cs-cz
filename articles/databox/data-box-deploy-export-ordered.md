@@ -2,18 +2,18 @@
 title: Kurz pro export dat z Azure Data Box | Microsoft Docs
 description: Přečtěte si o požadavcích na nasazení a o tom, jak exportovat data z Azure Data Box
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: twooley
-ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.author: alkohli
+ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783616"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053012"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box (Preview)
 
@@ -115,9 +115,20 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 
    Příklad vstupu XML naleznete v tématu [Sample XML Input](data-box-deploy-export-ordered.md#sample-xml-file) .
 
-9. V poli **Výběr dat**zkontrolujte nastavení a vyberte **Další: kontaktní údaje>**.
+9. V poli **Výběr dat**zkontrolujte nastavení a vyberte **Další:>zabezpečení **.
 
    ![Kontaktní údaje](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+
+1. Pokud chcete povolit šifrování na základě softwaru, vyberte v části **zabezpečení**možnost **Povolit pro objednávku dvojité šifrování**. 
+
+   Šifrování založené na softwaru se provádí kromě šifrování AES-256 dat na Data Box.
+
+   > [!NOTE]
+   > Povolení této možnosti může způsobit, že zpracování objednávek a kopírování dat trvá déle. Po vytvoření objednávky tuto možnost nemůžete změnit.
+
+   ![Obrazovka zabezpečení pro import datového boxu, dvojité šifrování](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+
+   Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
 
 10. V **podrobnostech kontaktu**vyberte **+ Přidat dodací adresu** a zadejte informace o expedici.
 

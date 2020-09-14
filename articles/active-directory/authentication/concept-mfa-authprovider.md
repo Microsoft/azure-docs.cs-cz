@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7e4772ba2b3d8adf163d6f2932461e1e939ed84
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81309901"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052439"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kdy použít poskytovatele služby Azure Multi-Factor Authentication
 
 > [!IMPORTANT]
 > Od 1. září 2018 se už možná nebudou vytvářet Noví zprostředkovatelé ověřování. Stávající zprostředkovatelé ověřování se můžou dál používat a aktualizovat, ale migrace už není možná. Multi-Factor Authentication bude i nadále k dispozici jako funkce v Azure AD Premium licencích.
 
-Dvoustupňové ověřování je k dispozici ve výchozím nastavení pro globální správce, kteří mají uživatele služeb Azure Active Directory a Office 365. Pokud ale budete chtít využívat výhod [pokročilých funkcí](howto-mfa-mfasettings.md) měli byste si zakoupit plnou verzi Azure Multi-Factor Authentication (MFA).
+Dvoustupňové ověřování je ve výchozím nastavení k dispozici pro globální správce, kteří mají Azure Active Directory a Microsoft 365 uživatele. Pokud ale budete chtít využívat výhod [pokročilých funkcí](howto-mfa-mfasettings.md) měli byste si zakoupit plnou verzi Azure Multi-Factor Authentication (MFA).
 
 Poskytovatel Azure Multi-Factor auth se používá k využití funkcí poskytovaných službou Azure Multi-Factor Authentication pro uživatele, kteří nemají **licence**.
 

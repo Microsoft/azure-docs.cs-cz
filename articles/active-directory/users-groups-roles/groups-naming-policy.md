@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7fe5072042553d676c798a32e0ca6fc28e92332d
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213746"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054462"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Vynutili zásady pojmenování u skupin Microsoft 365 v Azure Active Directory
 
@@ -229,9 +229,9 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-## <a name="experience-across-office-365-apps"></a>Prostředí v aplikacích Office 365
+## <a name="experience-across-microsoft-365-apps"></a>Prostředí v aplikacích Microsoft 365
 
-Po nastavení zásady pojmenování skupin ve službě Azure AD, když uživatel vytvoří skupinu v aplikaci Office 365, uvidí tyto informace:
+Když ve službě Azure AD nastavíte zásadu pro pojmenování skupin, uživatel vytvoří skupinu v aplikaci Microsoft 365, zobrazí tyto informace:
 
 - Náhled názvu v závislosti na vašich zásadách pro pojmenování (s předponami a příponami), jakmile uživatel zadá název skupiny
 - Pokud uživatel zadá blokovaná slova, uvidí chybovou zprávu, aby mohla odebrat blokovaná slova.
@@ -252,7 +252,7 @@ Synchronizace školních dat (SDS) | Skupiny vytvořené prostřednictvím SDS d
 Správce zákaznických aplikací Outlook (OCM) | Správce zákaznických aplikací Outlook je kompatibilní se zásadami pojmenování, které se automaticky aplikují na skupinu vytvořenou v aplikaci Outlook Customer Manager. Pokud se zjistí vlastní blokované slovo, bude vytvoření skupiny v OCM zablokované a uživatel je zablokovaný v používání aplikace OCM.
 Aplikace učeben | Skupiny vytvořené v aplikaci učeben vyhovují zásadám pojmenování, ale zásady pojmenování se neaplikují automaticky a verze Preview se uživatelům při zadávání názvu skupiny učeben nezobrazuje. Uživatelé musí zadat název skupiny vynutilého učebny s předponami a příponami. V takovém případě se operace vytvoření nebo úpravy skupiny učeben nepovede s chybami.
 Power BI | Power BI pracovní prostory jsou kompatibilní se zásadami pojmenování.    
-Yammer | Když se uživatel přihlásil ke službě Yammer pomocí svého Azure Active Directory účtu vytvoří skupinu nebo upraví název skupiny, bude název skupiny odpovídat zásadám pojmenování. To platí jak pro připojené skupiny Office 365, tak pro všechny ostatní skupiny Yammeru.<br>Pokud byla před vytvořením zásady pojmenování vytvořena připojená skupina sady Office 365, název skupiny nebude automaticky odpovídat zásadám pojmenování. Když uživatel upraví název skupiny, zobrazí se výzva k přidání předpony a přípony.
+Yammer | Když se uživatel přihlásil ke službě Yammer pomocí svého Azure Active Directory účtu vytvoří skupinu nebo upraví název skupiny, bude název skupiny odpovídat zásadám pojmenování. To platí pro Microsoft 365 propojených skupin i všech ostatních skupin Yammeru.<br>Pokud byla před vytvořením zásady pojmenování vytvořena připojená skupina Microsoft 365, název skupiny nebude automaticky dodržovat zásady pojmenování. Když uživatel upraví název skupiny, zobrazí se výzva k přidání předpony a přípony.
 Směn staffhubu  | Směn staffhubu týmy nedodržují zásady pojmenování, ale podkladová skupina Microsoft 365. Název týmu směn staffhubu nepoužívá předpony a přípony a nekontroluje vlastní blokovaná slova. Ale směn staffhubu použije předpony a přípony a odstraní blokovaná slova z podkladové skupiny Microsoft 365.
 Prostředí Exchange PowerShell | Rutiny prostředí Exchange PowerShell jsou kompatibilní se zásadami pojmenování. Uživatelé dostanou vhodné chybové zprávy s navrhovanými předponami a příponami a u vlastních blokovaných slov, pokud nedodržují zásady pojmenování v názvu skupiny a aliasu skupiny (mailNickname).
 Rutiny Azure Active Directory PowerShellu | Rutiny Azure Active Directory PowerShellu jsou kompatibilní se zásadami pojmenování. Uživatelé dostanou příslušné chybové zprávy s navrhovanými předponami a příponami a vlastní blokovaná slova, pokud nedodržují zásady vytváření názvů v názvech skupin a aliasu skupiny.

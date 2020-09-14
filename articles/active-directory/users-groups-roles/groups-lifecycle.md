@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799294"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054547"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Microsoft 365
 
@@ -42,7 +42,7 @@ Informace o tom, jak stáhnout a nainstalovat rutiny Azure AD PowerShellu, najde
 
 ## <a name="activity-based-automatic-renewal"></a>Automatické obnovení na základě aktivity
 
-Pomocí služby Azure AD Intelligence se teď skupiny automaticky Obnovují na základě toho, jestli se nedávno používaly. Tato funkce eliminuje nutnost ručních akcí podle vlastníků skupin, protože je založená na aktivitě uživatelů ve skupinách napříč službami Office 365, jako je Outlook, SharePoint nebo Teams. Pokud například vlastník nebo člen skupiny nahraje dokument do SharePointu, navštíví kanál týmů nebo pošle e-mailovou zprávu do skupiny v Outlooku, skupina se automaticky obnoví a vlastník nezíská žádná oznámení o obnovení.
+Pomocí služby Azure AD Intelligence se teď skupiny automaticky Obnovují na základě toho, jestli se nedávno používaly. Tato funkce eliminuje nutnost ručních akcí podle vlastníků skupin, protože je založená na aktivitě uživatelů ve skupinách napříč Microsoft 365 službami, jako je Outlook, SharePoint nebo Teams. Pokud například vlastník nebo člen skupiny nahraje dokument do SharePointu, navštíví kanál týmů nebo pošle e-mailovou zprávu do skupiny v Outlooku, skupina se automaticky obnoví a vlastník nezíská žádná oznámení o obnovení.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Aktivity, které automaticky Obnovují vypršení platnosti skupiny
 

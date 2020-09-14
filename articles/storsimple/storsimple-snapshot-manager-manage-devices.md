@@ -3,7 +3,7 @@ title: Správa zařízení pomocí StorSimple Snapshot Manager | Microsoft Docs
 description: Popisuje, jak pomocí modulu snap-in StorSimple Snapshot Manager konzoly MMC připojit a spravovat zařízení StorSimple.
 services: storsimple
 documentationcenter: ''
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513986"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054845"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Připojení a Správa zařízení StorSimple pomocí Snapshot Manager StorSimple
 ## <a name="overview"></a>Přehled
@@ -31,12 +31,12 @@ Pomocí uzlů v podokně StorSimple Snapshot Manager **Scope** můžete ověřit
 
 V závislosti na výběru **zobrazení** zobrazuje podokno **výsledků** následující informace o jednotlivých zařízeních. (Další informace o konfiguraci zobrazení naleznete v [nabídce Zobrazit](storsimple-use-snapshot-manager.md#view-menu).
 
-| Sloupec výsledků | Description |
+| Sloupec výsledků | Popis |
 |:--- |:--- |
-| Name |Název zařízení, jak je nakonfigurované na portálu Azure Classic |
+| Název |Název zařízení, jak je nakonfigurované na portálu Azure Classic |
 | Model |Číslo modelu zařízení |
 | Verze |Verze softwaru nainstalovaného v zařízení |
-| Status |Zda je zařízení k dispozici |
+| Stav |Zda je zařízení k dispozici |
 | Poslední synchronizace |Datum a čas poslední synchronizace zařízení |
 | Sériové číslo. |Sériové číslo zařízení |
 

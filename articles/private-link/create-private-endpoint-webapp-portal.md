@@ -1,6 +1,6 @@
 ---
-title: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
-description: Tento článek vysvětluje, jak soukromě připojit k webové aplikaci pomocí privátního koncového bodu Azure.
+title: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure (Preview)
+description: Tento článek vysvětluje, jak soukromě připojit k webové aplikaci pomocí privátního koncového bodu Azure (Preview).
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
@@ -8,216 +8,222 @@ ms.date: 09/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 3d547546c3c0e0bbcdde65a654bf373ab7407be3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: ccbcdbe9204120e1cf181136f566556ec30be871
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569443"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054530"
 ---
-# <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure (Preview)
+# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint-preview"></a>Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure (Preview)
 
-Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje připojit soukromě k webové aplikaci.
-V tomto rychlém startu se dozvíte, jak nasadit webovou aplikaci s privátním koncovým bodem a jak se připojit k této webové aplikaci z virtuálního počítače.
+Privátní koncový bod Azure (Preview) je základní stavební blok pro privátní propojení Azure. Pomocí privátního koncového bodu se můžete soukromě připojit k webové aplikaci. V tomto článku se dozvíte, jak nasadit webovou aplikaci pomocí privátního koncového bodu a jak se připojit k webové aplikaci z virtuálního počítače.
 
-Další informace najdete v tématu [použití privátních koncových bodů pro webovou aplikaci Azure][privatenedpointwebapp].
+Další informace najdete v tématu [použití privátních koncových bodů pro webovou aplikaci Azure][privateendpointwebapp].
 
 > [!Note]
->Verze Preview je dostupná ve veřejných oblastech pro PremiumV2 Windows a Linux Web Apps a elastické funkce Premium. 
+> Privátní koncový bod (Preview) je k dispozici ve veřejných oblastech pro webové aplikace PremiumV2 pro Windows, Linux Web Apps a plán služby Azure Functions Premium (někdy označovaný jako plán elastické Premium). 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+Než začnete, přihlaste se k [Azure Portal](https://portal.azure.com).
 
-## <a name="virtual-network-and-virtual-machine"></a>Virtuální síť a virtuální počítač
+## <a name="create-a-virtual-network-and-virtual-machine"></a>Vytvoření virtuální sítě a virtuálního počítače
 
-V této části vytvoříte virtuální síť a podsíť, která bude hostovat virtuální počítač, který se používá pro přístup k vaší webové aplikaci prostřednictvím privátního koncového bodu.
+V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který budete používat pro přístup k webové aplikaci prostřednictvím privátního koncového bodu.
 
 ### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-V této části vytvoříte virtuální síť a podsíť.
+Pokud chcete vytvořit virtuální síť a podsíť, udělejte toto:
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť** nebo ve vyhledávacím poli vyhledejte **virtuální síť** .
+1. V levém podokně vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
 
-1. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě základy:
-
-   > [!div class="mx-imgBorder"]
-   > ![Vytvořit Virtual Network][1]
-
-1. Klikněte na **Další: IP adresy >** a zadejte nebo vyberte tyto informace:
+1. V podokně **vytvořit virtuální síť** vyberte kartu **základy** a pak zadejte informace, které jsou tady uvedené:
 
    > [!div class="mx-imgBorder"]
-   >![Konfigurace IP adres][2]
+   > ![Snímek obrazovky s podoknem vytvořit Virtual Network v Azure Portal][1]
 
-1. V části podsíť klikněte na **+ Přidat podsíť** a zadejte následující informace a klikněte na **Přidat** .
-
-   > [!div class="mx-imgBorder"]
-   >![Přidat podsíť][3]
-
-1. Klikněte na **zkontrolovat + vytvořit** .
-
-1. Po úspěšném ověření klikněte na **vytvořit** .
-
-### <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač** Compute.
-
-1. V nástroji vytvořit virtuální počítač základy zadejte nebo vyberte tyto informace:
+1. Vyberte kartu **IP adresy** a potom zadejte informace, které jsou tady uvedené:
 
    > [!div class="mx-imgBorder"]
-   >![Základní virtuální počítač ][4]
+   > ![Snímek obrazovky karty IP adresy v podokně vytvořit virtuální síť.][2]
 
-1. Vyberte **Další: disky.**
-
-   Zachovat výchozí nastavení.
-
-1. Vyberte **Další: sítě**, vyberte tyto informace:
+1. V části **podsíť** vyberte **Přidat podsíť**, zadejte informace, které jsou tady uvedené, a pak vyberte **Přidat**.
 
    > [!div class="mx-imgBorder"]
-   >![Sítě][5]
+   > ![Snímek obrazovky s podoknem přidat podsíť][3]
 
-1. Klikněte na **zkontrolovat + vytvořit** .
+1. Vyberte **Zkontrolovat a vytvořit**.
 
-1. Po úspěšném ověření klikněte na **vytvořit** .
+1. Po úspěšném ověření vyberte **vytvořit**.
 
-## <a name="create-your-web-app-and-private-endpoint"></a>Vytvoření webové aplikace a privátního koncového bodu
+### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
-V této části vytvoříte soukromou webovou aplikaci s použitím privátního koncového bodu.
+Pokud chcete vytvořit virtuální počítač, udělejte toto:
+
+1. V Azure Portal v levém podokně vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač**Compute.
+
+1. V podokně **vytvořit základní informace o virtuálním počítači** zadejte informace, které jsou tady uvedené:
+
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky s podoknem vytvořit virtuální počítač][4]
+
+1. Vyberte **Další: disky**.
+
+1. V podokně **disky** ponechte výchozí nastavení a potom vyberte **Další: sítě**.
+
+1. V podokně **síť** zadejte informace, které jsou zde zobrazeny:
+
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky s kartou "sítě" v podokně vytvořit virtuální počítač.][5]
+
+1. Vyberte **Zkontrolovat a vytvořit**.
+
+1. Po úspěšném ověření vyberte **vytvořit**.
+
+## <a name="create-a-web-app-and-a-private-endpoint"></a>Vytvoření webové aplikace a privátního koncového bodu
+
+V této části vytvoříte soukromou webovou aplikaci, která používá privátní koncový bod.
 
 > [!Note]
->Funkce privátního koncového bodu je k dispozici pouze pro SKU verze Premium v2.
+> Funkce privátního koncového bodu je k dispozici pouze pro úroveň PremiumV2.
 
-### <a name="web-app"></a>Webová aplikace
+### <a name="create-the-web-app"></a>Vytvoření webové aplikace
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek**  >  **Webová**  >  **Webová aplikace** .
+1. V Azure Portal v levém podokně vyberte **vytvořit prostředek**  >  **Webová**  >  **Webová aplikace**.
 
-1. V nástroji vytvořit webovou aplikaci – základy zadejte nebo vyberte tyto informace:
+1. V podokně **Webová aplikace** vyberte kartu **základy** a pak zadejte informace, které jsou tady uvedené:
 
    > [!div class="mx-imgBorder"]
-   >![Web App Basic ][6]
+   > ![Snímek obrazovky s kartou základy v podokně webová aplikace][6]
 
-1. Vyberte **"zkontrolovat + vytvořit"**
+1. Vyberte **Zkontrolovat a vytvořit**.
 
-1. Po úspěšném ověření klikněte na **vytvořit** .
+1. Po úspěšném ověření vyberte **vytvořit**.
 
 ### <a name="create-the-private-endpoint"></a>Vytvoření privátního koncového bodu
 
-1. Ve vlastnostech webové aplikace vyberte **Nastavení**  >  **sítě** a klikněte na **Konfigurace připojení privátního koncového bodu** .
+1. Ve vlastnostech webové aplikace v části **Nastavení**vyberte **sítě**a potom v části **připojení privátního koncového bodu (Preview)** vyberte **Konfigurovat připojení privátních koncových bodů**.
 
    > [!div class="mx-imgBorder"]
-   >![Sítě webové aplikace][7]
+   > ![Snímek obrazovky s odkazem konfigurace připojení privátního koncového bodu v podokně sítě webové aplikace][7]
 
-1. V průvodci klikněte na **+ Přidat** .
-
-   > [!div class="mx-imgBorder"]
-   >![Privátní koncový bod webové aplikace][8]
-
-1. Vyplňte informace o předplatném, virtuální síti a podsíti a klikněte na **OK** .
+1. V průvodci **připojením privátního koncového bodu (Preview)** vyberte **Přidat**.
 
    > [!div class="mx-imgBorder"]
-   >![Sítě webové aplikace][9]
+   > ![Snímek obrazovky s tlačítkem Přidat v Průvodci připojením privátního koncového bodu (Preview)][8]
 
-1. Kontrola vytvoření privátního koncového bodu
-
-   > [!div class="mx-imgBorder"]
-   >![Zkontrolujte ][10]
-   > ![ finální zobrazení privátního koncového bodu.][11]
-
-## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
-
-1. Na panelu hledání na portálu zadejte **myVm** .
-1. Klikněte na **tlačítko připojit**. Po výběru tlačítka připojit se otevře okno připojit k virtuálnímu počítači, vyberte **RDP** .
+1. V rozevíracím seznamu **odběr**, **virtuální síť**a **podsíť** vyberte správné informace a pak vyberte **OK**.
 
    > [!div class="mx-imgBorder"]
-   >![Tlačítko RDP][12]
+   > ![Snímek obrazovky s podoknem přidat privátní koncový bod (Preview)][9]
 
-1. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (. RDP) a stáhne ho do počítače po kliknutí na **Stáhnout soubor RDP** .
+1. Monitorujte průběh vytváření privátního koncového bodu.
 
    > [!div class="mx-imgBorder"]
-   >![Stáhnout soubor RDP][13]
+   > ![Snímek obrazovky průběhu přidávání privátního koncového bodu ][10]
+   >  ![ Snímek obrazovky nově vytvořeného privátního koncového bodu.][11]
 
-1. Otevřete stažený soubor. RDP.
+## <a name="connect-to-the-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z Internetu
 
-   - Pokud se zobrazí výzva, vyberte Připojit.
-   - Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+1. Do **vyhledávacího** pole Azure Portal zadejte **myVm**.
+1. Vyberte **připojit**a pak vyberte **RDP**.
+
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky s tlačítkem "RDP" v podokně "myVM".][12]
+
+1. V podokně **připojit se pomocí protokolu RDP** vyberte **Stáhnout soubor RDP**.  
+
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky s tlačítkem "Stáhnout soubor RDP" v podokně "připojit k protokolu RDP".][13]
+
+   Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (RDP) a stáhne ho do vašeho počítače.   
+
+1. Otevřete stažený soubor RDP.
+
+   a. Na příkazovém řádku vyberte **připojit**.  
+   b. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+
+     > [!Note]
+     > Chcete-li použít tyto přihlašovací údaje, možná budete muset vybrat **Další možnosti**  >  **použít jiný účet**.
+
+1. Vyberte **OK**.
 
    > [!Note]
-   > Možná budete muset vybrat další volby > použít jiný účet a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+   > Pokud během procesu přihlašování dojde k upozornění na certifikát, vyberte **Ano** nebo **pokračovat**.
 
-   - Vyberte OK.
+1. Když se zobrazí okno plocha virtuálního počítače, minimalizujte ho a vraťte se zpátky na místní plochu.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte Ano nebo pokračovat.
-
-1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
-
-## <a name="access-web-app-privately-from-the-vm"></a>Přístup k webové aplikaci soukromě z virtuálního počítače
+## <a name="access-the-web-app-privately-from-the-vm"></a>Přístup k webové aplikaci soukromě z virtuálního počítače
 
 V této části se soukromě připojíte k webové aplikaci pomocí privátního koncového bodu.
 
-1. Získejte privátní IP adresu privátního koncového bodu, na panelu hledání zadejte **privátní odkaz**a vyberte privátní odkaz.
+1. Pokud chcete získat soukromou IP adresu privátního koncového bodu, zadejte do **vyhledávacího** pole **privátní odkaz** a potom v seznamu výsledků vyberte **privátní odkaz**.
 
    > [!div class="mx-imgBorder"]
-   >![Privátní propojení][14]
+   > ![Snímek obrazovky s odkazem "soukromé propojení" v seznamu výsledků hledání.][14]
 
-1. V centru privátních odkazů vyberte **privátní koncové body** pro výpis všech vašich privátních koncových bodů.
-
-   > [!div class="mx-imgBorder"]
-   >![Centrum privátních odkazů][15]
-
-1. Vyberte odkaz privátního koncového bodu do vaší webové aplikace a podsítě.
+1. V centru privátních odkazů v levém podokně vyberte **privátní koncové body** , aby se zobrazily vaše soukromé koncové body.
 
    > [!div class="mx-imgBorder"]
-   >![Vlastnosti privátního koncového bodu][16]
+   > ![Snímek obrazovky se seznamem privátních koncových bodů v centru privátních odkazů][15]
 
-1. Zkopírujte privátní IP adresu vašeho privátního koncového bodu a plně kvalifikovaný název domény vaší webové aplikace, v našem případě webappdemope.azurewebsites.net 10.10.2.4
-
-1. V myVM ověřte, že webová aplikace není přístupná prostřednictvím veřejné IP adresy. Otevřete prohlížeč a vložte název webové aplikace, musíte mít chybovou stránku 403 zakázáno.
+1. Vyberte privátní koncový bod, který odkazuje na vaši webovou aplikaci a vaši podsíť.
 
    > [!div class="mx-imgBorder"]
-   >![Při pokusu o použití IP adresy je zakázaná chyba.][17]
+   > ![Snímek obrazovky s podoknem vlastností privátního koncového bodu][16]
+
+1. Zkopírujte soukromou IP adresu vašeho privátního koncového bodu a plně kvalifikovaný název domény (FQDN) vaší webové aplikace. V předchozím příkladu je soukromé ID *`webappdemope.azurewebsites.net 10.10.2.4`* .
+
+1. V podokně **myVM** ověřte, že webová aplikace je nepřístupná prostřednictvím veřejné IP adresy. Provedete to tak, že otevřete prohlížeč a vložíte název webové aplikace. Na stránce by se měla zobrazit zpráva "Chyba 403 – zakázáno".
+
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky s chybovou stránkou Error 403-Forbidden][17]
 
    > [!Important]
-   > Vzhledem k tomu, že je tato funkce ve verzi Preview, je nutné ručně spravovat položku DNS.
+   > Vzhledem k tomu, že je tato funkce ve verzi Preview, musíte ručně spravovat položku DNS (Domain Name Service).
 
-   Pro DNS máte dvě možnosti:
-   - použít hostitelský soubor virtuálního počítače 
-   - nebo použijte službu Azure DNS privátní zóna.
+   V případě DNS proveďte jednu z následujících akcí:
+ 
+   - Použijte službu Azure DNS privátní zóny.  
 
-1. První řešení: můžete vytvořit privátní zónu DNS s názvem privatelink.azurewebsites.net a propojit ji s virtuální sítí.
-1. Pak je potřeba vytvořit dva záznamy A (název aplikace a název SCM) s IP adresou vašeho privátního koncového bodu.
-   > [!div class="mx-imgBorder"]
-   >![Záznamy privátní zóny DNS][21]
+     a. Vytvořte soukromou zónu DNS s názvem *`privatelink.azurewebsites.net`* a pak ji propojte s virtuální sítí.  
+     b. Vytvořte dva záznamy A (tj. název aplikace a název správce řízení služeb [SCM]) s IP adresou vašeho privátního koncového bodu.  
+     > [!div class="mx-imgBorder"]
+     > ![Snímek obrazovky záznamů privátní zóny DNS][21]  
 
-1. Druhé řešení: Vytvořte položku hostitele, otevřete Průzkumníka souborů a vyhledejte soubor Hosts.
+   - Použijte soubor *hostitelů* virtuálního počítače.  
 
-   > [!div class="mx-imgBorder"]
-   >![Soubor hostitelů][18]
+     a. Vytvořte položku hostitelé, otevřete Průzkumníka souborů a vyhledejte soubor *hosts* .  
+     > [!div class="mx-imgBorder"]
+     > ![Snímek obrazovky zobrazující soubor hostitelů v Průzkumníkovi souborů.][18]  
+     b. Úpravou souboru *hosts* v textovém editoru přidejte položku, která obsahuje soukromou IP adresu a veřejný název vaší webové aplikace.  
+     > [!div class="mx-imgBorder"]
+     > ![Snímek obrazovky s textem souboru hostitelů][19]  
+     c. Soubor uložte.
 
-1. Úpravou souboru hostitelů pomocí programu Poznámkový blok přidejte položku s privátní IP adresou a veřejným názvem vaší webové aplikace.
-
-   > [!div class="mx-imgBorder"]
-   >![Obsah hostitelů][19]
-
-1. Soubor uložte.
-
-1. Otevřete prohlížeč a zadejte adresu URL vaší webové aplikace.
+1. V prohlížeči zadejte adresu URL vaší webové aplikace.
 
    > [!div class="mx-imgBorder"]
-   >![Web s PE][20]
+   > ![Snímek obrazovky prohlížeče zobrazujícího webovou aplikaci][20]
 
-1. K webové aplikaci přistupujete prostřednictvím privátního koncového bodu.
+Nyní přistupujete k webové aplikaci prostřednictvím privátního koncového bodu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete hotovi s použitím privátního koncového bodu, webové aplikace a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
+Až budete hotovi s použitím privátního koncového bodu, webové aplikace a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje.
 
-1. Do vyhledávacího pole v horní části portálu zadejte připravené – RG a ve výsledcích hledání vyberte připraveno-RG.
-1. Vyberte Odstranit skupinu prostředků.
-1. Zadejte RG ready pro zadejte název skupiny prostředků a vyberte Odstranit.
+1. V Azure Portal do **vyhledávacího** pole zadejte **RG**a potom v seznamu výsledků vyberte **připraveno-RG** .
+
+1. Vyberte **Odstranit skupinu prostředků**.
+
+1. V části **Zadejte název skupiny prostředků**zadejte **připravený – RG**a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální síti, webové aplikaci a privátním koncovém bodu. Připojili jste se k virtuálnímu počítači z Internetu a zabezpečeně komunikovali webové aplikaci pomocí privátního odkazu. Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure][privateendpoint].
+V tomto článku jste vytvořili virtuální počítač ve virtuální síti, webové aplikaci a privátním koncovém bodu. Připojili jste se k virtuálnímu počítači z Internetu a zabezpečeně komunikovali webové aplikaci pomocí privátního odkazu. 
+
+Další informace o privátním koncovém bodu (Preview) najdete v tématu [co je privátní koncový bod Azure][privateendpoint].
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png
@@ -244,5 +250,5 @@ V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální s�
 
 
 <!--Links-->
-[privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[privateendpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
 [privateendpoint]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview

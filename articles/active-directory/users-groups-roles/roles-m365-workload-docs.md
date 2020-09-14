@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14d5b458aeccd2587f24b30548c4b5e76912bce1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6060bc286024183661024abd56567eeefed76430
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798274"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053544"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Role správce pro služby Microsoft 365 Services
 
@@ -29,10 +29,10 @@ Všechny produkty v Microsoft 365 můžete spravovat pomocí administrativních 
 
 Služba Microsoft 365 | Obsah role | Obsah rozhraní API
 ---------------------- | ------------------ | -----------------
-Role správců v Office 365 a Microsoft 365 obchodních plánů | [Role správce Office 365](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Není k dispozici
+Role správců v Office 365 a Microsoft 365 obchodních plánů | [Microsoft 365 role správců](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Není k dispozici
 Azure Active Directory (Azure AD) a Azure AD Identity Protection| [Role správce Azure AD](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [Řízení přístupu na základě role serveru Exchange](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell pro Exchange](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Načíst přiřazení rolí](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Role správce Azure AD](directory-assign-admin-roles.md)<br>Také [o roli správce služby SharePoint v sadě Office 365](/sharepoint/sharepoint-admin-role) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](/graph/api/directoryrole-list?view=graph-rest-1.0)
+SharePoint Online | [Role správce Azure AD](directory-assign-admin-roles.md)<br>Také [o roli správce služby SharePoint v Microsoft 365](/sharepoint/sharepoint-admin-role) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Týmy/Skype pro firmy | [Role správce Azure AD](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Security & – centrum dodržování předpisů (Rozšířená ochrana před internetovými útoky pro Office 365, ochrana Exchange Online, Information Protection) | [Role správce Office 365](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Prostředí Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Načíst přiřazení rolí](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 Bezpečné skóre | [Role správce Azure AD](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](/graph/api/directoryrole-list?view=graph-rest-1.0)

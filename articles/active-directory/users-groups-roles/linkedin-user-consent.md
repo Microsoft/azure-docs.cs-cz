@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5d90391dd5512b08ee6995a32bcd0b0f111b0f2b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542357"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053931"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>Účet LinkedIn připojení ke sdílení dat a jejich souhlas
 
@@ -73,7 +73,7 @@ Když propojíte účty Microsoft a LinkedIn, umožníte Microsoftu, aby na Link
 * Data profilu – obsahuje informace, jako je vaše křestní jméno, příjmení, fotografie profilu, e-mailová adresa, nadřízený a lidé, které spravujete.
 * Data kalendáře – obsahuje schůzky v kalendářích, jejich časy, umístění a kontaktní údaje účastníků. Údaje o schůzce, jako je agenda, obsah nebo název schůzky, nejsou zahrnuté do kalendářních dat.
 * Data o zájmech – zahrnuje zájmy spojené s vaším účtem, a to na základě vašeho používání služeb Microsoftu, jako je Cortana a Bing pro firmy.
-* Data předplatných – včetně předplatných poskytovaných vaší organizací pro aplikace a služby Microsoftu, jako je například Office 365.
+* Data předplatných – včetně předplatných poskytovaných vaší organizací pro aplikace a služby Microsoftu, jako je například Microsoft 365.
 * Data kontaktů – obsahuje seznamy kontaktů v Outlooku, Skypu a dalších službách účet Microsoft, včetně kontaktních informací pro lidi, se kterými často komunikujete nebo spolupracujete. Kontakty se pravidelně importují, ukládají a používají LinkedIn, například k navrhování připojení, k organizování kontaktů a zobrazování aktualizací kontaktů.
 
 Data, ke kterým se dostanete od Microsoftu, se neukládají trvale pomocí LinkedInu s výjimkou kontaktů. Kontakty společnosti Microsoft jsou uloženy na LinkedIn, dokud je uživatelé neodstraní. Přečtěte si další informace o [odstraňování importovaných kontaktů z LinkedInu](https://www.linkedin.com/help/linkedin/answer/43377).

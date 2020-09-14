@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/08/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200139"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053449"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Řešení potíží souvisejících se Azure Data Box a Azure Data Box Heavy
 
@@ -27,13 +27,13 @@ Chyby v Data Box a Data Box Heavy jsou shrnuty takto:
 
 | Kategorie chyby *        | Popis        | Doporučená akce    |
 |----------------------------------------------|---------|--------------------------------------|
-| Názvy kontejnerů nebo sdílených složek | Názvy kontejnerů nebo sdílených složek nedodržují pravidla pro pojmenování Azure.  |Stažení seznamů chyb. <br> Přejmenujte kontejnery nebo sdílené složky. [Další informace](#container-or-share-name-errors).  |
-| Omezení velikosti kontejneru nebo sdílení | Celkový objem dat v kontejnerech nebo sdílených složkách překračuje limit Azure.   |Stažení seznamů chyb. <br> Snižte celkový objem dat v kontejneru nebo sdílené složce. [Další informace](#container-or-share-size-limit-errors).|
-| Omezení velikosti objektu nebo souboru | Objekt nebo soubory v kontejnerech nebo sdílených složkách přesahují limit Azure.|Stažení seznamů chyb. <br> Zmenšete velikost souboru v kontejneru nebo sdílené složce. [Další informace](#object-or-file-size-limit-errors). |    
-| Data nebo typ souboru | Formát dat nebo typ souboru se nepodporuje. |Stažení seznamů chyb. <br> U objektů blob stránky nebo spravovaných disků zajistěte, aby byla data zarovnaná 512 bajtů a zkopírována do předem vytvořených složek. [Další informace](#data-or-file-type-errors). |
+| Názvy kontejnerů nebo sdílených složek | Názvy kontejnerů nebo sdílených složek nedodržují pravidla pro pojmenování Azure.  |Stažení seznamů chyb. <br> Přejmenujte kontejnery nebo sdílené složky. [Přečtěte si další informace](#container-or-share-name-errors).  |
+| Omezení velikosti kontejneru nebo sdílení | Celkový objem dat v kontejnerech nebo sdílených složkách překračuje limit Azure.   |Stažení seznamů chyb. <br> Snižte celkový objem dat v kontejneru nebo sdílené složce. [Přečtěte si další informace](#container-or-share-size-limit-errors).|
+| Omezení velikosti objektu nebo souboru | Objekt nebo soubory v kontejnerech nebo sdílených složkách přesahují limit Azure.|Stažení seznamů chyb. <br> Zmenšete velikost souboru v kontejneru nebo sdílené složce. [Přečtěte si další informace](#object-or-file-size-limit-errors). |    
+| Data nebo typ souboru | Formát dat nebo typ souboru se nepodporuje. |Stažení seznamů chyb. <br> U objektů blob stránky nebo spravovaných disků zajistěte, aby byla data zarovnaná 512 bajtů a zkopírována do předem vytvořených složek. [Přečtěte si další informace](#data-or-file-type-errors). |
 | Nekritické chyby objektů BLOB nebo souborů  | Názvy objektů BLOB nebo souborů nedodržují pravidla pro pojmenování Azure nebo tento typ souboru se nepodporuje. | Tyto objekty blob nebo soubory se nemusí kopírovat nebo se můžou změnit názvy. [Přečtěte si, jak tyto chyby opravit](#non-critical-blob-or-file-errors). |
 
-\*První čtyři kategorie chyb jsou kritické chyby a je nutné je opravit předtím, než budete moci pokračovat v přípravě na odeslání.
+\* První čtyři kategorie chyb jsou kritické chyby a je nutné je opravit předtím, než budete moci pokračovat v přípravě na odeslání.
 
 
 ## <a name="container-or-share-name-errors"></a>Chyby názvu kontejneru nebo sdílené složky
@@ -53,8 +53,8 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Názvy můžou obsahovat jenom písmena, číslice a spojovníky.
     - Názvy nesmí začínat ani končit pomlčkami.
     - Názvy nemůžou mít po sobě jdoucí spojovníky.
-    - Příklady platných názvů: `my-folder-1` ,`my-really-extra-long-folder-111`
-    - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
+    - Příklady platných názvů: `my-folder-1` , `my-really-extra-long-folder-111`
+    - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
     Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
@@ -72,8 +72,8 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Názvy můžou obsahovat jenom písmena, číslice a spojovníky.
     - Názvy nesmí začínat ani končit pomlčkami.
     - Názvy nemůžou mít po sobě jdoucí spojovníky.
-    - Příklady platných názvů: `my-folder-1` ,`my-really-extra-long-folder-111`
-    - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
+    - Příklady platných názvů: `my-folder-1` , `my-really-extra-long-folder-111`
+    - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
     Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
@@ -90,8 +90,8 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Názvy můžou obsahovat jenom písmena, číslice a spojovníky.
     - Názvy nesmí začínat ani končit pomlčkami.
     - Názvy nemůžou mít po sobě jdoucí spojovníky.
-    - Příklady platných názvů: `my-folder-1` ,`my-really-extra-long-folder-111`
-    - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
+    - Příklady platných názvů: `my-folder-1` , `my-really-extra-long-folder-111`
+    - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
     Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
     
@@ -112,13 +112,17 @@ Jedná se o chyby související s daty, která přesahují velikost povolených 
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
-**Popis chyby:** Sdílení souborů Azure omezuje sdílení na 5 TB dat. Toto omezení bylo překročeno pro některé sdílené složky.
+**Popis chyby:** Sdílená složka Azure omezuje sdílení na 5 TiB dat a v účtu úložiště nejsou povolené velké sdílené složky. Tento limit byl pro některé sdílené složky překročen.
 
 **Navrhované řešení:** Na stránce **připojit a kopírovat** místního webového uživatelského rozhraní si stáhněte a zkontrolujte soubory chyb.
 
-Identifikujte složky, které tento problém mají, z protokolů chyb a ujistěte se, že soubory v této složce jsou pod 5 TB.
-
-
+- Identifikujte složky, které tento problém mají, z protokolů chyb a ujistěte se, že jsou soubory v této složce pod 5 TiB.
+- Limit 5 TiB se nevztahuje na účet úložiště, který povoluje velké sdílené složky. Při umísťování vaší objednávky ale musíte mít nakonfigurované velké sdílené složky. 
+  - Kontaktujte [Podpora Microsoftu](data-box-disk-contact-microsoft-support.md) a požádejte o nový expediční štítek.
+  - [Povolte v účtu úložiště velké sdílené složky.](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
+  - [Rozbalte sdílené složky v účtu úložiště](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares) a nastavte kvótu na 100 TIB.
+  
+  
 ## <a name="object-or-file-size-limit-errors"></a>Počet chyb omezení velikosti objektu nebo souboru
 
 Jedná se o chyby související s daty překračujícími maximální velikost objektu nebo souboru, který je povolený v Azure. 

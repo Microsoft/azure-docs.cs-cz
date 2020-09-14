@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051165"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052275"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Data o sídle a zákaznických datech pro Azure Multi-Factor Authentication
 
-Zákaznická data jsou uložená v rámci Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je třeba Office 365 a Azure. Informace o tom, kde jsou uložená zákaznická data, najdete v části [kde se nacházejí vaše data?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
+Zákaznická data jsou uložená v rámci Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je Microsoft 365 a Azure. Informace o tom, kde jsou uložená zákaznická data, najdete v části [kde se nacházejí vaše data?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
 
 Cloudové Multi-Factor Authentication Azure a Azure Multi-Factor Authentication Server a ukládají určité množství osobních údajů a dat organizace. Tento článek popisuje, co a kde jsou data uložená.
 
@@ -46,7 +46,7 @@ Tyto informace se uchovávají po dobu 90 dnů.
 
 Azure Multi-Factor Authentication neprotokoluje osobní údaje, jako je uživatelské jméno, telefonní číslo nebo IP adresa, ale existuje *UserObjectId* , který identifikuje Multi-Factor Authentication pokusů o přihlášení uživatelů. Data protokolu se ukládají po dobu 30 dnů.
 
-### <a name="azure-multi-factor-authentication"></a>Vícefaktorové ověřování Azure
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 Pro veřejné cloudy Azure, kromě ověřování Azure B2C, serveru NPS a Windows Server 2016 nebo 2019 AD FS adaptéru se ukládají následující osobní údaje:
 

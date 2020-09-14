@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8d1b6d912cadb073251d72ee327f4b19950ab1b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147129"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055181"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Odvolání přístupu uživatele v Azure Active Directory
 
@@ -38,7 +38,7 @@ Přístupové tokeny a aktualizační tokeny se často používají s tlustými 
 
 Služba Azure AD pak znovu vyhodnotí své zásady autorizace. Pokud je uživatel pořád autorizovaný, Azure AD vydá nový přístupový token a aktualizuje token.
 
-Přístupové tokeny můžou být bezpečnostními právy, pokud je nutné přístup odvolat v době, která je kratší než doba života tokenu, což je obvykle přibližně hodina. Z tohoto důvodu Microsoft aktivně pracuje na zajištění [průběžného vyhodnocení přístupu](../conditional-access/concept-continuous-access-evaluation.md) do aplikací Office 365, což pomáhá zajistit neplatnost přístupových tokenů téměř v reálném čase.  
+Přístupové tokeny můžou být bezpečnostními právy, pokud je nutné přístup odvolat v době, která je kratší než doba života tokenu, což je obvykle přibližně hodina. Z tohoto důvodu Microsoft aktivně pracuje na zajištění [průběžného vyhodnocení přístupu](../conditional-access/concept-continuous-access-evaluation.md) Microsoft 365 aplikací, což pomáhá zajistit neplatnost přístupových tokenů téměř v reálném čase.  
 
 ## <a name="session-tokens-cookies"></a>Tokeny relace (soubory cookie)
 

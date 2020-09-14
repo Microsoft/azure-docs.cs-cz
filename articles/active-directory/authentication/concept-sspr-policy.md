@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005016"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052711"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení účtů v Azure Active Directory
 
@@ -108,7 +108,7 @@ Zásada s jedním bránou vyžaduje jedno z ověřovacích dat, jako je e-mailov
 
 Pomocí rutin prostředí PowerShell můžete také odebrat konfiguraci pro nikdy nevypršení platnosti nebo zjistit, která uživatelská hesla jsou nastavena na hodnotu nikdy nevyprší.
 
-Tento návod se vztahuje na jiné poskytovatele, jako je Intune a Office 365, které se taky spoléhají na Azure AD pro identity a adresářové služby. Vypršení platnosti hesla je jediná součást zásad, kterou je možné změnit.
+Tento návod se vztahuje na jiné poskytovatele, jako je Intune a Microsoft 365, které se také spoléhají na Azure AD pro identity a adresářové služby. Vypršení platnosti hesla je jediná součást zásad, kterou je možné změnit.
 
 > [!NOTE]
 > Jenom hesla pro uživatelské účty, které nejsou synchronizované prostřednictvím Azure AD Connect, se dají nakonfigurovat tak, aby nevypršela platnost. Další informace o synchronizaci adresářů najdete v tématu [připojení AD pomocí Azure AD](../hybrid/whatis-hybrid-identity.md).

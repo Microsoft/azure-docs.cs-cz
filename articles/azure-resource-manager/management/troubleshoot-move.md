@@ -1,14 +1,14 @@
 ---
 title: Řešení chyb přesunutí
-description: K přesunutí prostředků do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
+description: Řešení potíží s přesunutím prostředků do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 60e4ffb2b79fcce85fa4b316e68e191eb14f8bf0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 41b1e2435caf9874f3582a3394664c7b7f5a8d29
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055075"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054158"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Řešení potíží s přesunem prostředků Azure do nové skupiny prostředků nebo nového předplatného
 
@@ -32,7 +32,7 @@ Některé služby vyžadují při přesunu prostředků další předpoklady. Po
 * [Model nasazení Classic](./move-limitations/classic-model-move-limitations.md)
 * [Sítě](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
-* [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
+* [Virtuální počítače](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>Velké požadavky
 

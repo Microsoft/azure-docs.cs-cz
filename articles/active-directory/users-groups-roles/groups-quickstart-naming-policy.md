@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de0212739f5cd24cec9ab58bdaf4d2b272f31200
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213677"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054360"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rychlý start: Zásady pojmenování pro skupiny v Azure Active Directory
 
@@ -68,6 +68,6 @@ A je to! Nastavili jste zásady pojmenování a přidali jste vlastní blokovan�
 
 V tomto rychlém startu jste se naučili, jak nastavit zásady pojmenování pro vaši organizaci Azure AD prostřednictvím Azure Portal.
 
-Přejděte k dalšímu článku, kde najdete další informace, včetně rutin PowerShellu pro zásady pojmenování, technických omezení, přidání seznamu vlastních blokovaných slov a koncových uživatelů v aplikacích Office 365.
+Přejděte k dalšímu článku, kde najdete další informace, včetně rutin PowerShellu pro zásady pojmenování, technických omezení, přidání seznamu vlastních blokovaných slov a prostředí pro koncové uživatele v aplikacích Microsoft 365.
 > [!div class="nextstepaction"]
 > [Prostředí PowerShell pro zásady pojmenování](groups-naming-policy.md)

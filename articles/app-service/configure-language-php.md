@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c510d6f1cc2aa4a7e71f64e0c296e14a9896614e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717978"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055295"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurace aplikace PHP pro Azure App Service
 
@@ -119,7 +119,7 @@ Potvrďte všechny změny a nasaďte svůj kód pomocí Gitu nebo nasaďte zip s
 
 Pokud chcete, aby App Service spouštěla oblíbené nástroje pro automatizaci v době nasazení, jako je například grunt, Bower nebo Gulp, je nutné dodat [vlastní skript nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script). App Service spustí tento skript při nasazení v Gitu nebo s povoleným [nasazením zip](deploy-zip.md) s povolenou automatizací sestavení. 
 
-Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Příklad:
+Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Například:
 
 ```json
 "dependencies": {
@@ -262,7 +262,7 @@ Výchozí obrázek PHP pro App Service používá Apache a neumožňuje přizpů
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    RewriteCond %{REQUEST_URI} ^/$
+    RewriteCond %{REQUEST_URI} ^(.*)
     RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
@@ -318,7 +318,7 @@ Jako alternativu k používání `.user.ini` souboru můžete v aplikaci použí
 
 Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [ direktivyphp.ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *. htaccess* do kořenového adresáře aplikace.
 
-V souboru *. htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Příklad:
+V souboru *. htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Například:
 
 ```
 php_value upload_max_filesize 1000M
@@ -469,7 +469,7 @@ Pomocí nástroje standardní [error_log ()](https://php.net/manual/function.err
 Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spustí vaši aplikaci v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v provozním režimu místně. Příklad:
+- Otestujte aplikaci místně v provozním režimu. App Service spustí vaši aplikaci v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v provozním režimu místně. Například:
     - V závislosti na vaší *composer.js*se můžou v produkčním režimu ( `require` vs.) nainstalovat různé balíčky `require-dev` .
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.

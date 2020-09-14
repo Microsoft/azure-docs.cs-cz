@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1ba383b99b8265e01cf757bfb1589a86a934e0e3
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503784"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053867"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -104,20 +104,22 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **Vytvořte skupinu prostředků.**
+2. **Vytvořte skupinu prostředků.**
 
-    Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) .
+Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) .
     
-> [!NOTE]
+> [!NOTE] 
 > Azure Red Hat OpenShift není k dispozici ve všech oblastech, kde je možné vytvořit skupinu prostředků Azure. Informace o tom, kde se podporuje Azure Red Hat OpenShift, najdete v části [dostupné oblasti](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) .
 
-    ```azurecli-interactive
-    az group create --name $RESOURCEGROUP --location $LOCATION
-    ```
+```azurecli-interactive
+az group create \
+  --name $RESOURCEGROUP \
+  --location $LOCATION
+```
 
-    The following example output shows the resource group created successfully:
+Následující příklad výstupu ukazuje, že skupina prostředků byla úspěšně vytvořena:
 
-    ```json
+```json
     {
     "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
     "location": "eastus",
@@ -128,24 +130,24 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
     },
     "tags": null
     }
-    ```
+```
 
-2. **Vytvořte virtuální síť.**
+3. **Vytvořte virtuální síť.**
 
-    Clustery Azure Red Hat OpenShift se systémem OpenShift 4 vyžadují pro hlavní a pracovní uzly virtuální síť se dvěma prázdnými podsítěmi.
+Clustery Azure Red Hat OpenShift se systémem OpenShift 4 vyžadují pro hlavní a pracovní uzly virtuální síť se dvěma prázdnými podsítěmi.
 
-    Vytvořte novou virtuální síť ve stejné skupině prostředků, kterou jste vytvořili dříve:
+Vytvořte novou virtuální síť ve stejné skupině prostředků, kterou jste vytvořili dříve:
 
-    ```azurecli-interactive
-    az network vnet create \
-    --resource-group $RESOURCEGROUP \
-    --name aro-vnet \
-    --address-prefixes 10.0.0.0/22
-    ```
+```azurecli-interactive
+az network vnet create \
+   --resource-group $RESOURCEGROUP \
+   --name aro-vnet \
+   --address-prefixes 10.0.0.0/22
+```
 
-    Následující příklad výstupu ukazuje, že virtuální síť byla úspěšně vytvořena:
+Následující příklad výstupu ukazuje, že virtuální síť byla úspěšně vytvořena:
 
-    ```json
+```json
     {
     "newVNet": {
         "addressSpace": {
@@ -161,9 +163,9 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
         "type": "Microsoft.Network/virtualNetworks"
     }
     }
-    ```
+```
 
-3. **Přidejte prázdnou podsíť pro hlavní uzly.**
+4. **Přidejte prázdnou podsíť pro hlavní uzly.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -174,7 +176,7 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-4. **Přidejte prázdnou podsíť pro pracovní uzly.**
+5. **Přidejte prázdnou podsíť pro pracovní uzly.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -185,7 +187,7 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Zakažte zásady privátního koncového bodu podsítě](../private-link/disable-private-link-service-network-policy.md) v hlavní podsíti.** To je nutné, aby bylo možné připojit a spravovat cluster.
+6. **[Zakažte zásady privátního koncového bodu podsítě](../private-link/disable-private-link-service-network-policy.md) v hlavní podsíti.** To je nutné, aby bylo možné připojit a spravovat cluster.
 
     ```azurecli-interactive
     az network vnet subnet update \

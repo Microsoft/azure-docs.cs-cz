@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 690dead3cb0059dd1b20ff042a93c36d674e62d2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717434"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052677"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Jak funguje zpětný zápis hesla samoobslužné služby pro resetování hesla v Azure Active Directory?
 
@@ -37,7 +37,7 @@ Zpětný zápis hesla poskytuje následující funkce:
 
 * **Vynucování zásad pro hesla místních Active Directory Domain Services (služba AD DS)**: když uživatel resetuje heslo, před jeho potvrzením do tohoto adresáře se ověří, jestli splňuje vaše místní služba AD DS zásady. Tato revize zahrnuje kontrolu historie, složitosti, stáří, filtrů hesel a dalších omezení hesla, která definujete v služba AD DS.
 * **Nulování zpětná vazba**: zpětný zápis hesla je synchronní operace. Uživatelé se okamžitě oznámí, pokud heslo nesplňuje zásady nebo se z nějakého důvodu nedá resetovat ani změnit.
-* **Podporuje změny hesla z přístupového panelu a Office 365**: když se uživatelům synchronizovaných nebo hesel synchronizovaná hodnota hash změnila hesla, jejichž platnost vypršela nebo kdy vypršela platnost, tato hesla se napíší zpátky do služba AD DS.
+* **Podporuje změny hesla z přístupového panelu a Microsoft 365**: Pokud se pro uživatele synchronizovaných hodnot hash nebo hesla, jejichž platnost vypršela, změnila hesla, která vypršela nebo jsou neprošlá, tato hesla se napíší zpátky do služba AD DS
 * **Podporuje zpětný zápis hesla, když ho správce resetuje z Azure Portal**: Když správce resetuje heslo uživatele v [Azure Portal](https://portal.azure.com), pokud je tento uživatel federovaný nebo je hodnota hash hesla synchronizovaná, heslo se zapíše zpátky do místního prostředí. Tato funkce se v současnosti nepodporuje na portálu pro správu Office.
 * **Nevyžaduje žádná pravidla brány firewall pro příchozí připojení**: zpětný zápis hesla používá jako základní komunikační kanál Azure Service Bus Relay. Veškerá komunikace je odchozí přes port 443.
 

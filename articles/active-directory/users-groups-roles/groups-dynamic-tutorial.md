@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82582875"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054599"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Automatické přidávání nebo odebírání členů skupin
 
-V Azure Active Directory (Azure AD) můžete automaticky přidávat uživatele do skupin zabezpečení nebo skupin Office 365 nebo je z nich odebírat, abyste to pokaždé nemuseli dělat ručně. Při každé změně vlastností uživatele nebo zařízení vyhodnotí Azure AD všechna dynamická pravidla skupin ve vaší organizaci Azure AD, aby viděli, jestli by tato změna měla přidat nebo odebrat členy.
+V Azure Active Directory (Azure AD) můžete automaticky přidávat nebo odebírat uživatele do skupin zabezpečení nebo Microsoft 365ch skupin, takže je nemusíte vždycky dělat ručně. Při každé změně vlastností uživatele nebo zařízení vyhodnotí Azure AD všechna dynamická pravidla skupin ve vaší organizaci Azure AD, aby viděli, jestli by tato změna měla přidat nebo odebrat členy.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]

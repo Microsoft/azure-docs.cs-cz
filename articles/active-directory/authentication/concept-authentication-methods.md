@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 08f3a3c17a5f6ea519eea04c4b8c5e7025adcbac
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116763"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052354"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -35,16 +35,16 @@ Následující tabulka popisuje, jaké metody jsou k dispozici pro primární ne
 
 | Metoda | Primární ověření | Sekundární ověřování |
 | --- | --- | --- |
-| [Heslo](#password) | Ano | |
+| [Heslo](#password) | Yes | |
 | [Aplikace Microsoft Authenticator](#microsoft-authenticator-app) | Ano (Preview) | MFA a SSPR |
-| [FIDO2 klíče zabezpečení (Preview)](#fido2-security-keys) | Ano | Jenom MFA |
-| [Tokeny softwaru OATH](#oath-software-tokens) | Ne | VÍCEFAKTOROVÉHO |
-| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens-preview) | Ne | VÍCEFAKTOROVÉHO |
+| [FIDO2 klíče zabezpečení (Preview)](#fido2-security-keys) | Yes | Jenom MFA |
+| [Tokeny softwaru OATH](#oath-software-tokens) | No | VÍCEFAKTOROVÉHO |
+| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens-preview) | No | VÍCEFAKTOROVÉHO |
 | [SMS](#phone-options) | Ano (Preview) | MFA a SSPR |
-| [Hlasový hovor](#phone-options) | Ne | MFA a SSPR |
-| [Bezpečnostní otázky](#security-questions) | Ne | Jenom SSPR |
-| [E-mailová adresa](#email-address) | Ne | Jenom SSPR |
-| [Hesla aplikací](#app-passwords) | Ne | Vícefaktorové ověřování pouze v určitých případech |
+| [Hlasový hovor](#phone-options) | No | MFA a SSPR |
+| [Bezpečnostní otázky](#security-questions) | No | Jenom SSPR |
+| [E-mailová adresa](#email-address) | No | Jenom SSPR |
+| [Hesla aplikací](#app-passwords) | No | Vícefaktorové ověřování pouze v určitých případech |
 
 Tyto metody ověřování se dají nakonfigurovat v Azure Portal a stále používají [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
 
@@ -212,7 +212,7 @@ Bezpečnostní otázky můžou být méně bezpečné než jiné metody, protož
 
 ### <a name="predefined-questions"></a>Předdefinované otázky
 
-Následující předdefinované bezpečnostní otázky jsou k dispozici pro použití jako metoda ověřování pomocí SSPR. Všechny tyto bezpečnostní otázky jsou přeloženy a lokalizovány do úplné sady jazyků Office 365 na základě národního prostředí prohlížeče uživatele:
+Následující předdefinované bezpečnostní otázky jsou k dispozici pro použití jako metoda ověřování pomocí SSPR. Všechny tyto bezpečnostní otázky jsou přeloženy a lokalizovány do úplné sady Microsoft 365 jazyků na základě národního prostředí prohlížeče uživatele:
 
 * V jakém městě jste se vyplnili jako první manželka/partner?
 * V jakém městě se vaše rodiče naplnily?

@@ -12,18 +12,18 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperfq1
-ms.openlocfilehash: 6c7ac840dfba665c4691fc4d389d66f44b077bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b1f23d52b96e708a16adbbf6098de4b7ab0423e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069464"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052099"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Co je jednotné přihlašování (SSO)?
 
 Jednotné přihlašování znamená, že se uživatel nemusí přihlašovat ke každé aplikaci, kterou používají. Uživatel se přihlásí jednou a přihlašovací údaje se používají i pro jiné aplikace.
 
-Pokud jste koncový uživatel, pravděpodobně nezáleží na podrobnostech jednotného přihlašování. Chcete používat jenom aplikace, které vám pomůžou být produktivní bez nutnosti zadávat heslo. Své aplikace můžete najít na adrese: https://myapps.microsoft.com .
+Pokud jste koncový uživatel, pravděpodobně nezáleží na podrobnostech jednotného přihlašování. Chcete používat jenom aplikace, které vám pomůžou být produktivní bez nutnosti zadávat heslo. Své aplikace můžete najít na adrese: https://myapplications.microsoft.com .
  
 Pokud jste správcem nebo IT specialistem, přečtěte si článek, kde najdete další informace o jednotném přihlašování a způsobu jeho implementace v Azure.
 

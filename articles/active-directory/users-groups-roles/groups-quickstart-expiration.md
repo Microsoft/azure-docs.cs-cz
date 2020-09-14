@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f6a2c1a71d088eeb1a3ea6f7e39198d401ff4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213724"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054394"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Rychlý Start: nastavení Microsoft 365ch skupin, jejichž platnost vyprší v Azure Active Directory
 
@@ -33,7 +33,7 @@ Zásady vypršení platnosti je jednoduchá:
 - Odstraněnou skupinu Microsoft 365 lze obnovit do 30 dnů vlastníkem skupiny nebo správcem služby Azure AD.
 
 > [!NOTE]
-> Skupiny teď používají Azure AD Intelligence k automatickému obnovení na základě toho, jestli jsou v nedávném použití. Toto rozhodnutí o obnovení je založené na aktivitě uživatelů ve skupinách napříč službami Office 365, jako je Outlook, SharePoint, teams, Yammer a další.
+> Skupiny teď používají Azure AD Intelligence k automatickému obnovení na základě toho, jestli jsou v nedávném použití. Toto rozhodnutí o obnovení je založené na aktivitě uživatelů ve skupinách napříč Microsoft 365 službami, jako je Outlook, SharePoint, teams, Yammer a další.
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 

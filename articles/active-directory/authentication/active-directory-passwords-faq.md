@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716329"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052374"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Nejčastější dotazy k samoobslužnému resetování hesla
 
@@ -104,7 +104,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   > * Ověřte, zda jsou ověřovací data v adresáři správně formátována, například + 1 4255551234 nebo * \@ contoso.com uživatele*. 
 * **Otázka: Jaké jazyky podporuje resetování hesla?**
 
-  > **A:** Uživatelské rozhraní pro resetování hesla, zprávy SMS a hlasové hovory jsou lokalizovány do stejných jazyků, které jsou podporovány v systému Office 365.
+  > **A:** Uživatelské rozhraní pro resetování hesla, zprávy SMS a hlasové hovory jsou lokalizovány do stejných jazyků, které jsou podporovány v Microsoft 365.
   >
   >
 * **Otázka: jaké části prostředí pro resetování hesla se při nastavování položek značky organizace na kartě Konfigurace v mém adresáři zobrazí logo?**

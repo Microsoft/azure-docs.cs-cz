@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 4c87ee92a2bc30dc2923127241013601cf3f4419
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ea66f044664082b547d1b012d7253cd6443e8610
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519837"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052762"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s chytřejší
 
@@ -40,6 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Chytřejší podporuje jednotné přihlašování iniciované v **SP**
+* Po nakonfigurování Concur můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
@@ -56,7 +57,7 @@ Pokud chcete nakonfigurovat integraci chytřejší do služby Azure AD, musíte 
 1. Na panelu výsledků vyberte **chytřejší** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-clever"></a>Konfigurace a testování jednotného přihlašování Azure AD pro chytřejší
+## <a name="configure-and-test-azure-ad-sso-for-clever"></a>Konfigurace a testování jednotného přihlašování Azure AD pro chytřejší
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí chytřejší pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v chytřejší.
 
@@ -83,10 +84,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://clever.com/in/<companyname>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://clever.com/oauth/saml/metadata.xml`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `https://clever.com/oauth/saml/metadata.xml`
 
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://clever.com/<companyname>`
+    
     > [!NOTE]
-    > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte hodnotu skutečnou adresou URL pro přihlášení. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta chytřejší](https://clever.com/about/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    >  Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta chytřejší](https://clever.com/about/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
@@ -102,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -135,7 +138,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Na stránce **okamžité přihlášení** proveďte následující kroky:
  
-    ![Okamžité přihlášení](./media/clever-tutorial/ic798985.png "Okamžité přihlášení")
+    ![Stránka pro rychlé přihlášení konfigurace jednotného přihlašování](./media/clever-tutorial/ic798985.png "Okamžité přihlášení")
 
     a. Zadejte **adresu URL pro přihlášení**.
 

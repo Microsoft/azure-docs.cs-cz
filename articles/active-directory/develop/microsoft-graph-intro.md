@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119670"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052558"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 Rozhraní Microsoft Graph API je webové rozhraní API RESTful, které umožňuje přístup k prostředkům služby Microsoft Cloud. Po registraci aplikace a získání ověřovacích tokenů pro uživatele nebo službu můžete vytvořit požadavky na rozhraní Microsoft Graph API. Další informace najdete v tématu [přehled Microsoft Graph](/graph/overview).
 
 Microsoft Graph zpřístupňuje rozhraní REST API a klientské knihovny pro přístup k datům v následujících Microsoft 365 službách:
-- Služby Office 365: Delvu, Excel, Microsoft Books, Microsoft teams, OneDrive, OneNote, Outlook/Exchange, Planner a SharePoint
+- Microsoft 365 služby: Delvu, Excel, Microsoft, Microsoft teams, OneDrive, OneNote, Outlook, Exchange, Planner a SharePoint
 - Enterprise mobility and Security Services: Advanced Threat Analytics, Rozšířená ochrana před internetovými útoky, Azure Active Directory, Identity Manager a Intune
 - Služby Windows 10: aktivity, zařízení, oznámení
 - Dynamics 365 Business Central

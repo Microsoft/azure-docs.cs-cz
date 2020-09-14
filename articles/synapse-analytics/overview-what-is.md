@@ -9,24 +9,22 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 653ad7e9b41e1c8a4708f2ab951676c144316192
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: b93814c69a08dd757a390232804a00b2777bc20e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005850"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90051983"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Co je Azure synapse Analytics (pracovní prostory verze Preview)?
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-Současná podniková analýza vyžaduje provoz v obrovském měřítku na jakémkoli druhu dat, ať už se jedná o nezpracovaný, rafinovaný nebo vysoce spravovaný. V minulosti si sestavíme tyto druhy analytických řešení, které podniky vyžadují pro spojování velkých objemů dat a technologií datových skladů, jako je Spark a SQL. V dalším kroku je potřeba je integrovat do bohatých datových kanálů, které fungují napříč daty v relačních úložištích a datových jezerech.  
+Podniková analýza musí pracovat s rozsáhlým škálováním na jakýkoli druh dat bez ohledu na to, jestli je hrubá, rafinovaná nebo vysoce popracovaná. Tyto podniky vyžadují spolupráci s velkými objemy dat a technologie datových skladů, jako jsou Spark a SQL, do kanálů s bohatými daty, které fungují napříč daty v relačních úložištích a v datových lakůch. Toto řešení je obtížné sestavit, zabezpečit a udržovat. Zpoždění složitosti, které dodává přehled o Enteprises potřeb.
 
-Toto řešení je obtížné sestavovat, konfigurovat, zabezpečovat a udržovat, což zpozdí extrakci inteligentního přehledu.
+**Azure synapse** je integrovaná analytická služba, která zrychluje přehled napříč datovými sklady a systémy pro analýzy velkých objemů dat. V jádru Azure synapse přináší dohromady nejlepší technologie **SQL** , které se používají v podnikových datových skladech, technologie **Sparku** používané pro velké objemy dat a **kanály** pro integraci dat a ETL/ELT.
 
-**Azure synapse** je integrovaná analytická služba, která urychluje přehled ze všech dat v jakémkoli měřítku napříč datovými sklady a systémy pro analýzu velkých objemů dat. Přináší dohromady nejlepší technologie **SQL** , které se používají v datových skladech v podniku, technologie **Sparku** používané při analýze velkých objemů dat a **kanály** pro integraci dat a ETL/ELT.
-
-Azure synapse se dodává s uživatelským prostředím pro web Native **Studio** , které poskytuje jednotné prostředí a model pro správu, monitorování, kódování a zabezpečení.
+Azure synapse poskytuje webové prostředí **studia** , které poskytuje jediné místo pro správu, monitorování, kódování a zabezpečení.
 
 Azure synapse poskytuje nejjednodušší a nejrychlejší způsob, jak může společnost shromažďovat přehledy o všech datech v libovolné velikosti, a to pomocí analýz, které jsou pro vás nejdůležitější. Integruje se hluboko s **Power BI** , která umožňuje datovým technikům vytvářet Analytická řešení, která fungují pro účely Business Intelligence.
 
@@ -85,8 +83,6 @@ Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické pr
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Začínáme s Azure synapse Analytics](get-started.md)
 * [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
-* [Použití sady Synapse Studio](quickstart-synapse-studio.md)
-* [Vytvoření fondu SQL](quickstart-create-sql-pool-portal.md)
 * [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
-* [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool-portal.md)

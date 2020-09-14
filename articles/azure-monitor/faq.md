@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4a5203a91ba528328dce7036d4690c6dea137c33
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569199"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054258"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -785,7 +785,7 @@ Doba odezvy je aproximace. Vzhledem k tomu, že kód aplikace neznáte, nevíte 
 
 Tato aproximace funguje dobře u protokolů, které jsou založené na požadavcích a odpovědích: jedna žádost se na připojení doprovází a přijde jedna odpověď. Jedná se o případ HTTP (S) (bez použití kanálů), ale nevyhovuje pro jiné protokoly.
 
-### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Jsou jejich omezení, pokud mám Log Analytics cenového plánu zdarma?
+### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Existují nějaká omezení, pokud mám Log Analytics cenového plánu zdarma?
 Pokud jste nakonfigurovali Azure Monitor s pracovním prostorem Log Analytics pomocí *bezplatné* cenové úrovně, funkce Azure monitor pro virtuální počítače map bude podporovat jenom pět připojených počítačů připojených k pracovnímu prostoru. Pokud máte pět virtuálních počítačů připojených k bezplatnému pracovnímu prostoru, odpojíte jeden z virtuálních počítačů a později se připojíte k novému VIRTUÁLNÍmu počítači, nový virtuální počítač se nemonitoruje a neprojeví se na stránce Mapa.  
 
 V rámci této podmínky budete po otevření virtuálního počítače vyzváni v možnosti **vyzkoušet nyní** a v levém podokně vyberte **přehledy** , i když už je nainstalovaný na virtuálním počítači.  Nebudete ale mít k možnost, která by normálně probíhala, pokud se tento virtuální počítač nepřipojil k Azure monitor pro virtuální počítače. 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e294aa2580dd9f0cceb539a2696e7ebbf08c4afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829a82cb94e5c2a7e7cbc9190047c368299612cd
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051013"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052745"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Funkce a licence pro Azure Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ V závislosti na potřebách vaší organizace se dá Azure Multi-Factor Authent
 
 Následující tabulka obsahuje seznam funkcí, které jsou k dispozici v různých verzích Azure Multi-Factor Authentication. Naplánujte si potřeby pro zabezpečení ověřování uživatelů a pak určete, který přístup splňuje tyto požadavky. Přestože Azure AD Free například poskytuje výchozí nastavení zabezpečení, které poskytuje Azure Multi-Factor Authentication, lze pro výzvu k ověření použít pouze aplikaci Mobile Authenticator, nikoli telefonní hovor nebo SMS. Tento přístup může být omezením, pokud nemůžete zajistit, aby byla aplikace pro mobilní ověřování nainstalovaná na osobním zařízení uživatele.
 
-| Funkce | Azure AD Free – výchozí hodnoty zabezpečení | Azure AD Free – globální Správci služby Azure AD | Aplikace Office 365 | Azure AD Premium P1 nebo P2 |
+| Příznak | Azure AD Free – výchozí hodnoty zabezpečení | Azure AD Free – globální Správci služby Azure AD | Aplikace Microsoft 365 | Azure AD Premium P1 nebo P2 |
 | --- |:---:|:---:|:---:|:---:|
 | Ochrana účtů správců tenantů Azure AD pomocí MFA | ● | ● (Jenom účty*globálního správce Azure AD* ) | ● | ● |
 | Mobilní aplikace jako druhý faktor | ● | ● | ● | ● |
@@ -58,7 +58,7 @@ Následující tabulka obsahuje seznam funkcí, které jsou k dispozici v různ�
 
 ## <a name="purchase-and-enable-azure-multi-factor-authentication"></a>Nákup a povolení Azure Multi-Factor Authentication
 
-Pokud chcete použít Azure Multi-Factor Authentication, zaregistrujte se nebo Zakupte si opravňující úroveň služby Azure AD. Azure AD nabízí čtyři edice – zdarma, aplikace Office 365, Premium P1 a Premium P2.
+Pokud chcete použít Azure Multi-Factor Authentication, zaregistrujte se nebo Zakupte si opravňující úroveň služby Azure AD. Služba Azure AD přichází ve čtyřech edicích: Free, Microsoft 365 Apps, Premium P1 a Premium P2.
 
 Edice Free je součástí předplatného Azure. V [následující části](#azure-ad-free-tier) najdete informace o tom, jak používat výchozí nastavení zabezpečení nebo jak chránit účty pomocí role *globálního správce služby Azure AD* .
 

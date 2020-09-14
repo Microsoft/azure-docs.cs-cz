@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager a svazky | Microsoft Docs
 description: Popisuje, jak pomocí modulu snap-in StorSimple Snapshot Manager MMC zobrazit a spravovat svazky a nakonfigurovat zálohy.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
-ms.author: twooley
-ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 79a239def70f0455f63c18d86397ec8d927f244c
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508916"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054903"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Zobrazení a správa svazků pomocí Snapshot Manager StorSimple
 ## <a name="overview"></a>Přehled
@@ -91,9 +91,9 @@ K zobrazení informací o místních a StorSimple svazcích Azure použijte nás
    
     ![Konfigurace sloupců](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | Sloupec výsledků | Description |
+   | Sloupec výsledků | Popis |
    |:--- |:--- |
-   |  Name |Sloupec **název** obsahuje písmeno jednotky přiřazené ke každému zjištěnému svazku. |
+   |  Název |Sloupec **název** obsahuje písmeno jednotky přiřazené ke každému zjištěnému svazku. |
    |  Zařízení |Sloupec **zařízení** obsahuje IP adresu zařízení, které je připojené k hostitelskému počítači. |
    |  Název svazku zařízení |Sloupec **název svazku zařízení** obsahuje název svazku zařízení, ke kterému patří vybraný svazek. Toto je název svazku definovaný v Azure Portal pro tento konkrétní svazek. |
    |  Přístup k cestám |Sloupec **přístupové cesty** zobrazuje cestu přístupu ke svazku. Toto je písmeno jednotky nebo přípojný bod, ve kterém je svazek přístupný na hostitelském počítači. |
@@ -183,7 +183,7 @@ Správa disků je systémový nástroj pro správu pevných disků a svazků neb
 6. Na stránce **přiřadit písmeno jednotky nebo cestu** přijměte výchozí hodnoty a potom klikněte na tlačítko **Další**. 
 7. Na stránce **Formát svazku** v poli **velikost alokační jednotky** vyberte **64 KB**. Zaškrtněte políčko **provést rychlé formátování** a potom klikněte na tlačítko **Další**. 
 8. Na stránce **dokončení nového zrcadleného svazku** zkontrolujte nastavení a pak klikněte na **Dokončit**. 
-9. Zobrazí se zpráva oznamující, že základní disk bude převeden na dynamický disk. Klikněte na tlačítko **Ano**.
+9. Zobrazí se zpráva oznamující, že základní disk bude převeden na dynamický disk. Klikněte na **Ano**.
    
     ![Zpráva s dynamickým převodem disku](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. V nástroji Správa disků ověřte, že disk 1 a disk 2 jsou zobrazené jako dynamické zrcadlené svazky. (Funkce**Dynamic** by se měla zobrazit ve sloupci stav a barva pruhu kapacity by se měla změnit na červenou, což značí zrcadlený svazek.) 
@@ -198,7 +198,7 @@ Pomocí následujícího postupu nakonfigurujte dynamický zrcadlený svazek a p
 2. V podokně **obor** klikněte pravým tlačítkem myši na uzel **svazky** a vyberte možnost **Prohledat svazky**. Po dokončení kontroly by se měl v podokně **výsledků** zobrazit seznam svazků. Dynamický zrcadlený svazek je uveden jako jeden svazek. 
 3. V podokně **výsledků** klikněte pravým tlačítkem na dynamický zrcadlený svazek a pak klikněte na **vytvořit skupinu svazků**. 
 4. V dialogovém okně **vytvořit skupinu svazků** zadejte název skupiny svazků, přiřaďte k této skupině dynamický zrcadlený svazek a pak klikněte na **OK**. 
-5. V podokně **Rozsah** rozbalte uzel **skupiny svazků** . Nová skupina svazků by se měla zobrazit v uzlu **skupiny svazků** . 
+5. V podokně **Rozsah** rozbalte uzel **skupiny svazků** . Nová skupina svazků by se měla zobrazit v uzlu  **skupiny svazků** . 
 6. Pravým tlačítkem myši klikněte na název skupiny svazků. 
    
    * Pokud chcete spustit interaktivní úlohu zálohování (na vyžádání), klikněte na **vytvořit zálohu**. 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495076"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052932"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Připojení SSL/TLS v Azure Database for MySQL
 
@@ -19,6 +19,9 @@ Azure Database for MySQL podporuje připojení vašeho databázového serveru k 
 
 > [!NOTE]
 > Aktualizace `require_secure_transport` hodnoty parametru serveru nemá vliv na chování služby MySQL. Pomocí funkcí vynucení protokolu SSL a TLS popsaných v tomto článku můžete zabezpečit připojení k vaší databázi.
+
+> [!IMPORTANT] 
+> Kořenový certifikát SSL je nastavený na vypršení platnosti od října 26, 2020 (10/26/2020). Aktualizujte prosím svoji aplikaci, aby používala [nový certifikát](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Další informace najdete v tématu [plánované aktualizace certifikátů](concepts-certificate-rotation.md) .
 
 ## <a name="ssl-default-settings"></a>Výchozí nastavení SSL
 

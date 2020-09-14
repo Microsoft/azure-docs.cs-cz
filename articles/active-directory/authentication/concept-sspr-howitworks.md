@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: cf03dffe82d611f10639af2a147bc2d9e9316621
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377195"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052770"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -39,7 +39,7 @@ Uživatel může resetovat nebo změnit heslo pomocí [portálu SSPR](https://ak
 
 Když uživatel vybere odkaz bez **přístupu k účtu** z aplikace nebo stránky nebo přejde přímo na [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) , jazyk použitý na portálu SSPR je založený na následujících možnostech:
 
-* Ve výchozím nastavení se k zobrazení SSPR v příslušném jazyku používá národní prostředí prohlížeče. Prostředí pro resetování hesla je lokalizováno do stejného jazyka, který [podporuje sada Office 365](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec).
+* Ve výchozím nastavení se k zobrazení SSPR v příslušném jazyku používá národní prostředí prohlížeče. Prostředí pro resetování hesla je lokalizované do stejného jazyka, který [Microsoft 365 podporuje](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec).
 * Pokud chcete odkazovat na SSPR v konkrétním lokalizovaném jazyce, připojte se `?mkt=` ke konci adresy URL pro resetování hesla spolu s požadovaným národním prostředím.
     * Pokud například chcete zadat španělský národní prostředí *ES-US* , použijte `?mkt=es-us`  -  [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) .
 
@@ -77,7 +77,7 @@ Předtím, než uživatelé můžou resetovat nebo měnit heslo pomocí SSPR, se
 
 Můžete povolit, aby uživatel po přihlášení k aplikacím pomocí Azure AD dokončil registraci SSPR. Tento pracovní postup obsahuje následující aplikace:
 
-* Office 365
+* Microsoft 365
 * portál Azure
 * Přístupový panel
 * Federované aplikace
@@ -226,7 +226,7 @@ SSPR provádí ekvivalent resetování hesla iniciované správcem ve službě A
 
 Resetování a změna hesla jsou plně podporované ve všech konfiguracích B2B (Business-to-Business). Resetování hesla uživatele B2B je podporované v následujících třech případech:
 
-* **Uživatelé z partnerské organizace s existujícím klientem Azure AD**: Pokud organizace, se kterou jste partnerem, má stávajícího TENANTA Azure AD, zaplatíme, že v tomto tenantovi jsou povolené zásady pro resetování hesla. Aby se resetování hesla fungovalo, partnerská organizace potřebuje jenom jistotu, že je povolená služba Azure AD SSPR. Zákazníkům Office 365 se neúčtují žádné další poplatky.
+* **Uživatelé z partnerské organizace s existujícím klientem Azure AD**: Pokud organizace, se kterou jste partnerem, má stávajícího TENANTA Azure AD, zaplatíme, že v tomto tenantovi jsou povolené zásady pro resetování hesla. Aby se resetování hesla fungovalo, partnerská organizace potřebuje jenom jistotu, že je povolená služba Azure AD SSPR. Za Microsoft 365 zákazníky se neúčtují žádné další poplatky.
 * **Uživatelé, kteří se přihlásí prostřednictvím** samoobslužné registrace: Pokud je organizace, které jste partner použili k tomu, aby se do tenanta dostali pomocí [samoobslužné](../users-groups-roles/directory-self-service-signup.md) funkce pro registraci, umožníme jim resetovat heslo pomocí e-mailu, který zaregistrovali.
 * **Uživatelé B2B**: Všichni noví uživatelé B2B, kteří vytvořili pomocí nových [možností Azure AD B2B](../external-identities/what-is-b2b.md) , můžou resetovat hesla také pomocí e-mailu, který zaregistrovali během procesu pozvání.
 

@@ -14,18 +14,18 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421395"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055448"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivace mých rolí Azure AD v PIM
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům v Azure AD a dalších online služby Microsoftu, jako je například sada Office 365 nebo Microsoft Intune.  
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům v Azure AD a dalším online služby Microsoftu, jako je Microsoft 365 nebo Microsoft Intune.  
 
-Pokud jste nastavili nárok na roli správce, musíte přiřazení role aktivovat, když potřebujete provést privilegované akce. Pokud například občas spravujete funkce sady Office 365, správci privilegovaných rolí vaší organizace nemůžou mít trvalého globálního správce, protože tato role má dopad i na jiné služby. Místo toho vám budou mít nárok na role Azure AD, jako je třeba správce Exchange Online. Můžete požádat o aktivaci této role, když budete potřebovat její oprávnění, a pak budete mít kontrolu nad tím, jak bude mít správce na předstanovenou dobu.
+Pokud jste nastavili nárok na roli správce, musíte přiřazení role aktivovat, když potřebujete provést privilegované akce. Pokud například příležitostně spravujete Microsoft 365 funkce, správci privilegovaných rolí vaší organizace nemůžou mít trvalého globálního správce, protože tato role má dopad i na jiné služby. Místo toho vám budou mít nárok na role Azure AD, jako je třeba správce Exchange Online. Můžete požádat o aktivaci této role, když budete potřebovat její oprávnění, a pak budete mít kontrolu nad tím, jak bude mít správce na předstanovenou dobu.
 
 Tento článek je určen pro správce, kteří potřebují aktivovat roli Azure AD v Privileged Identity Management.
 
@@ -118,7 +118,7 @@ Když v Privileged Identity Management aktivujete roli, aktivace se nemusí okam
 
 # <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
-## <a name="activate-a-role"></a>Aktivace role
+## <a name="activate-a-role-previous-version"></a>Aktivace role (předchozí verze)
 
 Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomocí možnosti navigace **Moje role** v Privileged Identity Management.
 
@@ -168,7 +168,7 @@ Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomoc�
 
     Pokud [role vyžaduje schválení](./azure-ad-pim-approval-workflow.md) , v pravém horním rohu prohlížeče se zobrazí oznámení Azure informující o tom, že žádost čeká na schválení.
 
-## <a name="view-the-status-of-your-requests"></a>Zobrazení stavu vašich žádostí
+## <a name="view-the-status-of-your-requests-previous-version"></a>Zobrazit stav vašich požadavků (předchozí verze)
 
 Stav vašich nevyřízených žádostí můžete zobrazit a aktivovat.
 
@@ -180,7 +180,7 @@ Stav vašich nevyřízených žádostí můžete zobrazit a aktivovat.
 
     ![Role Azure AD – seznam Moje žádosti](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
-## <a name="deactivate-a-role"></a>Deaktivace role
+## <a name="deactivate-a-role-previous-version"></a>Deaktivace role (předchozí verze)
 
 Po aktivaci role se po dosažení časového limitu (způsobilá doba trvání) automaticky deaktivuje.
 
@@ -196,7 +196,7 @@ Pokud dokončujete úlohy správce na začátku, můžete roli také ručně dea
 
 1. Najděte roli, kterou jste dokončili, a potom klikněte na **deaktivovat**.
 
-## <a name="cancel-a-pending-request"></a>Zrušení žádosti, která čeká na vyřízení
+## <a name="cancel-a-pending-request-previous-version"></a>Zrušit nevyřízenou žádost (předchozí verze)
 
 Pokud nepotřebujete aktivovat roli, která vyžaduje schválení, můžete žádost kdykoli zrušit.
 
@@ -212,7 +212,7 @@ Pokud nepotřebujete aktivovat roli, která vyžaduje schválení, můžete žá
 
    ![Seznam Moje žádosti s zvýrazněným tlačítkem Storno](./media/pim-how-to-activate-role/directory-role-cancel.png)
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot-previous-version"></a>Řešení potíží (předchozí verze)
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Po aktivaci role nedojde k udělení oprávnění
 

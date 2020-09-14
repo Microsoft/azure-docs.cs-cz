@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb637ae3da9c6a0a3ea066ad741845bad36d5d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489625"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055159"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů s Azure AD
 
@@ -29,7 +29,7 @@ ms.locfileid: "89489625"
 Někdy organizace potřebují použít jedno uživatelské jméno a heslo pro více lidí, což se obvykle stává ve dvou případech:
 
 * Při přístupu k aplikacím, které vyžadují jedinečné přihlášení a heslo pro každého uživatele, bez ohledu na to, jestli jsou místní aplikace nebo spotřebitelské cloudové služby (například firemní účty sociálních médií).
-* Při vytváření prostředí s více uživateli. Je možné, že máte jeden místní účet, který má zvýšená oprávnění, a používá se pro základní aktivity nastavení, správy a obnovení. Například místní účet globální správce pro Office 365 nebo kořenový účet v Salesforce.
+* Při vytváření prostředí s více uživateli. Je možné, že máte jeden místní účet, který má zvýšená oprávnění, a používá se pro základní aktivity nastavení, správy a obnovení. Například místní účet "globální správce" pro Microsoft 365 nebo účet root v Salesforce.
 
 Tradičně jsou tyto účty sdíleny distribucí přihlašovacích údajů (uživatelské jméno a heslo) pravým jednotlivcům nebo jejich uložením do sdíleného umístění, kde k nim může přistupovat více důvěryhodných agentů.
 

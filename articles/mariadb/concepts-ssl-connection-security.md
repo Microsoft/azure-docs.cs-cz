@@ -6,15 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 5072710378d0a179b3b96ae9b698e9a92d81cf44
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a108459985f235f0280354ef7b4fa0cb181f5dda
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290242"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054241"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>Připojení SSL/TLS v Azure Database for MariaDB
 Azure Database for MariaDB podporuje připojení vašeho databázového serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
+
+> [!IMPORTANT] 
+> Kořenový certifikát SSL je nastavený na vypršení platnosti od října 26, 2020 (10/26/2020). Aktualizujte prosím svoji aplikaci, aby používala [nový certifikát](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Další informace najdete v tématu [plánované aktualizace certifikátů](concepts-certificate-rotation.md) .
 
 ## <a name="default-settings"></a>Výchozí nastavení
 Ve výchozím nastavení by databázová služba měla být nakonfigurovaná tak, aby při připojení k MariaDB vyžadovala připojení SSL.  Doporučujeme, abyste se vyhnuli vypnutí možnosti SSL, kdykoli to bude možné.

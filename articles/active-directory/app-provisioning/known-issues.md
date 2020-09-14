@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271001"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052375"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -66,7 +66,13 @@ Výrazy mapování atributu můžou mít maximálně 10 000 znaků.
 - Zřizování vnořených skupin se nepodporuje. 
 - Zřizování pro klienty B2C se nepodporuje kvůli velikosti klientů. 
 
-**Interval zřizování je opravený** . [Čas](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) mezi cykly zřizování není v současné době možné konfigurovat. 
+**Automatické zřizování není v naší aplikaci založené na OIDC k dispozici.**
+
+Pokud vytvoříte registraci aplikace, nebude mít odpovídající instanční objekt v podnikových aplikacích povolený automatický zřizování uživatelů. Musíte buď požádat o přidání aplikace do galerie, pokud je určená pro použití ve více organizacích, nebo vytvořit druhou aplikaci mimo galerii pro zřizování. 
+
+**Interval zřizování je opravený.**
+
+[Čas](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) mezi cykly zřizování není v současné době možné konfigurovat. 
 
 **Změny, které se nepohybují z cílové aplikace do Azure AD**
 

@@ -3,7 +3,7 @@ title: Zásady zálohování StorSimple Snapshot Manager | Microsoft Docs
 description: Popisuje, jak pomocí modulu snap-in StorSimple Snapshot Manager MMC vytvářet a spravovat zásady zálohování, které řídí naplánované zálohy.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 871f2313b8cd0e8b94a7daff00e5743ee5cdfd71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 745aeb9844f1abad075d34b34735563200ea618b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511525"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054938"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Použití Snapshot Manager StorSimple k vytváření a správě zásad zálohování
 ## <a name="overview"></a>Přehled

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799430"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055227"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
 
@@ -37,12 +37,12 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
 
 ## <a name="terminology"></a>Terminologie
 
-| Termín|Popis|
+| Období|Popis|
 | ----|-----------|
 | Dvojúrovňové ověřování | Proces ověření, který vyžaduje, abyste konkrétně použili jenom dvě části ověřovacích informací, jako je heslo a PIN kód. Aplikace Microsoft Authenticator podporuje standardní dvojúrovňové ověřování a přihlašování se všemi hesly. |
 | Multi-Factor Authentication (MFA) | Každé dvojúrovňové ověřování je Multi-Factor Authentication a vyžaduje, abyste v závislosti na požadavcích vaší organizace používali *aspoň* dvě části ověřovacích informací. |
-| Účet Microsoft (označovaný také jako MSA) | Vytvoříte si vlastní osobní účty, abyste získali přístup k vašim zákaznickým produktům a cloudovým službám Microsoftu, jako je například Outlook, OneDrive, Xbox LIVE nebo Office 365. Vaše účet Microsoft je vytvořená a uložená v systému účtu Microsoft Consumer identity, který je spuštěný Microsoftem. |
-| Pracovní nebo školní účet | Vaše organizace vytvoří svůj pracovní nebo školní účet (například alain@contoso.com ), aby vám umožnil přístup k internímu a potenciálně omezenému zdroji, jako jsou Microsoft Azure, Windows Intune a Office 365. |
+| Účet Microsoft (označovaný také jako MSA) | Vytvoříte si vlastní osobní účty, abyste získali přístup k vašim zákaznickým produktům a cloudovým službám Microsoftu, jako je například Outlook, OneDrive, Xbox LIVE nebo Microsoft 365. Vaše účet Microsoft je vytvořená a uložená v systému účtu Microsoft Consumer identity, který je spuštěný Microsoftem. |
+| Pracovní nebo školní účet | Vaše organizace vytvoří svůj pracovní nebo školní účet (například alain@contoso.com ), aby vám umožnil přístup k internímu a potenciálně omezenému zdroji, jako je Microsoft Azure, Windows Intune a Microsoft 365. |
 | Ověřovací kód | Osmimístný kód, který se zobrazí v ověřovací aplikaci v rámci každého přidaného účtu. Ověřovací kód se změní každých 30 sekund, což někomu brání v použití kódu několikrát. Tato verze se označuje také jako JEDNORÁZOVé heslo. |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>Jak dvojúrovňové ověřování funguje s aplikací

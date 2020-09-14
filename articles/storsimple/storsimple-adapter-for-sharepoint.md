@@ -3,7 +3,7 @@ title: Nainstalovat adaptér StorSimple pro SharePoint | Microsoft Docs
 description: Popisuje, jak nainstalovat a nakonfigurovat nebo odebrat adaptér StorSimple pro službu SharePoint ve farmě serverů SharePoint.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
-ms.author: twooley
-ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75930210"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053272"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Instalace a konfigurace adaptéru StorSimple pro SharePoint
 ## <a name="overview"></a>Přehled
@@ -238,7 +238,7 @@ Po přesunutí objektů BLOB zpět do databáze obsahu SQL Server použijte jedn
 2. Dvakrát klikněte na adaptér StorSimple pro instalační službu SharePoint. Spustí se Průvodce instalací nástroje.
    
     ![Průvodce instalací](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. Klikněte na **Další**. Zobrazí se následující stránka.
+3. Klikněte na **Next** (Další). Zobrazí se následující stránka.
    
     ![Průvodce instalací – odebrání stránky](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 4. Kliknutím na **Odebrat** vyberte proces odebrání. Zobrazí se následující stránka.
