@@ -40,7 +40,7 @@ Simulátor zařízení je založený na **Node.js**, verzi 10.0. x nebo novějš
 
 Následující obrázek znázorňuje architekturu tohoto řešení pomocí digitálních vláken Azure se službou Device Provisioning. Zobrazuje jak zřizování zařízení, tak i jejich vyřazení.
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením "přidělení". Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením přidělení. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
 
 Tento článek je rozdělen do dvou částí:
 * [*Automatické zřizování zařízení pomocí služby Device Provisioning Service*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ Podrobnější vysvětlení jednotlivých kroků v architektuře najdete v jejic
 
 V této části budete připojovat službu Device Provisioning k digitálním Vlákenám Azure k automatickému zřizování zařízení přes níže uvedenou cestu. Toto je výňatek z plné architektury uvedené [výše](#solution-architecture).
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Zřizovací tok – ukázka diagramu architektury řešení, s čísly, která se přidávají k označení částí toku. Data se převedou mezi zařízeními termostata a DPS (1 pro zařízení > DPS a 5 pro zařízení DPS >). Data také přecházejí z DPS do IoT Hub (4) a do digitálních vláken Azure (3) prostřednictvím funkce Azure s označením "přidělení" (2).":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Zřizovací tok – ukázka diagramu architektury řešení, s čísly, která se přidávají k označení částí toku. Data se převedou mezi zařízeními termostata a DPS (1 pro zařízení > DPS a 5 pro zařízení DPS >). Data také přecházejí z DPS do IoT Hub (4) a do digitálních vláken Azure (3) prostřednictvím funkce Azure s označením přidělení (2).":::
 
 Tady je popis toku procesu:
 1. Zařízení kontaktuje koncový bod DPS a předává identifikační informace, aby prokázal svoji identitu.
