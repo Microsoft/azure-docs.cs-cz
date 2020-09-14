@@ -130,7 +130,7 @@ Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azu
 
   1. Na hlavní stránce vyberte tlačítko **Povolit doplněk** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Snímek obrazovky s tlačítkem "Povolit doplněk" na stránce "připojení k Azure Policy pro službu Azure Kubernetes Services (A K).":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Snímek obrazovky s tlačítkem Povolit doplněk na stránce připojení k Azure Policy pro službu Azure Kubernetes Services (A K).":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -470,7 +470,7 @@ Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Porta
 
   1. Na hlavní stránce vyberte tlačítko **zakázat doplněk** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Snímek obrazovky s tlačítkem "zakázat doplněk" na stránce "připojení k Azure Policy pro službu Azure Kubernetes Services (A K)." border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Snímek obrazovky s tlačítkem zakázat doplněk na stránce připojení k Azure Policy pro službu Azure Kubernetes Services (A K)." border="false":::
 
 - Azure CLI
 
