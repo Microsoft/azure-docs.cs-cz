@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 677810c21f9ea6151e2ffe7a4e2b9cdc8473a09f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3a11f77384c520bed9824841269be4ad998adba4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227208"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056196"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Reakce modulu plug-in pro Application Insights JavaScript SDK
 
@@ -42,7 +42,7 @@ const browserHistory = createBrowserHistory({ basename: '' });
 var reactPlugin = new ReactPlugin();
 var appInsights = new ApplicationInsights({
     config: {
-        instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE'
+        instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
         extensions: [reactPlugin],
         extensionConfig: {
           [reactPlugin.identifier]: { history: browserHistory }
@@ -64,7 +64,7 @@ export default withAITracking(reactPlugin,appInsights, MyComponent);
 
 ## <a name="configuration"></a>Konfigurace
 
-| Název    | Výchozí | Popis                                                                                                    |
+| Name    | Výchozí | Popis                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | historie | null    | Reagovat na historii směrovače. Další informace najdete v dokumentaci k balíčku s informacemi o [směrovači](https://reactrouter.com/web/api/history). Pokud se chcete dozvědět, jak přistupovat k objektu History mimo součásti, přečtěte si [Nejčastější dotazy k reakci – směrovač](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components) .    |
 

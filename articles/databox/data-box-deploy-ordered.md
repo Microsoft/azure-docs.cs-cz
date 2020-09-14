@@ -2,18 +2,18 @@
 title: Kurz pro objednání Azure Data Box | Microsoft Docs
 description: V tomto kurzu se dozvíte o Azure Data Box hybridní řešení, které umožňuje importovat místní data do Azure a jak objednat Azure Data Box.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
-ms.author: twooley
-ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/09/2020
+ms.author: alkohli
+ms.openlocfilehash: 2ab74b87b287296c4ff975d5af75714c89001004
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783565"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055631"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -237,7 +237,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     ![Výběr možnosti Data Boxu 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. V **uvedeném pořadí**přejděte na kartu **základy** . Zadejte nebo vyberte následující informace a vyberte **Další: cílová data>**.
+6. V **uvedeném pořadí**přejdete na kartu **základy** . Zadejte nebo vyberte následující informace a vyberte **Další: cílová Data>**.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
@@ -269,7 +269,18 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahraje virtuální pevné disky jako objekty blob stránky do přípravného účtu úložiště, a teprve pak je převede na spravované disky a přesune do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-    Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
+    Pokračujte výběrem **Další: zabezpečení** .
+
+1. Pokud chcete povolit šifrování na základě softwaru, vyberte v části **zabezpečení**možnost **Povolit pro objednávku dvojité šifrování**. 
+
+   Šifrování založené na softwaru se provádí kromě šifrování AES-256 dat na Data Box.
+
+   > [!NOTE]
+   > Povolení této možnosti může způsobit, že zpracování objednávek a kopírování dat trvá déle. Po vytvoření objednávky tuto možnost nemůžete změnit.
+
+   ![Obrazovka zabezpečení pro import datového boxu, dvojité šifrování](media/data-box-deploy-ordered/select-data-box-import-07c.png)
+
+   Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
 
 8. V **podrobnostech kontaktu**vyberte **+ Přidat dodací adresu**.
 

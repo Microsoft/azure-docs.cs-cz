@@ -2,17 +2,17 @@
 title: Možnosti migrace dat ze zařízení StorSimple 8000 series
 description: Poskytuje přehled možností migrace dat z řady StorSimple 8000.
 services: storsimple
-author: twooley
+author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: twooley
-ms.openlocfilehash: 92ab570b3e06d67d7986a8103e9622e95eb57e7e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 78ac7e849a3a8f1742701006638a2cb72299bad7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783905"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055771"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Možnosti migrace dat z řady StorSimple 8000
 
@@ -95,7 +95,7 @@ A. V závislosti na jejich scénáři mají uživatelé řady StorSimple 8000 n�
 
 ### <a name="q-is-migration-to-other-storage-solutions-supported"></a>Otázka: Je migrace na jiná řešení úložiště podporovaná?
 
-A. Ano. Migrace na jiná řešení úložiště pomocí hostitelské kopie dat je podporovaná.
+A. Yes. Migrace na jiná řešení úložiště pomocí hostitelské kopie dat je podporovaná.
 
 ### <a name="q-is-migration-supported-by-microsoft"></a>Otázka: Je migrace podporovaná Microsoftem?
 

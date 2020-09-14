@@ -13,12 +13,12 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8c6a9304927f5d4bcad895b725955c522b60207a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266232"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056077"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování
 
@@ -44,7 +44,7 @@ Můžete vytvářet a odstraňovat hesla aplikací podle toho, jak se používá
 
 - **Vaše organizace používá dvojúrovňové ověřování a stránku další ověření zabezpečení.** Pokud používáte svůj pracovní nebo školní účet (například, alain@contoso.com ) se dvojúrovňovém ověřováním ve vaší organizaci, můžete heslo aplikace spravovat na [stránce další ověření zabezpečení](https://account.activedirectory.windowsazure.com/Proofup.aspx). Podrobné pokyny najdete v tématu [vytváření a odstraňování hesel aplikací pomocí stránky další ověření zabezpečení](#create-and-delete-app-passwords-from-the-additional-security-verification-page) v tomto článku.
 
-- **Vaše organizace používá dvojúrovňové ověřování a portál Office 365.** Pokud používáte svůj pracovní nebo školní účet (například, alain@contoso.com ), dvojúrovňové ověřování a aplikace Office 365 ve vaší organizaci, můžete spravovat hesla aplikací ze [stránky portálu Office 365](https://www.office.com). Podrobné pokyny najdete v tématu [vytváření a odstraňování hesel aplikací pomocí portálu Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) v tomto článku.
+- **Vaše organizace používá dvojúrovňové ověřování a portál Office 365.** Pokud používáte svůj pracovní nebo školní účet (například, alain@contoso.com ), dvojúrovňové ověřování a Microsoft 365 aplikace ve vaší organizaci, můžete spravovat hesla aplikací ze [stránky portálu Office 365](https://www.office.com). Podrobné pokyny najdete v tématu [vytváření a odstraňování hesel aplikací pomocí portálu Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) v tomto článku.
 
 - **Používáte dvojúrovňové ověřování s osobní účet Microsoft.** Pokud používáte osobní účet Microsoft (například, alain@outlook.com ) se dvojúrovňovém ověřováním, můžete na [stránce základy zabezpečení](https://account.microsoft.com/security/)spravovat hesla aplikací. Podrobné pokyny najdete v tématu [používání hesel aplikací s aplikacemi, které nepodporují dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
@@ -82,11 +82,11 @@ Hesla aplikací můžete vytvořit a odstranit na stránce **Další ověření 
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Vytváření a odstraňování hesel aplikací pomocí portálu Office 365
 
-Pokud ke svému pracovnímu nebo školnímu účtu a vašim aplikacím Office 365 používáte dvoustupňové ověřování, můžete hesla aplikací vytvořit a odstranit pomocí portálu Office 365.
+Pokud ke svému pracovnímu nebo školnímu účtu a vašim Microsoft 365m aplikacím používáte dvoustupňové ověřování, můžete hesla aplikací vytvořit a odstranit pomocí portálu Office 365.
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>Vytvoření hesel aplikací pomocí portálu Office 365
 
-1. Přihlaste se k Office 365 a potom na [stránce Můj účet](https://portal.office.com)vyberte **zabezpečení & ochrany osobních údajů**a potom rozbalte **Další ověření zabezpečení**.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu, otevřete [stránku Můj účet](https://portal.office.com), vyberte **zabezpečení & ochrany osobních údajů**a potom rozbalte **Další ověření zabezpečení**.
 
     ![Portál Office, který ukazuje rozšířenou další oblast ověření zabezpečení](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
 

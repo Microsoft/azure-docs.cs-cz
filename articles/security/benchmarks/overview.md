@@ -1,55 +1,65 @@
 ---
-title: Přehled srovnávacích testů zabezpečení Azure
-description: Přehled srovnávacích testů zabezpečení
+title: Přehled služby Azure Security test benchmark v2
+description: Přehled služby Azure Security test test v2
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 453e88ed59df0d6e88b8db32ea1836a4371ab3a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2be5df88a665c800f55f773b2470cc095fa27b2b
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529263"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058678"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Přehled srovnávacích testů zabezpečení Azure
 
-Srovnávací test zabezpečení Azure obsahuje doporučení, která vám pomohou vylepšit zabezpečení vašich aplikací a dat v Azure.
+Srovnávací test zabezpečení Azure (dokumentem SSAE) poskytuje doporučené osvědčené postupy a doporučení, které vám pomůžou zlepšit zabezpečení zatížení, dat a služeb v Azure.
 
-Tento srovnávací test se zaměřuje na cloudové oblasti zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1.
+Tento srovnávací test je součástí sady holistických pokynů pro zabezpečení, které také zahrnují:
 
-V srovnávacím testu zabezpečení Azure se používají následující ovládací prvky: 
+- **Rozhraní pro přijetí do cloudu** – doprovodné materiály k zabezpečení, včetně [strategie](/azure/cloud-adoption-framework/strategy/define-security-strategy), [rolí a odpovědností](/azure/cloud-adoption-framework/organize/cloud-security), [osvědčených postupů pro Azure Top 10](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)a [referenční implementace](/azure/cloud-adoption-framework/ready/enterprise-scale/).
+- **Architekturu Azure ve správném prostředí** – pokyny k [zabezpečení vašich úloh](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) v Azure.
+- **Osvědčené postupy zabezpečení od Microsoftu** – [doporučení](/security/compass/microsoft-security-compass-introduction) s příklady v Azure.
+ Srovnávací test zabezpečení Azure se zaměřuje na oblasti řízení zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1 a National Institute of Standards and Technology (NIST) SP800-53.
+Srovnávací testy zabezpečení Azure obsahují následující ovládací prvky:
 
-- [Zabezpečení sítě](security-control-network-security.md)
-- [Protokolování a monitorování](security-control-logging-monitoring.md)
-- [Identita a řízení přístupu](security-control-identity-access-control.md)
-- [Ochrana dat](security-control-data-protection.md)
-- [Správa ohrožení zabezpečení](security-control-vulnerability-management.md)
-- [Správa inventáře a aktiv](security-control-inventory-asset-management.md)
-- [Zabezpečená konfigurace](security-control-secure-configuration.md)
-- [Obrana před malwarem](security-control-malware-defense.md)
-- [Obnovení dat](security-control-data-recovery.md)
-- [Reakce na incidenty](security-control-incident-response.md)
-- [Penetrační testy a tzv. red team exercises](security-control-penetration-tests-red-team-exercises.md)
+| DOKUMENTEM SSAE – domény ovládacích prvků | Popis 
+|--|--|
+| [Zabezpečení sítě (NS)](security-controls-v2-network-security.md) | Zabezpečení sítě pokrývá ovládací prvky pro zabezpečení a ochranu sítí Azure, včetně zabezpečení virtuálních sítí, vytváření privátních připojení, prevenci a zmírnění externích útoků a zabezpečení DNS. |
+| [Správa identit (IM)](security-controls-v2-identity-management.md) | Správa identit pokrývá ovládací prvky pro vytvoření zabezpečeného řízení identity a přístupu pomocí Azure Active Directory, včetně použití jednotného přihlašování, silného ověřování, spravovaných identit (a principů služeb) pro aplikace, podmíněný přístup a monitorování anomálií. |
+| [Privilegovaný přístup (PA)](security-controls-v2-privileged-access.md) | Privilegovaný přístup pokrývá ovládací prvky pro ochranu privilegovaného přístupu k vašemu tenantovi a prostředkům Azure, včetně řady ovládacích prvků pro ochranu administrativního modelu, účtů pro správu a pracovních stanic s privilegovaným přístupem proti úmyslnému a neúmyslnému riziku. |
+| [Ochrana dat (DP)](security-controls-v2-data-protection.md) | Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a prostřednictvím autorizovaných mechanismů přístupu, včetně zjišťování, klasifikace, ochrany a monitorování citlivých datových prostředků pomocí řízení přístupu, šifrování a protokolování v Azure. |
+| [Správa prostředků (AM)](security-controls-v2-asset-management.md) | Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti zabezpečení a zásad správného řízení pro prostředky Azure, včetně doporučení týkajících se zabezpečení, přístupu k inventáři prostředků a správě schválení pro služby a prostředky (inventarizace, sledování a opravy). |
+| [Protokolování a detekce hrozeb (LT)](security-controls-v2-logging-threat-detection.md) | Protokolování a detekce hrozeb pokrývá ovládací prvky pro detekci hrozeb v Azure a povolování, shromažďování a ukládání protokolů auditu pro služby Azure, včetně povolování zjišťování, vyšetřování a nápravných procesů s ovládacími prvky pro generování vysoce kvalitních výstrah s detekcí nativních hrozeb ve službách Azure. zahrnuje také shromažďování protokolů s Azure Monitor, centralizaci analýzy zabezpečení s použitím Sentinel Azure, synchronizaci času a uchovávání protokolů. |
+| [Reakce na incidenty (IR)](security-controls-v2-incident-response.md) | Reakce na incidenty pokrývá ovládací prvky v životním cyklu reakce na incidenty – přípravu, zjišťování a analýzu, zahrnutí a následné aktivity, včetně použití služeb Azure, jako jsou Azure Security Center a Sentinel, k automatizaci procesu reakce na incidenty. |
+| [Stav a Správa ohrožení zabezpečení (PV)](security-controls-v2-posture-vulnerability-management.md) | Stav a Správa ohrožení zabezpečení se zaměřují na ovládací prvky pro hodnocení a zlepšení stav zabezpečení Azure, včetně kontroly ohrožení zabezpečení, testování průniku a nápravy, jakož i sledování konfigurace zabezpečení, vytváření sestav a opravy v prostředcích Azure. |
+| [Zabezpečení koncového bodu (ES)](security-controls-v2-endpoint-security.md) | Služba Endpoint Security pokrývá ovládací prvky zjišťování a odezvy koncových bodů, včetně použití zjišťování koncových bodů a odezvy (EDR) a služby anti-malware pro koncové body v prostředích Azure. |
+| [Zálohování a obnovení (BR)](security-controls-v2-backup-recovery.md) | Zálohování a obnovení pokrývá ovládací prvky, aby se zajistilo, že se budou provádět, ověřovat a chránit data a konfigurace v různých úrovních služeb. |
+| [Řízení a strategie (GS)](security-controls-v2-governance-strategy.md) | Zásady správného řízení a strategie poskytují pokyny k zajištění soudržné strategie zabezpečení a dokumentovaného přístupu pro řízení a zajištění zabezpečení, včetně stanovení rolí a odpovědností pro různé funkce cloudového zabezpečení, jednotnou technickou strategii a podpůrné zásady a standardy. |
 
-Můžete si také stáhnout [excelovou tabulku Azure Security benchmark v1](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets).
+Můžete si také stáhnout srovnávací test zabezpečení Azure ve [formátu tabulky](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark).
 
-## <a name="azure-security-benchmark-recommendations"></a>Doporučení pro srovnávací testy zabezpečení Azure 
+## <a name="azure-security-benchmark-recommendations"></a>Doporučení pro srovnávací testy zabezpečení Azure
 
-Každé doporučení zahrnuje následující informace: 
+Každé doporučení zahrnuje následující informace:
 
-- **Azure ID**: ID srovnávacího testu zabezpečení Azure, které odpovídá doporučení. 
-- **ID CIS**: doporučení pro srovnávací testy CIS, která odpovídají tomuto doporučení.  
-- **Zodpovědnost**: zda je zákazník nebo poskytovatel služeb (nebo obojí) zodpovědný za implementaci tohoto doporučení. Bezpečnostní odpovědnost se sdílí ve veřejném cloudu. Některé ovládací prvky zabezpečení jsou dostupné jenom poskytovateli cloudové služby, a proto je poskytovatel zodpovědný za jejich adresování. Jedná se o obecná pozorování – pro některé jednotlivé služby se bude odpovědnost lišit od toho, co je uvedeno v srovnávacím testu zabezpečení Azure. Tyto rozdíly jsou popsané v základních doporučeních pro jednotlivé služby. 
+- **Azure ID**: ID srovnávacího testu zabezpečení Azure, které odpovídá doporučení.
+- **ID ovládacích prvků CIS v 7.1**: ovládací prvky CIS v 7.1, které odpovídají tomuto doporučení.
+- **NIST SP800-53 R4 ID**: ovládací prvky NIST SP800-53 R4 (mírný), které odpovídají tomuto doporučení.
 - **Podrobnosti**: odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
+- **Zodpovědnost**: Určuje, zda je pro implementaci tohoto doporučení zodpovědný zákazník, poskytovatel služeb nebo obojí. Bezpečnostní odpovědnost se sdílí ve veřejném cloudu. Některé ovládací prvky zabezpečení jsou dostupné jenom poskytovateli cloudové služby, a proto je poskytovatel zodpovědný za jejich adresování. Jedná se o obecná pozorování – pro některé jednotlivé služby se bude odpovědnost lišit od toho, co je uvedeno v srovnávacím testu zabezpečení Azure. Tyto rozdíly jsou popsané v základních doporučeních pro jednotlivé služby.
+- **Účastníci zabezpečení zákazníka**: bezpečnostní funkce v organizaci zákazníka, které mohou být pro příslušný ovládací prvek vyúčtovány, zodpovědné nebo konzultované. Může se lišit od organizace až po organizaci v závislosti na struktuře organizace zabezpečení vaší společnosti a rolích a zodpovědností, které jste si nastavili v souvislosti se zabezpečením Azure.
 
-Uvítáme vaši podrobnou zpětnou vazbu a aktivní účast v úsilí Azure Security test. Pokud chcete zadat přímý vstup týmu Azure Security test, vyplňte prosím formulář na [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) .
+> [!NOTE]
+> Mapování ovládacích prvků mezi dokumentem SSAE a oborovými srovnávacími testy (jako je NIST a SNS) znamená pouze to, že konkrétní funkce Azure lze použít k plnému nebo částečnému vyřešení požadavku na řízení definovaného v NIST nebo CIS. Je třeba si uvědomit, že taková implementace nemusí nutně překládat na celé dodržování předpisů odpovídajícím ovládacím prvkům v CIS nebo NIST.
 
-## <a name="next-steps"></a>Další kroky
+Uvítáme vaši podrobnou zpětnou vazbu a aktivní účast v úsilí Azure Security test. Pokud chcete zadat přímý vstup týmu Azure Security test, vyplňte formulář na https://aka.ms/AzSecBenchmark
+
 
 - Podívejte se na první ovládací prvek zabezpečení: [zabezpečení sítě](security-control-network-security.md)
 - Přečtěte si [Úvod k zabezpečení Azure Security test](introduction.md)
-- Stažení [tabulky Azure Security test benchmark v1 Excel](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)
+- Stažení [tabulky Azure Security test benchmark v2 Excel](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)

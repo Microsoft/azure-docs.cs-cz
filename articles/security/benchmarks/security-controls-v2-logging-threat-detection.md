@@ -1,0 +1,235 @@
+---
+title: Azure Security test Testing v2 – protokolování a detekce hrozeb
+description: Protokolování a detekce hrozeb v Azure Security benchmark v2
+author: msmbaldwin
+ms.service: security
+ms.topic: conceptual
+ms.date: 09/13/2020
+ms.author: mbaldwin
+ms.custom: security-benchmark
+ms.openlocfilehash: 24ddca37a729a459382fc96a2f6e0ef1a7832f37
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90059207"
+---
+# <a name="security-control-logging-and-threat-detection"></a>Řízení zabezpečení: protokolování a detekce hrozeb
+
+Protokolování a detekce hrozeb pokrývá ovládací prvky pro detekci hrozeb v Azure a povolení, shromažďování a ukládání protokolů auditu pro služby Azure. To zahrnuje povolení zjišťování, vyšetřování a nápravy procesů s ovládacími prvky pro generování výstrah s vysokou kvalitou s nativní detekcí hrozeb ve službách Azure. zahrnuje také shromažďování protokolů s Azure Monitor, centralizaci analýzy zabezpečení s použitím Sentinel Azure, synchronizaci času a uchovávání protokolů. 
+
+## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: povolení detekce hrozeb pro prostředky Azure
+
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+|--|--|--|--|
+| LT-1 | 6.7 | AU-3, AU-6, AU-12, SI-4 |
+
+Ujistěte se, že sledujete různé typy prostředků Azure pro potenciální hrozby a anomálie. Zaměřte se na získávání vysoce kvalitních výstrah, které umožní analytikům, kteří se mají seřadit, omezit falešně pozitivní. Výstrahy se dají nacházet z dat protokolů, agentů nebo jiných dat.
+
+Využijte Azure Security Center integrovanou funkci detekce hrozeb, která vychází z monitorování telemetrie služeb Azure a analýzy protokolů služby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením ze systému a kopíruje data do vašeho pracovního prostoru pro účely analýzy. 
+
+Kromě toho použijte Azure Sentinel k vytváření pravidel analýzy, které usnadňují hrozby, které odpovídají konkrétním kritériím v rámci vašeho prostředí. Pravidla generují incidenty, když jsou kritéria shodná, takže můžete prozkoumat jednotlivé incidenty. Funkce Sentinel Azure může také importovat analýzy hrozeb třetích stran a zlepšit tak schopnost detekce hrozeb. 
+
+- [Ochrana před hrozbami v Azure Security Center](../../security-center/threat-protection.md)
+
+- [Referenční příručka pro Azure Security Center výstrahy zabezpečení](../../security-center/alerts-reference.md)
+
+- [Vytváření vlastních pravidel analýzy pro detekci hrozeb](../../sentinel/tutorial-detect-threats-custom.md)
+
+- [Funkce Azure Sentinel pro internetovou analýzu hrozeb](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
+
+**Zodpovědnost**: zákazník
+
+**Účastníci zabezpečení zákazníka**:
+
+- [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
+
+- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+
+- [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+
+## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: povolení detekce hrozeb pro správu identit a přístupu v Azure
+
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+|--|--|--|--|
+| LT – 2 | 6.8 | AU-3, AU-6, AU-12, SI-4 |
+
+Azure AD poskytuje následující protokoly uživatelů, které se dají zobrazit v sestavách Azure AD nebo v nich integrovat s Azure Monitor, Azure Sentinelem nebo jinými nástroji SIEM/Monitoring pro složitější účely monitorování a analýzy: 
+-   Přihlášení – sestava přihlášení poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+
+-   Protokoly auditu – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
+
+-   Riziková přihlášení – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
+
+-   Uživatelé označení příznakem rizika – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený.
+
+Azure Security Center může také upozorňovat na určité podezřelé aktivity, jako je například nadměrný počet neúspěšných pokusů o ověření a zastaralých účtů v rámci předplatného. Kromě základního monitorování hygieny zabezpečení může modul ochrany před internetovými útoky Azure Security Center taky shromažďovat podrobnější výstrahy zabezpečení z jednotlivých výpočetních prostředků Azure (jako jsou virtuální počítače, kontejnery, App Service), datové prostředky (například SQL DB a Storage) a vrstvy služeb Azure. Tato funkce umožňuje zobrazit anomálie účtů v jednotlivých prostředcích.
+
+- [Sestavy aktivit auditu v Azure AD](../../active-directory/reports-monitoring/concept-audit-logs.md)
+
+- [Povolit Azure Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
+
+- [Ochrana před hrozbami v Azure Security Center](../../security-center/threat-protection.md)
+
+**Zodpovědnost**: zákazník
+
+**Účastníci zabezpečení zákazníka**:
+
+- [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
+
+- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+
+- [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+
+## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: povolení protokolování pro síťové aktivity Azure
+
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+|--|--|--|--|
+| LT-3 | 9,3, 12,2, 12,5, 12,8 | AU-3, AU-6, AU-12, SI-4 |
+
+Povolte a Shromážděte protokoly o prostředcích skupiny zabezpečení sítě (NSG), protokoly toku NSG, protokoly Azure Firewall a protokoly brány firewall webových aplikací (WAF) pro analýzu zabezpečení pro podporu vyšetřování incidentů, lov hrozeb a generování výstrah zabezpečení. Protokoly toku můžete odeslat do pracovního prostoru Azure Monitor Log Analytics a pak pomocí Analýza provozu získat přehledy. Ujistěte se, že shromažďujete protokoly dotazů DNS, které pomáhají při korelaci dalších síťových dat.
+
+- [Jak povolit protokoly toku skupin zabezpečení sítě](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
+
+- [Metriky a protokoly Azure Firewallu](../../firewall/logs-and-metrics.md)
+
+- [Postup povolení a použití Analýza provozu](../../network-watcher/traffic-analytics.md)
+
+- [Monitorování pomocí Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)
+
+- [Řešení monitorování sítě Azure v Azure Monitor](../../azure-monitor/insights/azure-networking-analytics.md)
+
+- [Získejte přehled o vaší infrastruktuře DNS pomocí DNS Analytics řešení](../../azure-monitor/insights/dns-analytics.md)
+
+**Zodpovědnost**: zákazník
+
+**Účastníci zabezpečení zákazníka**:
+
+- [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
+
+- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+
+- [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+
+## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: povolení protokolování pro prostředky Azure
+
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+|--|--|--|--|
+| LT-4 | 6,2, 6,3, 8,8 | AU-3, AU-12 |
+
+Povolte protokolování prostředků Azure tak, aby splňovalo požadavky na dodržování předpisů, detekci a vyšetřování hrozeb a loveckí hrozeb. 
+
+Pomocí Azure Security Center a Azure Policy můžete povolit protokoly prostředků a data protokolů, která se shromažďují v prostředcích Azure, a získat tak přístup k protokolům auditu, zabezpečení a prostředků. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. 
+
+- [Principy protokolování a různých typů protokolů v Azure](../../azure-monitor/platform/platform-logs-overview.md)
+
+- [Pochopení Azure Security Center shromažďování dat](../../security-center/security-center-enable-data-collection.md)
+
+- [Povolit a nakonfigurovat monitorování antimalwaru](../fundamentals/antimalware.md#enable-and-configure-antimalware-monitoring-using-powershell-cmdlets)
+
+**Odpovědnost**: sdílená
+
+**Účastníci zabezpečení zákazníka**:
+
+- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+
+Zabezpečení infrastruktury a koncových bodů 
+
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+
+- [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+
+## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: centralizace správy protokolu zabezpečení a analýzy
+
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+|--|--|--|--|
+| LT-5 | 6,5, 6,6 | AU-3, SI-4 |
+
+Centralizace úložiště protokolování a analýzy pro povolení korelace. U každého zdroje protokolu se ujistěte, že jste přiřadili vlastníka dat, pokyny pro přístup, umístění úložiště, jaké nástroje se používají ke zpracování a přístupu k datům a k požadavkům na uchovávání dat.
+
+Ujistěte se, že Integrujte protokoly aktivit Azure do svého centrálního protokolování. Ingestování protokolů prostřednictvím Azure Monitor k agregaci dat zabezpečení generovaných zařízeními koncového bodu, síťovými prostředky a dalšími systémy zabezpečení. V Azure Monitor použijte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
+
+Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
+
+Řada organizací zvolí použití Azure Sentinel pro "horká" data, která se používají často a Azure Storage pro "studená" data, která se používají méně často. 
+
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+
+- [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
+
+**Zodpovědnost**: zákazník
+
+**Účastníci zabezpečení zákazníka**:
+
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+
+- [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
+
+## <a name="lt-6-configure-log-storage-retention"></a>LT-6: Konfigurace uchovávání úložiště protokolu
+
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+|--|--|--|--|
+| LT – 6 | 6.4 | AU-3, AU-11 |
+
+Nakonfigurujte uchovávání protokolů podle dodržování předpisů, nařízení a dalších požadavků. 
+
+V Azure Monitor můžete nastavit dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte Azure Storage, Data Lake nebo Log Analytics účty pracovního prostoru pro dlouhodobé a archivační úložiště.
+
+- [Změnit dobu uchovávání dat v Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+
+Jak nakonfigurovat zásady uchovávání informací pro Azure Storage protokoly účtů: ttps://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+
+- [Azure Security Center upozornění a export doporučení](../../security-center/continuous-export.md)
+
+**Zodpovědnost**: zákazník
+
+**Účastníci zabezpečení zákazníka**:
+
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+
+- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+
+- [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
+
+## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7: použití schválených zdrojů synchronizace času
+
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+|--|--|--|--|
+| LT-7 | 6.1 | AU – 8 |
+
+Microsoft udržuje časové zdroje pro většinu služeb Azure PaaS a SaaS. U virtuálních počítačů použijte výchozí server NTP společnosti Microsoft pro dobu synchronizace času, pokud nemáte konkrétní požadavek.  Pokud potřebujete vytvořit vlastní server NTP (Network Time Protocol), ujistěte se, že jste zabezpečili port UDP 123.
+
+Všechny protokoly generované prostředky v Azure poskytují časová razítka s časovým pásmem zadaným ve výchozím nastavení.
+
+- [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure Windows](../../virtual-machines/windows/time-sync.md)
+
+- [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure Linux](../../virtual-machines/linux/time-sync.md)
+
+- [Jak zakázat příchozí UDP pro služby Azure](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
+
+**Odpovědnost**: sdílená
+
+**Účastníci zabezpečení zákazníka**:
+
+- [Zásady a standardy](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
+
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+
+- [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
+

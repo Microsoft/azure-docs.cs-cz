@@ -2,24 +2,22 @@
 title: Přesunutí prostředků do nového předplatného nebo skupiny prostředků
 description: K přesunutí prostředků do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 09/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e5b3e27110d5bd7941aad0209681d13f45fa66fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2b278dae956ec0bd17773badbeaa880b7bf901a5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498867"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056636"
 ---
-# <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesun prostředků do nové skupiny prostředků nebo předplatného
+# <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
 V tomto článku se dozvíte, jak přesunout prostředky Azure do jiného předplatného Azure nebo do jiné skupiny prostředků v rámci stejného předplatného. K přesunu prostředků můžete použít Azure Portal, Azure PowerShell, Azure CLI nebo rozhraní REST API.
 
 Během operace přesunutí dojde ke zamčení zdrojové skupiny i cílové skupiny. Operace zápisu a odstranění jsou ve skupinách prostředků blokované, dokud se přesun nedokončí. Tento zámek znamená, že nemůžete přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků. Neznamená to, že se prostředky zmrazují. Pokud například přesunete SQL Server a jeho databázi do nové skupiny prostředků, aplikace, která využívá databázi, nebude mít žádný výpadek. Může i nadále číst a zapisovat do databáze. Zámek může být poslední po dobu maximálně čtyř hodin, ale většina přesunů se dokončí za mnohem kratší dobu.
 
 Přesunutím prostředku dojde pouze k jeho přesunu do nové skupiny prostředků nebo do nového předplatného. Umístění prostředku se nezmění.
-
-Pokud používáte centrum Azure Stack, nemůžete přesouvat prostředky mezi skupinami.
 
 ## <a name="checklist-before-moving-resources"></a>Kontrolní seznam před přesunutím prostředků
 
@@ -29,6 +27,7 @@ Před přesunem prostředků je potřeba provést několik důležitých kroků.
 
 1. Některé služby mají při přesouvání prostředků specifická omezení nebo požadavky. Pokud přesouváte některou z následujících služeb, před přesunem si Projděte tyto pokyny.
 
+   * Pokud používáte centrum Azure Stack, nemůžete přesouvat prostředky mezi skupinami.
    * [Pokyny pro přesunutí App Services](./move-limitations/app-service-move-limitations.md)
    * [Pokyny pro přesunutí Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Model nasazení Classic – pokyny pro přesun](./move-limitations/classic-model-move-limitations.md) – klasický výpočetní prostředí, klasické úložiště, klasické virtuální sítě a Cloud Services
@@ -96,7 +95,7 @@ Před přesunem prostředků je potřeba provést několik důležitých kroků.
 
 1. **Pro přesun mezi předplatnými musí být prostředek a jeho závislé prostředky umístěny ve stejné skupině prostředků a musí být přesunuty dohromady.** Například virtuální počítač se spravovanými disky by vyžadoval, aby se virtuální počítač a spravované disky přesunuly společně s dalšími závislými prostředky.
 
-   Pokud přesouváte prostředek do nového předplatného, zkontrolujte, zda prostředek obsahuje nějaké závislé prostředky a zda se nachází ve stejné skupině prostředků. Pokud prostředky nejsou ve stejné skupině prostředků, zkontrolujte, jestli se prostředky dají konsolidovat do stejné skupiny prostředků. Pokud ano, převeďte všechny tyto prostředky do stejné skupiny prostředků pomocí operace přesunutí napříč skupinami prostředků.
+   Pokud přesouváte prostředek do nového předplatného, zkontrolujte, zda prostředek obsahuje nějaké závislé prostředky a zda se nachází ve stejné skupině prostředků. Pokud prostředky nejsou ve stejné skupině prostředků, zkontrolujte, jestli se prostředky dají zkombinovat do stejné skupiny prostředků. Pokud ano, převeďte všechny tyto prostředky do stejné skupiny prostředků pomocí operace přesunutí napříč skupinami prostředků.
 
    Další informace najdete v tématu [scénář pro přesun mezi předplatnými](#scenario-for-move-across-subscriptions).
 
@@ -167,23 +166,37 @@ I když je operace stále spuštěná, budete nadále dostávat stavový kód 20
 
 ## <a name="use-the-portal"></a>Použití portálu
 
-Chcete-li přesunout prostředky, vyberte skupinu prostředků s těmito prostředky a pak vyberte tlačítko **přesunout** .
+Chcete-li přesunout prostředky, vyberte skupinu prostředků, která obsahuje tyto prostředky.
 
-![přesunout prostředky](./media/move-resource-group-and-subscription/select-move.png)
+Když si zobrazíte skupinu prostředků, možnost přesunout je zakázaná.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="možnost přesunutí zakázána":::
+
+Chcete-li povolit možnost přesunout, vyberte prostředky, které chcete přesunout. Chcete-li vybrat všechny prostředky, zaškrtněte políčko v horní části seznamu. Případně vyberte prostředky jednotlivě.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="vybrat prostředky":::
+
+Vyberte tlačítko **přesunout** .
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="Možnosti přesunutí":::
+
+Toto tlačítko nabízí tři možnosti:
+
+* Přejděte do nové skupiny prostředků.
+* Přejděte k novému předplatnému.
+* Přesunout do nové oblasti Pokud chcete změnit oblasti, přečtěte si téma [Přesunutí prostředků mezi oblastmi (ze skupiny prostředků)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json).
 
 Vyberte, jestli přesouváte prostředky do nové skupiny prostředků nebo do nového předplatného.
 
-Vyberte prostředky, které chcete přesunout, a cílovou skupinu prostředků. Potvrďte, že potřebujete aktualizovat skripty pro tyto prostředky a vyberte **OK**. Pokud jste v předchozím kroku vybrali ikonu upravit předplatné, musíte taky vybrat cílové předplatné.
+Vyberte cílovou skupinu prostředků. Potvrďte, že potřebujete aktualizovat skripty pro tyto prostředky a vyberte **OK**. Pokud jste vybrali možnost přesunout se k novému předplatnému, musíte také vybrat cílové předplatné.
 
-![vybrat cíl](./media/move-resource-group-and-subscription/select-destination.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="vybrat cíl":::
 
-V části **oznámení**vidíte, že operace přesunutí je spuštěná.
+Po ověření, že se prostředky dají přesunout, se zobrazí oznámení o běhu operace přesunutí.
 
-![Zobrazit stav přesunutí](./media/move-resource-group-and-subscription/show-status.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="zveřejnění":::
 
 Po dokončení budete upozorněni na výsledek.
-
-![Zobrazit výsledek přesunutí](./media/move-resource-group-and-subscription/show-result.png)
 
 Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
@@ -203,7 +216,7 @@ Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutí
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
 
-Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [AZ Resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) . Zadejte ID prostředků, které se mají přesunout. Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků. V `--ids` parametru zadejte mezerami oddělený seznam ID prostředků, který chcete přesunout.
+Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [AZ Resource Move](/cli/azure/resource#az-resource-move) . Zadejte ID prostředků, které se mají přesunout. Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků. V `--ids` parametru zadejte mezerami oddělený seznam ID prostředků, který chcete přesunout.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -238,15 +251,15 @@ Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutí
 
 **Otázka: moje operace přesunutí prostředků, která obvykle trvá několik minut, je spuštěná skoro po celou hodinu. Je něco špatné?**
 
-Přesunutí prostředku je složitá operace, která má různé fáze. Může zahrnovat víc než jenom poskytovatele prostředků u prostředku, který se pokoušíte přesunout. Vzhledem k závislostem mezi poskytovateli prostředků Azure Resource Manager umožňuje dokončení operace 4 hodiny. Toto časové období dává poskytovatelům prostředků možnost obnovení z přechodných problémů. Pokud je vaše žádost o přesun v průběhu 4 hodiny, operace se bude pokoušet dokončit a může být stále úspěšná. Zdrojové a cílové skupiny prostředků jsou během této doby uzamčeny, aby nedocházelo k problémům s konzistencí.
+Přesunutí prostředku je složitá operace, která má různé fáze. Může zahrnovat víc než jenom poskytovatele prostředků u prostředku, který se pokoušíte přesunout. Vzhledem k závislostem mezi poskytovateli prostředků Azure Resource Manager umožňuje dokončení operace 4 hodiny. Toto časové období dává poskytovatelům prostředků možnost obnovení z přechodných problémů. Pokud je vaše žádost o přesun v průběhu čtyř hodin, operace se bude pokoušet dokončit a může být stále úspěšná. Zdrojové a cílové skupiny prostředků jsou během této doby uzamčeny, aby nedocházelo k problémům s konzistencí.
 
 **Otázka: Proč se skupina prostředků uzamkl po dobu 4 hodin během přesunu prostředků?**
 
-Okno o velikosti 4 hodiny je maximální doba, po kterou je možné přesunout prostředek. Aby se zabránilo změnám přesouvaných prostředků, jsou zdrojové i cílové skupiny prostředků zamčené po dobu trvání přesunutí prostředku.
+Žádost o přesunutí je povolená maximálně na čtyři hodiny. Aby se zabránilo změnám přesouvaných prostředků, jsou zdrojové i cílové skupiny prostředků zamčené po dobu trvání přesunutí prostředku.
 
-V žádosti o přesunutí jsou dvě fáze. V první fázi se prostředek přesune. Ve druhé fázi se oznámení odesílají jiným poskytovatelům prostředků závislým na přemístění prostředku. Skupina prostředků může být uzamčena pro celé 4 hodiny, když poskytovatel prostředků dojde v obou fázích k chybě. Během povoleného času se Správce prostředků opakuje neúspěšný krok.
+V žádosti o přesunutí jsou dvě fáze. V první fázi se prostředek přesune. Ve druhé fázi se oznámení odesílají jiným poskytovatelům prostředků závislým na přemístění prostředku. Skupina prostředků může být uzamčena po dobu celé čtyři hodiny, když poskytovatel prostředků dojde k chybě v obou fázích. Během povoleného času se Správce prostředků opakuje neúspěšný krok.
 
-Pokud prostředek nejde přesunout v rámci 4 hodinového okna, Správce prostředků odemkne obě skupiny prostředků. Prostředky, které se úspěšně přesunuly, se nacházejí v cílové skupině prostředků. Prostředky, které se nepodařilo přesunout, jsou ponechány ve zdrojové skupině prostředků.
+Pokud se prostředek nedá přesunout do čtyř hodin, Správce prostředků odemkne obě skupiny prostředků. Prostředky, které se úspěšně přesunuly, se nacházejí v cílové skupině prostředků. Prostředky, které se nepodařilo přesunout, jsou ponechány ve zdrojové skupině prostředků.
 
 **Otázka: Jaké jsou důsledky uzamčení zdrojových a cílových skupin prostředků během přesunu prostředku?**
 

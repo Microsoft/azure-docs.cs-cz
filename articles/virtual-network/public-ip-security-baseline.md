@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd02f2dbb7666ba9f2134ffba4cf683e1e9ac67b
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90039008"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058696"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Základní hodnota zabezpečení Azure pro veřejnou IP adresu Azure
 
-Tato základní hodnota zabezpečení se vztahuje na pokyny od [verze Azure Security test 1,0](../security/benchmarks/overview.md) pro veřejnou IP adresu Azure. Srovnávací test zabezpečení Azure poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure. Obsah se seskupuje podle **ovládacích prvků zabezpečení** , které definuje srovnávací test zabezpečení Azure, a souvisejících pokynů týkajících se veřejné IP adresy Azure. **Ovládací prvky** , které se nevztahují na veřejnou IP adresu Azure, se vyloučily.
+Tato základní hodnota zabezpečení se vztahuje na pokyny od [verze Azure Security test 1,0](../security/benchmarks/overview.md) pro veřejnou IP adresu Azure. Srovnávací test zabezpečení Azure poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure. Obsah se seskupuje podle **ovládacích prvků zabezpečení** , které definuje srovnávací test zabezpečení Azure, a souvisejících pokynů týkajících se veřejné IP adresy Azure. **Ovládací prvky** , které se nevztahují na veřejnou IP adresu Azure, se vyloučily.  Poznámka: veřejné IP adresy Azure neukládají zákaznická data.
 
 Pokud chcete zjistit, jak se veřejná IP adresa Azure kompletně mapuje na srovnávací test zabezpečení Azure, podívejte se na [úplný soubor mapování standardních hodnot zabezpečení Azure Public IP](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
@@ -46,7 +46,7 @@ Azure PowerShell nebo Azure CLI je možné použít k vyhledání nebo provádě
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
-**Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat změny vašich veřejných instancí IP. Kromě řídicí plochy (například Azure Portal) negenerují samotné veřejné IP adresy protokoly týkající se síťového provozu. 
+**Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat změny vašich veřejných instancí IP. Kromě řídicí plochy (například Azure Portal) negenerují samotné veřejné IP adresy protokoly týkající se síťového provozu.
 
 Veřejná IP adresa poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network.
 

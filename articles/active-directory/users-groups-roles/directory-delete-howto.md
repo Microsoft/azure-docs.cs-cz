@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795418"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056298"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Odstranění tenanta v Azure Active Directory
 
@@ -27,12 +27,12 @@ Když se odstraní organizace Azure AD (tenant), odstraní se také všechny pro
 
 ## <a name="prepare-the-organization"></a>Příprava organizace
 
-Nemůžete odstranit organizaci ve službě Azure AD, dokud ji neprojde několik kontrol. Tato kontrola snižuje riziko, že odstranění organizace Azure AD negativně ovlivní přístup uživatelů, jako je třeba možnost přihlásit se k Office 365 nebo získat přístup k prostředkům v Azure. Pokud je například organizace přidružená k předplatnému neúmyslně odstraněna, uživatelé nebudou mít přístup k prostředkům Azure pro toto předplatné. Kontrolují se následující podmínky:
+Nemůžete odstranit organizaci ve službě Azure AD, dokud ji neprojde několik kontrol. Tyto kontroly snižují riziko, že odstranění organizace Azure AD negativně ovlivní přístup uživatelů, jako je například možnost přihlásit se k Microsoft 365 nebo získat přístup k prostředkům v Azure. Pokud je například organizace přidružená k předplatnému neúmyslně odstraněna, uživatelé nebudou mít přístup k prostředkům Azure pro toto předplatné. Kontrolují se následující podmínky:
 
 * V organizaci Azure AD (tenant) nemůžou být žádní uživatelé s výjimkou jednoho globálního správce, který má organizaci odstranit. Než bude možné organizaci odstranit, je nutné odstranit všechny ostatní uživatele. Pokud jsou uživatelé synchronizováni z místního prostředí, musí být nejprve vypnutá synchronizace a uživatelé musí být v cloudové organizaci smazáni pomocí rutin Azure Portal nebo Azure PowerShell.
 * V organizaci nemůžou být žádné aplikace. Aby bylo možné organizaci odstranit, je nutné odebrat všechny aplikace.
 * Nemůžete mít žádného poskytovatele služeb Multi-Factor Authentication propojeného s organizací.
-* Pro žádné online služby Microsoftu, jako jsou Microsoft Azure, Office 365 nebo Azure AD Premium přidružené k organizaci, nemůžete mít žádná předplatná. Pokud se například pro vás v Azure vytvořila výchozí organizace Azure AD, nemůžete tuto organizaci odstranit, pokud se vaše předplatné Azure pořád spoléhá na tuto organizaci na ověřování. Obdobně nemůžete odstranit organizaci, pokud k ní přidružit jiný uživatel předplatné.
+* Pro žádné online služby Microsoftu, jako jsou Microsoft Azure, Microsoft 365 nebo Azure AD Premium přidružené k organizaci, nemůžete mít žádná předplatná. Pokud se například pro vás v Azure vytvořila výchozí organizace Azure AD, nemůžete tuto organizaci odstranit, pokud se vaše předplatné Azure pořád spoléhá na tuto organizaci na ověřování. Obdobně nemůžete odstranit organizaci, pokud k ní přidružit jiný uživatel předplatné.
 
 ## <a name="delete-the-organization"></a>Odstranit organizaci
 
@@ -52,16 +52,16 @@ Nemůžete odstranit organizaci ve službě Azure AD, dokud ji neprojde několik
 
 ## <a name="if-you-cant-delete-the-organization"></a>Pokud nemůžete organizaci odstranit
 
-Když jste nakonfigurovali organizaci Azure AD, mohli jste taky aktivovat předplatné na základě licencí pro vaši organizaci, jako je Azure AD Premium P2, Office 365 Business Premium nebo Enterprise Mobility + Security E5. Aby nedocházelo k náhodné ztrátě dat, nemůžete organizaci odstranit, dokud nebudou předplatná zcela odstraněna. Aby bylo možné odstranit organizaci, musí být odběry v **nezřízeném** stavu. Předplatné, **jehož platnost vypršela** nebo **zrušila** , se přesune do stavu **zakázáno** a závěrečná fáze je stav **zrušeno** .
+Když jste nakonfigurovali organizaci Azure AD, mohli jste taky aktivovat předplatné na základě licencí pro vaši organizaci, jako je Azure AD Premium P2, Microsoft 365 Business Standard nebo Enterprise Mobility + Security E5. Aby nedocházelo k náhodné ztrátě dat, nemůžete organizaci odstranit, dokud nebudou předplatná zcela odstraněna. Aby bylo možné odstranit organizaci, musí být odběry v **nezřízeném** stavu. Předplatné, **jehož platnost vypršela** nebo **zrušila** , se přesune do stavu **zakázáno** a závěrečná fáze je stav **zrušeno** .
 
-V následující tabulce najdete informace o tom, co očekávat, když vyprší platnost zkušební verze předplatného Office 365 (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicenčního programu). Další informace o uchovávání dat a životní cyklus předplatného Office 365 najdete v tématu [co se stane s daty a přístup, když předplatné Office 365 pro firmy skončí?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
+V následující tabulce najdete další informace o tom, co očekávat, když platnost předplatného Microsoft 365 zkušební verze vyprší (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicencí). Další informace o Microsoft 365 uchovávání dat a životní cyklus předplatného najdete v tématu [co se stane s daty a přístup k tomu, když předplatná Microsoft 365 pro firmy končí?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
 Stav předplatného | Data | Přístup k datům
 ----- | ----- | -----
-Aktivní (30 dní pro zkušební období) | Data přístupná všem | Uživatelé mají normální přístup k souborům Office 365 nebo aplikacím.<br>Správci mají normální přístup k Microsoft 365 centrum pro správu a prostředky. 
-Platnost vypršela (30 dní) | Data přístupná všem| Uživatelé mají normální přístup k souborům Office 365 nebo aplikacím.<br>Správci mají normální přístup k Microsoft 365 centrum pro správu a prostředky.
-Zakázáno (30 dní) | Data přístupná pouze pro správce | Uživatelé nemají přístup k souborům Office 365 nebo aplikacím.<br>Správci mohou získat přístup k centru pro správu Microsoft 365, ale nemohou jim přiřazovat licence ani aktualizovat uživatele.
-Zrušeno zřízení (30 dní po zakázání) | Odstraněná data (automaticky smazána, pokud se nepoužívají žádné jiné služby) | Uživatelé nemají přístup k souborům Office 365 nebo aplikacím.<br>Správci mají přístup k centru pro správu Microsoft 365 k nákupu a správě dalších předplatných.
+Aktivní (30 dní pro zkušební období) | Data přístupná všem | Uživatelé mají normální přístup k souborům Microsoft 365 nebo aplikacím.<br>Správci mají normální přístup k Microsoft 365 centrum pro správu a prostředky. 
+Platnost vypršela (30 dní) | Data přístupná všem| Uživatelé mají normální přístup k souborům Microsoft 365 nebo aplikacím.<br>Správci mají normální přístup k Microsoft 365 centrum pro správu a prostředky.
+Zakázáno (30 dní) | Data přístupná pouze pro správce | Uživatelé nemají přístup k souborům Microsoft 365 ani aplikacím.<br>Správci mohou získat přístup k centru pro správu Microsoft 365, ale nemohou jim přiřazovat licence ani aktualizovat uživatele.
+Zrušeno zřízení (30 dní po zakázání) | Odstraněná data (automaticky smazána, pokud se nepoužívají žádné jiné služby) | Uživatelé nemají přístup k souborům Microsoft 365 ani aplikacím.<br>Správci mají přístup k centru pro správu Microsoft 365 k nákupu a správě dalších předplatných.
 
 ## <a name="delete-a-subscription"></a>Odstranění předplatného
 
@@ -97,7 +97,7 @@ Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude ods
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Mám zkušební předplatné, které blokuje odstranění
 
-K dispozici jsou [samoobslužné produkty pro registraci](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , jako je Microsoft Power BI, Rights Management Services, Microsoft Power apps nebo Dynamics 365, se můžou zaregistrovat jednotliví uživatelé pomocí Office 365, který taky vytvoří uživatele typu Host pro ověřování ve vaší organizaci Azure AD. Tyto samoobslužné produkty blokují odstranění adresáře, dokud se produkty z organizace zcela neodstraní, aby se předešlo ztrátě dat. Můžou je odstranit jenom správce Azure AD, ať už se uživatel zaregistroval individuálně nebo mu byl přiřazený produkt.
+K dispozici jsou [samoobslužné produkty pro registraci](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , jako je Microsoft Power BI, Rights Management Services, Microsoft Power apps nebo Dynamics 365, se můžou zaregistrovat jednotliví uživatelé prostřednictvím Microsoft 365, který taky vytvoří uživatele typu Host pro ověřování ve vaší organizaci Azure AD. Tyto samoobslužné produkty blokují odstranění adresáře, dokud se produkty z organizace zcela neodstraní, aby se předešlo ztrátě dat. Můžou je odstranit jenom správce Azure AD, ať už se uživatel zaregistroval individuálně nebo mu byl přiřazený produkt.
 
 Existují dva typy samoobslužných registračních produktů ve způsobu jejich přiřazení: 
 
@@ -108,7 +108,7 @@ Když zahájíte odstranění samoobslužného registračního produktu, akce tr
 
 Další informace o aktuálně dostupných samoobslužných produktech a službách pro registraci najdete v tématu [dostupné samoobslužné programy](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
 
-V následující tabulce najdete informace o tom, co očekávat, když vyprší platnost zkušební verze předplatného Office 365 (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicenčního programu). Další informace o uchovávání dat a životní cyklus předplatného Office 365 najdete v tématu [co se stane s daty a přístup, když předplatné Office 365 pro firmy skončí?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+V následující tabulce najdete další informace o tom, co očekávat, když platnost předplatného Microsoft 365 zkušební verze vyprší (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicencí). Další informace o Microsoft 365 uchovávání dat a životní cyklus předplatného najdete v tématu [co se stane s daty a přístup k tomu, když předplatná Microsoft 365 pro firmy končí?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Stav produktu | Data | Přístup k datům
 ------------- | ---- | --------------

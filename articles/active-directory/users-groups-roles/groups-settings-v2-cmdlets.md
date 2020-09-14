@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794548"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056213"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny Azure Active Directory verze 2 pro správu skupin
 
@@ -328,13 +328,13 @@ Když se vytvoří skupina, některé koncové body umožní koncovému uživate
 
 ## <a name="group-writeback-to-on-premises-preview"></a>Zpětný zápis skupin do místního prostředí (Preview)
 
-V současné době je řada skupin stále spravována v místní službě Active Directory. Pro zodpovězení žádostí o synchronizaci cloudových skupin zpátky do místního prostředí je teď k dispozici funkce zpětného zápisu skupin Office 365 pro službu Azure AD ve verzi Preview.
+V současné době je řada skupin stále spravována v místní službě Active Directory. Pro zodpovězení žádostí o synchronizaci cloudových skupin zpátky do místního prostředí je teď k dispozici funkce zpětného zápisu skupin Microsoft 365 pro Azure AD, která je teď dostupná ve verzi Preview.
 
-Skupiny Office 365 se vytvářejí a spravují v cloudu. Funkce zpětného zápisu umožňuje zapisovat skupiny sady Office 365 jako distribuční skupiny do doménové struktury služby Active Directory s nainstalovaným systémem Exchange. Uživatelé s místními poštovními schránkami Exchange můžou odesílat a přijímat e-maily z těchto skupin. Funkce zpětného zápisu skupiny nepodporuje skupiny zabezpečení nebo distribuční skupiny Azure AD.
+Microsoft 365 skupiny se vytvářejí a spravují v cloudu. Funkce zpětného zápisu umožňuje zapisovat zpět Microsoft 365 skupiny jako distribuční skupiny do doménové struktury služby Active Directory s nainstalovanou službou Exchange. Uživatelé s místními poštovními schránkami Exchange můžou odesílat a přijímat e-maily z těchto skupin. Funkce zpětného zápisu skupiny nepodporuje skupiny zabezpečení nebo distribuční skupiny Azure AD.
 
 Další podrobnosti najdete v dokumentaci ke [službě Azure AD Connect Sync](../hybrid/how-to-connect-syncservice-features.md).
 
-Zpětný zápis skupin Office 365 je funkce Public Preview služby Azure Active Directory (Azure AD) a je dostupná s veškerým placeným licenčním plánem Azure AD. Nějaké právní informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+Zpětný zápis skupin Microsoft 365 je funkce Public Preview služby Azure Active Directory (Azure AD) a je k dispozici u placeného licenčního plánu Azure AD. Nějaké právní informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="next-steps"></a>Další kroky
 

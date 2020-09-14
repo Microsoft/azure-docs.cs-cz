@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179568"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055805"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -114,7 +114,7 @@ Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globální
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Zapnutí vícefaktorového ověřování a registrace všech dalších vysoce privilegovaných účtů pro jednoho uživatele, kteří nejsou federované
 
-Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, privilegovaný správce, správce Exchange a správce služby SharePoint. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, privilegovaný správce, správce Exchange a správce služby SharePoint. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Microsoft 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>Fáze 2: zmírnění často používaných útoků
 
@@ -130,7 +130,7 @@ Zvýšením možnosti "Přineste si vlastní zařízení" a práce z domácích 
 
 * Identifikujte uživatele, kteří mají administrativní role a služby, kde mohou spravovat.
 * Pomocí Azure AD PIM zjistíte, kteří uživatelé ve vaší organizaci mají přístup správce ke službě Azure AD.
-* Mimo role definované v Azure AD obsahuje sada Office 365 sadu rolí správce, které můžete přiřadit uživatelům ve vaší organizaci. Každá role správce je namapována na běžné obchodní funkce a poskytuje lidem ve vaší organizaci oprávnění provádět konkrétní úkoly v [centru pro správu Microsoft 365](https://admin.microsoft.com). Pomocí centra pro správu Microsoft 365 Zjistěte, kteří uživatelé ve vaší organizaci mají přístup správce k Office 365, včetně rolí, které nejsou spravované v Azure AD. Další informace najdete v tématu [o rolích správce office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) a [postupech zabezpečení pro Office 365](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
+* Mimo role definované ve službě Azure AD Microsoft 365 obsahuje sadu rolí správce, které můžete přiřadit uživatelům ve vaší organizaci. Každá role správce je namapována na běžné obchodní funkce a poskytuje lidem ve vaší organizaci oprávnění provádět konkrétní úkoly v [centru pro správu Microsoft 365](https://admin.microsoft.com). Pomocí centra pro správu Microsoft 365 zjistíte, kteří uživatelé ve vaší organizaci mají přístup správce k Microsoft 365, včetně rolí nespravovaných ve službě Azure AD. Další informace najdete v tématu [informace o Microsoft 365 rolích správce](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) a [postupech zabezpečení pro Office 365](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
 * Seznamte se s inventářem ve službách, na kterých vaše organizace spoléhá, jako je Azure, Intune nebo Dynamics 365.
 * Zajistěte, aby byly účty používané pro účely správy:
 
@@ -175,17 +175,17 @@ Pokud používáte Windows Hello pro firmy, požadavek MFA se dá splnit pomocí
 
 Azure AD Identity Protection je nástroj pro monitorování a vytváření sestav založený na algoritmech, který detekuje potenciální ohrožení zabezpečení, která mají vliv na identity vaší organizace. Můžete nakonfigurovat automatizované odpovědi na ty zjištěné podezřelé aktivity a provést odpovídající opatření k jejich vyřešení. Další informace najdete v článku [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
 
-#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Získání zabezpečeného skóre Office 365 (při použití Office 365)
+#### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>Získat Microsoft 365 zabezpečeného skóre (Pokud používáte Microsoft 365)
 
-Služba Secure skore vyhledává vaše nastavení a aktivity pro služby Office 365, které používáte, a porovnává je se směrným plánem vytvořeným Microsoftem. Získáte skóre na základě toho, jak jste se zarovnali s postupy zabezpečení. Každý, kdo má oprávnění správce pro předplatné Office 365 Business Premium nebo Enterprise, má přístup k zabezpečenému skóre na adrese [https://securescore.office.com](https://securescore.office.com/) .
+Služba Secure skore vyhledává vaše nastavení a aktivity pro Microsoft 365 služby, které používáte, a porovnává je se směrným plánem vytvořeným Microsoftem. Získáte skóre na základě toho, jak jste se zarovnali s postupy zabezpečení. Každý, kdo má oprávnění správce pro předplatné Microsoft 365 Business Standard nebo Enterprise, má přístup k zabezpečenému skóre na adrese [https://securescore.office.com](https://securescore.office.com/) .
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Přečtěte si pokyny pro zabezpečení a dodržování předpisů Office 365 (Pokud používáte Office 365).
+#### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>Přečtěte si pokyny k zabezpečení Microsoft 365 a dodržování předpisů (Pokud používáte Microsoft 365).
 
-[Plán pro zabezpečení a dodržování předpisů](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) popisuje přístup pro zákazníka sady Office 365, který konfiguruje Office 365 a povoluje další možnosti EMS. Pak si přečtěte kroky 3-6 o tom, jak [chránit přístup k datům a službám v sadě office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) a průvodce pro [monitorování zabezpečení a dodržování předpisů v sadě Office 365](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
+[Plán pro zabezpečení a dodržování předpisů](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) popisuje přístup pro zákazníka sady Office 365, který konfiguruje Office 365 a povoluje další možnosti EMS. Pak si přečtěte kroky 3-6 o tom, jak [chránit přístup k datům a službám v Microsoft 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) a průvodci, jak [monitorovat zabezpečení a dodržování předpisů v Microsoft 365](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
 
-#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Konfigurace monitorování aktivit Office 365 (při použití Office 365)
+#### <a name="configure-microsoft-365-activity-monitoring-if-using-microsoft-365"></a>Konfigurace monitorování aktivity Microsoft 365 (při použití Microsoft 365)
 
-Monitorujte své organizace pro uživatele, kteří používají Office 365 k identifikaci zaměstnanců, kteří mají účet správce, ale nemusí mít přístup k Office 365, protože se k těmto portálům přihlašuje. Další informace najdete v tématu [sestavy aktivit v centru pro správu Microsoft 365](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
+Monitorujte své organizace pro uživatele, kteří používají Microsoft 365 k identifikaci zaměstnanců, kteří mají účet správce, ale nemusí Microsoft 365 přístup, protože se k těmto portálům přihlašuje. Další informace najdete v tématu [sestavy aktivit v centru pro správu Microsoft 365](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>Navázání vlastníků plánů pro incidenty nebo naléhavé reakce
 
@@ -229,7 +229,7 @@ Fáze 3 navazuje na zmírnění rizik z fáze 2 a měla by se implementovat při
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>Dokončení kontroly přístupu uživatelů v rolích správce
 
-Více firemních uživatelů získává privilegovaný přístup prostřednictvím cloudových služeb, což může vést k nespravovanému přístupu. Uživatelé dnes můžou být globální správci pro Office 365, správci předplatného Azure nebo mít přístup správce k virtuálním počítačům nebo prostřednictvím aplikací SaaS.
+Více firemních uživatelů získává privilegovaný přístup prostřednictvím cloudových služeb, což může vést k nespravovanému přístupu. Uživatelé dnes můžou být globální správci pro Microsoft 365, Správce předplatného Azure nebo mají přístup správce k virtuálním počítačům nebo prostřednictvím aplikací SaaS.
 
 Vaše organizace by měla považovat za běžné obchodní transakce jako neprivilegovaných uživatelů a pak udělit práva správce jenom podle potřeby. Kompletní kontroly přístupu identifikujte a potvrďte uživatele, kteří mají nárok na aktivaci oprávnění správce.
 
@@ -281,13 +281,13 @@ Pokud již používáte Azure AD Privileged Identity Management, upravte časov�
 
 Doporučujeme, abyste identifikovali každého potenciálního uživatele, který může být pro organizaci nevědomý, pokud jejich přihlašovací údaje byly ohroženy. Pro tyto uživatele založte požadavky na silné ověřování a pomocí podmíněného přístupu Azure AD je zajistěte, aby se přihlašovat k e-mailu pomocí uživatelského jména a hesla. Můžete zablokovat [starší ověřování pomocí podmíněného přístupu](../conditional-access/block-legacy-authentication.md)a pomocí Exchange Online můžete [zablokovat základní ověřování](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) .
 
-#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Dokončení vyhodnocení přezkoumání rolí u rolí Office 365 (Pokud používáte Office 365)
+#### <a name="complete-a-roles-review-assessment-for-microsoft-365-roles-if-using-microsoft-365"></a>Dokončení vyhodnocení přezkoumání rolí pro role Microsoft 365 (Pokud používáte Microsoft 365)
 
 Vyhodnoťte, jestli všichni správci jsou ve správných rolích (odstraňte a znovu přiřadíte podle tohoto posouzení).
 
-#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>Projděte si přístup ke správě incidentů zabezpečení, který se používá v Office 365 a porovnejte s vaší vlastní organizací.
+#### <a name="review-the-security-incident-management-approach-used-in-microsoft-365-and-compare-with-your-own-organization"></a>Projděte si přístup ke správě incidentů zabezpečení, který se používá v Microsoft 365 a porovnejte s vaší vlastní organizací.
 
-Tuto sestavu můžete stáhnout ze [správy incidentů zabezpečení v systém Microsoft Office 365](https://www.microsoft.com/download/details.aspx?id=54302).
+Tuto sestavu můžete stáhnout ze [správy incidentů zabezpečení v Microsoft 365](https://www.microsoft.com/download/details.aspx?id=54302).
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Pokračovat v zabezpečení místních privilegovaných účtů pro správu
 
@@ -348,7 +348,7 @@ Doporučujeme použít [Microsoft Cloud App Security](/cloud-app-security/what-i
 * Zabránit úniku dat
 * Minimalizace rizik a automatizované ochrany před hrozbami a vynucení zásad
 
-Agent Cloud App Security SIEM integruje Cloud App Security se serverem SIEM, aby umožnil centralizované monitorování výstrah a aktivit Office 365. Spouští se na vašem serveru a vybírá výstrahy a aktivity z Cloud App Security a streamuje je na server SIEM. Další informace najdete v tématu věnovaném [integraci Siem](/cloud-app-security/siem).
+Agent Cloud App Security SIEM integruje Cloud App Security se serverem SIEM, aby umožnil centralizované monitorování Microsoft 365 výstrah a aktivit. Spouští se na vašem serveru a vybírá výstrahy a aktivity z Cloud App Security a streamuje je na server SIEM. Další informace najdete v tématu věnovaném [integraci Siem](/cloud-app-security/siem).
 
 ## <a name="stage-4-continue-building-defenses"></a>Fáze 4: pokračování v budování obrany
 
@@ -358,7 +358,7 @@ Fáze 4 plánu by se měla implementovat po dobu šesti měsíců a později. Do
 
 Zabezpečení privilegovaného přístupu je důležité pro zajištění bezpečnostních ujištění vašich obchodních prostředků. Měl by však být součástí kompletního programu zabezpečení, který poskytuje průběžné záruky zabezpečení. Tento program by měl obsahovat tyto prvky:
 
-* Zásada
+* Zásady
 * Operace
 * Zabezpečení informací
 * Servery
@@ -387,8 +387,8 @@ Zjistěte, jestli jsou aktuální předdefinované role správce Azure AD pořá
 
 Další informace najdete v tématu [jak nakonfigurovat zařízení připojená k hybridním Azure Active Directory](../devices/hybrid-azuread-join-plan.md).
 
-#### <a name="review-members-of-built-in-office-365-admin-roles"></a>Kontrola členů [předdefinovaných rolí správce sady Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
-Pokud nepoužíváte Office 365, tento krok přeskočte.
+#### <a name="review-members-of-built-in-microsoft-365-admin-roles"></a>Kontrola členů [předdefinovaných rolí správce Microsoft 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
+Pokud nepoužíváte Microsoft 365, tento krok přeskočte.
 ‎
 #### <a name="validate-incident-response-plan"></a>Ověřit plán reakce na incidenty
 

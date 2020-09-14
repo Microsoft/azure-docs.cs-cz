@@ -1,19 +1,19 @@
 ---
 title: Oprava úlohy exportu importu/exportu Azure – v1 | Microsoft Docs
 description: Naučte se, jak opravit úlohu exportu, která byla vytvořená a spuštěná pomocí služby Azure import/export.
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/23/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0731848e1ff187afb6e9f607516dd74b6c16de9b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 67d1979ccbfbffc17ba450600e605a96911c8331
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520477"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056335"
 ---
 # <a name="repairing-an-export-job"></a>Oprava úlohy exportu
 Po dokončení úlohy exportu můžete spustit nástroj Microsoft Azure Import/Export místně a:  

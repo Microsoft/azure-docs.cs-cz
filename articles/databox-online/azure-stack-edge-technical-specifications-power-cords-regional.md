@@ -2,18 +2,18 @@
 title: Microsoft Azure Stack technické specifikace napájení na hraničních zařízeních na základě umístění | Microsoft Docs
 description: Seznamte se s technickými specifikacemi pro napájecí šňůry Azure Stack hraničních zařízeních.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: twooley
-ms.openlocfilehash: 8248f0a8e003351449186638fd4914c6b6fe4bed
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 34f5b578581c5a11b3dbfba76f68819c2ed706d0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783973"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055924"
 ---
 # <a name="azure-stack-edge-power-cord-specifications"></a>Specifikace napájecí šňůry Azure Stack Edge
 

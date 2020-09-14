@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981847"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058746"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro Azure Load Balancer
 
@@ -79,7 +79,7 @@ Omezení
 * Koncový bod IPv6 na virtuálním počítači se nezveřejňuje přímo na internetu. Je za nástrojem pro vyrovnávání zatížení. Přes IPv6 jsou přístupné jenom porty zadané v pravidlech nástroje pro vyrovnávání zatížení.
 * Změna parametru IdleTimeout pro protokol IPv6 se v tuto **chvíli**nepodporuje. Výchozí hodnota je čtyři minuty.
 * Změna parametru loadDistributionMethod pro protokol IPv6 se v tuto **chvíli**nepodporuje.
-* Rezervované IP adresy IPv6 (kde IPAllocationMethod = static) se **aktuálně nepodporují**.
+* Protokol IPv6 pro základní Load Balancer je uzamčený na **dynamickou** SKU.  Protokol IPv6 pro Standard Load Balancer je pevně nastaven na **statickou** SKU.
 * NAT64 (převod IPv6 na IPv4) není podporován.
 * Připojení sekundárního síťového adaptéru, který odkazuje na podsíť IPv6 do fondu back-end, se v tuto **chvíli**nepodporuje.
 

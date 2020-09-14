@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327646"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056162"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
@@ -188,7 +188,7 @@ Chcete-li filtrovat zprávy před odesláním dat telemetrie, můžete aktualizo
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Omezení událostí připojení a odpojení zařízení
 
-Aby bylo možné přijímat události stavu připojení zařízení, musí zařízení dělat v rámci IoT Hub buď operaci "d 2C Send telemetrie" nebo "C2D Receive Message". Upozorňujeme však, že pokud zařízení používá protokol AMQP pro připojení ke službě IoT Hub, doporučujeme, aby provedou operaci C2D Receive Message, jinak se oznámení o stavu připojení můžou zpozdit o několik minut. Pokud zařízení používá protokol MQTT, IoT Hub zůstane otevřený odkaz C2D. Pro AMQP můžete otevřít odkaz C2D voláním metody [Receive ASYNC API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet), pro IoT Hub C# SDK nebo [klienta zařízení pro AMQP](iot-hub-amqp-support.md#device-client).
+Aby bylo možné přijímat události stavu připojení zařízení, musí zařízení dělat v rámci IoT Hub buď operaci "d 2C Send telemetrie" nebo "C2D Receive Message". Upozorňujeme však, že pokud zařízení používá protokol AMQP pro připojení ke službě IoT Hub, doporučujeme, aby provedou operaci C2D Receive Message, jinak se oznámení o stavu připojení můžou zpozdit o několik minut. Pokud zařízení používá protokol MQTT, IoT Hub zůstane otevřený odkaz C2D. V případě AMQP můžete otevřít odkaz C2D voláním metody Receive Async API for IoT Hub C# SDK nebo [klienta zařízení pro AMQP](iot-hub-amqp-support.md#device-client).
 
 Odkaz D2C je otevřený, Pokud posíláte telemetrii. 
 
@@ -214,4 +214,4 @@ Aplikace, které zpracovávají události IoT Hubu, by měly fungovat v souladu 
 
 * [Porovnání rozdílů mezi událostmi a zprávami IoT Hub směrování](iot-hub-event-grid-routing-comparison.md)
 
-* [Naučte se používat události telemetrie IoT k implementaci prostorové analýzy IoT pomocí Azure Maps](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [Naučte se používat události telemetrie IoT k implementaci prostorové analýzy IoT pomocí Azure Maps](../azure-maps/tutorial-iot-hub-maps.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71c1bea58f17b457f417a5b050640d04d44019d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551045"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056519"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Kurz: Azure Active Directory integrace s Freshdesku
 
@@ -55,7 +55,7 @@ Pokud chcete nakonfigurovat integraci Freshdesku do služby Azure AD, musíte p�
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **freshdesku** .
 1. Na panelu výsledků vyberte **freshdesku** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshdesk"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Freshdesku
+## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Freshdesku
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Freshdesku pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Freshdesku.
 
@@ -81,9 +81,11 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.freshdesk.com` nebo jakékoliv jiné hodnoty, které freshdesku navrhl.
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.freshdesk.com` nebo jakékoli jiné hodnoty, které freshdesku navrhl.
-
+     
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.freshdesk.com/login/saml`
+    
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta freshdesku](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta freshdesku](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Freshdesku aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, zatímco **jedinečný identifikátor uživatele** je namapován pomocí **User. userPrincipalName** , ale freshdesku očekává, že tato deklarace identity bude namapována s **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu Upravit a změnit mapování atributů.
 
@@ -126,7 +128,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 57a981f4967bc58ca39067f94abdcf64d764ab87
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536187"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058763"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -25,7 +25,8 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 > [!NOTE]
 > 
-> Konektor ITSM se může připojit pouze ke cloudovým instancím ServiceNow. Místní instance ServiceNow se v tuto chvíli nepodporují.
+> Od 1. října 2020 Cherwell a ITSM integrace s s výstrahou Azure už nebudou pro nové zákazníky povolené. Nová připojení ITSM se nepodporují. 
+> Existující připojení ITSM budou podporována.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Připojení System Center Service Manager ke konektoru pro správu služeb IT v Azure
 
@@ -40,6 +41,10 @@ Ujistěte se, že jsou splněné následující předpoklady:
 - Hybridní připojení se vytvořilo a nakonfigurovalo. Další informace: [Konfigurace hybridního připojení](#configure-the-hybrid-connection).
 - Podporované verze Service Manager: 2012 R2 nebo 2016.
 - Role uživatele: [operátor pokročilý](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))
+
+> [!NOTE]
+> 
+> Konektor ITSM se může připojit pouze ke cloudovým instancím ServiceNow. Místní instance ServiceNow se v tuto chvíli nepodporují.
 
 ### <a name="connection-procedure"></a>Postup připojení
 

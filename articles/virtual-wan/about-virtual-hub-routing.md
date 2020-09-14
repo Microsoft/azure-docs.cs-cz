@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5116b3dfd53c5272ef7bb11d1719b7ee62416c4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762313"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055788"
 ---
 # <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
 
@@ -30,7 +30,7 @@ V následujících částech najdete popis klíčových konceptů v směrování
 
 Tabulka směrování virtuálního rozbočovače může obsahovat jednu nebo více tras. Trasa zahrnuje její název, popisek, cílový typ, seznam cílových předpon a další informace o směrování pro paket, který má být směrován. **Připojení** obvykle bude mít konfiguraci směrování, která se přidruží nebo šíří do směrovací tabulky.
 
-### <a name="connection"></a><a name="connection"></a>Vázán
+### <a name="connection"></a><a name="connection"></a>Připojení
 
 Připojení jsou Správce prostředků prostředky, které mají konfiguraci směrování. Existují čtyři typy připojení:
 
@@ -87,6 +87,7 @@ Při konfiguraci směrování virtuální sítě WAN Vezměte v úvahu následuj
 * Při použití Azure Firewall ve více oblastech musí být všechny virtuální sítě s paprsky přidruženy ke stejné směrovací tabulce. Například podmnožina virtuální sítě projde skrze Azure Firewall, zatímco jiné virtuální sítěy obcházejí Azure Firewall ve stejném virtuálním rozbočovači není možné.
 * Pro každé připojení k virtuální síti se dá nakonfigurovat jedna IP adresa dalšího směrování.
 * Virtuální rozbočovač nepodporuje statickou trasu pro 0.0.0.0/0 a další segment směrování Virtual Network připojení (nebo IP zařízení ve virtuální síti VNet).
+* Všechny informace týkající se trasy 0.0.0.0/0 jsou omezeny na směrovací tabulku místního centra. Tato trasa se nešíří napříč rozbočovači.
 
 ## <a name="next-steps"></a>Další kroky
 

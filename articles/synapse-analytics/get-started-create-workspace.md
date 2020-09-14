@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 949afc00b12b1238973f832270d57fff3c2db5f9
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 46116fd7157b6a1cf8112613703aa2388b3ba7d3
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669535"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056179"
 ---
 # <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
 
@@ -33,8 +33,9 @@ V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a f
 
 1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2. Nejjednodušší volbou je vytvořit nové. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
 1. MOŽNOST 1 Vytvoření nového účtu ADLSGEN2 
-    1. V části **vybrat data Lake Storage Gen 2**klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
-    1. V části **vybrat data Lake Storage obecné 2**klikněte na **systém souborů** a pojmenujte ho **Uživatelé**.
+    1. Přejděte k **výběru Data Lake Storage Gen 2**. 
+    1. Klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
+    1. Klikněte na **systém souborů** a pojmenujte ho **Uživatelé**.
 1. MOŽNOST 2 použijte existující účet ADLSGEN2. Projděte si pokyny k **přípravě účtu úložiště ADLSGEN2** na konci tohoto dokumentu.
 1. Váš pracovní prostor Azure synapse použije tento účet úložiště jako primární účet úložiště a kontejner pro uložení dat pracovního prostoru. Pracovní prostor ukládá data v Apache Sparkch tabulkách. Ukládá protokoly aplikací Spark do složky s názvem **/synapse/workspacename**.
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.

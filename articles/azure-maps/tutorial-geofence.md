@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vytvoření geografického a sledovacího zařízení na mapě Microsoft Azure'
+title: 'Kurz: vytvoření geografického a sledovacího zařízení na Azure Maps'
 description: Přečtěte si, jak nastavit geografickou ochranu. Podívejte se, jak sledovat zařízení vzhledem k geografickým záznamům pomocí Azure Maps prostorové služby.
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,54 +9,54 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299299"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056505"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: Nastavení monitorované geografické zóny pomocí Azure Maps
 
-V tomto kurzu se seznámíte se základy vytváření a používání Azure Mapsch geografických služeb v kontextu následujícího scénáře:
+V tomto kurzu se seznámíte se základy vytváření a používání Azure Mapsch geografických služeb. Provedete to v kontextu následujícího scénáře:
 
-*Konstrukce Site Manager musí sledovat zařízení při jeho vstupu a ponechání hraničních oblastí konstrukce. Pokaždé, když se nějaké zařízení ukončí nebo vstoupí do těchto hraničních okruhů, pošle se na Operations Manager e-mailové oznámení.*
+*Správce staveniště musí sledovat zařízení při jeho vstupu a opustí hranice oblasti stavby. Pokaždé, když se nějaké zařízení ukončí nebo vstoupí do těchto hraničních okruhů, pošle se na Operations Manager e-mailové oznámení.*
 
-Azure Maps poskytuje řadu služeb pro podporu sledování zařízení, které zadává a ukončuje oblast stavby ve výše uvedeném scénáři. V tomto kurzu zjistíte, jak:
+Azure Maps poskytuje řadu služeb pro podporu sledování zařízení vstupujících do oblasti stavby a jejich opuštění. V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Nahrajte [geografickou data o geografickou](geofence-geojson.md) lokalitu, která definují oblasti staveniště, které chcete monitorovat. [Rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) použijeme k nahrání geografických zón jako souřadnic mnohoúhelníku na váš Azure Maps účet.
-> * Nastavte dvě [Aplikace logiky](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , která po aktivaci pošle e-mailová oznámení na staveništi Operations Manager, když zařízení vstoupí a ukončí oblast geografické oblasti.
-> * Pomocí [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) se můžete přihlásit k odběru Azure Maps události zadání a ukončení geografické zóny. Nastavíme dva odběry událostí webového zavěšení, které budou volat koncové body HTTP definované ve dvou Logic Apps. Logic Apps pak pošle příslušná e-mailová oznámení o přemístění nebo zapisování geografického zařízení.
+> * Nahrajte [geografickou data o geografickou](geofence-geojson.md) lokalitu, která definují oblasti staveniště, které chcete monitorovat. Použijete [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) k nahrávání geografických zón jako souřadnic mnohoúhelníku na váš Azure Maps účet.
+> * Nastavte dvě [Aplikace logiky](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , které po aktivaci odesílají e-mailová oznámení do výrobního serveru Operations Manageru, když zařízení vstoupí do oblasti geografického uspořádání a ukončí ho.
+> * Pomocí [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) se můžete přihlásit k odběru událostí pro Azure Maps geografické ploty. Nastavili jste dva odběry událostí Webhooku, které volají koncové body HTTP definované ve vašich dvou aplikacích logiky. Aplikace logiky pak pošle vhodná e-mailová oznámení o přemístění nebo zapisování geografického zařízení.
 > * Využijte [Hledat geografické ploty získat rozhraní API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) pro příjem oznámení v případě, že se nějaké zařízení ukončí a pak vstoupí do oblastí geografické oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+1. [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account).
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
 
 V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, ale můžete zvolit jiné vývojové prostředí API.
 
 ## <a name="upload-geofencing-geojson-data"></a>Nahrání geografických dat o geografických zón
 
-V tomto kurzu pošleme data geografického uložení geografických zón, která obsahují `FeatureCollection` . `FeatureCollection`Obsahuje dvě geografické ploty, které definují mnohoúhelníkové oblasti v rámci staveniště. První Geografické ohraničení nemá žádné vypršení času ani omezení. Na druhý se může dotazovat jenom za pracovní dobu (9-5 hodin. PST) a nebude již platit od 1. ledna 2022. Další informace o formátu geografického JSON najdete v tématu [geografická data geografických dat](geofence-geojson.md).
+V tomto kurzu nahrajete data geografického geografického geografického monitorování, které obsahuje `FeatureCollection` . `FeatureCollection`Obsahuje dvě geografické ploty, které definují mnohoúhelníkové oblasti v rámci staveniště. První Geografické ohraničení nemá žádné vypršení času ani omezení. Na druhý se může dotazovat jenom v pracovní době (9:00 dop. 5:00 odp v časovém pásmu tichomořského) a po 1. lednu 2022 už nebude platné. Další informace o formátu geografického JSON najdete v tématu [geografická data geografických dat](geofence-geojson.md).
 
 >[!TIP]
->Data monitorování geografických zón můžete kdykoli aktualizovat. Další informace o tom, jak aktualizovat vaše data, najdete v tématu [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) .
+>Data monitorování geografických zón můžete kdykoli aktualizovat. Další informace najdete v tématu [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview).
 
-1. Otevřete aplikaci pro vyúčtování. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**.  Pojmenujte kolekci a vyberte tlačítko **vytvořit** .
+1. Otevřete aplikaci pro vyúčtování. V horní části vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**. Pojmenujte kolekci a vyberte **vytvořit**.
 
 2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, a pak vyberte **Uložit**.
 
-3. Na kartě tvůrce vyberte metodu **post** http a zadejte následující adresu URL pro nahrání dat o geografickou ochranu do služby Azure Maps. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
+3. Na kartě tvůrce vyberte metodu **post** http a zadejte následující adresu URL pro nahrání dat o geografickou ochranu do Azure Maps. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
     ```HTTP
     https://atlas.microsoft.com/mapData/upload?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-    Parametr "Al _JSON_ " v cestě URL představuje formát dat odesílaných dat.
+    `geojson`Parametr v cestě URL představuje formát dat odesílaných dat.
 
-4. Klikněte na kartu **tělo** . Jako vstupní formát vyberte **nezpracované**a pak **JSON** . Zkopírujte a vložte následující data o zápisu **do textu do oblasti textu:**
+4. Vyberte kartu **tělo** . Jako vstupní formát vyberte **nezpracované**a pak **JSON** . Zkopírujte a vložte následující data o zápisu **do textu do oblasti textu:**
 
    ```JSON
    {
@@ -144,7 +144,7 @@ V tomto kurzu pošleme data geografického uložení geografických zón, která
    }
    ```
 
-5. Klikněte na modré tlačítko **Odeslat** a počkejte na zpracování žádosti. Až se žádost dokončí, přejdete na kartu **hlavičky** odpovědi. Zkopírujte hodnotu klíče **umístění** , což je `status URL` .
+5. Vyberte **Odeslat**a počkejte na zpracování žádosti. Po dokončení žádosti přejít na kartu **hlavičky** odpovědi. Zkopírujte hodnotu klíče **umístění** , což je `status URL` .
 
     ```http
     https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
@@ -156,7 +156,7 @@ V tomto kurzu pošleme data geografického uložení geografických zón, která
    https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. Po úspěšném dokončení požadavku **Get** http se vrátí `resourceLocation` . `resourceLocation`Obsahuje jedinečný `udid` pro nahraný obsah. `udid`V poslední části tohoto kurzu budete muset tento postup Uložit pro dotazování rozhraní API pro zjištění geografické oblasti. Volitelně můžete pomocí `resourceLocation` adresy URL načíst metadata z tohoto prostředku v dalším kroku.
+7. Po úspěšném dokončení požadavku **Get** http vrátí `resourceLocation` . `resourceLocation`Obsahuje jedinečný `udid` pro nahraný obsah. Uložte `udid` si to pro dotazování rozhraní API pro zjištění geografické plotu v poslední části tohoto kurzu. Volitelně můžete pomocí `resourceLocation` adresy URL načíst metadata z tohoto prostředku v dalším kroku.
 
       ```json
       {
@@ -171,7 +171,7 @@ V tomto kurzu pošleme data geografického uložení geografických zón, která
    https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-9. Až se požadavek **Get** http úspěšně dokončí, tělo odpovědi bude obsahovat `udid` zadané v `resourceLocation` kroku 7, umístění pro přístup k obsahu nebo jeho stažení v budoucnu a některá další metadata o obsahu, jako je datum vytvoření/aktualizace, velikost a tak dále. Příkladem celkové odpovědi je:
+9. Po úspěšném dokončení požadavku **Get** http bude tělo odpovědi obsahovat `udid` zadané v `resourceLocation` kroku 7. Bude také obsahovat umístění pro přístup k obsahu a jeho stažení a další metadata o obsahu. Příkladem celkové odpovědi je:
 
     ```json
     {
@@ -184,105 +184,105 @@ V tomto kurzu pošleme data geografického uložení geografických zón, která
     }
     ```
 
-## <a name="create-logic-app-workflows"></a>Vytváření pracovních postupů aplikací logiky
+## <a name="create-workflows-in-azure-logic-apps"></a>Vytváření pracovních postupů v Azure Logic Apps
 
-V této části vytvoříme dva koncové body [Aplikace logiky](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , které budou aktivovat e-mailové oznámení. Ukážeme vám, jak vytvořit první aktivační událost, která pošle e-mailová oznámení pokaždé, když se zavolá její koncový bod.
+V dalším kroku vytvoříte dva koncové body [Aplikace logiky](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , které aktivují e-mailové oznámení. Tady je postup, jak vytvořit první z těchto akcí:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. V levém horním rohu webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek**.
+2. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**.
 
-3. Do pole *Hledat na Marketplace* zadejte **Aplikace logiky**.
+3. Do pole **Hledat na Marketplace** zadejte **Aplikace logiky**.
 
-4. Z *výsledků*vyberte **Aplikace logiky**. Klikněte na tlačítko **vytvořit** .
+4. Z výsledků vyberte možnost vytvořit **aplikaci logiky**  >  **Create**.
 
 5. Na stránce **Aplikace logiky** zadejte následující hodnoty:
-    * *Předplatné* , které chcete použít pro tuto aplikaci logiky.
-    * Název *skupiny prostředků* pro tuto aplikaci logiky Můžete zvolit možnost *Vytvořit novou* nebo *Použít existující* skupinu prostředků.
-    * *Název aplikace* logiky vaší aplikace logiky V tomto případě použijeme `Equipment-Enter` jako název.
+    * **Předplatné** , které chcete použít pro tuto aplikaci logiky.
+    * Název **skupiny prostředků** pro tuto aplikaci logiky Můžete zvolit **Vytvoření nové** nebo **použití existující** skupiny prostředků.
+    * **Název aplikace** logiky vaší aplikace logiky V takovém případě použijte `Equipment-Enter` jako název.
 
-    Pro účely tohoto kurzu ponechte ostatní hodnoty na jejich výchozím nastavení.
+    Pro účely tohoto kurzu ponechte všechny ostatní hodnoty na jejich výchozím nastavení.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="Vytvoření aplikace logiky":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
-6. Klikněte na tlačítko **Revize + vytvořit** . Zkontrolujte nastavení a kliknutím na **vytvořit** odešlete nasazení. Po úspěšném dokončení nasazení klikněte na **Přejít k prostředku**. Přejdete do **návrháře aplikace logiky** .
+6. Vyberte **zkontrolovat + vytvořit**. Zkontrolujte nastavení a vyberte **vytvořit** pro odeslání nasazení. Po úspěšném dokončení nasazení vyberte **Přejít k prostředku**. Jste převzali na **návrháře aplikace logiky**.
 
-7. Teď vybereme typ triggeru. Posuňte se dolů k části *začátek s běžným triggerem**. **Po přijetí požadavku HTTP**klikněte na zapnuto.
+7. Vyberte typ triggeru. Přejděte dolů do části **Začínáme s běžným triggerem** . Vyberte, **kdy se přijme požadavek HTTP**.
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Vytvoření triggeru HTTP aplikace logiky":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Snímek obrazovky s vytvořením triggeru HTTP aplikace logiky":::
 
-8. V pravém horním rohu návrháře klikněte na **Uložit** . Automaticky se vygeneruje **Adresa URL post protokolu HTTP** . Uložte adresu URL, jak ji budete potřebovat v další části, a vytvořte koncový bod události.
+8. V pravém horním rohu návrháře aplikace logiky vyberte **Uložit**. **Adresa URL příspěvku http** se vygeneruje automaticky. Uložte adresu URL. Budete ho potřebovat v další části, abyste vytvořili koncový bod události.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Adresa URL požadavku HTTP aplikace logiky a JSON":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Snímek adresy URL požadavku HTTP aplikace logiky a formátu JSON":::
 
-9. Vyberte **+ Nový krok**. Nyní si zvolíme akci. `outlook.com email`Do vyhledávacího pole zadejte. V seznamu **Akce** se posuňte dolů a klikněte na **Odeslat e-mail (v2)**.
+9. Vyberte **+ Nový krok**. Nyní vyberete akci. `outlook.com email`Do vyhledávacího pole zadejte. V seznamu **Akce** přejděte dolů a vyberte **Odeslat e-mail (v2)**.
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Vytvoření návrháře aplikace logiky":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Snímek obrazovky s vytvořením návrháře aplikace logiky":::
 
-10. Přihlaste se ke svému účtu Outlook.com. Nezapomeňte kliknout na **Ano** , pokud chcete, aby aplikace logiky měla přístup k účtu. Vyplňte pole k odeslání e-mailu.
+10. Přihlaste se k účtu Outlooku. Nezapomeňte vybrat **Ano** , pokud chcete, aby aplikace logiky měla přístup k účtu. Vyplňte pole k odeslání e-mailu.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Vytvoření e-mailového kroku pro odeslání aplikace logiky":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Snímek obrazovky vytvoření kroku odeslání e-mailu aplikace logiky":::
 
     >[!TIP]
-    > Můžete načíst data `geometryId` o Logical Response, například nebo `deviceId` v e-mailových oznámeních, a to tak, že nakonfigurujete aplikaci logiky tak, aby četla data odesílaná Event Grid. Informace o tom, jak nakonfigurovat aplikaci logiky pro využívání a předávání dat událostí do e-mailových oznámení, najdete v tématu [kurz: odesílání e-mailových oznámení o událostech Azure IoT Hub pomocí Event Grid a Logic Apps](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps).
+    > `geometryId` `deviceId` V e-mailových oznámeních můžete načíst data o neodpověďech na data typu injson, jako je například nebo. Logic Apps můžete nakonfigurovat pro čtení dat odesílaných Event Grid. Informace o tom, jak nakonfigurovat Logic Apps pro využívání a předávání dat událostí do e-mailových oznámení, najdete v tématu [kurz: odesílání e-mailových oznámení o událostech Azure IoT Hub pomocí Event Grid a Logic Apps](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps).
 
-11. V levém horním rohu návrháře Logic Apps klikněte na **Uložit** .
+11. V levém horním rohu návrháře aplikace logiky vyberte **Uložit**.
 
-12. Zopakováním kroků 3-11 vytvořte druhou aplikaci logiky, která upozorní správce, když zařízení ukončí stavbu. Pojmenujte aplikaci logiky `Equipment-Exit` .
+Pokud chcete vytvořit druhou aplikaci logiky, která upozorní správce, když zařízení opustí staveniště, opakujte kroky 3-11. Pojmenujte aplikaci logiky `Equipment-Exit` .
 
 ## <a name="create-azure-maps-events-subscriptions"></a>Vytvoření předplatných událostí Azure Maps
 
-Azure Maps podporuje tři typy událostí. [Tady](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)se můžete podívat na Azure Maps podporované typy událostí.  Budeme muset vytvořit dvě různé odběry událostí: jednu pro události v geografickém režimu a jednu pro události ukončení geografického výstupu.
+Azure Maps podporuje [tři typy událostí](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps). V tomto případě je potřeba vytvořit dvě různé odběry událostí: jednu pro události v geografickém vstupu a jednu pro události ukončení geografické korelace.
 
-Pomocí následujících kroků vytvořte odběr událostí pro události zadání geografických zón. Můžete se přihlásit k odběru událostí ukončení geografického výstupu opakováním kroků podobným způsobem.
+Následující kroky ukazují, jak vytvořit odběr událostí pro události zadání geografických zón. Můžete se přihlásit k odběru událostí ukončení geografického výstupu opakováním kroků podobným způsobem.
 
-1. Přejděte na účet Azure Maps. Na řídicím panelu vyberte **předplatná**. Klikněte na název vašeho předplatného a vyberte **události** v nabídce nastavení.
+1. Přejít na účet Azure Maps. Na řídicím panelu vyberte **předplatná**. Vyberte název vašeho předplatného a v nabídce nastavení vyberte **události** .
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Přejít na události Azure Maps účtu":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Snímek obrazovky s přechodem na události Azure Maps účtu":::
 
 2. Chcete-li vytvořit odběr události, vyberte **+ odběr události** ze stránky události.
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Vytvoření předplatného Azure Mapsch událostí":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Snímek obrazovky s vytvořením předplatného Azure Mapsch událostí":::
 
 3. Na stránce **vytvořit odběr události** zadejte následující hodnoty:
-    * *Název* odběru události
-    * *Schéma události* by mělo být *Event Grid schématu*.
-    * *Název systémového tématu* pro toto předplatné události V tomto případě použijeme `Contoso-Construction` .
-    * V poli *Filtr na typ události*vyberte možnost `Geofence Entered` jako typ události.
-    * Jako *Typ koncového bodu*vyberte `Web Hook` .
-    * Pro *koncový bod*zkopírujte adresu URL post protokolu HTTP pro aplikaci logiky Zadejte koncový bod, který jste vytvořili v předchozí části. Pokud jste zapomněli ho uložit, můžete se vrátit zpátky do návrháře aplikace logiky a zkopírovat ho z kroku triggeru HTTP.
+    * **Název** odběru události
+    * **Schéma události** by mělo být *Event Grid schématu*.
+    * **Název systémového tématu** pro toto předplatné události, v tomto případě je to `Contoso-Construction` .
+    * Pro **Filtr na typy událostí**vyberte `Geofence Entered` jako typ události.
+    * Jako **Typ koncového bodu**vyberte `Web Hook` .
+    * Pro **koncový bod**zkopírujte adresu URL post protokolu HTTP pro aplikaci logiky Zadejte koncový bod, který jste vytvořili v předchozí části. Pokud jste zapomněli ho uložit, můžete se vrátit zpátky do návrháře aplikace logiky a zkopírovat ho z kroku triggeru HTTP.
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Podrobnosti předplatného Azure Mapsch událostí":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Snímek obrazovky s podrobnostmi o předplatném Azure Mapsch událostí":::
 
-4. Klikněte na možnost **Vytvořit**.
+4. Vyberte **Vytvořit**.
 
-5. Opakujte kroky 1-4 pro koncový bod ukončení aplikace logiky, který jste vytvořili v předchozí části. V kroku 3 se ujistěte, že jste zvolili `Geofence Exited` Typ události.
+Opakujte kroky 1-4 pro koncový bod ukončení aplikace logiky, který jste vytvořili v předchozí části. V kroku 3 se ujistěte, že jste zvolili `Geofence Exited` Typ události.
 
 ## <a name="use-spatial-geofence-get-api"></a>Použití rozhraní API pro prostorovou geografickou práci
 
-Teď k posílání e-mailových oznámení do Operations Manager použijeme [rozhraní API prostorového geografického](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) rozjezdu, když nějaké zařízení vstoupí do geografických zón nebo je ukončí.
+K posílání e-mailových oznámení do Operations Manageru, když některý ze zařízení vstoupí do geografických zón nebo je ukončí, použijte [rozhraní API pro prostorové geografické](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) práci.
 
-Každé zařízení má `deviceId` . V tomto kurzu budeme sledovat jedno zařízení, jehož jedinečný identifikátor je `device_1` .
+Každý kus vybavení má `deviceId` . V tomto kurzu sledujete jedno vybavení s jedinečným ID `device_1` .
 
-Pro přehlednost znázorňuje následující diagram v průběhu času pět umístění zařízení, počínaje *počátečním* umístěním, které je někde mimo okolní geografické oblasti. Pro účely tohoto kurzu není *počáteční* umístění definováno, protože v tomto umístění nebudeme zadávat dotazy na zařízení.
+Následující diagram znázorňuje pět umístění zařízení v průběhu času počínaje *počátečním* umístěním, které je někde mimo okolní geografické oblasti. Pro účely tohoto kurzu není umístění *začátku* definováno, protože v tomto umístění nebudete dotazováni na zařízení.
 
-Při dotazování [rozhraní API pro prostorové geografické](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) rozmístění pomocí umístění zařízení, které označuje počáteční položku nebo ukončení geografické oblasti, Event Grid zavolá příslušný koncový bod aplikace logiky a pošle e-mailové oznámení do Operations Manager.
+Při dotazování [rozhraní API pro prostorové geografické](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) rozmístění pomocí umístění zařízení, které označuje počáteční položku nebo ukončení geografické oblasti, Event Grid volá příslušný koncový bod aplikace logiky k odeslání e-mailového oznámení do nástroje Operations Manager.
 
-Každá z následujících oddílů umožňuje, aby protokol HTTP získal požadavky rozhraní API pro monitorování geografických zón pomocí pěti různých souřadnic umístění tohoto zařízení.
+Každý z následujících oddílů provede požadavky rozhraní API pomocí pěti různých souřadnic umístění tohoto zařízení.
 
-![Mapa geografického rozvržení v Azure Maps](./media/tutorial-geofence/geofence.png)
+![Diagram mapy geografického rozvržení v Azure Maps](./media/tutorial-geofence/geofence.png)
 
 ### <a name="equipment-location-1-47638237-122132483"></a>Umístění zařízení 1 (47.638237,-122,132483)
 
-1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**.  Zadejte **název žádosti** . Použijeme název, *umístění 1*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
+1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Nastavte *umístění 1*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL, kterou jste si nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného a `{udid}` s `udid` uloženým v [části nahrát data geografického zápisu do geografického](#upload-geofencing-geojson-data)formátu.
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. Ujistěte `{Azure-Maps-Primary-Subscription-key}` se, že jste nahradili primární klíč předplatného a `{udid}` `udid` uložili jste ho v [části nahrání geografických dat pro ukládání geografických zón](#upload-geofencing-geojson-data).
 
    ```HTTP
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. Klikněte na tlačítko **Odeslat** . V okně odpověď se zobrazí následující kód pro zobrazení textu v odpovědi.
+3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí.
 
     ```json
     {
@@ -310,19 +310,19 @@ Každá z následujících oddílů umožňuje, aby protokol HTTP získal požad
     }
     ```
 
-4. V rámci geografické výše uvedené odpovědi se záporná vzdálenost od geografického umístění hlavní lokality znamená, že je zařízení uvnitř geografické sítě. Kladná vzdálenost od geografického umístění dílčí lokality znamená, že je zařízení mimo geografickou lokalitu. Vzhledem k tomu, že se toto zařízení nacházelo v geografickém geografickém umístění, je tento `isEventPublished` Parametr nastavený na `true` a Operations Manager by vám dostalo e-mailové oznámení, které zařízení dostalo do geografické zóny.
+V předchozí geografické odpovědi se záporná vzdálenost od geografického umístění hlavní lokality znamená, že je zařízení uvnitř geografické sítě. Kladná vzdálenost od geografického umístění dílčí lokality znamená, že je zařízení mimo geografickou lokalitu. Vzhledem k tomu, že je toto zařízení poprvé umístěno v geografickém umístění hlavní lokality, `isEventPublished` je parametr nastaven na hodnotu `true` . Operations Manager dostane e-mailové oznámení, které zařízení dostalo do geografické zóny.
 
 ### <a name="location-2-4763800-122132531"></a>Umístění 2 (47.63800,-122,132531)
 
-1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**.  Zadejte **název žádosti** . Použijeme název, *umístění 2*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
+1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Nastavte *umístění na 2*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL, kterou jste si nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného a `{udid}` s `udid` uloženým v [části nahrát data geografického zápisu do geografického](#upload-geofencing-geojson-data)formátu.
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. Ujistěte `{Azure-Maps-Primary-Subscription-key}` se, že jste nahradili primární klíč předplatného a `{udid}` `udid` uložili jste ho v [části nahrání geografických dat pro ukládání geografických zón](#upload-geofencing-geojson-data).
 
    ```HTTP
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. Klikněte na tlačítko **Odeslat** . V okně odpověď se zobrazí následující kód pro zobrazení textu:
+3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
 
     ```json
     {
@@ -350,19 +350,19 @@ Každá z následujících oddílů umožňuje, aby protokol HTTP získal požad
     }
     ````
 
-4. V odpovědi geografického formátu JSON výše se zařízení nachází v geografickém geografickém umístění a ještě nevstoupilo do geografické lokality. V důsledku toho `isEventPublished` je parametr nastaven na `false` a Operations Manager neobdrží žádná e-mailová oznámení.
+V předchozí odpovědi typu geografická odpověď se zařízení nacházelo v geografickém geografickém umístění a ještě nevstoupilo do geografické lokality. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `false` a Operations Manager neobdrží žádná e-mailová oznámení.
 
 ### <a name="location-3-4763810783315048-12213336020708084"></a>Umístění 3 (47.63810783315048,-122.13336020708084)
 
-1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**.  Zadejte **název žádosti** . Použijeme název, *umístění 3*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
+1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Nastavte umístění na IT *3*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL, kterou jste si nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného a `{udid}` s `udid` uloženým v [části nahrát data geografického zápisu do geografického](#upload-geofencing-geojson-data)formátu.
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. Ujistěte `{Azure-Maps-Primary-Subscription-key}` se, že jste nahradili primární klíč předplatného a `{udid}` `udid` uložili jste ho v [části nahrání geografických dat pro ukládání geografických zón](#upload-geofencing-geojson-data).
 
     ```HTTP
       https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
-3. Klikněte na tlačítko **Odeslat** . V okně odpověď se zobrazí následující kód pro zobrazení textu:
+3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
 
     ```json
     {
@@ -390,22 +390,22 @@ Každá z následujících oddílů umožňuje, aby protokol HTTP získal požad
     }
     ````
 
-4. V odpovědi geografického kódu JSON výše se zařízení nachází v geografickém geografickém umístění, ale zadalo geografickou lokalitu. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `true` a Operations Manager dostane e-mailové oznámení oznamující, že zařízení dostalo geografickou ochranu.
+V předchozí odpovědi typu geografická odpověď byla zařízení v geografickém geografickém umístění, ale byla zapsána geografická lokalita. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `true` . Operations Manager dostane e-mailové oznámení oznamující, že zařízení dostalo geografickou ochranu.
 
-    >[!NOTE]
-    >Pokud se zařízení přesunulo do podřízené lokality za pracovní dobu, nepublikuje se žádná událost a Operations Manager neobdrží žádná oznámení.  
+>[!NOTE]
+>Pokud se zařízení přesunulo do podřízené lokality po pracovní době, nebude se žádná událost publikovat a Operations Manageru by nedostal žádná oznámení.  
 
 ### <a name="location-4-47637988-1221338344"></a>Umístění 4 (47.637988,-122,1338344)
 
-1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**.  Zadejte **název žádosti** . Použijeme název, *umístění 4*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
+1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Nastavte *umístění 4*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL, kterou jste si nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného a `{udid}`  s `udid` uloženým v [části nahrát data geografického zápisu do geografického](#upload-geofencing-geojson-data)formátu.
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. Ujistěte `{Azure-Maps-Primary-Subscription-key}` se, že jste nahradili primární klíč předplatného a `{udid}` `udid` uložili jste ho v [části nahrání geografických dat pro ukládání geografických zón](#upload-geofencing-geojson-data).
 
     ```HTTP
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. Klikněte na tlačítko **Odeslat** . V okně odpověď se zobrazí následující kód pro zobrazení textu:
+3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
 
     ```json
     {
@@ -427,19 +427,19 @@ Každá z následujících oddílů umožňuje, aby protokol HTTP získal požad
     }
     ````
 
-4. V odpovědi geografického JSON výše se zařízení nachází v geografickém geografickém umístění, ale ukončilo geografickou lokalitu. Nicméně pokud si všimnete, `userTime` je hodnota po `expiredTime` Definování definice v geograficky dat. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `false` a Operations Manager nepřijde o e-mailové oznámení.
+V předchozí odpovědi na geografickou odpověď bylo zařízení v geografickém geografickém umístění, ale ukončilo geografickou lokalitu. Všimněte si však, že `userTime` hodnota je po `expiredTime` Definování definice v geograficky dat. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `false` a Operations Manager neobdrží e-mailové oznámení.
 
 ### <a name="location-547637988-1221338344"></a>Umístění 5 (47.637988,-122,1338344)
 
-1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**.  Zadejte **název žádosti** . Použijeme název, *umístění 4*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
+1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Nastavte *umístění na 5*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL, kterou jste si nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného a `{udid}` s `udid` uloženým v [části nahrát data geografického zápisu do geografického](#upload-geofencing-geojson-data)formátu.
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. Ujistěte `{Azure-Maps-Primary-Subscription-key}` se, že jste nahradili primární klíč předplatného a `{udid}` `udid` uložili jste ho v [části nahrání geografických dat pro ukládání geografických zón](#upload-geofencing-geojson-data).
 
     ```HTTP
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. Klikněte na tlačítko **Odeslat** . V okně odpověď se zobrazí následující kód pro zobrazení textu:
+3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
 
     ```json
     {
@@ -467,7 +467,7 @@ Každá z následujících oddílů umožňuje, aby protokol HTTP získal požad
     }
     ````
 
-4. V odpovědi geografického formátu JSON výše se v zařízení ukončila geografická síť hlavního pracoviště. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `true` a Operations Manager dostane e-mailové oznámení oznamující, že zařízení ukončilo geografickou ochranu.
+V předchozí odpovědi typu geografická odpověď byla zařízení ukončena geografickou lokalitou. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `true` a Operations Manager dostane e-mailové oznámení oznamující, že se zařízení ukončilo geografickou ochranou.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -478,4 +478,4 @@ Každá z následujících oddílů umožňuje, aby protokol HTTP získal požad
 > [Odesílání e-mailových oznámení pomocí Event Grid a Logic Apps](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
 
 > [!div class="nextstepaction"]
-> [Podporované obslužné rutiny událostí v Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers).
+> [Podporované obslužné rutiny událostí v Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers)

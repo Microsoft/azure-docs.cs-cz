@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4462ea0277193f0f8a4112cad5991d1e12c5f600
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652806"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058729"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Podpora pro přesun virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -80,7 +80,7 @@ Debian 8 |  3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 
 
 **Vydaná verze** | **Verze jádra** 
 --- |  --- 
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) |  Podporují se všechny [zásoby SUSE 12 SP1, SP2, SP3 a SP4](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) .</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure  
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) |  Podporují se všechny [zásoby SUSE 12 SP1, SP2, SP3 a SP4](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure  
 
 
 ### <a name="supported-suse-linux-enterprise-server-15-kernel-versions"></a>Podporované SUSE Linux Enterprise Server 15 – verze jádra
@@ -100,7 +100,7 @@ SUSE Linux Enterprise Server 15 a 15 SP1 |  Podporují se všechny jádra SUSE 1
 
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Velikost | Všechny velikosti virtuálních počítačů Azure s alespoň dvěma jádry procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/sizes-general).
+Velikost | Všechny velikosti virtuálních počítačů Azure s alespoň dvěma jádry procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/sizes-general.md).
 Skupiny dostupnosti | Aktuálně se nepodporuje. | Pokud přidáte virtuální počítač Azure s nastavenou skupinou dostupnosti do kolekce přesunů s výchozími možnostmi, proces přípravy se nezdařil. Můžete buď přesunout virtuální počítač do zóny dostupnosti, nebo ho přesunout jako virtuální počítač s jednou instancí. Tato nastavení můžete změnit na stránce Upravit vlastnosti cíle.
 Zóny dostupnosti | Podporováno | Podporuje se v závislosti na podpoře cílové oblasti.
 Image Galerie Azure (publikované Microsoftem) | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
@@ -113,15 +113,15 @@ Rozšíření | Nepodporováno | Rozšíření se nekopírují do virtuálního 
 
 ## <a name="supported-vm-storage-settings"></a>Podporovaná nastavení úložiště virtuálního počítače
 
-Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový disk a dočasný disk. Abyste se vyhnuli problémům s výkonem, je důležité sledovat omezení počtu disků virtuálních počítačů a cíle pro virtuální počítače se systémem [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-scalability-targets) a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets) .
+Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový disk a dočasný disk. Abyste se vyhnuli problémům s výkonem, je důležité sledovat omezení počtu disků virtuálních počítačů a cíle pro virtuální počítače se systémem [Linux](../virtual-machines/linux/disk-scalability-targets.md) a [Windows](../virtual-machines/windows/disk-scalability-targets.md) .
 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) o discích virtuálních počítačů.
-Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučený z procesu přípravy.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk).
+Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
+Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučený z procesu přípravy.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
 Maximální velikost datového disku | 8192 GB pro Managed disks
 Minimální velikost datového disku |  2 GB pro spravované disky |
-Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizesd) o velikostech virtuálních počítačů.
+Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.
 Rychlost změny datového disku | Maximálně 10 MB/s na disk pro Premium Storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud je průměrná rychlost změny dat na disku nepřetržitě vyšší než maximální, příprava nebude zachytila.<br/><br/>  Pokud je ale maximum překročeno zřídka, přípravek se může zachytit, ale může se zobrazit mírně zpožděné body obnovení.
 Datový disk (účet úložiště úrovně Standard) | Nepodporováno | Změňte typ úložiště na Managed disk a pak zkuste virtuální počítač přesunout.
 Datový disk (účet služby Storage úrovně Premium) | Nepodporováno | Změňte typ úložiště na Managed disk a pak zkuste virtuální počítač přesunout.

@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862b304d1f36567aecd4452f91f31d1a50c3198a
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 0403fe3cf0bf8cfaf9c722edadbecd2fee61cb46
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782477"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056281"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Role, které nemůžete spravovat v Privileged Identity Management
 
@@ -35,9 +35,9 @@ V Privileged Identity Management nemůžete spravovat tyto klasické role správ
 
 Další informace o rolích správců klasických předplatných najdete v tématu role [správců pro klasický odběr, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="what-about-office-365-admin-roles"></a>Co jsou role správců Office 365?
+## <a name="what-about-microsoft-365-admin-roles"></a>Co Microsoft 365 role správců?
 
-Všechny role Office 365 podporujeme v prostředí portálu rolí a správců Azure AD, jako je například správce Exchange a správce služby SharePoint, ale nepodporujeme konkrétní role v rámci Exchange RBAC nebo SharePoint RBAC. Další informace o těchto službách Office 365 najdete v tématu [role správce sady office 365](/office365/admin/add-users/about-admin-roles).
+Na portálu rolí a správců Azure AD podporujeme všechny role Microsoft 365, jako je například správce Exchange a správce služby SharePoint, ale nepodporujeme konkrétní role v rámci Exchange RBAC nebo SharePoint RBAC. Další informace o těchto Microsoft 365ch službách najdete v tématu [Microsoft 365 role správců](/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
 > Oprávnění uživatelé pro roli správce služby SharePoint, role Správce zařízení a všech rolí, které se pokoušejí získat přístup k centru zabezpečení a dodržování předpisů, můžou po aktivaci své role zaznamenat prodlevu až několik hodin. S těmito týmy pracujeme na řešení těchto problémů.

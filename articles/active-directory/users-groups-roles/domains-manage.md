@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795340"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056247"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -55,7 +55,7 @@ Pokud jste již přidali doménu contoso.com do tenanta služby Azure AD, může
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Jak postupovat v případě, že změníte registrátora DNS pro vlastní název domény
 
-Pokud změníte registrátory DNS, neexistují žádné další konfigurační úlohy ve službě Azure AD. Název domény můžete dál používat s Azure AD bez přerušení. Pokud používáte vlastní název domény s Office 365, Intune nebo dalšími službami, které spoléhají na vlastní názvy domén v Azure AD, přečtěte si dokumentaci k těmto službám.
+Pokud změníte registrátory DNS, neexistují žádné další konfigurační úlohy ve službě Azure AD. Název domény můžete dál používat s Azure AD bez přerušení. Pokud používáte vlastní název domény s Microsoft 365, Intune nebo dalšími službami, které spoléhají na vlastní názvy domén v Azure AD, přečtěte si dokumentaci k těmto službám.
 
 ## <a name="delete-a-custom-domain-name"></a>Odstranění vlastního názvu domény
 
@@ -75,7 +75,7 @@ Název domény můžete **ForceDelete** v [centru pro správu Azure AD](https://
 
 Chcete-li volat **ForceDelete** v Azure Portal, je nutné zajistit, aby bylo méně než 1000 odkazů na název domény a všechny odkazy, kde Exchange je služba zřizování, musí být aktualizována nebo odebrána v centru pro [správu serveru Exchange](https://outlook.office365.com/ecp/). To zahrnuje skupiny zabezpečení s povoleným e-mailem Exchange a distribuované seznamy. Další informace najdete v tématu [Odebrání skupin zabezpečení s povolenými e-maily](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Operace **ForceDelete** se taky nezdaří, pokud je splněná některá z následujících podmínek:
 
-* Zakoupili jste doménu prostřednictvím služby předplatného Office 365 pro domény.
+* Zakoupili jste doménu prostřednictvím služby Microsoft 365 Domain Subscription Services
 * Jste partnerskou správou jménem jiné organizace pro zákazníky.
 
 V rámci operace **ForceDelete** se provádí následující akce:

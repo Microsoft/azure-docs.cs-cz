@@ -7,19 +7,24 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8f01d0b9ba3394d33b9bd6e9f0b3f13fff2f844
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1b7127fd4807e1ddd3d5181d73c7f8e77f10cf77
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021370"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055981"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MariaDB
 Azure Database for MariaDB podporuje připojení Azure Database for MariaDBho serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
 
 ## <a name="obtain-ssl-certificate"></a>Získat certifikát SSL
+
+
 Stáhněte si certifikát potřebný ke komunikaci přes SSL s vaším serverem Azure Database for MariaDB [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) a uložte soubor certifikátu na místní disk (například tento kurz používá c:\ssl).
 **Pro Microsoft Internet Explorer a Microsoft Edge:** Po dokončení stahování přejmenujte certifikát na BaltimoreCyberTrustRoot. CRT. pem.
+
+> [!IMPORTANT] 
+> Kořenový certifikát SSL je nastavený na vypršení platnosti od října 26, 2020 (10/26/2020). Aktualizujte prosím svoji aplikaci, aby používala [nový certifikát](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Další informace najdete v tématu [plánované aktualizace certifikátů](concepts-certificate-rotation.md) .
 
 Podívejte se na následující odkazy pro certifikáty pro servery v cloudech v rámci svrchovaného cloudu: [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure Čína](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)a [Azure Německo](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
@@ -49,9 +54,10 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 > Při použití rozhraní příkazového řádku MySQL v systému Windows se může zobrazit chyba `SSL connection error: Certificate signature check failed` . Pokud k tomu dojde, nahraďte `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametry parametrem `--ssl` .
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Vynucování připojení SSL v Azure 
+
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 Pomocí Azure Portal přejděte na server Azure Database for MariaDB a pak klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolte nebo zakažte nastavení **Vynutilí připojení SSL** a pak klikněte na **Uložit**. Microsoft doporučuje vždy povolit nastavení **Vynutilí připojení SSL** pro rozšířené zabezpečení.
-![Povolit – SSL](./media/howto-configure-ssl/enable-ssl.png)
+![povolení – SSL pro server MariaDB](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 Parametr **SSL-Enforcement** můžete zapnout nebo vypnout pomocí povolených nebo zakázaných hodnot v Azure CLI.

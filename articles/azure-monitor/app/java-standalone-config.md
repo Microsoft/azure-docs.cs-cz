@@ -4,12 +4,12 @@ description: Monitorování výkonu aplikací bez kódu pro aplikace Java běž�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374282"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056094"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
 
@@ -38,8 +38,8 @@ Ve výchozím nastavení Application Insights Java 3,0 Preview očekává, že s
 
 Vlastní cestu ke konfiguračnímu souboru můžete zadat buď pomocí
 
-* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`Proměnná prostředí nebo
-* `applicationinsights.configurationFile`Systémová vlastnost Java
+* `APPLICATIONINSIGHTS_CONFIGURATION_FILE` Proměnná prostředí nebo
+* `applicationinsights.configurationFile` Systémová vlastnost Java
 
 Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.0-PREVIEW.5.jar` se nachází.
 
@@ -113,18 +113,18 @@ Pokud chcete změnit tuto prahovou hodnotu:
 
 Jedná se o platné `threshold` hodnoty, které můžete zadat v `ApplicationInsights.json` souboru a jak odpovídají úrovním protokolování napříč různými architekturami protokolování:
 
-| `threshold`  | Log4j  | Logback | JUL     |
-|--------------|--------|---------|---------|
-| OFF          | OFF    | OFF     | OFF     |
-| ZÁVAŽNÁ        | ZÁVAŽNÁ  | ERROR   | VÁŽNOU  |
-| CHYBA/ZÁVAŽNÁ | ERROR  | ERROR   | VÁŽNOU  |
-| UPOZORNĚNÍ A UPOZORNĚNÍ | UPOZORNIT   | UPOZORNIT    | WARNING |
-| PŘÍJEMCE         | PŘÍJEMCE   | PŘÍJEMCE    | PŘÍJEMCE    |
-| Konfigurace       | DEBUG  | DEBUG   | Konfigurace  |
-| LADĚNÍ/JEMNÉ   | DEBUG  | DEBUG   | Nevadí    |
-| LEPŠÍ        | DEBUG  | DEBUG   | LEPŠÍ   |
-| TRACE/NEJLEPŠÍ | TRACE  | TRACE   | Nejlepší  |
-| ALL          | ALL    | ALL     | ALL     |
+| prahová hodnota   | Log4j  | Logback | JUL     |
+|-------------------|--------|---------|---------|
+| OFF               | OFF    | OFF     | OFF     |
+| ZÁVAŽNÁ             | ZÁVAŽNÁ  | CHYBA   | VÁŽNOU  |
+| Chyba (nebo ZÁVAŽNá) | CHYBA  | CHYBA   | VÁŽNOU  |
+| UPOZORNIT (nebo upozornění) | UPOZORNIT   | UPOZORNIT    | WARNING |
+| PŘÍJEMCE              | PŘÍJEMCE   | PŘÍJEMCE    | PŘÍJEMCE    |
+| Konfigurace            | DEBUG  | DEBUG   | Konfigurace  |
+| LADIT (nebo jemné)   | DEBUG  | DEBUG   | Nevadí    |
+| LEPŠÍ             | DEBUG  | DEBUG   | LEPŠÍ   |
+| TRACE (nebo nejlepší) | TRACE  | TRACE   | Nejlepší  |
+| ALL               | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX metriky
 
@@ -134,7 +134,7 @@ Pokud máte nějaké JMX metriky, které vás zajímají, zachytíte:
 {
   "instrumentationSettings": {
     "preview": {
-        "jmxMetrics": [
+      "jmxMetrics": [
         {
           "objectName": "java.lang:type=ClassLoading",
           "attribute": "LoadedClassCount",
@@ -181,9 +181,9 @@ Ve výchozím nastavení Application Insights Java 3,0 Preview pošle metriku pr
 {
   "instrumentationSettings": {
     "preview": {
-        "heartbeat": {
-            "intervalSeconds": 60
-        }
+      "heartbeat": {
+        "intervalSeconds": 60
+      }
     }
   }
 }
@@ -205,13 +205,13 @@ Tady je příklad, jak nastavit vzorkování na **10% všech transakcí** – Uj
 {
   "instrumentationSettings": {
     "preview": {
-        "sampling": {
-            "fixedRate": {
-                "percentage": 10
-            }
-          }
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10
         }
+      }
     }
+  }
 }
 ```
 
@@ -244,10 +244,10 @@ Ve výchozím nastavení se protokoluje do konzoly s úrovní `warn` odpovídaj�
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "console",
-            "level": "WARN"
-        }
+      "selfDiagnostics": {
+        "destination": "console",
+        "level": "WARN"
+      }
     }
   }
 }
@@ -261,12 +261,12 @@ Pokud se chcete přihlásit k souboru místo protokolování do konzoly:
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "file",
-            "directory": "/var/log/applicationinsights",
-            "level": "WARN",
-            "maxSizeMB": 10
-        }    
+      "selfDiagnostics": {
+        "destination": "file",
+        "directory": "/var/log/applicationinsights",
+        "level": "WARN",
+        "maxSizeMB": 10
+      }
     }
   }
 }

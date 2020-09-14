@@ -10,16 +10,22 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 13129d5a2540548b8532b14593de60fdca73efef
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a87769e1b67187a15daf3a256a2c1f4c79e10040
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560766"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055516"
 ---
 # <a name="whats-new-in-custom-vision"></a>Co je nového v Custom Vision
 
-Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
+Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
+
+## <a name="july-2020"></a>Červenec 2020
+
+### <a name="role-based-access-control"></a>Řízení přístupu na základě role
+
+Custom Vision podporuje řízení přístupu na základě role Azure (Azure RBAC), což je autorizační systém pro správu individuálního přístupu k prostředkům Azure. Informace o tom, jak spravovat přístup k vašim Custom Visionm projektům, najdete v tématu [řízení přístupu na základě role](./role-based-access-control.md).
 
 ## <a name="september-2019"></a>Září 2019
 

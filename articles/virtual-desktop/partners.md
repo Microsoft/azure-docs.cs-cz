@@ -3,15 +3,15 @@ title: Integrace partnerů virtuálních počítačů s Windows – Azure
 description: Přečtěte si o partnerech virtuálních počítačů s Windows a dokumentaci k nim o tom, jak s nimi integrovat.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612363"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056384"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -46,7 +46,8 @@ Jako zprostředkovatel schváleného pro virtuální počítače s Windows můž
 
 10ZiG's celosvětového trhu v tenkých a nulových zařízeních koncových bodů klienta a software pro správu virtuálních ploch je exemplified podle toho, jak pracují pro zákazníky. Jeho tenký klientský hardware se dodává s Thoughtfully funkcemi a možnostmi pro zvýhodnění, které jsou navržené tak, aby zákazníci dostávali správná klientská zařízení podle svých potřeb. 10ZiG přizpůsobí svá zařízení tak, aby se vešla do zákaznických prostředí pomocí klientů se systémem Windows a Linux, které poskytují nejlepší možný výkon ve virtuálních plochách i mimo Cloud.
 
-- [Přejít na web partnera](https://www.10zig.com/about/microsoft-wvd).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeR).
+- [Přejít na web partnera](https://www.10zig.com/about/microsoft-windows-virtual-desktop).
 
 ## <a name="automai"></a>Automai
 
@@ -101,7 +102,7 @@ Při použití s virtuálním počítačem s Windows poskytuje ControlUp další
 
 Tenké klienty technologie Dell jsou optimalizované pro přístup k Microsoft Azure a službě Windows Virtual Desktop. Aby bylo možné plnit potřeby ze spolupracujících pracovníků v oblasti znalostní báze až po uživatele s náročnou grafikou, Wyse tenké klienty poskytují vysoce kvalitní výpočetní prostředí, které plně využívá rostoucí počet aplikací a obsahu. V případě prostorově omezeného prostředí se Wyse tenké klienty přizpůsobí způsobu, jakým uživatelé pracují s univerzálními faktory a různými možnostmi volby připojení.
 
-Wyse tenké klienty jsou navržené s ohledem na úroveň zabezpečení na omezeném prostoru pro útoky, podporu standardů dodržování předpisů zabezpečení a pokročilých řešeních Multi-Factor Authentication. K nasazení vysoce zabezpečených tenkých klientů pomocí Dell Wyse ThinOS můžete využívat zabezpečený přístup ke cloudovým aplikacím a virtuálním pracovním prostorům z posílené Wyse ThinLinux s komerčním osvědčeným návrhem a s Windows 10 IoT Enterprise a funkcemi zabezpečení, které nabízí společnost Dell. Díky zabezpečené komunikaci založené na protokolu HTTPS a ověřování Active Directory pro správu na základě rolí udržuje Wyse Management Suite vždycky aktuální stav koncových bodů Wyse a mobilní aplikace pro službu WMS umožňuje zobrazovat kritické výstrahy a v reálném čase odesílat příkazy v reálném čase jediným klepnutím.
+Wyse tenké klienty jsou navržené s ohledem na zabezpečení na omezené plochy pro útoky, podporu standardů dodržování předpisů zabezpečení a pokročilé řešení Multi-Factor Authentication. Nasaďte vysoce zabezpečené tenké klienty s Windows 10 IoT Enterprise a funkcemi zabezpečení přidaných společností Dell. V rámci zabezpečení založeného na protokolu HTTPS a ověřování služby Active Directory pro správu na základě rolí udržuje Wyse Management Suite vždycky aktuální stav koncových bodů Wyse a mobilní aplikace pro službu WMS umožňuje zobrazovat kritická upozornění a odesílat příkazy v reálném čase jediným klepnutím kdykoli.
 
 - [Přejít na web partnera](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
 
@@ -190,6 +191,15 @@ Lakeside software je poskytovatel služeb s přidanou hodnotou pro virtuální p
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
 - [Přejít na web partnera](https://www.lakesidesoftware.com/assessments/wvd).
 
+## <a name="lenovo"></a>Lenovo
+
+![Logo Lenovo](./media/partners/lenovo.png)
+
+Lenovo tenké klienty přidávají vaší síti flexibilitu klientského počítače běžícího na serveru, ale s využitím nativních funkcí a výkonu počítačů. Lenovo tenké klienty poskytují nasazení virtuálních ploch pro Windows neuvěřitelně výkon a intuitivní možnosti správy a zvyšují síť vaší společnosti na další úroveň spolehlivosti. Každý tenký klient je vybavený s licencí správce terminálu Lenovo bez dalších nákladů, které organizacím poskytují bezproblémové a cenově výhodné možnosti správy hardwaru a nasazení. Jsou také malé a univerzální a usnadňují přidávání do stávajících nasazení Lenovo.
+
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FnaB).
+- [Přejít na web partnera](https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-thin-clients/c/M-Series-Thin-Clients).
+
 ## <a name="liquidware"></a>Liquidware
 
 ![Logo Liquidware](./media/partners/liquidware.png)
@@ -220,6 +230,17 @@ Přihlašovací VSI je poskytovatel služeb s přidanými virtuálními počíta
 
 - [Přejít na web partnera](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
+## <a name="nasuni"></a>Nasuni
+
+![Logo Nasuni](./media/partners/nasuni.png)
+
+Nasuni Corp., přední poskytovatel cloudových souborových služeb a nejvyšší globální partner společnosti Azure, nabízí jako moderní řešení úložiště pro moderní virtuální plochy Nasuniovou platformu jako službu jako moderní úložiště souborů. Nasuni v kombinaci s Azure Blob Storage konsoliduje primární úložiště souborů (NAS), zálohování souborů, zotavení po havárii a synchronizaci souborů mezi oblastmi v jednom sjednoceném řešení. S Nasuni podniky můžou nasazovat virtuální plochy Windows pro další případy použití a ve více oblastech Azure, zjednodušit správu a zajistit kontinuitu podnikových procesů. 
+
+V rámci moderního cloudového řešení VDI vyžaduje Windows virtuální počítač moderní cloudové úložiště souborů. Tradičně je úložiště souborů VDI založené na síti SAN (Network-Attached Storage) a hardwaru souborového serveru, který je místně umístěný v místním prostředí, a v doprovodné požadované technologii pro poskytování záloh souborů, obnovení a zotavení po havárii. Tyto tradiční přístupy jsou nákladné, složité pro údržbu a správu a neumožňují snadné škálování. Zavádějí taky latenci, pokud se používá u moderního cloudového řešení VDI, jako je třeba virtuální počítač s Windows, protože se jedná o fyzickou vzdálenost a pomalejší připojení WAN mezi stolními počítači, které jsou založené na Azure, a úložištěm souborů v místním prostředí. Nasuni, platforma souborové služby vytvořená speciálně pro Azure, nabízí neomezenou kapacitu úložiště souborů a vysoce výkonný přístup k souborům. Nasuni může být umístěn společně s virtuálním počítačem s Windows ve stejných oblastech Azure pro zajištění úsporného a vysoce výkonného přístupového souboru k jednomu globálnímu oboru názvů. Nasuni nabízí úložiště souborů virtuálních klientů Windows ve zlomcích nákladů na tradiční servery NAS a souborové servery Windows a zahrnuje integrované zálohy a zotavení po havárii pro další snížení nákladů a uvolnění IT prostředků.
+
+- [Přejít na web partnera](https://www.nasuni.com/partner/microsoft/#wvd).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Logo Nerdio](./media/partners/nerdio.png)
@@ -230,6 +251,17 @@ Nerdio rozšiřuje hodnotu virtuálního klienta Windows tím, že usnadňuje z�
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Přejít na web partnera](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="nexthink"></a>Nexthink
+
+![Logo Nexthink](./media/partners/nexthink.png)
+
+Nexthink je poskytovatel přidaných hodnot pro virtuální počítače s Windows, který pomáhá organizacím bez obav měřit, spravovat a zdokonalovat digitální zážitky zaměstnanců a produktivitu. Díky konstantě Přečtěte si Pulse o práci s digitálním zaměstnancem, může nepřetržitě vylepšit schopnost technologie zapojit, zdokonalit a rozsvítit lidi bez ohledu na to, kde fungují. 
+
+Díky tomu, že poskytuje řešení s viditelnými zdroji na pracovišti, poskytuje Nexthink kontext a přehled o vaší uživatelské základně. Nexthink výkonná platforma pro správu zkušeností uživatelů pomáhá IT týmům zajistit, aby migrace na virtuální plochu Windows byly plánované a byly včas úspěšné a úspěšné.
+
+- [Přejít na web partnera](https://www.nexthink.com/initiative/desktop-virtualization/).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeT).
 
 ## <a name="numecent"></a>Numecent
 
@@ -287,12 +319,16 @@ RDPSoft je partner s virtuálními počítači s Windows, který poskytuje výko
 
 ![Logo Rimo3](./media/partners/rimo3.png)
 
-Rimo3 vylepšuje prostředí pro virtuální počítače s Windows díky urychlení nasazení a vylepšení probíhající správy změn. Rimo3 IT týmy se svými znalostmi, které potřebují k podpoře vašeho portfolia aplikací pro přípravu úloh aplikací pro migraci do Azure. Uživatelé mohou připojit aplikace a testovat je ve svém cílovém pracovním prostoru pro virtuální počítače s Windows rychle a bezproblémově kódovat službu. Uživatelé také mohou aktivně pochopit dopad jakýchkoli změn, protože jejich organizace zavede nové aplikace a aktualizace. Správci IT můžou nakonec využít schopnost inteligentního testování kouře Rimo3's a automatizovat testování funkčnosti bez přerušení uživatelských relací.
+Rimo3 vylepšuje prostředí pro virtuální počítače s Windows pomocí snadno použitelné, škálovatelné a cloudové platformy pro moderní aplikace.
 
-Rimo3 nabízí snadno použitelné, škálovatelnou a automatizovanou platformu pro testování aplikací. Tato platforma zahrnuje možnosti pro všechny tři základní funkce testování aplikací: kompatibilitu, funkčnost a výkon. Umožňuje organizacím, vedoucím a týmům zlepšit kontinuitu podnikových aplikací, přijímat změny rychleji a optimalizovat uživatelské prostředí.
+Pro IT týmy Rimo3 pomáhá zjišťovat, modernizovat a spravovat úlohy aplikací pro přesun do virtuálního počítače s Windows. Uživatelé můžou automaticky kontrolovat své portfolio aplikací a zjišťovat kandidáty vhodné k registraci do virtuálních počítačů s Windows nebo modernizaci do MSIX.  
+
+Uživatelé můžou automatizovat předběžnou testování svých aplikací, převádět aplikace na MSIX a testování po převodu při použití automatizované nápravy, pokud se aplikace nepřevádí správně. Výsledkem je moderní balíček MSIX připravený pro nasazení. U každé verze a aktualizace funkcí virtuálních počítačů s Windows můžou uživatelé plně testovat aplikace automaticky před nasazením a zajistit tak úplnou spolehlivost a průběžnou správu.
+
+Pro poskytovatele spravovaných služeb Rimo3 pomáhá rozšířením svých funkcí spravovaných služeb zlepšit marže a přispět tak k přemostění výnosů na základě předplatného na základě předplatného a k přidání hodnoty zákazníkům, kteří potřebují modernizovat a přesunou na virtuální plochu s Windows, a ke správě pravidelných aktualizací ve svých pracovních prostorech plochy.
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
-- [Přejít na web partnera](https://rimo3.com/outcomes/).
+- [Přejít na web partnera](https://rimo3.com/windows-virtual-desktop/).
 
 ## <a name="sepago"></a>sepago
 
@@ -304,6 +340,17 @@ sepago a vývojové laboratoře pro vývoj vytváří inteligentní řešení s 
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
 - [Přejít na web partnera](https://www.sepago.de/en/).
+
+## <a name="ssh2"></a>SSH2
+
+![Logo SSH2](./media/partners/ssh2.png)
+
+SSH2 je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který svým IT týmům vydává software k urychlení doručení aplikace z aktuální platformy na virtuální plochu Windows na platformě Azure. SSH2 umožňuje zrychlit zachycení aplikace a zjednodušit tak proces migrace. SSH2's appCURE zachycuje spuštěné aplikace na koncovém bodu, umožňuje aktualizace a nápravu pro vytvoření komplexního kroku změny rychlosti, při které se můžou spouštět prostředí koncových uživatelů. 
+
+appCURE zachycuje podrobnosti o aplikaci ze spuštěných aplikací, aby se zajistilo pochopení všech bodů, které by mohly ovlivnit aplikace koncového uživatele. appCURE se pak aktualizuje a doručí na nový virtuální počítač s Windows. Díky zachycení všech integračních bodů aplikací ve vašem současném prostředí appCURE poskytuje rychlost pro optimalizaci IT prostředků a rychlejší a rychlejší plánování vašich migrací, aby se organizace rychleji dostaly do produkce.
+
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
+- [Přejít na stránku partner](https://www.ssh2.xyz/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -334,6 +381,7 @@ nepřeberné omezení uberAgent společnosti poskytuje přehled o nasazeních vi
 
 uberAgent je produkt pro monitorování a analýzu, který je navržený pro výpočetní uživatele, který nejenom shromažďuje data – poskytuje zákazníkům informace, na kterých záleží. uberAgent má své vlastní metriky, které pokrývají klíčové aspekty uživatelského prostředí, výkonu aplikací a zabezpečení koncového bodu, a oznamuje vám všechno, co potřebujete znát o virtuálních počítačích s virtuálními počítači s Windows, aniž by to ovlivnilo hustotu uživatelů vašich systémů. uberAgent zjednodušuje řešení potíží, pomáhá při změně velikosti a poskytuje bohatě důležité informace pro zabezpečení informací.
 
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs39).
 - [Přejít na web partnera](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
 
 ## <a name="workspace-365"></a>Pracovní prostor 365

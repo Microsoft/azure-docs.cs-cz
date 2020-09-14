@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71e6dc8bdb8bdccdaaf845498eebdbe75a8b35c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 38cc5458b2e62e071227a2372d56e4647e347338
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547178"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055975"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Concur
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat integraci Concur do služby Azure AD, musíte přida
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Concur** .
 1. Na panelu výsledků vyberte **Concur** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-concur"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Concur
+## <a name="configure-and-test-azure-ad-sso-for-concur"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Concur
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Concur pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Concur.
 
@@ -82,9 +82,18 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<customer-domain>.concursolutions.com`
+    
+    c. V poli **Adresa URL odpovědi**zadejte jeden z následujících vzorů adresy URL:
 
+    | Adresa URL odpovědi|
+    |----------|
+    | `https://www.concursolutions.com/SAMLRedirector/SAMLReceiver.ashx` |
+    | `https://<customer-domain>.concursolutions.com/<OrganizationId>` |
+    | `https://<customer-domain>.concur.com` |
+    | `https://<customer-domain>.concursolutions.com` | 
+    
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Concur](https://www.concur.co.in/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Concur](https://www.concur.co.in/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -104,7 +113,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

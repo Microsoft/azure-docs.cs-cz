@@ -3,17 +3,16 @@ title: Resource Health pro Cloud Services (Classic)
 description: Tento článek pojednává o podpoře Resource Health (RHC) pro Microsoft Azure Cloud Services (Classic).
 services: cloud-services
 author: tanmaygore
-manager: vashan
 ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: 969390b0988c59940cb210c14821cbee42edfa7a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664067"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056046"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Podpora Resource Health (RHC) pro Azure Cloud Services (Classic)
 Tento článek pojednává o podpoře Resource Health (RHC) pro [Microsoft Azure Cloud Services (Classic)](https://azure.microsoft.com/services/cloud-services) .
@@ -22,6 +21,7 @@ Tento článek pojednává o podpoře Resource Health (RHC) pro [Microsoft Azure
 
 Stav Azure hlásí problémy, které mají vliv na širokou škálu zákazníků Azure. Resource Health poskytuje přizpůsobený řídicí panel stavu vašich prostředků. Resource Health zobrazuje všechny časy nedostupnosti vašich prostředků z důvodu problémů se službami Azure. Tato data vám umožní snadno zjistit, jestli došlo k porušení smlouvy SLA.
 
+:::image type="content" source="media/cloud-services-allocation-failure/rhc-blade-cloud-services.png" alt-text="Image zobrazuje okno pro kontrolu stavu prostředků v Azure Portal.":::
 
 ## <a name="how-health-is-checked-and-reported"></a>Jak se kontroluje a hlásí stav?
 Stav prostředku se oznamuje na úrovni nasazení nebo role. K kontrole stavu dochází na úrovni instance role, agregujeme stav a nahlásíme ho na úrovni role. Například Pokud jsou k dispozici všechny instance rolí, je stav role k dispozici. Podobně agregujeme stav všech rolí a nahlásíme je na úrovni nasazení. Například Pokud jsou k dispozici všechny role, bude stav nasazení k dispozici. 

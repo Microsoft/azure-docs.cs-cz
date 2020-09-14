@@ -3,7 +3,7 @@ title: Aktualizace zařízení StorSimple | Microsoft Docs
 description: Vysvětluje, jak pomocí funkce aktualizace StorSimple instalovat běžné aktualizace a opravy hotfix v režimu údržby.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: twooley
-ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: dec354767875d91c6062cdfbb0009e857dbe2636
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170082"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056547"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualizace zařízení řady StorSimple 8000
 > [!NOTE]
@@ -84,22 +84,22 @@ Pokud potřebujete použít aktualizace režimu údržby, obdržíte upozorněn�
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console"></a>Krok 1: připojení ke konzole sériového portu<a name="step1"></a>
+### <a name="step-1-connect-to-the-serial-console"></a>Krok 1: připojení ke konzole sériového portu <a name="step1"></a>
 Nejprve k přístupu ke konzole sériového rozhraní použijte aplikaci, jako je například výstup. Následující postup vysvětluje, jak pomocí výstupu připojit ke konzole sériového připojení.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode"></a>Krok 2: Zadejte režim údržby<a name="step2"></a>
+### <a name="step-2-enter-maintenance-mode"></a>Krok 2: Zadejte režim údržby <a name="step2"></a>
 Po připojení ke konzole nástroje Zjistěte, zda jsou k dispozici aktualizace pro instalaci, a zadejte režim údržby pro jejich instalaci.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates"></a>Krok 3: instalace aktualizací<a name="step3"></a>
+### <a name="step-3-install-your-updates"></a>Krok 3: instalace aktualizací <a name="step3"></a>
 Dále nainstalujte své aktualizace.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode"></a>Krok 4: ukončení režimu údržby<a name="step4"></a>
+### <a name="step-4-exit-maintenance-mode"></a>Krok 4: ukončení režimu údržby <a name="step4"></a>
 Nakonec ukončete režim údržby.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

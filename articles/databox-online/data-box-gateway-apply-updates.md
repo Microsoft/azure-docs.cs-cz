@@ -2,17 +2,17 @@
 title: Instalace aktualizace na zařízení s Azure Data Box Gateway Series | Microsoft Docs
 description: Popisuje, jak použít aktualizace pomocí Azure Portal a místního webového uživatelského rozhraní pro zařízení Azure Data Box Gateway Series.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: twooley
-ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1b3f0faa2b5f67a23317935f0ad868e3872cf86e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783871"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055959"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>Aktualizace Azure Data Box Gateway
 
@@ -22,7 +22,7 @@ Tento článek popisuje kroky potřebné k instalaci aktualizace do Azure Data B
 >
 > - Aktualizace **1911** odpovídá verzi **1.6.1049.786** softwaru na vašem zařízení. Další informace o této aktualizaci najdete v [poznámkách k verzi](data-box-gateway-1911-release-notes.md).
 >
-> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix se zařízení restartuje. Vzhledem k tom, že Data Box Gateway je zařízení s jedním uzlem, dojde k přerušení všech vstupně-výstupních operací a v zařízení dojde k výpadku až 30 minut od aktualizace softwaru zařízení.
+> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Vzhledem k tomu, že Data Box Gateway je zařízení s jedním uzlem, při aktualizaci softwaru zařízení se přeruší všechny probíhající vstupně-výstupní operace a dojde k až 30minutovému výpadku zařízení.
 
 Každý z těchto kroků je popsaný v následujících částech.
 
@@ -39,7 +39,7 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
 2. V okně **aktualizace zařízení** ověřte, že jste si přečetli licenční smlouvy spojené s novými funkcemi v poznámkách k verzi.
 
-    Můžete si **Stáhnout a nainstalovat** aktualizace nebo **Stáhnout** aktualizace. Pak se můžete rozhodnout nainstalovat tyto aktualizace později.
+    Můžete si **Stáhnout a nainstalovat** aktualizace nebo **Stáhnout** aktualizace. Tyto aktualizace pak můžete nainstalovat později.
 
     ![Verze softwaru po aktualizaci](./media/data-box-gateway-apply-updates/portal-apply-update-02.png)
 
@@ -63,7 +63,7 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
     ![Verze softwaru po aktualizaci](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Install** (Nainstalovat).
+    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Nainstalovat**.
   
     ![Verze softwaru po aktualizaci](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -139,7 +139,7 @@ Dokončení tohoto postupu trvá přibližně 20 minut. Provedením následujíc
 
    ![aktualizace zařízení](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. Vyberte **Apply** (Použít).
+3. Vyberte **Použít**.
 
    ![aktualizace zařízení](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 

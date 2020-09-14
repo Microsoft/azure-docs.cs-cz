@@ -3,7 +3,7 @@ title: Řešení potíží s nasazeným zařízením StorSimple | Microsoft Docs
 description: Popisuje, jak diagnostikovat a opravovat chyby, ke kterým dochází na zařízení StorSimple, které je aktuálně nasazené a funkční.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
@@ -13,13 +13,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: twooley
-ms.openlocfilehash: e2e68c7016a37824f1bf307a676c39281d4d41d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: eaf6b1825a258b11a2e345c771909822de73dfcf
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507816"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056485"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Řešení potíží s operačním StorSimple zařízením
 > [!NOTE]
@@ -45,7 +45,7 @@ Průvodce instalací neprovede operace týkající se shromažďování hesel a 
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Chyby, ke kterým dochází během následných spuštění Průvodce instalací
 Následující tabulka popisuje chyby, se kterými se můžete setkat při spuštění Průvodce instalací na provozním zařízení, možných příčin chyb a doporučených akcích k jejich vyřešení. 
 
-| Ne. | Chybová zpráva nebo podmínka | Možné příčiny | Doporučená akce |
+| No. | Chybová zpráva nebo podmínka | Možné příčiny | Doporučená akce |
 |:--- |:--- |:--- |:--- |
 | 1 |Chyba 350032: Toto zařízení již bylo deaktivováno. |Tato chyba se zobrazí, pokud spustíte Průvodce instalací na zařízení, které je deaktivováno. |Pro další kroky [kontaktujte podpora Microsoftu](storsimple-contact-microsoft-support.md) . Deaktivované zařízení nejde umístit do služby. Aby bylo možné zařízení znovu aktivovat, může být vyžadováno obnovení továrního nastavení. |
 | 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (výjimka z HRESULT: 0x80070001) |Aktualizace serveru DNS se nezdařila. Nastavení DNS jsou globální nastavení a používají se ve všech povolených síťových rozhraních. |Povolte rozhraní a znovu použijte nastavení DNS. To může rušit síť pro jiná povolená rozhraní, protože tato nastavení jsou globální. |
