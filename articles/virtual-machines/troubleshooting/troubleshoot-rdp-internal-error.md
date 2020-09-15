@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7cbb67a215d44759b2b503929c37cb50ea94709c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235158"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069760"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Při pokusu o připojení k virtuálnímu počítači Azure přes Vzdálenou plochu dojde k vnitřní chybě
 
@@ -26,7 +26,7 @@ Tento článek popisuje chybu, ke které může dojít při pokusu o připojení
 
 ## <a name="symptoms"></a>Příznaky
 
-K virtuálnímu počítači Azure se nemůžete připojit pomocí protokolu RDP (Remote Desktop Protocol). Připojení se zablokuje v části "Konfigurace vzdáleného" nebo se zobrazí tato chybová zpráva:
+K virtuálnímu počítači Azure se nemůžete připojit pomocí protokolu RDP (Remote Desktop Protocol). Připojení se zablokuje v části **Konfigurace vzdáleného** nebo se zobrazí tato chybová zpráva:
 
 - Vnitřní chyba protokolu RDP
 - Došlo k vnitřní chybě.
@@ -37,20 +37,24 @@ K virtuálnímu počítači Azure se nemůžete připojit pomocí protokolu RDP 
 
 K tomuto problému může dojít z následujících důvodů:
 
+- Je možné, že virtuální počítač je napadený.
 - K místním šifrovacím klíčům RSA nelze přistup.
 - Protokol TLS je zakázán.
 - Certifikát je poškozený nebo vypršel jeho platnost.
 
 ## <a name="solution"></a>Řešení
 
-Než budete postupovat podle těchto kroků, pořiďte si snímek disku s operačním systémem ovlivněného virtuálního počítače jako záložního. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
+Pokud chcete tento problém vyřešit, postupujte podle kroků v následujících částech. Než začnete, pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako záložního. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-Pokud chcete tento problém vyřešit, použijte konzolu sériového portu nebo [opravte virtuální počítač offline](#repair-the-vm-offline) připojením disku operačního systému virtuálního počítače k virtuálnímu počítači pro obnovení.
+### <a name="check-rdp-security"></a>Ověřit zabezpečení RDP
 
+Nejprve zkontrolujte, zda není skupina zabezpečení sítě pro port RDP 3389 zabezpečena (otevřít). Pokud není zabezpečený a zobrazuje se \* jako zdrojová IP adresa pro příchozí, omezte port RDP na IP adresu uživatele specifc a pak otestujte přístup RDP. Pokud se to nepovede, proveďte kroky v další části.
 
 ### <a name="use-serial-control"></a>Použití ovládacího prvku sériového portu
 
-Připojte se ke [konzole sériového prostředí a otevřete instanci PowerShellu](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+Použijte sériovou konzolu nebo [opravte virtuální počítač offline](#repair-the-vm-offline) připojením disku operačního systému virtuálního počítače k virtuálnímu počítači pro obnovení.
+
+Začněte tím, že se připojíte ke [konzole sériového prostředí a otevřete instanci PowerShellu](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí, přečtěte si část [opravy offline virtuálního počítače](#repair-the-vm-offline) .
 
 #### <a name="step-1-check-the-rdp-port"></a>Krok: 1 zkontrolování portu RDP

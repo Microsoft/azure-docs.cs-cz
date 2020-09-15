@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662497"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085344"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Monitorujte rozbočovače Surface Azure Monitor, abyste mohli sledovat jejich stav.
 
@@ -60,7 +60,7 @@ Pokud ke správě svého prostředí nepoužíváte Intune, můžete zařízení
 3. Klikněte na **Toto zařízení**a v části **monitorování**klikněte na **Konfigurovat Log Analytics nastavení**.
 4. Vyberte **Povolit monitorování**.
 5. V dialogovém okně nastavení Log Analytics zadejte **ID pracovního prostoru** Log Analytics a zadejte **klíč pracovního prostoru**.  
-   ![možnost](./media/surface-hubs/settings.png)
+   ![Snímek obrazovky zobrazuje nastavení sady Microsoft Operations Manager Suite s vybraným možnostmi Povolit monitorování a textová pole pro ID pracovního prostoru a klíč pracovního prostoru.](./media/surface-hubs/settings.png)
 6. Kliknutím na tlačítko **OK** dokončete konfiguraci.
 
 Zobrazí se potvrzení o tom, jestli se konfigurace na zařízení úspěšně nastavila. Pokud k tomu došlo, zobrazí se zpráva oznamující, že se agent úspěšně připojil k Azure Monitor. Zařízení pak začne odesílat data do Azure Monitor, kde je můžete zobrazit a pracovat s nimi.

@@ -3,15 +3,15 @@ title: Azure Portal fondu hostitelů virtuálních počítačů s Windows – Az
 description: Postup vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322581"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084358"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -188,6 +188,13 @@ Chcete-li zaregistrovat skupinu desktopových aplikací do pracovního prostoru:
      - Odkaz ke stažení pro šablonu správy prostředků Azure na základě vaší konfigurace.
 
 Pak jste hotovi!
+
+## <a name="run-the-azure-resource-manager-template-to-provision-a-new-host-pool"></a>Spuštění šablony Azure Resource Manager pro zřízení nového fondu hostitelů
+
+Pokud místo toho chcete použít automatizovaný proces, [Stáhněte si naši šablonu Azure Resource Manager](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) , abyste místo toho zřídili nový fond hostitelů.
+
+>[!NOTE]
+>Pokud k sestavení vašeho prostředí používáte automatizovaný proces, budete potřebovat nejnovější verzi konfiguračního souboru JSON. Soubor JSON můžete najít [tady](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list).
 
 ## <a name="next-steps"></a>Další kroky
 

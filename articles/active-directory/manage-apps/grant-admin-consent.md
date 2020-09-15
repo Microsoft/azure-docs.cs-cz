@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060913"
+ms.locfileid: "90069573"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
@@ -69,6 +69,9 @@ Udělení souhlasu správce na úrovni tenanta od **Registrace aplikací**:
 4. Vyberte **oprávnění rozhraní API** a pak klikněte na **udělit souhlas správce**.
 5. Pečlivě zkontrolujte oprávnění, která aplikace vyžaduje.
 6. Pokud souhlasíte s oprávněními, které aplikace vyžaduje, udělte souhlas. V takovém případě klikněte na tlačítko **Storno** nebo zavřete okno.
+
+> [!WARNING]
+> Udělení souhlasu správce na úrovni tenanta prostřednictvím **Registrace aplikací** odvolá všechna oprávnění, která byla dříve udělena v rámci tenanta. Oprávnění, která byla dříve udělena uživateli na jejich vlastním jménem, nebudou ovlivněna. 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>Vytvoření adresy URL pro udělení souhlasu správce na úrovni tenanta
 

@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 0c4178513c5a6027b3261d6d7975d4ec7cc55c6a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500415"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085786"
 ---
 # <a name="monitoring-azure-storage"></a>Azure Storage monitorování
 
@@ -76,7 +76,11 @@ Všechny ostatní neúspěšné anonymní požadavky nejsou protokolovány. Úpl
 
 ## <a name="configuration"></a>Konfigurace
 
-Metriky platforem a protokol aktivit jsou shromažďovány automaticky, ale je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků nebo jejich přeposílání mimo Azure Monitor. Postup vytvoření nastavení diagnostiky pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../../azure-monitor/platform/diagnostic-settings.md).
+Metriky platforem a protokol aktivit jsou shromažďovány automaticky, ale je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků nebo jejich přeposílání mimo Azure Monitor. 
+
+Pokud chcete vytvořit nastavení diagnostiky pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu, přečtěte si téma [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../../azure-monitor/platform/diagnostic-settings.md). 
+
+Chcete-li zobrazit šablonu Azure Resource Manager, která vytvoří nastavení diagnostiky, přečtěte si téma [nastavení diagnostiky pro Azure Storage](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
 
 Při vytváření nastavení diagnostiky vyberte typ úložiště, pro které chcete povolit protokoly, jako je například objekt blob, fronta, tabulka nebo soubor. Data Lake Storage Gen2 se nezobrazuje jako typ úložiště. Důvodem je to, že Data Lake Storage Gen2 sadu funkcí dostupných pro úložiště objektů BLOB. 
 
@@ -124,7 +128,7 @@ Seznam Azure Monitor všech metrik podpory, které zahrnují Azure Storage, najd
 
 #### <a name="list-the-metric-definition"></a>Výpis definice metriky
 
-Můžete vypsat definici metriky svého účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte rutinu [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition?view=azps-3.3.0) .
+Můžete vypsat definici metriky svého účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte rutinu [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) .
 
 V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo ID prostředku jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
@@ -135,7 +139,7 @@ V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku ce
 
 #### <a name="reading-metric-values"></a>Čtení hodnot metriky
 
-Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte rutinu [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) .
+Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte rutinu [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) .
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -146,7 +150,7 @@ Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo jedno
 
 #### <a name="list-the-account-level-metric-definition"></a>Výpis definice metriky na úrovni účtu
 
-Můžete vypsat definici metriky svého účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte příkaz [AZ monitor Metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list-definitions) .
+Můžete vypsat definici metriky svého účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte příkaz [AZ monitor Metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) .
  
 V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo ID prostředku jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
@@ -156,7 +160,7 @@ V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku ce
 
 #### <a name="read-account-level-metric-values"></a>Číst hodnoty metrik na úrovni účtu
 
-Můžete si přečíst hodnoty metrik účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte příkaz [AZ monitor Metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) .
+Můžete si přečíst hodnoty metrik účtu úložiště nebo jednotlivé služby úložiště, jako je například objekt blob, soubor, tabulka nebo služba front. Použijte příkaz [AZ monitor Metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) .
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H

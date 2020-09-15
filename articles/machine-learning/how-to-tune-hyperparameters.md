@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 84262427c6d5183fb803f3fc16d2e7b8021e9d5e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 52e419e970173ddaf3d4d6176f2dd26a1e8194e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651803"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084656"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Vyladění parametrů pro model pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -151,11 +151,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Bayesovského rozhodování vzorkování nepodporuje žádné zásady prvotního ukončení (viz [určení zásady prvotního ukončení](#specify-early-termination-policy)). Při použití vzorkování parametrů bayesovského rozhodování, nastavení `early_termination_policy = None` nebo ponechání `early_termination_policy` parametru.
+> Bayesovského rozhodování vzorkování nepodporuje žádné zásady prvotního ukončení (viz [určení zásady prvotního ukončení](#early-termination)). Při použití vzorkování parametrů bayesovského rozhodování, nastavení `early_termination_policy = None` nebo ponechání `early_termination_policy` parametru.
 
-<a name='specify-primary-metric-to-optimize'/>
-
-## <a name="specify-primary-metric"></a>Zadat primární metriku
+## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> Zadat primární metriku
 
 Určete [primární metriku](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) , kterou má experiment pro ladění parametrů optimalizovat. U každého výukového běhu se vyhodnocuje primární metrika. Nedostatečně výkonné běhy (kde primární metrika nesplňuje kritéria nastavená zásadami prvotního ukončení) se ukončí. Kromě primárního názvu metriky určíte také cíl optimalizace – zda má být primární metrika maximalizována nebo minimalizována.
 
@@ -169,9 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 Optimalizujte spuštění a maximalizujte "přesnost".  Nezapomeňte tuto hodnotu ve školicím skriptu zaprotokolovat.
 
-<a name='log-metrics-for-hyperparameter-tuning'/>
-
-### <a name="log-metrics-for-hyperparameter-tuning"></a>Metriky protokolu pro ladění parametrů
+### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> Zadat primární metriku
 
 Školicí skript pro váš model musí během školení modelu protokolovat relevantní metriky. Když nakonfigurujete ladění parametrů, zadáte primární metriku, která se má použít pro vyhodnocení výkonu spuštění. (Viz [Určení primární metriky k optimalizaci](#specify-primary-metric-to-optimize).)  Ve školicím skriptu je nutné tuto metriku zaprotokolovat, aby byla dostupná pro proces ladění parametrů.
 
@@ -184,8 +180,6 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 Školicí skript vypočítá `val_accuracy` a zaprotokoluje ho jako přesnost, která se používá jako primární metrika. Pokaždé, když se zaprotokoluje metrika, obdrží služba ladění pomocí parametrů. Aby bylo možné určit, jak často se má tato metrika hlásit, je to vývojář modelů.
-
-<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Zadat zásady prvotního ukončení
 

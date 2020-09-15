@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719137"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084205"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Přidání jazykových sad do bitové kopie Windows 10 s více relacemi
 
@@ -30,7 +30,7 @@ Abyste mohli přidat několik jazyků, budete potřebovat následující věci, 
 
 - Virtuální počítač Azure s více relacemi Windows 10 Enterprise, verze 1903 nebo novější
 
-- Jazyková verze ISO a funkce na vyžádání (francouzské) – disk 1 verze operačního systému, který image používá. Můžete si je stáhnout tady:
+- Jazyková verze ISO, funkce na vyžádání (francouzské verze) disk 1 a aplikace doručené pošty ISO verze operačního systému, kterou image používá. Můžete si je stáhnout tady:
      
      - Jazyk ISO:
         - [Windows 10, verze 1903 nebo 1909 Language Pack ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
@@ -39,6 +39,10 @@ Abyste mohli přidat několik jazyků, budete potřebovat následující věci, 
      - Diskové zámořské departementy 1 ISO:
         - [Windows 10, verze 1903 nebo 1909 FRANCOUZSKÝch disket 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         - [Windows 10, verze 2004 – francouzský disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        
+     - Doručená pošta v aplikacích ISO:
+        - [Windows 10, verze 1903 nebo 1909 doručených zpráv – aplikace ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
+        - [Windows 10, verze 2004 Inbox Apps ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
 
 - Sdílená složka služby soubory Azure nebo sdílená složka na virtuálním počítači souborového serveru systému Windows
 
@@ -47,15 +51,16 @@ Abyste mohli přidat několik jazyků, budete potřebovat následující věci, 
 
 ## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>Vytvoření úložiště obsahu pro jazykové balíčky a funkce na vyžádání
 
-Vytvoření úložiště obsahu pro jazykové balíčky a FODs:
+Vytvoření úložiště obsahu pro jazykové balíčky a FODs a úložiště pro balíčky aplikací doručené pošty:
 
-1. Na virtuálním počítači Azure Stáhněte s Windows 10 Multi-Language ISO a FODs pro Windows 10 Enterprise multi-session, verze 1903, 1909 a 2004 imagí z odkazů v části [požadavky](#prerequisites).
+1. Na virtuálním počítači Azure stáhněte z odkazů v [požadavcích](#prerequisites)aplikace s více jazyky ISO, FODs a Inbox pro Windows 10 pro více relací, verze 1903/1909 a 2004.
 
 2. Otevřete a připojte soubory ISO na virtuálním počítači.
 
 3. Přejít do jazykové sady ISO a zkopírovat obsah ze složek **LocalExperiencePacks** a **x64 \\ Langpacks** a pak vložit obsah do sdílené složky.
 
 4. Přejít na **soubor ISO pro francouzské soubory**, zkopírujte veškerý jeho obsah a vložte ho do sdílené složky.
+5. Do složky **amd64fre** ve složce Doručená pošta v aplikacích ISO a zkopírujte obsah v úložišti pro aplikace doručené pošty, které jste připravili.
 
      >[!NOTE]
      > Pokud pracujete s omezeným úložištěm, zkopírujte pouze soubory pro jazyky, které potřebují vaši uživatelé. Soubory můžete podělit tak, že v názvech svých souborů prohlížíte kódy jazyků. Například soubor ve francouzštině má ve svém názvu kód "fr-FR". Úplný seznam kódů jazyků pro všechny dostupné jazyky najdete v tématu [Dostupné jazykové sady pro Windows](/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
@@ -66,7 +71,7 @@ Vytvoření úložiště obsahu pro jazykové balíčky a FODs:
      > [!div class="mx-imgBorder"]
      > ![Příklad japonské jazykové sady s označením jazyka "Jpan" v názvech souborů.](media/language-pack-example.png)
 
-5. Nastavte oprávnění pro sdílenou složku úložiště obsahu jazyka, abyste měli přístup pro čtení z virtuálního počítače, který použijete k vytvoření vlastní image.
+6. Nastavte oprávnění pro sdílenou složku úložiště obsahu jazyka, abyste měli přístup pro čtení z virtuálního počítače, který použijete k vytvoření vlastní image.
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>Ruční vytvoření vlastní image pro Windows 10 Enterprise s více relacemi
 
@@ -75,7 +80,7 @@ Ruční vytvoření vlastní image Windows 10 Enterprise s více relacemi:
 1. Nasaďte virtuální počítač Azure a pak klikněte na galerii Azure a vyberte aktuální verzi Windows 10 Enterprise s více relacemi, kterou používáte.
 2. Po nasazení virtuálního počítače se k němu připojte pomocí protokolu RDP jako místní správce.
 3. Ujistěte se, že váš virtuální počítač má všechny nejnovější aktualizace Windows. Stáhněte si aktualizace a v případě potřeby restartujte virtuální počítač.
-4. Připojte se k jazykovému balíčku a úložišti sdílené složky pro francouzské soubory a připojte ho k jednotce s písmenem (například jednotka E).
+4. Připojte se k balíčku jazyka, FRANCOUZSKÉmu souboru a úložišti sdílené složky doručených zpráv a připojte ho k jednotce s písmenem (například jednotka E).
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>Automatické vytvoření vlastní image Windows 10 Enterprise pro více relací
 
@@ -161,6 +166,56 @@ Tento skript může chvíli trvat v závislosti na počtu jazyků, které potře
 
 Po spuštění skriptu se ujistěte, že se správně nainstalovaly jazykové sady, a to tak, že **začnou**  >  **Nastavení**  >  **čas & jazyk**  >  **jazyka**. Pokud jsou zde uvedené jazykové soubory, vše je nastaveno.
 
+Po přidání dalších jazyků do image Windows se taky musí aktualizovat aplikace doručené pošty, aby podporovaly přidané jazyky. Můžete to udělat tak, že aktualizujete předem nainstalované aplikace pomocí obsahu z doručených zpráv ISO pro aplikace. Pokud chcete tuto aktualizaci provést v odpojeném prostředí (k dispozici není přístup k Internetu z virtuálního počítače), můžete tento proces automatizovat pomocí následující ukázky skriptu PowerShellu.
+
+```powershell
+#########################################
+## Update Inbox Apps for Multi Language##
+#########################################
+##Set Inbox App Package Content Stores##
+[string]$InboxApps = "F:\"
+##Update Inbox Store Apps##
+$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
+$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
+$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
+foreach ($Appx in $AllAppx) {
+    $appname = $appx.name.substring(0,$Appx.name.length-5)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    
+    Write-Host "Handeling with xml $appname"  
+  
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+      
+      Write-Host "Handeling without xml $appname"
+      
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+foreach ($Appx in $AllAppxBundles) {
+    $appname = $appx.name.substring(0,$Appx.name.length-11)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    Write-Host "Handeling with xml $appname"
+    
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+       Write-Host "Handeling without xml $appname"
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+```
+
+>[!IMPORTANT]
+>Aplikace doručené pošty zahrnuté v ISO nejsou nejnovějšími verzemi předinstalovaných aplikací pro Windows. Chcete-li získat nejnovější verzi všech aplikací, je třeba aktualizovat aplikace pomocí aplikace pro Windows Store a provést ruční vyhledávání aktualizací po instalaci dalších jazyků.
+
 Až budete hotovi, nezapomeňte odpojit sdílenou složku.
 
 ## <a name="finish-customizing-your-image"></a>Dokončení přizpůsobení image
@@ -177,15 +232,15 @@ Spuštění nástroje Sysprep:
      C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
      ```
 
-2. Vypněte virtuální počítač a pak ho Zachyťte ve spravované imagi podle pokynů v tématu [Vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md).
+2. Pomocí pokynů v tématu [Vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md)zastavte virtuální počítač a zachyťte ho ve spravované imagi.
 
 3. Nově přizpůsobenou image teď můžete použít k nasazení fondu hostitelů virtuální plochy Windows. Informace o tom, jak nasadit fond hostitelů, najdete v tématu [kurz: Vytvoření fondu hostitelů pomocí Azure Portal](create-host-pools-azure-marketplace.md).
 
 ## <a name="enable-languages-in-windows-settings-app"></a>Povolit jazyky v aplikaci nastavení Windows
 
-Nakonec budete muset přidat jazyk do seznamu jazyků každého uživatele, aby mohl vybrat preferovaný jazyk v nabídce nastavení.
+Nakonec po nasazení fondu hostitelů budete muset přidat jazyk do seznamu jazyků každého uživatele, aby mohl vybrat preferovaný jazyk v nabídce nastavení.
 
-Pokud chcete, aby uživatelé mohli vybrat jazyky, které jste nainstalovali, přihlaste se jako uživatel a pak spuštěním následující rutiny prostředí PowerShell přidejte nainstalované jazykové sady do nabídky jazyky. Tento skript můžete také nastavit jako automatizovaný úkol, který se aktivuje, když se uživatel přihlásí ke své relaci.
+Pokud chcete, aby uživatelé mohli vybrat jazyky, které jste nainstalovali, přihlaste se jako uživatel a pak spuštěním následující rutiny prostředí PowerShell přidejte nainstalované jazykové sady do nabídky jazyky. Tento skript můžete také nastavit jako automatizovaný úkol nebo přihlašovací skript, který se aktivuje, když se uživatel přihlásí ke své relaci.
 
 ```powershell
 $LanguageList = Get-WinUserLanguageList

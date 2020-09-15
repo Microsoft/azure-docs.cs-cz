@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053044"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084732"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Plánovač
 Toto téma popisuje integrovaný Plánovač v Azure AD Connect Sync (synchronizační modul).
@@ -79,7 +79,7 @@ V dřívějších sestaveních Azure AD Connect byl **isStagingModeEnabled** v s
 Konfigurace Scheduleru je uložená v Azure AD. Pokud máte pracovní server, bude mít každá změna na primárním serveru také vliv na pracovní server (kromě IsStagingModeEnabled).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
-Syntaktick`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
+Syntaktick `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
 d-dnů, HH-hours, mm-minut, SS-sekund
 
 Příklad: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
@@ -160,12 +160,15 @@ Příklad: Pokud jste provedli změny synchronizačních pravidel pro Connector 
 ## <a name="stop-the-scheduler"></a>Zastavení plánovače
 Pokud Plánovač aktuálně spouští cyklus synchronizace, může být nutné ho zastavit. Například pokud spustíte Průvodce instalací a zobrazí se tato chyba:
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![Snímek obrazovky s informacemi o chybě konfigurace nelze změnit.](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 Když je spuštěný cyklus synchronizace, nemůžete provádět změny konfigurace. Můžete počkat, až proces plánovače proces dokončí, ale můžete ho také zastavit, aby bylo možné provést změny hned. Zastavení aktuálního cyklu není škodlivé a probíhající změny se zpracovávají při příštím spuštění.
 
 1. Začněte tím, že zaznamenáte, že Plánovač zastaví aktuální cyklus pomocí rutiny prostředí PowerShell `Stop-ADSyncSyncCycle` .
-2. Pokud použijete sestavení před 1.1.281, pak zastavení plánovače nezastaví aktuální konektor z aktuální úlohy. Chcete-li vynutit zastavení konektoru, proveďte následující akce: ![ StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. Pokud použijete sestavení před 1.1.281, pak zastavení plánovače nezastaví aktuální konektor z aktuální úlohy. Chcete-li vynutit zastavení konektoru, proveďte následující akce:
+
+   ![Snímek obrazovky ukazuje Synchronization Service Manager s vybranými konektory a běžící konektor zvýrazněný vybranou akcí zastavit.](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
    * Spusťte **synchronizační službu** z nabídky Start. Přejděte na **konektory**, zvýrazněte konektor se stavem **spuštěno**a vyberte možnost **zastavit** z akcí.
 
 Plánovač je stále aktivní a při další příležitosti se znovu spustí.

@@ -1,29 +1,29 @@
 ---
 title: Povolit ovladače rozhraní pro kontejnerové úložiště (CSI) ve službě Azure Kubernetes (AKS)
-description: Naučte se, jak povolit ovladače rozhraní pro kontejnerové úložiště (CSI) pro soubory Azure disk a Azure v clusteru Azure Kubernetes Service (AKS).
+description: Naučte se, jak povolit ovladače rozhraní pro kontejnerové úložiště (CSI) pro disky Azure a soubory Azure v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: bd5706d20496e1ff00843f761443d183cf7fcae3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 54764b16ba63d5656f61152cfe40ef50475192a5
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422025"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085654"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>Povolení ovladačů rozhraní úložiště kontejnerů (CSI) pro disky Azure a soubory Azure ve službě Azure Kubernetes Service (AKS) (Preview)
 
-Rozhraní pro úložiště kontejnerů (CSI) představuje standard pro vystavení libovolných systémů blokování a souborů úložiště pro zabalení úloh na Kubernetes. Díky přijetí a používání rozhraní CSI může služba Azure Kubernetes Service (AKS) zapisovat, nasazovat a iterovat moduly plug-in, které vystavují nové nebo zlepšují stávající systémy úložiště v Kubernetes, aniž by museli se dotknout základního kódu Kubernetes a čekat na jeho cykly vydávání.
+Rozhraní pro úložiště kontejnerů (CSI) představuje standard pro vystavení libovolných systémů blokování a souborů úložiště pro zabalení úloh na Kubernetes. Díky přijetí a používání rozhraní CSI může služba Azure Kubernetes Service (AKS) zapisovat, nasazovat a iterovat moduly plug-in, které budou vystavovat nové nebo vylepšit stávající úložné systémy v Kubernetes, aniž byste museli se dotknout základního kódu Kubernetes a počkat na jeho cykly vydávání.
 
-Podpora ovladače úložiště CSI v AKS umožňuje nativně využívat:
-- [*Disky Azure*](azure-disk-csi.md) – lze použít k vytvoření prostředku Kubernetes *datadisk* . Disky můžou využívat službu Azure Premium Storage, která je zajištěná vysokým výkonem SSD nebo Azure Storage úrovně Standard, zajištěná běžným HDD nebo standardem SSD. Pro většinu produkčních a vývojových úloh použijte Premium Storage. Disky Azure jsou připojené jako *ReadWriteOnce*, takže jsou dostupné jenom pro jeden pod. Pro svazky úložiště, ke kterým se dá současně přistupovat více lusků, použijte soubory Azure.
-- [*Soubory Azure*](azure-files-csi.md) můžete použít k připojení sdílené složky SMB 3,0 s účtem Azure Storage do lusků. Soubory umožňují sdílet data napříč více uzly a lusky. Soubory můžou používat úložiště Azure Standarded založené na běžných HDD nebo Azure Premium Storage založené na vysoce výkonném SSD.
+Podpora ovladače úložiště CSI na AKS umožňuje nativně používat:
+- [*Disky Azure*](azure-disk-csi.md), které se dají použít k vytvoření prostředku Kubernetes *datadisk* . Disky můžou využívat Azure Premium Storage, které jsou založené na vysoce výkonném SSD nebo Azure Storage úrovně Standard, a to s využitím regulárních HDD nebo Standard SSD. Pro většinu produkčních a vývojových úloh použijte Premium Storage. Disky Azure jsou připojené jako *ReadWriteOnce*, takže jsou dostupné jenom pro jeden pod. Pro svazky úložiště, ke kterým se dá současně přistupovat více lusků, použijte soubory Azure.
+- [*Soubory Azure*](azure-files-csi.md), které se dají použít k připojení sdílené složky SMB 3,0 s účtem Azure Storage k luskům. Pomocí služby soubory Azure můžete sdílet data napříč několika uzly a lusky. Služba soubory Azure může používat úložiště Azure Standarded s využitím pravidelných HDD nebo Azure Premium Storage zajištěné vysokým výkonem SSD.
 
 > [!IMPORTANT]
-> V Kubernetes verze 1,21 bude Kubernetes používat pouze ovladače CSI a ve výchozím nastavení. Toto jsou budoucí podpora úložiště v Kubernetes.
+> V Kubernetes verze 1,21 bude Kubernetes používat pouze ovladače CSI a ve výchozím nastavení. Tyto ovladače jsou budoucí podporou úložiště v Kubernetes.
 >
-> *Ovladače v rámci stromu* odkazují na aktuální ovladače úložiště, které jsou součástí základního Kubernetes kódu, a nové ovladače CSI, které jsou moduly plug-in.
+> *Ovladače stromové struktury* odkazují na aktuální ovladače úložiště, které jsou součástí základního kódu Kubernetes, oproti novým ovladačům CSI, které jsou moduly plug-in.
 
 ## <a name="limitations"></a>Omezení
 
@@ -36,9 +36,9 @@ Podpora ovladače úložiště CSI v AKS umožňuje nativně využívat:
 
 ### <a name="register-the-enableazurediskfilecsidriver-preview-feature"></a>Registrace `EnableAzureDiskFileCSIDriver` funkce Preview
 
-Pokud chcete vytvořit cluster AKS, který může využívat ovladače CSI pro disky Azure a soubory Azure, musíte `EnableAzureDiskFileCSIDriver` u svého předplatného povolit příznak funkce.
+Pokud chcete vytvořit cluster AKS, který může používat ovladače CSI pro disky Azure a soubory Azure, musíte `EnableAzureDiskFileCSIDriver` u svého předplatného povolit příznak funkce.
 
-Zaregistrujte `EnableAzureDiskFileCSIDriver` příznak funkce pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
+Příznak funkce Zaregistrujte `EnableAzureDiskFileCSIDriver` pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureDiskFileCSIDriver"
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
-Pokud chcete vytvořit cluster AKS nebo fond uzlů, který může používat ovladače úložiště CLI, budete potřebovat nejnovější rozšíření rozhraní *příkazového řádku AKS-Preview* . Pomocí příkazu [AZ Extension Add][az-extension-add] nainstalujte rozšíření Azure CLI *AKS-Preview* , nebo pomocí příkazu [AZ Extension Update][az-extension-update] nainstalujte všechny dostupné aktualizace:
+Pokud chcete vytvořit cluster AKS nebo fond uzlů, který může používat ovladače úložiště CLI, budete potřebovat nejnovější rozšíření rozhraní *příkazového řádku Azure AKS-Preview* . Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] . Nebo nainstalujte jakékoli dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] .
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -73,7 +73,7 @@ az extension update --name aks-preview
 
 ## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>Vytvoření nového clusteru, který může používat ovladače úložiště CSI
 
-Vytvořte nový cluster, který může využít ovladače úložiště CLI pro disky Azure a soubory Azure pomocí následujících příkazů rozhraní příkazového řádku. `--aks-custom-headers`K nastavení funkce použijte příznak `EnableAzureDiskFileCSIDriver` .
+Pomocí následujících příkazů rozhraní příkazového řádku vytvořte nový cluster, který může používat ovladače úložiště CLI pro disky Azure a soubory Azure. `--aks-custom-headers`K nastavení funkce použijte příznak `EnableAzureDiskFileCSIDriver` .
 
 Vytvořte skupinu prostředků Azure:
 
@@ -82,14 +82,14 @@ Vytvořte skupinu prostředků Azure:
 az group create --name myResourceGroup --location canadacentral
 ```
 
-Vytvořte cluster AKS s podporou pro ovladače úložiště CSI.
+Vytvoření clusteru AKS s podporou pro ovladače úložiště pro rozhraní CSI:
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure -k 1.17.9 --aks-custom-headers EnableAzureDiskFileCSIDriver=true
 ```
 
-Pokud chcete místo ovladačů úložiště CSI vytvořit clustery v rámci stromových ovladačů úložiště, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` parametr.
+Pokud chcete vytvořit clustery v ovladačích úložiště stromu místo ovladačů úložiště CSI, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` parametr.
 
 
 Podívejte se, kolik svazků založených na discích Azure můžete připojit k tomuto uzlu spuštěním:
@@ -106,9 +106,9 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 
 ## <a name="next-steps"></a>Další kroky
 
-- Použití jednotky CSI pro disky Azure najdete v tématu [použití disku Azure s ovladači CSI](azure-disk-csi.md).
-- Použití jednotky CSI pro soubory Azure najdete v tématu [použití souborů Azure s ovladači CSI](azure-files-csi.md).
-- Další informace o osvědčených postupech pro úložiště najdete v tématu [osvědčené postupy pro úložiště a zálohy ve službě Azure Kubernetes Service (AKS)][operator-best-practices-storage] .
+- Pokud chcete použít jednotku CSI pro disky Azure, přečtěte si téma [použití disků Azure s ovladači CSI](azure-disk-csi.md).
+- Pokud chcete použít jednotku CSI pro soubory Azure, přečtěte si téma [použití souborů Azure s ovladači CSI](azure-files-csi.md).
+- Další informace o osvědčených postupech pro úložiště najdete v tématu [osvědčené postupy pro úložiště a zálohování ve službě Azure Kubernetes][operator-best-practices-storage].
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
@@ -132,8 +132,8 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true

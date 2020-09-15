@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6fee96354760e448de132f88918e9839c6220af3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c8739da859c00a9caf08ac833f7b4ae7ae52e392
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254487"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084307"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Doporučení a osvědčené postupy pro Azure Active Directory B2C
 
@@ -56,7 +56,6 @@ Během fáze implementace Vezměte v úvahu následující doporučení.
 | Postup řešení potíží s Azure AD B2C | Naučte se [řešit potíže s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) během vývoje. Naučte se, jak vypadá normální tok ověřování, a používejte nástroje pro zjišťování anomálií a chyb. Můžete například použít [Application Insights](troubleshoot-with-application-insights.md) ke kontrole výstupních protokolů cest uživatelů. |
 | Využijte naši knihovnu prověřených vlastních vzorů zásad. | Najděte si [ukázky](https://github.com/azure-ad-b2c/samples) pro několik vylepšených Azure AD B2Cch cest uživatelů pro správu identit a přístupu (CIAM) zákazníků. |
 
-
 ## <a name="testing"></a>Testování
 
 Testování a automatizace implementace Azure AD B2C.
@@ -79,11 +78,10 @@ Spravujte své Azure AD B2C prostředí.
 |--|--|
 | Vytvoření více prostředí | Pro snazší operace a zavedení nasazení vytvořte samostatná prostředí pro vývoj, testování, předprodukční prostředí a produkci. Pro každou Vytvořte Azure AD B2C klienty. |
 | Použití správy verzí pro vlastní zásady | Zvažte použití GitHubu, Azure Repos nebo jiného cloudového systému správy verzí pro vlastní zásady Azure AD B2C. |
-| Použití rozhraní Microsoft Graph API k automatizaci správy klientů B2C | Rozhraní API pro Microsoft Graph:<br/>Správa [architektury identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta) (vlastní zásady)<br/>[Klíče](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta)<br/>[Toky uživatelů](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta) |
+| Použití rozhraní Microsoft Graph API k automatizaci správy klientů B2C | Rozhraní API pro Microsoft Graph:<br/>Správa [architektury identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta&preserve-view=true) (vlastní zásady)<br/>[Klíče](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta&preserve-view=true)<br/>[Toky uživatele](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta&preserve-view=true) |
 | Integrace s Azure DevOps | [Kanál CI/CD](deploy-custom-policies-devops.md) usnadňuje přesouvání kódu mezi různými prostředími a zajišťuje připravenost na produkční prostředí.   |
 | Integrace s Azure Monitor | [Události protokolu auditu](view-audit-logs.md) se uchovávají jenom po dobu sedmi dnů. [Integrujte s Azure monitor](azure-monitor.md) , abyste zachovali protokoly pro dlouhodobé použití, nebo integraci s nástroji pro zabezpečení a správu událostí třetích stran (Siem), abyste získali přehled o vašem prostředí. |
 | Nastavení aktivního upozorňování a monitorování | [Sledovat chování uživatele](active-directory-b2c-custom-guide-eventlogger-appins.md) v Azure AD B2C pomocí Application Insights. |
-
 
 ## <a name="support-and-status-updates"></a>Aktualizace stavu a podpory
 

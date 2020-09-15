@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 11475de159cf3d59923d6f2129aa46ddf0ef8f2c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516392"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084426"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Rychlý Start: monitorování virtuálního počítače Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z virtuálních počítačů Azure a okamžik jejich vytvoření. V tomto rychlém startu se dozvíte, jak se budou automaticky shromažďovat data pro virtuální počítač Azure a jak je zobrazit v Azure Portal. Pak povolíte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) pro váš virtuální počítač, který umožní agentům na virtuálním počítači shromažďovat a analyzovat data z hostovaného operačního systému, včetně procesů a jejich závislostí.
@@ -85,15 +85,15 @@ Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfiguro
 
 7. Klikněte na virtuální počítač a pak vyberte kartu **výkon** , která se nachází na dlaždici monitorování **přehledů** v nabídce **monitorování** . Tím se zobrazí vybraná skupina čítačů výkonu shromážděných z hostovaného operačního systému virtuálního počítače. Posuňte se dolů a zobrazte další čítače a přesuňte ukazatel myši na graf, abyste zobrazili průměrnou a percentily v různou dobu.
 
-    ![Výkon](media/quick-monitor-azure-vm/performance.png)
+    ![Snímek obrazovky se zobrazí v podokně výkon.](media/quick-monitor-azure-vm/performance.png)
 
 9. Výběrem **mapování** otevřete funkci Maps, která zobrazuje procesy běžící na virtuálním počítači a jejich závislosti. Výběrem **vlastnosti** otevřete podokno vlastností, pokud již není otevřeno.
 
-    ![Mapa](media/quick-monitor-azure-vm/map.png)
+    ![Snímek obrazovky se zobrazí v podokně Mapa.](media/quick-monitor-azure-vm/map.png)
 
 11. Rozbalíte procesy pro svůj virtuální počítač. Výběrem jednoho z procesů zobrazíte jeho podrobnosti a zvýrazníte jeho závislosti.
 
-    ![Procesy](media/quick-monitor-azure-vm/processes.png)
+    ![Snímek obrazovky se zobrazí podokno mapa s procesy pro virtuální počítač rozbalený.](media/quick-monitor-azure-vm/processes.png)
 
 12. Vyberte virtuální počítač znovu a pak vyberte **události protokolu**. 
 

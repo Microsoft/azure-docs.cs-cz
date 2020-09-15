@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226671"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084324"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
 Funkce, jako je Multi-Factor Authentication (MFA), jsou skvělým způsobem, jak zabezpečit vaši organizaci, ale uživatelé často získají frustrovaní s dodatečnou vrstvou zabezpečení, která si musí pamatovat hesla. Metody ověřování bez hesla jsou pohodlnější, protože heslo se odebírá a nahrazuje něco, co máte, a něco vás nebo něco znáte.
 
-| Ověřování  | Něco, co máte | Něco, co se vám nebo znáte |
+| Authentication  | Něco, co máte | Něco, co se vám nebo znáte |
 | --- | --- | --- |
 | Bez hesla | Bezpečnostní klíč zařízení, telefonu nebo Windows 10 | Biometrika nebo PIN |
 
@@ -45,7 +45,7 @@ Následující kroky ukazují, jak proces přihlášení funguje se službou Azu
 ![Diagram, který popisuje kroky týkající se přihlašování uživatelů pomocí Windows Hello pro firmy](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
 1. Uživatel se do systému Windows přihlásí pomocí gesta biometriky nebo PIN kódu. Gesto odemkne privátní klíč Windows Hello pro firmy a pošle se do zprostředkovatele podpory zabezpečení Cloud Authentication, který se označuje jako *poskytovatel cloudového přístupového bodu*.
-1. Zprostředkovatel cloudového přístupového bodu vyžaduje hodnotu NONCE z Azure AD.
+1. Zprostředkovatel cloudového přístupového bodu vyžaduje hodnotu NONCE (náhodné libovolné číslo, které lze použít pouze jednou) z Azure AD.
 1. Služba Azure AD vrátí hodnotu NONCE platnou po dobu 5 minut.
 1. Poskytovatel cloudového AP podepíše hodnotu NONCE pomocí privátního klíče uživatele a vrátí hodnotu podepsaná hodnota v rámci služby Azure AD.
 1. Azure AD ověří podepsanou hodnota nonce pomocí zabezpečeného registrovaného veřejného klíče uživatele s podpisem hodnoty nonce. Po ověření signatury ověří služba Azure AD vrácenou znaménku nonce. Když se hodnota nonce ověří, Azure AD vytvoří primární obnovovací token (PRT) s klíčem relace, který se zašifruje na transportní klíč zařízení a vrátí ho do poskytovatele cloudového AP.

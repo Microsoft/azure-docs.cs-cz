@@ -3,15 +3,15 @@ title: Přizpůsobení informačního kanálu pro uživatele virtuálních ploch
 description: Postup přizpůsobení kanálu pro uživatele virtuálních počítačů s Windows pomocí rutin PowerShellu
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1f1779ac27c7e46aa3e608b33e3c006902df8c27
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009116"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084290"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>Přizpůsobení informačního kanálu pro uživatele virtuálních ploch Windows
 
@@ -20,7 +20,7 @@ ms.locfileid: "88009116"
 
 Informační kanál můžete přizpůsobit tak, aby se prostředky RemoteApp a Vzdálená plocha zobrazovaly rozpoznatelným způsobem pro vaše uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už stáhli a nainstalovali modul PowerShellu pro virtuální počítače s Windows. Pokud jste to neudělali, postupujte podle pokynů v části [nastavení modulu PowerShell](powershell-module.md).
 
@@ -107,7 +107,7 @@ Zobrazované jméno publikované vzdálené plochy můžete změnit nastavením 
 
 3. V části služby vyberte **virtuální klient Windows**.
 
-4. Na stránce virtuální počítač s Windows na levé straně obrazovky vyberte **skupiny aplikací** a potom vyberte název skupiny aplikací, kterou chcete upravit.
+4. Na stránce virtuální počítač s Windows na levé straně obrazovky vyberte **skupiny aplikací** a potom vyberte název skupiny aplikací, kterou chcete upravit. (Pokud chcete například upravit zobrazovaný název skupiny aplikací klasické pracovní plochy, vyberte skupinu aplikací s názvem **Desktop**.)
 
 5. V nabídce na levé straně obrazovky vyberte **aplikace** .
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 05/29/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948908"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085905"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -129,7 +129,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
     Vlastní zásady podmíněného přístupu umožňují podrobné podmínky použití, a to až do konkrétní cloudové aplikace nebo skupiny uživatelů. Další informace najdete v tématu [rychlý Start: vyžadování podmínek použití, které se mají přijmout před přístupem ke cloudovým aplikacím](require-tou.md).
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
    Pokud jste vybrali vlastní šablonu podmíněného přístupu, zobrazí se nová obrazovka, která vám umožní vytvořit vlastní zásady podmíněného přístupu.
 
@@ -253,18 +253,18 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Ostatní |
+> |  | iOS | Android | Windows 10 | Jiné |
 > | --- | --- | --- | --- | --- |
-> | **Native app** | Ano | Ano | Ano |  |
-> | **Microsoft Edge** | Ano | Ano | Ano |  |
-> | **Internet Explorer** | Ano | Ano | Ano |  |
-> | **Chrome (s příponou)** | Ano | Ano | Ano |  |
+> | **Native app** | Yes | Yes | Yes |  |
+> | **Microsoft Edge** | Yes | Yes | Yes |  |
+> | **Internet Explorer** | Yes | Yes | Yes |  |
+> | **Chrome (s příponou)** | Yes | Yes | Yes |  |
 
 Podmínky použití podle zařízení mají následující omezení:
 
 - Zařízení lze připojit pouze k jednomu klientovi.
 - Uživatel musí mít oprávnění pro připojení k zařízení.
-- Registrační aplikace Intune není podporovaná.
+- Registrační aplikace Intune není podporovaná. Zajistěte, aby se vyloučily ze zásad podmíněného přístupu, které vyžadují podmínky použití.
 - Uživatelé Azure AD B2B nejsou podporováni.
 
 Pokud zařízení uživatele není připojené, obdrží zprávu, že se musí připojit k zařízení. Jejich činnost bude záviset na platformě a softwaru.

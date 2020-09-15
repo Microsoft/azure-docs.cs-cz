@@ -3,16 +3,16 @@ title: Zálohování virtuálních počítačů VMware pomocí Azure Backup Serv
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálohovat virtuální počítače VMware běžící na serveru VMware vCenter/ESXi.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017562"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069828"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
-Tento článek vysvětluje, jak zálohovat virtuální počítače VMware běžící na VMware ESXi hostitele nebo vCenter Server do Azure pomocí Azure Backup Server.
+Tento článek vysvětluje, jak zálohovat virtuální počítače VMware běžící na VMware ESXi hostitele nebo vCenter Server do Azure pomocí Azure Backup Server (MABS).
 
 V tomto článku se dozvíte, jak:
 
@@ -21,6 +21,31 @@ V tomto článku se dozvíte, jak:
 - Přidejte přihlašovací údaje účtu do Azure Backup.
 - Přidejte Server vCenter nebo ESXi do Azure Backup Server.
 - Nastavte skupinu ochrany, která obsahuje virtuální počítače VMware, které chcete zálohovat, zadejte nastavení zálohování a naplánujte zálohování.
+
+## <a name="supported-vmware-features"></a>Podporované funkce VMware
+
+MABS poskytuje následující funkce při zálohování virtuálních počítačů VMware:
+
+- Zálohování bez agentů: MABS nevyžaduje instalaci agenta na Server vCenter nebo ESXi, aby bylo možné zálohovat virtuální počítač. Místo toho stačí zadat IP adresu nebo plně kvalifikovaný název domény (FQDN) a přihlašovací údaje, které se použijí k ověření serveru VMware pomocí MABS.
+- Zálohování integrované v cloudu: MABS chrání úlohy na disk a Cloud. Pracovní postup zálohování a obnovení MABS vám pomůže spravovat dlouhodobé uchovávání a zálohování mimo pracoviště.
+- Detekce a ochrana virtuálních počítačů spravovaných vCenter: MABS detekuje a chrání virtuální počítače nasazené na serveru VMware (vCenter nebo ESXi server). Jak roste velikost vašeho nasazení, ke správě vašeho prostředí VMware použijte vCenter. MABS také detekuje virtuální počítače spravované serverem vCenter, což vám umožní chránit Velká nasazení.
+- Automatická ochrana na úrovni složek: vCenter umožňuje organizovat virtuální počítače ve složkách virtuálních počítačů. MABS tyto složky detekuje a umožňuje chránit virtuální počítače na úrovni složky a zahrnuje všechny podsložky. Při ochraně složek MABS nejen ochranu virtuálních počítačů v této složce, ale také chrání virtuální počítače přidané později. MABS detekuje nové virtuální počítače každý den a automaticky je chrání. Při uspořádávání virtuálních počítačů do rekurzivních složek MABS automaticky detekuje a chrání nové virtuální počítače nasazené ve rekurzivních složkách.
+- MABS chrání virtuální počítače uložené na místním disku, systému souborů NFS (Network File System) nebo úložišti clusteru.
+- MABS chrání virtuální počítače migrované pro vyrovnávání zatížení: protože virtuální počítače se migrují pro vyrovnávání zatížení, MABS automaticky detekuje a pokračuje v ochraně virtuálního počítače.
+- MABS může obnovit soubory nebo složky z virtuálního počítače s Windows bez obnovení celého virtuálního počítače, který pomáhá obnovit potřebné soubory rychleji.
+
+## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
+
+Než začnete zálohovat virtuální počítač VMware, Projděte si následující seznam omezení a požadavků.
+
+- Pokud jste používali MABS k ochraně vCenter serveru (běžícího v systému Windows) jako Windows Server pomocí plně kvalifikovaného názvu domény serveru, nemůžete tento server vCenter chránit jako server VMware pomocí plně kvalifikovaného názvu domény serveru.
+  - Jako alternativní řešení můžete použít statickou IP adresu vCenter Server.
+  - Pokud chcete použít plně kvalifikovaný název domény, měli byste ochranu zastavit jako Windows Server, odebrat agenta ochrany a pak přidat jako server VMware pomocí plně kvalifikovaného názvu domény.
+- Pokud ke správě serverů ESXi ve vašem prostředí používáte vCenter, přidejte do skupiny ochrany MABS vCenter (a ne ESXi).
+- Snímky uživatelů nemůžete zálohovat před prvním zálohováním MABS. Jakmile MABS dokončí první zálohování, můžete snímky uživatelů zálohovat.
+- MABS nemůže chránit virtuální počítače VMware pomocí průchozích disků a fyzických mapování nezpracovaných zařízení (pRDM).
+- MABS nemůže detekovat nebo chránit vApp VMware.
+- MABS nemůže chránit virtuální počítače VMware pomocí existujících snímků.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -392,7 +417,7 @@ Počet úloh můžete upravit pomocí klíče registru, jak je znázorněno ní�
 
 Pokud chcete zálohovat vSphere 6,7, udělejte toto:
 
-- Povolit TLS 1,2 na serveru DPM
+- Povolit TLS 1,2 na serveru MABS
 
 >[!NOTE]
 >VMWare 6,7 a vyšší má TLS povolený jako komunikační protokol.

@@ -3,15 +3,15 @@ title: Vytvoření fondu hostitelů prostředí virtuálních počítačů s Win
 description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace prostředí virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121370"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084409"
 ---
 # <a name="host-pool-creation"></a>Vytvoření fondu hostitelů
 
@@ -46,6 +46,12 @@ Pokud vaše operace překročí limit kvóty, můžete provést jednu z následu
 - Vytvořte nový fond hostitelů se stejnými parametry, ale méně virtuálních počítačů a jader virtuálních počítačů.
 
 - Otevřete odkaz, který vidíte v poli statusMessage v prohlížeči, abyste odeslali žádost o zvýšení kvóty pro vaše předplatné Azure pro zadanou SKU virtuálního počítače.
+
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>Chyba: nelze zobrazit přiřazení uživatelů ve skupinách aplikací.
+
+Příčina: k této chybě obvykle dochází po přesunu předplatného z klienta 1 Azure Active Directory (AD) do jiného. Pokud jsou stará přiřazení stále vázaná na starý tenant služby Azure AD, Azure Portal je bude sledovat.
+
+Oprava: bude nutné znovu přiřadit uživatele ke skupinám aplikací.
 
 ## <a name="azure-resource-manager-template-errors"></a>Chyby šablon Azure Resource Manager
 
@@ -88,7 +94,7 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 3. V pravé části obrazovky by se měla zobrazit nabídka servery DNS. V této nabídce vyberte možnost **vlastní**.
 4. Ujistěte se, že servery DNS uvedené v části vlastní odpovídají vašemu řadiči domény nebo doméně služby Active Directory. Pokud server DNS nevidíte, můžete ho přidat zadáním jeho hodnoty do pole **Přidat server DNS** .
 
-### <a name="error-your-deployment-failedunauthorized"></a>Chyba: nasazení selhalo. ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>Chyba: Vaše nasazení selhalo...\Neautorizováno
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -109,7 +115,7 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 
 **Oprava:** Ověřte, jestli je prostředí virtuálních počítačů s Windows v pořádku, když se přihlásíte pomocí PowerShellu. Dokončete registraci virtuálního počítače ručně v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md).
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: zadané uživatelské jméno správce není povolené.
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: Zadané uživatelské jméno správce není povolené
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s vaším nasazením se nepovedl, protože zadaný správce není povolený.](media/failure-username.png)
@@ -127,7 +133,7 @@ Příklad nezpracované chyby:
 
 **Oprava:** Aktualizujte uživatelské jméno nebo použijte jiné uživatele.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: virtuální počítač ohlásil selhání při zpracování rozšíření
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: Virtuální počítač nahlásil chybu při zpracování rozšíření
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s operací prostředku dokončeným se stavem zřizování terminálu v nasazení se nezdařil.](media/failure-processing.png)

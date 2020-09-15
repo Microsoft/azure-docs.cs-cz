@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531255"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069794"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault (Preview)
 Azure Monitor for Key Vault (Preview) poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
@@ -76,16 +76,6 @@ Pro sloupce v sešitu je podmíněné kódování barev nebo Heat mapy, které v
 Sešit zobrazuje úspěchy (stavové kódy 2xx), chyby ověřování (stavové kódy 401/403), omezování (429 stavových kódů) a další selhání (stavové kódy 4xx).
 
 Pro lepší pochopení toho, co jednotlivé stavové kódy představují, doporučujeme přečíst si dokumentaci k [Azure Key Vault kódů stavu a odpovědi](../../key-vault/general/authentication-requests-and-responses.md).
-
-## <a name="operations--latency-workbook"></a>Sešit latence & operací
-
-V horní části stránky vyberte možnost **operations & latence** a otevře se karta **Operations & latence** . Tato karta umožňuje začlenit trezory klíčů pro monitorování. Podrobnější postup najdete v části [Konfigurace trezorů klíčů pro monitorování](#configuring-your-key-vaults-for-monitoring) .
-
-Vidíte, kolik vašich trezorů klíčů je pro protokolování povolené. Pokud je aspoň jeden trezor správně nakonfigurovaný, budete moct zobrazit tabulky, které zobrazují operace a stavové kódy pro každý z vašich trezorů klíčů. Můžete kliknout na část podrobností pro řádek a získat další informace o jednotlivých operacích.
-
-![Snímek obrazovky s grafy operací a latencí](./media/key-vaults-insights-overview/logs.png)
-
-Pokud se vám v této části nezobrazí žádná data, podívejte se na horní část týkající se povolení protokolů pro Azure Key Vault, nebo v části řešení potíží níže.
 
 ## <a name="view-from-a-key-vault-resource"></a>Zobrazit z prostředku Key Vault
 
@@ -156,7 +146,7 @@ Pomocí následujících kroků můžete nakonfigurovat předplatné s více př
 4. V rozevíracím seznamu **trezory klíčů** vyberte jeden nebo více účtů, které chcete použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až na celkem 200 účtů úložiště.
 5. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 
@@ -191,16 +181,6 @@ Používáme časový interval "automatického", proto závisí na tom, jaký č
 ### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Jaký je časový rozsah, kdy je připnuté část sešitu
 
 Časový rozsah bude záviset na nastavení řídicího panelu.
-
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Proč se v sekcích Operations & latence nezobrazují žádná data pro moje Key Vault
-
-Pokud chcete zobrazit data založená na protokolech, budete muset povolit protokoly pro všechny trezory klíčů, které chcete monitorovat. To se dá udělat v nastavení diagnostiky pro každý Trezor klíčů. Data budete muset poslat do určeného Log Analytics pracovního prostoru.
-
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Už jsem povolil protokoly pro moje Key Vault, proč se mi v operacích & latence pořád nedaří zobrazit moje data.
-
-Diagnostické protokoly v současné době nefungují zpětně, takže se data začnou zobrazovat, jenom když dojde k provedeným akcím pro vaše trezory klíčů. V závislosti na tom, jak je Trezor klíčů aktivní, může trvat nějakou dobu v rozsahu od hodin až po jeden den.
-
-Navíc pokud máte vybraný vysoký počet trezorů klíčů a předplatných, možná nebudete moct zobrazit data z důvodu omezení dotazů. Aby bylo možné zobrazit data, možná budete muset snížit počet vybraných předplatných nebo trezorů klíčů. 
 
 ### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Co když chci zobrazit další data nebo vytvořit vlastní vizualizace? Jak mohu dělat změny v Key Vault Insights
 

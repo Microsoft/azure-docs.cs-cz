@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662556"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084834"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete určit, které objekty se zobrazí v Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přebírá všechny objekty ve všech doménách v konfigurovaných doménových strukturách. Obecně platí, že se jedná o doporučenou konfiguraci. Uživatelé, kteří používají Microsoft 365 úlohy, jako jsou Exchange Online a Skype pro firmy, můžou využít kompletní globální seznam adres, aby mohli posílat e-maily a volat všechny. S výchozí konfigurací by měly stejné prostředí jako při místní implementaci Exchange nebo Lyncu.
@@ -275,7 +275,7 @@ V tomto příkladu změníte filtrování tak, aby byly synchronizovány pouze u
 1. Přihlaste se k serveru, na kterém běží Azure AD Connect synchronizace pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins** .
 2. Spustí **Editor pravidel synchronizace** z nabídky **Start** .
 3. V části **Typ pravidel**klikněte na **odchozí**.
-4. V závislosti na používané verzi připojení Najděte buď pravidlo s názvem **out do AAD – připojení uživatele** nebo připojení **k AAD – uživatel SOAInAD**a klikněte na **Upravit**.
+4. V závislosti na používané verzi připojení Najděte buď pravidlo s názvem **odchozí do Azure AD – připojení nebo připojení uživatele** **k Azure AD – SOAInAD**a klikněte na **Upravit**.
 5. V automaticky otevíraném okně odpovězte **Ano** a vytvořte kopii pravidla.
 6. Na stránce **Popis** změňte **prioritu** na nepoužitou hodnotu, například 50.
 7. V levém navigačním panelu klikněte na **Filtr oboru** a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **Pošta**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte ** \@ contoso.com**a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **userPrincipalName**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte ** \@ contoso.com**.
@@ -300,7 +300,7 @@ Po synchronizaci jsou všechny změny připravené k exportu. Než skutečně pr
 
 1. Spusťte příkazový řádek a pokračujte na `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
 2. Spusťte `csexport "Name of Connector" %temp%\export.xml /f:x`.  
-   Název konektoru je v synchronizační službě. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
+   Název konektoru je v synchronizační službě. Má název podobný řetězci "contoso.com – Azure AD" pro Azure AD.
 3. Spusťte `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
 4. Nyní máte soubor v% Temp% s názvem export.csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 5. Proveďte potřebné změny dat nebo konfigurace a znovu spusťte tyto kroky (import, synchronizace a ověření), dokud nebudou změny, které se chystáte exportovat, odpovídat na to, co očekáváte.
