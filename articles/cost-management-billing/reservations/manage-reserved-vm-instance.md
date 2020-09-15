@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f67cbb70d7064b894b9042bba42f48e4fb6a6b5e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684758"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400122"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací prostředků Azure
 
@@ -73,7 +73,7 @@ Přístup ke správě rezervace delegujete takto:
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Rozdělení jedné rezervace do dvou rezervací
 
- Po zakoupení více než jedné instance prostředku v rámci rezervace můžete instance v této rezervaci přiřadit k různým předplatným. Všechny instance mají standardně jeden rozsah – buď pro jedno předplatné, nebo sdílený. Koupili jste například 10 instancí rezervace a určili, že rozsahem má být předplatné A. Teď chcete u sedmi rezervací změnit rozsah na předplatné A a u zbývajících tří na předplatné B. Rozdělením rezervace můžete distribuovat instance kvůli lepšímu odstupňování správy rozsahu. Přidělení k předplatným můžete zjednodušit volbou sdíleného rozsahu. Pro účely řízení nákladů nebo rozpočtů ale můžete množství přidělit ke konkrétním předplatným.
+ Po zakoupení více než jedné instance prostředku v rámci rezervace můžete instance v této rezervaci přiřadit k různým předplatným. Ve výchozím nastavení mají všechny instance jeden rozsah – buď pro jedno předplatné, skupinu prostředků nebo sdílený. Řekněme, že jste koupili jste například rezervace pro 10 instancí virtuálního počítače a určili, že rozsahem má být předplatné A. Teď chcete u sedmi instancí virtuálního počítače jako rozsah ponechat předplatné A a u zbývajících tří přejít na předplatné B. Umožní vám ro rozdělení rezervace. Když rozdělíte rezervaci, původní ReservationID se zruší a vytvoří se dvě nové rezervace. Rozdělení nemá vliv na objednávku rezervací – s rozdělením není spojená žádná nová komerční transakce a nové rezervace mají stejné koncové datum jako původní rezervace.
 
  Rezervaci můžete rozdělit do dvou rezervací přes PowerShell, rozhraní příkazového řádku nebo rozhraní API.
 

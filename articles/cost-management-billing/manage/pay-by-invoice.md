@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684860"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567907"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Úhrada předplatných Azure pomocí faktury
 
@@ -67,7 +67,7 @@ Pokud přepnete na platby pomocí faktur, znamená to, že budete hradit faktury
      Konkrétní oblast a řada předplatného:<br>
 
     - Položky **Company name** (Název společnosti) a **Company address** (Adresa společnosti) by se měly shodovat s informacemi, které jste zadali v účtu Azure. Pokud chcete informace zobrazit nebo aktualizovat, přečtěte si téma [Změna informací o profilu účtu Azure](change-azure-account-profile.md).
-    - Před schválením kreditního limitu je potřeba přidat na webu Azure Portal kontaktní údaje pro fakturaci. Mělo by se jednat o údaje oddělení závazků nebo financí vaší společnosti. Pokud chcete kontaktní údaje pro fakturaci aktualizovat, přejděte do [centra účtů Azure](https://account.azure.com/Profile).
+    - Před schválením kreditního limitu je potřeba přidat na webu Azure Portal kontaktní údaje pro fakturaci. Mělo by se jednat o údaje oddělení závazků nebo financí vaší společnosti. Pokud chcete kontaktní údaje pro fakturaci aktualizovat, přejděte na [Azure Portal](https://portal.azure.com).
 
 6. Zkontrolujte své kontaktní informace a upřednostňovaný způsob kontaktování a potom vyberte **Vytvořit**.
 

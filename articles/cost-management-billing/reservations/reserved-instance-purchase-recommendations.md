@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 813cf91195a43a2fc68236febe114c67eb5a3378
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/02/2020
+ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684605"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398422"
 ---
 # <a name="reservation-recommendations"></a>Doporučení pro rezervace
 
@@ -25,6 +25,7 @@ Následující kroky definují, jak se vypočítávají doporučení:
 2. Na základě těchto dat o využití modul simuluje vaše náklady s rezervacemi a bez nich.
 3. Náklady se simulují pro různá množství a doporučí se množství, které zajišťuje maximální úspory.
 4. Pokud se vaše prostředky pravidelně vypínají, simulace nezjistí žádné úspory a neposkytnou se žádná doporučení k nákupu.
+5. Výpočet doporučení zohledňuje všechny vaše případné speciální slevy na sazby využití na vyžádání.
 
 ## <a name="recommendations-in-the-azure-portal"></a>Doporučení na webu Azure Portal
 
@@ -52,11 +53,11 @@ Pokud chcete maximalizovat úspory z rezervací, zkuste zakoupit rezervace co ne
 
 Doporučení k nákupu rezervací jsou k dispozici v Azure Advisoru. Mějte na paměti následující skutečnosti:
 
-- Advisor poskytuje doporučení jenom v rámci jednotlivých předplatných.
-- Doporučení se počítají na základě trendu využití za posledních 30 dnů.
+- Advisor poskytuje doporučení jenom v rámci jednotlivých předplatných. Pokud chcete zobrazit doporučení pro celý rozsah fakturace (fakturační účet nebo fakturační profil), přejděte na Azure Portal > Rezervace > přidejte Přidat a vyberte typ, pro který chcete zobrazit doporučení.
+- Doporučení dostupná v Advisoru berou v úvahu trend využití za posledních 30 dnů.
 - Pokud je to možné, doporučené množství a úspory platí pro rezervaci na 3 roky. Pokud se pro určitou službu rezervace na 3 roky neprodává, doporučení se počítá s využitím ceny rezervace na 1 rok.
-- V doporučeních se zohledňují všechny vaše případné speciální slevy na sazby využití na vyžádání.
-- Pokud si koupíte rezervaci se sdíleným rozsahem, doporučení pro nákup rezervací Advisoru může trvat až 30 dnů, než zmizí.
+- Výpočty doporučení zohledňují všechny vaše případné speciální slevy na sazby využití na vyžádání.
+- Pokud si koupíte rezervaci se sdíleným rozsahem, může trvat až 5 dnů, než doporučení Advisoru pro nákup rezervací zmizí.
 
 ## <a name="other-expected-api-behavior"></a>Další očekávané chování rozhraní API
 

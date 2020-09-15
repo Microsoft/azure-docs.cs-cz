@@ -2,26 +2,12 @@
   href: index.yml
 - name: Překladač
   items:
-    - name: Přehled
-      items:
-        - name: Co je Translator?
-          href: translator-info-overview.md
-        - name: Podpora jazyků
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
-    - name: Rychlé starty
-      items:
-        - name: Přeložení textu
-          href: quickstart-translate.md
-        - name: Transliterace textu
-          href: quickstart-transliterate.md
-        - name: Zjištění jazyka
-          href: quickstart-detect.md
-        - name: Vyhledání překladů slov
-          href: quickstart-dictionary.md
-        - name: Zjištění podporovaných jazyků
-          href: quickstart-languages.md
-        - name: Určení délky věty
-          href: quickstart-sentences.md
+    - name: Co je Translator?
+      href: translator-info-overview.md
+    - name: Rychlý start
+      href: quickstart-translator.md
+    - name: Podpora jazyků
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: Kurzy
       items:
         - name: 'Vytvoření aplikace WPF pro Translator, C#'
