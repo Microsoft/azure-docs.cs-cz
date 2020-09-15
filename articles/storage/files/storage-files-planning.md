@@ -4,25 +4,32 @@ description: Vysvětlení plánování nasazení služby soubory Azure Můžete 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705907"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563428"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
 
-- **Přímé připojení sdílené složky Azure**: vzhledem k tomu, že soubory Azure poskytují přístup přes protokol SMB, můžete sdílené složky Azure připojit místně nebo v cloudu pomocí standardního klienta SMB, který je dostupný v systémech Windows, MacOS a Linux. Vzhledem k tomu, že sdílené složky Azure jsou bez serveru, nasazení pro produkční scénáře nevyžaduje správu souborového serveru nebo zařízení NAS. To znamená, že nemusíte instalovat softwarové opravy ani odpínat fyzické disky. 
+- **Přímé připojení sdílené složky Azure**: vzhledem k tomu, že soubory Azure poskytují přístup přes protokol SMB (Server Message Block) nebo systém souborů NFS (Network File System), můžete sdílené složky Azure připojit místně nebo v cloudu pomocí standardních klientů SMB nebo NFS, které jsou k dispozici v operačním systému. Vzhledem k tomu, že sdílené složky Azure jsou bez serveru, nasazení pro produkční scénáře nevyžaduje správu souborového serveru nebo zařízení NAS. To znamená, že nemusíte instalovat softwarové opravy ani odpínat fyzické disky. 
 
-- **Ukládání sdílené složky Azure do mezipaměti v místním prostředí pomocí Azure File Sync**: Azure File Sync umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zachovat tak flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje místní (nebo cloudový) Windows Server na rychlou mezipaměť sdílené složky Azure. 
+- **Ukládání sdílené složky Azure do mezipaměti v místním prostředí pomocí Azure File Sync**: Azure File Sync umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zachovat tak flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje místní (nebo cloudový) Windows Server na rychlou mezipaměť sdílené složky Azure SMB. 
 
 Tento článek primárně řeší požadavky nasazení na nasazení sdílené složky Azure, aby je bylo možné přímo připojit k místnímu nebo cloudovém klientovi. Chcete-li naplánovat nasazení Azure File Sync, přečtěte si téma [Plánování nasazení Azure File Sync](storage-sync-files-planning.md).
+
+## <a name="available-protocols"></a>Dostupné protokoly
+
+Soubory Azure nabízí dva protokoly, které se dají použít při připojování sdílených složek, SMB a systému souborů NFS (Network File System). Podrobnosti o těchto protokolech najdete v tématu [protokoly sdílení souborů Azure](storage-files-compare-protocols.md).
+
+> [!IMPORTANT]
+> Většina obsahu tohoto článku platí pouze pro sdílené složky SMB. Cokoli, co platí pro sdílené složky systému souborů NFS, bude konkrétně platit pro tento stav.
 
 ## <a name="management-concepts"></a>Koncepty správy
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -54,7 +61,7 @@ Pokud chcete odblokovat přístup ke sdílené složce Azure, máte dvě hlavní
 
 - Přístup ke sdíleným složkám Azure přes ExpressRoute nebo připojení k síti VPN. Když ke sdílené složce Azure přistupujete prostřednictvím síťového tunelového propojení, budete moci připojit sdílenou složku Azure jako místní sdílenou složku, protože přenosy SMB nepřecházejí do vaší organizační hranice.   
 
-I když z technického hlediska je podstatně jednodušší připojit sdílené složky Azure přes Veřejný koncový bod, očekáváme, že většina zákazníků bude chtít připojit své sdílené složky Azure přes ExpressRoute nebo připojení k síti VPN. K tomu budete muset pro svoje prostředí nakonfigurovat následující:  
+I když z technického hlediska je podstatně jednodušší připojit sdílené složky Azure přes Veřejný koncový bod, očekáváme, že většina zákazníků bude chtít připojit své sdílené složky Azure přes ExpressRoute nebo připojení k síti VPN. Připojení k těmto možnostem je možné u sdílených složek SMB i NFS. K tomu budete muset pro svoje prostředí nakonfigurovat následující:  
 
 - **Síťové tunelové propojení pomocí ExpressRoute, Site-to-site nebo VPN typu Point-to-site**: tunelování do virtuální sítě umožňuje přístup ke sdíleným složkám Azure z místního prostředí, i když je port 445 zablokovaný.
 - **Privátní koncové body**: privátní koncové body přidávají účtu úložiště vyhrazenou IP adresu z adresního prostoru virtuální sítě. To umožňuje síťové tunelové propojení bez nutnosti otevírat místní sítě až do všech rozsahů IP adres, které vlastní clustery Azure Storage. 
@@ -66,6 +73,10 @@ Informace o plánování sítě přidružených k nasazení sdílené složky Az
 Soubory Azure podporují dva různé typy šifrování: šifrování při přenosu, které souvisí s šifrováním používaným při připojování/přístupu ke sdílené složce Azure, a šifrování v klidovém stavu, které souvisí s tím, jak se data při ukládání na disk šifrují. 
 
 ### <a name="encryption-in-transit"></a>Šifrování během přenosu
+
+> [!IMPORTANT]
+> Tato část popisuje šifrování v podrobnostech o přenosu pro sdílené složky SMB. Podrobnosti o šifrování při přenosu s sdílenými složkami NFS najdete v tématu [zabezpečení](storage-files-compare-protocols.md#security).
+
 Ve výchozím nastavení mají všechny účty úložiště Azure povolený šifrování při přenosu. To znamená, že když připojíte sdílenou složku přes protokol SMB nebo k ní přistupujete prostřednictvím protokolu REST (například prostřednictvím Azure Portal, PowerShellu nebo rozhraní Azure SDK), budou soubory Azure umožňovat připojení jenom v případě, že se jedná o protokol SMB 3.0 + s šifrováním nebo HTTPS. Klienti, kteří nepodporují protokol SMB 3,0 nebo klienti, kteří podporují protokol SMB 3,0, ale nemají šifrování protokolu SMB, nebudou moci připojit sdílenou složku Azure, pokud je zapnuté šifrování při přenosu. Další informace o tom, které operační systémy podporují protokol SMB 3,0 se šifrováním, najdete v naší podrobné dokumentaci pro [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)a [Linux](storage-how-to-use-files-linux.md). Všechny aktuální verze PowerShellu, CLI a sad SDK podporují protokol HTTPS.  
 
 Šifrování můžete zakázat při přenosu pro účet služby Azure Storage. Když je šifrování zakázané, budou soubory Azure taky umožňovat SMB 2,1, SMB 3,0 bez šifrování a nešifrované volání rozhraní REST API přes HTTP. Hlavním důvodem Zakázání šifrování při přenosu je podpora starší verze aplikace, kterou je třeba spustit ve starším operačním systému, jako je Windows Server 2008 R2 nebo starší distribuce systému Linux. Soubory Azure v rámci stejné oblasti Azure jako sdílená složka Azure povolují jenom připojení SMB 2,1. Klient SMB 2,1 mimo oblast Azure sdílené složky Azure, například v místním prostředí nebo v jiné oblasti Azure, nebude mít přístup ke sdílené složce souborů.

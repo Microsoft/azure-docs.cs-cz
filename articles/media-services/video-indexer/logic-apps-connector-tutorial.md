@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 6c46195572fc4495b35f5ec44421440975ab9ffc
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16a28ee01606fa9067c279183ca6c02b2857bcd7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531351"
+ms.locfileid: "90563841"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
@@ -58,7 +58,7 @@ Pokud chcete nastavit první tok, budete muset zadat Video Indexer klíč rozhra
 
 Jakmile se můžete připojit ke svým účtům Azure Storage a Video Indexer, přejít na Trigger "při přidání nebo úpravě objektu BLOB) a vybrat kontejner, ve kterém se budou soubory videa umísťovat. 
 
-![Kontejner úložiště](./media/logic-apps-connector-tutorial/container.png)
+![Snímek obrazovky zobrazuje dialogové okno při přidání nebo úpravě objektu blob, kde můžete vybrat kontejner.](./media/logic-apps-connector-tutorial/container.png)
 
 Potom přejdete na akci vytvořit identifikátor URI SAS podle cesty a vyberte možnost seznam cest k souborům z možností dynamického obsahu.  
 

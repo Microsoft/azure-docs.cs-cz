@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ed061234da27716bfcdaf1cc065568908108f90a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 814bf085ca910ef07a13df779eef25e0e6510e57
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77597783"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563426"
 ---
-Všechna data uložená v souborech Azure jsou v klidovém stavu zašifrovaná pomocí šifrování služby Azure Storage (SSE). Šifrování služby Storage funguje podobně jako BitLocker ve Windows: data se šifrují pod úrovní systému souborů. Vzhledem k tomu, že se data šifrují pod systémem souborů sdílené složky Azure, protože je zašifrovaná na disk, nemusíte mít přístup k základnímu klíči v klientovi, aby bylo možné číst a zapisovat do sdílené složky Azure.
+Všechna data uložená v souborech Azure jsou v klidovém stavu zašifrovaná pomocí šifrování služby Azure Storage (SSE). Šifrování služby Storage funguje podobně jako BitLocker ve Windows: data se šifrují pod úrovní systému souborů. Vzhledem k tomu, že se data šifrují pod systémem souborů sdílené složky Azure, protože je zašifrovaná na disk, nemusíte mít přístup k základnímu klíči v klientovi, aby bylo možné číst a zapisovat do sdílené složky Azure. Šifrování v klidovém umístění platí pro protokoly SMB i NFS.
 
 Ve výchozím nastavení se data uložená v souborech Azure šifrují pomocí klíčů spravovaných Microsoftem. V případě klíčů spravovaných Microsoftem uchovává společnost Microsoft klíče pro šifrování a dešifrování dat a zodpovídá za pravidelné střídání. Můžete se také rozhodnout, že budete spravovat vlastní klíče, což vám umožní řídit proces otáčení. Pokud se rozhodnete šifrovat sdílené složky pomocí klíčů spravovaných zákazníkem, soubory Azure budou mít autorizaci pro přístup k vašim klíčům, aby mohli plnit požadavky na čtení a zápis z vašich klientů. Pomocí klíčů spravovaných zákazníkem můžete tuto autorizaci kdykoli odvolat, ale to znamená, že sdílená složka Azure už nebude přístupná přes protokol SMB nebo rozhraní REST API.
 

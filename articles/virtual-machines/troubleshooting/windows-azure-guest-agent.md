@@ -9,14 +9,14 @@ editor: ''
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/07/2020
+ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 38bf652ccefe98c2bd0fb28e8018d41df21651dc
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659462"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561257"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>Řešení potíží s agentem hosta systému Windows Azure
 
@@ -53,7 +53,7 @@ V Azure Portal na stránce vlastností virtuálního počítače vyberte a ově�
     
     Spuštěním následujícího příkazu PowerShellu můžete ověřit, jestli je na virtuálním počítači nasazený agent virtuálního počítače:
     
-    `Get-Az VM -ResourceGroup “RGNAME” – Name “VMNAME” -displayhint expand`
+    `Get-AzVM -ResourceGroupName "RGNAME" -Name "VMNAME" -DisplayHint expand`
     
     Ve výstupu vyhledejte vlastnost **ProvisionVMAgent** a ověřte, zda je hodnota nastavena na **hodnotu true**. Pokud je to, znamená to, že agent je nainstalovaný na virtuálním počítači.
     

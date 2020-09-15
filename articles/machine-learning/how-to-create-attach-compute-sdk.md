@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: af912838e99e7b36cb29695758108f0a9efeb8ea
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662531"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561631"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Vytváření výpočetních cílů pro školení modelů a nasazení pomocí sady Python SDK
 
@@ -36,7 +36,11 @@ V tomto článku vytvoříte a spravujete výpočetní cíle pomocí sady Azure 
 
 ## <a name="limitations"></a>Omezení
 
-Některé scénáře uvedené v tomto dokumentu jsou označeny jako __Náhled__. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* **Nevytvářejte více souběžných příloh se stejným výpočetním** prostředím z pracovního prostoru. Například připojení jednoho clusteru služby Azure Kubernetes k pracovnímu prostoru pomocí dvou různých názvů. Každá nová příloha zruší předchozí existující přílohy.
+
+    Pokud chcete změnit připojení cíle výpočtů, například pokud chcete změnit nastavení TLS nebo jiné konfigurace clusteru, musíte nejdřív odebrat existující přílohu.
+
+* Některé scénáře uvedené v tomto dokumentu jsou označeny jako __Náhled__. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="whats-a-compute-target"></a>Co je cílový výpočetní výkon?
 
@@ -269,6 +273,9 @@ Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako vir
 
    Nebo můžete připojit DSVM k vašemu pracovnímu prostoru [pomocí Azure Machine Learning studia](how-to-create-attach-compute-studio.md#attached-compute).
 
+    > [!WARNING]
+    > Nevytvářejte více souběžných příloh stejného DSVM z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
+
 1. **Konfigurace**: Vytvořte konfiguraci spuštění pro cíl služby DSVM Compute. Docker a conda slouží k vytvoření a konfiguraci školicího prostředí na DSVM.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
@@ -313,6 +320,9 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
    ```
 
    Nebo můžete připojit cluster HDInsight k vašemu pracovnímu prostoru [pomocí Azure Machine Learning studia](how-to-create-attach-compute-studio.md#attached-compute).
+
+    > [!WARNING]
+    > Nevytvářejte více souběžných příloh ke stejné službě HDInsight z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
 
 1. **Konfigurace**: Vytvořte konfiguraci spuštění pro cíl služby HDI Compute. 
 
@@ -360,6 +370,9 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+> [!WARNING]
+> Nevytvářejte více souběžných příloh stejného Azure Batch z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
@@ -414,6 +427,9 @@ except ComputeTargetException:
 
 Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka.ms/pl-databricks) na GitHubu.
 
+> [!WARNING]
+> Nevytvářejte více souběžných příloh stejného Azure Databricks z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
+
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics je platforma pro analýzu velkých objemů dat v cloudu Azure. Dá se použít jako cíl služby COMPUTE s kanálem Azure Machine Learning.
@@ -463,6 +479,9 @@ except ComputeTargetException:
 ```
 
 Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka.ms/pl-adla) na GitHubu.
+
+> [!WARNING]
+> Nevytvářejte více souběžných příloh stejného ADLA z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
 
 > [!TIP]
 > Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud jsou data, se kterými pracujete, v nevýchozím úložišti, můžete použít [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) ke zkopírování dat před školeními.

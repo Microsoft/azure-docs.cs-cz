@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 6dc22086ed97a301e225518465482e9cd7300e11
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855053"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563824"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
@@ -76,7 +76,7 @@ Zásady Azure Firewall lze používat napříč oblastmi. Můžete například v
 
 Azure Firewall Manager má následující známé problémy:
 
-|Problém  |Popis  |Omezení rizik  |
+|Problém  |Description  |Omezení rizik  |
 |---------|---------|---------|
 |Rozdělení provozu|Rozdělování provozu Office 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I také odeslat veškerý provoz Azure Public PaaS a Office 365 prostřednictvím partnerské služby.|Zkoumání rozdělení provozu v centru.
 |Jeden zabezpečený virtuální rozbočovač na oblast|Pro každou oblast nemůžete mít více než jedno zabezpečené virtuální rozbočovače.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
@@ -87,6 +87,7 @@ Azure Firewall Manager má následující známé problémy:
 |Všechna zabezpečená virtuální centra, která sdílejí stejnou virtuální síť WAN, musí být ve stejné skupině prostředků.|Toto chování je v současné době zarovnané na virtuální rozbočovače WAN.|Vytvořte více virtuálních sítí WAN, aby bylo možné vytvořit zabezpečené virtuální rozbočovače v různých skupinách prostředků.|
 |Přidání hromadné IP adresy se nezdařilo.|Brána firewall zabezpečeného centra přejde do stavu selhání, pokud přidáte více veřejných IP adres.|Přidejte menší zvýšení veřejných IP adres. Přidejte například 10 po dobu.|
 |Pravidla aplikací selžou v zabezpečeném centru s nakonfigurovaným vlastním DNS (Preview).|Vlastní DNS (Preview) nefunguje v nasazeních zabezpečeného centra a v nasazeních virtuálních sítí rozbočovače, kde je povolené vynucené tunelování.|Opravte šetření.|
+|DDoS Protection Standard není podporován u zabezpečených virtuálních rozbočovačů.|DDoS Protection Standard není integrovaný do vWANs.|Prověřování
 
 ## <a name="next-steps"></a>Další kroky
 

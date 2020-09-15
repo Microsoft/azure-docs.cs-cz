@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d0f67f9052467e5d1a89fc4c520bd39821403bbe
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015445"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563801"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -167,6 +167,7 @@ Při implementaci SCIM koncového bodu, který zajistí kompatibilitu s Azure AD
 * Pro strukturální prvky v SCIM nemusíte rozlišovat velká a malá písmena, zejména `op` hodnoty operace opravy, jak je definováno v https://tools.ietf.org/html/rfc7644#section-3.5.2 . Azure AD vygeneruje hodnoty "op" jako `Add` , `Replace` a `Remove` .
 * Microsoft Azure AD vytváří požadavky na načtení náhodného uživatele a skupiny, aby bylo zajištěno, že koncový bod a přihlašovací údaje jsou platné. Také se provádí jako součást toku **testu připojení** v [Azure Portal](https://portal.azure.com). 
 * Atribut, na kterém mohou být prostředky odesílány, by měl být nastaven jako odpovídající atribut v aplikaci v [Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů](customize-application-attributes.md) .
+* Podpora HTTPS na koncovém bodu SCIM
 
 ### <a name="user-provisioning-and-deprovisioning"></a>Zřizování a rušení uživatelů
 

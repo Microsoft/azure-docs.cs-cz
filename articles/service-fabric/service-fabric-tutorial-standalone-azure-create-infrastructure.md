@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte nastavit infrastrukturu virtuálních po
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75614005"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561836"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: vytvoření infrastruktury virtuálních počítačů Azure pro hostování Service Fabricho clusteru
 
@@ -49,7 +49,7 @@ K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ješt�
 
 8. V dalším kroku nastavte **skupinu zabezpečení sítě síťové karty** na **Upřesnit**. Vytvořte novou skupinu zabezpečení, která zaznamená její název, a vytvořte následující pravidla, která povolí přenos TCP z libovolného zdroje:
 
-   ![SF – příchozí][sf-inbound]
+   ![Snímek obrazovky ukazuje vytváření pravidel, která povolují příchozí přenosy TCP.][sf-inbound]
 
    * Port `3389` pro RDP a ICMP (základní připojení).
    * Porty `19000-19003` pro Service Fabric.
@@ -61,7 +61,7 @@ K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ješt�
 
 9. Přidejte další pravidlo. Nastavte zdroj jako **značku služby** a nastavte značku zdrojové služby na **VirtualNetwork**. Service Fabric vyžaduje, aby byly pro komunikaci v rámci clusteru otevřené následující porty: 135137-139, 445, 20 001-20031, 20606-20861.
 
-   ![síť VNet – příchozí][vnet-inbound]
+   ![Snímek obrazovky s vytvářením pravidel pro povolení přenosů TCP pro cluster.][vnet-inbound]
 
 10. Ostatní možnosti jsou přijatelné ve výchozím stavu. Zkontrolujte je, pokud chcete, a pak spusťte virtuální počítač.
 

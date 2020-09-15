@@ -4,14 +4,14 @@ description: Prohlášení o zásadách uchovávání a ochrany osobních údaj�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a2440379c001c0213145c1c5972cfed8799f4966
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929325"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562787"
 ---
-# <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
+# <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
 Když do své aplikace nainstalujete sadu [Azure Application Insights][start] SDK, pošle se telemetrie o vaší aplikaci do cloudu. Přirozeně informující vývojáři chtějí přesně informovat o tom, jaká data se odesílají, co se stane s daty a jak je můžou mít pod kontrolou. Konkrétně by mohla být posílána citlivá data, kde jsou uložená a jak je zabezpečená? 
 
@@ -128,7 +128,7 @@ Pokud zákazník potřebuje nakonfigurovat tento adresář s konkrétními poža
 
 `C:\Users\username\AppData\Local\Temp` slouží k uchování dat. Toto umístění není možné konfigurovat z konfiguračního adresáře a oprávnění pro přístup k této složce jsou omezená na konkrétního uživatele s požadovanými přihlašovacími údaji. (Další informace najdete v tématu [implementace](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
-###  <a name="net"></a>.Net
+###  <a name="net"></a>.NET
 
 Ve výchozím nastavení `ServerTelemetryChannel` používá místní složku dat aplikace `%localAppData%\Microsoft\ApplicationInsights` nebo složku TEMP aktuálního uživatele `%TMP%` . (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.)
 
@@ -153,7 +153,16 @@ Prostřednictvím kódu:
 
 ### <a name="netcore"></a>NetCore
 
-Ve výchozím nastavení `ServerTelemetryChannel` používá místní složku dat aplikace `%localAppData%\Microsoft\ApplicationInsights` nebo složku TEMP aktuálního uživatele `%TMP%` . (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.) V prostředí Linux bude místní úložiště zakázané, pokud není Zadaná složka úložiště.
+Ve výchozím nastavení `ServerTelemetryChannel` používá místní složku dat aplikace `%localAppData%\Microsoft\ApplicationInsights` nebo složku TEMP aktuálního uživatele `%TMP%` . (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.) 
+
+V prostředí Linux bude místní úložiště zakázané, pokud není Zadaná složka úložiště.
+
+> [!NOTE]
+> S verzí Release 2.15.0-beta3 a vyšším místním úložištěm se teď automaticky vytvoří pro Linux, Mac a Windows. U systémů, které nejsou systémy Windows, sada SDK automaticky vytvoří místní složku úložiště na základě následující logiky:
+> - `${TMPDIR}` – Pokud `${TMPDIR}` je nastavená proměnná prostředí, použije se toto umístění.
+> - `/var/tmp` – Pokud předchozí umístění neexistuje, zkusíme to `/var/tmp` .
+> - `/tmp` – Pokud žádná předchozí umístění neexistují, zkusíme to `tmp` . 
+> - Pokud žádné z těchto umístění neexistují, místní úložiště se nevytvoří a stále se vyžaduje ruční konfigurace. [Pro úplné podrobnosti o implementaci](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860).
 
 Následující fragment kódu ukazuje, jak nastavit `ServerTelemetryChannel.StorageFolder` v `ConfigureServices()` metodě vaší `Startup.cs` třídy:
 

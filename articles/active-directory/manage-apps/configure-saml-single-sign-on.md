@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 500bfff4afaebc345d344566b02fe945edb05795
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441914"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562600"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Konfigurace jednotného přihlašování pomocí SAML
 
@@ -27,7 +27,7 @@ V [řadě rychlých startů](view-applications-portal.md) při správě aplikac�
 
 Použití Azure AD jako zprostředkovatele identity (IdP) a nastavení jednotného přihlašování (SSO) může být jednoduché nebo složité v závislosti na používané aplikaci. Některé aplikace je možné nastavit jenom pomocí několika akcí. Jiné vyžadují hloubkovou konfiguraci. K rychlému navýšení si Projděte příručku [rychlý Start](view-applications-portal.md) při správě aplikací. Pokud je aplikace, kterou přidáváte, jednoduchá, pak pravděpodobně nebudete muset číst tento článek. Pokud aplikace, kterou přidáváte, vyžaduje vlastní konfiguraci pro jednotné přihlašování založené na SAML, pak je tento článek pro vás.
 
-V [sérii rychlých startech](view-applications-portal.md)je k dispozici článek týkající se konfigurace jednotného přihlašování. V takovém případě se dozvíte, jak získat přístup ke konfigurační stránce SAML pro aplikaci. Stránka Konfigurace SAML obsahuje pět oddílů. Tyto části jsou podrobně popsány v tomto článku.
+V [sérii rychlých startech](add-application-portal-setup-sso.md)je k dispozici článek týkající se konfigurace jednotného přihlašování. V takovém případě se dozvíte, jak získat přístup ke konfigurační stránce SAML pro aplikaci. Stránka Konfigurace SAML obsahuje pět oddílů. Tyto části jsou podrobně popsány v tomto článku.
 
 > [!IMPORTANT] 
 > Existují některé scénáře, kdy možnost **jednotného přihlašování** nebude k dispozici v navigaci pro aplikaci v **podnikových aplikacích**. 
@@ -42,9 +42,9 @@ V [sérii rychlých startech](view-applications-portal.md)je k dispozici článe
 Měli byste získat hodnoty od dodavatele aplikace. Můžete ručně zadat hodnoty nebo nahrát soubor metadat a extrahovat tak hodnotu polí.
 
 > [!TIP]
-> Mnohé aplikace už jsou předem nakonfigurované pro práci s Azure AD. Tyto aplikace jsou uvedené v galerii aplikací, které můžete procházet při přidávání aplikace do tenanta Azure AD. [Série rychlý Start](view-applications-portal.md) vás provede procesem. Pro aplikace v galerii najdete podrobné pokyny, jak postupovat podle kroků. Pro přístup k jednotlivým krokům můžete kliknout na odkaz na stránce konfigurace SAML pro aplikaci, jak je popsáno v části rychlý Start, nebo můžete procházet seznam všech kurzů pro konfiguraci aplikací v tématu [kurzy konfigurace aplikací SaaS](../saas-apps/tutorial-list.md).
+> Mnohé aplikace už jsou předem nakonfigurované pro práci s Azure AD. Tyto aplikace jsou uvedené v galerii aplikací, které můžete procházet při přidávání aplikace do tenanta Azure AD. [Série rychlý Start](add-application-portal-setup-sso.md) vás provede procesem. Pro aplikace v galerii najdete podrobné pokyny, jak postupovat podle kroků. Pro přístup k jednotlivým krokům můžete kliknout na odkaz na stránce konfigurace SAML pro aplikaci, jak je popsáno v části rychlý Start, nebo můžete procházet seznam všech kurzů pro konfiguraci aplikací v tématu [kurzy konfigurace aplikací SaaS](../saas-apps/tutorial-list.md).
 
-| Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
+| Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Description |
 |:--|:--|:--|:--|
 | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. Zadejte adresu URL, která používá následující vzor: ' https:// <subdomain> . contoso.com ' *tuto hodnotu můžete najít jako element **vystavitele** v **AuthnRequest** (žádost SAML) odeslanou aplikací.* |
 | **Adresa URL odpovědi** | Vyžadováno | Vyžadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
@@ -57,7 +57,7 @@ Měli byste získat hodnoty od dodavatele aplikace. Můžete ručně zadat hodno
 Když se uživatel do aplikace ověří, služba Azure AD vydá aplikaci token SAML s informacemi (nebo deklaracemi identity) o uživateli, který je jednoznačně identifikoval. Ve výchozím nastavení obsahují tyto informace uživatelské jméno, e-mailovou adresu, jméno a příjmení. Tyto deklarace může být nutné přizpůsobit, pokud například aplikace vyžaduje konkrétní hodnoty deklarace identity nebo jiný formát **názvu** než uživatelské jméno. 
 
 > [!IMPORTANT]
-> Mnoho aplikací je už předem nakonfigurovaných a v galerii aplikací a nemusíte si dělat starosti s nastavením deklarací identity uživatelů a skupin. [Série rychlý Start](view-applications-portal.md) vás provede přidáním a konfigurací aplikací.
+> Mnoho aplikací je už předem nakonfigurovaných a v galerii aplikací a nemusíte si dělat starosti s nastavením deklarací identity uživatelů a skupin. [Série rychlý Start](add-application-portal.md) vás provede přidáním a konfigurací aplikací.
 
 
 Hodnota identifikátoru **jedinečného identifikátoru uživatele (ID názvu)** je požadovaná deklarace identity a je důležitá. Výchozí hodnota je *User. userPrincipalName*. Identifikátor uživatele jednoznačně identifikuje každého uživatele v rámci aplikace. Pokud je například uživatelským jménem i jedinečným identifikátorem e-mailová adresa, nastavte tuto hodnotu na *user.mail*.
@@ -79,7 +79,7 @@ Můžete přidat nové deklarace identity. Další informace najdete v tématu v
 Azure AD pomocí certifikátu podepisuje tokeny SAML, které posílá do aplikace. Tento certifikát potřebujete k nastavení vztahu důvěryhodnosti mezi službou Azure AD a aplikací. Podrobnosti o formátu certifikátu najdete v dokumentaci SAML aplikace. Další informace najdete v tématu [Správa certifikátů pro federované jednotné přihlašování](manage-certificates-for-federated-single-sign-on.md) a [Rozšířené možnosti podepisování certifikátů v tokenu SAML](certificate-signing-options.md).
 
 > [!IMPORTANT]
-> Mnoho aplikací je už předem nakonfigurovaných a v galerii aplikací a nemusíte podrobně do certifikátů. [Série rychlý Start](view-applications-portal.md) vás provede přidáním a konfigurací aplikací.
+> Mnoho aplikací je už předem nakonfigurovaných a v galerii aplikací a nemusíte podrobně do certifikátů. [Série rychlý Start](add-application-portal.md) vás provede přidáním a konfigurací aplikací.
 
 Z Azure AD si můžete stáhnout aktivní certifikát ve formátu Base64 nebo RAW přímo z hlavního **nastavení jednotné přihlašování se** stránkou SAML. Aktivní certifikát můžete také získat stažením souboru XML s metadaty aplikace nebo pomocí adresy URL federačních metadat aplikace. Pokud chcete zobrazit, vytvořit nebo stáhnout svoje certifikáty (aktivní nebo neaktivní), postupujte podle těchto kroků.
 

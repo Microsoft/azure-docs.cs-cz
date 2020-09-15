@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231176"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563909"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace
 
@@ -33,7 +33,7 @@ Typ aplikací, které může uživatel zobrazit, spadají do následujících ka
 -   Aplikace s existujícími řešeními jednotného přihlašování
 
 Tady je několik věcí, které kontrolují, jestli se aplikace zobrazuje nebo nezobrazuje.
-- Ujistěte se, že je aplikace přidaná do Azure AD, a ujistěte se, že je uživatel přiřazený. Další informace najdete v části [rychlý Start při správě aplikací](view-applications-portal.md).
+- Ujistěte se, že je aplikace přidaná do Azure AD, a ujistěte se, že je uživatel přiřazený. Další informace najdete v části [rychlý Start při správě aplikací](add-application-portal.md).
 - Pokud se aplikace přidala v nedávné době, odhlaste se a znovu zaregistrujte. 
 - Pokud aplikace vyžaduje licenci, jako je třeba Office, pak se ujistěte, že má uživatel přiřazenou příslušnou licenci.
 - Doba potřebná pro změny licencování se může lišit v závislosti na velikosti a složitosti skupiny.

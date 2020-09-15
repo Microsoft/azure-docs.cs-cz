@@ -4,12 +4,12 @@ description: Jak převzít služby při selhání virtuálních počítačů neb
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309964"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563977"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Spuštění převzetí služeb při selhání z místního prostředí do Azure
 
@@ -32,7 +32,7 @@ Pokud se chcete připojit k virtuálním počítačům Azure pomocí protokolu R
 
 **Po převzetí služeb při selhání** | **Umístění** | **Akce**
 --- | --- | ---
-**Virtuální počítač Azure s Windows** | Místní počítač před převzetím služeb při selhání | Pokud chcete získat přístup k virtuálnímu počítači Azure přes Internet, povolte RDP a ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné**a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  **Allowed Apps**.<br/><br/> Pokud chcete získat přístup k virtuálnímu počítači Azure přes připojení typu Site-to-site, povolte na počítači protokol RDP a zajistěte, aby byl v **bráně Windows Firewall**  ->  **povolené aplikace a funkce**pro **domény a privátní** sítě povolený protokol RDP.<br/><br/> <br/><br/> Odeberte všechny statické trvalé trasy a proxy WinHTTP. Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Windows Update se může spustit, když převezmete služby při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se aktualizace nedokončí.
+**Virtuální počítač Azure s Windows** | Místní počítač před převzetím služeb při selhání | Pokud chcete získat přístup k virtuálnímu počítači Azure přes Internet, povolte RDP a ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné**a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  **Allowed Apps**.<br/><br/> Pokud chcete získat přístup k virtuálnímu počítači Azure přes připojení typu Site-to-site, povolte na počítači protokol RDP a zajistěte, aby byl v **bráně Windows Firewall**  ->  **povolené aplikace a funkce**pro **domény a privátní** sítě povolený protokol RDP.<br/><br/> <br/><br/> Odeberte všechny statické trvalé trasy a proxy WinHTTP. Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Windows Update se může spustit, když převezmete služby při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se aktualizace nedokončí.
 **Virtuální počítač Azure se systémem Linux** | Místní počítač před převzetím služeb při selhání | Ujistěte se, že je služba Secure Shell na virtuálním počítači nastavená tak, aby se automaticky spouštěla při spuštění systému.<br/><br/> Zkontrolujte, jestli pravidla brány firewall umožňují službě SSH připojit se k ní.
 
 
@@ -46,7 +46,7 @@ Spusťte plán obnovení převzetí služeb při selhání následujícím způs
 1. V Site Recovery trezoru vyberte **plány obnovení**  >  *recoveryplan_name*.
 2. Klikněte na **převzetí služeb při selhání**.
 
-    ![Převzetí služeb při selhání](./media/site-recovery-failover/Failover.png)
+    ![Snímek obrazovky zobrazuje podokno ADRP s převzetím služeb při selhání vybrané z nabídky další.](./media/site-recovery-failover/Failover.png)
 
 3. V **Failover**  >  části**směr převzetí**služeb při selhání přenechejte výchozí nastavení, pokud se chystáte replikovat do Azure.
 4. V části **převzetí služeb při selhání**vyberte **bod obnovení** , u kterého chcete převzít služby při selhání.
@@ -125,7 +125,7 @@ Site Recovery zpracovává uchovávání písmen jednotek. Pokud při replikaci 
 
 Pokud se chcete připojit k virtuálním počítačům Azure vytvořeným po převzetí služeb při selhání pomocí protokolu RDP nebo SSH, postupujte podle požadavků shrnutých v tabulce.
 
-**Převzetí služeb** | **Umístění** | **Akce**
+**Převzetí služeb při selhání** | **Umístění** | **Akce**
 --- | --- | ---
 **Virtuální počítač Azure s Windows** | Virtuální počítač Azure po převzetí služeb při selhání |  [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojené), musí umožňovat příchozí připojení k portu RDP.<br/><br/> Zkontrolujte **diagnostiku spouštění** a ověřte snímek obrazovky virtuálního počítače.<br/><br/> Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy k odstraňování potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Virtuální počítač Azure se systémem Linux** | Virtuální počítač Azure po převzetí služeb při selhání | Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojené), musí umožňovat příchozí připojení k portu SSH.<br/><br/> [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Podívejte se na **diagnostiku spouštění** pro snímek obrazovky virtuálního počítače.<br/><br/>
@@ -138,7 +138,7 @@ Při řešení problémů s připojením po převzetí služeb při selhání po
     - Zachovat stejnou IP adresu: můžete použít stejnou IP adresu na VIRTUÁLNÍm počítači Azure jako počítač přidělený místnímu počítači.
     - Použijte jinou IP adresu: pro virtuální počítač Azure můžete použít jinou IP adresu.
     - [Přečtěte si další informace](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) o nastavení interních IP adres.
-- **Externí IP adresy**: veřejné IP adresy můžete uchovávat při převzetí služeb při selhání. Virtuálním počítačům Azure vytvořeným v rámci procesu převzetí služeb při selhání musí být k dispozici veřejná IP adresa Azure dostupná v oblasti Azure. Veřejnou IP adresu můžete přiřadit buď ručně, nebo automatizací procesu s plánem obnovení. [Další informace](concepts-public-ip-address-with-site-recovery.md).
+- **Externí IP adresy**: veřejné IP adresy můžete uchovávat při převzetí služeb při selhání. Virtuálním počítačům Azure vytvořeným v rámci procesu převzetí služeb při selhání musí být k dispozici veřejná IP adresa Azure dostupná v oblasti Azure. Veřejnou IP adresu můžete přiřadit buď ručně, nebo automatizací procesu s plánem obnovení. [Přečtěte si další informace](concepts-public-ip-address-with-site-recovery.md).
 
 
 ## <a name="next-steps"></a>Další kroky

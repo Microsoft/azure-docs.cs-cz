@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8d8dc4a3efb034c9428de32f0f975869e1044327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613892"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561869"
 ---
 # <a name="graphics-binding"></a>Grafika – vazba
 
@@ -137,11 +137,23 @@ wmrBinding->BlitRemoteFrame();
 ### <a name="simulation"></a>Simulace
 
 `GraphicsApiType.SimD3D11` je vazba simulace a pokud je vybrána, vytvoří se `GraphicsBindingSimD3d11` vazba grafiky. Toto rozhraní se používá k simulaci přesunu hlav, například v desktopové aplikaci, a vykreslí monoscopic obrázek.
+
+Chcete-li implementovat vazby simulace, je důležité pochopit rozdíl mezi místními fotoaparátem a vzdáleným snímkem, jak je popsáno na stránce [kamery](../overview/features/camera.md) .
+
+Potřebujete dva kamery:
+
+* **Místní fotoaparát**: Tento fotoaparát představuje aktuální polohu kamery, která je řízena aplikační logikou.
+* **Proxy kamera**: Tento fotoaparát odpovídá aktuálnímu *vzdálenému snímku* , který byl odeslán serverem. Vzhledem k prodlevě mezi klientem, který požaduje rámec a jeho doručení, je *vzdálený rámec* vždy bit za pohybem místní kamery.
+
+Základní postup je takový, že se vzdálená image i místní obsah vykreslují do cíle mimo obrazovku pomocí proxy kamery. Bitová kopie proxy serveru se pak znovu prochází do místního prostoru kamery, který je dále vysvětlen v části " [reprojekce v pozdní fázi](../overview/features/late-stage-reprojection.md)".
+
 Instalace je trochu větší a funguje takto:
 
 #### <a name="create-proxy-render-target"></a>Vytvořit cíl vykreslování proxy
 
-Vzdálený a místní obsah je potřeba vykreslit pro vykreslování barvy mimo obrazovku s názvem "proxy" pomocí dat z kamery proxy, které poskytuje `GraphicsBindingSimD3d11.Update` funkce. Proxy se musí shodovat s rozlišením pro zpětnou vyrovnávací paměť. Jakmile je relace připravena, je `GraphicsBindingSimD3d11.InitSimulation` nutné ji volat před připojením k této relaci:
+Vzdálený a místní obsah je potřeba vykreslit pro vykreslování barvy mimo obrazovku s názvem "proxy" pomocí dat z kamery proxy, které poskytuje `GraphicsBindingSimD3d11.Update` funkce.
+
+Proxy musí odpovídat rozlišení vyrovnávací paměti, a měl by být ve formátu *DXGI_FORMAT_R8G8B8A8_UNORM* nebo *DXGI_FORMAT_B8G8R8A8_UNORM* int. Jakmile je relace připravena, je `GraphicsBindingSimD3d11.InitSimulation` nutné ji volat před připojením k této relaci:
 
 ```cs
 AzureSession currentSession = ...;
@@ -244,4 +256,6 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Fotoaparát](../overview/features/camera.md)
+* [Reprojekce pozdní fáze](../overview/features/late-stage-reprojection.md)
 * [Kurz: zobrazení vzdáleně generovaných modelů](../tutorials/unity/view-remote-models/view-remote-models.md)

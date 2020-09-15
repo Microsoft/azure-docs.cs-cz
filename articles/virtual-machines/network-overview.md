@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: cc98a0703cf408194c4c3740938399b57a36d468
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: fe1cdf738162fe5c4492ff0585f057256153a838
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835608"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561410"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Virtuální sítě a virtuální počítače v Azure 
 
@@ -32,7 +32,7 @@ Virtuální síť můžete vytvořit předtím, než vytvoříte virtuální po�
 
 Vedle těchto základních prostředků byste měli zvážit také následující volitelné:
 
-- skupiny zabezpečení sítě,
+- Skupiny zabezpečení sítě
 - Nástrojů pro vyrovnávání zatížení 
 
 ## <a name="network-interfaces"></a>Síťová rozhraní
@@ -95,7 +95,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření virtuální 
 | [Azure CLI](../virtual-network/quick-create-cli.md) | Podsíť a virtuální síť se vytvoří ve stejnou dobu. Pro [az network vnet create](/cli/azure/network/vnet) zadejte parametr **--subnet-name** s názvem podsítě. |
 | Šablona | Nejjednodušší způsob, jak vytvořit virtuální síť a podsítě, je stáhnout existující šablonu, například [Virtual Network se dvěma podsítěmi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets), a upravit ji podle svých potřeb. |
 
-## <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
 [Skupina zabezpečení sítě (NSG)](../virtual-network/virtual-network-vnet-plan-design-arm.md) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo zamítají síťový provoz pro podsítě, síťová rozhraní nebo oboje. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým síťovým rozhraním připojeným k podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny virtuální počítače v této podsíti. Provoz směřující do konkrétního síťového rozhraní se navíc dá omezit tím, že se přímo k tomuto síťovému rozhraní přidruží skupina NSG.
 
@@ -147,7 +147,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření interního n
 | portál Azure | [Zatížení interního provozu můžete vyrovnávat pomocí nástroje pro vyrovnávání zatížení v Azure Portal](../load-balancer/tutorial-load-balancer-standard-internal-portal.md). |
 | [Azure PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) | Pokud chcete v podsíti sítě zadat privátní IP adresu, použijte příkaz [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) s parametrem **-PrivateIpAddress** . Pomocí [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) vytvořte konfiguraci fondu back-end adres. Pomocí [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) vytvořte pravidla příchozího překladu adres (NAT) přidružená ke konfiguraci front-endové IP adresy, kterou jste vytvořili. Pomocí [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) můžete vytvořit sondy, které potřebujete. Pomocí [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) vytvořte konfiguraci nástroje pro vyrovnávání zatížení. K vytvoření nástroje pro vyrovnávání zatížení použijte [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) .|
 | [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md) | Pro vytvoření úvodní konfigurace nástroje pro vyrovnávání zatížení použijte příkaz [az network lb create](/cli/azure/network/lb). K definování privátní IP adresy použijte [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) s parametrem **--private-ip-address**. K přidání konfigurace fondu back-endových adres použijte [az network lb address-pool create](/cli/azure/network/lb/address-pool). K přidání pravidel NAT použijte [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule). K přidání pravidel nástroje pro vyrovnávání zatížení použijte [az network lb rule create](/cli/azure/network/lb/rule). K přidání sond použijte [az network lb probe create](/cli/azure/network/lb/probe).|
-| [Šablona](../load-balancer/load-balancer-get-started-ilb-arm-template.md) | Jako vodítko při nasazování nástroje pro vyrovnávání zatížení pomocí šablony použijte článek věnovaný [vytvoření dvou virtuálních počítačů v nástroji pro vyrovnávání zatížení a konfiguraci pravidel NAT v tomto prostředí](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer). |
+| [Šablona](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | Jako vodítko při nasazování nástroje pro vyrovnávání zatížení pomocí šablony použijte článek věnovaný [vytvoření dvou virtuálních počítačů v nástroji pro vyrovnávání zatížení a konfiguraci pravidel NAT v tomto prostředí](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer). |
 
 ### <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 

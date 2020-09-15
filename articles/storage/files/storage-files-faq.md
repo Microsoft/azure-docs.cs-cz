@@ -7,15 +7,15 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654323"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563688"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
-[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
+[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (verze Preview). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a funkcí služby Azure Files, včetně použití Azure File Sync se soubory Azure. Pokud nevidíte odpověď na svoji otázku, můžete nás kontaktovat prostřednictvím následujících kanálů (v pořadí eskalace):
 
@@ -31,7 +31,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="file-access-options"></a>
   **Jaké jsou různé způsoby přístupu k souborům ve službě soubory Azure?**  
-    Sdílenou složku můžete připojit na svém místním počítači pomocí protokolu SMB 3,0, nebo můžete použít nástroje, jako je [Průzkumník služby Storage](https://storageexplorer.com/) k přístupu k souborům ve sdílené složce. Z vaší aplikace můžete k souborům ve sdílené složce Azure přistupovat pomocí klientských knihoven pro úložiště, rozhraní REST API, PowerShellu nebo Azure CLI.
+    Sdílené složky SMB je možné připojit k místnímu počítači pomocí protokolu SMB 3,0 nebo můžete použít nástroje, jako je [Průzkumník služby Storage](https://storageexplorer.com/) k přístupu k souborům ve sdílené složce. Sdílené složky NFS můžete na svém místním počítači připojit zkopírováním nebo vložením skriptu poskytnutého Azure Portal. Z vaší aplikace můžete k souborům ve sdílené složce Azure přistupovat pomocí klientských knihoven pro úložiště, rozhraní REST API, PowerShellu nebo Azure CLI.
 
 * <a id="what-is-afs"></a>
   **Co je Azure File Sync?**  
@@ -43,12 +43,12 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     
     Úložiště objektů BLOB v Azure je užitečné pro rozsáhlé cloudové aplikace, které potřebují ukládat nestrukturovaná data. Pro maximalizaci výkonu a škálování je úložiště objektů BLOB v Azure jednodušší abstrakce úložiště než skutečný systém souborů. K úložišti objektů blob Azure se dostanete jenom prostřednictvím klientských knihoven založených na REST (nebo přímo prostřednictvím protokolu založeného na REST).
 
-    Soubory Azure jsou konkrétně systémem souborů. Soubory Azure obsahují všechny abstrakce souborů, které znáte a máte rádi od let práce s místními operačními systémy. Podobně jako úložiště objektů BLOB v Azure nabízí služba soubory Azure rozhraní REST a klientské knihovny založené na REST. Na rozdíl od služby Azure Blob Storage nabízí Azure Files přístup SMB ke sdíleným složkám souborů Azure. Pomocí protokolu SMB můžete připojit sdílenou složku Azure přímo v systému Windows, Linux nebo macOS, a to buď místně, nebo na cloudových virtuálních počítačích, aniž byste museli psát žádný kód nebo připojovat žádné speciální ovladače k systému souborů. Sdílené složky Azure můžete také ukládat do mezipaměti na místních souborových serverech pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají. 
+    Soubory Azure jsou konkrétně systémem souborů. Soubory Azure obsahují všechny abstrakce souborů, které znáte a máte rádi od let práce s místními operačními systémy. Podobně jako úložiště objektů BLOB v Azure nabízí služba soubory Azure rozhraní REST a klientské knihovny založené na REST. Na rozdíl od služby Azure Blob Storage nabízí Azure Files přístup SMB nebo NFS ke sdíleným složkám souborů Azure. Sdílené složky můžete připojit přímo do systému Windows, Linux nebo macOS, a to buď místně, nebo na cloudových virtuálních počítačích, aniž byste museli psát kód nebo připojovat žádné speciální ovladače k systému souborů. Sdílené složky SMB Azure můžete také ukládat do mezipaměti na místních souborových serverech pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají. 
    
     Podrobnější popis rozdílů mezi soubory Azure a úložištěm objektů BLOB v Azure najdete v tématu [Úvod do služby core Azure Storage Services](../common/storage-introduction.md). Další informace o službě Azure Blob Storage najdete v tématu [Úvod do úložiště objektů BLOB](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Proč místo disků Azure používám sdílenou složku Azure?**  
-    Disk na discích Azure je prostě disk. Pokud chcete získat hodnotu z disků Azure, musíte připojit disk k virtuálnímu počítači, který běží v Azure. Disky Azure je možné použít pro všechno, co byste použili disk pro na místním serveru. Můžete ji použít jako systémový disk s operačním systémem, jako odkládací prostor pro operační systém nebo jako vyhrazené úložiště pro aplikaci. Zajímavou alternativou pro disky Azure je vytvoření souborového serveru v cloudu, který se bude používat na stejných místech, kde můžete použít sdílenou složku Azure. Nasazení souborového serveru v Azure Virtual Machines je vysoce výkonným způsobem, jak získat úložiště souborů v Azure, když budete potřebovat možnosti nasazení, které aktuálně nejsou podporované soubory Azure (například podpora protokolu NFS nebo Premium Storage). 
+    Disk na discích Azure je prostě disk. Pokud chcete získat hodnotu z disků Azure, musíte připojit disk k virtuálnímu počítači, který běží v Azure. Disky Azure je možné použít pro všechno, co byste použili disk pro na místním serveru. Můžete ji použít jako systémový disk s operačním systémem, jako odkládací prostor pro operační systém nebo jako vyhrazené úložiště pro aplikaci. Zajímavou alternativou pro disky Azure je vytvoření souborového serveru v cloudu, který se bude používat na stejných místech, kde můžete použít sdílenou složku Azure. Nasazení souborového serveru v Azure Virtual Machines je vysoce výkonný způsob, jak získat úložiště souborů v Azure, když budete potřebovat možnosti nasazení, které se v tuto chvíli nepodporují v souborech Azure. 
 
     Spuštění souborového serveru s disky Azure jako úložiště back-endu je ale většinou mnohem dražší než použití sdílené složky Azure, a to z několika důvodů. Nejdřív je potřeba platit i za to, že budete mít za následek, že za běhu jednoho nebo více virtuálních počítačů Azure platíte náklady. Za druhé musíte taky spravovat virtuální počítače, které se používají ke spuštění souborového serveru. Například zodpovídáte za upgrady operačního systému. Nakonec, pokud nakonec budete potřebovat ukládat data do místní mezipaměti, je až na to, abyste nastavili a spravovali replikační technologie, jako je třeba replikace systém souborů DFS (Distributed File System) (DFSR), aby k tomu mohlo dojít.
 
@@ -58,17 +58,18 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="get-started"></a>
   **Návody začít používat soubory Azure?**  
-   Začínáme se službou Azure Files je snadné. Nejdřív [Vytvořte sdílenou složku](storage-how-to-create-file-share.md)a potom ji připojte v preferovaném operačním systému: 
+   Začínáme se službou Azure Files je snadné. Nejdřív buď [Vytvořte sdílenou SLOŽKU SMB](storage-how-to-create-file-share.md) , nebo [Vytvořte sdílenou složku NFS](storage-files-how-to-create-nfs-shares.md)a pak ji připojte v preferovaném operačním systému: 
 
-  * [Připojení v systému Windows](storage-how-to-use-files-windows.md)
-  * [Připojení v systému Linux](storage-how-to-use-files-linux.md)
-  * [Připojení v macOS](storage-how-to-use-files-mac.md)
+  * [Připojení sdílené složky SMB v systému Windows](storage-how-to-use-files-windows.md)
+  * [Připojení sdílené složky SMB v systému Linux](storage-how-to-use-files-linux.md)
+  * [Připojení sdílené složky SMB v macOS](storage-how-to-use-files-mac.md)
+  * [Připojení sdílené složky systému souborů NFS](storage-files-how-to-mount-nfs-shares.md)
 
     Podrobnější příručku k nasazení sdílené složky Azure, která nahrazuje produkční sdílené složky ve vaší organizaci, najdete v tématu [Plánování nasazení služby soubory Azure](storage-files-planning.md).
 
 * <a id="redundancy-options"></a>
   **Jaké možnosti redundance úložiště podporují soubory Azure?**  
-    Soubory Azure v současné době podporují místně redundantní úložiště (LRS), zónu redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště (GZRS). V budoucnu plánujeme podporovat geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), ale v tuto chvíli nemáte časové osy ke sdílení.
+    Soubory Azure v současné době podporují místně redundantní úložiště (LRS), zónu redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště (GZRS). Úroveň Premium služby soubory Azure v současné době podporuje jenom LRS a ZRS.
 
 * <a id="tier-options"></a>
   **Jaké úrovně úložiště jsou podporované ve službě soubory Azure?**  
@@ -283,6 +284,23 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
     Ano, podporujeme rozhraní REST API, která při použití REST API [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (nebo novější) k získání, nastavení nebo kopírování seznamů ACL systému souborů NTFS pro adresáře nebo soubory. Podporujeme také zachování seznamů ACL systému Windows v nástrojích založených na REST: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
 
+## <a name="network-file-system"></a>Systém souborů sítě
+
+* <a id="when-to-use-nfs"></a>
+**Kdy mám použít soubory NFS pro Azure?**
+
+    Viz soubory [NFS sdílené složky (Preview)](storage-files-compare-protocols.md#nfs-shares-preview).
+
+* <a id="backup-nfs-data"></a>
+**Návody zálohovaná data uložená ve sdílených složkách NFS?**
+
+    Zálohování dat ve sdílených složkách NFS se dá orchestrovat pomocí známých nástrojů, jako je rsync nebo produkty od jednoho z našich partnerů pro zálohování třetích stran. Několik partnerů pro zálohování, včetně [CommVault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), [Veeam](https://www.veeam.com/blog/?p=123438)a [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) , byli součástí naší úvodní verze Preview a rozšířili svá řešení, aby fungovalo s SMB 3,0 i NFS 4,1 pro soubory Azure.
+
+* <a id="migrate-nfs-data"></a>
+**Můžu migrovat existující data do sdílené složky systému souborů NFS?**
+
+    V rámci oblasti můžete přesunout data pomocí standardních nástrojů, jako je SCP, rsync nebo SSHFS. Vzhledem k tomu, že soubory Azure NFS jsou k dispozici souběžně s více výpočetními instancemi, můžete zvýšit rychlost kopírování pomocí paralelního nahrávání. Pokud chcete přenést data mimo oblast, připojte se k systému souborů v místním datovém centru pomocí sítě VPN nebo ExpressRoute.
+
 ## <a name="on-premises-access"></a>Místní přístup
 
 * <a id="port-445-blocked"></a>
@@ -293,7 +311,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="expressroute-not-required"></a>
 **Musím použít Azure ExpressRoute k připojení k souborům Azure nebo k používání Azure File Sync v místním prostředí?**  
 
-    Ne. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Azure File Sync, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
+    No. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Azure File Sync, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
 
 * <a id="mount-locally"></a>
 **Jak můžu připojit sdílenou složku Azure na svém místním počítači?**  
@@ -397,7 +415,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="lfs-performance-impact"></a>
 **Má rozšíření kvóty sdílené složky vliv na moje úlohy nebo Azure File Sync?**
     
-    Ne. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Azure File Sync.
+    No. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Azure File Sync.
 
 * <a id="open-handles-quota"></a>
 **Kolik klientů má přístup ke stejnému souboru současně?**   
@@ -426,13 +444,13 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="nested-shares"></a>
 **Můžu nastavit vnořené sdílené složky? Jinými slovy, sdílená složka ve sdílené složce?**  
-    Ne. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
+    No. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
 
 * <a id="ibm-mq"></a>
 **Návody používat soubory Azure s IBM MQ?**  
     Společnost IBM vydala dokument, který pomáhá zákazníkům IBM MQ nakonfigurovat soubory Azure pomocí služby IBM. Další informace najdete v tématu [jak nastavit správce front více instancí IBM MQ pomocí služby Microsoft Azure Files](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 * [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
 * [Řešit problémy se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

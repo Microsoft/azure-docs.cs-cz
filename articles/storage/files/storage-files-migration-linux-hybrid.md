@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510366"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563501"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace ze systému Linux na nasazení do hybridního cloudu pomocí Azure File Sync
 
-Azure File Sync funguje na instancích Windows serveru s přímým připojeným úložištěm (DAS). Nepodporuje synchronizaci do a ze systému Linux nebo vzdáleného sdílení protokolu SMB (Server Message Block).
+Azure File Sync funguje na instancích Windows serveru s přímým připojeným úložištěm (DAS). Nepodporuje synchronizaci do a z klientů se systémem Linux nebo sdílené složky protokolu SMB (Server Message Block) nebo sdílené složky systému souborů NFS (Network File System).
 
 Výsledkem je, že transformace souborové služby do hybridního nasazení vede k tomu, že je potřeba migrovat na Windows Server. Tento článek vás provede plánováním a prováděním této migrace.
 
@@ -24,7 +24,7 @@ Výsledkem je, že transformace souborové služby do hybridního nasazení vede
 
 Cílem je přesunout sdílené složky, které máte na serveru Linux Samba, do instance Windows serveru. Pak použijte Azure File Sync pro hybridní nasazení v cloudu. Tato migrace se musí udělat způsobem, který zaručuje integritu produkčních dat i dostupnost během migrace. Ta ta vyžaduje udržení minimálního výpadku, aby bylo možné se přizpůsobit nebo jen mírně překročit pravidelná časová období údržby.
 
-## <a name="migration-overview"></a>Migrace – přehled
+## <a name="migration-overview"></a>Přehled migrace
 
 Jak je uvedeno v [článku Přehled migrace](storage-files-migration-overview.md)souborů Azure, je důležité použít správný nástroj pro kopírování a přístup. Server Linux Samba zveřejňuje sdílené složky SMB přímo v místní síti. V tomto scénáři migrace jsou soubory Robocopy integrované v systému Windows Server nejvhodnější k přesunutí souborů.
 
@@ -201,7 +201,7 @@ Dokončili jste migraci sdílené složky nebo skupiny sdílených složek do sp
 Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, abyste v jednom okamžiku zpracovali obor jedné sdílené složky Azure.
 
 > [!WARNING]
-> Po přesunutí všech dat ze serveru Linux Samba do instance Windows serveru a dokončení migrace se vraťte do *všech* skupin synchronizace v Azure Portal. Upravte procentuální hodnotu volného místa pro svazek vrstev cloudu na něco lépe vhodné pro využití mezipaměti, jako je například 20 procent. 
+> Po přesunutí všech dat ze serveru Linux Samba do instance Windows serveru a dokončení migrace se vraťte do *všech*  skupin synchronizace v Azure Portal. Upravte procentuální hodnotu volného místa pro svazek vrstev cloudu na něco lépe vhodné pro využití mezipaměti, jako je například 20 procent. 
 
 Zásada pro volné místo ve svazku na úrovni cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se udržet volné místo na disku 99 procent. Místní mezipaměť pak nemusí fungovat podle očekávání. Výkon může být přijatelný, pokud vaším cílem je mít obor názvů pro svazek, který obsahuje jenom zřídka používaná archivní data, a Vy zachováte zbývající část prostoru úložiště pro jiný scénář.
 

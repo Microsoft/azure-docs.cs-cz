@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81459215"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561597"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura řídicích panelů Azure
 Tento dokument projde strukturu řídicího panelu Azure pomocí následujícího řídicího panelu jako příklad:
@@ -329,16 +329,16 @@ Vlastnost __Position__ obsahuje informace o velikosti a umístění pro část v
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![Mřížka – jednotky](./media/azure-portal-dashboards-structure/grid-units.png)
+![Snímek obrazovky ukazuje zavření mřížky, kde je zvýrazněna jedna Čtvercová mřížka.](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>Objekt metadat
 Každá část má vlastnost metadat, objekt má pouze jednu povinnou vlastnost nazvanou __typ__. Tento řetězec instruuje portál, který má zobrazit dlaždici. Náš ukázkový řídicí panel používá tyto typy dlaždic:
 
 
-1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`– Používá se k zobrazení metrik monitorování.
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`– Slouží k zobrazení textu nebo obrázků se základním formátováním pro seznamy, odkazy atd.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart`– Používá se k zobrazení videí z YouTube, channel9 a jakéhokoli jiného typu videa, které funguje ve značce HTML video.
-1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart`– Slouží k zobrazení názvu a stavu virtuálního počítače Azure.
+1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – Používá se k zobrazení metrik monitorování.
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – Slouží k zobrazení textu nebo obrázků se základním formátováním pro seznamy, odkazy atd.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` – Používá se k zobrazení videí z YouTube, channel9 a jakéhokoli jiného typu videa, které funguje ve značce HTML video.
+1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Slouží k zobrazení názvu a stavu virtuálního počítače Azure.
 
 Každý typ součásti má svou vlastní konfiguraci. Možné vlastnosti konfigurace se nazývají __vstupy__, __Nastavení__a __assety__. 
 

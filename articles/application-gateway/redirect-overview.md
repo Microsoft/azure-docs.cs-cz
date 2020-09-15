@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8c2bac1bee5a2301a29589f15d72d0f69b4a05b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb01d5a4923410f693b682d66be8d5d09f9019d0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253847"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561574"
 ---
 # <a name="application-gateway-redirect-overview"></a>Přehled přesměrování Application Gateway
 
@@ -37,7 +37,7 @@ Podpora přesměrování Application Gateway nabízí následující možnosti:
    Tento typ přesměrování povoluje přesměrování protokolu HTTP na HTTPS pouze v určité oblasti lokality, například v oblasti nákupního košíku označeného/Cart/*.
 - **Přesměrovat na externí web**
 
-![požadavek](./media/redirect-overview/redirect.png)
+![Diagram znázorňuje uživatele a aplikační bránu a připojení mezi nimi, včetně odemčené šipky H T T + Red, která není povolená, 301 přímá červená šipka a uzamčené H T T P S zelenou šipkou.](./media/redirect-overview/redirect.png)
 
 V důsledku této změny musí zákazníci vytvořit nový objekt konfigurace přesměrování, který určuje cílový naslouchací proces nebo externí web, na který je požadováno přesměrování. Konfigurační prvek také podporuje možnosti, které umožňují připojení cesty URI a řetězce dotazu k přesměrované adrese URL. Můžete také zvolit typ přesměrování. Po vytvoření se tato konfigurace přesměrování připojí ke zdrojovému naslouchacího procesu prostřednictvím nového pravidla. Při použití základního pravidla je konfigurace přesměrování přidružená ke zdrojovému naslouchacího procesu a je globální přesměrování. Při použití pravidla založeného na cestách je konfigurace přesměrování definována v mapě cesty URL. Proto se vztahuje pouze na konkrétní oblast cesty lokality.
 

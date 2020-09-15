@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918396"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564011"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Kanály telemetrie v Application Insights
 
@@ -153,13 +153,25 @@ Krátká odpověď znamená, že žádný z vestavěných kanálů nenabízí z�
 
 I když název jeho balíčku a oboru názvů obsahuje "WindowsServer", tento kanál je podporován v jiných systémech než Windows, a to s následující výjimkou. V jiných systémech než Windows kanál ve výchozím nastavení nevytvoří místní složku úložiště. Musíte vytvořit místní složku úložiště a nakonfigurovat ji tak, aby ji používala. Po nakonfigurování místního úložiště funguje kanál na všech systémech stejným způsobem.
 
+> [!NOTE]
+> S verzí Release 2.15.0-beta3 a vyšším místním úložištěm se teď automaticky vytvoří pro Linux, Mac a Windows. U systémů, které nejsou systémy Windows, sada SDK automaticky vytvoří místní složku úložiště na základě následující logiky:
+> - `${TMPDIR}` – Pokud `${TMPDIR}` je nastavená proměnná prostředí, použije se toto umístění.
+> - `/var/tmp` – Pokud předchozí umístění neexistuje, zkusíme to `/var/tmp` .
+> - `/tmp` – Pokud žádná předchozí umístění neexistují, zkusíme to `tmp` . 
+> - Pokud žádné z těchto umístění neexistují, místní úložiště se nevytvoří a stále se vyžaduje ruční konfigurace. [Pro úplné podrobnosti o implementaci](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860).
+
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Vytváří SDK dočasné místní úložiště? Jsou data zašifrovaná v úložišti?
 
 Sada SDK ukládá položky telemetrie do místního úložiště během problémů se sítí nebo během omezování. Tato data nejsou šifrována místně.
 
 V systémech Windows sada SDK automaticky vytvoří dočasné místní složky v adresáři% TEMP% nebo% LOCALAPPDATA% a omezí přístup jenom na správce a aktuálního uživatele.
 
-V jiných systémech než Windows není sada SDK automaticky vytvořena ani místní úložiště, takže ve výchozím nastavení nejsou místně ukládána žádná data. Můžete vytvořit adresář úložiště sami a nakonfigurovat ho tak, aby ho používal. V takovém případě zodpovídáte za zajištění zabezpečení adresáře.
+V jiných systémech než Windows není sada SDK automaticky vytvořena ani místní úložiště, takže ve výchozím nastavení nejsou místně ukládána žádná data.
+
+> [!NOTE]
+> S verzí Release 2.15.0-beta3 a vyšším místním úložištěm se teď automaticky vytvoří pro Linux, Mac a Windows. 
+
+ Můžete vytvořit adresář úložiště sami a nakonfigurovat ho tak, aby ho používal. V takovém případě zodpovídáte za zajištění zabezpečení adresáře.
 Přečtěte si další informace o [ochraně dat a ochraně osobních údajů](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK

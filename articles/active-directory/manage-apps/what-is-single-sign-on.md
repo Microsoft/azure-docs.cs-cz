@@ -12,18 +12,18 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperfq1
-ms.openlocfilehash: b1f23d52b96e708a16adbbf6098de4b7ab0423e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1eaef57f46bf6373fdd2a73575bb028904ef108b
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052099"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561646"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Co je jednotné přihlašování (SSO)?
 
 Jednotné přihlašování znamená, že se uživatel nemusí přihlašovat ke každé aplikaci, kterou používají. Uživatel se přihlásí jednou a přihlašovací údaje se používají i pro jiné aplikace.
 
-Pokud jste koncový uživatel, pravděpodobně nezáleží na podrobnostech jednotného přihlašování. Chcete používat jenom aplikace, které vám pomůžou být produktivní bez nutnosti zadávat heslo. Své aplikace můžete najít na adrese: https://myapplications.microsoft.com .
+Pokud jste koncový uživatel, pravděpodobně nezáleží na podrobnostech jednotného přihlašování. Chcete používat jenom aplikace, které vám pomůžou být produktivní bez nutnosti zadávat heslo. Své aplikace můžete najít na adrese: https://myapps.microsoft.com .
  
 Pokud jste správcem nebo IT specialistem, přečtěte si článek, kde najdete další informace o jednotném přihlašování a způsobu jeho implementace v Azure.
 
@@ -53,7 +53,7 @@ Způsob implementace jednotného přihlašování závisí na tom, kde je aplika
 > [!TIP]
 > Aplikace hostované v cloudu se označují také jako aplikace SaaS (software jako služba). 
 
-Jednotné přihlašování pro aplikace hostované v cloudu je jednoduché. Sdělte poskytovateli identity, který ví, že se používá pro aplikaci. A potom nakonfigurujete aplikaci tak, aby důvěřovala zprostředkovateli identity. Informace o tom, jak používat Azure AD jako zprostředkovatele identity pro aplikaci, najdete v části [rychlý start série při správě aplikací](view-applications-portal.md).
+Jednotné přihlašování pro aplikace hostované v cloudu je jednoduché. Sdělte poskytovateli identity, který ví, že se používá pro aplikaci. A potom nakonfigurujete aplikaci tak, aby důvěřovala zprostředkovateli identity. Informace o tom, jak používat Azure AD jako zprostředkovatele identity pro aplikaci, najdete v části [rychlý start série při správě aplikací](add-application-portal.md).
 
 > [!TIP]
 > Pojem Cloud a Internet se často používají k zaměnitelné. Důvodem je to, že se v diagramech sítě musí dělat. Je běžné, že velké počítačové sítě s obrazcem cloudu v diagramu jsou neproveditelné, protože není možné nakreslit všechny součásti. Internet je nejužitečnější síť, takže je snadné je snadno použít. Nicméně jakákoli počítačová síť může být mince v cloudu.

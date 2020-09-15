@@ -4,12 +4,12 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Linux na platfo
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 35e96f1039dc71427a1a3d2745245eff5d012aaf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b9e22ada3da572d5025f56fca824089bb6e20465
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847529"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563705"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -215,7 +215,7 @@ Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se 
 
 Instrukce **HEALTHCHECK** ukazující na skutečnou kontrolu prováděnou pro monitorování stavu kontejneru musí být přítomna v souboru Dockerfile použitém při generování image kontejneru.
 
-![HealthCheckHealthy][1]
+![Snímek obrazovky zobrazuje podrobnosti o nasazeném balíčku služby NodeServicePackage.][1]
 
 ![HealthCheckUnhealthyApp][2]
 

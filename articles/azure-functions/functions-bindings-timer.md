@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 88160d82cb7cc0a012d63445f101a1f2a3740da0
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569271"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563083"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -217,7 +217,7 @@ public void keepAlive(
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `TimerTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastavené na "timerTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | Není k dispozici | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -249,6 +249,7 @@ Když je vyvolána funkce Trigger časovače, je do funkce předán objekt Timer
 ```
 
 `IsPastDue`Vlastnost je v `true` případě, že aktuální volání funkce je pozdější než naplánované. Například restartování aplikace funkce může způsobit, že by se vyvolání vynechalo.
+
 
 ## <a name="ncrontab-expressions"></a>Výrazy NCRONTAB 
 
@@ -282,6 +283,8 @@ Tady je několik příkladů NCRONTAB výrazů, které můžete použít pro akt
 |`"0 30 9 * * 1-5"`|v 9:30. každý den v týdnu|
 |`"0 30 9 * Jan Mon"`|v 9:30 ráno každé pondělí v lednu|
 
+> [!NOTE]
+> Výraz NCRONTAB vyžaduje **šest formát pole** . V Azure se nepodporuje cron výrazy s pěti poli.
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB časová pásma
 

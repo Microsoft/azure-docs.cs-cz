@@ -9,14 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom:
+- seo-lt-2019
+- references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594352"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563994"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory spravované Virtual Network (Preview)
 
@@ -88,7 +90,7 @@ Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátní
 - Azure Database for PostgreSQL
 - Azure Database for MariaDB
 
-### <a name="supported-regions"></a>Podporované oblasti
+### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory spravované Virtual Network jsou k dispozici v následujících oblastech Azure:
 - East US
 - USA – východ 2
 - USA – středozápad
@@ -104,6 +106,10 @@ Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátní
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Odchozí komunikace prostřednictvím veřejného koncového bodu ze spravovaného ADF Virtual Network
 - Pro odchozí komunikaci je otevřen pouze port 443.
 - Azure Storage a Azure Data Lake Gen2 se nepodporují připojení prostřednictvím veřejného koncového bodu ze spravovaného Virtual Network ADF.
+
+### <a name="linked-service-creation-of-azure-key-vault"></a>Vytvoření propojené služby Azure Key Vault 
+- Když vytvoříte propojenou službu pro Azure Key Vault, neexistuje žádný odkaz na Azure Integration Runtime. Proto nemůžete vytvořit privátní koncový bod během vytváření propojené služby Azure Key Vault. Když ale vytvoříte propojenou službu pro úložiště dat, která odkazují na Azure Key Vault propojená služba a odkazy na propojenou službu Azure Integration Runtime se spravovaným Virtual Network povoleno, budete moct vytvořit privátní koncový bod pro Azure Key Vault propojenou službu během vytváření. 
+- Operace **Testování připojení** pro propojenou službu Azure Key Vault ověří jenom formát adresy URL, ale neprovede žádnou síťovou operaci.
 
 ## <a name="next-steps"></a>Další kroky
 

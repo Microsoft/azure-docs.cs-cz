@@ -1,22 +1,25 @@
 ---
-title: Řešení potíží se soubory Azure v systému Windows | Microsoft Docs
-description: Řešení potíží se soubory Azure v systému Windows. Podívejte se na časté problémy související se soubory Azure při připojení z klientů Windows a podívejte se na možná řešení.
+title: Řešení potíží se službou Azure Files ve Windows
+description: Řešení potíží se soubory Azure v systému Windows. Podívejte se na časté problémy související se soubory Azure při připojení z klientů Windows a podívejte se na možná řešení. Pouze pro sdílené složky SMB
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16491e36e0196bc3dabee17daf905d9a5204f8cd
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532388"
+ms.locfileid: "90564249"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
 V tomto článku jsou uvedené běžné problémy související se soubory Microsoft Azure, když se připojujete z klientů Windows. Poskytuje taky možné příčiny a řešení těchto problémů. Kromě kroků pro řešení potíží v tomto článku můžete také použít [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   a zajistit, aby klientské prostředí systému Windows mělo správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku a pomáhá nastavit vaše prostředí, aby dosáhlo optimálního výkonu. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který obsahuje postup, který vám pomůže s problémy při připojování/mapování/připojování sdílených složek Azure Files.
+
+> [!IMPORTANT]
+> Obsah tohoto článku platí pouze pro sdílené složky SMB.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Chyba 5 při připojení sdílené složky Azure
@@ -54,7 +57,7 @@ Ověřte, jestli jsou oprávnění nakonfigurovaná správně:
 
 - **Active Directory (AD)** viz [přiřazení oprávnění na úrovni sdílení k identitě](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
 
-    Přiřazení oprávnění na úrovni sdílené složky jsou podporovaná u skupin a uživatelů synchronizovaných ze služby Active Directory (AD) na Azure Active Directory (AAD) pomocí Azure AD Connect.  Ověřte, že skupiny a uživatelé, kteří jsou přiřazená oprávnění na úrovni sdílené složky, nejsou nepodporované jenom pro cloudové skupiny.
+    Přiřazení oprávnění na úrovni sdílené složky se podporují u skupin a uživatelů synchronizovaných ze služby Active Directory (AD) na Azure Active Directory (Azure AD) pomocí Azure AD Connect.  Ověřte, že skupiny a uživatelé, kteří jsou přiřazená oprávnění na úrovni sdílené složky, nejsou nepodporované jenom pro cloudové skupiny.
 - **Azure Active Directory Domain Services (Azure služba AD DS)** najdete v tématu [Přiřazení přístupových oprávnění k identitě](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>

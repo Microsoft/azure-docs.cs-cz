@@ -7,14 +7,17 @@ ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cffac114cacd05e04e149af96d1678b536db7fec
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782366"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564232"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
+# <a name="troubleshoot-azure-files-performance-issues-smb"></a>Řešení potíží s výkonem Azure Files (SMB)
+
+> [!IMPORTANT]
+> Obsah tohoto článku platí pouze pro sdílené složky SMB.
 
 V tomto článku jsou uvedené některé běžné problémy související se sdílenými složkami Azure. Poskytuje možné příčiny a alternativní řešení, když dojde k těmto potížím.
 
@@ -26,7 +29,7 @@ Požadavky jsou omezeny, když jsou dosaženy limity IOPS, příchozí nebo odch
 
 Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **všechny služby** a pak vyhledejte **metriky**.
 
@@ -200,6 +203,36 @@ Vyšší než očekávaná latence při přístupu k souborům Azure pro úlohy 
 11. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
 13. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
+
+Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Jak vytvořit výstrahy, pokud se v rámci omezení podílu souborů úrovně Premium dospěje k omezení
+
+1. V **Azure Portal**přejít na svůj **účet úložiště** .
+2. V části monitorování klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
+3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
+4. Kliknutím na **vybrat podmínku** přidáte podmínku.
+5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte **výstupní** metriku.
+
+  > [!NOTE]
+  > Je nutné vytvořit 3 samostatné výstrahy, které budou upozorňovány, pokud příchozí, odchozí nebo transakční transakce překročí nastavenou prahovou hodnotu. Důvodem je to, že výstraha se aktivuje jenom v případě, že jsou splněné všechny podmínky. Takže pokud zadáte všechny podmínky do jedné výstrahy, budete upozorněni jenom v případě, že příchozí nebo odchozí přenos dat a transakce překročily prahové hodnoty.
+
+6. Posuňte se dolů. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
+7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
+8. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
+
+  > [!NOTE]
+  > Metriky odchozího, příchozího a transakčního vysílání jsou za minutu, i když jste zřídili odchozí, příchozí a vstupně-výstupní operace za sekundu. (pohovořit o členitosti agregace – > za minutu = větší úroveň šumu, takže vyberte rozdílové) Pokud máte například zřízený výstup 90 MiB/s a chcete, aby byla prahová hodnota 80% zřízeného odchozího přenosu, měli byste vybrat následující parametry výstrahy: 75497472 pro **mezní hodnotu**, větší nebo rovnou **operátoru**for a průměr pro **typ agregace**. V závislosti na tom, jak chcete, aby vaše výstraha byla, můžete zvolit, které hodnoty se mají vybrat pro členitost agregace a četnost vyhodnocení. Například pokud chci, aby moje výstraha vypadala na základě průměrného počtu příchozích dat za hodinu a chtěla se spustit pravidlo upozornění každou hodinu, vybrali jste 1 hodinu pro **členitost agregace** a 1 hodinu pro **frekvenci vyhodnocení**.
+
+9. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+10. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+11. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
+
+  > [!NOTE]
+  > Chcete-li být upozorněni na blížící se omezení vaší sdílené složky v důsledku zřízení příchozího přenosu dat, postupujte prosím podle stejných kroků, s výjimkou kroku 5 vyberte **metriku** příchozího přenosu dat.
+
+  > [!NOTE]
+  > Abyste byli informováni o tom, jestli se nadlimitní sdílení souborů blíží omezení z důvodu zřízeného IOPS, budete muset provést několik změn. V kroku 5 vyberte místo toho metriku **transakcí** . V kroku 10 je také jediná možnost pro **typ agregace** . Proto by prahová hodnota byla závislá na zvolené členitosti agregace. Pokud jste například chtěli, aby byla prahová hodnota 80% zřízeného směrného plánu IOPS a vybrali jste 1 hodinu pro **členitost agregace**, bude **prahová hodnota** vaše základní IOPS (v bajtech) × 0,8 × 3600. Kromě těchto změn použijte stejný postup, který je uvedený výše. 
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 

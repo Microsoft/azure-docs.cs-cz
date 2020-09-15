@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447250"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561819"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -78,6 +78,7 @@ Následující tabulka shrnuje podporované scénáře ověřování sdílených
 - Ověřování Azure služba AD DS a místní služba AD DS nepodporují ověřování u účtů počítačů. Místo toho můžete použít účet přihlášení služby.
 - U zařízení připojených k Azure AD nebo zařízení registrovaných v Azure AD se nepodporuje ověřování pomocí Azure služba AD DS ani místní ověřování služba AD DS.
 - Sdílené složky Azure podporují ověřování na základě identity jenom v jedné z následujících služeb domény, a to buď [Azure Active Directory Domain Services (Azure služba AD DS)](#azure-ad-ds) , nebo [místní Active Directory Domain Services (služba AD DS)](#ad-ds).
+- V systému souborů NFS (Network File System), který je ve verzi Preview, není podporována metoda ověřování na základě identity.
 
 ## <a name="advantages-of-identity-based-authentication"></a>Výhody ověřování na základě identity
 Ověřování na základě identity pro soubory Azure nabízí oproti použití ověřování pomocí sdíleného klíče několik výhod:

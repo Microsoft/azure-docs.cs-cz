@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268804"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563892"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -105,24 +105,24 @@ zařízení s iOS a Androidem můžou být jenom registrovaná v Azure AD. Násl
 | Aspekty | Registrováno v Azure AD| Připojení k Azure AD| Hybridní připojení k Azure AD |
 | - | - | - | - |
 | **Klientské operační systémy**| | |  |
-| Zařízení s Windows 10| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Zařízení se škálováním na nižší úrovni Windows (Windows 8.1 nebo Windows 7)| | | ![zaškrtnutí](./media/plan-device-deployment/check.png) |
+| Zařízení s Windows 10| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Zařízení se škálováním na nižší úrovni Windows (Windows 8.1 nebo Windows 7)| | | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
 |**Možnosti přihlášení**| | |  |
-| Místní přihlašovací údaje pro koncové uživatele| ![zaškrtnutí](./media/plan-device-deployment/check.png)| |  |
-| Heslo| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| PIN kód zařízení| ![zaškrtnutí](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello| ![zaškrtnutí](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello pro firmy| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Bezpečnostní klíče FIDO 2,0| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Aplikace Microsoft Authenticator (s heslem)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
+| Místní přihlašovací údaje pro koncové uživatele| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| |  |
+| Heslo| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| PIN kód zařízení| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello pro firmy| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Bezpečnostní klíče FIDO 2,0| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Aplikace Microsoft Authenticator (s heslem)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
 |**Klíčové funkce**| | |  |
-| Jednotné přihlašování ke cloudovým prostředkům| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Jednotné přihlašování k místním prostředkům| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Podmíněný přístup <br> (Vyžadovat, aby zařízení byla označená jako vyhovující) <br> (Musí se spravovat přes MDM)| ![zaškrtnutí](./media/plan-device-deployment/check.png) | ![zaškrtnutí](./media/plan-device-deployment/check.png)|![zaškrtnutí](./media/plan-device-deployment/check.png) |
-Podmíněný přístup <br>(Vyžadovat zařízení připojená k hybridní službě Azure AD)| | | ![zaškrtnutí](./media/plan-device-deployment/check.png)
-| Samoobslužné resetování hesla z přihlašovací obrazovky Windows| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Resetování PIN kódu Windows Hello| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Roaming podnikového stavu napříč zařízeními| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
+| Jednotné přihlašování ke cloudovým prostředkům| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Jednotné přihlašování k místním prostředkům| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Podmíněný přístup <br> (Vyžadovat, aby zařízení byla označená jako vyhovující) <br> (Musí se spravovat přes MDM)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+Podmíněný přístup <br>(Vyžadovat zařízení připojená k hybridní službě Azure AD)| | | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)
+| Samoobslužné resetování hesla z přihlašovací obrazovky Windows| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Resetování PIN kódu Windows Hello| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Roaming podnikového stavu napříč zařízeními| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
 
 
 ## <a name="azure-ad-registration"></a>Registrace Azure AD 
@@ -239,9 +239,9 @@ Zkontrolujte podporované a nepodporované platformy pro integrovaná zařízen�
 
 | Nástroje pro správu zařízení| Registrováno v Azure AD| Připojení k Azure AD| Hybridní připojení k Azure AD|
 | - | - | - | - |
-| [Správa mobilních zařízení (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Příklad: Microsoft Intune| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)|  |
-| [Spoluspráva pomocí Microsoft Intune a koncového bodu Microsoft Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 a novější)| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)|  |
-| [Zásady skupiny](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Jenom Windows)| | | ![zaškrtnutí](./media/plan-device-deployment/check.png)|  |
+| [Správa mobilních zařízení (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Příklad: Microsoft Intune| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
+| [Spoluspráva pomocí Microsoft Intune a koncového bodu Microsoft Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 a novější)| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
+| [Zásady skupiny](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Jenom Windows)| | | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
 
 
 

@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 20a376d303f90727063f288e239e89ede2a1113c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298211"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564355"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
 
@@ -135,7 +135,7 @@ namespace SampleFunctionsApp
 
 Ve své aplikaci Function App budete muset nastavit dvě proměnné prostředí. Jedním z nich je váš [Azure Maps primární klíč předplatného](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)a jedna je vaše [Azure Maps ID stateset](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset).
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
 az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-stateset-ID> -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```

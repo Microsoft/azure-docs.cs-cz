@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: dbaad0f6639d65d88da6847886d3aa3d39b93e82
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595706"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563749"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurace App Service s využitím Application Gateway
 
@@ -67,9 +67,9 @@ V tomto článku získáte informace o těchto tématech:
 
 5. Kliknutím na tlačítko **OK** vytvořte nastavení protokolu HTTP.
 
-   ![HTTP – Setting1](./media/configure-web-app-portal/http-setting1.png)
+   ![Snímek obrazovky se zobrazí podokno nastavení přidat H t T T, které se používá pro App Service a možnost OK.](./media/configure-web-app-portal/http-setting1.png)
 
-   ![HTTP – setting2](./media/configure-web-app-portal/http-setting2.png)
+   ![Snímek obrazovky ukazuje test stavu s vybraným názvem hostitele ve formátu back-endu http nastavení.](./media/configure-web-app-portal/http-setting2.png)
 
 
 
@@ -85,7 +85,7 @@ V tomto článku získáte informace o těchto tématech:
 
 5. Kliknutím na tlačítko **OK** toto pravidlo uložte.
 
-   ![Pravidlo](./media/configure-web-app-portal/rule.png)
+   ![Snímek obrazovky se zvýrazněným nastavením pro okno Přidat základní pravidlo s vybraným modulem pro naslouchání, back-end fondem a H T T P](./media/configure-web-app-portal/rule.png)
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Další konfigurace v případě přesměrování na relativní cestu služby App Service
 

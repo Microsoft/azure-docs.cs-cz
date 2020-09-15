@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6afbdb6bcb067bdcb570c366f4604ea77ec4f490
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526812"
+ms.locfileid: "90561342"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO – modul plug-in pro zařízení Apple (Preview)
 
@@ -148,11 +148,11 @@ V těchto aplikacích nejsou potřeba žádné změny kódu, pokud jsou splněn�
 - Aplikace používá ke komunikaci se službou Azure AD standardní protokoly (například OAuth2, SAML, WS-Federation).
 - Aplikace neshromažďuje uživatelské jméno a heslo ve formátu prostého textu v nativním uživatelském rozhraní.
 
-V takovém případě je k dispozici jednotné přihlašování v době, kdy aplikace vytvoří požadavek na síť, a otevře webový prohlížeč, ve kterém se uživatel přihlásí. Když se uživatel přesměruje na přihlašovací adresu URL služby Azure AD, modul plug-in pro jednotné přihlašování ověří adresu URL a zkontroluje, jestli jsou pro tuto adresu URL k dispozici přihlašovací údaje jednotného přihlašování. Pokud existuje, modul plug-in jednotného přihlašování předá přihlašovací údaje jednotného přihlašování do služby Azure AD, což aplikaci autorizuje k dokončení požadavku sítě, aniž by museli zadat přihlašovací údaje koncovým uživatelem. Pokud je navíc zařízení ve službě Azure AD známé, modul plug-in jednotného přihlašování také předá certifikát zařízení, aby splnil kontrolu podmíněného přístupu podle zařízení. 
+V takovém případě je k dispozici jednotné přihlašování, když aplikace vytvoří síťový požadavek a otevře webový prohlížeč, ve kterém se uživatel přihlásí. Když se uživatel přesměruje na přihlašovací adresu URL služby Azure AD, modul plug-in pro jednotné přihlašování ověří adresu URL a zkontroluje, jestli jsou pro tuto adresu URL k dispozici přihlašovací údaje jednotného přihlašování. Pokud existuje, modul plug-in jednotného přihlašování předá přihlašovací údaje jednotného přihlašování do služby Azure AD, což aplikaci autorizuje k dokončení požadavku sítě bez nutnosti požádat uživatele, aby zadal svoje přihlašovací údaje. Pokud je navíc zařízení ve službě Azure AD známé, modul plug-in jednotného přihlašování také předá certifikát zařízení, aby splnil kontrolu podmíněného přístupu podle zařízení. 
 
-Pro podporu jednotného přihlašování pro aplikace, které nejsou MSAL, modul plug-in jednotného přihlašování implementuje podobný protokol pro modul plug-in prohlížeče Windows, který je popsaný v tématu [co je primární obnovovací token?](../devices/concept-primary-refresh-token.md#browser-sso-using-prt). 
+Pro podporu jednotného přihlašování pro aplikace, které nejsou MSAL, modul plug-in jednotného přihlašování implementuje protokol podobný modulu plug-in prohlížeče Windows, který je popsaný v tématu [co je primární obnovovací token?](../devices/concept-primary-refresh-token.md#browser-sso-using-prt). 
 
-V porovnání s MSAL aplikacemi Modul plug-in jednotného přihlašování funguje transparentně pro aplikace, které nejsou MSAL, integrací s existujícím přihlašovacím prostředím prohlížeče, které poskytují aplikace. Koncový uživatel uvidí své známé zkušenosti s tím, že v každé aplikaci nepotřebujete další přihlášení. Například namísto zobrazení výběru nativního účtu přidává modul plug-in jednotného přihlašování relace jednotného přihlašování k prostředí pro výběr účtu na základě webu. 
+V porovnání s MSAL aplikacemi Modul plug-in jednotného přihlašování funguje transparentně pro aplikace, které nejsou MSAL, integrací s existujícím přihlašovacím prostředím prohlížeče, které poskytují aplikace. Koncový uživatel uvidí své známé zkušenosti s tím, že v každé aplikaci nebude nutné provádět další přihlášení. Například namísto zobrazení nástroje pro výběr nativního účtu přidává modul plug-in jednotného přihlašování relace jednotného přihlašování k prostředí pro výběr účtu na základě webu. 
 
 ## <a name="next-steps"></a>Další kroky
 

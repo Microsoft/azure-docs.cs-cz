@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639847"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564045"
 ---
 # <a name="high-availability-ports-overview"></a>Přehled portů vysoké dostupnosti
 
@@ -99,5 +99,5 @@ Můžete nakonfigurovat *jeden* prostředek veřejného Standard Load Balancer p
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Naučte se konfigurovat porty ha pro váš interního nástroje prostřednictvím portálu](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), [PowerShellu](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), rozhraní příkazového [řádku](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)nebo [šablon](load-balancer-get-started-ilb-arm-template.md).
+- [Naučte se konfigurovat porty ha pro váš interního nástroje prostřednictvím portálu](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), [PowerShellu](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), rozhraní příkazového [řádku](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)nebo [šablon](quickstart-load-balancer-standard-internal-template.md).
 - [Informace o Standard Load Balancer](load-balancer-standard-overview.md)

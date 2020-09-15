@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401771"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563790"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -162,13 +162,13 @@ Chcete-li povolit aplikaci Function App přístup k digitálním úlohám Azure,
 
 V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure.
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poznamenejte si pole *principalId* ve výstupu.
 
-```azurecli-interactive
+```azurecli
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
@@ -203,7 +203,7 @@ Digitální vlákna Azure je navržená tak, aby fungovala vedle [IoT Hub](../io
 
 V Azure Cloud Shell pomocí tohoto příkazu vytvořte novou IoT Hub:
 
-```azurecli-interactive
+```azurecli
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -242,7 +242,7 @@ V této části se vytvoří reprezentace zařízení v IoT Hub s ID *thermostat
 
 V Azure Cloud Shell vytvořte v IoT Hub zařízení pomocí následujícího příkazu:
 
-```azurecli-interactive
+```azurecli
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -278,7 +278,7 @@ connectionString = <Iot-hub-connection-string>
 deviceConnectionString = <device-connection-string>
 ```
 
-Uložte soubor.
+Soubor uložte.
 
 Nyní chcete-li zobrazit výsledky simulace dat, kterou jste nastavili, spusťte projekt **DeviceSimulator** pomocí tohoto tlačítka na panelu nástrojů:
 
@@ -330,7 +330,7 @@ V této části vytvoříte téma Event Grid a potom v rámci digitálních vlá
 
 V Azure Cloud Shell spusťte následující příkaz, který vytvoří téma Event gridu:
 
-```azurecli-interactive
+```azurecli
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
@@ -441,7 +441,7 @@ Pomocí [Azure Cloud Shell](https://shell.azure.com)můžete odstranit všechny 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 

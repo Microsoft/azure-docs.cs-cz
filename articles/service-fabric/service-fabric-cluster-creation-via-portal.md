@@ -3,12 +3,12 @@ title: Vytvoření clusteru služby Service Fabric na webu Azure Portal
 description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v Azure pomocí Azure Portal a Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259311"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563722"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí Azure Portal
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Vytvoření produkčního clusteru, který splňuje požadavky vaší aplikace, 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Vyhledejte prostředek Service Fabric clusteru.
 
-Přihlaste se na portál [Azure Portal][azure-portal].
+Přihlaste se k webu [Azure Portal][azure-portal].
 Kliknutím na **vytvořit prostředek** přidejte novou šablonu prostředků. Na **webu Marketplace** vyhledejte šablonu Service Fabric clusteru v rámci **všeho**.
 V seznamu vyberte **Cluster Service Fabric** .
 
@@ -128,42 +128,42 @@ Podle obrazovky přidejte nebo znovu použijte existující Trezor klíčů a p�
 
 Odolat pokušeníi přechodu z obrazovky, dokud se předchozí proces nedokončí.
 
-![CreateKeyVault]
+![Snímek obrazovky se stránkou zabezpečení se zvoleným základním zobrazením v podokně trezoru klíčů a vytvoření trezoru klíčů.][CreateKeyVault]
 
 Teď, když je vytvořený Trezor klíčů, upravte zásady přístupu pro svůj Trezor klíčů. 
 
-![CreateKeyVault2]
+![Snímek obrazovky se zobrazí v podokně vytvořit Service Fabric clusteru s vybranou možností 3 zabezpečení a vysvětlením, že Trezor klíčů není povolený.][CreateKeyVault2]
 
 Klikněte na **upravit zásady přístupu**a pak na **Zobrazit zásady pokročilého přístupu** a povolte přístup k Azure Virtual Machines pro nasazení. Doporučuje se také povolit nasazení šablony. Po provedení výběru nezapomeňte kliknout na tlačítko **Uložit** a zavřít podokno **zásady přístupu** .
 
-![CreateKeyVault3]
+![Snímek obrazovky se zobrazí v podokně vytvořit Service Fabric clusteru s otevřeným podoknem zabezpečení a otevře se podokno zásady přístupu.][CreateKeyVault3]
 
 Zadejte název certifikátu a klikněte na **OK**.
 
-![CreateKeyVault4]
+![Snímek obrazovky se zobrazí podokno vytvořit Service Fabric clusteru se zabezpečením vybraným jako dříve, ale bez vysvětlení, že Trezor klíčů není povolený.][CreateKeyVault4]
 
 #### <a name="custom-option"></a>Vlastní možnost
 Pokud jste již provedli kroky uvedené v možnosti **základní** , přeskočte tuto část.
 
-![SecurityCustomOption]
+![Snímek obrazovky se zobrazí v dialogovém okně Konfigurace nastavení zabezpečení clusteru.][SecurityCustomOption]
 
 K dokončení stránky zabezpečení potřebujete trezor zdrojového klíče, adresu URL certifikátu a informace o kryptografickém otisku certifikátu. Pokud ho nemáte k dispozici, otevřete jiné okno prohlížeče a v Azure Portal proveďte následující postup:
 
 1. Přejděte do služby trezoru klíčů.
 2. Vyberte kartu Vlastnosti a zkopírujte ID prostředku do pole "úložiště klíčů" v jiném okně prohlížeče. 
 
-    ![CertInfo0]
+    ![Snímek obrazovky ukazuje okno Vlastnosti pro Trezor klíčů.][CertInfo0]
 
 3. Teď vyberte kartu certifikáty.
 4. Klikněte na kryptografický otisk certifikátu, který vás přesměruje na stránku verze.
 5. Klikněte na identifikátory GUID, které vidíte v aktuální verzi.
 
-    ![CertInfo1]
+    ![Snímek obrazovky se zobrazeným oknem certifikátu pro Trezor klíčů][CertInfo1]
 
 6. Nyní byste měli být na obrazovce, například níže. Zkopírovat šestnáctkový kryptografický otisk SHA-1 do "kryptografického otisku certifikátu" v jiném okně prohlížeče
 7. Zkopírujte klíč tajného kódu do adresy URL certifikátu v jiném okně prohlížeče.
 
-    ![CertInfo2]
+    ![Snímek obrazovky se zobrazí v dialogovém okně verze certifikátu s možností kopírování identifikátoru certifikátu.][CertInfo2]
 
 Zaškrtněte pole **Konfigurovat upřesňující nastavení** a zadejte klientské certifikáty pro klienta **správce** a **klienta jen pro čtení**. V těchto polích zadejte kryptografický otisk certifikátu klienta správce a kryptografický otisk certifikátu uživatele, který je jen pro čtení, pokud je k dispozici. Když se správci pokusí připojit ke clusteru, udělí se jim přístup jenom v případě, že mají certifikát s kryptografickým otiskem, který odpovídá hodnotám kryptografického otisku, které tady zadáte.  
 
@@ -173,7 +173,7 @@ Teď jste připraveni nasadit cluster. Před tím, než to provedete, Stáhněte
 
 Vytvoření clusteru dokončíte kliknutím na **vytvořit**. Volitelně můžete šablonu stáhnout.
 
-![Shrnutí]
+![Snímek obrazovky se stránkou pro vytvoření souhrnu clusteru Service Fabric s odkazem pro zobrazení a stažení certifikátu.][Summary]
 
 Průběh vytváření můžete sledovat v oznámeních. (Klikněte na ikonu zvonku u stavového řádku v pravém horním rohu obrazovky.) Pokud jste při vytváření clusteru klikli **na Připnout na úvodní panel** , uvidíte, že se na **úvodní** desce připnulo **nasazení Service Fabric clusteru** . Tento proces bude nějakou dobu trvat. 
 
@@ -230,7 +230,7 @@ V tomto okamžiku máte zabezpečený cluster s použitím certifikátů pro ov�
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[Souhrn]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

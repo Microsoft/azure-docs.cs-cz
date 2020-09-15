@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: edd4cc28c6d59f1d6e0c9cabfd5855c72bd3fe73
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cac14d5995042847bc98e47e50ea2d188382fd2a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661848"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564334"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,6 +68,83 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
 
     - [Ruční škálování počtu uzlů v clusteru AKS](../aks/scale-cluster.md)
     - [Nastavení automatického škálování clusteru v AKS](../aks/cluster-autoscaler.md)
+
+## <a name="azure-kubernetes-service-version"></a>Verze služby Azure Kubernetes
+
+Služba Azure Kubernetes umožňuje vytvářet clustery s využitím nejrůznějších verzí Kubernetes. Další informace o dostupných verzích najdete v tématu [podporované verze Kubernetes ve službě Azure Kubernetes Service](/azure/aks/supported-kubernetes-versions).
+
+Při **vytváření** clusteru služby Azure Kubernetes pomocí jedné z následujících metod nemusíte *ve verzi* vytvořeného clusteru volit tyto možnosti:
+
+* Azure Machine Learning Studio nebo část Azure Machine Learning Azure Portal.
+* Machine Learning rozšíření pro rozhraní příkazového řádku Azure
+* Azure Machine Learning SDK.
+
+Tyto metody vytvoření clusteru AKS používají __výchozí__ verzi clusteru. *Změna výchozí verze v průběhu času* bude k dispozici pro nové verze Kubernetes.
+
+Když **připojíte** existující cluster AKS, podporujeme všechny aktuálně podporované verze AKS.
+
+> [!NOTE]
+> Mohou nastat hraniční případy, kdy máte starší cluster, který již není podporován. V takovém případě operace připojení vrátí chybu a zobrazí seznam aktuálně podporovaných verzí.
+>
+> Můžete připojit verze **Preview** . Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Podpora používání verze Preview může být omezená. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+### <a name="available-and-default-versions"></a>Dostupné a výchozí verze
+
+K vyhledání dostupných a výchozích verzí AKS použijte příkaz [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) [AZ AKS get-versions](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions). Například následující příkaz vrátí verze, které jsou k dispozici v Západní USA oblasti:
+
+```azurecli-interactive
+az aks get-versions -l westus -o table
+```
+
+Výstup tohoto příkazu je podobný následujícímu textu:
+
+```text
+KubernetesVersion    Upgrades
+-------------------  ----------------------------------------
+1.18.6(preview)      None available
+1.18.4(preview)      1.18.6(preview)
+1.17.9               1.18.4(preview), 1.18.6(preview)
+1.17.7               1.17.9, 1.18.4(preview), 1.18.6(preview)
+1.16.13              1.17.7, 1.17.9
+1.16.10              1.16.13, 1.17.7, 1.17.9
+1.15.12              1.16.10, 1.16.13
+1.15.11              1.15.12, 1.16.10, 1.16.13
+```
+
+Pokud chcete najít výchozí verzi, která se používá při **vytváření** clusteru prostřednictvím Azure Machine Learning, můžete `--query` k výběru výchozí verze použít parametr:
+
+```azurecli-interactive
+az aks get-versions -l westus --query "orchestrators[?default == `true`].orchestratorVersion" -o table
+```
+
+Výstup tohoto příkazu je podobný následujícímu textu:
+
+```text
+Result
+--------
+1.16.13
+```
+
+Pokud byste chtěli **programově kontrolovat dostupné verze**, použijte [orchestraci seznamu klient-seznam klienta služby Container Service](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API. Pokud chcete zjistit dostupné verze, podívejte se na položky, kde `orchestratorType` je `Kubernetes` . Přidružené `orchestrationVersion` položky obsahují dostupné verze, které je možné **připojit** k vašemu pracovnímu prostoru.
+
+Pokud chcete najít výchozí verzi, která se používá při **vytváření** clusteru prostřednictvím Azure Machine Learning, Najděte položku, kde `orchestratorType` je `Kubernetes` a `default` `true` . Přidružená `orchestratorVersion` hodnota je výchozí verze. Následující fragment kódu JSON ukazuje příklad položky:
+
+```json
+...
+ {
+        "orchestratorType": "Kubernetes",
+        "orchestratorVersion": "1.16.13",
+        "default": true,
+        "upgrades": [
+          {
+            "orchestratorType": "",
+            "orchestratorVersion": "1.17.7",
+            "isPreview": false
+          }
+        ]
+      },
+...
+```
 
 ## <a name="create-a-new-aks-cluster"></a>Vytvoření nového clusteru AKS
 

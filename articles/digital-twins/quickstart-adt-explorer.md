@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: e85937103e94a0fbb8dd8be92bb22ee5078df70a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d91ae0f3db9ad3637043f9eb7472539d8aba2c8d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087316"
+ms.locfileid: "90563033"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -31,7 +31,7 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si **[ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** hned teď.
 
@@ -102,13 +102,13 @@ V horní části okna klikněte na tlačítko *Přihlásit* se a nakonfigurujte 
 Zadejte důležité informace, které jste shromáždili dříve v části [požadavky](#prerequisites) :
 * ID aplikace (klienta)
 * ID adresáře (tenanta)
-* Adresa URL aplikace ADT ve formátu *https://{název hostitele instance}*
+* Adresa URL instance digitálních vláken Azure ve formátu *https://{instance Name hosta}*
 
 >[!NOTE]
 > Tyto informace můžete kdykoli znovu navštívit nebo upravit tak, že vyberete stejnou ikonu pro opětovné načtení přihlašovacího pole. Zachová se hodnoty, které jste předali.
 
 > [!TIP]
-> Pokud se při připojení zobrazí chybová zpráva SignalRService. přihlášení, ujistěte se, že je adresa URL služby ADT s předponou *https://*.
+> Pokud `SignalRService.subscribe` se při připojení zobrazí chybová zpráva, ujistěte se, že adresa URL digitálních vláken Azure začíná na *https://*.
 
 Pokud se zobrazí *oprávnění požadované* automaticky otevírané okno od společnosti Microsoft, poskytněte pro tuto aplikaci souhlas a potvrďte pokračování.
 

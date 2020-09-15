@@ -6,12 +6,12 @@ author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: d4f8a41df64c3bcbbd85438e4d340d44d5f16351
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255213"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564096"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Akce GitHubu pro nasazení do služby Kubernetes
 
@@ -23,7 +23,7 @@ Pro pracovní postup cílící na AKS má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Ověřování** | Přihlášení k privátnímu registru kontejnerů (ACR) |
+|**Authentication** | Přihlášení k privátnímu registru kontejnerů (ACR) |
 |**Sestavení** | Sestavení image kontejneru &m vložením  |
 |**Nasazení** | 1. nastavení cílového clusteru AKS |
 | |2. vytvoření tajného kódu registru Generic/Docker-Registry v clusteru Kubernetes  |
@@ -56,9 +56,9 @@ Použijte postup konfigurace tajných kódů:
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
 
-    ![záleží](media/kubernetes-action/secrets.png)
+    ![Snímek obrazovky se zobrazí odkaz Přidat nový tajný kód pro úložiště.](media/kubernetes-action/secrets.png)
 
-2. Vložte obsah výše uvedeného `az cli` příkazu jako hodnotu tajné proměnné. Například `AZURE_CREDENTIALS`.
+2. Vložte obsah výše uvedeného `az cli` příkazu jako hodnotu tajné proměnné. Například, `AZURE_CREDENTIALS`.
 
 3. Podobně definujte následující další tajné kódy pro přihlašovací údaje registru kontejneru a nastavte je v akci přihlášení k Docker. 
 
@@ -67,7 +67,7 @@ Použijte postup konfigurace tajných kódů:
 
 4. Po definování se zobrazí tajné kódy, jak je uvedeno níže.
 
-    ![Kubernetes – tajné klíče](media/kubernetes-action/kubernetes-secrets.png)
+    ![Snímek obrazovky se zobrazí stávající tajná klíčová úložiště.](media/kubernetes-action/kubernetes-secrets.png)
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Sestavení image kontejneru a nasazení do clusteru služby Azure Kubernetes
 

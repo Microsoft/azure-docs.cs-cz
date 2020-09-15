@@ -3,12 +3,12 @@ title: Replikace Azure Stackch virtuálních počítačů do Azure pomocí Azure
 description: Naučte se, jak nastavit zotavení po havárii do Azure pro Azure Stack virtuálních počítačů pomocí služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131609"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564305"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure Stack do Azure
 
@@ -36,12 +36,12 @@ Po dokončení těchto kroků můžete spustit úplné převzetí služeb při s
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura](./media/azure-stack-site-recovery/architecture.png)
+![Diagram zobrazuje trezory Recovery Services pro dva klienty v cloudech přidružených k předplatným klientů v rámci společné infrastruktury Azure Stack.](./media/azure-stack-site-recovery/architecture.png)
 
 **Umístění** | **Komponenta** |**Podrobnosti**
 --- | --- | ---
-**Konfigurační server** | Spouští se na jednom virtuálním počítači s Azure Stack. | V každém předplatném jste nastavili virtuální počítač konfiguračního serveru. Tento virtuální počítač spustí následující součásti Site Recovery:<br/><br/> -Konfigurační server: koordinuje komunikaci mezi místními a Azure a spravuje replikaci dat. -Procesový Server: funguje jako brána replikace. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a pošle ho do služby Azure Storage.<br/><br/> Pokud virtuální počítače, které chcete replikovat, překračují níže uvedená omezení, můžete nastavit samostatný samostatný procesový Server. [Další informace](vmware-azure-set-up-process-server-scale.md).
-**Služba Mobility** | Instaluje se do každého virtuálního počítače, který chcete replikovat. | V krocích v tomto článku připravujeme účet, aby byla služba mobility na virtuálním počítači nainstalovaná automaticky, když je povolená replikace. Pokud nechcete automaticky instalovat službu, můžete použít řadu dalších metod. [Další informace](vmware-azure-install-mobility-service.md).
+**Konfigurační server** | Spouští se na jednom virtuálním počítači s Azure Stack. | V každém předplatném jste nastavili virtuální počítač konfiguračního serveru. Tento virtuální počítač spustí následující součásti Site Recovery:<br/><br/> -Konfigurační server: koordinuje komunikaci mezi místními a Azure a spravuje replikaci dat. -Procesový Server: funguje jako brána replikace. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a pošle ho do služby Azure Storage.<br/><br/> Pokud virtuální počítače, které chcete replikovat, překračují níže uvedená omezení, můžete nastavit samostatný samostatný procesový Server. [Přečtěte si další informace](vmware-azure-set-up-process-server-scale.md).
+**Služba Mobility** | Instaluje se do každého virtuálního počítače, který chcete replikovat. | V krocích v tomto článku připravujeme účet, aby byla služba mobility na virtuálním počítači nainstalovaná automaticky, když je povolená replikace. Pokud nechcete automaticky instalovat službu, můžete použít řadu dalších metod. [Přečtěte si další informace](vmware-azure-install-mobility-service.md).
 **Azure** | V Azure potřebujete Recovery Services trezor, účet úložiště a virtuální síť. |  Replikovaná data se ukládají v účtu úložiště. Virtuální počítače Azure se přidají do sítě Azure, když dojde k převzetí služeb při selhání.
 
 
@@ -62,7 +62,7 @@ Tady je seznam toho, co potřebujete k nastavení tohoto scénáře.
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Účet předplatného Azure** | Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+**Účet předplatného Azure** | Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 **Oprávnění účtu Azure** | Účet Azure, který použijete, musí mít oprávnění k těmto akcím:<br/><br/> – Vytvoření trezoru služby Recovery Services<br/><br/> – Vytvoření virtuálního počítače ve skupině prostředků a virtuální síti, kterou používáte pro scénář<br/><br/> – Zapsat do účtu úložiště, který zadáte<br/><br/> Poznámky:<br/><br/> – Pokud vytvoříte účet, jste správcem předplatného a můžete provádět všechny akce.<br/><br/> – Pokud používáte stávající předplatné a nejste správcem, budete muset spolupracovat se správcem a přiřadit oprávnění vlastníka nebo přispěvatele.<br/><br/> – Pokud potřebujete podrobnější oprávnění, přečtěte si [Tento článek](site-recovery-role-based-linked-access-control.md).
 **Azure Stack virtuálního počítače** | V rámci předplatného tenanta budete potřebovat Azure Stack virtuální počítač, který se nasadí jako konfigurační server Site Recovery.
 
@@ -184,7 +184,7 @@ Nyní nainstalujte konfigurační server:
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Konfigurační server lze také nainstalovat z příkazového řádku. [Další informace](physical-manage-configuration-server.md#install-from-the-command-line).
+> Konfigurační server lze také nainstalovat z příkazového řádku. [Přečtěte si další informace](physical-manage-configuration-server.md#install-from-the-command-line).
 >
 > Může trvat 15 minut nebo déle, než se název účtu objeví na portálu. Pokud chcete aktualizaci hned aktualizovat, vyberte **konfigurační servery**  >  ***název serveru***  >  **aktualizovat server**.
 
@@ -288,7 +288,7 @@ Spusťte testovací převzetí služeb při selhání pro virtuální počítač
 4. Kliknutím na **OK** zahajte převzetí služeb při selhání.
 5. Kliknutím na virtuální počítač můžete sledovat průběh a otevřít jeho vlastnosti. Případně klikněte na úlohu **testovací převzetí služeb při selhání** v nastavení *název trezoru*úlohy  >  **Settings**  >  **Jobs**  > **Site Recovery úlohy**.
 6. Po dokončení převzetí služeb při selhání se na portálu Azure Portal v části **Virtuální počítače** objeví replika virtuálního počítače Azure. Ověřte, že má virtuální počítač odpovídající velikost, je připojená ke správné síti a je spuštěná.
-7. Nyní byste se měli moct k replikovanému virtuálnímu počítači v Azure připojit. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+7. Nyní byste se měli moct k replikovanému virtuálnímu počítači v Azure připojit. [Přečtěte si další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 8. Virtuální počítače Azure vytvořené během testu převzetí služeb při selhání odstraníte kliknutím na **Vyčistit testovací převzetí služeb při selhání** na virtuálním počítači. V části **poznámky**uložte veškeré poznámky spojené s testovacím převzetím služeb při selhání.
 
 ## <a name="fail-over-and-fail-back"></a>Převzetí služeb při selhání a navrácení služeb po obnovení

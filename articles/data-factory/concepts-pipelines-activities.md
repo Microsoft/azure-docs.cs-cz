@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 78007c9f153267b72a94dc4b4024155dee6beb88
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442969"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562005"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 
@@ -30,7 +30,7 @@ Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logi
 
 Aktivity v kanálu definují akce, které se mají provádět s daty. Aktivitu kopírování můžete například použít ke kopírování dat z SQL Server do Azure Blob Storage. Pak použijte aktivitu toku dat nebo aktivitu poznámkového bloku datacihly ke zpracování a transformaci dat z úložiště objektů blob do fondu služby Azure synapse Analytics nad tím, které business intelligence řešení pro vytváření sestav sestavená.
 
-Data Factory má tři skupiny aktivit: [aktivity přesunu dat](copy-activity-overview.md), [aktivity transformace dat](transform-data.md)a [aktivity řízení](control-flow-web-activity.md). Každá aktivita může mít nula nebo více vstupních [datových sad](concepts-datasets-linked-services.md) a může generovat jednu nebo více výstupních [datových sad](concepts-datasets-linked-services.md). Následující diagram znázorňuje vztah mezi kanálem, aktivitou a datovou sadou v Data Factory:
+Data Factory má tři skupiny aktivit: [aktivity přesunu dat](copy-activity-overview.md), [aktivity transformace dat](transform-data.md)a [aktivity řízení](#control-flow-activities). Každá aktivita může mít nula nebo více vstupních [datových sad](concepts-datasets-linked-services.md) a může generovat jednu nebo více výstupních [datových sad](concepts-datasets-linked-services.md). Následující diagram znázorňuje vztah mezi kanálem, aktivitou a datovou sadou v Data Factory:
 
 ![Vztah mezi datovou sadou, aktivitou a kanálem](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -69,7 +69,7 @@ Další informace najdete v článku [Aktivity transformace dat](transform-data.
 ## <a name="control-flow-activities"></a>Aktivity toku řízení
 Podporují se následující aktivity toku řízení:
 
-Aktivita řízení | Popis
+Aktivita řízení | Description
 ---------------- | -----------
 [Připojit proměnnou](control-flow-append-variable-activity.md) | Přidejte hodnotu do existující proměnné pole.
 [Spustit kanál](control-flow-execute-pipeline-activity.md) | Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
@@ -106,7 +106,7 @@ Tady je způsob definice kanálu ve formátu JSON:
 }
 ```
 
-Značka | Popis | Typ | Vyžadováno
+Značka | Description | Typ | Vyžadováno
 --- | ----------- | ---- | --------
 name | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" </li></ul> | Řetězec | Yes
 Popis | Určuje text popisující, k čemu se kanál používá. | Řetězec | No
@@ -182,7 +182,7 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 }
 ```
 
-Název JSON | Popis | Povolené hodnoty | Vyžadováno
+Název JSON | Description | Povolené hodnoty | Vyžadováno
 --------- | ----------- | -------------- | --------
 timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | No. Výchozí hodnota časového limitu je 7 dní.
 retry | Maximální počet opakovaných pokusů. | Integer | No. Výchozí hodnota je 0.

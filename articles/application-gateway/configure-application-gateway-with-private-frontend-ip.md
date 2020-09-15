@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808111"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562481"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurace aplikační brány s koncovým bodem interního nástroje pro vyrovnávání zatížení (interního nástroje)
 
@@ -29,7 +29,7 @@ Tento článek vás provede kroky konfigurace aplikační brány s privátní IP
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com>.
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť. Můžete buď vytvořit novou virtuální síť, nebo použít existující. V tomto příkladu vytvoříte novou virtuální síť. Virtuální síť můžete vytvořit současně s aplikační bránou. Instance Application Gateway se vytvářejí v oddělených podsítích. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery.
 
@@ -59,7 +59,7 @@ Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virt
 10. Vyberte **Přidat back-end fond**.
 11. Jako **název**zadejte *appGatewayBackendPool*.
 12. Pro **přidání back-end fondu bez cílů**vyberte **Ano**. Cíle přidáte později.
-13. Vyberte možnost **Přidat**.
+13. Vyberte **Přidat**.
 14. Vyberte **Další: Konfigurace**.
 15. V části **pravidla směrování**vyberte **Přidat pravidlo**.
 16. Jako **název pravidla**zadejte *RRULE-01*.
@@ -74,7 +74,7 @@ Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virt
 25. Potvrďte zbývající výchozí hodnoty a vyberte **Přidat**.
 26. Na stránce **Přidat pravidlo směrování** vyberte **Přidat**.
 27. Vyberte **Další: značky**.
-28. Vyberte **Další: zkontrolovat + vytvořit**.
+28. Vyberte **Další: Zkontrolovat a vytvořit**.
 29. Zkontrolujte nastavení na stránce Souhrn a pak vyberte **vytvořit** a vytvořte tak síťové prostředky a aplikační bránu. Vytvoření aplikační brány může trvat několik minut. Před přechodem k další části počkejte na úspěšné dokončení nasazení.
 
 ## <a name="add-backend-pool"></a>Přidat back-end fond
@@ -103,14 +103,14 @@ Uděláte to takto:
 8. Potvrďte zbývající výchozí hodnoty a vyberte **Další: Správa**.
 9. Výběrem možnosti **vypnuto** zakážete diagnostiku spouštění.
 10. Potvrďte zbývající výchozí hodnoty a vyberte **Další: Upřesnit**.
-11. Vyberte **Další: značky**.
+11. Vyberte **Další: Značky**.
 12. Vyberte **Další: zkontrolovat + vytvořit**.
 13. Zkontrolujte nastavení na stránce Souhrn a pak vyberte **vytvořit**. Vytvoření virtuálního počítače může trvat několik minut. Před přechodem k další části počkejte na úspěšné dokončení nasazení.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
 1. Otevřete Cloud Shell a ujistěte se, že je nastavená na **PowerShell**.
-    ![Private – frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+    ![Snímek obrazovky ukazuje otevřené okno konzoly Azure Cloud Shell, které používá PowerShell.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač:
 
    ```azurepowershell
@@ -142,15 +142,15 @@ Uděláte to takto:
 
 1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 2. Vyberte **back-end fondy**. Vyberte **appGatewayBackendPool**.
-3. V části **cílový typ** vyberte **virtuální počítač** a v části **cíl**vyberte vNIC přidružené k myVM.
+3. V části **cílový typ** vyberte **virtuální počítač**  a v části **cíl**vyberte vNIC přidružené k myVM.
 4. Opakujte pro přidání MyVM2.
-   ![Private – frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+   ![Snímek obrazovky se zobrazí podokno upravit fond back-end s cílovými typy a cíli zvýrazněnými.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 5. Vyberte **Uložit.**
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 1. Kliknutím na stránku **Konfigurace IP adresy front** -Endu na portálu ověřte IP adresu front-end, která se přiřadila.
-    ![Private – frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+    ![Snímek obrazovky se zobrazí v podokně Konfigurace protokolu IP front-endu se zvýrazněným soukromým typem.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. Zkopírujte privátní IP adresu a vložte ji do adresního řádku prohlížeče na virtuálním počítači ve stejné virtuální síti nebo v místním počítači, která má připojení k této virtuální síti, a pokuste se o přístup k Application Gateway.
 
 ## <a name="next-steps"></a>Další kroky

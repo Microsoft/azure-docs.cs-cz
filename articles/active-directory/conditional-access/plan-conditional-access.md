@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049923"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561529"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -448,7 +448,7 @@ V případě, že potřebujete vrátit nově implementované zásady, použijte 
 
 Pomocí následujících možností správy můžete řídit a spravovat zásady certifikační autority:
 
-![Správa – přístup](media/plan-conditional-access/manage-access.png)
+![Snímek obrazovky ukazuje možnosti správy pro zásady jazyka C, včetně pojmenovaných umístění, vlastních ovládacích prvků, Podmínky použití, připojení N a vybraných klasických zásad.](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>Pojmenovaná umístění

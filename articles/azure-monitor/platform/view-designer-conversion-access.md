@@ -6,12 +6,12 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7614dd1d60bad5c124269ae2af02d30a5aacfe3e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658842"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564028"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Shrnutí a přístup k převodům návrháře zobrazení na sešity
 [Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Budou postupně vyladěny a nahrazeny sešity, které poskytují další funkce. Tento článek podrobně popisuje, jak můžete vytvořit souhrn přehledu a oprávnění požadovaná pro přístup k sešitům.
@@ -21,7 +21,7 @@ Uživatelé návrháře zobrazení mohou být obeznámeni s tím, že má dlažd
 
 Můžete využívat výhody vysoké úrovně funkcí přizpůsobení poskytovaných řídicími panely Azure, které umožňují automatické aktualizace, přesunutí, změnu velikosti a další filtrování pro připnuté položky a vizualizace. 
 
-![Řídicí panel](media/view-designer-conversion-access/dashboard.png)
+![Snímek obrazovky se zobrazí jako vlastní řídicí panel Azure s názvem Přehled pracovního prostoru.](media/view-designer-conversion-access/dashboard.png)
 
 Vytvořte nový řídicí panel Azure nebo vyberte existující řídicí panel, aby bylo možné začít připínat položky sešitů.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803738"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562515"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení internetového vyrovnávání zatížení s protokolem IPv6 pomocí šablony
 
@@ -38,7 +38,7 @@ Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, 
 
 Následující diagram znázorňuje nasazení řešení vyrovnávání zatížení pomocí ukázkové šablony popsané v tomto článku.
 
-![Scénář nástroje pro vyrovnávání zatížení](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
+![Diagram znázorňuje ukázkový scénář, který se používá v tomto článku, včetně klienta pracovní stanice připojeného k Azure Load Balancer prostřednictvím Internetu, který je připojený k dvěma virtuálním počítačům.](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 V tomto scénáři vytvoříte následující prostředky Azure:
 
@@ -55,43 +55,43 @@ Tento článek odkazuje na šablonu, která je publikovaná v galerii [šablon A
 1. Otevřete Azure Portal a přihlaste se pomocí účtu, který má oprávnění k vytváření virtuálních počítačů a síťových prostředků v rámci předplatného Azure. Kromě toho, pokud nepoužíváte stávající prostředky, účet potřebuje oprávnění k vytvoření skupiny prostředků a účtu úložiště.
 2. V nabídce klikněte na + nový a potom do vyhledávacího pole zadejte Template. Ve výsledcích hledání vyberte "Template deployment".
 
-    ![9,1 – IPv6-portál – STEP2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![Snímek obrazovky zobrazuje Azure Portal s vybranými možnostmi New a Template deployment.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. V okně vše klikněte na Template deployment.
 
-    ![9,1 – IPv6-portál – step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![Snímek obrazovky ukazuje Template deployment na webu Marketplace.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Klikněte na vytvořit.
 
-    ![9,1 – IPv6-portál – step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![Snímek obrazovky zobrazující popis Template deployment na webu Marketplace.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Klikněte na Upravit šablonu. Odstraňte existující obsah a zkopírujte nebo vložte do celého obsahu souboru šablony (aby zahrnoval začátek a konec {}) a pak klikněte na Uložit.
 
     > [!NOTE]
     > Pokud používáte aplikaci Microsoft Internet Explorer, při vložení se zobrazí dialogové okno s výzvou k povolení přístupu ke schránce systému Windows. Klikněte na možnost "udělit přístup".
 
-    ![9,1 – IPv6-portál – Step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![Snímek obrazovky se zobrazí v kroku spuštění vlastního nasazení, které je upravit šablonu.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Klikněte na upravit parametry. V okně Parametry zadejte hodnoty podle pokynů v části parametry šablony a potom kliknutím na Uložit zavřete okno parametry. V okně vlastní nasazení vyberte vaše předplatné, existující skupinu prostředků nebo vytvořte jednu z nich. Pokud vytváříte skupinu prostředků, vyberte umístění pro skupinu prostředků. V dalším kroku klikněte na **právní předpisy**a pak na **koupit** pro zákonné smlouvy. Azure začíná nasazovat prostředky. Nasazení všech prostředků trvá několik minut.
 
-    ![9,1 – IPv6-portál – step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![Snímek obrazovky se zobrazí kroky, které jsou součástí vlastního nasazení, počínaje zadáním hodnot parametrů šablony.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Další informace o těchto parametrech naleznete v části [parametry šablony a proměnné](#template-parameters-and-variables) dále v tomto článku.
 
 7. Chcete-li zobrazit prostředky vytvořené šablonou, klikněte na tlačítko Procházet, přejděte v seznamu dolů, dokud neuvidíte "skupiny prostředků" a klikněte na něj.
 
-    ![9,1 – IPv6-portál – STEP7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![Snímek obrazovky zobrazuje Azure Portal s vybranými možnostmi Procházet a skupiny prostředků.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. V okně skupiny prostředků klikněte na název skupiny prostředků, kterou jste zadali v kroku 6. Zobrazí se seznam všech nasazených prostředků. Pokud vše bylo úspěšné, mělo by se v části poslední nasazení jednat o úspěch. Pokud ne, ujistěte se, že účet, který používáte, má oprávnění k vytváření potřebných prostředků.
 
-    ![9,1 – IPv6-portál – step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![Snímek obrazovky zobrazuje stav posledního nasazení pro skupinu prostředků, v tomto příkladu bylo úspěšné.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Pokud prohlížíte skupiny prostředků hned po dokončení kroku 6, "poslední nasazení" zobrazí při nasazení prostředků stav "nasazování".
 
 9. V seznamu prostředků klikněte na "myIPv6PublicIP". Uvidíte, že má v části IP adresa IPv6 adresu a že jeho název DNS je hodnota, kterou jste zadali pro parametr dnsNameforIPv6LbIP v kroku 6. Tento prostředek je veřejná adresa IPv6 a název hostitele, který je přístupný pro internetové klienty.
 
-    ![9,1 – IPv6-portál – step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![Snímek obrazovky se zobrazí ve veřejné adrese IPv6.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Ověřit připojení
 

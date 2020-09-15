@@ -4,12 +4,12 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Windows na plat
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844435"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564300"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -290,7 +290,7 @@ Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se 
 
 Instrukce **HEALTHCHECK** ukazující na skutečnou kontrolu prováděnou pro monitorování stavu kontejneru musí být přítomna v souboru Dockerfile použitém při generování image kontejneru.
 
-![HealthCheckHealthy][3]
+![Snímek obrazovky zobrazuje podrobnosti o nasazeném balíčku služby NodeServicePackage.][3]
 
 ![HealthCheckUnhealthyApp][4]
 
