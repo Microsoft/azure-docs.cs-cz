@@ -4,12 +4,12 @@ description: Napíšeme konzolovou aplikaci v jazyce C# pro Azure Relay Hybrid C
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934255"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527424"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Začínáme s objekty WebSocket Relay Hybrid Connections v .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -24,7 +24,7 @@ V tomto rychlém startu proveďte následující kroky:
 4. Napíšeme konzolovou aplikaci klienta (odesílatele) pro odesílání zpráv.
 5. Spusťte aplikace. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -52,7 +52,7 @@ Napište v sadě Visual Studio konzolovou aplikaci v jazyce C#, která bude odes
 2. Spusťte klientskou aplikaci a napište nějaký text.
 3. Ujistěte se, že konzola serverové aplikace zobrazí text, který jste zadali v klientské aplikaci.
 
-    ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
+    ![Okna konzoly testují aplikace serveru i klienta.](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
 Blahopřejeme, vytvořili jste kompletní aplikaci Hybrid Connections!
 

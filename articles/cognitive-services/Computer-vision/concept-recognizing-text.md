@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 24be20d7eac48024b73e88f8ac8500928f0fb840
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: cbcfddcd02a3998b3b35b01d386816735c59ae7e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594223"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526404"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 
@@ -24,7 +24,7 @@ Azure rozhraní API pro počítačové zpracování obrazu zahrnuje funkce optic
 
 ## <a name="read-api"></a>Rozhraní API pro čtení 
 
-[Rozhraní API pro počítačové zpracování obrazu Ready](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) je nejnovější technologie OCR Azure ([naučíme se, co je nového](./whats-new.md#read-api-v31-public-preview-adds-simplified-chinese-support)), která extrahuje vytištěný text (v několika jazycích), psaný text (jenom v angličtině), číslice a symboly měny z obrázků a vícestránkové dokumenty PDF. Je optimalizovaná pro extrakci textu z textu s velkým obrázkem a vícestránkové dokumenty PDF se smíšenými jazyky. Podporuje detekci tiskového i rukopisného textu ve stejném obrázku nebo dokumentu.
+[Rozhraní API pro počítačové zpracování obrazu Ready](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) je nejnovější technologie OCR Azure ([naučíme se, co je nového](./whats-new.md)), která extrahuje vytištěný text (v několika jazycích), psaný text (jenom v angličtině), číslice a symboly měny z obrázků a vícestránkové dokumenty PDF. Je optimalizovaná pro extrakci textu z textu s velkým obrázkem a vícestránkové dokumenty PDF se smíšenými jazyky. Podporuje detekci tiskového i rukopisného textu ve stejném obrázku nebo dokumentu.
 
 ![Jak optické rozpoznávání znaků převede obrázky a dokumenty na strukturovaný výstup s extrahovaným textem](./Images/how-ocr-works.svg)
 
@@ -35,6 +35,9 @@ Volání **pro čtení** bere jako vstup obrázky a dokumenty. Mají následují
 * Pro soubory PDF a TIFF se zpracují až 2000 stránek (jenom první dvě stránky pro bezplatnou úroveň).
 * Velikost souboru musí být menší než 50 MB (4 MB pro úroveň Free) a rozměry aspoň 50 x 50 pixelů a maximálně 10000 x 10000 pixelů. 
 * Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají právním nebo a3 velikosti papíru a menšímu.
+
+### <a name="read-31-preview-allows-selecting-pages"></a>Čtení 3,1 Preview umožňuje vybrat stránky.
+S [rozhraním API Read 3,1 Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)pro velké vícestránkové dokumenty můžete zadat konkrétní čísla stránek nebo rozsahy stránek jako vstupní parametr pro extrakci textu pouze z těchto stránek. Toto je nový vstupní parametr kromě volitelného parametru jazyka.
 
 > [!NOTE]
 > **Vstup jazyka** 
@@ -125,14 +128,24 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
   }
 }
 ```
+### <a name="read-31-preview-adds-text-line-style-latin-languages-only"></a>Čtení 3,1 Preview přidá styl čáry textu (jenom jazyky latinky).
+[Rozhraní API pro čtení 3,1 Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) vypisuje objekt **vzhledu** , který klasifikuje, jestli je každý textový řádek ve stylu tisk nebo psaní rukou, a také hodnocení spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
+
+```json
+  "appearance": {
+              "style": "handwriting",
+              "styleConfidence": 0.836
+            }
+```
 Začněte s [počítačové zpracování obrazu rychlým startem pro rozpoznávání OCR](./quickstarts-sdk/client-library.md) a [rychlým startem pro čtení REST API](./QuickStarts/CSharp-hand-text.md) začněte integraci možností optického rozpoznávání OCR do vašich aplikací.
 
 ## <a name="supported-languages-for-print-text"></a>Podporované jazyky pro tisk textu
-[Rozhraní API pro čtení 3,0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemských jazycích. 
-
-[Verze Public Preview pro čtení 3,1 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) přidává podporu zjednodušené čínštiny. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si část [rozhraní API pro optické rozpoznávání znaků](#ocr-api) . 
+[Rozhraní API pro čtení 3,0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemských jazycích.
 
 Úplný seznam jazyků podporovaných OCR najdete v [podporovaných jazycích](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
+
+### <a name="read-31-preview-adds-simplified-chinese-and-japanese"></a>Čtení 3,1 Preview přidává zjednodušenou čínštinu a japonštinu
+[Verze Public Preview pro čtení 3,1 API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) přidává podporu pro zjednodušenou čínštinu a japonštinu. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si část [rozhraní API pro optické rozpoznávání znaků](#ocr-api) . 
 
 ## <a name="supported-languages-for-handwritten-text"></a>Podporované jazyky pro rukopisný text
 Operace čtení aktuálně podporuje extrakci rukopisného textu výhradně v angličtině.
@@ -191,4 +204,4 @@ Stejně jako u všech služeb rozpoznávání by mohli vývojáři, kteří pou�
 - Začínáme s nástrojem [počítačové zpracování obrazu čtení 3,0 SDK pro rychlé](./quickstarts-sdk/client-library.md) zprovoznění v jazycích C#, Java, JavaScript nebo Python.
 - K získání informací o tom, jak používat rozhraní REST API, použijte příručku [pro rychlý Start pro čtení 3,0 REST API](./QuickStarts/CSharp-hand-text.md) v jazycích C#, Java, JavaScript nebo Python.
 - Přečtěte si o [REST API pro čtení 3,0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
-- Přečtěte si o [REST API verze Public Preview pro čtení 3,1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) s přidanou podporou pro zjednodušenou čínštinu.
+- Přečtěte si o [REST API verze Public Preview pro čtení 3,1](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) s přidanou podporou pro zjednodušenou čínštinu a japonštinu.

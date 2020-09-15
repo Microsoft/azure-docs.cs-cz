@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439618"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526319"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
@@ -107,7 +107,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     * **Název modulu IoT Edge**: lvaEdge
     * **Identifikátor URI image**: MCR.Microsoft.com/Media/Live-video-Analytics:1.0    
     
-    ![Přidat](./media/deploy-iot-edge-device/add.png)
+    ![Snímek obrazovky se zobrazí na kartě nastavení modulu.](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
     > Nevybírejte možnost **Přidat** , dokud neurčíte hodnoty v **nastavení modulu**, **možnosti vytvoření kontejneru**a **Dvojitá nastavení modulu** , jak je popsáno v tomto postupu.
@@ -217,7 +217,7 @@ Po vytvoření nasazení se vrátíte na stránku IoT Edge služby IoT Hub.
 Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
 Stavový kód: 200 – OK znamená, že [modul runtime IoT Edge](../../iot-edge/iot-edge-runtime.md) je v pořádku a pracuje správně.
 
-![Stav](./media/deploy-iot-edge-device/status.png)
+![Snímek obrazovky zobrazuje stavovou hodnotu pro modul runtime IoT Edge.](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>Vyvolání přímé metody
 
@@ -225,7 +225,7 @@ Dále umožňuje otestovat ukázku vyvoláním přímé metody. Přečtěte si [
 
 1. Kliknutím na modul Edge, který jste vytvořili, přejdete na stránku konfigurace.  
 
-    ![Moduly](./media/deploy-iot-edge-device/modules.png)
+    ![Snímek obrazovky ukazuje stránku konfigurace modulu Edge.](./media/deploy-iot-edge-device/modules.png)
 1. Klikněte na možnost nabídky přímé metody.
 
     > [!NOTE] 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084324"
+ms.locfileid: "90527016"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
@@ -82,11 +82,15 @@ Pokud chcete začít přihlašovat bez hesla, proveďte následující kroky:
 
 ## <a name="fido2-security-keys"></a>FIDO2 klíče zabezpečení
 
+FIDO (Fast IDentity online) Alliance pomáhá zvýšit úroveň otevřených standardů ověřování a snížit uživatele hesel jako formy ověřování. FIDO2 je nejnovější standard, který zahrnuje standard webového ověřování (WebAuthn).
+
 Klíče zabezpečení FIDO2 jsou nenáročné metody ověřování bez hesla založené na standardech, které mohou být v libovolném formuláři. Rychlá identita online (FIDO) je otevřený standard pro ověřování neheslem. FIDO umožňuje uživatelům a organizacím využít standard pro přihlášení ke svým prostředkům bez uživatelského jména a hesla pomocí externího bezpečnostního klíče nebo klíče platformy integrovaného do zařízení.
 
-Zaměstnanci můžou pomocí bezpečnostních klíčů přihlašovat se k jejich službě Azure AD nebo k hybridnímu zařízení s Windows 10 připojeným k Azure AD a získat jednotné přihlašování ke svým cloudovým a místním prostředkům. Uživatelé se také můžou přihlašovat k podporovaným prohlížečům. Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které jsou velmi citlivé na zabezpečení, nebo které mají scénáře nebo zaměstnanci, kteří nejsou ochotni nebo nedokázali používat svůj telefon jako druhý faktor.
+Uživatelé můžou zaregistrovat a pak vybrat FIDO2 klíč zabezpečení v přihlašovacím rozhraní jako hlavní způsob ověřování. Tyto klíče zabezpečení FIDO2 jsou obvykle zařízeními USB, ale mohou také používat Bluetooth nebo NFC. V případě hardwarového zařízení, které zpracovává ověřování, se zabezpečení účtu zvyšuje, protože není k dispozici žádné heslo, které by mohlo být zveřejněné nebo odhadované.
 
-Přihlášení pomocí klíčů zabezpečení FIDO2 do služby Azure AD je momentálně ve verzi Preview.
+Bezpečnostní klíče FIDO2 se dají použít k přihlášení ke svým zařízením s Windows 10 připojeným k Azure AD nebo k hybridnímu připojení k Azure AD a k získání jednotného přihlašování ke svým cloudovým a místním prostředkům. Uživatelé se také můžou přihlašovat k podporovaným prohlížečům. Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které jsou velmi citlivé na zabezpečení, nebo které mají scénáře nebo zaměstnanci, kteří nejsou ochotni nebo nedokázali používat svůj telefon jako druhý faktor.
+
+Přihlášení pomocí klíčů zabezpečení FIDO2 do služby Azure AD je momentálně ve verzi Preview. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ![Přihlaste se k Microsoft Edge pomocí bezpečnostního klíče.](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -141,7 +145,6 @@ Pokud chcete začít s klíči zabezpečení FIDO2, proveďte následující kro
 > [!div class="nextstepaction"]
 > [Povolení podepisování hesla pomocí klíčů zabezpečení FIDO2](howto-authentication-passwordless-security-key.md)
 
-
 ## <a name="what-scenarios-work-with-the-preview"></a>Jaké scénáře fungují s verzí Preview?
 
 Funkce přihlašování s heslem v Azure AD jsou momentálně ve verzi Preview. Platí následující důležité informace:
@@ -161,7 +164,7 @@ Tady je několik faktorů, které je potřeba vzít v úvahu při volbě technol
 
 ||**Windows Hello pro firmy**|**Přihlášení bez hesla pomocí aplikace Microsoft Authenticator**|**FIDO2 klíče zabezpečení**|
 |:-|:-|:-|:-|
-|**Před požadavky**| Windows 10 verze 1809 nebo novější<br>Azure Active Directory| Aplikace Microsoft Authenticator<br>Telefon (zařízení s iOS a Androidem se systémem Android 6,0 nebo vyšším)|Windows 10 verze 1809 nebo novější<br>Azure Active Directory|
+|**Před požadavky**| Windows 10 verze 1809 nebo novější<br>Azure Active Directory| Aplikace Microsoft Authenticator<br>Telefon (zařízení s iOS a Androidem se systémem Android 6,0 nebo vyšším)|Windows 10 verze 1903 nebo novější<br>Azure Active Directory|
 |**Mode**|Platforma|Software|Hardware|
 |**Systémy a zařízení**|POČÍTAČ s integrovaným čipem TPM (Trusted Platform Module)<br>Připnutí a biometrika rozpoznávání |Připnutí a biometrika rozpoznávání na telefonu|FIDO2 zabezpečení zařízení, která jsou kompatibilní s Microsoftem|
 |**Uživatelské prostředí**|Přihlaste se pomocí PIN nebo biometrického rozpoznávání (obličeje, Iris nebo otisk prstu) pomocí zařízení s Windows.<br>Ověřování Windows Hello je vázané na zařízení; pro přístup k firemním prostředkům potřebuje uživatel zařízení i přihlašovací komponentu, jako je PIN nebo biometrické faktor.|Přihlaste se pomocí mobilního telefonu pomocí skenování otisků prstů, obličeje nebo Iris nebo PIN kódu.<br>Uživatelé se přihlásí k pracovnímu nebo osobnímu účtu na svém počítači nebo mobilním telefonu.|Přihlášení pomocí zařízení zabezpečení FIDO2 (biometrika, PIN a NFC)<br>Uživatel může získat přístup k zařízení na základě organizačních ovládacích prvků a ověřování na základě kódu PIN, biometrika pomocí zařízení, jako jsou klíče zabezpečení USB a čipové karty, klíče nebo wearables s podporou NFC.|

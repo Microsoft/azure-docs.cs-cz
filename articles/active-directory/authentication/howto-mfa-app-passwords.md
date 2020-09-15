@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 12be5109f339223c11970041922ed2172f67382b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224913"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526897"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Povolení a používání služby Azure Multi-Factor Authentication se staršími aplikacemi pomocí hesel aplikací
 
-Některé aplikace, například Office 2010 nebo starší a Apple Mail před iOS 11, nepodporují službu Multi-Factor Authentication. Aplikace nejsou nakonfigurované tak, aby přijímaly sekundární formu ověřování nebo výzvy. Pokud chcete používat tyto aplikace zabezpečeným způsobem s povoleným Azure Multi-Factor Authentication pro uživatelské účty, můžete použít hesla aplikací. Tato hesla aplikace nahradila tradiční heslo, aby mohla aplikace obejít službu Multi-Factor Authentication a správně pracovat.
+Některé starší, neprohlížečové aplikace, jako je Office 2010 nebo starší, a Apple Mail před iOS 11 nerozumí pozastavení nebo přerušení procesu ověřování. Pokud je uživatel pro Azure Multi-Factor Authentication povolený a pokusí se použít některou z těchto starších aplikací, které nepoužívají prohlížeč, nemůže se úspěšně ověřit. Pokud chcete používat tyto aplikace zabezpečeným způsobem s povoleným Azure Multi-Factor Authentication pro uživatelské účty, můžete použít hesla aplikací. Tato hesla aplikace nahradila tradiční heslo, aby mohla aplikace obejít službu Multi-Factor Authentication a správně pracovat.
 
 Moderní ověřování se podporuje u klientů systém Microsoft Office 2013 a později. Klienti Office 2013, včetně Outlooku, podporují moderní protokoly ověřování a dají se povolit pro práci se dvěma kroky ověřování. Po povolení klienta se pro klienta nevyžadují hesla aplikací.
 
@@ -83,7 +83,7 @@ V tomto scénáři použijete následující přihlašovací údaje:
 
 Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Funkce hesla aplikací musí být povolená, aby je uživatelé mohli používat. Pokud chcete uživatelům poskytnout možnost vytvářet hesla aplikací, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyhledejte a vyberte **Azure Active Directory**a pak zvolte **Uživatelé**.
 3. Na navigačním panelu v horní části okna *uživatele* vyberte **Multi-Factor Authentication** .
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.

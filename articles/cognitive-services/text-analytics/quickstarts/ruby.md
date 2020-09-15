@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Volání rozhraní API pro analýzu textu pomocí jazyka Ruby'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
+description: V tomto rychlém startu se dozvíte, jak pomocí Ruby získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 92a80dc69afbda76d57a09e01efc9b91ecb286ba
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 076276068b62ed1b7b30864e9a4227cd449c680e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027928"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527220"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services s využitím jazyka Ruby
 <a name="HOLTop"></a>
@@ -30,14 +30,14 @@ V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat míně
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Rozpoznání jazyka
+## <a name="detect-language"></a>Zjištění jazyka
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Ruby.
 1. Přidejte níže uvedený kód.
 1. Zkopírujte klíč Analýza textu a koncový bod do kódu. 
-1. Spusťte program.
+1. Spustíte program.
 
 ```ruby
 # encoding: UTF-8
@@ -121,7 +121,7 @@ Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznam
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Ruby.
 1. Přidejte níže uvedený kód.
 1. Zkopírujte klíč Analýza textu a koncový bod do kódu. 
-1. Spusťte program.
+1. Spustíte program.
 
 ```ruby
 # encoding: UTF-8
@@ -224,7 +224,7 @@ Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z te
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Ruby.
 1. Přidejte níže uvedený kód.
 1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
-1. Spusťte program.
+1. Spustíte program.
 
 
 ```ruby
@@ -313,7 +313,7 @@ Rozhraní API pro entity extrahuje entity v textovém dokumentu pomocí [metody 
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Ruby.
 1. Přidejte níže uvedený kód.
 1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
-1. Spusťte program.
+1. Spustíte program.
 
 ```ruby
 # encoding: UTF-8
@@ -387,5 +387,5 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ## <a name="see-also"></a>Viz také 
 
- [Přehled Analýza textu](../overview.md)  
+ [Přehled analýzy textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79807e8e0f798a73063576a00b8d0c32cdfe5a4b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005340"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524976"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Nastavte adresy URL pro přesměrování na b2clogin.com pro Azure Active Directory B2C
 
-Když nastavíte poskytovatele identity pro registraci a přihlášení do aplikace Azure Active Directory B2C (Azure AD B2C), musíte zadat adresu URL pro přesměrování. Ve vašich aplikacích a rozhraní API byste už neměli odkazovat na *Login.microsoftonline.com* . Místo toho použijte *b2clogin.com* pro všechny nové aplikace a Migrujte stávající aplikace z *Login.microsoftonline.com* do *b2clogin.com*.
+Když nastavíte poskytovatele identity pro registraci a přihlášení do aplikace Azure Active Directory B2C (Azure AD B2C), musíte zadat adresu URL pro přesměrování. Neměli byste už v aplikacích a rozhraních API odkazovat na *Login.microsoftonline.com* k ověřování uživatelů pomocí Azure AD B2C. Místo toho použijte *b2clogin.com* pro všechny nové aplikace a Migrujte stávající aplikace z *Login.microsoftonline.com* do *b2clogin.com*.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Vyřazení login.microsoftonline.com
 
@@ -31,6 +31,23 @@ Od 04. prosince 2019 jsme oznámili plánované vyřazení podpory login.microso
 Vyřazení login.microsoftonline.com se projeví pro všechny klienty Azure AD B2C v 04. prosince 2020, což poskytuje stávajícím tenantům jeden (1) rok k migraci na b2clogin.com. Noví klienti vytvoření po 04. prosinci 2019 nebudou přijímat požadavky od login.microsoftonline.com. Všechny funkce zůstávají stejné na koncovém bodu b2clogin.com.
 
 Vyřazení login.microsoftonline.com nemá vliv na Azure Active Directory klienty. Touto změnou jsou ovlivněny pouze Azure Active Directory B2C klienti.
+
+## <a name="what-endpoints-does-this-apply-to"></a>Jaké koncové body to platí pro
+Přechod na b2clogin.com se vztahuje pouze na koncové body ověřování, které používají zásady Azure AD B2C (uživatelské toky nebo vlastní zásady) k ověřování uživatelů. Tyto koncové body mají `<policy-name>` parametr, který určuje Azure AD B2C zásad, které se mají použít. [Přečtěte si další informace o Azure AD B2Cch zásadách](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 
+
+Tyto koncové body můžou vypadat takto:
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/authorize</code>
+
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/token</code>
+
+Alternativně `<policy-name>` může být předán jako parametr dotazu:
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/authorize?<b>p=\<policy-name\></b></code>
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/token?<b>p=\<policy-name\></b></code>
+
+> [!IMPORTANT]
+> Koncové body, které používají parametr Policy, musí být aktualizované a také [adresy URL pro přesměrování zprostředkovatele identity](#change-identity-provider-redirect-urls).
+
+Někteří Azure AD B2C zákazníci používají sdílené funkce tenantů Azure AD Enterprise, jako je například grantový tok udělení přihlašovacích údajů klienta OAuth 2,0. K těmto funkcím se dostanete pomocí koncových bodů login.microsoftonline.com Azure AD, *které neobsahují parametr zásad*. __Tyto koncové body nejsou ovlivněny__.
 
 ## <a name="benefits-of-b2clogincom"></a>Výhody b2clogin.com
 
@@ -45,8 +62,15 @@ Když jako adresu URL pro přesměrování použijete *b2clogin.com* :
 Je možné, že budete muset provést několik úprav, abyste mohli migrovat své aplikace na *b2clogin.com*:
 
 * Změňte adresu URL pro přesměrování v aplikacích poskytovatele identity na odkaz na *b2clogin.com*.
-* Aktualizujte své aplikace Azure AD B2C tak, aby používaly *b2clogin.com* v uživatelském toku a odkazy na koncový bod tokenu.
+* Aktualizujte své aplikace Azure AD B2C tak, aby používaly *b2clogin.com* v uživatelském toku a odkazy na koncový bod tokenu. To může zahrnovat aktualizaci používání knihovny ověřování, jako je Microsoft Authentication Library (MSAL).
 * Aktualizujte všechny **Povolené zdroje** , které jste definovali v nastavení CORS pro [přizpůsobení uživatelského rozhraní](custom-policy-ui-customization.md).
+
+Starý koncový bod může vypadat takto:
+- <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
+Odpovídající aktualizovaný koncový bod by vypadal takto:
+- <code><b>https://\<tenant-name\>.b2clogin.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
 
 ## <a name="change-identity-provider-redirect-urls"></a>Změna adres URL pro přesměrování zprostředkovatele identity
 

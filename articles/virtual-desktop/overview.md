@@ -3,15 +3,15 @@ title: Co je Windows Virtual Desktop? – Azure
 description: Přehled virtuálního klienta Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661108"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527169"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -110,12 +110,10 @@ Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Klient Microsoft Store
 
 > [!IMPORTANT]
 > Virtuální počítač s Windows nepodporuje klienta připojení k aplikacím RemoteApp a vzdálené ploše (RADC) ani klienta Připojení ke vzdálené ploše (MSTSC).
-
-> [!IMPORTANT]
-> Virtuální počítač s Windows v současné době nepodporuje klienta vzdálené plochy z Windows Storu. Podpora tohoto klienta se přidá v budoucí verzi.
 
 Další informace o adresách URL, které musíte odblokovat, abyste mohli používat klienty, najdete v [seznamu bezpečných adres URL](safe-url-list.md).
 
@@ -136,14 +134,14 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (více relací), verze 2004|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise (více relací), verze 1909|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|Ne|Ne|
-|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|Ne|Ne|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
-|Windows Server 2019|Ano|Ano|Ne|Ne|
-|Windows Server 2016|Ano|Ano|Ano|Ano|
-|Windows Server 2012 R2|Ano|Ano|Ne|No|
+|Windows 10 Enterprise (více relací), verze 2004|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise (více relací), verze 1909|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise (více relací), verze 1903|Yes|Yes|No|No|
+|Windows 10 Enterprise (více relací), verze 1809|Yes|Yes|No|No|
+|Windows 7 Enterprise|Yes|Yes|No|No|
+|Windows Server 2019|Yes|Yes|No|No|
+|Windows Server 2016|Ano|Yes|Yes|Yes|
+|Windows Server 2012 R2|Ano|Yes|No|No|
 
 ## <a name="next-steps"></a>Další kroky
 

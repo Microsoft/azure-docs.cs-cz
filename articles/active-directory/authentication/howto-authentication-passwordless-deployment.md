@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717145"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526999"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
 
@@ -61,7 +61,7 @@ Metody ověřování s neheslem od Microsoftu umožňují různé scénáře. Po
 
 Informace o tom, jak vybrat nejlepší metodu pro vaši organizaci, najdete v tématu věnovaném [postupu bez hesla](./concept-authentication-passwordless.md#choose-a-passwordless-method).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky:
 
@@ -93,7 +93,7 @@ Vezměte v úvahu své obchodní potřeby a případy použití pro jednotlivé 
 
 Následující tabulka popisuje případy použití, které mají být implementovány během tohoto projektu.
 
-| Oblast | Popis |
+| Oblast | Description |
 | --- | --- |
 | **Přístup** | Přihlášení bez hesla je k dispozici v podnikovém nebo osobním zařízení v rámci podnikové sítě nebo mimo ni. |
 | **Auditování** | Data o využití jsou k dispozici správcům k zaznamenávání téměř v reálném čase. <br> Data o využití se stáhnou do podnikových systémů aspoň každých 29 dní nebo se použije nástroj SIEM Tool. |
@@ -160,7 +160,7 @@ Musíte povolit **kompatibilní bezpečnostní klíče FIDO2**. Společnost Micr
 -    Windows 10 verze 1809 podporuje přihlašování FIDO2 a může vyžadovat software od výrobce FIDO2 Key, který se má nasadit. Doporučujeme použít verzi 1903 nebo novější. 
 
 **Pro hybridní Azure Active Directory zařízení připojených k doméně**: 
--    Windows 10 Insider Build 18945 nebo novější
+-    Windows 10 verze 2004 nebo novější
 -    Plně opravené doménové servery se systémem Windows Server 2016 nebo 2019.
 -    Nejnovější verze Azure AD Connect
 
@@ -292,7 +292,7 @@ Postupujte podle kroků zarovnaných k vybrané metodě níže.
 
 ### <a name="required-administrative-roles"></a>Požadované role pro správu
 
-| Role Azure AD | Popis |
+| Role Azure AD | Description |
 | --- | --- |
 | Globální správce|Nejnižší privilegovaná role schopna implementovat kombinované prostředí registrace. |
 | Správce ověřování | Nejnižší privilegovaná role schopná implementovat a spravovat metody ověřování. |

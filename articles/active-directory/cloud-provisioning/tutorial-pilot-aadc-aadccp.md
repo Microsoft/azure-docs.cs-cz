@@ -1,6 +1,6 @@
 ---
 title: Kurz – pilotní zřízení cloudu Azure AD Connect pro existující synchronizovanou doménovou strukturu AD
-description: návodu.
+description: Naučte se pilotní zřizování cloudu pro testovací doménovou strukturu Active Directory, která je už synchronizovaná pomocí služby Azure Active Directory (Azure AD) Connect Sync.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86146805"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526931"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -35,7 +35,7 @@ Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 
 4. Toto je pokročilý scénář. Ujistěte se, že postup je přesně popsaný v tomto kurzu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Testovací prostředí s Azure AD Connect synchronizace verze 1.4.32.0 nebo novější
 - Organizační jednotka nebo skupina, která je v rozsahu synchronizace a kterou lze použít pro pilotní nasazení. Doporučujeme začít s malou sadou objektů.
@@ -125,7 +125,7 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 ![Obrazovka Vítejte](media/how-to-install/install1.png)</br>
 
 4. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.
-5. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce služby Active Directory.  Tato operace přidá váš místní adresář.  Klikněte na **Další**.</br>
+5. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce služby Active Directory.  Tato operace přidá váš místní adresář.  Klikněte na **Next** (Další).</br>
 ![Obrazovka Vítejte](media/how-to-install/install3.png)</br>
 
 6. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
@@ -141,7 +141,7 @@ K ověření agenta dochází v Azure Portal a na místním serveru, na kterém 
 ### <a name="azure-portal-agent-verification"></a>Ověřování agenta Azure Portal
 Pokud chcete ověřit, že se agent zobrazuje v Azure, postupujte podle těchto kroků:
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 2. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **Spravovat zřizování (Preview)**.</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
 
@@ -217,7 +217,7 @@ Jakmile ověříte, že se uživatelé z pilotní organizační jednotky úspě�
  4. Přihlaste se ke službě Azure AD a klikněte na **Další**.
  5. Na obrazovce **připojit adresáře** klikněte na **Další**.
  6. Na obrazovce **filtrování domén a organizačních jednotek** vyberte možnost **synchronizovat vybrané domény a organizační jednotky**.
- 7. Rozbalte doménu a zrušte **Výběr** organizační jednotky **procesorů** .  Klikněte na **Další**.
+ 7. Rozbalte doménu a zrušte **Výběr** organizační jednotky **procesorů** .  Klikněte na **Next** (Další).
 ![oboru](media/tutorial-existing-forest/scope1.png)</br>
  9. Na obrazovce **volitelné funkce** klikněte na **Další**.
  10. Na obrazovce **připraveno ke konfiguraci** klikněte na **Konfigurovat**.

@@ -1,6 +1,6 @@
 ---
 title: Kurz – vytvoření instance IoT Edge analýzy videí ve službě Azure IoT Central (virtuální počítač se systémem Linux)
-description: V tomto kurzu se dozvíte, jak vytvořit instanci IoT Edge analýzy videí pro použití s šablonou aplikace pro video Analytics – objekt a pohyb.
+description: V tomto kurzu se dozvíte, jak vytvořit instanci IoT Edge analýzy videí na virtuálním počítači se systémem Linux pro použití s šablonou aplikace pro video Analytics – objekt a pohyb.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038345"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526387"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (virtuální počítač se systémem Linux)
 
@@ -50,7 +50,7 @@ K dokončení formuláře **vlastního nasazení** použijte informace v násled
 | ----- | ----- |
 | Předplatné | Vyberte své předplatné Azure. |
 | Skupina prostředků | *lva-RG* – skupina prostředků, kterou jste vytvořili v předchozím kurzu. |
-| Oblast       | *East US* |
+| Region (Oblast)       | *East US* |
 | Předpona popisku DNS | Vyberte jedinečnou předponu DNS pro virtuální počítač. |
 | Uživatelské jméno správce | *AzureUser* |
 | Heslo správce | Zadejte heslo. Poznamenejte si heslo v souboru *scratchpad.txt* , budete ho používat později. |

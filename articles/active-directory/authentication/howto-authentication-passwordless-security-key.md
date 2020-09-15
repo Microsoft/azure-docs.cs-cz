@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 09/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116593"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526948"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)
 
@@ -32,15 +32,15 @@ Tento dokument se zaměřuje na povolení ověřování pomocí hesla založené
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - Povolit [souhrnnou registraci informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md)
 - Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
-- Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší * *
+- Operace WebAuthN vyžaduje Windows 10 verze 1903 nebo vyšší * *
 
 Chcete-li použít klíče zabezpečení pro přihlášení k webovým aplikacím a službám, je nutné mít prohlížeč, který podporuje protokol WebAuthN. Mezi ně patří Microsoft Edge, Chrome, Firefox a Safari.
 
 ## <a name="prepare-devices-for-preview"></a>Příprava zařízení pro verzi Preview
 
-Zařízení připojená k Azure AD, na kterých máte pilotní nasazení, musí používat Windows 10 verze 1809 nebo vyšší. Nejlepší prostředí je ve Windows 10 verze 1903 nebo vyšší.
+Zařízení připojená k Azure AD, na kterých máte pilotní nasazení, musí používat Windows 10 verze 1909 nebo vyšší. Nejlepší prostředí je ve Windows 10 verze 1903 nebo vyšší.
 
-Zařízení připojená k hybridní službě Azure AD musí používat Windows 10 Insider Build 18945 nebo novější.
+Hybridní zařízení připojená k Azure AD musí používat Windows 10 verze 2004 nebo novější.
 
 ## <a name="enable-passwordless-authentication-method"></a>Povolit metodu ověřování nejenom pro hesla
 
@@ -50,7 +50,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory**  >  zásady**ověřování**  >  **metody**ověřování  >  **(Preview)**.
 1. V části **klíč zabezpečení FIDO2**metody vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne
@@ -68,12 +68,12 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 1. Vyberte **zařízení USB** nebo **zařízení NFC**.
 1. Připravte si klíč a klikněte na tlačítko **Další**.
 1. Zobrazí se pole a požádá uživatele o vytvoření nebo zadání kódu PIN pro klíč zabezpečení a pak pro tento klíč provede požadované gesto, ať už je to biometrika nebo dotykové ovládání.
-1. Uživatel bude vrácen do kombinovaného prostředí pro registraci a požádán o poskytnutí smysluplného názvu pro klíč, aby uživatel mohl zjistit, který z nich je v případě, že má více. Klikněte na **Další**.
+1. Uživatel bude vrácen do kombinovaného prostředí pro registraci a požádán o poskytnutí smysluplného názvu pro klíč, aby uživatel mohl zjistit, který z nich je v případě, že má více. Klikněte na **Next** (Další).
 1. Kliknutím na **Hotovo** proces dokončete.
 
 ## <a name="sign-in-with-passwordless-credential"></a>Přihlášení pomocí přihlašovacích údajů bez hesla
 
-V následujícím příkladu už uživatel zřídil svůj bezpečnostní klíč FIDO2. Uživatel se může přihlásit na webu pomocí klíče zabezpečení FIDO2 v podporovaném prohlížeči ve Windows 10 verze 1809 nebo vyšší.
+V následujícím příkladu už uživatel zřídil svůj bezpečnostní klíč FIDO2. Uživatel se může přihlásit na webu pomocí klíče zabezpečení FIDO2 v podporovaném prohlížeči ve Windows 10 verze 1903 nebo vyšší.
 
 ![Přihlášení k bezpečnostnímu klíči Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 

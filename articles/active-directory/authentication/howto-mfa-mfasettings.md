@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068808"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526880"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
@@ -31,7 +31,7 @@ V Azure Portal jsou k dispozici následující nastavení Azure Multi-Factor Aut
 | [Blokovat/odblokovat uživatele](#block-and-unblock-users) | Zablokovat konkrétním uživatelům, aby mohli přijímat žádosti o Multi-Factor Authentication Azure Všechny pokusy o ověření zablokovaných uživatelů se automaticky zamítnou. Uživatelé zůstávají zablokovaný po dobu 90 dnů od doby, kdy jsou zablokované nebo jsou ručně odblokované. |
 | [Výstraha podvodů](#fraud-alert) | Nakonfigurujte nastavení, která uživatelům umožní nahlásit podvodné žádosti o ověření. |
 | [Oznámení](#notifications) | Povolí oznámení událostí z MFA serveru. |
-| [Tokeny OATH](concept-authentication-methods.md#oath-tokens) | Používá se v cloudových prostředích Azure MFA ke správě tokenů OATH pro uživatele. |
+| [Tokeny OATH](concept-authentication-oath-tokens.md) | Používá se v cloudových prostředích Azure MFA ke správě tokenů OATH pro uživatele. |
 | [Nastavení telefonního hovoru](#phone-call-settings) | Nakonfigurujte nastavení související s telefonními hovory a pozdravy pro cloudová a místní prostředí. |
 | Zprostředkovatelé | Tím se zobrazí všechna existující zprostředkovatelé ověřování, které jste mohli k vašemu účtu přidružit. Od 1. září 2018 se nevytvoří Noví zprostředkovatelé ověřování. |
 

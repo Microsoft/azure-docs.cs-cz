@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 45e1e516986c32e203837f79c83290cc99049e7a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716992"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526965"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Povolení klíče zabezpečení bez hesla k místním prostředkům pomocí Azure Active Directory (Preview)
 
@@ -46,7 +46,7 @@ Před dokončením kroků v tomto článku musí organizace provést postup, aby
 
 Organizace musí splňovat i tyto požadavky na software.
 
-- Na zařízeních musí běžet Windows 10 Insider Build 18945 nebo novější.
+- Na zařízeních musí běžet Windows 10 verze 2004 nebo novější.
 - Musíte mít verzi 1.4.32.0 nebo [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)novější.
   - Další informace o dostupných možnostech hybridního ověřování Azure AD najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md) a [Výběr typu instalace, který se má použít pro Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
 - Na řadičích domény se systémem Windows Server musí být nainstalovány následující opravy:

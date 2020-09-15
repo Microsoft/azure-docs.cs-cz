@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646846"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527084"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Vytvoření nabídky Dynamics 365 Business Central
 
@@ -71,9 +71,7 @@ Shromažďovat kontaktní údaje zákazníka propojením systému pro správu vz
 
 ### <a name="test-drive"></a>Testovací jednotka
 
-Testovací jednotka je skvělým způsobem, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost vyzkoušet si předplatné před nákupem. Výsledkem je zvýšená konverze a generace vysoce kvalifikovaných potenciálních zákazníků. Pokud se chcete dozvědět víc, začněte tím, [co je Test Drive](../what-is-test-drive.md).
-
-Pokud chcete pro pevný časový úsek povolit testovací jednotku, zaškrtněte políčko **Povolit testovací jednotku** . Chcete-li odebrat testovací verzi z nabídky, zrušte zaškrtnutí tohoto políčka.
+V této fázi služby Dynamics 365 Business Central nepodporují Test Drive. Chcete-li odebrat testovací verzi z nabídky, zrušte zaškrtnutí políčka **Povolit testovací jednotku** .
 
 ### <a name="customer-leads"></a>Potenciální zákazníci
 
@@ -131,7 +129,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Zásady ochrany osobních údajů
 7. Název nabídky
 8. Shrnutí
-9. Popis
+9. Description
 10. Snímky obrazovky a videa
 
 ### <a name="name"></a>Name
@@ -142,7 +140,7 @@ Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabíd
 
 Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se dá použít ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

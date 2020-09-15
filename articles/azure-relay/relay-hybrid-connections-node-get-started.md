@@ -4,12 +4,12 @@ description: Napište konzolovou aplikaci v Node.js pro WebSockety Azure Relay H
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386295"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527407"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Začínáme se službou Relay Hybrid Connections WebSockets v Node.js
 
@@ -25,7 +25,7 @@ V tomto rychlém startu proveďte následující kroky:
 4. Napíšeme konzolovou aplikaci klienta (odesílatele) pro odesílání zpráv.
 5. Spusťte aplikace. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Node.js](https://nodejs.org/en/).
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -52,12 +52,12 @@ Aby bylo možné odesílat zprávy do služby Relay, napíšeme konzolovou aplik
 2. Spuštění klientské aplikace: v příkazovém řádku Node.js zadejte `node sender.js` a nějaký text.
 3. Ujistěte se, že výstupem konzoly serverové aplikace je text, který jste zadali v klientské aplikaci.
 
-    ![running-applications](./media/relay-hybrid-connections-node-get-started/running-applications.png)
+    ![Okna konzoly testují aplikace serveru i klienta.](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
 Blahopřejeme, vytvořili jste kompletní aplikaci Hybrid Connections pomocí Node.js!
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste vytvořili Node.js klientských a serverových aplikací, které používaly WebSockets k posílání a přijímání zpráv. Funkce Hybrid Connections Azure Relay také podporuje odesílání a příjem zpráv pomocí protokolu HTTP. Informace o tom, jak používat protokol HTTP s Azure Relay Hybrid Connections, najdete v tématu [rychlý Start proNode.js http](relay-hybrid-connections-http-requests-node-get-started.md).
+V tomto rychlém startu jste vytvořili Node.js klientských a serverových aplikací, které používaly WebSockets k posílání a přijímání zpráv. Funkce Hybrid Connections Azure Relay také podporuje odesílání a příjem zpráv pomocí protokolu HTTP. Informace o tom, jak používat protokol HTTP s Azure Relay Hybrid Connections, najdete v tématu [ rychlý Start proNode.js http](relay-hybrid-connections-http-requests-node-get-started.md).
 
 V tomto rychlém startu jste použili Node.js k vytváření klientských a serverových aplikací. Informace o tom, jak psát klientské a serverové aplikace pomocí .NET Framework, najdete v tématu [rychlý Start k rozhraní .NET WebSockets](relay-hybrid-connections-dotnet-get-started.md) nebo [rychlé zprovoznění protokolu HTTP .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md).
 

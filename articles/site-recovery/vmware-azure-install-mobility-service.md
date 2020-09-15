@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669236"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524993"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Příprava zdrojového počítače na nabízenou instalaci agenta mobility
 
@@ -63,7 +63,7 @@ V každém počítači se systémem Linux, který chcete chránit, udělejte tot
 11. Na kartě **Spravovat účty** vyberte **Přidat účet**.
 12. Přidejte účet, který jste vytvořili.
 13. Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.
-1. Další krok pro aktualizaci nebo ochranu počítačů SUSE Linux Enterprise Server 11 SP3. [Ujistěte se, že je na konfiguračním serveru k dispozici nejnovější verze](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
+1. Další krok pro aktualizaci nebo ochranu SUSE Linux Enterprise Server 11 nebo RHEL 5 nebo CentOS 5 nebo Debian 7 počítačů. [Ujistěte se, že je na konfiguračním serveru k dispozici nejnovější verze](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server).
 
 ## <a name="anti-virus-on-replicated-machines"></a>Antivirová ochrana na replikovaných počítačích
 

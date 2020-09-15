@@ -3,12 +3,12 @@ title: Monitorovat instance kontejnerů
 description: Jak monitorovat spotřebu výpočetních prostředků, jako je CPU a paměť, v kontejnerech v Azure Container Instances.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116363"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526693"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorování prostředků kontejneru ve službě Azure Container Instances
 
@@ -44,7 +44,7 @@ Ve skupině kontejnerů, která obsahuje více kontejnerů, použijte [dimenzi][
 1. Na stránce **Přehled** vyberte jeden z grafů metrik, například **CPU**. 
 1. Vyberte tlačítko **použít rozdělení** a vyberte **název kontejneru**.
 
-![Dimenze][dimension]
+![Snímek obrazovky ukazuje metriku pro instanci kontejneru s vybraným dělením a názvem kontejneru.][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Získání metrik – Azure CLI
 

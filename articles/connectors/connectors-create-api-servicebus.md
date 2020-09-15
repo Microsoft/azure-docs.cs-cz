@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 68b81fa8cf110b47581e482e7e546821d40aef62
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435146"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526523"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -79,7 +79,7 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
    Některé triggery, například **když přijde jedna nebo více zpráv do aktivační události Queue (AutoComplete)** , můžou vracet jednu nebo více zpráv. Když se tyto triggery aktivují, vrátí se mezi sebou a počtem zpráv, které jsou zadané ve vlastnosti **maximální počet zpráv** triggeru.
 
     > [!NOTE]
-    > Trigger automatického dokončování automaticky dokončí zprávu, ale dokončování proběhne pouze při dalším spuštění triggeru. Toto chování může ovlivnit návrh aplikace logiky. Pokud například nastavíte aktivační událost AutoComplete tak, aby kontrolovala zprávy každou minutu, ale doba trvání zámku je nastavená na 30 sekund na straně Service Bus, výsledkem je selhání "zámek vypršel", ke kterému dojde při dokončování zprávy. Je nutné nastavit dobu trvání zámku na hodnotu, která je delší než interval dotazování.
+    > Trigger automatického dokončování automaticky dokončí zprávu, ale dokončování proběhne pouze při dalším spuštění triggeru. Toto chování může ovlivnit návrh aplikace logiky. Neměňte například souběžnost na automatickém dokončení triggeru, protože tato změna může mít za následek duplicitní zprávy, pokud vaše aplikace logiky vstoupí do omezeného stavu. Změna řízení souběžnosti vytváří tyto podmínky: omezené triggery jsou přeskočeny `WorkflowRunInProgress` kódem, operace dokončení nebude provedena a další spuštění triggeru nastane po intervalu dotazování. Je nutné nastavit dobu trvání zámku služby Service Bus na hodnotu, která je delší než interval cyklického dotazování. Bez ohledu na toto nastavení ale nemusí být zpráva dokončena, pokud vaše aplikace logiky zůstane v dalším intervalu dotazování v omezeném stavu.
 
 1. Pokud se Trigger připojuje k vašemu Service Bus oboru názvů poprvé, postupujte podle těchto kroků, když vás návrhář aplikace logiky vyzve k zadání informací o připojení.
 

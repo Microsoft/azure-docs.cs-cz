@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 2c6d1873aadbbf19f1b7650f9b432b3b6bed2841
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068366"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527373"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -35,7 +35,7 @@ Pokud používáte Azure ExpressRoute nebo připojení VPN z vaší místní sí
 
 ![zákazník – prostředí](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-Sítě jsou obvykle chráněné pomocí bran firewall a skupin zabezpečení sítě (skupin zabezpečení sítě). Brány firewall používají k řízení připojení k síti adresu URL nebo přidávání do seznamu povolených IP adres. Skupin zabezpečení sítě poskytují pravidla, která používají rozsahy IP adres k řízení síťového připojení.
+Sítě jsou obvykle chráněné pomocí bran firewall a skupin zabezpečení sítě (skupin zabezpečení sítě). Pro řízení připojení k síti byste měli použít značky služby. Skupin zabezpečení sítě by mělo umožňovat řízení odchozího připojení pro několik značek služeb.
 
 >[!IMPORTANT]
 > Použití ověřeného proxy serveru k řízení připojení k síti není v Site Recovery podporováno a replikaci nelze povolit.
@@ -45,6 +45,8 @@ Sítě jsou obvykle chráněné pomocí bran firewall a skupin zabezpečení sí
 
 Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte tyto adresy URL Site Recovery:
 
+>[!NOTE]
+> Pro řízení odchozího připojení by se neměla provádět kontrola na základě seznamu povolených IP adres.
 
 **Adresa URL** | **Podrobnosti**
 --- | ---
@@ -64,9 +66,9 @@ Pokud k řízení odchozího připojení používáte NSG, musí být tyto znač
     - Povolte tyto adresy, aby bylo možné do účtu úložiště mezipaměti zapsat data z virtuálního počítače.
 - Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
 - Vytvořte pravidlo NSG na základě značky služby EventsHub pro cílovou oblast a umožněte přístup Site Recovery monitorování.
-- Vytvořte pravidlo NSG na základě značky služby AzureSiteRecovery, které umožní přístup k Site Recovery službě v libovolné oblasti.
-- Vytvořte pravidlo NSG na základě značky služby AzureKeyVault. To se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál.
-- Vytvořte pravidlo NSG na základě značky služby GuestAndHybridManagement. To se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu.
+- Vytvořte pravidlo NSG na základě značek služby AzureSiteRecovery, které umožní přístup k Site Recovery službě v libovolné oblasti.
+- Vytvořte pravidlo NSG na základě značek služby AzureKeyVault. To se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál.
+- Vytvořte pravidlo NSG na základě značek služby GuestAndHybridManagement. To se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu.
 - Doporučujeme, abyste vytvořili požadovaná pravidla NSG na NSG testu a ověřili, že neexistují žádné problémy předtím, než vytvoříte pravidla na produkčním NSG.
 
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
@@ -86,7 +88,7 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
       ![AAD – značka](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. CentralUS" na NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
+3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. CentralUS" v NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
 
 4. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 
@@ -98,7 +100,7 @@ Tato pravidla jsou nutná, aby bylo možné replikaci z cílové oblasti do zdro
 
 2. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro Azureactivedirectory selhala na NSG.
 
-3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. EastUS" na NSG, které odpovídá zdrojovému umístění. To umožňuje přístup k Site Recovery monitorování.
+3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. EastUS" v NSG, které odpovídá umístění zdroje. To umožňuje přístup k Site Recovery monitorování.
 
 4. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 

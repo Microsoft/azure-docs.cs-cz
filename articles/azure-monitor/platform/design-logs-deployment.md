@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551318"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527305"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
-Azure Monitor ukládá data [protokolu](data-platform-logs.md) v pracovním prostoru Log Analytics, což je prostředek Azure a kontejner, ve kterém se data shromažďují, agreguje a slouží jako hranice správy. I když můžete v předplatném Azure nasadit jeden nebo více pracovních prostorů, měli byste pochopit několik důležitých informací, abyste měli jistotu, že vaše počáteční nasazení probíhá podle našich pokynů, které vám poskytnou nákladově efektivní, spravovatelné a škálovatelné nasazení, které vyhovuje potřebám vaší organizace.
+Azure Monitor ukládá data [protokolu](data-platform-logs.md) v pracovním prostoru Log Analytics, což je prostředek Azure a kontejner, ve kterém se data shromažďují, agreguje a slouží jako hranice správy. I když můžete v předplatném Azure nasadit jeden nebo více pracovních prostorů, měli byste pochopit několik důležitých informací, abyste měli jistotu, že vaše počáteční nasazení probíhá podle našich pokynů, které vám poskytnou nákladově efektivní, spravovatelné a škálovatelné nasazení splňující požadavky vaší organizace.
 
 Data v pracovním prostoru jsou uspořádaná do tabulek, z nichž každý ukládá různé druhy dat a má svou vlastní jedinečnou sadu vlastností založenou na prostředku, který data generuje. Většina zdrojů dat bude zapisovat do vlastních tabulek v pracovním prostoru Log Analytics.
 
@@ -62,7 +62,7 @@ Díky řízení přístupu na základě role (RBAC) můžete uživatelům a skup
 
 Data, ke kterým má uživatel přístup, závisí na kombinaci faktorů, které jsou uvedeny v následující tabulce. Jednotlivé jsou popsány v následujících částech.
 
-| Faktor | Popis |
+| Faktor | Description |
 |:---|:---|
 | [Režim přístupu](#access-mode) | Metoda, kterou uživatel používá pro přístup k pracovnímu prostoru.  Definuje rozsah dostupných dat a režim řízení přístupu, který se použije. |
 | [Režim řízení přístupu](#access-control-mode) | Nastavení v pracovním prostoru definující, zda jsou oprávnění použita na úrovni pracovního prostoru nebo prostředku. |
@@ -131,7 +131,7 @@ Azure Monitor je služba data ve velkém měřítku, která slouží tisícům z
 
 Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost ingestování stále překročí prahovou hodnotu nebo jste se k nim neočekávali, můžete požádat o jejich zvýšení otevřením žádosti o podporu. 
 
-Chcete-li být upozorněni na approching nebo dosažení limitu přenosové rychlosti pro příjem dat ve vašem pracovním prostoru, vytvořte [pravidlo upozornění protokolu](alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků od 0, zkušebního období 5 minut a frekvence 5 minut.
+Chcete-li být upozorněni na approching nebo dosažení limitu přenosové rychlosti pro příjem dat ve vašem pracovním prostoru, vytvořte [pravidlo upozornění protokolu](alerts-log.md) pomocí následujícího dotazu se základem výstrahy výstrah, který je založen na počtu výsledků větší než nula, zkušební období 5 minut a četnosti 5 minut.
 
 Počet dosažených objemů příjmu 80% prahové hodnoty:
 ```Kusto
@@ -152,9 +152,9 @@ Operation
 
 ![Příklad návrhu kontextu prostředků](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 
-Tento scénář pokrývá jeden návrh pracovního prostoru v rámci předplatného IT organizace, které není omezené na základě suverenity dat nebo dodržování předpisů nebo které musí namapovat na oblasti, ve kterých jsou nasazené prostředky. Umožňuje vašim organizacím zabezpečení a správcům IT využívat vylepšenou integraci se správou přístupu k Azure a bezpečnějším řízením přístupu.
+Tento scénář pokrývá jeden návrh pracovního prostoru v rámci předplatného IT organizace, které není omezené na základě suverenity dat nebo dodržování předpisů nebo které musí namapovat na oblasti, ve kterých jsou nasazené prostředky. Umožňuje týmům zabezpečení a správců IT ve vaší organizaci využít vylepšenou integraci se správou přístupu k Azure a bezpečnějším řízením přístupu.
 
-Všechny prostředky, řešení monitorování a přehledy, jako je Application Insights a Azure Monitor pro virtuální počítače, podporují infrastrukturu a aplikace udržované různými týmy, aby se jejich shromážděná data přenesly do centralizovaného sdíleného pracovního prostoru IT organizace. Uživatelům v každém týmu je udělen přístup k protokolům pro prostředky, kterým byl udělen přístup.
+Všechny prostředky, řešení monitorování a přehledy, jako Application Insights a Azure Monitor pro virtuální počítače, podporují infrastrukturu a aplikace udržované různými týmy, aby se jejich shromážděná data do centralizovaného sdíleného pracovního prostoru organizace IT nastavily. Uživatelům v každém týmu je udělen přístup k protokolům pro prostředky, kterým byl udělen přístup.
 
 Jakmile nasadíte architekturu pracovního prostoru, můžete to vyhovět v prostředcích Azure pomocí [Azure Policy](../../governance/policy/overview.md). Poskytuje způsob, jak definovat zásady a zajistit kompatibilitu s prostředky Azure, aby odesílaly všechny své protokoly prostředků do konkrétního pracovního prostoru. Například u virtuálních počítačů Azure nebo služby Virtual Machine Scale Sets můžete použít existující zásady, které vyhodnocují dodržování předpisů v pracovním prostoru a výsledky sestav, nebo přizpůsobit pro nápravu, pokud nedodržují předpisy.  
 

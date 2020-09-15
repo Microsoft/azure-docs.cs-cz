@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: e87ecc14907c6e0618de47ffdbd334d8ba03ec99
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500620"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526336"
 ---
 # <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Hyperprostoru – subsystém indexování pro Apache Spark
 
@@ -392,7 +392,8 @@ Spark dataframe, který odkazuje na data, která mají být indexována.
 Objekt konfigurace indexu: IndexConfig, který určuje název indexu, indexované a zahrnuté sloupce indexu.
 Začnete vytvořením tří indexů hyperprostoru na našich ukázkových datech: dva indexy pro datovou sadu oddělení s názvem "deptIndex1" a "deptIndex2" a jeden index pro datovou sadu zaměstnanců s názvem "empIndex". Pro každý index potřebujete odpovídající IndexConfig pro zachycení názvu spolu se seznamy sloupců pro indexované a zahrnuté sloupce. Po spuštění níže se vytvoří tyto indexConfigs a jejich výstup.
 
-Poznámka: sloupec index je sloupec, který se zobrazí ve vašich filtrech nebo podmínkách připojení. Zahrnutý sloupec je sloupec, který se zobrazí ve vašem výběru nebo projektu.
+> [!Note]
+> Indexový sloupec je sloupec, který se zobrazí ve vašich filtrech nebo podmínkách připojení. Zahrnutý sloupec je sloupec, který se zobrazí ve vašem výběru nebo projektu.
 
 Například v následujícím dotazu:
 
@@ -508,8 +509,9 @@ Níže uvedený kód ukazuje, jak můžete zobrazit seznam všech dostupných in
 
 Následující buňka používá akci zobrazení objektu dataframe k úplnému tisku řádků a zobrazení podrobností o indexech v tabulkovém formátu. U každého indexu můžete zobrazit všechny informace v poli hyperprostoru v metadatech. Okamžitě se zobrazí následující informace:
 
-"config. indexer", "config. indexedColumns", "config. includedColumns" a "status. status" jsou pole, na které uživatel obvykle odkazuje.
-"dfSignature" se automaticky generuje do hyperprostoru a je pro každý index jedinečný. Výkop používá tento podpis interně k údržbě indexu a jeho zneužití v době dotazu.
+* "config. indexer", "config. indexedColumns", "config. includedColumns" a "status. status" jsou pole, na které uživatel obvykle odkazuje.
+* "dfSignature" se automaticky generuje do hyperprostoru a je pro každý index jedinečný. Výkop používá tento podpis interně k údržbě indexu a jeho zneužití v době dotazu.
+
 Ve výstupu níže by všechny tři indexy měly mít stav "aktivní" jako stav a jejich název, indexované sloupce a zahrnuté sloupce by se měly shodovat s tím, co jsme definovali v konfiguracích indexu výše.
 
 :::zone pivot = "programming-language-scala"
@@ -839,7 +841,7 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 | 7876|  ADAMS|    20|
 ```
 
-&nbsp;&nbsp;zobrazuje se jenom prvních pět řádků &nbsp; .&nbsp;
+&nbsp;&nbsp;Zobrazuje se jenom prvních 5 řádků &nbsp; .&nbsp;
 
 ```console
 |deptId|  deptName|location|
@@ -1369,8 +1371,8 @@ Pokud se původní data, na kterých byl index vytvořen, změní, index již ne
 
 Následující dvě buňky ukazují příklad pro tento scénář:
 
-První buňka přidá do originálních dat oddělení dvě další oddělení. Čte a tiskne seznam oddělení pro ověření, že se nová oddělení přidávají správně. Výstup zobrazuje celkem šest oddělení: čtyři staré a dvě nové. Vyvolají se "refreshIndex" aktualizace "deptIndex1", takže index zachycuje nová oddělení.
-Druhá buňka spouští příklad dotazu výběru rozsahu. Výsledky by teď měly obsahovat čtyři oddělení: dvě jsou ta, která se zobrazila dřív, než jsme spustili dotaz výše, a dvě jsou nová oddělení, která jsme právě přidali.
+* První buňka přidá do originálních dat oddělení dvě další oddělení. Čte a tiskne seznam oddělení pro ověření, že se nová oddělení přidávají správně. Výstup zobrazuje celkem šest oddělení: čtyři staré a dvě nové. Vyvolají se "refreshIndex" aktualizace "deptIndex1", takže index zachycuje nová oddělení.
+* Druhá buňka spouští příklad dotazu výběru rozsahu. Výsledky by teď měly obsahovat čtyři oddělení: dvě jsou ta, která se zobrazila dřív, než jsme spustili dotaz výše, a dvě jsou nová oddělení, která jsme právě přidali.
 
 ### <a name="specific-index-refresh"></a>Konkrétní aktualizace indexu
 

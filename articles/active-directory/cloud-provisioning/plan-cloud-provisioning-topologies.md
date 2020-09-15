@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect podporované topologie a scénáře zřizování cloudu
-description: V tomto tématu jsou popsány předpoklady a hardwarové požadavky na zřízení cloudu.
+description: Přečtěte si o různých topologiích místní a Azure Active Directory (Azure AD), které používají zřizování cloudu Azure AD Connect.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77620872"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526846"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect podporované topologie a scénáře zřizování cloudu
 Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají zřizování cloudu Azure AD Connect. Tento článek obsahuje jenom podporované konfigurace a scénáře.

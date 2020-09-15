@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386108"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527152"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 
@@ -150,7 +150,7 @@ Parametr | Popis | Příklad hodnoty
 ID člena konsorcia | ID přidružené ke každému členovi zapojenému do sítě konsorcia. Slouží ke konfiguraci adresních prostorů IP adres, aby se zabránilo kolizi. V případě privátní sítě by ID člena mělo být jedinečné v různých organizacích ve stejné síti.  Jedinečné ID člena je nutné i v případě, že je stejná organizace nasazena do více oblastí. Poznamenejte si hodnotu tohoto parametru, protože ho budete potřebovat sdílet s ostatními členy, abyste se ujistili, že nedochází k žádné kolizi. Platný rozsah je 0 až 255. | 0
 ID sítě | ID sítě pro nasazování sítě konsorcia Ethereem Každá Ethereem síť má své vlastní ID sítě, přičemž 1 je identifikátor veřejné sítě. Platný rozsah je 5 až 999 999 999. | 10101010
 Adresa Ethereem správce | Adresa účtu Ethereem, která se používá pro účast ve správě PoA. Pomocí MetaMask můžete vygenerovat Ethereem adresu. |
-Rozšířené možnosti | Rozšířené možnosti pro nastavení Ethereem | Povolení
+Rozšířené možnosti | Rozšířené možnosti pro nastavení Ethereem | Povolit
 Nasazení pomocí veřejné IP adresy | Pokud je vybraná privátní virtuální síť, síť se nasadí za bránu virtuální sítě a odebere přístup partnerských vztahů. U privátní virtuální sítě musí všichni členové používat bránu virtuální sítě, aby připojení bylo kompatibilní. | Veřejná IP adresa
 Limit bloku plynů | Počáteční limit bloku plynů sítě. | 50000000
 Zablokovat dobu trvání uzávěrky (s) | Frekvence, s níž budou vytvořeny prázdné bloky, pokud v síti nejsou žádné transakce. Vyšší frekvence bude mít rychlejší, ale zvýšené náklady na úložiště. | 15
@@ -166,7 +166,7 @@ Monitorování umožňuje nakonfigurovat prostředek protokolu pro vaši síť. 
 
 Parametr | Popis | Příklad hodnoty
 ----------|-------------|--------------
-Monitorování | Možnost povolení monitorování | Povolení
+Monitorování | Možnost povolení monitorování | Povolit
 Připojit k existujícím protokolům Azure Monitor | Možnost vytvoření nové instance protokolu Azure Monitor nebo připojení k existující instanci | Vytvořit nový
 Umístění | Oblast, ve které je nasazena nová instance | East US
 Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||Není k dispozici
@@ -174,7 +174,7 @@ Existující primární klíč Log Analytics (Připojte se k existujícím proto
 
 Vyberte **OK**.
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Kliknutím na Souhrn zkontrolujte zadané vstupy a spusťte základní ověřování před nasazením. Před nasazením si můžete stáhnout šablonu a parametry.
 
@@ -279,7 +279,7 @@ Portál nejprve zobrazí statistiku sítě vysoké úrovně a přehled uzlů.
 
 ![Kategorie monitorování](./media/ethereum-poa-deployment/monitor-categories.png)
 
-Vybírání **přehledu uzlů** zobrazuje statistiku infrastruktury pro jednotlivé uzly.
+Vybírání **přehledu uzlů**  zobrazuje statistiku infrastruktury pro jednotlivé uzly.
 
 ![Statistiky uzlů](./media/ethereum-poa-deployment/node-stats.png)
 
@@ -325,7 +325,7 @@ Z bezpečnostních důvodů je ve výchozím nastavení odepřený přístup por
 
 1. Vyberte pravidlo **Allow-SSH** .
 
-    ![SSH – povolení](./media/ethereum-poa-deployment/ssh-allow.png)
+    ![Snímek obrazovky zobrazuje okno s přehledem povoleného výběru SSH.](./media/ethereum-poa-deployment/ssh-allow.png)
 
 1. Změnit **akci** na **povoleno**
 
@@ -561,7 +561,7 @@ Chcete-li kompilovat, nasazovat a testovat inteligentní kontrakty, je zde něko
 
 V následujícím příkladu vytvoříte jednoduchou inteligentní kontrakt. Truffle můžete použít ke kompilaci a nasazení inteligentních kontraktů do vaší sítě blockchain. Po nasazení zavoláte funkci inteligentního kontraktu prostřednictvím transakce.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python je potřeba pro Truffle a Web3. Vyberte možnost instalovat, pokud chcete zahrnout Python do vaší cesty.
 * Nainstalujte Truffle v 5.0.5 `npm install -g truffle@v5.0.5` . Truffle vyžaduje instalaci několika nástrojů, včetně [Node.js](https://nodejs.org), [Gitu](https://git-scm.com/). Další informace najdete v [dokumentaci k Truffle](https://github.com/trufflesuite/truffle).
@@ -715,7 +715,7 @@ Monitorování je volitelná funkce. Ve výjimečných případech, kdy se nasaz
 
 ### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Jsou nasazení veřejné IP adresy kompatibilní s nasazeními privátních sítí?
 
-Ne. Partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
+No. Partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
 
 ### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>Jaká je očekávaná propustnost transakce v rámci autority pro ověření?
 

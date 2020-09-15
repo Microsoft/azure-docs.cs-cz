@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226422"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526738"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak použít Trigger HTTP a akci HTTP, aby vaše a
 
 Informace o šifrování, zabezpečení a autorizaci pro odchozí volání z vaší aplikace logiky, jako je například [TLS (Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), certifikáty podepsané svým držitelem nebo [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), najdete v tématu [zabezpečený přístup a přístup k datům pro odchozí volání do jiných služeb a systémů](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -44,7 +44,7 @@ Informace o šifrování, zabezpečení a autorizaci pro odchozí volání z va�
 
 Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V poli hledání návrháře vyberte možnost **předdefinované**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **triggery** vyberte Trigger **http** .
 
@@ -73,7 +73,7 @@ Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu U
 
 Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se jako první krok používá Trigger HTTP.
 
@@ -104,7 +104,7 @@ Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový b
 
 Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací tyto informace:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |----------|------|-------------|
 | `headers` | Objekt JSON | Hlavičky z požadavku |
 | `body` | Objekt JSON | Objekt s obsahem textu z požadavku |
@@ -167,6 +167,14 @@ Tady je stejný příklad, který ukazuje definici JSON akce HTTP v základní d
    "type": "Http"
 }
 ```
+
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>Obsah s typem application/x-www-form-urlencoded
+
+Chcete-li zadat urlencoded data v těle požadavku HTTP, je nutné určit, že data mají `application/x-www-form-urlencoded` typ obsahu. Do triggeru nebo akce HTTP přidejte `content-type` hlavičku. Nastavte hodnotu hlavičky na `application/x-www-form-urlencoded` .
+
+Předpokládejme například, že máte aplikaci logiky, která odesílá požadavek HTTP POST na web, který podporuje daný `application/x-www-form-urlencoded` typ. Tady je postup, jak by tato akce mohla vypadat:
+
+![Snímek obrazovky, který zobrazuje požadavek HTTP s hlavičkou Content-Type nastavenou na Application/x-www-form-urlencoded](./media/connectors-native-http/http-action-urlencoded.png)
 
 <a name="asynchronous-pattern"></a>
 
@@ -263,4 +271,3 @@ Další informace o parametrech Trigger a Action najdete v těchto částech:
 
 * [Zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [Konektory pro Logic Apps](../connectors/apis-list.md)
-

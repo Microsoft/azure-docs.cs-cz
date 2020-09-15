@@ -1,6 +1,6 @@
 ---
 title: Cognitive Services pro ukázky Scala pro velké objemy dat
-description: Vyzkoušejte si Cognitive Services ukázky v Pythonu pro Azure Databricks ke spuštění kanálu MMLSpark pro velké objemy dat.
+description: Použijte Cognitive Services pro Azure Databricks ke spuštění kanálu MMLSpark pro velké objemy dat.
 services: cognitive-services
 author: mhamilton723
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 098b59b8de0d0d7e5c3929ce084276350c04810a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189812"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524959"
 ---
 # <a name="quick-examples"></a>Rychlé příklady
 
@@ -27,7 +27,7 @@ Tyto ukázky používají tyto Cognitive Services:
 - Zvukové soubory s mluveným převodem na text přepisovat k extrakci textových přepisů.
 - Detektor anomálií – zjištění anomálií v datech časové řady
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Postupujte podle kroků uvedených v části [Začínáme](getting-started.md) s nastavením Azure Databricks a Cognitive Services prostředí. Tento kurz obsahuje postup instalace MMLSpark a postup vytvoření clusteru Spark v datacihlách.
 1. Po vytvoření nového poznámkového bloku v Azure Databricks zkopírujte níže **sdílený kód** a vložte ho do nové buňky v poznámkovém bloku.
@@ -161,7 +161,7 @@ display(pipeline.fit(df).transform(df))
 | https://everydaypowerblog.com/wp-content/uploads/2014/01/Martin-Luther-King-Jr.-Quotes-18.jpg            |
 | https://tsal-eszuskq0bptlfh8awbb.stackpathdns.com/wp-content/uploads/2018/01/MartinLutherKingQuotes.jpg  |
 
-## <a name="speech-to-text"></a>Řeč na text
+## <a name="speech-to-text"></a>Převod řeči na text
 
 Služba převod [řeči na text](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) převede datové proudy nebo soubory mluveného zvuku na text. V této ukázce jsme přepisovat dva zvukové soubory. První soubor je snadno srozumitelný a druhý je náročnější.
 
@@ -237,7 +237,7 @@ display(anamolyDetector.transform(df).select("timestamp", "value", "anomalies.is
 
 ### <a name="expected-result"></a>Očekávaný výsledek
 
-| časové razítko            |   hodnota | Anomálie   |
+| časové razítko            |   Hodnota | Anomálie   |
 |:---------------------|--------:|:------------|
 | 1972-01-01T00:00:00Z |     826 | Nepravda       |
 | 1972-02-01T00:00:00Z |     799 | Nepravda       |
@@ -246,11 +246,11 @@ display(anamolyDetector.transform(df).select("timestamp", "value", "anomalies.is
 | 1972-05-01T00:00:00Z |     766 | Nepravda       |
 | 1972-06-01T00:00:00Z |     805 | Nepravda       |
 | 1972 – 07 – 01T00:00:00Z |     821 | Nepravda       |
-| 1972 – 08-01T00:00:00Z |   20000 | Pravda        |
+| 1972 – 08-01T00:00:00Z |   20000 | Ano        |
 | 1972 – 09 – 01T00:00:00Z |     883 | Nepravda       |
 | 1972 – 10 – 01T00:00:00Z |     898 | Nepravda       |
 | 1972-11-01T00:00:00Z |     957 | Nepravda       |
 | 1972 – 12.01T00:00:00Z |     924 | Nepravda       |
 | 1973-01-01T00:00:00Z |     881 | Nepravda       |
 | 1973-02-01T00:00:00Z |     837 | Nepravda       |
-| 1973-03-01T00:00:00Z |    9000 | Pravda        |
+| 1973-03-01T00:00:00Z |    9000 | Ano        |

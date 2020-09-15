@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 50b61ce7e2ef2a551d41dcb82d7127071005c34e
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 1a75c083015d1f10a3ed3dba15480430747756eb
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90020488"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525012"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Kurz: Vytvoření aplikace chat serveru Blazor
 
@@ -28,6 +28,8 @@ V tomto kurzu se dozvíte, jak vytvořit a upravit aplikaci Blazor serveru. Dozv
 * Nainstalovat [sadu .NET Core 3,0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) (verze >= 3.0.100)
 * Instalace sady [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) (verze >= 16,3)
 > Verze Visual Studio 2019 Preview funguje i pro vydání nejnovější šablony aplikace Blazor serveru, která cílí na novější verzi .Net Core.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="build-a-local-chat-room-in-blazor-server-app"></a>Sestavení místní konverzační místnosti v aplikaci Blazor Server
 
@@ -354,6 +356,8 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
 1. Kliknutím na <kbd>F5</kbd> spusťte aplikaci. Budete moci chatovat, jak je znázorněno níže.
 
    [![blazor – chat ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="publish-to-azure"></a>Publikování do Azure
 
@@ -397,6 +401,8 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
    > Kromě toho můžete použít režim ladicího programu prohlížeče s nástrojem <kbd>F12</kbd> k ověření, že provoz již přesměruje na službu Azure Signal Service.
 
    [![blazor – chat – Azure ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="further-topic-enable-azure-signalr-service-in-local-development"></a>Další téma: povolení služby signalizace Azure v místním vývojovém prostředí
 
@@ -440,6 +446,8 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
 >        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.Azure.SignalR"
 >      }
 >    ```
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

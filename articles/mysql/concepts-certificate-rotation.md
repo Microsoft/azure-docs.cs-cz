@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 7e78c0d2538dbb6326df30d63ec1c38de48b62e6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 9c5c4247ab01a571613cad4f33832de152909b11
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057189"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527101"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Porozumění změnám v kořenové CA se mění Azure Database for MySQL
 
@@ -87,7 +87,7 @@ Pokud nepoužíváte protokol SSL/TLS, nejsou vyžadovány žádné akce.
 Ne, nemusíte restartovat databázový server, abyste mohli začít používat nový certifikát. Tento kořenový certifikát je změnou na straně klienta a příchozí připojení klientů musí použít nový certifikát, aby se mohl připojit k databázovému serveru.
 
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. co se stane, když kořenový certifikát neaktualizujem před 26. října 2020 (10/26/2020)?
-Pokud kořenový certifikát neaktualizujete před 30. listopadu 2020, vaše aplikace, které se připojují přes protokol SSL/TLS, a ověření kořenového certifikátu nebudou moct komunikovat s databázovým serverem MySQL a aplikace bude mít problémy s připojením k databázovému serveru MySQL.
+Pokud kořenový certifikát neaktualizujete před 26. října 2020, vaše aplikace, které se připojují přes protokol SSL/TLS, a ověření kořenového certifikátu nebudou moct komunikovat s databázovým serverem MySQL a aplikace bude mít problémy s připojením k databázovému serveru MySQL.
 
 ### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. Musím pro tuto změnu naplánovat výpadek údržby?<BR>
 No. Vzhledem k tomu, že se tato změna nachází pouze na straně klienta pro připojení k databázovému serveru, pro tuto změnu není potřeba žádné prostoje údržby.
@@ -95,7 +95,7 @@ No. Vzhledem k tomu, že se tato změna nachází pouze na straně klienta pro p
 ### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. co když mi pro tuto změnu nezíská plánované výpadky před 26. října 2020 (10/26/2020)?
 Vzhledem k tomu, že klienti, kteří se používají pro připojení k serveru, musí aktualizovat informace o certifikátu, jak je popsáno [v části Oprava](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), v tomto případě nepotřebujeme v tomto případě výpadek serveru.
 
-###  <a name="6-if-i-create-a-new-server-after-nov-30-2020-will-i-be-impacted"></a>6. když po 30. listopadu 2020 vytvořím nový server, bude to mít dopad na to?
+###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. když po 26. říjnu 2020 vytvořím nový server, bude to mít dopad na to?
 Pro servery vytvořené po 26. října 2020 (10/26/2020) můžete použít nově vydaný certifikát pro vaše aplikace k připojení pomocí protokolu SSL.
 
 ### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?

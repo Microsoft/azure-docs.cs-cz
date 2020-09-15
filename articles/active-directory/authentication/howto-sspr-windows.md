@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a6013ed47196e2300f56f0066c634da2a64fdee8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717348"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526863"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Povolení samoobslužného resetování hesla Azure Active Directory na přihlašovací obrazovce Windows
 
@@ -40,7 +40,7 @@ Následující omezení platí pro použití SSPR z přihlašovací obrazovky Wi
 - Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti. To znamená, že zařízení musí být buď v interní síti organizace, nebo na síti VPN se síťovým přístupem k místnímu řadiči domény.
 - Pokud použijete image, před provedením kroku CopyProfile zajistěte, aby byla mezipaměť webu pro předdefinovaný správce vymazána. Další informace o tomto kroku najdete v článku o [výkonu nekvalitního výkonu při používání vlastního výchozího uživatelského profilu](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - U následujících nastavení je známo, že se bude rušit možnost používat a resetovat hesla na zařízeních s Windows 10:
-    - Pokud zásady ve verzích Windows 10 před v1809 vyžadují CTRL + ALT + DEL, **resetování hesla** nebude fungovat.
+    - Pokud zásady ve verzích Windows 10 před v1909 vyžadují CTRL + ALT + DEL, **resetování hesla** nebude fungovat.
     - Pokud jsou oznámení na zamykací obrazovce vypnutá, **resetování hesla** nebude fungovat.
     - *HideFastUserSwitching* je nastavené na povoleno nebo 1.
     - *DontDisplayLastUserName* je nastavené na povoleno nebo 1.
