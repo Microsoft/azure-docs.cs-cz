@@ -3,14 +3,14 @@ title: Konfigurace Azure Monitor pro kontejnery integrace Prometheus | Microsoft
 description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers, aby vyodpadí metriky z Prometheus s clusterem Kubernetes.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f7a43f00ce160829cc8e6ed3b6272ab14aaace66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800456"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069420"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurace vyřazení metrik Prometheus s Azure Monitor pro kontejnery
+# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurace získávání metrik Prometheus pomocí služby Azure Monitor pro kontejnery
 
 [Prometheus](https://prometheus.io/) je oblíbený open source řešení pro monitorování metrik a je součástí [cloudového nativního výpočetního základu](https://www.cncf.io/). Azure Monitor for Containers poskytuje bezproblémové prostředí pro připojování ke shromažďování metrik Prometheus. Aby bylo možné používat Prometheus, je obvykle potřeba nastavit a spravovat server Prometheus s úložištěm. Integrací s Azure Monitor není třeba server Prometheus. Potřebujete jenom vystavit koncový bod Prometheus metriky prostřednictvím vývozců nebo lusků (aplikace) a kontejnerový Agent pro Azure Monitor pro kontejnery může metriky vyřadit. 
 
@@ -36,7 +36,7 @@ Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv
 * Adresa URL pro clustery v rámci clusteru a zjišťování cílů z uvedených koncových bodů služby. Například služby k8s Services, jako jsou Kube-DNS a Kube – metriky a pod, jsou specifické pro aplikaci. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus data_collection_settings. cluster]*.
 * Adresa URL v rámci uzlu-HTTP a zjišťují se cíle z uvedených koncových bodů služby. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus_data_collection_settings. Node]*.
 
-| Koncový bod | Rozsah | Příklad |
+| Koncový bod | Obor | Příklad |
 |----------|-------|---------|
 | Pod – Poznámka | Napříč clustery | anotac <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Služba Kubernetes | Napříč clustery | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -44,13 +44,13 @@ Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv
 
 Pokud je zadána adresa URL, Azure Monitor pro kontejnery vyřadí pouze koncový bod. Při zadání služby Kubernetes se název služby vyřeší se serverem DNS clusteru, aby získal IP adresu, a pak se vyhodnocená služba vyřadí.
 
-|Rozsah | Klíč | Datový typ | Hodnota | Description |
+|Obor | Klíč | Datový typ | Hodnota | Popis |
 |------|-----|-----------|-------|-------------|
 | Napříč clustery | | | | Zadejte jednu z následujících tří metod pro vyřazení koncových bodů pro metriky. |
 | | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
 | | `kubernetes_services` | Řetězec | Pole oddělené čárkami | Pole služeb Kubernetes pro vyřazení metrik z Kube-State-Metrics. Příklad: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Logická hodnota | true nebo false | Když se nastaví na `true` nastavení v rámci celého clusteru, Azure monitor pro agenty kontejnerů vyřadí v celém clusteru Kubernetes lusky pro následující poznámky Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Logická hodnota | true nebo false | Povoluje vyřazení pod. `monitor_kubernetes_pods`musí být nastaven na hodnotu `true` . |
+| | `prometheus.io/scrape` | Logická hodnota | true nebo false | Povoluje vyřazení pod. `monitor_kubernetes_pods` musí být nastaven na hodnotu `true` . |
 | | `prometheus.io/scheme` | Řetězec | http nebo https | Výchozím nastavením je vyřazení přes protokol HTTP. V případě potřeby nastavte na `https` . | 
 | | `prometheus.io/path` | Řetězec | Pole oddělené čárkami | Cesta prostředku HTTP, ze které se mají načíst metriky Pokud cesta metriky není `/metrics` , definujte ji pomocí této poznámky. |
 | | `prometheus.io/port` | Řetězec | 9102 | Zadejte port, ze kterého se má vyřadit. Pokud není Port nastavený, použije se výchozí hodnota 9102. |
@@ -142,7 +142,7 @@ Proveďte následující kroky ke konfiguraci konfiguračního souboru ConfigMap
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
@@ -162,7 +162,7 @@ Tato část obsahuje požadavky a kroky pro úspěšnou konfiguraci konfiguračn
 >[!NOTE]
 >V případě Azure Red Hat OpenShift v3. x se vytvoří soubor šablony ConfigMap v oboru názvů *OpenShift-Azure-Logging* . Není nastavené na aktivní vyřazení metrik nebo shromažďování dat z agenta.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete, potvrďte, že jste členem role Správce clusteru pro zákazníky v clusteru Azure Red Hat OpenShift ke konfiguraci kontejnerového nastavení s kontejnery a Prometheus. Pokud chcete ověřit, že jste členem skupiny *osa-Customer-Admins* , spusťte následující příkaz:
 
@@ -259,7 +259,7 @@ Pomocí následujících kroků proveďte konfiguraci konfiguračního souboru C
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```

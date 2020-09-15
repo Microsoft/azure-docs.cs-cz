@@ -1,16 +1,16 @@
 ---
 title: Integrace Apache Kafka připojení k Azure Event Hubs (Preview) pomocí Debezium pro zachycení změn dat
-description: Tento článek poskytuje informace o tom, jak používat Apache Spark s Azure Event Hubs pro Kafka.
+description: Tento článek poskytuje informace o tom, jak používat Debezium s Azure Event Hubs pro Kafka.
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a11ec882a50d051a34758562ac84dcef5b799f5f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136798"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061678"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Integrace podpory Apache Kafka Connect do Azure Event Hubs (Preview) s využitím Debezium for Change Data Capture
 
@@ -51,7 +51,7 @@ Tato část se zabývá následujícími tématy:
 ### <a name="download-and-setup-debezium-connector"></a>Stažení a nastavení konektoru Debezium
 Pokud chcete tento konektor stáhnout a nastavit, postupujte prosím podle pokynů v [dokumentaci k Debezium](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-deploying-a-connector) .
 
-- Stáhněte si archiv modulu plug-in konektoru. Například pro stažení verze `1.2.0` konektoru použijte tento odkaz-https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
+- Stáhněte si archiv modulu plug-in konektoru. Například pro stažení verze `1.2.0` konektoru použijte tento odkaz- https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
 - Extrahujte soubory JAR a zkopírujte je do [modulu plug-in Kafka Connect. cesta](https://kafka.apache.org/documentation/#connectconfigs).
 
 
@@ -133,7 +133,7 @@ Vytvořte konfigurační soubor ( `pg-source-connector.json` ) pro PostgreSQL so
 ```
 
 > [!TIP]
-> `database.server.name`atribut je logický název, který identifikuje a poskytuje obor názvů pro konkrétní PostgreSQL databázový server nebo cluster, který je monitorovaný. Podrobné informace najdete v [dokumentaci k Debezium](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) .
+> `database.server.name` atribut je logický název, který identifikuje a poskytuje obor názvů pro konkrétní PostgreSQL databázový server nebo cluster, který je monitorovaný. Podrobné informace najdete v [dokumentaci k Debezium](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) .
 
 K vytvoření instance konektoru použijte koncový bod Kafka Connect REST API:
 

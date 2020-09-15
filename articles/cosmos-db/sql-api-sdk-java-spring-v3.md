@@ -1,6 +1,6 @@
 ---
 title: Jarní data Azure Cosmos DB v3 pro poznámky k verzi a prostředky SQL API
-description: Přečtěte si všechno o jarních datech Azure Cosmos DB v3 pro SQL API, včetně data vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB SQL Async Java SDK.
+description: Přečtěte si o jarních datech Azure Cosmos DB v3 pro SQL API, včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB SQL Async Java SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228031"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068728"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v3 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -36,20 +36,20 @@ ms.locfileid: "89228031"
 > * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
-Pružinová data Azure Cosmos DB v3 pro Core (SQL) umožňují vývojářům využít Azure Cosmos DB v aplikacích pružiny. Jarní data Azure Cosmos DB zpřístupňuje rozhraní jarních dat pro práci s databázemi a kolekcemi, práci s dokumenty a vydávání dotazů. Synchronní i asynchronní (opětovně aktivní) rozhraní API se podporují ve stejném artefaktu Maven. 
+Jarní data Azure Cosmos DB verze 3 pro jádro (SQL) umožňuje vývojářům používat Azure Cosmos DB v aplikacích pružiny. Jarní data Azure Cosmos DB zpřístupňuje rozhraní jarních dat pro práci s databázemi a kolekcemi, práci s dokumenty a vydávání dotazů. Synchronní i asynchronní (opětovně aktivní) rozhraní API se podporují ve stejném artefaktu Maven. 
 
-Pružinová data Azure Cosmos DB přebírají závislost na architektuře jarních dat. Azure Cosmos DB tým SDK vydává artefakty Maven pro jarní data v 2.2 a v 2.3.
+Pružinová data Azure Cosmos DB mají závislost na architektuře pro jarní data. Tým Azure Cosmos DB SDK vydává artefakty Maven pro data jarní verze 2,2 a 2,3.
 
-[Jarní architektura](https://spring.io/projects/spring-framework) je model programování a konfigurace, který zjednodušuje vývoj aplikací Java. Aby se na webu organizace mohla zacitovat, pružina zjednodušuje "domovníing" aplikací pomocí injektáže závislostí. Mnoho vývojářů, jako je pružina, protože sestavování a testování aplikací se bude mnohem jednodušší. [Pružinové spouštění](https://spring.io/projects/spring-boot) rozšiřuje tuto představu o tom, jak se tato instalace prokládá s ohledem na vývoj webových aplikací a mikroslužeb. [Pružinová data](https://spring.io/projects/spring-data) jsou programovací model a architektura pro přístup k úložišti dat, jako je například Azure Cosmos DB z kontextu aplikace pružinové nebo jarního spuštění. 
+[Jarní architektura](https://spring.io/projects/spring-framework) je model programování a konfigurace, který zjednodušuje vývoj aplikací Java. Pružina zjednodušuje "domovníing" aplikací pomocí injektáže závislostí. Mnoho vývojářů, jako je pružina, protože usnadňuje sestavování a testování aplikací. [Pružinové spouštění](https://spring.io/projects/spring-boot) rozšiřuje toto zpracování instalace s využitím očí pro vývoj webových aplikací a mikroslužeb. [Pružinová data](https://spring.io/projects/spring-data) jsou programovací model a architektura pro přístup k datovým úložišti, jako je Azure Cosmos DB z kontextu aplikace pružinové nebo jarního spuštění. 
 
 Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services/spring-cloud/) můžete použít jarní data Azure Cosmos DB.
 
 > [!IMPORTANT]  
-> Tyto poznámky k verzi jsou k disAzure Cosmos DB pro 3 – Pružinová data. Poznámky k verzi v2 najdete [tady](sql-api-sdk-java-spring-v2.md). 
+> Tyto poznámky k verzi jsou pro Azure Cosmos DB verze 3 jarních dat. [Poznámky k verzi 2 najdete tady](sql-api-sdk-java-spring-v2.md). 
 >
-> Jarní data Azure Cosmos DB podporují jenom rozhraní SQL API.
+> Jarní data Azure Cosmos DB podporují pouze rozhraní SQL API.
 >
-> Následující příručky podporují jarní data u jiných Azure Cosmos DB rozhraní API:
+> V těchto článcích najdete informace o jarních datech v jiných Azure Cosmos DB rozhraních API:
 > * [Jarní data pro Apache Cassandra s Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
 > * [Jarní MongoDBy dat pomocí Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
 > * [Jarní Gremliny dat pomocí Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
@@ -61,31 +61,31 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
-### <a name="navigate-the-tabs-above-for-basic-spring-data-azure-cosmos-db-samples"></a>Přejděte na karty výše pro základní Azure Cosmos DB ukázek dat na jaře.
+#### <a name="these-tabs-contain-basic-spring-data-azure-cosmos-db-samples"></a>Tyto karty obsahují základní vzorky jarních dat Azure Cosmos DB.
 
 # <a name="pomxml"></a>[pom.xml](#tab/pom)
 
 ### <a name="configure-dependencies"></a>Konfigurace závislostí
 
-K dispozici jsou dvě Mavená Azure Cosmos DB data pružiny v3.
+K dispozici jsou dvě Mavená Azure Cosmos DB data pružiny verze 3.
 
-Artefakt, který závisí na jaře data Framework v 2.2:
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-    <version>latest</version>
-</dependency>
-```
+- Artefakt, který závisí na jaře data Framework verze 2,2:
+  ```xml
+  <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
+      <version>latest</version>
+  </dependency>
+  ```
 
-Artefakt, který závisí na jaře data Framework v 2.3:
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-spring-data-2-3-cosmos</artifactId>
-    <version>latest</version>
-</dependency>
-```
+- Artefakt, který závisí na jaře data Framework verze 2,3:
+  ```xml
+  <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <version>latest</version>
+  </dependency>
+  ```
 
 # <a name="connect"></a>[Připojit](#tab/connect)
 
@@ -114,37 +114,35 @@ cosmos.queryMetricsEnabled=true
 
 # <a name="query"></a>[Dotaz](#tab/queries)
 
-### <a name="query"></a>Dotaz
-
 [Dotaz](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
 
 ---
 
-## <a name="helpful-content"></a>Užitečný obsah
+## <a name="resources"></a>Zdroje a prostředky
 
-| Obsah | Jarní data Framework v 2.2 | Jarní data Framework v 2.3 |
+| Prostředek | Jarní data Framework 2,2 | Jarní data Framework 2,3 |
 |---|---|
 | **Stažení sady SDK** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
 |**Přispívání do sady SDK** | [Jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
-|**Tutoriál**| [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
+|**Kurz**| [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
 
 ## <a name="release-history"></a>Historie verzí
 
 ### <a name="300-beta2-unreleased"></a>3.0.0-beta. 2 (neuvolní se)
 
-### <a name="300-beta1-2020-08-17"></a>3.0.0-beta. 1 (2020-08-17)
+### <a name="300-beta1-august-17-2020"></a>3.0.0-beta. 1 (17. srpna 2020)
 #### <a name="new-features"></a>Nové funkce
-* ID skupiny bylo aktualizováno na `com.azure` .
-* ID artefaktu se aktualizovalo na `azure-spring-data-2-3-cosmos` .
-* Aktualizace závislosti sady Azure-Cosmos SDK na `4.3.2-beta.2` .
-* Podpora pro entity auditování – Automatická správa polí s poznámkami createdBy, createdDate, lastModifiedBy a lastModifiedDate.
-* `@GeneratedValue` Podpora poznámek pro automatické generování ID pro pole ID `String` typu
-* Podpora konfigurace více databází pro jeden účet Cosmos s více databázemi a více účtů Cosmos s více databázemi.
-* Podpora pro `@Version` anotaci v libovolném poli řetězce
-* Z rozhraní API pro synchronizaci se vracely návratové typy `Iterable` namísto `List` .
-* Zpřístupnění `CosmosClientBuilder` ze sady Cosmos SDK jako jarní Bob do `@Configuration` třídy.
-* Aktualizováno `CosmosConfig` tak, aby obsahovalo metriky dotazů a implementaci procesoru diagnostiky odpovědí.
-* Podpora vrácení `Optional` datového typu pro dotazy s jedním výsledkem.
+* Aktualizuje ID skupiny na `com.azure` .
+* Aktualizuje ID artefaktu na `azure-spring-data-2-3-cosmos` .
+* Aktualizuje závislost Azure-Cosmos SDK na `4.3.2-beta.2` .
+* Přidává podporu pro entity auditování: automatickou správu `createdBy` polí s `createdDate` `lastModifiedBy` poznámkami,, a `lastModifiedDate` .
+* Přidá `@GeneratedValue` podporu poznámek pro automatické generování ID pro pole ID `String` typu.
+* Přidá podporu konfigurace více databází pro jeden Azure Cosmos DB účet s více databázemi a více Azure Cosmos DBch účtů s více databázemi.
+* Přidá podporu pro `@Version` anotaci v libovolném poli řetězce.
+* Aktualizuje návratové typy rozhraní API pro synchronizaci na `Iterable` typy namísto `List` .
+* Zpřístupňuje `CosmosClientBuilder` z Azure Cosmos DB SDK jako jarní Bob do `@Configuration` třídy.
+* Aktualizace `CosmosConfig` obsahují metriky dotazů a implementaci procesoru pro diagnostiku odpovědí.
+* Přidá podporu pro vrácení `Optional` datového typu pro dotazy s jedním výsledkem.
 #### <a name="renames"></a>Přejmenuje
 * `CosmosDbFactory` na `CosmosFactory` .
 * `CosmosDBConfig` na `CosmosConfig` .
@@ -155,21 +153,21 @@ cosmos.queryMetricsEnabled=true
 * příznak Application. Properties `populateQueryMetrics` `queryMetricsEnabled` .
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
 * Plánování úlohy protokolování diagnostiky na `Parallel` vlákna, aby se zabránilo zablokování vstupně-výstupních vláken v síťovině.
-* Opravilo se optimistické zamykání při operaci DELETE.
-* Opraven problém s dotazy na uvozovací znaky `IN` klauzule for
-* Opravili jsme problémy tím, že povolíte `long` datový typ pro `@Id` .
-* Opravili jsme problém tím, že povolíte `boolean` , `long` `int` `double` jako datové typy pro `@PartitionKey` anotaci.
-* Pevná `IgnoreCase`  &  `AllIgnoreCase` klíčová slova pro dotazy na ignorované případy
-* Byla odstraněna výchozí hodnota jednotky žádosti 4000 při automatickém vytváření kontejnerů.
+* Opravuje optimistické zamykání při operaci DELETE.
+* Opravuje problém s dotazy na uvozovací znaky `IN` klauzule for.
+* Opraví problém tím, že povoluje `long` datový typ pro `@Id` .
+* Opravuje problém tím, že umožňuje `boolean` , `long` , `int` a `double` jako datové typy pro `@PartitionKey` anotaci.
+* Opravy `IgnoreCase` a `AllIgnoreCase` klíčová slova pro dotazy na ignorovat velikost písmen
+* Odebere výchozí hodnotu jednotky žádosti 4 000 při automatickém vytvoření kontejnerů.
 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
+Přečtěte si další informace o [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-Další informace o architektuře pružiny najdete na [domovské stránce projektu](https://spring.io/projects/spring-framework).
+Přečtěte si další informace o [architektuře pružiny](https://spring.io/projects/spring-framework).
 
-Další informace o pružinovém spuštění najdete na [domovské stránce projektu](https://spring.io/projects/spring-boot).
+Přečtěte si další informace o [pružinovém spuštění](https://spring.io/projects/spring-boot).
 
-Další informace o jarních datech najdete na [domovské stránce projektu](https://spring.io/projects/spring-data).
+Přečtěte si další informace o [jarních datech](https://spring.io/projects/spring-data).

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8617b0b71e58d22ccd2cf753e4ddc862932f68da
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 1c8d1af9bcea6b5e0e43a8928cbcdd907f2fb534
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536051"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069029"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Azure Key Vault bran firewall a virtuálních sítí
 
@@ -27,7 +27,7 @@ Tento článek poskytuje podrobné pokyny ke konfiguraci Azure Key Vault bran fi
 > [!NOTE]
 > Mějte na paměti následující omezení konfigurace:
 > * Povoluje se maximálně 127 pravidel virtuální sítě a 127 pravidel IPv4. 
-> * Rozsahy malých adres, které používají předpony "/31" nebo "/32", nejsou podporovány. Místo toho nakonfigurujte tyto rozsahy pomocí jednotlivých pravidel IP adres.
+> * Rozsahy malých adres, které používají předponu "/31", nejsou podporovány. Místo toho nakonfigurujte tyto rozsahy pomocí jednotlivých pravidel IP adres.
 > * Pravidla sítě IP jsou povolena pouze pro veřejné IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v dokumentu RFC 1918) nejsou v pravidlech protokolu IP povoleny. Soukromé sítě obsahují adresy, které začínají na **10.**, **172.16-31**a **192,168.**. 
 > * V tuto chvíli se podporují jenom IPv4 adresy.
 
@@ -122,7 +122,7 @@ Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomoc�
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 * Odkaz na šablonu ARM: [odkaz na šablonu Azure Key Vault ARM](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/vaults)
 * Příkazy rozhraní příkazového řádku Azure: [AZ pro Trezor klíčů Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Rutiny Azure PowerShell: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)

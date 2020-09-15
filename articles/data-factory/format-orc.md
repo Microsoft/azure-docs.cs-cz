@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f71b739242cf4f6a3549927a2a7e61400b2f987e
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417721"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061066"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Formát ORC v Azure Data Factory
 
@@ -28,7 +28,7 @@ Formát ORC se podporuje pro následující konektory: [Amazon S3](connector-ama
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou ORC.
 
-| Vlastnost         | Popis                                                  | Vyžadováno |
+| Vlastnost         | Popis                                                  | Povinné |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | typ             | Vlastnost Type datové sady musí být nastavená na **ORC**. | Ano      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Ano      |
@@ -70,7 +70,7 @@ Je třeba počítat s následujícím:
 
 V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Vyžadováno |
+| Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
 | typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **OrcSource**. | Ano      |
 | storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci své vlastní podporované nastavení pro čtení `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
@@ -79,10 +79,19 @@ V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následuj
 
 V části *** \* jímka \* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Vyžadováno |
+| Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
 | typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **OrcSink**. | Ano      |
+| formatSettings | Skupina vlastností V tabulce **nastavení zápisu ORC** najdete níže. |    Ne      |
 | storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+
+Podporovaná **nastavení zápisu ORC** v rámci `formatSettings` :
+
+| Vlastnost      | Popis                                                  | Povinné                                              |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| typ          | Typ formatSettings musí být nastaven na hodnotu **OrcWriteSettings**. | Ano                                                   |
+| maxRowsPerFile | Při zápisu dat do složky můžete zvolit zápis do více souborů a zadat maximální počet řádků na soubor.  | Ne |
+| fileNamePrefix | Při zápisu dat do více souborů zadejte předponu názvu souboru. Výsledkem je tento vzor: `<fileNamePrefix>_00000.<fileExtension>` . Pokud tento parametr nezadáte, automaticky se vygeneruje Předpona názvu souboru. Tato vlastnost se nevztahuje na to, že zdroj je úložiště založené na souborech nebo v [úložišti dat s povolenými možnostmi pro oddíly](copy-activity-performance-features.md).  | Ne |
 
 ## <a name="using-self-hosted-integration-runtime"></a>Použití Integration Runtime pro místní hostování
 

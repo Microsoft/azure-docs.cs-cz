@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084677"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061712"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití externích balíčků s Jupyter poznámkovým blokům v clusterech s Apache Spark v HDInsight
-
-> [!div class="op_single_selector"]
-> * [Použití buňky Magic](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Pomocí akce skriptu](apache-spark-python-package-installation.md)
 
 Naučte se, jak nakonfigurovat [Jupyter notebook](https://jupyter.org/) v clusteru Apache Spark ve službě HDInsight tak, aby používaly externí balíčky Apache **Maven** poskytované komunitou, které nejsou zahrnuté do clusteru.
 
@@ -27,7 +23,7 @@ Naučte se, jak nakonfigurovat [Jupyter notebook](https://jupyter.org/) v cluste
 
 V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 

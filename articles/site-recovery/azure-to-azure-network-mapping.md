@@ -1,24 +1,24 @@
 ---
 title: Mapování virtuálních sítí mezi dvěma oblastmi v Azure Site Recovery
 description: Přečtěte si o mapování virtuálních sítí mezi dvěma oblastmi Azure pro zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery.
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: mayg
-ms.openlocfilehash: 11cc71a05fb95453553223dcb34839e8a5fc6a3a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130428"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069488"
 ---
-# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavení mapování sítě a adresování IP pro virtuální sítě
+# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavení mapování sítě a přidělování IP adres pro virtuální sítě
 
 Tento článek popisuje, jak namapovat dvě instance virtuálních sítí Azure (virtuální sítě) nacházejících se v různých oblastech Azure a jak nastavit IP adresy mezi sítěmi. Mapování sítě poskytuje výchozí chování pro výběr cílové sítě na základě zdrojové sítě v době povolení replikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než budete mapovat sítě, byste měli mít [Azure virtuální sítě](../virtual-network/virtual-networks-overview.md) ve zdrojové a cílové oblasti Azure. 
 

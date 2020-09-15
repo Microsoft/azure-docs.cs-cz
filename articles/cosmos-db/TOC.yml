@@ -967,6 +967,8 @@
         - name: Použití šablon Azure Resource Manageru
           href: manage-sql-with-resource-manager.md
           displayName: ARM
+        - name: Přesun mezi oblastmi
+          href: how-to-move-regions.md
     - name: Globální distribuce
       items:
         - name: Konfigurace multi-masteru

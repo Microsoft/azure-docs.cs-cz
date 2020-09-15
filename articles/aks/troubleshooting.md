@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460316"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068825"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -205,14 +205,14 @@ Ověřte, že vaše nastavení nejsou v konfliktu s žádným z požadovaných n
 
 V Kubernetes verze 1,10 může MountVolume. WaitForAttach selhat s opětovným připojením k disku Azure.
 
-V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Například:
+V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Příklad:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Například:
+Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Příklad:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -259,7 +259,7 @@ spec:
   >[!NOTE]
   > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastaveny jako neroot, například 1000, použije Kubernetes `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
 
-* Použijte `chown` v initContainers k nastavení GID a UID. Například:
+* Použijte `chown` v initContainers k nastavení GID a UID. Příklad:
 
 ```yaml
 initContainers:
@@ -418,13 +418,13 @@ Pokud se váš klíč účtu úložiště změnil, může se zobrazit chyba při
 
 Můžete zmírnit ruční aktualizací `azurestorageaccountkey` pole v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
 
-K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Například:
+K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Příklad:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Například:
+Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Příklad:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
@@ -450,3 +450,15 @@ Ve verzích Kubernetes **starších než 1.15.0**se může zobrazit chyba, jako 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md
+
+### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Důvody selhání upgradu na Kubernetes 1,16 při použití popisků uzlů s předponou kubernetes.io
+
+Od Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) je možné použít kubelet na uzly [pouze definovanou podmnožinu popisků s předponou Kubernetes.IO](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) . AKS nemůže odebrat aktivní popisky bez souhlasu, protože by mohlo dojít k výpadkům ovlivněných úloh.
+
+V důsledku toho můžete tyto problémy zmírnit:
+
+1. Upgradovat rovinu řízení clusteru na 1,16 nebo vyšší
+2. Přidat nový nodepoool na 1,16 nebo vyšší bez nepodporovaných popisků kubernetes.io
+3. Odstranit starší nodepool
+
+AKS zkoumá schopnost využít aktivní popisky na nodepool pro zlepšení tohoto zmírnění.

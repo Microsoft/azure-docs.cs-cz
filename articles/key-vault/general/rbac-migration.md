@@ -1,0 +1,121 @@
+---
+title: Migrace na řízení přístupu na základě role v Azure | Microsoft Docs
+description: Naučte se migrovat zásady přístupu do trezoru do rolí Azure.
+services: key-vault
+author: msmbaldwin
+manager: rkarlin
+ms.service: key-vault
+ms.subservice: general
+ms.topic: how-to
+ms.date: 8/30/2020
+ms.author: mbaldwin
+ms.openlocfilehash: e06a7a759c712b47f3a725a3c49a660226da6a09
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90064147"
+---
+# <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>Migrace ze zásad přístupu k trezoru na model oprávnění řízení přístupu na základě role (Preview) Azure
+
+Model zásad přístupu k trezoru je stávající autorizační systém integrovaný v Key Vault, který poskytuje přístup k klíčům, tajným klíčům a certifikátům. Přístup můžete řídit přiřazením individuálních oprávnění objektu zabezpečení (uživatele, skupiny, instančního objektu, spravované identity) v oboru Key Vault. 
+
+Řízení přístupu na základě role Azure (Azure RBAC) je autorizační systém založený na [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , který poskytuje jemně odstupňovanou správu prostředků Azure. Služba Azure RBAC pro Key Vault klíče, tajné kódy a Správa přístupu k certifikátům je momentálně v Public Preview. Pomocí služby Azure RBAC řídíte přístup k prostředkům tím, že vytvoříte přiřazení rolí, které se skládá ze tří prvků: objekt zabezpečení, definice role (předdefinovaná sada oprávnění) a obor (skupina prostředků nebo individuální prostředek). Další informace najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview).
+
+Před migrací do Azure RBAC je důležité porozumět jeho výhodám a omezením.
+
+Výhody klíčových výhod Azure RBAC přes zásady přístupu do trezoru:
+- Poskytuje model jednotného řízení přístupu pro prostředky Azure – stejné rozhraní API napříč službami Azure.
+- Centralizovaná správa přístupu pro správce – Správa všech prostředků Azure v jednom zobrazení
+- Integrace s [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) pro řízení přístupu na základě času
+- Odepřít přiřazení – schopnost vyloučit objekt zabezpečení v konkrétním rozsahu. Informace najdete v tématu [Vysvětlení přiřazení Azure Deny](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) .
+
+Nevýhody Azure RBAC:
+- Latence u přiřazení rolí – použití přiřazení role může trvat několik minut. Zásady přístupu k trezoru se přiřazují okamžitě.
+- Omezený počet přiřazení rolí – 2000 přiřazení rolí v rámci předplatného a za 1024 zásad přístupu na Key Vault
+
+## <a name="access-policies-to-azure-roles-mapping"></a>Zásady přístupu k mapování rolí Azure
+
+Služba Azure RBAC má několik předdefinovaných rolí Azure, které můžete přiřadit uživatelům, skupinám, objektům služby a spravovaným identitám. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
+
+Key Vault předdefinované role pro klíče, certifikáty a správu přístupu k tajným klíčům:
+- Správce Key Vault (Preview)
+- Key Vault Reader (Preview)
+- Key Vault Certificate důstojník (Preview)
+- Key Vault kryptografický pracovník (Preview)
+- Key Vault kryptografický uživatel (Preview)
+- Úředník Key Vault tajných klíčů (Preview)
+- Uživatel Key Vault tajných kódů (Preview)
+
+Další informace o existujících předdefinovaných rolích najdete v tématu [předdefinované role Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) .
+
+Zásady přístupu k trezoru se dají přiřadit jednotlivě vybraným oprávněním nebo pomocí předdefinovaných šablon oprávnění.
+
+Předdefinované šablony oprávnění k zásadám přístupu:
+- Správa klíčů, tajných klíčů a certifikátů
+- Správa klíčů & tajných kódů
+- Správa certifikátů tajných &
+- Správa klíčů
+- Správa tajných klíčů
+- Správa certifikátů
+- Konektor SQL Serveru
+- Azure Data Lake Storage nebo Azure Storage
+- Azure Backup
+- Klíč zákazníka Exchange Online
+- Klíč zákazníka SharePointu Online
+- Azure Information BYOK
+
+### <a name="access-policies-templates-to-azure-roles-mapping"></a>Šablony zásad přístupu k mapování rolí Azure
+| Šablona zásad přístupu | Operace | Role Azure |
+| --- | --- | --- |
+| Správa klíčů, tajných klíčů a certifikátů | Klíče: všechny operace <br>Certifikáty: všechny operace<br>Tajné kódy: všechny operace | Správce Key Vault (Preview) |
+| Správa klíčů & tajných kódů | Klíče: všechny operace <br>Tajné kódy: všechny operace| Key Vault kryptografický pracovník (Preview)<br> Úředník Key Vault tajných klíčů (Preview)|
+| Správa certifikátů tajných & | Certifikáty: všechny operace <br>Tajné kódy: všechny operace| Key Vault úřední certifikát (Preview)<br> Úředník Key Vault tajných klíčů (Preview)|
+| Správa klíčů | Klíče: všechny operace| Key Vault kryptografický pracovník (Preview)|
+| Správa tajných klíčů | Tajné kódy: všechny operace| Úředník Key Vault tajných klíčů (Preview)|
+| Správa certifikátů | Certifikáty: všechny operace | Key Vault úřední certifikát (Preview)|
+| Konektor SQL Serveru | Klíče: získání, seznam, zabalení klíče, rozbalení klíče | Key Vault šifrování šifrovací služby (Preview)|
+| Azure Data Lake Storage nebo Azure Storage | Klíče: získání, vypsání, rozbalení klíče | –<br> Vyžaduje se vlastní role.|
+| Azure Backup | Klíče: získání, seznam, zálohování<br> Certifikát: získání, seznam, zálohování | –<br> Vyžaduje se vlastní role.|
+| Klíč zákazníka Exchange Online | Klíče: získání, seznam, zabalení klíče, rozbalení klíče | Key Vault šifrování šifrovací služby (Preview)|
+| Klíč zákazníka Exchange Online | Klíče: získání, seznam, zabalení klíče, rozbalení klíče | Key Vault šifrování šifrovací služby (Preview)|
+| Azure Information BYOK | Klíče: získat, dešifrovat, podepsat | –<br>Vyžaduje se vlastní role.|
+
+
+## <a name="assignment-scopes-mapping"></a>Mapování oborů přiřazení  
+
+Azure RBAC pro Key Vault umožňuje přiřazení rolí v následujících oborech:
+- Skupina pro správu
+- Předplatné
+- Skupina prostředků
+- Prostředek Key Vault
+- Jednotlivý klíč, tajný klíč a certifikát
+
+Model oprávnění zásad přístupu k trezoru je omezený na přiřazování zásad pouze na Key Vault úrovni prostředků, což 
+
+Obecně je vhodné mít jeden Trezor klíčů na každou aplikaci a spravovat přístup na úrovni trezoru klíčů. Existují scénáře, kdy Správa přístupu v jiných oborech může zjednodušit správu přístupu.
+
+- * * Infrastruktura, správci zabezpečení a operátoři: Správa skupiny trezorů klíčů ve skupině pro správu, na úrovni předplatného nebo skupiny prostředků se zásadami přístupu trezoru vyžaduje zachování zásad pro každý Trezor klíčů. Azure RBAC umožňuje vytvořit jedno přiřazení role na skupinu pro správu, předplatné nebo skupinu prostředků. Toto přiřazení se bude vztahovat na všechny nové trezory klíčů vytvořené v rámci stejného oboru. V tomto scénáři se doporučuje použít Privileged Identity Management s přístupem k programu za běhu za účelem poskytnutí trvalého přístupu.
+ 
+- * * Aplikace: existují scénáře, kdy aplikace potřebuje sdílet tajný klíč s jinou aplikací. Pomocí zásad přístupu trezoru se musí vytvořit oddělený Trezor klíčů, aby nedošlo k přístupu ke všem tajným klíčům. Azure RBAC umožňuje přiřadit roli k oboru pro jednotlivý tajný klíč místo toho použití trezoru s jedním klíčem.
+
+## <a name="vault-access-policy-to-azure-rbac-migration-steps"></a>Zásady přístupu trezoru k migračním krokům Azure RBAC
+Existuje mnoho rozdílů mezi modelem oprávnění zásad přístupu k Azure RBAC a trezoru. Aby se předešlo výpadkům při migraci, doporučujeme postupovat níže.
+ 
+1. **Identifikujte a přiřadíte role**: Identifikujte předdefinované role založené na tabulce mapování výše a v případě potřeby vytvořte vlastní role. Přiřaďte role v oborech na základě pokynů pro mapování oborů. Další informace o tom, jak přiřadit role k trezoru klíčů, najdete v článku [poskytnutí přístupu k Key Vault pomocí řízení přístupu na základě role v Azure (Preview)](rbac-guide.md) .
+1. **Ověřit přiřazení rolí**: aby se rozšířila přiřazení rolí v Azure RBAC, může to trvat několik minut. Návod, jak kontrolovat přiřazení rolí, najdete v tématu [přiřazení rolí v oboru](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope) .
+1. **Konfigurace monitorování a upozorňování na Trezor klíčů**: je důležité povolit upozorňování protokolování a nastavení pro zakázané výjimky přístupu. Další informace najdete v tématu [monitorování a upozorňování na Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/alert)
+1. **Nastavení modelu oprávnění řízení přístupu založeného na rolích Azure na Key Vault**: povolení modelu oprávnění pro Azure RBAC bude mít za následek zrušení platnosti všech stávajících zásad přístupu. Pokud dojde k chybě, model oprávnění se dá přepnout zpátky se všemi existujícími zásadami přístupu beze změny.
+
+> [!NOTE]
+> Když je povolený model oprávnění Azure RBAC, všechny skripty, které se pokusí aktualizovat zásady přístupu, selžou. Je důležité tyto skripty aktualizovat, aby používaly Azure RBAC.
+
+## <a name="troubleshooting"></a>Poradce při potížích
+-  Přiřazení role nefunguje po několika minutách – existují situace, kdy přiřazení rolí může trvat delší dobu. Je důležité napsat logiku opakování v kódu pro pokrytí těchto případů.
+- Přiřazení rolí zmizelo, když se Key Vault odstranila (obnovitelné odstranění) a obnovila se – v současné době se jedná o omezení funkce obnovitelného odstranění napříč všemi službami Azure. Po obnovení je nutné znovu vytvořit všechna přiřazení rolí.    
+
+## <a name="learn-more"></a>Další informace
+
+- [Přehled Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Kurz pro vlastní role](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)
+- [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)

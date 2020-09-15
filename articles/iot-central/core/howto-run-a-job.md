@@ -7,12 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 09/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 82a370bcda2d762abb36e6e43ab755c45348e4c5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019943"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060811"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
@@ -38,7 +38,7 @@ Následující příklad ukazuje, jak vytvořit a spustit úlohu pro nastavení 
 
     Vyberte **Uložit a ukončit** a přidejte úlohu do seznamu uložených úloh na stránce **úlohy** . Později se můžete vrátit k úloze ze seznamu uložených úloh.
 
-    Kliknutím na tlačítko **Další** přejděte na stránku **Revize** . Stránka * * revize * * * * zobrazuje podrobnosti o konfiguraci úlohy. Kliknutím na tlačítko **Spustit** odešlete úlohu.
+    Kliknutím na tlačítko **Další** přejděte na stránku **Revize** . Na stránce **Kontrola** se zobrazí podrobnosti o konfiguraci úlohy. Kliknutím na tlačítko **Spustit** odešlete úlohu.
 
     :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="Snímek obrazovky s průvodcem úlohy – Stránka s přehledem":::
 

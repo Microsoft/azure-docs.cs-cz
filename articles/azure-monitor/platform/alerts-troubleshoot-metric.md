@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/13/2020
+ms.date: 09/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190664"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068758"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -234,7 +234,7 @@ Vezměte v úvahu následující omezení pro názvy pravidel upozornění metri
 - Po vytvoření se názvy pravidel upozornění metriky nedají změnit (Přejmenovat).
 - Názvy pravidel upozornění na metriky musí být v rámci skupiny prostředků jedinečné.
 - Názvy pravidel upozornění na metriky nesmí obsahovat tyto znaky: * # & +:  < > ? @ % { } \ / 
-- Názvy pravidel upozornění na metriky nemůžou končit tímto znakem:.
+- Názvy pravidel upozornění na metriky nemůžou končit mezerou nebo tečkou.
 
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Omezení při použití dimenzí v pravidle upozornění na metriku s několika podmínkami
@@ -245,7 +245,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Například:
+Příklad:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms

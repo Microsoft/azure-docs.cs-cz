@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 2092b03ee95349286b9e845689b5d9d55b61c772
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514352"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060726"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -101,7 +101,7 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 **Adresa URL** | **Podrobnosti**  
 --- | --- |
 *.portal.azure.com  | Přejděte na Azure Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Přihlaste se ke svému předplatnému Azure.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *. office.com | Přihlaste se ke svému předplatnému Azure.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte Azure Active Directory (AD) aplikace pro zařízení, které budou komunikovat s Azure Migrate.
 management.azure.com | Vytvořte aplikace služby Azure AD, aby zařízení komunikovalo se službou Azure Migrate.
 *.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
@@ -507,7 +507,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 
 1. Chcete-li vyhledat nejnovější verze služby zařízení, [stáhněte](https://aka.ms/latestapplianceservices) LatestComponents.jsv souboru.
 2.    Po stažení otevřete LatestComponents.jsv souboru poznámkového bloku.
-3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Například:
+3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Příklad:
 
     "Name": "ASRMigrationWebApp"; "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 

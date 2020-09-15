@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0718151039d88ffb76a07ce082c08fb011dab88b
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653366"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061596"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Kurz: Přesunutí prostředků Azure SQL Database do jiné oblasti
 
@@ -36,9 +36,9 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -  Ověřte, že máte přístup *vlastníka* k předplatnému obsahujícímu prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
@@ -77,7 +77,6 @@ Vyberte prostředky, které chcete přesunout.
 
 3. V části **přesunout prostředky**  >  **zdroj + cíl**vyberte zdrojové předplatné a oblast.
 4. V části **cíl**vyberte oblast, do které chcete prostředky přesunout. Potom klikněte na **Další**.
-5. V **oblasti metadata**vyberte, kam chcete ukládat metadata o prostředcích, které přesouváte. Skupina prostředků je vytvořená speciálně pro tento účel. Potom klikněte na **Další**.
 
     ![Stránka pro výběr zdrojové a cílové oblasti](./media/tutorial-move-region-sql/source-target.png)
 

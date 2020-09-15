@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ce6325abf34813a9ca397f5bcbe2e774af3442d4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535072"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061474"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Část 1: povolení ověřování služba AD DS pro sdílené složky Azure 
 
@@ -28,7 +28,7 @@ Rutiny v modulu AzFilesHybrid PowerShellu provedou potřebné změny a funkce v�
 
 ### <a name="download-azfileshybrid-module"></a>Stáhnout modul AzFilesHybrid
 
-- [Stažení a extrahování modulu AzFilesHybrid](https://github.com/Azure-Samples/azure-files-samples/releases) (modul GA: v 0.2.0 +)
+- [Stažení a extrahování modulu AzFilesHybrid (modul GA: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) Upozorňujeme, že šifrování Kerberos 256 je podporované v 0.2.2 nebo novějším. Pokud jste povolili funkci s AzFilesHybrid verze níže v 0.2.2 a chcete aktualizovat, aby podporovala šifrování AES 256 Kerberos, přečtěte si [Tento článek](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems). 
 - Nainstalujte a spusťte modul v zařízení, které je připojené k místnímu počítači, služba AD DS služba AD DS přihlašovací údaje, které mají oprávnění k vytvoření přihlašovacího účtu služby nebo účtu počítače v cílové službě AD.
 -  Spusťte skript pomocí místního služba AD DS přihlašovacích údajů, které se synchronizují s vaší službou Azure AD. Přihlašovací údaje místního služba AD DS musí mít oprávnění vlastníka účtu úložiště nebo role Azure přispěvatele.
 

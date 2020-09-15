@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760868"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068383"
 ---
-# <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – Přehled
+# <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – přehled
 
 Azure Cosmos DB je databáze nezávislá schématu, která umožňuje iterovat na aplikaci bez nutnosti zabývat se správou schématu nebo indexu. Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti pro všechny položky ve vašem [kontejneru](databases-containers-items.md#azure-cosmos-containers) bez nutnosti definovat nějaké schéma nebo nakonfigurovat sekundární indexy.
 
@@ -108,13 +108,13 @@ Index **rozsahu** je založen na seřazené struktuře podobné stromové strukt
    SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
    ```
 
-- `ORDER BY`odešle
+- `ORDER BY` odešle
 
    ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`odešle
+- `JOIN` odešle
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -135,7 +135,7 @@ Indexy rozsahu lze použít na skalárních hodnotách (String nebo Number).
 - Geoprostorové v rámci dotazů:
 
    ```sql
-   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] })
    ```
 
 - Geoprostorové protínající se dotazy:
@@ -150,7 +150,7 @@ Prostorové indexy lze použít na správně formátovaných objektech typu [inj
 
 **Složené** indexy zvyšují efektivitu při provádění operací s více poli. Typ složeného indexu se používá pro:
 
-- `ORDER BY`dotazy na více vlastností:
+- `ORDER BY` dotazy na více vlastností:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
@@ -168,7 +168,7 @@ Prostorové indexy lze použít na správně formátovaných objektech typu [inj
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Pokud jeden predikát filtru používá jeden z druhů indexů, nástroj pro dotaz vyhodnotí, že nejprve vyhodnocuje, zda je před kontrolou zbývajících. Například pokud máte dotaz SQL, například`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Pokud jeden predikát filtru používá jeden z druhů indexů, nástroj pro dotaz vyhodnotí, že nejprve vyhodnocuje, zda je před kontrolou zbývajících. Například pokud máte dotaz SQL, například `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * Výše uvedený dotaz nejprve vyfiltruje položky, kde firstName = "Andrew" pomocí indexu. Pak předá všechny záznamy firstName = "Andrew" prostřednictvím následného kanálu k vyhodnocení predikátu OBSAHUJÍCÍho filtr.
 

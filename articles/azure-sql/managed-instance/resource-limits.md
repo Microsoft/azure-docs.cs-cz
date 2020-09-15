@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/14/2020
+ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587306"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069590"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,12 +99,12 @@ Další informace o [omezeních prostředků ve fondech spravované instance SQL
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>Vlastnosti v/v souboru na úrovni Pro obecné účely
 
-Na úrovni služby Pro obecné účely každý soubor databáze získá vyhrazené IOPS a propustnost, které závisí na velikosti souboru. Větší počet datových souborů dosáhne více vstupně-výstupních operací a propustnosti. Vlastnosti v/v souborů databáze jsou uvedené v následující tabulce:
+Na úrovni služby Pro obecné účely každý soubor databáze získá vyhrazené IOPS a propustnost, které závisí na velikosti souboru. Větší počet souborů dosáhne více vstupně-výstupních operací a propustnosti. V následující tabulce jsou uvedeny vlastnosti souborů databáze v/v:
 
-| Velikost souboru | >= 0 a <= 128 GiB | >128 a <= 256 GiB | >256 a <= 512 GiB | >0,5 a <= 1 TiB    | >1 a <= 2 TiB    | >2 a <= 4 TiB | >4 a <= 8 TiB |
+| Velikost souboru | >= 0 a <= 128 GiB | >128 a <= 512 GiB | >0,5 a <= 1 TiB    | >1 a <= 2 TiB    | >2 a <= 4 TiB | >4 a <= 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Počet IOPS na soubor       | 500   | 1100 | 2300              | 5000              | 7 500              | 7 500              | 12 500   |
-| Propustnost na jeden soubor | soubory MiB 100/s | soubory MiB 125/s | soubory MiB 150/s | soubory MiB 200/s | 250 MiB/s | 250 MiB/s | soubory MiB 480/s | 
+| Počet IOPS na soubor       | 500   | 2300              | 5000              | 7 500              | 7 500              | 12 500   |
+| Propustnost na jeden soubor | soubory MiB 100/s | soubory MiB 150/s | soubory MiB 200/s | 250 MiB/s | 250 MiB/s | soubory MiB 480/s | 
 
 Pokud si všimnete vysoké latence v/v některých databázových souborů nebo zjistíte, že počet IOPS/propustnost dosáhne limitu, můžete zvýšit výkon [zvýšením velikosti souboru](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).
 

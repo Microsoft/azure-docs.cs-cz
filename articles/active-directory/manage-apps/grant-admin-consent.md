@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aafaeb1143049b14f0a2fe2d867a951355d1ba61
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667591"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060913"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
@@ -25,7 +25,7 @@ Naučte se, jak zjednodušit uživatelské prostředí tím, že aplikaci uděl�
 
 Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azure Active Directory souhlasu Framework](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [správce aplikace](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)nebo [správce cloudové aplikace](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
 
@@ -88,7 +88,7 @@ kde:
 Jako vždy pečlivě zkontrolujte oprávnění, která aplikace požaduje, před udělením souhlasu.
 
 > [!WARNING]
-> Udělení souhlasu správce na úrovni tenanta prostřednictvím této adresy URL odvolá všechna oprávnění, která byla dříve udělena v rámci tenanta. Oprávnění, která byla dříve ggranted uživateli na jejich vlastním jménem, nebudou ovlivněna. 
+> Udělení souhlasu správce na úrovni tenanta prostřednictvím této adresy URL odvolá všechna oprávnění, která byla dříve udělena v rámci tenanta. Oprávnění, která byla dříve udělena uživateli na jejich vlastním jménem, nebudou ovlivněna. 
 
 ## <a name="next-steps"></a>Další kroky
 

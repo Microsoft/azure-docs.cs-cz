@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/07/2020
+ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 520c2d4fd258bfab5a5a1e0abf890d58bb98fbdc
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652974"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068043"
 ---
 # <a name="common-questions"></a>Časté dotazy
 
@@ -24,7 +24,13 @@ Tento článek obsahuje odpovědi na běžné otázky týkající se služby [Az
 
 Resource stěhovací je momentálně ve verzi Public Preview. Produkční úlohy se podporují.
 
-## <a name="region-move"></a>Přesunutí oblasti
+
+
+## <a name="moving-across-regions"></a>Přesun mezi oblastmi
+
+### <a name="can-i-move-resources-across-any-regions"></a>Můžu přesouvat prostředky napříč různými oblastmi?
+
+V současné době můžete přesunout prostředky z libovolné zdrojové veřejné oblasti do libovolné cílové veřejné oblasti v závislosti na [typech prostředků dostupných v této oblasti](https://azure.microsoft.com/global-infrastructure/services/). Přesunutí prostředků v Azure Government oblastech není v současné době podporováno.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Jaké prostředky je možné přesouvat mezi oblastmi pomocí Resource Centre?
 
@@ -34,13 +40,19 @@ Pomocí nástroje Resource Centre můžete aktuálně přesouvat následující 
 - Síťové karty
 - Skupiny dostupnosti 
 - Virtuální sítě Azure 
-- Veřejné IP adresy skupiny zabezpečení sítě (skupin zabezpečení sítě)
+- Veřejné IP adresy
+- Skupiny zabezpečení sítě (NSG)
 - Interní a veřejné nástroje pro vyrovnávání zatížení 
 - Databáze SQL Azure a elastické fondy
 
+
+### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Můžu po přesunu mezi oblastmi přesunout prostředky mezi předplatnými?
+
+Po přesunutí prostředků do cílové oblasti můžete toto předplatné změnit. [Přečtěte si další informace](../azure-resource-manager/management/move-resource-group-and-subscription.md) o přesouvání prostředků do jiného předplatného. 
+
 ### <a name="where-is-the-metadata-about-a-region-move-stored"></a>Kde se ukládají metadata týkající se přesunu oblasti?
 
-Je uložený v databázi [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) a ve [službě Azure Blob Storage](../storage/common/storage-service-encryption.md)v předplatném Microsoftu.
+Je uložený v databázi [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) a ve [službě Azure Blob Storage](../storage/common/storage-service-encryption.md)v předplatném Microsoftu. V současné době se metadata ukládají do Východní USA 2 a Severní Evropa. Rozšíříme Toto pokrytí do dalších oblastí. Neomezuje se tím přesunutí prostředků mezi žádné veřejné oblasti.
 
 ### <a name="is-the-collected-metadata-encrypted"></a>Jsou shromážděná metadata zašifrovaná?
 

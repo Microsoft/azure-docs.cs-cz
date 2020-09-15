@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 09/14/2020
 ms.author: abnarain
-ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033655"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069471"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -46,25 +46,25 @@ Pro neúspěšné aktivity běžící v místním prostředí IR/Shared IR Azure
 > Žádosti o zobrazení a nahrání protokolu se spustí ve všech online autohostovaných instancích IR. Ujistěte se prosím, že všechny chybějící protokoly jsou online u všech místně hostovaných instancí IR. 
 
 
-## <a name="self-hosted-ir-general-failure-or-error"></a>Obecná vnitřní chyba nebo chyba IR v místním prostředí
+## <a name="self-hosted-ir-general-failure-or-error"></a>Obecné selhání nebo chyba místního prostředí IR
 
-### <a name="tlsssl-certificate-issue"></a>Problém certifikátu TLS/SSL
+### <a name="tlsssl-certificate-issue"></a>Problém s certifikátem TLS/SSL
 
 #### <a name="symptoms"></a>Příznaky
 
-Při pokusu o povolení certifikátu TLS/SSL (rozšířené) z místního prostředí **IR Configuration Manager**  ->  **vzdálený přístup z intranetu**po výběru certifikátu TLS/SSL se zobrazí tato chyba:
+Při pokusu o povolení certifikátu TLS/SSL (rozšířené nastavení) v nástroji **Self-hosted IR Configuration Manager** -> **Vzdálený přístup z intranetu** se po výběru certifikátu TLS/SSL zobrazí následující chyba:
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
-Ve výše uvedeném případě uživatel jako poslední položku používá certifikát s názvem "microsoft.com".
+Ve výše uvedeném případě uživatel používá certifikát s poslední položkou microsoft.com.
 
 #### <a name="cause"></a>Příčina
 
-Jedná se o známý problém WCF: ověřování WCF TLS/SSL jenom kontroluje poslední DNSName v síti SAN. 
+Jedná se o známý problém s technologií WCF: Při ověřování TLS/SSL technologií WCF se kontroluje pouze poslední název DNS v síti SAN. 
 
 #### <a name="resolution"></a>Řešení
 
-Certifikát se zástupným znakem se podporuje v prostředí IR pro místní hostování Azure Data Factory v2. K tomuto problému obvykle dochází, protože certifikát SSL není správný. Poslední DNSName v síti SAN by měl být platný. Použijte následující postup k ověření. 
+Certifikáty se zástupnými znaky se podporují v místním prostředí IR služby Azure Data Factory v2. K tomuto problému obvykle dochází kvůli nesprávnému certifikátu SSL. Poslední název DNS v síti SAN musí být platný. Při ověřování postupujte následovně. 
 1.  Otevřete konzolu pro správu, v podrobnostech certifikátu překontrolujte *alternativní název* *subjektu i* předmět. V takovém případě není například poslední položka v *alternativním názvu předmětu*, která je "DNS Name = Microsoft.com.com", legitimní.
 2.  Požádejte společnost o problém s certifikátem, aby odstranila nesprávný název DNS.
 
@@ -72,55 +72,55 @@ Certifikát se zástupným znakem se podporuje v prostředí IR pro místní hos
 
 #### <a name="symptoms"></a>Příznaky
 
-Při pokusu o zvýšení limitu souběžných úloh z Azure Data Factoryho uživatelského rozhraní se přestane reagovat, protože se *aktualizuje* trvale.
-Maximální hodnota souběžných úloh byla nastavena na 24 a chcete zvýšit počet, aby úlohy mohly běžet rychleji. Minimální hodnota, kterou můžete zadat, je 3 a maximální hodnota, kterou můžete zadat, je 32. Zvýšili jste hodnotu z 24 na 32 a kliknete na tlačítko *aktualizovat* v uživatelském rozhraní, které se zablokovalo při *aktualizaci* , jak vidíte níže. Po obnovení si zákazník tuto hodnotu ještě nezískal jako 24 a nikdy se neaktualizoval na 32.
+Při pokusu o zvýšení limitu souběžných úloh v uživatelském rozhraní Azure Data Factory dojde k trvalému zablokování ve stavu *Probíhá aktualizace*.
+Maximální hodnota počtu souběžných úloh byla nastavená na 24 a chcete tento počet navýšit, aby se úlohy mohly spouštět rychleji. Minimální hodnota, kterou můžete zadat, je 3 a maximální hodnota, kterou můžete zadat, je 32. Zvýšili jste hodnotu z 24 na 32 a kliknete na tlačítko *aktualizovat* v uživatelském rozhraní, které se zablokovalo při *aktualizaci* , jak vidíte níže. Po aktualizaci se zákazníkovi stále zobrazuje hodnota 24 a aktualizace na hodnotu 32 neproběhla.
 
 ![Stav aktualizace](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
 #### <a name="cause"></a>Příčina
 
-Omezení nastavení závisí na tom, zda je tato hodnota závislá na logicCore počítače a paměti, můžete ji upravovat pouze na menší hodnotu, jako je například 24, a výsledek zobrazit.
+Pro toto nastavení platí omezení, protože jeho hodnota závisí na logických jádrech a paměti počítače – stačí ji upravit na nižší hodnotu (například 24) a podívat se na výsledek.
 
 > [!TIP] 
 > - Podrobnosti o tom, co je počet logických jader a jak zjistit počet jader v našem počítači, najdete v [tomto článku](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
 > - Podrobnosti o výpočtu matematického protokolu. log najdete v [tomto článku](https://www.rapidtables.com/calc/math/Log_Calculator.html).
 
 
-### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Problémy s certifikátem pro místní hostování IR HA SSL
+### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Problém s certifikátem HA SSL místního prostředí IR
 
 #### <a name="symptoms"></a>Příznaky
 
-Uzel v místním prostředí IR ohlásil chybu níže:
+Pracovní uzel místního prostředí IR nahlásil následující chybu:
 
 `Failed to pull shared states from primary node net.tcp://abc.cloud.corp.Microsoft.com:8060/ExternalService.svc/. Activity ID: XXXXX The X.509 certificate CN=abc.cloud.corp.Microsoft.com, OU=test, O=Microsoft chain building failed. The certificate that was used has a trust chain that cannot be verified. Replace the certificate or change the certificateValidationMode. The revocation function was unable to check revocation because the revocation server was offline.`
 
 #### <a name="cause"></a>Příčina
 
-Když budeme zpracovávat případy související s metodou handshake SSL/TLS, můžeme se setkat s problémy souvisejícími s ověřováním řetězu certifikátů. 
+Při řešení případů souvisejících s ověřováním SSL/TLS metodou handshake můžeme narazit na některé problémy související s ověřováním řetězu certifikátů. 
 
 #### <a name="resolution"></a>Řešení
 
 - Tady je rychlý a intuitivní způsob řešení potíží při sestavení řetězu certifikátů X. 509.
  
-    1. Exportujte certifikát, který je třeba ověřit. Přejděte na Správa certifikátu počítače a Najděte certifikát, který chcete ověřit, a klikněte pravým tlačítkem na **všechny úkoly**  ->  **exportovat**.
+    1. Exportujte certifikát, který je potřeba ověřit. Přejděte do správy certifikátů počítače, vyhledejte certifikát, který chcete zkontrolovat, a klikněte pravým tlačítkem na **Všechny úlohy** -> **Exportovat**.
     
         ![Exportovat úlohy](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
     2. Zkopírujte exportovaný certifikát do klientského počítače. 
-    3. Na straně klienta spusťte pod příkazem CMD příkaz níže. Ujistěte se, že jste nahradili následující *\<certificate path>* a *\<output txt file path>* zástupné symboly souvisejícími cestami.
+    3. Na straně klienta spusťte na příkazovém řádku následující příkaz. Ujistěte se, že jste nahradili následující *\<certificate path>* a *\<output txt file path>* zástupné symboly souvisejícími cestami.
     
         ```
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Například:
+        Příklad:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
-    4. Ověřte, zda výstupní soubor txt neobsahuje chybu. Souhrn chyb najdete na konci souboru txt.
+    4. Ve výstupním souboru TXT zkontrolujte, jestli nedošlo k nějaké chybě. Souhrn chyb najdete na konci souboru TXT.
 
-        Například: 
+        Příklad: 
 
         ![Souhrn chyb](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 
@@ -133,26 +133,26 @@ Když budeme zpracovávat případy související s metodou handshake SSL/TLS, m
     1. Tyto informace můžete získat tak, že zkontrolujete podrobnosti certifikátu.
     
         ![Podrobnosti certifikátu](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
-    1. Spusťte příkaz níže. Ujistěte se, že jste nahradili *\<certificate path>* zástupný symbol se související cestou certifikátu.
+    1. Spusťte následující příkaz. Ujistěte se, že jste nahradili *\<certificate path>* zástupný symbol se související cestou certifikátu.
     
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Pak se otevře **Nástroj pro načtení adresy URL** . Kliknutím na tlačítko **načíst** můžete ověřit certifikáty z AIA, CDP a protokolu OCSP.
+    1. Pak se otevře **nástroj pro načtení adresy URL**. Certifikáty od AIA, CDP a OCSP můžete ověřit kliknutím na tlačítko **Načíst**.
 
         ![Tlačítko pro načtení](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
-        Řetěz certifikátů se dá úspěšně sestavit, pokud je certifikát z AIA ověřený a certifikát z CDP nebo OCSP je ověřený.
+        Řetěz certifikátů je možné úspěšně sestavit, pokud je certifikát od AIA ověřený a pokud je certifikát od CDP nebo OCSP ověřený.
 
-        Pokud se při načítání AIA, CDP, práce se síťovým týmem zobrazí chyba, aby byl klientský počítač připraven k připojení k cílové adrese URL. Bude stačit, pokud je možné ověřit cestu http nebo cestu protokolu LDAP.
+        Pokud při načítání AIA nebo CDP dojde k selhání, ve spolupráci se síťovým týmem připravte klientský počítač na připojení k cílové adrese URL. Stačí, když je možné ověřit cestu HTTP nebo cestu LDAP.
 
-### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>Prostředí IR v místním prostředí nemůže načíst soubor nebo sestavení.
+### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>Místnímu prostředí IR se nepodařilo načíst soubor nebo sestavení
 
 #### <a name="symptoms"></a>Příznaky
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Například: 
+Příklad: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -165,7 +165,7 @@ Pokud převezmete monitorování procesů, můžete zobrazit následující výs
 > [!TIP] 
 > Filtr můžete nastavit tak, jak je znázorněno na obrázku obrazovky.
 > Oznamujeme, že knihovna DLL **System. ValueTuple** není umístěná ve složce v mezipaměti GAC nebo v adresáři *c:\Program Files\microsoft Integration Runtime\4.0\Gateway*nebo ve složce *c:\Program Files\Microsoft integr Runtime\4.0\Shared* .
-> V podstatě načte knihovnu DLL ze složky *GAC* a pak ze složky *Gateway* *Shared* a finally. Proto můžete umístit knihovnu DLL na libovolnou cestu, která může být užitečná.
+> V zásadě platí, že se soubor DLL nejprve načítá ze složky *GAC*, pak ze složky *Shared* a nakonec ze složky *Gateway*. Proto můžete soubor DLL umístit do libovolné složky, což může být užitečné.
 
 ![Nastavení filtrů](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -173,7 +173,7 @@ Pokud převezmete monitorování procesů, můžete zobrazit následující výs
 
 Zjistíte, že **System.ValueTuple.dll** se nachází ve složce *C:\Program Files\Microsoft integr Runtime\4.0\Gateway\DataScan* Folder. Problém vyřešte tak, že zkopírujete **System.ValueTuple.dll** do složky *C:\Program Files\Microsoft Runtime\4.0\Gateway Integration* .
 
-Můžete použít stejnou metodu pro řešení chybějících potíží s jiným souborem nebo sestavením.
+Stejným způsobem můžete vyřešit i další problémy s chybějícími soubory nebo sestaveními.
 
 #### <a name="more-information"></a>Další informace
 
@@ -186,78 +186,78 @@ Z chyby níže můžete zřetelně zobrazit *systém sestavení. ValueTuple* nen
 Další informace o globální mezipaměti sestavení (GAC) najdete v [tomto článku](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
 
 
-### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Jak auditovat chybějící místně hostovaný klíč IR
+### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Audit chybějícího klíče místního prostředí IR
 
 #### <a name="symptoms"></a>Příznaky
 
-Prostředí Integration runtime v místním prostředí se náhle přepne do režimu offline bez klíče, v protokolu událostí se zobrazí chybová zpráva: `Authentication Key is not assigned yet`
+Místní prostředí Integration Runtime bez klíče náhle přejde do režimu offline a v protokolu událostí se zobrazí následující chybová zpráva: `Authentication Key is not assigned yet`
 
 ![Chybí ověřovací klíč.](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
 #### <a name="cause"></a>Příčina
 
-- Odstraní se místně hostovaný uzel IR nebo logické prostředí IR v místním prostředí (webhost) na portálu.
-- Je provedena čistá odinstalace.
+- Na portálu je odstraněný uzel místního prostředí IR nebo logické místní prostředí IR.
+- Provedla se čistá odinstalace.
 
 #### <a name="resolution"></a>Řešení
 
-Pokud se nepoužijí žádné z výše uvedených příčin, můžete přejít do složky: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*a ověřit, zda je soubor s názvem **Konfigurace** odstraněn. Pokud se odstraní, postupujte podle pokynů uvedených [tady](https://www.netwrix.com/how_to_detect_who_deleted_file.html) a proveďte audit, který soubor odstraní.
+Pokud se nepoužijí žádné z výše uvedených příčin, můžete přejít do složky: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*a ověřit, zda je soubor s názvem **Konfigurace** odstraněn. Pokud je odstraněný, podle [těchto](https://www.netwrix.com/how_to_detect_who_deleted_file.html) pokynů proveďte audit a zjistěte, kdo soubor odstranil.
 
 ![Ověřit soubor konfigurací](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
 
-### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>Nejde použít místní prostředí IR k mostu dvou místních úložišť dat.
+### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>Pomocí místního prostředí IR není možné přemostit dvě místní úložiště dat
 
 #### <a name="symptoms"></a>Příznaky
 
-Po vytvoření samoobslužného úřadu pro ukládání zdrojového i cílového úložiště dat chcete, aby se tyto dvě finanční údaje připojovaly společně, aby se dokončila kopie. Pokud jsou úložiště dat nakonfigurovaná v různých virtuální sítě nebo nemůžou pochopit mechanismus brány, dojde k chybám, jako je: *ovladač zdroje nejde najít v cíli IR*; k *zdroji není přistupující cílovým IR*.
+Po vytvoření místních prostředí IR pro zdrojové i cílové úložiště dat chcete tato dvě prostředí IR propojit a dokončit kopírování. Pokud jsou úložiště dat nakonfigurovaná v různých virtuální sítě nebo nemůžou pochopit mechanismus brány, dojde k chybám, jako je: *ovladač zdroje nejde najít v cíli IR*; k *zdroji není přistupující cílovým IR*.
  
 #### <a name="cause"></a>Příčina
 
-Prostředí IR v místním prostředí je navrženo jako centrální uzel aktivity kopírování, nikoli klientského agenta, který je třeba nainstalovat pro každé úložiště dat.
+Místní prostředí IR je navržené jako centrální uzel aktivity kopírování, ne jako klientský agent, kterého je potřeba nainstalovat pro každé úložiště dat.
  
-V takovém případě by měla být propojená služba pro každé úložiště dat vytvořena se stejným IR a má by mít přístup k úložišti dat prostřednictvím sítě. Bez ohledu na to, jestli je IR nainstalovaný se zdrojovým úložištěm dat, cílovým úložištěm dat nebo na třetím počítači, pokud se vytvoří dvě propojené služby s jiným finančním úřadem, ale používá se ve stejné aktivitě kopírování, použije se cílový IR a v cílovém počítači IR se musí nainstalovat ovladače pro úložiště dat.
+Ve výše uvedeném případě by se propojená služba pro obě úložiště dat měla vytvořit se stejným prostředím IR a toto prostředí IR by mělo mít síťový přístup k oběma úložištím dat. Bez ohledu na to, jestli je prostředí IR nainstalované ve zdrojovém úložišti dat, v cílovém úložišti dat nebo na jiném počítači, pokud se vytvoří dvě propojené služby s různými prostředími IR a použijí se ve stejné aktivitě kopírování, použije se cílové prostředí IR a na počítači s cílovým prostředím IR musí být nainstalované ovladače pro obě úložiště dat.
 
 #### <a name="resolution"></a>Řešení
 
-Nainstalujte ovladače pro zdroj i cíl do cílového prostředí IR a ujistěte se, že mají přístup ke zdrojovému úložišti dat.
+Nainstalujte v cílovém prostředí IR ovladače pro zdroj i cíl a ujistěte se, že má přístup ke zdrojovému úložišti dat.
  
-Pokud přenos nemůže proběhnout přes síť mezi dvěma datovými úložišti (například jsou nakonfigurované ve dvou virtuální sítě), nesmíte kopii dokončit v jedné aktivitě, i když je nainstalovaná možnost IR. V takovém případě můžete vytvořit dvě aktivity kopírování se dvěma finančními autoritami, každý z nich: 1 IR ke zkopírování z úložiště dat 1 do Azure Blob Storage, druhý pro kopírování z Azure Blob Storage do úložiště dat 2. To může simulovat požadavek na použití infračerveného signálu k vytvoření mostu, který spojuje dvě odpojená úložiště dat.
+Pokud provoz nemůže procházet sítí mezi dvěma úložišti dat (například pokud jsou nakonfigurovaná ve dvou virtuálních sítích), není možné dokončit kopírování v rámci jedné aktivity, a to ani s nainstalovaným prostředím IR. V takovém případě můžete ve virtuální síti vytvořit dvě aktivity kopírování se dvěma prostředími IR: Jedno prostředí IR pro kopírování z prvního úložiště dat do služby Azure Blob Storage a druhé prostředí IR pro kopírování ze služby Azure Blob Storage do druhého úložiště dat. To může simulovat požadavek na použití prostředí IR k vytvoření přemostění, které propojí dvě odpojená úložiště dat.
 
 
-### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Problémy s synchronizací přihlašovacích údajů způsobují ztráty přihlašovacích údajů z HA.
+### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Problém se synchronizací přihlašovacích údajů vede ke ztrátě přihlašovacích údajů v režimu vysoké dostupnosti
 
 #### <a name="symptoms"></a>Příznaky
 
-Přihlašovací údaj ke zdroji dat "XXXXXXXXXX" je odstraněn z aktuálního Integration Runtime uzlu s datovou částí "při odstranění služby propojení v Azure Portal nebo úloha má nesprávnou datovou část, vytvořte novou službu propojení znovu s přihlašovacími údaji".
+Přihlašovací údaje XXXXXXXXXX pro zdroj dat se odstranily z aktuálního uzlu prostředí Integration Runtime s datovou částí Když odstraníte službu propojení na webu Azure Portal nebo má úkol nesprávnou datovou část, vytvořte novou službu propojení s vašimi přihlašovacími údaji.
 
 #### <a name="cause"></a>Příčina
 
-Místní prostředí IR je integrováno v režimu HA se dvěma uzly, ale nejsou ve stavu synchronizace přihlašovacích údajů, což znamená, že přihlašovací údaje uložené v uzlu Dispatcher nejsou synchronizované s ostatními pracovními uzly. Pokud dojde k převzetí služeb při selhání z uzlu dispečer na pracovní uzel, ale přihlašovací údaje existovaly pouze v předchozím uzlu Dispatcher, úloha selže při pokusu o přístup k přihlašovacím údajům a dojde k chybě.
+Vaše místní prostředí IR je vytvořené v režimu vysoké dostupnosti se dvěma uzly, které však nejsou ve stavu synchronizace přihlašovacích údajů, což znamená, že se přihlašovací údaje uložené na uzlu dispečera nesynchronizují s dalšími pracovními uzly. Pokud dojde k převzetí služeb při selhání z uzlu dispečera na pracovní uzel, ale přihlašovací údaje existovaly pouze na předchozím uzlu dispečera, úloha při pokusu o přístup k přihlašovacím údajům selže a zobrazí se výše uvedená chyba.
 
 #### <a name="resolution"></a>Řešení
 
-Jediným způsobem, jak se tomuto problému vyhnout, je zajistit, aby byly dva uzly ve stavu synchronizace přihlašovacích údajů. V opačném případě musíte znovu zadat přihlašovací údaje pro nového dispečera.
+Jediným způsobem, jak se vyhnout tomuto problému, je zajistit, aby tyto dva uzly byly ve stavu synchronizace přihlašovacích údajů. Jinak musíte pro nového dispečera zadat přihlašovací údaje znovu.
 
 
-### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Nejde zvolit certifikát z důvodu chybějícího privátního klíče.
+### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Kvůli chybějícímu privátnímu klíči nejde zvolit certifikát
 
 #### <a name="symptoms"></a>Příznaky
 
-1.  Importujte soubor PFX do úložiště certifikátů.
-2.  Při výběru certifikátu prostřednictvím uživatelského rozhraní Configuration Manager IR se zobrazí chyba:
+1.  Importovali jste do úložiště certifikátů soubor PFX.
+2.  Při výběru certifikátu v uživatelském rozhraní nástroje IR Configuration Manager se zobrazí následující chyba:
 
     ![Chybí privátní klíč.](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
 
 #### <a name="cause"></a>Příčina
 
-- Uživatelský účet je v nízkém oprávnění a nemůže získat přístup k privátnímu klíči.
-- Certifikát se vygeneroval jako signatura, ale ne jako výměna klíčů.
+- Uživatelský účet má nízká oprávnění a nemá přístup k privátnímu klíči.
+- Certifikát se vygeneroval jako certifikát podpisu, a ne jako certifikát výměny klíčů.
 
 #### <a name="resolution"></a>Řešení
 
-1.  Použijte privilegovaný účet, který má přístup k privátnímu klíči pro práci s uživatelským rozhraním.
-2.  Pro import certifikátu spusťte následující příkaz:
+1.  Použijte k práci s uživatelským rozhraním privilegovaný účet s přístupem k privátnímu klíči.
+2.  Importujte certifikát spuštěním následujícího příkazu:
     
     ```
     certutil -importpfx FILENAME.pfx AT_KEYEXCHANGE
@@ -574,50 +574,6 @@ Netmon trasování a proveďte další analýzu.
     ![HODNOTA TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
     Proto je potřeba zapojit síťový tým a ověřit, co je čtvrtý segment směrování z místního prostředí IR. Pokud se jedná o bránu firewall jako systém Linux, zkontrolujte všechny protokoly, proč zařízení obnoví balíček po TCP 3 handshake. Pokud si ale nejste jistí, kde se má prozkoumat, zkuste získat trasování Netmon z místního prostředí IR a brány firewall během problematické doby, abyste zjistili, které zařízení může resetovat tento balíček a způsobit odpojení. V takovém případě je potřeba, abyste svůj síťový tým přesunuli vpřed.
-
-### <a name="how-to-collect-netmon-trace"></a>Jak shromažďovat Netmon trasování
-
-1.  Stáhněte si nástroje Netmon z [tohoto webu](https://cnet-downloads.com/network-monitor)a nainstalujte je na serverovém počítači (jakýkoli server s problémem) a klienta (jako je například prostředí IR pro místní hostování).
-
-2.  Vytvořte složku, například v následující cestě: *D:\netmon*. Ujistěte se, že má dostatek místa pro uložení protokolu.
-
-3.  Zaznamenejte informace o IP adrese a portu. 
-    1. Spuštění příkazového řádku
-    2. Vyberte Spustit jako správce a spusťte následující příkaz:
-       
-        ```
-        Ipconfig /all >D:\netmon\IP.txt
-        netstat -abno > D:\netmon\ServerNetstat.txt
-        ```
-
-4.  Zachyťte trasování Netmon (síťový balíček).
-    1. Spuštění příkazového řádku
-    2. Vyberte Spustit jako správce a spusťte následující příkaz:
-        
-        ```
-        cd C:\Program Files\Microsoft Network Monitor 3
-        ```
-    3. Můžete použít tři různé příkazy pro zachycení síťové stránky:
-        - Možnost A: příkaz souboru RoundRobin (zachytí se jenom jeden soubor a přepíše staré protokoly).
-
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
-            ```         
-        - Možnost B: příkaz zřetězeného souboru (vytvoří se nový soubor, pokud se dosáhne 200 MB).
-        
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
-            ```          
-        - Možnost C: příkaz plánovaného souboru.
-
-            ```
-            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
-            ```  
-
-5.  Stisknutím **kombinace kláves CTRL + C** zastavíte zachytávání trasování Netmon.
- 
-> [!NOTE]
-> Pokud je na klientském počítači možné shromažďovat pouze trasování Netmon, Získejte prosím adresu IP serveru, která vám usnadní analýzu tohoto trasování.
 
 ### <a name="how-to-analyze-netmon-trace"></a>Jak analyzovat trasování Netmon
 

@@ -8,22 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873751"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060743"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
-> [!div class="op_single_selector"]
-> * [Použití buňky Magic](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Pomocí akce skriptu](apache-spark-python-package-installation.md)
-
 HDInsight obsahuje dvě vestavěné Instalace Pythonu v clusteru Spark, Anaconda Python 2,7 a Python 3,5. Zákazníci možná budou muset přizpůsobit prostředí Python. Podobně jako instalace externích balíčků Pythonu nebo jiné verze Pythonu. Tady uvádíme osvědčený postup pro bezpečnou správu prostředí Pythonu pro Apache Spark clustery v HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md). Pokud ještě nemáte cluster Spark ve službě HDInsight, můžete spustit akce skriptu během vytváření clusteru. Podívejte se na dokumentaci, [Jak používat akce vlastního skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -60,9 +56,9 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
 1. Vytvořte virtuální prostředí Python pomocí conda. Virtuální prostředí poskytuje izolovaný prostor pro vaše projekty, aniž by došlo k porušení dalších. Při vytváření virtuálního prostředí Python můžete určit verzi Pythonu, kterou chcete použít. I přesto musíte vytvořit virtuální prostředí, i když byste chtěli používat Python 2,7 a 3,5. Tento požadavek zajistí, aby výchozí prostředí clusteru nepodařilo přerušito. Spustí v clusteru akce skriptu pro všechny uzly s níže uvedeným skriptem, aby se vytvořilo virtuální prostředí Pythonu.
 
-    -   `--prefix`Určuje cestu, kde virtuální prostředí conda žije. V závislosti na zadané cestě je potřeba změnit několik konfigurací. V tomto příkladu používáme py35new, protože cluster má už existující virtuální prostředí s názvem py35.
-    -   `python=`Určuje verzi Pythonu pro virtuální prostředí. V tomto příkladu používáme verzi 3,5, což je stejná verze jako v clusteru. K vytvoření virtuálního prostředí můžete také použít jiné verze Pythonu.
-    -   `anaconda`Určuje package_spec jako Anaconda pro instalaci balíčků Anaconda ve virtuálním prostředí.
+    -   `--prefix` Určuje cestu, kde virtuální prostředí conda žije. V závislosti na zadané cestě je potřeba změnit několik konfigurací. V tomto příkladu používáme py35new, protože cluster má už existující virtuální prostředí s názvem py35.
+    -   `python=` Určuje verzi Pythonu pro virtuální prostředí. V tomto příkladu používáme verzi 3,5, což je stejná verze jako v clusteru. K vytvoření virtuálního prostředí můžete také použít jiné verze Pythonu.
+    -   `anaconda` Určuje package_spec jako Anaconda pro instalaci balíčků Anaconda ve virtuálním prostředí.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
@@ -76,8 +72,8 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     - Použít conda kanál:
 
-        -   `seaborn`je název balíčku, který chcete nainstalovat.
-        -   `-n py35new`Zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
+        -   `seaborn` je název balíčku, který chcete nainstalovat.
+        -   `-n py35new` Zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
@@ -92,8 +88,8 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     - Použít conda kanál:
 
-        -   `numpy=1.16.1`je název a verze balíčku, které byste chtěli nainstalovat.
-        -   `-n py35new`Zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
+        -   `numpy=1.16.1` je název a verze balíčku, které byste chtěli nainstalovat.
+        -   `-n py35new` Zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
@@ -132,7 +128,7 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     4. Uložte změny a restartujte ovlivněné služby. Tyto změny vyžadují restartování služby Spark2. Uživatelské rozhraní Ambari vás vyzve k vyžadovanámu restartování, kliknutím na restartovat restartujte všechny ovlivněné služby.
 
-        ![Změna konfigurace Sparku prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Restartovat služby](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
 4. Pokud chcete použít nové vytvořené virtuální prostředí v Jupyter. Změňte konfigurace Jupyter a restartujte Jupyter. Spusťte akce skriptu na všech uzlech hlaviček pomocí příkazu níže, aby odkazovaly Jupyter na nové vytvořené virtuální prostředí. Nezapomeňte upravit cestu k předponě, kterou jste zadali pro vaše virtuální prostředí. Po spuštění této akce skriptu restartujte službu Jupyter prostřednictvím uživatelského rozhraní Ambari, aby tato změna byla dostupná.
 

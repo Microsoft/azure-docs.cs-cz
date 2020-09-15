@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023835"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068808"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
@@ -156,7 +156,7 @@ Pokud jste v USA nenakonfigurovali ID volajícího MFA, telefonní hovory od Mic
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> Pokud jsou volání Azure Multi-Factor Authenticationa prostřednictvím veřejné telefonní sítě, někdy jsou směrována prostřednictvím dopravce, který nepodporuje ID volajícího. Z tohoto důvodu není ID volajícího zaručené, i když ho Azure Multi-Factor Authentication vždycky odesílá.
+> Když jsou volání Azure Multi-Factor Authenticationa prostřednictvím veřejné telefonní sítě, někdy jsou volání směrována přes dopravce, který nepodporuje ID volajícího. Z tohoto důvodu není ID volajícího zaručené, i když ho Azure Multi-Factor Authentication vždycky odesílá. To platí pro telefonní hovory i pro textové zprávy, které poskytuje Azure Multi-Factor Authentication. Pokud potřebujete ověřit, jestli je textová zpráva z Azure Multi-Factor Authentication, přečtěte si informace [o tom, jaké krátké kódy SMS se používají pro posílání zpráv?](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 Pokud chcete nakonfigurovat vlastní číslo ID volajícího, proveďte následující kroky:
 

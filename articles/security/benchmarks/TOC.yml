@@ -2,11 +2,37 @@
   href: index.yml
 - name: Úvod
   href: introduction.md
-- name: Zabezpečovací mechanismy
+- name: Zabezpečovací mechanismy (v2)
   expanded: true
   items:
     - name: Přehled zabezpečovacích mechanismů Azure
       href: overview.md
+    - name: Zabezpečení sítě
+      href: security-controls-v2-network-security.md
+    - name: Správa identit
+      href: security-controls-v2-identity-management.md
+    - name: Privilegovaný přístup
+      href: security-controls-v2-privileged-access.md
+    - name: Ochrana dat
+      href: security-controls-v2-data-protection.md
+    - name: Správa aktiv
+      href: security-controls-v2-asset-management.md
+    - name: Protokolování a detekce hrozeb
+      href: security-controls-v2-logging-threat-detection.md
+    - name: Reakce na incidenty
+      href: security-controls-v2-incident-response.md
+    - name: Správa stavu a ohrožení zabezpečení
+      href: security-controls-v2-posture-vulnerability-management.md
+    - name: Zabezpečení koncového bodu
+      href: security-controls-v2-endpoint-security.md
+    - name: Backup a obnovení
+      href: security-controls-v2-backup-recovery.md
+    - name: Zásady správného řízení a strategie
+      href: security-controls-v2-governance-strategy.md
+- name: Zabezpečovací mechanismy (v1)
+  items:
+    - name: Přehled zabezpečovacích mechanismů Azure (v1)
+      href: overview-v1.md
     - name: Zabezpečení sítě
       href: security-control-network-security.md
     - name: Protokolování a monitorování

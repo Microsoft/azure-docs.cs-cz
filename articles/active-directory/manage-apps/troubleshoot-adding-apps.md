@@ -1,6 +1,6 @@
 ---
-title: Řešení běžných potíží při přidávání aplikace do Azure Active Directory
-description: Řešení běžných problémů, které lidé čelí při přidávání aplikace do Azure Active Directory.
+title: Řešení běžných potíží při přidávání nebo odebírání aplikace k Azure Active Directory
+description: Řešení běžných problémů, které lidé při přidávání nebo odebírání aplikace do Azure Active Directory čelí
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 1502c97e625d3af128772451be8db4dd6187e3a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89410401"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068026"
 ---
-# <a name="troubleshoot-common-problem-adding-an-application-to-azure-active-directory"></a>Řešení běžných potíží při přidávání aplikace do Azure Active Directory
-Tento článek vám pomůže pochopit běžné problémy, které lidé čelí při přidávání aplikace do Azure Active Directory.
+# <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Řešení běžných potíží při přidávání nebo odebírání aplikace k Azure Active Directory
+Tento článek vám pomůže pochopit běžné problémy, které lidé čelí při přidávání nebo odebírání aplikace do Azure Active Directory.
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Kliknuli jsem na tlačítko Přidat a aplikace trvala dlouhou dobu.
 Za určitých okolností může trvat 1-2 minut (a někdy delší), než se aplikace zobrazí po přidání do adresáře. I když se nejedná o normální očekávaný výkon, můžete zobrazit Přidání aplikace kliknutím na ikonu **oznámení** (zvonek) v pravém horním rohu [Azure Portal](https://portal.azure.com/) a vyhledáním **probíhajícího** nebo **dokončeného** oznámení s popiskem **Přidat aplikaci.**
@@ -34,6 +34,16 @@ Pokud při kliknutí na tlačítko **Přidat** dojde k chybě, zobrazí se **ozn
 Pokud potřebujete pomáhat se seznámení s aplikacemi, [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directorym](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) článkem, je dobrým místem, kde začít.
 
 Kromě toho [Knihovna dokumentů aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) pomáhá získat další informace o jednotném přihlašování pomocí služby Azure AD a o tom, jak to funguje.
+
+## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>Chci odstranit aplikaci, ale tlačítko Odstranit je zakázané
+
+Tlačítko Odstranit bude zakázáno v následujících scénářích:
+
+- Pro aplikace v rámci podnikové aplikace, pokud nemáte jednu z následujících rolí: globální správce, správce cloudové aplikace, Správce aplikací nebo vlastník instančního objektu.
+
+- V případě aplikace Microsoftu je nebudete moct odstranit z uživatelského rozhraní bez ohledu na vaši roli.
+
+- Pro servicePrincipals, které odpovídají spravované identitě. Objekty služby spravované identity se v okně podnikové aplikace nedají odstranit. Abyste ho mohli spravovat, musíte přejít do prostředku Azure. Vymazat Další informace o [spravované identitě](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Jak zobrazit podrobnosti oznámení na portálu
 Podrobnosti o jakémkoli oznámení na portálu můžete zobrazit podle následujících kroků:

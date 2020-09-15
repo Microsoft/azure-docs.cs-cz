@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/25/2020
-ms.openlocfilehash: c3813210808138f02f664a5445ef6faefc9591dc
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031955"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061797"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -70,7 +70,7 @@ Dokončete části Vytvoření skupiny prostředků, vytvoření clusteru AKS a 
     ```azurecli
     kubectl version
     ```
-1. Ujistěte se, že verze Kubernetes je 1.16.0 nebo novější. Následující příkaz upgraduje cluster Kubernetes i fond uzlů. Spuštění příkazu může trvat několik minut. V tomto příkladu je skupina prostředků *contosoResourceGroup*a cluster Kubernetes je *contosoAKSCluster*.
+1. Ujistěte se, že verze Kubernetes je 1.16.0 nebo novější. V případě clusterů Windows se ujistěte, že verze Kubernetes je 1.18.0 nebo novější. Následující příkaz upgraduje cluster Kubernetes i fond uzlů. Spuštění příkazu může trvat několik minut. V tomto příkladu je skupina prostředků *contosoResourceGroup*a cluster Kubernetes je *contosoAKSCluster*.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
@@ -110,18 +110,20 @@ Pokud chcete vytvořit vlastní Trezor klíčů a nastavit tajné kódy, postupu
 
 ## <a name="create-your-own-secretproviderclass-object"></a>Vytvoření vlastního objektu SecretProviderClass
 
-Chcete-li vytvořit vlastní objekt SecretProviderClass s parametry specifickými pro konkrétního zprostředkovatele pro ovladač pro úložiště tajných klíčů, [použijte tuto šablonu](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml). Tento objekt zajistí přístup k identitě vašeho trezoru klíčů.
+Chcete-li vytvořit vlastní objekt SecretProviderClass s parametry specifickými pro konkrétního zprostředkovatele pro ovladač pro úložiště tajných klíčů, [použijte tuto šablonu](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass_service_principal.yaml). Tento objekt zajistí přístup k identitě vašeho trezoru klíčů.
 
 V ukázkovém souboru SecretProviderClass YAML vyplňte chybějící parametry. Jsou vyžadovány následující parametry:
 
-* **userAssignedIdentityID**: ID klienta instančního objektu
+* **userAssignedIdentityID**: # [povinné] Pokud používáte instanční objekt, pomocí ID klienta určete, která spravovaná identita přiřazená uživatelem se má použít. Pokud jako spravovanou identitu virtuálního počítače používáte identitu přiřazenou uživatelem, zadejte ID klienta identity. Pokud je hodnota prázdná, použije se ve výchozím nastavení identita přiřazená systémem na virtuálním počítači. 
 * název **trezoru klíčů: název**vašeho trezoru klíčů
 * **objekty**: kontejner pro všechen tajný obsah, který chcete připojit.
     * **ObjectName**: název tajného obsahu
     * **ObjectType**: typ objektu (tajný kód, klíč, certifikát)
-* Skupina prostředků **Resources**: název skupiny prostředků
-* **SubscriptionId**: ID předplatného vašeho trezoru klíčů
+* skupina **prostředků: název**skupiny prostředků # [požadováno pro Version < 0.0.4] skupiny prostředků trezoru klíčů.
+* **SubscriptionId**: ID předplatného vašeho trezoru klíčů # [požadováno pro Version < 0.0.4] ID předplatného trezoru klíčů.
 * **tenantID**: ID klienta nebo ID adresáře vašeho trezoru klíčů
+
+Dokumentace všech povinných polí je k dispozici zde: [odkaz](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 Aktualizovaná šablona je uvedena v následujícím kódu. Stáhněte si ho jako soubor YAML a vyplňte požadovaná pole. V tomto příkladu je Trezor klíčů **contosoKeyVault5**. Má dva tajné klíče, **secret1** a **secret2**.
 
@@ -210,6 +212,11 @@ Pokud používáte spravované identity, přiřaďte ke clusteru AKS, který jst
 1. Pokud chcete vytvořit, vypsat nebo načíst spravovanou identitu přiřazenou uživatelem, musí mít váš cluster AKS přiřazenou roli [spravovaného operátoru identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Ujistěte se, že **$ClientID** je ClientID clusteru Kubernetes. V případě tohoto oboru se bude jednat o službu předplatného Azure, konkrétně skupinu prostředků uzlu, která byla vytvořena při vytvoření clusteru AKS. Tento rozsah zajistí, že role přiřazené níže mají vliv jenom na prostředky v této skupině. 
 
     ```azurecli
+    RESOURCE_GROUP=contosoResourceGroup
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+    
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP

@@ -6,18 +6,18 @@ ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9e860941c3d782498c12afa12f285f44e7e68f37
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497541"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069437"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Kurz: Přidání parametrů do šablony ARM
 
 V [předchozím kurzu](template-tutorial-add-resource.md)jste zjistili, jak do šablony přidat účet úložiště a nasadit ho. V tomto kurzu se naučíte, jak vylepšit šablonu Azure Resource Manager (ARM) přidáním parametrů. Dokončení tohoto kurzu trvá přibližně **14 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz o prostředcích](template-tutorial-add-resource.md), ale není to nutné.
 
@@ -29,7 +29,7 @@ Na konci předchozího kurzu má vaše šablona následující JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
-Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně kódovaný. Tuto šablonu můžete použít jenom k nasazení stejného účtu úložiště pokaždé, když. Chcete-li nasadit účet úložiště s jiným názvem, bude nutné vytvořit novou šablonu, což zjevně není praktický způsob, jak automatizovat nasazení.
+Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně zakódovaný. Danou šablonu proto můžete použít jen k nasazení stejného účtu úložiště. Chcete-li nasadit účet úložiště s jiným názvem, bude nutné vytvořit novou šablonu, což zjevně není praktický způsob, jak automatizovat nasazení.
 
 ## <a name="make-template-reusable"></a>Nastavit šablonu jako znovu
 
@@ -114,7 +114,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, použijte k zobrazení protokolů ladění přepínač **ladění** s příkazem nasazení.  Můžete také použít **podrobný** přepínač k zobrazení úplných protokolů ladění.
+> Pokud se nasazení nepovedlo, pomocí **podrobného** přepínače Získejte informace o vytvářených prostředcích. K získání dalších informací pro ladění použijte přepínač **ladění** .
 
 Chcete-li zobrazit flexibilitu šablony, nasaďte se znovu. Tentokrát nastavte parametr SKU na **Standard_GRS**. Můžete buď předat nový název a vytvořit jiný účet úložiště, nebo použít stejný název k aktualizaci stávajícího účtu úložiště. Obě možnosti fungují.
 

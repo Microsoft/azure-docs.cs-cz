@@ -1,20 +1,20 @@
 ---
 title: Správa síťových adaptérů pro obnovení místních havárií pomocí Azure Site Recovery
 description: Popisuje, jak spravovat síťová rozhraní pro místní zotavení po havárii do Azure pomocí Azure Site Recovery
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
-ms.author: mayg
-ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129891"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068111"
 ---
-# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Správa síťových rozhraní virtuálních počítačů pro zotavení místních havárií do Azure
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Správa síťových rozhraní virtuálních počítačů pro zotavení po havárii místního prostředí do Azure
 
 Virtuální počítač (VM) v Azure musí mít připojené aspoň jedno síťové rozhraní. Může mít k němu připojené tolik síťových rozhraní, jako podporuje velikost virtuálního počítače.
 

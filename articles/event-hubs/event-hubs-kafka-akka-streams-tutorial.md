@@ -3,15 +3,16 @@ title: Použití datových proudů Akka pro Apache Kafka – Azure Event Hubs | 
 description: Tento článek poskytuje informace o tom, jak připojit Akka datové proudy k centru událostí Azure.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbbeef37c4cbdd52d2127c5242474ac46e42d25
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320203"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061695"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Použití Akka Streams se službou Event Hubs pro Apache Kafka
-V tomto kurzu se dozvíte, jak propojit Akka datové proudy s centrem událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs pro Kafka podporuje [Apache Kafka verze 1,0.](https://kafka.apache.org/10/documentation.html)
+
+V tomto kurzu se dozvíte, jak propojit Akka streamy prostřednictvím podpory Event Hubs Apache Kafka bez změny klientů protokolu nebo spuštění vlastních clusterů. 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -23,7 +24,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 

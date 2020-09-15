@@ -3,12 +3,12 @@ title: Jak vytvořit a spravovat protokol DHCP
 description: Tento článek vysvětluje, jak spravovat protokol DHCP v řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3fc3de228179925afdf1b7c1015c577fd9c4c924
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752174"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069556"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>Jak vytvořit a spravovat DHCP v řešení Azure VMWare
 
@@ -56,7 +56,7 @@ Po vytvoření serveru DHCP budete muset do něj přidat segmenty sítě.
 
 ## <a name="create-dhcp-relay-service"></a>Vytvořit předávací službu DHCP
 
-1. V okně NXT-T vyberte kartu **síť** a v části **Správa IP adres**vyberte **DHCP**. Vyberte **Přidat server**. Jako **Typ serveru** vyberte možnost předávání DHCP a zadejte název serveru a IP adresu pro Server Relay. Vyberte **Uložit** a uložte tak provedené změny.
+1. V okně NSX-T vyberte kartu **síť** a v části **Správa IP adres**vyberte **DHCP**. Vyberte **Přidat server**. Jako **Typ serveru** vyberte možnost předávání DHCP a zadejte název serveru a IP adresu pro Server Relay. Vyberte **Uložit** a uložte tak provedené změny.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="vytvořit server pro předávání DHCP" border="true":::
 

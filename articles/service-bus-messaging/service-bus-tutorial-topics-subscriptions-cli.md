@@ -5,12 +5,12 @@ ms.date: 06/23/2020
 ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 080b089efa276779420f6d9bc8e76272f1e65788
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189809"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069692"
 ---
 # <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Použití rozhraní příkazového řádku Azure k vytvoření Service Busho tématu a odběrů tématu
 V tomto rychlém startu pomocí Azure CLI vytvoříte Service Bus téma a pak pro toto téma vytvoříte odběry. 
@@ -24,7 +24,7 @@ Na rozdíl od Service Busch front, ve kterých každá zpráva zpracovává jede
 
 Service Bus témata a předplatná umožňují škálovat na zpracování velkého počtu zpráv napříč velkým počtem uživatelů a aplikací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][free account] před tím, než začnete.
 
 V tomto rychlém startu použijete Azure Cloud Shell, které můžete spustit po přihlášení k Azure Portal. Podrobnosti o Azure Cloud Shell najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md). Na svém počítači můžete také [nainstalovat](/cli/azure/install-azure-cli) a používat Azure PowerShell. 
@@ -80,7 +80,7 @@ Každý [odběr tématu](service-bus-messaging-overview.md#topics) může přij�
 9. Vytvořte filtr pro třetí odběr pomocí filtru pomocí vlastností zákazníka ( `StoreId` nikoli v `Store1` , `Store2` , `Store3` nebo `Store4` ).
 
     ```azurecli-interactive
-    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId NOT IN ('Store1','Store2','Store3', 'Store4')"     
     ```
 10. Spusťte následující příkaz, který získá primární připojovací řetězec pro obor názvů. Tento připojovací řetězec slouží k připojení k frontě a posílání a přijímání zpráv. 
 

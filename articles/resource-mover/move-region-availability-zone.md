@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: fdd564618232ce7fde5a76fb9c37937113f179b2
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670446"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061868"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Přesun virtuálních počítačů Azure do zóny dostupnosti v jiné oblasti
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak přesunout virtuální počítače Azure (a so
 
 Pokud chcete přesunout virtuální počítače do jiné zóny dostupnosti ve stejné oblasti, [Přečtěte si tento článek](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přístup *vlastníka* k předplatnému, ve kterém se nacházejí prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní mapování zdrojového a cílového umístění v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
@@ -71,8 +71,7 @@ Vyberte prostředky, které chcete přesunout.
     ![Tlačítko pro začátek](./media/move-region-availability-zone/get-started.png)
 
 3. V části **přesunout prostředky**  >  **zdroj + cíl**vyberte zdrojové předplatné a oblast.
-4. V části **cíl**vyberte oblast, do které chcete virtuální počítače přesunout. 
-5. V **oblasti metadata**vyberte, kam chcete ukládat metadata o prostředcích, které přesouváte. Skupina prostředků je vytvořená speciálně pro tento účel. Potom klikněte na **Další**.
+4. V části **cíl**vyberte oblast, do které chcete virtuální počítače přesunout. Potom klikněte na **Další**.
 
      ![Stránka pro vyplnění zdrojového a cílového předplatného/oblasti](./media/move-region-availability-zone/source-target.png)
 

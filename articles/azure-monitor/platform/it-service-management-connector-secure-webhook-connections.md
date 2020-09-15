@@ -1,131 +1,140 @@
 ---
 title: IT Service Management Connector – zabezpečený export v Azure Monitor
-description: Tento článek poskytuje informace o tom, jak připojit produkty nebo služby ITSM k zabezpečenému exportu v Azure Monitor k centrálnímu monitorování a správě pracovních položek ITSM.
+description: V tomto článku se dozvíte, jak připojit své ITSM produkty/služby k zabezpečenému exportu v Azure Monitor centrálně monitorovat a spravovat pracovní položky ITSM.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 160054e7e98dc2cb06c2c7daf325536766963daa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 39f277fffbb9a76a4be4bfa8aaedeaf3479a989f
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568638"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068879"
 ---
-# <a name="connect-azure-to-itsm-tools-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
+# <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
 
-Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi produktem ITSM nebo službou pomocí zabezpečeného exportu.
+V tomto článku se dozvíte, jak nakonfigurovat připojení mezi produktem nebo službou IT Service Management (ITSM) pomocí zabezpečeného exportu.
 
-Zabezpečený export je a aktualizovaná verze [ITSMC](./itsmc-overview.md) (Správa služeb IT). Obě verze umožňují vytvářet pracovní položky v nástroji ITSM, když se aktivují výstrahy Azure Monitor. Mezi tyto funkce patří upozornění na metriky, protokoly a protokoly aktivit.
+Zabezpečený export je aktualizovaná verze [konektoru IT Service Management Connector (ITSMC)](./itsmc-overview.md). Obě verze umožňují vytvářet pracovní položky v nástroji ITSM, když Azure Monitor odesílá výstrahy. Mezi tyto funkce patří upozornění na metriky, protokoly a protokoly aktivit.
 
-[ITSMC](./itsmc-overview.md) používá přihlašovací údaje uživatele a hesla, ale zabezpečený export má silnější ověřování, protože používá Azure Active Directory (Azure AD). Azure Active Directory (Azure AD) je cloudová služba pro správu identit a přístupu od Microsoftu. Pomůže uživatelům přihlašovat se k interním nebo externím prostředkům a přistupovat k nim. Použití Azure AD s ITSM pomáhá identifikovat výstrahy Azure (pomocí ID aplikace Azure AD), které se poslaly do externího systému.
+ITSMC používá přihlašovací údaje uživatelského jména a hesla. Zabezpečený export má silnější ověřování, protože používá Azure Active Directory (Azure AD). Azure AD je cloudová služba pro správu identit a přístupu od Microsoftu. Pomůže uživatelům přihlašovat se k interním nebo externím prostředkům a přistupovat k nim. Použití Azure AD s ITSM pomáhá identifikovat výstrahy Azure (prostřednictvím ID aplikace Azure AD), které se poslaly do externího systému.
 
 > [!NOTE]
-> Připojení k nástrojům Azure to ITSM pomocí zabezpečeného exportu je ve verzi Preview.
+> Možnost připojit Azure k nástrojům ITSM pomocí zabezpečeného exportu je ve verzi Preview.
 
 ## <a name="secure-export-architecture"></a>Architektura zabezpečeného exportu
 
 Architektura zabezpečeného exportu zavádí následující nové funkce:
 
-* **Nová skupina akcí** – výstrahy se odesílají do nástroje ITSM pomocí skupiny akcí zabezpečeného Webhooku (místo ITSM skupiny akcí pomocí v ITSMC).
-* **Ověřování Azure AD** – ověřování probíhá pomocí Azure AD místo přihlašovacích údajů uživatele a hesla.
+* **Nová skupina akcí**: výstrahy se odesílají do nástroje ITSM prostřednictvím skupiny akcí zabezpečeného Webhooku místo skupiny akcí ITSM, kterou ITSMC používá.
+* **Ověřování Azure AD**: ověřování probíhá přes Azure AD místo přihlašovacích údajů uživatelského jména a hesla.
 
 ## <a name="secure-export-data-flow"></a>Tok dat zabezpečeného exportu
 
-Postup pro tok dat zabezpečeného exportu:
+Postup pro tok dat zabezpečeného exportu je následující:
 
-1) Výstraha, která je nakonfigurována pro použití zabezpečeného exportu, je aktivována v Azure Monitor
-2) Datová část výstrahy je odeslána pomocí zabezpečené akce Webhooku nástroji ITSM.
-3) Aplikace ITSM zkontroluje ve službě Azure AD, pokud je výstraha autorizována k zadání nástroje ITSM.
-4) Pokud je výstraha autorizována aplikací:
-    1) Vytvoří pracovní položku (např. incident) v nástroji ITSM.
-    2) Váže ID položky konfigurace (CI) k databázi správy zákazníka (CMDB).
-![Diagram ITSM](media/it-service-management-connector-secure-webhook-connections/secure-export-diagram.png)
+1. Azure Monitor odešle výstrahu, která je nakonfigurována pro použití zabezpečeného exportu.
+1. Datová část výstrahy je odeslána zabezpečenou akcí Webhooku nástroji ITSM.
+1. Aplikace ITSM zkontroluje ve službě Azure AD, pokud je výstraha autorizována k zadání nástroje ITSM.
+1. Pokud je výstraha autorizována, aplikace:
+   
+   1. Vytvoří pracovní položku (například incident) v nástroji ITSM.
+   1. Váže ID položky konfigurace (CI) k databázi správy zákazníka (CMDB).
+
+![Diagram, který ukazuje, jak nástroj ITSM komunikuje s Azure a D, upozorněními Azure a skupinou akcí.](media/it-service-management-connector-secure-webhook-connections/secure-export-diagram.png)
 
 ## <a name="connection-with-bmc-helix"></a>Připojení pomocí řadiče pro správu základní desky Helix
 
 Zabezpečený export podporuje Helix BMC. Mezi výhody integrace patří:
 
-* **Lepší ověřování** – Azure AD poskytuje bezpečnější ověřování bez časových limitů, které se běžně vyskytují v ITSMC.
-* **Výstrahy vyřešené v nástroji ITSM** – výstrahy metriky implementují stav "aktivováno" a "Vyřešeno". Když je podmínka splněna, stav výstrahy je "aktivováno". Pokud podmínka není splněna, stav výstrahy je "Vyřešeno". V ITSMC se výstrahy nedaly automaticky vyřešit. V případě zabezpečeného exportu převedený stav vyřešen do nástroje ITSM, takže se automaticky aktualizuje.
-* **[Společné schéma povoluje](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)** – v ITSMC se schéma datové části výstrahy liší v závislosti na typu výstrahy. V zabezpečeném exportu máme společné schéma pro všechny typy výstrah. Toto nové společné schéma obsahuje CI pro všechny typy výstrah. Tím, že všechny typy výstrah budou moci vytvořit vazby ke své CI pomocí CMDB.
+* **Lepší ověřování**: Azure AD poskytuje bezpečnější ověřování bez časových limitů, které se běžně vyskytují v ITSMC.
+* **Upozornění vyřešená v nástroji ITSM**: výstrahy metrik implementují stavy "Trigger" a "Vyřešeno". Při splnění podmínky je stav výstrahy "aktivováno". Pokud podmínka není splněna, stav výstrahy bude "Vyřešeno". V ITSMC se výstrahy nedají automaticky vyřešit. V případě zabezpečeného exportu převedený stav vyřešen do nástroje ITSM, a proto je automaticky aktualizován.
+* **[Běžné schéma výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)**: v ITSMC se schéma datové části výstrahy liší v závislosti na typu výstrahy. V zabezpečeném exportu existuje společné schéma pro všechny typy výstrah. Toto společné schéma obsahuje CI pro všechny typy výstrah. Všechny typy výstrah budou moci navazovat svou CI pomocí CMDB.
 
-Začněte používat konektor ITSM s těmito kroky:
+Začněte používat nástroj konektoru ITSM s těmito kroky:
 
-1. Zaregistrujte svoji aplikaci pomocí Azure Active Directory.
+1. Zaregistrovat aplikaci v Azure AD
 2. Vytvořte zabezpečenou skupinu akcí Webhooku.
 3. Nakonfigurujte své partnerské prostředí.
 
 ## <a name="register-with-azure-active-directory"></a>Zaregistrovat s Azure Active Directory
 
-Pomocí těchto kroků zaregistrujete aplikaci Azure AD s Azure Active Directory
+Pomocí těchto kroků zaregistrujete aplikaci do služby Azure AD:
 
-1) [Vytváření Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
-2) V Azure Active Directory vyberte "vystavení aplikace".
-3) Vyberte nastavit pro identifikátor URI ID aplikace [ ![ Azure AD](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox) .
-4) Klikněte na Uložit.
+1. Postupujte podle kroků v části [Registrace aplikace s platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+1. V Azure AD vyberte **zveřejnit aplikaci**.
+1. Vyberte **sadu** pro **identifikátor URI ID aplikace**.
+
+   [![Snímek obrazovky s možností nastavení U R I aplikace I D](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
+1. Vyberte **Uložit**.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Vytvoří zabezpečenou skupinu akcí Webhooku.
 
-Jakmile máte službu Azure AD zaregistrovanou, můžete v nástroji ITSM vytvořit pracovní položky založené na výstrahách Azure pomocí akce zabezpečený Webhook ve skupinách akcí.
-Skupiny akcí poskytují modulární a opakovaně použitelný způsob aktivace akcí pro vaše výstrahy Azure. Skupiny akcí s upozorněními na metriky, upozornění protokolu aktivit a výstrahy služby Azure Log Analytics můžete používat v Azure Portal.
-Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups in the Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
-Použijte následující postup:
+Po registraci vaší aplikace ve službě Azure AD můžete vytvářet pracovní položky v nástroji ITSM založené na výstrahách Azure pomocí akce zabezpečený Webhook ve skupinách akcí.
 
-V prostředí Helix BMC:
+Skupiny akcí poskytují modulární a opakovaně použitelný způsob aktivace akcí pro výstrahy Azure. V Azure Portal můžete použít skupiny akcí s upozorněními na metriky, výstrahy protokolu aktivit a výstrahy Azure Log Analytics.
+Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups in the Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+
+V prostředí Helix BMC použijte následující postup:
 
 1. Přihlaste se k integračnímu studiu.
-2. Vyhledejte vytvořit incident z toku upozornění Azure.
-3. Zkopírujte adresu URL Webhooku.
-![ADRESA URL ŘADIČE PRO SPRÁVU ZÁKLADNÍ DESKY](media/it-service-management-connector-secure-webhook-connections/bmc-url.png)
+1. Vyhledejte **vytvořit incident z toku upozornění Azure** .
+1. Zkopírujte adresu URL Webhooku.
+   
+   ![Snímek Webhooku U R L v Integration studiu](media/it-service-management-connector-secure-webhook-connections/bmc-url.png)
 
-Pokud chcete přidat Webhook k akci, postupujte podle pokynů pro zabezpečený Webhook:
+Pokud chcete přidat Webhook k akci, postupujte podle těchto pokynů pro zabezpečený Webhook:
 
 1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte **monitor**. Podokno **monitorování** slučuje všechna nastavení monitorování a data v jednom zobrazení.
-2. Vyberte **Upozornění** a pak vyberte **Spravovat akce**.
-3. Vyberte [Přidat skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)a vyplňte pole.
-4. Do pole **název skupiny akcí** zadejte název a zadejte název do pole **krátký název** . Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
-5. Vybrat **zabezpečený Webhook**
-6. Vyberte Upravit podrobnosti. Následující obrázek ukazuje ukázku zabezpečené akce Webhooku:
-    1. Vyberte správné ID objektu Azure Active Directory, který jste zaregistrovali.
-    2. Do pole v identifikátoru URI vložte adresu URL Webhooku, kterou jste zkopírovali z "prostředí BMC Helix".
-    3. Nastavte **běžné schéma výstrah** na **Ano**. 
-7. Následující obrázek ukazuje ukázku zabezpečené konfigurace akce Webhooku: ![ zabezpečený Webhook](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
+1. Vyberte **výstrahy**  >  **Spravovat akce**.
+1. Vyberte [Přidat skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)a vyplňte pole.
+1. Do pole **název skupiny akcí** zadejte název a zadejte název do pole **krátký název** . Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
+1. Vyberte **zabezpečený Webhook**.
+1. Vyberte tyto podrobnosti:
+   1. Vyberte ID objektu Azure Active Directory instance, kterou jste zaregistrovali.
+   1. V případě identifikátoru URI vložte adresu URL Webhooku, kterou jste zkopírovali z Helix prostředí řadiče pro správu základní desky.
+   1. Nastavte **možnost Povolit společné schéma výstrah** na **Ano**. 
 
-## <a name="configure-partner-environment"></a>Konfigurace partnerského prostředí
+   Následující obrázek ukazuje konfiguraci ukázkové zabezpečené akce Webhooku:
+
+   ![Snímek obrazovky, který zobrazuje zabezpečenou akci Webhooku.](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
+
+## <a name="configure-the-partner-environment"></a>Konfigurace partnerského prostředí
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>Připojení řadiče pro správu základní desky Helix k Azure Monitor
 
-V následující části najdete podrobné informace o tom, jak připojit Helix produkt pro řadiče pro správu základní desky a zabezpečený export v Azure.
+V následujících částech najdete podrobné informace o tom, jak připojit Helix produkt pro řadiče pro správu základní desky a zabezpečený export v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-Ujistěte se, že jsou splněné následující předpoklady:
+Ujistěte se, že jste splnili následující požadavky:
 
 * Služba Azure AD je zaregistrovaná.
-* Podporujete podporovanou verzi nástroje BMC Helix multi-Cloud Service Management: 20,02 verze nebo novější.
+* Máte podporovanou verzi nástroje BMC Helix multi-Cloud Service Management (verze 20,02 nebo novější).
 
-Konfigurace připojení Helix řadiče pro správu základní desky:
+### <a name="configure-the-bmc-helix-connection"></a>Konfigurace připojení Helix řadiče pro správu základní desky
 
-1) [Povolení předem připravené integrace s Azure Monitor pro verzi 20,2](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)
+1. Postupujte podle pokynů v tématu [povolení předem připravené integrace s Azure monitor pro verzi 20,02](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html).
 
-2) Jako součást konfigurace připojení v Helix BMC přejděte do instance Integration BMC a postupujte podle pokynů:
+1. Jako součást konfigurace připojení v BMC Helix přejděte do instance Integration BMC a postupujte podle těchto pokynů:
 
-1. Vybrat **katalog**
-2. Vybrat **výstrahy Azure**
-3. Vybrat **konektory**
-4. Vybrat **konfiguraci**
-5. Vyberte **Přidat novou konfiguraci připojení** .
-6. Vyplňte informace pro konfigurační oddíl.
-    1. **Název** – Udělejte si vlastní
-    2. **Typ autorizace** – žádný
-    3. **Popis**– Udělejte si vlastní
-    4. **Lokalita**– Cloud
-    5. **Počet instancí** – 2 – výchozí hodnota
-    6. **Zaškrtněte políčko** ve výchozím nastavení vybrané a povolte použití.
-    7. ID tenanta Azure, ID aplikace Azure se převezme z aplikace, která byla definovaná v kroku "vytvořená Azure Active Directory".
-![Konfigurace řadiče pro správu základní desky](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
+   1. Vyberte **katalog**.
+   1. Vyberte **výstrahy Azure**.
+   1. Vyberte **konektory**.
+   1. Vyberte **Konfigurace**.
+   1. Vyberte **Přidat konfiguraci nového připojení** .
+   1. Vyplňte informace pro konfigurační oddíl:
+      - **Název**: Udělejte si vlastní.
+      - **Typ autorizace**: **žádné**
+      - **Popis**: Udělejte si vlastní.
+      - **Lokalita**: **Cloud**
+      - **Počet instancí**: **2**, výchozí hodnota.
+      - Pokud chcete povolit použití, **zaškrtněte políčko**: výchozí.
+      - ID tenanta Azure a ID aplikace Azure jsou pořízené z aplikace, kterou jste definovali dříve.
+
+![Snímek obrazovky, který zobrazuje konfiguraci řadiče pro správu základní desky.](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
 
 ## <a name="next-steps"></a>Další kroky
 

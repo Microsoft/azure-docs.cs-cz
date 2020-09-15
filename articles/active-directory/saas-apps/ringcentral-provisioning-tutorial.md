@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: fb990b5aa615e37d9893a891143cb04933b603bb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aaaa073f798998ed97be1bd3cd66795d7b3dfb23
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542611"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069658"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Kurz: Konfigurace RingCentral pro Automatické zřizování uživatelů
 
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky, které je třeba provést v RingCentral i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a RingCentral
 > * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial) k RingCentral (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -78,7 +78,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro RingCentral ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -113,7 +113,6 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |userName|Řetězec|
    |externalId|Řetězec|
    |aktivně|Logická hodnota|
-   |displayName|Řetězec|
    |title|Řetězec|
    |e-maily [typ EQ "Work"]. Value|Řetězec|
    |adresy [typ EQ "Work"]. Country|Řetězec|
@@ -125,7 +124,6 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |název. rodina|Řetězec|
    |phoneNumbers [Type EQ "mobilní"]. Value|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -149,6 +147,10 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně nastavili.
 2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
 3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+
+## <a name="change-log"></a>Protokol změn
+
+* 09/10/2020 – byla odebrána podpora atributů DisplayName a Manager.
 
 ## <a name="additional-resources"></a>Další zdroje
 

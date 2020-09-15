@@ -17,6 +17,8 @@
       href: get-started-create-service-instance.md
     - name: Vytvoření instance – PowerShell
       href: powershell-create-service-instance.md
+    - name: Vytvoření instance – Visual Studio Code
+      href: vscode-create-service-instance.md
 - name: Kurzy
   items:
     - name: 1. Import vašeho prvního rozhraní API

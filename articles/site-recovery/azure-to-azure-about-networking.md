@@ -2,18 +2,18 @@
 title: O sítích v zotavení po havárii virtuálních počítačů Azure pomocí Azure Site Recovery
 description: Poskytuje přehled o sítích pro replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
-author: sujayt
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
-ms.author: sutalasi
-ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 2c6d1873aadbbf19f1b7650f9b432b3b6bed2841
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131380"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068366"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -46,7 +46,7 @@ Sítě jsou obvykle chráněné pomocí bran firewall a skupin zabezpečení sí
 Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte tyto adresy URL Site Recovery:
 
 
-**URL** | **Podrobnosti**
+**Adresa URL** | **Podrobnosti**
 --- | ---
 *.blob.core.windows.net | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete přístup k určitým adresám URL účtu úložiště (např.: cache1.blob.core.windows.net a cache2.blob.core.windows.net) zpřístupnit místo *. blob.core.windows.net
 login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery.

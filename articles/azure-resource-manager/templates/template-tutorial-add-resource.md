@@ -6,18 +6,18 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0163fcc62ea6c813af8e9e5693ca35fa0e650f96
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9e841cccdfb3d304d63eb19b45be5555eea2a66c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497524"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069403"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Kurz: Přidání prostředku do šablony ARM
 
 V [předchozím kurzu](template-tutorial-create-first-template.md)jste zjistili, jak vytvořit prázdnou šablonu a nasadit ji. Teď můžete nasadit skutečný prostředek. V tomto kurzu přidáte účet úložiště. Dokončení tohoto kurzu trvá přibližně **9 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [Úvodní kurz týkající se šablon](template-tutorial-create-first-template.md), ale není to nutné.
 
@@ -85,7 +85,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, použijte k zobrazení protokolů ladění přepínač **ladění** s příkazem nasazení.  Můžete také použít **podrobný** přepínač k zobrazení úplných protokolů ladění.
+> Pokud se nasazení nepovedlo, pomocí **podrobného** přepínače Získejte informace o vytvářených prostředcích. K získání dalších informací pro ladění použijte přepínač **ladění** .
 
 Dvě možné chyby nasazení, se kterými se můžete setkat:
 
@@ -103,7 +103,7 @@ Toto nasazení trvá déle než při nasazení prázdné šablony, protože je v
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vidíte, že je nasazený účet úložiště.

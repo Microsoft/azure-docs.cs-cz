@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003877"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069743"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
 
@@ -41,7 +41,7 @@ Metriky jsou ve výchozím nastavení povolené. Z [Azure Portal](https://portal
 4. Výstrahy pro data metriky si můžete nastavit tak, že v nabídce vyberete **výstrahy** a pak na **+ nové pravidlo výstrahy**.
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Snímek obrazovky se stránkou a tlačítkem pro upozornění, které se má přidat":::
 
-    Další informace o tomto procesu najdete v tématu [*řešení potíží: nastavení diagnostiky*](troubleshoot-diagnostics.md).
+    Další informace o tomto procesu najdete v tématu [*řešení potíží: nastavení výstrah*](troubleshoot-alerts.md).
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Metriky digitálních vláken Azure a jejich použití
 
@@ -70,7 +70,7 @@ Metriky, které je potřeba provést s fakturací:
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Fakturační operace rozhraní API (Preview) | Počet | Celkem | Metrika fakturace pro počet všech požadavků rozhraní API provedených vůči službě Azure Digital requests. | ID měřiče |
 | BillingMessagesProcessed | Zpracované účtovací zprávy (Preview) | Počet | Celkem | Metrika fakturace počtu zpráv odeslaných z digitálních vláken Azure do externích koncových bodů. | ID měřiče |
-| BillingQueryUnits | Fakturační jednotky dotazů (Preview) | Počet | Celkem | Počet jednotek dotazu, interně vypočtené míry využití prostředků služby, spotřebované pro provádění dotazů. K dispozici je také pomocné rozhraní API pro měření jednotek dotazu: [Třída QueryChargeHelper](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | ID měřiče |
+| BillingQueryUnits | Fakturační jednotky dotazů (Preview) | Počet | Celkem | Počet jednotek dotazu, interně vypočtené míry využití prostředků služby, spotřebované pro provádění dotazů. K dispozici je také pomocné rozhraní API pro měření jednotek dotazu: [Třída QueryChargeHelper](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | ID měřiče |
 
 #### <a name="ingress-metrics"></a>Metriky příchozího přenosu dat
 
@@ -96,9 +96,9 @@ Metriky, které se musí dělat s směrováním:
 
 Dimenze vám pomůžou identifikovat další podrobnosti o metrikách. Některé metriky směrování poskytují informace pro každý koncový bod. Následující tabulka uvádí možné hodnoty pro tyto dimenze.
 
-| Dimenze | Hodnoty |
+| Rozměr | Hodnoty |
 | --- | --- |
-| Ověřování | OAuth |
+| Authentication | OAuth |
 | Operace (pro požadavky rozhraní API) | Microsoft. DigitalTwins/DigitalTwins/DELETE, <br>Microsoft. DigitalTwins/DigitalTwins/Write, <br>Microsoft. DigitalTwins/DigitalTwins/Read, <br>Microsoft. DigitalTwins/eventroutes/Read, <br>Microsoft. DigitalTwins/eventroutes/Write, <br>Microsoft. DigitalTwins/eventroutes/DELETE, <br>Microsoft. DigitalTwins/modely/číst, <br>Microsoft. DigitalTwins/modely/Write, <br>Microsoft. DigitalTwins/modely/DELETE, <br>Microsoft. DigitalTwins/dotaz/akce |
 | Typ koncového bodu | Event Grid <br>Centrum událostí, <br>Service Bus |
 | Protokol | HTTPS |
