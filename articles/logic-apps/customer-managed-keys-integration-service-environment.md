@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386159"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400139"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps
 
@@ -225,7 +225,7 @@ Pro tuto úlohu můžete použít buď příkaz Azure PowerShell [set-AzKeyVault
 
    1. Až skončíte s podoknem **zásady přístupu** , vyberte **Uložit**.
 
-Další informace najdete v tématu [zajištění Key Vaultho ověřování pomocí spravované identity](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault).
+Další informace najdete v tématu [ověření Key Vault](/azure/key-vault/general/authentication) a [přiřazení zásad Key Vault přístupu](/azure/key-vault/general/assign-access-policy-portal).
 
 ## <a name="next-steps"></a>Další kroky
 

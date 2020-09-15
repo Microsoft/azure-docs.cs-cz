@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: d12df01fe1506f7f5ade9cce60ae7af0412e3010
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f69fe027772dc2d008a567723a5b3c04f3ee51b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080807"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378198"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
 Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Azure Security Center.
@@ -35,6 +35,17 @@ Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu po
 
 
 ![Zobrazení posílení zabezpečení sítě](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+
+
+## <a name="availability"></a>Dostupnost
+
+|Aspekt|Podrobnosti|
+|----|:----|
+|Stav vydaných verzí:|Všeobecná dostupnost|
+|Stanov|Úroveň Standard|
+|Požadované role a oprávnění:|Oprávnění k zápisu do skupin zabezpečení sítě počítače|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|||
 
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Zobrazit výstrahy a pravidla adaptivního posílení zabezpečení sítě

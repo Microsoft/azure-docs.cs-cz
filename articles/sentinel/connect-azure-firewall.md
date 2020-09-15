@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 167cfe6b8fb1394291866e51ec14ec91bf9035a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 05a2869152def0fc9a44defaa21f0643d9fdbb08
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89183589"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504872"
 ---
 # <a name="connect-data-from-azure-firewall"></a>Připojení dat z Azure Firewall
 
@@ -28,7 +28,7 @@ Protokoly Azure Firewall můžete připojit ke službě Azure Sentinel, což vá
 
 Přečtěte si další informace o [monitorování protokolů Azure firewall](https://docs.microsoft.com/azure/firewall/tutorial-diagnostics).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 
@@ -40,7 +40,7 @@ Přečtěte si další informace o [monitorování protokolů Azure firewall](ht
 
 1. Povolte **diagnostické protokoly** na všech branách firewall, jejichž protokoly chcete připojit:
 
-    1. Vyberte odkaz [otevřít Azure firewall prostředků >](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FazureFirewalls) .
+    1. Vyberte odkaz **otevřít Azure firewall prostředků >** .
 
     1. Z navigační nabídky **bran firewall** vyberte **nastavení diagnostiky**.
 

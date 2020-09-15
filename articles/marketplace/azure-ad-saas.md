@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 0d8e2ee684bc08ec23e052229d50b7e9d62c0ecb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/04/2020
+ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328326"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483622"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Nabídky Azure AD a SaaS s podporou transakcí na komerčním webu Marketplace
 
@@ -25,9 +25,9 @@ Podle pokynů v tomto článku vám pomůžete certifikovat nabídku SaaS na kom
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Když [vytvoříte nabídku SaaS](./partner-center-portal/create-new-saas-offer.md) v partnerském centru, zvolíte ze sady specifických volání možnosti akce, které se zobrazí v seznamu nabídek. Vaše volba určuje, jak se vaše nabídka používá na komerčním webu Marketplace. Nabídky prodávané prostřednictvím Microsoftu se nazývají transakční nabídky. Zákazníkům účtujeme vaše jménem všechny nabídky s podporou transakcí. Pokud se rozhodnete prodávat prostřednictvím Microsoftu a máte za vás transakce s hostováním v USA (možnost **Ano** ), pak jste se rozhodli vytvořit nabídku s podporou transakcí a tento článek je určený pro vás. Doporučujeme si ho přečíst v celém rozsahu.
+Když [vytvoříte nabídku SaaS](./partner-center-portal/create-new-saas-offer.md) v partnerském centru, zvolíte ze sady specifických možností výpisu, která se zobrazí v seznamu nabídek. Vaše volba určuje, jak se vaše nabídka používá na komerčním webu Marketplace. Nabídky prodávané prostřednictvím Microsoftu se nazývají transakční nabídky. Zákazníkům účtujeme vaše jménem všechny nabídky s podporou transakcí. Pokud se rozhodnete prodávat prostřednictvím Microsoftu a máte za vás transakce s hostováním v USA (možnost **Ano** ), pak jste se rozhodli vytvořit nabídku s podporou transakcí a tento článek je určený pro vás. Doporučujeme si ho přečíst v celém rozsahu.
 
-Pokud se rozhodnete, že tuto nabídku zadáte jenom v případě nezávisle **na** komerčním tržišti a zpracovávání, máte k dispozici tři možnosti, jak budou potenciální zákazníci přistupovat k vaší nabídce: Získejte hned (zdarma), bezplatnou zkušební verzi a kontaktujte mě. Pokud vyberete **získat hned (zdarma)** nebo **bezplatnou zkušební verzi**, Tento článek není pro vás. Místo toho si přečtěte další informace [v tématu sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace](./azure-ad-free-or-trial-landing-page.md) . Pokud vyberete **kontakt mi**, neexistují žádné přímé zodpovědnosti vydavatele. Pokračujte v vytváření vaší nabídky v partnerském centru.
+Pokud se rozhodnete, že nabídku zobrazíte jenom prostřednictvím komerčního tržiště a nezávisle na tom **, že** nezávisle na tom, jak se budou k vaší nabídce pracovat, máte k dispozici tři možnosti, jak budou mít potenciální zákazníci přístup k vaší nabídce: získat hned (zdarma), bezplatnou zkušební verzi Pokud vyberete **získat hned (zdarma)** nebo **bezplatnou zkušební verzi**, Tento článek není pro vás. Místo toho si přečtěte další informace [v tématu sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace](./azure-ad-free-or-trial-landing-page.md) . Pokud vyberete **kontakt mi**, neexistují žádné přímé zodpovědnosti vydavatele. Pokračujte v vytváření vaší nabídky v partnerském centru.
 
 ## <a name="how-azure-ad-works-with-the-commercial-marketplace-for-saas-offers"></a>Jak Azure AD funguje s komerčním Marketplace pro nabídky SaaS
 
@@ -51,10 +51,10 @@ Tato tabulka poskytuje podrobnosti o krocích procesu správy nákupu.
 
 | Krok procesu | Akce vydavatele | Doporučené nebo vyžadované pro vydavatele |
 | ------------ | ------------- | ------------- |
-| 1. nákupčí se přihlásí ke komerčnímu tržišti pomocí své identity ID Azure a vybere SaaS nabídku. | Není vyžadována žádná akce vydavatele. | Není |
-| 2. po zakoupení kupující vybere **konfigurovat účet** v Azure Marketplace nebo **nakonfigurovat nyní** v AppSource, který nasměruje kupující na úvodní stránku vydavatele pro tuto nabídku. Kupující musí být schopný se přihlásit k aplikaci SaaS vydavatele pomocí jednotného přihlašování služby Azure AD a musí vyžadovat jenom minimální souhlas, který nevyžaduje schválení správcem Azure AD. | Navrhněte [cílovou stránku](azure-ad-transactable-saas-landing-page.md) nabídky tak, aby získala uživatele s identitou Azure AD nebo účet Microsoft (MSA), a usnadňuje jakékoli další zřizování nebo nastavení, které je potřeba. | Povinné |
-| 3. Vydavatel požaduje informace o nákupu z rozhraní API pro plnění SaaS. | Pomocí [přístupového tokenu](./partner-center-portal/pc-saas-registration.md) generovaného z ID aplikace cílové stránky [zavolejte koncový bod](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) , který načte konkrétní informace o nákupu. | Povinné |
-| 4. prostřednictvím služby Azure AD a rozhraní Microsoft Graph API shromažďuje Vydavatel údaje o společnosti a uživatelích požadovaných ke zřízení kupujícího v aplikaci SaaS vydavatele.  | Rozložíte uživatelský token Azure AD tak, aby našli jméno a e-mail, nebo [volejte rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) a pomocí delegovaných oprávnění [načetli informace](https://docs.microsoft.com/graph/api/user-get) o přihlášeném uživateli. | Povinné |
+| 1. nákupčí se přihlásí k komerčnímu tržišti pomocí své identity ID Azure a vybere SaaS nabídku. | Není vyžadována žádná akce vydavatele. | Není |
+| 2. po zakoupení kupující vybere **konfigurovat účet** v Azure Marketplace nebo **nakonfigurovat nyní** v AppSource, který nasměruje kupující na úvodní stránku vydavatele pro tuto nabídku. Kupující musí být schopný se přihlašovat k aplikaci SaaS vydavatele pomocí jednotného přihlašování služby Azure AD a musí vyžadovat jenom minimální souhlas, který nevyžaduje schválení správcem Azure AD. | Navrhněte [cílovou stránku](azure-ad-transactable-saas-landing-page.md) nabídky tak, aby získala uživatele s identitou Azure AD nebo účet Microsoft (MSA), a usnadňuje jakékoli další zřizování nebo nastavení, které je potřeba. | Vyžadováno |
+| 3. Vydavatel požaduje informace o nákupu z rozhraní API pro plnění SaaS. | Pomocí [přístupového tokenu](./partner-center-portal/pc-saas-registration.md) generovaného z ID aplikace cílové stránky [zavolejte koncový bod](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) , který načte konkrétní informace o nákupu. | Vyžadováno |
+| 4. prostřednictvím služby Azure AD a rozhraní Microsoft Graph API shromažďuje Vydavatel údaje o společnosti a uživatelích požadovaných ke zřízení kupujícího v aplikaci SaaS vydavatele.  | Rozložíte uživatelský token Azure AD tak, aby našli jméno a e-mail, nebo [volejte rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) a pomocí delegovaných oprávnění [načetli informace](https://docs.microsoft.com/graph/api/user-get) o přihlášeném uživateli. | Vyžadováno |
 ||||
 
 ## <a name="process-steps-for-subscription-management"></a>Kroky procesu pro správu předplatného
@@ -67,7 +67,7 @@ Tato tabulka obsahuje podrobné informace o krocích procesu správy předplatn�
 
 | Krok procesu | Akce vydavatele | Doporučené nebo vyžadované pro vydavatele |
 | ------------ | ------------- | ------------- |
-| 5. Vydavatel spravuje odběr aplikace SaaS prostřednictvím rozhraní API pro plnění SaaS. | Pomocí [rozhraní API pro plnění SaaS](./partner-center-portal/pc-saas-fulfillment-api-v2.md)zpracujte změny předplatného a další úlohy správy.<br><br>Tento krok vyžaduje přístupový token, jak je popsáno v kroku 3 procesu. | Povinné |
+| 5. Vydavatel spravuje odběr aplikace SaaS prostřednictvím rozhraní API pro plnění SaaS. | Pomocí [rozhraní API pro plnění SaaS](./partner-center-portal/pc-saas-fulfillment-api-v2.md)zpracujte změny předplatného a další úlohy správy.<br><br>Tento krok vyžaduje přístupový token, jak je popsáno v kroku 3 procesu. | Vyžadováno |
 | 6. Pokud používáte ceny účtované podle objemu dat, vydavatel vygeneruje události využití do rozhraní API služby měření. | Pokud vaše aplikace SaaS nabízí fakturaci na základě využití, vyžádejte si oznámení o využití prostřednictvím [rozhraní API služby měření na webu Marketplace](./partner-center-portal/marketplace-metering-service-apis.md).<br><br>Tento krok vyžaduje přístupový token, jak je popsáno v kroku 3. | Vyžadováno pro měření |
 ||||
 
@@ -88,5 +88,6 @@ Kroky procesu 7 až 9 jsou volitelné kroky procesu správy uživatelů. Poskytu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření nabídky SaaS na komerčním webu Marketplace](./partner-center-portal/create-new-saas-offer.md)
-- [Sestavení cílové stránky pro SaaS nabídku s podporou transakcí na komerčním webu Marketplace](./azure-ad-transactable-saas-landing-page.md)
+- [Sestavení cílové stránky pro SaaS nabídku s podporou transakcí na komerčním webu Marketplace](azure-ad-transactable-saas-landing-page.md)
+- [Sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace](azure-ad-free-or-trial-landing-page.md)
+- [Jak vytvořit nabídku SaaS na komerčním webu Marketplace](create-new-saas-offer.md)

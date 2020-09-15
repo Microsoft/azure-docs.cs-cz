@@ -3,20 +3,20 @@ title: Přední dvířka Azure – pravidlo směrování, které odpovídá moni
 description: Tento článek vám pomůže porozumět tomu, jak se na nabízených platformách Azure shoduje pravidlo směrování, které se má použít pro příchozí požadavek.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80878591"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401567"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Jak služba Front Door páruje požadavky s pravidly směrování
 

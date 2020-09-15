@@ -12,16 +12,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089698"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569080"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
 
 Azure Security Center se integruje s [pokročilou ochranou před internetovými útoky v programu Microsoft Defender (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) , aby poskytovala komplexní možnosti detekce a odezvy koncových bodů
+
+
+## <a name="availability"></a>Dostupnost
+
+|Aspekt|Podrobnosti|
+|----|:----|
+|Stav vydaných verzí:|**Všeobecná dostupnost**|
+|Stanov|Úroveň Standard|
+|Podporované počítače:|![Ano](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Ano](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
+|Požadované role a oprávnění:|Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného**nebo **přispěvatele předplatného**|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy.<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří mají spuštěné úlohy ve veřejných cloudech Azure<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|||
+
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>Funkce ATP v programu Microsoft Defender v Security Center
 
@@ -55,7 +68,7 @@ Když použijete Azure Security Center k monitorování serverů, vytvoří se a
 Po nakonfigurování nebudete moct změnit umístění, kde jsou data uložená. Pokud potřebujete přesunout data do jiného umístění, kontaktujte podpora Microsoftu pro resetování tenanta.
 
 
-## <a name="onboarding-servers-to-security-center"></a>Připojení serverů ke službě Security Center 
+## <a name="onboard-servers-to-security-center"></a>Připojit servery k Security Center 
 
 Pokud chcete servery připojit k Security Center, klikněte na **Přejít na Azure Security Center a připojte servery** ze serveru Microsoft Defender atp.
 

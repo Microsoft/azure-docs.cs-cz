@@ -25,6 +25,8 @@
   items:
     - name: Vytvoření bezserverové aplikace v reálném čase s ověřováním
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: Vytvoření chatovací aplikace pro Blazor Server
+      href: signalr-tutorial-build-blazor-server-chat-app.md
 - name: ukázky
   items:
     - name: Ukázky kódů

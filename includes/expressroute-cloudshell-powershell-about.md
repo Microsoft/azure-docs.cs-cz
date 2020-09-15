@@ -20,7 +20,7 @@ Chcete-li spustit libovolný kód obsažený v tomto článku v Azure Cloud Shel
 
 Existuje několik způsobů, jak Cloud Shell spustit:
 
-| Parametr | Odkaz |
+| Možnost | Odkaz |
 |-----------------------------------------------|---|
 | Klikněte na **Vyzkoušet** v pravém horním rohu bloku kódu. | ![Cloud Shell v tomto článku](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-powershell-try-it.png) |
 | Otevřete Cloud Shell ve vašem prohlížeči. | [![https://shell.azure.com/powershell](./media/vpn-gateway-cloud-shell-powershell/launchcloudshell.png)](https://shell.azure.com/powershell) |

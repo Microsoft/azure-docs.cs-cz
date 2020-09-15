@@ -39,6 +39,8 @@
       href: use-prediction-api.md
     - name: Použití nástroje Smart Labeler
       href: suggested-tags.md
+    - name: Řízení přístupu na základě role
+      href: role-based-access-control.md
     - name: Export modelů
       items:
         - name: Export modelu do mobilní verze

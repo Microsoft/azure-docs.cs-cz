@@ -3,12 +3,12 @@ title: Zálohování SQL Server databází do Azure
 description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3627162ef2f4330a4b6a78625b5e07bdcf56419b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892435"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376532"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -66,11 +66,11 @@ U všech ostatních verzí opravte oprávnění pomocí následujících kroků:
 
       ![V dialogovém okně přihlášení – nové vyberte Hledat.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Účet virtuální služby Windows **NT SERVICE\AzureWLBackupPluginSvc** se vytvořil během registrace virtuálního počítače a fáze zjišťování SQL. Zadejte název účtu, jak je uvedeno v **poli zadejte název objektu, který chcete vybrat**. Chcete-li název vyřešit, vyberte možnost **kontrolovat názvy** . Klikněte na **OK**.
+  4. Účet virtuální služby Windows **NT SERVICE\AzureWLBackupPluginSvc** se vytvořil během registrace virtuálního počítače a fáze zjišťování SQL. Zadejte název účtu, jak je uvedeno v **poli zadejte název objektu, který chcete vybrat**. Chcete-li název vyřešit, vyberte možnost **kontrolovat názvy** . Vyberte **OK**.
 
       ![Pokud chcete přeložit neznámý název služby, vyberte možnost kontrolovat názvy.](./media/backup-azure-sql-database/check-name.png)
 
-  5. V části **role serveru**se ujistěte, že je vybraná role **sysadmin** . Klikněte na **OK**. Nyní by měla existovat požadovaná oprávnění.
+  5. V části **role serveru**se ujistěte, že je vybraná role **sysadmin** . Vyberte **OK**. Nyní by měla existovat požadovaná oprávnění.
 
       ![Ujistěte se, že je vybraná role serveru sysadmin.](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
@@ -91,13 +91,13 @@ Přidejte do instance SQL Server přihlašovací údaje pro **NT AUTHORITY\SYSTE
 
 1. V Průzkumníku objektů přejdete na instanci SQL Server.
 2. Přejít na zabezpečení-> přihlášení
-3. Klikněte pravým tlačítkem na přihlašovací údaje a klikněte na *nové přihlášení...*
+3. Klikněte pravým tlačítkem na přihlašovací údaje a vyberte *nové přihlášení...*
 
     ![Nové přihlášení pomocí SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
 4. Přejděte na kartu Obecné a jako přihlašovací jméno zadejte **NT AUTHORITY\SYSTEM** .
 
-    ![přihlašovací jméno pro SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+    ![Přihlašovací jméno pro SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
 
 5. Přejít na *role serveru* a zvolit *veřejné* a *sysadmin* role.
 
@@ -107,7 +107,7 @@ Přidejte do instance SQL Server přihlašovací údaje pro **NT AUTHORITY\SYSTE
 
     ![Udělení oprávnění v SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
-7. Klikněte na tlačítko OK.
+7. Vyberte OK.
 8. Zopakováním stejné posloupnosti kroků (1-7 výše) přidejte přihlášení NT Service\AzureWLBackupPluginSvc do instance SQL Server. Pokud přihlášení již existuje, ujistěte se, že má roli serveru sysadmin a v části stav uděluje oprávnění připojit se k databázovému stroji a přihlásit se jako povolené.
 9. Po udělení oprávnění znovu **zjistit databáze** na portálu: úloha **->** infrastruktury zálohování trezoru **->** na virtuálním počítači Azure:
 

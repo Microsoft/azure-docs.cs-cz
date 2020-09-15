@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922799"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661088"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -25,7 +25,7 @@ Většina zákazníků začíná na bezplatné úrovni, takže může službu vy
 
 Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
-| Funkce | Omezení |
+| Příznak | Omezení |
 |---------|-------------|
 | [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD. |
 | [Obohacení AI](search-security-manage-encryption-keys.md) | Běží na bezplatné úrovni, ale nedoporučuje se. |
@@ -39,7 +39,7 @@ Většina funkcí je dostupná na všech úrovních, včetně bezplatných funkc
 
 Úrovně se liší:
 
-+ Množství indexů a indexerů, které můžete vytvořit
++ Množství indexů a indexerů (maximální limity)
 + Velikost a rychlost oddílů (fyzické úložiště)
 
 Vybraná úroveň určuje fakturovatelnou sazbu. Následující snímek obrazovky z Azure Portal zobrazuje dostupné úrovně minus ceny (které najdete na portálu a na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/). Nejběžnějšími úrovněmi jsou **bezplatné**, **základní**a **standardní** úrovně.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816248"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420604"
 ---
 # <a name="iot-edge-modules"></a>Moduly IoT Edge
 
@@ -40,7 +40,7 @@ Typ nabídky IoT Edge modul je konkrétní typ kontejneru, který je spuštěný
 
 **Výběr správného online obchodu**
 
-Moduly IoT Edge jsou publikovány pouze do Azure Marketplace; AppSource se nedá použít. Další informace o rozdílech a cílové skupině v online obchodech najdete v tématu [Určení možnosti publikování](determine-your-listing-type.md).
+Moduly IoT Edge jsou publikovány pouze do Azure Marketplace; AppSource se nedá použít. Další informace o rozdílech v online obchodech najdete v tématu [Určení možnosti publikování](determine-your-listing-type.md).
 
 **Možnosti fakturace**
 
@@ -54,7 +54,7 @@ Ve všech případech by IoT Edge moduly měly vybrat možnost publikování v r
 
 Všechny podmínky Microsoft Azure Marketplace smluv a zásad se vztahují na nabídky modulu IoT Edge.  Kromě toho existují požadavky a technické požadavky pro IoT Edge moduly.  
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Chcete-li publikovat modul IoT Edge do Azure Marketplace, je nutné splnit následující požadavky:
 
@@ -75,6 +75,5 @@ Hlavní technické požadavky pro modul IoT Edge, aby bylo možné získat certi
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) o komerčním tržišti.
 - Přihlaste se do [partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.
 - [Vytvořte nabídku modulu IoT Edge](./partner-center-portal/azure-iot-edge-module-creation.md) v partnerském centru.

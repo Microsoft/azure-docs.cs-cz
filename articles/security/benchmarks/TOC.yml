@@ -61,6 +61,8 @@
       href: ../../azure-databricks/security-baseline.md
     - name: Standardní hodnoty zabezpečení Azure DNS
       href: ../../dns/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure DevTest Labs
+      href: ../../devtest-labs/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Firewall
       href: ../../firewall/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Functions
@@ -73,8 +75,14 @@
       href: ../../machine-learning/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Policy
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Private Link
+      href: ../../private-link/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro veřejné IP adresy Azure
+      href: ../../virtual-network/public-ip-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Resource Graph
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Sentinel
+      href: ../../sentinel/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure SQL Database
       href: ../../sql-database/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Storage

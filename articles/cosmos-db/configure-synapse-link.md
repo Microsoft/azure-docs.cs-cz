@@ -4,14 +4,14 @@ description: Naučte se, jak povolit synapse odkaz pro účty Azure Cosmos, vytv
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: rosouz
-ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d77922d5957a0f6602e00621ebbabeaa3f3ac8f9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815568"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322462"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
 
@@ -228,4 +228,4 @@ Další informace najdete v následujících dokumentech:
 
 * [Apache Spark ve službě Azure synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md).
 
-* [SQL Server bez a na vyžádání v Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).
+* [Podpora běhového prostředí bez SQL serveru ve službě Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).

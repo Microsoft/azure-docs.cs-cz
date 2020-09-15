@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797283"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322530"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory
 Microsoft poskytuje globální technickou, předprodejní, fakturační a předplacenou podporu pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu Microsoft Azure placené a zkušební předplatné. V dalších jazycích je k dispozici podpora po telefonu a online podpora k fakturaci. 
@@ -29,7 +29,7 @@ Microsoft poskytuje globální technickou, předprodejní, fakturační a předp
 
 Než budete vytvářet lístek podpory, zkuste najít odpovědi a informace v následujících zdrojích informací. 
 
-* Obsah, jako jsou informace o tom, jak informace nebo ukázky kódu pro odborníky na IT a vývojáře, najdete v [technické dokumentaci na adrese docs.Microsoft.com](https://docs.microsoft.com/azure/active-directory/).
+* Obsah, jako jsou informace o tom, jak informace nebo ukázky kódu pro odborníky na IT a vývojáře, najdete v [technické dokumentaci na adrese docs.Microsoft.com](../index.yml).
 
 * [Technická komunita Microsoftu](https://techcommunity.microsoft.com/) je místem, kde naši partneři IT specialisti a zákazníci můžou spolupracovat, sdílet a učit se. [Informační centrum technické komunity Microsoftu](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) se používá pro oznámení, příspěvky na blogu, žádosti o pomoc s odborníky (AMA) a další akce. [K odeslání vašich nápadů](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)se taky můžete připojit k komunitě.
 
@@ -100,4 +100,4 @@ Pokud chcete získat telefonní čísla podpory, přečtěte si stránku [kontak
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
-* [Technickou dokumentaci na adrese docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/)
+* [Technickou dokumentaci na adrese docs.microsoft.com](../index.yml)

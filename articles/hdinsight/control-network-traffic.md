@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773402"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400190"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Řízení síťového provozu ve službě Azure HDInsight
 
@@ -32,7 +32,11 @@ Pokud plánujete používat **skupiny zabezpečení sítě** k řízení síťov
 
 1. Identifikujte oblast Azure, kterou plánujete použít pro HDInsight.
 
-2. Identifikujte značky služeb, které služba HDInsight pro vaši oblast vyžaduje. Další informace najdete v tématu [značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight](hdinsight-service-tags.md).
+2. Identifikujte značky služeb, které služba HDInsight pro vaši oblast vyžaduje. Existují různé způsoby, jak tyto značky služeb získat:
+    1. Podívejte se na seznam publikovaných značek služby ve [značkách služby NSG (Network Security Group) pro Azure HDInsight](hdinsight-service-tags.md). 
+    2. Pokud se v seznamu nenachází vaše oblast, použijte [rozhraní API zjišťování značek služby](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) a vyhledejte značku služby pro vaši oblast.
+    3. Pokud nemůžete používat rozhraní API, Stáhněte si [soubor JSON pro tag služby](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) a vyhledejte požadovanou oblast.
+
 
 3. Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které plánujete nainstalovat HDInsight.
 
@@ -51,10 +55,6 @@ Vynucené tunelování je uživatelem definovaná konfigurace směrování, kdy 
 Zákazníci, kteří mají zájem o nastavení vynuceného tunelování, by měli používat [vlastní metaúložiště](./hdinsight-use-external-metadata-stores.md) a nastavit vhodné připojení z podsítě clusteru nebo místní sítě k těmto vlastním metaúložiště.
 
 Příklad nastavení UDR pomocí Azure Firewall najdete v tématu [Konfigurace omezení odchozích síťových přenosů pro clustery Azure HDInsight](hdinsight-restrict-outbound-traffic.md).
-
-## <a name="required-ip-addresses"></a>Požadované IP adresy
-
-Pokud ke kontrole provozu používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, přečtěte si téma [IP adresy správy HDInsight](hdinsight-management-ip-addresses.md).
 
 ## <a name="required-ports"></a>Požadované porty
 

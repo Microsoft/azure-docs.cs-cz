@@ -14,21 +14,21 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274f603fa0d7a48b99a7caed5d465d44bc68e9ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019960"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660961"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele identity (IdP) SAML 2.0 pro Jednotné přihlašování
 
-Tento dokument obsahuje informace o použití zprostředkovatele identity založeného na profilu SAML 2,0 kompatibilního s protokolem SAML jako preferovaného poskytovatele služby tokenů zabezpečení (STS) nebo zprostředkovatele identity. Tento scénář je užitečný, když už máte adresář uživatele a úložiště hesel místně, ke kterým se dá dostat pomocí SAML 2,0. Tento existující adresář uživatele se dá použít k přihlášení k Office 365 a k dalším prostředkům zabezpečeným službou Azure AD. Profil SAML 2,0 SP-Lite vychází z široce používaného standardu federovaného identity Security Assertion Markup Language (SAML), který poskytuje rozhraní pro přihlášení a atribut pro výměnu atributů.
+Tento dokument obsahuje informace o použití zprostředkovatele identity založeného na profilu SAML 2,0 kompatibilního s protokolem SAML jako preferovaného poskytovatele služby tokenů zabezpečení (STS) nebo zprostředkovatele identity. Tento scénář je užitečný, když už máte adresář uživatele a úložiště hesel místně, ke kterým se dá dostat pomocí SAML 2,0. Tento existující adresář uživatele se dá použít k přihlášení k Microsoft 365 a dalším prostředkům zabezpečeným službou Azure AD. Profil SAML 2,0 SP-Lite vychází z široce používaného standardu federovaného identity Security Assertion Markup Language (SAML), který poskytuje rozhraní pro přihlášení a atribut pro výměnu atributů.
 
 >[!NOTE]
 >Seznam zprostředkovatelů identity třetích stran, které byly testovány pro použití se službou Azure AD, najdete v [seznamu kompatibility federace Azure AD](how-to-connect-fed-compatibility.md) .
 
-Společnost Microsoft podporuje toto přihlašování jako integrace cloudové služby Microsoftu, jako je například Office 365, s správně nakonfigurovaným IdP založenými na profilech SAML 2,0. Zprostředkovatelé identit SAML 2,0 jsou produkty třetích stran, a proto společnost Microsoft neposkytuje podporu pro nasazení, konfiguraci a řešení potíží s osvědčenými postupy, které se týkají. Po správném nakonfigurování se integrace se zprostředkovatelem identity SAML 2,0 může testovat ke správné konfiguraci pomocí nástroje Microsoft Connectivity Analyzer, který je podrobněji popsaný níže. Další informace o poskytovateli identity založeném na profilu SAML 2,0 SP-Lite si požádejte o organizaci, která ji dodala.
+Microsoft podporuje toto přihlašování jako integraci cloudové služby Microsoftu, jako je například Microsoft 365, s správně nakonfigurovaným IdPem založeným na profilech SAML 2,0. Zprostředkovatelé identit SAML 2,0 jsou produkty třetích stran, a proto společnost Microsoft neposkytuje podporu pro nasazení, konfiguraci a řešení potíží s osvědčenými postupy, které se týkají. Po správném nakonfigurování se integrace se zprostředkovatelem identity SAML 2,0 může testovat ke správné konfiguraci pomocí nástroje Microsoft Connectivity Analyzer, který je podrobněji popsaný níže. Další informace o poskytovateli identity založeném na profilu SAML 2,0 SP-Lite si požádejte o organizaci, která ji dodala.
 
 > [!IMPORTANT]
 > V tomto scénáři přihlášení s poskytovateli identity SAML 2,0 jsou k dispozici pouze omezená sada klientů, mezi které patří:
@@ -44,12 +44,12 @@ Společnost Microsoft podporuje toto přihlašování jako integrace cloudové s
 Všichni ostatní klienti nejsou k dispozici v tomto scénáři přihlášení s vaším poskytovatelem identity SAML 2,0. Například klient pro stolní počítače Lync 2010 se nemůže přihlásit ke službě s vaším poskytovatelem identity SAML 2,0 nakonfigurovaným pro jednotné přihlašování.
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Požadavky protokolu SAML 2,0 pro Azure AD
-Tento dokument obsahuje podrobné požadavky na formátování protokolu a zprávy, které musí zprostředkovatel identity SAML 2,0 implementovat, aby se federovat s Azure AD, aby bylo možné přihlašovat se k jedné nebo více cloudovým službám Microsoftu (například Office 365). Předávající strana SAML 2,0 (SP-STS) pro cloudovou službu Microsoftu, která se používá v tomto scénáři, je Azure AD.
+Tento dokument obsahuje podrobné požadavky na formátování protokolu a zprávy, které musí zprostředkovatel identity SAML 2,0 implementovat, aby se federovat s Azure AD, aby bylo možné přihlašovat se k jedné nebo více cloudovým službám Microsoftu (například Microsoft 365). Předávající strana SAML 2,0 (SP-STS) pro cloudovou službu Microsoftu, která se používá v tomto scénáři, je Azure AD.
 
 Doporučuje se zajistit, aby výstupní zprávy zprostředkovatele identity SAML 2,0 byly co nejblíže zadaným ukázkovým trasováním. Použijte taky konkrétní hodnoty atributů z poskytnutých metadat Azure AD, kde je to možné. Až budete s výstupními zprávami spokojeni, můžete otestovat pomocí analyzátoru připojení Microsoft, jak je popsáno níže.
 
 Metadata Azure AD je možné stáhnout z této adresy URL: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml) .
-Pro zákazníky v Číně, kteří používají instanci Office 365 specifickou pro Čínu, by se měl použít následující koncový bod federace: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml) .
+Pro zákazníky v Číně, kteří používají instanci Microsoft 365 specifickou pro Čínu, by se měl použít následující koncový bod federace: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml) .
 
 ## <a name="saml-protocol-requirements"></a>Požadavky protokolu SAML
 V této části se dozvíte, jak se páry zpráv požadavků a odpovědí ukládají dohromady, aby vám pomohly správně naformátovat zprávy.
@@ -63,9 +63,9 @@ V rámci zprávy s odpovědí SAML obsahuje uzel podpisu informace o digitální
 2.  Algoritmus RSA-SHA1 se musí použít jako DigestMethod. Jiné algoritmy digitálního podpisu nejsou přijímány.
    `<ds:DigestMethod Algorithm="https://www.w3.org/2000/09/xmldsig#sha1"/>`
 3.  Dokument XML můžete také podepsat. 
-4.  Transformační algoritmus musí odpovídat hodnotám v následující ukázce:`<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+4.  Transformační algoritmus musí odpovídat hodnotám v následující ukázce:    `<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
        <ds:Transform Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#"/>`
-9.  Algoritmus metodě SignatureMethod musí odpovídat následující ukázce:`<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
+9.  Algoritmus metodě SignatureMethod musí odpovídat následující ukázce:   `<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
 
 ## <a name="supported-bindings"></a>Podporované vazby
 Vazby jsou povinné parametry komunikace související s přenosem. Následující požadavky platí pro vazby.
@@ -80,7 +80,7 @@ Tato tabulka zobrazuje požadavky na konkrétní atributy ve zprávě SAML 2,0.
 |Atribut|Popis|
 | ----- | ----- |
 |NameID|Hodnota tohoto kontrolního výrazu musí být stejná jako ImmutableID uživatele Azure AD. Může to být až 64 alfanumerických znaků. Všechny bezpečné znaky, které nejsou ve formátu HTML, musí být kódované, například znak "+" je zobrazen jako ". 2B".|
-|IDPEmail|Hlavní název uživatele (UPN) je uvedený v odpovědi SAML jako element s názvem IDPEmail ve službě Azure AD/Office 365 jako název uživatele (UPN). Hlavní název uživatele (UPN) je ve formátu e-mailové adresy. Hodnota hlavního názvu uživatele (UPN) v systému Windows Office 365 (Azure Active Directory).|
+|IDPEmail|Hlavní název uživatele (UPN) je uvedený v odpovědi SAML jako element s názvem IDPEmail uživatele UserPrincipalName (UPN) v Azure AD/Microsoft 365. Hlavní název uživatele (UPN) je ve formátu e-mailové adresy. Hodnota hlavního názvu uživatele (UPN) ve Windows Microsoft 365 (Azure Active Directory).|
 |Vystavitel|Musí se jednat o identifikátor URI poskytovatele identity. Neprovádějte opakované použití vystavitele z ukázkových zpráv. Pokud máte ve svých klientech Azure AD víc domén nejvyšší úrovně, Vystavitel se musí shodovat se zadaným nastavením identifikátoru URI nakonfigurovaným pro jednotlivé domény.|
 
 >[!IMPORTANT]
@@ -103,7 +103,7 @@ Následuje ukázka zprávy požadavku, která je odeslána z Azure AD do ukázko
     </samlp:AuthnRequest>
 ```
 
-Následuje ukázka zprávy s odpovědí, která je odeslána z ukázkového poskytovatele identity kompatibilního s SAML 2,0 do Azure AD/Office 365.
+Následuje ukázka zprávy s odpovědí, která je odeslána z ukázkového poskytovatele identity kompatibilního s SAML 2,0 do Azure AD/Microsoft 365.
 
 ```xml
     <samlp:Response ID="_592c022f-e85e-4d23-b55b-9141c95cd2a5" Version="2.0" IssueInstant="2014-01-31T15:36:31.357Z" Destination="https://login.microsoftonline.com/login.srf" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="_049917a6-1183-42fd-a190-1d2cbaf9b144" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -159,7 +159,7 @@ Následuje ukázka zprávy s odpovědí, která je odeslána z ukázkového posk
 ```
 
 ## <a name="configure-your-saml-20-compliant-identity-provider"></a>Konfigurace poskytovatele identity kompatibilního s SAML 2,0
-Tato část obsahuje pokyny, jak nakonfigurovat poskytovatele identity SAML 2,0 tak, aby se federovat s Azure AD a povolili přístup k jednotnému přihlašování k jedné nebo více cloudovým službám Microsoftu (například Office 365) pomocí protokolu SAML 2,0. Předávající strana SAML 2,0 pro cloudovou službu Microsoftu, která se používá v tomto scénáři, je Azure AD.
+Tato část obsahuje pokyny, jak nakonfigurovat poskytovatele identity SAML 2,0 tak, aby se federovat s Azure AD a povolili přístup k jednotnému přihlašování k jedné nebo více cloudovým službám Microsoftu (například Microsoft 365) pomocí protokolu SAML 2,0. Předávající strana SAML 2,0 pro cloudovou službu Microsoftu, která se používá v tomto scénáři, je Azure AD.
 
 ## <a name="add-azure-ad-metadata"></a>Přidat metadata Azure AD
 Poskytovatel identity SAML 2,0 musí dodržovat informace o předávající straně služby Azure AD. Azure AD publikuje metadata na adrese https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml .
@@ -178,7 +178,7 @@ Musíte povolit komunikaci mezi vaším poskytovatelem identity SAML 2,0 a služ
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Instalace prostředí Windows PowerShell pro přihlášení pomocí zprostředkovatele identity SAML 2,0
 Po nakonfigurování zprostředkovatele identity SAML 2,0 pro použití s přihlášením pomocí Azure AD je dalším krokem stažení a instalace modulu Azure Active Directory pro prostředí Windows PowerShell. Po instalaci budete tyto rutiny používat ke konfiguraci domén Azure AD jako federovaných domén.
 
-Modul Azure Active Directory pro prostředí Windows PowerShell je stažením pro správu dat organizací ve službě Azure AD. Tento modul nainstaluje sadu rutin do prostředí Windows PowerShell. Tyto rutiny můžete použít k nastavení přístupu jednotného přihlašování ke službě Azure AD a ke všem cloudovým službám, ke kterým jste se přihlásili. Pokyny ke stažení a instalaci rutin najdete v tématu.[https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
+Modul Azure Active Directory pro prostředí Windows PowerShell je stažením pro správu dat organizací ve službě Azure AD. Tento modul nainstaluje sadu rutin do prostředí Windows PowerShell. Tyto rutiny můžete použít k nastavení přístupu jednotného přihlašování ke službě Azure AD a ke všem cloudovým službám, ke kterým jste se přihlásili. Pokyny ke stažení a instalaci rutin najdete v tématu [/Previous-Versions/Azure/jj151815 (v = Azure. 100)](/previous-versions/azure/jj151815(v=azure.100)) .
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Nastavení vztahu důvěryhodnosti mezi poskytovatelem identity SAML a Azure AD
 Před konfigurací federace v doméně Azure AD musí mít nakonfigurovanou vlastní doménu. Nemůžete federovat výchozí doménu, kterou poskytuje Microsoft. Výchozí doména od Microsoftu končí na "onmicrosoft.com".
@@ -200,7 +200,7 @@ Následující postup vás provede převodem existující standardní domény na
     Connect-MsolService
     ```
     
-2. Nakonfigurujte požadovanou doménu Office 365 tak, aby používala federaci s SAML 2,0:
+2. Nakonfigurujte požadovanou doménu Microsoft 365 pro použití federace s SAML 2,0:
 
     ```powershell
     $dom = "contoso.com" 
@@ -238,19 +238,19 @@ Následující postup vás provede převodem existující standardní domény na
     </IDPSSODescriptor>
     ``` 
 
-Další informace o příkazu set-MsolDomainAuthentication naleznete v tématu: [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx) .
+Další informace o příkazu set-MsolDomainAuthentication najdete v tématu: [/Previous-Versions/Azure/dn194112 (v = Azure. 100)](/previous-versions/azure/dn194112(v=azure.100)).
 
 >[!NOTE]
 >Je nutné použít `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` pouze v případě, že jste pro poskytovatele identity nastavili rozšíření ECP. Klienti Exchange Online, kromě webové aplikace Outlook (OWA), spoléhají na POST aktivní koncový bod založený na příspěvku. Pokud vaše služba SAML 2,0 STS implementuje aktivní koncový bod podobný implementaci Shibboleth ECP aktivního koncového bodu, může být pro tyto bohatých klientů možné pracovat se službou Exchange Online.
 
-Po nakonfigurování federace můžete přejít zpátky na "nefederované" (nebo "spravované"), ale tato změna může trvat až dvě hodiny a vyžaduje přiřazení nových náhodných hesel pro cloudové přihlašování každému uživateli. V některých scénářích může být pro resetování chyby v nastavení vyžadováno přepnutí zpět na spravovanou. Další informace o převodu domény najdete v tématu: [https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx) .
+Po nakonfigurování federace můžete přejít zpátky na "nefederované" (nebo "spravované"), ale tato změna může trvat až dvě hodiny a vyžaduje přiřazení nových náhodných hesel pro cloudové přihlašování každému uživateli. V některých scénářích může být pro resetování chyby v nastavení vyžadováno přepnutí zpět na spravovanou. Další informace o převodu domény najdete v tématu: [/Previous-Versions/Azure/dn194122 (v = Azure. 100)](/previous-versions/azure/dn194122(v=azure.100)).
 
-## <a name="provision-user-principals-to-azure-ad--office-365"></a>Zřizování objektů zabezpečení uživatele pro Azure AD/Office 365
-Než budete moct ověřit uživatele v Office 365, musíte zřídit Azure AD s uživatelskými objekty zabezpečení, které odpovídají kontrolnímu výrazu v deklaraci SAML 2,0. Pokud tyto hlavní uživatelské objekty nejsou v Azure AD předem známé, nelze je použít pro federované přihlašování. K zajištění objektů zabezpečení uživatele lze použít buď Azure AD Connect, nebo prostředí Windows PowerShell.
+## <a name="provision-user-principals-to-azure-ad--microsoft-365"></a>Zřizování objektů zabezpečení uživatele pro Azure AD/Microsoft 365
+Než budete moct ověřit uživatele a Microsoft 365, musíte zřídit Azure AD s uživatelskými objekty zabezpečení, které odpovídají kontrolnímu výrazu v deklaraci SAML 2,0. Pokud tyto hlavní uživatelské objekty nejsou v Azure AD předem známé, nelze je použít pro federované přihlašování. K zajištění objektů zabezpečení uživatele lze použít buď Azure AD Connect, nebo prostředí Windows PowerShell.
 
 Azure AD Connect můžete použít ke zřízení objektů zabezpečení domén v adresáři služby Azure AD z místní služby Active Directory. Podrobnější informace najdete v tématu [Integrace místních adresářů s Azure Active Directory](whatis-hybrid-identity.md).
 
-Prostředí Windows PowerShell můžete také použít k automatizaci přidání nových uživatelů do služby Azure AD a synchronizaci změn z místního adresáře. Pokud chcete používat rutiny Windows PowerShellu, musíte si stáhnout [Azure Active Directory moduly](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+Prostředí Windows PowerShell můžete také použít k automatizaci přidání nových uživatelů do služby Azure AD a synchronizaci změn z místního adresáře. Pokud chcete používat rutiny Windows PowerShellu, musíte si stáhnout [Azure Active Directory moduly](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
 Tento postup ukazuje, jak přidat jednoho uživatele do služby Azure AD.
 
@@ -270,7 +270,7 @@ Tento postup ukazuje, jak přidat jednoho uživatele do služby Azure AD.
       -UsageLocation "US" 
     ```
 
-Další informace o registraci "New-MsolUser",[https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
+Další informace o registraci New-MsolUser, [/Previous-Versions/Azure/dn194096 (v = Azure. 100)](/previous-versions/azure/dn194096(v=azure.100))
 
 >[!NOTE]
 >Hodnota "UserPrinciplName" se musí shodovat s hodnotou, kterou odešlete za "IDPEmail" v deklaraci SAML 2,0 a hodnota "ImmutableID" se musí shodovat s hodnotou odeslanou v kontrolním výrazu "NameID".
@@ -283,7 +283,7 @@ Než ověříte a spravujete jednotné přihlašování (označované také jako
 2.  Nakonfigurovali jste poskytovatele identity SAML 2,0.
 3.  Instalace prostředí Windows PowerShell pro jednotné přihlašování pomocí zprostředkovatele identity SAML 2,0
 4.  Nastavení vztahu důvěryhodnosti mezi poskytovatelem služeb SAML 2,0 a službou Azure AD
-5.  Byl zřízen známý objekt zabezpečení testovacího uživatele pro Azure Active Directory (Office 365) buď pomocí prostředí Windows PowerShell, nebo Azure AD Connect.
+5.  Byl zřízen známý objekt zabezpečení testovacího uživatele pro Azure Active Directory (Microsoft 365) buď pomocí prostředí Windows PowerShell nebo Azure AD Connect.
 6.  Nakonfigurujte synchronizaci adresářů pomocí [Azure AD Connect](whatis-hybrid-identity.md).
 
 Po nastavení jednotného přihlašování pomocí poskytovatele identity založeného na SAML 2,0 SP-Lite byste měli ověřit, že funguje správně.

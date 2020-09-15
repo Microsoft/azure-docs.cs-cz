@@ -1,19 +1,19 @@
 ---
 title: Migrace clusteru HBA do nové verze – Azure HDInsight
 description: Postup Migrace clusterů Apache HBA do novější verze ve službě Azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 23843743b58db91d457b509fa38243f110b76b41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079543"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503988"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBA na novou verzi
 
@@ -30,19 +30,19 @@ Před upgradem serverů Apache HBA ověřte, zda jsou verze adaptérů HBA na zd
 
 Tady je příklad matice kompatibility verzí. Y značí kompatibilitu a N označuje potenciální nekompatibilitu:
 
-| Typ kompatibility | Hlavní verze| Dílčí verze | Patch |
+| Typ kompatibility | Hlavní verze| Podverze | Patch |
 | --- | --- | --- | --- |
-| Kompatibilita komunikace mezi klientem a serverem | N | Ano | Ano |
-| Server – Kompatibilita serveru | N | Ano | Ano |
-| Kompatibilita formátu souborů | N | Ano | Ano |
-| Kompatibilita rozhraní API klienta | N | Ano | Ano |
-| Binární kompatibilita klienta | N | N | Ano |
+| Kompatibilita komunikace mezi klientem a serverem | N | A | Y |
+| Server – Kompatibilita serveru | N | A | Y |
+| Kompatibilita formátu souborů | N | A | Y |
+| Kompatibilita rozhraní API klienta | N | A | Y |
+| Binární kompatibilita klienta | N | N | A |
 | **Omezená Kompatibilita rozhraní API na straně serveru** |  |  |  |
-| Stable | N | Ano | Ano |
-| Vyvíjejí | N | N | Ano |
+| Stable | N | A | Y |
+| Vyvíjejí | N | N | A |
 | Nestabilní | N | N | N |
-| Kompatibilita závislostí | N | Ano | Ano |
-| Provozní kompatibilita | N | N | Ano |
+| Kompatibilita závislostí | N | A | Y |
+| Provozní kompatibilita | N | N | A |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Upgradovat se stejnými hlavními verzemi Apache HBA
 

@@ -2,17 +2,17 @@
 title: O branách virtuální sítě ExpressRoute – Azure | Microsoft Docs
 description: Přečtěte si informace o branách virtuální sítě pro ExpressRoute. Tento článek obsahuje informace o SKU a typech bran.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: mialdrid
-ms.openlocfilehash: e7779e0638ea61c70758394dc212910ba8f1d7f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 65e44acd1fe6ecb389f81cbd0ed88d1c161dfcdb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081130"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397861"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>O branách virtuální sítě ExpressRoute
 
@@ -86,7 +86,7 @@ Další informace o FastPath, včetně omezení a požadavků, najdete v tématu
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>Rozhraní REST API a rutiny PowerShellu
 Další technické materiály a specifické požadavky na syntaxi při použití rozhraní REST API a rutin PowerShellu pro konfigurace brány virtuální sítě najdete na následujících stránkách:
 
-| **Klasický** | **Resource Manager** |
+| **Standardním** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |

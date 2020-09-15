@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: d4ad11d156fd3a672e93b5e039c82d16b2aebdc3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321730"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489540"
 ---
 # <a name="create-external-stream-transact-sql"></a>VYTVOŘIT externí datový proud (Transact-SQL)
 
@@ -141,7 +141,7 @@ WITH  ( <with_options> )
   - MAXIMUM_BATCH_COUNT:  
     Maximální počet událostí odeslaných funkci na volání funkce Azure Functions – výchozí hodnota je 100. Pro SQL Database to představuje maximální počet záznamů odeslaných s každou hromadnou operací vložení – výchozí hodnota je 10 000. 
     - Platí pro všechny výstupy založené na SQL serveru 
-  - STAGING_AREA: externí objekt zdroje dat, který Blob Storage pracovní oblast pro příjem dat s vysokou propustností do SQL Data Warehouse 
+  - STAGING_AREA: externí objekt zdroje dat, který Blob Storage pracovní oblast pro příjem dat s vysokou propustností do Azure synapse Analytics 
     - Vyhrazeno pro budoucí použití. Neplatí pro Azure SQL Edge.
 
 
@@ -245,7 +245,7 @@ WITH
 ); 
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [ALTER EXTERNAL STREAM (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [Vynechat externí datový proud (Transact-SQL)](drop-external-stream-transact-sql.md) 

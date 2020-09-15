@@ -66,7 +66,7 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: Návody
   items:
-    - name: Připojení zařízení
+    - name: Připojení a vývoj zařízení
       items:
         - name: Příprava a připojení Rigado Cascade 500
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json

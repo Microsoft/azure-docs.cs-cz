@@ -1,6 +1,6 @@
 ---
-title: Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas – Azure AD
-description: Naučte se spravovat žádosti o souhlas, když je uživatel zakázaný nebo omezený, a jak vyhodnotit žádost o souhlas správce na úrovni tenanta pro aplikaci.
+title: Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas v Azure Active Directory
+description: Naučte se spravovat žádosti o souhlas, pokud je uživatel zakázaný nebo omezený, a jak vyhodnotit žádost o souhlas správce na úrovni tenanta pro aplikaci v Azure Active Directory.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763189"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420451"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas
 
@@ -76,7 +75,7 @@ Následující seznam uvádí doporučení, která je potřeba vzít v úvahu p�
 
 * **Pochopení požadovaných oprávnění**
 
-   Oprávnění požadovaná aplikací jsou uvedena na stránce s výzvou k [vyjádření souhlasu](../develop/application-consent-experience.md). Při rozbalení názvu oprávnění se zobrazí popis oprávnění. Popis oprávnění aplikace bude obecně končit "bez přihlášeného uživatele". Popis delegovaných oprávnění bude obecně končit "jménem přihlášeného uživatele". Oprávnění pro rozhraní Microsoft Graph API jsou popsána v tématu [Microsoft Graph oprávnění] – informace o oprávněních, která zveřejňují, najdete v dokumentaci k dalším rozhraním API.
+   Oprávnění požadovaná aplikací jsou uvedena na stránce s výzvou k [vyjádření souhlasu](../develop/application-consent-experience.md). Při rozbalení názvu oprávnění se zobrazí popis oprávnění. Popis oprávnění aplikace bude obecně končit "bez přihlášeného uživatele". Popis delegovaných oprávnění bude obecně končit "jménem přihlášeného uživatele". Oprávnění pro rozhraní Microsoft Graph API jsou popsána v [referenčních informacích k Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference) – informace o dalších rozhraních API najdete v dokumentaci pro pochopení oprávnění, která zveřejňuje.
 
    Pokud nerozumíte požadovanému oprávnění, *neudělí souhlas*.
 
@@ -95,27 +94,29 @@ Následující seznam uvádí doporučení, která je potřeba vzít v úvahu p�
 ## <a name="granting-consent-as-an-administrator"></a>Udělení souhlasu jako správce
 
 ### <a name="granting-tenant-wide-admin-consent"></a>Udělení souhlasu správce na úrovni tenanta
-
 Podrobné pokyny pro udělení souhlasu správce na úrovni tenanta od Azure Portal, pomocí Azure AD PowerShellu nebo ze samotného výzvy k vyjádření souhlasu najdete v tématu [udělení souhlasu správce pro celou aplikaci](grant-admin-consent.md) .
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Udělení souhlasu jménem konkrétního uživatele
-
-Místo udělení souhlasu celé organizaci může správce také použít [Graph API Microsoft](https://docs.microsoft.com/graph/use-the-api) k udělení souhlasu delegovaným oprávněním jménem jednoho uživatele. Další informace najdete v tématu [získání přístupu jménem uživatele](https://docs.microsoft.com/graph/auth-v2-user).
+Místo udělení souhlasu celé organizaci může správce použít [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) k udělení souhlasu pro delegovaná oprávnění jménem jednoho uživatele. Další informace najdete v tématu [získání přístupu jménem uživatele](https://docs.microsoft.com/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Omezení přístupu uživatelů k aplikacím
-
 Přístup uživatelů k aplikacím se pořád může omezit i v případě, že je udělený souhlas správce na úrovni tenanta. Další informace o tom, jak vyžadovat přiřazení uživatele k aplikaci, najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
 
 Další informace, včetně toho, jak zvládnout další složité scénáře, najdete v tématu [používání služby Azure AD pro správu přístupu k aplikacím](what-is-access-management.md).
 
+## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Zakažte všechny operace souhlasu uživatele s ostatními aplikacemi.
+Zákaz souhlasu uživatele pro celý adresář zabrání koncovým uživatelům v posílání do libovolné aplikace. Správci mohou i nadále souhlasit jménem uživatele. Chcete-li získat další informace o souhlasu aplikace a o tom, proč můžete nebo nebudete chtít souhlas, přečtěte si článek [porozumění souhlasu uživatele a správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+
+Pokud chcete zakázat všechny operace souhlasu uživatele s ostatními uživateli v celém adresáři, postupujte podle následujících kroků:
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
+4.  V navigační nabídce vyberte **Uživatelé a skupiny** .
+5.  Vyberte **Uživatelská nastavení**.
+6.  Zakažte všechny operace souhlasu s ostatními uživateli tím, že nastavením **uživatelů umožníte aplikacím přístup k jejich** přepínači **ne** a klikněte na tlačítko **Uložit** .
+
 ## <a name="next-steps"></a>Další kroky
-
-[Pět kroků pro zabezpečení infrastruktury identity](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
-
-[Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
-
-[Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
-
-[Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
-
-[Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Pět kroků pro zabezpečení infrastruktury identity](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
+* [Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
+* [Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)

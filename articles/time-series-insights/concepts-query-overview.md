@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 0fb50e01e86c00ac863352118eb36f7470251435
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855142"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489149"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Dotazování na data z Azure Time Series Insights Gen2
 
@@ -73,4 +73,4 @@ Tato rozhraní API jsou v našem řešení úložiště s více vrstvami k dispo
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o různých proměnných, které lze definovat v [modelu časové řady](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm).
-* Přečtěte si další informace o tom, jak zadávat dotazy na data z [průzkumníka Azure Time Series Insights TSI](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+* Přečtěte si další informace o tom, jak zadávat dotazy na data z [průzkumníka Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).

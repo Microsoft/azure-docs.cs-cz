@@ -2,7 +2,7 @@
 title: Dokumentace ke srovnávacím testům zabezpečení Azure
 summary: Seznamte se s našimi osvědčenými postupy a pokyny pro zabezpečení cloudových řešení v Azure.
 metadata:
-  title: Srovnávací testy zabezpečení Azure
+  title: Srovnávací test zabezpečení Azure
   description: Srovnávací test zabezpečení Azure obsahuje doporučení, která vám pomohou vylepšit zabezpečení vašich aplikací a dat v Azure.
   services: security
   ms.service: security
@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: addc6aab30d23ab1aaca691e5d1ee1f0b9d12c39
+  ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88213550"
+  ms.lasthandoff: 09/13/2020
+  ms.locfileid: "90058661"
 landingContent:
 - title: Informace o srovnávacím testu zabezpečení Azure
   linkLists:
@@ -34,22 +34,22 @@ landingContent:
       url: ../../security-center/index.yml
     - text: Základní informace o zabezpečení Azure
       url: ../fundamentals/index.yml
-- title: Mechanismy srovnávacího testu zabezpečení Azure
+- title: Mechanismy srovnávacího testu zabezpečení Azure V2
   linkLists:
   - linkListType: overview
     links:
     - text: Zabezpečení sítě
-      url: security-control-network-security.md
-    - text: Protokolování a monitorování
-      url: security-control-logging-monitoring.md
-    - text: Identita a řízení přístupu
-      url: security-control-identity-access-control.md
+      url: security-controls-v2-network-security.md
+    - text: Správa identit
+      url: security-controls-v2-identity-management.md
+    - text: Privilegovaný přístup
+      url: security-controls-v2-privileged-access.md
     - text: Ochrana dat
-      url: security-control-data-protection.md
-    - text: Správa ohrožení zabezpečení
-      url: security-control-vulnerability-management.md
+      url: security-controls-v2-data-protection.md
+    - text: Správa aktiv
+      url: security-controls-v2-asset-management.md
     - text: Další informace
-      url: security-control-inventory-asset-management.md
+      url: security-controls-v2-logging-threat-detection.md
 - title: Standardní hodnoty zabezpečení výpočetních funkcí
   linkLists:
   - linkListType: overview

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254368"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462712"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s PersistentVolume na zařízení Azure Stack Edge
 
@@ -55,7 +55,10 @@ Jste připraveni nasadit stavovou aplikaci na zařízení Azure Stack Edge.
 
 ## <a name="provision-a-static-pv"></a>Zřízení statické PV
 
-Pokud chcete staticky zřídit souč_hod, musíte na svém zařízení vytvořit sdílenou složku. Pomocí těchto kroků zřídíte souč_hod pro sdílenou složku SMB nebo NFS. 
+Pokud chcete staticky zřídit souč_hod, musíte na svém zařízení vytvořit sdílenou složku. Pomocí těchto kroků zřídíte souč_hod pro sdílenou složku SMB. 
+
+> [!NOTE]
+> Konkrétní příklad použitý v tomto článku s návody nepracuje se sdílenými složkami NFS. Obecně platí, že sdílené složky NFS je možné zřídit na vašem zařízení Azure Stack Edge s nedatabázovými aplikacemi.
 
 1. Vyberte, zda chcete vytvořit hraniční sdílenou složku nebo místní sdílenou složku Edge. Pokud chcete vytvořit sdílenou složku, postupujte podle pokynů v části [přidání sdílené složky](azure-stack-edge-manage-shares.md#add-a-share) . Nezapomeňte zaškrtnout políčko pro **použití sdílené složky s hraničními výpočty**.
 
@@ -71,7 +74,7 @@ Pokud chcete staticky zřídit souč_hod, musíte na svém zařízení vytvořit
 
         ![Připojit stávající místní sdílenou složku pro PV](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. Poznamenejte si název sdílené složky. Při vytvoření této sdílené složky se trvalý objekt svazku automaticky vytvoří v clusteru Kubernetes, který odpovídá vytvořené sdílené složce SMB nebo NFS. 
+1. Poznamenejte si název sdílené složky. Při vytvoření této sdílené složky se trvalý objekt svazku automaticky vytvoří v clusteru Kubernetes, který odpovídá sdílené složce protokolu SMB, kterou jste vytvořili. 
 
 ## <a name="deploy-mysql"></a>Nasazení MySQL
 
@@ -147,7 +150,7 @@ Všechny `kubectl` příkazy, které použijete k vytvoření a správě stavov�
               claimName: mysql-pv-claim
     ```
     
-2. Zkopírujte soubor a uložte `mysql-pv.yml` ho jako soubor do stejné složky, kam jste uložili soubor `mysql-deployment.yml` . Pokud chcete použít sdílenou složku SMB nebo NFS, kterou jste dříve vytvořili `kubectl` , nastavte `volumeName` pole v objektu PVC na název sdílené složky. 
+2. Zkopírujte soubor a uložte `mysql-pv.yml` ho jako soubor do stejné složky, kam jste uložili soubor `mysql-deployment.yml` . Pokud chcete použít sdílenou složku protokolu SMB, kterou jste dříve vytvořili `kubectl` , nastavte `volumeName` pole v objektu PVC na název sdílené složky. 
 
     > [!NOTE] 
     > Ujistěte se, že soubory YAML mají správné odsazení. Můžete se podívat na [YAML Lint](http://www.yamllint.com/) a ověřit a uložit.
@@ -158,8 +161,8 @@ Všechny `kubectl` příkazy, které použijete k vytvoření a správě stavov�
     metadata:
       name: mysql-pv-claim
     spec:
-      volumeName: <nfs-or-smb-share-name-here>
-      storageClassName: manual
+      volumeName: <smb-share-name-here>
+      storageClassName: ""
       accessModes:
         - ReadWriteOnce
       resources:
@@ -289,7 +292,6 @@ Všechny `kubectl` příkazy, které použijete k vytvoření a správě stavov�
 
 ## <a name="verify-mysql-is-running"></a>Ověřte, že je MySQL spuštěný.
 
-Předchozí soubor YAML vytvoří službu, která v clusteru umožní přístup k databázi. Možnost služby clusterIP: none umožňuje, aby název DNS služby byl přeložen přímo na IP adresu pod názvem. To je optimální, pokud máte pouze jeden pod za službou a nehodláte zvýšit počet lusků.
 
 Chcete-li spustit příkaz proti kontejneru v pod, který používá MySQL, zadejte:
 
@@ -339,7 +341,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```                                                                                         
 
-Souč_hod již není vázán na okruh PVC, protože byl odstraněn okruh PVC. Vzhledem k tom, že byla tato PV vytvořena, bude nutné sdílenou složku odstranit. Postupujte následovně:
+Souč_hod již není vázán na okruh PVC, protože byl odstraněn okruh PVC. Vzhledem k tom, že byla tato PV vytvořena, bude nutné sdílenou složku odstranit. Postupujte takto:
 
 1. Odpojte sdílenou složku. V Azure Portal přejděte na **prostředek Azure Stack Edge > sdílené složky** a vyberte a klikněte na sdílenou složku, kterou chcete odpojit. Vyberte **Odpojit** a potvrďte operaci. Počkejte, než se sdílená složka odpojí. Odpojování uvolní sdílenou složku (a tudíž přidruženou PersistentVolume) z clusteru Kubernetes. 
 

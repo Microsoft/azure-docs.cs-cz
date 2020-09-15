@@ -4,12 +4,12 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 0e1e50f27c6d0563ab51a74bbfa22d2a7f54ecd3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000732"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377399"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -63,7 +63,7 @@ V případě řešení zálohování úloh Azure, jako je SQL a SAP HANA, se zá
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Výjimky při vyvolání výstrahy
 
-Je-li výstraha při selhání vyvolána, existuje několik výjimek. Jedná se o tyto peeringy:
+Je-li výstraha při selhání vyvolána, existuje několik výjimek. Jsou to tyto:
 
 - Uživatel explicitně zrušil spuštěnou úlohu.
 - Úloha se nezdařila, protože právě probíhá jiná úloha zálohování (nic se nestane, protože musíme počkat na dokončení předchozí úlohy)
@@ -100,7 +100,7 @@ Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a 
 
 ## <a name="inactivating-alerts"></a>Deaktivace výstrah
 
-Pokud chcete deaktivovat nebo vyřešit aktivní výstrahu, můžete vybrat položku seznamu odpovídající výstraze, kterou chcete deaktivovat. Otevře se obrazovka, která zobrazuje podrobné informace o výstraze s tlačítkem pro zrušení **Aktivace** v horní části. Kliknutím na toto tlačítko se změní stav výstrahy na **neaktivní**. Výstrahu můžete také deaktivovat tak, že pravým tlačítkem myši kliknete na položku seznamu, která odpovídá dané výstraze, a vyberete **deaktivovat**.
+Pokud chcete deaktivovat nebo vyřešit aktivní výstrahu, můžete vybrat položku seznamu odpovídající výstraze, kterou chcete deaktivovat. Otevře se obrazovka, která zobrazuje podrobné informace o výstraze s tlačítkem pro zrušení **Aktivace** v horní části. Výběrem tohoto tlačítka se změní stav výstrahy na **neaktivní**. Výstrahu můžete také deaktivovat tak, že pravým tlačítkem myši kliknete na položku seznamu, která odpovídá dané výstraze, a vyberete **deaktivovat**.
 
 ![Deaktivace výstrah trezoru RS](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

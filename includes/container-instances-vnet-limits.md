@@ -16,6 +16,6 @@ ms.locfileid: "82583903"
 | Oblasti | Operační systém | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Úložiště (GB) |
 | -------- | :---: | :---: | :-----------: | :---: |
 | Austrálie – východ, Kanada – střed, Střed USA, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Západní Evropa, Západní USA 2 | Linux | 4 | 16 | 50 |
-| Japonsko – východ | Linux | 2 | 8 | 50 |
+| Japan East | Linux | 2 | 8 | 50 |
 | Střed USA – sever, Jižní Indie Západní USA | Linux | 2 | 3,5 | 50 |
 

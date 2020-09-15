@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5e8cb5e062db5c66fc093bf67c97caba15f407a3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856114"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489115"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Udělení přístupu k datům do prostředí
 
@@ -24,7 +24,7 @@ Tento článek pojednává o dvou typech zásad přístupu Azure Time Series Ins
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>Přihlášení k Azure Time Series Insights
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Zadejte `Time Series Insights environments` do **vyhledávacího** pole své prostředí Azure Time Series Insights. `Time Series Insights environments`Ve výsledcích hledání vyberte.
 1. Ze seznamu vyberte prostředí Azure Time Series Insights.
 
@@ -124,4 +124,4 @@ Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k A
 
 * Přečtěte si téma [ověřování a autorizace](time-series-insights-authentication-and-authorization.md) pro Azure Active Directory kroky registrace aplikace.
 
-* Zobrazte [si prostředí v průzkumníkovi Azure Time Series Insights TSI](./time-series-insights-update-explorer.md).
+* Zobrazte [si prostředí v průzkumníkovi Azure Time Series Insights](./time-series-insights-update-explorer.md).

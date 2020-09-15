@@ -224,12 +224,10 @@
               href: log-query/get-started-queries.md
         - name: Protokolování dat
           items:
-            - name: Datová struktura protokolů
-              href: log-query/logs-structure.md
             - name: Rozsah dotazu
               href: log-query/scope.md
-            - name: Standardní vlastnosti
-              href: platform/log-standard-properties.md
+            - name: Standardní sloupce
+              href: platform/log-standard-columns.md
             - name: Skupiny počítačů
               href: platform/computer-groups.md
         - name: Dotazovací jazyk

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f2e3e9376c26bae2c0b3c0dda06b781b5f2f7c4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425809339cf4c468293801460fdeb79d9e467968
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799153"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565595"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Registrace pro edice Azure Active Directory Premium
 K předplatnému Azure si můžete koupit a přidružit edice Azure Active Directory (Azure AD) Premium. Pokud potřebujete vytvořit nové předplatné Azure, budete také muset aktivovat svůj licenční plán a přístup ke službě Azure AD.
@@ -28,7 +28,7 @@ K předplatnému Azure si můžete koupit a přidružit edice Azure Active Direc
 
 Než si zaregistrujete edice Active Directory Premium 1 nebo Premium 2, musíte napřed určit, jaké stávající předplatné nebo plán chcete použít:
 
-- Stávajíc předplatné Azure nebo Office 365
+- Prostřednictvím stávajícího předplatného Azure nebo Microsoft 365
 
 - Licenční plán Enterprise Mobility + Security
 
@@ -36,8 +36,8 @@ Než si zaregistrujete edice Active Directory Premium 1 nebo Premium 2, musíte 
 
 Pokud k registraci použijete předplatné Azure s dříve zakoupenými a aktivovanými licencemi Azure AD, aktivují se licence automaticky ve stejném adresáři. V ostatních případech musíte aktivovat licenční plán i přístup k Azure AD. Další informace o aktivaci licenčního plánu najdete v části [Aktivace nového licenčního plánu](#activate-your-new-license-plan). Další informace o aktivaci přístupu k Azure AD najdete v části [Aktivace přístupu k Azure AD](#activate-your-azure-ad-access). 
 
-## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>Registrace s použitím stávajícího předplatného Azure nebo Office 365
-Jako předplatitel Azure nebo Office 365 si můžete edice Azure Active Directory Premium koupit online. Podrobný postup najdete v článku [Jak zakoupit Azure Active Directory Premium – nové zákazníky](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).
+## <a name="sign-up-using-your-existing-azure-or-microsoft-365-subscription"></a>Zaregistrujte se pomocí svého stávajícího předplatného Azure nebo Microsoft 365.
+Jako předplatitelé Azure nebo Microsoft 365 můžete koupit edice Azure Active Directory Premium online. Podrobný postup najdete v článku [Jak zakoupit Azure Active Directory Premium – nové zákazníky](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Registrace s použitím licenčního plánu Enterprise Mobility + Security
 Enterprise Mobility + Security je sada, která se skládá z Azure AD Premium, Azure Information Protection a Microsoft Intune. Pokud máte licenci EMS, můžete pro Azure AD začít používat některou z následujících možností licencování:

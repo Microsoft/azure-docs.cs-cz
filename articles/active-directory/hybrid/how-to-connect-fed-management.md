@@ -1,7 +1,7 @@
 ---
 title: Azure AD Connect – Správa AD FS a přizpůsobení | Microsoft Docs
 description: AD FS Správa pomocí Azure AD Connect a přizpůsobení uživatelského AD FS přihlašovacího prostředí s využitím Azure AD Connect a PowerShellu.
-keywords: AD FS, ADFS, Správa AD FS, AAD Connect, připojení, přihlášení, AD FS přizpůsobení, oprava důvěryhodnosti, O365, federace, předávající strana
+keywords: AD FS, ADFS, Správa AD FS, AAD Connect, připojení, přihlášení, AD FS přizpůsobení, oprava důvěryhodnosti, M365, federace, předávající strana
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830923"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661268"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení Active Directory Federation Services (AD FS) pomocí Azure AD Connect
 Tento článek popisuje, jak spravovat a přizpůsobovat Active Directory Federation Services (AD FS) (AD FS) pomocí Azure Active Directory (Azure AD) Connect. Zahrnuje taky další běžné AD FS úlohy, které může být potřeba udělat pro kompletní konfiguraci AD FS farmy.
@@ -31,7 +31,7 @@ Tento článek popisuje, jak spravovat a přizpůsobovat Active Directory Federa
 | Téma | Co pokrývá |
 |:--- |:--- |
 | **Správa AD FS** | |
-| [Opravit vztah důvěryhodnosti](#repairthetrust) |Jak opravit vztah důvěryhodnosti federace s Office 365. |
+| [Opravit vztah důvěryhodnosti](#repairthetrust) |Jak opravit vztah důvěryhodnosti federace s Microsoft 365. |
 | [Federovat se službou Azure AD s použitím alternativního přihlašovacího ID](#alternateid) | Konfigurace federace pomocí alternativního přihlašovacího ID  |
 | [Přidání serveru AD FS](#addadfsserver) |Jak rozšířit AD FSovou farmu s využitím dalšího serveru AD FS. |
 | [Přidat AD FS proxy server webové aplikace](#addwapserver) |Jak rozšířit AD FSovou farmu pomocí dalšího serveru proxy webových aplikací (WAP). |
@@ -85,7 +85,7 @@ Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou h
     Pokud chcete opravit konfiguraci v případě chybějících KB, nainstalujte požadované [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) a pak opravte vztah důvěryhodnosti pomocí [opravy AAD a AD FS Trust](#repairthetrust).
 
 > [!NOTE]
-> Další informace o alternateID a krocích pro ruční konfiguraci najdete v tématu [Konfigurace alternativního přihlašovacího ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) .
+> Další informace o alternateID a krocích pro ruční konfiguraci najdete v tématu [Konfigurace alternativního přihlašovacího ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) .
 
 ## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>Přidání serveru AD FS 
 
@@ -174,9 +174,9 @@ Pomocí Azure AD Connect můžete snadno přidat doménu, která se bude federov
 
    ![Doména Azure AD](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    Po výběru domény vám průvodce poskytne příslušné informace o dalších akcích, které průvodce provede, a o vlivu konfigurace. Pokud v některých případech vyberete doménu, která ve službě Azure AD ještě není ověřená, průvodce vám poskytne informace, které vám pomůžou ověřit doménu. Další podrobnosti najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md) .
+    Po výběru domény vám průvodce poskytne příslušné informace o dalších akcích, které průvodce provede, a o vlivu konfigurace. Pokud v některých případech vyberete doménu, která ve službě Azure AD ještě není ověřená, průvodce vám poskytne informace, které vám pomůžou ověřit doménu. Další podrobnosti najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md) .
 
-5. Klikněte na **Další**. Stránka **připraveno ke konfiguraci** zobrazuje seznam akcí, které Azure AD Connect provede. Kliknutím na **instalovat** dokončete konfiguraci.
+5. Klikněte na **Next** (Další). Stránka **připraveno ke konfiguraci** zobrazuje seznam akcí, které Azure AD Connect provede. Kliknutím na **instalovat** dokončete konfiguraci.
 
    ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
@@ -207,7 +207,7 @@ Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requi
 ```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>Upravit pravidla deklarace AD FS 
-AD FS podporuje bohatý jazyk deklarací identity, který můžete použít k vytvoření vlastních pravidel deklarací identity. Další informace najdete v tématu [Role jazyka pravidel deklarací identity](https://technet.microsoft.com/library/dd807118.aspx).
+AD FS podporuje bohatý jazyk deklarací identity, který můžete použít k vytvoření vlastních pravidel deklarací identity. Další informace najdete v tématu [Role jazyka pravidel deklarací identity](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807118(v=ws.11)).
 
 Následující části popisují, jak můžete psát vlastní pravidla pro některé scénáře, které se vztahují k Azure AD a AD FS federaci.
 

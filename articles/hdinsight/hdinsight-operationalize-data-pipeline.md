@@ -1,19 +1,19 @@
 ---
 title: Zprovoznění kanálu data Analytics – Azure
 description: Nastavte a spusťte Ukázkový datový kanál, který se aktivuje novými daty a vytváří stručné výsledky.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082790"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504414"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -126,7 +126,7 @@ Pokud chcete pomocí webové konzoly Oozie zobrazit stav koordinátora a instanc
         hdfs dfs -put ./2017-01-FlightData.csv /example/data/flights/2017-01-FlightData.csv
         ```
 
-### <a name="create-tables"></a>Vytvoření tabulek
+### <a name="create-tables"></a>Vytváření tabulek
 
 Ukázková data jsou nyní k dispozici. Kanál ale vyžaduje ke zpracování dvě tabulky podregistru, jednu pro příchozí data ( `rawFlights` ) a jednu pro sumarizovaná data ( `flights` ). Vytvořte tyto tabulky v Ambari následujícím způsobem.
 
@@ -594,7 +594,7 @@ Pokud chcete kanál spustit se koordinátorem, pokračujte podobným způsobem j
     oozie job -config job.properties -run
     ```
 
-5. Ověřte stav pomocí webové konzoly Oozie, tentokrát vyberte kartu **úlohy koordinátora** a pak klikněte na **všechny úlohy**.
+5. Ověřte stav pomocí webové konzoly Oozie, tentokrát vyberte kartu **úlohy koordinátora** a pak klikněte na  **všechny úlohy**.
 
     ![Oozie úlohy koordinátora webové konzoly](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 

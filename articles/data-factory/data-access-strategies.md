@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 015feac819467cf60bfb2faab27af769fadc3cfa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522869"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484948"
 ---
 # <a name="data-access-strategies"></a>Strategie přístupu k datům
 
@@ -47,7 +47,7 @@ To by mělo fungovat v mnoha scénářích a máme na to, že je žádoucí jedi
 Další informace o podporovaných mechanismech zabezpečení sítě v úložištích dat v Azure Integration Runtime a v místním prostředí Integration Runtime najdete níže v části dvě tabulky.  
 * **Azure Integration Runtime**
 
-    | Úložiště dat                  | Podporované mechanismy zabezpečení sítě v úložištích dat | Privátní propojení     | Důvěryhodná služba     | Rozsah statických IP adres | Značky služeb | Povolení služeb Azure |
+    | Úložiště dat                  | Podporované mechanismy zabezpečení sítě v úložištích dat | Private Link     | Důvěryhodná služba     | Rozsah statických IP adres | Značky služeb | Povolení služeb Azure |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|-----------------|
     | Úložiště dat Azure PaaS       | Azure Cosmos DB                                     | Ano              | -                   | Ano             | -            | Ano                  |
     |                              | Průzkumník dat Azure                                 | -                | -                   | Ano*            | Ano*         | -                    |
@@ -55,7 +55,7 @@ Další informace o podporovaných mechanismech zabezpečení sítě v úložiš
     |                              | Azure Database for MariaDB, MySQL, PostgreSQL       | -                | -                   | Ano             | -            | Ano                  |
     |                              | Azure File Storage                                  | Ano              | -                   | Ano             | -            | .                    |
     |                              | Azure Storage (objekt blob, ADLS Gen2)                     | Ano              | Ano (pouze ověřování MSI) | Ano             | -            | .                    |
-    |                              | Azure SQL DB, SQL DW (synapse Analytics), SQL ml  | Ano (jenom Azure SQL DB/DW)        | -                   | Ano             | -            | Ano                  |
+    |                              | Azure SQL DB, Azure synapse Analytics), SQL ml  | Ano (jenom Azure SQL DB/DW)        | -                   | Ano             | -            | Ano                  |
     |                              | Azure Key Vault (pro načtení tajných klíčů/připojovacího řetězce) | ano      | Ano                 | Ano             | -            | -                    |
     | Jiná úložiště dat PaaS/SaaS | AWS S3, SalesForce, Google Cloud Storage atd.    | -                | -                   | Ano             | -            | -                    |
     | LaaS Azure                   | SQL Server, Oracle atd.                          | -                | -                   | Ano             | Ano          | -                    |
@@ -73,7 +73,7 @@ Další informace o podporovaných mechanismech zabezpečení sítě v úložiš
     |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Ano       | -                   |
     |                                | Azure File Storage                                            | Ano       | -                   |
     |                                | Azure Storage (blog, ADLS Gen2)                             | Ano       | Ano (pouze ověřování MSI) |
-    |                                | Azure SQL DB, SQL DW (synapse Analytics), SQL ml          | Ano       | -                   |
+    |                                | Azure SQL DB, Azure synapse Analytics), SQL ml          | Ano       | -                   |
     |                                | Azure Key Vault (pro načtení tajných klíčů/připojovacího řetězce) | Ano       | Ano                 |
     | Jiná úložiště dat PaaS/SaaS | AWS S3, SalesForce, Google Cloud Storage atd.              | Ano       | -                   |
     | LaaS Azure                     | SQL Server, Oracle atd.                                  | Ano       | -                   |

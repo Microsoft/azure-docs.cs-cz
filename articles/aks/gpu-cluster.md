@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757638"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443054"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní výkon ve službě Azure Kubernetes Service (AKS)
 
@@ -162,7 +162,7 @@ az extension update --name aks-preview
 
 Nakonfigurujte cluster tak, aby při vytvoření clusteru používal image AKS specializovaného grafického procesoru. Pomocí `--aks-custom-headers` příznaku v uzlech agentů GPU na novém clusteru použijte k použití AKS specializované image GPU.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -173,7 +173,7 @@ Pokud chcete vytvořit cluster pomocí běžných imagí AKS, můžete to uděla
 
 Konfigurace nového fondu uzlů pro použití specializované image GPU AKS Použijte `--aks-custom-headers` příznak Flag pro uzly agenta GPU v novém fondu uzlů, aby se použila AKS specializovaná image GPU.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -181,7 +181,7 @@ Pokud chcete vytvořit fond uzlů pomocí běžných imagí AKS, můžete to ud�
 
 > [!NOTE]
 > Pokud vaše SKU GPU vyžaduje virtuální počítače generace 2, můžete vytvořit tento postup:
-> ```azure-cli
+> ```azurecli
 > az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
 > ```
 

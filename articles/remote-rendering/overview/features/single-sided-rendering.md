@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f1778d1f37217a5f65624be2fcc6c58c68002931
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2f9feb75cf46eee4329c9392771fe2e329a1d6d5
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013278"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613609"
 ---
 # <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: vykreslování
 
@@ -24,7 +24,7 @@ Nastavení * :::no-loc text="single-sided"::: vykreslování* umožňuje přizp�
 > [!CAUTION]
 > :::no-loc text="single-sided":::Nastavení vykreslování je experimentální funkce. V budoucnu se může znovu odebrat. Neměňte prosím výchozí nastavení, pokud skutečně neřeší kritickou chybu ve vaší aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 :::no-loc text="single-sided":::Nastavení vykreslení má pouze efekt pro sítě, které byly [převedeny](../../how-tos/conversion/configure-model-conversion.md) s `opaqueMaterialDefaultSidedness` možností nastavenou na `SingleSided` . Ve výchozím nastavení je tato možnost nastavena na hodnotu `DoubleSided` .
 
@@ -65,6 +65,11 @@ void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
     settings->SetMode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Vlastnost C# RemoteManager. SingleSidedSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.singlesidedsettings)
+* [C++ RemoteManager:: SingleSidedSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#singlesidedsettings)
 
 ## <a name="next-steps"></a>Další kroky
 

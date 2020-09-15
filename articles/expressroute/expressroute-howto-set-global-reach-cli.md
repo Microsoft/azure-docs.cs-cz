@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: Konfigurace ExpressRoute Global Reach: CLI'
 description: Tento článek vám pomůže propojit okruhy ExpressRoute dohromady a vytvořit privátní síť mezi místními sítěmi a povolit Global Reach.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2018
-ms.author: jaredro
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2e4f7b53ffd3642869e6246e546e3feeda3cf529
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 20ec5bb565a506d935ef7de6475e5062a21faa22
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495892"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395481"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurace Global Reach ExpressRoute pomocí Azure CLI
 
@@ -54,7 +54,7 @@ Můžete povolit ExpressRoute Global Reach mezi dvěma ExpressRoute okruhy, poku
 
 Při spuštění příkazu pro povolení připojení si všimněte následujících požadavků pro hodnoty parametrů:
 
-* *okruh partnerského vztahu* by měl být úplné ID prostředku. Příklad:
+* *okruh partnerského vztahu* by měl být úplné ID prostředku. Například:
 
   > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 

@@ -2,18 +2,18 @@
 title: Přizpůsobení síťových konfigurací pro virtuální počítač s podporou převzetí služeb při selhání | Microsoft Docs
 description: V této části najdete Přehled přizpůsobení síťových konfigurací pro virtuální počítač s podporou převzetí služeb při selhání při replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: rajanaki
-ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sideeksh
+ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135832"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426363"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Přizpůsobení síťových konfigurací cílového virtuálního počítače Azure
 
@@ -77,7 +77,7 @@ Veřejná IP adresa:
 - Předplatné a oblast veřejné IP adresy a cílového virtuálního počítače by měly být stejné.
 - SKU veřejné IP adresy cílového virtuálního počítače a SKU interního nástroje pro vyrovnávání zatížení by měly být stejné.
 
-Network security group (Skupina zabezpečení sítě):
+Skupina zabezpečení sítě:
 - Předplatné a oblast skupiny zabezpečení sítě a cílový virtuální počítač by měly být stejné.
 
 

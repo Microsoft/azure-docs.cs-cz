@@ -23,7 +23,7 @@ Kontejner potřebuje ke spuštění hodnoty argumentu fakturace. Tyto hodnoty um
 
 Příkaz spustí kontejner, pokud jsou k dispozici všechny tři z následujících možností s platnými hodnotami: <a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank"> `docker run` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
-| Možnost | Description |
+| Možnost | Popis |
 |--------|-------------|
 | `ApiKey` | Klíč rozhraní API prostředku Cognitive Services, který se používá ke sledování fakturačních informací.<br/>Hodnota této možnosti musí být nastavená na klíč rozhraní API pro zřízený prostředek, který je zadaný v `Billing` . |
 | `Billing` | Koncový bod prostředku Cognitive Services, který se používá ke sledování fakturačních informací.<br/>Hodnota této možnosti musí být nastavená na identifikátor URI koncového bodu zřízeného prostředku Azure.|

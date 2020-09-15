@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831018"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400054"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Scénář: vlastní izolace pro virtuální sítě
 
@@ -29,7 +29,7 @@ Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba, můžete vy
 | **Červené virtuální sítě**  |   &#8594;|              |       X       |       X      |
 | **Větve**   |   &#8594;|     X        |       X       |       X      |
 
-Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů.
+Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (strana "do" toku, záhlaví sloupců v tabulce kurzívou) pro konkrétní tok přenosů, kde "X" znamená, že připojení je zajištěno službou Virtual WAN.
 
 Počet různých vzorů řádků bude počet směrovacích tabulek, které v tomto scénáři budete potřebovat. V tomto případě tři směrovací tabulky tras, které budeme volat **RT_BLUE** a **RT_RED** pro virtuální sítě a **výchozí** pro větve. Nezapomeňte, že větve vždy musí být přidruženy k výchozí směrovací tabulce.
 

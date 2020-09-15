@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 02/18/2020
-  ms.openlocfilehash: 6f8cabab3b2feaa219c52c4ed8c53d1cccb4b658
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.date: 06/21/2020
+  ms.openlocfilehash: 870895980c90262a20cfd5ea95a4fdb01b39b4a3
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337190"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90015870"
 landingContent:
 - title: Informace o službě Azure IoT Central
   linkLists:
@@ -25,8 +25,6 @@ landingContent:
       url: overview-iot-central.md
     - text: Prohlídka uživatelského rozhraní
       url: overview-iot-central-tour.md
-    - text: Vývoj zařízení
-      url: overview-iot-central-developer.md
     - text: Nejnovější aktualizace
       url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central
   - linkListType: architecture
@@ -39,18 +37,34 @@ landingContent:
     links:
     - text: Vytvoření nové aplikace
       url: quick-deploy-iot-central.md
-- title: Připojování
+- title: Připojení a vývoj zařízení
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled pro vývojáře zařízení
+      url: overview-iot-central-developer.md
   - linkListType: tutorial
     links:
+    - text: Připojení zařízení (Node.js)
+      url: tutorial-connect-device-nodejs.md
+    - text: Připojení zařízení (Python)
+      url: tutorial-connect-device-python.md
+  - linkListType: concept
+    links:
     - text: Připojení zařízení
-      url: tutorial-connect-device.md
+      url: concepts-get-connected.md
+    - text: Šablony zařízení
+      url: concepts-device-templates.md
+    - text: Datové části zpráv
+      url: concepts-telemetry-properties-commands.md
   - linkListType: how-to-guide
     links:
-    - text: Nastavení šablony zařízení
+    - text: Nastavení šablony
       url: howto-set-up-template.md
-    - text: Připojení dalších cloudů IoT
-      url: howto-build-iotc-device-bridge.md
+    - text: Připojení zařízení Azure Sphere
+      url: howto-connect-sphere.md
+    - text: Řešení potíží s připojením zařízení
+      url: troubleshoot-connection.md
 - title: Stálé připojení
   linkLists:
   - linkListType: tutorial

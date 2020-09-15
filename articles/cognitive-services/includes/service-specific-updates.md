@@ -16,11 +16,11 @@ ms.locfileid: "86225111"
 ---
 ## <a name="service-specific-updates"></a>Aktualizace specifické pro službu 
 
-* [Computer Vision](../Computer-vision/whats-new.md)
+* [Počítačové zpracování obrazu](../Computer-vision/whats-new.md)
 * [Custom Vision](../Custom-Vision-Service/whats-new.md)
 * [Rozpoznávání formulářů](../form-recognizer/whats-new.md)
 * [Language Understanding (LUIS)](../LUIS/whats-new.md)
 * [Personalizace](../personalizer/whats-new.md)
 * [QnA Maker](../QnAMaker/whats-new.md)
-* [Služba Speech](../Speech-Service/whats-new.md)
+* [Služba řeči](../Speech-Service/whats-new.md)
 * [Analýza textu](../text-analytics/whats-new.md)

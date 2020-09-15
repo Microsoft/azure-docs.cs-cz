@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: b8a0a8093ab5f4d6c5e528bce592d5c029de30a7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553389"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400037"
 ---
 # <a name="scenario-isolating-vnets"></a>Scénář: izolace virtuální sítě
 
@@ -29,7 +29,7 @@ V tomto scénáři zůstane úloha v rámci určité virtuální sítě izolovan
 | Virtuální sítě     | &#8594;|           |     X    |
 | Větve   | &#8594;|    X     |     X    |
 
-Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků) učí předpona cíle (na straně toku, záhlaví sloupců v kurzívě) pro konkrétní tok přenosů.
+Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků) učí předpona cíle (strana "do" toku, záhlaví sloupců v kurzívě) pro konkrétní tok přenosů, kde "X" znamená, že připojení je zajištěno službou Virtual WAN.
 
 Tato matice připojení poskytuje dva různé vzory řádků, které se převádějí do dvou směrovacích tabulek. Virtuální síť WAN už má výchozí směrovací tabulku, takže budeme potřebovat jinou směrovací tabulku. V tomto příkladu budeme pojmenovat směrovací tabulku **RT_VNET**.
 

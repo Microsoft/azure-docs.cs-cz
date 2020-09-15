@@ -3,20 +3,20 @@ title: Přední dvířka Azure – přepsání adresy URL | Microsoft Docs
 description: Tento článek vám pomůže porozumět tomu, jak přední dvířka Azure Přepisuje adresu URL pro vaše trasy, pokud jsou nakonfigurované.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471468"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398933"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>Přepsání adresy URL (vlastní předávací cesta)
 Přední dvířka Azure podporují přepis adres URL tím, že vám umožní nakonfigurovat volitelnou **cestu pro přesměrování** , která se má použít při vytváření žádosti pro předání do back-endu. Pokud není zadaná žádná vlastní předávací cesta, ve výchozím nastavení služba Front Door zkopíruje příchozí cestu URL do adresy URL použité v přesměrovaném požadavku. Hlavička hostitele použitá v přesměrovaném požadavku odpovídá konfiguraci pro vybraný back-end. Přečtěte si [hlavičku back-end hostitele](front-door-backend-pool.md#hostheader) , kde se dozvíte, co dělá a jak ho můžete nakonfigurovat.

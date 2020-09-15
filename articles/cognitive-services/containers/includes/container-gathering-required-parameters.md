@@ -19,13 +19,13 @@ ms.locfileid: "80875029"
 
 Existují tři primární parametry pro všechny požadované kontejnery Cognitive Services. Podmínky licenční smlouvy s koncovým uživatelem (EULA) musí být k dispozici s hodnotou `accept` . Kromě toho je potřeba adresa URL koncového bodu i klíč rozhraní API.
 
-### <a name="endpoint-uri-endpoint_uri"></a>Identifikátor URI koncového bodu`{ENDPOINT_URI}`
+### <a name="endpoint-uri-endpoint_uri"></a>Identifikátor URI koncového bodu `{ENDPOINT_URI}`
 
 Hodnota identifikátoru URI **koncového bodu** je k dispozici na stránce *Přehled* Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *Přehled* , najeďte myší na koncový bod a `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> zobrazí se ikona. Zkopírujte a použijte tam, kde je to potřeba.
 
 ![Shromáždit identifikátor URI koncového bodu pro pozdější použití](../media/overview-endpoint-uri.png)
 
-### <a name="keys-api_key"></a>Klíče`{API_KEY}`
+### <a name="keys-api_key"></a>Klíče `{API_KEY}`
 
 Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *klíče* a klikněte na `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> ikonu.
 

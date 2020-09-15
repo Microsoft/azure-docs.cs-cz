@@ -91,6 +91,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: Předvolba směrování
           href: routing-preference-overview.md
+        - name: Standardní hodnoty zabezpečení pro veřejné IP adresy
+          href: public-ip-security-baseline.md
     - name: Zabezpečení
       items:
         - name: Skupiny zabezpečení sítě

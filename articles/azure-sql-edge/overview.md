@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642465"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489523"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Co je Azure SQL Edge (Preview)?
 
@@ -67,7 +67,7 @@ Azure SQL Edge usnadňuje vývoj a správu aplikací pro snazší a vyšší pro
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) – bezplatná klientská aplikace ke stažení pro správu jakékoli infrastruktury SQL, od SQL Server po SQL Database.
 - [SQL Server Data Tools v aplikaci Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt/) – bezplatná klientská aplikace ke stažení pro vývoj SQL Server relačních databází, databází SQL, balíčků integračních služeb, Analysis Services datových modelů a sestav služby Reporting Services.
 - [Azure Data Studio](/sql/azure-data-studio/what-is/) – bezplatný, zaváděný a databázový Nástroj pro různé platformy pro data Professional s využitím řady místních a cloudových datových platforem v systémech Windows, MacOS a Linux.
-- [Visual Studio Code](https://code.visualstudio.com/docs) – bezplatný a Open Source Editor kódu pro Windows, MacOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure SQL Data Warehouse.
+- [Visual Studio Code](https://code.visualstudio.com/docs) – bezplatný a Open Source Editor kódu pro Windows, MacOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure synapse Analytics.
 
 
 ## <a name="next-steps"></a>Další kroky

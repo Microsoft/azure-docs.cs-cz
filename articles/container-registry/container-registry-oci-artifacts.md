@@ -4,14 +4,14 @@ description: Nabízení a stahování artefaktů Open container Initiative (OCI)
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 08/12/2020
 ms.author: stevelas
-ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371048"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484999"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Vložení a vyžádání artefaktu OCI pomocí služby Azure Container Registry
 
@@ -54,7 +54,7 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login`k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Aby bylo možné dokončit jednotlivé směry ověřování, je nutné nainstalovat a spustit klienta Docker.
+> `az acr login` k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Aby bylo možné dokončit jednotlivé směry ověřování, je nutné nainstalovat a spustit klienta Docker.
 
 ## <a name="push-an-artifact"></a>Vložení artefaktu
 
@@ -148,6 +148,36 @@ Pokud chcete odebrat artefakt ze služby Azure Container Registry, použijte př
 az acr repository delete \
     --name myregistry \
     --image samples/artifact:1.0
+```
+
+## <a name="example-build-docker-image-from-oci-artifact"></a>Příklad: sestavení image Docker z artefaktu OCI
+
+Zdrojový kód a binární soubory k sestavení image kontejneru se dají ukládat jako artefakty OCI do služby Azure Container Registry. Na zdrojový artefakt můžete odkazovat jako na kontext sestavení pro [úlohu ACR](container-registry-tasks-overview.md). Tento příklad ukazuje, jak uložit souboru Dockerfile jako artefakt OCI a pak odkazovat na artefakt a sestavit image kontejneru.
+
+Například vytvořte jednořádkový souboru Dockerfile:
+
+```bash
+echo "FROM hello-world" > hello-world.dockerfile
+```
+
+Přihlaste se k cílovému registru kontejneru.
+
+```azurecli
+az login
+az acr login --name myregistry
+```
+
+Pomocí příkazu vytvořte a nahrajte nový artefakt OCI do cílového registru `oras push` . Tento příklad nastaví výchozí typ média pro artefakt.
+
+```bash
+oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+```
+
+Spuštěním příkazu [AZ ACR Build](/cli/azure/acr#az-acr-build) Sestavte image Hello-World pomocí nového artefaktu jako kontextu sestavení:
+
+```azurecli
+az acr build --registry myregistry --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/hello-world:1.0
 ```
 
 ## <a name="next-steps"></a>Další kroky

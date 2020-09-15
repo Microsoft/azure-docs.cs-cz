@@ -20,6 +20,8 @@
       href: set-up-service-alerts.md
 - name: Postupy
   items:
+    - name: Ruční migrace
+      href: manual-migration.md
     - name: Připojení k prostředkům Windows Virtual Desktop
       items:
         - name: Připojení s desktopovým klientem Windows

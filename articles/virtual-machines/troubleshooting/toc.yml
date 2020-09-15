@@ -101,6 +101,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: Virtuální počítač nereaguje při použití zásad konfigurace auditu
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: Virtuální počítač nereaguje při použití výchozích zásad řadičů domén
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: Virtuální počítač nereaguje při použití zásad skupiny
           href: unresponsive-vm-apply-group-policy.md
         - name: Virtuální počítač nereaguje při použití zásad zabezpečení

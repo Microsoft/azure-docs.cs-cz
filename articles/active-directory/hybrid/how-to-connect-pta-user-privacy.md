@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358119"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279512"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Ochrana osobních údajů uživatelů a předávací ověřování služby Azure Active Directory
 
@@ -67,7 +67,7 @@ Další informace o souvisejících požadavcích Azure AD Connect GDPR najdete 
 
 ### <a name="delete-authentication-agent-event-logs"></a>Odstranit protokoly událostí ověřovacího agenta
 
-Tento produkt může také vytvářet **protokoly událostí systému Windows**. Pokud se chcete dozvědět víc, přečtěte si [Tento článek](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+Tento produkt může také vytvářet **protokoly událostí systému Windows**. Pokud se chcete dozvědět víc, přečtěte si [Tento článek](/windows/win32/wes/windows-event-log).
 
 Chcete-li zobrazit protokoly související s agentem předávacího ověřování, otevřete aplikaci **Prohlížeč událostí** na serveru a zaškrtněte v části **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
@@ -103,7 +103,7 @@ Pokud chcete naplánovat spuštění tohoto skriptu každých 48 hodin, postupuj
  
 ### <a name="note-about-domain-controller-logs"></a>Poznámka o protokolech řadičů domény
 
-Pokud je povoleno protokolování auditu, může tento produkt generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu najdete v tomto [článku](https://technet.microsoft.com/library/dd277403.aspx).
+Pokud je povoleno protokolování auditu, může tento produkt generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu najdete v tomto [článku](/previous-versions/tn-archive/dd277403(v=technet.10)).
 
 ## <a name="next-steps"></a>Další kroky
 * [Přečtěte si téma zásady ochrany osobních údajů Microsoftu na webu Trust Center.](https://www.microsoft.com/trustcenter)

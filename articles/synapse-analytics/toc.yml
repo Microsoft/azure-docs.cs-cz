@@ -4,7 +4,7 @@
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Přehled
   items:
-    - name: Co je Azure Synapse Analytics?
+    - name: Co je Azure Synapse?
       href: overview-what-is.md
     - name: Začínáme
       items:
@@ -36,10 +36,10 @@
   items:
     - name: Vytvoření pracovního prostoru Synapse s využitím webu Azure Portal
       href: quickstart-create-workspace.md
-    - name: Nasazení s využitím šablony
-      href: quickstart-deployment-template-workspaces.md
     - name: Vytvoření pracovního prostoru Synapse s využitím Azure CLI
       href: quickstart-create-workspace-cli.md
+    - name: Nasazení s využitím šablony
+      href: quickstart-deployment-template-workspaces.md
     - name: Použití sady Synapse Studio
       href: quickstart-synapse-studio.md
     - name: Propojení pracovního prostoru Power BI
@@ -70,7 +70,7 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Kurzy
   items:
-    - name: Spouštění aplikací Apache Spark pro fondy úloh Sparku
+    - name: Spouštění aplikací Apache Sparku
       href: ./spark/intellij-tool-synapse.md
     - name: Definice úloh Sparku
       href: ./spark/apache-spark-job-definitions.md
@@ -84,7 +84,7 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: Datový analytik
       items:
-        - name: Analýza s využitím SQL na vyžádání a vizualizace s využitím funkce Synapse Studio
+        - name: Použití SQL na vyžádání k analýze dat
           href: ./sql/tutorial-data-analyst.md
 - name: ukázky
   href: 'https://github.com/Azure-Samples/Synapse'
@@ -224,7 +224,7 @@
                   href: ./spark/apache-spark-azure-portal-add-libraries.md
                 - name: Podpora jazyků a knihoven v modulu runtime
                   href: ./spark/apache-spark-version-support.md
-            - name: Poznámkové bloky Azure Synapse Studio
+            - name: Poznámkové bloky s funkcí Azure Synapse Studio
               href: ./spark/apache-spark-development-using-notebooks.md
             - name: Zabezpečení přihlašovacích údajů s využitím TokenLibrary
               href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
@@ -372,9 +372,9 @@
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 'Integrace nástrojů (AI, ETL, BI)'
       items:
-        - name: Řešení potíží s nástrojem Synapse Analytics Studio
+        - name: Řešení potíží s funkcí Synapse Studio
           href: troubleshoot/troubleshoot-synapse-studio.md
-        - name: Řešení potíží s nástrojem Synapse Analytics Studio pomocí PowerShellu
+        - name: Řešení potíží s připojením funkce Synapse Studio
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
 - name: Postup
   items:
@@ -422,7 +422,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Upgrade na Gen2
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Přijímání a příprava dat
+    - name: Ingestování a příprava dat
       items:
         - name: Do datového skladu
           items:
@@ -869,7 +869,7 @@
               href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Řešení potíží s místním prostředím Integration Runtime
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Připojení nástrojů ke službě Synapse Analytics
+    - name: Připojení nástrojů k pracovním prostorům Synapse
       items:
         - name: Synapse SQL
           items:

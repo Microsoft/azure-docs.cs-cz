@@ -17,7 +17,7 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="root-json-elements"></a>Kořenové elementy JSON
 
-| Prvek | Description |
+| Element | Popis |
 | --- | --- |
 | verze |To odkazuje na verzi rozhraní API pro video. |
 | měřítk |"Takty" za sekundu videa. |
@@ -28,7 +28,7 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="fragments-json-elements"></a>Fragmenty – elementy JSON
 
-|Prvek|Description|
+|Element|Popis|
 |---|---|
 | start |Čas zahájení první události v "taktech". |
 | doba trvání |Délka fragmentu v "taktech". |

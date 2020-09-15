@@ -20,7 +20,7 @@ ms.locfileid: "89566173"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >

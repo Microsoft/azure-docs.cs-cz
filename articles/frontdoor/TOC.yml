@@ -7,8 +7,10 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření služby Front Door
+    - name: Vytvoření služby Front Door – portál
       href: quickstart-create-front-door.md
+    - name: Vytvoření služby Front Door – šablona ARM
+      href: quickstart-create-front-door-template.md
 - name: Kurzy
   items:
     - name: Přidání vlastní domény do služby Front Door

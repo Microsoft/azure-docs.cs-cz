@@ -73,7 +73,7 @@ Použijte následující tabulku pro konfiguraci portů pro servery hostující 
 
 | Číslo portu | V nebo ven | Rozsah portů | Vyžadováno | Pokyny |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Out       | Síť WAN        | Yes      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
+| TCP 443 (HTTPS)| Out       | Síť WAN        | Ano      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
 
 Pokud chcete získat úplné informace, přečtěte si [pravidla brány firewall a konfigurace portů pro nasazení IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

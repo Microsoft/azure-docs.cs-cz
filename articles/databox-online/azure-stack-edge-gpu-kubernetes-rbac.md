@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268070"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318960"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Kubernetes na zařízení GPU Azure Stack Edge Access Control na základě rolí
 
@@ -32,10 +32,7 @@ Při nastavování clusteru Kubernetes se vytvoří jeden uživatel, který odpo
 
 Prostředky Kubernetes, například lusky a nasazení, jsou logicky seskupeny do oboru názvů. Tato seskupení poskytují způsob, jak logicky rozdělit cluster Kubernetes a omezit přístup k vytváření, zobrazení nebo správě prostředků. Uživatelé můžou pracovat jenom s prostředky v rámci svých přiřazených oborů názvů.
 
-Obory názvů jsou určené pro použití v prostředích s mnoha uživateli, kteří jsou rozloženi mezi několik týmů nebo projektů. V případě clusterů s několika až desítkami uživatelů byste neměli muset vytvářet ani myslet na všechny obory názvů vůbec. Pokud potřebujete funkce, které poskytují, začněte používat obory názvů.
-
-Další informace najdete v tématu [obory názvů Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
-
+Obory názvů jsou určené pro použití v prostředích s mnoha uživateli, kteří jsou rozloženi mezi několik týmů nebo projektů. Další informace najdete v tématu [obory názvů Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
 Vaše zařízení Azure Stack Edge má následující obory názvů:
 
@@ -47,20 +44,18 @@ Vaše zařízení Azure Stack Edge má následující obory názvů:
     - DBE – obor názvů
     - default
     - Kubernetes – řídicí panel
-    - default
     - Kube-Node-zapůjčení
     - Kube – veřejný
-    - iotedge
-    - Azure – ARC
+
 
     Ujistěte se, že nepoužíváte žádné rezervované názvy pro uživatelské obory názvů, které vytvoříte. 
 <!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
 
-- **Obor názvů uživatele** – jedná se o obory názvů, které můžete vytvořit prostřednictvím **kubectl** k lokálně nasazeným aplikacím.
+- **Obor názvů uživatele** – jedná se o obory názvů, které můžete vytvořit prostřednictvím **kubectl** nebo prostřednictvím rozhraní PowerShellu zařízení pro místní nasazení aplikací.
  
-- **Obor názvů IoT Edge** – k tomuto oboru názvů se připojíte `iotedge` a nasadíte aplikace přes IoT Edge.
+- **Obor názvů IoT Edge** – k tomuto oboru názvů se připojíte `iotedge` , abyste mohli spravovat aplikace nasazené prostřednictvím IoT Edge.
 
-- **Obor názvů ARC Azure** – připojíte se k tomuto `azure-arc` oboru názvů a nasadíte aplikace přes Azure ARC. 
+- **Obor názvů ARC Azure** – k tomuto oboru názvů se připojíte `azure-arc` , abyste mohli spravovat aplikace nasazené přes Azure ARC. Pomocí ARC Azure můžete nasazovat i aplikace v jiných oborech názvů uživatelů. 
 
 ## <a name="namespaces-and-users"></a>Obory názvů a uživatelé
 
@@ -96,7 +91,7 @@ Tady je diagram, který znázorňuje implementaci RBAC na Azure Stack hraniční
 
 V tomto diagramu mají Alice, Bob a Karel přístup pouze k přiřazeným oborům názvů uživatelů, což v tomto případě jsou `ns1` , `ns2` a `ns3` . V těchto oborech názvů mají přístup správce. Správce clusteru na druhé straně má přístup správce k systémovým oborům názvů a prostředkům v rámci clusteru.
 
-Pomocí příkazů můžete `kubectl` vytvářet obory názvů, přiřazovat uživatele, přiřazovat uživatele nebo stahovat `kubeconfig` soubory. Tady je pracovní postup vysoké úrovně:
+Pomocí příkazů můžete `kubectl` vytvářet obory názvů a uživatele, přiřazovat uživatele k oborům názvů nebo stahovat `kubeconfig` soubory. Tady je pracovní postup vysoké úrovně:
 
 1. Vytvořte obor názvů a uživatele.  
 
@@ -123,7 +118,7 @@ Při práci s obory názvů a uživateli na Azure Stack hraničních zařízení
 - Můžete vytvořit uživatelské obory názvů a v rámci těchto oborů názvů vytvořit další uživatele a udělit nebo odvolat přístup k oboru názvů těmto uživatelům.
 - Nemáte oprávnění vytvářet žádné obory názvů s názvy, které jsou stejné jako pro libovolný obor názvů System. Názvy pro systémové obory názvů jsou rezervované.  
 - Nemůžete vytvářet žádné obory názvů uživatelů s názvy, které už používají jiné obory názvů uživatelů. Například pokud máte vytvořený, který jste `test-ns` vytvořili, nemůžete vytvořit jiný `test-ns` obor názvů.
-- Nejste oprávněni vytvářet uživatele s názvy, které jsou již rezervovány. Například `aseuser` je rezervovaný Správce clusteru a nelze ho použít.
+- Nejste oprávněni vytvářet uživatele s názvy, které jsou již rezervovány. Například `aseuser` je rezervovaný uživatel a nelze jej použít.
 
 
 ## <a name="next-steps"></a>Další kroky

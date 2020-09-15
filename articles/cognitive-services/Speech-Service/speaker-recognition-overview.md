@@ -1,25 +1,27 @@
 ---
-title: Služba Azure rozpoznávání mluvčího
+title: Přehled rozpoznávání mluvčího – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných vlastností hlasu. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?".
+description: Rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných hlasových charakteristik pomocí hlasových biometry. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". Tento článek představuje přehled výhod a možností služby rozpoznávání mluvčího.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/02/2020
 ms.author: trbye
-ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: cog-serv-seo-aug-2020
+keywords: rozpoznávání mluvčího, Voice biometry
+ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780881"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397255"
 ---
-# <a name="what-is-the-azure-speaker-recognition-service"></a>Co je služba Azure rozpoznávání mluvčího?
+# <a name="what-is-speaker-recognition"></a>Co je rozpoznávání mluvčího?
 
-Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných vlastností hlasu. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". Zadáváte data o školeních zvuku pro jeden mluvčí, který vytváří profil zápisu na základě jedinečných vlastností hlasu mluvčího. Potom můžete zkontrolovat ukázky zvukového hlasu proti tomuto profilu, abyste ověřili, že je mluvčí stejná osoba (ověření mluvčího), nebo ukázky zvukového hlasu pro *skupinu* zaregistrovaných profilů mluvčího, abyste viděli, jestli se shoduje s jakýmkoli profilem ve skupině (identifikace mluvčího). Naproti tomu [mluvčí Diarization](batch-transcription.md#speaker-separation-diarization) seskupuje segmenty zvuků pomocí mluvčího v operaci Batch.
+Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných hlasových charakteristik pomocí služby Voice biometry. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". Zadáváte data o školeních zvuku pro jeden mluvčí, který vytváří profil zápisu na základě jedinečných vlastností hlasu mluvčího. Potom můžete zkontrolovat ukázky zvukového hlasu proti tomuto profilu, abyste ověřili, že je mluvčí stejná osoba (ověření mluvčího), nebo ukázky zvukového hlasu pro *skupinu* zaregistrovaných profilů mluvčího, abyste viděli, jestli se shoduje s jakýmkoli profilem ve skupině (identifikace mluvčího). Naproti tomu [mluvčí Diarization](batch-transcription.md#speaker-separation-diarization) seskupuje segmenty zvuků pomocí mluvčího v operaci Batch.
 
 ## <a name="speaker-verification"></a>Ověření mluvčího
 

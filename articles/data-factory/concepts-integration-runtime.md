@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407689"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485715"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -143,7 +143,7 @@ Pokud se rozhodnete použít Azure IR automatického řešení ve veřejné sít
   - Při kopírování dat do Salesforce, u kterých není oblast zjistitelná, se aktivita kopírování spustí na IR v Východní USA.
 
   >[!TIP] 
-  >Pokud máte přísné požadavky na dodržování předpisů pro data a potřebujete zajistit, aby data neopustila určité území, můžete prostředí Azure IR explicitně vytvořit v určité oblasti a odkázat propojenou službu na toto prostředí IR pomocí vlastnosti ConnectVia. Například pokud chcete kopírovat data z objektu blob v oblasti Velká Británie – jih do služby SQL Data Warehouse v oblasti Velká Británie – jih a chcete zajistit, aby data neopustila Velkou Británii, vytvořte prostředí Azure IR v oblasti Velká Británie – jih a připojte obě propojené služby k tomuto prostředí IR.
+  >Pokud máte přísné požadavky na dodržování předpisů pro data a potřebujete zajistit, aby data neopustila určité území, můžete prostředí Azure IR explicitně vytvořit v určité oblasti a odkázat propojenou službu na toto prostředí IR pomocí vlastnosti ConnectVia. Pokud třeba chcete kopírovat data z objektu BLOB v Velká Británie – jih do služby Azure synapse Analytics v Velká Británie – jih a chcete zajistit, aby data nezůstala Velká Británie, vytvořte v Velká Británie – jih Azure IR a propojte obě propojené služby s tímto IR.
 
 - Pro provádění aktivit vyhledávání/GetMetadata/Delete (označuje se také jako aktivity kanálu), deoprava transformačních aktivit (označované také jako externí aktivity) a vytváření operací (testovací připojení, seznam složek a seznam tabulek, náhled dat), ADF používá v oblasti Datové továrny IR.
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ddce7e2f073914e9393eabf12e8b0f4ef347828
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022142"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613643"
 ---
 # <a name="scene-lighting"></a>Osvětlení scény
 
@@ -69,6 +69,17 @@ Neexistují žádné další vlastnosti.
 ## <a name="performance-considerations"></a>Otázky výkonu
 
 Zdroje světla mají významný dopad na výkon vykreslování. Používejte je pečlivě a jenom v případě, že to vyžaduje aplikace. Jakákoli statická globální podmínka osvětlení, včetně statické směrové komponenty, se dá dosáhnout s [vlastní texturou nebe](sky.md)bez dalších nákladů na vykreslování.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída C# LightComponentBase](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [Třída C# PointLightComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [Třída C# SpotLightComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [Třída C# DirectionalLightComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [Třída C++ LightComponentBase](https://docs.microsoft.com/cpp/api/remote-rendering/lightcomponentbase)
+* [Třída C++ PointLightComponent](https://docs.microsoft.com/cpp/api/remote-rendering/pointlightcomponent)
+* [Třída C++ SpotLightComponent](https://docs.microsoft.com/cpp/api/remote-rendering/spotlightcomponent)
+* [Třída C++ DirectionalLightComponent](https://docs.microsoft.com/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>Další kroky
 

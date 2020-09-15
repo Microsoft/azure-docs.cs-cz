@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726958"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485033"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -56,12 +56,12 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-toku dat | Odkaz na prováděný tok dat | DataFlowReference | Yes
-integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | No
-Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | No
-Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | No
-Příprava. linkedService | Pokud používáte zdroj dat nebo jímku SQL DW, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
-Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta ke složce v účtu BLOB Storage se používá pro základní fázování. | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
+toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
+integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | Ne
+Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | Ne
+Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | Ne
+Příprava. linkedService | Pokud používáte zdroj nebo jímku Azure synapse Analytics, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Jenom v případě, že tok dat čte nebo zapisuje do Azure synapse Analytics
+Příprava. folderPath | Pokud používáte zdroj nebo jímku Azure synapse Analytics, cesta ke složce v účtu BLOB Storage použitá pro základní fázování | Řetězec | Jenom v případě, že tok dat čte nebo zapisuje do služby Azure synapse Analytics
 
 ![Spustit tok dat](media/data-flow/activity-data-flow.png "Spustit tok dat")
 
@@ -86,7 +86,7 @@ V případě spuštění kanálu je cluster clusterem úloh, který trvá někol
 
 ### <a name="polybase"></a>PolyBase
 
-Pokud používáte Azure SQL Data Warehouse jako jímku nebo zdroj, musíte zvolit pracovní umístění pro zatížení základní dávky. Základem je hromadné načtení dávkového načítání namísto načítání datových řádků po řádku. Základce výrazně zkracuje dobu načítání do SQL datového skladu.
+Pokud jako jímku nebo zdroj používáte Azure synapse Analytics (dříve SQL Data Warehouse), musíte zvolit pracovní umístění pro zatížení základní dávky. Základem je hromadné načtení dávkového načítání namísto načítání datových řádků po řádku. Základce významně zkracuje dobu načítání do Azure synapse Analytics.
 
 ## <a name="parameterizing-data-flows"></a>Toky dat Parametrizace
 

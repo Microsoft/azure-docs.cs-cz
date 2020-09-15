@@ -3,12 +3,12 @@ title: Zálohování Azure File Share
 description: Naučte se zálohovat sdílené složky Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180010"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378079"
 ---
 # <a name="about-azure-file-share-backup"></a>Zálohování Azure File Share
 
@@ -52,9 +52,9 @@ Zálohování sdílené složky Azure je nativní cloudové řešení zálohová
 
 Existují dva náklady spojené se záložním řešením sdílení souborů Azure:
 
-1. **Náklady na úložiště snímků**: poplatky za úložiště vynaložené pro snímky se účtují spolu se spotřebou souborů Azure [podle uvedených podrobností](https://azure.microsoft.com/pricing/details/storage/files/) o cenách. 
+1. **Náklady na úložiště snímků**: poplatky za úložiště vynaložené pro snímky se účtují spolu se spotřebou souborů Azure [podle uvedených podrobností](https://azure.microsoft.com/pricing/details/storage/files/) o cenách.
 
-2. **Poplatek za chráněnou instanci** : od 1. září 2020 se zákazníkům bude účtovat poplatek za chráněnou instanci podle [níže uvedených podrobností](https://azure.microsoft.com/en-in/pricing/details/backup/) o cenách. Poplatek za chráněnou instanci závisí na celkové velikosti chráněných sdílených složek v účtu úložiště.
+2. **Poplatek za chráněnou instanci**: od 1. září 2020 se zákazníkům bude účtovat poplatek za chráněnou instanci podle [níže uvedených podrobností](https://azure.microsoft.com/pricing/details/backup/)o cenách. Poplatek za chráněnou instanci závisí na celkové velikosti chráněných sdílených složek v účtu úložiště.
 
 Podrobné odhady pro zálohování sdílených složek Azure najdete v podrobnostech o [Azure Backup cenové Estimator](https://aka.ms/AzureBackupCostEstimates).  
 

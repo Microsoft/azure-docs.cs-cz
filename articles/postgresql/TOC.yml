@@ -4,6 +4,10 @@
   items:
     - name: Co je Azure DB for PostgreSQL?
       href: overview.md
+    - name: Aktualizace služeb
+      items:
+        - name: Platnost kořenového certifikátu SSL brzy vyprší
+          href: concepts-certificate-rotation.md
 - name: Rychlé starty
   expanded: true
   items:

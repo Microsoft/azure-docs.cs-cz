@@ -3,12 +3,12 @@ title: Architektura zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919739"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514559"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura zařízení Azure Migrate
 
@@ -62,15 +62,15 @@ Data shromážděná klientem pro všechny scénáře nasazení jsou shrnuta v [
 
 ## <a name="discovery-and-collection-process"></a>Proces zjišťování a shromažďování
 
-![Architektura](./media/migrate-appliance-architecture/architecture.png)
+![Architektura](./media/migrate-appliance-architecture/architecture1.png)
 
 Zařízení komunikuje s vCenter servery a hostiteli nebo clustery Hyper-V pomocí následujícího procesu.
 
 1. **Spustit zjišťování**:
-    - Když zahájíte zjišťování na zařízení Hyper-V, komunikuje s hostiteli Hyper-V na portech WinRM 5985 (HTTP) a 5986 (HTTPS).
+    - Když zahájíte zjišťování na zařízení Hyper-V, komunikuje s hostiteli Hyper-V na portu WinRM 5985 (HTTP).
     - Když spustíte zjišťování na zařízení VMware, ve výchozím nastavení komunikuje s vCenter serverem na portu TCP 443. Pokud Server vCenter naslouchá na jiném portu, můžete ho nakonfigurovat ve webové aplikaci zařízení.
 2. **Shromážděte metadata a data o výkonu**:
-    - Zařízení používá relaci model CIM (Common Information Model) (CIM) ke shromažďování dat virtuálních počítačů Hyper-V z hostitele Hyper-V na portech 5985 a 5986.
+    - Zařízení používá relaci model CIM (Common Information Model) (CIM) ke shromažďování dat virtuálních počítačů Hyper-V z hostitele Hyper-V na portu 5985.
     - Zařízení ve výchozím nastavení komunikuje s portem 443, aby mohla shromažďovat data virtuálních počítačů VMware z vCenter Server.
 3. **Odeslat data**: zařízení odesílá shromážděná data pro Azure Migrate posouzení serveru a migraci Azure Migrate serveru přes SSL port 443. Zařízení se může připojit k Azure přes Internet nebo můžete použít ExpressRoute s veřejným partnerským vztahem/Microsoftu.
     - Pro data o výkonu zařízení shromažďuje data o využití v reálném čase.
@@ -81,17 +81,12 @@ Zařízení komunikuje s vCenter servery a hostiteli nebo clustery Hyper-V pomoc
     - U migrace serveru začne zařízení shromažďovat data virtuálních počítačů a replikuje je do Azure.
 4. **Vyhodnocení a migrace**: teď můžete z metadat shromážděných zařízením vytvořit posouzení pomocí Azure Migrate posouzení serveru. Kromě toho můžete také začít migrovat virtuální počítače VMware pomocí migrace serveru Azure Migrate pro orchestraci replikace virtuálních počítačů bez agentů.
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>Upgrady zařízení
 
 Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zařízení, se aktualizují. K tomu dochází automaticky, protože ve výchozím nastavení je na zařízení povolená Automatická aktualizace. Toto výchozí nastavení můžete změnit tak, aby se agenti aktualizovaly ručně.
 
 Automatickou aktualizaci vypnete v registru nastavením klíče HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" na hodnotu 0 (DWORD).
 
- 
 
 ## <a name="next-steps"></a>Další kroky
 

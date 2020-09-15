@@ -3,13 +3,12 @@ title: Dostupnost prostředků podle oblasti
 description: Dostupnost výpočetních a paměťových prostředků pro službu Azure Container Instances v různých oblastech Azure.
 ms.topic: article
 ms.date: 04/27/2020
-ms.author: danlep
-ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 97baa5199a1803bd967c0b55c846908ea5a2ddcf
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500602"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565425"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 

@@ -6,6 +6,10 @@
       href: overview.md
     - name: Kterou možnost MySQL mám zvolit?
       href: select-right-deployment-type.md
+    - name: Aktualizace služeb
+      items:
+        - name: Platnost kořenového certifikátu SSL brzy vyprší
+          href: concepts-certificate-rotation.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -52,7 +56,7 @@
   items:
     - name: 1. Návrh databáze
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-using-cli.md
@@ -178,13 +182,13 @@
           href: howto-create-manage-server-portal.md
     - name: Pravidla brány firewall
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: howto-manage-firewall-using-portal.md
         - name: Azure CLI
           href: howto-manage-firewall-using-cli.md
     - name: Obnovení serveru
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
@@ -218,7 +222,7 @@
           href: howto-redirection.md
     - name: Konfigurace parametrů serveru
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
@@ -226,7 +230,7 @@
           href: howto-configure-server-parameters-using-powershell.md
     - name: Automatické zvětšení úložiště
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
@@ -236,13 +240,13 @@
       items:
         - name: Protokoly pomalých dotazů
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
             - name: Azure CLI
               href: howto-configure-server-logs-in-cli.md
         - name: Protokoly auditu
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-audit-logs-portal.md
             - name: Azure CLI
               href: howto-configure-audit-logs-cli.md
@@ -278,19 +282,19 @@
           href: howto-database-threat-protection-portal.md
     - name: Virtual Network
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: howto-manage-vnet-using-portal.md
         - name: Azure CLI
           href: howto-manage-vnet-using-cli.md
     - name: Privátní propojení
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: howto-configure-privatelink-portal.md
         - name: Azure CLI
           href: howto-configure-privatelink-cli.md
     - name: Šifrování dat
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: howto-data-encryption-portal.md
         - name: Azure CLI
           href: howto-data-encryption-cli.md
@@ -312,7 +316,7 @@
           href: howto-deny-public-network-access.md
     - name: Restartování serveru
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md

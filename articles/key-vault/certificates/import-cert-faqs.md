@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588817"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651852"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Nejčastější dotazy k importu Azure Key Vault certifikátů
 
@@ -54,7 +54,7 @@ Další informace o zásadách přístupu souvisejících s certifikátem najdet
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>Jak můžu vyřešit typ chyby: konflikt při vytváření certifikátu?
     
-Každý název certifikátu musí být jedinečný. Certifikát se stejným názvem, jako má jiný, může být ve stavu undeleteded. Pokud [je v](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) trezoru klíčů jiný klíč nebo tajný klíč se stejným názvem, jako je ten, který se pokoušíte zadat pro svůj certifikát, vytvoření certifikátu selže a bude nutné tento klíč nebo tajný klíč buď odebrat, nebo použít jiný název pro certifikát. Azure Key Vault 
+Každý název certifikátu musí být jedinečný. Certifikát se stejným názvem může být ve stavu odstraněno. Také, v závislosti na [složení certifikátu](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)se při vytvoření nového certifikátu vytvoří adresovatelný tajný klíč se stejným názvem, takže pokud je v trezoru klíčů jiný klíč nebo tajný klíč se stejným názvem, jako je ten, který se pokoušíte zadat pro váš certifikát, vytvoření certifikátu se nezdaří a bude nutné odebrat tento klíč nebo tajný klíč nebo použít jiný název certifikátu. 
 
 Další informace najdete v tématu [získání operace odstranění certifikátu](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
 
@@ -75,7 +75,7 @@ Můžete požádat, aby certifikační autorita poskytovala certifikát v požad
 Ano, můžete importovat certifikáty z libovolné certifikační autority, ale Trezor klíčů nebude možné obnovit automaticky. Můžete nastavit připomenutí, která budou upozorňovány na vypršení platnosti certifikátu.
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-autorenewal-feature-still-work"></a>Pokud naimportujem certifikát z partnerské CA, bude funkce autorenew pořád fungovat?
-Ano. Po nahrání certifikátu Nezapomeňte zadat automatické otočení v zásadách vystavování certifikátu. Vaše nastavení zůstane v platnosti, dokud nebude uvolněn další cyklus nebo verze certifikátu.
+Yes. Po nahrání certifikátu Nezapomeňte zadat automatické otočení v zásadách vystavování certifikátu. Vaše nastavení zůstane v platnosti, dokud nebude uvolněn další cyklus nebo verze certifikátu.
 
 ### <a name="why-cant-i-see-the-app-service-certificate-that-i-imported-to-key-vault"></a>Proč se mi nezobrazuje App Service certifikát, který jste importovali do Key Vault? 
 Pokud jste certifikát importovali úspěšně, měli byste ho potvrdit tak, že v podokně **tajných klíčů** kliknete na.
