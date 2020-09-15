@@ -1,6 +1,6 @@
 ---
 title: Kurz pro připojení, konfiguraci a aktivaci zařízení Azure Stack Edge pomocí GPU v Azure Portal | Microsoft Docs
-description: Kurz nasazení Azure Stack hraničního procesoru vám dává pokyn k připojení, nastavení a aktivaci fyzického zařízení.
+description: Přečtěte si, jak se můžete připojit k zařízení Azure Stack Edge pomocí integrovaného GPU pomocí místního webového uživatelského rozhraní.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3b500a7d93d19bcc0cd9c23d64ad079f0abfd353
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: ac3ba2583e0f9a42b7f139538eee04de8980b492
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421352"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532252"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Kurz: připojení k Azure Stack Edge pomocí GPU
 
@@ -48,15 +48,15 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GP
     Rozdílné zařízení může vypadat trochu jinak, v závislosti na přesném modelu, který jste dostali. Další informace najdete v tématu připojení [zařízení k kabelu](azure-stack-edge-gpu-deploy-install.md#cable-the-device).
 
 
-3. Otevřete okno prohlížeče a přejděte k místnímu webovému uživatelskému rozhraní zařízení v `https://192.168.100.10` .  
-    Tato akce může trvat několik minut, než se zařízení zapnete.
+3. Otevřete okno prohlížeče a přejděte do místního webového uživatelského rozhraní zařízení na adrese `https://192.168.100.10`.  
+    Po zapnutí zařízení může tato akce několik minut trvat.
 
-    Zobrazí se chyba nebo upozornění označující, že došlo k potížím s certifikátem zabezpečení webu. 
+    Zobrazí se vám chyba nebo upozornění indikující problém s certifikátem zabezpečení webu. 
    
     ![Chybová zpráva certifikátu zabezpečení webu](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
 4. Vyberte možnost **pokračovat na tuto webovou stránku**.  
-    Tyto kroky se můžou lišit v závislosti na prohlížeči, který používáte.
+    Tyto kroky se můžou lišit v závislosti na použitém prohlížeči.
 
 5. Přihlaste se k webovému uživatelskému rozhraní vašeho zařízení. Výchozí heslo je *Heslo1*. 
    

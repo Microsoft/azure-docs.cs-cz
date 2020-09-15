@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e6ee8ce065361ac27bba0e80349eb5e1d1877526
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394750"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532286"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -24,7 +24,7 @@ Key Vault umožňuje zabezpečený přístup k citlivým informacím v rámci sv
 - Vaše aplikace může používat klíče pro podepisování a šifrování. zatím udržuje klíčovou správu externí z vaší aplikace, takže vaše řešení bude vhodné jako geograficky distribuované aplikace.
 - Správa certifikátů Key Vault. Další informace najdete v tématu [certifikáty](../certificates/about-certificates.md) .
 
-Obecnější informace o Azure Key Vault najdete v tématu [co je Key Vault](overview.md)).
+Obecnější informace o Azure Key Vault najdete v tématu [co je Key Vault](overview.md).
 
 ## <a name="public-previews"></a>Veřejné náhledy
 
@@ -140,7 +140,7 @@ Tyto články se týkají dalších scénářů a služeb, které používají n
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault přehledy a koncepty
 
-- [Key Vault chování při obnovitelném odstranění](soft-delete-overview.md)) popisuje funkci, která umožňuje obnovení odstraněných objektů bez ohledu na to, zda došlo k náhodnému nebo úmyslnému odstranění.
+- [Key Vault chování podmíněného odstranění](soft-delete-overview.md) popisuje funkci, která umožňuje obnovení odstraněných objektů bez ohledu na to, zda bylo odstranění náhodné nebo úmyslné.
 - [Key Vault omezení klienta](overview-throttling.md) vás orientuje na základní koncepty omezování a nabízí přístup k vaší aplikaci.
 - [Key Vault Security světů](overview-security-worlds.md) popisuje vztahy mezi oblastmi a oblastmi zabezpečení.
 

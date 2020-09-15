@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: použití jazyka Java k volání Analýza textu REST API'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
+description: V tomto rychlém startu se dozvíte, jak pomocí jazyka Java získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: f8f9d76e5f1584ce54897950d7e35e2b22ba958e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319775"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532269"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Rychlý Start: použití jazyka Java k volání služby pro rozpoznávání služby Azure Analýza textu
 <a name="HOLTop"></a>
@@ -33,7 +33,7 @@ Dále musíte mít [koncový bod a přístupový klíč](../../cognitive-service
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Rozpoznání jazyka
+## <a name="detect-language"></a>Zjištění jazyka
 
 Rozhraní Rozpoznávání jazyka API detekuje jazyk textového dokumentu pomocí [metody zjišťování jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
@@ -711,7 +711,7 @@ public class GetEntities {
 > [!div class="nextstepaction"]
 > [Analýza textu s Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
  [Přehled analýzy textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

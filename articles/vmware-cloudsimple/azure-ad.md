@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077304"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532524"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Použití Azure AD jako zprostředkovatele identity pro vCenter v privátním cloudu CloudSimple
 
@@ -46,7 +46,7 @@ Než začnete, budete potřebovat přístup k vašemu předplatnému Azure s opr
 > [!NOTE]
 > Pokud už službu Azure AD máte, můžete tuto část přeskočit.
 
-1. Nastavte Azure AD v předplatném, jak je popsáno v [dokumentaci k Azure AD](../active-directory/fundamentals/active-directory-whatis.md).
+1. Nastavte Azure AD v předplatném, jak je popsáno v  [dokumentaci k Azure AD](../active-directory/fundamentals/active-directory-whatis.md).
 2. Povolte Azure Active Directory Premium v předplatném, jak je popsáno v tématu [Registrace pro Azure Active Directory Premium](../active-directory/fundamentals/active-directory-get-started-premium.md).
 3. Nastavte vlastní název domény a ověřte název vlastní domény, jak je popsáno v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
     1. Nastavte v doménovém registrátoru záznam DNS s informacemi, které jsou k dispozici v Azure.
@@ -64,7 +64,7 @@ Volitelně můžete nakonfigurovat další funkce služby Azure AD.  Nevyžaduj�
 3. Nakonfigurujte skupinu správců pro správu Azure AD Domain Services, jak je popsáno v tématu [povolení Azure Active Directory Domain Services pomocí Azure Portal](../active-directory-domain-services/tutorial-create-instance.md).
 4. Aktualizujte nastavení DNS pro váš Azure AD Domain Services, jak je popsáno v tématu [povolení Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md).  Pokud se chcete připojit ke službě AD přes Internet, nastavte záznam DNS pro veřejnou IP adresu služby Azure AD Domain Services na název domény.
 5. Povolit synchronizaci hodnot hash hesel pro uživatele.  Tento krok umožňuje synchronizaci hodnot hash hesel vyžadovaných pro Azure AD Domain Services ověřování NT LAN Manageru (NTLM) a Kerberos. Po nastavení synchronizace hodnot hash hesel se uživatelé můžou přihlásit ke spravované doméně s použitím podnikových přihlašovacích údajů. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel pro Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md).
-    1. Pokud jsou k dispozici pouze cloudní uživatelé, musí změnit heslo pomocí <a href="http://myapps.microsoft.com/" target="_blank">přístupového panelu Azure AD</a> , aby bylo zajištěno, že hodnoty hash hesel budou uloženy ve formátu VYŽADOVANÉm protokolem NTLM nebo Kerberos.  Postupujte podle pokynů v tématu [povolení synchronizace hodnot hash hesel do spravované domény pro uživatelské účty výhradně pro Cloud](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).  Tento krok je potřeba provést pro jednotlivé uživatele a každého nového uživatele, který je vytvořený v adresáři Azure AD pomocí rutin Azure Portal nebo Azure AD PowerShellu. Uživatelé, kteří potřebují přístup ke službě Azure AD Domain Services, musí použít <a href="http://myapps.microsoft.com/" target="_blank">přístupový panel Azure AD</a> a získat přístup ke svému profilu, aby změnili heslo.
+    1. Pokud jsou k dispozici pouze cloudní uživatelé, musí změnit heslo pomocí <a href="https://myapps.microsoft.com/" target="_blank">přístupového panelu Azure AD</a> , aby bylo zajištěno, že hodnoty hash hesel budou uloženy ve formátu VYŽADOVANÉm protokolem NTLM nebo Kerberos.  Postupujte podle pokynů v tématu [povolení synchronizace hodnot hash hesel do spravované domény pro uživatelské účty výhradně pro Cloud](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).  Tento krok je potřeba provést pro jednotlivé uživatele a každého nového uživatele, který je vytvořený v adresáři Azure AD pomocí rutin Azure Portal nebo Azure AD PowerShellu. Uživatelé, kteří potřebují přístup ke službě Azure AD Domain Services, musí použít <a href="https://myapps.microsoft.com/" target="_blank">přístupový panel Azure AD</a> a získat přístup ke svému profilu, aby změnili heslo.
 
         > [!NOTE]
         > Pokud má vaše organizace výhradně uživatelské účty jenom cloudu, všichni uživatelé, kteří potřebují používat službu Azure Active Directory Domain Services, si musí změnit heslo. Uživatelský účet jenom cloudu je účet vytvořený v adresáři služby Azure AD pomocí webu Azure Portal nebo rutin Azure AD PowerShellu. Takové uživatelské účty se nesynchronizují z místního adresáře.
@@ -86,10 +86,10 @@ Volitelně můžete nakonfigurovat další funkce služby Azure AD.  Nevyžaduj�
     | **Možnost** | **Popis** |
     |------------|-----------------|
     | **Název** | Název zdroje identity |
-    | **Základní rozlišující název pro uživatele** | Základní rozlišující název pro uživatele  Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` Příklad: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` .|
+    | **Základní rozlišující název pro uživatele** | Základní rozlišující název pro uživatele  Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  Příklad: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` .|
     | **Název domény** | Plně kvalifikovaný název domény pro doménu, například example.com. V tomto textovém poli nezadávejte IP adresu. |
     | **Alias domény** | *(volitelné)* Název domény pro rozhraní NetBIOS. Pokud používáte ověřování pomocí rozhraní SSPI, přidejte název domény služby Active Directory jako alias zdroje identity. |
-    | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` Příklad:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  Příklad: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
     | **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát  `ldaps://hostname:port` . Port je obvykle 636 pro připojení LDAPs. <br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPs serveru Active Directory, se vyžaduje při použití  `ldaps://`   v primární nebo sekundární adrese URL protokolu LDAP. |
     | **Adresa URL sekundárního serveru** | Adresa serveru LDAP sekundárního řadiče domény, který se používá pro převzetí služeb při selhání. |
     | **Zvolit certifikát** | Pokud chcete použít LDAPs se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání  `ldaps://`   v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |

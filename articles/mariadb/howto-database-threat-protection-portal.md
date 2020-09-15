@@ -1,17 +1,17 @@
 ---
 title: Rozšířená ochrana před internetovými útoky – Azure Portal-Azure Database for MariaDB
-description: Ochrana před hrozbami detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze.
+description: Ochrana před hrozbami pro Azure Database for MariaDB detekuje aktivity databáze neobvyklé, které indikují potenciální ohrožení zabezpečení databáze.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5f419836b9e73e49ec510fc359487633523e0ef0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0283688ca2de4e7978da69753d08dd4763d30a75
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104601"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532303"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
 

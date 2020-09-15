@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 09/git14/2020
 ms.author: alkohli
-ms.openlocfilehash: da36e2bbf358a1c61d2b9b3f7ede592ac88fd427
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200305"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533110"
 ---
 Tady je seznam podporovaných účtů úložiště a typů úložiště pro Data Box zařízení. Úplný seznam všech různých typů účtů úložiště a jejich úplných možností najdete v tématu [typy účtů úložiště](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
@@ -18,12 +18,12 @@ Pro příkazy import v následující tabulce jsou uvedeny podporované účty �
 
 | **Účet úložiště/podporované typy úložišť** | **Objekt blob bloku** |**Objekt blob stránky*** |**Soubory Azure** |**Poznámky**|
 | --- | --- | -- | -- | -- |
-| Klasický Standard | A | A | A |
-| Obecné účely v1 Standard  | A | A | A | Podporují horkou a studenou.|
-| Obecné účely v1 Premium  |  | A| | |
-| Obecné pro účely v2 Standard  | A | A | A | Podporují horkou a studenou.|
-| Pro obecné účely v2 Premium  |  |A | | |
-| Úložiště objektů BLOB Standard |A | | |Podporují horkou a studenou. |
+| Klasický Standard | Y | Y | Y |
+| Obecné účely v1 Standard  | Y | Y | Y | Podporují horkou a studenou.|
+| Obecné účely v1 Premium  |  | Y| | |
+| Obecné pro účely v2 Standard  | Y | Y | Y | Podporují horkou a studenou.|
+| Pro obecné účely v2 Premium  |  |Y | | |
+| Úložiště objektů BLOB Standard |Y | | |Podporují horkou a studenou. |
 
 \**-Data nahraná do objektů blob stránky musí mít 512 bajtů (například VHD).*
 
@@ -31,17 +31,17 @@ V případě exportních objednávek následující tabulka zobrazuje podporovan
 
 | **Účet úložiště/podporované typy úložišť** | **Objekt blob bloku** |**Objekt blob stránky*** |**Soubory Azure** |**Podporované úrovně přístupu**|
 | --- | --- | -- | -- | -- |
-| Klasický Standard | A | A | A | |
-| Obecné účely v1 Standard  | A | A | A | Horká, studená|
-| Obecné účely v1 Premium  |  | A| | |
-| Obecné pro účely v2 Standard  | A | A | A | Horká, studená|
-| Pro obecné účely v2 Premium  |  |A | | |
-| Úložiště objektů BLOB Standard |A | | |Horká, studená |
-| Úložiště objektů blob bloku Premium |A | | |Horká, studená |
-| Úložiště objektů blob stránky Premium | |A | | |
+| Klasický Standard | Y | Y | Y | |
+| Obecné účely v1 Standard  | Y | Y | Y | Horká, studená|
+| Obecné účely v1 Premium  |  | Y| | |
+| Obecné pro účely v2 Standard  | Y | Y | Y | Horká, studená|
+| Pro obecné účely v2 Premium  |  |Y | | |
+| Úložiště objektů BLOB Standard |Y | | |Horká, studená |
+| Úložiště objektů blob bloku Premium |Y | | |Horká, studená |
+| Úložiště objektů blob stránky Premium | |Y | | |
 
 > [!IMPORTANT]
-> - U účtů pro obecné účely Data Box nepodporuje typy úložiště ve frontě, tabulkách, discích a Azure Data Lakech 2. generace.
+> - Pro účty pro obecné účely Data Box nepodporuje typy úložiště front, tabulek a disků pro příkazy import. Pro exportní objednávky Data Box pro účty pro obecné účely nepodporuje typy úložiště Queue, Table, disk a Azure Data Lake Gen 2.
 > - Data Box nepodporuje přidávání objektů BLOB pro Blob Storage a blokování účtů Blob Storage.
 > - Data Box nepodporuje účty Premium File Storage.
 > - Data nahraná do objektů blob stránky musí mít 512 bajtů (například VHD).

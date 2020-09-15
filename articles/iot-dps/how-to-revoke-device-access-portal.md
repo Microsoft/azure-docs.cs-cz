@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: abc625c27617c27a79fe284393cdf7b281973bc4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299251"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532337"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Postup při rušení registrace zařízení z Azure IoT Hub Device Provisioning Service
 
 Správná Správa přihlašovacích údajů zařízení je zásadní pro systémy s vysokým profilem, jako jsou řešení IoT. Osvědčeným postupem pro tyto systémy je mít jasný plán, jak odvolat přístup k zařízením v případě, že dojde k ohrožení zabezpečení tokenu sdíleného přístupového podpisu (SAS) nebo certifikátu X. 509. 
 
-Registrace ve službě Device Provisioning umožňuje [Automatické zřízení](concepts-auto-provisioning.md)zařízení. Zřízené zařízení je takové, které bylo zaregistrováno ve službě IoT Hub, což umožňuje, aby získalo [počáteční stav](~/articles/iot-hub/iot-hub-devguide-device-twins.md) a data telemetrie pro vytváření sestav. Tento článek popisuje, jak zrušit registraci zařízení z instance služby zřizování a zabránit tak jeho opětovnému zřízení v budoucnu.
+Registrace ve službě Device Provisioning umožňuje [zřídit](about-iot-dps.md#provisioning-process)zařízení. Zřízené zařízení je takové, které bylo zaregistrováno ve službě IoT Hub, což umožňuje, aby získalo [počáteční stav](~/articles/iot-hub/iot-hub-devguide-device-twins.md) a data telemetrie pro vytváření sestav. Tento článek popisuje, jak zrušit registraci zařízení z instance služby zřizování a zabránit tak jeho opětovnému zřízení v budoucnu.
 
 > [!NOTE] 
 > Uvědomte si zásady opakování zařízení, ke kterým odvoláte přístup. Například zařízení, které má zásady nekonečné opakování, se může neustále pokoušet zaregistrovat ve službě zřizování. Tato situace spotřebovává prostředky služby a může mít vliv na výkon.

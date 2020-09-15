@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f167ffb652054b64098994d334eea6e1db6d2d14
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061202"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532388"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 
@@ -369,7 +369,7 @@ Nejpravděpodobnější příčinou této chyby je chyba syntaxe v příkazu Joi
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Podpora ověřování pomocí služby Azure Files pro místní služba AD DS pro šifrování AES 256 Kerberos
 
-Zavedli jsme podporu šifrování Kerberos 256 pro Azure Files on-Prem služba AD DS ověřování pomocí [modulu AzFilesHybrid Module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Pokud jste povolili služba AD DS ověřování s verzí modulu nižší než v 0.2.2, budete si muset stáhnout nejnovější modul AzFilesHybrid (v 0.2.2 +) a spustit PowerShell níže. Pokud jste ještě nepovolili služba AD DS ověřování na účtu úložiště, můžete postupovat podle těchto [pokynů](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) . Pokud jste provedli povolení funkcí s modulem AzFilesHybrid v 0.2.2 nebo novějším, nemusíte znovu spouštět PowerShell. 
+Zavedli jsme podporu šifrování Kerberos 256 pro Azure Files on-Prem služba AD DS ověřování pomocí [modulu AzFilesHybrid Module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Pokud jste povolili služba AD DS ověřování s verzí modulu nižší než v 0.2.2, budete si muset stáhnout nejnovější modul AzFilesHybrid (v 0.2.2 +) a spustit PowerShell níže. Pokud jste ještě nepovolili služba AD DS ověřování na účtu úložiště, můžete postupovat podle těchto [pokynů](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) . 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

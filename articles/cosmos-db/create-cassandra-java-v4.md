@@ -1,6 +1,6 @@
 ---
 title: Aplikace Java s Azure Cosmos DB rozhraní API Cassandra pomocí sady Java 4,0 SDK
-description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy.
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure Cosmos DB rozhraní API Cassandra vytvořit profilovou aplikaci s Azure Portal a Java 4,0 SDK.
 ms.service: cosmos-db
 author: TheovanKraay
 ms.author: thvankra
@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4411c2d3b540423c1086fe8b45bd343870a72f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 076cb892740b99971400fbc34f60dc1083554555
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319197"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532201"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>Rychlý Start: Vytvoření aplikace Java pro správu dat rozhraní API Cassandra Azure Cosmos DB (v4 Driver)
 

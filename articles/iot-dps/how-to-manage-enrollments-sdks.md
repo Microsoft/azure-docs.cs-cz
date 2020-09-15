@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520652"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532320"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Správa registrace zařízení pomocí sad SDK služby Azure Device Provisioning
 *Registrace zařízení* vytvoří záznam o jednom zařízení nebo skupině zařízení, která se můžou v některých bodech zaregistrovat ve službě Device Provisioning. Záznam zápisu obsahuje počáteční požadovanou konfiguraci pro zařízení v rámci této registrace, včetně požadovaného centra IoT Hub. V tomto článku se dozvíte, jak spravovat registraci zařízení pro službu zřizování programově pomocí sad SDK služby zřizování pro Azure IoT.  Sady SDK jsou dostupné na GitHubu ve stejném úložišti jako sady SDK Azure IoT.
 
 ## <a name="prerequisites"></a>Požadavky
 * Získejte připojovací řetězec z instance služby Device Provisioning.
-* Získejte artefakty zabezpečení zařízení pro použitý [mechanismus ověřování](concepts-security.md#attestation-mechanism) :
+* Získejte artefakty zabezpečení zařízení pro použitý [mechanismus ověřování](concepts-service.md#attestation-mechanism) :
     * [**Čip TPM (Trusted Platform Module)**](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Jednotlivá registrace: ID registrace a ověřovací klíč čipu TPM z fyzického zařízení nebo simulátoru TPM.
         * Skupina registrace se nevztahuje na ověření identity čipem TPM.

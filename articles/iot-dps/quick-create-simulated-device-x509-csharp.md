@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 639ab07113a0e62cac43af5b79f052da1efd93ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b0832ece807c42d270f18d4ab293c449b2068948
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976515"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532507"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení v jazyce C# pro IoT Hub Device Provisioning Service
 
@@ -22,7 +22,7 @@ ms.locfileid: "74976515"
 
 Tyto kroky ukazují, jak pomocí [ukázek Azure IoT pro jazyk C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) simulovat zařízení X. 509 na vývojovém počítači s operačním systémem Windows. Ukázka také připojí simulované zařízení k IoT Hub pomocí služby Device Provisioning.
 
-Pokud nejste obeznámeni s procesem automatického zřizování, nezapomeňte také zkontrolovat [Koncepty pro Automatické zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
+Pokud nejste obeznámeni s procesem autozřizování, přečtěte si přehled [zřizování](about-iot-dps.md#provisioning-process) . Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
 - [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.

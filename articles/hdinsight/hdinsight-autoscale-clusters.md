@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
-ms.date: 08/21/2020
-ms.openlocfilehash: 7ce4580b366b57e2a1d4904b6ab63bf1834bdb65
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/14/2020
+ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090104"
+ms.locfileid: "90532184"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -68,7 +68,7 @@ Pro horizontální navýšení kapacity vydává automatické škálování pož
 > [!Important]
 > Funkce automatického škálování Azure HDInsight se 7. listopadu 2019 vydala ve fázi obecné dostupnosti pro clustery Spark a Hadoop a zahrnovala vylepšení, která nebyla k dispozici ve verzi Preview této funkce. Pokud jste vytvořili cluster Spark před 7. listopadem 2019 a chcete ve svém clusteru využívat funkci automatického škálování, doporučujeme vytvořit nový cluster a povolit v něm automatické škálování.
 >
-> Automatické škálování pro clustery Interactive Query (LLAP) a HBase je stále ve verzi Preview. Automatické škálování je k dispozici pouze v clusterech Spark, Hadoop, Interactive Query a HBase.
+> Automatické škálování pro interaktivní dotaz (LLAP) bylo vydány pro obecnou dostupnost na 27. srpna 2020. Clustery jsou stále ve verzi Preview. Automatické škálování je k dispozici pouze v clusterech Spark, Hadoop, Interactive Query a HBase.
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
@@ -225,7 +225,7 @@ Stav clusteru uvedený v Azure Portal vám může pomáhat monitorovat aktivity 
 
 Všechny stavové zprávy clusteru, které se mohou zobrazit, jsou vysvětleny v následujícím seznamu.
 
-| Stav clusteru | Popis |
+| Stav clusteru | Description |
 |---|---|
 | Spuštěno | Cluster pracuje normálně. Všechny předchozí aktivity automatického škálování se úspěšně dokončily. |
 | Doplnění  | Aktualizuje se konfigurace automatického škálování clusteru.  |

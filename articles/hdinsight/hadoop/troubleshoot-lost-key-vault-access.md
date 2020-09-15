@@ -1,18 +1,18 @@
 ---
 title: Clustery Azure HDInsight se ztrátou šifrování disku Key Vault přístup
-description: Kroky řešení potíží a možná řešení pro problémy při komunikaci s clustery Azure HDInsight.
+description: Postup řešení potíží a možná řešení pro problémy s přístupem k Key Vault při komunikaci s clustery Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461527"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532558"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scénář: clustery Azure HDInsight se ztrátou šifrování disku Key Vault přístup
 
@@ -32,7 +32,7 @@ Přejděte na uživatelské rozhraní Apache Ambari, kde najdete další informa
 
 ### <a name="kvaad-outage"></a>KV/výpadek AAD
 
-Další podrobnosti najdete v [Azure Key Vault dostupnosti a redundanci](../../key-vault/general/disaster-recovery-guidance.md) a na stránce stavu Azure.https://status.azure.com/
+Další podrobnosti najdete v [Azure Key Vault dostupnosti a redundanci](../../key-vault/general/disaster-recovery-guidance.md) a na stránce stavu Azure. https://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>Nepředvídatelné odstranění KV
 

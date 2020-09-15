@@ -4,12 +4,12 @@ description: Zjistěte, jak načíst a zobrazit data z databáze SQL DB služby 
 ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
-ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e0e585ce45616c2402972c725b502f4b704d1cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214226"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532371"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Použití dat služby Azure Blockchain Workbench v Power BI
 
@@ -24,9 +24,9 @@ Tento článek obsahuje podrobný návod, jak se připojit k databázi SQL Datab
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Připojení Power BI k datům v Azure blockchain Workbench
 
 1.  Otevřete Power BI Desktop.
-2.  Vyberte **Načíst data**.
+2.  Vyberte **získat data**.
 
-    ![Získat data](./media/data-powerbi/get-data.png)
+    ![Získání dat](./media/data-powerbi/get-data.png)
 3.  Ze seznamu typů zdrojů dat vyberte **SQL Server**.
 
 4.  Do dialogového okna zadejte server a název databáze. Určete, jestli chcete data importovat nebo použít **DirectQuery**. Vyberte **OK**.
@@ -41,7 +41,7 @@ Tento článek obsahuje podrobný návod, jak se připojit k databázi SQL Datab
 
 6.  Jakmile se připojíte k databázi, dialogové okno **Navigátor** zobrazí tabulky a zobrazení, která jsou v databázi k dispozici. Zobrazení jsou navržená pro generování sestav a mají předponu **vw**.
 
-    ![Navigátor](./media/data-powerbi/navigator.png)
+    ![Snímek obrazovky Power BI plochy pomocí dialogového okna navigátor s vybraným vwContractAction](./media/data-powerbi/navigator.png)
 
 7.  Vyberte zobrazení, které chcete zahrnout. Pro demonstrační účely jsme zahrnuli **vwContractAction**, která poskytuje podrobné informace o akcích, které byly provedeny ve smlouvě.
 

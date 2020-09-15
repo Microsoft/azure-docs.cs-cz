@@ -1,7 +1,7 @@
 ---
 title: Co je rozhraní API Bingu pro vyhledávání entit?
 titleSuffix: Azure Cognitive Services
-description: K extrakci a hledání entit a míst z vyhledávacích dotazů použijte rozhraní API Bingu pro vyhledávání entit.
+description: Přečtěte si podrobnosti o rozhraní API Bingu pro vyhledávání entit a postup extrakce a hledání entit a míst z vyhledávacích dotazů.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4afb20699d52ea80d7ba6cf9760a465b61cc6d6b
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: e0402b1695e1d5f5c9f29d128f4cd405f219e724
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604807"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532490"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Co je rozhraní API Bingu pro vyhledávání entit?
 
