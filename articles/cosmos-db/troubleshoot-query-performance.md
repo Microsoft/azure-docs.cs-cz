@@ -1,23 +1,23 @@
 ---
-title: Řešení potíží s dotazy při použití Azure Cosmos DB
+title: Řešení potíží s dotazy při používání služby Azure Cosmos DB
 description: Naučte se identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 09/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117909"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089985"
 ---
-# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při použití Azure Cosmos DB
+# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
 
-Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli zvážit kroky popsané v tomto článku s ucelenou ochranou proti potenciálním problémům s dotazy, zahrnuli jsme sem nejběžnější tipy k výkonu. Tento článek byste měli použít jako počáteční místo pro řešení potíží s pomalými nebo nákladnými dotazy v rozhraní API pro Azure Cosmos DB Core (SQL). [Diagnostické protokoly](cosmosdb-monitor-resource-logs.md) můžete použít také k identifikaci dotazů, které jsou pomalé nebo které využívají významné množství propustnosti.
+Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli zvážit kroky popsané v tomto článku s ucelenou ochranou proti potenciálním problémům s dotazy, zahrnuli jsme sem nejběžnější tipy k výkonu. Tento článek byste měli použít jako výchozí bod při řešení potíží s pomalými nebo nákladnými dotazy v rozhraní Core (SQL) API služby Azure Cosmos DB. K identifikaci dotazů, které jsou pomalé nebo které spotřebovávají významnou část propustnosti, můžete použít také [diagnostické protokoly](cosmosdb-monitor-resource-logs.md).
 
 Optimalizace dotazů můžete široce roztřídit do Azure Cosmos DB:
 
@@ -26,22 +26,21 @@ Optimalizace dotazů můžete široce roztřídit do Azure Cosmos DB:
 
 Pokud snížíte náklady na poplatek za dotaz, bude to skoro jistě snížit latenci.
 
-Tento článek popisuje příklady, které můžete znovu vytvořit pomocí [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datové sady.
+Tento článek popisuje příklady, které můžete znovu vytvořit pomocí [nutriční datové sady](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
 
 ## <a name="common-sdk-issues"></a>Běžné problémy sady SDK
 
 Před čtením tohoto průvodce je užitečné vzít v úvahu běžné problémy sady SDK, které nesouvisí s dotazovacím modulem.
 
-- Nejlepšího výkonu dosáhnete pomocí těchto [tipů pro výkon](performance-tips.md).
-    > [!NOTE]
-    > Pro lepší výkon doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní ServiceInterop.dll k analýze a optimalizaci dotazů v místním prostředí. ServiceInterop.dll se podporuje jenom na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispozici, se k získání optimalizovaného dotazu provede další síťové volání brány.
+- Postupujte podle těchto [tipů pro výkon sady SDK](performance-tips.md).
+    - [Průvodce odstraňováním potíží sady .NET SDK](troubleshoot-dot-net-sdk.md)
+    - [Průvodce odstraňováním potíží se sadou Java SDK](troubleshoot-java-sdk-v4-sql.md)
 - Sada SDK umožňuje nastavení `MaxItemCount` pro vaše dotazy, ale nemůžete zadat minimální počet položek.
     - Kód by měl zpracovat libovolnou velikost stránky od nuly do `MaxItemCount` .
-    - Počet položek na stránce bude vždy menší nebo roven zadanému `MaxItemCount` . Je však `MaxItemCount` striktně maximálně a může to být méně výsledků než tato částka.
 - Někdy dotazy mohou mít prázdné stránky i v případě, že na budoucí stránce dojde k výsledkům. Možné příčiny:
     - Sada SDK by mohla provedla více síťových volání.
     - Načtení dokumentů může trvat dlouhou dobu.
-- Všechny dotazy mají token pro pokračování, který umožní, aby dotaz pokračoval. Nezapomeňte dotaz úplně vyprázdnit. Podívejte se na ukázky sady SDK a pomocí `while` smyčky `FeedIterator.HasMoreResults` pro vyprázdněte celý dotaz.
+- Všechny dotazy mají token pro pokračování, který umožní, aby dotaz pokračoval. Nezapomeňte dotaz úplně vyprázdnit. Další informace o [zpracování více stránek výsledků](sql-query-pagination.md#handling-multiple-pages-of-results)
 
 ## <a name="get-query-metrics"></a>Získat metriky dotazů
 

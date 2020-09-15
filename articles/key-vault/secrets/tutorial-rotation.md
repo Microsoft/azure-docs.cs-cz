@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378011"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086856"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky, které používají jednu sadu ověřovacích přihlašovacích údajů
 
@@ -24,7 +24,7 @@ Nejlepším způsobem, jak ověřit služby Azure, je použití [spravované ide
 
 V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů pro databáze a služby, které používají jednu sadu ověřovacích přihlašovacích údajů. Konkrétně tento kurz otočí SQL Server hesla uložená v Azure Key Vault pomocí funkce aktivované Azure Event Gridm oznámením:
 
-![Diagram řešení rotace](../media/rotate1.png)
+![Diagram řešení rotace](../media/rotate-1.png)
 
 1. Třicet dní před datem vypršení platnosti tajného kódu Key Vault pro Event Grid publikovat událost blížící se vypršení platnosti.
 1. Event Grid zkontroluje odběry událostí a pomocí HTTP POST zavolá koncový bod aplikace Function App, který se přihlásí k odběru události.
@@ -49,7 +49,7 @@ Pokud nemáte existující Key Vault a SQL Server, můžete použít odkaz pod n
 1. Vyberte **Zkontrolovat a vytvořit**.
 1. Vyberte **Vytvořit**.
 
-    ![Vytvoření skupiny prostředků](../media/rotate2.png)
+    ![Vytvoření skupiny prostředků](../media/rotate-2.png)
 
 Nyní budete mít Key Vault a instanci SQL Server. Tuto instalaci můžete ověřit v Azure CLI spuštěním následujícího příkazu:
 
@@ -91,7 +91,7 @@ Aplikace Function App vyžaduje tyto komponenty:
 1. Vyberte **Zkontrolovat a vytvořit**.
 1. Vyberte **Vytvořit**.
 
-   ![Vybrat kontrolu + vytvořit](../media/rotate3.png)
+   ![Vybrat kontrolu + vytvořit](../media/rotate-3.png)
 
 Po dokončení předchozích kroků budete mít účet úložiště, serverovou farmu a aplikaci Function App. Tuto instalaci můžete ověřit v Azure CLI spuštěním následujícího příkazu:
 
@@ -207,11 +207,11 @@ Vytvoření tajného klíče s krátkým datem vypršení platnosti způsobí pu
 
 Chcete-li ověřit, zda byl tajný klíč otočen, použijte **Key Vault**  >  **tajných klíčů**:
 
-![Přejít k tajným klíčům](../media/rotate8.png)
+![Přejít k tajným klíčům](../media/rotate-8.png)
 
 Otevřete tajný klíč **sqlPassword** a zobrazte původní a otočené verze:
 
-![Otevřete tajný klíč sqluser.](../media/rotate9.png)
+![Otevřete tajný klíč sqluser.](../media/rotate-9.png)
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
@@ -245,6 +245,6 @@ Po otevření aplikace v prohlížeči se zobrazí **vygenerovaná tajná hodnot
 ## <a name="learn-more"></a>Další informace
 
 - Kurz: [rotace pro prostředky se dvěma sadami přihlašovacích údajů](tutorial-rotation-dual.md)
-- Přehled: [Key Vault monitorování pomocí Azure Event Grid (Preview)](../general/event-grid-overview.md)
+- Přehled: [monitorování Key Vault s](../general/event-grid-overview.md) využitím Azure Event Grid
 - Postupy: [příjem e-mailu, když se změní tajný kód trezoru klíčů](../general/event-grid-logicapps.md)
-- [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid schéma událostí pro Azure Key Vault](../../event-grid/event-schema-key-vault.md)

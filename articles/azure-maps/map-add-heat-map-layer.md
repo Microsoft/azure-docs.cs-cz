@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: a6235ee6bbb476c69114e6895403f05e69fd6e19
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 80299b66b614e3d31778902c86e8e43f9f1b95de
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010238"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086109"
 ---
 # <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
@@ -60,7 +60,7 @@ Zde je ukázka kompletního běžícího kódu předchozího kódu.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Jednoduchá vrstva Heat mapy' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>vrstvu jednoduchá Heat mapa</a> pera podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Jednoduchá vrstva Heat mapy' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>vrstvu jednoduchá Heat mapa</a> pera podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>Přizpůsobení vrstvy Heat mapy
@@ -83,13 +83,13 @@ Předchozí příklad upravil Heat mapu nastavením možnosti poloměr a krytí.
 - `weight`: Ve výchozím nastavení mají všechny datové body váhu 1 a mají stejnou váhu. Možnost váhy funguje jako násobitel a můžete ji nastavit jako číslo nebo výraz. Pokud je číslo nastavené jako váha, je rovnocenným umístěním jednotlivých datových bodů na mapě dvakrát. Pokud je například váha 2, hustota se zdvojnásobí. Nastavení možnosti váhy na číslo vykreslí Heat mapu podobným způsobem, jak použít možnost intenzita. 
 
   Pokud však použijete výraz, může být váha každého datového bodu založena na vlastnostech jednotlivých datových bodů. Předpokládejme například, že každý datový bod představuje objekt zemětřesení. Hodnota velikosti byla důležitou metrikou pro každý datový bod zemětřesení. K zemětřesení dochází po celou dobu, ale většina má nízkou velikost a nevšimla se. Pomocí hodnoty velikost ve výrazu přiřaďte váhu každému datovému bodu. Když použijete hodnotu velikost pro přiřazení váhy, získáte lepší reprezentaci významnosti zemětřesení v rámci Heat mapy.
-- `source`a `source-layer` : umožňují aktualizovat zdroj dat.
+- `source` a `source-layer` : umožňují aktualizovat zdroj dat.
 
 Zde je nástroj pro otestování různých možností vrstvy Heat mapy.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti vrstvy tepelné mapy' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Možnosti vrstvy Heat mapy</a> pera podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti vrstvy tepelné mapy' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Možnosti vrstvy Heat mapy</a> pera podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>Konzistentní Heat mapa s přiblížením
@@ -102,7 +102,7 @@ Použijte `zoom` výraz pro horizontální navýšení kapacity poloměru pro ka
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Konzistentní Heat mapa s přiblížením" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Konzistentní Heat mapa s přiblížením" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na CodePen () s Azure Maps použitím <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>lupy s přiblížením na vyměnitelné Heat mapy</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -120,10 +120,10 @@ Podívejte se na CodePen () s Azure Maps použitím <a href='https://codepen.io/
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
+> [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
 
 > [!div class="nextstepaction"]
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 Další příklady kódu pro přidání do map najdete v následujících článcích:
 

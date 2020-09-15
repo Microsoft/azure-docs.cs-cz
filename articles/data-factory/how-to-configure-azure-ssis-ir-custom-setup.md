@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
-ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/15/2020
+ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440571"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090593"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
@@ -40,7 +40,7 @@ Můžete nainstalovat bezplatné (nelicencované) a placené (licencované) komp
 
 Následující omezení platí pouze pro standardní vlastní nastavení:
 
-- Pokud chcete použít *gacutil.exe* ve vašem skriptu k instalaci sestavení v globální mezipaměti sestavení (GAC), je nutné zadat *gacutil.exe* jako součást vlastního nastavení. Případně můžete použít kopii, která je k dispozici v kontejneru *Public Preview* , popsaný dále v části "pokyny".
+- Pokud chcete použít *gacutil.exe* ve vašem skriptu k instalaci sestavení v globální mezipaměti sestavení (GAC), je nutné zadat *gacutil.exe* jako součást vlastního nastavení. Případně můžete použít kopii, která je k dispozici ve *vzorové* složce našeho kontejneru *Public Preview* , v níže uvedené standardní části s ukázkami pro **vlastní nastavení** .
 
 - Pokud chcete odkazovat na podsložku ve skriptu, *msiexec.exe* nepodporuje `.\` zápis pro odkaz na kořenovou složku. Použijte příkaz, například `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` místo `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 
@@ -48,7 +48,7 @@ Následující omezení platí pouze pro standardní vlastní nastavení:
 
 - Ovladač IBM iSeries Access ODBC není podporován na Azure-SSIS IR. Při vlastní instalaci se může zobrazit chyba instalace. Pokud to uděláte, požádejte o pomoc podporu společnosti IBM.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -3,12 +3,12 @@ title: Nakonfigurujte cluster Kubernetes s povoleným ARC Azure pomocí Azure Mo
 description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí Azure Monitor pro kontejnery v clusterech s podporou Kubernetes ARC Azure.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092877"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090614"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolit monitorování clusteru Kubernetes s povoleným ARC Azure
 
@@ -124,7 +124,7 @@ Pokud chcete monitorovat svůj cluster pomocí skriptu prostředí PowerShell ne
 4. Pokud chcete použít existující pracovní prostor Azure Monitor Log Analytics, nakonfigurujte proměnnou `$logAnalyticsWorkspaceResourceId` s odpovídající hodnotou, která představuje ID prostředku pracovního prostoru. Jinak nastavte proměnnou na `""` a skript vytvoří výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru, pokud ještě neexistuje v této oblasti. Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<SubscriptionID> - \<Region> *.
 
     ```powershell
-    $logAnalyticsWorkspaceResourceId = “/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Pokud váš Kubernetes cluster s podporou ARC komunikuje prostřednictvím proxy server, nakonfigurujte proměnnou `$proxyEndpoint` s adresou URL proxy server. Pokud cluster nekomunikuje prostřednictvím proxy server, můžete hodnotu nastavit na `""` .  Další informace najdete v části [Konfigurace koncového bodu proxy serveru](#configure-proxy-endpoint) dále v tomto článku.
@@ -199,7 +199,7 @@ Po povolení monitorování může trvat přibližně 15 minut, než budete moct
 
 Pomocí kontejnerového agenta pro Azure Monitor pro kontejnery můžete nakonfigurovat koncový bod proxy serveru tak, aby mohl komunikovat přes proxy server. Komunikace mezi kontejnerovým agentem a Azure Monitor může být proxy server HTTP nebo HTTPS a podporuje se anonymní i základní ověřování (uživatelské jméno a heslo).
 
-Hodnota konfigurace proxy má následující syntaxi:`[protocol://][user:password@]proxyhost[:port]`
+Hodnota konfigurace proxy má následující syntaxi: `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 >Pokud vaše proxy server nevyžaduje ověřování, je stále nutné zadat uživatelské jméno nebo heslo psuedo. Může to být jakékoli uživatelské jméno nebo heslo.

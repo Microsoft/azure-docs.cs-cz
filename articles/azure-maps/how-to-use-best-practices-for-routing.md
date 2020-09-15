@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400772"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086398"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Osvědčené postupy pro službu Azure Maps Route
 
@@ -30,7 +30,7 @@ Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](h
 > * Optimalizujte alternativní trasy pomocí pomocných bodů. Můžete například nabídnout alternativní trasy, které předají elektricky zpoplatněné trakční vozidlo.
 > * Použití [Route Service](https://docs.microsoft.com/rest/api/maps/route) s Azure Maps Web SDK
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -275,7 +275,7 @@ Obrázek níže je příklad vykreslování alternativních tras se zadanými li
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Použití směrovací služby ve webové aplikaci
 
-Sada Azure Maps Web SDK poskytuje [modul služby](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest). Tento modul je pomocná knihovna usnadňující použití Azure Maps rozhraní REST API ve webových nebo Node.jsch aplikacích pomocí JavaScriptu nebo TypeScript. Modul služby lze použít k vykreslení vrácených tras na mapě. Modul automaticky určuje, které rozhraní API se má použít s požadavky GET a POST.
+Sada Azure Maps Web SDK poskytuje [modul služby](https://docs.microsoft.com/javascript/api/azure-maps-rest/). Tento modul je pomocná knihovna usnadňující použití Azure Maps rozhraní REST API ve webových nebo Node.jsch aplikacích pomocí JavaScriptu nebo TypeScript. Modul služby lze použít k vykreslení vrácených tras na mapě. Modul automaticky určuje, které rozhraní API se má použít s požadavky GET a POST.
 
 ## <a name="next-steps"></a>Další kroky
 

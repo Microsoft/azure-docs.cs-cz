@@ -1,17 +1,17 @@
 ---
 title: Poradce při potížích s virtuálním počítačem s Windows s připojením služby – Azure
-description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
+description: Jak řešit problémy při nastavování připojení služby v prostředí tenanta virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009371"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089900"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Připojení ke službě virtuální plochy Windows
 
@@ -39,6 +39,12 @@ Uživatel může spustit klienty vzdálené plochy a je schopen ho ověřit, ale
 3. Pokud je webový klient používán, zkontrolujte, zda nejsou k dispozici žádné problémy s přihlašovacími údaji v mezipaměti.
 
 4. Pokud je uživatel součástí skupiny uživatelů Azure Active Directory (AD), zajistěte, aby skupina uživatelů byla skupinou zabezpečení místo distribuční skupiny. Virtuální počítač s Windows nepodporuje distribuční skupiny Azure AD.
+
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>Uživatel ztratí existující kanál a nezobrazí se žádný vzdálený prostředek (bez kanálu).
+
+Tato chyba se obvykle zobrazuje poté, co uživatel přesunul své předplatné z jednoho tenanta Azure AD do jiného. V důsledku toho služba ztratí přehled o přiřazeních uživatelů, protože jsou stále vázány na starý tenant služby Azure AD.
+
+Chcete-li tento problém vyřešit, stačí, když uživatele přiřadíte ke skupinám aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 

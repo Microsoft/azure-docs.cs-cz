@@ -3,15 +3,15 @@ title: Nastavení Multi-Factor Authentication Azure pro virtuální počítače 
 description: Jak nastavit Azure Multi-Factor Authentication pro zvýšení zabezpečení na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017769"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089917"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Povolení služby Azure Multi-Factor Authentication pro službu Windows Virtual Desktop
 
@@ -48,10 +48,19 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
 7. Vyberte **Hotovo**.
 8. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**.
 9. Vyberte jednu z následujících aplikací podle toho, kterou verzi virtuálního klienta Windows používáte.
-   - Pokud používáte virtuální plochu Windows (Classic), vyberte tuto aplikaci:
+   
+   - Pokud používáte virtuální plochu Windows (Classic), vyberte tyto aplikace:
+       
        - **Virtuální desktop Windows** (ID aplikace 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Klient virtuální plochy Windows** (ID aplikace fa4345a4-a730-4230-84a8-7d9651b86739), který vám umožní nastavit zásady pro webového klienta.
+       
+        Potom přejděte ke kroku 11.
+
    - Pokud používáte virtuální počítač s Windows, vyberte místo toho tuto aplikaci:
+       
        -  **Virtuální desktop Windows** (ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07)
+       
+        Potom můžete přejít ke kroku 10.
 
    >[!IMPORTANT]
    > Nevybírejte aplikaci nazvanou Windows Virtual Desktop Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63). Tato aplikace se používá jenom pro načtení uživatelského kanálu a neměla by mít MFA.

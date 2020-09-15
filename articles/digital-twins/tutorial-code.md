@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9c9f286b9d81c89844582698ac98833f10bcaade
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923700"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086653"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -127,7 +127,7 @@ DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred
 Console.WriteLine($"Service client created – ready to go");
 ```
 
-Uložte soubor. 
+Soubor uložte. 
 
 Všimněte si, že v tomto příkladu se používá interaktivní přihlašovací údaje prohlížeče:
 ```csharp
@@ -322,12 +322,13 @@ Všimněte si, že není vyvolána žádná chyba při druhém vytvoření vlák
 
 V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými podmnožinami a propojit je s **dvojitým grafem**. K reprezentaci celého prostředí se používají [Dvojitá grafu](concepts-twins-graph.md) .
 
-Aby bylo možné vytvářet relace, přidejte `using` příkaz pro základní typ vztahu v sadě SDK: tuto přeskočit, pokud již byla přidána.
+Aby bylo možné vytvářet relace, budete potřebovat `Azure.DigitalTwins.Core.Serialization` obor názvů. Toto jste přidali do projektu výše pomocí tohoto `using` příkazu:
+
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
-Dále přidejte do třídy novou statickou metodu `Program` pod `Main` metodou:
+Přidejte do třídy novou statickou metodu `Program` pod `Main` metodou:
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {

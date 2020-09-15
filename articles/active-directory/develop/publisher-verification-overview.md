@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005787"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089747"
 ---
 # <a name="publisher-verification"></a>Ověření vydavatele
 
@@ -33,7 +33,7 @@ Ověřování vydavatele nabízí následující výhody:
 
 - **Vylepšené branding**– "ověřené" označení se zobrazí na stránce s [výzvou k vyjádření souhlasu](application-consent-experience.md)služby Azure AD, na stránce podnikové aplikace a na dalších plochách uživatelského prostředí, které používají koncoví uživatelé a správci. 
 
-- Řešení pro zajištění **hladkého podnikání**– správci můžou konfigurovat nové zásady pro vyjádření souhlasu s uživatelem a stav ověření vydavatele je jedno z primárních kritérií zásad. 
+- Zajištění **plynulejšího podnikání**– správci můžou konfigurovat [zásady pro vyjádření souhlasu s uživatelem](../manage-apps/configure-user-consent.md), přičemž stav ověření vydavatele je jedno z primárních kritérií zásad. 
 
 - **Vylepšené hodnocení rizik**– pro žádosti o udělení souhlasu společnosti Microsoft budou zjištěny požadavky na udělení souhlasu od vydavatele jako signál. 
 
@@ -52,6 +52,8 @@ Je k dispozici několik požadavků na ověření vydavatele, některé z nich j
 
     -  V partnerském centru musí mít tento uživatel tyto [role](/partner-center/permissions-overview): správce MPN, účty správce nebo globální správce (Toto je sdílená role spravovaná ve službě Azure AD).
     
+-  Uživatel, který provádí ověření, se musí přihlásit pomocí [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md).
+
 -  Vydavatel souhlasí s [podmínkami použití pro vývojáře na platformě Microsoft Identity](/legal/microsoft-identity-platform/terms-of-use).
 
 Vývojáři, kteří už tyto požadavky splnili, se můžou ověřit během několika minut. Pokud se požadavky nesplní, nastavování je zdarma. 

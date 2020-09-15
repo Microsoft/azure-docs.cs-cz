@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752005"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088489"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou k dispozici v Azure?
 
@@ -71,7 +71,7 @@ Pokud chcete začít používat disky Ultra, přečtěte si náš článek na p�
 
 Azure Premium SSD poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače a úlohy náročné na vstupně-výstupní operace (v/v). Pokud chcete využít rychlost a výkon disků služby Premium Storage, můžete migrovat stávající disky virtuálních počítačů na Premium SSD. Premium SSD jsou vhodné pro produkční aplikace kritické pro klíčové služby. Prémiová SSD se dá použít jenom u řady virtuálních počítačů, které jsou kompatibilní s Premium Storage.
 
-Další informace o jednotlivých typech a velikostech virtuálních počítačů v Azure pro Windows nebo Linux, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů v Azure](sizes.md). Další informace o typech a velikostech virtuálních počítačů v Azure pro Linux, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti pro virtuální počítače v Azure](sizes.md). V některém z těchto článků je potřeba vyhledat v článku o jednotlivých velikostech virtuálních počítačů, abyste zjistili, jestli je služba Premium Storage kompatibilní.
+Další informace o jednotlivých typech a velikostech virtuálních počítačů v Azure pro Windows nebo Linux, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů v Azure](sizes.md). V tomto článku je potřeba vyhledat všechny jednotlivé velikosti virtuálních počítačů, abyste zjistili, jestli je služba Premium Storage kompatibilní.
 
 ### <a name="disk-size"></a>Velikost disku
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]

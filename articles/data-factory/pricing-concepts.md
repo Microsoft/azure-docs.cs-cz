@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/14/2020
+ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949948"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087180"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Seznámení s cenami služby Data Factory prostřednictvím příkladů
 
@@ -130,9 +130,13 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Použití mapování toku dat pro normální pracovní den
 
-Jako inženýr dat zodpovídáte za návrh, sestavování a testování toků dat mapování každý den. Přihlásíte se k uživatelskému rozhraní ADF v ráno a povolíte režim ladění pro toky dat. Výchozí hodnota TTL pro relace ladění je 60 minut. Po dobu 8 hodin budete pracovat v průběhu dne, takže relace ladění nikdy nevyprší. Proto poplatek za den bude:
+Jako inženýr dat zodpovídá Sam za návrh, sestavování a testování toků dat mapování každý den. Protokol Sam se v ráno přihlásí do uživatelského rozhraní ADF a povolí režim ladění pro toky dat. Výchozí hodnota TTL pro relace ladění je 60 minut. Sam funguje během dne po dobu 8 hodin, aby relace ladění nikdy nevypršela. Proto budou poplatky za tento den v Sam:
 
 **8 (hodiny) × 8 (jader optimalizované pro výpočty) × $0,193 = $12,35**
+
+Zároveň se k uživatelskému rozhraní prohlížeče ADF pro profilaci dat a práci s návrhem ETL přihlásí zároveň pracovníka s jiným datovým inženýrem. Chris nefunguje v ADF celý den jako Sam. Pracovník Novák potřebuje použít ladicí program toku dat 1 hodinu během stejné doby a stejný den jako Sam výše. Tyto poplatky se účtují za použití ladění:
+
+**1 (hodina) × 8 (jádra pro obecné účely) × $0,274 = $2,19**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Transformace dat v úložišti objektů BLOB s využitím toků mapování dat
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028545"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090648"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálních počítačů pro Windows pro diagnostiku výkonu Azure
 
@@ -29,7 +29,15 @@ Rozšíření virtuálních počítačů Azure Performance Diagnostics pomáhá 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Toto rozšíření se dá nainstalovat na Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Dá se taky nainstalovat na Windows 8.1 a Windows 10.
+Toto rozšíření se dá nainstalovat na
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 Následující JSON ukazuje schéma pro rozšíření virtuálního počítače Azure Performance Diagnostics. Toto rozšíření vyžaduje název a klíč účtu úložiště pro uložení výstupu a sestavy diagnostiky. Tyto hodnoty jsou citlivé. Klíč účtu úložiště by měl být uložený v konfiguraci chráněného nastavení. Data nastavení chráněná rozšířením virtuálního počítače Azure jsou šifrovaná a v cílovém virtuálním počítači se dešifrují jenom. Všimněte si, že **storageAccountName** a **storageAccountKey** rozlišují velká a malá písmena. Další požadované parametry jsou uvedeny v následující části.
@@ -71,7 +79,7 @@ Následující JSON ukazuje schéma pro rozšíření virtuálního počítače 
 |apiVersion|2015-06-15|Verze rozhraní API.
 |vydavatel|Microsoft. Azure. Performance. Diagnostics|Obor názvů vydavatele pro rozšíření.
 |typ|AzurePerformanceDiagnostics|Typ rozšíření virtuálního počítače
-|typeHandlerVersion|1.0|Verze obslužné rutiny rozšíření.
+|typeHandlerVersion|1,0|Verze obslužné rutiny rozšíření.
 |performanceScenario|Basic|Scénář výkonu, pro který mají být zachycena data. Platné hodnoty jsou: **Basic**, **vmslow**, **azurefiles**a **Custom**.
 |traceDurationInSeconds|300|Doba trvání trasování, pokud je vybrána kterákoli z možností trasování.
 |perfCounterTrace|p|Možnost pro povolení trasování čítače výkonu. Platné hodnoty jsou hodnota **p** nebo prázdná. Pokud toto trasování nechcete zachytit, ponechte hodnotu prázdnou.
@@ -88,7 +96,7 @@ Následující JSON ukazuje schéma pro rozšíření virtuálního počítače 
 
 Pokud chcete nainstalovat rozšíření na virtuální počítače s Windows, postupujte podle těchto pokynů:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač, na který chcete nainstalovat toto rozšíření.
 
     ![Snímek obrazovky Azure Portal s zvýrazněnými virtuálními počítači](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -208,7 +216,7 @@ Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablo
 }
 ```
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 `Set-AzVMExtension`Příkaz se dá použít k nasazení rozšíření virtuálního počítače Azure Performance Diagnostics do existujícího virtuálního počítače.
 
 PowerShell

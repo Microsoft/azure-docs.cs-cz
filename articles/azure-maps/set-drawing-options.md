@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 4c00639c02f8834a24a3828ac5b8ba828d0e1733
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 82c5d87be084e85b6de9f890bd042babca9df476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282819"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090495"
 ---
 # <a name="use-the-drawing-tools-module"></a>Použití modulu nástrojů pro kreslení
 
-Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení*. Tento modul usnadňuje vykreslování a úpravu obrazců na mapě pomocí vstupního zařízení, jako je například myš nebo dotyková obrazovka. Základní třídou tohoto modulu je [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). Správce kreslení poskytuje všechny schopnosti potřebné k vykreslování a úpravám obrazců na mapě. Dá se použít přímo a je integrovaný do vlastního uživatelského rozhraní panelu nástrojů. Můžete také použít integrovanou třídu nástrojů pro [Kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) . 
+Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení*. Tento modul usnadňuje vykreslování a úpravu obrazců na mapě pomocí vstupního zařízení, jako je například myš nebo dotyková obrazovka. Základní třídou tohoto modulu je [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Správce kreslení poskytuje všechny schopnosti potřebné k vykreslování a úpravám obrazců na mapě. Dá se použít přímo a je integrovaný do vlastního uživatelského rozhraní panelu nástrojů. Můžete také použít integrovanou třídu nástrojů pro [Kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) . 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Načtení modulu nástrojů pro kreslení na webové stránce
 
@@ -44,13 +44,13 @@ Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení*. Tento modul 
 
 ## <a name="use-the-drawing-manager-directly"></a>Použití Správce kreslení přímo
 
-Po načtení modulu nástrojů pro kreslení do aplikace můžete povolit možnosti kreslení a úprav pomocí [správce kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). Můžete zadat možnosti pro správce kreslení při vytváření instance nebo `drawingManager.setOptions()` funkci nebo funkci použít.
+Po načtení modulu nástrojů pro kreslení do aplikace můžete povolit možnosti kreslení a úprav pomocí [správce kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Můžete zadat možnosti pro správce kreslení při vytváření instance nebo `drawingManager.setOptions()` funkci nebo funkci použít.
 
 ### <a name="set-the-drawing-mode"></a>Nastavení režimu kreslení
 
 Následující kód vytvoří instanci Správce výkresu a nastaví možnost **režim** kreslení. 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and set drawing mode.
 drawingManager = new atlas.drawing.DrawingManager(map,{
     mode: "draw-polygon"
@@ -70,13 +70,13 @@ Podívejte se, že pero <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>nakr
 
 Správce kreslení podporuje tři různé způsoby interakce s mapou k vykreslování tvarů.
 
-* `click`-Souřadnice se přidávají při kliknutí myší nebo dotykem.
-* `freehand `-Souřadnice se přidávají při přetahování myši nebo dotyku na mapě. 
-* `hybrid`-Souřadnice se přidávají při kliknutí nebo přetahování myši nebo dotykem.
+* `click` -Souřadnice se přidávají při kliknutí myší nebo dotykem.
+* `freehand ` -Souřadnice se přidávají při přetahování myši nebo dotyku na mapě. 
+* `hybrid` -Souřadnice se přidávají při kliknutí nebo přetahování myši nebo dotykem.
 
 Následující kód povoluje režim kreslení mnohoúhelníku a nastavuje typ interakce kresby, na kterou má Správce výkresu dodržet `freehand` . 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and set drawing mode.
 drawingManager = new atlas.drawing.DrawingManager(map,{
     mode: "draw-polygon",
@@ -122,10 +122,10 @@ Naučte se používat další funkce modulu nástrojů pro kreslení:
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Panel nástrojů kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Panel nástrojů kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

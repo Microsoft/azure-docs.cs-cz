@@ -1,21 +1,21 @@
 ---
 author: sethmanheim
-ms.service: service-bus
+ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/14/2020
 ms.author: sethm
-ms.openlocfilehash: 7fd161c90234d45a6751f173ba3685ee8c392c87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb3c95b74128f1da7b29a290e17fefe21987dd76
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74260695"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089937"
 ---
 ## <a name="webapi-project"></a>Projekt WebAPI
 
 1. V aplikaci Visual Studio otevřete projekt **projekt appbackend** , který jste vytvořili v kurzu pro **upozorňování uživatelů** .
 2. V Notifications.cs nahraďte celou třídu **oznámení** následujícím kódem. Nezapomeňte nahradit zástupné symboly připojovacím řetězcem (s úplným přístupem) pro vaše centrum oznámení a názvem centra. Tyto hodnoty můžete získat z [Azure Portal](https://portal.azure.com). Tento modul teď představuje různá zabezpečená oznámení, která se odešlou. V úplné implementaci budou oznámení uložená v databázi. pro zjednodušení v tomto případě je ukládáme do paměti.
-   
+
    ```csharp
     public class Notification
     {
@@ -56,8 +56,8 @@ ms.locfileid: "74260695"
     }
     ```
 
-1. V NotificationsController.cs nahraďte kód uvnitř definice třídy **NotificationsController** následujícím kódem. Tato součást implementuje způsob, jak zařízení správně načte oznámení, a poskytuje způsob (pro účely tohoto kurzu) pro aktivaci zabezpečeného nabízeného oznámení pro vaše zařízení. Všimněte si, že při odesílání oznámení do centra oznámení pošleme nezpracované oznámení s ID oznámení (bez skutečné zprávy):
-   
+3. V NotificationsController.cs nahraďte kód uvnitř definice třídy **NotificationsController** následujícím kódem. Tato součást implementuje způsob, jak zařízení správně načte oznámení, a poskytuje způsob (pro účely tohoto kurzu) pro aktivaci zabezpečeného nabízeného oznámení pro vaše zařízení. Všimněte si, že při odesílání oznámení do centra oznámení pošleme nezpracované oznámení s ID oznámení (bez skutečné zprávy):
+
    ```csharp
     public NotificationsController()
     {

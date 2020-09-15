@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: c95bd7523a57c2de02686d3cd06190e60550de0a
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: ab2c584b1e62ac8296c4e9489a72489cd815fc3c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024126"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089849"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -136,7 +136,7 @@ Update Management používá prostředky popsané v této části. Tyto prostře
 
 Po povolení Update Management se všechny počítače s Windows, které jsou přímo připojené k vašemu pracovnímu prostoru Log Analytics, automaticky nakonfigurují jako Hybrid Runbook Worker pro podporu runbooků, které podporují Update Management.
 
-Každý počítač s Windows, který je spravovaný pomocí Update Management, je uvedený v podokně Hybrid Worker Groups jako systémová skupina hybridních pracovních procesů pro účet Automation. Skupiny používají `Hostname FQDN_GUID` konvence vytváření názvů. Tyto skupiny nemůžete cílit na tyto sady Runbook ve vašem účtu. Pokud se pokusíte, pokus se nezdaří. Tyto skupiny jsou určené pouze pro podporu Update Management.
+Každý počítač s Windows, který je spravovaný pomocí Update Management, je uvedený v podokně Hybrid Worker Groups jako systémová skupina hybridních pracovních procesů pro účet Automation. Skupiny používají `Hostname FQDN_GUID` konvence vytváření názvů. Tyto skupiny nemůžete cílit na tyto sady Runbook ve vašem účtu. Pokud se pokusíte, pokus se nezdaří. Tyto skupiny jsou určené pouze pro podporu Update Management. Další informace o zobrazení seznamu počítačů s Windows nakonfigurovaných jako Hybrid Runbook Worker najdete v tématu [zobrazení procesů Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers).
 
 Počítač s Windows můžete přidat do skupiny Hybrid Runbook Worker v účtu Automation pro podporu runbooků Automation, pokud používáte stejný účet pro Update Management a Hybrid Runbook Worker členství ve skupině. Tato funkce se přidala do 7.2.12024.0 verze Hybrid Runbook Worker.
 
@@ -211,7 +211,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: fd5fcd2356742222b162e31a3178db135acd8ccf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 885d36786c804de069a9d1e6ebf031e9ffc3d32a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703104"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086483"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>Nasazení duální aplikace s protokolem IPv6 pomocí základního Load Balancer-CLI
 
@@ -37,7 +37,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku A
 
 Než budete moct vytvořit virtuální síť se dvěma zásobníky, musíte vytvořit skupinu prostředků pomocí [AZ Group Create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků s názvem *DsResourceGroup01* v umístění *eastus* :
 
-```azurecli
+```azurecli-interactive
 az group create \
 --name DsResourceGroup01 \
 --location eastus
@@ -46,7 +46,7 @@ az group create \
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>Vytvoření veřejných IP adres IPv4 a IPv6 pro nástroj pro vyrovnávání zatížení
 Pro přístup k koncovým bodům IPv4 a IPv6 na internetu potřebujete veřejné IP adresy protokolů IPv4 a IPv6 pro nástroj pro vyrovnávání zatížení. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip). Následující příklad vytvoří veřejnou IP adresu IPv4 a IPv6 s názvem *dsPublicIP_v4* a *dsPublicIP_v6* ve skupině prostředků *DsResourceGroup01* :
 
-```azurecli
+```azurecli-interactive
 # Create an IPV4 IP address
 az network public-ip create \
 --name dsPublicIP_v4  \
@@ -71,7 +71,7 @@ az network public-ip create \
 
 Pro vzdálený přístup k virtuálním počítačům na internetu potřebujete pro virtuální počítače veřejné IP adresy IPv4. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip).
 
-```azurecli
+```azurecli-interactive
 az network public-ip create \
 --name dsVM0_remote_access  \
 --resource-group DsResourceGroup01 \
@@ -97,7 +97,7 @@ V této části nakonfigurujete pro nástroj pro vyrovnávání zatížení duá
 
 Vytvořte základní Load Balancer pomocí [AZ Network](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) Create s názvem **dsLB** , který zahrnuje front-endu s názvem **dsLbFrontEnd_v4**, back-end fond s názvem **dsLbBackEndPool_v4** , který je přidružený k veřejné IP adrese IPv4 **dsPublicIP_v4** , kterou jste vytvořili v předchozím kroku. 
 
-```azurecli
+```azurecli-interactive
 az network lb create \
 --name dsLB  \
 --resource-group DsResourceGroup01 \
@@ -112,7 +112,7 @@ az network lb create \
 
 Vytvořte IP front-endu protokolu IPV6 pomocí [AZ Network disendu-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create). Následující příklad vytvoří konfiguraci IP adresy front-endu s názvem *dsLbFrontEnd_v6* a připojí *dsPublicIP_v6* adresu:
 
-```azurecli
+```azurecli-interactive
 az network lb frontend-ip create \
 --lb-name dsLB  \
 --name dsLbFrontEnd_v6  \
@@ -123,9 +123,9 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>Konfigurace fondu adres back-endu protokolu IPv6
 
-Vytvořte fondy adres back-endu IPv6 pomocí [AZ Network disrovnává Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create). V následujícím příkladu se vytvoří fond back-endu s názvem *dsLbBackEndPool_v6* pro zahrnutí virtuálních počítačů s KONFIGURACEMI síťových adaptérů IPv6:
+Vytvořte fondy adres back-endu IPv6 pomocí [AZ Network disrovnává Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create). V následujícím příkladu se vytvoří fond back-endu s názvem *dsLbBackEndPool_v6*  pro zahrnutí virtuálních počítačů s KONFIGURACEMI síťových adaptérů IPv6:
 
-```azurecli
+```azurecli-interactive
 az network lb address-pool create \
 --lb-name dsLB  \
 --name dsLbBackEndPool_v6  \
@@ -135,7 +135,7 @@ az network lb address-pool create \
 ### <a name="create-a-health-probe"></a>Vytvoření sondy stavu
 Pomocí příkazu [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) vytvořte sondu stavu pro monitorování stavu virtuálních počítačů. 
 
-```azurecli
+```azurecli-interactive
 az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
 ```
 
@@ -145,7 +145,7 @@ Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způso
 
 Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create). Následující příklad vytvoří pravidla nástroje pro vyrovnávání zatížení s názvem *dsLBrule_v4* a *dsLBrule_v6* a vyrovnává provoz na portu *TCP* *80* s konfiguracemi IP adres IPv4 a IPv6 front-endu:
 
-```azurecli
+```azurecli-interactive
 az network lb rule create \
 --lb-name dsLB  \
 --name dsLBrule_v4  \
@@ -178,7 +178,7 @@ Pokud chcete zlepšit dostupnost vaší aplikace, umístěte virtuální počít
 
 Vytvořte skupinu dostupnosti pomocí [AZ VM Availability-set Create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest). Následující příklad vytvoří skupinu dostupnosti s názvem *dsAVset*:
 
-```azurecli
+```azurecli-interactive
 az vm availability-set create \
 --name dsAVset  \
 --resource-group DsResourceGroup01  \
@@ -196,7 +196,7 @@ Vytvořte skupinu zabezpečení sítě pro pravidla, která budou řídit příc
 Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) .
 
 
-```azurecli
+```azurecli-interactive
 az network nsg create \
 --name dsNSG1  \
 --resource-group DsResourceGroup01  \
@@ -208,7 +208,7 @@ az network nsg create \
 
 Vytvořte pravidlo skupiny zabezpečení sítě, které povolí připojení RDP přes port 3389, připojení k internetu přes port 80 a pro odchozí připojení pomocí [AZ Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create).
 
-```azurecli
+```azurecli-interactive
 # Create inbound rule for port 3389
 az network nsg rule create \
 --name allowRdpIn  \
@@ -261,7 +261,7 @@ az network nsg rule create \
 
 Vytvořte virtuální síť pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create). Následující příklad vytvoří virtuální síť s názvem *dsVNET* s podsítěmi *dsSubNET_v4* a *dsSubNET_v6*:
 
-```azurecli
+```azurecli-interactive
 # Create the virtual network
 az network vnet create \
 --name dsVNET \
@@ -283,7 +283,7 @@ az network vnet subnet create \
 
 Pro každý virtuální počítač vytvořte virtuální síťové adaptéry pomocí [AZ Network nic Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create). Následující příklad vytvoří virtuální síťovou kartu pro každý virtuální počítač. Každé síťové rozhraní má dvě konfigurace protokolu IP (1 konfigurace IPv4, 1 konfigurace IPv6). Konfiguraci protokolu IPV6 vytvoříte pomocí [AZ Network nic IP-config Create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create).
 
-```azurecli
+```azurecli-interactive
 # Create NICs
 az network nic create \
 --name dsNIC0  \
@@ -336,7 +336,7 @@ Vytvořte virtuální počítače pomocí [AZ VM Create](https://docs.microsoft.
 
 *DsVM0* virtuálního počítače vytvoříte takto:
 
-```azurecli
+```azurecli-interactive
  az vm create \
 --name dsVM0 \
 --resource-group DsResourceGroup01 \
@@ -348,7 +348,7 @@ Vytvořte virtuální počítače pomocí [AZ VM Create](https://docs.microsoft.
 
 *DsVM1* virtuálního počítače vytvoříte takto:
 
-```azurecli
+```azurecli-interactive
 az vm create \
 --name dsVM1 \
 --resource-group DsResourceGroup01 \
@@ -371,7 +371,7 @@ Virtuální síť s duálním zásobníkem IPv6 se dá zobrazit v Azure Portal n
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [AZ Group Delete](/cli/azure/group#az-group-delete) .
 
-```azurecli
+```azurecli-interactive
  az group delete --name DsResourceGroup01
 ```
 

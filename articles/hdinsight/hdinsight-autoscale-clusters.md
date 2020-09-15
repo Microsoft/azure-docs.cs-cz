@@ -1,6 +1,6 @@
 ---
-title: Automatické škálování clusterů Azure HDInsight
-description: Použití funkce automatického škálování Azure HDInsight k automatickému Apache Hadoop škálování clusterů
+title: Škálování clusterů Azure HDInsight s horizontálním škálováním
+description: K automatickému škálování Apache Hadoop clusterů použijte funkci automatického škálování Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: 4c4b9c60eb967b5791af724e5c15bba887263d44
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 7ce4580b366b57e2a1d4904b6ab63bf1834bdb65
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757859"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090104"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
+# <a name="autoscale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
 Bezplatná funkce automatického škálování služby Azure HDInsight může automaticky zvýšit nebo snížit počet pracovních uzlů v clusteru na základě dříve nastavených kritérií. Během vytváření clusteru nastavíte minimální a maximální počet uzlů, určíte kritéria škálování pomocí plánu denního času nebo konkrétní metriky výkonu a platforma HDInsight provede zbytek.
 
@@ -72,12 +72,12 @@ Pro horizontální navýšení kapacity vydává automatické škálování pož
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
-| Verze | Spark | Hive | LLAP | HBase | Kafka | Bouře | ML |
+| Verze | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 4,0 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 3,6 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 4,0 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
 
 \* Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
 
@@ -243,41 +243,43 @@ V části **monitorování**vyberte **metriky** . Pak v rozevíracím seznamu **
 
 ![Povolit metriku automatického škálování na základě plánu pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="other-considerations"></a>Další důležité informace
+## <a name="best-practices"></a>Osvědčené postupy
 
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Zvažte latenci operací horizontálního navýšení nebo snížení kapacity.
+### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>Zvažte latenci operací horizontálního navýšení kapacity a horizontálního navýšení kapacity.
 
 Dokončení operace škálování může trvat 10 až 20 minut. Při nastavování přizpůsobeného plánu Naplánujte tuto prodlevu. Pokud například potřebujete, aby cluster byl 20 v 9:00 ráno, nastavte aktivační událost plánovače na dřívější čas, například 8:30 dop. to znamená, že operace škálování byla dokončena pomocí 9:00.
 
-### <a name="preparation-for-scaling-down"></a>Příprava na horizontální navýšení kapacity
+### <a name="prepare-for-scaling-down"></a>Příprava na horizontální navýšení kapacity
 
-Během procesu horizontálního navýšení kapacity clusteru bude automatické škálování vyřadit uzly do provozu, aby splňovaly cílovou velikost. Pokud jsou na těchto uzlech úlohy spuštěné, bude automatické škálování čekat na dokončení úkolů. Vzhledem k tomu, že každý pracovní uzel také slouží jako role v HDFS, dočasná data budou přesunuta do zbývajících uzlů. Měli byste se ujistit, že na zbývajících uzlech je dostatek místa pro hostování všech dočasných dat.
+Během procesu horizontálního navýšení kapacity clusteru vyřadí automatické škálování uzly, aby splňovaly cílovou velikost. Pokud úlohy běží na těchto uzlech, automatické škálování počká, až se úkoly dokončí. Vzhledem k tomu, že každý pracovní uzel také slouží jako role v HDFS, jsou dočasná data přesunuta do zbývajících uzlů. Ujistěte se, že na zbývajících uzlech je dostatek místa pro hostování všech dočasných dat.
 
 Spuštěné úlohy budou pokračovat. Čekající úlohy budou čekat na plánování s menším počtem dostupných pracovních uzlů.
 
-### <a name="minimum-cluster-size"></a>Minimální velikost clusteru
+### <a name="be-aware-of-the-minimum-cluster-size"></a>Mějte na paměti, že minimální velikost clusteru
 
-Nezmenšujte svůj cluster dolů na méně než tři uzly. Škálování clusteru na méně než tři uzly může vést k zablokování v bezpečném režimu z důvodu nedostatečné replikace souborů.  Další informace najdete v tématu [získání zablokování v bezpečném režimu](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+Nezmenšujte svůj cluster dolů na méně než tři uzly. Škálování clusteru na méně než tři uzly může vést k zablokování v bezpečném režimu z důvodu nedostatečné replikace souborů. Další informace najdete v tématu [získání zablokování v bezpečném režimu](hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+
+### <a name="increase-the-number-of-mappers-and-reducers"></a>Zvýšení počtu mapovačů a reduktorů
+
+Automatické škálování pro clustery Hadoop také sleduje použití HDFS. Pokud je HDFS zaneprázdněný, předpokládá se, že cluster stále potřebuje aktuální prostředky. V případě, že je v dotazu zapojená obrovský data, můžete zvýšit počet reduktorů a zvýšit tak paralelismus a zrychlit operace HDFS. Tímto způsobem se aktivuje správné škálování, pokud jsou k dispozici další prostředky. 
+
+### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>Nastavení maximálního počtu souběžných dotazů konfigurace podregistru pro scénář použití ve špičce
+
+Události automatického škálování nemění *maximální počet souběžných dotazů* konfigurace podregistru v Ambari. To znamená, že interaktivní služba pro podregistr Server 2 může v jakémkoli časovém okamžiku zpracovávat pouze daný počet souběžných dotazů, a to i v případě, že je počet procesů démona LLAP škálovat nahoru a dolů na základě zatížení a plánu. Obecným doporučením je nastavení této konfigurace pro scénář špičky využití, aby nedocházelo k ručnímu zásahu.
+
+Pokud je ale jen malý počet pracovních uzlů a hodnota maximálního počtu souběžných dotazů je nakonfigurovaná příliš vysoká, může se stát, že dojde k selhání restartování serveru pro podregistr 2. Minimálně potřebujete minimální počet pracovních uzlů, které můžou vyhovovat danému počtu tez AMS (rovnají se maximálnímu počtu současných souběžných dotazů). 
+
+## <a name="limitations"></a>Omezení
+
+### <a name="node-label-file-missing"></a>Chybí soubor popisku uzlu.
+
+Automatické škálování HDInsight používá soubor popisků uzlů k určení, jestli je uzel připravený k provádění úloh. Soubor popisku uzlu je uložený v HDFS se třemi replikami. Pokud je velikost clusteru výrazně zvětšená a existuje velké množství dočasných dat, je pravděpodobné, že všechny tři repliky by mohly být vyřazeny. Pokud k tomu dojde, cluster vstoupí do stavu chyby.
 
 ### <a name="llap-daemons-count"></a>Počet LLAP démonů
 
-V případě LLAP clusterů s povoleným automatickém škálováním událost automatického navýšení nebo snížení kapacity také navýší počet LLAP démonů na počet aktivních pracovních uzlů. Tato změna v počtu procesů démonů ale není trvalá v **num_llap_nodes** konfiguraci v Ambari. Pokud se služby pro podregistr restartují ručně, pak se počet LLAP démonů resetuje podle konfigurace v Ambari.
+V případě clusterů LLAP s podporou autoscae škáluje událost automatického horizontálního navýšení nebo snížení kapacity také množství procesů démonů LLAP na počet aktivních pracovních uzlů. Změna v počtu procesů démonů není v `num_llap_nodes` konfiguraci v Ambari trvalá. Pokud se služby pro podprocesy ručně restartují, počet LLAP démonů se resetuje podle konfigurace v Ambari.
 
-Podíváme se na následující scénář:
-1. Cluster s podporou automatického škálování LLAP se vytvoří se 3 uzly pracovního procesu a automatické škálování na základě zatížení je povolené s minimálními pracovními uzly jako 3 a maximálními pracovními uzly 10.
-2. Konfigurace počtu démonů LLAP v závislosti na konfiguraci LLAP a Ambari je 3, protože cluster byl vytvořen se 3 pracovními uzly.
-3. Pak se aktivuje automatické horizontální navýšení kapacity z důvodu zatížení clusteru, cluster se teď škáluje na 10 uzlů.
-4. Při kontrole automatického škálování běží v pravidelných intervalech oznámení o tom, že počet démonů LLAP je 3, ale počet aktivních pracovních uzlů je 10, proces automatického škálování teď zvýší počet LLAP démona na hodnotu 10, ale tato změna se v Ambari config-num_llap_nodes neuloží.
-5. Automatické škálování je teď zakázané.
-6. Cluster má teď 10 uzlů pracovních procesů a 10 LLAP démonů.
-7. Služba LLAP se restartuje ručně.
-8. Během restartování zkontroluje num_llap_nodes config v konfiguraci LLAP a vyhodnotí hodnotu 3, takže se postará o 3 instance démonů, ale počet pracovních uzlů je 10. Došlo k současnému neshodě mezi těmito dvěma hodnotami.
-
-Pokud k tomu dojde, musíme ručně změnit **konfiguraci num_llap_node (počet uzlů na spuštění procesu démona llap) v části pokročilý podregistr-Interactive-ENV** tak, aby odpovídala aktuálnímu počtu aktivních pracovních uzlů.
-
-**Poznámka**
-
-Události automatického škálování nemění **maximální počet souběžných dotazů** konfigurace podregistru v Ambari. To znamená, že interaktivní služba pro podregistr Server 2 **může v jakémkoli časovém okamžiku zpracovávat pouze daný počet souběžných dotazů, a to i v případě, že je počet procesů démona LLAP škálovat nahoru a dolů na základě zatížení nebo plánu**. Obecně doporučujeme, abyste tuto konfiguraci nastavili pro scénář použití ve špičce, aby se mohl ruční zásah vyhnout. Je však třeba mít na paměti, že **nastavení vysoké hodnoty pro maximální celkový počet souběžných dotazů může selhat, pokud minimální počet pracovních uzlů nemůže odpovídat zadanému počtu tez AMS (je rovno maximálnímu počtu souběžných dotazů konfigurace)** .
+Je-li služba LLAP ručně restartována, je třeba ručně změnit `num_llap_node` konfiguraci (počet uzlů potřebných ke spuštění procesu LLAP démona podregistru) v části *pokročilý podregistr-Interactive-ENV* tak, aby odpovídal aktuálnímu počtu aktivních pracovních uzlů.
 
 ## <a name="next-steps"></a>Další kroky
 

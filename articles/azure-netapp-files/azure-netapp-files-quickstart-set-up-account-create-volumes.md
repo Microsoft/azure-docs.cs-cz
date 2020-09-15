@@ -7,13 +7,13 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.custom: devx-track-azurecli, subject-armqs
+ms.openlocfilehash: c8f431a609dafc1064b901cfdda8d170124cf0f9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987507"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089118"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS 
 
@@ -67,6 +67,14 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
+# <a name="template"></a>[Šablona](#tab/template)
+
+Žádné  
+
+K registraci Azure NetApp Files a poskytovatele prostředků NetApp použijte Azure Portal, PowerShell nebo Azure CLI.  
+
+Další informace najdete v tématu věnovaném [registraci Azure NetApp Files](azure-netapp-files-register.md) . 
+
 ---
 
 ## <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
@@ -105,7 +113,7 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
 
     > [!NOTE]
     > Seznam podporovaných oblastí najdete [v tématu dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) .
-    > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím`Get-AzLocation | select Location`
+    > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím `Get-AzLocation | select Location`
     >
 
 1. Pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) vytvořte novou skupinu prostředků:
@@ -132,7 +140,7 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
 
     > [!NOTE]
     > Seznam podporovaných oblastí najdete [v tématu dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) .
-    > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím`az account list-locations --query "[].{Region:name}" --out table`
+    > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím `az account list-locations --query "[].{Region:name}" --out table`
     >
 
 2. Pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) vytvořte novou skupinu prostředků:
@@ -151,6 +159,17 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
         --location $LOCATION \
         --account-name $ANF_ACCOUNT_NAME
     ```
+
+# <a name="template"></a>[Šablona](#tab/template)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně Azure Resource Manager (šablona ARM) pomocí prostředku [Microsoft. NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) . Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
+
+<!-- Block begins with "type": "Microsoft.NetApp/netAppAccounts", -->
+
 ---
 
 ## <a name="set-up-a-capacity-pool"></a>Nastavení fondu kapacity
@@ -213,6 +232,16 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
         --size $POOL_SIZE_TiB \
         --service-level $SERVICE_LEVEL
     ```
+
+# <a name="template"></a>[Šablona](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+
+Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Azure Resource Manager (šablona ARM) pomocí prostředku [Microsoft. NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) . Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
+
+<!-- LN 185, block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools", -->
 
 ---
 
@@ -353,6 +382,20 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
         --protocol-types "NFSv3"
     ```
 
+# <a name="template"></a>[Šablona](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+
+Následující fragmenty kódu ukazují, jak nastavit virtuální síť a vytvořit Azure NetApp Files svazek v šabloně Azure Resource Manager (šablona ARM). Instalace virtuální sítě používá prostředek [Microsoft. Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) . Vytvoření svazku používá prostředek [Microsoft. NetApp/netAppAccounts/capacityPools/](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) Volumes. Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
+
+<!-- Block begins with  "type": "Microsoft.Network/virtualNetworks", -->
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="197-229":::
+
+<!-- Block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes", -->
+
 ---
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -379,7 +422,7 @@ Až budete hotovi, a pokud chcete, můžete odstranit skupinu prostředků. Akce
 
 4. Zadejte název skupiny prostředků (myRG1), abyste potvrdili, že chcete trvale odstranit skupinu prostředků a všechny prostředky v ní, a pak klikněte na **Odstranit**.
 
-    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Potvrďte odstranění skupiny prostředků.](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -407,6 +450,13 @@ Až budete hotovi, a pokud chcete, můžete odstranit skupinu prostředků. Akce
     az group delete \
         --name $RESOURCE_GROUP
     ```
+
+# <a name="template"></a>[Šablona](#tab/template)
+
+Žádné
+
+K odstranění skupiny prostředků použijte Azure Portal, PowerShell nebo Azure CLI.   
+
 ---
 
 ## <a name="next-steps"></a>Další kroky  

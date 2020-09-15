@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: f2bf058ddce81ab9f04e97787a4dc93e44036b1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f90d88e49675681a7f73df838ca489a7193955b3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186108"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087856"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Použití runbooků a modulů v Galerii prostředí PowerShell
 
@@ -39,7 +39,7 @@ Níže uvedený seznam obsahuje několik sad Runbook, které podporují běžné
    * [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) -importuje nejnovější verzi všech modulů v účtu Automation z Galerie prostředí PowerShell.
    * [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) – konfiguruje Azure Diagnostics a Log Analytics, aby přijímaly protokoly Azure Automation, které obsahují stav úloh a proudy úloh.
    * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) -kopíruje vzdálený soubor z virtuálního počítače Windows Azure.
-   * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) – zkopíruje místní soubor na virtuální počítač Azure.
+   * [Copy-ItemToAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) – zkopíruje místní soubor na virtuální počítač Azure.
 
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Import Runbooku PowerShellu z Galerie runbooků pomocí Azure Portal
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 240c96016304c009c36485869ac15f5f38076fb7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799798"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088285"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy
 Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače Azure nebo k hybridnímu virtuálnímu počítači připojenému pomocí Azure ARC (Preview) pomocí Azure Policy. Azure Policy vám umožní přiřadit definice zásad, které budou instalovat požadované agenty pro Azure Monitor pro virtuální počítače v prostředí Azure a automaticky povolit monitorování pro virtuální počítače při vytvoření každého virtuálního počítače. Azure Monitor pro virtuální počítače poskytuje funkci, která umožňuje zjistit a opravit nekompatibilní virtuální počítače ve vašem prostředí. Místo toho, abyste pracovali přímo s Azure Policy, použijte tuto funkci.
@@ -21,7 +21,7 @@ Pokud nejste obeznámeni s Azure Policy, získáte stručný úvod k [nasazení 
 > [!NOTE]
 > Pokud chcete používat Azure Policy se službou Azure Virtual Machine Scale Sets nebo pokud chcete pracovat s Azure Policy přímo k povolení virtuálních počítačů Azure, přečtěte si téma [nasazení Azure monitor se škálováním pomocí Azure Policy](../deploy-scale.md#azure-monitor-for-vms).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md).
 - V části [podporované operační systémy](vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
 
@@ -46,7 +46,7 @@ Jedná se o stejnou stránku, abyste přiřadili iniciativu v Azure Policy s tí
 Na stránce **parametry** vyberte **pracovní prostor Log Analytics** , který budou používat všechny virtuální počítače v přiřazení. Pokud chcete pro různé virtuální počítače zadat jiné pracovní prostory, musíte vytvořit několik přiřazení, z nichž každý má vlastní rozsah. 
 
    > [!NOTE]
-   > Pokud je tento pracovní prostor nad rámec přiřazení, udělte Log Analytics oprávnění *Přispěvatel* k ID objektu zabezpečení přiřazení zásad. Pokud to neuděláte, může se zobrazit chyba nasazení, například`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
+   > Pokud je tento pracovní prostor nad rámec přiřazení, udělte Log Analytics oprávnění *Přispěvatel* k ID objektu zabezpečení přiřazení zásad. Pokud to neuděláte, může se zobrazit chyba nasazení, například `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
 [![Pracovní prostor](media/vminsights-enable-at-scale-policy/assignment-workspace.png)](media/vminsights-enable-at-scale-policy/assignment-workspace.png#lightbox)
 
@@ -102,7 +102,7 @@ Chcete-li vytvořit úlohu nápravy pro zmírnění problémů s kompatibilitou,
 
 Klikněte na **opravit** , aby se vytvořila úloha nápravy, a pak ji **napravo** spusťte. Pravděpodobně budete muset vytvořit několik opravných úloh, jednu pro každou definici zásad. Nemůžete vytvořit úlohu nápravy pro iniciativu.
 
-[![Nápravy](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
+[![Snímek obrazovky znázorňující podokno nápravy zásad pro monitor | Virtual Machines.](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
 
 
 Po dokončení opravných úloh by vaše virtuální počítače měly odpovídat agentům nainstalovaným a povoleným pro Azure Monitor pro virtuální počítače. 

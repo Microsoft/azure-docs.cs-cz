@@ -3,18 +3,18 @@ title: Diagnostika a řešení potíží při používání sady .NET SDK služb
 description: K identifikaci, diagnostice a řešení potíží s Azure Cosmos DB při použití sady .NET SDK použijte funkce, jako je protokolování na straně klienta a další nástroje třetích stran.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 06/16/2020
+ms.date: 09/12/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bc5af781b86ef559abaf33b0cb027ef14adb4262
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d7ed48354b3666a3ec544ffb66724bc605041c90
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021897"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086983"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
@@ -28,6 +28,7 @@ Tento článek popisuje běžné problémy, alternativní řešení, diagnostick
 Sada .NET SDK poskytuje logickou reprezentaci na straně klienta pro přístup k Azure Cosmos DB rozhraní SQL API. Tento článek popisuje nástroje a přístupy, které vám pomůžou v případě jakýchkoli problémů.
 
 ## <a name="checklist-for-troubleshooting-issues"></a>Kontrolní seznam pro řešení problémů
+
 Před přesunutím aplikace do produkčního prostředí Vezměte v úvahu následující kontrolní seznam. Při použití kontrolního seznamu se zabrání několik běžných problémů, které byste mohli vidět. Můžete také rychle diagnostikovat situaci, kdy dojde k problému:
 
 *    Použijte nejnovější [sadu SDK](sql-api-sdk-dotnet-standard.md). Sady SDK verze Preview by se neměly používat pro produkční prostředí. Zabráníte tak známým problémům, které již byly opraveny.
@@ -99,10 +100,15 @@ Tato latence může mít několik příčin:
     * Povolí [akcelerované síťové služby na stávajícím virtuálním počítači](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
     * Zvažte použití [vyššího koncového virtuálního počítače](../virtual-machines/windows/sizes.md).
 
-### <a name="slow-query-performance"></a>Pomalý výkon dotazů
-[Metrika dotazu](sql-api-query-metrics.md) vám pomůže určit, kde je dotaz ve většině případů útrat. Z metriky dotazu vidíte, kolik z nich je stráveno na back-endu a klientovi.
+### <a name="common-query-issues"></a>Běžné problémy s dotazy
+
+[Metrika dotazu](sql-api-query-metrics.md) vám pomůže určit, kde je dotaz ve většině případů útrat. Z metriky dotazu vidíte, kolik z nich je stráveno na back-endu a klientovi. Přečtěte si další informace o [řešení potíží s výkonem dotazů](troubleshoot-query-performance.md).
+
 * Pokud se back-end dotaz rychle vrátí, a při kontrole zatížení počítače stráví na klientovi velký čas. Pravděpodobně není dostatek prostředků a sada SDK čeká, až budou prostředky k dispozici pro zpracování odpovědi.
-* Pokud je back-endové dotaz pomalý, zkuste [optimalizovat dotaz](optimize-cost-queries.md) a podívat se na aktuální [zásady indexování](index-overview.md) . 
+* Pokud je back-end dotaz pomalý, zkuste [optimalizovat dotaz](troubleshoot-query-performance.md) a podívat se na aktuální [zásady indexování](index-overview.md) .
+
+    > [!NOTE]
+    > Pro lepší výkon doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní ServiceInterop.dll k analýze a optimalizaci dotazů v místním prostředí. ServiceInterop.dll se podporuje jenom na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispozici, se k získání optimalizovaného dotazu provede další síťové volání brány.
 
 ## <a name="next-steps"></a>Další kroky
 

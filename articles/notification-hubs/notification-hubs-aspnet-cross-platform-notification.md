@@ -5,24 +5,23 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
+editor: thsomasu
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bf9670ae8fd22342a05f8d506f743c7a5c395e5f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017919"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088132"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Odesílání oznámení pro různé platformy pomocí Azure Notification Hubs
 
@@ -38,9 +37,9 @@ Tento článek ukazuje, jak využít výhod šablon k odeslání oznámení, kte
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>Odesílání oznámení pro různé platformy pomocí šablon
 
-V této části se používá vzorový kód, který jste vytvořili v tématu [posílání oznámení pro konkrétní uživatele pomocí kurzu služby Azure Notification Hubs] . Ukázku si můžete stáhnout z [GitHubu](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
+V této části se používá vzorový kód, který jste vytvořili v tématu [posílání oznámení pro konkrétní uživatele pomocí kurzu služby Azure Notification Hubs] . [Kompletní ukázku si můžete stáhnout z GitHubu](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
-Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, proveďte následující kroky:
+Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, udělejte toto:
 
 1. V aplikaci Visual Studio v **Průzkumník řešení**rozbalte složku **řadiče** a pak otevřete soubor *RegisterController.cs* .
 
@@ -77,7 +76,7 @@ Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, proveď
 
     Tento kód volá metodu specifickou pro platformu pro vytvoření registrace šablony namísto nativní registrace. Vzhledem k tomu, že registrace šablon jsou odvozeny z nativních registrací, nemusíte měnit existující registrace.
 
-1. V **Průzkumník řešení**ve složce **Controllers** otevřete soubor *NotificationsController.cs* . Nahraďte metodu `Post` následujícím kódem:
+1. V **Průzkumník řešení**ve složce **Controllers** otevřete soubor **NotificationsController.cs** . Nahraďte metodu `Post` následujícím kódem:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 72f90918afa275e56528016539ecb2eec93d5db0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79082808"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090087"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Kurz: vytvoření grafu metrik v Azure Monitor
 Průzkumník metrik je funkce Azure Monitor v Azure Portal, která umožňuje vytvářet grafy z hodnot metriky, vizuálně sladit trendy a zkoumat špičky a neshodné hodnoty metriky. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašich prostředků Azure nebo vykreslit grafy z vlastních metrik. 
@@ -27,7 +27,7 @@ Následuje video, které zobrazuje rozsáhlejší scénář, než postup uveden�
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, které podporuje metriky. Chcete-li zjistit, zda prostředek podporuje metriky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v této nabídce v části **monitorování** k dispozici možnost **metriky** .
 
@@ -52,7 +52,7 @@ Můžete otevřít Průzkumníka metrik buď z nabídky Azure Monitor, nebo z na
 
 4. Volitelně můžete změnit **agregaci**metriky. To definuje, jak se hodnoty metriky agregují napříč časovými rozlišeními grafu. Pokud je například časové rozlišení nastaveno na 15 minut a agregace je nastavena na součet, pak každý bod v grafu bude součtem všech shromážděných hodnot za každých 15 minut segmentů.
 
-    ![Graf](media/tutorial-metrics-explorer/chart.png)
+    ![Snímek obrazovky zobrazuje graf s názvem součet příchozího přenosu dat pro contosoretailweb.](media/tutorial-metrics-explorer/chart.png)
 
 5. Použijte tlačítko **Přidat metriku** a opakujte tyto kroky, pokud chcete zobrazit více metrik vykreslených ve stejném grafu. U více grafů v jednom zobrazení vyberte tlačítko **Nový graf** .
 

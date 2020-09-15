@@ -1,66 +1,75 @@
 ---
-title: Přečtěte si, jak přesunout Azure Cosmos DB účet do jiné oblasti.
-description: Přečtěte si, jak přemístit účet Azure Cosmos DB do jiné oblasti.
+title: Přesunutí účtu Azure Cosmos DB do jiné oblasti
+description: Přečtěte si, jak přesunout Azure Cosmos DB účet do jiné oblasti.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 60c28a96008355491c058cd08dbbb3a1cbffad98
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: b34bc81f48b806b1016fbbd19d3ebc8bfef908c2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059247"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090529"
 ---
-# <a name="how-to-move-an-azure-cosmos-db-account-to-another-region"></a>Postup přesunutí účtu Azure Cosmos DB do jiné oblasti
+# <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Přesunutí účtu Azure Cosmos DB do jiné oblasti
 
-Tento článek popisuje, jak přesunout oblast, kde jsou data replikována v Azure Cosmos DB nebo jak migrovat metadata účtu (Azure Resource Manager) a také data z jedné oblasti do druhé.
+Tento článek popisuje, jak:
+
+- Přesuňte oblast, kde jsou data replikována v Azure Cosmos DB.
+- Migrujte metadata a data účtu (Azure Resource Manager) z jedné oblasti do druhé.
 
 ## <a name="move-data-from-one-region-to-another"></a>Přesunout data z jedné oblasti do druhé
 
-Azure Cosmos DB podporuje replikaci dat nativně, takže přesouvání dat z jedné oblasti do druhé je jednoduché a dá se provést pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI a zahrnuje následující kroky:
+Azure Cosmos DB podporuje replikaci dat nativně, takže přesun dat z jedné oblasti do druhé je jednoduchý. Můžete to provést pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Zahrnuje následující kroky:
 
-1. Přidat k účtu novou oblast
+1. Přidejte k účtu novou oblast.
 
-    Postup přidání nové oblasti na účet Azure Cosmos DB najdete v tématu [Přidání nebo odebrání oblastí pro Azure Cosmos DB účet](how-to-manage-database-account.md#addremove-regions-from-your-database-account) .
+    Chcete-li přidat novou oblast do účtu Azure Cosmos DB, přečtěte si téma [Přidání nebo odebrání oblastí pro účet Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account).
 
-1. Provedení ručního převzetí služeb při selhání v nové oblasti
+1. Proveďte ruční převzetí služeb při selhání do nové oblasti.
 
-    V situacích, kdy je oblast, kterou odebíráte, aktuálně oblast zápisu pro účet, bude nutné iniciovat převzetí služeb při selhání do nové oblasti přidané výše. Jedná se o operaci s nulovou výpadkou. Pokud přesouváte oblast čtení v účtu s více oblastmi, můžete tento krok přeskočit. Postup pro zahájení převzetí služeb při selhání [v účtu Azure Cosmos provedení ručního převzetí služeb při selhání](how-to-manage-database-account.md#manual-failover)
+    Když je oblast, která se odebírá, aktuálně oblast zápisu pro účet, bude nutné spustit převzetí služeb při selhání do nové oblasti přidané v předchozím kroku. Jedná se o operaci s nulovou dobou výpadku. Pokud přesouváte oblast čtení v účtu s více oblastmi, můžete tento krok přeskočit. 
+    
+    Pokud chcete spustit převzetí služeb při selhání, přečtěte si téma [ruční převzetí služeb při selhání v účtu Azure Cosmos](how-to-manage-database-account.md#manual-failover)
 
-1. Odebrat původní oblast
+1. Odeberte původní oblast.
 
-    Postup odebrání oblasti z Azure Cosmos DB účtu najdete v tématu [Přidání nebo odebrání oblastí pro Azure Cosmos DB účet](how-to-manage-database-account.md#addremove-regions-from-your-database-account) .
+    Pokud chcete odebrat oblast z Azure Cosmos DB účtu, přečtěte si téma [Přidání nebo odebrání oblastí ze svého účtu Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account).
 
-## <a name="migrate-azure-cosmos-db-account-meta-data"></a>Migrace metadat Azure Cosmos DB účtu
+## <a name="migrate-azure-cosmos-db-account-metadata"></a>Migrace metadat Azure Cosmos DB účtu
 
-Azure Cosmos DB neumožňuje nativně migrovat metadata metadat účtu z jedné oblasti do druhé. Chcete-li migrovat metadata účtu a zákaznická data z jedné oblasti do druhé, musí být v požadované oblasti vytvořen nový účet a data musí být zkopírována ručně. Téměř nulová migrace výpadku pro SQL API vyžaduje použití [ChangeFeed](change-feed.md) nebo nástroje, který ho využívá. Pokud migrujete rozhraní API MongoDB, Cassandra nebo jiné rozhraní API nebo získáte další informace o možnostech při migraci dat mezi účty, podívejte se na [Možnosti migrace místních nebo cloudových dat na Azure Cosmos DB](cosmosdb-migrationchoices.md). Následující postup ukazuje, jak migrovat účet Azure Cosmos DB pro rozhraní SQL API a jeho data z jedné oblasti do druhé:
+Azure Cosmos DB neumožňuje nativně migrovat metadata účtu z jedné oblasti do druhé. Pokud chcete migrovat metadata účtu i zákaznická data z jedné oblasti do druhé, musíte v požadované oblasti vytvořit nový účet a potom data zkopírovat ručně. 
 
-1. Vytvoření nového účtu Azure Cosmos DB v požadované oblasti
+Migrace v blízkosti nulového výpadku pro rozhraní SQL API vyžaduje použití [kanálu změn](change-feed.md) nebo nástroje, který ho používá. Pokud migrujete rozhraní MongoDB API, rozhraní API Cassandra nebo jiné rozhraní API, nebo pokud chcete získat další informace o možnostech migrace dat mezi účty, přečtěte si téma [Možnosti migrace místních nebo cloudových dat do Azure Cosmos DB](cosmosdb-migrationchoices.md). 
 
-    Pokud chcete vytvořit nový účet prostřednictvím Azure Portal, PowerShellu nebo rozhraní příkazového řádku, přečtěte si téma [Vytvoření účtu Azure Cosmos DB](how-to-manage-database-account.md#create-an-account).
+Následující kroky ukazují, jak migrovat účet Azure Cosmos DB pro rozhraní SQL API a jeho data z jedné oblasti do druhé:
 
-1. Vytvoření nové databáze a kontejneru
+1. Vytvořte nový účet Azure Cosmos DB v požadované oblasti.
 
-    Postup vytvoření nové databáze a kontejneru najdete v tématu [vytvoření kontejneru Azure Cosmos](how-to-create-container.md) .
+    Pokud chcete vytvořit nový účet prostřednictvím Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure, přečtěte si téma [Vytvoření účtu Azure Cosmos DB](how-to-manage-database-account.md#create-an-account).
 
-1. Migrace dat pomocí nástroje Azure Cosmos DB Live data migrační Tool
+1. Vytvoří novou databázi a kontejner.
 
-    Migrace dat s téměř nulovým výpadkem najdete v tématu [Azure Cosmos DB Nástroj pro migraci živých dat](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)
+    Pokud chcete vytvořit novou databázi a kontejner, přečtěte si téma [vytvoření kontejneru Azure Cosmos](how-to-create-container.md).
 
-1. Aktualizovat připojovací řetězec aplikace
+1. Migrujte data pomocí nástroje Azure Cosmos DB živým nástrojem pro migraci dat.
 
-    Když je nástroj Live migrační stále spuštěný, aktualizujte informace o připojení v novém nasazení vašich aplikací. Koncové body a klíče pro vaši aplikaci lze načíst z Azure Portal.
+    Pokud chcete migrovat data s téměř nulovým výpadkem, přečtěte si téma [Azure Cosmos DB Nástroj pro migraci živých dat](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator).
 
-    :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze NoSQL":::
+1. Aktualizujte připojovací řetězec aplikace.
 
-1. Přesměrovat požadavky do nové aplikace
+    Když je stále spuštěn nástroj pro migraci živých dat, aktualizujte informace o připojení v novém nasazení aplikace. Můžete načíst koncové body a klíče pro vaši aplikaci z Azure Portal.
 
-    Jakmile je nová aplikace připojená k Azure Cosmos DB můžete přesměrovat požadavky klientů na nové nasazení.
+    :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Řízení přístupu v Azure Portal, které demonstruje zabezpečení databáze NoSQL.":::
 
-1. Odstranit prostředky, které už nepotřebujete
+1. Přesměruje požadavky na novou aplikaci.
+
+    Po připojení nové aplikace k Azure Cosmos DB můžete přesměrovat požadavky klientů na nové nasazení.
+
+1. Odstraňte všechny prostředky, které už nepotřebujete.
 
     Po úplném přesměrování požadavků na novou instanci můžete odstranit starý účet Azure Cosmos DB a nástroj pro migraci živých dat.
 

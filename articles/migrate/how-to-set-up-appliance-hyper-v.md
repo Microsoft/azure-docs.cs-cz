@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pro Hyper-V
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů Hyper-V.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 21d88c4a2b2095fe677fe479bd7320f7a494db9e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c53f82268bd1a5d94659a8b749a14fd026f91ce1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929913"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087146"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
 
@@ -59,7 +59,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro virtuální pevný disk.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  U zařízení verze 2.19.11.12 by se měla vygenerovaná hodnota hash shodovat s tímto [nastavením](./tutorial-assess-hyper-v.md#verify-security).
+
 
 
 

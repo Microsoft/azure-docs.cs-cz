@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b337065f125d12e309dd1f7fcc56c2af72b1c28c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874227"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088353"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Kurz: Začínáme s Log Analytics dotazy
 
@@ -42,7 +42,7 @@ Pokud používáte Azure Monitor ke shromažďování dat protokolu aspoň na je
 
 Tabulky schématu se zobrazí na kartě **tabulky** v pracovním prostoru Log Analytics. Tabulky obsahují sloupce, z nichž každý má datový typ zobrazený ikonou vedle názvu sloupce. Například tabulka **událostí** obsahuje textové sloupce, jako je například **počítač** a číselné sloupce, například **EventCategory**.
 
-![Schéma](media/get-started-portal/schema.png)
+![Snímek obrazovky se stránkou s protokoly Azure Portal s novým dotazem. zvýrazní se podokno tabulky s možností počítač a EventCategory.](media/get-started-portal/schema.png)
 
 ## <a name="write-and-run-basic-queries"></a>Zápis a spouštění základních dotazů
 
@@ -120,7 +120,7 @@ Filtrování výsledků dotazu pro filtrování `Event` výsledků dotazu na **c
    
 1. Vyberte **Filtr**.
    
-   ![Filtr](media/get-started-portal/filter.png)
+   ![Snímek obrazovky zobrazuje tabulku výsledků s místní nabídkou pro filtrování výsledků pomocí EventLevelName.](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Řazení, seskupení a výběr sloupců
 Pokud chcete výsledky dotazu seřadit podle konkrétního sloupce, jako je například **TimeGenerated [UTC]**, vyberte záhlaví sloupce. Znovu vyberte záhlaví, které chcete přepínat mezi vzestupném a sestupným pořadím.
@@ -129,7 +129,7 @@ Pokud chcete výsledky dotazu seřadit podle konkrétního sloupce, jako je nap�
 
 Další možností uspořádání výsledků je seskupení. Chcete-li seskupit výsledky podle konkrétního sloupce, přetáhněte záhlaví sloupce na pruh nad tabulkou výsledků popisek **přetáhněte záhlaví sloupce a přetáhněte ho sem pro seskupení podle daného sloupce**. Pokud chcete vytvořit podskupiny, přetáhněte na horní pruh jiné sloupce. Můžete změnit uspořádání hierarchie a třídění skupin a podskupin na panelu.
 
-![Skupiny](media/get-started-portal/groups.png)
+![Snímek obrazovky zobrazuje výsledky dotazu s podskupinami pro EventLevelName a počítač.](media/get-started-portal/groups.png)
 
 Chcete-li skrýt nebo zobrazit sloupce ve výsledcích, vyberte **sloupce** nad tabulkou a v rozevíracím seznamu vyberte nebo zrušte výběr sloupců, které chcete.
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b68d4779d33d2f8a1f1c2bae35f438ad2ccccabb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505835"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090070"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure
 
@@ -84,7 +84,7 @@ Data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protok
     > [!NOTE]
     > Pokud jste protokoly otevřeli z nabídky Azure Monitor, obor se nastaví na pracovní prostor Log Analytics. V takovém případě budou všechny dotazy zahrnovat všechny záznamy v pracovním prostoru.
    
-    ![Protokoly](media/tutorial-resource-logs/logs.png)
+    ![Snímek obrazovky se zobrazí v protokolech pro aplikaci logiky, ve které se zvýrazní nový dotaz s názvem aplikace logiky.](media/tutorial-resource-logs/logs.png)
 
 4. Služba uvedená v příkladu zapisuje protokoly prostředků do tabulky **AzureDiagnostics** , ale další služby mohou zapisovat do jiných tabulek. Seznamte se s [podporovanými službami, schématy a kategoriemi pro protokoly prostředků Azure](../platform/resource-logs-schema.md) pro tabulky používané různými službami Azure.
 

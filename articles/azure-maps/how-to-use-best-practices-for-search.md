@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ec2b971941f460522046d56cd097ede15a3bdcbe
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400700"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086330"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Osvědčené postupy pro Azure Maps Search Service
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak použít zvukové postupy při volání dat z Az
 > * Informace o rozdílech mezi typy výsledků
 > * Přečíst strukturu hledání adres – odpověď
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -426,7 +426,7 @@ query=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 Můžete použít následující metody.
 
 JavaScript nebo TypeScript:
-```Javascript
+```javascript
 encodeURIComponent(query)
 ```
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: b9478d3b171189decb4e2cca7fc93ba2fa75e32e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: f1a29866715c746e7a7eef82f11237bcbd159925
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482778"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086823"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky se dvěma sadami ověřovacích přihlašovacích údajů
 
@@ -204,7 +204,7 @@ az storage account keys list -n akvrotationstorage
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
 ## <a name="learn-more"></a>Další informace
-- Přehled: [Key Vault monitorování pomocí Azure Event Grid (Preview)](../general/event-grid-overview.md)
+- Přehled: [monitorování Key Vault s](../general/event-grid-overview.md) využitím Azure Event Grid
 - Postupy: [Vytvoření první funkce v Azure Portal](../../azure-functions/functions-create-first-azure-function.md)
 - Postupy: [příjem e-mailu, když se změní tajný kód trezoru klíčů](../general/event-grid-logicapps.md)
-- [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid schéma událostí pro Azure Key Vault](../../event-grid/event-schema-key-vault.md)

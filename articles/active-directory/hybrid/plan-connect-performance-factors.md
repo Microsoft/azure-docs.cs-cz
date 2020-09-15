@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279580"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087005"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon nástroje Azure AD Connect
 
@@ -41,7 +41,7 @@ Azure AD Connect synchronizuje vaši službu Active Directory s Azure AD. Tento 
 
 Následující diagram znázorňuje architekturu zřizování modulu zřizování, která se připojuje k jedné doménové struktuře, i když je podporováno více doménových struktur. Tato architektura ukazuje, jak různé komponenty vzájemně komunikují.
 
-![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![Diagram znázorňuje způsob interakce připojených adresářů a Azure AD Connect modulu zřizování, včetně prostoru konektoru a komponent úložiště metaverse v SQL Database. ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
 Zřizovací modul se připojuje ke každé doménové struktuře služby Active Directory a ke službě Azure AD. Proces čtení informací z jednotlivých adresářů se nazývá import. Export odkazuje na aktualizaci adresářů z modulu zřizování. Synchronizace vyhodnocuje pravidla způsobu, jakým objekty budou procházet uvnitř modulu zřizování. Pro hlubší podrobně se můžete podívat na [Azure AD Connect synchronizace: Princip architektury](./concept-azure-ad-connect-sync-architecture.md).
 

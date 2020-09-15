@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f65bf2bbe174ff90d5a0b962768833b8668f6400
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9bf656989dc331fdd4ce044126ea9d0be9414930
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019712"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088795"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Zabránit autorizaci sdíleného klíče pro účet Azure Storage (Preview)
 
@@ -216,7 +216,7 @@ Některé nástroje Azure nabízejí možnost použít pro přístup k Azure Sto
 | portál Azure | Podporuje se. Informace o autorizaci účtu Azure AD z Azure Portal najdete v tématu [Volba způsobu autorizace přístupu k datům objektů BLOB v Azure Portal](../blobs/authorize-blob-access-portal.md). |
 | AzCopy | Podporováno pro úložiště objektů BLOB. Informace o autorizaci operací AzCopy najdete v tématu [Volba způsobu poskytování přihlašovacích údajů pro autorizaci](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) v dokumentaci k AzCopy. |
 | Azure Storage Explorer | Podporováno pouze pro úložiště objektů BLOB a Azure Data Lake Storage Gen2. Přístup z Azure AD do úložiště Queue není podporovaný. Ujistěte se, že jste vybrali správného tenanta Azure AD. Další informace najdete v tématu [Začínáme s Průzkumník služby Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) . |
-| Azure PowerShell | Podporuje se. Informace o tom, jak autorizovat příkazy PowerShellu pomocí Azure AD pro přístup k datům BLOB a Queue, najdete v tématu [spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB nebo front](authorize-active-directory-powershell.md). |
+| Azure PowerShell | Podporuje se. Informace o tom, jak autorizovat příkazy PowerShellu pro operace objektů BLOB a front s Azure AD, najdete v tématu [spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB](../blobs/authorize-active-directory-powershell.md) nebo [spuštěním příkazů PowerShellu s přihlašovacími údaji služby Azure AD pro přístup k datům](../queues/authorize-active-directory-powershell.md) |
 | Azure CLI | Podporuje se. Informace o tom, jak autorizovat příkazy rozhraní příkazového řádku Azure pomocí Azure AD pro přístup k datům BLOB a Queue, najdete v tématu [spuštění příkazů rozhraní příkazového řádku Azure s přihlašovacími údaji Azure AD pro přístup k datům BLOB nebo Queue](authorize-data-operations-cli.md). |
 | Azure IoT Hub | Podporuje se. Další informace najdete v tématu [podpora IoT Hub pro virtuální sítě](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell je integrované prostředí v Azure Portal. Azure Cloud Shell hostuje soubory pro trvalost ve sdílené složce Azure v účtu úložiště. Tyto soubory budou nepřístupné, pokud pro tento účet úložiště není povolená autorizace sdíleného klíče. Další informace najdete v tématu [připojení úložiště Microsoft Azurech souborů](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Pokud chcete spouštět příkazy v Azure Cloud Shell ke správě účtů úložiště, pro které je přístup ke sdíleným klíčům zakázaný, nejdřív se ujistěte, že jste k těmto účtům udělili potřebná oprávnění prostřednictvím řízení přístupu na základě role (RBAC). Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md). |

@@ -9,14 +9,14 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: afe7d5ce3dd1756ddb9e33fe402fb2eb699ce8f7
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007413"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086772"
 ---
-# <a name="fetch-shared-access-signature-tokens-in-code"></a>Načtení tokenů sdíleného přístupového podpisu v kódu
+# <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>Vytvoření definice SAS a načtení tokenů sdíleného přístupového podpisu v kódu
 
 Svůj účet úložiště můžete spravovat pomocí tokenů sdíleného přístupového podpisu (SAS) uložených v trezoru klíčů. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí SAS](../../storage/common/storage-sas-overview.md).
 
@@ -41,9 +41,9 @@ Po vytvoření definice SAS můžete načíst tokeny SAS jako tajné klíče pom
 
 Pokud se brzo vyprší platnost tokenu sdíleného přístupového podpisu, můžete znovu načíst stejný tajný klíč, abyste vygenerovali nový.
 
+Návod, jak použít načtený z Key Vault token SAS pro přístup ke službám Azure Storage, najdete v tématu [použití SAS účtu pro přístup k BLOB Service](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si, jak [udělit omezený přístup k prostředkům Azure Storage pomocí SAS](../../storage/common/storage-sas-overview.md).
 - Naučte se [spravovat klíče účtu úložiště pomocí Key Vault a Azure CLI](overview-storage-keys.md) nebo [Azure PowerShell](overview-storage-keys-powershell.md).
-- Podívejte se na kompletní ukázku [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) .
-- Další [ukázky Key Vault](https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault)
 - Viz [ukázky klíčů spravovaného účtu úložiště](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=) .

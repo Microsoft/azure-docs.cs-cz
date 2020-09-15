@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7d45adc10a84af2cf1e5bfddd09c990e53a9f7e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035947"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086347"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
 Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykreslovat mapy a vložené Azure Maps funkce do vaší webové nebo mobilní aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít Ovládací prvek Mapa na webové stránce, musíte mít jeden z následujících požadavků:
 
@@ -251,6 +251,15 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
 Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL na `atlas.azure.us` . Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na `https://atlas.azure.us/search/` .
+
+## <a name="javascript-frameworks"></a>Rozhraní JavaScript
+
+Při vývoji pomocí JavaScriptu rozhraní může být užitečné jeden z následujících open-source projektů:
+
+- [NG-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -úhlová Obálka kolem Azure Maps.
+- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – komponenta Azure Maps Blazor.
+- [Azure Maps reagující na komponentu](https://github.com/WiredSolutions/react-azure-maps) – reakce na reakci ovládacího prvku Azure Maps.
+- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – komponenta Azure Maps pro aplikaci Vue.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 005068c8e81adb9a79a4e6dc7e86a9bfb39902a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505818"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088625"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -42,13 +42,13 @@ Všechna data shromážděná Azure Monitor se vejdou do jednoho ze dvou základ
 
 V případě mnoha prostředků Azure uvidíte data shromážděná Azure Monitor přímo na stránce s přehledem v Azure Portal. Podívejte se na libovolný virtuální počítač a zobrazí se několik grafů, které zobrazují metriky výkonu. Kliknutím na kterýkoli z grafů otevřete data v [Průzkumníku metrik](platform/metrics-charts.md) v Azure Portal, což umožňuje v průběhu času seřadí hodnoty více metrik.  Grafy můžete interaktivně zobrazit nebo připnout na řídicí panel, abyste je viděli s ostatními vizualizacemi.
 
-![Metriky](media/overview/metrics.png)
+![Diagram zobrazuje data metrik do Průzkumník metrik, která se mají použít ve vizualizacích.](media/overview/metrics.png)
 
 Data protokolu shromážděná pomocí Azure Monitor lze analyzovat pomocí [dotazů](log-query/log-query-overview.md) pro rychlé načítání, konsolidaci a analýzu shromážděných dat.  Můžete vytvářet a testovat dotazy pomocí [Log Analytics](./log-query/log-query-overview.md) v Azure Portal a pak buď přímo analyzovat data pomocí různých nástrojů, nebo ukládat dotazy pro použití s [vizualizacemi](visualizations.md) nebo [pravidly výstrah](platform/alerts-overview.md).
 
 Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/) , kterou používá služba Azure Průzkumník dat, která je vhodná pro jednoduché dotazy protokolů, ale zahrnuje i pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Dotazovací jazyk můžete rychle zjistit pomocí [více lekcí](log-query/get-started-queries.md).  Pro uživatele, kteří již znají [SQL](log-query/sql-cheatsheet.md) a [Splunk](log-query/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
 
-![Protokoly](media/overview/logs.png)
+![Diagram znázorňuje data protokolů, která se přenášejí do Log Analytics pro účely analýzy.](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Jaká data shromažďuje služba Azure Monitor?
 
@@ -103,12 +103,12 @@ Kromě toho, že vám umožní interaktivně analyzovat data monitorování, efe
 
 Pravidla výstrah v Azure Monitor používají [skupiny akcí](platform/action-groups.md), které obsahují jedinečné sady příjemců a akcí, které je možné sdílet v rámci více pravidel. V závislosti na vašich požadavcích můžou skupiny akcí provádět takové akce jako s použitím webhooků, aby výstrahy spouštěly externí akce nebo prováděly integraci s nástroji ITSM.
 
-![Výstrahy](media/overview/alerts.png)
+![Snímek obrazovky zobrazuje výstrahy v Azure Monitor se závažnostmi, celkovými výstrahami a dalšími informacemi.](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>Automatické škálování
 Automatické škálování umožňuje mít ke zpracování zatížení vaší aplikace správné množství prostředků, na kterých běží. Umožňuje vytvořit pravidla, která používají metriky shromážděná Azure Monitor k určení, kdy se mají automaticky přidávat prostředky, které se budou zvyšovat zatížením, a také ušetřit peníze odebráním nečinných prostředků. Zadáte minimální a maximální počet instancí a logiku, kdy chcete zvýšit nebo snížit prostředky.
 
-![Automatické škálování](media/overview/autoscale.png)
+![Diagram znázorňuje automatické škálování s několika servery na řádku s názvem procesor čas > 80% a dva servery s označením minimální, tři servery jako aktuální kapacitu a pět jako maximum.](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>Vizualizace dat monitorování
 [Vizualizace](visualizations.md) , jako jsou grafy a tabulky, jsou efektivní nástroje pro shrnutí dat monitorování a jejich prezentaci různým cílovým skupinám. Azure Monitor má své vlastní funkce pro vizualizaci dat monitorování a využívá další služby Azure pro jejich publikování do různých cílových skupin.
@@ -116,12 +116,12 @@ Automatické škálování umožňuje mít ke zpracování zatížení vaší ap
 ### <a name="dashboards"></a>Řídicí panely
 [Řídicí panely Azure](../azure-portal/azure-portal-dashboards.md) umožňují kombinovat různé druhy dat, včetně obou metrik a protokolů, do jednoho podokna v [Azure Portal](https://portal.azure.com). Volitelně můžete řídicí panel sdílet s dalšími uživateli Azure. Prvky v rámci Azure Monitor lze přidat do řídicího panelu Azure kromě výstupu jakýchkoli dotazů protokolu nebo grafu metrik. Můžete například vytvořit řídicí panel, který kombinuje dlaždice, které zobrazují graf metrik, tabulku protokolů aktivit, graf využití z Application Insights a výstup dotazu protokolu.
 
-![Řídicí panel](media/overview/dashboard.png)
+![Snímek obrazovky ukazuje řídicí panel Azure, který zahrnuje dlaždice aplikace a zabezpečení spolu s dalšími přizpůsobitelnými informacemi.](media/overview/dashboard.png)
 
 ### <a name="views"></a>Zobrazení
 [Zobrazení](./platform/view-designer.md) vizuálně prezentují data protokolu v Azure monitor.  Každé zobrazení obsahuje jednu dlaždici, která se podrobněji rozpíná na kombinaci vizualizací, jako jsou například pruhové a spojnicové grafy, včetně shrnutí důležitých dat.  Mezi řešení monitorování patří zobrazení, která shrnují data pro konkrétní aplikaci, a můžete si vytvořit vlastní zobrazení, která budou prezentovat data z jakéhokoli dotazu protokolu. Podobně jako jiné prvky v Azure Monitor mohou být zobrazení přidána do řídicích panelů Azure.
 
-![Zobrazit](media/overview/view.png)
+![Snímek obrazovky zobrazuje dlaždici pro řešení monitorování kontejnerů a podrobné zobrazení, které se otevře, pokud vyberete dlaždici.](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) je služba obchodní analýzy, která poskytuje interaktivní vizualizace napříč různými zdroji dat a je účinným prostředkem k zpřístupnění dat ostatním v rámci vaší organizace i mimo ni. Power BI můžete nakonfigurovat tak, aby [automaticky importovala data protokolu z Azure monitor](./platform/powerbi.md) a využila tyto další vizualizace.

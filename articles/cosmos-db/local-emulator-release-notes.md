@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: f8df1a62ace8a1f094a708b752e175f3299d0ee0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 268470f846f31e3577b12c217ddcb3c128136101
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053170"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086636"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 
@@ -24,13 +24,14 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 |**Stažení MSI**|[Stažení softwaru společnosti Microsoft](https://aka.ms/cosmosdb-emulator)|
 |**Začínáme**|[Místní vývoj pomocí emulátoru Azure Cosmos](local-emulator.md)|
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
 
 ### <a name="2115-08232020"></a>2.11.5 (08/23/2020)
 
-- Tato verze přidává dvě nové možnosti spuštění emulátoru Cosmos: 
-* "/EnablePreview" – povoluje funkce ve verzi Preview pro emulátor Cosmos; Jedná se o funkce, které jsou pořád vyvíjené a dají se k nim přihlašovat prostřednictvím CI a psaní ukázek.
-* "/EnableAadAuthentication" – umožňuje emulátoru Cosmos přijímat vlastní tokeny AAD jako alternativu k hlavním klíčům Cosmos. Tato funkce je stále ve vývoji; konkrétní přiřazení rolí a další nastavení související s oprávněními nejsou v tuto chvíli podporována.
+Tato verze přidává dvě nové možnosti spuštění emulátoru Cosmos: 
+
+* "/EnablePreview" – povoluje funkce ve verzi Preview pro emulátor. Funkce verze Preview, které jsou stále ve vývoji, a ke kterým lze přistupovat prostřednictvím CI a psaní vzorků.
+* "/EnableAadAuthentication" – umožňuje emulátoru přijímat vlastní tokeny AAD jako alternativu k hlavním klíčům Azure Cosmos. Tato funkce je stále ve vývoji; konkrétní přiřazení rolí a další nastavení související s oprávněními nejsou aktuálně podporována.
 
 ### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
 

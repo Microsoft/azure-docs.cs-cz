@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f24a04db9317083fb47c0956174e649b5bd7ae10
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815687"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090512"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps projekty open-source v komunitě
 
@@ -29,13 +29,19 @@ Následující seznam obsahuje nejoblíbenější Azure Maps open source projekt
 | [Rozhraní bot Framework – bod zájmu s zajímavou znalostí](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Bod zájmu dovedností poskytuje POI související možnosti pro virtuální asistenta pomocí Azure Maps s Azure Bot Service a robotovou architekturou. |
 | [Umístění BotBuilder](https://github.com/Microsoft/BotBuilder-Location) | Řídicí panel pro výběr zdrojového umístění pro Microsoft bot Framework, který využívá služby Bing Maps. |
 
+<a name="open-web-sdk-modules"></a>
+
 **Otevřené moduly web SDK**
 
 Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps webové sady SDK.
 
 | Název projektu | Popis |
 |-|-|
-| [Modul animace Azure Maps](https://github.com/Azure-Samples/azure-maps-animations)| Bohatá knihovna animací pro použití s Azure Maps Web SDK |
+| [Modul animace Azure Maps](https://github.com/Azure-Samples/azure-maps-animations) | Bohatá knihovna animací pro použití s Azure Maps Web SDK |
+| [Azure Maps řídicí modul geografického umístění](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Azure Maps modul webové sady SDK, který poskytuje ovládací prvek, který používá rozhraní API geografického umístění v prohlížeči k vyhledání uživatele na mapě. |
+| [Azure Maps modul řízení na celé obrazovce](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Azure Maps modul webové sady SDK, který poskytuje ovládacímu prvku zobrazení mapy v celoobrazovkovém režimu. |
+| [Modul řízení výběru Azure Maps](https://github.com/Azure-Samples/azure-maps-selection-control) | Azure Maps modul webové sady SDK, který poskytuje ovládací prvky pro výběr dat ve zdroji dat pomocí nástrojů pro kreslení nebo požádá mnohoúhelník na rozsah tras. |
+| [Mapový modul Azure Maps Sync](https://github.com/Azure-Samples/azure-maps-sync-maps) | Azure Maps modul webové sady SDK, který synchronizuje fotoaparáty dvou nebo více map. |
 | [Modul uživatelského rozhraní Azure Maps Services](https://github.com/Azure-Samples/azure-maps-services-ui) | Sada ovládacích prvků webového uživatelského rozhraní, která zabalí služby Azure Maps REST. |
 
 **ukázky**

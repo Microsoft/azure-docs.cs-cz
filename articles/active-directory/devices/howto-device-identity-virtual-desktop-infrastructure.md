@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259349"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089662"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -48,16 +48,16 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 
 | Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporováno |
 | --- | --- | --- | --- | --- |
-| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
+| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
 |   |   | Aktuální Windows | Bez trvalého přihlášení | Ano<sup>5</sup> |
 |   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
-|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
+|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
 |   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
-| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
-|   | Spravované | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
+| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
+|   | Spravované | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
 | Registrováno v Azure AD | Federované/spravované | Windows Current/Windows nižší úrovně | Trvalá/netrvalá | Neuvedeno |
 
 <sup>1</sup> **Aktuální zařízení Windows** reprezentují Windows 10, Windows Server 2016 a Windows Server 2019.

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: bfb7c94f1a29eaaf849dbf18a2b6137102617be8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a9e563f32f2b8f38af7ab86be82cd18ef1c2309c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986843"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088389"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,13 +73,13 @@ Autorizace odkazuje na oprávnění přiřazená uživateli v rámci databáze v
 
 Osvědčeným postupem je v případě potřeby vytvořit vlastní role. Přidejte uživatele do role s nejnižšími oprávněními potřebnými k provedení jejich pracovní funkce. Nepřiřazujte oprávnění přímo uživatelům. Účet správce serveru je členem předdefinované role db_owner, která má rozsáhlá oprávnění a měla by být udělována pouze malým uživatelům s administrativními cly. Pro aplikace použijte příkaz [Spustit jako](/sql/t-sql/statements/execute-as-clause-transact-sql) a určete kontext spuštění volaného modulu nebo použijte [aplikační role](/sql/relational-databases/security/authentication-access/application-roles) s omezenými oprávněními. Tento postup zajišťuje, že aplikace, která se připojuje k databázi, má nejnižší oprávnění, která aplikace potřebuje. Tyto osvědčené postupy také podporují oddělení povinností.
 
-### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
+### <a name="row-level-security"></a>Zabezpečení na úrovni řádků
 
 Zabezpečení na úrovni řádků umožňuje zákazníkům řídit přístup k řádkům v databázové tabulce na základě charakteristik uživatele, který spouští dotaz (například členství ve skupině nebo kontext spuštění). Zabezpečení na úrovni řádků lze také použít k implementaci vlastních konceptů zabezpečení na základě popisků. Další informace najdete v tématu [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security).
 
 ![azure-database-rls.png](./media/security-overview/azure-database-rls.png)
 
-## <a name="threat-protection"></a>Ochrana před internetovými útoky
+## <a name="threat-protection"></a>Ochrana před hrozbami
 
 SQL Database a SQL spravované instance zabezpečují data zákazníků tím, že poskytují možnosti auditování a detekce hrozeb.
 
@@ -89,7 +89,7 @@ SQL Database a auditování spravované instance SQL sleduje aktivity databáze 
 
 ### <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
 
-Rozšířená ochrana před internetovými útoky analyzuje protokoly a detekuje neobvyklé chování a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Výstrahy se vytvářejí pro podezřelé aktivity, jako je například injektáže SQL, potenciální defiltrace dat a útoky hrubou silou nebo pro anomálie ve vzorech přístupu, aby bylo možné zachytit eskalace oprávnění a porušení přihlašovacích údajů. Výstrahy se zobrazují z [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření, která jsou k dispozici, a s akcemi pro zmírnění hrozby. Rozšířená ochrana před internetovými útoky se dá pro jednotlivé servery povolit za další poplatek. Další informace najdete v tématu [Začínáme s SQL Database rozšířené ochrany před internetovými útoky](threat-detection-configure.md).
+Rozšířená ochrana před internetovými útoky analyzuje protokoly a detekuje neobvyklé chování a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Výstrahy se vytvářejí pro podezřelé aktivity, jako je například injektáže SQL, potenciální defiltrace dat a útoky hrubou silou nebo pro anomálie ve vzorech přístupu, aby bylo možné zachytit eskalace oprávnění a porušení přihlašovacích údajů. Výstrahy se zobrazují z  [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření, která jsou k dispozici, a s akcemi pro zmírnění hrozby. Rozšířená ochrana před internetovými útoky se dá pro jednotlivé servery povolit za další poplatek. Další informace najdete v tématu [Začínáme s SQL Database rozšířené ochrany před internetovými útoky](threat-detection-configure.md).
 
 ![azure-database-td.jpg](./media/security-overview/azure-database-td.jpg)
 
@@ -103,7 +103,7 @@ SQL Database a SQL Managed instance pro všechna připojení vynutila šifrován
 
 V rámci osvědčeného postupu doporučujeme, abyste v připojovacím řetězci, který používá aplikaci, zadali šifrované _**připojení a**_ nedůvěřujete certifikátu serveru. Tím se aplikace vynutí ověřit certifikát serveru, a tím zabrání v ohrožení vaší aplikace muž při útokech středního typu.
 
-Například při použití ovladače ADO.NET se dosáhnete pomocí **Encrypt = true** a **TrustServerCertificate = false**. Pokud získáte připojovací řetězec z Azure Portal, bude mít správné nastavení.
+Například při použití ovladače ADO.NET se dosáhnete pomocí  **Encrypt = true** a **TrustServerCertificate = false**. Pokud získáte připojovací řetězec z Azure Portal, bude mít správné nastavení.
 
 > [!IMPORTANT]
 > Všimněte si, že některé ovladače od jiných výrobců nemůžou ve výchozím nastavení používat protokol TLS, nebo se musí spoléhat na starší verzi TLS (<1,2), aby fungovala. V takovém případě server stále umožňuje připojení k vaší databázi. Doporučujeme však vyhodnotit rizika zabezpečení, která umožňují, aby se tyto ovladače a aplikace připojovaly k SQL Database, zejména pokud ukládáte citlivá data.
@@ -150,7 +150,7 @@ Další informace najdete v tématu [Začínáme se zjišťováním a klasifikac
 
 ### <a name="compliance"></a>Dodržování předpisů
 
-Kromě výše uvedených funkcí a funkcí, které vám pomohou aplikace splňovat různé požadavky na zabezpečení, Azure SQL Database se také účastní pravidelných auditů a bylo certifikováno pro řadu standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
+Kromě výše uvedených funkcí a funkcí, které vám pomohou aplikace splňovat různé požadavky na zabezpečení, Azure SQL Database se také účastní pravidelných auditů a bylo certifikováno pro řadu standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://www.microsoft.com/trust-center/compliance/compliance-overview) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cdbd78808d1758b43d2b2fe6e8f7ac03652ff92b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee38196f0b1a6e00d385dc0d2c88d45a4291d3b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296334"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087432"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Monitorování Key Vault s využitím Azure Event Grid (Preview)
+# <a name="monitoring-key-vault-with-azure-event-grid"></a>Monitorování Key Vault s využitím Azure Event Grid
 
-Key Vault integrace s Event Grid je momentálně ve verzi Preview. Umožňuje uživatelům upozornit, když se změní stav tajného kódu uloženého v trezoru klíčů. Změna stavu se definuje jako tajný kód, jehož platnost brzy vyprší (30 dní před vypršením platnosti), tajného kódu, jehož platnost vypršela, nebo tajný klíč, který má k dispozici novou verzi. Jsou podporovány oznámení pro všechny tři tajné typy (klíč, certifikát a tajný kód).
+Key Vault integrace s Event Grid umožňuje uživatelům upozornit na změnu stavu tajného klíče uloženého v trezoru klíčů. Změna stavu se definuje jako tajný kód, jehož platnost brzy vyprší (30 dní před vypršením platnosti), tajného kódu, jehož platnost vypršela, nebo tajný klíč, který má k dispozici novou verzi. Jsou podporovány oznámení pro všechny tři tajné typy (klíč, certifikát a tajný kód).
 
 Aplikace můžou na tyto události reagovat pomocí moderních architektur bez serveru, aniž by museli mít složitý kód nebo nákladné a neefektivní služby cyklického dotazování. Události jsou odesílány prostřednictvím [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do obslužných rutin událostí, jako jsou [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)nebo dokonce vlastního Webhooku, a platíte jenom za to, co využijete. Informace o cenách najdete v tématu [Event Grid ceny](https://azure.microsoft.com/pricing/details/event-grid/).
 
@@ -44,7 +44,7 @@ Aplikace, které zpracovávají Key Vault události, by měly dodržovat několi
 
 - [Přehled Azure Key Vault](overview.md)
 - [Přehled Azure Event Gridu](../../event-grid/overview.md)
-- Postupy: [Směrování událostí Key Vault do sady Automation Runbook (Preview)](event-grid-tutorial.md).
+- Postupy: [Směrování událostí Key Vault do Runbooku služby Automation](event-grid-tutorial.md).
 - Postupy: [příjem e-mailu, když se změní tajný kód trezoru klíčů](event-grid-logicapps.md)
-- [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid schéma událostí pro Azure Key Vault](../../event-grid/event-schema-key-vault.md)
 - [Přehled Azure Automation](../../automation/index.yml)

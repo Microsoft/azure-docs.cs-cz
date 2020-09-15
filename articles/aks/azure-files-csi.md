@@ -5,53 +5,55 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 018275b6db4c2d2d1059f35077f74a6f45ec3ba9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422029"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089866"
 ---
-# <a name="use-the-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní kontejnerů úložiště Azure Files ve službě Azure Kubernetes (AKS) (Preview)
-Ovladač Azure Files CSI je ovladač, který je kompatibilní s [specifikací CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md) , který používá AKS ke správě životního cyklu sdílených složek Azure Files. 
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní pro kontejnerové úložiště Azure Files ve službě Azure Kubernetes (AKS) (Preview)
 
-Rozhraní pro úložiště kontejnerů (CSI) představuje standard pro vystavení libovolných systémů blokování a souborů úložiště pro zabalení úloh na Kubernetes. Díky přijetí a používání rozhraní CSI může služba Azure Kubernetes Service (AKS) nyní zapisovat, nasazovat a iterovat moduly plug-in, které odhalují nové nebo zlepšují stávající úložné systémy v Kubernetes, aniž by bylo nutné se dotknout základního kódu Kubernetes a čekat na jejich cykly vydávání.
+Ovladač rozhraní Container Storage (CSI) pro Azure Files je ovladač kompatibilní se [specifikací CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md), který používá služba Azure Kubernetes Service (AKS) ke správě životního cyklu sdílených složek Azure Files.
+
+Soubory CSI jsou standardem pro vystavení libovolných systémů blokování a souborové úložiště pro vytvoření kontejnerů úloh v Kubernetes. Po přijetí a použití rozhraní CSI může AKS nyní zapisovat, nasazovat a iterovat moduly plug-in, aby vystavoval nové nebo vylepšit stávající systémy úložiště v Kubernetes, aniž by se museli podotknout základního kódu Kubernetes a počkat na jeho cykly vydávání.
 
 Pokud chcete vytvořit cluster AKS s podporou ovladače CSI, přečtěte si téma [Povolení ovladačů rozhraní CSI pro disky Azure a soubory Azure v AKS](csi-storage-drivers.md).
 
 >[!NOTE]
-> *Ovladače v rámci stromu* odkazují na aktuální ovladače úložiště, které jsou součástí základního Kubernetes kódu, a nové ovladače CSI, které jsou moduly plug-in.
+> *Ovladače stromové struktury* odkazují na aktuální ovladače úložiště, které jsou součástí základního kódu Kubernetes, oproti novým ovladačům CSI, které jsou moduly plug-in.
 
-## <a name="use-a-persistent-volume-pv-with-azure-files"></a>Použití trvalého svazku (PV) se soubory Azure
+## <a name="use-a-persistent-volume-with-azure-files"></a>Použití trvalého svazku se soubory Azure
 
-[Trvalý svazek](concepts-storage.md#persistent-volumes) představuje úložiště, které je zřízené pro použití s Kubernetes lusky. Trvalý svazek lze použít v jednom nebo mnoha luskech a lze jej dynamicky nebo staticky zřídit. Pokud více lusků potřebuje souběžný přístup ke stejnému svazku úložiště, můžete použít soubory Azure pro připojení pomocí [protokolu SMB (Server Message Block)][smb-overview]. V tomto článku se dozvíte, jak dynamicky vytvořit sdílenou složku Azure Files pro použití v několika luskech v clusteru Azure Kubernetes Service (AKS). Informace o statickém zřizování najdete v tématu [Ruční vytvoření a použití svazku se sdílenou složkou Azure Files](azure-files-volume.md).
+[Trvalý svazek (PV)](concepts-storage.md#persistent-volumes) představuje úložiště, které je zřízené pro použití s Kubernetes lusky. Souč_hod lze použít v jednom nebo mnoha luskech a lze ji dynamicky nebo staticky zřídit. Pokud více lusků potřebuje souběžný přístup ke stejnému svazku úložiště, můžete použít soubory Azure pro připojení pomocí [protokolu SMB (Server Message Block)][smb-overview]. V tomto článku se dozvíte, jak dynamicky vytvořit sdílenou složku souborů Azure pro použití v několika luskech v clusteru AKS. Informace o statickém zřizování najdete v tématu [Ruční vytvoření a použití svazku se sdílenou složkou souborů Azure](azure-files-volume.md).
 
 Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="dynamically-create-azure-files-pvs-using-the-built-in-storage-classes"></a>Dynamické vytváření PVs souborů Azure pomocí integrovaných tříd úložiště
-Třída úložiště se používá k definování způsobu vytvoření sdílené složky Azure. Účet úložiště se automaticky vytvoří ve [skupině prostředků uzlu][node-resource-group] pro použití s třídou úložiště pro ukládání sdílených složek Azure. Vyberte následující [redundanci úložiště Azure][storage-skus] pro *skuName*:
+## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Dynamické vytváření PVs souborů Azure pomocí integrovaných tříd úložiště
 
-* *Standard_LRS* – standardní místně redundantní úložiště
-* *Standard_GRS* – standardní geograficky redundantní úložiště
-* *Standard_ZRS* – standardní zóna redundantního úložiště
-* *Standard_RAGRS* – standardní geograficky redundantní úložiště s přístupem pro čtení
-* *Premium_LRS* – místní redundantní úložiště úrovně Premium
+Třída úložiště se používá k definování, jak se vytvoří sdílená složka souborů Azure. Účet úložiště se automaticky vytvoří ve [skupině prostředků uzlu][node-resource-group] pro použití s třídou úložiště pro ukládání sdílených složek Azure Files. Pro *skuName*vyberte jednu z následujících [SKU Azure Storage pro redundanci][storage-skus] :
+
+* **Standard_LRS**: standardní místně redundantní úložiště
+* **Standard_GRS**: standardní geograficky redundantní úložiště
+* **Standard_ZRS**: standardní zóna – redundantní úložiště
+* **Standard_RAGRS**: standardní geograficky redundantní úložiště s přístupem pro čtení
+* **Premium_LRS**: místně redundantní úložiště úrovně Premium
 
 > [!NOTE]
-> Soubory Azure podporují službu Premium Storage. minimální sdílená složka Premium je 100 GB.
+> Azure Files podporuje Azure Premium Storage. Minimální sdílená složka Premium je 100 GB.
 
-Při používání ovladačů úložiště CSI v AKS je k dispozici 2 další integrovaná `StorageClasses` , která využívá **ovladače úložiště rozhraní Azure Files CSI**. Další třídy úložiště CSI se vytvoří s clusterem společně s výchozími třídami úložiště ve stromové struktuře.
+Když použijete ovladače úložiště CSI na AKS, jsou k dispozici dva další integrované `StorageClasses` , které využívají ovladače úložiště Azure Files CSI. Další třídy úložiště CSI se vytvoří s clusterem společně s výchozími třídami úložiště ve stromové struktuře.
 
-- `azurefile-csi` – Používá službu Azure Storage Standard k vytvoření sdílené složky Azure. 
-- `azurefile-csi-premium` – Využívá Azure Premium Storage k vytvoření sdílené složky Azure. 
+- `azurefile-csi`: Používá službu Azure Storage úrovně Standard k vytvoření sdílené složky Azure Files.
+- `azurefile-csi-premium`: Používá Azure Premium Storage k vytvoření sdílené složky služby soubory Azure.
 
-Zásady opětovné deklarace v obou třídách úložiště zajistí, že se při odstranění příslušného trvalého svazku odstraní základní sdílená složka Azure. Třídy úložiště také nakonfigurují sdílené složky tak, aby se rozšířily, stačí upravit deklaraci trvalého svazku s novou velikostí.
+Zásady opětovné deklarace v obou třídách úložiště zajistí, že se při odstranění příslušné PV odstraní i podkladová sdílená složka souborů Azure. Třídy úložiště také nakonfigurují sdílené složky tak, aby se rozšířily, stačí upravit deklaraci trvalého svazku (PVC) s novou velikostí.
 
-Pokud chcete využít tyto třídy úložiště, vytvořte [deklaraci trvalého svazku (PVC)](concepts-storage.md#persistent-volume-claims) a příslušnému typu, který se na něj odkazuje, a využijte je. Deklarace identity trvalého svazku (PVC) se používá k automatickému zřízení úložiště na základě třídy úložiště. Virtuální okruh (PVC) může použít jednu z předem vytvořených tříd úložiště nebo uživatelsky definované třídy úložiště k vytvoření sdílené složky Azure Files pro požadovanou SKU a velikost. Při vytváření definice pod je určena deklarace identity trvalého svazku pro vyžádání požadovaného úložiště.
+Chcete-li použít tyto třídy úložiště, vytvořte [trvalý virtuální okruh](concepts-storage.md#persistent-volume-claims) a příslušné na něm, které se na něj odkazují a používají je. K automatickému zřízení úložiště založeného na třídě úložiště slouží virtuální okruh (PVC). Virtuální okruh (PVC) může použít jednu z předem vytvořených tříd úložiště nebo uživatelsky definované třídy úložiště k vytvoření sdílené složky Azure Files pro požadovanou SKU a velikost. Když vytváříte definici pod, je pro ni určen virtuální okruh, který požaduje požadované úložiště.
 
-Vytvořte [příklad deklarace identity trvalého svazku a pod tím, který vytiskne aktuální datum `outfile` do objektu](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) pomocí příkazu [kubectl Apply][kubectl-apply] :
+Vytvořte [ukázkový okruh PVC a potom, který zobrazí aktuální datum do objektu `outfile` ](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) pomocí příkazu [kubectl Apply][kubectl-apply] :
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/pvc-azurefile-csi.yaml
@@ -61,7 +63,7 @@ persistentvolumeclaim/pvc-azurefile created
 pod/nginx-azurefile created
 ```
 
-Po je-li je ve stavu spuštěno, můžete ověřit, zda je sdílená složka správně připojena, spuštěním následujícího příkazu a ověřením výstupu obsahuje `outfile` : 
+Po je-li v běžícím stavu, můžete ověřit, zda je sdílená složka správně připojena, spuštěním následujícího příkazu a ověřením výstupního souboru obsahuje `outfile` :
 
 ```console
 $ kubectl exec nginx-azurefile -- ls -l /mnt/azurefile
@@ -76,7 +78,7 @@ Výchozí třídy úložiště vyhovují nejběžnějším scénářům, ale ne 
 
 Výchozí hodnota pro *FileMode* a *dirMode* je *0777* pro sdílené složky Kubernetes připojených souborů. V objektu třídy úložiště můžete zadat různé možnosti připojení.
 
-Vytvořte soubor s názvem `azure-file-sc.yaml` a vložte následující vzorový manifest: 
+Vytvořte soubor s názvem `azure-file-sc.yaml` a vložte následující vzorový manifest:
 
 ```yaml
 kind: StorageClass
@@ -107,7 +109,7 @@ kubectl apply -f azure-file-sc.yaml
 storageclass.storage.k8s.io/my-azurefile created
 ```
 
-Ovladač Azure Files CSI podporuje vytváření [snímků trvalých svazků](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) a podkladových sdílených složek. 
+Ovladač Azure Files CSI podporuje vytváření [snímků trvalých svazků](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) a podkladových sdílených složek.
 
 Vytvořte [třídu snímku svazku](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml) pomocí příkazu [kubectl Apply][kubectl-apply] :
 
@@ -117,7 +119,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 ```
 
-Vytvoří [snímek svazku](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) z virtuálního okruhu, který [jsme dynamicky vytvořili na začátku tohoto kurzu](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes) `pvc-azurefile` .
+Vytvoří [snímek svazku](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) z virtuálního okruhu, který [jsme dynamicky vytvořili na začátku tohoto kurzu](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes) `pvc-azurefile` .
 
 
 ```bash
@@ -156,14 +158,14 @@ Status:
 Events:                                <none>
 ```
 
-## <a name="resize-a-persistent-volume-pv"></a>Změna velikosti trvalého svazku (PV)
+## <a name="resize-a-persistent-volume"></a>Změna velikosti trvalého svazku
 
-Pro virtuální okruh (PVC) si můžete vyžádat větší objem. Upravte objekt PVC a zadejte větší velikost. Tato změna aktivuje rozšíření základního svazku, který zálohuje PersistentVolume. 
+Pro virtuální okruh (PVC) si můžete vyžádat větší objem. Upravte objekt PVC a zadejte větší velikost. Tato změna aktivuje rozšíření základního svazku, který vrací souč_hod.
 
-> [!NOTE] 
-> Pro uspokojení deklarace identity se nikdy nevytvoří nový PersistentVolume. Místo toho se změnila velikost stávajícího svazku.
+> [!NOTE]
+> Nová souč_hod se nikdy nevytvořila, aby vyhověla deklaraci identity. Místo toho se změnila velikost stávajícího svazku.
 
-Integrovaná `azurefile-csi` třída úložiště v AKS již podporuje rozšíření, takže využívá [virtuální okruhy vytvořené dříve s touto třídou úložiště](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes). Virtuální okruh (PVC) požadoval sdílenou složku 100Gi, můžeme potvrdit, že běží na:
+Integrovaná `azurefile-csi` třída úložiště v AKS již podporuje rozšíření, takže použijte [virtuální okruh (PVC), který byl vytvořen dříve s touto třídou úložiště](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes). Virtuální okruh (PVC) požadoval sdílenou složku 100Gi. Můžeme potvrdit, že je možné spustit:
 
 ```console 
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
@@ -194,9 +196,9 @@ Filesystem                                                                      
 
 ## <a name="windows-containers"></a>Kontejnery Windows
 
-Ovladač souborů Azure Files podporuje i uzly a kontejnery Windows. Pokud chcete používat kontejnery Windows, přidejte fond uzlů Windows podle [kurzu Windows Containers](windows-container-cli.md) .
+Ovladač Azure Files CSI podporuje i uzly a kontejnery Windows. Pokud chcete použít kontejnery Windows, postupujte podle [kurzu Windows Containers](windows-container-cli.md) (Přidat fond uzlů Windows).
 
-Jakmile budete mít fond uzlů Windows, využijte integrované třídy úložiště jako `azurefile-csi` nebo Vytvářejte vlastní. Můžete nasadit ukázkovou [stavovou sadu založenou na systému Windows](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) , která uloží časová razítka do souboru `data.txt` nasazením níže pomocí příkazu [kubectl Apply][kubectl-apply] :
+Po použití fondu uzlů Windows použijte předdefinované třídy úložiště, například `azurefile-csi` nebo vytvořte vlastní. Můžete nasadit ukázkovou [stavovou sadu založenou na Windows](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) , která uloží časová razítka do souboru `data.txt` nasazením následujícího příkazu pomocí příkazu [kubectl Apply][kubectl-apply] :
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -218,8 +220,8 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o použití ovladače CSI pro disky Azure najdete v tématu [použití disků Azure s ovladači CSI](azure-disk-csi.md).
-- Další informace o osvědčených postupech pro úložiště najdete v tématu [osvědčené postupy pro úložiště a zálohy ve službě Azure Kubernetes Service (AKS)][operator-best-practices-storage] .
+- Informace o tom, jak používat ovladače CSI pro disky Azure, najdete v tématu [použití disků Azure s ovladači CSI](azure-disk-csi.md).
+- Další informace o osvědčených postupech pro úložiště najdete v tématu [osvědčené postupy pro úložiště a zálohování ve službě Azure Kubernetes][operator-best-practices-storage].
 
 
 <!-- LINKS - external -->

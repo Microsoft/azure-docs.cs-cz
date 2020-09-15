@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 207106d8daab4d5d2a6d8d681aad5a20923a5a48
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9247d6bed8f4ca6ec5e51d0d64eb4fe94dc89af7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009048"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089492"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
 
@@ -132,13 +132,13 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>agregace clu
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [DataSource – třída](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [DataSource – třída](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
-> [Objekt DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
+> [Objekt DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)
 
 > [!div class="nextstepaction"]
-> [Atlas. Math – obor názvů](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+> [Atlas. Math – obor názvů](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)
 
 Další funkce pro přidání funkcí do aplikace najdete v příkladech kódu:
 

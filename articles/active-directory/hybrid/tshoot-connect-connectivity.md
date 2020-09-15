@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541732"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088302"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením služby Azure AD
 Tento článek vysvětluje, jak funguje konektivita mezi Azure AD Connect a Azure AD a jak řešit problémy s připojením. Tyto problémy se pravděpodobně zobrazují v prostředí s proxy server.
@@ -33,7 +33,7 @@ Azure AD Connect používá moderní ověřování (pomocí knihovny ADAL) pro o
 V tomto článku se dozvíte, jak se Fabrikam připojuje k Azure AD prostřednictvím jeho proxy serveru. Proxy server má název fabrikamproxy a používá port 8080.
 
 Nejdřív je potřeba zajistit, aby byla správně nakonfigurovaná [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) a **Microsoft Azure AD Synchronization Service** se po aktualizaci souboru machine.config znovu restartovala.
-![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
+![Snímek obrazovky se zobrazí jako součást konfiguračního souboru pro Machine dot.](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
 > V některých blogůch od jiných společností než Microsoft je uvedeno, že se místo toho mají udělat změny miiserver.exe.config. Tento soubor se ale při každém upgradu přepíše, takže když během počáteční instalace funguje, systém přestane při prvním upgradu fungovat. Z tohoto důvodu doporučujeme místo toho aktualizovat machine.config.
@@ -44,7 +44,7 @@ Proxy server musí mít také otevřené požadované adresy URL. Oficiální se
 
 Z těchto adres URL je v následující tabulce absolutní minimum, které se může připojit ke službě Azure AD. Tento seznam neobsahuje žádné volitelné funkce, jako je třeba zpětný zápis hesla nebo Azure AD Connect Health. Najdete tady informace, které vám pomůžou při řešení potíží s počáteční konfigurací.
 
-| Adresa URL | Port | Description |
+| URL | Port | Popis |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
 | \*. verisign.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
@@ -60,7 +60,7 @@ Následující problémy jsou nejběžnější chyby, se kterými se setkáte v 
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Průvodce instalací nebyl správně nakonfigurován.
 Tato chyba se zobrazí, pokud se samotný průvodce nemůže připojit k proxy serveru.
-![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
+![Snímek obrazovky znázorňující chybu: Nepodařilo se ověřit přihlašovací údaje.](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Pokud se zobrazí tato chyba, ověřte, že je [machine.config](how-to-connect-install-prerequisites.md#connectivity) správně nakonfigurovaný.
 * Pokud to vypadá správně, postupujte podle kroků v tématu [ověření připojení proxy serveru](#verify-proxy-connectivity) a zjistěte, jestli se problém vyskytuje i mimo průvodce.
@@ -83,7 +83,7 @@ Pokud se Průvodce instalací úspěšně připojí k Azure AD, ale samotné hes
 ### <a name="verify-proxy-connectivity"></a>Ověření připojení proxy
 Pokud chcete ověřit, jestli má server Azure AD Connect skutečné připojení k proxy serveru a Internetu, použijte k tomu, abyste viděli, jestli proxy povoluje webové požadavky, nebo ne. V příkazovém řádku PowerShellu spusťte příkaz `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` . (Technicky první volání je `https://login.microsoftonline.com` a tento identifikátor URI funguje stejně, ale druhý identifikátor URI je rychlejší, aby odpovídal.)
 
-Prostředí PowerShell používá konfiguraci v machine.config ke kontaktování proxy serveru. Nastavení v WinHTTP/netsh by nemělo mít vliv na tyto rutiny.
+PowerShell ke kontaktování proxy serveru používá konfiguraci v souboru machine.config. Nastavení v příkazu winhttp/netsh by na tyto rutiny nemělo mít vliv.
 
 Pokud je proxy server správně nakonfigurovaný, měli byste získat stav úspěch: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
@@ -113,7 +113,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Připojení k Azure AD**
 
-| Čas | Adresa URL |
+| Čas | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Konfigurace**
 
-| Čas | Adresa URL |
+| Čas | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800 – kotva*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Počáteční synchronizace**
 
-| Čas | Adresa URL |
+| Čas | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
@@ -225,14 +225,14 @@ Zobrazuje se v Průvodci instalací jako Neočekávaná chyba. K tomu může doj
 V případě verzí začínajících číslem buildu 1.1.105.0 (vydáno 2016) bylo vyřazení Pomocník pro přihlášení. Tato část a tato konfigurace by se už neměla vyžadovat, ale je zachovaná jako referenční.
 
 Aby pomocník jednotného přihlašování fungoval, musí být nakonfigurováno WinHTTP. Tuto konfiguraci můžete provést pomocí [**příkazu netsh**](how-to-connect-install-prerequisites.md#connectivity).
-![netsh](./media/tshoot-connect-connectivity/netsh.png)
+![Snímek obrazovky se zobrazením okna příkazového řádku, ve kterém je spuštěný Nástroj Netsh pro nastavení proxy serveru.](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Pomocník pro přihlášení není správně nakonfigurovaný.
 Tato chyba se zobrazí, když se Pomocník pro přihlášení nemůže připojit k proxy serveru nebo proxy server nepovoluje požadavek.
-![příkaz netsh](./media/tshoot-connect-connectivity/nonetsh.png)
+![Snímek obrazovky s chybou: nelze ověřit přihlašovací údaje, ověřit připojení k síti a bránu firewall nebo nastavení proxy serveru.](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * Pokud se zobrazí tato chyba, podívejte se na konfiguraci proxy serveru v [netsh](how-to-connect-install-prerequisites.md#connectivity) a ověřte, jestli je správná.
-  ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
+  ![Snímek obrazovky s oknem příkazového řádku, na kterém je spuštěný Nástroj Netsh, který zobrazuje konfiguraci proxy serveru.](./media/tshoot-connect-connectivity/netshshow.png)
 * Pokud to vypadá správně, postupujte podle kroků v tématu [ověření připojení proxy serveru](#verify-proxy-connectivity) a zjistěte, jestli se problém vyskytuje i mimo průvodce.
 
 ## <a name="next-steps"></a>Další kroky

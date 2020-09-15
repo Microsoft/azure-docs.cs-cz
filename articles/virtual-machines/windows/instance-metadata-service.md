@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705057"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086704"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -157,7 +157,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 Ve výchozím nastavení Instance Metadata Service vrátí data ve formátu JSON ( `Content-Type: application/json` ). V případě potřeby ale některá rozhraní API můžou vracet data v různých formátech.
 Následující tabulka je odkazem na jiné rozhraní API datových formátů, které může podporovat.
 
-rozhraní API | Výchozí formát dat | Jiné formáty
+Rozhraní API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
 /attested | json | žádné
 /identity | json | žádné
@@ -426,7 +426,7 @@ Cloud a hodnoty prostředí Azure jsou uvedené níže.
 ---------|-----------------
 [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure (Čína) 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ## <a name="network-metadata"></a>Síťová metadata 
@@ -517,10 +517,11 @@ vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
 diffDiskSettings | Nastavení dočasného disku
 diskSizeGB | Velikost disku v GB
+encryptionSettings | Nastavení šifrování disku
 image   | Virtuální pevný disk zdrojové image uživatele
-(     | Logické číslo jednotky disku
 managedDisk | Parametry spravovaného disku
 name    | Název disku
+osType  | Typ operačního systému zahrnutý na disku
 virtuálního     | Virtuální pevný disk
 writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
@@ -532,11 +533,10 @@ vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
 diffDiskSettings | Nastavení dočasného disku
 diskSizeGB | Velikost disku v GB
-encryptionSettings | Nastavení šifrování disku
 image   | Virtuální pevný disk zdrojové image uživatele
+(     | Logické číslo jednotky disku
 managedDisk | Parametry spravovaného disku
 name    | Název disku
-osType  | Typ operačního systému zahrnutý na disku
 virtuálního     | Virtuální pevný disk
 writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
@@ -747,7 +747,7 @@ Cloud | Certifikát
 ------|------------
 [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/) | *. metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)          | *. metadata.azure.us
-[Azure (Čína) 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
 [Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                | *. metadata.microsoftazure.de
 
 > [!NOTE]

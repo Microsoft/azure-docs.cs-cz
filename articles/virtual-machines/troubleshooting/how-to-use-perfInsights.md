@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526635"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088557"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Jak používat PerfInsights v Azure
 
@@ -103,27 +103,27 @@ Shromažďují se informace o virtuálním počítači s Windows, discích nebo 
 
 | Shromažďovaná data | Rychlá analýza výkonu | Srovnávací testy | Analýza výkonu | Analýza souborů Azure | Pokročilá analýza výkonu |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
-| Informace z protokolů událostí       | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Systémové informace                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Mapa svazků                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Mapa disku                          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Spuštěné úlohy                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Čítače spolehlivosti úložiště      | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Informace o úložišti               | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Fsutil Output                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Filtrovat informace ovladače                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Výstup příkazu netstat                    | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Konfigurace sítě             | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Konfigurace brány firewall            | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Konfigurace SQL Serveru          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Trasování diagnostiky výkonu *  | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Trasování čítače výkonu * *      |                            |                                    | Ano                      |                      | Ano                  |
-| Trasování čítače SMB * *              |                            |                                    |                          | Ano                  |                      |
-| Trasování čítače SQL Server * *       |                            |                                    | Ano                      |                      | Ano                  |
-| Xperf trasování                       |                            |                                    |                          |                      | Ano                  |
-| Trasování StorPort                    |                            |                                    |                          |                      | Ano                  |
-| Trasování sítě                     |                            |                                    |                          | Ano                  | Ano                  |
-| Sledování srovnávacích testů DiskSpd * * *       |                            | Ano                                |                          |                      |                      |
+| Informace z protokolů událostí       | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Systémové informace                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Mapa svazků                        | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Mapa disku                          | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Spuštěné úlohy                     | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Čítače spolehlivosti úložiště      | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Informace o úložišti               | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Fsutil Output                     | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Filtrovat informace ovladače                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Výstup příkazu netstat                    | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Konfigurace sítě             | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Konfigurace brány firewall            | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Konfigurace SQL Serveru          | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Trasování diagnostiky výkonu *  | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Trasování čítače výkonu * *      |                            |                                    | Yes                      |                      | Yes                  |
+| Trasování čítače SMB * *              |                            |                                    |                          | Yes                  |                      |
+| Trasování čítače SQL Server * *       |                            |                                    | Yes                      |                      | Yes                  |
+| Xperf trasování                       |                            |                                    |                          |                      | Yes                  |
+| Trasování StorPort                    |                            |                                    |                          |                      | Yes                  |
+| Trasování sítě                     |                            |                                    |                          | Yes                  | Yes                  |
+| Sledování srovnávacích testů DiskSpd * * *       |                            | Yes                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Trasování diagnostiky výkonu (*)
@@ -165,7 +165,15 @@ DiskSpd vstupně-výstupních úloh testů (disk s operačním systémem [zápis
 
 -  Tento nástroj se musí spustit na virtuálním počítači, který má problém s výkonem. 
 
--  Podporovány jsou následující operační systémy: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016; Windows 8.1 a Windows 10.
+-  Podporovány jsou následující operační systémy:
+   * Windows Server 2019
+   * Windows Server 2016
+   * Windows Server 2012 R2
+   * Windows Server 2012
+   * Windows Server 2008 R2
+   * Windows 10
+   * Windows 8.1
+   * Windows 8
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Možné problémy při spuštění nástroje na produkčních virtuálních počítačích
 
@@ -247,7 +255,7 @@ Po dokončení trasování nebo operací se ve stejné složce jako PerfInsights
 
 ## <a name="review-the-diagnostics-report"></a>Kontrola diagnostické sestavy
 
-V **PerformanceDiagnostics souboru \_ RRRR-MM- \_hh-mm-ss-fff.zipDD** můžete najít sestavu HTML, která podrobně popisuje závěry PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte soubor **PerformanceDiagnostics \_ yyyy-MM-DD \_hh-mm-ss-fff.zip** a pak otevřete soubor **PerfInsights Report.html** .
+V **PerformanceDiagnostics souboru \_ RRRR-MM- \_hh-mm-ss-fff.zipDD ** můžete najít sestavu HTML, která podrobně popisuje závěry PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte soubor **PerformanceDiagnostics \_ yyyy-MM-DD \_hh-mm-ss-fff.zip** a pak otevřete soubor **PerfInsights Report.html** .
 
 Vyberte kartu **zjištění** .
 
@@ -312,4 +320,4 @@ Na následujícím snímku obrazovky se zobrazí zpráva podobná tomu, co se v�
 
 Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenosu souborů. Pro zvýšení zabezpečení je nutné při prvním použití změnit heslo.
 
-Po přihlášení se zobrazí dialogové okno pro nahrání souboru ** \_ \_hh-mm-ss-fff.ziprrrr-mm-dd** , který byl shromážděn nástrojem PerfInsights.
+Po přihlášení se zobrazí dialogové okno pro nahrání souboru ** \_ \_hh-mm-ss-fff.ziprrrr-mm-dd ** , který byl shromážděn nástrojem PerfInsights.

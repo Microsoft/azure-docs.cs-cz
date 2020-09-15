@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209494"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090223"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -126,7 +126,7 @@ OBNOVENÍ nativních záloh (souborů. bak) pořízených z SQL Server instance,
 
 Následující diagram poskytuje podrobný přehled procesu:
 
-![migrace – tok](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![Diagram zobrazuje SQL Server se šipkou, která je označena jako zálohování nebo nahrání, do přetékání adres URL do Azure Storage a druhá šipka s označením obnovení z adresy URL z Azure Storage do spravované instance SQL.](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 V následující tabulce najdete další informace týkající se metod, které můžete použít v závislosti na zdrojové SQL Server verzi, kterou používáte:
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009133"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089441"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -72,7 +72,12 @@ Všechny příklady v tomto dokumentu používají následující funkci k před
         "subTitle": "Building 40", 
         "temperature": 72,
         "title": "Cafeteria", 
-        "zoneColor": "red"
+        "zoneColor": "red",
+        "abcArray": ['a', 'b', 'c'],
+        "array2d": [['a', 'b'], ['x', 'y']],
+        "_style": {
+            "fillColor": 'red'
+        }
     }
 }
 ```
@@ -85,11 +90,11 @@ Datové výrazy poskytují přístup k datům vlastností ve funkci.
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Načte položku z pole. |
 | `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
-| `['get', string]` | value | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
-| `['get', string, object]` | value | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string]` | Hodnota | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string, object]` | Hodnota | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['has', string]` | boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
 | `['has', string, object]` | boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
-| `['id']` | value | Získá ID funkce, pokud má jednu. |
+| `['id']` | Hodnota | Získá ID funkce, pokud má jednu. |
 | `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
 | `['in', boolean | string | number, array]` | boolean | Určuje, jestli položka existuje v poli. |
 | `['in', substring, string]` | boolean | Určuje, zda podřetězec existuje v řetězci. |
@@ -137,6 +142,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Podobně, obrys mnohoúhelníků se vykreslí do vrstev čar. Chcete-li toto chování zakázat v linkové vrstvě, přidejte filtr, který povoluje `LineString` pouze `MultiLineString` funkce a.  
 
+Tady jsou některé další příklady použití datových výrazů:
+
+```javascript
+//Get item [2] from an array "properties.abcArray[1]" = "c"
+['at', 2, ['get', 'abcArray']]
+
+//Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
+['at', 1, ['at', 0, ['get', 'array2d']]]
+
+//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+['in', 'a', ['get', 'abcArray']]
+
+//Get the length of an array "properties.abcArray.length" = 3
+['length', ['get', 'abcArray']]
+
+//Get the value of a subproperty "properties._style.fillColor" = "red"
+['get', 'fillColor', ['get', '_style']]
+
+//Check that "fillColor" exists as a subproperty of "_style".
+['has', 'fillColor', ['get', '_style']]
+```
+
 ## <a name="math-expressions"></a>Matematické výrazy
 
 Matematické výrazy poskytují matematické operátory pro provádění výpočtů řízených daty v rámci rozhraní Expression Framework.
@@ -181,14 +208,14 @@ Agregační výraz přebírá tři hodnoty: hodnotu operátoru a počáteční h
 ```
 
 - operator: funkce výrazu, která se pak použije na proti všem hodnotám vypočítaným `mapExpression` pro každý bod v clusteru. Podporované operátory: 
-    - Pro čísla: `+` , `*` , `max` ,`min`
-    - Pro logické hodnoty: `all` ,`any`
+    - Pro čísla: `+` , `*` , `max` , `min`
+    - Pro logické hodnoty: `all` , `any`
 - initialValue: počáteční hodnota, ve které je agregována první Počítaná hodnota.
 - mapExpression: výraz, který se aplikuje na každý bod v datové sadě.
 
 **Příklady**
 
-Pokud všechny funkce v datové sadě mají `revenue` vlastnost, která je číslo. Pak lze vypočítat celkový výnos všech bodů v clusteru, které jsou vytvořeny ze sady dat. Tento výpočet se provádí pomocí následujícího agregačního výrazu:`['+', 0, ['get', 'revenue']]`
+Pokud všechny funkce v datové sadě mají `revenue` vlastnost, která je číslo. Pak lze vypočítat celkový výnos všech bodů v clusteru, které jsou vytvořeny ze sady dat. Tento výpočet se provádí pomocí následujícího agregačního výrazu: `['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>Logické výrazy
 
@@ -410,7 +437,7 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 | `['typeof', value]` | řetězec | Vrátí řetězec popisující typ dané hodnoty. |
 
 > [!TIP]
-> Pokud se chybová zpráva podobná `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` zobrazení v konzole prohlížeče, znamená to, že ve vašem kódu je výraz, který má pole, které nemá řetězec pro svou první hodnotu. Pokud chcete, aby výraz vrátil pole, zabalte pole pomocí `literal` výrazu. Následující příklad nastaví `offset` možnost ikony pro vrstvu symbolu, která musí být pole obsahující dvě čísla, a to pomocí `match` výrazu pro výběr mezi dvěma hodnotami posunu na základě hodnoty `entityType` vlastnosti funkce Point.
+> Pokud se chybová zpráva podobná `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` zobrazení v konzole prohlížeče, znamená to, že ve vašem kódu je výraz, který má pole, které nemá řetězec pro svou první hodnotu. Pokud chcete, aby výraz vrátil pole, zabalte pole pomocí `literal` výrazu. Následující příklad nastaví `offset` možnost ikony pro vrstvu symbolu, která musí být pole obsahující dvě čísla, a to pomocí `match` výrazu pro výběr mezi dvěma hodnotami posunu na základě hodnoty  `entityType` vlastnosti funkce Point.
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -490,7 +517,7 @@ Výše uvedený výraz vykreslí kód PIN na mapě s textem "64 °F", jak je zn�
 
 <center>
 
-![Příklad ](media/how-to-expressions/string-operator-expression.png) výrazu řetězce operátoru</center>
+![Příklad ](media/how-to-expressions/string-operator-expression.png) výrazu řetězce operátoru </center>
 
 ## <a name="interpolate-and-step-expressions"></a>Interpolovat a krokovat výrazy
 
@@ -502,9 +529,9 @@ Výrazy interpolování a Step lze použít k výpočtu hodnot podél interpolov
 
 Existují tři typy metod interpolace, které lze použít ve `interpolate` výrazu:
  
-* `['linear']`-Interpoluje lineární poměr mezi dvojicí zarážek.
-* `['exponential', base]`– Interpoluje exponenciálně mezi zastávkami. `base`Hodnota určuje rychlost, s jakou se výstup zvyšuje. Vyšší hodnoty zvyšují objem výstupu směrem k hornímu konci rozsahu. `base`Hodnota blížící se 1 vytvoří výstup, který se zvýší lineárně.
-* `['cubic-bezier', x1, y1, x2, y2]`-Interpoluje použití [Bézierovy křivky krychle](https://developer.mozilla.org/docs/Web/CSS/timing-function) definované danými řídicími body.
+* `['linear']` -Interpoluje lineární poměr mezi dvojicí zarážek.
+* `['exponential', base]` – Interpoluje exponenciálně mezi zastávkami. `base`Hodnota určuje rychlost, s jakou se výstup zvyšuje. Vyšší hodnoty zvyšují objem výstupu směrem k hornímu konci rozsahu. `base`Hodnota blížící se 1 vytvoří výstup, který se zvýší lineárně.
+* `['cubic-bezier', x1, y1, x2, y2]` -Interpoluje použití [Bézierovy křivky krychle](https://developer.mozilla.org/docs/Web/CSS/timing-function) definované danými řídicími body.
 
 Tady je příklad toho, jak tyto různé typy interpolace vypadají. 
 
@@ -553,7 +580,7 @@ Následující obrázek ukazuje, jak jsou vybrány barvy pro výše uvedený vý
  
 <center>
 
-![Příklad ](media/how-to-expressions/interpolate-expression-example.png) interpolování výrazu</center>
+![Příklad ](media/how-to-expressions/interpolate-expression-example.png) interpolování výrazu </center>
 
 ### <a name="step-expression"></a>Výraz kroku
 
@@ -609,7 +636,7 @@ Speciální výrazy, které se vztahují pouze na konkrétní vrstvy.
 
 ### <a name="heat-map-density-expression"></a>Výraz hustoty tepelné mapy
 
-Výraz hustoty tepelné mapy načte hodnotu hustoty tepelné mapy pro každý pixel v vrstvě Heat mapy a je definován jako `['heatmap-density']` . Tato hodnota je číslo mezi `0` a `1` . Používá se v kombinaci s `interpolation` `step` výrazem or k definování barevného přechodu, který slouží k zabarvovatí Heat mapy. Tento výraz lze použít pouze v [Možnosti barva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) vrstvy Heat mapy.
+Výraz hustoty tepelné mapy načte hodnotu hustoty tepelné mapy pro každý pixel v vrstvě Heat mapy a je definován jako `['heatmap-density']` . Tato hodnota je číslo mezi `0` a `1` . Používá se v kombinaci s `interpolation` `step` výrazem or k definování barevného přechodu, který slouží k zabarvovatí Heat mapy. Tento výraz lze použít pouze v [Možnosti barva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) vrstvy Heat mapy.
 
 > [!TIP]
 > Barva v indexu 0, ve výrazu interpolace nebo ve výchozí barvě barvy kroku, definuje barvu oblasti, kde nejsou žádná data. Barva na indexu 0 se dá použít k definování barvy pozadí. Mnoho preferuje nastavení této hodnoty na transparentní nebo částečně průhlednou černou.
@@ -653,7 +680,7 @@ Další informace najdete v dokumentaci k [Přidání vrstvy Heat mapy](map-add-
 
 ### <a name="line-progress-expression"></a>Výraz průběhu řádku
 
-Výraz průběhu řádku načítá průběh čáry přechodu v čárové vrstvě a je definován jako `['line-progress']` . Tato hodnota je číslo mezi 0 a 1. Používá se v kombinaci s `interpolation` `step` výrazem or. Tento výraz se dá použít jenom s [možností strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) vrstvy čáry. 
+Výraz průběhu řádku načítá průběh čáry přechodu v čárové vrstvě a je definován jako `['line-progress']` . Tato hodnota je číslo mezi 0 a 1. Používá se v kombinaci s `interpolation` `step` výrazem or. Tento výraz se dá použít jenom s [možností strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient) vrstvy čáry. 
 
 > [!NOTE]
 > `strokeGradient`Možnost čáry spojnice vyžaduje `lineMetrics` možnost nastavení zdroje dat na hodnotu `true` .
@@ -684,9 +711,9 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 Výraz formátu textového pole lze použít s `textField` možností vlastnosti vrstvy symbolů `textOptions` pro zajištění smíšeného formátování textu. Tento výraz umožňuje zadat sadu vstupních řetězců a možností formátování. Pro každý vstupní řetězec v tomto výrazu lze zadat následující možnosti.
 
- * `'font-scale'`-Určuje faktor škálování pro velikost písma. Je-li tento parametr zadán, tato hodnota přepíše `size` vlastnost `textOptions` pro jednotlivé řetězce.
- * `'text-font'`-Určuje jednu nebo více rodin písem, které by měly být použity pro tento řetězec. Je-li tento parametr zadán, tato hodnota přepíše `font` vlastnost `textOptions` pro jednotlivé řetězce.
- * `'text-color'`-Určuje barvu, která má být použita pro text při vykreslování. 
+ * `'font-scale'` -Určuje faktor škálování pro velikost písma. Je-li tento parametr zadán, tato hodnota přepíše `size` vlastnost `textOptions` pro jednotlivé řetězce.
+ * `'text-font'` -Určuje jednu nebo více rodin písem, které by měly být použity pro tento řetězec. Je-li tento parametr zadán, tato hodnota přepíše `font` vlastnost `textOptions` pro jednotlivé řetězce.
+ * `'text-color'` -Určuje barvu, která má být použita pro text při vykreslování. 
 
 Následující pseudokódu definuje strukturu výrazu formátu textového pole. 
 
@@ -749,10 +776,10 @@ Tato vrstva bude vykreslovat funkci bodu, jak je znázorněno na následujícím
 
 `number-format`Výraz lze použít pouze s `textField` možností vrstvy symbolů. Tento výraz převede zadané číslo na formátovaný řetězec. Tento výraz zalomí funkci [Number. ToLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) jazyka JavaScript a podporuje následující sadu možností.
 
- * `locale`-Tuto možnost zadejte pro převod čísel na řetězce způsobem, který se zarovnává se zadaným jazykem. Předat do této možnosti [značku jazyka BCP 47](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) .
- * `currency`– Pro převod čísla na řetězec představující měnu. Možné hodnoty jsou [kódy měny ISO 4217](https://en.wikipedia.org/wiki/ISO_4217), jako je například USD pro americký dolar, EUR pro euro nebo "CNY" pro čínské RMB.
- * `'min-fraction-digits'`-Určuje minimální počet desetinných míst, která mají být zahrnuta do řetězcové verze čísla.
- * `'max-fraction-digits'`-Určuje maximální počet desetinných míst, která mají být zahrnuta do řetězcové verze čísla.
+ * `locale` -Tuto možnost zadejte pro převod čísel na řetězce způsobem, který se zarovnává se zadaným jazykem. Předat do této možnosti [značku jazyka BCP 47](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) .
+ * `currency` – Pro převod čísla na řetězec představující měnu. Možné hodnoty jsou [kódy měny ISO 4217](https://en.wikipedia.org/wiki/ISO_4217), jako je například USD pro americký dolar, EUR pro euro nebo "CNY" pro čínské RMB.
+ * `'min-fraction-digits'` -Určuje minimální počet desetinných míst, která mají být zahrnuta do řetězcové verze čísla.
+ * `'max-fraction-digits'` -Určuje maximální počet desetinných míst, která mají být zahrnuta do řetězcové verze čísla.
 
 Následující pseudokódu definuje strukturu výrazu formátu textového pole. 
 
@@ -791,7 +818,7 @@ Tato vrstva bude vykreslovat funkci bodu, jak je znázorněno na následujícím
 
 <center>
 
-![Příklad ](media/how-to-expressions/number-format-expression.png) výrazu formátu čísla</center>
+![Příklad ](media/how-to-expressions/number-format-expression.png) výrazu formátu čísla </center>
 
 ### <a name="image-expression"></a>Výraz obrázku
 
@@ -829,7 +856,7 @@ Tato vrstva vykreslí textové pole v symbolové vrstvě, jak je znázorněno na
 
 <center>
 
-![Příklad ](media/how-to-expressions/image-expression.png) výrazu obrázku</center>
+![Příklad ](media/how-to-expressions/image-expression.png) výrazu obrázku </center>
 
 ## <a name="zoom-expression"></a>Výraz lupy
 
@@ -916,16 +943,16 @@ Další ukázky kódu, které implementují výrazy, najdete v následujících 
 Přečtěte si další informace o možnostech vrstvy, které podporují výrazy:
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)

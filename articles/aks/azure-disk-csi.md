@@ -5,46 +5,43 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 4b5ccd2712a95f5f020daa0161f1b5908a38a62e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: edb38b0884629ebddb646df9d12d8b2e8d07b403
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422030"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089543"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní Azure disk Container Storage (CSI) ve službě Azure Kubernetes Service (AKS) (Preview)
-Ovladač Azure disk CSI je ovladač, který je kompatibilní se [specifikací CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md) , který používá AKS ke správě životního cyklu disků Azure. 
+Ovladač rozhraní Azure disk Container Storage (CSI) je ovladač kompatibilní se [specifikací CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md), který používá služba Azure Kubernetes Service (AKS) ke správě životního cyklu disků Azure.
 
-Rozhraní pro úložiště kontejnerů (CSI) představuje standard pro vystavení libovolných systémů blokování a souborů úložiště pro zabalení úloh na Kubernetes. Díky přijetí a používání rozhraní CSI může služba Azure Kubernetes Service (AKS) zapisovat, nasazovat a iterovat moduly plug-in, které vystavují nové nebo zlepšují stávající systémy úložiště v Kubernetes, aniž by museli se dotknout základního kódu Kubernetes a čekat na jeho cykly vydávání.
+Soubory CSI jsou standardem pro vystavení libovolných systémů blokování a souborové úložiště pro vytvoření kontejnerů úloh v Kubernetes. Po přijetí a použití rozhraní CSI může AKS zapisovat, nasazovat a iterovat moduly plug-in, aby vystavoval nové nebo vylepšit stávající systémy úložiště v Kubernetes, aniž by se museli podotknout základního kódu Kubernetes a počkat na jeho cykly vydaných verzí.
 
 Pokud chcete vytvořit cluster AKS s podporou ovladače CSI, přečtěte si téma [Povolení ovladačů rozhraní CSI pro disky Azure a soubory Azure v AKS](csi-storage-drivers.md).
 
 >[!NOTE]
-> *Ovladače v rámci stromu* odkazují na aktuální ovladače úložiště, které jsou součástí základního Kubernetes kódu, a nové ovladače CSI, které jsou moduly plug-in.
+> *Ovladače stromové struktury* odkazují na aktuální ovladače úložiště, které jsou součástí základního kódu Kubernetes, oproti novým ovladačům CSI, které jsou moduly plug-in.
 
-## <a name="use-csi-persistent-volumes-pv-with-azure-disks"></a>Použití trvalých svazků platformy CSI (PV) s disky Azure 
+## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Použití trvalých svazků CSI s disky Azure
 
-[Trvalý svazek](concepts-storage.md#persistent-volumes) představuje úložiště, které je zřízené pro použití s Kubernetes lusky. Trvalý svazek lze použít v jednom nebo mnoha luskech a lze jej dynamicky nebo staticky zřídit. V tomto článku se dozvíte, jak dynamicky vytvářet trvalé svazky s disky Azure, které používá jeden z nich v clusteru Azure Kubernetes Service (AKS). Informace o statickém zřizování najdete v tématu [Ruční vytvoření a použití svazku s disky Azure](azure-disk-volume.md).
+[Trvalý svazek](concepts-storage.md#persistent-volumes) (PV) představuje úložiště, které je zřízené pro použití s Kubernetes lusky. Souč_hod lze použít v jednom nebo mnoha luskech a lze ji dynamicky nebo staticky zřídit. V tomto článku se dozvíte, jak dynamicky vytvářet PVs s disky Azure pro použití jediným pod v clusteru AKS. Informace o statickém zřizování najdete v tématu [Ruční vytvoření a použití svazku s disky Azure](azure-disk-volume.md).
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
-## <a name="dynamically-create-azure-disk-pvs-using-the-built-in-storage-classes"></a>Dynamické vytváření Azure disk PVs pomocí integrovaných tříd úložiště
+## <a name="dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes"></a>Dynamické vytvoření Azure disk PVs pomocí integrovaných tříd úložiště
 
-Třída úložiště se používá k definování způsobu, jakým se jednotka úložiště dynamicky vytvoří s trvalým svazkem. Další informace o třídách úložiště Kubernetes naleznete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes]. Při používání ovladačů úložiště CSI v AKS je k dispozici 2 další integrovaná `StorageClasses` , která využívá **ovladače úložiště Azure disk CSI**. Další třídy úložiště CSI se vytvoří s clusterem společně s výchozími třídami úložiště ve stromové struktuře.
+Třída úložiště se používá k definování způsobu, jakým se jednotka úložiště dynamicky vytvoří s trvalým svazkem. Další informace o třídách úložiště Kubernetes naleznete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes]. Když použijete ovladače úložiště CSI na AKS, jsou k dispozici dva další integrované `StorageClasses` , které využívají ovladače úložiště Azure disk CSI. Další třídy úložiště CSI se vytvoří s clusterem společně s výchozími třídami úložiště ve stromové struktuře.
 
->[!NOTE]
-> *Ovladače v rámci stromu* odkazují na aktuální ovladače úložiště, které jsou součástí základního Kubernetes kódu a ovladačů. CSI, které jsou moduly plug-in.
+- `managed-csi`: K vytvoření spravovaného disku používá Azure SSD úrovně Standard místně redundantní úložiště (LRS).
+- `managed-csi-premium`: Používá Azure Premium LRS k vytvoření spravovaného disku.
 
-- `managed-csi` – Používá k vytvoření spravovaného disku místně redundantní úložiště (LRS) Azure StandardSSD.
-- `managed-csi-premium` – Používá k vytvoření spravovaného disku místně redundantní úložiště (LRS) Azure Premium. 
+Zásady opětovné deklarace v obou třídách úložiště zaručují, že se po odstranění příslušné PV disk Azure odstraní. Třídy úložiště také nakonfigurují PVs tak, aby se rozšířily. Potřebujete jenom Upravit deklaraci identity trvalého svazku (PVC) s novou velikostí.
 
-Zásady opětovné deklarace v obou třídách úložiště zajistí, že se při odstranění příslušného trvalého svazku odstraní základní disk Azure. Třídy úložiště také nakonfigurují trvalé svazky tak, aby se rozšířily, stačí upravit deklaraci trvalého svazku s novou velikostí.
+Chcete-li využít tyto třídy úložiště, vytvořte [trvalý virtuální okruh](concepts-storage.md#persistent-volume-claims) a příslušné na něm, které se na něj odkazují a používají je. K automatickému zřízení úložiště založeného na třídě úložiště slouží virtuální okruh (PVC). Virtuální okruh (PVC) může použít jednu z předem vytvořených tříd úložiště nebo uživatelsky definované třídy úložiště k vytvoření disku spravovaného službou Azure pro požadovanou SKU a velikost. Když vytváříte definici pod, je pro ni určen virtuální okruh, který požaduje požadované úložiště.
 
-Aby bylo možné využít tyto třídy úložiště, stačí vytvořit [trvalou deklaraci identity trvalého svazku (PVC)](concepts-storage.md#persistent-volume-claims) a příslušnému typu, který je na něj odkazuje, a využívat je. Deklarace identity trvalého svazku (PVC) se používá k automatickému zřízení úložiště na základě třídy úložiště. Virtuální okruh (PVC) může použít jednu z předem vytvořených tříd úložiště nebo uživatelsky definované třídy úložiště k vytvoření disku spravovaného službou Azure pro požadovanou SKU a velikost. Při vytváření definice pod je určena deklarace identity trvalého svazku pro vyžádání požadovaného úložiště.
-
-Vytvořte příklad pod a příslušnou deklaraci trvalého svazku pomocí příkazu [kubectl Apply][kubectl-apply] :
+Vytvořte příklad pod a příslušný trvalý virtuální okruh pomocí příkazu [kubectl Apply][kubectl-apply] :
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/pvc-azuredisk-csi.yaml
@@ -60,7 +57,7 @@ Poté, co je ve stavu spuštěno, vytvořte nový soubor s názvem `test.txt` .
 $ kubectl exec nginx-azuredisk -- touch /mnt/azuredisk/test.txt
 ```
 
-Disk teď můžete ověřit tak, že spustíte následující příkaz a ověříte, že se `test.txt` ve výstupu zobrazí soubor: 
+Nyní můžete ověřit, zda je disk správně připojen, spuštěním následujícího příkazu a ověřením, že je `test.txt` soubor zobrazen ve výstupu:
 
 ```console
 $ kubectl exec nginx-azuredisk -- ls /mnt/azuredisk
@@ -72,14 +69,14 @@ test.txt
 
 ## <a name="create-a-custom-storage-class"></a>Vytvoření vlastní třídy úložiště
 
-Výchozí třídy úložiště vyhovují nejběžnějším scénářům, ale ne všem. V některých případech můžete chtít vlastní třídu úložiště přizpůsobit vlastním parametrům. Pro exemplify máme scénář, kde můžete chtít změnit `volumeBindingMode` . 
+Výchozí třídy úložiště vyhovují nejběžnějším scénářům, ale ne všem. V některých případech můžete chtít vlastní třídu úložiště přizpůsobit vlastním parametrům. Například máme situaci, kdy byste mohli chtít změnit `volumeBindingMode` třídu.
 
-Výchozí třídy úložiště používají `volumeBindingMode: Immediate` takové záruky, ke kterým dojde ihned po vytvoření PersistentVolumeClaim. V případech, kdy jsou fondy uzlů omezené, například pomocí Zóny dostupnosti, by trvalé svazky byly vázané nebo zřízené bez znalosti požadavků na plánování (v tomto případě v konkrétní zóně).
+Výchozí třídy úložiště používají `volumeBindingMode: Immediate` třídu, která zaručuje, že dojde ihned po vytvoření trvalého virtuálního okruhu. V případech, kdy jsou vaše fondy uzlů omezené, například používání zón dostupnosti, by PVs bylo vázané nebo zřízené bez znalosti požadavků na plánování (v tomto případě v konkrétní zóně).
 
-Chcete-li tento scénář vyřešit, můžete použít `volumeBindingMode: WaitForFirstConsumer` , což způsobí zpoždění vazby a zřízení PersistentVolume, dokud se nevytvoří pod a pomocí PersistentVolumeClaim. V takovém případě bude PV odpovídat a bude zajištěna v zóně dostupnosti (nebo jiné topologii), která je zadána pomocí omezení plánování na základě. 
+Pro vyřešení tohoto scénáře můžete použít `volumeBindingMode: WaitForFirstConsumer` , čímž se odloží vazba a zřízení PV, dokud se nevytvoří pod, který používá trvalý virtuální okruh. V takovém případě bude PV odpovídat a bude zajištěna v zóně dostupnosti (nebo jiné topologii), která je zadána pomocí omezení plánování na základě.
 
-Vytvořte soubor s názvem `sc-azuredisk-csi-waitforfirstconsumer.yaml` a vložte níže uvedený manifest.
-Třída úložiště je stejná jako naše `managed-csi` třída úložiště, ale s jinou třídou úložiště `volumeBindingMode` . 
+Vytvořte soubor s názvem `sc-azuredisk-csi-waitforfirstconsumer.yaml` a vložte následující manifest.
+Třída úložiště je stejná jako naše `managed-csi` třída úložiště, ale s jinou `volumeBindingMode` třídou.
 
 ```yaml
 kind: StorageClass
@@ -104,13 +101,13 @@ storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 
 ## <a name="volume-snapshots"></a>Snímky svazků
 
-Ovladač Azure disk CSI podporuje vytváření [snímků trvalých svazků](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html). V rámci této schopnosti může ovladač provádět *úplné* nebo [ *přírůstkové* snímky](../virtual-machines/windows/disks-incremental-snapshots.md) v závislosti na hodnotě nastavené v `incremental` parametru (ve výchozím nastavení je to true). 
+Ovladač Azure disk CSI podporuje vytváření [snímků trvalých svazků](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html). V rámci této schopnosti může ovladač provádět *úplné* nebo [ *přírůstkové* snímky](../virtual-machines/windows/disks-incremental-snapshots.md) v závislosti na hodnotě nastavené v `incremental` parametru (ve výchozím nastavení je to true).
 
 Podrobnosti o všech parametrech naleznete v tématu [parametry třídy snímku svazku](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass).
 
 ### <a name="create-a-volume-snapshot"></a>Vytvoření snímku svazku
 
-Pokud chcete tuto funkci exemplify, vytvořte [třídu snímku svazku](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml) pomocí příkazu [kubectl Apply][kubectl-apply] :
+Příklad této funkce získáte tak, že vytvoříte [třídu snímků svazku](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml) pomocí příkazu [kubectl Apply][kubectl-apply] :
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml
@@ -118,7 +115,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azuredisk-vsc created
 ```
 
-Teď vytvoříme [snímek svazku](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml) z virtuálního počítače, který [jsme dynamicky vytvořili na začátku tohoto kurzu](#dynamically-create-azure-disk-pvs-using-the-built-in-storage-classes) `pvc-azuredisk` .
+Teď vytvoříme [snímek svazku](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml) z okruhu PVC, který [jsme dynamicky vytvořili na začátku tohoto kurzu](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) `pvc-azuredisk` .
 
 
 ```bash
@@ -160,7 +157,7 @@ Events:                                <none>
 
 ### <a name="create-a-new-pvc-based-on-a-volume-snapshot"></a>Vytvoření nového okruhu PVC na základě snímku svazku
 
-Můžete vytvořit nový trvalý virtuální okruh na základě snímku svazku. Použijte snímek vytvořený v předchozím kroku a vytvořte [Nový virtuální okruh (PVC)](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml) a [Nový pod](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/nginx-pod-restored-snapshot.yaml) ním, abyste ho mohli spotřebovat.
+Můžete vytvořit nový trvalý virtuální okruh na základě snímku svazku. Použijte snímek vytvořený v předchozím kroku a vytvořte [nový okruh PVC](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml) a [Nový pod](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/nginx-pod-restored-snapshot.yaml) ním, aby se mohl využívat.
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml
@@ -171,7 +168,7 @@ persistentvolumeclaim/pvc-azuredisk-snapshot-restored created
 pod/nginx-restored created
 ```
 
-Nakonec se ujistěte, že je to stejný virtuální okruh, který jste vytvořili, a to tak, že zkontrolujete jeho obsah.
+Nakonec se ujistěte, že se jedná o stejný virtuální okruh, který jste vytvořili, a to tak, že zkontrolujete jeho obsah.
 
 ```console
 $ kubectl exec nginx-restored -- ls /mnt/azuredisk
@@ -181,14 +178,13 @@ outfile
 test.txt
 ```
 
-Jak se očekávalo, pořád pořád vidíte náš dříve vytvořený `test.txt` soubor.
+Jak bylo očekáváno, můžeme stále vidět náš dříve vytvořený `test.txt` soubor.
 
 ## <a name="clone-volumes"></a>Klonovat svazky
 
 Klonovaný svazek je definován jako duplikát stávajícího svazku Kubernetes. Další informace o klonování svazků v Kubernetes najdete v Koncepční dokumentaci pro [klonování svazků](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-cloning).
 
-Ovladač CSI pro disky Azure podporuje klonování svazků. Chcete-li předvést, vytvořte [Klonovaný svazek](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml) [dříve vytvořeného](#dynamically-create-azure-disk-pvs-using-the-built-in-storage-classes) `azuredisk-pvc` a [nového pod tím, aby jej bylo možné spotřebovat](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml).
-
+Ovladač CSI pro disky Azure podporuje klonování svazků. Chcete-li předvést, vytvořte [Klonovaný svazek](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml) [dříve vytvořeného](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) `azuredisk-pvc` a [nového pod tím, aby jej bylo možné spotřebovat](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml).
 
 
 ```console
@@ -200,7 +196,7 @@ persistentvolumeclaim/pvc-azuredisk-cloning created
 pod/nginx-restored-cloning created
 ```
 
-Obsah naklonovaného svazku teď můžeme zkontrolovat tak, že níže uvedený příklad spustíte a potvrzujeme, že se vám `test.txt` vytvořený soubor pořád zobrazuje.
+Obsah klonovaného svazku teď můžeme zkontrolovat spuštěním následujícího příkazu a potvrzením, že se pořád zobrazuje náš `test.txt` vytvořený soubor.
 
 ```console
 $ kubectl exec nginx-restored-cloning -- ls /mnt/azuredisk
@@ -210,14 +206,14 @@ outfile
 test.txt
 ```
 
-## <a name="resize-a-persistent-volume-pv"></a>Změna velikosti trvalého svazku (PV)
+## <a name="resize-a-persistent-volume"></a>Změna velikosti trvalého svazku
 
-Místo toho si můžete vyžádat větší objem pro virtuální okruh. Upravte objekt PVC a zadejte větší velikost. Tato změna aktivuje rozšíření základního svazku, který zálohuje PersistentVolume. 
+Místo toho si můžete vyžádat větší objem pro virtuální okruh. Upravte objekt PVC a zadejte větší velikost. Tato změna aktivuje rozšíření základního svazku, který vrací souč_hod.
 
-> [!NOTE] 
-> Pro uspokojení deklarace identity se nikdy nevytvoří nový PersistentVolume. Místo toho se změnila velikost stávajícího svazku.
+> [!NOTE]
+> Nová souč_hod se nikdy nevytvořila, aby vyhověla deklaraci identity. Místo toho se změnila velikost stávajícího svazku.
 
-Integrovaná `managed-csi` třída úložiště v AKS již umožňuje rozšíření, takže využívá virtuální okruh, který byl [vytvořen dříve s touto třídou úložiště](#dynamically-create-azure-disk-pvs-using-the-built-in-storage-classes). Virtuální okruh (PVC) požadoval 10Gi trvalý svazek, můžeme potvrdit, že běží na:
+Integrovaná `managed-csi` třída úložiště v AKS již umožňuje rozšíření, takže použijte virtuální okruh, který byl [vytvořen dříve s touto třídou úložiště](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes). Okruh PVC požadoval trvalý svazek 10-GI. Můžeme potvrdit, že je možné spustit:
 
 ```console 
 $ kubectl exec -it nginx-azuredisk -- df -h /mnt/azuredisk
@@ -225,10 +221,11 @@ $ kubectl exec -it nginx-azuredisk -- df -h /mnt/azuredisk
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc        9.8G   42M  9.8G   1% /mnt/azuredisk
 ```
+
 > [!IMPORTANT]
 > V současné době ovladač Azure disk CSI podporuje pouze změnu velikosti virtuálních okruhů bez přidružených lusků (a svazku nepřipojeného k určitému uzlu).
 
-Jak to umožňuje odstranit pole pod vytvořeným dříve:
+Tímto způsobem odstraníme na začátku, které jsme vytvořili dříve:
 
 ```console
 $ kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/nginx-pod-azuredisk.yaml
@@ -254,7 +251,7 @@ pvc-391ea1a6-0191-4022-b915-c8dc4216174a   15Gi       RWO            Delete     
 (...)
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Virtuální okruh nebude odrážet novou velikost, dokud znovu nemá přiřazený objekt pod.
 
 Pojďme vytvořit nové pod:
@@ -265,7 +262,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 pod/nginx-azuredisk created
 ```
 
-Nakonec potvrďte velikost okruhu PVC a dovnitř pod ním: 
+A nakonec potvrďte velikost okruhu PVC a dovnitř pod ním:
 ```console
 $ kubectl get pvc pvc-azuredisk
 NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -280,9 +277,9 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 [Azure shared disks](../virtual-machines/windows/disks-shared.md) is an Azure managed disks feature that enables attaching an Azure disk to agent nodes simultaneously. Attaching a managed disk to multiple agent nodes allows you, for example, to deploy new or migrate existing clustered applications to Azure.
 
-> [!IMPORTANT] Currently, only raw block device (`volumeMode: Block`) is supported by the Azure disk CSI driver. Applications should manage the coordination and control of writes, reads, locks, caches, mounts and fencing on the shared disk which is exposed as raw block device.
+> [!IMPORTANT] Currently, only raw block device (`volumeMode: Block`) is supported by the Azure disk CSI driver. Applications should manage the coordination and control of writes, reads, locks, caches, mounts, and fencing on the shared disk, which is exposed as a raw block device.
 
-Let's create file called `shared-disk.yaml` by copying the below that contains the shared disk storage class and PVC:
+Let's create a file called `shared-disk.yaml` by copying the following command that contains the shared disk storage class and PVC:
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -310,7 +307,7 @@ spec:
   storageClassName: managed-csi-shared
 ```
 
-Create the storage class with the [kubectl apply][kubectl-apply] command and specify your `shared-disk.yaml` file:
+Create the storage class with the [kubectl apply][kubectl-apply] command, and specify your `shared-disk.yaml` file:
 
 ```console
 $ kubectl apply -f shared-disk.yaml
@@ -319,7 +316,7 @@ storageclass.storage.k8s.io/managed-csi-shared created
 persistentvolumeclaim/pvc-azuredisk-shared created
 ``` 
 
-Now let's create a file called `deployment-shared.yml` by copying the below:
+Now let's create a file called `deployment-shared.yml` by copying the following command:
 
 ```yaml
 apiVersion: apps/v1
@@ -351,7 +348,7 @@ spec:
             claimName: pvc-azuredisk-shared
 ```
 
-Create the deployment with the [kubectl apply][kubectl-apply] command and specify your `deployment-shared.yml` file:
+Create the deployment with the [kubectl apply][kubectl-apply] command, and specify your `deployment-shared.yml` file:
 
 ```console
 $ kubectl apply -f deployment-shared.yml
@@ -372,9 +369,9 @@ root@deployment-sharedisk-7454978bc6-xh7jp:/# dd if=/dev/zero of=/dev/sdx bs=102
 
 ## <a name="windows-containers"></a>Kontejnery Windows
 
-Ovladač Azure disk CSI podporuje i uzly a kontejnery Windows. Pokud chcete používat kontejnery Windows, postupujte podle [kurzu Windows Containers](windows-container-cli.md) (Přidat fond uzlů Windows).
+Ovladač Azure disk CSI podporuje i uzly a kontejnery Windows. Pokud chcete používat kontejnery Windows, přidejte fond uzlů Windows podle [kurzu Windows Containers](windows-container-cli.md) .
 
-Jakmile budete mít fond uzlů Windows, můžete teď využít předdefinované třídy úložiště, jako je `managed-csi` . Můžete nasadit ukázkovou [stavovou sadu založenou na systému Windows](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) , která uloží časová razítka do souboru `data.txt` nasazením níže pomocí příkazu [kubectl Apply][kubectl-apply] :
+Až budete mít fond uzlů Windows, můžete teď použít předdefinované třídy úložiště, jako je `managed-csi` . Můžete nasadit ukázkovou [stavovou sadu založenou na Windows](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) , která uloží časová razítka do souboru `data.txt` nasazením následujícího příkazu pomocí příkazu [kubectl Apply][kubectl-apply] :
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -396,8 +393,8 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o použití ovladače CSI pro soubory Azure najdete v tématu [použití souborů Azure s ovladači CSI](azure-files-csi.md).
-- Další informace o osvědčených postupech pro úložiště najdete v tématu [osvědčené postupy pro úložiště a zálohy ve službě Azure Kubernetes Service (AKS)][operator-best-practices-storage] .
+- Informace o tom, jak používat ovladače CSI pro soubory Azure, najdete v tématu [použití souborů Azure s ovladači CSI](azure-files-csi.md).
+- Další informace o osvědčených postupech pro úložiště najdete v tématu [osvědčené postupy pro úložiště a zálohování ve službě Azure Kubernetes][operator-best-practices-storage].
 
 
 <!-- LINKS - external -->

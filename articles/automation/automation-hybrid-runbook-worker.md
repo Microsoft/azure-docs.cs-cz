@@ -3,14 +3,14 @@ title: Přehled Azure Automation Hybrid Runbook Worker
 description: Tento článek poskytuje přehled Hybrid Runbook Worker, které můžete použít ke spouštění Runbooků na počítačích v místním datovém centru nebo poskytovateli cloudu.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/16/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448073"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087880"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -51,9 +51,9 @@ Aby bylo možné Hybrid Runbook Worker připojit k Azure Automation a zaregistro
 Pro Hybrid Runbook Worker jsou vyžadovány následující porty a adresy URL:
 
 * Port: pro odchozí přístup k Internetu se vyžaduje jenom TCP 443.
-* Globální adresa URL:`*.azure-automation.net`
-* Globální adresa URL US Gov – Virginie:`*.azure-automation.us`
-* Služba agenta:`https://<workspaceId>.agentsvc.azure-automation.net`
+* Globální adresa URL: `*.azure-automation.net`
+* Globální adresa URL US Gov – Virginie: `*.azure-automation.us`
+* Služba agenta: `https://<workspaceId>.agentsvc.azure-automation.net`
 
 Pokud máte účet Automation, který je definovaný pro konkrétní oblast, můžete Hybrid Runbook Worker komunikaci omezit na příslušné oblastní datové centrum. Zkontrolujte [záznamy DNS používané Azure Automation](how-to/automation-region-dns-records.md) pro požadované záznamy DNS.
 
@@ -63,11 +63,11 @@ Pokud používáte proxy server ke komunikaci mezi Azure Automation a počítač
 
 ### <a name="firewall-use"></a>Použití brány firewall
 
-Pokud používáte bránu firewall k omezení přístupu k Internetu, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy, ujistěte se, že je nakonfigurovaná pro procesy Hybrid Runbook Worker. Viz téma [Konfigurace brány Log Analytics pro hybridní pracovní procesy automatizace](../azure-monitor/platform/gateway.md).
+Pokud používáte bránu firewall k omezení přístupu k Internetu, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy, ujistěte se, že je nakonfigurovaná pro procesy Hybrid Runbook Worker. Viz téma [Konfigurace brány Log Analytics pro procesy Hybrid Runbook Worker pro automatizaci](../azure-monitor/platform/gateway.md).
 
 ### <a name="service-tags"></a>Značky služeb
 
-Azure Automation podporuje značky služby virtuální sítě Azure, počínaje značkou služby [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby **GuestAndHybridManagement** v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro službu Automation. Tato značka služby nepodporuje povolení podrobnějšího řízení tím, že omezí rozsahy IP adres na konkrétní oblast.
+Azure Automation podporuje značky služby virtuální sítě Azure, počínaje značkou služby [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby **GuestAndHybridManagement**  v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro službu Automation. Tato značka služby nepodporuje povolení podrobnějšího řízení tím, že omezí rozsahy IP adres na konkrétní oblast.
 
 Značka služby pro službu Azure Automation poskytuje pouze IP adresy, které se používají v následujících scénářích:
 
@@ -115,6 +115,20 @@ Pokud se Hybrid Runbook Worker hostitelský počítač restartuje, všechny spu�
 ### <a name="runbook-permissions-for-a-hybrid-runbook-worker"></a>Oprávnění sady Runbook pro Hybrid Runbook Worker
 
 Protože mají přístup k prostředkům mimo Azure, Runbooky spouštěné v Hybrid Runbook Worker nemůžou použít ověřovací mechanismus, který používají Runbooky ověřování pro prostředky Azure. Sada Runbook buď poskytuje vlastní ověřování pro místní prostředky, nebo konfiguruje ověřování pomocí [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). Můžete také zadat účet Spustit jako, který bude poskytovat kontext uživatele pro všechny sady Runbook.
+
+## <a name="view-hybrid-runbook-workers"></a>Zobrazit procesy Hybrid Runbook Worker
+
+Po povolení funkce Update Management na serverech nebo virtuálních počítačích se systémem Windows můžete v Azure Portal inventarizaci seznamu skupiny System Hybrid Runbook Worker. Na portálu můžete zobrazit až 2 000 pracovních procesů tak, že v levém podokně pro vybraný účet Automation vyberete **skupinu hybridní pracovní procesy systému** karta ze **skupiny hybridní pracovní** procesy.
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png" alt-text="Stránka skupiny hybridních pracovních procesů systému účtů služby Automation" border="false" lightbox="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png":::
+
+Pokud máte více než 2 000 hybridních pracovních procesů a získáte seznam všech těchto možností, můžete spustit následující skript prostředí PowerShell:
+
+```powershell
+"Get-AzSubscription -SubscriptionName "<subscriptionName>" | Set-AzContext
+$workersList = (Get-AzAutomationHybridWorkerGroup -ResourceGroupName "<resourceGroupName>" -AutomationAccountName "<automationAccountName>").Runbookworker
+$workersList | export-csv -Path "<Path>\output.csv" -NoClobber -NoTypeInformation"
+```
 
 ## <a name="next-steps"></a>Další kroky
 

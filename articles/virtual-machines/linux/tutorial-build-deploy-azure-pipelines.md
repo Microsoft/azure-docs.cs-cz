@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6025e1c257ad7b94586ceb4f89c02c3a44c59c3e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462169"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090308"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Kurz: nasazení aplikace do virtuálních počítačů se systémem Linux v Azure pomocí Azure DevOps Services a Azure Pipelines
 
@@ -147,6 +147,7 @@ Budete potřebovat kanál sestavení průběžné integrace (CI), který publiku
 Vyberte **počáteční** šablonu a zkopírujte následující fragment kódu YAML, který sestaví projekt Java a spustí testy s Apache Maven:
 
 ```YAML
+jobs:
 - job: Build
   displayName: Build Maven Project
   steps:
@@ -203,13 +204,13 @@ Další pokyny najdete v postupu [sestavení aplikace Node.js pomocí Gulp](/azu
 
 - Vyberte **Uložit a spustit**, pak vyberte **potvrdit přímo do hlavní větve**a pak zvolte **Uložit a spustit** znovu.
 
-- Spustí se nový běh. Počkejte na dokončení běhu.
+- Spustí se nový běh. Počkejte na dokončení.
 
 * * * 
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Definování kroků CD pro nasazení na virtuální počítač se systémem Linux
 
-1. Upravte výše uvedený kanál a zahrňte [úlohu nasazení](/azure/devops/pipelines/process/deployment-jobs) , která odkazuje na prostředí a prostředky virtuálních počítačů, které jste použili dříve pomocí syntaxe YAML:
+1. Změňte soubor YAML pro výše uvedený kanál tak, aby zahrnoval [úlohu nasazení](/azure/devops/pipelines/process/deployment-jobs) , a to tak, že odkazuje na prostředí a prostředky virtuálních počítačů, které jste používali dříve pomocí syntaxe YAML níže:
 
    ```YAML
    jobs:  
@@ -218,8 +219,7 @@ Další pokyny najdete v postupu [sestavení aplikace Node.js pomocí Gulp](/azu
      environment:
        name:  <environment name>
        resourceType: VirtualMachine
-       tags: web1
-     strategy:
+       tags: web
    ```
 2. Můžete vybrat konkrétní sady virtuálních počítačů z prostředí pro příjem nasazení zadáním **značek** , které jste definovali pro každý virtuální počítač v prostředí.
 [Tady](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) je kompletní schéma YAML pro úlohu nasazení.

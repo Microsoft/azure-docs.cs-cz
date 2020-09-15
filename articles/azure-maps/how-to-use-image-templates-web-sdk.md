@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d6c7ba255b0dcec280d05eab36be71b8c9a726ae
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004652"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086551"
 ---
 # <a name="how-to-use-image-templates"></a>Používání šablon obrázků
 
@@ -58,7 +58,7 @@ Následující ukázka vykreslí vrstvu symbolů pomocí `marker-flat` šablony 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Symbolová vrstva s vestavěnou šablonou ikon" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Symbolová vrstva s vestavěnou šablonou ikon" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>vrstvu symbolů pera s integrovanou šablonou ikon</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -70,7 +70,7 @@ Následující ukázka vykreslí růžovou čáru na mapě a používá vrstvu s
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Spojnicová vrstva s integrovanou šablonou ikon" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Spojnicová vrstva s integrovanou šablonou ikon" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>vrstvu čáry pera s integrovanou šablonou ikon</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -85,7 +85,7 @@ Následující ukázka vykreslí mnohoúhelníkovou vrstvu pomocí `dot` šablon
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Vyplnit mnohoúhelník pomocí předdefinované šablony ikon" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vyplnit mnohoúhelník pomocí předdefinované šablony ikon" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se, jak se v CodePen () na nachází <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>mnohoúhelník výplně perem pomocí předdefinované Azure Maps šablony ikon</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
@@ -100,13 +100,13 @@ Následující ukázka používá `marker-arrow` šablonu s červenou primární
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Značka HTML s integrovanou šablonou ikon" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Značka HTML s integrovanou šablonou ikon" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML pera s integrovanou šablonou ikon</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 > [!TIP]
-> Šablony obrázků lze použít i mimo mapu. GetImageTemplate atanh vrátí řetězec SVG, který obsahuje zástupné symboly; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Chcete-li vytvořit platný řetězec SVG, nahraďte tyto zástupné hodnoty. Pak můžete buď přidat řetězec SVG přímo do modelu DOM HTML, nebo ho převést na identifikátor URI dat a vložit ho do značky obrázku. Například:
+> Šablony obrázků lze použít i mimo mapu. GetImageTemplate atanh vrátí řetězec SVG, který obsahuje zástupné symboly; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Chcete-li vytvořit platný řetězec SVG, nahraďte tyto zástupné hodnoty. Pak můžete buď přidat řetězec SVG přímo do modelu DOM HTML, nebo ho převést na identifikátor URI dat a vložit ho do značky obrázku. Příklad:
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
@@ -138,7 +138,7 @@ Následující příklad ukazuje, jak převzít šablonu SVG a přidat ji do sad
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Přidat šablonu vlastní ikony do oboru názvů Atlas" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Přidat šablonu vlastní ikony do oboru názvů Atlas" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Přidání vlastní ikony do oboru názvů Atlas</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -505,7 +505,7 @@ Pomocí následujícího nástroje můžete vykreslit různé předdefinované �
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Možnosti šablony ikony" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Možnosti šablony ikony" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Možnosti šablony s ikonami</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -517,7 +517,7 @@ Další informace o třídách a metodách, které se používají v tomto člá
 > [ImageSpriteManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [obor názvů Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-maps-typescript-latest#functions
+> [obor názvů Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#functions
 )
 
 V následujících článcích najdete další ukázky kódu, kde je možné použít šablony obrázků:

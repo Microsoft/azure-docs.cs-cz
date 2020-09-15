@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708072"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087843"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Vytvoření služby IoT Hub pomocí Azure CLI
 
@@ -20,9 +20,9 @@ ms.locfileid: "84708072"
 
 V tomto článku se dozvíte, jak vytvořit centrum IoT pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,21 +44,21 @@ Pomocí Azure CLI vytvořte skupinu prostředků a pak přidejte službu IoT Hub
 
 1. Když vytvoříte centrum IoT, musíte ho vytvořit ve skupině prostředků. Použijte existující skupinu prostředků, nebo spusťte následující [příkaz pro vytvoření skupiny prostředků](https://docs.microsoft.com/cli/azure/resource):
     
-   ```azurecli
+   ```azurecli-interactive
    az group create --name {your resource group name} --location westus
    ```
 
    > [!TIP]
    > Předchozí příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním tohoto příkazu: 
    >
-   >``` bash
-   >az account list-locations -o table
-   >```
+   > ```azurecli-interactive
+   > az account list-locations -o table
+   > ```
    >
 
 2. Spuštěním následujícího příkazu vytvořte ve skupině prostředků [Centrum IoT](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) s použitím globálně jedinečného názvu pro vaše centrum IoT:
     
-   ```azurecli
+   ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
       --resource-group {your resource group name} --sku S1
    ```
@@ -74,14 +74,14 @@ Pomocí Azure CLI můžete [odstranit jednotlivý prostředek](https://docs.micr
 
 Pokud chcete [Odstranit centrum IoT](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete), spusťte následující příkaz:
 
-```azurecli
+```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
 Pokud chcete [Odstranit skupinu prostředků](https://docs.microsoft.com/cli/azure/group#az-group-delete) a všechny její prostředky, spusťte následující příkaz:
 
-```azurecli
+```azurecli-interactive
 az group delete --name {your resource group name}
 ```
 

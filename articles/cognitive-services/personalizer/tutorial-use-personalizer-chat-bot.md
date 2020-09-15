@@ -4,12 +4,12 @@ description: Přizpůsobte si robota chatu v C# .NET se smyčkou pro přizpůsob
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935649"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089883"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Kurz: použití přizpůsobeného prostředí v rozhraní .NET chat bot
 
@@ -21,7 +21,7 @@ K poskytnutí správného obsahu uživateli použijte robota chatu v C# .NET se 
 > [!div class="checklist"]
 > * Nastavení prostředků Azure
 > * Konfigurace a spuštění robota
-> * Interakce s robotem pomocí emulátoru bot
+> * Interakce s robotem pomocí emulátoru bot Frameworku
 > * Informace o tom, kde a jak Robot používá přizpůsobování
 
 
@@ -174,7 +174,7 @@ Nechejte web spuštěný, protože kurz vysvětluje, co dělá robot, takže mů
 
 ## <a name="set-up-the-bot-emulator"></a>Nastavení emulátoru bot
 
-1. Otevřete emulátor bot a vyberte **otevřít robot**.
+1. Otevřete emulátor rozhraní bot Framework a vyberte **otevřít robot**.
 
     :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Snímek obrazovky s úvodní obrazovkou emulátoru bot":::
 

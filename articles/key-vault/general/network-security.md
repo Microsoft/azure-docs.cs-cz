@@ -7,15 +7,15 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 04/22/2020
+ms.date: 09/14/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1c8d1af9bcea6b5e0e43a8928cbcdd907f2fb534
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bc25a2ada3052689bc9dc4585c238fe19cb2a341
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069029"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087387"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Azure Key Vault bran firewall a virtuálních sítí
 
@@ -27,7 +27,6 @@ Tento článek poskytuje podrobné pokyny ke konfiguraci Azure Key Vault bran fi
 > [!NOTE]
 > Mějte na paměti následující omezení konfigurace:
 > * Povoluje se maximálně 127 pravidel virtuální sítě a 127 pravidel IPv4. 
-> * Rozsahy malých adres, které používají předponu "/31", nejsou podporovány. Místo toho nakonfigurujte tyto rozsahy pomocí jednotlivých pravidel IP adres.
 > * Pravidla sítě IP jsou povolena pouze pro veřejné IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v dokumentu RFC 1918) nejsou v pravidlech protokolu IP povoleny. Soukromé sítě obsahují adresy, které začínají na **10.**, **172.16-31**a **192,168.**. 
 > * V tuto chvíli se podporují jenom IPv4 adresy.
 

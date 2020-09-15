@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5021b815da1419052ceb4d6114fbb2bc676fe8d6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672977"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088395"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Práce s JSON a datovými strukturami v Azure Monitorch dotazech protokolu
 
@@ -85,7 +85,7 @@ print hosts_object
 | mvexpand hosts_object.hosts[0]
 ```
 
-![mvexpand](media/json-data-structures/mvexpand.png)
+![Snímek obrazovky zobrazuje hosts_0 s hodnotami pro umístění, stav a rychlost.](media/json-data-structures/mvexpand.png)
 
 ### <a name="buildschema"></a>buildschema
 Slouží `buildschema` k získání schématu, které připouštějí všechny hodnoty objektu:

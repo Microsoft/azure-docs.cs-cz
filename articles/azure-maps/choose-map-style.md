@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fe07d6d54296a3c55cb0b2cadb4d4ae0a311873b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036789"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089560"
 ---
 # <a name="change-the-style-of-the-map"></a>Změna stylu mapy
 
@@ -82,7 +82,7 @@ Základní styl mapy lze aktualizovat pomocí `setStyle` funkce a nastavením `s
 map.setStyle({ style: 'satellite' });
 ```
 
-V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `grayscale_dark` na k `satellite` použití funkce [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) .
+V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `grayscale_dark` na k `satellite` použití funkce [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) .
 
 <br/>
 
@@ -97,14 +97,14 @@ Výběr stylu má dvě různé možnosti rozložení: `icon` a `list` . Výběr 
 
 Následující obrázek ukazuje ovládací prvek pro výběr stylu zobrazený v `icon` rozložení.
 
-:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Rozložení seznamu výběru stylu":::
+:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Rozložení ikony výběru stylu":::
 
 Následující obrázek ukazuje ovládací prvek pro výběr stylu zobrazený v `list` rozložení.
 
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Rozložení seznamu výběru stylu":::
 
 > [!IMPORTANT]
->Ve výchozím nastavení ovládací prvek pro výběr stylu vypíše všechny styly, které jsou k dispozici v rámci cenové úrovně S0 Azure Maps. Pokud chcete snížit počet stylů v tomto seznamu, předejte pole stylů, které chcete zobrazit v seznamu, do `mapStyle` Možnosti výběru stylu. Pokud používáte S1 a chcete zobrazit všechny dostupné styly, nastavte `mapStyles` možnost výběru stylu na `"all"` .
+> Ve výchozím nastavení ovládací prvek pro výběr stylu vypíše všechny styly, které jsou k dispozici v rámci cenové úrovně S0 Azure Maps. Pokud chcete snížit počet stylů v tomto seznamu, předejte pole stylů, které chcete zobrazit v seznamu, do `mapStyle` Možnosti výběru stylu. Pokud používáte S1 a chcete zobrazit všechny dostupné styly, nastavte `mapStyles` možnost výběru stylu na `"all"` .
 
 Následující kód ukazuje, jak přepsat výchozí `mapStyles` seznam základních stylů. V tomto příkladu nastavujeme `mapStyles` možnost zobrazení seznamu základních stylů, které chceme zobrazit pomocí ovládacího prvku pro výběr stylu.
 
@@ -118,7 +118,7 @@ Následující kód ukazuje, jak přepsat výchozí `mapStyles` seznam základn�
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)

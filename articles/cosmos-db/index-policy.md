@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607511"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089509"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
-V Azure Cosmos DB má každý kontejner zásady indexování, které určují, jak by měly být indexovány položky kontejneru. Výchozí zásada indexování pro nově vytvořené kontejnery indexuje každou vlastnost každé položky a vynutila indexy rozsahu pro libovolný řetězec nebo číslo. To vám umožní získat vysoký výkon dotazů, aniž byste se museli zabývat o indexování a správě indexu předem.
+Ve službě Azure Cosmos DB má každý kontejner zásady indexování, které určují, jakým způsobem by se měly indexovat položky kontejneru. Výchozí zásady indexování pro nově vytvořené kontejnery indexují všechny vlastnosti všech položek a u všech řetězců a čísel vynucují indexy rozsahu. Díky tomu můžete dosáhnout vysokého výkonu dotazů, aniž byste předem museli myslet na indexování a správu indexů.
 
 V některých situacích možná budete chtít toto automatické chování přepsat, aby lépe vyhovovalo vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit nastavením jeho *režimu indexování*a zahrnutí nebo vyloučení *cest k vlastnostem*.
 
@@ -30,7 +30,7 @@ Azure Cosmos DB podporuje dva režimy indexování:
 - **Žádné**: indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) , dokud nebude dokončen.
 
 > [!NOTE]
-> Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority, pokud modul neprovede žádnou jinou práci. Výsledkem může být **nekonzistentní nebo neúplné** výsledky dotazu. Pokud plánujete dotaz na kontejner Cosmos, neměli byste vybírat opožděné indexování. V červnu 2020 jsme zavedli změnu, která již neumožňuje nastavit nové kontejnery na režim opožděného indexování. Pokud váš Azure Cosmos DB účet už obsahuje aspoň jeden kontejner s opožděným indexováním, tento účet se od změny automaticky nezbavuje. Můžete taky požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (s výjimkou případů, kdy používáte účet Azure Cosmos v režimu bez [serveru](serverless.md) , který nepodporuje opožděné indexování).
+> Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority v době, kdy modul neprovádí žádnou jinou práci. To může vést k **nekonzistentním nebo neúplným** výsledkům dotazů. Pokud plánujete dotazy na kontejner Cosmos, neměli byste vybírat opožděné indexování. V červnu 2020 jsme zavedli změnu, která již neumožňuje nastavit nové kontejnery na režim opožděného indexování. Pokud váš Azure Cosmos DB účet už obsahuje aspoň jeden kontejner s opožděným indexováním, tento účet se od změny automaticky nezbavuje. Můžete taky požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (s výjimkou případů, kdy používáte účet Azure Cosmos v režimu bez [serveru](serverless.md) , který nepodporuje opožděné indexování).
 
 Ve výchozím nastavení je zásada indexování nastavena na `automatic` . Dosáhnete tím, že nastavíte `automatic` vlastnost v zásadě indexování na `true` . Nastavením této vlastnosti `true` umožníte, aby Azure CosmosDB automaticky indexoval dokumenty při jejich zápisu.
 
@@ -81,7 +81,7 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 
 Při zahrnutí a vyloučení cest se můžete setkat s následujícími atributy:
 
-- `kind` může být buď `range` nebo `hash` . Funkce indexu rozsahu poskytuje všechny funkce indexu hash, proto doporučujeme použít index rozsahu.
+- `kind` může být buď `range` nebo `hash` . Podpora indexu hash je omezená na filtry rovnosti. Funkce indexu rozsahu poskytuje veškerou funkčnost indexů hash a také efektivní řazení, filtry rozsahu a systémové funkce. Vždycky doporučujeme použít index rozsahu.
 
 - `precision` je číslo definované na úrovni indexu pro zahrnuté cesty. Hodnota `-1` označuje maximální přesnost. Doporučujeme vždycky nastavit tuto hodnotu na `-1` .
 

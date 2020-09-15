@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 5de5224ca85d2421182c9721d3b6394e10b43863
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3d5ca648b149fa85b28f695956a438cdac9e67e8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997944"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086619"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
 
@@ -87,7 +87,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 
 ### <a name="select-your-target-architecture"></a>Vyberte cílovou architekturu.
 
-V současné době Visual Studio Code může vyvíjet moduly C pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
+Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
 1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
 
@@ -258,7 +258,7 @@ V předchozích částech jste vytvořili řešení s jedním modulem a pak jste
 
 Moduly na zařízení můžete nastavit prostřednictvím služby IoT Hub, ale přistupovat ke službě IoT Hub a zařízením můžete také přes Visual Studio Code. V této části nastavíte přístup ke službě IoT Hub a pak pomocí VS Code nasadíte své řešení do zařízení IoT Edge.
 
-1.  V Průzkumníkovi Visual Studio Code v části **Azure IoT Hub** rozbalte **zařízení** , abyste viděli seznam zařízení IoT.
+1. V Průzkumníkovi Visual Studio Code v části **Azure IoT Hub** rozbalte **zařízení** , abyste viděli seznam zařízení IoT.
 
 2. Klikněte pravým tlačítkem na zařízení, které chcete zacílit s vaším nasazením, a vyberte **vytvořit nasazení pro jedno zařízení**.
 
