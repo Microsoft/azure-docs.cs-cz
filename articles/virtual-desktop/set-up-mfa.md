@@ -24,7 +24,7 @@ Po prvním přihlášení si klient vyžádá vaše uživatelské jméno, heslo 
 
 I když je zapamatování přihlašovacích údajů pohodlné, může také provádět nasazení v podnikových scénářích nebo na osobních zařízeních méně zabezpečená. Pokud chcete chránit své uživatele, musíte se ujistit, že klient uchovává dotaz na přihlašovací údaje pro Azure Multi-Factor Authentication (MFA). V tomto článku se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro virtuální plochu Windows, aby toto nastavení bylo povolené.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je přehled toho, co budete potřebovat k zahájení práce:
 

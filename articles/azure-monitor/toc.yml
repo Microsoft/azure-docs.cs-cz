@@ -564,7 +564,7 @@
               href: platform/itsmc-overview.md
             - name: Připojení IT Service Management
               href: platform/itsmc-connections.md
-            - name: Integrace zabezpečeného exportu
+            - name: Integrace se zabezpečeným exportem
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Vytvoření webové aplikace Service Manageru
               href: platform/itsmc-service-manager-script.md

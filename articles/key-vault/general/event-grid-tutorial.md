@@ -23,7 +23,7 @@ Azure Key Vault Integration with Azure Event Grid povolí uživateli oznámení,
 
 Tato příručka popisuje, jak dostávat oznámení o Key Vault prostřednictvím Event Grid a jak reagovat na změny stavu prostřednictvím Azure Automation.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](../secrets/quick-create-cli.md).
@@ -179,7 +179,7 @@ Ověřte, že je vaše předplatné Event Grid správně nakonfigurované. Tento
 
 1. Vyberte poslední úlohu a podívejte se na požadavek POST, který byl odeslán z Event Grid Webhooku. Zkontrolujte kód JSON a ujistěte se, že parametry trezoru klíčů a typu události jsou správné. Pokud parametr "event type" v objektu JSON odpovídá události, ke které došlo v trezoru klíčů (v tomto příkladu je to Microsoft. klíčů trezor. SecretNearExpiry), test byl úspěšný.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="you-cant-create-an-event-subscription"></a>Nemůžete vytvořit odběr událostí.
 

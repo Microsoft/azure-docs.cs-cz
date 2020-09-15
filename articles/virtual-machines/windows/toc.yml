@@ -446,7 +446,7 @@
                   items:
                     - name: Z virtuálního počítače
                       href: ../image-version-vm-powershell.md
-                    - name: Z disku VHD nebo snímku
+                    - name: Ze spravovaného disku nebo snímku
                       href: ../image-version-snapshot-powershell.md
                     - name: Migrace ze spravované image
                       href: ../image-version-managed-image-powershell.md
@@ -468,7 +468,7 @@
                   items:
                     - name: Z virtuálního počítače
                       href: ../image-version-vm-cli.md
-                    - name: Z disku VHD nebo snímku
+                    - name: Ze spravovaného disku nebo snímku
                       href: ../image-version-snapshot-cli.md
                     - name: Migrace ze spravované image
                       href: ../image-version-managed-image-cli.md
@@ -507,21 +507,33 @@
           items:
             - name: Přehled
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Použití Azure CLI
-              href: image-builder.md
-            - name: Vytvoření virtuálního počítače pomocí virtuální sítě
+            - name: Použití Image Builderu
+              items:
+                - name: CLI
+                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: image-builder-powershell.md
+            - name: Použití virtuální sítě
               href: image-builder-vnet.md
-            - name: Použití Azure Powershell
-              href: image-builder-powershell.md
+            - name: Možnosti sítí
+              href: ../linux/image-builder-networking.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Konfigurace oprávnění
+              items:
+                - name: CLI
+                  href: ../linux/image-builder-permissions-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Úloha DevOps
+              href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Referenční informace k šablonám ARM
+              displayName: Azure Resource Manager
+              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Sestavení pro galerie imagí
               href: image-builder-gallery.md
             - name: Aktualizace existující image
               href: image-builder-gallery-update-image-version.md
             - name: Ukládání skriptů
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Referenční informace k šablonám ARM
-              displayName: Azure Resource Manager
-              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Řešení potíží
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Vyhledání a použití imagí
@@ -674,7 +686,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Rozhraní příkazového řádku
+            - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

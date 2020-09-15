@@ -6,8 +6,6 @@
       href: overview.md
     - name: 'Informace o klíčích, tajných kódech a certifikátech'
       href: about-keys-secrets-certificates.md
-    - name: Co je nového
-      href: whats-new.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -62,9 +60,9 @@
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-    - name: Oznámení (Preview)
+    - name: Oznámení
       items:
-        - name: Monitorování pomocí služby Azure Event Grid (Preview)
+        - name: Monitorování pomocí služby Azure Event Grid
           href: event-grid-overview.md
     - name: Obnovitelné odstranění
       items:
@@ -96,6 +94,8 @@
               href: assign-access-policy-portal.md
         - name: 'Použití Azure RBAC pro správu přístupu ke klíčům, tajným kódům a certifikátům (Preview)'
           href: rbac-guide.md
+        - name: Průvodce migrací zásad přístupu k trezoru na Azure RBAC
+          href: rbac-migration.md
         - name: Řešení potíží s přístupem
           href: troubleshooting-access-issues.md
     - name: Vývoj
@@ -144,6 +144,8 @@
           href: move-region.md
 - name: Referenční informace
   items:
+    - name: Co je nového
+      href: whats-new.md
     - name: Klientské knihovny
       href: client-libraries.md
     - name: Kódy chyb rozhraní REST API –⁠ Azure Key Vault

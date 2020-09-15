@@ -47,6 +47,8 @@
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Nasazení Azure Spring Cloudu ve virtuální síti
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+    - name: Použití spravované identity k vyvolání Azure Functions z aplikace Azure Spring Cloud
+      href: spring-cloud-tutorial-managed-identities-functions.md
 - name: Koncepty
   items:
     - name: Principy aplikací a nasazení

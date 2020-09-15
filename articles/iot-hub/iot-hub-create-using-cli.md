@@ -20,7 +20,7 @@ ms.locfileid: "90087843"
 
 V tomto článku se dozvíte, jak vytvořit centrum IoT pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

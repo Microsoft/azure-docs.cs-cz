@@ -1,6 +1,6 @@
 ---
 title: Kurz – spravovaná identita k vyvolání Azure Functions z aplikace založené na jarním cloudu Azure
-description: Použití spravované identity k vyvolání Azure Functions ze jarní cloudové aplikace Azure
+description: Použití spravované identity k vyvolání Azure Functions z aplikace Azure Spring Cloud
 author: MarkGardner
 ms.author: margard
 ms.service: spring-cloud
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro aplikaci Az
 Azure Functions i App Services mají integrovanou podporu ověřování Azure Active Directory (Azure AD). Díky použití této integrované funkce ověřování společně se spravovanými identitami pro jarní cloud Azure můžeme vyvolávat služby RESTful s využitím moderní sémantiky OAuth. Tato metoda nevyžaduje uložení tajných kódů v kódu a poskytuje podrobnější ovládací prvky pro řízení přístupu k externím prostředkům. 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
 * [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli)

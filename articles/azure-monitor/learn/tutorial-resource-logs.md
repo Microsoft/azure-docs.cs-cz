@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření jednoduchého dotazu protokolu pro analýzu protokolů
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, který podporuje nastavení diagnostiky. Chcete-li zjistit, zda prostředek podporuje nastavení diagnostiky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v části **monitorování** v nabídce možnost **nastavení diagnostiky** .
 

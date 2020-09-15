@@ -20,7 +20,7 @@ ms.locfileid: "90086347"
 
 Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykreslovat mapy a vložené Azure Maps funkce do vaší webové nebo mobilní aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li použít Ovládací prvek Mapa na webové stránce, musíte mít jeden z následujících požadavků:
 

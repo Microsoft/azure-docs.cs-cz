@@ -113,7 +113,7 @@
       href: notification-hubs-send-push-notifications-scheduled.md
     - name: Nasazení a správa center oznámení s využitím Azure PowerShellu
       href: notification-hubs-deploy-and-manage-powershell.md
-    - name: Zabezpečené posílání oznámení uživatelům
+    - name: Odesílání zabezpečených oznámení uživatelům
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: Hromadný export a import registrací
       href: export-modify-registrations-bulk.md

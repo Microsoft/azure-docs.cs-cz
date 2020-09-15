@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Než začnete s nastavením zásad geografického filtru, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 * Vytvořte si přední dveře podle pokynů popsaných v tématu [rychlý Start: vytvoření profilu front-dveří](quickstart-create-front-door.md).
 

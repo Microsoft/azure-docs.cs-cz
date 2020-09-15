@@ -83,6 +83,8 @@
           href: troubleshoot-critical-service-failed-boot-error.md
         - name: Řešení potíží s chybou spuštění – stav nenalezen
           href: boot-error-status-not-found.md
+        - name: 'Řešení potíží s tím, že Windows nemůže dokončit konfiguraci systému'
+          href: windows-could-not-configure-system.md
         - name: Řešení potíží s kapacitou instalace služby Windows Update
           href: windows-update-installation-capacity.md
         - name: Nejde o spustitelný disk

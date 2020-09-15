@@ -20,7 +20,7 @@ Tento článek poskytuje vlastnosti a schéma pro události v [Azure Key Vault](
 
 Účet Azure Key Vault generuje následující typy událostí:
 
-| Úplný název události | Zobrazovaný název události | Popis |
+| Úplný název události | Zobrazovaný název události | Description |
 | ---------- | ----------- |---|
 | Microsoft. klíčů trezor. CertificateNewVersionCreated | Nově vytvořená verze certifikátu | Aktivuje se při vytvoření nového certifikátu nebo verze nového certifikátu. |
 | Microsoft. klíčů trezor. CertificateNearExpiry | Brzo vyprší platnost certifikátu | Aktivuje se v případě vypršení platnosti aktuální verze certifikátu. (Událost se aktivuje 30 dní před datem vypršení platnosti.) |
@@ -64,7 +64,7 @@ Následující příklad ukazuje schéma pro **Microsoft. SecretNewVersionCreate
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | ---------- | ----------- |---|
 | id | řetězec | ID objektu, který aktivoval tuto událost |
 | vaultName | řetězec | Název trezoru klíčů u objektu, který aktivoval tuto událost |

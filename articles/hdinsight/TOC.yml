@@ -392,14 +392,20 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: Spravovat
           items:
+            - name: Správa závislostí
+              items:
+                - name: Správa závislostí sparkových aplikací
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: Zabezpečená správa závislostí Jar
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: Zabezpečená správa prostředí Pythonu
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: Správa prostředků clusteru
               href: ./spark/apache-spark-resource-manager.md
             - name: Správa aplikací Apache Spark s využitím rozšířeného serveru historie
               href: ./spark/apache-azure-spark-history-server.md
             - name: Povolení ukládání do mezipaměti s využitím IO Cache
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: Správa závislostí Jar
-              href: ./spark/manage-jar-dependency.md
             - name: Použití poznámkových bloků s Apache Sparkem
               items:
                 - name: Použití místní aplikace Jupyter Notebook
@@ -408,8 +414,6 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: Použití externích balíčků s Jupyterem s využitím magických příkazů v buňkách
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: Použití poznámkových bloků Apache Zeppelin
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: Použití s ostatními službami Azure

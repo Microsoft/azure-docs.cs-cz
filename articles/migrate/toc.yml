@@ -18,12 +18,32 @@
           href: common-questions-server-migration.md
 - name: Kurzy
   items:
-    - name: Vyhodnocení a migrace virtuálních počítačů VMware
+    - name: Zjišťování
       items:
-        - name: Příprava virtuálních počítačů VMware na vyhodnocení a migraci
-          href: tutorial-prepare-vmware.md
-        - name: Posouzení virtuálních počítačů VMware pro migraci
-          href: tutorial-assess-vmware.md
+        - name: Zjišťování virtuálních počítačů VMware
+          href: tutorial-discover-vmware.md
+        - name: Zjišťování virtuálních počítačů Hyper-V
+          href: tutorial-discover-hyper-v.md
+        - name: Zjišťování fyzických serverů
+          href: tutorial-discover-physical.md
+        - name: Zjišťování instancí AWS
+          href: tutorial-discover-aws.md
+        - name: Zjišťování importovaných serverů
+          href: tutorial-discover-import.md
+    - name: Posouzení
+      items:
+        - name: Posouzení virtuálních počítačů VMware pro migraci na virtuální počítače Azure
+          href: tutorial-assess-vmware-azure-vm.md
+        - name: Posouzení virtuálních počítačů VMware pro migraci do AVS
+          href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: Posouzení virtuálních počítačů Hyper-V pro migraci do Azure
+          href: tutorial-assess-hyper-v.md
+        - name: Posouzení fyzických serverů pro migraci do Azure
+          href: tutorial-assess-physical.md
+        - name: Posouzení instancí AWS pro migraci do Azure
+          href: tutorial-assess-aws.md
+    - name: Migrace
+      items:
         - name: Migrace virtuálních počítačů VMware
           items:
             - name: Možnosti migrace pro virtuální počítače VMware
@@ -32,30 +52,12 @@
               href: tutorial-migrate-vmware.md
             - name: Migrace virtuálních počítačů VMware založená na agentech
               href: tutorial-migrate-vmware-agent.md
-    - name: Vyhodnocení a migrace virtuálních počítačů Hyper-V
-      items:
-        - name: Příprava Hyper-V na vyhodnocení a migraci
-          href: tutorial-prepare-hyper-v.md
-        - name: Posouzení virtuálních počítačů Hyper-V pro migraci
-          href: tutorial-assess-hyper-v.md
         - name: Migrace virtuálních počítačů Hyper-V
           href: tutorial-migrate-hyper-v.md
-    - name: Vyhodnocení a migrace fyzických serverů
-      items:
-        - name: Příprava fyzických serverů pro vyhodnocení a migraci
-          href: tutorial-prepare-physical.md
-        - name: Vyhodnocení fyzických serverů
-          href: tutorial-assess-physical.md
         - name: Migrace fyzických serverů
           href: tutorial-migrate-physical-virtual-machines.md
-    - name: Posouzení a migrace serverů
-      items:
-        - name: 'Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure'
+        - name: Migrace instancí AWS
           href: tutorial-migrate-aws-virtual-machines.md
-    - name: Vyhodnocení importovaných serverů pro migraci
-      items:
-        - name: Vyhodnocení importovaných serverů pro migraci
-          href: tutorial-assess-import.md
 - name: Koncepty
   items:
     - name: Sestavení plánu migrace s využitím Azure Migrate

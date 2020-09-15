@@ -23,7 +23,7 @@ V této příručce se dozvíte, jak reagovat na události Azure Key Vault přij
 
 Přehled Integrace Azure Key Vault/Azure Event Grid najdete v tématu [monitorování Key Vault s Azure Event Grid](event-grid-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps (například Office 365 Outlook). Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v článku [Přehled konektorů](/connectors).
 - Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

@@ -18,9 +18,9 @@
   items:
     - name: Přehled přesouvání
       href: about-move-process.md
-    - name: Matice podpory pro přesun virtuálních počítačů Azure do jiné oblasti
+    - name: Podpora – přesun virtuálních počítačů Azure napříč oblastmi
       href: support-matrix-move-region-azure-vm.md
-    - name: Matice podpory pro přesun Azure SQL do jiné oblasti
+    - name: Podpora – Azure SQL napříč oblastmi
       href: support-matrix-move-region-sql.md
 - name: Návody
   items:
@@ -34,11 +34,11 @@
           href: move-region-within-resource-group.md
     - name: Správa přesunů do jiné oblasti
       items:
-        - name: Úprava cílových nastavení pro přesun do jiné oblasti
+        - name: Úprava nastavení cíle
           href: modify-target-settings.md
-        - name: Odebrání prostředků z kolekce pro přesun do jiné oblasti
+        - name: Odebrání prostředků z kolekce pro přesun
           href: remove-move-resources.md
-        - name: Správa prostředků vytvořených v rámci procesu přesunu do jiné oblasti
+        - name: Správa prostředků vytvořených během přesunu
           href: manage-resources-created-move-process.md
 - name: Zdroje a prostředky
   items:
