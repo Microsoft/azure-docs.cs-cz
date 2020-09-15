@@ -2,13 +2,13 @@
 title: Analýza závislostí v Azure Migrate Server Assessment
 description: Popisuje, jak používat analýzu závislostí pro posouzení pomocí Azure Migrateho posouzení serveru.
 ms.topic: conceptual
-ms.date: 06/14/2020
-ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/15/2020
+ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118796"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530246"
 ---
 # <a name="dependency-analysis"></a>Analýza závislostí
 
@@ -28,10 +28,10 @@ Analýza závislostí identifikuje závislosti mezi zjištěnými místními po�
 
 Pro nasazení analýzy závislostí existují dvě možnosti.
 
-**Nastavení** | **Podrobnosti** | **Veřejný cloud** | **Azure Government**
+**Možnost** | **Podrobnosti** | **Veřejný cloud** | **Azure Government**
 ----  |---- | ---- 
 **Bez agenta** | Dotazuje data z virtuálních počítačů VMware pomocí rozhraní API vSphere.<br/><br/> Nemusíte instalovat agenty na virtuální počítače.<br/><br/> Tato možnost je v současnosti ve verzi Preview, jenom pro virtuální počítače VMware. | Podporuje se. | Podporuje se.
-**Analýza založená na agentovi** | Nástroj používá [Service map řešení](../azure-monitor/insights/service-map.md) v Azure monitor, aby bylo možné povolit vizualizaci a analýzu závislostí.<br/><br/> Musíte nainstalovat agenty na každý místní počítač, který chcete analyzovat. | Podporuje se | Není podporováno.
+**Analýza založená na agentovi** | Nástroj používá [Service map řešení](../azure-monitor/insights/service-map.md) v Azure monitor, aby bylo možné povolit vizualizaci a analýzu závislostí.<br/><br/> Musíte nainstalovat agenty na každý místní počítač, který chcete analyzovat. | Podporováno | Nepodporováno
 
 
 ## <a name="agentless-analysis"></a>Analýza bez agentů
@@ -74,8 +74,8 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 **Požadavek** | **Bez agenta** | **Založené na agentovi**
 --- | --- | ---
 **Podpora** | Ve verzi Preview jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
-**Agenta** | Na počítačích, které chcete analyzovat, nejsou potřeba žádní agenti. | Agenti vyžadovaná na každém místním počítači, který chcete analyzovat.
-**Log Analytics** | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) k analýze závislostí. 
+**Agent** | Na počítačích, které chcete analyzovat, nejsou potřeba žádní agenti. | Agenti vyžadovaná na každém místním počítači, který chcete analyzovat.
+**Log Analytics** | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) k analýze závislostí.<br/><br/> Pracovní prostor Log Analytics přidružíte k projektu Azure Migrate. Pracovní prostor se musí nacházet v oblastech Východní USA, jihovýchodní Asie nebo Západní Evropa. Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
 **Proces** | Zachycuje data připojení TCP. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 **Data** | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
 **Vizualizac** | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/>  Mapu lze zobrazit pouze za hodinu.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.

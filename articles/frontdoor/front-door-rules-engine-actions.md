@@ -7,17 +7,17 @@ author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: f5110a7644d3ca33da5755f783f61ac35484ddb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e1893c32ed486772e56432f6263626d0ee1a65df
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399272"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531878"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Akce stroje pravidel služby Azure Front Door
 
@@ -92,17 +92,17 @@ Vlastní cesta přesměrování | Zadejte cestu, na kterou mají být požadavky
 
 Pomocí těchto nastavení můžete řídit, jak jsou soubory ukládány do mezipaměti pro požadavky obsahující řetězce dotazů a zda se má obsah ukládat do mezipaměti na základě všech parametrů nebo vybraných parametrů. Pomocí dalších nastavení můžete přepsat hodnotu TTL (Time to Live) a určit tak, jak dlouho má obsah zůstat v mezipaměti, pro požadavky, které určují podmínky shody pravidel. Pokud chcete vynutit ukládání do mezipaměti jako akci, nastavte pole ukládání do mezipaměti na povoleno. Když to uděláte, zobrazí se tyto možnosti: 
 
-Chování mezipaměti |  Popis              
+Chování mezipaměti |  Description              
 ---------------|----------------
 Ignorovat řetězce dotazů | Po uložení prostředku do mezipaměti všechny následné požadavky ignorují řetězce dotazu, dokud nevyprší platnost prostředku uloženého v mezipaměti.
 Ukládat do mezipaměti každou jedinečnou adresu URL | Každý požadavek s jedinečnou adresou URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipamětí.
 Ignorovat zadané řetězce dotazu | Řetězce dotazů adresy URL dotazu uvedené v nastavení "parametry dotazu" jsou pro ukládání do mezipaměti ignorovány.
 Zahrnout zadané řetězce dotazu | Pro ukládání do mezipaměti se používají řetězce dotazů adresy URL uvedené v nastavení "parametry dotazu".
 
-Další pole |  Popis 
+Další pole |  Description 
 ------------------|---------------
 Dynamická komprese | Přední dvířka můžou dynamicky Komprimovat obsah na hranici, což vede k menší a rychlejší reakci.
-Parametry dotazu | Seznam povolených (nebo nepovolených) parametrů oddělený čárkami, který se má použít jako základ pro ukládání do mezipaměti.
+Parametry dotazů | Seznam povolených (nebo nepovolených) parametrů oddělený čárkami, který se má použít jako základ pro ukládání do mezipaměti.
 Doba uložení mezipaměti | Doba vypršení platnosti mezipaměti ve dnech, hodinách, minutách, sekundách Všechny hodnoty musí být int. 
 
 ## <a name="next-steps"></a>Další kroky

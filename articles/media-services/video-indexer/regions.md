@@ -3,19 +3,19 @@ title: Oblasti, ve kterých je Video Indexer k dispozici – Azure
 titleSuffix: Azure Media Services
 description: Tento článek pojednává o oblastech Azure, ve kterých je k dispozici Azure Media Services Video Indexer.
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/08/2020
-ms.author: kumud
-ms.openlocfilehash: dd95f022e40b9ae6fa60a6536a87146049c53b68
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.date: 09/14/2020
+ms.author: juliako
+ms.openlocfilehash: 6ebdb22f50efbefc695f9752c6e6fc333571828c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565323"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530929"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Oblasti Azure, ve kterých Video Indexer existuje
 
@@ -23,7 +23,18 @@ Rozhraní Video Indexer API obsahují parametr **Location** , který byste měli
 
 ## <a name="locations"></a>Umístění
 
-`location`Parametr musí mít jako svou hodnotu název kódu oblasti Azure. Pokud používáte Video Indexer v režimu náhledu, měli byste ho umístit `"trial"` jako hodnotu. `trial` je výchozí hodnota pro `location` parametr. Jinak, pokud chcete získat název kódu oblasti Azure, ve které je váš účet, a na to, že se má vaše volání směrovat, můžete v [Azure CLI](/cli/azure)spustit následující řádek:
+`location`Parametr musí mít jako svou hodnotu název kódu oblasti Azure. Pokud používáte Video Indexer v režimu náhledu, měli byste ho umístit `"trial"` jako hodnotu. `trial` je výchozí hodnota pro `location` parametr. Jinak, pokud chcete získat název kódu oblasti Azure, ve které je váš účet, a na to, že se má vaše volání směrovat, můžete použít Azure Portal nebo spustit příkaz rozhraní příkazového [řádku Azure CLI](/cli/azure) .
+
+### <a name="azure-portal"></a>portál Azure
+
+1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/).
+1. V pravém horním rohu stránky vyberte **uživatelské účty** .
+1. V pravém horním rohu Najděte umístění vašeho účtu.  
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/location/location1.png" alt-text="Umístění":::
+    
+###  <a name="cli-command"></a>CLI – příkaz
 
 ```azurecli-interactive
 az account list-locations

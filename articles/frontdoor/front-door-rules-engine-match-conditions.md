@@ -7,17 +7,17 @@ author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 99a590fd3adacc9a63c2ec482965ccd9ff162ac3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1b2b891a0b6b67efef38005d3a4d67eecf41afbd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399238"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531861"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Podmínky shody stroje pravidel služby Azure Front Door
 
@@ -150,7 +150,7 @@ Identifikuje požadavky, které zahrnují zadanou příponu souboru v názvu sou
 
 #### <a name="required-fields"></a>Povinná pole
 
-Operátor | Rozšíření | Transformace případu
+Operátor | Linka | Transformace případu
 ---------|-----------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Malá písmena, Velká písmena, střih, odebrat prázdné znaky, kódování URL, kódování adresy URL
 

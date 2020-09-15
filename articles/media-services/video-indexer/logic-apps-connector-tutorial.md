@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c46195572fc4495b35f5ec44421440975ab9ffc
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047095"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531351"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete také potřebovat účet Video Indexer společně s přístupem k rozhraním API prostřednictvím klíče rozhraní API. 
 
@@ -58,13 +58,13 @@ Pokud chcete nastavit první tok, budete muset zadat Video Indexer klíč rozhra
 
 Jakmile se můžete připojit ke svým účtům Azure Storage a Video Indexer, přejít na Trigger "při přidání nebo úpravě objektu BLOB) a vybrat kontejner, ve kterém se budou soubory videa umísťovat. 
 
-![Kontejner](./media/logic-apps-connector-tutorial/container.png)
+![Kontejner úložiště](./media/logic-apps-connector-tutorial/container.png)
 
 Potom přejdete na akci vytvořit identifikátor URI SAS podle cesty a vyberte možnost seznam cest k souborům z možností dynamického obsahu.  
 
 ![Identifikátor URI SAS podle cesty](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-Pokud chcete získat Video Indexer token účtu, vyplňte [umístění a ID svého účtu](./video-indexer-use-apis.md#account-id)   .
+Pokud chcete získat Video Indexer token účtu, vyplňte [umístění svého účtu](regions.md) a [ID účtu](./video-indexer-use-apis.md#account-id)   .
 
 ![Získání přístupového tokenu účtu](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -90,7 +90,7 @@ K nastavení tohoto toku budete muset zadat Video Indexer klíč rozhraní API a
 
 U triggeru se zobrazí pole Adresa URL příspěvku HTTP. Adresa URL se nevygeneruje až po uložení toku; adresu URL ale budete potřebovat nakonec. Vrátíme se k tomu. 
 
-Pokud chcete získat Video Indexer token účtu, vyplňte [umístění a ID svého účtu](./video-indexer-use-apis.md#account-id)   .  
+Pokud chcete získat Video Indexer token účtu, vyplňte [umístění svého účtu](regions.md) a [ID účtu](./video-indexer-use-apis.md#account-id)   .  
 
 Přejdete na akci načíst index videa a vyplňte požadované parametry. Pro ID videa zadejte následující výraz: triggerOutputs () [' dotazy '] [' ID '] 
 

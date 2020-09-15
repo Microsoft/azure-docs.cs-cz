@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068043"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530399"
 ---
 # <a name="common-questions"></a>Časté dotazy
 
@@ -50,7 +50,7 @@ Pomocí nástroje Resource Centre můžete aktuálně přesouvat následující 
 
 Po přesunutí prostředků do cílové oblasti můžete toto předplatné změnit. [Přečtěte si další informace](../azure-resource-manager/management/move-resource-group-and-subscription.md) o přesouvání prostředků do jiného předplatného. 
 
-### <a name="where-is-the-metadata-about-a-region-move-stored"></a>Kde se ukládají metadata týkající se přesunu oblasti?
+### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Kde se ukládají metadata pro přesun mezi oblastmi, které jsou uložené?
 
 Je uložený v databázi [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) a ve [službě Azure Blob Storage](../storage/common/storage-service-encryption.md)v předplatném Microsoftu. V současné době se metadata ukládají do Východní USA 2 a Severní Evropa. Rozšíříme Toto pokrytí do dalších oblastí. Neomezuje se tím přesunutí prostředků mezi žádné veřejné oblasti.
 

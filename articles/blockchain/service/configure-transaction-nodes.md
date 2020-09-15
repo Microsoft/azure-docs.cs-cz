@@ -4,12 +4,12 @@ description: Jak nakonfigurovat uzly transakcí služby Azure blockchain
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212560"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530382"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace uzlů transakcí služby Azure blockchain
 
@@ -17,7 +17,7 @@ Uzly transakce slouží k posílání transakcí blockchain do služby Azure blo
 
 Zobrazení podrobností o výchozích uzlech transakce:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte ke členu služby Azure blockchain. Vyberte **uzly transakce**.
 
     ![Vybrat výchozí uzel transakce](./media/configure-transaction-nodes/nodes.png)
@@ -35,9 +35,9 @@ Chcete-li přidat uzel transakce:
 
     ![Přidat uzel transakce](./media/configure-transaction-nodes/add-node.png)
 
-    | Nastavení | Description |
+    | Nastavení | Popis |
     |---------|-------------|
-    | Name | Název uzlu transakce. Název slouží k vytvoření adresy DNS pro koncový bod uzlu transakce. Například, `newnode-myblockchainmember.blockchain.azure.com`. Název uzlu po jeho vytvoření nelze změnit. |
+    | Název | Název uzlu transakce. Název slouží k vytvoření adresy DNS pro koncový bod uzlu transakce. Například, `newnode-myblockchainmember.blockchain.azure.com`. Název uzlu po jeho vytvoření nelze změnit. |
     | Heslo | Nastavte silné heslo. Použijte heslo pro přístup ke koncovému bodu uzlu transakce pomocí základního ověřování.
 
 1. Vyberte **Vytvořit**.
@@ -52,7 +52,7 @@ Chcete-li zobrazit podrobnosti o koncovém bodu uzlu transakce:
 
 1. V Azure Portal přejděte na jeden z uzlů transakce člena služby Azure blockchain a vyberte **Přehled**.
 
-    ![Koncové body](./media/configure-transaction-nodes/endpoints.png)
+    ![Snímek obrazovky zobrazuje přehled pro uzly transakcí pro člena blockchain.](./media/configure-transaction-nodes/endpoints.png)
 
 Koncové body uzlu transakce jsou zabezpečené a vyžadují ověření. Můžete se připojit ke koncovému bodu transakce pomocí ověřování Azure AD, základního ověřování HTTPS a pomocí přístupového klíče přes HTTPS nebo WebSocket přes TLS.
 

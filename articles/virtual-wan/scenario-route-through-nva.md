@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 46ffb5bfe52fe4f398594a1dfed76a6ea6c0fd81
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400020"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530790"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scénář: směrování provozu přes síťové virtuální zařízení
 
@@ -69,14 +69,14 @@ V tomto scénáři si ale musíme představit, které statické trasy se mají n
 
 V takovém případě statické trasy, které potřebujeme ve výchozí tabulce k odesílání provozu do síťové virtuální zařízení paprsků za virtuální sítí síťové virtuální zařízení, jsou následující:
 
-| Popis | Tabulka směrování | Statická trasa              |
+| Description | Tabulka směrování | Statická trasa              |
 | ----------- | ----------- | ------------------------- |
 | Virtuální síť 2       | Výchozí     | 10.2.0.0/16 – > eastusconn |
 | Virtuální síť 4       | Výchozí     | 10.4.0.0/16 – > weconn     |
 
 Virtuální síť WAN teď ví, ke kterému připojení se mají odesílat pakety, ale připojení potřebuje vědět, co dělat při přijímání těchto paketů: v tomto umístění se používají tabulky směrování připojení. Tady budeme používat kratší předpony (/24 místo déle než 16), abyste se ujistili, že tyto trasy mají přednost před trasami, které jsou importované z síťové virtuální zařízení virtuální sítě (virtuální síť 2 a virtuální síť 4):
 
-| Popis | Připojení | Statická trasa            |
+| Description | Připojení | Statická trasa            |
 | ----------- | ---------- | ----------------------- |
 | Virtuální síť 5       | eastusconn | 10.2.1.0/24 – > 10.2.0.5 |
 | Virtuální síť 6       | eastusconn | 10.2.2.0/24 – > 10.2.0.5 |
@@ -112,6 +112,8 @@ Pokud chcete nastavit směrování přes síťové virtuální zařízení, tady
    * Z virtuální sítě 7 a virtuální sítě 8 na virtuální síť 4 síťové virtuální zařízení IP adresy 
    
    K virtuálním rozbočovačům nemusíte přímo připojovat virtuální sítě 5, 6, 7, 8. Ujistěte se, že skupin zabezpečení sítě v virtuální sítě 5, 6, 7, 8 povoluje provoz pro větev (VPN/ER/P2S) nebo virtuální sítě připojená ke svým vzdáleným virtuální sítě. Například virtuální sítě 5, 6 musí zajistit, aby skupin zabezpečení sítě povolovaly přenosy místních předpon adres a virtuální sítě 7, které jsou připojené ke vzdálenému rozbočovači 2.
+
+Virtuální síť WAN nepodporuje scénář, ve kterém se virtuální sítě 5, 6 připojuje k virtuálnímu rozbočovači a komunikuje prostřednictvím sítě VNet 2 síťové virtuální zařízení IP. Proto je potřeba připojit virtuální sítě 5, 6 k VNet2 a podobně virtuální síť 7, 8 k virtuální síti 4.
 
 2. Přidejte agregovanou položku statické trasy pro virtuální sítě 2, 5, 6 do výchozí směrovací tabulky centra 1.
 

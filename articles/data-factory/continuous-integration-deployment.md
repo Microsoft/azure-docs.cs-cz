@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 3621d0c22aa6f35fc845f449d07bce8dcf0ba1fa
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461880"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531215"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -639,7 +639,7 @@ Pokud používáte integraci Git s datovou továrnou a máte kanál CI/CD, kter�
 
 -   **Key Vault**. Při použití propojených služeb, jejichž informace o připojení jsou uloženy v Azure Key Vault, se doporučuje uchovávat samostatné trezory klíčů pro různá prostředí. Pro každý Trezor klíčů můžete nakonfigurovat také samostatné úrovně oprávnění. Například nebudete chtít, aby členové týmu měli oprávnění k produkčním tajným klíčům. Pokud budete postupovat podle tohoto přístupu, doporučujeme, abyste zachovali stejné tajné názvy ve všech fázích. Pokud zachováte stejné tajné názvy, nemusíte v prostředích CI/CD parametrizovat jednotlivé připojovací řetězce, protože jediná změna je název trezoru klíčů, což je samostatný parametr.
 
--  **Pojmenovávání prostředků** V případě omezení šablony ARM můžou problémy v nasazení nastat, pokud vaše prostředky v názvu obsahují mezery. Tým Azure Data Factory doporučuje místo mezer pro prostředky používat znaky _ nebo-. Například ' Pipeline_1 ' by byl upřednostňovaným názvem přes ' kanál 1 '.
+-  **Pojmenovávání prostředků** Kvůli omezením šablony ARM můžou problémy v nasazení nastat, pokud vaše prostředky v názvu obsahují mezery. Tým Azure Data Factory doporučuje místo mezer pro prostředky používat znaky _ nebo-. Například ' Pipeline_1 ' by byl upřednostňovaným názvem přes ' kanál 1 '.
 
 ## <a name="unsupported-features"></a>Nepodporované funkce
 

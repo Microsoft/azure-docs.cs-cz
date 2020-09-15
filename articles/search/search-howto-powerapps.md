@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918039"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530688"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
 
@@ -29,9 +29,9 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Účet Power Apps](http://make.powerapps.com)
+* [Účet Power Apps](https://make.powerapps.com)
 
 * [Hotely – vzorový index](search-get-started-portal.md)
 
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https
 
 Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vlastní konektor pro připojení k indexu vyhledávání v cloudu.
 
-1. [Přihlaste](http://make.powerapps.com) se k Power Apps.
+1. [Přihlaste](https://make.powerapps.com) se k Power Apps.
 
 1. Na levé straně rozbalte položku **Data**  >  **vlastní konektory**dat.
  

@@ -1,32 +1,40 @@
 ---
 title: Rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF) | Microsoft Docs
-description: Tento článek vám pomůže pochopit, jak používat Firewall webových aplikací ve službě Azure front-dveří.
+description: V tomto kurzu se dozvíte, jak používat bránu firewall webových aplikací ve službě Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
 author: duongau
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/06/2020
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: a0252004b01e64b195b372d72682f6b777012258
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 1958481193b66c8cec2cb6a1ac6648a6900d70ac
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535427"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531198"
 ---
-# <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Kurz: rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
 
 Mnohé webové aplikace nastaly rychlým nárůstem provozu v posledních týdnech souvisejících s COVID-19. Kromě toho tyto webové aplikace také docházejí do nárůstu škodlivého provozu, včetně útoků DOS (Denial of Service). Účinný způsob, jak tyto potřeby zvládnout, horizontální navýšení kapacity pro přepětí provozu a ochranu před útoky, je nastavit přední dveře Azure pomocí Azure WAF jako akceleraci, mezipaměť a vrstvu zabezpečení před webovou aplikací. V tomto článku najdete pokyny k rychlému získání těchto front Azure pomocí instalačního programu Azure WAF pro všechny webové aplikace běžící v systému nebo mimo Azure. 
 
 K nastavení WAF v tomto kurzu budeme používat rozhraní příkazového řádku Azure, ale všechny tyto kroky jsou taky plně podporované v Azure Portal, Azure PowerShell, Azure ARM a Azure REST API. 
 
-## <a name="prerequisites"></a>Požadavky
+V tomto kurzu se naučíte:
+> [!div class="checklist"]
+> - Vytvořte si přední dveře.
+> - Vytvořte zásady Azure WAF.
+> - Nakonfigurujte RuleSets pro zásady WAF.
+> - Přidružit zásady WAF k předním dvířkům
+> - Konfigurace vlastní domény
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Požadavky
 
 Pokyny v tomto blogu používají rozhraní příkazového řádku Azure (CLI). Podívejte se na tento průvodce, abyste [mohli začít s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
@@ -40,8 +48,7 @@ az extension add --name front-door
 
 Poznámka: Další podrobnosti níže uvedených příkazů najdete v referenčních informacích k rozhraní příkazového [řádku Azure CLI pro přední dveře](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest).
 
-## <a name="step-1-create-an-azure-front-door-afd-resource"></a>Krok 1: vytvoření prostředku Azure front-dveří (AFD)
-
+## <a name="create-an-azure-front-door-afd-resource"></a>Vytvoření prostředku Azure front-dveří (AFD)
 
 ```azurecli-interactive 
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
@@ -57,7 +64,7 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 V odpovědi, kterou získáte od úspěšného provedení tohoto příkazu, vyhledejte klíč "název hostitele" a poznamenejte si jeho hodnotu, která se má použít v pozdějším kroku. Název hostitele je název DNS prostředku AFD, který jste vytvořili.
 
-## <a name="step-2-create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Krok 2: vytvoření profilu Azure WAF pro použití s prostředky front-dveří Azure
+## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Vytvoření profilu Azure WAF pro použití s prostředky front-dveří Azure
 
 ```azurecli-interactive 
 az network front-door waf-policy create --name <>  --resource-group <>  --disabled false --mode Prevention
@@ -75,7 +82,7 @@ V odpovědi, kterou získáte od úspěšného provedení tohoto příkazu, vyhl
 
 /Subscriptions/**ID předplatného**/ResourceGroups/**název skupiny prostředků**/Providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF název zásady**
 
-## <a name="step-3-add-managed-rulesets-to-this-waf-policy"></a>Krok 3: Přidání spravovaného rulesetsu do této zásady WAF
+## <a name="add-managed-rulesets-to-this-waf-policy"></a>Přidat do této zásady WAF spravované RuleSets
 
 V zásadách WAF můžete přidat spravované rulesetsy, které jsou sadou pravidel sestavených a spravovaných Microsoftem, a zajistit ochranu před celými třídami hrozeb. V tomto příkladu přidáváme dvě takové RuleSets (1) výchozí RuleSet, které chrání před běžnými webovými hrozbami a (2) robot Protection RuleSet, který chrání před škodlivým roboty
 
@@ -95,7 +102,7 @@ az network front-door waf-policy managed-rules add --policy-name <> --resource-g
 
 --Resource-Group skupina prostředků, do které jste umístili tento prostředek WAF.
 
-## <a name="step-4-associate-the-waf-policy-with-the-afd-resource"></a>Krok 4: přidružení zásady WAF k prostředku AFD
+## <a name="associate-the-waf-policy-with-the-afd-resource"></a>Přidružte zásady WAF k prostředku AFD.
 
 V tomto kroku přidružíme zásadu WAF, kterou jsme vytvořili s prostředkem AFD, který se nachází před webovou aplikací.
 
@@ -113,7 +120,7 @@ Poznámka: výše uvedený příklad je určen pro případ, kdy nepoužíváte 
 
 Pokud pro přístup k webovým aplikacím nepoužíváte žádné vlastní domény, můžete přeskočit krok #5. V takovém případě budete koncovým uživatelům poskytovat název hostitele, který jste získali v kroku #1 k přechodu do vaší webové aplikace.
 
-## <a name="step-5-configure-custom-domain-for-your-web-application"></a>Krok 5: konfigurace vlastní domény pro webovou aplikaci
+## <a name="configure-custom-domain-for-your-web-application"></a>Konfigurace vlastní domény pro webovou aplikaci
 
 Zpočátku se vlastní název domény vaší webové aplikace (například www.contoso.com) odkazoval na místo, kde jste měli spuštěný před tím, než se zavedl AFD. Po této změně architektury přidávání AFD + WAF do popředí aplikace by teď položka DNS odpovídající této vlastní doméně měla odkazovat na tento prostředek AFD. To se dá udělat tak, že přemapujete tuto položku na serveru DNS na název hostitele AFD, který jste si poznamenali v kroku #1.
 
@@ -125,6 +132,23 @@ Kromě toho je také potřeba aktualizovat konfiguraci AFD, aby se do ní [přid
 
 Nakonec, pokud používáte vlastní doménu k dosažení vaší webové aplikace a chcete povolit protokol HTTPS, musíte mít [certifikáty pro vlastní nastavení domény v AFD](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
 
-## <a name="step-6-lock-down-your-web-application"></a>Krok 6: uzamknutí webové aplikace
+## <a name="lock-down-your-web-application"></a>Uzamčení webové aplikace
 
 Jedním z volitelných osvědčených postupů je zajistit, aby s webovou aplikací mohli komunikovat jenom AFD hrany. Tato akce zajistí, že nikdo nebude moci obejít ochranu AFD a přistupovat k aplikacím přímo. Toto uzamčení můžete provést tak, že přejdete do [části Nejčastější dotazy v AFD](https://docs.microsoft.com/azure/frontdoor/front-door-faq) a odkazujete na otázku týkající se uzamykání back-endu pro přístup pouze pomocí AFD.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Když už nepotřebujete prostředky v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) .
+
+```azurecli-interactive
+  az group delete \
+    --name <>
+```
+--název skupiny prostředků pro všechny prostředky nasazené v tomto kurzu.
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud se chcete dozvědět, jak řešit potíže s předními dveřmi, přejděte k Průvodci návody.
+
+> [!div class="nextstepaction"]
+> [Řešení běžných potíží se směrováním](front-door-troubleshoot-routing.md)

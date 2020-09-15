@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/10/2020
+ms.date: 09/14/2020
 ms.author: erhopf
+ms.custom: cog-serv-seo-aug-2020
 keywords: Překladatel, služba Translator, překlad textu, přepis textu, rozpoznávání jazyka
-ms.openlocfilehash: 4cf070a0ae3de716e1b6aede0a77d781dcc6142b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 1cffe99389b3e3e782c53aeae8c29fbc8f55b6a0
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90109037"
+ms.locfileid: "90530671"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Rychlý Start: Začínáme s překladatelem
 
@@ -28,7 +29,7 @@ V tomto rychlém startu se naučíte používat službu Translator přes REST. Z
 * [Vypočítat délku věty](#get-sentence-length)
 * [Získat alternativní překlady](#dictionary-lookup-alternate-translations) a [Příklady použití slov ve větě](#dictionary-examples-translations-in-context)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, vytvořte v Azure Portal [prostředek překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) a Získejte svůj klíč a koncový bod. Po nasazení vyberte **Přejít k prostředku**.
@@ -101,7 +102,7 @@ Když zavoláte službu Translator přes REST, budete muset zajistit, aby každ�
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
     <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>

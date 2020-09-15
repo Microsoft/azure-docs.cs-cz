@@ -1,22 +1,22 @@
 ---
 title: Azure Firewall konfigurace analýzy hrozeb
-description: Filtrování na základě logiky hrozeb lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén.
+description: Přečtěte si, jak nakonfigurovat filtrování na základě logiky hrozeb pro zásady Azure Firewall pro upozornění a zamítnutí provozu z a do známých škodlivých IP adres a domén.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568413"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530637"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Firewall konfigurace analýzy hrozeb
 
-Filtrování na základě logiky hrozeb lze nakonfigurovat pro zásady Azure Firewall pro upozornění a zamítnutí provozu z a do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.<br>
+Filtrování na základě logiky hrozeb lze nakonfigurovat pro zásady Azure Firewall pro upozornění a zamítnutí provozu z a do známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.<br>
 
 Pokud jste nakonfigurovali filtrování na základě logiky hrozeb, přidružená pravidla se zpracují před všemi pravidly NAT, síťovými pravidly nebo pravidly aplikací.
 

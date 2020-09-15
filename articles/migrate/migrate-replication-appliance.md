@@ -3,12 +3,12 @@ title: Zařízení pro replikaci Azure Migrate
 description: Přečtěte si o zařízení replikace Azure Migrate pro migraci VMWare založenou na agentech.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122094"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532116"
 ---
 # <a name="replication-appliance"></a>Replikační zařízení
 
@@ -59,7 +59,7 @@ MySQL | Na zařízení by měl být nainstalován MySQL.<br/> Je potřeba nainst
 Jiné aplikace | Na zařízení replikace nespouštějte jiné aplikace.
 Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V
 Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))
-IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> -Povolit nastavení [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))
+IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit  [anonymní ověřování](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> -Povolit nastavení [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))
 **Nastavení sítě** |
 Typ IP adresy | Static
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)
@@ -79,7 +79,7 @@ Stažení a instalace v Azure Migrate | Po instalaci zařízení a zobrazení v�
 
 Zařízení replikace potřebuje přístup k těmto adresám URL ve veřejném cloudu Azure.
 
-**URL** | **Podrobnosti**
+**Adresa URL** | **Podrobnosti**
 --- | ---
 \*.backup.windowsazure.com | Slouží k přenosu replikovaných dat a jejich koordinaci.
 \*.store.core.windows.net | Slouží k přenosu replikovaných dat a jejich koordinaci.
@@ -96,7 +96,7 @@ https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-
 
 Zařízení replikace potřebuje přístup k těmto adresám URL v Azure Government.
 
-**URL** | **Podrobnosti**
+**Adresa URL** | **Podrobnosti**
 --- | ---
 \*. backup.windowsazure.us | Slouží k přenosu replikovaných dat a jejich koordinaci.
 \*.store.core.windows.net | Slouží k přenosu replikovaných dat a jejich koordinaci.
@@ -129,7 +129,7 @@ Procesový Server | Procesový server přijímá data replikace, optimalizuje je
     - Procesový server přijímá data replikace, optimalizuje je a šifruje je a odesílá je do Azure Storage přes odchozí port 443.
 5. Data replikace zaprotokolují první půdu v účtu úložiště mezipaměti v Azure. Tyto protokoly jsou zpracovávány a data jsou uložena na spravovaném disku Azure.
 
-![Architektura](./media/migrate-replication-appliance/architecture.png)
+![Diagram znázorňuje architekturu procesu replikace.](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>Upgrady zařízení
 

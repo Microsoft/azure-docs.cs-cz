@@ -3,12 +3,12 @@ title: Analýza využití pomocí Azure Application Insights | Dokumentace Micro
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800207"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532099"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -54,7 +54,7 @@ Zjistěte, kdy lidé používají vaši aplikaci, jaké stránky mají nejvíc z
 
 Sestavy uživatelé a relace filtrují data podle stránek nebo vlastních událostí a segmentují je podle vlastností, jako je umístění, prostředí a stránka. Můžete také přidat vlastní filtry.
 
-![Uživatelé](./media/usage-overview/users.png)  
+![Snímek obrazovky znázorňuje stránku s přehledem uživatelů pro fiktivní firmu.](./media/usage-overview/users.png)  
 
 Přehledy o tom, jaké jsou zajímavé vzory v sadě dat, najdete na pravé straně.  
 
@@ -71,7 +71,7 @@ Uchovávání vám pomůže pochopit, jak často se uživatelé budou vracet k p
 - Forma hypotézy založená na datech reálného uživatele 
 - Zjistěte, jestli je uchovávání problému v produktu. 
 
-![Uchovávání](./media/usage-overview/retention.png) 
+![Snímek obrazovky znázorňuje stránku s přehledem uchovávání informací, která zobrazuje informace o tom, jak často se uživatelé vracejí k používání jejich aplikace.](./media/usage-overview/retention.png) 
 
 Ovládací prvky uchování v horní části umožňují definovat konkrétní události a časový rozsah pro výpočet uchovávání. Graf uprostřed poskytuje vizuální znázornění celkového procenta uchování v zadaném časovém rozsahu. Graf v dolní části představuje individuální uchování v daném časovém období. Tato úroveň podrobností vám umožní pochopit, co dělají vaši uživatelé a co může ovlivnit vracení uživatelů na podrobnější členitost.  
 
@@ -110,7 +110,7 @@ Přečtěte si další informace o [vlastních událostech](./api-custom-events-
 ### <a name="slice-and-dice-events"></a>Události řezů a kostek
 
 V nástrojích uživatelé, relace a události můžete rozřezat a indexovat vlastní události podle uživatele, názvu události a vlastností.
-![Uživatelé](./media/usage-overview/users.png)  
+![Snímek obrazovky znázorňuje stránku s přehledem uživatelů pro fiktivní firmu.](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>Návrh telemetrie s aplikací
 
@@ -176,7 +176,7 @@ Všechny nové TelemetryClients automaticky přidají hodnotu vlastnosti, kterou
    - [Uživatelé, relace, události](usage-segmentation.md)
    - [Trychtýře](usage-funnels.md)
    - [Uchovávání](usage-retention.md)
-   - [Toky uživatelů](usage-flows.md)
+   - [Toky uživatele](usage-flows.md)
    - [Workbooks](../platform/workbooks-overview.md)
    - [Přidat kontext uživatele](usage-send-user-context.md)
 

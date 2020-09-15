@@ -1,8 +1,8 @@
 ---
 title: Použití různých mechanismů ověřování s klientskou sadou SDK pro Azure IoT Hub Device Provisioning Service
 description: Postup pro Azure – použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning (DPS) v Azure
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
@@ -10,16 +10,16 @@ services: iot-dps
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a32e2f055b2914fa0008e043e80092ac2da0814
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687213"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531504"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning pro C
 
-V tomto článku se dozvíte, jak používat různé [mechanismy ověřování](concepts-security.md#attestation-mechanism) pomocí klientské sady SDK služby Device Provisioning pro C. Můžete použít fyzické zařízení nebo simulátor. Zřizovací služba podporuje ověřování pro dva typy mechanismů ověřování: X.509 a TPM (Trusted Platform Module).
+V tomto článku se dozvíte, jak používat různé [mechanismy ověřování](concepts-service.md#attestation-mechanism) pomocí klientské sady SDK služby Device Provisioning pro C. Můžete použít fyzické zařízení nebo simulátor. Zřizovací služba podporuje ověřování pro dva typy mechanismů ověřování: X.509 a TPM (Trusted Platform Module).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,11 +29,11 @@ Připravte vývojové prostředí podle části Příprava vývojového prostře
 
 Jako výrobce zařízení musíte nejprve zvolit mechanismus ověřování založený na některém z podporovaných typů. V současné době [klientská sada SDK služby Device Provisioning pro C](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) poskytuje podporu následujících mechanismů ověřování: 
 
-- [TPM (Trusted Platform Module):](https://en.wikipedia.org/wiki/Trusted_Platform_Module) TPM představuje zavedený standard pro většinu platforem zařízení založených na Windows a také pro několik zařízení založených na Linuxu nebo Ubuntu. Jako výrobce zařízení můžete zvolit tento mechanismus ověřování, pokud vaše zařízení používají některý z následujících operačních systémů a hledáte zavedený standard. V případě čipů TPM můžete zařízení do služby Device Provisioning registrovat pouze jednotlivě. Pro účely vývoje můžete použít simulátor TPM na svém vývojovém počítači s Windows nebo Linuxem.
+- [TPM (Trusted Platform Module):](https://en.wikipedia.org/wiki/Trusted_Platform_Module) TPM představuje zavedený standard pro většinu platforem zařízení založených na Windows a také pro několik zařízení založených na Linuxu nebo Ubuntu. Jako výrobce zařízení můžete zvolit tento mechanismus ověřování, pokud máte některý z těchto operačních systémů spuštěných v zařízeních a hledáte zavedený standard. V případě čipů TPM můžete zařízení do služby Device Provisioning registrovat pouze jednotlivě. Pro účely vývoje můžete použít simulátor TPM na svém vývojovém počítači s Windows nebo Linuxem.
 
-- [X.509:](https://cryptography.io/en/latest/x509/) Certifikáty X.509 je možné ukládat v relativně novějších čipech označovaných jako [moduly hardwarového zabezpečení (HSM)](concepts-security.md#hardware-security-module). V Microsoft se také pracuje na čipech RIoT nebo DICE, které implementují certifikáty X.509. V případě čipů X.509 můžete registrace zařízení dávkovat na portálu. Podporují také určité operační systémy mimo Windows, jako je například embedOS. Pro účely vývoje klientská sada SDK služby Device Provisioning podporuje simulátor zařízení X.509. 
+- [X.509:](https://cryptography.io/en/latest/x509/) Certifikáty X.509 je možné ukládat v relativně novějších čipech označovaných jako [moduly hardwarového zabezpečení (HSM)](concepts-service.md#hardware-security-module). V Microsoft se také pracuje na čipech RIoT nebo DICE, které implementují certifikáty X.509. V případě čipů X.509 můžete registrace zařízení dávkovat na portálu. Podporují také určité operační systémy mimo Windows, jako je například embedOS. Pro účely vývoje klientská sada SDK služby Device Provisioning podporuje simulátor zařízení X.509. 
 
-Další informace najdete v tématech věnovaných [konceptům zabezpečení](concepts-security.md) a [konceptům automatického zřizování](/azure/iot-dps/concepts-auto-provisioning) ve službě IoT Hub Device Provisioning.
+Další informace najdete v tématu [mechanismy ověřování](concepts-service.md#attestation-mechanism)IoT Hub Device Provisioning Service.
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Povolení ověřování pro podporované mechanismy ověřování
 

@@ -3,12 +3,13 @@ title: Možnosti sítí Azure Functions
 description: Přehled všech možností sítě, které jsou k dispozici v Azure Functions.
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385938"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530080"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -71,7 +72,7 @@ Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s úč
 
 Další informace najdete v tématu [požadavky na účet úložiště](./functions-create-function-app-portal.md#storage-account-requirements).
 
-## <a name="use-key-vault-references"></a>Použití Key Vaultch odkazů
+## <a name="use-key-vault-references"></a>Použití odkazů na službu Key Vault
 
 Můžete použít Azure Key Vault odkazy na používání tajných kódů z Azure Key Vault v aplikaci Azure Functions bez nutnosti změny kódu. Azure Key Vault je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu.
 
@@ -86,7 +87,7 @@ V současné době můžete v rámci virtuální sítě použít funkce triggeru
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Plán Premium s triggery virtuální sítě
 
-Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **Podpora triggeru virtuální sítě** najdete v [Azure Portal](https://portal.azure.com) v části **Configuration**  >  **nastavení modulu runtime konfigurační funkce**.
+Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **monitorování škály běhového prostředí** najdete v [Azure Portal](https://portal.azure.com) v **Configuration**části  >  **nastavení modulu runtime konfigurační funkce**.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -132,7 +133,7 @@ Omezení odchozích IP adres jsou k dispozici v plánu Premium, App Service plá
 
 Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s virtuální sítí, může aplikace ve výchozím nastavení dál provádět odchozí volání do Internetu. Přidáním nastavení aplikace `WEBSITE_VNET_ROUTE_ALL=1` vynutíte odeslání veškerého odchozího provozu do vaší virtuální sítě, kde je možné použít pravidla skupiny zabezpečení sítě k omezení provozu.
 
-## <a name="automation"></a>Automatizace
+## <a name="automation"></a>Automation
 Následující rozhraní API vám umožní programově spravovat integrace místní virtuální sítě:
 
 + **Azure CLI**: použijte [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazy k přidání, výpisu nebo odebrání integrace místní virtuální sítě.  

@@ -4,12 +4,12 @@ description: Přehled služby Azure blockchain
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8364f4b8f063611df08275ba4cbb3acb4be5d196
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076961"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530025"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
@@ -45,7 +45,7 @@ Jako spravovaná služba Služba Azure blockchain zajišťuje, že se uzly člen
 
 Kromě toho služba Azure blockchain poskytuje bohatou metriku prostřednictvím služby Azure Monitor Service, která poskytuje přehledy o využití procesoru, paměti a úložiště uzlů.  Azure Monitor taky poskytuje užitečné poznatky k blockchain síťové aktivitě, jako jsou transakce a bloky dolována za účely, hloubka fronty transakcí a aktivní připojení.  Metriky je možné přizpůsobit tak, aby poskytovaly přehledy, které jsou důležité pro vaši aplikaci blockchain.  Kromě toho je možné definovat prahové hodnoty prostřednictvím výstrah umožňujících uživatelům aktivovat akce, jako je odeslání e-mailu nebo textové zprávy, spuštění aplikace logiky, funkce Azure nebo odeslání do vlastního Webhooku definovaného uživatelem.
 
-![Metriky](./media/overview/metrics.png)
+![Snímek obrazovky ukazuje monitorování s hodnotami pro bloky, transakce, nevyřízené transakce a zpracování požadavků.](./media/overview/metrics.png)
 
 Uživatelé můžou prostřednictvím Azure Log Analytics zobrazovat protokoly související s hlavní knihou kvora nebo jiné důležité informace, jako je například pokus o připojení k uzlům transakcí.
 

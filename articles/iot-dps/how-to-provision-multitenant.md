@@ -7,16 +7,16 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434740"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531419"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientské architektury 
 
-Zásady přidělování definované službou zřizování podporují celou řadu scénářů přidělování. Mezi dva běžné scénáře patří:
+Tento článek ukazuje, jak bezpečně zřídit více zařízení symetrického klíče pro skupinu centra IoT pomocí [zásad přidělování](concepts-service.md#allocation-policy). Zásady přidělování definované službou zřizování podporují celou řadu scénářů přidělování. Mezi dva běžné scénáře patří:
 
 * **Zeměpisná poloha/geografická latence**: když se zařízení pohybuje mezi místy, zlepšuje se latence sítě díky tomu, že je zařízení zřízené službě IoT Hub nejblíže každému umístění. V tomto scénáři jsou pro registrace vybrány skupiny služby IoT Hub, které jsou rozloženy mezi oblastmi. Pro tyto registrace se vybere nejnižší zásada přidělení **latence** . Tato zásada způsobí, že služba Device Provisioning vyhodnocuje latenci zařízení a určí skříň IoT Hub ze skupiny centra IoT. 
 
@@ -83,7 +83,7 @@ V této části použijete Azure Cloud Shell k vytvoření dvou nových oblastí
 
 V této části vytvoříte novou skupinu registrace pro zařízení tenanta.  
 
-V zájmu jednoduchosti Tento článek používá k registraci [symetrický klíč s ověřením identity](concepts-symmetric-key-attestation.md) . Pro bezpečnější řešení zvažte použití [ověření certifikátu X. 509](concepts-security.md#x509-certificates) s řetězem důvěryhodnosti.
+V zájmu jednoduchosti Tento článek používá k registraci [symetrický klíč s ověřením identity](concepts-symmetric-key-attestation.md) . Pro bezpečnější řešení zvažte použití [ověření certifikátu X. 509](concepts-x509-attestation.md) s řetězem důvěryhodnosti.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete instanci služby Device Provisioning.
 

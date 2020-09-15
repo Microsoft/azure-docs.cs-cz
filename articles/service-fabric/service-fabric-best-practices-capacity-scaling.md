@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002245"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531300"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Plánování kapacity a škálování pro Azure Service Fabric
 
@@ -36,6 +36,9 @@ Díky automatickému škálování přes služby Virtual Machine Scale Sets bude
 
 > [!NOTE]
 > Service Fabric stavový Service Fabric:/System/InfastructureService/<NODE_TYPE_NAME> běží na každém typu uzlu, který má odolnost stříbrné nebo vyšší. Jedná se o jedinou systémovou službu, která se v Azure podporuje na všech typech uzlů clusteru.
+
+> [!IMPORTANT]
+> Automatické škálování Service Fabric podporuje `Default` `NewestVM` [Konfigurace škálování](../virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy.md)sady škálování virtuálních počítačů.
 
 ## <a name="vertical-scaling-considerations"></a>Požadavky vertikálního škálování
 
@@ -168,7 +171,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > Při škálování v clusteru uvidíte, že odebraný uzel/instance virtuálního počítače se v Service Fabric Explorer zobrazí ve stavu není v pořádku. Vysvětlení tohoto chování najdete v tématu chování, [které můžete sledovat v Service Fabric Explorer](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). Další možnosti:
-> * Zavolejte [příkaz Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) s odpovídajícím názvem uzlu.
+> * Zavolejte [příkaz Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) s odpovídajícím názvem uzlu.
 > * Nasaďte do clusteru [aplikaci pomocníka automatického škálování Service Fabric](https://github.com/Azure/service-fabric-autoscale-helper/) . Tato aplikace zajišťuje, aby se nezaškrtnuté uzly s horizontálním škálováním z Service Fabric Explorer.
 
 ## <a name="reliability-levels"></a>Úrovně spolehlivosti

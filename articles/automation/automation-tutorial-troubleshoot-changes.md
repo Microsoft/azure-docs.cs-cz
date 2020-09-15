@@ -7,12 +7,12 @@ keywords: Změna, sledování, sledování změn, inventář, automatizace
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185802"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530535"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Řešení potíží se změnami na virtuálním počítači Azure
 
@@ -30,7 +30,7 @@ Co se v tomto kurzu naučíte:
 > * Zobrazení změn
 > * Konfigurace upozornění
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -99,7 +99,7 @@ Pomocí sledování změn můžete zvolit soubory a klíče registru, které se 
     |---------|---------|
     |Povoleno     | Určuje, jestli se nastavení používá.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logické seskupení souborů        |
+    |Group (Skupina)     | Název skupiny pro logické seskupení souborů        |
     |Klíč registru systému Windows   | Cesta, ve které se má soubor hledat. Například: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
 
 ### <a name="add-a-windows-file"></a>Přidání souboru Windows
@@ -112,7 +112,7 @@ Pomocí sledování změn můžete zvolit soubory a klíče registru, které se 
     |---------|---------|
     |Povoleno     | Určuje, jestli se nastavení používá.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logické seskupení souborů        |
+    |Group (Skupina)     | Název skupiny pro logické seskupení souborů        |
     |Zadat cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.         |
     |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
     |Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
@@ -127,7 +127,7 @@ Pomocí sledování změn můžete zvolit soubory a klíče registru, které se 
     |---------|---------|
     |Povoleno     | Určuje, jestli se nastavení používá.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logické seskupení souborů        |
+    |Group (Skupina)     | Název skupiny pro logické seskupení souborů        |
     |Zadat cestu     | Cesta, ve které se má soubor hledat. Například: /etc/*.conf       |
     |Typ cesty     | Typ položky, která se má sledovat. Možné hodnoty jsou Soubor a Adresář.        |
     |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
@@ -218,9 +218,9 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 18. Pokud chcete přizpůsobit předmět e-mailu s výstrahou, vyberte **přizpůsobit akce**. 
 
-19. V možnosti **vytvořit pravidlo**vyberte **Předmět e-mailu**a pak zvolte **vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace. Následující obrázek ukazuje příklad e-mailu přijatého po zastavení služby W3SVC.
+19. V možnosti **vytvořit pravidlo**vyberte **Předmět e-mailu**a pak zvolte **vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace. Na následujícím obrázku je příklad e-mailu přijatý při zastavení služby W3SVC.
 
-    ![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![Snímek obrazovky zobrazuje e-mailové oznámení obdržené, když se zastaví služby W 3 S V C.](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: 71f5488b1f689e8892155b013730bcbb3c8e0e35
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606538"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531915"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregovaná transformace v toku mapování dat
 
@@ -29,17 +29,18 @@ Vyberte existující sloupec nebo vytvořte nový počítaný sloupec, který ch
 
 Klauzule GROUP by je volitelná v agregační transformaci.
 
-## <a name="aggregate-column"></a>Agregovaný sloupec 
+## <a name="aggregate-columns"></a>Agregované sloupce
 
-Pro sestavení agregačních výrazů použijte kartu **agregace** . Existující sloupec můžete buď přepsat agregací, nebo vytvořit nové pole s novým názvem. Agregační výraz je zadán v pravém poli vedle pole selektor názvu sloupce. Chcete-li upravit výraz, klikněte na textové pole a otevřete Tvůrce výrazů. Chcete-li přidat další agregace, najeďte myší na existující výraz a kliknutím na ikonu Plus vytvořte nový agregační sloupec nebo [vzorec sloupce](concepts-data-flow-column-pattern.md).
+Pro sestavení agregačních výrazů použijte kartu **agregace** . Existující sloupec můžete buď přepsat agregací, nebo vytvořit nové pole s novým názvem. Agregační výraz je zadán v pravém poli vedle pole selektor názvu sloupce. Chcete-li upravit výraz, klikněte na textové pole a otevřete Tvůrce výrazů. Chcete-li přidat více agregačních sloupců, klikněte na tlačítko **Přidat** nad seznamem sloupců nebo ikonu se symbolem plus vedle existujícího agregačního sloupce. Vyberte možnost **Přidat sloupec** nebo **Přidat vzor sloupce**. Každý agregační výraz musí obsahovat alespoň jednu agregační funkci.
 
-Každý agregační výraz musí obsahovat alespoň jednu agregační funkci.
-
-![Agregovaná nastavení agregace transformace](media/data-flow/agg2.png "Agregovaná nastavení agregace transformace")
-
+![Nastavení agregace](media/data-flow/aggregate-columns.png "Nastavení agregace")
 
 > [!NOTE]
 > V režimu ladění nemůže Tvůrce výrazů vydávat náhledy dat s agregačními funkcemi. Chcete-li zobrazit náhledy dat pro agregované transformace, ukončete Tvůrce výrazů a zobrazte data prostřednictvím karty Náhled dat.
+
+### <a name="column-patterns"></a>Vzory sloupců
+
+Pomocí [vzorů sloupců](concepts-data-flow-column-pattern.md) použijte stejnou agregaci pro sadu sloupců. To je užitečné, pokud chcete zachovat mnoho sloupců ze vstupního schématu, protože jsou ve výchozím nastavení vyřazeny. Použijte heuristickou hodnotu, například `first()` k uchování vstupních sloupců prostřednictvím agregace.
 
 ## <a name="reconnect-rows-and-columns"></a>Znovu připojit řádky a sloupce
 

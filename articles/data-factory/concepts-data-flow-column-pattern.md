@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/21/2019
-ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606122"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531136"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Použití vzorů sloupců v mapování toku dat
 
@@ -27,17 +27,17 @@ Vzory sloupců jsou aktuálně k dispozici v odvozeném sloupci, agregace, výb�
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>Vzory sloupců v odvozeném sloupci a agregace
 
-Chcete-li přidat vzor sloupce do odvozeného sloupce nebo na kartě agregace agregované transformace, klikněte na ikonu se symbolem plus napravo od existujícího sloupce. Vyberte možnost **přidat model sloupce**. 
+Chcete-li přidat vzorek sloupce do odvozeného sloupce, agregace nebo transformace okna, klikněte na tlačítko **Přidat** nad seznamem sloupců nebo ikonu se symbolem plus vedle existujícího odvozeného sloupce. Vyberte možnost **přidat model sloupce**.
 
-![vzory sloupců](media/data-flow/columnpattern.png "Vzory sloupců")
+![vzory sloupců](media/data-flow/add-column-pattern.png "Vzory sloupců")
 
 K zadání podmínky shody použijte [Tvůrce výrazů](concepts-data-flow-expression-builder.md) . Vytvořte logický výraz, který odpovídá sloupcům na základě `name` , `type` , `stream` a `position` sloupce. Vzor bude mít vliv na libovolný sloupec, posunovaná nebo definovaná, kde podmínka vrátí hodnotu true.
 
 Dvě pole výrazu pod podmínkou shody určují nové názvy a hodnoty ovlivněných sloupců. Slouží `$$` k odkazování na existující hodnotu spárovaného pole. Levý rámeček výrazu definuje název a pravé pole výrazu definuje hodnotu.
 
-![vzory sloupců](media/data-flow/columnpattern2.png "Vzory sloupců")
+![vzory sloupců](media/data-flow/edit-column-pattern.png "Vzory sloupců")
 
-Výše uvedený vzor sloupce odpovídá každému sloupci typu Double a vytvoří jeden agregovaný sloupec na základě shody. Název nového sloupce se shoduje s názvem sloupce, který je zřetězený s _total. Hodnota nového sloupce je zaokrouhlená, agregovaná suma existující hodnoty typu Double.
+Výše uvedený vzor sloupce odpovídá každému sloupci typu Double a vytvoří jeden odvozený sloupec na základě shody. Když se uvedete `$$` jako pole název sloupce, každý odpovídající sloupec se aktualizuje se stejným názvem. Hodnota každého sloupce je zaokrouhlena na dvě desetinná místa.
 
 Pokud chcete ověřit, jestli je vaše shoda podmínky správná, můžete ověřit výstupní schéma definovaných sloupců na kartě **zkontrolovat** nebo získat snímek dat na kartě **Náhled dat** . 
 
@@ -73,15 +73,15 @@ Pokud vaše definovaná projekce má hierarchii, můžete k mapování podsloupc
 
 ![mapování na základě pravidel](media/data-flow/rule-based-hierarchy.png "Mapování na základě pravidel")
 
-Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a` . `a`obsahuje dva podsloupce `b` a `c` . Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako" `$$` .
+Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a` . `a` obsahuje dva podsloupce `b` a `c` . Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako" `$$` .
 
 ## <a name="pattern-matching-expression-values"></a>Hodnoty výrazů pro porovnávání vzorů.
 
-* `$$`překládá se za název nebo hodnotu každé shody v době běhu.
-* `name`představuje název každého příchozího sloupce.
-* `type`představuje datový typ každého příchozího sloupce.
-* `stream`představuje název spojený s každým datovým proudem nebo transformaci v toku.
-* `position`je pořadové místo sloupců v toku dat
+* `$$` překládá se za název nebo hodnotu každé shody v době běhu.
+* `name` představuje název každého příchozího sloupce.
+* `type` představuje datový typ každého příchozího sloupce.
+* `stream` představuje název spojený s každým datovým proudem nebo transformaci v toku.
+* `position` je pořadové místo sloupců v toku dat
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [jazyku výrazu](data-flow-expression-functions.md) mapování dat pro transformaci dat

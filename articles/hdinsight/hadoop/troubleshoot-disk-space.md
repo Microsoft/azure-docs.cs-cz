@@ -1,18 +1,18 @@
 ---
 title: Správa místa na disku ve službě Azure HDInsight
-description: Kroky řešení potíží a možná řešení pro problémy při komunikaci s clustery Azure HDInsight.
+description: Postup řešení potíží a možná řešení pro správu potíží s místem na disku při komunikaci s clustery Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
-ms.openlocfilehash: 577bed7ce342be14a50077a3ffd841cd901b5b31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0628033ecf6f2e51cf18f61c6e5b36042557dc7b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77473009"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530157"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Správa místa na disku ve službě Azure HDInsight
 
@@ -42,7 +42,7 @@ Zkontrolujte následující konfigurace:
 
 * Ujistěte se, že velikost clusteru odpovídá zatížení. Je možné, že se úlohy změnily v poslední době, jinak se změnila velikost clusteru. [Horizontální](../hdinsight-scaling-best-practices.md) navýšení kapacity clusteru tak, aby odpovídaly vyššímu zatížení.
 
-* `/mnt/resource`můžou být vyplněné osamocenými soubory (jako v případě restartování Resource Manageru). V případě potřeby je ručně vyčistit `/mnt/resource/hadoop/yarn/log` a `/mnt/resource/hadoop/yarn/local` .
+* `/mnt/resource` můžou být vyplněné osamocenými soubory (jako v případě restartování Resource Manageru). V případě potřeby je ručně vyčistit `/mnt/resource/hadoop/yarn/log` a `/mnt/resource/hadoop/yarn/local` .
 
 ## <a name="next-steps"></a>Další kroky
 

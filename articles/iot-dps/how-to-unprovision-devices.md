@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294386"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531385"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena 
 
@@ -43,7 +43,7 @@ Zrušení zřízení zařízení, které má jednotlivou registraci:
 
 
 ## <a name="enrollment-groups"></a>Skupiny registrací
-Pomocí ověřování X. 509 se dají zařízení zřídit taky prostřednictvím skupiny pro registraci. Skupiny registrací se konfigurují pomocí podpisového certifikátu, buď zprostředkujícího, nebo kořenového certifikátu certifikační autority, a kontrolujte přístup ke službě zřizování pro zařízení s tímto certifikátem v řetězu certifikátů. Další informace o skupinách registrace a certifikátech X. 509 pomocí služby zřizování najdete v tématu [certifikáty x. 509](concepts-security.md#x509-certificates). 
+Pomocí ověřování X. 509 se dají zařízení zřídit taky prostřednictvím skupiny pro registraci. Skupiny registrací se konfigurují pomocí podpisového certifikátu, buď zprostředkujícího, nebo kořenového certifikátu certifikační autority, a kontrolujte přístup ke službě zřizování pro zařízení s tímto certifikátem v řetězu certifikátů. Další informace o skupinách registrací a certifikátech X. 509 pomocí služby zřizování najdete v tématu [ověření certifikátu x. 509](concepts-x509-attestation.md). 
 
 Chcete-li zobrazit seznam zařízení, která byla zřízena prostřednictvím skupiny registrací, můžete zobrazit podrobnosti skupiny registrací. Toto je jednoduchý způsob, jak pochopit, ke kterému IoT Hub je každé zařízení zřízené. Zobrazení seznamu zařízení: 
 

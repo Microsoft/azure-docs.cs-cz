@@ -3,12 +3,12 @@ title: Přesunout Azure App Service prostředky
 description: K přesunutí prostředků App Service do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 27555a4616befca41c7e970e947afa1cd1ff7248
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042053"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531368"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Pokyny pro přesun App Servicech prostředků
 
@@ -42,7 +42,7 @@ Pro přesunutí webové aplikace vyberte možnost Doporučený postup.
 
 Zobrazí se doporučené akce, které je třeba provést před přesunutím prostředků. Tyto informace zahrnují původní skupinu prostředků pro webovou aplikaci.
 
-![Doporučení](./media/app-service-move-limitations/recommendations.png)
+![Snímek obrazovky ukazuje doporučené kroky pro přesun webových prostředků Microsoft dot.](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>Přesun podpory
 

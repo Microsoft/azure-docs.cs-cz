@@ -1,21 +1,21 @@
 ---
 title: Použití nástrojů Azure IoT Hub Device Provisioning Service SDK
 description: Tento dokument přesuzuje nástroje poskytované v Azure IoT Hub Device Provisioning Service (DPS) SDK pro vývoj.
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28d682a9ca698afb72d08b4d111562c725d46996
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691624"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530841"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak používat nástroje, které nabízí sady SDK ke zjednodušení vývoje pro zřizování
-IoT Hub Device Provisioning Service zjednodušuje proces zřizování pomocí nulového [automatického zřizování](concepts-auto-provisioning.md) za běhu zabezpečeným a škálovatelným způsobem.  Vyžaduje se ověření zabezpečení ve formě certifikátu X. 509 nebo čipu TPM (Trusted Platform Module).  Společnost Microsoft také spolupracuje s [dalšími bezpečnostními partnery](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) , aby vylepšila jistotu při zabezpečení nasazení IoT. Princip hardwarového požadavku na zabezpečení může být pro vývojáře poměrně náročný. K dispozici je sada sad SDK služby zřizování Azure IoT, aby vývojáři mohli používat pohodlí při psaní klientů, kteří komunikují se službou zřizování. Sady SDK také poskytují ukázky pro běžné scénáře a také sadu nástrojů pro zjednodušení ověření zabezpečení při vývoji.
+IoT Hub Device Provisioning Service zjednodušuje proces zřizování s nulovým [přízřízením](about-iot-dps.md#provisioning-process) za běhu zabezpečeným a škálovatelným způsobem.  Vyžaduje se ověření zabezpečení ve formě certifikátu X. 509 nebo čipu TPM (Trusted Platform Module).  Společnost Microsoft také spolupracuje s [dalšími bezpečnostními partnery](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) , aby vylepšila jistotu při zabezpečení nasazení IoT. Princip hardwarového požadavku na zabezpečení může být pro vývojáře poměrně náročný. K dispozici je sada sad SDK služby zřizování Azure IoT, aby vývojáři mohli používat pohodlí při psaní klientů, kteří komunikují se službou zřizování. Sady SDK také poskytují ukázky pro běžné scénáře a také sadu nástrojů pro zjednodušení ověření zabezpečení při vývoji.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Simulátor čipu TPM (Trusted Platform Module)
 [Čip TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) může odkazovat na standard pro bezpečné ukládání klíčů pro ověřování platformy nebo může odkazovat na vstupně-výstupní rozhraní, které slouží k interakci s moduly, které implementují Standard. Čipy TPM může existovat jako diskrétní hardware, integrovaný hardware, firmware nebo software založený na firmwaru nebo softwaru.  V produkčním prostředí je čip TPM umístěný na zařízení, a to buď jako diskrétní hardware, integrovaný hardware, nebo na základě firmwaru. Ve fázi testování se vývojářům poskytuje softwarový simulátor čipu TPM.  Tento simulátor je k dispozici pouze pro vývoj na platformě Windows pro nyní.
@@ -52,7 +52,7 @@ Generování certifikátu X. 509 pomocí tohoto generátoru:
 2. Změňte kořen na Azure-IoT-SDK-Java.
 3. Spusťte ```mvn install -DskipTests=true``` , aby se stáhly všechny požadované balíčky a zkompiluje se sada SDK.
 4. Přejděte do kořenového adresáře generátoru certifikátů X. 509 v ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator``` .
-5. Sestavit s```mvn clean install```
+5. Sestavit s ```mvn clean install```
 6. Spusťte nástroj pomocí následujících příkazů:
    ```
    cd target

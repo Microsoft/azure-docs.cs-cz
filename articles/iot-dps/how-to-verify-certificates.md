@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74973437"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530858"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Jak v rámci služby Device Provisioning udělat důkaz o vlastnictví certifikátů certifikační autority X. 509
 
@@ -23,7 +23,7 @@ Důkaz o vlastnictví zahrnuje následující kroky:
 2. Vytvořte ověřovací certifikát X. 509 s ověřovacím kódem jako jeho subjektem a podepište certifikát s privátním klíčem přidruženým k vašemu certifikátu certifikační autority X. 509.
 3. Nahrajte do služby certifikát pro ověření podepsaného ověřování. Služba ověřuje ověřovací certifikát pomocí veřejné části certifikátu certifikační autority, která má být ověřena, čímž prokáže, že jste držiteli privátního klíče certifikátu certifikační autority.
 
-Ověřené certifikáty při používání skupin registrací hrají důležitou roli. Ověřování vlastnictví certifikátu poskytuje další vrstvu zabezpečení tím, že zajišťuje, že k odeslání certifikátu má k dispozici privátní klíč certifikátu. Ověřování brání škodlivému objektu actor sledovat provoz z extrakce zprostředkujícího certifikátu a pomocí tohoto certifikátu vytvořit skupinu registrací ve své vlastní službě zřizování a efektivně tak znestarost vaše zařízení. Prokázáním vlastnictví kořenového nebo zprostředkujícího certifikátu v řetězu certifikátů zjistíte, že máte oprávnění generovat listové certifikáty pro zařízení, která se budou registrovat jako součást této skupiny zápisu. Z tohoto důvodu musí být kořenový nebo zprostředkující certifikát nakonfigurovaný ve skupině pro registraci buď ověřený certifikát, nebo musí v řetězu certifikátů vyhledat ověřený certifikát, který zařízení prezentuje při ověřování ve službě. Další informace o skupinách registrace najdete v tématu [certifikáty x. 509](concepts-security.md#x509-certificates) a [řízení přístupu zařízení ke službě zřizování pomocí certifikátů x. 509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+Ověřené certifikáty při používání skupin registrací hrají důležitou roli. Ověřování vlastnictví certifikátu poskytuje další vrstvu zabezpečení tím, že zajišťuje, že k odeslání certifikátu má k dispozici privátní klíč certifikátu. Ověřování brání škodlivému objektu actor sledovat provoz z extrakce zprostředkujícího certifikátu a pomocí tohoto certifikátu vytvořit skupinu registrací ve své vlastní službě zřizování a efektivně tak znestarost vaše zařízení. Prokázáním vlastnictví kořenového nebo zprostředkujícího certifikátu v řetězu certifikátů zjistíte, že máte oprávnění generovat listové certifikáty pro zařízení, která se budou registrovat jako součást této skupiny zápisu. Z tohoto důvodu musí být kořenový nebo zprostředkující certifikát nakonfigurovaný ve skupině pro registraci buď ověřený certifikát, nebo musí v řetězu certifikátů vyhledat ověřený certifikát, který zařízení prezentuje při ověřování ve službě. Další informace o ověřování certifikátů X. 509 najdete v tématu [certifikáty x. 509](concepts-x509-attestation.md) a [řízení přístupu zařízení ke službě zřizování pomocí certifikátů x. 509](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Registrace veřejné části certifikátu X. 509 a získání ověřovacího kódu
 
@@ -63,7 +63,7 @@ Skripty PowerShellu a Bash, které jsou uvedené v dokumentaci a sady SDK, spol�
 
 ## <a name="upload-the-signed-verification-certificate"></a>Nahrát podepsaný ověřovací certifikát
 
-1. Nahrajte výsledný podpis jako ověřovací certifikát do vaší služby zřizování na portálu. V části **Podrobnosti o certifikátu** na Azure Portal použijte ikonu _Průzkumníka souborů_ vedle pole **soubor ověřovacího certifikátu. pem nebo. cer** k nahrání podepsaného ověřovacího certifikátu z vašeho systému.
+1. Nahrajte výsledný podpis jako ověřovací certifikát do vaší služby zřizování na portálu. V části **Podrobnosti o certifikátu** na Azure Portal použijte ikonu  _Průzkumníka souborů_ vedle pole **soubor ověřovacího certifikátu. pem nebo. cer** k nahrání podepsaného ověřovacího certifikátu z vašeho systému.
 
 2. Po úspěšném nahrání certifikátu klikněte na **ověřit**. **Stav** certifikátu se změní na **_ověřený_** v seznamu **Průzkumník certifikátů** . Klikněte na tlačítko **aktualizovat** , pokud se neaktualizuje automaticky.
 

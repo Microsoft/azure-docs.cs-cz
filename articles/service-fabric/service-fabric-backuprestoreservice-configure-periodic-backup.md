@@ -1,16 +1,16 @@
 ---
 title: Principy konfigurace pravidelného zálohování
-description: Použijte funkci periodického zálohování a obnovení Service Fabric k povolení pravidelného zálohování dat aplikací.
+description: Pomocí funkce periodického zálohování a obnovení Service Fabric můžete nakonfigurovat pravidelné zálohování spolehlivých stavových služeb nebo Reliable Actors.
 author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261230"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530909"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Princip pravidelné konfigurace zálohování v Azure Service Fabric
 
@@ -119,7 +119,7 @@ Zásady zálohování se skládají z následujících konfigurací:
 >
 
 * **Zásady uchovávání informací**: Určuje zásadu pro uchovávání záloh v nakonfigurovaném úložišti. Podporují se jenom základní zásady uchovávání informací.
-    1. **Základní zásady uchovávání informací**: tyto zásady uchovávání informací umožňují zajistit optimální využití úložiště odebráním záložních souborů, které nejsou potřeba. `RetentionDuration`dá se zadat, chcete-li nastavit časový rozsah, pro který se musí zálohy uchovávat v úložišti. `MinimumNumberOfBackups`je volitelný parametr, který se dá určit, aby se zajistilo, že zadaný počet záloh vždycky zůstane bez ohledu na `RetentionDuration` . Následující příklad ilustruje konfiguraci pro uchovávání záloh po dobu _10_ dnů a nepovoluje počet záloh, které se budou nacházet pod _20_.
+    1. **Základní zásady uchovávání informací**: tyto zásady uchovávání informací umožňují zajistit optimální využití úložiště odebráním záložních souborů, které nejsou potřeba. `RetentionDuration` dá se zadat, chcete-li nastavit časový rozsah, pro který se musí zálohy uchovávat v úložišti. `MinimumNumberOfBackups` je volitelný parametr, který se dá určit, aby se zajistilo, že zadaný počet záloh vždycky zůstane bez ohledu na `RetentionDuration` . Následující příklad ilustruje konfiguraci pro uchovávání záloh po dobu _10_ dnů a nepovoluje počet záloh, které se budou nacházet pod _20_.
 
         ```json
         {

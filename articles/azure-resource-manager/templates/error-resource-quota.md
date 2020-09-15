@@ -3,12 +3,12 @@ title: Chyby kvóty
 description: Popisuje, jak vyřešit chyby kvót prostředků při nasazování prostředků pomocí Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007788"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530416"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Řešení chyb týkajících se kvót prostředků
 
@@ -40,7 +40,7 @@ please delete some resources of this type before creating a new one.
 Kvóty se uplatňují u jednotlivých skupin prostředků, předplatných, účtů a dalších oborů. Například v rámci předplatného může být nakonfigurované omezení počtu jader v jedné oblasti. Pokud se pokusíte nasadit virtuální počítač s více jádry, než je povolené množství, zobrazí se chyba s informací, že došlo k překročení kvóty.
 Úplné informace o kvótě najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -95,7 +95,7 @@ Pokud chcete požádat o zvýšení kvóty, navštivte portál a zapište probl�
 
 1. Vyberte **Předplatná**.
 
-   ![Předplatná](./media/error-resource-quota/subscriptions.png)
+   ![Snímek obrazovky zobrazuje nabídku portálu Azure s vybranými předplatnými.](./media/error-resource-quota/subscriptions.png)
 
 2. Vyberte předplatné, které potřebuje navýšit kvótu.
 
