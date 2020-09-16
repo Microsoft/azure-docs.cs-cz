@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321714"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601360"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -95,7 +95,7 @@ Hesla samy o sebe nejsou dostatečně zabezpečená, aby nedocházelo k špatný
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Odolnost ověřování při místním výpadku
 
-Kromě výhod jednoduchosti a povolení detekce nevrácených přihlašovacích údajů, synchronizace hodnot hash hesel služby Azure AD (KOSMETICE) a Azure MFA umožňuje uživatelům přístup k SaaS aplikacím a Office 365, a to i v případě výpadků z důvodů kyberútokům jako [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/). KOSMETICE je také možné povolit ve spojení s federaci. Povolení KOSMETICE umožňuje použití záložního ověřování v případě, že nejsou k dispozici federační služby.
+Kromě výhod jednoduchosti a povolení detekce nevrácených přihlašovacích údajů, synchronizace hodnot hash hesel služby Azure AD (KOSMETICE) a Azure MFA umožňuje uživatelům přístup k aplikacím SaaS a Microsoft 365, a to i v důsledku místního výpadku z důvodu kyberútokům jako [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/). KOSMETICE je také možné povolit ve spojení s federaci. Povolení KOSMETICE umožňuje použití záložního ověřování v případě, že nejsou k dispozici federační služby.
 
 Pokud v místní organizaci chybí strategie odolnosti proti výpadkům nebo má jednu, která není integrovaná se službou Azure AD, měli byste nasadit Azure AD KOSMETICE a definovat plán zotavení po havárii, který obsahuje KOSMETICE. Povolení služby Azure AD KOSMETICE umožní uživatelům ověřování ve službě Azure AD, pokud vaše místní služba Active Directory nebude k dispozici.
 
@@ -249,7 +249,7 @@ Podmíněný přístup je důležitým nástrojem pro zlepšení stav zabezpeče
 - Máte malou sadu základních zásad, které se můžou vztahovat na víc aplikací.
 - Definování prázdných skupin výjimek a jejich přidání do zásad, které mají strategii výjimek
 - Plánování účtů pro [rozbití skla](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) bez ovládacích prvků MFA
-- Zajistěte konzistentní prostředí napříč klientskými aplikacemi Office 365, například týmy, OneDrive pro firmy, Outlook atd.) implementací stejné sady ovládacích prvků pro služby, jako je Exchange Online a SharePoint Online
+- Zajistěte konzistentní prostředí napříč Microsoft 365 klientskými aplikacemi, například týmy, OneDrive, Outlook atd.) implementací stejné sady ovládacích prvků pro služby, jako je Exchange Online a SharePoint Online
 - Přiřazení k zásadám by se mělo implementovat pomocí skupin, ne jednotlivců.
 - Provádějte pravidelné kontroly skupin výjimek používaných v zásadách, abyste omezili čas, kdy se uživatelé nacházejí v stav zabezpečení. Pokud vlastníte Azure AD P2, můžete k automatizaci procesu použít kontroly přístupu.
 
@@ -302,14 +302,14 @@ Níže najdete seznam aplikací s oprávněními, které byste mohli chtít poř
 
 | Prostředek | Oprávnění |
 | :- | :- |
-| Office 365 Exchange Online | EA. AccessAsUser. All |
+| Exchange Online | EA. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Pošta. čtení |
 | Microsoft Graph API | Pošta. čtení |
 | | Pošta. Read. Shared |
 | | Pošta. v zápisu |
 
-- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Například:
+- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Příklad:
 
 |Prostředek | Oprávnění |
 | :- | :- |
@@ -339,7 +339,7 @@ Níže jsou uvedena nastavení uživatelů a skupin, která se můžou uzamknout
 
 #### <a name="group-settings"></a>Nastavení skupiny
 
-**Samoobslužná správa skupin/uživatelé můžou vytvářet skupiny zabezpečení nebo skupiny O365.** Pokud není k dispozici žádná stávající samoobslužná iniciativa pro skupiny v cloudu, zákazníci se můžou rozhodnout je vypnout, dokud nebudou připravené k použití této možnosti.
+**Samoobslužná správa skupin/uživatelé můžou vytvářet skupiny zabezpečení/Microsoft 365 skupiny.** Pokud není k dispozici žádná stávající samoobslužná iniciativa pro skupiny v cloudu, zákazníci se můžou rozhodnout je vypnout, dokud nebudou připravené k použití této možnosti.
 
 #### <a name="groups-recommended-reading"></a>Skupiny – Doporučené čtení
 

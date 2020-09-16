@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: ce017d1ac92e3aabe7ad0e36b2e8b87dc04b34f6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445936"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603046"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor
 
@@ -19,7 +19,7 @@ Můžete spouštět úlohy [Spark](https://spark.apache.org/) s daty uloženými
 
 Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/services/databricks) nebo [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), který poskytuje spravované Clustery Spark v Azure. V následující tabulce jsou uvedeny podporované verze Sparku.
 
-| Komponenta | Verze |
+| Součást | Verze |
 |---------|-------|
 | Apache Spark | 2.4. x, 2.3. x, 2.2. x a 2.1. x |
 | Scala | 2,11 |
@@ -31,7 +31,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 > Pro Cosmos DB rozhraní API Cassandra použijte [konektor Cassandra Spark](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Rychlý start
+## <a name="quickstart"></a>Rychlé zprovoznění
 
 * Postupujte podle kroků v [části Začínáme se sadou Java SDK](sql-api-async-java-get-started.md) a nastavte účet Cosmos DB a naplňte data.
 * Postupujte podle kroků v [Azure Databricks Začínáme](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s nastavením pracovního prostoru Azure Databricks a clusteru.
@@ -217,7 +217,7 @@ df
 ```
 Další informace o dalších fragmentech a koncových ukázkách najdete v tématu [Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks).
 
-## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a>Práce s konektorem
+## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a> Práce s konektorem
 
 Konektor můžete vytvořit ze zdroje na GitHubu nebo stáhnout Uber jar z Maven na odkazech níže.
 
@@ -247,7 +247,7 @@ spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2
 
 ### <a name="using-jupyter-notebooks"></a>Použití poznámkových bloků Jupyter
 
-Pokud používáte poznámkové bloky Jupyter v HDInsight, můžete `%%configure` k určení souřadnic Maven spojnice použít buňku Spark-Magic.
+Pokud používáte Jupyter Notebook v rámci služby HDInsight, můžete `%%configure` k určení souřadnic Maven spojnice použít buňku Spark-Magic.
 
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
@@ -273,7 +273,7 @@ mvn clean package
 
 [Úložiště GitHub Cosmos DB Spark](https://github.com/Azure/azure-cosmosdb-spark) má následující ukázkové poznámkové bloky a skripty, které můžete vyzkoušet.
 
-* **Čas provozu v čase pomocí Sparku a Cosmos dB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Připojte Spark pro Cosmos DB pomocí služby HDInsight Jupyter poznámkového bloku, abyste předvedli Spark SQL, GraphFrames a předpověď zpoždění letu pomocí kanálů ml.
+* **Čas provozu v čase pomocí Sparku a Cosmos dB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Připojte Spark pro Cosmos DB pomocí služby HDInsight Jupyter notebook, abyste předvedli Spark SQL, GraphFrames a předpověď zpoždění letu pomocí kanálů ml.
 * **Zdroj Twitteru s Apache Spark a Azure Cosmos DB změnu kanálu**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
 * **Použití Apache Spark k dotazování Cosmos DB grafů**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * **[Připojení Azure Databricks k Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** pomocí `azure-cosmosdb-spark` .  Zde je také Azure Databricks verze [poznámkového bloku on-time Performance letu](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks).
@@ -299,7 +299,7 @@ Na wikiwebu máme další informace, `azure-cosmosdb-spark` [wiki](https://githu
 
 ### <a name="performance"></a>Výkon
 
-* [Tipy pro zvýšení výkonu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
+* [Tipy ke zvýšení výkonu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
 * [Dotazy na testovací běhy](https://github.com/Azure/azure-documentdb-spark/wiki/Query-Test-Runs)
 * [Zápis testovacích běhů](https://github.com/Azure/azure-cosmosdb-spark/wiki/Writing-Test-Runs)
 
@@ -309,7 +309,7 @@ Na wikiwebu máme další informace, `azure-cosmosdb-spark` [wiki](https://githu
 * [Změny ukázek informačních kanálů](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Ukázky strukturovaného streamu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 * [Monitorování úloh Spark pomocí Application Insights](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 

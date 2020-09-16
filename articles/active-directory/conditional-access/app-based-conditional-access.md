@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253388"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601958"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování schválených klientských aplikací pro cloudový přístup k aplikaci pomocí podmíněného přístupu
 
 Lidé pravidelně používají svoje mobilní zařízení pro osobní i pracovní úkoly. I když se zaměříte na produktivitu zaměstnanců, organizace také chtějí zabránit ztrátě dat z potenciálně nezabezpečených aplikací. Díky podmíněnému přístupu můžou organizace omezovat přístup ke schváleným klientským aplikacím (podporujícím moderní ověřování).
 
-Tento článek obsahuje dva scénáře konfigurace zásad podmíněného přístupu pro prostředky, jako jsou Office 365, Exchange Online a SharePoint Online.
+Tento článek nabízí dva scénáře konfigurace zásad podmíněného přístupu pro prostředky, jako jsou Microsoft 365, Exchange Online a SharePoint Online.
 
-- [Scénář 1: aplikace Office 365 vyžadují schválenou klientskou aplikaci.](#scenario-1-office-365-apps-require-an-approved-client-app)
+- [Scénář 1: Microsoft 365 aplikace vyžadují schválenou klientskou aplikaci](#scenario-1-microsoft-365-apps-require-an-approved-client-app)
 - [Scénář 2: Exchange Online a SharePoint Online vyžadují schválenou klientskou aplikaci.](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 V případě podmíněného přístupu se tato funkce označuje jako vyžadování schválené klientské aplikace. Seznam schválených klientských aplikací najdete v tématu [schválený klient aplikace požadavky](concept-conditional-access-grant.md#require-approved-client-app).
@@ -32,9 +32,9 @@ V případě podmíněného přístupu se tato funkce označuje jako vyžadován
 > [!NOTE]
 > Aby bylo možné vyžadovat schválené klientské aplikace pro zařízení s iOS a Androidem, musí se tato zařízení nejdřív zaregistrovat ve službě Azure AD.
 
-## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>Scénář 1: aplikace Office 365 vyžadují schválenou klientskou aplikaci.
+## <a name="scenario-1-microsoft-365-apps-require-an-approved-client-app"></a>Scénář 1: Microsoft 365 aplikace vyžadují schválenou klientskou aplikaci
 
-V tomto scénáři společnost Contoso rozhodla, že uživatelé, kteří používají mobilní zařízení, mají přístup ke všem službám Office 365, pokud používají schválené klientské aplikace, jako je Outlook Mobile, OneDrive a Microsoft Teams. Všichni uživatelé už přihlásili pomocí přihlašovacích údajů Azure AD a mají přiřazené licence, které zahrnují Azure AD Premium P1 nebo P2 a Microsoft Intune.
+V tomto scénáři společnost Contoso rozhodla, že uživatelé, kteří používají mobilní zařízení, mají přístup ke všem službám Microsoft 365 za předpokladu, že používají schválené klientské aplikace, jako je Outlook Mobile, OneDrive a Microsoft Teams. Všichni uživatelé už přihlásili pomocí přihlašovacích údajů Azure AD a mají přiřazené licence, které zahrnují Azure AD Premium P1 nebo P2 a Microsoft Intune.
 
 Aby bylo možné vyžadovat použití schválené klientské aplikace na mobilních zařízeních, musí organizace provést následující tři kroky.
 
@@ -46,7 +46,7 @@ Aby bylo možné vyžadovat použití schválené klientské aplikace na mobiln�
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 (Preview)**.
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
@@ -65,7 +65,7 @@ Aby bylo možné vyžadovat použití schválené klientské aplikace na mobiln�
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 Exchange Online**.
 1. V části **podmínky**:
    1. **Klientské aplikace (Preview)**:
@@ -93,7 +93,7 @@ Aby organizace vyžadovala použití schválené klientské aplikace na mobilní
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 Exchange Online** a **Office 365 SharePoint Online**.
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
@@ -112,7 +112,7 @@ Aby organizace vyžadovala použití schválené klientské aplikace na mobilní
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 Exchange Online**.
 1. V části **podmínky**:
    1. **Klientské aplikace (Preview)**:
@@ -132,4 +132,4 @@ Přečtěte si článek [jak vytvořit a přiřadit zásady ochrany aplikací](/
 
 [Komponenty podmíněného přístupu](concept-conditional-access-policies.md)
 
-[Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+[Běžné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)

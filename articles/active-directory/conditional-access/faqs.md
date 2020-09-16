@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253235"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601633"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Nejčastější dotazy týkající se podmíněného přístupu
 
@@ -59,7 +59,7 @@ Další informace najdete v článku [závislosti služby podmíněného příst
 
 Po povolení některých zásad podmíněného přístupu v tenantovi v Microsoft Teams už některé karty nebudou fungovat na desktopovém klientovi podle očekávání. Ovlivněné karty ale při použití webového klienta Microsoft Teams. Ovlivněné karty mohou zahrnovat Power BI, formuláře, VSTS, PowerApps a SharePoint.
 
-Chcete-li zobrazit zasažené karty, je nutné použít webového klienta týmů v aplikaci Edge, Internet Explorer nebo Chrome s nainstalovaným rozšířením účtů Windows 10. Některé karty závisí na webovém ověřování, které nefunguje v klientském počítači Microsoft teams, pokud je povolený podmíněný přístup. Microsoft spolupracuje s partnery, aby tyto scénáře povolil. K datu jsme povolili scenrarios zahrnující Planner, OneNote a Stream.
+Chcete-li zobrazit zasažené karty, je nutné použít webového klienta týmů v aplikaci Edge, Internet Explorer nebo Chrome s nainstalovaným rozšířením účtů Windows 10. Některé karty závisí na webovém ověřování, které nefunguje v klientském počítači Microsoft teams, pokud je povolený podmíněný přístup. Microsoft spolupracuje s partnery, aby tyto scénáře povolil. K datu jsme povolili scénáře zahrnující Planner, OneNote a Stream.
 
 ## <a name="next-steps"></a>Další kroky
 

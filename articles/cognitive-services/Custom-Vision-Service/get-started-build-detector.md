@@ -1,33 +1,33 @@
 ---
 title: Rychlý Start – vytvoření objektu detektoru – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model klasifikace imagí.
+description: V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model objektu pro rozpoznávání.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 234c80e84e11579a66737c3e5efedfda34182ac5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549543"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602859"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Rychlý Start: vytvoření objektu detektoru pomocí Custom Vision
 
-V tomto rychlém startu se dozvíte, jak vytvořit objektový detektor prostřednictvím webu Custom Vision. Jakmile sestavíte model detektoru, můžete použít službu Custom Vision pro detekci objektů.
+V tomto rychlém startu se dozvíte, jak vytvořit objektový detektor prostřednictvím webu Custom Vision. Po vytvoření modelu můžete testovat s využitím nových imagí a následně je integrovat do vlastního softwaru pro rozpoznávání imagí.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Sada imagí, se kterými se má model detektoru naučit. Můžete použít sadu [ukázkových imagí](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) na GitHubu. Případně můžete pomocí níže uvedených tipů zvolit vlastní image.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření prostředků Custom Vision v Azure Portal
+## <a name="create-custom-vision-resources"></a>Vytvoření prostředků Custom Vision
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +45,7 @@ Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https:/
 1. Zadejte název a popis projektu. Pak vyberte skupinu prostředků. Pokud je přihlášený účet přidružený k účtu Azure, zobrazí se v rozevíracím seznamu Skupina prostředků všechny skupiny prostředků Azure, které zahrnují prostředek Custom Vision Service. 
 
    > [!NOTE]
-   > Pokud není k dispozici žádná skupina prostředků, potvrďte prosím, že jste se k [customvision.AI](https://customvision.ai) přihlásili pomocí stejného účtu, jako jste použili k přihlášení do [Azure Portal](https://portal.azure.com/). Ověřte také, že jste na portálu Custom Vision vybrali stejný adresář jako adresář v Azure Portal, kde se nacházejí Custom Vision prostředky. V obou lokalitách můžete adresář vybrat v nabídce účtu rozevírací nabídky v pravém horním rohu obrazovky. 
+   > Pokud není k dispozici žádná skupina prostředků, potvrďte prosím, že jste se k [customvision.AI](https://customvision.ai) přihlásili pomocí stejného účtu, jako jste použili k přihlášení do [Azure Portal](https://portal.azure.com/). Ověřte také, že jste na webu Custom Vision vybrali stejný adresář jako adresář v Azure Portal, kde se nacházejí Custom Vision prostředky. V obou lokalitách můžete adresář vybrat v nabídce účtu rozevírací nabídky v pravém horním rohu obrazovky. 
 
 1. V části __typy projektů__vyberte možnost __detekce objektu__ .
 
@@ -118,3 +118,4 @@ V tomto rychlém startu jste zjistili, jak vytvořit a naučit model objektovéh
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](test-your-model.md)
 
+* [Co je Custom Vision?](./overview.md)

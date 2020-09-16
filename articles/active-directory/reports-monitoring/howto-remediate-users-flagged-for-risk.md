@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231159"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600496"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
 
@@ -42,9 +42,9 @@ V sestavě uživatelů označených příznakem rizika můžete pro každého u�
 
 Další informace najdete v tématu [o sestavě zabezpečení pro uživatele označené příznakem rizika](../identity-protection/overview-identity-protection.md).
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Předplatné služby Azure AD pro zákazníky Office 365
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Předplatné Azure AD pro zákazníky Microsoft 365
 
-Pro přístup k **centru pro správu Azure**můžete použít také přihlašovací údaje sady Office 365. Po aktivaci přístupu ke službě Azure AD budete přesměrováni na portál služby Azure AD. Na úrovni základního předplatného je v sestavách uvedené omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy.
+Pro přístup k **centru pro správu Azure**můžete použít také přihlašovací údaje Microsoft 365. Po aktivaci přístupu ke službě Azure AD budete přesměrováni na portál služby Azure AD. Na úrovni základního předplatného je v sestavách uvedené omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy.
 
 Přístup k sestavám **uživatelů označeným příznakem rizika** v centru pro správu Microsoft 365:
 
@@ -79,7 +79,7 @@ Provedení následujících akcí vám pomůže napravit ovlivněné účty a za
 
     h. Vytvořte protokol auditu, který správce může zkontrolovat.
 
-4. Prozkoumejte svého tenanta Office 365 a další IT infrastrukturu, včetně kontroly případných úprav všech nastavení tenanta, uživatelských účtů a nastavení konfigurace jednotlivých uživatelů. Zkontrolujte indikátory metod trvalosti a také indikátory, že útočník mohl k získání přihlašovacích údajů sítě VPN nebo přístupu k jiným prostředkům organizace využít počáteční základnu. 
+4. Prozkoumejte klienta Microsoft 365 a další IT infrastrukturu, včetně kontroly všech nastavení klienta, uživatelských účtů a nastavení konfigurace jednotlivých uživatelů pro možné úpravy. Zkontrolujte indikátory metod trvalosti a také indikátory, že útočník mohl k získání přihlašovacích údajů sítě VPN nebo přístupu k jiným prostředkům organizace využít počáteční základnu. 
 
 5.  V rámci šetření zvažte, zda byste měli informovat státní úřady, včetně vynucování zákonů.
 

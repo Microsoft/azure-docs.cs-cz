@@ -1,6 +1,6 @@
 ---
 title: Skrytí podnikové aplikace z uživatelského prostředí v Azure AD
-description: Jak skrýt aplikaci firemním z uživatelského prostředí v Azure Active Directory panelů pro přístup nebo spouštěcích panelech Office 365.
+description: Jak skrýt podnikovou aplikaci před uživatelským prostředím v Azure Active Directory panelů přístupu nebo spouštěčích Microsoft 365.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,26 +12,26 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21ba14fba24c9b8e0b460e56b93d0e5212bfb27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23d2d6645bea6e99e9f62e36364adf8816329c26
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367695"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601135"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Skrýt podnikové aplikace od koncových uživatelů v Azure Active Directory
 
-Pokyny, jak skrýt aplikace z panelu MyApp a ze Spouštěče sady Office 365 koncových uživatelů. Když je aplikace skrytá, uživatelé mají stále oprávnění k aplikaci. 
+Pokyny, jak skrýt aplikace z panelu MyApp a Microsoft 365 spouštěče koncových uživatelů. Když je aplikace skrytá, uživatelé mají stále oprávnění k aplikaci. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby bylo možné skrýt aplikaci z panelu MyApp a spouštěče sady Office 365, jsou vyžadována oprávnění správce aplikací.
+Pro skrytí aplikace z panelu MyApp a Microsoft 365 spouštěče se vyžadují oprávnění správce aplikace.
 
-Pro skrytí všech aplikací Office 365 jsou nutná oprávnění globálního správce.
+Pro skrytí všech Microsoft 365 aplikací jsou vyžadována oprávnění globálního správce.
 
 
 ## <a name="hide-an-application-from-the-end-user"></a>Skrýt aplikaci od koncového uživatele
-Pomocí následujících kroků skryjte aplikaci z panelu MyApp a spouštěče aplikací Office 365.
+Pomocí následujících kroků skryjte aplikaci z panelu MyApp a Microsoft 365 spouštěče aplikací.
 
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce vašeho adresáře.
 2.  Vyberte **Azure Active Directory**.
@@ -59,13 +59,13 @@ $tags += "HideApp"
 Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 ```
 
-## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Skrýt aplikace Office 365 z panelu MyApp
+## <a name="hide-microsoft-365-applications-from-the-myapps-panel"></a>Skrýt Microsoft 365 aplikace z panelu MyApp
 
-Pomocí následujících kroků skryjte všechny aplikace Office 365 z panelu MyApp. Aplikace jsou pořád viditelné na portálu Office 365.
+Pomocí následujících kroků skryjte všechny Microsoft 365 aplikace z panelu MyApp. Aplikace jsou pořád viditelné na portálu Office 365.
 
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce vašeho adresáře.
 2.  Vyberte **Azure Active Directory**.
-3.  Vyberte možnost **Uživatelé**.
+3.  Vyberte **Uživatelé**.
 4.  Vyberte **Uživatelská nastavení**.
 5.  V části **podnikové aplikace**klikněte na možnost **spravovat způsob, jak koncoví uživatelé spouštějí a zobrazují své aplikace.**
 6.  **Uživatelé můžou na portálu office 365 zobrazit jenom aplikace Office 365**, klikněte na **Ano**.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672664"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601380"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Pochopení zabezpečení pracovních stanic spravovaných Azure
 
@@ -64,7 +64,7 @@ Všichni uživatelé a operátoři využívají zabezpečenou pracovní stanici.
 * Vysoce citlivá pracovní stanice, jako je například platba terminálu SWIFT
 * Obchodní tajemství pro zpracování pracovních stanic
 
-Pro snížení rizika byste měli implementovat zvýšené řízení zabezpečení pro privilegované pracovní stanice, které využívají tyto účty. Další informace najdete v tématu [Průvodce nasazením funkcí Azure Active Directory](../fundamentals/active-directory-deployment-checklist-p2.md), [Plán Office 365](https://aka.ms/o365secroadmap)a [zabezpečení privilegovaného přístupu](https://aka.ms/sparoadmap).
+Pro snížení rizika byste měli implementovat zvýšené řízení zabezpečení pro privilegované pracovní stanice, které využívají tyto účty. Další informace najdete v tématu [Průvodce nasazením funkcí Azure Active Directory](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 plán](https://aka.ms/o365secroadmap)a [zabezpečení privilegovaného přístupu](https://aka.ms/sparoadmap).
 
 ## <a name="why-use-dedicated-workstations"></a>Proč používat vyhrazené pracovní stanice?
 
@@ -73,7 +73,7 @@ I když je možné přidat zabezpečení do stávajícího zařízení, je lepš
 Větší počet vektorů útoku prostřednictvím e-mailu a procházení webu vám umožní zajistit, aby zařízení bylo důvěryhodné. V tomto průvodci se předpokládá, že vyhrazená pracovní stanice je izolovaná od standardní produktivity, procházení a e-mailu. Odebrání produktivity, procházení webu a e-maily ze zařízení může mít negativní dopad na produktivitu. Toto zabezpečení je však obvykle přijatelné ve scénářích, kdy úlohy úlohy je výslovně nevyžadují a riziko incidentu zabezpečení je vysoké.
 
 > [!NOTE]
-> Procházení webu tady odkazuje na obecný přístup k libovolným webům, které můžou představovat vysoce rizikové aktivity. Toto procházení se liší od použití webového prohlížeče pro přístup k malému počtu dobře známých webů pro správu pro služby, jako je Azure, Office 365, další poskytovatelé cloudu a SaaS aplikace.
+> Procházení webu tady odkazuje na obecný přístup k libovolným webům, které můžou představovat vysoce rizikové aktivity. Toto procházení se liší od použití webového prohlížeče pro přístup k malému počtu dobře známých webů pro správu pro služby, jako je Azure, Microsoft 365, ostatní poskytovatelé cloudu a SaaS aplikace.
 
 Strategie omezení zvyšují zabezpečení tím, že zvyšují počet a typ ovládacích prvků, které útočníkovi brání v získání přístupu k citlivým prostředkům. Model popsaný v tomto článku používá návrh vrstveného oprávnění a omezuje oprávnění správce na konkrétní zařízení.
 

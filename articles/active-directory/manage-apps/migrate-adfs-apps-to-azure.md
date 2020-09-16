@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641360"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600941"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesunutí ověřování aplikace z Active Directory Federation Services (AD FS) na Azure Active Directory
 
@@ -35,7 +35,7 @@ Pokud máte místní adresář, který obsahuje uživatelské účty, pravděpod
 
 Uživatelé se také můžou ověřit přímo v místní službě Active Directory. Active Directory Federation Services (AD FS) (AD FS) jsou standardy založené na místních službách identity. AD FS rozšiřuje schopnost používat funkci jednotného přihlašování (SSO) mezi důvěryhodnými obchodními partnery, aniž by se uživatelé museli přihlašovat samostatně pro každou aplikaci. Tato skutečnost se označuje jako federace.
 
-Mnoho organizací má SaaS (software jako služba) nebo vlastní obchodní aplikace, které jsou federované přímo do AD FS, společně s aplikacemi pro Office 365 a Azure AD. 
+Mnoho organizací má SaaS (software jako služba) nebo vlastní obchodní aplikace (LOB), které jsou federované přímo AD FS, společně s Microsoft 365 a aplikacemi založenými na službě Azure AD. 
 
 ![Aplikace připojené přímo v místním prostředí](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
@@ -406,7 +406,7 @@ V této tabulce uvádíme několik užitečných povolení a s výjimkou možnos
 | Se specifickými deklaracemi v žádosti| Toto nastavení nejde migrovat.| Toto nastavení nejde migrovat. |
 
 
-Příklad konfigurace možnosti vyloučit pro důvěryhodná umístění na webu Azure Portal:
+Příklad konfigurace možnosti vyloučit pro důvěryhodná umístění v Azure Portal:
 
 ![Snímek obrazovky s mapováním zásad řízení přístupu](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-3.png)
 

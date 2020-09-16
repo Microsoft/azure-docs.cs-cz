@@ -5,23 +5,31 @@ description: Azure Cognitive Services jsou Cloud Services s rozhraními REST API
 services: cognitive-services
 author: nitinme
 manager: nitinme
-keywords: funkce pro rozpoznávání, rozpoznávání poznatků, rozpoznávání služeb, AI jako služba, rozpoznávání řešení, rozpoznávání umělých funkcí, vnímání softwaru, služby AI, rozpoznávání AI, porozumění rozpoznávání
+keywords: vyvnímání služby, rozpoznávání, rozpoznávání, rozpoznávání, služby AI, porozumění rozpoznávání, funkce rozpoznávání
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3d7f5926991239786d9b37dffecc05cd8983bf3f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 6490b3cf2d3813a2740c548f778e65f1df6e7b01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379284"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603654"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
-Azure Cognitive Services jsou cloudové služby s rozhraními REST API a sady SDK pro klientské knihovny, které vývojářům umožňují vytvářet vnímání inteligentních aplikací, aniž by museli mít přímý přístup k datům (AI) nebo dovednosti v oblasti datových věd. Azure Cognitive Services umožňuje vývojářům snadno přidat funkce rozpoznávání do svých aplikací. Cílem Azure Cognitive Services je pomáhat vývojářům vytvářet aplikace, které mohou vidět, slyšet, mluvit, pochopit a dokonce i začít. Katalog služeb v rámci služby Azure Cognitive Services je možné rozdělit na pět hlavních pilířů – vize, řeč, jazyk, Vyhledávání na webu a rozhodnutí.
+Azure Cognitive Services jsou cloudové služby s rozhraními REST API a sady SDK klientské knihovny, které vývojářům umožňují vytvářet v aplikacích rozpoznávání dat bez nutnosti přímých dovedností (AI) nebo znalostí v oblasti datových věd. Azure Cognitive Services umožňuje vývojářům snadno přidat funkce rozpoznávání do svých aplikací s rozpoznáváním řešení, která mohou vidět, slyšet, mluvit, pochopit a dokonce i začít.
+
+Katalog služeb AI, které poskytují porozumění rozpoznávání, je rozdělen do pěti hlavních pilířů:
+
+* Obraz
+* Řeč
+* Jazyk
+* Vyhledávání na webu
+* Rozhodnutí
 
 Aktuální seznam nové dokumentace je k dispozici v části [novinky v Cognitive Services docs](whats-new-docs.md).
 
@@ -29,9 +37,9 @@ Aktuální seznam nové dokumentace je k dispozici v části [novinky v Cognitiv
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům rozpoznávání pro zpracování imagí a vracení informací.|
+|[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Počítačové zpracování obrazu")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům rozpoznávání pro zpracování imagí a vracení informací.|
 |[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
-|[Tvář](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
+|[Rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
 |[Nástroj pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Rozpoznávání formulářů") (Preview)|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru.|
 |[Rozpoznávání rukopisu](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Rozpoznávání rukopisu") (vyřazení z provozu)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy.|
@@ -56,7 +64,7 @@ Aktuální seznam nové dokumentace je k dispozici v části [novinky v Cognitiv
 |[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co osoba chce, podle svých vlastních slov.|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker vám umožní vytvořit službu otázek a odpovědí z částečně strukturovaného obsahu.|
 |[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Analýza textu")|Analýza textu poskytuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a rozpoznání jazyka.|
-|[Překladač](https://docs.microsoft.com/azure/cognitive-services/translator/ "Překladač")|Překladatel poskytuje textový překlad založený na počítačích téměř v reálném čase.|
+|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Překladač")|Překladatel poskytuje textový překlad založený na počítačích téměř v reálném čase.|
 
 
 ## <a name="search-apis"></a>Rozhraní API pro vyhledávání
@@ -81,6 +89,15 @@ Aktuální seznam nové dokumentace je k dispozici v části [novinky v Cognitiv
 |[Detektor anomálií](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Detektor anomálií") (Preview)|Detekce anomálií umožňuje monitorovat a detekovat anomálie v datech časových řad.|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator poskytuje monitorování možného urážlivého, nežádoucího a rizikového obsahu.|
 |[Personalizace](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizace")|Přizpůsobování umožňuje vybrat nejlepší možnosti, které se uživatelům zobrazí, a naučit se jejich chování v reálném čase.|
+
+## <a name="learn-with-the-quickstarts"></a>Seznamte se s rychlými starty
+
+Přečtěte si o vytváření prostředků Cognitive Services s praktickými rychlými starty pomocí:
+
+* [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "portál Azure")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Klientské knihovny pro sadu Azure SDK](cognitive-services-apis-create-account-cli.md?tabs=windows "rozpoznávání služeb – rozhraní API – vytvoření-účet-klient-knihovna? pivots = program-Language-CSharp")
+* [Šablony Azure Resource Manageru (ARM)](resource-manager-template.md?tabs=portal "Šablony Azure Resource Manageru (ARM)")
 
 ## <a name="subscription-management"></a>Správa předplatného
 
@@ -118,7 +135,10 @@ Pro pochopení ochrany osobních údajů a správy dat navštivte [Centrum zabez
 
 ## <a name="support"></a>Podpora
 
-Cognitive Services poskytují několik [možností podpory](cognitive-services-support-options.md "Možnosti podpory").
+Cognitive Services poskytuje několik [možností podpory](cognitive-services-support-options.md "Možnosti podpory").
+
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

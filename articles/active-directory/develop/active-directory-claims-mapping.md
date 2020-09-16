@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068639"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601465"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -44,7 +44,7 @@ Zásada mapování deklarací identity je typ objektu **zásad** , který mění
 
 Existují určité sady deklarací, které definují, jak a kdy se používají v tokenech.
 
-| Sada deklarací identity | Popis |
+| Sada deklarací identity | Description |
 |---|---|
 | Základní sada deklarací identity | Jsou přítomny v každém tokenu bez ohledu na zásadu. Tyto deklarace jsou také považovány za omezené a nelze je upravit. |
 | Základní sada deklarací identity | Zahrnuje deklarace identity, které jsou ve výchozím nastavení emitované pro tokeny (kromě základní sady deklarací identity). Základní deklarace identity můžete vynechat nebo upravit pomocí zásad mapování deklarací identity. |
@@ -285,7 +285,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: platné hodnoty ID na zdroj
 
-| Zdroj | ID | Popis |
+| Zdroj | ID | Description |
 |-----|-----|-----|
 | Uživatel | surname | Název rodiny |
 | Uživatel | givenname | jméno |
@@ -301,7 +301,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | společnosti| Název organizace |
 | Uživatel | streetaddress | Adresa |
 | Uživatel | ovládacím | PSČ |
-| Uživatel | preferredlanguange | Preferovaný jazyk |
+| Uživatel | preferredlanguage | Preferovaný jazyk |
 | Uživatel | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |*
 | Uživatel | mailNickname | Přezdívka pošty |
 | Uživatel | extensionattribute1 | Atribut rozšíření 1 |
@@ -321,8 +321,8 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
 | Uživatel | othermail | Jiná pošta |
 | Uživatel | country | Země/oblast |
-| Uživatel | city | City |
-| Uživatel | state | Stav |
+| Uživatel | city | City (Město) |
+| Uživatel | state | State |
 | Uživatel | jobtitle | Název pozice |
 | Uživatel | zaměstnance | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
@@ -362,7 +362,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: metody transformace a očekávané vstupy a výstupy
 
-|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
+|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Description|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: " foo@bar.com ", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-mail nebo hlavní název uživatele|extrahovaný řetězec|ExtensionAttributes 1-15 nebo jiná rozšíření schématu, která pro uživatele ukládají hodnotu hlavního názvu uživatele (UPN) nebo e-mailové adresy, například johndoe@contoso.com . Extrahuje místní část e-mailové adresy. Například: mail: " foo@bar.com " má za následek outputClaim: "foo". Pokud \@ není k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
@@ -388,7 +388,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: atributy povolené jako zdroj dat pro SAML NameID
 
-|Zdroj|ID|Popis|
+|Zdroj|ID|Description|
 |-----|-----|-----|
 | Uživatel | pošta|E-mailová adresa|
 | Uživatel | třídy|Hlavní název uživatele|

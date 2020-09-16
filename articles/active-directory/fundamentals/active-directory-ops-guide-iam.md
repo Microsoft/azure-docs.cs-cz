@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321663"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601298"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Referenční příručka operací správy identit a přístupu Azure Active Directory
 
@@ -35,8 +35,8 @@ Správa Azure Active Directory vyžaduje nepřetržité provádění klíčovýc
 | :- | :- |
 | Definování procesu vytváření předplatných Azure | Liší se podle organizace |
 | Rozhodnutí o tom, kdo obdrží licence Enterprise Mobility + Security | Provozní tým IAM |
-| Rozhodnutí o tom, kdo získá licence pro Office 365 | Tým pro produktivitu |
-| Rozhodnutí o tom, kdo získá další licence, například Dynamics, VSO | Vlastník aplikace |
+| Rozhodnutí o tom, kdo obdrží licence Microsoft 365 | Tým pro produktivitu |
+| Rozhodnutí o tom, kdo získá další licence, například Dynamics, Visual Studio Codespaces | Vlastník aplikace |
 | Přiřazení licencí | Provozní tým IAM |
 | Řešení potíží a oprava chyb přiřazení licencí | Provozní tým IAM |
 | Zřizování identit pro aplikace v Azure AD | Provozní tým IAM |
@@ -140,7 +140,7 @@ Mezi příklady nepoužití vlastních pravidel patří:
 
 Azure Active Directory zjednodušuje správu licencí prostřednictvím [licencování na základě skupin](./active-directory-licensing-whatis-azure-portal.md) pro cloudové služby Microsoftu. Díky tomu IAM zajišťuje infrastrukturu skupin a delegovanou správu těchto skupin do řádných týmů v organizacích. Existuje několik způsobů, jak nastavit členství ve skupinách v Azure AD, včetně těchto:
 
-- **Synchronizace z místních** skupin může pocházet z místních adresářů, což může být vhodné pro organizace, které mají zavedené procesy správy skupin, které se dají rozšířit tak, aby se daly přiřazovat licence v Office 365.
+- **Synchronizace z místních** skupin může pocházet z místních adresářů, což může být vhodné pro organizace, které mají zavedené procesy správy skupin, které se dají rozšířit tak, aby se přidělily licence v Microsoft 365.
 
 - **Atributy založené na atributech a dynamické** skupiny se dají vytvořit v cloudu na základě výrazu založeného na uživatelských atributech, například oddělení se rovná "Sales". Azure AD udržuje členy skupiny a udržuje je konzistentní s definovaným výrazem. Použití tohoto druhu skupiny pro přiřazení licence umožňuje přiřazení licence na základě atributů, které je vhodné pro organizace, které mají ve svém adresáři vysokou kvalitu dat.
 
@@ -188,7 +188,7 @@ Je důležité porozumět objemu změn ve vaší organizaci a ujistit se, že ne
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Poradce při potížích s doporučeným čtením Azure AD Connect
 
-- [Příprava atributů adresáře pro synchronizaci se sadou Office 365 pomocí nástroje IdFix – Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Příprava atributů adresáře pro synchronizaci s Microsoft 365 pomocí nástroje IdFix](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: řešení chyb při synchronizaci](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>Shrnutí

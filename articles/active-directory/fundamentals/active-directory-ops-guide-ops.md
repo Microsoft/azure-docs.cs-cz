@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321952"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601299"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Přehled Azure Active Directory obecné provozní příručky
 
@@ -125,9 +125,9 @@ Pokud vaše organizace aktuálně nemá žádný program k monitorování změn 
 
 ### <a name="notifications"></a>Oznámení
 
-Společnost Microsoft pošle e-mailem komunikaci správcům, aby upozornila na různé změny ve službě, potřebné aktualizace konfigurace a chyby, které vyžadují zásah správce. Je důležité, aby zákazníci nastavili e-mailové adresy pro oznámení, aby se oznámení odesílala řádným členům týmu, kteří můžou potvrdit a reagovat na všechna oznámení. Doporučujeme přidat do [centra zpráv Office 365](/office365/admin/manage/message-center) několik příjemců a požádat o oznámení (včetně oznámení o Azure AD Connect Health) do distribučního seznamu nebo do sdílené poštovní schránky. Pokud máte jenom jeden globální účet správce s e-mailovou adresou, nezapomeňte nakonfigurovat aspoň dva účty s podporou e-mailu.
+Společnost Microsoft pošle e-mailem komunikaci správcům, aby upozornila na různé změny ve službě, potřebné aktualizace konfigurace a chyby, které vyžadují zásah správce. Je důležité, aby zákazníci nastavili e-mailové adresy pro oznámení, aby se oznámení odesílala řádným členům týmu, kteří můžou potvrdit a reagovat na všechna oznámení. Doporučujeme přidat do [centra zpráv](/office365/admin/manage/message-center) více příjemců a požádat o oznámení (včetně oznámení Azure AD Connect Health) do distribučního seznamu nebo do sdílené poštovní schránky. Pokud máte jenom jeden globální účet správce s e-mailovou adresou, nezapomeňte nakonfigurovat aspoň dva účty s podporou e-mailu.
 
-Existují dva adresy "z", které používá služba Azure AD: <o365mc@email2.microsoft.com> , která odesílá oznámení centra zpráv Office 365 a <azure-noreply@microsoft.com> odesílá oznámení související s:
+Existují dva adresy "z", které používá služba Azure AD: <o365mc@email2.microsoft.com> , která odesílá oznámení centra zpráv a <azure-noreply@microsoft.com> odesílá oznámení související s:
 
 - [Kontroly přístupu Azure AD](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,14 +141,14 @@ Informace o typu odesílaných oznámení a jejich kontrole najdete v následuj�
 | Zdroj oznámení | Co se posílá | Kde kontrolovat |
 |:-|:-|:-|
 | Technický kontakt | Chyby synchronizace | Azure Portal – okno vlastností |
-| Centrum zpráv Office 365 | Oznámení o službách identity a back-endové služby pro incidenty a snížení výkonu | Portál Office |
+| Centrum zpráv | Upozornění na incidenty a snížení výkonu služby identity a Microsoft 365 služby back-endu | Portál Office |
 | Týdenní Digest Identity Protection | Digest Identity Protection | Okno Azure AD Identity Protection |
 | Azure AD Connect Health | Oznámení výstrah | Okno Azure Portal-Azure AD Connect Health |
 | Oznámení podnikových aplikací | Oznámení o chybách a zřizování certifikátů, které brzy vyprší | Okno Azure Portal – podniková aplikace (každá aplikace má vlastní nastavení e-mailové adresy) |
 
 #### <a name="notifications-recommended-reading"></a>Doporučené čtení oznámení
 
-- [Změna adresy vaší organizace, technického kontaktu a dalších kanceláří – Office 365](/office365/admin/manage/change-address-contact-and-more)
+- [Změna adresy vaší organizace, technického kontaktu a dalších](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>Oblast provozní plocha
 

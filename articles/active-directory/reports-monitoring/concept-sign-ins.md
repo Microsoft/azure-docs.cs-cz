@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228762"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603590"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -37,7 +37,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Tento článek obsahuje přehled sestavy přihlášení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
@@ -124,7 +124,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 
 **Umístění** – umístění, ze kterého bylo připojení iniciováno:
 
-- City
+- City (Město)
 
 - Kraj
 
@@ -142,18 +142,18 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 ![Filtr klientských aplikací](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Název|Moderní ověřování|Popis|
+|Name|Moderní ověřování|Description|
 |---|:-:|---|
 |Ověřený protokol SMTP| |Používá se pro odesílání e-mailových zpráv klientem POP a IMAP.|
 |Automatického| |Používá se klienty Outlook a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.|
 |Exchange ActiveSync| |Tento filtr zobrazuje všechny pokusy o přihlášení, kde došlo k pokusu o provedení protokolu EAS.|
-|Prohlížeč|![Zaškrtnout](./media/concept-sign-ins/check.png)|Zobrazí všechny pokusy uživatelů o přihlášení pomocí webových prohlížečů.|
-|Exchange ActiveSync| | Zobrazí všechny pokusy o přihlášení od uživatelů s klientskými aplikacemi pomocí Exchange ActiceSync pro připojení k Exchangi Online.|
+|Prohlížeč|![Značka zaškrtnutí](./media/concept-sign-ins/check.png)|Zobrazí všechny pokusy uživatelů o přihlášení pomocí webových prohlížečů.|
+|Exchange ActiveSync| | Zobrazuje všechny pokusy o přihlášení od uživatelů s klientskými aplikacemi, které používají Exchange ActiveSync pro připojení k Exchangi Online.|
 |Prostředí PowerShell pro Exchange Online| |Slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Webové služby Exchange| |Programovací rozhraní, které používá aplikace Outlook, Outlook pro Mac a aplikace třetích stran.|
 |IMAP4| |Starší verze poštovního klienta, který používá IMAP k načtení e-mailu.|
 |Rozhraní MAPI přes protokol HTTP| |Používá Outlook 2010 a novější.|
-|Mobilní aplikace a klienti klasické pracovní plochy|![Zaškrtnout](./media/concept-sign-ins/check.png)|Zobrazuje všechny pokusy o přihlášení od uživatelů s využitím mobilních aplikací a desktopových klientů.|
+|Mobilní aplikace a klienti klasické pracovní plochy|![Modré zaškrtnutí](./media/concept-sign-ins/check.png)|Zobrazuje všechny pokusy o přihlášení od uživatelů s využitím mobilních aplikací a desktopových klientů.|
 |Offline adresář| |Kopie kolekcí seznamu adres, které jsou staženy a používány aplikací Outlook.|
 |Outlook odkudkoli (RPC over HTTP)| |Používá Outlook 2016 a starší.|
 |Služba Outlook| |Používá se v e-mailu a aplikaci kalendáře pro Windows 10.|
@@ -263,17 +263,17 @@ Grafy využití aplikace týdenní agregovaná přihlášení k vašim horním t
 
 Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
-![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Přehledy")
+![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Vytváření sestav")
 
 Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 
 Možnost **Přihlášení** poskytuje úplný přehled o všech událostech přihlašování pro vaše aplikace.
 
-## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
+## <a name="microsoft-365-activity-logs"></a>Protokoly aktivit Microsoft 365
 
-Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 365](/office365/admin/admin-overview/about-the-admin-center). Vezměte v úvahu bod, který znamená, že aktivita Office 365 a protokoly aktivit služby Azure AD sdílejí velký počet prostředků adresáře. Úplné zobrazení protokolů aktivit Office 365 nabízí jenom centrum pro správu Microsoft 365. 
+Protokoly aktivit Microsoft 365 můžete zobrazit v centru pro [správu Microsoft 365](/office365/admin/admin-overview/about-the-admin-center). Vezměte v úvahu, že Microsoft 365 aktivity a protokoly aktivit služby Azure AD sdílejí velký počet prostředků adresáře. Úplné zobrazení protokolů aktivit Microsoft 365 zajišťuje pouze centrum pro správu Microsoft 365. 
 
-Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](/office/office-365-management-api/office-365-management-apis-overview).
+Přístup k protokolům aktivit Microsoft 365 lze také programově pomocí [rozhraní API pro správu sady Office 365](/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Další kroky
 

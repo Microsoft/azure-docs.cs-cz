@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 313dfe930dec5233f96b89fdebf978a41fdcdf80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 64250863e5bab4776c129935e56db190e5bd36ee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497660"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602604"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento rychlý Start podrobně popisuje použití Azure CLI k vytvoření centra IoT a IoT Hub Device Provisioning Service a k propojení obou služeb dohromady. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT]
 > Služba IoT Hub i služba zřizování, které vytvoříte v tomto rychlém startu, budou veřejně zjistitelné jako koncové body DNS. Pokud se rozhodnete změnit názvy těchto prostředků, ujistěte se, že nepoužíváte žádné citlivé údaje.
@@ -84,7 +84,11 @@ echo $hubConnectionString
 ```
 
 > [!NOTE]
-> Tyto dva příkazy jsou platné pro hostitele spuštěného v prostředí Bash. Pokud používáte místní prostředí příkazového řádku ve Windows nebo hostitele PowerShellu, musíte tyto příkazy upravit tak, aby používaly správnou syntaxi pro příslušné prostředí.
+> Tyto dva příkazy jsou platné pro hostitele spuštěného v prostředí Bash.
+> 
+> Pokud používáte místní prostředí Windows/CMD nebo hostitele PowerShellu, upravte příkazy tak, aby pro toto prostředí používaly správnou syntaxi.
+>
+> Pokud používáte Azure Cloud Shell, ověřte, že se v rozevíracím seznamu prostředí na levé straně okna prostředí říká **bash**.
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>Propojení centra IoT a služby zřizování

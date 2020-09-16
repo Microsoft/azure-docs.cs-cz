@@ -1,15 +1,15 @@
 ---
 title: Podporované typy prostředků Azure Resource Manager
 description: Poskytněte seznam Azure Resource Manager typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 09/04/2020
+ms.date: 09/15/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: b81ffcdde074978a9a72c5ab651ec2c5556870bd
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488316"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600598"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -63,6 +63,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. aadiam/azureadmetrics
 - Microsoft. aadiam/privatelinkforazuread
 - Microsoft. aadiam/tenantů
+- Microsoft. agfoodplatform/farmbeats
 - Microsoft. aisupercomputer/účty
 - Microsoft. aisupercomputer/Accounts/jobgroups
 - Microsoft. aisupercomputer/Accounts/jobgroups/Jobs
@@ -80,6 +81,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Automation/automationaccounts
 - Microsoft. Automation/automationaccounts/Configurations
 - Microsoft. Automation/automationaccounts/Runbooky
+- Microsoft. autonomousdevelopmentplatform/účty
 - Microsoft. autonomoussystems/pracovní prostory
 - Microsoft. AVS/privateclouds
 - Microsoft. azconfig/configurationstores
@@ -94,6 +96,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. azuredata/sqlserverinstances
 - Microsoft. azuredata/sqlserverregistrations
 - Microsoft. azurestack/edgesubscriptions
+- Microsoft. azurestack/linkedsubscriptions
 - Microsoft. azurestack/registrací
 - Microsoft. azurestackhci/clustery
 - Microsoft. baremetal/consoleconnections
@@ -168,6 +171,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. containerservice/containerservices
 - Microsoft. containerservice/managedclusters
 - Microsoft. containerservice/openshiftmanagedclusters
+- Microsoft. contoso/Clusters
 - Microsoft. contoso/zaměstnanci
 - Microsoft. costmanagement/konektory
 - Microsoft. customproviders/resourceproviders
@@ -250,6 +254,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. hybridnetwork/zařízení
 - Microsoft. hybridnetwork/virtualnetworkfunctions
 - Microsoft. importexport/Jobs
+- Microsoft. industrydatalifecycle/basemodels
 - Microsoft. industrydatalifecycle/custodiancollaboratives
 - Microsoft. industrydatalifecycle/derivedmodels
 - Microsoft. industrydatalifecycle/membercollaboratives
@@ -265,6 +270,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Insights/notificationgroups
 - Microsoft. Insights/notificationrules
 - Microsoft. Insights/privatelinkscopes
+- Microsoft. Insights/querypacks
 - Microsoft. Insights/scheduledqueryrules
 - Microsoft. Insights/webtests
 - Microsoft. Insights/sešity
@@ -414,6 +420,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Resources/templatespecs/verze
 - Microsoft. SaaS/aplikace
 - Microsoft. Scheduler/jobcollections
+- Microsoft. SCVMM/vmmservers
 - Microsoft. Search/searchservices
 - Microsoft. Security/automations
 - Microsoft. Security/iotsecuritysolutions
@@ -523,6 +530,8 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - wandisco. Fusion/fusiongroups/managedonpremzones
 - wandisco. Fusion/fusiongroups/onpremzones
 - wandisco. Fusion/fusiongroups/replicationrules
+- wandisco. Fusion/migrace
+- wandisco. Fusion/migračnís/cíle
 
 ## <a name="securityresources"></a>securityresources
 

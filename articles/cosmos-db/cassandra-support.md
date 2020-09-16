@@ -1,29 +1,29 @@
 ---
 title: Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB
 description: Informace o podpoře funkcí Apache Cassandra v rozhraní API Cassandra pro Azure Cosmos DB
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: e7384237f91bf3af8ccad1a97b27fb62a1845a88
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 09/14/2020
+ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118980"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602808"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. S rozhraním API Cassandra pro Azure Cosmos DB můžete komunikovat prostřednictvím [přenosového protokolu](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) jazyka Cassandra Query Language (CQL) verze 4 kompatibilního s open source [ovladači](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) klienta Cassandra. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete komunikovat s Azure Cosmos DB rozhraní API Cassandra prostřednictvím klientských [ovladačů](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)Open-Source Cassandra kompatibilního s [protokolem](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) CQL Binary Protocol v4. 
 
-Když použijete rozhraní API Cassandra pro Azure Cosmos DB, získáte nejen výhody rozhraní API pro Apache Cassandra, ale i podnikové funkce, které poskytuje Azure Cosmos DB. Mezi podnikové funkce patří [globální distribuce](distribute-data-globally.md), [automatické dělení škálování na více systémů](partition-data.md), záruky dostupnosti a latence, šifrování při nečinnosti, zálohování a mnoho dalšího.
+Když použijete rozhraní API Cassandra pro Azure Cosmos DB, získáte nejen výhody rozhraní API pro Apache Cassandra, ale i podnikové funkce, které poskytuje Azure Cosmos DB. Mezi podnikové funkce patří [globální distribuce](distribute-data-globally.md), [automatické dělení škálování na více systémů](cassandra-partitioning.md), záruky dostupnosti a latence, šifrování při nečinnosti, zálohování a mnoho dalšího.
 
 ## <a name="cassandra-protocol"></a>Protokol Cassandra 
 
-Rozhraní API Cassandra pro Azure Cosmos DB je kompatibilní s CQL **verze v4**. Podporované příkazy CQL, nástroje, omezení a výjimky najdete níže. Jakýkoli ovladač klienta, který podporuje tyto protokoly, by se měl dokázat připojit k rozhraní API Cassandra pro Azure Cosmos DB.
+Rozhraní API Cassandra Azure Cosmos DB je kompatibilní s rozhraním API CQL (Cassandra Query Language) v systému 3.11 (zpětně kompatibilní s verzí 2. x). Podporované příkazy CQL, nástroje, omezení a výjimky najdete níže. Jakýkoli ovladač klienta, který podporuje tyto protokoly, by se měl dokázat připojit k rozhraní API Cassandra pro Azure Cosmos DB.
 
 ## <a name="cassandra-driver"></a>Ovladač Cassandra
 
@@ -37,61 +37,149 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto verze ovladačů Cass
 * [PHP 1.3](https://github.com/datastax/php-driver)  
 * [Gocql](https://github.com/gocql/gocql)  
  
+
 ## <a name="cql-data-types"></a>Datové typy CQL 
 
 Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typy CQL:
 
-* ascii  
-* bigint  
-* blob  
-* Boolean  
-* counter  
-* date  
-* decimal  
-* double  
-* float  
-* frozen  
-* inet  
-* int  
-* list  
-* set  
-* smallint  
-* text  
-* time  
-* časové razítko  
-* timeuuid  
-* tinyint  
-* tuple  
-* uuid  
-* varchar  
-* varint  
-* tuples  
-* udts  
-* mapa  
+|Příkaz  |Podporováno |
+|---------|---------|
+| ascii  | Yes |
+| bigint  | Yes |
+| blob  | Yes |
+| boolean  | Yes |
+| counter  | Yes |
+| datum  | Yes |
+| decimal  | Yes |
+| double  | Yes |
+| float  | Yes |
+| frozen  | Yes |
+| inet  | Yes |
+| int  | Yes |
+| list  | Yes |
+| set  | Yes |
+| smallint  | Yes |
+| text  | Yes |
+| time  | Yes |
+| časové razítko  | Yes |
+| timeuuid  | Yes |
+| tinyint  | Yes |
+| tuple  | Yes |
+| uuid  | Yes |
+| varchar  | Yes |
+| varint  | Yes |
+| tuples | Yes | 
+| udts  | Yes |
+| mapa | Yes |
 
 ## <a name="cql-functions"></a>Funkce CQL
 
 Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
 
-* Token  
-* Agregační funkce
-  * minimum, maximum, prům. Count
-* Funkce pro převod objektů blob 
-  * typeAsBlob(value)  
-  * blobAsType(value)
-* UUID a funkce timeuuid 
-  * dateOf()  
-  * now()  
-  * minTimeuuid()  
-  * unixTimestampOf()  
-  * toDate(timeuuid)  
-  * toTimestamp(timeuuid)  
-  * toTimestamp(timeuuid)  
-  * toDate(timeuuid)  
-  * toTimestamp(timeuuid)  
-  * toTimestamp(date)  
-  * toTimestamp(date) 
+|Příkaz  |Podporováno |
+|---------|---------|
+| Klíčové | Yes |
+| TTL | Yes |
+| writetime | Yes |
+| přetypování | No |
+
+\* Rozhraní API Cassandra podporuje token jako projekci nebo selektor a povoluje token (PK) na levé straně klauzule WHERE. Například `WHERE token(pk) > 1024` je podporován, ale není `WHERE token(pk) > token(100)` podporován.
+
+
+Agregační funkce:
+
+|Příkaz  |Podporováno |
+|---------|---------|
+| min | Yes |
+| max | Yes |
+| volání | Yes |
+| count | Yes |
+
+Funkce pro převod objektů BLOB:
+ 
+|Příkaz  |Podporováno |
+|---------|---------|
+| typeAsBlob(value)   | Yes |
+| blobAsType(value) | Yes |
+
+
+Funkce UUID a timeuuid:
+ 
+|Příkaz  |Podporováno |
+|---------|---------|
+| dateOf()  | Yes |
+| now()  | Yes |
+| minTimeuuid()  | Yes |
+| unixTimestampOf()  | Yes |
+| toDate(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toDate(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toTimestamp(date)  | Yes |
+| toTimestamp(date) | Yes |
+
+
   
+## <a name="cql-commands"></a>Příkazy CQL
+
+Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující databázové příkazy.
+
+|Příkaz  |Podporováno |
+|---------|---------|
+| POVOLENÍ FILTROVÁNÍ | Yes |
+| ZMĚNIT MÍSTO NA DISKU | Není k dispozici (služba PaaS, interně spravovaná replikace)|
+| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| ZMĚNIT ROLI | No |
+| ALTER TABLE | Yes |
+| ZMĚNIT TYP | No |
+| ZMĚNIT UŽIVATELE | No |
+| PARTIE | Ano (pouze nezaznamenaná dávka)|
+| KOMPAKTNÍ ÚLOŽIŠTĚ | Není k dispozici (služba PaaS) |
+| VYTVOŘIT AGREGOVANOU | No | 
+| VYTVOŘIT VLASTNÍ INDEX (SASI) | No |
+| CREATE INDEX | Ano (bez [zadání názvu indexu](cassandra-secondary-index.md)a indexů na klíčích clusteringu nebo celá zmrazená kolekce není podporovaná) |
+| VYTVOŘIT FUNKCI | No |
+| VYTVOŘIT prostor (nastavení replikace se ignorují) | Yes |
+| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| CREATE TABLE | Yes |
+| VYTVOŘIT AKTIVAČNÍ UDÁLOST | No |
+| VYTVOŘIT TYP | Yes |
+| VYTVOŘIT ROLI | No |
+| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | No |
+| DELETE | Yes |
+| Odstranit (odlehčené transakce s PODMÍNKou IF)| Yes |
+| ZRUŠIT AGREGAČNÍ | No |
+| DROP – FUNKCE | No |
+| DROP INDEX | Yes |
+| ODKLÁDACÍ MÍSTO | Yes |
+| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| ROLE ZRUŠENÍ | No |
+| ODKLÁDACÍ TABULKA | Yes |
+| VYŘADIT AKTIVAČNÍ UDÁLOST | No | 
+| TYP PŘETAŽENÍ | Yes |
+| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | No |
+| UDĚLIT | No |
+| INSERT | Yes |
+| Vložit (odlehčené transakce s PODMÍNKou IF)| Yes |
+| OPRÁVNĚNÍ K VYPSÁNÍ | No |
+| SEZNAM ROLÍ | No |
+| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | No |
+| ODVOLAT | No |
+| SELECT | Yes |
+| VYBRAT (odlehčené transakce s PODMÍNKou IF)| No |
+| UPDATE | Yes |
+| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| No |
+| ZKRÁTIT | No |
+| USE | Yes |
+
+## <a name="json-support"></a>Podpora JSON
+|Příkaz  |Podporováno |
+|---------|---------|
+| VYBRAT JSON | Yes |
+| VLOŽIT JSON | Yes |
+| fromJson() | No |
+| toJson () | No |
 
 
 ## <a name="cassandra-api-limits"></a>Omezení rozhraní API Cassandra
@@ -108,9 +196,12 @@ Rozhraní API Cassandra pro Azure Cosmos DB je platforma pro spravované služby
 
 Hosted Native Cassandra Shell (CQLSH v 5.0.1) můžete otevřít přímo z Průzkumník dat v [Azure Portal](data-explorer.md) nebo v [Průzkumníku Azure Cosmos](https://cosmos.azure.com/). Než povolíte prostředí CQL, musíte ve svém účtu [Povolit funkci poznámkových blocích](enable-notebooks.md) (Pokud ještě není povolená, zobrazí se vám výzva při kliknutí `Open Cassandra Shell` ). Podívejte se na zvýrazněnou poznámku v části [Povolení poznámkových bloků pro účty Azure Cosmos DB](enable-notebooks.md) pro podporované oblasti Azure.
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH":::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Otevřít CQLSH":::
 
 Můžete se také připojit k rozhraní API Cassandra v Azure Cosmos DB pomocí CQLSH nainstalovaného na místním počítači. Dodává se s Apache Cassandra 3.1.1 a funguje v poli nastavením proměnných prostředí. Následující části obsahují pokyny k instalaci, konfiguraci a připojení k rozhraní API Cassandra v Azure Cosmos DB, v systému Windows nebo Linux pomocí CQLSH.
+
+> [!NOTE]
+> Připojení k Azure Cosmos DB rozhraní API Cassandra nebudou fungovat s DataStax Enterprise (DSE) ve verzích CQLSH. Při připojování k rozhraní API Cassandra se prosím ujistěte, že používáte jenom open source verze Apache Cassandra CQLSH. 
 
 **Systému**
 
@@ -142,22 +233,6 @@ export SSL_VALIDATE=false
 cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl
 
 ```
-
-## <a name="cql-commands"></a>Příkazy CQL
-
-Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující databázové příkazy.
-
-* VYTVOŘIT prostor (nastavení replikace pro tento příkaz se ignoruje)
-* CREATE TABLE 
-* Vytvoření indexu (bez zadání názvu indexu a úplných zmrazených indexů, které ještě nejsou podporované)
-* POVOLENÍ FILTROVÁNÍ
-* ALTER TABLE 
-* USE 
-* INSERT 
-* SELECT 
-* UPDATE 
-* BATCH – podporují se jen neprotokolované příkazy. 
-* DELETE
 
 Všechny operace CRUD, které jsou spouštěny prostřednictvím sady SDK kompatibilní s CQL v4, vrátí další informace o tom, jaké chybové a využívané jednotky žádosti se vybírají. Příkazy DELETE a UPDATE by se měly zpracovat s ohledem na dodržování zásad správného řízení prostředků, aby se zajistilo nejúčinnější využívání zřízené propustnosti.
 

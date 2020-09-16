@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: dcbfd05df84e32423df425f3bdd231a26e4f3bca
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527036"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602029"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -36,21 +36,18 @@ Když nasadíte funkce jako Azure Multi-Factor Authentication ve vaší organiza
 
 Následující tabulka popisuje požadavky na zabezpečení pro dostupné metody ověřování. Dostupnost je označením uživatele, který může používat metodu ověřování, a nikoli dostupnost služby ve službě Azure AD:
 
-| Metoda ověřování       | Zabezpečení | Použitelnost | Phisable? | Kanál je k disstěně? | Dostupnost |
-|-----------------------------|:--------:|:---------:|:---------:|:-----------------:|:------------:|
-| FIDO2 klíč zabezpečení          | Vysoké     | Vysoké      | No        | No                | Vysoké         |
-| Aplikace Microsoft Authenticator | Vysoké     | Vysoké      | Yes       | Ne <sup>1</sup>   | Vysoké         |
-| Windows Hello pro firmy  | Vysoké     | Vysoké      | No        | No                | Vysoké         |
-| Tokeny OATH hardwaru        | Střední   | Střední    | Yes       | No                | Vysoké         |
-| Tokeny OATH softwaru        | Střední   | Střední    | Yes       | Ne <sup>2</sup>   | Vysoké         |
-| SMS                         | Střední   | Vysoké      | Yes       | Yes               | Střední       |
-| Hlas                       | Střední   | Střední    | Yes       | Yes               | Střední       |
-| Heslo                    | Nízká      | Vysoká      | Yes       | Yes               | Vysoké         |
+| Metoda ověřování          | Zabezpečení | Použitelnost | Dostupnost |
+|--------------------------------|:--------:|:---------:|:------------:|
+| Windows Hello pro firmy     | Vysoké     | Vysoké      | Vysoké         |
+| Aplikace Microsoft Authenticator    | Vysoké     | Vysoké      | Vysoké         |
+| Klíč zabezpečení FIDO2 (Preview)   | Vysoké     | Vysoké      | Vysoké         |
+| Hardwarové tokeny OATH (Preview) | Střední   | Střední    | Vysoké         |
+| Tokeny softwaru OATH           | Střední   | Střední    | Vysoké         |
+| SMS                            | Střední   | Vysoká      | Střední       |
+| Hlas                          | Střední   | Střední    | Střední       |
+| Heslo                       | Nízká      | Vysoká      | Vysoké         |
 
-<sup>1</sup> v režimu bez hesla, když je aplikace registrovaná na určitém zařízení<br />
-<sup>2</sup> za předpokladu, že aplikace vyžaduje, aby se k odemknutí připnout zařízení
-
-Další informace o chybách zabezpečení a vektorech útoků najdete v tématu [kanály – konektory a útoky phishing v reálném čase](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
+Další informace o zabezpečení najdete v tématu [chyby zabezpečení ověřování a vektory útoku](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
 
 > [!TIP]
 > Pro flexibilitu a použitelnost doporučujeme, abyste používali aplikaci Microsoft Authenticator. Tato metoda ověřování poskytuje nejlepší uživatelské prostředí a několik režimů, jako je například bez hesla, nabízená oznámení MFA a kódy OATH.
@@ -63,9 +60,9 @@ Následující tabulka popisuje, kdy lze použít metodu ověřování během ud
 
 | Metoda                         | Primární ověření | Sekundární ověřování  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| FIDO2 klíče zabezpečení (Preview)  | Yes                    | VÍCEFAKTOROVÉHO                       |
-| Aplikace Microsoft Authenticator    | Ano (Preview)          | MFA a SSPR              |
 | Windows Hello pro firmy     | Yes                    | VÍCEFAKTOROVÉHO                       |
+| Aplikace Microsoft Authenticator    | Ano (Preview)          | MFA a SSPR              |
+| Klíč zabezpečení FIDO2 (Preview)   | Yes                    | VÍCEFAKTOROVÉHO                       |
 | Hardwarové tokeny OATH (Preview) | No                     | VÍCEFAKTOROVÉHO                       |
 | Tokeny softwaru OATH           | No                     | VÍCEFAKTOROVÉHO                       |
 | SMS                            | Ano (Preview)          | MFA a SSPR              |
@@ -76,11 +73,11 @@ Všechny tyto metody ověřování se dají nakonfigurovat v Azure Portal a stá
 
 Další informace o tom, jak každá metoda ověřování funguje, najdete v následujících samostatných koncepčních článcích:
 
-* [FIDO2 klíče zabezpečení (Preview)](concept-authentication-passwordless.md#fido2-security-keys)
-* [Aplikace Microsoft Authenticator](concept-authentication-authenticator-app.md)
 * [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-overview)
-* [Tokeny softwaru OATH](concept-authentication-oath-tokens.md#oath-software-tokens)
+* [Aplikace Microsoft Authenticator](concept-authentication-authenticator-app.md)
+* [Klíč zabezpečení FIDO2 (Preview)](concept-authentication-passwordless.md#fido2-security-keys)
 * [Hardwarové tokeny OATH (Preview)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [Tokeny softwaru OATH](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [Přihlášení k serveru SMS (Preview)](howto-authentication-sms-signin.md) a [ověření](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Ověřování hlasových hovorů](concept-authentication-phone-options.md)
 * Heslo

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 161b02ec962df5c5e1c8dee7e124ef78b3ca4db3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948449"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601975"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -57,7 +57,7 @@ Všechny zásady se vynutily ve dvou fázích:
    - Pomocí podrobností o relacích shromážděných ve fázi 1 identifikujte všechny požadavky, které nebyly splněny. 
    - Pokud máte zásadu, která je nakonfigurovaná tak, aby blokovala přístup, pomocí ovládacího prvku udělení bloku zastavte vynucení a uživatel se zablokuje. 
    - Uživatel pak bude vyzván k dokončení dalších požadavků na řízení udělení, které nebyly splněny během fáze 1 v následujícím pořadí, dokud nesplní zásady:  
-      - Vícefaktorové ověřování 
+      - Ověřování pomocí služby Multi-Factor Authentication 
       - Schválená klientská aplikace/zásada ochrany aplikací 
       - Spravované zařízení (s odpovídajícím nebo hybridním připojením k Azure AD) 
       - Podmínky použití 
@@ -97,13 +97,13 @@ Pro každé přihlášení Azure Active Directory vyhodnotí všechny zásady a 
 
 Ano, v zásadách podmíněného přístupu můžete použít Exchange ActiveSync.
 
-Některé cloudové aplikace, jako je SharePoint Online a Exchange Online, podporují i starší verze ověřovacích protokolů. Když klientská aplikace může pro přístup ke cloudové aplikaci použít starší verzi ověřovacího protokolu, Azure AD nemůže vynutilit zásady podmíněného přístupu u tohoto pokusu o přístup. Pokud chcete, aby klientská aplikace nemohly obejít vynucování zásad, měli byste ověřit, jestli je možné povolit jenom moderní ověřování u ovlivněných cloudových aplikací.
+Některé cloudové aplikace, jako je SharePoint nebo Exchange Online, podporují i starší protokoly ověřování. Když klientská aplikace může pro přístup ke cloudové aplikaci použít starší verzi ověřovacího protokolu, Azure AD nemůže vynutilit zásady podmíněného přístupu u tohoto pokusu o přístup. Pokud chcete, aby klientská aplikace nemohly obejít vynucování zásad, měli byste ověřit, jestli je možné povolit jenom moderní ověřování u ovlivněných cloudových aplikací.
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak byste měli nakonfigurovat podmíněný přístup s aplikacemi Office 365?
+### <a name="how-should-you-configure-conditional-access-with-microsoft-365-apps"></a>Jak byste měli nakonfigurovat podmíněný přístup pomocí aplikací Microsoft 365?
 
-Vzhledem k tomu, že jsou aplikace Office 365 propojené, doporučujeme při vytváření zásad přiřazovat běžně používané aplikace.
+Vzhledem k tomu, že Microsoft 365 aplikace jsou vzájemně propojeny, doporučujeme při vytváření zásad přiřazovat běžně používané aplikace.
 
-Mezi běžné propojené aplikace patří Microsoft Flow, Microsoft Planner, Microsoft teams, Office 365 Exchange Online, Office 365 SharePoint Online a Office 365 Yammer.
+Mezi běžné propojené aplikace patří Microsoft Flow, Microsoft Planner, Microsoft teams, Exchange Online, SharePoint a Yammer.
 
 Je důležité pro zásady, které vyžadují interakci s uživatelem, jako je Multi-Factor Authentication, když se přístup řídí na začátku relace nebo úlohy. Pokud to neuděláte, uživatelé nebudou moci dokončit některé úkoly v rámci aplikace. Například pokud požadujete službu Multi-Factor Authentication na nespravovaných zařízeních pro přístup k SharePointu, ale ne k e-mailu, uživatelé, kteří pracují s e-maily, nebudou moci připojit soubory SharePoint ke zprávě. Další informace najdete v článku [co jsou závislosti služby v Azure Active Directory podmíněný přístup?](service-dependencies.md).
 

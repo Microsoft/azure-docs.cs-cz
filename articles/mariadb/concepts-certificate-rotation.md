@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 3c91da6a9bfc7bfa23255dbc1c0c76d2f59818f1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 89de144ab3d0ac4d8b68749e8c836ea1cf328dae
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530552"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601054"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Porozumění změnám v kořenové CA se mění Azure Database for MariaDB
 
@@ -28,13 +28,20 @@ Nový certifikát se použije od 26. října 2020 (10/26/2020). Pokud při přip
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Návody informace o tom, jestli se má tato databáze týkat?
 
-Všechny aplikace, které používají protokol SSL/TLS a ověřují kořenový certifikát, musí aktualizovat kořenový certifikát, aby se mohl připojit k Azure Database for MariaDB. Pokud aktuálně nepoužíváte protokol SSL/TLS, nemá to žádný vliv na dostupnost vaší aplikace. Můžete ověřit, jestli se klientská aplikace pokouší použít režim SSL s předem definovanou důvěryhodnou certifikační autoritou ( [CA).](concepts-ssl-connection-security.md#default-settings)
+Všechny aplikace, které používají protokol SSL/TLS a ověřují kořenový certifikát, musí aktualizovat kořenový certifikát. Můžete zjistit, jestli vaše připojení ověřují kořenový certifikát, a to tak, že zkontrolujete připojovací řetězec.
+-   Pokud váš připojovací řetězec obsahuje `sslmode=verify-ca` nebo ""
+-   Pokud váš připojovací řetězec obsahuje `sslmode=disable` , nemusíte aktualizovat certifikáty.
+-   Pokud váš připojovací řetězec obsahuje `sslmode=allow` , `sslmode=prefer` nebo, `sslmode=require` nemusíte aktualizovat certifikáty. 
+-   Pokud váš připojovací řetězec nezahrnuje konkrétní sslmode, nemusíte aktualizovat certifikáty.
+
+Pokud používáte klienta, který vyabstrakce připojovací řetězec, přečtěte si dokumentaci klienta, abyste zjistili, zda ověřuje certifikáty.
+Pokud chcete pochopit Azure Database for MariaDB sslmode, přečtěte si téma [popisy režimu SSL](concepts-ssl-connection-security.md#default-settings).
 
 Aby nedošlo k přerušení dostupnosti vaší aplikace v důsledku neočekávaného odvolání certifikátů nebo pokud chcete aktualizovat certifikát, který byl odvolán, přečtěte si část "co potřebuji ke [**správě připojení"**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity) .
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>Co je potřeba udělat, aby se zachovalo připojení
 
-Pokud se chcete vyhnout přerušení dostupnosti vaší aplikace z důvodu neočekávaného odvolání certifikátů nebo aktualizovat certifikát, který byl odvolán, postupujte podle následujících kroků:
+Pokud se chcete vyhnout přerušení dostupnosti vaší aplikace z důvodu neočekávaného odvolání certifikátů nebo aktualizovat certifikát, který byl odvolán, postupujte podle následujících kroků. Nápad je vytvořit nový soubor *. pem* , který kombinuje aktuální certifikát a nové a v průběhu ověřování certifikátu SSL, jakmile budou použity povolené hodnoty. Přečtěte si následující postup:
 
 *   Stáhněte **BaltimoreCyberTrustRoot**si  &  certifikační autoritu BaltimoreCyberTrustRoot**DigiCertGlobalRootG2** z následujících odkazů:
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
@@ -72,11 +79,10 @@ Pokud se chcete vyhnout přerušení dostupnosti vaší aplikace z důvodu neoč
 *   Nahraďte soubor PEM původní kořenové certifikační autority souborem kombinované kořenové certifikační autority a restartujte aplikaci nebo klienta.
 *   Po nasazení nového certifikátu na straně serveru můžete v budoucnu změnit soubor PEM certifikační autority na DigiCertGlobalRootG2. CRT. pem.
 
-## <a name="what-can-be-the-impact"></a>Jaký může být dopad?
+## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>Co může být důsledkem neaktualizace certifikátu?
 Pokud používáte certifikát vydaný Azure Database for MariaDB, jak je uvedeno zde, může dojít k přerušení dostupnosti vaší aplikace, protože databáze nebude dostupná. V závislosti na vaší aplikaci můžete obdržet nejrůznější chybové zprávy, mezi které patří mimo jiné:
 *   Neplatný certifikát nebo odvolaný certifikát
 *   Vypršel časový limit připojení
-*   Chyba, pokud je k dispozici
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -84,28 +90,41 @@ Pokud používáte certifikát vydaný Azure Database for MariaDB, jak je uveden
 Pokud nepoužíváte protokol SSL/TLS, nejsou vyžadovány žádné akce. 
 
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. Pokud používám protokol SSL/TLS, je nutné restartovat server databáze a aktualizovat tak kořenovou certifikační autoritu?
-Ne, nemusíte restartovat databázový server, abyste mohli začít používat nový certifikát. Jedná se o změnu na straně klienta a příchozí připojení klientů musí použít nový certifikát k zajištění toho, aby se mohli připojit k databázovému serveru.
+Ne, nemusíte restartovat databázový server, abyste mohli začít používat nový certifikát. Aktualizace certifikátu je změna na straně klienta a příchozí připojení klientů musí použít nový certifikát k zajištění toho, aby se mohli připojit k databázovému serveru.
 
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. co se stane, když kořenový certifikát neaktualizujem před 26. října 2020 (10/26/2020)?
 Pokud kořenový certifikát neaktualizujete před 26. října 2020, vaše aplikace, které se připojují přes protokol SSL/TLS, a ověření kořenového certifikátu nebudou moct komunikovat s databázovým serverem MariaDB a aplikace bude mít problémy s připojením k databázovému serveru MariaDB.
 
-### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. Musím pro tuto změnu naplánovat výpadek údržby?<BR>
-No. Vzhledem k tomu, že se tato změna nachází pouze na straně klienta pro připojení k databázovému serveru, pro tuto změnu není potřeba žádné prostoje údržby.
+### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. Jaký je dopad při použití App Service s Azure Database for MariaDB?
+V případě Azure App Services můžeme mít Azure Database for MariaDB k dispozici dva možné scénáře a závisí na tom, jak používáte protokol SSL s vaší aplikací.
+*   Tento nový certifikát se přidal do App Service na úrovni platformy. Pokud používáte certifikáty SSL obsažené na platformě App Service v aplikaci, není nutné provádět žádnou akci.
+*   Pokud explicitně zadáte cestu k souboru certifikátu SSL v kódu, budete muset stáhnout nový certifikát a aktualizovat kód, aby používal nový certifikát.
 
-### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. co když mi pro tuto změnu nezíská plánované výpadky před 26. října 2020 (10/26/2020)?
+### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. Jaký je dopad použití služeb Azure Kubernetes Services (AKS) s Azure Database for MariaDB?
+Pokud se pokoušíte připojit k Azure Database for MariaDB pomocí služeb Azure Kubernetes Services (AKS), bude se podobat přístupu z hostitelského prostředí s vyhrazenými zákazníky. Postup najdete [tady](../aks/ingress-own-tls.md).
+
+### <a name="6-what-is-the-impact-if-using-azure-data-factory-to-connect-to-azure-database-for-mariadb"></a>6. Jaký je dopad použití Azure Data Factory pro připojení k Azure Database for MariaDB?
+Pro konektor používající Azure Integration Runtime konektor využívá certifikáty v úložišti certifikátů Windows v prostředí hostovaném v Azure. Tyto certifikáty jsou již kompatibilní s nově použitými certifikáty, a proto není nutné provádět žádnou akci.
+
+Pro konektor používající Integration Runtime v místním prostředí, kde explicitně zadáte cestu k souboru certifikátu SSL v připojovacím řetězci, budete muset stáhnout [nový certifikát](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) a aktualizovat připojovací řetězec tak, aby ho používal.
+
+### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. pro tuto změnu potřebuji naplánovat výpadek údržby databázového serveru?
+No. Vzhledem k tomu, že se tato změna provádí jenom na straně klienta, aby se mohla připojit k databázovému serveru, není pro tuto změnu pro databázový server potřeba žádné prostoje údržby.
+
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. co když mi pro tuto změnu nezíská plánované výpadky před 26. října 2020 (10/26/2020)?
 Vzhledem k tomu, že klienti, kteří se používají pro připojení k serveru, musí aktualizovat informace o certifikátu, jak je popsáno [v části Oprava](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), v tomto případě nepotřebujeme v tomto případě výpadek serveru.
 
-###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. když po 26. říjnu 2020 vytvořím nový server, bude to mít dopad na to?
+### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. když po 26. říjnu 2020 vytvořím nový server, bude to mít dopad na to?
 Pro servery vytvořené po 26. října 2020 (10/26/2020) můžete použít nově vydaný certifikát pro vaše aplikace k připojení pomocí protokolu SSL.
 
-### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?
+### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?
 Certifikáty používané službou Azure Database for MariaDB poskytují důvěryhodné certifikační autority (CA). Proto je podpora těchto certifikátů na Azure Database for MariaDB vázaná na podporu těchto certifikátů certifikační autoritou. V takovém případě ale můžou být v těchto předdefinovaných certifikátech nepředvídatelné chyby, které je potřeba vyřešit nejstarší.
 
-### <a name="8-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>8. Pokud používám repliky pro čtení, musím tuto aktualizaci provést jenom na hlavním serveru nebo v replikách pro čtení?
-Vzhledem k tomu, že tato aktualizace je změnou na straně klienta, je nutné, aby se při čtení dat ze serveru repliky tyto změny použily i pro tyto klienty. 
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. Pokud používám repliky pro čtení, musím tuto aktualizaci provést pouze na hlavním serveru nebo v replikách pro čtení?
+Vzhledem k tomu, že se jedná o změnu na straně klienta, pokud klient používá ke čtení dat ze serveru repliky, budete muset změny použít i pro tyto klienty.
 
-### <a name="9-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>9. máme dotaz na straně serveru, abyste ověřili, jestli se používá SSL?
+### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. máme dotaz na straně serveru, abyste ověřili, jestli se používá SSL?
 Chcete-li ověřit, zda používáte připojení SSL pro připojení k serveru, postupujte podle tématu [ověřování SSL](howto-configure-ssl.md#verify-the-ssl-connection).
 
-### <a name="10-what-if-i-have-further-questions"></a>10. co když mám další dotazy?
+### <a name="13-what-if-i-have-further-questions"></a>13. co když mám další dotazy?
 Pokud máte nějaké otázky, Získejte odpovědi od expertů komunity v [Microsoft Q&A](mailto:AzureDatabaseformariadb@service.microsoft.com). Pokud máte plán podpory a potřebujete technickou pomoc, [kontaktujte nás](mailto:AzureDatabaseformariadb@service.microsoft.com) .

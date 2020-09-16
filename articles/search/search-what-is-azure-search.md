@@ -8,26 +8,28 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/15/2020
-ms.openlocfilehash: f042c171c120b7b5dd9b011bca2c2243be664767
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e4cee699bf18b340d0bb1cbe783bdedcca537db6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530620"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602944"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je kognitivní hledání Azure?
 
-Azure Kognitivní hledání ([dříve označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudová vyhledávací služba, která vývojářům poskytuje rozhraní API a nástroje pro lepší vyhledávání v rámci soukromého a heterogenního obsahu ve webových, mobilních a podnikových aplikacích.
+Azure Kognitivní hledání ([dříve označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudová vyhledávací služba, která vývojářům poskytuje rozhraní API a nástroje pro vytváření bohatých funkcí vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích.
 
-Kognitivní hledání poskytuje indexovací a dotazovací modul a trvalé úložiště indexů vyhledávání. Vejde se mezi externí úložiště dat, která přispívají k obsahu, a klientská aplikace, která odesílá požadavky na dotazy a zpracovává odpovědi. Mezi dvě primární úlohy vyhledávací služby patří *indexování* a *dotazování*.
+Když vytváříte službu Kognitivní hledání, získáte indexování a dotazovací modul, trvalé úložiště vyhledávacích indexů, které vytvoříte a spravujete, a dotazovací jazyk pro vytváření jednoduchých a složitých dotazů. Vyhledávací služba se integruje s dalšími službami Azure ve formě *indexerů* , které automatizují přijímání a načítání dat ze zdrojů dat Azure, a *dovednosti* , které přidávají zpracování AI z Cognitive Services, jako je například analýza obrázků a textu.
 
 ![Architektura Azure Kognitivní hledání](media/search-what-is-azure-search/azure-search-diagram.svg "Architektura Azure Kognitivní hledání")
 
-Indexování je v případě, že váš kód nebo nástroj definuje schéma indexu a načítá data do vaší vyhledávací služby. Volitelně můžete přidat dovednosti rozpoznávání během indexování a použít tak procesy AI. V takovém případě můžete vytvořit nové informace a struktury užitečné pro scénáře hledání a dolování ve znalostní bázi.
+Služba vyhledávání v architektuře je mezi externími úložišti dat, která obsahují vaše data, a klientskou aplikací, která odesílá požadavky na dotazy a zpracovává odpovědi. Tyto dvě primární úlohy vyhledávací služby se *indexují* a *dotazují*.
 
-Jakmile index existuje, pošle klientská aplikace požadavky na vyhledávací službu a zpracuje odpovědi. Prostředí pro vyhledávání je ve vašem klientovi definované pomocí rozhraní API z Azure Kognitivní hledání, při provádění dotazů přes vyhledávací index, který vytvoříte, vlastníte a ukládáte do vaší služby.
+Při indexování se přidá obsah do vaší vyhledávací služby a bude možné ho prohledávat. Interně se příchozí text zpracovává do tokenů a ukládá se do obrácených indexů pro rychlé porovnání. Schéma indexu určuje strukturu prohledávatelných obsahu. Při indexování máte možnost Přidat *dovednosti v rozpoznávání*, buď předdefinované od společnosti Microsoft, nebo vlastní dovednosti, které vytvoříte. Výsledná analýza a transformace mohou vytvořit nové informace a struktury, které dříve neexistovaly, a poskytnout tak vysoký výkon pro mnoho scénářů vyhledávání a vědomostí o dolování.
 
-Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/rest/api/searchservice/) nebo [.NET SDK](search-howto-dotnet-sdk.md), které zakrývá zákonitou složitost načítání informací. Můžete také použít Azure Portal pro správu služeb a správu obsahu, a to pomocí nástrojů pro vytváření prototypů a dotazování na indexy. Služba běží v cloudu, proto infrastrukturu a dostupnost spravuje Microsoft.
+Po naplnění indexu pomocí prohledávatelných dat pošle klientská aplikace dotazy požadavky na vyhledávací službu a zpracuje odpovědi. Možnosti vyhledávání jsou definované ve vašem klientovi pomocí rozhraní API z Azure Kognitivní hledání a můžou zahrnovat vyladění relevance, automatické dokončování, porovnávání synonym, přibližné porovnávání, porovnávání vzorů, filtrování a řazení.
+
+Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/rest/api/searchservice/) nebo [.NET SDK](search-howto-dotnet-sdk.md), které zakrývá zákonitou složitost načítání informací. Můžete také použít Azure Portal pro správu služeb a správu obsahu, a to pomocí nástrojů pro vytváření prototypů a dotazování na indexy a dovednosti. Služba běží v cloudu, proto infrastrukturu a dostupnost spravuje Microsoft.
 
 ## <a name="when-to-use-cognitive-search"></a>Kdy použít Kognitivní hledání
 
@@ -37,7 +39,7 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 
 + Snadná implementace funkcí souvisejících s vyhledáváním Rozhraní API pro vyhledávání zjednodušují vytváření dotazů, omezující navigaci, filtry (včetně geografického hledání), mapování synonym, automatické dokončování a optimalizaci závažnosti. Pomocí integrovaných funkcí můžete vyhovět očekáváním koncových uživatelů při hledání podobného komerčním vyhledávacím webům.
 
-+ Nezpracovaný obsah je velký nerozlišený textový soubor nebo soubory obrázků nebo soubory aplikace uložené ve službě Azure Blob Storage nebo Cosmos DB. Můžete použít [odbornosti rozpoznávání](cognitive-search-concept-intro.md) během indexování k extrakci textu, vytvoření struktury nebo vytvoření nových informací, například přeloženého textu nebo entit.
++ Nezpracovaný obsah je velký nerozlišený textový soubor nebo soubory obrázků nebo soubory aplikace uložené ve službě Azure Blob Storage nebo Cosmos DB. K identifikaci a extrakci textu, vytvoření struktury nebo vytváření nových informací, jako je například přeložený text nebo entity, můžete použít [odbornosti rozpoznávání](cognitive-search-concept-intro.md) během indexování.
 
 + Obsah vyžaduje jazykovou nebo vlastní analýzu textu. Pokud máte obsah, který není v angličtině, Azure Kognitivní hledání podporuje analyzátory Lucene i procesory přirozeného jazyka společnosti Microsoft. Můžete také nakonfigurovat analyzátory, abyste dosáhli specializovaného zpracování nezpracovaného obsahu, jako je filtrování diakritických znamének nebo rozpoznávání a zachování vzorů v řetězcích.
 

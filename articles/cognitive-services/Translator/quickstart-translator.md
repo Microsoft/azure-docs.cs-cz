@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Překladatel, služba Translator, překlad textu, přepis textu, rozpoznávání jazyka
-ms.openlocfilehash: 1cffe99389b3e3e782c53aeae8c29fbc8f55b6a0
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 65f16c9689984a493e3fed041545557688fbc279
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530671"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602247"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Rychlý Start: Začínáme s překladatelem
 
@@ -120,6 +120,10 @@ Když zavoláte službu Translator přes REST, budete muset zajistit, aby každ�
     <td><em>Volitelné</em>.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem <code>ClientTraceId</code> .</td>
   </tr>
 </table> 
+
+## <a name="keys-and-endpoints"></a>Keys and endpoints (Klíče a koncové body)
+
+Ukázky na této stránce využívají pevně zakódované klíče a koncové body pro jednoduchost. Nezapomeňte **odebrat klíč z kódu, až budete hotovi**, a **nikdy ho**zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
 
 ## <a name="translate-text"></a>Přeložení textu 
 

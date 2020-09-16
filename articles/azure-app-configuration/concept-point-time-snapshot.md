@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586558"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601074"
 ---
 # <a name="point-in-time-snapshot"></a>Snímek k určitému časovému okamžiku
 
@@ -23,31 +23,29 @@ Konfigurace aplikace Azure udržuje záznam změn provedených u klíčových ho
 
 Pomocí Azure Portal nebo CLI můžete načíst minulé hodnoty klíč-hodnota. V Azure CLI použijte `az appconfig revision list` a přidejte vhodné parametry pro načtení požadovaných hodnot.  Zadáním názvu úložiště ( `--name <app-config-store-name>` ) nebo pomocí připojovacího řetězce () zadejte instanci Azure App Configuration `--connection-string <your-connection-string>` . Omezte výstup zadáním určitého bodu v čase ( `--datetime` ) a zadáním maximálního počtu položek, které se mají vrátit ( `--top` ).
 
-Pokud nemáte rozhraní příkazového řádku Azure v místním počítači nainstalováno, můžete volitelně použít Azure Cloud Shell.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Pokud nemáte rozhraní příkazového řádku Azure v místním počítači nainstalováno, můžete volitelně použít [Azure Cloud Shell](/azure/cloud-shell/overview).
 
 Načte všechny zaznamenané změny hodnot vašich klíčů.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name>.
 ```
 
 Načte všechny zaznamenané změny pro klíč `environment` a popisky `test` a `prod` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
 Načte všechny zaznamenané změny v hierarchickém klíčovém prostoru `environment:prod` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
 Načte všechny zaznamenané změny pro klíč v `color` určitém časovém okamžiku.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 

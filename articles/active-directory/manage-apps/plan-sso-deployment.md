@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642380"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603335"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -28,7 +28,7 @@ Jednotné přihlašování (SSO) znamená přístup k všem aplikacím a prostř
 
 Jednotné přihlašování (SSO) zvyšuje zabezpečení a pohodlí, když se uživatelé přihlásí k aplikacím v Azure Active Directory (Azure AD). 
 
-Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako je například Office 365, box a Salesforce, pro produktivitu koncových uživatelů. Historicky zaměstnanci IT potřebují individuálně vytvářet a aktualizovat uživatelské účty v jednotlivých aplikacích SaaS a uživatelé si pro ně museli pamatovat heslo.
+Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako je například Microsoft 365, box nebo Salesforce, pro produktivitu koncových uživatelů. Historicky zaměstnanci IT potřebují individuálně vytvářet a aktualizovat uživatelské účty v jednotlivých aplikacích SaaS a uživatelé si pro ně museli pamatovat heslo.
 
 Azure Marketplace má více než 3000 aplikací s předem integrovanými připojeními SSO, což usnadňuje jejich integraci ve vašem tenantovi.
 
@@ -118,7 +118,7 @@ Mezi klíčová témata, která je potřeba naplánovat při nastavování kontr
 
 Azure AD poskytuje [sestavy obsahující technické a obchodní přehledy](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). 
 
-K dispozici jsou jak sestavy zabezpečení, tak aktivity. Sestavy zabezpečení zobrazují uživatele označené příznakem rizika a riziková přihlášení. sestavy aktivit vám pomohou pochopit chování uživatelů ve vaší organizaci, a to tak, že se podrobí přihlašovací aktivity a poskytnou revizní záznamy o všech přihlášeních. Pomocí sestav můžete spravovat rizika, zvýšit produktivitu a monitorovat dodržování předpisů.
+K dispozici jsou jak sestavy zabezpečení, tak aktivity. Sestavy zabezpečení zobrazují uživatele označené příznakem rizika a rizikovým přihlášením. Sestavy aktivit vám pomohou pochopit chování uživatelů ve vaší organizaci tím, že se podrobí přihlašovací aktivity a poskytnou revizní záznamy o všech přihlášeních. Pomocí sestav můžete spravovat rizika, zvýšit produktivitu a monitorovat dodržování předpisů.
 
 | Typ sestavy | Kontrola přístupu | Sestavy zabezpečení | Sestava přihlášení |
 |-------------|---------------|------------------|----------------|
@@ -285,7 +285,7 @@ Následující odkazy představují scénáře řešení potíží. Možná bude
 
 - [Problémy s přihlašováním z vlastního portálu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [Problémy s přihlašováním z mých aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Potíže s přihlašováním ze sekce Moje aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [Chyba na přihlašovací stránce aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 

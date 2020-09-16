@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: beabe9440c37d16ca4a81efdbc9588739f4c7473
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279342"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602366"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity.
 
@@ -86,7 +86,7 @@ Podrobnosti o rozhodovacích otázkách:
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>Cloudové ověřování: synchronizace hodnot hash hesel
 
-* **Úsilí**. Synchronizace hodnot hash hesel vyžaduje nejméně úsilí týkající se nasazení, údržby a infrastruktury.  Tato úroveň úsilí se obvykle týká organizací, které potřebují, aby se uživatelé přihlásili k Office 365, aplikacím SaaS a dalším prostředkům založeným na službě Azure AD. Pokud je tato funkce zapnutá, synchronizace hodnot hash hesel je součástí procesu Azure AD Connect synchronizace a spouští se každé dvě minuty.
+* **Úsilí**. Synchronizace hodnot hash hesel vyžaduje nejméně úsilí týkající se nasazení, údržby a infrastruktury.  Tato úroveň úsilí se obvykle týká organizací, které potřebují, aby se uživatelé přihlásili k Microsoft 365, aplikacím SaaS a dalším prostředkům založeným na službě Azure AD. Pokud je tato funkce zapnutá, synchronizace hodnot hash hesel je součástí procesu Azure AD Connect synchronizace a spouští se každé dvě minuty.
 
 * **Činnost koncového uživatele**. Pro zlepšení přihlašovacího prostředí uživatelů nasaďte bezproblémové jednotné přihlašování se synchronizací hodnot hash hesel. Bezproblémové jednotné přihlašování eliminuje zbytečné výzvy při přihlášení uživatelů.
 
@@ -203,7 +203,7 @@ Použijte nebo povolte synchronizaci hodnot hash hesel podle zvolené metody ov�
 
 2. **Přežití místního výpadku**.  Důsledky místního výpadku v důsledku internetového útoku nebo havárie můžou být zásadní, od poškození značky reputace až po paralyzed organizaci, která není schopná zabývat se útokem. V poslední době bylo mnoho organizací obětí malwarových útoků, včetně cílových ransomwarem, což způsobilo, že jejich místní servery přestanou platit. Když Microsoft pomáhá zákazníkům pracovat s těmito typy útoků, uvidí dvě kategorie organizací:
 
-   * Organizace, které dříve zároveň zapnuly synchronizaci hodnot hash hesel nad federovaným nebo předávacím ověřováním, změnily primární metodu ověřování tak, aby pak používaly synchronizaci hodnot hash hesel. Během několika hodin byly zpět online. Pomocí přístupu k e-mailu přes Office 365 pracovali s cílem vyřešit problémy a přistupovat k dalším cloudovým úlohám.
+   * Organizace, které dříve zároveň zapnuly synchronizaci hodnot hash hesel nad federovaným nebo předávacím ověřováním, změnily primární metodu ověřování tak, aby pak používaly synchronizaci hodnot hash hesel. Během několika hodin byly zpět online. Pomocí přístupu k e-mailu prostřednictvím Microsoft 365 pracovali s cílem vyřešit problémy a přistupovat k dalším cloudovým úlohám.
 
    * Organizace, které dříve nepovolily synchronizaci hodnot hash hesel, musely při komunikaci s řešeními problémů nedůvěřovat externím e-mailovým systémům externích uživatelů. V těchto případech trvalo, že jsou týdny obnoveny místní infrastruktury identit, než se uživatelé budou moci znovu přihlásit ke cloudovým aplikacím.
 

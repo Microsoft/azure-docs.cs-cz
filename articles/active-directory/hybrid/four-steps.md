@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279325"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600792"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Čtyři kroky pro silnou identitu Foundation s Azure Active Directory
 
@@ -46,7 +46,7 @@ Azure AD umožňuje správcům [přidávat](../manage-apps/add-application-porta
 Jakmile se aplikace přidají do galerie služby Azure AD, uživatelé uvidí aplikace, které jsou jim přiřazené, a podle potřeby vyhledají a požadují jiné aplikace. Azure AD poskytuje pro uživatele [několik způsobů](../manage-apps/end-user-experiences.md) přístupu ke svým aplikacím:
 
 * Přístupový panel/Moje aplikace
-* Spouštěč aplikací Office 365
+* Spouštěč aplikací Microsoft 365
 * Přímé přihlášení k federovaným aplikacím
 * Přímé přihlašovací odkazy
 
@@ -115,7 +115,7 @@ Organizace s místní službou Active Directory by měly svůj adresář do Azur
 
 Nejjednodušší a doporučená metoda pro povolení cloudového ověřování pro místní adresářové objekty ve službě Azure AD je povolení [synchronizace hodnot hash hesel](./how-to-connect-password-hash-synchronization.md) (kosmetice). Případně můžou některé organizace zvážit povolení [předávacího ověřování](./how-to-connect-pta-quick-start.md) (PTA).
 
-Ať už zvolíte KOSMETICE nebo PTA, Nezapomeňte povolit [bezproblémové jednotné přihlašování](./how-to-connect-sso.md) umožňující uživatelům přístup ke cloudovým aplikacím bez neustálého zadávání uživatelského jména a hesla do aplikace při použití zařízení se systémem Windows 7 a 8 ve vaší podnikové síti. Bez jednotného přihlašování si uživatelé musí pamatovat hesla specifická pro aplikace a přihlašovat se k jednotlivým aplikacím. Stejně tak pracovníci IT potřebují vytvářet a aktualizovat uživatelské účty pro každou aplikaci, například Office 365, box a Salesforce. Uživatelé si musí pamatovat hesla a zatěžovat si čas potřebný k přihlášení ke každé aplikaci. Zajištění standardizovaného mechanismu jednotného přihlašování pro celou firmu je klíčové pro nejlepší uživatelské prostředí, snížení rizika, schopnost vykazovat a zásad správného řízení.
+Ať už zvolíte KOSMETICE nebo PTA, Nezapomeňte povolit [bezproblémové jednotné přihlašování](./how-to-connect-sso.md) umožňující uživatelům přístup ke cloudovým aplikacím bez neustálého zadávání uživatelského jména a hesla do aplikace při použití zařízení se systémem Windows 7 a 8 ve vaší podnikové síti. Bez jednotného přihlašování si uživatelé musí pamatovat hesla specifická pro aplikace a přihlašovat se k jednotlivým aplikacím. Stejně tak pracovníci IT potřebují vytvářet a aktualizovat uživatelské účty pro každou aplikaci, například Microsoft 365, box nebo Salesforce. Uživatelé si musí pamatovat hesla a zatěžovat si čas potřebný k přihlášení ke každé aplikaci. Zajištění standardizovaného mechanismu jednotného přihlašování pro celou firmu je klíčové pro nejlepší uživatelské prostředí, snížení rizika, schopnost vykazovat a zásad správného řízení.
 
 Pro organizace, které už používají AD FS nebo jiného místního zprostředkovatele ověřování, se přesunete do Azure AD, protože váš poskytovatel identity může snížit složitost a zlepšit dostupnost. Pokud nemáte konkrétní případy použití pro použití federace, doporučujeme migrovat z federovaného ověřování na KOSMETICE a bezproblémové jednotné přihlašování nebo PTA a bezproblémové jednotné přihlašování, které přináší výhody omezených místních nároků a flexibilitu cloudu Díky vylepšeným uživatelským prostředím. Další informace najdete v článku [migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory](./plan-migrate-adfs-password-hash-sync.md).
 
@@ -156,7 +156,7 @@ Přiřazování uživatelů k aplikacím je při používání skupin nejlépe n
 * Založený na atributech pomocí dynamického členství ve skupině
 * Delegování pro vlastníky aplikace
 
-Azure AD poskytuje možnost spravovat přístup k prostředkům pomocí skupin zabezpečení a skupin Office 365. Tyto skupiny může spravovat vlastník skupiny, který může schvalovat nebo zamítnout žádosti o členství a delegovat řízení členství ve skupině. Tato funkce se označuje jako [Samoobslužná správa skupin](../users-groups-roles/groups-self-service-management.md), ale šetří čas tím, že umožňuje vlastníkům skupin, kteří nejsou přiřazeni administrativní roli k vytváření a správě skupin, aniž by museli spoléhat na to, že požádají správce o zpracování požadavků.
+Azure AD poskytuje možnost spravovat přístup k prostředkům pomocí skupin zabezpečení a skupin Microsoft 365. Tyto skupiny může spravovat vlastník skupiny, který může schvalovat nebo zamítnout žádosti o členství a delegovat řízení členství ve skupině. Tato funkce se označuje jako [Samoobslužná správa skupin](../users-groups-roles/groups-self-service-management.md), ale šetří čas tím, že umožňuje vlastníkům skupin, kteří nejsou přiřazeni administrativní roli k vytváření a správě skupin, aniž by museli spoléhat na to, že požádají správce o zpracování požadavků.
 
 ## <a name="step-4---operationalize-your-insights"></a>Krok 4 – zprovoznění vašich přehledů
 

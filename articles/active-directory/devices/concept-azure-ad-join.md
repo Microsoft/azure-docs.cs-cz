@@ -1,6 +1,6 @@
 ---
 title: Co je zařízení připojené k Azure AD?
-description: Přečtěte si, jak vám Správa identit zařízení může pomáhat při správě zařízení, která přistupují k prostředkům ve vašem prostředí.
+description: Přečtěte si o zařízeních připojených k Azure AD a o tom, jak vám Správa identit zařízení může pomáhat při správě zařízení, která přistupují k prostředkům ve vašem prostředí.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923726"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601448"
 ---
 # <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
 Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze cloudové nebo cloudové. Každá organizace může nasadit zařízení připojená k Azure AD bez ohledu na velikost nebo odvětví. Připojení k Azure AD funguje i v hybridním prostředí a umožňuje přístup ke cloudovým i místním aplikacím a prostředkům.
 
-| Připojení k Azure AD | Popis |
+| Připojení k Azure AD | Description |
 | --- | --- |
 | **Definice** | Připojeno pouze k Azure AD vyžadování účtu organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Vhodné pro cloudové i hybridní organizace. |
@@ -58,7 +58,7 @@ Přestože je služba Azure AD Join primárně určená pro organizace, které n
 
 - Chcete přejít na cloudovou infrastrukturu s využitím Azure AD a MDM, jako je například Intune.
 - Nemůžete použít připojení k místní doméně například v případě, že potřebujete získat kontrolu nad mobilními zařízeními, jako jsou tablety a telefony.
-- Vaši uživatelé primárně potřebují přístup k Office 365 nebo dalším aplikacím SaaS integrovaným s Azure AD.
+- Uživatelé primárně potřebují přístup k Microsoft 365 nebo jiným aplikacím SaaS integrovaným s Azure AD.
 - Chcete spravovat skupinu uživatelů v Azure AD, a ne v Active Directory. Tento scénář může platit například pro sezónní pracovní procesy, dodavatele nebo studenty.
 - Chcete poskytnout možnosti připojení pracovníkům ve vzdálených pobočkách s omezenou místní infrastrukturou.
 

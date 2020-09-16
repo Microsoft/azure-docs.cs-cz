@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948398"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602060"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
@@ -55,9 +55,9 @@ Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zása
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
-- Office 365 Exchange Online
-- Office 365 SharePoint Online
-- Office 365 Yammer
+- Exchange Online
+- SharePoint
+- Yammer
 - Office Delve
 - Sway pro Office
 - Outlook Groups
@@ -69,7 +69,7 @@ Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zása
 
 ### <a name="office-365-preview"></a>Office 365 (Preview)
 
-Office 365 poskytuje cloudové služby pro produktivitu a spolupráci, jako je Exchange, SharePoint a Microsoft Teams. Cloudové služby Office 365 jsou integrovány, aby bylo zajištěno hladké a spolupracující prostředí. Tato integrace může při vytváření zásad způsobit nejasnost, protože některé aplikace, jako je například Microsoft teams, mají závislosti na jiných, jako je SharePoint nebo Exchange.
+Microsoft 365 poskytuje cloudové služby pro produktivitu a spolupráci, jako je Exchange, SharePoint a Microsoft Teams. Cloudové služby Microsoft 365 jsou hluboko integrované, aby bylo zajištěno hladké a spolupracující prostředí. Tato integrace může při vytváření zásad způsobit nejasnost, protože některé aplikace, jako je například Microsoft teams, mají závislosti na jiných, jako je SharePoint nebo Exchange.
 
 Aplikace Office 365 (Preview) umožňuje zaměřit se na tyto služby najednou. Doporučujeme používat novou aplikaci Office 365 (Preview) místo cílení na jednotlivé cloudové aplikace, abyste se vyhnuli problémům se [závislostmi služby](service-dependencies.md). Cílení na tuto skupinu aplikací pomáhá zabránit problémům, ke kterým může dojít kvůli nekonzistentním zásadám a závislostem.
 
@@ -82,10 +82,10 @@ Klíčové aplikace, které jsou zahrnuté v klientské aplikaci Office 365 (Pre
    - Microsoft Stream
    - Microsoft To-Do
    - Microsoft Teams
-   - Office 365 Exchange Online
-   - Office 365 SharePoint Online
-   - Sada Office 365 Search Service
-   - Office 365 Yammer
+   - Exchange Online
+   - SharePoint Online
+   - Microsoft 365 Search Service
+   - Yammer
    - Office Delve
    - Online Office
    - Office.com

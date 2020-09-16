@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567346"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600717"
 ---
 # <a name="start-using-privileged-identity-management"></a>Zahájení využití technologie Privileged Identity Management
 
@@ -35,6 +35,14 @@ Chcete-li použít Privileged Identity Management, je nutné mít jednu z násle
 - Enterprise Mobility + Security (EMS) E5
 
 Další informace najdete v tématu [licenční požadavky pro použití Privileged Identity Management](subscription-requirements.md).
+
+> [!Note]
+> Když se uživatel, který je aktivní v privilegované roli v organizaci Azure AD s licencí Premium P2, dostane do **rolí a správců** v Azure AD a vybere roli (nebo dokonce jenom návštěvy Privileged Identity Management):
+>
+> - Pro organizaci automaticky povolíme PIM.
+> - Jejich prostředí teď může přiřadit "pravidelnou" přiřazení role nebo přiřazení oprávněné role.
+>
+> Pokud je PIM povolený, nemá ve vaší organizaci žádný jiný vliv na to, co se vám bude muset starat. Nabízí další možnosti přiřazení, jako je aktivní vs – nárok s počátečním a koncovým časem. PIM taky umožňuje definovat rozsah přiřazení rolí pomocí jednotek pro správu a vlastních rolí. Pokud jste správcem globálního správce nebo privilegovaného správce role, můžete začít s několika dalšími e-maily, jako je týdenní přehled o PIM. V protokolu auditu souvisejícím s přiřazením role můžete také vidět instanční objekt MS-PIM. Jedná se o očekávanou změnu, která by neměla mít žádný vliv na váš pracovní postup.
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>Příprava PIM pro role Azure AD
 
@@ -59,7 +67,7 @@ Jakmile Privileged Identity Management nastavíte, můžete se naučit, jak se p
 
 ![Navigační okno v Privileged Identity Management znázorňující úlohy a spravovat možnosti](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Úkol a Správa | Popis |
+| Úkol a Správa | Description |
 | --- | --- |
 | **Moje role**  | Zobrazí seznam oprávněných a aktivních rolí, které vám jsou přiřazeny. Toto je místo, kde můžete aktivovat jakoukoli přiřazenou oprávněnou roli. |
 | **Moje žádosti** | Zobrazí vaše nedokončené žádosti o aktivaci přiřazení oprávněných rolí. |
@@ -72,7 +80,7 @@ Jakmile Privileged Identity Management nastavíte, můžete se naučit, jak se p
 
 Pokud chcete usnadnit otevírání Privileged Identity Management, přidejte do řídicího panelu Azure Portal dlaždici PIM.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **všechny služby** a vyhledejte službu **Azure AD Privileged Identity Management** .
 

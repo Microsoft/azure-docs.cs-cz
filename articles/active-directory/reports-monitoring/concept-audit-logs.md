@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229918"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603505"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -114,7 +114,7 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - Vše
 - AdministrativeUnit
 - ApplicationManagement
-- Ověřování
+- Authentication
 - Autorizace
 - Kontakt
 - Zařízení
@@ -125,9 +125,9 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - KerberosDomain
 - Správa
 - Popisek
-- Další
+- Jiné
 - PermissionGrantPolicy
-- Zásada
+- Zásady
 - ResourceManagement
 - RoleManagement
 - UserManagement
@@ -208,11 +208,11 @@ Pokud chcete zkontrolovat data auditu související s vašimi aplikacemi, najdet
 
 ![Protokoly auditu](./media/concept-audit-logs/enterpriseapplications.png "Protokoly auditu")
 
-## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
+## <a name="microsoft-365-activity-logs"></a>Protokoly aktivit Microsoft 365
 
-Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 365](/office365/admin/admin-overview/about-the-admin-center). I když aktivity Office 365 a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, zobrazí se úplné zobrazení protokolů aktivit Office 365 jenom v centru pro správu Microsoft 365. 
+Protokoly aktivit Microsoft 365 můžete zobrazit v centru pro [správu Microsoft 365](/office365/admin/admin-overview/about-the-admin-center). I když Microsoft 365 aktivity a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, zobrazí se úplné zobrazení protokolů aktivit Microsoft 365 jenom v centru pro správu Microsoft 365. 
 
-Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](/office/office-365-management-api/office-365-management-apis-overview).
+Přístup k protokolům aktivit Microsoft 365 lze také programově pomocí [rozhraní API pro správu sady Office 365](/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Další kroky
 

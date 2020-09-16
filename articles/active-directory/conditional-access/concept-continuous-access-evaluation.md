@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437237"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601754"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -48,26 +48,26 @@ Vyhodnocování průběžného přístupu se implementuje povolením služeb, ja
 - Správce explicitně odvolá všechny aktualizační tokeny pro uživatele.
 - Azure AD Identity Protection zjištěno zvýšené riziko uživatele
 
-Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k souborům SharePointu Online, e-mailu, kalendáři nebo úlohám a týmům z klientských aplikací O365 v minutách po jedné z těchto kritických událostí. 
+Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k souborům SharePointu Online, e-mailu, kalendáři nebo úlohám a týmům z Microsoft 365 klientských aplikací v minutách po jedné z těchto kritických událostí. 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Vyhodnocení zásad podmíněného přístupu (Preview)
 
 Exchange a SharePoint jsou schopné synchronizovat klíčová pravidla podmíněného přístupu, aby je bylo možné vyhodnotit v rámci samotné služby.
 
-Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k firemním souborům, e-mailu, kalendáři nebo úkolům z klientských aplikací O365 nebo SharePointu Online hned po změně umístění v síti.
+Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k firemním souborům, e-mailu, kalendáři nebo úlohám z Microsoft 365 klientských aplikací nebo SharePointu Online hned po změně umístění v síti.
 
 > [!NOTE]
 > Není podporovaná kombinace všech aplikací a poskytovatelů prostředků. Viz tabulka níže. Office odkazuje na Word, Excel a PowerPoint.
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Podporováno | Podporováno | Nepodporuje se | Nepodporuje se | Podporováno |
-| Exchange Online | Podporováno | Podporováno | Podporováno | Podporováno | Podporováno |
+| **SharePoint Online** | Podporováno | Podporováno | Nepodporuje se | Nepodporuje se | Podporováno |
+| **Exchange Online** | Podporováno | Podporováno | Podporováno | Podporováno | Podporováno |
 
 | | Webové aplikace Office | Aplikace Office Win32 | Office pro iOS | Office pro Android | Office pro Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Podporováno | Podporováno | Nepodporuje se | Podporováno | Podporováno |
-| Exchange Online | Podporováno | Podporováno | Nepodporuje se | Podporováno | Podporováno |
+| **SharePoint Online** | Podporováno | Podporováno | Nepodporuje se | Podporováno | Podporováno |
+| **Exchange Online** | Podporováno | Podporováno | Nepodporuje se | Podporováno | Podporováno |
 
 ### <a name="client-side-claim-challenge"></a>Výzva k deklaracím na straně klienta
 
@@ -144,7 +144,7 @@ V případě CAE máme přehledy o pojmenovaných umístěních založených na 
 
 ### <a name="ip-address-configuration"></a>Konfiguraci IP adresy
 
-Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Například:
+Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Příklad:
 
 - Poskytovatel identity uvidí jednu IP adresu z klienta.
 - Poskytovatel prostředků uvidí od klienta jinou IP adresu po předání prostřednictvím proxy serveru.

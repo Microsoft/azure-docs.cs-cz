@@ -5,14 +5,14 @@ description: Naučte se vytvořit vlastní profil Intune pro nasazení profilů 
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5a754a14cada1547a83e29d474e9b77aed7a2728
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024345"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602189"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Vytvoření profilu Intune pro nasazení profilů klientů VPN
 
@@ -54,17 +54,7 @@ Další podporované možnosti najdete v článku [CSP pro podpora vpnv2](https:
     </VPNProfile>
    ```
 1. Upravte záznam mezi a položkou ```<ServerUrlList>``` ```</ServerUrlList>``` ze staženého profilu (azurevpnconfig.xml). Změňte plně kvalifikovaný název domény "TrustedNetworkDetection" tak, aby odpovídal vašemu prostředí.
-1. Otevřete stažený profil Azure (azurevpnconfig.xml) a zkopírujte obsah do schránky tak, že zvýrazníte text a stisknete <ctrl> + C. Zkopírujte vše mezi následující AzVpnProfile řádky, ale nekopírujte samotné AzVpnProfile řádky:
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-
-   For example - copy the text in your xml that is located here.
-
-   </AzVpnProfile>
-   ```
+1. Otevřete stažený profil Azure (azurevpnconfig.xml) a zkopírujte celý obsah do schránky zvýrazněním textu a stisknutím klávesy (CTRL) + C. 
 1. Vložte zkopírovaný text z předchozího kroku do souboru, který jste vytvořili v kroku 2 mezi ```<CustomConfiguration>  </CustomConfiguration>``` značkami. Uložte soubor s příponou XML.
 1. Zapište hodnotu do ```<name>  </name>``` značek. Toto je název profilu. Tento název budete potřebovat při vytváření profilu v Intune. Zavřete soubor a zapamatujte si umístění, kam se uložilo.
 

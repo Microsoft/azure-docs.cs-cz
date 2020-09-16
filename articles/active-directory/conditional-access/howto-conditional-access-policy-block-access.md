@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049260"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601584"
 ---
 # <a name="conditional-access-block-access"></a>Podmíněný přístup: blokovat přístup
 
@@ -40,7 +40,7 @@ Zásady podmíněného přístupu jsou výkonné nástroje. doporučujeme, abyst
 
 Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které budou blokovat přístup ke všem aplikacím kromě [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) , pokud uživatelé nejsou v důvěryhodné síti. Tyto zásady jsou uváděné do [režimu pouze](howto-conditional-access-insights-reporting.md) pro spouštění sestav, aby správci mohli určit dopad, který budou mít u stávajících uživatelů. Když mají správci možnost si být jistí, že se zásady použijí podle svých záměrů, můžou je přepnout na **zapnuto**.
 
-První zásada blokuje přístup ke všem aplikacím kromě aplikací Office 365, pokud se nepoužívá v důvěryhodném umístění.
+První zásada blokuje přístup ke všem aplikacím s výjimkou Microsoft 365ch aplikací, pokud nejsou v důvěryhodném umístění.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
@@ -64,7 +64,7 @@ První zásada blokuje přístup ke všem aplikacím kromě aplikací Office 365
 1. Potvrďte nastavení a nastavte **možnost povolit zásady** na **pouze sestavy**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 
-Níže je vytvořena druhá zásada, která pro uživatele Office 365 vyžaduje vícefaktorové ověřování nebo kompatibilní zařízení.
+Níže je vytvořena druhá zásada, která vyžaduje vícefaktorové ověřování nebo zařízení vyhovující předpisům pro uživatele Microsoft 365.
 
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.

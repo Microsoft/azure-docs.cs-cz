@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042475"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601822"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -149,27 +149,27 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 | Klientské aplikace | Cílová služba | Platforma |
 | --- | --- | --- |
 | Aplikace Dynamics CRM | Dynamics CRM | Windows 10, Windows 8.1, iOS a Android |
-| Aplikace Pošta/kalendář/lidé, Outlook 2016, Outlook 2013 (s moderním ověřováním)| Office 365 Exchange Online | Windows 10 |
+| Aplikace Pošta/kalendář/lidé, Outlook 2016, Outlook 2013 (s moderním ověřováním)| Exchange Online | Windows 10 |
 | Zásady vícefaktorového ověřování a umístění pro aplikace Zásady založené na zařízení se nepodporují.| Všechny moje aplikace App Service | Android a iOS |
 | Microsoft Team Services – řídí všechny služby, které podporují Microsoft teams a všechny jeho klientské aplikace – desktopové aplikace pro Windows, iOS, Android, WP a webový klient. | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
-| Aplikace Office 2016, Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
-| Aplikace Office 2016, univerzální aplikace Office, sada Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
-| Office 2016 (jenom Word, Excel, PowerPoint, OneNote) | Office 365 SharePoint Online | macOS |
-| Sada Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
-| Mobilní aplikace Office | Office 365 SharePoint Online | Android, iOS |
-| Aplikace Office Yammer | Office 365 Yammer | Windows 10, iOS, Android |
-| Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
-| Outlook 2016 (Office pro macOS) | Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
-| Mobilní aplikace Outlook | Office 365 Exchange Online | Android, iOS |
+| Aplikace Office 2016, Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1, Windows 7 |
+| Aplikace Office 2016, univerzální aplikace Office, sada Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
+| Office 2016 (jenom Word, Excel, PowerPoint, OneNote) | SharePoint | macOS |
+| Sada Office 2019| SharePoint | Windows 10, macOS |
+| Mobilní aplikace Office | SharePoint | Android, iOS |
+| Aplikace Office Yammer | Yammer | Windows 10, iOS, Android |
+| Outlook 2019 | SharePoint | Windows 10, macOS |
+| Outlook 2016 (Office pro macOS) | Exchange Online | macOS |
+| Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním) | Exchange Online | Windows 8.1, Windows 7 |
+| Mobilní aplikace Outlook | Exchange Online | Android, iOS |
 | Aplikace Power BI | Služba Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
-| Skype pro firmy | Office 365 Exchange Online| Android, iOS |
+| Skype pro firmy | Exchange Online| Android, iOS |
 | Aplikace Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS a Android |
 
 ### <a name="exchange-activesync-clients"></a>Klienti Exchange ActiveSync
 
 - Organizace můžou při přiřazování zásad uživatelům nebo skupinám vybrat jenom klienty Exchange ActiveSync. Výběr **všech uživatelů**, **Všichni host a externí uživatelé**nebo **role adresáře** způsobí, že všichni uživatelé budou zablokovaný.
-- Při vytváření zásad přiřazených klientům Exchange ActiveSync by měla být **Sada Office 365 Exchange Online** jedinou cloudovou aplikací přiřazenou zásadám. 
+- Při vytváření zásad přiřazených klientům Exchange ActiveSync by měla být **Exchange Online** jedinou cloudovou aplikací přiřazenou zásadám. 
 - Organizace můžou zúžit rozsah těchto zásad na konkrétní platformy pomocí podmínky pro **platformy zařízení** .
 
 Pokud řízení přístupu přiřazené k zásadám **vyžaduje schválení klientské aplikace**, uživatel se přesměruje na instalaci a používání mobilního klienta Outlooku. V případě, že je vyžadováno **ověřování Multi-Factor Authentication** , jsou ovlivněni uživatelé zablokováni, protože základní ověřování nepodporuje službu Multi-Factor Authentication.

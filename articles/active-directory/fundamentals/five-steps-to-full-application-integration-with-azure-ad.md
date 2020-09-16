@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319742"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601244"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Pět kroků pro integraci všech vašich aplikací se službou Azure AD
 
@@ -70,7 +70,7 @@ Během procesu zjišťování jste možná našli aplikace, které nesleduje IT 
 
 Publikovali jsme doprovodné materiály pro správu podnikových procesů integrování aplikací se službou Azure AD, včetně [plakátu](https://aka.ms/AppOnePager) a [prezentace](https://aka.ms/AppGuideline) , pomocí kterých mohou vlastníci podniku a aplikace dělat a zajímat. Tyto ukázky můžete upravit pomocí vlastního brandingu a publikovat je ve vaší organizaci prostřednictvím portálu společnosti, bulletinu nebo jiného média, jak budete postupovat na dokončení tohoto procesu.
 
-Dobrým místem, kde začít, je vyhodnocování používání Active Directory Federation Services (AD FS) (ADFS). Řada organizací používá službu ADFS k ověřování s aplikacemi SaaS, vlastními obchodními aplikacemi a aplikacemi pro Office 365 a Azure AD:
+Dobrým místem, kde začít, je vyhodnocování používání Active Directory Federation Services (AD FS) (ADFS). Řada organizací používá službu ADFS k ověřování pomocí aplikací SaaS, vlastních obchodních aplikací a Microsoft 365 a aplikací založených na službě Azure AD:
 
 ![Diagram zobrazuje místní aplikace, obchodní aplikace, aplikace SaaS a prostřednictvím služby Azure AD 365, které se připojují s tečkovanými řádky do Active Directory a AD FS.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 

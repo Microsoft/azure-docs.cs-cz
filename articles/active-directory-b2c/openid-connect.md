@@ -11,12 +11,12 @@ ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a0131e461f2664fa06fc0e24237aec1579bd253c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf70d4381a7d128f7a2716540b1318b39cd729b8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203839"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602128"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlašování pomocí OpenID Connect v Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| Parametr | Povinné | Description |
+| Parametr | Povinné | Popis |
 | --------- | -------- | ----------- |
 | tenant | Yes | Název vašeho tenanta Azure AD B2C |
 | politických | Yes | Tok uživatele, který má být spuštěn. Zadejte název uživatelského toku, který jste vytvořili ve vašem tenantovi Azure AD B2C. Například: `b2c_1_sign_in` , `b2c_1_sign_up` , nebo `b2c_1_edit_profile` . |
@@ -112,7 +112,7 @@ Chcete-li zjistit, který tok uživatele byl použit při podepisování tokenu 
 
 Po získání dokumentu metadat z koncového bodu metadat OpenID Connect můžete použít veřejné klíče RSA 256 k ověření podpisu tokenu ID. V tomto koncovém bodu může být uvedeno více klíčů, z nichž každá je označena `kid` deklarací. Záhlaví tokenu ID obsahuje také `kid` deklaraci identity, která označuje, které z těchto klíčů byly použity k podepsání tokenu ID.
 
-Chcete-li ověřit tokeny z Azure AD B2C, je nutné vygenerovat veřejný klíč pomocí exponentu (e) a zbytku (n). Musíte určit, jak to provést v příslušném programovacím jazyce. Oficiální dokumentaci k generaci veřejných klíčů s protokolem RSA najdete tady:https://tools.ietf.org/html/rfc3447#section-3.1
+Chcete-li ověřit tokeny z Azure AD B2C, je nutné vygenerovat veřejný klíč pomocí exponentu (e) a zbytku (n). Musíte určit, jak to provést v příslušném programovacím jazyce. Oficiální dokumentaci k generaci veřejných klíčů s protokolem RSA najdete tady: https://tools.ietf.org/html/rfc3447#section-3.1
 
 Po ověření signatury tokenu ID máte k dispozici několik deklarací identity, které je třeba ověřit. Například:
 
@@ -144,7 +144,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parametr | Povinné | Description |
+| Parametr | Povinné | Popis |
 | --------- | -------- | ----------- |
 | tenant | Yes | Název vašeho tenanta Azure AD B2C |
 | politických | Yes | Tok uživatele, který se použil k získání autorizačního kódu. V této žádosti nemůžete použít jiný tok uživatele. Přidejte tento parametr do řetězce dotazu, nikoli do těla příspěvku. |
@@ -171,7 +171,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | Parametr | Popis |
 | --------- | ----------- |
 | not_before | Čas, kdy se token považuje za platný, v epocha čase. |
-| token_type | Hodnota typu tokenu. `Bearer`je jediný typ, který je podporován. |
+| token_type | Hodnota typu tokenu. `Bearer` je jediný typ, který je podporován. |
 | access_token | Podepsaný token JWT, který jste požádali. |
 | scope | Obory, pro které je token platný |
 | expires_in | Doba, po kterou je přístupový token platný (v sekundách). |
@@ -213,13 +213,13 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parametr | Povinné | Description |
+| Parametr | Povinné | Popis |
 | --------- | -------- | ----------- |
 | tenant | Yes | Název vašeho tenanta Azure AD B2C |
 | politických | Yes | Tok uživatele, který se použil k získání původního obnovovacího tokenu. V této žádosti nemůžete použít jiný tok uživatele. Přidejte tento parametr do řetězce dotazu, nikoli do těla příspěvku. |
 | client_id | Yes | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci. |
 | client_secret | Ano, v Web Apps | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tajné klíče klienta se v tomto toku používají pro scénáře webové aplikace, kde může klient bezpečně uložit tajný klíč klienta. V případě scénářů nativních aplikací (veřejného klienta) nelze tajné klíče klienta bezpečně uložit, a proto se na toto volání nepoužívají. Pokud používáte tajný klíč klienta, pravidelně ho prosím změňte. |
-| grant_type | Yes | Typ grantu, který musí být obnovovacím tokenem pro tuto část toku autorizačního kódu. |
+| grant_type | Yes | Typ grantu, který musí být `refresh_token` pro tuto část toku autorizačního kódu. |
 | refresh_token | Yes | Původní obnovovací token, který byl získán v druhé části toku. `offline_access`Obor musí být použit jak v žádosti o autorizaci, tak na tokeny, aby mohl získat obnovovací token. |
 | redirect_uri | No | `redirect_uri`Parametr aplikace, ve které jste obdrželi autorizační kód. |
 | scope | No | Mezerou oddělený seznam oborů. `openid`Rozsah označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě tokenů ID. Dá se použít k posílání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. `offline_access`Rozsah označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
@@ -240,7 +240,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | Parametr | Popis |
 | --------- | ----------- |
 | not_before | Čas, kdy se token považuje za platný, v epocha čase. |
-| token_type | Hodnota typu tokenu. `Bearer`je jediný typ, který je podporován. |
+| token_type | Hodnota typu tokenu. `Bearer` je jediný typ, který je podporován. |
 | access_token | Podepsaný token JWT, který byl vyžádán. |
 | scope | Obor, pro který je token platný |
 | expires_in | Doba, po kterou je přístupový token platný (v sekundách). |
@@ -270,7 +270,7 @@ Pokud chcete uživatele odhlásit, přesměrujte uživatele na `end_session` kon
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
-| Parametr | Povinné | Description |
+| Parametr | Povinné | Popis |
 | --------- | -------- | ----------- |
 | tenant | Yes | Název vašeho tenanta Azure AD B2C |
 | politických | Yes | Tok uživatele, který chcete použít k podepsání uživatele z vaší aplikace. |

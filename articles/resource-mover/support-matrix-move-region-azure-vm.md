@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058729"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602281"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Podpora pro přesun virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -114,6 +114,10 @@ Rozšíření | Nepodporováno | Rozšíření se nekopírují do virtuálního 
 ## <a name="supported-vm-storage-settings"></a>Podporovaná nastavení úložiště virtuálního počítače
 
 Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový disk a dočasný disk. Abyste se vyhnuli problémům s výkonem, je důležité sledovat omezení počtu disků virtuálních počítačů a cíle pro virtuální počítače se systémem [Linux](../virtual-machines/linux/disk-scalability-targets.md) a [Windows](../virtual-machines/windows/disk-scalability-targets.md) .
+
+> [!NOTE]
+> Velikost cílového virtuálního počítače by měla být větší nebo rovna zdrojovému virtuálnímu počítači. K ověřování se používají tyto parametry: počet datových disků, počet síťových adaptérů, dostupné procesory a paměť v GB. Pokud se nejedná o chybu, je vydána.
+
 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
