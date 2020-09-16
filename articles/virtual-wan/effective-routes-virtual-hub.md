@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 6592b1a934e732888ef949071d95075d0af61bf6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762262"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708066"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Zobrazení efektivních tras virtuálního centra
 
@@ -50,6 +50,8 @@ Pomocí posuvníku v dolní části tabulky zobrazte "AS Path".
 * Pole **rozšířit výchozí trasu** se zobrazuje na portálu Azure Virtual WAN při úpravě připojení k virtuální síti, připojení k síti VPN nebo připojení ExpressRoute. Toto pole indikuje příznak **enableInternetSecurity** , který je vždycky ve výchozím nastavení false pro připojení EXPRESSROUTE a VPN, ale pro připojení k virtuální síti je nastavená hodnota true.
 
 * Pokud se při zobrazení efektivních tras na síťové kartě virtuálního počítače zobrazí další segment směrování jako Virtual Network brána, která implikuje směrovač virtuálního rozbočovače v případě, že je virtuální počítač připojený k virtuálnímu rozbočovači sítě WAN.
+
+* Zobrazit efektivní trasy pro tabulku směrování virtuálního rozbočovače se naplní jenom v případě, že má virtuální rozbočovač k němu připojený aspoň jeden typ připojení (VPN/ER/VNET).
 
 ## <a name="next-steps"></a>Další kroky
 

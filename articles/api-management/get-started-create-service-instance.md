@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 104e1873a56d1ecf6e9f11a271344e9b4073e780
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033331"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708202"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Rychlý Start: vytvoření nové instance služby Azure API Management Service pomocí Azure Portal
 
@@ -26,7 +26,7 @@ Tento rychlý start popisuje kroky pro vytvoření nové instance API Management
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-new-service"></a>Vytvoření nové služby
 
@@ -56,7 +56,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com).
 3. Vyberte **Vytvořit**.
 
     > [!TIP]
-    > Vytvoření a aktivace služby API Management obvykle trvá 20 až 30 minut. Výběr možnosti **Připnout na řídicí panel** usnadňuje pozdější vyhledání nově vytvořené služby.
+    > Vytvoření a aktivace služby API Management v této vrstvě může trvat 30 až 40 minut. Výběr možnosti **Připnout na řídicí panel** usnadňuje pozdější vyhledání nově vytvořené služby.
 
 [!INCLUDE [api-management-navigate-to-instance](../../includes/api-management-navigate-to-instance.md)]
 

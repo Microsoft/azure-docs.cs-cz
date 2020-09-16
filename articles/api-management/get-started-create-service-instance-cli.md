@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 763a4f5555e9ea6cdb7e78840251fda5d6861f16
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 8e41e20752e4203bf9916813b86cd901f4f75c09
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90042555"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708219"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>Rychlý Start: vytvoření nové instance služby Azure API Management pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -51,7 +51,7 @@ az apim create --name myapim --resource-group myResourceGroup \
 Ve výchozím nastavení příkaz vytvoří instanci ve vrstvě vývojář, což je ekonomická možnost pro vyhodnocení API Management Azure. Tato vrstva není pro produkční použití. Další informace o škálování úrovní služby API Management najdete v tématu věnovaném [upgradu a škálování](upgrade-and-scale.md). 
 
 > [!TIP]
-> Vytvoření a aktivace služby API Management v této vrstvě obvykle trvá 20 až 30 minut. Předchozí příkaz použije `--no-wait` možnost, takže se příkaz vrátí hned při vytvoření služby.
+> Vytvoření a aktivace služby API Management v této vrstvě může trvat 30 až 40 minut. Předchozí příkaz použije `--no-wait` možnost, takže se příkaz vrátí hned při vytvoření služby.
 
 Stav nasazení ověřte spuštěním příkazu [AZ APIM show](/cli/azure/apim#az-apim-show) :
 
@@ -67,7 +67,7 @@ NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR    PUBLIC IP    PRIVATE 
 myapim       myResourceGroup   Central US                                             Activating  Developer  1
 ```
 
-Po aktivaci je stav `Online` a instance služby má adresu brány a veřejnou IP adresu. V současné době tyto adresy nevystavují žádný obsah. Například:
+Po aktivaci je stav `Online` a instance služby má adresu brány a veřejnou IP adresu. V současné době tyto adresy nevystavují žádný obsah. Příklad:
 
 ```console
 NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR                       PUBLIC IP     PRIVATE IP    STATUS    TIER       UNITS

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 90d51d7eb5425530ebad0fc9ac66ba2c95776076
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564898"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708134"
 ---
 # <a name="azure-file-share-protocols"></a>Protokoly sdílení souborů Azure
 
@@ -55,7 +55,7 @@ Připojení sdílených složek Azure se systémem souborů NFS 4,1 je momentál
 NFS se soubory Azure je ideální pro:
 
 - Úlohy, které vyžadují sdílené složky kompatibilní se standardem POSIX, rozlišování velkých a malých písmen nebo oprávnění ke stylům UNIX (UID/GID).
-- Úlohy zaměřené na Linux, které nevyžadují přístup přes protokol SMB.
+- Úlohy zaměřené na Linux, které nevyžadují přístup k Windows.
 
 ### <a name="security"></a>Zabezpečení
 

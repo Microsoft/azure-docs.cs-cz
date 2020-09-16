@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449511"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707998"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se zajištěné propustnosti automatického škálování v Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Prostředky, které byly vytvořené pomocí modelu předchozí vrstvy, se autom
 
 Pokud jste například dříve vybrali vrstvu, která se škáluje mezi 400 až 4000 RU/s, databáze nebo kontejner se teď bude zobrazovat s maximálním počtem RU/s 4000 RU/s, který se škáluje mezi 400 a 4000 RU/s. Tady můžete změnit maximální RU/s na vlastní hodnotu, aby odpovídala vašim úlohám. 
 
-### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>Jak rychle bude horizontální horizontální navýšení a snížení kapacity na základě Špičk v provozu?
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>Jak rychle bude horizontální horizontální navýšení kapacity na základě špičky v provozu?
 Díky automatickému škálování systém škáluje propustnost (RU/s) `T` v rozmezí od do `0.1 * Tmax` rozsahu a, a to na `Tmax` základě příchozího provozu. Vzhledem k tomu, že škálování je automatické a okamžité, můžete v jakémkoli bodě v čase spotřebovávat až do zřízené `Tmax` bez prodlevy. 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>Návody určit, na kolik RU/s se má systém aktuálně škálovat?
@@ -135,7 +135,7 @@ Pokud celkový počet spotřebovaných RU/s překročí maximální RU/s databá
 > [!NOTE]
 > Azure Cosmos DB klientské sady SDK a nástroje pro import dat (Azure Data Factory, hromadně prováděč Library) se automaticky opakují na 429s, takže občasné 429sy jsou přesné. V případě trvalého vysokého počtu 429s může být potřeba zvýšit maximální RU/s nebo zkontrolovat strategii dělení pro [aktivní oddíl](#autoscale-rate-limiting).
 
-### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a>Je stále možné zobrazit 429s (omezení četnosti a přenosů), pokud je povoleno automatické škálování? 
+### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a> Je stále možné zobrazit 429s (omezení četnosti a přenosů), pokud je povoleno automatické škálování? 
 Ano. Chyby 429 se můžou zobrazovat ve dvou scénářích. V případě, že celkový počet spotřebovaných RU/s přesáhne maximum RU/s databáze nebo kontejneru, služba omezí požadavky odpovídajícím způsobem. 
 
 V případě, že je k dispozici aktivní oddíl, tj. hodnota klíče logického oddílu, která má neúměrně vyšší množství požadavků v porovnání s jinými hodnotami klíče oddílu, je možné, že základní fyzický oddíl překročí svůj rozpočet RU/s. Pokud se chcete vyhnout horkým oddílům, doporučujeme [zvolit vhodný klíč oddílu](partitioning-overview.md#choose-partitionkey), který zajistí rovnoměrnou distribuci úložiště a propustnosti. 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: bdd0530aa580f8f1a1cfdffb81d070827a714115
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8548e7449056ecb1f211d5dd026544bf7e1375cc
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686050"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708185"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Kurz: integrace Atlassian cloudu s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Atlassian Cloud s Azure Active Directo
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -163,7 +163,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![image](./media/atlassian-cloud-tutorial/default-attributes.png)
    
-   1. Mapování atributu pro tenanta Azure AD s licencí na Office 365
+   1. Mapování atributu pro tenanta Azure AD s licencí Microsoft 365
       
       a. Klikněte na deklaraci identity **jedinečného identifikátoru uživatele (ID názvu)** .
 
@@ -177,13 +177,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
       ![image](common/default-attributes.png)
       
-   1. Mapování atributu pro tenanta Azure AD bez licence na Office 365 
+   1. Mapování atributu pro tenanta Azure AD bez licence na Microsoft 365 
 
       a. Klikněte na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` deklaraci identity.
 
       ![image](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Zatímco Azure neplní atribut **User. mail** pro uživatele vytvořené v klientech Azure AD bez licencí Office 365 a ukládá e-mail pro tyto uživatele v atributu **userPrincipalName** . Atlassian Cloud očekává, že **NameIdentifier** (**jedinečný uživatelský identifikátor**) se namapuje na e-mail uživatele (**User. userPrincipalName**).  Upravte **zdrojový atribut**  a změňte jej na **User. userPrincipalName**. Uložte změny v deklaraci identity.
+      b. Zatímco Azure neplní atribut **User. mail** pro uživatele vytvořené v klientech Azure AD bez Microsoft 365 licencí a ukládá e-mail pro tyto uživatele v atributu **userPrincipalName** . Atlassian Cloud očekává, že **NameIdentifier** (**jedinečný uživatelský identifikátor**) se namapuje na e-mail uživatele (**User. userPrincipalName**).  Upravte **zdrojový atribut**  a změňte jej na **User. userPrincipalName**. Uložte změny v deklaraci identity.
 
       ![image](./media/atlassian-cloud-tutorial/set-email.png)
          
@@ -201,7 +201,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

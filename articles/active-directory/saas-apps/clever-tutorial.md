@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: ea66f044664082b547d1b012d7253cd6443e8610
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bb8eef01e2673c3f84b1678a93b4bd168f1faf63
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052762"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708117"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s chytřejší
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat chytřejší s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -134,7 +134,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     ![Okamžité přihlášení](./media/clever-tutorial/ic798984.png "Okamžité přihlášení")
 
     > [!NOTE]
-    > Než budete moct otestovat jednotné přihlašování, musíte se obrátit na [tým podpory klienta chytřejší](https://clever.com/about/contact/) , aby se v back-endu povolilo jednotné přihlašování pro Office 365.
+    > Než budete moct otestovat jednotné přihlašování, musíte se obrátit na [tým podpory klienta chytřejší](https://clever.com/about/contact/) , aby Microsoft 365 jednotné přihlašování v back-endu povolil.
 
 1. Na stránce **okamžité přihlášení** proveďte následující kroky:
  

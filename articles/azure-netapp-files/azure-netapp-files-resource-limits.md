@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 9/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 60d3c9df270561c94b8eb162595e4fe01713c0b5
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 870863cc0b1a98aa0efe671da4a8f6a5bb7f53aa
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536475"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708100"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -44,7 +44,8 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 |  Maximální velikost jednoho svazku     |    100 TiB    |    No    |
 |  Maximální velikost jednoho souboru     |    16 TiB    |    No    |    
 |  Maximální velikost metadat adresáře v jednom adresáři      |    320 MB    |    No    |    
-|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Yes    |    
+|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Yes    |   
+|  Počet svazků ochrany dat replikace mezi oblastmi (cílové svazky)     |    5    |    Yes    |     
 
 Další informace najdete v tématu [Nejčastější dotazy ke správě kapacity](azure-netapp-files-faqs.md#capacity-management-faqs).
 
@@ -83,9 +84,10 @@ Z Azure Portal rovina navigace:
         |  Prostředek  |    Nadřazené prostředky      |    Požadovaná nová omezení     |    Odůvodnění pro navýšení kvóty       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Účet |  *ID předplatného*   |  *Požadované nové maximální číslo **účtu***    |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
-        |  Fond    |  *ID předplatného, identifikátor URI účtu*  |  *Požadované nové maximální číslo **fondu***   |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
-        |  Svazek  |  *ID předplatného, identifikátor URI účtu, identifikátor URI fondu*   |  *Požadované nové maximální číslo **svazku***     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
-        |  Maxfiles  |  *ID předplatného, identifikátor URI účtu, identifikátor URI fondu, identifikátor URI svazku*   |  *Požadované nové maximální číslo **maxfiles***     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |    
+        |  Fond    |  *ID předplatného, identifikátor URI účtu NetApp*  |  *Požadované nové maximální číslo **fondu***   |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
+        |  Svazek  |  *ID předplatného, identifikátor URI účtu NetApp, identifikátor URI fondu kapacity*   |  *Požadované nové maximální číslo **svazku***     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
+        |  Maxfiles  |  *ID předplatného, identifikátor URI účtu NetApp, identifikátor URI fondu kapacit, identifikátor URI svazku*   |  *Požadované nové maximální číslo **maxfiles***     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |    
+        |  Svazky pro ochranu dat replikace mezi oblastmi  |  *ID předplatného, identifikátor URI cílového účtu NetApp, identifikátor URI cílového fondu kapacit, identifikátor URI zdrojového NetApp, identifikátor URI zdrojového zdroje, identifikátor URI zdrojového svazku*   |  *Vyžádal se nový maximální počet **svazků pro ochranu dat replikace mezi oblastmi (cílové svazky)** .*     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |    
 
     2. Zadejte odpovídající způsob podpory a zadejte informace o kontraktu.
 
