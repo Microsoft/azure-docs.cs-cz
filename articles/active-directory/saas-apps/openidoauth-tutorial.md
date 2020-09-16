@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543920"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705618"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurace aplikace OpenID/OAuth z Galerie aplikací Azure AD
 
@@ -76,13 +76,13 @@ Ve výchozím nastavení Azure AD propaguje víceklientské aplikace. Snadno se 
 ## <a name="consent-framework"></a>Rámec pro udělení souhlasu
 
 Pomocí rozhraní pro vyjádření souhlasu Azure AD můžete vyvíjet víceklientské webové a nativní klientské aplikace. Tyto aplikace umožňují přihlášení pomocí uživatelských účtů z klienta služby Azure AD, které se liší od toho, kde je aplikace zaregistrovaná. Můžou taky potřebovat přístup k webovým rozhraním API, jako jsou:
-- Rozhraní Microsoft Graph API pro přístup k Azure AD, Intune a službám v Office 365.
+- Rozhraní Microsoft Graph API pro přístup k Azure AD, Intune a službám v Microsoft 365.
 - Další rozhraní API služeb Microsoftu.
 - Vaše vlastní webová rozhraní API.
 
 Rozhraní je založeno na uživateli nebo správci, který poskytuje souhlas s aplikací, která je popsána v adresáři. Registrace může zahrnovat přístup k datům adresáře. Po přijetí souhlasu může klientská aplikace zavolat rozhraní API Microsoft Graph jménem uživatele a podle potřeby informace použít.
 
-[Rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/) poskytuje přístup k datům v sadě Office 365, například:
+[Rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/) poskytuje přístup k datům v Microsoft 365, třeba:
 
 - Kalendáře a zprávy ze systému Exchange.
 - Weby a seznamy ze služby SharePoint.
@@ -121,7 +121,7 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací a u
 
 3. Pokud uživatel ještě není ověřený, koncový bod Azure AD/Authorize vyzve k přihlášení.
 
-    ![Authentication](./media/openidoauth-tutorial/authentication.png)
+    ![Snímek obrazovky s výzvou k přihlášení pro účet](./media/openidoauth-tutorial/authentication.png)
 
 4. Až se uživatel přihlásí, Azure AD určí, jestli se uživatel musí zobrazit na stránce souhlasu. Toto rozhodnutí je založené na tom, jestli uživatel (nebo správce organizace) už udělil souhlas s aplikací.
 

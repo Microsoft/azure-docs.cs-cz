@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554649"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705397"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Přehled služby Azure Multi-Factor Authentication pro vaši organizaci
 
@@ -34,10 +34,10 @@ Zákazníci, kteří využívají Bezplatné výhody Azure AD, můžou použít 
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Business, E3 nebo E5
 
-Pro zákazníky se sadou Office 365 jsou k dispozici dvě možnosti:
+Pro zákazníky, kteří používají Microsoft 365, jsou k dispozici dvě možnosti:
 
 * Pro všechny přihlašovací události je Azure Multi-Factor Authentication buď povolený, nebo zakázaný pro všechny uživatele. Pro podmnožinu uživatelů není možné povolit ověřování pomocí služby Multi-Factor Authentication nebo jenom v některých případech. Správa je prostřednictvím portálu Office 365. 
-* Pro lepší uživatelské prostředí upgradujte na Azure AD Premium P1 nebo P2 a použijte podmíněný přístup. Další informace najdete v tématu zabezpečení prostředků Office 365 pomocí služby Multi-Factor Authentication.
+* Pro lepší uživatelské prostředí upgradujte na Azure AD Premium P1 nebo P2 a použijte podmíněný přístup. Další informace najdete v tématu zabezpečení Microsoft 365ch prostředků pomocí služby Multi-Factor Authentication.
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 
@@ -56,9 +56,9 @@ Poskytuje nejsilnější umístění zabezpečení a vylepšené uživatelské p
 | Metoda | Výchozí nastavení zabezpečení | Všechny ostatní metody |
 | --- | --- | --- |
 | Oznámení prostřednictvím mobilní aplikace | X | X |
-| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | × |
-| Textová zpráva na telefon |   | × |
-| Zavolat na telefon |   | × |
+| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | X |
+| Textová zpráva na telefon |   | X |
+| Zavolat na telefon |   | X |
 
 ## <a name="next-steps"></a>Další kroky
 

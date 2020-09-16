@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c265f404b2e2e2796baf0febb93997ef099f0844
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2a848cb77336fc89172d55a6204d66b9e5be5976
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564825"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705227"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
 
@@ -27,7 +27,7 @@ Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v 
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Vytvořte [účet úložiště](storage-how-to-create-premium-fileshare.md).
 
@@ -163,3 +163,5 @@ az storage share-rm create \
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste vytvořili sdílenou složku NFS, budete ji muset připojit na svém klientském počítači se systémem Linux. Podrobnosti najdete v tématu [Postup připojení sdílené složky systému souborů NFS](storage-files-how-to-mount-nfs-shares.md).
+
+Pokud se setkáte s problémy, přečtěte si téma [řešení potíží s sdílenými složkami souborů Azure NFS](storage-troubleshooting-files-nfs.md)
