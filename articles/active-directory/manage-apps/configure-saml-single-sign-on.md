@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 500bfff4afaebc345d344566b02fe945edb05795
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: afa927f8faa1ac2bd9cd910b3e78b690c16259e5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562600"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605137"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Konfigurace jednotného přihlašování pomocí SAML
 
@@ -48,7 +48,7 @@ Měli byste získat hodnoty od dodavatele aplikace. Můžete ručně zadat hodno
 |:--|:--|:--|:--|
 | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. Zadejte adresu URL, která používá následující vzor: ' https:// <subdomain> . contoso.com ' *tuto hodnotu můžete najít jako element **vystavitele** v **AuthnRequest** (žádost SAML) odeslanou aplikací.* |
 | **Adresa URL odpovědi** | Vyžadováno | Vyžadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
-| **Přihlašovací adresa URL** | Vyžadováno | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Office 365 nebo Azure AD moje aplikace. Pokud je prázdné, Azure AD provede IdP přihlášení iniciované, když uživatel spustí aplikaci z Office 365, Azure AD moje aplikace nebo adresy URL jednotného přihlašování Azure AD.|
+| **Přihlašovací adresa URL** | Vyžadováno | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Microsoft 365 nebo Azure AD moje aplikace. Pokud je prázdné, Azure AD provede IdP přihlášení iniciované, když uživatel spustí aplikaci z Microsoft 365, služby Azure AD moje aplikace nebo adresy URL jednotného přihlašování Azure AD.|
 | **Stav přenosu** | Volitelné | Volitelné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je hodnota platnou adresou URL pro aplikaci. Některé aplikace ale používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
 | **Odhlašovací adresa URL** | Volitelné | Volitelné | Slouží k odeslání odpovědí na odhlášení SAML zpět do aplikace.
 

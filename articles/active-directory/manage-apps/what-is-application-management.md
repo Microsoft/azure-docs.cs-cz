@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299877"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604117"
 ---
 # <a name="what-is-application-management"></a>Co je správa aplikací?
 
@@ -49,7 +49,7 @@ Organizace mají často stovky aplikací, které uživatelé potřebují k výko
 
 ## <a name="how-does-azure-ad-work-with-applications"></a>Jak Azure AD pracuje s aplikacemi?
 
-Azure AD zjednodušuje způsob správy aplikací tím, že poskytuje jeden systém identit pro cloudové a místní aplikace. Do Azure AD můžete přidat své aplikace SaaS (software jako služba), místní aplikace a obchodní aplikace (LOB). Pak se uživatelé přihlásí jednou k bezpečnému a bezproblémovému přístupu k těmto aplikacím společně se sadou Office 365 a dalšími podnikovými aplikacemi od Microsoftu. [Automatizaci zřizování uživatelů](../app-provisioning/user-provisioning.md)můžete snížit náklady na správu. K zajištění zabezpečeného přístupu k aplikacím můžete použít taky službu Multi-Factor Authentication a zásady podmíněného přístupu.
+Azure AD zjednodušuje způsob správy aplikací tím, že poskytuje jeden systém identit pro cloudové a místní aplikace. Do Azure AD můžete přidat své aplikace SaaS (software jako služba), místní aplikace a obchodní aplikace (LOB). Pak se uživatelé přihlásí jednou k bezpečnému a bezproblémovému přístupu k těmto aplikacím společně s Microsoft 365 a dalšími podnikovými aplikacemi od Microsoftu. [Automatizaci zřizování uživatelů](../app-provisioning/user-provisioning.md)můžete snížit náklady na správu. K zajištění zabezpečeného přístupu k aplikacím můžete použít taky službu Multi-Factor Authentication a zásady podmíněného přístupu.
 
 ![Diagram, který zobrazuje aplikace federované přes Azure AD](media/what-is-application-management/app-management-overview.png)
 
@@ -59,7 +59,7 @@ Existují čtyři hlavní typy aplikací, které můžete přidat do **podnikov�
 
 - **Aplikace Galerie Azure AD** – Azure AD obsahuje galerii obsahující tisíce aplikací, které jsou předem integrované pro jednotné přihlašování pomocí Azure AD. Galerie pravděpodobně obsahuje i některé aplikace, které využívá vaše organizace. [Přečtěte si, jak naplánovat integraci aplikací](plan-an-application-integration.md), nebo Získejte podrobné kroky integrace pro jednotlivé aplikace v [kurzech k aplikacím SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/).
 
-- **Místní aplikace s proxy aplikací** – s Azure proxy aplikací služby AD můžete integrovat místní webové aplikace se službou Azure AD, aby podporovaly jednotné přihlašování. Pak koncoví uživatelé budou mít přístup k místním webovým aplikacím stejným způsobem jako přístup k Office 365 a dalším aplikacím SaaS, najdete je v článku [o poskytování vzdáleného přístupu k místním aplikacím prostřednictvím proxy aplikací služby Azure AD](application-proxy.md).
+- **Místní aplikace s proxy aplikací** – s Azure proxy aplikací služby AD můžete integrovat místní webové aplikace se službou Azure AD, aby podporovaly jednotné přihlašování. Pak koncoví uživatelé budou mít přístup k místním webovým aplikacím stejným způsobem jako přístup k Microsoft 365 a dalším aplikacím SaaS, najdete je v tématu [poskytnutí vzdáleného přístupu k místním aplikacím prostřednictvím proxy aplikací služby Azure AD](application-proxy.md).
 
 - **Vlastní aplikace vyvíjené** – při vytváření vlastních obchodních aplikací je můžete integrovat se službou Azure AD a podporovat jednotné přihlašování. Díky registraci aplikace ve službě Azure AD máte kontrolu nad zásadami ověřování pro aplikaci. Další informace najdete v tématu [doprovodné materiály pro vývojáře](developer-guidance-for-integrating-applications.md).
 
@@ -77,7 +77,7 @@ Přihlašování služby Azure AD jednotného přihlašování (SSO) s [podmín�
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Vyšší produktivita pomocí jednotného přihlašování
 
-Povolení jednotného přihlašování mezi aplikacemi a Office 365 poskytuje stávajícím uživatelům nadstandardní prostředí pro přihlašování, protože snižuje počet výzev k přihlášení nebo je úplně eliminuje. Prostředí je tak pro uživatele ucelenější, neruší ho zobrazováním mnoha výzev k přihlášení a uživatel nemusí spravovat mnoho hesel. Obchodní skupiny mohou spravovat a schvalovat přístup prostřednictvím samoobslužného a dynamického členství. Když správu přístupu k aplikacím povolíte správným lidem, zvýšíte zabezpečení systému identit.
+Povolení jednotného přihlašování (SSO) napříč aplikacemi a Microsoft 365 poskytuje uživatelům nadřazené přihlašování pomocí omezení nebo eliminace výzev k přihlášení. Prostředí je tak pro uživatele ucelenější, neruší ho zobrazováním mnoha výzev k přihlášení a uživatel nemusí spravovat mnoho hesel. Obchodní skupiny mohou spravovat a schvalovat přístup prostřednictvím samoobslužného a dynamického členství. Když správu přístupu k aplikacím povolíte správným lidem, zvýšíte zabezpečení systému identit.
 
 Jednotné přihlašování zvyšuje zabezpečení. *Bez jednotného přihlašování* musí správci vytvářet a aktualizovat uživatelské účty pro každou jednotlivou aplikaci, což zabere nějaký čas. Uživatelé navíc musí používat pro přístup ke svým aplikacím různé přihlašovací údaje. V důsledku toho uživatelé tíhnou k tomu, aby si zapisovali hesla nebo používali jiná řešení pro správu hesel, což s sebou nese riziko ohrožení zabezpečení dat. [Přečtěte si další informace o jednotném přihlašování](what-is-single-sign-on.md).
 

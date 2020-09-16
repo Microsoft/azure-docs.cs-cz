@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "75450843"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606153"
 ---
 1. Výběrem **připojit weby sítě VPN** otevřete stránku **připojit weby** .
 
-    ![síti](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "připojit")
+    ![Snímek obrazovky se zobrazí podokno připojené weby pro virtuální centrum, které je připravené na předsdílený klíč a přidružená nastavení.](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "připojit")
 
    Vyplňte následující pole:
 
@@ -25,10 +25,10 @@ ms.locfileid: "75450843"
    * Vyberte nastavení protokolu a protokolu IPsec. Podívejte se na [výchozí/vlastní podrobnosti IPSec] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
    * Vyberte vhodnou možnost pro **rozšířit výchozí trasu**. Možnost **Povolit** umožňuje virtuálnímu rozbočovači rozšířit naučenou výchozí trasu k tomuto připojení. Tento příznak umožňuje rozšíření výchozí trasy na připojení pouze v případě, že je výchozí trasa již vyučena virtuálním centrem sítě WAN v důsledku nasazení brány firewall v centru nebo v případě, že je povoleno vynucené tunelování na jiném připojeném serveru. Výchozí trasa nepochází do virtuálního centra WAN.
 
-2. Vyberte **Připojit**.
+2. Vyberte **Connect** (Připojit).
 3. Během několika minut se v lokalitě zobrazí stav připojení a připojení.
 
-   ![stav](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![Snímek obrazovky ukazuje připojení lokality V nasazení lokality a stav připojení.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **Stav připojení:** Toto je stav prostředku Azure pro připojení, které spojuje lokalitu VPN s bránou sítě VPN v centru Azure. Po úspěšné operaci této roviny ovládacího prvku budou brány Azure VPN a místní zařízení VPN pokračovat v navázání připojení.
 

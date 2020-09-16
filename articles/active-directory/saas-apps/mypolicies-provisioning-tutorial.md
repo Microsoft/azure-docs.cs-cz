@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ea9a0e52ce424459b6c402eb136d06dd370bab7d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe85dfb39a9787376221cb9beeea11bec35293f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548034"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604457"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Kurz: Konfigurace myPolicies pro Automatické zřizování uživatelů
 
@@ -101,7 +101,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Automatická a karta zřizování](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** zadejte `https://<myPoliciesCustomDomain>.mypolicies.com/scim` **adresu URL tenanta** , kde `<myPoliciesCustomDomain>` se nachází vaše myPolicies vlastní doména. Z adresy URL můžete načíst svoji doménu zákazníka myPolicies.
 Příklad: `<demo0-qa>` . mypolicies.com.
@@ -122,7 +122,18 @@ Příklad: `<demo0-qa>` . mypolicies.com.
 
 10. Zkontrolujte atributy uživatele synchronizované z Azure AD do myPolicies v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v myPolicies pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Mapování uživatelů myPolicies](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |Atribut|Typ|
+   |---|---|
+   |userName|Řetězec|
+   |aktivně|Logická hodnota|
+   |e-maily [typ EQ "Work"]. Value|Řetězec|
+   |název. křestní jméno|Řetězec|
+   |název. rodina|Řetězec|
+   |název. formátovaný|Řetězec|
+   |externalId|Řetězec|
+   |adresy [typ EQ "Work"]. Country|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+
 
 11. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -146,6 +157,10 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * myPolicies vždy vyžaduje **uživatelské jméno**, **e-mail** a **externalId**.
 * myPolicies nepodporuje pevné odstranění atributů uživatele.
+
+## <a name="change-log"></a>Protokol změn
+
+* 09/15/2020 – pro uživatele byla přidána podpora pro atribut Country.
 
 ## <a name="additional-resources"></a>Další zdroje
 

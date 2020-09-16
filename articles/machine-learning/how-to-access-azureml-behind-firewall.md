@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660012"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604406"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
@@ -33,6 +33,10 @@ V bráně firewall vytvořte _pravidlo aplikace_ , které umožní provoz na zá
 >
 > Další informace o konfiguraci Azure Firewall najdete v tématu [nasazení a konfigurace Azure firewall](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
 
+## <a name="routes"></a>Trasy
+
+Při konfiguraci odchozí trasy pro podsíť, která obsahuje prostředky Azure Machine Learning, použijte pokyny v části [vynucené tunelování](how-to-secure-training-vnet.md#forced-tunneling) pro zabezpečení školicího prostředí.
+
 ## <a name="microsoft-hosts"></a>Hostitelé Microsoftu
 
 Pokud není správně nakonfigurovaný, může Brána firewall způsobovat problémy s vaším pracovním prostorem. K dispozici je celá řada názvů hostitelů, které používá Azure Machine Learning pracovní prostor.
@@ -41,6 +45,8 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 
 | **Název hostitele** | **Účel** |
 | ---- | ---- |
+| **login.microsoftonline.com** | Authentication |
+| **management.azure.com** | Slouží k získání informací o pracovním prostoru. |
 | **\*. batchai.core.windows.net** | Školicí clustery |
 | **ml.azure.com** | Azure Machine Learning Studio |
 | **default.exp-tas.com** | Používá se v Azure Machine Learning Studiu |
@@ -59,13 +65,16 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | **\*. notebooks.azure.net** | Vyžaduje poznámkové bloky v Azure Machine Learning Studiu. |
 | **graph.windows.net** | Vyžadováno pro poznámkové bloky |
 
+> [!TIP]
+> Pokud plánujete použití federované identity, postupujte podle [osvědčených postupů pro zabezpečení Active Directory Federation Services (AD FS)](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) článku.
+
 ## <a name="python-hosts"></a>Hostitelé Pythonu
 
 Hostitelé v této části se používají k instalaci balíčků Pythonu. Jsou požadovány během vývoje, školení a nasazení. 
 
 | **Název hostitele** | **Účel** |
 | ---- | ---- |
-| **anaconda.com** | Používá se k instalaci výchozích balíčků. |
+| **anaconda.com**</br>**\*. anaconda.com** | Používá se k instalaci výchozích balíčků. |
 | **\*. anaconda.org** | Slouží k získání dat úložiště. |
 | **pypi.org** | Slouží k vypsání závislostí z výchozího indexu, pokud existují, a index není přepsán uživatelským nastavením. Pokud je index přepsán, je nutné také povolte ** \* . pythonhosted.org**. |
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: da6554ae3b7df9962e1f57ac652567c282227d64
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bfc285f68e8a44b6b09fc63d9b2775a047955a37
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661663"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604661"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,6 +60,39 @@ Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který 
 
     - Pokud chcete nasadit modely do uzlů GPU nebo FPGAch uzlů (nebo jakékoli konkrétní SKU), musíte vytvořit cluster s konkrétní SKU. Neexistuje žádná podpora pro vytváření fondu sekundárních uzlů v existujícím clusteru a nasazování modelů do fondu sekundárních uzlů.
 
+## <a name="understand-the-deployment-processes"></a>Pochopení procesů nasazení
+
+Slovo "Deployment" se používá v Kubernetes i Azure Machine Learning. Nasazení má v těchto dvou kontextech různé významy. V Kubernetes `Deployment` je entita konkrétní entitou, která je zadána pomocí deklarativního souboru YAML. Kubernetes `Deployment` má definovaný životní cyklus a konkrétní vztahy k jiným entitám Kubernetes, jako jsou `Pods` a `ReplicaSets` . Informace o Kubernetes najdete v dokumentaci k dokumentům a videím na adrese [Kubernetes?](https://aka.ms/k8slearning).
+
+V Azure Machine Learning se "nasazení" používá v obecnější smyslu, jak zpřístupnit a vyčistit prostředky projektu. Postup, který Azure Machine Learning považuje za součást nasazení, jsou tyto:
+
+1. Zipování soubory ve složce projektu, které budou ignorovány, které jsou zadány v souboru. amlignore nebo. gitignore
+1. Vertikální navýšení kapacity výpočetního clusteru (týká se Kubernetes)
+1. Sestavování nebo stahování souboru Dockerfile do výpočetního uzlu (týká se Kubernetes)
+    1. Systém vypočítá hodnotu hash: 
+        - Základní obrázek 
+        - Vlastní kroky Docker (viz [nasazení modelu pomocí vlastního Docker Base image](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Definice conda YAML (viz téma [vytvoření & použití softwarových prostředí v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Systém používá tuto hodnotu hash jako klíč při vyhledávání Azure Container Registry pracovního prostoru (ACR).
+    1. Pokud se nenajde, vyhledá shodu v globálním ACR
+    1. Pokud není nalezen, systém vytvoří novou bitovou kopii (která bude uložena do mezipaměti a vložena do pracovního prostoru ACR).
+1. Stažení souboru projektu zip do dočasného úložiště na výpočetním uzlu
+1. Rozzipovává soubor projektu
+1. Prováděný výpočetní uzel `python <entry script> <arguments>`
+1. Ukládání protokolů, souborů modelů a dalších souborů zapsaných do `./outputs` účtu úložiště přidruženého k pracovnímu prostoru
+1. Horizontální snížení kapacity, včetně odebrání dočasného úložiště (týká se Kubernetes)
+
+### <a name="azure-ml-router"></a>Směrovač Azure ML
+
+Front-end komponenta (AzureML-Fe), která směruje příchozí žádosti o odvození na nasazené služby, se automaticky škálují podle potřeby. Škálování služby AzureML-FE vychází z účelu a velikosti clusteru AKS (počet uzlů). Účel clusteru a uzly jsou nakonfigurovány, když [vytváříte nebo připojujete cluster AKS](how-to-create-attach-kubernetes.md). Existuje jedna služba AzureML-Fe na jeden cluster, která může běžet na více luskech.
+
+> [!IMPORTANT]
+> Při použití clusteru nakonfigurovaného jako __vývojového testování__je samoobslužné škálování **zakázané**.
+
+AzureML-FE škáluje jak nahoru (vertikálně) tak, aby používal více jader, a výstupní (horizontálně) pro použití více lusků. Při rozhodování o horizontálním navýšení kapacity se použije čas potřebný k směrování příchozích požadavků na odvození. Pokud tento čas překročí prahovou hodnotu, dojde k horizontálnímu navýšení kapacity. Pokud doba směrování příchozích požadavků pokračuje v překročení prahové hodnoty, dojde k horizontálnímu navýšení kapacity.
+
+Při horizontálním navýšení kapacity a při jejich zmenšování se používá využití procesoru. Pokud je dosaženo prahové hodnoty využití procesoru, bude nejprve horizontální navýšení kapacity na front-endu. Pokud využití procesoru klesne do prahové hodnoty škálování, dojde k operaci škálování. Horizontální navýšení kapacity a navýšení kapacity proběhne, jenom když je k dispozici dostatek prostředků clusteru.
+
 ## <a name="deploy-to-aks"></a>Nasazení do AKS
 
 Pokud chcete nasadit model do služby Azure Kubernetes, vytvořte __konfiguraci nasazení__ , která popisuje potřebné výpočetní prostředky. Například počet jader a paměti. Potřebujete také __konfiguraci odvození__, která popisuje prostředí potřebné pro hostování modelu a webové služby. Další informace o vytvoření konfigurace odvození najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
@@ -67,7 +100,9 @@ Pokud chcete nasadit model do služby Azure Kubernetes, vytvořte __konfiguraci 
 > [!NOTE]
 > Počet modelů, které se mají nasadit, je omezený na 1 000 modelů na jedno nasazení (na kontejner).
 
-### <a name="using-the-sdk"></a>Použití sady SDK
+<a id="using-the-cli"></a>
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
@@ -91,7 +126,7 @@ Další informace o třídách, metodách a parametrech použitých v tomto př�
 * [Model. deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 * [WebService. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>Použití rozhraní příkazového řádku
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `myaks` názvem výpočetního cíle AKS. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu. Nahraďte `myservice` názvem, který tuto službu poskytne:
 
@@ -103,36 +138,57 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
-### <a name="using-vs-code"></a>Použití VS Code
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Informace o použití VS Code najdete v tématu [nasazení do AKS prostřednictvím rozšíření vs Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model).
 
 > [!IMPORTANT]
 > Nasazení prostřednictvím VS Code vyžaduje, aby byl cluster AKS vytvořen nebo připojen k vašemu pracovnímu prostoru předem.
 
-### <a name="understand-the-deployment-processes"></a>Pochopení procesů nasazení
+---
 
-Slovo "Deployment" se používá v Kubernetes i Azure Machine Learning. Nasazení má v těchto dvou kontextech různé významy. V Kubernetes `Deployment` je entita konkrétní entitou, která je zadána pomocí deklarativního souboru YAML. Kubernetes `Deployment` má definovaný životní cyklus a konkrétní vztahy k jiným entitám Kubernetes, jako jsou `Pods` a `ReplicaSets` . Informace o Kubernetes najdete v dokumentaci k dokumentům a videím na adrese [Kubernetes?](https://aka.ms/k8slearning).
+### <a name="autoscaling"></a>Automatické škálování
 
-V Azure Machine Learning se "nasazení" používá v obecnější smyslu, jak zpřístupnit a vyčistit prostředky projektu. Postup, který Azure Machine Learning považuje za součást nasazení, jsou tyto:
+Komponenta, která zpracovává automatické škálování pro nasazení modelů Azure ML, je AzureML-FE, což je směrovač inteligentních žádostí. Vzhledem k tomu, že všechny požadavky na odvození procházejí, má data potřebná k automatickému škálování nasazených modelů.
 
-1. Zipování soubory ve složce projektu, které budou ignorovány, které jsou zadány v souboru. amlignore nebo. gitignore
-1. Vertikální navýšení kapacity výpočetního clusteru (týká se Kubernetes)
-1. Sestavování nebo stahování souboru Dockerfile do výpočetního uzlu (týká se Kubernetes)
-    1. Systém vypočítá hodnotu hash: 
-        - Základní obrázek 
-        - Vlastní kroky Docker (viz [nasazení modelu pomocí vlastního Docker Base image](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
-        - Definice conda YAML (viz téma [vytvoření & použití softwarových prostředí v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
-    1. Systém používá tuto hodnotu hash jako klíč při vyhledávání Azure Container Registry pracovního prostoru (ACR).
-    1. Pokud se nenajde, vyhledá shodu v globálním ACR
-    1. Pokud není nalezen, systém vytvoří novou bitovou kopii (která bude uložena do mezipaměti a bude registrována v pracovním prostoru ACR).
-1. Stažení souboru projektu zip do dočasného úložiště na výpočetním uzlu
-1. Rozzipovává soubor projektu
-1. Prováděný výpočetní uzel `python <entry script> <arguments>`
-1. Ukládání protokolů, souborů modelů a dalších souborů zapsaných do `./outputs` účtu úložiště přidruženého k pracovnímu prostoru
-1. Horizontální snížení kapacity, včetně odebrání dočasného úložiště (týká se Kubernetes)
+> [!IMPORTANT]
+> * **Pro nasazení modelů nepovolujte Kubernetes horizontálně pod autoscaleer (hPa)**. To by vedlo k tomu, že se dvě součásti automatického škálování vzájemně konkurují. Služba AzureML-FE je navržená tak, aby automaticky škáloval modely nasazené službou Azure ML, kde HPA by musela odhadnout nebo přibližná využití modelu z obecné metriky, jako je využití procesoru nebo konfigurace vlastní metriky.
+> 
+> * **AzureML-FE neškáluje počet uzlů v clusteru AKS**, protože to může vést k neočekávaným nákladům. Místo toho **škáluje počet replik modelu** v rámci hranic fyzického clusteru. Pokud potřebujete škálovat počet uzlů v rámci clusteru, můžete ručně škálovat cluster nebo [nakonfigurovat modul automatického škálování clusteru AKS](/azure/aks/cluster-autoscaler).
 
-Při použití AKS se horizontální navýšení a snížení kapacity výpočetních prostředků řídí pomocí Kubernetes, a to pomocí souboru Dockerfile sestaveného nebo nalezeného, jak je popsáno výše. 
+Automatické škálování se dá řídit nastavením `autoscale_target_utilization` , `autoscale_min_replicas` a `autoscale_max_replicas` pro webovou službu AKS. Následující příklad ukazuje, jak povolit automatické škálování:
+
+```python
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+                                                autoscale_target_utilization=30,
+                                                autoscale_min_replicas=1,
+                                                autoscale_max_replicas=4)
+```
+
+Rozhodnutí o horizontálním navýšení/snížení kapacity vycházejí z využití aktuálních replik kontejnerů. Počet replik, které jsou zaneprázdněné (zpracování požadavku) dělený celkovým počtem aktuálních replik, je aktuální využití. Pokud tento počet překročí `autoscale_target_utilization` , vytvoří se další repliky. Pokud je nižší, jsou repliky sníženy. Ve výchozím nastavení je cílové využití 70%.
+
+Rozhodnutí o přidání replik jsou Eager a rychlá (kolem 1 sekundy). Rozhodnutí o odebrání replik jsou konzervativní (přibližně 1 minutu).
+
+Požadované repliky můžete vypočítat pomocí následujícího kódu:
+
+```python
+from math import ceil
+# target requests per second
+targetRps = 20
+# time to process the request (in seconds)
+reqTime = 10
+# Maximum requests per container
+maxReqPerContainer = 1
+# target_utilization. 70% in this example
+targetUtilization = .7
+
+concurrentRequests = targetRps * reqTime / targetUtilization
+
+# Number of container replicas
+replicas = ceil(concurrentRequests / maxReqPerContainer)
+```
+
+Další informace o nastaveních `autoscale_target_utilization` , `autoscale_max_replicas` , a `autoscale_min_replicas` najdete v referenčních informacích k modulu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Nasazení modelů do AKS pomocí řízeného zavedení (Preview)
 
@@ -223,7 +279,6 @@ endpoint.wait_for_deployment(true)
 endpoint.delete_version(version_name="versionb")
 
 ```
-
 
 ## <a name="web-service-authentication"></a>Ověřování webové služby
 

@@ -4,6 +4,8 @@
   href: debug-rendering.md
 - name: Přepsání hierarchického stavu
   href: override-hierarchical-state.md
+- name: Camera
+  href: camera.md
 - name: Prostor scény
   href: stage-space.md
 - name: Reprojekce pozdní fáze

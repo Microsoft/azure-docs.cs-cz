@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ddd6e08d9be36035b2db02ec5feb3ae4e957ec49
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611803"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604440"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,13 +33,13 @@ Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních 
 Před dokončením kroků v tomto článku byste už měli mít:
 
 - Předplatné Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
-- [Dva nebo více středozápadní USAch virtuálních počítačů s Windows Azure](failover-cluster-instance-prepare-vm.md) ve stejné skupině [dostupnosti](../../../virtual-machines/linux/tutorial-availability-sets.md) a [skupině umístění pro Proximity](../../../virtual-machines/windows/co-location.md#proximity-placement-groups), se skupinou dostupnosti vytvořenou s doménou selhání a aktualizační doménou nastavenou na hodnotu **1**. 
+- [Dva nebo více virtuálních počítačů se systémem Windows Azure](failover-cluster-instance-prepare-vm.md). Podporují se skupiny [dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md) a [skupiny umístění pro Proximity](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs). Pokud použijete PPG, musí všechny uzly existovat ve stejné skupině.
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
 - Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
 
 
 ## <a name="add-azure-shared-disk"></a>Přidat sdílený disk Azure
-Nasaďte spravovaný SSD úrovně Premium disk s povolenou funkcí sdíleného disku. Nastavte `maxShares` na **2** , aby bylo možné sdílet disk v obou FCI uzlech. 
+Nasaďte spravovaný SSD úrovně Premium disk s povolenou funkcí sdíleného disku. Nastavte, `maxShares` aby se **zarovnal počet uzlů clusteru** , aby bylo možné sdílet disk ve všech FCI uzlech. 
 
 Pomocí následujícího postupu přidejte sdílený disk Azure: 
 
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurace možností připojení 
 
-Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, nakonfigurujte možnost připojení, která je vhodná pro vaše prostředí. Můžete vytvořit [Nástroj pro vyrovnávání zatížení Azure](hadr-vnn-azure-load-balancer-configure.md) , nebo pokud používáte SQL Server 2019 a Windows Server 2016 (nebo novější), můžete místo toho zobrazit náhled funkce [názvu distribuované sítě](hadr-distributed-network-name-dnn-configure.md) . 
+Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, nakonfigurujte možnost připojení, která je vhodná pro vaše prostředí. Můžete vytvořit [Nástroj pro vyrovnávání zatížení Azure](hadr-vnn-azure-load-balancer-configure.md) , nebo pokud používáte SQL Server 2019 CU2 + a Windows Server 2016 (nebo novější), můžete místo toho zobrazit náhled funkce [názvu distribuované sítě](hadr-distributed-network-name-dnn-configure.md) . 
 
 ## <a name="limitations"></a>Omezení
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763461"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605154"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi
 
@@ -32,7 +32,7 @@ Chcete-li určit, které případy můžou uživatelé udělit souhlas s aplikac
 
 * **Zakázat souhlas uživatele** – uživatelé nemůžou udělovat oprávnění aplikacím. Uživatelé se mohou nadále přihlašovat k aplikacím, které dříve poslaly nebo které jim byly odsouhlaseny jménem správců, ale nebudou jim dovoleni souhlasit s novými oprávněními ani s novými aplikacemi. Pouze uživatelé, kterým byla udělena role adresáře, která zahrnuje oprávnění udělit souhlas, budou moci vyjádřit souhlas s novými oprávněními nebo novými aplikacemi.
 
-* **Uživatelé můžou udělit souhlas s aplikacemi od ověřených vydavatelů, ale jenom pro oprávnění, která jste vybrali (Preview)** – všichni uživatelé můžou souhlasit jenom s aplikacemi, které publikoval [ověřený vydavatel](../develop/publisher-verification-overview.md) a aplikace, které jsou zaregistrované ve vašem tenantovi. Uživatelé můžou odsouhlasit jenom oprávnění, která jste klasifikováni jako "malý dopad".
+* **Uživatelé můžou udělit souhlas s aplikacemi od ověřených vydavatelů, ale jenom pro oprávnění, která jste vybrali (Preview)** – všichni uživatelé můžou souhlasit jenom s aplikacemi, které publikoval [ověřený vydavatel](../develop/publisher-verification-overview.md) a aplikace, které jsou zaregistrované ve vašem tenantovi. Uživatelé můžou odsouhlasit jenom oprávnění, která jste klasifikováni jako "malý dopad", označovanou taky jako "nízké riziko". Co se považuje za nízké riziko pro jednu organizaci, jako je například aplikace, která zobrazuje e-mailovou adresu uživatelů, může být považována za vysoké riziko pro jinou organizaci. Z tohoto důvodu jsou oprávnění "nízká rizika" nastavena správcem pro tenanta.
 
   Nezapomeňte [klasifikovat oprávnění](#configure-permission-classifications-preview) a vybrat, která oprávnění uživatelé můžou udělit souhlas.
 
@@ -56,7 +56,7 @@ Konfigurace nastavení souhlasu uživatele prostřednictvím Azure Portal:
 
 ### <a name="configure-user-consent-settings-using-powershell"></a>Konfigurace nastavení souhlasu uživatele pomocí prostředí PowerShell
 
-Můžete použít nejnovější modul Azure AD PowerShell Preview [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)a vybrat, které zásady souhlasu určují souhlas uživatele pro aplikace.
+Můžete použít nejnovější modul Azure AD PowerShell Preview [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)a vybrat, které zásady souhlasu určují souhlas uživatele pro aplikace.
 
 * **Zakázat souhlas s uživatelem** – Chcete-li zakázat souhlas s uživatelem, nastavte zásady souhlasu, které budou řídit souhlas uživatele jako prázdný:
 
@@ -109,7 +109,7 @@ V tomto příkladu jsme klasifikováni s minimální sadou oprávnění vyžadov
 
 ### <a name="classify-permissions-using-powershell"></a>Klasifikace oprávnění pomocí PowerShellu
 
-K klasifikaci oprávnění můžete použít nejnovější modul Azure AD PowerShell Preview, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview). Klasifikace oprávnění jsou nakonfigurovány na objektu **ServicePrincipal** rozhraní API, který publikuje oprávnění.
+K klasifikaci oprávnění můžete použít nejnovější modul Azure AD PowerShell Preview, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true). Klasifikace oprávnění jsou nakonfigurovány na objektu **ServicePrincipal** rozhraní API, který publikuje oprávnění.
 
 #### <a name="to-read-the-current-permission-classifications-for-an-api"></a>Čtení aktuálních klasifikací oprávnění pro rozhraní API:
 
@@ -196,9 +196,9 @@ V tomto příkladu můžou všichni vlastníci skupiny udělit souhlas s aplikac
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Konfigurace souhlasu vlastníka skupiny pomocí PowerShellu
 
-Pomocí modulu Azure AD PowerShell Preview, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)můžete povolit nebo zakázat vlastníkům skupin souhlas s aplikacemi, které přistupují k datům vaší organizace pro skupiny, které vlastní.
+Pomocí modulu Azure AD PowerShell Preview, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)můžete povolit nebo zakázat vlastníkům skupin souhlas s aplikacemi, které přistupují k datům vaší organizace pro skupiny, které vlastní.
 
-1. Ujistěte se, že používáte modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) i modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) ).
+1. Ujistěte se, že používáte modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) i modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) ).
 
     ```powershell
     Remove-Module AzureAD
@@ -280,7 +280,7 @@ V takovém případě se událost auditu bude protokolovat jako kategorie "Appli
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Zakázání nebo opětovné povolení souhlasu na základě rizik pomocí PowerShellu
 
-Můžete použít modul Azure AD PowerShell Preview [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)a zakázat krok do souhlasu správce, který je vyžadován v případech, kdy Microsoft zjistí riziko nebo ho znovu povolit, pokud byl dříve zakázán.
+Můžete použít modul Azure AD PowerShell Preview [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)a zakázat krok do souhlasu správce, který je vyžadován v případech, kdy Microsoft zjistí riziko nebo ho znovu povolit, pokud byl dříve zakázán.
 
 To můžete provést pomocí stejných kroků, jak je uvedeno výše pro [konfiguraci souhlasu vlastníka skupiny pomocí prostředí PowerShell](#configure-group-owner-consent-using-powershell), ale nahrazování jiné hodnoty nastavení. Existují tři rozdíly v krocích: 
 

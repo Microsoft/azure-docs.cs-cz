@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 105ab0c71d9e7e935842550ecdc4c8d2ff2a2d8c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 64470b42efeea49b7c778d6dffd88465b8445e36
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84977905"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606188"
 ---
 1. Vyhledejte virtuální síť WAN, kterou jste vytvořili. Na stránce virtuální síť WAN v části **připojení** vyberte **rozbočovače**.
 2. Na stránce centra vyberte **+ nové centrum** a otevřete stránku **vytvořit virtuální rozbočovač** .
 
-    ![Základy](./media/virtual-wan-tutorial-hub-include/basics.png "Základy")
+    ![Snímek obrazovky se zobrazí v podokně vytvořit virtuální centrum se zvolenou kartou základy.](./media/virtual-wan-tutorial-hub-include/basics.png "Základy")
 3. Na kartě **základy** stránky **vytvořit virtuální rozbočovač** vyplňte následující pole:
 
     **Podrobnosti o projektu**
@@ -28,7 +28,7 @@ ms.locfileid: "84977905"
    * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32. Azure Virtual WAN je spravovaná služba Microsoftu vytvoří ve virtuálním centru příslušné podsítě pro různé brány nebo služby (např. brány VPN, brány ExpressRoute, uživatelské VPN/brány, brány firewall, směrování atd.). Není nutné, aby uživatel explicitně naplánoval adresní prostor podsítě pro služby ve virtuálním rozbočovači, protože společnost Microsoft to dělá jako součást služby.
 4. Vyberte **Další: Site-to-site**.
 
-    ![Site-to-Site](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-to-Site")
+    ![Snímek obrazovky zobrazuje podokno vytvořit virtuální rozbočovač s vybraným webem na webu.](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-to-Site")
 
 5. Na kartě **site-to-site** vyplňte následující pole:
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: c58fdd38c4221c03778b2c769620bf7911aaded8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670389"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604474"
 ---
 # <a name="modify-target-settings"></a>Upravit nastavení cíle
 
@@ -42,10 +42,10 @@ Nastavení konfigurace, která lze upravit, jsou shrnuta v tabulce.
 **Síťové prostředky** | Možnosti pro virtuální sítě (virtuální sítě)/Network skupiny zabezpečení/síťová rozhraní:<br/><br/> – Vytvoří nový prostředek se stejným názvem v cílové oblasti.<br/><br/> – Vytvoří nový prostředek s jiným názvem v cílové oblasti.<br/><br/> – Použijte existující síťový prostředek v cílové oblasti.<br/><br/> Pokud vytvoříte nový cílový prostředek, s výjimkou nastavení, které upravíte, je mu přiřazeno stejné nastavení jako zdrojový prostředek.
 **Název veřejné IP adresy** | Zadejte název.
 **SKU veřejné IP adresy** | Zadejte [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku).
-**Zóna veřejné IP adresy** | Zadejte [zónu](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) pro standardní veřejné IP adresy.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **oblastní**.
+**Zóna veřejné IP adresy** | Zadejte [zónu](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) pro standardní veřejné IP adresy.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
 **Název nástroje pro vyrovnávání zatížení** | Zadejte název.
 **SKU nástroje pro vyrovnávání zatížení** | Basic nebo Standard. Doporučujeme používat standard.
-**Zóna nástroje pro vyrovnávání zatížení** | Zadejte zónu pro nástroj pro vyrovnávání zatížení. <br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **oblastní**.
+**Zóna nástroje pro vyrovnávání zatížení** | Zadejte zónu pro nástroj pro vyrovnávání zatížení. <br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
 **Závislosti prostředků** | Možnosti pro každou závislost:<br/><br/>– Prostředek používá zdrojové závislé prostředky, které se přesunou do cílové oblasti.<br/><br/> – Prostředek používá jiné závislé prostředky, které se nacházejí v cílové oblasti. V takovém případě si můžete vybrat z libovolných podobných prostředků v cílové oblasti.
 
 ### <a name="edit-vm-target-settings"></a>Upravit nastavení cíle virtuálního počítače

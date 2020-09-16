@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Tento článek poskytuje přehled služby Azure ARC s povoleným Kubernetes.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.custom: references_regions
-ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: fb8a7b7c2e1e5b3de7d1ccdb4054e44825231458
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723720"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604797"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Co je Kubernetes ve verzi Preview s podporou Azure ARC?
 
@@ -51,12 +51,15 @@ Kubernetes s podporou Azure ARC podporuje tyto scénáře:
 
 * Použijte zásady pomocí Azure Policy pro Kubernetes. 
 
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="supported-regions"></a>Podporované oblasti 
 
 Kubernetes se zapnutým Azure ARC v tuto chvíli podporuje tyto oblasti: 
 
 * East US 
 * West Europe
+
 
 ## <a name="next-steps"></a>Další kroky
 

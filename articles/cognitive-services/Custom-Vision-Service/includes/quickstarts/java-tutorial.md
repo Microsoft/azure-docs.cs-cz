@@ -3,15 +3,18 @@ author: areddish
 ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: cd6388e6c6313ba84978d43d388855b114a4875d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: f4b64c25bff93683c79aa1aa3eb556988c798cb0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508509"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604949"
 ---
-V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vision Java k sestavení modelu klasifikace imagí. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Javě. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](../../getting-started-build-a-classifier.md).
+Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro jazyk Java k sestavení modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+
+> [!NOTE]
+> Pokud chcete sestavit model klasifikace _bez_ psaní kódu, prostudujte si místo toho doprovodné materiály pro [prohlížeč](../../getting-started-build-a-classifier.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -20,9 +23,9 @@ V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vis
 - [Maven](https://maven.apache.org/) nainstalované
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Získat Custom Vision klientskou knihovnu a ukázkový kód
+## <a name="get-the-custom-vision-client-library"></a>Získání klientské knihovny Custom Vision
 
-K napsání aplikace v Javě, která využívá službu Custom Vision, budete potřebovat balíčky maven pro službu Custom Vision. Tyto balíčky jsou součástí ukázkového projektu, který budete stahovat, ale můžete k nim přistupovat jednotlivě.
+K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro jazyk Java budete potřebovat balíčky Custom Vision Maven. Tyto balíčky jsou součástí ukázkového projektu, který budete stahovat, ale můžete k nim přistupovat jednotlivě.
 
 Knihovnu klienta Custom Vision můžete najít v centrálním úložišti Maven:
 
@@ -45,21 +48,21 @@ $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
 $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 ```
 
-## <a name="understand-the-code"></a>Vysvětlení kódu
+## <a name="examine-the-code"></a>Kontrola kódu
 
 Ve svém prostředí Java IDE načtěte projekt `Vision/CustomVision` a otevřete soubor _CustomVisionSamples.java_. Vyhledejte metodu **runSample** a odkomentujte **ObjectDetection_Sample** metoda volání &mdash; této metody provádí scénář detekce objektu, který není popsaný v této příručce. Metoda **ImageClassification_Sample** implementuje primární funkce tohoto příkladu. Přejděte k její definici a prozkoumejte kód.
 
-### <a name="create-a-custom-vision-service-project"></a>Vytvořit projekt Custom Vision Service
+## <a name="create-a-custom-vision-project"></a>Vytvoření projektu Custom Vision
 
 Tato první část kódu vytvoří projekt klasifikace obrázků. Vytvořený projekt se zobrazí na [webu služby Custom Vision](https://customvision.ai/), který jste navštívili dříve. Pokud vytvoříte projekt (vysvětlení najdete v průvodci [vytvořením](../../getting-started-build-a-classifier.md) webového portálu třídění), podívejte se na přetížení metod [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) a určete další možnosti.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create)]
 
-### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
+## <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_tags)]
 
-### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
+## <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
 Ukázkové obrázky se nacházejí ve složce **src/main/resources** projektu. Odtud se načtou a s odpovídajícími značkami se nahrají do služby.
 
@@ -69,13 +72,13 @@ Předchozí fragment kódu dělá použití dvou pomocných funkcí, které nač
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
 
-### <a name="train-the-classifier-and-publish"></a>Výuka třídění a publikování
+## <a name="train-and-publish-the-project"></a>Školení a publikování projektu
 
 Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train)]
 
-### <a name="use-the-prediction-endpoint"></a>Použití koncového bodu předpovědi
+## <a name="use-the-prediction-endpoint"></a>Použití koncového bodu předpovědi
 
 Koncový bod předpovědi, který zde představuje objekt `predictor`, je odkaz, pomocí kterého můžete odeslat obrázek do aktuálního modelu a získat předpověď klasifikace. V této ukázce se `predictor` definuje někde jinde s využitím proměnné prostředí s klíčem předpovědi.
 
@@ -133,3 +136,6 @@ Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v 
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
+
+* [Co je Custom Vision?](../../overview.md)
+* * [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable)

@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525148"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606783"
 ---
 1. Na stránce portálu pro virtuální síť WAN vyberte v části **připojení** možnost **sítě VPN** a otevřete stránku sítě VPN.
 2. Na stránce **Lokality VPN** klikněte na **+Vytvořit lokalitu**.
 
-   ![Základy](./media/virtual-wan-tutorial-site-include/basics.png "Základy")
+   ![Snímek obrazovky se zobrazí v okně lokalita V nasazení sítě VPN s otevřeným podoknem vytvořit síť VPN.](./media/virtual-wan-tutorial-site-include/basics.png "Základy")
 3. Na stránce **vytvořit lokalitu sítě VPN** na kartě **základy** vyplňte následující pole:
 
     * **Oblast** – dříve odkazovala na umístění. Toto je umístění, ve kterém chcete vytvořit tento prostředek lokality.
@@ -29,7 +29,7 @@ ms.locfileid: "86525148"
     * **Centra** – rozbočovač, ke kterému se má vaše lokalita připojit Lokalita může být připojena pouze k rozbočovačům, které mají VPN Gateway. Pokud nevidíte centrum, vytvořte nejdřív v tomto centru bránu VPN.
 4. Vyberte **odkazy** a přidejte informace o fyzických odkazech ve větvi. Pokud máte zařízení s virtuálním partnerem WAN, podívejte se na ně a zjistěte, jestli se tyto informace vyměňují s Azure jako součást nahrávání informací o větvích nastavených ze svých systémů.
 
-   ![odkazy](./media/virtual-wan-tutorial-site-include/links.png "Odkazy")
+   ![Snímek obrazovky se zobrazí v podokně webu vytvořit V P N s vybranou kartou odkazy.](./media/virtual-wan-tutorial-site-include/links.png "Odkazy")
 
     * **Název odkazu** – název, který chcete zadat pro fyzické propojení na webu VPN. Příklad: mylink1.
     * **Název poskytovatele** – název fyzického odkazu na webu VPN. Příklad: ATT, Verizon.

@@ -7,18 +7,18 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 72f12ece3c939ee8fbaecbec377d18c5bb3b0a49
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cd0b73dd22e5e2cab720bb1a33e58e25e517b1f6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294607"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604980"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Aktivační událost Azure Service Bus pro Azure Functions
 
 Pokud chcete reagovat na zprávy z fronty nebo tématu Service Bus, použijte Trigger Service Bus. Počínaje verzí rozšíření 3.1.0 můžete aktivovat ve frontě nebo tématu s povolenou relací.
 
-Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-service-bus-output.md).
+Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-service-bus.md).
 
 ## <a name="example"></a>Příklad
 
@@ -290,7 +290,7 @@ Další podrobnosti najdete v [příkladu](#example) triggeru.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `ServiceBusTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastavené na "serviceBusTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | Není k dispozici | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -359,7 +359,7 @@ Modul runtime Functions obdrží zprávu v [režimu PeekLock](../service-bus-mes
 
 Aktivační událost Service Bus poskytuje několik [vlastností metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Tyto vlastnosti jsou členy třídy [zpráv](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) .
 
-|Vlastnost|Typ|Popis|
+|Vlastnost|Typ|Description|
 |--------|----|-----------|
 |`ContentType`|`string`|Identifikátor typu obsahu využitý odesílatelem a příjemcem pro logiku specifickou pro aplikaci.|
 |`CorrelationId`|`string`|ID korelace.|

@@ -4,12 +4,12 @@ description: Přečtěte si, jak vyhodnotit virtuální počítače VMware pro m
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 7bd0a4c6d4c447e0d872c2d40ad1f1990289fe84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108663"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604236"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Kurz: posouzení virtuálních počítačů VMware pro migraci do služby AVS
 
@@ -29,7 +29,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete postupovat podle tohoto kurzu a vyhodnoťte počítače pro migraci do služby AVS, ujistěte se, že jste zjistili počítače, které chcete vyhodnotit:
 
@@ -113,28 +113,37 @@ Proveďte posouzení následujícím způsobem:
 
 ## <a name="review-an-assessment"></a>Kontrola posouzení
 
-Posouzení popisuje:
+Posouzení služby AVS popisuje:
 
-- **Připraveno k funkci AVS**: počítač se dá migrovat tak, jak je, do Azure AVS, aniž by došlo k žádným změnám. Počítač se spustí v programu AVS a plná podpora pro funkci AVS.
-- **Připraveno s podmínkami**: počítač může mít problémy s kompatibilitou s aktuální verzí vSphere. Před úplnými funkcemi funkce AVS může být potřeba nainstalovat nástroje VMware nebo jiná nastavení.
-- **Nepřipraveno na službu AVS**: virtuální počítač se nespustí v prostředí AVS. Pokud má například místní virtuální počítač VMware připojen externí zařízení (například disk CD-ROM) a používáte VMware VMotion, operace VMotion se nezdařila.
-- **Připravenost neznámá**: Azure Migrate nedokázala určit připravenost počítače kvůli nedostatečným metadatům shromážděným z místního prostředí.
+- Připravenost na službu AVS: to, jestli jsou místní virtuální počítače vhodné pro migraci do řešení Azure VMware (AVS).
+- Počet uzlů pro funkci AVS: odhadovaný počet uzlů AVS potřebných ke spuštění virtuálních počítačů.
+- Využití v uzlech služby AVS: předpokládané využití procesoru, paměti a úložiště napříč všemi uzly.
+- Odhad měsíčních nákladů: Odhadované měsíční náklady na všechny uzly řešení Azure VMware (AVS), na kterých běží místní virtuální počítače.
+
+## <a name="view-an-assessment"></a>Zobrazit posouzení
 
 Zobrazení posouzení:
 
 1. V části **servery**  >  **Azure Migrate: vyhodnocování serveru**klikněte na číslo vedle **posouzení**.
-2. V **posouzení**vyberte posouzení, které chcete otevřít. Příklad (odhad a náklady pouze pro příklad): 
-
-    ![Souhrn posouzení](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
-
+2. V **posouzení**vyberte posouzení, které chcete otevřít. 
 3. Přečtěte si Souhrn posouzení. Můžete také upravit vlastnosti posouzení nebo přepočítat vyhodnocení.
  
- 
+
 ### <a name="review-readiness"></a>Kontrola připravenosti
 
 1. Klikněte na **připravenost na Azure**.
 2. V části **připravenost na Azure**zkontrolujte stav virtuálního počítače.
-3. Vyberte stav **připravenosti na Azure** . Můžete si prohlédnout podrobnosti připravenosti na virtuální počítače. Můžete také přejít k podrobnostem a zobrazit podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
+
+    - **Připraveno k funkci AVS**: počítač se dá migrovat tak, jak je, do Azure AVS, aniž by došlo k žádným změnám. Počítač se spustí v programu AVS a plná podpora pro funkci AVS.
+    - **Připraveno s podmínkami**: počítač může mít problémy s kompatibilitou s aktuální verzí vSphere. Před úplnými funkcemi funkce AVS může být potřeba nainstalovat nástroje VMware nebo jiná nastavení.
+    - **Nepřipraveno na službu AVS**: virtuální počítač se nespustí v prostředí AVS. Pokud má například místní virtuální počítač VMware připojen externí zařízení (například disk CD-ROM) a používáte VMware VMotion, operace VMotion se nezdařila.
+ - **Připravenost neznámá**: Azure Migrate nedokázala určit připravenost počítače kvůli nedostatečným metadatům shromážděným z místního prostředí.
+
+3. Projděte si navrhovaný nástroj.
+
+    - VMware HCX nebo Enterprise: pro počítače VMware je řešení Azure Hybrid Cloud Extension (HCX) navrhovaným nástrojem pro migraci, který vaše místní úlohy migruje do privátního cloudu řešení Azure VMware (AVS). Víc se uč.
+    - Neznámý: V případě počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci neznámý. Ale u počítačů VMware je navrženo použití řešení VMware Hybrid Cloud Extension (HCX).
+4. Klikněte na stav připravenosti na AVS. Můžete si prohlédnout podrobnosti připravenosti na virtuální počítač a přejít k podrobnostem, kde najdete podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
 
 ### <a name="review-cost-estimates"></a>Přehled odhadovaných nákladů
 
@@ -142,11 +151,11 @@ Souhrn posouzení zobrazuje odhadované náklady na výpočetní prostředky a �
 
 1. Zkontrolujte měsíční celkové náklady. Náklady se sčítají pro všechny virtuální počítače v hodnocené skupině.
 
-    - Odhad nákladů vychází z doporučení týkajících se velikosti počítače, jeho disků a vlastností.
-    - Zobrazí se Odhadované měsíční náklady na výpočetní prostředky a úložiště.
-    - Odhad nákladů slouží ke spuštění místních virtuálních počítačů na virtuálních počítačích Azure. Odhad nebere v úvahu náklady na PaaS nebo SaaS.
+    - Odhadované náklady vycházejí z počtu uzlů AVS, které jsou potřeba k tomu, aby se všechny virtuální počítače celkově vyžádaly.
+    - Jelikož jsou ceny za funkci AVS na jeden uzel, celkové náklady nebudou mít náklady na výpočetní výkon a distribuci nákladů na úložiště.
+    - Odhad nákladů slouží ke spuštění místních virtuálních počítačů v rámci služby AVS. Posouzení Azure Migrate serveru nebere v úvahu náklady na PaaS nebo SaaS.
 
-2. Projděte si měsíční náklady na úložiště. Zobrazení ukazuje agregované náklady na úložiště pro skupinu pohodnocenou a rozdělené přes různé typy disků úložiště. 
+2. Kontrola měsíčních odhadů úložiště. Zobrazení ukazuje agregované náklady na úložiště pro skupinu pohodnocenou a rozdělené přes různé typy disků úložiště. 
 3. Můžete přejít k podrobnostem a zobrazit podrobnosti o cenách pro konkrétní virtuální počítače.
 
 ### <a name="review-confidence-rating"></a>Kontrola hodnocení spolehlivosti

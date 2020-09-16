@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 56f79bf38b627f80d73b59dbbfbb73dddd809458
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c9c8fa8099848eec09e689bf9491f71f378e9e3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525150"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606296"
 ---
 V prohlížeči přejděte na web Azure Portal a přihlaste se pomocí svého účtu Azure.
 
@@ -21,7 +21,7 @@ V prohlížeči přejděte na web Azure Portal a přihlaste se pomocí svého ú
 1. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN kliknutím na **vytvořit** otevřete stránku vytvořit síť WAN.
 1. Na stránce **vytvořit síť WAN** na kartě **základy** vyplňte následující pole:
 
-   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="Základy":::
+   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="Snímek obrazovky se zobrazí v podokně vytvořit síť WAN se zvolenou kartou základy.":::
 
    * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.
    * **Skupina prostředků** – vytvořte nové nebo použijte existující.

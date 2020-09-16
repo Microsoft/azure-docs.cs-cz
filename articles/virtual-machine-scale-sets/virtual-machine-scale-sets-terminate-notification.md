@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4b31eb59ed0bae2afe408546ece66eacade9ddb
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207511"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603828"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Oznámení o ukončení pro instance škálovací sady virtuálních počítačů Azure
 Instance sady škálování můžou vyjádřit výslovný souhlas s přijetím oznámení o ukončení instance a nastavením předem definovaného časového limitu prodlevy na operaci ukončení. Oznámení ukončení se odesílá prostřednictvím služby Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), která poskytuje oznámení a zpoždění ovlivněných operací, jako je třeba restartování a opětovné nasazení. Řešení přidá další událost – ukončit – do seznamu Scheduled Events a přidružená prodleva události ukončení bude záviset na limitu zpoždění zadaného uživateli ve svých konfiguracích modelu sady škálování.
@@ -91,7 +91,7 @@ Pomocí rutiny [Update-AzVmss](/powershell/module/az.compute/update-azvmss) povo
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -VMScaleSetName "myScaleSet" `
-  -TerminateScheduledEvents $true
+  -TerminateScheduledEvents $true `
   -TerminateScheduledEventNotBeforeTimeoutInMinutes 15
 ```
 Výše uvedený příklad umožňuje ukončit oznámení v existující sadě škálování a nastavit časový limit 15 minut pro událost ukončení.

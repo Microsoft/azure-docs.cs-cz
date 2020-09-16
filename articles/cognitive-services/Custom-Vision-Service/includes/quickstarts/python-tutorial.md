@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 1bf0ecbc996fe853a6ca1d0ed5a749c798383146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: a091222b01669c6b83c599787c61dcd6b62b05d0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508514"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604951"
 ---
-V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vision s Pythonem k sestavení modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](../../getting-started-build-a-classifier.md).
+Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro Python k sestavení modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+
+> [!NOTE]
+> Pokud chcete sestavit model klasifikace _bez_ psaní kódu, prostudujte si místo toho doprovodné materiály pro [prohlížeč](../../getting-started-build-a-classifier.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -20,7 +23,7 @@ V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vis
 
 ## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
 
-Pokud chcete nainstalovat knihovnu klienta služby Custom Vision pro Python, spusťte v PowerShellu následující příkaz:
+K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro Python budete potřebovat klientskou knihovnu Custom Vision. Spusťte následující příkaz v PowerShellu:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
@@ -34,7 +37,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
 
-### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
+## <a name="create-the-custom-vision-project"></a>Vytvoření projektu Custom Vision
 
 Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Adresu URL koncového bodu si také můžete stáhnout ze stránky nastavení na webu Custom Vision.
 
@@ -62,7 +65,7 @@ print ("Creating project...")
 project = trainer.create_project("My New Project")
 ```
 
-### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
+## <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
 Pokud chcete pro svůj projekt vytvořit klasifikační značky, přidejte na konec souboru *sample.py* následující kód:
 
@@ -72,7 +75,7 @@ hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```
 
-### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
+## <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
 Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Do jedné dávky můžete nahrát až 64 imagí.
 
@@ -104,7 +107,7 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Výuka třídění a publikování
+## <a name="train-and-publish-the-project"></a>Školení a publikování projektu
 
 Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
@@ -123,7 +126,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
+## <a name="use-the-prediction-endpoint"></a>Použití koncového bodu předpovědi
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -176,3 +179,6 @@ Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v 
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
+
+* [Co je Custom Vision?](../../overview.md)
+* [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

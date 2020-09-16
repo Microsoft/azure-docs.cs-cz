@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 243e5ece0d0a14cb7e3ade409ee68510cef64a9c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 411e9a6e059075dfc2928ed09c0c604d600fd9be
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397096"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604151"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Pochopení způsobu přiřazování uživatelů k aplikacím v Azure Active Directory
 Tento článek vám pomůže pochopit, jak se uživatelé přiřadí k aplikaci ve vašem tenantovi.
@@ -28,14 +28,14 @@ Pro uživatele, kteří mají přístup k aplikaci, je nutné je nejprve přiřa
     * Skupina, která byla synchronizovaná z místního prostředí
     * Statická skupina zabezpečení vytvořená v cloudu
     * [Dynamická skupina zabezpečení](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) vytvořená v cloudu
-    * Skupina Office 365 vytvořená v cloudu
+    * Skupina Microsoft 365 vytvořená v cloudu
     * Skupina [Všichni uživatelé](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)
 *  Správce umožňuje [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) povolit uživateli přidání aplikace pomocí funkce [Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **Přidat funkci aplikace** **bez schválení firmy** .
-*  Správce umožňuje [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) povolit uživateli přidání aplikace pomocí funkce [Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **Přidat** aplikaci, ale jenom s tím,**že předá od vybrané sady obchodních schvalovatelů dřívější schválení** .
+*  Správce umožňuje [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) povolit uživateli přidání aplikace pomocí funkce [Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **Přidat funkci aplikace** , ale jenom **s předchozím schválením od vybrané sady obchodních schvalovatelů** .
 *  Správce umožňuje [samoobslužné správě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) dovolit uživateli připojit se ke skupině, ke které je aplikace přiřazená **bez souhlasu s obchodním schválením** .
 *  Správce umožňuje [samoobslužné správě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) dovolit uživateli připojit se ke skupině, ke které je aplikace přiřazená, ale jenom **s předchozím schválením od vybrané sady obchodních schvalovatelů** .
-*  Správce přiřadí licenci uživateli přímo pro aplikaci první strany, například [systém Microsoft Office 365](https://products.office.com/)
-*  Správce přiřadí licenci skupině, na kterou je uživatel členem, do aplikace první strany, například [systém Microsoft Office 365](https://products.office.com/)
+*  Správce přiřadí licenci uživateli přímo pro aplikaci první strany, například [Microsoft 365](https://products.office.com/)
+*  Správce přiřadí licenci ke skupině, které je uživatel členem, do aplikace první strany, například [Microsoft 365](https://products.office.com/)
 *  [Správce souhlasí s aplikací](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) , kterou bude používat všichni uživatelé, a pak se uživatel přihlásí k aplikaci.
 * Uživatel [souhlasí s aplikací](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) , která se přihlašuje k aplikaci sami.
 

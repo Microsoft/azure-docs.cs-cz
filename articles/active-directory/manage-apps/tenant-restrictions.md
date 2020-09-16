@@ -12,22 +12,22 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1cce42cdb63fcfcb9a5841f2f2199daf2bb92304
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285896"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604168"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
-Velké organizace, které zdůrazňují zabezpečení chcete přejít ke cloudovým službám, jako je Office 365, ale potřebují, aby měli jistotu, že uživatelé mají přístup jenom ke schváleným prostředkům. Obvykle společnosti omezují názvy domén nebo IP adresy, když chtějí spravovat přístup. Tento přístup se nezdařil v celém světě, kde jsou aplikace typu software jako služba (nebo SaaS) hostované ve veřejném cloudu a běží na sdílených doménách, jako je [Outlook.Office.com](https://outlook.office.com/) a [Login.microsoftonline.com](https://login.microsoftonline.com/). Blokováním těchto adres budou uživatelé mít naprosto přístup k aplikaci Outlook na webu, místo aby je neomezili pouze na schválené identity a prostředky.
+Velké organizace, které zdůrazňují zabezpečení chcete přejít ke cloudovým službám, jako je Microsoft 365, ale potřebují, aby měli jistotu, že uživatelé mají přístup jenom ke schváleným prostředkům. Obvykle společnosti omezují názvy domén nebo IP adresy, když chtějí spravovat přístup. Tento přístup se nezdařil v celém světě, kde jsou aplikace typu software jako služba (nebo SaaS) hostované ve veřejném cloudu a běží na sdílených doménách, jako je [Outlook.Office.com](https://outlook.office.com/) a [Login.microsoftonline.com](https://login.microsoftonline.com/). Blokováním těchto adres budou uživatelé mít naprosto přístup k aplikaci Outlook na webu, místo aby je neomezili pouze na schválené identity a prostředky.
 
-Řešení Azure Active Directory (Azure AD) pro tuto výzvu je funkce s názvem omezení tenanta. Díky omezením tenanta můžou organizace řídit přístup k SaaS cloudovým aplikacím, a to na základě tenanta Azure AD, které aplikace používají pro jednotné přihlašování. Můžete například chtít dovolit přístup k aplikacím Office 365 vaší organizace a zároveň zabránit přístupu k instancím těchto stejných aplikací v jiných organizacích.  
+Řešení Azure Active Directory (Azure AD) pro tuto výzvu je funkce s názvem omezení tenanta. Díky omezením tenanta můžou organizace řídit přístup k SaaS cloudovým aplikacím, a to na základě tenanta Azure AD, které aplikace používají pro jednotné přihlašování. Můžete například chtít dovolit přístup k aplikacím Microsoft 365 vaší organizace a zároveň zabránit přístupu k instancím jiných organizací v těchto aplikacích.  
 
 V případě omezení tenanta můžou organizace určovat seznam tenantů, ke kterým mají uživatelé přístup. Azure AD pak udělí přístup jenom těmto povoleným klientům.
 
-Tento článek se zaměřuje na omezení klientů pro Office 365, ale tato funkce by měla fungovat s libovolnou cloudovou aplikací SaaS, která používá moderní ověřovací protokoly se službou Azure AD pro jednotné přihlašování. Pokud používáte aplikace SaaS s jiným klientem Azure AD z tenanta používaného sadou Office 365, ujistěte se, že jsou povoleni všichni povinní klienti. Další informace o cloudových aplikacích SaaS najdete na [webu Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
+Tento článek se zaměřuje na omezení tenanta pro Microsoft 365, ale tato funkce by měla fungovat s libovolnou cloudovou aplikací SaaS, která používá moderní ověřovací protokoly se službou Azure AD pro jednotné přihlašování. Pokud používáte aplikace SaaS s jiným klientem Azure AD z tenanta používaného Microsoft 365, ujistěte se, že jsou všichni povinní klienti povoleni. Další informace o cloudových aplikacích SaaS najdete na [webu Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -37,11 +37,11 @@ Celkové řešení zahrnuje tyto komponenty:
 
 2. **Místní infrastruktura proxy server**: Tato infrastruktura je proxy zařízení podporující kontrolu TLS (Transport Layer Security). Musíte nakonfigurovat proxy server, aby se vložila hlavička obsahující seznam povolených klientů do provozu určeného pro Azure AD.
 
-3. **Klientský software**: aby bylo možné podporovat omezení klientů, musí klientský software požádat o tokeny přímo z Azure AD, aby mohla infrastruktura proxy zachytit provoz. Aplikace Office 365 založené na prohlížeči aktuálně podporují omezení tenanta, stejně jako klienti Office, kteří používají moderní ověřování (například OAuth 2,0).
+3. **Klientský software**: aby bylo možné podporovat omezení klientů, musí klientský software požádat o tokeny přímo z Azure AD, aby mohla infrastruktura proxy zachytit provoz. Microsoft 365 aplikace založené na prohlížeči aktuálně podporují omezení tenanta, stejně jako klienti Office, kteří používají moderní ověřování (například OAuth 2,0).
 
-4. **Moderní ověřování**: cloudové služby musí používat moderní ověřování k používání omezení tenanta a zablokovat přístup ke všem nepovoleným klientům. Ve výchozím nastavení je nutné nakonfigurovat cloudové služby Office 365 pro použití moderních ověřovacích protokolů. Nejnovější informace o podpoře pro moderní ověřování v Office 365 najdete v tématu [aktualizované moderní ověřování pro office 365](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Moderní ověřování**: cloudové služby musí používat moderní ověřování k používání omezení tenanta a zablokovat přístup ke všem nepovoleným klientům. Ve výchozím nastavení musíte nakonfigurovat Microsoft 365 cloudové služby pro použití moderních ověřovacích protokolů. Nejnovější informace o podpoře moderního ověřování v Microsoft 365 najdete v tématu [aktualizované moderní ověřování pro Office 365](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
-Následující diagram znázorňuje tok provozu na vysoké úrovni. Omezení tenanta vyžadují kontrolu TLS jenom při provozu do Azure AD, nikoli do cloudových služeb Office 365. Toto rozlišení je důležité, protože objem provozu pro ověřování do služby Azure AD je obvykle mnohem menší než objem přenosu, aby SaaS aplikace jako Exchange Online a SharePoint Online.
+Následující diagram znázorňuje tok provozu na vysoké úrovni. Omezení klientů vyžadují kontrolu TLS pouze při provozu do služby Azure AD, nikoli do cloudové služby Microsoft 365. Toto rozlišení je důležité, protože objem provozu pro ověřování do služby Azure AD je obvykle mnohem menší než objem přenosu, aby SaaS aplikace jako Exchange Online a SharePoint Online.
 
 ![Tok přenosů omezení tenanta – diagram](./media/tenant-restrictions/traffic-flow.png)
 
@@ -63,7 +63,7 @@ K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se v
 
 - Klienti musí důvěřovat řetězu certifikátů, který prezentuje proxy server pro komunikaci TLS. Pokud se například použijí certifikáty z interní [infrastruktury veřejných klíčů (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) , musí být interní vydávající certifikát kořenové certifikační autority důvěryhodný.
 
-- Tato funkce je součástí předplatných sady Office 365, ale pokud chcete k řízení přístupu k ostatním aplikacím SaaS použít omezení tenanta, je nutné licence Azure AD Premium 1.
+- Tato funkce je součástí předplatných Microsoft 365, ale pokud chcete k řízení přístupu k ostatním aplikacím SaaS použít omezení tenanta, je nutné Azure AD Premium 1 licencí.
 
 #### <a name="configuration"></a>Konfigurace
 
@@ -129,16 +129,16 @@ Podobně jako u jiných sestav v Azure Portal můžete použít filtry k určen�
 - **Umístění**
 - **ID cílového tenanta**
 
-## <a name="office-365-support"></a>Podpora pro Office 365
+## <a name="microsoft-365-support"></a>Podpora Microsoftu 365
 
-Aby bylo možné plně podporovat omezení klientů, aplikace Office 365 musí splňovat dvě kritéria:
+Aby aplikace Microsoft 365 plně podporovaly omezení klientů, musí splňovat dvě kritéria:
 
 1. Použitý klient podporuje moderní ověřování.
 2. Moderní ověřování je povolené jako výchozí ověřovací protokol pro cloudovou službu.
 
 Nejnovější informace o tom, které klienty Office aktuálně podporují moderní ověřování, najdete v tématu [aktualizované moderní ověřování Office 365](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) . Tato stránka obsahuje také odkazy na pokyny pro povolení moderního ověřování pro konkrétní klienty Exchange Online a Skype pro firmy online. SharePoint Online už ve výchozím nastavení umožňuje moderní ověřování.
 
-Aplikace založené na prohlížeči Office 365 (portál Office, Yammer, weby SharePointu, Outlook na webu a další) aktuálně podporují omezení klientů. Silné klienty (Outlook, Skype pro firmy, Word, Excel, PowerPoint a další) můžou vymáhat omezení tenanta jenom v případě, že se používá moderní ověřování.  
+Microsoft 365 aplikace založené na prohlížeči (portál Office, Yammer, weby SharePointu, Outlook na webu a další) aktuálně podporují omezení tenanta. Silné klienty (Outlook, Skype pro firmy, Word, Excel, PowerPoint a další) můžou vymáhat omezení tenanta jenom v případě, že se používá moderní ověřování.  
 
 Klienti Outlooku a Skype pro firmy, kteří podporují moderní ověřování, můžou pořád používat starší protokoly pro klienty, u kterých není povolené moderní ověřování, a efektivně tak obejít omezení tenanta. Omezení tenanta můžou blokovat aplikace, které používají starší protokoly, pokud při ověřování kontaktují login.microsoftonline.com, login.microsoft.com nebo login.windows.net.
 
@@ -174,7 +174,7 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
       }
       ```
 
-      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Například:
+      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Příklad:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961563"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605069"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Podpora zón dostupnosti pro App Service prostředí
 
@@ -29,11 +29,15 @@ Pokud se nenásledují kroky popsané v tomto článku, interního nástroje slu
 
 Oblast interního nástroje služby ASE lze vytvořit v kterékoli z následujících oblastí:
 
+- Austrálie – východ
+- Brazil South
+- Střední Kanada
 - Střední USA
 - East US
 - USA – východ 2
 - Východní USA 2 (EUAP)
 - Francie – střed 
+- Německo – středozápad
 - Japan East
 - Severní Evropa
 - West Europe

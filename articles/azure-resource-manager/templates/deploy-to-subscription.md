@@ -2,13 +2,13 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/15/2020
+ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468636"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605171"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -82,7 +82,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 Příkazy pro nasazení na úrovni předplatného se liší od příkazů pro nasazení skupin prostředků.
 
-Pro rozhraní příkazového řádku Azure CLI použijte [AZ Deployment sub Create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create). Následující příklad nasadí šablonu pro vytvoření skupiny prostředků:
+Pro rozhraní příkazového řádku Azure CLI použijte [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create). Následující příklad nasadí šablonu pro vytvoření skupiny prostředků:
 
 ```azurecli-interactive
 az deployment sub create \
@@ -162,9 +162,7 @@ U nasazení na úrovni předplatného se při používání funkcí šablon vysk
 
 * Funkce [Resource ()](template-functions-resource.md#resourcegroup) **není podporována.**
 * Funkce [Reference ()](template-functions-resource.md#reference) a [list ()](template-functions-resource.md#list) jsou podporovány.
-* Nepoužívejte [ResourceID ()](template-functions-resource.md#resourceid) k získání ID prostředku pro prostředky, které jsou nasazeny na úrovni předplatného.
-
-  Místo toho použijte funkci [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) .
+* Nepoužívejte [ResourceID ()](template-functions-resource.md#resourceid) k získání ID prostředku pro prostředky, které jsou nasazeny na úrovni předplatného. Místo toho použijte funkci [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) .
 
   Pokud například chcete získat ID prostředku pro definici zásady, která je nasazena v rámci předplatného, použijte:
 

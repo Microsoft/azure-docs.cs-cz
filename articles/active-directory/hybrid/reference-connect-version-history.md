@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018437"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604066"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -159,7 +159,7 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 ### <a name="release-status"></a>Stav verze
 12/9/2019: vydaná verze ke stažení Není k dispozici prostřednictvím automatického upgradu.
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
-- Aktualizovali jsme synchronizaci hodnot hash hesel, aby Azure AD Domain Services správně zohlednila odsazení v hodnotách hash protokolu Kerberos.  Tím zajistíte zlepšení výkonu při synchronizaci hesel ze služby instituce AD až po Azure AD Domain Services.
+- Aktualizovali jsme synchronizaci hodnot hash hesel, aby Azure AD Domain Services správně zohlednila odsazení v hodnotách hash protokolu Kerberos.  Tím zajistíte zlepšení výkonu při synchronizaci hesel ze služby Azure AD až po Azure AD Domain Services.
 - Přidali jsme podporu spolehlivých relací mezi ověřovacím agentem a Service Bus.
 - Tato vydaná verze vynutila TLS 1,2 pro komunikaci mezi ověřovacím agentem a cloudovou službou.
 - Přidali jsme mezipaměť DNS pro připojení protokolu WebSocket mezi ověřovacím agentem a cloudovou službou.
@@ -208,13 +208,13 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 - Nové nástroje pro řešení potíží pomáhají při řešení potíží s scénáři "uživatel neprobíhá synchronizace", "seskupení není synchronizovaný" nebo "nesynchronizované členství ve skupině".
-- Přidání podpory pro národní cloudy do skriptu pro řešení potíží s Azure AD Connect 
+- Přidání podpory pro národní cloudy do skriptu pro řešení potíží s Azure AD Connect.
 - Zákazníci by měli být informováni o tom, že vyřazení koncových bodů služby WMI pro MIIS_Service byla nyní odebrána. Jakékoli operace WMI by se teď měly provádět pomocí rutin PS.
 - Vylepšení zabezpečení pomocí resetování omezeného delegování objektu AZUREADSSOACC
 - Pokud přidáváte nebo upravujete pravidlo synchronizace, jsou-li v pravidle použity atributy, které jsou ve schématu konektoru, ale nejsou přidány do tohoto konektoru, přidají se do konektoru automaticky atributy. Totéž platí pro typ objektu, který pravidlo ovlivňuje. Pokud se do konektoru přidá cokoli, konektor se označí pro úplný import na další cyklus synchronizace.
 - Použití organizace nebo správce domény jako účtu konektoru už se v nových nasazeních Azure AD Connect nepodporuje. Tato verze nebude mít vliv na aktuální Azure AD Connect nasazení pomocí podnikového nebo správce domény jako účet konektoru.
 - V nástroji Správce synchronizace se při vytváření/úpravách a odstraňování pravidel spustí Úplná synchronizace. Automaticky otevírané okno se zobrazí u libovolné změny pravidla oznamující uživateli, pokud bude spuštěn úplný import nebo Úplná synchronizace.
-- Přidání kroků zmírnění pro chyby hesla do ' konektory > vlastností > připojení '
+- Přidání kroků zmírnění pro chyby hesla do ' konektory > vlastnosti > připojení '.
 - Přidání upozornění na zastaralost pro správce synchronizační služby na stránce vlastností konektoru. Toto upozornění upozorňuje uživatele, že by se měly provádět změny prostřednictvím Průvodce Azure AD Connect.
 - Přidala se nová chyba pro problémy se zásadami hesel uživatele.
 - Zabraňuje nekonfiguraci filtrování skupin podle domén a organizačních jednotek. Filtrování skupin zobrazí chybu, pokud je už doména nebo organizační jednotka zadané skupiny odfiltrovaná, a uživatel zůstane v pohybu dál, dokud se problém nevyřeší.
@@ -246,7 +246,7 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 >[!IMPORTANT]
 >Došlo k známému problému s upgradem Azure AD Connect ze starší verze na 1.3.21.0, kde Microsoft 365 portál neodráží aktualizovanou verzi, i když Azure AD Connect upgradovat úspěšně.
 >
-> Pokud to chcete vyřešit, musíte importovat modul **AdSync** a pak na `Set-ADSyncDirSyncConfiguration` serveru Azure AD Connect spustit rutinu PowerShellu.  Můžete použít následující postup:
+> Chcete-li tento problém vyřešit, je třeba importovat modul **AdSync** a pak spustit `Set-ADSyncDirSyncConfiguration` rutinu prostředí PowerShell na serveru Azure AD Connect.  Můžete použít následující postup:
 >
 >1. Otevřete PowerShell v režimu správce.
 >2. Spusťte `Import-Module "ADSync"`.

@@ -1,41 +1,45 @@
 ---
-title: Zjišťování místních serverů pomocí importovaného souboru CSV s Azure Migrate posouzení serveru
+title: Vyhodnocení místních serverů pomocí importovaného souboru CSV s Azure Migrate posouzení serveru
 description: Popisuje, jak zjišťovat místní servery pro migraci do Azure pomocí importovaného souboru CSV v Azure Migrate posouzení serveru.
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 6526961df225e4f347216428141e8217043161df
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90064254"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604219"
 ---
-# <a name="tutorial-discover-servers-using-an-imported-csv-file"></a>Kurz: zjišťování serverů pomocí importovaného souboru CSV
+# <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Kurz: posouzení serverů pomocí importovaného souboru CSV
 
 Jako součást cesty migrace do Azure zjistíte místní inventář a zatížení. 
 
-V tomto kurzu se dozvíte, jak pomocí importovaného souboru s oddělovači (CSV) vyhledat místní virtuální počítače VMware pomocí nástroje Azure Migrate: Server Assessment Tool. 
+V tomto kurzu se dozvíte, jak vyhodnotit místní počítače pomocí nástroje Azure Migrate: Server Assessment Tool pomocí importovaného souboru s oddělovači (CSV). 
 
-Pokud používáte soubor CSV, nemusíte pro zjišťování serverů nastavovat zařízení Azure Migrate. Data, která v souboru sdílíte, můžete řídit a většina dat je volitelná. Tato metoda je užitečná v případě, že:
+Pokud používáte soubor CSV, nemusíte nastavovat zařízení Azure Migrate, abyste mohli zjišťovat a vyhodnocovat servery. Data, která v souboru sdílíte, můžete řídit a většina dat je volitelná. Tato metoda je užitečná v případě, že:
 
 - Před nasazením zařízení chcete vytvořit rychlé a počáteční posouzení.
 - Zařízení Azure Migrate ve vaší organizaci nemůžete nasadit.
 - Nemůžete sdílet přihlašovací údaje, které povolují přístup k místním serverům.
 - Omezení zabezpečení brání v shromažďování a odesílání dat shromážděných zařízením do Azure.
 
+> [!NOTE]
+> Nemůžete migrovat servery importované pomocí souboru CSV.
+
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Nastavení účtu Azure
-> * Nastavte Azure Migrate projekt.
+> * Nastavení Azure Migrateho projektu
 > * Příprava souboru CSV
-> * Importujte soubor.
+> * Import souboru
+> * Vyhodnotit servery
 
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti, pokud je to možné. 
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Do jednoho souboru CSV a do Azure Migrateho projektu můžete přidat až 20 000 serverů. 
 - Názvy operačních systémů zadané v souboru CSV musí obsahovat a odpovídat [podporovaným názvům](#supported-operating-system-names).
@@ -43,7 +47,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 ## <a name="prepare-an-azure-user-account"></a>Příprava uživatelského účtu Azure
 
-Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zařízení, budete potřebovat účet s tímto:
+Chcete-li vytvořit projekt Azure Migrate, budete potřebovat účet s:
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
 - Oprávnění k registraci aplikací Azure Active Directory.
 
@@ -73,7 +77,7 @@ Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého p
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
 
-Nastavte nový projekt Azure Migrate.
+Nastavte nový projekt Azure Migrate, pokud ho ještě nemáte.
 
 1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.
@@ -113,29 +117,29 @@ Následující tabulka shrnuje pole souborů k vyplnění:
 
 **Název pole** | **Závaznou** | **Podrobnosti**
 --- | --- | ---
-**Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
-**IP adresa** | Ne | Adresa serveru.
-**Cores** | Ano | Počet jader procesoru přidělených serveru.
-**Memory (Paměť)** | Ano | Celková velikost paměti RAM (v MB) přidělená serveru.
-**Název operačního systému** | Ano | Serverový operační systém. <br/> Vyhodnocování rozpoznávají názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu.
-**Verze operačního systému** | Ne | Verze operačního systému serveru.
-**Architektura operačního systému** | Ne | Architektura operačního systému serveru <br/> Platné hodnoty jsou: x64, x86, AMD64, 32-bit nebo 64-bit
-**Počet disků** | Ne | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
-**Velikost disku 1**  | Ne | Maximální velikost disku (v GB)<br/>[Přidáním sloupců](#add-multiple-disks) do šablony můžete přidat podrobnosti o dalších discích. Můžete přidat až osm disků.
-**Disk 1 operace čtení** | Ne | Operace čtení z disku za sekundu
-**Operace zápisu na disk 1** | Ne | Operace zápisu na disk za sekundu
-**Propustnost čtení disku 1** | Ne | Data načtená z disku za sekundu, v MB za sekundu.
-**Propustnost zápisu disku 1** | Ne | Data zapsaná na disk za sekundu, v MB za sekundu.
-**Procento využití procesoru** | Ne | Procento využitého procesoru
-**Procento využití paměti** | Ne | Procento využité paměti RAM
-**Operace čtení z celkového počtu disků** | Ne | Operace čtení disku za sekundu
-**Operace zápisu z celkového počtu disků** | Ne | Operace zápisu na disk za sekundu
-**Propustnost čtení celkem disků** | Ne | Data načtená z disku v MB za sekundu.
-**Propustnost zápisu celkem disků** | Ne | Data zapsaná na disk v MB za sekundu.
-**Síť v propustnosti** | Ne | Data přijatá serverem v MB za sekundu.
-**Propustnost sítě** | Ne | Data přenášená serverem v MB za sekundu.
-**Typ firmwaru** | Ne | Firmware serveru. Hodnoty mohou být "BIOS" nebo "UEFI".
-**Adresa MAC**| Ne | Adresa MAC serveru.
+**Název serveru** | Yes | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
+**IP adresa** | No | Adresa serveru.
+**Cores** | Yes | Počet jader procesoru přidělených serveru.
+**Memory (Paměť)** | Yes | Celková velikost paměti RAM (v MB) přidělená serveru.
+**Název operačního systému** | Yes | Serverový operační systém. <br/> Vyhodnocování rozpoznávají názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu.
+**Verze operačního systému** | No | Verze operačního systému serveru.
+**Architektura operačního systému** | No | Architektura operačního systému serveru <br/> Platné hodnoty jsou: x64, x86, AMD64, 32-bit nebo 64-bit
+**Počet disků** | No | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
+**Velikost disku 1**  | No | Maximální velikost disku (v GB)<br/>[Přidáním sloupců](#add-multiple-disks) do šablony můžete přidat podrobnosti o dalších discích. Můžete přidat až osm disků.
+**Disk 1 operace čtení** | No | Operace čtení z disku za sekundu
+**Operace zápisu na disk 1** | No | Operace zápisu na disk za sekundu
+**Propustnost čtení disku 1** | No | Data načtená z disku za sekundu, v MB za sekundu.
+**Propustnost zápisu disku 1** | No | Data zapsaná na disk za sekundu, v MB za sekundu.
+**Procento využití procesoru** | No | Procento využitého procesoru
+**Procento využití paměti** | No | Procento využité paměti RAM
+**Operace čtení z celkového počtu disků** | No | Operace čtení disku za sekundu
+**Operace zápisu z celkového počtu disků** | No | Operace zápisu na disk za sekundu
+**Propustnost čtení celkem disků** | No | Data načtená z disku v MB za sekundu.
+**Propustnost zápisu celkem disků** | No | Data zapsaná na disk v MB za sekundu.
+**Síť v propustnosti** | No | Data přijatá serverem v MB za sekundu.
+**Propustnost sítě** | No | Data přenášená serverem v MB za sekundu.
+**Typ firmwaru** | No | Firmware serveru. Hodnoty mohou být "BIOS" nebo "UEFI".
+**Adresa MAC**| No | Adresa MAC serveru.
 
 
 ### <a name="add-operating-systems"></a>Přidat operační systémy
@@ -157,7 +161,7 @@ Pokud například chcete zadat všechna pole pro druhý disk, přidejte tyto slo
 
 ## <a name="import-the-server-information"></a>Importovat informace o serveru
 
-Po přidání informací do šablony sdíleného svazku clusteru importujte servery do vyhodnocování serveru.
+Po přidání informací do šablony sdíleného svazku clusteru importujte soubor CSV do vyhodnocování serveru.
 
 1. V Azure Migrate v části **zjišťování počítačů**přejít na dokončenou šablonu.
 2. Vyberte **Importovat**.
@@ -169,7 +173,7 @@ Po přidání informací do šablony sdíleného svazku clusteru importujte serv
         1. Stáhněte si sdílený svazek clusteru, který teď obsahuje podrobnosti o chybě.
         1. Zkontrolujte a podle potřeby vyřešte chyby. 
         1. Znovu nahrajte změněný soubor.
-4. Po **dokončení**importu se informace o serveru naimportovaly.
+4. Po **dokončení**importu se informace o serveru naimportovaly. Aktualizujte, pokud se zdá, že proces importu není dokončen.
 
 ## <a name="update-server-information"></a>Aktualizovat informace o serveru
 

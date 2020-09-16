@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 2ab74b87b287296c4ff975d5af75714c89001004
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055631"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604304"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -268,6 +268,8 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
     ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahraje virtuální pevné disky jako objekty blob stránky do přípravného účtu úložiště, a teprve pak je převede na spravované disky a přesune do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
+   > [!NOTE]
+   > Pokud se objekt blob stránky úspěšně nepřevede na spravovaný disk, zůstane v účtu úložiště a bude vám účtováno za úložiště.
 
     Pokračujte výběrem **Další: zabezpečení** .
 
@@ -312,7 +314,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
 
 1. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu CLI k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro `az databox job create` :
 
-   | Nastavení (parametr) | Popis |  Ukázková hodnota |
+   | Nastavení (parametr) | Description |  Ukázková hodnota |
    |---|---|---|
    |resource-group| Použijte existující skupinu prostředků, nebo vytvořte novou. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
    |name| Název vytvářené objednávky. | "mydataboxorder"|
@@ -431,7 +433,7 @@ Pomocí Azure PowerShell seřazení zařízení postupujte podle následujícíc
 
 2. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu PowerShellu k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob).
 
-    | Nastavení (parametr) | Popis |  Ukázková hodnota |
+    | Nastavení (parametr) | Description |  Ukázková hodnota |
     |---|---|---|
     |ResourceGroupName [povinné]| Použijte existující skupinu prostředků. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
     |Název [povinné]| Název vytvářené objednávky. | "mydataboxorder"|

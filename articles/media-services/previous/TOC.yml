@@ -318,33 +318,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: Referenční návrh s více variantami DRM
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: Analýza
-      href: media-services-analytics-overview.md
-      items:
-        - name: Analýza médií s využitím webu Azure Portal
-          href: media-services-portal-analyze.md
-        - name: Zpracování pomocí Indexeru 2
-          href: media-services-process-content-with-indexer2.md
         - name: Zpracování pomocí Indexeru
           href: media-services-index-content.md
           items:
             - name: Předvolby úloh
               href: indexer-task-preset.md
-        - name: Zpracování pomocí Face Detectoru
-          href: media-services-face-and-emotion-detection.md
-        - name: Zpracování pomocí Motion Detectoru
-          href: media-services-motion-detection.md
         - name: Zpracování pomocí Face Redactoru
           href: media-services-face-redaction.md
           items:
             - name: Názorný postup práce s Face Redactorem
               href: media-services-redactor-walkthrough.md
-        - name: Zpracování pomocí Video Thumbnails
-          href: media-services-video-summarization.md
-        - name: Zpracování pomocí technologie OCR
-          href: media-services-video-optical-character-recognition.md
-        - name: Zpracování pomocí Content Moderatoru
-          href: media-services-content-moderation.md
     - name: Konfigurace telemetrie
       href: media-services-telemetry-overview.md
       items:

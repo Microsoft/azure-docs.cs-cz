@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 6229686cda87a6dd65dfb9232f0e8ac550ba3750
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 9137c98a2ba0b7356d25a79d3b75c3727fc35fc3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660498"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604695"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
 
@@ -52,7 +52,7 @@ K vytváření a práci s datovými sadami potřebujete:
     * Pracujte na vlastním poznámkovém bloku Jupyter a nainstalujte sadu SDK sami s [těmito pokyny](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
 
 > [!NOTE]
-> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py&preserve-view=true) , který je kompatibilní pouze s 64-bitovým Pythonem. Pro uživatele se systémem Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) a CentOS (7).
+> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py&preserve-view=true) , který je kompatibilní pouze s 64-bitovým Pythonem. Pro uživatele se systémem Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) a CentOS (7). Subsystém Windows pro Linux se momentálně nepodporuje.
 
 ## <a name="compute-size-guidance"></a>Doprovodné materiály k výpočetním velikostem
 
@@ -166,8 +166,8 @@ titanic_ds.take(3).to_pandas_dataframe()
 |Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Name|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
-1|2|Pravda|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
-2|3|Pravda|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
+1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
+2|3|Ano|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 ### <a name="create-a-dataset-from-pandas-dataframe"></a>Vytvoření datové sady z PANDAS dataframe
 

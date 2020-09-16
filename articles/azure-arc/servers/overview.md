@@ -5,16 +5,16 @@ keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu,
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: c368307df911f5143541bb5337eb76a208416909
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c5779eecddcc9d7d2bd0b405a9bdadc88309fb35
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228083"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604712"
 ---
 # <a name="what-is-azure-arc-enabled-servers-preview"></a>Co jsou servery s podporou Azure ARC (Preview)?
 
-Servery s podporou ARC Azure (Preview) umožňují spravovat počítače se systémem Windows a Linux hostované mimo Azure, v podnikové síti nebo v jiném poskytovateli cloudu, podobně jako při správě nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je spravován jako součást skupiny prostředků v rámci předplatného a přináší výhody standardních konstrukcí Azure, jako je například Azure Policy a použití značek.
+Servery s podporou ARC Azure (Preview) umožňují spravovat počítače se systémem Windows a Linux hostované mimo Azure, v podnikové síti nebo v jiném poskytovateli cloudu, podobně jako při správě nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je spravován jako součást skupiny prostředků v rámci předplatného a přináší výhody standardních konstrukcí Azure, jako je například Azure Policy a použití značek. Poskytovatelé služeb, kteří spravují místní infrastrukturu zákazníka, můžou spravovat své hybridní počítače stejným způsobem jako v současnosti s nativními prostředky Azure, a to v rámci více zákaznických prostředí pomocí [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) s využitím Azure ARC.
 
 Aby bylo možné doručovat toto prostředí do vašich hybridních počítačů hostovaných mimo Azure, musí být na každém počítači, který plánujete připojit k Azure, nainstalovaný agent připojeného počítače Azure. Tento agent nedoručuje žádné jiné funkce a nenahrazuje [agenta Azure Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
 
@@ -33,6 +33,8 @@ Když počítač připojíte k serverům s podporou ARC Azure (Preview), umožn�
 - Zjednodušte nasazení s ostatními službami Azure, jako je konfigurace stavu Azure Automation, a Azure Monitor Log Analytics pracovní prostor s využitím podporovaných [rozšíření virtuálních počítačů Azure](manage-vm-extensions.md) pro počítače se systémem Windows nebo Linux mimo Azure. To zahrnuje provádění konfigurace po nasazení nebo instalace softwaru pomocí rozšíření vlastních skriptů.
 
 Data protokolu shromážděná a uložená v Log Analytics pracovním prostoru z hybridního počítače teď obsahují vlastnosti specifické pro daný počítač, jako je ID prostředku. To lze použít pro podporu přístupu k protokolu [kontextu prostředků](../../azure-monitor/platform/design-logs-deployment.md#access-mode) .
+
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="supported-regions"></a>Podporované oblasti
 

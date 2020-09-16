@@ -2,16 +2,19 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c88bed39c58b21464a7b97e54c80752a2552f8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511285"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604833"
 ---
-V tomto článku se dozvíte, jak začít používat Custom Vision klientské knihovny s Node.js k vytvoření modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace Node.js.
+Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro Node.js sestavení modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+
+> [!NOTE]
+> Pokud chcete sestavit a vytvořit model detekce objektu _bez_ psaní kódu, Projděte si [pokyny na základě prohlížeče](../../get-started-build-detector.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,7 +29,7 @@ V tomto článku se dozvíte, jak začít používat Custom Vision klientské kn
 
 ## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
 
-Chcete-li nainstalovat klientské knihovny Custom Vision služby pro Node.js ve vašem projektu, spusťte následující příkazy:
+K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro Node.js budete potřebovat balíčky Custom Vision NPM. Pokud je chcete nainstalovat, spusťte v PowerShellu následující příkaz:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -37,7 +40,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *sample.js* .
 
-### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
+## <a name="create-the-custom-vision-project"></a>Vytvoření projektu Custom Vision
 
 Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do příslušných definic vložte klíče předplatného a nastavte hodnotu cesty sampleDataRoot na cestu ke složce imagí. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.AI](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvořením projektu detekce objektu a klasifikace obrázků je doména zadaná ve volání **createProject** .
 
@@ -78,7 +81,7 @@ async function asyncForEach (array, callback) {
     const sampleProject = await trainer.createProject("Sample Obj Detection Project", { domainId: objDetectDomain.id });
 ```
 
-### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
+## <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
 Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec *sample.js*:
 
@@ -87,7 +90,7 @@ Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující
     const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
 ```
 
-### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
+## <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
 Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic. 
 
@@ -173,7 +176,7 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
+## <a name="train-and-publish-the-project"></a>Školení a publikování projektu
 
 Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
@@ -229,7 +232,11 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující průvodce školením se zabývá klasifikací imagí, ale jeho princip se podobá detekci objektů.
+Nyní jste provedli všechny kroky procesu detekce objektů v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
+
+* [Co je Custom Vision?](../../overview.md)
+* [Referenční dokumentace k sadě SDK (školení)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [Referenční dokumentace k sadě SDK (předpovědi)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

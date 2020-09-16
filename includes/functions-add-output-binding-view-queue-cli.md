@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 44823ce888e97b308f29403612f598c0eb585ae5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 894a89126d1ee3ed909134f3e0dd914166568654
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673373"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606869"
 ---
 Tuto frontu můžete zobrazit v [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) nebo v  [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/). Tuto frontu můžete také zobrazit v rozhraní příkazového řádku Azure CLI, jak je popsáno v následujících krocích:
 
@@ -18,7 +18,7 @@ Tuto frontu můžete zobrazit v [Azure Portal](../articles/storage/queues/storag
     # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
+    export AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
     ```
     
     # <a name="powershell"></a>[PowerShell](#tab/powershell)

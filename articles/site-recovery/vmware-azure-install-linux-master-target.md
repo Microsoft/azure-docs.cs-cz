@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130155"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604678"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro účely navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure můžete navrátit služby virtuálních počítačů na místní lokalitu. Pro navrácení služeb po obnovení musíte virtuální počítač znovu ochránit z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server pro příjem provozu. 
@@ -48,16 +48,7 @@ Vytvořte hlavní cíl podle následujících pokynů pro změnu velikosti:
 - **Velikost disku operačního systému**: 100 GB nebo více (pro instalaci operačního systému)
 - **Další velikost disku pro jednotku pro uchovávání dat**: 1 TB
 - **Jádra procesoru**: 4 jádra nebo víc
-
-Podporovány jsou následující jádra Ubuntu.
-
-
-|Řada jader  |Podpora až po  |
-|---------|---------|
-|4.4      |4.4.0 – 81 – obecný         |
-|4,8      |4.8.0 – 56 – obecný         |
-|4,10     |4.10.0-24 – obecný        |
-
+- **Jádro**: 4,16. *
 
 ## <a name="deploy-the-master-target-server"></a>Nasazení hlavního cílového serveru
 
@@ -155,7 +146,7 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
 
 ### <a name="configure-the-machine-as-a-master-target-server"></a>Konfigurace počítače jako hlavního cílového serveru
 
-Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se systémem Linux, **disk. **Je nutné povolit parametr EnableUUID = true. Chcete-li povolit tento parametr, proveďte následující kroky:
+Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se systémem Linux, **disk. ** Je nutné povolit parametr EnableUUID = true. Chcete-li povolit tento parametr, proveďte následující kroky:
 
 1. Vypněte virtuální počítač.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 763b5a9f4c471e338dd493c85ce93a67810b5134
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426295"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604321"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Správa přiřazování uživatelů pro aplikaci v Azure Active Directory
 
@@ -28,7 +28,7 @@ Pro lepší kontrolu je možné nakonfigurovat určité typy podnikových aplika
 > Když přiřadíte skupinu k aplikaci, budou mít přístup jenom uživatelé ve skupině. Přiřazení se neprovádí kaskádovitě pro vnořené skupiny.
 
 > [!NOTE]
-> Přiřazení na základě skupin vyžaduje Azure Active Directory Premium edici P1 nebo P2. Přiřazení na základě skupin se podporuje jenom pro skupiny zabezpečení. Vnořené členství ve skupinách a skupiny Office 365 se aktuálně nepodporují. Další licenční požadavky na funkce popsané v tomto článku najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
+> Přiřazení na základě skupin vyžaduje Azure Active Directory Premium edici P1 nebo P2. Přiřazení na základě skupin se podporuje jenom pro skupiny zabezpečení. Vnořené členství ve skupinách a skupiny Microsoft 365 nejsou aktuálně podporovány. Další licenční požadavky na funkce popsané v tomto článku najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>Konfigurace aplikace tak, aby vyžadovala přiřazení uživatele
 

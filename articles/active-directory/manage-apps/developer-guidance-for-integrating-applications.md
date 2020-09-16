@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6b24bd190eac9cb6c29ceab6eb597d8d1c48f2ff
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640442"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605086"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Vývoj obchodních aplikací pro Azure Active Directory
-Tato příručka poskytuje přehled vývoje obchodních aplikací pro Azure Active Directory (AD). Zamýšlenou cílovou skupinu je globální správce Active Directory/Office 365.
+Tato příručka poskytuje přehled vývoje obchodních aplikací pro Azure Active Directory (AD). Zamýšlená cílová skupina je globální správce služby Active Directory/Microsoft 365.
 
 ## <a name="overview"></a>Přehled
-Sestavování aplikací integrovaných do Azure AD uděluje uživatelům ve vaší organizaci jednotné přihlašování pomocí Office 365. Aplikace v Azure AD vám umožní řídit zásady ověřování pro aplikaci. Další informace o podmíněném přístupu a o tom, jak chránit aplikace pomocí vícefaktorového ověřování (MFA), najdete v tématu [Konfigurace pravidel přístupu](../conditional-access/app-based-mfa.md).
+Sestavování aplikací integrovaných do Azure AD poskytuje uživatelům ve vaší organizaci jednotné přihlašování pomocí Microsoft 365. Aplikace v Azure AD vám umožní řídit zásady ověřování pro aplikaci. Další informace o podmíněném přístupu a o tom, jak chránit aplikace pomocí vícefaktorového ověřování (MFA), najdete v tématu [Konfigurace pravidel přístupu](../conditional-access/app-based-mfa.md).
 
 Zaregistrujte svoji aplikaci, aby používala Azure Active Directory. Registrace aplikace znamená, že vývojáři můžou pomocí Azure AD ověřovat uživatele a žádat o přístup k uživatelským prostředkům, jako jsou e-mail, kalendář a dokumenty.
 

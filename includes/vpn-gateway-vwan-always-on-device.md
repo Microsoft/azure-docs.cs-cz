@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371718"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606861"
 ---
 Aby bylo možné úspěšně vytvořit tunelové zařízení, musí být splněny následující požadavky:
 
@@ -123,18 +123,18 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
+   ![Snímek obrazovky s příkazem pro spuštění 64 verze prostředí PowerShell zobrazuje okno příkazového řádku.](./media/vpn-gateway-vwan-always-on-device/powershell.png)
 1. V PowerShellu přejděte do složky, kde jsou umístěné **devicecert.ps1** a **VPNProfile.xml** a spusťte následující příkaz:
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![MachineCertTest](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
+   ![Snímek obrazovky zobrazuje okno prostředí PowerShell, které spouští MachineCertTest pomocí skriptu devicesert.](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
 1. Spusťte **Rasphone**.
 
-   ![Firma](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
+   ![Snímek obrazovky s vybraným dialogovým oknem Rasphone zobrazuje dialogové okno spuštění.](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
 1. Vyhledejte položku **MachineCertTest** a klikněte na **připojit**.
 
-   ![Připojit](./media/vpn-gateway-vwan-always-on-device/connect.png)
+   ![Snímek obrazovky se zobrazí dialogové okno Síťová připojení s vybraným MachineCertTest a tlačítkem připojit.](./media/vpn-gateway-vwan-always-on-device/connect.png)
 1. Pokud je připojení úspěšné, restartujte počítač. Tunel se automaticky připojí.

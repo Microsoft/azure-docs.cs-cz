@@ -3,15 +3,18 @@ author: areddish
 ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 1c72415a0d3dd6bc16eab435ad712225e9ec776e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/15/2020
+ms.openlocfilehash: 107cc24cc03c7f8716f4ee0577fc2372668adcd9
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90533195"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604829"
 ---
-V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vision s nástrojem Java k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat výchozí adresu URL koncového bodu předpovědi projektu a použít koncový bod pro programové testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Javě.
+Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro Java k sestavení modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+
+> [!NOTE]
+> Pokud chcete sestavit a vytvořit model detekce objektu _bez_ psaní kódu, Projděte si [pokyny na základě prohlížeče](../../get-started-build-detector.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -20,9 +23,9 @@ V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vis
 - [Maven](https://maven.apache.org/) nainstalované
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Získat Custom Vision klientskou knihovnu a ukázkový kód
+## <a name="get-the-custom-vision-client-library"></a>Získání klientské knihovny Custom Vision
 
-K napsání aplikace v Javě, která využívá službu Custom Vision, budete potřebovat balíčky maven pro službu Custom Vision. Tyto balíčky jsou součástí ukázkového projektu, který budete stahovat, ale můžete k nim přistupovat jednotlivě.
+K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro jazyk Java budete potřebovat balíčky Custom Vision Maven. Tyto balíčky jsou součástí ukázkového projektu, který budete stahovat, ale můžete k nim přistupovat jednotlivě.
 
 Knihovnu klienta Custom Vision můžete najít v centrálním úložišti Maven:
 - [Sada SDK pro trénování](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
@@ -48,7 +51,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 Ve svém prostředí Java IDE načtěte projekt `Vision/CustomVision` a otevřete soubor _CustomVisionSamples.java_. Vyhledejte metodu **runSample** a odkomentujte **ImageClassification_Sample** metoda volání &mdash; této metody provádí scénář klasifikace obrázku, který není popsaný v této příručce. Metoda **ObjectDetection_Sample** implementuje primární funkce tohoto rychlého startu. Přejděte k její definici a prozkoumejte kód. 
 
-## <a name="create-a-new-custom-vision-service-project"></a>Vytvoření nového projektu Custom Vision Service
+## <a name="create-a-new-custom-vision-project"></a>Vytvoření nového projektu Custom Vision
 
 Přejděte k bloku kódu, který vytvoří klienta trénování a projekt detekce objektů. Vytvořený projekt se zobrazí na [webu služby Custom Vision](https://customvision.ai/), který jste navštívili dříve. Pokud vytvoříte projekt (vysvětlení najdete v průvodci [vytvořením webového portálu detektoru](../../get-started-build-detector.md) ), podívejte se na přetížení metod [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) a určete další možnosti.
 
@@ -101,7 +104,10 @@ Ve výstupu konzoly zobrazte výsledky protokolování a předpovědi. Pak můž
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující průvodce školením se zabývá klasifikací imagí, ale jeho princip se podobá detekci objektů.
+Nyní jste provedli všechny kroky procesu detekce objektů v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
+
+* [Co je Custom Vision?](../../overview.md)
+* [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable)

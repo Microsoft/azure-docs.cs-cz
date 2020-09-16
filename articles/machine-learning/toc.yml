@@ -103,9 +103,9 @@
           displayName: studio
           href: concept-designer.md
         - name: Tahák s algoritmy
-          href: /azure/machine-learning/algorithm-cheat-sheet
+          href: algorithm-cheat-sheet.md
         - name: Postup při výběru algoritmů
-          href: /azure/machine-learning/how-to-select-algorithms
+          href: how-to-select-algorithms.md
     - name: Automatizované strojové učení
       items:
         - name: Přehled automatizovaného strojového učení

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: de6cd4ee2c9800757399b7e32b59d903b817c657
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053571"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604389"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -38,21 +38,25 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Národní prostředí  | Jazyk                          | Vlastní nastavení                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | Arabština (Spojené arabské emiráty)                      | Ne                                                |
+| `ar-AE` | Arabština (Spojené arabské emiráty)                      | No                                                |
 | `ar-BH` | Arabština (Bahrajn), moderní Standard | Jazykový model                                    |
 | `ar-EG` | Arabština (Egypt)                    | Jazykový model                                    |
-| `ar-IL` | Arabština (Izrael)                   | Ne                                                |
-| `ar-JO` | Arabština (Jordánsko)                   | Ne                                                |
-| `ar-KW` | Arabština (Kuvajt)                   | Ne                                                |
-| `ar-LB` | Arabština (Libanon)                  | Ne                                                |
-| `ar-PS` | Arabština (palestinská samospráva)                | Ne                                                |
-| `ar-QA` | Arabština (Katar)                    | Ne                                                |
-| `ar-SA` | Arabština (Saúdská Arábie)             | Ne                                                |
+| `ar-IL` | Arabština (Izrael)                   | No                                                |
+| `ar-IQ` | Arabština (Irák)                     | No                                                |
+| `ar-JO` | Arabština (Jordánsko)                   | No                                                |
+| `ar-KW` | Arabština (Kuvajt)                   | No                                                |
+| `ar-LB` | Arabština (Libanon)                  | No                                                |
+| `ar-OM` | Arabština (Omán)                     | No                                                |
+| `ar-PS` | Arabština (palestinská samospráva)                | No                                                |
+| `ar-QA` | Arabština (Katar)                    | No                                                |
+| `ar-SA` | Arabština (Saúdská Arábie)             | No                                                |
 | `ar-SY` | Arabština (Sýrie)                    | Jazykový model                                    |
-| `ca-ES` | Katalánština                           | Jazykový model                                    |
+| `bg-BG` | Bulharština (Bulharsko)              | Jazykový model                                    |
+| `ca-ES` | katalánština (Španělsko)                   | Jazykový model                                    |
 | `cs-CZ` | čeština (Česká republika)            | Jazykový model                                    | 
 | `da-DK` | dánština (Dánsko)                  | Jazykový model                                    |
 | `de-DE` | němčina (Německo)                  | Akustický model<br>Jazykový model<br>Výslovnost |
+| `el-GR` | Řečtina (Řecko)                    | Jazykový model                                    |
 | `en-AU` | Angličtina (Austrálie)               | Akustický model<br>Jazykový model                  |
 | `en-CA` | Angličtina (Kanada)                  | Akustický model<br>Jazykový model                  |
 | `en-GB` | Angličtina (Spojené království)          | Akustický model<br>Jazykový model<br>Výslovnost |
@@ -84,27 +88,36 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `es-SV` | Španělština (Salvador)             | Jazykový model                                    | 
 | `es-US` | Španělština (USA)                     | Jazykový model                                    | 
 | `es-UY` | Španělština (Uruguay)                 | Jazykový model                                    | 
-| `es-VE` | Španělština (Venezuela)               | Jazykový model                                    | 
+| `es-VE` | Španělština (Venezuela)               | Jazykový model                                    |
+| `et-EE` | Estonština (Estonsko)                 | Jazykový model                                    | 
 | `fi-FI` | finština (Finsko)                 | Jazykový model                                    |
 | `fr-CA` | Francouzština (Kanada)                   | Akustický model<br>Jazykový model                  |
 | `fr-FR` | francouzština (Francie)                   | Akustický model<br>Jazykový model<br>Výslovnost |
+| `ga-IE` | Irština (Irsko)                    | Jazykový model                                    |
 | `gu-IN` | Gudžarátština (Indie)                 | Jazykový model                                    |
 | `hi-IN` | hindština (Indie)                     | Akustický model<br>Jazykový model                  |
+| `hr-HR` | chorvatština (Chorvatsko)                | Jazykový model                                    |
 | `hu-HU` | Maďarština (Maďarsko)               | Jazykový model                                    | 
 | `it-IT` | italština (Itálie)                   | Akustický model<br>Jazykový model<br>Výslovnost |
 | `ja-JP` | japonština (Japonsko)                  | Jazykový model                                    |
 | `ko-KR` | korejština (Jižní Korea)                    | Jazykový model                                    |
+| `lt-LT` | litevština (Litva)            | Jazykový model                                    |
+| `lv-LV` | lotyština (Lotyšsko)                  | Jazykový model                                    |
 | `mr-IN` | Maráthština (Indie)                   | Jazykový model                                    |
+| `mt-MT` | Maltština (Malta)                    | Jazykový model                                    |
 | `nb-NO` | Norština (Bokmål) (Norsko)       | Jazykový model                                    |
 | `nl-NL` | nizozemština (Nizozemsko)               | Jazykový model                                    |
 | `pl-PL` | polština (Polsko)                   | Jazykový model                                    |
 | `pt-BR` | Portugalština (Brazílie)               | Akustický model<br>Jazykový model<br>Výslovnost |
 | `pt-PT` | portugalština (Portugalsko)             | Jazykový model                                    |
+| `ro-RO` | rumunština (Rumunsko)                | Jazykový model                                    |
 | `ru-RU` | ruština (Rusko)                  | Akustický model<br>Jazykový model                  |
+| `sk-SK` | slovenština (Slovensko)                 | Jazykový model                                    |
+| `sl-SI` | slovinština (Slovinsko)              | Jazykový model                                    |
 | `sv-SE` | švédština (Švédsko)                  | Jazykový model                                    |
 | `ta-IN` | Tamilština (Indie)                     | Jazykový model                                    |
 | `te-IN` | Telugština (Indie)                    | Jazykový model                                    |
-| `th-TH` | thajština (Thajsko)                   | Ne                                                |
+| `th-TH` | thajština (Thajsko)                   | No                                                |
 | `tr-TR` | turečtina (Turecko)                  | Jazykový model                                    |
 | `zh-CN` | Čínština (Mandarin, zjednodušená)    | Akustický model<br>Jazykový model                  |
 | `zh-HK` | Čínština (kantonština, tradiční)  | Jazykový model                                    |

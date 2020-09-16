@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75928061"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606165"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
 Pokud chcete začít používat entity zasílání zpráv služby Service Bus v Azure, musíte nejprve vytvořit obor názvů s jedinečným názvem v rámci Azure. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
 
 Vytvoření oboru názvů:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. V levém navigačním podokně portálu vyberte **+ vytvořit prostředek**, vyberte **integrace**a pak vyberte **Service Bus**.
 
     ![Vytvoření > > integrací prostředků Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
@@ -53,10 +53,10 @@ Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravi
 2. V okně oboru názvů klikněte na **Zásady sdíleného přístupu**.
 3. Na obrazovce **Zásady sdíleného přístupu** klikněte na **RootManageSharedAccessKey**.
    
-    ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
+    ![Snímek obrazovky s zvýrazněnou zásadou zobrazí okno zásady sdíleného přístupu.](./media/service-bus-create-namespace-portal/connection-info.png)
 4. V okně **Zásada: RootManageSharedAccessKey** klikněte na tlačítko Kopírovat vedle položky **Primární připojovací řetězec** a zkopírujte si připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
    
-    ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
+    ![Snímek obrazovky se zobrazí S názvem RootManageSharedAccessKey, který obsahuje klíče a připojovací řetězce.](./media/service-bus-create-namespace-portal/connection-string.png)
 5. Opakujte předchozí krok, zkopírujte si hodnotu pro **primární klíč** a vložte ji do dočasného umístění pro pozdější použití.
 
 <!--Image references-->

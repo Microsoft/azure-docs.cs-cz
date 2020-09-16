@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d00557e2279d236ff96a73c3a090097fbe6e5f1b
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061766"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603964"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Kurz: přesunutí virtuálních počítačů Azure napříč oblastmi
 
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -  Ověřte, že máte přístup *vlastníka* k předplatnému obsahujícímu prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
@@ -68,6 +68,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 Vyberte prostředky, které chcete přesunout.
 
 - Zobrazí se všechny podporované typy prostředků ve skupinách prostředků v rámci vybrané zdrojové oblasti.
+- Prostředky, které již byly přidány pro přesun mezi oblastmi, nejsou zobrazeny.
 - Prostředky přesunete do cílové oblasti ve stejném předplatném jako zdrojová oblast. Pokud chcete změnit předplatné, můžete to udělat po přesunu prostředků.
 
 1. V Azure Portal vyhledejte *prostředek Resource stěhovací*. Pak v části **služby**vyberte **Azure Resource stěhovací**.
@@ -89,7 +90,7 @@ Vyberte prostředky, které chcete přesunout.
     ![Na stránce vyberte virtuální počítače, které se mají přesunout.](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  V nabídce **prostředky k přesunutí**klikněte na **Další**.
-9. V části **Revize a přidat**zkontrolujte nastavení zdroje a cíle. Ověřte, že jste pochopili, že metadata o přesunu se uloží do skupiny prostředků vytvořené pro tento účel v oblasti metadat.
+9. V části **Revize a přidat**zkontrolujte nastavení zdroje a cíle. 
 
     ![Stránku ke kontrole nastavení a pokračování v přesunutí](./media/tutorial-move-region-virtual-machines/review.png)
 10. Klikněte na **pokračovat**a začněte přidávat prostředky.
@@ -234,7 +235,8 @@ Pokud chcete dokončit proces přesunutí, potvrďte přesunutí.
 
 ## <a name="configure-settings-after-the-move"></a>Konfigurovat nastavení po přesunutí
 
-Služba mobility není automaticky odinstalována z virtuálních počítačů. Odinstalujte ji ručně nebo ji nechte v případě, že plánujete přesunout server znovu.
+- Služba mobility není automaticky odinstalována z virtuálních počítačů. Odinstalujte ji ručně nebo ji nechte v případě, že plánujete přesunout server znovu.
+- Upravte pravidla řízení přístupu na základě role Azure (Azure RBAC) po přesunutí.
 
 ## <a name="delete-source-resources-after-commit"></a>Odstranit zdrojové prostředky po potvrzení změn
 

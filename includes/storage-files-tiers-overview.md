@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 034f5c487750600910cb32f73bcc6ea243b3ec6f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563425"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90606799"
 ---
 Služba soubory Azure nabízí čtyři různé úrovně úložiště, Premium, transakce optimalizované, horké a studené, aby bylo možné přizpůsobit své sdílené složky na požadavky na výkon a cenu vašeho scénáře:
 
@@ -24,6 +24,6 @@ Služba soubory Azure nabízí čtyři různé úrovně úložiště, Premium, t
 
 Sdílené složky Premium jsou dostupné jenom v modelu zřízené fakturace. Další informace o modelu zřízené fakturace pro sdílené složky Premium najdete v tématu [Principy zřizování pro sdílené složky prémiových souborů](../articles/storage/files/storage-files-planning.md#understanding-provisioning-for-premium-file-shares). Standardní sdílené složky, včetně transakcí optimalizovaných, Hot a studených sdílených složek, jsou k dispozici po fakturaci průběžných plateb.
 
-Horká a studená sdílená složka je dostupná ve všech veřejných oblastech Azure. Transakce optimalizované pro transakce jsou k dispozici ve všech oblastech Azure, včetně národních cloudových oblastí.
+Horké a studené sdílené složky jsou dostupné ve všech veřejných a Azure Government oblastech Azure. Transakce optimalizované pro transakce jsou k dispozici ve všech oblastech Azure, včetně oblastí Azure Čína a Azure Německo.
 
 Chcete-li nasadit horkou nebo studenou sdílenou složku, přečtěte si téma [Vytvoření horké nebo studené sdílené složky](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 

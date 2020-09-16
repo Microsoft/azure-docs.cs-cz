@@ -2,24 +2,27 @@
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 8af5d8ad2ed4d623d7128ffa5fba3c9e3647a057
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/15/2020
+ms.openlocfilehash: c9f5b5e84955c1974c19d0ccff1a89560fd3e78a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90533223"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604832"
 ---
-V tomto článku se dozvíte, jak začít používat Custom Vision klientské knihovny s jazykem C# k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat výchozí adresu URL koncového bodu předpovědi projektu a použít koncový bod pro programové testování obrázku. Použijte tento příklad jako šablonu pro vytvoření vlastní aplikace .NET. 
+Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro C# k sestavení modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+
+> [!NOTE]
+> Pokud chcete sestavit a vytvořit model detekce objektu _bez_ psaní kódu, Projděte si [pokyny na základě prohlížeče](../../get-started-build-detector.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Získat Custom Vision klientskou knihovnu a ukázkový kód
+## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
 
-K napsání aplikace .NET, která používá Custom Vision, budete potřebovat Custom Vision balíčky NuGet. Tyto balíčky jsou součástí ukázkového projektu, který budete stahovat, ale můžete k nim přistupovat jednotlivě.
+K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro .NET budete potřebovat balíčky Custom Vision NuGet. Tyto balíčky jsou součástí ukázkového projektu, který budete stahovat, ale můžete k nim přistupovat jednotlivě.
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
@@ -87,7 +90,7 @@ Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků p�
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_prediction_endpoint)]
 
-## <a name="use-the-prediction-endpoint"></a>Použití koncového bodu předpovědi
+## <a name="test-the-prediction-endpoint"></a>Testování koncového bodu předpovědi
 
 Tato část skriptu načte testovací image, provede dotaz na koncový bod modelu a výstupí data předpovědi do konzoly.
 
@@ -113,7 +116,10 @@ Pak můžete ověřit, zda je testovací obrázek (nalezen v **obrázcích/testu
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste viděli, jak provést všechny kroky procesu detekce objektů v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
+Nyní jste provedli všechny kroky procesu detekce objektů v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
+
+* [Co je Custom Vision?](../../overview.md)
+* [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)

@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 21ee22e7a493a6bbc8b5934e353db7c59b4aa17d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/15/2020
+ms.openlocfilehash: 16fbffa31563920e28538a961e621c894d105173
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90533383"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604834"
 ---
-V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vision s Pythonem k vytvoření modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu.
+Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro Python k sestavení modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+
+> [!NOTE]
+> Pokud chcete sestavit a vytvořit model detekce objektu _bez_ psaní kódu, Projděte si [pokyny na základě prohlížeče](../../get-started-build-detector.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -20,7 +23,7 @@ V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vis
 
 ## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
 
-Pokud chcete nainstalovat knihovnu klienta služby Custom Vision pro Python, spusťte v PowerShellu následující příkaz:
+K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro Python budete potřebovat klientskou knihovnu Custom Vision. Spusťte následující příkaz v PowerShellu:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
@@ -36,7 +39,7 @@ Obrázky si můžete stáhnout s [ukázkami Pythonu](https://github.com/Azure-Sa
 
 V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
 
-### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
+## <a name="create-the-custom-vision-project"></a>Vytvoření projektu Custom Vision
 
 Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Adresu URL koncového bodu si také můžete stáhnout ze stránky nastavení na webu Custom Vision.
 
@@ -67,7 +70,7 @@ print ("Creating project...")
 project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
 ```
 
-### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
+## <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
 Chcete-li v projektu vytvořit značky objektů, přidejte následující kód na konec *Sample.py*:
 
@@ -77,7 +80,7 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
+## <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
 Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic.
 
@@ -170,7 +173,7 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
+## <a name="train-and-publish-the-project"></a>Školení a publikování projektu
 
 Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
@@ -194,7 +197,7 @@ print ("Done!")
 >
 > Volitelně můžete naučit pouze podmnožinu použitých značek. Můžete to chtít udělat, pokud jste ještě nepoužili dostatek určitých značek, ale máte dost dalších. Ve **[train_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#train-project-project-id--training-type-none--reserved-budget-in-hours-0--force-train-false--notification-email-address-none--selected-tags-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** volání nastavte volitelný parametr *selected_tags* na seznam řetězců ID značek, které chcete použít. Model bude vlakem rozpoznávat pouze značky v tomto seznamu.
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
+## <a name="use-the-prediction-endpoint"></a>Použití koncového bodu předpovědi
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -229,7 +232,10 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující průvodce školením se zabývá klasifikací imagí, ale jeho princip se podobá detekci objektů.
+Nyní jste provedli všechny kroky procesu detekce objektů v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
+
+* [Co je Custom Vision?](../../overview.md)
+* [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 7957c6a3fdc8cb798292d03092ee1442b2c0a6bc
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fd541e551102b205acff28b6bc06bc88abd14763
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004506"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605103"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesun virtuálních počítačů Azure do Zóny dostupnosti
 
@@ -28,7 +28,7 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 - Přesun virtuálních počítačů ve skupině dostupnosti do Zóny dostupnosti v cílové oblasti
 
 > [!IMPORTANT]
-> K přesunu virtuálních počítačů Azure do zóny dostupnosti v jiné oblasti oblasti teď doporučujeme použít [Azure Resource stěhovací](../resource-mover/move-region-availability-zone.md). Resource stěhovací je ve verzi Public Preview a poskytuje:
+> K přesunutí virtuálních počítačů Azure do zóny dostupnosti v jiné oblasti teď doporučujeme použít [Azure Resource stěhovací](../resource-mover/move-region-availability-zone.md). Resource stěhovací je ve verzi Public Preview a poskytuje:
 > - Jediné centrum pro přesouvání prostředků napříč oblastmi.
 > - Zkrácená doba přesunutí a složitost. Všechno, co potřebujete, je na jednom místě.
 > - Jednoduché a konzistentní prostředí pro přesun různých typů prostředků Azure.

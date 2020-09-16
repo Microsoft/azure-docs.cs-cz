@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 36107f69fb51e16ef8f8a6213afc9b153165ab4c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a1848adfd61d9d8f6db0bb16fe75c04b4a22005
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090583"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604270"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování ve službě Azure Cosmos DB
 
 V Azure Cosmos DB jsou data indexována po [indexování zásad](index-policy.md) , které jsou definovány pro každý kontejner. Výchozí zásady indexování pro nově vytvořené kontejnery u všech řetězců a čísel vynucují indexy rozsahu. Tyto zásady je možné přepsat vlastními zásadami indexování.
 
 > [!NOTE]
-> Metoda aktualizace zásad indexování popsaná v tomto článku se týká jenom rozhraní API pro Azure Cosmos DB SQL (Core). Přečtěte si o indexování v [rozhraní Azure Cosmos DB API pro MongoDB](mongodb-indexing.md).
+> Metoda aktualizace zásad indexování popsaná v tomto článku se týká jenom rozhraní API pro Azure Cosmos DB SQL (Core). Přečtěte si o indexování v [rozhraní Azure Cosmos DB API pro MongoDB](mongodb-indexing.md) a [sekundární indexování v Azure Cosmos DB rozhraní API Cassandra.](cassandra-secondary-index.md)
 
 ## <a name="indexing-policy-examples"></a>Příklady zásad indexování
 
@@ -353,7 +353,7 @@ V Azure Cosmos DB můžete zásady indexování aktualizovat pomocí kterékoli 
 
 Kontejnery Azure Cosmos ukládají své zásady indexování jako dokument JSON, který vám Azure Portal umožňuje přímo upravit.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 

@@ -2,17 +2,19 @@
 title: Definování více instancí vlastnosti
 description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování několikrát při vytváření vlastnosti prostředku.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678456"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605239"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Iterace vlastnosti v šablonách ARM
 
-V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti v šabloně Azure Resource Manager (ARM). Přidáním elementu **kopírování** do oddílu Vlastnosti prostředku ve vaší šabloně můžete dynamicky nastavit počet položek pro vlastnost během nasazení. Nemusíte se také vyhnout opakování syntaxe šablony.
+V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti v šabloně Azure Resource Manager (šablona ARM). Přidáním elementu **kopírování** do oddílu Vlastnosti prostředku ve vaší šabloně můžete dynamicky nastavit počet položek pro vlastnost během nasazení. Nemusíte se také vyhnout opakování syntaxe šablony.
+
+Kopírovat můžete pouze pomocí prostředků nejvyšší úrovně, i když aplikujete kopírování na vlastnost. Další informace o změně podřízeného prostředku na prostředek nejvyšší úrovně najdete v tématu [iterace u podřízeného prostředku](copy-resources.md#iteration-for-a-child-resource).
 
 Můžete také použít kopírování s [prostředky](copy-resources.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
 

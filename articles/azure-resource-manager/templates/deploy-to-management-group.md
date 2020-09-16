@@ -2,13 +2,13 @@
 title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 2265f1d31176052c7e7c358ee8ed4cb06fb50ee7
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/15/2020
+ms.openlocfilehash: 2325e9f5a03f7451492c9b9b8e929df95ddc3852
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469791"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605222"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Vytváření prostředků na úrovni skupiny pro správu
 
@@ -65,7 +65,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 Příkazy pro nasazení skupiny pro správu se liší od příkazů pro nasazení skupin prostředků.
 
-Pro rozhraní příkazového řádku Azure CLI použijte [AZ Deployment g Create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create):
+Pro rozhraní příkazového řádku Azure CLI použijte [AZ Deployment g Create](/cli/azure/deployment/mg#az-deployment-mg-create):
 
 ```azurecli-interactive
 az deployment mg create \

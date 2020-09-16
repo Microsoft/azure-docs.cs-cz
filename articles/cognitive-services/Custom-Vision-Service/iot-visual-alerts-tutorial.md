@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244665"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604287"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Kurz: použití Custom Vision se zařízením IoT k hlášení vizuálních stavů
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak:
 > * Použijte aplikaci ke školení Custom Visionho projektu.
 > * Použijte aplikaci k vyhodnocení nových imagí v reálném čase a odeslání výsledků do Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services). 
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,11 +52,11 @@ Aplikace pro vizuální výstrahy IoT se spouští v souvislé smyčce, přičem
 * **Čekání na vyškolený model**: v tomto stavu aplikace volá rozhraní API Custom Vision každou sekundu, aby zkontrolovala, jestli cílový projekt obsahuje proškolenou iteraci. Když ho najde, stáhne odpovídající model ONNX do místního souboru a přepne do stavu **bodování** .
 * **Bodování**: v tomto stavu aplikace používá Windows ml k vyhodnocení jednoho snímku z fotoaparátu proti místnímu ONNX modelu. Výsledná klasifikace obrázku se zobrazí na obrazovce a odešle se jako zpráva do IoT Hub. Aplikace se pak před vyhodnocením nové image do režimu spánku za jednu sekundu.
 
-## <a name="understand-the-code-structure"></a>Pochopení struktury kódu
+## <a name="examine-the-code-structure"></a>Kontrola struktury kódu
 
 Následující soubory zpracovávají hlavní funkce aplikace.
 
-| Soubor | Popis |
+| Soubor | Description |
 |-------------|-------------|
 | [MainPage. XAML](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Tento soubor definuje uživatelské rozhraní XAML. Je hostitelem ovládacího prvku webové kamery a obsahuje popisky používané pro aktualizace stavu.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Tento kód řídí chování uživatelského rozhraní XAML. Obsahuje kód pro zpracování stavového stroje.|
@@ -98,13 +98,13 @@ I když aplikace zachytí image, je nutné ji zveřejnit pro typy vizuálních s
 
 ## <a name="train-the-custom-vision-model"></a>Výuka Custom Visionho modelu
 
-Jakmile aplikace dokončí zachycení imagí, nahraje je a pak přepne na stav **čekání na vyškolený model** . V tuto chvíli potřebujete přejít na [portál Custom Vision](https://www.customvision.ai/) a vytvořit model založený na nových školicích obrázcích. Příklad tohoto procesu znázorňuje následující animace.
+Jakmile aplikace dokončí zachycení imagí, nahraje je a pak přepne na stav **čekání na vyškolený model** . V tuto chvíli potřebujete přejít na [web Custom Vision](https://www.customvision.ai/) a vytvořit model založený na nových školicích obrázcích. Příklad tohoto procesu znázorňuje následující animace.
 
 ![Animace: označení více obrázků banánů](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 Postup opakování tohoto procesu ve vlastním scénáři:
 
-1. Přihlaste se k [portálu Custom Vision](http://customvision.ai).
+1. Přihlaste se k [webu Custom Vision](http://customvision.ai).
 1. Vyhledejte cílový projekt, který by teď měl mít všechny školicí materiály, které nahrála aplikace.
 1. U každého vizuálního stavu, který chcete identifikovat, vyberte příslušné bitové kopie a ručně použijte značku.
     * Například pokud váš cíl rozlišuje mezi prázdnou místností a místností s lidmi, doporučujeme označit pět nebo více obrázků s lidmi jako novou třídu, **lidi**a označením pěti nebo více obrázků, aniž by bylo nutné používat jako **zápornou** značku. To vám pomůže model odlišit mezi oběma stavy.

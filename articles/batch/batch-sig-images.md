@@ -2,14 +2,14 @@
 title: Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 description: Vlastní fondy imagí představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852408"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605188"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
@@ -43,7 +43,9 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 - **Obrázek Galerie sdílených imagí** Chcete-li vytvořit sdílenou bitovou kopii, je nutné mít nebo vytvořit prostředek spravované bitové kopie. Image by se měla vytvořit ze snímků disku s operačním systémem virtuálního počítače a volitelně z připojených datových disků.
 
 > [!NOTE]
-> Vaše sdílená bitová kopie musí být ve stejném předplatném jako účet Batch. Obrázek může být v různých oblastech, pokud má repliky ve stejné oblasti jako váš účet Batch.
+> Pokud sdílená bitová kopie není ve stejném předplatném jako účet Batch, musíte pro toto předplatné [zaregistrovat poskytovatele prostředků Microsoft.Batch](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) . Obě předplatná musí být ve stejném tenantovi Azure AD.
+>
+> Obrázek může být v jiné oblasti, pokud má repliky ve stejné oblasti jako váš účet Batch.
 
 Pokud k vytvoření vlastního fondu imagí s imagí Galerie sdílených imagí použijete aplikaci Azure AD, musí být této aplikaci udělená [předdefinovaná role Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) , která mu umožní přístup ke sdílené imagi. Tento přístup můžete udělit v Azure Portal tak, že přejdete ke sdílené imagi, vyberete **řízení přístupu (IAM)** a přidáte přiřazení role pro aplikaci.
 
@@ -87,7 +89,7 @@ Po úspěšném vytvoření spravované image musíte vytvořit sdílenou galeri
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Vytvoření fondu ze sdílené Image pomocí Azure CLI
 
-Pokud chcete vytvořit fond ze sdílené Image pomocí Azure CLI, použijte `az batch pool create` příkaz. V poli zadejte ID sdílené bitové kopie `--image` . Zajistěte, aby typ operačního systému a SKU odpovídaly verzím, které určuje.`--node-agent-sku-id`
+Pokud chcete vytvořit fond ze sdílené Image pomocí Azure CLI, použijte `az batch pool create` příkaz. V poli zadejte ID sdílené bitové kopie `--image` . Zajistěte, aby typ operačního systému a SKU odpovídaly verzím, které určuje. `--node-agent-sku-id`
 
 > [!NOTE]
 > Musíte se ověřit pomocí Azure AD. Pokud používáte ověřování Shared-Key-Authentication, zobrazí se chyba ověřování.  

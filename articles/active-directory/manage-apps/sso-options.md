@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: ab4d150d79b2c53ad23d892efacef6a848d97854
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469809"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604202"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Možnosti jednotného přihlašování v Azure AD
 
@@ -24,7 +24,7 @@ Jednotné přihlašování poskytuje mnoho výhod oproti tradičním metodám p�
 
 - **S jednotným přihlašováním**se uživatelé přihlásí jednou z účtu pro přístup k zařízením připojeným k doméně, prostředkům společnosti, aplikacím SaaS (software jako služba) a webovým aplikacím. Po přihlášení může uživatel spouštět aplikace z portálu Office 365 nebo z mých aplikací. Správci mohou centralizovat správu uživatelských účtů a automaticky přidávat nebo odebírat přístup uživatelů k aplikacím na základě členství ve skupinách.
 
-- **Bez jednotného přihlašování**si uživatelé musí pamatovat hesla pro konkrétní aplikace a přihlašovat se ke každé aplikaci. Pracovníci IT potřebují vytvořit a aktualizovat uživatelské účty pro každou aplikaci, například Office 365, box a Salesforce. Uživatelé si musí pamatovat hesla a zasílat čas na přihlášení ke každé aplikaci.
+- **Bez jednotného přihlašování**si uživatelé musí pamatovat hesla pro konkrétní aplikace a přihlašovat se ke každé aplikaci. Pracovníci IT potřebují vytvořit a aktualizovat uživatelské účty pro každou aplikaci, například Microsoft 365, box nebo Salesforce. Uživatelé si musí pamatovat hesla a zasílat čas na přihlášení ke každé aplikaci.
 
 Další informace o jednotném přihlašování najdete v tématu [co je jednotné přihlašování?](what-is-single-sign-on.md).
 
@@ -137,7 +137,7 @@ Díky připojenému přihlašování může Azure AD poskytovat jednotné přihl
 
 ### <a name="linked-sign-on-for-application-migration"></a>Propojené přihlašování pro migraci aplikace
 
-Díky připojenému přihlašování můžete zajistit konzistentní uživatelské prostředí při migraci aplikací v časovém intervalu. Pokud migrujete aplikace na Azure Active Directory, můžete k rychlému publikování odkazů na všechny aplikace, které máte v úmyslu migrovat, použít propojené přihlašování.  Uživatelé můžou najít všechny odkazy na [portálu MyApp](../user-help/active-directory-saas-access-panel-introduction.md) nebo ve [spouštěči aplikací Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Uživatelé nebudou znát přístup k propojené aplikaci nebo migrované aplikaci.  
+Díky připojenému přihlašování můžete zajistit konzistentní uživatelské prostředí při migraci aplikací v časovém intervalu. Pokud migrujete aplikace na Azure Active Directory, můžete k rychlému publikování odkazů na všechny aplikace, které máte v úmyslu migrovat, použít propojené přihlašování.  Uživatelé můžou najít všechny odkazy na [portálu MyApp](../user-help/active-directory-saas-access-panel-introduction.md) nebo ve [Spouštěči aplikací Microsoft 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Uživatelé nebudou znát přístup k propojené aplikaci nebo migrované aplikaci.  
 
 Jakmile se uživatel s propojenou aplikací ověří, musí se vytvořit záznam účtu, aby byl koncovým uživatelům poskytnutý přístup s jednotným přihlašováním. K tomu, aby se tento záznam účtu mohl vyskytnout automaticky, nebo ho může vyskytnout správce ručně.
 
