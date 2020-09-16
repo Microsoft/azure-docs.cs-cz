@@ -21,7 +21,7 @@ Aby bylo možné svůj model efektivně vyškolit, používejte obrázky s vizu�
 * vizuální styl
 * jednotlivé/seskupené (é) věci
 * velikost
-* type
+* typ
 
 Navíc se ujistěte, že všechny vaše školicí image splňují následující kritéria:
 * formát. jpg,. png,. bmp nebo. gif
