@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 46116fd7157b6a1cf8112613703aa2388b3ba7d3
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056179"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707522"
 ---
 # <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
 
@@ -24,13 +24,8 @@ V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a f
 
 1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
 1. Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.
-1. Vyberte **Přidat** a vytvořte pracovní prostor pomocí těchto nastavení:
-
-    |Karta|Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|---|
-    |Základy|**Název pracovního prostoru**|Můžete si je pojmenovat.| V tomto dokumentu budeme používat **MyWorkspace**.|
-    |Základy|**Oblast**|Porovnává s oblastí účtu úložiště.|
-
+1. Vyberte **Přidat** a vytvořte pracovní prostor.
+1. V oblasti **základy**vyberte název pracovního prostoru. V tomto kurzu použijeme **MyWorkspace**.
 1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2. Nejjednodušší volbou je vytvořit nové. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
 1. MOŽNOST 1 Vytvoření nového účtu ADLSGEN2 
     1. Přejděte k **výběru Data Lake Storage Gen 2**. 

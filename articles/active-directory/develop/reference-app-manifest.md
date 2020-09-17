@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115063"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705741"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -33,7 +33,7 @@ Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově 
 
 Konfigurace manifestu aplikace:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
+1. Přejděte na web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
 1. Vyberte **Registrace aplikací**.
 1. Vyberte aplikaci, kterou chcete nakonfigurovat.
 1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se webový editor manifestu, který umožňuje upravovat manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** a upravit manifest místně a potom použít **nahrávání** pro jeho opakované použití do aplikace.
@@ -82,7 +82,7 @@ Příklad:
 | :--- | :--- |
 | addIns | Kolekce |
 
-Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy souborů, mohou nastavit `addIns` vlastnost pro její funkci "handlerer". Tento parametr umožní službám, jako je Office 365, volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
+Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy souborů, mohou nastavit `addIns` vlastnost pro její funkci "handlerer". Tento parametr umožní službám, jako Microsoft 365 volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
 
 Příklad:
 
@@ -193,8 +193,8 @@ Neplatné.
 Nakonfiguruje `groups` deklaraci identity vydanou v uživatelském nebo přístupovém tokenu OAuth 2,0, který očekává aplikace. Chcete-li nastavit tento atribut, použijte jednu z následujících platných řetězcových hodnot:
 
 - `"None"`
-- `"SecurityGroup"`(pro skupiny zabezpečení a role Azure AD)
-- `"All"`(zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem.
+- `"SecurityGroup"` (pro skupiny zabezpečení a role Azure AD)
+- `"All"` (zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem.
 
 Příklad:
 
@@ -433,8 +433,8 @@ Příklad:
 | :--- | :--- |
 | parentalControlSettings | Řetězec |
 
-- `countriesBlockedForMinors`Určuje země nebo oblasti, ve kterých je aplikace blokovaná pro nezletilé.
-- `legalAgeGroupRule`Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow` , `RequireConsentForPrivacyServices` ,, `RequireConsentForMinors` `RequireConsentForKids` nebo `BlockMinors` .
+- `countriesBlockedForMinors` Určuje země nebo oblasti, ve kterých je aplikace blokovaná pro nezletilé.
+- `legalAgeGroupRule` Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow` , `RequireConsentForPrivacyServices` ,, `RequireConsentForMinors` `RequireConsentForKids` nebo `BlockMinors` .
 
 Příklad:
 
@@ -555,8 +555,8 @@ Příklad:
 
 S dynamickým souhlasem se `requiredResourceAccess` pro uživatele, kteří používají statický souhlas, řídí prostředí pro vyjádření souhlasu správce a uživatelské prostředí pro vyjádření souhlasu uživatele. Tento parametr ale neřídí uživatelské prostředí pro vyjádření souhlasu uživatele pro obecný případ.
 
-- `resourceAppId`je jedinečný identifikátor pro prostředek, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být stejná jako appId deklarované v cílové aplikaci prostředků.
-- `resourceAccess`je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace vyžaduje ze zadaného prostředku. Obsahuje `id` hodnoty a pro `type` zadané prostředky.
+- `resourceAppId` je jedinečný identifikátor pro prostředek, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být stejná jako appId deklarované v cílové aplikaci prostředků.
+- `resourceAccess` je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace vyžaduje ze zadaného prostředku. Obsahuje `id` hodnoty a pro `type` zadané prostředky.
 
 Příklad:
 
@@ -609,10 +609,10 @@ Příklad:
 | signInAudience | Řetězec |
 
 Určuje, jaké účty Microsoft se pro aktuální aplikaci podporují. Podporované hodnoty jsou:
-- `AzureADMyOrg`– Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například jeden tenant)
-- `AzureADMultipleOrgs`– Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například víceklientská tenant)
-- `AzureADandPersonalMicrosoftAccount`– Uživatelé s osobní účet Microsoft nebo pracovní nebo školní účet v tenantovi Azure AD ve vaší organizaci
-- `PersonalMicrosoftAccount`– Osobní účty používané pro přihlášení ke službám, jako jsou Xbox a Skype.
+- `AzureADMyOrg` – Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například jeden tenant)
+- `AzureADMultipleOrgs` – Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například víceklientská tenant)
+- `AzureADandPersonalMicrosoftAccount` – Uživatelé s osobní účet Microsoft nebo pracovní nebo školní účet v tenantovi Azure AD ve vaší organizaci
+- `PersonalMicrosoftAccount` – Osobní účty používané pro přihlášení ke službám, jako jsou Xbox a Skype.
 
 Příklad:
 

@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563909"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707964"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace
 
@@ -27,7 +27,7 @@ Další informace o používání služby Azure AD jako zprostředkovatele ident
 Tyto aplikace jsou nakonfigurované jménem uživatele na portálu Azure AD. Aplikace musí být správně nakonfigurována a přiřazena uživateli nebo skupině, pro kterou je uživatel členem, aby zobrazila aplikaci v mých aplikacích. 
 
 Typ aplikací, které může uživatel zobrazit, spadají do následujících kategorií:
--   Aplikace Microsoft 365 a Office 365
+-   Microsoft 365 aplikací
 -   Aplikace Microsoftu a aplikace třetích stran nakonfigurované pomocí jednotného přihlašování založeného na federaci
 -   Aplikace jednotného přihlašování založené na heslech
 -   Aplikace s existujícími řešeními jednotného přihlašování
@@ -163,7 +163,7 @@ K přiřazení licence uživateli použijte následující postup:
 11. Pro přiřazení těchto licencí tomuto uživateli vyberte tlačítko **přiřadit** .
 
 ## <a name="troubleshooting-deep-links"></a>Odstraňování potíží s přímými odkazy
-Přímé odkazy nebo adresy URL pro přístup uživatelů jsou odkazy, které uživatelé můžou použít pro přístup k svým aplikacím jednotného přihlašování k heslům přímo z jejich panelů adresa URL prohlížeče. Když přejdete na tento odkaz, uživatelé se do aplikace automaticky přihlásí, aniž by museli nejprve přejít na moje aplikace. Odkaz je stejný jako ten, který uživatelé používají pro přístup k těmto aplikacím ze Spouštěče aplikací Office 365.
+Přímé odkazy nebo adresy URL pro přístup uživatelů jsou odkazy, které uživatelé můžou použít pro přístup k svým aplikacím jednotného přihlašování k heslům přímo z jejich panelů adresa URL prohlížeče. Když přejdete na tento odkaz, uživatelé se do aplikace automaticky přihlásí, aniž by museli nejprve přejít na moje aplikace. Odkaz je stejný jako ten, který uživatelé používají pro přístup k těmto aplikacím ze Spouštěče aplikací Microsoft 365.
 
 ### <a name="checking-the-deep-link"></a>Kontroluje se přímý odkaz.
 

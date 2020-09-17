@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: dd009542adffed2f459534c943e3a873678ecd35
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 971554443e5b420cf759f86013445a6ff9069dea
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604916"
+ms.locfileid: "90706866"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Porozumění změnám v kořenové CA se mění Azure Database for MySQL
 
@@ -28,10 +28,9 @@ Nový certifikát se použije od 26. října 2020 (10/26/2020). Pokud při přip
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Návody informace o tom, jestli se má tato databáze týkat?
 
 Všechny aplikace, které používají protokol SSL/TLS a ověřují kořenový certifikát, musí aktualizovat kořenový certifikát. Můžete zjistit, jestli vaše připojení ověřují kořenový certifikát, a to tak, že zkontrolujete připojovací řetězec.
--   Pokud váš připojovací řetězec obsahuje `sslmode=verify-ca` nebo ""
--   Pokud váš připojovací řetězec obsahuje `sslmode=disable` , nemusíte aktualizovat certifikáty.
--   Pokud váš připojovací řetězec obsahuje `sslmode=allow` , `sslmode=prefer` nebo, `sslmode=require` nemusíte aktualizovat certifikáty. 
--   Pokud váš připojovací řetězec nezahrnuje konkrétní sslmode, nemusíte aktualizovat certifikáty.
+-   Pokud váš připojovací řetězec obsahuje `sslmode=verify-ca` nebo `sslmode=verify-full` , musíte aktualizovat certifikát.
+-   Pokud váš připojovací řetězec obsahuje `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` nebo `sslmode=require` , nemusíte aktualizovat certifikáty. 
+-   Pokud v připojovacím řetězci neurčíte sslmode, nemusíte aktualizovat certifikáty.
 
 Pokud používáte klienta, který vyabstrakce připojovací řetězec, přečtěte si dokumentaci klienta, abyste zjistili, zda ověřuje certifikáty.
 Pokud chcete pochopit Azure Database for MySQL sslmode, přečtěte si téma [popisy režimu SSL](concepts-ssl-connection-security.md#ssl-default-settings).

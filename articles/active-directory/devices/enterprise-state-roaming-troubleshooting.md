@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267237"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705720"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s nastavením Enterprise State Roaming v Azure Active Directory
 
@@ -78,9 +78,9 @@ Enterprise State Roaming vyžaduje, aby zařízení bylo zaregistrované ve slu�
 
 Za určitých podmínek může Enterprise State Roaming selhat při synchronizaci dat, pokud je nakonfigurovaná Azure Multi-Factor Authentication. Další informace o těchto symptomech najdete v dokumentu podpory [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Potenciální problém**: Pokud je vaše zařízení nakonfigurované tak, aby vyžadovalo Multi-Factor Authentication na portále Azure Active Directory, nemůžete při přihlašování k zařízení s Windows 10 pomocí hesla nakonfigurovat jeho nastavení. Tento typ konfigurace Multi-Factor Authentication slouží k ochraně účtu správce Azure. Uživatelé s oprávněními správce můžou pořád synchronizovat přihlášením ke svým zařízením s Windows 10 a jejich Microsoft Passport for Work kódem PIN nebo doplněním Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Office 365.
+**Potenciální problém**: Pokud je vaše zařízení nakonfigurované tak, aby vyžadovalo Multi-Factor Authentication na portále Azure Active Directory, nemůžete při přihlašování k zařízení s Windows 10 pomocí hesla nakonfigurovat jeho nastavení. Tento typ konfigurace Multi-Factor Authentication slouží k ochraně účtu správce Azure. Uživatelé s rolí správce můžou pořád synchronizovat přihlášením ke svým zařízením s Windows 10 a jejich Microsoft Passport for Work kódem PIN nebo doplněním Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Microsoft 365.
 
-**Možný problém**: synchronizace může selhat, pokud správce nakonfiguruje Active Directory Federation Services (AD FS) zásady podmíněného přístupu Multi-Factor Authentication a platnost přístupového tokenu v zařízení vyprší. Ujistěte se, že jste se přihlásili a odhlásili pomocí Microsoft Passport for Work kódu PIN nebo dokončete Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Office 365.
+**Možný problém**: synchronizace může selhat, pokud správce nakonfiguruje Active Directory Federation Services (AD FS) zásady podmíněného přístupu Multi-Factor Authentication a platnost přístupového tokenu v zařízení vyprší. Ujistěte se, že jste se přihlásili a odhlásili pomocí Microsoft Passport for Work PIN nebo dokončete Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Microsoft 365.
 
 ### <a name="event-viewer"></a>Prohlížeč událostí
 

@@ -1,6 +1,6 @@
 ---
 title: Obory, oprávnění a souhlas platformy Microsoft identity
-description: Popis autorizace na koncovém bodu Microsoft Identity Platform, včetně oborů, oprávnění a souhlasu
+description: Přečtěte si o autorizaci na koncovém bodu Microsoft Identity Platform, včetně oborů, oprávnění a souhlasu.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263223"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705686"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
 
@@ -27,12 +27,12 @@ Aplikace, které se integrují se sadou Microsoft Identity Platform, se řídí 
 
 Platforma Microsoft Identity implementuje autorizační protokol [OAuth 2,0](active-directory-v2-protocols.md) . OAuth 2,0 je metoda, přes kterou má aplikace třetí strany přístup k prostředkům hostovaným na webu jménem uživatele. Jakýkoli prostředek hostovaný na webu, který se integruje s platformou Microsoft identity, má identifikátor prostředku nebo identifikátor *URI ID aplikace*. Mezi prostředky hostované na webu od Microsoftu patří například:
 
-* Microsoft Graph:`https://graph.microsoft.com`
-* Rozhraní API pro poštu Office 365:`https://outlook.office.com`
-* Azure Key Vault:`https://vault.azure.net`
+* Microsoft Graph: `https://graph.microsoft.com`
+* Rozhraní API pro Microsoft 365 poštu: `https://outlook.office.com`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Důrazně doporučujeme použít Microsoft Graph místo rozhraní Office 365 mail API atd.
+> Důrazně doporučujeme použít Microsoft Graph místo rozhraní API pro Microsoft 365 poštu atd.
 
 Totéž platí pro všechny prostředky třetích stran, které jsou integrované s platformou Microsoft identity. Kterýkoli z těchto prostředků taky může definovat sadu oprávnění, která se dají použít k rozdělení funkcí tohoto prostředku do menších bloků dat. Například [Microsoft Graph](https://graph.microsoft.com) má definovaná oprávnění k provádění následujících úloh mimo jiné:
 
@@ -44,9 +44,9 @@ Definováním těchto typů oprávnění prostředek má jemně odstupňovanou k
 
 V případě OAuth 2,0 se tyto typy oprávnění nazývají *obory*. Jsou také často označována jako *oprávnění*. Oprávnění je reprezentované na platformě Microsoft Identity jako řetězcová hodnota. Pokračování v Microsoft Graph příkladu je hodnota řetězce pro každé oprávnění:
 
-* Čtení kalendáře uživatele pomocí`Calendars.Read`
-* Zápis do kalendáře uživatele pomocí`Calendars.ReadWrite`
-* Odeslat e-mail jako uživatel pomocí`Mail.Send`
+* Čtení kalendáře uživatele pomocí `Calendars.Read`
+* Zápis do kalendáře uživatele pomocí `Calendars.ReadWrite`
+* Odeslat e-mail jako uživatel pomocí `Mail.Send`
 
 Aplikace tyto oprávnění nejčastěji vyžádá zadáním oborů v požadavcích na koncový bod autorizace platformy Microsoft Identity Platform. Určitá oprávnění s vysokou úrovní oprávnění je však možné udělit pouze prostřednictvím souhlasu správce a žádosti nebo uděleny pomocí [koncového bodu souhlasu správce](v2-permissions-and-consent.md#admin-restricted-permissions). Přečtěte si další informace.
 
@@ -134,9 +134,9 @@ Navíc musí aplikace požádat o oprávnění aplikace pomocí koncového bodu 
 
 Některá oprávnění s vysokou úrovní oprávnění v ekosystému Microsoftu je možné nastavit jako *omezené na správu*. Mezi příklady těchto typů oprávnění patří následující:
 
-* Čtení úplných profilů všech uživatelů pomocí`User.Read.All`
-* Zápis dat do adresáře organizace pomocí`Directory.ReadWrite.All`
-* Čtení všech skupin v adresáři organizace pomocí`Groups.Read.All`
+* Čtení úplných profilů všech uživatelů pomocí `User.Read.All`
+* Zápis dat do adresáře organizace pomocí `Directory.ReadWrite.All`
+* Čtení všech skupin v adresáři organizace pomocí `Groups.Read.All`
 
 I když uživatel příjemce může udělit aplikaci přístup k tomuto druhu dat, uživatelům organizace se omezuje udělení přístupu ke stejné sadě citlivých firemních dat. Pokud vaše aplikace požaduje přístup k některé z těchto oprávnění od uživatele organizace, obdrží chybová zpráva s oznámením, že nemají oprávnění k souhlasu s oprávněními vaší aplikace.
 
@@ -193,12 +193,12 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parametr        | Podmínka        | Description                                                                                |
+| Parametr        | Stav        | Popis                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Vyžadováno | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazovaného v rámci organizací, jak je vidět v příkladu. Nepoužívejte "Common", protože osobní účty nemůžou poskytovat souhlas správce, s výjimkou kontextu tenanta. Aby se zajistila nejlepší kompatibilita s osobními účty, které spravují klienty, použijte ID tenanta, pokud je to možné. |
+| `tenant` | Povinné | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazovaného v rámci organizací, jak je vidět v příkladu. Nepoužívejte "Common", protože osobní účty nemůžou poskytovat souhlas správce, s výjimkou kontextu tenanta. Aby se zajistila nejlepší kompatibilita s osobními účty, které spravují klienty, použijte ID tenanta, pokud je to možné. |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
 | `redirect_uri` | Vyžadováno |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
-| `state` | Doporučené | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
+| `state` | Doporučeno | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
 |`scope`        | Vyžadováno        | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statické (pomocí [`/.default`](#the-default-scope) ) nebo dynamické obory.  To může zahrnovat obory OIDC ( `openid` , `profile` , `email` ). Pokud potřebujete oprávnění aplikace, musíte použít `/.default` k vyžádání staticky nakonfigurovaného seznamu oprávnění.  |
 
 
@@ -283,7 +283,7 @@ V tomto příkladu neexistuje žádný souhlas uživatele mezi klientem a Micros
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Příklad 3: uživatel souhlasí a klient požaduje další obory.
 
-V tomto příkladu už uživatel souhlasil s `mail.read` klientem. Klient se zaregistroval pro `contacts.read` obor v registraci. Když klient vytvoří požadavek na token pomocí `scope=https://graph.microsoft.com/.default` žádosti a vyžádá si souhlas prostřednictvím `prompt=consent` , zobrazí se uživateli obrazovka pro vyjádření souhlasu pro všechna (a jenom) oprávnění zaregistrovaná aplikací. `contacts.read`Tato akce bude k dispozici na obrazovce pro vyjádření souhlasu, ale `mail.read` ne. Vrácený token bude pro Microsoft Graph a bude obsahovat `mail.read` a `contacts.read` .
+V tomto příkladu už uživatel souhlasil s `mail.read` klientem. Klient se zaregistroval pro `contacts.read` obor v registraci. Když klient vytvoří požadavek na token pomocí `scope=https://graph.microsoft.com/.default` žádosti a vyžádá si souhlas prostřednictvím `prompt=consent` , zobrazí se uživateli obrazovka pro vyjádření souhlasu pro všechna (a jenom) oprávnění zaregistrovaná aplikací. `contacts.read` Tato akce bude k dispozici na obrazovce pro vyjádření souhlasu, ale `mail.read` ne. Vrácený token bude pro Microsoft Graph a bude obsahovat `mail.read` a `contacts.read` .
 
 ### <a name="using-the-default-scope-with-the-client"></a>Použití oboru/.default s klientem
 

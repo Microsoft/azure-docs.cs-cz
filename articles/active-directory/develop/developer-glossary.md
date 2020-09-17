@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178820"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705992"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
 
@@ -154,7 +154,7 @@ Jak je definováno v [rámci autorizačního rozhraní OAuth2][OAuth2-Role-Def],
 
 Jak je definováno v [rámci autorizačního rozhraní OAuth2][OAuth2-Role-Def], server, který je hostitelem chráněných prostředků, umožňuje přijímat a reagovat na požadavky na chráněné prostředky [klientskými aplikacemi](#client-application) , které prezentují [přístupový token](#access-token). Označuje se také jako chráněný server prostředků nebo aplikace prostředků.
 
-Server prostředků zveřejňuje rozhraní API a vynutil přístup k chráněným prostředkům prostřednictvím [oborů](#scopes) a [rolí](#roles)pomocí autorizačního rozhraní OAuth 2,0. Mezi příklady patří [rozhraní Microsoft Graph API][Microsoft-Graph] , které poskytuje přístup k datům TENANTA Azure AD, a rozhraní API pro Office 365, která poskytují přístup k datům, jako je například pošta a kalendář.
+Server prostředků zveřejňuje rozhraní API a vynutil přístup k chráněným prostředkům prostřednictvím [oborů](#scopes) a [rolí](#roles)pomocí autorizačního rozhraní OAuth 2,0. Mezi příklady patří [rozhraní Microsoft Graph API][Microsoft-Graph] , které poskytuje přístup k datům TENANTA Azure AD a rozhraní api pro Microsoft 365, která poskytují přístup k datům, jako je například pošta a kalendář.
 
 Stejně jako klientská aplikace, konfigurace identity aplikace prostředků se vytváří prostřednictvím [registrace](#application-registration) v TENANTOVI Azure AD, která poskytuje aplikační i instanční objekt. Některá rozhraní API poskytnutá Microsoftem, jako je Microsoft Graph API, mají předem registrované instanční objekty, které jsou k dispozici ve všech klientech během zřizování.
 
@@ -172,7 +172,7 @@ Podobně jako [role](#roles)poskytují obory pro [server prostředků](#resource
 
 Obory jsou řetězce definované prostředky (například mail. Read "," Directory. četl. All ") spravované v [Azure Portal][AZURE-portal] prostřednictvím [manifestu aplikace](#application-manifest)prostředku a uložené ve [vlastnosti oauth2Permissions][Graph-Sp-Resource]prostředku. Azure Portal se také používá ke konfiguraci [delegovaných oprávnění](#permissions) klientské aplikace pro přístup k oboru.
 
-Osvědčenými postupy pro vytváření názvů je použití formátu "prostředek. Operation. Constraint". Podrobnou diskuzi o oborech vystavených rozhraním Microsoft Graph API najdete v tématu [Graph API obory oprávnění][Graph-Perm-Scopes]. Obory vystavené službami Office 365 najdete v [referenčních informacích k rozhraní API pro office 365][O365-Perm-Ref].
+Osvědčenými postupy pro vytváření názvů je použití formátu "prostředek. Operation. Constraint". Podrobnou diskuzi o oborech vystavených rozhraním Microsoft Graph API najdete v tématu [Graph API obory oprávnění][Graph-Perm-Scopes]. Obory vystavené službou Microsoft 365 Services najdete v tématu [Přehled oprávnění rozhraní API pro Microsoft 365][O365-Perm-Ref].
 
 ## <a name="security-token"></a>token zabezpečení
 
@@ -202,7 +202,7 @@ Instance adresáře služby Azure AD je označována jako tenant služby Azure A
 * ověřování uživatelských účtů a registrovaných aplikací
 * Koncové body REST vyžadované pro podporu různých protokolů, včetně OAuth2 a SAML, včetně [koncového bodu autorizace](#authorization-endpoint), [koncového bodu tokenu](#token-endpoint) a "společného" koncového bodu používaného [více aplikacemi tenantů](#multi-tenant-application).
 
-Tenant Azure AD se vytváří/přidružit k předplatným Azure a Office 365 během registrace a poskytují funkce pro správu přístupu identity & pro předplatné. Správci předplatného Azure můžou také vytvářet další klienty Azure AD prostřednictvím Azure Portal. Podrobnosti o různých způsobech přístupu ke klientovi získáte v tématu [Jak získat klienta Azure Active Directory][AAD-How-To-Tenant] . Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v tématu [přidružení nebo přidání předplatného Azure do vašeho tenanta Azure Active Directory][AAD-How-Subscriptions-Assoc] . pokyny k přidružení nebo přidání předplatného k TENANTOVI Azure AD.
+Tenant Azure AD se vytváří/přidružit k Azure a předplatným Microsoft 365 během registrace a poskytují funkce pro správu přístupu identit & pro předplatné. Správci předplatného Azure můžou také vytvářet další klienty Azure AD prostřednictvím Azure Portal. Podrobnosti o různých způsobech přístupu ke klientovi získáte v tématu [Jak získat klienta Azure Active Directory][AAD-How-To-Tenant] . Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v tématu [přidružení nebo přidání předplatného Azure do vašeho tenanta Azure Active Directory][AAD-How-Subscriptions-Assoc] . pokyny k přidružení nebo přidání předplatného k TENANTOVI Azure AD.
 
 ## <a name="token-endpoint"></a>koncový bod tokenu
 

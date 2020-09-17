@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4fb616860cb1e85c6249329f3679de0d29b72e61
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018828"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707913"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurace replikace objektů pro objekty blob bloku
 
@@ -150,9 +150,11 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 Pokud chcete vytvořit zásadu replikace pomocí Azure CLI, nejdřív nainstalujte Azure CLI verze 2.11.1 nebo novější. Další informace najdete v tématu [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
 
-Dále povolte správu verzí objektů BLOB ve zdrojovém a cílovém účtu úložiště a povolte na zdrojovém účtu kanál změn. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+V dalším kroku povolte správu verzí objektů blob na zdrojovém a cílovém účtu úložiště a povolte na zdrojovém účtu kanál změn pomocí příkazu [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) . Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
 ```azurecli
+az login
+
 az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
@@ -174,24 +176,24 @@ Vytvořte zdrojové a cílové kontejnery v příslušných účtech úložišt�
 ```azurecli
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container3 \
+    --name source-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container4 \
+    --name source-container-2 \
     --auth-mode login
 
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container3 \
+    --name dest-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container4 \
+    --name dest-container-1 \
     --auth-mode login
 ```
 
-Vytvořte novou zásadu replikace a související pravidla v cílovém účtu.
+Vytvořte novou zásadu replikace a přidružené pravidlo pro cílový účet voláním [AZ Storage Account nebo-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create).
 
 ```azurecli
 az storage account or-policy create \
@@ -199,21 +201,26 @@ az storage account or-policy create \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
-    --source-container source-container3 \
-    --destination-container dest-container3 \
-    --min-creation-time '2020-05-10T00:00:00Z' \
+    --source-container source-container-1 \
+    --destination-container dest-container-1 \
+    --min-creation-time '2020-09-10T00:00:00Z' \
     --prefix-match a
 
+```
+
+Azure Storage nastaví ID zásad při vytvoření nové zásady. Pokud chcete do zásady přidat další pravidla, zavolejte [pravidlo AZ Storage Account nebo-Policy Add](/cli/azure/storage/account/or-policy/rule#az_storage_account_or_policy_rule_add) a poskytněte ID zásad.
+
+```azurecli
 az storage account or-policy rule add \
     --account-name <dest-storage-account> \
-    --destination-container dest-container4 \
-    --policy-id <policy-id> \
     --resource-group <resource-group> \
-    --source-container source-container4 \
+    --source-container source-container-2 \
+    --destination-container dest-container-2 \
+    --policy-id <policy-id> \
     --prefix-match b
 ```
 
-Vytvořte zásadu na zdrojovém účtu pomocí ID zásad.
+V dalším kroku vytvořte zásadu na zdrojovém účtu pomocí ID zásad.
 
 ```azurecli
 az storage account or-policy show \
@@ -229,16 +236,16 @@ az storage account or-policy show \
 
 ### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>Konfigurace replikace objektů, když máte přístup jenom k cílovému účtu
 
-Pokud nemáte oprávnění ke zdrojovému účtu úložiště, můžete na cílovém účtu nakonfigurovat replikaci objektů a zadat soubor JSON, který obsahuje definici zásady, a vytvořit tak stejné zásady na zdrojovém účtu. Pokud je například zdrojový účet v jiném tenantovi služby Azure AD z cílového účtu, použijte tento přístup ke konfiguraci replikace objektů. 
+Pokud nemáte oprávnění ke zdrojovému účtu úložiště, můžete na cílovém účtu nakonfigurovat replikaci objektů a zadat soubor JSON, který obsahuje definici zásady, a vytvořit tak stejné zásady na zdrojovém účtu. Pokud je například zdrojový účet v jiném tenantovi služby Azure AD z cílového účtu, můžete tento přístup použít ke konfiguraci replikace objektů.
 
 Mějte na paměti, že musíte mít přiřazenou roli **přispěvatele** Azure Resource Manager vymezenou na úrovni cílového účtu úložiště nebo vyšší, aby bylo možné zásadu vytvořit. Další informace najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md) v dokumentaci k Azure na základě rolí v Access Control (RBAC).
 
-Následující tabulka shrnuje, které hodnoty se mají v souboru JSON v každém scénáři použít pro ID zásad.
+Následující tabulka shrnuje, které hodnoty se mají použít pro ID zásad a ID pravidel v souboru JSON v jednotlivých scénářích.
 
-| Při vytváření souboru JSON pro tento účet... | Nastavit ID zásad na tuto hodnotu... |
+| Při vytváření souboru JSON pro tento účet... | Pro tuto hodnotu nastavte ID zásad a ID... |
 |-|-|
-| Cílový účet | Hodnota řetězce je *výchozí*. Azure Storage vám pro vás vytvoří ID zásady. |
-| Zdrojový účet | ID zásady vrácené při stažení souboru JSON obsahujícího pravidla definovaná v cílovém účtu |
+| Cílový účet | Hodnota řetězce je *výchozí*. Azure Storage pro vás vytvoří ID zásad a ID pravidel. |
+| Zdrojový účet | Hodnoty ID zásad a identifikátorů pravidel vrácených při stažení zásad definovaných v cílovém účtu jako soubor JSON. |
 
 Následující příklad definuje zásadu replikace v cílovém účtu s jedním pravidlem, které odpovídá předponě *b* , a nastavuje minimální dobu vytváření objektů blob, které se mají replikovat. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -307,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Chcete-li použít soubor JSON k definování zásad replikace ve zdrojovém účtu pomocí prostředí PowerShell, načtěte místní soubor a převeďte jej z formátu JSON na objekt. Pak zavolejte příkaz [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) a nakonfigurujte zásady na zdrojovém účtu, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
+Chcete-li použít soubor JSON ke konfiguraci zásad replikace ve zdrojovém účtu pomocí prostředí PowerShell, načtěte místní soubor a převeďte jej z formátu JSON na objekt. Pak zavolejte příkaz [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) a nakonfigurujte zásady na zdrojovém účtu, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -321,7 +328,24 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-–
+Pokud chcete vytvořit definici zásady replikace pro cílový účet do souboru JSON z Azure CLI, zavolejte příkaz [AZ Storage Account nebo-Policy show](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) a výstup do souboru.
+
+V následujícím příkladu je zapsána definice zásady do souboru JSON s názvem *policy.jsv*. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
+
+```azurecli
+az storage account or-policy show \
+    --account-name <dest-account-name> \
+    --policy-id  <policy-id> > policy.json
+```
+
+Pokud chcete použít soubor JSON ke konfiguraci zásad replikace ve zdrojovém účtu pomocí Azure CLI, zavolejte příkaz [AZ Storage Account nebo-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create) a odkazujte na *policy.jsv* souboru. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
+
+```azurecli
+az storage account or-policy create \
+    -resource-group <resource-group> \
+    --source-account <source-account-name> \
+    --policy @policy.json
+```
 
 ---
 
@@ -360,12 +384,12 @@ Pokud chcete odebrat zásadu replikace, odstraňte zásadu ze zdrojového účtu
 
 ```azurecli
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <source-storage-account> \
     --resource-group <resource-group>
 
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <dest-storage-account> \
     --resource-group <resource-group>
 ```

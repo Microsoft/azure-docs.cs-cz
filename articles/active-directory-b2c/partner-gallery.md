@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049858"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706695"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -37,6 +37,7 @@ Naše síť partnera ISV rozšiřuje naše možnosti řešení, které vám pom�
 | ![symbol](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) je ověřovací služba ID, která umožňuje automatické ověřování ID v reálném čase a zabezpečení zákaznických dat. |
 | ![symbol](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) je profilace a zprostředkovatel ověřování identity, který ověřuje identifikaci uživatele a poskytuje komplexní vyhodnocení rizika na základě zařízení uživatele. |
 | ![symbol](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) je ID dokumentu a řešení pro ověřování obličeje biometrika, které společnosti umožňuje uspokojit požadavky na *zákazníky* a identitu v reálném čase.  |
+| ![symbol](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) cloudová nativní platforma používá inteligentní analýzy a poskytuje integraci mezi aplikacemi k zjednodušení modernizace IT a k podpoře lepšího zabezpečení, zásad správného řízení a dodržování předpisů. Modernizace podniku mění způsob, jakým společnost přezkoumává žádosti o přístup, prověří přístup, analýzu sestav a zjednodušuje certifikační kampaně.  |
 | ![symbol](./media/partner-gallery/trusona-logo.png) | Integrace [Trusona](./partner-trusona.md) vám pomůže bezpečně se přihlásit a povolit ověřování bez hesla, vícefaktorové ověřování a kontrolu digitální licence.|
 | ![symbol](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) poskytuje více řešení pro povolení služby Multi-Factor Authentication (MFA) prostřednictvím jednorázového hesla serveru SMS (jednorázového hesla), času založeného na čase (TOTP) a nabízených oznámení a pro splnění požadavků SCA pro platební služby ve směrnici 2 (PSD2).|
 | ![symbol](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) je ověření identity a poskytovatel kontroly pravopisu na základě vzoru psaní uživatelů, poskytuje řešení pro ověřování ID, které vynucuje vícefaktorové ověřování a pomáhá dodržovat požadavky SCA na službu pro platební služby. 2 (PSD2). |

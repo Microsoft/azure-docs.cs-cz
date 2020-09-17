@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 955efe45be27fa2f4e738066bb3b69b3604be33a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5229b123986149903d562bc0b3d6902c0136f647
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400717"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707879"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Zobrazení aplikací pomocí tenanta Azure AD pro správu identit
 Základní informace [o řadě rychlý Start při správě aplikací](view-applications-portal.md) vás seznámí se základy. V takovém případě se dozvíte, jak zobrazit všechny aplikace pomocí tenanta Azure AD pro správu identit. Tento článek komentáře trochu hlubších typů aplikací, které najdete.
@@ -27,7 +27,7 @@ Při filtrování na **všechny aplikace**zobrazuje seznam **všechny aplikace**
    - **Azure AD-registrace aplikací** – aplikace přidané do vašeho tenanta pomocí možnosti **Registrace aplikací** na portálu Azure AD. Obvykle vlastní vyvíjené aplikace s využitím standardů Open ID Connect a OAuth.
    - Aplikace **proxy aplikací** – aplikace spuštěná v místním prostředí, které chcete pro externě poskytovat zabezpečené jednotné přihlašování
 - Při registraci k nebo přihlašování k aplikaci třetí strany, která je integrovaná s Azure Active Directory. Jedním z příkladů je [Smartsheet](https://app.smartsheet.com/b/home) nebo [Docusign](https://www.docusign.net/member/MemberLogin.aspx).
-- Aplikace Microsoftu, jako je Microsoft 365 nebo Office 365.
+- Aplikace Microsoftu, například Microsoft 365.
 - Při přidání nové registrace aplikace vytvořením aplikace vytvořené v [registru pomocí aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 - Při přidání nové registrace aplikace vytvořením aplikace vytvořené pomocí [portálu pro registraci aplikací v 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 - Když přidáte aplikaci, vyvíjíte pomocí [metod ověřování ASP.NET](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojených služeb](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) sady Visual Studio.

@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034572"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707488"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
@@ -42,7 +42,9 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-## <a name="prerequisites"></a>Předpoklady
+Balíček pro přístup můžete také vytvořit programově pomocí Microsoft Graph. Kurz, ve kterém se dozvíte, jak vytvořit balíček pro přístup prostřednictvím kódu programu, najdete v tématu [rozhraní API pro správu oprávnění](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
+
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
@@ -65,7 +67,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 1. Vytvořte nebo nakonfigurujte následující dva uživatele. Můžete použít tyto názvy nebo jiné názvy. **Admin1** může být uživatel, ke kterému jste aktuálně přihlášení.
 
-    | Název | Role adresáře |
+    | Name | Role adresáře |
     | --- | --- |
     | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatelů |
     | **Requestor1** | Uživatel |
@@ -106,7 +108,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 9. V podokně vybrat skupiny vyhledejte a vyberte skupinu **marketingových zdrojů** , kterou jste vytvořili dříve.
 
-    Ve výchozím nastavení se zobrazují skupiny uvnitř i vně katalogu **Obecné** . Když vyberete skupinu mimo katalog **Obecné** , přidá se do katalogu pro **Obecné** .
+     Ve výchozím nastavení se zobrazují skupiny v katalogu Obecné. Když vyberete skupinu mimo katalog obecné, uvidíte, že zaškrtnutí políčka **Zobrazit vše** bude přidáno do katalogu Obecné.
 
     ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 

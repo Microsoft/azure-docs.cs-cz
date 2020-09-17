@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c193742527cf69526d69549d3c10f5591f0d2f93
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115692"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706162"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integrace s platformou Microsoft identity
 
@@ -31,7 +31,7 @@ Existuje několik způsobů, jak integrovat aplikaci s platformou Microsoft iden
 
 ### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Podpora platformy Microsoft Identity Platform jako způsobu přihlášení k aplikaci
 
-**Snižte tření při přihlašování a snižte náklady na podporu.** Když se k vaší aplikaci přihlašujete pomocí Microsoft Identity Platform, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Microsoft Identity Platform reidentity se přihlašuje pro některé z nejoblíbenějších cloudových aplikací na světě, včetně Office 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil k platformě Microsoft identity. Přečtěte si další informace o [Přidání podpory pro přihlášení k platformě Microsoft Identity Platform](./authentication-vs-authorization.md).
+**Snižte tření při přihlašování a snižte náklady na podporu.** Když se k vaší aplikaci přihlašujete pomocí Microsoft Identity Platform, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Microsoft Identity Platform reidentity se přihlašuje pro některé z nejoblíbenějších cloudových aplikací na světě, včetně Microsoft 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil k platformě Microsoft identity. Přečtěte si další informace o [Přidání podpory pro přihlášení k platformě Microsoft Identity Platform](./authentication-vs-authorization.md).
 
 **Zjednodušte si registraci své aplikace.**  Při registraci vaší aplikace může platforma Microsoftu pro identitu odeslat základní informace o uživateli, abyste mohli předem vyplnit formulář pro registraci, nebo ho úplně eliminovat. Uživatelé se můžou k vaší aplikaci zaregistrovat pomocí svého účtu Azure AD prostřednictvím známého prostředí pro vyjádření souhlasu, které se podobá těm, která se nacházejí v sociálních médiích a mobilních aplikacích. Každý uživatel se může zaregistrovat a přihlásit k aplikaci, která je integrovaná s Microsoft Identity platformou bez nutnosti zapojení IT. Přečtěte si další informace o [registraci aplikace pro přihlášení k účtu Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
@@ -47,13 +47,13 @@ Existuje několik způsobů, jak integrovat aplikaci s platformou Microsoft iden
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Získání přístupu k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším datům
 
-**Microsoft Identity Platform je autorizační Server pro Office 365 a další firemní služby Microsoftu.**  Pokud podporujete platformu Microsoft identity pro přihlášení k vaší aplikaci nebo chcete-li podpořit propojení vašich uživatelských účtů s uživatelskými účty Azure AD pomocí OAuth 2,0, můžete požádat o přístup pro čtení a zápis k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším informacím. Můžete hladce zapisovat události do kalendáře uživatelů a číst soubory nebo zapisovat na jejich OneDrive. Přečtěte si další informace o [přístupu k rozhraním API Office 365](/previous-versions/office/office-365-api/).
+**Microsoft Identity Platform je autorizační Server pro Microsoft 365 a další obchodní služby Microsoftu.**  Pokud podporujete platformu Microsoft identity pro přihlášení k vaší aplikaci nebo chcete-li podpořit propojení vašich uživatelských účtů s uživatelskými účty Azure AD pomocí OAuth 2,0, můžete požádat o přístup pro čtení a zápis k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším informacím. Můžete hladce zapisovat události do kalendáře uživatelů a číst soubory nebo zapisovat na jejich OneDrive. Přečtěte si další informace o [přístupu k rozhraním api Microsoft 365](/previous-versions/office/office-365-api/).
 
-### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Propagace vaší aplikace v tržištích Azure a Office 365
+### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Propagace vaší aplikace v tržištích Azure a Microsoft 365
 
 **Zvyšte svou aplikaci na miliony organizací, které už používají Azure AD.**  Uživatelé, kteří hledají a procházejí tyto tržiště, již používají jednu nebo více cloudových služeb a mají kvalifikované zákazníky s cloudovou službou. Přečtěte si další informace o podpoře aplikace v [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
 
-**Když se uživatelé registrují do vaší aplikace, zobrazí se na svém přístupovém panelu Azure AD a ve Spouštěči aplikací Office 365.**  Uživatelé se budou moct rychle a později vrátit do vaší aplikace, což zlepšuje zapojení uživatelů. Přečtěte si další informace o [přístupovém panelu Azure AD](../user-help/my-apps-portal-end-user-access.md).
+**Když se uživatel do aplikace zaregistruje, zobrazí se na svém přístupovém panelu Azure AD a ve spouštěči aplikace Microsoft 365.**  Uživatelé se budou moct rychle a později vrátit do vaší aplikace, což zlepšuje zapojení uživatelů. Přečtěte si další informace o [přístupovém panelu Azure AD](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Zabezpečení komunikace mezi zařízeními a službami
 
@@ -85,7 +85,7 @@ Integrace s platformou Microsoft identity je dodávána s výhodami, které nevy
 
 ### <a name="worldwide-presence-and-high-availability"></a>Přítomnost po celém světě a vysoká dostupnost
 
-**Služba Azure AD je nasazená v datových centrech po celém světě a je spravovaná a monitorovaná v reálném čase.**  Azure AD je systém správy identit pro Microsoft Azure a Office 365 a je nasazený ve 28 datacentrech po celém světě. Je zaručeno, že data adresáře budou replikována alespoň do tří datových center. Globální nástroje pro vyrovnávání zatížení zajišťují uživatelům přístup k nejbližší kopii služby Azure AD obsahující jejich data a při zjištění problému automaticky přesměrují požadavky do jiných datových center.
+**Služba Azure AD je nasazená v datových centrech po celém světě a je spravovaná a monitorovaná v reálném čase.**  Azure AD je systém správy identit pro Microsoft Azure a Microsoft 365 a je nasazený ve 28 datacentrech po celém světě. Je zaručeno, že data adresáře budou replikována alespoň do tří datových center. Globální nástroje pro vyrovnávání zatížení zajišťují uživatelům přístup k nejbližší kopii služby Azure AD obsahující jejich data a při zjištění problému automaticky přesměrují požadavky do jiných datových center.
 
 ## <a name="next-steps"></a>Další kroky
 

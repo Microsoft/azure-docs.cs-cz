@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605329"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706807"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Zajištění vysoké dostupnosti pomocí Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Ve výjimečných případech regionálního výpadku Azure Cosmos DB zajišťuj
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Účty s více oblastmi s jednou oblastí zápisu (nevýpadek oblasti čtení)
 
 - Při výpadku oblasti čtení budou účty Azure Cosmos s využitím jakékoli úrovně konzistence nebo silné konzistence se třemi nebo více oblastmi pro čtení pořád vysoce dostupné pro čtení a zápisy.
-- Účty Azure Cosmos s využitím silné konzistence se dvěma nebo méně oblastmi pro čtení (které zahrnují oblast pro čtení & zápisu) ztratí dostupnost zápisu během výpadku oblasti čtení, ale budou mít u zbývajících oblastí k dispozici oprávnění ke čtení.
+- Účty Azure Cosmos s využitím silné konzistence se dvěma nebo méně oblastmi pro čtení (které zahrnují oblast pro čtení & zápisu) ztratí během výpadku oblasti čtení oprávnění ke čtení zápisu.
 - Ovlivněná oblast je automaticky odpojena a bude označena jako offline. Sady [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) přesměrují volání čtení do další dostupné oblasti v seznamu upřednostňovaných oblastí.
 - Pokud není žádná oblast ze seznamu upřednostňovaných oblastí k dispozici, volání se automaticky vrátí na aktuální oblast zápisu.
 - V kódu aplikace se nevyžadují žádné změny pro zpracování výpadku oblasti čtení. Když je oblast s ovlivněným čtením zpět online, bude automaticky synchronizována s aktuální oblastí pro zápis a bude opět k dispozici pro poskytování požadavků na čtení.
@@ -144,5 +144,5 @@ Dále si můžete přečíst následující články:
 - [Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
 - [Zřízená propustnost globálního škálování](scaling-throughput.md)
 - [Globální distribuce – pod pokličkou](global-dist-under-the-hood.md)
-- [Úrovně konzistence v Azure Cosmos DB](consistency-levels.md)
+- [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)
 - [Jak nakonfigurovat účet Cosmos s více oblastmi zápisu](how-to-multi-master.md)

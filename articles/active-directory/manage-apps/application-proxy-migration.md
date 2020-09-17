@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd98cab50c3239d3202e6feabe18f45a4240293
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641173"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706663"
 ---
 # <a name="compare-remote-access-solutions"></a>Porovnání řešení vzdáleného přístupu
 
@@ -32,7 +32,7 @@ Proxy aplikací služby Azure Active Directory je jedno ze dvou řešení vzdál
 
 Tato tabulka vám pomůže pochopit, jak brány pro správu hrozeb (TMG), Unified Access Gateway (UAG), proxy webových aplikací (WAP) a Azure Proxy aplikací služby AD (AP) jsou vzájemně porovnatelné.
 
-| Funkce | TMG | UAG | WAP | AP |
+| Příznak | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | Ověření certifikátu | Yes | Yes | - | - |
 | Selektivní publikování aplikací v prohlížeči | Yes | Yes | Yes | Yes |
@@ -59,7 +59,7 @@ V porovnání s podobnými produkty nabízí Azure Proxy aplikací služby AD je
    - Funkce, jako je podmíněný přístup a Multi-Factor Authentication, se snadno povolují.
 - V zóně demilitarizovaná nejsou žádné součásti.
 - Nejsou požadována žádná příchozí připojení.
-- Jedna stránka moje aplikace, na kterou můžou uživatelé přejít pro všechny své aplikace, včetně O365, integrovaných aplikací SaaS Azure AD a vašich místních webových aplikací. 
+- Jedna stránka moje aplikace, na kterou můžou uživatelé přejít pro všechny své aplikace, včetně Microsoft 365, integrovaných aplikací SaaS Azure AD a vašich místních webových aplikací. 
 
 
 ## <a name="next-steps"></a>Další kroky

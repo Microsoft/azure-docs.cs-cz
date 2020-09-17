@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235686"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706359"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -50,9 +50,9 @@ Integrace aplikace pro cloudovou HR se zřizováním uživatelů Azure AD je ide
 - Vyžaduje přímé zřizování uživatelů z aplikace cloudového HR do služby Active Directory nebo Azure AD.
 - Vyžadovat, aby se uživatelé zřídili pomocí dat získaných z aplikace cloudového HR.
 - Vyžadovat, aby se uživatelé synchronizovaly do jedné nebo víc doménových struktur služby Active Directory, domén a organizačních jednotek, a to na základě informací o změně zjištěných v aplikaci cloudového HR.
-- K odeslání e-mailu použijte Office 365.
+- K odeslání e-mailu použijte Microsoft 365.
 
-## <a name="learn"></a>Informace
+## <a name="learn"></a>Learn
 
 Zřizování uživatelů vytvoří základ pro průběžné řízení identit. Vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity.
 
@@ -61,14 +61,14 @@ Zřizování uživatelů vytvoří základ pro průběžné řízení identit. V
 Tento článek používá následující výrazy:
 
 - **Zdrojový systém**: úložiště uživatelů, ze kterých Azure AD zřídí. Příkladem je aplikace cloudového HR, jako je například Workday nebo SuccessFactors.
-- **Cílový systém**: úložiště uživatelů, na které Azure AD zřídí. Příklady jsou Active Directory, Azure AD, Office 365 nebo jiné aplikace SaaS.
+- **Cílový systém**: úložiště uživatelů, na které Azure AD zřídí. Příklady jsou služby Active Directory, Azure AD, Microsoft 365 nebo jiné aplikace SaaS.
 - **Připojení – stěhovací společnosti – proces Leavers**: termín používaný pro nová přijetí, přenosy a ukončení pomocí aplikace cloudového HR jako systému záznamů. Proces se dokončí, když služba úspěšně zřídí nezbytné atributy pro cílový systém.
 
 ### <a name="key-benefits"></a>Klíčové výhody
 
 Tato schopnost zajišťování IT na základě lidských zdrojů nabízí tyto významné obchodní výhody:
 
-- **Zvýšení produktivity:** Teď můžete automatizovat přiřazování uživatelských účtů a licencí Office 365 a poskytovat přístup ke skupinám klíčů. Automatizace přiřazení poskytuje novým lidem okamžitý přístup ke svým nástrojům úloh a zvyšuje produktivitu.
+- **Zvýšení produktivity:** Nyní můžete automatizovat přiřazování uživatelských účtů a Microsoft 365 licencí a poskytovat přístup ke skupinám klíčů. Automatizace přiřazení poskytuje novým lidem okamžitý přístup ke svým nástrojům úloh a zvyšuje produktivitu.
 - **Řízení rizik:** Zabezpečení můžete zvýšit automatizací změn na základě stavu zaměstnanců nebo členství ve skupinách pomocí toku dat z aplikace cloudového HR. Automatizace změn zajišťuje, že identity uživatelů a přístup k klíčovým aplikacím se automaticky aktualizují, když uživatelé přecházejí nebo odejdou z organizace.
 - **Řešení dodržování předpisů a zásad správného řízení:** Azure AD podporuje protokoly nativního auditu pro požadavky uživatelů na zřizování prováděné aplikacemi ze zdrojového i cílového systému. Díky auditování můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
 - **Spravovat náklady:** Automatické zřizování snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Díky starším a zastaralým platformám omezuje nutnost sestavování řešení pro zřizování uživatelů vytvořených v průběhu času.
@@ -79,7 +79,7 @@ Pokud chcete nakonfigurovat aplikaci cloudového HR na integraci zřizování u�
 
 Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a je zajištěná v rámci služby Active Directory nebo Azure AD, potřebujete také platnou licenci pro předplatného Azure AD Premium P1 nebo vyšší. Jakýkoli nesprávný počet licencí vlastněných v aplikaci cloudového HR může vést k chybám při zřizování uživatele.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 
 - [Správce hybridní identity](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
 - Role [Správce aplikací](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) Azure AD pro konfiguraci zřizování aplikace v Azure Portal
@@ -96,7 +96,7 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 | | [Postup nasazení zřizování uživatelů v aktivním adresáři Azure](https://youtu.be/pKzyts6kfrw) |
 | Kurzy | [Seznam kurzů pro integraci aplikací SaaS s Azure AD](../saas-apps/tutorial-list.md) |
 | | [Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| Časté otázky | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| Nejčastější dotazy | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Zřizování z Workday do Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Architektura řešení

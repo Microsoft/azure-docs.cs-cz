@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e009516721473554517d1677bdef7a7451e4007
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8901f54c4802766eb3f12830d98d29fb47337ae5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564821"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705210"
 ---
 Ve verzi Preview má systém souborů NFS tato omezení:
 
 - Systém souborů NFS 4,1 aktuálně podporuje pouze povinné funkce ze [specifikace protokolu](https://tools.ietf.org/html/rfc5661). Volitelné funkce, jako jsou delegování a zpětné volání všech druhů, zamknutí zámků a downgradů a ověřování pomocí protokolu Kerberos a šifrování se nepodporuje.
-- Pokud je většina vašich požadavků zaměřená na metadata, bude latence ve srovnání s operacemi otevřít/zavřít horší.
+- Pokud je většina vašich požadavků orientovaných na metadata, pak bude latence ve srovnání s operacemi čtení, zápisu a aktualizace horší.
 - Aby bylo možné vytvořit sdílenou složku NFS, je nutné vytvořit nový účet úložiště.
 - Podporují se jenom rozhraní REST API roviny správy. Rozhraní REST API pro rovinu dat nejsou k dispozici, což znamená, že nástroje, jako je Průzkumník služby Storage, nebudou pracovat se sdílenými složkami systému souborů NFS, ani nebude možné procházet sdílená data NFS v Azure Portal.
 - Dostupné jenom pro úroveň Premium.

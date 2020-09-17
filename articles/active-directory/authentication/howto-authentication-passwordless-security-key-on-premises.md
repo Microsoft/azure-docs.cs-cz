@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45e1e516986c32e203837f79c83290cc99049e7a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526965"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706332"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Povolení klíče zabezpečení bez hesla k místním prostředkům pomocí Azure Active Directory (Preview)
 
@@ -57,7 +57,7 @@ Organizace musí splňovat i tyto požadavky na software.
 
 Scénář podporuje jednotné přihlašování (SSO) v obou těchto scénářích:
 
-- Pro cloudové prostředky, jako je Office 365 a další aplikace s podporou SAML.
+- Pro cloudové prostředky, jako jsou Microsoft 365 a další aplikace podporující SAML.
 - Pro místní prostředky a ověřování integrované v systému Windows pro weby. Prostředky můžou zahrnovat weby a weby SharePointu, které vyžadují ověřování IIS, a prostředky, které používají ověřování NTLM.
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře

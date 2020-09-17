@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 9d396c0787798c783b44748dc2461c073334cc7e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 5a0a158f91695bb0aba07aa412f5ba234906d493
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322496"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707692"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Rychlý Start: přiřazení uživatelů k aplikaci, která používá službu Azure AD jako zprostředkovatele identity
 
 V předchozím rychlém startu jste nakonfigurovali vlastnosti pro aplikaci. Při nastavování vlastností jste nakonfigurovali prostředí pro přiřazené i nepřiřazené uživatele. Tento rychlý Start vás provede procesem přiřazování uživatelů k aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého tenanta Azure AD, budete potřebovat:
 
@@ -38,7 +38,7 @@ Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého te
 1. Na portálu Azure AD vyberte **podnikové aplikace**. Pak vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
 2. V navigační nabídce vlevo vyberte **Uživatelé a skupiny**.
    > [!NOTE]
-   > Některé aplikace Microsoft 365 a Office 365 vyžadují použití PowerShellu. 
+   > Některé aplikace Microsoft 365 vyžadují použití PowerShellu. 
 3. Klikněte na tlačítko **Přidat uživatele** .
 4. V podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 5. Vyberte uživatele nebo skupinu, které chcete aplikaci přiřadit. Do vyhledávacího pole můžete také začít psát jméno uživatele nebo skupiny. Můžete zvolit více uživatelů a skupin a vaše výběry se zobrazí v části **vybrané položky**.
@@ -46,7 +46,7 @@ Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého te
     > Když přiřadíte skupinu k aplikaci, budou mít přístup jenom uživatelé ve skupině. Přiřazení se neprovádí kaskádovitě pro vnořené skupiny.
 
     > [!NOTE]
-    > Přiřazení na základě skupin vyžaduje Azure Active Directory Premium edici P1 nebo P2. Přiřazení na základě skupin se podporuje jenom pro skupiny zabezpečení. Vnořené členství ve skupinách a skupiny Office 365 se aktuálně nepodporují. Další licenční požadavky na funkce popsané v tomto článku najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
+    > Přiřazení na základě skupin vyžaduje Azure Active Directory Premium edici P1 nebo P2. Přiřazení na základě skupin se podporuje jenom pro skupiny zabezpečení. Vnořené členství ve skupinách a skupiny Microsoft 365 nejsou aktuálně podporovány. Další licenční požadavky na funkce popsané v tomto článku najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
 6. Po dokončení klikněte na **Vybrat**.
    ![Přiřazení uživatele nebo skupiny k aplikaci](./media/assign-user-or-group-access-portal/assign-users.png)
 7. V podokně **Uživatelé a skupiny** vyberte jednoho nebo více uživatelů nebo skupin ze seznamu a pak klikněte na tlačítko **Vybrat** v dolní části podokna.

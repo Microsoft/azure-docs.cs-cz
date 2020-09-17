@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363068b74bf7639460da4fa80f0e661f3b8a88b9
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5d585ac57a369c994df9871bf731157de7b23212
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568808"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707624"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jaká jsou výchozí uživatelská oprávnění v Azure Active Directory?
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatel, [přiřazení jejich rolí](active-directory-users-assign-role-azure-portal.md)a jejich vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host. Výchozí uživatelská oprávnění se dají změnit jenom v nastavení uživatele v Azure AD.
@@ -36,7 +36,7 @@ Uživatelé a kontakty | <ul><li>Čtení všech veřejných vlastností uživate
 Skupiny | <ul><li>Vytváření skupin zabezpečení<li>Vytvoření skupin Microsoft 365<li>Čtení všech vlastností skupin<li>Čtení neskrytých členství ve skupinách<li>Číst skryté Microsoft 365 členství ve skupině pro připojenou skupinu<li>Správa vlastností, vlastnictví a členství ve skupinách, které uživatel vlastní<li>Přidávání hostů do vlastněných skupin<li>Správa nastavení dynamického členství<li>Odstranění vlastněných skupin<li>Obnovení vlastněných Microsoft 365 skupin</li></ul> | <ul><li>Načíst vlastnosti všech neskrytých skupin, včetně členství a vlastnictví (i nepřipojených skupin)<li>Číst skryté Microsoft 365 členství ve skupinách pro připojené skupiny<li>Vyhledat skupiny podle zobrazovaného jména nebo ObjectId (Pokud je povoleno)</li></ul> | Žádná oprávnění
 Aplikace | <ul><li>Registrace (vytvoření) nové aplikace<li>Čtení vlastností zaregistrovaných a podnikových aplikací<li>Správa vlastností aplikací, jejich přiřazení a přihlašovacích údajů u vlastněných aplikací<li>Vytvoření nebo odstranění hesla aplikace pro uživatele<li>Odstranění vlastněných aplikací<li>Obnovení vlastněných aplikací</li></ul> | <ul><li>Čtení vlastností zaregistrovaných a podnikových aplikací</li></ul> | <ul><li>Čtení vlastností zaregistrovaných a podnikových aplikací
 Zařízení</li></ul> | <ul><li>Čtení všech vlastností zařízení<li>Správa všech vlastností vlastněných zařízení</li></ul> | Žádná oprávnění | Žádná oprávnění
-Adresář | <ul><li>Čtení všech informací o společnosti<li>Čtení všech domén<li>Čtení všech partnerských kontraktů</li></ul> | <ul><li>Čtení zobrazovaného názvu a ověřených domén</li></ul> | <ul><li>Čtení zobrazovaného názvu a ověřených domén</li></ul>
+Adresář | <ul><li>Čtení všech informací o společnosti<li>Čtení všech domén<li>Čtení všech partnerských kontraktů</li></ul> | <ul><li>Přečíst zobrazované jméno společnosti<li>Čtení všech domén</li></ul> | <ul><li>Přečíst zobrazované jméno společnosti<li>Čtení všech domén</li></ul>
 Role a obory | <ul><li>Čtení všech rolí pro správu a členství v nich<li>Čtení všech vlastností a členství jednotek pro správu</li></ul> | Žádná oprávnění | Žádná oprávnění
 Předplatná | <ul><li>Čtení všech předplatných<li>Povolení člena plánu služby</li></ul> | Žádná oprávnění | Žádná oprávnění
 Zásady | <ul><li>Čtení všech vlastností zásad<li>Správa všech vlastností vlastněných zásad</li></ul> | Žádná oprávnění | Žádná oprávnění

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320031"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705363"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Rychlá reakce na zabezpečení identit pomocí Azure AD
 
@@ -34,7 +34,7 @@ Tento kontrolní seznam vám pomůže rychle nasadit kritické doporučené akce
 - Využijte cloudové funkce Cloud Intelligence.
 - Povolit samoobslužnou službu koncového uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 V tomto průvodci se předpokládá, že už jste v Azure AD navázali jenom cloudové nebo hybridní identity. Nápovědu k výběru typu identity najdete v článku. [Zvolte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md) . 
 
@@ -42,13 +42,12 @@ V tomto průvodci se předpokládá, že už jste v Azure AD navázali jenom clo
 
 Existuje mnoho aspektů zabezpečené infrastruktury identity, ale tento kontrolní seznam se zaměřuje na bezpečnou a zabezpečenou infrastrukturu identity, která umožňuje uživatelům pracovat vzdáleně. Zabezpečení vaší identity je jenom součástí vašeho bezpečnostního scénáře, měli byste taky zvážit ochranu dat, aplikací a zařízení.
 
-### <a name="guidance-for-azure-ad-free-or-office-365-customers"></a>Pokyny pro zákazníky Azure AD Free nebo Office 365.
+### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>Pokyny pro Azure AD Free, Office 365 nebo zákazníky Microsoft 365.
 
-Existuje několik doporučení, která Azure AD Free nebo zákazníci aplikace Office 365 by měli vzít v úvahu při ochraně svých uživatelských identit. v následující tabulce je třeba zvýraznit klíčové akce pro následující licenční předplatné:
+Existuje několik doporučení, která Azure AD Free, sada Office 365 nebo zákazníci Microsoft 365 aplikací by měli mít možnost chránit své identity uživatelů. v následující tabulce je třeba zvýraznit klíčové akce pro následující licenční předplatné:
 
-- Office 365 (O365 E1, E3, E5, F1, a1, a3, A5)
-- Office 365 Business (Essentials, Business, Business Premium)
-- Microsoft 365 (M365 Business, a1)
+- Office 365 (Office 365 E1, E3, E5, F1, a1, a3, A5)
+- Microsoft 365 (Business Basic, aplikace pro firmy, Business Standard, Business Premium, a1)
 - Azure AD Free (součástí Azure, Dynamics 365, Intune a Power Platform)
 
 | Doporučená akce | Podrobnosti |

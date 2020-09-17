@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226637"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706196"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
@@ -36,7 +36,7 @@ V tomto článku provedete následující:
 Microsoft spravuje dva druhy uživatelských účtů:
 
 - **Osobní účty** (dříve označované jako Windows Live ID). Tyto účty představují vztah mezi *jednotlivými* uživateli a Microsoftem a používají se k přístupu k uživatelským zařízením a službám od Microsoftu. Tyto účty jsou určené k osobnímu použití.
-- **Pracovní nebo školní účty**. Tyto účty spravuje Microsoft jménem organizace využívající Azure Active Directory. Tyto účty se používají k přihlašování k Office 365 a dalším obchodním službám Microsoftu.
+- **Pracovní nebo školní účty**. Tyto účty spravuje Microsoft jménem organizace využívající Azure Active Directory. Tyto účty slouží k přihlašování k Microsoft 365 a dalším obchodním službám od Microsoftu.
 
 Pracovní nebo školní účty Microsoft obvykle přiřazují koncovým uživatelům (zaměstnanci, studenti, federální zaměstnanci) jejich organizace (společnost, škola, orgán státní správy). Tyto účty jsou nařízené přímo v cloudu (na platformě Azure AD) nebo synchronizované s Azure AD z místního adresáře, jako je Windows Server Active Directory. Microsoft je *správcem* pracovních nebo školních účtů, ale organizace tyto účty vlastní a řídí.
 
@@ -49,7 +49,7 @@ Microsoft nevystavuje koncové uživatele názvům značek Azure ani Active Dire
 
 ## <a name="user-account-pictogram"></a>Piktogram uživatelského účtu
 
-Ve starší verzi těchto pokynů jsme doporučovali používat piktogram modrého odznáčku. Na základě zpětné vazby od uživatelů a vývojářů teď místo toho doporučujeme používat logo Microsoftu. Logo Microsoftu pomůže uživatelům pochopit, že můžou k přihlášení k vaší aplikaci použít účet, který používají s Office 365 nebo jinými obchodními službami Microsoftu.
+Ve starší verzi těchto pokynů jsme doporučovali používat piktogram modrého odznáčku. Na základě zpětné vazby od uživatelů a vývojářů teď místo toho doporučujeme používat logo Microsoftu. Logo Microsoftu pomůže uživatelům pochopit, že můžou znovu použít účet, který používají, Microsoft 365 nebo jiné obchodní služby Microsoftu pro přihlášení k vaší aplikaci.
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>Registrace a přihlášení pomocí Azure AD
 
@@ -63,13 +63,13 @@ Vaše aplikace může nabízet jiné prostředí pro registraci i přihlášení
 
 Váš odkaz na získání aplikace musí uživatele přesměrovat na stránku Azure AD pro udělení přístupu (autorizaci), abyste správcům organizací umožnili autorizovat přístup vaší aplikace k datům jejich organizací, která hostuje Microsoft. Postup požádání o přístup je podrobně popsaný v článku [Integrace aplikací se službou Azure Active Directory](./quickstart-register-app.md).
 
-Jakmile správci souhlasí s vaší aplikací, můžou se rozhodnout přidat je do prostředí spouštěče aplikace pro uživatele Office 365 (přístupné z dlaždice a z [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Pokud chcete tuto možnost inzerovat, můžete použít termíny jako „Přidejte si tuto aplikaci do vaší organizace“ a zobrazit tlačítko jako v následujícím příkladu:
+Jakmile správci souhlasí s vaší aplikací, můžou se rozhodnout přidat je do prostředí pro spouštění aplikací pro uživatele Microsoft 365 App Experience (přístupné z dlaždice a z [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Pokud chcete tuto možnost inzerovat, můžete použít termíny jako „Přidejte si tuto aplikaci do vaší organizace“ a zobrazit tlačítko jako v následujícím příkladu:
 
 ![Tlačítko, které zobrazuje text loga Microsoftu a "Přidat k mojí organizaci"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
 
-> *Pokud už používáte Office 365 nebo jiné obchodní služby od Microsoftu, můžete udělit <your_app_name> přístup k datům vaší organizace. Uživatelé tak budou mít přístup k <your_app_name> se stávajícími pracovními účty.*
+> *Pokud už používáte Microsoft 365 nebo jiné obchodní služby od Microsoftu, můžete <your_app_name udělit> přístup k datům vaší organizace. Uživatelé tak budou mít přístup k <your_app_name> se stávajícími pracovními účty.*
 
 Pokud si pro použití ve vaší aplikaci chcete stáhnout oficiální logo Microsoftu, klikněte pravým tlačítkem na logo, které chcete použít, a uložte si ho do počítače.
 
@@ -102,7 +102,7 @@ Pokud si pro použití ve vaší aplikaci chcete stáhnout oficiální obrázky,
 
 **POUŽÍVEJTE** v kombinaci s tlačítkem Přihlásit se účtem Microsoft text „pracovní nebo školní účet“. Poskytnete tím další vysvětlení, které koncovým uživatelům pomůže poznat, jestli tuto možnost můžou využít. **NEPOUŽÍVEJTE** jiné termíny jako „podnikový účet“, „obchodní účet“ nebo „firemní účet“.
 
-**NEPOUŽÍVEJTE** termíny „ID Office 365“ ani „ID Azure“. Office 365 je také název nabídky Microsoftu pro zákazníky, ve které se k ověřování nepoužívání Azure AD.
+**Nepoužívejte id** Microsoft 365 nebo Azure ID. Microsoft 365 je také název nabídky příjemce od společnosti Microsoft, která pro ověřování nepoužívá službu Azure AD.
 
 **NEUPRAVUJTE** logo Microsoftu.
 

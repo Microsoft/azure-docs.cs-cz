@@ -1,6 +1,6 @@
 ---
 title: Problémy s přihlášením k aplikaci Microsoftu | Microsoft Docs
-description: Řešení běžných problémů při přihlašování k aplikacím Microsoftu, které používají službu Azure AD (například Office 365)
+description: Řešení běžných problémů při přihlašování k aplikacím Microsoftu, které používají službu Azure AD (například Microsoft 365).
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,20 +16,20 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8942a55d880132313e1cdac6bfc025e0b153b410
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759279"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707947"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problémy s přihlášením k aplikaci Microsoftu
 
-Aplikace Microsoftu (jako je Office 365 Exchange, SharePoint, Yammer atd.) se přiřazují a spravují jinak než aplikace třetích stran SaaS nebo jiné aplikace, které integrujete se službou Azure AD pro jednotné přihlašování.
+Aplikace Microsoftu (jako Exchange, SharePoint, Yammer atd.) se přiřazují a spravují jinak než aplikace třetích stran SaaS nebo jiné aplikace, které integrujete se službou Azure AD pro jednotné přihlašování.
 
 Existují tři hlavní způsoby, jak může uživatel získat přístup k aplikaci publikované v Microsoftu.
 
--   Pro aplikace v sadě Office 365 nebo jiné placené sady se uživatelům udělí přístup prostřednictvím **přiřazení licence** buď přímo k jejich uživatelskému účtu, nebo prostřednictvím skupiny s využitím možnosti přiřazení licencí na základě skupin.
+-   Pro aplikace v Microsoft 365 nebo jiné placené sady se uživatelům udělí přístup prostřednictvím **přiřazení licence** buď přímo ke svému uživatelskému účtu, nebo prostřednictvím skupiny pomocí možnosti přiřazení licencí na základě skupin.
 
 -   Pro aplikace, které společnost Microsoft nebo třetí strana zveřejňuje volně pro použití kýmkoli, se uživatelům může udělit přístup prostřednictvím **souhlasu uživatele**. To znamená, že se přihlásí k aplikaci pomocí pracovního nebo školního účtu Azure AD a umožní, aby měl přístup k některé omezené sadě dat na svém účtu.
 
@@ -61,7 +61,7 @@ Tady jsou některé běžné problémy, ke kterým lidé běžet, když se jejic
 
   * Ujistěte se, že **uživatelský účet existuje** v Azure Active Directory. [Ověřte, zda uživatelský účet existuje v Azure Active Directory](#problems-with-the-users-account)
 
-  * Ujistěte se, že je **povolený** účet uživatele pro přihlášení. [Zkontrolujte stav účtu uživatele](#problems-with-the-users-account) .
+  * Ujistěte se, že je **povolený** účet uživatele pro přihlášení. [Zkontroluje stav účtu uživatele](#problems-with-the-users-account) .
 
   * Ujistěte se, že **heslo uživatele není prošlé nebo zapomenuté.** [Resetování hesla uživatele](#reset-a-users-password) nebo [Povolení samoobslužného resetování hesla](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
@@ -438,7 +438,7 @@ Kontrola nebo ověření jedné zásady podmíněného přístupu:
 7. Zkontrolujte, že neexistují žádné konkrétní podmínky, přiřazení nebo jiná nastavení, která by mohla blokovat přístup uživatelů.
 
    >[!NOTE]
-   >Možná budete chtít dočasně zakázat tuto zásadu, aby se zajistilo, že se neovlivňují přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
+   >Možná budete chtít dočasně zakázat tuto zásadu, aby nedošlo k ovlivnění přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
    >
    >
 
@@ -470,7 +470,7 @@ Chcete-li zkontrolovat nebo ověřit aktuálně nakonfigurovanou zásadu podmín
 9.  Zkontrolujte, zda nejsou k dispozici žádné konkrétní podmínky, přiřazení nebo jiná nastavení, která mohou blokovat přístup uživatelů.
 
      >[!NOTE]
-     >Možná budete chtít dočasně zakázat tuto zásadu, aby se zajistilo, že se neovlivňují přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
+     >Možná budete chtít dočasně zakázat tuto zásadu, aby nedošlo k ovlivnění přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
      >
      >
 

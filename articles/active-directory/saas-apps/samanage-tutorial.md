@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Samanage | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Samanage.
+title: 'Kurz: Azure Active Directory Integration s oddělením služeb SolarWinds (dříve Samanage) | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a oddělením služeb SolarWinds (dříve Samanage).
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,28 +11,28 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 56018ff0be07a48cf9448b9b92de5694ebac18bc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543495"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707573"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Kurz: Azure Active Directory integrace s Samanage
+# <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Kurz: Azure Active Directory integrace se službou SolarWinds Service Desk (dříve Samanage)
 
-V tomto kurzu se dozvíte, jak integrovat Samanage s Azure Active Directory (Azure AD).
-Integrace Samanage s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat SolarWinds s Azure Active Directory (Azure AD).
+Integrace SolarWinds s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k Samanage.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Samanage (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k SolarWinds.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k SolarWinds (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-Ke konfiguraci integrace služby Azure AD s Samanage potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s SolarWinds Service Desk (dříve Samanage) potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
 * Předplatné s povoleným Samanagem jednotným přihlašováním
@@ -41,15 +41,15 @@ Ke konfiguraci integrace služby Azure AD s Samanage potřebujete následující
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Samanage podporuje jednotné přihlašování iniciované v **SP**
+* SolarWinds podporuje jednotné přihlašování iniciované v **SP**
 
-## <a name="adding-samanage-from-the-gallery"></a>Přidání Samanage z Galerie
+## <a name="adding-solarwinds-from-the-gallery"></a>Přidání SolarWinds z Galerie
 
-Pokud chcete nakonfigurovat integraci Samanage do služby Azure AD, musíte přidat Samanage z Galerie do svého seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci SolarWinds do služby Azure AD, musíte přidat SolarWinds z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Samanage z Galerie, proveďte následující kroky:**
+**Pokud chcete přidat SolarWinds z Galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory** ikona.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -61,31 +61,31 @@ Pokud chcete nakonfigurovat integraci Samanage do služby Azure AD, musíte při
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Samanage**, vyberte **Samanage** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SolarWinds**, vyberte **SolarWinds** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Samanage v seznamu výsledků](common/search-new-app.png)
+     ![SolarWinds v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Samanage na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Samanage.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí SolarWinds na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SolarWinds.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Samanage, musíte dokončit tyto stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SolarWinds, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Samanage](#configure-samanage-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Konfigurace jednotného přihlašování pro službu SolarWinds Service Desk](#configure-solarwinds-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření Samanage Test User](#create-samanage-test-user)** – pro Britta Simon v Samanage, který je propojený s reprezentací uživatele Azure AD.
+5. **[Vytvořit testovacího uživatele pro SolarWinds Service](#create-solarwinds-test-user)** – abyste měli protějšek Britta Simon v oddělení služeb SolarWinds, který se odkazuje na reprezentaci uživatele v Azure AD.
 6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Samanage, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SolarWinds, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Samanage** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SolarWinds** vyberte **jednotné přihlašování**.
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -112,7 +112,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Samanage
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavení Samanage** zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavení SolarWinds** zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -122,9 +122,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Samanage
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-samanage-single-sign-on"></a>Konfigurace jednotného přihlašování Samanage
+<a name="configure-solarwinds-single-sign-on"></a>
 
-1. V jiném okně webového prohlížeče se přihlaste k webu Samanage společnosti jako správce.
+### <a name="configure-solarwinds-service-desk-single-sign-on"></a>Konfigurace jednotného přihlašování pro službu SolarWinds Service Desk
+
+1. V jiném okně webového prohlížeče se přihlaste k webu SolarWinds společnosti jako správce.
 
 2. Klikněte na **řídicí panel** a v levém navigačním podokně vyberte **Nastavení** .
    
@@ -150,7 +152,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Samanage
  
     f. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, který jste stáhli z Azure Portal, zkopírujte jeho obsah do schránky a vložte ho do pole **Vložit poskytovatele identity x. 509 pod** textovým polem.
  
-    například **Pokud v Samanage neexistují**, klikněte na vytvořit uživatele.
+    například **Pokud v SolarWinds neexistují**, klikněte na vytvořit uživatele.
  
     h. Klikněte na **Aktualizovat**.
 
@@ -177,19 +179,17 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Samanage.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k SolarWinds.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Samanage**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **SolarWinds**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Samanage**.
-
-    ![Odkaz Samanage v seznamu aplikací](common/all-applications.png)
+2. V seznamu aplikace vyberte **SolarWinds**.
 
 3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
@@ -205,14 +205,14 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-samanage-test-user"></a>Vytvořit testovacího uživatele Samanage
+### <a name="create-solarwinds-test-user"></a>Vytvořit testovacího uživatele SolarWinds
 
-Aby se uživatelé Azure AD mohli přihlásit k Samanage, musí se zřídit v Samanage.  
-V případě Samanage je zřizování ručním úkolem.
+Aby se uživatelé Azure AD mohli přihlásit k SolarWinds, musí se zřídit v SolarWinds.  
+V případě SolarWinds je zřizování ručním úkolem.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se k webu Samanage společnosti jako správce.
+1. Přihlaste se k webu SolarWinds společnosti jako správce.
 
 2. Klikněte na **řídicí panel** a vyberte **Nastavení** v levém navigačním panelu.
    
@@ -231,13 +231,13 @@ V případě Samanage je zřizování ručním úkolem.
     ![Vytvořit uživatele](./media/samanage-tutorial/tutorial_samanage_008.png "Vytvořit uživatele")
    
    >[!NOTE]
-   >Držitel účtu Azure Active Directory obdrží e-mail a provede odkaz pro potvrzení, že účet ještě nebude aktivní. K zřizování Azure Active Directorych uživatelských účtů můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů Samanage nebo rozhraní API poskytovaná Samanage.
+   >Držitel účtu Azure Active Directory obdrží e-mail a provede odkaz pro potvrzení, že účet ještě nebude aktivní. K zřizování Azure Active Directorych uživatelských účtů můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů SolarWinds nebo rozhraní API poskytovaná SolarWinds.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Samanage, měli byste se automaticky přihlásit k Samanage, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici SolarWinds, měli byste se automaticky přihlásit k SolarWinds, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další materiály
 

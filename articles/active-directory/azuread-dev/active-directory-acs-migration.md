@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117783"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706247"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -99,9 +99,9 @@ Podle kroků v této části zjistíte, které z vašich aplikací budou ovlivn�
 
 ### <a name="check-which-applications-will-be-impacted"></a>Ověřte, které aplikace budou ovlivněny.
 
-1. Použijte obor názvů z předchozího kroku a pak přejít na`https://<namespace>.accesscontrol.windows.net`
+1. Použijte obor názvů z předchozího kroku a pak přejít na `https://<namespace>.accesscontrol.windows.net`
 
-    Například pokud je jeden z oborů názvů contoso-test, přejít na`https://contoso-test.accesscontrol.windows.net`
+    Například pokud je jeden z oborů názvů contoso-test, přejít na `https://contoso-test.accesscontrol.windows.net`
 
 2. V části **vztahy důvěryhodnosti**vyberte **aplikace předávající strany** , kde se zobrazí seznam aplikací, které budou ovlivněny vyřazením služby ACS.
 3. Opakujte kroky 1-2 pro všechny další obory názvů ACS.
@@ -173,7 +173,7 @@ Bohužel není jedna služba, která nabízí všechny tyto ekvivalentní funkce
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrace na Azure Active Directory
 
-Cesta, která se má vzít v úvahu, integruje vaše aplikace a služby přímo s Azure AD. Azure AD je cloudový poskytovatel identity pro pracovní nebo školní účty Microsoftu. Azure AD je poskytovatel identity pro Office 365, Azure a spoustu dalších věcí. Poskytuje podobné možnosti federovaného ověřování Access Control, ale nepodporuje všechny funkce Access Control. 
+Cesta, která se má vzít v úvahu, integruje vaše aplikace a služby přímo s Azure AD. Azure AD je cloudový poskytovatel identity pro pracovní nebo školní účty Microsoftu. Azure AD je poskytovatel identity pro Microsoft 365, Azure a spoustu dalších věcí. Poskytuje podobné možnosti federovaného ověřování Access Control, ale nepodporuje všechny funkce Access Control. 
 
 Primárním příkladem je federace se zprostředkovateli sociálních identit, jako je Facebook, Google a Yahoo. Pokud se uživatelé přihlásí pomocí těchto typů přihlašovacích údajů, Azure AD není pro vás řešení. 
 
@@ -202,7 +202,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | WS-Trust | Podporováno | Nepodporováno |
 | **Formáty tokenů** | | |
 | TOKEN | Podporováno ve verzi beta | Podporováno |
-| SAML 1,1 | Podporováno | Náhled |
+| SAML 1,1 | Podporováno | Preview |
 | SAML 2.0 | Podporováno | Podporováno |
 | SWT | Podporováno | Nepodporováno |
 | **Vlastní nastavení** | | |
@@ -316,7 +316,7 @@ Identity služby v Access Control se obvykle používají k implementaci ověřo
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrace na Azure Active Directory
 
-Naše doporučení pro tento typ toku ověřování je migrace na [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Azure AD je cloudový poskytovatel identity pro pracovní nebo školní účty Microsoftu. Azure AD je poskytovatel identity pro Office 365, Azure a spoustu dalších věcí. 
+Naše doporučení pro tento typ toku ověřování je migrace na [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Azure AD je cloudový poskytovatel identity pro pracovní nebo školní účty Microsoftu. Azure AD je poskytovatel identity pro Microsoft 365, Azure a spoustu dalších věcí. 
 
 Službu Azure AD můžete použít také k ověřování typu Server-Server pomocí implementace služby Azure AD pro udělení přihlašovacích údajů klienta OAuth. Následující tabulka porovnává možnosti Access Control v ověřování mezi servery, které jsou k dispozici ve službě Azure AD.
 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: be5d86fe690d60f687622243a2f1d7771b8af7d0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603991"
+ms.locfileid: "90707760"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -87,7 +87,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
    > [!IMPORTANT]
    > Čas posledního přístupu ke sledování je jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
    
-   Další informace o možnosti **posledního použití** najdete v tématu [přesun dat na základě posledního dne otevření (Preview)](#move-data-based-on-last-accessed-date-preview).
+   Aby bylo možné použít **poslední možnost přístupu** , vyberte na stránce **Správa životního cyklu** v Azure Portal možnost **sledování přístupu povoleno** . Další informace o možnosti **posledního použití** najdete v tématu [přesun dat na základě posledního dne otevření (Preview)](#move-data-based-on-last-accessed-date-preview).
 
 1. Pokud jste vybrali možnost **omezit objekty BLOB s filtry** na stránce **Podrobnosti** , vyberte **Filtr sady** pro přidání volitelného filtru. Následující příklad filtruje objekty BLOB v kontejneru *mylifecyclecontainer* , které začínají na "protokol".
 
@@ -376,6 +376,8 @@ Možnost **posledního použití** je dostupná ve verzi Preview v následujíc�
 
 > [!IMPORTANT]
 > Čas posledního přístupu ke sledování je jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
+
+Aby bylo možné použít **poslední možnost přístupu** , vyberte na stránce **Správa životního cyklu** v Azure Portal možnost **sledování přístupu povoleno** .
 
 #### <a name="how-last-access-time-tracking-works"></a>Jak funguje sledování času posledního přístupu
 

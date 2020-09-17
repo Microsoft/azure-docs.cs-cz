@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115760"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706179"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 
@@ -70,9 +70,9 @@ Podobně jako aplikační objekty lze instanční objekty vytvořit také prost�
 
 * Když se uživatelé přihlásí k aplikaci třetí strany integrované s Azure AD
   * Během přihlašování se uživatelům zobrazí výzva, aby aplikaci udělili oprávnění k přístupu k jejich profilu a dalším oprávněním. První osoba, která by dala udělit souhlas, způsobí instanční objekt, který představuje aplikaci, která se má přidat do adresáře.
-* Když se uživatelé přihlásí k Microsoft online služby jako je [Office 365](https://products.office.com/)
-  * Když se přihlásíte k odběru sady Office 365 nebo zahájíte zkušební období, v adresáři představujících různé služby, které se používají k doručování všech funkcí přidružených k sadě Office 365, se vytvoří jeden nebo více instančních objektů.
-  * Některé služby Office 365, jako je SharePoint, vytvářejí instanční objekty průběžně a umožňují zabezpečenou komunikaci mezi součástmi včetně pracovních postupů.
+* Když se uživatelé přihlásí k Microsoft online služby jako [Microsoft 365](https://products.office.com/)
+  * Když se přihlásíte k odběru Microsoft 365 nebo zahájíte zkušební období, v adresáři představujících různé služby, které se používají k doručování všech funkcí přidružených k Microsoft 365, se vytvoří jeden nebo více instančních objektů.
+  * Některé Microsoft 365 služby, jako je SharePoint, vytvářejí instanční objekty průběžně a umožňují zabezpečenou komunikaci mezi součástmi včetně pracovních postupů.
 * Když správce přidá aplikaci z Galerie aplikací (tím se vytvoří také základní objekt aplikace)
 * Přidání aplikace pro použití [proxy aplikací služby AD Azure](../manage-apps/application-proxy.md)
 * Připojení aplikace pro jednotné přihlašování pomocí protokolu SAML nebo jednotného přihlašování k heslu (SSO)
@@ -116,7 +116,7 @@ Do Azure AD se přidají aplikace, které budou využívat jednu nebo víc služ
 * Jednotné přihlašování pomocí federace nebo hesla
 * Zřizování a synchronizace uživatelů
 * Řízení přístupu na základě rolí – pomocí adresáře definujte aplikační role k provádění kontrol autorizace na základě rolí v aplikaci.
-* Autorizační služba OAuth – používá se pro Office 365 a další aplikace Microsoftu k autorizaci přístupu k rozhraním API nebo prostředkům.
+* Autorizační služba OAuth – používá Microsoft 365 a další aplikace Microsoftu k autorizaci přístupu k rozhraním API nebo prostředkům.
 * Publikování a proxy aplikací – publikování aplikace z privátní sítě na Internet
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kdo má oprávnění přidávat aplikace do své instance Azure AD?

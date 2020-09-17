@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141359"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705890"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení libovolného uživatele služby Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -53,7 +53,7 @@ Ve výchozím nastavení mají aplikace vytvořené prostřednictvím Azure Port
 
 V jediné aplikaci tenanta se žádosti o přihlášení odesílají do koncového bodu přihlášení klienta. Například pro contoso.onmicrosoft.com by koncový bod byl: `https://login.microsoftonline.com/contoso.onmicrosoft.com` . Požadavky odeslané na koncový bod tenanta se můžou přihlašovat uživatelům (nebo hostů) v tomto tenantovi k aplikacím v tomto tenantovi.
 
-U víceklientské aplikace neví aplikace, ze které uživatele pochází, takže nemůžete odesílat žádosti do koncového bodu klienta. Místo toho se požadavky odesílají do koncového bodu, který je ve všech klientech Azure AD.`https://login.microsoftonline.com/common`
+U víceklientské aplikace neví aplikace, ze které uživatele pochází, takže nemůžete odesílat žádosti do koncového bodu klienta. Místo toho se požadavky odesílají do koncového bodu, který je ve všech klientech Azure AD. `https://login.microsoftonline.com/common`
 
 Když Microsoft Identity Platform dostane požadavek na koncový bod/běžné, podepíše uživatele v a. v důsledku toho zjistí, ze kterého tenanta uživatel pochází. Koncový bod/běžné funguje se všemi ověřovacími protokoly, které podporuje Azure AD: OpenID Connect, OAuth 2,0, SAML 2,0 a WS-Federation.
 
@@ -141,7 +141,7 @@ Vaše aplikace může mít více vrstev, z nichž každý představuje vlastní 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Více vrstev v jednom tenantovi
 
-To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Například:
+To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Příklad:
 
 ```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
@@ -153,7 +153,7 @@ To je znázorněno ve vícevrstvém nativním klientovi, který volá ukázku we
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>Více vrstev ve více klientech
 
-K podobnému případu dojde, pokud jsou různé úrovně aplikace zaregistrované v různých klientech. Zvažte například případ sestavení nativní klientské aplikace, která volá rozhraní API systému Office 365 Exchange Online. Pro vývoj nativní aplikace a novější pro spuštění nativní aplikace v tenantovi zákazníka musí být k dispozici objekt zabezpečení Exchange Online. V takovém případě musí vývojář a zákazník koupit Exchange Online, aby se instanční objekt vytvořil ve svých klientech.
+K podobnému případu dojde, pokud jsou různé úrovně aplikace zaregistrované v různých klientech. Zvažte například případ sestavení nativní klientské aplikace, která volá rozhraní API Exchange Online. Pro vývoj nativní aplikace a novější pro spuštění nativní aplikace v tenantovi zákazníka musí být k dispozici objekt zabezpečení Exchange Online. V takovém případě musí vývojář a zákazník koupit Exchange Online, aby se instanční objekt vytvořil ve svých klientech.
 
 Pokud se jedná o rozhraní API vytvořené organizací jinou než Microsoft, vývojář rozhraní API musí poskytnout způsob, jak zákazníkům udělit souhlas s tím, aby si tuto aplikaci mohli v tenantovi svých zákazníků vyjádřit. Doporučeným návrhem je vývojář třetí strany, který sestaví rozhraní API tak, aby mohl také fungovat jako webový klient pro implementaci registrace. Použijte následující postup:
 
@@ -181,7 +181,7 @@ Víceklientské aplikace mohou také získat přístupové tokeny pro volání r
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihlásit uživatele z libovolného tenanta Azure AD. Po povolení jednotného přihlašování (SSO) mezi vaší aplikací a službou Azure AD můžete také aktualizovat aplikaci pro přístup k rozhraním API vystaveným prostředky Microsoftu, jako je třeba Office 365. To vám umožní nabízet v aplikaci přizpůsobené prostředí, například zobrazení kontextových informací uživatelům, jako je například profilový obrázek nebo jejich další schůzka v kalendáři. Další informace o vytváření volání rozhraní API pro služby Azure AD a Office 365, jako je Exchange, SharePoint, OneDrive, OneNote a další, najdete v [Microsoft Graph API][MSFT-Graph-overview].
+V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihlásit uživatele z libovolného tenanta Azure AD. Po povolení jednotného přihlašování (SSO) mezi vaší aplikací a službou Azure AD můžete také aktualizovat aplikaci pro přístup k rozhraním API vystaveným prostředky Microsoftu, jako je Microsoft 365. To vám umožní nabízet v aplikaci přizpůsobené prostředí, například zobrazení kontextových informací uživatelům, jako je například profilový obrázek nebo jejich další schůzka v kalendáři. Další informace o tom, jak volat rozhraní API pro Azure AD a Microsoft 365 služby, jako jsou Exchange, SharePoint, OneDrive, OneNote a další, najdete v [Microsoft Graph API][MSFT-Graph-overview].
 
 ## <a name="related-content"></a>Související obsah
 

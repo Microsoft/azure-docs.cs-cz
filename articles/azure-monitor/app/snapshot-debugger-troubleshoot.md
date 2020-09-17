@@ -2,18 +2,18 @@
 title: Řešení potíží s Azure Application Insights Snapshot Debugger
 description: Tento článek představuje postup řešení potíží a informace, které vývojářům pomůžou při povolování a používání Application Insights Snapshot Debugger.
 ms.topic: conceptual
-author: brahmnes
+author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671405"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707828"
 ---
-# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
-Pokud jste u své aplikace povolili Application Insights Snapshot Debugger, ale nevidíte snímky pro výjimky, můžete tyto pokyny použít k řešení potíží. Může existovat mnoho různých důvodů, proč se snímky negenerují. Můžete spustit kontrolu stavu snímku a identifikovat některé z možných běžných příčin.
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
+Pokud jste u své aplikace povolili Application Insights Snapshot Debugger, ale nevidíte snímky pro výjimky, můžete tyto pokyny použít k řešení potíží. Snímky se nemusí generovat z několika různých důvodů. Můžete spustit kontrolu stavu snímku a identifikovat některé z možných běžných příčin.
 
 ## <a name="use-the-snapshot-health-check"></a>Použít kontrolu stavu snímku
 Výsledkem některých běžných problémů je, že se nezobrazují snímky otevření ladicího programu. Použití zastaralých Snapshot Collector například; dosáhnete denního limitu nahrávání; nebo možná budete muset snímek jenom prodloužit. K odstraňování běžných problémů použijte kontrolu stavu snímku.
@@ -32,13 +32,37 @@ Pokud se tím problém nevyřeší, přečtěte si následující postup ruční
 
 Ujistěte se, že ve vaší publikované aplikaci používáte správný klíč instrumentace. Klíč instrumentace se obvykle čte z ApplicationInsights.config souboru. Ověřte, že hodnota je stejná jako klíč instrumentace pro prostředek Application Insights, který vidíte na portálu.
 
+## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>Kontrolovat nastavení klienta SSL (ASP.NET)
+
+Pokud máte ASP.NET aplikaci hostovanou v Azure App Service nebo ve službě IIS na virtuálním počítači, může se vaší aplikaci nepodaří připojit se ke službě Snapshot Debugger z důvodu chybějícího protokolu zabezpečení SSL.
+[Koncový bod Snapshot Debugger vyžaduje TLS verze 1,2](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). Sada protokolů zabezpečení SSL je jedním z adaptivní povolených hodnotou targetFramework targetFramework v části System. Web web.config. Pokud je pole targetFramework targetFramework 4.5.2 nebo nižší, pak se ve výchozím nastavení nezahrne TLS 1,2.
+
+> [!NOTE]
+> Hodnota targetFramework aplikace httpRuntime je nezávislá na cílové architektuře používané při sestavování aplikace.
+
+Chcete-li zjistit nastavení, otevřete soubor web.config a vyhledejte část System. Web. Ujistěte se, že je `targetFramework` `httpRuntime` nastavená na 4,6 nebo vyšší.
+
+   ```xml
+   <system.web>
+      ...
+      <httpRuntime targetFramework="4.7.2" />
+      ...
+   </system.web>
+   ```
+
+> [!NOTE]
+> Změna hodnoty aplikace httpRuntime targetFramework změní adaptivní modulu runtime, který se aplikuje na vaši aplikaci, a může způsobit další, jemné změny chování. Po provedení této změny nezapomeňte aplikaci důkladně otestovat. Úplný seznam změn kompatibility najdete v tématu. https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes
+
+> [!NOTE]
+> Pokud má targetFramework hodnotu 4,7 nebo vyšší, určí systém Windows dostupné protokoly. V Azure App Service je k dispozici protokol TLS 1,2. Pokud ale používáte vlastní virtuální počítač, možná budete muset v operačním systému povolit TLS 1,2.
+
 ## <a name="preview-versions-of-net-core"></a>Verze Preview rozhraní .NET Core
 Pokud aplikace používá verzi Preview rozhraní .NET Core a Snapshot Debugger byla povolena prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) na portálu, Snapshot Debugger pravděpodobně nebude možné spustit. Postupujte podle pokynů v části [povolit Snapshot debugger pro další prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) , abyste před povolením prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)zahrnuli ***také*** balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) .
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade na nejnovější verzi balíčku NuGet
 
-Pokud byla Snapshot Debugger povolena prostřednictvím [podokna Application Insights na portálu](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), měla by již vaše aplikace používat nejnovější balíček NuGet. Pokud byla povolená Snapshot Debugger zahrnutím balíčku NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) , použijte Správce balíčků NuGet sady Visual Studio a ujistěte se, že používáte nejnovější verzi Microsoft. ApplicationInsights. SnapshotCollector. Poznámky k verzi najdete na adresehttps://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Pokud byla Snapshot Debugger povolena prostřednictvím [podokna Application Insights na portálu](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), měla by již vaše aplikace používat nejnovější balíček NuGet. Pokud byla povolená Snapshot Debugger zahrnutím balíčku NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) , použijte Správce balíčků NuGet sady Visual Studio a ujistěte se, že používáte nejnovější verzi Microsoft. ApplicationInsights. SnapshotCollector. Poznámky k verzi najdete na adrese https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
 ## <a name="check-the-uploader-logs"></a>Podívejte se na protokoly odeslání.
 
@@ -140,7 +164,7 @@ Pomocí těchto kroků můžete nakonfigurovat roli cloudové služby s vyhrazen
    }
    ```
 
-3. Aktualizujte soubor ApplicationInsights.config role pro přepsání umístění dočasné složky používané nástrojem`SnapshotCollector`
+3. Aktualizujte soubor ApplicationInsights.config role pro přepsání umístění dočasné složky používané nástrojem `SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">

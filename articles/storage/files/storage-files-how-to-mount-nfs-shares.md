@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 23465c76fa62ed65583b97b0c9406dc791a4327f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564817"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707437"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>Postup připojení sdílené složky systému souborů NFS
 
@@ -27,7 +27,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - [Vytvořte sdílenou SLOŽKU NFS](storage-files-how-to-create-nfs-shares.md).
 
@@ -61,4 +61,5 @@ Nyní jste připojili sdílenou složku systému souborů NFS.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o souborech Azure s naším článkem najdete v tématu [Plánování nasazení služby soubory Azure](storage-files-planning.md).
+- Další informace o souborech Azure s naším článkem najdete v tématu [Plánování nasazení služby soubory Azure](storage-files-planning.md).
+- Pokud se setkáte s problémy, přečtěte si téma [řešení potíží s sdílenými složkami souborů Azure NFS](storage-troubleshooting-files-nfs.md)
