@@ -3,17 +3,17 @@ title: Správa nákladů na Azure s využitím automatizace
 description: Tento článek vysvětluje, jak můžete spravovat náklady na Azure s využitím automatizace.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
-ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.reviewer: matrive
+ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684401"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526642"
 ---
 # <a name="manage-costs-with-automation"></a>Správa nákladů s využitím automatizace
 
@@ -161,6 +161,70 @@ Volání GET pro rozhraní API pro rozpočty nevrátí aktuální náklady zobra
 ### <a name="automate-budget-creation"></a>Automatizace vytváření rozpočtů
 
 Vytváření rozpočtu můžete automatizovat pomocí [rozhraní API pro rozpočty](/rest/api/consumption/budgets). Rozpočet si také můžete vytvořit pomocí [šablony rozpočtu](quick-create-budget-template.md). Šablony představují snadný způsob, jak standardizovat nasazení Azure a současně zajistit správnou konfiguraci a prosazování řízení nákladů.
+
+#### <a name="supported-locales-for-budget-alert-emails"></a>Podporovaná národní prostředí pro e-maily s upozorněními na rozpočet
+
+Pokud používáte rozpočty a náklady překročí nastavenou prahovou hodnotu, dostanete upozornění. Pro každý rozpočet můžete nastavit až pět příjemců e-mailu. Příjemci dostanou e-mailová upozornění do 24 hodin od překročení prahové hodnoty rozpočtu. Příjemce ale může potřebovat, aby e-maily, které dostává, byly v jiném jazyce. S rozhraním API pro rozpočty můžete využívat následující kódy jazykové verze. Kód jazykové verze můžete nastavit pomocí parametru `locale` (podobně jako v následujícím příkladu).
+
+```json
+{
+  "eTag": "\"1d681a8fc67f77a\"",
+  "properties": {
+    "timePeriod": {
+      "startDate": "2020-07-24T00:00:00Z",
+      "endDate": "2022-07-23T00:00:00Z"
+    },
+    "timeGrain": "BillingMonth",
+    "amount": 1,
+    "currentSpend": {
+      "amount": 0,
+      "unit": "USD"
+    },
+    "category": "Cost",
+    "notifications": {
+      "actual_GreaterThan_10_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 20,
+        "locale": "en-us",
+        "contactEmails": [
+          "user@contoso.com"
+        ],
+        "contactRoles": [],
+        "contactGroups": [],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+
+```
+
+Jazyky podporované kódem jazykové verze:
+
+| Kód jazykové verze| Jazyk |
+| --- | --- |
+| cs-cz | Angličtina (Spojené státy) |
+| ja-jp | japonština (Japonsko) |
+| zh-cn | Čínština (zjednodušená, Čína) |
+| de-de | němčina (Německo) |
+| es-es | španělština (Španělsko, mezinárodní) |
+| fr-fr | francouzština (Francie) |
+| it-it | italština (Itálie) |
+| ko-kr | korejština (Jižní Korea) |
+| pt-br | Portugalština (Brazílie) |
+| ru-ru | ruština (Rusko) |
+| zh-tw | Čínština (tradiční, Tchaj-wan) |
+| cs-cz | čeština (Česká republika) |
+| pl-pl | polština (Polsko) |
+| tr-tr | turečtina (Turecko) |
+| da-dk | dánština (Dánsko) |
+| dn-gb | Angličtina (Spojené království) |
+| hu-hu | Maďarština (Maďarsko) |
+| nb-bo | norština bokmal (Norsko) |
+| nl-nl | nizozemština (Nizozemsko) |
+| pt-pt | portugalština (Portugalsko) |
+| sv-se | švédština (Švédsko) |
 
 #### <a name="common-budgets-api-configurations"></a>Běžné konfigurace rozhraní API pro rozpočty
 
