@@ -28,8 +28,6 @@
           href: tutorial-discover-physical.md
         - name: Zjišťování instancí AWS
           href: tutorial-discover-aws.md
-        - name: Zjišťování importovaných serverů
-          href: tutorial-discover-import.md
     - name: Posouzení
       items:
         - name: Posouzení virtuálních počítačů VMware pro migraci na virtuální počítače Azure
@@ -42,6 +40,8 @@
           href: tutorial-assess-physical.md
         - name: Posouzení instancí AWS pro migraci do Azure
           href: tutorial-assess-aws.md
+        - name: Posouzení importovaných serverů
+          href: tutorial-discover-import.md
     - name: Migrace
       items:
         - name: Migrace virtuálních počítačů VMware

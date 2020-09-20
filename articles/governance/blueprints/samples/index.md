@@ -1,14 +1,14 @@
 ---
 title: Index ukázek podrobných plánů
 description: Index ukázek dodržování předpisů a standardních ukázek pro nasazování prostředí, zásad a základů architektury přechodu na cloud s využitím Azure Blueprints
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031870"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530977"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -42,7 +42,8 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 
 ## <a name="samples-strategy"></a>Strategie ukázek
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="Strategie ukázek podrobných plánů" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="Diagram ukazující porovnání ukázek podrobných plánů z hlediska architektonické složitosti a požadavků na dodržování předpisů" border="false":::
+   Popisuje systém souřadnic, ve kterém je složitost architektury zachycená na ose X a požadavky na dodržování předpisů na ose Y.  Když se zvyšuje architektonická složitost a rostou požadavky na dodržování předpisů, využívejte standardní ukázky podrobných plánů uvedené v oblasti E. Pro zákazníky začínající s Azure je vhodné využít podrobné plány základů architektury Cloud Adoption Framework (CAF) a cílových zón uvedené v oblastech A a B. Zbývající místo je vyčleněné pro vlastní podrobné plány vytvořené zákazníky, kteří jsou partnery (oblasti C, D a F). :::image-end:::
 
 Podrobné plány Základy CAF a Cílová zóna migrace CAF předpokládají, že zákazník připravuje jedno stávající čisté předplatné pro migraci místních prostředků a úloh do Azure
 (oblast A a B na obrázku).  

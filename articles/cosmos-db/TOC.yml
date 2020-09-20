@@ -1072,6 +1072,8 @@
               href: troubleshoot-not-found.md
             - name: Řešení potíží s neautorizací
               href: troubleshoot-unauthorized.md
+            - name: Dostupnost sad SDK v prostředích s více oblastmi
+              href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
             - name: Obecné řešení potíží se sadou .NET SDK

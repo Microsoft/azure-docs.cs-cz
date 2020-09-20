@@ -53,6 +53,9 @@
     - name: Odebrání přístupu k delegování
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
+    - name: Integrace služby 0Azure Arc
+      displayName: 'server, kubernetes, hybrid, infrastructure'
+      href: ./how-to/manage-hybrid-infrastructure-arc.md
     - name: Integrace služby Azure Monitor
       items:
         - name: Použití protokolů Azure Monitoru ve velkém měřítku

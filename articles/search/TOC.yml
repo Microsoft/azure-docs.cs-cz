@@ -3,9 +3,11 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je kognitivní hledání Azure?
+    - name: Co je Cognitive Search?
       href: search-what-is-azure-search.md
-    - name: Co je nového
+    - name: Funkce služby Cognitive Search
+      href: search-features-list.md
+    - name: Novinky služby Cognitive Search
       href: whats-new.md
 - name: Rychlé starty
   items:
@@ -413,25 +415,27 @@
     - name: .NET
       items:
         - name: Search API
-          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: Rozhraní API pro správu
-          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: Search API
+          href: /java/api/overview/azure/search-documents-readme
         - name: Rozhraní API pro správu
-          href: /java/api/overview/azure/search/management?view=azure-java-stable
+          href: /java/api/overview/azure/search/management
     - name: JavaScript
       items:
         - name: Search API
-          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: Rozhraní API pro správu
-          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: Search API
-          href: /python/api/overview/azure/search-documents-readme?view=azure-python
+          href: /python/api/overview/azure/search-documents-readme
         - name: Rozhraní API pro správu
-          href: /python/api/overview/azure/search/management?view=azure-python
+          href: /python/api/overview/azure/search/management
     - name: Referenční informace k jazyku OData
       items:
         - name: Přehled

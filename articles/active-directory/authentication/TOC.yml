@@ -21,7 +21,19 @@
   expanded: true
   items:
     - name: Metody ověřování
-      href: concept-authentication-methods.md
+      items:
+        - name: Přehled
+          href: concept-authentication-methods.md
+        - name: Aplikace Microsoft Authenticator
+          href: concept-authentication-authenticator-app.md
+        - name: Tokeny OATH
+          href: concept-authentication-oath-tokens.md
+        - name: Bez hesla
+          href: concept-authentication-passwordless.md
+        - name: Možnosti telefonu
+          href: concept-authentication-phone-options.md
+        - name: Bezpečnostní otázky
+          href: concept-authentication-security-questions.md
     - name: Samoobslužné resetování hesla
       items:
         - name: Jak funguje resetování hesel
@@ -46,8 +58,6 @@
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: Nejčastější dotazy
           href: multi-factor-authentication-faq.md
-    - name: Ověřování bez hesla
-      href: concept-authentication-passwordless.md
     - name: Ochrana hesel
       items:
         - name: Eliminace slabých hesel v cloudu

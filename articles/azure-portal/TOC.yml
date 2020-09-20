@@ -31,6 +31,8 @@
       href: set-preferences.md
     - name: 'Přidání, odebrání a řazení oblíbených položek'
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Zobrazení a filtrování informací o prostředcích
+      href: manage-filter-resource-views.md
     - name: Vytváření řídicích panelů Azure
       items:
         - name: Vytváření a sdílení řídicích panelů Azure

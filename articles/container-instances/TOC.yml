@@ -17,7 +17,7 @@
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
     - name: Nasazení instance kontejneru – rozhraní příkazového řádku Dockeru
-      href: container-instances-quickstart-docker-cli.md
+      href: quickstart-docker-cli.md
 - name: Kurzy
   items:
     - name: Vytvoření a nasazení image kontejneru
@@ -34,6 +34,8 @@
           href: container-instances-multi-container-yaml.md
         - name: Nasazení skupiny kontejnerů – Resource Manager
           href: container-instances-multi-container-group.md
+        - name: Nasazení skupiny kontejnerů – Docker Compose
+          href: tutorial-docker-compose.md
     - name: Integrace se službami Azure
       items:
         - name: Aktivace pomocí Azure Functions

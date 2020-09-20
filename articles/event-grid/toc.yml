@@ -48,7 +48,7 @@
       href: resize-images-on-storage-blob-upload-event.md
     - name: Aktivace runbooku Automation
       href: ensure-tags-exists-on-new-virtual-machines.md
-    - name: E-mail při přidání zařízení IoT Hub
+    - name: E-mail při odpojení zařízení IoT Hub
       href: publish-iot-hub-events-to-logic-apps.md
     - name: Reakce na události služby Service Bus
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json

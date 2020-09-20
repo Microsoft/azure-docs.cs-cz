@@ -592,7 +592,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Šifrování disků – nejčastější dotazy
               href: disk-encryption-faq.md
-            - name: Šifrování disků – předchozí verze (AAD)
+            - name: Šifrování disků – předchozí verze (Azure AD)
               items:
                 - name: Přehled
                   href: disk-encryption-overview-aad.md
@@ -670,7 +670,7 @@
           href: nested-virtualization.md
         - name: Automatické opravy hosta virtuálního počítače (Preview)
           href: automatic-vm-guest-patching.md
-    - name: Údržba platformy
+    - name: Řízení údržby
       items:
         - name: Oznámení o údržbě
           items:
@@ -682,11 +682,11 @@
               href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Řízení údržby
+        - name: Údržba platformy
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: CLI
+            - name: Rozhraní příkazového řádku
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -696,6 +696,16 @@
           href: scheduled-events.md
         - name: Služba plánovaných událostí Windows
           href: scheduled-event-service.md
+        - name: Upgrady imagí operačního systému škálovací sady virtuálních počítačů
+          items:
+            - name: Automatické upgrady operačního systému
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Řízení údržby
+              items:
+                - name: Přehled (Preview)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell (Preview)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Monitorování virtuálních počítačů
       items:
         - name: Agenti

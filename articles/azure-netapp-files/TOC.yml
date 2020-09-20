@@ -33,6 +33,12 @@
       href: azure-netapp-files-cost-model.md
     - name: Pokyny pro plánování sítě Azure NetApp Files
       href: azure-netapp-files-network-topologies.md
+    - name: Replikace mezi oblastmi
+      items:
+        - name: Principy replikace mezi oblastmi
+          href: cross-region-replication-introduction.md
+        - name: Požadavky a aspekty replikace mezi oblastmi
+          href: cross-region-replication-requirements-considerations.md
     - name: Řešení
       items:
         - name: Architektury řešení s využitím Azure NetApp Files
@@ -81,6 +87,16 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Dynamická změna úrovně služeb svazku
       href: dynamic-change-volume-service-level.md
+    - name: Správa replikace mezi oblastmi
+      items:
+        - name: Vytvoření peeringu replikace
+          href: cross-region-replication-create-peering.md
+        - name: Zobrazení stavu vztahu replikace
+          href: cross-region-replication-display-health-status.md
+        - name: Správa zotavení po havárii
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: Odstranění replikací
+          href: cross-region-replication-delete.md
     - name: Vývoj
       items:
         - name: REST API
@@ -91,6 +107,10 @@
           href: azure-netapp-files-sdk-cli.md
         - name: Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s replikací mezi oblastmi
+          href: troubleshoot-cross-region-replication.md
 - name: Referenční informace
   items:
     - name: REST

@@ -27,6 +27,8 @@
       items:
         - name: Plánování nasazení služby Soubory Azure
           href: storage-files-planning.md
+        - name: Dostupné protokoly pro sdílené složky
+          href: storage-files-compare-protocols.md
         - name: Autorizace a ověřování na základě identit
           href: storage-files-active-directory-overview.md
         - name: Aspekty sítí pro přímý přístup
@@ -79,12 +81,14 @@
   items:
     - name: Vytvořit
       items:
-        - name: Vytvoření sdílené složky
+        - name: Vytvoření sdílené složky SMB
           href: storage-how-to-create-file-share.md
         - name: Povolení velkých sdílených složek
           href: storage-files-how-to-create-large-file-share.md
         - name: Vytvoření sdílené složky úrovně Premium
           href: storage-how-to-create-premium-fileshare.md
+        - name: Vytvoření sdílené složky NFS
+          href: storage-files-how-to-create-nfs-shares.md
     - name: Nasazení
       items:
         - name: Nasazení služby Soubory Azure
@@ -95,11 +99,13 @@
           href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Připojení
       items:
-        - name: Použití služby Soubory Azure s Windows
+        - name: Připojení sdílené složky SMB k Windows
           href: storage-how-to-use-files-windows.md
-        - name: Použití služby Soubory Azure s Linuxem
+        - name: Připojení sdílené složky SMB k Linuxu
           href: storage-how-to-use-files-linux.md
-        - name: Použití služby Soubory Azure s macOS
+        - name: Připojení sdílené složky NFS k Linuxu
+          href: storage-files-how-to-mount-nfs-shares.md
+        - name: Připojení sdílené složky SMB k macOS
           href: storage-how-to-use-files-mac.md
     - name: Síť
       items:
@@ -269,12 +275,14 @@
           href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Řešení potíží
       items:
-        - name: Řešení problémů se Soubory Azure ve Windows
+        - name: Řešení potíží s Azure Files ve Windows (SMB)
           href: storage-troubleshoot-windows-file-connection-problems.md
-        - name: Řešení problémů se Soubory Azure v Linuxu
+        - name: Řešení potíží s Azure Files v Linuxu (SMB)
           href: storage-troubleshoot-linux-file-connection-problems.md
         - name: Řešení problémů s výkonem Azure Files
           href: storage-troubleshooting-files-performance.md
+        - name: Řešení potíží s Azure Files v Linuxu (NFS)
+          href: storage-troubleshooting-files-nfs.md
         - name: Řešení problémů se Synchronizací souborů Azure
           href: storage-sync-files-troubleshoot.md
         - name: Řešení potíží s odstraňováním služby Azure Files

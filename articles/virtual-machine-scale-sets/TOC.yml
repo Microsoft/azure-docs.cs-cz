@@ -340,8 +340,16 @@
           href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: Síťové služby pro škálovací sady
           href: virtual-machine-scale-sets-networking.md
-        - name: Automatické upgrady operačního systému
-          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Automatické upgrady image operačního systému
+          items:
+            - name: Automatické upgrady operačního systému
+              href: virtual-machine-scale-sets-automatic-upgrade.md
+            - name: Řízení údržby
+              items:
+                - name: Přehled (Preview)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (Preview)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control-powershell.md
         - name: Automatické opravy instancí
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Ochrana instancí

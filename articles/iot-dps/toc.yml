@@ -15,40 +15,52 @@
           href: quick-setup-auto-provision-cli.md
         - name: Šablona Azure RM
           href: quick-setup-auto-provision-rm.md
-    - name: Zřízení jednoho zařízení
+    - name: Zřízení zařízení se symetrickým klíčem
       items:
-        - name: Osvědčení symetrického klíče
-          items:
-            - name: C
-              href: quick-create-simulated-device-symm-key.md
-            - name: Java
-              href: quick-create-simulated-device-symmetric-key-java.md
-            - name: Python
-              href: quick-create-device-symmetric-key-python.md
-        - name: Ověřování certifikátem X.509
-          items:
-            - name: C
-              href: quick-create-simulated-device-x509.md
-            - name: Java
-              href: quick-create-simulated-device-x509-java.md
-            - name: C#
-              href: quick-create-simulated-device-x509-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-x509-node.md
-            - name: Python
-              href: quick-create-simulated-device-x509-python.md
-        - name: Simulované ověřování zařízení TPM
-          items:
-            - name: C
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: C#
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
+        - name: C
+          href: quick-create-simulated-device-symm-key.md
+        - name: Java
+          href: quick-create-simulated-device-symmetric-key-java.md
+        - name: Python
+          href: quick-create-device-symmetric-key-python.md
+    - name: Zřízení zařízení s certifikátem X.509
+      items:
+        - name: C
+          href: quick-create-simulated-device-x509.md
+        - name: Java
+          href: quick-create-simulated-device-x509-java.md
+        - name: C#
+          href: quick-create-simulated-device-x509-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-x509-node.md
+        - name: Python
+          href: quick-create-simulated-device-x509-python.md
+- name: Kurzy
+  items:
+    - name: 1. Zřízení sad zařízení se skupinami registrací
+      href: how-to-legacy-device-symm-key.md
+    - name: 2. Zřízení zařízení v několika centrech
+      items:
+        - name: Propojení několika center k DPS
+          href: tutorial-provision-multiple-hubs.md
+        - name: Zřizování pro architekturu s více tenanty
+          href: how-to-provision-multitenant.md
+        - name: Používání vlastních zásad přidělování
+          href: how-to-use-custom-allocation-policies.md
+- name: ukázky
+  items:
+    - name: Ukázka ověřování simulovaného zařízení TPM
+      items:
+        - name: C
+          href: quick-create-simulated-device.md
+        - name: Java
+          href: quick-create-simulated-device-tpm-java.md
+        - name: C#
+          href: quick-create-simulated-device-tpm-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-tpm-node.md
+        - name: Python
+          href: quick-create-simulated-device-tpm-python.md
     - name: Vytvoření registrací zařízení pomocí rozhraní DPS API
       items:
         - name: Skupinová registrace pomocí ověřování certifikátem X. 509
@@ -71,51 +83,33 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-- name: Kurzy
-  items:
-    - name: 1. Nastavení cloudových prostředků
-      href: tutorial-set-up-cloud.md
-    - name: 2. Nastavení zařízení
-      href: tutorial-set-up-device.md
-    - name: 3. Zřízení zařízení v IoT Hubu
-      items:
-        - name: C
-          href: tutorial-provision-device-to-hub.md
-        - name: C#
-          href: tutorial-net-provision-device-to-hub.md
-    - name: 4. Zřízení zařízení v několika centrech
-      href: tutorial-provision-multiple-hubs.md
-    - name: 5. Nastavení skupinových registrací
-      href: tutorial-group-enrollments.md
 - name: Koncepty
   items:
-    - name: Automatické zřizování
-      href: concepts-auto-provisioning.md
-    - name: Opětovné zřizování
-      href: concepts-device-reprovision.md
-    - name: Zařízení
-      href: concepts-device.md
-    - name: Zabezpečení
-      href: concepts-security.md
-    - name: Podpora TLS
-      href: tls-support.md
-    - name: Podpora virtuálních sítí
-      href: virtual-network-support.md
-    - name: Služba
+    - name: Terminologie DPS
       href: concepts-service.md
-    - name: Principy IP adres DPS
-      href: iot-dps-understand-ip-address.md
-    - name: Osvědčení TPM
-      href: concepts-tpm-attestation.md
     - name: Osvědčení symetrického klíče
       href: concepts-symmetric-key-attestation.md
+    - name: Atestace certifikátu X.509
+      href: concepts-x509-attestation.md
+    - name: Osvědčení TPM
+      href: concepts-tpm-attestation.md
+    - name: Role a operace
+      href: concepts-roles-operations.md
+    - name: Podpora virtuálních sítí
+      href: virtual-network-support.md
+    - name: Opětovné zřizování
+      href: concepts-device-reprovision.md
+    - name: Principy IP adres DPS
+      href: iot-dps-understand-ip-address.md
+    - name: Podpora TLS
+      href: tls-support.md
     - name: Postupy zabezpečení pro výrobce zařízení
       href: concepts-device-oem-security-practices.md
 - name: Návody
   items:
     - name: Připojení sady MXChip IoT DevKit ke službě IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
-    - name: Správa konfigurace služby zřizování zařízení
+    - name: Správa služby zřizování zařízení
       items:
         - name: Správa registrací – portál
           href: how-to-manage-enrollments.md
@@ -131,14 +125,12 @@
           href: how-to-revoke-device-access-portal.md
         - name: Správa zrušení zřízení
           href: how-to-unprovision-devices.md
-    - name: Správa služby zřizování zařízení
-      items:
-        - name: Konfigurace služby zřizování zařízení s využitím Azure CLI
-          href: how-to-manage-dps-with-cli.md
         - name: Řízení přístupu k rozhraním API služby zřizování
           href: how-to-control-access.md
         - name: Konfigurace filtrování IP
           href: iot-dps-ip-filtering.md
+        - name: Konfigurace služby zřizování zařízení s využitím Azure CLI
+          href: how-to-manage-dps-with-cli.md
     - name: Zřízení zařízení IoT Edge
       items:
         - name: Linux
@@ -149,12 +141,6 @@
           maintainContext: true
     - name: Použití mechanismů ověřování s využitím SDK
       href: use-hsm-with-sdk.md
-    - name: Zřizování pro architekturu s více tenanty
-      href: how-to-provision-multitenant.md
-    - name: Používání vlastních zásad přidělování
-      href: how-to-use-custom-allocation-policies.md
-    - name: Používání symetrických klíčů se staršími zařízeními
-      href: how-to-legacy-device-symm-key.md
     - name: Použití nástrojů SDK pro vývoj
       href: how-to-use-sdk-tools.md
     - name: Jak odesílat další data ze zařízení

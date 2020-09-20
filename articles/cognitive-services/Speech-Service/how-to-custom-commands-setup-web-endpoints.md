@@ -1,7 +1,7 @@
 ---
-title: Nastavení koncových bodů webu (Preview)
+title: Nastavení webových koncových bodů (Preview)
 titleSuffix: Azure Cognitive Services
-description: nastavení koncových bodů webu pro vlastní příkazy
+description: nastavení webových koncových bodů pro vlastní příkazy
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -12,117 +12,117 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
 ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/07/2020
 ms.locfileid: "86027677"
 ---
 # <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
-V tomto článku se naučíte, jak nastavit koncové body webu v aplikaci s vlastními příkazy, které vám umožní vytvářet požadavky HTTP z klientské aplikace. Provedete následující úlohy:
+V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webové koncové body, které umožňují vytvářet požadavky HTTP z klientské aplikace. Provedete následující úkoly:
 
-- Nastavení koncových bodů webu v aplikaci Custom Commands
-- Volání webových koncových bodů v aplikaci Custom Commands
-- Přijmout odpověď na koncové body webu 
-- Integrace odpovědi webových koncových bodů do vlastní datové části JSON, odeslání a vizualizace z klientské aplikace sady Speech pro rozpoznávání řeči v C#
+- Nastavení webových koncových bodů webu v aplikaci Vlastní příkazy
+- Volání webových koncových bodů webu v aplikaci Vlastní příkazy
+- Příjem odpovědí webových koncových bodů 
+- Integrace odpovědí webových koncových bodů do vlastní datové části JSON, odeslání a vizualizace z klientské aplikace Speech SDK pro UPW v C#
 
 ## <a name="prerequisites"></a>Požadavky
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-> * Klíč předplatného Azure pro službu Speech Service: [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
-> * Dříve [vytvořená aplikace vlastních příkazů](quickstart-custom-commands-application.md)
-> * Klientská aplikace s povolenou sadou Speech: [Postup: ukončení aktivity klientské aplikace](./how-to-custom-commands-setup-speech-sdk.md)
+> * Klíč předplatného Azure pro službu Speech: [Získejte ho zdarma](get-started.md) nebo si ho vytvořte na webu [Azure Portal](https://portal.azure.com)
+> * Už [vytvořená aplikace Vlastní příkazy](quickstart-custom-commands-application.md)
+> * Klientská aplikace s podporou sady Speech SDK: [Postupy: Odeslání aktivity do klientské aplikace](./how-to-custom-commands-setup-speech-sdk.md)
 
-## <a name="setup-web-endpoints"></a>Nastavení koncových bodů webu
+## <a name="setup-web-endpoints"></a>Nastavení webových koncových bodů
 
-1. Otevřete aplikaci Custom Commands, kterou jste vytvořili dříve. 
-1. Přejděte do části webové koncové body, klikněte na nový webový koncový bod.
+1. Otevřete aplikaci Vlastní příkazy, kterou jste si vytvořili dříve. 
+1. Přejděte na Webové koncové body a klikněte na Nový webový koncový bod.
 
    > [!div class="mx-imgBorder"]
    > ![Nový webový koncový bod](media/custom-commands/setup-web-endpoint-new-endpoint.png)
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
-   | Name | UpdateDeviceState | Název webového koncového bodu |
-   | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | Adresa URL koncového bodu, ke kterému se má vaše aplikace pro vlastní příkazy mluvit |
-   | Metoda | POST | Povolené interakce (například GET, POST) s vaším koncovým bodem.|
-   | Hlavičky | Klíč: App, Value: Vezměte prvních 8 číslic vaší hodnoty applicationId. | Parametry záhlaví, které mají být zahrnuty v hlavičce požadavku.|
+   | Název | UpdateDeviceState | Název webového koncového bodu |
+   | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | Adresa URL koncového bodu, se ke kterým má vaše aplikace Vlastní příkazy komunikovat |
+   | Metoda | POST | Povolené interakce s vaším koncovým bodem (jako jsou GET, POST)|
+   | Hlavičky | Klíč: aplikace, hodnota: použijte prvních 8 číslic hodnoty applicationId | Parametry hlavičky, které mají být zahrnuté v hlavičce požadavku|
 
     > [!NOTE]
-    > - Příklad webového koncového bodu vytvořeného pomocí [funkce Azure Functions](https://docs.microsoft.com/azure/azure-functions/), která se zastavuje s databází, která ukládá stav zařízení televizoru a ventilátoru
+    > - Ukázkový webový koncový bod je vytvořený pomocí [Azure Functions](https://docs.microsoft.com/azure/azure-functions/). Připojí se k databázi, ve které se ukládá stav televizoru a ventilátoru.
     > - Navrhovaná hlavička je nutná jenom pro ukázkový koncový bod.
-    > - Chcete-li se ujistit, že hodnota záhlaví je v našem ukázkovém koncovém bodu jedinečná, vezměte prvních 8 číslic vaší hodnoty applicationId.
-    > - V reálném světě může být webový koncový bod koncovým bodem služby [IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) , který spravuje vaše zařízení.
+    > - Pokud chcete zajistit, že hodnota hlavičky je v našem ukázkovém koncovém bodu jedinečná,použijte prvních 8 číslic hodnoty applicationId.
+    > - Webovým koncovým bodem může v reálném světě být koncový bod pro [centrum IOT](https://docs.microsoft.com/azure/iot-hub/about-iot-hub), které spravuje vaše zařízení.
 
 1. Klikněte na **Uložit**.
 
 ## <a name="call-web-endpoints"></a>Volání webových koncových bodů
 
-1. Do příkazového řádku **TurnOnOff** vyberte v části pravidlo dokončení možnost **ConfirmationResponse** a pak vyberte **přidat akci**.
-1. V části **nový typ akce**vyberte **zavolat webový koncový bod** .
-1. V části **Upravit akci – koncové body**vyberte **UpdateDeviceState**, což je webový koncový bod, který jsme vytvořili.  
-1. V části **Konfigurace**zadejte následující hodnoty: 
+1. Přejděte na příkaz **TurnOnOff**, jako pravidlo dokončení vyberte **ConfirmationResponse** a potom vyberte **Přidat akci**.
+1. V části **New Action-Type** (Nový typ akce) vyberte **Call web endpoint** (Volání koncového bodu).
+1. V části **Edit Action - Endpoints** (Akce pro úpravy – koncové body) vyberte **UpdateDeviceState**. To je webový koncový bod, který jsme vytvořili.  
+1. V části **Configuration** (Konfigurace) zadejte následující hodnoty: 
    > [!div class="mx-imgBorder"]
-   > ![Volání parametrů akcí webových koncových bodů](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
+   > ![Parametry akce volání koncových bodů](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
-   | Koncové body | UpdateDeviceState | Koncový bod webu, který chcete zavolat v této akci. |
-   | Parametry dotazů | Item = {SubjectDevice} &&Value = {(OnOff)} | Parametry dotazu, které se mají připojit k adrese URL webového koncového bodu  |
-   | Obsah těla | Není k dispozici | Obsah těla žádosti |
+   | Koncové body | UpdateDeviceState | Webový koncový bod, který chcete volat v této akci |
+   | Parametry dotazů | item={SubjectDevice}&&value={OnOff} | Parametry dotazu, které se mají připojit k adrese URL webového koncového bodu  |
+   | Textový obsah | – | Textový obsah požadavku |
 
     > [!NOTE]
-    > - Navrhované parametry dotazu jsou potřebné jenom pro ukázkový koncový bod.
+    > - Navrhované parametry dotazů jsou nutné jenom pro ukázkový koncový bod.
 
-1. V případě **úspěchu – akce, která se má provést**, vyberte **Odeslat odezvu řeči**.
+1. V části **On Success - Action to execute** (Při úspěchu – Akce, která se má provést) vyberte **Send speech response** (Odeslat odpověď v řeči).
     
-    V **jednoduchém editoru**zadejte `{SubjectDevice} is {OnOff}` .
+    V části **Simple editor** (Jednoduchý editor) zadejte `{SubjectDevice} is {OnOff}`.
    
    > [!div class="mx-imgBorder"]
-   > ![Akce webových koncových bodů volání při úspěchu](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
+   > ![Akce volání koncových bodů při úspěchu](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
-   | Akce, která se má provést | Odeslat odezvu na řeč | Akce, která se má provést, pokud se požadavek na koncový bod webu zdaří |
+   | Akce, která se má provést | Send speech response (Odeslat odpověď v řeči) | Akce, která se má provést, pokud se požadavek na webový koncový bod zdaří |
    
    > [!NOTE]
-   > - K polím v odpovědi HTTP můžete také přímo přistupovat pomocí `{YourWebEndpointName.FieldName}` . Příklad: `{UpdateDeviceState.TV}`
+   > - K polím v odpovědi HTTP můžete také získat přímý přístup pomocí `{YourWebEndpointName.FieldName}`. Příklad: `{UpdateDeviceState.TV}`
 
-1. V případě **selhání – akce, která se má provést**, vyberte **Odeslat odezvu řeči** .
+1. V části **On Failure - Action to execute** (Při neúspěchu – Akce, která se má provést) vyberte **Send speech response** (Odeslat odpověď v řeči).
 
-    V **jednoduchém editoru**zadejte `Sorry, {WebEndpointErrorMessage}` .
+    V části **Simple editor** (Jednoduchý editor) zadejte `Sorry, {WebEndpointErrorMessage}`.
 
    > [!div class="mx-imgBorder"]
-   > ![Akce webových koncových bodů volání při selhání](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
+   > ![Akce volání koncových bodů při neúspěchu](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
-   | Akce, která se má provést | Odeslat odezvu na řeč | Akce, která se spustí v případě, že se požadavek na koncový bod webu nezdařil |
+   | Akce, která se má provést | Send speech response (Odeslat odpověď v řeči) | Akce, která se má provést, pokud se požadavek na webový koncový bod nezdaří |
 
    > [!NOTE]
-   > - Parametr `{WebEndpointErrorMessage}` je volitelný. Pokud nechcete zobrazit žádnou chybovou zprávu, můžete ji odebrat.
-   > - V našem ukázkovém koncovém bodě pošleme odpověď HTTP s podrobnými chybovými zprávami pro běžné chyby, jako jsou například chybějící parametry hlaviček. 
+   > - Parametr `{WebEndpointErrorMessage}` je volitelný. Pokud nechcete zpřístupnit žádnou chybovou zprávu, můžete ho bez obav odebrat.
+   > - V rámci našeho ukázkového koncového bodu vracíme odpověď HTTP s podrobnými chybovými zprávami pro běžné chyby, jako jsou například chybějící parametry hlavičky. 
 
-### <a name="try-it-out-in-test-portal"></a>Vyzkoušet na testovacím portálu
-- Při úspěšné odezvě \
-Uložení, výuka a testování
+### <a name="try-it-out-in-test-portal"></a>Vyzkoušení na testovacím portálu
+- Odpověď při úspěchu:
+Uložení, natrénování a testování
    > [!div class="mx-imgBorder"]
-   > ![Akce webových koncových bodů volání při úspěchu](media/custom-commands/setup-web-endpoint-on-success-response.png)
-- Při neúspěšné odezvě \
-Odebrání jednoho z parametrů dotazu, uložení, reučení a testování
+   > ![Akce volání koncových bodů při úspěchu](media/custom-commands/setup-web-endpoint-on-success-response.png)
+- Odpověď při úspěchu:
+Odebrání jednoho z parametrů dotazu, uložení, přetrénování a testování
    > [!div class="mx-imgBorder"]
-   > ![Akce webových koncových bodů volání při úspěchu](media/custom-commands/setup-web-endpoint-on-fail-response.png)
+   > ![Akce volání koncových bodů při úspěchu](media/custom-commands/setup-web-endpoint-on-fail-response.png)
 
 ## <a name="integrate-with-client-application"></a>Integrace s klientskou aplikací
 
-V tématu [Postup: odeslání aktivity do klientské aplikace (Preview)](./how-to-custom-commands-send-activity-to-client.md)jste přidali **aktivitu odeslat do akce klienta** . Aktivita se pošle do klientské aplikace bez ohledu na to, jestli je akce **webového koncového bodu** úspěšná nebo ne.
-Ve většině případů ale přejete si, aby klientská aplikace odesílala aktivity pouze v případě, že volání webového koncového bodu je úspěšné. V tomto příkladu se jedná o úspěšnou aktualizaci stavu zařízení.
+V části [Postupy: Odeslání aktivity do klientské aplikace (Preview)](./how-to-custom-commands-send-activity-to-client.md) jste přidali akci **Send activity to client** (Odeslání aktivity do klientské aplikace). Aktivita se odešle do klientské aplikace bez ohledu na to, jestli je akce **volání webového koncového bodu** úspěšná.
+Ve většině případů ale chcete posílat aktivitu do klientské aplikace jenom v případě, že volání webového koncového bodu je úspěšné. V tomto příkladu je to tehdy, když se úspěšně aktualizuje stav zařízení.
 
-1. Odstraňte **aktivitu odeslat do akce klienta** , kterou jste přidali dříve.
-1. Upravit koncový bod webu volání: 
-    1. V **konfiguraci**se ujistěte, že jsou **parametry dotazu**`item={SubjectDevice}&&value={OnOff}`
-    1. V případě **úspěchu**změňte **akci, která se má provést** pro **odeslání aktivity klientovi** .
-    1. Zkopírujte následující kód JSON do **obsahu aktivity** .
+1. Odstraňte dříve přidanou akci **Send activity to client** (Odeslání aktivity do klientské aplikace).
+1. Upravte volání webového koncového bodu: 
+    1. V části **Konfigurace** zkontrolujte, že hodnota **Parametry dotazu** je `item={SubjectDevice}&&value={OnOff}`
+    1. V části **On Success** (Při úspěchu) změňte **Action to execute** (Akce, která se má provést) na **Send activity to client** (Odeslání aktivity do klientské aplikace).
+    1. Následující kód JSON zkopírujte do části **Activity Content** (Obsah aktivity).
    ```json
    {
      "type": "event",
@@ -132,12 +132,12 @@ Ve většině případů ale přejete si, aby klientská aplikace odesílala akt
    }
    ```
     > [!div class="mx-imgBorder"]
-    > ![Odeslat aktivitu po úspěchu](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
+    > ![Odeslání aktivity při úspěchu](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
-Po úspěšném dokončení požadavku na koncový bod webu je teď potřeba do klienta odesílat jenom aktivity.
+Teď odesíláte aktivitu do klientské aplikace jenom v případě, že požadavek na webový koncový bod je úspěšný.
 
 ### <a name="create-visuals-for-syncing-device-state"></a>Vytváření vizuálů pro synchronizaci stavu zařízení
-Přidejte následující kód XML do `MainPage.xaml` výše uvedeného `"EnableMicrophoneButton"` bloku.
+Následující kód XML přidejte do části `MainPage.xaml` nad blokem `"EnableMicrophoneButton"`.
 
 ```xml
 <Button x:Name="SyncDeviceStateButton" Content="Sync Device State"
@@ -147,9 +147,9 @@ Přidejte následující kód XML do `MainPage.xaml` výše uvedeného `"EnableM
         .........../>
 ```
 
-### <a name="sync-device-state"></a>Synchronizovat stav zařízení 
+### <a name="sync-device-state"></a>Synchronizace stavu zařízení 
 
-V `MainPage.xaml.cs` přidejte odkaz `using Windows.Web.Http;` . Do třídy přidejte následující kód `MainPage` . Tato metoda pošle do ukázkového koncového bodu požadavek GET a extrahuje aktuální stav zařízení pro vaši aplikaci. Nezapomeňte změnit to, `<your_app_name>` co jste použili v **záhlaví** ve vlastním příkazovém řádku vlastního příkazu.
+V části `MainPage.xaml.cs` přidejte odkaz `using Windows.Web.Http;`. Do třídy `MainPage` přidejte následující kód. Tato metoda pošle do ukázkového koncového bodu požadavek GET a extrahuje aktuální stav zařízení pro vaši aplikaci. Nezapomeňte změnit parametr `<your_app_name>` na hodnotu použitou v **hlavičce** webového koncového bodu pro Vlastní příkazy.
 
 ```C#
 private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs e)
@@ -189,21 +189,21 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 }
 ```
 
-## <a name="try-it-out"></a>Vyzkoušejte si to.
+## <a name="try-it-out"></a>Vyzkoušet
 
 1. Spuštění aplikace
-1. Klikněte na synchronizovat stav zařízení. \
-Pokud jste otestovali aplikaci `turn on tv` v předchozí části, zobrazí se televizní program jako zapnutý.
+1. Klikněte na Sync Device State (Synchronizovat stav zařízení).
+Pokud jste vaši aplikaci otestovali s parametrem `turn on tv` v předchozí sekci, televizor se bude zobrazovat jako zapnutý.
     > [!div class="mx-imgBorder"]
-    > ![Synchronizovat stav zařízení](media/custom-commands/setup-web-endpoint-sync-device-state.png)
-1. Vyberte Povolit mikrofon.
-1. Výběr tlačítka rozhovor
-1. Uvést`turn on the fan`
+    > ![Synchronizace stavu zařízení](media/custom-commands/setup-web-endpoint-sync-device-state.png)
+1. Select Enable microphone (Povolit mikrofon).
+1. Vyberte tlačítko pro hlasové ovládání.
+1. Vyslovte `turn on the fan`.
 1. Vizuální stav ventilátoru by se měl změnit na zapnuto.
     > [!div class="mx-imgBorder"]
-    > ![Zapnout ventilátor](media/custom-commands/setup-web-endpoint-turn-on-fan.png)
+    > ![Zapnutí ventilátoru](media/custom-commands/setup-web-endpoint-turn-on-fan.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Povolení procesu CI/CD pro vlastní aplikace příkazů](./how-to-custom-commands-deploy-cicd.md)
+> [Povolení procesu CI/CD pro aplikaci Vlastní příkazy](./how-to-custom-commands-deploy-cicd.md)

@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu Základy CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Základy CAF.
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852340"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531691"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Základy
 
@@ -18,7 +18,9 @@ Ukázkový podrobný plán Základy architektury přechodu na cloud pro Azure od
 
 Ukázkový podrobný plán Základy CAF nasadí do Azure doporučené prostředky infrastruktury, které organizace můžou využít k zavedení základních kontrol nutných ke správě jejich cloudových aktiv. Tato ukázka nasadí a vynutí prostředky, zásady a šablony, které organizacím umožní, aby s Azure mohli bez obav začít.
 
-:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="Základy CAF: Obrázek popisuje, co se nainstaluje v rámci pokynů CAF pro vytvoření základu pro zahájení práce v Azure." border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="Základy CAF: Obrázek popisuje, co se nainstaluje v rámci pokynů CAF pro vytvoření základů pro zahájení práce s Azure." border="false":::
+   Popisuje architekturu Azure, která se zajistí nasazením podrobného plánu Základy CAF.  Dá se použít pro předplatné se skupinami prostředků, jehož součástí je účet úložiště pro ukládání protokolů a analytiky protokolů nakonfigurované pro uložení v účtu úložiště. Ukazuje také službu Azure Key Vault nakonfigurovanou se standardním nastavením služby Azure Security Center. Všechny tyto základní infrastruktury jsou dostupné pomocí Azure Active Directory a vynucují se prostřednictvím Azure Policy.     
+:::image-end:::
 
 Tato implementace je tvořená několika službami Azure, které se využívají k zajištění zabezpečeného a plně monitorovaného základu na podnikové úrovni. Toto prostředí tvoří:
 

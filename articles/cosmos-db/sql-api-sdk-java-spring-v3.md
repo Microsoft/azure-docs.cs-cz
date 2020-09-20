@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
+ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068728"
+ms.lasthandoff: 09/19/2020
+ms.locfileid: "90817866"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v3 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 
 ## <a name="start-here"></a>Začněte tady
 
-# <a name="explore"></a>[Zkoumání](#tab/explore)
+# <a name="explore"></a>[Okno](#tab/explore)
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
@@ -67,22 +67,10 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 
 ### <a name="configure-dependencies"></a>Konfigurace závislostí
 
-K dispozici jsou dvě Mavená Azure Cosmos DB data pružiny verze 3.
-
-- Artefakt, který závisí na jaře data Framework verze 2,2:
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-      <version>latest</version>
-  </dependency>
-  ```
-
-- Artefakt, který závisí na jaře data Framework verze 2,3:
-  ```xml
-  <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <artifactId>azure-spring-data-cosmos</artifactId>
       <version>latest</version>
   </dependency>
   ```
@@ -93,7 +81,7 @@ K dispozici jsou dvě Mavená Azure Cosmos DB data pružiny verze 3.
 
 Zadejte Azure Cosmos DB účet a podrobnosti kontejneru. Jarní data Azure Cosmos DB automaticky vytvoří klienta a připojí se ke kontejneru.
 
-[aplikace. vlastnosti](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-2-cosmos-java-getting-started/src/main/resources/application.properties):
+[aplikace. vlastnosti](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties):
 ```
 cosmos.uri=${ACCOUNT_HOST}
 cosmos.key=${ACCOUNT_KEY}
@@ -108,30 +96,46 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>Operace dokumentů
 
-[Vytvořit](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Create)]
+Vytvořit:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
 
-[Odstranit](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Delete)]
+Odstranit:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
 
 # <a name="query"></a>[Dotaz](#tab/queries)
 
-[Dotaz](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
+Dotaz:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
 
 ---
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-| Prostředek | Jarní data Framework 2,2 | Jarní data Framework 2,3 |
-|---|---|
-| **Stažení sady SDK** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
-|**Přispívání do sady SDK** | [Jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
-|**Kurz**| [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
+* **Přispívání do sady SDK**: [jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
+
+* **Kurz**: [Azure Cosmos DB kurz pro jarní data na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
 ## <a name="release-history"></a>Historie verzí
 
-### <a name="300-beta2-unreleased"></a>3.0.0-beta. 2 (neuvolní se)
+### <a name="300-beta2-september-17-2020"></a>3.0.0-beta. 2 (17. září 2020)
+
+#### <a name="new-features"></a>Nové funkce
+
+* ID artefaktu se aktualizovalo na `azure-spring-data-cosmos` .
+* Byla aktualizována závislost Azure-Cosmos na `4.5.0` .
+* `Query Annotation` Podpora pro nativní dotazy.
+* Podpora pro Java 11.
+* Byla přidána podpora pro vnořený klíč oddílu vyvoláním `partitionKeyPath` pole v `@Container` poznámce.
+* Přidaná podpora pro `limit` typ dotazu povoluje `top` a `first` má být použita při definování rozhraní API úložiště.
+
+#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+
+* Opravená chyba klíče vnořeného oddílu při použití s `@GeneratedValue` poznámkou
 
 ### <a name="300-beta1-august-17-2020"></a>3.0.0-beta. 1 (17. srpna 2020)
+
 #### <a name="new-features"></a>Nové funkce
+
 * Aktualizuje ID skupiny na `com.azure` .
 * Aktualizuje ID artefaktu na `azure-spring-data-2-3-cosmos` .
 * Aktualizuje závislost Azure-Cosmos SDK na `4.3.2-beta.2` .
@@ -143,7 +147,9 @@ cosmos.queryMetricsEnabled=true
 * Zpřístupňuje `CosmosClientBuilder` z Azure Cosmos DB SDK jako jarní Bob do `@Configuration` třídy.
 * Aktualizace `CosmosConfig` obsahují metriky dotazů a implementaci procesoru pro diagnostiku odpovědí.
 * Přidá podporu pro vrácení `Optional` datového typu pro dotazy s jedním výsledkem.
+
 #### <a name="renames"></a>Přejmenuje
+
 * `CosmosDbFactory` na `CosmosFactory` .
 * `CosmosDBConfig` na `CosmosConfig` .
 * `CosmosDBAccessException` na `CosmosAccessException` .
@@ -151,7 +157,9 @@ cosmos.queryMetricsEnabled=true
 * `DocumentIndexingPolicy` Anotace `CosmosIndexingPolicy` .
 * `DocumentQuery` na `CosmosQuery` .
 * příznak Application. Properties `populateQueryMetrics` `queryMetricsEnabled` .
+
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+
 * Plánování úlohy protokolování diagnostiky na `Parallel` vlákna, aby se zabránilo zablokování vstupně-výstupních vláken v síťovině.
 * Opravuje optimistické zamykání při operaci DELETE.
 * Opravuje problém s dotazy na uvozovací znaky `IN` klauzule for.
@@ -161,9 +169,11 @@ cosmos.queryMetricsEnabled=true
 * Odebere výchozí hodnotu jednotky žádosti 4 000 při automatickém vytvoření kontejnerů.
 
 ## <a name="faq"></a>Nejčastější dotazy
+
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky
+
 Přečtěte si další informace o [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 Přečtěte si další informace o [architektuře pružiny](https://spring.io/projects/spring-framework).
