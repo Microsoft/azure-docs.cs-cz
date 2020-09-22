@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2551a3c860dbdf27e7c9473e88c3a3293f575faa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769763"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883946"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Správa a reakce na upozornění zabezpečení ve službě Azure Security Center
 
@@ -28,7 +28,7 @@ V tomto tématu se dozvíte, jak zobrazit a zpracovat výstrahy, které jste obd
 * Přehled způsobu, jakým Security Center generuje výstrahy, najdete v tématu [jak Azure Security Center detekuje hrozby a reaguje na](security-center-alerts-overview.md)ně.
 
 > [!NOTE]
-> Pokud chcete povolit rozšířené detekce, upgradujte na Azure Security Center Standard. K dispozici je bezplatná zkušební verze. Pokud chcete provést upgrade, v [zásadách zabezpečení](tutorial-security-policy.md) vyberte cenovou úroveň. Další informace najdete v článku o [cenách Azure Security Center](security-center-pricing.md).
+> Pokud chcete povolit rozšířené zjišťování, povolte Azure Defender. K dispozici je bezplatná zkušební verze. Pokud chcete provést upgrade, v [zásadách zabezpečení](tutorial-security-policy.md) vyberte cenovou úroveň. Další informace najdete v článku o [cenách Azure Security Center](security-center-pricing.md).
 
 ## <a name="what-are-security-alerts"></a>Co jsou výstrahy zabezpečení?
 Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení, jako jsou brány firewall a řešení ochrany koncových bodů, aby se zjistily skutečné hrozby a snížil počet falešných poplachů. Seznam upřednostňovaných výstrah zabezpečení se zobrazí ve službě Security Center spolu s informacemi, které potřebujete k rychlému prozkoumání problému, a doporučeními týkajícími se řešení útoku.
@@ -38,7 +38,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 ## <a name="manage-your-security-alerts"></a>Správa výstrah zabezpečení
 
-1. Na řídicím panelu Security Center se na dlaždici **Ochrana před hrozbami** zobrazí a zobrazí přehled výstrah.
+1. Na řídicím panelu Security Center se na dlaždici  **Ochrana před hrozbami** zobrazí a zobrazí přehled výstrah.
 
     ![Dlaždice Výstrahy zabezpečení ve službě Security Center](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
 
@@ -64,7 +64,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
      
     ![Návrhy, co dělat s výstrahami zabezpečení](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    Také v pravém podokně se nachází karta **provést akci** . pomocí této karty můžete provést další akce týkající se výstrahy zabezpečení. Akce, jako například:
+    Také v pravém podokně se nachází karta **provést akci** . Tato karta slouží k provedení dalších akcí týkajících se výstrahy zabezpečení. Akce, jako například:
     - *Zmírnění hrozby* – poskytuje postup ruční nápravy pro tuto výstrahu zabezpečení.
     - *Prevence budoucích útoků* – poskytuje doporučení zabezpečení, která vám pomůžou snížit plochu pro útoky, zvýšit stav zabezpečení a zabránit budoucím útokům.
     - *Aktivovat automatizovanou odezvu* – poskytuje možnost aktivovat aplikaci logiky jako reakci na toto upozornění zabezpečení.

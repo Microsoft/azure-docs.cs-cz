@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024396"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884180"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
 
@@ -45,6 +45,10 @@ Pevná sada stavů, které lze přepsat, jsou následující:
   ![Možnost obrysu, která slouží k zvýraznění vybrané části](./media/selection-outline.png)
 
 * **`DisableCollision`**: Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
+
+* **`UseCutPlaneFilterMask`**: Použijte bitovou masku pro jednotlivé filtry k řízení vyjmuté roviny výběru. Tento příznak určuje, zda má být použita nebo zděděna jednotlivá maska filtru ze své nadřazené položky. Bitová maska bitového filtru je nastavena prostřednictvím `CutPlaneFilterMask` Vlastnosti. Podrobné informace o tom, jak filtrování funguje, najdete v [odstavci selektivních vyjmutých ploch](cut-planes.md#selective-cut-planes).
+![Selektivní vyjmuté plochy](./media/selective-cut-planes.png)
+
 
 > [!TIP]
 > Jako alternativu k vypnutí viditelnosti a prostorových dotazů pro úplný dílčí graf `enabled` lze stav herního objektu přepnout. Pokud je hierarchie zakázaná, má přednost před jakýmkoli `HierarchicalStateOverrideComponent` .

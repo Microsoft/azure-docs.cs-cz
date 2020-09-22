@@ -6,19 +6,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 623b9c1eccefe5d7e6027ddbed61c89720d98e9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274539"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884480"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytváření a Správa replik pro čtení v serveru Azure Database for PostgreSQL-Single z Azure Portal
 
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení v Azure Database for PostgreSQL z Azure Portal. Další informace o replikách pro čtení najdete v tématu [Přehled](concepts-read-replicas.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 [Server Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) , který bude hlavním serverem.
 
 ## <a name="azure-replication-support"></a>Podpora replikace Azure
@@ -41,15 +41,15 @@ Po změně tohoto parametru je nutné restartovat server. Interně tento paramet
 
 3. Pokud není podpora replikace Azure nastavená na aspoň **repliku**, nastavte ji. Vyberte **Uložit**.
 
-   ![Azure Database for PostgreSQL – replikace – nastavit repliku a uložit](./media/howto-read-replicas-portal/set-replica-save.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL – replikace – nastavit repliku a uložit":::
 
 4. Restartujte server, aby se změna projevila, a to tak, že vyberete **Ano**.
 
-   ![Azure Database for PostgreSQL-replikace – potvrzení restartování](./media/howto-read-replicas-portal/confirm-restart.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replikace – potvrzení restartování":::
 
 5. Až se operace dokončí, zobrazí se vám dvě oznámení Azure Portal. Pro aktualizaci parametru serveru je k dispozici jedno oznámení. Pro okamžité restartování serveru je k dispozici jiné oznámení.
 
-   ![Oznámení o úspěšnosti](./media/howto-read-replicas-portal/success-notifications.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="Oznámení o úspěšnosti":::
 
 6. Aktualizujte stránku Azure Portal a aktualizujte tak panel nástrojů pro replikaci. Nyní můžete vytvořit repliky čtení pro tento server.
    
@@ -63,15 +63,15 @@ K vytvoření repliky pro čtení použijte následující postup:
 
 3. Vyberte **Přidat repliku**.
 
-   ![Přidání repliky](./media/howto-read-replicas-portal/add-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="Přidání repliky":::
 
 4. Zadejte název repliky pro čtení. 
 
-    ![Pojmenování repliky](./media/howto-read-replicas-portal/name-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="Pojmenování repliky":::
 
 5. Vyberte umístění repliky. Výchozí umístění je stejné jako u hlavního serveru.
 
-    ![Výběr umístění](./media/howto-read-replicas-portal/location-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Vybrat umístění":::
 
    > [!NOTE]
    > Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 
@@ -80,7 +80,7 @@ K vytvoření repliky pro čtení použijte následující postup:
 
 Po vytvoření repliky pro čtení je možné ji zobrazit z okna **replikace** :
 
-![Zobrazit novou repliku v okně replikace](./media/howto-read-replicas-portal/list-replica.png)
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="Zobrazit novou repliku v okně replikace":::
  
 
 > [!IMPORTANT]
@@ -102,15 +102,15 @@ Pokud chcete zastavit replikaci mezi hlavním serverem a replikou pro čtení z 
 
 3. Vyberte server repliky, pro který chcete zastavit replikaci.
 
-   ![Vybrat repliku](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Vybrat repliku":::
  
 4. Vyberte **zastavit replikaci**.
 
-   ![Vyberte zastavit replikaci.](./media/howto-read-replicas-portal/select-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="Vyberte zastavit replikaci.":::
  
 5. Vyberte **OK** a zastavte replikaci.
 
-   ![Potvrzení zastavení replikace](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="Potvrzení zastavení replikace":::
  
 
 ## <a name="delete-a-master-server"></a>Odstranění hlavního serveru
@@ -125,11 +125,11 @@ Pokud chcete server z Azure Portal odstranit, postupujte takto:
 
 2. Otevřete stránku **Přehled** serveru. Vyberte **Odstranit**.
 
-   ![Na stránce Přehled serveru vyberte možnost odstranění hlavního serveru.](./media/howto-read-replicas-portal/delete-server.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="Na stránce Přehled serveru vyberte možnost odstranění hlavního serveru.":::
  
 3. Zadejte název hlavního serveru, který chcete odstranit. Vyberte **Odstranit** a potvrďte tak odstranění hlavního serveru.
 
-   ![Potvrďte odstranění hlavního serveru.](./media/howto-read-replicas-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="Potvrďte odstranění hlavního serveru.":::
  
 
 ## <a name="delete-a-replica"></a>Odstranění repliky
@@ -137,7 +137,7 @@ Repliku pro čtení můžete odstranit podobně jako při odstraňování hlavn�
 
 - V Azure Portal otevřete stránku **Přehled** repliky pro čtení. Vyberte **Odstranit**.
 
-   ![Na stránce Přehled repliky vyberte, chcete-li odstranit repliku.](./media/howto-read-replicas-portal/delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="Na stránce Přehled repliky vyberte, chcete-li odstranit repliku.":::
  
 Repliku pro čtení z okna **replikace** můžete také odstranit pomocí následujících kroků:
 
@@ -147,15 +147,15 @@ Repliku pro čtení z okna **replikace** můžete také odstranit pomocí násle
 
 3. Vyberte repliku pro čtení, kterou chcete odstranit.
 
-   ![Vyberte repliku, kterou chcete odstranit.](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Vyberte repliku, kterou chcete odstranit.":::
  
 4. Vyberte **Odstranit repliku**.
 
-   ![Vyberte Odstranit repliku.](./media/howto-read-replicas-portal/select-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="Vyberte Odstranit repliku.":::
  
 5. Zadejte název repliky, která se má odstranit. Vyberte **Odstranit** a potvrďte odstranění repliky.
 
-   ![Potvrďte odstranění repliky te.](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="Potvrďte odstranění repliky te.":::
  
 
 ## <a name="monitor-a-replica"></a>Monitorování repliky
@@ -168,7 +168,7 @@ Metrika **maximální prodlevy napříč replikami** zobrazuje zpoždění v baj
 
 2.  Vyberte **Metriky**. V okně **metriky** vyberte **maximální prodleva napříč replikami**.
 
-    ![Monitorování maximální prodlevy mezi replikami](./media/howto-read-replicas-portal/select-max-lag.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="Monitorování maximální prodlevy mezi replikami":::
  
 3.  Pro **agregaci**vyberte **Max**.
 
@@ -180,7 +180,7 @@ Metrika **prodlevy repliky** zobrazuje čas od poslední opakované transakce v 
 
 2. Vyberte **Metriky**. V okně **metriky** vyberte **prodlevu repliky**.
 
-   ![Sledování prodlevy repliky](./media/howto-read-replicas-portal/select-replica-lag.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="Sledování prodlevy repliky":::
  
 3. Pro **agregaci**vyberte **Max**. 
  

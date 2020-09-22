@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: be725c574c54dfc298a900d3c043559d484d1bc7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0a1b8eaee0a483fb4ce09a33d3c7ca9fe6f980e1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117844"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884334"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Ověřování šifrování dat pro Azure Database for PostgreSQL
 
@@ -19,7 +19,7 @@ Tento článek vám pomůže ověřit, že šifrování dat pomocí spravovanéh
 
 ## <a name="check-the-encryption-status"></a>Ověřte stav šifrování.
 
-### <a name="from-portal"></a>Z portálu
+### <a name="from-portal"></a>Na portálu
 
 1. Pokud chcete ověřit, jestli se klíč zákazníka používá k šifrování, postupujte podle těchto kroků:
 
@@ -37,7 +37,7 @@ Tento článek vám pomůže ověřit, že šifrování dat pomocí spravovanéh
 
 2. Pokud se v Azure Portal můžete ujistit, že je šifrovací klíč nastavený, data se šifrují pomocí klíče Customers používaného v Azure Portal.
 
-  ![Přehled zásad přístupu](media/concepts-data-access-and-security-data-encryption/byok-validate.png)
+  :::image type="content" source="media/concepts-data-access-and-security-data-encryption/byok-validate.png" alt-text="Přehled zásad přístupu":::
 
 ### <a name="from-cli"></a>Z CLI
 

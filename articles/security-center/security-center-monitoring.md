@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: d18258d62267c931a39947611dda038ff6e65205
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 893b2eefc2c4c81e66bf86a1c999a3c4198a3c71
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718695"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883836"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Posílení stavu zabezpečení s využitím služby Azure Security Center
 Tento článek vám pomůže posílit stav zabezpečení. Využijte možnosti monitorování v Azure Security Center, abyste se ujistili, že zabezpečení prostředků je co nejtěsnější a jak monitorovat dodržování zásad.
@@ -28,24 +28,12 @@ Pod pojmem sledování si často představujeme pozorování a čekání, až se
 
 Po povolení [zásad zabezpečení](tutorial-security-policy.md) pro prostředky předplatného služba Security Center analyzuje zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení. Informace o konfiguraci vaší sítě jsou k dispozici okamžitě. Získání informací o konfiguraci virtuálních počítačů a počítačů, jako je stav aktualizace zabezpečení nebo konfigurace operačního systému, může trvat hodinu i déle v závislosti na počtu virtuálních počítačů a počítačů, na kterých máte nainstalovaného agenta. Můžete si prohlédnout úplný seznam problémů a způsobů, jak posílit síť a opravit rizika na dlaždici **doporučení** .
 
-Můžete zobrazit stav zabezpečení svých prostředků a jakékoli problémy na typ prostředku:
-
-- Pokud chcete monitorovat stav svých prostředků počítače a vašich aplikací a dostávat doporučení pro zlepšení zabezpečení, přečtěte si téma [ochrana počítačů a aplikací v Azure Security Center](security-center-virtual-machine-protection.md)
-- Pokud chcete monitorovat vaše síťové prostředky, jako jsou virtuální počítače, skupiny zabezpečení sítě a koncové body a dostávat doporučení pro zlepšení zabezpečení, přečtěte si téma [Ochrana sítě v Azure Security Center](security-center-network-recommendations.md) , kde najdete další informace. 
-- Další informace najdete [Azure Security Center v tématu Ochrana](security-center-sql-service-recommendations.md) dat a prostředků úložiště, například serverů SQL a účtů úložiště, a přijetí doporučení pro zlepšení zabezpečení. 
-- Pokud chcete monitorovat identitu a získat přístup k prostředkům, včetně vícefaktorového ověřování a oprávnění účtu, a získáte doporučení pro zlepšení jejich zabezpečení, přečtěte si téma [monitorování identity a přístupu v Azure Security Center](security-center-identity-access.md) , kde najdete další informace. 
-- Pokud chcete monitorovat přístup k prostředkům za běhu, přečtěte si další informace v tématu [Správa přístupu k virtuálnímu počítači pomocí nástroje](security-center-just-in-time.md) za běhu.
-
+Stav zabezpečení svých prostředků a všech problémů na typ prostředku můžete zobrazit na [stránce inventáře a Správa](asset-inventory.md)prostředků.
 
 Další informace o tom, jak používat doporučení, najdete v článku [Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
 
-
-![Dlaždice stavu zabezpečení prostředků](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
-
-
-
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak ve službě Azure Security Center používat funkce sledování. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak se v Azure Security Center konfiguruje nastavení zabezpečení.
