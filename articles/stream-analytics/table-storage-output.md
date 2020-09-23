@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0f8da31dbe59412ebd57c1f3523089062e5089a6
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 3e5b747e55c8f246167bcf8bbde3542146e69706
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875733"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891957"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Výstup tabulkového úložiště z Azure Stream Analytics
 
@@ -20,7 +20,7 @@ ms.locfileid: "88875733"
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vytvoření výstupu tabulky.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k přesměrování výstupu dotazu do tohoto úložiště tabulek. |
 | Účet úložiště |Název účtu úložiště, do kterého posíláte výstup. |
@@ -45,4 +45,4 @@ Maximální velikost zprávy najdete v části [omezení Azure Storage](../azure
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí šablony ARM](quick-create-azure-resource-manager.md)
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md)
+* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)

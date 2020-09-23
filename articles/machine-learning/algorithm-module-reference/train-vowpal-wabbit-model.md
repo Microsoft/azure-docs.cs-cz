@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 34caefba5bae660ca150f6e447b1d59b7174c768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857731"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907804"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Trénování modelu Vowpal Wabbit
-Tento článek popisuje, jak použít modul **pro dostupné modelu** v Návrháři Azure Machine Learning (Preview) k vytvoření modelu Machine Learning pomocí pro dostupné.  
+Tento článek popisuje, jak pomocí modulu **pro (Learning dostupné model** ) v Návrháři Azure Machine Learning vytvořit model strojového učení pomocí pro dostupné.  
 
 Pokud chcete používat pro dostupné pro Machine Learning, naformátujte zadání podle požadavků pro dostupné a připravte data v požadovaném formátu. Pomocí tohoto modulu můžete zadat argumenty příkazového řádku pro dostupné. 
 
@@ -112,7 +112,7 @@ Obecně se podporují všechny, ale jenom omezené sady argumentů. Úplný sezn
 
 Následující parametry nejsou podporovány:
 
--   Možnosti vstupu a výstupu zadané v[https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
+-   Možnosti vstupu a výstupu zadané v [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
   
      Tyto vlastnosti jsou již modulem konfigurovány automaticky.  
   

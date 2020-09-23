@@ -1,27 +1,29 @@
 ---
-title: Obnovení bodu v čase pro objekty blob bloku (Preview)
+title: Obnovení bodu v čase pro objekty blob bloku
 titleSuffix: Azure Storage
 description: Obnovení k určitému bodu v čase pro objekty blob bloku zajišťuje ochranu proti náhodnému odstranění nebo poškození tím, že vám umožní obnovit účet úložiště do předchozího stavu v daném časovém okamžiku.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1187b01fa623264055edecf21ea5c9d35d59a152
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068298"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987036"
 ---
-# <a name="point-in-time-restore-for-block-blobs-preview"></a>Obnovení bodu v čase pro objekty blob bloku (Preview)
+# <a name="point-in-time-restore-for-block-blobs"></a>Obnovení bodu v čase pro objekty blob bloku
 
 Obnovení k bodu v čase poskytuje ochranu proti náhodnému odstranění nebo poškození tím, že umožňuje obnovit data objektů blob bloku do dřívějšího stavu. Obnovení k určitému bodu v čase je užitečné ve scénářích, kdy uživatel nebo aplikace nechtěně odstraní data nebo kde chyba aplikace poškozuje data. Obnovení k určitému bodu v čase umožňuje také scénáře testování, které před spuštěním dalších testů vyžadují vrácení sady dat do známého stavu.
 
-Další informace o tom, jak povolit obnovení k určitému bodu v čase pro účet úložiště, najdete v tématu [povolení a Správa obnovení k určitému bodu v čase pro objekty blob bloku (Preview)](point-in-time-restore-manage.md).
+Obnovení k bodu v čase se podporuje jenom pro účty úložiště pro obecné účely verze 2. Pomocí obnovení k bodu v čase lze obnovit pouze data z horké a studené úrovně přístupu.
+
+Informace o tom, jak povolit obnovení k určitému bodu v čase pro účet úložiště, najdete v tématu [provedení obnovení k určitému bodu v čase u dat objektů blob bloku](point-in-time-restore-manage.md).
 
 ## <a name="how-point-in-time-restore-works"></a>Jak funguje obnovení k časovému okamžiku
 
@@ -48,17 +50,15 @@ Mějte na paměti následující omezení operací obnovení:
 > Operace čtení ze sekundárního umístění můžou během operace obnovení pokračovat, pokud je účet úložiště geograficky replikovaný.
 
 > [!CAUTION]
-> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) během obnovování k určitému bodu v čase, nelze tento kontejner obnovit pomocí operace obnovení. V rámci verze Preview místo odstranění kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít obnovit.
+> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) , nelze tento kontejner obnovit pomocí operace obnovení. Místo odstranění kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít obnovit.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Předpoklady pro obnovení k bodu v čase
 
-Obnovení k bodu v čase vyžaduje, aby byly povolené následující funkce Azure Storage:
+Obnovení k bodu v čase vyžaduje, aby byly povolené následující funkce Azure Storage, než můžete povolit obnovení k bodu v čase:
 
 - [Obnovitelné odstranění](soft-delete-overview.md)
-- [Změnit kanál (Preview)](storage-blob-change-feed.md)
+- [Změnit kanál](storage-blob-change-feed.md)
 - [Správa verzí objektů BLOB](versioning-overview.md)
-
-Než povolíte obnovení k bodu v čase, povolte tyto funkce pro účet úložiště. Před tím, než je povolíte, si nezapomeňte zaregistrovat verze Preview pro náhled kanálu změn a verzí objektů BLOB.
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Doba uchování pro obnovení k určitému bodu v čase
 
@@ -72,83 +72,17 @@ Doba uchování pro obnovení k určitému bodu v čase musí být alespoň jede
 
 Aby bylo možné zahájit operaci obnovení, musí mít klient oprávnění pro zápis do všech kontejnerů v účtu úložiště. Pokud chcete udělit oprávnění k autorizaci operace obnovení s Azure Active Directory (Azure AD), přiřaďte roli **Přispěvatel účtu úložiště** k objektu zabezpečení na úrovni účtu úložiště, skupiny prostředků nebo předplatného.
 
-## <a name="about-the-preview"></a>O verzi Preview
+## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 
-Obnovení k bodu v čase se podporuje jenom pro účty úložiště pro obecné účely verze 2. Pomocí obnovení k bodu v čase lze obnovit pouze data z horké a studené úrovně přístupu.
+Obnovení bodu v čase pro objekty blob bloku má následující omezení a známé problémy:
 
-Následující oblasti podporují obnovení k bodu v čase ve verzi Preview:
-
-- Střední Kanada
-- Kanada – východ
-- Francie – střed
-
-Verze Preview zahrnuje tato omezení:
-
-- Obnovení objektů blob bloku Premium se nepodporuje.
-- Obnovení objektů blob na archivní úrovni se nepodporuje. Pokud se například objekt blob na horké úrovni před dvěma dny přesunul na archivní úroveň a operace obnovení provádí obnovení k bodu před třemi dny, objekt blob se neobnoví na horké úrovni.
+- V rámci operace obnovení k určitému bodu v čase lze obnovit pouze objekty blob bloku v účtu úložiště úrovně Standard pro obecné účely verze 2. Objekty blob bloku, objekty blob stránky a objekty blob bloku úrovně Premium se neobnoví. Pokud jste během doby uchování odstranili kontejner, nebude tento kontejner obnoven s operací obnovení k určitému bodu v čase. Další informace o ochraně kontejnerů před odstraněním najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md).
+- V operaci obnovení k určitému bodu v čase lze obnovit pouze objekty blob bloku na horké nebo studené úrovni. Obnovování objektů blob bloku v archivní úrovni se nepodporuje. Pokud se například objekt blob na horké úrovni před dvěma dny přesunul na archivní úroveň a operace obnovení provádí obnovení k bodu před třemi dny, objekt blob se neobnoví na horké úrovni. Pokud chcete obnovit archivovaný objekt blob, nejdřív ho přesuňte mimo archivní vrstvu.
+- Pokud má objekt blob bloku v rozsahu, který má být obnoven, aktivní zapůjčení, operace obnovení k určitému bodu v čase selže. Před zahájením operace obnovení přerušte všechna aktivní zapůjčení.
 - Obnovení Azure Data Lake Storage Gen2 plochých a hierarchických oborů názvů není podporováno.
-- Obnovení účtů úložiště pomocí klíčů poskytnutých zákazníkem se nepodporuje.
 
 > [!IMPORTANT]
-> Obnovení bodu v čase je ve verzi Preview určeno pouze pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
-
-### <a name="register-for-the-preview"></a>Zaregistrovat se pro verzi Preview
-
-Pokud se chcete zaregistrovat ve verzi Preview, spusťte následující příkazy:
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-# Register for the point-in-time restore preview
-Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Microsoft.Storage
-
-# Register for change feed (preview)
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-
-# Register for Blob versioning
-Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
-az feature register --namespace Microsoft.Storage --name Changefeed
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-registration-status"></a>Ověřit stav registrace
-
-Registrace pro obnovení bodu v čase je automatická a měla by trvat méně než 10 minut. Chcete-li zjistit stav registrace, spusťte následující příkazy:
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName RestoreBlobRanges
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Changefeed
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
-```
-
----
+> Pokud obnovíte objekty blob bloku do bodu, který je starší než 22. září 2020, vstoupí v platnost omezení pro obnovení k určitému bodu v čase. Společnost Microsoft doporučuje zvolit bod obnovení, který se rovná nebo je vyšší než 22. září 2020, aby využil všeobecně dostupné funkce obnovení k určitému bodu v čase.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
@@ -158,13 +92,9 @@ Chcete-li odhadnout náklady na operaci obnovení, Projděte si protokol změn k
 
 Další informace o cenách pro obnovení k bodu v čase najdete v tématu ceny za objekty [blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="ask-questions-or-provide-feedback"></a>Položte otázky nebo poskytněte zpětnou vazbu.
-
-Chcete-li klást otázky na verzi Preview k určitému bodu v čase nebo poskytnout zpětnou vazbu, obraťte se na společnost Microsoft na adrese pitrdiscussion@microsoft.com .
-
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolte a spravujte obnovení k určitému bodu v čase pro objekty blob bloku (Preview).](point-in-time-restore-manage.md)
-- [Změna podpory kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md)
+- [Provedení obnovení k určitému bodu v čase u dat objektů blob bloku](point-in-time-restore-manage.md)
+- [Změna podpory kanálu v Azure Blob Storage](storage-blob-change-feed.md)
 - [Povolení obnovitelného odstranění pro objekty blob](soft-delete-enable.md)
 - [Povolení a správa verzí objektů BLOB](versioning-enable.md)

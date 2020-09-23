@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798354"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979819"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Schválení nebo zamítnutí žádostí o přístup v Azure AD – Správa nároků
 
@@ -48,6 +48,22 @@ Pokud nemáte e-mail, můžete podle následujících kroků najít žádosti o 
 1. V nabídce vlevo klikněte na **schválení** . zobrazí se seznam žádostí o přístup, které čekají na schválení.
 
 1. Na kartě **čeká na vyřízení** žádost.
+
+## <a name="view-requestors-answers-to-questions-preview"></a>Zobrazit odpovědi žadatele na otázky (Preview)
+
+1. V části přístup přejděte na kartu **schválení** .
+
+1. Přejděte na žádost, kterou chcete schválit, a klikněte na **Podrobnosti**. Pokud jste připraveni udělat rozhodnutí, můžete kliknout na **schválit** nebo **odmítnout** .
+
+1. Klikněte na **Podrobnosti žádosti**.
+
+     ![Můj portál přístupu – žádost o přístup – klikněte na Podrobnosti žádosti.](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+
+1. Informace poskytnuté žadatelem budou v dolní části panelu.
+
+     ![Můj portál pro přístup – žádost o přístup](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+
+1. Na základě informací poskytnutých žadatelem můžete žádost schválit nebo zamítnout. Pokyny najdete v postupu schválení nebo zamítnutí žádosti.
 
 ## <a name="approve-or-deny-request"></a>Schválit nebo zamítnout žádost
 

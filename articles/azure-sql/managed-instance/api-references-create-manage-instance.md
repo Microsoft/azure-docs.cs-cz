@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503000"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969794"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Reference spravovaného rozhraní API pro spravovanou instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,6 +44,8 @@ Pokud chcete vytvořit a spravovat spravované instance pomocí Azure PowerShell
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Vrátí informace o spravované instanci.|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Nastaví vlastnosti pro spravovanou instanci.|
 |[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Odebere spravovanou instanci.|
+|[Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)|Načte seznam operací správy provedených na spravované instanci nebo konkrétní operaci.|
+|[Stop – AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)|Zruší konkrétní operaci správy prováděnou na spravované instanci.|
 |[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Vytvoří databázi spravované instance SQL.|
 |[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Vrátí informace o databázi spravované instance SQL.|
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Odebere databázi spravované instance SQL.|
@@ -63,6 +65,9 @@ Pokud chcete vytvořit a nakonfigurovat spravované instance pomocí [Azure CLI]
 |[AZ SQL mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Získá podrobnosti o spravované instanci.|
 |[AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Aktualizuje spravovanou instanci.|
 |[AZ SQL mi DELETE](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Odebere spravovanou instanci.|
+|[AZ SQL mi op list](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_list)|Načte seznam operací správy provedených na spravované instanci.|
+|[AZ SQL mi op show](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_show)|Získá konkrétní operaci správy prováděnou na spravované instanci.|
+|[AZ SQL mi op Cancel](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Zruší konkrétní operaci správy prováděnou na spravované instanci.|
 |[AZ SQL MIDB Create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Vytvoří spravovanou databázi.|
 |[AZ SQL MIDB list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Zobrazí seznam dostupných spravovaných databází.|
 |[AZ SQL MIDB Restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Obnoví spravovanou databázi.|
@@ -80,8 +85,8 @@ Chcete-li vytvořit a konfigurovat databáze instancí po vytvoření spravovan�
 
 | Příkaz | Popis |
 | --- | --- |
-|[VYTVOŘIT DATABÁZI](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Vytvoří novou instanci databáze ve spravované instanci SQL. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Upraví databázi instance ve spravované instanci SQL.|
+|[VYTVOŘIT DATABÁZI](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|Vytvoří novou instanci databáze ve spravované instanci SQL. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |Upraví databázi instance ve spravované instanci SQL.|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: vytváření a konfigurace spravovaných instancí
 
@@ -95,6 +100,9 @@ Pokud chcete vytvořit a nakonfigurovat spravované instance, použijte tyto po�
 |[Spravované instance – seznam](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|Vrátí seznam spravovaných instancí v rámci předplatného.|
 |[Spravované instance – seznam podle skupiny prostředků](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Vrátí seznam spravovaných instancí ve skupině prostředků.|
 |[Spravované instance – aktualizace](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Aktualizuje spravovanou instanci.|
+|[Operace spravované instance – seznam podle spravované instance](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Načte seznam operací správy provedených na spravované instanci.|
+|[Operace spravované instance – získání](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|Získá konkrétní operaci správy prováděnou na spravované instanci.|
+|[Operace spravované instance – zrušit](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|Zruší konkrétní operaci správy prováděnou na spravované instanci.|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049784"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979388"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Řešení potíží s povolením nebo zobrazením Application Insights Profiler
 
@@ -79,12 +79,12 @@ Pro správné fungování profileru postupujte takto:
    1. V nabídce **nástroje** vyberte možnost **řídicí panel WebJobs**.  
       Otevře se podokno webové **úlohy** . 
    
-      ![Profiler – webová úloha]   
+      ![Snímek obrazovky zobrazuje podokno webové úlohy, ve kterém se zobrazuje název, stav a čas posledního spuštění úloh.][profiler-webjob]   
    
    1. Chcete-li zobrazit podrobnosti webové úlohy, včetně protokolu, vyberte odkaz **ApplicationInsightsProfiler3** .  
      Otevře se podokno **Podrobnosti nepřetržité úlohy WebJob** .
 
-      ![Profiler-webová úloha – protokol]
+      ![Snímek obrazovky se zobrazí v podokně podrobností nepřetržité úlohy WebJob.][profiler-webjob-log]
 
 Pokud nemůžete zjistit, proč Profiler nefunguje za vás, můžete si ho stáhnout a poslat mu v našem týmu, kde získáte pomoc serviceprofilerhelp@microsoft.com . 
     
@@ -191,5 +191,5 @@ Pokud se vaše aplikace připojuje k Internetu prostřednictvím proxy serveru n
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[Profiler – webová úloha]:./media/profiler-troubleshooting/Profiler-webjob.png
-[Profiler-webová úloha – protokol]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png

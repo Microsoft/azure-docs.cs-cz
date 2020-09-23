@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182678"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901820"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 
@@ -23,7 +23,7 @@ V tomto rychlém startu pracujete s Azure Database for PostgreSQL s využitím P
 > Pokud chcete vytvořit aplikaci Django s PostgreSQL, pak ji vyřadíte [pomocí kurzu nasazení webové aplikace Django s](../app-service/containers/tutorial-python-postgresql-app.md) využitím PostgreSQL.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -46,7 +46,7 @@ Připojení k databázi Azure Database for PostgreSQL vyžaduje plně kvalifikov
    
    Budete také potřebovat heslo správce. Pokud ho zapomenete, můžete ho resetovat z této stránky. 
    
-   ![Název serveru Azure Database for PostgreSQL](./media/connect-python/1-connection-string.png)
+   :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="Název serveru Azure Database for PostgreSQL":::
 
 ## <a name="how-to-run-the-python-examples"></a>Jak spustit příklady Pythonu
 
@@ -55,9 +55,9 @@ Pro každý příklad kódu v tomto článku:
 1. Vytvořte nový soubor v textovém editoru. 
    
 1. Přidejte do souboru příklad kódu. V kódu nahraďte:
-   - `<server-name>`a `<admin-username>` s hodnotami, které jste zkopírovali z Azure Portal.
-   - `<admin-password>`se svým heslem na serveru.
-   - `<database-name>`názvem vaší databáze Azure Database for PostgreSQL. Výchozí databáze s názvem *Postgres* byla automaticky vytvořena při vytvoření serveru. Tuto databázi můžete přejmenovat nebo vytvořit novou databázi pomocí příkazů SQL. 
+   - `<server-name>` a `<admin-username>` s hodnotami, které jste zkopírovali z Azure Portal.
+   - `<admin-password>` se svým heslem na serveru.
+   - `<database-name>` názvem vaší databáze Azure Database for PostgreSQL. Výchozí databáze s názvem *Postgres* byla automaticky vytvořena při vytvoření serveru. Tuto databázi můžete přejmenovat nebo vytvořit novou databázi pomocí příkazů SQL. 
    
 1. Uložte soubor do složky vašeho projektu s příponou *. py* , například *Postgres-INSERT.py*. Pro Windows se ujistěte, že je při ukládání souboru vybraný kódování UTF-8. 
    
@@ -105,7 +105,7 @@ conn.close()
 
 Po úspěšném spuštění kódu se vytvoří následující výstup:
 
-![Výstup příkazového řádku](media/connect-python/2-example-python-output.png)
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Výstup příkazového řádku":::
 
 ## <a name="read-data"></a>Čtení dat
 Následující příklad kódu se připojuje k vaší Azure Database for PostgreSQL databázi a používá [cursor.exeroztomilá](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **Select** ke čtení dat. Tato funkce přijme dotaz a vrátí sadu výsledků pro iteraci pomocí [Cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall). 

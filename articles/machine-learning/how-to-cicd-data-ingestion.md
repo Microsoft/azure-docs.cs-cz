@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228881"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971254"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps kanálu pro přijímání dat
 
@@ -168,11 +168,11 @@ labels = np.array(data['target'])
 
 Tento název se liší od prostředí pro ***vývoj***, řešení ***QA***, ***UAT***a ***výr*** . Ve složitém kanálu s více aktivitami může existovat několik vlastních vlastností. Je vhodné shromáždit všechny tyto hodnoty na jednom místě a definovat je jako ***proměnné***kanálu:
 
-![ADF – proměnné](media/how-to-cicd-data-ingestion/adf-variables.png)
+![Snímek obrazovky s názvem PrepareData a M L Execute Pipeline s názvem M L Execute Pipeline v horní části s možností přidat nové proměnné, každý s názvem, typem a výchozí hodnotou.](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 Aktivity kanálu mohou odkazovat na proměnné kanálu při jejich současném použití:
 
-![ADF – Poznámkový blok – parametry](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![Snímek obrazovky s názvem PrepareData a M L Execute Pipeline s názvem M L Execute Pipeline v horní části s níže vybranou kartou nastavení.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
 ***Pracovní prostor*** Azure Data Factory ve výchozím nastavení nevystavuje proměnné kanálu jako parametry Azure Resource Manager šablon. Pracovní prostor používá [výchozí šablonu Parametrizace](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) , která určuje, jaké vlastnosti kanálu by se měly zveřejnit jako parametry šablony Azure Resource Manager. Chcete-li přidat proměnné kanálu do seznamu, aktualizujte `"Microsoft.DataFactory/factories/pipelines"` část [výchozí šablony Parametrizace](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) následujícím fragmentem kódu a uložte výsledný soubor JSON do kořenového adresáře zdrojové složky:
 

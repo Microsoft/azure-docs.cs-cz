@@ -1,7 +1,7 @@
 ---
-title: Řešení chyb modulu Designer (Preview)
+title: Řešení chyb modulu návrháře
 titleSuffix: Azure Machine Learning
-description: Řešení potíží s kódy chyb modulu v Návrháři Azure Machine Learning (Preview)
+description: Řešení potíží s kódy chyb modulu v Návrháři Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876916"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908098"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (Preview)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>Výjimky a kódy chyb pro návrháře
 
-Tento článek popisuje chybové zprávy a kódy výjimek v Návrháři Azure Machine Learning (Preview), které vám pomůžou při odstraňování potíží s kanály strojového učení.
+Tento článek popisuje chybové zprávy a kódy výjimek v Návrháři Azure Machine Learning, které vám pomůžou při odstraňování potíží s kanály machine learningu.
 
 Chybovou zprávu najdete v Návrháři následujícím způsobem:  
 
@@ -491,7 +491,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 
 **Rozhodnutí**
 
-+ Otevřete modul, který chybu generoval, a zjistěte, jestli je přítomný sloupec popisku. Název nebo datový typ sloupce nezáleží na tom, jestli sloupec obsahuje jeden výsledek (nebo závislou proměnnou), se kterou se pokoušíte odhadnout. Pokud si nejste jistí, který sloupec má popisek, vyhledejte obecný název, jako je například *Třída* nebo *cíl*. 
++ Otevřete modul, který chybu generoval, a zjistěte, jestli je přítomný sloupec popisku. Název nebo datový typ sloupce nezáleží na tom, jestli sloupec obsahuje jeden výsledek (nebo závislou proměnnou), se kterou se pokoušíte odhadnout. Pokud si nejste jistí, který sloupec má popisek, vyhledejte obecný název, jako je například  *Třída* nebo *cíl*. 
 +  Pokud datová sada neobsahuje sloupec popisku, je možné, že sloupec popisku byl explicitně nebo omylem odebrán z nadřazeného objektu. Je také možné, že datová sada není výstupním modulem nadřazeného modulu pro vyhodnocování.
 + Chcete-li sloupec explicitně označit jako sloupec popisku, přidejte modul [Upravit metadata](edit-metadata.md) a připojte datovou sadu. Vyberte pouze sloupec popisek a v rozevíracím seznamu **pole** vyberte možnost **popisek** . 
 + Pokud je jako popisek vybrán špatný sloupec, můžete vybrat možnost **Vymazat popisek** z **polí** a opravit tak metadata sloupce. 
@@ -1079,7 +1079,7 @@ Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže
 + Ověřte, že dotaz funguje správně mimo Azure Machine Learning tím, že se přihlásí do konzoly podregistru clusteru Hadoop a spustí se dotaz.  
 + Zkuste umístit komentáře do skriptu v podregistru do samostatného řádku, a to na rozdíl v kombinování spustitelných příkazů a komentářů na jednom řádku.  
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Zdroje informací
 
 Nápovědu k dotazům na podregistr pro strojové učení najdete v následujících článcích:
 

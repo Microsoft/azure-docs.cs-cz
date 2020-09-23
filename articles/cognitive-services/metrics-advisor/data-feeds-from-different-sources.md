@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4dc3c46b65bab48b8923af985f0c2c29fcddc53b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935502"
+ms.locfileid: "90973389"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky
 
@@ -27,10 +27,10 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 | ---------------------|-------------|
 |**Basic** | Budete muset být schopni zadat základní parametry pro přístup ke zdrojům dat. Například připojovací řetězec nebo klíč. Správci datového kanálu můžou tyto přihlašovací údaje zobrazit. |
 | **AzureManagedIdentity** | [Spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) prostředků Azure je funkce Azure Active Directory. Poskytuje služby Azure s automaticky spravovanou identitou ve službě Azure AD. Identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD.|
-| **AzureSQLConnectionString**| Uložte připojovací řetězec AzureSQL jako **entitu ověřování** v poradcích pro metriky a použijte ji přímo při připojování dat metrik. Pouze správci entity ověřování mohou zobrazit tyto přihlašovací údaje, ale umožňují oprávněným divákům vytvářet datové kanály, aniž by museli znát podrobnosti o přihlašovacích údajích. |
-| **DataLakeGen2SharedKey**| Svůj klíč účtu Data Lake uložte jako **entitu ověřování** v poradcích metrik a použijte ji přímo při připojování dat metrik. Pouze správci entity ověřování mohou zobrazit tyto přihlašovací údaje, ale umožňují oprávněným divákům vytvořit datový kanál, aniž by museli znát podrobnosti přihlašovacích údajů.|
-| **ServicePrincipal**| Vaše instanční objekt se uloží jako **entita ověřování** v Advisoru metriky a použije se při tom při připojování dat metrik přímo. Přihlašovací údaje můžou zobrazit jenom správci entity ověřování, ale povolují oprávněným divákům vytvářet datový kanál, aniž by museli znát podrobnosti přihlašovacích údajů.|
-| **ServicePrincipalInKeyVault**|Vaše instanční objekt se uloží do trezoru klíčů jako **entita ověřování** v poradci metriky a použije se při tom při připojování dat metriky přímo. Přihlašovací údaje můžou zobrazit jenom správci **entity ověřování** , ale také můžou nechat, aby mohli vytvářet datové kanály, aniž by museli znát podrobné přihlašovací údaje. |
+| **AzureSQLConnectionString**| Uložte připojovací řetězec AzureSQL jako **entitu přihlašovacích údajů** v poradci metriky a použijte ji přímo při připojování dat metrik. Pouze správci entity pověření mohou zobrazit tyto přihlašovací údaje, ale umožňují oprávněným divákům vytvářet datové kanály, aniž by museli znát podrobnosti o přihlašovacích údajích. |
+| **DataLakeGen2SharedKey**| Svůj klíč účtu Data Lake uložte jako **entitu s přihlašovacími** údaji v poradci metriky a použijte ji přímo při připojování dat metrik. Pouze správci entity pověření mohou zobrazit tyto přihlašovací údaje, ale umožňují oprávněným divákům vytvořit datový kanál, aniž by museli znát podrobnosti přihlašovacích údajů.|
+| **Instanční objekt**| Uložte instanční objekt jako **entitu přihlašovacích údajů** v poradci metriky a použijte ji přímo při připojování dat metrik. Přihlašovací údaje můžou zobrazit jenom správci entit přihlašovacích údajů, ale povolují oprávněným divákům vytvářet datový kanál, aniž by museli znát podrobnosti přihlašovacích údajů.|
+| **Instanční objekt z trezoru klíčů**|Instanční objekt uložte do trezoru klíčů jako **entitu s přihlašovacími** údaji v Advisoru a použijte ji přímo při připojování dat metrik. Přihlašovací údaje můžou zobrazit jenom správci **entity s přihlašovacími** údaji, ale můžou také opustit možnosti vytváření datových kanálů, aniž by museli znát podrobné přihlašovací údaje. |
 
 ## <a name="data-sources-supported-and-corresponding-authentication-types"></a>Podporované zdroje dat a odpovídající typy ověřování
 
@@ -41,8 +41,8 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 |[**Azure Blob Storage (JSON)**](#blob) | Základní<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Základní |
 |[**Průzkumník dat Azure (Kusto)**](#kusto) | Základní<br>ManagedIdentity|
-|[**Azure Data Lake Storage Gen2**](#adl) | Základní<br>DataLakeGen2SharedKey<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br> |
-|[**Azure SQL Database/SQL Server**](#sql) | Základní<br>ManagedIdentity<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br>AzureSQLConnectionString
+|[**Azure Data Lake Storage Gen2**](#adl) | Základní<br>DataLakeGen2SharedKey<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br> |
+|[**Azure SQL Database/SQL Server**](#sql) | Základní<br>ManagedIdentity<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br>AzureSQLConnectionString
 |[**Azure Table Storage**](#table) | Základní | 
 |[**ElasticSearch**](#es) | Základní |
 |[**Požadavek http**](#http) | Základní | 
@@ -51,7 +51,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 |[**MySQL**](#mysql) | Základní |
 |[**PostgreSQL**](#pgsql)| Základní|
 
-Vytvořte **entitu ověřování** a použijte ji k ověřování vašich zdrojů dat. Následující oddíly určují parametry požadované pro *základní* ověřování. 
+Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování vašich zdrojů dat. Následující oddíly určují parametry požadované pro *základní* ověřování. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 

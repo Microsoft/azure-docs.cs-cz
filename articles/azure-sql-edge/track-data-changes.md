@@ -1,6 +1,6 @@
 ---
-title: Sledování změn dat ve službě Azure SQL Edge (Preview)
-description: Přečtěte si o sledování změn a Change Data Capture ve službě Azure SQL Edge (Preview).
+title: Sledování změn dat ve službě Azure SQL Edge
+description: Přečtěte si o sledování změn a Change Data Capture v Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6d0a081f2b0adb143a6b37a647a00014846f8fe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d5d5f74a816bf745faf5decf761cd453f40123
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669592"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900075"
 ---
-# <a name="track-data-changes-in-azure-sql-edge-preview"></a>Sledování změn dat ve službě Azure SQL Edge (Preview)
+# <a name="track-data-changes-in-azure-sql-edge"></a>Sledování změn dat ve službě Azure SQL Edge
 
 Azure SQL Edge podporuje dvě SQL Server funkce, které sledují změny dat v databázi: [sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Tracking) a [Change Data Capture](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Capture). Tyto funkce umožňují aplikacím určit změny jazyka úprav dat (operace vložení, aktualizace a odstranění), které byly provedeny v tabulkách uživatelů v databázi. Můžete povolit Change Data Capture a sledování změn ve stejné databázi. Nevyžadují se žádné zvláštní požadavky.
 
@@ -60,10 +60,10 @@ Další informace najdete v tématu [dočasné tabulky](https://docs.microsoft.c
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Streamování dat ve službě Azure SQL Edge (Preview)](stream-data.md)
-- [Machine Learning a AI s ONNX ve službě Azure SQL Edge (Preview)](onnx-overview.md)
-- [Konfigurace replikace na Edge Azure SQL (Preview)](configure-replication.md)
-- [Zálohování a obnovení databází v Azure SQL Edge (Preview)](backup-restore.md)
+- [Streamování dat ve službě Azure SQL Edge ](stream-data.md)
+- [Machine Learning a AI s ONNX ve službě Azure SQL Edge ](onnx-overview.md)
+- [Konfigurace replikace na Edge Azure SQL](configure-replication.md)
+- [Zálohování a obnovení databází v Azure SQL Edge](backup-restore.md)
 
 
 

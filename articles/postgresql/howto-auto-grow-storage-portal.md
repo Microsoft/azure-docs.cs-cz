@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/29/2019
-ms.openlocfilehash: 24ca9d84e8e05b2ffe093dc54963c1ac39464105
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1853bbb0e44526988b34ed23126664c5a2285a7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119612"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907517"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Automatické zvětšení úložiště pomocí Azure Portal v Azure Database for PostgreSQL-jednom serveru
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for PostgreSQL pro růst, aniž by to ovlivnilo zatížení.
@@ -32,13 +32,13 @@ Pomocí těchto kroků nastavíte automatické zvětšování úložiště serve
 
 3. V části **Automatické zvětšování** vyberte **Ano** , pokud chcete povolit automatické zvětšování úložiště.
 
-    ![Azure Database for PostgreSQL – Settings_Pricing_tier – automatické zvětšování](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/3-auto-grow.png" alt-text="Azure Database for PostgreSQL – Settings_Pricing_tier – automatické zvětšování":::
 
-4. Klikněte na tlačítko **OK** a uložte změny.
+4. Kliknutím na tlačítko **OK** uložte změny.
 
 5. Oznámení potvrdí, že automatické zvětšování bylo úspěšně povoleno.
 
-    ![Úspěch Azure Database for PostgreSQL – automatické zvětšování](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png" alt-text="Úspěch Azure Database for PostgreSQL – automatické zvětšování":::
 
 ## <a name="next-steps"></a>Další kroky
 

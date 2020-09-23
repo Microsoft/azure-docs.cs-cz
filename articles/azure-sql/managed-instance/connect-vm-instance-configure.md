@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 72d5a722e6c1e6b936c6ec0386036317e887bb92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542649"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969831"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,10 +53,10 @@ Následující kroky vytvoří novou podsíť ve virtuální síti spravované i
    | ---------------- | ----------------- | ----------- |
    | **Název** | Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    | **Rozsah adres (blok CIDR)** | Platný rozsah | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Skupina zabezpečení sítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Směrovací tabulka** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Skupina zabezpečení sítě** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Směrovací tabulka** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Koncové body služby** | Vybráno: 0 | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Delegování podsítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Delegování podsítě** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
 
    ![Nová podsíť spravované instance SQL pro virtuální počítač klienta](./media/connect-vm-instance-configure/new-subnet.png)
 
@@ -85,13 +85,13 @@ Nejjednodušší způsob, jak vytvořit klientský virtuální počítač se vš
    | **Umístění** | Umístění pro skupinu prostředků | Tato hodnota se naplní na základě vybrané skupiny prostředků. |
    | **Název virtuálního počítače**  | Libovolné platné jméno | Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    |**Uživatelské jméno správce**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). Nepoužívejte "serveradmin", protože to je vyhrazená role na úrovni serveru.<br>Toto uživatelské jméno použijete při každém [připojení k virtuálnímu počítači](#connect-to-the-virtual-machine).|
-   |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Toto heslo použijete při každém [připojení k virtuálnímu počítači](#connect-to-the-virtual-machine).|
+   |**Heslo**|Libovolné platné heslo|Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Toto heslo použijete při každém [připojení k virtuálnímu počítači](#connect-to-the-virtual-machine).|
    | **Velikost virtuálního počítače** | Libovolná platná velikost | Výchozí hodnota v této šabloně **Standard_B2s** je pro tento rychlý Start dostačující. |
    | **Umístění**|[resourceName (). Location].| Tuto hodnotu neměňte. |
    | **Název Virtual Network**|Virtuální síť, ve které jste vytvořili spravovanou instanci|
    | **Název podsítě**|Název podsítě, kterou jste vytvořili v předchozím postupu| Nevybírejte podsíť, ve které jste vytvořili spravovanou instanci.|
    | **Umístění artefaktů** | [Deployment (). Properties. templateLink. URI] | Tuto hodnotu neměňte. |
-   | **token SAS umístění artefaktů** | Ponechte prázdné | Tuto hodnotu neměňte. |
+   | **token SAS umístění artefaktů** | Ponechte prázdné. | Tuto hodnotu neměňte. |
 
    ![vytvoření klientského virtuálního počítače](./media/connect-vm-instance-configure/create-client-sql-vm.png)
 
@@ -110,9 +110,9 @@ Následující kroky ukazují, jak se připojit k nově vytvořenému virtuáln�
 
 1. Po dokončení nasazení přejděte k prostředku virtuálního počítače.
 
-    ![Virtuální počítač](./media/connect-vm-instance-configure/vm.png)  
+    ![Snímek obrazovky se zobrazí Azure Portal se stránkou přehled pro vybraný virtuální počítač a zvýrazněným připojením.](./media/connect-vm-instance-configure/vm.png)  
 
-2. Vyberte **Připojit**.
+2. Vyberte **Connect** (Připojit).
 
    Zobrazí se formulář soubor protokol RDP (Remote Desktop Protocol) (soubor. RDP) s veřejnou IP adresou a číslem portu pro virtuální počítač.
 

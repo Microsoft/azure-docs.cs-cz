@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1211245786bbb734e0338be1b79030f5f9552793
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8649c9faf3905e69232cdc15bbba6607abe3e9c4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266370"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969499"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell
 
@@ -36,12 +36,35 @@ V tomto článku se dozvíte, jak pomocí Azure PowerShell vytvořit, vypsat a o
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Pokud jste to ještě neudělali, nainstalujte [nejnovější verzi Azure PowerShell](/powershell/azure/install-az-ps) .
-- Pokud používáte PowerShell místně, je potřeba provést také následující: 
-    - Spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure.
-    - Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
-    - Spuštěním rutiny `Install-Module -Name PowerShellGet -AllowPrerelease` získejte předběžnou verzi modulu `PowerShellGet` (po spuštění tohoto příkazu možná budete muset pomocí příkazu `Exit` ukončit aktuální relaci PowerShellu, aby se modul `Az.ManagedServiceIdentity` nainstaloval).
-    - Spusťte `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` instalaci předprodejní verze `Az.ManagedServiceIdentity` modulu, abyste mohli provádět operace spravované identity přiřazené uživatelem v tomto článku.
+- Chcete-li spustit ukázkové skripty, máte dvě možnosti:
+    - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md), který můžete otevřít pomocí tlačítka **vyzkoušet** v pravém horním rohu bloků kódu.
+    - Spouštějte skripty místně pomocí Azure PowerShell, jak je popsáno v následující části.
+
+### <a name="configure-azure-powershell-locally"></a>Konfigurace Azure PowerShell místně
+
+Pokud chcete použít Azure PowerShell lokálně pro tento článek (místo použití Cloud Shell), proveďte následující kroky:
+
+1. Pokud jste to ještě neudělali, nainstalujte [nejnovější verzi Azure PowerShell](/powershell/azure/install-az-ps) .
+
+1. Přihlaste se k Azure:
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
+
+    ```azurepowershell
+    Install-Module -Name PowerShellGet -AllowPrerelease
+    ```
+
+    `Exit`Po spuštění tohoto příkazu pro další krok možná budete muset odhlásit aktuální relaci PowerShellu.
+
+1. Nainstalujte předběžnou verzi `Az.ManagedServiceIdentity` modulu, abyste mohli provádět operace spravované identity přiřazené uživatelem v tomto článku:
+
+    ```azurepowershell
+    Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
+    ```
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 

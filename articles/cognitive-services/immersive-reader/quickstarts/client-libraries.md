@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: použití klientské knihovny pro moderní čtenáře'
+title: 'Rychlý Start: Klientská knihovna pro moderní čtení'
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro moderní čtečku nabízí klientské knihovny, které usnadňují integraci vyhledávacích funkcí do vašich aplikací. V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání a vracet výsledky.
+description: Klientská knihovna pro moderní čtení usnadňuje integraci služby moderního čtecího zařízení do webových aplikací za účelem zlepšení porozumění při čtení. V tomto rychlém startu se dozvíte, jak používat moderní čtečku pro výběr textu, rozpoznávání částí řeči, čtení vybraného textu po nahlasování, překladu a dalších.
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -9,17 +9,18 @@ zone_pivot_groups: programming-languages-set-twenty
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f02c473fb4a44fb8c0235658d3c8f6e3279844
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.custom: cog-serv-seo-aug-2020
+keywords: zobrazení obrázků, částí řeči, čtení vybraného textu, překladu slov, porozumění čtení
+ms.openlocfilehash: 621be6293b4ac487cafafc14498524c97fdc6d82
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505377"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978300"
 ---
-# <a name="quickstart-use-the-immersive-reader-client-library"></a>Rychlý Start: použití klientské knihovny pro moderní čtenáře
+# <a name="quickstart-get-started-with-immersive-reader"></a>Rychlý Start: Začínáme s moderní čtečkou
 
 ::: zone pivot="programming-language-csharp"
 

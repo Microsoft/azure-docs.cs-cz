@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299222"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892528"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Kurz: jak monitorovat prostředky jarní cloudu pomocí výstrah a skupin akcí
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 Výstrahy služby Azure jaře Cloud podporují monitorování prostředků na základě podmínek, jako je dostupné úložiště, rychlost požadavků nebo využití dat. Výstraha pošle oznámení, pokud sazby nebo podmínky splňují definované specifikace.
 
@@ -22,7 +24,7 @@ Pro nastavení kanálu výstrah existují dva kroky:
 1. Nastavte skupinu akcí s akcemi, které se mají provést, když se aktivuje výstraha, například e-mail, SMS, Runbook nebo Webhook. Skupiny akcí lze znovu použít mezi různými výstrahami.
 2. Nastavte pravidla upozornění. Pravidla vážou modely metrik se skupinami akcí na základě cílového prostředku, metriky, podmínky, agregace času atd.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Kromě požadavků na jarní kapacitu Azure postup v tomto kurzu pracuje s nasazenou instancí cloudu pro Azure jaře.  Začněte pomocí [rychlého](spring-cloud-quickstart.md) startu.
 
@@ -58,11 +60,11 @@ Na stránce **Přidat skupinu akcí** :
 
 ## <a name="set-up-alert"></a>Nastavit upozornění 
 
-Předchozí kroky vytvořily **skupinu akcí** , která používá e-mail. Můžete také použít oznámení pro telefon, Webhooky, službu Azure Functions atd.  
+Předchozí kroky vytvořily **skupinu akcí** , která používá e-mail. Můžete také použít oznámení pro telefon, Webhooky, službu Azure functions a tak dále. Následující postup nakonfiguruje **výstrahu**.
 
-Chcete-li nakonfigurovat **výstrahu**, přejděte zpět na stránku **výstrahy** a klikněte na možnost **Spravovat pravidla výstrah**.
+1. Přejděte zpět na stránku **výstrahy** a klikněte na **Spravovat pravidla výstrah**.
 
-  ![Definice výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-2.png)
+   ![Definice výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-2.png)
 
 1. Vyberte **prostředek** pro výstrahu.
 
@@ -84,9 +86,9 @@ Chcete-li nakonfigurovat **výstrahu**, přejděte zpět na stránku **výstrahy
 
 1. Klikněte na **Hotovo**.
 
-Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Možnosti metrik portálu User Portal](spring-cloud-concept-metrics.md#user-metrics-options).
+   Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Možnosti metrik portálu User Portal](spring-cloud-concept-metrics.md#user-metrics-options).
 
- V části **Akce**klikněte na **Vybrat skupinu akcí**. V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
+1. V části **Akce**klikněte na **Vybrat skupinu akcí**. V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
 
    ![Nové pravidlo upozornění na portálu snímků obrazovky 4](media/alerts-action-groups/alerts-3-3.png) 
 
@@ -98,13 +100,13 @@ Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Mo
 
    ![Nové pravidlo upozornění na portálu snímků obrazovky 5](media/alerts-action-groups/alerts-3-4.png)
 
-Ověřte, zda je povoleno nové pravidlo upozornění.
+1. Ověřte, zda je povoleno nové pravidlo upozornění.
 
    ![Nové pravidlo upozornění na portálu snímků obrazovky 6](media/alerts-action-groups/alerts-4.png)
 
 Pravidlo je také možné vytvořit pomocí stránky **metriky** :
 
-   ![Nové pravidlo upozornění na portálu snímků obrazovky 7](media/alerts-action-groups/alerts-5.png)
+![Nové pravidlo upozornění na portálu snímků obrazovky 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Další kroky
 

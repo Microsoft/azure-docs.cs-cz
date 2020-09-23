@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: e11d5b14bdf6b134fefea79a1f709ec73499bd20
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0020efea69fc684ff6ebebf286718aa2a720910e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815704"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900802"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce ve verzi Preview pro Azure Stream Analytics
 
@@ -25,10 +25,6 @@ Následující funkce jsou ve verzi Public Preview. Tyto funkce můžete využí
 ### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Ověřování pro SQL Database výstup se spravovanými identitami
 
 Azure Stream Analytics podporuje [spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) pro Azure SQL Database výstupní jímky. Spravované identity odstraňují omezení metod ověřování založených na uživatelích, například nutnost opětovného ověření v důsledku změn hesel. 
-
-### <a name="output-to-azure-synapse-analytics"></a>Výstup do služby Azure synapse Analytics
-
-Úlohy Azure Stream Analytics můžou ve [službě Azure synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) nastavovat výstup do tabulky fondů SQL a můžou zpracovat míry propustnosti až do 200 MB/s. Tato funkce podporuje nejvíce náročné analýzy v reálném čase a zpracování dat za provozu pro úlohy, jako je vytváření sestav a řídicí panel.  
 
 ### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Bodování vysokého výkonu v reálném čase s vlastními modely ML spravovanými nástrojem Azure Machine Learning
 
@@ -52,7 +48,7 @@ Nástroje Visual Studio Tools for Azure Stream Analytics zlepšují funkci míst
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code pro Azure Stream Analytics
 
-Azure Stream Analytics úlohy lze vytvořit v Visual Studio Code. Podívejte se na náš úvodní [kurz vs Code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
+Azure Stream Analytics úlohy lze vytvořit v Visual Studio Code. Podívejte se na náš úvodní [kurz vs Code](https://docs.microsoft.com/azure/stream-analytics/quick-create-visual-studio-code).
 
 ### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Místní testování s dynamickými daty v Visual Studio Code
 

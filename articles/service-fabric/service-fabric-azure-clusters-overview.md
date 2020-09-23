@@ -1,18 +1,18 @@
 ---
 title: Vytváření clusterů na serverech Windows Server a Linux
-description: Clustery Service Fabric běží na Windows serveru a Linux, což znamená, že budete moct nasazovat a hostovat Service Fabric aplikace kdekoli, kde můžete používat Windows Server nebo Linux.
+description: Service Fabric clustery běží na systémech Windows Server a Linux. Můžete nasazovat a hostovat aplikace Service Fabric kdekoli, kde můžete používat Windows Server nebo Linux.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 03b9cce0d8e4666630aa6568597e08d1f13386ff
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c0cc1ddc58347933b498b015c562c3822e8a688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422806"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978700"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
@@ -77,7 +77,7 @@ Service Fabric také podporuje řízení přístupu pro omezení přístupu k ur
 
 Další informace najdete v [Service Fabric Access Control na základě rolí (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
 
-### <a name="network-security-groups"></a>skupiny zabezpečení sítě, 
+### <a name="network-security-groups"></a>Skupiny zabezpečení sítě 
 Skupiny zabezpečení sítě (skupin zabezpečení sítě) řízení příchozího a odchozího provozu podsítě, virtuálního počítače nebo konkrétního síťového adaptéru.  Ve výchozím nastavení platí, že pokud je více virtuálních počítačů umístěno ve stejné virtuální síti, mohou vzájemně komunikovat prostřednictvím libovolného portu.  Pokud chcete omezit komunikaci mezi počítači, můžete definovat skupin zabezpečení sítě k segmentaci sítě nebo izolaci virtuálních počítačů od sebe navzájem.  Pokud máte v clusteru více typů uzlů, můžete použít skupin zabezpečení sítě na podsítě, abyste zabránili vzájemné komunikaci počítačů, které patří různým typům uzlů.  
 
 Další informace najdete v článku o [skupinách zabezpečení](../virtual-network/security-overview.md) .
@@ -100,11 +100,11 @@ Můžete vytvářet clustery na virtuálních počítačích, na kterých běž�
 | --- | --- |
 | Windows Server 2012 R2 | Všechny verze |
 | Windows Server 2016 | Všechny verze |
-| Windows Server 1709 | 6.0 |
+| Windows Server 1709 | 6,0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
+| Linux Ubuntu 16,04 | 6,0 |
 | Linux Ubuntu 18,04 | 7.1 |
 
 Další informace najdete v tématu [podporované verze clusteru v Azure](./service-fabric-versions.md#supported-operating-systems) .

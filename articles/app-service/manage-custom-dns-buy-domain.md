@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958724"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970048"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro Azure App Service
 
@@ -18,7 +18,7 @@ App Service domény jsou domény nejvyšší úrovně, které se spravují pří
 
 Informace o virtuálním počítači nebo Azure Storage Azure najdete v tématu [přiřazení App Service domény k virtuálnímu počítači Azure nebo Azure Storage](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -51,7 +51,7 @@ V levém navigačním panelu na stránce aplikace se posuňte do části **Nasta
 
 Aktuální úroveň aplikace je zvýrazněná modrým ohraničením. Zkontrolujte, že aplikace není na úrovni **F1**. Vlastní DNS se na úrovni **F1** nepodporuje. 
 
-![Kontrola cenové úrovně](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="Snímek obrazovky vlevo v navigační nabídce stránky aplikace s vybraným stupněm navýšení (App Servicem plánem)":::
 
 Pokud App Service plán není ve vrstvě **F1** , zavřete stránku **horizontálního navýšení kapacity** a přejděte k [nákupu domény](#buy-the-domain).
 
@@ -61,7 +61,7 @@ Vyberte některou z placených úrovní (**D1**, **B1**, **B2**, **B3** nebo kte
 
 Klikněte na **Použít**.
 
-![Kontrola cenové úrovně](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Snímek obrazovky s cenovými úrovněmi vlastní domény v produkční kategorii pomocí karty výroba, plán B1 a zvýrazněné tlačítko použít":::
 
 Až se zobrazí následující oznámení, operace škálování je dokončená.
 
@@ -106,7 +106,7 @@ Je důležité vyplnit všechna povinná pole co nejvíc přesností. Nesprávn�
 
 V dalším kroku vyberte požadované možnosti pro vaši doménu. Vysvětlení najdete v následující tabulce:
 
-| Nastavení | Navrhovaná hodnota | Popis |
+| Nastavení | Navrhovaná hodnota | Description |
 |-|-|-|
 |Privacy protection | Povolit | Přihlaste se k ochraně osobních údajů, která je zahrnutá v ceně nákupu _zdarma_. Některé domény nejvyšší úrovně jsou spravovány registrátory, které nepodporují ochranu osobních údajů, a jsou uvedeny na stránce **Ochrana osobních údajů** . |
 | Přiřadit výchozí názvy hostitelů | **www** a **\@** | V případě potřeby vyberte požadované vazby hostitele. Po dokončení operace nákupu domény může být aplikace dostupná na vybraných hostitelských hostitelích. Pokud je aplikace za [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nevidíte možnost přiřadit kořenovou doménu (@), protože Traffic Manager nepodporuje záznamy. Po dokončení nákupu domény můžete provádět změny v přiřazeních hostitelů. |

@@ -323,11 +323,12 @@
           items:
             - name: Předvolby úloh
               href: indexer-task-preset.md
+    - name: Analýza obsahu
+      items:
         - name: Zpracování pomocí Face Redactoru
           href: media-services-face-redaction.md
-          items:
-            - name: Názorný postup práce s Face Redactorem
-              href: media-services-redactor-walkthrough.md
+        - name: Názorný postup práce s Face Redactorem
+          href: media-services-redactor-walkthrough.md
     - name: Konfigurace telemetrie
       href: media-services-telemetry-overview.md
       items:

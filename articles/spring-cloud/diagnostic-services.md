@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086111"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892563"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analýza protokolů a metrik pomocí nastavení diagnostiky
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 Pomocí diagnostických funkcí Azure jarního cloudu můžete analyzovat protokoly a metriky pomocí kterékoli z následujících služeb:
 
@@ -25,11 +27,11 @@ Pomocí diagnostických funkcí Azure jarního cloudu můžete analyzovat protok
 Vyberte kategorii protokolu a kategorii metrik, které chcete monitorovat.
 
 > [!TIP]
-> Chcete jenom zasílat streamování protokolů? Podívejte se na tento [příkaz rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs).
+> Chcete jenom zasílat streamování protokolů? Podívejte se na tento [příkaz rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs).
 
 ## <a name="logs"></a>Protokoly
 
-|Protokol | Popis |
+|Protokol | Description |
 |----|----|
 | **ApplicationConsole** | Protokol konzoly všech zákaznických aplikací. |
 | **SystemLogs** | V současné době se v této kategorii v této kategorii jenom protokoly [jarního cloudového konfiguračního serveru](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) . |
@@ -106,7 +108,7 @@ Existují různé způsoby, jak zobrazit protokoly a metriky, jak je popsáno v 
     | limit 50
     ```
 > [!NOTE]
-> `==`rozlišuje velká a malá písmena, ale není `=~` .
+> `==` rozlišuje velká a malá písmena, ale není `=~` .
 
 Další informace o dotazovacím jazyku, který se používá v Log Analytics, najdete v tématu [Azure monitor protokolování dotazů](../azure-monitor/log-query/query-language.md).
 
@@ -203,3 +205,7 @@ AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
 Můžete použít stejnou strategii pro jiné knihovny protokolů jazyka Java.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md)
