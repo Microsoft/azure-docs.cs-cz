@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961920"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987840"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -60,7 +60,7 @@ Funkce zálohování podporuje následující databázová řešení:
     > [!NOTE]
     > Pokud se zobrazí následující zpráva, kliknutím na ni upgradujte plán App Service, abyste mohli pokračovat v zálohování.
     > Další informace najdete v tématu [horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md).
-    > ![Zvolit účet úložiště](./media/manage-backup/upgrade-plan.png)
+    > :::image type="content" source="./media/manage-backup/upgrade-plan.png" alt-text="Snímek obrazovky s proužkovou zprávou pro upgrade App Service plánu pro přístup k funkci zálohování a obnovení":::
     > 
     > 
 
@@ -70,13 +70,13 @@ Funkce zálohování podporuje následující databázová řešení:
 
 3. Na stránce **Konfigurace zálohování** klikněte na úložiště, které **není nakonfigurované** , aby se nakonfiguroval účet úložiště.
 
-    ![Zvolit účet úložiště](./media/manage-backup/configure-storage.png)
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Snímek obrazovky s oddílem úložiště zálohování s vybraným nastavením úložiště nebylo nakonfigurováno.":::
 
 4. Zvolte cíl zálohování a vyberte **účet úložiště** a **kontejner**. Účet úložiště musí patřit do stejného předplatného jako aplikace, kterou chcete zálohovat. Pokud chcete, můžete na příslušných stránkách vytvořit nový účet úložiště nebo nový kontejner. Až skončíte, klikněte na **Vybrat**.
 
 5. Na stránce **Konfigurace zálohování** , která je stále otevřená, můžete nakonfigurovat **záložní databázi**, pak vybrat databáze, které chcete zahrnout do záloh (SQL Database nebo MySQL), a pak kliknout na **OK**.
 
-    ![Zvolit účet úložiště](./media/manage-backup/configure-database.png)
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Snímek obrazovky oddílu záložní databáze zobrazující zahrnutí do výběru zálohy.":::
 
     > [!NOTE]
     > Aby se databáze zobrazila v tomto seznamu, musí v části **připojovací řetězce** na stránce **nastavení aplikace** pro vaši aplikaci existovat připojovací řetězec. 

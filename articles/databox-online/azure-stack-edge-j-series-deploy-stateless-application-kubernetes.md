@@ -1,6 +1,6 @@
 ---
-title: Nasadit bezstavovou aplikaci Kubernetes na zařízení GPU na Azure Stack hraničních zařízeních pomocí kubectl | Microsoft Docs
-description: Popisuje, jak vytvořit a spravovat Kubernetes Bezstavová nasazení aplikace pomocí kubectl na hraničním zařízení s Microsoft Azure Stack.
+title: Nasazení bezstavové aplikace Kubernetes na zařízení GPU pro Azure Stack Edge pro pomocí kubectl | Microsoft Docs
+description: Popisuje, jak vytvořit a spravovat Kubernetes Bezstavová nasazení aplikace pomocí kubectl na zařízení s Microsoft Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268855"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890729"
 ---
-# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Nasazení bezstavové aplikace Kubernetes přes kubectl na zařízení GPU Azure Stack Edge
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Nasazení bezstavové aplikace Kubernetes přes kubectl na zařízení GPU Azure Stack Edge pro
 
 Tento článek popisuje, jak nasadit bezstavovou aplikaci pomocí příkazů kubectl v existujícím clusteru Kubernetes. Tento článek vás také provede procesem vytvoření a nastavení lusků v bezstavových aplikacích.
 
@@ -23,13 +23,13 @@ Tento článek popisuje, jak nasadit bezstavovou aplikaci pomocí příkazů kub
 
 Než budete moct vytvořit cluster Kubernetes a použít `kubectl` Nástroj příkazového řádku, musíte zajistit, aby:
 
-- Máte přihlašovací údaje pro přihlášení k Azure Stack hraničního zařízení s jedním uzlem.
+- Máte přihlašovací údaje pro přihlášení k zařízení Azure Stack Edge pro s jedním uzlem.
 
-- Prostředí Windows PowerShell 5,0 nebo novější je nainstalováno v klientském systému Windows pro přístup k Azure Stack hraničního zařízení. Můžete mít i jiné klienty s podporovaným operačním systémem. Tento článek popisuje postup při použití klienta systému Windows. Pokud si chcete stáhnout nejnovější verzi Windows PowerShellu, přečtěte si část [instalace Windows PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- Prostředí Windows PowerShell 5,0 nebo novější je nainstalováno v klientském systému Windows pro přístup k zařízení Azure Stack Edge pro. Můžete mít i jiné klienty s podporovaným operačním systémem. Tento článek popisuje postup při použití klienta systému Windows. Pokud si chcete stáhnout nejnovější verzi Windows PowerShellu, přečtěte si část [instalace Windows PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
 
-- Na Azure Stack hraničním zařízení je povolené výpočetní výkon. Pokud chcete povolit výpočetní prostředky, v místním uživatelském rozhraní zařízení se dostanete na stránku **COMPUTE** . Pak vyberte síťové rozhraní, které chcete povolit pro výpočetní prostředky. Vyberte **Povolit**. Povolení výpočetních výsledků při vytváření virtuálního přepínače na zařízení v tomto síťovém rozhraní. Další informace najdete v tématu [Povolení služby COMPUTE Network na Azure Stack hraničních](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)zařízeních.
+- Na zařízení Azure Stack Edge pro je povolené výpočetní prostředky. Pokud chcete povolit výpočetní prostředky, v místním uživatelském rozhraní zařízení se dostanete na stránku **COMPUTE** . Pak vyberte síťové rozhraní, které chcete povolit pro výpočetní prostředky. Vyberte **Povolit**. Povolení výpočetních výsledků při vytváření virtuálního přepínače na zařízení v tomto síťovém rozhraní. Další informace najdete v tématu [Povolení služby COMPUTE Network na Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 
-- Vaše zařízení Azure Stack Edge má clusterový server Kubernetes se systémem, který je verze v 1.9 nebo novější verzi. Další informace najdete v tématu [Vytvoření a Správa clusteru Kubernetes na zařízení Microsoft Azure Stack Edge](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- Vaše zařízení Azure Stack Edge pro má spuštěný clusterový server s Kubernetes verze v 1.9 nebo novějším. Další informace najdete v tématu [Vytvoření a Správa clusteru Kubernetes na zařízení Microsoft Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 - Máte nainstalovanou `kubectl` .
 
@@ -43,7 +43,7 @@ Než začnete, měli byste mít:
 4. Do se uložila konfigurace uživatele `C:\Users\<username>\.kube` .
 5. Nainstalováno `kubectl` .
 
-Teď můžete začít spouštět a spravovat Bezstavová nasazení aplikací na Azure Stack hraničních zařízeních. Než začnete používat `kubectl` , musíte ověřit, jestli máte správnou verzi `kubectl` .
+Teď můžete začít spouštět a spravovat Bezstavová nasazení aplikací na zařízeních Azure Stack Edge pro. Než začnete používat `kubectl` , musíte ověřit, jestli máte správnou verzi `kubectl` .
 
 ### <a name="verify-you-have-the-correct-version-of-kubectl-and-set-up-configuration"></a>Ověřte, že máte správnou verzi kubectl a nastavte konfiguraci.
 
@@ -109,7 +109,7 @@ Pod je základní jednotkou spuštění aplikace Kubernetes, nejmenší a nejjed
 
 Typ bezstavové aplikace, kterou vytvoříte, je nasazení webového serveru Nginx.
 
-Všechny příkazy kubectl, které slouží k vytváření a správě bezstavových nasazení aplikací, musí určovat obor názvů přidružený ke konfiguraci. Obor názvů jste vytvořili při připojení ke clusteru na Azure Stack hraničním zařízení v kurzu [Vytvoření a Správa clusteru Kubernetes v Microsoft Azure Stack hraničního zařízení](azure-stack-edge-gpu-create-kubernetes-cluster.md) pomocí `New-HcsKubernetesNamespace` .
+Všechny příkazy kubectl, které slouží k vytváření a správě bezstavových nasazení aplikací, musí určovat obor názvů přidružený ke konfiguraci. Obor názvů jste vytvořili při připojení ke clusteru na zařízení Azure Stack Edge pro v kurzu [Vytvoření a Správa clusteru Kubernetes v zařízení se službou Microsoft Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md) `New-HcsKubernetesNamespace` .
 
 Chcete-li zadat obor názvů v příkazu kubectl, použijte `kubectl <command> -n <namespace-string>` .
 

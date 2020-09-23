@@ -1,6 +1,6 @@
 ---
-title: Vrácení zařízení Azure Stack Edge | Microsoft Docs
-description: Přečtěte si, jak vymazat data a vrátit Azure Stack hraniční zařízení a odstranit prostředek přidružený k zařízení.
+title: Vrácení zařízení Azure Stack Edge pro | Microsoft Docs
+description: Naučte se, jak vymazat data a vrátit zařízení Azure Stack Edge pro a odstranit prostředek přidružený k zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923947"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903664"
 ---
-# <a name="return-your-azure-stack-edge-device"></a>Vrácení zařízení Azure Stack Edge
+# <a name="return-your-azure-stack-edge-pro-device"></a>Vrácení zařízení Azure Stack Edge pro
 
-Tento článek popisuje, jak vymazat data a vrátit zařízení Azure Stack Edge. Po vrácení zařízení můžete také odstranit prostředek přidružený k zařízení.
+Tento článek popisuje, jak vymazat data a vrátit zařízení Azure Stack Edge pro. Po vrácení zařízení můžete také odstranit prostředek přidružený k zařízení.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
 > * Vymazání dat z datových disků v zařízení
-> * Iniciace návratového zařízení v Azure Portal
+> * Zahájení vrácení zařízení na webu Azure Portal
 > * Sbalení zařízení a naplánování výdeje
 > * Odstranit prostředek v Azure Portal
 
-## <a name="erase-data-from-the-device"></a>Vymaže data ze zařízení.
+## <a name="erase-data-from-the-device"></a>Vymazání dat ze zařízení
 
 Pokud chcete vymazat data z datových disků vašeho zařízení, musíte zařízení resetovat. Zařízení můžete obnovit pomocí místního webového uživatelského rozhraní nebo rozhraní PowerShell.
 
@@ -59,7 +59,7 @@ Případně se připojte k rozhraní PowerShell zařízení a pomocí `Reset-Hcs
 
 Chcete-li zahájit proces návratu, proveďte následující kroky.
 
-1. V Azure Portal přejít na Azure Stack hraniční/Data Box Gateway prostředek. V **přehledu**přejděte na panel příkazů v pravém podokně a vyberte **návratové zařízení**. 
+1. V Azure Portal přejít na prostředek Azure Stack Edge pro/Data Box Gateway. V **přehledu**přejděte na panel příkazů v pravém podokně a vyberte **návratové zařízení**. 
 
     ![Vrátit zařízení 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -90,11 +90,11 @@ Chcete-li zahájit proces návratu, proveďte následující kroky.
 
     ![Návratový zařízení 4](media/azure-stack-edge-return-device/return-device-4.png) 
 
-6. Po zaznamenání podrobností o tom, že se vaše zařízení bude shromažďovat, můžete Azure Stack hraničnímu týmu informovat prostřednictvím e-mailu. E-mailová aplikace se dá použít za předpokladu, že je nainstalovaná a nakonfigurovaná aplikace. Můžete také zkopírovat data pro vytvoření a odeslání e-mailu.
+6. Po zaznamenání podrobností o tom, že se vaše zařízení bude shromažďovat, můžete e-mailovým týmem Azure Stack hraničního týmu informovat. E-mailová aplikace se dá použít za předpokladu, že je nainstalovaná a nakonfigurovaná aplikace. Můžete také zkopírovat data pro vytvoření a odeslání e-mailu.
 
     ![Vrátit zařízení 5](media/azure-stack-edge-return-device/return-device-5.png) 
 
-7. Jakmile tým Azure Stack hraničních operací obdrží e-mail, pošle vám popisek zpětné dodávky. Když obdržíte tento popisek, můžete naplánovat vyzvednutí zařízení u přepravce. 
+7. Po přijetí e-mailu Azure Stack hraniční tým pro objednání vám pošle popisek zpětné dodávky. Když obdržíte tento popisek, můžete naplánovat vyzvednutí zařízení u přepravce. 
 
 ## <a name="schedule-a-pickup"></a>Naplánování výdeje
 
@@ -111,20 +111,20 @@ Chcete-li naplánovat vyzvednutí, proveďte následující kroky.
     2. Ve svém volání citujete číslo sledování zpětné dodávky, jak je znázorněno na vytištěném popisku.
     3. Pokud číslo sledování není v uvozovkách, bude zdroj napájení vyžadovat, abyste během vyzvednutí zaplatili dodatečné poplatky.
 
-    Místo plánování vyzvednutí můžete také Azure Stack okraj vyřadit z nejbližšího rozevíracího umístění.
+    Místo plánování vyzvednutí můžete také vyřadit Azure Stack Edge pro do nejbližšího umístění.
 
 ## <a name="delete-the-resource"></a>Odstranit prostředek
 
 Po přijetí zařízení v datovém centru Azure se v zařízení zkontroluje poškození nebo jakékoli případné známky manipulace.
 
-- Pokud zařízení dorazí na nedotčené a je v dobrém tvaru, měřič účtování se zastaví pro daný prostředek. Tým Azure Stack hraničních operací vás bude kontaktovat, abyste ověřili, že se zařízení vrátilo. Pak můžete odstranit prostředek přidružený k zařízení v Azure Portal.
+- Pokud zařízení dorazí na nedotčené a je v dobrém tvaru, měřič účtování se zastaví pro daný prostředek. Azure Stack tým pro provoz Edge pro vás bude kontaktovat, abyste ověřili, že se zařízení vrátilo. Pak můžete odstranit prostředek přidružený k zařízení v Azure Portal.
 - Pokud zařízení dorazí k výraznému poškození, mohou se vztahovat pokuty. Podrobnosti najdete v [nejčastějších dotazech o ztracených nebo poškozených](https://azure.microsoft.com/pricing/details/databox/edge/) [licenčních službách](https://www.microsoft.com/licensing/product-licensing/products)zařízení a produktu.  
 
 
 Zařízení můžete v Azure Portal odstranit:
 
 - Po umístění objednávky a před tím, než je zařízení připraveno společností Microsoft.
-- Po tom, co zařízení vrátíte do Microsoftu, projde fyzickou kontrolu v datacentru Azure a zavolá Azure Stack hraničního týmu, aby se ověřilo, že se zařízení vrátilo.
+- Po tom, co zařízení vrátíte do Microsoftu, projde fyzickou kontrolu v datacentru Azure a zavolá Azure Stack tým pro provoz Edge pro s potvrzením, že se zařízení vrátilo.
 
 Pokud jste zařízení aktivovali v jiném předplatném nebo umístění, Microsoft přesune vaši objednávku na nové předplatné nebo umístění během jednoho pracovního dne. Po přesunutí objednávky můžete tento prostředek odstranit.
 
@@ -144,4 +144,4 @@ Po úspěšném odstranění zařízení a přidruženého prostředku budete up
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak [získat náhradní Azure Stack hraniční zařízení](azure-stack-edge-replace-device.md).
+- Přečtěte si, jak [získat náhradní zařízení Azure Stack Edge pro](azure-stack-edge-replace-device.md).

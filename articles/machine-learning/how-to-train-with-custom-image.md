@@ -10,21 +10,20 @@ author: saachigopal
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2289a761d4e266c305c2868e9f234871624ae528
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893120"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Výuka modelu pomocí vlastní image Docker
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak používat vlastní image Docker při výuce modelů pomocí Azure Machine Learning. 
 
 Ukázkové skripty v tomto článku se používají ke klasifikaci PET imagí vytvořením sítě konvoluční neuronové. 
 
-I když Azure Machine Learning poskytuje výchozí základní image Docker, můžete k určení konkrétní základní image použít taky Azure Machine Learning prostředí, jako je například jedna ze sady udržovaných [základních imagí Azure ml](https://github.com/Azure/AzureML-Containers) nebo vlastní [Image](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image). Vlastní základní image umožňují pečlivě spravovat závislosti a při provádění školicích úloh udržovat užší kontrolu nad verzemi komponent. 
+I když Azure Machine Learning poskytuje výchozí základní image Docker, můžete k určení konkrétní základní image použít taky Azure Machine Learning prostředí, jako je například jedna ze sady udržovaných [základních imagí Azure ml](https://github.com/Azure/AzureML-Containers) nebo vlastní [Image](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Vlastní základní image umožňují pečlivě spravovat závislosti a při provádění školicích úloh udržovat užší kontrolu nad verzemi komponent. 
 
 ## <a name="prerequisites"></a>Požadavky 
 Spusťte tento kód v jednom z těchto prostředí:
@@ -101,11 +100,11 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
 
 ### <a name="create-or-attach-existing-amlcompute"></a>Vytvořit nebo připojit existující AmlCompute
-Budete muset vytvořit [výpočetní cíl](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#compute-target) pro školení modelu. V tomto kurzu vytvoříte AmlCompute jako výpočetní prostředek pro školení.
+Budete muset vytvořit [výpočetní cíl](concept-azure-machine-learning-architecture.md#compute-targets) pro školení modelu. V tomto kurzu vytvoříte AmlCompute jako výpočetní prostředek pro školení.
 
 Vytváření AmlCompute trvá přibližně 5 minut. Pokud AmlCompute s tímto názvem už ve vašem pracovním prostoru je, tento kód přeskočí proces vytváření.
 
-Stejně jako u ostatních služeb Azure platí omezení určitých prostředků (např. AmlCompute) přidružených ke službě Azure Machine Learning. Přečtěte si prosím [Tento článek](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas) o výchozích omezeních a o tom, jak požádat o větší kvótu. 
+Stejně jako u ostatních služeb Azure platí omezení určitých prostředků (např. AmlCompute) přidružených ke službě Azure Machine Learning. Přečtěte si prosím [Tento článek](how-to-manage-quotas.md) o výchozích omezeních a o tom, jak požádat o větší kvótu. 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -132,7 +131,7 @@ print(compute_target.get_status().serialize())
 ```
 
 ### <a name="create-a-scriptrunconfig"></a>Vytvoření ScriptRunConfig
-Tento ScriptRunConfig nakonfiguruje vaši úlohu na provedení na požadovaném [cíli výpočtů](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets#compute-targets-for-training).
+Tento ScriptRunConfig nakonfiguruje vaši úlohu na provedení na požadovaném [cíli výpočtů](how-to-set-up-training-targets.md).
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -160,4 +159,4 @@ Další informace o přizpůsobení prostředí Pythonu najdete v tématu věnov
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste proškolei model s použitím vlastní image Docker. Další informace o Azure Machine Learning najdete v těchto článcích.
 * [Sledovat metriky spuštění](how-to-track-experiments.md) během školení
-* [Nasazení modelu](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image) pomocí vlastní image Docker.
+* [Nasazení modelu](how-to-deploy-custom-docker-image.md) pomocí vlastní image Docker.

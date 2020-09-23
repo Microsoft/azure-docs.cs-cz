@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 0783675450bb6ddf2de7d012a6870f5e4c90408d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393663"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981314"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
@@ -228,7 +228,7 @@ Po zobrazení dlaždic monitorování se vaše okruhy ExpressRoute a prostředky
 
 Stránka NPM obsahuje stránku pro ExpressRoute, která zobrazuje přehled stavu ExpressRoute okruhů a partnerských vztahů.
 
-![Řídicí panel](./media/how-to-npm/dashboard.png)
+![Snímek obrazovky zobrazující řídicí panel s přehledem stavu okruhů ExpressRoute a partnerských vztahů.](./media/how-to-npm/dashboard.png)
 
 ### <a name="list-of-circuits"></a><a name="circuits"></a>Seznam okruhů
 

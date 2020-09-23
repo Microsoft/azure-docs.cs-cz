@@ -1,6 +1,6 @@
 ---
-title: Kurz, ve kterém můžete filtrovat, analyzovat data pro pokročilé nasazení s výpočetními prostředky na Azure Stack Edge | Microsoft Docs
-description: Naučte se konfigurovat výpočetní roli na Azure Stack Edge a použít ji k transformaci dat pro pokročilý tok nasazení před odesláním do Azure.
+title: Kurz, ve kterém můžete filtrovat, analyzovat data pro pokročilé nasazení s výpočetními prostředky na Azure Stack Edge pro | Microsoft Docs
+description: Naučte se konfigurovat výpočetní roli na Azure Stack Edge pro a použít ji k transformaci dat pro pokročilý tok nasazení před odesláním do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86080374"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903696"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Kurz: transformace dat pomocí Azure Stack Edge pro pokročilý tok nasazení
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Kurz: transformace dat pomocí Azure Stack Edge pro pro pokročilý tok nasazení
 
-V tomto kurzu se dozvíte, jak nakonfigurovat výpočetní roli pro pokročilý tok nasazení na zařízení Azure Stack Edge. Po nakonfigurování výpočetní role může Azure Stack Edge transformovat data před jejich odesláním do Azure.
+V tomto kurzu se dozvíte, jak nakonfigurovat výpočetní roli pro pokročilý tok nasazení na zařízení Azure Stack Edge pro. Po nakonfigurování výpočetní role může Azure Stack Edge pro transformovat data před jejich odesláním do Azure.
 
 Výpočetní prostředí je možné nakonfigurovat pro jednoduchý nebo pokročilý tok nasazení na zařízení.
 
@@ -26,7 +26,7 @@ Výpočetní prostředí je možné nakonfigurovat pro jednoduchý nebo pokroči
 |------------------|--------------------------------------------------|---------------------------------------|
 | Určeno pro     | Správci IT                                | Vývojáři                            |
 | Typ             | Použití služby Azure Stack Edge k nasazení modulů      | Použití služby IoT Hub k nasazení modulů |
-| Nasazené moduly | Jeden                                           | Zřetězené nebo vícenásobné moduly           |
+| Nasazené moduly | Jednoduché                                           | Zřetězené nebo vícenásobné moduly           |
 
 
 Dokončení této procedury může trvat přibližně 20 až 30 minut.
@@ -41,16 +41,16 @@ V tomto kurzu se naučíte:
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Před nastavením výpočetní role na zařízení Azure Stack Edge se ujistěte, že:
+Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujistěte, že:
 
-- Aktivovali jste Azure Stack hraniční zařízení, jak je popsáno v tématu [připojení, nastavení a aktivace Azure Stack Edge](azure-stack-edge-deploy-connect-setup-activate.md).
+- Aktivovali jste zařízení Azure Stack Edge pro, jak je popsáno v tématu [připojení, nastavení a aktivace Azure Stack Edge pro](azure-stack-edge-deploy-connect-setup-activate.md).
 
 
 ## <a name="configure-compute"></a>Konfigurace COMPUTE
 
-Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zařízeních, vytvoříte prostředek IoT Hub.
+Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoříte prostředek IoT Hub.
 
 1. V Azure Portal prostředku Azure Stack Edge si Projděte **Přehled**. V pravém podokně na dlaždici **výpočty** **vyberte Začínáme**.
 
@@ -65,7 +65,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zař
    
     |Pole  |Hodnota  |
     |---------|---------|
-    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytvoření prostředku IoT používá standardní vrstva (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
+    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
     |Name     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
@@ -133,7 +133,7 @@ V rámci pokročilého nasazení v tomto kurzu budete potřebovat dvě sdílené
     |Pole  |Hodnota  |
     |---------|---------|
     |Název aktivační události     | Jedinečný název aktivační události.         |
-    |Typ aktivační události     | Vyberte Trigger **souboru** . Aktivační událost se aktivuje vždy, když dojde k události souboru, jako je například soubor, který je zapsán do vstupní sdílené složky. Naplánovaná aktivační událost je na druhé straně aktivovaná na základě vámi definovaného plánu. V tomto příkladu potřebujeme Trigger souboru.    |
+    |Typ aktivační události     | Vyberte Trigger **souboru** . Triggery souborů se aktivují vždy, když dojde k události souboru, jako je zápis souboru do vstupní sdílené složky. Naplánovaná aktivační událost je na druhé straně aktivovaná na základě vámi definovaného plánu. V tomto příkladu potřebujeme Trigger souboru.    |
     |Vstupní sdílená složka     | Vyberte vstupní sdílenou složku. V tomto případě je v tomto případě vstupní sdílená složka Edge v místním prostředí. Pomocí tohoto modulu se přesunuly soubory z místní sdílené složky Edge do hraniční sdílené složky, kam se nahrají do cloudu.        |
 
     ![Přidání triggeru](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
@@ -150,9 +150,9 @@ V rámci pokročilého nasazení v tomto kurzu budete potřebovat dvě sdílené
 
 ## <a name="add-a-module"></a>Přidat modul
 
-Na tomto hraničním zařízení nejsou žádné vlastní moduly. Můžete přidat vlastní nebo předem sestavený modul. Další informace o tom, jak vytvořit vlastní modul, najdete v tématu [vývoj modulu C# pro zařízení Azure Stack Edge](azure-stack-edge-create-iot-edge-module.md).
+Na tomto hraničním zařízení nejsou žádné vlastní moduly. Můžete přidat vlastní nebo předem sestavený modul. Další informace o tom, jak vytvořit vlastní modul, najdete v tématu [vývoj modulu C# pro zařízení Azure Stack Edge pro](azure-stack-edge-create-iot-edge-module.md).
 
-V této části přidáte vlastní modul do zařízení IoT Edge, které jste vytvořili v tématu [vývoj modulu C# pro Azure Stack Edge](azure-stack-edge-create-iot-edge-module.md). Tento vlastní modul přebírá soubory z hraniční místní sdílené složky na hraničním zařízení a přesouvá je do hraniční sdílené složky (Cloud) na zařízení. Sdílená složka cloudu pak tyto soubory vloží do účtu služby Azure Storage, který je přidružený ke sdílené složce cloudu.
+V této části přidáte vlastní modul do zařízení IoT Edge, které jste vytvořili v tématu [vývoj modulu C# pro vaši Azure Stack Edge pro](azure-stack-edge-create-iot-edge-module.md). Tento vlastní modul přebírá soubory z hraniční místní sdílené složky na hraničním zařízení a přesouvá je do hraniční sdílené složky (Cloud) na zařízení. Sdílená složka cloudu pak tyto soubory vloží do účtu služby Azure Storage, který je přidružený ke sdílené složce cloudu.
 
 1. Začněte tím, že přejdete na **Edge compute >**. Na dlaždici **přidat moduly** vyberte typ scénáře **Upřesnit**. Vyberte **Přejít na IoT Hub**.
 
@@ -175,7 +175,7 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
 4. V části **přidat moduly**udělejte toto:
 
     1. Zadejte jméno, adresu, uživatelské jméno a heslo pro nastavení registru kontejneru pro vlastní modul.
-    Název, adresa a uvedené přihlašovací údaje se používají k načtení modulů s porovnávací adresou URL. Pokud chcete tento modul nasadit, v části **Moduly nasazení** vyberte **Modul IoT Edge**. Tento modul IoT Edge je kontejner Docker, který můžete nasadit do IoT Edge zařízení, které je přidružené k vašemu Azure Stack hraničnímu zařízení.
+    Název, adresa a uvedené přihlašovací údaje se používají k načtení modulů s porovnávací adresou URL. Pokud chcete tento modul nasadit, v části **Moduly nasazení** vyberte **Modul IoT Edge**. Tento modul IoT Edge je kontejner Docker, který můžete nasadit do IoT Edge zařízení, které je přidružené k vašemu zařízení Azure Stack Edge pro.
 
         ![Stránka set modules](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -183,7 +183,7 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
      
         |Pole  |Hodnota  |
         |---------|---------|
-        |Název     | Jedinečný název modulu. Tento modul je kontejner Docker, který můžete nasadit do zařízení IoT Edge přidruženého k vašemu Azure Stack Edge.        |
+        |Název     | Jedinečný název modulu. Tento modul je kontejner Docker, který můžete nasadit do zařízení IoT Edge přidruženého k vašemu Azure Stack Edge pro.        |
         |Identifikátor URI image     | Identifikátor URI image pro odpovídající image kontejneru pro modul        |
         |Požadovány přihlašovací údaje     | Pokud je zaškrtnuto, uživatelské jméno a heslo slouží k načtení modulů s porovnávací adresou URL.        |
     
@@ -270,7 +270,7 @@ V tomto kurzu jste se naučili:
 > * Přidání výpočetního modulu
 > * Ověření transformace dat a jejich přenos
 
-Informace o tom, jak spravovat Azure Stack hraniční zařízení, najdete v těchto tématech:
+Informace o tom, jak spravovat zařízení Azure Stack Edge pro, najdete tady:
 
 > [!div class="nextstepaction"]
-> [Použití místního webového uživatelského rozhraní pro správu Azure Stackho Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [Použití místního webového uživatelského rozhraní pro správu Azure Stack Edge pro](azure-stack-edge-manage-access-power-connectivity-mode.md)
