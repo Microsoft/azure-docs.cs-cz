@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962634"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981120"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Vynucení protokolu TLS 1.1/1.2
 > * Automatizace správy protokolu TLS pomocí skriptů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup při použití tohoto průvodce:
 
@@ -108,7 +108,7 @@ K dispozici jsou dvě změny, které byste si měli udělat, možná:
 
 V různých prohlížečích vyhledejte a `https://<your.custom.domain>` Ověřte, jestli funguje v aplikaci.
 
-![Přechod do aplikace Azure na portálu](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Snímek obrazovky, který ukazuje příklad procházení k vlastní doméně s zvýrazněnou adresou URL contoso.com.":::
 
 Kód aplikace může zkontrolovat protokol přes hlavičku "x-AppService-proto". Záhlaví bude mít hodnotu `http` nebo `https` . 
 

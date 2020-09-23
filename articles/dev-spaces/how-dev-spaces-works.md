@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Popisuje procesy, které Azure Dev Spaces napájení
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212533"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981271"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Jak Azure Dev Spaces funguje
 
@@ -22,9 +22,9 @@ Azure Dev Spaces poskytuje více způsobů, jak rychle iterovat a ladit aplikace
 
 Azure Dev Spaces snižuje úsilí při vývoji, testování a iteraci aplikace Kubernetes v kontextu clusteru AKS. Toto snížení úsilí umožňuje vývojářům soustředit se na obchodní logiku svých aplikací a nekonfigurují své služby tak, aby běžely v Kubernetes.
 
-### <a name="local-process-with-kubernetes"></a>Místní proces s Kubernetes
+### <a name="bridge-to-kubernetes"></a>Přemostění na Kubernetes
 
-Pomocí místního procesu s Kubernetes můžete připojit svůj vývojový počítač k vašemu clusteru Kubernetes, což vám umožní spouštět a ladit kód ve vývojovém počítači, jako kdyby byl spuštěný v clusteru. Azure Dev Spaces přesměruje provoz mezi připojeným clusterem tak, že v clusteru spustíte pod, který funguje jako vzdálený Agent pro přesměrování provozu mezi vývojovým počítačem a clusterem. Toto přesměrování provozu umožňuje kódu na vašem vývojovém počítači a službách spuštěných ve vašem clusteru komunikovat, jako kdyby byly ve stejném clusteru. Další informace o připojení vývojového počítače ke clusteru Kubernetes najdete v tématu [Jak funguje místní proces s Kubernetes][how-it-works-local-process-kubernetes].
+S mostem na Kubernetes můžete připojit svůj vývojový počítač k vašemu clusteru Kubernetes, což vám umožní spouštět a ladit kód ve vývojovém počítači, jako kdyby byl spuštěný v clusteru. Most do Kubernetes přesměruje provoz mezi připojeným clusterem tak, že v clusteru spustíte pod, který funguje jako vzdálený Agent pro přesměrování provozu mezi vývojovým počítačem a clusterem. Toto přesměrování provozu umožňuje kódu na vašem vývojovém počítači a službách spuštěných ve vašem clusteru komunikovat, jako kdyby byly ve stejném clusteru. Další informace o připojení vývojového počítače ke clusteru Kubernetes najdete v článku [How to Bridge to Kubernetes][how-it-works-bridge-to-kubernetes].
 
 ### <a name="run-your-code-in-aks"></a>Spuštění kódu v AKS
 
@@ -47,8 +47,8 @@ Můžete také použít akce GitHubu s Azure Dev Spaces k otestování změn apl
 Pokud chcete začít s připojením místního vývojového počítače ke clusteru AKS, přečtěte si téma [připojení vývojového počítače ke clusteru AKS][connect].
 
 
-[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[connect]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

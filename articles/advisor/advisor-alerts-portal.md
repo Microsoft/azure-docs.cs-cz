@@ -3,12 +3,12 @@ title: Vytváření výstrah Azure Advisor pro nová doporučení pomocí Azure 
 description: Vytvořit upozornění Azure Advisor pro nové doporučení
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507212"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973649"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Vytváření Azure Advisor upozornění na nová doporučení pomocí Azure Portal 
 
@@ -63,8 +63,7 @@ Další informace o skupinách akcí naleznete v tématu [Create and Manage Acti
 
 8. V části Podrobnosti výstrahy zadejte název a krátký popis výstrahy. Pokud chcete, aby byla výstraha povolená, nechte možnost **Povolit pravidlo při vytváření** výběru nastavenou na **Ano**. Pak vyberte skupinu prostředků, do které chcete upozornění Uložit. Tato akce nemá vliv na obor cíle doporučení. 
 
-    ![Azure Advisor banner](./media/advisor-alerts/create8.png)
-
+    :::image type="content" source="./media/advisor-alerts/create8.png" alt-text="Snímek obrazovky oddílu podrobností výstrahy":::
 
 
 ## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Konfigurace výstrah doporučení pro použití Webhooku
@@ -188,11 +187,11 @@ Z Azure Advisor můžete výstrahy pro doporučení upravit, odstranit nebo zak�
 
 1. Na **portálu**vyberte **Azure Advisor**.
 
-    ![Azure Advisor banner](./media/advisor-alerts/create1.png)
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Snímek obrazovky Azure Portal nabídky zobrazující Azure Advisor vybrané.":::
 
 2. V části **monitorování** v levé nabídce vyberte **výstrahy**.
 
-    ![Azure Advisor banner](./media/advisor-alerts/create2.png)
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Snímek obrazovky nabídky Azure Portal s vybranými výstrahami":::
 
 3. Chcete-li upravit výstrahu, kliknutím na název výstrahy otevřete výstrahu a upravte pole, která chcete upravit.
 

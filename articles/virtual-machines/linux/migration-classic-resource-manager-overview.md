@@ -1,6 +1,6 @@
 ---
 title: Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager
-description: Tento článek vás provede migrací prostředků, které jsou podporované platformou, z klasických na Azure Resource Manager
+description: Projděte si migraci prostředků z modelu Classic na Azure Resource Manager, která je podporována platformou.
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines-linux
@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: cbcd949f417513d941a54bbeafa57a1df689de99
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3a9f406692557e996b01711a4b9a8dc98f070a4c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507157"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973368"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager v systému Linux
 

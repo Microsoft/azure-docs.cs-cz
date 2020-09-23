@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 46234f3b4bfd467db9b5754b5590603ff3d42915
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069574"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974544"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
 [Rozšíření Azure Diagnostics](diagnostics-extension-overview.md) je agent v Azure monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek poskytuje podrobné informace o instalaci a konfiguraci rozšíření diagnostiky systému Windows a popis způsobu, jakým jsou data uložena v a Azure Storage účtu.
@@ -51,7 +51,7 @@ Diagnostické rozšíření můžete nainstalovat a nakonfigurovat na samostatn�
 
 6. Na kartě **protokoly** vyberte protokoly, které se mají shromažďovat z virtuálního počítače. Protokoly je možné odesílat do úložiště nebo do Center událostí, ale ne do Azure Monitor. Pomocí [agenta Log Analytics](log-analytics-agent.md) můžete shromažďovat protokoly hostů Azure monitor.
 
-   ![Protokoly](media/diagnostics-extension-windows-install/logs.png)
+   ![Snímek obrazovky zobrazuje kartu protokoly s různými protokoly vybranými pro virtuální počítač.](media/diagnostics-extension-windows-install/logs.png)
 
 7. Na kartě **výpisy stavu systému** určete všechny procesy, které budou shromažďovat výpisy paměti po havárii. Data budou zapsána do účtu úložiště pro nastavení diagnostiky a volitelně můžete zadat kontejner objektů BLOB.
 
@@ -59,7 +59,7 @@ Diagnostické rozšíření můžete nainstalovat a nakonfigurovat na samostatn�
 
 8. Na kartě **jímky** určete, jestli se mají posílat data do jiných umístění než do Azure Storage. Pokud vyberete **Azure monitor**, budou se odesílat údaje o výkonu hostů do Azure monitor metrik. Jímka centra událostí se nedá nakonfigurovat pomocí Azure Portal.
 
-   ![Jímky](media/diagnostics-extension-windows-install/sinks.png)
+   ![Snímek obrazovky zobrazuje kartu jímky s povolenou možností odeslat diagnostická data do Azure Monitor.](media/diagnostics-extension-windows-install/sinks.png)
    
    Pokud jste nepovolili identitu přiřazenou systémem, která je nakonfigurovaná pro váš virtuální počítač, může se při ukládání konfigurace s Azure Monitorou jímkou zobrazit následující upozornění. Kliknutím na banner povolte identitu přiřazenou systému.
    
@@ -67,7 +67,7 @@ Diagnostické rozšíření můžete nainstalovat a nakonfigurovat na samostatn�
 
 9. V **agentovi**můžete změnit účet úložiště, nastavit diskovou kvótu a určit, jestli se mají shromažďovat protokoly diagnostické infrastruktury.  
 
-   ![Agent](media/diagnostics-extension-windows-install/agent.png)
+   ![Snímek obrazovky s možností nastavení účtu úložiště zobrazuje kartu Agent.](media/diagnostics-extension-windows-install/agent.png)
 
 10. Kliknutím na **Uložit** uložte konfiguraci. 
 
@@ -192,7 +192,7 @@ Další informace najdete [v tématu použití PowerShellu k povolení Azure Dia
 V následující tabulce jsou uvedeny různé typy dat shromážděných z rozšíření pro diagnostiku a zda jsou uloženy jako tabulka nebo objekt BLOB. Data uložená v tabulkách je také možné ukládat do objektů BLOB v závislosti na [Nastavení StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) ve vaší veřejné konfiguraci.
 
 
-| Data | Typ úložiště | Popis |
+| Data | Typ úložiště | Description |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabulka | Diagnostické monitorování a změny konfigurace. |
 | WADDirectoriesTable | Tabulka | Adresáře, které monitoruje monitorování diagnostiky.  Patří sem protokoly IIS, protokoly neúspěšných požadavků služby IIS a vlastní adresáře.  Umístění souboru protokolu objektu BLOB je zadáno v poli kontejneru a název objektu BLOB je uveden v poli RelativePath.  Pole AbsolutePath označuje umístění a název souboru, který se nachází na virtuálním počítači Azure. |

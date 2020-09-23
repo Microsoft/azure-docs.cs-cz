@@ -1,6 +1,6 @@
 ---
 title: Parametry prostředků Azure Monitorch sešitů
-description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů
+description: Naučte se používat parametry prostředků k povolení vybírání prostředků v sešitech. Pomocí parametrů prostředků nastavte obor, ze kterého se mají data získat.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a4d4e095e065e9f505ba1b9b46f0d31fb1783eb2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504987"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972859"
 ---
 # <a name="workbook-resource-parameters"></a>Parametry prostředku sešitu
 
@@ -27,12 +27,12 @@ Hodnoty z výběrů prostředků můžou pocházet z kontextu sešitu, statické
 2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
 3. Klikněte na modré tlačítko _Přidat parametr_ .
 4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru:`Applications`
-    2. Typ parametru:`Resource picker`
-    3. Požadovanou`checked`
-    4. Povolí vícenásobné výběry:`checked`
-5. Získat data z:`Workbook Resources`
-6. Zahrnout pouze typy prostředků:`Application Insights`
+    1. Název parametru: `Applications`
+    2. Typ parametru: `Resource picker`
+    3. Požadovanou `checked`
+    4. Povolí vícenásobné výběry: `checked`
+5. Získat data z: `Workbook Resources`
+6. Zahrnout pouze typy prostředků: `Application Insights`
 7. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
 
 ![Obrázek znázorňující vytvoření parametru prostředku pomocí prostředků sešitu](./media/workbooks-resources/resource-create.png)
@@ -42,13 +42,13 @@ Hodnoty z výběrů prostředků můžou pocházet z kontextu sešitu, statické
 2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
 3. Klikněte na modré tlačítko _Přidat parametr_ .
 4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru:`Applications`
-    2. Typ parametru:`Resource picker`
-    3. Požadovanou`checked`
-    4. Povolí vícenásobné výběry:`checked`
-5. Získat data z:`Query`
-    1. Typ dotazu:`Azure Resource Graph`
-    2. Odběru`Use default subscriptions`
+    1. Název parametru: `Applications`
+    2. Typ parametru: `Resource picker`
+    3. Požadovanou `checked`
+    4. Povolí vícenásobné výběry: `checked`
+5. Získat data z: `Query`
+    1. Typ dotazu: `Azure Resource Graph`
+    2. Odběru `Use default subscriptions`
     3. V ovládacím prvku dotaz přidejte tento fragment kódu.
     ```kusto
     where type == 'microsoft.insights/components'
@@ -68,11 +68,11 @@ Hodnoty z výběrů prostředků můžou pocházet z kontextu sešitu, statické
 2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
 3. Klikněte na modré tlačítko _Přidat parametr_ .
 4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru:`Applications`
-    2. Typ parametru:`Resource picker`
-    3. Požadovanou`checked`
-    4. Povolí vícenásobné výběry:`checked`
-5. Získat data z:`JSON`
+    1. Název parametru: `Applications`
+    2. Typ parametru: `Resource picker`
+    3. Požadovanou `checked`
+    4. Povolí vícenásobné výběry: `checked`
+5. Získat data z: `JSON`
     1. V ovládacím prvku Content přidejte tento fragment kódu JSON.
     ```json
     [

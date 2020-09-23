@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 51d86e51d89bdaf83be4a722d0350b35d2146cff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085595"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973037"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurace exportu streamování Azure SQL Database a diagnostiky diagnostické telemetrie SQL spravované instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,15 +39,15 @@ Kromě streamování exportu Intelligent Insightsho protokolu můžete také exp
 | :------------------- | ----- | ----- |
 | [Základní metriky](#basic-metrics): obsahuje hodnoty DTU/CPU, DTU/CPU, procentuální podíl fyzického data, procento zápisu protokolu, úspěšné/neúspěšné/blokované připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště a procento XTP úložiště. | Yes | No |
 | [Rozšířená instance a aplikace](#advanced-metrics): obsahuje data systémové databáze tempdb a velikost souboru protokolu a soubor protokolu tempdb%. | Yes | No |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): obsahuje informace o statistice za běhu dotazu, jako je například využití procesoru a statistika doby trvání dotazu. | Ano | Ano |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): obsahuje informace o statistice čekání na dotaz (co vaše dotazy čekaly), jako je například CPU, protokol a uzamykání. | Ano | Ano |
-| [Chyby](#errors-dataset): obsahuje informace o chybách SQL v databázi. | Ano | Ano |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): obsahuje informace o statistice za běhu dotazu, jako je například využití procesoru a statistika doby trvání dotazu. | Yes | Yes |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): obsahuje informace o statistice čekání na dotaz (co vaše dotazy čekaly), jako je například CPU, protokol a uzamykání. | Yes | Yes |
+| [Chyby](#errors-dataset): obsahuje informace o chybách SQL v databázi. | Yes | Yes |
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset): obsahuje informace o tom, kolik času databáze strávila čekáním na různé typy čekání. | Yes | No |
 | [Timeout](#time-outs-dataset): obsahuje informace o časových limitech v databázi. | Yes | No |
 | [Bloky](#blockings-dataset): obsahuje informace o blokujících událostech v databázi. | Yes | No |
 | [Zablokování](#deadlocks-dataset): obsahuje informace o událostech zablokování v databázi. | Yes | No |
 | [AutomaticTuning](#automatic-tuning-dataset): obsahuje informace o automatickém ladění doporučení pro databázi. | Yes | No |
-| [SQLInsights](#intelligent-insights-dataset): obsahuje Intelligent Insights do výkonu pro databázi. Další informace najdete v tématu [Intelligent Insights](intelligent-insights-overview.md). | Ano | Ano |
+| [SQLInsights](#intelligent-insights-dataset): obsahuje Intelligent Insights do výkonu pro databázi. Další informace najdete v tématu [Intelligent Insights](intelligent-insights-overview.md). | Yes | Yes |
 
 > [!NOTE]
 > Nastavení diagnostiky nelze konfigurovat pro **systémové databáze**, jako jsou hlavní databáze, databáze msdb, model, prostředky a databáze tempdb.
@@ -72,7 +72,7 @@ Tato diagnostická telemetrie se dá streamovat do jednoho z následujících pr
 
 Tato diagnostická telemetrie k jednomu z těchto cílů se dá použít k posouzení využití prostředků a statistikám provádění dotazů pro snazší monitorování výkonu.
 
-![Architektura](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
+![Diagram znázorňuje mnoho databází a databází SQL ve spravovaných instancích, které odesílají telemetrii do Azure Diagnostics, která předávají informace do Azure SQL Analytics, centra událostí a úložiště.](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
 
 ## <a name="enable-and-configure-the-streaming-export-of-diagnostic-telemetry"></a>Povolení a konfigurace exportu diagnostické telemetrie pro streamování
 
@@ -605,7 +605,7 @@ Další informace o [datech statistiky čekání na úložiště dotazů](https:
 |Zpráva|Chybová zpráva v prostém textu |
 |user_defined_b|Je chybově definovaný bit uživatelem |
 |error_number_d|Kód chyby |
-|Severity|Závažnost chyby |
+|Závažnost|Závažnost chyby |
 |state_d|Stav chyby |
 |query_hash_s|Hodnota hash dotazu neúspěšného dotazu, pokud je k dispozici |
 |query_plan_hash_s|Hodnota hash plánu dotazu neúspěšného dotazu, je-li k dispozici |

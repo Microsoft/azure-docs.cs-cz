@@ -1,15 +1,15 @@
 ---
 title: Vytvoření a konfigurace trezorů Recovery Services
-description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezory Recovery Services, které ukládají zálohy a body obnovení.
+description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezory Recovery Services, které ukládají zálohy a body obnovení. Naučte se používat obnovení mezi oblastmi k obnovení v sekundární oblasti.
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81c6fd47ccea2ea17a20535df04931727c23be6f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177189"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981503"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -30,34 +30,45 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit zp
 
 1. Vyberte typ replikace úložiště a vyberte **Uložit**.
 
-     ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
    - Pokud používáte Azure jako primární koncový bod úložiště záloh, doporučujeme, abyste používali výchozí **geograficky redundantní** nastavení.
    - Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure.
-   - Přečtěte si další informace o [geografické](../storage/common/storage-redundancy.md) a [místní](../storage/common/storage-redundancy.md) redundanci.
+   - Přečtěte si další informace o [geografické](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místní](../storage/common/storage-redundancy.md#locally-redundant-storage) redundanci.
+   - Pokud potřebujete dostupnost dat bez výpadků v oblasti, garantujete si zajišťovat data a pak zvolte [zóna – redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage).
 
 >[!NOTE]
 >Nastavení replikace úložiště pro trezor nejsou relevantní pro zálohování sdílené složky Azure, protože aktuální řešení je založené na snímku a do trezoru se nepřenesla žádná data. Snímky se ukládají do stejného účtu úložiště jako zálohovaná sdílená složka.
 
 ## <a name="set-cross-region-restore"></a>Nastavení obnovení mezi oblastmi
 
-Jedna z možností obnovení (CRR) umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárována se službou Azure](../best-practices-availability-paired-regions.md). Tato možnost vám umožní:
+Možnost obnovení **(crr) pro obnovení mezi oblastmi** vám umožňuje obnovit data v sekundární [oblasti spárované v Azure](../best-practices-availability-paired-regions.md).
+
+Podporuje následující zdroje dat:
+
+- Virtuální počítače Azure
+- Databáze SQL hostované na virtuálních počítačích Azure
+- SAP HANA databází hostovaných na virtuálních počítačích Azure
+
+Použití obnovení mezi oblastmi vám umožní:
 
 - postupovat v případě, že dojde k auditu nebo požadavkům na dodržování předpisů
-- Pokud dojde k havárii v primární oblasti, obnovte virtuální počítač nebo jeho disk.
+- Obnova dat, pokud dojde k havárii v primární oblasti
+
+Při obnovování virtuálního počítače můžete obnovit virtuální počítač nebo jeho disk. Pokud obnovujete z databáze SQL/SAP HANA hostovaných na virtuálních počítačích Azure, můžete obnovit databáze nebo jejich soubory.
 
 Tuto funkci zvolíte tak, že v podokně **Konfigurace zálohování** vyberete **Povolit obnovení mezi oblastmi** .
 
-Pro tento proces se na úrovni úložiště účtují cenové dopady.
+Vzhledem k tomu, že tento proces je na úrovni úložiště, jsou k dispozici [cenové dopady](https://azure.microsoft.com/pricing/details/backup/).
 
 >[!NOTE]
 >Než začnete:
 >
 >- Seznam podporovaných spravovaných typů a oblastí najdete v [matici podpory](backup-support-matrix.md#cross-region-restore) .
->- Funkce obnovení mezi oblastmi (CRR) je teď v současnosti zobrazená ve všech veřejných oblastech Azure.
+>- Funkce obnovení mezi oblastmi (CRR) je teď zobrazená ve všech veřejných oblastech Azure a cloudech svrchovaného.
 >- CRR je funkce výslovných přihlášení na úrovni trezoru pro libovolný trezor GRS (ve výchozím nastavení vypnutý).
 >- Po odsouhlasení může trvat až 48 hodin, než se zálohované položky zpřístupní v sekundárních oblastech.
->- V současné době se CRR podporuje jenom pro správu zálohování. virtuální počítač Azure (klasický virtuální počítač Azure se nepodporuje)  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
+>- V současné době se CRR pro virtuální počítače Azure podporují jenom pro virtuální počítače Azure Resource Manageru Azure. Klasické virtuální počítače Azure se nepodporují.  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
 >- Obnovení mezi oblastmi se v tuto chvíli nedá vrátit zpátky na GRS nebo LRS, jakmile se ochrana poprvé iniciuje.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurace obnovení mezi oblastmi
@@ -69,15 +80,13 @@ Trezor vytvořený s redundancí GRS zahrnuje možnost konfigurace funkce obnove
 1. Na portálu klikněte na Recovery Services trezor > nastavení > vlastnosti.
 2. Pokud chcete povolit funkci, vyberte **Povolit obnovení mezi oblastmi v tomto trezoru** .
 
-   ![Před výběrem Povolit obnovení mezi oblastmi v tomto trezoru](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Povolit obnovení mezi oblastmi](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
-   ![Po výběru povolit obnovení mezi oblastmi v tomto trezoru](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+Další informace o zálohování a obnovení pomocí CRR najdete v těchto článcích:
 
-Přečtěte si, jak [Zobrazit zálohované položky v sekundární oblasti](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
-
-Naučte se [obnovit v sekundární oblasti](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
-
-Naučte se [monitorovat úlohy obnovení sekundární oblasti](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+- [Obnovení mezi oblastmi pro virtuální počítače Azure](backup-azure-arm-restore-vms.md#cross-region-restore)
+- [Obnovení v různých oblastech pro databáze SQL](restore-sql-database-azure-vm.md#cross-region-restore)
+- [Obnovení v různých oblastech pro databáze SAP HANA](sap-hana-db-restore.md#cross-region-restore)
 
 ## <a name="set-encryption-settings"></a>Nastavení šifrování
 
@@ -99,7 +108,7 @@ Pokyny pro každý z těchto kroků najdete [v tomto článku](encryption-at-res
 
 ## <a name="modifying-default-settings"></a>Úprava výchozích nastavení
 
-Důrazně doporučujeme před konfigurací záloh v trezoru zkontrolovat výchozí nastavení pro **typ replikace úložiště** a **nastavení zabezpečení** .
+Důrazně doporučujeme, abyste před konfigurací záloh v trezoru zkontrolovali **Typ replikace úložiště** a **Nastavení zabezpečení**.
 
 - **Typ replikace úložiště** je ve výchozím nastavení nastaven na **geograficky redundantní** (GRS). Po nakonfigurování zálohy bude možnost úprav zakázána.
   - Pokud jste ještě nenakonfigurovali zálohu, zkontrolujte a upravte nastavení [podle těchto pokynů](#set-storage-redundancy) .

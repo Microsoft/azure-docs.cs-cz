@@ -15,21 +15,28 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Python SDK
+    - name: Python (1. den)
       expanded: true
       items:
-        - name: Vytvoření prvního experimentu ML
-          items:
-            - name: 1. Nastavení pracovního prostoru a vývojového prostředí
-              href: tutorial-1st-experiment-sdk-setup.md
-            - name: 2. Trénování prvního modelu
-              href: tutorial-1st-experiment-sdk-train.md
+        - name: 1. Nastavení místního počítače
+          href: tutorial-1st-experiment-sdk-setup-local.md
+        - name: 2. Hello World
+          href: tutorial-1st-experiment-hello-world.md
+        - name: 3. Učení modelu
+          href: tutorial-1st-experiment-sdk-train.md
+        - name: 4. Přineste si vlastní data
+          href: tutorial-1st-experiment-bring-data.md
+    - name: Poznámkové bloky Jupyter
+      expanded: true
+      items:
         - name: Klasifikace obrázků (data MNIST)
           items:
-            - name: 1. Učení modelu
+            - name: 1. Nastavení instance počítače
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Učení modelu
               displayName: build modeling
               href: tutorial-train-models-with-aml.md
-            - name: 2. Nasazení modelu
+            - name: 3. Nasazení modelu
               href: tutorial-deploy-models-with-aml.md
         - name: Regrese s využitím automatizovaného strojového učení (data newyorské taxislužby)
           items:
@@ -92,8 +99,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Koncepty
   items:
-    - name: Verze Enterprise vs. Basic
-      href: concept-editions.md
     - name: Plánování a správa nákladů
       displayName: low priority VM
       href: concept-plan-manage-cost.md
@@ -201,6 +206,9 @@
         - name: Zabezpečené kódování
           href: concept-secure-code-best-practice.md
           displayName: security threat
+        - name: Auditování a správa dodržování předpisů
+          href: how-to-integrate-azure-policy.md
+          displayName: policy
     - name: Zodpovědné strojové učení
       items:
         - name: Přehled zodpovědného strojového učení
@@ -287,12 +295,15 @@
               href: how-to-designer-import-data.md
         - name: Přístup k datům
           items:
-            - name: Připojení ke službě Azure Storage
+            - name: Připojení k úložišti Azure (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: Získání dat z úložiště dat
+            - name: Získání dat z úložiště dat (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
+            - name: Připojení k datům (uživatelské rozhraní)
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore, dataset, data set'
+              href: how-to-connect-data-ui.md
         - name: Správa a využívání dat
           items:
             - name: Trénování s datovými sadami
@@ -448,6 +459,9 @@
         - name: Modely profilů
           displayName: profile resource requirement
           href: how-to-deploy-profile-model.md
+        - name: Nasazení modelů designeru
+          displayName: 'designer, studio'
+          href: how-to-deploy-model-designer.md
         - name: (Preview) Bez nasazení kódu
           displayName: no code
           href: how-to-deploy-no-code-deployment.md
