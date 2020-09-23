@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e9496dc70d847d0e9e830a216e8f435b1c48d878
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543431"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900934"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
@@ -33,23 +33,39 @@ Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Přidání modelu Machine Learning do úlohy
 
-Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přímo z Azure Portal.
+Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přímo z Azure Portal nebo Visual Studio Code.
 
-1. V Azure Portal přejděte na svou Stream Analytics úlohu a v části **topologie úlohy**vyberte **funkce** . Pak vyberte **Azure ml Service** z rozevírací nabídky **+ Přidat** .
+### <a name="azure-portal"></a>portál Azure
 
-   ![Přidat Azure ML UDF](./media/machine-learning-udf/add-azureml-udf.png)
+1. V Azure Portal přejděte na svou Stream Analytics úlohu a v části **topologie úlohy**vyberte **funkce** . Pak z rozevírací nabídky **+ Přidat** vyberte **Azure Machine Learning Service** .
+
+   ![Přidat Azure Machine Learning systému souborů UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
 2. Do formuláře **funkce služby Azure Machine Learning** zadejte následující hodnoty vlastností:
 
-   ![Konfigurace Azure ML UDF](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![Konfigurace Azure Machine Learning systému souborů UDF](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
-Následující tabulka popisuje každou vlastnost funkcí služby Azure ML v Stream Analytics.
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+1. Otevřete projekt Stream Analytics v Visual Studio Code a klikněte pravým tlačítkem na složku **Functions** . Pak zvolte **Přidat funkci**. V rozevíracím seznamu vyberte **Machine Learning UDF** .
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="Přidat UDF do VS Code":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Přidat Azure Machine Learning UDF v VS Code":::
+
+2. Zadejte název funkce a vyplňte nastavení v konfiguračním souboru pomocí **možnosti vybrat z předplatných** v CodeLens.
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Vyberte Azure Machine Learning UDF v VS Code":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Konfigurace Azure Machine Learning systému souborů UDF v VS Code":::
+
+V následující tabulce jsou popsány jednotlivé vlastnosti služby Azure Machine Learning Service Functions v Stream Analytics.
 
 |Vlastnost|Popis|
 |--------|-----------|
 |Alias funkce|Zadejte název pro vyvolání funkce v dotazu.|
 |Předplatné|Vaše předplatné Azure..|
-|Pracovní prostor Azure ML|Azure Machine Learning pracovní prostor, který jste použili k nasazení modelu jako webové služby.|
+|Pracovní prostor služby Azure Machine Learning|Azure Machine Learning pracovní prostor, který jste použili k nasazení modelu jako webové služby.|
 |Nasazení|Webová služba hostující váš model.|
 |Signatura funkce|Signatura webové služby odvozená ze specifikace schématu rozhraní API. Pokud se Váš podpis nepovede načíst, ověřte, že jste ve svém skriptu pro hodnocení zadali vzorový vstup a výstup pro automatické generování schématu.|
 |Počet paralelních požadavků na oddíl|Toto je pokročilá konfigurace pro optimalizaci propustnosti ve velkém měřítku. Toto číslo představuje souběžné požadavky odeslané z každého oddílu vaší úlohy do webové služby. Úlohy s šesti jednotkami streamování (SU) a nižší mají jeden oddíl. Úlohy s 12 službami SUs mají dva oddíly, 18 SUs mají tři oddíly a tak dále.<br><br> Pokud má vaše úloha například dva oddíly a nastavíte tento parametr na čtyři, bude z vaší úlohy pro vaši webovou službu osm souběžných požadavků. V současnosti ve verzi Public Preview je tato hodnota standardně 20 a nelze ji aktualizovat.|
@@ -168,4 +184,3 @@ Aby se zabránilo takové latenci, ujistěte se, že se cluster služby Azure Ku
 
 * [Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
 * [Škálování Stream Analytics úlohy pomocí funkce Azure Machine Learning Studio (Classic)](stream-analytics-scale-with-machine-learning-functions.md)
-

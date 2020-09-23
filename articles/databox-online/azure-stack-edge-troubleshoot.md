@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Portal k řešení potíží s Azure Stack Edge | Microsoft Docs
-description: Naučte se řešit problémy s Azure Stack hraničními počítači. Můžete spustit diagnostiku, shromažďovat informace pro podporu a k řešení potíží používat protokoly.
+title: Použijte Azure Portal k řešení potíží s Azure Stack Edge pro | Microsoft Docs
+description: Naučte se řešit problémy s Azure Stack Edge pro. Můžete spustit diagnostiku, shromažďovat informace pro podporu a k řešení potíží používat protokoly.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: f9dabdfd9df77822f06c41fa4355a1657bceb76c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134560"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903659"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Řešení potíží s Azure Stack Edge
+# <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Řešení potíží s Azure Stack Edge pro
 
-Tento článek popisuje, jak řešit problémy na Azure Stack hraničních zařízeních. 
+Tento článek popisuje, jak řešit problémy s Azure Stack Edge pro. 
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -65,7 +65,7 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
 
       ![Připojení a zobrazení obsahu sdílení](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Vyberte _složku Microsoft Azure Stack Edge_. Tato složka obsahuje dvě podsložky:
+2. Vyberte _složku Microsoft Azure Stack Edge pro_. Tato složka obsahuje dvě podsložky:
 
     * Složku nahrávání, která obsahuje soubory protokolů s chybami nahrávání.
     * Složku aktualizací s chybami, ke kterým došlo během aktualizace.

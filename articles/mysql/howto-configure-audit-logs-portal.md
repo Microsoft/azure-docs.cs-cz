@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 508e2d229c067ac84d4c8d6338e658df8d3fa932
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2bd698d9513310571c0e8c53136f85c62532df43
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113203"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905874"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu pro Azure Database for MySQL v Azure Portal
 
@@ -30,40 +30,40 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 
 Povolte a nakonfigurujte protokolování auditu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte server Azure Database for MySQL.
 
 1. V části **Nastavení** na bočním panelu vyberte **parametry serveru**.
-    ![Parametry serveru](./media/howto-configure-audit-logs-portal/server-parameters.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/server-parameters.png" alt-text="Parametry serveru":::
 
 1. Aktualizujte parametr **audit_log_enabled** na zapnuto.
-    ![Povolit protokoly auditu](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Povolit protokoly auditu":::
 
 1. Vyberte [typy událostí](concepts-audit-logs.md#configure-audit-logging) , které se mají protokolovat, pomocí aktualizace parametru **audit_log_events** .
-    ![Události protokolu auditu](./media/howto-configure-audit-logs-portal/audit-log-events.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="Události protokolu auditu":::
 
 1. Pomocí aktualizace parametru **audit_log_exclude_users** přidejte všechny uživatele MySQL, které chcete vyloučit z protokolování. Zadejte uživatele pomocí svého uživatelského jména MySQL.
-    ![Vyloučení uživatelů v protokolu auditu](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Vyloučení uživatelů v protokolu auditu":::
 
 1. Po změně parametrů můžete kliknout na **Uložit**. Nebo můžete změny **Zrušit** .
-    ![Uložení](./media/howto-configure-audit-logs-portal/save-parameters.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Uložit":::
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
 1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**.
 
-1. Klikněte na + Přidat nastavení diagnostiky ![ Přidat nastavení diagnostiky.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Klikněte na + Přidat nastavení diagnostiky :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Přidat nastavení diagnostiky"::: .
 
 1. Zadejte název nastavení diagnostiky.
 
 1. Určete, která datová jímka se mají Odeslat protokoly auditu (účet úložiště, centrum událostí a pracovní prostor Log Analytics).
 
 1. Jako typ protokolu vyberte "MySqlAuditLogs".
-![Konfigurace nastavení diagnostiky](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
+:::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Konfigurace nastavení diagnostiky":::
 
 1. Po nakonfigurování datových umyvadel pro přesměrování protokolů auditu na můžete kliknout na **Uložit**.
-![Uložit nastavení diagnostiky](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
+:::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Uložit nastavení diagnostiky":::
 
 1. Přihlaste se k protokolům auditu jejich zkoumáním v datových jímkach, které jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 

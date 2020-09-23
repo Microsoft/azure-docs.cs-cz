@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
-ms.openlocfilehash: 94a2c9bf3f65897809edaf94fc01b442e02b46d9
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 97cadfb8f5004cfd2701335172d4416c64f05259
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552998"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907871"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-znamená clustering
 
-Tento článek popisuje, jak použít modul pro *clustering* v Návrháři Azure Machine Learning (Preview) k vytvoření nevýukového modelu pro clustering k. 
+Tento článek popisuje, jak použít modul pro *clusteringu* v Návrháři Azure Machine Learning k vytvoření nevýukového modelu clusteringu. 
  
 K-znamená, že je jedním z nejjednodušších a osvědčených *bezdohledných* algoritmů učení. Můžete použít algoritmus pro nejrůznější úlohy strojového učení, například: 
 
@@ -117,7 +117,7 @@ Pokud jste použili modul [výukového modelu clusteringu](train-clustering-mode
 
 1. Vyberte modul **výuka clusteringu modelů** a otevřete pravý panel.
 
-2. Vyberte kartu **výstupy** . výběrem ikony **Registrovat datovou sadu** uložte kopii proučeného modelu.
+2. Vyberte kartu **výstupy** . Výběrem ikony **Registrovat datovou sadu** uložte kopii proučeného modelu.
 
 Uložený model představuje školicí data v době, kdy jste model uložili. Pokud později aktualizujete školicí data použitá v kanálu, neaktualizuje uložený model. 
 

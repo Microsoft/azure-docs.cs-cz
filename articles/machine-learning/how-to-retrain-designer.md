@@ -1,7 +1,7 @@
 ---
-title: Přeučení modelů pomocí návrháře Azure Machine Learning (Preview)
+title: Přeučení modelů pomocí návrháře Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Naučte se přeškolovat modely pomocí publikovaných kanálů v Návrháři Azure Machine Learning (Preview).
+description: Naučte se přeškolovat modely pomocí publikovaných kanálů v Návrháři Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905673"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Přeučování modelů s využitím návrháře služby Azure Machine Learning (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Přeučení modelů pomocí návrháře Azure Machine Learning
+
 
 V tomto článku se dozvíte, jak pomocí návrháře Azure Machine Learning znovu naučit model strojového učení. Publikované kanály použijete k automatizaci pracovního postupu a nastavení parametrů, abyste mohli svůj model proškolit na nových datech. 
 
@@ -32,12 +32,12 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor Azure Machine Learning s SKU Enterprise.
-* Vyplňte část 1 této série s postupy, [Transformujte data v Návrháři](how-to-designer-transform-data.md).
+* Pracovní prostor Azure Machine Learning
+* Dokončete část 1 této série, [Transformujte data v Návrháři](how-to-designer-transform-data.md) .
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-Tento článek také předpokládá, že máte základní znalosti o sestavování kanálů v návrháři. Úvod do průvodce najdete v tomto [kurzu](tutorial-designer-automobile-price-train-score.md). 
+Tento článek také předpokládá, že máte znalosti o sestavování kanálů v návrháři. Úvod do průvodce najdete v tomto [kurzu](tutorial-designer-automobile-price-train-score.md). 
 
 ### <a name="sample-pipeline"></a>Vzorový kanál
 

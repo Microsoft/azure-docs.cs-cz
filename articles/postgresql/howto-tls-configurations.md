@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 4cf491a27fbe53a5f5bf0e8351e5bb684b3492f1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 26470709b37c2623c581499ec55572da402e96cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101983"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906464"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-postgresql-single---server-using-azure-portal"></a>Konfigurace nastavení TLS v Azure Database for PostgreSQL jednom serveru pomocí Azure Portal
 
@@ -35,13 +35,13 @@ Pomocí těchto kroků nastavte minimální verzi protokolu TLS pro PostgreSQL:
 
 1. V **minimální verzi protokolu TLS**vyberte **1,2** pro zamítnutí připojení s protokolem TLS nižším než TLS 1,2 pro váš PostgreSQL Server.
 
-    ![Azure Database for PostgreSQL konfigurace TLS s jedním serverem](./media/howto-tls-configurations/setting-tls-value.png)
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="Azure Database for PostgreSQL konfigurace TLS s jedním serverem":::
 
 1. Kliknutím na **Uložit** uložte změny.
 
 1. Oznámení ověří, že nastavení zabezpečení připojení bylo úspěšně povoleno.
 
-    ![Azure Database for PostgreSQL – úspěšná konfigurace TLS na jednom serveru](./media/howto-tls-configurations/setting-tls-value-success.png)
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="Azure Database for PostgreSQL – úspěšná konfigurace TLS na jednom serveru":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 08859eb87431b59e8be68369ce8f3876aa7d9f21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530297"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907615"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Přečtěte si, jak interaktivně ladit Azure Machine Learning kanály a nasazení pomocí Visual Studio Code (VS Code) a [depugpy](https://github.com/microsoft/debugpy/).
 
@@ -109,7 +109,7 @@ Pokud chcete povolit ladění, proveďte následující změny ve skriptech Pyth
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-Následující příklad Pythonu ukazuje základní `train.py` soubor, který umožňuje ladění:
+Následující příklad Pythonu ukazuje jednoduchý `train.py` soubor, který umožňuje ladění:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.

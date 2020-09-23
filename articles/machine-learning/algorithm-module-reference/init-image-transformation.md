@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa81987f9214870e248ef9b625e6afcd1093fe5d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84487946"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907887"
 ---
 # <a name="init-image-transformation"></a>Počáteční transformace obrázku
 
-Tento článek popisuje, jak použít modul pro **transformaci init image** v Návrháři Azure Machine Learning (Preview) k inicializaci transformace obrázku, abyste určili, jak chcete transformaci obrázku transformovat.
+Tento článek popisuje, jak použít modul pro **transformaci init image** v Návrháři Azure Machine Learning, inicializovat transformaci obrázku a určit, jakým způsobem má být obrázek transformován.
 
 ## <a name="how-to-configure-init-image-transformation"></a>Jak nakonfigurovat transformaci inicializačních imagí
 
@@ -69,31 +69,31 @@ Po dokončení transformace můžete ve výstupu modulu [transformace obrázku p
 
 | Name                    | Rozsah   | Typ    | Výchozí | Description                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
-| Změna velikosti                  | Všechny     | Logická hodnota | True    | Změnit velikost vstupního PIL obrázku na danou velikost |
-| Velikost                    | >= 1     | Integer | 256     | Zadejte požadovanou velikost výstupu.          |
-| Vycentrovat oříznutí             | Všechny     | Logická hodnota | True    | Ořízne daný PIL obrázek ve středu.  |
-| Oříznout velikost               | >= 1     | Integer | 224     | Zadejte požadovanou výstupní velikost oříznutí. |
-| Pad                     | Všechny     | Logická hodnota | False   | Rozsadí daný PIL obrázek na všech stranách s danou hodnotou "pad". |
-| Odsazení                 | >= 0     | Integer | 0       | Odsazení u každého ohraničení                   |
-| Kolísání barvy            | Všechny     | Logická hodnota | False   | Náhodně změnit jas, kontrast a sytost obrázku |
-| Stín               | Všechny     | Logická hodnota | False   | Převést obrázek na stupně šedi               |
-| Oříznutí náhodné velikosti     | Všechny     | Logická hodnota | False   | Ořízne daný PIL obrázek k náhodné velikosti a poměru stran. |
-| Náhodná velikost             | >= 1     | Integer | 256     | Očekávaná velikost výstupu každého okraje        |
-| Náhodný oříznutí             | Všechny     | Logická hodnota | False   | Ořízne danou image PIL v náhodném umístění. |
-| Velikost náhodné oříznutí        | >= 1     | Integer | 224     | Požadovaná výstupní velikost oříznutí          |
-| Náhodné Vodorovné překlopení  | Všechny     | Logická hodnota | True    | Překlopit daný PIL obrázek náhodně s určitou pravděpodobností |
-| Náhodné vertikální překlopení    | Všechny     | Logická hodnota | False   | Překlopí zadaný obrázek PIL náhodně s danou pravděpodobností. |
-| Náhodné otočení         | Všechny     | Logická hodnota | False   | Otočit obrázek o úhel                |
-| Stupně náhodného otočení | [0180] | Integer | 0       | Rozsah stupňů, ze kterého se mají vybírat          |
-| Náhodný spřažení           | Všechny     | Logická hodnota | False   | Náhodná transformace spřažení fotovariantního středu pro uchování obrazu |
-| Náhodné spřažení stupňů   | [0180] | Integer | 0       | Rozsah stupňů, ze kterého se mají vybírat          |
-| Náhodné stupně šedé        | Všechny     | Logická hodnota | False   | Náhodně převést obrázek na stupně šedi s pravděpodobností 0,1 |
-| Náhodný pohled      | Všechny     | Logická hodnota | False   | Provede transformaci daného PIL obrázku náhodně s pravděpodobností 0,5 |
-| Náhodné mazání          | Všechny     | Logická hodnota | False   | Náhodně vybere oblast obdélníku v obrázku a smaže její pixely s pravděpodobností 0,5 |
+| Změna velikosti                  | Všechny     | Logická hodnota | Ano    | Změnit velikost vstupního PIL obrázku na danou velikost |
+| Velikost                    | >= 1     | Celé číslo | 256     | Zadejte požadovanou velikost výstupu.          |
+| Vycentrovat oříznutí             | Všechny     | Logická hodnota | Ano    | Ořízne daný PIL obrázek ve středu.  |
+| Oříznout velikost               | >= 1     | Celé číslo | 224     | Zadejte požadovanou výstupní velikost oříznutí. |
+| Pad                     | Všechny     | Logická hodnota | Nepravda   | Rozsadí daný PIL obrázek na všech stranách s danou hodnotou "pad". |
+| Odsazení                 | >= 0     | Celé číslo | 0       | Odsazení u každého ohraničení                   |
+| Kolísání barvy            | Všechny     | Logická hodnota | Nepravda   | Náhodně změnit jas, kontrast a sytost obrázku |
+| Stín               | Všechny     | Logická hodnota | Nepravda   | Převést obrázek na stupně šedi               |
+| Oříznutí náhodné velikosti     | Všechny     | Logická hodnota | Nepravda   | Ořízne daný PIL obrázek k náhodné velikosti a poměru stran. |
+| Náhodná velikost             | >= 1     | Celé číslo | 256     | Očekávaná velikost výstupu každého okraje        |
+| Náhodný oříznutí             | Všechny     | Logická hodnota | Nepravda   | Ořízne danou image PIL v náhodném umístění. |
+| Velikost náhodné oříznutí        | >= 1     | Celé číslo | 224     | Požadovaná výstupní velikost oříznutí          |
+| Náhodné Vodorovné překlopení  | Všechny     | Logická hodnota | Ano    | Překlopit daný PIL obrázek náhodně s určitou pravděpodobností |
+| Náhodné vertikální překlopení    | Všechny     | Logická hodnota | Nepravda   | Překlopí zadaný obrázek PIL náhodně s danou pravděpodobností. |
+| Náhodné otočení         | Všechny     | Logická hodnota | Nepravda   | Otočit obrázek o úhel                |
+| Stupně náhodného otočení | [0180] | Celé číslo | 0       | Rozsah stupňů, ze kterého se mají vybírat          |
+| Náhodný spřažení           | Všechny     | Logická hodnota | Nepravda   | Náhodná transformace spřažení fotovariantního středu pro uchování obrazu |
+| Náhodné spřažení stupňů   | [0180] | Celé číslo | 0       | Rozsah stupňů, ze kterého se mají vybírat          |
+| Náhodné stupně šedé        | Všechny     | Logická hodnota | Nepravda   | Náhodně převést obrázek na stupně šedi s pravděpodobností 0,1 |
+| Náhodný pohled      | Všechny     | Logická hodnota | Nepravda   | Provede transformaci daného PIL obrázku náhodně s pravděpodobností 0,5 |
+| Náhodné mazání          | Všechny     | Logická hodnota | Nepravda   | Náhodně vybere oblast obdélníku v obrázku a smaže její pixely s pravděpodobností 0,5 |
 
 ###  <a name="output"></a>Výstup  
 
-| Name                        | Typ                    | Description                              |
+| Název                        | Typ                    | Description                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Transformace výstupního obrázku | TransformationDirectory | Transformace výstupního obrázku, kterou lze připojit k **použití modulu transformace obrázku** . |
 

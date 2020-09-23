@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420885"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907779"
 ---
 # <a name="train-wide--deep-recommender"></a>Pro vlak v široké & Doporučené
-Tento článek popisuje, jak v nástroji Azure Machine Learning Designer (Preview) použít modul pro **výuku široké & hloubky** , který vám umožní naučit model doporučení. Tento modul je založený na širokém & hlubokou výuku, který navrhuje Google.
+Tento článek popisuje, jak v nástroji Azure Machine Learning Designer využít integrovaný modul pro **vlakovou škálu &** , který vám umožní naučit model doporučení. Tento modul je založený na širokém & hlubokou výuku, který navrhuje Google.
 
 Vysoce **doporučený modul &** špičkového modulu pro vlaky přečte datovou sadu pro hodnocení uživatelem a položky a volitelně i některé funkce uživatelů a položek. Vrátí vyškolenou & hlubokou doporučenou.  Potom můžete pomocí proučeného modelu vygenerovat hodnocení předpovědi nebo doporučení pomocí modulu hodnocení [širokého a hloubkového](score-wide-and-deep-recommender.md) nástroje.  
 
@@ -77,14 +77,14 @@ Datová sada funkcí položky musí v prvním sloupci obsahovat identifikátory 
 
 Například typická sada funkcí položek může vypadat takto:  
 
-|MovieId|Nadpis|Původní jazyk|Žánry|Year|
+|MovieId|Nadpis|Původní jazyk|Žánry|Year (Rok)|
 |-------------|-------------|-------------------|-----------|---------------|
 |68646|Godfather|Angličtina|Drama|1972|
 |31381|Pryč s vítr|Angličtina|Historie|1939|
 
 ### <a name="train-the-model"></a>Trénování modelu
 
-1.  Přidejte v Návrháři (Preview) modul pro zajištění **širokého a podrobného doporučení pro vlak** a připojte ho k datové sadě školení.  
+1.  Přidejte do experimentu modul pro zajištění **širokého a hloubkového** nástroje pro vlak a připojte ho k datové sadě školení.  
   
 2. Pokud máte samostatnou datovou sadu uživatelských funkcí nebo funkcí položek, připojte je ke vlakovému modulu pro zajištění **širokého a hloubkového** nástroje.  
   

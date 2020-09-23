@@ -1,6 +1,6 @@
 ---
-title: Nasazení virtuálních počítačů na zařízení Azure Stack Edge prostřednictvím šablon
-description: Popisuje, jak vytvořit a spravovat virtuální počítače na Azure Stack hraničním zařízení pomocí šablon.
+title: Nasazení virtuálních počítačů na zařízení Azure Stack Edge pro prostřednictvím šablon
+description: Popisuje postup vytvoření a správy virtuálních počítačů na zařízení Azure Stack Edge pro pomocí šablon.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419822"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899703"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge prostřednictvím šablon
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro prostřednictvím šablon
 
-V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pomocí šablon. Tyto šablony jsou soubory JavaScript Object Notation (JSON), které definují infrastrukturu a konfiguraci pro váš virtuální počítač. V těchto šablonách určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
+V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí šablon. Tyto šablony jsou soubory JavaScript Object Notation (JSON), které definují infrastrukturu a konfiguraci pro váš virtuální počítač. V těchto šablonách určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
 
 Šablony jsou flexibilní v různých prostředích, protože mohou přijímat parametry jako vstup za běhu ze souboru. Standardní struktura názvů je určena `TemplateName.json` pro šablonu a `TemplateName.parameters.json` soubor parametrů. Další informace o šablonách ARM najdete v [Azure Resource Manager šablonách?](../azure-resource-manager/templates/overview.md).
 
@@ -25,7 +25,7 @@ V tomto kurzu použijeme předem napsané ukázkové šablony pro vytváření p
 
 ## <a name="vm-deployment-workflow"></a>Pracovní postup nasazení virtuálních počítačů
 
-Pokud chcete nasadit Azure Stack hraničních počítačů na mnoho zařízení, můžete použít jeden virtuální pevný disk nástroje Sysprep pro celý loďstvo, stejnou šablonu pro nasazení a jednoduše udělat drobné změny parametrů v této šabloně pro každé umístění nasazení (tyto změny se můžou provádět ručně, jak je to tady, nebo program.) 
+Pokud chcete nasadit Azure Stack hraničních počítačů pro celou řadu zařízení, můžete použít jeden virtuální pevný disk nástroje Sysprep pro celý loďstvo, stejnou šablonu pro nasazení a jednoduše udělat drobné změny parametrů v této šabloně pro každé umístění nasazení (tyto změny se můžou provádět ručně, jak je to tady, nebo program). 
 
 Shrnutí vysoké úrovně pracovního postupu nasazení pomocí šablon je následující:
 
@@ -57,13 +57,13 @@ Shrnutí vysoké úrovně pracovního postupu nasazení pomocí šablon je násl
 
 ## <a name="device-prerequisites"></a>Požadavky na zařízení
 
-Tyto požadavky nakonfigurujte na zařízení Azure Stack Edge.
+Nakonfigurujte tyto požadavky na zařízení Azure Stack Edge pro.
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 ## <a name="client-prerequisites"></a>Požadavky klienta
 
-Nakonfigurujte tyto požadavky na klienta, který se bude používat pro přístup k Azure Stack hraničního zařízení.
+Nakonfigurujte tyto požadavky na klienta, který se použije pro přístup k zařízení Azure Stack Edge pro.
 
 1. [Stáhněte si Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) , pokud ho používáte k nahrání VHD. Alternativně můžete stáhnout AzCopy a nahrát VHD. Pokud používáte starší verze AzCopy, možná budete muset nakonfigurovat TLS 1,2 na klientském počítači. 
 1. [Stáhněte si šablony virtuálních počítačů a soubory parametrů](https://aka.ms/ase-vm-templates) do klientského počítače. Rozbalte ho do adresáře, který použijete jako pracovní adresář.
@@ -108,7 +108,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Pomocí Azure Resource Manager lze vytvořit pouze účty místního úložiště, jako je například místně redundantní úložiště (Standard_LRS nebo Premium_LRS). Pokud chcete vytvořit vrstvené účty úložiště, přečtěte si postup v tématu [Přidání, připojení k účtům úložiště na Azure Stack hraničních](azure-stack-edge-j-series-deploy-add-storage-accounts.md)zařízeních.
+> Pomocí Azure Resource Manager lze vytvořit pouze účty místního úložiště, jako je například místně redundantní úložiště (Standard_LRS nebo Premium_LRS). Pokud chcete vytvořit vrstvené účty úložiště, přečtěte si postup v tématu [Přidání, připojení k účtům úložiště na Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
 Ukázkový výstup najdete níž.
 
@@ -145,7 +145,7 @@ Ujistěte se, že jste již přidali identifikátor URI objektu blob do souboru 
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
-V typickém prostředí byste měli nakonfigurovat DNS tak, aby všechny účty úložiště odkazovaly na zařízení Azure Stack Edge se `*.blob.devicename.domainname.com` záznamem.
+V typickém prostředí byste měli nakonfigurovat DNS tak, aby všechny účty úložiště odkazovaly na zařízení Azure Stack Edge pro s `*.blob.devicename.domainname.com` položkou.
 
 ### <a name="optional-install-certificates"></a>Volitelné Instalace certifikátů
 
@@ -215,7 +215,7 @@ Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů
 
 <!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge device.
+Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
 
 ```powershell
@@ -269,7 +269,7 @@ Soubor `CreateImageAndVnet.parameters.json` má následující parametry:
     }
 ```
 
-Upravte soubor `CreateImageAndVnet.parameters.json` tak, aby obsahoval pro vaše Azure Stack hraniční zařízení následující:
+Upravte soubor `CreateImageAndVnet.parameters.json` tak, aby obsahoval následující pro zařízení Azure Stack Edge pro:
 
 1. Zadejte typ operačního systému odpovídající virtuálnímu pevnému disku, který budete nahrávat. Typ operačního systému může být Windows nebo Linux.
 
@@ -341,7 +341,7 @@ Upravte soubor `CreateImageAndVnet.parameters.json` tak, aby obsahoval pro vaše
 Nasaďte šablonu `CreateImageAndVnet.json` . Tato šablona nasadí prostředky virtuální sítě a image, které se použijí k vytvoření virtuálních počítačů v pozdějším kroku.
 
 > [!NOTE]
-> Když nasadíte šablonu, pokud dojde k chybě ověřování, vaše přihlašovací údaje Azure pro tuto relaci pravděpodobně vypršely. Opětovným spuštěním `login-AzureRM` příkazu se znovu připojte k Azure Resource Manager na zařízení Azure Stack Edge.
+> Když nasadíte šablonu, pokud dojde k chybě ověřování, vaše přihlašovací údaje Azure pro tuto relaci pravděpodobně vypršely. Opětovným spuštěním `login-AzureRM` příkazu se připojte k Azure Resource Manager na zařízení Azure Stack Edge pro.
 
 1. Spusťte následující příkaz: 
     
@@ -437,7 +437,7 @@ K vytvoření virtuálního počítače použijte `CreateVM.parameters.json` sou
         }
 ```    
 
-Přiřaďte `CreateVM.parameters.json` k zařízení Azure Stack Edge vhodné parametry.
+Přiřaďte příslušné parametry `CreateVM.parameters.json` pro zařízení Azure Stack Edge pro.
 
 1. Zadejte jedinečný název, název síťového rozhraní a název ipconfig. 
 1. Zadejte uživatelské jméno, heslo a podporovanou velikost virtuálního počítače.
@@ -594,7 +594,7 @@ Pomocí těchto kroků se připojte k virtuálnímu počítači se systémem Lin
 
 <!--## Manage VM
 
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge device.
+The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
 
 [!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
 
@@ -609,9 +609,9 @@ Rozšíření, sady škálování, sady dostupnosti, snímky se nepodporují.
 
 <!--## Configure AzCopy
 
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge device.
+When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
 
-On the client used to access your Azure Stack Edge device, set up a global variable to match the blob storage REST API version.
+On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
 
 ### On Windows client 
 

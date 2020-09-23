@@ -10,15 +10,15 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9e24a652bb4e577ff9b604b6b4f5284883723ee5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319265"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906706"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto kurzu se dozvíte, jak spravovat proces označování (označované také jako označování) obrázků, které se použijí jako data pro sestavování modelů strojového učení. Popisky dat v Azure Machine Learning jsou ve verzi Public Preview.
 
@@ -64,7 +64,7 @@ Dále budete spravovat projekt označování dat v aplikaci Azure Machine Learni
 
 1. Vyplňte formulář s těmito nastaveními:
 
-    Pole|Popis 
+    Pole|Description 
     ---|---
     Název úložiště dat | Poskytněte úložiště dat název.  Zde používáme **labeling_tutorial**.
     Typ úložiště dat | Vyberte typ úložiště.  Tady používáme **Azure Blob Storage**, což je preferované úložiště pro obrázky.
@@ -89,7 +89,7 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
 
 1. Pro formulář **Project Details** použijte následující vstup:
 
-    Pole|Popis 
+    Pole|Description 
     ---|---
     Název projektu | Zadejte název svého projektu.  Tady budeme používat **kurz-kočky-n-psi**.
     Popis typu úlohy | Vyberte možnost **klasifikace imagí s více třídami**.  
@@ -130,7 +130,7 @@ Pokračujte výběrem tlačítka **Další**.
 
 1. Vyberte **Další**.
 
-1. Pokud používáte pracovní prostor Enterprise, zobrazí se v části s **asistencí s popisem ml** .  Ponechejte políčko nezaškrtnuté. Označování s asistencí ML vyžaduje více dat, než v tomto kurzu budete používat.
+1. V části s **asistencí pro označování** ponechejte políčko nezaškrtnuté. Označování s asistencí ML vyžaduje více dat, než v tomto kurzu budete používat.
 
 1. Vyberte **Vytvořit projekt**.
 

@@ -1,6 +1,6 @@
 ---
-title: Pochopení sítě Kubernetes na zařízení s Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak Kubernetes síť funguje na hraničním zařízení Azure Stack.
+title: Pochopení sítě Kubernetes na zařízení Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak Kubernetes síť funguje na zařízení Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268121"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899322"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Kubernetes sítě v zařízení GPU Azure Stack Edge
+# <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes sítě v zařízení GPU pro Azure Stack Edge pro
 
-V Azure Stack hraničních zařízeních se vytvoří cluster Kubernetes při konfiguraci výpočetní role. Po vytvoření clusteru Kubernetes je možné kontejnery aplikace nasadit do clusteru Kubernetes v části lusky. Existují různé způsoby použití sítě pro lusky v clusteru Kubernetes. 
+Na zařízení Azure Stack Edge pro se vytvoří cluster Kubernetes při konfiguraci výpočetní role. Po vytvoření clusteru Kubernetes je možné kontejnery aplikace nasadit do clusteru Kubernetes v části lusky. Existují různé způsoby použití sítě pro lusky v clusteru Kubernetes. 
 
-Tento článek popisuje obecné sítě v clusteru Kubernetes a konkrétně v kontextu zařízení Azure Stack Edge. 
+Tento článek podrobně popisuje sítě v clusteru Kubernetes obecně a konkrétně v kontextu zařízení Azure Stack Edge pro. 
 
 ## <a name="networking-requirements"></a>Požadavky na síť
 
@@ -59,9 +59,9 @@ For discovery of applications within the cluster, Kubernetes cluster has a
 When an application or the end user would first use the IP address associated with the service of type load balancer to discover the service. Then it would use the label select `app = WS` to discover the pods associated with the application. The `kube-proxy` component would then distribute the traffic and ensure that it hits one of the web server application pods. If the web server app wanted to talk to the database app, then it would simply use the name of the service and using the name and the DNS server pod, resolve the name to an IP address. Again using labels and label selector, it would discover the pods associated with the database application. The `kube-proxy` would then distribute the traffic across each of the database app nodes.-->
 
 
-## <a name="kubernetes-networking-on-azure-stack-edge"></a>Kubernetes síť na Azure Stack Edge
+## <a name="kubernetes-networking-on-azure-stack-edge-pro"></a>Kubernetes síť na Azure Stack Edge pro
 
-Calico, Metallb a základní DNS jsou všechny součásti, které jsou nainstalované pro síť na Azure Stack hraničních zařízeních. 
+Calico, Metallb a základní DNS jsou všechny součásti, které jsou nainstalované pro sítě na Azure Stack Edge pro. 
 
 - **Calico** přiřadí IP adresu z rozsahu PRIVÁTNÍch IP adres do každého dne a nakonfiguruje sítě pro tyto lusky tak, aby pod uzlem v jednom uzlu komunikovaly pod jiným uzlem. 
 - **Metallb** běží na clusteru pod a přiřazuje IP adresu službám typu služba Vyrovnávání zatížení. IP adresy nástroje pro vyrovnávání zatížení se volí z rozsahu IP adres služby poskytnutého prostřednictvím místního uživatelského rozhraní. 
@@ -80,8 +80,8 @@ Přiřazení IP adresy je pro:
 
 ## <a name="next-steps"></a>Další kroky
 
-Postup konfigurace sítě Kubernetes na Azure Stack Edge najdete v těchto tématech:
+Konfigurace sítě Kubernetes na Azure Stack Edge pro najdete v tématu:
 
-- [Vystavte bezstavovou aplikaci externě na Azure Stack Edge prostřednictvím IoT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
+- [Zpřístupněte bezstavovou aplikaci externě na Azure Stack Edge pro prostřednictvím IoT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
 
-- [Vystavte bezstavovou aplikaci externě na Azure Stack Edge přes kuebctl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Vystavte bezstavovou aplikaci externě na Azure Stack Edge pro prostřednictvím kuebctl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack správu účtu úložiště GPU na hraničních zařízeních | Microsoft Docs
-description: Popisuje, jak používat Azure Portal ke správě účtu úložiště na hraničních Azure Stackch.
+title: Správa účtu úložiště GPU pro Azure Stack Edge pro Microsoft Docs
+description: Popisuje, jak použít Azure Portal ke správě účtu úložiště na Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 3b190a108651f4b127c2f009c383613922a59018
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254287"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904541"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>Použití Azure Portal ke správě hraničních účtů úložiště na hraničních Azure Stackch
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě účtů hraničního úložiště na Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Tento článek popisuje, jak spravovat hraniční účty úložiště na Azure Stack hraničních zařízeních. Azure Stack Edge můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. K přidání nebo odstranění hraničních účtů úložiště v zařízení použijte Azure Portal.
+Tento článek popisuje, jak spravovat hraniční účty úložiště na Azure Stack Edge pro. Azure Stack Edge pro můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. K přidání nebo odstranění hraničních účtů úložiště v zařízení použijte Azure Portal.
 
 ## <a name="about-edge-storage-accounts"></a>Informace o účtech úložiště Edge
 
-Data ze zařízení Azure Stack Edge můžete přenést pomocí protokolů SMB, NFS nebo REST. Pokud chcete přenést data do úložiště objektů BLOB pomocí rozhraní REST API, musíte na Azure Stack hraničních zařízeních vytvořit hraniční účty úložiště. 
+Data ze zařízení Azure Stack Edge pro můžete přenést pomocí protokolů SMB, NFS nebo REST. Pokud chcete přenášet data do úložiště objektů BLOB pomocí rozhraní REST API, musíte vytvořit hraniční účty úložiště na Azure Stack Edge pro. 
 
-Hraniční účty úložiště, které přidáte na Azure Stack hraniční zařízení, jsou namapovány na účty Azure Storage. Všechna data zapsaná do hraničních účtů úložiště se automaticky odešlou do cloudu.
+Hraniční účty úložiště, které přidáte na zařízení Azure Stack Edge pro, jsou namapovány na účty Azure Storage. Všechna data zapsaná do hraničních účtů úložiště se automaticky odešlou do cloudu.
 
 Diagram podrobně popisuje dva typy účtů a informace o tom, jak se zobrazují data z jednotlivých účtů do Azure:
 

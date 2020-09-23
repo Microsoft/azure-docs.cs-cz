@@ -11,15 +11,14 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: e718ed13cfd67092b50b42584d861a2bcf5dacc5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4dc1f86ce7dbb060c747c4433f0c2b871ce5582d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664074"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907641"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho pracovního prostoru pomocí virtuálních sítí
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak zabezpečit Azure Machine Learning pracovní prostor a jeho přidružené prostředky ve virtuální síti.
 
@@ -173,8 +172,6 @@ Pokud chcete používat Azure Machine Learning možnosti experimentování s Azu
 
 Chcete-li použít Azure Container Registry v rámci virtuální sítě, je nutné splnit následující požadavky:
 
-* Váš pracovní prostor Azure Machine Learning musí být Enterprise Edition. Informace o upgradu nástroje najdete v tématu [upgrade na verzi Enterprise Edition](how-to-manage-workspace.md#upgrade).
-
 * Vaše Azure Container Registry musí být verze Premium. Další informace o upgradu najdete v tématu [Změna SKU](/azure/container-registry/container-registry-skus#changing-skus).
 
 * Vaše Azure Container Registry musí být ve stejné virtuální síti a podsíti jako účet úložiště a cíle výpočtů používané pro školení nebo odvození.
@@ -256,8 +253,8 @@ Po splnění těchto požadavků můžete Azure Container Registry povolit pomoc
             "type": "SystemAssigned"
         },
         "sku": {
-            "tier": "enterprise",
-            "name": "enterprise"
+            "tier": "basic",
+            "name": "basic"
         },
         "properties": {
             "sharedPrivateLinkResources":

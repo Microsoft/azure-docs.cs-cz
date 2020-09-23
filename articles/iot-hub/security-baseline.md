@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 314004d2b62d5616c1d7925b82fd9f050d0a1fd0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441795"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906914"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Základní hodnoty zabezpečení Azure pro Azure IoT Hub
 
@@ -71,7 +71,7 @@ Azure DDoS Protection Basic už je povolená a k dispozici není žádná dalš�
 
 - [IoT Hub filtr IP adres](iot-hub-ip-filtering.md)
 
-- [Azure Security Center pro komunikaci s podezřelými IP adresami IoT](../asc-for-iot/concept-security-alerts.md)
+- [Azure Security Center pro komunikaci s podezřelými IP adresami IoT](../defender-for-iot/concept-security-alerts.md)
 
 - [Spravovat Azure DDoS Protection Basic](../virtual-network/ddos-protection-overview.md)
 
@@ -234,7 +234,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Monitorování stavu služby Azure IoT Hub](iot-hub-monitor-resource-health.md)
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
-- [Azure Security Center pro výstrahy IoT](../asc-for-iot/concept-security-alerts.md)
+- [Azure Security Center pro výstrahy IoT](../defender-for-iot/concept-security-alerts.md)
 
 - [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
 

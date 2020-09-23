@@ -7,14 +7,16 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 33d25edafa9249300406365699930ded1c8ec75b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289813"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906842"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Kurz: škálování aplikace ve jarním cloudu Azure
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 Tento kurz ukazuje, jak škálovat libovolnou aplikaci mikroslužeb pomocí řídicího panelu Azure jarního cloudu v Azure Portal.
 
@@ -22,7 +24,7 @@ Tento kurz ukazuje, jak škálovat libovolnou aplikaci mikroslužeb pomocí ří
 
 Po dokončení budete potřebovat, abyste v každé aplikaci v rámci služby provedli rychlé ruční změny. Změna měřítka se projeví během několika sekund a nevyžaduje žádné změny kódu nebo opětovné nasazení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li provést tyto postupy, potřebujete:
 
@@ -32,7 +34,7 @@ Chcete-li provést tyto postupy, potřebujete:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Přejít na stránku škálování v Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 

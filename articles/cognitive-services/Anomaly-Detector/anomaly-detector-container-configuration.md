@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 29e790959e941abc133f95297dc09c951152a503
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0bf08ae0b2d26b2f4992181d2e300e9dbeed818
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593303"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903535"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnerů Detektoru anomálií
 
@@ -57,11 +57,11 @@ Toto nastavení najdete na následujícím místě:
 
 Toto nastavení najdete na následujícím místě:
 
-* Azure Portal: Přehled **detektoru anomálií** , označený`Endpoint`
+* Azure Portal: Přehled **detektoru anomálií** , označený `Endpoint`
 
 |Vyžadováno| Name | Datový typ | Popis |
 |--|------|-----------|-------------|
-|Yes| `Billing` | String | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](anomaly-detector-container-howto.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
+|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](anomaly-detector-container-howto.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Nastavení smlouvy EULA
 
@@ -90,8 +90,8 @@ Přesná syntaxe umístění hostitelského připojení se liší v závislosti 
 
 |Volitelné| Name | Datový typ | Popis |
 |-------|------|-----------|-------------|
-|Nepovolené| `Input` | String | Kontejnery detektoru anomálií toto nepoužívají.|
-|Volitelné| `Output` | String | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovolené| `Input` | Řetězec | Kontejnery detektoru anomálií toto nepoužívají.|
+|Volitelné| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Příklady příkazů pro spuštění Docker 
 
@@ -121,7 +121,7 @@ Následující příklady Docker jsou pro kontejner detektoru anomálií.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -131,7 +131,7 @@ Následující příklady Docker jsou pro kontejner detektoru anomálií.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information

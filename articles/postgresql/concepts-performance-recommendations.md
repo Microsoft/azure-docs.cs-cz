@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ce3843752ebd6ed56281f6699783181b52fdc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768465"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903876"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Doporučení týkající se výkonu v Azure Database for PostgreSQL – jeden server
 
@@ -27,13 +27,13 @@ Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzu
 
 Otevřete **doporučení pro výkon** z části **inteligentní výkon** na panelu nabídek na stránce Azure Portal pro server PostgreSQL.
 
-![Úvodní stránka Doporučení k výkonu](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Úvodní stránka Doporučení k výkonu":::
 
 Vyberte možnost **analyzovat** a zvolte databázi, která bude začínat analýzou. V závislosti na vašem zatížení může trvat několik minut, než se dokončí analýza. Po dokončení analýzy se zobrazí oznámení na portálu. Analýza provede důkladné přezkoumání vaší databáze. Doporučujeme, abyste provedli analýzu v době mimo špičku. 
 
 V okně **doporučení** se zobrazí seznam doporučení, pokud byla nalezena kterákoli z nich.
 
-![Nová stránka s doporučeními pro výkon](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Nová stránka s doporučeními pro výkon":::
 
 Doporučení se nepoužívají automaticky. Pokud chcete doporučení použít, zkopírujte text dotazu a spusťte ho z vašeho klienta podle vlastního výběru. Nezapomeňte otestovat a monitorovat, abyste vyhodnotili doporučení. 
 
@@ -47,7 +47,7 @@ Doporučení *vytvořit index* návrhy nových indexů vám umožní zrychlit ne
 ### <a name="drop-index-recommendations"></a>Vyřadit doporučení indexu
 Kromě detekce chybějících indexů Azure Database for PostgreSQL analyzuje výkon existujících indexů. Pokud je index buď zřídka používaný, nebo redundantní, analyzátor ho doporučuje odstranit.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 * Doporučení k výkonu nejsou pro [repliky čtení](concepts-read-replicas.md)k dispozici.
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [sledování a ladění ](concepts-monitoring.md) ve službě Azure Database for PostgreSQL.

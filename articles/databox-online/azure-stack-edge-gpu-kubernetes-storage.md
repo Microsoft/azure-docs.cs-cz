@@ -1,6 +1,6 @@
 ---
-title: Principy správy úložiště Kubernetes na zařízení Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak probíhá Správa úložiště Kubernetes na hraničním zařízení Azure Stack.
+title: Principy správy úložiště Kubernetes na zařízení Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak probíhá Správa úložiště Kubernetes na zařízení Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268087"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899262"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Správa úložiště Kubernetes na zařízení GPU Azure Stack Edge
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Správa úložiště Kubernetes na zařízení GPU Azure Stack Edge pro
 
-V Azure Stack hraničních zařízeních se vytvoří cluster Kubernetes při konfiguraci výpočetní role. Po vytvoření clusteru Kubernetes je možné kontejnery aplikace nasadit do clusteru Kubernetes v části lusky. Existují různé způsoby, jak poskytnout úložiště pro lusky v clusteru Kubernetes. 
+Na zařízení Azure Stack Edge pro se vytvoří cluster Kubernetes při konfiguraci výpočetní role. Po vytvoření clusteru Kubernetes je možné kontejnery aplikace nasadit do clusteru Kubernetes v části lusky. Existují různé způsoby, jak poskytnout úložiště pro lusky v clusteru Kubernetes. 
 
-Tento článek popisuje metody, jak zřídit úložiště v clusteru Kubernetes obecně a konkrétně v kontextu zařízení Azure Stack Edge. 
+Tento článek popisuje metody pro zřízení úložiště v clusteru Kubernetes obecně a konkrétně v kontextu zařízení Azure Stack Edge pro. 
 
 ## <a name="storage-requirements-for-kubernetes-pods"></a>Požadavky na úložiště pro Kubernetes lusky
 
@@ -75,9 +75,9 @@ Dojde k následujícím krokům:
 1. **Připojit virtuální okruh k kontejneru**: Jakmile je virtuální okruh VÁZANÝ na souč_hod, můžete k němu připojit trvalé připojení k kontejneru na cestě stejným způsobem jako statické zřizování a čtení nebo zápis do sdílené složky.
 
 
-## <a name="storage-provisioning-on-azure-stack-edge"></a>Zřizování úložiště na Azure Stack hraničních zařízeních
+## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Zřizování úložiště na Azure Stack Edge pro
 
-Na Azure Stack hraničním zařízení se staticky zřízené `PersistentVolumes` vytvoří pomocí možností úložiště v zařízení. Když zřídíte sdílenou složku a povolíte možnost **sdílet s Edge COMPUTE** , vytvoří tato akce v clusteru Kubernetes automaticky prostředek PV.
+Na zařízení Azure Stack Edge pro se staticky zřízené `PersistentVolumes` vytvoří pomocí možností úložiště pro zařízení. Když zřídíte sdílenou složku a povolíte možnost **sdílet s Edge COMPUTE** , vytvoří tato akce v clusteru Kubernetes automaticky prostředek PV.
 
 ![Vytvoření místní sdílené složky v Azure Portal pro statické zřizování](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
@@ -85,7 +85,7 @@ Pokud chcete použít vrstvení cloudu, můžete vytvořit sdílenou složku Edg
 
 ![Vytvoření sdílené složky v cloudu v Azure Portal pro statické zřizování](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
-Sdílené složky SMB i NFS můžete vytvořit tak, aby staticky zřídily PVs na Azure Stack hraničním zařízení. Po zřízení PV odešlete virtuální okruh, který bude toto úložiště uplatňovat. Tady je příklad nasazení okruhu PVC `yaml` , který využívá úložiště a používá sdílené složky, které jste zřídili.
+Sdílené složky SMB i NFS můžete vytvořit tak, aby staticky zřídily PVs pro zařízení s Azure Stack Edgem pro. Po zřízení PV odešlete virtuální okruh, který bude toto úložiště uplatňovat. Tady je příklad nasazení okruhu PVC `yaml` , který využívá úložiště a používá sdílené složky, které jste zřídili.
 
 
 ```yml
@@ -103,13 +103,13 @@ spec:
   storageClassName: ""
 ```
 
-Další informace najdete v tématu [nasazení stavové aplikace prostřednictvím statického zřizování na Azure Stack Edge přes kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+Další informace najdete v tématu [nasazení stavové aplikace prostřednictvím statického zřizování na Azure Stack Edge pro prostřednictvím kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
-Azure Stack Edge má také `StorageClass` zavolaný název `ase-node-local` , který používá úložiště datového disku připojené k uzlu Kubernetes. To `StorageClass` podporuje dynamické zřizování. `StorageClass`V aplikacích pod můžete vytvořit odkaz a pro vás bude automaticky vytvořena souč_hod. Další informace najdete v tématu [Kubernetes na řídicím panelu](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) pro dotaz na `ase-node-local StorageClass` .
+Azure Stack Edge pro má taky Kubernetes s `StorageClass` názvem `ase-node-local` , který používá úložiště datového disku připojené k uzlu. To `StorageClass` podporuje dynamické zřizování. `StorageClass`V aplikacích pod můžete vytvořit odkaz a pro vás bude automaticky vytvořena souč_hod. Další informace najdete v tématu [Kubernetes na řídicím panelu](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) pro dotaz na `ase-node-local StorageClass` .
 
 ![Integrovaná třída úložiště v řídicím panelu Kubernetes](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
 
-Další informace najdete v tématu [nasazení stavové aplikace prostřednictvím dynamického zřizování na Azure Stack Edge přes kuebctl](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+Další informace najdete v tématu [nasazení stavové aplikace prostřednictvím dynamického zřizování na Azure Stack Edge pro přes kuebctl](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
 
 ## <a name="choose-storage-type"></a>Zvolit typ úložiště
 
@@ -127,8 +127,8 @@ Další informace o režimech přístupu najdete v tématu [režim přístupu k 
 
 Informace o tom, jak můžete statisticky zřídit `PersistentVolume` , najdete v těchto tématech:
 
-- [Nasaďte stavovou aplikaci prostřednictvím statického zřizování na Azure Stack Edge přes kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+- [Nasaďte stavovou aplikaci prostřednictvím statického zřizování na Azure Stack Edge pro přes kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
 Další informace o tom, jak dynamicky zřizovat `StorageClass` , najdete tady:
 
-- [Nasaďte stavovou aplikaci prostřednictvím dynamického zřizování na Azure Stack Edge přes kuebctl](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+- [Nasaďte stavovou aplikaci prostřednictvím dynamického zřizování na Azure Stack Edge pro přes kuebctl](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
