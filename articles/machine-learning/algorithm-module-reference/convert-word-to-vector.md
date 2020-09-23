@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753894"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898597"
 ---
 # <a name="convert-word-to-vector-module"></a>Převést Word na vektorový modul
 
-Tento článek popisuje, jak použít modul převést Word na vektor v Návrháři Azure Machine Learning (Preview) k provedení těchto úloh:
+Tento článek popisuje, jak použít modul převést Word na vektor v Návrháři Azure Machine Learning k provedení těchto úloh:
 
 - Použijte různé modely Word2Vec (Word2Vec, FastText, šetrnější předvlaked model) na corpus textu, který jste zadali jako vstup.
 - Vygenerujte slovník pomocí vkládání slov.
@@ -55,7 +55,7 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu. Předzpracova
 
     Vzhledem k tomu, že tento modul vytvoří slovník z textu, obsah sloupců se liší, což vede k různým obsahům slovníku. Proto modul přijímá pouze jeden cílový sloupec.
 
-4. V případě **strategie Word2Vec**vyberte z **šetrnější předvlaked English model**, **Gensim Word2Vec**a **Gensim FastText**.
+4. V případě  **strategie Word2Vec**vyberte z **šetrnější předvlaked English model**, **Gensim Word2Vec**a **Gensim FastText**.
 
 5. Pokud je **Word2Vec strategie** **Gensim Word2Vec** nebo **Gensim FastText**:
 
@@ -93,7 +93,7 @@ Modul má jeden výstup:
 
 + **Slovník s vložením**: obsahuje generovaný slovník spolu s vložením každého slova. Jedna dimenze zabírá jeden sloupec.
 
-Následující příklad ukazuje, jak funguje modul Convert Word to Vector. Tento modul se používá s výchozím nastavením pro předzpracovaný Wikipedii datovou sadu SP 500 zadanou v Azure Machine Learning (Preview).
+Následující příklad ukazuje, jak funguje modul Convert Word to Vector. Tento modul se používá s výchozím nastavením pro předzpracovaný Wikipedii datovou sadu SP 500, která je součástí Azure Machine Learning.
 
 ### <a name="source-dataset"></a>Zdrojová datová sada
 
@@ -149,4 +149,4 @@ V této části najdete tipy a odpovědi na nejčastější dotazy.
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
 
-Seznam chyb, které jsou specifické pro moduly návrháře (Preview), najdete v tématu [kódy chyb Machine Learning](designer-error-codes.md).
+Seznam chyb, které jsou specifické pro moduly návrháře, najdete v tématu [kódy chyb Machine Learning](designer-error-codes.md).

@@ -1,15 +1,15 @@
 ---
 title: Vytvořit prostředek přizpůsobeného pro přizpůsobování
-description: Konfigurace služby zahrnuje způsob, jakým služba zpracovává ceny, jak často se služba zkoumá, jak často se model překládá a kolik dat se ukládá.
+description: V tomto článku se dozvíte, jak vytvořit prostředek pro přizpůsobení v Azure Portal pro každou smyčku zpětné vazby.
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ebd5496eb45ed007f47cd34761800f8b54e5a5a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7965fb1eaa3efbe1f47db4eedd88e4444b0e610b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501248"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985822"
 ---
 # <a name="create-a-personalizer-resource"></a>Vytvoření prostředku pro přizpůsobování
 

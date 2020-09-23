@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 7ff135911742c49c2c52ce30d1dca00bc89b3a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450721"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898917"
 ---
 # <a name="apply-image-transformation"></a>Použití transformace obrázku 
 
-Tento článek popisuje, jak použít modul transformace bitové kopie v Návrháři Azure Machine Learning (Preview) pro úpravu adresáře vstupní bitové kopie na základě dříve zadané transformace obrázku.  
+Tento článek popisuje, jak použít modul transformace obrázku v Návrháři Azure Machine Learning pro úpravu adresáře vstupní bitové kopie na základě dříve zadané transformace obrázku.  
 
 Aby bylo možné zadat transformaci, je nutné připojit modul pro [transformaci inicializačních imagí](init-image-transformation.md) a následně tuto transformaci použít do složky vstupní bitové kopie v modulu použít transformaci obrázku.
 
@@ -53,14 +53,14 @@ Aby bylo možné zadat transformaci, je nutné připojit modul pro [transformaci
 
 ### <a name="expected-inputs"></a>Očekávané vstupy  
 
-| Name                       | Typ                    | Description                       |
+| Název                       | Typ                    | Description                       |
 | -------------------------- | ----------------------- | --------------------------------- |
 | Transformace vstupního obrázku | TransformationDirectory | Transformace vstupního obrázku        |
 | Adresář vstupní bitové kopie      | ImageDirectory          | Adresář obrázku, který se má transformovat |
 
 ### <a name="outputs"></a>Výstupy  
 
-| Name                   | Typ           | Description            |
+| Název                   | Typ           | Description            |
 | ---------------------- | -------------- | ---------------------- |
 | Adresář výstupních imagí | ImageDirectory | Adresář výstupních imagí |
 

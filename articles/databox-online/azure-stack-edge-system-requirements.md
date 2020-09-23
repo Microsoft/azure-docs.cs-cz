@@ -1,6 +1,6 @@
 ---
-title: Požadavky na systém Microsoft Azure Stack Edge | Microsoft Docs
-description: Další informace o požadavcích na software a sítě pro Azure Stack hraničních zařízeních
+title: Požadavky na systém Microsoft Azure Stack Edge pro | Microsoft Docs
+description: Seznamte se s požadavky na software a sítě pro Azure Stack Edge pro
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 921dcb05401c61a9fb581595c20112e67f696c5e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a1a0462b82629b16bd8ccbe269fb1a917357d542
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371294"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883511"
 ---
-# <a name="azure-stack-edge-system-requirements"></a>Požadavky na systém Azure Stack Edge
+# <a name="azure-stack-edge-pro-system-requirements"></a>Požadavky na systém Azure Stack Edge pro
 
-Tento článek popisuje důležité systémové požadavky pro řešení Microsoft Azure Stack Edge a klienty, kteří se připojují k Azure Stack Edge. Před nasazením Azure Stack Edge doporučujeme pečlivě zkontrolovat informace. V případě potřeby můžete v průběhu nasazení a následné operace přejít zpět na tyto informace.
+Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Stack Edge pro a klienty, kteří se připojují k Azure Stack Edge pro. Doporučujeme pečlivě zkontrolovat informace před nasazením Azure Stack Edge pro. V případě potřeby můžete v průběhu nasazení a následné operace přejít zpět na tyto informace.
 
-Požadavky na systém Azure Stack Edge zahrnují:
+Mezi požadavky na systém Azure Stack Edge pro:
 
 - **Požadavky na software pro hostitele** – popisuje podporované platformy, prohlížeče pro místní uživatelské rozhraní konfigurace, klienty SMB a všechny další požadavky na klienty, kteří přistupují k zařízení.
 - **Požadavky na síť pro zařízení** – poskytuje informace o požadavcích na síť pro provoz fyzického zařízení.
@@ -46,9 +46,9 @@ Požadavky na systém Azure Stack Edge zahrnují:
 
 ## <a name="networking-port-requirements"></a>Požadavky na porty sítě
 
-### <a name="port-requirements-for-azure-stack-edge"></a>Požadavky na porty pro Azure Stack Edge
+### <a name="port-requirements-for-azure-stack-edge-pro"></a>Požadavky na port pro Azure Stack Edge pro
 
-Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly provoz SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše Azure Stack hraniční zařízení odesílá data externě, mimo nasazení, například odchozí na Internet.
+Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly provoz SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* znamená směr, ve kterém vaše zařízení Azure Stack Edge pro odesílá data externě, mimo nasazení, například odchozí na Internet.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -58,17 +58,17 @@ Azure IoT Edge umožňuje odchozí komunikaci z místního hraničního zaříze
 
 Použijte následující tabulku pro konfiguraci portů pro servery hostující Azure IoT Edge Runtime:
 
-| Číslo portu | V nebo ven | Rozsah portů | Povinné | Pokyny |
+| Číslo portu | V nebo ven | Rozsah portů | Vyžadováno | Pokyny |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Out       | Síť WAN        | Ano      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
+| TCP 443 (HTTPS)| Out       | Síť WAN        | Yes      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
 
 Pokud chcete získat úplné informace, přečtěte si [pravidla brány firewall a konfigurace portů pro nasazení IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
 ## <a name="url-patterns-for-firewall-rules"></a>Vzory adres URL pro pravidla brány firewall
 
-Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše Azure Stack hraniční zařízení a služba závisí na dalších aplikacích společnosti Microsoft, jako jsou Azure Service Bus, Azure Active Directory Access Control, účtech úložiště a Microsoft Updatech serverech. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. Tyto změny vyžadují, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro Azure Stack hraničních zařízení, a to v případě potřeby.
+Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše zařízení Azure Stack Edge pro a službu závisí na dalších aplikacích společnosti Microsoft, jako jsou Azure Service Bus, Azure Active Directory Access Control, účtech úložiště a Microsoft Updatech serverech. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. Tyto změny vyžadují, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro Azure Stack Edge pro a v případě potřeby.
 
-Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě pevných IP adres Azure Stack hraničních zařízení, a to ve většině případů. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
+Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě pevných IP adres Azure Stack Edge pro, a to ve většině případů svobodně. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
 
 > [!NOTE]
 > - IP adresy zařízení (zdrojové) by se měly vždycky nastavit na všechna síťová rozhraní s podporou cloudu.
@@ -104,7 +104,7 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 
 ## <a name="compute-sizing-considerations"></a>Požadavky na výpočet velikosti
 
-Využijte své zkušenosti při vývoji a testování vašeho řešení, abyste měli dostatek kapacity na Azure Stack hraničních zařízeních a dosáhli jste optimálního výkonu vašeho zařízení.
+Využijte své zkušenosti při vývoji a testování vašeho řešení, abyste měli dostatek kapacity na zařízení Azure Stack Edge pro, a získáte optimální výkon ze zařízení.
 
 Mezi faktory, které byste měli vzít v úvahu, patří:
 
@@ -123,16 +123,16 @@ Pro pochopení a vylepšení výkonu řešení můžete použít:
 - Výpočetní metrika je k dispozici v Azure Portal. Přejít na prostředek Azure Stack Edge a pak přejít na **monitorování > metriky**. Seznamte se s dostupnými prostředky a s tím, jak se prostředky využívaly, najdete v procentech **využití hraničních výpočetních paměťových** a **hraničních procesorů** .
 - Příkazy monitorování dostupné prostřednictvím rozhraní PowerShell zařízení, například:
 
-    - `dkr`Statistika pro získání živého streamu statistických údajů o využití prostředků kontejnerů Příkaz podporuje procesor, využití paměti, limit paměti a metriky v/v sítě.
-    - `dkr system df`získat informace týkající se množství využitého místa na disku. 
-    - `dkr image [prune]`k vyčištění nepoužívaných imagí a uvolnění místa.
-    - `dkr ps --size`Chcete-li zobrazit přibližnou velikost běžícího kontejneru. 
+    - `dkr` Statistika pro získání živého streamu statistických údajů o využití prostředků kontejnerů Příkaz podporuje procesor, využití paměti, limit paměti a metriky v/v sítě.
+    - `dkr system df` získat informace týkající se množství využitého místa na disku. 
+    - `dkr image [prune]` k vyčištění nepoužívaných imagí a uvolnění místa.
+    - `dkr ps --size` Chcete-li zobrazit přibližnou velikost běžícího kontejneru. 
 
     Další informace o dostupných příkazech najdete v tématu [monitorování a odstraňování potíží s výpočetními moduly](azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
 
-Nakonec se ujistěte, že vaše řešení ověřujete ve své datové sadě a vyhodnotit výkon na Azure Stack Edge před nasazením v produkčním prostředí.
+Nakonec se ujistěte, že vaše řešení ověříte ve své datové sadě a vyhodnotit výkon na Azure Stack Edge pro před nasazením v produkčním prostředí.
 
 
 ## <a name="next-step"></a>Další krok
 
-- [Nasazení Azure Stack Edge](azure-stack-edge-deploy-prep.md)
+- [Nasazení Azure Stack Edge pro](azure-stack-edge-deploy-prep.md)

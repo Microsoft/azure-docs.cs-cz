@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: ecef318978194ac3773c54e2d9c960781086de65
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691747"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906349"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Rychlý Start: Vytvoření automatické odpovědi na konkrétní výstrahu zabezpečení pomocí šablony Azure Resource Manager (šablona ARM)
 
@@ -73,9 +73,7 @@ Pomocí Azure Portal můžete ověřit, jestli je automatizace pracovního postu
 1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center**.
 1. V horním řádku nabídek vyberte ikonu filtru a vyberte konkrétní předplatné, na které jste nasadili novou automatizaci pracovního postupu.
 1. Z bočního panelu Security Center otevřete **automatizaci pracovních postupů** a vyhledejte novou automatizaci.
-
-    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Alternativní text obrázku" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Seznam nakonfigurovaných Automation" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > Pokud máte v předplatném mnoho automatizace pracovních postupů, použijte možnost **filtrovat podle názvu** . 
 
@@ -86,11 +84,9 @@ Pokud už je nepotřebujete, odstraňte automatizaci pracovního postupu pomocí
 1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center**.
 1. V horním řádku nabídek vyberte ikonu filtru a vyberte konkrétní předplatné, na které jste nasadili novou automatizaci pracovního postupu.
 1. Z bočního panelu Security Center otevřete **automatizaci pracovních postupů** a najděte automatizaci, která se má odstranit.
-
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Alternativní text obrázku" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Postup odebrání automatizace pracovního postupu" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Zaškrtněte políčko pro položku, která se má odstranit.
-1. Na panelu nástrojů vyberte možnost odstranit.
+1. Na panelu nástrojů vyberte možnost **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další kroky

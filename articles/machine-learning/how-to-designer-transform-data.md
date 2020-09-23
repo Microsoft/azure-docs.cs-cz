@@ -1,7 +1,7 @@
 ---
-title: Transformuje data v Návrháři (Preview).
+title: Transformace dat v Návrháři
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak transformovat data v Návrháři Azure Machine Learning (Preview) a vytvořit si vlastní datové sady.
+description: Naučte se, jak transformovat data v Návrháři Azure Machine Learning vytvořit vlastní datové sady.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 06ba65b9ef031b1d33477a15e01f3e0be53b5e53
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457817"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897810"
 ---
-# <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Transformuje data v Návrháři Azure Machine Learning (Preview).
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="transform-data-in-azure-machine-learning-designer"></a>Transformace dat v Návrháři Azure Machine Learning
+
 
 V tomto článku se naučíte, jak transformovat a ukládat datové sady v Návrháři Azure Machine Learning, abyste mohli připravit vlastní data pro strojové učení.
 
@@ -107,7 +107,7 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
     **Úložiště dat**: Vyberte existující úložiště dat, nebo vyberte nové úložiště dat, abyste ho mohli teď vytvořit.
 
-    **Cesta**:`/data/us-income`
+    **Cesta**: `/data/us-income`
 
     **Formát souboru**: CSV
 
@@ -124,7 +124,7 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
     **Úložiště dat**: vyberte stejné úložiště dat jako výše.
 
-    **Cesta**:`/data/non-us-income`
+    **Cesta**: `/data/non-us-income`
 
     **Formát souboru**: CSV
 

@@ -1,14 +1,14 @@
 ---
 title: Obnovení databází SAP HANA na virtuálních počítačích Azure
-description: V tomto článku zjistíte, jak obnovit SAP HANA databáze, které běží na Azure Virtual Machines.
+description: V tomto článku zjistíte, jak obnovit SAP HANA databáze, které běží na Azure Virtual Machines. K obnovení databází do sekundární oblasti můžete také použít obnovení mezi oblastmi.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375308"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986082"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Obnovení databází SAP HANA na virtuálních počítačích Azure
 
@@ -249,6 +249,51 @@ Pokud jste jako typ obnovení vybrali možnost **úplný & rozdíl** , udělejte
 
     > [!NOTE]
     > V rámci více databázových kontejnerů (MDC) se obnoví po obnovení systémové databáze do cílové instance jedna musí znovu spustit skript před registrací. Jenom potom se obnoví i následné obnovení databáze tenanta. Další informace najdete v tématu [řešení potíží – MDC Restore](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore).
+
+## <a name="cross-region-restore"></a>Obnovení mezi oblastmi
+
+Jedna z možností obnovení (CRR) vám umožňuje obnovit SAP HANA databáze hostované na virtuálních počítačích Azure v sekundární oblasti, která je spárována se službou Azure.
+
+Pokud chcete připojit funkci během verze Preview, přečtěte si [část než začnete](./backup-create-rs-vault.md#set-cross-region-restore).
+
+Pokud chcete zjistit, jestli je CRR povolený, postupujte podle pokynů v tématu [Konfigurace obnovení mezi oblastmi](backup-create-rs-vault.md#configure-cross-region-restore) .
+
+### <a name="view-backup-items-in-secondary-region"></a>Zobrazit zálohované položky v sekundární oblasti
+
+Pokud je povolená možnost CRR, můžete zobrazit zálohované položky v sekundární oblasti.
+
+1. Na portálu přejdete do části **Recovery Services trezoru**  >  **zálohované položky**.
+1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
+
+>[!NOTE]
+>V seznamu se zobrazí pouze typy správy zálohování podporující funkci CRR. V současné době je povolena pouze podpora obnovení dat sekundární oblasti do sekundární oblasti.
+
+![Zálohované položky v sekundární oblasti](./media/sap-hana-db-restore/backup-items-secondary-region.png)
+
+![Databáze v sekundární oblasti](./media/sap-hana-db-restore/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Obnovení v sekundární oblasti
+
+Funkce obnovení koncového uživatele v sekundární oblasti bude podobná primární oblasti obnovení uživatelského prostředí. Při konfiguraci podrobností v podokně obnovit konfiguraci pro konfiguraci obnovení se zobrazí výzva k zadání pouze sekundárních parametrů oblasti.
+
+![Kde a jak obnovit](./media/sap-hana-db-restore/restore-secondary-region.png)
+
+>[!NOTE]
+>Virtuální síť v sekundární oblasti musí být přiřazena jedinečně a nelze ji použít pro žádné jiné virtuální počítače v dané skupině prostředků.
+
+![Oznámení o průběhu obnovení aktivační události](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>* Po aktivaci obnovení a ve fázi přenosu dat nelze úlohu obnovení zrušit.
+>* Role Azure potřebné k obnovení v sekundární oblasti jsou stejné jako v primární oblasti.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Monitorování úloh obnovení sekundární oblasti
+
+1. Na portálu přejdete na **Recovery Services vault**  >  **úlohy zálohování** služby Recovery Services trezor.
+1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
+
+    ![Filtrované úlohy zálohování](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Další kroky
 

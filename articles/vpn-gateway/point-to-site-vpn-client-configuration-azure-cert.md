@@ -1,19 +1,19 @@
 ---
 title: 'Vytvoření & instalace konfiguračních souborů klienta VPN P2S: ověření certifikátu'
 titleSuffix: Azure VPN Gateway
-description: Vytvořte a nainstalujte konfigurační soubory klienta VPN pro Windows, Linux, Linux (klient strongswan) a Mac OS X pro ověřování certifikátů P2S.
+description: Vytvoření a instalace konfiguračních souborů klienta VPN systému Windows, Linux, Linux (klient strongswan) a macOS X pro ověřování certifikátů P2S.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 3a7a9711f04a4b54459d57a05ae65b4eedf1d6b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420774"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986635"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace připojení typu point-to-site s využitím nativního ověřování Azure pomocí certifikátů
 
@@ -96,7 +96,7 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
 
    Hodnota **rozhraní** je VPN a **Typ VPN Type** je IKEv2. Do pole **název služby** zadejte název profilu a potom kliknutím na **vytvořit** vytvořte profil připojení klienta VPN.
 
-   ![network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![Snímek obrazovky se zobrazí okno síť s možností vybrat rozhraní, vybrat typ sítě VPN a zadat název služby.](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. V **Obecné** složce v souboru **VpnSettings.xml** Zkopírujte hodnotu značky **VpnServer** . Vložte tuto hodnotu do polí **Adresa serveru** a **vzdálený identifikátor** v profilu.
 
    ![informace o serveru](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,14 +106,14 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
 
    * V případě Catalina vyberte možnost **žádná** a pak **certifikát**. **Vyberte** správný certifikát:
    
-   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+   ![Snímek obrazovky se zobrazí okno síť s možnostmi žádný vybraný pro nastavení ověřování a vybraný certifikát.](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
 
 6. Klikněte na **Vybrat...** pro výběr klientského certifikátu, který chcete použít pro ověřování. Toto je certifikát, který jste nainstalovali v kroku 2.
 
-   ![certifikát](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
+   ![Snímek obrazovky se zobrazí okno síť s nastavením ověřování, kde můžete vybrat certifikát.](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Volba identity** zobrazí seznam certifikátů, ze kterých si můžete vybrat. Vyberte vhodný certifikát a potom klikněte na **pokračovat**.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![Snímek obrazovky se zobrazí dialogové okno zvolit identitu, kde můžete vybrat vhodný certifikát.](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Do pole **místní ID** zadejte název certifikátu (z kroku 6). V tomto příkladu je to "ikev2Client.com". Potom kliknutím na tlačítko **použít** uložte změny.
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -213,4 +213,4 @@ Vraťte se k článku a [dokončete konfiguraci P2S](vpn-gateway-howto-point-to-
 Řešení potíží s připojením P2S naleznete v následujících článcích:
 
   * [Řešení potíží s připojením Point-to-Site z Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-  * [Řešení potíží s připojením VPN z Mac OS X klientů VPN](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+  * [Řešení potíží s připojením VPN od klientů VPN macOS X](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)

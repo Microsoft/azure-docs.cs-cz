@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77209422"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976284"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN
 
@@ -122,7 +122,7 @@ Použijte autorizační klíč a identifikátor URI okruhu, který jste zadali z
 
 1. Na stránce ExpressRoute klikněte na **+ uplatnit autorizační klíč** .
 
-   ![uplatnit](./media/virtual-wan-expressroute-portal/redeem.png "uplatnit")
+   ![Snímek obrazovky zobrazuje ExpressRoute pro virtuální rozbočovač s vybraným autorizačním klíčem uplatnit.](./media/virtual-wan-expressroute-portal/redeem.png "uplatnit")
 2. Na stránce autorizační klíč uplatnit zadejte hodnoty.
 
    ![hodnoty klíčů pro uplatnění](./media/virtual-wan-expressroute-portal/redeemkey2.png "hodnoty klíčů pro uplatnění")

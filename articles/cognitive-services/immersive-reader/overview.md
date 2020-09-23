@@ -1,7 +1,7 @@
 ---
-title: Co je rozhraní API pro moderní čtečku?
+title: Co je moderní čtečka?
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro moderní čtečku je nástroj, který se dá použít k obnově informací o rozdílech učení nebo k novým čtenářům a nástrojům pro jazyky.
+description: Moderní čtečka je nástroj, který je navržený tak, aby pomáhal lidem s rozdíly v učení, nebo pomáhá novým čtenářům a jazykovým nástrojům s porozuměním při čtení.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,57 +10,72 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: cog-serv-seo-aug-2020
+keywords: čtenáři, nástroje pro jazyky, zobrazované obrázky, vylepšení čtení, čtení obsahu, překlad
+ms.openlocfilehash: a537845c0256316f9c47317a8805fa989a624f60
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267269"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985739"
 ---
 # <a name="what-is-immersive-reader"></a>Co je Asistivní čtečka?
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+[Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí klientské knihovny pro moderní čtečku můžete využívat stejnou technologii používanou v Microsoft Wordu a Microsoftu jednu poznámku ke zlepšení svých webových aplikací. 
 
-[Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nově vznikající čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia.
+## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Použití moderního čtecího zařízení ke zlepšení usnadnění čtení 
 
-Asistivní čtečku můžete využít ve vašich webových aplikacích prostřednictvím sady SDK pro Asistivní čtečku.
+Moderní čtečka je navržená tak, aby pro každého usnadnila čtení a přístup. Pojďme se podívat na několik základních funkcí moderního čtečky.
 
-## <a name="what-does-immersive-reader-do"></a>Co dělá moderní čtečka?
+### <a name="isolate-content-for-improved-readability"></a>Izolace obsahu pro lepší čitelnost
 
-Moderní čtečka je navržená tak, aby pro každého mohla být přičtená.
+Moderní čtečka izoluje obsah, aby se zlepšila čitelnost. 
 
-* Zobrazuje obsah v minimálním zobrazení pro čtení.
+  ![Izolace obsahu pro zlepšení čitelnosti pomocí moderního čtecího zařízení](./media/immersive-reader.png)
 
-  ![Asistivní čtečka](./media/immersive-reader.png)
+### <a name="display-pictures-for-common-words"></a>Zobrazit obrázky pro běžná slova
 
-* Zobrazí obrázky běžně používaných slov.
+Pro běžně používané výrazy zobrazí moderní čtečka obrázek.
 
-  ![Slovník obrázků](./media/picture-dictionary.png)
+  ![Slovník obrázků s moderní čtečkou](./media/picture-dictionary.png)
 
-* Zvýrazní podstatná jména, slovesa, přídavné jména a příslovy.
+### <a name="highlight-parts-of-speech"></a>Zvýraznění částí řeči
 
-  ![Části řeči](./media/parts-of-speech.png)
+Moderní čtečka se dá využít k tomu, aby usnadnila pochopení částí řeči a gramatiky tím, že zvýrazňuje slovesa, podstatná jména, podstatná jména a další informace.
 
-* Přečte obsah po nahlasu
+  ![Zobrazení částí hlasu pomocí moderního čtecího zařízení](./media/parts-of-speech.png)
 
-  ![Číst nahlas](./media/read-aloud.png)
+### <a name="read-content-aloud"></a>Číst obsah nahlas
 
-* Přeloží obsah do jiného jazyka.
+Syntéza řeči (nebo převod textu na řeč) se vloženými do moderní čtečky, která umožňuje čtenářům vybrat text, který má být čten. 
 
-  ![Překlad](./media/translation.png)
+  ![Hlasité čtení textu pomocí moderního čtecího zařízení](./media/read-aloud.png)
 
-* Rozdělí slova na slabiky.
+### <a name="translate-content-in-real-time"></a>Překlad obsahu v reálném čase
 
-  ![Syllabification](./media/syllabification.png)
+Moderní čtečka dokáže překládat text do mnoha jazyků v reálném čase. To je užitečné pro zlepšení srozumitelnosti čtenářů, kteří se učí nový jazyk.
+
+  ![Překlad textu pomocí moderního čtecího zařízení](./media/translation.png)
+
+### <a name="split-words-into-syllables"></a>Rozdělit slova na slabiky
+
+Pomocí moderního čtecího zařízení můžete rozdělit slova na slabiky, aby se zlepšila čitelnost nebo aby se vyzněla nová slova.
+
+  ![Rozdělení slov na slabiky pomocí moderního čtecího zařízení](./media/syllabification.png)
 
 ## <a name="how-does-immersive-reader-work"></a>Jak funguje moderní čtečka?
 
-Moderní čtečka je samostatná webová aplikace, která při vyvolání pomocí sady SDK pro moderní čtečku se zobrazuje na vaší stávající webové aplikaci přes `iframe` . Když zavoláte rozhraní API za účelem spuštění moderního čtecího modulu, zadáte obsah, který chcete zobrazit v moderní čtečce. Naše sada SDK zpracovává vytváření a stylování `iframe` a komunikaci s back-end službou pro moderní čtečku, která zpracovává obsah pro části řeči, převod textu na řeč, překlad atd.
+Moderní čtečka je samostatná webová aplikace. Při vyvolání pomocí klientské knihovny pro moderní čtečku se zobrazí na vaší stávající webové aplikaci v `iframe` . Když vaše aplikace WEP volá službu pro moderní čtení, určíte obsah pro zobrazení čtecího modulu. Klientská knihovna pro moderní čtečku zpracovává vytváření a stylování `iframe` a komunikaci s back-end službou pro moderní čtečku. Služba moderního čtecího zařízení zpracovává obsah pro části řeči, převod textu na řeč, překlad a další funkce.
+
+## <a name="get-started-with-immersive-reader"></a>Začínáme s moderní čtečkou
+
+Klientská knihovna pro moderní čtení je k dispozici v jazycích C#, JavaScript, Java (Android), Kotlin (Android) a SWIFT (iOS). Při zahájení práce využijte tyto možnosti:
+
+* [Rychlý Start: použití klientské knihovny pro moderní čtenáře](quickstarts/client-libraries.md)
 
 ## <a name="next-steps"></a>Další kroky
 
 Začínáme s Asistivní čtečkou:
 
-* Přechod na [rychlé starty](./quickstarts/client-libraries.md?pivots=programming-language-csharp)
-* Prozkoumejte [sadu moderních čtenářů na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
-* Přečtěte si [referenční informace k sadě pro moderní čtečku SDK](./reference.md)
+* Přečtěte si [odkaz na klientskou knihovnu pro moderní čtečku](./reference.md)
+* Prozkoumat [klientskou knihovnu pro moderní čtenáře na GitHubu](https://github.com/microsoft/immersive-reader-sdk)

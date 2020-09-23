@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 677cf60ff3e614fd1486445786154fbf026b7cd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171138"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898687"
 ---
 # <a name="convert-to-image-directory"></a>Převod do adresáře obrázků
 
-Tento článek popisuje, jak pomocí modulu příkazového adresáře převést na obrázek převést datovou sadu na datový typ "adresář obrázků", což je standardizovaný formát dat v úkolech souvisejících s obrázky, jako je například klasifikace obrázku v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje, jak pomocí modulu příkazového adresáře převést na obrázek převést datovou sadu na datový typ "adresář obrázků", což je standardizovaný formát dat v úkolech souvisejících s obrázky, jako je například klasifikace obrázku v Návrháři Azure Machine Learning.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Jak použít převod na adresář imagí  
 
@@ -58,13 +58,13 @@ Výstup do adresářového **adresáře převést na Image** je ve formátu adre
 
 ###  <a name="expected-inputs"></a>Očekávané vstupy  
 
-| Název          | Typ                  | Popis   |
+| Název          | Typ                  | Description   |
 | ------------- | --------------------- | ------------- |
 | Vstupní datová sada | AnyDirectory, podřízený ZipFile | Vstupní datová sada |
 
 ###  <a name="output"></a>Výstup  
 
-| Název                   | Typ           | Popis            |
+| Název                   | Typ           | Description            |
 | ---------------------- | -------------- | ---------------------- |
 | Adresář výstupních imagí | ImageDirectory | Adresář výstupních imagí |
 

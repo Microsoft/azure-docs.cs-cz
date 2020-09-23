@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 71bcb72b645c574eedd24ff868751f366738e73d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935683"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976498"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Odolnost a zotavení po havárii ve službě Azure Signal
 
@@ -42,7 +42,7 @@ Pokud je však klient připojen, je vždy směrován do aplikačního serveru ve
 
 Níže je diagram, který znázorňuje takovou topologii:
 
-![topologie](media/signalr-concept-disaster-recovery/topology.png)
+![Diagram zobrazuje dvě oblasti každý pomocí aplikačního serveru a služby signalizace, kde je každý server přidružený ke službě signalizace ve své oblasti jako primární a ke službě v jiné oblasti jako sekundární.](media/signalr-concept-disaster-recovery/topology.png)
 
 ## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Konfigurace aplikačních serverů s více instancemi služby signalizace
 

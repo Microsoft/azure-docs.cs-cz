@@ -10,16 +10,16 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8c97ee9782f728e39175ed2517b64020ca4169f4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649396"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897370"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)nebo [sadu Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
 
@@ -423,5 +423,5 @@ Azure Machine Learning pracovní prostor používá pro některé operace Azure 
 ## <a name="next-steps"></a>Další kroky
 
 - Projděte si [odkaz na úplný REST API AzureML](https://docs.microsoft.com/rest/api/azureml/).
-- Naučte se používat nástroje Studio & Designer k [předpovědi ceny automobilu pomocí návrháře (Preview)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
+- Naučte se, jak pomocí návrháře [předpovídat cenu automobilu s návrhářem](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
 - Prozkoumejte [Azure Machine Learning s poznámkovým blokem Jupyter](https://docs.microsoft.com/azure//machine-learning/samples-notebooks).

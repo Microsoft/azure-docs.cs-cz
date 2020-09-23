@@ -1,6 +1,6 @@
 ---
-title: Zálohování a obnovení databází – Azure SQL Edge (Preview)
-description: Přečtěte si o možnostech zálohování a obnovení ve službě Azure SQL Edge (Preview).
+title: Zálohování a obnovení databází – Azure SQL Edge
+description: Přečtěte si o možnostech zálohování a obnovení v Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667858"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905943"
 ---
-# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>Zálohování a obnovení databází v Azure SQL Edge (Preview) 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Zálohování a obnovení databází v Azure SQL Edge 
 
-Azure SQL Edge je založený na nejnovějších verzích Microsoft SQL Server databázového stroje v systému Linux. Nabízí podobné možnosti zálohování a obnovení databáze jako dostupné v SQL Server on Linux a SQL Server spouštění v kontejnerech. Součást zálohování a obnovení poskytuje základní ochranu pro ochranu dat uložených v databázích Azure SQL Edge. 
+Azure SQL Edge je založený na nejnovějších verzích modulu Microsoft SQL Database Engine. Nabízí podobné možnosti zálohování a obnovení databáze jako dostupné v SQL Server on Linux a SQL Server spouštění v kontejnerech. Součást zálohování a obnovení poskytuje základní ochranu pro ochranu dat uložených v databázích Azure SQL Edge. 
 
 K minimalizaci rizika závažné ztráty dat byste měli zálohovat databáze pravidelně, abyste mohli pravidelně uchovávat změny vašich dat. Dobře naplánovaná strategie zálohování a obnovení pomáhá chránit databáze před ztrátou dat způsobenou nejrůznějšími selháními. Otestujte svoji strategii obnovením sady záloh a následnou obnovením databáze, abyste se připravili na případnou reakci.
 
@@ -75,7 +75,7 @@ V následujícím příkladu použijete `BACKUP DATABASE` příkaz Transact-SQL 
 
 ### <a name="back-up-to-url"></a>Zálohovat na adresu URL
 
-Azure SQL Edge podporuje zálohování do objektů blob stránky a objektů blob bloku. Další informace najdete v tématu [zálohování objektů blob bloku](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob)objektů blob stránky. V následujícím příkladu se databáze *IronOreSilicaPrediction* zálohuje do objektu blob bloku. 
+Azure SQL Edge podporuje zálohování do objektů blob stránky a objektů blob bloku. Další informace najdete v tématu [zálohování objektů blob bloku](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob)objektů blob stránky. V následujícím příkladu se databáze *IronOreSilicaPrediction* zálohuje do objektu blob bloku. 
 
 1. Pokud chcete nakonfigurovat zálohování pro blokování objektů blob, nejdřív vygenerujte token sdíleného přístupového podpisu (SAS), který můžete použít k vytvoření SQL Server přihlašovacích údajů na Edge SQL Azure. Skript vytvoří SAS, která je přidružená k zásadám uloženého přístupu. Další informace najdete v tématu [signatury sdíleného přístupu, část 1: Princip modelu SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/). Skript také zapíše příkaz T-SQL vyžadovaný k vytvoření přihlašovacích údajů na SQL Server. Následující skript předpokládá, že už máte předplatné Azure s účtem úložiště a kontejner úložiště pro zálohy.
 
@@ -133,7 +133,10 @@ Azure SQL Edge podporuje zálohování do objektů blob stránky a objektů blob
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>Obnovení databáze ve službě Azure SQL Edge
 
-V Azure SQL Edge můžete obnovení obnovit z místního disku, umístění v síti nebo účtu úložiště objektů BLOB v Azure. Další informace o obnovení a obnovení v SQL Server najdete v tématu [Přehled obnovení a obnovení](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15). Přehled jednoduchého modelu obnovení v SQL Server najdete v tématu úplné obnovení [databáze (jednoduchý model obnovení)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15).
+V Azure SQL Edge můžete obnovení obnovit z místního disku, umístění v síti nebo účtu úložiště objektů BLOB v Azure. Další informace o obnovení a obnovení v SQL Server najdete v tématu [Přehled obnovení a obnovení](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server). Přehled jednoduchého modelu obnovení v SQL Server najdete v tématu úplné obnovení [databáze (jednoduchý model obnovení)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model).
+
+> [!IMPORTANT] 
+> Databáze vytvořené v Azure SQL Edge nejde obnovit na instanci Microsoft SQL Server nebo Azure SQL. Kromě toho může být databáze vytvořená v Microsoft SQL Server nebo Azure SQL obnovená na Edge SQL Azure, pokud databáze neobsahuje žádnou z funkcí, které Azure SQL Edge nepodporuje. 
 
 ### <a name="restore-from-a-local-disk"></a>Obnovení z místního disku
 

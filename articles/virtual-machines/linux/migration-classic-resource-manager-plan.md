@@ -1,6 +1,6 @@
 ---
 title: Plánování migrace z modelu Classic na Azure Resource Manager
-description: Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru
+description: V tomto článku se dozvíte, jak naplánovat migraci prostředků IaaS z modelu Classic na Azure Resource Manager v systému Linux.
 services: virtual-machines-linux
 author: tanmaygore
 manager: vashan
@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: bb8045e8986ce52b6dddf63421edaa34243ea5df
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 496d58ee76e678e2529914ff2c586ce46bb01a92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506443"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967669"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager v systému Linux
 

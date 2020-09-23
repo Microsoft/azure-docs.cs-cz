@@ -11,17 +11,17 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8e8d0a13bc01e95311345154648ecb00b624c4bf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647235"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905610"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak spustit model Azure Machine Learning paralelně a rychle vyhodnocovat velké objemy dat. 
+
+V tomto článku se dozvíte, jak paralelně spustit model služby Azure Machine Learning a rychle vyhodnocovat velké objemy dat. 
 
 Inferencing prostřednictvím velkých datových sad nebo složitých modelů může být časově náročná. Tato `ParallelRunStep` Třída umožňuje zpracovávat paralelně a může rychleji získat celkové výsledky. I v případě, že je jedno vyhodnocení poměrně rychlé, mnoho scénářů (detekce objektů, zpracování videa, zpracování přirozeného jazyka atd.) zahrnuje spouštění mnoha hodnocení. 
 
