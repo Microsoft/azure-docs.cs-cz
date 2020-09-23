@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659635"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895799"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -38,6 +38,7 @@ Jakmile povolíte Azure Sentinel, je nejdřív potřeba udělat připojení ke z
 
    ![Další kroky pro konektory](./media/collect-data/data-insights.png)
  
+
 ## <a name="data-connection-methods"></a>Metody datového připojení
 
 Služba Azure Sentinel podporuje následující metody datového připojení:
@@ -49,7 +50,7 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Microsoft Defender pro identitu](connect-azure-atp.md) (dříve Rozšířená ochrana před internetovými útoky Azure)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Defender](connect-azure-security-center.md) (dřív Azure Security Center)
+    - [Azure Security Center](connect-azure-security-center.md) – výstrahy z řešení Azure Defenderu
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Server DNS](connect-dns.md)
     - [Office 365](connect-office-365.md)
@@ -135,7 +136,7 @@ Případně můžete agenta nasadit ručně na existující virtuální počíta
 | WindowsFirewall | [Připojit bránu Windows Firewall](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Připojení Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | &#10003; | |
 | AATP SecurityAlert  | [Připojení programu Microsoft Defender k identitě](connect-azure-atp.md) (dříve atp. Azure) | &#10003; | |
-| SecurityAlert ASC  | [Připojit Azure Defender](connect-azure-security-center.md) (dřív Azure Security Center)  | &#10003; | |
+| SecurityAlert ASC  | [Připojení výstrah v programu Azure Defender](connect-azure-security-center.md) z Azure Security Center  | &#10003; | |
 | MCAS SecurityAlert  | [Připojit Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (událost) | [Připojit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Připojit události systému Windows](../azure-monitor/platform/data-sources-windows-events.md) <br> [Získání analyzátoru Sysmon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Kolekce Sysmon není ve výchozím nastavení ve virtuálních počítačích nainstalovaná. Další informace o tom, jak nainstalovat agenta Sysmon, najdete v tématu [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |

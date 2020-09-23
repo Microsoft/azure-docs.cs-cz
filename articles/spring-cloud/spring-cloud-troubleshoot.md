@@ -4,15 +4,16 @@ description: Průvodce odstraňováním potíží pro jarní cloud Azure
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669766"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904192"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Řešení běžných problémů s jarním cloudem v Azure
 
@@ -20,6 +21,7 @@ Tento článek poskytuje pokyny pro řešení potíží s vývojem ve službě A
 
 ## <a name="availability-performance-and-application-issues"></a>Problémy s dostupností, výkonem a aplikacemi
 
+::: zone pivot="programming-language-java"
 ### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Moje aplikace se nemůže spustit (například koncový bod nelze připojit, nebo po několika opakovaných pokusech vrátí 502).
 
 Exportujte protokoly do Azure Log Analytics. Tabulka pro protokoly aplikace pružiny má název *AppPlatformLogsforSpring*. Další informace najdete v tématu [Analýza protokolů a metrik pomocí nastavení diagnostiky](diagnostic-services.md).
@@ -67,6 +69,7 @@ Při ladění selhání aplikace Začněte kontrolou stavu spuštění a stavu z
 
 
 Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>V aplikaci dochází k vysokému využití procesoru nebo paměti
 
@@ -90,6 +93,7 @@ Pokud jsou všechny instance v provozu, můžete přejít na Azure Log Analytics
 
 Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](https://docs.microsoft.com/azure/kusto/query/)
 
+::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Kontrolní seznam pro nasazení aplikace pružiny do jarního cloudu Azure
 
 Před zprovozněním aplikace se ujistěte, že splňuje následující kritéria:
@@ -101,6 +105,7 @@ Před zprovozněním aplikace se ujistěte, že splňuje následující kritéri
 * Parametry JVM mají své očekávané hodnoty.
 * Doporučujeme, abyste z balíčku aplikace zapnuli nebo odebrali integrovaný _konfigurační server_ a služby _registru služby pružiny_ .
 * Pokud se nějaké prostředky Azure mají vázat přes _vazbu služby_, ujistěte se, že jsou cílové prostředky v provozu.
+::: zone-end
 
 ## <a name="configuration-and-management"></a>Konfigurace a správa
 
@@ -119,6 +124,17 @@ Pokud chcete nastavit instanci služby jarní cloudovou službu Azure pomocí š
 
 Název instance služby jarní cloudová služba Azure se použije pro vyžádání názvu subdomény v rámci `azureapps.io` , takže pokud je název v konfliktu s existujícím názvem, instalace selže. Další podrobnosti najdete v protokolech aktivit.
 
+::: zone pivot="programming-language-java"
+### <a name="i-cant-deploy-a-net-core-app"></a>Nemůžu nasadit aplikaci .NET Core
+
+Soubor *. zip* pro aplikaci .NET Core Steeltoe nemůžete nahrát pomocí Azure Portal nebo šablony Správce prostředků.
+
+Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
+
+Ujistěte se, že je vaše aplikace zabalená ve správném formátu *. zip* . Pokud není zabaleno správně, proces se zablokuje nebo se zobrazí chybová zpráva.
+::: zone-end
+
+::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-jar-package"></a>Nemůžu nasadit balíček JAR
 
 Balíček/source archivu Java (JAR) nemůžete nahrát pomocí šablony Azure Portal nebo Správce prostředků.
@@ -216,3 +232,8 @@ Zkontrolujte `spring-boot-actuator` , zda je závislost povolena v balíčku apl
 ```
 
 Pokud se protokoly aplikací můžou archivovat do účtu úložiště, ale neodesílají se do Azure Log Analytics, zkontrolujte, jestli jste [pracovní prostor správně nastavili](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Pokud používáte bezplatnou úroveň Azure Log Analytics, mějte na paměti, že úroveň [Free neposkytuje smlouvu o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+::: zone-end
+
+## <a name="next-steps"></a>Další kroky
+
+* [Jak provést samočinnou diagnostiku a řešení problémů v Azure jaře cloudu](spring-cloud-howto-self-diagnose-solve.md)

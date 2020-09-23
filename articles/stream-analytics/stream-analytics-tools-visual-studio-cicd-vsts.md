@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75354435"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903833"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Kurz: Nasazení úlohy Azure Stream Analytics s CI/CD pomocí Azure Pipelines
 Tento kurz popisuje, jak nastavit kontinuální integraci a nasazení pro úlohu Azure Stream Analytics pomocí služby Azure Pipelines. 
@@ -26,8 +26,12 @@ V tomto kurzu se naučíte:
 > * Vytvoření kanálu verze v Azure Pipelines
 > * Automatické nasazení a upgrade aplikace
 
+> [!NOTE]
+> NuGet pro CI/CD se už nepoužívá. Informace o tom, jak migrovat na nejnovější NPM, najdete v tématu [Přehled průběžné integrace a nasazení](cicd-overview.md) .
+
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, ujistěte se, že jste provedli následující akce:
+
+Než začnete, ujistěte se, že jste provedli následující kroky:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) a úlohy **Vývoj pro Azure** nebo **Ukládání a zpracování dat**.
@@ -63,9 +67,9 @@ Nasdílejte zdrojové soubory své aplikace do projektu v Azure DevOps, abyste m
     Publikováním úložiště se ve vaší organizaci vytvoří nový projekt se stejným názvem jako místní úložiště. Chcete-li vytvořit úložiště v existujícím projektu, klikněte na tlačítko **Upřesnit** vedle **pole název úložiště**a vyberte projekt. Svůj kód můžete zobrazit v prohlížeči výběrem možnosti **Podívejte se na webu**.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Konfigurace průběžného doručování pomocí Azure DevOps
-Kanál buildu Azure Pipelines popisuje pracovní postup složený z postupně prováděných kroků buildu. Přečtěte si další informace o [kanálech buildu Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav). 
+Kanál buildu Azure Pipelines popisuje pracovní postup složený z postupně prováděných kroků buildu. Přečtěte si další informace o [kanálech buildu Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true).
 
-Kanál verze Azure Pipelines popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití provedou kanál buildu a kanál verze celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Přečtěte si další informace o [kanálech verze](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) Azure Pipelines.
+Kanál verze Azure Pipelines popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití provedou kanál buildu a kanál verze celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Přečtěte si další informace o [kanálech verze](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true) Azure Pipelines.
 
 ### <a name="create-a-build-pipeline"></a>Vytvoření kanálu buildu
 Otevřete webový prohlížeč a přejděte na projekt, který jste právě vytvořili v [Azure DevOps](https://app.vsaex.visualstudio.com/). 
@@ -121,7 +125,7 @@ Otevřete webový prohlížeč a přejděte na projekt, který jste právě vytv
     |Skupina prostředků  |  Zadejte název skupiny prostředků.   |
     |Šablona  | [Cesta k vašemu řešení] \bin\Debug\Deploy\\[Název projektu]. JobTemplate.json   |
     |Parametry šablony  | [Cesta k vašemu řešení] \bin\Debug\Deploy\\[Název projektu]. JobTemplate.parameters.json   |
-    |Přepsání parametrů šablony  | Do textového pole zadejte parametry šablony, které chcete přepsat. Například –storageName fabrikam –adminUsername $(vmusername) –adminPassword $(password) –azureKeyVaultName $(fabrikamFibre). Tato vlastnost je volitelná, ale pokud klíčové parametry nepřepíšete, sestavení skončí s chybou.    |
+    |Přepsání parametrů šablony  | Do textového pole zadejte parametry šablony, které chcete přepsat. Příklad `–storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre)` :. Tato vlastnost je volitelná, ale pokud klíčové parametry nepřepíšete, sestavení skončí s chybou.    |
     
     ![Nastavení vlastností pro nasazení skupiny prostředků Azure](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
@@ -158,7 +162,7 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o použití nástrojů Azure Stream Analytics pro Visual Studio k nastavení průběžné integrace a procesu nasazení najdete v pokračování popisujícím nastavení kanálu CI/CD:
+Další informace o použití Azure Stream Analyticsch nástrojů pro Visual Studio k nastavení procesu průběžné integrace a nasazování najdete v článku o kanálu CI/CD nastavení:
 
 > [!div class="nextstepaction"]
 > [Průběžná integrace a vývoj s použitím nástrojů Stream Analytics](stream-analytics-tools-for-visual-studio-cicd.md)

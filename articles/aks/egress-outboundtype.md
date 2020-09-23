@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796965"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975292"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy
 
@@ -51,7 +51,7 @@ Následující konfigurace se provádí pomocí AKS.
 
 Níže je síťová topologie nasazená v clusterech AKS ve výchozím nastavení, která `outboundType` používají `loadBalancer` .
 
-![outboundtype-kg](media/egress-outboundtype/outboundtype-lb.png)
+![Diagram zobrazuje vstupní I P a výstup I P, kde příchozí I P směřuje provoz na nástroj pro vyrovnávání zatížení, který směruje provoz do a z interního clusteru a další provoz na výstup I P, který směruje provoz na Internet, C-R, požadované služby Azure a řídicí rovinu A K S.](media/egress-outboundtype/outboundtype-lb.png)
 
 ### <a name="outbound-type-of-userdefinedrouting"></a>Odchozí typ userDefinedRouting
 

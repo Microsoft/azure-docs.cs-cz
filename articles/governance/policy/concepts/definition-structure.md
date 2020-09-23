@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895383"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -206,8 +206,10 @@ Při vytváření iniciativy nebo zásad je nutné zadat umístění definice. U
 
 Pokud je umístění definice:
 
-- Zásadu můžou přiřadit jenom prostředky v rámci daného **předplatného** .
-- Zásadu můžou přiřadit jenom prostředky v rámci podřízených skupin **pro správu a** podřízených předplatných. Pokud plánujete použít definici zásady pro několik předplatných, umístění musí být skupina pro správu, která obsahuje předplatné.
+- V rámci tohoto předplatného se dají přiřadit definice zásady jenom pro prostředky s **předplatným** .
+- Pro **skupinu pro správu** jsou k disřádek pouze prostředky v rámci podřízených skupin pro správu a podřízených odběrů. Pokud plánujete použít definici zásady pro několik předplatných, umístění musí být skupina pro správu, která obsahuje každé předplatné.
+
+Další informace najdete v tématu [vysvětlení oboru v Azure Policy](./scope.md#definition-location).
 
 ## <a name="policy-rule"></a>Pravidlo zásad
 
@@ -576,13 +578,13 @@ Pro použití v rámci pravidla zásad jsou k dispozici všechny [funkce šablon
 Tato funkce je k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager (šablona ARM):
 
 - `utcNow()` -Na rozdíl od šablony ARM lze tuto vlastnost použít mimo vlastnost _DefaultValue_.
-  - Vrátí řetězec, který je nastaven na aktuální datum a čas ve formátu Universal ISO 8601 DateTime yyyy-MM-ddTHH: mm: ss. fffffffZ.
+  - Vrátí řetězec, který je nastaven na aktuální datum a čas ve formátu Universal ISO 8601 DateTime `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 Následující funkce jsou dostupné jenom v pravidlech zásad:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime "rrrr-MM-DDThh: mm: ss. fffffffZ"
-  - **numberOfDaysToAdd**: [povinné] celé číslo-počet dnů k přidání
+  - **DateTime**: [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
+  - **numberOfDaysToAdd**: [required] celočíselný počet dní k přidání.
 - `field(fieldName)`
   - **FieldName**: [required] řetězec-název [pole](#fields) , které se má načíst
   - Vrátí hodnotu tohoto pole z prostředku, který je vyhodnocován podmínkou if.
@@ -679,7 +681,7 @@ Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou akt
 
 ### <a name="understanding-the--alias"></a>Princip aliasu [*]
 
-Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Například:
+Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Příklad:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

@@ -3,12 +3,12 @@ title: Instalace agenta Microsoft Azure Recovery Services (MARS)
 description: Naučte se, jak nainstalovat agenta Microsoft Azure Recovery Services (MARS) pro zálohování počítačů s Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533474"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975299"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalace agenta Azure Backup MARS
 
@@ -42,10 +42,10 @@ Data, která jsou k dispozici pro zálohování, závisí na tom, kde je agent n
 
 ## <a name="modify-storage-replication"></a>Úprava replikace úložiště
 
-Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md).
+Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage).
 
 * Pokud je trezor vaším primárním zálohovacím mechanismem, doporučujeme použít GRS.
-* Pomocí [místně redundantního úložiště (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) můžete snížit náklady na službu Azure Storage.
+* Pomocí [místně redundantního úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) můžete snížit náklady na službu Azure Storage.
 
 Postup úpravy typu replikace úložiště:
 

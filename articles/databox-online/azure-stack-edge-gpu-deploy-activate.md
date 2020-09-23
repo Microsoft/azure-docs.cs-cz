@@ -1,24 +1,24 @@
 ---
-title: Kurz aktivace zařízení Azure Stack Edge pomocí GPU v Azure Portal | Microsoft Docs
-description: Kurz nasazení Azure Stack hraničního procesoru vám dává pokyn k aktivaci fyzického zařízení.
+title: Kurz pro aktivaci zařízení Azure Stack Edge pro pomocí GPU v Azure Portal | Microsoft Docs
+description: Kurz nasazení Azure Stack Edge pro GPU vám dává pokyn k aktivaci fyzického zařízení.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 88be4d9753e48f70dae5666e800a54209ed6ba3f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267934"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903497"
 ---
-# <a name="tutorial-activate-azure-stack-edge-with-gpu"></a>Kurz: Aktivace Azure Stack Edge pomocí GPU
+# <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Kurz: Aktivace Azure Stack Edge pro pomocí GPU
 
-V tomto kurzu se dozvíte, jak můžete aktivovat zařízení Azure Stack Edge pomocí integrovaného GPU pomocí místního webového uživatelského rozhraní.
+V tomto kurzu se dozvíte, jak můžete aktivovat zařízení Azure Stack Edge pro pomocí integrovaného GPU pomocí místního webového uživatelského rozhraní.
 
 Dokončení procesu aktivace může trvat přibližně 5 minut.
 
@@ -30,15 +30,15 @@ V tomto kurzu jste se dozvěděli o:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GPU se ujistěte, že:
+Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým procesorem, ujistěte se, že:
 
 * Pro vaše fyzické zařízení: 
     
-    - Nainstalovali jste fyzické zařízení, jak je popsáno v části [instalace Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md).
+    - Nainstalovali jste fyzické zařízení, jak je popsáno v části [instalace Azure Stack Edge pro](azure-stack-edge-gpu-deploy-install.md).
     - Nakonfigurovali jste nastavení sítě a COMPUTE sítě, jak je popsáno v části [Konfigurace sítě, výpočetní sítě, webového proxy serveru](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md) .
     - Nahráli jste vlastní nebo vygenerovali certifikáty zařízení v zařízení, pokud jste změnili název zařízení nebo doménu DNS přes stránku **zařízení** . Pokud jste tento krok neudělali, zobrazí se během aktivace zařízení chyba a aktivace se zablokuje. Další informace najdete v na webu [Konfigurace certifikátů](azure-stack-edge-gpu-deploy-configure-certificates.md).
     
-* Máte aktivační klíč ze služby Azure Stack Edge, kterou jste vytvořili pro správu Azure Stack hraničního zařízení. Další informace najdete na webu [Příprava nasazení Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md).
+* Máte aktivační klíč ze služby Azure Stack Edge, kterou jste vytvořili pro správu zařízení Azure Stack Edge pro. Další informace najdete na webu [Příprava nasazení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md).
 
 
 ## <a name="activate-the-device"></a>Aktivovat zařízení
@@ -48,7 +48,7 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GP
 
     ![Stránka Podrobnosti cloudu místního webového uživatelského rozhraní](./media/azure-stack-edge-gpu-deploy-activate/activate-1.png)
     
-3. V podokně **aktivovat** zadejte **aktivační klíč** , který jste získali v [části získání aktivačního klíče pro Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key).
+3. V podokně **aktivovat** zadejte **aktivační klíč** , který jste získali v [části získání aktivačního klíče pro Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key).
 
 4. Vyberte **Použít**.
 
@@ -59,25 +59,27 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GP
     
     ![Stránka Podrobnosti cloudu místního webového uživatelského rozhraní](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
-    Vyberte **Stáhnout soubor klíče** a uložte *keys.js* do souboru v bezpečném umístění mimo zařízení. **Tento soubor klíče obsahuje obnovovací klíče pro disk s operačním systémem a datové disky na vašem zařízení**. Tady je obsah *keys.jsv* souboru:
+    Vyberte **Stáhnout a pokračovat** a uložte *device-serial-no.js* do souboru v bezpečném umístění mimo zařízení. **Tento soubor klíče obsahuje obnovovací klíče pro disk s operačním systémem a datové disky na vašem zařízení**. Tyto klíče mohou být potřeba k usnadnění budoucího obnovení systému.
+
+    Tady je obsah souboru *JSON* :
 
         
     ```json
     {
-      "Id": "1ab3fe39-26e6-4984-bb22-2e02d3fb147e",
+      "Id": "<Device ID>",
       "DataVolumeBitLockerExternalKeys": {
-        "hcsinternal": "C086yg1DrPo0DuZB/a7hUh+kBWj804coJfBA9LDzZqw=",
-        "hcsdata": "8ohX9bG3YSZl9DZmZLkYl//L9dXi1XiQrqza+iSd64Q="
+        "hcsinternal": "<BitLocker key for data disk>",
+        "hcsdata": "<BitLocker key for data disk>"
       },
-      "SystemVolumeBitLockerRecoveryKey": "105347-156739-594473-151107-005082-252604-471955-439395",
-      "ServiceEncryptionKey": "oEwxNJeULzGRFt6DsLgcLw=="
+      "SystemVolumeBitLockerRecoveryKey": "<BitLocker key for system volume>",
+      "ServiceEncryptionKey": "<Azure service encryption key>"
     }
     ```
         
  
-    Následující tabulka popisuje různé klíče:
+    Různé klíče jsou vysvětleny v následující tabulce:
     
-    |Pole  |Popis  |
+    |Pole  |Description  |
     |---------|---------|
     |`Id`    | Toto je ID zařízení.        |
     |`DataVolumeBitLockerExternalKeys`|Jedná se o klíče BitLockeru pro datové disky a používají se k obnovení místních dat v zařízení.|
@@ -99,7 +101,7 @@ V tomto kurzu jste se dozvěděli o:
 > * Požadavky
 > * Aktivace fyzického zařízení
 
-Informace o tom, jak přenést data pomocí Azure Stack hraniční zařízení, najdete v těchto tématech:
+Informace o tom, jak přenést data pomocí zařízení Azure Stack Edge pro, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Přenos dat pomocí Azure Stack Edge](./azure-stack-edge-j-series-deploy-add-shares.md)
+> [Přenos dat pomocí Azure Stack Edge pro](./azure-stack-edge-j-series-deploy-add-shares.md)

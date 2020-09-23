@@ -1,23 +1,23 @@
 ---
 title: Předdefinované definice zásad pro servery s podporou ARC Azure
 description: Uvádí Azure Policy předdefinované definice zásad pro servery s podporou ARC Azure (Preview). Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 15e7ab3e8b6f355f112aafe20afdea80f958fda8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 792532c407687a84a4e90c34fd7d1c69ba0fcedd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007226"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967374"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers-preview"></a>Azure Policy předdefinované definice pro servery s podporou ARC Azure (Preview)
+# <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Azure Policy předdefinované definice pro servery s podporou ARC Azure
 
-Tato stránka je indexem [Azure Policy](../../governance/policy/overview.md) integrovaných definic zásad pro servery s podporou Azure ARC (Preview). Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../../governance/policy/samples/built-in-policies.md).
+Tato stránka je indexem [Azure Policy](../../governance/policy/overview.md) integrovaných definic zásad pro servery s podporou ARC Azure. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../../governance/policy/samples/built-in-policies.md).
 
 Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Pomocí odkazu ve sloupci **verze** Zobrazte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
-## <a name="azure-arc-enabled-servers-preview"></a>Servery s podporou služby Azure Arc (Preview)
+## <a name="azure-arc-enabled-servers"></a>Servery s podporou služby Azure Arc
 
 [!INCLUDE [azure-policy-reference-rp-arcserver](../../../includes/policy/reference/byrp/microsoft.hybridcompute.md)]
 

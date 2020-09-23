@@ -11,15 +11,15 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141121"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897415"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte o předem konfigurovaných omezeních prostředků Azure pro vaše předplatné [Azure Machine Learning](overview-what-is-azure-ml.md) a o tom, jaké kvóty můžete spravovat. Tato omezení jsou zavedena, aby nedocházelo k překročení rozpočtu v důsledku podvodů, a k zajištění omezení kapacity Azure. 
 
@@ -99,8 +99,6 @@ Pokud chcete nastavit kvóty na úrovni pracovního prostoru, přejděte na libo
 
 
 > [!NOTE]
-> Toto je jenom funkce edice Enterprise. Pokud v předplatném máte pracovní prostor [Basic i Enterprise Edition](overview-what-is-azure-ml.md#sku) , můžete ho použít jenom v pracovních prostorech vaší organizace. Vaše základní pracovní prostory budou i nadále mít kvótu na úrovni předplatného, což je výchozí chování.
->
 > Pro nastavení kvóty na úrovni pracovního prostoru potřebujete oprávnění na úrovni předplatného. Tím se vynutilo, že jednotliví vlastníci pracovního prostoru neupravují ani nezvyšují své kvóty a začnou encroaching na prostředky, které jsou pro jiný pracovní prostor vyhrazené. Správce předplatného se proto nejlépe hodí k přidělování a distribuci těchto kvót napříč pracovními prostory.
 
 
@@ -137,7 +135,7 @@ Mezní hodnoty se nedají vyhodnotit nad maximální hodnotou limitu zobrazenou 
 Při žádosti o zvýšení kvóty musíte vybrat službu, pro kterou požadujete zvýšit kvótu, což by mohlo být služby, například Machine Learning kvóta služby, instance kontejnerů nebo kvóta úložiště. Kromě Azure Machine Learning COMPUTE můžete kliknout na tlačítko **kvóta žádosti** a při zobrazení kvóty podle výše uvedeného postupu.
 
 > [!NOTE]
-> [Bezplatné zkušební odběry](https://azure.microsoft.com/offers/ms-azr-0044p) nejsou způsobilé pro zvýšení limitu nebo kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade bezplatné zkušební verze Azure na](../billing/billing-upgrade-azure-subscription.md) Nejčastější dotazy týkající se průběžných plateb a [bezplatné zkušební verze předplatného](https://azure.microsoft.com/free/free-account-faq).
+> [Bezplatné zkušební odběry](https://azure.microsoft.com/offers/ms-azr-0044p) nejsou způsobilé pro zvýšení limitu nebo kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade bezplatné zkušební verze Azure na](../billing/billing-upgrade-azure-subscription.md) Nejčastější dotazy týkající se průběžných plateb a  [bezplatné zkušební verze předplatného](https://azure.microsoft.com/free/free-account-faq).
 
 ## <a name="next-steps"></a>Další kroky
 

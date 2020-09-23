@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497110"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984062"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Správa a analýza protokolů toku skupin zabezpečení sítě v Azure pomocí Network Watcher a Graylogu
 
@@ -175,10 +175,10 @@ Další informace o tomto modulu plug-in najdete v [dokumentaci](https://github.
 
 Teď, když jste navázali připojení k protokolům Flow pomocí Logstash a nastavili jste server Graylogu, musíte nakonfigurovat Graylogu pro příjem příchozích souborů protokolu.
 
-1. Přejděte na webové rozhraní serveru Graylogu pomocí adresy URL, kterou jste pro něj nakonfigurovali. K rozhraní můžete přistupovat nasměrováním prohlížeče na`http://<graylog-server-ip>:9000/`
+1. Přejděte na webové rozhraní serveru Graylogu pomocí adresy URL, kterou jste pro něj nakonfigurovali. K rozhraní můžete přistupovat nasměrováním prohlížeče na `http://<graylog-server-ip>:9000/`
 
 2. Chcete-li přejít na stránku konfigurace, v horním navigačním panelu klikněte na rozevírací nabídku **systém** a potom klikněte na možnost **vstupy**.
-   Případně přejděte na`http://<graylog-server-ip>:9000/system/inputs`
+   Případně přejděte na `http://<graylog-server-ip>:9000/system/inputs`
 
    ![Začínáme](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
@@ -186,7 +186,7 @@ Teď, když jste navázali připojení k protokolům Flow pomocí Logstash a nas
 
    Ujistěte se, že vstup navážete na IP adresu, na které jste nakonfigurovali server Graylogu. IP adresa by se měla shodovat s polem **hostitel** výstupu protokolu UDP konfiguračního souboru Logstash. Výchozí port by měl být *12201*. Zajistěte, aby se port shodoval s polem **port** ve výstupu UDP určeném v konfiguračním souboru Logstash.
 
-   ![Vstupy](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Snímek obrazovky ukazuje vstupy Graylogu s možnostmi spouštění a hledání vstupů.](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    Po spuštění vstupu by se měla zobrazit v části **místní vstupy** , jak je znázorněno na následujícím obrázku:
 
@@ -200,11 +200,11 @@ Teď, když jste navázali připojení k protokolům Flow pomocí Logstash a nas
 
 Když pro server Graylogu zadáte nějakou dobu, abyste mohli shromažďovat zprávy, můžete zprávy prohledávat. Pokud chcete kontrolovat zprávy odesílané vašemu Graylogu serveru, na stránce konfigurace **vstupů** klikněte na tlačítko**Zobrazit přijaté zprávy**u vstupu GELF UDP, který jste vytvořili. Budete přesměrováni na obrazovku, která bude vypadat podobně jako na následujícím obrázku: 
 
-![Histogram](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
+![Snímek obrazovky ukazuje server Graylogu, který zobrazuje výsledky hledání, histogramy a zprávy.](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
 Kliknutím na modrý odkaz "% {Message}" rozbalíte jednotlivé zprávy a zobrazíte parametry jednotlivých řazených kolekcí členů toku, jak je znázorněno na následujícím obrázku:
 
-![Zprávy](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![Snímek obrazovky zobrazuje podrobnosti zprávy ze serveru Graylogu.](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
 Ve výchozím nastavení jsou všechna pole zpráv ve vyhledávání obsažena, pokud nevyberete konkrétní pole zprávy, které chcete vyhledat. Pokud chcete vyhledat konkrétní zprávy (tj. – počet řazených kolekcí členů toku z konkrétní zdrojové IP adresy: můžete použít jazyk vyhledávacího dotazu Graylogu, jak je [uvedeno](https://docs.graylog.org/en/2.2/pages/queries.html) níže.
 
@@ -214,11 +214,11 @@ Teď, když je spuštěný Graylogu, můžete využít některé z jeho funkcí 
 
 ### <a name="create-a-dashboard"></a>Vytvoření řídicího panelu
 
-1. V horním navigačním panelu vyberte **řídicí panely** nebo přejděte na`http://<graylog-server-ip>:9000/dashboards/`
+1. V horním navigačním panelu vyberte **řídicí panely** nebo přejděte na `http://<graylog-server-ip>:9000/dashboards/`
 
 2. Odtud klikněte na zelené tlačítko **vytvořit řídicí panel** a vyplňte krátký tvar názvem a popisem řídicího panelu. Stisknutím tlačítka **Uložit** vytvořte nový řídicí panel. Zobrazí se řídicí panel podobný následujícímu obrázku:
 
-    ![Řídicí panely](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
+    ![Snímek obrazovky ukazuje řídicí panely serveru Graylogu s možnostmi pro vytváření a úpravu řídicích panelů.](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>Přidat widgety
 

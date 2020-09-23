@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7adeb9682336b19cc87d8c73a7f9ad8bda5e7828
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e814487cb4dab9c8c19daab2ea3bb81391d4a98f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564073"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983689"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Konfigurace tunelového připojení zařízení VPN typu Always On pro virtuální síť WAN
 
@@ -34,7 +34,7 @@ Musíte vytvořit konfiguraci Point-to-site a upravit přiřazení virtuálního
 
 Chcete-li odebrat profil, spusťte následující příkaz:
 
-![Vyčištění](./media/howto-always-on-device-tunnel/cleanup.png)
+![Snímek obrazovky se zobrazí okno PowerShellu, ve kterém se spouští příkaz Remove-VpnConnection-Name MachineCertTest.](./media/howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
 

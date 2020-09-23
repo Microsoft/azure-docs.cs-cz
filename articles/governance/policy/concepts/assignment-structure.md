@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
-ms.date: 08/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520709"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904071"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -17,7 +17,7 @@ Přiřazení zásad používají Azure Policy k definování prostředků, kter�
 K vytvoření přiřazení zásady použijte JSON. Přiřazení zásady obsahuje prvky pro:
 
 - zobrazované jméno
-- description
+- Popis
 - zprostředkovatele identity
 - režim vynucení
 - vyloučené obory
@@ -61,16 +61,19 @@ Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výslede
 
 Tato vlastnost má následující hodnoty:
 
-|Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
+|Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Description |
 |-|-|-|-|-|-|
 |Povoleno |Výchozí |řetězec |Yes |Yes |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
-|Zakázáno |DoNotEnforce |řetězec |Ano |No | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
+|Zakázáno |DoNotEnforce |řetězec |Yes |No | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
 
 Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , použije se _výchozí_ hodnota. Pro zásady [deployIfNotExists](./effects.md#deployifnotexists) se dají spouštět [úlohy nápravy](../how-to/remediate-resources.md) , a to i v případě, že **EnforcementMode** je nastavená na _DoNotEnforce_.
 
 ## <a name="excluded-scopes"></a>Vyloučené obory
 
-**Rozsah** přiřazení zahrnuje všechny podřízené kontejnery prostředků a podřízené prostředky. Pokud nadřazený kontejner prostředků nebo podřízený prostředek nemá použitu definici, každý z nich může být vyloučen z vyhodnocení nastavením **notScopes**. Tato vlastnost je pole, které umožňuje vyloučit jeden nebo více kontejnerů prostředků nebo prostředků ze vyhodnocení. **notScopes** se dá přidat nebo aktualizovat po vytvoření počátečního přiřazení.
+**Rozsah** přiřazení zahrnuje všechny podřízené kontejnery prostředků a podřízené prostředky. Pokud nadřazený kontejner prostředků nebo podřízený prostředek nemá použitu definici, každý z nich může být _vyloučen_ z vyhodnocení nastavením **notScopes**. Tato vlastnost je pole, které umožňuje vyloučit jeden nebo více kontejnerů prostředků nebo prostředků ze vyhodnocení. **notScopes** se dá přidat nebo aktualizovat po vytvoření počátečního přiřazení.
+
+> [!NOTE]
+> _Vyloučený_ prostředek se liší od _vyňatého_ prostředku. Další informace najdete v tématu [vysvětlení oboru v Azure Policy](./scope.md).
 
 ## <a name="policy-definition-id"></a>ID definice zásady
 

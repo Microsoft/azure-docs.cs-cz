@@ -1,6 +1,6 @@
 ---
-title: Synchronizace dat z Edge Azure SQL (Preview) pomocí Azure Data Factory
-description: Další informace o synchronizaci dat mezi Azure SQL Edge (Preview) a Azure Blob Storage
+title: Synchronizace dat z Azure SQL Edge pomocí Azure Data Factory
+description: Další informace o synchronizaci dat mezi Azure SQL Edge a Azure Blob Storage
 keywords: SQL Edge, synchronizace dat z SQL Edge a SQL Edge Data Factory
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85255428"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904166"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Kurz: synchronizace dat z Edge SQL do úložiště objektů BLOB v Azure pomocí Azure Data Factory
 

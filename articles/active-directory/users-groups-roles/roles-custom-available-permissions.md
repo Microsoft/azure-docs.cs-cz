@@ -1,6 +1,6 @@
 ---
-title: Dostupná oprávnění vlastní role správce – Azure AD | Microsoft Docs
-description: Oprávnění role vlastního správce pro delegování správy identit.
+title: Oprávnění vlastní role pro registraci aplikací – Azure AD | Microsoft Docs
+description: Delegovat oprávnění role vlastního správce pro správu registrací aplikací
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,27 +8,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c11723efe3fac236fce49c1f92fa338d4e58b59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 624489033097c0da4d85488b7ae376c5e0f3a56b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732102"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967687"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Podtypy registrace aplikace a oprávnění v Azure Active Directory
+# <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Oprávnění k registraci aplikací pro vlastní role v Azure Active Directory
 
 Tento článek obsahuje aktuálně dostupná oprávnění k registraci aplikací pro vlastní definice rolí v Azure Active Directory (Azure AD).
 
-## <a name="permissions-for-managing-single-directory-applications"></a>Oprávnění ke správě aplikací s jedním adresářem
+## <a name="permissions-for-managing-single-tenant-applications"></a>Oprávnění pro správu aplikací pro jednoho tenanta
 
-Při volbě oprávnění pro vlastní roli máte možnost udělit přístup pro správu pouze aplikací s jedním adresářem. Aplikace s jedním adresářem jsou k dispozici pouze uživatelům v organizaci Azure AD, kde je aplikace zaregistrovaná. Aplikace s jedním adresářem jsou definované jako **podporované typy účtů** nastavené na účty pouze v tomto organizačním adresáři. V Graph API aplikace s jedním adresářem mají vlastnost signInAudience nastavenou na "AzureADMyOrg".
+Při volbě oprávnění pro vlastní roli máte možnost udělit přístup pro správu pouze jednoho klienta aplikace. aplikace s jedním klientem jsou k dispozici pouze uživatelům v organizaci Azure AD, kde je aplikace zaregistrovaná. aplikace s jedním klientem jsou definované jako **podporované typy účtů** nastavené na účty pouze v tomto organizačním adresáři. V Graph API mají jednotlivé klientské aplikace vlastnost signInAudience nastavenou na hodnotu "AzureADMyOrg".
 
-Chcete-li udělit přístup ke správě pouze aplikací s jedním adresářem, použijte níže uvedená oprávnění u podtypu **Applications. myOrganization**. Například Microsoft. Directory/Applications. myOrganization/Basic/Update.
+Chcete-li udělit přístup ke správě pouze jednoho klienta aplikace, použijte níže uvedená oprávnění u podtypu **Applications. myOrganization**. Například Microsoft. Directory/Applications. myOrganization/Basic/Update.
 
 V tématu [Přehled vlastních rolí](roles-custom-overview.md) najdete vysvětlení významu podtypu, oprávnění a sady vlastností obecných podmínek. Následující informace jsou specifické pro registraci aplikací.
 
@@ -65,7 +65,7 @@ Udělí možnost odstraňovat registrace aplikací omezené na ty, které jsou p
 > [!NOTE]
 > Při přiřazování role, která obsahuje oprávnění k vytvoření, je nutné přiřazení role provést v oboru adresáře. Oprávnění vytvořit přiřazené v oboru prostředku neuděluje možnost vytvářet registrace aplikací.
 
-### <a name="read"></a>Čtení
+### <a name="read"></a>Číst
 
 Všichni členové členských uživatelů v organizaci můžou ve výchozím nastavení číst informace o registraci aplikace. Uživatelé typu Host a instanční objekty aplikace ale nemůžou. Pokud plánujete přiřadit roli uživateli nebo aplikaci typu Host, musíte zahrnout příslušná oprávnění ke čtení.
 
@@ -95,7 +95,7 @@ Udělí stejná oprávnění jako Microsoft. Directory/Applications/Standard/Rea
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>Microsoft. Directory/Applications/allProperties/Update
 
-Možnost aktualizovat všechny vlastnosti v jednom adresáři a ve více adresářových aplikacích.
+Možnost aktualizovat všechny vlastnosti v aplikacích pro jednoho tenanta a víceklientské aplikace.
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>Microsoft. Directory/Applications. myOrganization/allProperties/Update
 
@@ -103,7 +103,7 @@ Udělí stejná oprávnění jako Microsoft. Directory/Applications/allPropertie
 
 #### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>Microsoft. Directory/Applications/publikum/Update
 
-Možnost aktualizovat vlastnost podporovaného typu účtu (signInAudience) na jednom adresáři a ve více adresářových aplikacích.
+Možnost aktualizovat vlastnost podporovaného typu účtu (signInAudience) v aplikacích s jedním klientem a víceklientské aplikace.
 
 ![Toto oprávnění uděluje přístup k vlastnosti typu účtu, který podporuje registraci aplikace na stránce ověřování.](./media/roles-custom-available-permissions/supported-account-types.png)
 
@@ -139,7 +139,7 @@ Možnost aktualizace certifikátů a vlastností tajných kódů klienta v aplik
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>Microsoft. Directory/Applications. myOrganization/přihlašovací údaje/aktualizace
 
-Udělí stejná oprávnění jako Microsoft. Directory/Applications/Credentials/Update, ale jenom pro aplikace s jedním adresářem.
+Udělí stejná oprávnění jako Microsoft. Directory/Applications/přihlašovací údaje/aktualizace, ale jenom pro aplikace s jedním klientem.
 
 #### <a name="microsoftdirectoryapplicationsownersupdate"></a>Microsoft. Directory/aplikace/vlastníci/aktualizace
 

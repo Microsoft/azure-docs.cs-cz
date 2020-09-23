@@ -1,25 +1,37 @@
 ---
-title: Informace o Azure Key Vault Keys – Azure Key Vault
+title: O klíčích – Azure Key Vault
 description: Přehled rozhraní REST Azure Key Vault a podrobností pro vývojáře pro klíče.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 76e9c342f87a3aa1d04a8f4be4065af73e6ba9f2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651308"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967555"
 ---
-# <a name="about-azure-key-vault-keys"></a>Informace o klíčích služby Azure Key Vault
+# <a name="about-keys"></a>Informace o klíčích
 
-Azure Key Vault podporuje více typů klíčů a algoritmů a umožňuje použití modulů hardwarového zabezpečení (HSM) pro klíče s vysokými hodnotami.
+Azure Key Vault poskytuje dva typy prostředků pro ukládání a správu kryptografických klíčů:
+
+|Typ prostředku|Metody ochrany klíčů|Základní adresa URL koncového bodu datové roviny|
+|--|--|--|
+| **Trezory** | Chráněný softwarem<br/><br/>a<br/><br/>Chráněná HSM (s SKU Premium)</li></ul> | https://{trezor-Name}. trezor. Azure. NET |
+| **Spravované fondy HSM** | Chráněná HSM | https://{HSM-Name}. managedhsm. Azure. NET |
+||||
+
+- **Trezory** – trezory poskytují nízký náklady, snadnou nasazování, víceklientské využití pro více tenantů (kde je dostupné) a vysoce dostupné řešení pro správu klíčů, které je vhodné pro většinu běžných scénářů cloudových aplikací.
+- **Spravovaná HSM** spravovaná modul HSM nabízí jeden tenant (tam, kde je k dispozici), vysoce dostupný HSM pro ukládání a správu kryptografických klíčů. Nejlépe vhodná pro aplikace a scénáře použití, které zpracovávají klíče s vysokými hodnotami. Také pomáhá splnit nejpřísnější požadavky na zabezpečení, dodržování předpisů a předpisy. 
+
+> [!NOTE]
+> Trezory také umožňují kromě kryptografických klíčů ukládat a spravovat několik typů objektů, jako jsou tajné klíče, certifikáty a klíče účtu úložiště.
 
 Kryptografické klíče v Key Vault jsou reprezentovány jako objekty webového klíče JSON [JWK]. Specifikace JavaScript Object Notation (JSON) a JOSE (JavaScript Object Signing and Encryption) jsou:
 
@@ -28,30 +40,49 @@ Kryptografické klíče v Key Vault jsou reprezentovány jako objekty webového 
 -   [Webové algoritmy JSON (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [Webový podpis JSON (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-Základní specifikace JWK/JWA se také rozšiřují tak, aby umožňovaly použití typů klíčů jedinečných pro Key Vault implementaci. Například import klíčů pomocí balení specifického pro dodavatele HSM umožňuje zabezpečenou přepravu klíčů, které se dají používat jenom v Key Vault HSM. 
+Základní specifikace JWK/JWA se také rozšiřují tak, aby umožňovaly typy klíčů jedinečné pro Azure Key Vault a spravované implementace HSM. 
 
-Azure Key Vault podporuje klíče chráněné softwarem i ochranou HSM:
+Klíče chráněné HSM (označované také jako klíče HSM) se zpracovávají v modulu HSM (Hardware Security Module) a vždy zůstávají v hranici ochrany modulem HSM. 
 
-- **Klíče chráněné softwarem**: klíč zpracovaný v softwaru Key Vault, ale je zašifrovaný v klidovém formátu pomocí systémového klíče, který je v modulu hardwarového zabezpečení. Klienti mohou importovat stávající klíč RSA nebo EC (eliptická křivka) nebo požádat, aby ho Key Vault vygeneroval.
-- **Klíče HSM-potected**: klíč zpracovaný v modulu HSM (Hardware Security Module). Tyto klíče jsou chráněné v jednom z Key Vault Zabezpečení HSM světů (pro zachování izolace existuje jeden celosvětový svět na geografickou oblast). Klienti mohou importovat klíč RSA nebo ES, ve formuláři chráněném softwarem nebo pomocí exportu z kompatibilního zařízení HSM. Klienti si taky můžou vyžádat Key Vault, aby vygenerovali klíč. Tento typ klíče přidá atribut key_hsm do JWK pro získání materiálu klíče HSM.
+- Trezory používají ověřený **Standard FIPS 140-2 úrovně 2** HSM k ochraně klíčů HSM ve sdílené back-ENDOVÉ infrastruktuře HSM. 
+- Spravované fondy HSM používají ověřované moduly HSM **140-2 úrovně 3** k ochraně vašich klíčů. Každý fond HSM je izolovaná instance jednoho tenanta s vlastní [doménou zabezpečení](../managed-hsm/security-domain.md) , která poskytuje úplnou izolaci šifrování ze všech ostatních fondů HSM, které sdílejí stejnou hardwarovou infrastrukturu.
 
-Další informace o geografických hranicích najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) .  
+Tyto klíče jsou chráněné ve fondech HSM pro jeden tenant. Můžete importovat RSA, EC a symetrický klíč, v měkkém tvaru nebo vyexportovat z podporovaného zařízení HSM. Můžete také vygenerovat klíče ve fondech HSM. Když naimportujete klíče HSM pomocí klíčů pomocí metody popsané ve [specifikaci BYOK (Přineste si vlastní klíč)](../keys/byok-specification.md), povolíte zabezpečený materiál pro přenos klíčů do spravovaných fondů HSM. 
 
-## <a name="cryptographic-protection"></a>Kryptografická ochrana
+Další informace o geografických hranicích najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) .
 
-Key Vault podporuje pouze klíče RSA a eliptické křivky. 
+## <a name="key-types-protection-methods-and-algorithms"></a>Typy klíčů, metody ochrany a algoritmy
 
--   **ES**: klíč eliptické křivky chráněný softwarem.
--   **ES-HSM**: "tvrdý" eliptický klíč křivky.
--   **RSA**: klíč RSA chráněný softwarem.
--   **RSA-HSM**: "pevný" klíč RSA.
+Key Vault podporuje RSA, EC a symetrické klíče. 
 
-Key Vault podporuje klíče RSA velikosti 2048, 3072 a 4096. Key Vault podporuje typy klíčů eliptické křivky P-256, P-384, P-521 a P-256 (SECP256K1).
+### <a name="hsm-protected-keys"></a>Klíče chráněné pomocí HSM
 
-Kryptografické moduly, které Key Vault používá, je-li modul HARDWAROVÉho zabezpečení nebo software, ověřovány pomocí standardu FIPS (Federal Information Processing Standards). Ke spuštění v režimu FIPS nemusíte nic dělat zvlášť. Klíče **vytvořené** nebo **importované** jako chráněné HSM se zpracovávají v modulu hardwarového zabezpečení, který je ověřený na úrovni FIPS 140-2 Level 2. Klíče **vytvořené** nebo **importované** jako chráněný software se zpracovávají v rámci kryptografických modulů ověřených na FIPS 140-2 úrovně 1.
+|Typ klíče|Trezory (jenom SKU úrovně Premium)|Spravované fondy HSM|
+|--|--|--|--|
+**ES-HSM**: eliptický klíč křivky|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 3
+**RSA-HSM**: klíč RSA|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 3
+**zámořské modul HSM**: symetrické|Nepodporováno|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 3
+||||
+
+### <a name="software-protected-keys"></a>Klíče chráněné softwarem
+
+|Typ klíče|Trezory|Spravované fondy HSM|
+|--|--|--|--|
+**RSA**: klíč RSA chráněný softwarem|FIPS 140-2 úrovně 1|Nepodporováno
+**ES**: klíč eliptické křivky "software-Protected"|FIPS 140-2 úrovně 1|Nepodporováno
+||||
+
+### <a name="supported-algorithms"></a>Podporované algoritmy
+
+|Typy/velikosti a křivky klíčů| Šifrování a dešifrování<br>(Zabalení a rozbalení) | Podepsat/ověřit | 
+| --- | --- | --- |
+|ES-P256, ES-P256K, ES-KLÍČEM P384, ES-521|Není k dispozici|ES256<br>ES256K<br>ES384<br>ES512|
+|RSA 2K, 3K, 4K| RSA1_5<br>RSA – VÝPLNĚ OAEP<br>RSA – VÝPLNĚ OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
+|AES 128-bit, 256-bit| AES – KW<br>AES – GCM<br>AES – CBC| Není k dispozici| 
+|||
 
 ###  <a name="ec-algorithms"></a>Algoritmy ES
- Následující identifikátory algoritmu jsou podporovány s klíči ES a modulem ES-HSM v Key Vault. 
+ Následující identifikátory algoritmu jsou podporovány pomocí klíčů ES-HSM.
 
 #### <a name="curve-types"></a>Typy křivek
 
@@ -68,12 +99,13 @@ Kryptografické moduly, které Key Vault používá, je-li modul HARDWAROVÉho z
 -   **ES512** -ECDSA pro výtahy SHA-512 a klíče vytvořené pomocí křivky P-521. Tento algoritmus je popsaný na adrese [RFC7518](https://tools.ietf.org/html/rfc7518).
 
 ###  <a name="rsa-algorithms"></a>Algoritmy RSA  
- Následující identifikátory algoritmu jsou podporovány u klíčů RSA a RSA-HSM v Key Vault.  
+ Následující identifikátory algoritmu jsou podporovány pomocí klíčů RSA a RSA-HSM.  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, ŠIFROVAT/DEŠIFROVAT
 
 -   **RSA1_5** -RSAES-výplně pkcs1-V1_5 [RFC3447] šifrování klíče  
 -   **RSA-výplně OAEP** -RSAES s použitím optimálního odsazení asymetrického šifrování (výplně OAEP) [RFC3447] s výchozími parametry URČENÝMI specifikací RFC 3447 v oddílu A. 2.1. Tyto výchozí parametry používají funkci hash SHA-1 a funkci generování masky MGF1 s SHA-1.  
+-  **RSA-výplně OAEP-256** – RSAES s použitím optimálního odsazení asymetrického šifrování s funkcí hash sha-256 a funkcí generování masky MGF1 with SHA-256
 
 #### <a name="signverify"></a>PODEPSAT/OVĚŘIT
 
@@ -83,11 +115,19 @@ Kryptografické moduly, které Key Vault používá, je-li modul HARDWAROVÉho z
 -   **RS256** -RSASSA-PKCS-V1_5 pomocí SHA-256. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-256 a musí být 32 bajtů.  
 -   **RS384** -RSASSA-PKCS-V1_5 pomocí SHA-384. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-384 a musí být 48 bajtů.  
 -   **RS512** -RSASSA-PKCS-V1_5 pomocí SHA-512. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-512 a musí být 64 bajtů.  
--   **RSNULL** – viz [RFC2437], specializovaný případ použití pro povolení určitých scénářů TLS.  
+-   **RSNULL** – viz [RFC2437](https://tools.ietf.org/html/rfc2437), specializovaný případ použití pro povolení určitých scénářů protokolu TLS.  
+
+###  <a name="symmetric-key-algorithms"></a>Algoritmy symetrických klíčů
+- **AES-kW** -zabalení klíče AES ([RFC3394](https://tools.ietf.org/html/rfc3394)).
+- Šifrování **AES-GCM** -AES v režimu čítače Galois ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+- Šifrování **AES-CBC** -AES v režimu řetězení bloků šifry ([NIST SP800-38a](https://csrc.nist.gov/publications/sp800))
+
+> [!NOTE] 
+> Aktuální implementace AES-GCM a odpovídající rozhraní API jsou experimentální. Implementace a rozhraní API se mohou v budoucích iteracích podstatně měnit. 
 
 ##  <a name="key-operations"></a>Klíčové operace
 
-Key Vault podporuje pro klíčové objekty následující operace:  
+Spravovaný modul HSM podporuje pro klíčové objekty následující operace:  
 
 -   **Vytvořit**: umožňuje klientovi vytvořit klíč v Key Vault. Hodnota klíče je vygenerována Key Vault a uložená a není klientovi uvolněna. V Key Vault lze vytvořit asymetrické klíče.  
 -   **Import**: umožňuje klientovi importovat existující klíč do Key Vault. Asymetrické klíče mohou být importovány do Key Vault pomocí řady různých metod balení v rámci konstrukce JWK. 
@@ -142,8 +182,8 @@ Další informace o dalších možných atributech najdete v tématu [webový kl
 
 Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key Vault podporuje až 15 značek, z nichž každá může mít 256 název znaku a 256 znaková hodnota.  
 
->[!Note]
->Značky mohou číst volající, pokud mají *seznam* , nebo *získat* oprávnění k tomuto typu objektu (klíče, tajné klíče nebo certifikáty).
+> [!NOTE] 
+> Značky mohou číst volající, pokud mají *seznam* , nebo *získat* oprávnění k tomuto klíči.
 
 ##  <a name="key-access-control"></a>Řízení přístupu ke klíčům
 
@@ -176,10 +216,10 @@ Následující oprávnění se dají udělit na základě jednotlivých uživate
 Další informace o práci s klíči naleznete v tématu [klíčové operace v odkazu Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
 ## <a name="next-steps"></a>Další kroky
-
 - [Informace o službě Key Vault](../general/overview.md)
-- [Informace o klíčích, tajných kódech a certifikátech](../general/about-keys-secrets-certificates.md)
+- [O spravovaném modulu HSM](../managed-hsm/overview.md)
 - [Informace o tajných kódech](../secrets/about-secrets.md)
 - [Informace o certifikátech](../certificates/about-certificates.md)
+- [Přehled Key Vault REST API](../general/about-keys-secrets-certificates.md)
 - [Ověřování, žádosti a odpovědi](../general/authentication-requests-and-responses.md)
 - [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)

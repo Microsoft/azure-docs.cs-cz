@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 726be3f0f8402404d0154336aaf7d5f09fefec10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070492"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967472"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
-Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení používá úložiště fronty a úložiště tabulek klíč, který je vymezen na službu a je spravován společností Microsoft. K šifrování dat front nebo tabulek můžete také použít klíče spravované zákazníkem. Pokud chcete používat klíče spravované zákazníkem s frontami a tabulkami, musíte nejdřív vytvořit účet úložiště, který používá šifrovací klíč, který je vymezen na účet, a ne na službu. Po vytvoření účtu, který používá šifrovací klíč účtu pro data front a tabulek, můžete nakonfigurovat klíče spravované zákazníky pomocí Azure Key Vault pro tento účet úložiště.
+Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení používá úložiště fronty a úložiště tabulek klíč, který je vymezen na službu a je spravován společností Microsoft. K šifrování dat front nebo tabulek můžete také použít klíče spravované zákazníkem. Pokud chcete používat klíče spravované zákazníkem s frontami a tabulkami, musíte nejdřív vytvořit účet úložiště, který používá šifrovací klíč, který je vymezen na účet, a ne na službu. Po vytvoření účtu, který používá šifrovací klíč účtu pro data front a tabulek, můžete nakonfigurovat klíče spravované zákazníkem pro tento účet úložiště.
 
 Tento článek popisuje, jak vytvořit účet úložiště, který spoléhá na klíč, který je vymezený pro daný účet. Při prvním vytvoření účtu používá společnost Microsoft klíč účtu k šifrování dat v účtu a tento klíč spravuje Microsoft. Následně můžete nakonfigurovat klíče spravované zákazníkem pro účet, abyste mohli využít výhod těchto výhod, včetně možnosti poskytovat vlastní klíče, aktualizovat verzi klíče, otáčet klíče a odvolávat řízení přístupu.
 
@@ -62,7 +62,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -94,7 +94,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -120,7 +120,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -215,11 +215,7 @@ Následující příklad JSON vytvoří účet úložiště pro obecné účely 
 
 ---
 
-Po vytvoření účtu, který spoléhá na šifrovací klíč účtu, si v jednom z následujících článků nakonfigurujte klíče spravované zákazníky pomocí Azure Key Vault:
-
-- [Konfigurace klíčů spravovaných zákazníkem se službou Azure Key Vault pomocí webu Azure Portal](storage-encryption-keys-portal.md)
-- [Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault s využitím PowerShellu](storage-encryption-keys-powershell.md)
-- [Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure CLI](storage-encryption-keys-cli.md)
+Po vytvoření účtu, který spoléhá na šifrovací klíč účtu, můžete nakonfigurovat klíče spravované zákazníkem, které jsou uložené v Azure Key Vault nebo v Key Vault Managed hardware Security model (HSM) (Preview). Informace o tom, jak ukládat klíče spravované zákazníky do trezoru klíčů, najdete v tématu [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault](customer-managed-keys-configure-key-vault.md). Informace o tom, jak ukládat klíče spravované zákazníkem ve spravovaném modulu HSM, najdete v tématu [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem, které jsou uložené v Azure Key Vault spravované HSM (Preview)](customer-managed-keys-configure-key-vault-hsm.md).
 
 ## <a name="verify-the-account-encryption-key"></a>Ověření šifrovacího klíče účtu
 
@@ -248,11 +244,12 @@ az storage account show /
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md) 
+- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
+- [Klíče spravované zákazníkem pro šifrování Azure Storage](customer-managed-keys-overview.md)
 - [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

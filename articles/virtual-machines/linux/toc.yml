@@ -955,6 +955,8 @@
               href: add-disk.md
             - name: portál Azure
               href: attach-disk-portal.md
+        - name: Změna úrovně disku
+          href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Odpojení disku
           href: detach-disk.md
         - name: Nasazení disků s využitím šablony ARM

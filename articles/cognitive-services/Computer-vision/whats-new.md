@@ -8,20 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: b8741d17c55a786d7a90d1c311039f2855adf43b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530654"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904089"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
 Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k verzi, videa, příspěvky na blogu a další typy informací. Tuto stránku můžete označit tak, aby byla stále aktuální se službou.
 
 ## <a name="september-2020"></a>Září 2020
+
+### <a name="spatial-analysis-container-preview"></a>Náhled kontejneru prostorových analýz
+
+[Kontejner prostorové analýzy](spatial-analysis-container.md) je nyní ve verzi Preview. Funkce prostorové analýzy Počítačové zpracování obrazu umožňuje analyzovat streamování videa v reálném čase, abyste pochopili prostorové vztahy mezi lidmi a jejich pohybem prostřednictvím fyzických prostředí. Prostorová analýza je kontejner Docker, který můžete použít místně. 
 
 ### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Čtecí rozhraní API v 3.1 Public Preview přidává rozpoznávání OCR pro japonštinu
 Verze Public Preview rozhraní API pro Počítačové zpracování obrazu v 3.1 přidává tyto možnosti:
