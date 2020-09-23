@@ -1,5 +1,5 @@
 ---
-title: Příklady kanálů & datových sad pro návrháře (Preview)
+title: Příklady kanálů & datových sad pro návrháře
 titleSuffix: Azure Machine Learning
 description: Použití ukázek v Návrháři Azure Machine Learning k přechodu na začátek kanálů strojového učení.
 services: machine-learning
@@ -10,21 +10,21 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: cbeb37599d28241dac3829af3891b2810cca4dce
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662116"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889740"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning (Preview)
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning
 
 Pomocí vestavěných příkladů v Návrháři Azure Machine Learning můžete rychle začít vytvářet vlastní kanály strojového učení. [Úložiště GitHub](https://github.com/Azure/MachineLearningDesigner) návrháře Azure Machine Learning obsahuje podrobnou dokumentaci, která vám pomůže pochopit některé běžné scénáře strojového učení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
-* Pracovní prostor Azure Machine Learning s SKU Enterprise.
+* Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) .
+* Pracovní prostor Azure Machine Learning 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
@@ -65,7 +65,7 @@ Tady je postup použití ukázkového návrháře:
 
 Prozkoumejte tyto integrované regresní ukázky.
 
-| Ukázkový název | Popis | 
+| Ukázkový název | Description | 
 | --- | --- |
 | [Regrese – předpověď ceny automobilu (základní)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Předpovědět ceny aut pomocí lineární regrese. |
 | [Regrese – předpověď ceny automobilu (rozšířené)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Předpovědět ceny aut pomocí rozhodovací doménové struktury a dalších zesílených rozhodovacích stromů. Porovnejte modely a Najděte nejlepší algoritmus.
@@ -74,7 +74,7 @@ Prozkoumejte tyto integrované regresní ukázky.
 
 Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Popis | 
+| Ukázkový název | Description | 
 | --- | --- |
 | [Binární klasifikace s výběrem funkcí – předpověď příjmů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Předpovídání výnosů jako vysoké nebo nízké, pomocí rozstředního rozhodovacího stromu se dvěma třídami K výběru funkcí použijte korelaci Pearsonova.
 | [Binární klasifikace s vlastním skriptem Pythonu – předpověď úvěrového rizika](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Klasifikujte úvěrové aplikace jako vysoké nebo nízké riziko. K vážení dat použijte modul spouštění skriptu Pythonu.
@@ -86,7 +86,7 @@ Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázká
 
 Prozkoumejte tyto integrované ukázky počítačové vize. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Popis | 
+| Ukázkový název | Description | 
 | --- | --- |
 | Špičkové doporučení na hloubku & – předpověď hodnocení restaurace | Sestavte modul doporučených pro restaurace z možností restaurace/uživatel a hodnocení.|
 
@@ -94,7 +94,7 @@ Prozkoumejte tyto integrované ukázky počítačové vize. Další informace o 
 
 Prozkoumejte tyto integrované příklady doporučených kroků. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Popis | 
+| Ukázkový název | Description | 
 | --- | --- |
 | Klasifikace obrázků pomocí DenseNet | Použijte moduly počítačového vidění k sestavení modelu klasifikace imagí založeného na PyTorch DenseNet.| 
 
@@ -102,7 +102,7 @@ Prozkoumejte tyto integrované příklady doporučených kroků. Další informa
 
 Přečtěte si další informace o ukázkách, které předvádějí nástroje a funkce machine learningu. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Popis | 
+| Ukázkový název | Description | 
 | --- | --- |
 | Binární klasifikace pomocí pro dostupné modelu – předpověď příjmů za dospělé | Pro dostupné je systém strojového učení, který nabízí hranici strojového učení s technikami, jako je online, hashing, allreduce, snižování, learning2search, aktivní a interaktivní učení. Tento příklad ukazuje, jak použít model pro dostupné k sestavení binárního klasifikačního modelu. 
 | [Použití vlastního skriptu R – předpověď zpoždění letů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | Pomocí vlastního skriptu jazyka R můžete předpovědět, jestli se plánovaný osobní let bude zpozdit o více než 15 minut.

@@ -3,12 +3,12 @@ title: Azure Service Bus úrovně Premium a Standard
 description: Tento článek popisuje úrovně Standard a Premium Azure Service Bus. Porovná tyto úrovně a poskytuje technické rozdíly.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386346"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90966794"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -23,7 +23,7 @@ V následující tabulce je zvýrazněno několik nejvýraznějších rozdílů.
 | Vysoká propustnost |Variabilní propustnost |
 | Předvídatelný výkon |Variabilní latence |
 | Pevné ceny |Variabilní průběžná cena  |
-| Možnost vertikálně navýšit a snížit kapacitu |– |
+| Možnost vertikálně navýšit a snížit kapacitu |Není k dispozici |
 | Velikost zprávy je až 1 MB. Toto omezení může být vyvoláno v budoucnu. Nejnovější důležité aktualizace této služby najdete v tématu [zasílání zpráv na blogu Azure](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |Velikost zprávy do 256 kB |
 
 **Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium si můžete koupit 1, 2, 4 nebo 8 jednotek zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit na. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.
@@ -72,7 +72,7 @@ Při rozhodování o počtu jednotek zasílání zpráv pro vaši architekturu j
     - Pokud je využití procesoru ***menší než 20%***, možná budete moci ***škálovat*** počet jednotek zasílání zpráv přidělených vašemu oboru názvů.
     - Pokud je využití procesoru ***nad 70%***, bude vaše aplikace využívat ***škálování*** počtu jednotek zasílání zpráv, které jsou přiděleny vašemu oboru názvů.
 
-Proces škálování prostředků přidělených oboru názvů Service Bus lze automatizovat pomocí [Azure Automation sad Runbook](../automation/automation-quickstart-create-runbook.md).
+Informace o tom, jak nakonfigurovat obor názvů Service Bus pro automatické škálování (zvýšení nebo snížení počtu jednotek pro zasílání zpráv), najdete v tématu [Automatické aktualizace jednotek zasílání zpráv](automate-update-messaging-units.md).
 
 > [!NOTE]
 > **Škálování** prostředků přidělených oboru názvů může být buď přepnuto, nebo reaktivní.
@@ -96,10 +96,9 @@ Můžete také vytvářet [obory názvů Premium pomocí šablon Azure Resource 
 
 Pokud se o zasílání zpráv Service Bus chcete dozvědět více, podívejte se na následující odkazy:
 
-* [Představení zasílání zpráv Azure Service Bus úrovně Premium (příspěvek na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Představení zasílání zpráv Azure Service Bus úrovně Premium (channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [Přehled zasílání zpráv Service Bus](service-bus-messaging-overview.md)
-* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
+- [Automaticky aktualizovat jednotky zasílání zpráv](automate-update-messaging-units.md).
+- [Představení zasílání zpráv Azure Service Bus úrovně Premium (příspěvek na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+- [Představení zasílání zpráv Azure Service Bus úrovně Premium (channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 
 <!--Image references-->
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 6682d9426ed3fe011fe5c493ec34fcdf0a2b35b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096751"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905248"
 ---
 # <a name="poisson-regression"></a>Poissonova regrese
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul slouží k vytvoření Poissonova regresního modelu v kanálu. Funkce POISSON regrese je určena pro předpověď číselných hodnot, obvykle počítá. Proto byste měli použít tento modul k vytvoření regresního modelu pouze v případě, že hodnoty, které se pokoušíte odhadnout, odpovídají následujícím podmínkám:
 
@@ -49,7 +49,7 @@ Vzhledem k tomu, že proměnná Response má Poissonova rozdělení, model vytv�
 
 ## <a name="how-to-configure-poisson-regression"></a>Jak nakonfigurovat funkce POISSON regrese
 
-1. Přidejte modul **Poissonova regrese** do vašeho kanálu v Návrháři (Preview). Tento modul můžete najít v části **Machine Learning algoritmy**v kategorii **regrese** .
+1. Přidejte modul **Poissonova regrese** do vašeho kanálu v návrháři. Tento modul můžete najít v části **Machine Learning algoritmy**v kategorii **regrese** .
 
 2. Přidejte datovou sadu, která obsahuje školicí data správného typu. 
 

@@ -372,6 +372,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Centrum architektury
       href: /azure/architecture/
+    - name: Zvýhodněné hybridní využití Azure
+      href: azure-hybrid-benefit-linux.md
 - name: Návody
   items:
     - name: Vytvoření virtuálních počítačů

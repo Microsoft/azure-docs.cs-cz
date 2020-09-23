@@ -7,18 +7,18 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1b1249fe7159e2a3a8d2a74d22f274a9766e7922
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185821"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896326"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití aplikace MySQL Workbench k připojení a dotazování dat v Azure Database for MySQL
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
@@ -40,7 +40,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 3. Klikněte na název serveru.
 
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for MySQL](./media/connect-php/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Název serveru Azure Database for MySQL":::
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Připojení k serveru pomocí aplikace MySQL Workbench 
 Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským rozhraním MySQL Workbench:
@@ -49,12 +49,12 @@ Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským 
 
 2.    V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
-![nastavení nového připojení](./media/connect-workbench/2-setup-new-connection.png)
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="nastavení nového připojení":::
 
 | **Nastavení** | **Navrhovaná hodnota** | **Popis pole** |
 |---|---|---|
 |    Název připojení | Ukázkové připojení | Zadejte popisek pro toto připojení. |
-| Způsob připojení | Standard (TCP/IP) | Standard (TCP/IP) je dostačující. |
+| Způsob připojení | Standardní (TCP/IP) | Standard (TCP/IP) je dostačující. |
 | Název hostitele | *název serveru* | Zadejte hodnotu názvu serveru, kterou jste použili dříve při vytváření služby Azure Database for MySQL. Ukázkový server v příkladu je mydemoserver.mysql.database.azure.com. Použijte plně kvalifikovaný název domény (\*.mysql.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.  |
 | Port | 3306 | Při připojování ke službě Azure Database for MySQL vždy používejte port 3306. |
 | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření služby Azure Database for MySQL. Uživatelské jméno v našem příkladu je myadmin@mydemoserver. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName \@ servername*.
@@ -74,7 +74,7 @@ Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským 
 ## <a name="create-a-table-insert-data-read-data-update-data-delete-data"></a>Vytvoření tabulky, vložení dat, načtení dat, aktualizace dat a odstranění dat
 1. Pro ilustraci nějakých ukázkových dat zkopírujte vzorový kód SQL a vložte ho do prázdné karty SQL.
 
-    Tento kód vytvoří prázdnou databázi quickstartdb a pak vytvoří ukázkovou tabulku inventory. Vloží několik řádků a ty pak načte. Pomocí příkazu UPDATE data změní a znovu načte řádky. Nakonec jeden řádek odstraní a znovu načte řádky.
+    Tento kód vytvoří prázdnou databázi quickstartdb a pak vytvoří ukázkovou tabulku inventory. Vloží několik řádků a potom řádky načte. Změní data pomocí příkazu update a znovu načte řádky. Nakonec odstraní řádek a znovu načte řádky.
     
     ```sql
     -- Create a database
@@ -103,7 +103,7 @@ Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským 
 
     Snímek obrazovky ukazuje příklad kódu SQL v aplikaci MySQL Workbench a výstup po jeho spuštění.
     
-    ![Karta SQL aplikace MySQL Workbench pro spuštění vzorového kódu SQL](media/connect-workbench/3-workbench-sql-tab.png)
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Karta SQL aplikace MySQL Workbench pro spuštění vzorového kódu SQL":::
 
 2. Pokud chcete spustit ukázkový kód SQL, klikněte na ikonu blesku na panelu nástrojů karty **Soubor SQL**.
 3. Všimněte si výsledků na třech kartách v části **Mřížka výsledků** uprostřed stránky. 

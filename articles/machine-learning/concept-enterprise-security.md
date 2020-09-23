@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a89115d69943ff63d403edff942677b134e7f2a8
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024379"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905749"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -42,7 +42,7 @@ Další informace najdete v tématu [nastavení ověřování pro Azure Machine 
 
 Azure Machine Learning podporuje dvě formy ověřování pro webové služby: klíč a token. Každá webová služba může současně povolit jenom jednu formu ověřování.
 
-|Metoda ověřování|Popis|Azure Container Instances|AKS|
+|Metoda ověřování|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
 |Token|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
@@ -63,7 +63,6 @@ V následující tabulce jsou uvedené některé hlavní operace Azure Machine L
 | ---- |:----:|:----:|:----:|
 | Vytvoření pracovního prostoru | ✓ | ✓ | |
 | Sdílet pracovní prostor | ✓ | |  |
-| Upgrade pracovního prostoru na Enterprise Edition | ✓ | |
 | Vytvořit cíl výpočtů | ✓ | ✓ | |
 | Připojit cíl výpočtů | ✓ | ✓ | |
 | Připojení úložišť dat | ✓ | ✓ | |

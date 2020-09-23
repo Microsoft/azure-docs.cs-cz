@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747530"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967493"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -61,23 +61,23 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 
 * Střední Kanada
 * USA – středozápad
-* USA – východ
+* East US
 * USA – východ 2
 * USA – středosever
-* USA – středojih
-* USA – střed
+* Středojižní USA
+* Střední USA
 * USA – západ
-* USA – západ 2
+* Západní USA 2
 * Francie – střed
-* Západní Evropa
+* West Europe
 * Severní Evropa
-* Brazílie – jih
+* Brazil South
 * Spojené království – západ
 * Spojené království – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 * Východní Asie
-* Jihovýchodní Asie
+* Southeast Asia
 * Jižní Korea – střed
 * Indie – střed
 * Indie – jih
@@ -91,27 +91,27 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Střední Kanada
 * USA – středozápad
-* USA – východ
+* East US
 * USA – východ 2
 * USA – středosever
-* USA – středojih
-* USA – střed
+* Středojižní USA
+* Střední USA
 * USA – západ
-* USA – západ 2
+* Západní USA 2
 * USA – střed
 * Francie – střed
-* Západní Evropa
+* West Europe
 * Severní Evropa
-* Brazílie – jih
+* Brazil South
 * Spojené království – západ
 * Spojené království – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 * Východní Asie
-* Jihovýchodní Asie
+* Southeast Asia
 * Jižní Korea – střed
 * Indie – střed
-* Japonsko – východ
+* Japan East
 * USA (Gov) – Virginia
 * Čína – východ 2
 
@@ -339,7 +339,7 @@ Distribuce provozu na aplikační bránu & Load Balancer, topologii, hlavních z
  - Poznáte, která podsíť je konverzující, na kterou Aplikační bránu nebo Load Balancer. Pokud si nejste všimnout neočekávaných konverzací, můžete konfiguraci opravit.
  - Pokud se podvodné sítě konverzující s aplikační bránou nebo Load Balancer, můžete je opravit tak, že nakonfigurujete pravidla NSG pro blokování neautorizovaných sítí. 
 
-    ![podsíť-topologie-předvádí-přenosová síť – brána – s ohledem na toky](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![Snímek obrazovky ukazuje topologii podsítě s distribucí provozu do podsítě aplikační brány s ohledem na toky.](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Zobrazit porty a virtuální počítače, které přijímají provoz z Internetu
 

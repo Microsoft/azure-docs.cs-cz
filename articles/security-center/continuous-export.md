@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433924"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905632"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -33,8 +33,8 @@ Pomocí těchto nástrojů můžete:
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Všeobecně dostupné|
-|Stanov|Úroveň Free|
+|Stav vydaných verzí:|Všeobecně dostupná (GA)|
+|Stanov|Free|
 |Požadované role a oprávnění:|**Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.|
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Čína gov (do centra událostí), ostatní gov|
 |||
@@ -125,11 +125,11 @@ Pokud byste chtěli nepřetržitě exportovaná data automaticky přesunout z na
 
 Pokud chcete analyzovat Azure Security Center Data v pracovním prostoru Log Analytics nebo použít výstrahy Azure společně s Security Center, nastavte průběžný export do pracovního prostoru Log Analytics.
 
-Pokud chcete exportovat do Log Analytics pracovního prostoru, musíte mít v pracovním prostoru povolená Security Center Log Analytics řešení. Pokud používáte Azure Portal, řešení na úrovni Free Security Center je automaticky povolené, když povolíte průběžný export. Pokud ale konfigurujete nastavení průběžného exportu programově, musíte ručně vybrat cenovou úroveň Free nebo standard pro požadovaný pracovní prostor v rámci **Nastavení cenové &**.  
+Pokud chcete exportovat do Log Analytics pracovního prostoru, musíte mít v pracovním prostoru povolená Security Center Log Analytics řešení. Pokud používáte Azure Portal, je řešení Free Security Center v případě, že povolíte průběžný export, povoleno automaticky. Pokud ale konfigurujete nastavení průběžného exportu programově, je nutné ručně zapnout nebo vypnout Azure Defender ze stránky **Nastavení cenové &** .
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabulek a schémat
 
-Výstrahy a doporučení zabezpečení se ukládají do tabulek *SecurityAlert* a *SecurityRecommendations* . Název Log Analytics řešení obsahující tyto tabulky závisí na tom, jestli jste na úrovni Free nebo Standard (viz [ceny](security-center-pricing.md)): Security (Security and Audit) nebo SecurityCenterFree.
+Výstrahy a doporučení zabezpečení se ukládají do tabulek *SecurityAlert* a *SecurityRecommendations* . Název Log Analyticsho řešení obsahujícího tyto tabulky závisí na tom, jestli máte povolený Azure Defender: Security (' Security and Audit ') nebo SecurityCenterFree.
 
 ![Tabulka * SecurityAlert * v Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
 

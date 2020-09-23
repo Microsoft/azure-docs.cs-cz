@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření Load Balancer – šablona Azure'
+title: 'Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení – šablona Azure'
 titleSuffix: Azure Load Balancer
 description: V tomto rychlém startu se dozvíte, jak vytvořit nástroj pro vyrovnávání zatížení pomocí šablony Azure Resource Manager.
 services: load-balancer
@@ -15,16 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: d83d58d608fc184f94ae70e60c56fe8fdc1e5eaa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 66d702846bac5825239e891ce47f8cca5bb857f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706043"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984410"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rychlý Start: vytvoření Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí šablony ARM
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí šablony ARM
 
-Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto rychlém startu se dozvíte, jak nasadit šablonu Azure Resource Manager (šablonu ARM), která vytvoří pro vyrovnávání zatížení virtuálních počítačů standardní nástroj pro vyrovnávání zatížení. Použití šablony ARM bere v porovnání s jinými metodami nasazení méně kroků.
+Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. 
+
+V tomto rychlém startu se dozvíte, jak nasadit standardní nástroj pro vyrovnávání zatížení pro vyrovnávání zatížení virtuálních počítačů.
+
+Použití šablony ARM bere v porovnání s jinými metodami nasazení méně kroků.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -40,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/).
 
-Load Balancer a veřejné SKU IP adres se musí shodovat. Při vytváření Standard Load Balancer musíte také vytvořit novou standardní veřejnou IP adresu, která je nakonfigurovaná jako front-end pro nástroj pro vyrovnávání zatížení úrovně Standard. Pokud chcete vytvořit základní Load Balancer, použijte [tuto šablonu](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Microsoft doporučuje pro produkční úlohy používat standardní SKU.
+Vyrovnávání zatížení a SKU veřejné IP adresy se musí shodovat. Když vytvoříte standardní nástroj pro vyrovnávání zatížení, musíte vytvořit taky novou standardní veřejnou IP adresu, která je nakonfigurovaná jako front-end pro nástroj pro vyrovnávání zatížení úrovně Standard. Pokud chcete vytvořit nástroj pro vyrovnávání zatížení Basic, použijte [tuto šablonu](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Microsoft doporučuje pro produkční úlohy používat standardní SKU.
 
 :::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
 
@@ -52,7 +56,7 @@ V šabloně bylo definováno více prostředků Azure:
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft. COMPUTE/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3 z nich).
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3 z nich).
-- [**Microsoft. COMPUTE/VirtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3 z nich): použijte ke konfiguraci služby IIS a webových stránek.
+- [**Microsoft. COMPUTE/VirtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3 z nich): slouží ke konfiguraci serveru služby IIS (Internet Information Server) a webových stránek.
 
 Další šablony, které souvisejí s Azure Load Balancer, najdete v tématu [šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
@@ -91,11 +95,11 @@ Nasazení šablony trvá přibližně 10 minut. Výstup je po dokončení podobn
 
 ![Výstup nasazení PowerShellu pro Azure Standard Load Balancer Správce prostředků](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
 
-Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete použít také Azure Portal, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-portal.md).
+Azure PowerShell slouží k nasazení šablony. Můžete také použít Azure Portal, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-portal.md).
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -115,13 +119,23 @@ Pokud chcete zobrazit distribuci provozu nástroje pro vyrovnávání zatížen�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud je už nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to tak, že přejdete na Azure Portal, vyberete skupinu prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a pak vyberete **Odstranit skupinu prostředků**.
+Pokud je už nepotřebujete, odstraňte: 
+
+* Skupina prostředků
+* Nástroj pro vyrovnávání zatížení
+* Související prostředky
+
+V Azure Portal vyberte skupinu prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a pak vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili standardní nástroj pro vyrovnávání zatížení, připojili jste k němu virtuální počítače, nakonfigurovali pravidlo provozu nástroje pro vyrovnávání zatížení, provedli sondu stavu a pak otestovali Nástroj pro vyrovnávání zatížení.
+V tomto rychlém startu:
 
-Pokud se chcete dozvědět víc, přejděte k kurzům Load Balancer.
+* Vytvořili jste standardní nástroj pro vyrovnávání zatížení a připojené virtuální počítače.
+* Nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu.
+* Otestování nástroje pro vyrovnávání zatížení.
+
+Pokud se chcete dozvědět víc, přejděte k kurzům Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

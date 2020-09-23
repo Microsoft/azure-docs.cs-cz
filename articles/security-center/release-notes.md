@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/12/2020
+ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: f3aeccd30a9c89c2a43dfb85d4a57274037ec05f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e4a0dfb658bb9388aa43b568fe0d28576026d1e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569250"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905586"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -33,7 +33,16 @@ Tato stránka se pravidelně aktualizuje, takže ji můžete často znovu navšt
 ## <a name="september-2020"></a>Září 2020
 
 Aktualizace v září zahrnují:
-
+- [Security Center získá nový vzhled.](#security-center-gets-a-new-look)
+- [Vydaný Azure Defender](#azure-defender-released)
+- [Azure Defender pro Key Vault je všeobecně dostupný](#azure-defender-for-key-vault-is-generally-available)
+- [Azure Defender pro ochranu úložiště souborů a ADLS Gen2 je všeobecně dostupný](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
+- [Nástroje inventáře prostředků jsou teď všeobecně dostupné.](#asset-inventory-tools-are-now-generally-available)
+- [Zakázání konkrétní chyby zabezpečení při hledání registrů kontejnerů a virtuálních počítačů](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
+- [Vyloučení prostředku z doporučení](#exempt-a-resource-from-a-recommendation)
+- [Konektory AWS a GCP v Security Center přinášejí prostředí pro více cloudů](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
+- [Sada doporučení pro ochranu úloh Kubernetes](#kubernetes-workload-protection-recommendation-bundle)
+- [Vylepšení ochrany IoT Threat v Azure Defenderu pro IoT](#iot-threat-protection-enhancements-in-azure-defender-for-iot)
 - [Výsledky posouzení ohrožení zabezpečení jsou nyní k dispozici při průběžném exportu](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
 - [Zabránit neoprávněným konfiguracím zabezpečení vynucováním doporučení při vytváření nových prostředků](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
 - [Vylepšení doporučení skupiny zabezpečení sítě](#network-security-group-recommendations-improved)
@@ -41,6 +50,127 @@ Aktualizace v září zahrnují:
 - [Vylepšená e-mailová oznámení z Azure Security Center](#email-notifications-from-azure-security-center-improved)
 - [Zabezpečené skóre nezahrnuje doporučení pro verzi Preview.](#secure-score-doesnt-include-preview-recommendations)
 - [Doporučení nyní obsahují indikátor závažnosti a interval aktuálnosti.](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+
+### <a name="security-center-gets-a-new-look"></a>Security Center získá nový vzhled.
+
+Vydali jsme aktualizované uživatelské rozhraní pro stránky portálu Security Center. Nové stránky obsahují novou stránku Přehled a také řídicí panely pro bezpečné skóre, inventář prostředků a Azure Defender.
+
+Stránka s přehledem přepracování teď obsahuje dlaždici pro přístup k zabezpečenému skóre, inventáři prostředků a řídicím panelům Azure Defenderu. Obsahuje také dlaždici, která odkazuje na řídicí panel dodržování předpisů.
+
+Přečtěte si další informace o [stránce Přehled](overview-page.md).
+
+
+### <a name="azure-defender-released"></a>Vydaný Azure Defender
+
+**Azure Defender** je platforma ochrany zatížení cloudu (CWPP) integrovaná v rámci Security Center pro pokročilou, inteligentní a chráněnou službu Azure a hybridní úlohy. Nahradí možnost standardní cenové úrovně v Security Center. 
+
+Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Center, jsou všechny tyto plány Defenderu povolené současně a poskytují komplexní ochranu pro výpočetní, datovou a provozní vrstvu vašeho prostředí:
+
+- [Azure Defender pro servery](defender-for-servers-introduction.md)
+- [Azure Defender pro App Service](defender-for-app-service-introduction.md)
+- [Azure Defender pro úložiště](defender-for-storage-introduction.md)
+- [Azure Defender pro SQL](defender-for-sql-introduction.md)
+- [Azure Defender for IoT](defender-for-iot-introduction.md)
+- [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
+- [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
+- [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
+
+Každý z těchto plánů je vysvětlen samostatně v dokumentaci Security Center.
+
+Díky jeho vyhrazenému řídicímu panelu poskytuje Azure Defender výstrahy zabezpečení a pokročilou ochranu před internetovými útoky pro virtuální počítače, databáze SQL, kontejnery, webové aplikace, síť a další.
+
+[Další informace o Azure Defenderu](azure-defender.md)
+
+### <a name="azure-defender-for-key-vault-is-generally-available"></a>Azure Defender pro Key Vault je všeobecně dostupný
+
+Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné kódy, jako jsou certifikáty, připojovací řetězce a hesla. 
+
+**Azure Defender pro Key Vault** poskytuje rozšířenou ochranu před internetovými útoky azure pro Azure Key Vault a poskytuje další vrstvu funkcí Security Intelligence. V důsledku rozšíření používá Azure Defender pro Key Vault ochranu mnoha prostředků závislých na vašich Key Vault účtech.
+
+Volitelný plán je teď GA. Tato funkce je ve verzi Preview jako rozšířená ochrana před internetovými útoky pro Azure Key Vault.
+
+Key Vault stránky v Azure Portal nyní obsahují vyhrazenou **bezpečnostní** stránku pro **Security Center** doporučení a upozornění.
+
+Další informace najdete v tomto [Key Vault v Azure Defenderu](defender-for-key-vault-introduction.md).
+
+
+### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>Azure Defender pro ochranu úložiště souborů a ADLS Gen2 je všeobecně dostupný 
+
+**Azure Defender pro úložiště** detekuje na vašich Azure Storage účtech potenciálně škodlivé aktivity. Data je možné chránit bez ohledu na to, jestli jsou uložená jako kontejnery objektů blob, sdílené složky nebo datová jezera.
+
+Podpora pro [soubory](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) a [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) Azure je teď všeobecně dostupná.
+
+Od 1. října 2020 začneme účtovat za ochranu prostředků u těchto služeb.
+
+Další informace najdete v [Azure Defenderu pro úložiště](defender-for-storage-introduction.md).
+
+
+### <a name="asset-inventory-tools-are-now-generally-available"></a>Nástroje inventáře prostředků jsou teď všeobecně dostupné.
+
+Stránka inventáře assetů Azure Security Center poskytuje jednu stránku pro zobrazení stav zabezpečení prostředků, ke kterým jste se připojili Security Center.
+
+Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby se identifikovaly potenciální ohrožení zabezpečení. Pak vám poskytne doporučení k nápravě těchto chyb zabezpečení.
+
+Pokud některý z prostředků obsahuje nevyřízená doporučení, zobrazí se v inventáři.
+
+Další informace najdete v informacích o [prozkoumání a správě vašich prostředků pomocí inventáře a nástrojů pro správu](asset-inventory.md).
+
+
+
+### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>Zakázání konkrétní chyby zabezpečení při hledání registrů kontejnerů a virtuálních počítačů
+
+Azure Defender obsahuje skenery ohrožení zabezpečení pro skenování imagí ve vašich Azure Container Registry a virtuálních počítačích.
+
+Pokud máte organizaci, kterou je třeba ignorovat, místo toho, aby ji bylo možné opravit, můžete ji případně zakázat. Zakázané závěry neovlivňují vaše zabezpečené skóre nebo generují nežádoucí hluk.
+
+Pokud hledání odpovídá kritériím, která jste definovali v pravidlech vypnutí, nezobrazí se v seznamu zjištění.
+
+Tato možnost je k dispozici na stránkách s podrobnostmi doporučení pro:
+
+- **Ohrožení zabezpečení v Azure Container Registrych imagí by mělo být opraveno**
+- **Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**
+
+Další informace najdete v [zakažte konkrétní zjištění imagí kontejneru](defender-for-container-registries-usage.md#disable-specific-findings-preview) a [zakažte konkrétní zjištění pro vaše virtuální počítače](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview).
+
+
+### <a name="exempt-a-resource-from-a-recommendation"></a>Vyloučení prostředku z doporučení
+
+V některých případech se prostředek bude zobrazovat jako špatný v souvislosti s konkrétním doporučením (a tím se sníží vaše zabezpečené skóre), i když byste to ještě neměli. Mohl by být opraven procesem, který není sledován nástrojem Security Center. Nebo možná vaše organizace rozhodla přijmout riziko pro konkrétní prostředek. 
+
+V takových případech můžete vytvořit pravidlo výjimky a zajistit, aby prostředek nebyl v budoucnu uvedený v seznamu prostředků, které nejsou v pořádku. Tato pravidla mohou zahrnovat popsaná odůvodnění, jak je popsáno níže.
+
+Další informace najdete v informacích [o vyloučení prostředků z doporučení a zabezpečeného skóre](exempt-resource.md).
+
+
+### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>Konektory AWS a GCP v Security Center přinášejí prostředí pro více cloudů
+
+Cloudové úlohy běžně pokrývá několik cloudových platforem, ale cloudové služby zabezpečení musí provádět stejné.
+
+Azure Security Center nyní chrání úlohy v Azure, Amazon Web Services (AWS) a Google Cloud Platform (GCP).
+
+Při připojování účtů AWS a GCP do Security Center se integruje AWS Security hub, GCP Security a Azure Security Center. 
+
+Další informace najdete v informacích o [připojení účtů AWS k Azure Security Center](quickstart-onboard-aws.md) a [připojení účtů GCP k Azure Security Center](quickstart-onboard-gcp.md).
+
+
+### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Sada doporučení pro ochranu úloh Kubernetes
+
+Aby se zajistilo, že Kubernetes úlohy jsou zabezpečené ve výchozím nastavení, Security Center přidávají doporučení pro posílení úrovně Kubernetes, včetně možností vynucení s řízením přístupu Kubernetes.
+
+Když jste nainstalovali doplněk Azure Policy pro Kubernetes do clusteru AKS, všechny požadavky na server rozhraní Kubernetes API se budou monitorovat proti předdefinované sadě osvědčených postupů předtím, než se trvale uloží do clusteru. Pak můžete nakonfigurovat, aby vynutil osvědčené postupy a nakonfigurovaly je pro budoucí úlohy.
+
+Můžete například stanovit, že by se neměly vytvářet privilegované kontejnery a všechny budoucí požadavky tak budou zablokovány.
+
+Další informace najdete v článku [osvědčené postupy ochrany úloh pomocí řízení přístupu Kubernetes](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
+
+
+### <a name="iot-threat-protection-enhancements-in-azure-defender-for-iot"></a>Vylepšení ochrany IoT Threat v Azure Defenderu pro IoT
+
+Azure Defender pro IoT přináší více funkcí ochrany před hrozbami díky zahrnutí technologie bez agentů CyberX. To přináší ochranu zabezpečení pro nespravovaná zařízení brownfield používaná v prostředích provozní technologie, jako je například výroba, vytváření systémů pro správu (BMS), věd o životní prostředí, energetické a vodní pomůcky, ropný & plyn a logistika.
+
+Další informace najdete v [úvodu k Azure Defenderu pro IoT](defender-for-iot-introduction.md).
+
 
 ### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Výsledky posouzení ohrožení zabezpečení jsou nyní k dispozici při průběžném exportu
 
@@ -55,7 +185,7 @@ Výsledky zabezpečení jsou nyní k dispozici pro export prostřednictvím prů
 Související stránky:
 
 - [Integrované řešení posouzení ohrožení zabezpečení Security Center pro virtuální počítače Azure](deploy-vulnerability-assessment-vm.md)
-- [Integrované řešení posouzení ohrožení zabezpečení Security Center pro bitové kopie Azure Container Registry](monitor-container-security.md)
+- [Integrované řešení posouzení ohrožení zabezpečení Security Center pro bitové kopie Azure Container Registry](defender-for-container-registries-usage.md)
 - [Průběžný export](continuous-export.md)
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Zabránit neoprávněným konfiguracím zabezpečení vynucováním doporučení při vytváření nových prostředků
@@ -257,20 +387,18 @@ Při nasazení řešení posouzení ohrožení zabezpečení Security Center př
 
 Z této aktualizace jste odebrali kontrolu a teď můžete nasadit nástroje pro posouzení ohrožení zabezpečení do vlastních počítačů se systémem Windows a Linux. Vlastní image jsou ty, které jste změnili ve výchozím nastavení webu Marketplace.
 
-I když teď můžete nasadit integrované rozšíření posouzení ohrožení zabezpečení (s technologií Qualys) na mnoho dalších počítačů, podpora je dostupná jenom v případě, že používáte operační systém, který je uvedený v [části nasazení integrovaného skeneru zabezpečení na virtuální počítače úrovně Standard](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms) .
+I když teď můžete nasadit integrované rozšíření posouzení ohrožení zabezpečení (s technologií Qualys) na mnoho dalších počítačů, podpora je dostupná jenom v případě, že používáte operační systém, který je uvedený v [části nasazení integrovaného skeneru zabezpečení na virtuální počítače úrovně Standard](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-your-vms) .
 
-Přečtěte si další informace o [integrovaném skeneru ohrožení zabezpečení pro virtuální počítače (jenom na úrovni Standard)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
+Přečtěte si další informace o [integrovaném skeneru ohrožení zabezpečení pro virtuální počítače (vyžaduje Azure Defender)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
 
-Přečtěte si další informace o používání vlastního řešení posouzení ohrožení zabezpečení v privátní licenci z Qualys nebo Rapid7 v [nasazení řešení pro kontrolu ohrožení zabezpečení partnera](deploy-vulnerability-assessment-vm.md).
+Přečtěte si další informace o používání vlastního řešení posouzení ohrožení zabezpečení v soukromém prostředí z Qualys nebo Rapid7 v [nasazení řešení pro kontrolu ohrožení zabezpečení partnera](deploy-vulnerability-assessment-vm.md).
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Ochrana před hrozbami pro Azure Storage rozšířena tak, aby zahrnovala soubory Azure a Azure Data Lake Storage Gen2 (Preview)
 
 Ochrana před hrozbami pro Azure Storage detekuje na vašich Azure Storage účtech potenciálně škodlivé aktivity. Security Center zobrazuje výstrahy, když detekuje pokusy o přístup k účtům úložiště nebo jejich zneužití. 
 
-Data je možné chránit bez ohledu na to, jestli jsou uložená jako kontejnery objektů blob, sdílené složky nebo datová jezera. 
-
-Přečtěte si další informace o [ochraně před hrozbami pro Azure Storage](threat-protection.md#threat-protection-for-azure-storage-).
+Data je možné chránit bez ohledu na to, jestli jsou uložená jako kontejnery objektů blob, sdílené složky nebo datová jezera.
 
 
 
@@ -386,13 +514,13 @@ Azure Security Center pokročilé zabezpečení dat pro počítače SQL teď chr
 
 Rozšířené zabezpečení dat poskytuje posouzení ohrožení zabezpečení a rozšířenou ochranu před internetovými útoky pro vaše počítače SQL bez ohledu na jejich umístění.
 
-Instalace se skládá ze dvou kroků:
+Nastavení se skládá ze dvou kroků:
 
 1. Nasazení agenta Log Analytics do hostitelského počítače SQL Server, aby se zajistilo připojení k účtu Azure.
 
 1. Povolení volitelného balíčku na stránce ceny a nastavení Security Center.
 
-Přečtěte si další informace o [pokročilém zabezpečení dat pro počítače s SQL](security-center-iaas-advanced-data.md).
+Přečtěte si další informace o [pokročilém zabezpečení dat pro počítače s SQL](defender-for-sql-usage.md).
 
 
 
@@ -551,7 +679,7 @@ Ovládací prvky zabezpečení – a tento přepínač jsou součástí nového 
 
 Přečtěte si další informace o ovládacích prvcích zabezpečení v [rozšířeném zabezpečeném skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
 
-![Přepínač "seskupit podle ovládací prvky" pro doporučení](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Přepínací tlačítko Seskupit podle ovládacích prvků pro doporučení":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Rozšířené řízení zabezpečení "implementovat osvědčené postupy zabezpečení" 
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/7/2020
-ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 8ebb524a5297380fca575ce6849fe4c5f15507cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168214"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903988"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak nastavit [replikace vstupních dat](concepts-data-i
 > Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
 >
 
-Pokud chcete vytvořit repliku ve službě Azure Database for MySQL, [replikace vstupních dat](concepts-data-in-replication.md) synchronizuje data z hlavního serveru MySQL místně, na virtuálních počítačích (VM) nebo v cloudových databázových službách. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+Pokud chcete vytvořit repliku ve službě Azure Database for MySQL, [replikace vstupních dat](concepts-data-in-replication.md)  synchronizuje data z hlavního serveru MySQL místně, na virtuálních počítačích (VM) nebo v cloudových databázových službách. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](concepts-data-in-replication.md#limitations-and-considerations) na replikaci dat.
 
@@ -105,15 +105,15 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    Chcete-li vytvořit roli replikace v aplikaci MySQL Workbench, otevřete panel **Uživatelé a oprávnění** na panelu **Správa** . Pak klikněte na **Přidat účet**. 
  
-   ![Uživatelé a oprávnění](./media/howto-data-in-replication/users_privileges.png)
+   :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="Uživatelé a oprávnění":::
 
    Do pole **přihlašovací jméno** zadejte uživatelské jméno. 
 
-   ![Synchronizovat uživatele](./media/howto-data-in-replication/syncuser.png)
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Synchronizovat uživatele":::
  
    Klikněte na panel **role pro správu** a potom v seznamu **globálních oprávnění**vyberte **replikace podřízená** . Pak kliknutím na **použít** vytvořte roli replikace.
 
-   ![Replikace podřízených](./media/howto-data-in-replication/replicationslave.png)
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Replikace podřízených":::
 
 1. Nastavení hlavního serveru na režim jen pro čtení
 
@@ -133,7 +133,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    ```
    Výsledky by měly vypadat podobně jako následující. Nezapomeňte si poznamenat název binárního souboru, jak bude použit v pozdějších krocích.
 
-   ![Výsledky hlavního stavu](./media/howto-data-in-replication/masterstatus.png)
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Výsledky hlavního stavu":::
  
 ## <a name="dump-and-restore-master-server"></a>Výpis a obnovení hlavního serveru
 
@@ -169,8 +169,8 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    - master_host: název hostitele hlavního serveru
    - master_user: uživatelské jméno pro hlavní server
    - master_password: heslo pro hlavní server
-   - master_log_file: název souboru binárního protokolu se spustí.`show master status`
-   - master_log_pos: binární umístění protokolu se spouští.`show master status`
+   - master_log_file: název souboru binárního protokolu se spustí. `show master status`
+   - master_log_pos: binární umístění protokolu se spouští. `show master status`
    - master_ssl_ca: kontext certifikátu certifikační autority. Pokud nepoužíváte protokol SSL, předejte prázdný řetězec.
        - Doporučuje se tento parametr předat jako proměnnou. Další informace najdete v následujících příkladech.
 
@@ -226,7 +226,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    show slave status;
    ```
 
-   Pokud je stav `Slave_IO_Running` a v `Slave_SQL_Running` hodnotě "Ano" a hodnota `Seconds_Behind_Master` je "0", replikace funguje dobře. `Seconds_Behind_Master`Určuje, jak pozdě je replika. Pokud hodnota není "0", znamená to, že replika zpracovává aktualizace. 
+   Pokud je stav `Slave_IO_Running` a v `Slave_SQL_Running` hodnotě "Ano" a hodnota `Seconds_Behind_Master` je "0", replikace funguje dobře. `Seconds_Behind_Master` Určuje, jak pozdě je replika. Pokud hodnota není "0", znamená to, že replika zpracovává aktualizace. 
 
 ## <a name="other-stored-procedures"></a>Jiné uložené procedury
 

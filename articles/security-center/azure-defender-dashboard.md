@@ -3,16 +3,16 @@ title: Řídicí panel a jeho funkce v programu Azure Defender
 description: Přečtěte si o funkcích řídicího panelu Azure Defenderu.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bb273a857065be2a535ef53f19285cb9a237ac7c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 268781f7f14ad93ca63cbbcbef1fb697d46b33a3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935577"
+ms.locfileid: "90977337"
 ---
 # <a name="the-azure-defender-dashboard"></a>Řídicí panel Azure Defender
 
