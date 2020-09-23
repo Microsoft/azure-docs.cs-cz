@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456059"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905261"
 ---
 # <a name="permutation-feature-importance"></a>Důležitost funkce permutací
 
-Tento článek popisuje, jak použít modul důležitost funkcí permutace v Návrháři Azure Machine Learning (Preview) k výpočtu sady výsledků důležitosti funkcí pro datovou sadu. Tato skóre vám pomůžou určit nejlepší funkce pro použití v modelu.
+Tento článek popisuje, jak použít modul důležitost funkcí permutace v Návrháři Azure Machine Learning k výpočtu sady výsledků důležitosti funkcí pro vaši datovou sadu. Tato skóre vám pomůžou určit nejlepší funkce pro použití v modelu.
 
 V tomto modulu jsou hodnoty funkcí náhodně přemístěné, vždy v jednom sloupci. Výkon modelu je měřen před a po. Můžete zvolit jednu ze standardních metrik pro měření výkonu.
 

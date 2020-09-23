@@ -10,20 +10,17 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092275"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896673"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 V tomto kurzu pomocí automatizovaného strojového učení nebo automatizovaného ML v Azure Machine Learning Studiu vytvoříte model prognózy časových řad, který předpovídá poptávku pro službu pro sdílení kol.
-
->[!IMPORTANT]
-> Automatizované prostředí ML v nástroji Azure Machine Learning Studio je ve verzi Preview. Některé funkce nemusí být podporované nebo mají omezené možnosti.
 
 Příklad klasifikačního modelu najdete v tématu [kurz: vytvoření klasifikačního modelu pomocí automatizovaného ml v Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
 
@@ -36,10 +33,10 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Prozkoumejte výsledky experimentů.
 > * Nasaďte nejlepší model.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor Azure Machine Learning edice Enterprise. Pokud nemáte pracovní prostor, [Vytvořte pracovní prostor Enterprise Edition](how-to-manage-workspace.md). 
-    * Automatizované strojové učení v Azure Machine Learning Studiu je dostupné jenom pro pracovní prostory Enterprise Edition. 
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md). 
+
 * Stažení [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) datového souboru
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Začínáme v Azure Machine Learning Studiu
@@ -78,7 +75,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Popis| Hodnota pro kurz
+        Pole|Description| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
@@ -88,7 +85,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
 
     1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. 
     
-        1. V tomto příkladu můžete zvolit ignorování **neformálních** a **zaregistrovaných** sloupců. Tyto sloupce jsou rozčleněné do sloupce **CNT** , takže je proto nezahrneme.
+        1. V tomto příkladu můžete zvolit ignorování **neformálních** a **zaregistrovaných** sloupců. Tyto sloupce jsou rozčleněné do sloupce  **CNT** , takže je proto nezahrneme.
 
         1. Také v tomto příkladu ponechte výchozí hodnoty **vlastností** a **typu**. 
         
@@ -100,27 +97,27 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
 
     1. Jakmile se datová sada zobrazí v seznamu, vyberte ji.
 
-    1. Vyberte **Další**.
+    1. Vyberte  **Další**.
 
 ## <a name="configure-experiment-run"></a>Konfigurace experimentového běhu
 
 Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, který sloupec ve vašich datech chcete předpovědět.
 
 1. Naplňte formulář pro **spuštění konfigurace** následujícím způsobem:
-    1. Zadejte název experimentu:`automl-bikeshare`
+    1. Zadejte název experimentu: `automl-bikeshare`
 
     1. Jako cílový sloupec vyberte **CNT** , co chcete předpovědět. V tomto sloupci se zobrazuje celkový počet nájemné za podíl na kolo.
 
     1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Automatizovaná ML podporuje jenom Azure Machine Learning výpočetní výkon. 
 
-        Pole | Popis | Hodnota pro kurz
+        Pole | Description | Hodnota pro kurz
         ----|---|---
-        Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|kolo – COMPUTE
+        Název výpočetních prostředků |Jedinečný název, který identifikuje váš výpočetní kontext.|kolo – COMPUTE
         &nbsp;Typ virtuálního počítače &nbsp;|Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
         &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
         Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
         Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
-        Upřesnit nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
+        Pokročilá nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
   
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
 
@@ -142,7 +139,7 @@ Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machin
 
 1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení a určují nastavení prognózy. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
-    Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
+    Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
     ------|---------|---
     Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|Normalizovaný průměrný střední znak – chyba
     Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
@@ -156,7 +153,7 @@ Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machin
 
 ## <a name="run-experiment"></a>Spustit experiment
 
-Pokud chcete svůj experiment spustit, vyberte **Dokončit**. Otevře se obrazovka s **podrobnostmi o spuštění** se **stavem spuštění** v horní části vedle čísla běhu. Tento stav se aktualizuje v průběhu experimentu.
+Pokud chcete svůj experiment spustit, vyberte **Dokončit**. Otevře se obrazovka s **podrobnostmi o spuštění**  se **stavem spuštění** v horní části vedle čísla běhu. Tento stav se aktualizuje v průběhu experimentu.
 
 >[!IMPORTANT]
 > Příprava na Příprava spuštění experimentu trvá **10-15 minut** .
@@ -195,7 +192,7 @@ Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přib
     ----|----
     Název nasazení| Bikeshare – nasazení
     Popis nasazení| nasazení požadavku na sdílení kol
-    Typ výpočtu | Výběr instance služby Azure COMPUTE (ACI)
+    Typ výpočetních prostředků | Výběr instance služby Azure COMPUTE (ACI)
     Povolit ověřování| Zakázat. 
     Použití vlastních prostředků nasazení| Zakázat. Když se zakáže, umožní se automaticky vygenerovat výchozí soubor ovladače a soubor prostředí. 
     

@@ -4,8 +4,8 @@
   items:
     - name: Co je služba Stream Analytics?
       href: stream-analytics-introduction.md
-    - name: Kompletní vzory řešení
-      href: stream-analytics-solution-patterns.md
+    - name: Cluster Stream Analytics
+      href: cluster-overview.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -23,7 +23,11 @@
         - name: Visual Studio
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: Vytvoření clusteru
+      items:
+        - name: portál Azure
+          href: create-cluster.md
 - name: Kurzy
   items:
     - name: 1. Vytvoření a správa úlohy
@@ -42,6 +46,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Koncepty
   items:
+    - name: Kompletní vzory řešení
+      href: stream-analytics-solution-patterns.md
     - name: Volba technologie analýzy streamování
       href: streaming-technologies.md
     - name: Volba nástroje pro vývoj úloh
@@ -145,6 +151,14 @@
   items:
     - name: Spravovat
       items:
+        - name: Clustery
+          items:
+            - name: Vytváření a odstraňování privátních koncových bodů
+              href: private-endpoints.md
+            - name: Přidávání a odebírání úloh
+              href: manage-jobs-cluster.md
+            - name: Škálování velikosti clusteru
+              href: scale-cluster.md
         - name: Úlohy automatického škálování
           href: stream-analytics-autoscale.md
         - name: Aktualizace přihlašovacích údajů
@@ -234,6 +248,14 @@
           href: stream-analytics-cicd-api.md
         - name: Export a nasazení s využitím Azure Resource Manageru
           href: resource-manager-export.md
+    - name: Průběžná integrace a nasazování
+      items:
+        - name: Přehled CI/CD
+          href: cicd-overview.md
+        - name: 'Sestavování, testování a nasazování pomocí PowerShellu'
+          href: cicd-tools.md
+        - name: Nastavení kanálu pomocí Azure DevOps
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: Instalace nástrojů
@@ -260,8 +282,6 @@
           href: visual-studio-code-local-run-live-input.md
         - name: Ladění dotazů s využitím diagramu úloh
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: Nastavení kanálu CI/CD
-          href: setup-cicd-vs-code.md
         - name: Zkoumání úloh
           href: visual-studio-code-explore-jobs.md
         - name: Pole JobConfig.json

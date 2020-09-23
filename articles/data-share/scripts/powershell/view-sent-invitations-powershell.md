@@ -1,6 +1,6 @@
 ---
 title: 'PowerShellový skript: vypsat pozvánky ke sdílení dat Azure odeslané příjemci | Microsoft Docs'
-description: Tento skript PowerShellu přijímá pozvánky od stávající sdílené složky.
+description: Přečtěte si, jak tento skript PowerShellu získá pozvánky odeslané příjemci a podívejte se na příklad skriptu, který můžete použít.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 157b844afd9d59b6c03c7ae8585bc2182370d3a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f0374ba5b98c145359d18143584e23fc543c552
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70307150"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985628"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>Použití PowerShellu k získání pozvánky ke sdílení dat
 

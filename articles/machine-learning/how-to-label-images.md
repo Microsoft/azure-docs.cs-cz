@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307195"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897562"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -78,13 +78,13 @@ Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v 
 
 Model strojového učení, který je zvláště zpočátku v rámci označování projektu, může být dostatečně přesný, aby bylo možné předoznačit malou podmnožinu imagí. Po označení těchto imagí se projekt označování vrátí k ručnímu označování, aby se získalo více dat pro další kolo školení o modelu. V průběhu času se model bude spolehlivější o větší část imagí, což vede k pozdějšímu předznačení úkolů v projektu.
 
-## <a name="tag-images-for-multi-class-classification"></a>Obrázky značek pro klasifikaci více tříd
+## <a name="tag-images-for-multi-class-classification"></a>Označování obrázků pro účely klasifikace s více třídami
 
 Pokud je váš projekt typu "Multi-Class klasifikace obrázku", přiřadíte k celému obrázku jednu značku. Pokud si chcete projít pokyny kdykoli, navštivte stránku s **pokyny** a vyberte **Zobrazit podrobné pokyny**.
 
 Pokud si myslíte, že jste po přiřazení značky k imagi udělali chybu, můžete ji opravit. Vyberte**X**na popisku, který je zobrazený pod obrázkem, a vymažte značku. Případně vyberte obrázek a zvolte jinou třídu. Nově vybraná hodnota nahradí dřív použitou značku.
 
-## <a name="tag-images-for-multi-label-classification"></a>Obrázky značek pro klasifikaci s více štítky
+## <a name="tag-images-for-multi-label-classification"></a>Označování obrázků pro účely klasifikace s více popisky
 
 Pokud pracujete na projektu typu vícenásobný popisek klasifikace obrázku, použijete jednu *nebo více* značek pro obrázek. Chcete-li zobrazit směry specifické pro projekt, vyberte **pokyny** a přejděte k **zobrazení podrobných pokynů**.
 
@@ -103,7 +103,7 @@ Chcete-li opravit chybu, klikněte na "**X**", chcete-li vymazat jednotlivou zna
 Azure povolí tlačítko **Odeslat** jenom po použití aspoň jedné značky pro každý obrázek. Vyberte **Odeslat** a uložte svou práci.
 
 
-## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Tagování obrázků a určení ohraničujících polí pro detekci objektů
+## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Označování obrázků a určování ohraničujících rámečků pro účely detekce objektů
 
 Pokud je váš projekt typu "Identifikace objektu (ohraničující pole)", zadáte jeden nebo více ohraničujících polí v obrázku a použijete značku pro každé pole. Obrázky mohou mít více ohraničujících polí, z nichž každá má jednu značku. Použijte **Zobrazit podrobné pokyny** k určení, zda je v projektu použito více ohraničujících polí.
 
@@ -111,7 +111,7 @@ Pokud je váš projekt typu "Identifikace objektu (ohraničující pole)", zadá
 1. Vyberte **obdélníkový** panel nástrojů obdélníkového pole ![ ](./media/how-to-label-images/rectangular-box-tool.png) nebo vyberte R.
 3. Kliknutím a přetažením úhlopříčně v celém cíli vytvoříte hrubě ohraničující rámeček. Chcete-li upravit ohraničovací rámeček, přetáhněte okraje nebo rohy.
 
-![Snímek obrazovky ukazuje vytvoření základního ohraničovacího rámečku.](./media/how-to-label-images/bounding-box-sequence.png)
+![Vytváření ohraničovacího rámečku](./media/how-to-label-images/bounding-box-sequence.png)
 
 Chcete-li odstranit ohraničovací rámeček, klikněte na cíl ve tvaru X, který se po vytvoření zobrazí vedle ohraničujícího rámečku.
 

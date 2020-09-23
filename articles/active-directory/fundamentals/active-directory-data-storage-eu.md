@@ -9,26 +9,30 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 874df2cc17e291cb6811ca07d01237f01b523860
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565034"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985913"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Úložiště dat identity pro evropské zákazníky v Azure Active Directory
 Data identity ukládá služba Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je Microsoft 365 a Azure. Informace o tom, kde jsou uložená data identity, můžete najít v části [umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
 
 Pro zákazníky, kteří získali adresu v Evropě, uchovává Azure AD většinu dat identity v rámci evropských datových center. Tento dokument poskytuje informace o všech datech, která jsou uložená mimo Evropu službami Azure AD.
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor Authentication (MFA)
-    
-- Všechna dvojúrovňové ověřování pomocí telefonních hovorů nebo SMS pocházejících z Datacenter USA a jsou směrována i globálními poskytovateli.
-- Nabízená oznámení, která používají aplikaci Microsoft Authenticator, pocházejí z datových center USA. Kromě toho mohou vzniknout také služby specifické pro dodavatele zařízení a tyto služby můžou být mimo Evropu.
-- Kódy OATH se vždy ověřují v USA. 
+## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+
+Pro cloudové Multi-Factor Authentication Azure se ověřování dokončí v nejbližším datacentru pro uživatele. Datová centra pro Azure Multi-Factor Authentication existují v Severní Amerika, Evropě a Asie a Tichomoří.
+
+* Multi-Factor Authentication využívající telefonní hovory pocházející z Datacenter USA a jsou směrováni globálními poskytovateli.
+* Multi-Factor Authentication pomocí SMS je směrováni globálními poskytovateli.
+* Žádosti o vícefaktorové ověřování využívající nabízená oznámení aplikace Microsoft Authenticator, která pocházejí z datových center EU, se zpracovávají v datových centrech EU.
+    * Služby specifické pro dodavatele zařízení, jako např. nabízená oznámení Apple, můžou být mimo Evropu.
+* Žádosti o vícefaktorové ověřování pomocí kódů OATH, které pocházejí z datových center EU, se ověřují v EU.
 
 Další informace o tom, jaké informace o uživateli shromažďuje služba Azure Multi-Factor Authentication Server (MFA Server) a cloudová služba Azure MFA, najdete v článku [shromažďování uživatelských dat v azure Multi-Factor Authentication](../authentication/howto-mfa-reporting-datacollection.md).
 

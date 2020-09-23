@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 98dfd51783ad3bc0b89f441f89436d3c3d928104
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a642f7dfc470a695f96967cad0ed738d45b11efb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875640"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881920"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>Azure Data Lake Storage výstup 1. generace z Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Azure Data Lake Storage výstup z Stream Analytics není k dispozici v oblastech
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro konfiguraci Data Lake Storageho výstupu 1. generace.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup | Popisný název, který se v dotazech používá k přímému nasměrování výstupu dotazu na Data Lake Store. |
 | Předplatné | Předplatné, které obsahuje váš účet Azure Data Lake Storage. |
@@ -53,4 +53,4 @@ Maximální velikost zprávy najdete v části [omezení Data Lake Storage](../a
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí šablony ARM](quick-create-azure-resource-manager.md)
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md)
+* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)

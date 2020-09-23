@@ -11,16 +11,16 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a0853d4a863f6b7677f665513bdac9ca8e6b673
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144103"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897470"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto průvodci se naučíte používat balíček pro interpretaci sady Azure Machine Learning Python SDK k provádění následujících úloh:
 
@@ -304,7 +304,7 @@ Po stažení vysvětlení v místním poznámkovém bloku Jupyter můžete model
 
 Následující vykreslení poskytují celkový přehled o škole modelu spolu s jeho předpovědi a vysvětleními.
 
-|Znázorněte|Popis|
+|Znázorněte|Description|
 |----|-----------|
 |Zkoumání dat| Zobrazí přehled datové sady spolu s hodnotami předpovědi.|
 |Globální důležitost|Agreguje hodnoty důležitosti funkcí jednotlivých datapoints k zobrazení celkových důležitých funkcí modelu (konfigurovatelné K). Pomáhá pochopit celkové chování základního modelu.|
@@ -318,7 +318,7 @@ Následující vykreslení poskytují celkový přehled o škole modelu spolu s 
 
 Můžete načíst zobrazení důležitosti jednotlivých funkcí pro libovolný datový bod tak, že kliknete na kterýkoli z jednotlivých datových bodů v některém z celkových vykreslení.
 
-|Znázorněte|Popis|
+|Znázorněte|Description|
 |----|-----------|
 |Místní důležitost|Zobrazuje horních K (konfigurovatelné K) důležité funkce pro jednotlivé předpovědi. Pomáhá ilustrovat místní chování základního modelu v konkrétním datovém bodě.|
 |Průzkum Perturbation (citlivostní analýza)|Umožňuje změnit hodnoty funkcí vybraného datového bodu a sledovat výsledné změny hodnoty předpovědi.|

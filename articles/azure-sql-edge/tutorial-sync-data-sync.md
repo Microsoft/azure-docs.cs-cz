@@ -1,6 +1,6 @@
 ---
-title: Synchronizace dat z Edge Azure SQL (Preview) pomocí Synchronizace dat SQL
-description: Přečtěte si o synchronizaci dat z Azure SQL Edge (Preview) pomocí Azure Synchronizace dat SQL
+title: Synchronizace dat z Azure SQL Edge pomocí Synchronizace dat SQL
+description: Přečtěte si o synchronizaci dat z Azure SQL Edge pomocí Azure Synchronizace dat SQL
 keywords: SQL Edge, synchronizace dat z okraje SQL, synchronizace dat SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85254046"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904121"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Kurz: synchronizace dat z Edge SQL na Azure SQL Database pomocí Synchronizace dat SQL
 
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte používat *skupinu synchronizace* Azure synchronizac
 
 Vzhledem k tomu, že je SQL Edge postaven na nejnovějších verzích [databázového stroje SQL Server](/sql/sql-server/sql-server-technical-documentation/), můžete k synchronizaci dat do nebo z instance SQL Edge běžící na hraničním zařízení použít také jakýkoliv mechanismus synchronizace dat, který je použitelný pro instanci SQL Server.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz vyžaduje počítač se systémem Windows nakonfigurovaný s [agentem synchronizace dat pro Azure synchronizace dat SQL](../azure-sql/database/sql-data-sync-agent-overview.md).
 

@@ -11,16 +11,16 @@ ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4aa0cecb380f75080abe471a4c414029436c57d6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b27675f152132a015a6dc6f5aea35aff036e1a63
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645954"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897550"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Export nebo odstranění dat pracovního prostoru služby Machine Learning
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V Azure Machine Learning můžete data pracovního prostoru exportovat nebo odstranit buď pomocí grafického rozhraní portálu nebo sady Python SDK. Tento článek popisuje obě možnosti.
 

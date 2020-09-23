@@ -4,12 +4,12 @@ description: Nastavení testů webu ve službě Application Insights. Zasílán�
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310272"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986026"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -78,7 +78,7 @@ Výsledky testů dostupnosti lze vizuálně zobrazit pomocí spojnicových i bod
 
 Po několika minutách kliknutím na **aktualizovat** zobrazíte výsledky testů.
 
-![Řádkové zobrazení](./media/monitor-web-app-availability/availability-refresh-002.png)
+![Snímek obrazovky zobrazující stránku dostupnosti se zvýrazněným tlačítkem aktualizovat](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 Zobrazení scatterplot zobrazuje ukázky výsledků testů, které obsahují podrobné informace o testovacím kroku testu. V případě testů obsahujících selhání ukládá testovací modul diagnostické informace. U úspěšných testů se diagnostické informace ukládají pro celou dílčí sadu provedení. Pokud chcete zobrazit test, název testu a umístění, najeďte myší na kteroukoli zelenou/červenou tečku.
 

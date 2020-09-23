@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Správa sdílené složky Edge | Microsoft Docs
-description: Popisuje, jak použít Azure Portal ke správě sdílených složek na hraničních Azure Stackch.
+title: Správa sdílených složek pro Azure Stack Edge | Microsoft Docs
+description: Popisuje, jak použít Azure Portal ke správě sdílených složek v Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 1aceb9d2fb1d9b5890bc0859d432bc1c5e7e4db4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904466"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>Použití Azure Portal ke správě sdílených složek na hraničních Azure Stackch
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě sdílených složek v Azure Stack Edge pro
 
-Tento článek popisuje, jak spravovat sdílené složky na Azure Stack hraničních zařízeních. Azure Stack Edge můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete přidat, odstranit, aktualizovat sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště, který je přidružený ke sdíleným složkám.
+Tento článek popisuje, jak spravovat sdílené složky na Azure Stack Edge pro. Azure Stack Edge pro můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete přidat, odstranit, aktualizovat sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště, který je přidružený ke sdíleným složkám.
 
 ## <a name="about-shares"></a>Informace o sdílených složkách
 
-Pokud chcete přenést data do Azure, musíte na Azure Stack Edge vytvořit sdílené složky. Sdílené složky, které přidáte na zařízení Azure Stack Edge, můžou být místní sdílené složky nebo sdílené složky, které zadávají data do cloudu.
+Pokud chcete přenést data do Azure, musíte vytvořit sdílené složky na Azure Stack Edge pro. Sdílené složky, které přidáte na zařízení Azure Stack Edge pro, můžou být místní sdílené složky nebo sdílené složky, které zadávají data do cloudu.
 
  - **Místní sdílené složky**: tyto sdílené složky použijte, pokud chcete, aby se data zpracovala místně na zařízení.
  - **Sdílené složky**: tyto sdílené složky použijte, pokud chcete, aby se data zařízení automaticky odeslala do vašeho účtu úložiště v cloudu. Všechny cloudové funkce, jako jsou například **aktualizace** a **synchronizace klíčů úložiště** , se vztahují ke sdíleným složkám.
@@ -54,7 +54,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 5. V rozevíracím seznamu vyberte **službu úložiště** z objektu blob bloku, objektu blob stránky nebo souborů. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. Například v této instanci chceme, aby se data nacházela jako objekty blob bloku v Azure, a proto vybereme možnost **objekt blob bloku**. Pokud zvolíte **objekt blob stránky**, musíte zajistit, aby vaše data byla 512 bajtů. Použijte **objekt blob stránky** pro VHD nebo VHDX, který je vždycky zarovnaný 512 bajtů.
 
    > [!IMPORTANT]
-   > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte s Azure Stack Edge nebo Data Box Gateway zařízení. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte se zařízením Azure Stack Edge pro nebo Data Box Gateway. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. Postup v tomto kroku závisí na tom, jestli vytváříte sdílenou složku SMB nebo systému souborů NFS.
    - **Pokud vytváříte sdílenou složku SMB** – v poli **Místní uživatel se všemi oprávněními** zvolte **Vytvořit nový** nebo **Použít existující**. Pokud vytváříte nového místního uživatele, zadejte **uživatelské jméno**, **heslo** a pak potvrďte heslo. Tím se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
@@ -102,7 +102,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 ## <a name="mount-a-share"></a>Připojení sdílené složky
 
-Pokud jste vytvořili sdílenou složku před tím, než jste nakonfigurovali výpočetní výkon na Azure Stack hraničním zařízení, bude nutné sdílenou složku připojit. Pro připojení sdílené složky proveďte následující kroky.
+Pokud jste vytvořili sdílenou složku před tím, než jste nakonfigurovali výpočetní výkon na zařízení Azure Stack Edge pro, budete muset sdílenou složku připojit. Pro připojení sdílené složky proveďte následující kroky.
 
 1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**. V seznamu sdílených složek vyberte sdílenou složku, kterou chcete připojit. Ve sloupci **použito pro výpočty** se zobrazí stav **zakázáno** pro vybranou sdílenou složku.
 

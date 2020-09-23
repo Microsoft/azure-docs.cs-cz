@@ -1,6 +1,6 @@
 ---
 title: Základní sestavy z Verizon | Microsoft Docs
-description: 'Vzorce používání pro CDN můžete zobrazit pomocí následujících sestav: šířka pásma, přenesená data, počet přístupů, stavy mezipaměti, poměr přístupů do mezipaměti, přenesených dat IPV4/IPV6.'
+description: Naučte se, jak získat přístup k základním sestavám Verizon prostřednictvím portálu pro správu profilů Verizon a jak je zobrazit.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888440"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985533"
 ---
 # <a name="core-reports-from-verizon"></a>Základní sestavy od Verizonu
 
@@ -77,7 +77,7 @@ Tato sestava popisuje distribuci stavových kódů požadavků pro váš obsah. 
 Tato sestava popisuje distribuci přístupů do mezipaměti a neúspěšných přístupů do mezipaměti pro požadavky klientů. Vzhledem k tomu, že nejrychlejší výsledky výkonu z hlediska přístupů do mezipaměti, můžete optimalizovat rychlost doručování dat díky minimalizaci přístupů do mezipaměti a přístupů do mezipaměti s vypršenou platností. 
 
 Pokud chcete snížit počet neúspěšných přístupů do mezipaměti, nakonfigurujte zdrojový server tak, aby minimalizoval používání následujících možností: 
- * `no-cache`hlavičky odpovědi
+ * `no-cache` hlavičky odpovědi
  * Dotaz – ukládání řetězců do mezipaměti, pokud není potřeba striktně  
  * Kódy odpovědí, které nejsou v mezipaměti
 
@@ -132,6 +132,6 @@ Tato sestava zobrazuje distribuci využití provozu v protokolu IPV4 vs IPV6.
 
 ![Přenesená data protokolu IPV4/IPV6](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 Sestavy se dají vygenerovat jenom během posledních 18 měsíců.
 

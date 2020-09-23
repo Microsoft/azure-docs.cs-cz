@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082263"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984874"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 
@@ -85,7 +85,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
     - Použijte integrovanou roli Přispěvatel sítě. Tato role se dodává s oprávněním _Microsoft. \* Network/_ , které má mnohem větší rozsah, než je nutné.
     - Vytvořte vlastní roli, která bude obsahovat jenom potřebná oprávnění _Microsoft. Network/virtualNetworks/ \* /Join/Action_ . Pokud chcete pro Azure-SSIS IR při připojení k virtuální síti Azure Resource Manager použít i vlastní veřejné IP adresy, v roli taky uveďte oprávnění _Microsoft. Network/publicIPAddresses/*/JOIN/Action_ .
 
-1. **Virtuální síť**.
+1. **Virtuální síť:**
 
     1. Ujistěte se, že skupina prostředků virtuální sítě může vytvářet a odstraňovat určité síťové prostředky Azure.
 
@@ -141,7 +141,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
     Název hostitele veřejného koncového bodu se nachází ve formátu <mi_name>. Public. <dns_zone>. database.windows.net a port používaný pro připojení je 3342.  
 
-    ![Katalog – veřejný koncový bod](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    ![Snímek obrazovky ukazuje instalační program prostředí Integration runtime s vybraným katalogem pro vytváření s s/s a serverem katalogu databáze.](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
 
 1. V případě použití vyberte ověřování Azure AD.
 
@@ -157,7 +157,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
     Další informace o tom, jak připojit Azure-SSIS IR k virtuální síti, najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
 
-    ![připojit se k virtuální síti](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    ![Snímek obrazovky ukazuje upřesňující nastavení nastavení modulu runtime integrace, kde můžete vybrat virtuální síť, ke které se má modul runtime připojit.](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
 
 Další informace o tom, jak vytvořit Azure-SSIS IR, najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime).
 

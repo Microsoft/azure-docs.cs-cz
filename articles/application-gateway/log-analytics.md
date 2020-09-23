@@ -1,19 +1,19 @@
 ---
 title: Kontrola protokolů WAF pomocí Azure Log Analytics
 titleSuffix: Azure Application Gateway
-description: V tomto článku se dozvíte, jak můžete použít Azure Log Analytics k prohlédnutí Application Gateway protokolů firewallu webových aplikací.
+description: V tomto článku se dozvíte, jak můžete pomocí Azure Log Analytics kontrolovat protokoly firewallu webových aplikací (WAF) Application Gateway.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 88e360c5630c24dd997f72bda3fc4a480264763d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a5925b9667cf0db5003584c3bf6a30d8611c5ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086910"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985997"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Použití Log Analytics pro kontrolu Application Gateway protokolů firewallu webových aplikací (WAF)
 

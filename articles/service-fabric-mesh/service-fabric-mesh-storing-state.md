@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246822"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984131"
 ---
 # <a name="state-management-with-service-fabric"></a>Správa stavu pomocí Service Fabric
 
@@ -22,7 +22,7 @@ Pomocí Service Fabric sítě můžete snadno nasadit novou aplikaci a připojit
 
 Kontejnery často využívají dočasné disky. Dočasné disky jsou ale dočasné, takže získáte nový dočasný disk a ztratíte informace, když dojde k selhání kontejneru. Je také obtížné sdílet informace o dočasných discích s jinými kontejnery. Svazky jsou adresáře, které se připevní do instancí kontejnerů, které můžete použít k trvalému stavu. Svazky poskytují úložiště souborů pro obecné účely a umožňují čtení a zápis souborů pomocí normálních rozhraní API v/v souborů na disku. Prostředek Volume popisuje, jak připojit adresář a které záložní úložiště použít. K ukládání dat můžete vybrat buď službu Azure File Storage, nebo Service Fabric diskové jednotky.
 
-![Svazky][image3]
+![Diagram znázorňuje službu, která přetéká do svazku, což vede k Service Fabric spolehlivého svazku na replikovaném místním disku a na svazku souborů Azure v síťovém úložišti.][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric spolehlivý svazek
 

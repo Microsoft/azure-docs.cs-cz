@@ -1,7 +1,7 @@
 ---
-title: Importovat data do návrháře (Preview)
+title: Import dat do návrháře
 titleSuffix: Azure Machine Learning
-description: Naučte se importovat data do návrháře Azure Machine Learning (Preview) z různých zdrojů dat.
+description: Naučte se importovat data do návrháře Azure Machine Learning z různých zdrojů dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006980"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985603"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
+# <a name="import-data-into-azure-machine-learning-designer"></a>Import dat do návrháře Azure Machine Learning
 
 V tomto článku se dozvíte, jak v Návrháři importovat vlastní data, abyste mohli vytvářet vlastní řešení. Existují dva způsoby, jak můžete importovat data do návrháře: 
 
@@ -32,7 +32,7 @@ Pro import dat do návrháře doporučujeme použít datové [sady](concept-data
 
 ### <a name="register-a-dataset"></a>Registrace datové sady
 
-Existující datové sady [programově se sadou SDK](how-to-create-register-datasets.md#datasets-sdk) můžete registrovat nebo [vizuálně v Azure Machine Learning Studiu](how-to-create-register-datasets.md#datasets-ui).
+Existující datové sady [programově se sadou SDK](how-to-create-register-datasets.md#datasets-sdk) můžete registrovat nebo [vizuálně v Azure Machine Learning Studiu](how-to-connect-data-ui.md#create-datasets).
 
 Výstup můžete také zaregistrovat pro libovolný modul návrháře jako datovou sadu.
 
@@ -68,7 +68,7 @@ I když doporučujeme k importu dat použít datové sady, můžete také použ�
 Podrobné informace o tom, jak používat modul import dat, najdete na [stránce s referenčními informacemi k importu dat](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Pokud vaše datová sada obsahuje příliš mnoho sloupců, může dojít k následující chybě: "ověření se nezdařilo z důvodu omezení velikosti". Pokud se tomu chcete vyhnout, [Zaregistrujte datovou sadu v rozhraní datových sad](how-to-create-register-datasets.md#datasets-ui).
+> Pokud vaše datová sada obsahuje příliš mnoho sloupců, může dojít k následující chybě: "ověření se nezdařilo z důvodu omezení velikosti". Pokud se tomu chcete vyhnout, [Zaregistrujte datovou sadu v rozhraní datových sad](how-to-connect-data-ui.md#create-datasets).
 
 ## <a name="supported-sources"></a>Podporované zdroje
 
@@ -90,7 +90,7 @@ Návrhář podporuje tabulkové datové sady vytvořené z následujících zdro
 Návrhář interně rozpoznává následující typy dat:
 
 * Řetězec
-* Integer
+* Celé číslo
 * Decimal
 * Logická hodnota
 * Datum
@@ -107,4 +107,4 @@ Pokud je váš pracovní prostor ve virtuální síti, musíte provést další 
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se se základy návrháře pomocí [kurzu: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md).
+Naučte se základy pro návrháře v tomto [kurzu: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md).

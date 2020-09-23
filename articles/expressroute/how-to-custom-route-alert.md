@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986573"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních upozornění pro monitorování inzerovaných tras
 
@@ -299,7 +299,7 @@ V aktivační události plánu opakování můžete nastavit časové pásmo a o
 
 Na konci Konfigurace pracovního postupu můžete ověřit konzistenci četnosti opakování tak, že několikrát spustíte pracovní postup a pak ověříte výsledek v **historii spuštění**.
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Opakování" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Snímek obrazovky ukazuje interval opakování a hodnoty frekvence." lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3. vytvoření úlohy
 
@@ -320,7 +320,7 @@ Aplikace logiky přistupuje k jiným aplikacím, službám a platformě i přes 
 
 5. Na stránce **vytvořit úlohu** by měl instanční objekt mít roli Čtenář v této **skupině prostředků** , která je hostitelem účtu Automation, a "operátor úlohy služby Automation" na **účtu Automation**. Dále ověřte, že jste přidali **název sady Runbook** jako nový parametr.
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Role" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Snímek obrazovky ukazuje, jak vytvořit hodnoty úloh v opakování, kde můžete ověřit název Runbooku." lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4. Získejte výstup úlohy.
 
@@ -343,7 +343,7 @@ Informace obsažené ve výstupu z akce Azure Automation vytvořit úlohu úlohy
 
 3. Klikněte do pole **obsah** . Když se zobrazí seznam dynamický obsah, vyberte **obsah**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Obsah" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Snímek obrazovky s vybraným obsahem zobrazuje dialogové okno analýzy formátu JSON." lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. Analýza JSON vyžaduje schéma. Schéma se dá vygenerovat pomocí výstupu Runbooku služby Automation. Otevřete novou relaci webového prohlížeče, spusťte Runbook služby Automation a natáhněte výstup. Vraťte se do akce **Logic Apps analyzovat operace dat JSON** . V dolní části stránky vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
@@ -363,7 +363,7 @@ V tomto kroku pracovního postupu vytvoříme podmínku pro odeslání alarmu e-
 
 1. V **akci načíst výstup úlohy**vyberte **Nový krok**. Ve vyhledávacím poli vyhledejte a vyberte **proměnné**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Proměnné":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Snímek obrazovky se zobrazí dialogové okno zvolit akci s proměnnou v poli Hledat a vybrané proměnné.":::
 
 2. V seznamu **Akce** vyberte akci **inicializovat proměnnou** .
 
@@ -371,7 +371,7 @@ V tomto kroku pracovního postupu vytvoříme podmínku pro odeslání alarmu e-
 
 3. Zadejte název proměnné. Jako **typ**vyberte **řetězec**. **Hodnota** proměnné bude přiřazena později v pracovním postupu.
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Řetězec" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Snímek obrazovky znázorňující analýzu JSON spojenou s proměnnou Initialize, kde můžete zadat název, typ a hodnotu." lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7. vytvoření akce for each
 
@@ -379,7 +379,7 @@ Po analýze formátu JSON akce **operace analýzy dat JSON** uloží obsah do v�
 
 1. V části **inicializovat proměnnou**vyberte **přidat akci**. Do vyhledávacího pole zadejte jako filtr "for each".
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Řízení":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Snímek obrazovky se zobrazí dialogové okno zvolit akci pro každý z vyhledávacího pole a vybraného ovládacího prvku.":::
 
 2. V seznamu **Akce** vyberte akci **pro každý ovládací prvek**.
 
@@ -387,7 +387,7 @@ Po analýze formátu JSON akce **operace analýzy dat JSON** uloží obsah do v�
 
 3. Klikněte na textové pole **vybrat výstup z předchozích kroků** . Po zobrazení seznamu **dynamický obsah** vyberte **text**, který je výstupem z analyzovaného formátu JSON.
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Text":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Snímek obrazovky se zobrazí inicializovaná proměnná přidružená k pro každou, která obsahuje textové pole vybrat výstup z předchozích kroků.":::
 
 4. Pro každý prvek těla JSON chceme nastavit podmínku. Ve skupině akcí vyberte **ovládací prvek**.
 

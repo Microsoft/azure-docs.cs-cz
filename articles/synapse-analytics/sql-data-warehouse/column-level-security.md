@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1364da4849a07100ac28644a51409837012f93cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208089"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986210"
 ---
 # <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
 
@@ -28,9 +28,9 @@ Vzhledem k tomu, že toto video bylo zveřejněné [zabezpečení na úrovni ř�
 
 Zabezpečení na úrovni sloupců zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. umožňuje omezit přístup k sloupci na ochranu citlivých dat. Například zajistěte, aby konkrétní uživatelé měli přístup pouze k určitým sloupcům tabulky, které se vztahují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z jakékoli úrovně. Toto omezení zajišťuje spolehlivější a robustní zabezpečení tím, že redukuje plochu celkového systému zabezpečení. Kromě toho zabezpečení na úrovni sloupců také eliminuje nutnost zavedení zobrazení pro odfiltrování sloupců pro ukládání omezení přístupu uživatelům.
 
-Můžete implementovat zabezpečení na úrovni sloupce pomocí příkazu [grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (AAD).
+Můžete implementovat zabezpečení na úrovni sloupce pomocí příkazu [grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (Azure AD).
 
-![specifikaci](./media/column-level-security/cls.png)
+![Diagram znázorňuje sloupcovou tabulku s prvním sloupcem s uzavřenou visacího zámku nezobrazuje a jejími buňkami oranžová barva, zatímco ostatní sloupce jsou bílé buňky.](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntax
 
