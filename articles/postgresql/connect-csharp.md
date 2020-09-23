@@ -8,18 +8,18 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 80f42fd1f2291acfcdd7814f1b9811bd85d26746
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c176caf4bd2bac68b1994b5eef51ebc2f7e7be4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012173"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903866"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití rozhraní .NET (C#) k připojení a dotazování dat v Azure Database for PostgreSQL – jeden server
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v C#. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí C# a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – rozhraní příkazového řádku](quickstart-create-server-database-azure-cli.md)
@@ -36,7 +36,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for PostgreSQL](./media/connect-csharp/1-connection-string.png)
+ :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="Název serveru Azure Database for PostgreSQL":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
 Použijte následující kód k připojení a načtení dat pomocí příkazů jazyka SQL **CREATE TABLE** a **INSERT INTO**. Tento kód pro navázání připojení k databázi PostgreSQL využívá třídu NpgsqlCommand s metodou [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open). Potom kód použije metodu [CreateCommand ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand), nastaví vlastnost CommandText a zavolá metodu [ExecuteNonQuery ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) pro spuštění databázových příkazů. 

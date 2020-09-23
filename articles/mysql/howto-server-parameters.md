@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: 8a988895cd8999d15c32d7056d35abf40aeaba7e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: a37fbee4361d4a87c43a42cae66c425eba1e0877
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420689"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887041"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Konfigurace parametrů serveru v Azure Database for MySQL pomocí Azure Portal
 
@@ -21,13 +21,13 @@ Azure Database for MySQL podporuje konfiguraci některých parametrů serveru. T
 
 1. Přihlaste se k Azure Portal a potom vyhledejte server Azure Database for MySQL.
 2. V části **Nastavení** klikněte na **parametry serveru** a otevřete stránku parametry serveru pro Azure Database for MySQL server.
-![Stránka parametrů serveru Azure Portal](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+:::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Stránka parametrů serveru Azure Portal":::
 3. Vyhledejte všechna nastavení, která potřebujete upravit. Přečtěte si sloupec **Description (popis** ), abyste pochopili účel a povolené hodnoty.
-![Výčet rozevíracích seznamu](./media/howto-server-parameters/3-toggle_parameter.png)
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Výčet rozevíracích seznamu":::
 4. Kliknutím na  **Uložit** uložte změny.
-![Uložit nebo zahodit změny](./media/howto-server-parameters/4-save_parameters.png)
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Uložit nebo zahodit změny":::
 5. Pokud jste uložili nové hodnoty pro parametry, můžete kdykoli vrátit zpět všechny výchozí hodnoty výběrem možnosti **Obnovit vše na výchozí**.
-![Obnovit výchozí](./media/howto-server-parameters/5-reset_parameters.png)
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Obnovit výchozí":::
 
 ## <a name="setting-parameters-not-listed"></a>Nastavení neuvedených parametrů
 
@@ -41,7 +41,7 @@ Pokud parametr serveru, který chcete aktualizovat, není uveden v Azure Portal,
 4. Kliknutím na **Uložit** změny uložte.
 
 >[!Note]
-> `init_connect` dá se použít ke změně parametrů, které nevyžadují oprávnění SUPER (s) na úrovni relace. Pokud chcete ověřit, jestli můžete parametr nastavit pomocí `init_connect` příkazu, spusťte `set session parameter_name=YOUR_DESIRED_VALUE;` příkaz a pokud dojde k chybám při **odepření přístupu, potřebujete oprávnění super (s)** , ale nemůžete nastavit parametr pomocí init_connect.
+> Pomocí příkazu `init_connect` je možné měnit parametry, které nevyžadují oprávnění SUPER na úrovni relace. Pokud chcete ověřit, jestli můžete nastavit parametr pomocí příkazu `init_connect`, spusťte příkaz `set session parameter_name=YOUR_DESIRED_VALUE;` – pokud selže s chybou **Přístup byl odepřen, potřebujete oprávnění SUPER**, znamená to, že tento parametr nemůžete nastavit pomocí příkazu init_connect.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 
@@ -69,7 +69,7 @@ SELECT name FROM mysql.time_zone_name;
 
 Časové pásmo globální úrovně lze nastavit na stránce **parametry serveru** v Azure Portal. Následující nastavení nastaví globální časové pásmo na hodnotu "US/Tichomoří".
 
-![Nastavit parametr časového pásma](./media/howto-server-parameters/timezone.png)
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Nastavit parametr časového pásma":::
 
 ### <a name="setting-the-session-level-time-zone"></a>Nastavení časového pásma úrovně relace
 

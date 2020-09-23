@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 130e23c290ce493d3fb92f6dd0be4cd7c61a86fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650489"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888050"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Konfigurace využití a dat diagnostiky Azure SQL Edge
 
@@ -61,6 +61,9 @@ group by data_source_type
 
 Shromažďování dat o využití a diagnostiku v Azure SQL Edge se dá zakázat pomocí některé z následujících metod.
 
+> [!NOTE]
+> Data o využití a diagnostiku není možné pro vývojářskou verzi zakázat.
+
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>Zakázání používání a diagnostiky pomocí proměnných prostředí
 
 Pokud chcete zakázat shromažďování dat o využití a diagnostice na Edge SQL Azure, přidejte následující proměnnou prostředí a nastavte její hodnotu na `*False*` . Další informace o konfiguraci Edge Azure SQL pomocí proměnných prostředí najdete v tématu [Konfigurace pomocí proměnných prostředí](configure.md#configure-by-using-environment-variables).
@@ -68,7 +71,7 @@ Pokud chcete zakázat shromažďování dat o využití a diagnostice na Edge SQ
 `MSSQL_TELEMETRY_ENABLED = TRUE | FALSE`
 
 - TRUE – povolí shromažďování dat o využití a diagnostice. Toto je výchozí konfigurace.
-- FALSE – zakáže shromažďování dat o využití a diagnostiku.
+- FALSE – zakáže shromažďování dat o využití a diagnostice.
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>Zakázání používání a diagnostiky pomocí souboru MSSQL. conf
 

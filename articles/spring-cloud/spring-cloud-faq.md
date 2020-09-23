@@ -4,15 +4,16 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322037"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888713"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -61,9 +62,11 @@ Pokud narazíte na nějaké problémy se službou Azure Pramenitého cloudu, vyt
 
 Nejrychlejší způsob, jak začít s jarním cloudem v Azure, najdete podle pokynů v tématu [rychlý Start: spuštění aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart.md).
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Jaký běhový modul Java podporuje Azure jaře Cloud?
 
 Azure jarní Cloud podporuje jazyky Java 8 a 11. Viz [Java Runtime a verze operačních systémů](#java-runtime-and-os-versions)
+::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Kde můžu zobrazit protokoly a metriky cloudových aplikací pro jaře?
 
@@ -73,18 +76,20 @@ Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Podporuje Azure jaře Cloud distribuované trasování?
 
-Yes. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
+Ano. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Jaké typy prostředků podporuje Service Binding?
 
 V současné době jsou podporovány tři služby:
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Mezipaměť Azure pro Redis.
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Můžu v rámci svých aplikací zobrazit, přidat nebo přesunout trvalé svazky?
 
-Yes.
+Ano.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Po odstranění nebo přesunutí instance služby Azure jaře Cloud Service se její prostředky pro rozšíření odstranily/přesunuly i?
 
@@ -96,6 +101,7 @@ Nastavení diagnostiky jarního cloudu můžete odstranit pomocí Azure CLI:
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
 ```
 
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Běhové prostředí Java a verze operačních systémů
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Které verze Java Runtime jsou podporovány v Azure jaře cloudu?
@@ -136,15 +142,16 @@ Můžete otevřít lístek podpory s podporou Azure.  Podívejte [se, jak vytvo�
 
 Použije se nejnovější verze Ubuntu LTS, aktuálně [Ubuntu 20,04 LTS (kontaktní fossa)](https://releases.ubuntu.com/focal/) je výchozí operační systém.
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>Jak často budou opravy zabezpečení operačních systémů aplikovány?
+### <a name="how-often-are-os-security-patches-applied"></a>Jak často se používají opravy zabezpečení operačního systému?
 
-Opravy zabezpečení použitelné pro jarní Cloud v Azure se budou za měsíc nacházet v produkčním prostředí.
-Důležité opravy zabezpečení (CVE skore >= 9) použitelné pro jarní cloudy Azure budou co nejdříve zavedeny.
+Opravy zabezpečení použitelné pro jarní cloudy Azure jsou v produkčním prostředí zavedeny na základě měsíčního nasazení.
+Důležité opravy zabezpečení (CVE skóre >= 9) použitelné pro jarní cloudy Azure jsou nasazeny co nejdříve.
+::: zone-end
 
 ## <a name="deployment"></a>Nasazení
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Podporuje nasazení s modrou zeleným cloudem Azure?
-Yes. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
+Ano. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Můžu získat přístup k Kubernetes, abyste mohli manipulovat s kontejnery aplikací?
 
@@ -152,12 +159,13 @@ No.  Azure jaře Cloud vyabstrakce vývojáře z základní architektury, což v
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Podporuje Azure jaře Cloud vytváření kontejnerů ze zdroje?
 
-Yes. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-quickstart.md).
+Ano. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-quickstart.md).
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Podporuje Azure jaře Cloud automatické škálování v instancích aplikací?
 
 No.
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Jaké jsou osvědčené postupy pro migraci stávajících mikroslužeb pro jarní Cloud do Azure jaře cloudu?
 
 Při migraci stávajících mikroslužeb pro jarní Cloud do jarního cloudu Azure je vhodné sledovat následující osvědčené postupy:
@@ -168,8 +176,22 @@ Při migraci stávajících mikroslužeb pro jarní Cloud do jarního cloudu Azu
 * Doporučujeme používat oficiální a stabilní Pivotické knihovny. Neoficiální, beta nebo rozvětvené verze kontingenčních knihoven Pivoter nemají podporu smlouvy o úrovni služeb (SLA).
 
 Po migraci monitorujte metriky procesoru/paměti RAM a síťový provoz, abyste měli jistotu, že jsou instance aplikace vhodně škálovatelné.
+::: zone-end
 
-## <a name="trouble-shooting"></a>Odstraňování potíží
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>Verze .NET Core
+
+### <a name="which-net-core-versions-are-supported"></a>Které verze .NET Core jsou podporované?
+
+.NET Core 3,1 a novější verze.
+
+### <a name="how-long-will-net-core-31-be-supported"></a>Jak dlouho bude podporováno rozhraní .NET Core 3,1?
+
+Až do 3. prosince 2022. Viz [zásady podpory .NET Core](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+::: zone-end
+
+
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Jaké dopady služby Service registry nejsou zřídka dostupné?
 

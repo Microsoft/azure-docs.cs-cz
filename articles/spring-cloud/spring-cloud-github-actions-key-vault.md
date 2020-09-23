@@ -5,16 +5,19 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/20/2019
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076018"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888772"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Ověřování Azure jaře cloudu s Key Vault v akcích GitHubu
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
+
 Trezor klíčů je bezpečné místo pro ukládání klíčů. Podnikoví uživatelé potřebují ukládat přihlašovací údaje pro prostředí CI/CD v oboru, který řídí. Klíč pro získání přihlašovacích údajů v trezoru klíčů by měl být omezený na obor prostředků.  Má přístup jenom k oboru trezoru klíčů, ne k celému oboru Azure. Je to jako klíč, který může otevřít pouze silné pole, nikoli hlavní klíč, který může otevřít všechny dveře v budově. Je to způsob, jak získat klíč s jiným klíčem, který je užitečný pro CICD pracovní postup. 
 
 ## <a name="generate-credential"></a>Generovat přihlašovací údaje
@@ -43,7 +46,7 @@ Pak výsledky uložte do **tajných** kódů GitHubu, jak je popsáno v tématu 
 ## <a name="add-access-policies-for-the-credential"></a>Přidat zásady přístupu pro přihlašovací údaje
 Přihlašovací údaje, které jste vytvořili výše, můžou získat obecné informace o Key Vault, nikoli obsah, který ukládá.  Pro získání tajných kódů uložených v Key Vault musíte nastavit zásady přístupu pro přihlašovací údaje.
 
-V Azure Portal přejděte na řídicí panel **Key Vault** , klikněte na nabídku **řízení přístupu** a pak otevřete kartu **přiřazení rolí** . Vyberte **aplikace** pro **typ** a `This resource` **obor**.  Měli byste vidět přihlašovací údaje, které jste vytvořili v předchozím kroku:
+V Azure Portal přejděte na řídicí panel **Key Vault** , klikněte na nabídku **řízení přístupu** a pak otevřete kartu **přiřazení rolí** . Vyberte **aplikace** pro **typ** a `This resource` **Rozsah**.  Měli byste vidět přihlašovací údaje, které jste vytvořili v předchozím kroku:
 
  ![Nastavení zásad přístupu](./media/github-actions/key-vault1.png)
 

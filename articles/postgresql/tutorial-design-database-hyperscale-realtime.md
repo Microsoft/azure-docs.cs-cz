@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Návrh řídicího panelu v reálném čase – Citus () – Azure Database for PostgreSQL'
-description: V tomto kurzu se dozvíte, jak vytvořit, naplnit a dotazovat distribuované tabulky na Azure Database for PostgreSQL Citus (Scale).
+description: V tomto kurzu se dozvíte, jak paralelizovat dotazy na řídicí panel v reálném čase s využitím Azure Database for PostgreSQLho škálování (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 41ac1cb856011d9730f7b49bbf85350f4dbccdbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387570"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895241"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: Návrh řídicího panelu analýzy v reálném čase pomocí Azure Database for PostgreSQL – škálovatelné (Citus)
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (
 > * Dotazování na hrubá a agregovaná data
 > * Vypršení platnosti dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -226,6 +226,5 @@ V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů.
 
 V tomto kurzu jste zjistili, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data. Seznámili jste se s dotazem na data v nezpracovaném formuláři, pravidelně agreguje tato data, dotazování na agregované tabulky a vyprší jejich stará data.
 
-V dalším kroku se dozvíte o konceptech škálování.
-> [!div class="nextstepaction"]
-> [Typy uzlů s měřítkem](https://aka.ms/hyperscale-concepts)
+- Informace o [typech uzlů](https://aka.ms/hyperscale-concepts) skupin serverů
+- Určení nejlepší [počáteční velikosti](howto-hyperscale-scaling.md#picking-initial-size) pro skupinu serverů

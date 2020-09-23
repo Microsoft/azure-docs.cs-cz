@@ -1,6 +1,6 @@
 ---
 title: Nasazení a vytvoření předpovědi pomocí ONNX
-description: Naučte se, jak vytvořit model, převést ho na ONNX, nasadit ho do Azure SQL Edge (Preview) nebo Azure SQL Managed instance (Preview) a pak spustit nativní předpověď dat pomocí nahraného modelu ONNX.
+description: Naučte se, jak vytvořit model, převést ho na ONNX, nasadit ho do Azure SQL Edge nebo Azure SQL Managed instance (Preview) a pak spustit nativní prediktivní zpracování dat pomocí nahraného modelu ONNX.
 keywords: nasazení Edge SQL
 ms.prod: sql
 ms.technology: machine-learning
@@ -8,22 +8,22 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718777"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886821"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Nasazení a vytvoření předpovědi pomocí modelu ONNX
 
-V tomto rychlém startu se dozvíte, jak vytvořit model, převést ho na ONNX, nasadit ho do služby [Azure SQL Edge (Preview)](onnx-overview.md) nebo [Azure SQL Managed instance (Preview)](../azure-sql/managed-instance/machine-learning-services-overview.md)a pak spustit nativní předpověď dat pomocí nahraného modelu ONNX.
+V tomto rychlém startu se dozvíte, jak vytvořit model, převést ho na ONNX, nasadit ho do služby [Azure SQL Edge](onnx-overview.md) nebo [Azure SQL Managed instance (Preview)](../azure-sql/managed-instance/machine-learning-services-overview.md)a pak spustit nativní předpověď dat pomocí nahraného modelu ONNX.
 
 Tento rychlý Start je založený na **scikit-učení** a používá [datovou sadu Boston](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Pokud používáte Azure SQL Edge a nejste nasadili modul Azure SQL Edge, postupujte podle pokynů v části [nasazení SQL Edge (Preview) pomocí Azure Portal](deploy-portal.md).
+* Pokud používáte Azure SQL Edge a nejste nasadili modul Azure SQL Edge, postupujte podle kroků v části [nasazení SQL Edge pomocí Azure Portal](deploy-portal.md).
 
 * Nainstalujte [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
 

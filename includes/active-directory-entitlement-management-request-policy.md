@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 12c9b1226e3ba928a4062049c7839d4e46ef727d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156603"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024941"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
@@ -207,3 +207,33 @@ Například pokud jste jako první schvalovateli v seznamu Alice a Bob, vypíše
     ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Klikněte na **Next** (Další).
+
+## <a name="add-requestor-information-preview-to-an-access-package"></a>Přidání informací o žadateli (Preview) do balíčku pro přístup
+
+1. Přejděte na kartu **informace o žadateli** a klikněte na podřízenou kartu **otázky** .
+ 
+1. Zadejte, co chcete požádat o žadatele, označovaný také jako řetězec zobrazení, pro otázku v poli pro **otázky** .
+
+    ![Přístup k balíčku – nastavení zásad – Povolit informace o žadateli](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+
+1. Pokud chcete přidat vlastní možnosti lokalizace, klikněte na **Přidat lokalizaci**.
+    1. V podokně **Přidat lokalizace pro otázku** vyberte **kód jazyka** pro jazyk, ve kterém chcete otázku lokalizovat.
+    1. V jazyce, který jste nakonfigurovali, zadejte otázku do **lokalizovaného textového** pole.
+    1. Po přidání všech potřebných lokalizací klikněte na **Uložit**.
+
+    ![Přístup k balíčku – zásady – konfigurace lokalizovaného textu](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
+
+1. Vyberte **Formát odpovědi** , ve kterém chcete, aby žadatelé odpověděli. Formáty odpovědí zahrnují: *krátký text*, *Vícenásobný výběr*a *dlouhý text*.
+ 
+    ![Přístup k balíčku – zásady – výběr zobrazení a úprava formátu odpovědi s více volbami](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
+ 
+1. Pokud vyberete více možností, klikněte na tlačítko **Zobrazit a upravit** a nakonfigurujte možnosti odpovědi.
+    1. Po výběru možnosti zobrazit a upravit podokno **otázek Zobrazit/upravit** se otevře.
+    1. Zadejte možnosti odpovědi, které chcete žadateli poskytnout při zodpovězení otázky v polích **hodnoty odpovědi** .
+    1. Zadejte tolik odpovědí, kolik potřebujete, a pak klikněte na **Uložit**.
+    
+    ![Přístup k balíčku – zásady – zadejte možnosti vícenásobné volby.](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
+  
+1. Pokud požadujete, aby žadateli odpověděli na tuto otázku při žádosti o přístup k balíčku přístupu, zaškrtněte políčko v části **požadováno**.
+
+1. Kliknutí na Další

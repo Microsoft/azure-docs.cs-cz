@@ -6,23 +6,24 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 1a46cba6e3b74a2f8d4b63ab631830569c521291
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6f1c016efb300dea2cdef91c84bb901cffd09fa0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246220"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024928"
 ---
 Začínáme s klientskou knihovnou anomálie detektor pro .NET Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba detektoru anomálií umožňuje v datech časových řad najít neobvyklé typy, a to díky tomu, že automaticky používá nejvhodnější modely, bez ohledu na obor, scénář nebo objem dat.
 
 Použijte klientskou knihovnu detektoru anomálií pro .NET:
 
-* Detekovat anomálie v celé datové sadě časových řad jako požadavek dávky
+* Detekovat anomálie v celé sadě dat časových řad jako dávkový požadavek
 * Zjistit stav anomálií z nejnovějšího datového bodu v časové řadě
+* Zjištění bodů změny trendu v datové sadě.
 
-[Referenční dokumentace ke knihovně](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/)  |  [Vyhledání kódu na GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[Referenční dokumentace ke knihovně](https://aka.ms/anomaly-detector-dotnet-ref)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2)  |  [Vyhledání kódu na GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -65,7 +66,7 @@ Build succeeded.
 V adresáři aplikace nainstalujte knihovnu klienta pro rozpoznávání anomálií pro .NET pomocí následujícího příkazu:
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
+dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.2
 ```
 
 Z adresáře projektu otevřete soubor *program.cs* a přidejte následující příkaz pomocí `directives` :
@@ -78,11 +79,11 @@ V `main()` metodě aplikace vytvořte proměnné pro umístění Azure prostřed
 
 ## <a name="object-model"></a>Objektový model
 
-Klientem detektoru anomálií je objekt [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) , který se ověřuje v Azure pomocí [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials), který obsahuje váš klíč. Klient nabízí dvě metody detekce anomálií: na celé datové sadě pomocí [EntireDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync)a na nejnovějším datovém bodu pomocí [LastDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync).
+Klientem detektoru anomálií je objekt [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) , který se ověřuje v Azure pomocí [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials), který obsahuje váš klíč. Klient může provádět detekci anomálií pro celou datovou sadu pomocí [EntireDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync)nebo k nejnovějšímu datovému bodu pomocí [LastDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync). Metoda [ChangePointDetectAsync](https://aka.ms/anomaly-detector-dotnet-ref) detekuje body, které označují změny trendu.
 
 Data časové řady se odesílají jako řada [bodů](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) v objektu [Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) . `Request`Objekt obsahuje vlastnosti pro popis dat (například[členitosti](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity) ) a parametrů pro detekci anomálií.
 
-Odezva detektoru anomálií je buď objekt [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse) nebo [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) , v závislosti na použité metodě.
+Odezva detektoru anomálií je objekt [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse), [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)nebo [changePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) v závislosti na použité metodě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -92,6 +93,7 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 * [Načtení datové sady časových řad ze souboru](#load-time-series-data-from-a-file)
 * [Detekovat anomálie v celé sadě dat](#detect-anomalies-in-the-entire-data-set)
 * [Zjistit stav anomálií nejnovějšího datového bodu](#detect-the-anomaly-status-of-the-latest-data-point)
+* [Zjistit body změny v sadě dat](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -125,6 +127,12 @@ Vytvořte metodu, která zavolá metodu [EntireDetectAsync ()](https://docs.micr
 Vytvořte metodu, která zavolá metodu [LastDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) klienta s `Request` objektem a očekává odpověď jako objekt [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview) . Zkontrolujte atribut [anomálie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview) odpovědi a určete, zda byl nejnovější odeslaný datový bod anomálií nebo nikoli.
 
 [!code-csharp[LastDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=latestPointExample)]
+
+## <a name="detect-change-points-in-the-data-set"></a>Zjištění bodů změny v sadě dat
+
+Vytvořte metodu, která zavolá metodu [DetectChangePointAsync](https://aka.ms/anomaly-detector-dotnet-ref) klienta s `Request` objektem a počká na odpověď jako objekt [ChangePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) . Ověřte hodnoty IsChangePoint odpovědi a vytiskněte všechny, které jsou `true` . Tyto hodnoty odpovídají bodům změny trendu, pokud byly nalezeny.
+
+[!code-csharp[DetectChangePoint() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=changePointExample)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 

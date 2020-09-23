@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0ae3b66d8093c0498011d9f93cd8d869b85f9003
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530705"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903557"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a>Instalace a spuštění kontejnerů detektoru anomálií (Preview)
+# <a name="install-and-run-anomaly-detector-containers"></a>Instalace a spuštění kontejnerů Detektoru anomálií 
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
 Detektor anomálií nabízí následující funkce kontejneru:
 
 | Funkce | Funkce |
 |--|--|
-| Detektor anomálií | <li> Detekuje anomálie při jejich výskytu v reálném čase. <li> Detekuje anomálie v celé sadě dat jako dávku. <li> Odvodí očekávaný normální rozsah dat. <li> Podporuje úpravu citlivosti detekce anomálií, aby lépe vyhovovala vašim datům. |
+| Detektor anomálií | <li> Detekuje anomálie při jejich výskytu v reálném čase. <li> Detekuje anomálie v celé sadě dat jako dávku. <li> Detekuje body změny trendu ve vaší datové sadě jako dávku.<li> Odvodí očekávaný normální rozsah dat. <li> Podporuje úpravu citlivosti detekce anomálií, aby lépe vyhovovala vašim datům. |
 
 Podrobné informace o rozhraních API najdete v těchto tématech:
 * [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -67,7 +69,7 @@ Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pul
 
 | Kontejner | Repository |
 |-----------|------------|
-| rozpoznávání – služby – anomálie-detektor | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| rozpoznávání – služby – anomálie-detektor | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -95,7 +97,7 @@ Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.co
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -177,7 +179,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů detektoru anomálií. Souhrn:
 
 * Detekce anomálií poskytuje jeden kontejner pro Linux pro Docker, který zapouzdřuje detekci anomálií pomocí služby Batch vs streaming, očekávalo se odvození rozsahu a optimalizace citlivosti.
-* Image kontejneru se stáhnou z privátní Azure Container Registry vyhrazené pro kontejnery ve verzi Preview.
+* Image kontejneru se stáhnou z privátní Azure Container Registry vyhrazené pro kontejnery.
 * Image kontejneru se spouštějí v Docker.
 * Můžete použít REST API nebo SDK pro volání operací v kontejnerech detektoru anomálií zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru je nutné zadat informace o fakturaci.

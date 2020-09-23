@@ -1,20 +1,20 @@
 ---
-title: Azure Monitor pro Azure cache pro Redis (Preview) | Microsoft Docs
+title: Azure Monitor pro Azure cache pro Redis | Microsoft Docs
 description: Tento článek popisuje funkci Azure Monitor for Azure Redis Cache, která poskytuje vlastníkům mezipaměti rychlé porozumění problémům s výkonem a využitím.
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/21/2020
-ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/10/2020
+ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887019"
 ---
-# <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis (Preview)
+# <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis
 
-Pro všechny vaše mezipaměti Azure pro prostředky Redis poskytuje Azure Monitor pro Azure cache pro Redis (Preview) jednotný a interaktivní pohled na:
+Pro všechny vaše mezipaměti Azure pro prostředky Redis poskytuje Azure Monitor pro Azure cache pro Redis jednotný a interaktivní pohled na:
 
 - Celkový výkon
 - Selhání
@@ -44,13 +44,13 @@ Tato funkce nevyžaduje, abyste povolili nebo nenakonfigurovali cokoli. Ve vých
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte **monitorování**a vyberte **monitorování**.
 
     ![Vyhledávací pole se slovem "monitor" a výsledkem hledání služeb, které zobrazuje "monitor" se symbolem rychloměru](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. Vyberte **Azure cache pro Redis (Preview)**. Pokud tato možnost není k dispozici, vyberte **Další**  >  **mezipaměť Azure pro Redis**.
+1. Vyberte **mezipaměť Azure pro Redis**. Pokud tato možnost není k dispozici, vyberte **Další**  >  **mezipaměť Azure pro Redis**.
 
 ### <a name="overview"></a>Přehled
 
@@ -128,9 +128,9 @@ Přístup k Azure Monitor pro Azure cache pro Redis přímo z jednotlivého pros
 
 1. V Azure Portal vyberte mezipaměť Azure pro Redis.
 
-2. V seznamu vyberte jednotlivou mezipaměť Azure pro prostředek Redis. V části monitorování vyberte přehledy (Preview).
+2. V seznamu vyberte jednotlivou mezipaměť Azure pro prostředek Redis. V části monitorování vyberte přehledy.
 
-    ![Snímek obrazovky s možnostmi "Insights" (Preview) ", který se zvýrazní v červeném poli](./media/redis-cache-insights-overview/insights.png)
+    ![Snímek obrazovky s možnostmi "přehledy", které jsou zvýrazněny v červeném poli](./media/redis-cache-insights-overview/insights.png)
 
 Tato zobrazení jsou přístupná taky tak, že v sešitu na úrovni Azure Monitor vyberete název prostředku mezipaměti Azure pro prostředek Redis.
 
@@ -168,7 +168,7 @@ Chcete-li rozbalit nebo sbalit všechna zobrazení v sešitu, vyberte symbol roz
 
 ![Zvýrazněný symbol rozbalovacího sešitu](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cache-for-redis-preview"></a>Přizpůsobení Azure Monitor pro Azure cache pro Redis (Preview)
+## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>Přizpůsobení Azure Monitor pro Azure cache pro Redis
 
 Vzhledem k tomu, že se toto prostředí sestavuje základem Azure monitor šablon sešitu, můžete vybrat **přizpůsobení**  >  **Úpravy**  >  **Uložit** a uložit kopii změněné verze do vlastního sešitu.
 
@@ -180,7 +180,7 @@ Až uložíte vlastní sešit, otevřete ho tak, že přejdete do galerie sešit
 
 ![Panel příkazů se zvýrazněnou galerií](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokyny k řešení potíží najdete v článku věnovaném [řešení potíží](troubleshoot-workbooks.md)s vyhrazenými sešity na základě sešitu.
 
