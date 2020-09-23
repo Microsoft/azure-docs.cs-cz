@@ -1,5 +1,5 @@
 ---
-title: Metriky protokolu v Návrháři (Preview)
+title: Metriky protokolu v Návrháři
 titleSuffix: Azure Machine Learning
 description: Sledujte experimenty návrháře Azure ML. Povolte protokolování pomocí modulu spuštění skriptu Pythonu a podívejte se do protokolovaných výsledků v studiu.
 services: machine-learning
@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 20845a6f1238095b40c9b05b5f5d8d85217b6db5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950404"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885979"
 ---
-# <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>Povolit protokolování v kanálech návrháře Azure Machine Learning (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Povolit protokolování v Azure Machine Learningch kanálech návrháře
+
 
 V tomto článku se dozvíte, jak přidat kód protokolování do kanálů návrháře. Naučíte se také, jak tyto protokoly zobrazit pomocí webového portálu Azure Machine Learning Studio.
 
@@ -78,5 +78,6 @@ Po dokončení kanálu můžete na stránce experimenty zobrazit *Mean_Absolute_
 
 V tomto článku jste zjistili, jak používat protokoly v návrháři. Další postup najdete v těchto souvisejících článcích:
 
-* Přečtěte si, jak řešit potíže s kanály návrháře, najdete v tématu [ladění & řešení potíží s kanály](how-to-debug-pipelines.md#logging-in-azure-machine-learning-designer-preview).
+
+* Přečtěte si, jak řešit potíže s kanály návrháře, najdete v tématu [ladění & řešení potíží s kanály](how-to-debug-pipelines.md#azure-machine-learning-designer).
 * Přečtěte si, jak pomocí sady Python SDK protokolovat metriky v prostředí pro vytváření obsahu SDK, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-track-experiments.md).

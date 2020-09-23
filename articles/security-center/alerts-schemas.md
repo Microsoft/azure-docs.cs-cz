@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126208"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901335"
 ---
 # <a name="security-alerts-schemas"></a>Schémata výstrah zabezpečení
 
-Uživatelé Azure Security Center úrovně Standard obdrží výstrahy zabezpečení, když Security Center detekuje hrozby jejich prostředků.
+Pokud je ve vašem předplatném Azure Defender povolený, obdržíte výstrahy zabezpečení, když Security Center detekuje hrozby jejich prostředků.
 
 Tyto výstrahy zabezpečení můžete zobrazit na stránkách **ochrany před internetovými útoky** v Azure Security Center nebo prostřednictvím externích nástrojů, jako jsou:
 
@@ -143,13 +143,13 @@ Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že
 |Pole|Description|
 |----|----|
 |**barev**|Konstanta, "operace"|
-|**correlationId**|ID výstrahy Azure Security Center|
+|**ID**|ID výstrahy Azure Security Center|
 |**název**|Popis výstrahy|
 |**eventDataId**|Zobrazit ID korelace|
 |**eventName**|Podpole Value a localizedValue obsahují zobrazované jméno výstrahy.|
 |**kategorií**|Podpole Value a localizedValue jsou konstanta-"Security".|
 |**eventTimestamp**|Časové razítko UTC pro vygenerování výstrahy|
-|**účet**|Plně kvalifikované ID výstrahy|
+|**id**|Plně kvalifikované ID výstrahy|
 |**úroveň**|Konstanta, "informativní"|
 |**operationId**|Zobrazit ID korelace|
 |**operationName**|Pole hodnota je konstanta-"Microsoft. Security/Locations/Alerts/Activate/Action", a lokalizovaná hodnota bude "aktivovat výstrahu" (může být potenciálně lokalizována do národního prostředí uživatele).|

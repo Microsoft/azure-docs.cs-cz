@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 9ac30bdcb137afb26a8461f98a36b568ebe179b0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6a90a4ad44bff392b5fe6cd0af13313bd98ce2a6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459007"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988281"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -45,7 +45,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    –       |    Odpověď na ozvěnu    |
+    |    ICMPv4             |    Není k dispozici       |    Odpověď na ozvěnu    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -74,15 +74,17 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     Viz [návrh topologie lokality](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) o lokalitách a službách Active Directory. 
     
-<!--
-* Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
+* Šifrování AES pro svazek SMB můžete povolit zaškrtnutím políčka **šifrování AES** v okně [připojit se ke službě Active Directory](#create-an-active-directory-connection) . Azure NetApp Files podporuje typy šifrování DES, Kerberos AES 128 a Kerberos AES 256 (z nejméně zabezpečeného na nejbezpečnější). Pokud povolíte šifrování AES, musí mít přihlašovací údaje uživatele použité pro připojení ke službě Active Directory nejvyšší odpovídající možnost účtu, která bude odpovídat funkcím povoleným pro vaši službu Active Directory.    
 
-    For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
+    Pokud má vaše služba Active Directory například jenom možnost AES-128, musíte pro přihlašovací údaje uživatele povolit možnost účet AES-128. Pokud má služba Active Directory schopnost AES-256, musíte povolit možnost účtu AES-256 (která také podporuje AES-128). Pokud vaše služba Active Directory nemá žádnou možnost šifrování protokolu Kerberos, Azure NetApp Files ve výchozím nastavení používá algoritmus DES.  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
+    Možnosti účtu můžete povolit ve vlastnostech modulu snap-in Uživatelé a počítače služby Active Directory konzoly MMC (Microsoft Management Console):   
 
-    ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
--->
+    ![Modul snap-in Uživatelé a počítače služby Active Directory](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
+* Azure NetApp Files podporuje [podepisování LDAP](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), které umožňuje zabezpečený přenos dat protokolu LDAP mezi službou Azure NetApp Files a cílovými [řadiči domény služby Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview). Pokud budete postupovat podle pokynů v poradenské službě Microsoft Advisor [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) pro podepisování LDAP, měli byste povolit funkci podepisování ldap v Azure NetApp Files kontrolou pole **podepisování LDAP** v okně [připojit se ke službě Active Directory](#create-an-active-directory-connection) . 
+
+    Konfigurace [vazby kanálu LDAP](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) nemá žádný vliv na službu Azure NetApp Files. 
 
 Další informace o službě AD najdete v tématu Azure NetApp Files [nejčastějších dotazů k protokolu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) . 
 
@@ -160,8 +162,56 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
 
         Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je, `OU=AADDC Computers` když pro svůj účet NetApp nakonfigurujete službu Active Directory.
 
+    ![Připojit ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+
+    * **Šifrování AES**   
+        Zaškrtnutím tohoto políčka povolíte šifrování AES pro svazek SMB. Požadavky najdete v tématu [požadavky na připojení ke službě Active Directory](#requirements-for-active-directory-connections) . 
+
+        ![Šifrování AES pro Active Directory](../media/azure-netapp-files/active-directory-aes-encryption.png)
+
+        Funkce **šifrování AES** je momentálně ve verzi Preview. Pokud tuto funkci používáte poprvé, zaregistrujte funkci před jejím použitím: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+
+        Ověřte stav registrace funkce: 
+
+        > [!NOTE]
+        > **RegistrationState** může být ve `Registering` stavu až 60 minut, než se změní na `Registered` . Než budete pokračovat, počkejte, než se stav **zaregistruje** .
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+        
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+
+    * **Podepisování LDAP**   
+        Zaškrtnutím tohoto políčka povolíte podepisování LDAP. Tato funkce umožňuje zabezpečené vyhledávání LDAP mezi službou Azure NetApp Files a uživatelem zadanými [Active Directory Domain Services řadiči domény](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). Další informace najdete v tématu [ADV190023 | Návod Microsoftu pro povolení vazby kanálu LDAP a podepisování LDAP](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
+
+        ![Podepisování LDAP služby Active Directory](../media/azure-netapp-files/active-directory-ldap-signing.png) 
+
+        Funkce **podepisování LDAP** je aktuálně ve verzi Preview. Pokud tuto funkci používáte poprvé, zaregistrujte funkci před jejím použitím: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+
+        Ověřte stav registrace funkce: 
+
+        > [!NOTE]
+        > **RegistrationState** může být ve `Registering` stavu až 60 minut, než se změní na `Registered` . Než budete pokračovat, počkejte, než se stav **zaregistruje** .
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+        
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+
      * **Uživatelé zásad zálohování**  
         Můžete zahrnout další účty, které vyžadují zvýšená oprávnění k účtu počítače vytvořenému pro použití s Azure NetApp Files. U zadaných účtů bude povoleno změnit oprávnění systému souborů NTFS na úrovni souboru nebo složky. Můžete například zadat účet neprivilegované služby, který se používá k migraci dat do sdílené složky SMB v Azure NetApp Files.  
+
+        ![Uživatelé zásad zálohování služby Active Directory](../media/azure-netapp-files/active-directory-backup-policy-users.png)
 
         Funkce **Uživatelé zásad zálohování** je teď ve verzi Preview. Pokud tuto funkci používáte poprvé, zaregistrujte funkci před jejím použitím: 
 
@@ -178,11 +228,11 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        Můžete také použít příkazy rozhraní příkazového řádku Azure [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) a [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) zaregistrovat funkci a zobrazit stav registrace. 
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
     * Přihlašovací údaje, včetně **uživatelského jména** a **hesla**
 
-    ![Připojit ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+        ![Přihlašovací údaje služby Active Directory](../media/azure-netapp-files/active-directory-credentials.png)
 
 3. Klikněte na **Připojit**.  
 

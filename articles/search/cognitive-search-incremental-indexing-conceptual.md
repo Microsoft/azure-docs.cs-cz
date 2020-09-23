@@ -8,17 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935377"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971639"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Přírůstkové obohacení a ukládání do mezipaměti v Azure Kognitivní hledání
 
 > [!IMPORTANT] 
-> Přírůstkové obohacení je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tuto funkci poskytuje [REST API verze 2019-05-06-Preview a 2020-06-30-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+> Přírůstkové obohacení je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Tuto funkci poskytují [verze Preview pro REST API](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
 *Přírůstkové obohacení* je funkce, která cílí na [dovednosti](cognitive-search-working-with-skillsets.md). Využívá Azure Storage k uložení výstupu zpracování vygenerovaného kanálem rozšíření pro opakované použití v budoucích spuštění indexeru. Kdykoli je to možné, indexer znovu použije jakýkoli výstup uložený v mezipaměti, který je stále platný. 
 
@@ -166,7 +167,7 @@ REST API verze `2020-06-30-Preview` poskytuje přírůstkové rozšíření pros
 
 ## <a name="next-steps"></a>Další kroky
 
-Přírůstkové obohacení je výkonná funkce, která rozšiřuje sledování změn na rozšíření dovednosti a AI. Rozšíření AIncremental umožňuje opakované použití existujícího zpracovávaného obsahu při iteraci během návrhu dovednosti.
+Přírůstkové obohacení je výkonná funkce, která rozšiřuje sledování změn na rozšíření dovednosti a AI. Přírůstkové obohacení umožňuje opakované použití existujícího zpracovávaného obsahu při iteraci přes návrh dovednosti.
 
 V dalším kroku Povolte ukládání do mezipaměti pro existující indexer nebo přidání mezipaměti při definování nového indexeru.
 

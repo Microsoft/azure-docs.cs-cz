@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195871"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893858"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway zabezpečení a ochrana dat
 
@@ -38,7 +38,7 @@ Služba Data Box Gateway je služba pro správu, která je hostovaná v Azure. S
 
 Zařízení Data Box Gateway je virtuální zařízení, které je zřízené v hypervisoru místního systému, který zadáte. Zařízení pomáhá posílat data do Azure. Vaše zařízení:
 
-- Pro přístup ke službě Azure Stack Edge/Data Box Gateway potřebuje aktivační klíč.
+- Pro přístup ke službě Azure Stack Edge pro/Data Box Gateway potřebuje aktivační klíč.
 - Je chráněna za všech okolností heslem zařízení.
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
@@ -83,7 +83,7 @@ Tato část popisuje funkce zabezpečení Data Box Gateway, které chrání při
 
 ### <a name="protect-the-device-data-using-bitlocker"></a>Ochrana dat zařízení pomocí nástroje BitLocker
 
-Pro zabezpečení virtuálních disků na vašem Data Box Gatewayovém virtuálním počítači doporučujeme povolit nástroj BitLocker. Ve výchozím nastavení není BitLocker povolený. Další informace naleznete v tématech:
+Pro zabezpečení virtuálních disků na vašem Data Box Gatewayovém virtuálním počítači doporučujeme povolit nástroj BitLocker. Ve výchozím nastavení není BitLocker povolený. Další informace naleznete v tématu:
 
 - [Nastavení podpory šifrování ve Správci technologie Hyper-V](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
 - [Podpora BitLockeru ve virtuálním počítači](https://kb.vmware.com/s/article/2036142)

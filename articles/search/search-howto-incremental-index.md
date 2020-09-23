@@ -9,17 +9,18 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922833"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971617"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Jak nakonfigurovat ukládání do mezipaměti pro přírůstkové obohacení v Azure Kognitivní hledání
 
 > [!IMPORTANT] 
-> Přírůstkové obohacení je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tuto funkci poskytuje [REST API verze 2019-05-06-Preview a 2020-06-30-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+> Přírůstkové obohacení je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Tuto funkci poskytují [verze Preview pro REST API](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
 V tomto článku se dozvíte, jak přidat do kanálu pro obohacení do mezipaměti, abyste mohli postupně upravovat kroky, aniž by bylo nutné pokaždé znovu sestavovat. Ve výchozím nastavení je dovednosti Bezstavová a změna jakékoli části jejího složení vyžaduje úplné spuštění indexeru. Pomocí přírůstkového obohacení může indexer určit, které části stromu dokumentů se musí aktualizovat na základě změn zjištěných v definicích dovednosti nebo indexer. Existující zpracovaný výstup se zachová a znovu použije tam, kde je to možné. 
 
@@ -169,7 +170,7 @@ Jakmile je mezipaměť funkční, indexery kontrolují mezipaměť vždy, když 
 
 Následující tabulka shrnuje, jak různá rozhraní API souvisí s mezipamětí:
 
-| rozhraní API           | Dopad mezipaměti     |
+| Rozhraní API           | Dopad mezipaměti     |
 |---------------|------------------|
 | [Vytvořit indexer (2020-06-30 – Preview)](/rest/api/searchservice/preview-api/create-indexer) | Vytvoří a spustí indexer při prvním použití, včetně vytvoření mezipaměti, pokud ho definuje definice indexeru. |
 | [Spustit indexer](/rest/api/searchservice/run-indexer) | Spustí na vyžádání kanál pro obohacení. Toto rozhraní API načte z mezipaměti, pokud existuje, nebo vytvoří mezipaměť, pokud jste přidali do aktualizované definice indexeru ukládání do mezipaměti. Když spustíte indexer s povoleným ukládáním do mezipaměti, indexer vynechá kroky, pokud je možné použít výstup z mezipaměti. Můžete použít verzi rozhraní API všeobecně k dispozici nebo Preview.|

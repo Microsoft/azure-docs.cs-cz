@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566280"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979696"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
@@ -96,7 +96,7 @@ Pomocí následujícího postupu můžete přesunout svůj pracovní prostor pom
 4. Vyberte cílové **předplatné** a **skupinu prostředků**. Pokud přesouváte pracovní prostor do jiné skupiny prostředků ve stejném předplatném, možnost **předplatné** se nezobrazí.
 5. Kliknutím na tlačítko **OK** přesunete pracovní prostor a vybrané prostředky.
 
-    ![Portál](media/move-workspace/portal.png)
+    ![Snímek obrazovky zobrazuje podokno přehled v pracovním prostoru Log Analytics s možnostmi změny skupiny prostředků a názvu předplatného.](media/move-workspace/portal.png)
 
 ### <a name="powershell"></a>PowerShell
 Pokud chcete přesunout svůj pracovní prostor pomocí PowerShellu, použijte rutinu [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) jako v následujícím příkladu:

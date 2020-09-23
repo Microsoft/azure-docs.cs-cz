@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066073"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971778"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytváření šablon Azure Resource Manageru pro automatizaci nasazení pro Azure Logic Apps
 
@@ -60,14 +60,14 @@ Tyto ukázky ukazují, jak vytvořit a nasadit Logic Apps pomocí Azure Resource
 
 1. Nejjednodušší způsob, jak nainstalovat modul LogicAppTemplate z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/LogicAppTemplate), získáte spuštěním tohoto příkazu:
 
-   ```text
-   PS> Install-Module -Name LogicAppTemplate
+   ```powershell
+   Install-Module -Name LogicAppTemplate
    ```
 
    Pokud chcete aktualizovat na nejnovější verzi, spusťte tento příkaz:
 
-   ```text
-   PS> Update-Module -Name LogicAppTemplate
+   ```powershell
+   Update-Module -Name LogicAppTemplate
    ```
 
 Pokud chcete nainstalovat ručně, postupujte podle kroků v části GitHub pro [Tvůrce šablon aplikace logiky](https://github.com/jeffhollan/LogicAppTemplateCreator).
@@ -80,28 +80,43 @@ Když `Get-LogicAppTemplate` příkaz spustíte s tímto nástrojem, příkaz ne
 
 ### <a name="generate-template-with-powershell"></a>Generování šablony pomocí PowerShellu
 
-Pokud chcete vygenerovat šablonu po instalaci modulu LogicAppTemplate a rozhraní příkazového [řádku Azure CLI](/cli/azure/?view=azure-cli-latest), spusťte tento příkaz PowerShellu:
+Pokud chcete vygenerovat šablonu po instalaci modulu LogicAppTemplate a rozhraní příkazového [řádku Azure CLI](/cli/azure/), spusťte tento příkaz PowerShellu:
 
-```text
-PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    Token = (az account get-access-token | ConvertFrom-Json).accessToken
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 Pokud chcete postupovat podle doporučení pro potrubí v tokenu z [nástroje Azure Resource Manager Client](https://github.com/projectkudu/ARMClient), spusťte tento příkaz místo toho, kde `$SubscriptionId` je vaše ID předplatného Azure:
 
-```text
-PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+armclient token $SubscriptionId | Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 Po extrakci pak můžete vytvořit soubor parametrů z šablony spuštěním tohoto příkazu:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
+```powershell
+Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
 ```
 
 Pro extrakci pomocí Azure Key Vault odkazů (pouze statické) spusťte tento příkaz:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
+```powershell
+Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
 | Parametry | Povinné | Popis |

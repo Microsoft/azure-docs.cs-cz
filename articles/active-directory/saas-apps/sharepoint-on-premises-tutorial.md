@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
-ms.author: miguego
-ms.openlocfilehash: 996668751ee93d14b18e399035fd345f32c58fbe
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/10/2020
+ms.author: jeedes
+ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552169"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979715"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí služby SharePoint v místním prostředí
 
@@ -25,8 +25,6 @@ V tomto kurzu se naučíte integrovat SharePoint místně pomocí Azure Active D
 * Řízení přístupu k místnímu SharePointu v Azure AD.
 * Umožněte uživatelům, aby se automaticky přihlásili k místnímu SharePointu pomocí svých účtů Azure AD.
 * Spravujte své účty v Azure Portal.
-
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +43,7 @@ Pokud chcete nakonfigurovat integraci služby SharePoint místně do Azure AD, m
 
 Postup přidání místního SharePointu z Galerie:
 
-1. V podokně [Azure Portal](https://portal.azure.com)v levém podokně vyberte možnost **Azure Active Directory**.
+1. V podokně Azure Portal v levém podokně vyberte možnost **Azure Active Directory**.
 
    > [!NOTE]
    > Pokud prvek není k dispozici, můžete jej otevřít také pomocí odkazu **všechny služby** v horní části podokna vlevo. V následujícím přehledu se **Azure Active Directory** odkaz nachází v části **Identita** . Můžete ho také vyhledat pomocí pole Filtr.
@@ -72,7 +70,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí slu�
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby SharePoint v místním prostředí, dokončete tyto stavební bloky:
 
-- [Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on) , aby mohli vaši uživatelé používat tuto funkci.
+- [NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso) , aby vaši uživatelé mohli používat tuto funkci.
 - [Nakonfigurujte místní SharePoint](#configure-sharepoint-on-premises) tak, aby na straně aplikace nakonfiguroval nastavení jednotného přihlašování.
 - [Vytvořte v Azure Portal testovacího uživatele Azure AD](#create-an-azure-ad-test-user-in-the-azure-portal) a vytvořte nového uživatele ve službě Azure AD pro jednotné přihlašování.
 - [Vytvořte v Azure Portal skupinu zabezpečení Azure AD](#create-an-azure-ad-security-group-in-the-azure-portal) , která vytvoří novou skupinu zabezpečení ve službě Azure AD pro jednotné přihlašování.
@@ -81,13 +79,13 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 - [Udělte účtu Guest přístup k místnímu serveru SharePoint v Azure Portal](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal) a udělte mu oprávnění k účtu hosta ve službě Azure AD pro místní SharePoint.
 - [Nakonfigurujte důvěryhodného zprostředkovatele identity pro více webových aplikací](#configure-the-trusted-identity-provider-for-multiple-web-applications) tak, aby používal stejného důvěryhodného poskytovatele identity pro více webových aplikací.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Konfigurace jednotného přihlašování Azure AD pomocí služby SharePoint v místním prostředí:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
 
 1. V dialogovém okně **Vybrat metodu jednotného přihlašování** vyberte režim **SAML** , aby bylo možné povolit jednotné přihlašování.
  
@@ -205,7 +203,7 @@ Pokud chcete tento scénář vyřešit pomocí výběru osob, open source řeše
   > [!NOTE]
   > Bez AzureCP můžete přidat skupiny přidáním ID skupiny Azure AD, ale tato metoda není uživatelsky přívětivá a spolehlivá. Jak vypadá:
   > 
-  >![Přidání skupiny Azure AD do skupiny služby SharePoint](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
+  >![Přidání skupiny Azure AD do skupiny služby SharePoint podle ID](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
   
 ### <a name="grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises"></a>Udělení oprávnění skupině Azure AD ve službě SharePoint v místním prostředí
 
@@ -244,7 +242,7 @@ Konzistentním způsobem můžete udělit přístup k webu služby SharePoint k 
 
 1. Změňte vlastnost **atributu source** na hodnotu **User. Localuserprincipalname**a vyberte **Save (Uložit**).
 
-    ![Atributy uživatele & deklarace identity jako počáteční](./media/sharepoint-on-premises-tutorial/manage-claim.png)
+    ![Atributy uživatele & atribut deklarace identity počáteční zdroj](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
 1. Pomocí pásu karet se vraťte k **přihlašování založenému na SAML**. Nyní jsou **atributy uživatele & části deklarace identity** vypadat takto: 
 
@@ -287,9 +285,6 @@ Konfigurace funguje pro jednu webovou aplikaci, ale pokud chcete použít stejn�
 
 Můžete mít další scénáře, ve kterých chcete pro interní uživatele poskytnout přístup k místní instanci služby SharePoint. V tomto scénáři je nutné nasadit Microsoft Azure Active Directory Connect, aby bylo možné synchronizovat místní uživatele s Azure AD. Tato instalace je popsána v jiném článku.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="next-steps"></a>Další kroky
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-- [Co je hybridní identita s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+Po nakonfigurování služby SharePoint v místním prostředí můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

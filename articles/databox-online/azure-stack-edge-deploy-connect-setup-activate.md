@@ -1,6 +1,6 @@
 ---
-title: Kurz pro připojení, konfiguraci, aktivaci Azure Stack hraniční zařízení v Azure Portal | Microsoft Docs
-description: Kurz nasazení Azure Stack Edge vám dává pokyn k připojení, nastavení a aktivaci fyzického zařízení.
+title: Kurz pro připojení, konfiguraci, aktivaci Azure Stack Edge pro zařízení v Azure Portal | Microsoft Docs
+description: Kurz nasazení Azure Stack Edge pro vám dává pokyn k připojení, nastavení a aktivaci fyzického zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84608430"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894251"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Kurz: připojení, nastavení a aktivace hraničního Azure Stack 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Kurz: připojení, nastavení a aktivace Azure Stack Edge pro 
 
-V tomto kurzu se dozvíte, jak se můžete připojit k Azure Stack hraničnímu zařízení pomocí místního webového uživatelského rozhraní, nastavit ho a aktivovat ho.
+V tomto kurzu se dozvíte, jak se můžete připojit k zařízení Azure Stack Edge pro, nastavit a aktivovat pomocí místního webového uživatelského rozhraní.
 
 Dokončení procesu instalace a aktivace může trvat přibližně 20 minut.
 
@@ -29,34 +29,34 @@ V tomto kurzu se naučíte:
 > * Připojení k fyzickému zařízení
 > * Nastavení a aktivace fyzického zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Před konfigurací a nastavením Azure Stack hraničního zařízení se ujistěte, že:
+Před konfigurací a nastavením zařízení Azure Stack Edge pro se ujistěte, že:
 
-* Nainstalovali jste fyzické zařízení, jak je popsáno v části [instalace Azure Stack Edge](azure-stack-edge-deploy-install.md).
-* Máte aktivační klíč ze služby Azure Stack Edge, kterou jste vytvořili pro správu Azure Stack hraničního zařízení. Další informace najdete na webu [Příprava nasazení Azure Stack Edge](azure-stack-edge-deploy-prep.md).
+* Nainstalovali jste fyzické zařízení, jak je popsáno v části [instalace Azure Stack Edge pro](azure-stack-edge-deploy-install.md).
+* Máte aktivační klíč ze služby Azure Stack Edge, kterou jste vytvořili pro správu zařízení Azure Stack Edge pro. Další informace najdete na webu [Příprava nasazení Azure Stack Edge pro](azure-stack-edge-deploy-prep.md).
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Připojení k místnímu nastavení webového uživatelského rozhraní
 
-1. Nakonfigurujte adaptér Ethernet v počítači pro připojení k Azure Stack hraničnímu zařízení se statickou IP adresou 192.168.100.5 a podsítí 255.255.255.0.
+1. Nakonfigurujte adaptér Ethernet v počítači pro připojení k zařízení Azure Stack Edge pro se statickou IP adresou 192.168.100.5 a podsítí 255.255.255.0.
 
 2. Připojte počítač k portu 1 na svém zařízení. Pomocí následující ilustrace Identifikujte PORT 1 na vašem zařízení.
 
     ![Propojovací rozhraní zařízení se zapojenou kabeláží](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
-3. Otevřete okno prohlížeče a přejděte k místnímu webovému uživatelskému rozhraní zařízení v `https://192.168.100.10` .  
-    Tato akce může trvat několik minut, než se zařízení zapnete.
+3. Otevřete okno prohlížeče a přejděte do místního webového uživatelského rozhraní zařízení na adrese `https://192.168.100.10`.  
+    Po zapnutí zařízení může tato akce několik minut trvat.
 
-    Zobrazí se chyba nebo upozornění označující, že došlo k potížím s certifikátem zabezpečení webu.
+    Zobrazí se vám chyba nebo upozornění indikující problém s certifikátem zabezpečení webu.
    
     ![Chybová zpráva certifikátu zabezpečení webu](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
 4. Vyberte možnost **pokračovat na tuto webovou stránku**.  
-    Tyto kroky se můžou lišit v závislosti na prohlížeči, který používáte.
+    Tyto kroky se můžou lišit v závislosti na použitém prohlížeči.
 
 5. Přihlaste se k webovému uživatelskému rozhraní vašeho zařízení. Výchozí heslo je *Heslo1*. 
    
-    ![Přihlašovací stránka zařízení Azure Stack Edge](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Přihlašovací stránka pro zařízení Azure Stack Edge pro](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. V příkazovém řádku změňte heslo správce zařízení.  
     Nové heslo musí obsahovat 8 až 16 znaků. Musí obsahovat tři z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky.
@@ -75,18 +75,18 @@ Nyní jste na řídicím panelu zařízení.
     ![Stránka místní webové uživatelské rozhraní "název zařízení"](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. Volitelné V levém podokně vyberte **nastavení sítě** a pak nakonfigurujte nastavení.  
-    Na fyzickém zařízení existuje šest síťových rozhraní. PORTY 1 a 2 jsou síťová rozhraní s rychlostí 1 GB/s. PORT 3, PORT 4, PORT 5 a PORT 6 jsou všechna síťová rozhraní s 25 GB/s, která mohou sloužit také jako síťová rozhraní s rychlostí 10 GB/s. PORT 1 je automaticky nakonfigurován jako port jen pro správu a PORT 2 na PORT 6 jsou všechny datové porty. Stránka **nastavení sítě** je uvedená níže.
+    Na fyzickém zařízení je šest síťových rozhraní. Porty 1 a 2 představují síťová rozhraní s rychlostí 1 GB/s. PORT 3, PORT 4, PORT 5 a PORT 6 jsou všechna síťová rozhraní s 25 GB/s, která mohou sloužit také jako síťová rozhraní s rychlostí 10 GB/s. PORT 1 je automaticky nakonfigurován jako port jen pro správu a PORT 2 na PORT 6 jsou všechny datové porty. Stránka **nastavení sítě** je uvedená níže.
     
     ![Stránka místní webové uživatelské rozhraní "nastavení sítě"](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
-    Při konfiguraci nastavení sítě Pamatujte na toto:
+    Při konfiguraci nastavení sítě mějte na paměti následující:
 
-   - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. Automaticky se přiřadí IP adresa, podsíť, brána a DNS.
+   - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. IP adresa, podsíť, brána a DNS se přiřadí automaticky.
    - Pokud není protokol DHCP povolený, můžete v případě potřeby přiřadit statické IP adresy.
    - Síťové rozhraní můžete nakonfigurovat jako IPv4.
 
      >[!NOTE] 
-     > Doporučujeme, abyste místní IP adresu síťového rozhraní nepnuli z static na DCHP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na protokol DHCP, tak nemusíte určit adresu DHCP. Pokud chcete přejít na adresu DHCP, počkejte na to, až se zařízení zaregistruje u služby, a pak změňte. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech zařízení** v Azure Portal pro vaši službu.
+     > Doporučujeme neměnit místní IP adresu síťového rozhraní ze statické adresy na adresu DHCP, pokud nemáte další IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na adresu DHCP, adresu DHCP nebude možné určit. Pokud chcete změnit adresu na adresu DHCP, počkejte na dokončení registrace zařízení ve službě a pak proveďte změnu. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech zařízení** v Azure Portal pro vaši službu.
 
 3. Volitelné V levém podokně vyberte **nastavení webového proxy serveru**a pak nakonfigurujte svůj web proxy server. I když je konfigurace webového proxy serveru volitelná, pokud používáte webový proxy server, můžete ho nakonfigurovat jenom na této stránce.
    
@@ -94,9 +94,9 @@ Nyní jste na řídicím panelu zařízení.
    
    Na stránce **nastavení webového proxy serveru** postupujte takto:
    
-   a. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://host-IP address or FQDN:Port number` . Adresy URL protokolu HTTPS nejsou podporovány.
+   a. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://host-IP address or FQDN:Port number` . Adresy URL protokolu HTTPS se nepodporují.
 
-   b. V části **ověřování**vyberte **žádné** nebo **NTLM**. Pokud povolíte výpočetní prostředí a použijete IoT Edge modul na zařízení Azure Stack Edge, doporučujeme, abyste nastavili ověřování webového proxy serveru na **žádné**. **Protokol NTLM** není podporován.
+   b. V části **ověřování**vyberte **žádné** nebo **NTLM**. Pokud povolíte výpočetní prostředí a použijete modul IoT Edge na zařízení Azure Stack Edge pro, doporučujeme, abyste nastavili ověřování webového proxy serveru na **žádné**. **Protokol NTLM** není podporován.
 
    c. Pokud používáte ověřování, zadejte uživatelské jméno a heslo.
 
@@ -104,8 +104,8 @@ Nyní jste na řídicím panelu zařízení.
 
    > [!NOTE]
    > Soubory automatické konfigurace proxy serveru (PAC) nejsou podporovány. Soubor PAC definuje způsob, jakým můžou webové prohlížeče a další uživatelské agenti automaticky zvolit odpovídající proxy server (přístupovou metodu) pro načtení dané adresy URL.
-   > Proxy servery, které se pokoušejí zachytit a načíst veškerý provoz (pak se znovu podepisuje vše s vlastní certifikací) nejsou kompatibilní, protože certifikát proxy serveru není důvěryhodný.
-   > Obvykle transparentní proxy servery dobře fungují s Azure Stack Edge.
+   > Proxy servery, které se pokoušejí zachytit a číst veškerý provoz (a následně vše znovu podepsat vlastním certifikátem), nejsou kompatibilní, protože certifikáty takových proxy serverů nejsou důvěryhodné.
+   > Obvykle transparentní proxy servery dobře fungují s Azure Stack Edge pro.
 
 4. Volitelné V levém podokně vyberte **Nastavení času**a pak nakonfigurujte časové pásmo a primární a sekundární servery NTP pro vaše zařízení.  
     Jsou vyžadovány servery NTP, protože vaše zařízení musí synchronizovat čas, aby se mohl ověřit u vašich poskytovatelů cloudových služeb.
@@ -133,7 +133,7 @@ Nyní jste na řídicím panelu zařízení.
 
 6. V levém podokně vyberte **Nastavení cloudu**a potom v Azure Portal aktivujte zařízení pomocí služby Azure Stack Edge.
     
-    1. Do pole **aktivační klíč** zadejte aktivační klíč, který jste získali v [části získání aktivačního klíče](azure-stack-edge-deploy-prep.md#get-the-activation-key) pro Azure Stack Edge.
+    1. Do pole **aktivační klíč** zadejte aktivační klíč, který jste získali v [části získání aktivačního klíče](azure-stack-edge-deploy-prep.md#get-the-activation-key) pro Azure Stack Edge pro.
     2. Vyberte **Použít**.
        
         ![Stránka nastavení cloudu místního webového uživatelského rozhraní](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
@@ -158,7 +158,7 @@ V tomto kurzu jste se naučili:
 > * Připojení k fyzickému zařízení
 > * Nastavení a aktivace fyzického zařízení
 
-Informace o tom, jak přenést data pomocí Azure Stack hraniční zařízení, najdete v těchto tématech:
+Informace o tom, jak přenést data pomocí zařízení Azure Stack Edge pro, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Přenos dat pomocí Azure Stack Edge](./azure-stack-edge-deploy-add-shares.md).
+> [Přenos dat pomocí Azure Stack Edge pro](./azure-stack-edge-deploy-add-shares.md).

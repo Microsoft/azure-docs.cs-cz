@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b66511720966ff978c8460b9ac69ad133b7501
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707216"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979511"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Běžné scénáře správy nároků ve službě Azure AD
 
@@ -119,24 +119,24 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 1. [Přehrát video: každodenní správa: věci se změnily](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. Otevření balíčku pro přístup
 1. [Otevřete nastavení životního cyklu.](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
-1. [Aktualizace nastavení vypršení platnosti](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+1. [Aktualizace nastavení vypršení platnosti](entitlement-management-access-package-lifecycle-policy.md#lifecycle) 
 
 ### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>Přístup správce balíčků: aktualizace způsobu schválení přístupu pro projekt
 
 1. [Přehrát video: každodenní správa: věci se změnily](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
-1. [Otevře existující zásadu nastavení požadavků a schválení.](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
-1. [Aktualizace nastavení schválení](entitlement-management-access-package-request-policy.md#approval)
+1. [Otevře existující zásadu nastavení požadavků.](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
+1. [Aktualizace nastavení schválení](entitlement-management-access-package-approval-policy.md#change-approval-settings-of-an-existing-access-package)
 
 ### <a name="access-package-manager-update-the-people-for-a-project"></a>Přístup správce balíčků: aktualizace uživatelů pro projekt
 
 1. [Přehrát video: každodenní správa: věci se změnily](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. [Odebrat uživatele, kteří už nepotřebují přístup](entitlement-management-access-package-assignments.md)
-1. [Otevře existující zásadu nastavení požadavků a schválení.](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [Otevře existující zásadu nastavení požadavků.](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Přidat uživatele, kteří potřebují přístup](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
 
 ### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>Přístup správce balíčků: přímé přiřazení konkrétních uživatelů k balíčku pro přístup
 
-1. [Pokud uživatelé potřebují jiné nastavení životního cyklu, přidejte do balíčku pro přístup novou zásadu.](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [Pokud uživatelé potřebují jiné nastavení životního cyklu, přidejte do balíčku pro přístup novou zásadu.](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Přímo přiřadit konkrétní uživatele k balíčku pro přístup](entitlement-management-access-package-assignments.md#directly-assign-a-user)
 
 ## <a name="assignments-and-reports"></a>Přiřazení a sestavy

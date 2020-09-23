@@ -3,12 +3,12 @@ title: Konfigurace Azure Monitor pro kontejnery integrace Prometheus | Microsoft
 description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers, aby vyodpadí metriky z Prometheus s clusterem Kubernetes.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069420"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971354"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurace získávání metrik Prometheus pomocí služby Azure Monitor pro kontejnery
 
@@ -162,7 +162,7 @@ Tato část obsahuje požadavky a kroky pro úspěšnou konfiguraci konfiguračn
 >[!NOTE]
 >V případě Azure Red Hat OpenShift v3. x se vytvoří soubor šablony ConfigMap v oboru názvů *OpenShift-Azure-Logging* . Není nastavené na aktivní vyřazení metrik nebo shromažďování dat z agenta.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete, potvrďte, že jste členem role Správce clusteru pro zákazníky v clusteru Azure Red Hat OpenShift ke konfiguraci kontejnerového nastavení s kontejnery a Prometheus. Pokud chcete ověřit, že jste členem skupiny *osa-Customer-Admins* , spusťte následující příkaz:
 
@@ -347,7 +347,7 @@ InsightsMetrics
 
 Ve výstupu se zobrazí výsledky podobné následujícímu:
 
-![Výsledky dotazu do protokolu pro objem příjmu dat](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
+![Snímek obrazovky se zobrazením výsledků dotazu protokolu pro objem příjmu dat](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
 
 Pokud chcete odhadnout, co je velikost každé metriky v GB, je každý měsíc, abyste zjistili, jestli je objem dat přijatých v pracovním prostoru vysoký, je k dispozici následující dotaz.
 

@@ -11,21 +11,21 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c7568b0914b5e60d1a47971424f1f04f41745da
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e984c0c43dcc47c3e11a36f3d5c32bf2ddb9973a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646953"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902330"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Použití tajných kódů přihlašovacích údajů v Azure Machine Learningch školicích běhů
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte, jak bezpečně používat tajné klíče v školicím běhu. Ověřovací údaje, jako je vaše uživatelské jméno a heslo, jsou tajné. Například pokud se připojíte k externí databázi, abyste mohli zadávat dotazy na školicí data, museli byste předat své uživatelské jméno a heslo do kontextu vzdáleného spuštění. Kódování takových hodnot do školicích skriptů v nešifrovaném textu je nezabezpečené, protože by to vystavilo tajný klíč. 
 
 Místo toho má váš pracovní prostor Azure Machine Learning přidružený prostředek nazvaný [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Pomocí tohoto Key Vault můžete přes sadu rozhraní API v sadě SDK pro Azure Machine Learning Python předat tajným klíčům ke vzdáleným zabezpečeným způsobem.
 
-Základní tok pro používání tajných klíčů je:
+Standardní tok pro používání tajných klíčů je:
  1. V místním počítači se přihlaste k Azure a připojte se k pracovnímu prostoru.
  2. V místním počítači nastavte tajný klíč v Key Vault pracovního prostoru.
  3. Odešlete vzdálené spuštění.

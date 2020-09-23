@@ -6,20 +6,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 08/01/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 788b3f5e9f4012e418ece691ebb5fbc5d2f866af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931841"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979587"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
 Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
 ## <a name="feature-announcements-in-2020"></a>Oznámení funkcí v 2020
+
+### <a name="september-2020"></a>Září 2020
+
+Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomocí oprávnění RBAC Udělte identitě oprávnění jen pro čtení ke zdrojům dat Azure. Volitelně můžete zvolit možnost [výjimky důvěryhodné služby](search-indexer-howto-access-trusted-service-exception.md) , pokud pravidla protokolu IP nejsou možností.
+
+
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
+|------------------------------|----------|-------------|---------------|
+| [Identita spravované služby](search-howto-managed-identities-data-sources.md) | Indexery, zabezpečení | Vytvořte identitu pro vyhledávací službu v Azure Active Directory a pak pomocí oprávnění RBAC udělte přístup ke zdrojům dat Azure. Tento přístup eliminuje nutnost zadání přihlašovacích údajů v připojovacím řetězci. <br><br>Další způsob použití identity spravované služby je prostřednictvím [výjimky důvěryhodné služby](search-indexer-howto-access-trusted-service-exception.md) , pokud pravidla protokolu IP nejsou možností. | Všeobecně k dispozici. Přístup k této funkci při použití portálu nebo [Vytvoření zdroje dat (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) s rozhraním API-Version = 2020-06-30. |
+| [Odchozí požadavky pomocí privátního odkazu](search-indexer-howto-access-private.md) | Indexery, zabezpečení | Vytvoření sdíleného prostředku privátního propojení, který mohou indexery použít při přístupu k prostředkům Azure zabezpečených pomocí privátního propojení Azure. Další informace o všech způsobech, jak zabezpečit připojení indexeru, najdete v tématu zabezpečení [prostředků indexeru pomocí funkcí zabezpečení sítě Azure](search-indexer-securing-resources.md). | Všeobecně k dispozici. Přístup k této funkci při použití portálu nebo [sdíleného prostředku privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) s rozhraním API-Version = 2020-08-01. |
+| [REST API správy (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Nová stabilní REST API přidává podporu pro vytváření sdílených prostředků privátních propojení. | Všeobecně k dispozici. |
+| [REST API správy (2020-08-01 – Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Přidá prostředek sdíleného privátního propojení pro databáze Azure Functions a Azure SQL pro MySQL. | Verze Public Preview. |
+| [Sada Management .NET SDK 4,0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Aktualizace sady Azure SDK pro sadu Management SDK, cílené REST API verze 2020-08-01. | Všeobecně k dispozici. |
 
 ### <a name="august-2020"></a>Srpen 2020
 
@@ -31,9 +44,9 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
-| [ Klientská knihovnaAzure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Sada Azure SDK pro .NET | Klientská knihovna .NET vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami .NET. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30, ale zatím nepodporuje znalostní bázi Knowledge Store, geoprostorové typy ani [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). <br/><br/>Další informace najdete v tématu  [rychlý Start: vytvoření indexu](search-get-started-dotnet.md) a [upgrade na Azure.Search.Documents (V11)](search-dotnet-sdk-migration-version-11.md). | Všeobecně k dispozici. </br> Nainstalujte [ balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) z NuGet. |
-| [ Klientská knihovnaazure.search.documents](/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK pro Python| Klientská knihovna Python vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami Pythonu. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [balíček Azure-Search-Documents](https://pypi.org/project/azure-search-documents/) z PyPI. |
-| [@azure/search-documents Klientská knihovna](/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK for JavaScript | Klientská knihovna pro JavaScript vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami JavaScript. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [ @azure/search-documents balíček](https://www.npmjs.com/package/@azure/search-documents) z npm. |
+| [ Klientská knihovnaAzure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) | Sada Azure SDK pro .NET | Klientská knihovna .NET vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami .NET. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30, ale zatím nepodporuje znalostní bázi Knowledge Store, geoprostorové typy ani [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder). <br/><br/>Další informace najdete v tématu  [rychlý Start: vytvoření indexu](search-get-started-dotnet.md) a [upgrade na Azure.Search.Documents (V11)](search-dotnet-sdk-migration-version-11.md). | Všeobecně k dispozici. </br> Nainstalujte [ balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) z NuGet. |
+| [ Klientská knihovnaazure.search.documents](/python/api/overview/azure/search-documents-readme)  | Azure SDK pro Python| Klientská knihovna Python vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami Pythonu. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [balíček Azure-Search-Documents](https://pypi.org/project/azure-search-documents/) z PyPI. |
+| [@azure/search-documents Klientská knihovna](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK for JavaScript | Klientská knihovna pro JavaScript vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami JavaScript. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [ @azure/search-documents balíček](https://www.npmjs.com/package/@azure/search-documents) z npm. |
 
 ### <a name="june-2020"></a>Červen 2020
 

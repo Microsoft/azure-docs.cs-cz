@@ -3,12 +3,12 @@ title: Automatizace procesů Azure Application Insights pomocí Logic Apps
 description: Přečtěte si, jak můžete rychle automatizovat opakované procesy tím, že do aplikace logiky přidáte konektor Application Insights.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323192"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970873"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace Application Insights procesů pomocí Logic Apps
 
@@ -26,7 +26,7 @@ Můžete také přidat další akce. Funkce Logic Apps v Azure App Service zpř�
 V tomto kurzu se naučíte, jak vytvořit aplikaci logiky, která používá algoritmus autocluster Analytics k seskupení atributů v datech webové aplikace. Tok automaticky odesílá výsledky na základě e-mailu, stačí jenom jeden z příkladů, jak můžete Application Insights Analytics a Logic Apps společně používat. 
 
 ### <a name="step-1-create-a-logic-app"></a>Krok 1: Vytvoření aplikace logiky
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Klikněte na **vytvořit prostředek**, vyberte **web a mobilní zařízení**a pak vyberte **Aplikace logiky**.
 
     ![Nové okno aplikace logiky](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte, jak vytvořit aplikaci logiky, která používá alg
 
     ![Okno návrháře aplikace logiky](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. Do pole **interval** zadejte **1** a pak,**počet_plateb** , vyberte **den**.
+1. Do pole  **interval** zadejte **1** a pak,**počet_plateb** , vyberte **den**.
 
     ![Okno opakování návrháře aplikace logiky](./media/automate-with-logic-apps/3recurrence.png)
 
@@ -53,7 +53,7 @@ V tomto kurzu se naučíte, jak vytvořit aplikaci logiky, která používá alg
 
 K dokončení tohoto kroku potřebujete ID aplikace a klíč rozhraní API pro váš prostředek. Můžete je načíst z Azure Portal, jak je znázorněno v následujícím diagramu:
 
-![ID aplikace v Azure Portal](./media/automate-with-logic-apps/5apiaccess.png)
+![Snímek obrazovky s vybraným tlačítkem vytvořit klíč rozhraní API zobrazí na stránce Azure Portal přístup k rozhraní API.](./media/automate-with-logic-apps/5apiaccess.png)
 
 ![ID aplikace v Azure Portal](./media/automate-with-logic-apps/6apikey.png)
 
@@ -103,7 +103,7 @@ Když vytváříte vlastní dotazy, ověřte, že správně fungují v analytick
     
    d. Klikněte na rozevírací seznam **Přidat nový parametr** a vyberte přílohy a je HTML.
 
-      ![Konfigurace Office 365 Outlooku](./media/automate-with-logic-apps/10emailbody.png)
+      ![Snímek obrazovky se zvýrazněným oknem pro odeslání e-mailu s zvýrazněným polem tělo a nabídkou dynamického obsahu se zvýrazněným textem na pravé straně.](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Konfigurace Office 365 Outlooku](./media/automate-with-logic-apps/11emailparameter.png)
 

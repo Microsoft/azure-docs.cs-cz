@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 0b0fab40eb95fabd4b74e809c9e6cd6f6573f513
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852901"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987569"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Správa balíčků Python 2 v Azure Automation
 
@@ -21,15 +21,15 @@ Azure Automation umožňuje spouštění Runbooků Pythonu 2 v Azure a na hybrid
 
 Ve svém účtu Automation v části **sdílené prostředky**vyberte **balíčky Python 2** . Klikněte na **+ Přidat balíček Python 2**.
 
-![Přidat balíček Pythonu](media/python-packages/add-python-package.png)
+:::image type="content" source="media/python-packages/add-python-package.png" alt-text="Snímek obrazovky s balíčky Python 2 zobrazí v levé nabídce balíčky Python 2 a přidá zvýrazněný balíček Python 2.":::
 
 Na stránce přidat balíček Python 2 vyberte místní balíček, který se má nahrát. Balíček může být soubor **. WHL** nebo **. tar. gz** . Až se balíček vybere, klikněte na **OK** a nahrajte ho.
 
-![Přidat balíček Pythonu](media/python-packages/upload-package.png)
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="Snímek obrazovky s vybraným souborem tar. gz zobrazí stránku přidat balíček Python 2.":::
 
 Po importu balíčku se zobrazí na stránce balíčky Python 2 ve vašem účtu Automation. Pokud potřebujete odebrat balíček, vyberte balíček a klikněte na **Odstranit**.
 
-![Seznam balíčků](media/python-packages/package-list.png)
+:::image type="content" source="media/python-packages/package-list.png" alt-text="Po importu balíčku se na snímku obrazovky zobrazí stránka s balíčky Python 2.":::
 
 ## <a name="import-packages-with-dependencies"></a>Importovat balíčky se závislostmi
 
@@ -49,12 +49,12 @@ Po stažení balíčků je můžete importovat do svého účtu Automation.
 
  Pokud chcete sadu Runbook získat, [importujte balíčky Python 2 z PyPI do účtu Azure Automation](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) z Galerie do svého účtu Automation. Ujistěte se, že jsou nastavení spuštění nastavená na **Azure** , a spusťte Runbook pomocí parametrů. Sada Runbook vyžaduje účet Spustit jako, aby mohl účet služby Automation fungovat. U každého parametru se ujistěte, že ho spustíte s přepínačem, jak je vidět v následujícím seznamu a obrázku:
 
-* -s\<subscriptionId\>
-* – g\<resourceGroup\>
-* -a\<automationAccount\>
-* -m\<modulePackage\>
+* -s \<subscriptionId\>
+* – g \<resourceGroup\>
+* -a \<automationAccount\>
+* -m \<modulePackage\>
 
-![Seznam balíčků](media/python-packages/import-python-runbook.png)
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Snímek obrazovky se zobrazí na stránce s přehledem pro import_py2package_from_pypi s podoknem spustit sadu Runbook na pravé straně.":::
 
 Sada Runbook umožňuje určit, který balíček se má stáhnout. Například použití `Azure` parametru stáhne všechny moduly Azure a všechny závislosti (přibližně 105).
 
