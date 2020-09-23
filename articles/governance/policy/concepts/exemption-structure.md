@@ -3,12 +3,12 @@ title: Podrobnosti o struktuře výjimky zásad
 description: Popisuje definici výjimky zásad, kterou používá Azure Policy k vyloučení prostředků z vyhodnocení iniciativ nebo definic.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3e6a6c9bc7993161697187b6131994c1973b49d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935733"
+ms.locfileid: "90968043"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy struktura výjimky
 
@@ -99,11 +99,12 @@ Toto pole musí být úplný název cesty buď přiřazení zásad, nebo přiřa
 
 Pokud `policyAssignmentId` je pro přiřazení iniciativy, dá se `policyDefinitionReferenceIds` vlastnost použít k určení, které definice zásad v iniciativě má prostředek předmětu výjimku. Vzhledem k tomu, že prostředek může být vyjmut z jedné nebo více zahrnutých definic zásad, je tato vlastnost _pole_. Hodnoty se musí shodovat s hodnotami v definici iniciativy v `policyDefinitions.policyDefinitionReferenceId` polích.
 
-## <a name="required-permissions"></a>Požadovaná oprávnění
+## <a name="exemption-category"></a>Kategorie výjimky
 
-Oprávnění Azure RBAC potřebná pro správu objektů výjimky zásad jsou ve `Microsoft.Authorization/policyExemptions` skupině operací. Předdefinované role [přispěvatele zásad prostředků](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) a [Správce zabezpečení](../../../role-based-access-control/built-in-roles.md#security-admin) mají `read` `write` oprávnění a oprávnění a [zapisovač dat (Preview)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) má oprávnění a `read` .
+Existují dvě kategorie výjimek a používají se k seskupení výjimek:
 
-Výjimky mají další bezpečnostní opatření kvůli dopadu na udělení výjimky. Kromě nutnosti `Microsoft.Authorization/policyExemptions/write` operace s hierarchií prostředků nebo jednotlivými prostředky musí tvůrce výjimky mít v `exempt/Action` cílovém přiřazení operaci.
+- **Zmírnění**: výjimka je udělená, protože záměr zásad je splněn jinou metodou.
+- **Výjimka: výjimka**je udělená, protože stav prostředku, který nedodržuje předpisy, je dočasně přijatý. Dalším důvodem pro použití této kategorie je prostředek nebo hierarchie prostředků, které by měly být vyloučené z jedné nebo více definic v iniciativě, ale neměly by být vyloučeny z celé iniciativy.
 
 ## <a name="expiration"></a>Konec platnosti
 
@@ -111,6 +112,12 @@ Chcete-li nastavit, kdy již není hierarchie prostředků nebo jednotlivý pros
 
 > [!NOTE]
 > Výjimky zásad se po `expiresOn` dosažení data neodstraní. Objekt je uchován pro uchování záznamu, ale výjimka již není dodržena.
+
+## <a name="required-permissions"></a>Požadovaná oprávnění
+
+Oprávnění Azure RBAC potřebná pro správu objektů výjimky zásad jsou ve `Microsoft.Authorization/policyExemptions` skupině operací. Předdefinované role [přispěvatele zásad prostředků](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) a [Správce zabezpečení](../../../role-based-access-control/built-in-roles.md#security-admin) mají `read` `write` oprávnění a oprávnění a [zapisovač dat (Preview)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) má oprávnění a `read` .
+
+Výjimky mají další bezpečnostní opatření kvůli dopadu na udělení výjimky. Kromě nutnosti `Microsoft.Authorization/policyExemptions/write` operace s hierarchií prostředků nebo jednotlivými prostředky musí tvůrce výjimky mít v `exempt/Action` cílovém přiřazení operaci.
 
 ## <a name="next-steps"></a>Další kroky
 

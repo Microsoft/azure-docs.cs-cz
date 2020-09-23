@@ -11,22 +11,22 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 08529d1bb50a1a5d5b3c7d0296aa36f021f45e98
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ddc8186e85001a2a3ed2ed9f57b8f025133ef16a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646081"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897755"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte, jak sdílet kanál strojového učení se svými kolegy nebo zákazníky.
 
 Kanály strojového učení jsou opakovaně použitelnými pracovními postupy pro úlohy strojového učení. Jedna výhoda kanálů zvyšuje spolupráci. Můžete také vytvářet verze kanálů a umožnit tak zákazníkům používat aktuální model při práci na nové verzi. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvoření [pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu
 

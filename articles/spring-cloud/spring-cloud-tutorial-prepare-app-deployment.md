@@ -1,21 +1,90 @@
 ---
-title: Postup přípravy aplikace pružiny v jazyce Java pro nasazení v jarním cloudu Azure
-description: Přečtěte si, jak připravit pružinovou aplikaci Java pro nasazení do jarního cloudu Azure.
+title: Příprava aplikace pro nasazení v jarním cloudu Azure
+description: Naučte se, jak připravit aplikaci pro nasazení do jarního cloudu Azure.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90014935"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906835"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace pro nasazení v jarním cloudu Azure
 
+::: zone pivot="programming-language-csharp"
+Jarní cloud Azure poskytuje robustní služby pro hostování, monitorování, škálování a aktualizaci aplikace Steeltoe. Tento článek ukazuje, jak připravit existující aplikaci Steeltoe pro nasazení do jarního cloudu Azure. 
+
+Tento článek vysvětluje závislosti, konfiguraci a kód, které jsou nutné ke spuštění aplikace .NET Core Steeltoe ve jarním cloudu Azure. Informace o tom, jak nasadit aplikaci do jarního cloudu Azure, najdete v tématu [nasazení první aplikace pro jarní Cloud v Azure](spring-cloud-quickstart.md).
+
+>[!Note]
+> Podpora Steeltoe pro jarní cloud Azure je teď nabízená jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+##  <a name="supported-versions"></a>Podporované verze
+
+Azure jarní Cloud podporuje:
+
+* .NET Core 3,1
+* Steeltoe 2,4
+
+## <a name="dependencies"></a>Závislosti
+
+Nainstalujte balíček [Microsoft. Azure. SpringCloud. Client](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) .
+
+## <a name="update-programcs"></a>Aktualizovat Program.cs
+
+V `Program.Main` metodě zavolejte `UseAzureSpringCloudService` metodu:
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .UseAzureSpringCloudService();
+```
+
+## <a name="enable-eureka-server-service-discovery"></a>Povolit zjišťování služby serveru Eureka
+
+Ve zdroji konfigurace, který se použije při spuštění aplikace ve jarním cloudu Azure, nastavte `spring.application.name` na stejný název jako aplikace Azure pro jarní Cloud, do které se projekt nasadí.
+
+Například pokud nasadíte projekt .NET s názvem `EurekaDataProvider` do jarní cloudové aplikace Azure s názvem `planet-weather-provider` *appSettings.jsv* souboru, měl by obsahovat následující kód JSON:
+
+```json
+"spring": {
+  "application": {
+    "name": "planet-weather-provider"
+  }
+}
+```
+
+## <a name="use-service-discovery"></a>Použití zjišťování služby
+
+Chcete-li volat službu pomocí zjišťování služby serveru Eureka, proveďte požadavky HTTP na `http://<app_name>` místo, kde `app_name` je hodnota `spring.application.name` cílové aplikace. Například následující kód volá `planet-weather-provider` službu:
+
+```csharp
+using (var client = new HttpClient(discoveryHandler, false))
+{
+    var responses = await Task.WhenAll(
+        client.GetAsync("http://planet-weather-provider/weatherforecast/mercury"),
+        client.GetAsync("http://planet-weather-provider/weatherforecast/saturn"));
+    var weathers = await Task.WhenAll(from res in responses select res.Content.ReadAsStringAsync());
+    return new[]
+    {
+        new KeyValuePair<string, string>("Mercury", weathers[0]),
+        new KeyValuePair<string, string>("Saturn", weathers[1]),
+    };
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 V tomto tématu se dozvíte, jak připravit existující aplikaci pružiny v jazyce Java pro nasazení do jarního cloudu Azure. Pokud jsou správně nakonfigurovány, poskytuje Azure jarní Cloud robustní služby pro monitorování, škálování a aktualizaci vaší aplikace v Java pro jarní Cloud.
 
 Před spuštěním tohoto příkladu můžete vyzkoušet [základní rychlý Start](spring-cloud-quickstart.md).
@@ -244,3 +313,4 @@ Zahrňte `spring-boot-starter-actuator` závislost do oddílu závislosti v soub
 V tomto tématu jste zjistili, jak nakonfigurovat svoji aplikaci v jazyce Java pro nasazení do jarního cloudu Azure. Informace o tom, jak nastavit instanci konfiguračního serveru, najdete v tématu [Nastavení instance konfiguračního serveru](spring-cloud-tutorial-config-server.md).
 
 Další ukázky jsou k dispozici na GitHubu: [ukázky Azure pro jarní Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+::: zone-end

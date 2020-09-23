@@ -4,18 +4,21 @@ description: V tomto kurzu použijete server modelů AI, který poskytuje Intel,
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567571"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906625"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Kurz: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel 
 
-V tomto kurzu se dozvíte, jak používat rozšíření OpenVINO™ model Server – AI od společnosti Intel k analýze živého kanálu videa z (simulované) kamery IP. Uvidíte, jak tento server odvození poskytuje přístup k modelům pro detekci objektů (osoba, vozidlo nebo kolo) a modelu pro klasifikaci vozidel. Do tohoto odvozeného serveru se pošle podmnožina snímků v živém obrazovém kanálu a výsledky se odešlou do centra IoT Edge. 
+V tomto kurzu se dozvíte, jak používat rozšíření OpenVINO™ model Server – AI od společnosti Intel k analýze živého kanálu videa z (simulované) kamery IP. Uvidíte, jak tento server odvození poskytuje přístup k modelům pro detekci objektů (osoba, vozidlo nebo kolo) a modelu pro klasifikaci vozidel. Do tohoto odvozeného serveru se pošle podmnožina snímků v živém obrazovém kanálu a výsledky se odešlou do centra IoT Edge.
 
-Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a používá simulovaný živý Stream videa. Vychází z ukázkového kódu napsaného v jazyce C# a sestavuje se v rychlém startu pro [detekci pohybů a generování událostí](detect-motion-emit-events-quickstart.md) . 
+Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a používá simulovaný živý Stream videa. Vychází z ukázkového kódu napsaného v jazyce C# a sestavuje se v rychlém startu pro [detekci pohybů a generování událostí](detect-motion-emit-events-quickstart.md) .
+
+> [!NOTE]
+> Tento kurz vyžaduje použití počítače s platformou X86-64 jako hraničního zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +43,7 @@ V tomto rychlém startu budete používat Live video Analytics na IoT Edge spolu
 ## <a name="overview"></a>Přehled
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Přehled":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Přehled":::
 
 Tento diagram znázorňuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server RTSP (Real-time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje kmitočet snímků streamu videa, který se dorazí na uzel [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) . 
 
@@ -53,6 +56,7 @@ V tomto kurzu provedete následující:
 1. Vyčistěte prostředky.
 
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>O OpenVINO™ modelovém serveru – rozšíření AI od společnosti Intel
+
 Intel® distribuce sady [nástrojů OpenVINO™ Toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (Open Visual neuronovéing a optimalizace sítě) je bezplatná softwarová sada, která vývojářům a odborníkům přes data zrychlí úlohy počítačového zpracování obrazu, zjednodušuje rozmístění a nasazení hloubkového učení a umožňuje snadné a heterogenní spouštění napříč platformami Intel® od Edge až po Cloud. Obsahuje sadu nástrojů pro nasazení Intel® pro hloubkové učení s modulem pro optimalizaci a odvozování modelů a [otevřený model](https://github.com/openvinotoolkit/open_model_zoo) úložiště ve více než 40 optimalizovaných předem vyškolených modelů.
 
 Aby bylo možné vytvářet složitá, vysoce výkonná řešení živé analýzy videí, je třeba, aby se analýza živých videí v modulu IoT Edge spojila s výkonným modulem odvození, který může využít škálování na hraničních zařízeních. V tomto kurzu se požadavky na odvození odesílají do [rozšíření OpenVINO™ model Server – AI od společnosti Intel](https://aka.ms/lva-intel-ovms), což je modul Edge, který je navržený tak, aby fungoval s živým analýzou videí v IoT Edge. Tento modul serveru odvození obsahuje OpenVINO™ model Server (OVMS), odvozený Server, který využívá sadu OpenVINO™ Toolkit, která je vysoce optimalizovaná pro úlohy počítačové vize a vyvinutá pro architektury Intel®. Do OVMS bylo přidáno rozšíření pro snadné výměny snímků videa a odvození výsledků mezi odvozeným serverem a živým analýzou videí v IoT Edge modul, takže vám umožní spustit libovolný model podporovaný OpenVINO™ Toolkit (můžete přizpůsobit modul odvození serveru úpravou [kódu](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)). Můžete dál vybírat z nejrůznějších mechanismů akcelerace, které poskytuje Intel® hardware. Mezi ně patří procesory (Atom, Core, Xeon), FPGA, VPUs.

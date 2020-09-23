@@ -11,16 +11,16 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320200"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897692"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Použití rozdílového soukromí v Azure Machine Learning (Preview)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Naučte se, jak pomocí balíčků WhiteNoise Pythonu použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
 
@@ -149,14 +149,14 @@ Knihovnu můžete použít k vytvoření složitějších analytických grafů s
 
 | Statistika    | Mechanismy | Nástroje  |
 | ------------- |------------|------------|
-| Count         | Gaussovské   | Změna typu       |
+| Počet         | Gaussovské   | Změna typu       |
 | Histogram     | 2D  | Upnutí   |
 | Mean          | Laplace    | Digitalizaci   |
-| Quantiles     |            | Filtr     |
-| Sčítání           |            | Imputace |
+| Kvantily     |            | Filtrovat     |
+| Součet           |            | Imputace |
 | Variance/kovariance |      | Transformace  |
 
-Další podrobnosti najdete v [poznámkovém bloku základních analýz dat](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
+Další podrobnosti najdete v [poznámkovém bloku analýzy dat](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>Přibližný nástroj rozdílných privátních vydání
 

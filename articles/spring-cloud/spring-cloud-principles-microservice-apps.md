@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c403398f7320cefa16a4a570645a6d7d750acc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297497"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906873"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Java a základní operační systém pro aplikace mikroslužeb Spring
+
+**Tento článek se týká:** ✔️ Java
+
 Níže jsou uvedené zásady pro udržení zdravého a základního operačního systému Java pro aplikace pro jarní mikroslužby.
 ## <a name="principles-for-healthy-java-and-base-os"></a>Principy zdravého Java a základního operačního systému
 * Musí se jednat o stejný základní operační systém napříč vrstvami – Basic | Standardní | Nárok.
@@ -52,5 +55,6 @@ Systémy Azul budou nepřetržitě vyhledávat změny v základních operačníc
 > ![Výchozí nasazení](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>Další kroky
-* [Rychlý Start: spuštění stávající cloudové aplikace Azure na jaře pomocí Azure Portal](spring-cloud-quickstart.md)
+
+* [Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md)
 * [Dlouhodobá podpora jazyka Java pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)

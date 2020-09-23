@@ -11,15 +11,15 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f497bf5374dd6f621a6b48bae245e5efb1505a19
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603063"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897646"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte, jak shromažďovat data z modelů nasazených do koncových bodů webové služby ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI). Pomocí služby [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) shromážděte následující data z koncového bodu:
 * Výstupní data

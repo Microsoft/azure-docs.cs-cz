@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: d3a9f88325f03d0252adf51c5bf221b131d7d33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751724"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907045"
 ---
 # <a name="group-data-into-bins-module"></a>Seskupit data do modulu přihrádky
 
-Tento článek popisuje, jak pomocí modulu seskupit data do přihrádek v Návrháři Azure Machine Learning (Preview) seskupovat čísla nebo měnit distribuci souvislých dat.
+Tento článek popisuje, jak použít modul seskupit data do přihrádek v Návrháři Azure Machine Learning, abyste mohli seskupovat čísla nebo měnit distribuci souvislých dat.
 
 Modul seskupit data do přihrádek podporuje více možností pro binningu data. Můžete přizpůsobit, jak jsou okraje přihrádky nastaveny a jak jsou hodnoty rozděleny do přihrádek. Můžete například:  
 
@@ -50,7 +50,7 @@ Vzhledem k tomu, že existuje mnoho způsobů, jak seskupovat data, je vše při
 
 ## <a name="how-to-configure-group-data-into-bins"></a>Konfigurace dat skupin do přihrádek
 
-1. Přidejte do kanálu modul **data skupiny** do kanálu v Návrháři (Preview). Tento modul můžete najít v **transformaci dat**kategorií.
+1. Přidejte do kanálu modul **data skupiny** do kanálu v návrháři. Tento modul můžete najít v **transformaci dat**kategorií.
 
 2. Připojte datovou sadu, která má číselná data pro přihrádku. Kvantizační lze použít pouze pro sloupce, které obsahují číselná data. 
 

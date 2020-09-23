@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203561"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906702"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Výuka a nasazení modelu TensorFlow pro klasifikaci imagí pomocí rozšíření Azure Machine Learning Visual Studio Code (Preview)
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte provádět následující úlohy:
 > * Registrace modelu
 > * Nasazení modelu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho ještě nemáte, zaregistrujte se a vyzkoušejte si [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 - Nainstalujte [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview), odlehčený Editor kódu pro různé platformy.
@@ -61,7 +61,7 @@ První věc, kterou je třeba udělat k vytvoření aplikace v Azure Machine Lea
 1. Vyberte **vytvořit novou skupinu prostředků**. 
 1. Pojmenujte skupinu prostředků "TeamWorkspace-RG" a stiskněte klávesu **ENTER**. 
 1. Vyberte umístění pro váš pracovní prostor. Doporučuje se zvolit umístění, které je nejblíže umístění, do kterého plánujete model nasadit. Například "Západní USA 2".
-1. Po zobrazení výzvy k výběru typu pracovního prostoru vyberte **základní** a vytvořte základní pracovní prostor. Další informace o různých nabídkách pracovních prostorů najdete v tématu [přehled Azure Machine Learning](./overview-what-is-azure-ml.md#sku).
+1. Po zobrazení výzvy k výběru typu pracovního prostoru zvolte **základní**.
 
 V tomto okamžiku se vytvoří požadavek na Azure, který vytvoří nový pracovní prostor ve vašem účtu. Po několika minutách se nový pracovní prostor zobrazí v uzlu vašeho předplatného. 
 

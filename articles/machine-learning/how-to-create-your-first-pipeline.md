@@ -11,16 +11,16 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 968685b64b1412751ca990842d95e9d2ffb251a6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 15e1af35def6a3cb6ffaf5df2db53326fba60bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650556"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883047"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte, jak vytvořit a spustit [kanál strojového učení](concept-ml-pipelines.md) pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Použití **kanálů ml** k vytvoření pracovního postupu, který spojuje různé fáze ml. Pak tento kanál publikujte pro pozdější přístup nebo sdílení s ostatními. Sledujte kanály ML a podívejte se, jak váš model funguje v reálném světě a že se má detekovat posun dat. Kanály ML jsou ideální pro scénáře dávkového vyhodnocování, které používají různé výpočetní prostředky, místo jejich spouštění a sdílení pracovních postupů ML s ostatními.
 
@@ -30,7 +30,7 @@ Kanály ML, které vytvoříte, jsou viditelné pro členy [pracovního prostoru
 
 Kanály ML se spouštějí na výpočetních cílech (viz [co jsou výpočetní cíle v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)). Kanály můžou číst a zapisovat data do a z podporovaných [Azure Storage](https://docs.microsoft.com/azure/storage/) umístění.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -361,4 +361,4 @@ Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště
 - Využijte [tyto Jupyter poznámkové bloky na GitHubu](https://aka.ms/aml-pipeline-readme) a prozkoumejte kanály strojového učení.
 - Podívejte se na referenční nápovědu sady SDK pro balíček [AzureML-Pipelines-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) a balíček [AzureML-Pipelines-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) .
 - Tipy k ladění kanálů a odstraňování potíží najdete v tématu [návody](how-to-debug-pipelines.md) :
-- Zjistěte, jak spustit poznámkové bloky podle článku [použití poznámkových bloků Jupyter k prozkoumání této služby](samples-notebooks.md).
+- Postupujte podle pokynů v článku věnovaném [využití poznámkových bloků Jupyter k prozkoumání této služby](samples-notebooks.md) a zjistěte, jak provozovat poznámkové bloky.

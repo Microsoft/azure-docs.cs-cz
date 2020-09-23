@@ -4,17 +4,17 @@ description: Azure Storage chrání vaše data tím, že je před trvalým nasaz
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/24/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078193"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985764"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
@@ -38,8 +38,8 @@ Informace o šifrování a správě klíčů pro Azure Managed disks najdete v t
 
 Data v novém účtu úložiště se ve výchozím nastavení šifrují pomocí klíčů spravovaných Microsoftem. Můžete i nadále spoléhat na klíče spravované Microsoftem pro šifrování vašich dat, nebo můžete spravovat šifrování pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, máte dvě možnosti. Můžete použít buď typ správy klíčů, nebo obojí:
 
-- Můžete zadat *klíč spravovaný zákazníkem* Azure Key Vault, který se má použít pro šifrování a dešifrování dat v úložišti objektů BLOB a ve službě soubory Azure. <sup>1.2</sup> . Další informace o klíčích spravovaných zákazníkem najdete v tématu [použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](encryption-customer-managed-keys.md).
-- Můžete zadat *klíč poskytnutý zákazníkem* pro operace BLOB Storage. Klient, který vytváří požadavek na čtení nebo zápis proti úložišti objektů blob, může do žádosti přidat šifrovací klíč a získat tak podrobné řízení způsobu, jakým se data objektů BLOB šifrují a dešifrují. Další informace o klíčích poskytovaných zákazníkem najdete v tématu [poskytnutí šifrovacího klíče pro požadavek na úložiště objektů BLOB](encryption-customer-provided-keys.md).
+- Můžete zadat *klíč spravovaný zákazníkem* , který se použije pro šifrování a dešifrování dat v úložišti objektů BLOB a ve službě soubory Azure. <sup>1, 2</sup> spravované klíče pro zákazníky musí být uložené ve Azure Key Vault nebo Azure Key Vault spravovaném modelu hardwarového zabezpečení (HSM) (Preview). Další informace o klíčích spravovaných zákazníkem najdete v tématu [použití klíčů spravovaných zákazníkem pro Azure Storage šifrování](encryption-customer-managed-keys.md).
+- Můžete zadat *klíč poskytnutý zákazníkem* pro operace BLOB Storage. Klient, který vytváří požadavek na čtení nebo zápis proti úložišti objektů blob, může do žádosti přidat šifrovací klíč a získat tak podrobné řízení způsobu, jakým se data objektů BLOB šifrují a dešifrují. Další informace o klíčích poskytovaných zákazníkem najdete v tématu [poskytnutí šifrovacího klíče pro požadavek na úložiště objektů BLOB](../blobs/encryption-customer-provided-keys.md).
 
 Následující tabulka porovnává možnosti správy klíčů pro Azure Storage šifrování.
 
@@ -47,7 +47,7 @@ Následující tabulka porovnává možnosti správy klíčů pro Azure Storage 
 |--|--|--|--|
 | Operace šifrování a dešifrování | Azure | Azure | Azure |
 | Podporované služby Azure Storage Services | Vše | BLOB Storage, soubory Azure<sup>1, 2</sup> | Blob Storage |
-| Úložiště klíčů | Úložiště klíčů Microsoftu | Azure Key Vault | Vlastní úložiště klíčů zákazníka |
+| Úložiště klíčů | Úložiště klíčů Microsoftu | Azure Key Vault nebo Key Vault HSM | Vlastní úložiště klíčů zákazníka |
 | Zodpovědnost za střídání klíčů | Partnerský vztah Microsoftu | Zákazník | Zákazník |
 | Řízení klíčů | Partnerský vztah Microsoftu | Zákazník | Zákazník |
 
@@ -56,6 +56,14 @@ Následující tabulka porovnává možnosti správy klíčů pro Azure Storage 
 
 > [!NOTE]
 > Klíče spravované Microsoftem se podle požadavků na dodržování předpisů otočí odpovídajícím způsobem. Pokud máte specifické požadavky na střídání klíčů, společnost Microsoft doporučuje přejít na klíče spravované zákazníkem, abyste mohli snadno spravovat a auditovat své otáčení.
+
+## <a name="doubly-encrypt-data-with-infrastructure-encryption"></a>Dvojité šifrování dat pomocí šifrování infrastruktury
+
+Zákazníci, kteří vyžadují vysokou úroveň záruky, že jejich data jsou zabezpečená, můžou na úrovni infrastruktury Azure Storage povolit taky 256 šifrování AES. Když je povolené šifrování infrastruktury, data v účtu úložiště se &mdash; na úrovni služby šifrují dvakrát a jednou na úrovni infrastruktury &mdash; se dvěma různými šifrovacími algoritmy a dvěma různými klíči. Dvojité šifrování Azure Storage dat chrání před scénářem, kdy může dojít k ohrožení jednoho z šifrovacích algoritmů nebo klíčů. V tomto scénáři bude další vrstva šifrování nadále chránit vaše data.
+
+Šifrování na úrovni služby podporuje použití klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem s Azure Key Vault. Šifrování na úrovni infrastruktury spoléhá na klíče spravované Microsoftem a vždycky používá samostatný klíč.
+
+Další informace o tom, jak vytvořit účet úložiště, který umožňuje šifrování infrastruktury, najdete v tématu [Vytvoření účtu úložiště s povoleným šifrováním infrastruktury pro dvojité šifrování dat](infrastructure-encryption-enable.md).
 
 ## <a name="encryption-scopes-for-blob-storage-preview"></a>Obory šifrování pro úložiště objektů BLOB (Preview)
 
@@ -102,6 +110,5 @@ Pokud je váš obor šifrování chráněný pomocí klíčů spravovaných zák
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je Azure Key Vault?](../../key-vault/general/overview.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage na webu Azure Portal](storage-encryption-keys-portal.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v PowerShellu](storage-encryption-keys-powershell.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v Azure CLI](storage-encryption-keys-cli.md)
+- [Klíče spravované zákazníkem pro šifrování Azure Storage](customer-managed-keys-overview.md)
+- [Obory šifrování pro úložiště objektů BLOB (Preview)](../blobs/encryption-scope-overview.md)

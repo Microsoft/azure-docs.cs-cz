@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 086feb3aa7c9a38756fded58538eb22e094a5960
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565702"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906807"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Co je Azure static Web Apps Preview?
 
@@ -24,7 +24,7 @@ Pracovní postup Azure static Web Apps je přizpůsobený dennímu pracovnímu p
 
 Když vytvoříte prostředek Azure Static Web Apps, Azure nastaví v úložišti zdrojového kódu této aplikace pracovní postup GitHub Actions, který bude monitorovat vámi vybranou větev. Pokaždé, když zadáte potvrzení změn nebo přijmete žádosti o přijetí změn do sledované větve, akce GitHub automaticky vytvoří a nasadí vaši aplikaci a její rozhraní API do Azure.
 
-Statické webové aplikace se běžně vytvářejí pomocí knihoven a platforem, jako jsou Angular, React, Svelte nebo Vue. Tyto aplikace zahrnují prostředky HTML, CSS, JavaScript a grafické materiály. U tradičního webového serveru se tyto prostředky obsluhují z jednoho serveru spolu se všemi požadovanými koncovými body rozhraní API.
+Statické webové aplikace se běžně vytvářejí pomocí knihoven a architektur, jako je například úhlová, reakce, Svelte, Vue nebo Blazor. Tyto aplikace zahrnují prostředky HTML, CSS, JavaScript a grafické materiály. U tradičního webového serveru se tyto prostředky obsluhují z jednoho serveru spolu se všemi požadovanými koncovými body rozhraní API.
 
 Statické Web Apps jsou statické prostředky oddělené od tradičního webového serveru a místo toho se obsluhují z míst geograficky rozmístěných po celém světě. Tato distribuce zajišťuje mnohem rychlejší poskytování souborů, protože soubory jsou fyzicky blíže ke koncovým uživatelům. Kromě toho jsou koncové body rozhraní API hostovány pomocí [architektury bez serveru](../azure-functions/functions-overview.md), což předchází nutnosti úplného back-end serveru dohromady.
 
@@ -44,7 +44,7 @@ Statické Web Apps jsou statické prostředky oddělené od tradičního webové
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Co se dá dělat se statickými Web Apps
 
-- **Vytvářejte moderní aplikace JavaScriptu** pomocí architektur a knihoven, jako je například [úhlová](getting-started.md?tabs=angular), [reakce](getting-started.md?tabs=react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=react) s back-endu [Azure Functions](apis.md) .
+- Vytvářejte **moderní webové aplikace** pomocí rozhraní JavaScript a knihoven, jako je například [úhlová](getting-started.md?tabs=angular), [reakce](getting-started.md?tabs=react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=react), nebo pomocí [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) pro vytváření aplikací pro WebAssembly s back-endu [Azure Functions](apis.md) .
 - **Publikování statických webů** pomocí platforem, jako je [Gatsby](publish-gatsby.md), [Hugo](publish-hugo.md), [VuePress](publish-vuepress.md).
 - **Nasaďte webové aplikace** s rozhraními, jako jsou [Next.js](deploy-nextjs.md) a [Nuxt.js](deploy-nuxtjs.md).
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 445cd7c55de58b6e5266f76a06d2cbabc75c18b4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701417"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907165"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamování dat jako vstup do Stream Analytics
 
@@ -30,14 +30,14 @@ Stream Analytics podporuje kompresi napříč všemi vstupními zdroji datových
 
 ## <a name="create-edit-or-test-inputs"></a>Vytváření, úpravy a testování vstupů
 
-Pomocí [Azure Portal](stream-analytics-quick-create-portal.md), sady [Visual Studio](stream-analytics-quick-create-vs.md)a [Visual Studio Code](quick-create-vs-code.md) můžete přidat a zobrazit nebo upravit existující vstupy v úloze streamování. Vstupní připojení a [testovací dotazy](stream-analytics-manage-job.md#test-your-query) můžete také testovat z ukázkových dat z Azure Portal, sady [Visual Studio](stream-analytics-vs-tools-local-run.md)a [Visual Studio Code](visual-studio-code-local-run.md). Při psaní dotazu se zobrazí seznam vstupů v klauzuli FROM. Seznam dostupných vstupů můžete získat na stránce **dotaz** na portálu. Pokud chcete použít více vstupů, můžete `JOIN` je nebo napsat více `SELECT` dotazů.
+Pomocí [Azure Portal](stream-analytics-quick-create-portal.md), sady [Visual Studio](stream-analytics-quick-create-vs.md)a [Visual Studio Code](quick-create-visual-studio-code.md) můžete přidat a zobrazit nebo upravit existující vstupy v úloze streamování. Vstupní připojení a [testovací dotazy](stream-analytics-manage-job.md#test-your-query) můžete také testovat z ukázkových dat z Azure Portal, sady [Visual Studio](stream-analytics-vs-tools-local-run.md)a [Visual Studio Code](visual-studio-code-local-run.md). Při psaní dotazu se zobrazí seznam vstupů v klauzuli FROM. Seznam dostupných vstupů můžete získat na stránce **dotaz** na portálu. Pokud chcete použít více vstupů, můžete `JOIN` je nebo napsat více `SELECT` dotazů.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Streamování dat z Event Hubs
 
-Azure Event Hubs poskytuje vysoce škálovatelné ingestování událostí pro publikování a odběr. Centrum událostí může shromažďovat miliony událostí za sekundu, abyste mohli zpracovávat a analyzovat obrovské objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Společně Event Hubs a Stream Analytics poskytují ucelené řešení pro analýzy v reálném čase. Event Hubs umožňuje zasílat události do Azure v reálném čase a úlohy Stream Analytics můžou tyto události zpracovat v reálném čase. Můžete například odeslat webové kliknutí, čtení ze senzorů nebo online události protokolu a Event Hubs. Pak můžete vytvořit Stream Analytics úlohy, které budou používat Event Hubs jako vstupní datové proudy pro filtrování, agregaci a korelaci v reálném čase.
+Azure Event Hubs poskytuje vysoce škálovatelné investory o událostech publikování a odběru. Centrum událostí může shromažďovat miliony událostí za sekundu, abyste mohli zpracovávat a analyzovat obrovské objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Společně Event Hubs a Stream Analytics poskytují ucelené řešení pro analýzy v reálném čase. Event Hubs umožňuje zasílat události do Azure v reálném čase a úlohy Stream Analytics můžou tyto události zpracovat v reálném čase. Můžete například odeslat webové kliknutí, čtení ze senzorů nebo online události protokolu a Event Hubs. Pak můžete vytvořit Stream Analytics úlohy, které budou používat Event Hubs jako vstupní datové proudy pro filtrování, agregaci a korelaci v reálném čase.
 
-`EventEnqueuedUtcTime`je časové razítko příjezdu události v centru událostí a je výchozím časovým razítkem událostí přicházejících z Event Hubs do Stream Analytics. Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) .
+`EventEnqueuedUtcTime` je časové razítko příjezdu události v centru událostí a je výchozím časovým razítkem událostí přicházejících z Event Hubs do Stream Analytics. Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) .
 
 ### <a name="event-hubs-consumer-groups"></a>Event Hubs skupiny příjemců
 
@@ -57,7 +57,7 @@ Následující tabulka vysvětluje jednotlivé vlastnosti na **nové vstupní** 
 | **Skupina uživatelů centra událostí** (doporučeno) | Důrazně doporučujeme použít pro každou úlohu Stream Analytics odlišnou skupinu uživatelů. Tento řetězec identifikuje skupinu uživatelů, která se má použít k ingestování dat z centra událostí. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics používá skupinu uživatelů $Default.  |
 | **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
-| **Encoding** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
+| **Kódování** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
 | **Typ komprese události** | Typ komprese používaný ke čtení příchozího datového proudu, jako je například None (výchozí), GZip nebo deflate. |
 
 Když data pocházejí z datového proudu centra událostí, máte v Stream Analytics dotazu přístup k následujícím polím metadat:
@@ -101,13 +101,13 @@ V následující tabulce jsou popsány jednotlivé vlastnosti na **nové vstupn�
 | **Alias vstupu** | Popisný název, který použijete v dotazu úlohy pro odkazování na tento vstup.|
 | **Předplatné** | Vyberte předplatné, ve kterém existuje IoT Hub prostředek. | 
 | **IoT Hub** | Název IoT Hub, který se má použít jako vstup |
-| **Služba** | Koncový bod pro IoT Hub.|
+| **Koncový bod** | Koncový bod pro IoT Hub.|
 | **Název zásady sdíleného přístupu** | Zásada sdíleného přístupu, která poskytuje přístup k IoT Hub. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. |
 | **Klíč zásad sdíleného přístupu** | Sdílený přístupový klíč, který slouží k autorizaci přístupu k IoT Hub.  Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení centra IoT Hub ručně. |
 | **Skupina uživatelů** | Důrazně doporučujeme pro každou úlohu Stream Analytics použít jinou skupinu uživatelů. Skupina příjemců slouží k ingestování dat z IoT Hub. Stream Analytics používá skupinu příjemců $Default, pokud neurčíte jinak.  |
 | **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
-| **Encoding** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
+| **Kódování** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
 | **Typ komprese události** | Typ komprese používaný ke čtení příchozího datového proudu, jako je například None (výchozí), GZip nebo deflate. |
 
 
@@ -143,7 +143,7 @@ Vstupy ve formátu CSV vyžadují pro definování polí pro datovou sadu řáde
 > [!NOTE]
 > Stream Analytics nepodporuje přidávání obsahu do existujícího souboru objektů BLOB. Stream Analytics bude každý soubor zobrazovat pouze jednou a všechny změny, ke kterým došlo v souboru poté, co úloha data přečte, nejsou zpracovány. Osvědčeným postupem je nahrát všechna data pro soubor objektu BLOB najednou a pak přidat další novější události do jiného, nového souboru BLOB.
 
-Ve scénářích, kdy jsou průběžně přidané a Stream Analytics zpracovává objekty BLOB při jejich přidání, je možné, že některé objekty blob budou ve výjimečných případech přeskočeny kvůli členitosti `BlobLastModifiedTime` . To můžete zmírnit tím, že nahrajete objekty blob alespoň dvě sekundy od sebe. Pokud tato možnost není proveditelná, můžete použít Event Hubs ke streamování velkých objemů událostí.
+Ve scénářích, kdy se průběžně přidávají spousty objektů BLOB a Stream Analytics zpracovává objekty BLOB při jejich přidání, je možné, že některé objekty blob budou ve výjimečných případech přeskočeny kvůli členitosti `BlobLastModifiedTime` . To můžete zmírnit tím, že nahrajete objekty blob alespoň dvě sekundy od sebe. Pokud tato možnost není proveditelná, můžete použít Event Hubs ke streamování velkých objemů událostí.
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Konfigurace úložiště objektů BLOB jako vstupu datového proudu 
 
@@ -155,13 +155,13 @@ V následující tabulce jsou popsány jednotlivé vlastnosti na **nové vstupn�
 | **Předplatné** | Vyberte předplatné, ve kterém existuje IoT Hub prostředek. | 
 | **Účet úložiště** | Název účtu úložiště, ve kterém se nacházejí soubory objektů BLOB. |
 | **Klíč účtu úložiště** | Tajný klíč přidružený k účtu úložiště Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení úložiště objektů BLOB ručně. |
-| **Kontejner** | Kontejner pro vstup objektu BLOB Kontejnery poskytují logické seskupení pro objekty blob uložené v Blob service Microsoft Azure. Když nahrajete objekt blob do služby Azure Blob Storage, musíte pro tento objekt BLOB zadat kontejner. Můžete zvolit možnost **použít existující** kontejner nebo **vytvořit nový** , chcete-li vytvořit nový kontejner.|
-| **Vzor cesty** (volitelné) | Cesta k souboru, který se používá k vyhledání objektů BLOB v zadaném kontejneru. Pokud chcete číst objekty BLOB z kořenového adresáře kontejneru, nenastavujte vzor cesty. V cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}` , `{time}` nebo.`{partition}`<br/><br/>Příklad 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2:`cluster1/logs/{date}`<br/><br/>`*`Znak není povolená hodnota pro předponu cesty. Jsou povoleny pouze platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaky objektu BLOB v Azure</a> . Nezahrnujte názvy kontejnerů nebo názvy souborů. |
+| **Kontejner** | Kontejner pro vstup objektu BLOB Kontejnery poskytují logické seskupení pro objekty blob uložené v Blob service Microsoft Azure. Když nahrajete objekt blob do služby Azure Blob Storage, musíte pro tento objekt BLOB zadat kontejner. Můžete zvolit možnost **použít existující** kontejner nebo  **vytvořit nový** , chcete-li vytvořit nový kontejner.|
+| **Vzor cesty** (volitelné) | Cesta k souboru, který se používá k vyhledání objektů BLOB v zadaném kontejneru. Pokud chcete číst objekty BLOB z kořenového adresáře kontejneru, nenastavujte vzor cesty. V cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}` , `{time}` nebo. `{partition}`<br/><br/>Příklad 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2: `cluster1/logs/{date}`<br/><br/>`*`Znak není povolená hodnota pro předponu cesty. Jsou povoleny pouze platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaky objektu BLOB v Azure</a> . Nezahrnujte názvy kontejnerů nebo názvy souborů. |
 | **Formát data** (volitelné) | Použijete-li proměnnou data v cestě, formát data, ve kterém jsou soubory uspořádány. Příklad: `YYYY/MM/DD` <br/><br/> Pokud má vstup objektu BLOB `{date}` nebo `{time}` v jeho cestě, složky se procházejí ve vzestupném časovém pořadí.|
 | **Formát času** (volitelné) |  Použijete-li časovou proměnnou v cestě, formát času, ve kterém jsou soubory uspořádány. V současné době je jediná podporovaná hodnota `HH` pro hodiny. |
 | **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
-| **Encoding** | V případě sdílených svazků clusteru a JSON je kódování UTF-8 aktuálně jediným podporovaným formátem kódování. |
+| **Kódování** | V případě sdílených svazků clusteru a JSON je kódování UTF-8 aktuálně jediným podporovaným formátem kódování. |
 | **Komprese** | Typ komprese používaný ke čtení příchozího datového proudu, jako je například None (výchozí), GZip nebo deflate. |
 
 Když data pocházejí ze zdroje úložiště objektů blob, máte v Stream Analytics dotazu přístup k následujícím polím metadat:

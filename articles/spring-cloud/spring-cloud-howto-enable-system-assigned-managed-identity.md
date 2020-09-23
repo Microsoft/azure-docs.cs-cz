@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: bff98ea3470110bc29f75361fb3a2adc685e2602
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299641"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888571"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Postup povolení spravované identity přiřazené systémem pro aplikaci Azure jaře Cloud
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
+
 Spravované identity pro prostředky Azure poskytují automaticky spravovanou identitu v Azure Active Directory k prostředkům Azure, jako je například vaše aplikace pro jarní Cloud v Azure. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu.
 
 V tomto článku se dozvíte, jak povolit a zakázat spravované identity přiřazené systémem pro cloudovou aplikaci Azure pomocí Azure Portal a rozhraní příkazového řádku (dostupného z verze 0.2.4).
@@ -81,7 +84,8 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Použití spravovaných identit pomocí sady Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
+
 * [Přístup k Azure Key Vault se spravovanými identitami ve jarním startu Starter](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [Další informace o spravovaných identitách pro prostředky Azure](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+* [Použití spravovaných identit pomocí sady Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 

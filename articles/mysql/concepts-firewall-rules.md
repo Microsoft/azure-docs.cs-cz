@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: c677b0278d29c499d4369967c1c76132a1ae9d21
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63b3fd64526f45994919267a2f4ddc730d0b2fd7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519843"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882666"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Pravidla brány firewall serveru Azure Database for MySQL
 Brány firewall zabraňují všem přístupům k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
@@ -25,7 +25,7 @@ Přístup všech databází k serveru Azure Database for MySQL je ve výchozím 
 
 Pokusy o připojení z Internetu a Azure musí nejdřív projít přes bránu firewall, aby mohli získat přístup k vaší Azure Database for MySQL databázi, jak je znázorněno v následujícím diagramu:
 
-![Příklad toku fungování brány firewall](./media/concepts-firewall-rules/1-firewall-concept.png)
+:::image type="content" source="./media/concepts-firewall-rules/1-firewall-concept.png" alt-text="Příklad toku fungování brány firewall":::
 
 ## <a name="connecting-from-the-internet"></a>Připojení z Internetu
 Pravidla brány firewall na úrovni serveru se vztahují na všechny databáze na serveru Azure Database for MySQL.
@@ -43,7 +43,7 @@ Pokud pro vaši službu Azure není k dispozici pevná odchozí IP adresa, můž
 > Možnost **Povolení přístupu ke službám Azure** nakonfiguruje bránu firewall tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup jenom na autorizované uživatele.
 > 
 
-![Konfigurace povolení přístupu ke službám Azure na portálu](./media/concepts-firewall-rules/allow-azure-services.png)
+:::image type="content" source="./media/concepts-firewall-rules/allow-azure-services.png" alt-text="Konfigurace povolení přístupu ke službám Azure na portálu":::
 
 ### <a name="connecting-from-a-vnet"></a>Připojení z virtuální sítě
 Pokud chcete bezpečně připojit k serveru Azure Database for MySQL z virtuální sítě, zvažte použití [koncových bodů služby virtuální](./concepts-data-access-and-security-vnet.md)sítě. 
@@ -68,7 +68,7 @@ Pokud se přístup ke službě Microsoft Azure Database for MySQL server nechov�
 
 * **Nejde se připojit z prostředku Azure s povolenou IP adresou:** Ověřte, jestli je povolený koncový bod služby **Microsoft. SQL** pro podsíť, ze které se připojujete. Pokud je **Microsoft. SQL** povolený, znamená to, že chcete v této podsíti použít jenom [pravidla koncových bodů služby virtuální](concepts-data-access-and-security-vnet.md) sítě.
 
-   Například se může zobrazit následující chyba, pokud se připojujete z virtuálního počítače Azure v podsíti s povoleným **Microsoft. SQL** , ale nemá žádné odpovídající pravidlo virtuální sítě:`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+   Například se může zobrazit následující chyba, pokud se připojujete z virtuálního počítače Azure v podsíti s povoleným **Microsoft. SQL** , ale nemá žádné odpovídající pravidlo virtuální sítě:  `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
 ## <a name="next-steps"></a>Další kroky
 

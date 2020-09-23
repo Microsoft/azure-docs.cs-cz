@@ -1,6 +1,6 @@
 ---
-title: Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge přes Azure PowerShell
-description: Popisuje, jak vytvořit a spravovat virtuální počítače na Azure Stack zařízení GPU na hraničních zařízeních pomocí Azure PowerShell.
+title: Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure PowerShell
+description: Popisuje, jak vytvořit a spravovat virtuální počítače na zařízení GPU Azure Stack Edge pro pomocí Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461710"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890704"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge přes Azure PowerShell
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure PowerShell
 
 <!--[!INCLUDE [azure-stack-edge-gateway-deploy-vm-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]-->
 
-V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pomocí Azure PowerShell.
+V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí Azure PowerShell.
 
 ## <a name="vm-deployment-workflow"></a>Pracovní postup nasazení virtuálních počítačů
 
@@ -128,7 +128,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Pomocí Azure Resource Manager lze vytvořit pouze účty místního úložiště, jako je například místně redundantní úložiště (Standard_LRS nebo Premium_LRS). Pokud chcete vytvořit vrstvené účty úložiště, přečtěte si postup v tématu [Přidání, připojení k účtům úložiště na Azure Stack hraničních](azure-stack-edge-j-series-deploy-add-storage-accounts.md)zařízeních.
+> Pomocí Azure Resource Manager lze vytvořit pouze účty místního úložiště, jako je například místně redundantní úložiště (Standard_LRS nebo Premium_LRS). Pokud chcete vytvořit vrstvené účty úložiště, přečtěte si postup v tématu [Přidání, připojení k účtům úložiště na Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
 Ukázkový výstup najdete níž.
 
@@ -193,7 +193,7 @@ Pokud používáte *protokol HTTPS*, musíte na zařízení nainstalovat vhodné
 
 Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů blob stránky v místním účtu úložiště, který jste vytvořili v předchozích krocích. Pomocí nástroje, jako je [AzCopy](../storage/common/storage-use-azcopy-v10.md) , můžete nahrát virtuální pevný disk do účtu úložiště, který jste vytvořili v předchozích krocích. 
 
-Než začnete používat AzCopy, ujistěte se, že [je AzCopy správně nakonfigurovaný](#configure-azcopy) pro použití se službou blob Storage REST API verze, kterou používáte se zařízením Azure Stack Edge.
+Než začnete používat AzCopy, ujistěte se, že [je AzCopy správně nakonfigurovaný](#configure-azcopy) pro použití se službou blob Storage REST API verze, kterou používáte se zařízením Azure Stack Edge pro.
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -445,11 +445,11 @@ The public IP in this case will be the same as the private IP that you passed du
 
 ## <a name="manage-vm"></a>Správa virtuálního počítače
 
-Následující část popisuje některé běžné operace kolem virtuálního počítače, který vytvoříte na zařízení Azure Stack Edge.
+Následující část popisuje některé běžné operace kolem virtuálního počítače, který vytvoříte na zařízení Azure Stack Edge pro.
 
 ### <a name="list-vms-running-on-the-device"></a>Výpis virtuálních počítačů spuštěných v zařízení
 
-Pokud chcete vrátit seznam všech virtuálních počítačů, které běží na vašem zařízení Azure Stack Edge, spusťte následující příkaz.
+Pokud chcete vrátit seznam všech virtuálních počítačů, které běží na vašem zařízení Azure Stack Edge pro, spusťte následující příkaz.
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -502,7 +502,7 @@ Další informace o této rutině najdete v [rutině Remove-AzureRmVm](https://d
 
 Velikost virtuálního počítače určuje množství výpočetních prostředků, jako jsou CPU, GPU a paměť, které jsou k dispozici pro virtuální počítač. Virtuální počítače by měly být vytvořené pomocí velikosti virtuálního počítače vhodné pro zatížení. I když všechny počítače budou spuštěné na stejném hardwaru, velikosti počítačů mají různá omezení pro přístup k disku, což vám umožní spravovat celkový přístup k disku napříč virtuálními počítači. Pokud se pracovní zátěž zvýší, je také možné velikost existujícího virtuálního počítače změnit.
 
-Pro vytváření Azure Stackch hraničních zařízení se podporují následující virtuální počítače řady Standard Dv2 Series.
+Následující virtuální počítače řady Standard Dv2 se podporují pro vytváření na zařízeních s Azure Stack Edge pro.
 
 ### <a name="dv2-series"></a>Dv2-series
 |Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | Maximální propustnost disku s operačním systémem (IOPS) | Maximální propustnost dočasného úložiště (IOPS) | Maximální počet datových disků/propustnost (IOPS) | Maximální počet síťových karet |
@@ -547,9 +547,9 @@ Rozšíření, sady škálování, sady dostupnosti, snímky se nepodporují.
 
 ## <a name="configure-azcopy"></a>Konfigurace AzCopy
 
-Když nainstalujete nejnovější verzi AzCopy, budete muset AzCopy nakonfigurovat tak, aby se zajistilo, že bude odpovídat verzi REST API služby Blob Storage Azure Stack hraničního zařízení.
+Když nainstalujete nejnovější verzi AzCopy, budete muset AzCopy nakonfigurovat tak, aby se zajistilo, že bude odpovídat verzi REST API úložiště objektů BLOB vašeho zařízení Azure Stack Edge pro.
 
-Na klientovi, který se používá pro přístup k vašemu zařízení Azure Stack Edge, nastavte globální proměnnou tak, aby odpovídala REST APImu úložišti objektů BLOB.
+Na klientovi, který se používá pro přístup k vašemu zařízení Azure Stack Edge pro, nastavte globální proměnnou tak, aby odpovídala verzi služby Blob Storage REST API.
 
 ### <a name="on-windows-client"></a>V klientovi Windows 
 

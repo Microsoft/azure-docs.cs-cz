@@ -10,15 +10,15 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 8d5a8555b2bd57dc024318464e38f042469beb4b
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458667"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906734"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Kurz: použití R k vytvoření modelu Machine Learning (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 > [!IMPORTANT]
 > Sada Azure Machine Learning R SDK je aktuálně ve verzi Public Preview.
@@ -38,7 +38,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasazení koncového bodu předpovědi
 > * Testování modelu z R
 
-Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru

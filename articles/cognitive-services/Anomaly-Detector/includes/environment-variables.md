@@ -22,8 +22,8 @@ ms.locfileid: "85980207"
 
 Pomocí klíče a koncového bodu z prostředku, který jste vytvořili, vytvořte dvě proměnné prostředí pro ověřování:
 
-* `ANOMALY_DETECTOR_KEY`– Klíč prostředku pro ověření vašich požadavků.
-* `ANOMALY_DETECTOR_ENDPOINT`– Koncový bod prostředku pro odesílání požadavků rozhraní API. Bude vypadat takto: 
+* `ANOMALY_DETECTOR_KEY` – Klíč prostředku pro ověření vašich požadavků.
+* `ANOMALY_DETECTOR_ENDPOINT` – Koncový bod prostředku pro odesílání požadavků rozhraní API. Bude vypadat takto: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
 Použijte pokyny pro váš operační systém.

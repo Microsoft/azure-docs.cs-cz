@@ -1,6 +1,6 @@
 ---
-title: Připojení a dotazování na Azure SQL Edge (Preview)
-description: Přečtěte si, jak se připojit k Azure SQL Edge (Preview) a dotazování na něj.
+title: Připojení a dotazování na Edge Azure SQL
+description: Naučte se připojit k Edge SQL Azure a dotazovat se na něj.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
-ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373109"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888242"
 ---
-# <a name="connect-and-query-azure-sql-edge-preview"></a>Připojení a dotazování na Azure SQL Edge (Preview)
+# <a name="connect-and-query-azure-sql-edge"></a>Připojení a dotazování na Edge Azure SQL
 
 Po nasazení kontejneru v Azure SQL Edge se můžete připojit k databázovému stroji z kteréhokoli z těchto umístění:
 

@@ -3,12 +3,12 @@ title: Vysvětlení oboru v Azure Policy
 description: Popisuje pojem oboru v Azure Resource Manager a způsob, jakým se vztahuje na Azure Policy k řízení toho, které prostředky Azure Policy vyhodnotí.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dee5d2bdbcb5aa86e293652af3bc5008f56b7877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936502"
+ms.locfileid: "90984427"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Vysvětlení oboru v Azure Policy
 
@@ -34,6 +34,8 @@ Přiřazení má několik vlastností, které nastavují obor. Použití těchto
 - Zahrnutí – hierarchii prostředků nebo jednotlivé prostředky by měly být vyhodnoceny pro dodržování předpisů definicí. `properties.scope`Vlastnost objektu přiřazení určuje, co má být zahrnuto a vyhodnocení kompatibility. Další informace najdete v tématu [definice přiřazení](./assignment-structure.md).
 
 - Vyloučení – hierarchie prostředků nebo individuální prostředek by se neměla vyhodnotit pro dodržování předpisů definicí. Vlastnost `properties.notScopes` _Array_ objektu přiřazení určuje, co se má vyloučit. Prostředky v těchto oborech nejsou vyhodnoceny nebo zahrnuty do počtu dodržování předpisů. Další informace najdete v tématu [vyloučené obory definice přiřazení](./assignment-structure.md#excluded-scopes).
+
+Kromě vlastností přiřazení zásad je objektem [výjimky zásad](./exemption-structure.md) . Výjimky zvyšují příběh oboru tím, že poskytují metodu pro identifikaci části přiřazení pro Nevyhodnocení.
 
 - Výjimka (**Volná verze ve verzi Preview** ) – hierarchii prostředků nebo jednotlivé prostředky by měly být vyhodnoceny pro dodržování předpisů definicí, ale nebudou vyhodnoceny z důvodu nevyhovění nebo zmírnění pomocí jiné metody. Prostředky v tomto stavu se zobrazují jako **vyloučené** v sestavách dodržování předpisů, aby je bylo možné sledovat. Objekt výjimky je vytvořen v hierarchii prostředků nebo v samostatném prostředku jako podřízený objekt, který určuje rozsah výjimky. Hierarchii prostředků nebo jednotlivé prostředky můžou být vyloučené z více přiřazení. Výjimka může být nakonfigurována na vypršení platnosti podle plánu pomocí `expiresOn` Vlastnosti. Další informace najdete v tématu [definice výjimky](./exemption-structure.md).
 

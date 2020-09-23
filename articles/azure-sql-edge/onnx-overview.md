@@ -1,6 +1,6 @@
 ---
-title: Machine Learning a AI s ONNX ve službě Azure SQL Edge (Preview)
-description: Machine Learning v Azure SQL Edge (Preview) podporuje modely ve formátu Open neuronové Network Exchange (ONNX). ONNX je otevřený formát, který můžete použít k výměně modelů mezi různými architekturami a nástroji pro strojové učení.
+title: Machine Learning a AI s ONNX ve službě Azure SQL Edge
+description: Machine Learning v Azure SQL Edge podporuje modely ve formátu Open neuronové Network Exchange (ONNX). ONNX je otevřený formát, který můžete použít k výměně modelů mezi různými architekturami a nástroji pro strojové učení.
 keywords: nasazení Edge SQL
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368052"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907140"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>Machine Learning a AI s ONNXem v SQL Edge (Preview)
+# <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>Machine Learning a AI s ONNX v SQL Edge
 
-Machine Learning v Azure SQL Edge (Preview) podporuje modely ve formátu [Open neuronové Network Exchange (ONNX)](https://onnx.ai/) . ONNX je otevřený formát, který můžete použít k výměně modelů mezi různými [architekturami a nástroji pro strojové učení](https://onnx.ai/supported-tools).
+Machine Learning v Azure SQL Edge podporuje modely ve formátu [Open neuronové Network Exchange (ONNX)](https://onnx.ai/) . ONNX je otevřený formát, který můžete použít k výměně modelů mezi různými [architekturami a nástroji pro strojové učení](https://onnx.ai/supported-tools).
 
 ## <a name="overview"></a>Přehled
 
@@ -55,4 +55,4 @@ Vstupy modelu by měly být strukturované, aby každý vstup do modelu odpovíd
 ## <a name="next-steps"></a>Další kroky
 
 - [Nasazení okraje SQL pomocí Azure Portal](deploy-portal.md)
-- [Nasazení modelu ONNX na Edge SQL Azure (Preview)](deploy-onnx.md)
+- [Nasazení modelu ONNX na hraničním serveru Azure SQL ](deploy-onnx.md)

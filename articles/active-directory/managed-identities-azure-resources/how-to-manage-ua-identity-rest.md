@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c8694c90fedccbecee1fee09e7146bf2d0aaa6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 37fad118fe314b1392c31906a3f0a0989e39d876
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601159"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969408"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí REST API volání
 
@@ -34,10 +34,23 @@ V tomto článku se dozvíte, jak vytvořit, vypsat a odstranit spravovanou iden
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Pokud používáte systém Windows, nainstalujte [subsystém Windows pro Linux](/windows/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) v Azure Portal.
-- Pokud používáte [subsystém Windows pro Linux](/windows/wsl/about) nebo [distribuci systému Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalujte místní konzolu Azure CLI](/cli/azure/install-azure-cli).
-- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure pomocí `az login` účtu, který je přidružený k předplatnému Azure. chcete nasadit nebo načíst informace o spravované identitě přiřazené uživatelem.
-- Načte přístupový token nosiče pomocí `az account get-access-token` k provedení následujících operací spravované identity přiřazené uživatelem.
+- Všechny příkazy v tomto článku můžete spustit buď v cloudu, nebo místně:
+    - Pro spuštění v cloudu použijte [Azure Cloud Shell](../../cloud-shell/overview.md).
+    - Chcete-li spustit místně, nainstalujte [oblé](https://curl.haxx.se/download.html) a [Azure CLI](/cli/azure/install-azure-cli).
+
+## <a name="obtain-a-bearer-access-token"></a>Získání přístupového tokenu nosiče
+
+1. Pokud používáte místně, přihlaste se do Azure prostřednictvím Azure CLI:
+
+    ```
+    az login
+    ```
+
+1. Získání přístupového tokenu pomocí [AZ Account Get-Access-token](/cli/azure/account#az_account_get_access_token)
+
+    ```azurecli-interactive
+    az account get-access-token
+    ```
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem 
 
@@ -91,7 +104,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 Pokud chcete odstranit spravovanou identitu přiřazenou uživatelem, váš účet potřebuje přiřazení role [Přispěvatel spravované identity](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
 
 > [!NOTE]
-> Odstraněním spravované identity přiřazené uživatelem se neodebere odkaz z žádného prostředku, ke kterému byl přiřazen. Pokud chcete odebrat uživatelem přiřazenou identitu z virtuálního počítače pomocí technologie KUDRLINKOU, podívejte se na téma [Odebrání uživatelsky přiřazené identity z virtuálního počítače Azure](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
+> Odstraněním spravované identity přiřazené uživatelem se neodebere odkaz z žádného prostředku, ke kterému byl přiřazen. Pokud chcete odebrat uživatelem přiřazenou identitu z virtuálního počítače pomocí technologie KUDRLINKOU, podívejte se na téma [Odebrání uživatelsky přiřazené identity z virtuálního počítače Azure](qs-configure-rest-vm.md#remove-a-user-assigned-managed-identity-from-an-azure-vm).
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup

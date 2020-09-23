@@ -23,13 +23,13 @@ ms.locfileid: "83116317"
 
     | Nastavení      | Navrhovaná hodnota  | Popis |
     | ------------ | ---------------- | ----------- |
-    | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. |
+    | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace funkcí vytvořena. |
     | **[Skupina prostředků](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
-    | **Název Function App** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z` (bez rozlišení velkých a malých písmen), `0-9` a `-` .  |
-    |**Publikování**| Kód | Možnost publikování souborů kódu nebo kontejneru Docker |
+    | **Název aplikace funkcí** | Globálně jedinečný název | Název identifikující novou aplikaci funkcí. Platné znaky jsou `a-z` (bez rozlišování malých a velkých písmen), `0-9` a `-`.  |
+    |**Publikovat**| Kód | Možnost publikování souborů kódu nebo kontejneru Docker |
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Vyberte **.NET Core** pro funkce jazyka C# a F #. |
     |**Verze**| Číslo verze | Vyberte verzi nainstalovaného modulu runtime.  |
-    |**Věřitel**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
+    |**Oblast**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž nebo poblíž dalších služeb, ke kterým máte přístup. |
 
     ![Základy](./media/functions-create-function-app-portal/function-app-create-basics.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "83116317"
     | ------------ | ---------------- | ----------- |
     | **[Účet úložiště](../articles/storage/common/storage-account-create.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
     |**Operační systém**| Preferovaný operační systém | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
-    | **[Plánování](../articles/azure-functions/functions-scale.md)** | **Spotřeba (bez serveru)** | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Ve výchozím plánu **spotřeby** se prostředky přidávají dynamicky podle požadavků vašich funkcí. V tomto hostiteli bez [serveru](https://azure.microsoft.com/overview/serverless-computing/) platíte jenom za čas, kdy se vaše funkce spouštějí. Pokud používáte plán služby App Service, musíte zajistit správu [škálování vaší aplikace funkcí](../articles/azure-functions/functions-scale.md).  |
+    | **[Plánování](../articles/azure-functions/functions-scale.md)** | **Využití (bez serverů)** | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Ve výchozím plánu **Využití** se prostředky přidávají dynamicky podle požadavků příslušných funkcí. V tomto hostiteli bez [serveru](https://azure.microsoft.com/overview/serverless-computing/) platíte jenom za čas, kdy se vaše funkce spouštějí. Pokud používáte plán služby App Service, musíte zajistit správu [škálování vaší aplikace funkcí](../articles/azure-functions/functions-scale.md).  |
 
     ![Hosting](./media/functions-create-function-app-portal/function-app-create-hosting.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "83116317"
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Výchozí | Vytvoří Application Insights prostředek stejného *názvu aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení nebo výběrem možnosti **vytvořit nový**můžete změnit název Application Insights nebo zvolit jinou oblast v [geografickém umístění Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete ukládat data. |
 
-    ![Sledování](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
+    ![Monitorování](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
 1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte výběry konfigurace aplikace.
 

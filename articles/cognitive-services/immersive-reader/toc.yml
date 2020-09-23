@@ -1,14 +1,9 @@
 - name: Dokumentace k Asistivní čtečce
   href: index.yml
-- name: Přehled
-  items:
-    - name: Co je Asistivní čtečka?
-      href: Overview.md
-- name: Rychlé starty
-  expanded: true
-  items:
-    - name: S využitím klientské knihovny
-      href: ./quickstarts/client-libraries.md
+- name: Co je Asistivní čtečka?
+  href: Overview.md
+- name: Rychlé zprovoznění
+  href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Spuštění Asistivní čtečky (Android)

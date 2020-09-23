@@ -1,0 +1,16 @@
+---
+author: mikben
+ms.service: azure-communication-services
+ms.topic: include
+ms.date: 9/1/2020
+ms.author: mikben
+ms.openlocfilehash: 8dd208c29e47baa7876795e103e563e060f3497d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90935331"
+---
+> [!IMPORTANT]
+> Komunikační služby Azure jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

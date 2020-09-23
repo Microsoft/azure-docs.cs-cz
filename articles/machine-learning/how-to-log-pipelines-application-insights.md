@@ -10,15 +10,15 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 808f71ae138922b93e3742f7ff2f526e419cf58c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645876"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897505"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Shromažďování souborů protokolu kanálu Machine Learning v Application Insights pro výstrahy a ladění
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Knihovna Pythonu [OpenCensus](https://opencensus.io/quickstart/python/) se dá použít k směrování protokolů, které se Application Insights ze skriptů. Agregace protokolů z kanálu na jednom místě umožňuje vytvářet dotazy a diagnostikovat problémy. Použití Application Insights vám umožní sledovat protokoly v průběhu času a porovnat protokoly kanálu v různých spuštěních.
 

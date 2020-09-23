@@ -1,6 +1,6 @@
 ---
-title: Azure Stack hraniční GPU spravovat plány šířky pásma | Microsoft Docs
-description: Popisuje způsob použití Azure Portal ke správě plánů šířky pásma na procesorovém GPU Azure Stack Edge.
+title: Azure Stack Edge pro GPU Správa plánů šířky pásma | Microsoft Docs
+description: Popisuje, jak použít Azure Portal ke správě plánů šířky pásma na grafickém procesoru Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b9edb4f694a5ff7d15b06be41cc20db3b64b97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265690"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890673"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-gpu"></a>Použití Azure Portal ke správě plánů šířky pásma na procesorovém GPU Azure Stack Edge 
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Použití Azure Portal ke správě plánů šířky pásma na procesorovém GPU Azure Stack Edge pro 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Tento článek popisuje, jak spravovat plány šířky pásma na Azure Stack hraničních zařízeních. Plány služby Bandwidth vám umožňují nakonfigurovat využití šířky pásma sítě pro více denních plánů. Tyto plány lze použít k operacím nahrávání a stahování ze zařízení do cloudu a naopak.
+Tento článek popisuje, jak spravovat plány šířky pásma na Azure Stack Edge pro. Plány služby Bandwidth vám umožňují nakonfigurovat využití šířky pásma sítě pro více denních plánů. Tyto plány lze použít k operacím nahrávání a stahování ze zařízení do cloudu a naopak.
 
-Plány šířky pásma Azure Stackho okraje můžete přidat, upravit nebo odstranit pomocí Azure Portal.
+Plány šířky pásma pro Azure Stack Edge pro můžete přidat, upravit nebo odstranit pomocí Azure Portal.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -42,9 +42,9 @@ Chcete-li přidat plán, proveďte následující kroky v Azure Portal.
 
 3. V části **Přidání plánu**: 
 
-   1. Zadejte **den spuštění**, **den ukončení**, **čas spuštění** a **čas ukončení** plánu.
+   1. Zadejte **počáteční den**, **Koncový den**, **čas spuštění**a **čas ukončení** plánu.
    2. Pokud má být tento plán běžet celý den, ověřte možnost **všechny dny** .
-   3. **Rychlost šířky pásma** je šířka pásma v megabitech za sekundu (Mb/s), používaná vašim zařízením při operacích zahrnujících cloud (nahrávání i stahování). Zadejte číslo mezi 20 a 2 147 483 647 pro toto pole.
+   3. **Rychlost šířky pásma** je šířka pásma v megabajtech za sekundu (MB/s), kterou vaše zařízení používá v operacích, které se týkají cloudu (odesílání a stahování). Zadejte číslo mezi 20 a 2 147 483 647 pro toto pole.
    4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**.
    5. Vyberte **Přidat**.
 
@@ -73,7 +73,7 @@ Chcete-li upravit plán služby Bandwidth, postupujte následovně.
 
 ## <a name="delete-a-schedule"></a>Odstranění plánu
 
-Pokud chcete odstranit plán šířky pásma přidružený k vašemu Azure Stack hraničnímu zařízení, proveďte následující kroky.
+Pomocí následujících kroků odstraňte plán šířky pásma přidružený k vašemu zařízení Azure Stack Edge pro.
 
 1. V Azure Portal přejít na prostředek Azure Stack Edge a pak přejít na **šířku pásma**.  
 

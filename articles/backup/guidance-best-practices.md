@@ -3,12 +3,12 @@ title: Doprovodné materiály a osvědčené postupy
 description: Seznamte se s osvědčenými postupy a pokyny pro zálohování cloudových a místních úloh do cloudu.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000358"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985513"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
 
@@ -48,7 +48,7 @@ Azure Backup umožňuje ochranu dat pro různé úlohy (místně i v cloudu). Je
 
 ### <a name="management-plane"></a>Rovina správy
 
-* **Řízení přístupu** – Recovery Services trezor poskytuje možnosti správy a je přístupný prostřednictvím Azure Portal, sady SDK, CLI a dokonce rozhraní REST API. Je to také hranice RBAC a poskytuje vám možnost omezit přístup k zálohám jenom na autorizované správce zálohování.
+* **Řízení přístupu** – trezory (Recovery Services a trezory služby Backup) poskytují možnosti správy a jsou přístupné prostřednictvím Azure Portal, centra zálohování, řídicích panelů trezoru, sady SDK, CLI a dokonce rozhraní REST API. Je to také hranice RBAC a poskytuje vám možnost omezit přístup k zálohám jenom na autorizované správce zálohování.
 
 * **Správa zásad** – zásady Azure Backup v rámci jednotlivých úložišť definují, kdy se mají spustit zálohy a jak dlouho je potřeba uchovat. Tyto zásady můžete také spravovat a použít je v několika položkách.
 
@@ -58,7 +58,7 @@ Azure Backup umožňuje ochranu dat pro různé úlohy (místně i v cloudu). Je
 
 ## <a name="vault-considerations"></a>Požadavky na úložiště
 
-Azure Backup používá k orchestraci a správě záloh Recovery Services trezory. Používá taky trezory k ukládání zálohovaných dat. Efektivní návrh trezoru pomáhá organizacím vytvořit strukturu pro uspořádání a správu zálohovacích prostředků v Azure za účelem podpory vašich obchodních priorit. Při vytváření trezoru Vezměte v úvahu následující pokyny:  
+Azure Backup používá trezory (Recovery Services a trezory služby Backup) k orchestraci a správě záloh. Používá taky trezory k ukládání zálohovaných dat. Efektivní návrh trezoru pomáhá organizacím vytvořit strukturu pro uspořádání a správu zálohovacích prostředků v Azure za účelem podpory vašich obchodních priorit. Při vytváření trezoru Vezměte v úvahu následující pokyny:  
 
 ### <a name="align-to-subscription-design-strategy"></a>Zarovnat k strategii návrhu předplatného
 
@@ -71,7 +71,8 @@ K uspořádání a správě zálohování můžete použít jeden trezor nebo v�
 * Pokud jsou vaše úlohy všechny spravované jedním předplatným a jediným prostředkem, můžete k monitorování a správě služby Backup použít jeden trezor.
 
 * Pokud jsou vaše úlohy rozloženy mezi předplatnými, můžete vytvořit více trezorů, jeden nebo více pro každé předplatné.
-  * Pro zjednodušení monitorování provozních činností napříč všemi trezory, předplatnými a klienty můžete použít Průzkumníka a sestavy služby Backup. [Zde najdete další informace](monitor-azure-backup-with-backup-explorer.md) , které vám pomohou získat agregované zobrazení.
+  * Centrum zálohování umožňuje mít jediné podokno skla, ve kterém můžete spravovat všechny úlohy týkající se zálohování. [Další informace najdete tady]().
+  * Můžete přizpůsobit zobrazení pomocí šablon sešitu. Průzkumník zálohování je jedna z těchto šablon pro virtuální počítače Azure. [Další informace najdete tady](monitor-azure-backup-with-backup-explorer.md).
   * Pokud jste potřebovali konzistentní zásady napříč trezory, můžete pomocí zásad Azure rozšířit zásady zálohování napříč několika trezory. Můžete napsat vlastní [definici Azure Policy](../governance/policy/concepts/definition-structure.md) , která pomocí efektu ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) rozšíří zásady zálohování mezi více trezorů. Přiřadíte [tuto definici](../governance/policy/assign-policy-portal.md) Azure Policy k určitému oboru (předplatné nebo RG), aby se nasadil prostředek zásady zálohování do všech trezorů Recovery Services v oboru přiřazení Azure Policy. Nastavení zásad zálohování (například četnost zálohování, uchovávání atd.) by mělo být zadáno uživatelem jako parametry v přiřazení Azure Policy.
 
 * Jak roste vaše organizační nároky, možná budete chtít přesunout úlohy mezi předplatnými z následujících důvodů: zarovnání podle zásad zálohování, konsolidace trezorů, kompromisů při nižší redundanci za účelem úspory nákladů (přesunout z GRS do LRS).  Azure Backup podporuje přesun trezoru Recovery Services napříč předplatnými Azure nebo do jiné skupiny prostředků v rámci stejného předplatného. [Další informace najdete tady](backup-azure-move-recovery-services-vault.md).

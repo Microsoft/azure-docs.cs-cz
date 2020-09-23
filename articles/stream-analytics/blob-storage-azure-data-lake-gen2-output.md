@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 2ab45f4c64e6993f70f08f04ee413211abb0307d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: d9805c45b7c0af0cfe6410defaab7ea7725691d4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907208"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Gen2 BLOB Storage a Azure Data Lake výstup z Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Azure Blob Storage nabízí nákladově efektivní a škálovatelné řešení p
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vytvoření objektu BLOB nebo ADLS Gen2 výstup.
 
-| Název vlastnosti       | Popis                                                                      |
+| Název vlastnosti       | Description                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Alias pro výstup        | Popisný název, který se používá v dotazech k směrování výstupu dotazu do tohoto úložiště objektů BLOB. |
 | Účet úložiště     | Název účtu úložiště, do kterého posíláte výstup.               |
@@ -68,4 +68,4 @@ Maximální velikost zprávy najdete v části [omezení Azure Storage](../azure
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí šablony ARM](quick-create-azure-resource-manager.md)
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md)
+* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)

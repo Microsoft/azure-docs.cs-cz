@@ -1,6 +1,6 @@
 ---
-title: Technické specifikace a dodržování předpisů pro Microsoft Azure Stack Edge | Microsoft Docs
-description: Seznamte se s technickými specifikacemi a dodržováním předpisů pro Azure Stack Edge.
+title: Technické specifikace a dodržování předpisů pro Microsoft Azure Stack Edge pro | Microsoft Docs
+description: Seznamte se s technickými specifikacemi a dodržováním předpisů pro Azure Stack Edge pro
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652049"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883445"
 ---
-# <a name="azure-stack-edge-technical-specifications"></a>Technické specifikace Azure Stack Edge
+# <a name="azure-stack-edge-pro-technical-specifications"></a>Technické specifikace Azure Stack Edge pro
 
-Hardwarové součásti Microsoft Azure Stack hraničního zařízení vyhovují technickým specifikacím a regulativním normám, které jsou uvedené v tomto článku. Technické specifikace popisují jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy.
+Hardwarové součásti zařízení Microsoft Azure Stack Edge pro vyhovují technickým specifikacím a regulativním normám, které jsou uvedené v tomto článku. Technické specifikace popisují jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy.
 
 ## <a name="compute-memory-specifications"></a>Výpočetní prostředí, specifikace paměti
 
-Azure Stack hraniční zařízení má následující specifikace pro výpočetní výkon a paměť:
+Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní výkon a paměť:
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
@@ -30,7 +30,7 @@ Azure Stack hraniční zařízení má následující specifikace pro výpočetn
 
 ## <a name="fpga-specifications"></a>Specifikace FPGA
 
-Pole programovatelné brány (FPGA) je součástí každého Azure Stack hraničního zařízení, které umožňuje použití scénářů Machine Learning (ML).
+Pole programovatelné brány (FPGA) je součástí každého zařízení Azure Stack Edge pro, které umožňuje použití scénářů Machine Learning (ML).
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
@@ -38,27 +38,27 @@ Pole programovatelné brány (FPGA) je součástí každého Azure Stack hranič
 
 ## <a name="power-supply-unit-specifications"></a>Specifikace jednotek napájení
 
-Hraniční zařízení Azure Stack má dvě 100-240 V jednotkách napájení (PSUs) s vysoce výkonnými ventilátory. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
+Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs) s vysoce výkonnými ventilátory. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
 
 | Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximální výstupní výkon    | 750 W                     |
-| Frekvence               | 50/60 Hz                   |
+| Frequency               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
 | Horká, připojitelná           | Yes                        |
 
-### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Azure Stack specifikace napájecího kabelu na hraničních zařízeních podle oblasti
+### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Azure Stack specifikace napájecího kabelu pro Edge podle oblasti
 
-Vaše zařízení Azure Stack Edge potřebuje napájecí kabel, který se liší v závislosti na vaší oblasti Azure.
-Technické specifikace všech podporovaných napájecích kabelů najdete v článku [Specifikace napájecího kabelu Azure Stack Edge podle oblasti](azure-stack-edge-technical-specifications-power-cords-regional.md).
+Vaše zařízení Azure Stack Edge pro potřebuje napájecí kabel, který se liší v závislosti na vaší oblasti Azure.
+Technické specifikace všech podporovaných napájecích kabelů najdete v článku [specifikace napájecích kabelů Azure Stack Edge pro podle oblasti](azure-stack-edge-technical-specifications-power-cords-regional.md).
 
 <!--## Power consumption statistics
 
-The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge device.-->
+The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge Pro device.-->
 
 ## <a name="network-interface-specifications"></a>Specifikace síťového rozhraní
 
-Vaše zařízení Azure Stack Edge má 6 síťových rozhraní PORT1-PORT6.
+Vaše zařízení Azure Stack Edge pro má 6 síťových rozhraní PORT1-PORT6.
 
 | Specifikace           | Description                 |
 |-------------------------|----------------------------|
@@ -66,7 +66,7 @@ Vaše zařízení Azure Stack Edge má 6 síťových rozhraní PORT1-PORT6.
 
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
-Zařízení Azure Stack Edge mají 9 X 2,5 "NVMe SSD, každé s kapacitou 1,6 TB. Z těchto SSD je 1 disk operačního systému a ostatní 8 jsou datové disky. Celková použitelná kapacita pro zařízení je zhruba 12,5 TB. Následující tabulka obsahuje podrobné informace o kapacitě úložiště zařízení.
+Zařízení Azure Stack Edge pro mají 9 X 2,5 "NVMe SSD, každé s kapacitou 1,6 TB. Z těchto SSD je 1 disk operačního systému a ostatní 8 jsou datové disky. Celková použitelná kapacita pro zařízení je zhruba 12,5 TB. Následující tabulka obsahuje podrobné informace o kapacitě úložiště zařízení.
 
 |     Specifikace                          |     Hodnota             |
 |--------------------------------------------|-----------------------|
@@ -87,16 +87,16 @@ V následující tabulce jsou uvedeny rozměry skříně v milimetrech a palcíc
 
 |     Skříně     |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
-|    Vlastnost Height         |    44,45            |    1,75 "          |
-|    impulzu          |    434,1           |    17,09 "          |
+|    Height (Výška)         |    44,45            |    1,75 "          |
+|    Width (Šířka)          |    434,1           |    17,09 "          |
 |    Délka          |    740,4           |    29,15 "          |
 
 V následující tabulce jsou uvedeny rozměry balíčku pro expedici v milimetrech a palcích.
 
 |     Balíček     |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
-|    Vlastnost Height         |    311,2            |    12,25 "          |
-|    impulzu          |    642,8          |    25,31 "          |
+|    Height (Výška)         |    311,2            |    12,25 "          |
+|    Width (Šířka)          |    642,8          |    25,31 "          |
 |    Délka          |   1 051,1          |    41,38 "          |
 
 ### <a name="enclosure-weight"></a>Váha skříně
@@ -116,7 +116,7 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 
 |     Skříně         |     Rozsah okolních teplot     |     Relativní vlhkost okolí     |     Maximální bod Dew     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Funkční        |    10 °C-35 OC (50 °F-86 °F)         |    10% až 80% nekondenzující.         |    29 °C (84 °F)            |
+|    Provoz        |    10 °C-35 OC (50 °F-86 °F)         |    10% až 80% nekondenzující.         |    29 °C (84 °F)            |
 |    Není funkční    |    -40 oC až 65 oC (-40 °F-149 °F)     |    5% až 95% nekondenzující.          |    33 OC (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Provozní flow, nadmořská, náraz, vibrace, orientace, bezpečnost a EMC
@@ -146,4 +146,4 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení Azure Stack Edge](azure-stack-edge-deploy-prep.md)
+- [Nasazení Azure Stack Edge pro](azure-stack-edge-deploy-prep.md)

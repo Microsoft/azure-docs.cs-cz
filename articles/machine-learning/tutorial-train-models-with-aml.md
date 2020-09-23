@@ -10,15 +10,15 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 402eaec50d273c4d8d9215f53fa433d0db4332e8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 1af5ab33497ad8694752db17e874b883e60c942c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649911"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906666"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Kurz: analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – učení 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto kurzu se naučíte model strojového učení ve vzdálených výpočetních prostředcích. Pracovní postup školení a nasazení budete používat pro Azure Machine Learning v Jupyter poznámkovém bloku Pythonu.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
@@ -34,7 +34,7 @@ Přečtěte si, jak provést následující akce:
 
 Naučíte se, jak vybrat model a nasadit ho v [části 2 tohoto kurzu](tutorial-deploy-models-with-aml.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 1.0.83 verze.

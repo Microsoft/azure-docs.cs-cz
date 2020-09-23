@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 7bfe10ea5e0e95bcabf02243bb8b7172a5aec08d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245702"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906751"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií a Pythonu
 
-Tento rychlý Start vám umožní začít používat dva režimy zjišťování rozhraní API pro detekci anomálií ke zjištění anomálií v datech časových řad. Tato aplikace Python odesílá dvě požadavky rozhraní API obsahující data časových řad ve formátu JSON a získá odpovědi.
+Tento rychlý Start vám umožní začít používat dva režimy zjišťování rozhraní API pro detekci anomálií ke zjištění anomálií v datech časových řad. Tato aplikace Python odesílá požadavky rozhraní API obsahující data časových řad ve formátu JSON a získá odpovědi.
 
 | Požadavek rozhraní API                                        | Výstup aplikace                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | Zjištění anomálií jako dávky                        | Odpověď JSON obsahující stav anomálie (a další data) pro každý datový bod v datech časové řady a pozice všech zjištěných anomálií. |
-| Zjistit stav anomálií nejnovějšího datového bodu | Odpověď JSON obsahující stav anomálie (a další data) pro poslední datový bod v datech časové řady.                                                                                                                                         |
+| Zjistit stav anomálií nejnovějšího datového bodu | Odpověď JSON obsahující stav anomálie (a další data) pro poslední datový bod v datech časové řady.|
+| Zjištění bodů změn, které označují nové trendy dat | Odpověď JSON obsahující zjištěné body změny v datech časové řady |
 
  I když je tato aplikace napsaná v Pythonu, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py).
 
@@ -54,6 +55,7 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
     |---------|---------|
     |Zjišťování dávky    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |Zjišťování nejnovějšího datového bodu     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    | Detekce bodu změny | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
@@ -91,6 +93,18 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 
     [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>Zjištění bodů změny v datech
+
+1. Vytvořte metodu volanou `detect_change_point()` pro detekci anomálií v rámci dat jako dávku. Zavolejte `send_request()` metodu vytvořenou výše pomocí vašeho koncového bodu, adresy URL, klíče předplatného a dat JSON.
+
+2. Zavolejte `json.dumps()` na výsledek a naformátujte ho a vytiskněte ho do konzoly.
+
+3. Pokud odpověď obsahuje `code` pole, vytiskněte kód chyby a chybovou zprávu.
+
+4. V opačném případě najděte pozice anomálií v datové sadě. `isChangePoint`Pole odpovědi obsahuje logickou hodnotu označující, zda je daný datový bod anomálií. Iterujte v seznamu a vytiskněte index všech `True` hodnot. Tyto hodnoty odpovídají indexům bodů změny trendu, pokud byly nalezeny.
+
+    [!code-python[detect change points](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectChangePoint)]
+
 ## <a name="send-the-request"></a>Odeslat žádost
 
 Zavolejte metody detekce anomálií vytvořené výše.
@@ -102,5 +116,6 @@ Zavolejte metody detekce anomálií vytvořené výše.
 Ve formátu JSON se vrátí úspěšná odpověď. Kliknutím na následující odkazy zobrazíte odpověď JSON na GitHubu:
 * [Příklad odpovědi na zjišťování dávky](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Příklad odpovědi na nejnovější zjištění bodu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [Ukázka odpovědi na detekci bodu změny](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

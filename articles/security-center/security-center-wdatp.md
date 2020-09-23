@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 28242341ddd21adea33e56c3e1f35f0677e5921a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569080"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907364"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
 
@@ -28,11 +28,11 @@ Azure Security Center se integruje s [pokročilou ochranou před internetovými 
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|**Všeobecná dostupnost**|
-|Stanov|Úroveň Standard|
-|Podporované počítače:|![Ano](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Ano](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
+|Stav vydaných verzí:|Všeobecně dostupná (GA)|
+|Stanov|Vyžaduje [Azure Defender](security-center-pricing.md) .|
+|Podporované počítače:|![Yes](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Yes](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
 |Požadované role a oprávnění:|Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného**nebo **přispěvatele předplatného**|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy.<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří mají spuštěné úlohy ve veřejných cloudech Azure<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy.<br>![No](./media/icons/no-icon.png) Zákazníci v RSZ, kteří mají spuštěné úlohy ve veřejných cloudech Azure<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 
@@ -57,7 +57,7 @@ Integrací služby Defender ATP s Azure Security Center můžete také využít 
 
 ## <a name="platform-support"></a>Podpora platformy
 
-ATP Microsoft Defender v Security Center podporuje detekci v systému Windows Server 2016, 2012 R2 a 2008 R2 SP1. Pro virtuální počítače Azure potřebujete předplatné úrovně Standard a pro virtuální počítače mimo Azure budete potřebovat úroveň Standard jenom na úrovni pracovního prostoru.
+ATP Microsoft Defender v Security Center podporuje detekci v systému Windows Server 2016, 2012 R2 a 2008 R2 SP1. Pro virtuální počítače Azure, které potřebujete k povolení Azure Defenderu na vašem předplatném a pro virtuální počítače mimo Azure, potřebujete, aby byl v pracovním prostoru jenom povolený Azure Defender.
 
 Monitorování koncového bodu serveru pomocí této integrace bylo pro zákazníky Office 365 RSZ zakázané.
 
@@ -74,24 +74,25 @@ Pokud chcete servery připojit k Security Center, klikněte na **Přejít na Azu
 
 1. V oblasti **připojování** vyberte nebo vytvořte pracovní prostor, do kterého chcete ukládat data.
 
-2. Pokud nevidíte všechny vaše pracovní prostory, může to být způsobeno nedostatečnými oprávněními, ujistěte se, že je váš pracovní prostor nastavený na cenovou úroveň Standard Azure Security. Další informace najdete v tématu [upgrade na úroveň Security Center úrovně Standard pro zvýšení zabezpečení](security-center-pricing.md).
+2. Pokud nevidíte všechny vaše pracovní prostory, může to být způsobeno nedostatečnými oprávněními, ujistěte se, že je váš pracovní prostor chráněný pomocí Azure Defenderu.
     
 3. Pokud chcete zobrazit pokyny k instalaci agenta Log Analytics, vyberte **Přidat servery** . 
 
-4. Po zaregistrování můžete monitorovat počítače v části **výpočetní prostředí a aplikace**.
+4. Po registraci můžete počítače monitorovat v [inventáři assetů](asset-inventory.md).
 
    ![Zprovoznění počítačů](media/security-center-wdatp/onboard-computers.png)
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Povolit integraci ATP v programu Microsoft Defender
 
-Pokud chcete zobrazit, jestli je povolená integrace **služby**Microsoft Defender ATP, vyberte  >  **Nastavení cenové &** Security Center > klikněte na své předplatné.
+Pokud chcete zobrazit, jestli je povolená integrace **ochrany**ATP v programu Microsoft Defender, vyberte  >  **Nastavení cenové &** Security Center > vyberte předplatné.
+
 Tady vidíte aktuálně povolená integrace.
 
   ![Stránka Nastavení detekce hrozeb Azure Security Center s povolenou integrací ATP v programu Microsoft Defender](media/security-center-wdatp/enable-integrations.png)
 
-- Pokud jste již servery připojili k Azure Security Center úrovně Standard, nemusíte provádět žádné další akce. Azure Security Center automaticky připojí servery do ochrany ATP v programu Microsoft Defender. Připojování může trvat až 24 hodin.
+- Pokud jste už Azure Defender povolili, nemusíte dělat nic dalšího. Azure Security Center automaticky připojí servery do ochrany ATP v programu Microsoft Defender. Připojování může trvat až 24 hodin.
 
-- Pokud jste servery nikdy nepřipojili do Azure Security Center úrovně Standard, připojíte je k Azure Security Center běžným způsobem.
+- Pokud jste servery nikdy nepřipojili k Azure Security Center, připojte je k Azure Security Center a umožněte jako obvykle službu Azure Defender.
 
 - Pokud jste servery připojili pomocí ochrany ATP v programu Microsoft Defender:
   - Pokyny [k odpojení serverových počítačů](https://go.microsoft.com/fwlink/p/?linkid=852906)najdete v dokumentaci.

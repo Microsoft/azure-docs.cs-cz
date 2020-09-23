@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 04/08/2019
-ms.openlocfilehash: 9ee4070562e44d4f560230fa2fd069eb1fd57932
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.reviewer: ''
+ms.date: 09/21/2020
+ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612081"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907054"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Zóny dostupnosti Azure se snaží chránit před výpadkem jednoho datového ce
 
 Smlouva o úrovni služeb [(SLA)](https://azure.microsoft.com/support/legal/sla/) Azure, která využívá globální síť datacenter spravovaných Microsoftem, pomáhá zajistit, aby vaše aplikace běžela 24/7. Platforma Azure plně spravuje každou databázi a zaručuje žádnou ztrátu dat a vysoké procento dostupnosti dat. Azure automaticky zpracovává opravy, zálohy, replikaci, detekci selhání, základní potenciální hardware, software nebo síť, nasazování oprav chyb, převzetí služeb při selhání, upgrady databáze a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Dostupnost Premium se dosahuje integrací výpočetních prostředků a úložiště v jednom uzlu pro výkon a následnou implementací technologie podobně jako u skupin dostupnosti Always On. Úplnou diskuzi o funkcích Azure SQL Database vysoké dostupnosti najdete v článku [dostupnost SQL Database](high-availability-sla.md). 
 
-Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](business-continuity-high-availability-disaster-recover-hadr-overview.md) . Zde jsou některé z nich:
+Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](business-continuity-high-availability-disaster-recover-hadr-overview.md) . Mezi ně patří:
 
 - [Automatické zálohování](automated-backups-overview.md):
 
@@ -165,11 +165,8 @@ SQL Database nabízí řadu [integrovaných funkcí zabezpečení a dodržován�
 
 ### <a name="advance-threat-protection"></a>Ochrana před hrozbami
 
-Rozšířené zabezpečení dat je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, správu ohrožení zabezpečení databáze a zjišťování neobvykléch aktivit, které mohou naznačovat hrozbu pro vaši databázi. Poskytuje jedno umístění pro povolení a správu těchto schopností.
+Azure Defender pro SQL je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro správu ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které mohou indikovat hrozbu pro vaši databázi. Poskytuje jedno umístění pro povolení a správu těchto schopností.
 
-- [Zjišťování a klasifikace dat](data-discovery-and-classification-overview.md):
-
-  Tato funkce poskytuje integrované funkce Azure SQL Database pro zjišťování, klasifikaci, označování a ochranu citlivých dat ve vašich databázích. Poskytuje přehled o stavu klasifikace databáze a sleduje přístup k citlivým datům v rámci databáze a mimo její ohraničení.
 - [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md):
 
   Tato služba může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
@@ -185,6 +182,10 @@ Rozšířené zabezpečení dat je jednotný balíček pro pokročilé funkce za
 
 SQL Database pomáhá zabezpečit vaše data tím, že poskytuje šifrování. Pro data v pohybu používá [zabezpečení transportní vrstvy](https://support.microsoft.com/kb/3135244). V případě neaktivních dat používá [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Pro data, která se používají, používá [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
+### <a name="data-discovery-and-classification"></a>Zjišťování a klasifikace dat
+
+[Zjišťování a klasifikace dat](data-discovery-and-classification-overview.md) poskytuje možnosti integrované v Azure SQL Database pro zjišťování, klasifikaci, označování a ochranu citlivých dat ve vašich databázích. Poskytuje přehled o stavu klasifikace databáze a sleduje přístup k citlivým datům v rámci databáze a mimo její ohraničení.
+
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 
 SQL Database umožňuje centrálně spravovat identity uživatele databáze a dalších služeb Microsoft pomocí [integrace s Azure Active Directory](authentication-aad-overview.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory podporuje službu [Multi-Factor Authentication](authentication-mfa-ssms-overview.md) pro zvýšení zabezpečení dat a aplikací při podpoře jednotného procesu přihlašování.
@@ -196,7 +197,7 @@ SQL Database zjednodušuje a zefektivňuje vytváření a správu aplikací. SQL
 |Nástroj|Popis|
 |:---|:---|
 |[Azure Portal](https://portal.azure.com/)|Webová aplikace pro správu všech služeb Azure.|
-|[Azure Data Studio](/sql/azure-data-studio/)|Databázový Nástroj pro různé platformy, který běží na Windows, MacOS a Linux.|
+|[Azure Data Studio](/sql/azure-data-studio/)|Databázový Nástroj pro různé platformy, který běží na Windows, macOS a Linux.|
 |[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Bezplatná klientská aplikace ke stažení pro správu jakékoli infrastruktury SQL, od SQL Server po SQL Database.|
 |[Nástroje pro SQL Server dat v aplikaci Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Bezplatná klientská aplikace ke stažení pro vývoj SQL Server relačních databází, databází v Azure SQL Database, balíčků integračních služeb, Analysis Services datových modelů a sestav služby Reporting Services.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Bezplatný a Open Source Editor kódu pro Windows, macOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure Azure synapse Analytics (dříve SQL Data Warehouse).|

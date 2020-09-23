@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 71a41a3a8d137fdf9d4f41c975e7be6c148078e1
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ef5802d0c5e35b9c12db1f40782ba5f190ad1883
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875628"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907186"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus výstup témat z Azure Stream Analytics
 
@@ -20,7 +20,7 @@ Fronty Service Bus poskytují metodu komunikace 1:1 od odesílatele k přijíma�
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vytvoření výstupu Service Bus tématu.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k přesměrování výstupu dotazu do tohoto Service Bus tématu. |
 | Obor názvů Service Bus |Kontejner pro sadu entit zasílání zpráv. Při vytváření nového centra událostí jste také vytvořili Service Bus obor názvů. |
@@ -49,7 +49,7 @@ Sloupce dotazu můžete k odchozím zprávám připojit jako vlastnosti uživate
 
 ## <a name="system-properties"></a>Systémové vlastnosti
 
-Sloupce dotazu můžete připojit jako [systémové vlastnosti](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) do odchozí fronty služby Service Bus nebo do zpráv tématu. Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) hodnotami sloupce dotazu.
+Sloupce dotazu můžete připojit jako [systémové vlastnosti](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) do odchozí fronty služby Service Bus nebo do zpráv tématu. Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) hodnotami sloupce dotazu.
 Tyto vlastnosti systému jsou podporovány – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Řetězcové hodnoty těchto sloupců se analyzují jako odpovídající typ hodnoty vlastnosti systému a jakékoli selhání při analýze se považují za chyby dat.
@@ -76,4 +76,4 @@ Tím se nastaví `MessageId` zprávy fronty služby Service Bus s `column1` hodn
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí šablony ARM](quick-create-azure-resource-manager.md)
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md)
+* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)

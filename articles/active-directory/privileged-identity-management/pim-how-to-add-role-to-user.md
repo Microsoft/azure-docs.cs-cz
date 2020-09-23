@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/01/2020
+ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3370ea52c5bd189f929c0f81a0aa9b59cc77b97
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985139"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Přiřazení rolí Azure AD v Privileged Identity Management
 
@@ -75,6 +75,30 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
     ![Nové přiřazení – oznámení](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
+## <a name="assign-a-role-with-restricted-scope"></a>Přiřazení role s omezeným rozsahem
+
+U některých rolí může být obor udělených oprávnění omezený na jednu jednotku správce, instanční objekt nebo aplikaci. Tento postup je příkladem přiřazení role s oborem jednotky pro správu. Seznam rolí, které podporují rozsah prostřednictvím jednotky pro správu, najdete v tématu [přiřazení vymezených rolí k jednotce pro správu](../users-groups-roles/roles-admin-units-assign-roles.md). Tato funkce se v tuto chvíli zavádí do organizací Azure AD.
+
+1. Přihlaste se k [centru pro správu Azure Active Directory](https://aad.portal.azure.com) pomocí oprávnění správce privilegovaných rolí.
+
+1. Vyberte **Azure Active Directory**  >  **role a správci**.
+
+1. Vyberte **správce uživatele**.
+
+    ![Příkaz Přidat přiřazení je k dispozici při otevření role na portálu.](./media/pim-how-to-add-role-to-user/add-assignment.png)
+
+1. Vyberte **Přidat přiřazení**.
+
+    ![Když role podporuje rozsah, můžete vybrat obor.](./media/pim-how-to-add-role-to-user/add-scope.png)
+
+1. Na stránce **Přidat přiřazení** můžete:
+
+   - Vyberte uživatele nebo skupinu, které chcete přiřadit roli.
+   - Vyberte obor role (v tomto případě jednotky pro správu).
+   - Vybrat jednotku pro správu pro obor
+
+Další informace o vytváření jednotek pro správu najdete v tématu [Přidání a odebrání jednotek pro správu](../users-groups-roles/roles-admin-units-manage.md).
+
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualizovat nebo odebrat existující přiřazení role
 
 Pomocí těchto kroků aktualizujete nebo odeberete existující přiřazení role.
@@ -101,7 +125,7 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
 1. Vyberte **role** nebo **členy**.
 
-    ![Role Azure AD](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![otevřít role Azure AD](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. Kliknutím na **Přidat člena** otevřete **Přidat spravované členy**.
 
@@ -111,7 +135,7 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
 1. Vyberte **Vybrat členy**, vyberte uživatele, které chcete roli přiřadit, a pak vyberte **Vybrat**.
 
-    ![Vybrat roli](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Vyberte uživatele nebo skupinu, které chcete přiřadit.](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. V části **Přidat spravované členy**vyberte **OK** a přidejte uživatele do role.
 
@@ -169,7 +193,7 @@ Pomocí těchto kroků můžete z role správce Azure AD odebrat konkrétního u
 
 1. Ve zprávě, která vás vyzve k potvrzení, vyberte **Ano**.
 
-    ![Odebrání role](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![Potvrzení odebrání](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     Přiřazení role se odebralo.
 
