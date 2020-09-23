@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a3f3daa56c782d84cf6ba07223f8cfea15daa8a4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101620"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905852"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Připojit existující Azure App Service k serveru Azure Database for MySQL
 Toto téma vysvětluje, jak připojit existující Azure App Service k serveru Azure Database for MySQL.
 
 ## <a name="before-you-begin"></a>Než začnete
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvořte server Azure Database for MySQL. Podrobnosti najdete v tématu [Postup vytvoření serveru Azure Database for MySQL z portálu](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvoření Azure Database for MySQL serveru pomocí](quickstart-create-mysql-server-database-using-azure-cli.md)rozhraní příkazového řádku (CLI).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvořte server Azure Database for MySQL. Podrobnosti najdete v tématu [Postup vytvoření serveru Azure Database for MySQL z portálu](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvoření Azure Database for MySQL serveru pomocí](quickstart-create-mysql-server-database-using-azure-cli.md)rozhraní příkazového řádku (CLI).
 
 V současné době existují dvě řešení pro povolení přístupu z Azure App Service k Azure Database for MySQL. Obě řešení zahrnují nastavení pravidel brány firewall na úrovni serveru.
 
@@ -26,21 +26,21 @@ Azure Database for MySQL poskytuje zabezpečení přístupu pomocí brány firew
 
 1. V okně serveru MySQL pod záhlavím nastavení klikněte na **zabezpečení připojení** . otevře se okno zabezpečení připojení pro Azure Database for MySQL.
 
-   ![Azure Portal – kliknutí na zabezpečení připojení](./media/howto-connect-webapp/1-connection-security.png)
+   :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure Portal – kliknutí na zabezpečení připojení":::
 
 2. V v v nabídce **povolte přístup ke službám Azure**a pak klikněte **na** tlačítko **Uložit**.
-   ![Azure Portal – povolení přístupu k Azure](./media/howto-connect-webapp/allow-azure.png)
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure Portal – povolení přístupu k Azure":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>Řešení 2 – Vytvoření pravidla brány firewall pro explicitní povolení odchozích IP adres
 Můžete explicitně přidat všechny odchozí IP adresy vašich Azure App Service.
 
 1. V okně App Service vlastnosti si prohlédněte svou **odchozí IP adresu**.
 
-   ![Azure Portal – zobrazení odchozích IP adres](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure Portal – zobrazení odchozích IP adres":::
 
 2. V okně zabezpečení připojení MySQL přidejte odchozí IP adresy jednu po jedné.
 
-   ![Azure Portal – přidání explicitních IP adres](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure Portal – přidání explicitních IP adres":::
 
 3. Nezapomeňte **Uložit** pravidla brány firewall.
 

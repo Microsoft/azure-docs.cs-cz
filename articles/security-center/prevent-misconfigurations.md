@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: ceafbe1fd1682fc5e92ab3048ed09866fb9ebbdf
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89570453"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906384"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Zabránění neoprávněným konfiguracím s doporučeními pro vymáhání nebo zakazování
 
@@ -24,10 +24,9 @@ Tato funkce vám může přispět k zabezpečení vašich úloh a ke stabilizaci
 Vynucování zabezpečené konfigurace na základě konkrétního doporučení se nabízí ve dvou režimech:
 
 - Pomocí efektu **odepření** Azure Policy můžete zastavit vytváření špatných prostředků.
-
 - Pomocí možnosti **Vynutilit** můžete využít **DeployIfNotExist** efektu zásad Azure a automaticky opravovat prostředky, které nedodržují předpisy při tvorbě.
- 
-Tato možnost je k dispozici pro vybraná doporučení zabezpečení a nachází se v horní části stránky s podrobnostmi o prostředku.
+
+To najdete v horní části stránky s podrobnostmi o prostředcích pro vybraná doporučení zabezpečení (viz [doporučení s možnostmi odepřít/vyhovět](#recommendations-with-denyenforce-options)).
 
 ## <a name="prevent-resource-creation"></a>Zabránit vytváření prostředků
 

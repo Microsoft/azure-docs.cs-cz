@@ -3,12 +3,12 @@ title: Instalace Azure Backup Serveru v Azure Stacku
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: a95ee42c3229e642bd48b812eb6bc01636af3ba2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018123"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970242"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -107,7 +107,7 @@ Vždy připojte Azure Backup Server k doméně. Pokud potřebujete přesunout Az
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
 
-Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která je méně trvalá, vyberte možnost místně redundantní úložiště. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště najdete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která je méně trvalá, vyberte možnost místně redundantní úložiště. V tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md)najdete další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage), [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage)a [redundantního](../storage/common/storage-redundancy.md#zone-redundant-storage) úložiště pro zóny.
 
 Chcete-li upravit nastavení replikace úložiště:
 
@@ -129,7 +129,7 @@ Existují dva způsoby, jak stáhnout instalační službu Azure Backup Server. 
 
     ![Zadejte Recovery Services v dialogovém okně všechny služby.](./media/backup-mabs-install-azure-stack/all-services.png)
 
-    Zobrazí se seznam trezorů Recovery Services v předplatném.
+    Zobrazí se seznam trezorů služby Recovery Services v předplatném.
 
 4. V seznamu trezorů Recovery Services vyberte svůj trezor a otevřete jeho řídicí panel.
 
@@ -243,7 +243,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 
     ![Zadejte umístění pro instalaci souborů.](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage).
 
 6. Na obrazovce **nastavení zabezpečení** zadejte silné heslo pro omezené místní uživatelské účty a vyberte **Další**.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447851"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987599"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Migrace Azure Monitor v protokolech nasazení aktualizací do Azure Portal
 
@@ -33,7 +33,7 @@ Portál Operations Management Suite (OMS) je [zastaralý](../azure-monitor/platf
 
 3. V účtu Automation klikněte na **Update Management**.
 
-    ![Update Management](media/migrate-oms-update-deployments/azure-automation.png)
+    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="Snímek obrazovky se stránkou správy aktualizací":::
 
 4. V Azure Portal vyberte **účty Automation** v části **všechny služby**. 
 
@@ -43,7 +43,7 @@ Portál Operations Management Suite (OMS) je [zastaralý](../azure-monitor/platf
 
 Všechna nasazení aktualizací vytvořená na portálu OMS obsahují [uložená hledání](../azure-monitor/platform/computer-groups.md) , označované také jako skupina počítačů se stejným názvem, jako má nasazení aktualizace, které existuje. Uložené výsledky hledání obsahují seznam počítačů, které byly naplánovány v nasazení aktualizace.
 
-![Update Management](media/migrate-oms-update-deployments/oms-deployment.png)
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Snímek obrazovky se stránkou nasazení aktualizací se zvýrazněnými poli název a servery":::
 
 Pokud chcete použít toto existující uložené hledání, postupujte takto:
 

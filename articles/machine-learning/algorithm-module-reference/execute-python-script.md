@@ -10,16 +10,16 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 330c7e01b33cfdf48687c492d09fb7aab8a5e779
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648753"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908022"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
-Tento článek popisuje, jak spustit modul skriptu Pythonu v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje, jak spustit modul skriptu Pythonu v Návrháři Azure Machine Learning.
 
 Tento modul použijte ke spuštění kódu Pythonu. Další informace o architektuře a zásadách návrhu Pythonu najdete v tématu [Jak spustit kód Pythonu v návrháři Azure Machine Learning](../how-to-designer-python.md).
 

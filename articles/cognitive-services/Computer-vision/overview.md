@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: počítačové zpracování obrazu, aplikace počítačové vidění, Služba Computer visioning Service
-ms.openlocfilehash: f613080ec24fdfc4c739d4d0494aa2f3c36705cd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323240"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907065"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -92,7 +92,11 @@ Počítačové zpracování obrazu můžete použít ke [zjištění obsahu pro 
 
 ## <a name="use-containers"></a>Použití kontejnerů
 
-[Pomocí počítačové zpracování obrazu kontejnerů](computer-vision-how-to-install-containers.md) můžete místně rozpoznávat vytištěný a ručně psaný text tím, že nainstalujete standardizovaný kontejner Docker blíž k vašim datům.
+Pomocí Počítačové zpracování obrazu kontejnerů Docker službu použijte místně. V současné době jsou k dispozici dva kontejnery:
+
+* [Kontejner počítačové zpracování obrazu čtení](computer-vision-how-to-install-containers.md) umožňuje rozpoznat vytištěný a psaný text v obrázcích.
+
+* [Kontejner počítačové zpracování obrazu prostorové analýzy](spatial-analysis-container.md) umožňuje analyzovat streamování videa v reálném čase, abyste pochopili prostorové vztahy mezi lidmi a jejich pohybem prostřednictvím fyzických prostředí.
 
 ## <a name="image-requirements"></a>Požadavky image
 

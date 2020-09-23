@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/02/2020
-ms.openlocfilehash: 22a9bec09652b6cbce02fe5a54a319694aaa6911
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 46fa489c5a72c3de923f5281cc9be205925dd42d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421301"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988096"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Urychlení analýzy velkých objemů dat v reálném čase pomocí konektoru Spark
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,7 +39,7 @@ Konektor Spark umožňuje používat databáze v Azure SQL Database, Azure SQL M
 | Ovladač Microsoft JDBC pro SQL Server  | 6,2 nebo novější             |
 | Microsoft SQL Server                  | SQL Server 2008 nebo novější |
 | Azure SQL Database                    | Podporováno                |
-| Azure SQL Managed Instance            | Podporováno                |
+| Spravovaná instance Azure SQL            | Podporováno                |
 
 Konektor Spark využívá ovladač Microsoft JDBC pro SQL Server k přesouvání dat mezi uzly Spark Worker a databázemi:
 
@@ -51,7 +51,7 @@ Tok dat je následující:
 
 Tok dat znázorňuje následující diagram.
 
-   ![Architektura](./media/spark-connector/architecture.png)
+   ![Diagram znázorňuje popsaný tok s hlavním uzlem připojujícím se přímo k databázi a připojuje se ke třem pracovním uzlům, které se připojují k databázi.](./media/spark-connector/architecture.png)
 
 ### <a name="build-the-spark-connector"></a>Sestavení konektoru Spark
 

@@ -464,27 +464,31 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Připojení k Azure Synapse Linku pro Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku pro Azure Synapse Analytics
+            - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Kopírování dat ze Synapse Linku do fondu SQL s využitím Apache Sparku
               href: ./synapse-link/how-to-copy-to-sql-pool.md
+            - name: Dotazování analytického úložiště Azure Cosmos DB s využitím SQL na vyžádání
+              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: Dotazování dat v úložišti
+            - name: Dotazování externích dat
               items:
                 - name: Přehled
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování souboru CSV
+                - name: Dotazování souborů CSV
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Dotazování souborů Parquet
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování vnořených typů Parquet
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Dotazování souborů JSON
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Dotazování na Azure Cosmos DB
+                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Dotazování vnořených typů
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Dotazování složek a několika souborů
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Používání metadat souborů
+                - name: Dotazování dělených souborů pomocí metadat souboru
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Vytváření a používání zobrazení
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

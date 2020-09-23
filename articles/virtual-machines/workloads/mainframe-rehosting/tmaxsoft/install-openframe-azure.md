@@ -1,6 +1,6 @@
 ---
 title: Instalace TmaxSoft OpenFrame na Azure Virtual Machines
-description: Znovu hostovat úlohy sálového počítače IBM z/OS pomocí prostředí TmaxSoft OpenFrame na Azure Virtual Machines (virtuálních počítačů).
+description: Naučte se, jak nastavit prostředí OpenFrame v Azure, které je vhodné pro vývoj, ukázky, testování nebo produkční úlohy.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082388"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987474"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Instalace TmaxSoft OpenFrame v Azure
 
@@ -64,7 +64,7 @@ V následující tabulce jsou uvedené požadavky na instalaci v Azure.
 
 <table>
 <thead>
-    <tr><th>Požadavek</th><th>Popis</th></tr>
+    <tr><th>Požadavek</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr><td>Podporovaná distribuce systému Linux v Azure
@@ -96,7 +96,7 @@ Zatmění pro Windows: vývojová platforma podporovaná nástrojem TmaxSoft<br/
 
 <!-- markdownlint-enable MD033 -->
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Naplánujte si útratu několika dní a sestavte veškerý požadovaný software a dokončete všechny ruční procesy.
 
@@ -460,7 +460,7 @@ Instalace rozhraní ODBC:
 
      Ve výchozím nastavení je unixODBC nainstalován v/usr/local, takže `--prefix` předává hodnotu pro změnu umístění. Podobně ve výchozím nastavení jsou konfigurační soubory nainstalovány ve/etc, takže `--sysconfdir` předává hodnotu požadovaného umístění.
 
-4. Spustit soubor pravidel:`[oframe7@ofdemo unixODBC-2.3.4]$ make`
+4. Spustit soubor pravidel: `[oframe7@ofdemo unixODBC-2.3.4]$ make`
 
 5. Po zkompilování zkopírujte spustitelný soubor do adresáře programu. Příklad:
 
@@ -945,7 +945,7 @@ Prořazení je nástroj používaný v transakcích služby Batch pro řazení d
      export PATH
      ```
 
-6. Profil bash spustíte tak, že na příkazovém řádku zadáte:`. .bash_profile`
+6. Profil bash spustíte tak, že na příkazovém řádku zadáte: `. .bash_profile`
 
 7. Vytvořte konfigurační soubor. Příklad:
 
@@ -1342,7 +1342,7 @@ Před instalací JEUS nainstalujte balíček Apache Ant, který poskytuje knihov
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
      ```
 
-7. Změnit `jeus.password=jeusadmin nodename=Tmaxsoft` na`jeus.password=tmax1234 nodename=ofdemo`
+7. Změnit `jeus.password=jeusadmin nodename=Tmaxsoft` na `jeus.password=tmax1234 nodename=ofdemo`
 
 8. Spusťte `ant install` příkaz pro sestavení JEUS.
 9.  Aktualizujte \_ soubor profilu. bash pomocí proměnných JEUS, jak je znázorněno níže:

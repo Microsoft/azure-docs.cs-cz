@@ -4,12 +4,12 @@ description: Ukládání nestrukturovaných dat pomocí Azure Functions a datab�
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: a242f1ffc0a7738ce7cdf33aeeef214fb4f63e61
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2828bf14b6965e87ef9547020e870333c4e839af
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210884"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987985"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ukládání nestrukturovaných dat pomocí služeb Azure Functions a Azure Cosmos DB
 
@@ -20,7 +20,7 @@ ms.locfileid: "88210884"
 
 Ve službě Azure Functions poskytují vstupní a výstupní vazby deklarativní způsob připojení k datům externí služby z funkce. V tomto článku se dozvíte, jak aktualizovat stávající funkci a přidat výstupní vazbu, která ukládá nestrukturovaná data v dokumentu Azure Cosmos DB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -54,7 +54,7 @@ Před vytvořením výstupní vazby potřebujete účet služby Azure Cosmos DB,
     | **Název parametru dokumentu** | taskDocument | Název, který odkazuje na objekt Cosmos DB v kódu. |
     | **Název databáze** | taskDatabase | Název databáze pro uložení dokumentů. |
     | **Název kolekce** | Kolekci taskcollection | Název kolekce databáze. |
-    | **Je-li nastavená hodnota true, vytvoří se databáze a kolekce Cosmos DB** | Ano | Kolekce ještě neexistuje, takže ji vytvořte. |
+    | **Je-li nastavená hodnota true, vytvoří se databáze a kolekce Cosmos DB** | Yes | Kolekce ještě neexistuje, takže ji vytvořte. |
     | **Připojení účtu databáze Cosmos DB** | Nové nastavení | Vyberte **Nový**, pak vyberte **Azure Cosmos DB účet** a **databázový účet** , který jste vytvořili dříve, a pak vyberte **OK**. Vytvoří nastavení aplikace pro připojení k vašemu účtu. Toto nastavení vazba použije k připojení k databázi. |
 
 1. Vyberte **OK** a vytvořte vazbu.
@@ -143,7 +143,7 @@ Tento vzorový kód přečte řetězce dotazů požadavků HTTP a přiřadí je 
 
 1. Vyberte **Spustit** a ověřte, že je vrácen stav 200.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Otestujte funkci." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Po vybrání možnosti Spustit snímek obrazovky se zobrazí stav kód odpovědi HTTP 200 zvýrazněný." border="true":::
 
 
 1. V Azure Portal vyhledejte a vyberte **Azure Cosmos DB**.

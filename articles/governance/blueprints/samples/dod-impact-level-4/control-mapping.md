@@ -1,14 +1,14 @@
 ---
 title: Ukázkové ovládací prvky podrobného plánu pro úrovni DoD úrovně 4
 description: Mapování ovládacího prvku pro ukázku plánu dopadu DoD. 4. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923284"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978404"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Mapování ovládacího prvku pro ukázku plánu dopadu na 3. plán na úrovni.
 
@@ -102,11 +102,11 @@ Tento podrobný plán poskytuje definice zásad, které vám pomohou zajistit, a
 Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním prostoru Log Analytics, který umožňuje centralizovanou konfiguraci a správu. Tento podrobný plán vám pomůže zajistit, aby se události protokoloval pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují a vynutily nasazení agenta Log Analytics na virtuálních počítačích Azure.
 
 - \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- Audit Log Analyticsho nasazení agenta ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu
 - \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
-- \[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
+- Nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
+- Nasazení agenta Log Analytics pro Windows Virtual Machine Scale Sets
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Reakce AU-5 na selhání zpracování auditu
@@ -123,11 +123,11 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 Data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním prostoru Log Analytics umožňující centralizované generování sestav a analýzu. Tento podrobný plán vám pomůže zajistit, aby se události protokoloval pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují a vynutily nasazení agenta Log Analytics na virtuálních počítačích Azure.
 
 - \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- Audit Log Analyticsho nasazení agenta ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu
 - \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
-- \[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
+- Nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
+- Nasazení agenta Log Analytics pro Windows Virtual Machine Scale Sets
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) kontrola auditu, analýza a vytváření sestav | Možnosti integrace, kontroly a monitorování
@@ -144,7 +144,7 @@ Tento podrobný plán poskytuje definice zásad, které auditují záznamy s ana
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- Audit Log Analyticsho nasazení agenta ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu
 
 ## <a name="au-12-audit-generation"></a>Generování auditu AU-12
 
@@ -152,11 +152,11 @@ Tento podrobný plán poskytuje definice zásad, které auditují a vynutily nas
 Tyto definice zásad také auditují konfiguraci diagnostických protokolů a poskytují přehled o operacích, které se provádějí v rámci prostředků Azure. Kromě toho jsou na SQL serverech nakonfigurovaná auditování a rozšířené zabezpečení dat.
 
 - \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- Audit Log Analyticsho nasazení agenta ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu
 - \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
-- \[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
+- Nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
+- Nasazení agenta Log Analytics pro Windows Virtual Machine Scale Sets
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 - Auditování nastavení diagnostiky
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
@@ -336,11 +336,8 @@ Tento podrobný plán vám pomůže spravovat chyby v systému tím, že přiřa
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>-02 (06) Chyba při nápravě | Odebrání předchozích verzí softwaru nebo firmwaru
 
-Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit, aby aplikace používaly nejnovější verzi .NET Framework, HTTP, Java, PHP, Pythonu a TLS. V tomto podrobném plánu se taky přiřadí definice zásady, která zajistí, že se služby Kubernetes upgradují na jeho nezranitelnou verzi.
+Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit, aby aplikace používaly nejnovější verzi HTTP, Java, PHP, Pythonu a TLS. V tomto podrobném plánu se taky přiřadí definice zásady, která zajistí, že se služby Kubernetes upgradují na jeho nezranitelnou verzi.
 
-- Ujistěte se, že verze rozhraní .NET Framework je nejnovější, pokud se používá jako součást aplikace API.
-- Zajistěte, aby byla verze rozhraní .NET Framework nejnovější, pokud se používá jako součást Function App
-- Ujistěte se, že verze rozhraní .NET Framework je nejnovější, pokud se používá jako součást webové aplikace.
 - Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění aplikace API.
 - Ujistěte se, že hodnota HTTP Version je nejnovější, pokud se používá ke spuštění aplikace Function App.
 - Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění webové aplikace.
@@ -348,7 +345,6 @@ Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit
 - Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást aplikace Function App.
 - Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást webové aplikace.
 - Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace API.
-- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace Function App.
 - Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást webové aplikace.
 - Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace API.
 - Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace Function App.
@@ -356,7 +352,7 @@ Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit
 - V aplikaci API by se měla použít nejnovější verze TLS.
 - V Function App by se měla použít nejnovější verze TLS.
 - Ve vaší webové aplikaci by se měla použít nejnovější verze TLS.
-- \[\]Verze Preview: služby Kubernetes by měly být upgradovány na nezranitelnou Kubernetes verzi
+- Služby Kubernetes by se měly upgradovat na nezranitelnou Kubernetes verzi.
 
 ## <a name="si-3-malicious-code-protection"></a>Ochrana proti škodlivým kódem SI od-3
 
@@ -378,11 +374,11 @@ Tento podrobný plán vám pomůže spravovat službu Endpoint Protection, včet
 Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a vynucování protokolování a zabezpečení dat napříč prostředky Azure. Konkrétně zásady přiřazují audit a vynutily nasazení agenta Log Analytics a rozšířené nastavení zabezpečení pro databáze SQL, účty úložiště a síťové prostředky. Tyto funkce vám pomůžou detekovat neobvyklé chování a indikátory útoků, abyste mohli podniknout příslušné akce.
 
 - \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- Audit Log Analyticsho nasazení agenta ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu
 - \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
-- \[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
+- Nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
+- Nasazení agenta Log Analytics pro Windows Virtual Machine Scale Sets
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat

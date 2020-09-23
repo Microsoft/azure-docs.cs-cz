@@ -1,6 +1,6 @@
 ---
-title: Monitorování zařízení Azure Stack Edge prostřednictvím řídicího panelu Kubernetes | Microsoft Docs
-description: Popisuje, jak přistupovat k Kubernetes hraničnímu zařízení a používat Azure Stack ho pomocí řídicího panelu.
+title: Monitorování zařízení Azure Stack Edge pro prostřednictvím řídicího panelu Kubernetes | Microsoft Docs
+description: Popisuje, jak získat přístup k řídicímu panelu Kubernetes a použít ho k monitorování zařízení Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297818"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899204"
 ---
-# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Pomocí řídicího panelu Kubernetes monitorujte zařízení GPU Azure Stack Edge.
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Použití řídicího panelu Kubernetes k monitorování zařízení GPU Azure Stack Edge pro
 
-Tento článek popisuje, jak získat přístup k řídicímu panelu Kubernetes Edge a použít ho k monitorování vašeho zařízení GPU Azure Stack. Chcete-li monitorovat své zařízení, můžete použít grafy v Azure Portal, zobrazit řídicí panel Kubernetes nebo spustit `kubectl` příkazy prostřednictvím rozhraní PowerShell zařízení. 
+Tento článek popisuje, jak získat přístup k řídicímu panelu Kubernetes Edge pro a použít ho k monitorování vašeho zařízení GPU pro Azure Stack. Chcete-li monitorovat své zařízení, můžete použít grafy v Azure Portal, zobrazit řídicí panel Kubernetes nebo spustit `kubectl` příkazy prostřednictvím rozhraní PowerShell zařízení. 
 
 Tento článek se zaměřuje jenom na úlohy monitorování, které se dají provádět na řídicím panelu Kubernetes.
 
@@ -35,7 +35,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Řídicí panel Kubernetes je webové uživatelské rozhraní, které můžete použít k řešení problémů vašich kontejnerových aplikací. Řídicí panel Kubernetes je alternativa založená na uživatelském rozhraní k `kubectl` příkazovému řádku Kubernetes. Další informace najdete v tématu [řídicí panel Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-Na Azure Stack hraničním zařízení můžete pomocí řídicího panelu Kubernetes v režimu jen *pro čtení* získat přehled o aplikacích spuštěných v zařízení Azure Stack Edge, zobrazit stav prostředků clusteru Kubernetes a zobrazit všechny chyby, ke kterým došlo v zařízení.
+Na zařízení Azure Stack Edge pro můžete pomocí řídicího panelu Kubernetes v režimu jen *pro čtení* získat přehled o aplikacích spuštěných v zařízení Azure Stack Edge pro, zobrazit stav prostředků clusteru Kubernetes a zobrazit všechny chyby, ke kterým došlo v zařízení.
 
 ## <a name="access-dashboard"></a>Přístup k řídicímu panelu
 
@@ -54,19 +54,19 @@ Na Azure Stack hraničním zařízení můžete pomocí řídicího panelu Kuber
     1. Vyberte tři tečky **...**. Přejděte do `kubeconfig` složky, kterou jste stáhli dříve v místním systému. Vyberte **Sign in** (Přihlásit se).
         ![Přejít k souboru kubeconfig](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
-6. Nyní můžete zobrazit řídicí panel Kubernetes pro zařízení Azure Stack Edge v režimu jen pro čtení.
+6. Nyní můžete zobrazit řídicí panel Kubernetes pro zařízení Azure Stack Edge pro v režimu jen pro čtení.
 
     ![Hlavní stránka řídicího panelu Kubernetes](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
 
 ## <a name="view-module-status"></a>Zobrazit stav modulu
 
-Výpočetní moduly jsou kontejnery, které mají implementaci obchodní logiky. Řídicí panel můžete použít k ověření, jestli se výpočetní modul na zařízení Azure Stack Edge úspěšně nasadil.
+Výpočetní moduly jsou kontejnery, které mají implementaci obchodní logiky. Řídicí panel můžete použít k ověření, jestli se výpočetní modul úspěšně nasadil na zařízení Azure Stack Edge pro.
 
 Chcete-li zobrazit stav modulu, postupujte podle následujících kroků na řídicím panelu:
 
 1. V levém podokně řídicího panelu přejít na **obor názvů**. Filtrovat podle oboru názvů, kde se zobrazují IoT Edge moduly, v tomto případě **iotedge**.
 1. V levém podokně přejdete na **úlohy > nasazení**.
-1. V pravém podokně se zobrazí všechny moduly nasazené na vašem zařízení. V tomto případě byl modul GettingStartedWithGPU nasazený na Azure Stack hraničních zařízeních. Můžete vidět, že byl modul nasazen.
+1. V pravém podokně se zobrazí všechny moduly nasazené na vašem zařízení. V tomto případě byl modul GettingStartedWithGPU nasazený na Azure Stack Edge pro. Můžete vidět, že byl modul nasazen.
 
     ![Zobrazit nasazení modulu](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
 
@@ -81,7 +81,7 @@ Chcete-li získat IP adresu, postupujte podle následujících kroků na řídic
 
 1. V levém podokně řídicího panelu přejít na **obor názvů**. Filtrovat podle oboru názvů, ve kterém je nainstalovaná externí služba, v tomto případě **iotedge**.
 1. V levém podokně přejdete na **zjišťování a vyrovnávání zatížení > služby**.
-1. V pravém podokně se zobrazí všechny služby, které jsou spuštěné v `iotedge` oboru názvů na vašem zařízení Azure Stack Edge.
+1. V pravém podokně se zobrazí všechny služby, které jsou spuštěné v `iotedge` oboru názvů na vašem zařízení Azure Stack Edge pro.
 
     ![Získat IP adresu pro externí služby](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
 
@@ -104,7 +104,7 @@ Chcete-li zobrazit protokoly kontejnerů, postupujte podle těchto kroků na ř�
 
 ## <a name="view-cpu-memory-usage"></a>Zobrazení CPU, využití paměti
 
-Řídicí panel Kubernetes pro Azure Stack hraniční zařízení má také [doplněk serveru metriky](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) , který AGREGUJE využití CPU a paměti napříč prostředky Kubernetes.
+Řídicí panel Kubernetes pro zařízení Azure Stack Edge pro má taky [doplněk serveru metrik](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) , který AGREGUJE využití CPU a paměti napříč prostředky Kubernetes.
  
 Můžete například zobrazit procesor a paměť využívané napříč nasazeními ve všech oborech názvů. 
 

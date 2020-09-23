@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 252abcac6e9e39930593c1b110bf6d55ffdfc33f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843517"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978618"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -48,6 +48,23 @@ Z hlediska vývoje je každá funkce nasazená na Open Source Microsoft FHIR Ser
 
 Inteligentní (nahraditelné lékařské aplikace a opakovaně použitelná technologie) na FHIR je sada otevřených specifikací pro integraci partnerských aplikací se servery FHIR a dalšími systémy IT, jako jsou například elektronické záznamy o stavu a výměny informací o stavu. Když vytvoříte inteligentní aplikaci v FHIR, můžete zajistit, že k aplikaci bude možné přistupovat a využívat spoustu různých systémů.
 Ověřování a rozhraní Azure API pro FHIR. Další informace o INTELIGENTNÍch možnostech najdete v přehledu [inteligentního stavu](https://smarthealthit.org/).
+
+### <a name="can-i-create-a-custom-fhir-resource"></a>Můžu vytvořit vlastní prostředek FHIR?
+
+Nepovolujeme vlastní FHIR prostředky. Pokud potřebujete vlastní prostředek FHIR, můžete vytvořit vlastní prostředek nad [základním prostředkem](http://www.hl7.org/fhir/basic.html) s rozšířeními. 
+
+### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>Podporují Azure API pro FHIR [rozšíření](https://www.hl7.org/fhir/extensibility.html) ?
+
+Umožňuje načíst do serveru veškerá platná data FHIR JSON. Pokud chcete uložit definici struktury definující rozšíření, můžete ho uložit jako prostředek definice struktury. V současné době nelze vyhledávat rozšíření.
+
+### <a name="what-is-the-limit-on-_count"></a>Jaký je limit _count?
+
+Aktuální limit počtu je 100.
+
+### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Existují nějaká omezení funkce exportu skupin?
+
+Pro export skupiny exportujeme zahrnuté odkazy ze skupiny, ale ne všechny vlastnosti [prostředku skupiny](https://www.hl7.org/fhir/group.html).
+
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector pro FHIR (Preview)
 

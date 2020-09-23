@@ -5,14 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 8c6ed19a585bc1ebae65045cd1cc4c442f113597
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.custom: references_regions
+ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651496"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987611"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. K mnoha cloudovým službám Microsoftu, jako je Azure a Microsoft 365, můžete přistupovat z vašeho privátního datového centra nebo vaší firemní sítě. Můžete mít například pobočku v síti San Francisco s okruhem ExpressRoute v silikonovém sedlu a další pobočkou v Londýně s okruhem ExpressRoute ve stejném městě. Obě pobočky mají vysokorychlostní připojení k prostředkům Azure v USA – západ a Velká Británie – jih. Firemní pobočky se ale nemůžou připojit a odesílat data přímo z sebe. Jinými slovy 10.0.1.0/24 může odesílat data do sítě 10.0.3.0/24 a 10.0.4.0/24, ale ne do sítě 10.0.2.0/24.
@@ -29,10 +30,27 @@ ExpressRoute Global Reach je navržená tak, aby doplnila implementaci sítě WA
 ![Diagram, který zobrazuje případ použití Global Reach Express Route.][3]
 
 ## <a name="availability"></a>Dostupnost 
-ExpressRoute Global Reach se podporují ve většině oblastí, kde se aktuálně podporuje ExpressRoute. Můžete se podívat na [poskytovatele připojení ExpressRoute](expressroute-locations-providers.md#partners) pro aktuální podporované oblasti. 
+ExpressRoute Global Reach se podporují na následujících místech. 
 
 > [!NOTE] 
 > Pokud chcete povolit ExpressRoute Global Reach mezi [různými geopolitickými oblastmi](expressroute-locations-providers.md#locations), vaše okruhy musí být **SKU úrovně Premium**.
+
+* Austrálie
+* Kanada
+* Francie
+* Německo
+* Hongkong – zvláštní administrativní oblast
+* Irsko
+* Japonsko
+* Jižní Korea
+* Nizozemsko
+* Nový Zéland
+* Norsko
+* Singapur
+* Švédsko
+* Švýcarsko
+* Spojené království
+* USA
 
 ## <a name="next-steps"></a>Další kroky
 - Prohlédněte si [Global REACH Nejčastější dotazy](expressroute-faqs.md#globalreach).

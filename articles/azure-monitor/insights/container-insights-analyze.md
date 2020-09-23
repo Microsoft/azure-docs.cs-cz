@@ -3,12 +3,12 @@ title: Kubernetes monitorování pomocí Azure Monitor pro kontejnery | Microsof
 description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon clusteru Kubernetes s Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166633"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988138"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorování výkonu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
 
@@ -71,18 +71,18 @@ Následující tabulka uvádí rozpis výpočtu, který řídí stav pro monitor
 |**Uživatel pod**| | |
 | |V pořádku |100 % |
 | |Upozornění |90 – 99% |
-| |Kritická |<90% |
-| |Není známo |Pokud není uvedeno za posledních 30 minut |
+| |Kritické |<90% |
+| |Neznámý |Pokud není uvedeno za posledních 30 minut |
 |**Systém pod**| | |
 | |V pořádku |100 % |
-| |Upozornění |Nelze použít |
-| |Kritická |<100% |
-| |Není známo |Pokud není uvedeno za posledních 30 minut |
-|**Uzel** | | |
+| |Upozornění |Není k dispozici |
+| |Kritické |<100% |
+| |Neznámý |Pokud není uvedeno za posledních 30 minut |
+|**Node** | | |
 | |V pořádku |>85% |
 | |Upozornění |60 – 84% |
-| |Kritická |<60% |
-| |Není známo |Pokud není uvedeno za posledních 30 minut |
+| |Kritické |<60% |
+| |Neznámý |Pokud není uvedeno za posledních 30 minut |
 
 V seznamu clusterů můžete přejít na stránku **clusteru** tak, že vyberete název clusteru. Pak přejdete na stránku výkon **uzlů** , a to tak, že vyberete souhrn uzlů ve sloupci **uzly** tohoto konkrétního clusteru. Případně můžete přejít k podrobnostem na stránce s výkonem **řadičů** , a to výběrem souhrnu sloupce **uživatelské lusky** nebo **Systémová lusky** .
 
@@ -134,7 +134,7 @@ Můžete [rozdělit](../platform/metrics-charts.md#apply-splitting-to-a-chart) m
 
 * Kontrolér
 * Obor názvů Kubernetes
-* Uzel
+* Node
 * Fáze
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Analýza stavů uzlů, řadičů a kontejnerů
@@ -161,7 +161,7 @@ Azure Container Instances virtuálních uzlů, které spouštějí operační sy
 
 Z rozbaleného uzlu můžete procházet hierarchii pod nebo kontejnerem, který běží na uzlu, k zobrazení dat výkonu filtrovaných pro daný kontroler. Vyberte hodnotu pod sloupcem **kontroléru** pro konkrétní uzel.
 
-![Příklad přechodu k podrobnostem z uzlu na kontroler v zobrazení výkonu](./media/container-insights-analyze/drill-down-node-controller.png)
+![Snímek obrazovky s přechodem z uzlu na kontroler v zobrazení výkonu](./media/container-insights-analyze/drill-down-node-controller.png)
 
 V horní části stránky vyberte řadiče nebo kontejnery, abyste si mohli prohlédnout stav a využití prostředků u těchto objektů. Pokud chcete zkontrolovat využití paměti, vyberte v rozevíracím seznamu **metrika** možnost **paměť RSS** nebo **pracovní sada paměti**. **Technologie RSS paměti** je podporována pouze pro Kubernetes verze 1,8 a novější. V opačném případě zobrazíte hodnoty pro **minimum &nbsp; % ** jako *NaN &nbsp; % *, což je hodnota číselného datového typu, která představuje nedefinovanou nebo nereprezentovanou hodnotu.
 
@@ -241,7 +241,7 @@ Informace, které se zobrazí při zobrazení řadičů, jsou popsány v násled
 | Kontejnery | Celkový počet kontejnerů pro řadič nebo pod. |
 | Opětovné | Souhrn počtu restartování z kontejnerů. |
 | Doba provozu | Představuje čas od spuštění kontejneru. |
-| Uzel | Pouze pro kontejnery a lusky. Zobrazuje, ve kterém řadiči se nachází. |
+| Node | Pouze pro kontejnery a lusky. Zobrazuje, ve kterém řadiči se nachází. |
 | Trend min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | Trend pruhového grafu představuje metriku průměrné percentilu řadiče. |
 
 Ikony v poli Stav označují online stav kontejnerů.
@@ -276,7 +276,7 @@ Informace, které se zobrazí při zobrazení kontejnerů, jsou popsány v násl
 | Minimální &nbsp; %, prům .% &nbsp; , 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, max.&nbsp;% | Souhrn průměrného procenta jednotlivých entit pro vybranou metriku a percentil. |
 | Min, AVG, 50, 90, 95., Max | Souhrn průměrného výkonu procesoru v millicore nebo paměti v kontejneru pro vybraný percentil. Průměrná hodnota se měří od limitu CPU nebo paměti nastaveného pro objekt pod. |
 | Nulu | Kontejner, ve kterém se nachází pod.|
-| Uzel |  Uzel, ve kterém se nachází kontejner. |
+| Node |  Uzel, ve kterém se nachází kontejner. |
 | Opětovné | Představuje čas od spuštění kontejneru. |
 | Doba provozu | Představuje čas, kdy byl kontejner spuštěn nebo restartován. |
 | Trend min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | Trend pruhového grafu představuje procento metriky průměrného percentilu v kontejneru. |
