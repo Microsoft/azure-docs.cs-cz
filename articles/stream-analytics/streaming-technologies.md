@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a204aacc0061091e0a273581e766bb669d191f0b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75860244"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903706"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Volba analýzy v reálném čase a technologie zpracování streamování v Azure
 
@@ -55,4 +55,4 @@ Azure Stream Analytics je proprietární technologie Microsoftu a je dostupná j
 * [Vytvoření Stream Analytics úlohy pomocí Azure Portal](stream-analytics-quick-create-portal.md)
 * [Vytvoření úlohy Stream Analytics pomocí Azure PowerShellu](stream-analytics-quick-create-powershell.md)
 * [Vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Vytvoření Stream Analytics úlohy pomocí Visual Studio Code](quick-create-vs-code.md)
+* [Vytvoření Stream Analytics úlohy pomocí Visual Studio Code](quick-create-visual-studio-code.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 1aa52c81b7abbfb355ef06f6ae93a5dd4c985042
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5b5f115ab2fb7036287c976a94b9e123bf6ed42
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532394"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verasmart"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s VeraSMART
 
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -131,7 +131,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejít na **Administration**  ->  **Security**  ->  **konfiguraci ověřování**zabezpečení správy.
 
-    ![Konfigurace](./media/verasmart-tutorial/configuration.png)
+    ![Snímek obrazovky zobrazuje VeraSMART se správou, pak je vybraná možnost zabezpečení a konfigurace ověřování.](./media/verasmart-tutorial/configuration.png)
 
 1. Na následující stránce proveďte následující kroky:
 
@@ -160,7 +160,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici VeraSMART, měli byste se automaticky přihlásit k VeraSMART, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

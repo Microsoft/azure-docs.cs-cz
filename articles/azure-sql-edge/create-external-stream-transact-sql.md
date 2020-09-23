@@ -1,6 +1,6 @@
 ---
-title: Vytvoření externího datového proudu (Transact-SQL) – Azure SQL Edge (Preview)
-description: Přečtěte si o příkazu CREATE EXTERNAL STREAM ve službě Azure SQL Edge (Preview).
+title: Vytvoření externího datového proudu (Transact-SQL) – Azure SQL Edge
+description: Přečtěte si o příkazu CREATE EXTERNAL STREAM v Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489540"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888170"
 ---
 # <a name="create-external-stream-transact-sql"></a>VYTVOŘIT externí datový proud (Transact-SQL)
 
@@ -24,10 +24,10 @@ EXTERNÍ datový proud lze také určit a vytvořit jako výstup i vstup pro slu
 
 Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy a výstupy streamu.
 
-| Typ zdroje dat | Vstup | Výstup | Popis |
+| Typ zdroje dat | Vstup | Výstup | Description |
 |------------------|-------|--------|------------------|
 | Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| Databáze SQL | N | A | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| SQL Database | N | A | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
 | Kafka | A | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Podpora Kafka není k dispozici pro ARM64 verze Azure SQL Edge.|
 
 
@@ -100,7 +100,7 @@ WITH  ( <with_options> )
    - Pro umístění objektu služby Azure Blob Storage Stream odkazuje na vzor cesty, který se má použít uvnitř kontejneru objektů BLOB. Další informace o této funkci najdete v tématu (/articles/Stream-Analytics/Stream-Analytics-define-Outputs.MD # BLOB-Storage-and-Azure-Data-Lake-Gen2).
 
 - **INPUT_OPTIONS**: Zadejte možnosti jako páry klíč-hodnota pro služby, jako je například Kafka, IoT Edge centrum, které jsou vstupy pro streamování dotazů.
-    - ODDÍLY: počet oddílů definovaných pro téma
+    - ODDÍLY: počet oddílů definovaných pro téma. Maximální počet oddílů, které lze použít, je omezen na 32.
       - Platí pro vstupní datové proudy Kafka
     - CONSUMER_GROUP: centra událostí a IoT omezují počet čtenářů v jedné skupině příjemců (na 5). Když necháte toto pole prázdné, použije se skupina příjemců $Default.
       - Vyhrazeno pro budoucí použití. Neplatí pro Azure SQL Edge.  
@@ -247,6 +247,5 @@ WITH
 
 ## <a name="see-also"></a>Viz také
 
-- [ALTER EXTERNAL STREAM (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [Vynechat externí datový proud (Transact-SQL)](drop-external-stream-transact-sql.md) 
 

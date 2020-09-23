@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fec959ee34f9491b6510390d4b390e652690897e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 351c7e21bfe59b22f451adddad8fed220c218358
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547082"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983117"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Kurz: Konfigurace Jive pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte v Jive a Azure AD použít 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 *   Tenant Azure Active Directory.
 *   Předplatné s povoleným jedním přihlašováním (Jive).
@@ -61,9 +61,9 @@ V rámci tohoto postupu je potřeba poskytnout token zabezpečení uživatele, k
 
 1. Vyberte svou instanci Jive a pak vyberte kartu **zřizování** .
 
-1. Nastavte **režim zřizování** na **automaticky**. 
+1. Nastavte **Režim zřizování** na hodnotu **Automaticky**. 
 
-    ![zřizování](./media/jive-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí stránka zřizování Jive s režimem zřizování nastaveným na automatické a jiné hodnoty, které můžete nastavit.](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. V části **přihlašovací údaje správce** zadejte následující nastavení konfigurace:
    
@@ -85,7 +85,7 @@ V rámci tohoto postupu je potřeba poskytnout token zabezpečení uživatele, k
 
 1. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé Jive.**
 
-1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Jive. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Jive pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Jive. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Jive pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro Jive, změňte **stav zřizování** na **zapnuto** v části nastavení.
 
@@ -95,7 +95,7 @@ Spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazenýc
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

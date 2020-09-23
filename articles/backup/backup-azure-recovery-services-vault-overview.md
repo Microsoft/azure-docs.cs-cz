@@ -1,14 +1,14 @@
 ---
 title: Přehled trezorů služby Recovery Services
-description: Přehled a porovnání mezi trezory Recovery Services a trezory Azure Backup.
+description: Přehled trezorů Recovery Services.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889613"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975150"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -30,7 +30,7 @@ Recovery Services trezor je entita, která ukládá zálohy a body obnovení vyt
 
 - Azure Backup automaticky zpracovává úložiště pro trezor. Podívejte se, jak [můžete změnit nastavení úložiště](./backup-create-rs-vault.md#set-storage-redundancy).
 
-- Další informace o redundanci úložiště najdete v těchto článcích o [geografické](../storage/common/storage-redundancy.md) a [místní](../storage/common/storage-redundancy.md) redundanci.
+- Další informace o redundanci úložiště najdete v těchto článcích o [geograficky](../storage/common/storage-redundancy.md#geo-zone-redundant-storage), [místní](../storage/common/storage-redundancy.md#locally-redundant-storage) a [Zona](../storage/common/storage-redundancy.md#zone-redundant-storage) redundanci.
 
 ## <a name="encryption-settings-in-the-recovery-services-vault"></a>Nastavení šifrování v trezoru Recovery Services
 
@@ -54,7 +54,7 @@ Azure Advisor poskytuje hodinová [doporučení](../advisor/advisor-high-availab
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Úložiště – podporované a nepodporované scénáře](backup-support-matrix.md#vault-support)
 - [Nejčastější dotazy k trezoru](backup-azure-backup-faq.md)

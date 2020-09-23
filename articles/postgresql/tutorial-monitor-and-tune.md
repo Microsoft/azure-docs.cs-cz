@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74774733"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895081"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Kurz: monitorování a ladění Azure Database for PostgreSQL – jeden server
 
@@ -40,7 +40,7 @@ Musíte mít server Azure Database for PostgreSQL s PostgreSQL verze 9.6 nebo 1
 
 4. Nastavte **pg_qs.query_capture_mode** na **TOP**, aby se začala shromažďovat data o výkonu. Nastavte **pgms_wait_sampling.query_capture_mode** na **VŠE**, aby začaly shromažďovat statistiky čekání. Uložte.
    
-   ![Parametry serveru Query Store](./media/tutorial-performance-intelligence/query-store-parameters.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-store-parameters.png" alt-text="Parametry serveru Query Store":::
 
 5. Umožňuje až 20 minut první dávky dat pro uchování v databázi **azure_sys**.
 
@@ -52,7 +52,7 @@ Zobrazení [Query Performance Insight](concepts-query-performance-insight.md) na
 
 2. Karta **Dlouho běžících dotazů** zobrazuje 5 nejčastějších dotazů podle průměrné doby trvání na spuštění, agregované do 15minutových intervalů. 
    
-   ![Úvodní stránka Query Performance Insight](./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Úvodní stránka Query Performance Insight":::
 
    Další dotazy můžete zobrazit tak, že v rozevíracím seznamu vyberete **Počet dotazů**. Barvy grafu se mohou při této akci změnit pro konkrétní ID dotazu.
 
@@ -64,7 +64,7 @@ Zobrazení [Query Performance Insight](concepts-query-performance-insight.md) na
 
 6. Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace týkající se čekání na serveru.
    
-   ![Statistiky čekání Query Performance Insight](./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Statistiky čekání Query Performance Insight":::
 
 ### <a name="permissions"></a>Oprávnění
 K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
@@ -75,7 +75,7 @@ Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzu
 
 1. Otevřete **Doporučení k výkonu** z části nabídky **Podpora a řešení potíží** na stránce portálu Azure pro váš server PostgreSQL.
    
-   ![Úvodní stránka Doporučení k výkonu](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Úvodní stránka Doporučení k výkonu":::
 
 2. Vyberte **Analyzovat** a zvolte databázi. Tím se spustí analýza.
 
@@ -85,7 +85,7 @@ Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzu
 
 5. Doporučení zobrazí informace o příslušné **databázi**, **tabulce**, **sloupci** a **velikosti indexu**.
 
-   ![Výsledky Doporučení k výkonu](./media/tutorial-performance-intelligence/performance-recommendations-result.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Výsledky Doporučení k výkonu":::
 
 6. Chcete-li implementovat doporučení, zkopírujte text dotazu a spusťte z klienta svého výběru.
 

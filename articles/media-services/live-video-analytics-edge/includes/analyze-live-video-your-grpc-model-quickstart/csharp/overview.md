@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 97c21ca300ee070b2cebaa01a585c1618899b1eb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fa0c2f5bb00122b40fb4f4ea06b7cf55c0248904
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691755"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025039"
 ---
 
-![Přehled](../../../media/quickstarts/overview-grpc.png)
+![Přehled](../../../media/quickstarts/gRPC-extension.svg)
 
 Tento diagram znázorňuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server RTSP (Real-time streaming Protocol). [Zdrojový uzel RTSP](../../../media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a odešle snímky videa do uzlu [procesoru detekce pohybu](../../../media-graph-concept.md#motion-detection-processor) . Tento procesor rozpozná pohyb a při detekci pozastaví snímky videa do uzlu [procesoru rozšíření gRPC](../../../media-graph-concept.md#grpc-extension-processor) .
 

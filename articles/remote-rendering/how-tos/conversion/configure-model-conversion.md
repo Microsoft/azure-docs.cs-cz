@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067167"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967232"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
 
@@ -73,42 +73,48 @@ Příkladem souboru `box.ConversionSettings.json` může být:
 
 ### <a name="geometry-parameters"></a>Parametry geometrie
 
-* `scaling`– Tento parametr škáluje model jednotně. Škálování lze použít ke zvětšení nebo zmenšení modelu, například k zobrazení stavebního modelu na nejvyšší úrovni tabulky.
+* `scaling` – Tento parametr škáluje model jednotně. Škálování lze použít ke zvětšení nebo zmenšení modelu, například k zobrazení stavebního modelu na nejvyšší úrovni tabulky.
 Škálování je také důležité, pokud je model definován v jiných jednotkách než měřiče, protože vykreslovací modul očekává měřiče.
 Například pokud je model definován v centimetrech, pak použití stupnice 0,01 by mělo vykreslovat model ve správné velikosti.
 Některé zdrojové formáty dat (například. FBX) poskytují pomocný parametr škálování jednotky. v takovém případě převod implicitně škáluje model na jednotky měřičů. Implicitní škálování, které poskytuje formát zdroje, se použije nad parametrem škálování.
 Konečný faktor škálování se aplikuje na vrcholy geometrie a místní transformace uzlů grafu scény. Škálování pro transformaci kořenové entity zůstane beze změny.
 
-* `recenterToOrigin`-Uvádí, že by měl být model převeden tak, aby jeho ohraničovací rámeček byl zarovnán na střed na začátku.
+* `recenterToOrigin` -Uvádí, že by měl být model převeden tak, aby jeho ohraničovací rámeček byl zarovnán na střed na začátku.
 Pokud je zdrojový model umístěn daleko od počátku, mohou problémy s přesností s plovoucí desetinnou čárkou způsobit vykreslování artefaktů.
 Centrování modelu může v této situaci pomáhat.
 
-* `opaqueMaterialDefaultSidedness`-Modul vykreslování předpokládá, že neprůhledné materiály jsou oboustranné.
+* `opaqueMaterialDefaultSidedness` -Modul vykreslování předpokládá, že neprůhledné materiály jsou oboustranné.
 Pokud tento předpoklad nemá hodnotu true konkrétního modelu, tento parametr by měl být nastaven na hodnotu "SingleSided". Další informace najdete v tématu [ :::no-loc text="single sided"::: vykreslování](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Přepsání materiálu
 
-* `material-override`– Tento parametr umožňuje zpracovat [přizpůsobení materiálů během převodu](override-materials.md).
+* `material-override` – Tento parametr umožňuje zpracovat [přizpůsobení materiálů během převodu](override-materials.md).
 
 ### <a name="material-de-duplication"></a>Odstranění duplicit materiálu
 
-* `deduplicateMaterials`– Tento parametr povoluje nebo zakazuje automatickou odstraňování duplicit materiálů, které sdílejí stejné vlastnosti a textury. Odstranění duplicit proběhne po zpracování přepsání materiálu. Tato možnost je ve výchozím nastavení povolená.
+* `deduplicateMaterials` – Tento parametr povoluje nebo zakazuje automatickou odstraňování duplicit materiálů, které sdílejí stejné vlastnosti a textury. Odstranění duplicit proběhne po zpracování přepsání materiálu. Tato možnost je ve výchozím nastavení povolená.
+
+* Pokud i po odstranění duplicitních dat model obsahuje více než 65 535 materiálů, služba se pokusí sloučit materiály s podobnými vlastnostmi. Jako poslední možnost, že všechny materiály překračující tento limit budou nahrazeny červeným materiálem o chybách.
+
+![Obrázek ukazuje dvě krychle 68 921 barevných trojúhelníků.](media/mat-dedup.png?raw=true)
+
+Dvě datové krychle 68 921 barevných trojúhelníků. Left: před odstraněním duplicit s barevnými materiály 68 921. Right: po odstranění duplicit s barevnými materiály 64 000. Limit je 65 535 materiálů. (Viz [omezení](../../reference/limits.md).)
 
 ### <a name="color-space-parameters"></a>Parametry barevného prostoru
 
 Vykreslovací modul očekává, že hodnoty barev budou v lineárním prostoru.
 Pokud je model definován pomocí prostoru hodnot gamma, pak tyto možnosti by měly být nastaveny na hodnotu true.
 
-* `gammaToLinearMaterial`-Převést barvy materiálu z prostoru gamma na lineární místo
-* `gammaToLinearVertex`-Převést :::no-loc text="vertex"::: barvy z hodnoty gamma na lineární místo
+* `gammaToLinearMaterial` -Převést barvy materiálu z prostoru gamma na lineární místo
+* `gammaToLinearVertex` -Převést :::no-loc text="vertex"::: barvy z hodnoty gamma na lineární místo
 
 > [!NOTE]
 > Pro soubory FBX jsou tato nastavení standardně nastavená na `true` . U všech ostatních typů souborů je výchozí hodnota `false` .
 
 ### <a name="scene-parameters"></a>Parametry scény
 
-* `sceneGraphMode`-Definuje, jak se převede graf scény ve zdrojovém souboru:
-  * `dynamic`(výchozí): všechny objekty v souboru se zveřejňují jako [entity](../../concepts/entities.md) v rozhraní API a dají se transformovat nezávisle. Hierarchie uzlů za běhu je shodná se strukturou ve zdrojovém souboru.
+* `sceneGraphMode` -Definuje, jak se převede graf scény ve zdrojovém souboru:
+  * `dynamic` (výchozí): všechny objekty v souboru se zveřejňují jako [entity](../../concepts/entities.md) v rozhraní API a dají se transformovat nezávisle. Hierarchie uzlů za běhu je shodná se strukturou ve zdrojovém souboru.
   * `static`: Všechny objekty jsou zpřístupněny v rozhraní API, ale nelze je transformovat nezávisle.
   * `none`: Graf scény je sbalený do jednoho objektu.
 
@@ -123,27 +129,27 @@ V `none` režimu je minimální režie za běhu a také mírně lepší doba na�
 
 ### <a name="physics-parameters"></a>Parametry fyzika
 
-* `generateCollisionMesh`– Pokud potřebujete podporu [prostorových dotazů](../../overview/features/spatial-queries.md) pro model, je nutné tuto možnost povolit. V nejhorším případě může vytvoření sítě kolizí zdvojnásobit dobu převodu. Modely s kolize sítí trvá delší dobu načítání a při použití `dynamic` grafu scény mají také vyšší režii na výkon modulu runtime. Pro celkový optimální výkon byste měli zakázat tuto možnost u všech modelů, na kterých nepotřebujete prostorové dotazy.
+* `generateCollisionMesh` – Pokud potřebujete podporu [prostorových dotazů](../../overview/features/spatial-queries.md) pro model, je nutné tuto možnost povolit. V nejhorším případě může vytvoření sítě kolizí zdvojnásobit dobu převodu. Modely s kolize sítí trvá delší dobu načítání a při použití `dynamic` grafu scény mají také vyšší režii na výkon modulu runtime. Pro celkový optimální výkon byste měli zakázat tuto možnost u všech modelů, na kterých nepotřebujete prostorové dotazy.
 
 ### <a name="unlit-materials"></a>Unlit materiály
 
-* `unlitMaterials`– Ve výchozím nastavení bude převod preferovat vytváření [materiálů PBR](../../overview/features/pbr-materials.md). Tato možnost dává konvertoru pokyn, aby se všechny materiály nacházely jako s [barevnými materiály](../../overview/features/color-materials.md) . Pokud máte data, která už jsou v rámci osvětlení, jako jsou například modely vytvořené prostřednictvím Photogrammetry, tato možnost umožňuje rychle vyhovět správné konverzi pro všechny materiály bez nutnosti [potlačit jednotlivé materiály](override-materials.md) jednotlivě.
+* `unlitMaterials` – Ve výchozím nastavení bude převod preferovat vytváření [materiálů PBR](../../overview/features/pbr-materials.md). Tato možnost dává konvertoru pokyn, aby se všechny materiály nacházely jako s [barevnými materiály](../../overview/features/color-materials.md) . Pokud máte data, která už jsou v rámci osvětlení, jako jsou například modely vytvořené prostřednictvím Photogrammetry, tato možnost umožňuje rychle vyhovět správné konverzi pro všechny materiály bez nutnosti [potlačit jednotlivé materiály](override-materials.md) jednotlivě.
 
 ### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Převod ze starších formátů FBX pomocí modelu Phongova materiálu
 
-* `fbxAssumeMetallic`– Starší verze formátu FBX definují své materiály pomocí modelu Phongova materiálu. Proces převodu musí odvodit, jak se tyto materiály mapují na [model PBR](../../overview/features/pbr-materials.md)vykreslovacího modulu. Obvykle to funguje dobře, ale nejednoznačnost může nastat, když materiál nemá žádné textury, vysoké odlesky a nešedou barvu albedo barvy. V tomto případě musí převod zvolit mezi stanovením priorit horních hodnot, a to tak, že definuje vysoce odrážející kovový materiál, kde barva albedo vyhodnotí pryč nebo nastaví prioritu albedo barvy, což definuje něco jako lesklý barevný plast. Ve výchozím nastavení předpokládá proces převodu, že vysoce odlesky hodnot implikuje kovový materiál v případech, kdy se nejednoznačnost uplatní. Tento parametr může být nastaven na hodnotu `false` pro přepnutí na opak.
+* `fbxAssumeMetallic` – Starší verze formátu FBX definují své materiály pomocí modelu Phongova materiálu. Proces převodu musí odvodit, jak se tyto materiály mapují na [model PBR](../../overview/features/pbr-materials.md)vykreslovacího modulu. Obvykle to funguje dobře, ale nejednoznačnost může nastat, když materiál nemá žádné textury, vysoké odlesky a nešedou barvu albedo barvy. V tomto případě musí převod zvolit mezi stanovením priorit horních hodnot, a to tak, že definuje vysoce odrážející kovový materiál, kde barva albedo vyhodnotí pryč nebo nastaví prioritu albedo barvy, což definuje něco jako lesklý barevný plast. Ve výchozím nastavení předpokládá proces převodu, že vysoce odlesky hodnot implikuje kovový materiál v případech, kdy se nejednoznačnost uplatní. Tento parametr může být nastaven na hodnotu `false` pro přepnutí na opak.
 
 ### <a name="coordinate-system-overriding"></a>Přepisování systému souřadnic
 
-* `axis`– Pro přepsání souřadnic systémových jednotek-vektory. Výchozí hodnoty jsou `["+x", "+y", "+z"]` . Teoreticky má formát FBX hlavičku, kde jsou tyto vektory definovány, a převod používá tyto informace k transformaci scény. Formát glTF definuje také pevný systém souřadnic. V praxi některé prostředky mají buď nesprávné informace v hlavičce nebo byly uloženy s jinou konvencí souřadnicového systému. Tato možnost umožňuje přepsat souřadnicový systém pro kompenzaci. Například: `"axis" : ["+x", "+z", "-y"]` vyměňuje osu Z a osu Y a zachová změnu hodnoty pera systému tím, že se obrátí směr osy Y.
+* `axis` – Pro přepsání souřadnic systémových jednotek-vektory. Výchozí hodnoty jsou `["+x", "+y", "+z"]` . Teoreticky má formát FBX hlavičku, kde jsou tyto vektory definovány, a převod používá tyto informace k transformaci scény. Formát glTF definuje také pevný systém souřadnic. V praxi některé prostředky mají buď nesprávné informace v hlavičce nebo byly uloženy s jinou konvencí souřadnicového systému. Tato možnost umožňuje přepsat souřadnicový systém pro kompenzaci. Například: `"axis" : ["+x", "+z", "-y"]` vyměňuje osu Z a osu Y a zachová změnu hodnoty pera systému tím, že se obrátí směr osy Y.
 
 ### <a name="node-meta-data"></a>Meta data uzlu
 
-* `metadataKeys`– Umožňuje zadat klíče vlastností metadat uzlu, které chcete zachovat ve výsledku převodu. Můžete zadat přesné klíče nebo zástupné znaky. Zástupné klíče mají formát "ABC *" a odpovídají libovolnému klíči, který začíná "ABC". Podporované typy hodnot metadat jsou `bool` , `int` , `float` a `string` .
+* `metadataKeys` – Umožňuje zadat klíče vlastností metadat uzlu, které chcete zachovat ve výsledku převodu. Můžete zadat přesné klíče nebo zástupné znaky. Zástupné klíče mají formát "ABC *" a odpovídají libovolnému klíči, který začíná "ABC". Podporované typy hodnot metadat jsou `bool` , `int` , `float` a `string` .
 
     Pro soubory GLTF tato data pocházejí z [objektu Extras na uzlech](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras). Pro soubory FBX data pocházejí z `Properties70` dat `Model nodes` . Další podrobnosti najdete v dokumentaci k nástroji 3D Asset.
 
-### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formátovat
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex"::: formátovat
 
 Je možné upravit :::no-loc text="vertex"::: Formát sítě a opravit tak úspory paměti v obchodě. Dolní nároky na paměť umožňují načíst větší modely nebo dosáhnout vyššího výkonu. V závislosti na vašich datech ale může špatný formát významně ovlivnit kvalitu vykreslování.
 
@@ -194,7 +200,7 @@ Tyto formáty jsou povolené pro příslušné součásti:
 
 Paměťové nároky na formáty jsou následující:
 
-| Formát | Popis | Počet bajtů za sekundu:::no-loc text="vertex"::: |
+| Formát | Description | Počet bajtů za sekundu :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|Úplná přesnost plovoucí desetinné čárky se dvěma komponentami|8
 |16_16_FLOAT|poloviční přesnost s plovoucí desetinnou čárkou pro dvě komponenty|4
@@ -208,7 +214,7 @@ Paměťové nároky na formáty jsou následující:
 * `position`: Je vzácná, že omezená přesnost je dostačující. **16_16_16_16_FLOAT** zavádí znatelné artefakty kvantizační, i pro malé modely.
 * `normal`, `tangent` , `binormal` : Obvykle se tyto hodnoty mění dohromady. Pokud nejsou k dispozici znatelné světelné artefakty, které jsou výsledkem normálního kvantizační, neexistuje žádný důvod ke zvýšení jejich přesnosti. V některých případech ale může být tato součást nastavena na **none**:
   * `normal`, `tangent` a `binormal` jsou potřebné pouze v případě, že by měl být osvětlen alespoň jeden materiál v modelu. V ARR se jedná o případ, kdy se v modelu kdykoli používá [materiál PBR](../../overview/features/pbr-materials.md) .
-  * `tangent`a `binormal` jsou potřebné pouze v případě, že některé z materiálů osvětleny používají normální texturu mapy.
+  * `tangent` a `binormal` jsou potřebné pouze v případě, že některé z materiálů osvětleny používají normální texturu mapy.
 * `texcoord0`, `texcoord1` : Souřadnice textury mohou používat omezenou přesnost (**16_16_FLOAT**), pokud jejich hodnoty zůstávají v `[0; 1]` rozsahu a pokud mají určené textury maximální velikost 2048 x 2048 pixelů. Pokud dojde k překročení těchto omezení, kvalita mapování textur se zachová.
 
 #### <a name="example"></a>Příklad
@@ -241,9 +247,9 @@ Modul [Autodesk 3ds Max](https://www.autodesk.de/products/3ds-max) obsahuje odli
 
 ![Klonování v 3ds Max](./media/3dsmax-clone-object.png)
 
-* **`Copy`**: V tomto režimu se naklonuje síť, takže se nepoužijí žádné vytváření instancí ( `numMeshPartsInstanced` = 0).
-* **`Instance`**: Tyto dva objekty sdílejí stejnou síť, takže se používají vytváření instancí ( `numMeshPartsInstanced` = 1).
-* **`Reference`**: V geometrií lze použít rozdílné modifikátory, takže Exportér vybírá konzervativní přístup a nepoužívá vytváření instancí ( `numMeshPartsInstanced` = 0).
+* **`Copy`** : V tomto režimu se naklonuje síť, takže se nepoužijí žádné vytváření instancí ( `numMeshPartsInstanced` = 0).
+* **`Instance`** : Tyto dva objekty sdílejí stejnou síť, takže se používají vytváření instancí ( `numMeshPartsInstanced` = 1).
+* **`Reference`** : V geometrií lze použít rozdílné modifikátory, takže Exportér vybírá konzervativní přístup a nepoužívá vytváření instancí ( `numMeshPartsInstanced` = 0).
 
 
 ### <a name="depth-based-composition-mode"></a>Režim skládání na základě hloubky
@@ -259,8 +265,8 @@ Jak je popsáno v části [osvědčené postupy pro změny formátu komponent](c
 V závislosti na typu scénáře mohou množství dat textury převážit velikost paměti používané pro data sítě. Modely Photogrammetry jsou kandidáti.
 Konfigurace převodu neposkytuje způsob, jak automaticky škálovat textury. V případě potřeby je potřeba škálovat texturu jako krok předběžného zpracování na straně klienta. Krok převodu ale vyberte vhodný [Formát komprese textury](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11):
 
-* `BC1`pro neprůhledné textury barev
-* `BC7`pro zdrojové textury barev s alfa kanálem
+* `BC1` pro neprůhledné textury barev
+* `BC7` pro zdrojové textury barev s alfa kanálem
 
 Vzhledem k tomu, že formát `BC7` má dvojnásobek paměti `BC1` , která je v porovnání s, je důležité zajistit, aby vstupní textury neposkytovaly alfa kanál zbytečně.
 

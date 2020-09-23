@@ -7,13 +7,13 @@ services: security-center
 ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
-ms.topic: conceptual
-ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.topic: how-to
+ms.openlocfilehash: dfba8bc1713e14099413a6c01d0af8508ba0eb73
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181099"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895119"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků a nástrojů pro správu.
 
@@ -25,19 +25,22 @@ Pokud některý z prostředků obsahuje nevyřízená doporučení, zobrazí se 
 
 Pomocí tohoto zobrazení a jeho filtrů můžete tyto otázky vyřešit:
 
-- Které z předplatných na úrovni Standard mají nezpracované doporučení?
+- Které z mých předplatných využívajících Azure Defender mají neplacená doporučení?
 - U kterých počítačů s označením "produkční" chybí agent Log Analytics?
-- Kolik z mých počítačů označených konkrétní značkou má nezpracované doporučení?
+- Kolik počítačů označených konkrétní značkou má nezpracované doporučení?
 - Kolik prostředků v konkrétní skupině prostředků má zjištění zabezpečení ze služby posouzení ohrožení zabezpečení?
 
 Možnosti správy prostředků pro tento nástroj jsou zásadní a stále se rozšiřují. 
+
+> [!TIP]
+> Doporučení zabezpečení jsou stejná jako ta na stránce **doporučení** , ale tady se filtrují na konkrétní vybraný typ prostředku. Další informace o řešení doporučení najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
 
 ## <a name="availability"></a>Dostupnost
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|Všichni uživatelé|
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
@@ -56,7 +59,7 @@ Na stránce inventarizace najdete následující nástroje:
 
 - **Filtry** – více filtrů v horní části stránky nabízí způsob, jak rychle Upřesnit seznam prostředků podle otázky, na kterou se snažíte odpovědět. Pokud byste například chtěli odpovědět na dotaz, který má ve *svém počítači označení "produkční", chybí agent Log Analytics?* můžete zkombinovat filtr **monitorování agenta** s filtrem **značek** , jak je znázorněno v následujícím klipu:
 
-    ![Filtrování do produkčních prostředků, které nejsou monitorovány](./media/asset-inventory/filtering-to-prod-unmonitored.gif)
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Filtrování do produkčních prostředků, které nejsou monitorovány":::
 
     Jakmile použijete filtry, souhrnné hodnoty se aktualizují tak, aby se vztahovaly k výsledkům dotazu. 
 
@@ -70,7 +73,8 @@ Na stránce inventarizace najdete následující nástroje:
 - **Možnosti správy prostředků** – inventarizace umožňuje provádět složité dotazy zjišťování. Po nalezení prostředků odpovídajících vašim dotazům poskytuje inventář klávesové zkratky pro operace, jako například:
 
     - Přiřadit značky k filtrovaným prostředkům – zaškrtněte políčka vedle prostředků, které chcete označit.
-    - Připojit nové servery k Security Center – použijte tlačítko **Přidat jiné servery než Azure** na panelu nástrojů
+    - Připojte nové servery k Security Center – použijte tlačítko **Přidat jiné servery než Azure** na panelu nástrojů.
+    - Automatizace úloh pomocí Azure Logic Apps – pomocí tlačítka Spustit **aplikaci logiky** spusťte aplikaci logiky na jednom nebo několika prostředcích. Vaše aplikace logiky musí být připravené předem a musí přijmout příslušný typ triggeru (požadavek HTTP). [Přečtěte si další informace o Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Jak funguje soupis prostředků?
@@ -86,11 +90,11 @@ Při použití [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/dat
 
 1. Z bočního panelu Security Center vyberte **inventář**.
 
-1. Pokud chcete zobrazit konkrétní prostředek, můžete v poli **filtrovat podle názvu** zadat název.
+1. Použijte pole **filtrovat podle názvu** k zobrazení konkrétního prostředku nebo použijte filtry, jak je popsáno níže.
 
 1. Ve filtrech vyberte příslušné možnosti pro vytvoření konkrétního dotazu, který chcete provést.
 
-    ![Filtry inventáře](./media/asset-inventory/inventory-filters.png)
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Možnosti filtrování inventáře" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     Ve výchozím nastavení se prostředky seřadí podle počtu aktivních doporučení zabezpečení.
 
@@ -106,19 +110,24 @@ Při použití [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/dat
     > [!TIP]
     > **Výsledky zabezpečení obsahují** a filtry **značek** přijímají pouze jednu hodnotu. Chcete-li filtrovat podle více než jednoho, použijte příkaz **Přidat filtry**.
 
-1. Chcete-li použít filtr **cenové úrovně** , vyberte jednu nebo více možností (bezplatné, částečné nebo standardní):
+1. Pokud chcete použít filtr **Azure Defenderu** , vyberte jednu nebo víc možností (vypnuto, Zapnuto nebo částečně):
 
-    - **Bezplatné** prostředky, které jsou na cenové úrovni zdarma
-    - **Standardní** – prostředky, které jsou na cenové úrovni Standard
-    - **Částečně** – to platí pro předplatná, která jsou na cenové úrovni Standard, ale některé z volitelných plánů zabezpečení jsou zakázané. Například následující předplatné je na úrovni Standard, ale má pět prvků úrovně Standard zakázané. 
+    - **Off** – prostředky, které nejsou chráněné plánem Azure Defenderu. Můžete kliknout pravým tlačítkem na některý z těchto kroků a upgradovat je:
 
-        ![Předplatné na úrovni Standard (částečný) – cenová úroveň](./media/asset-inventory/pricing-tier-partial.png)
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Upgrade prostředku na Azure Defender kliknutím pravým tlačítkem" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+
+    - **On** Prostředky, které jsou chráněné plánem Azure Defenderu
+    - **Částečný** – to platí pro **odběry** , které mají zakázané některé plány Azure Defenderu, ale ne všechny. Například následující předplatné má pět plánů programu Azure Defender zakázané. 
+
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Předplatné je částečně v Azure Defenderu.":::
 
 1. Pokud chcete dále prozkoumávat výsledky dotazu, vyberte prostředky, které vás zajímají.
 
-1. V případě potřeby vyberte **Zobrazit v Průzkumníku grafu prostředků** a otevřete dotaz v Průzkumníku grafu prostředků.
+1. Chcete-li zobrazit aktuálně vybrané možnosti filtru jako dotaz v Průzkumníku grafu prostředků, vyberte možnost **Zobrazit v Průzkumníku grafu prostředků**.
 
     ![Dotaz na inventář v ARG](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+
+1. Chcete-li spustit dříve definovanou aplikaci logiky s 
 
 1. Pokud jste definovali nějaké filtry a levou stránku otevřeli, Security Center se výsledky automaticky neaktualizují. Změny prostředků nebudou mít vliv na zobrazené výsledky, pokud ručně nenačtete stránku nebo vyberete **aktualizovat**.
 
@@ -127,22 +136,19 @@ Při použití [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/dat
 
 ### <a name="why-arent-all-of-my-subscriptions-machines-storage-accounts-etc-shown"></a>Proč se nezobrazují všechna předplatná, počítače, účty úložiště atd.?
 
-Zobrazení inventáře obsahuje seznam vašich prostředků z perspektivy Cloud Security stav Management (CSPM). Filtry nevrátí všechny prostředky ve vašem prostředí; jenom ty s doporučeními pro zbývající (nebo aktivní). 
+Zobrazení inventáře obsahuje seznam Security Center propojených prostředků z perspektivy CSPM (Cloud Security stav Management). Filtry nevrátí všechny prostředky ve vašem prostředí; jenom ty s doporučeními pro zbývající (nebo aktivní). 
 
-Pokud máte například devět předplatných, ale pouze osm v současnosti mají doporučení, při filtrování podle **typu prostředku = odběry** se zobrazí pouze osm předplatných s aktivními doporučeními:
+Například následující snímek obrazovky ukazuje uživatele s přístupem k předplatným 38, ale pouze 10 aktuálně obsahuje doporučení. Takže když se filtrují podle **typu prostředku = odběry**, zobrazí se v inventáři jenom tyto 10 předplatných s aktivními doporučeními:
 
-![Pokud neexistují žádná aktivní doporučení, nevrátí se všechny.](./media/asset-inventory/filtered-subscriptions-some.png)
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Pokud neexistují žádná aktivní doporučení, nevrátí se všechny.":::
 
-
-### <a name="why-do-some-of-my-resources-show-blank-values-in-the-pricing-or-agent-monitoring-columns"></a>Proč některé z mých zdrojů ve sloupcích s cenami nebo monitorováním agentů zobrazují prázdné hodnoty?
+### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Proč některé z mých zdrojů ve sloupcích Azure Defenderu nebo monitorování agentů zobrazují prázdné hodnoty?
 
 Ne všechny Security Center monitorované prostředky mají agenty. Například Azure Storage účty nebo PaaS prostředky, jako jsou disky, Logic Apps, Data Lake analýzy a centrum událostí.
 
 Když ceny nebo monitorování agentů nejsou pro určitý prostředek relevantní, nezobrazí se v těchto sloupcích inventáře.
 
-![Některé zdroje zobrazují prázdné informace v části monitorování agenta nebo sloupce s cenami.](./media/asset-inventory/agent-pricing-blanks.png)
-
-
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Některé zdroje zobrazují ve sloupcích monitorování agentů nebo v Azure Defenderu prázdné informace.":::
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -151,5 +157,4 @@ Tento článek popisuje stránku inventáře prostředků Azure Security Center.
 Další informace o souvisejících nástrojích najdete na následujících stránkách:
 
 - [Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-
 - [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)

@@ -6,24 +6,25 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/10/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 836582003c4b4bd47d2b90b845ae414210d16edd
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4a4b6d02845c9767b7ab668dd172da38150fc89e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246175"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024960"
 ---
 Začínáme s klientskou knihovnou anomálie detektoru pro JavaScript Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba detektoru anomálií umožňuje v datech časových řad najít neobvyklé typy, a to díky tomu, že automaticky používá nejvhodnější modely, bez ohledu na obor, scénář nebo objem dat.
 
 Použijte klientskou knihovnu pro detekci anomálií pro JavaScript:
 
-* Detekovat anomálie v celé datové sadě časových řad jako požadavek dávky
+* Detekovat anomálie v celé sadě dat časových řad jako dávkový požadavek
 * Zjistit stav anomálií z nejnovějšího datového bodu v časové řadě
+* Zjištění bodů změny trendu v datové sadě.
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector)  |  [Vyhledání kódu na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
+[Referenční dokumentace ke knihovně](https://go.microsoft.com/fwlink/?linkid=2090788)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Balíček (npm)](https://www.npmjs.com/package/%40azure/ai-anomaly-detector)  |  [Vyhledání kódu na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,18 +65,18 @@ Vytvořte proměnné koncového bodu a klíče Azure prostředku. Pokud jste po 
 Nainstalujte `ms-rest-azure` balíčky a `azure-cognitiveservices-anomalydetector` npm. Knihovna CSV-Parse se používá také v tomto rychlém startu:
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
+npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 ```
 
 Soubor vaší aplikace `package.json` bude aktualizován pomocí závislostí.
 
 ## <a name="object-model"></a>Objektový model
 
-Klient detektoru anomálií je objekt [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí dvě metody detekce anomálií: na celé datové sadě pomocí [entireDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--)a na nejnovějším datovém bodu pomocí [LastDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-). 
+Klient detektoru anomálií je objekt [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) , který se ověřuje v Azure pomocí vašeho klíče. Klient může provádět detekci anomálií pro celou datovou sadu pomocí [entireDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--)nebo k nejnovějšímu datovému bodu pomocí [LastDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-). Metoda [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) detekuje body, které označují změny trendu. 
 
 Data časové řady se odesílají jako řada [bodů](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) v objektu [Request](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) . `Request`Objekt obsahuje vlastnosti pro popis dat (například[členitosti](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity) ) a parametrů pro detekci anomálií. 
 
-Odezva detektoru anomálií je objekt [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) nebo [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) v závislosti na použité metodě. 
+Odezva detektoru anomálií je objekt [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest), [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest)nebo [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) v závislosti na použité metodě. 
 
 ## <a name="code-examples"></a>Příklady kódu 
 
@@ -85,6 +86,7 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 * [Načtení datové sady časových řad ze souboru](#load-time-series-data-from-a-file)
 * [Detekovat anomálie v celé sadě dat](#detect-anomalies-in-the-entire-data-set) 
 * [Zjistit stav anomálií nejnovějšího datového bodu](#detect-the-anomaly-status-of-the-latest-data-point)
+* [Zjistit body změny v sadě dat](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -116,6 +118,12 @@ Zavolejte rozhraní API pro detekci anomálií prostřednictvím celé časové 
 Zavolejte rozhraní API pro detekci anomálií, abyste zjistili, jestli je váš nejnovější datový bod anomálií pomocí metody [lastDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) klienta, a uložte vrácený objekt [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) . `isAnomaly`Hodnota odpovědi je logická hodnota, která určuje stav anomálie tohoto bodu.  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
+
+## <a name="detect-change-points-in-the-data-set"></a>Zjištění bodů změny v sadě dat
+
+Zavolejte rozhraní API pro detekci změn bodů v časové řadě pomocí metody [detectChangePoint ()](https://go.microsoft.com/fwlink/?linkid=2090788) klienta. Uložte vrácený objekt [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) . Iterujte v seznamu odpovědí `isChangePoint` a vytiskněte index všech `true` hodnot. Tyto hodnoty odpovídají indexům bodů změny trendů, pokud byly nalezeny.
+
+[!code-javascript[detect change points](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=changePointDetection)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 

@@ -1,24 +1,24 @@
 ---
-title: Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure (Preview)
-description: Servery s podporou ARC Azure (Preview) můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
-ms.date: 06/17/2020
+title: Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
+description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018157"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887746"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure (Preview)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 
 Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pokud virtuální počítač vyžaduje například instalaci softwaru, antivirovou ochranu nebo spuštění interního skriptu, je možné pro tento účel použít rozšíření virtuálního počítače.
 
-Servery s podporou Azure ARC (ve verzi Preview) umožňují nasadit rozšíření virtuálních počítačů Azure na virtuální počítače, které nejsou v Azure a Linux, což zjednodušuje správu hybridního počítače v místním prostředí, hraničních zařízeních a dalších cloudových prostředích v životním cyklu.
+Servery s podporou ARC Azure vám umožňují nasadit rozšíření virtuálních počítačů Azure do virtuálních počítačů s jiným než Azure a Linux, což zjednodušuje správu hybridního počítače v místním prostředí, hraničních zařízeních a dalších cloudových prostředích v životním cyklu.
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
-Podpora rozšíření virtuálních počítačů na serverech s podporou Azure ARC (Preview) nabízí následující klíčové výhody:
+Podpora rozšíření virtuálních počítačů serverů s podporou ARC Azure nabízí následující klíčové výhody:
 
 * [Konfigurace stavu Azure Automation](../../automation/automation-dsc-overview.md) slouží k centrálnímu ukládání konfigurací a údržbě požadovaného stavu hybridních připojených počítačů povolených prostřednictvím rozšíření virtuálního počítače DSC.
 
@@ -47,11 +47,11 @@ V této verzi Preview podporujeme následující rozšíření virtuálních po�
 |Agent Log Analytics |Linux |Microsoft. EnterpriseCloud. Monitoring |[Rozšíření virtuálního počítače s Log Analytics pro Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency Agent | Linux |Microsoft.Compute | [Rozšíření pro virtuální počítače s agentem závislosti pro Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-Rozšíření virtuálních počítačů je možné spouštět pomocí šablon Azure Resource Manager, z Azure Portal nebo Azure PowerShell na hybridních serverech spravovaných servery s podporou ARC (Preview).
+Rozšíření virtuálních počítačů je možné spouštět pomocí šablon Azure Resource Manager, z Azure Portal nebo Azure PowerShell na hybridních serverech spravovaných servery s podporou ARC.
 
 Další informace o balíčku agenta připojeného počítače Azure a podrobnostech o komponentě agenta rozšíření najdete v tématu [Přehled agenta](agent-overview.md#agent-component-details).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato funkce závisí na následujících poskytovatelích prostředků Azure v rámci vašeho předplatného:
 
@@ -75,13 +75,13 @@ Pokud chcete upgradovat počítač na požadovanou verzi agenta, přečtěte si 
 
 ## <a name="enable-extensions-from-the-portal"></a>Povolení rozšíření z portálu
 
-Rozšíření virtuálních počítačů můžete použít k použití spravovaného počítače s obloukem pro server (Preview) prostřednictvím Azure Portal.
+Rozšíření virtuálních počítačů můžete použít k použití ARC pro serverový počítač spravovaný pomocí Azure Portal.
 
 1. V prohlížeči přejdete na [Azure Portal](https://aka.ms/arcserver-preview).
 
-2. Na portálu přejděte do **počítačů – Azure ARC** a ze seznamu vyberte svůj hybridní počítač.
+2. Na portálu přejděte na **servery – Azure ARC** a ze seznamu vyberte svůj hybridní počítač.
 
-3. Vyberte **rozšíření**a pak **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci. V tomto příkladu nasadíme rozšíření Log Analytics VM. 
+3. Vyberte **rozšíření**a pak **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci. V tomto příkladu nasadíme rozšíření Log Analytics VM.
 
     ![Vybrat rozšíření virtuálního počítače pro vybraný počítač](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -98,7 +98,7 @@ Rozšíření virtuálních počítačů můžete použít k použití spravovan
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. S rozšířeními virtuálních počítačů podporovaných servery s podporou ARC (Preview) můžete nasadit podporované rozšíření virtuálního počítače na počítačích se systémem Linux nebo Windows pomocí Azure PowerShell. Každý příklad obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
+Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. S rozšířeními virtuálních počítačů podporovaných servery s podporou ARC můžete nasadit podporované rozšíření virtuálního počítače v počítačích se systémem Linux nebo Windows pomocí Azure PowerShell. Každý příklad obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
 
 >[!NOTE]
 >I když je možné dávkovat více rozšíření a zpracovat je, nainstalují se sériově. Po dokončení první instalace rozšíření dojde k pokusu o instalaci dalšího rozšíření.
@@ -707,6 +707,18 @@ Chcete-li použít rozšíření agenta závislosti Azure Monitor, je k dispozic
 }
 ```
 
+## <a name="uninstall-extension"></a>Odinstalace rozšíření
+
+Odebrání jedné nebo více rozšíření ze serveru s povoleným obloukem se dá provést jenom z Azure Portal. Chcete-li odebrat rozšíření, proveďte následující kroky.
+
+1. V prohlížeči přejdete na [Azure Portal](https://portal.azure.com).
+
+2. Na portálu přejděte na **servery – Azure ARC** a ze seznamu vyberte svůj hybridní počítač.
+
+3. Zvolte **rozšíření**a pak vyberte rozšíření ze seznamu nainstalovaných rozšíření.
+
+4. Vyberte možnost **odinstalovat** a když se zobrazí výzva k ověření, vyberte **Ano** a pokračujte.
+
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal.
@@ -715,7 +727,7 @@ Následující kroky pro řešení potíží se vztahují na všechna rozšíře
 
 1. Pokud chcete zkontrolovat protokol hostovaného agenta, podívejte se na aktivitu při zřizování rozšíření `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` pro Windows a v části pro Linux v `/var/lib/GuestConfig/ext_mgr_logs` .
 
-2. Další podrobnosti v systému Windows najdete v protokolech rozšíření pro konkrétní rozšíření `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` . Výstup rozšíření se zaznamená do souboru pro každé rozšíření nainstalované v systému Linux `/var/log/GuestConfig/extension_logs` .
+2. Další podrobnosti v systému Windows najdete v protokolech rozšíření pro konkrétní rozšíření `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` . Výstup rozšíření se zaznamená do souboru pro každé rozšíření nainstalované v systému Linux `/var/lib/GuestConfig/extension_logs` .
 
 3. Podívejte se na oddíly řešení potíží v dokumentaci ke konkrétnímu rozšíření pro kódy chyb, známé problémy atd. Další informace o řešení potíží pro jednotlivá rozšíření najdete v části **řešení potíží a podpora** v tématu Přehled tohoto rozšíření. To zahrnuje Popis chybových kódů zapsaných do protokolu. Články rozšíření jsou propojeny v [tabulce rozšíření](#extensions) , kterou najdete dříve v tomto článku.
 
@@ -725,4 +737,4 @@ Následující kroky pro řešení potíží se vztahují na všechna rozšíře
 
 - Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md)a mnohem víc.
 
-- Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
+- Přečtěte si další informace o nástroji [[Log Analytics agent]](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).

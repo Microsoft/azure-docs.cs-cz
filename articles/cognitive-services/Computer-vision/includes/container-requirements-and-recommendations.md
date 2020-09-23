@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: c62044582cb488a5ef2d20b3f407c0865b3994ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bffdb7b33fc7da38b6985edc3948b848f417a497
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877966"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982082"
 ---
 > [!NOTE]
 > Požadavky a doporučení jsou založené na srovnávacích testech s jednou žádostí za sekundu pomocí 8 MB naskenovaného obchodního dopisu obsahujícího 29 řádků a celkem 803 znaků.
 
 Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner pro čtení.
 
-| Kontejner | Minimální | Doporučené |TPS<br>(Minimum, maximum)|
-|-----------|---------|-------------|--|
-| Čtení | 1 jádra, 8 GB paměti, 0,24 TPS | 8 jader, 16 GB paměti, 1,17 TPS | 0,24, 1,17 |
+| Kontejner | Minimum | Doporučeno |
+|-----------|---------|-------------|
+| Přečíst 3,0 – Preview | 8 jader, 16 GB paměti | 8 jader, 24 GB paměti |
+| Přečíst 3,1 – Preview | 8 jader, 16 GB paměti | 8 jader, 24 GB paměti |
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
-* TPS-transakcí za sekundu.
 
-Základní a paměť odpovídají nastavení `--cpus` a `--memory` , která se používají jako součást `docker run` příkazu.
+Základní a paměť odpovídají `--cpus` `--memory` nastavení a, která se používají jako součást `docker run` příkazu.

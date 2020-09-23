@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e4564ba2b6109296a7383fb4b056c2f4b1890fda
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178127"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975104"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -96,7 +96,7 @@ Následující kroky vás provedou vytvořením trezoru Recovery Services. Recov
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Zadejte typ redundance úložiště, který se má použít. Můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Následující příklad ukazuje možnost-BackupStorageRedundancy pro testvault je nastavená na geograficky redundantní.
+3. Zadejte typ redundance úložiště, který se má použít. Můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)nebo [úložiště redundantní v zóně (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage). Následující příklad ukazuje možnost **-BackupStorageRedundancy** pro *testvault* nastavenou na geograficky **redundantní**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"

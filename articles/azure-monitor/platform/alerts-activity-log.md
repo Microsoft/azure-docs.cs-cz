@@ -4,12 +4,12 @@ description: Výstrahy protokolu aktivit Vytvářejte pomocí Azure Portal, šab
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7914f3ee57d014de2f34fca301b587c6297bebe3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322410"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983082"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor  
 
@@ -111,7 +111,7 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
 1. V Azure Portal vyberte **monitorovat**  >  **výstrahy**. V levém horním rohu okna vyberte **Spravovat pravidla výstrah** .
 
-    ![Správa pravidel výstrah](media/alerts-activity-log/manage-alert-rules.png)
+    ![Snímek obrazovky s vybraným vyhledávacím polem zobrazí protokol aktivit.](media/alerts-activity-log/manage-alert-rules.png)
 
     Zobrazí se seznam dostupných pravidel.
 
@@ -119,7 +119,7 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
     ![Vyhledat pravidla upozornění protokolu aktivit](media/alerts-activity-log/searth-activity-log-rule-to-edit.png)
 
-    K vyhledání pravidla aktivity, které chcete upravit, můžete použít dostupné filtry, _předplatné_, _skupinu prostředků_, _prostředek_, _typ signálu_nebo _stav_.
+    K vyhledání pravidla aktivity, které chcete upravit, můžete použít dostupné filtry, _předplatné_, _skupinu prostředků_,  _prostředek_, _typ signálu_nebo _stav_.
 
    > [!NOTE]
    > 
@@ -219,7 +219,7 @@ Následující pole jsou možnosti, které můžete použít v šabloně Azure R
 9. Dílčí stav: obvykle stavový kód HTTP odpovídajícího volání REST, ale může také zahrnovat další řetězce popisující dílčí stav.   Příklad: OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu HTTP: 400), Nenalezeno (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), interní chyba serveru (Stavový kód http: 500), nedostupná služba (Stavový kód http: 503), časový limit brány (kód stavu http: 504).
 10. ResourceType: typ prostředku, který byl ovlivněn událostí. Například: Microsoft. Resources/Deployments
 
-Například:
+Příklad:
 
 ```json
 "condition": {

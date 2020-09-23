@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906798"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974711"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Vytváření vlastních polí v pracovním prostoru Log Analytics v Azure Monitor (Preview)
 
@@ -23,7 +23,7 @@ ms.locfileid: "84906798"
 
 Funkce **vlastní pole** Azure monitor umožňuje rozšíření existujících záznamů v pracovním prostoru Log Analytics přidáním vlastních vyhledávacích polí.  Vlastní pole jsou automaticky vyplněna z dat extrahovaných z jiných vlastností ve stejném záznamu.
 
-![Přehled](media/custom-fields/overview.png)
+![Diagram znázorňuje původní záznam přidružený k upravenému záznamu v pracovním prostoru Log Analytics s páry hodnoty vlastností přidané do původní vlastnosti v upravovaném záznamu.](media/custom-fields/overview.png)
 
 Například následující ukázkový záznam obsahuje užitečné ukryto dat v popisu události. Extrakce těchto dat do samostatné vlastnosti je dostupná pro tyto akce jako řazení a filtrování.
 
@@ -81,7 +81,7 @@ Následující část vás provede úplným příkladem vytvoření vlastního p
 
 Do následujícího dotazu zadáte následující dotaz, který vrátí všechny události ze Správce řízení služeb, který má ID události 7036, což je událost, která označuje, že služba se spouští nebo zastavuje.
 
-![Dotaz](media/custom-fields/query.png)
+![Snímek obrazovky zobrazuje dotaz na zdroj a ID události.](media/custom-fields/query.png)
 
 Pak vybereme a rozbalíme libovolný záznam s ID události 7036.
 

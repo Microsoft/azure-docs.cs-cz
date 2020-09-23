@@ -1,6 +1,6 @@
 ---
-title: Konfigurace replikace na Edge Azure SQL (Preview)
-description: Přečtěte si o konfiguraci replikace do Azure SQL Edge (Preview).
+title: Konfigurace replikace na Edge Azure SQL
+description: Přečtěte si o konfiguraci replikace na Edge Azure SQL.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282768"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888416"
 ---
-# <a name="configure-replication-to-azure-sql-edge-preview"></a>Konfigurace replikace na Edge Azure SQL (Preview) 
+# <a name="configure-replication-to-azure-sql-edge"></a>Konfigurace replikace na Edge Azure SQL 
 
 Můžete nakonfigurovat instanci Azure SQL Edge jako předplatitel nabízených oznámení pro jednosměrnou transakční replikaci nebo replikaci snímků. Tato instance nemůže fungovat jako Vydavatel nebo distributor pro konfiguraci transakční replikace. Všimněte si, že Azure SQL Edge nepodporuje slučovací replikaci, replikaci peer-to-peer ani publikování Oracle.
 

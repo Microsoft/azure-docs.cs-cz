@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Portal k řešení problémů s objednáním Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak řešit problémy s Azure Stackmi hraničními objednáními.
+title: Použití Azure Portal k řešení problémů s pořadím pro Azure Stack Edge pro | Microsoft Docs
+description: Popisuje řešení potíží s pořadím Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c42ee867bdd20de64fa1c603de47b5f1e7bdb39
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055941"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903640"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Řešení potíží s pořadím Azure Stack Edge
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Řešení potíží s pořadím Azure Stack Edge pro
 
-Tento článek popisuje, jak řešit problémy s Azure Stackmi okraji Edge.
+Tento článek popisuje, jak řešit problémy s pořadím Azure Stack Edge pro.
 
 V tomto kurzu se naučíte:
 
@@ -59,7 +59,7 @@ Další informace najdete v tématu [registrace poskytovatelů prostředků](azu
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Microsoft. DataBoxEdge není zaregistrovaný pro předplatné.
 
-**Chyba:** V Azure Portal vyberte předplatné, které se má použít pro Azure Stack Edge nebo Data Box Gateway, a zobrazí se následující chyba:
+**Chyba:** V Azure Portal vyberte předplatné, které se má použít pro Azure Stack Edge pro nebo Data Box Gateway, a zobrazí se následující chyba:
 
 *Poskytovatelé prostředků: Microsoft. DataBoxEdge není registrovaný pro název předplatného předplatného &lt; &gt; a nemáte oprávnění registrovat poskytovatele prostředků pro &lt; název &gt; *předplatného předplatného.
 
@@ -75,4 +75,4 @@ Další informace najdete v tématu [registrace poskytovatelů prostředků](azu
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [řešení problémů s Azure Stack hranami](azure-stack-edge-troubleshoot.md).
+* Přečtěte si další informace o [řešení problémů s Azure Stack Edge pro](azure-stack-edge-troubleshoot.md).

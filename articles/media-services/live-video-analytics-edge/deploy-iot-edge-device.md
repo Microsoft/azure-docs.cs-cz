@@ -2,28 +2,32 @@
 title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/09/2020
+ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526319"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887227"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
 V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 
+> [!NOTE]
+> Podpora pro zařízení ARM64 je k dispozici v Live video Analytics na IoT Edge sestaveních `1.0.4` a novějších.
+> Podpora spouštění Azure IoT Edge runtime na zařízeních ARM64 je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## <a name="prerequisites"></a>Požadavky
 
-* Počítač se systémem Linux, který splňuje omezení HW a SW pro Live video Analytics
+* Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) .
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
 * [Vytvoření a nastavení IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
 * [Registrace zařízení IoT Edge](../../iot-edge/how-to-register-device.md)
 * [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Vytvoření účtu Azure Media Services](../latest/create-account-howto.md)
 
-    * Použijte jednu z těchto oblastí: Východní USA 2, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
+    * Použijte jednu z těchto oblastí: Východní USA 2, Východní USA, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
     * Doporučuje se používat účty úložiště pro obecné účely v2 (GPv2).
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Konfigurace prostředků Azure pro používání živé analýzy videí
@@ -81,7 +85,6 @@ sudo chown -R edgeuser /var/media
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Nasadit modul Edge pro video Analytics v provozu
 
-<!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 Live video Analytics na IoT Edge zveřejňuje moduly s dvojitou vlastností, které jsou zdokumentovány ve [schématu konfigurace s dvojitou](module-twin-configuration-schema.md)platností. 
 
 ### <a name="deploy-using-the-azure-portal"></a>Nasazení pomocí webu Azure Portal
@@ -252,4 +255,4 @@ Dále umožňuje otestovat ukázku vyvoláním přímé metody. Přečtěte si [
 Vyzkoušejte [rychlý Start: Začínáme – Live video Analytics na IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]
-> V příkazu se spustí další, `device-id` místo výchozí použijte `lva-sample-device` .
+> Pokud budete pokračovat s výše uvedeným rychlým startem, při vyvolání přímých metod pomocí Visual Studio Code použijete místo výchozího nastavení zařízení, které bylo přidáno do IoT Hub prostřednictvím tohoto článku `lva-sample-device` .
