@@ -5,12 +5,12 @@ ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: be539efdb66b0a9bda583960484f40fae1e18235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123388"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973088"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Vytvoření funkce v Azure aktivované časovačem
 
@@ -20,7 +20,7 @@ Naučte se, jak pomocí Azure Functions vytvořit funkci bez [serveru](https://a
 
 Pro absolvování tohoto kurzu potřebujete:
 
-+ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
++ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-azure-function-app"></a>Vytvoření aplikace Azure Function App
 
@@ -44,7 +44,7 @@ Vaše nová aplikace Function App je připravena k použití. V dalším kroku v
 
 1. Nakonfigurujte novou aktivační událost s nastavením uvedenými v tabulce pod obrázkem a pak vyberte **vytvořit funkci**.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Vyberte aktivační událost časovače v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Snímek obrazovky s vybranou šablonou triggeru časovače zobrazuje novou stránku funkce." border="true":::
     
     | Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|

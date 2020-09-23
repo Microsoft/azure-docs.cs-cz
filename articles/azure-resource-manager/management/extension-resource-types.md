@@ -2,13 +2,13 @@
 title: Typy prostředků rozšíření
 description: Obsahuje seznam typů prostředků Azure, pomocí kterých se rozšiřuje schopnost dalších typů prostředků.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 09/22/2020
+ms.openlocfilehash: 8b80c63d361f3ad8199fd669178f7bf88dabe02e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374010"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969741"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Typy prostředků, které rozšiřuje možnosti jiných prostředků
 
@@ -21,6 +21,8 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. Advisor/potlačení
 - Microsoft. AlertsManagement/Alerts
 - Microsoft. AlertsManagement/alertsSummary
+- Microsoft. Authorization/accessReviewScheduleDefinitions
+- Microsoft. Authorization/accessReviewScheduleSettings
 - Microsoft. Authorization/checkAccess
 - Microsoft. Authorization/denyAssignments
 - Microsoft. Authorization/findOrphanRoleAssignments
@@ -34,6 +36,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. Authorization/roleAssignments
 - Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft. Authorization/roleDefinitions
+- Microsoft. automanage/configurationProfileAssignments
 - Microsoft. fakturace/billingPeriods
 - Microsoft. fakturace/billingPermissions
 - Microsoft. fakturace/billingRoleAssignments
@@ -47,24 +50,24 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. spotřeba/rozpočty
 - Microsoft. spotřeba/poplatky
 - Microsoft. spotřeb/CostTags
+- Microsoft. spotřeba/kredity
+- Microsoft. spotřeb/Events
 - Microsoft. spotřeba/předpovědi
+- Microsoft. spotřeba/šarže
 - Microsoft. spotřeb/Marketplace
 - Microsoft. spotřeb/OperationResults
 - Microsoft. spotřeb/stav operationstatus
 - Microsoft. spotřeb/Pricesheets
+- Microsoft. spotřeba/produkty
 - Microsoft. spotřeb/ReservationDetails
 - Microsoft. spotřeb/ReservationRecommendationDetails
 - Microsoft. spotřeb/ReservationRecommendations
 - Microsoft. spotřeb/ReservationSummaries
 - Microsoft. spotřeb/ReservationTransactions
 - Microsoft. spotřeba/značky
+- Microsoft. spotřeba/klienti
 - Microsoft. spotřeb/terms
 - Microsoft. spotřeb/UsageDetails
-- Microsoft. spotřeba/kredity
-- Microsoft. spotřeb/Events
-- Microsoft. spotřeba/šarže
-- Microsoft. spotřeba/produkty
-- Microsoft. spotřeba/klienti
 - Microsoft. ContainerInstance/serviceAssociationLinks
 - Microsoft. CostManagement/Alerts
 - Microsoft. CostManagement/rozpočty
@@ -73,6 +76,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. CostManagement/EXPORTS
 - Microsoft. CostManagement/ExternalSubscriptions
 - Microsoft. CostManagement/FORECAST
+- Microsoft. CostManagement/Insights
 - Microsoft. CostManagement/dotaz
 - Microsoft. CostManagement/Reportconfigs
 - Microsoft. CostManagement/Reports
@@ -93,17 +97,19 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. Insights/diagnosticSettingsCategories
 - Microsoft. Insights/EventTypes
 - Microsoft. Insights/extendedDiagnosticSettings
+- Microsoft. Insights/generateLiveToken
 - Microsoft. Insights/guestDiagnosticSettingsAssociation
 - Microsoft. Insights/logDefinitions
 - Microsoft. Insights/protokoly
+- Microsoft. Insights/metricbaselines
 - Microsoft. Insights/metricDefinitions
 - Microsoft. Insights/metricNamespaces
-- Microsoft. Insights/metricbaselines
 - Microsoft. Insights/metriky
 - Microsoft. Insights/myWorkbooks
 - Microsoft. Insights/topologie
 - Microsoft. Insights/transakcí
 - Microsoft. Insights/vmInsightsOnboardingStatuses
+- Microsoft. KubernetesConfiguration/Extensions
 - Microsoft. KubernetesConfiguration/sourceControlConfigurations
 - Microsoft. Maintenance/applyUpdates
 - Microsoft. Maintenance/configurationAssignments
@@ -128,20 +134,22 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. ResourceHealth/oznámení
 - Microsoft. Resources/odkazy
 - Microsoft. Resources/Tags
-- Microsoft. Security/dodržování předpisů
-- Microsoft. Security/InformationProtectionPolicies
 - Microsoft. Security/adaptiveNetworkHardenings
 - Microsoft. Security/advancedThreatProtectionSettings
 - Microsoft. Security/assessmentMetadata
 - Microsoft. Security/Assessments
 - Microsoft. Security/complianceResults
+- Microsoft. Security/dodržování předpisů
 - Microsoft. Security/dataCollectionAgents
 - Microsoft. Security/deviceSecurityGroups
+- Microsoft. Security/InformationProtectionPolicies
+- Microsoft. Security/iotSensors
 - Microsoft. Security/jitPolicies
 - Microsoft. Security/serverVulnerabilityAssessments
+- Microsoft. Security/sqlVulnerabilityAssessments
 - Microsoft. SecurityInsights/agregace
-- Microsoft. SecurityInsights/alertRuleTemplates
 - Microsoft. SecurityInsights/alertRules
+- Microsoft. SecurityInsights/alertRuleTemplates
 - Microsoft. SecurityInsights/automationRules
 - Microsoft. SecurityInsights/záložky
 - Microsoft. SecurityInsights/případy
@@ -153,6 +161,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. SecurityInsights/officeConsents
 - Microsoft. SecurityInsights/Settings
 - Microsoft. SecurityInsights/threatIntelligence
+- Microsoft. SecurityInsights/watchlists
 - Microsoft. SoftwarePlan/hybridUseBenefits
 - Microsoft. Subscription/CreateSubscription
 - Microsoft. support/supporttickets

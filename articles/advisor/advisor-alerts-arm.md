@@ -1,15 +1,15 @@
 ---
 title: Vytvoření upozornění Azure Advisor pro nová doporučení pomocí šablony Správce prostředků
-description: Vytvořit upozornění Azure Advisor pro nové doporučení
+description: Naučte se nastavit upozornění pro nová doporučení od Azure Advisor pomocí šablony Azure Resource Manager (šablony ARM).
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 2becfbbc63beb6451e5e877c5a60553d98650494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a10ca5f0b4119fb65d6b0f717f5c212acb20f9cd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973684"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Rychlý Start: vytváření Azure Advisor upozornění na nová doporučení pomocí šablony ARM
 

@@ -9,14 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9b7abc39bf50a61b7b52bc4027c6d845728c3874
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419261"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972260"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)
+
+> [!NOTE]
+> Poskytovatel prostředků Key Vault podporuje dva typy prostředků: **trezory** a **spravované HSM**. Řízení přístupu popsané v tomto článku platí jenom pro **trezory**. Další informace o řízení přístupu pro spravovaný modul HSM najdete v tématu [spravované řízení přístupu HSM](../managed-hsm/access-control.md).
 
 Řízení přístupu na základě role Azure (Azure RBAC) je autorizační systém založený na [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , který poskytuje jemně odstupňovanou správu prostředků Azure.
 
@@ -43,7 +46,7 @@ Další informace o pokynech pro správu Azure Key Vault najdete v tématech:
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Předdefinované role Azure pro operace Key Vault roviny dat (Preview)
 
-| Předdefinovaná role | Popis | ID |
+| Předdefinovaná role | Description | ID |
 | --- | --- | --- |
 | Správce Key Vault (Preview) | Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 | Key Vault úřední certifikát (Preview) | S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | a4417e6f-fecd-4de8-b567-7b0420556985 |
@@ -61,10 +64,6 @@ Další informace o definicích integrovaných rolí Azure najdete v tématu [p�
 Nový model oprávnění Azure RBAC pro Trezor klíčů poskytuje alternativu k modelu oprávnění zásad přístupu trezoru. 
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Povolit oprávnění Azure RBAC na Key Vault
-
-Během období Preview je nutné použít značku funkce Azure RBAC (Microsoft_Azure_KeyVault_RBACEnabled = true) a zobrazit tak nové možnosti modelu oprávnění.
-
-https://portal.azure.com/?Microsoft_Azure_KeyVault_RBACEnabled=true#home
 
 > [!IMPORTANT]
 > Nastavení modelu oprávnění Azure RBAC neověřuje všechna oprávnění zásad přístupu. Může to způsobit výpadky, když nejsou přiřazené ekvivalentní role Azure.

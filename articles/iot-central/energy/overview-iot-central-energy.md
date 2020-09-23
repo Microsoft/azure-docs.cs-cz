@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77016558"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970439"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Sestavování řešení pro energetiku s využitím služby IoT Central 
 
@@ -62,7 +62,6 @@ Po nasazení aplikace se v 1-2 minutách zobrazí Simulovaná data v panelu slun
 
 > [!div class="mx-imgBorder"]
 > ![Řídicí panel aplikace pro sluneční panel](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
-
 
 ## <a name="next-steps"></a>Další kroky
 Začínáme s vytvářením řešení pro energii:

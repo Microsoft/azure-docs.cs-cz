@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 43ba14845765230b9a54c2b34dbc7ccd53af950b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "66117588"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969992"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: zjištění anomálií na hraničních zařízeních pomocí akcelerátoru řešení vzdáleného monitorování
 
@@ -26,7 +26,7 @@ Společnost Contoso chce nasadit modul Intelligent Edge do zásuvky čerpací st
 
 Následující diagram znázorňuje klíčové komponenty v scénáři kurzu:
 
-![Přehled](media/iot-accelerators-remote-monitoring-edge/overview.png)
+![Diagram zobrazuje zdířka čerpacího čerpadla připojeného k I výstupům modulu Stream Analytics v zařízení I o Edge pro telemetrii a příkazy. Filtrovaná telemetrie přechází na hraniční zařízení I o T v akcelerátoru řešení vzdáleného monitorování v cloudu. Cloud také obsahuje nasazení a balíček. Nasazení nasadí do zařízení modul runtime I o T Edge.](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 V tomto kurzu jste:
 
@@ -45,7 +45,7 @@ Na IoT Edge zařízení:
 
 Tento kurz používá virtuální počítač Linux jako zařízení IoT Edge. Nainstalujete také hraniční modul pro simulaci čerpacího zařízení olejového čerpadla.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -205,7 +205,7 @@ Dále vytvoříte manifest nasazení IoT Edge, který definuje moduly, které ma
 
 1. Ve službě IoT Hub klikněte na **IoT Edge** v části **Automatická správa zařízení** . Klikněte na  **přidat IoT Edge nasazení**.
 
-1. Na stránce **vytvořit > název a popisek pro nasazení** zadejte název **oleje – pumpa zařízení**. Klikněte na **Další**.
+1. Na stránce **vytvořit > název a popisek pro nasazení** zadejte název **oleje – pumpa zařízení**. Klikněte na **Next** (Další).
 
 1. Na stránce **vytvořit nasazení > přidat moduly** klikněte na **+ Přidat**. Vyberte **modul IoT Edge**.
 
@@ -231,11 +231,11 @@ Dále vytvoříte manifest nasazení IoT Edge, který definuje moduly, které ma
 
     Tento kód směruje výstup z modulu Stream Analytics do správných umístění.
 
-    Klikněte na **Další**.
+    Klikněte na **Next** (Další).
 
 1. Na stránce **vytvořit nasazení > určit metriky** klikněte na **Další**.
 
-1. Na stránce **vytvořit nasazení > cílová zařízení** zadejte jako prioritu 10. Klikněte na **Další**.
+1. Na stránce **vytvořit nasazení > cílová zařízení** zadejte jako prioritu 10. Klikněte na **Next** (Další).
 
 1. Na stránce **vytvořit nasazení > kontrola nasazení** klikněte na **Odeslat**:
 
@@ -315,7 +315,7 @@ Pokud chcete po dosažení prahové hodnoty oznamovat operátory, můžete vytvo
     | Možnost | Hodnota |
     | ------ | ----- |
     | Název pravidla | Teplota olejového čerpadla |
-    | Popis | Teplota olejového čerpadla překročila 300. |
+    | Description | Teplota olejového čerpadla překročila 300. |
     | Skupina zařízení | OilPumps |
     | Výpočet | Okamžitě |
     | Pole | teplota |

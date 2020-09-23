@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73839172"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970079"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Použití editoru Video Indexer k vytváření projektů
 
@@ -51,11 +51,11 @@ Tento článek ukazuje, jak vytvořit projekt od začátku a také jak vytvořit
     
     Například na následujícím obrázku hledáte videa, která zmiňují GitHub.
     
-    ![GitHubu](./media/video-indexer-view-edit/github.png)
+    ![Snímek obrazovky s vyhledáváním videí, která zmiňují GitHub, se dvěma výsledky](./media/video-indexer-view-edit/github.png)
 
     Výsledky můžete dál filtrovat tak, že vyberete **výsledky filtrování**. Můžete filtrovat tak, aby zobrazovala videa, která mají určitou osobu, nebo aby bylo možné určit, že chcete zobrazit jenom výsledky videa, které jsou v určitém jazyce, nebo jestli mají konkrétního vlastníka. <br/> Můžete také zadat rozsah dotazu. Pokud například chcete v OCR vyhledat "GitHub", vyberte **vizuální text**.
 
-    ![Filtr](./media/video-indexer-view-edit/visual-text.png)
+    ![Filtrovat](./media/video-indexer-view-edit/visual-text.png)
 
     Do dotazu můžete převrstvit více filtrů. Pomocí **+** / **-** tlačítek můžete přidat nebo odebrat filtry. Pomocí **Vymazat filtry** odeberte všechny filtry.
 1. Pokud chcete přidat videa, vyberte je a pak vyberte **Přidat**.
@@ -63,7 +63,7 @@ Tento článek ukazuje, jak vytvořit projekt od začátku a také jak vytvořit
 
     Pořadí videí můžete změnit přetažením nebo vyřazením nebo výběrem tlačítka nabídky seznam a výběrem možnosti **Přesunout dolů** nebo **Přesunout nahoru**. V nabídce seznam bude také možné odebrat video z tohoto projektu. 
 
-    ![Změna uspořádání](./media/video-indexer-view-edit/rearrange.png)
+    ![Snímek obrazovky ukazuje Video Indexer s místní nabídkou pro jedno z videí, která se mají odebrat, Vymazat výběr nebo přesunout dolů.](./media/video-indexer-view-edit/rearrange.png)
     
     K tomuto projektu máte možnost kdykoli přidat další videa výběrem možnosti **přidat videa**. Do projektu můžete také přidat více výskytů stejného videa. Tuto akci můžete chtít provést, pokud chcete zobrazit klip z jednoho videa a potom klip z druhého a potom z prvního videa vytvořit jiný klip. 
 
@@ -81,7 +81,7 @@ Pokud kliknete na šipku dolů na pravé straně každého videa, otevře se př
 
     Například můžete chtít zobrazit klipy, na kterých se zmiňuje GitHub, zatímco na obrazovce Donovan Brown. V takovém případě je třeba přidat filtr "include", který má "lidé" jako typ Insight. Pak musíte do vyhledávacího pole pro filtr zadat text "Donovan Brown".
     
-    ![Zařadit členy](./media/video-indexer-view-edit/include.png)
+    ![Snímek obrazovky zobrazuje Video Indexer s lidmi vybranými pro filtr zahrnutí.](./media/video-indexer-view-edit/include.png)
     
     Pokud chcete klipy, na kterých se zmiňuje GitHub, zatímco Donovan Brown _není na obrazovce_ , stačí změnit filtr zahrnout do filtru "vyloučit" pomocí rozevíracího seznamu. 
 
@@ -96,7 +96,7 @@ Pokud kliknete na šipku dolů na pravé straně každého videa, otevře se př
 > [!TIP]
 > Při výběru a objednávání klipů můžete zobrazit náhled videa v přehrávači na pravé straně stránky. 
 
-![Preview](./media/video-indexer-view-edit/preview.png)
+![Snímek obrazovky zobrazuje Video Indexer s náhledem videa na pravé straně okna.](./media/video-indexer-view-edit/preview.png)
 
 Nezapomeňte uložit projekt, když provedete změny, a to tak, že vyberete **Uložit projekt**. 
 
@@ -107,7 +107,7 @@ Nezapomeňte uložit projekt, když provedete změny, a to tak, že vyberete **U
 
 1. Až budete hotovi, ujistěte se, že je váš projekt uložený. Tento projekt teď můžete vykreslit. Vyberte **vykreslování a stáhnout**. 
 
-    ![Uložit](./media/video-indexer-view-edit/save.png)
+    ![Snímek obrazovky ukazuje Video Indexer s možností vykreslování a stažení vašeho projektu.](./media/video-indexer-view-edit/save.png)
 
     Zobrazí se automaticky otevírané okno s oznámením, že video indexer vygeneruje soubor a pak se odkaz pro stažení pošle na e-mail. Vyberte pokračovat. 
     

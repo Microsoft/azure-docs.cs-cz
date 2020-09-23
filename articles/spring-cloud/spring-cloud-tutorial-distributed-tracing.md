@@ -7,17 +7,75 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293995"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908299"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Použití distribuovaného trasování u jarního cloudu Azure
 
 Pomocí nástrojů pro distribuované trasování v Azure jarním cloudu můžete snadno ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Tato integrace poskytuje výkonnou schopnost distribuované vektorizace z Azure Portal.
 
+::: zone pivot="programming-language-csharp"
+V tomto článku se dozvíte, jak povolit aplikaci .NET Core Steeltoe k použití distribuovaného trasování.
+
+## <a name="prerequisites"></a>Požadavky
+
+Abyste mohli postupovat podle těchto postupů, potřebujete aplikaci Steeltoe, která je už [připravená pro nasazení do služby Azure jaře Cloud](spring-cloud-tutorial-prepare-app-deployment.md).
+
+## <a name="dependencies"></a>Závislosti
+
+Nainstalujte následující balíčky NuGet.
+
+* [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+* [Steeltoe. Management. ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
+
+## <a name="update-startupcs"></a>Aktualizovat Startup.cs
+
+1. V `ConfigureServices` metodě zavolejte `AddDistributedTracing` `AddZipkinExporter` metody a.
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration);
+       services.AddZipkinExporter(Configuration);
+   }
+   ```
+
+1. V `Configure` metodě zavolejte `UseTracingExporter` metodu.
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+   {
+        app.UseTracingExporter();
+   }
+   ```
+
+## <a name="update-configuration"></a>Aktualizovat konfiguraci
+
+Přidejte do zdroje konfigurace následující nastavení, která se použijí při spuštění aplikace ve jarním cloudu Azure:
+
+1. Nastavte `management.tracing.alwaysSample` na true.
+
+2. Pokud chcete zobrazit trasování mezi serverem Eureka, konfiguračním serverem a uživatelskými aplikacemi: nastavte `management.tracing.egressIgnorePattern` na/API/v2/spans |/v2/Apps/.* /Permissions |/Eureka/.*| /oauth/.*".
+
+Například *appsettings.js* by měl obsahovat následující vlastnosti:
+ 
+```json
+"management": {
+    "tracing": {
+      "alwaysSample": true,
+      "egressIgnorePattern": "/api/v2/spans|/v2/apps/.*/permissions|/eureka/.*|/oauth/.*"
+    }
+  }
+```
+
+Další informace o distribuovaném trasování v aplikacích .NET Core Steeltoe najdete v tématu [distribuované trasování](https://steeltoe.io/docs/3/tracing/distributed-tracing) v dokumentaci Steeltoe.
+::: zone-end
+::: zone pivot="programming-language-java"
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
@@ -28,8 +86,8 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete [rychlý Start při nasazení aplikace přes Azure CLI](spring-cloud-quickstart.md) a zřiďte a spusťte cloudovou službu Azure na jaře.
-    
+Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete průvodce [nasazením prvního jarního cloudu aplikace na platformě Azure](spring-cloud-quickstart.md) , abyste zřídili a spustili službu jarní cloudu Azure.
+
 ## <a name="add-dependencies"></a>Přidat závislosti
 
 1. Do souboru Application. Properties přidejte následující řádek:
@@ -73,6 +131,7 @@ spring.sleuth.sampler.probability=0.5
 ```
 
 Pokud jste už sestavili a nasadili aplikaci, můžete upravit vzorkovací frekvenci. Uděláte to tak, že přidáte předchozí řádek jako proměnnou prostředí v rozhraní příkazového řádku Azure CLI nebo Azure Portal.
+::: zone-end
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 

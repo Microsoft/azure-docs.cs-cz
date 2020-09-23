@@ -1,18 +1,18 @@
 ---
-title: Co je nového u agenta s povolenými servery Azure ARC (Preview)
-description: V tomto článku najdete poznámky k verzi pro agenta serverů s podporou Azure ARC (Preview). Pro mnohé z souhrnných problémů existují odkazy na další podrobnosti.
+title: Co je nového u agenta serverů s podporou ARC Azure
+description: Tento článek obsahuje poznámky k verzi pro agenta serverů s podporou ARC Azure. Pro mnohé z souhrnných problémů existují odkazy na další podrobnosti.
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 3b739401603f6dc18b9f48fb3cb6e28023a051ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532167"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908153"
 ---
-# <a name="whats-new-with-azure-arc-enabled-servers-preview-agent"></a>Co je nového u agenta s povolenými servery Azure ARC (Preview)
+# <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Co je nového u agenta serverů s podporou ARC Azure
 
-Server s podporou Azure ARC (ve verzi Preview) přijímá nepřetržité vylepšení. V tomto článku najdete informace o tom, jak se můžete seznámit s nejnovějším vývojem.
+Server s podporou ARC Azure, který je připojený agentem počítače, obdrží vylepšení průběžně. V tomto článku najdete informace o tom, jak se můžete seznámit s nejnovějším vývojem.
 
 - Nejnovější verze
 - Známé problémy
@@ -60,4 +60,4 @@ Pokud používáte starší verzi agenta pro Linux a nakonfigurovali jste ho, ab
 
 ## <a name="next-steps"></a>Další kroky
 
-Před vyhodnocením nebo povolením serverů s povoleným ARC (ve verzi Preview) na více hybridních počítačích si přečtěte téma [Přehled agenta připojení počítačů](agent-overview.md) , abyste pochopili požadavky, technické podrobnosti o agentovi a metody nasazení.
+Před vyhodnocením nebo povolením serverů s povoleným obloukem na více hybridních počítačích si Projděte [Přehled připojení agenta připojeného počítače](agent-overview.md) , abyste porozuměli požadavkům, technickým podrobnostem o agentovi a metodám

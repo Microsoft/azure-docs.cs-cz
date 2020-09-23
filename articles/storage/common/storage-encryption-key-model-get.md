@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e08427067efa5e7bd33b8d08d84443444a190b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17be7cb8e3330a9bd0391e0750f5e37ac64b0484
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078261"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970999"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Určete, který Azure Storage model šifrovacího klíče se používá pro účet úložiště.
 
@@ -79,4 +79,4 @@ Pokud je hodnota vlastnosti **zdroje** `Microsoft.Storage` klíče, pak je úče
 ## <a name="next-steps"></a>Další kroky
 
 - [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
-- [Použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](encryption-customer-managed-keys.md)
+- [Klíče spravované zákazníkem pro šifrování Azure Storage](customer-managed-keys-overview.md)

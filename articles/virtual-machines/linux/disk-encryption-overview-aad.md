@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption se předpoklady pro aplikace Azure AD (předchozí verze)
-description: Tento článek popisuje předpoklady pro použití Microsoft Azureho šifrování disku pro virtuální počítače s IaaS.
+description: Tento článek popisuje doplňky Azure Disk Encryption pro virtuální počítače se systémem Linux s dalšími požadavky a požadavky pro Azure Disk Encryption s Azure AD.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c85d362f7295e8edef1b4070a779c6aa99c3991f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b258d499c78aa5fb734cbee01fb753c292bf2678
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372633"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970888"
 ---
 # <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Disk Encryption s Azure Active Directory (AD) (předchozí verze)
 

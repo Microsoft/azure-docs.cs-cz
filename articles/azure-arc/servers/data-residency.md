@@ -1,25 +1,25 @@
 ---
 title: Rezidence dat
-description: Data zasídlí a informace o serverech s podporou ARC Azure (Preview).
+description: Data zasídlí a informace o serverech s podporou ARC Azure.
 ms.topic: reference
-ms.date: 08/25/2020
+ms.date: 09/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8f207f5889c1764eebcc6081960ff70c0d5bca3a
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 8b4b8171bd7133e52928a5227c488bd6234ce686
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048852"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908128"
 ---
-# <a name="azure-arc-enabled-servers-preview-data-residency"></a>Servery s podporou ARC Azure (Preview): zasídlí dat
+# <a name="azure-arc-enabled-servers-data-residency"></a>Servery s podporou ARC Azure: zasídlí dat
 
-Tento článek vysvětluje koncept zasídlí dat a způsob, jakým se vztahuje na servery s podporou ARC Azure (Preview).
+Tento článek vysvětluje koncept zasídlí dat a způsob, jakým se vztahuje na servery s podporou ARC Azure.
 
-Servery s podporou ARC Azure (Preview) jsou **[dostupné ve verzi preview](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** **USA, Evropa nebo Asie a Tichomoří**.
+Servery s podporou ARC Azure jsou **[k dispozici](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** v **USA, Evropě nebo Asie a Tichomoří**.
 
 ## <a name="data-residency"></a>Rezidence dat
 
-Servery s podporou ARC Azure (Preview) uložení nastavení konfigurace [rozšíření virtuálních počítačů Azure](manage-vm-extensions.md) (tj. hodnot vlastností) rozšíření vyžaduje zadání před tím, než se na připojeném počítači pokusí povolit. Když například povolíte rozšíření Log Analytics VM, požádá o Log Analytics **ID pracovního prostoru** a **primární klíč**.
+Servery s podporou ARC Azure ukládají nastavení konfigurace [rozšíření virtuálních počítačů Azure](manage-vm-extensions.md) (to znamená hodnoty vlastností), které rozšíření vyžaduje, aby se zadávalo na připojeném počítači. Když například povolíte rozšíření Log Analytics VM, požádá o Log Analytics **ID pracovního prostoru** a **primární klíč**.
 
 Shromažďují se taky informace o metadatech připojeného počítače. Konkrétně se jedná o tyto:
 
@@ -28,7 +28,7 @@ Shromažďují se taky informace o metadatech připojeného počítače. Konkré
 * Plně kvalifikovaný název domény počítače (FQDN)
 * Verze agenta připojeného počítače
 
-Servery s podporou ARC (ve verzi Preview) umožňují zadat oblast, kde se budou data ukládat. Microsoft se může replikovat do jiných oblastí s cílem zajistit odolnost dat, ale Microsoft nereplikuje ani nepřesouvá data mimo zeměpisnou oblast. Tato data jsou uložená v oblasti, kde je nakonfigurovaný prostředek počítače Azure ARC. Například pokud je počítač zaregistrován pomocí ARC v oblasti Východní USA, tato data jsou uložena v oblasti USA.
+Servery s podporou ARC umožňují zadat oblast, ve které budou vaše data uložená. Microsoft se může replikovat do jiných oblastí s cílem zajistit odolnost dat, ale Microsoft nereplikuje ani nepřesouvá data mimo zeměpisnou oblast. Tato data jsou uložená v oblasti, kde je nakonfigurovaný prostředek počítače Azure ARC. Například pokud je počítač zaregistrován pomocí ARC v oblasti Východní USA, tato data jsou uložena v oblasti USA.
 
 Další informace o naší místní podpoře odolnosti a dodržování předpisů najdete v tématu [Azure geografie](https://azure.microsoft.com/global-infrastructure/geographies/).
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption v izolované síti
-description: Tento článek popisuje tipy pro řešení potíží pro Microsoft Azure šifrování disku pro virtuální počítače se systémem Linux.
+description: V tomto článku se seznámíte s tipy pro řešení potíží pro Microsoft Azure šifrování disků na virtuálních počítačích se systémem Linux.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ca50d137ef7e6378d2bf8d0ab03127d49a9a88
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 0cc54bcc23e354ae8cc807e63a0039286e295181
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373585"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970946"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption v izolované síti
 
@@ -36,7 +36,7 @@ Pokud je v Red Hat vyžadován proxy server, je nutné zajistit, aby byly správ
 
 Pokud jsou balíčky nainstalovány ručně, je nutné je také ručně upgradovat při vydání nových verzí.
 
-## <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 Všechna použitá nastavení skupiny zabezpečení sítě musí stále umožňovat, aby koncový bod splňoval popsané požadavky na konfiguraci sítě pro šifrování disků.  Viz [Azure Disk Encryption: požadavky na síť](disk-encryption-overview.md#networking-requirements)
 
 ## <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure Disk Encryption s Azure AD (předchozí verze)

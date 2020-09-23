@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 - devx-track-javascript
-ms.openlocfilehash: c7717416e58e772bee4ec8bf655d1341187a96e6
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7eba6adffcdd3dab3263e82faf51ac90bae79b89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019389"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968163"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Node.js)
 
@@ -338,12 +338,12 @@ Můžete zjistit, jak zařízení reaguje na příkazy a aktualizace vlastností
 
 ## <a name="next-steps"></a>Další kroky
 
-Jako vývojář zařízení teď jste se seznámili se základy vytváření zařízení pomocí Node.js, což je několik navrhovaných dalších kroků:
-
-* Přečtěte si, [co jsou šablony zařízení?](./concepts-device-templates.md) Další informace o roli šablon zařízení při implementaci kódu zařízení.
-* Další informace o registraci zařízení pomocí IoT Central a o tom, jak IoT Central zabezpečují připojení zařízení, najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md) .
-
 Pokud budete chtít pokračovat v IoT Central výukových kurzů a další informace o vytváření řešení IoT Central najdete tady:
 
 > [!div class="nextstepaction"]
 > [Vytvoření šablony zařízení brány](./tutorial-define-gateway-device-type.md)
+
+Jako vývojář zařízení teď jste se seznámili se základy vytváření zařízení pomocí Node.js, což je několik navrhovaných dalších kroků:
+
+* Přečtěte si, [co jsou šablony zařízení?](./concepts-device-templates.md) Další informace o roli šablon zařízení při implementaci kódu zařízení.
+* Další informace o registraci zařízení pomocí IoT Central a o tom, jak IoT Central zabezpečují připojení zařízení, najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md) .

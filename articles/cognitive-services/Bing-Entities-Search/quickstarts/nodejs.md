@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: odeslání žádosti o vyhledávání do REST API pomocí Node.js-Vyhledávání entit Bingu'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání entit Bingu REST API pomocí jazyka C# a přijmout odpověď JSON.
+description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání entit Bingu REST API pomocí Node.js a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 82bdd8f3890f1685aa442463287fe72bde08d518
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a3e09a26593911e7f8f113ee0db41aa99390b14d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405955"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970554"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý Start: odeslání žádosti o vyhledávání Vyhledávání entit Bingu REST API pomocí Node.js
 
@@ -24,7 +24,7 @@ Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu
 
 I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 

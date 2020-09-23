@@ -1,14 +1,14 @@
 ---
 title: Aspekty programu Cloud Solution Provider
 description: Pro partnery CSP pomáhá Správa delegovaných prostředků Azure zdokonalit zabezpečení a řízení tím, že umožňuje podrobná oprávnění.
-ms.date: 07/29/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ae7ef0b78f2f37708c6b442a9591fcbcce25646
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 27bb1c4f82fe3c9ff8abe74b74bef19f16a8a874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429457"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967165"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Program Azure Lighthouse a Cloud Solution Provider
 
@@ -23,7 +23,7 @@ Pomocí [Azure Lighthouse](../overview.md)můžete využít správu delegovanýc
 
 V ADMINISTRATE bude mít každý uživatel s rolí [agenta správce](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ve vašem tenantovi administrate přístup k předplatným Azure, která vytvoříte prostřednictvím programu CSP. Všichni uživatelé, kteří potřebují přístup k předplatným zákazníků, musí být členy této skupiny. ADMINISTRATE neumožňuje flexibilní vytváření různých skupin, které pracují s různými zákazníky, nebo pro povolení různých rolí pro skupiny nebo uživatele.
 
-![Správa tenanta pomocí ADMINISTRATE](../media/csp-1.jpg)
+![Diagram znázorňující správu tenanta pomocí ADMINISTRATE](../media/csp-1.jpg)
 
 ## <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
@@ -31,7 +31,7 @@ Pomocí Azure Lighthouse můžete přiřadit různé skupiny různým zákazník
 
 Registrace předplatného, které jste vytvořili prostřednictvím programu CSP, se řídí postupem popsaným v tématu připojení [předplatného do Azure Lighthouse](../how-to/onboard-customer.md). Tuto registraci může provádět libovolný uživatel, který má ve vašem tenantovi roli agenta správce.
 
-![Správa tenanta pomocí ADMINISTRATE a správy delegovaných prostředků Azure](../media/csp-2.jpg)
+![Diagram znázorňující správu tenanta pomocí ADMINISTRATE a správy delegovaných prostředků Azure](../media/csp-2.jpg)
 
 > [!TIP]
 > [Nabídky spravované služby](managed-services-offers.md) s privátními plány se nepodporují u předplatných vytvořených prostřednictvím prodejce v programu Cloud Solution Provider (CSP). Tyto odběry můžete připojit k Azure Lighthouse [pomocí šablon Azure Resource Manager](../how-to/onboard-customer.md).
@@ -39,7 +39,7 @@ Registrace předplatného, které jste vytvořili prostřednictvím programu CSP
 > [!NOTE]
 > Stránka [ **moji zákazníci** v Azure Portal](../how-to/view-manage-customers.md) teď obsahuje oddíl **Cloud Solution Provider (Preview)** , který zobrazuje informace o fakturaci a prostředky pro zákazníky CSP, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](/partner-center/azure-plan-get-started). Další informace najdete v tématu [Začínáme s fakturačním účtem Microsoft Partner Agreement](../../cost-management-billing/understand/mpa-overview.md).
 >
-> Zákazníci CSP se můžou v této části Zobrazit bez ohledu na to, jestli jsou taky připojené ke správě delegovaných prostředků Azure. Pokud jsou, zobrazí se také v části **zákazníci** , jak je popsáno v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](../how-to/view-manage-customers.md). Obdobně se zákazník CSP nemusí zobrazit v části **Poskytovatel řešení cloudu (Preview)** ve **svých zákaznících** , aby je bylo možné integrovat do správy delegovaných prostředků Azure.
+> Zákazníci CSP se můžou v této části Zobrazit bez ohledu na to, jestli jsou taky připojené ke službě Azure Lighthouse. Pokud jsou, zobrazí se také v části **zákazníci** , jak je popsáno v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](../how-to/view-manage-customers.md). Podobně není nutné, aby se zákazník v části Customers **(Cloud Solution Provider)** ve svých **zákaznících** nemusel zobrazovat do Azure Lighthouse.
 
 ## <a name="next-steps"></a>Další kroky
 

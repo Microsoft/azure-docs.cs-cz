@@ -7,15 +7,177 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8931c22c3656cf9708756153268ab1d9d87b8343
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050824"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908348"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Rychlý Start: sestavování a nasazování aplikací do jarního cloudu Azure
 
+::: zone pivot="programming-language-csharp"
+V tomto rychlém startu sestavíte a nasadíte aplikace mikroslužeb do jarního cloudu Azure pomocí Azure CLI.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Dokončete předchozí rychlé starty v této sérii:
+
+  * [Zřídit Azure jaře cloudovou službu](spring-cloud-quickstart-provision-service-instance.md).
+  * [Nastavte server pro konfiguraci jarního cloudu Azure](spring-cloud-quickstart-setup-config-server.md).
+
+## <a name="download-the-sample-app"></a>Stažení ukázkové aplikace
+
+Pokud používáte Azure Cloud Shell až do tohoto bodu, přejděte k následujícímu příkazovému řádku na místní příkazový řádek.
+
+1. Vytvořte novou složku a naklonujte úložiště ukázkové aplikace.
+
+   ```console
+   mkdir source-code
+   ```
+
+   ```console
+   cd source-code
+   ```
+
+   ```console
+   git clone https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples
+   ```
+
+1. Přejděte do adresáře úložiště.
+
+   ```console
+   cd Azure-Spring-Cloud-Samples
+   ```
+
+## <a name="deploy-planetweatherprovider"></a>Nasazení PlanetWeatherProvider
+
+1. Vytvořte aplikaci pro projekt PlanetWeatherProvider v instanci cloudu Azure jaře.
+
+   ```azurecli
+   az spring-cloud app create --name planet-weather-provider --runtime-version NetCore_31
+   ```
+
+   Pokud chcete povolit automatickou registraci služby, měla by aplikace mít stejný název jako hodnota `spring.application.name` v *appsettings.jsprojektu v* souboru:
+
+   ```json
+   "spring": {
+     "application": {
+       "name": "planet-weather-provider"
+     }
+   }
+   ```
+
+   Spuštění tohoto příkazu může trvat několik minut.
+
+1. Změňte adresář na `PlanetWeatherProvider` složku projektu.
+
+   ```console
+   cd steeltoe-sample/src/planet-weather-provider
+   ```
+
+1. Vytvořte binární soubory a soubor *. zip* , který chcete nasadit.
+
+   ```console
+   dotnet publish -c release -o ./publish
+   ```
+
+   > [!TIP]
+   > Soubor projektu obsahuje následující kód XML pro zabalení binárních souborů do souboru *. zip* po jejich zápis do složky *./Publish* :
+   >
+   > ```xml
+   > <Target Name="Publish-Zip" AfterTargets="Publish">
+   >   <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(MSBuildProjectDirectory)/publish-deploy-planet.zip" Overwrite="true" />
+   > </Target>
+   > ```
+
+1. Nasaďte do Azure.
+
+   Před spuštěním následujícího příkazu se ujistěte, že je příkazový řádek ve složce projektu.
+
+   ```console
+   az spring-cloud app deploy -n planet-weather-provider --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.PlanetWeatherProvider.dll --artifact-path ./publish-deploy-planet.zip
+   ```
+
+   `--main-entry`Možnost určuje relativní cestu z kořenové složky souboru *. zip* k souboru *. dll* , který obsahuje vstupní bod aplikace. Poté, co služba nahraje soubor *. zip* , extrahuje všechny soubory a složky a pokusí se spustit vstupní bod v zadaném souboru *. dll* .
+
+   Spuštění tohoto příkazu může trvat několik minut.
+
+## <a name="deploy-solarsystemweather"></a>Nasazení SolarSystemWeather
+
+1. Vytvořte v instanci Azure jaře cloudu jinou aplikaci, tentokrát pro projekt SolarSystemWeather:
+
+   ```azurecli
+   az spring-cloud app create --name solar-system-weather --runtime-version NetCore_31
+   ```
+
+   `solar-system-weather` je název, který je určen v `SolarSystemWeather` *appsettings.js* souboru projektu.
+
+   Spuštění tohoto příkazu může trvat několik minut.
+
+1. Změňte adresář na `SolarSystemWeather` projekt.
+
+   ```console
+   cd ../solar-system-weather
+   ```
+
+1. Vytvořte binární soubory a soubor *. zip* , který chcete nasadit.
+
+   ```console
+   dotnet publish -c release -o ./publish
+   ```
+
+1. Nasaďte do Azure.
+
+   ```console
+   az spring-cloud app deploy -n solar-system-weather --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.dll --artifact-path ./publish-deploy-solar.zip
+   ```
+   
+   Spuštění tohoto příkazu může trvat několik minut.
+
+## <a name="assign-public-endpoint"></a>Přiřadit veřejný koncový bod
+
+K otestování aplikace odešlete požadavek HTTP GET do `solar-system-weather` aplikace z prohlížeče.  K tomu potřebujete veřejný koncový bod pro požadavek.
+
+1. Pokud chcete koncový bod přiřadit, spusťte následující příkaz.
+
+   ```azurecli
+   az spring-cloud app update -n solar-system-weather --is-public true
+   ```
+
+1. Pokud chcete získat adresu URL koncového bodu, spusťte následující příkaz.
+
+   Windows:
+
+   ```azurecli
+   az spring-cloud app show -n solar-system-weather -o table
+   ```
+
+   Linux:
+
+   ```azurecli
+   az spring-cloud app show --name solar-system-weather | grep url
+   ```
+
+## <a name="test-the-application"></a>Testování aplikace
+
+Odeslat požadavek GET do `solar-system-weather` aplikace V prohlížeči přejděte na veřejnou adresu URL, která se `/weatherforecast` připojí ke konci. Příklad:
+
+```
+https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
+```
+
+Výstup je JSON:
+
+```json
+[{"Key":"Mercury","Value":"very warm"},{"Key":"Venus","Value":"quite unpleasant"},{"Key":"Mars","Value":"very cool"},{"Key":"Saturn","Value":"a little bit sandy"}]
+```
+
+Tato odpověď ukazuje, že obě aplikace mikroslužeb fungují. `SolarSystemWeather`Aplikace vrátí data načtená z `PlanetWeatherProvider` aplikace.
+::: zone-end
+
+::: zone pivot="programming-language-java"
 Tento dokument vysvětluje, jak vytvářet a nasazovat aplikace mikroslužeb do služby Azure jaře Cloud pomocí:
 * Azure CLI
 * Modul plug-in Maven
@@ -25,10 +187,10 @@ Před nasazením pomocí Azure CLI nebo Maven dokončete příklady, které [zř
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+* [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
-* Volitelné [Instalace Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
+* Volitelné [Nainstalujte Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlaste](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) se.
 
 ## <a name="deployment-procedures"></a>Postupy nasazení
 
@@ -111,7 +273,7 @@ Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlíže�
 
 ### <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Generování konfigurací a nasazení do jarního cloudu Azure
 
-1. Generujte konfigurace spuštěním následujícího příkazu v kořenové složce PiggyMetrics obsahujícího nadřazený POM. Pokud jste se už přihlásili pomocí Azure CLI, příkaz automaticky vybere přihlašovací údaje. V opačném případě vás bude přihlašovat pomocí pokynů pro příkazový řádek. Další podrobnosti najdete na naší [stránce wikiwebu](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) .
+1. Generujte konfigurace spuštěním následujícího příkazu v kořenové složce PiggyMetrics obsahujícího nadřazený POM. Pokud jste se už přihlásili pomocí Azure CLI, příkaz automaticky vybere přihlašovací údaje. V opačném případě vás bude přihlašovat pomocí pokynů pro příkazový řádek. Další informace najdete na naší [stránce wikiwebu](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
     ```
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
@@ -148,7 +310,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 
     ![Nasazení do Azure 1](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
-1. Do pole **název** připojit *: Brána* k existujícímu **názvu** odkazuje na konfiguraci.
+1. Do pole **název** přidejte *: Brána* k existujícímu **názvu**.
 1. V textovém poli **artefaktu** vyberte *com. piggymetrics: Gateway: 1.0-Snapshot*.
 1. V textovém poli **odběr** ověřte své předplatné.
 1. V textovém poli pole **jarního cloudu** vyberte instanci služby Azure jaře Cloud, kterou jste vytvořili v části [zřízení instance cloudové služby Azure jaře](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance).
@@ -158,7 +320,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 
     ![Nasadit do Azure v pořádku](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. V části **před spuštěním** otevřete dvakrát klikněte na *Spustit Maven cíl*.
+1. V části **před spuštěním** klikněte dvakrát na možnost *Spustit Maven cíl*.
 1. V textovém poli **pracovní adresář** přejděte do složky *piggymetrics/Gateway* .
 1. Do textového pole **příkazový řádek** zadejte *Package-DskipTests*. Klikněte na **OK**.
 1. Spusťte nasazení kliknutím na tlačítko **Spustit** v dolní části dialogového okna **nasadit Azure jarní cloudovou aplikaci** . Modul plug-in spustí příkaz `mvn package` v `gateway` aplikaci a nasadí jar vygenerované `package` příkazem.
@@ -174,7 +336,7 @@ Zopakováním výše uvedených kroků můžete nasadit `auth-service` a `accoun
 1. Opakujte tyto postupy pro konfiguraci a nasazení `account-service` .
 ---
 
-Přejděte na adresu URL poskytnutou ve výstupu předchozích kroků pro přístup k aplikaci PiggyMetrics. například. `https://<service instance name>-gateway.azuremicroservices.io`
+Přejděte na adresu URL poskytnutou ve výstupu předchozích kroků pro přístup k aplikaci PiggyMetrics. Příklad: `https://<service instance name>-gateway.azuremicroservices.io`
 
 ![Přístup k PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
@@ -189,15 +351,25 @@ Můžete také přejít na Azure Portal a najít tak adresu URL.
 
     ![Přejít k druhé aplikaci](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
+::: zone-end
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků z portálu nebo spuštěním následujícího příkazu v Cloud Shell:
+
+Pokud máte v úmyslu pokračovat k dalšímu rychlému startu v této sérii, tento krok přeskočte.
+
+V těchto rychlých startech jste vytvořili prostředky Azure, které budou nadále účtovat poplatky, pokud zůstanou ve vašem předplatném. Pokud nechcete pokračovat k dalšímu rychlému startu a neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků pomocí portálu nebo spuštěním následujícího příkazu v Cloud Shell:
+
 ```azurecli
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
 ```
-V předchozích krocích jste také nastavili výchozí název skupiny prostředků. Pokud chcete tuto výchozí hodnotu vymazat, spusťte v Cloud Shell následující příkaz:
+
+V dřívějším rychlém startu jste také nastavili výchozí název skupiny prostředků. Pokud nechcete pokračovat dalším rychlým startem, vymažte tuto výchozí hodnotu spuštěním následujícího příkazu rozhraní příkazového řádku:
+
 ```azurecli
 az configure --defaults group=
 ```
+
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Protokoly, metriky a trasování](spring-cloud-quickstart-logs-metrics-tracing.md)
+

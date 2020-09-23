@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 817bc7624bb3a6b69d56265e40681287b7fc09fa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018140"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969591"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě role v akcelerátoru řešení vzdáleného monitorování
 
@@ -26,22 +26,22 @@ Při prvním nasazení řešení vzdáleného monitorování jsou k dispozici dv
 
 Každý uživatel v roli **správce** má úplný přístup k řešení, včetně níže uvedených oprávnění. Uživatel v roli jen **pro čtení** bude mít přístup jenom k zobrazení řešení.
 
-| Oprávnění            | správce | Jen pro čtení |
+| Oprávnění            | Správce | Jen pro čtení |
 |----------------       |-------|-----------|
-| Zobrazit řešení         | Ano   | Ano       |
-| Aktualizovat alarmy         | Ano   | Ne        |
-| Odstranit alarmy         | Ano   | Ne        |
-| Vytváření zařízení        | Ano   | Ne        |
-| Aktualizace zařízení        | Ano   | Ne        |
-| Odstranit zařízení        | Ano   | Ne        |
-| Vytvoření skupin zařízení  | Ano   | Ne        |
-| Aktualizace skupin zařízení  | Ano   | Ne        |
-| Odstranění skupin zařízení  | Ano   | Ne        |
-| Vytvořit pravidla          | Ano   | Ne        |
-| Aktualizovat pravidla          | Ano   | Ne        |
-| Odstranit pravidla          | Ano   | Ne        |
-| Vytváření úloh           | Ano   | Ne        |
-| Aktualizace správy SIM | Ano   | Ne        |
+| Zobrazit řešení         | Yes   | Yes       |
+| Aktualizovat alarmy         | Yes   | No        |
+| Odstranit alarmy         | Yes   | No        |
+| Vytváření zařízení        | Yes   | No        |
+| Aktualizace zařízení        | Yes   | No        |
+| Odstranit zařízení        | Yes   | No        |
+| Vytvoření skupin zařízení  | Yes   | No        |
+| Aktualizace skupin zařízení  | Yes   | No        |
+| Odstranění skupin zařízení  | Yes   | No        |
+| Vytvořit pravidla          | Yes   | No        |
+| Aktualizovat pravidla          | Yes   | No        |
+| Odstranit pravidla          | Yes   | No        |
+| Vytváření úloh           | Yes   | No        |
+| Aktualizace správy SIM | Yes   | No        |
 
 Ve výchozím nastavení se uživateli, který toto řešení nasadí, automaticky přiřadí role **správce** a je vlastníkem aplikace Azure Active Directory. Jako vlastník aplikace můžete přiřadit role jiným uživatelům prostřednictvím Azure Portal. Pokud chcete, aby jiný uživatel přidělil role v řešení, musí být také nastaven jako vlastník aplikace v Azure Portal.
 
@@ -52,7 +52,7 @@ Ve výchozím nastavení se uživateli, který toto řešení nasadí, automatic
 
 Jako vlastník aplikace Azure Active Directory můžete pomocí Azure Portal přidat nebo odebrat uživatele k roli z řešení vzdáleného monitorování. Následující kroky používají [Azure Active Directory podnikovou aplikaci](../active-directory/manage-apps/view-applications-portal.md) , která byla vytvořena při nasazení řešení vzdáleného monitorování.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Ověřte, že se [uživatel nachází v adresáři](../active-directory/fundamentals/add-users-azure-active-directory.md) , který používáte. Zvolili jste adresář, který se má použít, když jste přihlášeni k webu [akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators) . Název adresáře je viditelný v pravém horním rohu [stránky](https://www.azureiotsolutions.com/Accelerators).
 
@@ -62,7 +62,7 @@ Jako vlastník aplikace Azure Active Directory můžete pomocí Azure Portal př
 
 1. Ověřte, že jste vlastníkem aplikace kliknutím na aplikaci a potom kliknutím na **vlastníci**. Na následujícím snímku obrazovky je **správce Contoso** vlastníkem aplikace **Contoso-RM4** :
 
-    ![Vlastníci](media/iot-accelerators-remote-monitoring-rbac/owners.png)
+    ![Snímek obrazovky zobrazuje vybranou možnost spravovat vlastníky, která zobrazuje vlastníky aplikace Contoso r m 4.](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
     Pokud nejste vlastníkem, musíte požádat stávajícího vlastníka, aby vás přidal do seznamu. Pouze vlastníci mohou přiřadit aplikační role, jako je například **správce** nebo **jen pro čtení** , jiným uživatelům.
 
@@ -92,7 +92,7 @@ Následující postup popisuje, jak přidat roli do aplikace v Azure Active Dire
 
 1. Vyhledejte v Azure Portal **registraci aplikace** pro vaše řešení. Název aplikace je název vašeho řešení vzdáleného monitorování. Na následujícím snímku obrazovky jsou zobrazované názvy řešení a aplikace **Contoso-RM4**.
 
-    ![Registrace aplikací](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
+    ![Registrace aplikace](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. Vyberte svou aplikaci a pak klikněte na **manifest**. Můžete si zobrazit dvě existující [role aplikace](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) definované pro aplikaci:
 
