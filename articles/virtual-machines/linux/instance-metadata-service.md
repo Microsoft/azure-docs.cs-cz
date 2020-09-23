@@ -1,6 +1,6 @@
 ---
 title: Azure Instance Metadata Service
-description: Rozhraní RESTful pro získání informací o výpočetních, síťových a nadcházejících událostech týkajících se virtuálních počítačů.
+description: Přečtěte si o Instance Metadata Service Azure a o tom, jak poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů.
 services: virtual-machines
 author: KumariSupriya
 manager: paulmey
@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: bb9bc978e49cddab13ab1e4f7ec4f0b74d369ac1
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705839"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974149"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Instance Metadata Service Azure (IMDS)
 
@@ -44,7 +44,7 @@ Další příklady dotazů na IMDS najdete v tématu [ukázky metadat instance A
 
 Níže je uvedený ukázkový kód pro načtení všech metadat pro instanci, pro přístup ke konkrétnímu zdroji dat, viz část [rozhraní API pro metadata](#metadata-apis) . 
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-06-01"
@@ -156,7 +156,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 Ve výchozím nastavení Instance Metadata Service vrátí data ve formátu JSON ( `Content-Type: application/json` ). V případě potřeby ale některá rozhraní API můžou vracet data v různých formátech.
 Následující tabulka je odkazem na jiné rozhraní API datových formátů, které může podporovat.
 
-rozhraní API | Výchozí formát dat | Jiné formáty
+Rozhraní API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
 /attested | json | žádné
 /identity | json | žádné
@@ -204,7 +204,7 @@ Pokud není zadána žádná verze, je vrácena chyba se seznamem nejnovějšíc
 > [!NOTE]
 > Odpověď je řetězec JSON. Následující příklad označuje chybový stav, pokud není zadána verze, odpověď je poměrně vytištěna pro čitelnost.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
@@ -238,13 +238,13 @@ Rozhraní API | Popis | Představená verze
 
 Rozhraní API instance zpřístupňuje důležitá metadata pro instance virtuálních počítačů, včetně virtuálních počítačů, sítí a úložiště. K následujícím kategoriím lze přistupovat prostřednictvím instance/Compute:
 
-Data | Popis | Představená verze
+Data | Description | Představená verze
 -----|-------------|-----------------------
 azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 customData | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
 isHostCompatibilityLayerVm | Určuje, jestli se virtuální počítač spouští na vrstvě kompatibility hostitele. | 2020-06-01
 location | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
-name | Název virtuálního počítače | 2017-04-02
+jméno | Název virtuálního počítače | 2017-04-02
 offer | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
@@ -273,7 +273,7 @@ zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) virtuální
 
 Jako poskytovatel služeb budete možná potřebovat sledovat počet virtuálních počítačů, na kterých běží váš software, nebo mít agenty, kteří potřebují ke sledování jedinečnosti virtuálního počítače. Aby bylo možné získat jedinečné ID pro virtuální počítač, použijte `vmId` pole z instance metadata Service.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
@@ -291,7 +291,7 @@ V některých scénářích je umístění různých replik dat primárním výz
 K provedení těchto rozhodnutí můžete použít také [zóny dostupnosti](../../availability-zones/az-overview.md) pro instance.
 Tato data můžete zadávat přímo prostřednictvím Instance Metadata Service.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
@@ -307,7 +307,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli získat další informace o virtuálním počítači. Dotazování zákazníků na sdílení výpočetních metadat může poskytnout základní informace o tom, že profesionální pracovník podpory ví o typu virtuálního počítače v Azure.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
@@ -407,7 +407,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 Azure má různé cloudy svrchovan jako [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste mohli provádět určitá rozhodnutí za běhu. Následující příklad ukazuje, jak lze dosáhnout tohoto chování.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
@@ -432,7 +432,7 @@ Cloud a hodnoty prostředí Azure jsou uvedené níže.
 
 Síťová metadata jsou součástí rozhraní API instance. V rámci koncového bodu instance/sítě jsou k dispozici následující kategorie sítě.
 
-Data | Popis | Představená verze
+Data | Description | Představená verze
 -----|-------------|-----------------------
 IPv4/privateIpAddress | Místní IPv4 adresa virtuálního počítače | 2017-04-02
 IPv4/publicIpAddress | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
@@ -446,7 +446,7 @@ macAddress | Adresa MAC virtuálního počítače | 2017-04-02
 
 #### <a name="sample-1-retrieving-network-information"></a>Ukázka 1: načítání informací o síti
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
@@ -500,7 +500,7 @@ Profil úložiště virtuálního počítače je rozdělen do tří kategorií: 
 
 Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 id      | ID prostředku
 offer   | Nabídka platformy nebo Image Marketplace
@@ -510,7 +510,7 @@ verze | Verze image platformy nebo webu Marketplace
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
@@ -519,13 +519,13 @@ diskSizeGB | Velikost disku v GB
 image   | Virtuální pevný disk zdrojové image uživatele
 (     | Logické číslo jednotky disku
 managedDisk | Parametry spravovaného disku
-name    | Název disku
+jméno    | Název disku
 virtuálního     | Virtuální pevný disk
 writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
 Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
@@ -534,14 +534,14 @@ diskSizeGB | Velikost disku v GB
 encryptionSettings | Nastavení šifrování disku
 image   | Virtuální pevný disk zdrojové image uživatele
 managedDisk | Parametry spravovaného disku
-name    | Název disku
+jméno    | Název disku
 osType  | Typ operačního systému zahrnutý na disku
 virtuálního     | Virtuální pevný disk
 writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
 Následující příklad ukazuje, jak zadat dotaz na informace o úložišti virtuálního počítače.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
@@ -613,7 +613,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 Značky virtuálních počítačů jsou součástí rozhraní API instancí pod koncovým bodem instance/výpočty/značky.
 Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo možné logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu počítači se dají načíst pomocí níže uvedeného požadavku.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
@@ -627,7 +627,7 @@ Department:IT;Environment:Test;Role:WebRole
 
 `tags`Pole je řetězec, jehož značky jsou odděleny středníky. Tento výstup může být problémem, pokud se středníky používají v samotných značkách. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole. `tagsList`Pole je pole JSON bez oddělovačů, a proto je snazší ho analyzovat.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
@@ -661,7 +661,7 @@ Součástí scénáře, který obsluhuje Instance Metadata Service, je poskytnou
 > [!NOTE]
 > Všechny odpovědi rozhraní API jsou řetězce JSON. Následující příklad odpovědí je poměrně vytištěn z důvodu čitelnosti.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
@@ -687,7 +687,7 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, 
 Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s určitými podrobnostmi specifickými pro virtuální počítače. U virtuálních počítačů ARM to zahrnuje vmId, SKU, nonce, subscriptionId, časové razítko pro vytváření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro Azure Marketplace image. U klasických virtuálních počítačů (ne ARM) je zaručeno, že se naplní pouze vmId. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 Dokument obsahuje následující pole:
 
-Data | Popis
+Data | Description
 -----|------------
 generované | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud nebyla zadána žádná hodnota nonce, použije se aktuální časové razítko UTC.
 rozhraní | [Azure Marketplace plán obrázku](/rest/api/compute/virtualmachines/createorupdate#plan). Obsahuje ID plánu (název), obrázek produktu nebo nabídku (produkt) a ID vydavatele (vydavatel).
@@ -707,7 +707,7 @@ Dodavatelé na webu Marketplace chtějí zajistit, aby byl software licencován 
 > [!NOTE]
 > Vyžaduje instalaci JQ.
 
-**Žádost**
+**Požadavek**
 
 ```bash
 # Get the signature

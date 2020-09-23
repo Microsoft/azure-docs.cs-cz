@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 76c5bac600f05094f2e2a354cd5cf5895d9d45d2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 082adc0753cb8e41bc61f5703445e6b8507202b5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496606"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902690"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL-Single pomocí prostředí PowerShell
 
@@ -21,7 +21,7 @@ V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Dat
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
@@ -69,13 +69,13 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 | Umístění                   | westus           | Oblast Azure pro server.                                                                                                                                                                                                                                                                                                         |
 | SslEnforcement             | Povoleno          | Zda má být pro tento server povolen nebo nikoli protokol SSL. Povolené hodnoty: Enabled, Disabled.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | Kapacita úložiště serveru (jednotkou jsou megabajty). Platný StorageInMb je minimálně 5120 MB a zvyšuje se o 1024 MB. Další informace o limitech velikosti úložiště najdete v tématu [Azure Database for PostgreSQL cenové úrovně](./concepts-pricing-tiers.md).                                                                               |
-| Verze                    | 9.6              | Hlavní verze PostgreSQL.                                                                                                                                                                                                                                                                                                                 |
+| Verze                    | 9,6              | Hlavní verze PostgreSQL.                                                                                                                                                                                                                                                                                                                 |
 | AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být ** azure_superuser **, ** admin **, ** administrátor **, ** root **, ** host ** nebo ** public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Heslo správce uživatele ve formě zabezpečeného řetězce. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.                                       |
 
 Hodnota parametru **SKU** dodržuje cenové úrovně ** \_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.
 
-- `-Sku B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
+- `-Sku B_Gen5_1` mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 - `-Sku GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 - `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
@@ -141,7 +141,7 @@ Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se p
    ```
 
    > [!TIP]
-   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL kódování @ uživatelského jména pomocí `%40` . Například připojovací řetězec pro psql by byl,`psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres`
+   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL kódování @ uživatelského jména pomocí `%40` . Například připojovací řetězec pro psql by byl, `psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres`
 
 1. Po připojení k serveru vytvořte na příkazovém řádku prázdnou databázi.
 
@@ -165,11 +165,11 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
 1. V dialogovém okně **Vytvořit – server** na kartě **Obecné** zadejte jedinečný popisný název serveru, jako například **mydemoserver**.
 
-   ![Karta Obecné](./media/quickstart-create-postgresql-server-database-using-azure-powershell/9-pgadmin-create-server.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/9-pgadmin-create-server.png" alt-text="Karta Obecné":::
 
 1. V dialogovém okně **Vytvořit – server** na kartě **Připojení** vyplňte tabulku nastavení.
 
-   ![Karta Připojení](./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="Karta připojení":::
 
     Parametr pgAdmin |Hodnota|Popis
     ---|---|---
@@ -178,7 +178,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
     Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
     Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName \@ servername*.
     Heslo | Vaše heslo správce | Heslo, které jste si zvolili při vytváření serveru dříve v tomto rychlém startu.
-    Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
+    Role | Ponechte prázdné. | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
     Režim SSL | *Vyžadovat* | Režim TLS/SSL můžete nastavit na kartě SSL v pgAdmin. Ve výchozím nastavení se všechny Azure Database for PostgreSQL servery vytvoří se zapnutým vynucováním TLS. Pokud chcete zapnout vynucování TLS, přečtěte si téma [Konfigurace vynucení TLS](./concepts-ssl-connection-security.md#configure-enforcement-of-tls).
 
 1. Vyberte **Uložit**.
@@ -193,7 +193,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
 1. Ze seznamu vyberte **Vlastníka** databáze. Zvolte přihlašovací jméno správce serveru, jako je **myadmin** v příkladu.
 
-   ![Vytvoření databáze v pgAdmin](./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="Vytvoření databáze v pgAdmin":::
 
 1. Vyberte **Uložit** a vytvořte novou prázdnou databázi.
 

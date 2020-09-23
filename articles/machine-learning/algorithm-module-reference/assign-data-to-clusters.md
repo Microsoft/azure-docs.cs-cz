@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 207172f10277589af2b22ae2f41b07234a0925b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e618395a2a4a11b4afb311d612cf5d0e27503dc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477710"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898854"
 ---
 # <a name="module-assign-data-to-clusters"></a>Modul: přiřazení dat clusterům
 
-Tento článek popisuje, jak používat modul *přiřazení dat ke clusterům* v Návrháři Azure Machine Learning (Preview). Modul generuje předpovědi pomocí modelu clusteringu, který byl vyškolený pomocí rozhraní *K – označuje algoritmus clusteringu* .
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul *přiřadit data ke clusterům* . Modul generuje předpovědi pomocí modelu clusteringu, který byl vyškolený pomocí rozhraní *K – označuje algoritmus clusteringu* .
 
 Modul přiřazení dat ke clusterům vrátí datovou sadu, která obsahuje pravděpodobné přiřazení pro každý nový datový bod. 
 

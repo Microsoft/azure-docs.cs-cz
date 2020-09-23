@@ -5,18 +5,18 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6c16aad9bb04ffb4cb4df52799d63f7ec2e19725
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210848"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982011"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
 Vstupní a výstupní vazby ve službě Azure Functions poskytují deklarativní způsob zpřístupnění k dat z externích služeb. V tomto rychlém startu použijete výstupní vazbu k vytvoření zprávy ve frontě, když požadavek HTTP aktivuje funkci. Pomocí kontejneru Azure Storage zobrazíte zprávy fronty, které funkce vytvoří.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -58,7 +58,7 @@ V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zp
 
 1. Aktualizujte kód funkce v závislosti na jazyku funkce:
 
-    # <a name="c"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[R\#](#tab/csharp)
 
     Přidejte parametr **outputQueueItem** do podpisu metody, jak ukazuje následující obrázek.
 
@@ -111,7 +111,7 @@ Při prvním použití výstupní vazby vytvoří modul runtime Functions v úč
 
 1. V části **nastavení aplikace**vyberte **AzureWebJobsStorage**.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Vyhledejte účet úložiště připojený k AzureWebJobsStorage." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Snímek obrazovky zobrazující stránku konfigurace s AzureWebJobsStorage vybranými." border="true":::
 
 1. Vyhledejte a poznamenejte si název účtu.
 

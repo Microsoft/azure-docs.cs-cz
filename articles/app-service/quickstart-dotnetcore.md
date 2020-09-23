@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 95f877c9030d51e68b97a21875ff3ff05b383457
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961529"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973750"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
 
@@ -21,7 +21,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a nasadit první webovou apli
 
 Až budete hotovi, budete mít skupinu prostředků Azure, která se skládá z App Service plánu hostování a App Service s nasazenou webovou aplikací.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - V tomto rychlém startu se nasadí aplikace, která se App Service ve Windows. Pokud chcete nasadit nástroj na App Service v systému _Linux_, přečtěte si téma [Vytvoření webové aplikace .net Core v App Service](./quickstart-dotnetcore.md).
@@ -80,7 +80,7 @@ Při vytváření App Service a publikování webové aplikace postupujte podle 
 
 1. V dialogovém okně **plán hostování: vytvořit nové** zadejte hodnoty uvedené v následující tabulce:
 
-   | Nastavení  | Navrhovaná hodnota | Popis |
+   | Nastavení  | Navrhovaná hodnota | Description |
    | -------- | --------------- | ----------- |
    | **Plán hostování**  | *myFirstAzureWebAppPlan* | Název plánu služby App Service. |
    | **Umístění**      | *Západní Evropa* | Datacentrum, které je hostitelem webové aplikace. |
@@ -137,7 +137,7 @@ Pokud chcete spravovat webovou aplikaci, použijte [Azure Portal](https://portal
 
 Na stránce **App Services** vyberte název vaší webové aplikace.
 
-![Přechod do aplikace Azure na portálu](./media/quickstart-dotnetcore/select-app-service.png)
+:::image type="content" source="./media/quickstart-dotnetcore/select-app-service.png" alt-text="Snímek obrazovky stránky App Services s vybranou ukázkovou webovou aplikací":::
 
 Stránka **Přehled** pro vaši webovou aplikaci obsahuje možnosti pro základní správu, jako je procházení, zastavení, spuštění, restartování a odstranění. V nabídce vlevo najdete další stránky pro konfiguraci vaší aplikace.
 
@@ -168,7 +168,7 @@ Postup v tomto článku můžete použít v případě počítačů se systémem
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -304,7 +304,7 @@ Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https:/
 
 V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
-![Přechod do aplikace Azure na portálu](./media/quickstart-dotnetcore/portal-app-service-list.png)
+:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="Snímek obrazovky stránky App Services zobrazující ukázkovou aplikaci Azure":::
 
 Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. 
 

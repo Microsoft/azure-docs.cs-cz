@@ -93,7 +93,7 @@ V [Azure Portal](https://portal.azure.com/)v horní části pracovního prostoru
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

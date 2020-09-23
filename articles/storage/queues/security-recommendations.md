@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: ee3808684ab2548999d71fe0d31fa9a160cd9347
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 70bb96da858c94fbd2c75d56cda4e705f2ffa3ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200056"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986634"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Doporučení zabezpečení pro úložiště front
 
@@ -30,7 +30,7 @@ Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostřed
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
 | Použití modelu nasazení Azure Resource Manager | Vytvořte nové účty úložiště pomocí modelu nasazení Azure Resource Manager pro důležitá vylepšení zabezpečení, včetně řízení přístupu (RBAC) a auditování, Správce prostředků nasazení a zásad správného řízení, přístupu ke spravovaným identitám, přístupu k Azure Key Vault tajných kódů a ověřování a autorizace založeného na službě Azure AD pro přístup k Azure Storage dat a prostředků. Pokud je to možné, migrujte existující účty úložiště, které používají model nasazení Classic pro použití Azure Resource Manager. Další informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview). | - |
-| Povolit rozšířenou ochranu před internetovými útoky pro všechny vaše účty úložiště | Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se aktivují v Azure Security Center, když se vyskytnou anomálie v aktivitě a jsou také odesílány prostřednictvím e-mailu správcům předplatného, s podrobnostmi o podezřelých aktivitách a doporučeních k tomu, jak tyto hrozby Další informace najdete v tématu [Rozšířená ochrana před internetovými útoky pro Azure Storage](../common/storage-advanced-threat-protection.md). | [Ano](../../security-center/security-center-sql-service-recommendations.md) |
+| Povolit rozšířenou ochranu před internetovými útoky pro všechny vaše účty úložiště | Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se aktivují v Azure Security Center, když se vyskytnou anomálie v aktivitě a jsou také odesílány prostřednictvím e-mailu správcům předplatného, s podrobnostmi o podezřelých aktivitách a doporučeních k tomu, jak tyto hrozby Další informace najdete v tématu [Rozšířená ochrana před internetovými útoky pro Azure Storage](../common/azure-defender-storage-configure.md). | [Ano](../../security-center/security-center-sql-service-recommendations.md) |
 | Omezení tokenů sdíleného přístupového podpisu (SAS) pouze na připojení HTTPS | Vyžadování protokolu HTTPS, když klient používá token SAS pro přístup k datům ve frontě, pomáhá minimalizovat riziko odposlouchávání. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu

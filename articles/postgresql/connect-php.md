@@ -8,18 +8,18 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 000f3cd9598bc4bdffa896be47466d157c7df8c1
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8443742fb883a63ec869157de7bf436d8f6f5ad6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182710"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901878"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití PHP k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [PHP](https://secure.php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí PHP a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -50,7 +50,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for PostgreSQL](./media/connect-php/1-connection-string.png)
+ :::image type="content" source="./media/connect-php/1-connection-string.png" alt-text="Název serveru Azure Database for PostgreSQL":::
 
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.

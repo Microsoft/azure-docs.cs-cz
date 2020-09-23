@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477455"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898257"
 ---
 # <a name="smote"></a>SMOTE
 
-Tento článek popisuje, jak použít modul SMOTE v Návrháři Azure Machine Learning (Preview) ke zvýšení počtu nezastoupených případů v datové sadě, která se používá pro strojové učení. SMOTE je lepší způsob, jak zvýšit počet vzácných případů, než jednoduše duplikují existující případy.  
+Tento článek popisuje, jak použít modul SMOTE v Návrháři Azure Machine Learning ke zvýšení počtu nezastoupených případů v datové sadě, která se používá pro strojové učení. SMOTE je lepší způsob, jak zvýšit počet vzácných případů, než jednoduše duplikují existující případy.  
 
 Připojíte modul SMOTE k datové sadě, která je *nevyvážená*. Existuje mnoho důvodů, proč může být datová sada nevyvážená. Například kategorie, kterou cílíte, může být v populaci vzácná nebo může být obtížné shromažďovat data. Obvykle používáte SMOTE, pokud je *Třída* , kterou chcete analyzovat, nereprezentace. 
   

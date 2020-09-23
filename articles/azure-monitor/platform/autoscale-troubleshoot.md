@@ -4,12 +4,12 @@ description: Sledování problémů pomocí automatického škálování Azure p
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751328"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979050"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Řešení potíží s automatické škálování Azure
  
@@ -47,7 +47,7 @@ Pro sadu škálování virtuálního počítače máme jednoduché nastavení au
 
 Pojďme se podívat na metriky ze služby automatického škálování.
  
-![Příklad procenta využití sady škálování virtuálního počítače](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![Snímek obrazovky ukazuje příklad procesoru v procentech sady škálování virtuálního počítače.](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
 ![Příklad procenta využití sady škálování virtuálního počítače](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
@@ -72,7 +72,7 @@ Pokud je hodnota **odchozího toku na instanci** větší než 10, služba autom
 
 V tomto případě se hodnota metriky metriky modulu automatického škálování počítá jako skutečná hodnota metriky dělená počtem instancí. Pokud je získaná metrika menší než prahová hodnota, není zahájena žádná akce horizontálního navýšení kapacity. 
  
-![Příklad grafu metriky automatického škálování sady škálování virtuálního počítače](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![Snímek obrazovky zobrazující stránku Průměrná odchozí toky s příkladem grafu metriky automatického škálování sady škálování virtuálního počítače.](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
 ![Příklad grafu metriky automatického škálování sady škálování virtuálního počítače](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 

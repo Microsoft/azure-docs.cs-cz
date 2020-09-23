@@ -1,6 +1,6 @@
 ---
-title: Kurz, jak filtrovat, analyzovat data s výpočetními prostředky na Azure Stack GPU na okraji | Microsoft Docs
-description: Naučte se, jak nakonfigurovat výpočetní roli na grafickém procesoru Azure Stack Edge a použít ho k transformaci dat před odesláním do Azure.
+title: Kurz pro filtrování, analýza dat s výpočetním prostředím v Azure Stack GPU pro procesory | Microsoft Docs
+description: Naučte se konfigurovat výpočetní roli na GPU Azure Stack Edge pro a použít ji k transformaci dat před odesláním do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f4a8786c8d86f43d3433dd51fe7696fd523025a9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: 95c59cff1f47fe720e2dbc65c5b0a69a09be2f2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293542"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903182"
 ---
-# <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Kurz: Konfigurace výpočetních prostředků na zařízení GPU na Azure Stack hraničních zařízeních
+# <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Kurz: Konfigurace výpočtů na zařízeních GPU Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-V tomto kurzu se dozvíte, jak nakonfigurovat výpočetní roli a vytvořit v zařízení Azure Stack Edge cluster Kubernetes. 
+V tomto kurzu se dozvíte, jak nakonfigurovat výpočetní roli a vytvořit cluster Kubernetes na zařízení Azure Stack Edge pro. 
 
 Dokončení této procedury může trvat přibližně 20 až 30 minut.
 
@@ -32,18 +32,18 @@ V tomto kurzu se naučíte:
 > * Získat koncové body Kubernetes
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Před nastavením výpočetní role na zařízení Azure Stack Edge se ujistěte, že:
+Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujistěte, že:
 
-- Aktivovali jste Azure Stack hraniční zařízení, jak je popsáno v tématu [aktivace Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md).
+- Aktivovali jste zařízení Azure Stack Edge pro, jak je popsáno v tématu [aktivace Azure Stack Edge pro](azure-stack-edge-gpu-deploy-activate.md).
 - Ujistěte se, že jste postupovali podle pokynů v části [Povolení výpočetní sítě](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#enable-compute-network) a:
     - Bylo povoleno síťové rozhraní pro výpočetní výkon.
     - Přiřazená IP adresa uzlu Kubernetes a IP adresy externích služeb Kubernetes
 
 ## <a name="configure-compute"></a>Konfigurace COMPUTE
 
-Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zařízeních, vytvoříte prostředek IoT Hub prostřednictvím Azure Portal.
+Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoříte prostředek IoT Hub prostřednictvím Azure Portal.
 
 1. V Azure Portal prostředku Azure Stack Edge si Projděte **Přehled**. V pravém podokně na dlaždici **výpočty** **vyberte Začínáme**.
 
@@ -58,12 +58,12 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zař
    
     |Pole  |Hodnota  |
     |---------|---------|
-    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytvoření prostředku IoT používá standardní vrstva (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Název     |Zadejte název prostředku IoT Hub.         |
+    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
+    |Name     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. Vyberte **Create** (Vytvořit). Vytvoření prostředku IoT Hub trvá několik minut. Po vytvoření prostředku IoT Hub se aktualizuje a zobrazí **se konfigurace výpočtů na dlaždici** . 
+4. Vyberte **Vytvořit**. Vytvoření prostředku IoT Hub trvá několik minut. Po vytvoření prostředku IoT Hub se aktualizuje a zobrazí **se konfigurace výpočtů na dlaždici** . 
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
@@ -72,17 +72,17 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zař
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
-    > Pokud je dialogové okno **Konfigurovat výpočetní** prostředí zavřené, než se IoT Hub přidruží k hraničnímu zařízení Azure Stack Edge, IoT Hub se vytvoří, ale v konfiguraci výpočtů se nezobrazuje. 
+    > Pokud je dialogové okno **Konfigurovat výpočetní** prostředí zavřené dřív, než se IoT Hub přidruží k zařízení Azure Stack Edge pro, vytvoří se IoT Hub, ale v konfiguraci výpočtů se nezobrazuje. 
     
 Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V tomto zařízení IoT Edge je spuštěn také modul runtime IoT Edge. V tomto okamžiku je k dispozici pouze Platforma Linux pro vaše zařízení IoT Edge.
 
 Konfigurace výpočetních prostředků na pozadí může trvat 20-30 minut, než se vytvoří virtuální počítače a Kubernetes cluster. 
 
-Po úspěšné konfiguraci výpočtů v Azure Portal existuje cluster Kubernetes a výchozí uživatel přidružený k oboru názvů IoT (obor názvů System řízený pomocí Azure Stack Edge). 
+Po úspěšné konfiguraci výpočtů v Azure Portal existuje cluster Kubernetes a výchozí uživatel přidružený k oboru názvů IoT (obor názvů System řízený pomocí Azure Stack Edge pro). 
 
 ## <a name="get-kubernetes-endpoints"></a>Získat koncové body Kubernetes
 
-Chcete-li nakonfigurovat klienta pro přístup ke clusteru Kubernetes, budete potřebovat koncový bod Kubernetes. Pomocí těchto kroků můžete získat koncový bod rozhraní Kubernetes API z místního uživatelského rozhraní vašeho zařízení Azure Stack Edge.
+Chcete-li nakonfigurovat klienta pro přístup ke clusteru Kubernetes, budete potřebovat koncový bod Kubernetes. Pomocí těchto kroků můžete získat koncový bod rozhraní Kubernetes API z místního uživatelského rozhraní vašeho zařízení Azure Stack Edge pro.
 
 1. V místním webovém uživatelském rozhraní zařízení klikněte na stránku **zařízení** .
 2. V části **koncové body zařízení**zkopírujte koncový bod **služby API Kubernetes** . Tento koncový bod je řetězec v následujícím formátu: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` . 
@@ -117,7 +117,7 @@ V tomto kurzu jste se naučili:
 > * Získat koncové body Kubernetes
 
 
-Informace o tom, jak spravovat Azure Stack hraniční zařízení, najdete v těchto tématech:
+Informace o tom, jak spravovat zařízení Azure Stack Edge pro, najdete tady:
 
 > [!div class="nextstepaction"]
-> [Použití místního webového uživatelského rozhraní pro správu Azure Stackho Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [Použití místního webového uživatelského rozhraní pro správu Azure Stack Edge pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

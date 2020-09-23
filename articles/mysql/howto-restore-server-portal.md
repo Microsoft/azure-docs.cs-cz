@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421080"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902782"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí Azure Portal
 
@@ -32,7 +32,7 @@ V okně **cenová úroveň** můžete vybrat konfiguraci serveru pro buď místn
 
 Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úroveň** vyberete buď **místně redundantní** , nebo **geograficky redundantní** zálohy pro váš server. V tomto okně můžete také vybrat **dobu uchování zálohy** – jak dlouho (za kolik dní) chcete ukládat zálohy serveru.
 
-   ![Cenová úroveň – výběr redundance zálohy](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
 
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-portal.md).
 
@@ -41,7 +41,7 @@ Dobu uchovávání záloh můžete na serveru změnit pomocí následujících k
 2. Vyberte server Azure Database for MySQL. Tato akce otevře stránku s **přehledem** .
 3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 34 dní.
-![Období uchování zálohy se zvýšilo.](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Období uchování zálohy se zvýšilo.":::
 
 4. Potvrďte změnu kliknutím na tlačítko **OK** .
 
@@ -57,11 +57,11 @@ Následující kroky obnovují ukázkový Server k určitému bodu v čase:
 
 2. Na panelu nástrojů na stránce **Přehled** serveru vyberte **obnovit**.
 
-   ![Azure Database for MySQL – přehled – tlačítko obnovit](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL – přehled – tlačítko obnovit":::
 
 3. Do formuláře Restore zadejte požadované údaje:
 
-   ![Informace o obnovení Azure Database for MySQL](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Informace o obnovení Azure Database for MySQL":::
    - **Bod obnovení**: Vyberte bod v čase, který chcete obnovit.
    - **Cílový server**: zadejte název nového serveru.
    - **Umístění**: oblast nelze vybrat. Ve výchozím nastavení je stejný jako zdrojový server.

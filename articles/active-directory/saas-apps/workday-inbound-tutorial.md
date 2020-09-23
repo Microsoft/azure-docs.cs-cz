@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018097"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974375"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -39,7 +39,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování 
 
 * **Pracovní zařazení zaměstnanců** – když se zaměstnanec v Workday odkoupí, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) pro Active Directory, Azure Active Directory a volitelně Microsoft 365 a [Další aplikace SaaS podporované službou Azure AD](../app-provisioning/user-provisioning.md).
 
-### <a name="whats-new"></a>Co je nového
+### <a name="whats-new"></a>Novinky
 V této části jsou zachycena nedávná vylepšení integrace pracovního dne. Seznam komplexních aktualizací, plánovaných změn a archivů najdete na stránce [co je nového v Azure Active Directory?](../fundamentals/whats-new.md) 
 
 * **Květen 2020 – možnost zápisu telefonních čísel do Workday:** Navíc k e-mailu a uživatelskému jménu teď můžete do pracovního dne služby Azure AD znovu spustit zpětný zápis a číslo mobilního telefonu. Další podrobnosti najdete v [kurzu aplikace zpětného zápisu](workday-writeback-tutorial.md).
@@ -1154,7 +1154,7 @@ S ohledem na uchovávání dat služba zřizování Azure AD negeneruje sestavy,
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](workday-tutorial.md)
 * [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Naučte se používat rozhraní Microsoft Graph API ke správě konfigurací zřizování.](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

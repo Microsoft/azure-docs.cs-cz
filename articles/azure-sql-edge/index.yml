@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Dokumentace k Azure SQL Edge (Preview)
+title: Dokumentace k Azure SQL Edge
 summary: Azure SQL Edge je optimalizovaný relační databázový stroj pro nasazování do IoT a na hraniční zařízení.
 metadata:
-  title: Dokumentace k Azure SQL Edge (Preview)
-  meta.description: Learn how to use Azure SQL Edge (Preview).
+  title: Dokumentace k Azure SQL Edge
+  meta.description: Learn how to use Azure SQL Edge.
   services: sql-edge
   ms.service: sql-edge
   ms.topic: landing-page
   author: stevestein
   ms.author: sstein
   ms.date: 05/19/2020
-  ms.openlocfilehash: 97595cd74fa5a584d5d1943ed88ac617fc742569
-  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+  ms.openlocfilehash: 3a043b3e29352abd44d1b880f366d9fa8ccea4d2
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/31/2020
-  ms.locfileid: "84233202"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90894474"
 landingContent:
 - title: SQL Edge
   linkLists:
@@ -25,8 +25,14 @@ landingContent:
       url: overview.md
   - linkListType: deploy
     links:
-    - text: Nasazení SQL Edge
+    - text: Nasazení Edge SQL pomocí portálu
       url: deploy-portal.md
+    - text: Nasazení Edge SQL s použitím Dockeru
+      url: disconnected-deployment.md
+  - linkListType: tutorial
+    links:
+    - text: Nasazení v Kubernetes
+      url: deploy-kubernetes.md
 - title: Synchronizace dat
   linkLists:
   - linkListType: tutorial
@@ -43,6 +49,8 @@ landingContent:
       url: stream-data.md
     - text: Zobrazení katalogu pro streamování
       url: streaming-catalog-views.md
+    - text: Vytváření a správa úloh streamování
+      url: create-stream-analytics-job.md
 - title: Strojové učení
   linkLists:
   - linkListType: concept
@@ -53,3 +61,21 @@ landingContent:
     links:
     - text: Nasazení ONNX v SQL Edge
       url: deploy-onnx.md
+- title: Zpracování dat časových řad
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zadávání chybějících hodnot
+      url: imputing-missing-values.md
+    - text: Zásady uchovávání dat
+      url: data-retention-overview.md
+    - text: Date_Bucket (Transact-SQL)
+      url: date-bucket-tsql.md
+- title: Konfigurace SQL Edge
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfigurace SQL Edge
+      url: configure.md
+    - text: Konfigurace replikace
+      url: configure-replication.md

@@ -9,17 +9,42 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/04/2020
-ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/22/2020
+ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500347"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900597"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Poznámky k verzi Azure SQL Edge 
 
 Tento článek popisuje, co je nového a co se změnilo u každého nového buildu Azure SQL Edge.
+
+## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
+
+### <a name="sql-engine-build-number---15020001549"></a>Číslo sestavení pro modul SQL Engine – 15.0.2000.1549
+
+### <a name="whats-new"></a>Co je nového?
+1. Image kontejnerů založené na Ubuntu 18,04 
+2. Podpora `IGNORE NULL` a `RESPECT NULL` syntaxe `LAST_VALUE()` `FIRST_VALUE()` funkcí a. 
+3. Vylepšení spolehlivosti pro předpověď pomocí ONNX.
+4. Podpora pro vyčištění na základě zásad uchovávání dat.      
+   - Podpora optimalizovaného čištění clusterovaných indexů columnstore.
+5. Podpora nových funkcí 
+   - Rychlé obnovení
+   - Automatické ladění dotazů
+
+### <a name="fixes"></a>Opravy
+1. Další chybové zprávy a podrobnosti pro řešení potíží s operacemi streamování TSQL. 
+2. Vylepšení pro zachování výdrže baterie v režimu nečinnosti. 
+3. Opravy modulu streamování TSQL: 
+   - Vyčištění pro zastavenou úlohu streamování 
+   - Opravy pro vylepšení lokalizace a zpracování kódu Unicode
+4. Vyčištění na základě zásad uchovávání dat
+   - Opravy pro scénáře vytvoření a vyčištění zásad uchovávání informací.
+5. Opravy pro úlohy časovače na pozadí pro zlepšení úspory energie v režimu snížené spotřeby.
+
 
 ## <a name="ctp-23"></a>CTP 2,3
 ### <a name="sql-engine-build-number---15020001549"></a>Číslo sestavení pro modul SQL Engine – 15.0.2000.1549
@@ -33,7 +58,7 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
 
 ### <a name="fixes"></a>Opravy
 1. Další chybové zprávy a podrobnosti pro řešení potíží s operacemi streamování TSQL. 
-2. Imporvements pro zachování výdrže baterie v režimu nečinnosti. 
+2. Vylepšení pro zachování výdrže baterie v režimu nečinnosti. 
 3. Opravy modulu streamování TSQL: 
    - Oprava potíží se zablokovaným vodoznakem v skákající okně podproudů 
    - Oprava zpracování výjimek rozhraní, aby se zajistilo, že se shromáždí jako chyba při akci uživatele

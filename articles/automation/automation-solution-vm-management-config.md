@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266708"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987212"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurace Start/Stop VMs during off-hours
 
@@ -139,17 +139,17 @@ Chcete-li změnit e-mailová oznámení po nasazení Start/Stop VMs during off-h
 
 1. V Azure Portal přejděte na **monitorování**a pak na **skupiny akcí**. Vyberte skupinu akcí s názvem **StartStop_VM_Notication**.
 
-    ![Stránka Update Management Automation](media/automation-solution-vm-management/azure-monitor.png)
+    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="Snímek obrazovky se stránkou monitor – skupiny akcí":::
 
 2. Na stránce StartStop_VM_Notification klikněte na **Upravit podrobnosti** v části **Podrobnosti**. Tím se otevře stránka E-mail/SMS/Push/Voice. Aktualizujte e-mailovou adresu a kliknutím na **OK** uložte změny.
 
-    ![Stránka Update Management Automation](media/automation-solution-vm-management/change-email.png)
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Snímek obrazovky se stránkou E-mail/SMS/Push/Voice ukazující ukázkovou e-mailovou adresu.":::
 
     Případně můžete do skupiny akcí přidat další akce. Další informace o skupinách akcí naleznete v tématu [skupiny akcí](../azure-monitor/platform/action-groups.md) .
 
 Následuje příklad e-mailu, který se pošle, když funkce vypne virtuální počítače.
 
-![Stránka Update Management Automation](media/automation-solution-vm-management/email.png)
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Snímek obrazovky s ukázkovým e-mailem odeslaným, když funkce vypne virtuální počítače":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Přidat nebo vyloučit virtuální počítače
 
