@@ -5,40 +5,33 @@ description: Zákazníci, kteří vyžadují vyšší úroveň záruky, že jeji
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/08/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: references_regions
-ms.openlocfilehash: edeb184af1c1260a456ed3de7064805526629de8
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3164de9c3e44001d58d46eab9f823041b440960b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225152"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984164"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Vytvoření účtu úložiště s povoleným šifrováním infrastruktury pro dvojité šifrování dat
 
 Azure Storage automaticky šifruje všechna data v účtu úložiště na úrovni služby pomocí 256 šifrování AES, jedno z nejsilnějších šifrovacích šifr, které jsou kompatibilní se standardem FIPS 140-2. Zákazníci, kteří vyžadují vyšší úroveň záruky, že jejich data jsou zabezpečená, můžou na úrovni infrastruktury Azure Storage povolit taky 256 šifrování AES. Když je povolené šifrování infrastruktury, data v účtu úložiště se &mdash; na úrovni služby šifrují dvakrát a jednou na úrovni infrastruktury &mdash; se dvěma různými šifrovacími algoritmy a dvěma různými klíči. Dvojité šifrování Azure Storage dat chrání před scénářem, kdy může dojít k ohrožení jednoho z šifrovacích algoritmů nebo klíčů. V tomto scénáři bude další vrstva šifrování nadále chránit vaše data.
 
-Šifrování na úrovni služby podporuje použití klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem s Azure Key Vault. Šifrování na úrovni infrastruktury spoléhá na klíče spravované Microsoftem a vždycky používá samostatný klíč. Další informace o správě klíčů pomocí šifrování Azure Storage najdete v tématu [o správě šifrovacích klíčů](storage-service-encryption.md#about-encryption-key-management).
+Šifrování na úrovni služby podporuje použití klíčů spravovaných společností Microsoft nebo klíčů spravovaných zákazníkem pomocí Azure Key Vault nebo Key Vault modelu HSM (Managed hardware Security) (verze Preview). Šifrování na úrovni infrastruktury spoléhá na klíče spravované Microsoftem a vždycky používá samostatný klíč. Další informace o správě klíčů pomocí šifrování Azure Storage najdete v tématu [o správě šifrovacích klíčů](storage-service-encryption.md#about-encryption-key-management).
 
 Pro zdvojnásobení šifrování dat musíte nejdřív vytvořit účet úložiště, který je nakonfigurovaný pro šifrování infrastruktury. Tento článek popisuje, jak vytvořit účet úložiště, který umožňuje šifrování infrastruktury.
 
-## <a name="about-the-feature"></a>O funkci
+## <a name="register-to-use-infrastructure-encryption"></a>Registrace pro použití šifrování infrastruktury
 
-Pokud chcete vytvořit účet úložiště s povoleným šifrováním infrastruktury, musíte se nejdřív zaregistrovat, aby se tato funkce používala v Azure. V důsledku omezené kapacity si uvědomte, že může trvat několik měsíců, než se schválí žádosti o přístup.
+Pokud chcete vytvořit účet úložiště s povoleným šifrováním infrastruktury, musíte se nejdřív zaregistrovat na používání této funkce v Azure pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Můžete vytvořit účet úložiště s povoleným šifrováním infrastruktury v následujících oblastech:
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-- East US
-- Středojižní USA
-- Západní USA 2
-
-### <a name="register-to-use-infrastructure-encryption"></a>Registrace pro použití šifrování infrastruktury
-
-Pokud se chcete zaregistrovat pro použití šifrování infrastruktury s Azure Storage, použijte PowerShell nebo Azure CLI.
+Není k dispozici
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -47,6 +40,19 @@ Pokud se chcete zaregistrovat v prostředí PowerShell, zavolejte příkaz [Regi
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName AllowRequireInfraStructureEncryption
+```
+
+Pokud chcete zjistit stav vaší registrace pomocí PowerShellu, zavolejte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowRequireInfraStructureEncryption
+```
+
+Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. Chcete-li znovu zaregistrovat poskytovatele prostředků v prostředí PowerShell, zavolejte příkaz [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) .
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -58,27 +64,6 @@ az feature register --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-# <a name="template"></a>[Šablona](#tab/template)
-
-Nelze použít
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Ověření stavu registrace
-
-Pokud chcete zjistit stav registrace pro šifrování infrastruktury, použijte PowerShell nebo Azure CLI.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Pokud chcete zjistit stav vaší registrace pomocí PowerShellu, zavolejte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowRequireInfraStructureEncryption
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
 Pokud chcete zjistit stav registrace pomocí Azure CLI, zavolejte příkaz [AZ Feature](/cli/azure/feature#az-feature-show) .
 
 ```azurecli
@@ -86,27 +71,7 @@ az feature show --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-# <a name="template"></a>[Šablona](#tab/template)
-
-Nelze použít
-
----
-
-### <a name="re-register-the-azure-storage-resource-provider"></a>Znovu zaregistrovat poskytovatele prostředků Azure Storage
-
-Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. K opětovné registraci poskytovatele prostředků použijte PowerShell nebo Azure CLI.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Chcete-li znovu zaregistrovat poskytovatele prostředků v prostředí PowerShell, zavolejte příkaz [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) .
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pokud chcete poskytovatele prostředků v Azure CLI znovu zaregistrovat, zavolejte příkaz [AZ Provider Register](/cli/azure/provider#az-provider-register) .
+Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. Pokud chcete poskytovatele prostředků v Azure CLI znovu zaregistrovat, zavolejte příkaz [AZ Provider Register](/cli/azure/provider#az-provider-register) .
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -114,15 +79,26 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Nelze použít
+Není k dispozici
 
 ---
 
 ## <a name="create-an-account-with-infrastructure-encryption-enabled"></a>Vytvoření účtu s povoleným šifrováním infrastruktury
 
-Účet úložiště musíte nakonfigurovat tak, aby používal šifrování infrastruktury v době, kdy vytváříte účet. Po vytvoření účtu nelze povolit nebo zakázat šifrování infrastruktury.
+Účet úložiště musíte nakonfigurovat tak, aby používal šifrování infrastruktury v době, kdy vytváříte účet. Účet úložiště musí být typu pro obecné účely v2.
 
-Účet úložiště musí být typu pro obecné účely v2. Můžete vytvořit účet úložiště a nakonfigurovat ho tak, aby povoloval šifrování infrastruktury pomocí PowerShellu, rozhraní příkazového řádku Azure nebo šablony Azure Resource Manager.
+Po vytvoření účtu nelze povolit nebo zakázat šifrování infrastruktury.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Pokud chcete k vytvoření účtu úložiště s povoleným šifrováním infrastruktury použít PowerShell, postupujte takto:
+
+1. V Azure Portal přejděte na stránku **účty úložiště** .
+1. Kliknutím na tlačítko **Přidat** přidejte nový účet úložiště pro obecné účely v2.
+1. Na kartě **Upřesnit** vyhledejte možnost šifrování **infrastruktury** a vyberte **povoleno**.
+1. Kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete vytváření účtu úložiště.
+
+    :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit šifrování infrastruktury při vytváření účtu":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -197,9 +173,18 @@ Následující příklad JSON vytvoří účet úložiště pro obecné účely 
 
 ## <a name="verify-that-infrastructure-encryption-is-enabled"></a>Ověřte, jestli je povolené šifrování infrastruktury.
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Pokud chcete ověřit, jestli je pro účet úložiště s Azure Portal povolené šifrování infrastruktury, postupujte takto:
+
+1. Na webu Azure Portal přejděte na svůj účet úložiště.
+1. V části **Nastavení**vyberte **šifrování**.
+
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Snímek obrazovky ukazující, jak ověřit, jestli je pro účet povolené šifrování infrastruktury":::
+
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete ověřit, jestli je pro účet úložiště povolené šifrování infrastruktury, zavolejte příkaz [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Načtěte `RequireInfrastructureEncryption` pole v rámci `Encryption` vlastnosti a ověřte, jestli je nastavené na `True` .
+Pokud chcete ověřit, jestli je pro účet úložiště s PowerShellem povolené šifrování infrastruktury, zavolejte příkaz [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Načtěte `RequireInfrastructureEncryption` pole v rámci `Encryption` vlastnosti a ověřte, jestli je nastavené na `True` .
 
 Následující příklad načte hodnotu `RequireInfrastructureEncryption` Vlastnosti. Nezapomeňte nahradit hodnoty zástupných symbolů v lomených závorkách vlastními hodnotami:
 
@@ -211,7 +196,7 @@ $account.Encryption.RequireInfrastructureEncryption
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete ověřit, jestli je pro účet úložiště povolené šifrování infrastruktury, zavolejte příkaz [AZ Storage Account show](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `requireInfrastructureEncryption` pole v rámci `encryption` vlastnosti a ověřte, zda je nastaveno na `true` .
+Pokud chcete ověřit, jestli je povolené šifrování infrastruktury pro účet úložiště pomocí Azure CLI, zavolejte příkaz [AZ Storage Account show](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `requireInfrastructureEncryption` pole v rámci `encryption` vlastnosti a ověřte, zda je nastaveno na `true` .
 
 Následující příklad načte hodnotu `requireInfrastructureEncryption` Vlastnosti. Nezapomeňte nahradit hodnoty zástupných symbolů v lomených závorkách vlastními hodnotami:
 
@@ -223,11 +208,11 @@ az storage account show /
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Nelze použít
+Není k dispozici
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
-- [Použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](encryption-customer-managed-keys.md)
+- [Klíče spravované zákazníkem pro šifrování Azure Storage](customer-managed-keys-overview.md)

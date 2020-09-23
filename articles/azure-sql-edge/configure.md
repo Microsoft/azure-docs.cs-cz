@@ -1,6 +1,6 @@
 ---
-title: Konfigurace Edge Azure SQL (Preview)
-description: Přečtěte si o konfiguraci Azure SQL Edge (Preview).
+title: Konfigurace Edge Azure SQL
+description: Přečtěte si o konfiguraci Edge Azure SQL.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -8,15 +8,15 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816877"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888399"
 ---
-# <a name="configure-azure-sql-edge-preview"></a>Konfigurace Edge Azure SQL (Preview)
+# <a name="configure-azure-sql-edge"></a>Konfigurace Edge Azure SQL
 
 Azure SQL Edge podporuje konfiguraci prostřednictvím jedné z následujících dvou možností:
 
@@ -30,17 +30,23 @@ Azure SQL Edge podporuje konfiguraci prostřednictvím jedné z následujících
 
 Azure SQL Edge zpřístupňuje několik různých proměnných prostředí, které se dají použít ke konfiguraci kontejneru SQL Edge. Tyto proměnné prostředí jsou podmnožinou těch, které jsou k dispozici pro SQL Server on Linux. Další informace o SQL Server on Linux proměnných prostředí naleznete v tématu [proměnné prostředí](/sql/linux/sql-server-linux-configure-environment-variables/).
 
+Následující nové proměnné prostředí se přidaly do Azure SQL Edge. 
+
+| Proměnná prostředí | Description | Hodnoty |     
+|-----|-----| ---------- |   
+| **MSSQL_TELEMETRY_ENABLED** | Povolí nebo zakáže shromažďování dat o využití a diagnostice. | TRUE nebo FALSE |  
+| **MSSQL_TELEMETRY_DIR** | Nastaví cílový adresář pro soubory auditu shromažďování dat využití a diagnostiky. | Umístění složky v kontejneru SQL Edge. Tuto složku lze namapovat na svazek hostitele pomocí přípojných bodů nebo datových svazků. | 
+| **MSSQL_PACKAGE** | Určuje umístění balíčku DACPAC nebo BacPac, který má být nasazen. | Složka, soubor nebo adresa URL SAS obsahující balíčky DACPAC nebo BacPac Další informace najdete v tématu [nasazení balíčků SQL Database DACPAC a BacPac v SQL Edge](deploy-dacpac.md). |
+
+
 Následující proměnná prostředí SQL Server on Linux pro Azure SQL Edge podporována. Pokud je tato proměnná prostředí definována, bude při inicializaci kontejneru ignorována.
 
-| Proměnná prostředí | Popis |
+| Proměnná prostředí | Description |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Povolte skupinu dostupnosti. Například hodnota **1** je povolena a **hodnota 0** je zakázána. |
 
 > [!IMPORTANT]
 > Proměnná prostředí **MSSQL_PID** SQL Edge jako platné hodnoty přijímá jenom úrovně **Premium** a **Developer** . Azure SQL Edge nepodporuje inicializaci pomocí kódu Product Key.
-
-> [!NOTE]
-> Stažení [licenčních podmínek pro software společnosti Microsoft](https://go.microsoft.com/fwlink/?linkid=2128283) pro Azure SQL Edge.
 
 ### <a name="specify-the-environment-variables"></a>Zadat proměnné prostředí
 
@@ -53,6 +59,9 @@ Přidejte hodnoty do **proměnných prostředí**.
 Přidejte hodnoty do **kontejneru možnosti vytvoření**.
 
 ![Nastavení pomocí možností vytvoření kontejneru](media/configure/set-environment-variables-using-create-options.png)
+
+> [!NOTE]
+> V režimu odpojeného nasazení lze proměnné prostředí zadat pomocí `-e` `--env` Možnosti nebo nebo `--env-file` `docker run` příkazu.
 
 ## <a name="configure-by-using-an-mssqlconf-file"></a>Konfigurace pomocí souboru MSSQL. conf
 
@@ -70,6 +79,13 @@ Azure SQL Edge neobsahuje [konfigurační nástroj MSSQL-conf](/sql/linux/sql-se
       }
     }
 ```
+
+Následující nové možnosti serveru MSSQL. conf byly přidány pro Azure SQL Edge. 
+
+|Možnost|Popis|
+|:---|:---|
+|**customerfeedback** | Vyberte, zda SQL Server odesílá zpětnou vazbu společnosti Microsoft. Další informace najdete v tématu [zakázání shromažďování dat využití a diagnostiky](usage-and-diagnostics-data-configuration.md#disable-usage-and-diagnostic-data-collection) .|      
+|**userrequestedlocalauditdirectory** | Nastaví cílový adresář pro soubory auditu shromažďování dat využití a diagnostiky. Další informace najdete v tématu [místní audit pro shromažďování dat o využití a diagnostických datech](usage-and-diagnostics-data-configuration.md#local-audit-of-usage-and-diagnostic-data-collection) . |        
 
 Následující možnosti MSSQL. conf se nevztahují na SQL Edge:
 
@@ -116,7 +132,7 @@ traceflag2 = 1204
 
 ## <a name="run-azure-sql-edge-as-non-root-user"></a>Spustit Azure SQL Edge jako nerootový uživatel
 
-Od verze Azure SQL Edge CTP 2.2 můžou kontejnery SQL Edge běžet s nekořenovým uživatelem nebo skupinou, které nejsou rootem. Při nasazení prostřednictvím Azure Marketplace, pokud není zadán jiný uživatel nebo skupina, se kontejnery SQL Edge spouštějí jako uživatel MSSQL (nerooted). Pokud chcete během nasazení zadat jiného než kořenového uživatele, přidejte `*"User": "<name|uid>[:<group|gid>]"*` pár klíč-hodnota v části možnosti vytvoření kontejneru. V příkladu pod SQL Edge je nakonfigurované spuštění jako uživatel `*IoTAdmin*` .
+Ve výchozím nastavení se kontejnery Azure SQL Edge spouštějí s nekořenovým uživatelem nebo skupinou. Při nasazení prostřednictvím Azure Marketplace (nebo použití Docker Run), pokud není zadaný jiný uživatel nebo skupina, se kontejnery SQL Edge spustí jako uživatel MSSQL (nerooted). Pokud chcete během nasazení zadat jiného než kořenového uživatele, přidejte `*"User": "<name|uid>[:<group|gid>]"*` pár klíč-hodnota v části možnosti vytvoření kontejneru. V příkladu pod SQL Edge je nakonfigurované spuštění jako uživatel `*IoTAdmin*` .
 
 ```json
 {
@@ -140,7 +156,7 @@ chown -R 10001:0 <database file dir>
 
 ### <a name="upgrading-from-earlier-ctp-releases"></a>Upgrade z dřívějších verzí CTP
 
-Předchozí verze CTP služby Azure SQL Edge byla nakonfigurovaná tak, aby běžela jako uživatelé root. Při upgradu ze starší verze CTP jsou k dispozici následující možnosti:
+Dřívější verzích CTP Azure SQL Edge byly nakonfigurované tak, aby běžely jako kořenové uživatele. Při upgradu z dřívějších verzích CTP jsou k dispozici následující možnosti.
 
 - Pokračovat v používání kořenového uživatele – Chcete-li pokračovat v používání kořenového uživatele, přidejte `*"User": "0:0"*` dvojici klíč-hodnota v části možnosti vytvoření kontejneru.
 - Použijte výchozího uživatele MSSQL – Chcete-li použít výchozího uživatele MSSQL, postupujte podle následujících kroků.
@@ -148,13 +164,13 @@ Předchozí verze CTP služby Azure SQL Edge byla nakonfigurovaná tak, aby bě�
     ```bash
     sudo useradd -M -s /bin/bash -u 10001 -g 0 mssql
     ```
-  - Změna oprávnění pro adresář/přípojný svazek, kde se nachází databázový soubor 
+  - Změna oprávnění pro adresář nebo přípojný svazek, kde se nachází databázový soubor 
     ```bash
     sudo chgrp -R 0 /var/lib/docker/volumes/kafka_sqldata/
     sudo chmod -R g=u /var/lib/docker/volumes/kafka_sqldata/
     ```
 - Použít jiný nekořenový uživatelský účet – pro použití jiného než kořenového uživatelského účtu
-  - Aktualizujte možnosti vytvoření kontejneru a `*"User": "user_name | user_id*` v části vytvoření kontejneru Určete možnost Přidat dvojici klíč-hodnota. Nahraďte user_name nebo user_id skutečným user_namem nebo user_idm v hostiteli Docker. 
+  - Aktualizujte možnosti vytvoření kontejneru a `*"User": "user_name | user_id*` v části vytvoření kontejneru Určete možnost Přidat dvojici klíč-hodnota. V hostiteli Docker nahraďte user_name nebo user_id skutečným user_namem nebo user_id. 
   - Změňte oprávnění pro adresář nebo přípojný svazek.
 
 ## <a name="persist-your-data"></a>Uchování dat
@@ -169,11 +185,11 @@ Změny konfigurace vašeho okraje Azure SQL Edge a databázové soubory jsou ulo
 První možností je připojit adresář na svém hostiteli jako datový svazek ve vašem kontejneru. K tomu použijte `docker run` příkaz s `-v <host directory>:/var/opt/mssql` příznakem. To umožňuje obnovení dat mezi provedeními kontejneru.
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 Tato technika také umožňuje sdílet a zobrazovat soubory na hostiteli mimo Docker.
@@ -189,11 +205,11 @@ Tato technika také umožňuje sdílet a zobrazovat soubory na hostiteli mimo Do
 Druhou možností je použít kontejner datových svazků. Kontejner objemu dat můžete vytvořit zadáním názvu svazku místo hostitelského adresáře s `-v` parametrem. Následující příklad vytvoří sdílený datový svazek s názvem **sqlvolume**.
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 > [!NOTE]

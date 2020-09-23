@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ce4c44ef17f456a776fde3addc5ec4ed29c8ebbd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434448"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983707"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -67,7 +67,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **azureactivedirectory selhala**, **AzureFrontDoor. front.** a **AzureFrontDoor. FirstParty** . | Odchozí | No | No |
 | **AzureIoTHub** | IoT Hub Azure. | Odchozí | No | No |
 | **AzureKeyVault** | Azure Key Vault<br/><br/>*Poznámka:* Tato značka má závislost na značce **azureactivedirectory selhala** . | Odchozí | Yes | Yes |
-| **AzureLoadBalancer** | Nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations) (168.63.129.16), ve které vznikly sondy stavu Azure. Nezahrnuje provoz do vašeho prostředku Azure Load Balancer. Pokud nepoužíváte Azure Load Balancer, můžete toto pravidlo přepsat. | Obojí | No | No |
+| **AzureLoadBalancer** | Nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations) (168.63.129.16), ve které vznikly sondy stavu Azure. To zahrnuje jenom přenos dat sondy, ne skutečný provoz do back-endu prostředku. Pokud nepoužíváte Azure Load Balancer, můžete toto pravidlo přepsat. | Obojí | No | No |
 | **AzureMachineLearning** | Azure Machine Learning. | Obojí | No | Yes |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon a vlastní metriky (koncové body 4Gigový).<br/><br/>*Poznámka:* U Log Analytics má tato značka závislost na značce **úložiště** . | Odchozí | No | Yes |
 | **AzureOpenDatasets** | Otevřené datové sady Azure<br/><br/>*Poznámka:* Tato značka má závislost na značce **AzureFrontDoor. front** a **Storage** . | Odchozí | No | No |

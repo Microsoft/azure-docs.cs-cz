@@ -3,12 +3,12 @@ title: Nakonfigurujte cluster Kubernetes s povoleným ARC Azure pomocí Azure Mo
 description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí Azure Monitor pro kontejnery v clusterech s podporou Kubernetes ARC Azure.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090614"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977528"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolit monitorování clusteru Kubernetes s povoleným ARC Azure
 
@@ -32,7 +32,7 @@ Následující je oficiálně podporovaná s Azure Monitor pro kontejnery:
 
 - Podporovaná verze operačního systému Linux pro hlavní a pracovní uzly jsou: Ubuntu (18,04 LTS a 16,04 LTS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -63,7 +63,7 @@ Než začnete, ujistěte se, že máte následující:
     >[!IMPORTANT]
     >Minimální verze agenta podporovaná pro monitorování clusterů Kubernetes s podporou ARC je ciprod04162020 nebo novější.
 
-- Pokud povolíte monitorování pomocí skriptované metody PowerShellu, je potřeba [PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) .
+- Pokud povolíte monitorování pomocí skriptované metody PowerShellu, je potřeba [PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6&preserve-view=true) .
 
 - [Bash verze 4](https://www.gnu.org/software/bash/) je vyžadována, pokud povolíte monitorování pomocí skriptové metody bash.
 
@@ -137,6 +137,33 @@ Pokud chcete monitorovat svůj cluster pomocí skriptu prostředí PowerShell ne
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru.
 
+### <a name="using-service-principal"></a>Použití instančního objektu
+Skript *enable-monitoring.ps1* používá přihlášení interaktivního zařízení. Pokud dáváte přednost neinteraktivnímu přihlášení, můžete použít existující instanční objekt nebo vytvořit nový, který má požadovaná oprávnění, jak je popsáno v části [požadavky](#prerequisites). Chcete-li použít instanční objekt, bude nutné předat $servicePrincipalClientId, $servicePrincipalClientSecret a $tenantId parametry s hodnotami instančního objektu, který chcete použít ke *enable-monitoring.ps1* skriptu.
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+```
+
+Přiřazení role níže se dá použít jenom v případě, že používáte existující Log Analytics pracovní prostor v jiném předplatném Azure než K8s připojený clusterový prostředek.
+
+```powershell
+$logAnalyticsWorkspaceResourceId = "<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
+New-AzRoleAssignment -RoleDefinitionName 'Log Analytics Contributor'  -ObjectId $servicePrincipal.Id -Scope  $logAnalyticsWorkspaceResourceId
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+Příklad:
+
+```powershell
+.\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
+```
+
+
+
 ## <a name="enable-using-bash-script"></a>Povolit pomocí skriptu bash
 
 Provedením následujících kroků povolíte monitorování pomocí zadaného skriptu bash.
@@ -162,7 +189,7 @@ Provedením následujících kroků povolíte monitorování pomocí zadaného s
 4. Pokud chcete použít existující pracovní prostor Azure Monitor Log Analytics, nakonfigurujte proměnnou `logAnalyticsWorkspaceResourceId` s odpovídající hodnotou, která představuje ID prostředku pracovního prostoru. Jinak nastavte proměnnou na `""` a skript vytvoří výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru, pokud ještě neexistuje v této oblasti. Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<SubscriptionID> - \<Region> *.
 
     ```bash
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Pokud váš Kubernetes cluster s podporou ARC komunikuje prostřednictvím proxy server, nakonfigurujte proměnnou `proxyEndpoint` s adresou URL proxy server. Pokud cluster nekomunikuje prostřednictvím proxy server, můžete hodnotu nastavit na `""` . Další informace najdete v části [Konfigurace koncového bodu proxy serveru](#configure-proxy-endpoint) dále v tomto článku.
@@ -194,6 +221,31 @@ Provedením následujících kroků povolíte monitorování pomocí zadaného s
     ```
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru.
+
+### <a name="using-service-principal"></a>Použití instančního objektu
+Skript bash *Enable-monitoring.sh* používá přihlášení interaktivního zařízení. Pokud dáváte přednost neinteraktivnímu přihlášení, můžete použít existující instanční objekt nebo vytvořit nový, který má požadovaná oprávnění, jak je popsáno v části [požadavky](#prerequisites). Chcete-li použít instanční objekt, budete muset předat--Client-ID,--Client-Secret a--tenant-ID instančního objektu, který jste chtěli použít ke *Enable-monitoring.sh* skriptu bash.
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+```
+
+Přiřazení role níže se dá použít jenom v případě, že používáte existující Log Analytics pracovní prostor v jiném předplatném Azure než K8s připojený clusterový prostředek.
+
+```bash
+logAnalyticsWorkspaceResourceId="<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
+az role assignment create --role 'Log Analytics Contributor' --assignee $servicePrincipalClientId --scope $logAnalyticsWorkspaceResourceId
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+Příklad:
+
+```bash
+bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
+```
 
 ## <a name="configure-proxy-endpoint"></a>Konfigurace koncového bodu proxy serveru
 

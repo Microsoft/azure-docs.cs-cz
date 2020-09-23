@@ -11,15 +11,15 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4b2b435be2a39b6e31a7f44fa6acbe7e1bc9c2c0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d60a963f8ad4b29d3c282d30e6aca9973208860b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661676"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905152"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 > [!IMPORTANT]
 > Zjišťování posunu dat u datových sad je v současnosti ve verzi Public Preview.
@@ -38,13 +38,10 @@ K vytvoření monitorování se používá [datová sada Azure Machine Learning]
 
 Metriky pro posun dat můžete zobrazit pomocí sady Python SDK nebo v Azure Machine Learning Studiu.  K dispozici jsou další metriky a přehledy prostřednictvím prostředku [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) přidruženého k pracovnímu prostoru Azure Machine Learning.
 
-> [!Important]
-> Sledování posunu dat pomocí sady SDK je k dispozici ve všech edicích. Sledování dat je však provedená v rámci studia pouze na webu je edice Enterprise.
-
 ## <a name="prerequisites"></a>Požadavky
 
 K vytváření a práci s monitory datových sad potřebujete:
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), která zahrnuje balíček AzureML-DataSet Sets.
 * Strukturovaná (tabulková) data s časovým razítkem zadaným v cestě k souboru, názvu souboru nebo sloupci v datech.
@@ -88,7 +85,7 @@ Proveďte analýzu minulých dat. | Tento scénář se dá použít k pochopení
 
 Monitory datových sad závisí na následujících službách Azure.
 
-|Služba Azure  |Popis  |
+|Služba Azure  |Description  |
 |---------|---------|
 | *Datová sada* | Při načítání školicích dat a porovnávání dat pro školení modelů posun používá Machine Learning datové sady.  Generování profilu dat se používá ke generování některých hlášených metrik, jako jsou minimální, maximální a jedinečné hodnoty, počet jedinečných hodnot. |
 | *Kanál a výpočetní prostředí pro AzureML* | Úloha výpočtu posunu je hostovaná v kanálu AzureML.  Úloha se aktivuje na vyžádání nebo podle plánu, aby běžela na výpočetním prostředí nakonfigurovaném v době vytváření odchodu sledování.
@@ -135,7 +132,6 @@ dset = dset.register(ws, 'target')
 Úplný příklad použití `timeseries` vlastnosti datových sad naleznete v dokumentaci k [ukázkovému poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) nebo [sadě SDK datových sad](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 Pokud vytvoříte datovou sadu pomocí nástroje Azure Machine Learning Studio, ujistěte se, že cesta k datům obsahuje informace o časovém razítku, zahrňte všechny podsložky s daty a nastavte formát oddílu.
 
@@ -209,15 +205,13 @@ monitor = monitor.enable_schedule()
 Úplný příklad nastavení `timeseries` datové sady a datového posunu dat najdete v našem [poznámkovém bloku](https://aka.ms/datadrift-notebook).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure Machine Learning Studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-Pracovní prostor, který obsahuje datovou sadu, pro kterou chcete vytvořit monitorování, musí mít funkce Enterprise Edition, aby bylo možné nastavit výstrahy na monitoru datových sad.
+1. Přejděte na [domovskou stránku studia](https://ml.azure.com).
+1. Na levé straně vyberte kartu **datové sady** . 
+1. Vyberte **monitorování datových sad**.
+   ![Seznam monitorování](./media/how-to-monitor-datasets/monitor-list.png)
 
-Po potvrzení funkčnosti pracovního prostoru přejděte na [domovskou stránku studia](https://ml.azure.com) a na levé straně vyberte kartu **datové sady** . Vyberte **monitorování datových sad**.
-
-![Seznam monitorování](./media/how-to-monitor-datasets/monitor-list.png)
-
-Klikněte na tlačítko **+ vytvořit monitorování** a pokračujte v průvodci kliknutím na tlačítko **Další**.  
+1. Klikněte na tlačítko **+ vytvořit monitorování** a pokračujte v průvodci kliknutím na tlačítko **Další**.  
 
 :::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Průvodce vytvořením monitorování":::
 

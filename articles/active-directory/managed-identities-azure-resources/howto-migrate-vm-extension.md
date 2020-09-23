@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84a262cae17a4e26724ab06da397e699e09468db
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260182"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969200"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Jak ukončit používání rozšíření spravované identity virtuálních počítačů a začít používat Azure Instance Metadata Service
 
@@ -37,8 +37,8 @@ Kvůli několika omezením, které jsou uvedené v následující části, se ro
 
 Když nakonfigurujete virtuální počítač nebo sadu škálování virtuálního počítače tak, aby měly spravovanou identitu, můžete se případně rozhodnout zřídit rozšíření spravované identity pro prostředky Azure s použitím `-Type` parametru rutiny [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) . Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux` , v závislosti na typu virtuálního počítače a pojmenovat ho pomocí `-Name` parametru. `-Settings`Parametr určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
 
-```powershell
-   $settings = @{ "port" = 50342 }
+```azurepowershell-interactive
+$settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
@@ -68,7 +68,7 @@ Pomocí šablony nasazení Azure Resource Manager můžete také zřídit rozš�
     
 Pokud pracujete se sadami škálování virtuálních počítačů, můžete taky zřídit spravované identity pro rozšíření Azure Resource Scale set pomocí rutiny [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) . Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux` , v závislosti na typu sady škálování virtuálního počítače a pojmenovat ho pomocí `-Name` parametru. `-Settings`Parametr určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
 
-   ```powershell
+   ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
@@ -106,7 +106,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
 ```
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
 ```
 
@@ -162,7 +162,7 @@ Content-Type: application/json
 
 Pokud se rozšíření zastaví na Windows a určitých verzích Linux, dá se k ručnímu restartování použít následující rutina:
 
-```powershell
+```azurepowershell-interactive
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 

@@ -3,12 +3,12 @@ title: Vytvoření projektů skupiny prostředků sady Visual Studio pro & nasaz
 description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků Azure a nasaďte prostředky do Azure.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76152727"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985253"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
@@ -23,7 +23,7 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
 1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**.
 1. Vyberte šablonu projektu **skupiny prostředků Azure** a **Další**.
 
-    ![Vytvoření projektu](./media/create-visual-studio-deployment-project/create-project.png)
+    ![Snímek obrazovky se zobrazí okno vytvořit nové projektu se skupinou prostředků Azure a zvýrazněným tlačítkem Další.](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. Zadejte název svého projektu. Ostatní výchozí nastavení jsou pravděpodobně jemné, ale je třeba je zkontrolovat, aby fungovaly pro vaše prostředí. Až budete hotovi, vyberte **Vytvořit**.
 
@@ -65,7 +65,7 @@ Projekt nasazení můžete přizpůsobit úpravou šablony Správce prostředků
 
 1. Pokud chcete přidat prostředek, můžete buď použít tlačítko **Přidat prostředek** v horní části okna s osnovou JSON, nebo kliknout pravým tlačítkem na **resources** a vybrat **Přidat nový prostředek**.
 
-   ![Přidat prostředek](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![Snímek obrazovky znázorňující okno osnovy JSON s zvýrazněnou možností přidat nový prostředek.](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. Vyberte **účet úložiště** a pojmenujte ho. Zadejte název, který nebude delší než 11 znaků. Obsahovat smí jenom čísla a malá písmena.
 
@@ -189,7 +189,7 @@ V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím ne
 
 1. Teď potřebujete zajistit, aby projekt skupiny prostředků věděl o novém projektu. Vraťte se do projektu skupiny prostředků (ExampleAppDeploy). Klikněte pravým tlačítkem na **Odkazy** a vyberte **Přidat odkaz**.
 
-    ![Přidání odkazu](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![Snímek obrazovky s zvýrazněnou možností přidat odkaz se zobrazí nabídka ExampleAppDeploy.](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. Vyberte vámi vytvořený projekt webové aplikace.
 
@@ -364,7 +364,7 @@ Nejste omezení jenom na prostředky dostupné prostřednictvím rozhraní sady 
 
 1. Po dokončení nasazení si zobrazte řídicí panel na portálu. Vyberte **řídicí panel** a vyberte ten, který jste nasadili.
 
-   ![Vlastní řídicí panel](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![Snímek obrazovky zobrazující stránku řídicího panelu se zvýrazněným ukázkovým vlastním řídicím panelem](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. Zobrazí se přizpůsobený řídicí panel.
 

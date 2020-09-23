@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/03/2020
-ms.openlocfilehash: 46f7c7185de559fb6b6545eb8f1b2113aa0ec4b2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d5db970d4ed3c3988c96a2c0c33775bcbfb00d92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085004"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986010"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -31,12 +31,13 @@ Tady jsou omezení pro jednu definici aplikace logiky:
 | Triggery na pracovní postup | 10 | Při práci v zobrazení kódu, nikoli v Návrháři |
 | Omezení případů rozsahu přepnutí | 25 | |
 | Proměnné na pracovní postup | 250 | |
-| Počet znaků na výraz | 8 192 | |
-| Maximální velikost pro `trackedProperties` | 16 000 znaků |
 | Název `action` nebo `trigger` | 80 znaků | |
+| Počet znaků na výraz | 8 192 | |
 | Délka `description` | 256 znaků | |
-| Velikosti `parameters` | 50 | |
-| Velikosti `outputs` | 10 | |
+| Maximální počet `parameters` | 50 | |
+| Maximální počet `outputs` | 10 | |
+| Maximální velikost pro `trackedProperties` | 16 000 znaků |
+| Akce vloženého kódu – maximální počet znaků kódu | 1 024 znaků <p>Pro omezení počtu znaků 100 000 vytvořte aplikace logiky s Visual Studio Code a [rozšířením **Azure Logic Apps** verze Preview](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md). |
 
 <a name="run-duration-retention-limits"></a>
 
@@ -244,7 +245,7 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 |----------|------|-------|----------|
 | Obchodní smlouvy EDI | 10 | 1 | 1 000 |
 | Obchodní partneři EDI | 25 | 2 | 1 000 |
-| Mapy | 25 | 500 | 1 000 |
+| Maps | 25 | 500 | 1 000 |
 | Schémata | 25 | 500 | 1 000 |
 | Sestavení | 10 | 25 | 1 000 |
 | Certifikáty | 25 | 2 | 1 000 |

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c1c3f52dafe63e3f829eb12d4fb872ed3ce85f36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211710"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982897"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service
 
@@ -51,7 +51,7 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -145,7 +145,7 @@ http://<back-end-app-name>.azurewebsites.net
 http://<front-end-app-name>.azurewebsites.net
 ```
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/azure-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/azure-run.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů":::
 
 > [!NOTE]
 > Pokud se aplikace restartuje, možná si všimnete smazání nových dat. Toto chování je záměrné, protože ukázková aplikace ASP.NET Core využívá databázi v paměti.
@@ -225,7 +225,7 @@ Přejděte na adresu `http://<front-end-app-name>.azurewebsites.net` a přidejte
 
 Přejděte na adresu `http://<back-end-app-name>.azurewebsites.net`, kde se zobrazí položky přidané z front-endové aplikace. Přidejte také několik položek, například `from back end 1` a `from back end 2` a pak aktualizujte front-endovou aplikaci, abyste zjistili, jestli se změny projeví.
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/remote-api-call-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů s položkami přidanými z aplikace front-end.":::
 
 ## <a name="configure-auth"></a>Konfigurace ověřování
 
@@ -239,7 +239,7 @@ V nabídce [Azure Portal](https://portal.azure.com) vyberte **skupiny prostředk
 
 V **skupiny prostředků**vyhledejte a vyberte skupinu prostředků. V **přehledu**vyberte stránku správy vaší back-endové aplikace.
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/portal-navigate-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="Snímek obrazovky okna skupiny prostředků zobrazující přehled ukázkové skupiny prostředků a vybrané stránky pro správu back-endové aplikace.":::
 
 V nabídce vlevo back-end aplikace vyberte **ověřování/autorizace**a pak povolte App Service ověřování výběrem **zapnuto**.
 
@@ -247,7 +247,7 @@ V části **Akce, která se má provést, když požadavek nebude ověřený** v
 
 V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/configure-auth-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Snímek obrazovky levé nabídky aplikace, která zobrazuje vybrané ověřování a autorizaci a nastavení vybrané v pravé nabídce":::
 
 Vyberte **Express**, přijměte výchozí nastavení a vytvořte novou aplikaci AD a vyberte **OK**.
 
@@ -259,7 +259,7 @@ Znovu vyberte **Azure Active Directory** a pak vyberte **aplikace Azure AD**.
 
 Zkopírujte **ID klienta** aplikace Azure AD do poznámkového bloku. Tuto hodnotu budete potřebovat později.
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/get-application-id-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="Snímek obrazovky okna nastavení Azure Active Directory zobrazující Aplikace Azure AD a okno aplikace služby Azure AD zobrazující ID klienta, které se má zkopírovat":::
 
 Pokud zde zastavíte, máte samostatnou aplikaci, která je už zabezpečená App Service ověřováním a autorizací. V dalších částech se dozvíte, jak zabezpečit řešení Multi-App pomocí "toku" ověřeného uživatele z front-endu do back-endu. 
 
@@ -284,13 +284,13 @@ V nabídce [Azure Portal](https://portal.azure.com) vyberte **Azure Active Direc
 
 Vyberte **Registrace aplikací**  >  **vlastněné aplikace**  >  **Zobrazit všechny aplikace v tomto adresáři**. Vyberte název front-end aplikace a pak vyberte **oprávnění API**.
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/add-api-access-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Snímek obrazovky okna Microsoft-Registrace aplikací se vlastními aplikacemi, názvem aplikace front-end a vybranými oprávněními rozhraní API.":::
 
 Vyberte **Přidat oprávnění**a pak vyberte **rozhraní API moje organizace používá**  >  **\<back-end-app-name>** .
 
 Na stránce **požádat o oprávnění API** pro back-endové aplikace vyberte **delegovaná oprávnění** a **user_impersonation**a pak vyberte **Přidat oprávnění**.
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/select-permission-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="Snímek obrazovky se stránkou oprávnění API žádosti, která zobrazuje delegovaná oprávnění, user_impersonation a vybrané tlačítko Přidat oprávnění.":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>Konfigurace služby App Service tak, aby vracela použitelný přístupový token
 
@@ -300,7 +300,7 @@ Přejděte na [Azure Resource Explorer](https://resources.azure.com) a pomocí s
 
 [Azure Resource Explorer](https://resources.azure.com) se teď otevře s vaší front-end aplikací vybranou ve stromu prostředků. V horní části stránky klikněte na **Čtení / zápis** a povolte úpravy vašich prostředků Azure.
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/resources-enable-write.png)
+:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Snímek obrazovky s tlačítky pro čtení a čtení a zápis v horní části stránky Azure Resource Explorer s vybraným tlačítkem pro čtení/zápis.":::
 
 V levém prohlížeči přejděte k části **Konfigurace**  >  **authsettings**.
 
@@ -310,7 +310,7 @@ V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/additional-login-params-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="Snímek obrazovky příkladu kódu v zobrazení authsettings zobrazující řetězec additionalLoginParams s příkladem ID klienta.":::
 
 Uložte nastavení kliknutím na **PUT**.
 

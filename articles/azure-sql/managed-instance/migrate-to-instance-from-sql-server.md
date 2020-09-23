@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090223"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887655"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -198,7 +198,7 @@ I v případě, že během migrace neprovedete změny ve spravované instanci, j
 
 Například nemusíte vytvářet zálohy na spravované instanci – služba provádí zálohování automaticky. Už si nemusíte dělat starosti s plánováním, správou a správou záloh. SQL Managed instance poskytuje možnost obnovení do libovolného bodu v čase v rámci této doby uchování pomocí funkce [Obnovení bodu v čase (PITR)](../database/recovery-using-backups.md#point-in-time-restore). Kromě toho se nemusíte starat o nastavení vysoké dostupnosti, protože je integrovaná [Vysoká dostupnost](../database/high-availability-sla.md) .
 
-Pokud chcete posílit zabezpečení, zvažte použití [Azure Active Directory ověřování](../database/security-overview.md), [auditování](auditing-configure.md), [detekce hrozeb](../database/advanced-data-security.md), [zabezpečení na úrovni řádků](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)a [dynamického maskování dat](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking).
+Pokud chcete posílit zabezpečení, zvažte použití [Azure Active Directory ověřování](../database/security-overview.md), [auditování](auditing-configure.md), [detekce hrozeb](../database/azure-defender-for-sql.md), [zabezpečení na úrovni řádků](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)a [dynamického maskování dat](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking).
 
 Kromě pokročilých funkcí správy a zabezpečení poskytuje spravovaná instance sadu pokročilých nástrojů, které vám pomůžou [monitorovat a ladit vaše úlohy](../database/monitor-tune-overview.md). [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) vám umožní monitorovat velkou sadu spravovaných instancí a centralizovat monitorování velkého počtu instancí a databází. [Automatické ladění](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) ve spravovaných instancích nepřetržitě monitoruje výkon statistik spuštění plánu SQL a automaticky opravuje zjištěné problémy s výkonem.
 

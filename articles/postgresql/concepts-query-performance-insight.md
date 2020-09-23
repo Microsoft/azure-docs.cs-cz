@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7573e99de96e3d13509056c49bc24be7fe166bf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768380"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906530"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
@@ -30,7 +30,7 @@ Zobrazení [Query Performance Insight](concepts-query-performance-insight.md) na
 
 Na stránce portálu vašeho serveru Azure Database for PostgreSQL v části **inteligentní výkon** v řádku nabídek vyberte **Query Performance Insight** .
 
-![Query Performance Insight dlouho běžící dotazy](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Query Performance Insight dlouho běžící dotazy":::
 
 Karta **dlouho běžící dotazy** zobrazuje prvních pět dotazů na základě průměrné doby trvání za běhu, agregované v intervalech 15 minut. Další dotazy můžete zobrazit tak, že v rozevíracím seznamu vyberete **Počet dotazů**. Barvy grafu se mohou při této akci změnit pro konkrétní ID dotazu.
 
@@ -40,9 +40,9 @@ Tabulka pod grafem obsahuje další podrobnosti o dlouhotrvajících dotazech v 
 
 Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace týkající se čekání na serveru.
 
-![Query Performance Insight čeká na statistiku](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight čeká na statistiku":::
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 * Query Performance Insight není pro [repliky čtení](concepts-read-replicas.md)k dispozici.
 
 ## <a name="next-steps"></a>Další kroky

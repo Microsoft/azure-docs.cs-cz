@@ -1,18 +1,18 @@
 ---
 title: 'VPN Gateway: klient VPN pro připojení P2S protokolu OpenVPN: ověřování Azure AD'
-description: P2S VPN můžete použít pro připojení k virtuální síti pomocí ověřování Azure AD.
+description: Naučte se používat P2S VPN pro připojení k virtuální síti pomocí ověřování Azure AD.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 08/04/2020
-ms.author: alzam
-ms.openlocfilehash: 97620192fb645dd453d1479d1e755e87cf9afd5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.date: 09/22/2020
+ms.author: cherylmc
+ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761174"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977829"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení typu point-to-site přes protokol OpenVPN: Ověřování Azure AD
 
@@ -88,11 +88,11 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Vyberte tři tečky vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
 
-    ![odstranění](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Vyberte **Odebrat** a odstraňte.
 
-    ![odstranění](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Vytvoření připojení
 

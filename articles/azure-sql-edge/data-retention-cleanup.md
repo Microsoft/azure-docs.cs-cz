@@ -1,6 +1,6 @@
 ---
-title: Správa historických dat pomocí zásad uchovávání informací – Azure SQL Edge (Preview)
-description: Naučte se spravovat historická data pomocí zásad uchovávání informací ve službě Azure SQL Edge (Preview).
+title: Správa historických dat pomocí zásad uchovávání informací – Azure SQL Edge
+description: Naučte se spravovat historická data pomocí zásad uchovávání dat v Azure SQL Edge.
 keywords: SQL Edge, uchovávání dat
 services: sql-edge
 ms.service: sql-edge
@@ -9,22 +9,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9acec467819f159623176edf2f3f763a55019eb4
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550645"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888127"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Správa historických dat pomocí zásad uchovávání informací
 
 Uchovávání dat může být v databázi a kterékoli z podkladových tabulek povoleno jednotlivě a umožňuje uživatelům vytvářet flexibilní zásady stárnutí pro své tabulky a databáze. Použití uchovávání dat je jednoduché: vyžaduje pouze jeden parametr, který má být nastaven během vytváření tabulky nebo jako součást operace ALTER TABLE. 
 
-Po definovanýchí zásad uchovávání dat pro databázi a podkladovou tabulku se spustí úloha časovače času na pozadí, která odebere všechny zastaralé záznamy z tabulky povolené pro uchovávání dat. Identifikace odpovídajících řádků a jejich odebrání z tabulky probíhá transparentně v úloze na pozadí, která je naplánována a spuštěna systémem. Podmínka stáří pro řádky tabulky je kontrolována na základě sloupce použitého jako `filter_column` v definici tabulky. Pokud je doba uchování například nastavená na jeden týden, řádky tabulky, které mají nárok na vyčištění, splňují následující podmínky: 
+Po definovanýchí zásad uchovávání dat pro databázi a podkladovou tabulku se spustí úloha časovače času na pozadí, která odebere všechny zastaralé záznamy z tabulky povolené pro uchovávání dat. Identifikace odpovídajících řádků a jejich odebrání z tabulky probíhá transparentně v úloze na pozadí, která je naplánována a spuštěna systémem. Podmínka stáří pro řádky tabulky je kontrolována na základě sloupce použitého jako `filter_column` v definici tabulky. Pokud je doba uchování například nastavená na jeden týden, řádky tabulky, které mají nárok na vyčištění, splňují jednu z těchto podmínek: 
 
-```sql
-filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())
-```
+- Pokud sloupec filtru používá datový typ DATETIMEOFFSET, je podmínka `filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())`
+- V opačném případě je podmínka `filter_column < DATEADD(WEEK, -1, SYSDATETIME())`
 
 ## <a name="data-retention-cleanup-phases"></a>Fáze čištění uchovávání dat
 
@@ -37,7 +36,7 @@ Operace čištění uchovávání dat se skládá ze dvou fází.
 
 ## <a name="manual-cleanup"></a>Ruční vyčištění
 
-V závislosti na nastavení uchovávání dat v tabulce a povaze úloh v databázi je možné, že automatické vyčištění vlákna nemusí během běhu zcela odebrat všechny zastaralé řádky. Pro pomoc s tímto a povolením uživatelům ručně odebrat zastaralé řádky je `sys.sp_cleanup_data_retention` uložený postup zavedený ve službě Azure SQL Edge (Preview). 
+V závislosti na nastavení uchovávání dat v tabulce a povaze úloh v databázi je možné, že automatické vyčištění vlákna nemusí během běhu zcela odebrat všechny zastaralé řádky. Aby vám pomohl s tímto a mohly uživatelům ručně odebrat zastaralé řádky, je `sys.sp_cleanup_data_retention` uložená procedura zavedená v Azure SQL Edge. 
 
 Tato uložená procedura používá tři parametry. 
     - Název schématu – název vlastnícího schématu pro tabulku. Toto je povinný parametr. 
@@ -67,7 +66,7 @@ Vynikající komprese dat a efektivní vyčištění pro uchovávání informac�
 
 ## <a name="monitoring-data-retention-cleanup"></a>Vyčištění uchovávání dat monitorování
 
-Operace čištění zásad uchovávání dat se dají monitorovat pomocí rozšířených událostí (XEvents) ve službě Azure SQL Edge (Preview). Další informace o rozšířených událostech najdete v tématu [XEvents Overview](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events).
+Operace čištění zásad uchovávání dat se dají monitorovat pomocí rozšířených událostí (XEvents) ve službě Azure SQL Edge. Další informace o rozšířených událostech najdete v tématu [XEvents Overview](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events). 
 
 Následující šest rozšířených událostí vám pomůžou sledovat stav operací čištění. 
 
@@ -78,7 +77,9 @@ Následující šest rozšířených událostí vám pomůžou sledovat stav ope
 | data_retention_task_exception  | Vyvolá se v případě, že úloha na pozadí pro vyčištění tabulek se zásadami uchovávání neproběhne mimo proces čištění uchovávání, který je specifický pro tabulku. |
 | data_retention_cleanup_started  | Vyvolá se v případě, že se spustí vyčištění procesu tabulky se zásadami uchovávání dat. |
 | data_retention_cleanup_exception  | Dojde k chybě procesu čištění tabulky se zásadami uchovávání informací. |
-| data_retention_cleanup_completed  | Vyvolá se v případě, že dojde k ukončení procesu čištění tabulky se zásadami uchovávání dat. |
+| data_retention_cleanup_completed  | Vyvolá se v případě, že dojde k ukončení procesu čištění tabulky se zásadami uchovávání dat. |  
+
+`RING_BUFFER_DATA_RETENTION_CLEANUP`Do zobrazení sys. dm_os_ring_buffers dynamické správy se přidal nový typ kruhové vyrovnávací paměti s názvem. Toto zobrazení lze použít k monitorování operací čištění uchovávání dat. 
 
 
 ## <a name="next-steps"></a>Další kroky

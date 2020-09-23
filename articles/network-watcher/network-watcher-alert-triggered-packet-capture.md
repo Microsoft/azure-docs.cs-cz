@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738052"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975067"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro proaktivní monitorování sítě s výstrahami a Azure Functions
 
@@ -30,7 +30,7 @@ Prostředky, které jsou nasazené v Azure Run 24/7. Vy a vaši pracovníci nem�
 
 Pomocí Network Watcher, upozorňování a funkcí v rámci ekosystému Azure můžete aktivně reagovat s daty a nástroji pro řešení problémů ve vaší síti.
 
-![Scénář][scenario]
+![Diagram zobrazuje Network Watcher rozšíření na virtuálním počítači, který přechází do segmentů T C P odeslaných > Network Watcher Network Watcher Azure Functions 100.][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -347,8 +347,8 @@ Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy
   |**Název**|TCP_Segments_Sent_Exceeded|Název pravidla výstrahy.|
   |**Popis**|Počet odeslaných segmentů TCP překročení prahové hodnoty|Popis pravidla výstrahy.|
   |**Metrika**|Odeslané segmenty TCP| Metrika, která se má použít k aktivaci výstrahy. |
-  |**Podmínka**|Větší než| Podmínka, která se má použít při vyhodnocování metriky.|
-  |**Mezí**|100| Hodnota metriky, která aktivuje výstrahu. Tato hodnota by měla být nastavená na platnou hodnotu pro vaše prostředí.|
+  |**Condition** (Podmínka)|Větší než| Podmínka, která se má použít při vyhodnocování metriky.|
+  |**Prahová hodnota**|100| Hodnota metriky, která aktivuje výstrahu. Tato hodnota by měla být nastavená na platnou hodnotu pro vaše prostředí.|
   |**Období**|Za posledních pět minut| Určuje období, ve kterém se má hledat prahová hodnota metriky.|
   |**Webhook**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
 

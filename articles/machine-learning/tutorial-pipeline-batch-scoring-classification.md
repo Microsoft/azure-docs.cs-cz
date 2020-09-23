@@ -11,16 +11,16 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: 87a65cd42ad58a06488499aaf8651e206c35b5f2
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: b6b4be2eb2cd490d525046541f68a45d87a8e638
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657044"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906680"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Kurz: vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto rozšířeném kurzu se naučíte, jak vytvořit [kanál Azure Machine Learning](concept-ml-pipelines.md) pro spuštění úlohy vyhodnocování dávek. Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na strojové učení místo infrastruktury a automatizace. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, který můžete použít ke spuštění kanálu z libovolné knihovny HTTP na libovolné platformě. 
 
@@ -38,9 +38,9 @@ V tomto kurzu provedete následující úlohy:
 > * Sestavování, spouštění a publikování kanálu
 > * Povolit koncový bod REST pro kanál
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, vyplňte [část 1 tohoto kurzu instalace](tutorial-1st-experiment-sdk-setup.md).
 * Po dokončení kurzu instalace použijte stejný server poznámkového bloku a otevřete Poznámkový blok *kurzy/Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-scoring-Classification. ipynb* .

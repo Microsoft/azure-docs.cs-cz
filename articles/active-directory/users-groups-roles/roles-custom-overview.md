@@ -1,6 +1,6 @@
 ---
 title: Vlastní role správců v Azure Active Directory | Microsoft Docs
-description: Zobrazte si náhled vlastních rolí Azure AD pro delegování správy identit. Spravujte role Azure v Azure Portal, PowerShellu nebo Graph API.
+description: Naučte se pochopit vlastní role Azure AD v Azure Active Directory (Azure AD) s rolemi řízení přístupu na základě rolí a obory prostředků.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e962bea893e8a658b876aabf417e64b11a31dfc1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: aac8713affd56d011e5e1f5e9326de501fb3ce67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033502"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975554"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Vlastní role správců v Azure Active Directory (Preview)
 

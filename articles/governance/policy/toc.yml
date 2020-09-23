@@ -86,12 +86,18 @@
     - name: Vysvětlení efektů
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Obor
+      displayName: 'location, notScope, exemption, waiver, save'
+      href: ./concepts/scope.md
     - name: Struktura iniciativy
       displayName: 'parameters, groups, domains, policies'
       href: ./concepts/initiative-definition-structure.md
     - name: Struktura přiřazení
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: Struktura výjimky
+      displayName: 'waiver, mitigated, compliance'
+      href: ./concepts/exemption-structure.md
     - name: Vyhodnocení dopadu nové zásady
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md

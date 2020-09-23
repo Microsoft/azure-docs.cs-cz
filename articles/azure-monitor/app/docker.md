@@ -3,12 +3,12 @@ title: Monitorování aplikací Docker v Azure Application Insights | Microsoft 
 description: Čítače výkonu Docker, události a výjimky lze zobrazit v Application Insights společně s telemetrie z kontejnerových aplikací.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324416"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977580"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Monitorovat aplikace Docker v Application Insights (zastaralé)
 
@@ -71,12 +71,12 @@ Klikněte na dlaždici Docker.
 Za chvíli uvidíte, že se data přicházejí z aplikace Docker, a to zejména v případě, že máte v modulu Docker spuštěné další kontejnery.
 
 ### <a name="docker-container-events"></a>Události kontejneru Docker
-![příklad](./media/docker/13.png)
+![Snímek obrazovky znázorňuje výběr hledání, okno výsledků diagnostického vyhledávání se šipkou ukazující z vlastní události do okna s vlastními daty.](./media/docker/13.png)
 
 Chcete-li prozkoumat jednotlivé události, klikněte na tlačítko [Hledat](./diagnostic-search.md). Hledáním a filtrováním Najděte požadované události. Podrobnější informace získáte kliknutím na libovolnou událost.
 
 ### <a name="exceptions-by-container-name"></a>Výjimky podle názvu kontejneru
-![příklad](./media/docker/14.png)
+![Snímek obrazovky ukazuje stránku Průzkumník metrik s vybraným grafem a otevře se okno podrobností grafu na pravé straně.](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Přidaný kontext Docker do telemetrie aplikací
 Telemetrie žádostí odeslanou z aplikace instrumentovaná pomocí AI SDK je obohacena informacemi o kontextu Docker.

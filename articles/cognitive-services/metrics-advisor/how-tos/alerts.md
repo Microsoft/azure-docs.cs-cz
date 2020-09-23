@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: a68622a921bb58513c7bb2154ccee81162a59c53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936183"
+ms.locfileid: "90977780"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Postupy: Konfigurace výstrah a získání oznámení pomocí zavěšení
 
@@ -23,12 +23,12 @@ Po zjištění anomálie nástrojem metriky se aktivuje upozornění na upozorn�
 
 ## <a name="create-a-hook"></a>Vytvořit zavěšení
 
-Poradce pro metriky podporuje tři různé typy zavěšení: zapojování e-mailů, Webhooku a Azure DevOps. Můžete zvolit ten, který bude fungovat pro konkrétní scénář. 
+Poradce pro metriky podporuje tři různé typy zavěšení: zapojování e-mailů, Webhooku a Azure DevOps. Můžete zvolit ten, který bude fungovat pro konkrétní scénář.       
 
 ### <a name="email-hook"></a>E-mail háček
 
 > [!Note]
-> Správci prostředků Advisoru metriky musí nakonfigurovat **Nastavení e-mailu**a zadat informace související s protokolem SMTP do poradce metriky, než se můžou výstrahy na anomálii odeslat.
+> Správci prostředků Advisoru musí nakonfigurovat nastavení e-mailu a zadat informace související s protokolem SMTP do poradce metriky, než se můžou výstrahy na anomálii odeslat. Správce skupiny prostředků nebo správce předplatného musí na kartě řízení přístupu v prostředku Advisoru metriky přiřadit alespoň jednu roli *správce Poradce pro Cognitive Services metriky* . 
 
 K vytvoření e-mailového zavěšení jsou k dispozici následující parametry: 
 

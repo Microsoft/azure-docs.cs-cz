@@ -11,23 +11,24 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545654"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905998"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
 > [!NOTE]
 > * Kontejner pro Analýza mínění v3 je teď všeobecně dostupný. Kontejnery extrakce klíčových frází a rozpoznávání jazyka jsou dostupné v nechráněné verzi Public Preview.
 > * Entity Linking a NER nejsou aktuálně k dispozici jako kontejner.
-> * Za využití kontejneru Analýzy textu pro zdravotnictví se v současné době neúčtují žádné poplatky.
+> * Přístup k Analýza textu pro kontejner stavu vyžaduje [formulář žádosti](https://aka.ms/cognitivegate). V současné době se vám nebude účtovat využití.
+> * Nedávno se změnila umístění imagí kontejneru. Přečtěte si tento článek, kde najdete aktualizované umístění pro tento kontejner.
 
 Kontejnery umožňují spouštět rozhraní API Analýzy textu ve vlastním prostředí a jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. Kontejnery Analýza textu poskytují pokročilé zpracování přirozeného jazyka v nezpracovaném textu a zahrnují tři hlavní funkce: analýzu mínění, extrakci klíčových frází a detekci jazyka. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 > [!IMPORTANT]
 > Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně <span class="docon docon-navigate-external x-hidden-focus"></span> </a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).

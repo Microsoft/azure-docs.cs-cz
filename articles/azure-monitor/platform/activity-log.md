@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 089c53c72ae2c4cf6216937e8977b64a7abf80fc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516137"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983203"
 ---
 # <a name="azure-activity-log"></a>Protokol aktivit Azure
 Protokol aktivit je [protokol platformy](platform-logs-overview.md) v Azure, který poskytuje přehled o událostech na úrovni předplatného. To zahrnuje informace, jako je například změna prostředku nebo spuštění virtuálního počítače. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. Pro další funkce byste měli vytvořit nastavení diagnostiky, které odešle protokol aktivit do [Azure monitor protokolů](data-platform-logs.md), do Azure Event Hubs předat mimo Azure nebo do Azure Storage k archivaci. Tento článek poskytuje podrobné informace o zobrazení protokolu aktivit a jeho odeslání do různých cílů.
@@ -156,7 +156,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 Každý objekt blob PT1H.json obsahuje objekt blob ve formátu JSON událostí, ke kterým došlo během hodiny zadané v adrese URL objektu blob (například h=12). Během aktuální hodiny se události připojují do souboru PT1H.json, když k nim dojde. Hodnota minut (m = 00) je vždy 00, protože události protokolu prostředku jsou v jednotlivých objektech blob za hodinu rozděleny.
 
-Každá událost je uložená v PT1H.jsv souboru s následujícím formátem, který používá společné schéma nejvyšší úrovně, ale je jinak jedinečný pro každou kategorii, jak je popsáno v tématu [schéma protokolu aktivit](activity-log-schema.md).
+Každá událost je uložená v PT1H.jsv souboru s následujícím formátem, který používá společné schéma nejvyšší úrovně, ale je jinak jedinečný pro každou kategorii, jak je popsáno v tématu  [schéma protokolu aktivit](activity-log-schema.md).
 
 ``` JSON
 { "time": "2020-06-12T13:07:46.766Z", "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MV-VM-01", "correlationId": "0f0cb6b4-804b-4129-b893-70aeeb63997e", "operationName": "Microsoft.Resourcehealth/healthevent/Updated/action", "level": "Information", "resultType": "Updated", "category": "ResourceHealth", "properties": {"eventCategory":"ResourceHealth","eventProperties":{"title":"This virtual machine is starting as requested by an authorized user or process. It will be online shortly.","details":"VirtualMachineStartInitiatedByControlPlane","currentHealthStatus":"Unknown","previousHealthStatus":"Unknown","type":"Downtime","cause":"UserInitiated"}}}
@@ -199,13 +199,13 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Vlastnost | Povinné | Popis |
+    | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
-    | Název |Ano |Název vašeho profilu protokolu. |
+    | Název |Yes |Název vašeho profilu protokolu. |
     | StorageAccountId |No |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
     | serviceBusRuleId |No |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Umístění |Ano |Čárkami oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. |
-    | RetentionInDays |Ano |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
+    | RetentionInDays |Yes |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
     | Kategorie |No |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_a _Action_. |
 
 ### <a name="example-script"></a>Ukázkový skript
@@ -242,14 +242,14 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Vlastnost | Povinné | Popis |
+    | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
-    | name |Ano |Název vašeho profilu protokolu. |
-    | úložiště – ID účtu |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
-    | polohy |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name` . |
-    | denní |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
-    |enabled | Ano |Ano nebo ne:  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
-    | categories |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
+    | jméno |Yes |Název vašeho profilu protokolu. |
+    | úložiště – ID účtu |Yes |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
+    | polohy |Yes |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name` . |
+    | denní |Yes |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
+    |enabled | Yes |Ano nebo ne:  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
+    | categories |Yes |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
 
 
 ### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
@@ -259,7 +259,7 @@ Starší metoda pro odeslání protokolu aktivity do pracovního prostoru Log An
 1. V části **zdroje dat pracovního prostoru** v nabídce pracovního prostoru vyberte **Protokol aktivit Azure**.
 1. Klikněte na předplatné, které chcete připojit.
 
-    ![Pracovní prostory](media/activity-log-collect/workspaces.png)
+    ![Snímek obrazovky ukazuje Log Analytics pracovní prostor s vybraným protokolem aktivit Azure.](media/activity-log-collect/workspaces.png)
 
 1. Kliknutím na **připojit** připojte protokol aktivit v předplatném k vybranému pracovnímu prostoru. Pokud je předplatné už připojené k jinému pracovnímu prostoru, odpojte ho kliknutím na **Odpojit** .
 

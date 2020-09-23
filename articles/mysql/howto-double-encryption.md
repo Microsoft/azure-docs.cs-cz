@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: d3076f2591718931bdab4dba9510d25fe07b2d02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eafad5edf9dcac5745986d09060baf7e4278762d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118756"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903973"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Dvojité šifrování infrastruktury pro Azure Database for MySQL
 
@@ -29,19 +29,19 @@ Pomocí těchto kroků můžete vytvořit Azure Database for MySQL server s šif
 
 2. Vyberte **databáze**  >  **Azure Database for MySQL**. Službu můžete vyhledat také zadáním **MySQL** do vyhledávacího pole.
 
-   ![Možnost Azure Database for MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+   :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Možnost Azure Database for MySQL":::
 
 3. Zadejte základní informace o serveru. Chcete-li nastavit parametr, vyberte **Další nastavení** a povolit zaškrtávací políčko **infrastruktura – dvojité šifrování** .
 
-    ![Výběry Azure Database for MySQL](./media/howto-double-encryption/infrastructure-encryption-selected.png)
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-selected.png" alt-text="Výběry Azure Database for MySQL":::
 
 4. Vyberte **zkontrolovat + vytvořit** a zřiďte Server.
 
-    ![Souhrn Azure Database for MySQL](./media/howto-double-encryption/infrastructure-encryption-summary.png)
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-summary.png" alt-text="Souhrn Azure Database for MySQL":::
 
 5. Po vytvoření serveru můžete ověřit šifrované šifrování infrastruktury tím, že zkontrolujete stav v okně **datový šifrovací** Server.
 
-    ![Ověřování Azure Database for MySQL](./media/howto-double-encryption/infrastructure-encryption-validation.png)
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-validation.png" alt-text="Ověřování Azure Database for MySQL":::
 
 ## <a name="create-an-azure-database-for-mysql-server-with-infrastructure-double-encryption---cli"></a>Vytvoření serveru Azure Database for MySQL s použitím šifrování infrastruktury – rozhraní příkazového řádku
 

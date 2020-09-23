@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904964"
+ms.locfileid: "90985576"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -86,7 +86,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
             
         Vyberte **Další.**
 
-    1. Formulář **potvrdit podrobnosti** je souhrn informací, které byly dříve vyplněny ve formulářích **základní informace** a **nastavení a náhled** . Máte také možnost vytvořit datový profil pro datovou sadu pomocí výpočetní služby s povoleným profilací. Přečtěte si další informace o [profilování dat](#profile).
+    1. Formulář **potvrdit podrobnosti** je souhrn informací, které byly dříve vyplněny ve formulářích **základní informace** a **nastavení a náhled** . Máte také možnost vytvořit datový profil pro datovou sadu pomocí výpočetní služby s povoleným profilací. Přečtěte si další informace o [profilování dat](how-to-connect-data-ui.md#profile).
 
         Vyberte **Další**.
 1. Jakmile se zobrazí, vyberte nově vytvořenou datovou sadu. Můžete si také zobrazit náhled datové sady a vzorových statistik. 
@@ -111,7 +111,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
     >[!NOTE]
-    > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](#profile) .)
+    > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](how-to-connect-data-ui.md#profile) .)
 
     Vyberte **Další**.
 
@@ -144,32 +144,6 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 1. Volitelné Zobrazit nastavení featurization: Pokud se rozhodnete povolit **Automatické featurization** ve formuláři **Další nastavení konfigurace** , uplatní se výchozí techniky featurization. V **Nastavení zobrazení featurization** můžete změnit tyto výchozí hodnoty a odpovídajícím způsobem je přizpůsobit. Přečtěte si, jak [přizpůsobit featurizations](#customize-featurization). 
 
     ![Formulář typu úkolu Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
-
-<a name="profile"></a>
-
-## <a name="data-profiling--summary-stats"></a>Statistiky profilace dat & souhrnu
-
-V rámci datové sady můžete získat velké množství různých souhrnných statistik, abyste ověřili, jestli je vaše datová sada připravená na ML. Pro nečíselné sloupce obsahují jenom základní statistiky, jako je min, Max a počet chyb. Pro číselné sloupce si můžete prohlédnout i jejich statistické momenty a odhadované quantiles. Konkrétně náš datový profil zahrnuje:
-
->[!NOTE]
-> Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
-
-Statistický údaj|Description
-------|------
-Příznak| Název sloupce, který je sumarizován.
-Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
-Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
-Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
-Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
-Maximum| Maximální hodnota sloupce 
-Počet| Celkový počet chybějících a nechybějících položek ve sloupci
-Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
-Kvantily| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
-Mean| Aritmetický průměr nebo průměr sloupce
-Směrodatná odchylka| Měření množství rozptýlení nebo variace dat tohoto sloupce.
-Variance| Měření, jak daleko rozprostření dat tohoto sloupce z průměrné hodnoty. 
-Případné| Měření, jak se liší data tohoto sloupce od normálního rozdělení.
-Špičat| Měření, jak často se data tohoto sloupce v porovnání s normální distribucí.
 
 ## <a name="customize-featurization"></a>Přizpůsobení featurization
 

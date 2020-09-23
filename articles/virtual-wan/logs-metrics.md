@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749721"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983636"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Protokoly a metriky služby Azure Virtual WAN
 
@@ -62,7 +62,7 @@ Následující kroky vám pomůžou najít a zobrazit metriky:
 
 3. Vyberte **Metriky**.
 
-   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="metriky":::
+   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="Snímek obrazovky zobrazuje podokno site to site V P N s zobrazením Azure Monitor vybrané.":::
 
 4. Na stránce **metriky** můžete zobrazit metriky, které vás zajímají.
 

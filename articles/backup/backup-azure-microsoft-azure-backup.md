@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181693"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975513"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -59,7 +59,7 @@ Pokud nechcete spustit základní server v Azure, můžete server spustit na vir
 | Windows Server 2019 |64bitová verze |Standard, Datacenter, Essentials |
 | Windows Server 2016 a nejnovější aktualizace service packu |64bitová verze |Standard, Datacenter, Essentials  |
 
-Pomocí odstranění duplicitních dat systému Windows Server můžete odstranit duplicitu úložiště aplikace DPM. Přečtěte si další informace o tom [, jak aplikace DPM a odstraňování duplicitních dat](/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) při nasazení na virtuálních počítačích Hyper-V spolupracují.
+Pomocí odstranění duplicitních dat systému Windows Server můžete odstranit duplicitu úložiště aplikace DPM. Přečtěte si další informace o tom [, jak aplikace DPM a odstraňování duplicitních dat](/system-center/dpm/deduplicate-dpm-storage) při nasazení na virtuálních počítačích Hyper-V spolupracují.
 
 > [!NOTE]
 > Azure Backup Server je navržená tak, aby běžela na vyhrazeném serveru s jedním účelem. Nemůžete nainstalovat Azure Backup Server na:
@@ -80,7 +80,7 @@ Bez ohledu na to, jestli odesíláte zálohovaná data do Azure, nebo je uloží
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
 
-Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která není tak trvanlivá. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště najdete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která není tak trvanlivá. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage), [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) a [redundantního úložiště zóny](../storage/common/storage-redundancy.md#zone-redundant-storage) najdete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
 
 Chcete-li upravit nastavení replikace úložiště:
 
@@ -89,13 +89,13 @@ Chcete-li upravit nastavení replikace úložiště:
 
 3. Vyberte typ replikace úložiště a vyberte **Uložit**.
 
-     ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
 ## <a name="software-package"></a>Softwarový balíček
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, vyberte v hlavní nabídce možnost **Procházet**.
 
    * V seznamu prostředků zadejte **Recovery Services**.
@@ -199,7 +199,7 @@ Po dokončení extrakce zaškrtnutím políčka spusťte čerstvě extrahovanou 
 
     ![Zadejte umístění pro instalaci souborů.](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    Pracovní umístění je požadavkem pro zálohování do Azure. Ujistěte se, že pracovní umístění je alespoň 5% plánovaného zálohování dat do cloudu. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    Pracovní umístění je požadavkem pro zálohování do Azure. Ujistěte se, že pracovní umístění je alespoň 5% plánovaného zálohování dat do cloudu. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage).
 5. Zadejte silné heslo pro omezené místní uživatelské účty a vyberte **Další**.
 
     ![Zadat silné heslo](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -362,7 +362,7 @@ Můžete se také podívat na [Azure Backup souvisejících nejčastějších](b
 
 ## <a name="next-steps"></a>Další kroky
 
-Zde najdete podrobné informace o [přípravě prostředí pro aplikaci DPM](/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019). Obsahuje také informace o podporovaných konfiguracích, na kterých Azure Backup Server lze nasadit a použít. K provádění různých operací můžete použít řadu [rutin PowerShellu](/powershell/module/dataprotectionmanager/) .
+Zde najdete podrobné informace o [přípravě prostředí pro aplikaci DPM](/system-center/dpm/prepare-environment-for-dpm). Obsahuje také informace o podporovaných konfiguracích, na kterých Azure Backup Server lze nasadit a použít. K provádění různých operací můžete použít řadu [rutin PowerShellu](/powershell/module/dataprotectionmanager/) .
 
 Pomocí těchto článků můžete získat hlubší přehled o ochraně zatížení pomocí Microsoft Azure Backup serveru.
 
