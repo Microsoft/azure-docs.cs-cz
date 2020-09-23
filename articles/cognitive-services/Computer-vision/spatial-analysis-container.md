@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 3d419268302ac8fd55559c6af9cd328f22bd2404
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935622"
+ms.locfileid: "90987192"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -69,9 +69,9 @@ V tomto článku budete stahovat a instalovat následující softwarové balíč
 | Operační systém Linux | Na hostitelském počítači musí být nainstalovaný [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) .  |
 
 
-## <a name="request-access-to-the-spatial-analysis-functionality"></a>Požádat o přístup k funkci prostorové analýzy
+## <a name="request-approval-to-run-the-container"></a>Požádat o schválení ke spuštění kontejneru
 
-Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) pro vyžádání přístupu ke kontejneru. 
+Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) , který vyžádá schválení pro spuštění kontejneru. 
 
 Formulář požaduje informace o vás, vaší společnosti a scénáři uživatele, pro které budete kontejner používat. Po odeslání formuláře ho tým Azure Cognitive Services zkontroluje a pošle vám e-mail s rozhodnutím.
 
@@ -208,7 +208,8 @@ sudo systemctl restart docker
 ## <a name="enable-nvidia-mps-on-the-host-computer"></a>Povolit na hostitelském počítači NVIDIA MPS
 
 > [!TIP]
-> Spusťte pokyny MPS z okna terminálu v hostitelském počítači. Není uvnitř vaší instance kontejneru Docker.
+> * Neinstalujte sady Management Pack, pokud je výpočetní funkce GPU menší než 7. x (pre Volta). Informace najdete v tématu [Kompatibilita CUDA](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-title) . 
+> * Spusťte pokyny MPS z okna terminálu v hostitelském počítači. Není uvnitř vaší instance kontejneru Docker.
 
 Pro dosažení optimálního výkonu a využití nakonfigurujte GPU (GPU) hostitelského počítače pro [víceprocesorové služby (MPS) NVIDIA](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf). Spusťte pokyny MPS z okna terminálu v hostitelském počítači.
 
@@ -262,7 +263,9 @@ az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-
 Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) verze 1.0.8. Pomocí těchto kroků si stáhněte správnou verzi: Ubuntu Server 18,04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
-Copy the generated list.
+```
+
+Zkopírujte vygenerovaný seznam.
 
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
@@ -335,7 +338,8 @@ Po aktualizaci ukázkové [DeploymentManifest.jsv](https://go.microsoft.com/fwli
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'" -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+
 ```
 
 |Parametr  |Popis  |

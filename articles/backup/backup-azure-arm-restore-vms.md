@@ -1,15 +1,15 @@
 ---
 title: Obnovení virtuálních počítačů pomocí Azure Portal
-description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí Azure Portal
+description: Obnovte virtuální počítač Azure z bodu obnovení pomocí Azure Portal, včetně funkce pro obnovení mezi oblastmi.
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050416"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986537"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -138,18 +138,21 @@ Jedna z [možností obnovení](#restore-options)(crr) umožňuje obnovení virtu
 
 Pokud chcete připojit funkci během verze Preview, přečtěte si [část než začnete](./backup-create-rs-vault.md#set-cross-region-restore).
 
-Pokud chcete zjistit, jestli je CRR povolený, postupujte podle pokynů v tématu [Konfigurace obnovení mezi oblastmi](backup-create-rs-vault.md#configure-cross-region-restore) .
+Pokud chcete zjistit, jestli je CRR povolený, postupujte podle pokynů v části [Konfigurace obnovení mezi oblastmi](backup-create-rs-vault.md#configure-cross-region-restore).
 
 ### <a name="view-backup-items-in-secondary-region"></a>Zobrazit zálohované položky v sekundární oblasti
 
 Pokud je povolená možnost CRR, můžete zobrazit zálohované položky v sekundární oblasti.
 
-1. Na portálu přejdete na položky **zálohování trezoru Recovery Services**  >  **Backup items** .
+1. Na portálu přejdete do části **Recovery Services trezoru**  >  **zálohované položky**.
 1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
 
-    ![Virtuální počítače v sekundární oblasti](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+>[!NOTE]
+>V seznamu se zobrazí pouze typy správy zálohování podporující funkci CRR. V současné době je povolena pouze podpora obnovení dat sekundární oblasti do sekundární oblasti.
 
-    ![Vybrat sekundární oblast](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+![Virtuální počítače v sekundární oblasti](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+
+![Vybrat sekundární oblast](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>Obnovení v sekundární oblasti
 

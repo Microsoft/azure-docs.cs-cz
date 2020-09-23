@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 9b3e1916301d6346defd6ebeab2f3784882f2d5f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c390c64db8c5833f5bc5bf2be3367cb63127a0f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798852"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902659"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL pomocí Azure Portal
 
@@ -34,24 +34,24 @@ Vytvoření serveru Azure Database for PostgreSQL:
 2. Vyberte **databáze**  >  **Azure Database for PostgreSQL**.
 
    > [!div class="mx-imgBorder"]
-   > ![Snímek obrazovky zobrazující "Azure Database for PostgreSQL" v nabídce](./media/quickstart-create-database-portal/1-create-database.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Snímek obrazovky, který zobrazuje Azure Database for PostgreSQL v nabídce":::
 
 3. Vyberte možnost nasazení na **jeden server** .
 
    > [!div class="mx-imgBorder"]
-   > ![Snímek obrazovky s výběrem možnosti nasazení na jednom serveru pro Azure Database for PostgreSQL.](./media/quickstart-create-database-portal/select-deployment-option.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="Snímek obrazovky s výběrem možnosti nasazení na jednom serveru pro Azure Database for PostgreSQL.":::
 
 4. Ve formuláři **základy** vyplňte následující informace.
 
    > [!div class="mx-imgBorder"]
-   > ![Snímek obrazovky, který zobrazuje kartu základy pro vytvoření jednoho serveru.](./media/quickstart-create-database-portal/create-basics.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Snímek obrazovky, který zobrazuje kartu základy pro vytvoření jednoho serveru.":::
 
    Nastavení|Navrhovaná hodnota|Popis
    ---|---|---
    Předplatné|Název vašeho předplatného|Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
    Skupina prostředků|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
    Název serveru |*mydemoserver*|Jedinečný název, který identifikuje váš server Azure Database for PostgreSQL. Název domény *Postgres.Database.Azure.com* je připojen k názvu serveru, který zadáte. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí obsahovat 3 až 63 znaků.
-   Zdroj dat | **Žádný** | Pokud chcete vytvořit nový server úplně od začátku, vyberte **žádný** . ( **Zálohování** vyberete, pokud jste vytvořili server z geografické zálohy existujícího serveru Azure Database for PostgreSQL.)
+   Zdroj dat | **Žádný** | Pokud chcete vytvořit nový server úplně od začátku, vyberte **Žádný**. ( **Zálohování** vyberete, pokud jste vytvořili server z geografické zálohy existujícího serveru Azure Database for PostgreSQL.)
    Uživatelské jméno správce |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **Administrator**, **root**, **Guest**ani **Public**. Nemůže začínat na **pg_**.
    Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí obsahovat 8 až 128 znaků ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0 – 9) a jiné než alfanumerické znaky (například!, $, #,%).
    Umístění|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
@@ -71,7 +71,7 @@ Vytvoří se prázdná databáze **Postgres**. Najdete v ní také databázi **a
 Ve výchozím nastavení není server, který vytvoříte, veřejně přístupný. Musíte udělit oprávnění k vaší IP adrese. Přejděte na prostředek serveru v Azure Portal a vyberte **zabezpečení připojení** z nabídky na levé straně pro prostředek serveru. Pokud si nejste jistí, jak najít prostředek, přečtěte si téma [otevření prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
 
 > [!div class="mx-imgBorder"]
-> ![Snímek obrazovky, který zobrazuje pravidla brány firewall pro zabezpečení připojení.](./media/quickstart-create-database-portal/add-current-ip-firewall.png)
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Snímek obrazovky, který zobrazuje pravidla brány firewall pro zabezpečení připojení.":::
   
 Vyberte **Přidat aktuální IP adresu klienta**a pak vyberte **Uložit**. Můžete přidat další IP adresy nebo zadat rozsah IP adres pro připojení k serveru z těchto IP adres. Další informace najdete v tématu [pravidla brány firewall v Azure Database for PostgreSQL](./concepts-firewall-rules.md).
    
@@ -90,7 +90,7 @@ Můžete použít [psql](http://postgresguide.com/utilities/psql.html) nebo [pgA
    > Pokud Cloud Shell poprvé otevíráte, zobrazí se výzva k vytvoření skupiny prostředků a účtu úložiště. Jedná se o jednorázový krok, který se automaticky připojí pro všechny relace. 
 
    > [!div class="mx-imgBorder"]
-   > ![Snímek obrazovky, který zobrazuje informace o serveru a ikonu pro otevření Azure Cloud Shell.](media/quickstart-create-database-portal/use-in-cloud-shell.png)
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Snímek obrazovky, který zobrazuje informace o serveru a ikonu pro otevření Azure Cloud Shell.":::
 
 3. Spusťte následující příkaz v terminálu Azure Cloud Shell. Nahraďte hodnoty skutečným názvem serveru a přihlašovacím jménem uživatele správce. Použijte prázdnou databázi **Postgres** s uživatelem s oprávněními správce v tomto formátu: `<admin-username>@<servername>` .
 
@@ -143,7 +143,7 @@ Odstranění skupiny prostředků:
 Pokud chcete server odstranit, vyberte na stránce **Přehled** na vašem serveru tlačítko **Odstranit** :
 
 > [!div class="mx-imgBorder"]
-> ![Snímek obrazovky zobrazující tlačítko pro odstranění serveru](media/quickstart-create-database-portal/12-delete.png)
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Snímek obrazovky zobrazující tlačítko pro odstranění serveru":::
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

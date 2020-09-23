@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: Dokumentace k Flexibilnímu serveru (Preview)
+summary: Azure Database for PostgreSQL – Flexibilní server (Preview) je nabídka plně spravované databáze jako služby v PostgreSQL, která je schopná spravovat důležité úlohy s předvídatelným výkonem a možností dynamického škálování. Vyvíjejte aplikace pomocí Azure Database for PostgreSQL s využitím open source nástrojů a platformy podle vašeho výběru. Naučte se používat Flexibilní server prostřednictvím našich rychlých zprovoznění, výukových kurzů a ukázek.
+metadata:
+  title: Azure Database for PostgreSQL – Flexibilní server (Preview)
+  description: Azure Database for PostgreSQL – Flexibilní server (Preview) je relační databázová služba v cloudu Microsoftu vytvořená pro vývojáře a založená na komunitní verzi PostgreSQL.
+  author: rachel-msft
+  ms.author: raagyema
+  ms.date: 09/22/2020
+  ms.service: postgresql
+  ms.topic: landing-page
+  ms.openlocfilehash: 7c214662a37083708b0a38148382e16b553145c4
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928758"
+landingContent:
+- title: Informace o variantě Flexibilní server (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Flexibilní server?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření flexibilního serveru
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření aplikace v Djangu s využitím flexibilního serveru
+      url: tutorial-django-app-service-postgres.md
+  - linkListType: whats-new
+    links:
+    - text: Přechod na náš blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Spravovat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Možnosti výpočetních prostředků a úložiště
+      url: concepts-compute-storage.md
+    - text: Sítě
+      url: concepts-networking.md
+    - text: Verze Postgres
+      url: concepts-supported-versions.md
+    - text: Rozšíření
+      url: concepts-extensions.md
+    - text: Monitorování
+      url: concepts-monitoring.md
+    - text: Logická replikace
+      url: concepts-logical.md
+  - linkListType: how-to-guide
+    links:
+    - text: Správa serveru
+      url: how-to-manage-server-portal.md
+    - text: Zastavení/spuštění serveru
+      url: how-to-stop-start-server-portal.md
+    - text: Vertikální navýšení kapacity
+      url: how-to-scale-compute-storage-portal.md
+    - text: Restart serveru
+      url: how-to-restart-server-portal.md
+    - text: Konfigurace a přístup k protokolům
+      url: howto-configure-and-access-logs.md
+    - text: Plánování údržby
+      url: how-to-maintenance-portal.md
+- title: Kontinuita podnikových procesů
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Přehled provozní kontinuity
+      url: concepts-business-continuity.md
+    - text: Vysoká dostupnost
+      url: concepts-high-availability.md
+    - text: Zálohování a obnovení
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: Správa vysoké dostupnosti
+      url: how-to-manage-high-availability-portal.md
+    - text: Obnovení serveru
+      url: how-to-restore-server-portal.md
+- title: Připojit
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Připojení s využitím Pythonu
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: Připojení webové aplikace ve virtuální síti
+      url: tutorial-webapp-server-vnet.md
+- title: Migrace
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Migrace databáze pomocí pg_dump a pg_restore
+      url: ../howto-migrate-using-dump-and-restore.md
+    - text: Online migrace
+      url: ../howto-migrate-online.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Referenční informace pro vývojáře v Azure CLI
+      url: /cli/azure/postgres
+    - text: Referenční informace pro vývojáře v REST API
+      url: /rest/api/postgresql/
+    - text: Šablony Azure Resource Manageru
+      url: /azure/templates/microsoft.dbforpostgresql/allversions

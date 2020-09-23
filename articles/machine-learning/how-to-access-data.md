@@ -11,15 +11,14 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 08685a6ebfcbfced91c3685635c40ff48030fe38
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669576"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893479"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení k službám úložiště Azure
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak se **připojit ke službám úložiště Azure prostřednictvím Azure Machine Learning úložiště dat**. DataStore se bezpečně připojují ke službě Azure Storage bez nutnosti zadat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. K vytvoření a registraci úložišť dat můžete použít [sadu SDK Azure Machine Learning Python](#python) nebo [Azure Machine Learning Studio](#studio) .
 
@@ -32,7 +31,7 @@ Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního
 ## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Účet úložiště Azure s [podporovaným typem úložiště](#matrix).
 
@@ -54,7 +53,7 @@ Budete potřebovat:
     Když vytvoříte pracovní prostor, kontejner objektů BLOB v Azure a sdílená složka Azure se automaticky zaregistrují jako úložiště dat do pracovního prostoru. Jsou pojmenované `workspaceblobstore` a `workspacefilestore` v uvedeném pořadí. `workspaceblobstore`Slouží k ukládání artefaktů pracovního prostoru a protokolů experimentování ve službě Machine Learning. Je také nastaven jako **výchozí úložiště dat** a nelze jej odstranit z pracovního prostoru. `workspacefilestore`Slouží k ukládání poznámkových bloků a skriptů R autorizovaných pomocí [výpočetní instance](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files).
     
     > [!NOTE]
-    > Azure Machine Learning Designer (Preview) vytvoří úložiště dat s názvem **azureml_globaldatasets** automaticky, když otevřete ukázku na domovské stránce návrháře. Toto úložiště dat obsahuje jenom ukázkové datové sady. Nepoužívejte **prosím toto** úložiště dat pro přístup k důvěrným datům.
+    > Azure Machine Learning Designer vytvoří úložiště dat s názvem **azureml_globaldatasets** automaticky, když otevřete ukázku na domovské stránce návrháře. Toto úložiště dat obsahuje jenom ukázkové datové sady. Nepoužívejte **prosím toto** úložiště dat pro přístup k důvěrným datům.
 
 <a name="matrix"></a>
 
@@ -259,7 +258,7 @@ Výchozí úložiště dat můžete také změnit pomocí následujícího kódu
 
 Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložiště dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
 
-| Metoda | Přístup k úložišti dat | Popis |
+| Metoda | Přístup k úložišti dat | Description |
 | ----- | :-----: | ----- |
 | [Dávkové předpovědi](how-to-use-parallel-run-step.md) | ✔ | Provádějte asynchronní předpovědi velké množství dat. |
 | [Webová služba](how-to-deploy-and-where.md) | &nbsp; | Nasaďte modely jako webovou službu. |

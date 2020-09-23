@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d9d9f2d7363217ef4e9b13b44d3665af33cb8ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661797"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893559"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -41,7 +41,7 @@ Návod, jak používat rozhraní příkazového řádku Git, [si můžete přeč
 
 Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud `git` je příkaz k dispozici ve vašem vývojovém prostředí, proces nahrávání je používá ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
 
-| Vlastnost | Příkaz git použitý k získání hodnoty | Popis |
+| Vlastnost | Příkaz git použitý k získání hodnoty | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
@@ -70,12 +70,10 @@ Informace Git se ukládají do vlastností pro školicí běh. Tyto informace m�
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor.
+1. Na [portálu Studio](https://ml.azure.com)vyberte svůj pracovní prostor.
 1. Vyberte __experimenty__a pak vyberte jeden z experimentů.
 1. Vyberte jedno z běhů ze sloupce __číslo běhu__ .
-1. Vyberte __protokoly__a potom rozbalte položky __protokoly__ a __AzureML__ . Vyberte odkaz, který začíná na __ ### \_ Azure__.
-
-    ![Položka # # #_azure na portálu](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+1. Vyberte možnost __výstupy + protokoly__a potom rozbalte položku __protokoly__ a položky __AzureML__ . Vyberte odkaz, který začíná na __ ### \_ Azure__.
 
 Protokolované informace obsahují text podobný následujícímu formátu JSON:
 

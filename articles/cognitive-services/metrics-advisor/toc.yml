@@ -1,0 +1,55 @@
+- name: Metrics Advisor
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je Metrics Advisor?
+      href: overview.md
+- name: Rychlé starty
+  items:
+    - name: Prozkoumání ukázkového webu
+      href: quickstarts/explore-demo.md
+    - name: Použití webového portálu
+      href: quickstarts/web-portal.md
+    - name: Použití rozhraní REST API
+      href: quickstarts/rest-api.md
+- name: Postupy
+  items:
+    - name: Onboarding dat
+      href: how-tos/onboard-your-data.md
+    - name: Připojení různých zdrojů datových kanálů
+      href: data-feeds-from-different-sources.md
+    - name: Správa datových kanálů
+      href: how-tos/manage-data-feeds.md
+    - name: Konfigurace metrik a doladění konfigurace zjišťování
+      href: how-tos/configure-metrics.md
+    - name: Konfigurace výstrah a získání oznámení pomocí háku
+      href: how-tos/alerts.md
+    - name: Diagnostika incidentu
+      href: how-tos/diagnose-incident.md
+    - name: Úprava detekce anomálií pomocí zpětné vazby
+      href: how-tos/anomaly-feedback.md
+    - name: Sestavení grafu metrik
+      href: how-tos/metrics-graph.md
+- name: Referenční informace
+  items:
+    - name: Glosář
+      href: glossary.md
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Rozhraní API pro Metrics Advisor
+      href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
+    - name: Referenční informace k Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: PowerShell – reference
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+- name: Zdroje a prostředky
+  items:
+    - name: Ceny
+      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
+    - name: Dostupnost podle oblastí
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Dodržování předpisů
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Šifrování
+      href: encryption.md

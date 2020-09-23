@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Datové služby s podporou služby Azure Arc
+summary: Spouštějte datové služby Azure v místním prostředí, na hraničních zařízeních i v prostředích s více cloudy s využitím Kubernetes na infrastruktuře podle vašeho výběru.
+metadata:
+  title: Datové služby s podporou služby Azure Arc (Preview)
+  description: Spouštějte datové služby Azure v místním prostředí, na hraničních zařízeních i v prostředích s více cloudy s využitím Kubernetes na infrastruktuře podle vašeho výběru.
+  ms.service: azure-arc
+  ms.subservice: azure-arc-data
+  ms.topic: landing-page
+  author: MikeRayMSFT
+  ms.author: mikeray
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3ef94bfc9d3870c4c91116fb2aaf26387999a8da
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928718"
+landingContent:
+- title: Informace
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou Datové služby s podporou služby Azure Arc?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Režimy připojení a požadavky
+      url: connectivity.md
+    - text: Konfigurace úložiště
+      url: storage-configuration.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření kontroleru dat
+      url: create-data-controller.md
+    - text: Instalace klientských nástrojů
+      url: install-client-tools.md
+- title: Hyperškálování PostgreSQL s podporou služby Azure Arc (Preview)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvořit
+      url: create-postgresql-hyperscale-server-group.md
+    - text: Připojit
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: Migrace
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: Obnovení
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: SQL Managed Instance s podporou služby Azure Arc (Preview)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvořit
+      url: create-sql-managed-instance.md
+    - text: Připojit
+      url: connect-managed-instance.md
+    - text: Migrace
+      url: migrate-to-managed-instance.md
+    - text: Obnovení
+      url: restore-adventureworks-sample-db.md

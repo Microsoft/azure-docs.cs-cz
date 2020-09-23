@@ -1,19 +1,19 @@
 ---
 title: Předdefinované definice zásad pro Azure API pro FHIR
 description: Seznam Azure Policy integrovaných definic zásad pro Azure API pro FHIR. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 52827a65983485342df2861e25413f4bda343ee5
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: a16fadbeb13211ab91d0d0a80d8f29062b615d07
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007311"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986311"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-api-for-fhir"></a>Azure Policy předdefinované definice pro Azure API pro FHIR
 

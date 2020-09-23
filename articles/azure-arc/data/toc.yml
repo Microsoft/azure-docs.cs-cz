@@ -1,0 +1,214 @@
+- name: Dokumentace k datovým službám s podporou služby Azure Arc
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co jsou datové služby s podporou služby Azure Arc
+      href: overview.md
+    - name: "Poznámky k\_verzi"
+      href: release-notes.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření kontroleru dat
+      href: create-data-controller.md
+- name: Koncepty
+  items:
+    - name: Režimy připojení a požadavky
+      href: connectivity.md
+    - name: Konfigurace úložiště
+      href: storage-configuration.md
+- name: Návody
+  items:
+    - name: Instalace nástrojů
+      items:
+        - name: Instalace klientských nástrojů
+          href: install-client-tools.md
+        - name: azdata
+          items:
+            - name: Instalace
+              href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: macOS
+              href: /sql/azdata/install/deploy-install-azdata-macos?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Windows
+              href: /sql/azdata/install/deploy-install-azdata-installer?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux a apt
+              href: /sql/azdata/install/deploy-install-azdata-linux-package?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux a yum
+              href: /sql/azdata/install/deploy-install-azdata-yum?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux a zypper
+              href: /sql/azdata/install/deploy-install-azdata-zypper?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux a pip
+              href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+    - name: Vytvoření kontroleru dat
+      items:
+        - name: Vytvoření kontroleru dat (Azure Data Studio)
+          href: create-data-controller-azure-data-studio.md
+        - name: Vytvoření prostředku kontroleru dat (portál)
+          href: create-data-controller-resource-in-azure-portal.md
+        - name: Vytvoření kontroleru dat (azdata)
+          href: create-data-controller-using-azdata.md
+        - name: Vytvoření kontroleru dat s využitím Kubernetes
+          href: create-data-controller-using-k8s-native-tools.md
+    - name: Běžná prostředí pro datové služby s podporou služby Azure Arc
+      items:
+        - name: Monitorování pomocí řídicích panelů (Azure Data Studio)
+          href: azure-data-studio-dashboards.md
+        - name: Zobrazení fakturačních údajů (Azure)
+          href: view-billing-data-in-azure.md
+        - name: Zobrazení kontroleru dat (portál)
+          href: view-data-controller-in-azure-portal.md
+        - name: Odstranění prostředků
+          href: delete-azure-resources.md
+        - name: Odinstalace kontroleru dat Azure Arc
+          href: uninstall-azure-arc-data-controller.md
+    - name: Spravovat
+      items:
+        - name: Monitorování s využitím Grafany & Kibany
+          href: monitor-grafana-kibana.md
+        - name: Odeslání metrik a protokolů
+          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Inventarizace instancí databází
+          href: view-arc-data-services-inventory-in-azure-portal.md
+        - name: Získání hesla a uživatelského jména pro kontroler dat
+          href: retrieve-the-username-password-for-data-controller.md
+    - name: Řešení potíží
+      items:
+        - name: Průvodce
+          href: troubleshoot-guide.md
+        - name: Získání protokolů
+          href: troubleshooting-get-logs.md
+- name: Hyperškálování PostgreSQL s podporou služby Azure Arc (Preview)
+  items:
+    - name: Přehled
+      items:
+        - name: Co je hyperškálování PostgreSQL s podporou služby Azure Arc
+          href: what-is-azure-arc-enabled-postgres-hyperscale.md
+    - name: Rychlé starty
+      items:
+        - name: Podporované verze
+          href: supported-versions-postgres-hyperscale.md
+        - name: Vytvoření skupiny serverů hyperškálování Postgres (CLI)
+          href: create-postgresql-hyperscale-server-group.md
+        - name: Vytvoření skupiny serverů hyperškálování Postgres (Azure Data Studio)
+          href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: Připojit
+          href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - name: Koncepty
+      items:
+        - name: Distribuce dat
+          href: concepts-distributed-postgres-hyperscale.md
+        - name: Umístění skupiny serverů
+          href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
+    - name: Postupy
+      items:
+        - name: Spravovat
+          items:
+            - name: Zálohování a obnovení
+              href: backup-restore-postgresql-hyperscale.md
+            - name: Konfigurace a škálování
+              items:
+                - name: Zobrazení konfigurace
+                  href: show-configuration-postgresql-hyperscale-server-group.md
+                - name: Škálování na více instancí – přidání pracovních uzlů
+                  href: scale-out-postgresql-hyperscale-server-group.md
+                - name: Vertikální navýšení/snížení kapacity a virtuální jádra
+                  href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
+                - name: Konfigurace parametrů serveru
+                  href: configure-server-parameters-postgresql-hyperscale.md
+            - name: Odstranit
+              href: delete-postgresql-hyperscale-server-group.md
+            - name: Zobrazení seznamu skupin serverů
+              href: list-server-groups-postgres-hyperscale.md
+            - name: 'Monitorování, analytika protokolů, fakturační údaje, Azure Portal'
+              href: monitoring-log-analytics-azure-portal-postgresql.md
+            - name: Zabezpečení
+              href: configure-security-postgres-hyperscale.md
+            - name: Správa skupiny serverů (Azure Data Studio)
+              href: manage-postgresql-hyperscale-server-group-with-azure-data-studio.md
+            - name: Použití rozšíření Postgres
+              href: using-extensions-in-postgresql-hyperscale-server-group.md
+        - name: Migrace
+          items:
+            - name: Migrace dat PostgreSQL do skupiny serverů hyperškálování Postgres
+              href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+            - name: Obnovení ukázkové databáze AdventureWorks
+              href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+        - name: Řešení potíží
+          href: troubleshoot-postgresql-hyperscale-server-group.md
+- name: SQL Managed Instance s podporou služby Azure Arc (Preview)
+  items:
+    - name: Přehled
+      items:
+        - name: Co je SQL Managed Instance s podporou služby Azure Arc
+          href: managed-instance-overview.md
+        - name: Funkce
+          href: managed-instance-features.md
+    - name: Rychlé starty
+      items:
+        - name: Vytvoření spravované instance SQL
+          href: create-sql-managed-instance.md
+        - name: Vytvoření SQL Managed Instance (Azure Data Studio)
+          href: create-sql-managed-instance-azure-data-studio.md
+        - name: Připojit
+          href: connect-managed-instance.md
+    - name: Postupy
+      items:
+        - name: Spravovat
+          items:
+            - name: Konfigurace
+              href: configure-managed-instance.md
+            - name: 'Monitorování, analytika protokolů, fakturační údaje, Azure Portal'
+              href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: Odstranit
+              href: delete-managed-instance.md
+        - name: Migrace
+          items:
+            - name: Migrace na SQL Managed Instance (Azure Arc)
+              href: migrate-to-managed-instance.md
+            - name: Obnovení AdventureWorks
+              href: restore-adventureworks-sample-db.md
+- name: Referenční informace
+  items:
+    - name: azdata
+      items:
+        - name: azdata
+          href: /sql/azdata/reference/reference-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: poznámkový blok
+          href: /sql/azdata/reference/reference-azdata-notebook?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: postgres
+          href: /sql/azdata/reference/reference-azdata-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: sql
+          href: /sql/azdata/reference/reference-azdata-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: azdata-arc
+          href: /sql/azdata/reference/reference-azdata-arc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc
+          href: /sql/azdata/reference/reference-azdata-arc-dc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-config
+          href: /sql/azdata/reference/reference-azdata-arc-dc-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-debug
+          href: /sql/azdata/reference/reference-azdata-arc-dc-debug?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-dc-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-status
+          href: /sql/azdata/reference/reference-azdata-arc-dc-status?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres
+          href: /sql/azdata/reference/reference-azdata-arc-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-backup
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server-backup
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server-config
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-resource
+          href: /sql/azdata/reference/reference-azdata-arc-resource?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-resource-kind
+          href: /sql/azdata/reference/reference-azdata-arc-resource-kind?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql
+          href: /sql/azdata/reference/reference-azdata-arc-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-mi
+          href: /sql/azdata/reference/reference-azdata-arc-sql-mi?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-mi-config
+          href: /sql/azdata/reference/reference-azdata-arc-sql-mi-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json

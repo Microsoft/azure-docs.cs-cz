@@ -9,14 +9,17 @@ ms.topic: include
 ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc7849e52b3e00c87d271ee8aef8788d816dff7a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175416"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971018"
 ---
-| Kategorie | Omezení |
-| --- | --- |
-| Spravované identity přiřazené uživatelem | <ul><li>Když vytváříte uživatelem přiřazené spravované identity, jsou podporovány pouze alfanumerické znaky (0-9, a-z, a a-Z) a spojovník (-). Aby přiřazení k virtuálnímu počítači nebo sadě škálování virtuálních počítačů fungovalo správně, název je omezený na 24 znaků.</li><li>Pokud použijete rozšíření spravovaného virtuálního počítače identity, je podporované omezení 32 uživatelem přiřazených identit. Bez rozšíření virtuálních počítačů spravovaných identit je podporované omezení 512 uživatelem přiřazených identit.</li>|
+- Každá spravovaná identita se počítá s limitem kvóty objektu v tenantovi Azure AD, jak je popsáno v tématu [limity a omezení služby Azure AD](../articles/active-directory/users-groups-roles/directory-service-limits-restrictions.md).
+-   Rychlost, s jakou je možné vytvořit spravované identity, má následující omezení:
 
+    1. Na tenanta Azure AD na oblast Azure: 200 vytvoření operací za 20 sekund.
+    2. Podle předplatného Azure na oblast Azure: 40 vytvoření operací za 20 sekund.
+
+- Když vytváříte uživatelem přiřazené spravované identity, jsou podporovány pouze alfanumerické znaky (0-9, a-z, a a-Z) a spojovník (-). Aby přiřazení k virtuálnímu počítači nebo sadě škálování virtuálních počítačů fungovalo správně, název je omezený na 24 znaků.

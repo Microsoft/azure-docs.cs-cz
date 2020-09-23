@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 57ab6bca820c4c25a9a56e4a801aa7d917d317ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843483"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978598"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>Rychlý Start: nasazení Open Source serveru FHIR pomocí Azure Portal
 
@@ -25,17 +25,17 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 Přejděte na [stránku nasazení GitHubu](https://github.com/Microsoft/fhir-server/blob/master/docs/DefaultDeployment.md) a vyhledejte tlačítka nasadit do Azure:
 
-![Stránka nasazení Open Source](media/quickstart-oss-portal/deployment-page-oss.png)
+>[!div class="mx-imgBorder"]
+>![Stránka nasazení Open Source](media/quickstart-oss-portal/deployment-page-oss.png)
 
 Klikněte na tlačítko nasazení a otevře se Azure Portal.
 
 ## <a name="fill-in-deployment-parameters"></a>Vyplnit parametry nasazení
 
-Vyberte vytvořit novou skupinu prostředků a pojmenujte ji. Pouze další požadovaný parametr je název služby.
+Vyberte vytvořit novou skupinu prostředků a pojmenujte ji. Pouze další požadované parametry jsou název služby a heslo správce SQL.
 
-![Parametry vlastního nasazení](media/quickstart-oss-portal/deployment-custom-parameters.png)
-
-Všimněte si, že nasazení načte zdrojový kód přímo z open source úložiště na GitHubu. Pokud jste úložiště rozstavili, můžete Ukázat na vlastní větev a.
+>[!div class="mx-imgBorder"]
+>![Parametry vlastního nasazení](media/quickstart-oss-portal/deployment-custom-parameters.png)
 
 Po vyplnění podrobností můžete nasazení spustit.
 

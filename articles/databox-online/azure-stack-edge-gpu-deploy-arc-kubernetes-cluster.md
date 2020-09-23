@@ -1,6 +1,6 @@
 ---
-title: Povolit Azure ARC v Kubernetes na zařízení GPU na Azure Stack hraničních zařízeních | Microsoft Docs
-description: Popisuje, jak povolit Azure ARC v existujícím clusteru Kubernetes na zařízení GPU Azure Stack Edge.
+title: Povolit Azure ARC v Kubernetes na zařízení GPU pro Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak povolit Azure ARC v existujícím clusteru Kubernetes na zařízení GPU Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322020"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903187"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Povolení služby Azure ARC v clusteru Kubernetes na zařízení GPU Azure Stack Edge
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Povolení Azure ARC v clusteru Kubernetes na zařízení GPU Azure Stack Edge pro
 
-V tomto článku se dozvíte, jak povolit Azure ARC v existujícím clusteru Kubernetes na zařízení Azure Stack Edge. 
+V tomto článku se dozvíte, jak povolit Azure ARC v existujícím clusteru Kubernetes na zařízení Azure Stack Edge pro. 
 
-Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
+Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste na svém zařízení Azure Stack Edge dokončili následující požadavky a klienta, který budete používat pro přístup k zařízení:
+Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste na svém zařízení Azure Stack Edge pro a klientovi, kterého budete používat pro přístup k zařízení, dokončili následující požadavky:
 
 ### <a name="for-device"></a>Zařízení
 
-1. Máte přihlašovací údaje pro přihlášení k Azure Stack hraničního zařízení s jedním uzlem.
+1. Máte přihlašovací údaje pro přihlášení k zařízení Azure Stack Edge pro s jedním uzlem.
     1. Zařízení se aktivuje. Viz [Aktivace zařízení](azure-stack-edge-gpu-deploy-activate.md).
     1. Zařízení má výpočetní roli nakonfigurovanou prostřednictvím Azure Portal a má cluster Kubernetes. Viz [Konfigurace výpočtů](azure-stack-edge-gpu-deploy-configure-compute.md).
 
@@ -37,19 +37,19 @@ Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste
 
 ### <a name="for-client-accessing-the-device"></a>Pro klientský přístup k zařízení
 
-1. Máte klientský systém Windows, který se bude používat pro přístup k Azure Stack hraničního zařízení.
+1. Máte klientský systém Windows, který se bude používat pro přístup k zařízení Azure Stack Edge pro.
   
     - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Můžete mít i jiné klienty s [podporovaným operačním systémem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Tento článek popisuje postup při použití klienta systému Windows. 
     
-1. Dokončili jste postup popsaný v tématu [přístup ke clusteru Kubernetes na zařízení Azure Stack Edge](azure-stack-edge-gpu-create-kubernetes-cluster.md). Máte:
+1. Dokončili jste postup popsaný v tématu [přístup ke clusteru Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md). Máte:
     
     - Nainstalováno `kubectl` na klienta  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - Ujistěte se, že `kubectl` verze klienta nepřekračuje jednu verzi z hlavní verze Kubernetes, která běží na vašem zařízení Azure Stack Edge. 
+    - Ujistěte se, že `kubectl` verze klienta není ve verzi Kubernetes Master spuštěná na vašem zařízení Azure Stack Edge pro. 
       - Slouží `kubectl version` ke kontrole verze kubectl spuštěné v klientovi. Poznamenejte si plnou verzi.
-      - V místním uživatelském rozhraní zařízení Azure Stack Edge, navštivte **aktualizace softwaru** a poznamenejte si číslo verze Kubernetes serveru. 
+      - V místním uživatelském rozhraní zařízení Azure Stack Edge pro, přejít na **Software Update** a poznamenejte si číslo verze Kubernetes serveru. 
     
         ![Ověřit číslo verze serveru Kubernetes](media/azure-stack-edge-gpu-connect-powershell-interface/verify-kubernetes-version-1.png)      
       
@@ -142,7 +142,7 @@ Pomocí těchto kroků nakonfigurujete cluster Kubernetes pro správu ARC Azure:
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Pokud chcete nasadit Azure ARC na Azure Stack hraničním zařízení, ujistěte se, že používáte [podporovanou oblast pro Azure ARC](../azure-arc/kubernetes/overview.md#supported-regions). Azure ARC je momentálně ve verzi Preview. Pomocí příkazu můžete také zjistit přesný název oblasti, která se má předat rutině `az account list-locations` .
+    Pokud chcete nasadit Azure ARC na zařízení Azure Stack Edge pro, ujistěte se, že používáte [podporovanou oblast pro Azure ARC](../azure-arc/kubernetes/overview.md#supported-regions). Azure ARC je momentálně ve verzi Preview. Pomocí příkazu můžete také zjistit přesný název oblasti, která se má předat rutině `az account list-locations` .
     
     Tady je příklad:
    
@@ -224,4 +224,4 @@ Pro odebrání správy ARC Azure použijte následující postup:
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak spustit nasazení ARC v Azure, najdete v tématu [nasazení aplikace s bezstavovou sadou php pomocí Redis přes GitOps na zařízení Azure Stack Edge](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md) .
+Informace o tom, jak spustit nasazení ARC v Azure, najdete v tématu [nasazení aplikace s bezstavovou sadou php pomocí Redis přes GitOps na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md) .

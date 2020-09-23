@@ -1,18 +1,40 @@
 ---
-title: Správa agenta serverů s podporou ARC Azure (Preview)
-description: Tento článek popisuje různé úlohy správy, které obvykle provedete během životního cyklu serveru připojeného agenta Azure ARC (Preview).
-ms.date: 07/30/2020
+title: Správa agenta serverů s podporou ARC Azure
+description: Tento článek popisuje různé úlohy správy, které obvykle provedete během životního cyklu serverů s podporou ARC Azure, které jsou agentem počítače připojené.
+ms.date: 09/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 146d5e3595e95df3b59b9cb4c0c05f9cc478eb82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213125"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902536"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
-Po počátečním nasazení serveru s podporou Azure ARC (Preview) připojeného agenta počítače pro systém Windows nebo Linux bude pravděpodobně nutné překonfigurovat agenta, provést upgrade nebo jej odebrat z počítače, pokud dosáhli fáze vyřazení v životním cyklu. Tyto rutinní úlohy údržby můžete snadno spravovat ručně nebo prostřednictvím automatizace, což snižuje provozní chybu i výdaje.
+Po počátečním nasazení serverů s podporou ARC Azure, které jsou připojené k počítači pro Windows nebo Linux, budete možná muset agenta překonfigurovat, upgradovat ho nebo ho odebrat z počítače, pokud v životním cyklu dosáhli fáze vyřazení. Tyto rutinní úlohy údržby můžete snadno spravovat ručně nebo prostřednictvím automatizace, což snižuje provozní chybu i výdaje.
+
+## <a name="before-uninstalling-agent"></a>Před odinstalací agenta
+
+Před odebráním agenta připojeného počítače ze serveru s povoleným obloukem zvažte následující skutečnosti, aby nedocházelo k neočekávaným problémům nebo přidaným nákladům na účet Azure:
+
+* Pokud jste nasadili rozšíření virtuálních počítačů Azure na povolený Server a odebrali jste agenta připojeného počítače nebo odstraníte prostředek, který představuje server s podporou ARC ve skupině prostředků, budou tyto přípony nadále spuštěné a musí provádět jejich normální fungování.
+
+* Pokud odstraníte prostředek, který představuje server s povoleným ARC ve vaší skupině prostředků, ale rozšíření virtuálního počítače nebudete odinstalováni, budete moci spravovat nainstalovaná rozšíření virtuálního počítače i při jejich opětovné registraci.
+
+U serverů nebo počítačů, které už nechcete spravovat se servery s podporou ARC Azure, je potřeba pomocí těchto kroků úspěšně zastavit jejich správu:
+
+1. Odeberte rozšíření virtuálních počítačů z počítače nebo serveru. Níže jsou uvedené kroky.
+
+2. Odpojte počítač od Arc Azure pomocí jedné z následujících metod:
+
+    * Spuštění `azcmagent disconnect` příkazu na počítači nebo na serveru.
+
+    * Z vybraného serveru s povolenou příponou ARC v Azure Portal vyberte z horního panelu možnost **Odstranit** .
+
+    * Použití rozhraní příkazového [řádku Azure](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) nebo [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource). Pro `ResourceType` použití parametru `Microsoft.HybridCompute/machines` .
+
+3. Odinstalujte agenta z počítače nebo serveru. Postupujte podle následujících kroků.
 
 ## <a name="upgrading-agent"></a>Upgrade agenta
 
@@ -120,7 +142,7 @@ Akce příkazu [zypperu](https://en.opensuse.org/Portal:Zypper) , jako je instal
 
 ## <a name="about-the-azcmagent-tool"></a>O nástroji Azcmagent
 
-Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci serveru s podporou Azure ARC (Preview) připojeného agenta počítače během instalace nebo po instalaci změnit počáteční konfiguraci agenta. Azcmagent.exe poskytuje parametry příkazového řádku pro přizpůsobení agenta a zobrazení jeho stavu:
+Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci serverů s povoleným obloukem Azure ARC připojeného agenta počítače během instalace nebo po instalaci změnit počáteční konfiguraci agenta. Azcmagent.exe poskytuje parametry příkazového řádku pro přizpůsobení agenta a zobrazení jeho stavu:
 
 * **Připojení** – připojení počítače k Arc Azure
 
@@ -136,16 +158,16 @@ Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci serveru s podpor
 
 * **-v nebo--verbose** – Povolit podrobné protokolování
 
-**Připojení**, **odpojení**a opětovné **připojení** můžete provést ručně, pokud jste přihlášeni interaktivně, nebo automatizovat pomocí stejného instančního objektu, který jste použili k registraci více agentů nebo pomocí [přístupového tokenu](../../active-directory/develop/access-tokens.md)platformy Microsoft identity. Pokud jste nepoužívali instanční objekt k registraci počítače se servery s podporou Azure ARC (Preview), vytvořte instanční objekt v následujícím [článku](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) .
+**Připojení**, **odpojení**a opětovné **připojení** můžete provést ručně, pokud jste přihlášeni interaktivně, nebo automatizovat pomocí stejného instančního objektu, který jste použili k registraci více agentů nebo pomocí [přístupového tokenu](../../active-directory/develop/access-tokens.md)platformy Microsoft identity. Pokud jste nepoužívali instanční objekt k registraci počítače se servery s podporou ARC Azure, přečtěte si následující [článek](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a vytvořte instanční objekt.
 
 >[!NOTE]
 >Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
 
 ### <a name="connect"></a>Připojit
 
-Tento parametr určuje prostředek v Azure Resource Manager, který představuje počítač vytvořený v Azure. Prostředek je v předplatném a v zadané skupině prostředků a data o počítači se ukládají v oblasti Azure určené `--location` nastavením. Výchozí název prostředku je název hostitele tohoto počítače, pokud není zadán.
+Tento parametr určuje prostředek v Azure Resource Manager, který představuje počítač vytvořený v Azure. Prostředek je v předplatném a v zadané skupině prostředků a data o počítači se ukládají v oblasti Azure určené `--location` nastavením. Výchozí název prostředku je název hostitele počítače, pokud není zadaný.
 
-Certifikát, který odpovídá identitě přiřazené systémem počítače, se pak stáhne a uloží místně. Po dokončení tohoto kroku se v počítači připojeném k Azure Metadata Service a Agent konfigurace hosta začne synchronizovat se servery s podporou Azure ARC (Preview).
+Certifikát, který odpovídá identitě přiřazené systémem počítače, se pak stáhne a uloží místně. Po dokončení tohoto kroku se připojí počítač Azure Metadata Service a Agent konfigurace hosta začne synchronizovat se servery s podporou ARC Azure.
 
 Pokud se chcete připojit pomocí instančního objektu, spusťte následující příkaz:
 
@@ -161,7 +183,10 @@ Pokud se chcete připojit pomocí přihlášených přihlašovacích údajů se 
 
 ### <a name="disconnect"></a>Odpojit
 
-Tento parametr určuje prostředek v Azure Resource Manager, který představuje počítač odstraněný v Azure. Neodstraní z počítače agenta, tento krok se musí provést v samostatném kroku. Pokud je počítač odpojený, pokud ho chcete znovu zaregistrovat u serverů s podporou Azure ARC (verze Preview), použijte `azcmagent connect` proto, aby byl pro něj vytvořen nový prostředek v Azure.
+Tento parametr určuje prostředek v Azure Resource Manager, který představuje počítač odstraněný v Azure. Neodstraní z počítače agenta, tento krok se musí provést v samostatném kroku. Pokud je počítač odpojený, pokud ho chcete znovu zaregistrovat u serverů s podporou ARC Azure, použijte proto, `azcmagent connect` aby byl pro něj vytvořen nový prostředek v Azure.
+
+> [!NOTE]
+> Pokud jste nasadili jedno nebo více rozšíření virtuálních počítačů Azure na server s podporou ARC a odstraníte jeho registraci v Azure, budou tato rozšíření pořád nainstalovaná. Je důležité si uvědomit, že v závislosti na nainstalovaném rozšíření je aktivně prováděn jeho funkce. Počítače, které mají být vyřazené nebo už spravované servery s podporou ARC, by se nejdřív měly před odebráním registrace z Azure odebrat.
 
 Pokud se chcete odpojit pomocí instančního objektu, spusťte následující příkaz:
 
@@ -180,7 +205,7 @@ Pokud se chcete odpojit od přihlašovacích údajů se zvýšenými oprávněn�
 > [!WARNING]
 > `reconnect`Příkaz je zastaralý a neměl by se používat. Příkaz se odebere v budoucí verzi agenta a stávající agenti se nebude moct dokončit žádost o opětovné připojení. Místo toho [odpojte](#disconnect) počítač a znovu ho [Připojte](#connect) .
 
-Tento parametr znovu připojí již registrovaný nebo připojený počítač k serverům s podporou ARC Azure (Preview). To může být nutné v případě, že je počítač vypnutý, minimálně 45 dní, aby jeho platnost jeho certifikátu vypršela. Tento parametr používá možnosti ověřování, které jsou k dispozici pro načtení nových přihlašovacích údajů odpovídajících prostředku Azure Resource Manager, který představuje tento počítač.
+Tento parametr připojí již registrovaný nebo připojený počítač k serverům s podporou ARC Azure. To může být nutné v případě, že je počítač vypnutý, minimálně 45 dní, aby jeho platnost jeho certifikátu vypršela. Tento parametr používá možnosti ověřování, které jsou k dispozici pro načtení nových přihlašovacích údajů odpovídajících prostředku Azure Resource Manager, který představuje tento počítač.
 
 Tento příkaz vyžaduje vyšší oprávnění než role registrace [počítače připojeného k Azure](agent-overview.md#required-permissions) .
 
@@ -198,7 +223,7 @@ Pokud se chcete znovu připojit pomocí přihlašovacích údajů se zvýšeným
 
 ## <a name="remove-the-agent"></a>Odebrat agenta
 
-Proveďte jednu z následujících metod k odinstalaci agenta připojeného počítače s Windows nebo Linux z počítače. Odebrání agenta zruší registraci počítače u serverů s povoleným ARC (Preview), jedná se o samostatný proces, který provádíte, když už nepotřebujete spravovat počítač v Azure.
+Proveďte jednu z následujících metod k odinstalaci agenta připojeného počítače s Windows nebo Linux z počítače. Odebrání agenta zruší registraci počítače u serverů s povoleným ARC nebo odebrat nainstalované rozšíření virtuálních počítačů Azure. Tyto kroky je nutné provést samostatně, pokud již nepotřebujete spravovat počítač v Azure a před odinstalací agenta by se měly dokončit.
 
 ### <a name="windows-agent"></a>Agent Windows
 
@@ -267,9 +292,9 @@ Pokud chcete odinstalovat agenta pro Linux, použitý příkaz závisí na opera
 
 ## <a name="unregister-machine"></a>Zrušit registraci počítače
 
-Pokud plánujete ukončit správu počítače s podpůrnými službami v Azure, proveďte následující kroky, abyste zrušili registraci počítače u serverů s podporou ARC (Preview). Tyto kroky můžete provést buď před, nebo po odebrání agenta připojeného počítače z počítače.
+Pokud plánujete ukončit správu počítače s podpůrnými službami v Azure, proveďte následující kroky, abyste zrušili registraci počítače u serverů s podporou ARC. Tyto kroky můžete provést buď před, nebo po odebrání agenta připojeného počítače z počítače.
 
-1. Kliknutím na [Azure Portal](https://aka.ms/hybridmachineportal)otevřete servery s podporou Azure ARC (Preview).
+1. Otevřete servery s podporou ARC Azure pomocí přechodu na [Azure Portal](https://aka.ms/hybridmachineportal).
 
 2. Vyberte počítač v seznamu, vyberte tři tečky (**...**) a pak vyberte **Odstranit**.
 
@@ -317,4 +342,4 @@ sudo azcmagent_proxy remove
 
 - Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md)a mnohem víc.
 
-- Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
+- Přečtěte si další informace o nástroji [[Log Analytics agent]](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).

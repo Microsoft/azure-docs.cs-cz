@@ -10,24 +10,34 @@
       items:
         - name: Úvod
           href: get-started.md
+          displayName: 'get, started'
         - name: 1. Vytvoření pracovního prostoru Synapse
           href: get-started-create-workspace.md
+          displayName: 'get, started'
         - name: 2. Analýza s využitím fondu SQL
           href: get-started-analyze-sql-pool.md
+          displayName: 'get, started'
         - name: 3. Analýza s využitím Sparku
           href: get-started-analyze-spark.md
+          displayName: 'get, started'
         - name: 4. Analýza s využitím SQL na vyžádání
           href: get-started-analyze-sql-on-demand.md
+          displayName: 'get, started'
         - name: 5. Analýza dat v účtu úložiště
           href: get-started-analyze-storage.md
+          displayName: 'get, started'
         - name: 6. Orchestrace s využitím kanálů
           href: get-started-pipelines.md
+          displayName: 'get, started'
         - name: 7. Vizualizace pomocí Power BI
           href: get-started-visualize-power-bi.md
+          displayName: 'get, started'
         - name: 8. Monitor
           href: get-started-monitor.md
+          displayName: 'get, started'
         - name: 9. Seznámení se znalostním centrem
           href: get-started-knowledge-center.md
+          displayName: 'get, started'
     - name: Tahák
       href: overview-cheat-sheet.md
     - name: Nejčastější dotazy
@@ -48,16 +58,16 @@
       href: quickstart-power-bi.md
     - name: Vytváření fondů
       items:
-        - name: Vytvoření poznámkového bloku Apache Sparku pomocí webových nástrojů
-          href: quickstart-apache-spark-notebook.md
-        - name: Vytvoření fondu úloh Apache Sparku pomocí webu Azure Portal
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Vytvoření fondu úloh Apache Sparku s využitím sady Synapse Studio
-          href: quickstart-create-apache-spark-pool-studio.md
-        - name: Vytvoření fondu SQL s využitím webu Azure Portal
-          href: quickstart-create-sql-pool-portal.md
         - name: Vytvoření fondu SQL s využitím sady Synapse Studio
           href: quickstart-create-sql-pool-studio.md
+        - name: Vytvoření fondu SQL s využitím webu Azure Portal
+          href: quickstart-create-sql-pool-portal.md
+        - name: Vytvoření poznámkového bloku
+          href: quickstart-apache-spark-notebook.md
+        - name: Vytvoření fondu úloh Sparku s využitím webu Azure Portal
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Vytvoření fondu úloh Sparku s využitím sady Synapse Studio
+          href: quickstart-create-apache-spark-pool-studio.md
     - name: Načtení dat s využitím fondů SQL
       items:
         - name: Příkaz COPY

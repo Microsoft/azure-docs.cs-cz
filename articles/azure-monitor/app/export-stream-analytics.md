@@ -3,12 +3,12 @@ title: Export pomocí Stream Analytics z Azure Application Insights | Microsoft 
 description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324348"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979177"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Použití Stream Analytics k zpracování exportovaných dat z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může vyžádat data z nejrůznějších zdrojů. Může data transformovat a filtrovat a pak je směrovat na celou řadu umyvadel.
@@ -97,10 +97,10 @@ Vzor předpony cesty určuje, kde Stream Analytics najde vstupní soubory v úlo
 
 V tomto příkladu:
 
-* `webapplication27`je název Application Insights prostředku **malými písmeny**.
-* `1234...`je klíč instrumentace prostředku Application Insights a **vynechává se pomlčky**. 
-* `PageViews`je typ dat, která chcete analyzovat. Dostupné typy závisí na filtru, který jste nastavili při průběžném exportu. Prohlédněte si exportovaná data a podívejte se na další dostupné typy a podívejte se na [model exportu dat](export-data-model.md).
-* `/{date}/{time}`je vzor psaný doslova.
+* `webapplication27` je název Application Insights prostředku **malými písmeny**.
+* `1234...` je klíč instrumentace prostředku Application Insights a **vynechává se pomlčky**. 
+* `PageViews` je typ dat, která chcete analyzovat. Dostupné typy závisí na filtru, který jste nastavili při průběžném exportu. Prohlédněte si exportovaná data a podívejte se na další dostupné typy a podívejte se na [model exportu dat](export-data-model.md).
+* `/{date}/{time}` je vzor psaný doslova.
 
 > [!NOTE]
 > Zkontrolujte úložiště, abyste se ujistili, že jste získali správnou cestu.
@@ -196,7 +196,7 @@ Otevřete Power BI u svého pracovního nebo školního účtu a vyberte datovou
 
 Nyní můžete tuto datovou sadu použít v sestavách a řídicích panelech v [Power BI](https://powerbi.microsoft.com).
 
-![V Power BI vyberte datovou sadu a pole.](./media/export-stream-analytics/210.png)
+![Snímek obrazovky ukazuje příklad sestavy vytvořený z datové sady v Power BI.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Žádná data?
 * Ověřte, že jste správně [nastavili formát data](#set-path-prefix-pattern) na rrrr-mm-dd (s pomlčkami).

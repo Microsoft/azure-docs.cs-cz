@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: fc8e8de817c1b311e3252c7399a09ed1c9eb7031
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 982c7a41f1e05c34ddf0fbae9f944df4a4d08fa5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651517"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893361"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte, jak pomocí automatizovaného strojového učení a AutoML [Azure Machine Learning v sadě SDK Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)nakonfigurovat a naučit regresní model předpovědi časových řad. 
 
@@ -38,7 +38,7 @@ Pro tento článek potřebujete,
 
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
 
-* Tento článek předpokládá základní znalost s nastavením automatizovaného experimentu strojového učení. Pomocí [kurzu](tutorial-auto-train-models.md) nebo [postupu](how-to-configure-auto-train.md) si můžete prohlédnout základní modely návrhu experimentů pro strojové učení.
+* V tomto článku se předpokládá, že jste nastavili automatizovaný experiment strojového učení. Pomocí [kurzu](tutorial-auto-train-models.md) nebo [postupu](how-to-configure-auto-train.md) si můžete prohlédnout hlavní modely návrhu experimentů automatizovaného strojového učení.
 
 ## <a name="preparing-data"></a> Příprava dat
 
@@ -253,7 +253,7 @@ Pokud chcete povolit DNN pro experiment AutoML vytvořený v Azure Machine Learn
 
 Automatizované ML poskytuje uživatelům v rámci systému doporučení jak nativní modely časových řad, tak i obsáhlé učení. 
 
-Modely| Popis | Výhody
+Modely| Description | Výhody
 ----|----|---
 Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
 Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Pokud například překlopete mince, pravděpodobnost, že se vám povede, je 50%, bez ohledu na překlopení dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.

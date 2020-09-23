@@ -4,12 +4,12 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933779"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979428"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -55,17 +55,17 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
 2. Jakmile určíte, který prostředek se má použít, můžete zvolit, jak má Application Insights shromažďovat data na platformu pro vaši aplikaci. Monitorování aplikací ASP.NET se používá ve výchozím nastavení se dvěma různými úrovněmi shromažďování.
 
-    ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new.png)
+    ![Snímek obrazovky se zobrazí stránka Application Insights rozšíření webu s vybraným možnost vytvořit nový prostředek.](./media/azure-web-apps/choose-options-new.png)
  
  Níže je uveden souhrn dat shromažďovaných pro každou trasu:
         
 | Data | Kolekce .NET úrovně Basic | .NET – doporučená kolekce |
 | --- | --- | --- |
-| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
-| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
-| Shromažďování výjimek nezpracovaných hostitelským procesem | Ano |Ano |
-| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
-| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Ano |
+| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Yes |Yes |
+| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Yes |Yes |
+| Shromažďování výjimek nezpracovaných hostitelským procesem | Yes |Yes |
+| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Yes |Yes |
+| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Yes |
 
 3. Pokud chcete nakonfigurovat nastavení, jako je vzorkování, které byste mohli dříve řídit prostřednictvím souboru applicationinsights.config, můžete teď s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
 
@@ -345,7 +345,7 @@ Počínaje verzí 2.8.9 se používá předem nainstalovaná rozšíření webu.
 
 Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou knihovny DLL ApplicationInsigths odebrány ze složky bin aplikace, [v tématu Postup řešení potíží](#troubleshooting).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
 

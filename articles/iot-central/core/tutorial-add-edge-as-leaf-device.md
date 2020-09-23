@@ -1,6 +1,6 @@
 ---
-title: Přidání zařízení Azure IoT Edge do Azure IoT Central | Microsoft Docs
-description: Jako operátor přidejte do aplikace Azure IoT Central Azure IoT Edge zařízení.
+title: Kurz – přidání zařízení Azure IoT Edge do Azure IoT Central | Microsoft Docs
+description: Kurz – jako operátor přidání zařízení Azure IoT Edge do aplikace Azure IoT Central
 author: rangv
 ms.author: rangv
 ms.date: 05/29/2020
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: cc612d5dc21594da855799ed965effeb4b547d00
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018658"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987011"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Kurz: Přidání zařízení Azure IoT Edge do aplikace Azure IoT Central
 
@@ -37,7 +37,7 @@ Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-io
 
 K dokončení kroků v tomto kurzu potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Stáhněte soubor manifestu IoT Edge z GitHubu. Klikněte pravým tlačítkem na následující odkaz a vyberte **Uložit odkaz jako**: [EnvironmentalSensorManifest.jszapnuto](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json) .
 
@@ -286,14 +286,14 @@ Pokud máte v úmyslu pokračovat v práci s IoT Edgem virtuálním počítačem
 * Pokud chcete odstranit IoT Edge virtuální počítač a jeho přidružené prostředky, odstraňte v Azure Portal skupinu prostředků **Contoso-Edge-RG** .
 * Chcete-li odstranit aplikaci IoT Central, přejděte na stránku **aplikace** v části **Správa** aplikace a vyberte možnost **Odstranit**.
 
+Jako vývojář nebo operátor řešení teď, když jste se seznámili s tím, jak pracovat s IoT Edge zařízení v IoT Central, je navržený další krok:
+
+> [!div class="nextstepaction"]
+> [Použití skupin zařízení k analýze telemetrie zařízení](./tutorial-use-device-groups.md)
+
 ## <a name="next-steps"></a>Další kroky
 
 Jako vývojář zařízení teď, když jste se naučili pracovat se zařízeními IoT Edge a spravovat je v IoT Central, je navržený další krok Přečtěte si:
 
 > [!div class="nextstepaction"]
 > [Vývoj IoT Edgech modulů](../../iot-edge/tutorial-develop-for-linux.md)
-
-Jako vývojář nebo operátor řešení teď, když jste se seznámili s tím, jak pracovat s IoT Edge zařízení v IoT Central, je navržený další krok:
-
-> [!div class="nextstepaction"]
-> [Použití skupin zařízení k analýze telemetrie zařízení](./tutorial-use-device-groups.md)

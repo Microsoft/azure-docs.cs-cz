@@ -47,12 +47,12 @@
       items:
         - name: Problémy s připojením agentů
           href: troubleshoot-agent-onboard.md
-    - name: Referenční informace
-      items:
-        - name: Rezidence dat a dostupnost oblastí
-          href: data-residency.md
-        - name: REST
-          href: /rest/api/hybridcompute
-        - name: Integrované služby Azure Policy
-          displayName: 'samples, policies, definitions'
-          href: policy-reference.md
+- name: Referenční informace
+  items:
+    - name: Rezidence dat
+      href: data-residency.md
+    - name: REST
+      href: /rest/api/hybridcompute
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

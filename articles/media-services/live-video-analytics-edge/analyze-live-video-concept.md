@@ -3,12 +3,12 @@ title: Analýza živého videa bez nahrávání – Azure
 description: Mediální graf se dá použít k extrakci analýz z živého streamu videa, aniž byste ho museli nahrávat na hranici nebo v cloudu. Tento článek popisuje tento koncept.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: d59e2e9e309f0ed6a65e001557dcd9dd8af90da2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893024"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Analýza živého videa bez nahrávání
 
@@ -40,7 +40,7 @@ V tomto mediálním grafu rozchází uzel procesoru filtru frekvence snímků za
 Vylepšením tohoto příkladu je použití procesoru snímače pohybu před uzlem procesoru filtru kmitočtu snímků. Tím se sníží zatížení odvozené služby, protože se používá pouze v případě, že je ve videu aktivita pohybu.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.png" alt-text="Živá analýza videa na základě pohybu zjištěných snímků prostřednictvím externího modulu Inferencing":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Živá analýza videa na základě pohybu zjištěných snímků prostřednictvím externího modulu Inferencing":::
 
 ## <a name="next-steps"></a>Další kroky
 

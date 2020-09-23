@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657575"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892972"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Parita cloudu Azure Machine Learning svrchovan
 
@@ -49,9 +49,9 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Vytváření koncových bodů kanálu pomocí sady Azure ML SDK                           | GA                   | ANO                | ANO         |
 | Vytváření, úpravy a odstraňování naplánovaných běhů kanálů pomocí sady Azure ML SDK | GA                   | ODPOVÍ               | ODPOVÍ        |
 | Zobrazení podrobností o spuštění kanálu v studiu                                        | GA                   | ANO                | ANO         |
-| Vytváření, spouštění, vizualizace a publikování kanálů v Azure ML designeru          | Public Preview       | ANO                | ANO         |
+| Vytváření, spouštění, vizualizace a publikování kanálů v Azure ML designeru          | GA      | ANO                | ANO         |
 | Azure Databricks integrace s kanálem ML                             | GA                   | NO                 | NO          |
-| Vytváření koncových bodů kanálu v Návrháři Azure ML                             | Public Preview       | ANO                | ANO         |
+| Vytváření koncových bodů kanálu v Návrháři Azure ML                             | GA      | ANO                | ANO         |
 | **Integrované poznámkové bloky** |   |  | | 
 | Notebook a sdílení souborů v pracovním prostoru                                        | GA                   | ANO                | ANO         |
 | Podpora R a Pythonu                                                       | GA                   | ANO                | ANO         |
@@ -150,77 +150,77 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Příznak                                       | Stav veřejného cloudu | CH – východ – 2 | CH-sever-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Automatizované strojové učení** |    | | |
-| Vytváření a spouštění experimentů v poznámkových blocích                                    | GA               | ANO       | –        |
-| Vytváření a spouštění experimentů ve webovém prostředí studia                        | Public Preview   | ANO       | –        |
-| Špičkové možnosti prognózování v oboru                                  | GA               | ANO       | –        |
-| Podpora hloubkového učení a dalších pokročilých učících                      | GA               | ANO       | –        |
-| Podpora velkých objemů dat (až 100 GB)                                          | Public Preview   | ANO       | –        |
-| Integrace Azure Databricks                                              | GA               | NO        | –        |
-| Integrace SQL, CosmosDB a HDInsight                                   | GA               | ANO       | –        |
+| Vytváření a spouštění experimentů v poznámkových blocích                                    | GA               | ANO       | Není k dispozici        |
+| Vytváření a spouštění experimentů ve webovém prostředí studia                        | Public Preview   | ANO       | Není k dispozici        |
+| Špičkové možnosti prognózování v oboru                                  | GA               | ANO       | Není k dispozici        |
+| Podpora hloubkového učení a dalších pokročilých učících                      | GA               | ANO       | Není k dispozici        |
+| Podpora velkých objemů dat (až 100 GB)                                          | Public Preview   | ANO       | Není k dispozici        |
+| Integrace Azure Databricks                                              | GA               | NO        | Není k dispozici        |
+| Integrace SQL, CosmosDB a HDInsight                                   | GA               | ANO       | Není k dispozici        |
 | **Machine Learning kanály** |    | | |
-| Vytváření, spouštění a publikování kanálů pomocí Azure ML SDK                   | GA               | ANO       | –        |
-| Vytváření koncových bodů kanálu pomocí sady Azure ML SDK                           | GA               | ANO       | –        |
-| Vytváření, úpravy a odstraňování naplánovaných běhů kanálů pomocí sady Azure ML SDK | GA               | ANO       | –        |
-| Zobrazení podrobností o spuštění kanálu v studiu                                        | GA               | ANO       | –        |
-| Vytváření, spouštění, vizualizace a publikování kanálů v Azure ML designeru          | Public Preview   | ANO       | –        |
-| Azure Databricks integrace s kanálem ML                             | GA               | NO        | –        |
-| Vytváření koncových bodů kanálu v Návrháři Azure ML                             | Public Preview   | ANO       | –        |
+| Vytváření, spouštění a publikování kanálů pomocí Azure ML SDK                   | GA               | ANO       | Není k dispozici        |
+| Vytváření koncových bodů kanálu pomocí sady Azure ML SDK                           | GA               | ANO       | Není k dispozici        |
+| Vytváření, úpravy a odstraňování naplánovaných běhů kanálů pomocí sady Azure ML SDK | GA               | ANO       | Není k dispozici        |
+| Zobrazení podrobností o spuštění kanálu v studiu                                        | GA               | ANO       | Není k dispozici        |
+| Vytváření, spouštění, vizualizace a publikování kanálů v Azure ML designeru          | GA  | ANO       | Není k dispozici        |
+| Azure Databricks integrace s kanálem ML                             | GA               | NO        | Není k dispozici        |
+| Vytváření koncových bodů kanálu v Návrháři Azure ML                             | GA   | ANO       | Není k dispozici        |
 | **Integrované poznámkové bloky** |   | | |
-| Notebook a sdílení souborů v pracovním prostoru                                        | GA               | ANO       | –        |
-| Podpora R a Pythonu                                                       | GA               | ANO       | –        |
-| Podpora virtuální sítě                                                    | Public Preview   | NO        | –        |
+| Notebook a sdílení souborů v pracovním prostoru                                        | GA               | ANO       | Není k dispozici        |
+| Podpora R a Pythonu                                                       | GA               | ANO       | Není k dispozici        |
+| Podpora virtuální sítě                                                    | Public Preview   | NO        | Není k dispozici        |
 | **Instance služby Compute** |    | | |
-| Spravované výpočetní instance pro integrované poznámkové bloky                         | GA               | NO        | –        |
-| Integrace Jupyter, JupyterLab                                            | GA               | ANO       | –        |
-| Podpora Virtual Network (VNet)                                             | Public Preview   | ANO       | –        |
+| Spravované výpočetní instance pro integrované poznámkové bloky                         | GA               | NO        | Není k dispozici        |
+| Integrace Jupyter, JupyterLab                                            | GA               | ANO       | Není k dispozici        |
+| Podpora Virtual Network (VNet)                                             | Public Preview   | ANO       | Není k dispozici        |
 | **Podpora SDK** |    | | |
-| Podpora sady R SDK                                                              | Public Preview   | ANO       | –        |
-| Podpora sady Python SDK                                                         | GA               | ANO       | –        |
+| Podpora sady R SDK                                                              | Public Preview   | ANO       | Není k dispozici        |
+| Podpora sady Python SDK                                                         | GA               | ANO       | Není k dispozici        |
 | **Zabezpečení** |   | | |
-| Podpora Virtual Network (VNet) pro školení                                | GA               | ANO       | –        |
-| Podpora Virtual Network (VNet) pro odvození                               | GA               | ANO       | –        |
-| Bodování ověřování koncového bodu                                            | Public Preview   | ANO       | –        |
-| Privátní odkaz na pracoviště                                                     | Public Preview   | NO        | –        |
-| ACI za virtuální sítí                                                            | Public Preview   | NO        | –        |
-| ACR za virtuální sítí                                                            | Public Preview   | NO        | –        |
-| Privátní IP adresa clusteru AKS                                                  | Public Preview   | NO        | –        |
+| Podpora Virtual Network (VNet) pro školení                                | GA               | ANO       | Není k dispozici        |
+| Podpora Virtual Network (VNet) pro odvození                               | GA               | ANO       | Není k dispozici        |
+| Bodování ověřování koncového bodu                                            | Public Preview   | ANO       | Není k dispozici        |
+| Privátní odkaz na pracoviště                                                     | Public Preview   | NO        | Není k dispozici        |
+| ACI za virtuální sítí                                                            | Public Preview   | NO        | Není k dispozici        |
+| ACR za virtuální sítí                                                            | Public Preview   | NO        | Není k dispozici        |
+| Privátní IP adresa clusteru AKS                                                  | Public Preview   | NO        | Není k dispozici        |
 | **Výpočetní služby** |   | | |
-| Správa kvót napříč pracovními prostory                                         | GA               | ANO       | –        |
+| Správa kvót napříč pracovními prostory                                         | GA               | ANO       | Není k dispozici        |
 | **Data pro strojové učení** | | | |
-| Vytvoření, zobrazení nebo úprava datových sad a úložišť dat ze sady SDK                  | GA               | ANO       | –        |
-| Vytvoření, zobrazení nebo úprava datových sad a úložišť dat z uživatelského rozhraní                   | GA               | ANO       | –        |
-| Zobrazení, úpravy nebo odstranění sledování posunu datové sady ze sady SDK                   | Public Preview   | ANO       | –        |
-| Zobrazení, úpravy nebo odstranění sledování posunu datové sady z uživatelského rozhraní                    | Public Preview   | ANO       | –        |
+| Vytvoření, zobrazení nebo úprava datových sad a úložišť dat ze sady SDK                  | GA               | ANO       | Není k dispozici        |
+| Vytvoření, zobrazení nebo úprava datových sad a úložišť dat z uživatelského rozhraní                   | GA               | ANO       | Není k dispozici        |
+| Zobrazení, úpravy nebo odstranění sledování posunu datové sady ze sady SDK                   | Public Preview   | ANO       | Není k dispozici        |
+| Zobrazení, úpravy nebo odstranění sledování posunu datové sady z uživatelského rozhraní                    | Public Preview   | ANO       | Není k dispozici        |
 | **Životní cyklus machine learningu** |    | | |
-| Profilace modelu                                                            | GA               | ČÁSTEČNÉ   | –        |
-| Rozšíření Azure DevOps pro Machine Learning & Azure ML CLI         | GA               | ANO       | –        |
-| Modely s hardwarovou akcelerací založené na FPGA                                     | GA               | NO        | –        |
-| Integrace Visual Studio Code                                             | Public Preview   | NO        | –        |
-| Integrace Event Gridu                                                     | Public Preview   | ANO       | –        |
-| Integrace Azure Stream Analytics s Azure Machine Learning               | Public Preview   | NO        | –        |
+| Profilace modelu                                                            | GA               | ČÁSTEČNÉ   | Není k dispozici        |
+| Rozšíření Azure DevOps pro Machine Learning & Azure ML CLI         | GA               | ANO       | Není k dispozici        |
+| Modely s hardwarovou akcelerací založené na FPGA                                     | GA               | NO        | Není k dispozici        |
+| Integrace Visual Studio Code                                             | Public Preview   | NO        | Není k dispozici        |
+| Integrace Event Gridu                                                     | Public Preview   | ANO       | Není k dispozici        |
+| Integrace Azure Stream Analytics s Azure Machine Learning               | Public Preview   | NO        | Není k dispozici        |
 | **Označování** |    | | |
-| Označování Portál pro správu projektu                                        | GA               | ANO       | –        |
-| Portál popisků                                                            | GA               | ANO       | –        |
-| Označování pomocí privátních zaměstnanců                                          | GA               | ANO       | –        |
-| Popis s asistencí ML (klasifikace obrázků a detekce objektů)           | Public Preview   | ANO       | –        |
+| Označování Portál pro správu projektu                                        | GA               | ANO       | Není k dispozici        |
+| Portál popisků                                                            | GA               | ANO       | Není k dispozici        |
+| Označování pomocí privátních zaměstnanců                                          | GA               | ANO       | Není k dispozici        |
+| Popis s asistencí ML (klasifikace obrázků a detekce objektů)           | Public Preview   | ANO       | Není k dispozici        |
 | **Zodpovědné strojové učení** |    | | |
-| Vysvětlení v uživatelském rozhraní                                                       | Public Preview   | NO        | –        |
-| Rozdílová ochrana osobních údajů WhiteNoise Toolkit                                    | OSS              | NO        | –        |
-| vlastní značky v Azure Machine Learning k implementaci datových listů              | GA               | NO        | –        |
-| Spravedlivá integrace AzureML                                               | Public Preview   | NO        | –        |
-| Sada SDK pro vyhodnocení                                                      | GA               | ANO       | –        |
+| Vysvětlení v uživatelském rozhraní                                                       | Public Preview   | NO        | Není k dispozici        |
+| Rozdílová ochrana osobních údajů WhiteNoise Toolkit                                    | OSS              | NO        | Není k dispozici        |
+| vlastní značky v Azure Machine Learning k implementaci datových listů              | GA               | NO        | Není k dispozici        |
+| Spravedlivá integrace AzureML                                               | Public Preview   | NO        | Není k dispozici        |
+| Sada SDK pro vyhodnocení                                                      | GA               | ANO       | Není k dispozici        |
 | **Školení** |    | | |
-| Streamování protokolů experimentování                                              | GA               | ANO       | –        |
-| Posílení učení                                                     | Public Preview   | NO        | –        |
-| Uživatelské rozhraní experimentování                                                         | GA               | ANO       | –        |
-| .NET Integration ML.NET 1,0                                                | GA               | ANO       | –        |
+| Streamování protokolů experimentování                                              | GA               | ANO       | Není k dispozici        |
+| Posílení učení                                                     | Public Preview   | NO        | Není k dispozici        |
+| Uživatelské rozhraní experimentování                                                         | GA               | ANO       | Není k dispozici        |
+| .NET Integration ML.NET 1,0                                                | GA               | ANO       | Není k dispozici        |
 | **Odvození** |   | | |
-| Batch Inferencing                                                          | GA               | ANO       | –        |
-| Data Box Edge s FPGA                                                    | Public Preview   | NO        | –        |
+| Batch Inferencing                                                          | GA               | ANO       | Není k dispozici        |
+| Data Box Edge s FPGA                                                    | Public Preview   | NO        | Není k dispozici        |
 | **Další** |    | | |
-| Open Datasets                                                              | Public Preview   | ANO       | –        |
-| Vlastní Kognitivní hledání                                                    | Public Preview   | ANO       | –        |
-| Mnoho modelů                                                                | Public Preview   | NO        | –        |
+| Open Datasets                                                              | Public Preview   | ANO       | Není k dispozici        |
+| Vlastní Kognitivní hledání                                                    | Public Preview   | ANO       | Není k dispozici        |
+| Mnoho modelů                                                                | Public Preview   | NO        | Není k dispozici        |
 
 
 

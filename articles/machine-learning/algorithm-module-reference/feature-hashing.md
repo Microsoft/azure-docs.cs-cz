@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456246"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907913"
 ---
 # <a name="feature-hashing-module-reference"></a>Reference k modulům hash funkcí
 
-Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning.
 
 K transformaci datového proudu anglického textu do sady celočíselných funkcí použijte modul hash funkcí. Tuto funkci s hodnotou hash můžete následně předat algoritmu strojového učení a naučit se model pro analýzu textu.
 
@@ -39,7 +39,7 @@ Například proveďte sadu jednoduchých vět, jako třeba, a potom mínění sk
 
 Interně modul hashování funkcí vytvoří slovník n-gramů. Například seznam bigrams pro tuto datovou sadu by byl podobný tomuto:
 
-|Termín (bigrams)|Frekvence|
+|Termín (bigrams)|Frequency|
 |------------|---------------|
 |Tato kniha|3|
 |Jsem blízký|1|
@@ -48,7 +48,7 @@ Interně modul hashování funkcí vytvoří slovník n-gramů. Například sezn
 
 Velikost n-gramů můžete řídit pomocí vlastnosti **n-gramů** . Zvolíte-li možnost bigrams, jsou vypočítány také unigrams. Slovník by měl také zahrnovat jednotlivé výrazy, jako jsou tyto:
 
-|Termín (unigrams)|Frekvence|
+|Termín (unigrams)|Frequency|
 |------------|---------------|
 |účetních|3|
 |I|3|

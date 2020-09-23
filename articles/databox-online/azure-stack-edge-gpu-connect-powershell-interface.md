@@ -1,23 +1,23 @@
 ---
-title: Připojení a Správa Microsoft Azure Stack hraničního zařízení přes rozhraní Windows PowerShellu | Microsoft Docs
-description: Popisuje, jak se připojit k Azure Stack Edge přes rozhraní Windows PowerShell a potom ho spravovat.
+title: Připojení a Správa zařízení Microsoft Azure Stack Edge pro prostřednictvím rozhraní Windows PowerShellu | Microsoft Docs
+description: Popisuje, jak se připojit ke službě Azure Stack Edge pro a jak ji spravovat přes rozhraní Windows PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461829"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903518"
 ---
-# <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Správa zařízení GPU Azure Stackového grafického okraje prostřednictvím prostředí Windows PowerShell
+# <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Správa zařízení GPU Azure Stack Edge pro pomocí prostředí Windows PowerShell
 
-Řešení Azure Stack Edge umožňuje zpracovávat data a odesílat je přes síť do Azure. Tento článek popisuje některé úlohy konfigurace a správy pro zařízení Azure Stack Edge. Ke správě zařízení můžete použít rozhraní Azure Portal, místní webové uživatelské rozhraní nebo prostředí Windows PowerShell.
+Řešení Azure Stack Edge pro umožňuje zpracovávat data a odesílat je přes síť do Azure. Tento článek popisuje některé úlohy konfigurace a správy pro zařízení Azure Stack Edge pro. Ke správě zařízení můžete použít rozhraní Azure Portal, místní webové uživatelské rozhraní nebo prostředí Windows PowerShell.
 
 Tento článek se zaměřuje na to, jak se můžete připojit k rozhraní PowerShellu zařízení a úlohám, které můžete používat v tomto rozhraní. 
 
@@ -84,11 +84,11 @@ Pokud je v zařízení nakonfigurovaná výpočetní role, můžete informace o 
 
 ## <a name="enable-multi-process-service-mps"></a>Povolit službu Multi-Process Service (MPS)
 
-Služba multi-Process (MPS) na NVIDIA GPU poskytuje mechanismus, ve kterém může být prostředí GPU sdíleno více úlohami, kde každá úloha má přiděleno určité procento prostředků GPU. Pokud chcete na zařízení Azure Stack Edge povolit MPS, postupujte podle těchto kroků:
+Služba multi-Process (MPS) na NVIDIA GPU poskytuje mechanismus, ve kterém může být prostředí GPU sdíleno více úlohami, kde každá úloha má přiděleno určité procento prostředků GPU. Sada MPS je funkcí Preview na zařízení GPU Azure Stack Edge pro. Pokud chcete na svém zařízení povolit MPS, postupujte podle těchto kroků:
 
 1. Než začnete, ujistěte se, že: 
 
-    1. Nakonfigurovali a [aktivovali jste Azure Stack hraniční zařízení](azure-stack-edge-gpu-deploy-activate.md) s Azure Stackm hraničním nebo data box Gatewaym prostředkem v Azure.
+    1. Nakonfigurovali a [aktivovali jste zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-activate.md) v Azure pomocí prostředku služby Azure Stack Edge pro/data box Gateway.
     1. [Na tomto zařízení jste nakonfigurovali COMPUTE na Azure Portal](azure-stack-edge-deploy-configure-compute.md#configure-compute).
     
 1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
@@ -187,7 +187,7 @@ users:
 ```
 -->
 
-Na Azure Stack hraničním zařízení s nakonfigurovanou výpočetní rolí můžete zařízení řešit nebo monitorovat pomocí dvou různých sad příkazů.
+Na zařízení Azure Stack Edge pro, ve kterém je nakonfigurovaná výpočetní role, můžete řešit nebo monitorovat zařízení pomocí dvou různých sad příkazů.
 
 - Použití `iotedge` příkazů. Tyto příkazy jsou k dispozici pro základní operace vašeho zařízení.
 - Použití `kubectl` příkazů. Tyto příkazy jsou k dispozici pro rozsáhlou sadu operací pro vaše zařízení.
@@ -212,7 +212,7 @@ Commands:
 
 Následující tabulka obsahuje stručný popis příkazů, které jsou k dispozici pro `iotedge` :
 
-|command  |Popis |
+|command  |Description |
 |---------|---------|
 |`list`     | Seznam modulů         |
 |`logs`     | Načtení protokolů modulu        |
@@ -241,7 +241,7 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 ### <a name="use-kubectl-commands"></a>Použití příkazů kubectl
 
-Na Azure Stack hraničním zařízení s nakonfigurovanou výpočetní rolí `kubectl` jsou všechny příkazy k dispozici pro monitorování a odstraňování potíží s moduly. Pokud chcete zobrazit seznam dostupných příkazů, spusťte `kubectl --help` z příkazového řádku.
+Na zařízení Azure Stack Edge pro, ve kterém je nakonfigurovaná role COMPUTE, `kubectl` jsou k dispozici všechny příkazy pro monitorování a odstraňování potíží s moduly. Pokud chcete zobrazit seznam dostupných příkazů, spusťte `kubectl --help` z příkazového řádku.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -433,4 +433,4 @@ Pokud chcete ukončit vzdálenou relaci PowerShellu, zavřete okno PowerShell.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nasaďte [Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md) do Azure Portal.
+- Nasaďte [Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md) v Azure Portal.
