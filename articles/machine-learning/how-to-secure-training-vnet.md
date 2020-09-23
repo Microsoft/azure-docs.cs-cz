@@ -11,15 +11,14 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5a71476db6f57841a0057de5b8c95f07ef5d90ad
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: cf2c19297fdd56fb376a54b231bbb021c53b25bd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603080"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882974"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho školicího prostředí s využitím virtuálních sítí
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak zabezpečit školicí prostředí pomocí virtuální sítě v Azure Machine Learning.
 

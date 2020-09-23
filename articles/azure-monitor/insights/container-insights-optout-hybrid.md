@@ -3,12 +3,12 @@ title: Postup zastavení monitorování hybridního clusteru Kubernetes | Micros
 description: Tento článek popisuje, jak můžete zastavit monitorování clusteru hybridního Kubernetes pomocí Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091194"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986050"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Postup zastavení monitorování hybridního clusteru
 
@@ -84,6 +84,25 @@ Dokončení změny konfigurace může trvat několik minut. Vzhledem k tomu, že
     .\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext
     ```
 
+#### <a name="using-service-principal"></a>Použití instančního objektu
+Skript *disable-monitoring.ps1* používá přihlášení interaktivního zařízení. Pokud dáváte přednost neinteraktivnímu přihlášení, můžete použít existující instanční objekt nebo vytvořit nový, který má požadovaná oprávnění, jak je popsáno v části [požadavky](container-insights-enable-arc-enabled-clusters.md#prerequisites). Chcete-li použít instanční objekt, bude nutné předat $servicePrincipalClientId, $servicePrincipalClientSecret a $tenantId parametry s hodnotami instančního objektu, který chcete použít ke enable-monitoring.ps1 skriptu.
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+Příklad:
+
+```powershell
+\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId
+```
+
+
 ### <a name="using-bash"></a>Použití bash
 
 1. Stáhněte a uložte skript do místní složky, která konfiguruje cluster pomocí doplňku monitorování pomocí následujících příkazů:
@@ -117,6 +136,24 @@ Dokončení změny konfigurace může trvat několik minut. Vzhledem k tomu, že
     ```bash
     bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext
     ```
+
+#### <a name="using-service-principal"></a>Použití instančního objektu
+Skript bash *Disable-monitoring.sh* používá přihlášení interaktivního zařízení. Pokud dáváte přednost neinteraktivnímu přihlášení, můžete použít existující instanční objekt nebo vytvořit nový, který má požadovaná oprávnění, jak je popsáno v části [požadavky](container-insights-enable-arc-enabled-clusters.md#prerequisites). Chcete-li použít instanční objekt, budete muset předat--Client-ID,--Client-Secret a--tenant-ID instančního objektu, který jste chtěli použít ke *Enable-monitoring.sh* skriptu bash.
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+Příklad:
+
+```bash
+bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId
+```
 
 ## <a name="next-steps"></a>Další kroky
 

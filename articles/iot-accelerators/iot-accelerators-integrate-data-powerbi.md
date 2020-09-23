@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74184241"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976003"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Vizualizace dat vzdáleného monitorování pomocí Power BI
 
@@ -45,7 +45,7 @@ Tento kurz vás provede postupem připojení dat řešení vzdáleného monitoro
    - Identifikátor URI
    - Primární klíč
 
-     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
+     ![Snímek obrazovky zobrazuje účet Azure Cosmos D B s vybranou položkou klíče.](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
 ## <a name="setting-up-the-stream-in-power-bi"></a>Nastavení datového proudu v Power BI
   
@@ -55,7 +55,7 @@ Tento kurz vás provede postupem připojení dat řešení vzdáleného monitoro
 
 2. Až se zobrazí výzva k zadání dat, vyberte Vyhledat "Azure Cosmos DB" a vyberte tento konektor. Tento konektor v podstatě vyžádá data přímo z databáze Cosmos vašeho řešení Azure IoT.
   
-    ![Databáze Cosmos](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
+    ![Cosmos DB](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
   
 3. Zadejte informace, které jste si poznamenali výše:
 

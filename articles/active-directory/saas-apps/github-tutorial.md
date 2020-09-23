@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 7153a1279785cfe79d23b2b5ba843ec9f5cd4965
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550738"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985896"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k GitHubu
 
@@ -117,7 +117,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -194,7 +194,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon na GitHubu. 
 
 2. Klikněte na **lidé**.
 
-    ![People](./media/github-tutorial/people.png "People")
+    ![Snímek obrazovky zobrazuje web GitHub s vybranými lidmi.](./media/github-tutorial/people.png "People")
 
 3. Klikněte na **pozvat člena**.
 
@@ -219,7 +219,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici GitHub na přístupovém panelu byste se měli automaticky přihlášeni k GitHubu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

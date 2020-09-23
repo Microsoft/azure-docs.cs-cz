@@ -3,12 +3,12 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927143"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905330"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Tento článek popisuje časté otázky ke službě Azure Kubernetes Service (AK
 
 ## <a name="can-i-spread-an-aks-cluster-across-regions"></a>Je možné rozložit cluster AKS napříč různými oblastmi?
 
-Ne. Clustery AKS jsou regionální prostředky a nemůžou zahrnovat oblasti. Pokyny k vytvoření architektury, která obsahuje více oblastí, najdete v tématu [osvědčené postupy pro provozní kontinuitu a zotavení po havárii][bcdr-bestpractices] .
+No. Clustery AKS jsou regionální prostředky a nemůžou zahrnovat oblasti. Pokyny k vytvoření architektury, která obsahuje více oblastí, najdete v tématu [osvědčené postupy pro provozní kontinuitu a zotavení po havárii][bcdr-bestpractices] .
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>Je možné rozložit cluster AKS napříč zónami dostupnosti?
 
@@ -115,7 +115,7 @@ Za účelem ochrany stability systému a zabránění vlastním řadičům pří
 
 Pokud máte důležitý případ použití nástroje, který je nasazený v systému Kube (nedoporučuje se), který vyžadujete, aby se přidal do svého vlastního Webhooku, můžete přidat následující popisek nebo anotaci, aby se přístup vynuceně ignoroval.
 
-Popisek: ```"admissions.enforcer/disabled": "true"``` nebo Poznámka:```"admissions.enforcer/disabled": true```
+Popisek: ```"admissions.enforcer/disabled": "true"``` nebo Poznámka: ```"admissions.enforcer/disabled": true```
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Je Azure Key Vault integrována s AKS?
 
@@ -163,7 +163,7 @@ To platí, ale AKS to nedoporučuje. Upgrady by se měly provádět v ideálním
 
 Ne, odstraňte nebo odeberte všechny uzly ve stavu selhání nebo jinak odeberte z clusteru před upgradem.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Spustil (a) jsem cluster s odstraněním, ale zobrazí se chyba`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Spustil (a) jsem cluster s odstraněním, ale zobrazí se chyba `[Errno 11001] getaddrinfo failed` 
 
 Nejčastěji to je způsobeno tím, že uživatelé, kteří mají jednu nebo více skupin zabezpečení sítě (skupin zabezpečení sítě) stále používány a jsou přidruženi ke clusteru.  Odeberte je prosím a pokuste se o odstranění znovu.
 
@@ -173,7 +173,11 @@ Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instančn
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Můj cluster fungoval, ale náhle nedokáže zřídit LoadBalancers, připojení PVC atd.? 
 
-Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](./kubernetes-service-principal.md) a [přihlašovací údaje pro AKS aktualizace](./update-credentials.md).
+Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](./kubernetes-service-principal.md)  a [přihlašovací údaje pro AKS aktualizace](./update-credentials.md).
+
+## <a name="can-i-scale-my-aks-cluster-to-zero"></a>Můžu svůj cluster AKS škálovat na nulu?
+[Běžící cluster AKS](start-stop-cluster.md)můžete úplně zastavit a ušetřit tak příslušné výpočetní náklady. Kromě toho můžete také [škálovat nebo automaticky škálovat všechny nebo konkrétní `User` fondy uzlů](scale-cluster.md#scale-user-node-pools-to-0) na hodnotu 0 a přitom zachovat jenom nezbytnou konfiguraci clusteru.
+[Fondy systémových uzlů](use-system-pools.md) nemůžete přímo škálovat na 0.
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Můžu použít rozhraní API sady škálování pro virtuální počítače k ručnímu škálování?
 

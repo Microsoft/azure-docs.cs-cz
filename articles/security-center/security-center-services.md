@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: c4f3ccce03f91b0567980d55b59bfb15d6985bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299741"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904712"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -28,23 +28,23 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 
 ### <a name="windows-machines"></a>[**Počítače s Windows**](#tab/features-windows)
 
-|**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače mimo Azure**|**Ceny**
+|**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače mimo Azure**|**Vyžaduje se Azure Defender.**
 |----|:----:|:----:|:----:|:----:|
-|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Standard|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](threat-protection.md)|✔|✔|✔|Standard|
-|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[Výstrahy zabezpečení založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standard|
-|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standard|
-|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Standard|
-|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|-|-|-|Standard|
-|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
-|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
-|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
+|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Yes|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](alerts-reference.md)|✔|✔|✔|Yes|
+|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
+|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Yes|
+|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|-|-|-|Yes|
+|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Ano|
+|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
+|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
 |Vyhodnocení šifrování disku|✔|✔|-|Free|
 |Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Free|
 |[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Free|
@@ -52,22 +52,22 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 
 ### <a name="linux-machines"></a>[**Počítače se systémem Linux**](#tab/features-linux)
 
-|**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače mimo Azure**|**Ceny**
+|**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače mimo Azure**|**Vyžaduje se Azure Defender.**
 |----|:----:|:----:|:----:|:----:|
-|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|-|-|-|Standard|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](security-center-alerts-iaas.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Standard|
-|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[Výstrahy zabezpečení založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standard|
-|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standard|
-|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Standard|
-|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Standard|
-|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
-|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
+|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|-|-|-|Yes|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](security-center-alerts-iaas.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Yes|
+|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Yes|
+|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Yes|
+|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Yes|
+|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Ano|
+|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Ano|
 |[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
 |Vyhodnocení šifrování disku|✔|✔|-|Free|
 |Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Free|
@@ -77,7 +77,7 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 
 
 > [!TIP]
->Pokud chcete experimentovat s funkcemi, které jsou dostupné jenom na cenové úrovni Standard, můžou se uživatelé bezplatné úrovně zaregistrovat do 30denní zkušební verze. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+>Pokud chcete experimentovat s funkcemi, které jsou k dispozici jenom v Azure Defenderu, můžete se zaregistrovat do 30denní zkušební verze. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 ## <a name="supported-endpoint-protection-solutions"></a>Podporovaná řešení ochrany koncových bodů <a name="endpoint-supported"></a>

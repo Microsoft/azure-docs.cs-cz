@@ -1,16 +1,16 @@
 ---
 title: Obnovení databází SQL Server na virtuálním počítači Azure
-description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup.
+description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup. K obnovení databází do sekundární oblasti můžete také použít obnovení mezi oblastmi.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377977"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985390"
 ---
-# <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Server na virtuálních počítačích Azure
+# <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Serveru na virtuálních počítačích Azure
 
 Tento článek popisuje, jak obnovit databázi SQL Server, která běží na virtuálním počítači Azure, který je službou [Azure Backup](backup-overview.md) zálohovaný do Azure Backup Recovery Services trezoru.
 
@@ -30,7 +30,7 @@ Před obnovením databáze mějte na paměti následující:
 - Databázi můžete obnovit do instance SQL Server ve stejné oblasti Azure.
 - Cílový server musí být zaregistrován ve stejném trezoru jako zdroj.
 - Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
-- Databáze s povoleným [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15) by se měly obnovit pomocí možnosti [Obnovit jako soubory](#restore-as-files) .
+- Databáze s povoleným [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) by se měly obnovit pomocí možnosti [Obnovit jako soubory](#restore-as-files) .
 - Než obnovíte hlavní databázi, spusťte instanci SQL Server v jednouživatelském režimu pomocí možnosti Startup **-m AzureWorkloadBackup**.
   - Hodnota pro **-m** je název klienta.
   - Připojení může otevřít pouze zadaný název klienta.
@@ -168,6 +168,51 @@ Pokud jste jako typ obnovení vybrali možnost **úplný & rozdíl** , udělejte
 Pokud je celková velikost řetězce souborů v databázi větší než [určitý limit](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), Azure Backup ukládá seznam databázových souborů v jiné součásti Pit, takže během operace obnovení nelze nastavit cílovou cestu pro obnovení. Místo toho se soubory obnoví na výchozí cestu SQL.
 
   ![Obnovení databáze s velkým souborem](./media/backup-azure-sql-database/restore-large-files.jpg)
+
+## <a name="cross-region-restore"></a>Obnovení mezi oblastmi
+
+Jedna z možností obnovení (CRR) umožňuje obnovení databází SQL hostovaných na virtuálních počítačích Azure v sekundární oblasti, která je spárována se službou Azure.
+
+Pokud chcete připojit funkci během verze Preview, přečtěte si [část než začnete](./backup-create-rs-vault.md#set-cross-region-restore).
+
+Pokud chcete zjistit, jestli je CRR povolený, postupujte podle pokynů v tématu [Konfigurace obnovení mezi oblastmi](backup-create-rs-vault.md#configure-cross-region-restore) .
+
+### <a name="view-backup-items-in-secondary-region"></a>Zobrazit zálohované položky v sekundární oblasti
+
+Pokud je povolená možnost CRR, můžete zobrazit zálohované položky v sekundární oblasti.
+
+1. Na portálu přejdete do části **Recovery Services trezoru**  >  **zálohované položky**.
+1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
+
+>[!NOTE]
+>V seznamu se zobrazí pouze typy správy zálohování podporující funkci CRR. V současné době je povolena pouze podpora obnovení dat sekundární oblasti do sekundární oblasti.
+
+![Zálohované položky v sekundární oblasti](./media/backup-azure-sql-database/backup-items-secondary-region.png)
+
+![Databáze v sekundární oblasti](./media/backup-azure-sql-database/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Obnovení v sekundární oblasti
+
+Funkce obnovení koncového uživatele v sekundární oblasti bude podobná primární oblasti obnovení uživatelského prostředí. Při konfiguraci podrobností v podokně obnovit konfiguraci pro konfiguraci obnovení se zobrazí výzva k zadání pouze sekundárních parametrů oblasti.
+
+![Kde a jak obnovit](./media/backup-azure-sql-database/restore-secondary-region.png)
+
+>[!NOTE]
+>Virtuální síť v sekundární oblasti musí být přiřazena jedinečně a nelze ji použít pro žádné jiné virtuální počítače v dané skupině prostředků.
+
+![Oznámení o průběhu obnovení aktivační události](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>- Po aktivaci obnovení a ve fázi přenosu dat nelze úlohu obnovení zrušit.
+>- Role Azure potřebné k obnovení v sekundární oblasti jsou stejné jako v primární oblasti.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Monitorování úloh obnovení sekundární oblasti
+
+1. Na portálu přejdete na **Recovery Services vault**  >  **úlohy zálohování** služby Recovery Services trezor.
+1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
+
+    ![Filtrované úlohy zálohování](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ad22abdf17c68c93a6189db839fe357e7acc91e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 4ccf89a4dcb2c91cfdd96b20d74b7f31596b6249
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898258"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte, jak nakonfigurovat vývojové prostředí pro práci s Azure Machine Learning. Azure Machine Learning nezávislá platformy. Jediným z požadavků pro vaše vývojové prostředí je Python 3. Doporučuje se také izolované prostředí, jako je Anaconda nebo virtualenv.
 
@@ -61,7 +61,7 @@ Pro výpočetní instanci není nic k instalaci ani konfiguraci.  Vytvořte si j
 
 Další informace o výpočetních instancích, včetně postupu instalace balíčků, najdete v tématu [výpočetní instance](concept-compute-instance.md).
 
-Pokud chcete zastavit náklady na výpočetní výkon, [zastavte výpočetní instanci](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
+Pokud chcete zastavit náklady na výpočetní výkon, [zastavte výpočetní instanci](tutorial-1st-experiment-bring-data.md#clean-up-resources).
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Virtuální počítač pro datové vědy
 

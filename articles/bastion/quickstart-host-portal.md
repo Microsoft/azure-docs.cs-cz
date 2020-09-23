@@ -7,18 +7,18 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
-ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0155ae92e3179918273d6a19773aa15b67949ea
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743979"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985593"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Rychlý Start: připojení k virtuálnímu počítači pomocí privátní IP adresy a Azure bastionu
 
 Tento článek rychlý Start ukazuje, jak se připojit k virtuálnímu počítači pomocí privátní IP adresy. Když se připojujete přes bastionu, virtuální počítače nepotřebují veřejnou IP adresu. Kroky v tomto článku vám pomůžou nasadit bastionu do virtuální sítě přes virtuální počítač na portálu. Po zřízení služby je prostředí RDP/SSH dostupné všem virtuálním počítačům ve stejné virtuální síti.
 
-## <a name="prerequisites"></a><a name="prereq"></a>Požadovaný
+## <a name="prerequisites"></a><a name="prereq"></a>Požadavky
 
 * Virtuální síť Azure.
 * Virtuální počítač Azure umístěný ve virtuální síti s otevřeným portem 3389.
@@ -41,7 +41,7 @@ Tento článek rychlý Start ukazuje, jak se připojit k virtuálnímu počíta�
 
 Když vytvoříte hostitele bastionu na portálu pomocí existujícího virtuálního počítače, bude automaticky standardně odpovídat různým nastavením, aby odpovídal vašemu virtuálnímu počítači nebo virtuální síti.
 
-1. Otevřete [Azure Portal](https://portal.azure.com). Přejděte na virtuální počítač a pak klikněte na **připojit**.
+1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte na virtuální počítač a pak klikněte na **připojit**.
 
    ![nastavení virtuálního počítače](./media/quickstart-host-portal/vm-settings.png)
 1. V rozevíracím seznamu vyberte možnost **bastionu**.
@@ -66,13 +66,13 @@ Když vytvoříte hostitele bastionu na portálu pomocí existujícího virtuál
 
    ![vytvořit hostitele bastionu](./media/quickstart-host-portal/bastion-settings.png)
 
-## <a name="connect"></a><a name="connect"></a>Připojit
+## <a name="connect"></a><a name="connect"></a>Síti
 
 Po nasazení bastionu do virtuální sítě se obrazovka změní na stránku připojit.
 
 1. Zadejte uživatelské jméno a heslo pro virtuální počítač. Pak vyberte **připojit**.
 
-   ![připojit](./media/quickstart-host-portal/connect.png)
+   ![Snímek obrazovky se zobrazí v dialogovém okně připojit pomocí Azure bastionu, kde se zobrazí výzva k zadání uživatelského jména a hesla.](./media/quickstart-host-portal/connect.png)
 1. Připojení RDP k tomuto virtuálnímu počítači prostřednictvím bastionu se otevře přímo v Azure Portal (přes HTML5) pomocí portu 443 a služby bastionu.
 
    ![Připojení RDP](./media/quickstart-host-portal/443-rdp.png)

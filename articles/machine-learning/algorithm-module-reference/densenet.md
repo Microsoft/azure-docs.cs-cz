@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: db0e2f90ee45d4e1c0173cbc037084793a66e149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450644"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898524"
 ---
 # <a name="densenet"></a>DenseNet
 
-Tento článek popisuje, jak pomocí modulu **DenseNet** v Návrháři Azure Machine Learning (Preview) vytvořit model klasifikace obrázků pomocí algoritmu DenseNet.  
+Tento článek popisuje, jak pomocí modulu **DenseNet** v Návrháři Azure Machine Learning vytvořit model klasifikace obrázků pomocí algoritmu DenseNet.  
 
 Tento algoritmus klasifikace je metoda učení pod dohledem a vyžaduje datovou sadu s popiskem. Další informace o tom, jak získat adresář obrázků s popiskem, najdete v tématu [převod na modul adresáře imagí](convert-to-image-directory.md) . Model můžete proškolit tak, že zadáte model a s popiskem adresář obrázků jako vstupy pro [výuku modelu Pytorch](train-pytorch-model.md). Školený model se pak dá použít k předpovědi hodnot pro nové vstupní příklady pomocí [modelu obrázku skóre](score-image-model.md).
 
@@ -52,12 +52,12 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 | Name             | Rozsah | Typ    | Výchozí     | Description                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Název modelu       | Všechny   | Mode    | densenet201 | Název určité struktury densenet     |
-| Předvlakované       | Všechny   | Logická hodnota | True        | Jestli se má používat model předučený na ImageNet |
-| Efektivní paměť | Všechny   | Logická hodnota | False       | Bez ohledu na to, jestli se má použít kontrolní bod, což je mnohem víc paměti, ale pomalejší |
+| Předvlakované       | Všechny   | Logická hodnota | Ano        | Jestli se má používat model předučený na ImageNet |
+| Efektivní paměť | Všechny   | Logická hodnota | Nepravda       | Bez ohledu na to, jestli se má použít kontrolní bod, což je mnohem víc paměti, ale pomalejší |
 
 ###  <a name="output"></a>Výstup  
 
-| Name            | Typ                    | Description                              |
+| Název            | Typ                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nevlakový model | UntrainedModelDirectory | Nevlakový model densenet, který se dá připojit ke Pytorch modelu výuky. |
 

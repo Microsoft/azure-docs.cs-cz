@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: a8a5914b51b56fbe8b4b7b7ba331f58ec451f975
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86933b324d7216a6097102cf237d0402d9f63234
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731879"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882682"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Platba za Azure Database for MySQL výpočetních prostředků s rezervovanou kapacitou
 
@@ -43,7 +43,7 @@ Předpokládejme například, že máte spuštěný jeden pro obecné účely, G
 4. Vyplňte požadovaná pole. Stávající nebo nové databáze, které odpovídají atributům, které vyberete, mají nárok na získání rezervované slevy kapacity. Skutečný počet serverů Azure Database for MySQL, které získávají slevu, závisí na zvoleném rozsahu a množství.
 
 
-![Přehled rezervovaných cen](media/concepts-reserved-pricing/mysql-reserved-price.png)
+:::image type="content" source="media/concepts-reserved-pricing/mysql-reserved-price.png" alt-text="Přehled rezervovaných cen":::
 
 
 V následující tabulce jsou popsána povinná pole.
@@ -51,11 +51,11 @@ V následující tabulce jsou popsána povinná pole.
 | Pole | Popis |
 | :------------ | :------- |
 | Předplatné   | Předplatné použité pro platbu Azure Database for MySQL rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity Azure Database for MySQL. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
-| Rozsah | Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, Azure Database for MySQL na servery běžící v rámci vašeho fakturačního kontextu se použije sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> Pro Azure Database for MySQL servery v tomto **předplatném**se použije sleva za rezervované Vcore. </br></br> **Jedna skupina prostředků**, použije se sleva rezervace pro Azure Database for MySQL servery ve vybraném předplatném a v rámci daného předplatného.
+| Obor | Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, Azure Database for MySQL na servery běžící v rámci vašeho fakturačního kontextu se použije sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> Pro Azure Database for MySQL servery v tomto **předplatném**se použije sleva za rezervované Vcore. </br></br> **Jedna skupina prostředků**, použije se sleva rezervace pro Azure Database for MySQL servery ve vybraném předplatném a v rámci daného předplatného.
 | Oblast | Oblast Azure, která je pokrytá rezervací rezervované kapacity Azure Database for MySQL.
 | Typ nasazení | Typ prostředku Azure Database for MySQL, pro který chcete zakoupit rezervaci.
 | Úroveň výkonu | Vrstva služby pro servery Azure Database for MySQL.
-| Pojem | Jeden rok
+| Období | Jeden rok
 | Množství | Množství výpočetních prostředků, které se zakoupí v rámci rezervace rezervované kapacity Azure Database for MySQL. Množství je počet virtuální jádra ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit Azure Database for MySQL servery s celkovou výpočetní kapacitou Gen5 16 virtuální jádra v oblasti Východní USA, pak byste zadali množství na 16, aby se zajistilo zvýšení výhod pro všechny servery.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací

@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 73769a5f8a677f5e08610560db1e5d90dd5b7c3a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645617"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905116"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Nasazení modelu Machine Learning do Azure App Service (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Naučte se nasadit model z Azure Machine Learning jako webovou aplikaci v Azure App Service.
 
@@ -54,7 +54,7 @@ Další informace o funkcích poskytovaných nástrojem Azure App Service najdet
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 
-Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako webové služby. Následující seznam popisuje základní položky, které jsou potřeba pro nasazení:
+Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako webové služby. Následující seznam popisuje hlavní položky potřebné pro nasazení:
 
 * __Vstupní skript__. Tento skript přijímá požadavky, vyhodnotí požadavek pomocí modelu a vrátí výsledky.
 

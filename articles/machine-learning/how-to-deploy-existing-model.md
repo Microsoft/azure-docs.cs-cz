@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 006aab66eb220c3bb74794ba78bf1495583b653e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0dcede7e6c15fbc0bae39370431d14696cb4026e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648316"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905654"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Nasazení stávajícího modelu pomocí Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte, jak zaregistrovat a nasadit model strojového učení, který jste naučili mimo Azure Machine Learning. Můžete nasadit jako webovou službu nebo do zařízení IoT Edge.  Po nasazení můžete monitorovat model a detekovat posun dat Azure Machine Learning. 
 
@@ -274,7 +274,7 @@ Další informace o nasazení najdete v tématu [jak a kde nasadit modely](how-t
 
 ## <a name="request-response-consumption"></a>Spotřeba požadavků a odpovědí
 
-Po nasazení se zobrazí identifikátor URI pro vyhodnocování. Tento identifikátor URI můžou klienti použít k odesílání požadavků službě. Následující příklad je základní klient Pythonu, který odesílá data do služby a zobrazuje odpověď:
+Po nasazení se zobrazí identifikátor URI pro vyhodnocování. Tento identifikátor URI můžou klienti použít k odesílání požadavků službě. V následujícím příkladu je jednoduchý klient Pythonu, který odesílá data do služby a zobrazuje odpověď:
 
 ```python
 import requests

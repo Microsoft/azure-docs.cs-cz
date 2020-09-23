@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278135"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905468"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
 V Azure Security Center existuje celá řada výstrah pro mnoho různých typů prostředků. Security Center generuje výstrahy pro prostředky nasazené v Azure a také pro prostředky nasazené v místních i hybridních cloudových prostředích.
 
-Výstrahy zabezpečení se spouštějí pokročilými detekcemi a jsou dostupné jenom na úrovni Standard Azure Security Center. K dispozici je bezplatná zkušební verze. Můžete upgradovat ze stránky **Nastavení cenové &** . Přečtěte si další informace o [cenách Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Výstrahy zabezpečení se spouštějí pomocí pokročilých detekcí a jsou dostupné jenom v Azure Defenderu. K dispozici je bezplatná zkušební verze. Můžete upgradovat ze stránky **Nastavení cenové &** . Přečtěte si další informace o [cenách Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="respond-to-todays-threats"></a>Reakce na dnešní hrozby <a name="respond-threats"> </a>
 
@@ -45,7 +45,7 @@ Pomocí incidentů vám Security Center poskytuje jediné zobrazení kampaně ú
 
 ## <a name="how-does-security-center-detect-threats"></a>Jak Security Center detekuje hrozby? <a name="detect-threats"> </a>
 
-Výzkumníci v oblasti zabezpečení ze společnosti Microsoft neustále vyhledávají nové hrozby. Z důvodu globální přítomnosti Microsoftu v cloudu i v místním prostředí mají přístup k obsáhlém sadě telemetrie. Souběžná a různorodá kolekce datových sad umožňuje zjistit nové vzory útoků a trendy v rámci svých místních zákaznických a podnikových produktů a také jejich online služby. Díky tomu dokáže Security Center rychle aktualizovat své algoritmy detekce spolu s tím, jak útočníci provádějí nové a stále sofistikovanější kousky. Tento přístup pomáhá udržet krok s rychle se rozvíjejícím prostředím hrozeb.
+Výzkumníci v oblasti zabezpečení ze společnosti Microsoft neustále vyhledávají nové hrozby. Z důvodu naší globální přítomnosti v cloudu i v místním prostředí máme přístup k obsáhlém sadě telemetrie. Souběžná a různorodá kolekce datových sad nám umožňuje zjistit nové vzory útoků a trendy v rámci našich místních zákaznických a podnikových produktů i online služby. Díky tomu dokáže Security Center rychle aktualizovat své algoritmy detekce spolu s tím, jak útočníci provádějí nové a stále sofistikovanější kousky. Tento přístup pomáhá udržet krok s rychle se rozvíjejícím prostředím hrozeb.
 
 Security Center shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure a sítě, aby zjistila skutečné hrozby a snížila falešně pozitivní výsledky. Funguje taky s připojenými partnerskými řešeními, jako jsou brány firewall a řešení ochrany koncových bodů. Security Center analyzuje tyto informace a často koreluje informace z různých zdrojů k identifikaci hrozeb.
 
@@ -90,6 +90,5 @@ Toto kombinované úsilí je ukončené novými a vylepšenými detekcemi, kter�
 
 V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace naleznete v tématu:
 
-* [Ochrana před hrozbami v Azure Security Center](threat-protection.md) – stručný popis zdrojů výstrah zabezpečení zobrazených pomocí Azure Security Center 
-* **Výstrahy zabezpečení v protokolu aktivit Azure** – navíc k dispozici v Azure Portal nebo programově se výstrahy a incidenty zabezpečení auditují jako události v [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Další informace o schématu událostí najdete v tématu [výstrahy zabezpečení v protokolu aktivit Azure](https://go.microsoft.com/fwlink/?linkid=2114113) .
+- **Výstrahy zabezpečení v protokolu aktivit Azure** – navíc k dispozici v Azure Portal nebo programově se výstrahy a incidenty zabezpečení auditují jako události v [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Další informace o schématu událostí najdete v tématu [výstrahy zabezpečení v protokolu aktivit Azure](https://go.microsoft.com/fwlink/?linkid=2114113) .
 

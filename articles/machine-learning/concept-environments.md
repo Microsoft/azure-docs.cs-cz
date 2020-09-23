@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: 773a05b911bc8e785957b5cf93700a361dc621ef
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651140"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905714"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co jsou Azure Machine Learning prostředí?
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning prostředí jsou zapouzdření prostředí, ve kterém se vaše školení ve službě Machine Learning stane. Určují balíčky Pythonu, proměnné prostředí a nastavení softwaru kolem vašich školicích a vyhodnocovacích skriptů. Určují také časy spuštění (Python, Spark nebo Docker). Prostředí jsou spravovaná a entitami se správou verzí v rámci vašeho Machine Learning pracovního prostoru, které umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
 

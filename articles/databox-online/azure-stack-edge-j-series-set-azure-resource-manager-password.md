@@ -1,6 +1,6 @@
 ---
-title: Nastavení Azure Resource Manager hesla na zařízení GPU Azure Stack Edge
-description: Popisuje, jak se připojit k Azure Resource Manager běžícímu na procesorovém GPU Azure Stack Edge pomocí Azure PowerShell.
+title: Nastavení Azure Resource Manager hesla na zařízení GPU pro Azure Stack Edge pro
+description: Popisuje, jak se připojit k Azure Resource Manager běžícímu na grafickém procesoru Azure Stack Edge pro pomocí Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6a59510b342f7ebd3969a4bb4fcfd75fffd04804
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254147"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904484"
 ---
-# <a name="set-azure-resource-manager-password-on-azure-stack-edge-gpu-device"></a>Nastavení Azure Resource Manager hesla na zařízení GPU Azure Stack Edge
+# <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Nastavení Azure Resource Manager hesla na zařízení s grafickým procesorem Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -122,7 +122,7 @@ Postup nastavení hesla se může lišit v závislosti na tom, jestli používá
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    Použijte výše generované zabezpečené řetězce jako parametry v rutině Set-AzDataBoxEdgeUser pro resetování hesla. Použijte stejnou skupinu prostředků, kterou jste použili při vytváření Azure Stackho prostředku Edge/Data Box Gateway.
+    Použijte výše generované zabezpečené řetězce jako parametry v rutině Set-AzDataBoxEdgeUser pro resetování hesla. Použijte stejnou skupinu prostředků, kterou jste použili při vytváření prostředku Azure Stack Edge pro/Data Box Gateway.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key

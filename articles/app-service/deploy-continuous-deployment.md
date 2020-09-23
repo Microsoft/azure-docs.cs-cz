@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: fa30c6c2c3ecd9c9c119fee80b7ef90999e42d30
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962617"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984402"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do Azure App Service
 
@@ -23,7 +23,7 @@ Další informace o službách správy zdrojového kódu najdete v tématech [Vy
 
 ## <a name="authorize-azure-app-service"></a>Autorizovat Azure App Service 
 
-Pokud chcete použít Azure Repos, ujistěte se, že je vaše organizace Azure DevOps propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+Pokud chcete použít Azure Repos, ujistěte se, že je vaše organizace Azure DevOps propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
 
 V případě Bitbucket nebo GitHubu autorizujte Azure App Service pro připojení k úložišti. Pouze jednou je třeba autorizovat se službou správy zdrojového kódu. 
 
@@ -58,7 +58,7 @@ K průběžnému nasazování z GitHubu, Bitbucket nebo Azure Repos můžete pou
 1. Vyberte svého autorizovaného poskytovatele správy zdrojů na stránce **centrum nasazení** a vyberte **pokračovat**. V případě GitHubu nebo Bitbucket můžete také vybrat **změnit účet** a změnit autorizovaný účet. 
    
    > [!NOTE]
-   > Pokud chcete použít Azure Repos, ujistěte se, že je vaše organizace Azure DevOps Services propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+   > Pokud chcete použít Azure Repos, ujistěte se, že je vaše organizace Azure DevOps Services propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
    
 1. Pro GitHub nebo Azure Repos na stránce **poskytovatel sestavení** vyberte **App Service sestavovací služba**a pak vyberte **pokračovat**. Bitbucket vždy používá službu sestavení App Service.
    
@@ -76,7 +76,7 @@ K průběžnému nasazování z GitHubu, Bitbucket nebo Azure Repos můžete pou
    - V Azure Repos vyberte organizaci, **projekt**, **úložiště**a **větev** **Azure DevOps**, které chcete průběžně nasadit.
      
      > [!NOTE]
-     > Pokud vaše organizace Azure DevOps není uvedená, ujistěte se, že je propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+     > Pokud vaše organizace Azure DevOps není uvedená, ujistěte se, že je propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
      
 1. Vyberte **pokračovat**.
    
@@ -92,7 +92,7 @@ K průběžnému nasazování z GitHubu, Bitbucket nebo Azure Repos můžete pou
 
 Pokud má váš účet potřebná oprávnění, můžete nastavit Azure Pipelines pro průběžné nasazování z GitHubu nebo Azure Repos. Další informace o nasazení prostřednictvím Azure Pipelines najdete v tématu [nasazení webové aplikace do Azure App Services](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps).
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné Azure App Service vytvořit průběžné doručování pomocí Azure Pipelines, vaše organizace Azure DevOps by měla mít následující oprávnění: 
 
@@ -110,11 +110,11 @@ Aby bylo možné Azure App Service vytvořit průběžné doručování pomocí 
 
 1. Na stránce **centrum nasazení** vyberte **GitHub** jako poskytovatele správy zdrojového kódu a vyberte **pokračovat**. V případě **GitHubu**můžete vybrat **změnit účet** a změnit autorizovaný účet.
 
-    ![Správa zdrojového kódu](media/app-service-continuous-deployment/deployment-center-src-control.png)
+    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="Snímek obrazovky se stránkou centra nasazení App Service.":::
    
 1. Na stránce **poskytovatel sestavení** vyberte možnost **Azure Pipelines (Preview)** a pak vyberte **pokračovat**.
 
-    ![poskytovatel sestavení](media/app-service-continuous-deployment/select-build-provider.png)
+    :::image type="content" source="media/app-service-continuous-deployment/select-build-provider.png" alt-text="Snímek obrazovky zobrazující stránku centra nasazení s vybraným Azure Pipelines (Preview)":::
    
 1. Na stránce **Konfigurace** v části **kód** vyberte **organizaci**, **úložiště**a **větev** , kterou chcete nasadit nepřetržitě, a vyberte **pokračovat**.
      
@@ -123,11 +123,11 @@ Aby bylo možné Azure App Service vytvořit průběžné doručování pomocí 
        
     V části **Build (sestavení** ) zadejte organizaci Azure DevOps, Project, Language Framework, kterou Azure Pipelines použít ke spouštění úloh sestavení, a pak vyberte **pokračovat**.
 
-   ![poskytovatel sestavení](media/app-service-continuous-deployment/build-configure.png)
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="Snímek obrazovky oddílu Build s příkladem textu v polích":::
 
 1. Po konfiguraci poskytovatele sestavení zkontrolujte nastavení na stránce **Souhrn** a pak vyberte **Dokončit**.
 
-   ![poskytovatel sestavení](media/app-service-continuous-deployment/summary.png)
+   :::image type="content" source="media/app-service-continuous-deployment/summary.png" alt-text="Snímek obrazovky s centrem nasazení zobrazující potvrzení a nasazení s zvýrazněným tlačítkem aktualizovat":::
    
 1. Nová potvrzení ve vybraném úložišti a větvi se teď do App Service nasadí průběžně. Potvrzení a nasazení můžete sledovat na stránce **centra nasazení** .
    
@@ -141,11 +141,11 @@ Aby bylo možné Azure App Service vytvořit průběžné doručování pomocí 
 
 1. Na stránce **centrum nasazení** vyberte **Azure Repos** jako poskytovatele správy zdrojového kódu a vyberte **pokračovat**.
 
-    ![Správa zdrojového kódu](media/app-service-continuous-deployment/deployment-center-src-control.png)
+    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="Snímek obrazovky se stránkou nasazení centra, která zobrazuje výběry průběžného nasazování (CI/CD).":::
 
 1. Na stránce **poskytovatel sestavení** vyberte možnost **Azure Pipelines (Preview)** a pak vyberte **pokračovat**.
 
-    ![Správa zdrojového kódu](media/app-service-continuous-deployment/azure-pipelines.png)
+    :::image type="content" source="media/app-service-continuous-deployment/azure-pipelines.png" alt-text="Snímek obrazovky centra nasazení zobrazující Azure Pipelines (Preview).":::
 
 1. Na stránce **Konfigurace** v části **kód** vyberte **organizaci**, **úložiště**a **větev** , kterou chcete nasadit nepřetržitě, a vyberte **pokračovat**.
 
@@ -154,11 +154,11 @@ Aby bylo možné Azure App Service vytvořit průběžné doručování pomocí 
 
    V části **Build (sestavení** ) zadejte organizaci Azure DevOps, Project, Language Framework, kterou Azure Pipelines použít ke spouštění úloh sestavení, a pak vyberte **pokračovat**.
 
-   ![poskytovatel sestavení](media/app-service-continuous-deployment/build-configure.png)
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="Snímek obrazovky s částí Build zobrazující organizaci Azure DevOps a pole projektu vyplněné příklady":::
 
 1. Po konfiguraci poskytovatele sestavení zkontrolujte nastavení na stránce **Souhrn** a pak vyberte **Dokončit**.  
      
-   ![poskytovatel sestavení](media/app-service-continuous-deployment/summary-azure-pipelines.png)
+   :::image type="content" source="media/app-service-continuous-deployment/summary-azure-pipelines.png" alt-text="Snímek obrazovky zobrazující vybraná nastavení na stránce Souhrn":::
 
 1. Nová potvrzení ve vybraném úložišti a větvi se teď do App Service nasadí průběžně. Potvrzení a nasazení můžete sledovat na stránce **centra nasazení** .
 
@@ -174,7 +174,7 @@ Chcete-li zakázat průběžné nasazování, vyberte možnost **Odpojit** v hor
 
 Pro aplikace pro Windows můžete průběžné nasazování nakonfigurovat ručně z cloudového úložiště Git nebo Mercurial, které portál přímo nepodporuje, jako je třeba [GitLab](https://gitlab.com/). Provedete to tak, že vyberete externí pole na stránce **centra nasazení** . Další informace najdete v tématu [Nastavení průběžného nasazování pomocí ručních kroků](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Prozkoumat běžné problémy s průběžným nasazováním](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Použití Azure Powershell](/powershell/azure/)

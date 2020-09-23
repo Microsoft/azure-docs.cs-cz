@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 347c539abbe90119a74394eeb748af12d30d0b15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569046"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904677"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití doporučení služby Azure Security Center k vylepšení zabezpečení
 
@@ -41,7 +41,7 @@ David, od zabezpečení IT společnosti Contoso, se už rozhodla připojit Secur
 
 Security Center automaticky analyzuje stav zabezpečení prostředků Azure společnosti Contoso a použije výchozí zásady zabezpečení. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří **doporučení** na základě ovládacích prvků nastavených v zásadách zabezpečení. 
 
-David spustí standardní úroveň zabezpečení Azure ve všech svých předplatných a získá kompletní sadu doporučení a funkcí zabezpečení, které jsou k dispozici. Jan také zaregistruje všechny existující místní servery, které ještě nebyly migrovány do cloudu, aby mohli využívat hybridní podporu Security Center napříč svými servery s [Windows](quick-onboard-windows-computer.md) a [Linux](quick-onboard-linux-computer.md) .
+David spustí zabezpečení Azure s povoleným Azure Defenderem v rámci všech svých předplatných a získá kompletní sadu doporučení a funkcí zabezpečení, které jsou k dispozici. Jan také zaregistruje všechny existující místní servery, které ještě nebyly migrovány do cloudu, aby mohli využívat hybridní podporu Security Center napříč svými [servery s Windows a Linux](quickstart-onboard-machines.md).
 
 Jan je vlastníkem úlohy v cloudu. Jan zodpovídá za použití bezpečnostních ovládacích prvků v souladu se zásadami zabezpečení společnosti Contoso. 
 
@@ -60,9 +60,9 @@ V rámci každodenních aktivit monitorování se Jan přihlásí k Azure a otev
 
 3. Jan se musí rozhodnout, která doporučení se mají zpracovat jako první. Takže Jan klikne na zabezpečené skóre a začne zpracovávat doporučení na základě toho, kolik IT vylepšuje své [zabezpečené skóre](secure-score-security-controls.md).
 
-4. Vzhledem k tomu, že Jan má spoustu připojených virtuálních počítačů a serverů, se Jan rozhodne soustředit se na **výpočetní výkon a aplikace**.
+4. Vzhledem k tomu, že Jan má spoustu připojených virtuálních počítačů, se Jan rozhodne zaměřit se na své počítače v [inventáři assetů](asset-inventory.md).
 
-5. Když Jan klikne na **výpočty a aplikace**, uvidí seznam doporučení a zpracuje je podle dopadu na zabezpečený výsledek.
+5. Když Jan otevře inventář assetů, zobrazí se seznam doporučení. Jan je zpracuje podle dopadu zabezpečeného skóre.
 
 6. Má Jan spousta internetových virtuálních počítačů a protože jejich porty jsou vystavené, jsou obavy, že by útočník mohl získat kontrolu nad servery. Takže Jan rozhodne použít [**přístup k virtuálnímu počítači za běhu**](security-center-just-in-time.md).
 

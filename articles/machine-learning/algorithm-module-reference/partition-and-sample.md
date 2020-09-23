@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477506"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898483"
 ---
 # <a name="partition-and-sample-module"></a>Oddíl a vzorový modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí oddílu a vzorového modulu můžete provést vzorkování pro datovou sadu nebo vytvořit oddíly z datové sady.
 
@@ -71,7 +71,7 @@ Tato možnost podporuje jednoduché náhodné vzorkování nebo náhodné vzorko
 
 1. Přidejte do svého kanálu **oddíl a vzorový** modul a připojte datovou sadu.
 
-1. **Oddíl nebo vzorový režim**: nastavte tuto možnost na **vzorkování**.
+1. **Oddíl nebo vzorový režim**: nastavte tuto možnost na  **vzorkování**.
 
 1. **Frekvence vzorkování**: zadejte hodnotu mezi 0 a 1. Tato hodnota určuje procento řádků ze zdrojové datové sady, které by měly být zahrnuty do výstupní datové sady.
 

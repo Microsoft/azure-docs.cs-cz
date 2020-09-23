@@ -11,22 +11,19 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660438"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904964"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 V tomto článku se naučíte, jak vytvářet, zkoumat a nasazovat automatizované modely strojového učení bez jediného řádku kódu v Azure Machine Learning Studiu.
 
->[!IMPORTANT]
-> Automatizované prostředí ML v nástroji Azure Machine Learning Studio je ve verzi Preview. Některé funkce nemusí být podporované nebo mají omezené možnosti.
-
- Automatizované Machine Learning je proces, ve kterém se pro vás vybere nejlepší algoritmus strojového učení, který se má použít pro vaše konkrétní data. Tento proces vám umožní rychle vygenerovat modely strojového učení. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
+Automatizované Machine Learning je proces, ve kterém se pro vás vybere nejlepší algoritmus strojového učení, který se má použít pro vaše konkrétní data. Tento proces vám umožní rychle vygenerovat modely strojového učení. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
  
 Příklad koncového na konci najdete v [kurzu Vytvoření modelu klasifikace pomocí automatizovaného rozhraní ML Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 
@@ -34,9 +31,9 @@ V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azu
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* Azure Machine Learning pracovní prostor s typem edice **Enterprise**. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  Pokud chcete upgradovat stávající pracovní prostor na edici Enterprise, přečtěte si téma [upgrade na Enterprise Edition](how-to-manage-workspace.md#upgrade).
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md). 
 
 ## <a name="get-started"></a>Začínáme
 
@@ -75,7 +72,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Zkontrolujte správnost formuláře **nastavení a náhled** . Formulář se inteligentně vyplní podle typu souboru. 
 
-        Pole| Popis
+        Pole| Description
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
@@ -102,14 +99,14 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Vyberte **vytvořit novou výpočetní** prostředky a nakonfigurujte výpočetní kontext pro tento experiment.
 
-    Pole|Popis
+    Pole|Description
     ---|---
     Název výpočetních prostředků| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Priorita virtuálního počítače| Virtuální počítače s nízkou prioritou jsou levnější, ale nezaručují výpočetní uzly. 
     Typ virtuálního počítače| Vyberte procesor nebo GPU pro typ virtuálního počítače.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
     Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů. Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
-    Rozšířená nastavení | Tato nastavení umožňují nakonfigurovat uživatelský účet a stávající virtuální síť pro svůj experiment. 
+    Pokročilá nastavení | Tato nastavení umožňují nakonfigurovat uživatelský účet a stávající virtuální síť pro svůj experiment. 
     
     Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
@@ -135,7 +132,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Volitelné Zobrazit nastavení konfigurace Přidání: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
 
-    Další konfigurace|Popis
+    Další konfigurace|Description
     ------|------
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#primary-metric).
     Vysvětlete nejlepší model | Tuto možnost vyberte, pokud chcete povolit nebo zakázat, aby se zobrazila vysvětlení doporučeného nejlepšího modelu. <br> Tato funkce není aktuálně k dispozici pro [určité algoritmy prognózy](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
@@ -157,7 +154,7 @@ V rámci datové sady můžete získat velké množství různých souhrnných s
 >[!NOTE]
 > Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
 
-Statistický údaj|Popis
+Statistický údaj|Description
 ------|------
 Příznak| Název sloupce, který je sumarizován.
 Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
@@ -186,7 +183,7 @@ Zahrnuje | Určuje, které sloupce se mají zahrnout do školení.
 Typ funkce| Změní typ hodnoty pro vybraný sloupec.
 Imputace s| Vyberte, která hodnota má ve vašich datech imputace chybějící hodnoty.
 
-![Formulář typu úkolu Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
+![Azure Machine Learning studia Custom featurization](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 
@@ -228,7 +225,7 @@ Automatizované strojové učení pomáhá s nasazením modelu bez psaní kódu:
     Pole| Hodnota
     ----|----
     Název| Zadejte jedinečný název pro vaše nasazení.
-    Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
+    Description| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
     Typ výpočetních prostředků| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)*.
     Název výpočetních prostředků| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
     Povolit ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.

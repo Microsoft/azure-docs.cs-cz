@@ -1,6 +1,6 @@
 ---
 title: Návrh hybridní identity – požadavky služby Multi-Factor Authentication na Azure | Microsoft Docs
-description: Při použití řízení podmíněného přístupu Azure Active Directory kontroluje konkrétní podmínky, které vyberete při ověřování uživatele, a před povolením přístupu k aplikaci. Po splnění těchto podmínek bude uživatel ověřený a povolený přístup k aplikaci.
+description: Díky řízení podmíněného přístupu Azure AD ověřuje konkrétní podmínky, které vyberete při ověřování uživatele, a před povolením přístupu k aplikaci.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8ddf372e234bab242e4b28ba53dce7dd68cc89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109296"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976053"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků služby Multi-Factor Authentication pro vaše řešení hybridní identity
 V tomto světě mobility s uživateli, kteří přistupují k datům a aplikacím v cloudu a z libovolného zařízení, se zabezpečení těchto informací stává prvořadým.  Každý den je k dispozici nový titulek týkající se porušení zabezpečení.  I když neexistuje žádná záruka na taková porušení, Multi-Factor Authentication poskytuje další úroveň zabezpečení, která jim může zabránit v těchto porušeních.
@@ -58,6 +58,6 @@ Po zodpovězení předchozích otázek budete mít přehled o tom, jestli je už
 ## <a name="next-steps"></a>Další kroky
 [Definice strategie přijetí hybridní identity](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 [Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

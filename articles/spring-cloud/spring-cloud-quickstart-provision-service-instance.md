@@ -5,23 +5,94 @@ author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 08/03/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: c91237e3a14c60e477f58be0bf62f634b462960b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 16d40c334d51a66df4a4d2d56e2fa2379dda3726
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951916"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905397"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Rychlý Start: zřízení služby pro jarní cloudovou službu Azure
 
-Pomocí Azure Portal nebo rozhraní příkazového řádku Azure můžete vytvořit instanci Azure pružinového cloudu.  Obě metody jsou vysvětleny v následujících postupech.
-## <a name="prerequisites"></a>Předpoklady
+::: zone pivot="programming-language-csharp"
+V tomto rychlém startu pomocí Azure CLI zřídíte instanci služby pružinového cloudu Azure.
 
-* [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+## <a name="prerequisites"></a>Požadavky
+
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
+* [Verze Azure CLI 2.0.67 nebo vyšší](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* [Git](https://git-scm.com/).
+
+## <a name="install-azure-cli-extension"></a>Instalace rozšíření Azure CLI
+
+Ověřte, jestli je verze Azure CLI 2.0.67 nebo novější:
+
+```azurecli
+az --version
+```
+
+Pomocí následujícího příkazu nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure:
+
+```azurecli
+az extension add --name spring-cloud
+```
+
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+
+1. Přihlaste se k Azure CLI.
+
+    ```azurecli
+    az login
+    ```
+
+1. Pokud máte více než jedno předplatné, vyberte ho, který chcete použít pro tento rychlý Start.
+
+   ```azurecli
+   az account list -o table
+   ```
+
+   ```azurecli
+   az account set --subscription <Name or ID of a subscription from the last step>
+   ```
+
+## <a name="provision-an-instance-of-azure-spring-cloud"></a>Zřízení instance Azure jarního cloudu
+
+1. Vytvořte [skupinu prostředků](../azure-resource-manager/management/overview.md) , která bude obsahovat službu pro jarní cloudovou službu Azure. Název skupiny prostředků může obsahovat alfanumerické znaky, podtržítka, závorky, spojovníky, tečku (s výjimkou konce) a znaků Unicode.
+
+   ```azurecli
+   az group create --location eastus --name <resource group name>
+   ```
+
+1. Zřízení instance služby jarního cloudu Azure Název instance služby musí být jedinečný, musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky. První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+
+    ```azurecli
+    az spring-cloud create -n <service instance name> -g <resource group name>
+    ```
+
+    Dokončení tohoto příkazu může trvat několik minut.
+
+1. Nastavte výchozí název skupiny prostředků a název instance služby, abyste tyto hodnoty nemuseli opakovaně zadávat v dalších příkazech.
+
+   ```azurecli
+   az configure --defaults group=<resource group name>
+   ```
+
+   ```azurecli
+   az configure --defaults spring-cloud=<service instance name>
+   ```
+::: zone-end
+
+::: zone pivot="programming-language-java"
+Pomocí Azure Portal nebo rozhraní příkazového řádku Azure můžete vytvořit instanci Azure pružinového cloudu.  Obě metody jsou vysvětleny v následujících postupech.
+## <a name="prerequisites"></a>Požadavky
+
+* [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
+* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
 * Volitelné [Instalace Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>Zřízení instance Azure jarního cloudu
@@ -59,7 +130,7 @@ Následující postup vytvoří instanci Azure jarního cloudu pomocí Azure Por
 
 Následující postup používá rozšíření Azure CLI ke zřízení instance služby Azure jaře Cloud.
 
-1. Přihlaste se k Azure CLI a vyberte své aktivní předplatné. Nezapomeňte zvolit aktivní předplatné, které je na seznamu povolených pro Azure jaře Cloud.
+1. Přihlaste se k Azure CLI a vyberte své aktivní předplatné.
 
     ```azurecli
     az login
@@ -85,9 +156,25 @@ Následující postup používá rozšíření Azure CLI ke zřízení instance 
 
     Nasazení instance služby bude trvat přibližně pět minut.
 ---
+::: zone-end
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud máte v úmyslu pokračovat k dalšímu rychlému startu v této sérii, tento krok přeskočte.
+
+V tomto rychlém startu jste vytvořili prostředky Azure, které budou nadále účtovat poplatky, pokud zůstanou ve vašem předplatném. Pokud nechcete pokračovat k dalšímu rychlému startu a neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků pomocí portálu nebo spuštěním následujícího příkazu v Cloud Shell:
+
+```azurecli
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
+```
+
+V tomto rychlém startu jste také nastavili výchozí název skupiny prostředků. Pokud nechcete pokračovat dalším rychlým startem, vymažte tuto výchozí hodnotu spuštěním následujícího příkazu rozhraní příkazového řádku:
+
+```azurecli
+az configure --defaults group=
+```
 
 ## <a name="next-steps"></a>Další kroky
+
 > [!div class="nextstepaction"]
 > [Nastavení konfiguračního serveru](spring-cloud-quickstart-setup-config-server.md)
-
-

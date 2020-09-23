@@ -4,61 +4,56 @@ description: Program pro účast partnerů v partnerském centru Microsoftu vám
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: palanis-MSFT
-ms.author: palanis
-ms.date: 05/19/2020
-ms.openlocfilehash: 4a7f3b143df4a177bba67d3556d224ec7c806244
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+author: vamahtan
+ms.author: vamahtan
+ms.date: 09/15/2020
+ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984625"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
-Můžete použít program pro spoluprodejci Microsoftu k přímé spolupráci s námi na společných prodejních příležitostech. Tento program vám pomůže dosáhnout obrovské komunity zákazníků a vytvořit nové prodejní příležitosti pro urychlení vašeho obchodního růstu.
+Pomocí programu společného prodeje můžete pracovat přímo se prodejci Microsoftu na společných prodejních příležitostech a odemykat významné další komerční a obchodní výhody, které se prodávají prostřednictvím komerčního tržiště.
 
-## <a name="co-sell-channels"></a>Kanály pro společný prodej
+Program pro společný prodej je dostupný pro **software sestavený s duševním vlastnictvím (IP),** který je možné zabalit, zabalené nabídky a pro **služby s integrovanými technologiemi Microsoftu**. Většina typů nabídek v programu společného prodeje je také k dispozici na komerčním webu Marketplace. Nabídky, které splňují další požadavky, se stanou **připravenými pro spoluprodejní** **motivovaní nebo spoluprodejně**.
 
-Vaše řešení můžete prodávat prostřednictvím tří kanálů:
+- **Nabídky společnosti** Microsoft pro vystavování jsou vystavené nabídkám pro prodej. Při práci s prodejci Microsoftu vám program pro spoluprodejní aplikace pomůže oslovit rozsáhlou komunitu spravovaných zákazníků Microsoftu, aby spolupracovali s prodejními příležitostmi, které urychlují růst vašeho podnikání.
 
-* Přímo zákazníkům v Microsoft AppSource nebo Azure Marketplace.
-* Ve spolupráci s ostatními partnery.
-* Ve spolupráci s prodejci Microsoftu.
+<ul>
 
-Program pro společný prodej je dostupný pro **služby** s integrovanými technologiemi Microsoftu a pro opakující se zabalené **řešení duševního vlastnictví (IP)**.
+![Diagram znázorňující, jakým způsobem se dá společný prodej při sdílení, přijímání a přijímání potenciálních zákazníků spravovaných společností Microsoft.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
+</ul>
 
-Některá řešení protokolu IP se můžou kvalifikovat pro Microsoft prodávající pobídky, když se úspěšně prodávají a nasazují s prodejními týmy pole Microsoftu.
+- **Společný prodej motivovaní** Řešení IP můžou získat pobídky pro prodejce v terénu, když se prodávají ve spolupráci s prodejními týmy Microsoftu, a navíc k výhodám Marketplace uvedeným níže.</li></ul>
 
-![Diagram znázorňující, jakým způsobem se dá společný prodej při sdílení, přijímání a přijímání potenciálních zákazníků spravovaných společností Microsoft.](./media/marketplace-publishers-guide/marketplace-co-sell.png)
+## <a name="marketplace-benefits-for-incentivized-offers"></a>Výhody Marketplace pro nabídky motivovaní
 
-## <a name="azure-ip-co-sell-incentivized-offers"></a>Azure IP – spoluprodejní nabídky motivovaní
+Nabídky, které dosahují **společného prodeje Azure IP motivovaní** stav získat tyto další výhody pro Marketplace:
 
-Nabídky v programu společného prodeje jsou buď připravené k **prodeji** , nebo **motivovaní**, a to v závislosti na požadavcích, které splňují.
-
-Řešení Azure IP, která dosáhnou **společného prodejního stavu motivovaní** odemkněte tyto výhody:
-
-* Poplatek za službu Marketplace se snižuje z 20% na 10% fakturovaného prodeje. Tato sleva se vztahuje na nabídky IaaS a SaaS prodávané prostřednictvím komerčního tržiště Microsoftu. Další podrobnosti najdete v tématu [snížený poplatek za službu](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) .
-* Partneři poskytovatele Cloud Solution Provider (CSP) obdrží 10% prodejní motiv pro prodej nabídek SaaS a IaaS. Další informace o CSP najdete v [programu Cloud Solution Provider](cloud-solution-providers.md).
-* Vaše nabídky Azure v rámci společného prodeje motivovaní budou přispívat ke závazku ohledně využití Azure v Azure, když budou zakoupeny na komerčním webu Marketplace. Způsobilí zákazníci uvidí nabídku označenou jako **zvýhodněné zvýhodnění Azure nárok** na online obchody. Další podrobnosti najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md) .
-* Nabídky obdrží v online obchodech upřednostňovaná řešení Microsoftu. Označení propaguje nabídky kvality, výkonu a možnosti řešení potřeb zákazníků v určité odvětví vertikálně nebo v oblasti řešení. Přečtěte si další informace o [preferovaných řešeních v Microsoft AppSource a Azure Marketplace](preferred-solutions.md).
+* Poplatek za službu Marketplace se snižuje z 20% na 10%. Tato sleva se vztahuje na vaši nabídku IaaS nebo SaaS prodanou prostřednictvím komerčního tržiště. Další podrobnosti najdete v tématu [snížený poplatek za službu](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) .
+* Partneři poskytovatele Cloud Solution Provider (CSP) obdrží 10% pobídky k prodeji vaší nabídky IaaS nebo SaaS. Přečtěte si další informace o programu CSP v [programu Cloud Solution Provider](cloud-solution-providers.md).
+* Prodej vaší nabídky prostřednictvím komerčního tržiště přispěje ke svým zákaznickým závazkům za využití Azure. Oprávnění zákazníci uvidí na webu Azure Portal nabídku označenou jako **nárok na zvýhodněné výhody Azure** . Další podrobnosti najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md) .
+* Vaše nabídka dostane na prodejní místa **označení "upřednostňovaná řešení"** . Označení propaguje nabídky kvality, výkonu a možnosti řešení potřeb zákazníků v určité odvětví vertikálně nebo v oblasti řešení. Přečtěte si další informace o [preferovaných řešeních v Microsoft AppSource a Azure Marketplace](preferred-solutions.md).
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Společný prodej kroků a požadavků publikování
 
-V následující tabulce jsou uvedené kroky a požadavky, které vám nabídnou nabízený nebo společný prodej motivovaní.
+V následující tabulce jsou uvedené kroky a požadavky pro získání nabídky na webu Marketplace, které jsou připravené nebo společně prodávány motivovaní. Ne všechny typy nabídek z komerčního tržiště je možné v partnerském centru ještě konfigurovat pro společný prodej. Nejnovější informace najdete [v tématu možnost společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell) . 
 
-|Krok    |Typ řešení    |Požadavky    |Stav společného prodeje    |
+|Krok    |Typ nabídky    |Požadavky    |Stav společného prodeje    |
 |----    |-------------    |------------    |---------------   |
-|<ol><li> Vytvořte si obchodní profil v partnerském centru a publikujte nabídku na komerčním webu Marketplace.</li>|Protokol IP a služby|<ul><li>Tato nabídka splňuje požadavky na publikování na komerčním webu Marketplace.</li><li>Máte kompletní obchodní profil v partnerském centru.</li>|Nepřipraveno|
-|<ol start=2><li>Volitelné: výslovný souhlas s kanálem poskytovatele Cloud Solution Provider.</li>|Protokol IP a služby|<ul><li>Tato nabídka je nakonfigurovaná pro prodejce CSP. Viz [program Cloud Solution Provider](cloud-solution-providers.md) .</li>|Nepřipraveno|
-|<ol start=3><li>Odeslat požadované spoluprodejní materiály</li>|IP adresa|<ul><li>Nabídka má obchodní kontakt pro každou oprávněnou zemi.</li><li>Požadované množství materiálu: zákaznická strana 1 – pager, prezentační balíček pro zákazníky (volitelné), adresa URL pro úvodní stránku řešení, adresa URL kanálu pro sociální média nebo jiná (například Případová studie).|Připravený společný prodej|
-||Služby|<ul><li>Nabídka má obchodní kontakt pro každou oprávněnou zemi.</li><li>Požadované množství materiálu: zákaznická strana 1 – pager, prezentační balíček pro zákazníky (volitelné), adresa URL pro úvodní stránku řešení, adresa URL kanálu pro sociální média nebo jiná (například Případová studie).</li><li>Aktivní kompetence Gold</li>|Připravený společný prodej|
-|<ol start=4lo><li>Nárok na pobídky prodejců Microsoftu</li>|Opravňující Azure IP s motivací|<ul><li>Na úrovni organizace naplní nebo překročí prahovou hodnotu $100 000 USD ACR TTM (na konci dvanácti měsíců) nebo, pokud je nabídka transakční, se zobrazí prahová hodnota pro fakturované tržby $100 000 USD. Prahová hodnota může být splněna kombinací řešení Azure.</li><li>Řešení musí být sestaveno s více než 50% opakovaně možného kódu IP v Azure.</li>|Společný prodej motivovaní|
-||Business Applications s nárokem na motivaci|<ul><li>Máte aktivní registraci na ISV Connect Premium úrovně.</li>|Společný prodej motivovaní|
+|<ol start=1><li> Vytvořte si účet v partnerském centru a publikujte nabídku na komerčním webu Marketplace.</li>|Vše|<li>Tato nabídka splňuje požadavky na publikování na komerčním webu Marketplace.</li><li>Máte kompletní obchodní profil v partnerském centru.</li>|Nepřipraveno|
+|<ol start=2><li>Odeslat požadované spoluprodejní materiály.</li>|Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Nahrajte požadované materiály v partnerském centru](#how-to-submit-co-sell-materials-in-partner-center): <ul><li>Prodejní kontaktní osoba pro každou oprávněnou zemi.</li><li>Vyúčtování materiálů: zákaznická prezentace na jednom pageru, prezentační balíček pro zákazníky (volitelné), adresa URL pro úvodní stránku řešení, adresa URL kanálu pro sociální média nebo jiná (například Případová studie).|Připravený společný prodej|
+||Nabídky protokolu IP *bez* [možnosti společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>Požadavek na [spolupráci s cloudovým specialistem](https://partner.microsoft.com/campaigns/ced-nomination-form/) , který poskytne požadovanou dokumentaci pro spoluprodej.|Připravený společný prodej|
+||Konzultační služby|<li>Požadavek na [spolupráci s cloudovým specialistem](https://partner.microsoft.com/campaigns/ced-nomination-form/) , který poskytne požadovanou dokumentaci pro spoluprodej.</li><li>Aktivní kompetence Gold.</li>|Připravený společný prodej|
+|<ol start=3><li>Nárok na pobídky pro společný prodej IP</li>|Aplikace Azure, kontejnery Azure, IoT Edge moduly, SaaS, virtuální počítače|Po dosažení připraveného společného prodeje jsou k dispozici dva další požadavky: <ul> Požadavek 1: dosáhnete těchto:<ul><li>*Na úrovni organizace:* vyhovět nebo překročit $100 000 USD výnosů za Azure spotřebovaných za poslední 12 měsíců.</li><li>*Na úrovni nabídky:* účtované výnosy z kumulativního tržiště $100 000 USD.</li></ul><br>Požadavek 2: v Azure musí běžet více než 50% infrastruktury vaší nabídky:<ul><li>Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): nahrání diagramu architektury se společnými prodeji dokumentů v partnerském centru pro kontrolu.</li><li>Nabídky protokolu IP *bez* [možnosti společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): nahrání diagramu architektury do OCP GTM.|Azure IP – společný prodej motivovaní|
+||Dynamics|<li>Máte aktivní registraci na ISV Connect Premium úrovně.</li>|Business Applications spoluprodeji motivovaní|
 
-## <a name="co-sell-your-offer"></a>Společný prodej vaší nabídky
+## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Jak odeslat materiály pro spoluprodej v partnerském centru
 
-Zahajte svůj společný prodej přímo v partnerském centru, a to podle následujících kroků. Další podrobnosti najdete v tématu [možnost společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md).
+Svůj společný prodej přímo v partnerském centru začněte podle následujících kroků. Další podrobnosti najdete v tématu [možnost společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md).
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
 1. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview**a pak vyberte nabídku, kterou chcete společně prodávat.
@@ -70,7 +65,7 @@ Zahajte svůj společný prodej přímo v partnerském centru, a to podle násle
 
     [![Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
 
-1. Poskytněte podrobnosti o vaší nabídce a odešlete materiály do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky.
+1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky.
  
    [![Tento obrázek ukazuje část dokumenty na kartě spoluprodej.](./media/co-sell/co-sell-documents-section.png)](./media/co-sell/co-sell-documents-section.png#lightbox)
 
@@ -86,4 +81,4 @@ Zahajte svůj společný prodej přímo v partnerském centru, a to podle násle
 
 * Přečtěte si další informace o [prodeji s Microsoftem](https://partner.microsoft.com/membership/sell-with-microsoft).
 * Přečtěte si další informace o [možnosti společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md).
-* Přečtěte si [příručku pro spoluprodejní partnery](https://aka.ms/Co-sellPartnerengagementguidepartnerlink) (PDF).
+* Přečtěte si [společný prodej PlayBook](https://aka.ms/Co-sellPartnerengagementguidepartnerlink) (PDF).

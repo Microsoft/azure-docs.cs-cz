@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 45d3ec8dc5d819464046e40bab22491a4bccde63
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461319"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904851"
 ---
 # <a name="planning-and-operations-guide"></a>Průvodce plánováním a provozem
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -40,7 +40,7 @@ V závislosti na velikosti a struktuře vaší organizace můžou službu Securi
 
 ![Role](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Například:
+Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Příklad:
 
 **Jeff (vlastník úloh)**
 
@@ -120,7 +120,7 @@ Zásady Security Center obsahují následující součásti:
 - [Shromažďování dat:](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) Zřizování agentů a nastavení shromažďování dat.
 - [Zásady zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-policies): [Azure Policy](../governance/policy/overview.md) , které určují, které ovládací prvky se monitorují a doporučují Security Center, nebo pomocí Azure Policy vytvořit nové definice, definovat další zásady a přiřazovat zásady napříč skupinami pro správu.
 - [E-mailová oznámení:](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) Kontakty zabezpečení a nastavení oznámení.
-- [Cenová úroveň:](https://docs.microsoft.com/azure/security-center/security-center-pricing) Výběr cenové úrovně Free nebo Standard, která určuje, jaké funkce Security Center jsou k dispozici pro prostředky v oboru (u toho je možné určit předplatná, skupiny prostředků a pracovní prostory).
+- [Cenová úroveň](https://docs.microsoft.com/azure/security-center/security-center-pricing): s Azure Defenderem nebo bez něj určíte, které Security Center funkce jsou dostupné pro prostředky v oboru (dá se zadat pro předplatná, skupiny prostředků a pracovní prostory).
 
 > [!NOTE]
 > Zadáním smlouvy o zabezpečení zajistíte, že Azure v případě incidentu zabezpečení bude moci kontaktovat správného člověka ve vaší organizaci. Další informace o povolení tohoto doporučení najdete v článku [Zadání podrobností o kontaktu zabezpečení do Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details).
@@ -158,12 +158,12 @@ Na webu Azure Portal můžete procházením zobrazit seznam pracovních prostor�
 U pracovních prostorů vytvořených službou Azure Security Center se data uchovávají po dobu 30 dnů. U existujících pracovních prostorů uchovávání závisí na cenové úrovni pracovního prostoru. Pokud chcete, můžete použít také existující pracovní prostor.
 
 > [!NOTE]
-> Microsoft se pevně zavazuje, že soukromí a bezpečnost těchto dat bude chránit. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb. Další informace o zpracování dat a ochraně osobních údajů najdete v článku [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md).
+> Společnost Microsoft poskytuje silné závazky na ochranu soukromí a zabezpečení těchto dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb. Další informace o zpracování dat a ochraně osobních údajů najdete v článku [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md).
 >
 
 ## <a name="onboarding-non-azure-resources"></a>Připojení prostředků mimo Azure
 
-Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Další informace o připojení prostředků mimo Azure najdete v tématu popisujícím [Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-onboarding#onboard-non-azure-computers).
+Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Další informace o připojování prostředků mimo Azure najdete v tématu připojení [počítačů mimo Azure](quickstart-onboard-machines.md) .
 
 ## <a name="ongoing-security-monitoring"></a>Průběžné sledování zabezpečení
 Po počáteční konfiguraci a uplatnění doporučení služby Security Center je dalším krokem zvážení provozních procesů Security Center.
@@ -191,7 +191,7 @@ Měli byste také pravidelně monitorovat stávající prostředky pro změny ko
 
 V rámci operací zabezpečení byste měli zavést také preventivní opatření pro omezení přístupu k virtuálním počítačům a řízení aplikací spuštěných na virtuálních počítačích. Uzamčením příchozího provozu do virtuálních počítačů Azure snížíte vystavení útokům a zároveň zajistíte snadný přístup pro připojení k virtuálním počítačům v případě potřeby. K posílení přístupu k virtuálním počítačům použijte funkci přístupu k [virtuálním počítačům za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) .
 
-Můžete použít [Adaptivní řízení aplikací](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) k omezení, které aplikace se můžou spouštět na vašich virtuálních počítačích, které se nacházejí v Azure. Kromě dalších výhod to pomůže posílit vaše virtuální počítače proti malwaru. Pomocí strojového učení Security Center analyzuje procesy běžící na virtuálním počítači, které vám pomůžou vytvořit pravidla přidávání na seznam povolených.
+Můžete použít [Adaptivní řízení aplikací](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) k omezení, které aplikace se můžou spouštět na vašich virtuálních počítačích, které se nacházejí v Azure. Kromě dalších výhod to pomůže posílit vaše virtuální počítače proti malwaru. Pomocí strojového učení Security Center analyzuje procesy spuštěné ve virtuálním počítači, které vám pomůžou vytvořit pravidla pro výpisy seznamu povolených.
 
 
 ## <a name="incident-response"></a>Reakce na incidenty
@@ -199,7 +199,7 @@ Security Center vyhledává nové hrozby a upozorňuje vás na ně. Organizace b
 
 I když tento článek nemá záměr, který vám pomůže vytvořit vlastní plán reakce na incidenty, budeme v cloudovém životním cyklu používat Microsoft Azure odpověď zabezpečení jako základ pro fáze reakce na incidenty. Jednotlivé fáze jsou uvedeny v následujícím diagramu:
 
-![Podezřelá aktivita](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![Fáze reakce na incidenty v životním cyklu cloudu](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > Jako referenci při sestavování vlastního plánu můžete využít příručku [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) organizace National Institute of Standards and Technology (NIST).

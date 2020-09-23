@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 057cbd5d42eafaa693abc418de62c3ae03a6b995
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508232"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984580"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Windows
 
@@ -36,7 +36,7 @@ Přístup k řídicímu panelu Security Center získáte výběrem možnosti **S
 
 Security Center jde nad rámec zjišťování dat a poskytuje doporučení k problémům, které detekuje. Pokud se například nasadil virtuální počítač bez připojené skupiny zabezpečení sítě, Security Center zobrazí doporučení s nápravnými kroky, které můžete použít. Získáte automatizovanou nápravu, aniž byste opustili kontext Security Center.  
 
-![Doporučení](./media/tutorial-azure-security/recommendations.png)
+![Snímek obrazovky zobrazující stránku doporučení, která obsahuje popis, zdroj, stav a závažnost doporučení.](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Nastavení shromažďování dat
 

@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649276"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905025"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se naučíte monitorovat Azure Machine Learning spouštění a zobrazovat jejich protokoly. Než budete moct zobrazit protokoly, musíte je nejdřív povolit. Další informace najdete v tématu [Povolení protokolování ve zkušebních běhůch Azure ml](how-to-track-experiments.md).
 
@@ -129,7 +129,7 @@ Pomocí následujících metod v rozhraních API protokolování můžete mít v
 
 Pokud se chcete dozvědět, jak používat Azure Machine Learning, zkuste tyto další kroky:
 
-* Přečtěte si, jak [sledovat experimenty a povolit protokoly v návrháři Azure Machine Learning (Preview)](how-to-track-designer-experiments.md).
+* Naučte se [sledovat experimenty a protokoly povolit v návrháři Azure Machine Learning](how-to-track-designer-experiments.md).
 
-* Podívejte se na příklad, jak registrovat nejlepší model a nasadit ho v kurzu, [Naučte si model klasifikace imagí pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
+* Příklad postupu při registraci nejvhodnějšího modelu a jeho nasazení najdete v kurzu [Trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md).
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 64be7f01cc9cc7ae77af5386be7a11cd16785dd1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065875"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882402"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura připojení v Azure Database for PostgreSQL
 Tento článek popisuje architekturu připojení Azure Database for PostgreSQL a také způsob, jakým se přesměruje přenos do vaší Azure Database for PostgreSQL instance databáze od klientů v rámci i mimo Azure.
@@ -19,7 +19,7 @@ Tento článek popisuje architekturu připojení Azure Database for PostgreSQL a
 ## <a name="connectivity-architecture"></a>Architektura připojení
 Připojení k vašemu Azure Database for PostgreSQL se naváže prostřednictvím brány zodpovědné za směrování příchozích připojení do fyzického umístění serveru v našich clusterech. Tok přenosů znázorňuje následující diagram.
 
-![Přehled architektury připojení](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+:::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="Přehled architektury připojení":::
 
 Když se klient připojí k databázi, získá připojovací řetězec, který se připojí k bráně. Tato brána má veřejnou IP adresu, která naslouchá na portu 5432. V rámci provozu databázového clusteru se předají příslušné Azure Database for PostgreSQL. Aby bylo možné připojit se k serveru, například z podnikových sítí, je nutné otevřít bránu firewall na straně klienta, aby odchozí přenosy umožňovaly přístup k našim branám. Níže můžete najít úplný seznam IP adres, které používají naše brány v jednotlivých oblastech.
 
@@ -35,7 +35,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Brazil South | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Střední Kanada |40.85.224.249  |
 | Kanada – východ | 40.86.226.166    |
-| Střední USA | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
+| USA – střed | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | Čína – východ | 139.219.130.35    |
 | Čína – východ 2 | 40.73.82.1  |
 | Čína – sever | 139.219.15.17    |

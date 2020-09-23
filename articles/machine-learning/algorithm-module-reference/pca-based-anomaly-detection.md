@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 0498823e1b730db6425d255b6de4b826dd05a6a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749487"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898458"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>Modul detekce anomálií založený na DPS
 
-Tento článek popisuje, jak použít modul pro detekci anomálií založený na DPS v Návrháři Azure Machine Learning (Preview) k vytvoření modelu detekce anomálií založeného na analýze základní součásti (DPS).
+Tento článek popisuje, jak použít modul pro detekci anomálií založený na DPS v Návrháři Azure Machine Learning k vytvoření modelu detekce anomálií založeného na analýze základní součásti (DPS).
 
 Tento modul vám pomůže sestavit model ve scénářích, kde je snadné získat školicí data z jedné třídy, jako jsou například platné transakce, ale obtížné získat dostatečné vzorky cílových anomálií. 
 
@@ -109,4 +109,4 @@ U každého nového vstupu detektor anomálií nejprve vypočítá svou projekci
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
 
-Seznam chyb specifických pro moduly návrháře naleznete v tématu [výjimky a kódy chyb pro návrháře (Preview)](designer-error-codes.md) .
+Seznam chyb specifických pro moduly návrháře naleznete v tématu [výjimky a kódy chyb pro návrháře](designer-error-codes.md) .

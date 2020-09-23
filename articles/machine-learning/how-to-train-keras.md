@@ -11,15 +11,15 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1917ded59275c7a456e8d2fd25412afc91a1327c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7c049b56bd72a0b59862e655da3b79f63c264fbf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650640"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882792"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Proveďte výuku a zaregistrujte model klasifikace Keras pomocí Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se dozvíte, jak vytvořit model klasifikace Keras sestavený na TensorFlow pomocí Azure Machine Learning. Používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí neuronové sítě (DNN) sestavené pomocí [Keras Python Library](https://keras.io) běžící nad [TensorFlow](https://www.tensorflow.org/overview).
 
