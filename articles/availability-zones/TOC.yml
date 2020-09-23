@@ -95,6 +95,10 @@
       items:
         - name: Co jsou Zóny Edge?
           href: ../networking/edge-zones-overview.md
+    - name: Dokumentace ke službě Azure Orbital
+      items:
+        - name: Co je Azure Orbital?
+          href: ../networking/azure-orbital-overview.md
 - name: Zotavení po havárii
   items:
     - name: Použití Azure Site Recovery

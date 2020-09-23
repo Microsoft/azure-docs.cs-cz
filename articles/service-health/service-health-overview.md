@@ -1,14 +1,14 @@
 ---
 title: Přehled Service Health | Microsoft Docs
-description: Individuální informace o tom, jak jsou vaše aplikace Azure ovlivněny aktuálními a budoucími problémy a údržbou služeb Azure.
+description: Přečtěte si, jak vám Service Health poskytne přizpůsobitelný řídicí panel, který sleduje stav služeb Azure v oblastech, ve kterých se používají.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089596"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967782"
 ---
 # <a name="service-health-overview"></a>Přehled Service Health
 

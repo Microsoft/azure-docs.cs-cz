@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378997"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983286"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault základní koncepty
 
-Azure Key Vault je nástroj pro zabezpečené ukládání tajných kódů a přístup k nim. Tajný kód je cokoli, k čemu chcete pečlivě kontrolovat přístup, třeba klíče rozhraní API, hesla nebo certifikáty. Trezor je logická skupina tajných kódů.
+Azure Key Vault je cloudová služba pro bezpečné ukládání a přístup k tajným klíčům. Tajný kód je cokoli, ke kterému chcete přísně řídit přístup, jako jsou klíče rozhraní API, hesla, certifikáty nebo kryptografické klíče. Služba Key Vault podporuje dva typy kontejnerů: trezory a spravované fondy HSM. Trezory podporují ukládání softwaru a klíčů, tajných kódů a certifikátů, které jsou zálohovány modulem HSM. Spravované fondy HSM podporují jenom klíče zálohované modulem HSM. Úplné podrobnosti najdete v tématu [přehled Azure Key Vault REST API](about-keys-secrets-certificates.md) .
 
 Tady jsou další důležité výrazy:
 
@@ -28,6 +28,12 @@ Tady jsou další důležité výrazy:
 - **Vlastník trezoru:** Vlastník trezoru může vytvořit trezor klíčů a získat k němu úplný přístup a kontrolu. Vlastník trezoru může také nastavit auditování a protokolování toho, kdo získává přístup ke klíčům a tajným klíčům. Správci můžou řídit životní cyklus klíčů. Můžou přejít na novou verzi klíče, zálohovat ho a provádět související úlohy.
 
 - **Uživatel trezoru:** Uživatel trezoru může provádět akce s prostředky uvnitř trezoru, pokud mu vlastník trezoru udělí uživatelský přístup. Dostupné akce závisí na udělených oprávněních.
+
+- **Spravované správce HSM**: uživatelům, kteří mají přiřazenou roli správce, má úplnou kontrolu nad spravovaným fondem HSM. Můžou vytvořit další přiřazení rolí, která budou delegovat řízený přístup jiným uživatelům.
+
+- **Spravovaný kryptografický pracovník HSM/uživatel**: předdefinované role, které se obvykle přiřazují uživatelům nebo instančním objektům, které budou provádět kryptografické operace pomocí klíčů ve spravovaném modulu HSM. Kryptografický uživatel může vytvořit nové klíče, ale nemůže odstranit klíče.
+
+- **Spravované šifrování kryptografické služby HSM**: Vestavěná role, která se obvykle přiřazuje identitě spravované služby (např. účet úložiště) pro šifrování neaktivních dat pomocí klíče spravovaného zákazníkem.
 
 - **Prostředek:** Prostředek je spravovatelná položka, která je k dispozici prostřednictvím Azure. Běžnými příklady jsou virtuální počítače, účet úložiště, Webová aplikace, databáze a virtuální síť. Existuje spousta dalších.
 
@@ -59,7 +65,7 @@ Následující tabulka vám pomůže lépe porozumět tomu, jak může Key Vault
 | --- | --- | --- |
 | Vývojář aplikace Azure |"Chci napsat aplikaci pro Azure, která používá klíče pro podepisování a šifrování. Ale chci, aby tyto klávesy byly externí z mé aplikace, aby bylo řešení vhodné pro geograficky distribuovanou aplikaci. <br/><br/>Chci, aby tyto klíče a tajné klíče byly chráněné, bez nutnosti psát vlastní kód. Chci také, aby tyto klíče a tajné kódy byly snadno použitelné z mých aplikací s optimálním výkonem. " |√ Klíče jsou uložené v trezoru, a když je potřeba, volají se identifikátorem URI.<br/><br/> √ Klíče jsou chráněné systémem Azure pomocí standardních algoritmů, délek klíčů a modulů hardwarového zabezpečení.<br/><br/> √ Klíče se zpracovávají v modulech HSM umístěných ve stejných datových centrech jako aplikace. Tato metoda poskytuje větší spolehlivost a nižší latenci, než kdyby byly klíče umístěné v samostatném umístění, například místně. |
 | Vývojář softwaru jako služby (SaaS) |"Nechci mít odpovědnost ani potenciální odpovědnost za klíče tenanta a tajné klíče pro moje zákazníky. <br/><br/>Chci, aby si zákazníci mohli vlastnit a spravovat svoje klíče, abyste se mohli soustředit na to, co je nejlepší, což poskytuje základní softwarové funkce. |√ Zákazníci můžou svoje klíče importovat do systému Azure a spravovat je. Když aplikace SaaS potřebuje provést kryptografické operace pomocí klíčů zákazníků, Key Vault tyto operace jménem aplikace. Aplikace nevidí klíče zákazníků. |
-| Ředitel pro bezpečnost |"Chci vědět, že naše aplikace vyhovují standardu FIPS 140-2 úrovně 2 HSM pro zabezpečenou správu klíčů. <br/><br/>Chci se ujistit, že moje organizace má kontrolu nad životním cyklem klíčů a může monitorovat jejich využití. <br/><br/>I když používáme více služeb a prostředků Azure, chci spravovat klíče z jednoho místa v Azure. " |√ Moduly HMS jsou ověřené podle standardu FIPS 140-2 Level 2.<br/><br/>√ Key Vault je navržený tak, aby společnost Microsoft vaše klíče neznala ani neextrahovala.<br/><br/>√ Využití klíčů se protokoluje téměř v reálném čase.<br/><br/>√ Trezor poskytuje jednotné rozhraní – bez ohledu na to, kolik trezorů v Azure máte, které oblasti podporují a které aplikace je používají. |
+| Ředitel pro bezpečnost |"Chci vědět, že naše aplikace vyhovují standardu FIPS 140-2 úrovně 2 nebo FIPS 140-2 úrovně 3 HSM pro zabezpečenou správu klíčů. <br/><br/>Chci se ujistit, že moje organizace má kontrolu nad životním cyklem klíčů a může monitorovat jejich využití. <br/><br/>I když používáme více služeb a prostředků Azure, chci spravovat klíče z jednoho místa v Azure. " |√ Vyberte **trezory** pro standard FIPS 140-2 úrovně 2 HSM.<br/>√ Zvolit **spravované fondy HSM** pro ověření standardu FIPS 140-2 Level 3 HSM.<br/><br/>√ Key Vault je navržený tak, aby společnost Microsoft vaše klíče neznala ani neextrahovala.<br/>√ Využití klíčů se protokoluje téměř v reálném čase.<br/><br/>√ Trezor poskytuje jednotné rozhraní – bez ohledu na to, kolik trezorů v Azure máte, které oblasti podporují a které aplikace je používají. |
 
 Trezory klíčů může vytvářet a používat každý, kdo má předplatné Azure. I když Key Vault výhody vývojářů a správců zabezpečení, dá se implementovat a spravovat správce organizace, který spravuje další služby Azure. Tento správce se například může přihlásit pomocí předplatného Azure, vytvořit trezor pro organizaci, do které se mají ukládat klíče, a pak zodpovídá za provozní úlohy, jako jsou tyto:
 
@@ -77,7 +83,8 @@ Vývojáři také mohou spravovat klíče přímo, pomocí rozhraní API. Dalš�
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se [zabezpečit svůj trezor](secure-your-key-vault.md).
+- Naučte se [zabezpečit svůj trezor](secure-your-key-vault.md).
+- Přečtěte si, jak [zabezpečit spravované fondy HSM](../managed-hsm/access-control.md) .
 
 <!--Image references-->
 [1]: ../media/key-vault-whatis/AzureKeyVault_overview.png

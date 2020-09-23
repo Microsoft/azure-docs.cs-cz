@@ -1,6 +1,6 @@
 ---
-title: Přehled zásad uchovávání dat – Azure SQL Edge (Preview)
-description: Další informace o zásadách uchovávání dat ve službě Azure SQL Edge (Preview)
+title: Přehled zásad uchovávání dat – Azure SQL Edge
+description: Další informace o zásadách uchovávání dat v Azure SQL Edge
 keywords: SQL Edge, uchovávání dat
 services: sql-edge
 ms.service: sql-edge
@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 3649d4f77e5b57ab14accacd87fbaa867ba2742f
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: bb059a946c03f41e5b65944eec67070f84ee6b08
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550627"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976342"
 ---
-# <a name="data-retention-policy-overview"></a>Přehled zásad uchovávání dat
+# <a name="data-retention-overview"></a>Přehled uchovávání dat
 
 Shromažďování a ukládání dat z připojených zařízení IoT je důležité pro zajištění a získání provozních a obchodních přehledů. Ale vzhledem k objemu dat, která pocházejí z těchto zařízení, je důležité, aby organizace pečlivě naplánovaly množství dat, která chtějí uchovávat, a v jakém členitosti. I když je zachování všech dat ve všech členitosti žádoucí, není vždy praktické. Objem dat, která je možné uchovat, se navíc omezuje na množství úložiště dostupného na zařízeních IoT nebo Edge. 
 
-Azure SQL Edge (Preview) CTP 2.3 přidává novou funkci, která správcům databází umožňuje definovat zásady uchovávání dat v databázi SQL Edge a v jejích podkladových tabulkách. Po definování zásad uchovávání dat se spustí úloha systému na pozadí pro vyprázdnění zastaralých (starých) dat z tabulek uživatelů. 
+Správci databáze Azure SQL Edge mohou definovat zásady uchovávání dat v databázi SQL Edge a jejích podkladových tabulkách. Po definování zásad uchovávání dat se spustí úloha systému na pozadí pro vyprázdnění zastaralých (starých) dat z tabulek uživatelů. 
 
 > [!Note]
 > Data po vyprázdnění z tabulky nelze obnovit. Jediným možným způsobem obnovení vyčištěných dat je obnovení databáze ze starší zálohy.
@@ -40,6 +40,7 @@ Po dokončení konfigurace uchovávání dat pro tabulku se spustí úloha na po
 
 - Uchovávání dat, pokud je povoleno, je automaticky zakázáno, pokud je databáze obnovena z úplného zálohování nebo je znovu připojena. 
 - Pro dočasnou tabulku historie nelze povolit uchovávání dat.
+- Colomn filtru uchovávání dat nelze změnit. Chcete-li změnit sloupec, zakažte uchovávání dat v tabulce.  
 
 ## <a name="next-steps"></a>Další kroky
 

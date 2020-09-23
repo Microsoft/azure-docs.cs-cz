@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640833"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968399"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se mají odeslat. Tento článek popisuje, jak vytvořit pravidlo shromažďování dat pro shromažďování dat z virtuálních počítačů pomocí agenta Azure Monitor.
@@ -26,7 +26,7 @@ Pokud chcete pro virtuální počítač použít DCR, vytvořte přidružení pr
 
 Představte si například prostředí se sadou virtuálních počítačů, na kterých běží obchodní aplikace, a další spuštěné SQL Server. Můžete mít jedno výchozí pravidlo shromažďování dat, které se vztahuje na všechny virtuální počítače a samostatná pravidla shromažďování dat, která shromažďují data konkrétně pro obchodní aplikace a pro SQL Server. Přidružení pro virtuální počítače k pravidlům shromažďování dat by vypadalo podobně jako v následujícím diagramu.
 
-![Přidružení](media/data-collection-rule-azure-monitor-agent/associations.png)
+![Diagram znázorňuje virtuální počítače hostující liniovou aplikaci a SQL Server přidružená k pravidlům shromažďování dat s názvem Central-i t-default a LOB-App pro obchodní aplikace a střední-i t-ve výchozím nastavení a s q l pro SQL Server.](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 ## <a name="create-using-the-azure-portal"></a>Vytvoření s použitím webu Azure Portal
 Můžete použít Azure Portal k vytvoření pravidla shromažďování dat a přidružení virtuálních počítačů k tomuto pravidlu v rámci předplatného. Agent Azure Monitor se automaticky nainstaluje a vytvoří se spravovaná identita pro všechny virtuální počítače, které ještě nemají nainstalovanou.

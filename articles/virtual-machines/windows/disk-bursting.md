@@ -3,16 +3,17 @@ title: Shlukování spravovaných disků
 description: Další informace o shlukování disků pro virtuální počítače Azure a jejich rozšíření na disk
 author: albecker1
 ms.author: albecker
-ms.date: 04/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594385"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889106"
 ---
 # <a name="disk-bursting"></a>Zvládání výkonových špiček disků
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -21,11 +22,15 @@ ms.locfileid: "82594385"
 Podpora rozšíření na úrovni virtuálních počítačů je povolená ve všech oblastech ve veřejném cloudu v těchto podporovaných velikostech: 
 - [Řada Lsv2](../lsv2-series.md)
 
+V Středozápadní USA je k dispozici také rozšíření na úrovni virtuálního počítače pro následující podporované velikosti:
+- [Dsv3-series](../dv3-dsv3-series.md)
+- [Esv3-Series](../ev3-esv3-series.md)
+
 Pro virtuální počítače, které ji podporují, je shluking povolen ve výchozím nastavení.
 
 ## <a name="disk-level-bursting"></a>Roztržení na úrovni disku
 K dispozici je také SSD na úrovni [Premium](disks-types.md#premium-ssd) pro velikosti disků P20 a menší ve všech oblastech. Při nových nasazení velikosti disků, která ho podporují, je rozšíření disku ve výchozím nastavení povolené. Stávající velikosti disků, pokud podporují shlukování disku, mohou umožňovat roztržení pomocí jedné z následujících metod: 
-- **Restartujte virtuální počítač.** 
+- **Restartování virtuálního počítače** 
 - **Odpojení a opětovné připojení disku**
 
 

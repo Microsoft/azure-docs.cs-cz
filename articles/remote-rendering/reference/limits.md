@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e6b12c2bac4a9732f868f6a6ac3491ef993f54c3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566042"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976555"
 ---
 # <a name="limitations"></a>Omezení
 
@@ -28,7 +28,7 @@ Množství funkcí má velikost, počet nebo jiná omezení.
 
 ## <a name="geometry"></a>Geometrie
 
-* Celkový počet povolených materiálů v prostředku: 65 535.
+* Celkový počet povolených materiálů v prostředku: 65 535. Další informace najdete v tématu o [odstranění duplicit v materiálech](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) .
 * Maximální rozměr jedné textury: 16 384 × 16 384. Větší zdrojové textury se škálují podle procesu převodu.
 
 ## <a name="overall-number-of-polygons"></a>Celkový počet mnohoúhelníků

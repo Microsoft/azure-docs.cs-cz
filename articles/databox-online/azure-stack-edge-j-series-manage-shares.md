@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Správa sdílení GPU na okraji | Microsoft Docs
-description: Popisuje, jak použít Azure Portal ke správě sdílených složek na procesorovém GPU Azure Stack Edge.
+title: Správa sdílených GPU pro Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak použít Azure Portal ke správě sdílených složek v GPU pro procesor Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6448ac002482751052310532989278e3b88b5915
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268838"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904693"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>Použití Azure Portal ke správě sdílených složek na hraničních Azure Stackch
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě sdílených složek v Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Tento článek popisuje, jak spravovat sdílené složky na Azure Stack hraničních zařízeních. Azure Stack Edge můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete přidat, odstranit, aktualizovat sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště, který je přidružený ke sdíleným složkám.
+Tento článek popisuje, jak spravovat sdílené složky na Azure Stack Edge pro. Azure Stack Edge pro můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete přidat, odstranit, aktualizovat sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště, který je přidružený ke sdíleným složkám.
 
 ## <a name="about-shares"></a>Informace o sdílených složkách
 
-Pokud chcete přenést data do Azure, musíte na Azure Stack Edge vytvořit sdílené složky. Sdílené složky, které přidáte na zařízení Azure Stack Edge, můžou být místní sdílené složky nebo sdílené složky, které zadávají data do cloudu.
+Pokud chcete přenést data do Azure, musíte vytvořit sdílené složky na Azure Stack Edge pro. Sdílené složky, které přidáte na zařízení Azure Stack Edge pro, můžou být místní sdílené složky nebo sdílené složky, které zadávají data do cloudu.
 
  - **Místní sdílené složky**: tyto sdílené složky použijte, pokud chcete, aby se data zpracovala místně na zařízení.
  - **Sdílené složky**: tyto sdílené složky použijte, pokud chcete, aby se data zařízení automaticky odeslala do vašeho účtu úložiště v cloudu. Všechny cloudové funkce, jako jsou například **aktualizace** a **synchronizace klíčů úložiště** , se vztahují ke sdíleným složkám.
@@ -74,7 +74,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 3. Vyberte **Typ** sdílené složky. Typ může být **SMB** nebo **NFS**, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu. V závislosti na tom, jestli vyberete sdílené složky SMB nebo systému souborů NFS, se budou mírně lišit zobrazené možnosti.
 
    > [!IMPORTANT]
-   > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte s Azure Stack Edge nebo Data Box Gateway zařízení. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte se zařízením Azure Stack Edge pro nebo Data Box Gateway. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 4. K usnadnění přístupu ke sdíleným složkám z hraničních výpočetních modulů použijte místní přípojný bod. Vyberte možnost **použít sdílenou položku s** výpočtem hran, aby modul Edge mohl používat výpočty s místním přípojným bodem.
 
@@ -82,7 +82,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 6. V poli **místní uživatel všechna oprávnění** vyberte možnost **vytvořit novou** nebo **použít existující**.
 
-7. Vyberte **Create** (Vytvořit). 
+7. Vyberte **Vytvořit**. 
 
     ![Vytvořit místní sdílenou složku](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
@@ -96,7 +96,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 ## <a name="mount-a-share"></a>Připojení sdílené složky
 
-Pokud jste vytvořili sdílenou složku před tím, než jste nakonfigurovali výpočetní výkon na Azure Stack hraničním zařízení, bude nutné sdílenou složku připojit. Pro připojení sdílené složky proveďte následující kroky.
+Pokud jste vytvořili sdílenou složku před tím, než jste nakonfigurovali výpočetní výkon na zařízení Azure Stack Edge pro, budete muset sdílenou složku připojit. Pro připojení sdílené složky proveďte následující kroky.
 
 
 1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**. V seznamu sdílených složek vyberte sdílenou složku, kterou chcete připojit. Ve sloupci **použito pro výpočty** se zobrazí stav **zakázáno** pro vybranou sdílenou složku.
@@ -147,7 +147,7 @@ Pokud chcete sdílenou složku odstranit, proveďte na webu Azure Portal násled
 
     ![Vyberte sdílenou složku](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
 
-2. Klikněte na tlačítko **Odstranit**.
+2. Klikněte na **Odstranit**.
 
     ![Kliknutím odstraňte](media/azure-stack-edge-j-series-manage-shares/delete-share-2.png)
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: cc9cb06c2154202f319d57aa77700a356ffe19c1
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419567"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976217"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace VPN Gateway
 
@@ -27,8 +27,6 @@ Hodnoty v tomto článku platí pro brány VPN (brány virtuální sítě, kter�
 * Informace o branách redundantních bránách najdete v tématu [informace o redundantních branách v zóně](about-zone-redundant-vnet-gateways.md).
 
 * Informace o virtuální síti WAN najdete v tématu [o virtuální síti WAN](../virtual-wan/virtual-wan-about.md).
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>Typy bran
 
@@ -152,9 +150,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>Brány místní sítě
 
- Brána místní sítě se liší od brány virtuální sítě. Při vytváření konfigurace brány VPN brána místní sítě obvykle představuje vaše místní umístění. V modelu nasazení Classic se brána místní sítě označovala jako „místní lokalita“.
+Brána místní sítě se liší od brány virtuální sítě. Při vytváření konfigurace brány VPN se jako brána místní sítě obvykle představuje vaše místní síť a příslušné zařízení VPN. V modelu nasazení Classic se brána místní sítě označovala jako „místní lokalita“.
 
-Bráně místní sítě udělíte název, veřejnou IP adresu místního zařízení VPN a určíte předpony adres, které se nacházejí v místním umístění. Azure nahlíží na předpony cílových adres pro síťový provoz, sleduje konfiguraci, kterou jste zadali pro bránu místní sítě, a odpovídajícím způsobem směruje pakety. Také zadáte brány místní sítě pro konfigurace VNet-to-VNet, které používají připojení brány VPN.
+Bráně místní sítě dáte název, veřejnou IP adresu nebo plně kvalifikovaný název domény (FQDN) místního zařízení VPN a určíte předpony adres, které se nacházejí v místním umístění. Azure nahlíží na předpony cílových adres pro síťový provoz, sleduje konfiguraci, kterou jste zadali pro bránu místní sítě, a odpovídajícím způsobem směruje pakety. Pokud na svém zařízení VPN používáte Border Gateway Protocol (BGP), zadáte IP adresu partnerského uzlu protokolu BGP vašeho zařízení VPN a číslo autonomního systému (ASN) vaší místní sítě. Také zadáte brány místní sítě pro konfigurace VNet-to-VNet, které používají připojení brány VPN.
 
 Následující příklad prostředí PowerShell vytvoří novou bránu místní sítě:
 

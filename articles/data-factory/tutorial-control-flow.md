@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85513320"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983421"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -26,7 +26,7 @@ V tomto kurzu vytvoříte kanál Data Factory, který prezentuje některé funkc
 
 Tento obrázek nabízí přehled scénáře:
 
-![Přehled](media/tutorial-control-flow/overview.png)
+![Diagram zobrazuje Azure Blob Storage, což je cíl kopie, která při úspěšném odeslání pošle e-mail s podrobnostmi, nebo při selhání pošle e-mail s podrobnostmi o chybě.](media/tutorial-control-flow/overview.png)
 
 V tomto kurzu se dozvíte, jak provádět následující úlohy:
 
@@ -42,9 +42,9 @@ V tomto kurzu se dozvíte, jak provádět následující úlohy:
 
 Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](/azure/data-factory/quickstart-create-data-factory-portal).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 * Průzkumník služby Azure Storage. Pokud chcete tento nástroj nainstalovat, přečtěte si téma [Průzkumník služby Azure Storage](https://storageexplorer.com/).

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 08/04/2020
-ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ce63d86c3256646782775c84636c4d248e0a6735
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553304"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984325"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do spravované instance Azure SQL online pomocí DMS
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 > [!IMPORTANT]
 > Pro online migrace z SQL Server do spravované instance SQL pomocí Azure Database Migration Service musíte poskytnout úplnou zálohu databáze a následné zálohy protokolu ve sdílené síťové složce SMB, kterou může služba použít k migraci vašich databází. Azure Database Migration Service neiniciují žádné zálohy a místo toho používá existující zálohy, které už možná máte v rámci plánu zotavení po havárii pro migraci.
-> Ujistěte se, že provádíte [zálohování pomocí možnosti s kontrolním součtem](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017). Také se ujistěte, že nechcete do jediného záložního média připojit více záloh (tj. Full a t-log). proveďte každou zálohu samostatného záložního souboru. Nakonec můžete použít komprimované zálohy a snížit tak pravděpodobnost výskytu potenciálních problémů spojených s migrací velkých záloh.
+> Ujistěte se, že provádíte [zálohování pomocí možnosti s kontrolním součtem](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017&preserve-view=true). Také se ujistěte, že nechcete do jediného záložního média připojit více záloh (tj. Full a t-log). proveďte každou zálohu samostatného záložního souboru. Nakonec můžete použít komprimované zálohy a snížit tak pravděpodobnost výskytu potenciálních problémů spojených s migrací velkých záloh.
 
 > [!NOTE]
 > Použití Azure Database Migration Service k provedení online migrace vyžaduje vytvoření instance založené na cenové úrovni Premium.
@@ -50,7 +50,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje online migraci z SQL Server do spravované instance SQL. Offline migraci najdete v článku [migrace SQL Server do spravované instance SQL offline pomocí DMS](tutorial-sql-server-to-managed-instance.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -245,7 +245,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
     Kategorie databází a přihlašovacích jmen můžete dále rozbalit a monitorovat stav migrace příslušných objektů serveru.
 
-   ![Probíhající aktivita migrace](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
+   ![Stav aktivity migrace](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>Provedení přímé migrace
 
@@ -264,7 +264,7 @@ Po obnovení úplné zálohy databáze v cílové instanci spravované instance 
     ![Příprava na dokončení přímé migrace](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
     > [!IMPORTANT]
-    > Po přímou migraci může být dostupnost spravované instance SQL s Pro důležité obchodní informaceou vrstvou služby jenom výrazně delší než Pro obecné účely, protože pro skupinu s vysokou dostupností AlwaysOn musí být osazené tři sekundární repliky. Tato operace trvá v závislosti na velikosti dat. Další informace najdete v tématu [Doba provozu operací správy](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration).
+    > Po přímou migraci může být dostupnost spravované instance SQL s Pro důležité obchodní informaceou vrstvou služby jenom výrazně delší než Pro obecné účely, protože pro skupinu s vysokou dostupností AlwaysOn musí být osazené tři sekundární repliky. Tato operace trvá v závislosti na velikosti dat. Další informace najdete v tématu [Doba provozu operací správy](../azure-sql/managed-instance/management-operations-overview.md#duration).
 
 5. Po **dokončení**stavu migrace databáze připojte své aplikace k nové cílové instanci SQL spravované instance.
 
