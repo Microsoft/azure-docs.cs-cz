@@ -1,17 +1,17 @@
 ---
 title: Upgrade vizualizací řídicího panelu Log Analytics
-description: Dotazy, které můžete začít zadávat a upravovat podle svých potřeb
+description: Naučte se upgradovat vizualizace řídicího panelu Log Analytics pomocí dotazů, které vám poskytnou výkonné přehledy.
 ms.subservice: logs
 ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505767"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988244"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Upgrade vizualizací řídicího panelu Log Analytics
 
@@ -62,7 +62,7 @@ Po upgradu vizualizací je potřeba znovu publikovat řídicí panel, aby se zm�
 
 Po uplynutí počátečního přihlašovacího období bude tým Log Analytics upgradovat všechny řídicí panely v systému. Zarovnávání všech řídicích panelů Azure umožňuje týmu zavést více vizualizací a vylepšení zkušeností napříč panelem.
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 Log Analytics vizualizace připnuté na řídicí panel mají určité specifické chování, které je navržené pro optimální prostředí. Pokud připnete vizualizaci na řídicí panel, přečtěte si následující pokyny k návrhu.
 

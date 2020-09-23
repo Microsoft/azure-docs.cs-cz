@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905749"
+ms.locfileid: "90988080"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -361,6 +361,17 @@ Podrobnosti najdete tady:
 * Telemetrii se taky vloží do předplatného Microsoft/Azure.
 
 [![Pracovní postup odvození](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
+
+## <a name="audit-and-manage-compliance"></a>Auditovat a spravovat dodržování předpisů
+
+[Azure Policy](/azure/governance/policy) je nástroj zásad správného řízení, který vám umožní zajistit, aby prostředky Azure vyhovovaly vašim zásadám. Pomocí Azure Machine Learning můžete přiřadit následující zásady:
+
+* **Klíč spravovaný zákazníkem**: audit nebo vymáhání, jestli musí pracovní prostory používat klíč spravovaný zákazníkem.
+* **Privátní odkaz**: Audituje, jestli pracovní prostory používají privátní koncový bod ke komunikaci s virtuální sítí.
+
+Další informace o Azure Policy najdete v dokumentaci k [Azure Policy](/azure/governance/policy/overview).
+
+Další informace o zásadách specifických pro Azure Machine Learning najdete v tématu [auditování a Správa dodržování předpisů pomocí Azure Policy](how-to-integrate-azure-policy.md).
 
 ## <a name="next-steps"></a>Další kroky
 
