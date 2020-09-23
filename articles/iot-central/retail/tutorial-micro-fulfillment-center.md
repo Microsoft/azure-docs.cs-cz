@@ -5,14 +5,14 @@ author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000536"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980541"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace centra pro pořizování
 
@@ -62,11 +62,11 @@ Z řídicího panelu můžete:
    * Zobrazení plánu a umístění automatických dopravců v rámci struktury plnění.
    * Příkazy triggeru, jako je resetování systému řízení, aktualizace firmwaru dopravce a změna konfigurace sítě.
 
-     ![Snímek obrazovky s řídicím panelem Northwind Traders Micro – plnění](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Snímek obrazovky s horní polovinou řídicího panelu Northwind Traders Micro-doplňování](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Podívejte se na příklad řídicího panelu, který může operátor použít k monitorování podmínek v rámci centra plnění. 
    * Monitorujte stav datových částí, které jsou spuštěny na zařízení brány v rámci centra plnění.    
 
-     ![Snímek obrazovky s řídicím panelem Northwind Traders Micro – plnění](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Snímek obrazovky Botton poloviny řídicího panelu centra Northwind Traders Micro](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Šablona zařízení
 Pokud vyberete kartu šablony zařízení, uvidíte, že existují dva různé typy zařízení, které jsou součástí šablony: 
@@ -86,11 +86,14 @@ Pomocí ukázkového pravidla jako inspiraci definujte pravidla, která jsou vho
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace. Přejít na**nastavení aplikace** **pro správu** > a vyberte **Odstranit**.
+Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace. Přejít na **Administration**  >  **nastavení aplikace**pro správu a vyberte **Odstranit**.
 
 ![Snímek obrazovky se stránkou nastavení aplikace centra pro doplňování](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [architektuře řešení pro Micro-vyplňování softwaru](./architecture-micro-fulfillment-center.md).
-* Přečtěte si další informace o dalších [šablonách maloobchodního prodeje v Azure IoT Central](./overview-iot-central-retail.md).
-* Přečtěte si [Přehled Azure IoT Central](../preview/overview-iot-central.md).
+
+Další informace:
+> [!div class="nextstepaction"]
+> [Architektura řešení pro Micro-vyplňování softwaru](./architecture-micro-fulfillment-center.md)
+* Další informace o [šablonách maloobchodního prodeje v Azure IoT Central](./overview-iot-central-retail.md)
+* Další informace o dalších [IoT Central přehled Azure](../preview/overview-iot-central.md)

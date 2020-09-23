@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Servery Azure Arc (Preview)
-summary: Servery Azure Arc
+title: Servery s podporou služby Azure Arc
+summary: Servery s podporou služby Azure Arc
 metadata:
-  title: Servery Azure Arc
+  title: Servery s podporou služby Azure Arc
   description: Další informace o správě místních počítačů v Azure
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: f03e869e884fff8a1d196817b658c28bbdc55ca9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763761"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90908102"
 landingContent:
 - title: Připojení počítačů k Azure s využitím serverů s podporou služby Azure Arc
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: Co jsou servery s podporou služby Azure Arc?
       url: overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
     - text: Připojení počítačů ke službě Azure Arc z webu Azure Portal
       url: onboard-portal.md
@@ -30,3 +30,9 @@ landingContent:
       url: onboard-service-principal.md
     - text: Připojení počítačů k Azure s využitím DSC PowerShellu
       url: onboard-dsc.md
+- title: Zprovoznění během 10 minut
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nasazení agenta Servery s podporou služby Arc
+      url: ./learn/quick-enable-hybrid-vm.md

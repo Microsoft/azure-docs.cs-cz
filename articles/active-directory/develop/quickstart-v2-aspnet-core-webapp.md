@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 7e8cea18999bec34eba6630a96dca089fd4725af
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016304"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902368"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -40,7 +40,7 @@ V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core p
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > K registraci aplikace a ručnímu přidání registračních informací aplikace do řešení použijte následující postup:
 >
-> 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat**vyberte **Registrace aplikací**a pak **Nová registrace**.
@@ -99,15 +99,15 @@ V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core p
 > V tomto rychlém startu Neměňte žádné jiné hodnoty v *appsettings.js* souboru.
 >
 > #### <a name="step-4-build-and-run-the-application"></a>Krok 4: Sestavení a spuštění aplikace
-> 
+>
 > Sestavte a spusťte aplikaci v aplikaci Visual Studio tak, že vyberete nabídku **ladění** > **Spustit ladění**nebo stisknete klávesu `F5` .
-> 
+>
 > Zobrazí se výzva k zadání přihlašovacích údajů a potom se zobrazí výzva k vyjádření souhlasu s oprávněními, které vaše aplikace vyžaduje. Na příkazovém řádku pro vyjádření souhlasu vyberte **přijmout** .
-> 
+>
 > :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-01-consent.png" alt-text="Dialog pro vyjádření souhlasu, který zobrazuje oprávnění, která aplikace požaduje od >ho uživatele":::
-> 
+>
 > Po souhlasu s požadovanými oprávněními aplikace zobrazí, že jste se úspěšně přihlásili pomocí přihlašovacích údajů Azure Active Directory.
-> 
+>
 > :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Webový prohlížeč zobrazující běžící webovou aplikaci a přihlášeného uživatele":::
 
 ## <a name="more-information"></a>Další informace

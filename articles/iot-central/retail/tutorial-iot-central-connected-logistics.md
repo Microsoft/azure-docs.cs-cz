@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
-ms.date: 09/11/2020
-ms.openlocfilehash: 5818e57f29558cbb5a29592cd4e1d7ae2eebbec1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.topic: tutorial
+ms.date: 10/20/2019
+ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531538"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980694"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Kurz: nasazení a procházení prostřednictvím připojené šablony logistické aplikace
 
@@ -23,6 +23,10 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořte připojenou logistickou aplikaci.
 > * Použijte klíčové funkce v aplikaci.
+> * Pomocí řídicího panelu můžete zobrazit aktivitu kritických operací logistického zařízení.
+> * Použít šablonu zařízení
+> * Sledovat pravidla
+> * Použití úloh
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,6 +45,7 @@ Vytvořte aplikaci pomocí následujících kroků:
 
 3. **Vytvoření aplikace** otevře formulář **nové aplikace** . Zadejte následující podrobnosti:
 
+
     * **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
     * **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
     * **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
@@ -52,11 +57,22 @@ Vytvořte aplikaci pomocí následujících kroků:
 
 ## <a name="walk-through-the-application"></a>Procházení aplikací
 
-Následující části vás seznámí s klíčovými funkcemi aplikace:
+Tady je snímek obrazovky, který ukazuje, jak vybrat šablonu připojené logistické aplikace.
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky ukazující, jak vybrat šablonu připojené logistické aplikace](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+
+Následující části vás seznámí s klíčovými funkcemi aplikace.
 
 ### <a name="dashboard"></a>Řídicí panel
 
 Po nasazení šablony aplikace je výchozím řídicím panelem připojený portál logistiky. Northwind obchodník je fiktivní logistický poskytovatel, který spravuje nákladní loďstvo na moři a na půdě. V tomto řídicím panelu uvidíte dvě různé brány, které poskytují telemetrii z dodávek, spolu s přidruženými příkazy, úlohami a akcemi.
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky ukazující, jak vytvořit aplikaci ze šablony připojené logistické aplikace](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky znázorňující možnosti fakturace při vytváření aplikace](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
 Tento řídicí panel je předem nakonfigurovaný tak, aby zobrazoval aktivitu kritických operací logistického zařízení.
 
@@ -114,6 +130,8 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Vyčištění šablony":::
 
 ## <a name="next-steps"></a>Další kroky
-
-* Další informace o [pojmu spojené logistiky](./architecture-connected-logistics.md)
+* Další informace: 
+> [!div class="nextstepaction"]
+> [Koncept Spojeného logistiky](./architecture-connected-logistics.md)
 * Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail.md)
+* Další informace o [IoT Central přehledu](../core/overview-iot-central.md)

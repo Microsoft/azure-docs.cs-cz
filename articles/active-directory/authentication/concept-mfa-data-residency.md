@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052275"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970670"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Data o sídle a zákaznických datech pro Azure Multi-Factor Authentication
 
@@ -24,13 +24,12 @@ Zákaznická data jsou uložená v rámci Azure AD v geografickém umístění n
 
 Cloudové Multi-Factor Authentication Azure a Azure Multi-Factor Authentication Server a ukládají určité množství osobních údajů a dat organizace. Tento článek popisuje, co a kde jsou data uložená.
 
-Následující Multi-Factor Authentication aktivity aktuálně pocházejí z datacentra USA, s výjimkou případů, kdy je uvedeno níže:
+Služba Azure Multi-Factor Authentication obsahuje datová centra v USA, Evropě a Asie a Tichomoří. Následující činnosti pocházejí z regionálních Datacenter, s výjimkou případů, kdy je uvedeno níže:
 
-* Dvojúrovňové ověřování pomocí telefonních hovorů nebo serveru SMS obvykle pochází z datových center US a jsou směrováni globálními poskytovateli.
-    * Požadavky na ověřování uživatelů pro obecné účely z jiných oblastí, jako je Evropa nebo Austrálie, jsou aktuálně zpracovávány datacentry v této oblasti. Další události, jako jsou Samoobslužné resetování hesla, události Azure B2C nebo hybridní scénáře pomocí rozšíření serveru NPS nebo adaptéru AD FS, jsou aktuálně zpracovávány datacentry USA.
-* Nabízená oznámení, která používají aplikaci Microsoft Authenticator, pocházejí z datových center USA. Kromě toho mohou vzniknout také služby specifické pro dodavatele zařízení z různých oblastí.
-* Kódy OATH jsou obvykle v současnosti ověřeny v USA.
-    * V datových centrech v této oblasti se znovu zpracují události ověřování uživatele pro obecné účely, které pocházejí z jiných oblastí, jako je Evropa nebo Austrálie. Datacentra USA aktuálně zpracovávají další události.
+* Multi-Factor Authentication využívající telefonní hovory pocházející z Datacenter USA a jsou směrováni globálními poskytovateli.
+* Požadavky na ověřování uživatelů pro obecné účely z jiných oblastí, jako je Evropa nebo Austrálie, se aktuálně zpracovávají na základě umístění uživatele.
+* Nabízená oznámení, která používají aplikaci Microsoft Authenticator, pocházejí z regionálních datových center na základě umístění uživatele.
+    * Služby specifické pro dodavatele zařízení, jako je například nabízená oznámení Apple, můžou být mimo umístění uživatele.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Osobní údaje uložené v Azure Multi-Factor Authentication
 

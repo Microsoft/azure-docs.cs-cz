@@ -1,6 +1,6 @@
 ---
-title: Povolit a zakázat zásady uchovávání dat – Azure SQL Edge (Preview)
-description: Informace o tom, jak povolit a zakázat zásady uchovávání dat v Azure SQL Edge (Preview)
+title: Povolit a zakázat zásady uchovávání dat – Azure SQL Edge
+description: Přečtěte si, jak povolit a zakázat zásady uchovávání dat v Azure SQL Edge.
 keywords: SQL Edge, uchovávání dat
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9787f2cfa87a16d9e7dd1753e4389977c6753b81
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550630"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902504"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Povolit a zakázat zásady uchovávání dat
 
@@ -23,9 +23,6 @@ Toto téma popisuje, jak povolit a zakázat zásady uchovávání dat pro datab�
 ## <a name="enable-data-retention-for-a-database"></a>Povolení uchovávání dat pro databázi
 
 Následující příklad ukazuje, jak povolit uchovávání dat pomocí [příkazu ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options).
-
-> [!NOTE]
-> Pokud chcete povolit funkci uchovávání dat v Azure SQL Edge (Preview), povolte možnost TF 12825 jako možnost spuštění nebo použijte příkaz DBCC TRACEON. Další informace o tom, jak povolit příznaky trasování pomocí souboru MSSQL. conf, najdete v tématu [Konfigurace použití souboru MSSQL. conf](configure.md#configure-by-using-an-mssqlconf-file). 
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -61,10 +58,10 @@ CONSTRAINT [pk_current_data_retention_table] PRIMARY KEY CLUSTERED ([product_cod
 - FILTER_COLUMN – název sloupce v tabulce, který se použije ke zjištění, jestli jsou řádky zastaralé nebo ne. Sloupec filtru může být pouze sloupec s těmito datovými typy. 
     - Datum
     - SmallDateTime
-    - Datum a čas
+    - DateTime
     - DateTime2
     - DateTimeOffset
-- RETENTION_PERIOD – celočíselná hodnota následovaná popisovačem jednotky. Povolené jednotky jsou den, týden, měsíc a rok.
+- RETENTION_PERIOD – celočíselná hodnota následovaná popisovačem jednotky. Povolené jednotky jsou den, dny, týden, týdny, měsíc, měsíce, rok a roky.
 
 Následující příklad ukazuje, jak povolit uchovávání dat pro tabulku pomocí [příkazu ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).  
 
@@ -98,9 +95,9 @@ Nastavení uchovávání dat v databázi a tabulce se používají ve spojení s
 |Možnost databáze | Možnost tabulky | Chování |
 |----------------|--------------|----------|
 | OFF | OFF | Zásady uchovávání dat jsou zakázané a je zakázané automatické i ruční vyčištění starých záznamů.|
-| OFF | ON  | Zásady uchovávání dat jsou pro tabulku povolené, ale automatické i ruční vyčištění starých záznamů je zakázané. |
+| OFF | ON  | Zásady uchovávání dat jsou pro tabulku povolené. Automatické čištění zastaralých záznamů je zakázané, ale k vyčištění zastaralých záznamů se dá použít manuální metoda vyčištění. |
 | ON | OFF | Zásady uchovávání dat jsou povolené na úrovni databáze. Vzhledem k tomu, že je tato možnost zakázána na úrovni tabulky, neexistuje žádné vyčištění na základě uchování starých řádků.|
-| ON | ON | Zásady uchovávání dat jsou povolené pro databáze i tabulky. Automatické/ruční vyčištění starých záznamů je povolené. |
+| ON | ON | Zásady uchovávání dat jsou povolené pro databáze i tabulky. Automatické čištění zastaralých záznamů je povoleno. |
 
 ## <a name="disable-data-retention-on-a-table"></a>Zakázat uchovávání dat v tabulce 
 

@@ -15,10 +15,15 @@
   items:
     - name: Nasazení SQL Edge
       href: deploy-portal.md
+    - name: Nasazení s využitím Dockeru
+      href: disconnected-deployment.md
     - name: Nasazení modelů ONNX v SQL Edge
       href: deploy-onnx.md
 - name: Kurzy
+  expanded: true
   items:
+    - name: Nasazení v Kubernetes
+      href: deploy-kubernetes.md
     - name: Synchronizace dat s využitím Azure Data Factory
       href: tutorial-sync-data-factory.md
     - name: Synchronizace dat s využitím Synchronizace dat SQL
@@ -31,36 +36,42 @@
           href: tutorial-set-up-iot-edge-modules.md
         - name: Nasazení modelu do SQL Edge
           href: tutorial-run-ml-model-on-sql-edge.md
-- name: Postup
-  items:
-    - name: Nasazování úloh Stream Analytics
-      href: stream-analytics.md
-    - name: Konfigurace replikace
-      href: configure-replication.md
-    - name: Sledování změn dat
-      href: track-data-changes.md
-    - name: Správa úloh streamování T-SQL
-      href: create-stream-analytics-job.md
-    - name: Připojení k SQL Edge
-      href: connect.md
-    - name: Konfigurace SQL Edge
-      href: configure.md
-    - name: Nasazení balíčku aplikace DAC
-      href: deploy-dacpac.md
 - name: Koncepty
   items:
-    - name: Strojové učení a AI s využitím ONNX
-      href: onnx-overview.md
-    - name: Zálohování a obnovení
-      href: backup-restore.md
-    - name: Streamování dat v SQL Edge
+    - name: Nasazení
+      items:
+        - name: Nasazení pomocí webu Azure Portal
+          href: deploy-portal.md
+        - name: Nasazení s využitím Dockeru
+          href: disconnected-deployment.md
+        - name: Nasazení v Kubernetes
+          href: deploy-kubernetes.md
+        - name: Nástroje SQL
+          href: 'https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?toc=/azure/azure-sql-edge/toc.json'
+    - name: Strojové učení
+      items:
+        - name: Strojové učení a AI s využitím ONNX
+          href: onnx-overview.md
+        - name: Nasazování modelů ONNX
+          href: deploy-onnx.md
+    - name: Výkon
+      items:
+        - name: Pokyny k výkonu
+          href: performance-best-practices.md
+    - name: Konfigurace kontinuity podnikových procesů
+      items:
+        - name: Zálohování a obnovení
+          href: backup-restore.md
+        - name: Vysoká dostupnost pro kontejnery
+          href: high-availability-sql-edge-containers.md
+    - name: Streamování dat
       items:
         - name: Streamování dat
           href: stream-data.md
+        - name: Vytváření a správa úloh streamování
+          href: create-stream-analytics-job.md
         - name: Vytvoření externího streamu (Transact-SQL)
           href: create-external-stream-transact-sql.md
-        - name: Úprava externího streamu (Transact-SQL)
-          href: alter-external-stream-transact-sql.md
         - name: Vynechání externího streamu (Transact-SQL)
           href: drop-external-stream-transact-sql.md
         - name: Zobrazení streamování a DMV
@@ -69,14 +80,20 @@
               href: streaming-catalog-views.md
             - name: sys.external_job_streams (Transact-SQL)
               href: sys-external-job-streams.md
-            - name: sys.external-streaming_jobs (Transact-SQL)
+            - name: sys.external_streaming_jobs (Transact-SQL)
               href: sys-external-streaming-jobs.md
             - name: sys.external_streams (Transact-SQL)
               href: sys-external-streams.md
     - name: Zpracování dat časových řad
       items:
-        - name: Date_Bucket (Transact-SQL)
+        - name: Časové mezery a chybějící hodnoty
+          href: imputing-missing-values.md
+        - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: FIRST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+        - name: LAST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
         - name: Uchování a čištění dat
           items:
             - name: Přehled uchovávání dat
@@ -85,3 +102,43 @@
               href: data-retention-enable-disable.md
             - name: Čištění uchování dat
               href: data-retention-cleanup.md
+            - name: sys.sp_cleanup_data_retention (Transact-SQL)
+              href: sys-sp-cleanup-data-retention.md
+    - name: Zabezpečení
+      items:
+        - name: Přehled zabezpečení
+          href: security-overview.md
+        - name: Funkce zabezpečení
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+        - name: Šifrování připojení
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+        - name: Azure Security Center for IoT
+          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+- name: Postupy
+  items:
+    - name: Konfigurace SQL Edge
+      items:
+        - name: Konfigurace pomocí proměnných prostředí
+          href: configure.md#configure-by-using-environment-variables
+        - name: Konfigurace pomocí souboru mssql.conf
+          href: configure.md#configure-by-using-an-mssqlconf-file
+        - name: Spuštění jako jiný uživatel než root
+          href: configure.md#run-azure-sql-edge-as-non-root-user
+        - name: Zachování dat
+          href: configure.md#persist-your-data
+        - name: Konfigurace replikace
+          href: configure-replication.md
+    - name: Připojení k SQL Edge
+      href: connect.md
+    - name: Nasazení balíčku aplikace DAC
+      href: deploy-dacpac.md
+    - name: Sledování změn dat
+      href: track-data-changes.md
+    - name: Správa úloh streamování T-SQL
+      href: create-stream-analytics-job.md
+    - name: Řešení problémů při nasazování
+      href: troubleshoot.md
+- name: Referenční informace
+  items:
+    - name: Reference k jazyku Transact-SQL (T-SQL)
+      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'

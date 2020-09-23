@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658566"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886385"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -78,8 +78,6 @@ Pomocí **Azure Machine Learning**můžete navrhovat a spouštět experimenty au
 
    * V případě omezeného nebo žádného prostředí pro práci s kódem zkuste vyzkoušet web Azure Machine Learning Studio na adrese. [https://ml.azure.com](https://ml.azure.com/)  
    * Pro vývojáře v Pythonu se podívejte na [sadu SDK Azure Machine Learning Pythonu](how-to-configure-auto-train.md) . 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **Zadejte zdroj a formát podaných školicích dat**: numpy Arrays nebo PANDAS dataframe
 
@@ -118,7 +116,7 @@ Pro automatizované experimenty strojového učení se featurization aplikuje au
 
 V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly. Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak AutoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|&nbsp; & &nbsp; Normalizace škálování| Popis |
+|&nbsp; & &nbsp; Normalizace škálování| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -172,25 +170,25 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
 ### <a name="feature-availability"></a>Dostupnost funkcí 
 
- K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. Některé z těchto funkcí jsou k dispozici pouze v pracovním prostoru Enterprise.
+ K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. 
 
-| Příznak                                                    | Vzdálené | Místní | Nutné <br>Pracovní prostor Enterprise |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | ✓                             |
-| Featurization a školení textu založeného na DNN-BERT             | ✓      |       | ✓                             |
-| Dopředná podpora GPU (školení a odvození)        | ✓      |       | ✓                             |
-| Klasifikace obrázků a podpora popisků                  | ✓      |       | ✓                             |
-| Modely auto-ARIMA, Prophet a ForecastTCN pro prognózování | ✓      |       | ✓                             |
-| Paralelní vícenásobné běhy a iterace                       | ✓      |       | ✓                             |
-| Vytváření modelů s možností interpretace v uživatelském rozhraní AutoML Studio Web Experience      | ✓      |       | ✓                             |
-| Přizpůsobení technologie funkcí v uživatelském rozhraní sady Studio Web Experience                        | ✓      |       | ✓                              |
-| Ladění předparametrů Azure ML                             | ✓      |       |                               |
-| Podpora pracovního postupu kanálu Azure ML                         | ✓      |       |                               |
-| Pokračovat v běhu                                             | ✓      |       |                               |
-| Prognózování                                                | ✓      | ✓     | ✓                             |
-| Vytváření a spouštění experimentů v poznámkových blocích                    | ✓      | ✓     |                               |
-| Zaregistrujte a vizualizujte informace a metriky experimentů v uživatelském rozhraní. | ✓      | ✓     |                               |
-| Guardrails dat                                            | ✓      | ✓     |                               |
+| Příznak                                                    | Vzdálené | Místní | 
+|------------------------------------------------------------|--------|-------|
+| Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | 
+| Featurization a školení textu založeného na DNN-BERT             | ✓      |       |
+| Dopředná podpora GPU (školení a odvození)        | ✓      |       |
+| Klasifikace obrázků a podpora popisků                  | ✓      |       |
+| Modely auto-ARIMA, Prophet a ForecastTCN pro prognózování | ✓      |       | 
+| Paralelní vícenásobné běhy a iterace                       | ✓      |       |
+| Vytváření modelů s možností interpretace v uživatelském rozhraní AutoML Studio Web Experience      | ✓      |       |
+| Přizpůsobení technologie funkcí v uživatelském rozhraní sady Studio Web Experience| ✓      |       |
+| Ladění předparametrů Azure ML                             | ✓      |       |
+| Podpora pracovního postupu kanálu Azure ML                         | ✓      |       |
+| Pokračovat v běhu                                             | ✓      |       |
+| Prognózování                                                | ✓      | ✓     |
+| Vytváření a spouštění experimentů v poznámkových blocích                    | ✓      | ✓     |
+| Zaregistrujte a vizualizujte informace a metriky experimentů v uživatelském rozhraní. | ✓      | ✓     |
+| Guardrails dat                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>Mnoho modelů 
 
@@ -277,7 +275,7 @@ Kurzy představují ucelené Úvodní příklady scénářů AutoML.
 
  + V **případě nedostatku nebo prostředí bez kódu**si přečtěte [kurz: vytváření automatizovaných modelů klasifikace ml pomocí Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md).
 
-Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Třeba 
+Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Příklad: 
 
 + Konfigurovat nastavení pro automatické experimenty školení
     + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md). 

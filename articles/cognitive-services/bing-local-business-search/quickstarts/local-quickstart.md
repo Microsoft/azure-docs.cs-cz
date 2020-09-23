@@ -1,7 +1,7 @@
 ---
 title: Rychlý Start – odeslání dotazu do rozhraní API v jazyce C# pomocí vyhledávání místních obchodních obchodů Bingu
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure.
+description: V tomto rychlém startu můžete začít posílat požadavky v jazyce C# do rozhraní API Bingu pro místní vyhledávání v Azure, což je služba pro rozpoznávání Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 127834034cf1de00b61794c6cfd51a041a37a8c3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3102742d19e7e0dffa6135c9267f51b1231dafc8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925143"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970461"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních hledání v jazyce C #
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak odesílat požadavky do rozhraní API B
 
 Tato ukázková aplikace získá data místních odpovědí z rozhraní API pro vyhledávací dotaz.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
