@@ -12,12 +12,12 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852850"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986398"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Příjem dat s využitím Azure Data Factory
 
@@ -35,7 +35,7 @@ Existuje několik běžných postupů použití Azure Data Factory k transformac
 
 ## <a name="adf-with-azure-functions"></a>ADF s Azure Functions
 
-![ADF – funkce](media/how-to-data-ingest-adf/adf-function.png)
+![Diagram znázorňuje Azure Data Factory kanál, pomocí funkce Azure functions a spuštění kanálu M L a kanálu Azure Machine Learning, s modelem výukového modelu a způsob interakce s nezpracovanými daty a připravenými daty.](media/how-to-data-ingest-adf/adf-function.png)
 
 Azure Functions umožňuje spouštění malých částí kódu (funkcí), aniž byste se museli starat o infrastrukturu aplikace. V této možnosti se data zpracovávají pomocí vlastního kódu Pythonu zabaleného do funkce Azure Functions. 
 
@@ -51,7 +51,7 @@ Tato funkce se vyvolá u [aktivity funkce Azure ADF](https://docs.microsoft.com/
 
 ## <a name="adf-with-custom-component-activity"></a>ADF s aktivitou vlastní součásti
 
-![ADF – customcomponent](media/how-to-data-ingest-adf/adf-customcomponent.png)
+![Diagram znázorňuje Azure Data Factory kanál s vlastní komponentou a spuštěním kanálu M L a kanálu Azure Machine Learning, s modelem výukového modelu a způsobem, jak komunikují s nezpracovanými daty a připravenými daty.](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
 V této možnosti se data zpracovávají pomocí vlastního kódu Pythonu zabaleného do spustitelného souboru. Vyvolá se s [aktivitou vlastní komponenty ADF](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity). Tento přístup je lépe vhodný pro velké objemy dat, než je předchozí technika.
 
@@ -64,7 +64,7 @@ V této možnosti se data zpracovávají pomocí vlastního kódu Pythonu zabale
 
 ## <a name="adf-with-azure-databricks-python-notebook"></a>ADF s Azure Databricks Poznámkový blok Pythonu
 
-![ADF – datacihly](media/how-to-data-ingest-adf/adf-databricks.png)
+![Diagram znázorňuje Azure Data Factory kanál, pomocí Azure Databricks Pythonu a spuštění kanálu M L a kanálu Azure Machine Learning, s modelem výukového modelu a způsobem interakce s nezpracovanými daty a připravenými daty.](media/how-to-data-ingest-adf/adf-databricks.png)
 
 [Azure Databricks](https://azure.microsoft.com/services/databricks/) je analytická platforma založená na Apache Spark v cloudu Microsoftu.
 
@@ -82,7 +82,7 @@ V této technice se transformace dat provádí pomocí [poznámkového bloku Pyt
 
 ## <a name="consuming-data-in-azure-machine-learning-pipelines"></a>Spotřebovávání dat v Azure Machine Learningch kanálech
 
-![AML – datová sada](media/how-to-data-ingest-adf/aml-dataset.png)
+![Diagram znázorňuje Azure Data Factory kanál a kanál Azure Machine Learning a jejich interakce s nezpracovanými daty a připravenými daty. Kanál Data Factory kanálu data do připravené databáze dat, která informační kanály ukládá do úložiště dat, které datové sady informačních kanálů v pracovním prostoru Machine Learning.](media/how-to-data-ingest-adf/aml-dataset.png)
 
 Transformovaná data z kanálu ADF se ukládají do úložiště dat (například Azure BLOB). Azure Machine Learning mají přístup k těmto datům pomocí datových [úložišť](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores) a datových [sad](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 

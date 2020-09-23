@@ -1,6 +1,6 @@
 ---
-title: Připojení a Správa Microsoft Azure Stack hraničního zařízení přes rozhraní Windows PowerShellu | Microsoft Docs
-description: Popisuje, jak se připojit k Azure Stack Edge přes rozhraní Windows PowerShell a potom ho spravovat.
+title: Připojení a Správa zařízení Microsoft Azure Stack Edge pro prostřednictvím rozhraní Windows PowerShellu | Microsoft Docs
+description: Popisuje, jak se připojit ke službě Azure Stack Edge pro a jak ji spravovat přes rozhraní Windows PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 973c618b46d1b6be902d9629ca63ee120cae6855
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313201"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894415"
 ---
-# <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Správa zařízení Azure Stack Edge přes Windows PowerShell
+# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Správa zařízení Azure Stack Edge pro pomocí prostředí Windows PowerShell
 
-Řešení Azure Stack Edge umožňuje zpracovávat data a odesílat je přes síť do Azure. Tento článek popisuje některé úlohy konfigurace a správy pro zařízení Azure Stack Edge. Ke správě zařízení můžete použít rozhraní Azure Portal, místní webové uživatelské rozhraní nebo prostředí Windows PowerShell.
+Řešení Azure Stack Edge pro umožňuje zpracovávat data a odesílat je přes síť do Azure. Tento článek popisuje některé úlohy konfigurace a správy pro zařízení Azure Stack Edge pro. Ke správě zařízení můžete použít rozhraní Azure Portal, místní webové uživatelské rozhraní nebo prostředí Windows PowerShell.
 
 Tento článek se zaměřuje na úlohy, které provedete pomocí prostředí PowerShell. 
 
 Tento článek obsahuje následující postupy:
 
-- Připojení k rozhraní PowerShell
+- Připojte se k rozhraní PowerShellu.
 - Vytvoření balíčku pro podporu
 - Nahrání certifikátu
 - Resetování zařízení
@@ -31,7 +31,7 @@ Tento článek obsahuje následující postupy:
 - Získat výpočetní protokoly
 - Monitorování a řešení potíží s výpočetními moduly
 
-## <a name="connect-to-the-powershell-interface"></a>Připojení k rozhraní PowerShell
+## <a name="connect-to-the-powershell-interface"></a>Připojte se k rozhraní PowerShellu.
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -43,7 +43,7 @@ Tento článek obsahuje následující postupy:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Můžete také nahrát IoT Edge certifikátů a povolit tak zabezpečené připojení mezi zařízením IoT Edge a zařízeními pro příjem dat, která se k němu mohou připojit. Existují tři certifikáty IoT Edge (formát *. pem* ), které je třeba nainstalovat:
+Můžete také nahrát certifikáty IoT Edge a tím umožnit zabezpečené připojení mezi vaším zařízením IoT Edge a podřízenými zařízeními, která se k němu můžou připojovat. Existují tři certifikáty IoT Edge (formát *. pem* ), které je třeba nainstalovat:
 
 - Certifikát kořenové certifikační autority nebo certifikační autorita vlastníka
 - Certifikát certifikační autority zařízení
@@ -94,4 +94,4 @@ Pokud chcete ukončit vzdálenou relaci PowerShellu, zavřete okno PowerShell.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nasaďte [Azure Stack Edge](azure-stack-edge-deploy-prep.md) do Azure Portal.
+- Nasaďte [Azure Stack Edge pro](azure-stack-edge-deploy-prep.md) v Azure Portal.

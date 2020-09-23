@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 38ac4f1bf6a1dd4656b4e7d5783051f3b381940c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d91ada217d54f424803abfeb31dcad237b5fe05c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546810"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979923"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP NetWeaver
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat SAP NetWeaver s Azure Active Directory
 * Řízení ve službě Azure AD, která má přístup k SAP NetWeaver.
 * Umožněte uživatelům, aby se do SAP NetWeaver automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +36,10 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-SAP NetWeaver podporuje protokol **SAML** (**SSO iniciovaná SP**) i **OAuth**. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. 
+* SAP NetWeaver podporuje protokol **SAML** (**SSO iniciovaná SP**) i **OAuth**. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. 
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 > [!NOTE]
 > Nakonfigurujte aplikaci buď v SAML, nebo v OAuth podle požadavků vaší organizace. 
@@ -47,18 +48,18 @@ SAP NetWeaver podporuje protokol **SAML** (**SSO iniciovaná SP**) i **OAuth**. 
 
 Pokud chcete nakonfigurovat integraci SAP NetWeaver do služby Azure AD, musíte přidat SAP NetWeaver z Galerie do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **SAP NetWeaver** .
 1. Z panelu výsledků vyberte **SAP NetWeaver** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-netweaver"></a>Konfigurace a testování jednotného přihlašování Azure AD pro SAP NetWeaver
+## <a name="configure-and-test-azure-ad-sso-for-sap-netweaver"></a>Konfigurace a testování jednotného přihlašování Azure AD pro SAP NetWeaver
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SAP NetWeaver pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SAP NetWeaver.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SAP NetWeaver, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SAP NetWeaver, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -99,7 +100,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP NetW
 
     c. Dvojím kliknutím na relevantního klienta povolte relaci zabezpečení protokolu HTTP.
 
-    ![Odkaz na stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
+    ![Relace zabezpečení HTTP ](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
 
     d. Aktivovat pod SICF službami:
     ```
@@ -110,22 +111,22 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP NetW
     ```
 1. Přejít na kód transakce **typu Saml2** v obchodním klientovi systému SAP [T01/122]. Otevře se uživatelské rozhraní v prohlížeči. V tomto příkladu jsme předpokládali 122 jako obchodní klient SAP.
 
-    ![Odkaz na stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
+    ![Kód transakce](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
 
 1. Zadejte uživatelské jméno a heslo, které chcete zadat v uživatelském rozhraní, a klikněte na **Upravit**.
 
-    ![Odkaz na stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
+    ![uživatelské jméno a heslo](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
 1. Nahraďte **název poskytovatele** z T01122 na `http://T01122` a klikněte na **Uložit**.
 
     > [!NOTE]
     > Ve výchozím nastavení se název poskytovatele používá jako `<sid><client>` formát, ale Azure AD očekává název ve formátu. `<protocol>://<name>` doporučuje se zachovat název poskytovatele, aby `https://<sid><client>` bylo možné nakonfigurovat více modulů SAP NetWeaver ABAP v Azure AD.
 
-    ![Odkaz na stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
+    ![Několik modulů SAP NetWeaver ABAP](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
 1. **Generují se metadata poskytovatele služby**: – Jakmile se dokončí konfigurace nastavení **místní zprostředkovatel** a **důvěryhodní poskytovatelé** na uživatelském rozhraní SAML 2,0, bude dalším krokem vygenerování souboru metadat poskytovatele služeb (který by obsahoval všechna nastavení, kontexty ověřování a další konfigurace v SAP). Po vygenerování tohoto souboru je potřeba ho nahrát do Azure AD.
 
-    ![Odkaz na stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
+    ![Generují se metadata poskytovatele služby.](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
 
     a. Přejít na **kartu Místní poskytovatel**.
 
@@ -135,7 +136,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP NetW
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SAP NetWeaver** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **SAP NetWeaver** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
@@ -160,13 +161,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Aplikace SAP NetWeaver očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-    ![image](common/edit-attribute.png)
+    ![Upravit attribue](common/edit-attribute.png)
 
 1. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
     a. Kliknutím na **ikonu Upravit** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](./media/sapnetweaver-tutorial/nameidattribute.png)
+    ![ikona upravit](./media/sapnetweaver-tutorial/nameidattribute.png)
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
@@ -194,7 +195,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -203,13 +204,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **SAP NetWeaver**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
@@ -220,51 +215,51 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Konfigurace koncových bodů pro důvěryhodného zprostředkovatele identity (Azure AD) přejít na kartu **důvěryhodní zprostředkovatelé** .
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
+    ![Konfigurace důvěryhodných zprostředkovatelů jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
 
 3. Stiskněte **Přidat** a v místní nabídce vyberte **nahrát soubor metadat** .
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_uploadmetadata.png)
+    ![Konfigurace jednotného přihlašování 2](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_uploadmetadata.png)
 
 4. Odešlete soubor metadat, který jste stáhli z Azure Portal.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
+    ![Konfigurace jednotného přihlašování 3](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
 
 5. Na další obrazovce zadejte název aliasu. Například aadsts a pokračujte stisknutím klávesy **Next** .
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
+    ![Konfigurace jednotného přihlašování 4](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
 6. Ujistěte se, že **algoritmus Digest** by měl být **SHA-256** a nevyžaduje žádné změny, a stiskněte tlačítko **Další**.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
+    ![Konfigurace jednotného přihlašování 5](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
 
 7. U **koncových bodů jednotného přihlašování**použijte **http post** a pokračujte kliknutím na **Další** .
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
+    ![Konfigurace jednotného přihlašování 6](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
 8. V případě **jednoho koncového bodu odhlášení** vyberte **HttpRedirect** a pokračujte kliknutím na **Další** .
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
+    ![Konfigurace jednotného přihlašování 7](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
 9. V **koncových bodech artefaktu**pokračujte stisknutím klávesy **Next** .
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
+    ![Konfigurace jednotného přihlašování 8](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
 10. V nabídce **požadavky na ověřování**klikněte na **Dokončit**.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
+    ![Konfigurace jednotného přihlašování 9](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
 11. Přejít na kartu ID federace **důvěryhodných zprostředkovatelů**  >  **Identity Federation** (z dolní části obrazovky). Klikněte na **Upravit**.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
+    ![Konfigurace jednotného přihlašování 10](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
 12. Na kartě **federace identit** (dolní okno) klikněte na **Přidat** .
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
+    ![Konfigurace jednotného přihlašování 11](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
 
 13. V místním okně vyberte **Neurčeno** z **podporovaných formátů NameId** a klikněte na OK.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
+    ![Konfigurace jednotného přihlašování 12](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 
 14. Všimněte si, že hodnoty **zdrojového ID** a **mapování ID** uživatele URČUJÍ propojení mezi uživatelem SAP a deklarací Azure AD.  
 
@@ -272,29 +267,29 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     a. NameID Podrobnosti obrazovky z SAP.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/nameiddetails.png)
+    ![Konfigurace jednotného přihlašování 13](./media/sapnetweaver-tutorial/nameiddetails.png)
 
     b. Snímek obrazovky, který zmiňuje požadované deklarace identity z Azure AD.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/claimsaad1.png)
+    ![Konfigurace jednotného přihlašování 14](./media/sapnetweaver-tutorial/claimsaad1.png)
 
     #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>Scénář: v SU01 vyberte ID uživatele SAP na základě konfigurované e-mailové adresy. V tomto případě by se mělo v su01 nakonfigurovat ID e-mailu pro každého uživatele, který vyžaduje jednotné přihlašování.
 
     a.  NameID Podrobnosti obrazovky z SAP.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
+    ![Konfigurace jednotného přihlašování 15](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
 
     b. snímek obrazovky, který zmiňuje požadované deklarace identity z Azure AD.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/claimsaad2.png)
+    ![Konfigurace jednotného přihlašování 16](./media/sapnetweaver-tutorial/claimsaad2.png)
 
 15. Klikněte na **Uložit** a pak kliknutím na **Povolit** povolte poskytovatele identity.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/configuration1.png)
+    ![Konfigurace jednotného přihlašování 17](./media/sapnetweaver-tutorial/configuration1.png)
 
 16. Po zobrazení výzvy klikněte na **OK** .
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/configuration2.png)
+    ![Konfigurace jednotného přihlašování 18](./media/sapnetweaver-tutorial/configuration2.png)
 
     ### <a name="create-sap-netweaver-test-user"></a>Vytvořit testovacího uživatele SAP NetWeaver
 
@@ -315,7 +310,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Výše uvedená adresa URL by vám měla přebrat pod uvedenou obrazovkou. Pokud máte přístup k této stránce, instalace služby Jednotné přihlašování k Azure AD se úspěšně dokončila.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/testingsso.png)
+    ![testování jednotného přihlašování](./media/sapnetweaver-tutorial/testingsso.png)
 
 3. Pokud se zobrazí výzva k zadání uživatelského jména & hesla, Diagnostikujte prosím problém povolením trasování pod adresou URL.
 
@@ -327,17 +322,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejít na SPRO a najít **služby Aktivace a údržba**.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth01.png)
+    ![Aktivace a údržba služeb](./media/sapnetweaver-tutorial/oauth01.png)
 
 3. V tomto příkladu chceme připojit službu OData: `DAAG_MNGGRP` s OAuth pro jednotné přihlašování Azure AD. Pro službu použijte hledání názvu technické služby a v `DAAG_MNGGRP` případě, že ještě není aktivní (podívejte se na `green` kartu uzly pro bránu firewall), se už neaktivuje. Zajistěte, aby byl systémový alias (připojený back-end systém, kde je služba skutečně spuštěná) správný.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth02.png)
+    ![Služba OData](./media/sapnetweaver-tutorial/oauth02.png)
 
     * Pak na horním panelu tlačítek klikněte na (pushbutton) **OAuth** a přiřaďte `scope` (nechejte výchozí název nabídnutý).
 
 4. V našem příkladu je rozsah `DAAG_MNGGRP_001` generovaný z názvu služby tím, že automaticky přidá číslo. `/IWFND/R_OAUTH_SCOPES`Pomocí sestavy lze změnit název oboru nebo vytvořit ručně.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth03.png)
+    ![Konfigurace OAuth](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
     > Zpráva `soft state status is not supported` – může být ignorována, nejedná se o problém. Další podrobnosti najdete [tady](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) .
@@ -359,32 +354,26 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejděte na T-Code: **SOAUTH2** a zadejte popis a pak klikněte na **Další**.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth04.png)
+    ![SOAUTH2](./media/sapnetweaver-tutorial/oauth04.png)
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth05.png)
+    ![ID klienta OAuth 2,0](./media/sapnetweaver-tutorial/oauth05.png)
 
 3. V rozevíracím seznamu vyberte už přidané **typu Saml2 IDP – Azure AD** a uložte ho.
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth06.png)
+    ![TYPU Saml2 IdP – Azure AD 1](./media/sapnetweaver-tutorial/oauth06.png)
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth07.png)
+    ![TYPU Saml2 IdP – Azure AD 2](./media/sapnetweaver-tutorial/oauth07.png)
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth08.png)
+    ![TYPU Saml2 IdP – Azure AD 3](./media/sapnetweaver-tutorial/oauth08.png)
 
 4. Kliknutím na **Přidat** v části přiřazení oboru přidejte dřív vytvořený rozsah: `DAAG_MNGGRP_001`
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth09.png)
+    ![Obor](./media/sapnetweaver-tutorial/oauth09.png)
 
-    ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/oauth10.png)
+    ![přiřazení oboru](./media/sapnetweaver-tutorial/oauth10.png)
 
 5. Klikněte na tlačítko **Dokončit**.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="next-steps"></a>Další kroky
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Vyzkoušejte SAP NetWeaver s Azure AD](https://aad.portal.azure.com/)
+Po nakonfigurování Azure AD SAP NetWeaver můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

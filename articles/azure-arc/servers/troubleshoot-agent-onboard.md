@@ -1,18 +1,18 @@
 ---
-title: Řešení potíží s připojením agenta Azure ARC s podporou serverů (Preview)
-description: V tomto článku se dozvíte, jak řešit problémy s agentem připojeného počítače, který se při pokusu o připojení ke službě vyskytnout u serverů s podporou ARC Azure (Preview).
-ms.date: 07/20/2020
+title: Řešení potíží s připojením agenta s povolenými servery Azure ARC
+description: V tomto článku se dozvíte, jak řešit problémy s agentem připojeného počítače, který se při pokusu o připojení ke službě vyskytnout u serverů s podporou ARC Azure.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213546"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900677"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Řešení potíží s připojením agenta připojeného počítače
 
-Tento článek poskytuje informace o řešení potíží a řešení problémů, ke kterým může dojít při pokusu o konfiguraci serveru s podporou Azure ARC (verze Preview) připojeného agenta počítače pro Windows nebo Linux. Součástí jsou i metody interaktivního i navýšení instalace při konfiguraci připojení ke službě. Obecné informace najdete v tématu [Přehled serverů s podporou ARC](./overview.md).
+Tento článek poskytuje informace o řešení potíží a řešení problémů, ke kterým může dojít při pokusu o konfiguraci serverů s podporou Azure ARC připojeného agenta počítače pro Windows nebo Linux. Součástí jsou i metody interaktivního i navýšení instalace při konfiguraci připojení ke službě. Obecné informace najdete v tématu [Přehled serverů s podporou ARC](./overview.md).
 
 ## <a name="agent-verbose-log"></a>Podrobný protokol agenta
 
@@ -79,7 +79,7 @@ V následující tabulce jsou uvedené některé známé chyby a návrhy, jak je
 |Nepovedlo se AzcmagentConnectovat prostředek ARM. |`The subscription is not registered to use namespace 'Microsoft.HybridCompute'` |Poskytovatelé prostředků Azure nejsou zaregistrovaní. |Zaregistrujte [poskytovatele prostředků](./agent-overview.md#register-azure-resource-providers). |
 |Nepovedlo se AzcmagentConnectovat prostředek ARM. |`Get https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01?api-version=2019-03-18-preview:  Forbidden` |Proxy server nebo brána firewall blokují přístup ke `management.azure.com` koncovému bodu. |Ověřte připojení ke koncovému bodu, které není blokované bránou firewall nebo proxy server. |
 
-<a name="footnote1"></a><sup>1</sup> Pokud je tento objekt zásad skupiny povolený a vztahuje se na počítače s připojeným agentem počítače, odstraní se profil uživatele přidružený k předdefinovanému účtu zadanému pro službu *himds* . V důsledku toho také odstraní ověřovací certifikát používaný ke komunikaci se službou uloženou v mezipaměti místního úložiště certifikátů po dobu 30 dnů. Před uplynutím lhůty 30 dnů se provede pokus o obnovení certifikátu. Pokud chcete tento problém vyřešit, použijte postup [zrušení registrace počítače](manage-agent.md#unregister-machine) a pak ho znovu zaregistrujte se spuštěnou službou `azcmagent connect` .
+<a name="footnote1"></a><sup>1</sup> Pokud je tento objekt zásad skupiny povolený a vztahuje se na počítače s připojeným agentem počítače, odstraní se profil uživatele přidružený k předdefinovanému účtu zadanému pro službu *himds* . V důsledku toho také odstraní ověřovací certifikát používaný ke komunikaci se službou uloženou v mezipaměti místního úložiště certifikátů po dobu 30 dnů. Před uplynutím 30denní lhůty se provede pokus o obnovení certifikátu. Pokud chcete tento problém vyřešit, použijte postup [zrušení registrace počítače](manage-agent.md#unregister-machine) a pak ho znovu zaregistrujte se spuštěnou službou `azcmagent connect` .
 
 ## <a name="next-steps"></a>Další kroky
 

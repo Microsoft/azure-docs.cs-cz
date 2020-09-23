@@ -1,14 +1,14 @@
 ---
 title: Ukázkové ovládací prvky podrobného plánu pro úroveň úderu DoD. 5
 description: Mapování ovládacího prvku v ukázce 5 podrobného plánu úrovně dopadu DoD. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a7d1439a73cf387cee773d558ced50ce1c07f6dc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 456560a8042b239a4d53e1c309742650c00bfa6a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921312"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978369"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>Mapování ovládacího prvku pro vzorek dopadu na 5. plán na úrovni účinku
 
@@ -307,11 +307,8 @@ Tento podrobný plán vám pomůže spravovat chyby v systému tím, že přiřa
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>-02 (06) Chyba při nápravě | Odebrání předchozích verzí softwaru nebo firmwaru
 
-Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit, aby aplikace používaly nejnovější verzi .NET Framework, HTTP, Java, PHP, Pythonu a TLS. V tomto podrobném plánu se taky přiřadí definice zásady, která zajistí, že se služby Kubernetes upgradují na jeho nezranitelnou verzi.
+Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit, aby aplikace používaly nejnovější verzi HTTP, Java, PHP, Pythonu a TLS. V tomto podrobném plánu se taky přiřadí definice zásady, která zajistí, že se služby Kubernetes upgradují na jeho nezranitelnou verzi.
 
-- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást aplikace API.
-- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást Function App
-- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást webové aplikace.
 - Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění aplikace API.
 - Ujistěte se, že hodnota HTTP Version je nejnovější, pokud se používá ke spuštění aplikace Function App.
 - Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění webové aplikace.
@@ -319,7 +316,6 @@ Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit
 - Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást aplikace Function App.
 - Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást webové aplikace.
 - Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace API.
-- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace Function App.
 - Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást webové aplikace.
 - Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace API.
 - Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace Function App.

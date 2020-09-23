@@ -7,20 +7,17 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f901833caf0623de643e0372c53658fa7da8c8be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 09/22/2020
+ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463554"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971403"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>Zabezpečený přístup k datům v účtech úložiště pomocí výjimky důvěryhodné služby
 
 Indexery, které přistupují k datům v účtech úložiště, můžou využít funkci [výjimky důvěryhodné služby](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) k zabezpečení přístupu k datům. Tento mechanismus nabízí zákazníkům, kteří nemůžou udělit [přístup k indexeru prostřednictvím pravidel brány firewall protokolu IP](search-indexer-howto-access-ip-restricted.md) , jednoduchou, zabezpečenou a bezplatnou alternativou pro přístup k datům v účtech úložiště.
-
-> [!NOTE]
-> Přístup k účtu úložiště prostřednictvím přiřazené systémové identity služby vyhledávání je stále ve verzi Preview. Tato funkce ve verzi Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>Krok 1: Konfigurace připojení k účtu úložiště prostřednictvím identity
 

@@ -1,25 +1,22 @@
 ---
-title: Nastavení připojení k Azure SQL Database pomocí spravované identity (Preview)
+title: Nastavení připojení k Azure SQL Database pomocí spravované identity
 titleSuffix: Azure Cognitive Search
-description: Naučte se, jak nastavit připojení indexeru k Azure SQL Database pomocí spravované identity (Preview).
+description: Naučte se, jak nastavit připojení indexeru k Azure SQL Database pomocí spravované identity.
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: 9f90125edeee453dc9e8b8b80f8eb09d9fc6e84c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924125"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971526"
 ---
-# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Nastavení připojení indexeru k Azure SQL Database pomocí spravované identity (Preview)
-
-> [!IMPORTANT] 
-> Podpora nastavení připojení ke zdroji dat pomocí spravované identity je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Nastavení připojení indexeru k Azure SQL Database pomocí spravované identity
 
 Tato stránka popisuje, jak nastavit připojení indexeru k Azure SQL Database pomocí spravované identity namísto zadání přihlašovacích údajů do připojovacího řetězce objektu zdroje dat.
 
@@ -97,7 +94,7 @@ V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst
 
 ### <a name="5---create-the-data-source"></a>5. vytvoření zdroje dat
 
-[REST API](/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z Azure SQL Database pomocí [REST API](/rest/api/searchservice/create-data-source) a spravovaného připojovacího řetězce identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z Azure SQL Database pomocí [REST API](/rest/api/searchservice/create-data-source) a spravovaného připojovacího řetězce identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
 
 Při vytváření zdroje dat pomocí [REST API](/rest/api/searchservice/create-data-source)musí mít zdroj dat následující požadované vlastnosti:
 
@@ -173,7 +170,7 @@ Další informace o rozhraní API Create indexeru najdete v části [Vytvoření
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se při pokusu indexeru o připojení ke zdroji dat zobrazí chybová zpráva s informacemi o tom, že klient nemá povolený přístup k serveru, podívejte se na [běžné chyby indexeru](./search-indexer-troubleshooting.md).
 

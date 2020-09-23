@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74967333"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884421"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Společné umístění tabulky v Azure Database for PostgreSQL – měřítko (Citus)
 
@@ -22,7 +22,7 @@ Spolupoloha znamená ukládání souvisejících informací společně na stejn�
 
 V Azure Database for PostgreSQL – Citus () se řádek ukládá do horizontálních oddílů, pokud hodnota hash hodnoty v distribučním sloupci spadá do rozsahu hodnot hash horizontálních oddílů. Horizontálních oddílů se stejným rozsahem hodnot hash jsou vždy umístěny do stejného uzlu. Řádky s hodnotami rovnoměrného distribučního sloupce jsou vždy na stejném uzlu napříč tabulkami.
 
-![Horizontálních oddílů](media/concepts-hyperscale-colocation/colocation-shards.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-shards.png" alt-text="Horizontálních oddílů":::
 
 ## <a name="a-practical-example-of-colocation"></a>Praktický příklad kolokace
 
@@ -96,7 +96,7 @@ Následně je třeba, aby se výsledky ze dvou kroků spojily s aplikací.
 
 Spuštění dotazů musí prostudovat data v horizontálních oddílů rozptýlených napříč uzly.
 
-![Neefektivní dotazy](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Neefektivní dotazy":::
 
 V takovém případě distribuce dat vytváří zásadní nevýhody:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 Vzhledem k tomu, že filtr a spojení tenant_id, Citus (škálování) ví, že je možné odpovědět na celý dotaz pomocí sady společně umístěných horizontálních oddílů, které obsahují data tohoto konkrétního tenanta. Jeden uzel PostgreSQL může odpovědět na dotaz v jednom kroku.
 
-![Lepší dotaz](media/concepts-hyperscale-colocation/colocation-better-query.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Lepší dotaz":::
 
 V některých případech se dotazy a schémata tabulek musí změnit tak, aby zahrnovaly ID tenanta v jedinečných omezeních a podmínkách připojení. Tato změna je obvykle jednoduchá.
 

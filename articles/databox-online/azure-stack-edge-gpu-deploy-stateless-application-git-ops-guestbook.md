@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace PHP kniha pro Kubernetes na zařízení GPU na Azure Stack hraničních zařízeních s povoleným obloukem | Microsoft Docs
-description: Popisuje, jak nasadit bezstavovou aplikaci PHP v programu pro vytváření souborů s Redis pomocí GitOps v clusteru Kubernetes s povoleným ARC pro vaše zařízení Azure Stack Edge.
+title: Nasazení aplikace PHP v knize webkniha na Kubernetes s povoleným obloukem na zařízení GPU pro Azure Stack Edge | Microsoft Docs
+description: Popisuje, jak nasadit bezstavovou aplikaci PHP v programu pro vytváření souborů s Redis pomocí GitOps v clusteru Kubernetes s povoleným ARC pro vaše zařízení Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319288"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899557"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Nasazení bezstavové aplikace v jazyce PHP v jazyce PHP s Redis na Kubernetes na Azure Stack hraničních PROCESORů s povoleným obloukem
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Nasazení bezstavové aplikace v jazyce PHP s Redisem v clusteru Kubernetes s povoleným obloukem na Azure Stack Edge pro GPU
 
 V tomto článku se dozvíte, jak sestavit a nasadit jednoduchou vícevrstvou webovou aplikaci s využitím Kubernetes a ARC Azure. Tento příklad se skládá z následujících součástí:
 
@@ -23,9 +23,9 @@ V tomto článku se dozvíte, jak sestavit a nasadit jednoduchou vícevrstvou we
 - Více replikovaných instancí Redis, které slouží ke čtení
 - Víc instancí webu front-endu
 
-Nasazení se provádí pomocí GitOps na clusteru Kubernetes s povoleným ARC na vašem zařízení Azure Stack Edge. 
+Nasazení se provádí pomocí GitOps na clusteru Kubernetes s povoleným ARC na vašem zařízení Azure Stack Edge pro. 
 
-Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
+Tento postup je určený pro uživatele, kteří zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -34,30 +34,30 @@ Než budete moct nasadit bezstavovou aplikaci, ujistěte se, že jste na svém z
 
 ### <a name="for-device"></a>Zařízení
 
-1. Máte přihlašovací údaje pro přihlášení k Azure Stack hraničního zařízení s jedním uzlem.
+1. Máte přihlašovací údaje pro přihlášení k zařízení Azure Stack Edge pro s jedním uzlem.
     1. Zařízení se aktivuje. Viz [Aktivace zařízení](azure-stack-edge-gpu-deploy-activate.md).
     1. Zařízení má výpočetní roli nakonfigurovanou prostřednictvím Azure Portal a má cluster Kubernetes. Viz [Konfigurace výpočtů](azure-stack-edge-gpu-deploy-configure-compute.md).
 
-1. Na svém zařízení jste povolili Azure ARC na stávajícím clusteru Kubernetes a máte odpovídající prostředek Azure ARC v Azure Portal. Podrobný postup najdete v tématu [Povolení ARC Azure na Azure Stack hraničním zařízení](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).
+1. Na svém zařízení jste povolili Azure ARC na stávajícím clusteru Kubernetes a máte odpovídající prostředek Azure ARC v Azure Portal. Podrobný postup najdete v tématu [Povolení ARC Azure na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).
 
 ### <a name="for-client-accessing-the-device"></a>Pro klientský přístup k zařízení
 
-1. Máte klientský systém Windows, který se bude používat pro přístup k Azure Stack hraničního zařízení.
+1. Máte klientský systém Windows, který se bude používat pro přístup k zařízení Azure Stack Edge pro.
   
     - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Můžete mít i jiné klienty s [podporovaným operačním systémem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Tento článek popisuje postup při použití klienta systému Windows. 
     
-1. Dokončili jste postup popsaný v tématu [přístup ke clusteru Kubernetes na zařízení Azure Stack Edge](azure-stack-edge-gpu-create-kubernetes-cluster.md). Máte:
+1. Dokončili jste postup popsaný v tématu [přístup ke clusteru Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md). Máte:
     
     - Nainstalováno `kubectl` na klienta  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - Ujistěte se, že `kubectl` verze klienta nepřekračuje jednu verzi z hlavní verze Kubernetes, která běží na vašem zařízení Azure Stack Edge. 
+    - Ujistěte se, že `kubectl` verze klienta není ve verzi Kubernetes Master spuštěná na vašem zařízení Azure Stack Edge pro. 
       - Slouží `kubectl version` ke kontrole verze kubectl spuštěné v klientovi. Poznamenejte si plnou verzi.
-      - V místním uživatelském rozhraní zařízení Azure Stack Edge si přečtěte **Přehled** a poznamenejte si číslo Kubernetes softwaru. 
+      - V místním uživatelském rozhraní zařízení Azure Stack Edge pro se podívejte na **Přehled** a poznamenejte si číslo Kubernetes softwaru. 
       - Ověřte, že tyto dvě verze mají kompatibilitu z mapování uvedeného v podporované verzi Kubernetes. <!--insert link-->.
 
-1. Máte [konfiguraci GitOps, kterou můžete použít ke spuštění nasazení ARC Azure](https://github.com/kagoyal/dbehaikudemo). V tomto příkladu použijete následující `yaml` soubory k nasazení na zařízení Azure Stack Edge.
+1. Máte [konfiguraci GitOps, kterou můžete použít ke spuštění nasazení ARC Azure](https://github.com/kagoyal/dbehaikudemo). V tomto příkladu použijete následující `yaml` soubory k nasazení na zařízení Azure Stack Edge pro.
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -176,4 +176,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte [se používat řídicí panel Kubernetes k monitorování nasazení na zařízení Azure Stack Edge](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) .
+Naučte [se používat řídicí panel Kubernetes k monitorování nasazení na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) .

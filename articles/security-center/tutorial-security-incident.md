@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076391"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901090"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Kurz: Reakce na incidenty zabezpečení
 Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte, jak:
@@ -29,10 +29,10 @@ Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomoc�
 > * Dalším šetřením určit hlavní příčinu a rozsah incidentu zabezpečení
 > * Prohledávat data o zabezpečení v rámci vyšetřování
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
-Pro krokování s funkcemi popsanými v tomto kurzu musíte být v Security Center cenové úrovně Standard. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard.
+## <a name="prerequisites"></a>Požadavky
+Pro krokování s funkcemi popsanými v tomto kurzu musíte mít povolený Azure Defender. Azure Defender si můžete vyzkoušet bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Rychlý Start [Začínáme s Security Center](security-center-get-started.md) vás provede upgradem.
 
 ## <a name="scenario"></a>Scénář
 Společnost Contoso nedávno provedla migraci některých místních prostředků do Azure, včetně některých databází SQL a úloh obchodního systému založených na virtuálních počítačích. Nyní má Hlavní tým reakce na incidenty zabezpečení počítačů (CSIRT) společnosti Contoso problém s vyšetřováním problémů zabezpečení kvůli tomu, že analytické funkce zabezpečení nejsou integrované se současnými nástroji reakce na incidenty. Tato nedostatečná integrace představuje problém během fáze Zjištění (příliš mnoho falešných poplachů) a také během fází Posouzení a Diagnostika. Jako součást této migrace se rozhodli vyjádřit výslovný souhlas s tím, aby jim Security Center pomohl vyřešit tento problém.
@@ -68,13 +68,13 @@ Security Center poskytuje jednotné zobrazení všech výstrah zabezpečení. V�
 
    ![Výstrahy zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
-2. V seznamu výstrah kliknutím na incident zabezpečení, který je kolekcí výstrah, zobrazte další informace o tomto incidentu. Otevře se stránka **Byl zjištěn incident zabezpečení**.
+2. V seznamu výstrah vyberte incident zabezpečení, což je kolekce výstrah, abyste se dozvěděli víc o tomto incidentu. Otevře se stránka **Byl zjištěn incident zabezpečení**.
 
-   ![Incident zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![Zjištěn incident zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. Na této obrazovce uvidíte incident zabezpečení nahoře a pod ním seznam výstrah, které jsou jeho součástí. Klikněte na výstrahu, kterou chcete prošetřit – zobrazí se další informace.
 
-   ![Incident zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![Podrobnosti výstrahy od incidentu](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
    Výstrahy mohou být různých typů, další podrobnosti o typech výstrah a možnostech nápravy si přečtěte v článku [Význam výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). U výstrah, které je možné bezpečně zrušit, klikněte pravým tlačítkem na výstrahu a vyberte možnost **Zavřít**:
 
@@ -99,13 +99,12 @@ Vyhledávání se provádí na řídicím panelu **Security Center** – klikně
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy, pokračujte v používání úrovně Standard a nechejte Automatické zřizování zapnuté. Pokud neplánujete pokračovat nebo se chcete vrátit na úroveň Free:
+Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy, nechte Automatické zřizování a povolený program Azure Defender. Pokud nechcete pokračovat nebo chcete zakázat Azure Defender:
 
-1. Vraťte se do hlavní nabídky služby Security Center a vyberte **Zásady zabezpečení**.
-2. Vyberte předplatné nebo zásady, které chcete vrátit na úroveň Free. Otevře se okno **Zásady zabezpečení**.
-3. V části **SOUČÁSTI ZÁSAD** vyberte **Cenová úroveň**.
-4. Výběrem **bezplatné** můžete změnit předplatné z úrovně Standard na úroveň Free.
-5. Vyberte **Uložit**.
+1. Vraťte se do hlavní nabídky Security Center a vyberte **ceny a nastavení**.
+1. Vyberte předplatné, které chcete downgradovat.
+1. Nastavte v **Azure Defenderu** na vypnuto.
+1. Vyberte **Uložit**.
 
 Pokud chcete vypnout automatické zřizování:
 

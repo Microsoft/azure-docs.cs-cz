@@ -2,22 +2,22 @@
 title: 'Rychlý Start: Language Understanding (LUIS) SDK klientské knihovny'
 description: V tomto rychlém startu pomocí jazyků C#, Python nebo JavaScript vytvoříte a Dotazujte aplikaci LUIS pomocí klientských knihoven LUIS SDK.
 ms.topic: quickstart
-ms.date: 09/01/2020
-keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NLP, porozumění přirozenému jazyku, NLU, konverzace AI, konverzace AI, AI chatovací robot, chatovací robot maker, LUIS, NLP AI, Luis AI, Azure Luis, principy přirozeného jazyka
+ms.date: 09/14/2020
+keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NLP, LUIS, Azure Luis, přirozené jazykové porozumění, AI chatovací robot, chatovací robot maker, porozumění přirozenému jazyku
 ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 6bcdca85125d44475fadfd195c1dfda88f761f88
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 64288bbffa2d2c24e2f719477d98426f52da4070
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323231"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972622"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>Rychlý Start: Language Understanding (LUIS) SDK klientské knihovny pro vytvoření a dotazování aplikace LUIS
 
-V tomto rychlém startu pomocí jazyků C#, Python nebo JavaScript vytvoříte a Dotazujte aplikaci LUIS pomocí klientských knihoven LUIS SDK.
+V tomto rychlém startu pomocí C#, Pythonu nebo JavaScriptu vytvořte a Dotazujte aplikaci Azure LUIS umělal Intelligence (AI) pomocí klientských knihoven LUIS SDK.
 
-Language Understanding (LUIS) vám umožňuje použít vlastní informace o strojovém učení na konverzaci uživatele, text přirozeného jazyka a předpovědět celkový význam a vyžádat si relevantní a podrobné informace.
+Language Understanding (LUIS) umožňuje použít NLP (přirozené jazykové zpracování) na konverzaci uživatele, text přirozeného jazyka a předpovědět celkový význam a vyžádat si relevantní, podrobné informace.
 
 * Klientská knihovna pro **vytváření obsahu** umožňuje vytváření, úpravy, výuku a publikování aplikace Luis. * Klientská knihovna **sady SDK předpovědi prostředí** umožňuje dotazování publikované aplikace.
 
@@ -45,7 +45,7 @@ Tuto aplikaci můžete z [portálu Luis](https://www.luis.ai) odstranit a odstra
 * Školení – Pokud obdržíte chybu školení, obvykle to indikuje prázdnou aplikaci (žádné záměry s příkladem projevy) nebo aplikaci s úmysly nebo nepoškozenými entitami.
 * Různé chyby – protože kód volá do klientských knihoven s objekty text a JSON, ujistěte se, že jste kód nezměnili.
 
-Další chyby – Pokud se zobrazí chyba, která není pokrytá v předchozím seznamu, dejte nám vědět o zpětné vazbě na této stránce níže. Zahrňte programovací jazyk a verzi nainstalovaných klientských knihoven. 
+Další chyby – Pokud se zobrazí chyba, která není pokrytá v předchozím seznamu, dejte nám vědět o zpětné vazbě na této stránce níže. Zahrňte programovací jazyk a verzi nainstalovaných klientských knihoven.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -53,3 +53,5 @@ Další chyby – Pokud se zobrazí chyba, která není pokrytá v předchozím 
 * [Co je nového?](whats-new.md)
 * [Záměry](luis-concept-intent.md), [entity](luis-concept-entity-types.md)a [Příklady projevy](luis-concept-utterance.md)a [předem připravených entit](luis-reference-prebuilt-entities.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code).
+* Porozumění přirozenému jazyku: [porozumění přirozenému jazyku (NLU) a zpracování přirozeného jazyka (NLP)](artificial-intelligence.md)
+* Roboty: [AI chatovacích robotů o](luis-csharp-tutorial-bf-v4.md "kurz k chatovací robot maker")

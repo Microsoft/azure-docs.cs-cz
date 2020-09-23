@@ -1,15 +1,15 @@
 ---
 title: Podrobnosti o dodržování předpisů pro CIS Microsoft Azure Foundation – srovnávací testy
 description: Podrobnosti o integrované iniciativě pro dodržování předpisů v modelu CIS Microsoft Azure Foundation Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 5953deef440ec83d481f4aa89e829b69f7822cc6
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7573544c29052090afb9f61cad20992352e3ebf6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017400"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981816"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>Podrobnosti o integrované iniciativě pro dodržování předpisů v modelu CIS Microsoft Azure Foundation
 
@@ -475,7 +475,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky srovnávacího p
 |---|---|---|---|
 |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |Network Watcher je místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v, do a z Azure. Monitorování úrovně scénáře umožňuje diagnostikovat problémy v zobrazení na úrovni koncových sítí. Nástroje pro diagnostiku a diagnostiku sítě, které jsou dostupné v Network Watcher, vám pomůžou pochopit, diagnostikovat a získávat přehledy vaší sítě v Azure. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
-## <a name="virtual-machines"></a>Virtuální počítače
+## <a name="virtual-machines"></a>Virtual Machines
 
 ### <a name="ensure-that-os-disk-are-encrypted"></a>Ujistěte se, že je disk s operačním systémem zašifrovaný.
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373500"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981454"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Povolit automatické ladění v Azure Portal pro monitorování dotazů a zlepšení výkonu úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Na úrovni serveru můžete zvolit dědění konfigurace automatického ladění
 
 Pokud chcete povolit automatické ladění na [serveru](logical-servers.md) v Azure SQL Database, přejděte na server v Azure Portal a pak v nabídce vyberte **Automatické ladění** .
 
-![Server](./media/automatic-tuning-enable/server.png)
+![Snímek obrazovky zobrazuje automatické ladění v Azure Portal, kde můžete použít možnosti pro server.](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > Upozorňujeme, že možnost **DROP_INDEX** v tuto chvíli není kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje.
@@ -77,7 +77,7 @@ Pokud chcete povolit automatické ladění pro izolovanou **databázi**, přejd�
 
 Jednotlivá nastavení automatického ladění je možné pro každou databázi nakonfigurovat samostatně. Můžete ručně nakonfigurovat jednotlivou možnost automatického ladění nebo určit, že nastavení zdědí ze serveru.
 
-![Databáze](./media/automatic-tuning-enable/database.png)
+![Snímek obrazovky zobrazuje automatické ladění v Azure Portal, kde můžete použít možnosti pro jednu databázi.](./media/automatic-tuning-enable/database.png)
 
 Upozorňujeme, že možnost DROP_INDEX v tuto chvíli není kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené.
 

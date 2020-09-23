@@ -10,28 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: aahi
-ms.openlocfilehash: b242530b09f399a84f10a40ea35e21c1119f52b1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b51319716035cc4f59d50922846b067f4eda31d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321006"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900483"
 ---
-# <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
+# <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech 
 
 Kontejnery umožňují spouštět některá z rozhraní API služby Speech ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner služby Speech.
 
-Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplikace pro zpracování řeči, která je optimalizovaná pro robustní cloudové funkce i umístění v hraničních zařízeních. K dispozici je pět různých kontejnerů. Dva standardní kontejnery jsou **Převod řeči na text**a **Převod textu na řeč**. Mezi dva vlastní kontejnery patří **Custom Speech** textu a **vlastní převod textu na řeč**. **Neuronové převod textu na řeč** navíc poskytuje více přirozených projevy díky použití pokročilejšího modelu. Kontejnery řeči mají stejné [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) jako cloudové služby Azure Speech.
+Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplikace pro zpracování řeči, která je optimalizovaná pro robustní cloudové funkce i umístění v hraničních zařízeních. K dispozici je několik kontejnerů, které používají stejné [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) jako cloudové služby Azure Speech.
+
 
 > [!IMPORTANT]
-> Všechny kontejnery řeči jsou aktuálně nabízeny jako součást [veřejné "gated" verze Preview](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services). Oznámení se provede, když se v kontejnerech rozpoznávání řeči dosáhne všeobecné dostupnosti (GA).
+> K dispozici jsou nyní obecně dostupné následující kontejnery řeči:
+> * Standardní převod řeči na text
+> * Custom Speech na text
+> * Standardní převod textu na řeč
+> 
+> Následující kontejnery řeči jsou v ověřovaném náhledu.
+> * Vlastní převod textu na řeč
+> * Rozpoznávání jazyka řeči 
+> * Neuronové převodu textu na řeč
+>
+> Chcete-li použít kontejnery řeči, musíte odeslat online žádost a nechat ji schválit. Další informace najdete v části **schválení žádosti v níže uvedeném kontejneru spustit kontejner** .
 
 | Funkce | Funkce | Latest (Nejnovější) |
 |--|--|--|
-| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.4.0 |
-| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.4.0 |
-| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.6.0 |
-| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.6.0 |
+| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | kládají |
+| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | kládají |
+| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
+| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
+| Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1,0 |
 | Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.1.0 |
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
@@ -45,16 +57,6 @@ Před použitím kontejnerů řeči je nutné splnit následující předpoklady
 | Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
 | Prostředek řeči | Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého klíče rozhraní API a identifikátoru URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách s přehledem a klíči pro Azure Portal **řeči** . Oba jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled** |
-
-
-## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
-
-Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) pro vyžádání přístupu ke kontejneru. 
-
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -82,6 +84,7 @@ Následující tabulka popisuje minimální a doporučené přidělení prostře
 | Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 | Převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 | Vlastní převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
+| Rozpoznávání jazyka řeči | 1 jádro, 1 GB paměti | 1 jádro, 1 GB paměti |
 | Neuronové převodu textu na řeč | 6 jader, 12 GB paměti | 8 jader, 16 GB paměti |
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
@@ -91,6 +94,13 @@ Základní a paměť odpovídají `--cpus` `--memory` nastavení a, která se po
 > [!NOTE]
 > Minimum a doporučené jsou založeny na omezeních Docker, *nikoli* na prostředky hostitelského počítače. Například kontejnery Speech-to-text namapují část velkých jazykových modelů a *doporučuje* se, aby se celý soubor vešel do paměti, což je dalších 4-6 GB. První spuštění obou kontejnerů může trvat delší dobu, protože modely jsou stránkované v paměti.
 
+## <a name="request-approval-to-the-run-the-container"></a>Žádost o schválení ke spuštění kontejneru
+
+Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) pro vyžádání přístupu ke kontejneru. 
+
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
+
+
 ## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí `docker pull`
 
 Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Registry.
@@ -99,31 +109,37 @@ Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Regi
 
 | Kontejner | Repository |
 |-----------|------------|
-| Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
+| Převod řeči na text | `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest` |
 
 # <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
 | Kontejner | Repository |
 |-----------|------------|
-| Custom Speech na text | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
+| Custom Speech na text | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest` |
 
 # <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
 | Kontejner | Repository |
 |-----------|------------|
-| Převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+| Převod textu na řeč | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest` |
 
 # <a name="neural-text-to-speech"></a>[Neuronové převodu textu na řeč](#tab/ntts)
 
 | Kontejner | Repository |
 |-----------|------------|
-| Neuronové převodu textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest` |
+| Neuronové převodu textu na řeč | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest` |
 
 # <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
 | Kontejner | Repository |
 |-----------|------------|
-| Vlastní převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
+| Vlastní převod textu na řeč | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest` |
+
+# <a name="speech-language-detection"></a>[Rozpoznávání jazyka řeči](#tab/lid)
+
+| Kontejner | Repository |
+|-----------|------------|
+| Rozpoznávání jazyka řeči | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest` |
 
 ***
 
@@ -138,7 +154,7 @@ Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Regi
 Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest
 ```
 
 > [!IMPORTANT]
@@ -167,7 +183,7 @@ Pro všechna podporovaná národní prostředí kontejneru **převodů řeči** 
 Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest
 ```
 
 > [!NOTE]
@@ -180,7 +196,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest
 ```
 
 > [!IMPORTANT]
@@ -212,7 +228,7 @@ U všech podporovaných národních prostředí a odpovídajících hlasů konte
 Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest
 ```
 
 > [!IMPORTANT]
@@ -244,11 +260,21 @@ Pro všechna podporovaná národní prostředí a odpovídající hlasy kontejne
 Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest
 ```
 
 > [!NOTE]
 > `locale` `voice` Vlastní kontejnery řeči a jsou určeny vlastním modelem ingestované kontejnerem.
+
+# <a name="speech-language-detection"></a>[Rozpoznávání jazyka řeči](#tab/lid)
+
+#### <a name="docker-pull-for-the-speech-language-detection-container"></a>Stažení Docker pro kontejner Rozpoznávání jazyka řeči
+
+Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+
+```Docker
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest
+```
 
 ***
 
@@ -269,7 +295,7 @@ Chcete-li spustit standardní kontejner *řeči na text* , spusťte následujíc
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
-containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
+mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -285,7 +311,7 @@ Tento příkaz:
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analýza mínění na výstup řeči na text 
 
-Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Například: 
+Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Příklad: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -295,7 +321,7 @@ Klíč a koncový bod jsou předány do kontejneru řeči jako argumenty, jak je
 
 ```bash
 docker run -it --rm -p 5000:5000 \
-containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest \
+mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \
@@ -344,7 +370,7 @@ Chcete-li spustit kontejner *Custom Speech-text* , spusťte následující `dock
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
 -v {VOLUME_MOUNT}:/usr/local/models \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text \
 ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -367,7 +393,7 @@ Pokud chcete spustit standardní kontejner převodu *textu na řeč* , spusťte 
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
-containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -386,7 +412,7 @@ Pokud chcete spustit kontejner *neuronové textu na řeč* , spusťte následuj�
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
-containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -425,7 +451,7 @@ Chcete-li spustit vlastní kontejner převodu *textu na řeč* , spusťte násle
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 -v {VOLUME_MOUNT}:/usr/local/models \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech \
 ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -442,6 +468,34 @@ Tento příkaz:
 * Pokud se vlastní model stáhl dříve, `ModelId` ignoruje se.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
+# <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/lid)
+
+Pokud chcete spustit *rozpoznávání jazyka kontejneru řeči* , spusťte následující `docker run` příkaz.
+
+```bash
+docker run --rm -it -p 5003:5003 --memory 1g --cpus 1 \
+mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+Tento příkaz: 
+
+* Spustí kontejner rozpoznávání jazyka řeči z image kontejneru.
+* Přiděluje 1 jádra procesoru a 1 gigabajt (GB) paměti.
+* Zveřejňuje port TCP 5003 a přiděluje pro kontejner pseudo TTY.
+* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+
+Pokud chcete tento kontejner spustit s kontejnerem převod řeči na text, můžete použít tuto [bitovou kopii Docker](https://hub.docker.com/r/antsu/on-prem-client). Po spuštění obou kontejnerů použijte tento příkaz Docker Run ke spuštění `speech-to-text-with-languagedetection-client` .
+
+```Docker
+docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-text-with-languagedetection-client ./audio/LanguageDetection_en-us.wav --host localhost --lport 5003 --sport 5000
+```
+
+> [!NOTE]
+> Zvýšení počtu souběžných volání může mít vliv na spolehlivost a latenci. Pro detekci jazyka doporučujeme maximálně 4 souběžných volání s využitím 1 CPU a s a 1 GB paměti. Pro hostitele, kteří mají 2 procesory a 2 GB paměti, doporučujeme maximálně 6 souběžných volání.
+
 ***
 
 > [!IMPORTANT]
@@ -452,10 +506,10 @@ Tento příkaz:
 > [!NOTE]
 > Pokud spouštíte více kontejnerů, použijte jedinečné číslo portu.
 
-| Containers | Adresa URL hostitele sady SDK | Protokol |
+| Kontejnery | Adresa URL hostitele sady SDK | Protokol |
 |--|--|--|
 | Standardní převod řeči na text a Custom Speech na text | `ws://localhost:5000` | WS |
-| Převod textu na řeč (včetně Standard, Custom a neuronové) | `http://localhost:5000` | HTTP |
+| Převod textu na řeč (včetně standardních, vlastních a neuronové), rozpoznávání jazyka | `http://localhost:5000` | HTTP |
 
 Další informace o používání protokolů WSS a HTTPS najdete v tématu [zabezpečení kontejnerů](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 
@@ -624,6 +678,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
   * *Převod textu na řeč*
   * *Vlastní převod textu na řeč*
   * *Neuronové převodu textu na řeč*
+  * *Rozpoznávání jazyka řeči*
 * Image kontejneru se stáhnou z registru kontejneru v Azure.
 * Image kontejneru se spouštějí v Docker.
 * Bez ohledu na to, jestli se používá REST API (jenom pro převod textu na řeč) nebo sadu SDK (převod řeči na text nebo převod textu na řeč), zadáváte identifikátor URI hostitele kontejneru. 

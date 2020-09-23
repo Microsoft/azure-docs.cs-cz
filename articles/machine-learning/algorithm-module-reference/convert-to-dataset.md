@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646263"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898710"
 ---
 # <a name="convert-to-dataset"></a>Převod na datovou sadu
 
-Tento článek popisuje, jak použít modul převést na datovou sadu v Návrháři Azure Machine Learning (Preview) k převedení libovolných dat kanálu do interního formátu návrháře.
+Tento článek popisuje, jak použít modul převést na datovou sadu v Návrháři Azure Machine Learning k převedení libovolných dat kanálu do interního formátu návrháře.
   
 Ve většině případů není převod vyžadován. Azure Machine Learning implicitně převádí data na formát nativní datové sady, když se v datech provede nějaká operace. 
 

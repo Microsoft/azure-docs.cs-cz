@@ -1,6 +1,6 @@
 ---
-title: Kurz k instalaci, rozbalení, stojanu, kabelu Azure Stack fyzického zařízení GPU | Microsoft Docs
-description: Druhý kurz instalace Azure Stack hraniční GPU zahrnuje postup pro rozbalení, stojan a kabelové fyzického zařízení.
+title: Kurz instalace – rozbalení, stojan, kabelová Azure Stack pro fyzické zařízení GPU pro procesory | Microsoft Docs
+description: Druhý kurz o instalaci Azure Stack pro grafický procesor Edge pro zahrnuje postup rozbalení, racku a kabelu fyzického zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
+ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421369"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900013"
 ---
-# <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Kurz: instalace Azure Stack Edge pomocí GPU
+# <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Kurz: instalace Azure Stack Edge pro s grafickým procesorem
 
-V tomto kurzu se dozvíte, jak nainstalovat fyzické zařízení Azure Stack Edge s grafickým procesorem. Postup instalace zahrnuje rozbalení, připojení do racku a zapojení do kabeláže zařízení. 
+V tomto kurzu se dozvíte, jak nainstalovat fyzické zařízení Azure Stack Edge pro s grafickým procesorem. Postup instalace zahrnuje rozbalení, připojení do racku a zapojení do kabeláže zařízení. 
 
 Dokončení instalace může trvat přibližně dvě hodiny.
 
@@ -37,12 +37,12 @@ Požadavky pro instalaci fyzického zařízení jsou následující:
 
 Než začnete, ujistěte se, že:
 
-* Dokončili jste všechny kroky v části [Příprava na nasazení Azure Stack Edge s grafickým procesorem](azure-stack-edge-gpu-deploy-prep.md).
+* Dokončili jste všechny kroky v části [Příprava na nasazení Azure Stack Edge pro s grafickým procesorem](azure-stack-edge-gpu-deploy-prep.md).
     * Vytvořili jste prostředek Azure Stack Edge pro nasazení zařízení.
     * Vygenerovali jste aktivační klíč pro aktivaci zařízení pomocí Azure Stackho hraničního prostředku.
 
  
-### <a name="for-the-azure-stack-edge-physical-device"></a>Pro fyzické zařízení Azure Stack Edge
+### <a name="for-the-azure-stack-edge-pro-physical-device"></a>Pro fyzické zařízení Azure Stack Edge pro
 
 Před nasazením zařízení:
 
@@ -58,7 +58,7 @@ Před nasazením zařízení:
 
 Než začnete:
 
-- Projděte si požadavky na síť pro nasazení Azure Stack Edge a konfigurujte síť datacenter podle požadavků. Další informace najdete v tématu [Azure Stack požadavky na síť Edge](azure-stack-edge-system-requirements.md#networking-port-requirements).
+- Projděte si požadavky na síť pro nasazení Azure Stack Edge pro a konfigurujte síť datacenter podle požadavků. Další informace najdete v tématu [požadavky na síť Azure Stack Edge pro](azure-stack-edge-system-requirements.md#networking-port-requirements).
 
 - Ujistěte se, že minimální šířka pásma internetu je 20 MB/s pro optimální fungování zařízení.
 
@@ -70,7 +70,7 @@ Toto zařízení se dodává v jedné krabici. Zařízení rozbalíte pomocí n�
 1. Umístěte krabici na rovný povrch.
 2. Zkontrolujte krabici a výplňový materiál, jestli nejsou pomačkané, pořezané nebo poškozené vodou nebo jestli nenesou stopy jiného zjevného poškození. Pokud je box nebo balení vážně poškozené, neotevírejte ho. Obraťte se na podporu Microsoftu, která vám pomůže určit, jestli je zařízení v dobrém funkčním stavu.
 3. Rozbalte krabici. Po rozbalení krabice se ujistěte, že obsahuje následující:
-    - Jedna skříň Azure Stack hraniční zařízení
+    - Jedna skříň zařízení Azure Stack Edge pro
     - Dva napájecí kabely
     - Jedno sestavení pro železniční sadu
     - Bezpečnostní brožura, informace o životním prostředí a regulativní informace
@@ -83,7 +83,7 @@ Pokud jste neobdrželi všechny uvedené položky, obraťte se na [Podpora Micro
 Zařízení musí být nainstalované na standardním racku na 19 palců. Pomocí následujícího postupu Zapojte zařízení do racku na standardní skříň na 19 palců.
 
 > [!IMPORTANT]
-> Pro správnou operaci musí být zařízení Azure Stack Edge připojená k racku.
+> Zařízení Azure Stack Edge pro musí být připojená do racku pro správnou operaci.
 
 
 ### <a name="prerequisites"></a>Požadavky
@@ -157,11 +157,11 @@ Vyhledejte komponenty pro instalaci sestavení se sadou pro železnici:
 
 ## <a name="cable-the-device"></a>Zapojení kabeláže zařízení
 
-Směrování kabelů a potom kabel zařízení. Následující postupy vysvětlují, jak Azure Stack hraniční zařízení pro napájení a síť kabelem.
+Směrování kabelů a potom kabel zařízení. Následující postupy vysvětlují, jak zařízení Azure Stack Edge pro pro napájení a síť kabelem.
 
 Než začnete kabelovat vaše zařízení, budete potřebovat následující:
 
-- Vaše fyzické zařízení Azure Stack hraničního zařízení, rozbalené a připojené k racku.
+- Vaše fyzické zařízení Azure Stack Edge pro, nebalené a připojené k racku.
 - Dva napájecí kabely
 - Alespoň jeden síťový kabel 1 GbE RJ-45 pro připojení k rozhraní pro správu. Na zařízení jsou dvě síťová rozhraní 1 GbE – jedno pro správu a druhé pro data.
 - Jeden měděný kabel 25 GbE SFP+ pro každé datové síťové rozhraní, které chcete konfigurovat. Aspoň jedno rozhraní datové sítě z portu 2, PORT 3, port 4, PORT 5 nebo PORT 6 musí být připojené k Internetu (s připojením k Azure).  
@@ -171,9 +171,9 @@ Než začnete kabelovat vaše zařízení, budete potřebovat následující:
 > [!NOTE]
 > - Pokud se připojujete pouze k jednomu síťovému rozhraní, doporučujeme, abyste pro posílání dat do Azure používali síťové rozhraní 25 nebo 10 GbE, jako je PORT 3, PORT 4, PORT 5 nebo PORT 6. 
 > - Pro zajištění nejlepšího výkonu a zpracování velkých objemů dat zvažte připojení všech datových portů.
-> - Azure Stack hraniční zařízení by se mělo připojit k síti datacenter, aby mohl ingestovat data ze serverů zdrojů dat.
+> - Zařízení Azure Stack Edge pro by mělo být připojené k síti datacenter, aby mohl ingestovat data ze serverů zdrojů dat.
 
-Na Azure Stack hraniční zařízení:
+Na zařízení Azure Stack Edge pro:
 
 - Přední panel má diskové jednotky a tlačítko napájení.
 
@@ -232,7 +232,7 @@ Proveďte následující kroky, které zařízení zapojte do sítě pro napáje
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s tématy Azure Stack Edge, jako je například:
+V tomto kurzu jste se dozvěděli o Azure Stack tématech pro Edge pro, jako jsou:
 
 > [!div class="checklist"]
 > * Rozbalení zařízení
@@ -242,4 +242,4 @@ V tomto kurzu jste se seznámili s tématy Azure Stack Edge, jako je například
 Přejděte k dalšímu kurzu, kde se dozvíte, jak se připojit k vašemu zařízení.
 
 > [!div class="nextstepaction"]
-> [Připojit Azure Stack Edge](./azure-stack-edge-gpu-deploy-connect.md)
+> [Připojit Azure Stack Edge pro](./azure-stack-edge-gpu-deploy-connect.md)

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 56b2fd7d78d95978b2e822f2d18160013d17eb15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d7ad1116f7c0168181dbf5b43f8f1595ce250949
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433615"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903927"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Použití koncových bodů a pravidel služby Virtual Network pro Azure Database for PostgreSQL-Single server
 
@@ -19,7 +19,7 @@ ms.locfileid: "89433615"
 
 Aby bylo možné vytvořit pravidlo virtuální sítě, musí nejprve existovat [virtuální síť][vm-virtual-network-overview] (VNET) a [koncový bod služby virtuální sítě][vm-virtual-network-service-endpoints-overview-649d] pro pravidlo, které se má odkazovat. Následující obrázek ukazuje, jak koncový bod služby Virtual Network funguje s Azure Database for PostgreSQL:
 
-![Příklad fungování koncového bodu služby virtuální sítě](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-vnet/vnet-concept.png" alt-text="Příklad fungování koncového bodu služby virtuální sítě":::
 
 > [!NOTE]
 > Tato funkce je dostupná ve všech oblastech veřejného cloudu Azure, kde Azure Database for PostgreSQL nasazené pro Pro obecné účely a paměťově optimalizované servery.
