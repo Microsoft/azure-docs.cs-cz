@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005308"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986772"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vývojáře aplikací pro správu prostředků ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Tento článek o osvědčených postupech se zaměřuje na spuštění clusteru 
 
 > [!div class="checklist"]
 > * Co jsou požadavky a omezení prostředků
-> * Způsoby vývoje a nasazení aplikací s využitím vývojových prostorů a Visual Studio Code
+> * Způsoby vývoje a nasazení aplikací s využitím mostu do Kubernetes a Visual Studio Code
 > * Jak používat `kube-advisor` Nástroj ke kontrole problémů s nasazeními
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Definování požadavků a omezení prostředků pod
@@ -74,13 +74,13 @@ Další informace o měřeních a přiřazeních prostředků najdete v tématu 
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Vývoj a ladění aplikací v clusteru AKS
 
-**Doprovodné materiály k osvědčeným postupům** – vývojové týmy by měly nasadit a LADIT cluster AKS pomocí vývojových prostorů. Tento model vývoje zajišťuje, aby byly požadavky na řízení přístupu na základě role (RBAC), síť nebo úložiště implementovány před nasazením aplikace do produkčního prostředí.
+**Doprovodné materiály k osvědčeným postupům** – vývojové týmy by měly nasadit a LADIT cluster AKS pomocí mostu na Kubernetes.
 
-Při Azure Dev Spaces vyvíjíte, ladíte a testujete aplikace přímo na clusteru AKS. Vývojáři v týmu spolupracují na sestavování a testování v celém životním cyklu aplikace. Můžete dál používat existující nástroje, jako je například Visual Studio nebo Visual Studio Code. Rozšíření je nainstalované pro vývojové prostory, které poskytuje možnost spustit a ladit aplikaci v clusteru AKS.
+S mostem na Kubernetes můžete vyvíjet, ladit a testovat aplikace přímo s clusterem AKS. Vývojáři v týmu spolupracují na sestavování a testování v celém životním cyklu aplikace. Můžete dál používat existující nástroje, jako je například Visual Studio nebo Visual Studio Code. Pro most do Kubernetes je nainstalováno rozšíření, které umožňuje vývoj přímo v clusteru AKS.
 
-Tento integrovaný proces vývoje a testování s využitím vývojových prostorů snižuje nutnost místních testovacích prostředí, jako je [minikube][minikube]. Místo toho vyvíjíte a otestujete cluster AKS. Tento cluster může být zabezpečený a izolovaný, jak je uvedeno v předchozí části týkající se použití oborů názvů k logické izolaci clusteru. Až budou vaše aplikace připravené k nasazení v produkčním prostředí, můžete si bez obav nasadit svůj vývoj na skutečný cluster AKS.
+Tento integrovaný proces vývoje a testování s mostem na Kubernetes snižuje potřebu místních testovacích prostředí, jako je [minikube][minikube]. Místo toho vyvíjíte a otestujete cluster AKS. Tento cluster může být zabezpečený a izolovaný, jak je uvedeno v předchozí části týkající se použití oborů názvů k logické izolaci clusteru.
 
-Azure Dev Spaces je určený pro použití s aplikacemi, které běží na systémech Linux a uzlech.
+Most do Kubernetes je určený pro použití s aplikacemi, které běží na systémech Linux a uzlech.
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Použít rozšíření Visual Studio Code pro Kubernetes
 
@@ -106,7 +106,7 @@ Tento článek s osvědčenými postupy se zaměřuje na spuštění clusteru a 
 
 Chcete-li implementovat některé z těchto doporučených postupů, přečtěte si následující články:
 
-* [Vývoj s využitím Dev Spaces][dev-spaces]
+* [Vývoj s využitím mostu na Kubernetes][btk]
 * [Vyhledat problémy s Kube-Advisor][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
@@ -117,7 +117,7 @@ Chcete-li implementovat některé z těchto doporučených postupů, přečtěte
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
+[btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

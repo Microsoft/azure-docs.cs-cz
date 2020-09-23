@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186329"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987331"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
 
@@ -34,7 +34,7 @@ Ovládací prvek plátna umožňuje návrh sady Runbook. Do sady Runbook můžet
 
 Ovládací prvek knihovna umožňuje vybrat [aktivity](#use-activities) , které se mají přidat do Runbooku. Můžete je přidat na plátno, kde je můžete propojit s dalšími aktivitami. Ovládací prvek knihovna obsahuje oddíly, které jsou definovány v následující tabulce.
 
-| Sekce | Popis |
+| Sekce | Description |
 |:--- |:--- |
 | Rutiny |Všechny rutiny, které lze použít v sadě Runbook. Rutiny jsou uspořádány podle modulu. Všechny moduly, které jste nainstalovali v účtu Automation, jsou k dispozici. |
 | Runbooky |Runbooky v účtu Automation. Tyto Runbooky můžete přidat na plátno, které se použijí jako podřízené Runbooky. Zobrazují se jenom Runbooky stejného základního typu jako upravované sady Runbook. Pro grafické Runbooky se zobrazí pouze Runbooky založené na PowerShellu. Pro grafické Runbooky pracovních postupů PowerShellu se zobrazí jenom Runbooky založené na pracovním postupu PowerShellu. |
@@ -61,7 +61,7 @@ Vyberte aktivitu na plátně pro konfiguraci vlastností a parametrů v okně ko
 
 Sada parametrů definuje povinné a volitelné parametry, které přijímají hodnoty pro konkrétní rutinu. Všechny rutiny mají alespoň jednu sadu parametrů a některé mají několik sad. Pokud má rutina více sad parametrů, je nutné před konfigurací parametrů vybrat, která se má použít. Sadu parametrů použitou v aktivitě můžete změnit tak, že vyberete **sadu parametrů** a vyberete jinou sadu. V takovém případě ztratí všechny hodnoty parametrů, které jste již nakonfigurovali.
 
-V následujícím příkladu má rutina [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) tři sady parametrů. V příkladu se používá jedna sada s názvem **ListVirtualMachineInResourceGroupParamSet**s jedním volitelným parametrem pro vrácení všech virtuálních počítačů ve skupině prostředků. V příkladu se používá také sada parametrů **GetVirtualMachineInResourceGroupParamSet** k zadání virtuálního počítače, který se má vrátit. Tato sada má dva povinné parametry a jeden volitelný parametr.
+V následujícím příkladu má rutina [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) tři sady parametrů. V příkladu se používá jedna sada s názvem **ListVirtualMachineInResourceGroupParamSet**s jedním volitelným parametrem pro vrácení všech virtuálních počítačů ve skupině prostředků. V příkladu se používá také sada parametrů **GetVirtualMachineInResourceGroupParamSet** k zadání virtuálního počítače, který se má vrátit. Tato sada má dva povinné parametry a jeden volitelný parametr.
 
 ![Sada parametrů](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -69,7 +69,7 @@ V následujícím příkladu má rutina [Get-AzVM](/powershell/module/az.compute
 
 Když zadáte hodnotu parametru, vyberete zdroj dat, abyste určili, jak je hodnota zadaná. Zdroje dat, které jsou k dispozici pro konkrétní parametr, závisí na platných hodnotách pro daný parametr. Například hodnota null není dostupná možnost pro parametr, který nepovoluje hodnoty null.
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 |:--- |:--- |
 | Hodnota konstanty |Zadejte hodnotu parametru. Tento zdroj dat je k dispozici pouze pro následující datové typy: Int32, Int64, String, Boolean, DateTime, Switch. |
 | Výstup aktivity |Použijte výstup aktivity, která předchází aktuální aktivitě v pracovním postupu. V seznamu jsou uvedeny všechny platné aktivity. Pro hodnotu parametru použijte pouze aktivitu, která vytváří výstup. V případě, že výstupem aktivity je objekt s více vlastnostmi, můžete po výběru aktivity zadat název určité vlastnosti. |
@@ -91,11 +91,11 @@ Funkce opakování pro aktivitu umožňuje, aby ji bylo možné spustit několik
 
 Když u aktivity povolíte operaci opakovat, můžete nastavit zpoždění a podmínku. Zpoždění je čas (měřeno v sekundách nebo minutách), po který sada Runbook počká, než znovu spustí aktivitu. Pokud nezadáte prodlevu, aktivita se spustí znovu ihned po dokončení.
 
-![Zpoždění opakování aktivity](media/automation-graphical-authoring-intro/retry-delay.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="Snímek obrazovky s nastavením funkcí povolit opakování":::
 
 Podmínka opakování je výraz PowerShellu, který se vyhodnocuje po každém spuštění aktivity. Pokud se výraz přeloží na hodnotu true, aktivita se znovu spustí. Pokud se výraz přeloží na false, aktivita se znovu nespustí a Runbook se přesune na další aktivitu.
 
-![Zpoždění opakování aktivity](media/automation-graphical-authoring-intro/retry-condition.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Snímek obrazovky znázorňující opakování, dokud tato podmínka není pravdivá, a příklady výrazů PowerShellu, které lze použít v podmínce opakování.":::
 
 Podmínka opakování může použít proměnnou s názvem `RetryData` , která poskytuje přístup k informacím o opakovaných pokusech o aktivitu. Tato proměnná má vlastnosti v následující tabulce:
 
@@ -151,7 +151,7 @@ Propojení dvou aktivit můžete vytvořit tak, že vyberete zdrojovou aktivitu 
 
 Vyberte odkaz pro konfiguraci vlastností v okně konfigurace. Vlastnosti obsahují typ odkazu, který je popsán v následující tabulce.
 
-| Typ odkazu | Popis |
+| Typ odkazu | Description |
 |:--- |:--- |
 | Kanál |Cílová aktivita se spustí jednou pro každý výstup objektu ze zdrojové aktivity. Cílová aktivita se nespustí, pokud výsledkem zdrojové aktivity není žádný výstup. Výstup zdrojové aktivity je k dispozici jako objekt. |
 | Sequence |Cílová aktivita se spustí pouze jednou při přijetí výstupu ze zdrojové aktivity. Výstup zdrojové aktivity je k dispozici jako pole objektů. |
@@ -257,7 +257,7 @@ Jednotlivé vstupní parametry jsou definovány vlastnostmi v následující tab
 | Vlastnost | Popis |
 |:--- |:--- |
 | Název | Povinná hodnota. Název parametru Název musí být v rámci sady Runbook jedinečný. Musí začínat písmenem a může obsahovat jenom písmena, číslice a podtržítka. Název nesmí obsahovat mezery. |
-| Popis |Nepovinný parametr. Popis účelu pro vstupní parametr |
+| Description |Nepovinný parametr. Popis účelu pro vstupní parametr |
 | Typ | Nepovinný parametr. Pro hodnotu parametru se očekával datový typ. Azure Portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy pro vstup. Podporované typy parametrů jsou String, Int32, Int64, Decimal, Boolean, DateTime a Object. Pokud není vybraný datový typ, použije se výchozí hodnota String (řetězec).|
 | Povinné | Nepovinný parametr. Nastavení, které určuje, zda musí být pro parametr zadána hodnota. Zvolíte-li `yes` tuto možnost, musí být při spuštění sady Runbook zadána hodnota. Zvolíte-li možnost `no` , není při spuštění sady Runbook požadována hodnota a je možné použít výchozí hodnotu. Sadu Runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá definovánu výchozí hodnotu. |
 | Výchozí hodnota | Nepovinný parametr. Hodnota použitá pro parametr, pokud není předána při spuštění Runbooku. Pokud chcete nastavit výchozí hodnotu, vyberte `Custom` . Tuto možnost vyberte `None` , pokud nechcete zadat žádnou výchozí hodnotu. |
@@ -435,4 +435,4 @@ Máte možnost vrátit se k publikované verzi Runbooku. Tato operace vyvolává
 * Informace o tom, jak začít s grafickými Runbooky, najdete v tématu [kurz: Vytvoření grafického Runbooku](learn/automation-tutorial-runbook-graphical.md).
 * Další informace o typech runbooků a jejich výhodách a omezeních najdete v tématu [Azure Automation typy runbooků](automation-runbook-types.md).
 * Informace o ověřování pomocí účtu Spustit jako pro automatizaci najdete v tématu [účet Spustit jako](automation-security-overview.md#run-as-account).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).

@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753693"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983673"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Konfigurace Azure Firewall ve virtuálním centru WAN
 
@@ -32,20 +32,20 @@ Pokud chcete vytvořit novou virtuální síť WAN a nové centrum, použijte po
 
 Na stránce **Přehled** vaší virtuální sítě WAN se zobrazuje seznam virtuálních Center a zabezpečených Center. Následující obrázek ukazuje virtuální síť WAN bez zabezpečených Center.
 
-[![Přehled](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
+[![Snímek obrazovky zobrazující stránku s přehledem pro virtuální síť WAN se seznamem virtuálních rozbočovačů.](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
 
 ## <a name="convert-to-secured-hub"></a>Převést na zabezpečené centrum
 
 1. Na stránce **Přehled** pro vaši virtuální síť WAN vyberte centrum, které chcete převést na zabezpečené centrum. Na stránce virtuální rozbočovač se zobrazí dvě možnosti nasazení Azure Firewall do tohoto centra. Vyberte jednu z možností.
 
-   [![zabezpečení](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
+   [![Snímek obrazovky se zobrazí stránka s přehledem pro vaši virtuální síť WAN, kde můžete vybrat možnost převést na zabezpečená centra nebo Azure firewall.](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
 
 1. Po výběru jedné z možností se zobrazí stránka **převést na zabezpečený střed** . Vyberte rozbočovač, který chcete převést, a potom v dolní části stránky vyberte **Další: Azure firewall** .
 
    [![Vybrat centrum](./media/howto-firewall/select-hub.png)](./media/howto-firewall/select-hub.png#lightbox)
 1. Po dokončení pracovního postupu vyberte **Potvrdit**.
 
-   [![Potvrdit](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
+   [![Snímek obrazovky se zobrazí v podokně převést do zabezpečeného centra s vybraným potvrzením.](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
 
 1. Po převedení centra na zabezpečený rozbočovač si ho můžete zobrazit na stránce s **přehledem** virtuální sítě WAN.
 

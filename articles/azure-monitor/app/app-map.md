@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936601"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974026"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
@@ -34,7 +34,7 @@ Po kliknutí na možnost aktualizovat součásti mapy se mapa aktualizuje o vše
 
 Pokud jsou všechny součásti role v rámci jednoho Application Insights prostředku, tento krok zjišťování se nevyžaduje. Počáteční zatížení této aplikace bude mít všechny své součásti.
 
-![Snímek obrazovky s mapou aplikace](media/app-map/app-map-001.png)
+![Snímek obrazovky ukazuje příklad mapy aplikace.](media/app-map/app-map-001.png)
 
 Jedním z klíčových cílů tohoto prostředí je, aby bylo možné vizualizovat komplexní topologie se stovkami komponent.
 
@@ -255,7 +255,7 @@ Situaci, kdy byste mohli chtít přepsat hodnotu pro instanci cloudové role, m�
 
 Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete v tématu věnovaném [Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud máte potíže s tím, jak mapa aplikace funguje podle očekávání, zkuste postupovat takto:
 

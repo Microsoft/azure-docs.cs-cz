@@ -3,12 +3,12 @@ title: Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Applica
 description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chování uživatelů pro váš web ASP.NET, který je hostovaný místně nebo v Azure.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475528"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973793"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -16,14 +16,14 @@ Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesí
 
 Nastavení je otázkou několika kliknutí v sadě Visual Studio. Máte možnost vyhnout se placení poplatků, pokud objem telemetrických dat omezíte. Tato funkce umožňuje experimentovat a ladit nebo monitorovat lokalitu, která nemá mnoho uživatelů. Pokud se později rozhodnete, že chcete pokračovat a monitorovat svůj provozní server, můžete limit snadno zvýšit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro přidání Application Insights na web ASP.NET potřebujete:
 
 - Nainstalujte [Visual Studio 2019 pro Windows](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web (zrušení kontroly volitelných součástí)
     - Vývoj pro Azure
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a>Krok 1: Přidání sady Application Insights SDK
 
@@ -42,7 +42,7 @@ Obrazovka Konfigurace Application Insights:
 
 Vyberte **Začínáme**.
 
-![Snímek obrazovky stránky registrace vaší aplikace v Application Insights](./media/asp-net/00004-start-free.png)
+![Snímek obrazovky se zobrazenou stránkou Application Insights a tlačítkem Začínáme.](./media/asp-net/00004-start-free.png)
 
 Pokud chcete nastavit skupinu prostředků nebo umístění, kde jsou vaše data uložená, klikněte na **Konfigurovat nastavení**. Skupiny prostředků slouží k řízení přístupu k datům. Pokud například máte několik aplikací, které tvoří součást stejného systému, můžete jejich data Application Insights ukládat do stejné skupiny prostředků.
 
@@ -56,7 +56,7 @@ Pokud chcete nastavit skupinu prostředků nebo umístění, kde jsou vaše data
 > [!NOTE]
 > Pokud během ladění nechcete na portál odesílat telemetrická data, stačí přidat do aplikace sadu SDK Application Insights, ale nekonfigurovat prostředek na portálu. Během ladění se telemetrická data zobrazují v sadě Visual Studio. Později se můžete na tuto stránku konfigurace vrátit, nebo počkat až po nasazení aplikace a [přepnout na telemetrie za běhu](./status-monitor-v2-overview.md).
 
-## <a name="step-2-run-your-app"></a><a name="run"></a>Krok 2: spuštění aplikace
+## <a name="step-2-run-your-app"></a><a name="run"></a> Krok 2: spuštění aplikace
 Spusťte aplikaci pomocí F5. Otevřete různé stránky k vygenerování nějaké telemetrie.
 
 V sadě Visual Studio se zobrazí počet zaprotokolovaných událostí.
@@ -104,9 +104,9 @@ Můžete také dále analyzovat telemetrii v sadě [Visual Studio](./visual-stud
 >
 >
 
-## <a name="youre-all-set"></a><a name="land"></a>Všechno je nastavené.
+## <a name="youre-all-set"></a><a name="land"></a> Všechno je nastavené.
 
-Blahopřejeme! Nainstalovali jste do aplikace balíček Application Insights a nakonfigurovali jste pro ni odesílání telemetrických dat do služby Application Insights v Azure.
+Gratulujeme! Nainstalovali jste do aplikace balíček Application Insights a nakonfigurovali jste pro ni odesílání telemetrických dat do služby Application Insights v Azure.
 
 Prostředek Azure, který přijímá telemetrická data aplikace, je určen *instrumentačním klíčem*. Tento klíč najdete v souboru ApplicationInsights.config.
 
@@ -144,7 +144,7 @@ K dispozici jsou i alternativní témata, na která se v případě zájmu můž
 * [Inteligentní diagnostika:](./proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
 * [Výstrahy metriky](../platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 * [Automatizace vytvoření prostředku Application Insights](./powershell.md)
 

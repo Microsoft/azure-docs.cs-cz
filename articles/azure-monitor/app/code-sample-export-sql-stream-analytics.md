@@ -3,12 +3,12 @@ title: Export do SQL z Azure Application Insights | Microsoft Docs
 description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311224"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979456"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
 Tento článek popisuje, jak přesunout data telemetrie z [Azure Application Insights][start] do Azure SQL Database pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -72,7 +72,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
 
 Události se zapisují do souborů BLOB ve formátu JSON. Každý soubor může obsahovat jednu nebo více událostí. Proto bychom chtěli číst data událostí a vyfiltrovat požadovaná pole. Existují nejrůznější věci, které jsme s daty mohli dělat, ale náš plán dnes je použít Stream Analytics k přesunu dat do SQL Database. Díky tomu bude snadné spouštět spoustu zajímavých dotazů.
 
-## <a name="create-an-azure-sql-database"></a>Vytvoří Azure SQL Database.
+## <a name="create-an-azure-sql-database"></a>Vytvoření Azure SQL Database
 Až se znovu rozhodnete z předplatného v [Azure Portal][portal], vytvořte databázi (a nový server, pokud jste ho ještě nezískali), na který budete data zapisovat.
 
 ![Nová data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
@@ -133,21 +133,21 @@ V této ukázce používáme data z zobrazení stránky. Pokud chcete zobrazit d
 ## <a name="create-an-azure-stream-analytics-instance"></a>Vytvoření instance Azure Stream Analytics
 Z [Azure Portal](https://portal.azure.com/)vyberte službu Azure Stream Analytics a vytvořte novou Stream Analytics úlohu:
 
-![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![Snímek obrazovky zobrazující stránku úlohy Stream Analytics s zvýrazněným tlačítkem vytvořit.](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
 ![Nová úloha Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Po vytvoření nové úlohy vyberte **Přejít k prostředku**.
 
-![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![Snímek obrazovky se zobrazí zpráva o úspěšném nasazení a tlačítko Přejít na prostředek.](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>Přidat nový vstup
 
-![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![Snímek obrazovky s vybraným tlačítkem přidat zobrazí stránku vstupy.](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
 Nastavte ho tak, aby převzal výstup z objektu BLOB průběžného exportu:
 
-![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![Snímek obrazovky se zobrazí nové vstupní okno se zvolenými možnostmi rozevírací nabídky vstupní alias, zdroj a účet úložiště.](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
 Teď budete potřebovat primární přístupový klíč z účtu úložiště, který jste si poznamenali dříve. Nastavte tuto hodnotu jako klíč účtu úložiště.
 
@@ -163,10 +163,10 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 V tomto příkladu:
 
-* `webapplication27`je název prostředku Application Insights, a to **vše v malých malých písmenech**. 
-* `1234...`je klíč instrumentace prostředku Application Insights **s odebranými pomlčkami**. 
-* `PageViews`je typ dat, která chceme analyzovat. Dostupné typy závisí na filtru, který jste nastavili při průběžném exportu. Prohlédněte si exportovaná data a podívejte se na další dostupné typy a podívejte se na [model exportu dat](./export-data-model.md).
-* `/{date}/{time}`je vzor psaný doslova.
+* `webapplication27` je název prostředku Application Insights, a to **vše v malých malých písmenech**. 
+* `1234...` je klíč instrumentace prostředku Application Insights **s odebranými pomlčkami**. 
+* `PageViews` je typ dat, která chceme analyzovat. Dostupné typy závisí na filtru, který jste nastavili při průběžném exportu. Prohlédněte si exportovaná data a podívejte se na další dostupné typy a podívejte se na [model exportu dat](./export-data-model.md).
+* `/{date}/{time}` je vzor psaný doslova.
 
 Pokud chcete získat název a iKey prostředku Application Insights, otevřete na své stránce Přehled základní informace nebo otevřete nastavení.
 

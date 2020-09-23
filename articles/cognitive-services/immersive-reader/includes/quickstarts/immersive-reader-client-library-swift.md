@@ -7,23 +7,22 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 7a298de40264a06e18aa4b7c77abfd622be4bb75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505374"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978322"
 ---
-[Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
+[Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
 V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
-
 ## <a name="prerequisites"></a>Požadavky
 
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci ukázkových vlastností projektu budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 
@@ -31,21 +30,21 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Vytvoří nový projekt v Xcode.
 
-![Nový projekt](../../media/ios/xcode-create-project.png)
+![Nový projekt – SWIFT](../../media/ios/xcode-create-project.png)
 
 Vyberte **aplikaci s jedním zobrazením**.
 
-![Nová aplikace s jedním zobrazením](../../media/ios/xcode-single-view-app.png)
+![Nová aplikace s jedním zobrazením – SWIFT](../../media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>Nastavení ověřování
 
 V horní nabídce klikněte na **schéma > produktu > upravit schéma...**.
 
-![Upravit schéma](../../media/ios/quickstart-ios-edit-scheme.png)
+![Upravit schéma – SWIFT](../../media/ios/quickstart-ios-edit-scheme.png)
 
 V zobrazení **Spustit** klikněte na kartu **argumenty** .
 
-![Upravit schéma](../../media/ios/quickstart-ios-env-vars.png)
+![Upravit proměnné prostředí schématu – SWIFT](../../media/ios/quickstart-ios-env-vars.png)
 
 V části **proměnné prostředí** přidejte následující názvy a hodnoty a zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
 
@@ -557,19 +556,19 @@ function sendContentToReader(message) {
 
 Nastavte schéma archivu v Xcode tak, že vyberete simulátor nebo cíl zařízení.
 
-![Schéma archivu](../../media/ios/xcode-archive-scheme.png)
+![Schéma archivu – SWIFT](../../media/ios/xcode-archive-scheme.png)
 
-![Výběr cíle](../../media/ios/xcode-select-target.png)
+![Vybrat cíl – SWIFT](../../media/ios/xcode-select-target.png)
 
 V Xcode stiskněte **kombinaci kláves CTRL + R** nebo klikněte na tlačítko Přehrát a spusťte projekt. Aplikace by se měla spustit na zadaném simulátoru nebo zařízení.
 
 V aplikaci byste měli vidět:
 
-![Ukázková aplikace](../../media/ios/sample-app-ipad.png)
+![Ukázková aplikace – SWIFT](../../media/ios/sample-app-ipad.png)
 
 Po kliknutí na tlačítko pro **moderní čtečku** se zobrazí moderní čtečka, která se spustí s obsahem aplikace.
 
-![Asistivní čtečka](../../media/ios/immersive-reader-ipad.png)
+![Moderní čtečka – SWIFT](../../media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>Další kroky
 

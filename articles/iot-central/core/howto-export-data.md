@@ -1,29 +1,29 @@
 ---
-title: Export dat z Azure IoT Central (Preview) | Microsoft Docs
+title: Export dat z Azure IoT Central | Microsoft Docs
 description: Jak používat novou export dat k exportu dat IoT do Azure a vlastních cílů cloudu.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/02/2020
+ms.date: 09/15/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 0a07d7e57ced5e2cd9457dc51ebcd355306fc48e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461931"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974410"
 ---
-# <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>Export dat IoT do cílů cloudu pomocí exportu dat (Preview)
+# <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
 > [!Note]
-> Tento článek popisuje funkce pro export dat ve verzi Preview v IoT Central.
+> Tento článek popisuje funkce exportu dat v IoT Central.
 >
 > - Informace o funkcích exportu starších dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat (starší verze)](./howto-export-data-legacy.md).
-> - Další informace o rozdílech mezi funkcemi exportu dat ve verzi Preview a starších verzích exportu dat najdete v [tabulce pro porovnání](#comparison-of-legacy-data-export-and-preview-data-export) .
+> - Další informace o rozdílech mezi funkcemi exportu dat a exportem starších dat najdete v [tabulce pro porovnání](#comparison-of-legacy-data-export-and-data-export) .
 
-Tento článek popisuje, jak používat novou funkci pro export dat ve verzi Preview v Azure IoT Central. Pomocí této funkce můžete průběžně exportovat filtrovaná a obohacená data IoT z vaší aplikace IoT Central. Export dat nabízí změny téměř v reálném čase do dalších částí vašeho cloudového řešení pro rychlé poznatky, analýzy a úložiště.
+Tento článek popisuje, jak používat novou funkci exportu dat v Azure IoT Central. Pomocí této funkce můžete průběžně exportovat filtrovaná a obohacená data IoT z vaší aplikace IoT Central. Export dat nabízí změny téměř v reálném čase do dalších částí vašeho cloudového řešení pro rychlé poznatky, analýzy a úložiště.
 
 Můžete například:
 
@@ -37,7 +37,7 @@ Můžete například:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li používat funkce pro export dat ve verzi Preview, musíte mít [aplikaci V3](howto-get-app-info.md)a musíte mít oprávnění k [exportu dat](howto-manage-users-roles.md) .
+Chcete-li používat funkce exportu dat, je nutné mít [aplikaci V3](howto-get-app-info.md)a musíte mít oprávnění k [exportu dat](howto-manage-users-roles.md) .
 
 ## <a name="set-up-export-destination"></a>Nastavit cíl exportu
 
@@ -63,7 +63,12 @@ Pokud nemáte existující Event Hubs obor názvů pro export do, postupujte pod
     - Vyberte **nastavení > zásady sdíleného přístupu**.
     - Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
     - Zkopírujte buď primární nebo sekundární připojovací řetězec. Tento připojovací řetězec můžete použít k nastavení nového cíle v IoT Central.
-
+    - Alternativně můžete vygenerovat připojovací řetězec pro celý Event Hubs obor názvů:
+        1. V Azure Portal přejít na obor názvů Event Hubs.
+        2. V části **Nastavení**vyberte **zásady sdíleného přístupu** .
+        3. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
+        4. Zkopírování primárního nebo sekundárního připojovacího řetězce
+        
 ### <a name="create-a-service-bus-queue-or-topic-destination"></a>Vytvoření Service Bus fronty nebo cíle tématu
 
 Pokud nemáte existující Service Bus obor názvů pro export do, postupujte podle těchto kroků:
@@ -78,6 +83,11 @@ Pokud nemáte existující Service Bus obor názvů pro export do, postupujte po
     - Vyberte **nastavení/zásady sdíleného přístupu**.
     - Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
     - Zkopírujte buď primární nebo sekundární připojovací řetězec. Tento připojovací řetězec můžete použít k nastavení nového cíle v IoT Central.
+    - Alternativně můžete vygenerovat připojovací řetězec pro celý Service Bus obor názvů:
+        1. V Azure Portal přejít na obor názvů Service Bus.
+        2. V části **Nastavení**vyberte **zásady sdíleného přístupu** .
+        3. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
+        4. Zkopírování primárního nebo sekundárního připojovacího řetězce
 
 ### <a name="create-an-azure-blob-storage-destination"></a>Vytvoření cíle Azure Blob Storage
 
@@ -109,10 +119,10 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
 
 1. Přihlaste se k aplikaci IoT Central.
 
-1. V levém podokně vyberte **exportovat data (Preview)**.
+1. V levém podokně vyberte **exportovat data**.
 
     > [!Tip]
-    > Pokud nevidíte **exportovat data (Preview)** v levém podokně, nemáte oprávnění ke konfiguraci exportu dat ve vaší aplikaci. Pokud chcete nastavit export dat, obraťte se na správce.
+    > Pokud nevidíte **exportovat data** v levém podokně, nemáte oprávnění ke konfiguraci exportu dat ve vaší aplikaci. Pokud chcete nastavit export dat, obraťte se na správce.
 
 1. Vyberte **+ Nový export**.
 
@@ -127,9 +137,10 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
 
 1. Volitelně můžete přidat filtry pro snížení objemu exportovaných dat. Pro každý typ exportu dat jsou k dispozici různé typy filtrů:
 
-    K filtrování telemetrie použijte:
+    K filtrování telemetrie můžete:
 
-    - **Filtr schopností**: Pokud zvolíte položku telemetrie v rozevíracím seznamu **název** , exportovaný datový proud obsahuje jenom telemetrii, která splňuje podmínku filtru. Pokud v rozevíracím seznamu **název** zvolíte položku zařízení nebo cloudová vlastnost, exportovaný datový proud obsahuje jenom telemetrii ze zařízení s vlastnostmi, které odpovídají podmínkám filtru.
+    - **Vyfiltruje** exportovaný datový proud tak, aby obsahoval pouze telemetrii ze zařízení, která odpovídají názvu zařízení, ID zařízení a podmínky filtru šablony zařízení.
+    - **Filtrovat** přes možnosti: Pokud zvolíte položku telemetrie v rozevíracím seznamu **název** , exportovaný datový proud obsahuje jenom telemetrii, která splňuje podmínku filtru. Pokud v rozevíracím seznamu **název** zvolíte položku zařízení nebo cloudová vlastnost, exportovaný datový proud obsahuje jenom telemetrii ze zařízení s vlastnostmi, které odpovídají podmínkám filtru.
     - **Filtr vlastností zpráv**: zařízení, která používají sady SDK pro zařízení, mohou odesílat *vlastnosti zprávy* nebo *Vlastnosti aplikace* v každé zprávě telemetrie. Vlastnosti jsou kontejner párů klíč-hodnota, které označí zprávu vlastními identifikátory. Chcete-li vytvořit filtr vlastností zprávy, zadejte klíč vlastnosti zprávy, který hledáte, a zadejte podmínku. Exportují se jenom zprávy telemetrie s vlastnostmi, které odpovídají zadané podmínce filtru. Jsou podporovány následující řetězcové operátory porovnání: Equals, není rovno, obsahuje, neobsahuje, existuje, neexistuje. [Přečtěte si další informace o vlastnostech aplikace z IoT Hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
     Chcete-li filtrovat změny vlastností, použijte **Filtr schopností**. V rozevíracím seznamu vyberte položku Vlastnosti. Exportovaný datový proud obsahuje pouze změny vybrané vlastnosti, která splňuje podmínku filtru.
@@ -143,8 +154,8 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
 
     - **Název cíle**: zobrazovaný název cíle v IoT Central.
     - **Cílový typ**: Vyberte typ cíle. Pokud jste ještě nevytvořili cíl, přečtěte si téma [Nastavení cíle exportu](#set-up-export-destination).
-    - Pro Azure Event Hubs Azure Service Bus Queue nebo téma vložte připojovací řetězec pro váš prostředek.
-    - Pro Azure Blob Storage vložte připojovací řetězec pro váš prostředek a zadejte název kontejneru rozlišující velká a malá písmena.
+    - V případě služby Azure Event Hubs Azure Service Bus Queue nebo téma vložte připojovací řetězec pro váš prostředek a v případě potřeby zadejte název centra událostí s rozlišováním velkých a malých písmen, fronty nebo tématu.
+    - Pro Azure Blob Storage vložte připojovací řetězec pro váš prostředek a v případě potřeby zadejte název kontejneru rozlišující velká a malá písmena.
     - Pro Webhook vložte adresu URL zpětného volání pro svůj koncový bod Webhooku.
     - Vyberte **Vytvořit**.
 
@@ -185,7 +196,7 @@ Každá exportovaná zpráva obsahuje normalizovanou podobu celé zprávy odesla
 - `enrichments`: Jakékoli obohacení nastavené na export.
 - `messageProperties`: Další vlastnosti, které zařízení poslalo se zprávou. Tyto vlastnosti jsou někdy označovány jako *Vlastnosti aplikace*. [Další informace najdete v dokumentaci IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-Pro Event Hubs a Service Bus IoT Central exportuje novou zprávu rychle po přijetí zprávy ze zařízení.
+Pro Event Hubs a Service Bus IoT Central exportuje novou zprávu rychle po přijetí zprávy ze zařízení. Ve vlastnostech uživatele (také označovaných jako vlastnosti aplikace) každé zprávy `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` jsou automaticky zahrnuty, a.
 
 Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minutu.
 
@@ -197,7 +208,7 @@ Následující příklad ukazuje exportovanou zprávu telemetrie:
     "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
     "messageSource": "telemetry",
     "deviceId": "1vzb5ghlsg1",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:26:55.455Z",
     "telemetry": {
@@ -232,7 +243,7 @@ Každá zpráva nebo záznam představuje jednu změnu vlastnosti zařízení ne
 - `templateId`: ID šablony zařízení přidružené k zařízení.
 - `enrichments`: Jakékoli obohacení nastavené na export.
 
-V případě Event Hubs a Service Bus IoT Central exportuje data nových zpráv do centra událostí nebo Service Bus fronty nebo tématu téměř v reálném čase.
+V případě Event Hubs a Service Bus IoT Central exportuje data nových zpráv do centra událostí nebo Service Bus fronty nebo tématu téměř v reálném čase. Ve vlastnostech uživatele (také označovaných jako vlastnosti aplikace) každé zprávy `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` jsou automaticky zahrnuty,,, a `iotcentral-message-type` .
 
 Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minutu.
 
@@ -244,11 +255,11 @@ Následující příklad ukazuje zprávu o změně exportovaných vlastností p�
     "messageSource": "properties",
     "messageType": "cloudPropertyChange",
     "deviceId": "18a985g1fta",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:37:32.942Z",
     "properties": [{
-        "fieldName": "MachineSerialNumber",
+        "name": "MachineSerialNumber",
         "value": "abc"
     }],
     "enrichments": {
@@ -257,9 +268,9 @@ Následující příklad ukazuje zprávu o změně exportovaných vlastností p�
 }
 ```
 
-## <a name="comparison-of-legacy-data-export-and-preview-data-export"></a>Porovnání exportu zastaralých dat a exportu dat ve verzi Preview
+## <a name="comparison-of-legacy-data-export-and-data-export"></a>Porovnání exportu a exportu dat ze starších verzí
 
-V následující tabulce jsou uvedeny rozdíly mezi funkcemi exportu [zastaralých](howto-export-data-legacy.md) dat a exportem dat ve verzi Preview:
+V následující tabulce jsou uvedeny rozdíly mezi [exportem starších dat](howto-export-data-legacy.md) a novými funkcemi exportu dat:
 
 | Možnosti  | Export zastaralých dat | Nový export dat |
 | :------------- | :---------- | :----------- |

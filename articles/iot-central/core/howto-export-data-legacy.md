@@ -7,20 +7,20 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 1202e46f2ea12db62062ac50b8e83b51fe9e5ca0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89428119"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974426"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Export dat IoT do cílů cloudu pomocí exportu dat (starší verze)
 
 > [!Note]
 > Tento článek popisuje funkce exportu starších dat v IoT Central.
 >
-> - Informace o nových funkcích Preview pro export dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat (Preview)](./howto-export-data.md).
-> - Další informace o rozdílech mezi funkcemi exportu dat ve verzi Preview a starších verzí exportu dat najdete v [srovnávací tabulce](./howto-export-data.md#comparison-of-legacy-data-export-and-preview-data-export).
+> - Informace o nových funkcích Preview pro export dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat](./howto-export-data.md).
+> - Další informace o rozdílech mezi funkcemi exportu dat ve verzi Preview a starších verzí exportu dat najdete v [srovnávací tabulce](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export).
 
 Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. Tato funkce umožňuje nepřetržitě exportovat data do **azure Event Hubs**, **Azure Service Bus**nebo instancí služby **Azure Blob Storage** . Export dat používá formát JSON a může zahrnovat telemetrii, informace o zařízení a informace o šabloně zařízení. Použít exportovaná data pro:
 

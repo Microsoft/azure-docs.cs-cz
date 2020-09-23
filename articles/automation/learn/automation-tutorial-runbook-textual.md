@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185394"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987633"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Kurz: vytvoření Runbooku pracovního postupu PowerShellu
 
@@ -22,7 +22,7 @@ V tomto kurzu se seznámíte s vytvořením [runbooku pracovního postupu PowerS
 > * Spuštění a sledování stavu úlohy Runbooku
 > * Aktualizace Runbooku pro spuštění virtuálního počítače Azure s parametry Runbooku
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -109,17 +109,17 @@ Sada Runbook, kterou jste vytvořili, je stále v režimu konceptu. Abyste ho mo
 
 6. Všimněte si, že stav úlohy se zobrazuje v **souhrnu úlohy**. Tento stav odpovídá stavům, které jste viděli při testování Runbooku.
 
-   ![Souhrn úlohy](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png" alt-text="Snímek obrazovky s podoknem úloh sady Runbook zobrazující zvýrazněný oddíl souhrnu úlohy":::
 
 7. Jakmile se stav Runbooku zobrazí dokončeno, klikněte na **výstup**. Otevře se stránka výstup, kde můžete zobrazit vaši `Hello World` zprávu.
 
-   ![Souhrn úlohy](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Snímek obrazovky s zvýrazněným tlačítkem výstup na panelu úloh sady Runbook":::
 
 8. Zavřete výstupní stránku.
 
 9. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. Měla by se zobrazit jenom `Hello World` ve výstupním datovém proudu. Všimněte si, že podokno streamy může zobrazit další datové proudy pro úlohu Runbooku, jako jsou například podrobné a chybové streamy, pokud je do nich zapisuje sada Runbook.
 
-   ![Souhrn úlohy](../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Snímek obrazovky s panelem úloh sady Runbook zobrazující zvýrazněné tlačítko všechny protokoly":::
 
 10. Zavřete podokno streamy a podokno úloh a vraťte se na stránku MyFirstRunbook.
 

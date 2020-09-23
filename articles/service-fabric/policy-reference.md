@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Service Fabric
 description: Seznam Azure Policy integrovaných definic zásad pro Azure Service Fabric. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 82cf204a6799f5169cc097bf578c748cc0e50544
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 215c313e2d1967f3922e060ad18bd2fa083950c0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007583"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978768"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-fabric"></a>Azure Policy předdefinované definice pro Azure Service Fabric
 

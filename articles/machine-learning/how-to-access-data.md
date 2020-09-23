@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a785aebc282a871d150f0c9b4cca59d7d03558e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893479"
+ms.locfileid: "90976777"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení k službám úložiště Azure
 
-V tomto článku se dozvíte, jak se **připojit ke službám úložiště Azure prostřednictvím Azure Machine Learning úložiště dat**. DataStore se bezpečně připojují ke službě Azure Storage bez nutnosti zadat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. K vytvoření a registraci úložišť dat můžete použít [sadu SDK Azure Machine Learning Python](#python) nebo [Azure Machine Learning Studio](#studio) .
+V tomto článku se dozvíte, jak se **připojit ke službám úložiště Azure prostřednictvím Azure Machine Learning úložiště dat**. DataStore se bezpečně připojují ke službě Azure Storage bez nutnosti zadat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. K vytvoření a registraci úložišť dat můžete použít [sadu SDK Azure Machine Learning Python](#python) nebo [Azure Machine Learning Studio](how-to-connect-data-ui.md) .
 
 Pokud dáváte přednost vytváření a správě úložiště dat pomocí rozšíření Azure Machine Learning VS Code; Další informace najdete v tématu [Průvodce správou prostředků vs Code](how-to-manage-resources-vscode.md#datastores) .
 
@@ -117,7 +117,7 @@ V případě kontejneru objektů blob Azure a Azure Data Lake úložiště Gen 2
 
 <a name="python"></a>
 
-## <a name="create-and-register-datastores-via-the-sdk"></a>Vytvoření a registrace úložiště dat prostřednictvím sady SDK
+## <a name="create-and-register-datastores"></a>Vytvoření a registrace úložišť dat
 
 Když zaregistrujete řešení Azure Storage jako úložiště dat, automaticky vytvoříte a zaregistrujete toto úložiště dat do konkrétního pracovního prostoru. Pokyny k scénářům virtuální sítě najdete v části věnované [oprávněním pro přístup & k úložišti](#storage-access-and-permissions) a kde najít požadovaná ověřovací pověření. 
 
@@ -129,7 +129,7 @@ V této části jsou příklady, jak vytvořit a zaregistrovat úložiště dat 
 
  Chcete-li vytvořit úložiště dat pro jiné podporované služby úložiště, přečtěte si [referenční dokumentaci pro příslušné `register_azure_*` metody](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=truemethods).
 
-Pokud dáváte přednost prostředí s nízkým kódem, přečtěte si téma [Vytvoření úložiště dat v Azure Machine Learning Studiu](#studio).
+Pokud dáváte přednost prostředí s nízkým kódem, přečtěte si téma [připojení k datům pomocí Azure Machine Learning studia](how-to-connect-data-ui.md).
 
 > [!NOTE]
 > Název úložiště dat by měl obsahovat jenom malá písmena, číslice a podtržítka. 
@@ -199,25 +199,6 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_id=client_id, # client id of service principal
                                                              client_secret=client_secret) # the secret of service principal
 ```
-
-<a name="studio"></a>
-
-
-## <a name="create-datastores-in-the-studio"></a>Vytváření úložiště dat v studiu 
-
-V několika krocích se Azure Machine Learning Studiu vytvoří nové úložiště dat.
-
-> [!IMPORTANT]
-> Pokud je váš účet úložiště dat ve virtuální síti, je potřeba, abyste zajistili, že Studio bude mít přístup k vašim datům. V tématu [použití Azure Machine Learning studia ve virtuální síti Azure](how-to-enable-studio-virtual-network.md) se ujistěte, že se použijí příslušné kroky konfigurace. 
-
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
-1. V levém podokně v části **Spravovat**vyberte **úložiště** .
-1. Vyberte **+ nové úložiště dat**.
-1. Vyplňte formulář pro nové úložiště dat. Formulář se inteligentně aktualizuje na základě vašich výběrů pro typ úložiště Azure a typ ověřování. V [části přístup k úložišti a oprávněním](#access-validation) se dozvíte, kde najít přihlašovací údaje pro ověřování, které potřebujete k naplnění tohoto formuláře.
-
-Následující příklad ukazuje, jak formulář vypadá při vytváření **úložiště dat objektů BLOB v Azure**: 
-    
-![Formulář pro nové úložiště dat](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>Použití dat v úložišti dat

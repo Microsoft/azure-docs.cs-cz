@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973707"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
@@ -26,7 +26,7 @@ Kromě služby Azure Application Gateway je k dispozici několik možností na w
 ## <a name="setup"></a>Nastavení
 Pro účely tohoto dokumentu nakonfigurujeme službu App Service Environment za několika instancemi Barracuda WAF s vyrovnáváním zatížení, aby se do služby App Service Environment dostal pouze provoz z této brány WAF a aby služba nebyla přístupná z DMZ. Před instancí Barracuda WAF také máme službu Azure Traffic Manager, která vyrovnává zatížení napříč datovými centry a oblastmi Azure. Podrobný diagram nastavení bude podobný jako na následujícím obrázku:
 
-![Architektura][Architecture] 
+![Diagram znázorňuje volitelnou službu Azure Traffic Manager připojující se k instancím brány firewall webových aplikací, která se připojuje k síti A C L, aby povolovala přenosy jenom z brány firewall v App Service Environment, která obsahuje web, P I a mobilní aplikace pro dvě oblasti.][Architecture] 
 
 > [!NOTE]
 > Díky zavedení [podpory interního nástroje pro vyrovnávání zatížení pro službu App Service Environment](app-service-environment-with-internal-load-balancer.md) můžete nakonfigurovat službu ASE tak, aby nebyla přístupná z DMZ a byla dostupná pouze pro privátní síť. 

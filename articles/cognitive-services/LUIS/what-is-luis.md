@@ -1,24 +1,24 @@
 ---
 title: Co je Language Understanding (LUIS)?
 description: Language Understanding (LUIS) – cloudová služba API, která využívá strojové učení ke konverzaci, přirozenému jazyku pro předpověď významu a extrakci informací.
-keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NLP, porozumění přirozenému jazyku, NLU, konverzace AI, konverzace AI, AI chatovací robot, chatovací robot maker, LUIS, NLP AI, Luis AI, Azure Luis, principy přirozeného jazyka
+keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NLP, přirozené jazykové porozumění, NLU, LUIS, konverzace AI, AI chatovací robot, NLP AI, Azure Luis
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ff9aa2652fe8a1e503b5e2c93ca149112770b081
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3a8905ca1b9e7d7b4b1e4f5add000def9e91f9c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400938"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985867"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Language Understanding (LUIS) je cloudová služba API, která prostřednictvím vlastních inteligentních funkcí strojového učení, které používá na konverzační text uživatele v přirozeném jazyce, předvídá celkový význam a vytahuje z něj relevantní podrobné informace.
+Language Understanding (LUIS) je cloudová konverzační služba pro konverzaci, která aplikuje vlastní informace o strojovém učení na konverzaci, text přirozeného jazyka a předpovídá celkový význam a vyžádá si relevantní a podrobné informace.
 
-Klientskou aplikací je pro LUIS jakákoli konverzační aplikace, která s uživatelem při dokončování úloh komunikuje v přirozeném jazyce. Mezi příklady klientských aplikací patří aplikace sociálních médií, chatboti a desktopové aplikace s podporou hlasových služeb.
+Klientskou aplikací je pro LUIS jakákoli konverzační aplikace, která s uživatelem při dokončování úloh komunikuje v přirozeném jazyce. Mezi příklady klientských aplikací patří aplikace pro sociální média, chatovacích robotů o AI a desktopové aplikace s podporou řeči.
 
 ![Koncepční obrázek 3 klientských aplikací pracujících s Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Koncepční obrázek 3 klientských aplikací pracujících s Cognitive Services Language Understanding (LUIS)")
 
@@ -26,7 +26,7 @@ Klientskou aplikací je pro LUIS jakákoli konverzační aplikace, která s uži
 
 <a name="Accessing-LUIS"></a>
 
-Po publikování aplikace LUIS může klientská aplikace odesílat promluvy (text) do rozhraní [API][endpoint-apis] koncového bodu služby LUIS pro zpracování přirozeného jazyka a přijímat z něj výsledky v podobě odpovědí ve formátu JSON. Běžnou klientskou aplikace pro službu LUIS je chatbot.
+Po publikování aplikace Azure LUIS pošle klientská aplikace projevy (text) do [rozhraní API][endpoint-apis] koncového bodu zpracování Luis přirozeného jazyka a výsledky obdrží jako odpověď JSON. Běžnou klientskou aplikace pro službu LUIS je chatbot.
 
 
 ![Koncepční obrázky LUIS pracující s robotem chatu pro předpověď textu uživatele s porozuměním v přirozeném jazyku (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Koncepční obrázky LUIS pracující s robotem chatu pro předpověď textu uživatele s porozuměním v přirozeném jazyku (NLP")
@@ -44,7 +44,7 @@ Aplikace LUIS poskytuje klientské aplikaci informace, které jí umožní chyt�
 
 ## <a name="natural-language-understanding-nlu"></a>Principy přirozeného jazyka (NLU)
 
-[Luis poskytuje umělou Intelligence (AI)](artificial-intelligence.md "LUIS poskytuje umělá inteligentní funkce (AI).") ve formě NLU, což je podmnožina NLP (přirozený jazyk Processing).
+[Luis poskytuje umělá inteligentní funkce (AI)](artificial-intelligence.md "LUIS poskytuje umělá inteligentní funkce (AI).") ve formě NLU, což je podmnožina systému souborů AI pro zpracování přirozeného jazyka.
 
 Vaše aplikace LUIS obsahuje model přirozeného jazyka specifického pro doménu. Aplikaci LUIS můžete spustit s předem připraveným doménovým modelem, sestavit pro ni vlastní model nebo zkombinovat části předem připravené domény s vlastními informacemi.
 
@@ -52,7 +52,7 @@ Vaše aplikace LUIS obsahuje model přirozeného jazyka specifického pro domén
 
 * **Vlastní model** LUIS nabízí několik způsobů, jak identifikovat vlastní modely, včetně záměrů a entit. Mezi entity patří entity strojového učení, konkrétní nebo literální entity a kombinace strojového učení a literálu.
 
-Přečtěte si další informace o [NLP](artificial-intelligence.md "NLP")a oblasti NLU pro konkrétní Luis.
+Přečtěte si další informace o [NLP AI](artificial-intelligence.md "NLP")a oblasti NLU pro konkrétní Luis.
 
 ## <a name="step-1-design-and-build-your-model"></a>Krok 1: návrh a sestavení modelu
 
@@ -131,7 +131,7 @@ Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-starte
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je nového](whats-new.md "Co je nového") u služby a dokumentace
+* [Co je nového](whats-new.md "Novinky") u služby a dokumentace
 * [Plánování aplikace](luis-how-plan-your-app.md "Plánování aplikace") s využitím [záměrů](luis-concept-intent.md "záměry") a [entit](luis-concept-entity-types.md "podnikům")
 * [Dotaz na koncový bod předpovědi](luis-get-started-get-intent-from-browser.md "Dotazování koncového bodu předpovědi").
 * [Materiály pro vývojáře](developer-reference-resource.md "Materiály pro vývojáře") pro Luis.

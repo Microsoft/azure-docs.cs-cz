@@ -1,18 +1,18 @@
 ---
 title: 'VPN Gateway: tenant Azure AD pro připojení VPN P2S: ověřování Azure AD'
-description: P2S VPN můžete použít pro připojení k virtuální síti pomocí ověřování Azure AD.
+description: Přečtěte si, jak nastavit tenanta Azure AD pro P2S Open VPN.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 01fe9331d4063ae45a5d30aa3546d6338d30822d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89499956"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981527"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení typu point-to-site přes protokol OpenVPN
 
@@ -85,7 +85,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 6. Po zobrazení výzvy vyberte **přijmout** .
 
-    ![Přijmout](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Snímek obrazovky se zobrazenými oprávněními pro zprávy, která požádala o přijetí ve vaší organizaci s podrobnostmi a možnost přijmout.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. V rámci Azure AD se v **podnikových aplikacích**zobrazí uvedená služba **Azure VPN** .
 

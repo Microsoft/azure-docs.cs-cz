@@ -10,12 +10,12 @@ ms.date: 09/08/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0d03b2708bfd4aac2565b303ddce44f50be65ef9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ee76c1692049d5b25e85b6780fbcf78f7ebfdd2f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612348"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987056"
 ---
 # <a name="object-replication-for-block-blobs"></a>Replikace objektů pro objekty blob bloku
 
@@ -68,7 +68,7 @@ Můžete také zadat jeden nebo více filtrů jako součást pravidla replikace 
 
 Zdrojové a cílové kontejnery musí existovat, aby bylo možné je zadat v pravidle. Po vytvoření zásad replikace bude cílový kontejner jen pro čtení. Jakékoli pokusy o zápis do cílového kontejneru selžou s kódem chyby 409 (Konflikt). Můžete ale zavolat operaci [nastavit vrstvu objektů BLOB](/rest/api/storageservices/set-blob-tier) u objektu BLOB v cílovém kontejneru a přesunout ho do archivní úrovně. Další informace o archivní úrovni najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md#archive-access-tier).
 
-## <a name="billing"></a>Fakturace 
+## <a name="billing"></a>Fakturace
 
 Replikace objektů má za následek dodatečné náklady na transakce čtení a zápisu proti zdrojovému a cílovému účtu, jakož i poplatky za přenos dat ze zdrojového účtu do cílového účtu a poplatky za čtení za účelem zpracování kanálu změn.
 

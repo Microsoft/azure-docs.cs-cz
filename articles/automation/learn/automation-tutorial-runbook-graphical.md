@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 1490687e85d2f59b8cfa28712ef075b451363534
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564215"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987646"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Kurz: Vytvoření grafického Runbooku
 
@@ -218,7 +218,7 @@ Teď, když máte proměnnou, která bude uchovávat ID předplatného, můžete
 
 23. Najeďte myší na další, `Login to Azure` dokud se v dolní části obrazce nezobrazí kruh. Klikněte na kroužek a přetáhněte šipku na `Specify Subscription Id` . Sada Runbook by měla v tomto okamžiku vypadat jako v následujícím.
 
-    ![Konfigurace ověření runbooku](../media/automation-tutorial-runbook-graphical/runbook-auth-config.png)
+    :::image type="content" source="../media/automation-tutorial-runbook-graphical/runbook-auth-config.png" alt-text="Snímek obrazovky sady Runbook po přetažení šipky na ' zadejte ID předplatného '.":::
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>Krok 7 – přidání aktivity pro spuštění virtuálního počítače
 

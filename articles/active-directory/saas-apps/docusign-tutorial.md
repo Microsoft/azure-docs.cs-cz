@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4cea216b85e32ad9f739aff9a487909df74d14ad
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 51ad28319a372cd791575b5a3e67cc0fd6934be2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053663"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981644"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s DocuSign
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí, abyste ověřili, že:
 
-* DocuSign podporuje jednotné přihlašování iniciované poskytovatelem služeb (SP).
+* DocuSign podporuje poskytovatele služeb **SP** iniciované jednotného přihlašování.
 
 * DocuSign podporuje zřizování uživatelů **za běhu** .
 

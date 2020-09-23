@@ -3,12 +3,12 @@ title: Odebrání Application Insights v aplikaci Visual Studio – Azure Monito
 description: Jak odebrat sadu Application Insights SDK pro ASP.NET a ASP.NET Core v sadě Visual Studio.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049767"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981469"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Jak odebrat Application Insights v aplikaci Visual Studio
 
@@ -66,11 +66,11 @@ Chcete-li odebrat Application Insights, bude nutné odebrat balíčky NuGet a od
 
 1. Vyberte **Odinstalovat**.
     
-    ![Zaškrtněte odebrat závislosti a potom odinstalujte.](./media/remove-application-insights/uninstall-framework.png)
+    ![Snímek obrazovky se zvýrazněným oknem Microsoft. ApplicationInsights. Web a zvýrazněnou možností odebrat závislosti a odinstalování.](./media/remove-application-insights/uninstall-framework.png)
 
     Zobrazí se dialogové okno, ve kterém se zobrazí všechny závislosti, které mají být z aplikace odebrány.Kliknutím na **tlačítko OK**   odinstalujte.
     
-    ![Zaškrtněte odebrat závislosti a potom odinstalujte.](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![Snímek obrazovky se zobrazí dialogové okno se závislostmi, které mají být odebrány.](./media/remove-application-insights/preview-uninstall-framework.png)
     
 1.  Po odinstalaci všeho se v *Průzkumník řešení*pořád zobrazují "ApplicationInsights.config" a "AiHandleErrorAttribute.cs".Tyto dva soubory můžete odstranit ručně.
 
