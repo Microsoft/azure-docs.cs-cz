@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087180"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983610"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Seznámení s cenami služby Data Factory prostřednictvím příkladů
 
@@ -38,7 +38,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 
 3. Aktivační událost plánovače, která každou hodinu spustí kanál.
 
-   ![Scenario1](media/pricing-concepts/scenario1.png)
+   ![Diagram znázorňuje kanál s triggerem plánovače. V kanálu aktivity kopírování přechází do vstupní datové sady, která přechází do propojené služby a W S S3 propojená služba a aktivita kopírování také vede do výstupní datové sady, která se přetéká na Azure Storage propojenou službu.](media/pricing-concepts/scenario1.png)
 
 | **Operace** | **Typy a jednotky** |
 | --- | --- |
@@ -69,7 +69,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 2. Jedna aktivita Azure Databricks pro transformaci dat.
 3. Jedna aktivační událost plánovače každou hodinu spustí kanál.
 
-![Scenario2](media/pricing-concepts/scenario2.png)
+![Diagram znázorňuje kanál s triggerem plánovače. V kanálu aktivity kopírování toků do vstupní datové sady, výstupní datové sady a aktivity datacihly, které běží na Azure Databricks. Vstupní datová sada vede k propojeným službám A W S S3. Výstupní datová sada vede toky do propojené služby Azure Storage.](media/pricing-concepts/scenario2.png)
 
 | **Operace** | **Typy a jednotky** |
 | --- | --- |
@@ -103,7 +103,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 3. Jedna aktivita Azure Databricks pro transformaci dat.
 4. Jedna aktivační událost plánovače každou hodinu spustí kanál.
 
-![Scenario3](media/pricing-concepts/scenario3.png)
+![Diagram znázorňuje kanál s triggerem plánovače. V kanálu aktivity kopírování natéká do vstupní datové sady, výstupní datové sady a aktivity vyhledávání, které se přetokůují do aktivity datacihly, která běží na Azure Databricks. Vstupní datová sada vede k propojeným službám A W S S3. Výstupní datová sada vede toky do propojené služby Azure Storage.](media/pricing-concepts/scenario3.png)
 
 | **Operace** | **Typy a jednotky** |
 | --- | --- |

@@ -4,18 +4,18 @@ description: Přečtěte si o udržitelném vývojovém softwaru ve službě Azu
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: bc2240b3cb8508109f6dd25c4c80ff31ba197cfd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084473"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984978"
 ---
-# <a name="sustainable-software-engineering-principals-in-azure-kubernetes-service-aks"></a>Udržitelné hlavní objekty pro softwarové inženýry ve službě Azure Kubernetes (AKS)
+# <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Udržitelné principy softwarového inženýrství ve službě Azure Kubernetes (AKS)
 
-Udržitelné objekty zabezpečení softwaru představují sadu kompetencí, které vám pomůžou definovat, sestavovat a spouštět udržitelné aplikace. Celkovým cílem je omezit nároky na uhlíku všech aspektů aplikace. V článku [Principy. zelený projekt][principals-green] je přehled objektů zabezpečení udržitelného softwarového inženýrství.
+Zásady udržitelného nastavování softwaru představují sadu kompetencí, které vám pomůžou definovat, sestavovat a spouštět udržitelné aplikace. Celkovým cílem je omezit nároky na uhlíku všech aspektů aplikace. V článku [Principy. zelený projekt][principles-green] je přehled zásad udržitelného softwarového inženýrství.
 
-Je důležité si uvědomit o udržitelném vývojovém softwaru, protože se jedná o posun v prioritách a zaměřuje se na něj. V mnoha případech je software navržený a spuštěný způsobem, který se zaměřuje na vysoký výkon a nízkou latenci. Udržitelný vývoj softwaru se zaměřuje na snížení co nejvíc emisí uhlíku. V některých případech může použití trvalých objektů zabezpečení softwaru poskytovat rychlejší výkon nebo nižší latenci, jako je například snížení celkové síťové cesty. V ostatních případech může snížení emisí uhlíku způsobit pomalejší výkon nebo vyšší latenci, například zpoždění úloh s nízkou prioritou. Než se rozhodnete použít udržitelné objekty zabezpečení softwaru pro vaši aplikaci, zkontrolujte priority, potřeby a kompromisy vaší aplikace.
+Je důležité si uvědomit o udržitelném vývojovém softwaru, protože se jedná o posun v prioritách a zaměřuje se na něj. V mnoha případech je software navržený a spuštěný způsobem, který se zaměřuje na vysoký výkon a nízkou latenci. Udržitelný vývoj softwaru se zaměřuje na snížení co nejvíc emisí uhlíku. V některých případech může použití udržitelného principu softwarového inženýrství poskytovat rychlejší výkon nebo nižší latenci, například snížením celkového síťového provozu. V ostatních případech může snížení emisí uhlíku způsobit pomalejší výkon nebo vyšší latenci, například zpoždění úloh s nízkou prioritou. Než se rozhodnete, že se na vaši aplikaci budou uplatňovat udržitelné zásady softwarového inženýrství, Projděte si priority, potřeby a kompromisy vaší aplikace.
 
 ## <a name="measure-and-optimize"></a>Měření a optimalizace
 
@@ -74,4 +74,4 @@ Přečtěte si další informace o funkcích AKS uvedených v tomto článku:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principals-green]: https://principles.green/
+[principles-green]: https://principles.green/

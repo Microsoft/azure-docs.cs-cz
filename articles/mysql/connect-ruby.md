@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 15bbce208475a85e7be6efbadebcb4e43c2d8d17
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 8bedb7177c93eecd13f64d151c56baf5a394e0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029099"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896277"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Ruby k připojení a dotazování dat v Azure Database for MySQL
 
@@ -25,11 +25,11 @@ Tento rychlý start jako výchozí bod využívá prostředky vytvořené v něk
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Ujistěte se, že IP adresa, ze které se připojujete, přidala pravidla brány firewall serveru pomocí [Azure Portal](./howto-manage-firewall-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](./howto-manage-firewall-using-cli.md) .
 
 ## <a name="install-ruby"></a>Instalace Ruby
-Nainstalujte na svém počítači Ruby, nástroj Gem a knihovnu MySQL2. 
+Nainstalujte na svém počítači Ruby, nástroj Gem a knihovnu MySQL2.
 
 ### <a name="windows"></a>Windows
 1. Stáhněte a nainstalujte [Ruby](https://rubyinstaller.org/downloads/) verze 2.3.
@@ -61,9 +61,9 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for MySQL](./media/connect-ruby/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="Název serveru Azure Database for MySQL":::
 
-## <a name="run-ruby-code"></a>Spuštění kódu Ruby 
+## <a name="run-ruby-code"></a>Spuštění kódu Ruby
 1. Kód Ruby z dalších částí vložte do textových souborů a tyto soubory uložte s příponou .rb do složky projektu (například `C:\rubymysql\createtable.rb` nebo `/home/username/rubymysql/createtable.rb`).
 2. Pokud chcete kód spustit, spusťte příkazový řádek nebo prostředí Bash. Změňte adresář na složku vašeho projektu pomocí příkazu `cd rubymysql`.
 3. Potom zadejte příkaz Ruby následovaný názvem souboru, například `ruby createtable.rb`, a spusťte aplikaci.
@@ -72,9 +72,9 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.
 
-Kód pro připojení ke službě Azure Database for MySQL používá metodu .new() třídy [mysql2::client](https://www.rubydoc.info/gems/mysql2). Potom několikrát volá metodu [query()](https://www.rubydoc.info/gems/mysql2#Usage) pro spuštění příkazů DROP, CREATE TABLE a INSERT INTO. Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) pro ukončení připojení.
+Kód používá třídu [mysql2:: Client](https://www.rubydoc.info/gems/mysql2) pro připojení k serveru MySQL. Poté volá metodu ```query()``` pro spuštění příkazů drop, CREATE TABLE a INSERT INTO. Nakonec zavolejte ```close()``` k ukončení připojení před ukončením.
 
-Nahraďte řetězce `host`, `database`, `username` a `password` vlastními hodnotami. 
+Nahraďte řetězce `host`, `database`, `username` a `password` vlastními hodnotami.
 ```ruby
 require 'mysql2'
 
@@ -115,11 +115,11 @@ end
 ```
 
 ## <a name="read-data"></a>Čtení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. 
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL.
 
-Kód pro připojení ke službě Azure Database for MySQL používá metodu .new() třídy [mysql2::client](https://www.rubydoc.info/gems/mysql2). Potom volá metodu [query()](https://www.rubydoc.info/gems/mysql2#Usage) pro spuštění příkazů SELECT. Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) pro ukončení připojení.
+Kód používá třídu [mysql2:: Client](https://www.rubydoc.info/gems/mysql2) pro připojení k Azure Database for MySQL s ```new()``` metodou. Pak volá metodu ```query()``` pro spuštění příkazů SELECT. Poté volá metodu ```close()``` pro uzavření připojení před ukončením.
 
-Nahraďte řetězce `host`, `database`, `username` a `password` vlastními hodnotami. 
+Nahraďte řetězce `host`, `database`, `username` a `password` vlastními hodnotami.
 
 ```ruby
 require 'mysql2'
@@ -156,9 +156,9 @@ end
 ## <a name="update-data"></a>Aktualizace dat
 Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL.
 
-Kód pro připojení ke službě Azure Database for MySQL používá metodu .new() třídy [mysql2::client](https://www.rubydoc.info/gems/mysql2). Potom volá metodu [query()](https://www.rubydoc.info/gems/mysql2#Usage) pro spuštění příkazů UPDATE. Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) pro ukončení připojení.
+Kód pro připojení ke službě Azure Database for MySQL používá metodu .new() třídy [mysql2::client](https://www.rubydoc.info/gems/mysql2). Pak volá metodu ```query()```  pro spuštění příkazů Update. Poté volá metodu ```close()``` pro uzavření připojení před ukončením.
 
-Nahraďte řetězce `host`, `database`, `username` a `password` vlastními hodnotami. 
+Nahraďte řetězce `host`, `database`, `username` a `password` vlastními hodnotami.
 
 ```ruby
 require 'mysql2'
@@ -191,11 +191,11 @@ end
 
 
 ## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. 
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL.
 
-Kód pro připojení ke službě Azure Database for MySQL používá metodu .new() třídy [mysql2::client](https://www.rubydoc.info/gems/mysql2). Potom volá metodu [query()](https://www.rubydoc.info/gems/mysql2#Usage) pro spuštění příkazů DELETE. Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) pro ukončení připojení.
+Kód používá třídu [mysql2:: Client](https://rubygems.org/gems/mysql2/) pro připojení k serveru MySQL, spusťte příkaz DELETE a potom připojení k serveru ukončete.
 
-Nahraďte řetězce `host`, `database`, `username` a `password` vlastními hodnotami. 
+Nahraďte řetězce `host`, `database`, `username` a `password` vlastními hodnotami.
 
 ```ruby
 require 'mysql2'
@@ -228,4 +228,8 @@ end
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Migrace vaší databáze pomocí exportu a importu](./concepts-migrate-import-export.md)
+> [Migrace vaší databáze pomocí exportu a importu](./concepts-migrate-import-export.md) <br/>
+
+> [!div class="nextstepaction"]
+> [Další informace o klientovi MySQL2](https://www.rubydoc.info/gems/mysql2) <br/>
+

@@ -1,32 +1,29 @@
 ---
-title: Povolte a spravujte obnovení k určitému bodu v čase pro objekty blob bloku (Preview).
+title: Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
 titleSuffix: Azure Storage
-description: Naučte se používat obnovení k určitému bodu v čase (Preview) k obnovení sady objektů blob bloku do předchozího stavu.
+description: Naučte se používat obnovení k určitému bodu v čase k obnovení sady objektů blob bloku do jejich předchozího stavu v daném časovém okamžiku.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 140e1203a29dcebec9d6483e73e906591b2213fb
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068477"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984385"
 ---
-# <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Povolte a spravujte obnovení k určitému bodu v čase pro objekty blob bloku (Preview).
+# <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
 
-K obnovení sady objektů blob bloku do předchozího stavu můžete použít obnovení k určitému bodu v čase (Preview). Tento článek popisuje, jak povolit obnovení k určitému bodu v čase pro účet úložiště pomocí PowerShellu. Také ukazuje, jak provést operaci obnovení pomocí prostředí PowerShell.
+Obnovení k určitému bodu v čase můžete použít k obnovení jedné nebo více sad objektů blob bloku do předchozího stavu. Tento článek popisuje, jak povolit obnovení k určitému bodu v čase pro účet úložiště a jak provést operaci obnovení.
 
-Další informace a informace o tom, jak se zaregistrovat pro verzi Preview, najdete v tématu [obnovení k bodu v čase pro objekty blob bloku (Preview)](point-in-time-restore-overview.md).
+Další informace o obnovení k bodu v čase najdete v tématu [obnovení k bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) během obnovování k určitému bodu v čase, nelze tento kontejner obnovit pomocí operace obnovení. V rámci verze Preview místo odstranění kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít obnovit.
-
-> [!IMPORTANT]
-> Obnovení bodu v čase je ve verzi Preview určeno pouze pro neprodukční použití.
+> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) , nelze tento kontejner obnovit pomocí operace obnovení. Místo odstranění kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít obnovit.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Povolit a nakonfigurovat obnovení k časovému okamžiku
 
@@ -35,6 +32,9 @@ Než povolíte a nakonfigurujete obnovení k bodu v čase, povolte jeho požadav
 - [Povolení obnovitelného odstranění pro objekty blob](soft-delete-enable.md)
 - [Povolení a zákaz kanálu změn](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [Povolení a správa verzí objektů BLOB](versioning-enable.md)
+
+> [!IMPORTANT]
+> Povolení obnovitelného odstranění, změny kanálu a správy verzí objektů BLOB může mít za následek další poplatky. Další informace najdete v tématech [obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md), [Podpora změn kanálu v Azure Blob Storage](storage-blob-change-feed.md)a [Správa verzí objektů BLOB](versioning-overview.md).
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -52,23 +52,9 @@ Následující obrázek ukazuje účet úložiště nakonfigurovaný pro obnoven
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete nakonfigurovat obnovení k určitému bodu v čase pomocí PowerShellu, nejdřív nainstalujte modul příkaz AZ. Storage Preview verze 1.14.1-Preview nebo novější verze modulu Preview. Odeberte jakékoli jiné verze modulu AZ. Storage.
+Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí PowerShellu, nejdřív nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) verze 2.6.0 nebo novější. Pak zavolejte příkaz Enable-AzStorageBlobRestorePolicy a povolte tak obnovení k bodu v čase pro účet úložiště.
 
-Ověřte, že máte nainstalovanou verzi 2.2.4.1 nebo novější z PowerShellGet. Pokud chcete zjistit, jakou verzi máte aktuálně nainstalovanou, spusťte následující příkaz:
-
-```powershell
-Get-InstalledModule PowerShellGet
-```
-
-Dále nainstalujte modul AZ. Storage Preview. Následující příkaz nainstaluje verzi [2.5.2-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.5.2-preview) modulu AZ. Storage:
-
-```powershell
-Install-Module -Name Az.Storage -RequiredVersion 2.5.2-preview -AllowPrerelease
-```
-
-Další informace o instalaci Azure PowerShell najdete v tématu [instalace PowerShellGet](/powershell/scripting/gallery/installing-psget) a [instalace Azure PowerShell pomocí PowerShellGet](/powershell/azure/install-az-ps).
-
-Pokud chcete nakonfigurovat Azure Point-in-Time Restore pomocí PowerShellu, zavolejte příkaz Enable-AzStorageBlobRestorePolicy. Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchování s mírným odstraněním, povoluje kanál změn a pak umožňuje obnovení k určitému bodu v čase. Před spuštěním tohoto příkladu použijte Azure Portal nebo šablonu Azure Resource Manager, abyste mohli taky povolit správu verzí objektů BLOB.
+Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchování s mírným odstraněním, povoluje kanál změn a pak umožňuje obnovení k určitému bodu v čase. Před spuštěním tohoto příkladu použijte Azure Portal nebo šablonu Azure Resource Manager, abyste mohli taky povolit správu verzí objektů BLOB.
 
 Při spuštění tohoto příkladu Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -116,7 +102,7 @@ Zástupné znaky nejsou podporovány v rozsahu lexicographical. Jakékoli zástu
 
 Objekty blob můžete obnovit v `$root` `$web` kontejnerech a tak, že je explicitně zadáte v rozsahu předaném do operace obnovení. `$root`Kontejnery a `$web` jsou obnoveny pouze v případě, že jsou výslovně určeny. Jiné systémové kontejnery nelze obnovit.
 
-Obnoveny jsou pouze objekty blob bloku. Objekty blob stránky a doplňovací objekty blob nejsou zahrnuté do operace obnovení. Další informace o omezeních souvisejících s připojením objektů BLOB najdete v tématu [známé problémy](#known-issues).
+Obnoveny jsou pouze objekty blob bloku. Objekty blob stránky a doplňovací objekty blob nejsou zahrnuté do operace obnovení. Další informace o omezeních vztahujících se na doplňovací objekty blob najdete v tématu [obnovení k bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md).
 
 > [!IMPORTANT]
 > Když provádíte operaci obnovení, Azure Storage blokuje operace s daty u objektů BLOB v rozsahu obnovování po dobu trvání operace. Operace čtení, zápisu a odstranění jsou v primárním umístění blokované. Z tohoto důvodu nemusí operace, jako je například výpis kontejnerů v Azure Portal, fungovat podle očekávání, zatímco probíhá operace obnovení.
@@ -141,13 +127,30 @@ Pro obnovení všech kontejnerů a objektů BLOB v účtu úložiště pomocí A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete obnovit všechny kontejnery a objekty BLOB v účtu úložiště pomocí PowerShellu, zavolejte příkaz **Restore-AzStorageBlobRange** , který tento parametr vynechá `-BlobRestoreRange` . Následující příklad obnoví kontejnery v účtu úložiště do stavu 12 hodin před současným okamžikem:
+Pokud chcete obnovit všechny kontejnery a objekty BLOB v účtu úložiště pomocí PowerShellu, zavolejte příkaz **Restore-AzStorageBlobRange** . Ve výchozím nastavení se příkaz **Restore-AzStorageBlobRange** spustí asynchronně a vrátí objekt typu **PSBlobRestoreStatus** , který můžete použít ke kontrole stavu operace obnovení.
+
+Následující příklad asynchronně obnoví kontejnery v účtu úložiště do stavu 12 hodin před současným okamžikem a zkontroluje některé vlastnosti operace obnovení:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
-Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+$restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12)
+
+# Get the status of the restore operation.
+$restoreOperation.Status
+# Get the ID for the restore operation.
+$restoreOperation.RestoreId
+# Get the restore point in UTC time.
+$restoreOperation.Parameters.TimeToRestore
+```
+
+Chcete-li spustit operaci obnovení synchronně, zahrňte do příkazu parametr **-WaitForComplete** . Když je přítomen parametr **-WaitForComplete** , PowerShell zobrazí zprávu, která obsahuje ID obnovení pro operaci, a pak zablokuje spuštění, dokud se nedokončí operace obnovení. Mějte na paměti, že doba potřebná pro operaci obnovení závisí na množství dat, která se mají obnovit, a dokončení velkých operací obnovení může trvat až hodinu.
+
+```powershell
+Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
 
 ---
@@ -184,18 +187,18 @@ Operace obnovení zobrazená na obrázku provádí následující akce:
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Chcete-li obnovit jednu škálu objektů blob, zavolejte příkaz **Restore-AzStorageBlobRange** a zadejte lexicographical rozsah kontejnerů a názvů objektů BLOB pro tento `-BlobRestoreRange` parametr. Chcete-li například obnovit objekty BLOB v jednom kontejneru s názvem *Sample-Container*, můžete zadat rozsah, který začíná *vzorkem-Container* a končí na *Sample-container1*. Neexistuje žádný požadavek na to, aby kontejnery s názvem v rozsahu začátek a konec existovaly. Vzhledem k tomu, že konec rozsahu je exkluzivní, i když účet úložiště obsahuje kontejner s názvem *Sample-container1*, obnoví se jenom kontejner s názvem *Sample-Container* :
+Chcete-li obnovit jednu škálu objektů blob, zavolejte příkaz **Restore-AzStorageBlobRange** a zadejte lexicographical rozsah kontejnerů a názvů objektů BLOB pro tento `-BlobRestoreRange` parametr. Chcete-li například obnovit objekty BLOB v jednom kontejneru s názvem *container1*, můžete zadat rozsah, který začíná na *container1* a končí na *container2*. Neexistuje žádný požadavek na to, aby kontejnery s názvem v rozsahu začátek a konec existovaly. Vzhledem k tomu, že konec rozsahu je exkluzivní, i když účet úložiště obsahuje kontejner s názvem *container2*, obnoví se jenom kontejner s názvem *container1* :
 
 ```powershell
-$range = New-AzStorageBlobRangeToRestore -StartRange sample-container `
-    -EndRange sample-container1
+$range = New-AzStorageBlobRangeToRestore -StartRange container1 `
+    -EndRange container2
 ```
 
 Chcete-li určit podmnožinu objektů BLOB v kontejneru pro obnovení, použijte lomítko (/) k oddělení názvu kontejneru od vzoru předpony objektů BLOB. Například následující rozsah vybírá objekty BLOB v jednom kontejneru, jejichž názvy začínají písmeny *d* až *f*:
 
 ```powershell
-$range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d `
-    -EndRange sample-container/g
+$range = New-AzStorageBlobRangeToRestore -StartRange container1/d `
+    -EndRange container1/g
 ```
 
 Dále zadejte rozsah příkazu **Restore-AzStorageBlobRange** . Zadejte bod obnovení zadáním hodnoty **DateTime** UTC pro `-TimeToRestore` parametr. Následující příklad obnoví objekty BLOB v zadaném rozsahu do jejich stavu 3 dny před současným okamžikem:
@@ -208,7 +211,15 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -TimeToRestore (Get-Date).AddDays(-3)
 ```
 
-Chcete-li obnovit více rozsahů objektů blob bloku, zadejte pole rozsahů pro `-BlobRestoreRange` parametr. Následující příklad určuje dva rozsahy pro obnovení kompletního obsahu *container1* a *container4*:
+Ve výchozím nastavení se příkaz **Restore-AzStorageBlobRange** spustí asynchronně. Když operaci obnovení inicializujete asynchronně, PowerShell okamžitě zobrazí tabulku vlastností pro tuto operaci:  
+
+```powershell
+Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges
+------     ---------                            ------------- ------------------------     ---------------------
+InProgress 459c2305-d14a-4394-b02c-48300b368c63               2020-09-15T23:23:07.1490859Z ["container1/d" -> "container1/g"]
+```
+
+Chcete-li obnovit více rozsahů objektů blob bloku, zadejte pole rozsahů pro `-BlobRestoreRange` parametr. Následující příklad určuje dva rozsahy pro obnovení kompletního obsahu *container1* a *container4* před jejich stavem 24 hodin a výsledek uloží do proměnné:
 
 ```powershell
 # Specify a range that includes the complete contents of container1.
@@ -218,43 +229,26 @@ $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 `
 $range2 = New-AzStorageBlobRangeToRestore -StartRange container4 `
     -EndRange container5
 
-Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+$restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddMinutes(-30) `
+    -TimeToRestore (Get-Date).AddHours(-24) `
     -BlobRestoreRange @($range1, $range2)
+
+# Get the status of the restore operation.
+$restoreOperation.Status
+# Get the ID for the restore operation.
+$restoreOperation.RestoreId
+# Get the blob ranges specified for the operation.
+$restoreOperation.Parameters.BlobRanges
 ```
+
+Chcete-li spustit operaci obnovení synchronně a zablokovat spuštění, dokud není dokončeno, do příkazu zadejte parametr **-WaitForComplete** .
 
 ---
 
-### <a name="restore-block-blobs-asynchronously-with-powershell"></a>Asynchronní obnovení objektů blob bloku pomocí PowerShellu
-
-Chcete-li spustit operaci obnovení asynchronně, přidejte do `-AsJob` volání metody **Restore-AzStorageBlobRange** parametr a výsledek volání uložte do proměnné. Příkaz **Restore-AzStorageBlobRange** vrátí objekt typu **AzureLongRunningJob**. Můžete ověřit vlastnost **stav** tohoto objektu a zjistit, zda byla operace obnovení dokončena. Hodnota vlastnosti **State** může být **spuštěná** nebo **Dokončená**.
-
-Následující příklad ukazuje, jak asynchronní volání operace obnovení:
-
-```powershell
-$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
-    -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddMinutes(-5) `
-    -AsJob
-
-# Check the state of the job.
-$job.State
-```
-
-Chcete-li počkat na dokončení operace obnovení po spuštění, zavolejte příkaz [čekací úlohy](/powershell/module/microsoft.powershell.core/wait-job) , jak je znázorněno v následujícím příkladu:
-
-```powershell
-$job | Wait-Job
-```
-
-## <a name="known-issues"></a>Známé problémy
-
-Pro podmnožinu operací obnovení, kde jsou k dispozici doplňovací objekty blob, operace obnovení selže. Microsoft doporučuje, abyste během období Preview neprováděli obnovení k určitému bodu v čase, pokud se v účtu nacházejí objekty blob pro přidávání.
-
 ## <a name="next-steps"></a>Další kroky
 
-- [Obnovení bodu v čase pro objekty blob bloku (Preview)](point-in-time-restore-overview.md)
+- [Obnovení bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md)
 - [Obnovitelné odstranění](soft-delete-overview.md)
-- [Změnit kanál (Preview)](storage-blob-change-feed.md)
+- [Změnit kanál](storage-blob-change-feed.md)
 - [Správa verzí objektů BLOB](versioning-overview.md)

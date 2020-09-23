@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958707"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983005"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -28,7 +28,7 @@ Naučíte se:
 
 Pokud máte Visual Studio Ultimate, můžete použít také [IntelliTrace](/visualstudio/debugger/intellitrace) pro ladění. IntelliTrace se v tomto kurzu nezabývá.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
 Tento kurz spolupracuje s vývojovým prostředím, webovým projektem a App Service aplikaci, kterou jste nastavili v části [Vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). V sekcích WebJobs budete potřebovat aplikaci, kterou vytvoříte v části [Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
 
 Ukázky kódu zobrazené v tomto kurzu jsou pro webovou aplikaci v jazyce C# MVC, ale postupy řešení potíží jsou stejné pro aplikace Visual Basic a webových formulářů.
@@ -70,15 +70,15 @@ Obvykle nasadíte webový projekt s `customErrors` příznakem v Web.config soub
 
 **Chyba serveru v/aplikaci:**
 
-![Chybová stránka neusnadňující](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
 
 **Došlo k chybě:**
 
-![Chybová stránka neusnadňující](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Snímek obrazovky znázorňující příklad obecné chyby, ke které došlo ve webovém prohlížeči.":::
 
 **Web nemůže zobrazit stránku**
 
-![Chybová stránka neusnadňující](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Snímek obrazovky s webem nemůže zobrazit chybu stránky ve webovém prohlížeči.":::
 
 Často nejjednodušší způsob, jak najít příčinu chyby, je povolit podrobné chybové zprávy, které popisují první z předchozích snímků obrazovky. To vyžaduje změnu v nasazeném souboru Web.config. Můžete upravit soubor *Web.config* v projektu a znovu nasadit projekt, nebo vytvořit [Web.config transformovat](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) a nasadit sestavení pro ladění, ale existuje rychlejší způsob: v **Průzkumník řešení**můžete přímo zobrazit a upravit soubory ve vzdálené aplikaci pomocí funkce *vzdáleného zobrazení* .
 
@@ -139,7 +139,7 @@ V této části se dozvíte, jak vzdáleně ladit pomocí projektu, který jste 
 
 1. V **Průzkumník serveru**klikněte pravým tlačítkem na aplikaci a pak klikněte na **připojit ladicí program**.
 
-    ![Připojit ladicí program](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="Snímek obrazovky okna Průzkumník serveru, ve kterém se zobrazuje vybraná aplikace a pak klikněte na tlačítko připojit ladicí program.":::
 
     Prohlížeč se automaticky otevře na domovské stránce běžící v Azure. Možná budete muset počkat 20 sekund, nebo tak, aby Azure nastavil Server pro ladění. Toto zpoždění nastane jenom při prvním spuštění v režimu ladění aplikace v období 48 hodin. Při opětovném spuštění ladění ve stejné době nedochází ke zpoždění.
 
@@ -192,7 +192,7 @@ Vzdálené ladění funguje jenom se souvislými WebJobs. Naplánované a na vy�
 
 8. Klikněte na **připojit ladicí program**.
 
-    ![Připojit ladicí program](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="Snímek obrazovky Průzkumník serveru s vybraným ContosoAdsWebJob v rozevírací nabídce a připojením vybraného ladicího programu":::
 
     Prohlížeč se automaticky otevře na domovské stránce běžící v Azure. Možná budete muset počkat 20 sekund, nebo tak, aby Azure nastavil Server pro ladění. Toto zpoždění nastane jenom při prvním spuštění v režimu ladění aplikace v období 48 hodin. Při opětovném spuštění ladění ve stejné době nedochází ke zpoždění.
 
@@ -340,11 +340,11 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
 1. Na panelu Adresa v okně prohlížeče přidejte do adresy URL *Trace. axd* a potom stiskněte klávesu ENTER (adresa URL je podobná `http://localhost:53370/trace.axd` ).
 1. Na stránce **trasování aplikací** klikněte na tlačítko **Zobrazit podrobnosti** na prvním řádku (ne na řádku BrowserLink).
 
-    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Snímek stránky trasování aplikace ve webovém prohlížeči zobrazující podrobnosti o zobrazení vybraných na prvním řádku.":::
 
     Zobrazí se stránka **Podrobnosti žádosti** a v části **trasovací informace** se zobrazí výstup z příkazů trasování, které jste přidali do `Index` metody.
 
-    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Snímek obrazovky stránky s podrobnostmi o žádosti ve webovém prohlížeči, kde se zobrazí zpráva zvýrazněná v části informace o trasování":::
 
     Ve výchozím nastavení `trace.axd` je k dispozici pouze místně. Pokud jste chtěli, aby byl k dispozici ze vzdálené aplikace, mohli byste přidat `localOnly="false"` do `trace` prvku v souboru *Web.config* , jak je znázorněno v následujícím příkladu:
 
@@ -361,11 +361,12 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
     Po publikování aktualizace v aplikaci Visual Studio se otevře okno prohlížeče na domovské stránce (za předpokladu, že se na kartě **připojení** nevymaže **cílová adresa URL** ).
 3. V **Průzkumník serveru**klikněte pravým tlačítkem myši na svou aplikaci a vyberte **Zobrazit protokoly streamování**.
 
-    ![Zobrazit protokoly streamování v místní nabídce](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="Snímek obrazovky Průzkumník serveru po kliknutí pravým tlačítkem myši na aplikaci a zobrazení protokolů streamování, které jsou vybrány v novém okně.":::
 
     V okně **výstup** se zobrazí zpráva, že jste připojeni ke službě streamování protokolů a do každé minuty přidáte řádek oznámení bez protokolu, který se má zobrazit.
 
-    ![Zobrazit protokoly streamování v místní nabídce](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="Snímek obrazovky okna výstup zobrazující příklad připojení ke službě streamování protokolů s řádky oznámení":::
+
 4. V okně prohlížeče, které zobrazuje vaši domovskou stránku aplikace klikněte na tlačítko **kontakt**.
 
     Během několika sekund se zobrazí výstup trasování na úrovni chyby, které jste přidali do metody, `Contact` v okně **výstup** .
@@ -393,7 +394,7 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
 ### <a name="output-window-features"></a>Funkce okna výstup
 Karta **protokoly Microsoft Azure** v okně **výstup** obsahuje několik tlačítek a textové pole:
 
-![Tlačítka na kartě protokoly](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="Snímek obrazovky se zobrazenými tlačítky a textovým polem karty protokoly Microsoft Azure v okně výstup.":::
 
 Provádí následující funkce:
 
@@ -457,14 +458,15 @@ Všechny protokoly, které lze monitorovat v okně **výstup** , lze také stáh
 
 1. V okně **výstup** klikněte na **Stáhnout protokoly streamování**.
 
-    ![Tlačítka na kartě protokoly](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="Snímek obrazovky okna výstup zobrazující, že se zvýrazní tlačítko Stáhnout protokoly streamování":::
 
     Průzkumník souborů se otevře ve složce *stažené soubory* se zvoleným staženým souborem.
 
-    ![Stažený soubor](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="Snímek obrazovky složky Ke_stažení v Průzkumníkovi souborů se zvoleným staženým souborem":::
+
 2. Rozbalte soubor *. zip* a uvidíte následující strukturu složek:
 
-    ![Stažený soubor](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="Snímek obrazovky struktury složky souboru. zip po extrakci souboru":::
 
    * Protokoly trasování aplikace jsou v souborech *. txt* ve složce *LogFiles\Application* .
    * Protokoly webového serveru jsou v souborech *. log* ve složce *LogFiles\http\RawLogs* . Pomocí nástroje, jako je [analyzátor protokolů](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) , můžete tyto soubory zobrazit a manipulovat s nimi.

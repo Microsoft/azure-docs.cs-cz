@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416422"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984896"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory 
 
@@ -37,7 +37,7 @@ ADF nabízí architekturu bez serveru, která umožňuje paralelismus na různý
 
 Zákazníci úspěšně migrovali petabajty dat sestávající ze stovek milionů souborů z Amazon S3 do Azure Blob Storage s trvalou propustností 2 GB/s a vyšší. 
 
-![výkon](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+![Diagram znázorňuje několik oddílů souborů v úložišti A W S S3 s přidruženými akcemi kopírování do Azure Blob Storage A D L S Gen2.](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
 Obrázek výše znázorňuje, jak můžete dosáhnout velkých rychlostí přesunu dat prostřednictvím různých úrovní paralelismu:
  
@@ -61,7 +61,7 @@ Případně, pokud nechcete, aby byla data přenášena prostřednictvím veřej
 
 Migrace dat prostřednictvím veřejného Internetu:
 
-![řešení – architektura – veřejná síť](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![Diagram znázorňuje migraci prostřednictvím Internetu H T T P z úložiště A W S S3 prostřednictvím Azure Integration Runtime v D F Azure pro Azure Storage. Modul runtime má řídicí kanál s Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
 - V této architektuře se data přenáší zabezpečeně pomocí protokolu HTTPS prostřednictvím veřejného Internetu. 
 - Zdroj Amazon S3 i cílový Blob Storage Azure nebo Azure Data Lake Storage Gen2 jsou nakonfigurované tak, aby povolovaly provoz ze všech síťových IP adres.  Informace o tom, jak omezit přístup k síti na konkrétní rozsah IP adres, najdete v druhé níže uvedené architektuře. 
@@ -70,7 +70,7 @@ Migrace dat prostřednictvím veřejného Internetu:
 
 Migrovat data prostřednictvím privátního propojení: 
 
-![řešení – architektura – privátní síť](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![Diagram znázorňuje migraci prostřednictvím privátního partnerského připojení z úložiště A W S S3 prostřednictvím místního prostředí Integration runtime na virtuální počítače Azure do koncových bodů služby V síti, které Azure Storage. Modul runtime má řídicí kanál s Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
 - V této architektuře se migrace dat provádí přes propojení privátního partnerského vztahu mezi AWS přímým připojením a trasou Azure Express, což znamená, že data nikdy neprochází přes veřejný Internet.  Vyžaduje použití AWS VPC a Azure Virtual Network. 
 - Aby bylo možné dosáhnout této architektury, je nutné nainstalovat modul runtime integrace ADF (autohostd) na virtuální počítač s Windows v rámci služby Azure Virtual Network.  Ruční horizontální navýšení kapacity virtuálních počítačů IR nebo jejich horizontální navýšení kapacity na více virtuálních počítačů (až 4 uzly) můžete použít k plnému využití vaší sítě a IOPS/šířky pásma úložiště. 
@@ -122,7 +122,7 @@ Když narazíte na chyby omezování hlášené aktivitou kopírování ADF, zme
 
 Vezměte v úvahu následující kanál vytvořený pro migraci dat ze S3 do Azure Blob Storage: 
 
-![ceny – kanál](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![Diagram znázorňuje kanál pro migraci dat, s ručním tokem triggerem pro vyhledávání, Flowing do příkazu ForEach a přechodem k dílčímu kanálu pro každý oddíl, který obsahuje kopírování toků do uložené procedury. Mimo kanál je uložený postup uložený do Azure SQL D B, který přetéká na vyhledávání a toky s W S S3 ke kopírování, které přecházejí do úložiště objektů BLOB.](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
 Můžeme předpokládat následující: 
 
@@ -135,7 +135,7 @@ Můžeme předpokládat následující:
 
 Tady je odhadovaná cena na základě výše uvedených předpokladů: 
 
-![ceny – tabulka](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![Snímek obrazovky tabulky zobrazuje odhadovanou cenu.](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>Další odkazy 
 - [Konektor služby Amazon Simple Storage Service Connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)

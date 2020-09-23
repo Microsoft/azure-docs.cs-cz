@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
-ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e9981f9df31f6de21262aedc9790dbf1a7725fc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77593372"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985345"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 Pokud chcete ověřit, že se v aktualizované imagi kontejneru projevily provedené změny, otevřete místní webový prohlížeč a přejděte na adresu `http://localhost:8080`.
 
-![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Snímek obrazovky s příkladem aktualizované hlasovací aplikace Azure pro Image kontejneru, která se otevřela v místním webovém prohlížeči a místním hostiteli.":::
 
 Aktualizované hodnoty uvedené v souboru *config_file. cfg* se zobrazí ve spuštěné aplikaci.
 
@@ -145,7 +145,7 @@ kubectl get service azure-vote-front
 
 Nyní otevřete místní webový prohlížeč na IP adresu vaší služby:
 
-![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Snímek obrazovky s příkladem aktualizované hlasovací aplikace Azure, která se otevřela v místním webovém prohlížeči":::
 
 ## <a name="next-steps"></a>Další kroky
 

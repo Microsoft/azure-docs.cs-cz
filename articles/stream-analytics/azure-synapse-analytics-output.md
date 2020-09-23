@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 5d281bf33542354e2904805deed2f1deaf2725a2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 04c315f593b90204faaeaec562c18e9e4be301d8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875738"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881902"
 ---
-# <a name="azure-synapse-analytics-output-from-azure-stream-analytics-preview"></a>Výstup služby Azure synapse Analytics z Azure Stream Analytics (Preview)
+# <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Výstup služby Azure synapse Analytics z Azure Stream Analytics
 
 [Azure synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) (dříve SQL Data Warehouse) je bezlimitní analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. 
 
@@ -28,7 +28,7 @@ Pokud chcete jako výstup použít Azure synapse, musíte zajistit, aby byl úč
 
 V následující tabulce jsou uvedené názvy vlastností a jejich popisy pro vytváření výstupu Azure synapse Analytics.
 
-|Název vlastnosti|Popis|
+|Název vlastnosti|Description|
 |-|-|
 |Alias pro výstup |Popisný název, který se používá v dotazech k směrování výstupu dotazu do této databáze. |
 |Databáze |Název fondu SQL, kam posíláte výstup. |
@@ -44,4 +44,4 @@ V následující tabulce jsou uvedené názvy vlastností a jejich popisy pro vy
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí šablony ARM](quick-create-azure-resource-manager.md)
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md)
+* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)

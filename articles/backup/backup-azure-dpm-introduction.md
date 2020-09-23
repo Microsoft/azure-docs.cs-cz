@@ -3,12 +3,12 @@ title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021030"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975452"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -61,7 +61,7 @@ Můžete si vybrat mezi geograficky redundantním úložištěm a místně redun
 
 - Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště.
 - Pokud je trezor vaší primární zálohou, ponechte možnost nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která není úplně stejná jako trvalá, nakonfigurujte místně redundantní úložiště pomocí následujícího postupu.
-- Přečtěte si o [Azure Storage](../storage/common/storage-redundancy.md)a možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště.
+- Přečtěte si o [Azure Storage](../storage/common/storage-redundancy.md)a možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage), [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) a [redundantního](../storage/common/storage-redundancy.md#zone-redundant-storage) úložiště v zóně.
 - Úprava nastavení úložiště před prvotním zálohováním. Pokud jste už zálohované položky zálohovali, před úpravou nastavení úložiště zastavte zálohování v trezoru.
 
 Chcete-li upravit nastavení replikace úložiště:
@@ -97,7 +97,7 @@ Pokud chcete získat přihlašovací údaje, Stáhněte si soubor s přihlašova
 
 Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítače následujícím způsobem:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete trezor, ve kterém chcete zaregistrovat server DPM.
 3. V **Nastavení**vyberte **vlastnosti**.
 
@@ -165,7 +165,7 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
 
 7. Vyberte **Registrovat** a zaregistrujte server DPM do trezoru.
 
-Po úspěšném zaregistrování serveru do trezoru teď budete připraveni začít s zálohováním Microsoft Azure. Abyste mohli zálohovat úlohy do Azure, budete muset nakonfigurovat skupinu ochrany v konzole DPM. [Přečtěte si, jak](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) nasadit skupiny ochrany.
+Po úspěšném zaregistrování serveru do trezoru teď budete připraveni začít s zálohováním Microsoft Azure. Abyste mohli zálohovat úlohy do Azure, budete muset nakonfigurovat skupinu ochrany v konzole DPM. [Přečtěte si, jak](/system-center/dpm/create-dpm-protection-groups) nasadit skupiny ochrany.
 
 ## <a name="troubleshoot-vault-credentials"></a>Řešení potíží s přihlašovacími údaji trezoru
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 440007767835de4641fb828b41d572f35997acd2
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 73178a9707d35fe7337210b11e76504794bc93ed
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064464"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896395"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -19,7 +19,7 @@ Tento článek popisuje architekturu připojení Azure Database for MySQL a způ
 ## <a name="connectivity-architecture"></a>Architektura připojení
 Připojení k vašemu Azure Database for MySQL se naváže prostřednictvím brány zodpovědné za směrování příchozích připojení do fyzického umístění serveru v našich clusterech. Tok přenosů znázorňuje následující diagram.
 
-![Přehled architektury připojení](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+:::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="Přehled architektury připojení":::
 
 Když se klient připojí k databázi, získá připojovací řetězec, který se připojí k bráně. Tato brána má veřejnou IP adresu, která naslouchá na portu 3306. V rámci databázového clusteru je přenos předáván odpovídajícím Azure Database for MySQL. Aby bylo možné připojit se k serveru, například z podnikových sítí, je nutné otevřít bránu firewall na straně klienta, aby odchozí přenosy umožňovaly přístup k našim branám. Níže můžete najít úplný seznam IP adres, které používají naše brány v jednotlivých oblastech.
 
@@ -35,7 +35,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Brazil South | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Střední Kanada |40.85.224.249  |
 | Kanada – východ | 40.86.226.166    |
-| Střední USA | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
+| USA – střed | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | Čína – východ | 139.219.130.35    |
 | Čína – východ 2 | 40.73.82.1  |
 | Čína – sever | 139.219.15.17    |

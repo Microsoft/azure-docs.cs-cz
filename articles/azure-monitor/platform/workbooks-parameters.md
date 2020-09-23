@@ -1,6 +1,6 @@
 ---
 title: Sešity Azure Monitor vytváření parametrů
-description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů
+description: Přečtěte si, jak parametry umožňují autorům sešitu shromažďovat vstup od spotřebitelů a odkazovat na ně v jiných částech sešitu.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be7dd170d5e4e3bddb09bc1b163fba7a841a6b7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658213"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984561"
 ---
 # <a name="workbook-parameters"></a>Parametry sešitu
 
@@ -40,8 +40,8 @@ Na tyto hodnoty parametrů se dá odkazovat v jiných částech sešitů, a to p
 4. V podokně nového parametru, které se objeví, zadejte:
     1. Název parametru: `TimeRange` *(Všimněte si, že __názvy__ parametrů **nemůžou** obsahovat mezery ani speciální znaky.)*
     2. Zobrazované jméno: `Time Range` *(ale __zobrazované názvy__ můžou obsahovat mezery, speciální znaky, Emoji atd.)*  
-    2. Typ parametru:`Time range picker`
-    3. Požadovanou`checked`
+    2. Typ parametru: `Time range picker`
+    3. Požadovanou `checked`
     4. Dostupné časové rozsahy: poslední hodina, posledních 12 hodin, posledních 24 hodin, poslední 48 hodin, poslední 3 dny, posledních 7 dní a povolený výběr vlastního časového rozsahu
 5. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
 
@@ -62,7 +62,7 @@ V takovém případě bude sešit vypadat jako v režimu čtení, ve stylu "Pill
 
 ### <a name="in-kql"></a>V KQL
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
-2. Do KQL zadejte filtr oboru času pomocí parametru:`| where timestamp {TimeRange}`
+2. Do KQL zadejte filtr oboru času pomocí parametru: `| where timestamp {TimeRange}`
 3. Tím se rozšíří doba vyhodnocování dotazu na `| where timestamp > ago(1d)` , což je hodnota časového rozsahu parametru.
 4. Spusťte dotaz, aby se zobrazily výsledky.
 
@@ -70,7 +70,7 @@ V takovém případě bude sešit vypadat jako v režimu čtení, ve stylu "Pill
 
 ### <a name="in-text"></a>V textu 
 1. Přidejte textový ovládací prvek do sešitu.
-2. Do Markdownu zadejte`The chosen time range is {TimeRange:label}`
+2. Do Markdownu zadejte `The chosen time range is {TimeRange:label}`
 3. Zvolit _hotové úpravy_
 4. Ovládací prvek text zobrazí text: _zvolený časový rozsah je posledních 24 hodin_ .
 

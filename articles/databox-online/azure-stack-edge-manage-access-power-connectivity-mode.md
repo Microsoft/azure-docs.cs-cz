@@ -1,6 +1,6 @@
 ---
-title: Přístup k zařízení Azure Stack Edge, napájení a režim připojení | Microsoft Docs
-description: Popisuje, jak spravovat přístup, režim napájení a režim připojení pro Azure Stack hraniční zařízení, které pomáhá přenést data do Azure.
+title: Azure Stack přístup, režim napájení a režim připojení pro zařízení Edge Microsoft Docs
+description: Popisuje, jak spravovat přístup, režim napájení a režim připojení pro zařízení Azure Stack Edge pro, které pomáhá přenést data do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079791"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904421"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Správa přístupu, napájení a režimu připojení pro Azure Stack Edge
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Správa přístupu, napájení a režimu připojení pro Azure Stack Edge pro
 
-Tento článek popisuje, jak spravovat přístup, režim napájení a režim připojení pro Azure Stack hraničních zařízeních. Tyto operace se provádějí prostřednictvím místního webového uživatelského rozhraní nebo Azure Portal.
+Tento článek popisuje, jak spravovat režim přístupu, napájení a připojení pro Azure Stack Edge pro. Tyto operace se provádějí prostřednictvím místního webového uživatelského rozhraní nebo Azure Portal.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -29,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="manage-device-access"></a>Správa přístupu k zařízení
 
-Přístup k vašemu Azure Stack hraničnímu zařízení se řídí použitím hesla zařízení. Heslo můžete změnit prostřednictvím místního webového uživatelského rozhraní. Můžete také resetovat heslo zařízení v Azure Portal.
+Přístup k vašemu zařízení Azure Stack Edge pro je ovládán použitím hesla zařízení. Heslo můžete změnit prostřednictvím místního webového uživatelského rozhraní. Můžete také resetovat heslo zařízení v Azure Portal.
 
 ### <a name="change-device-password"></a>Změna hesla zařízení
 
@@ -61,12 +61,12 @@ Pokud chcete vytvořit Azure Stack hraničních, Data Box Gateway, IoT Hub a Azu
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Správa oprávnění rozhraní API Microsoft Graph
 
-Při generování aktivačního klíče pro Azure Stack hraniční zařízení nebo při provádění operací, které vyžadují přihlašovací údaje, potřebujete oprávnění Azure Active Directory Graph API. Operace, které vyžadují přihlašovací údaje, můžou být:
+Při generování aktivačního klíče pro zařízení Azure Stack Edge pro nebo provádění operací, které vyžadují přihlašovací údaje, potřebujete oprávnění Azure Active Directory Graph API. Operace, které vyžadují přihlašovací údaje, můžou být:
 
 -  Vytváří se sdílená složka s přidruženým účtem úložiště.
 -  Vytváří se uživatel, který má přístup ke sdíleným složkám na zařízení.
 
-Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects` . Nemůžete být uživatel typu Host, protože k němu nemají oprávnění `Read all directory objects` . Pokud jste Host, pak operace, jako je například generace aktivačního klíče, vytvoření sdílené složky na zařízení Azure Stack Edge, vytvoření uživatele, konfigurace hraniční výpočetní role, resetování hesla zařízení selže.
+Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects` . Nemůžete být uživatel typu Host, protože k němu nemají oprávnění `Read all directory objects` . Pokud jste Host, pak operace, jako je generace aktivačního klíče, vytvoření sdílené složky na zařízení Azure Stack Edge pro, vytvoření uživatele, konfigurace hraniční výpočetní role, resetování hesla zařízení selže.
 
 Další informace o tom, jak poskytnout uživatelům přístup k Microsoft Graph rozhraní API, najdete v tématu [Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -89,7 +89,7 @@ Pokud chcete získat seznam registrovaných poskytovatelů prostředků v aktuá
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Pro Azure Stack hraniční zařízení `Microsoft.DataBoxEdge` by se mělo zaregistrovat. Pokud se chcete zaregistrovat `Microsoft.DataBoxEdge` , Správce předplatného by měl spustit tento příkaz:
+Pro zařízení Azure Stack Edge pro `Microsoft.DataBoxEdge` by se měla zaregistrovat. Pokud se chcete zaregistrovat `Microsoft.DataBoxEdge` , Správce předplatného by měl spustit tento příkaz:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -120,7 +120,7 @@ Chcete-li změnit režim zařízení, postupujte podle následujících kroků:
  
 ## <a name="manage-power"></a>Správa napájení
 
-Můžete vypnout nebo restartovat fyzické zařízení pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním převedli sdílené složky na datovém serveru a pak na zařízení. Tato akce minimalizuje jakoukoli možnost poškození dat.
+Fyzické zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Před restartováním doporučujeme přepnout sdílené složky na datovém serveru a potom na zařízení do offline režimu. Tato akce minimalizuje možnost poškození dat.
 
 1. V místním webovém uživatelském rozhraní přejdete do části **údržba > nastavení napájení**.
 2. V závislosti na tom, co máte v úmyslu udělat, vyberte **vypnout** nebo **restartovat** .

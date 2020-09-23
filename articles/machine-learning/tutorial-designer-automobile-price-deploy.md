@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: nasazení modelů ML pomocí návrháře (Preview)'
+title: 'Kurz: nasazení modelů ML pomocí návrháře'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se dozvíte, jak vytvořit řešení prediktivní analýzy v Návrháři Azure Machine Learning (Preview). Využijte moduly pro vytažení, skóre a nasazení modelu strojového učení.
+description: V tomto kurzu se dozvíte, jak vytvořit řešení prediktivní analýzy v Návrháři Azure Machine Learning. Využijte moduly pro vytažení, skóre a nasazení modelu strojového učení.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 453971d776a0953a344d147bca387a81f65ac73c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4923e48c890a50d642d937f014e466e998171cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287985"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896627"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: nasazení modelu strojového učení pomocí návrháře (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
+
 
 Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md) , který jiným uživatelům umožní tuto možnost použít. V první části jste si vyškole svůj model. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu budete:
 

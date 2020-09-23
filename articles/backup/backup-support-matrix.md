@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892180"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985014"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -75,7 +75,7 @@ Co je se podporuje, pokud chcete zálohovat virtuální počítače Azure:
 
 Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux:
 
-**Typ zálohy** | **Linux (schváleno Azure)**
+**Typ zálohování** | **Linux (schváleno Azure)**
 --- | ---
 **Přímá záloha místního počítače se systémem Linux** | Nepodporováno Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
 **Použití rozšíření agenta pro zálohování virtuálního počítače Azure se systémem Linux** | Zálohování konzistentní s aplikací pomocí [vlastních skriptů](backup-azure-linux-app-consistent.md).<br/><br/> Obnovení na úrovni souborů.<br/><br/> Obnovte vytvořením virtuálního počítače z bodu obnovení nebo disku.
@@ -113,10 +113,10 @@ Azure Backup podporuje šifrování pro data v přenosu a na REST.
 
 **Počítač** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-**Místní počítače s Windows bez DPM/MABS** | ![Ano][green] | ![Ano][green]
-**Virtuální počítače Azure** | ![Ano][green] | ![Ano][green]
-**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Ano][green] | ![Ano][green]
-**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Ano][green] | ![Ano][green]
+**Místní počítače s Windows bez DPM/MABS** | ![Yes][green] | ![Yes][green]
+**Virtuální počítače Azure** | ![Yes][green] | ![Yes][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Yes][green] | ![Yes][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Kompresní podpora
 
@@ -129,7 +129,7 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 **Přímá záloha místních počítačů s Windows** | Není k dispozici | ![Ano][green]
 **Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Není k dispozici | Není k dispozici
-**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
+**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Omezení uchování
 
@@ -149,10 +149,10 @@ Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Yes.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
-| Agent MARS/místní | Ne                                                           | –               |
-| SQL/SAP HANA          | Ne                                                           | –               |
-| BUŇK                    | Ne                                                           | –               |
+| Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure a cloudy svrchovan.  |
+| SQL/SAP HANA | Yes                                                          | Všechny veřejné oblasti Azure a cloudy svrchovan.             |
+| Agent MARS/místní  | No                                                           | Není k dispozici               |
+| BUŇK                    | No                                                           | Není k dispozici               |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Monitorování zařízení Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak pomocí Azure Portal a místního webového uživatelského rozhraní monitorovat Azure Stack Edge.
+title: Monitorujte zařízení Azure Stack Edge pro | Microsoft Docs
+description: Popisuje způsob použití Azure Portal a místního webového uživatelského rozhraní k monitorování Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd75eb0f7de602979f2233a873c01ef742471e37
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339548"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904395"
 ---
-# <a name="monitor-your-azure-stack-edge"></a>Monitorování Azure Stack Edge
+# <a name="monitor-your-azure-stack-edge-pro"></a>Monitorování Azure Stack Edge pro
 
-Tento článek popisuje, jak monitorovat Azure Stack Edge. Pokud chcete monitorovat své zařízení, můžete použít Azure Portal nebo místní webové uživatelské rozhraní. Pomocí Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky. Pomocí místního webového uživatelského rozhraní na fyzickém zařízení můžete zobrazit stav hardwaru různých součástí zařízení.
+Tento článek popisuje, jak monitorovat Azure Stack Edge pro. Pokud chcete monitorovat své zařízení, můžete použít Azure Portal nebo místní webové uživatelské rozhraní. Pomocí Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky. Pomocí místního webového uživatelského rozhraní na fyzickém zařízení můžete zobrazit stav hardwaru různých součástí zařízení.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -34,10 +34,10 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="view-hardware-status"></a>Zobrazit stav hardwaru
 
-Chcete-li zobrazit stav hardwaru komponent zařízení, proveďte následující kroky v místním webovém uživatelském rozhraní.
+Pokud chcete zobrazit stav hardwaru komponent zařízení, v místním webovém uživatelském rozhraní postupujte následovně.
 
 1. Připojte se k místnímu webovému uživatelskému rozhraní vašeho zařízení.
-2. **> stav hardwaru**přejít na údržba. Můžete zobrazit stav různých součástí zařízení.
+2. **> stav hardwaru**přejít na údržba. Tady můžete zobrazit stav různých komponent zařízení.
 
     ![Zobrazit stav hardwaru](media/azure-stack-edge-monitor/view-hardware-status.png)
 
@@ -57,7 +57,7 @@ Tato část popisuje metriky monitorování na vašem zařízení. Metriky mohou
 
 Úplný seznam metrik je uveden v následující tabulce:
 
-|Metriky kapacity                     |Description  |
+|Kapacitní metriky                     |Description  |
 |-------------------------------------|-------------|
 |**Dostupná kapacita**               | Odkazuje na velikost dat, která se dají zapsat do zařízení. Jinými slovy, to je kapacita, kterou lze v zařízení zpřístupnit. <br></br>Kapacitu zařízení můžete uvolnit tak, že odstraníte místní kopii souborů, která má kopii na zařízení i v cloudu.        |
 |**Celková kapacita**                   | Odkazuje na celkový počet bajtů na zařízení, do kterého se mají zapisovat data. To se také označuje jako celková velikost místní mezipaměti. <br></br> Kapacitu stávajícího virtuálního zařízení teď můžete zvýšit přidáním datového disku. Přidejte datový disk prostřednictvím správy hypervisoru pro virtuální počítač a pak restartujte virtuální počítač. Místní fond úložiště zařízení brány se rozšíří tak, aby odpovídal nově přidanému datovému disku. <br></br>Další informace získáte, když přejdete na [Přidat pevný disk pro virtuální počítač Hyper-V](https://www.youtube.com/watch?v=EWdqUw9tTe4). |

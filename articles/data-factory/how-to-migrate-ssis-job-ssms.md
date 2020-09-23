@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82627581"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984912"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrace úloh agenta SQL Server do ADF pomocí SSMS
 
@@ -46,7 +46,7 @@ Funkce popsaná v tomto článku vyžaduje SQL Server Management Studio verze 18
 ## <a name="migrate-ssis-jobs-to-adf"></a>Migrace úloh SSIS do ADF
 
 1. V SSMS v Průzkumník objektů vyberte SQL Server Agent, vyberte úlohy, klikněte pravým tlačítkem a vyberte **migrovat úlohy SSIS na ADF**.
-![nabídce](media/how-to-migrate-ssis-job-ssms/menu.png)
+![Snímek obrazovky ukazuje SQL Server Management Studio Průzkumník objektů, kde můžete vybrat úlohy a pak migrovat úlohy S s I s na D F.](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. Přihlaste se k Azure, vyberte předplatné Azure, Data Factory a Integration Runtime. Azure Storage je volitelná, která se používá v kroku mapování umístění balíčku, pokud mají migrovány úlohy SSIS balíčky systému souborů SSIS.
 ![nabídce](media/how-to-migrate-ssis-job-ssms/step1.png)
@@ -57,28 +57,28 @@ Funkce popsaná v tomto článku vyžaduje SQL Server Management Studio verze 18
     1. Aktualizujte cestu ke zdrojové složce. Platné cesty jsou cesty ke složkám nebo cesty nadřazených složek balíčků.
     1. Aktualizujte cestu k cílové složce. Výchozí hodnota je relativní cesta k výchozímu účtu úložiště, který je vybraný v kroku 1.
     1. Odstraní vybrané mapování prostřednictvím **mapování pro odstranění**.
-![STEP2 ](media/how-to-migrate-ssis-job-ssms/step2.png)
- ![ STEP2 – 1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![Snímek obrazovky se stránkou balíčku mapy s I S cestami ke konfiguraci, kde můžete přidat mapování. ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ Snímek obrazovky se stránkou balíčku mapy s a cestami konfigurace, kde můžete aktualizovat cestu ke zdrojové a cílové složce.](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Vyberte příslušné úlohy, které chcete migrovat, a nakonfigurujte nastavení odpovídající *spouštěné aktivity balíčku SSIS*.
 
     - *Výchozí nastavení*platí pro všechny vybrané kroky ve výchozím nastavení. Další informace o jednotlivých vlastnostech naleznete v tématu *Karta nastavení* pro [aktivitu spustit SSIS balíčku](how-to-invoke-ssis-package-ssis-activity.md) , když je umístění balíčku *systém souborů (Package)*.
-    ![Step3-1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
+    ![Snímek obrazovky se zobrazí na stránce S úlohami výběru S, kde můžete nakonfigurovat nastavení odpovídající spouštěné aktivity balíčku SSIS.](media/how-to-migrate-ssis-job-ssms/step3-1.png)
     - *Nastavení kroku*, nakonfigurujte nastavení pro vybraný krok.
         
         **Použít výchozí nastavení**: je vybraná možnost výchozí. Zrušte výběr ke konfiguraci nastavení pouze pro vybraný krok.  
         Další informace o dalších vlastnostech naleznete v tématu *Karta nastavení* pro [aktivitu spustit SSIS balíčku](how-to-invoke-ssis-package-ssis-activity.md) , když je umístění balíčku *systém souborů (Package)*.
-    ![Step3 – 2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
+    ![Snímek obrazovky se zobrazí na stránce S úlohami výběru S s, kde můžete použít výchozí nastavení.](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. Vygenerujte a nasaďte šablonu ARM.
     1. Vyberte nebo zadejte výstupní cestu šablon ARM migrovaných kanálů ADF. Složka se vytvoří automaticky, pokud neexistuje.
     2. Vyberte možnost **Nasazení šablon ARM do objektu pro vytváření dat**:
         - Výchozí hodnota není vybraná. Vygenerované šablony ARM můžete nasadit později ručně.
         - Tuto možnost vyberte, pokud chcete nasadit vygenerované šablony ARM přímo do objektu pro vytváření dat.
-    ![step4](media/how-to-migrate-ssis-job-ssms/step4.png)
+    ![Snímek obrazovky se zobrazí stránka konfigurace migrace, kde můžete vybrat nebo zadat výstupní cestu pro šablony ARM migrovaných kanálů ADF a vybrat možnost nasazení šablon ARM do datové továrny.](media/how-to-migrate-ssis-job-ssms/step4.png)
 
 1. Migrujte a pak zkontrolujte výsledky.
-![step5](media/how-to-migrate-ssis-job-ssms/step5.png)
+![Snímek obrazovky ukazuje stránku výsledek migrace, která zobrazuje průběh migrace.](media/how-to-migrate-ssis-job-ssms/step5.png)
 
 ## <a name="next-steps"></a>Další kroky
 

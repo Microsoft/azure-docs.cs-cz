@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a8fbf9f2890ef169016108db61c93bfe6dd44326
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875624"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881919"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Functions výstup z Azure Stream Analytics
 
@@ -22,7 +22,7 @@ Azure Functions výstup z Stream Analytics v současnosti není k dispozici v ob
 
 Azure Stream Analytics vyvolá Azure Functions prostřednictvím triggerů HTTP. Azure Functions výstupní adaptér je k dispozici s následujícími konfigurovatelnými vlastnostmi:
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Aplikace funkcí |Název vaší aplikace Azure Functions. |
 | Funkce |Název funkce v aplikaci Azure Functions. |
@@ -54,4 +54,4 @@ Výchozí velikost dávky je 262 144 bajtů (256 KB). Výchozí počet událost�
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí šablony ARM](quick-create-azure-resource-manager.md)
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md)
+* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)

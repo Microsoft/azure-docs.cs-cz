@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519639"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895818"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: zlepšení dodržování legislativních předpisů
 ---
@@ -33,10 +33,9 @@ V tomto kurzu se naučíte, jak:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pro krokování s funkcemi popsanými v tomto kurzu musíte mít standardní cenovou úroveň Security Center. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů.
-Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](https://docs.microsoft.com/azure/security-center/security-center-get-started) vás provede postupem upgradu na úroveň Standard.
+Pro krokování s funkcemi popsanými v tomto kurzu musí být povolený [Azure Defender](azure-defender.md) . Můžete vyzkoušet Azure Defender zdarma po dobu 30 dnů.
 
 ##  <a name="assess-your-regulatory-compliance"></a>Posouzení dodržování legislativních předpisů
 
@@ -72,13 +71,13 @@ S ohledem na informace na řídicím panelu dodržování předpisů můžete vy
 
 1.  Pokud chcete zobrazit další podrobnosti a vyřešit doporučení pro daný prostředek, můžete vybrat konkrétní prostředek. <br>Například na kartě **Standard Azure SNS** můžete kliknout na doporučení **Vyžadovat zabezpečený přenos do účtu úložiště**.
 
-    ![doporučení pro dodržování předpisů](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    ![Výběr doporučení * * vyžadovat zabezpečený přenos do účtu úložiště * *](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
 1. Po kliknutí na informace o doporučeních a výběru prostředku, který není v pořádku, vás zavede přímo k možnosti povolení **přenosu zabezpečeného úložiště** v rámci Azure Portal.
 
     Další informace o tom, jak používat doporučení, najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
-    ![doporučení pro dodržování předpisů](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
+    ![Konfigurace účtu úložiště](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  Po provedení akce k vyřešení doporučení uvidíte dopad v sestavě řídicího panelu dodržování předpisů, protože se zvyšuje skóre dodržování předpisů.
 

@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Přečtěte si téma jak připojit Logic Apps k digitálním Vlákenám Azure pomocí vlastního konektoru.
 author: baanders
 ms.author: baanders
-ms.date: 8/14/2020
+ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 20959709854f8366cc067437fe86c245fcbc3ef0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401057"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983448"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
@@ -26,8 +26,12 @@ V tomto článku použijete [Azure Portal](https://portal.azure.com) k **Vytvoř
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si ** [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** před tím, než začnete.
+Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu. 
 
-Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu.
+Zbytek této části vás provede následujícími kroky:
+- Nastavení instance digitálních vláken Azure
+- Získat tajný klíč klienta registrace aplikace
+- Přidání digitálního vlákna
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Nastavení instance digitálních vláken Azure
 
@@ -49,7 +53,12 @@ V nabídce registrace klikněte na *certifikáty a tajné klíče* a vyberte *+ 
 :::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Zadejte libovolné hodnoty, které chcete pro popis a vypršení platnosti, a potom stiskněte *Přidat*.
-Tajný kód se přidá do seznamu tajných klíčů klienta na stránce *certifikáty a tajné klíče* . Poznamenejte si jeho hodnotu pro pozdější použití (můžete ji také zkopírovat do schránky pomocí ikony kopírování).
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Přidat tajný klíč klienta":::
+
+Nyní ověřte, zda je tajný klíč klienta zobrazen na stránce _certifikáty & tajných_ kódů s poli _Expires_ a _Value_ . Poznamenejte si jeho _hodnotu_ pro pozdější použití (můžete ji také zkopírovat do schránky pomocí ikony kopírování).
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Kopírovat tajnou hodnotu klienta":::
 
 ### <a name="add-a-digital-twin"></a>Přidání digitálního vlákna
 
@@ -67,9 +76,13 @@ Přejít na stránku [vlastního konektoru Logic Apps](https://portal.azure.com/
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Stránka Logic Apps vlastní konektor v Azure Portal. Zvýraznění kolem tlačítka Přidat":::
 
-Na následující stránce *vytvořit Logic Apps vlastní konektor* vyberte své předplatné a skupinu prostředků a název a umístění nasazení nového konektoru. Podívejte se na *Revize + vytvořit*. Tím přejdete na kartu *Revize + vytvořit* , kde *můžete v dolní části vytvořit prostředek* .
+Na následující stránce *vytvořit Logic Apps vlastní konektor* vyberte své předplatné a skupinu prostředků a název a umístění nasazení nového konektoru. Podívejte se na *Revize + vytvořit*. 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Karta Revize + vytvořit vlastního konektoru vytvořit Logic Apps v Azure Portal. Zvýraznění kolem tlačítka pro vytvoření":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Stránka vytvořit Logic Apps vlastního konektoru v Azure Portal.":::
+
+Tím přejdete na kartu *Revize + vytvořit* , kde *můžete v dolní části vytvořit prostředek* .
+
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Karta Revize a vytvoření vlastního konektoru v Azure Portal na stránce "revize Logic Apps Custom Connector". Zvýraznění kolem tlačítka pro vytvoření":::
 
 Přejdete na stránku pro nasazení konektoru. Po dokončení nasazení klikněte na tlačítko *Přejít do prostředku* a zobrazte podrobnosti o konektoru na portálu.
 
@@ -89,7 +102,9 @@ Na následující stránce *upravit Logic Apps vlastní konektor* nakonfigurujte
     - Režim importu: soubor OpenAPI (ponechat výchozí)
     - Soubor: Toto je vlastní soubor Swagger, který jste stáhli dříve. Spusťte *Import*, vyhledejte soubor na počítači (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.jszapnutý*) a stiskněte *otevřít*.
 * **Obecné informace**
-    - Ikona, barva pozadí ikony, popis: Vyplňte libovolné hodnoty, které chcete.
+    - Ikona: Nahrajte ikonu, kterou se vám líbí.
+    - Barva pozadí ikony: pro barvu zadejte hexadecimální kód ve formátu ' #xxxxxx '.
+    - Popis: Vyplňte libovolné hodnoty, které chcete.
     - Schéma: HTTPS (ponechat výchozí)
     - Host (hostitel): *název hostitele* instance digitálního vlákna Azure.
     - Základní adresa URL:/(ponechte výchozí)
@@ -145,11 +160,15 @@ Nyní jste dokončili vytváření vlastního konektoru, který má přístup k 
 
 V dalším kroku vytvoříte aplikaci logiky, která bude používat váš nový konektor k automatizaci aktualizací digitálních vláken Azure.
 
-Přejděte na stránku [Logic Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) v Azure Portal (můžete použít tento odkaz nebo ho vyhledat na portálu pro hledání). Stiskněte *vytvořit aplikaci logiky*.
+Přejděte na stránku [Logic Apps (spotřeba)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) v Azure Portal (můžete použít tento odkaz nebo ho vyhledat na portálu pro hledání). Stisknutím tlačítka *Přidat* vytvoříte aplikaci logiky.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Stránka Logic Apps v Azure Portal Zvýrazněte kolem tlačítka vytvořit aplikaci logiky.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Stránka Logic Apps (spotřeba) v Azure Portal. Stiskněte tlačítko Přidat.":::
 
-Na stránce *Aplikace logiky* , která následuje, vyberte předplatné a skupinu prostředků a název a umístění nasazení pro novou aplikaci logiky. Podívejte se na *Revize + vytvořit*. Tím přejdete na kartu *Revize + vytvořit* , kde *můžete v dolní části vytvořit prostředek* .
+Na stránce *Logic Apps (spotřeba)* , která následuje, zadejte své předplatné a skupinu prostředků. Také zvolte název aplikace logiky a vyberte umístění.
+
+Vyberte tlačítko _zkontrolovat + vytvořit_ .
+
+Tím přejdete na kartu *Revize + vytvořit* , kde můžete zkontrolovat podrobnosti a *vytvořit v dolní* části svůj prostředek.
 
 Přejdete na stránku nasazení aplikace logiky. Až se nasazení dokončí, přejděte do tlačítka *Přejít k prostředku* , kde můžete pokračovat v *Návrháři Logic Apps*, kde budete naplnit logiku pracovního postupu.
 
@@ -172,11 +191,13 @@ Vyberte ho, aby se zobrazil seznam rozhraní API obsažených v tomto konektoru.
 Může se zobrazit výzva k přihlášení pomocí přihlašovacích údajů Azure pro připojení ke konektoru. Pokud se zobrazí dialogové okno s *žádostí o oprávnění* , postupujte podle pokynů pro udělení souhlasu vaší aplikace a přijměte.
 
 V poli New *DigitalTwinsAdd* vyplňte pole následujícím způsobem:
-* ID: Vyplňte *dvojitou identifikaci* digitálního vlákna ve vaší instanci, kterou chcete, aby aplikace logiky aktualizovala.
-* Položka-1: do tohoto pole zadáte text, který vyžaduje vybraná žádost o rozhraní API. V případě *DigitalTwinsUpdate*je tento text ve formě kódu opravy JSON. Další informace o strukturování opravy JSON pro aktualizaci vlákna najdete v části [aktualizace digitálního vlákna](how-to-manage-twin.md#update-a-digital-twin) v tématu *Postupy: Správa digitálních vláken*.
-* verze API-Version: v aktuální verzi Public Preview je tato hodnota *2020-05-31 – Preview*
+* _ID_: Vyplňte *dvojitou identifikaci* digitálního vlákna ve vaší instanci, kterou chcete, aby aplikace logiky aktualizovala.
+* Prop _: do_tohoto pole zadáte text, který vyžaduje vybraná žádost o rozhraní API. V případě *DigitalTwinsUpdate*je tento text ve formě kódu opravy JSON. Další informace o strukturování opravy JSON pro aktualizaci vlákna najdete v části [aktualizace digitálního vlákna](how-to-manage-twin.md#update-a-digital-twin) v tématu *Postupy: Správa digitálních vláken*.
+* _verze API-Version_: v aktuální verzi Public Preview je tato hodnota *2020-05-31 – Preview*
 
 Stiskněte *Uložit* v Návrháři Logic Apps.
+
+Výběrem možnosti _+ Nový krok_ ve stejném okně můžete vybrat jiné operace.
 
 :::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Zobrazení aplikace bylo dokončeno v konektoru aplikace logiky. Pole DigitalTwinsAdd se vyplní hodnotami popsanými výše, včetně ukázkového těla opravy JSON. Tlačítko Uložit pro okno je zvýrazněné.":::
 

@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 892bdcc08bd19b92c8b3d32d2954583f80005e87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985322"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
 
@@ -79,7 +79,19 @@ U spojnicových grafů, pruhových grafů a výsečových grafů můžete přizp
 
 Pro dlaždice, které zobrazují vlastnosti řetězce nebo hodnoty telemetrie, můžete zvolit, jak se má text zobrazit. Pokud například zařízení ukládá adresu URL do řetězcové vlastnosti, můžete ji zobrazit jako odkaz s možnostmi kliknutí. Pokud adresa URL odkazuje na obrázek, můžete obrázek vykreslit v poslední známé hodnotě nebo dlaždici Vlastnosti. Chcete-li změnit způsob zobrazení řetězce, v konfiguraci dlaždic vyberte ikonu ozubeného kolečka vedle typu nebo vlastnosti telemetrie:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Kanál zobrazení řetězce na dlaždici":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Změna způsobu zobrazení řetězce na dlaždici":::
+
+Pro číselný **klíčový ukazatel výkonu**, **poslední známou hodnotu**a dlaždice **vlastností** můžete použít podmíněné formátování k přizpůsobení barvy dlaždice na základě její aktuální hodnoty. Pokud chcete přidat podmíněné formátování, na dlaždici vyberte **Konfigurovat** a potom vyberte ikonu **podmíněného formátování** vedle hodnoty k přizpůsobení:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Snímek obrazovky ukazující, jak najít možnost konfigurace pro dlaždici a potom ikonu podmíněného formátování":::
+
+Přidejte pravidla podmíněného formátování:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Snímek obrazovky zobrazující pravidla podmíněného formátování pro průměrný tok Existují tři pravidla – méně než 20 je zelených, méně než 50 je žluté a vše nad 50 je červené.":::
+
+Následující snímek obrazovky ukazuje efekt pravidla podmíněného formátování:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Snímek obrazovky znázorňující žlutou barvu pozadí na dlaždici Průměrná voda Flow Číslo dlaždice je 40,84.":::
 
 ## <a name="next-steps"></a>Další kroky
 

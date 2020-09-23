@@ -3,12 +3,12 @@ title: Konfigurace brány firewall protokolu IP pro Azure Relay obor názvů
 description: Tento článek popisuje, jak používat pravidla brány firewall k povolení připojení z konkrétních IP adres k oborům názvů Azure Relay.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 250158aff2ceb89e2823b711717f1d3a1cad438c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141852"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976012"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurace brány firewall protokolu IP pro obor názvů Azure Relay
 Ve výchozím nastavení jsou obory názvů Relay přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -29,7 +29,7 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů služby Relay** .
 2. V nabídce vlevo vyberte možnost **sítě** . Pokud v části **Povolení přístupu z** vyberete možnost **všechny sítě** , obor názvů Relay akceptuje připojení z libovolné IP adresy. Toto nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
 
-    ![Firewall – vybraná možnost všechny sítě](./media/ip-firewall/all-networks-selected.png)
+    ![Snímek obrazovky s vybranou možností všechny sítě zobrazí stránku síť.](./media/ip-firewall/all-networks-selected.png)
 1. Pokud chcete omezit přístup k určitým sítím a IP adresám, vyberte možnost **vybrané sítě** . V části **Brána firewall** postupujte podle následujících kroků:
     1. Vyberte možnost **Přidat IP adresu klienta** a poskytněte vaší aktuální IP adrese přístup k oboru názvů. 
     2. Pro **Rozsah adres**zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 

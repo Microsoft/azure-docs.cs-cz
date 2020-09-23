@@ -1,6 +1,6 @@
 ---
-title: Ceny Azure Security Center úrovní
-description: Azure Security Center se nabízí ve dvou úrovních – Free a Standard. Na této stránce se dozvíte, jak upgradovat z bezplatného na standard.
+title: Ceny Azure Security Center
+description: Azure Security Center se nabízí ve dvou režimech s Azure Defenderem a bez něj.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,65 +13,61 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: 882f8ab7e4f55809759f3a94fd04fb2c410fe188
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d2127af2c2c9e04141551dae72f0177f495b165
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904787"
 ---
-# <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgradovat na úroveň Standard pro rozšířené zabezpečení
-
+# <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými útoky.
 
-## <a name="pricing-tiers"></a>Cenové úrovně
-Security Center se nabízí ve dvou úrovních:
 
-- Úroveň **Free** je povolená ve všech vašich předplatných Azure, když navštívíte Azure Security Center řídicí panel v Azure Portal poprvé nebo pokud je povolený prostřednictvím rozhraní API. Úroveň Free poskytuje zásady zabezpečení, průběžné posuzování zabezpečení a užitečná doporučení zabezpečení, která vám pomůžou chránit vaše prostředky Azure.
+## <a name="free-option-vs-azure-defender-enabled"></a>Možnost Free vs – povolený Azure Defender
 
-- Úroveň **Standard** rozšiřuje možnosti úrovně Free na úlohy spuštěné v privátních a dalších veřejných cloudech a zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudy. Úroveň Standard také přináší možnosti ochrany před hrozbami, které využívají integrované analýzy chování a strojové učení k identifikaci útoků a využívání funkcí pro přístup a používání aplikací k omezení ohrožení síťových útoků a malwaru. Úroveň Standard navíc přináší kontrolu ohrožení zabezpečení pro vaše virtuální počítače. Úroveň Standard můžete vyzkoušet zdarma. Security Center Standard podporuje prostředky Azure, včetně virtuálních počítačů, virtuálních počítačů Scale Sets, App Service, serverů SQL a účtů úložiště. Pokud máte Azure Security Center Standard, můžete se odhlásit od podpory na základě typu prostředku. 
+Security Center se nabízí ve dvou režimech:
 
-Většina posouzení zabezpečení na úrovni bezplatné úrovně pro virtuální počítače, stejně jako mnoho výstrah zabezpečení na úrovni Standard, vyžaduje instalaci agenta Log Analytics. Automatické zřizování na Security Center můžete povolit pro automatické nasazení agenta na virtuální počítače Azure.
+- **Azure Defender off** (zdarma) – Security Center bez programu Azure Defender je zdarma zapnutá na všech vašich předplatných Azure, když navštívíte Azure Security Center řídicí panel v Azure Portal poprvé nebo pokud je povolený prostřednictvím rozhraní API. Tento bezplatný režim poskytuje zásady zabezpečení, průběžné posuzování zabezpečení a užitečná doporučení zabezpečení, která vám pomůžou chránit vaše prostředky Azure.
 
-## <a name="try-standard-tier-free-for-30-days"></a>Vyzkoušení úrovně Standard na 30 dnů zdarma
-Úroveň Standard je po dobu prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky se zahájí vyúčtováním využití.
+- **Azure Defender on** -umožňující Azure Defender rozšiřuje možnosti bezplatného režimu na úlohy spuštěné v privátních a dalších veřejných cloudech a poskytuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudy. Některé z hlavních funkcí v Azure Defenderu:
 
-Můžete upgradovat celé předplatné Azure na úroveň Standard, která se dědí ze všech prostředků v rámci předplatného.
+    - **Hybridní zabezpečení** – Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami. Použijte zásady zabezpečení a průběžně vyhodnoťte zabezpečení vašich hybridních cloudových úloh, abyste zajistili dodržování standardů zabezpečení. Shromažďovat, vyhledávat a analyzovat data zabezpečení z různých zdrojů, včetně bran firewall a dalších partnerských řešení.
+    - **Výstrahy ochrany před hrozbami** – Pokročilá analýza chování a Microsoft Intelligent Security Graph poskytují hraniční rozšíření pro počítačové útoky. Využijte integrované analýzy chování a strojové učení k identifikaci útoků a využívání funkce Zero Day. Monitorujte sítě, počítače a cloudové služby pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte šetření pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+    - **Chyba při vyhledávání virtuálních počítačů a registrů kontejnerů** – snadno nasadíte skener na všechny virtuální počítače, které poskytují špičkové řešení pro správu ohrožení zabezpečení. Zobrazit, prozkoumat a opravit zjištění přímo v rámci Security Center. 
+    - **Řízení přístupu a aplikací** – zablokuje malware a další nežádoucí aplikace, a to pomocí doporučení pro založenou na strojovém učení přizpůsobených vašim konkrétním úlohám a vytváření seznamů povolených a zakázaných. Snižte úroveň útoku na síť pomocí řízeného přístupu za běhu k portům pro správu virtuálních počítačů Azure. To významně snižuje riziko útoků hrubou silou a dalších sítí.
+    - **Funkce zabezpečení kontejnerů** – výhody správy ohrožení zabezpečení a ochrany před hrozbami v reálném čase ve vašich kontejnerových prostředích. Když povolíte **Azure Defender pro Registry kontejnerů**, může to trvat až 12hrs, než se všechny funkce povolí. Poplatky vycházejí z počtu jedinečných imagí kontejnerů, které jsou vloženy do připojeného registru. Po kontrole obrázku jednou se vám nebude nic účtovat, dokud ho neupravíte a znovu nepřidáte. 
 
-Postup získání úrovně Standard:
+## <a name="try-azure-defender-free-for-30-days"></a>Vyzkoušení Azure Defenderu zdarma po dobu 30 dnů
 
-1. V hlavní nabídce **Security Center** vyberte **cenové & nastavení** .
-2. Vyberte předplatné, které chcete upgradovat na úroveň Standard.
-3. Vyberte **cenovou úroveň**.
-4. Vyberte možnost **Standard** pro upgrade.
-5. Klikněte na **Uložit**.
+Azure Defender je pro prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky začneme účtovat za využití.
 
-[![Ceny Security Center](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
+## <a name="enable-azure-defender"></a>Povolit Azure Defender
+
+Můžete chránit celé předplatné Azure pomocí Azure Defenderu a všechny prostředky v rámci tohoto předplatného zdědí všechny jeho ochrany.
+
+Povolení služby Azure Defender:
+
+1. V hlavní nabídce Security Center vyberte **cenové & nastavení**.
+1. Vyberte předplatné, které chcete upgradovat.
+1. Pro upgrade vyberte **Azure Defender** .
+1. Vyberte **Uložit**.
+
+Níže najdete stránku s cenami za ukázkové předplatné. Všimnete si, že každý plán v Azure Defenderu se účtuje samostatně a dá se individuálně nastavit na hodnotu Zapnuto nebo vypnuto.
+
+:::image type="content" source="./media/security-center-pricing/pricing-tier-page.png" alt-text="Stránka s cenami Security Center na portálu":::
 
 > [!NOTE]
-> Pokud chcete povolit všechny Security Center funkce včetně funkcí ochrany před hrozbami, musíte použít cenovou úroveň Standard na předplatné, které obsahuje příslušné úlohy. Konfigurace cen pro pracovní prostor nepovoluje přístup k virtuálnímu počítači za běhu, adaptivní řízení aplikací a zjišťování sítě pro prostředky Azure. 
+> Pokud chcete povolit všechny Security Center funkce, včetně funkcí ochrany před hrozbami, musíte v předplatném, které obsahuje příslušné úlohy, povolit Azure Defender. Povolením na úrovni pracovního prostoru nepovolíte pro prostředky Azure přístup k virtuálnímu počítači za běhu, adaptivní řízení aplikací a zjišťování sítě. 
 >
-> Ochranu před hrozbami pro **účty Azure Storage** můžete povolit na úrovni předplatného nebo na úrovni prostředků.
-> Ochranu před hrozbami pro **Azure SQL Database SQL servery** můžete povolit buď na úrovni předplatného, nebo na úrovni prostředků.
+> **Azure Defender můžete povolit pro účty úložiště** buď na úrovni předplatného, nebo na úrovni prostředků.
+> **Azure Defender pro SQL** můžete povolit buď na úrovni předplatného, nebo na úrovni prostředků.
 > Ochranu před hrozbami pro **Azure Database for MariaDB/MySQL/PostgreSQL** můžete povolit jenom na úrovni prostředků.
 
 
-## <a name="why-upgrade-to-standard"></a>Proč upgradovat na úroveň Standard?
-Security Center nabízí vylepšené zabezpečení a ochranu před hrozbami pro úlohy hybridního cloudu, včetně:
-
-- **Hybridní zabezpečení** – Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami. Použijte zásady zabezpečení a průběžně vyhodnoťte zabezpečení vašich hybridních cloudových úloh, abyste zajistili dodržování standardů zabezpečení. Shromažďovat, vyhledávat a analyzovat data zabezpečení z různých zdrojů, včetně bran firewall a dalších partnerských řešení.
-- **Výstrahy zabezpečení** – pomocí pokročilých analýz a Microsoft Intelligent Security Graph můžete získat hraniční přístup k nově vznikajícím internetovým útokům. Využijte integrované analýzy chování a strojové učení k identifikaci útoků a využívání funkce Zero Day. Monitorujte sítě, počítače a cloudové služby pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte šetření pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
-- **Kontrola ohrožení zabezpečení pro virtuální počítače** – snadno nasadíte skener na všechny virtuální počítače, které poskytují špičkové řešení pro správu ohrožení zabezpečení. Zobrazit, prozkoumat a opravit zjištění přímo v rámci Security Center. 
-- **Řízení přístupu a aplikací** – zablokuje malware a další nežádoucí aplikace pomocí doporučení pro používání služby Machine Learning, která jsou přizpůsobená konkrétním úlohám. Snižte úroveň útoku na síť pomocí řízeného přístupu za běhu k portům pro správu virtuálních počítačů Azure. To významně snižuje riziko útoků hrubou silou a dalších sítí.
-- **Funkce zabezpečení kontejnerů** – výhody správy ohrožení zabezpečení a ochrany před hrozbami v reálném čase ve vašich kontejnerových prostředích. Při povolování prostředku registrů kontejnerů může trvat až 12hrs, než se povolí všechny funkce. Poplatky vycházejí z počtu jedinečných imagí kontejnerů, které jsou vloženy do připojeného registru. Po prohledání obrazu se tato image nebude účtovat znovu, pokud se neupraví a znovu nevloží. 
-
-
-
-
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zavedli ceny Security Center. Další informace o rozšířeném zabezpečení a Rozšířené ochraně před internetovými vrstvami úrovně Standard najdete v těchto tématech:
+V tomto článku jste zavedli ceny Security Center. Související materiál najdete v těchto tématech:
 
-- [Ochrana před hrozbami v Azure Security Center](threat-protection.md)
-- [Řízení přístupu k virtuálnímu počítači za běhu](security-center-just-in-time.md)
-- [Přehled zabezpečení kontejnerů](container-security.md)
+- [Jak optimalizovat náklady na úlohy Azure](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)
 - [Podrobnosti o cenách v měně zvolené a podle vaší oblasti](https://azure.microsoft.com/pricing/details/security-center/)
+- Můžete chtít spravovat náklady a omezit množství shromažďovaných dat pro řešení tím, že je omezíte na konkrétní sadu agentů. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) umožňuje použít obor pro řešení a cílit na podmnožinu počítačů v pracovním prostoru. Pokud používáte cílení řešení, Security Center zobrazí seznam pracovních prostorů, které nemají řešení.

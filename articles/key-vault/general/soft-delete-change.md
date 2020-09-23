@@ -10,17 +10,19 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: c5509d6a284ab7afe827f67b79b7be027e76f66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bf758a07cff248fc0da3f279e68a14e88797e382
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984595"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Obnovitelné odstranění bude povolené u všech trezorů klíčů.
 
 > [!WARNING]
 > Zásadní **Změna**: možnost odsouhlasení s tichou úpravou bude po konci roku zastaralá a ochrana proti softwarovému odstranění se automaticky zapne pro všechny trezory klíčů.  Azure Key Vault uživatelé a Správci by měli pro svoje trezory klíčů okamžitě povolit obnovitelné odstranění.
+>
+> V případě spravovaného modulu HSM je ve výchozím nastavení povolené obnovitelné odstranění a nedá se zakázat.
 
 Při odstranění tajného klíče z trezoru klíčů bez ochrany proti tichému odstranění se tajný kód trvale odstraní. Uživatelé můžou v současné době během vytváření trezoru klíčů odhlásit nějaké obnovitelné odstranění, ale pokud chtějí chránit vaše tajná klíč před náhodným nebo škodlivým odstraněním, Microsoft brzo u **všech** trezorů klíčů povolí ochranu před náhodným odstraněním a uživatelé už nebudou mít možnost odhlásit nebo zapnout obnovitelné odstranění.
 
