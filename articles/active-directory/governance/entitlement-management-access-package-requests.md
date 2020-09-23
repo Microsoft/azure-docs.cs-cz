@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 086623378b64aecb91c4e70e6e69bb13453f7681
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be03996f3f88efeb02893f815162a04d6a1e8aa6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078634"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979943"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Zobrazit žádosti o přístup k balíčku v Azure AD – Správa nároků
 
@@ -29,7 +29,7 @@ V části Správa opravňujících k Azure AD vidíte, kdo požaduje přístupov
 
 ## <a name="view-requests"></a>Zobrazení požadavků
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu, přístup správce balíčků nebo správce přiřazení balíčku pro přístup
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 

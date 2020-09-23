@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6490b3cf2d3813a2740c548f778e65f1df6e7b01
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603654"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894445"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -48,7 +48,7 @@ Aktuální seznam nové dokumentace je k dispozici v části [novinky v Cognitiv
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Služba řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči.|
+|[Služba Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči.|
 |[Rozhraní API pro rozpoznávání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Rozhraní API pro rozpoznání mluvčího") (Preview)|Rozhraní API pro rozpoznávání mluvčího poskytuje algoritmy pro identifikaci a ověřování mluvčího.|
 |[Zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home "Zpracování řeči Bingu") (vyřazení z provozu)|Rozhraní API pro zpracování řeči Bingu poskytuje snadný způsob, jak ve svých aplikacích vytvářet funkce podporující rozpoznávání řeči.|
 |[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (vyřazení z provozu)|Translator Speech je služba strojového překladu.|
@@ -88,6 +88,7 @@ Aktuální seznam nové dokumentace je k dispozici v části [novinky v Cognitiv
 |:-----------|:------------------|
 |[Detektor anomálií](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Detektor anomálií") (Preview)|Detekce anomálií umožňuje monitorovat a detekovat anomálie v datech časových řad.|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator poskytuje monitorování možného urážlivého, nežádoucího a rizikového obsahu.|
+|[Poradce pro metriky](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (Preview) | Poradce metrik nabízí přizpůsobitelnou detekci anomálií v datech variate časových řad a plně vybavený webový portál, který vám pomůže tuto službu používat.
 |[Personalizace](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizace")|Přizpůsobování umožňuje vybrat nejlepší možnosti, které se uživatelům zobrazí, a naučit se jejich chování v reálném čase.|
 
 ## <a name="learn-with-the-quickstarts"></a>Seznamte se s rychlými starty

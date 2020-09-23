@@ -1,23 +1,23 @@
 ---
-title: Koncepty služeb počasí | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o konceptech, které se vztahují na Microsoft Azure mapování povětrnostních služeb.
+title: Koncepty služeb počasí v Microsoft Azure Maps
+description: Přečtěte si o konceptech, které se vztahují na Microsoft Azure mapování povětrnostních služeb.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132105"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972042"
 ---
 # <a name="weather-services-in-azure-maps"></a>Služby počasí v Azure Maps
 
-V tomto článku se seznámíte s koncepty, které se vztahují na [Azure Maps povětrnostní služby](https://aka.ms/AzureMapsWeatherService). Než začnete s rozhraními API pro počasí, doporučujeme projít tento článek. 
+V tomto článku se seznámíte s koncepty, které se vztahují na [Azure Maps povětrnostní služby](https://aka.ms/AzureMapsWeatherService). Než začnete s rozhraními API pro počasí, doporučujeme projít tento článek.
 
 ## <a name="unit-types"></a>Typy jednotek
 
@@ -47,7 +47,7 @@ Některá z rozhraní API služby počasí umožňují uživateli určit, jestli
 |19      |Kelvin              |
 |20      |procent             |
 |21      |float               |
-|22      |celé číslo             |
+|22      |integer             |
 
 
 ## <a name="weather-icons"></a>Ikony počasí
@@ -62,40 +62,40 @@ Některá z rozhraní API služby počasí vrátí `iconCode` odpověď. `iconCo
 | 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Yes |  No    | Přerušované cloudy|
 | 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Yes |  No    | Hazy slunečno |
 | 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Yes |  No    | Hlavně cloudová|
-| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Ano |  Ano   | Cloudové |
-| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Ano |  Ano   | Dreary (Overcast)|
-| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Ano |  Ano   | Mlhy|
-| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Ano |  Ano   | Sprchování|
+| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Yes |  Yes   | Cloudové |
+| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Yes |  Yes   | Dreary (Overcast)|
+| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Yes |  Yes   | Mlhy|
+| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Yes |  Yes   | Sprchování|
 | 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Yes |  No    | Hlavně cloudová s sprchami|
 | 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Yes |  No    | Částečně Slunečné se sprchami|
-| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Ano |  Ano   | Thunderstorms|
+| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Yes |  Yes   | Thunderstorms|
 | 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Yes |  No    | Hlavně cloudy s thunderstorms|
 | 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Yes |  No    | Částečně Slunečné s thunderstorms|
-| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Ano |  Ano   | Zástěr|
-| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Ano |  Ano   | Flurries|
+| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Yes |  Yes   | Zástěr|
+| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Yes |  Yes   | Flurries|
 | 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Yes |  No    | Hlavně cloudy s Flurries|
 | 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Yes |  No    | Částečně Slunečné s Flurries|
-| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Ano |  Ano   | Pohádk|
+| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Yes |  Yes   | Pohádk|
 | 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Yes |  No    | Hlavně cloudy s Sněhou|     
-| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Ano |  Ano   | Ice |
-| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Ano |  Ano   | Sleet|
-| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Ano |  Ano   | Zamrznutí deště|
-| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Ano |  Ano   | Deště a sněhu|
-| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Ano |  Ano   | Horká|
-| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Ano |  Ano   | Bez zájmu|
-| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Ano |  Ano   | Vítr|
+| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Yes |  Yes   | Ice |
+| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Yes |  Yes   | Sleet|
+| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Yes |  Yes   | Zamrznutí deště|
+| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Yes |  Yes   | Deště a sněhu|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Yes |  Yes   | Horká|
+| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Yes |  Yes   | Bez zájmu|
+| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Yes |  Yes   | Vítr|
 | 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | No  |  Yes   | Vymazat|
 | 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | No  |  Yes   | Hlavně jasné|
 | 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | No  |  Yes   | Částečně cloudová|
 | 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | No  |  Yes   | Přerušované cloudy|
 | 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | No  |  Yes   | Hazy Moonlight|
-| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | No  |  Ano   | Hlavně cloudová|
-| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | No  |  Ano   | Částečná cloudová a sprchová|
-| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | No  |  Ano   | Hlavně cloudová s sprchami|
-| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | No  |  Ano   | Částečná cloudová aplikace s thunderstorms|
-| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | No  |  Ano   | Hlavně cloudy s thunderstorms|
-| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | No  |  Ano   | Hlavně cloudy s Flurries|
-| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | No  |  Ano   | Hlavně cloudy s Sněhou|
+| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | No  |  Yes   | Hlavně cloudová|
+| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | No  |  Yes   | Částečná cloudová a sprchová|
+| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | No  |  Yes   | Hlavně cloudová s sprchami|
+| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | No  |  Yes   | Částečná cloudová aplikace s thunderstorms|
+| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | No  |  Yes   | Hlavně cloudy s thunderstorms|
+| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | No  |  Yes   | Hlavně cloudy s Flurries|
+| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | No  |  Yes   | Hlavně cloudy s Sněhou|
 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Barevná škála paprskových a satelitních snímků
@@ -472,3 +472,169 @@ Podrobná paleta barev pro infračervené satelitní dlaždice je uvedená níž
 |307,57  |#02555555     |
 |308     |#00525252     |
 |308     |#00525252     |
+
+## <a name="index-ids-and-index-groups-ids"></a>ID indexů a ID skupin indexů
+
+[Získat denní indexy rozhraní API](https://aka.ms/AzureMapsWeatherDailyIndices) umožňuje uživatelům omezit vrácené výsledky na konkrétní typy indexů nebo skupiny indexů.
+
+Níže je tabulka dostupných ID indexů, jejich názvy a odkaz na jejich sady rozsahů. V této tabulce je uvedena tabulka se seznamem různých indexových skupin.
+
+  Název indexu |  ID  | Rozsah hodnot
+  -------------------------- |---|-----
+  Arthritis – bolesti             |21 | [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
+  Asthma                     |23|  [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
+  Fond plážových &               |10| [Špatné – vynikající 1](#poor-excellent-1)
+  Cyklistice                  |4| [Špatné – vynikající 1](#poor-excellent-1)
+  Běžné studeny                |25|  [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
+  Kompostování                 |38| [Špatné – vynikající 1](#poor-excellent-1)
+  Stavebnictví               |14| [Špatné – vynikající 1](#poor-excellent-1)
+  COPD                       |44|  [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
+  Pohodlí při procházení psa        |43| [Špatné – vynikající 1](#poor-excellent-1)
+  Autem                    |40|  [Špatné – vynikající 2](#poor-excellent-2)
+  Prach & Dander              |18| [Nízká – extrémní 1](#low-extreme-1)
+  Připravenost pole            |32| [Špatné – vynikající 1](#poor-excellent-1)
+  Rybolov                    |13| [Špatné – vynikající 1](#poor-excellent-1)
+  Zpoždění letů              |-3|  [Velmi nepravděpodobné – velmi pravděpodobné 2](#very-unlikely-very-likely-2)
+  Flu                        |26|  [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
+  Dolétající index cestování        |31| [Vynikající – slabý](#excellent-poor)
+  Ekonomie pohonu               |37| [Špatné – vynikající 1](#poor-excellent-1)
+  Počasí pro Golf               |5| [Špatné – vynikající 1](#poor-excellent-1)
+  Rostoucí tráva              |33| [Špatné – vynikající 1](#poor-excellent-1)
+  Frizz vlasů                 |42| [Nepravděpodobné – nouze](#unlikely-emergency)
+  Dobré srdce      |16| [Špatné – vynikající 1](#poor-excellent-1)
+  Nachodíme                     |3| [Špatné – vynikající 1](#poor-excellent-1)
+  Domácí energetická efektivita     |36| [Špatné – vynikající 1](#poor-excellent-1)
+  Vyhledávání                    | 20| [Špatné – vynikající 1](#poor-excellent-1)
+  Činnost vnitřních            | -2| [Špatné – vynikající 1](#poor-excellent-1)
+  Jogging                    |2| [Špatné – vynikající 1](#poor-excellent-1)
+  Kitey plující za                |9| [Špatné – vynikající 1](#poor-excellent-1)
+  Mowing trávníku                |28| [Špatné – vynikající 1](#poor-excellent-1)
+  Migraine starostí          |27|  [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
+  Ráno School Bus         |35| [Špatné – vynikající 1](#poor-excellent-1)
+  Aktivita Mosquito          |17|[Nízká – extrémní 1](#low-extreme-1)
+  Venkovní aktivita           |29| [Špatné – vynikající 1](#poor-excellent-1)
+  Venkovní barbecue           |24| [Špatné – vynikající 1](#poor-excellent-1)
+  Vnější koshodě            |8| [Špatné – vynikající 1](#poor-excellent-1)
+  Spuštěno                    |1|  [Špatné – vynikající 1](#poor-excellent-1)
+  Tenis                     |6| [Špatné – vynikající 1](#poor-excellent-1)
+  Thirst                     |41| [Nízká – extrémní 2](#low-extreme-2)
+  Plaveb                    |11| [Špatné – vynikající 1](#poor-excellent-1)
+  Nákupního                   |39| [Špatné – vynikající 1](#poor-excellent-1)
+  Sinus starostí             |30|  [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
+  Skateboarding              | 7| [Špatné – vynikající 1](#poor-excellent-1)
+  Lyžařské počasí                | 15| [Špatné – vynikající 1](#poor-excellent-1)
+  Sněhové dny                  | 19| [Velmi nepravděpodobné – velmi pravděpodobné](#very-unlikely-very-likely)
+  Vlhkost v půdě              | 34| [Špatné – vynikající 1](#poor-excellent-1)
+  Stargazing                 | 12| [Špatné – vynikající 1](#poor-excellent-1)
+
+Níže je uveden seznam dostupných skupin indexů (indexGroupId):
+
+  ID   | Název skupiny | Indexy v této skupině |
+  -------- | ------------------|------
+  1       |Vše | Vše
+  2       |Aches a bolesti | Arthritis bolesti (21) </br> Migraine starostí (27) </br> Sinus starostí (30)
+  3       |Cest | Asthma (23) </br> Běžný studená (25) </br> Flu prognóza (26)
+  4       |Zahradnické | Připravenost pole (32) </br> Trávník Mowing (28) </br> Vlhkost půdy (34)</br>
+  5       |Prostředí | Skládání (38) </br> Domácí energetická efektivita (36) </br> Ekonomie pohonu (37)
+  6       |Venkovní živý | Venkovní barbecue (24) </br> Aktivita Mosquito (17)
+  7       |Plážový a mořský | Plážový & fond (10) </br> Rybolov (13) </br> Dojezd (11)
+  8       |Sportsman | Rybolov (13) </br> Lov (20) </br> Venkovní aktivita (29)</br>
+  9       |Obyvatelstv |  Připravenost pole (32) </br>  Vlhkost půdy (34)
+  10      |Zdravotnictví | Arthritis bolesti (21) </br> Asthma (23) </br> Běžný studená (25) </br> Prach & Dander (18) </br> Flu (26) </br> Dobré srdce s vhodností (16) </br> Migraine starostí (27)
+  11      |Přírodní | Venkovní barbecue (24) </br> Plážový & fond (10) </br> Cyklistice (4) </br> Vnější koshodě (8) </br>  Připravenost pole (32) </br> Rybolov (13) </br> Golfová počasí (5) </br> Nachodíme (3) </br> Lov (20) </br> Jogging (2) </br> Kitey plující za 9 </br> Aktivita Mosquito (17)</br> Trávník Mowing (28) </br> Venkovní aktivita (29) </br> Spuštěno (1) </br> Dojezd (11) </br> Skateboarding (7) </br> Lyžařské počasí (15) </br>  Vlhkost půdy (34)</br> Stargazing (12) </br> Tenis (6)
+  12      |Good | Cyklistice (4) </br> Golfová počasí (5) </br> Nachodíme (3) </br>  Jogging (2) </br> Spuštěno (1) </br> Skateboarding (7) </br> Lyžařské počasí (15) </br>Tenis (6)
+  13      |Domů | Domácí energetická efektivita (36) </br> Ekonomie pohonu (37) </br> Vnitřní aktivita (-2)
+
+## <a name="daily-index-range-sets"></a>Denní sady rozsahu indexu
+
+[Získat denní indexy rozhraní API](https://aka.ms/AzureMapsWeatherDailyIndices) vrací hodnotu v rozsahu a její přiřazený název kategorie pro každé ID indexu. Sady rozsahů nejsou pro všechny indexy stejné. Následující tabulky znázorňují různé sady rozsahů používané podporovanými indexy uvedenými v ID [indexů a ID skupin indexů](#index-ids-and-index-groups-ids). Chcete-li zjistit, které indexy používají sady rozsahů, přejít k části ID [indexů a ID skupin indexů](#index-ids-and-index-groups-ids) v tomto dokumentu.
+
+### <a name="poor-excellent-1"></a>Špatné – vynikající 1
+
+  | Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Slabé              |  0 |                2,99
+  Přiměřené              |  3  |               4,99
+  Dobré              |  5  |              6,99
+  Velmi dobře         |  7  |               8,99
+  Vynikající         |  9  |               10
+
+### <a name="poor-excellent-2"></a>Špatné – vynikající 2
+
+ | Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Slabé           |0              |  3
+  Přiměřené           |3,01           |  6
+  Dobré           |6,01           |  7,5
+  Velmi dobře      |7,51           |  8,99
+  Vynikající      |9              |  10
+
+### <a name="excellent-poor"></a>Vynikající – slabý
+
+ | Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Vynikající      |     0,00        |    1.00
+  Velmi dobře        |   1.01          |  3,00
+  Dobré             |   3,01          |  5,00
+  Přiměřené             |   5,01          |  7,00
+  Slabé             |   7,01          |  10,00
+
+### <a name="low-extreme-1"></a>Nízká – extrémní 1
+
+   | Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Nízká                |  0         |        1,99
+  Pokročilé           |  2         |        3,99
+  Vysoké               |  4         |        5.99
+  Velmi vysoké          |  6         |        7,99
+  Extreme            |  8         |        10
+
+### <a name="low-extreme-2"></a>Nízká – extrémní 2
+
+   | Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Nízká                |  0            |      2,99
+  Pokročilé           |  3            |      4,99
+  Vysoké               |  5            |      6,99
+  Velmi vysoké          |  7            |      8,99
+  Extreme            |  9            |      10
+
+### <a name="very-unlikely-very-likely"></a>Velmi nepravděpodobné – velmi pravděpodobné
+
+ | Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Velmi nepravděpodobné      | 0     |           1,99
+  Že           | 2     |           3,99
+  Případně           | 4     |           5.99
+  Pracuje             | 6     |           7,99
+  Velmi nejspíš        | 8     |           10
+
+### <a name="very-unlikely-very-likely-2"></a>Velmi nepravděpodobné – velmi pravděpodobné 2
+
+ | Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Velmi nepravděpodobné      |  0,00     |         1.00
+  Že           |  1.01     |         3,00
+  Případně           |  3,01     |         5,00
+  Pracuje             |  5,01     |         7,00
+  Velmi nejspíš        |  7,01     |         10,00
+
+### <a name="unlikely-emergency"></a>Nepravděpodobné – nouze
+
+| Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Že         |  0     |          2,99
+  Watch            |  3     |          4,99
+  Poradce         |  5     |          6,99
+  Upozornění          |  7     |          8,99
+  Zásah        |  9     |          10
+
+### <a name="beneficial-at-extreme-risk"></a>Výhodné – extrémní riziko
+
+| Category Name | Počátek rozsahu | Koncový rozsah |
+  ----------------|--------------|------------
+  Užitečné        |    0        |        1,99
+  Neutral           |    2        |        3,99
+  Ohroženo           |    4        |        5.99
+  S vysokým rizikem      |    6        |        7,99
+  Při extrémním riziku   |    8        |        10

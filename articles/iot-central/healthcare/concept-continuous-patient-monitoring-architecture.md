@@ -1,6 +1,6 @@
 ---
 title: Architektura monitorování nepřetržitého pacienta v Azure IoT Central | Microsoft Docs
-description: Přečtěte si o architektuře řešení monitorování nepřetržitého pacienta.
+description: Kurz – Seznamte se s architekturou řešení pro nepřetržité monitorování pacientů.
 author: philmea
 ms.author: philmea
 ms.date: 09/14/2020
@@ -8,16 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: bd0d2f3368f6a2c39b3a9e95c577d85dfe0d87d7
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068063"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972222"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Architektura průběžného monitorování pacientů
 
 Tento článek popisuje architekturu řešení sestavenou z šablony aplikace pro **monitorování nepřetržitého pacienta** :
+
+Řešení pro průběžné monitorování pacientů se dají vytvořit pomocí poskytnuté šablony aplikace a pomocí architektury, která je níže uvedená, jako doprovodné materiály.
 
 :::image type="content" source="media/cpm-architecture.png" alt-text="Architektura průběžného monitorování pacientů":::
 

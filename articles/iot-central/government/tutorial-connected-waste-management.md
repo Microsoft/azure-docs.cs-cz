@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77426356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972427"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Kurz: Vytvoření aplikace pro správu propojených odpadů v IoT Central
 
@@ -71,7 +71,7 @@ Vytvoření nové aplikace pro správu nepřipojených odpadů v Azure IoT Centr
  
 6. Nyní jste vytvořili aplikaci pro správu připojení k síti pomocí **šablony správy propojených odpadů**v Azure IoT Central. 
 
-Blahopřejeme! Vaše nově vytvořená aplikace je dodávána s předem nakonfigurovaným:
+Gratulujeme! Vaše nově vytvořená aplikace je dodávána s předem nakonfigurovaným:
 * Ukázky řídicích panelů operátorů
 * Ukázka předdefinovaných šablon zařízení bin pro připojené odpady
 * Zařízení s simulovaným propojenými odpadními přihrádkami
@@ -131,13 +131,13 @@ Postup zobrazení šablony zařízení:
 
 1. Klikněte na **šablony zařízení** v levém podokně aplikace v IoT Central. 
 
-    ![Šablona zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![Snímek obrazovky zobrazující seznam šablon zařízení v aplikaci](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
 2. V seznamu šablony zařízení se zobrazí složka **připojené odpadní přihrádka**. Otevřete kliknutím na název.
 
 3. Seznamte se s možnostmi šablon zařízení. Můžete vidět, že definuje senzory, jako je *úroveň výplně*, *měřič Odor*, *váhy*, *umístění*a další.
 
-   ![Šablona zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![Snímek obrazovky s podrobnostmi o šabloně zařízení připojené odpadní přihrádky](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
    
 
@@ -161,7 +161,7 @@ Zkuste upravit následující:
 
   ![Zobrazení šablon zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikování 
+### <a name="publish"></a>Publikovat 
 
 * Pokud jste udělali nějaké změny, ujistěte se, že jste šablonu zařízení **publikovali** . 
 
@@ -265,8 +265,9 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte aplikaci pomocí ná
 1. Otevřete kartu Správa v levém podokně aplikace IoT Central.
 2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky.
 
-  
-
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [konceptech správy propojených odpadů](./concepts-connectedwastemanagement-architecture.md)
+* Další informace o nástroji
+ 
+> [!div class="nextstepaction"]
+> [Koncepce správy propojených odpadů](./concepts-connectedwastemanagement-architecture.md)

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9bc06e58fcbd93fba0c92e91b51503239b5a951
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744285"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980773"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Připojení pomocí protokolu SSH k virtuálnímu počítači se systémem Linux pomocí Azure bastionu
 
@@ -23,7 +23,7 @@ Pomocí služby Azure bastionu se můžete připojit k virtuálnímu počítači
 * Soukromý klíč, který zadáte ručně
 * Soubor, který obsahuje informace o privátním klíči
 
-Privátní klíč SSH musí být ve formátu, který začíná `"-----BEGIN RSA PRIVATE KEY-----"` a končí na `"-----END RSA PRIVATE KEY-----"` .
+Privátní klíč SSH musí být ve formátu, který začíná  `"-----BEGIN RSA PRIVATE KEY-----"` a končí na `"-----END RSA PRIVATE KEY-----"` .
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -47,35 +47,35 @@ Aby bylo možné se připojit k virtuálnímu počítači se systémem Linux př
 
 ## <a name="connect-using-username-and-password"></a><a name="username"></a>Připojení: použití uživatelského jména a hesla
 
-1. Otevřete [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit** a v rozevíracím seznamu vyberte **bastionu** .
+1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit** a v rozevíracím seznamu vyberte **bastionu** .
 
-   ![Připojit](./media/bastion-connect-vm-ssh/connect.png)
+   ![Snímek obrazovky se zobrazí přehled pro virtuální počítač v Azure Portal s vybraným možností připojit.](./media/bastion-connect-vm-ssh/connect.png)
 1. Po kliknutí na bastionu se zobrazí postranní panel se třemi kartami – RDP, SSH a bastionu. Pokud byl pro virtuální síť zřízen bastionu, karta bastionu je ve výchozím nastavení aktivní. Pokud jste nezřídili bastionu pro virtuální síť, přečtěte si téma [Konfigurace bastionu](bastion-create-host-portal.md).
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Snímek obrazovky se zobrazí dialogové okno připojit k virtuálnímu počítači s vybraným BASTIONU.](./media/bastion-connect-vm-ssh/bastion.png)
 1. Zadejte uživatelské jméno a heslo pro SSH k virtuálnímu počítači.
 1. Po zadání klíče klikněte na tlačítko **připojit** .
 
 ## <a name="connect-manually-enter-a-private-key"></a><a name="privatekey"></a>Connect: Ruční zadání privátního klíče
 
-1. Otevřete [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit** a v rozevíracím seznamu vyberte **bastionu** .
+1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit** a v rozevíracím seznamu vyberte **bastionu** .
 
-   ![Připojit](./media/bastion-connect-vm-ssh/connect.png)
+   ![Snímek obrazovky se zobrazí přehled pro virtuální počítač v Azure Portal s vybraným možností připojit.](./media/bastion-connect-vm-ssh/connect.png)
 1. Po kliknutí na bastionu se zobrazí postranní panel se třemi kartami – RDP, SSH a bastionu. Pokud byl pro virtuální síť zřízen bastionu, karta bastionu je ve výchozím nastavení aktivní. Pokud jste nezřídili bastionu pro virtuální síť, přečtěte si téma [Konfigurace bastionu](bastion-create-host-portal.md).
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Snímek obrazovky se zobrazí dialogové okno připojit k virtuálnímu počítači s vybraným BASTIONU.](./media/bastion-connect-vm-ssh/bastion.png)
 1. Zadejte uživatelské jméno a vyberte **privátní klíč SSH**.
 1. Zadejte privátní klíč do textové oblasti **SSH privátního klíče** (nebo ho vložte přímo).
 1. Po zadání klíče klikněte na tlačítko **připojit** .
 
 ## <a name="connect-using-a-private-key-file"></a><a name="ssh"></a>Připojit: použití souboru privátního klíče
 
-1. Otevřete [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit** a v rozevíracím seznamu vyberte **bastionu** .
+1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit** a v rozevíracím seznamu vyberte **bastionu** .
 
-   ![Připojit](./media/bastion-connect-vm-ssh/connect.png)
+   ![Snímek obrazovky se zobrazí přehled pro virtuální počítač v Azure Portal s vybraným možností připojit.](./media/bastion-connect-vm-ssh/connect.png)
 1. Po kliknutí na bastionu se zobrazí postranní panel se třemi kartami – RDP, SSH a bastionu. Pokud byl pro virtuální síť zřízen bastionu, karta bastionu je ve výchozím nastavení aktivní. Pokud jste nezřídili bastionu pro virtuální síť, přečtěte si téma [Konfigurace bastionu](bastion-create-host-portal.md).
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Snímek obrazovky se zobrazí dialogové okno připojit k virtuálnímu počítači s vybraným BASTIONU.](./media/bastion-connect-vm-ssh/bastion.png)
 1. Zadejte uživatelské jméno a vyberte **privátní klíč SSH z místního souboru**.
 1. Klikněte na tlačítko **Procházet** (ikona složky v místním souboru).
 1. Vyhledejte soubor a pak klikněte na **otevřít**.

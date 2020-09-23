@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 66bba0d4825300a6cead2453a67518af631234b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db94c868daecdd82bcf7749f17fc6fde86fac963
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543500"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979779"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky potřebné k provedení v Salesforce a Azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenant Azure Active Directory
 * Tenant Salesforce.com
@@ -65,9 +65,9 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 3. Vyberte instanci Salesforce a pak vyberte kartu **zřizování** .
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![zřizování](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se stránkou zřizování Salesforce s režimem zřizování nastaveným na automatické a jiné hodnoty, které můžete nastavit.](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. V části **přihlašovací údaje správce** zadejte následující nastavení konfigurace:
 
@@ -101,7 +101,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 15. V části mapování vyberte **synchronizovat Azure Active Directory uživatelů do Salesforce.**
 
-16. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Salesforce. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Salesforce pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+16. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Salesforce. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Salesforce pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 17. Pokud chcete povolit službu Azure AD Provisioning pro Salesforce, změňte **stav zřizování** na **zapnuto** v části nastavení.
 
@@ -127,7 +127,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Salesforce vyžaduje, aby se aktualizace e-mailu před změnou schválily ručně. V důsledku toho se může stát, že v protokolech zřizování dojde k aktualizaci e-mailu uživatele na více položkách (dokud se neschválí změna e-mailu).
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

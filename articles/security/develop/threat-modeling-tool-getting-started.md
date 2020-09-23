@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539896"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980466"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s Threat Modeling Tool
 
@@ -41,7 +41,7 @@ Když spustíte Threat Modeling Tool, všimnete si pár věcí, jak je vidět na
 
 ### <a name="threat-model-section"></a>Oddíl modelu hrozeb
 
-| Komponenta                                   | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Součást                                   | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Názory, tlačítko návrhy a problémy** | Přejdete na **[Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** pro všechny věci SDL. Nabízí vám možnost si přečíst si, co dělají jiní uživatelé, spolu s alternativními řešeními a doporučeními. Pokud stále nemůžete najít, co hledáte, pošlete tmtextsupport@microsoft.com nám e-mail pro náš tým podpory, který vám může pomoci                                                                                                                            |
 | **Vytvoření modelu**                          | Otevře prázdné plátno pro vykreslení diagramu. Ujistěte se, že jste vybrali šablonu, kterou chcete použít pro váš model.                                                                                                                                                                                                                                                                                                                                                                       |
@@ -51,7 +51,7 @@ Když spustíte Threat Modeling Tool, všimnete si pár věcí, jak je vidět na
 
 ### <a name="template-section"></a>Oddíl Template
 
-| Komponenta               | Podrobnosti                                                                                                                                                          |
+| Součást               | Podrobnosti                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Vytvořit novou šablonu** | Otevře prázdnou šablonu, na kterou se má vytvořit. Pokud nemáte rozsáhlé znalosti při vytváření šablon od začátku, doporučujeme, abyste si vytvořili z existujících. |
 | **Otevřít šablonu**       | Otevře existující šablony, abyste mohli provádět změny.                                                                                                              |
@@ -97,7 +97,7 @@ Ricardo začíná výběrem první položky v seznamu. Co se stane:
 
 Za prvé je vylepšená interakce mezi těmito dvěma vzorníky.
 
-![Interakce](./media/threat-modeling-tool-getting-started/interaction.png)
+![Snímek obrazovky se dvěma předlohami a zakřivenou šipkou, která je propojuje s těžší tloušťkou čáry.](./media/threat-modeling-tool-getting-started/interaction.png)
 
 Za druhé se zobrazí další informace týkající se hrozby okno Vlastnosti
 

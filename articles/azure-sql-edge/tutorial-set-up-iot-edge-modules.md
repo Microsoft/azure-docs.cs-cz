@@ -7,14 +7,14 @@ ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
-ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.reviewer: sourabha, sstein
+ms.date: 09/22/2020
+ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84235022"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886476"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>Nastavení IoT Edgech modulů a připojení
 
@@ -22,39 +22,6 @@ V druhé části tohoto kurzu pro předpověď nečistot železa ve službě Azu
 
 - Azure SQL Edge
 - Modul IoT Edge generátoru dat
-
-## <a name="create-azure-stream-analytics-module"></a>Vytvořit modul Azure Stream Analytics
-
-Vytvořte modul Azure Stream Analytics, který se použije v tomto kurzu. Další informace o používání úloh streamování pomocí SQL Edge najdete v tématu [používání úloh streamování s SQL Edge](stream-analytics.md).
-
-Po vytvoření úlohy Azure Stream Analytics s hostitelským prostředím nastaveným jako Edge nastavte vstupy a výstupy pro tento kurz.
-
-1. Pokud chcete vytvořit **vstup**, klikněte na **+ Přidat vstup streamu**. Vyplňte část Podrobnosti pomocí následujících informací:
-
-   Pole|Hodnota
-   -----|-----
-   Formát serializace události|JSON
-   Encoding|UTF-8
-   Typ komprese události|Žádné
-
-2. **Výstup**vytvoříte tak, že kliknete na **+ přidat** a zvolíte SQL Database. Vyplňte část Podrobnosti pomocí následujících informací.
-
-   > [!NOTE]
-   > Heslo zadané v této části je potřeba zadat pro heslo SQL SA při nasazení modulu SQL Edge v části **nasazení modulu Azure SQL Edge**.
-
-   Pole|Hodnota
-   -----|-----
-   Databáze|IronOreSilicaPrediction
-   Název serveru|TCP:., 1433
-   Uživatelské jméno|sa
-   Heslo|Zadat silné heslo
-   Tabulka|IronOreMeasurements1
-
-3. Přejděte do části **dotaz** a nastavte dotaz následujícím způsobem:
-
-   `SELECT * INTO <name_of_your_output_stream> FROM <name_of_your_input_stream>`
-   
-4. V části **Konfigurovat**vyberte **publikovat**a pak vyberte tlačítko **publikovat** . Uložte identifikátor URI SAS pro použití s modulem SQL Database Edge.
 
 ## <a name="specify-container-registry-credentials"></a>Zadat přihlašovací údaje registru kontejneru
 
@@ -84,10 +51,12 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
   
 ## <a name="deploy-the-data-generator-module"></a>Nasazení modulu generátoru dat
 
-1. V části **IoT Edge moduly** klikněte na **+ přidat** a vyberte **IoT Edge modul**.
+1. V části **IoT Edge** v části **Automatická správa zařízení**klikněte na **ID zařízení**. Pro tento kurz je ID `IronOrePredictionDevice` a pak klikněte na **nastavit moduly**.
 
-2. Zadejte název modulu IoT Edge a identifikátor URI image.
-   Identifikátor URI image najdete v registru kontejnerů ve skupině prostředků. V části **služby**vyberte část **úložiště** . Pro tento kurz vyberte úložiště s názvem `silicaprediction` . Vyberte příslušnou značku. Identifikátor URI image bude ve formátu:
+2.  V části **IoT Edge moduly** na stránce **nastavit moduly na zařízení:** klikněte na **+ Přidat** a vyberte **IoT Edge modul**.
+
+3. Zadejte platný název a identifikátor URI image pro modul IoT Edge.
+   Identifikátor URI image najdete v registru kontejnerů ve skupině prostředků vytvořené v první části tohoto kurzu. V části **služby**vyberte část **úložiště** . Pro tento kurz vyberte úložiště s názvem `silicaprediction` . Vyberte příslušnou značku. Identifikátor URI image bude ve formátu:
 
    *přihlašovací server containerregistry* / *název úložiště*:*název značky*
 
@@ -97,36 +66,142 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
    ```
 
-3. Klikněte na tlačítko **Přidat**.
+4. Ponechejte *zásady restartování* a *požadovaná pole stavu* tak, jak jsou.
+
+5. Klikněte na **Přidat**.
+
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Nasazení modulu Edge Azure SQL
 
-1. Nasaďte modul Azure SQL Edge podle kroků uvedených v části [nasazení Azure SQL Edge (Preview)](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
+1. Nasaďte modul Azure SQL Edge kliknutím na **+ Přidat** a pak na **modul Marketplace**. 
 
-2. Na stránce **Zadejte cestu** k **nastaveným modulům** zadejte trasy pro modul, aby IoT Edge komunikaci centra, jak je znázorněno níže. 
+2. V okně **IoT Edge modulu Marketplace** vyhledejte *Azure SQL Edge* a vyberte *Azure SQL Edge Developer*. 
+
+3. Kliknutím na nově přidaný modul *Azure SQL Edge* v části **IoT Edge moduly** nakonfigurujte modul Azure SQL Edge. Další informace o možnostech konfigurace najdete v tématu [nasazení Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
+
+4. Přidejte `MSSQL_PACKAGE` proměnnou prostředí do nasazení modulu *Azure SQL Edge* a zadejte adresu URL souboru DACPAC databáze vytvořeného v kroku 8 první [části](tutorial-deploy-azure-resources.md) tohoto kurzu.
+
+5. Kliknout na **aktualizovat**
+
+6. Na stránce **nastavit moduly na zařízení** klikněte na **další: trasy >**.
+
+7. V podokně trasy na stránce **nastavit moduly na zařízení** zadejte trasy pro modul pro IoT Edge komunikaci centra, jak je popsáno níže. Nezapomeňte aktualizovat názvy modulů v níže uvedených definicích tras.
 
    ```
-   FROM /messages/modules/<your_data_generator_module>/outputs/<your_output_stream_name> INTO
-   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/<your_input_stream_name>")
+   FROM /messages/modules/<your_data_generator_module>/outputs/IronOreMeasures INTO
+   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
    Příklad:
 
    ```
-   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/Input1")
+   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")
    ```
 
-3. V modulu nastavení s **dvojitou** dostupností se ujistěte, že jsou SQLPackage a ASAJonInfo aktualizované o příslušné adresy URL SAS, které jste předtím uložili v tomto kurzu.
 
-   ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+7. Na stránce **nastavit moduly na zařízení** klikněte na **Další: zkontrolovat + vytvořit >**
+
+8. Na stránce **nastavit moduly na zařízení** klikněte na **vytvořit** .
+
+## <a name="create-and-start-the-t-sql-streaming-job-in-azure-sql-edge"></a>Vytvořte a spusťte úlohu streamování T-SQL ve službě Azure SQL Edge.
+
+1. Otevřete Azure Data Studio.
+
+2. Na kartě **Vítejte** spusťte nové připojení s následujícími podrobnostmi:
+
+   |_Pole_|_Hodnota_|
+   |-------|-------|
+   |Typ připojení| Microsoft SQL Server|
+   |Server|Veřejná IP adresa zmíněná na virtuálním počítači, který se vytvořil pro tuto ukázku|
+   |Uživatelské jméno|sa|
+   |Heslo|Silné heslo, které se použilo při vytváření instance Azure SQL Edge|
+   |Databáze|Výchozí|
+   |Skupina serverů|Výchozí|
+   |Název (nepovinný)|Zadání volitelného názvu|
+
+3. Klikněte na **připojit** .
+
+4. Na kartě Nabídka **soubor** otevřete nový Poznámkový blok nebo použijte klávesovou zkratku CTRL + N.
+
+5. V okně Nový dotaz spusťte skript níže a vytvořte úlohu streamování T-SQL. Před spuštěním skriptu se ujistěte, že jste změnili následující proměnné. 
+   - *SQL_SA_Password:* Hodnota MSSQL_SA_PASSWORD zadaná při nasazení modulu Azure SQL Edge. 
+   
+   ```sql
+   Use IronOreSilicaPrediction
+   Go
+
+   Declare @SQL_SA_Password varchar(200) = '<SQL_SA_Password>'
+   declare @query varchar(max) 
+
+   /*
+   Create Objects Required for Streaming
+   */
+
+   CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MyStr0ng3stP@ssw0rd';
+
+   If NOT Exists (select name from sys.external_file_formats where name = 'JSONFormat')
+   Begin
+      CREATE EXTERNAL FILE FORMAT [JSONFormat]  
+      WITH ( FORMAT_TYPE = JSON)
+   End 
+
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'EdgeHub')
+   Begin
+      Create EXTERNAL DATA SOURCE [EdgeHub] 
+      With(
+         LOCATION = N'edgehub://'
+      )
+   End 
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreInput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreInput WITH 
+      (
+         DATA_SOURCE = EdgeHub,
+         FILE_FORMAT = JSONFormat,
+         LOCATION = N'IronOreMeasures'
+       )
+   End
+
+
+   If NOT Exists (select name from sys.database_scoped_credentials where name = 'SQLCredential')
+   Begin
+       set @query = 'CREATE DATABASE SCOPED CREDENTIAL SQLCredential
+                 WITH IDENTITY = ''sa'', SECRET = ''' + @SQL_SA_Password + ''''
+       Execute(@query)
+   End 
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'LocalSQLOutput')
+   Begin
+      CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
+      LOCATION = 'sqlserver://tcp:.,1433',CREDENTIAL = SQLCredential)
+   End
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreOutput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreOutput WITH 
+      (
+         DATA_SOURCE = LocalSQLOutput,
+         LOCATION = N'IronOreSilicaPrediction.dbo.IronOreMeasurements'
+      )
+   End
+
+   EXEC sys.sp_create_streaming_job @name=N'IronOreData',
+   @statement= N'Select * INTO IronOreOutput from IronOreInput'
+
+   exec sys.sp_start_streaming_job @name=N'IronOreData'
    ```
+
+6. Pomocí následujícího dotazu ověřte, zda jsou data z modulu generování dat vysílána do databáze. 
+
+   ```sql
+   Select Top 10 * from dbo.IronOreMeasurements
+   order by timestamp desc
+   ```
+
+
+V tomto kurzu jsme nasadili modul generátoru dat a modul SQL Edge. Pak jsme vytvořili úlohu streamování pro streamování dat generovaných modulem generování dat do SQL. 
 
 ## <a name="next-steps"></a>Další kroky
 

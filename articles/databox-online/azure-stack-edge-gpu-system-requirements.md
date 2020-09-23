@@ -1,6 +1,6 @@
 ---
-title: Požadavky na systém Microsoft Azure Stack Edge | Microsoft Docs
-description: Další informace o požadavcích na software a sítě pro Azure Stack hraničních zařízeních
+title: Požadavky na systém Microsoft Azure Stack Edge pro | Microsoft Docs
+description: Seznamte se s požadavky na software a sítě pro Azure Stack Edge pro
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7754c57563ec5acb9028c2ace217f318fea5e959
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 091d272ff00982a0d0a5ae44885a04cc62d7a4b4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256261"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899149"
 ---
-# <a name="system-requirements-for-azure-stack-edge-with-gpu"></a>Požadavky na systém pro Azure Stack Edge s grafickým procesorem 
+# <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Požadavky na systém pro Azure Stack Edge pro s grafickým procesorem 
 
-Tento článek popisuje důležité systémové požadavky pro řešení Microsoft Azure Stack Edge a klienty, kteří se připojují k Azure Stack Edge. Před nasazením Azure Stack Edge doporučujeme pečlivě zkontrolovat informace. V případě potřeby můžete v průběhu nasazení a následné operace přejít zpět na tyto informace.
+Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Stack Edge pro a klienty, kteří se připojují k Azure Stack Edge pro. Doporučujeme pečlivě zkontrolovat informace před nasazením Azure Stack Edge pro. V případě potřeby můžete v průběhu nasazení a následné operace přejít zpět na tyto informace.
 
-Požadavky na systém Azure Stack Edge zahrnují:
+Mezi požadavky na systém Azure Stack Edge pro:
 
 - **Požadavky na software pro hostitele** – popisuje podporované platformy, prohlížeče pro místní uživatelské rozhraní konfigurace, klienty SMB a všechny další požadavky na klienty, kteří přistupují k zařízení.
 - **Požadavky na síť pro zařízení** – poskytuje informace o požadavcích na síť pro provoz fyzického zařízení.
@@ -59,9 +59,9 @@ Při správě z Azure Stack jsou následující vrstvené účty úložiště po
 
 ## <a name="networking-port-requirements"></a>Požadavky na porty sítě
 
-### <a name="port-requirements-for-azure-stack-edge"></a>Požadavky na porty pro Azure Stack Edge
+### <a name="port-requirements-for-azure-stack-edge-pro"></a>Požadavky na port pro Azure Stack Edge pro
 
-Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly provoz SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše Azure Stack hraniční zařízení odesílá data externě, mimo nasazení, například odchozí na Internet.
+Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly provoz SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* znamená směr, ve kterém vaše zařízení Azure Stack Edge pro odesílá data externě, mimo nasazení, například odchozí na Internet.
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 
@@ -73,15 +73,15 @@ Použijte následující tabulku pro konfiguraci portů pro servery hostující 
 
 | Číslo portu | V nebo ven | Rozsah portů | Vyžadováno | Pokyny |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Out       | Síť WAN        | Ano      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
+| TCP 443 (HTTPS)| Out       | Síť WAN        | Yes      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
 
 Pokud chcete získat úplné informace, přečtěte si [pravidla brány firewall a konfigurace portů pro nasazení IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
 ## <a name="url-patterns-for-firewall-rules"></a>Vzory adres URL pro pravidla brány firewall
 
-Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše Azure Stack hraniční zařízení a služba závisí na dalších aplikacích společnosti Microsoft, jako jsou Azure Service Bus, Azure Active Directory Access Control, účtech úložiště a Microsoft Updatech serverech. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. Tyto změny vyžadují, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro Azure Stack hraničních zařízení, a to v případě potřeby.
+Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše zařízení Azure Stack Edge pro a službu závisí na dalších aplikacích společnosti Microsoft, jako jsou Azure Service Bus, Azure Active Directory Access Control, účtech úložiště a Microsoft Updatech serverech. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. Tyto změny vyžadují, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro Azure Stack Edge pro a v případě potřeby.
 
-Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě pevných IP adres Azure Stack hraničních zařízení, a to ve většině případů. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
+Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě pevných IP adres Azure Stack Edge pro, a to ve většině případů svobodně. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
 
 > [!NOTE]
 > - IP adresy zařízení (zdrojové) by se měly vždycky nastavit na všechna síťová rozhraní s podporou cloudu.
@@ -117,7 +117,7 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 
 ## <a name="compute-sizing-considerations"></a>Požadavky na výpočet velikosti
 
-Využijte své zkušenosti při vývoji a testování vašeho řešení, abyste měli dostatek kapacity na Azure Stack hraničních zařízeních a dosáhli jste optimálního výkonu vašeho zařízení.
+Využijte své zkušenosti při vývoji a testování vašeho řešení, abyste měli dostatek kapacity na zařízení Azure Stack Edge pro, a získáte optimální výkon ze zařízení.
 
 Mezi faktory, které byste měli vzít v úvahu, patří:
 
@@ -137,8 +137,8 @@ Pro pochopení a vylepšení výkonu řešení můžete použít:
 - Výpočetní metrika je k dispozici v Azure Portal. Přejít na prostředek Azure Stack Edge a pak přejít na **monitorování > metriky**. Seznamte se s dostupnými prostředky a s tím, jak se prostředky využívaly, najdete v procentech **využití hraničních výpočetních paměťových** a **hraničních procesorů** .
 - Pokud chcete monitorovat a řešit problémy s výpočetními moduly, přečtěte si [témata ladění Kubernetes problémů](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge).
 
-Nakonec se ujistěte, že vaše řešení ověřujete ve své datové sadě a vyhodnotit výkon na Azure Stack Edge před nasazením v produkčním prostředí.
+Nakonec se ujistěte, že vaše řešení ověříte ve své datové sadě a vyhodnotit výkon na Azure Stack Edge pro před nasazením v produkčním prostředí.
 
 ## <a name="next-step"></a>Další krok
 
-- [Nasazení Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)
+- [Nasazení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md)

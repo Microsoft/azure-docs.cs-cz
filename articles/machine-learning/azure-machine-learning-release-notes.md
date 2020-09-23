@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 245b977e0aeda3df933b6ab4b27735264444c4df
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 022040f4fa7f70dd5fc7677ce969ee9acbe7bcbb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659177"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886412"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -22,6 +22,54 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
 
+## <a name="2020-09-21"></a>2020-09-21
+
+### <a name="azure-machine-learning-sdk-for-python-v1140"></a>Sada SDK Azure Machine Learning pro Python v 1.14.0
++ **Opravy chyb a vylepšení**
+  + **Azure-CLI-ml**
+    + Profilace mřížky se odebrala ze sady SDK a už není podporovaná.
+  + **azureml-accel-models**
+    + balíček AzureML-akcelerace-Models teď podporuje Tensorflow 2. x.
+  + **azureml-automl-core**
+    + Přidání zpracování chyb v get_output pro případy, kdy se místní verze PANDAS/skriptu sklearn neshodují s těmi, které se použily během školení
+  + **azureml-automl-runtime**
+    + Opravili jsme chybu, kdy AutoArima iterace selže s PredictionException a zprávou: během předpovědi došlo k tiché chybě.
+  + **AzureML-CLI – společné**
+    + Profilace mřížky se odebrala ze sady SDK a už není podporovaná.
+  + **AzureML-contrib-Server**
+    + Popis aktualizace stránky s přehledem balíčku pro PyPI.
+  + **azureml-core**
+    + Profilace mřížky se odebrala ze sady SDK a už není podporovaná.
+    + Snižte počet chybových zpráv, když se nepovede načíst pracovní prostor.
+    + Nezobrazovat upozornění, když se metadata načítání nezdařila
+    + Nový Kusto Step a Kusto Target Compute.
+    + Aktualizuje dokument pro parametr SKU. Odebere SKU ve funkci aktualizace pracovního prostoru v rozhraní příkazového řádku a v sadě SDK.
+    + Popis aktualizace stránky s přehledem balíčku pro PyPI.
+    + Aktualizovaná dokumentace pro prostředí AzureML.
+    + Zveřejňujte nastavení spravovaných prostředků služby pro pracovní prostor AML v sadě SDK.
+  + **azureml-dataprep**
+    + Povolte oprávnění EXECUTE pro soubory pro připojení datové sady.
+  + **azureml-mlflow**
+    + Aktualizace dokumentace k MLflow a ukázek poznámkových bloků 
+    + Nová podpora pro projekty MLflow pomocí back-endu
+    + Podpora registru modelu MLflow
+    + Přidání podpory RBAC pro operace AzureML-MLflow 
+    
+  + **azureml-pipeline-core**
+    + Vylepšili dokumentaci metod PipelineOutputFileDataset. parse_ *.
+    + Nový Kusto Step a Kusto Target Compute.
+    + Poskytnutá vlastnost Swaggerurl pro entitu koncového bodu kanálu (kanálu) prostřednictvím tohoto uživatele může zobrazit definici schématu pro publikovaný koncový bod kanálu.
+  + **azureml-pipeline-steps**
+    + Nový Kusto Step a Kusto Target Compute.
+  + **azureml-telemetry**
+    + Popis aktualizace stránky s přehledem balíčku pro PyPI.
+  + **AzureML-vlak**
+    + Popis aktualizace stránky s přehledem balíčku pro PyPI.
+  + **azureml-train-automl-client**
+    + Přidání zpracování chyb v get_output pro případy, kdy se místní verze PANDAS/skriptu sklearn neshodují s těmi, které se použily během školení
+  + **azureml-train-core**
+    + Popis aktualizace stránky s přehledem balíčku pro PyPI.
+    
 ## <a name="2020-08-31"></a>2020-08-31
 
 ### <a name="azure-machine-learning-sdk-for-python-v1130"></a>Sada SDK Azure Machine Learning pro Python v 1.13.0
@@ -58,7 +106,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Vylepšená `PipelineOutputAbstractDataset.register` dokumentace.
   + **azureml-train-automl-client**
     + Upgradované závislosti AutoML: `scikit-learn` (teď 0.22.1), (teď `pandas` 0.25.1), `numpy` (teď 1.18.2).
-  + **azureml-train-automl-runtime**
+  + **AzureML-vlak-automl-runtime**
     + Upgradované závislosti AutoML: `scikit-learn` (teď 0.22.1), (teď `pandas` 0.25.1), `numpy` (teď 1.18.2).
   + **azureml-train-core**
     + Uživatelé musí nyní zadat platný hyperparameter_sampling ARG při vytváření HyperDriveConfig. Kromě toho byla upravena dokumentace pro HyperDriveRunConfig, která informuje uživatele o vyřazení HyperDriveRunConfig.
@@ -240,7 +288,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     +  Přidání podpory v ParallelRunConfig `load_yaml()` pro uživatele k definování prostředí vložených do zbytku konfigurace nebo do samostatného souboru
   + **AzureML-vlak-automl-Client**.
     + Odebrala se možnost zadat `enable_cache` jako součást AutoMLConfig.
-  + **azureml-train-automl-runtime**
+  + **AzureML-vlak-automl-runtime**
     + Přidání omezené dostupnosti s více uzly distribuované featurization s více procesory s BERT.
     + Do automatizovaného spuštění strojového učení založeného na ADB se přidalo zpracování chyb pro nekompatibilní balíčky.
   + **azureml-widgets**
@@ -353,7 +401,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Vylepšení dokumentace k AzureML-Core/AzureML. data
     + Opravuje problém s načtením účtu úložiště pomocí příkazu HDFS getconf.
     + Vylepšená dokumentace pro register_azure_blob_container a register_azure_file_share
-  + **azureml-datadrift**
+  + **AzureML-dataunášená**
     + Vylepšená implementace pro zakázání a povolení sledování posunu dat
   + **azureml-interpret**
     + V vysvětlení klienta odeberte hodnoty NaN nebo soubory INF před serializací JSON při nahrávání z artefaktů.
@@ -372,7 +420,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Přidejte podporu pro různé jazyky pro modely Transformer pro obsáhlý Learning, jako je například BERT v automatizovaných ML.
     + Odebere zastaralou lag_length parametr z dokumentace.
     + Vylepšili jsme dokumentaci parametrů prognózování. Parametr lag_length byl zastaralý.
-  + **azureml-train-automl-runtime**
+  + **AzureML-vlak-automl-runtime**
     + Povolení vysvětlení pro AutoML Prophet a navýšení modelů, které obsahují model Prophet.
     + Aktualizace dokumentace pro balíčky AzureML-vlak-automl-*
   + **azureml-train-core**
@@ -543,7 +591,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Při vytváření TabularDataset pomocí `from_delimited_files` můžete určit, zda mají být prázdné hodnoty načteny jako žádné nebo jako prázdný řetězec nastavením argumentu Boolean `empty_as_string` .
     + Bylo přidáno zpracování plovoucího zůstatku pro datové sady v evropském stylu.
     + Vylepšené chybové zprávy při selhání připojení datové sady
-  + **azureml-datadrift**
+  + **AzureML-dataunášená**
     + Dotaz na výsledky datového posunu z SDK obsahoval chybu, která nelišila minimální, maximální a střední metriky funkcí a výsledkem jsou duplicitní hodnoty. Tuto chybu opravil (a) pomocí předpony cíle nebo směrného plánu na názvy metrik. Před: duplicitní minimum, maximum, střední hodnota. Po: target_min, target_max, target_mean, baseline_min, baseline_max, baseline_mean.
   + **azureml-dataprep**
     + Vylepšete zpracování omezených prostředí Pythonu pro zápis při zajišťování závislostí .NET potřebných pro doručování dat.
@@ -592,9 +640,9 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Popis  | Edice | 
-|---|---|---|
-| Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | Basic & Enterprise  |   
+| Webový nástroj  |     Description  |
+|---|---|
+| Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | 
 
 ## <a name="2020-04-27"></a>2020-04-27
 
@@ -786,7 +834,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
   + **azureml-train-automl-client**
     + Opravili jsme problém, kdy se některé balíčky můžou na vzdáleném spuštění nainstalovat na nesprávnou verzi.
     + opravený problém FeaturizationConfig, který filtruje vlastní konfiguraci featurization.
-  + **azureml-train-automl-runtime**
+  + **AzureML-vlak-automl-runtime**
     + Opravili jsme problém s detekcí četnosti ve vzdálených spuštěních.
     + Přesunuto `AutoMLStep` v `azureml-pipeline-steps` balíčku. Zastaralé v `AutoMLStep` rámci `azureml-train-automl-runtime` .
   + **azureml-train-core**
@@ -824,7 +872,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + Přesunuta `AutoMLStep` do `azureml-pipeline-steps package` . Zastaralé v `AutoMLStep` rámci `azureml-train-automl-runtime` .
   + **azureml-train-automl-client**
     + Opravili jsme problém, kdy se některé balíčky můžou na vzdáleném spuštění nainstalovat na nesprávnou verzi.
-  + **azureml-train-automl-runtime**
+  + **AzureML-vlak-automl-runtime**
     + Opravili jsme problém s detekcí četnosti ve vzdálených spuštěních.
     + Přesunuta `AutoMLStep` do `azureml-pipeline-steps package` . Zastaralé v `AutoMLStep` rámci `azureml-train-automl-runtime` .
   + **azureml-train-core**
@@ -860,7 +908,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + Přesunuto `AutoMLStep` v `azureml-pipeline-steps` balíčku. Zastaralé v `AutoMLStep` rámci `azureml-train-automl-runtime` .
   + **azureml-contrib-pipeline-steps**
     + Nepovinný parametr side_inputs přidaný do ParallelRunStep. Tento parametr lze použít k připojení složky v kontejneru. Aktuálně podporované typy jsou DataReference a PipelineData.
-  + **AzureML-tensorboard**
+  + **azureml-tensorboard**
     + aktualizace AzureML-tensorboard na podporu tensorflow 2,0
   + **azureml-train-automl-client**
     + opravený problém FeaturizationConfig, který filtruje vlastní konfiguraci featurization.
@@ -924,7 +972,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + Aktualizovali jsme Shap na 0.33.0 a interpretaci komunity na 0,4. *
   + **azureml-interpret**
     + Aktualizovali jsme Shap na 0.33.0 a interpretaci komunity na 0,4. *
-  + **azureml-train-automl-runtime**
+  + **AzureML-vlak-automl-runtime**
     + Byl přidán korelační koeficient Matthews jako metrika klasifikace pro binární i mezitřídovou klasifikaci.
     + Vyřadit příznak předběžného zpracování z kódu a nahradit featurization-featurization je ve výchozím nastavení zapnuté.
 
@@ -1039,7 +1087,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
   + **azureml-train-automl-client**
     + Přidali jsme tenký klient pro odesílání AutoML experimentů, aniž byste museli instalovat žádné závislosti ve strojovém učení místně.
     + Pevné protokolování automaticky zjištěných prodlevy, velikostí oken a maximálního počtu horizontů ve vzdálených spuštěních.
-  + **azureml-train-automl-runtime**
+  + **AzureML-vlak-automl-runtime**
     + Přidání nového balíčku AutoML k izolaci strojového učení a běhových komponent z klienta.
   + **AzureML-contrib-výuka-RL**
     + Přidala se podpora výuky pro zvýšení podpory v sadě SDK.
@@ -1098,17 +1146,17 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
 
 ### <a name="web-experience"></a>Webové prostředí
 
-Cílová stránka pracovního prostoru pro spolupráci se [https://ml.azure.com](https://ml.azure.com) vylepšila a změnila jako Azure Machine Learning Studio (Preview).
+Cílová stránka pracovního prostoru pro spolupráci se [https://ml.azure.com](https://ml.azure.com) vylepšila a změnila jako Azure Machine Learning Studio.
 
 Z studia můžete provádět výukové, testovací, nasazování a správu Azure Machine Learningch prostředků, jako jsou datové sady, kanály, modely, koncové body a další.
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Popis | Edice |
+| Webový nástroj | Description | 
 |-|-|-|
-| Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | Basic & Enterprise |
-| [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | Enterprise |
-| [Návrhář](concept-designer.md) (Preview) | Nástroj pro modelování strojového učení, který se dřív jmenoval jako Návrhář | Enterprise |
+| Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | 
+| [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | 
+| [Návrhář](concept-designer.md) | Nástroj pro modelování strojového učení, který se dřív jmenoval jako vizuální rozhraní | 
 
 
 ### <a name="azure-machine-learning-designer-enhancements"></a>Vylepšení návrháře Azure Machine Learning
@@ -1314,7 +1362,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
     + Podpora použití prostředí pro nasazení modelů a aktualizace služby.
-  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
+  + **[AzureML-dataunášená](https://docs.microsoft.com/python/api/azureml-datadrift)**
     + Atribut show třídy [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) už nepodporuje nepovinný argument with_details. Atribut show bude prezentovat pouze koeficient posunu dat a příspěvek na posun dat pro sloupce funkcí.
     + Změny chování funkce DataDriftDetector [get_output] https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) :
       + Vstupní parametr start_time, end_time jsou volitelné místo povinné;

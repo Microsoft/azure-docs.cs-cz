@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77122057"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972389"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Kurz: Vytvoření aplikace monitorování spotřeby vody pomocí Azure IoT Central
 
@@ -154,7 +154,7 @@ Přizpůsobení šablony zařízení:
 
   ![Zobrazení šablon zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikování
+### <a name="publish"></a>Publikovat
 
 Pokud jste provedli nějaké změny, nezapomeňte **publikovat** šablonu zařízení.
 
@@ -256,4 +256,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte ji.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [konceptech monitorování spotřeby vody](./concepts-waterconsumptionmonitoring-architecture.md).
+* Další informace: 
+
+> [!div class="nextstepaction"]
+> [Koncepce monitorování spotřeby vody](./concepts-waterconsumptionmonitoring-architecture.md).
