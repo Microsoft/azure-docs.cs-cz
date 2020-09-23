@@ -1,6 +1,6 @@
 ---
-title: Kurz přenosu dat do účtu úložiště pomocí Azure Stackch GPU na hraničních zařízeních | Microsoft Docs
-description: Naučte se přidávat a připojovat se k místním a hraničním účtům úložiště na zařízeních GPU Azure Stack Edge.
+title: Kurz přenosu dat do účtu úložiště s grafickým procesorem Azure Stack Edge pro | Microsoft Docs
+description: Naučte se přidávat a připojovat se k místním a hraničním účtům úložiště na zařízeních s grafickým procesorem Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 66c09b7fa0eb8fbf709441da5996fb2237b3e284
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256392"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891054"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-gpu"></a>Kurz: přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge 
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Kurz: přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge pro 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-V tomto kurzu se dozvíte, jak na zařízení Azure Stack Edge přidat účty úložiště a připojit se k nim. Po přidání účtů úložiště může Azure Stack Edge přenést data do Azure.
+V tomto kurzu se dozvíte, jak přidat účty úložiště a připojit se k nim na zařízení Azure Stack Edge pro. Po přidání účtů úložiště může Azure Stack Edge pro přenést data do Azure.
 
 Dokončení této procedury může trvat přibližně 30 minut.
 
@@ -33,11 +33,11 @@ V tomto kurzu se naučíte:
  
 ## <a name="prerequisites"></a>Požadavky
 
-Před přidáním účtů úložiště do Azure Stack Edge se ujistěte, že:
+Než přidáte účty úložiště do Azure Stack Edge pro, ujistěte se, že:
 
-- Nainstalovali jste fyzické zařízení, jak je popsáno v tématu [instalace Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md).
+- Nainstalovali jste fyzické zařízení, jak je popsáno v tématu [instalace Azure Stack Edge pro](azure-stack-edge-gpu-deploy-install.md).
 
-- Aktivovali jste fyzické zařízení, jak je popsáno v části [Aktivace hraničního Azure Stack](azure-stack-edge-gpu-deploy-activate.md).
+- Aktivovali jste fyzické zařízení, jak je popsáno v tématu [aktivace Azure Stack Edge pro](azure-stack-edge-gpu-deploy-activate.md).
 
 
 ## <a name="add-an-edge-storage-account"></a>Přidat hraniční účet úložiště
@@ -135,7 +135,7 @@ Každý z těchto kroků je popsaný v následujících částech.
 
 ### <a name="get-certificate"></a>Získat certifikát
 
-Přístup k úložišti objektů BLOB přes HTTPS vyžaduje certifikát SSL pro zařízení. Tento certifikát také nahrajete do zařízení Azure Stack Edge jako soubor *. pfx* s připojeným privátním klíčem. Další informace o tom, jak vytvořit (jenom pro účely testování a vývoje) a jak tyto certifikáty nahrát do zařízení Azure Stack Edge, najdete tady:
+Přístup k úložišti objektů BLOB přes HTTPS vyžaduje certifikát SSL pro zařízení. Tento certifikát také nahrajete do zařízení Azure Stack Edge pro jako soubor *. pfx* s připojeným privátním klíčem. Další informace o tom, jak vytvořit (jenom pro účely testování a vývoje) a nahrát tyto certifikáty do zařízení Azure Stack Edge pro, najdete tady:
 
 - [Vytvořte certifikát koncového bodu objektu BLOB](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional).
 - [Nahrajte certifikát koncového bodu objektu BLOB](azure-stack-edge-j-series-manage-certificates.md#upload-certificates).
@@ -167,15 +167,15 @@ Postupujte podle pokynů ke [konfiguraci a ověření připojení, které jste p
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s následujícími tématy Azure Stack Edge:
+V tomto kurzu jste se seznámili s následujícími tématy Azure Stack Edge pro:
 
 > [!div class="checklist"]
 > * Přidat účet úložiště
 > * Připojení k účtu úložiště
 
-Pokud se chcete dozvědět, jak transformovat data pomocí Azure Stack Edge, přejděte k dalšímu kurzu:
+Pokud se chcete dozvědět, jak transformovat data pomocí Azure Stack Edge pro, přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Transformace dat pomocí Azure Stack Edge](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [Transformace dat pomocí Azure Stack Edge pro](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

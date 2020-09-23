@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Portal k řešení potíží s Azure Stack Edge pomocí GPU | Microsoft Docs
-description: Popisuje, jak řešit problémy s Azure Stackmi grafickými procesory hraničních zařízení.
+title: Použití Azure Portal k řešení potíží s Azure Stack Edge pro s grafickým procesorem | Microsoft Docs
+description: Popisuje, jak řešit potíže s grafickými procesory Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290119"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891543"
 ---
-# <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Řešení potíží na zařízení GPU na Azure Stack hraničních zařízeních 
+# <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Řešení potíží na zařízení GPU Azure Stack Edge pro 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Tento článek popisuje, jak řešit problémy s grafickým procesorem Azure Stack na hraničních zařízeních. 
+Tento článek popisuje, jak řešit problémy na zařízení GPU Azure Stack Edge pro. 
 
 
 ## <a name="run-diagnostics"></a>Spuštění diagnostiky
@@ -55,7 +55,7 @@ Pokud chcete balíček pro podporu vyzvednout, proveďte následující kroky.
 
 ## <a name="gather-advanced-security-logs"></a>Shromáždit rozšířené protokoly zabezpečení
 
-Rozšířené protokoly zabezpečení mohou být softwarové nebo hardwarové protokoly o vniknutí pro vaše zařízení Azure Stack Edge.
+Rozšířené protokoly zabezpečení mohou být softwarové nebo hardwarové protokoly o vniknutí pro zařízení Azure Stack Edge pro.
 
 ### <a name="software-intrusion-logs"></a>Protokoly o vniknutí softwaru
 
@@ -67,7 +67,7 @@ Pro příchozí a odchozí provoz jsou shromažďovány neoprávněné vniknutí
 
 - Pokud neposkytnete žádnou konkrétní možnost zahrnutí, do balíčku pro podporu se zařadí protokol brány firewall jako výchozí.
 
-- V balíčku pro podporu je protokol brány firewall `pfirewall.log` a umístěn v kořenové složce. Tady je příklad protokolu neoprávněného vniknutí softwaru pro zařízení Azure Stack Edge. 
+- V balíčku pro podporu je protokol brány firewall `pfirewall.log` a umístěn v kořenové složce. Tady je příklad protokolu neoprávněného vniknutí softwaru pro zařízení Azure Stack Edge pro. 
 
     ```
     #Version: 1.5
@@ -101,7 +101,7 @@ K detekci neoprávněného vniknutí hardwaru do zařízení jsou v současné d
 
 - Pokud neposkytnete žádnou konkrétní možnost zahrnutí, do balíčku pro podporu se zařadí protokol neoprávněného přístupu k hardwaru.
 
-- V balíčku pro podporu je protokol neoprávněného hardwaru `HWIntrusion.txt` a umístěný v kořenové složce. Tady je příklad protokolu neoprávněného hardwaru pro zařízení Azure Stack Edge. 
+- V balíčku pro podporu je protokol neoprávněného hardwaru `HWIntrusion.txt` a umístěný v kořenové složce. Tady je příklad protokolu neoprávněného hardwaru pro zařízení Azure Stack Edge pro. 
 
     ```
     09/04/2019 15:51:23 system Critical The chassis is open while the power is off.
@@ -143,7 +143,7 @@ Tady jsou chyby, které se můžou zobrazit během konfigurace Azure Resource Ma
 | **Problém/chyby** |  **Řešení** | 
 |------------|-----------------|
 |Běžné problémy|<li>[Ověřte, že hraniční zařízení je správně nakonfigurované](#verify-the-device-is-configured-properly).<li> [Ověřte, že je klient správně nakonfigurovaný.](#verify-the-client-is-configured-properly)|
-|Add-AzureRmEnvironment: při odesílání žádosti došlo k chybě.<br>Na řádku: 1 znak: 1<br>+ Add-AzureRmEnvironment-Name Az3-ARMEndpoint " https://management.dbe ...|Tato chyba znamená, že vaše zařízení Azure Stack Edge není dosažitelné nebo správně nakonfigurované. Ověřte, zda hraniční zařízení a klient jsou správně nakonfigurovány. Pokyny najdete v řádku **Obecné problémy** v této tabulce.|
+|Add-AzureRmEnvironment: při odesílání žádosti došlo k chybě.<br>Na řádku: 1 znak: 1<br>+ Add-AzureRmEnvironment-Name Az3-ARMEndpoint " https://management.dbe ...|Tato chyba znamená, že vaše zařízení Azure Stack Edge pro je nedosažitelné nebo správně nakonfigurované. Ověřte, zda hraniční zařízení a klient jsou správně nakonfigurovány. Pokyny najdete v řádku **Obecné problémy** v této tabulce.|
 |Služba vrátila chybu. Další podrobnosti naleznete u vlastnosti InnerException: základní připojení bylo ukončeno: nelze vytvořit vztah důvěryhodnosti pro zabezpečený kanál SSL/TLS. |   Tato chyba je pravděpodobně způsobena tím, že jedna nebo více kroků vlastního certifikátu byly nesprávně provedeny. [Tady](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)najdete pokyny. |
 |Operace vrátila neplatný stavový kód ServiceUnavailable. <br> Stavový kód odpovědi neindikuje úspěch: 503 (služba není k dispozici). | Tato chyba by mohla být výsledkem kterékoli z těchto podmínek.<li>ArmStsPool je v zastaveném stavu.</li><li>Některý z webů Azure Resource Manager/Security token Services je mimo provoz.</li><li>Prostředek clusteru Azure Resource Manager nefunguje.</li><br><strong>Poznámka:</strong> Restartování zařízení může problém vyřešit, ale měli byste shromáždit balíček podpory, abyste ho mohli dále ladit.|
 |AADSTS50126: neplatné uživatelské jméno nebo heslo.<br>ID trasování: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>ID korelace: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Časové razítko: 2019-11-15 09:21:57Z: vzdálený server vrátil chybu: (400) chybný požadavek.<br>Na řádku: 1 znak: 1 |Tato chyba by mohla být výsledkem kterékoli z těchto podmínek.<li>V případě neplatného uživatelského jména a hesla ověřte, že zákazník změnil heslo z Azure Portal pomocí následujících [kroků a potom](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password) pomocí správného hesla.<li>Pro neplatné ID tenanta je ID tenanta pevný identifikátor GUID a měl by být nastavený na. `c0257de7-538f-415c-993a-1b87a031879d`</li>|
@@ -167,7 +167,7 @@ Tady jsou chyby, které se můžou zobrazit během konfigurace Azure Resource Ma
 
 2. Ověřte, že jsou nainstalované správné moduly PowerShellu, jak je uvedeno [tady](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
 
-3. Ověřte, že jsou dostupné koncové body Azure Resource Manager a přihlášení. Můžete zkusit testovat koncové body. Například:
+3. Ověřte, že jsou dostupné koncové body Azure Resource Manager a přihlášení. Můžete zkusit testovat koncové body. Příklad:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -182,7 +182,7 @@ Tady jsou chyby, které se můžou zobrazit během konfigurace Azure Resource Ma
 
 ## <a name="blob-storage-on-device"></a>Blob Storage na zařízení 
 
-Tady jsou chyby související s úložištěm objektů BLOB v Azure Stack hraničním/Data Box Gatewaym zařízení.
+Tady jsou chyby související s úložištěm objektů BLOB v Azure Stack hraničních zařízení pro/Data Box Gateway.
 
 | **Problém/chyby** |  **Řešení** | 
 |--------------------|-----------------|
@@ -196,8 +196,8 @@ Tady jsou chyby související s úložištěm objektů BLOB v Azure Stack hrani�
 |Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na 20 minut:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `/etc/hosts` .|
 |Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na 20 minut: `Error parsing source location… The SSL connection could not be established` .|Importujte certifikát SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v tématu [stažení certifikátu](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
 |Hodnota pro jednu z hlaviček protokolu HTTP není ve správném formátu.|Data Box není podporována nainstalovaná verze knihovny Microsoft Azure Storage pro Python. Podporované verze najdete v tématu Azure Data Box požadavky na úložiště objektů BLOB.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu SSL s kódováním Base64 (viz jak [Stáhnout certifikát](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Například:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. Například na Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|Vypršel časový limit připojení.|Přihlaste se k Azure Stack Edge a potom zkontrolujte, že je odemčený. Pokaždé, když se zařízení restartuje, zůstane uzamčené, dokud se někdo přihlásí.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu SSL s kódováním Base64 (viz jak [Stáhnout certifikát](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Příklad:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. Například na Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|Vypršel časový limit připojení.|Přihlaste se k Azure Stack Edge pro a potom zkontrolujte, že je odemčený. Pokaždé, když se zařízení restartuje, zůstane uzamčené, dokud se někdo přihlásí.|
 
 
 ## <a name="next-steps"></a>Další kroky

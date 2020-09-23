@@ -11,21 +11,21 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 02/05/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 07a39edcb7a5605759ae70a014549863a038de1c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 0f0dde0da69ad225e39292681fc079aba4b81203
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437050"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885134"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Rozšířená ochrana před internetovými útoky pro Azure SQL Database, Managed instance SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Rozšířená ochrana před internetovými útoky pro [Azure SQL Database](sql-database-paas-overview.md), [spravovaná instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detekuje aktivity neobvyklé, které naznačují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Rozšířená ochrana před internetovými útoky je součástí [rozšířené nabídky zabezpečení dat](advanced-data-security.md) , což je jednotný balíček pro pokročilé funkce zabezpečení SQL. Správa Advanced Threat Protection je dostupná prostřednictvím centrálního portálu SQL ADS.
+Rozšířená ochrana před internetovými útoky je součástí [Azure Defenderu pro nabídku SQL](azure-defender-for-sql.md) , což je jednotný balíček pro pokročilé funkce zabezpečení SQL. K Rozšířené ochraně před internetovými útoky se dá využít a spravovat prostřednictvím centrálního portálu Azure Defender pro SQL Portal.
 
 ## <a name="overview"></a>Přehled
 
@@ -55,19 +55,15 @@ Po detekci neobvykléch databázových aktivit obdržíte e-mailové oznámení.
 
 ## <a name="explore-alerts-in-the-azure-portal"></a>Prozkoumat výstrahy v Azure Portal
 
-Rozšířená ochrana před internetovými útoky integruje své výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé SQL Advanced Threat Protection dlaždice v rámci databáze a okna služby SQL ADS v Azure Portal sledují stav aktivních hrozeb.
+Rozšířená ochrana před internetovými útoky integruje své výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé SQL Advanced Threat Protection dlaždice v oknech databáze a SQL Azure Defender v Azure Portal sledují stav aktivních hrozeb.
 
 Kliknutím na **Rozšířená výstraha ochrany před internetovými útoky** spustíte stránku Azure Security Center výstrahy a získáte přehled o aktivních hrozbách SQL zjištěných v databázi.
-
-   ![Výstraha rozšířené ochrany před internetovými útoky](./media/threat-detection-overview/threat_detection_alert.png)
-
-   ![Rozšířená ochrana před internetovými útoky alert2](./media/threat-detection-overview/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si víc o [Rozšířené ochraně před internetovými útoky v Azure SQL Database & Azure synapse](threat-detection-configure.md).
 - Přečtěte si víc o [Rozšířené ochraně před internetovými útoky ve spravované instanci Azure SQL](../managed-instance/threat-detection-configure.md).
-- Přečtěte si další informace o [pokročilém zabezpečení dat](advanced-data-security.md).
+- Přečtěte si další informace o [Azure Defenderu pro SQL](azure-defender-for-sql.md).
 - Další informace o [auditování Azure SQL Database](../../azure-sql/database/auditing-overview.md)
 - Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - Další informace o cenách najdete na stránce s [cenami Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) .  

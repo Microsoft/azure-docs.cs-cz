@@ -11,25 +11,25 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: eb28ee0adb3c23a44936cbc940ee9bcddfd11141
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647407"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897249"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Funkce automatizovaného škálování na základě Azure Machine Learning vám pomůže zjistit modely s vysokým výkonem bez nutnosti opětovné implementace každého možného přístupu. V kombinaci s Azure Machine Learning kanály můžete vytvářet nasaditelné pracovní postupy, které umožňují rychle zjistit algoritmus, který je pro vaše data nejvhodnější. V tomto článku se dozvíte, jak efektivně připojit krok přípravy dat k automatizovanému kroku ML. Automatizovaná ML může rychle zjistit algoritmus, který je pro vaše data nejvhodnější, a přitom vás zavede na cestách, aby MLOps a modeloval provozní životní cyklus s kanály.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  
 
-* Základní znalost [automatizovaného strojového učení](concept-automated-ml.md) Azure a [kanálů strojového učení](concept-ml-pipelines.md) a sady SDK.
+* Seznamte se s [automatizovanými strojovým učením](concept-automated-ml.md) a sadou SDK pro [strojové](concept-ml-pipelines.md) učení v Azure.
 
 ## <a name="review-automated-mls-central-classes"></a>Kontrola centrálních tříd automatizovaného ML
 
@@ -368,7 +368,7 @@ Občas se může zobrazit použití `X` datových funkcí a `y` popisků dat. Ta
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>Registrace modelu vygenerovaného pomocí automatizovaného ML 
 
-Poslední krok v kanálu základního ML registruje vytvořený model. Přidáním modelu do registru modelu pracovního prostoru bude k dispozici na portálu a může být ve verzi. Pro registraci modelu zapište jiný `PythonScriptStep` , který přebírá `model_data` výstup `AutoMLStep` .
+Poslední krok v jednoduchém kanálu ML registruje vytvořený model. Přidáním modelu do registru modelu pracovního prostoru bude k dispozici na portálu a může být ve verzi. Pro registraci modelu zapište jiný `PythonScriptStep` , který přebírá `model_data` výstup `AutoMLStep` .
 
 ### <a name="write-the-code-to-register-the-model"></a>Zápis kódu pro registraci modelu
 

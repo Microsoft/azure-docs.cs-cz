@@ -1,5 +1,5 @@
 ---
-title: Spouštění dávkových predikcí s využitím návrháře služby Azure Machine Learning (Preview)
+title: Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
 titleSuffix: Azure Machine Learning
 description: Naučte se naučit model a nastavit kanál předpovědi dávky pomocí návrháře. Nasaďte kanál jako parametrizovanou webovou službu, která se dá aktivovat z libovolné knihovny HTTP.
 services: machine-learning
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: e4ca191e50f4ca8aa5a11a36ec44e737cc2ef6bc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661492"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883083"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Spouštění dávkových predikcí s využitím návrháře služby Azure Machine Learning (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
+
 
 V tomto článku se naučíte, jak pomocí návrháře vytvořit kanál předpovědi pro dávku. Předpověď dávky umožňuje průběžné hodnocení velkých datových sad na vyžádání pomocí webové služby, kterou lze aktivovat z libovolné knihovny HTTP.
 

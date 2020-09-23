@@ -1,6 +1,6 @@
 ---
-title: Správa výpočetní sítě v Azure Stack Edge pro přístup k modulům | Microsoft Docs
-description: V této části najdete popis postupu při rozšiřování výpočetní sítě na Azure Stack Edge pro přístup k modulům prostřednictvím externí IP adresy.
+title: Správa výpočetní sítě v Azure Stack Edge pro pro přístup k modulům | Microsoft Docs
+description: V této části najdete popis postupu rozšiřování výpočetní sítě na Azure Stack Edge pro pro přístup k modulům prostřednictvím externí IP adresy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342982"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894124"
 ---
-# <a name="enable-compute-network-on-your-azure-stack-edge"></a>Povolit výpočetní síť na Azure Stack hraničních zařízeních
+# <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Povolit výpočetní síť na Azure Stack Edge pro
 
-Tento článek popisuje, jak můžou moduly běžící na Azure Stack Edge přistupovat k výpočetní síti povolené na zařízení.
+Tento článek popisuje, jak moduly běžící na Azure Stack Edge pro mají přístup k výpočetní síti povolené na zařízení.
 
 Chcete-li konfigurovat síť, proveďte následující kroky:
 
-- Povolení síťového rozhraní na zařízení Azure Stack Edge pro výpočetní výkon
-- Přidání modulu pro přístup k výpočetní síti na Azure Stack hraničních zařízeních
+- Povolení síťového rozhraní na zařízení Azure Stack Edge pro pro výpočetní výkon
+- Přidejte modul pro přístup k výpočetní síti na Azure Stack Edge pro.
 - Ověřte, zda má modul přístup k aktivovanému síťovému rozhraní.
 
 V tomto kurzu použijete modul aplikace webserver k předvedení scénáře.
@@ -31,8 +31,8 @@ V tomto kurzu použijete modul aplikace webserver k předvedení scénáře.
 
 Než začnete, budete potřebovat:
 
-- Zařízení Azure Stack Edge s nastavením zařízení bylo dokončeno.
-- Dokončili jste **konfiguraci výpočetního** kroku podle [kurzu: transformace dat pomocí Azure Stack Edge](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) na zařízení. Vaše zařízení by mělo mít přidružený prostředek IoT Hub, zařízení IoT a IoT Edge zařízení.
+- Zařízení Azure Stack Edge pro s nastavením zařízení bylo dokončeno.
+- Dokončili jste **konfiguraci výpočetního** kroku podle [kurzu: transformace dat pomocí Azure Stack Edge pro](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) na zařízení. Vaše zařízení by mělo mít přidružený prostředek IoT Hub, zařízení IoT a IoT Edge zařízení.
 
 ## <a name="enable-network-interface-for-compute"></a>Povolit síťové rozhraní pro výpočetní prostředky
 
@@ -55,10 +55,10 @@ Proveďte následující kroky na svém místním webovém uživatelském rozhra
 
 ## <a name="add-webserver-app-module"></a>Přidat modul aplikace pro webserver
 
-Pomocí následujících kroků přidejte modul aplikace webserver do zařízení Azure Stack Edge.
+Pokud chcete přidat modul aplikace webserver do zařízení Azure Stack Edge pro, proveďte následující kroky.
 
-1. Přejít na prostředek IoT Hub přidružený k vašemu zařízení Azure Stack Edge a vyberte **IoT Edge zařízení**.
-2. Vyberte zařízení IoT Edge přidružené k vašemu zařízení Azure Stack Edge. V části **Podrobnosti o zařízení**vyberte **nastavit moduly**. V nabídce **přidat moduly**vyberte **+ Přidat** a pak vyberte **IoT Edge modul**.
+1. Do IoT Hub prostředku, který je přidružený k vašemu zařízení Azure Stack Edge pro, vyberte **IoT Edge zařízení**.
+2. Vyberte zařízení IoT Edge přidružené k vašemu zařízení Azure Stack Edge pro. V části **Podrobnosti o zařízení**vyberte **nastavit moduly**. V nabídce **přidat moduly**vyberte **+ Přidat** a pak vyberte **IoT Edge modul**.
 3. V okně **IoT Edge vlastní moduly** :
 
     1. Zadejte **název** modulu aplikace webserver, který chcete nasadit.

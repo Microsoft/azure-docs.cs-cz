@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477438"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898220"
 ---
 # <a name="summarize-data"></a>Sumarizace dat
 
-Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
+Tento článek popisuje modul návrháře Azure Machine Learning.
 
 Modul shrnutí dat slouží k vytvoření sady standardních statistických měr, které popisují jednotlivé sloupce ve vstupní tabulce.
 
@@ -54,7 +54,7 @@ Sestava z modulu může zahrnovat následující statistiky.
 |**Chybějící počet hodnot**|Počet jedinečných hodnot ve sloupci|
 |**Dlouhé**|Nejnižší hodnota ve sloupci|  
 |**Počet**|Nejvyšší hodnota ve sloupci|
-|**Průměrná**|Střední hodnota všech hodnot sloupců|
+|**Mean**|Střední hodnota všech hodnot sloupců|
 |**Střední odchylka**|Střední odchylka hodnot sloupců|
 |**1. kvartil**|Hodnota při první kvartil|
 |**Svisl**|Hodnota sloupce mediánu|

@@ -11,15 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661921"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893408"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak spravovat přístup k pracovnímu prostoru Azure Machine Learning. [Řízení přístupu na základě role Azure (Azure RBAC)](/azure/role-based-access-control/overview) se používá ke správě přístupu k prostředkům Azure. Uživatelům v Azure Active Directory jsou přiřazeny konkrétní role, které udělují přístup k prostředkům. Azure poskytuje jak předdefinované role, tak i možnost vytvářet vlastní role.
 
@@ -46,7 +45,7 @@ Pokud jste vlastníkem pracovního prostoru, můžete přidat a odebrat role pro
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Šablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
+- [Šablony Azure Resource Manageru](/azure/role-based-access-control/role-assignments-template)
 
 Pokud jste nainstalovali [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), můžete k přiřazení rolí uživatelům použít příkazy rozhraní příkazového řádku:
 
@@ -135,7 +134,6 @@ Následující tabulka představuje souhrn Azure Machine Learningch aktivit a op
 | Aktivita | Rozsah na úrovni předplatného | Rozsah na úrovni skupiny prostředků | Rozsah na úrovni pracovního prostoru |
 | ----- | ----- | ----- | ----- |
 | Vytvořit nový pracovní prostor | Nevyžadováno | Vlastník nebo přispěvatel | Není k dispozici (vlastník nebo zdědí vyšší obor role po vytvoření) |
-| Aktualizace edice pracovního prostoru | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/write` |
 | Požádat o kvótu Amlcompute na úrovni předplatného nebo nastavit kvótu úrovně pracovního prostoru | Vlastník, přispěvatel nebo vlastní role </br>která `/locations/updateQuotas/action`</br> v oboru předplatného | Neautorizováno | Neautorizováno |
 | Vytvořit nový výpočetní cluster | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/computes/write` |
 | Vytvořit novou výpočetní instanci | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/computes/write` |
@@ -301,7 +299,6 @@ Tady je několik běžných scénářů s vlastními navrhovanými definicemi ro
 
     * Vytváří se nový pracovní prostor.
     * Přiřazení kvót na úrovni předplatného nebo pracovního prostoru
-    * Upgrade edice pracovního prostoru
 
     Správce pracovního prostoru také nemůže vytvořit novou roli. V rámci rozsahu jejich pracovního prostoru může přiřadit jenom existující předdefinované nebo vlastní role:
 
@@ -415,11 +412,7 @@ Musíte mít oprávnění k celému oboru nové definice role. Například pokud
 
 > [!NOTE]
 > Použití aktualizací rolí může trvat 15 minut až hodinu, než se použije u všech přiřazení rolí v daném oboru.
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Otázka: Můžu definovat roli, která brání aktualizaci edice pracovního prostoru? 
 
-Ano, můžete definovat roli, která brání aktualizaci edice pracovního prostoru. Vzhledem k tomu, že aktualizace pracovního prostoru je volání opravy v objektu pracovního prostoru, provedete to tak, že do `"NotActions"` pole ve své definici JSON zadáte následující akci: 
-
-`"Microsoft.MachineLearningServices/workspaces/write"`
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Otázka: Jaká oprávnění jsou potřebná k provádění operací s kvótou v pracovním prostoru? 
 

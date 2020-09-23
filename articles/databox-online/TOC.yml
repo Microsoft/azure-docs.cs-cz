@@ -1,13 +1,13 @@
-- name: Dokumentace ke službě Azure Stack Edge a Data Box Gateway
+- name: Dokumentace ke službě Azure Stack Edge Pro a Data Box Gateway
   href: /azure/databox-online/
   expanded: true
-- name: Azure Stack Edge s GPU (Preview)
+- name: Azure Stack Edge Pro – GPU
   items:
     - name: Přehled
       items:
-        - name: Co je Azure Stack Edge s GPU?
+        - name: Co je Azure Stack Edge Pro s GPU?
           href: azure-stack-edge-gpu-overview.md
-    - name: Výukové kurzy
+    - name: Kurzy
       items:
         - name: 0. Zajištění kontrolního seznamu
           href: azure-stack-edge-gpu-deploy-checklist.md
@@ -45,7 +45,7 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: Specifikace napájecího kabelu
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: Vysvětlení protokolu Kubernetes
+        - name: Vysvětlení platformy Kubernetes (Preview)
           items:
             - name: Co je Kubernetes?
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -67,7 +67,7 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Modul GPU přes marketplace
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: Nasazení úloh Kubernetes
+        - name: Nasazení úloh Kubernetes (Preview)
           items:
             - name: Přes kubectl
               items:
@@ -83,13 +83,13 @@
               items:
                 - name: Bezstavová aplikace
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-            - name: Přes Azure Arc
+            - name: Přes Azure Arc (Preview)
               items:
                 - name: Povolení služby Arc v clusteru Kubernetes
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Nasazení bezstavové aplikace přes GitOps
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-        - name: Konfigurace Azure Resource Manageru
+        - name: Konfigurace Azure Resource Manageru (Preview)
           items:
             - name: Připojení přes Azure PowerShell
               href: azure-stack-edge-j-series-connect-resource-manager.md
@@ -97,7 +97,7 @@
               href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
             - name: Konfigurace klientských nastavení TLS
               href: azure-stack-edge-j-series-configure-tls-settings.md
-        - name: Nasazení virtuálních počítačů
+        - name: Nasazování virtuálních počítačů (Preview)
           items:
             - name: Nasazování virtuálních počítačů – šablony
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
@@ -136,7 +136,7 @@
         - name: Správa zařízení
           items:
             - name: 'Výkon, přístup, možnosti připojení'
-              href: azure-stack-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-gpu-manage-access-power-connectivity-mode.md
             - name: Přes PowerShell
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: Instalace aktualizací
@@ -161,7 +161,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: "Poznámky k\_verzi"
       items:
-        - name: 2008 – poznámky k verzi
+        - name: 2009 – GA
+          href: azure-stack-edge-gpu-2009-release-notes.md
+        - name: 2008 – Preview
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: Referenční informace
       items:
@@ -171,11 +173,11 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: Azure Stack Edge s FPGA
+- name: Azure Stack Edge Pro – FPGA
   items:
     - name: Přehled
       items:
-        - name: Co je Azure Stack Edge s FPGA?
+        - name: Co je Azure Stack Edge Pro s FPGA?
           href: azure-stack-edge-overview.md
     - name: Kurzy
       items:
@@ -259,6 +261,18 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge Pro R
+  items:
+    - name: Přehled
+      items:
+        - name: Co je Azure Stack Edge Pro R?
+          href: azure-stack-edge-j-series-overview.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: Přehled
+      items:
+        - name: Co je Azure Stack Edge Mini R?
+          href: azure-stack-edge-k-series-overview.md
 - name: Data Box Gateway
   items:
     - name: Přehled
@@ -323,9 +337,9 @@
           href: data-box-gateway-release-notes.md
 - name: Zdroje a prostředky
   items:
-    - name: Ukázky modulů Azure Stack Edge v C# (.NET)
+    - name: Ukázky modulů Azure Stack Edge Pro v C# (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Produkt Azure Stack Edge / Data Box Gateway
+    - name: Produkt Azure Stack Edge Pro / Data Box Gateway
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

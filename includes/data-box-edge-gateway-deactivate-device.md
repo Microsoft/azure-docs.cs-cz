@@ -11,13 +11,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "79128615"
 ---
-Pokud chcete zařízení resetovat, musíte bezpečně vymazat všechna data na datovém disku a na spouštěcím disku vašeho zařízení. 
+Pokud chcete resetovat zařízení, musíte bezpečně vymazat všechna data na datovém a spouštěcím disku zařízení. 
 
 Pomocí `Reset-HcsAppliance` rutiny můžete vymazat datové disky i spouštěcí disk nebo jenom datové disky. `ClearData`Přepínače a `BootDisk` umožňují vymazat datové disky a spouštěcí disk v uvedeném pořadí.
 
-`BootDisk`Přepínač vymaže spouštěcí disk a zařízení bude nepoužitelné. Měl by se použít jenom v případě, že je potřeba vrátit zařízení do Microsoftu. Další informace najdete v tématu o [vrácení zařízení do Microsoftu](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
+`BootDisk`Přepínač vymaže spouštěcí disk a zařízení bude nepoužitelné. Měl by se použít pouze v případě, že je potřeba vrátit zařízení do Microsoftu. Další informace najdete v tématu o [vrácení zařízení do Microsoftu](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
 
-Pokud použijete resetování zařízení v místním webovém uživatelském rozhraní, budou se bezpečně mazat jenom datové disky, ale spouštěcí disk zůstane nedotčený. Spouštěcí disk obsahuje konfiguraci zařízení.
+Pokud využijete možnost resetování zařízení v místním webovém uživatelském rozhraní, bezpečně se vymažou pouze datové disky a spouštěcí disk zůstane nedotčený. Spouštěcí disk obsahuje konfiguraci zařízení.
 
 1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
 2. Na příkazovém řádku zadejte:

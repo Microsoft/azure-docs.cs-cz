@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651082"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893576"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -184,7 +184,7 @@ Neexistuje žádná univerzální odpověď na "Návody vědět, jestli by se m�
 - Porovnejte výstupy nového modelu s původními modely.
 - Pomocí předdefinovaných kritérií vyberte, jestli se má původní model nahradit. 
 
-Motivem výše uvedených kroků je, že vaše rekurze by měla být automatizovaná, ne ad hoc. [Kanály Azure Machine Learning](concept-ml-pipelines.md) jsou vhodnou odpovědí k vytváření pracovních postupů souvisejících s přípravou, školením, ověřováním a nasazením dat. Přečtěte si [modely převlaků pomocí návrháře Azure Machine Learning (Preview)](how-to-retrain-designer.md) a podívejte se, jak kanály a návrháře Azure Machine Learning vyhovují scénáři přeškolení. 
+Motivem výše uvedených kroků je, že vaše rekurze by měla být automatizovaná, ne ad hoc. [Kanály Azure Machine Learning](concept-ml-pipelines.md) jsou vhodnou odpovědí k vytváření pracovních postupů souvisejících s přípravou, školením, ověřováním a nasazením dat. Přečtěte si [modely přeučení pomocí návrháře Azure Machine Learning](how-to-retrain-designer.md) , abyste zjistili, jak kanály a návrháře Azure Machine Learning se vejdou do scénáře přeškolení. 
 
 ## <a name="automate-the-ml-lifecycle"></a>Automatizace životního cyklu ML 
 

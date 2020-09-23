@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004099"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886506"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,8 +30,6 @@ Vaše nejvíc citlivá data můžou zahrnovat obchodní, finanční, zdravotní 
 - Pomoc při plnění standardů ochrany osobních údajů a požadavků na dodržování předpisů v souladu s předpisy.
 - Různé scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklé přístup k citlivým datům.
 - Řízení přístupu a posílení zabezpečení databází, které obsahují vysoce citlivá data.
-
-Klasifikace & Discovery dat je součástí rozšířené nabídky [zabezpečení dat](advanced-data-security.md) , což je jednotný balíček pro pokročilé funkce zabezpečení Azure SQL. Pomocí centrálního oddílu **zabezpečení SQL Advanced data** v Azure Portal můžete používat a spravovat klasifikaci & Discovery Data.
 
 > [!NOTE]
 > Informace o SQL Server v místním prostředí najdete v tématu [klasifikace & data Discovery pro SQL](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -77,33 +75,25 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 > [!NOTE]
 > Následující příklad používá Azure SQL Database, ale měli byste vybrat příslušný produkt, pro který chcete nakonfigurovat klasifikaci & zjišťování dat.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
-2. V záhlaví **zabezpečení** v podokně Azure SQL Database otevřete **Rozšířené zabezpečení dat** . Vyberte **Upřesnit zabezpečení dat**a pak vyberte kartu **klasifikace & zjišťování dat** .
+1. V podokně Azure SQL Database klikněte na položku **zjišťování dat & klasifikace** pod záhlavím zabezpečení. Karta Přehled obsahuje souhrn aktuálního stavu klasifikace databáze. Souhrn obsahuje podrobný seznam všech klasifikovaných sloupců, které můžete také filtrovat a zobrazovat pouze konkrétní části schématu, typy informací a popisky. Pokud jste zatím neklasifikované žádné sloupce, [přejděte ke kroku 4](#step-4).
 
-   ![Podokno zabezpečení pokročilých dat v Azure Portal](./media/data-discovery-and-classification-overview/data_classification.png)
+1. Chcete-li stáhnout sestavu ve formátu aplikace Excel, v horní nabídce podokna vyberte **exportovat** .
 
-3. Na stránce **klasifikace & zjišťování dat** obsahuje karta **Přehled** souhrn aktuálního stavu klasifikace databáze. Souhrn obsahuje podrobný seznam všech klasifikovaných sloupců, které můžete také filtrovat a zobrazovat pouze konkrétní části schématu, typy informací a popisky. Pokud jste zatím neklasifikované žádné sloupce, [přejděte ke kroku 5](#step-5).
-
-   ![Souhrn aktuálního stavu klasifikace](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
-
-4. Chcete-li stáhnout sestavu ve formátu aplikace Excel, v horní nabídce podokna vyberte **exportovat** .
-
-5. <a id="step-5"></a>Pokud chcete začít klasifikovat vaše data, vyberte kartu **klasifikace** na stránce **klasifikace & Discovery Data** .
+1. <a id="step-4"></a>Pokud chcete začít klasifikovat vaše data, vyberte kartu **klasifikace** na stránce **klasifikace & Discovery Data** .
 
     Klasifikační modul vyhledá v databázi sloupce obsahující potenciálně citlivá data a poskytne seznam doporučených klasifikací sloupců.
 
-6. Zobrazit a použít doporučení klasifikace:
+1. Zobrazit a použít doporučení klasifikace:
 
    - Seznam doporučených klasifikací sloupců zobrazíte tak, že v dolní části podokna vyberete panel doporučení.
 
    - Chcete-li přijmout doporučení pro určitý sloupec, zaškrtněte políčko v levém sloupci příslušného řádku. Pokud chcete všechna doporučení označit jako přijato, zaškrtněte políčko vlevo v záhlaví tabulky doporučení.
 
-       ![Kontrola a výběr ze seznamu doporučení klasifikace](./media/data-discovery-and-classification-overview/6_data_classification_recommendations_list.png)
-
    - Chcete-li použít vybraná doporučení, vyberte možnost **přijmout vybraná doporučení**.
 
-7. Sloupce můžete také klasifikovat ručně, jako alternativu nebo kromě klasifikace založené na doporučeních:
+1. Sloupce můžete také klasifikovat ručně, jako alternativu nebo kromě klasifikace založené na doporučeních:
 
    1. V horní nabídce podokna vyberte **Přidat klasifikaci** .
 
@@ -111,9 +101,7 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 
    1. V dolní části okna kontextu vyberte **Přidat klasifikaci** .
 
-      ![Vyberte sloupec, který se má klasifikovat.](./media/data-discovery-and-classification-overview/9_data_classification_manual_classification.png)
-
-8. Pokud chcete dokončit klasifikaci a trvale označit (označit) sloupce databáze s novými metadaty klasifikace, vyberte **Uložit** v horní nabídce okna.
+1. Pokud chcete dokončit klasifikaci a trvale označit (označit) sloupce databáze s novými metadaty klasifikace, vyberte **Uložit** v horní nabídce okna.
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Auditování přístupu k citlivým datům
 
@@ -191,6 +179,5 @@ Pomocí REST API můžete programově spravovat klasifikace a doporučení. Publ
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [pokročilém zabezpečení dat](advanced-data-security.md).
 - Zvažte konfiguraci [auditování Azure SQL](../../azure-sql/database/auditing-overview.md) pro monitorování a auditování přístupu k utajovaným citlivým datům.
 - Prezentaci, která zahrnuje klasifikaci & Discovery data, najdete v tématu zjišťování [, klasifikace, označování & ochrany dat SQL | Zpřístupnění dat](https://www.youtube.com/watch?v=itVi9bkJUNc).

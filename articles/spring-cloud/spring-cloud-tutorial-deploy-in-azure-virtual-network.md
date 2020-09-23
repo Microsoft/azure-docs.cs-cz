@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f7817a596a38c6bb259a048e3dfea11abfd14d82
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006427"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892901"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Kurz: nasazení jarního cloudu Azure ve službě Azure Virtual Network (vkládání virtuální sítě)
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 V tomto kurzu se dozvíte, jak nasadit instanci služby pružinové cloudové služby Azure ve vaší virtuální síti. Tato situace se někdy označuje jako vkládání virtuální sítě.  
 
@@ -24,7 +26,7 @@ Nasazení umožňuje:
 * Interakce jarního cloudu Azure se systémy v místních datových centrech nebo službách Azure v jiných virtuálních sítích
 * Podpora zákazníků pro řízení příchozí a odchozí síťové komunikace pro jarní cloud Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 `Microsoft.AppPlatform`Podle pokynů [v tématu registrace poskytovatele prostředků v Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) nebo spuštěním následujícího příkazu AZ CLI je nutné zaregistrovat poskytovatele prostředků služby Azure jaře Cloud:
 
 ```azurecli
@@ -55,7 +57,7 @@ Pokud již máte virtuální síť pro hostování instance služby Azure jaře 
     |-----------------|--------------------------------------------------|
     |Předplatné     |Vyberte předplatné.                         |
     |Skupina prostředků   |Vyberte skupinu prostředků nebo vytvořte novou.  |
-    |Název             |Přechod do *Azure-jaře-Cloud-VNet*                   |
+    |Name             |Přechod do *Azure-jaře-Cloud-VNet*                   |
     |Umístění         |Vyberte **východní USA**                                |
 
 1. Klikněte na **Další: IP adresy >**. 
@@ -120,7 +122,7 @@ az role assignment create \
 
     |Nastavení                                |Hodnota                                             |
     |---------------------------------------|--------------------------------------------------|
-    |Nasazení ve vlastní virtuální síti     |Vyberte **Ano**                                    |
+    |Nasazení ve vlastní virtuální síti     |Vyberte **Ano**.                                    |
     |Virtuální síť                        |Výběr *Azure-jaře-Cloud-VNet*                  |
     |Podsíť modulu runtime služby                 |Výběr *služby – modul runtime-podsíť*                   |
     |Podsíť pro aplikace s pružinou spouštěcích mikroslužeb   |Vybrat *aplikace – podsíť*                              |
@@ -152,7 +154,7 @@ Tyto síťové prostředky jsou připojené k vaší virtuální síti vytvořen
 
 [Nasazení aplikace do jarního cloudu Azure ve vaší virtuální síti](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Řešení potíží s jarním cloudem Azure ve virtuální síti](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/05-troubleshooting-azure-spring-cloud-in-vnet.md)
 - [Odpovědnosti zákazníků při provozování jarního cloudu Azure ve virtuální síti](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/06-customer-responsibilities-for-running-azure-spring-cloud-in-vnet.md)

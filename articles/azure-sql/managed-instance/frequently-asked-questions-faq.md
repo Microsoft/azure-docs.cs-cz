@@ -1,7 +1,7 @@
 ---
 title: Nejčastější dotazy
 titleSuffix: Azure SQL Managed Instance
-description: Nejčastější dotazy k Azure SQL Managed instance (FAQ)
+description: Nejčastější dotazy ke službě Azure SQL Managed Instance
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab
-ms.date: 03/17/2020
-ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.reviewer: sstein
+ms.date: 09/21/2020
+ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661414"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887381"
 ---
-# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure SQL Managed instance (FAQ)
+# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento článek obsahuje nejčastější dotazy týkající se [spravované instance Azure SQL](sql-managed-instance-paas-overview.md).
@@ -82,7 +82,7 @@ Nové funkce a verze Preview najdete v [poznámkách k verzi](../database/doc-ch
 
 **Jak můžu zřídit spravovanou instanci SQL?**
 
-Instanci můžete zřídit z webu [Azure Portal](instance-create-quickstart.md), [PowerShellu](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) a [šablon ARM](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates).
+Instanci můžete zřídit z [Azure Portal](instance-create-quickstart.md), [PowerShellu](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) a [šablon ARM](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates).
 
 **Je možné zřídit spravované instance v existujícím předplatném?**
 
@@ -94,7 +94,7 @@ Toto je aktuální omezení základní součásti, která ověřuje název pods�
 
 **Jak můžu škálovat spravovanou instanci?**
 
-Spravovanou instanci můžete škálovat z webu [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShellu](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) nebo [šablon ARM](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
+Spravovanou instanci můžete škálovat z [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShellu](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) nebo [šablon ARM](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
 
 **Můžu svoje spravované instance přesunout z jedné oblasti do druhé?**
 
@@ -102,7 +102,7 @@ Ano, můžete. Pokyny najdete v tématu [Přesunutí prostředků do různých o
 
 **Jak můžu odstranit spravovanou instanci?**
 
-Spravované instance můžete odstranit prostřednictvím webu Azure Portal, [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), rozhraní příkazového [řádku azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) nebo [Správce prostředků rozhraní REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete).
+Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) nebo [Správce prostředků REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete).
 
 **Jak dlouho trvá vytvoření nebo aktualizace instance nebo obnovení databáze?**
 
@@ -262,7 +262,7 @@ Ano. Po zřízení spravované instance můžete nastavit NSG, který řídí p�
 
 **Můžu nastavit síťové virtuální zařízení nebo místní bránu firewall pro filtrování odchozího provozu správy na základě plně kvalifikovaných názvů domén?**
 
-Ne. Tato akce není podporována z několika důvodů:
+No. Tato akce není podporována z několika důvodů:
 -   Směrování provozu, který reprezentuje odpověď na příchozí požadavek na správu, by bylo asymetrické a nebylo možné ho použít.
 -   Směrování provozu na úložiště by ovlivnilo omezení propustnosti a latenci, takže nebudeme moct poskytovat očekávanou kvalitu a dostupnost služby.
 -   Na základě zkušeností jsou tyto konfigurace náchylné k chybám a nepodporují se.
@@ -281,7 +281,7 @@ V případě, že v podsíti, ve které je zřízena vaše spravovaná instance,
 
 **Potřebuji prázdnou podsíť pro vytvoření spravované instance?**
 
-Ne. Můžete použít buď prázdnou podsíť, nebo podsíť, která již obsahuje spravované instance. 
+No. Můžete použít buď prázdnou podsíť, nebo podsíť, která již obsahuje spravované instance. 
 
 **Můžu změnit rozsah adres podsítě?**
 
@@ -289,7 +289,7 @@ Není v případě, že jsou k dispozici spravované instance. Toto je omezení 
 
 **Můžu svoje spravované instance přesunout do jiné podsítě?**
 
-Ne. Toto je aktuální omezení návrhu spravované instance. Můžete ale zřídit novou instanci v jiné podsíti a ručně zálohovat a obnovovat data mezi starou a novou instancí nebo provést [obnovení k určitému časovému okamžiku](point-in-time-restore.md?tabs=azure-powershell)mezi instancemi.
+No. Toto je aktuální omezení návrhu spravované instance. Můžete ale zřídit novou instanci v jiné podsíti a ručně zálohovat a obnovovat data mezi starou a novou instancí nebo provést [obnovení k určitému časovému okamžiku](point-in-time-restore.md?tabs=azure-powershell)mezi instancemi.
 
 **Potřebuji k vytvoření spravované instance prázdnou virtuální síť?**
 
@@ -297,7 +297,7 @@ Tento krok není povinný. Můžete buď [vytvořit virtuální síť pro spravo
 
 **Můžu v podsíti umístit spravovanou instanci na jiné služby?**
 
-Ne. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
+No. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
 
 ## <a name="connectivity"></a>Připojení 
 
@@ -326,7 +326,7 @@ Služba správy a nasazení se připojí ke spravované instanci pomocí [koncov
 
 **Můžu použít veřejný koncový bod pro přístup k datům v databázích spravované instance?**
 
-Ano. Zákazník bude muset povolit přístup k datům veřejného koncového bodu z webu [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM a nakonfigurovat NSG tak, aby zamkne přístup k datovému portu (číslo portu 3342). Další informace najdete v tématech [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md) a [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md). 
+Ano. Zákazník bude muset povolit přístup k datům veřejného koncového bodu z [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShellu](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM a nakonfigurovat NSG tak, aby zamkne přístup k datovému portu (číslo portu 3342). Další informace najdete v tématech [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md) a [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md). 
 
 **Můžu zadat vlastní port pro koncové body dat SQL?**
 
@@ -350,7 +350,7 @@ Zákazníkům se doporučuje použít sadu nastavení zabezpečení a ovládací
 - Přístup k instanci s nízkým oprávněním pomocí účtu DBA.
 - Nakonfigurujte přístup JIT JumpBox pro účet sysadmin.
 - Zapněte [auditování SQL](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)a integrujte je pomocí mechanismů upozorňování.
-- Zapněte [detekci hrozeb](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) ze sady [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) .
+- Zapněte [detekci hrozeb](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) z [Azure Defenderu pro SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) Suite.
 
 ## <a name="dns"></a>DNS
 
@@ -450,7 +450,7 @@ Získáte stejnou velikost volného prostoru úložiště pro zálohování jako
 
 **Jak můžu monitorovat náklady na vyúčtování spotřeby úložiště záloh?**
 
-Náklady na úložiště zálohování můžete monitorovat prostřednictvím webu Azure Portal. Pokyny najdete v tématu [monitorování nákladů na automatizované zálohování](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs). 
+Náklady na úložiště zálohování můžete monitorovat prostřednictvím Azure Portal. Pokyny najdete v tématu [monitorování nákladů na automatizované zálohování](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs). 
 
 **Jak můžu optimalizovat náklady na úložiště zálohování na spravované instanci?**
 

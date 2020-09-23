@@ -1,6 +1,6 @@
 ---
-title: Spuštění modulu GPU na zařízení s grafickým procesorem Microsoft Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak nakonfigurovat a spustit modul na grafickém procesoru na Azure Stack hraničním zařízení přes Azure Portal.
+title: Spuštění modulu GPU na zařízení s grafickým procesorem Microsoft Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak nakonfigurovat a spustit modul na GPU na zařízení Azure Stack Edge pro pomocí Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266948"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891462"
 ---
-# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>Konfigurace a spuštění modulu na GPU na Azure Stack hraničním zařízení
+# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurace a spuštění modulu na GPU na zařízení Azure Stack Edge pro
 
-Vaše zařízení Azure Stack Edge obsahuje minimálně jeden grafický procesor (GPU). GPU je oblíbená volba pro výpočty AI, protože nabízí možnosti paralelního zpracování a jsou rychlejší při vykreslování obrázků než procesory středního zpracování. Další informace o GPU obsaženém v Azure Stack hraničním zařízení najdete v [technických specifikacích pro Azure Stack Edge](azure-stack-edge-gpu-technical-specifications-compliance.md).
+Vaše zařízení Azure Stack Edge pro obsahuje jednu nebo více grafických procesorů (GPU). GPU je oblíbená volba pro výpočty AI, protože nabízí možnosti paralelního zpracování a jsou rychlejší při vykreslování obrázků než procesory středního zpracování. Další informace o GPU obsaženém v zařízení Azure Stack Edge pro najdete v části [technické specifikace pro zařízení Azure Stack Edge pro](azure-stack-edge-gpu-technical-specifications-compliance.md).
 
-Tento článek popisuje, jak nakonfigurovat a spustit modul na GPU na zařízení Azure Stack Edge. V tomto článku použijete veřejně dostupná **čísla** kontejnerů, která se napíší pro grafické procesory NVIDIA T4. Tento postup můžete použít ke konfiguraci jakýchkoli dalších modulů publikovaných pomocí NVIDIA pro tyto GPU.
+Tento článek popisuje, jak nakonfigurovat a spustit modul na GPU na zařízení Azure Stack Edge pro. V tomto článku použijete veřejně dostupná **čísla** kontejnerů, která se napíší pro grafické procesory NVIDIA T4. Tento postup můžete použít ke konfiguraci jakýchkoli dalších modulů publikovaných pomocí NVIDIA pro tyto GPU.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Máte přístup k zařízení s povoleným grafickým procesorem s jedním uzlem Azure Stack Edge. Toto zařízení je aktivované pomocí prostředku v Azure.  
+1. Máte přístup k zařízení s povoleným grafickým procesorem s jedním uzlem Azure Stack Edge pro. Toto zařízení je aktivované pomocí prostředku v Azure.  
 
 ## <a name="configure-module-to-use-gpu"></a>Konfigurovat modul pro použití GPU
 
-Pokud chcete nakonfigurovat modul pro použití GPU na zařízení Azure Stack Edge ke spuštění modulu, postupujte podle těchto kroků.
+Pokud chcete nakonfigurovat modul pro použití GPU na zařízení Azure Stack Edge pro ke spuštění modulu, postupujte podle těchto kroků.
 
 1. V Azure Portal přejdete k prostředku, který je přidružený k vašemu zařízení. 
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat modul pro použití GPU na zařízení Azure Stack E
 
     ![Nakonfigurovat modul pro použití GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
 
-    V pravém podokně se zobrazí zařízení IoT Edge přidružené k vašemu zařízení Azure Stack Edge. To odpovídá IoT Edge zařízení, které jste vytvořili v předchozím kroku při vytváření prostředku IoT Hub. 
+    V pravém podokně se zobrazí IoT Edge zařízení přidružené k vašemu zařízení Azure Stack Edge pro. To odpovídá IoT Edge zařízení, které jste vytvořili v předchozím kroku při vytváření prostředku IoT Hub. 
     
 6. Vyberte toto IoT Edge zařízení.
 

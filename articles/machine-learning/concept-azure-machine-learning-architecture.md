@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651252"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886321"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -193,7 +193,7 @@ Příklad nasazení modelu jako webové služby najdete [v tématu nasazení mod
 
 #### <a name="real-time-endpoints"></a>Koncové body v reálném čase
 
-Když nasadíte školený model v Návrháři (Preview), můžete [model nasadit jako koncový bod v reálném čase](tutorial-designer-automobile-price-deploy.md). Koncový bod v reálném čase obvykle přijímá jednu žádost prostřednictvím koncového bodu REST a vrací předpovědi v reálném čase. To je na rozdíl od dávkového zpracování, který zpracovává více hodnot najednou a ukládá výsledky po dokončení do úložiště dat.
+Když nasadíte školený model v návrháři, můžete [model nasadit jako koncový bod v reálném čase](tutorial-designer-automobile-price-deploy.md). Koncový bod v reálném čase obvykle přijímá jednu žádost prostřednictvím koncového bodu REST a vrací předpovědi v reálném čase. To je na rozdíl od dávkového zpracování, který zpracovává více hodnot najednou a ukládá výsledky po dokončení do úložiště dat.
 
 #### <a name="pipeline-endpoints"></a>Koncové body kanálu
 
@@ -229,7 +229,7 @@ Kroky kanálu jsou opakovaně použitelné a je možné je spustit bez nutnosti 
 
 Nástroj Studio také umožňuje přístup k interaktivním nástrojům, které jsou součástí Azure Machine Learning:
 
-+ [Azure Machine Learning Designer (Preview)](concept-designer.md) k provedení kroků pracovního postupu bez psaní kódu
++ [Azure Machine Learning Designer](concept-designer.md) k provedení kroků pracovního postupu bez psaní kódu
 + Webové prostředí pro [automatizované strojové učení](concept-automated-ml.md)
 + [Azure Machine Learning poznámkových blocích](how-to-run-jupyter-notebooks.md) pro psaní a spouštění vlastního kódu na integrovaných serverech Jupyter notebook.
 + Vytváření, Správa a monitorování projektů k označování dat v [projektech](how-to-create-labeling-projects.md)
@@ -242,6 +242,7 @@ Nástroj Studio také umožňuje přístup k interaktivním nástrojům, které 
 
 +  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 + Interakci se službou v jakémkoli prostředí R s [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Preview).
++ Použijte [návrháře Azure Machine Learning](concept-designer.md) k provedení kroků pracovního postupu bez psaní kódu. 
 + Pro automatizaci použijte [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) .
 + [Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.
 

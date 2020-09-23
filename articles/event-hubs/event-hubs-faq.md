@@ -2,13 +2,13 @@
 title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/16/2020
+ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288963"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883390"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -55,6 +55,9 @@ Můžete nakonfigurovat dobu uchování zachycených dat ve vašem účtu úlož
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Návody monitorovat můj Event Hubs?
 Event Hubs emituje vyčerpávající metriky, které poskytují stav vašich prostředků [Azure monitor](../azure-monitor/overview.md). Také vám umožní vyhodnotit celkový stav služby Event Hubs nejen na úrovni oboru názvů, ale také na úrovni entity. Přečtěte si informace o tom, jaké monitorování se nabízí pro [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
+### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Kde Azure Event Hubs ukládá zákaznická data?
+Azure Event Hubs ukládá zákaznická data. Tato data se automaticky ukládají v Event Hubs v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblastech, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
 K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
 
@@ -78,9 +81,9 @@ Pokud chcete najít správné IP adresy, které se mají přidat do seznamu povo
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . Jediná doba, kterou by se změnila, je, že obor názvů obnovíte na jiný cluster.
+2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . 
 
-Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
+Pokud používáte **redundanci zóny** pro svůj obor názvů, musíte provést několik dalších kroků: 
 
 1. Nejprve spustíte nástroj nslookup v oboru názvů.
 
@@ -94,9 +97,12 @@ Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést ně
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+
+    > [!NOTE]
+    > IP adresa vrácená `nslookup` příkazem není statická IP adresa. Zůstává ale konstantní, dokud se základní nasazení neodstraní nebo nepřesune do jiného clusteru.
 3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>Kde najdu adresu IP klienta při posílání nebo přijímání zpráv do mého oboru názvů?
+### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Kde najdu adresu IP klienta při posílání nebo přijímání zpráv do mého oboru názvů?
 Nejdřív v oboru názvů povolte [filtrování IP adres](event-hubs-ip-filtering.md) . 
 
 Potom povolte protokoly diagnostiky pro [Event Hubs události připojení k virtuální síti](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) podle pokynů v tématu [Povolení diagnostických protokolů](event-hubs-diagnostic-logs.md#enable-diagnostic-logs). Zobrazí se IP adresa, pro kterou bylo připojení odepřeno.

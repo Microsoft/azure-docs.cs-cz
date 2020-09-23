@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 02f4fe4f97d3e976675757835e3931666d1c6410
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857732"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898397"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Hodnocení modelu Vowpal Wabbit
-Tento článek popisuje, jak použít modul **pro (skore dostupné model** ) v Návrháři Azure Machine Learning (Preview) ke generování skóre pro sadu vstupních dat pomocí existujícího modelu pro dostupné.  
+Tento článek popisuje, jak pomocí modulu **pro (skore dostupné model** ) v Návrháři Azure Machine Learning vytvořit skóre pro sadu vstupních dat pomocí existujícího modelu pro dostupné.  
 
 Tento modul poskytuje nejnovější verzi rozhraní pro dostupné Framework verze 8.8.1. Tento modul použijte k určení skóre dat pomocí výukového modelu uloženého ve formátu VW verze 8.  
 
@@ -74,7 +74,7 @@ Pro dostupné má mnoho možností příkazového řádku pro výběr a ladění
 
 Následující parametry nejsou podporovány v Azure Machine Learning Studio (Classic).  
 
--   Možnosti vstupu a výstupu zadané v[https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
+-   Možnosti vstupu a výstupu zadané v [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
   
      Tyto vlastnosti jsou již modulem konfigurovány automaticky.  
   

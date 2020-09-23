@@ -4,15 +4,16 @@ description: Naučte se kontrolovat metriky v Azure jaře cloudu.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046846"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892653"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -109,7 +110,35 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >| JVM. GC. Pause. Total. Count | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
 >| JVM. GC. Pause. Total. time | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
 
-### <a name="request"></a>Žádost
+::: zone pivot="programming-language-csharp"
+### <a name="performance-net"></a>Výkon (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>|------|-----------------------------|------|---------|
+>| Využití procesoru       | využití procesoru      | Milisekund | Doba, po kterou proces využil procesor. |
+>| Pracovní sada     | pracovní sada    | Megabajty    | Množství pracovní sady používané procesem. |
+>| Velikost haldy GC    | GC-velikost haldy   | Megabajty    | Celková velikost haldy hlášené systémem uvolňování paměti. |
+>| Počet GC 0. generace  | gen-0-GC-Count | Počet        | Počet kolekcí uvolnění paměti generace 0 za sekundu |
+>| Počet GC 1. generace  | Obecná-1-GC-Count | Počet        | Počet kolekcí uvolnění paměti 1. generace za sekundu |
+>| Počet GC 2. generace  | Gen-2 – GC-Count | Počet        | Počet kolekcí uvolnění paměti 2. generace za sekundu |
+>| Velikost haldy 0. generace | gen-0-velikost     | Bajty        | Velikost haldy generace 0 |
+>| Velikost haldy 1. generace | Obecná-1-velikost     | Bajty        | Velikost haldy 1. generace |
+>| Velikost haldy 2. generace | Obecná 2 – velikost     | Bajty        | Velikost haldy 2. generace |
+>| Velikost haldy LOH   | LOH-Size       | Bajty        | Velikost haldy haldy Large Object. |
+>| Míra přidělení | přidělení – sazba     | Bajty        | Počet přidělených bajtů za sekundu |
+>| Počet sestavení  | počet sestavení | Počet        | Počet načtených sestavení |
+>| Počet výjimek | počet výjimek | Počet       | Počet výjimek za sekundu |
+>| Počet vláken ve fondu vláken      | počet podprocesů              | Počet | Počet vláken fondu vláken. |
+>| Sledovat počet kolizí zámků | Monitor-Lock-Content – Count        | Počet | Počet výskytů kolizí za sekundu při pokusu o provedení zámku monitoru. |
+>| Délka fronty fondu vláken      | nevlákenná doba zařazení do fronty              | Počet | Délka fronty pracovních položek fondu vláken |
+>| Počet dokončených položek ve fondu vláken | nedokončené dokončování – položky-počet | Počet | Počet dokončených pracovních položek fondu vláken |
+>| Počet aktivních časovačů               | aktivní – časovač-počet               | Počet | Počet časovačů, které jsou aktuálně aktivní. Aktivní časovač je ten, který se zaregistruje v nějakém okamžiku v budoucnu a ještě není zrušený. |
+
+Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/dotnet-counters).
+::: zone-end
+
+### <a name="request"></a>Požadavek
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
@@ -117,6 +146,20 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >| Tomcat. Global. Received | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
 >| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
 >| Tomcat. Global. Request. max | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
+
+::: zone pivot="programming-language-csharp"
+### <a name="request-net"></a>Požadavek (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>|------|-----------------------------|------|---------|
+>| Počet žádostí za sekundu | požadavky – za sekundu | Počet | Frekvence požadavků. |
+>| Celkový počet požadavků | celkem – požadavky | Počet | Celkový počet požadavků |
+>| Aktuální požadavky | aktuální požadavky | Počet | Počet aktuálních požadavků. |
+>| Neúspěšné požadavky | neúspěšné – požadavky | Počet | Počet neúspěšných žádostí |
+
+Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/dotnet-counters).
+::: zone-end
 
 ### <a name="session"></a>Relace
 >[!div class="mx-tdCol2BreakAll"]
@@ -130,6 +173,7 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >| Tomcat. Sessions. Active. Current | Tomcat. Sessions. Active. Current | Počet | Počet aktivních relací Tomcat |
 
 ## <a name="see-also"></a>Viz také
+
 * [Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování](spring-cloud-quickstart-logs-metrics-tracing.md)
 
 * [Začínáme s Průzkumníkem metrik Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
@@ -137,7 +181,7 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 * [Analýza protokolů a metrik pomocí nastavení diagnostiky](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
 ## <a name="next-steps"></a>Další kroky
+
 * [Kurz: monitorování jarních cloudových prostředků pomocí výstrah a skupin akcí](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 
 * [Kvóty a plány služeb pro jarní Cloud v Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
-
