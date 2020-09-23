@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
-ms.openlocfilehash: 908a61a00f0e33016074a6f985271ac94157fdf4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 02a50a94b0b07d1755abe78c567df7ff5c7eda92
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855002"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907451"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Správa serveru Azure Database for PostgreSQL pomocí Azure Portal
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak spravovat servery Azure Database for PostgreSQ
 
 ## <a name="sign-in"></a>Přihlásit se
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Vytvoření serveru
 
@@ -37,7 +37,7 @@ Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopa
 
 2. Vyberte **optimalizované** **pro obecné účely** nebo paměť v závislosti na tom, na co se škáluje.
 
-   ![Snímek obrazovky Azure Portal pro výběr úrovně optimalizované pro paměť na úrovni Basic, Pro obecné účely nebo paměť v Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="Snímek obrazovky Azure Portal pro výběr úrovně optimalizované pro paměť na úrovni Basic, Pro obecné účely nebo paměť v Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Změna úrovní způsobí restart serveru.
@@ -50,7 +50,7 @@ Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopa
 
 2. Změňte nastavení **Vcore** přesunutím posuvníku na požadovanou hodnotu.
 
-   ![Snímek obrazovky Azure Portal pro výběr možnosti vCore v Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/scaling-compute.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Snímek obrazovky Azure Portal pro výběr možnosti vCore v Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Škálování virtuální jádra způsobí restartování serveru.
@@ -63,7 +63,7 @@ Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopa
 
 2. Změňte nastavení **úložiště** přesunutím posuvníku na požadovanou hodnotu.
 
-   ![Snímek obrazovky Azure Portal pro výběr škálování úložiště v Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/scaling-storage.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Snímek obrazovky Azure Portal pro výběr škálování úložiště v Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Velikost úložiště nejde škálovat.
@@ -76,11 +76,11 @@ Můžete změnit heslo role správce pomocí Azure Portal.
 
 1. V Azure Portal vyberte svůj server. V okně **Přehled** vyberte **resetovat heslo**.
 
-   ![Snímek obrazovky Azure Portal pro resetování hesla v Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/overview-reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Snímek obrazovky Azure Portal pro resetování hesla v Azure Database for PostgreSQL":::
 
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
-   ![Snímek obrazovky Azure Portal pro resetování hesla a jeho uložení do Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Snímek obrazovky Azure Portal pro resetování hesla a jeho uložení do Azure Database for PostgreSQL":::
 
 3. Kliknutím na **tlačítko OK** uložte nové heslo.
 
@@ -90,11 +90,11 @@ Server můžete odstranit, pokud ho už nepotřebujete.
 
 1. V Azure Portal vyberte svůj server. V okně **Přehled** vyberte **Odstranit**.
 
-   ![Snímek obrazovky Azure Portal, ze kterého se má server odstranit Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/overview-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Snímek obrazovky Azure Portal, ze kterého se má server odstranit Azure Database for PostgreSQL":::
 
 2. Zadáním názvu serveru do vstupního pole potvrďte, že se jedná o server, který chcete odstranit.
 
-   ![Snímek obrazovky Azure Portal pro potvrzení odstranění serveru v Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Snímek obrazovky Azure Portal pro potvrzení odstranění serveru v Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Odstranění serveru je nevratné.

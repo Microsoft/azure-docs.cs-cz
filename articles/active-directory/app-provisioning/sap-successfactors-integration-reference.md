@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808452"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969520"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Jak se Azure Active Directory zřizování integruje s SAP SuccessFactors 
 
@@ -63,7 +63,7 @@ Služba zřizování Azure AD pro každého uživatele v SuccessFactors načít�
 | 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Pouze v případě `jobCode` , že `jobCodeId` je namapován atribut nebo |
 | 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Pouze v případě, že `payGrade` je mapován atribut |
 | 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Pouze v případě, že `location` je mapován atribut |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Pokud mapování obsahuje jeden z následujících atributů:`officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Pokud mapování obsahuje jeden z následujících atributů: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
 | 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Pouze v případě, že `eventReason` je mapován atribut |
 | 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Pouze v případě, že `assignmentType` je namapován |
 | 20 | Rozevírací seznam EmploymentType                | employmentNav/jobInfoNav/employmentTypeNav | Pouze v případě, že `employmentType` je namapován |
@@ -166,9 +166,9 @@ Výchozí schéma aplikace Azure AD SuccessFactors zřizování se dodává s [9
    * Pokud je atribut součástí entity *uživatele* , vyhledejte atribut v uzlu *employmentNav/userNav* .
    * Pokud je atribut součástí entity *EmpJob* , vyhledejte atribut pod uzlem *employmentNav/jobInfoNav* . 
 1. Vytvořte cestu JSON přidruženou k atributu a přidejte tento nový atribut do seznamu atributů SuccessFactors. 
-   * Příklad 1: řekněme, že chcete přidat atribut *okToRehire*, který je součástí entity *employmentNav* , pak použijte JSONPath`$.employmentNav.results[0].okToRehire`
-   * Příklad 2: řekněme, že chcete přidat *časové pásmo*atributu, který je součástí entity *userNav* , pak použijte JSONPath.`$.employmentNav.results[0].userNav.timeZone`
-   * Příklad 3: řekněme, že chcete přidat atribut *flsaStatus*, který je součástí entity *jobInfoNav* , pak použijte JSONPath`$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
+   * Příklad 1: řekněme, že chcete přidat atribut *okToRehire*, který je součástí entity *employmentNav* , pak použijte JSONPath  `$.employmentNav.results[0].okToRehire`
+   * Příklad 2: řekněme, že chcete přidat *časové pásmo*atributu, který je součástí entity *userNav* , pak použijte JSONPath. `$.employmentNav.results[0].userNav.timeZone`
+   * Příklad 3: řekněme, že chcete přidat atribut *flsaStatus*, který je součástí entity *jobInfoNav* , pak použijte JSONPath `$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
 1. Uložte schéma. 
 1. Restartujte zřizování.
 
@@ -182,14 +182,14 @@ Ve výchozím nastavení jsou následující vlastní atributy předem definovan
 Řekněme, že v centrální instanci zaměstnance *customString35* atribut v *EmpJobInfo* ukládá popis umístění. Tuto hodnotu chcete flowovat do atributu Active Directory *physicalDeliveryOfficeName* . Chcete-li nakonfigurovat mapování atributů pro tento scénář, použijte následující postup: 
 
 1. Upravte seznam atributů SuccessFactors a přidejte nový atribut s názvem *empJobNavCustomString35*.
-1. Nastavte výraz rozhraní API JSONPath pro tento atribut jako:`$.employmentNav.results[0].jobInfoNav.results[0].customString35`
+1. Nastavte výraz rozhraní API JSONPath pro tento atribut jako: `$.employmentNav.results[0].jobInfoNav.results[0].customString35`
 1. Uložte a znovu načtěte změnu mapování v Azure Portal.  
 1. V okně mapování atributů namapujte *empJobNavCustomString35* na *physicalDeliveryOfficeName*.
 1. Uložte mapování.
 
 Rozšíření tohoto scénáře: 
-* Pokud chcete mapovat atribut *custom35* z entity *uživatele* , použijte JSONPath.`$.employmentNav.results[0].userNav.custom35`
-* Pokud chcete mapovat atribut *customString35* z entity *EmpEmployment* , použijte JSONPath`$.employmentNav.results[0].customString35`
+* Pokud chcete mapovat atribut *custom35* z entity *uživatele* , použijte JSONPath. `$.employmentNav.results[0].userNav.custom35`
+* Pokud chcete mapovat atribut *customString35* z entity *EmpEmployment* , použijte JSONPath `$.employmentNav.results[0].customString35`
 
 ### <a name="handling-worker-conversion-scenario"></a>Scénář zpracování převodu pracovního procesu
 
@@ -199,20 +199,20 @@ Převod pracovního procesu je proces převodu stávajícího zaměstnance v pln
 1. Přejděte dolů a klikněte na **Zobrazit upřesňující možnosti**.
 1. Kliknutím na odkaz **Projděte si schéma tady** a otevřete editor schémat. 
 
-   >![Kontrola – schéma](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
+   >![Snímek obrazovky s odkazem na toto schéma se zobrazí v editoru schémat.](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
 
 1. Před úpravou uložte kopii schématu kliknutím na odkaz ke **stažení** . 
 
-   >![Stáhnout – schéma](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
+   >![Snímek obrazovky znázorňující editor schémat s volbou stáhnout a uložit kopii schématu.](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
 1. V editoru schémat stiskněte klávesovou zkratku CTRL-H a otevřete ovládací prvek najít-nahradit.
-1. Do textového pole najít zkopírujte a vložte hodnotu.`$.employmentNav.results[0]`
+1. Do textového pole najít zkopírujte a vložte hodnotu. `$.employmentNav.results[0]`
 1. Do textového pole nahradit zkopírujte a vložte hodnotu `$.employmentNav.results[?(@.userNav != null)]` . Všimněte si mezer kolem `!=` operátoru, který je důležitý pro úspěšné zpracování výrazu JSONPath. 
    >![Find-nahrazování a převod](media/sap-successfactors-integration-reference/find-replace-conversion-scenario.png#lightbox)
 1. Pro aktualizaci schématu klikněte na možnost Nahradit vše. 
 1. Uložte schéma. 
 1. Výše uvedený proces aktualizuje všechny výrazy JSONPath následujícím způsobem: 
-   * Původní JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Nové JSONPath:`$.employmentNav.results[?(@.userNav != null)].jobInfoNav.results[0].departmentNav.name_localized`
+   * Původní JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Nové JSONPath: `$.employmentNav.results[?(@.userNav != null)].jobInfoNav.results[0].departmentNav.name_localized`
 1. Restartujte zřizování. 
 
 ### <a name="handling-rehire-scenario"></a>Zpracování scénáře pro zařazení
@@ -230,13 +230,13 @@ Aby bylo možné tento scénář opětovného navýšení zpracovat (možnost 2)
 1. Kliknutím na odkaz **Projděte si schéma tady** a otevřete editor schémat.   
 1. Před úpravou uložte kopii schématu kliknutím na odkaz ke **stažení** .   
 1. V editoru schémat stiskněte klávesovou zkratku CTRL-H a otevřete ovládací prvek najít-nahradit.
-1. Do textového pole najít zkopírujte a vložte hodnotu.`$.employmentNav.results[0]`
+1. Do textového pole najít zkopírujte a vložte hodnotu. `$.employmentNav.results[0]`
 1. Do textového pole nahradit zkopírujte a vložte hodnotu `$.employmentNav.results[-1:]` . Tento výraz JSONPath vrací nejnovější záznam *EmpEmployment* .   
 1. Pro aktualizaci schématu klikněte na možnost Nahradit vše. 
 1. Uložte schéma. 
 1. Výše uvedený proces aktualizuje všechny výrazy JSONPath následujícím způsobem: 
-   * Původní JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Nové JSONPath:`$.employmentNav.results[-1:].jobInfoNav.results[0].departmentNav.name_localized`
+   * Původní JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Nové JSONPath: `$.employmentNav.results[-1:].jobInfoNav.results[0].departmentNav.name_localized`
 1. Restartujte zřizování. 
 
 Tato změna schématu také podporuje scénář převodu pracovních procesů. 
@@ -254,13 +254,13 @@ Chcete-li načíst atributy patřící do uživatelského profilu standardního 
 1. Kliknutím na odkaz **Projděte si schéma tady** a otevřete editor schémat.   
 1. Před úpravou uložte kopii schématu kliknutím na odkaz ke **stažení** .   
 1. V editoru schémat stiskněte klávesovou zkratku CTRL-H a otevřete ovládací prvek najít-nahradit.
-1. Do textového pole najít zkopírujte a vložte hodnotu.`$.employmentNav.results[0]`
+1. Do textového pole najít zkopírujte a vložte hodnotu. `$.employmentNav.results[0]`
 1. Do textového pole nahradit zkopírujte a vložte hodnotu `$.employmentNav.results[?(@.assignmentClass == 'ST')]` . 
 1. Pro aktualizaci schématu klikněte na možnost Nahradit vše. 
 1. Uložte schéma. 
 1. Výše uvedený proces aktualizuje všechny výrazy JSONPath následujícím způsobem: 
-   * Původní JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Nové JSONPath:`$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
+   * Původní JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Nové JSONPath: `$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
 1. Znovu načtěte okno mapování atributů aplikace. 
 1. Přejděte dolů a klikněte na **Zobrazit upřesňující možnosti**.
 1. Klikněte na **Upravit seznam atributů pro SuccessFactors**.
@@ -278,7 +278,7 @@ Pokud má uživatel v centru zaměstnanců v souběžných nebo více úlohách,
 1. Otevřete okno mapování atributů vaší aplikace pro zřizování SuccessFactors. 
 1. Přejděte dolů a klikněte na **Zobrazit upřesňující možnosti**.
 1. Klikněte na **Upravit seznam atributů pro SuccessFactors**.
-1. Řekněme, že chcete získat oddělení přidružené k úloze 1 a úloze 2. Předem definované *oddělení* atributů již načítá hodnotu oddělení pro první úlohu. Můžete definovat nový atribut s názvem *secondJobDepartment* a nastavit výraz JSONPath na`$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
+1. Řekněme, že chcete získat oddělení přidružené k úloze 1 a úloze 2. Předem definované *oddělení* atributů již načítá hodnotu oddělení pro první úlohu. Můžete definovat nový atribut s názvem *secondJobDepartment* a nastavit výraz JSONPath na `$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
 1. Nyní můžete buď přesměrovat hodnoty obou oddělení na atributy služby Active Directory, nebo selektivně flowovat hodnotu pomocí mapování výrazů. 
 1. Uložte mapování. 
 1. Restartujte zřizování. 
@@ -294,7 +294,7 @@ V této části jsou popsány různé scénáře se zpětným zápisem. Doporuč
 | 1 | * Jako primární nastavte jenom obchodní e-mail. <br> * Nenastavuje telefonní čísla. | true | true | false (nepravda) | \[Nenastaveno\] | \[Nenastaveno\] | 
 | 2 | * V SuccessFactors, obchodním e-mailu a firemním telefonu je primární <br> * Vždy přesměrujte telefonní číslo Azure AD na firemní telefon a mobilní telefon do mobilního telefonu. | true | true | false (nepravda) | telephoneNumber | mobil | 
 | 3 | * V SuccessFactors je primární e-mailová adresa a mobilní telefon <br> * Vždy přesměrovat telefonní číslo Azure AD na firemní telefon a mobilní zařízení do mobilního telefonu | true | false (nepravda) | true |  telephoneNumber | mobil | 
-| 4 | * V SuccessFactors Business e-mail je primární. <br> * Ve službě Azure AD zkontrolujte, jestli je přítomné telefonní číslo, pokud je k dispozici, a potom zkontrolujte, jestli je k dispozici i mobilní číslo, označte pracovní telefonní číslo jako primární, jenom když není k dispozici mobilní číslo. | true | Použít mapování výrazů:`IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | Použít mapování výrazů:`IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobil | 
+| 4 | * V SuccessFactors Business e-mail je primární. <br> * Ve službě Azure AD zkontrolujte, jestli je přítomné telefonní číslo, pokud je k dispozici, a potom zkontrolujte, jestli je k dispozici i mobilní číslo, označte pracovní telefonní číslo jako primární, jenom když není k dispozici mobilní číslo. | true | Použít mapování výrazů: `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | Použít mapování výrazů: `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobil | 
 | 5 | * V SuccessFactors Business e-mail a firemní telefon je primární. <br> * V Azure AD, pokud je k dispozici mobilní zařízení, nastavte ho jako telefon do zaměstnání, jinak použijte telephoneNumber. | true | true | false (nepravda) | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[Nenastaveno\] | 
 
 * Pokud neexistuje žádné mapování pro telefonní číslo v mapování atributů se zpětným zápisem, bude do zpětného zápisu zahrnut pouze e-mail.

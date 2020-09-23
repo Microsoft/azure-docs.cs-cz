@@ -14,7 +14,7 @@
           href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
-        - name: 'Pomocí C#'
+        - name: Pomocí C#
           href: quickstarts/detect-data-anomalies-csharp.md
         - name: Pomocí Javy
           href: quickstarts/detect-data-anomalies-java.md
@@ -69,7 +69,7 @@
         - name: Interaktivní ukázka
           href: 'https://aka.ms/adDemo'
         - name: Poznámkový blok Jupyter
-          href: 'https://aka.ms/adNotebook'
+          href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
     - name: Dokument k SR-CNN v KDD 2019
       href: 'https://arxiv.org/abs/1906.03821'
 - name: Zdroje a prostředky

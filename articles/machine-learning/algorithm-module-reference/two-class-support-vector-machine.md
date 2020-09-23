@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 912d6b80914232d1a2ed2b1fe987ebdf949a1abc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82136494"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907666"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Modul Vector Machine Support pro dvě třídy
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte k vytvoření modelu, který je založen na algoritmu podpory vektorového počítače. 
 

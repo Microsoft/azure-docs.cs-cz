@@ -1,6 +1,6 @@
 ---
-title: Správa výpočetních prostředků GPU Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak spravovat nastavení výpočtů hraničního přenosu, jako je Trigger, moduly, zobrazit výpočetní konfiguraci, odebrat konfiguraci prostřednictvím Azure Portal na grafickém procesoru Azure Stack Edge.
+title: Správa výpočtů GPU pro procesory Azure Stack Edge Microsoft Docs
+description: Popisuje, jak spravovat nastavení hraničních výpočtů, jako jsou triggery, moduly, zobrazit výpočetní konfiguraci, odebrat konfiguraci prostřednictvím Azure Portal v grafickém procesoru Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ea52c393ec9897d43714d69ff448038b65ee555
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 58e199cc3c09e6b4ff333fb53c047598b1ec9b5f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268787"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890590"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge-gpu"></a>Správa výpočtů na grafickém procesoru Azure Stack Edge
+# <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Správa výpočetních prostředků na GPU Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Tento článek popisuje, jak spravovat výpočetní prostředky na Azure Stack hraničních zařízeních. Výpočetní prostředky můžete spravovat prostřednictvím Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete spravovat moduly, triggery a výpočetní konfiguraci a místní webové uživatelské rozhraní pro správu výpočetních nastavení.
+Tento článek popisuje, jak spravovat výpočetní prostředky na Azure Stack Edge pro. Výpočetní prostředky můžete spravovat prostřednictvím Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete spravovat moduly, triggery a výpočetní konfiguraci a místní webové uživatelské rozhraní pro správu výpočetních nastavení.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -30,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="manage-triggers"></a>Spravovat triggery
 
-Události jsou něco, co se děje v rámci cloudového prostředí nebo na zařízení, na co byste mohli chtít reagovat určitou akcí. Událostí je například vytvoření souboru ve sdílené složce. Události vyvolávají triggery. Triggery Azure Stack Edge můžou reagovat na události souborů nebo být plánované.
+Události jsou něco, co se děje v rámci cloudového prostředí nebo na zařízení, na co byste mohli chtít reagovat určitou akcí. Událostí je například vytvoření souboru ve sdílené složce. Události vyvolávají triggery. Pro Azure Stack Edge pro se triggery můžou nacházet v reakci na události souboru nebo plán.
 
 - **Soubor**: tyto triggery jsou v reakci na události souboru, jako je vytváření souboru, úprava souboru.
 - **Naplánované**: tyto triggery jsou v reakci na plán, který můžete definovat s počátečním datem, časem spuštění a intervalem opakování.
@@ -84,7 +84,7 @@ Seznam triggerů se aktualizuje tak, aby odrážel odstranění.
 
 ## <a name="manage-compute-configuration"></a>Spravovat výpočetní konfiguraci
 
-Pomocí Azure Portal můžete zobrazit konfiguraci výpočtů, odebrat existující výpočetní konfiguraci nebo aktualizovat výpočetní konfiguraci pro synchronizaci přístupových klíčů pro zařízení IoT a IoT Edge zařízení pro Azure Stack Edge.
+Pomocí Azure Portal můžete zobrazit konfiguraci výpočtů, odebrat existující výpočetní konfiguraci nebo aktualizovat výpočetní konfiguraci pro synchronizaci přístupových klíčů pro zařízení IoT a zařízení IoT Edge pro Azure Stack Edge pro.
 
 ### <a name="view-compute-configuration"></a>Zobrazit konfiguraci výpočtů
 
@@ -113,11 +113,11 @@ Proveďte následující kroky v Azure Portal k odebrání existující konfigur
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>Synchronizace přístupových klíčů zařízení IoT a IoT Edge
 
-Při konfiguraci výpočetní kapacity na Azure Stack hraničních zařízeních se vytvoří zařízení IoT a zařízení IoT Edge. Těmto zařízením jsou automaticky přiřazeny symetrické přístupové klíče. Z hlediska zabezpečení je nejvhodnější tyto klíče pravidelně střídat prostřednictvím služby IoT Hub.
+Když nakonfigurujete výpočetní prostředí na Azure Stack Edge pro, vytvoří se zařízení IoT a IoT Edge zařízení. Těmto zařízením jsou automaticky přiřazeny symetrické přístupové klíče. Z hlediska zabezpečení je nejvhodnější tyto klíče pravidelně střídat prostřednictvím služby IoT Hub.
 
 Pokud chcete tyto klíče otočit, můžete přejít na službu IoT Hub, kterou jste vytvořili, a vybrat zařízení IoT nebo IoT Edge zařízení. Každé zařízení má primární přístupový klíč a sekundární přístupové klíče. Přiřaďte primární přístupový klíč k sekundárnímu přístupovému klíči a pak znovu vygenerujte primární přístupový klíč.
 
-Pokud jsou vaše zařízení IoT a IoT Edge klíče zařízení otočené, musíte aktualizovat konfiguraci na Azure Stack Edge a získat nejnovější přístupové klíče. Synchronizace pomáhá zařízení získat nejnovější klíče pro zařízení IoT a zařízení IoT Edge. Azure Stack Edge používá pouze primární přístupové klíče.
+Pokud jsou vaše zařízení IoT a IoT Edge klíče zařízení otočené, musíte aktualizovat konfiguraci na Azure Stack Edge pro, abyste získali nejnovější přístupové klávesy. Synchronizace pomáhá zařízení získat nejnovější klíče pro zařízení IoT a zařízení IoT Edge. Azure Stack Edge pro používá jenom primární přístupové klíče.
 
 V Azure Portal proveďte následující kroky, které synchronizují přístupové klíče pro vaše zařízení.
 
@@ -133,4 +133,4 @@ V Azure Portal proveďte následující kroky, které synchronizují přístupov
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [řešit potíže s Azure Stackou hranou](azure-stack-edge-gpu-troubleshoot.md).
+- Naučte se [řešit potíže s Azure Stack Edge pro](azure-stack-edge-gpu-troubleshoot.md).

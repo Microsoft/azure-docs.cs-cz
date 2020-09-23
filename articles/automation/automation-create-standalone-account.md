@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea0970a672ac8fb15c2e7c6bbb65edf33bd25f04
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186584"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987278"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -33,7 +33,7 @@ Pokud chcete vytvořit nebo aktualizovat účet Automation a dokončit úkoly po
 * Pokud chcete vytvořit účet Automation, musíte mít uživatelský účet Azure AD přidaný do role s oprávněním ekvivalentním roli vlastníka pro `Microsoft.Automation` prostředky. Další informace najdete v tématu [Access Control na základě rolí v Azure Automation](automation-role-based-access-control.md).
 * V Azure Portal v části **Azure Active Directory**  >  **Správa**  >  **uživatelských nastavení**, pokud je **Registrace aplikací** nastavená na **Ano**, uživatelé bez oprávnění správce v tenantovi Azure AD můžou [Registrovat aplikace Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Pokud je **Registrace aplikací** nastavená na **ne**, musí mít uživatel, který tuto akci provede, aspoň roli vývojáře aplikace v Azure AD.
 
-Pokud před přidáním do role globálního správce nebo správce předplatného nejste členem instance Active Directory předplatného, přidáte do služby Active Directory jako host. V tomto scénáři se tato zpráva zobrazí v podokně Přidat účet Automation:`You do not have permissions to create.`
+Pokud před přidáním do role globálního správce nebo správce předplatného nejste členem instance Active Directory předplatného, přidáte do služby Active Directory jako host. V tomto scénáři se tato zpráva zobrazí v podokně Přidat účet Automation: `You do not have permissions to create.`
 
 Pokud se nejdřív do role globálního správce nebo spolusprávce přidá uživatel, můžete tohoto uživatele odebrat z instance Active Directory předplatného. Uživatele můžete číst do role uživatele ve službě Active Directory. Ověření rolí uživatele:
 
@@ -59,7 +59,7 @@ Chcete-li vytvořit účet Azure Automation v Azure Portal, proveďte následuj�
    > [!NOTE]
    > Pokud se v podokně Přidat účet Automation zobrazí následující zpráva, váš účet není členem role správců předplatného a spolusprávcem předplatného.
    >
-   > ![Přidat upozornění účtu Automation](media/automation-create-standalone-account/create-account-without-perms.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="Snímek obrazovky s výzvou nemáte oprávnění k vytvoření účtu Spustit jako v Azure Active Directory.":::
 
 1. V podokně Přidat účet Automation zadejte název nového účtu Automation do pole **název** . Po zvolení tohoto názvu už tento název nemůžete změnit. 
 
@@ -74,7 +74,7 @@ Chcete-li vytvořit účet Azure Automation v Azure Portal, proveďte následuj�
    > [!NOTE]
    > Pokud se rozhodnete nevytvořit účet Spustit jako, vyberte pro **Vytvoření účtu spustit v Azure jako**možnost **ne** a v podokně Přidat účet Automation se zobrazí zpráva. I když je účet vytvořen v Azure Portal, nemá účet odpovídající identitu ověřování v rámci předplatného modelu nasazení Classic nebo v adresářové službě Azure Resource Manager předplatného. Proto účet Automation nemá přístup k prostředkům ve vašem předplatném. To brání tomu, aby Runbooky, které odkazují na tento účet, mohly ověřovat a provádět úlohy s prostředky v těchto modelech nasazení.
    >
-   > ![Přidat upozornění účtu Automation](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Snímek obrazovky s výzvou zpráva ' zvolili jste, že nechcete vytvořit účet Spustit jako. '":::
    >
    > Pokud objekt služby není vytvořen, role přispěvatele není přiřazena.
    >
@@ -105,4 +105,4 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 * Informace o tom, jak začít se sadami Runbook PowerShellu, najdete v tématu [kurz: vytvoření Runbooku PowerShellu](learn/automation-tutorial-runbook-textual-powershell.md).
 * Pokud chcete začít s Runbooky pracovních postupů PowerShellu, přečtěte si [kurz: vytvoření Runbooku pracovního postupu PowerShellu](learn/automation-tutorial-runbook-textual.md).
 * Chcete-li začít s Runbooky Python 2, přečtěte si [kurz: vytvoření Runbooku Python 2](learn/automation-tutorial-runbook-textual-python2.md).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).

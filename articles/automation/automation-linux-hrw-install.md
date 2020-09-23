@@ -3,14 +3,14 @@ title: Nasazení Hybrid Runbook Worker pro Linux v Azure Automation
 description: V tomto článku se dozvíte, jak nainstalovat Azure Automation Hybrid Runbook Worker ke spouštění Runbooků na počítačích se systémem Linux v místním datovém centru nebo v cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448015"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987217"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -18,7 +18,7 @@ Pomocí funkce Hybrid Runbook Worker služby Azure Automation můžete spouště
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -56,7 +56,7 @@ Funkce Hybrid Runbook Worker podporuje následující distribuce:
 * Red Hat Enterprise Linux Server 5, 6 a 7 (x86/x64)
 * Debian GNU/Linux 6, 7 a 8 (x86/x64)
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS a 18,04 (x86/x64)
-* SUSE Linux Enterprise Server 11 a 12 (x86/x64)
+* SUSE Linux Enterprise Server 12 (x86/x64)
 
 ### <a name="minimum-requirements"></a>Minimální požadavky
 
@@ -66,15 +66,21 @@ Minimální požadavky pro Hybrid Runbook Worker pro Linux jsou:
 * 4 GB RAM paměti
 * Port 443 (odchozí)
 
-| **Požadovaný balíček** | **Description** | **Minimální verze**|
+| **Požadovaný balíček** | **Popis** | **Minimální verze**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |Knihovna GNU C| 2.5-12 |
 |Openssl| Knihovny OpenSSL | 1,0 (podporované TLS 1,1 a TLS 1,2)|
 |Curl | Webový klient s kudrlinkou | 7.15.5|
 |Python – ctypes | Python 2. x je povinný. |
 |PAM | Pluggable Authentication Modules|
-| **Volitelný balíček** | **Description** | **Minimální verze**|
+| **Volitelný balíček** | **Popis** | **Minimální verze**|
 | PowerShell Core | Aby bylo možné spouštět Runbooky PowerShellu, je nutné nainstalovat prostředí PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) . | 6.0.0 |
+
+## <a name="supported-linux-hardening"></a>Podporované posílení zabezpečení pro Linux
+
+Následující nejsou dosud podporovány:
+
+* SLUŽBY
 
 ## <a name="supported-runbook-types"></a>Podporované typy runbooků
 
@@ -82,11 +88,11 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 
 |Typ Runbooku | Podporováno |
 |-------------|-----------|
-|Python 2 |Ano |
+|Python 2 |Yes |
 |PowerShell |Ano<sup>1</sup> |
-|Pracovní postup PowerShellu |Ne |
-|Grafický |Ne |
-|Grafický pracovní postup PowerShellu |Ne |
+|Pracovní postup PowerShellu |No |
+|Grafický |No |
+|Grafický pracovní postup PowerShellu |No |
 
 <sup>1</sup> Runbooky PowerShellu vyžadují, aby byl na počítači se systémem Linux nainstalovaný PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

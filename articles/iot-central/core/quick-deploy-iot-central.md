@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikace Azure IoT Central | Microsoft Docs
-description: Vytvořte novou aplikaci Azure IoT Central. Vytvořte aplikaci pomocí cenového plánu zdarma nebo některého ze standardních cenových plánů.
+title: Rychlý Start – vytvoření aplikace IoT Central v Azure | Microsoft Docs
+description: Rychlý Start – vytvoření nové aplikace Azure IoT Central. Vytvořte aplikaci pomocí cenového plánu zdarma nebo některého ze standardních cenových plánů.
 author: viv-liu
 ms.author: viviali
 ms.date: 07/30/2020
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552573"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987375"
 ---
-# <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
+# <a name="quickstart---create-an-azure-iot-central-application"></a>Rychlý Start – vytvoření aplikace IoT Central v Azure
 
 V tomto rychlém startu se dozvíte, jak vytvořit aplikaci Azure IoT Central.
 

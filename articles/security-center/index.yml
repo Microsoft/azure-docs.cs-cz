@@ -11,45 +11,51 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 08/17/2020
-  ms.openlocfilehash: d87e86bc1e4795be4e234cba06ddd9ab663ba3f8
-  ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+  ms.openlocfilehash: 0ee97ba1d0190cfb3331372329677b8ffe740439
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/01/2020
-  ms.locfileid: "89276860"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90883852"
 landingContent:
 - title: Informace o službě Security Center
   linkLists:
   - linkListType: overview
     links:
     - text: Jaké jsou klíčové možnosti služby Security Center?
-      url: security-center-intro.md
+      url: security-center-introduction.md
     - text: Které verze serverů systému Windows a Linux se podporují?
       url: security-center-os-coverage.md
+    - text: Co je Azure Defender?
+      url: azure-defender.md
 - title: Zajištění aktuálnosti
   linkLists:
   - linkListType: whats-new
     links:
     - text: Poznámky k verzi pro Security Center
       url: release-notes.md
-    - text: Správa prostředků s využitím inventáře prostředků
-      url: asset-inventory.md
-    - text: Přepsání stránky o adaptivním řízení aplikací
-      url: security-center-adaptive-application.md
-    - text: Kompletní popis nových ovládacích prvků zabezpečení
-      url: secure-score-security-controls.md#security-controls-and-their-recommendations
+    - text: Prozkoumání nové stránky přehledu
+      url: overview-page.md
+    - text: Ochrana úloh Kubernetes
+      url: kubernetes-workload-protections.md
+    - text: Reakce na upozornění Azure Defenderu pro Key Vault
+      url: defender-for-key-vault-usage.md
     - text: Rozhraní API pro bezpečnostní skóre
       url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
 - title: Začínáme
   linkLists:
   - linkListType: get-started
     links:
+    - text: Začínáme se službou Security Center
+      url: security-center-get-started.md
     - text: Konfigurace zásad zabezpečení
       url: tutorial-security-policy.md
     - text: Vyhodnocení stavu zabezpečení
       url: secure-score-security-controls.md
-    - text: Upgrade na pokročilé zabezpečení
-      url: security-center-onboarding.md
+    - text: Připojení účtu AWS
+      url: quickstart-onboard-aws.md
+    - text: Připojení účtu GCP
+      url: quickstart-onboard-gcp.md
 - title: Zlepšení bezpečnostního skóre
   linkLists:
   - linkListType: how-to-guide
@@ -58,8 +64,8 @@ landingContent:
       url: secure-score-security-controls.md
     - text: Doporučení pro nápravu zabezpečení
       url: security-center-remediate-recommendations.md
-    - text: Přizpůsobení doporučení pro zabezpečení
-      url: tutorial-security-policy.md
+    - text: Vyloučení prostředku z doporučení
+      url: exempt-resource.md
     - text: Použití doporučení k vylepšení zabezpečení
       url: security-center-using-recommendations.md
     - text: Sledování s využitím rozhraní API bezpečnostního skóre
@@ -74,3 +80,7 @@ landingContent:
       url: security-center-adaptive-application.md
     - text: Implementace adaptivní posilování zabezpečení sítě
       url: security-center-adaptive-network-hardening.md
+    - text: Vyzkoušení Azure Defenderu zdarma po dobu 30 dnů
+      url: security-center-pricing.md#try-azure-defender-free-for-30-days
+    - text: Použití řídicího panelu Azure Defenderu
+      url: azure-defender-dashboard.md

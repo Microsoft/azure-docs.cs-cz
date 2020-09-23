@@ -1,6 +1,6 @@
 ---
 title: Rychlý Start – monitorování zařízení v Azure IoT Central
-description: Jako operátor se naučíte, jak pomocí aplikace IoT Central v Azure monitorovat vaše zařízení.
+description: Rychlý Start – jako operátor, Naučte se používat vaši aplikaci Azure IoT Central k monitorování vašich zařízení.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af5683bf253e26ab928e46059f9af9d2ab8af3bd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80998922"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987349"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Rychlý Start: použití IoT Central Azure ke sledování vašich zařízení
 

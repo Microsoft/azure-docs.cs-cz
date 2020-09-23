@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6653f8f26f90b6ea7f911efab40ec7a3e0c2a60
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518771"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906789"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Trasy ve službě Azure static Web Apps Preview
 
@@ -32,14 +32,17 @@ Podrobnosti najdete v [souboru s ukázkovým směrováním](#example-route-file)
 
 _routes.js_ souboru musí existovat v kořenu složky artefaktů sestavení aplikace. Pokud vaše webová aplikace zahrnuje krok sestavení, který kopíruje sestavené soubory z konkrétní složky do vaší složky artefaktů sestavení, musí _routes.jsv_ souboru existovat v této konkrétní složce.
 
-Následující tabulka uvádí vhodné umístění pro vložení _routes.js_ do souboru pro řadu předdefinovaných rozhraní a knihoven JavaScript front-endu.
+Následující tabulka uvádí vhodné umístění pro vložení _routes.js_ do souboru pro několik rozhraní front-end a knihoven.
 
 |Architektura/knihovna | Umístění  |
 |---------|----------|
-| Úhlová | _hmot_   |
+| Angular | _hmot_   |
 | React   | _public_  |
 | Svelte  | _public_   |
 | Vue     | _public_ |
+| Blazor  | _wwwroot_ |
+
+Výše uvedená tabulka je reprezentativní jenom pro několik architektur a knihoven kompatibilních se službou Azure static Web Apps. Další informace najdete v tématu [konfigurace front-endové architektur a knihoven](./front-end-frameworks.md) .
 
 ## <a name="defining-routes"></a>Definování tras
 
@@ -47,8 +50,8 @@ Trasy jsou definovány v _routes.jsv_ souboru jako pole pravidel směrování pr
 
 | Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ano      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
-| `serve`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve`hodnoty musí ukazovat na skutečné soubory.  |
+| `route`        | Yes      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
+| `serve`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve` hodnoty musí ukazovat na skutečné soubory.  |
 | `allowedRoles` | No       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotlivé uživatele jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
 | `statusCode`   | No       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
 
@@ -106,7 +109,7 @@ Můžete také zabezpečit trasy pomocí zástupných znaků. V následujícím 
 
 ## <a name="fallback-routes"></a>Záložní trasy
 
-Prostředí front-end JavaScript nebo knihovny často spoléhají na směrování na straně klienta pro navigaci webové aplikace. Tato pravidla směrování na straně klienta aktualizují umístění okna prohlížeče bez podání požadavků zpět na server. Pokud stránku aktualizujete nebo přejdete přímo do umístění generovaných pravidly směrování na straně klienta, je pro obsluhu příslušné stránky HTML nutná záložní trasa na straně serveru.
+Jednostránkové aplikace, bez ohledu na to, zda používají předdefinované rozhraní JavaScript nebo knihovny nebo platformy WebAssembly, jako je Blazor, se často spoléhají na směrování na straně klienta pro navigaci webové aplikace. Tato pravidla směrování na straně klienta aktualizují umístění okna prohlížeče bez podání požadavků zpět na server. Pokud stránku aktualizujete nebo přejdete přímo do umístění generovaných pravidly směrování na straně klienta, je pro obsluhu příslušné stránky HTML nutná záložní trasa na straně serveru.
 
 V následujícím příkladu je uvedena společná záložní trasa:
 
@@ -186,6 +189,9 @@ Při práci s typy MIME jsou důležité tyto okolnosti:
 
 - Klíče nemohou mít hodnotu null ani být prázdné ani delší než 50 znaků.
 - Hodnoty nemůžou být null ani prázdné ani delší než 1000 znaků.
+
+> [!NOTE]
+> Statický Web Apps rozumí aplikacím v Blazor a očekávaným typům MIME pro soubory WASM a DLL, není nutné přidávat mapování pro ty.
 
 ## <a name="default-headers"></a>Výchozí hlavičky
 

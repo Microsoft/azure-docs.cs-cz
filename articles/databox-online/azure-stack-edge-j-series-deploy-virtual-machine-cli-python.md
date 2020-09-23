@@ -1,27 +1,27 @@
 ---
-title: Nasazení virtuálních počítačů do GPU zařízení Azure Stack Edge pomocí Azure CLI a Pythonu
-description: Popisuje, jak vytvořit a spravovat virtuální počítače na Azure Stack zařízení GPU na hraničním počítači pomocí Azure CLI a Pythonu.
+title: Nasazení virtuálních počítačů na GPU zařízení Azure Stack Edge pro pomocí Azure CLI a Pythonu
+description: Popisuje, jak vytvořit a spravovat virtuální počítače na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500228"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890721"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack na hraničních zařízeních pomocí Azure CLI a Pythonu
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]
 
-V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač v zařízení Azure Stack Edge pomocí rozhraní příkazového řádku Azure (CLI) a Pythonu.
+V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pro s využitím rozhraní příkazového řádku (CLI) Azure a Pythonu.
 
 ## <a name="vm-deployment-workflow"></a>Pracovní postup nasazení virtuálních počítačů
 
@@ -43,13 +43,13 @@ Shrnutí nejvyšší úrovně pracovního postupu nasazení je následující:
 10. Vytvoření virtuální sítě
 11. Vytvoření VNIC pomocí ID podsítě virtuální sítě
 
-Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pomocí Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
+Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pro pomocí Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hraničním zařízení pomocí rozhraní příkazového řádku Azure CLI a Pythonu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
+Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí Azure CLI a Pythonu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 
-1. V zařízení Azure Stack Edge jste dokončili nastavení sítě, jak je popsáno v části [Krok 1: konfigurace Azure Stack hraničního zařízení](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device).
+1. V zařízení Azure Stack Edge pro jste dokončili nastavení sítě, jak je popsáno v části [Krok 1: konfigurace zařízení Azure Stack Edge pro](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
 
 2. Bylo povoleno síťové rozhraní pro výpočetní výkon. Tato IP adresa síťového rozhraní se používá k vytvoření virtuálního přepínače pro nasazení virtuálního počítače. Následující kroky vás provedou procesem:
 
@@ -58,7 +58,7 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
         > [!IMPORTANT] 
         > Pro výpočetní výkon můžete nakonfigurovat jenom jeden port.
 
-    2. Povolte výpočetní prostředky v síťovém rozhraní. Azure Stack Edge vytvoří a spravuje virtuální přepínač odpovídající tomuto síťovému rozhraní.
+    2. Povolte výpočetní prostředky v síťovém rozhraní. Azure Stack Edge pro vytvoří a spravuje virtuální přepínač odpovídající tomuto síťovému rozhraní.
 
     <!--If you decide to use another network interface for compute, make sure that you:
 
@@ -68,9 +68,9 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
 
     - You can now enable another network interface for compute.-->
 
-3. Vytvořili jste a nainstalovali jste všechny certifikáty na zařízení Azure Stack Edge a v důvěryhodném úložišti klienta. Postupujte podle postupu popsaného v části [Krok 2: vytvoření a instalace certifikátů](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
+3. Vytvořili jste a nainstalovali jste všechny certifikáty na zařízení Azure Stack Edge pro a v důvěryhodném úložišti klienta. Postupujte podle postupu popsaného v části [Krok 2: vytvoření a instalace certifikátů](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 
-4. Vytvořili jste pro zařízení Azure Stack Edge kódovaný certifikát *. cer* s kódováním Base-64 (formát PEM). Tato služba je už na zařízení nahraná jako podpisový řetěz a nainstalovala se do důvěryhodného kořenového úložiště na vašem klientovi. Tento certifikát je také vyžadován ve formátu *PEM* , aby Python mohl pracovat na tomto klientovi.
+4. Vytvořili jste certifikát *. cer* s kódováním Base-64 (formát PEM) pro zařízení Azure Stack Edge pro. Tato služba je už na zařízení nahraná jako podpisový řetěz a nainstalovala se do důvěryhodného kořenového úložiště na vašem klientovi. Tento certifikát je také vyžadován ve formátu *PEM* , aby Python mohl pracovat na tomto klientovi.
 
     Tento certifikát převeďte do formátu PEM pomocí `certutil` příkazu. Tento příkaz musíte spustit v adresáři, který obsahuje váš certifikát.
 
@@ -199,7 +199,7 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-### <a name="trust-the-azure-stack-edge-ca-root-certificate"></a>Důvěřovat kořenovému certifikátu certifikační autority Azure Stack Edge
+### <a name="trust-the-azure-stack-edge-pro-ca-root-certificate"></a>Důvěřovat kořenovému certifikátu certifikační autority Azure Stack Edge pro
 
 1. Najděte umístění certifikátu na svém počítači. Umístění se může lišit v závislosti na tom, kam jste nainstalovali `az cli` . Spusťte prostředí Windows PowerShell jako správce. Přepněte na cestu, kde je `az cli` nainstalovaná Python: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe` .
 
@@ -219,7 +219,7 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
       
     Poznamenejte si toto umístění, protože ho budete později používat – `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`
 
-2. Pokud chcete důvěřovat kořenovému certifikátu certifikační autority Azure Stack, připojovat ho k existujícímu certifikátu Pythonu. Zadejte cestu, kam jste dříve uložili certifikát PEM.
+2. Pokud chcete důvěřovat kořenovému certifikátu certifikační autority pro Azure Stack Edge pro, připojovat se k existujícímu certifikátu Pythonu. Zadejte cestu, kam jste dříve uložili certifikát PEM.
 
     ```powershell
     $pemFile = "<Path to the pem format certificate>"
@@ -252,12 +252,12 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
     
-    Write-Host "Python Cert store was updated to allow the Azure Stack Edge CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Edge Pro CA root certificate"
     ```
     
-### <a name="connect-to-azure-stack-edge"></a>Připojení k Azure Stack Edge
+### <a name="connect-to-azure-stack-edge-pro"></a>Připojení k Azure Stack Edge pro
 
-1. Zaregistrujte své Azure Stack hraniční prostředí spuštěním `az cloud register` příkazu.
+1. Pomocí příkazu zaregistrujte své prostředí Azure Stack Edge pro `az cloud register` .
 
     V některých scénářích je přímé odchozí připojení k Internetu směrováno prostřednictvím proxy serveru nebo brány firewall, která vynutila zachycení SSL. V těchto případech může příkaz AZ Cloud Register selhat s chybou, jako je například \" neúspěšné získání koncových bodů z cloudu. \" Tuto chybu můžete obejít tak, že ve Windows PowerShellu nastavíte následující proměnné prostředí:
 
@@ -266,7 +266,7 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Nastavte proměnné prostředí pro skript pro Azure Resource Manager koncový bod, umístění, kde se prostředky vytvářejí, a cestu k umístění zdrojového virtuálního pevného disku. Umístění prostředků je vyřešeno napříč všemi Azure Stack hraničních zařízení a je nastaveno na `dbelocal` . Musíte také zadat předpony adres a privátní IP adresu. Všechny následující proměnné prostředí jsou hodnoty založené na hodnotách s výjimkou `AZURE_RESOURCE_LOCATION` , která by měla být pevně zakódované na `"dbelocal"` .
+2. Nastavte proměnné prostředí pro skript pro Azure Resource Manager koncový bod, umístění, kde se prostředky vytvářejí, a cestu k umístění zdrojového virtuálního pevného disku. Umístění prostředků je pevně na všech zařízeních Azure Stack Edge pro a je nastavené na `dbelocal` . Musíte také zadat předpony adres a privátní IP adresu. Všechny následující proměnné prostředí jsou hodnoty založené na hodnotách s výjimkou `AZURE_RESOURCE_LOCATION` , která by měla být pevně zakódované na `"dbelocal"` .
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -308,7 +308,7 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. Přihlaste se k prostředí Azure Stack Edge pomocí `az login` příkazu. K prostředí Azure Stack Edge se můžete přihlásit buď jako uživatel, nebo jako [instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+4. Přihlaste se k prostředí Azure Stack Edge pro pomocí `az login` příkazu. K prostředí Azure Stack Edge pro se můžete přihlásit buď jako uživatel, nebo jako [instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
 
    Pomocí těchto kroků se přihlaste jako *uživatel*:
 

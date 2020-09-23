@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d723e1613e96f0aea243eace8ece3f0473e3742
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547677"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884452"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Vysoká dostupnost v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL – jedna serverová služba poskytuje zaručenou vysokou úroveň dostupnosti s finančně zajištěnou smlouvou SLA [99,99%](https://azure.microsoft.com/support/legal/sla/postgresql) provozní dobou. Azure Database for PostgreSQL poskytuje vysokou dostupnost během plánovaných událostí, jako je například operace COMPUTE initated (User-Scale), a také když dojde k neplánovaným událostem, jako je například základní hardware, software nebo selhání sítě. Azure Database for PostgreSQL se můžou rychle zotavit z nejdůležitějších okolností, takže při použití této služby prakticky neexistují žádné aplikace.
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL je vhodný pro provoz důležitých databází, kt
 ## <a name="planned-downtime-mitigation"></a>Omezení zmírňování plánovaných výpadků
 Azure Database for PostgreSQL je navržena tak, aby poskytovala vysokou dostupnost během plánovaných výpadků. 
 
-![zobrazení elastického škálování v Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-elastic-scaling.png" alt-text="zobrazení elastického škálování v Azure PostgreSQL":::
 
 1. Horizontální navýšení a snížení kapacity PostgreSQL databázových serverů v řádu sekund
 2. Brána, která funguje jako proxy ke směrování klienta, se připojuje ke správnému databázovému serveru.
@@ -49,7 +49,7 @@ Tady je několik plánovaných scénářů údržby:
 K neplánovanému výpadku může dojít v důsledku neočekávaných selhání, včetně základní hardwarové chyby, potíží se sítí a softwarových chyb. Pokud dojde k neočekávanému výpadku databázového serveru, nový databázový server se automaticky zřídí během několika sekund. Vzdálené úložiště se automaticky připojí k novému databázovému serveru. PostgreSQL Engine provádí operaci obnovení pomocí WAL a souborů databáze a otevírá databázový server, aby se klienti mohli připojit. Nepotvrzené transakce jsou ztraceny a musí je aplikace opakovat. I když nemůžete zabránit neplánovaným výpadkům, Azure Database for PostgreSQL zmírnit výpadky automatickým prováděním operací obnovení na databázovém serveru a vrstvách úložiště bez nutnosti zásahu člověka. 
 
 
-![zobrazení vysoké dostupnosti v Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="zobrazení vysoké dostupnosti v Azure PostgreSQL":::
 
 1. Servery Azure PostgreSQL s možnostmi rychlého škálování.
 2. Brána, která slouží jako proxy ke směrování připojení klienta ke správnému databázovému serveru

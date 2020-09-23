@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cde479e50c67006a9ef1668ba68b211c3a9af93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477574"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907908"
 ---
 # <a name="join-data"></a>Spojení dat
 
-Tento článek popisuje, jak použít modul **Join data** v Návrháři Azure Machine Learning (Preview) ke sloučení dvou datových sad pomocí operace join ve stylu databáze.  
+Tento článek popisuje, jak použít modul **Join data** v Návrháři Azure Machine Learning ke sloučení dvou datových sad pomocí operace join ve stylu databáze.  
 
 ## <a name="how-to-configure-join-data"></a>Postup konfigurace připojení k datům
 

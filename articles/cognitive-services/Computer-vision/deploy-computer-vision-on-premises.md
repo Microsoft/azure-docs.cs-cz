@@ -1,7 +1,7 @@
 ---
 title: Použití kontejneru Počítačové zpracování obrazu s Kubernetes a Helm
 titleSuffix: Azure Cognitive Services
-description: Nasaďte kontejner Počítačové zpracování obrazu do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
+description: Naučte se, jak nasadit kontejner Počítačové zpracování obrazu pomocí Kubernetes a Helm.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e2a017371ccb3cf70812aed5606c386746024884
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9a8e0dde8b24c39180a584c26af725ab82ea0176
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443156"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907107"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Použití kontejneru Počítačové zpracování obrazu s Kubernetes a Helm
 
@@ -27,7 +27,7 @@ Před použitím Počítačové zpracování obrazu kontejnerů v místním pros
 
 | Vyžadováno | Účel |
 |----------|---------|
-| Účet Azure | Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet][free-azure-account]. |
+| Účet Azure | Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet][free-azure-account]. |
 | Kubernetes CLI | [KUBERNETES CLI][kubernetes-cli] se vyžaduje pro správu sdílených přihlašovacích údajů z registru kontejneru. Kubernetes je také potřeba před Helm, což je správce balíčků Kubernetes. |
 | Helm CLI | Nainstalujte rozhraní příkazového [řádku Helm][helm-install], které se používá k instalaci grafu Helm (definice balíčku kontejneru). |
 | Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled**|
@@ -44,7 +44,7 @@ Před použitím Počítačové zpracování obrazu kontejnerů v místním pros
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Připojení ke clusteru Kubernetes
 
-V hostitelském počítači se očekává, že bude dostupný cluster Kubernetes. V tomto kurzu najdete informace o [nasazení clusteru Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md) pro koncepční porozumění způsobu nasazení clusteru Kubernetes do hostitelského počítače.
+V hostitelském počítači se očekává, že bude dostupný cluster Kubernetes. V tomto kurzu najdete informace o [nasazení clusteru Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md) pro koncepční porozumění způsobu nasazení clusteru Kubernetes do hostitelského počítače. Další informace o nasazeních najdete v [dokumentaci k Kubernetes](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Sdílení přihlašovacích údajů Docker s clusterem Kubernetes
 

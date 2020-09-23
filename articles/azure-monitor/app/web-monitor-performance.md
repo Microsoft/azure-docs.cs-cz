@@ -4,12 +4,12 @@ description: Začínáme s Application Insights. Analyzujte využití, dostupnos
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f84e1065f93fc2cca950f12d5df537b931faac8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323447"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987150"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
@@ -112,11 +112,11 @@ Prostředí pro šetření výkonu můžete použít ke kontrole pomalých opera
 
 Pro lepší představu o zkušenostech uživatelů pro tuto operaci můžeme vybrat větší časový rozsah. V určitém časovém intervalu se pak můžeme v čase prodloužit. V následujícím příkladu jsme přešli z výchozího časového rozmezí na 7 dní a pak se přiblížili k časovému intervalu 9:47 až 12:47 mezi Út 12. a nějak změnily 13. Napravo se aktualizovala jak rozdělení trvání, tak počet ukázek a trasování profileru.
 
-![ZÍSKAT zákazníky/podrobnosti tři špičky trvání v rozmezí 7 dní s časovým intervalem](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![Snímek obrazovky zobrazuje výkon (Preview) se třemi špičkami trvání v rozmezí 7 dní s časovým intervalem](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
 Abychom se mohli zúžit na pomalé prostředí, příště přiblížíme dobu trvání, která se nachází mezi 95. a 99 percentilem. To představuje 4% interakcí uživatelů, které byly pomalé.
 
-![ZÍSKAT zákazníky/podrobnosti tři špičky trvání v rozmezí 7 dní s časovým intervalem](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![Snímek obrazovky s časovým intervalem vám ukáže, jak získat zákazníky/podrobnosti tři špičky trvání v rozmezí 7 dnů.](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 Teď se můžeme podívat na zástupce ukázek, a to kliknutím na tlačítko ukázky nebo na základě zástupce trasování v profileru kliknutím na tlačítko trasování profileru. V tomto příkladu jsou k dispozici čtyři trasování, která jsou shromážděna pro získání zákazníků/podrobností v časovém intervalu a trvání rozsahu zájmu.
 
@@ -126,7 +126,7 @@ V některých případech problém nebude ve vašem kódu, ale spíše v závisl
 
 Prostředí pro zkoumání výkonu zobrazuje relevantní přehledy na straně ukázkové sady, na které jste se rozhodli zaměřit. Nejlepším způsobem, jak si prohlédnout všechny dostupné přehledy, je přepnout na 30 dní časového rozsahu a pak vybrat celkově a zobrazit si přehledy napříč všemi operacemi za minulý měsíc.
 
-![ZÍSKAT zákazníky/podrobnosti tři špičky trvání v rozmezí 7 dní s časovým intervalem](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![Snímek obrazovky zobrazuje výkon (Preview) s vybraným celkovým otevřeným a přehledem okna.](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky

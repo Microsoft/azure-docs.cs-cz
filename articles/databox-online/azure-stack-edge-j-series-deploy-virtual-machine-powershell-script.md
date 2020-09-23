@@ -1,6 +1,6 @@
 ---
-title: Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge přes Azure PowerShell
-description: Popisuje, jak vytvořit a spravovat virtuální počítače na Azure Stack hraničním zařízení pomocí Azure PowerShell.
+title: Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure PowerShell
+description: Popisuje, jak vytvořit a spravovat virtuální počítače na zařízení Azure Stack Edge pro pomocí Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,26 +8,26 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256119"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890649"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stackho okraje prostřednictvím skriptu Azure PowerShell
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí skriptu Azure PowerShell
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pomocí skriptu Azure PowerShell.
+V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí skriptu Azure PowerShell.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete vytvářet a spravovat virtuální počítač na Azure Stack hraničním zařízení pomocí tohoto skriptu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
+Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí tohoto skriptu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 
-### <a name="for-azure-stack-edge-device-via-the-local-web-ui"></a>Pro Azure Stack hraniční zařízení prostřednictvím místního webového uživatelského rozhraní
+### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>Pro zařízení Azure Stack Edge pro prostřednictvím místního webového uživatelského rozhraní
 
-1. V zařízení Azure Stack Edge jste dokončili nastavení sítě, jak je popsáno v části [Krok 1: konfigurace Azure Stack hraničního zařízení](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device).
+1. V zařízení Azure Stack Edge pro jste dokončili nastavení sítě, jak je popsáno v části [Krok 1: konfigurace zařízení Azure Stack Edge pro](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
 
 2. Bylo povoleno síťové rozhraní pro výpočetní výkon. Tato IP adresa síťového rozhraní se používá k vytvoření virtuálního přepínače pro nasazení virtuálního počítače. Následující kroky vás provedou procesem:
 
@@ -36,9 +36,9 @@ Než začnete vytvářet a spravovat virtuální počítač na Azure Stack hrani
         > [!IMPORTANT] 
         > Pro výpočetní výkon můžete nakonfigurovat jenom jeden port.
 
-    2. Povolte výpočetní prostředky v síťovém rozhraní. Azure Stack Edge vytvoří a spravuje virtuální přepínač odpovídající tomuto síťovému rozhraní.
+    2. Povolte výpočetní prostředky v síťovém rozhraní. Azure Stack Edge pro vytvoří a spravuje virtuální přepínač odpovídající tomuto síťovému rozhraní.
 
-3. Vytvořili jste a nainstalovali jste všechny certifikáty v zařízení Azure Stack Edge a v důvěryhodném kořenovém úložišti vašeho klienta. Postupujte podle postupu popsaného v části [Krok 2: vytvoření a instalace certifikátů](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
+3. Vytvořili jste a nainstalovali jste všechny certifikáty na zařízení Azure Stack Edge pro a do důvěryhodného kořenového úložiště vašeho klienta. Postupujte podle postupu popsaného v části [Krok 2: vytvoření a instalace certifikátů](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 
 ### <a name="for-your-windows-client"></a>Pro klienta Windows
 

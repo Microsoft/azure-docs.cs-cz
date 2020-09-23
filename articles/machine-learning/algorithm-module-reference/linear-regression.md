@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 9d83a9ffb9dc334ef959b7a8039b9a9c4a1fced7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a9b0ec0fc19b6b6efa0453d698a5a978dacabc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137449"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907828"
 ---
 # <a name="linear-regression-module"></a>Modul lineární regrese
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul slouží k vytvoření modelu lineární regrese pro použití v kanálu.  Lineární regrese se pokusí vytvořit lineární vztah mezi jednou nebo více nezávislými proměnnými a číselným výstupem nebo závislou proměnnou. 
 
@@ -25,7 +25,7 @@ Pomocí tohoto modulu můžete definovat metodu lineární regrese a potom vytvo
 
 ## <a name="about-linear-regression"></a>O lineární regresi
 
-Lineární regrese je běžná statistická metoda, kterou jste přijali v machine learningu a vylepšili jsme mnoho nových metod pro přizpůsobení řádku a měření chyby. V nejširším smyslu regrese odkazuje na předpověď číselného cíle. Lineární regrese je stále dobrá volbou, pokud chcete jednoduchý model pro základní prediktivní úlohu. Lineární regrese má také v úmyslu dobře fungovat i u vysoce dimenzionálních a řídkých datových sad, které nemají složitost.
+Lineární regrese je běžná statistická metoda, kterou jste přijali v machine learningu a vylepšili jsme mnoho nových metod pro přizpůsobení řádku a měření chyby. Jednoduše řečeno, regrese odkazuje na předpověď číselného cíle. Lineární regrese je stále dobrá volbou, pokud chcete jednoduchý model pro základní prediktivní úlohu. Lineární regrese má také v úmyslu dobře fungovat i u vysoce dimenzionálních a řídkých datových sad, které nemají složitost.
 
 Azure Machine Learning podporuje různé regresní modely kromě lineární regrese. Výraz "regrese" však lze volně interpretovat a některé typy regrese poskytované v jiných nástrojích nejsou podporovány.
 

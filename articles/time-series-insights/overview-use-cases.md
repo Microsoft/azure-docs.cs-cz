@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d2d3c94985f099c7a0ab92efab564415f5cd81bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ede38edd9d24114eb4d0939ff9d4586a2d31daa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978136"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Případy použití Azure Time Series Insights Gen2
 
@@ -66,7 +66,7 @@ Existují tři základní způsoby, jak pracovat s daty uloženými v Azure Time
 
 Pomocí Azure Time Series Insights Gen2 můžete monitorovat stav, využití a výkon zařízení ve velkém měřítku a měřit provozní efektivitu. Azure Time Series Insights Gen2 pomáhá spravovat různorodé a nepředvídatelné úlohy IoT bez omezení ingestování nebo výkonu dotazů.
 
-[![Přehled](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![Snímek obrazovky zobrazuje I/o zařízení/data aplikací, zpracování datových proudů, provozní efektivitu, Intelligence/Insights a pokročilé analýzy v Azure Time Series Insights Gen2.](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Streamování a průběžné zpracování dat přicházejících z provozních procesů může úspěšně transformovat libovolnou firmu, pokud je v kombinaci s pravou technologií nebo řešením. Tato řešení jsou často kombinací více systémů. Umožňují prozkoumání a analýzu dat, která se průběžně mění, zejména ve sféře IoT, a sdílejí společný vzor.
 
