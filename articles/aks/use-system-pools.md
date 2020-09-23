@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647502"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888957"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Správa fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
 
-Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Fondy systémových uzlů a fondy uživatelských uzlů jsou dva různé režimy fondu uzlů pro clustery AKS. Fondy systémových uzlů slouží jako primární účel hostování důležitých systémových lusků, jako jsou například CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží jako primární účel hostování aplikace. V případě, že chcete mít v clusteru AKS jenom jeden fond, je ale možné naplánovat použití lusků na uzlech systému. Každý cluster AKS musí obsahovat alespoň jeden fond uzlů systému s alespoň jedním uzlem.
+Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Fondy systémových uzlů a fondy uživatelských uzlů jsou dva různé režimy fondu uzlů pro clustery AKS. Fondy systémových uzlů slouží jako primární účel hostování důležitých systémových lusků, jako jsou `CoreDNS` a `metrics-server` . Fondy uživatelských uzlů slouží jako primární účel hostování aplikace. V případě, že chcete mít v clusteru AKS jenom jeden fond, je ale možné naplánovat použití lusků na uzlech systému. Každý cluster AKS musí obsahovat alespoň jeden fond uzlů systému s alespoň jedním uzlem.
 
 > [!Important]
 > Pokud pro cluster AKS spustíte jeden fond uzlů systému v produkčním prostředí, doporučujeme pro fond uzlů použít aspoň tři uzly.
@@ -164,7 +164,7 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 > [!Note]
 > Pokud chcete použít fondy systémových uzlů v clusterech AKS před rozhraním API verze 2020-03-02, přidejte nový fond uzlů systému a pak odstraňte původní výchozí fond uzlů.
 
-Dřív jste nedokázali odstranit fond uzlů systému, který byl počátečním výchozím fondem uzlů v clusteru AKS. Teď máte flexibilitu při odstraňování všech fondů uzlů z vašich clusterů. Vzhledem k tomu, že clustery AKS vyžadují aspoň jeden fond uzlů systému, musíte mít ve svém clusteru AKS aspoň dva fondy systémových uzlů, než budete moct odstranit jeden z nich.
+Než budete moct odstranit jeden z nich, musíte mít ve svém clusteru AKS aspoň dva fondy systémových uzlů.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool

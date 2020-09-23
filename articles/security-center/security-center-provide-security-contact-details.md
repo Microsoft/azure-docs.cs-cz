@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9fbd63e1b46b837350be720fadf68777927f9bff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516295"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904762"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Nastavení e-mailových oznámení pro výstrahy zabezpečení 
 
@@ -39,8 +39,8 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Všeobecně dostupné|
-|Stanov|Úroveň Free|
+|Stav vydaných verzí:|Všeobecně dostupná (GA)|
+|Stanov|Free|
 |Požadované role a oprávnění:|**Správce zabezpečení**<br>**Vlastník předplatného** |
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov (částečný)<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||

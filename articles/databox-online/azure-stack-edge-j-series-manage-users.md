@@ -1,6 +1,6 @@
 ---
-title: Azure Stack hraniční GPU pro správu uživatelů | Microsoft Docs
-description: Popisuje, jak použít Azure Portal ke správě uživatelů na grafickém procesoru Azure Stack Edge.
+title: Správa uživatelů v grafickém procesoru Azure Stack Edge pro Microsoft Docs
+description: Popisuje, jak používat Azure Portal ke správě uživatelů na procesorovém GPU Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8400f134c7a2b9da32c04e15e42a54f697b9cea6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254181"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904512"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge"></a>Použití Azure Portal ke správě uživatelů na hraničních Azure Stack
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě uživatelů v Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Tento článek popisuje, jak spravovat uživatele na Azure Stack hraničních zařízeních. Azure Stack Edge můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Azure Portal můžete použít k přidání, úpravě nebo odstranění uživatelů.
+Tento článek popisuje, jak spravovat uživatele na Azure Stack Edge pro. Azure Stack Edge pro můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Azure Portal můžete použít k přidání, úpravě nebo odstranění uživatelů.
 
 V tomto článku získáte informace o těchto tématech:
 

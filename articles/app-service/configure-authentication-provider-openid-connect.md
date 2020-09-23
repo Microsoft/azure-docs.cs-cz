@@ -4,14 +4,14 @@ description: Naučte se nakonfigurovat poskytovatele OpenID Connect jako poskyto
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413914"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983868"
 ---
-# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Konfigurace App Service nebo Azure Functions aplikace pro přihlášení pomocí poskytovatele OpenID Connect (Preview)
+# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Konfigurace přihlašování pomocí poskytovatele OpenID Connect v aplikaci App Service nebo Azure Functions (Preview)
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
@@ -53,7 +53,7 @@ Pokud nemůžete použít dokument metadat konfigurace, budete muset shromáždi
 V této části se dozvíte, jak aktualizovat konfiguraci, aby zahrnovala vaše nové IDP. Následuje příklad konfigurace.
 
 1. V rámci `identityProviders` objektu přidejte objekt, `openIdConnectProviders` Pokud ještě neexistuje.
-1. Do `openIdConnectProviders` objektu přidejte klíč pro nového poskytovatele. Toto je popisný název, který se používá k odkazování poskytovatele ve zbývající části konfigurace. Pokud byste například chtěli vyžadovat ověření všech požadavků u tohoto poskytovatele, měli byste nastavit `globalValidation.unauthenticatedClientAction` na "RedirectToLoginPage" a nastavit `globalValidation.unauthenticatedClientAction` na stejný popisný název.
+1. Do `openIdConnectProviders` objektu přidejte klíč pro nového poskytovatele. Toto je popisný název, který se používá k odkazování poskytovatele ve zbývající části konfigurace. Pokud byste například chtěli vyžadovat ověření všech požadavků u tohoto poskytovatele, měli byste nastavit `globalValidation.unauthenticatedClientAction` na "RedirectToLoginPage" a nastavit `redirectToProvider` na stejný popisný název.
 1. Přiřaďte objekt k tomuto klíči s `registration` objektem, který je v něm, a volitelně `login` objekt:
     
     ```json

@@ -13,7 +13,7 @@ ms.locfileid: "88639035"
 ---
 Pokud potřebujete nakonfigurovat proxy server HTTP pro vytváření odchozích požadavků, použijte tyto dva argumenty:
 
-| Název | Datový typ | Popis |
+| Name | Datový typ | Popis |
 |--|--|--|
 |HTTPS_PROXY|řetězec|Proxy, který se má použít, například `https://proxy:8888`<br>`<proxy-url>`|
 |HTTPS_PROXY_CREDS|řetězec|Jakékoli přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské jméno: heslo.|

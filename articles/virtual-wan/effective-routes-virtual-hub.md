@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6592b1a934e732888ef949071d95075d0af61bf6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708066"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983652"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Zobrazení efektivních tras virtuálního centra
 
@@ -33,7 +33,7 @@ Výstup stránky zobrazuje následující pole:
 * **Původ**: ID prostředku zdroje směrování.
 * **Jako cesta**: atribut BGP jako (autonomní systém) cesta uvádí všechny hodnoty, které je třeba procházet, aby se dosáhlo místa, odkud je inzerována předpona, ke které je připojena cesta.
 
-### <a name="example"></a><a name="example"></a>Případě
+### <a name="example"></a><a name="example"></a>Příklad
 
 Hodnoty v následující ukázkové tabulce naznačují, že připojení nebo směrovací tabulka virtuálního rozbočovače se naučila trasa 10.2.0.0/24 (předpona větve). Zjistila se trasa z důvodu **typu dalšího segmentu směrování sítě VPN** VPN_S2S_GATEWAY s ID prostředku **dalšího segmentu směrování** VPN Gateway. Body **původu trasují** k ID prostředku, který pochází z brány VPN/tabulky nebo připojení směrování. **Jako cesta** označuje cestu pro větev.
 

@@ -6,16 +6,16 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ff358f3c90edfcdabb5a1225ad1efa122818b070
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375257"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904623"
 ---
-# <a name="workflow-automation"></a>Automatizace pracovního postupu
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Vytváření automatických odpovědí na výstrahy a doporučení pomocí automatizace pracovních postupů
 
 Každý program zabezpečení zahrnuje několik pracovních postupů pro reakci na incidenty. Tyto procesy mohou zahrnovat oznamování relevantních účastníků, spuštění procesu správy změn a uplatnění specifických kroků k nápravě. Odborníci na zabezpečení doporučují automatizovat tolik kroků těchto postupů, jako je to možné. Automatizace snižuje režijní náklady. Může taky zlepšit zabezpečení tím, že zajistí rychlé, konzistentní a podle vašich předdefinovaných požadavků kroky procesu.
 
@@ -30,8 +30,8 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Všeobecně dostupné|
-|Stanov|Úroveň Free|
+|Stav vydaných verzí:|Všeobecně dostupná (GA)|
+|Stanov|Free|
 |Požadované role a oprávnění:|**Role správce zabezpečení** nebo **vlastník** skupiny prostředků<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.<br><br>Pokud chcete pracovat s Azure Logic Apps pracovními postupy, musíte mít také následující Logic Apps role/oprávnění:<br> - Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)<br> - Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .<br>Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).|
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Čína gov, jiné gov|
 |||
@@ -42,7 +42,7 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 
 1. Z bočního panelu Security Center vyberte **Automatizace pracovního postupu**.
 
-    [![Seznam automatizovaných pracovních postupů](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Seznam automatizovaných pracovních postupů":::
 
     Na této stránce můžete vytvořit nová pravidla automatizace a zároveň povolit, zakázat nebo odstranit existující.
 
@@ -53,7 +53,7 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
     1. Triggery, které spustí tento automatický pracovní postup. Můžete například chtít, aby se aplikace logiky spouštěla, když se vygeneruje výstraha zabezpečení, která obsahuje "SQL".
     1. Aplikace logiky, která se spustí, když se splní podmínky triggeru 
 
-        [![Seznam automatizovaných pracovních postupů](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Přidat podokno pro automatizaci pracovního postupu":::
 
 1. V části Akce klikněte na **vytvořit nový** a začněte proces vytváření aplikace logiky.
 
@@ -101,7 +101,7 @@ Chcete-li zobrazit nezpracované schéma událostí výstrah zabezpečení nebo 
 
 V tomto článku jste se dozvěděli o vytváření Logic Apps, automatizaci jejich spouštění v Security Center a jejich ručním spuštění. 
 
-Další související materiály najdete v tématech: 
+Související materiály najdete v tématech: 
 
 - [Modul Microsoft Learn, jak pomocí automatizace pracovních postupů automatizovat odpověď zabezpečení](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Doporučení zabezpečení v Azure Security Center](security-center-recommendations.md)

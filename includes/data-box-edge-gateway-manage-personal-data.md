@@ -16,7 +16,7 @@ ms.locfileid: "67175648"
   - Telefonní číslo
   - E-mailová adresa
   - Ulice a číslo
-  - Město
+  - City (Město)
   - Poštovní směrovací číslo/PSČ
   - Stav
   - Země/provincie/oblast

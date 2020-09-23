@@ -1,5 +1,5 @@
 ---
-title: Co je Azure Sentinel? | Microsoft Docs
+title: Co je Azure Sentinel? | Dokumentace Microsoftu
 description: Přečtěte si o Azure Sentinel, škálovatelné, cloudové správě událostí zabezpečení (SIEM) a řešení automatizované reakce (společnosti) pro orchestraci zabezpečení.
 services: sentinel
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 1bd61341683148cfc6431d7ca4b1f9293e19e760
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662026"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889201"
 ---
 # <a name="what-is-azure-sentinel"></a>Co je Azure Sentinel?
 
@@ -43,7 +43,7 @@ V celé škále stávajících služeb Azure se v systému Azure Sentinel nativn
 
 ## <a name="connect-to-all-your-data"></a>Připojení ke všem datům
 
-Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [připojit ke zdrojům zabezpečení](connect-data-sources.md). Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, která je dostupná předem a poskytuje integraci v reálném čase, včetně Microsoft 365 Defender (dříve Microsoft Threat Protection) a Microsoft 365ch zdrojů, včetně Office 365, Azure AD, Microsoft Defenderu pro identitu (dřív Azure ATP) a Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pro připojení zdrojů dat k Azure Sentinel taky můžete použít také běžné formáty událostí, syslog nebo REST API.  
+Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [připojit ke zdrojům zabezpečení](connect-data-sources.md). Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, která je dostupná předem a poskytuje integraci v reálném čase, včetně Microsoft 365 Defender (dříve Microsoft Threat Protection) a Microsoft 365ch zdrojů, včetně Office 365, Azure AD, Microsoft Defenderu pro identitu (dřív Azure ATP) a Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pro připojení zdrojů dat k Azure Sentinel taky můžete použít také běžné formáty událostí, syslog nebo REST API. 
 
 ![Kolektory dat](./media/collect-data/collect-data-page.png)
 

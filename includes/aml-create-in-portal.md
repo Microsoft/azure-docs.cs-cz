@@ -30,7 +30,7 @@ ms.locfileid: "73633633"
 
 1. Zadáním následujících informací nakonfigurujte nový pracovní prostor:
 
-   Pole|Popis 
+   Pole|Description 
    ---|---
    Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli.  
    Předplatné |Vyberte předplatné Azure, které chcete použít.

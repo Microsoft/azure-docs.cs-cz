@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153770"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890298"
 ---
 # <a name="select-columns-in-dataset-module"></a>Výběr sloupců v modulu DataSet
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete zvolit podmnožinu sloupců, které se mají použít v rámci podřízených operací. Modul neodebere fyzické sloupce ze zdrojové datové sady. místo toho vytvoří podmnožinu sloupců, podobně jako *zobrazení* nebo *projekce*databáze.
 
@@ -62,7 +62,7 @@ V modulu je více možností pro výběr sloupců podle názvu:
     Pokud je vaše datová sada rozsáhlá, může být jednodušší použít indexy nebo vygenerované seznamy názvů místo výběru sloupců jednotlivě. Za předpokladu, že jste si seznam připravili předem:
 
     1. Klikněte na možnost **s pravidly** . 
-    2. Vyberte **žádné sloupce**, vyberte **Zahrnout**a pak klikněte do textového pole s červeným vykřičníkem. 
+    2. Vyberte **žádné sloupce**, vyberte  **Zahrnout**a pak klikněte do textového pole s červeným vykřičníkem. 
     3. Vložte nebo zadejte čárkami oddělený seznam dříve ověřených názvů sloupců. Modul nemůžete uložit, pokud má nějaký sloupec neplatný název, proto nezapomeňte zkontrolovat názvy předem.
     
     Tuto metodu můžete také použít k určení seznamu sloupců pomocí jejich hodnot indexu. 

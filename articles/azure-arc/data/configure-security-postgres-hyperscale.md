@@ -1,0 +1,172 @@
+---
+title: Konfigurace zabezpečení pro skupinu serverů PostgreSQL s podporou rozšíření Azure ARC
+description: Konfigurace zabezpečení pro skupinu serverů PostgreSQL s podporou rozšíření Azure ARC
+services: azure-arc
+ms.service: azure-arc
+ms.subservice: azure-arc-data
+author: TheJY
+ms.author: jeanyd
+ms.reviewer: mikeray
+ms.date: 09/22/2020
+ms.topic: how-to
+ms.openlocfilehash: b166348031e9f72e8005e866a198855db9c01a9c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90936102"
+---
+# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konfigurace zabezpečení pro skupinu serverů PostgreSQL s podporou rozšíření Azure ARC
+
+Tento dokument popisuje různé aspekty týkající se zabezpečení skupiny serverů:
+- Šifrování neaktivních uložených dat
+- Správa uživatelů
+   - Obecné perspektivy
+   - Změna hesla _Postgres_ administrativního uživatele
+
+[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="encryption-at-rest"></a>Šifrování neaktivních uložených dat
+Šifrování můžete v klidovém prostředí implementovat šifrováním disků, na které ukládáte své databáze, nebo pomocí databázových funkcí, které zašifrují data, která vkládáte nebo aktualizujete.
+
+### <a name="hardware-linux-host-volume-encryption"></a>Hardware: šifrování svazku hostitele Linux
+Implementací systémového šifrování dat zabezpečíte všechna data, která se nacházejí na discích používaných nastavením Azure ARC povoleno Data Services. Další informace o tomto tématu najdete v článku:
+- [Šifrování dat v klidovém umístění](https://wiki.archlinux.org/index.php/Data-at-rest_encryption) v systému Linux obecně 
+- Šifrování disku s LUKS `cryptsetup` šifrovaným příkazem (Linux) ( https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) konkrétně od povoleného Arc Azure Data Services běží na fyzické infrastruktuře, kterou zadáte, budete mít na starosti zabezpečení infrastruktury.
+
+### <a name="software-use-the-postgresql-pgcrypto-extension-in-your-server-group"></a>Software: použití rozšíření PostgreSQL `pgcrypto` ve skupině serverů
+Kromě šifrování disků, které se používají k hostování instalace Azure ARC, můžete nakonfigurovat skupinu serverů s podporou PostgreSQL ARC, aby vystavila mechanismy, které můžou vaše aplikace používat k šifrování dat ve vašich databázích. `pgcrypto`Rozšíření je součástí `contrib` rozšíření Postgres a je k dispozici ve skupině serverů PostgreSQL s podporou škálování Azure. Podrobnosti o `pgcrypto` rozšíření najdete [tady](https://www.postgresql.org/docs/current/pgcrypto.html).
+V části Souhrn můžete pomocí následujících příkazů povolit rozšíření, vytvořit ho a použít ho:
+
+
+#### <a name="create-the-pgcrypto-extension"></a>Vytvoření `pgcrypto` rozšíření
+Připojte se ke skupině serverů pomocí nástroje klienta podle vašeho výběru a spusťte standardní dotaz PostgreSQL:
+```console
+CREATE EXTENSION pgcrypto;
+```
+
+> [Tady](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md) najdete podrobnosti o tom, jak se připojit.
+
+#### <a name="verify-the-list-the-extensions-ready-to-use-in-your-server-group"></a>Ověřte seznam rozšíření připravených k použití ve skupině serverů.
+Můžete ověřit, že `pgcrypto` je rozšíření připravené k použití, a to tak, že vydáte rozšíření dostupná ve skupině serverů.
+Připojte se ke skupině serverů pomocí nástroje klienta podle vašeho výběru a spusťte standardní dotaz PostgreSQL:
+```console
+select * from pg_extension;
+```
+Měli byste vidět, `pgcrypto` jestli jste ho povolili a vytvořili s příkazy uvedenými nahoře.
+
+#### <a name="use-the-pgcrypto-extension"></a>Použít `pgcrypto` rozšíření
+Nyní můžete upravit kód aplikace tak, aby používaly kteroukoli z funkcí, které nabízí `pgcrypto` :
+- Obecné funkce pro vytváření hodnot hash
+- Funkce hash hesla
+- Funkce šifrování PGP
+- Nezpracované šifrovací funkce
+- Funkce s náhodnými daty
+
+Například pro generování hodnot hash. Spusťte příkaz:
+
+```console
+Select crypt('Les sanglots longs des violons de l_automne', gen_salt('md5'));
+```
+
+Vrátí následující hodnotu hash:
+
+```console
+              crypt
+------------------------------------
+ $1$/9ACBYOV$z52PAGjQ5WTU9xvEECBNv/   
+```
+
+Nebo například:
+
+```console
+select hmac('Les sanglots longs des violons de l_automne', 'md5', 'sha256');
+```
+
+vrátí následující hodnotu hash:
+
+```console
+                                hmac
+--------------------------------------------------------------------
+ \xd4e4790b69d2cc8dbce3385ee63272bc7760f1603640bb211a7b864e695570c5
+```
+
+Nebo například pro ukládání šifrovaných dat, jako je heslo:
+
+Řekněme, že moje aplikace ukládá tajné klíče do následující tabulky:
+
+```console
+create table mysecrets(USERid int, USERname char(255), USERpassword char(512));
+```
+
+A při vytváření uživatele šifrují svoje heslo:
+
+```console
+insert into mysecrets values (1, 'Me', crypt('MySecretPasswrod', gen_salt('md5')));
+```
+
+Teď vidíte, že moje heslo je zašifrované:
+
+```console
+select * from mysecrets;
+```
+
+Výstup:
+
+- ID uživatele: 1
+- Uživatelské jméno: Já
+- USERpassword: $1 $ Uc7jzZOp $ NTfcGo7F10zGOkXOwjHy31
+
+Když se připojím k aplikaci a předáte heslo, vyhledá se v `mysecrets` tabulce a vrátí jméno uživatele, pokud existuje shoda mezi heslem poskytnutým aplikací a hesly uloženými v tabulce. Příklad:
+
+- Předáte chybné heslo:
+   ```console
+   select USERname from mysecrets where (USERpassword = crypt('WrongPassword', USERpassword));
+   ```
+
+   Výstup 
+
+   ```returns
+    USERname
+   ---------
+   (0 rows)
+   ```
+- Předáte správné heslo:
+
+   ```console
+   select USERname from mysecrets where (USERpassword = crypt('MySecretPasswrod', USERpassword));
+   ``` 
+
+   Výstup:
+
+   ```output
+    USERname
+   ---------
+   Me
+   (1 row)
+   ```
+
+Tento malý příklad ukazuje, že můžete data v klidovém stavu zašifrovat (ukládat zašifrovaná data) v PostgreSQL s povoleným rozšířením Azure ARC pomocí `pgcrypto` rozšíření Postgres a vaše aplikace můžou používat funkce nabízené nástrojem `pgcrypto` k manipulaci s těmito šifrovanými daty.
+
+## <a name="user-management"></a>Správa uživatelů
+### <a name="general-perspectives"></a>Obecné perspektivy
+K vytvoření uživatelů nebo rolí můžete použít standardní Postgres způsob. Nicméně pokud to uděláte, budou tyto artefakty k dispozici pouze v roli koordinátora. Během období Preview nebudou tito uživatelé nebo role mít nadále přístup k datům distribuovaným mimo uzel koordinátora a na pracovních uzlech skupiny serverů. Důvodem je, že definice uživatele není ve verzi Preview replikována do pracovních uzlů.
+
+### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>Změna hesla _Postgres_ administrativního uživatele
+PostgreSQL s povoleným rozšířením Azure ARC přináší standardní Postgres administrativního uživatele _Postgres_ , pro který nastavíte heslo při vytváření skupiny serverů.
+Obecný formát příkazu pro změnu hesla:
+```console
+azdata arc postgres server edit --name <server group name> --admin-password <new password>
+```
+Heslo bude nastaveno na hodnotu proměnné prostředí AZDATA_PASSWORD **relace**, pokud existuje. V takovém případě se uživateli zobrazí výzva k zadání hodnoty.
+Chcete-li ověřit, zda existuje proměnná prostředí AZDATA_PASSWORD relace a/nebo zda je nastavená hodnota, spusťte příkaz:
+```console
+printenv AZDATA_PASSWORD
+```
+Pokud budete chtít zadat nové heslo, možná budete chtít odstranit jeho hodnotu.
+
+
+## <a name="next-steps"></a>Další kroky
+- Tady si přečtěte podrobnosti o `pgcrypto` rozšíření. [here](https://www.postgresql.org/docs/current/pgcrypto.html)
+- Přečtěte si podrobnosti o [tom, jak používat rozšíření Postgres](using-extensions-in-postgresql-hyperscale-server-group.md).
+

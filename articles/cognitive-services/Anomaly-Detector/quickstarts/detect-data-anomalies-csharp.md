@@ -8,28 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a364588d77fb24e96c831ce541c5bb4e63d93e98
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a5a3757a33beebb6e688dbea13259723da9280cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922340"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904572"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií a C #
 
-Tento rychlý Start vám umožní začít používat dva režimy zjišťování rozhraní API pro detekci anomálií ke zjištění anomálií v datech časových řad. Tato aplikace v jazyce C# odesílá dvě požadavky rozhraní API obsahující data časových řad ve formátu JSON a získává odpovědi.
+Pomocí tohoto rychlého startu můžete začít používat rozhraní API pro detekci anomálií ke zjištění anomálií v datech časových řad. Tato aplikace v jazyce C# odesílá požadavky rozhraní API obsahující data časových řad ve formátu JSON a získá odpovědi.
 
 | Požadavek rozhraní API                                        | Výstup aplikace                                                                                                                                         |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Zjištění anomálií jako dávky                        | Odpověď JSON obsahující stav anomálie (a další data) pro každý datový bod v datech časové řady a pozice všech zjištěných anomálií. |
-| Zjistit stav anomálií nejnovějšího datového bodu | Odpověď JSON obsahující stav anomálie (a další data) pro poslední datový bod v datech časové řady.                                        |
+| Zjistit stav anomálií nejnovějšího datového bodu | Odpověď JSON obsahující stav anomálie (a další data) pro poslední datový bod v datech časové řady. |
+| Zjištění bodů změn, které označují nové trendy dat | Odpověď JSON obsahující zjištěné body změny v datech časové řady |
 
- I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs).
+I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 - Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
@@ -61,6 +62,7 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
     |------------------------------------|--------------------------------------------------|
     | Zjišťování dávky                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | Zjišťování nejnovějšího datového bodu | `/anomalydetector/v1.0/timeseries/last/detect`   |
+    | Detekce bodu změny | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
@@ -95,6 +97,18 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>Zjištění bodů změny v datech
+
+1. Vytvořte novou funkci s názvem `detectChangePoints()` . Sestavte požadavek a odešlete ho voláním `Request()` funkce s vaším koncovým bodem, adresou URL pro detekci anomálií služby Batch, klíčem předplatného a daty časových řad.
+
+2. Deserializovat objekt JSON a zapsat ho do konzoly.
+
+3. Pokud odpověď obsahuje `code` pole, vytiskněte kód chyby a chybovou zprávu.
+
+4. V opačném případě vyhledejte pozice bodů změn v datové sadě. `isChangePoint`Pole odpovědi obsahuje pole logických hodnot, z nichž každý označuje, zda byl datový bod identifikován jako bod změny. Převeďte tuto hodnotu na pole řetězců pomocí funkce objektu Response `ToObject<bool[]>()` . Iterujte v poli a vytiskněte index všech `true` hodnot. Tyto hodnoty odpovídají indexům bodů změny trendů, pokud byly nalezeny.
+
+    [!code-csharp[Detect change points](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectChangePoints)]
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Načtěte data časové řady a odešlete žádost.
 
 1. V metodě Main vaší aplikace načtěte data časové řady JSON pomocí `File.ReadAllText()` .
@@ -108,5 +122,6 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 Ve formátu JSON se vrátí úspěšná odpověď. Kliknutím na následující odkazy zobrazíte odpověď JSON na GitHubu:
 * [Příklad odpovědi na zjišťování dávky](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Příklad odpovědi na nejnovější zjištění bodu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [Ukázka odpovědi na detekci bodu změny](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

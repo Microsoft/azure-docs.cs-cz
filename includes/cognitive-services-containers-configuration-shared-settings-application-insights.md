@@ -15,7 +15,7 @@ Toto `ApplicationInsights` nastavení umožňuje přidat do svého kontejneru po
 
 Následující tabulka popisuje nastavení konfigurace podporovaná v `ApplicationInsights` části.
 
-|Požaduje se| Název | Datový typ | Popis |
+|Vyžadováno| Name | Datový typ | Popis |
 |--|------|-----------|-------------|
-|Ne| `InstrumentationKey` | Řetězec | Klíč instrumentace instance Application Insights, do které se odesílají data telemetrie kontejneru. Další informace najdete v tématu [Application Insights pro ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Příklad:<br>`InstrumentationKey=123456789`|
+|No| `InstrumentationKey` | Řetězec | Klíč instrumentace instance Application Insights, do které se odesílají data telemetrie kontejneru. Další informace najdete v tématu [Application Insights pro ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Příklad:<br>`InstrumentationKey=123456789`|
 

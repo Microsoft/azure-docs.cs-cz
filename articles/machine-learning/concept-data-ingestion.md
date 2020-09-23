@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875315"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890176"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Možnosti přijímání dat pro pracovní postupy Azure Machine Learning
 
@@ -25,7 +25,7 @@ V tomto článku se seznámíte s možnostmi specialisty a nevýhody přijímán
 Vybírejte z těchto možností:
 + [Azure Data Factory](#azure-data-factory) kanály, konkrétně sestavené k extrakci, načítání a transformaci dat
 
-+ [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk), který poskytuje vlastní řešení kódu pro základní úlohy ingestování dat.
++ [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk), který poskytuje vlastní řešení kódu pro úlohy přijímání dat.
 
 + kombinace obou
 
@@ -70,7 +70,7 @@ Konfigurace vlastních skriptů Pythonu | Nepodporují nativně aktivaci změn z
 Příprava dat v rámci každého spuštění školení modelu|Pro vytvoření skriptu pro příjem dat se vyžaduje dovednost pro vývoj.
 Podporuje skripty pro přípravu dat na různých cílech výpočtů, včetně [Azure Machine Learning COMPUTE](concept-compute-target.md#azure-machine-learning-compute-managed) . |Neposkytuje uživatelské rozhraní pro vytvoření mechanismu přijímání.
 
-V následujícím diagramu se Azure Machine Learning kanál skládá ze dvou kroků: přijímání dat a školení modelu. Krok příjmu dat zahrnuje úlohy, které lze provést pomocí knihoven Python a sady Python SDK, jako je extrakce dat z místních nebo webových zdrojů a základní transformace dat, jako například chybějící hodnota imputace. Krok školení pak použije připravená data jako vstup do vašeho školicího skriptu a naučí váš model strojového učení. 
+V následujícím diagramu se Azure Machine Learning kanál skládá ze dvou kroků: přijímání dat a školení modelu. Krok příjmu dat zahrnuje úlohy, které lze provést pomocí knihoven Python a sady Python SDK, jako je například extrakce dat z místních nebo webových zdrojů a transformace dat, jako například chybějící hodnota imputace. Krok školení pak použije připravená data jako vstup do vašeho školicího skriptu a naučí váš model strojového učení. 
 
 ![Kanál Azure + ingestování dat sady SDK](media/concept-data-ingestion/data-ingest-option-two.png)
 

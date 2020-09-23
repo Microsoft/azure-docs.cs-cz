@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f60a0167e7ac09b1fdfee87cc8412cdbe19053
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1b9d7ad93c287aa9313658ec6b8d5df9f2219f27
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255949"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968857"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
 
@@ -37,11 +37,9 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Pokud používáte systém Windows, nainstalujte [subsystém Windows pro Linux](/windows/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) v Azure Portal.
-- Pokud používáte [subsystém Windows pro Linux](/windows/wsl/about) nebo systém pro [distribuci Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalujte místní konzolu Azure CLI](/cli/azure/install-azure-cli).
-- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure pomocí `az login` účtu, který je přidružený k předplatnému Azure, chcete spravovat systém nebo uživatelsky přiřazené spravované identity.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- Všechny příkazy v tomto článku můžete spustit buď v cloudu, nebo místně:
+    - Pro spuštění v cloudu použijte [Azure Cloud Shell](../../cloud-shell/overview.md).
+    - Pokud chcete spustit místně, [nainstalujte a](https://curl.haxx.se/download.html) rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí [AZ Login](/cli/azure/reference-index#az-login) s účtem, který je přidružený k předplatnému Azure, chcete spravovat systém nebo uživatelsky přiřazené spravované identity.
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 

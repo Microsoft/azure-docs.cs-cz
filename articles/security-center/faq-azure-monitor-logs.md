@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612822"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906377"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Nejčastější dotazy pro zákazníky, kteří už používají protokoly Azure Monitor<a name="existingloganalyticscust"></a>
 
@@ -32,10 +32,11 @@ Pokud už má virtuální počítač Log Analytics agenta nainstalovaného jako 
 > Pokud je agent Log Analytics nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center agenta Log Analytics nenainstaluje a monitorování zabezpečení je omezené.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Je Security Center instalovat řešení do stávajících pracovních prostorů Log Analytics? Jaké jsou důsledky fakturace?
-Když Security Center identifikuje, že je virtuální počítač už připojený k pracovnímu prostoru, který jste vytvořili, Security Center umožňuje řešení v tomto pracovním prostoru podle vaší cenové úrovně. Řešení se aplikují jenom na relevantní virtuální počítače Azure, a to prostřednictvím [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md), takže účtování zůstane stejné.
+Když Security Center identifikuje, že je virtuální počítač už připojený k pracovnímu prostoru, který jste vytvořili, Security Center umožňuje řešení v tomto pracovním prostoru podle vaší cenové konfigurace. Řešení se aplikují jenom na relevantní virtuální počítače Azure, a to prostřednictvím [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md), takže účtování zůstane stejné.
 
-- **Úroveň Free** – Security Center do pracovního prostoru nainstaluje řešení ' SecurityCenterFree '. Za bezplatnou úroveň se vám nebude účtovat.
-- **Úroveň Standard** – Security Center do pracovního prostoru nainstaluje řešení zabezpečení.
+- **Azure Defender off** – Security Center do pracovního prostoru nainstaluje řešení ' SecurityCenterFree '. Nebudeme se vám účtovat.
+- 
+- **Azure Defender on** – Security Center do pracovního prostoru nainstaluje řešení zabezpečení.
 
    ![Řešení ve výchozím pracovním prostoru](./media/security-center-platform-migration-faq/solutions.png)
 
@@ -45,4 +46,4 @@ Pokud už má virtuální počítač Log Analytics agenta nainstalovaného jako 
 Když Security Center nainstaluje agenta Log Analytics na virtuální počítače, použije výchozí pracovní prostory vytvořené Security Center, pokud Security Center neukazuje na existující pracovní prostor.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Již mám řešení zabezpečení v pracovních prostorech. Jaké jsou důsledky fakturace?
-Řešení auditu & zabezpečení se používá k povolení funkcí služby Security Center úrovně Standard pro virtuální počítače Azure. Pokud je v pracovním prostoru již nainstalováno řešení auditu zabezpečení &, Security Center používá existující řešení. Fakturace se nemění.
+Řešení auditu & zabezpečení se používá k povolení **Azure Defenderu pro servery**. Pokud je v pracovním prostoru již nainstalováno řešení auditu zabezpečení &, Security Center používá existující řešení. Fakturace se nemění.

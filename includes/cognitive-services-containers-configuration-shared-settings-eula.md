@@ -11,9 +11,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712592"
 ---
-`Eula` Nastavení indikuje, že jste přijali licenci pro kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být nastavena na `accept`.
+`Eula`Nastavení indikuje, že jste přijali licenci pro kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být nastavena na `accept` .
 
-|Požaduje se| Název | Datový typ | Popis |
+|Vyžadováno| Name | Datový typ | Popis |
 |--|------|-----------|-------------|
 |Ano| `Eula` | Řetězec | Přijetí licence<br><br>Příklad:<br>`Eula=accept` |
 
