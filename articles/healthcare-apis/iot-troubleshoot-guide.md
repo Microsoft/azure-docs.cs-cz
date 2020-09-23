@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 088d1e409f14fdba02311d1ff17eb655f6e41ad3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053452"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982983"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure IoT Connectorem pro FHIR (Preview)
 
@@ -26,9 +26,37 @@ K úpravám a archivaci mimo Azure Portal můžete použít mapovací mapování
 > [!TIP]
 > Pokud otevřete lístek [technické podpory Azure](https://azure.microsoft.com/support/create-ticket/) pro Azure IoT Connector pro FHIR, nezapomeňte zahrnout kopie JSON mapování převodu, které vám pomůžou s procesem řešení potíží.
 
+## <a name="device-and-fhir-conversion-mapping-json-template-validations-for-azure-iot-connector-for-fhir-preview"></a>Ověření platnosti šablon JSON pro Azure IoT Connector pro FHIR (Preview) pro zařízení a mapování FHIR
+V této části se dozvíte o procesu ověřování, který Azure IoT Connector pro FHIR provede k ověření šablon JSON pro převod zařízení a mapování FHIR před tím, než povolí jejich uložení pro použití.  Tyto prvky jsou vyžadovány ve formátu JSON pro převod zařízení a FHIR.
+
+**Mapování zařízení**
+
+|Prvek|Vyžadováno|
+|:-------|:------|
+|TypeName|Ano|
+|TypeMatchExpression|Ano|
+|DeviceIdExpression|Ano|
+|TimestampExpression|Ano|
+|Hodnoty []. Hodnoty|Ano|
+|Hodnoty []. ValueExpression|Ano|
+
+> [!NOTE]
+> Hodnoty []. Hodnoty ValueName a Values []. ValueExpression
+>
+> Tyto prvky jsou požadovány pouze v případě, že je v poli položka hodnoty – je platný pro nemapované hodnoty. Toto se používá, když je telemetrie odeslána událost. Například: když je zařízení IoMT přenosném vloženo nebo odebráno. Prvky nemají žádné hodnoty s výjimkou názvu, který Azure IoT Connector pro FHIR odpovídá a emituje. V případě konverze FHIR se konektor Azure IoT pro FHIR mapuje na koncept s podporou kódu na základě sémantického typu – neplní se žádné skutečné hodnoty.
+
+**Mapování FHIR**
+
+|Prvek|Vyžadováno|
+|:------|:-------|
+|TypeName|Ano|
+
+> [!NOTE]
+> Toto je jediný povinný prvek mapování FHIR, který je v tuto chvíli ověřený.
+
 ## <a name="error-messages-and-fixes-for-azure-iot-connector-for-fhir-preview"></a>Chybové zprávy a opravy pro Azure IoT Connector pro FHIR (Preview)
 
-|Zpráva|Zobrazit|Podmínka|Oprava| 
+|Zpráva|Zobrazit|Stav|Oprava| 
 |-------|---------|---------|---|
 |Neplatný název mapování. název mapování by měl být Device nebo FHIR.|Rozhraní API|Zadaný typ mapování není Device nebo FHIR.|Použijte jeden ze dvou podporovaných typů mapování (například: Device nebo FHIR).|
 |Ověření se nezdařilo. Požadované informace chybí nebo nejsou platné.|Rozhraní API a Azure Portal|Došlo k pokusu o uložení mapování převodu chybějících potřebných informací nebo elementů.|Přidejte chybějící informace mapování konverze nebo element a pokuste se znovu uložit mapování převodu.|
@@ -42,8 +70,8 @@ K úpravám a archivaci mimo Azure Portal můžete použít mapovací mapování
 
 ##  <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Proč je můj konektor Azure IoT pro FHIR (ve verzi Preview) nezobrazený v Azure API pro FHIR?
 
-|Potenciální problémy  |Opravy            |
-|------------------|-----------------|
+|Potenciální problémy|Opravy|
+|----------------|-----|
 |Data se pořád zpracovávají.|Data se přechází do Azure API pro FHIR v dávkách (každých 15 minut).  Je možné, že se data stále zpracovávají a další čas je potřeba, aby se data zachovala v rozhraní Azure API pro FHIR.|
 |JSON mapování převodu zařízení není nakonfigurované.|Nakonfigurujte a uložte formát JSON pro mapování převodu zařízení.|
 |JSON mapování FHIR Conversion není nakonfigurovaný.|Nakonfigurujte a uložte vyhovující JSON mapování FHIR převodů.|
@@ -67,22 +95,22 @@ Při otevření lístku podpory, který vám pomůže při řešení potíží, 
 
 1. V části **Doplňky** na řídicím panelu prostředků Azure API pro FHIR vyberte **"konektor IoT (Preview)"** .
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="Konektor IoT" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT connector1" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
 
 2. Vyberte **konektor** , ze kterého budete kopírovat JSON mapování převodu.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="Konektor IoT" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > Tento proces je také možné použít pro kopírování a ukládání obsahu JSON **"konfigurace FHIR mapování"** .
 
 3. Vyberte **Konfigurovat mapování zařízení**.
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="Konektor IoT" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector3" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. Vyberte obsah JSON a proveďte operaci kopírování (například: vyberte Ctrl + c). 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="Konektor IoT" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Connector4" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. Proveďte operaci vložení (například: vyberte CTRL + v) do nového souboru v editoru (například Visual Studio Code, Poznámkový blok) a uložte soubor s příponou *. JSON.
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77430937"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894800"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Konfigurace zásady zabezpečení v Azure Policy pomocí REST API
 
@@ -115,7 +115,7 @@ V tomto příkladu se dozvíte, jak odebrat přiřazení:
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## <a name="policy-names-reference"></a>Odkazy na názvy zásad<a name="policy-names"></a>
+## <a name="policy-names-reference"></a>Odkazy na názvy zásad <a name="policy-names"></a>
 
 |Název zásady v Security Center|Název zásad zobrazený v Azure Policy |Název parametru efektu zásad|
 |----|----|----|
@@ -124,7 +124,7 @@ V tomto příkladu se dozvíte, jak odebrat přiřazení:
 |Aktualizace systému |Monitorovat chybějící aktualizace systému v Azure Security Center |systemUpdatesMonitoringEffect|
 |Šifrování úložiště |Auditování chybějícího šifrování objektů blob pro účty úložiště |storageEncryptionMonitoringEffect|
 |Síťový přístup JIT |Sledování možného přístupu JIT (just-in-time) v síti v Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptivní řízení aplikací |Monitorování možného seznamu povolených aplikací v Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Adaptivní řízení aplikací |Monitorování možných seznamů povolených aplikací v Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
 |Skupiny zabezpečení sítě |Monitorování opravňujícího přístupu k síti v Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Konfigurace zabezpečení |Monitorování ohrožení zabezpečení operačního systému v Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Ochrana koncového bodu |Monitorovat chybějící Endpoint Protection v Azure Security Center |endpointProtectionMonitoringEffect |

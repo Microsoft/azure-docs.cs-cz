@@ -2,22 +2,40 @@
 title: Ověřování, požadavky a odpovědi
 description: Přečtěte si, jak Azure Key Vault používá žádosti a odpovědi ve formátu JSON a o požadovaném ověřování pro použití trezoru klíčů.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191785"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983263"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
+
+Azure Key Vault poskytuje dva typy kontejnerů pro ukládání a správu tajných kódů pro cloudové aplikace:
+
+|Typ kontejneru|Podporované typy objektů|Koncový bod roviny dat|
+|--|--|--|
+| **Trezory**|<ul><li>Klíče chráněné softwarem</li><li>Klíče chráněné HSM (s SKU úrovně Premium)</li><li>Certifikáty</li><li>Klíče účtu úložiště</li></ul> | https://{trezor-Name}. trezor. Azure. NET
+|**Spravovaný modul HSM** |<ul><li>Klíče chráněné pomocí HSM</li></ul> | https://{HSM-Name}. managedhsm. Azure. NET
+
+Tady jsou přípony adres URL používané pro přístup k jednotlivým typům objektů.
+
+|typ objektu|Přípona adresy URL|
+|--|--|
+|Klíče chráněné softwarem| /keys |
+|Klíče chráněné pomocí HSM| /keys |
+|Tajné kódy|/secrets|
+|Certifikáty| /certificates|
+|Klíče účtu úložiště|/storageaccounts
+||
 
 Azure Key Vault podporuje žádosti a odpovědi ve formátu JSON. Požadavky na Azure Key Vault jsou směrovány na platnou adresu URL Azure Key Vault pomocí protokolu HTTPS s některými parametry adresy URL a texty požadavků a odpovědí kódovaných v kódování JSON.
 
@@ -36,7 +54,9 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 
 - PODEPSÁNí algoritmu Digest pomocí klíče s názvem TESTKEY v Key Vault use- `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Autorita pro požadavek na Key Vault je vždy následující:  `https://{keyvault-name}.vault.azure.net/`  
+- Autorita pro požadavek na Key Vault je vždy následující:
+  - Pro trezory: `https://{keyvault-name}.vault.azure.net/`
+  - Pro spravované HSM: `https://{HSM-name}.managedhsm.azure.net/`
 
   Klíče se vždycky ukládají do cesty/Keys, tajné klíče se vždycky ukládají do cesty/Secrets.  
 

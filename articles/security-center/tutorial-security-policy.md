@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277659"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894572"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -33,7 +33,7 @@ Azure Security Center provedla doporučení zabezpečení založená na zvolený
 
 Security Center nabízí následující možnosti pro práci se zásadami zabezpečení:
 
-* **Zobrazit a upravit předdefinované výchozí zásady** – Pokud povolíte Security Center, automaticky se přiřadí předdefinovaná iniciativa "ASC default" všem Security Center registrovaným předplatným (cenové úrovně Free nebo Standard). Pokud chcete tento podnět přizpůsobit, můžete v něm povolit nebo zakázat jednotlivé zásady. V seznamu [integrovaných zásad zabezpečení](security-center-policy-definitions.md) se dozvíte, jaké možnosti jsou dostupné předem.
+* **Zobrazit a upravit předdefinované výchozí zásady** – Pokud povolíte Security Center, automaticky se přiřadí předdefinovaná iniciativa "ASC default" všem Security Center registrovaným předplatným. Pokud chcete tento podnět přizpůsobit, můžete v něm povolit nebo zakázat jednotlivé zásady. V seznamu [integrovaných zásad zabezpečení](security-center-policy-definitions.md) se dozvíte, jaké možnosti jsou dostupné předem.
 
 * **Přidat vlastní zásady** – Pokud chcete přizpůsobit iniciativy zabezpečení použité pro vaše předplatné, můžete to udělat v rámci Security Center. Pak se dostanou doporučení, pokud vaše počítače nevyhovují vytvořeným zásadám. Pokyny k sestavování a přiřazování vlastních zásad najdete v tématu [použití vlastních zásad zabezpečení](custom-security-policies.md).
 

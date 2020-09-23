@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011850"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894817"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -29,9 +29,9 @@ Security Center shromažďuje data z virtuálních počítačů Azure, sady šk�
 
 No. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
 
-- **Úroveň Free** – Security Center ve výchozím pracovním prostoru povolí řešení ' SecurityCenterFree '. Za bezplatnou úroveň se vám nebude účtovat.
+- **Azure Defender off** – Security Center ve výchozím pracovním prostoru povolí řešení ' SecurityCenterFree '. Pokud je Azure Defender vypnutý, nebude se vám účtovat.
 
-- **Úroveň Standard** – Security Center ve výchozím pracovním prostoru povoluje řešení zabezpečení.
+- **Azure Defender on** – Security Center povoluje řešení zabezpečení ve výchozím pracovním prostoru.
 
 Další informace o cenách najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -164,7 +164,7 @@ Pokud odeberete rozšíření Microsoft Monitoring, Security Center nebude moct 
 
 Automatické zřizování pro vaše předplatná můžete vypnout v zásadách zabezpečení, ale nedoporučuje se to. Vypnutí automatických omezení zřizování Security Center doporučení a výstrah. Zakázání automatického zřizování:
 
-1. Pokud je vaše předplatné nakonfigurované pro úroveň Standard, otevřete pro toto předplatné zásadu zabezpečení a vyberte úroveň **Free** .
+1. Pokud je u vašeho předplatného Azure Defender povolený, otevřete pro toto předplatné zásadu zabezpečení a vyberte **Azure Defender vypnuto**.
 
    ![Cenová úroveň][1]
 
@@ -259,7 +259,7 @@ Když Security Center detekuje podezřelou aktivitu na virtuálním počítači,
 
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Bude Security Center pracovat s bránou OMS?
 
-Yes. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
+Ano. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
 Ke shromáždění dat se musí každý virtuální počítač a Server připojit k Internetu pomocí protokolu HTTPS. Připojení může být přímo, pomocí proxy serveru nebo pomocí [brány OMS](../azure-monitor/platform/gateway.md).
 
 

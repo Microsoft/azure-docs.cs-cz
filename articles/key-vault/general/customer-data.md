@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189923"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983247"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault funkce zákaznických dat
 
-Azure Key Vault přijímá zákaznická data během vytváření nebo aktualizaci trezorů, klíčů, tajných klíčů, certifikátů a spravovaných účtů úložiště. Tato zákaznická data jsou přímo viditelná v Azure Portal a prostřednictvím REST API. Zákaznická data se dají upravovat nebo odstraňovat pomocí aktualizace nebo odstranění objektu, který obsahuje data.
+Azure Key Vault přijímá zákaznická data během vytváření nebo aktualizace trezorů, spravovaných fondů HSM, klíčů, tajných klíčů, certifikátů a spravovaných účtů úložiště. Tato zákaznická data jsou přímo viditelná v Azure Portal a prostřednictvím REST API. Zákaznická data se dají upravovat nebo odstraňovat pomocí aktualizace nebo odstranění objektu, který obsahuje data.
 
 Protokoly přístupu k systému jsou generovány, když uživatel nebo aplikace přistupuje Key Vault. Podrobné protokoly přístupu jsou k dispozici pro zákazníky, kteří používají Azure Insights.
 
@@ -52,7 +52,7 @@ Azure Key Vault diagnostické protokoly, které obsahují osobní údaje, lze na
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Protokolování Azure Key Vault](logging.md))
+- [Protokolování Azure Key Vault](logging.md)
 
 - [Přehled obnovitelného odstranění ve službě Azure Key Vault](soft-delete-cli.md)
 

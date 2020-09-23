@@ -7,15 +7,106 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f9f03c355e1e619d004c8ec8c1cc2f91932db744
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 96a97b9b141d434f201da4c7e36f6715186a652e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046829"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903017"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování
 
+::: zone pivot="programming-language-csharp"
+Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit a monitorovat složité problémy. Jarní cloud Azure integruje Steeltoe [distribuované trasování](https://steeltoe.io/docs/3/tracing/distributed-tracing) s [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)Azure. Tato integrace poskytuje výkonné protokoly, metriky a možnosti distribuované vektorizace z Azure Portal.
+
+Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s ukázkovou aplikací, kterou jste nasadili v předchozích rychlých startech.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Dokončete předchozí rychlé starty v této sérii:
+
+  * [Zřídit Azure jaře cloudovou službu](spring-cloud-quickstart-provision-service-instance.md).
+  * [Nastavte server pro konfiguraci jarního cloudu Azure](spring-cloud-quickstart-setup-config-server.md).
+  * [Sestavování a nasazování aplikací](spring-cloud-quickstart-deploy-apps.md).
+
+## <a name="logs"></a>Protokoly
+
+Existují dva způsoby, jak zobrazit protokoly v Azure jarním cloudu: zaznamená **streamování** protokolů v reálném čase na instanci aplikace nebo **Log Analytics** pro agregované protokoly s pokročilou funkcí dotazů.
+
+### <a name="log-streaming"></a>Streamování protokolů
+
+Streamování protokolů můžete v Azure CLI použít pomocí následujícího příkazu.
+
+```azurecli
+az spring-cloud app logs -n solar-system-weather -f
+```
+
+Zobrazí se výstup podobný následujícímu příkladu:
+
+```output
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Executing action method Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather) - Validation state: Valid
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController[0]
+
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Retrieved weather data from 4 planets
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]][]'.
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+```
+
+> [!TIP]
+> Slouží `az spring-cloud app logs -h` k prozkoumávání dalších parametrů a funkcí streamu protokolů.
+
+### <a name="log-analytics"></a>Log Analytics
+
+1. Přejít ke **službě | **Na stránce Přehled a v části **monitorování** vyberte **protokoly** . Vyberte **Spustit** na jednom z ukázkových dotazů pro jarní cloud Azure.
+
+   [![Položka ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) Log Analytics](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
+    
+1. Upravte dotaz tak, aby se odebraly klauzule WHERE, které omezují zobrazení na upozornění a protokoly chyb.
+
+1. Pak vyberte `Run` a zobrazíte protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) .
+
+   [![Dotaz na analýzu protokolů – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
+
+## <a name="metrics"></a>Metriky
+
+1. V Azure Portal přejdete do **služby | **Na stránce Přehled a v části **monitorování** vyberte **metriky** . Přidejte svoji první metriku výběrem `system.cpu.usage` možnosti **metrika** a `Avg` **agregace** , abyste viděli časovou osu celkového využití CPU.
+
+   [![Vstup metrik – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
+    
+1. Na panelu nástrojů klikněte na **Přidat filtr** . výběrem této možnost `App=solar-system-weather` zobrazíte informace o využití procesoru jenom pro aplikaci se **slunečním počasí** .
+
+   [![Použití filtru v metrikách – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
+
+1. Zrušte filtr vytvořený v předchozím kroku, vyberte **použít rozdělení**a vyberte `App` **hodnoty** pro zobrazení využití CPU různými aplikacemi.
+
+   [![Použití rozdělení v metrikách – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png#lightbox)
+
+## <a name="distributed-tracing"></a>Distribuované trasování
+
+1. V Azure Portal přejdete do **služby | **Na stránce Přehled a v části **monitorování** vyberte **distribuované trasování** . Pak na pravé straně vyberte kartu **Zobrazit mapu aplikací** .
+
+   [![Položka distribuované trasování – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
+
+1. Nyní můžete zobrazit stav volání mezi aplikacemi. 
+
+   [![Přehled distribuovaného trasování – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png#lightbox)
+    
+1. Pokud chcete zobrazit více podrobností, jako jsou nejpomalejší volání metodou HTTP, vyberte propojení mezi **slunečním** a **globálním-počasí – poskytovatele** .
+
+   [![Distribuované trasování – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png#lightbox)
+    
+1. Nakonec vyberte možnost **prozkoumat výkon** a prozkoumejte výkonnější integrovanou analýzu výkonu.
+
+   [![Výkon distribuovaného trasování – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png#lightbox)
+::: zone-end
+
+::: zone pivot="programming-language-java"
 Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Tato integrace poskytuje výkonné protokoly, metriky a možnosti distribuované vektorizace z Azure Portal. Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s nasazenými aplikacemi PiggyMetrics.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -110,15 +201,17 @@ Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
    [![Výkon ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png) distribuovaného trasování](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png#lightbox)
 
+::: zone-end
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků z portálu nebo spuštěním následujícího příkazu v Cloud Shell:
+V těchto rychlých startech jste vytvořili prostředky Azure, které budou nadále účtovat poplatky, pokud zůstanou ve vašem předplatném. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků pomocí portálu nebo spuštěním následujícího příkazu v Cloud Shell:
 
 ```azurecli
-az group delete --name <your resource group name; for example: hellospring-1558400876966-rg> --yes
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
 ```
 
-V předchozích krocích jste také nastavili výchozí název skupiny prostředků. Pokud chcete tuto výchozí hodnotu vymazat, spusťte v Cloud Shell následující příkaz:
+V dřívějším rychlém startu jste také nastavili výchozí název skupiny prostředků. Pokud nechcete pokračovat dalším rychlým startem, vymažte tuto výchozí hodnotu spuštěním následujícího příkazu rozhraní příkazového řádku:
 
 ```azurecli
 az configure --defaults group=
@@ -126,9 +219,11 @@ az configure --defaults group=
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech sledování, které se nachází v rámci služby Azure Pramenitého cloudu, najdete v těchto tématech:
+Pokud chcete prozkoumat další možnosti monitorování Azure jaře cloudu, přečtěte si:
 
 > [!div class="nextstepaction"]
-> [Diagnostické služby](diagnostic-services.md) 
->  [Distribuované trasování](spring-cloud-tutorial-distributed-tracing.md) 
->  [Streamování protokolů v reálném čase](spring-cloud-howto-log-streaming.md)
+> [Diagnostické služby](diagnostic-services.md)
+>
+> [Distribuované trasování](spring-cloud-tutorial-distributed-tracing.md)
+>
+> [Streamování protokolů v reálném čase](spring-cloud-howto-log-streaming.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325521"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983605"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitoru
 Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
@@ -21,7 +21,7 @@ Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorován�
 ## <a name="workbooks"></a>Workbooks
 [Sešity](./platform/workbooks-overview.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich datech, vyšetřování a spolupráci v rámci týmu. Konkrétní příklady, kde jsou sešity užitečné, jsou průvodci odstraňováním potíží a Postmortem incidentů.
 
-![sešit](media/visualizations/workbook.png)
+![Diagram znázorňuje snímky obrazovky několika stránek ze sešitu, včetně analýzy zobrazení stránky, využití a času stráveného na stránce.](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Výhody
 - Podporuje obě metriky a protokoly.
@@ -39,7 +39,7 @@ Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorován�
 ## <a name="azure-dashboards"></a>Řídicí panely Azure
 [Řídicí panely Azure](../azure-portal/azure-portal-dashboards.md) jsou primární technologie pro řídicí panely pro Azure. Jsou zvláště užitečné v případě, že máte v infrastruktuře a službách Azure samostatné podokno, které vám umožní rychle identifikovat důležité problémy.
 
-![Řídicí panel](media/visualizations/dashboard.png)
+![Snímek obrazovky ukazuje příklad řídicího panelu Azure s přizpůsobitelnými informacemi.](media/visualizations/dashboard.png)
 
 Tady je video s návodem k vytváření řídicích panelů.
 
@@ -88,7 +88,7 @@ Tady je video s návodem k vytváření řídicích panelů.
 ## <a name="grafana"></a>Grafana
 [Grafana](https://grafana.com/) je otevřená platforma, kterou aplikace Excel v provozních řídicích panelech. Je zvláště užitečné pro zjišťování a izolaci provozních incidentů a jejich třídění. Do předplatného Azure můžete přidat [modul plug-in Grafana Azure monitor dat](platform/grafana-plugin.md) , který bude vizualizovat vaše data metrik Azure.
 
-![Grafana](media/visualizations/grafana.png)
+![Snímek obrazovky ukazuje vizualizace Grafana.](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Výhody
 - Bohatá vizualizace.
@@ -117,10 +117,10 @@ K datům v protokolech a datech metrik v Azure Monitor prostřednictvím rozhran
 > [!IMPORTANT]
 > Zobrazení se v procesu již nepoužívá. Pokyny k převádění zobrazení na sešity najdete v tématu [Průvodce přechodem Azure monitor návrháře zobrazení na sešity](platform/view-designer-conversion-overview.md) .
 
-[Zobrazení v Azure monitor](platform/view-designer.md) umožňují vytvářet vlastní vizualizace s daty protokolu. Používají se pro [monitorování řešení](insights/solutions.md) k prezentaci shromažďovaných dat.
+[Zobrazení v Azure monitor](platform/view-designer.md)  umožňují vytvářet vlastní vizualizace s daty protokolu. Používají se pro [monitorování řešení](insights/solutions.md) k prezentaci shromažďovaných dat.
 
 
-![Zobrazit](media/visualizations/view.png)
+![Snímek obrazovky zobrazuje dlaždici řešení monitorování kontejnerů a podrobné zobrazení Azure Monitor, které se otevře, když ho vyberete.](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Výhody
 - Bohatá vizualizace pro data protokolu.

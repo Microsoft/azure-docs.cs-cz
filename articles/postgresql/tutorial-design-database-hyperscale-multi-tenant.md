@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: návrh databáze s více instancemi – Citus (multi-tenant) – Azure Database for PostgreSQL'
-description: V tomto kurzu se dozvíte, jak navrhnout více tenantů databází pomocí Azure Database for PostgreSQL Citus (škálování).
+description: V tomto kurzu se dozvíte, jak vytvořit škálovatelnou aplikaci pro více tenantů s Azure Database for PostgreSQL Citus (škálování).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: b28307783957af2613152c2a8305f3650aa352ac
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530722"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895253"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: návrh databáze s více klienty pomocí Azure Database for PostgreSQL – Citus (škálování)
 
@@ -275,6 +275,5 @@ V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů.
 
 V tomto kurzu jste zjistili, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data. Seznámili jste se s dotazem na data uvnitř i mezi klienty a k přizpůsobení schématu pro každého tenanta.
 
-V dalším kroku se dozvíte o konceptech škálování.
-> [!div class="nextstepaction"]
-> [Typy uzlů s měřítkem](https://aka.ms/hyperscale-concepts)
+- Informace o [typech uzlů](https://aka.ms/hyperscale-concepts) skupin serverů
+- Určení nejlepší [počáteční velikosti](howto-hyperscale-scaling.md#picking-initial-size) pro skupinu serverů

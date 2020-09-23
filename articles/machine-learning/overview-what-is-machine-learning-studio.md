@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 4f6252ffbb880e347a89594cb267fb99d576dc7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89040444"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902915"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 
@@ -34,13 +34,13 @@ Studio nabízí více prostředí pro tvorbu v závislosti na typu projektu a ú
 
   Pište a spouštějte vlastní kód na spravovaných [Jupyter notebook serverech](how-to-run-jupyter-notebooks.md) , které jsou přímo integrované v studiu. 
 
-+ **Návrhář Azure Machine Learning (Preview)**
++ **Návrhář služby Azure Machine Learning**
 
   Použijte návrháře ke školení a nasazení modelů strojového učení bez psaní kódu. Přetáhnutím datových sad a modulů vytvořte kanály ML. Vyzkoušejte si [kurz pro návrháře](tutorial-designer-automobile-price-train-score.md).
 
     ![Příklad návrháře Azure Machine Learning](media/concept-designer/designer-drag-and-drop.gif)
 
-+ **Automatické uživatelské rozhraní machine learningu (Preview)**
++ **Uživatelské rozhraní automatizovaného strojového učení**
 
   Naučte se vytvářet [automatizované experimenty ml](tutorial-first-experiment-automated-ml.md) pomocí snadno použitelného rozhraní. 
 
@@ -80,9 +80,9 @@ Pro nejnovější škálu nástrojů pro datové vědy doporučujeme, aby si pro
 
 Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure Machine Learning.
 
-| Funkce | ML Studio (klasický) | Azure Machine Learning |
+| Příznak | ML Studio (klasický) | Azure Machine Learning |
 |---| --- | --- |
-| Rozhraní přetažení | Klasické prostředí | Aktualizované prostředí – [návrhář Azure Machine Learning (Preview)](concept-designer.md) <br/>(Vyžaduje pracovní prostor Enterprise) | 
+| Rozhraní přetažení | Klasické prostředí | Aktualizované prostředí – [návrhář Azure Machine Learning](concept-designer.md)| 
 | Sady SDK kódu | Nepodporované | Plně integrovaná s [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) a [R](tutorial-1st-r-experiment.md) SDK |
 | Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
 | Školení výpočetních cílů | Proprietární výpočetní cíl, jenom podpora procesoru | Široké spektrum přizpůsobitelných [výpočetních cílů](concept-compute-target.md#train). Zahrnuje podporu GPU a procesoru. | 

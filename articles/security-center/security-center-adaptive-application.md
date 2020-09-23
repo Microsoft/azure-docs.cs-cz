@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276758"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894735"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -50,8 +50,8 @@ Definováním seznamů známých aplikací v bezpečí a generování výstrah v
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Všeobecná dostupnost|
-|Stanov|Úroveň Standard|
+|Stav vydaných verzí:|Všeobecně dostupná (GA)|
+|Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Podporované počítače:|![](./media/icons/yes-icon.png)Počítače Azure a jiné než Azure se systémem Windows a Linux<br>![Počítače s ](./media/icons/yes-icon.png) [obloukem Azure ARC](https://docs.microsoft.com/azure/azure-arc/)|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a **Čtenář** můžou zobrazovat skupiny i seznamy známých aplikací, které jsou v bezpečí.<br>Role **Přispěvatel** a **Správce zabezpečení** můžou upravovat skupiny i seznamy známých aplikací, které jsou v bezpečí.|
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
@@ -65,7 +65,9 @@ Pokud Security Center identifikoval skupiny počítačů ve vašich předplatný
 
 Vyberte doporučení nebo otevřete stránku Adaptivní řízení aplikací, kde se zobrazí seznam navrhovaných aplikací a skupin počítačů, které jsou v bezpečí.
 
-1. V nabídce Security Center vyberte **Adaptivní řízení aplikací**.
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Otevření adaptivních řízení aplikací z řídicího panelu Azure" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     Otevře se stránka **Adaptivní řízení aplikací** se skupinami virtuálních počítačů na následujících kartách:
 
@@ -86,7 +88,7 @@ Vyberte doporučení nebo otevřete stránku Adaptivní řízení aplikací, kde
       - Jedná se o počítač s Windows s již existujícími zásadami [AppLockeru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) , které jsou povolené buď pomocí objektu zásad skupiny, nebo místních zásad zabezpečení.
 
       > [!TIP]
-      > Security Center potřebuje k definování jedinečných doporučení na skupinu počítačů aspoň dva týdny dat. Na kartě **bez doporučení** se zobrazí počítače, které byly nedávno vytvořeny nebo které patří k předplatným, která byla naposledy povolena pouze s úrovní Standard.
+      > Security Center potřebuje k definování jedinečných doporučení na skupinu počítačů aspoň dva týdny dat. Na kartě **bez doporučení** se zobrazí počítače, které byly nedávno vytvořeny nebo které patří k předplatným, která byla nedávno povolena pomocí Azure Defenderu.
 
 
 1. Otevřete kartu **Doporučené** . Zobrazí se skupiny počítačů s doporučenými seznamy povolených.
@@ -121,7 +123,7 @@ Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu poč�
 
 Úprava pravidel pro skupinu počítačů:
 
-1. V nabídce Security Center vyberte **Adaptivní řízení aplikací**.
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
 
 1. Na kartě **konfigurované** vyberte skupinu s pravidlem, které chcete upravit.
 
@@ -169,7 +171,7 @@ Náprava problémů:
 
 ## <a name="audit-alerts-and-violations"></a>Výstrahy a porušení auditu
 
-1. V nabídce Security Center vyberte **Adaptivní řízení aplikací**.
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
 
 1. Pokud chcete zobrazit skupiny s počítači s nedávnými výstrahami, Projděte si skupiny uvedené na stránce **konfigurovaná** karta.
 
@@ -184,6 +186,8 @@ Náprava problémů:
 ## <a name="move-a-machine-from-one-group-to-another"></a>Přesunutí počítače z jedné skupiny do druhé
 
 Když přesunete počítač z jedné skupiny do druhé, uplatní se u něj zásada řízení aplikací na nastavení skupiny, do které jste ji přesunuli. Počítač můžete také přesunout z nakonfigurované skupiny do nenakonfigurované skupiny. tím dojde k odebrání všech pravidel řízení aplikací, která byla použita pro daný počítač.
+
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
 
 1. Na stránce **Adaptivní řízení aplikací** vyberte z karty **nakonfigurovaná** skupinu obsahující počítač, který chcete přesunout.
 

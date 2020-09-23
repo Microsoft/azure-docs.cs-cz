@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 72de3c45d0def7cf4a48884ee49be256179ac0a4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f8be403a9aa095a24ec4802aad0364b535ed7c5a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659512"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902910"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -41,7 +41,7 @@ Díky předpovědím neboli predikcím ze strojového učení můžou být aplik
 ## <a name="machine-learning-tools-to-fit-each-task"></a>Nástroje pro strojové učení, které se vejdou na jednotlivé úlohy 
 
 Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteří potřebují pro své pracovní postupy pro strojové učení, včetně těchto nástrojů:
-+ [Návrhář Azure Machine Learning](tutorial-designer-automobile-price-train-score.md) (Preview): přetáhněte moduly, abyste mohli sestavovat experimenty a pak nasazovat kanály.
++ [Návrhář Azure Machine Learning](tutorial-designer-automobile-price-train-score.md): přetažení modulů pro sestavování experimentů a následné nasazení kanálů.
 
 + Jupyter poznámkové bloky: pomocí našich [ukázkových poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks) nebo vytvořte vlastní poznámkové bloky a využijte naši <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">sadu SDK pro ukázky Pythonu</a> pro váš strojové učení. 
 
@@ -71,7 +71,7 @@ Můžete také [automatizovat školicí a optimalizační model](tutorial-auto-t
 
 [Azure Machine Learning Studio](https://studio.azureml.net) je webový portál v Azure Machine Learning pro možnosti s nízkým kódem a bez kódu pro školení modelů, nasazení a správu prostředků. Sada Studio se integruje se sadou Azure Machine Learning SDK, aby se zajistilo bezproblémové prostředí. Další informace najdete v tématu [co je Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md).
 
-+ **Návrhář Azure Machine Learning (Preview)**
++ **Návrhář služby Azure Machine Learning**
 
   Použijte [Návrháře](concept-designer.md) ke školení a nasazení modelů strojového učení bez psaní kódu. Vyzkoušejte si [kurz pro návrháře](tutorial-designer-automobile-price-train-score.md) a začněte. 
 
@@ -124,15 +124,6 @@ Azure Machine Learning funguje s ostatními službami na platformě Azure a inte
 ### <a name="secure-communications"></a>Zabezpečená komunikace
 
 Váš Azure Storage účet, výpočetní cíle a další prostředky se dají v rámci virtuální sítě bezpečně použít k učení modelů a provádění odvození. Další informace najdete v tématu [Přehled izolace a ochrany osobních údajů ve virtuální síti](how-to-network-security-overview.md).
-
-## <a name="basic--enterprise-editions"></a><a name="sku"></a>Edice Basic & Enterprise
-
-Azure Machine Learning nabízí dvě edice, které jsou přizpůsobené potřebám strojového učení:
-+ **Basic**: Skvělé pro vývoj open source v cloudovém měřítku s použitím prostředí pro první použití kódu.
-
-+ **Enterprise**: vše z úrovně Basic plus Web Interface (Studio) + Secure, komplexní správa životního cyklu ml pro všechny úrovně dovedností.
-
-Další informace o těchto edicích a možnostech, které se odemknou, najdete v [článku "Azure Machine Learning edice"](concept-editions.md).
 
 ## <a name="next-steps"></a>Další kroky
 

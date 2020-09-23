@@ -1,6 +1,6 @@
 ---
-title: Nasazení Azure SQL Edge (Preview) pomocí Azure Portal
-description: Přečtěte si, jak nasadit Azure SQL Edge (Preview) pomocí Azure Portal
+title: Nasazení Azure SQL Edge pomocí Azure Portal
+description: Přečtěte si, jak nasadit Azure SQL Edge pomocí Azure Portal
 keywords: nasazení Edge SQL
 services: sql-edge
 ms.service: sql-edge
@@ -8,27 +8,27 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816860"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886762"
 ---
-# <a name="deploy-azure-sql-edge-preview"></a>Nasazení Azure SQL Edge (Preview) 
+# <a name="deploy-azure-sql-edge"></a>Nasazení Edge Azure SQL 
 
-Azure SQL Edge (Preview) je relační databázový stroj optimalizovaný pro nasazení IoT a Azure IoT Edge. Poskytuje funkce pro vytváření vysoce výkonných vrstev pro ukládání a zpracování dat pro aplikace a řešení IoT. V tomto rychlém startu se dozvíte, jak začít vytvářet modul Edge Azure SQL prostřednictvím Azure IoT Edge pomocí Azure Portal.
+Azure SQL Edge je relační databázový stroj optimalizovaný pro nasazení IoT a Azure IoT Edge. Poskytuje funkce pro vytváření vysoce výkonných vrstev pro ukládání a zpracování dat pro aplikace a řešení IoT. V tomto rychlém startu se dozvíte, jak začít vytvářet modul Edge Azure SQL prostřednictvím Azure IoT Edge pomocí Azure Portal.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 * Vytvořte [IoT Hub Azure](../iot-hub/iot-hub-create-through-portal.md).
 * Zaregistruje [zařízení IoT Edge z Azure Portal](../iot-edge/how-to-register-device-portal.md).
 * Připravte zařízení IoT Edge, aby se [IoT Edge modul nasadil z Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).
 
-> [!NOTE]
+> [!NOTE]   
 > Pokud chcete nasadit virtuální počítač Azure Linux jako zařízení IoT Edge, přečtěte si tento [Průvodce rychlým startem](../iot-edge/quickstart-linux.md).
 
 ## <a name="deploy-sql-edge-module-from-azure-marketplace"></a>Nasadit modul SQL Edge z Azure Marketplace
@@ -51,75 +51,73 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
    |IoT Hub   |  Název IoT Hub, kde je IoT Edge zařízení zaregistrované, a pak vyberte možnost nasadit do zařízení.|
    |Název zařízení IoT Edge  |  Název zařízení IoT Edge, kde by byl nasazený SQL Edge |
 
-4. Na stránce **nastavit moduly** přejděte na oddíl v části moduly nasazení a klikněte na **Konfigurovat** pro modul SQL Edge. 
+4. Na stránce **nastavit moduly na zařízení:** klikněte v části **IoT Edge moduly**na modul Azure SQL Edge. Výchozí název modulu je nastavený na *AzureSQLEdge*. 
 
-5. V podokně **IoT Edge vlastní moduly** zadejte požadované hodnoty pro proměnné prostředí a/nebo Přizpůsobte možnosti vytvoření a požadované vlastnosti pro modul. Úplný seznam podporovaných proměnných prostředí naleznete [SQL Server proměnných prostředí kontejneru](/sql/linux/sql-server-linux-configure-environment-variables/).
+5. V části *nastavení modulu* v okně **aktualizovat IoT Edge modul** zadejte požadované hodnoty pro *název IoT Edge modulu*, *zásady restartování* a *požadovaný stav*. 
+
+   > [!IMPORTANT]    
+   > Neměňte ani neaktualizujte nastavení **identifikátoru URI image** v modulu.
+
+6. V části *proměnné prostředí* okna **aktualizovat IoT Edge modul** zadejte požadované hodnoty pro proměnné prostředí. Úplný seznam proměnných prostředí Azure SQL Edge najdete v tématu [Konfigurace pomocí proměnných prostředí](configure.md#configure-by-using-environment-variables). Pro modul jsou definovány následující výchozí proměnné prostředí. 
 
    |**Parametr**  |**Popis**|
    |---------|---------|
    | Name | Název modulu. |
-   |SA_PASSWORD  | Zadejte silné heslo pro účet správce SQL Edge. |
-   |MSSQL_LCID   | Nastaví ID jazyka, který se má použít pro SQL Server. Například 1036 je francouzština. |
-   |MSSQL_COLLATION | Nastaví výchozí kolaci pro SQL Server. Toto nastavení přepíše výchozí mapování ID jazyka (LCID) na kolaci. |
+   | MSSQL_SA_PASSWORD  | Změnou výchozí hodnoty určete silné heslo pro účet správce SQL Edge. |
+   | MSSQL_LCID   | Změnou výchozí hodnoty nastavte požadované ID jazyka pro použití pro SQL Edge. Například 1036 je francouzština. |
+   | MSSQL_COLLATION | Změnou výchozí hodnoty nastavte výchozí kolaci pro SQL Edge. Toto nastavení přepíše výchozí mapování ID jazyka (LCID) na kolaci. |
 
-   > [!NOTE]
-   > Neměňte prosím ani neaktualizujte **identifikátor URI image** ani nastavení **ACCEPT_EULA** v modulu.
+   > [!IMPORTANT]    
+   > Neměňte ani neaktualizujte proměnnou prostředí **ACCEPT_EULA** pro modul.
 
-6. V podokně **IoT Edge vlastní moduly** aktualizujte kontejner možnosti vytvoření požadované hodnoty pro **port hostitele**. Pokud potřebujete nasadit více než jeden modul Edge (SQL DB Edge), nezapomeňte aktualizovat možnost připojení a vytvořit novou zdrojovou & dvojici cílového pro trvalý svazek. Další informace o připojeních a svazcích najdete v dokumentaci k Docker [pomocí svazků](https://docs.docker.com/storage/volumes/) . 
-
-   ```json
-       {
-         "HostConfig": {
-           "Binds": [
-             "sqlvolume:/sqlvolume"
-           ],
-           "PortBindings": {
-             "1433/tcp": [
-               {
-                 "HostPort": "1433"
-               }
-             ]
-           },
-           "Mounts": [
-             {
-               "Type": "volume",
-               "Source": "sqlvolume",
-               "Target": "/var/opt/mssql"
-             }
-           ]
-         },
-         "Env": [
-           "MSSQL_AGENT_ENABLED=TRUE",
-           "MSSQL_PID=Developer"
-         ]
-       }
-   ```
-
-7. V podokně **IoT Edge vlastní moduly** aktualizujte *požadované vlastnosti modulu set* , aby obsahovaly umístění balíčku SQL a informace o úloze Stream Analytics. Tato dvě pole jsou volitelná a měla by se používat v případě, že chcete nasadit modul SQL Edge s databází a úlohou streamování.
+7. V okně pro *vytvoření kontejneru* v okně **aktualizovat IoT Edge modul** aktualizujte podle potřeby následující možnosti. 
+   - **Port hostitele:** Namapujte zadaný port hostitele na port 1433 (výchozí port SQL) v kontejneru.
+   - **Vytvoří vazby** a **připojí se:** Pokud potřebujete nasadit více než jeden modul SQL Edge, ujistěte se, že jste aktualizovali možnost připojení, aby se vytvořila nová zdrojová & dvojice cílových pro trvalý svazek. Další informace o připojeních a svazcích najdete v dokumentaci k Docker [pomocí svazků](https://docs.docker.com/storage/volumes/) . 
 
    ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+   {
+    "HostConfig": {
+        "CapAdd": [
+            "SYS_PTRACE"
+        ],
+        "Binds": [
+            "sqlvolume:/sqlvolume"
+        ],
+        "PortBindings": {
+            "1433/tcp": [
+                {
+                    "HostPort": "1433"
+                }
+            ]
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Source": "sqlvolume",
+                "Target": "/var/opt/mssql"
+            }
+        ]
+    },
+    "Env": [
+        "MSSQL_AGENT_ENABLED=TRUE",
+        "ClientTransportType=AMQP_TCP_Only",
+        "PlanId=asde-developer-on-iot-edge"
+    ]
+   }
    ```
-
-8. V podokně **IoT Edge vlastní moduly** nastavte *zásady restartování* na hodnotu vždy a *požadovaný stav* na spuštěno.
-9. V podokně **IoT Edge vlastní moduly** klikněte na **Uložit**.
-10. Na stránce **nastavit moduly** klikněte na **Další**.
-11. Na stránce **Zadání trasy (volitelné)** na stránce **nastavit moduly** určete trasy pro modul a modul pro IoT Edge komunikaci s rozbočovačem, viz [nasazení modulů a vytváření tras v IoT Edge](../iot-edge/module-composition.md).
-12. Klikněte na **Next** (Další).
-13. Klikněte na **Odeslat**.
+   > [!IMPORTANT]    
+   > Neměňte `PlanId` proměnnou vyhledáte definovanou v nastavení Create config. Pokud se tato hodnota změní, kontejner Edge Azure SQL se nepodaří spustit. 
+   
+8. V podokně **aktualizovat IoT Edge modul** klikněte na **aktualizovat**.
+9. Na stránce **nastavit moduly na zařízení** klikněte na **další: trasy >** , pokud potřebujete definovat trasy pro vaše nasazení. V opačném případě klikněte na tlačítko **zkontrolovat + vytvořit**. Další informace o konfiguraci tras najdete v tématu [nasazení modulů a vytváření tras v IoT Edge](../iot-edge/module-composition.md).
+11. V podokně **aktualizovat IoT Edge modul** klikněte na **vytvořit**.
 
 ## <a name="connect-to-azure-sql-edge"></a>Připojení k Edge SQL Azure
 
 V následujících krocích se připojíte k Edge SQL serveru Azure pomocí nástroje příkazového řádku **Sqlcmd**v rámci služby Azure SQL Edge, který se nachází uvnitř kontejneru.
 
-> [!NOTE]
-> Nástroj Sqlcmd není k dispozici ve verzi ARM64 kontejnerů SQL Edge.
+> [!NOTE]      
+> Nástroje příkazového řádku SQL (Sqlcmd) nejsou k dispozici v rámci ARM64 verze kontejnerů Azure SQL Edge.
 
 1. Pomocí `docker exec -it` příkazu spusťte interaktivní prostředí bash v běžícím kontejneru. V následujícím příkladu `azuresqledge` je název určený `Name` parametrem modulu IoT Edge.
 
@@ -133,14 +131,14 @@ V následujících krocích se připojíte k Edge SQL serveru Azure pomocí nás
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
    ```
 
-   > [!TIP]
+   > [!TIP]    
    > Na příkazovém řádku můžete vynechat heslo, aby se zobrazila výzva k jeho zadání.
 
 3. V případě úspěchu byste se měli dostat do příkazového řádku **Sqlcmd** : `1>` .
 
 ## <a name="create-and-query-data"></a>Vytvoření a dotazování dat
 
-V následujících částech se dozvíte, jak pomocí nástroje **Sqlcmd** a Transact-SQL vytvořit novou databázi, přidat data a spustit jednoduchý dotaz.
+V následujících částech se dozvíte, jak pomocí nástroje **Sqlcmd** a Transact-SQL vytvořit novou databázi, přidat data a spustit dotaz.
 
 ### <a name="create-a-new-database"></a>Vytvoření nové databáze
 
@@ -222,6 +220,7 @@ V tomto rychlém startu jste nasadili modul SQL Edge na zařízení IoT Edge.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Machine Learning a uměle inteligentní informace s ONNXem v SQL Edge](onnx-overview.md).
-- [Vytvoření kompletního řešení IoT pomocí SQL Edge pomocí IoT Edge](tutorial-deploy-azure-resources.md).
+- [Machine Learning a umělá logika s ONNXem v SQL Edge](onnx-overview.md)
+- [Vytvoření kompletního řešení IoT pomocí SQL Edge pomocí IoT Edge](tutorial-deploy-azure-resources.md)
 - [Streamování dat ve službě Azure SQL Edge](stream-data.md)
+- [Řešení potíží s chybami nasazení](troubleshoot.md)
