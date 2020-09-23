@@ -4,15 +4,15 @@ description: Přečtěte si o krocích požadovaných k povolení nových Azure 
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783837"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894537"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>Prostředky Application Insights založené na pracovním prostoru (Preview)
+# <a name="workspace-based-application-insights-resources"></a>Prostředky Application Insights založené na pracovním prostoru
 
 Prostředky založené na pracovním prostoru podporují úplnou integraci mezi Application Insights a Log Analytics. Nyní se můžete rozhodnout pro odeslání telemetrie Application Insights do společného pracovního prostoru Log Analytics, který vám umožní úplný přístup ke všem funkcím Log Analytics a zároveň udržuje protokoly aplikací, infrastruktury a platforem v jednom konsolidovaném umístění.
 
@@ -21,7 +21,19 @@ To také umožňuje běžné Access Control na základě rolí (RBAC) napříč 
 > [!NOTE]
 > Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se účtují prostřednictvím pracovního prostoru Log Analytics, kde se data nacházejí. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.
 
-Pokud chcete vyzkoušet nové prostředí, přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek Application Insights:
+## <a name="new-capabilities"></a>Nové funkce
+
+Application Insights na základě pracovního prostoru vám umožní využít výhod nejnovějších možností Azure Monitor a Log Analytics, včetně:
+
+* [Klíče spravované zákazníkem (CMK)](../platform/customer-managed-keys.md) poskytují šifrování v klidovém prostředí pro vaše data pomocí šifrovacích klíčů, ke kterým máte přístup.
+* [Privátní odkaz Azure](../platform/private-link-security.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů.
+* [Přineste si vlastní úložiště (BYOS) pro Profiler a Snapshot Debugger](./profiler-bring-your-own-storage.md) vám poskytne plnou kontrolu nad zásadami šifrování, zásadami správy životnosti a přístupem k síti pro všechna data přidružená k Application Insights Profiler a Snapshot Debugger. 
+* [Úrovně rezervace kapacity](../platform/manage-cost-storage.md#pricing-model) umožňují v porovnání s průběžnými platbami ušetřit až 25%. 
+* Rychlejší příjem dat prostřednictvím Log Analytics příjmu streamování.
+
+## <a name="create-workspace-based-resource"></a>Vytvoření prostředku založeného na pracovních prostorech
+
+Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek Application Insights:
 
 ![Prostředek Application Insights založený na pracovním prostoru](./media/create-workspace-resource/create-workspace-based.png)
 
@@ -36,7 +48,7 @@ Po vytvoření prostředku se v podokně **přehledu** zobrazí příslušné in
 Kliknutím na modrý text přejdete k přidruženému pracovnímu prostoru Log Analytics, kde můžete využít nové sjednocené prostředí dotazů na pracovní prostor.
 
 > [!NOTE]
-> Pořád zajišťujeme úplnou zpětnou kompatibilitu pro vaše Application Insights dotazy na prostředky, sešity a výstrahy založené na protokolu v rámci Application Insights prostředí. Chcete-li se dotazovat/zobrazit proti [nové struktuře nebo schématu tabulky založené na pracovním prostoru](apm-tables.md) , musíte nejprve přejít do svého pracovního prostoru Log Analytics. V rámci verze Preview vám výběr **protokolů** z podoken Application Insights umožní přístup k prostředí klasických Application Insights dotazů.
+> Pořád zajišťujeme úplnou zpětnou kompatibilitu pro vaše Application Insights dotazy na prostředky, sešity a výstrahy založené na protokolu v rámci Application Insights prostředí. Chcete-li se dotazovat/zobrazit proti [nové struktuře nebo schématu tabulky založené na pracovním prostoru](apm-tables.md) , musíte nejprve přejít do svého pracovního prostoru Log Analytics. Výběr **protokolů (analýz)** z podoken Application Insights vám poskytne přístup k prostředí Classic Application Insights dotazů.
 
 ## <a name="copy-the-connection-string"></a>Zkopírování připojovacího řetězce
 
@@ -185,14 +197,6 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 ```
 
-## <a name="new-capabilities"></a>Nové funkce
-
-Application Insights na základě pracovního prostoru vám umožní využít výhod všech nejnovějších možností Azure Monitor, včetně těchto:
-
-* [Klíče spravované zákazníkem (CMK)](../platform/customer-managed-keys.md) poskytují šifrování v klidovém prostředí pro vaše data pomocí šifrovacích klíčů, ke kterým máte přístup.
-* [Privátní odkaz Azure](../platform/private-link-security.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů.
-* [Přineste si vlastní úložiště (BYOS) pro Profiler a Snapshot Debugger](./profiler-bring-your-own-storage.md) vám poskytne plnou kontrolu nad zásadami šifrování, zásadami správy životnosti a přístupem k síti pro všechna data přidružená k Application Insights Profiler a Snapshot Debugger. 
-
 ## <a name="modifying-the-associated-workspace"></a>Změna přidruženého pracovního prostoru
 
 Po vytvoření prostředku Application Insights založeném na pracovním prostoru můžete upravit přidružené pracovní prostory Log Analytics.
@@ -207,8 +211,3 @@ Funkce starší verze průběžného exportu není u prostředků založených n
 
 * [Zkoumání metrik](../platform/metrics-charts.md)
 * [Psaní analytických dotazů](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md

@@ -4,12 +4,12 @@ description: Přečtěte si, jak vystavit místní službu WCF pro webovou aplik
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: d6299899ee45bbad8b5e5fdbca01805604794d62
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922544"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983885"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Vystavení místní služby WCF pro webovou aplikaci v cloudu pomocí Azure Relay
 
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasaďte webovou aplikaci do Azure.
 > * Spusťte aplikaci v Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -344,7 +344,7 @@ Spusťte aplikace pro kontrolu, že funguje.
 
 Měla by se objevit vaše aplikace, jak běží v prohlížeči.
 
-![Webová aplikace][21]
+![Snímek obrazovky ukazuje příklad aplikace spuštěné v prohlížeči se zvýrazněnou adresou URL.][21]
 
 ## <a name="put-the-pieces-together"></a>Složení částí do jednoho celku
 

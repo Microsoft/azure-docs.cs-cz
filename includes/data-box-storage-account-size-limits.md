@@ -5,16 +5,16 @@ ms.subservice: heavy
 ms.topic: include
 ms.date: 06/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 5c5732a825116d4762c3a27bcbf9eac195327afb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acaebcea59e765f5544f1bfbd692c6508f66a84a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85378537"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024882"
 ---
 Tady jsou limity velikosti dat, která se zkopírují do účtu úložiště. Ujistěte se, že data, která nahráváte, jsou v souladu s těmito omezeními. Nejaktuálnější informace o těchto omezeních najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../articles/storage/blobs/scalability-targets.md) a [škálovatelnost a cíle výkonnosti souborů Azure](../articles/storage/files/storage-files-scale-targets.md).
 
 | Velikost dat zkopírovaných do účtu služby Azure Storage                      | Výchozí omezení          |
 |---------------------------------------------------------------------|------------------------|
-| Objekt blob bloku a objekt blob stránky                                            | Maximální limit je stejný jako [limit úložiště definovaný pro předplatné Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits) a zahrnuje data ze všech zdrojů, včetně data box.|
-| Azure Files                                                          | Maximální velikost standardních sdílených souborů je 5 TB. <br> Maximální velikost sdílených složek na úrovni Premium je 100TiB na sdílenou složku.<br> Všechny složky v *StorageAccount_AzureFiles* musí splňovat toto omezení.       |
+| Objekt blob bloku a objekt blob stránky                                            | Maximální limit je stejný jako [limit úložiště definovaný pro předplatné Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits) a zahrnuje data ze všech zdrojů, včetně data box. |
+| Soubory Azure                                                          | Data Box podporuje velké sdílené složky (100TiB), pokud je povoleno před vytvořením Data Box objednávky. <br> Pokud není povolený před vytvořením objednávky, maximální podporovaná velikost sdílení souborů je 5 TiB. <br> Soubory úrovně Premium se zatím nepodporují.<br> Všechny složky v *StorageAccount_AzureFiles* musí splňovat toto omezení. <br> Další informace najdete v tématu [povolení a vytváření velkých sdílených složek](../articles/storage/files/storage-files-how-to-create-large-file-share.md) .      |

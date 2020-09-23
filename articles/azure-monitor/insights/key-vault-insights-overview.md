@@ -1,23 +1,23 @@
 ---
-title: Monitorovat Key Vault pomocí Azure Monitor pro Key Vault (Preview) | Microsoft Docs
+title: Monitorovat Key Vault s Azure Monitor pro Key Vault | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro trezory klíčů.
 services: azure-monitor
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/13/2019
-ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.date: 09/10/2020
+ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069794"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894506"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault (Preview)
-Azure Monitor for Key Vault (Preview) poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
-Tento článek vám pomůže porozumět tomu, jak se zaregistruje a jak přizpůsobit prostředí Azure Monitor pro Key Vault (Preview).
+# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault
+Azure Monitor pro Key Vault poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
+Tento článek vám pomůže porozumět tomu, jak se zaregistruje a jak přizpůsobit prostředí Azure Monitor Key Vault.
 
-## <a name="introduction-to-azure-monitor-for-key-vault-preview"></a>Úvod do Azure Monitor pro Key Vault (Preview)
+## <a name="introduction-to-azure-monitor-for-key-vault"></a>Úvod do Azure Monitor pro Key Vault
 
 Před přechodem na prostředí byste měli pochopit, jak prezentuje a vizualizují informace.
 -    **V perspektivě stupnice** se zobrazuje zobrazení snímku výkonu na základě požadavků, rozpisu selhání a přehledu operací a latence.
@@ -49,7 +49,7 @@ Pokud chcete zobrazit využití a operace vašich trezorů klíčů ve všech va
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
 
-2. V Azure Portal v levém podokně vyberte **monitor** a v části přehledy vyberte **trezory klíčů (Preview)**.
+2. V Azure Portal v levém podokně vyberte **monitor** a v části přehledy vyberte **trezory klíčů**.
 
 ![Snímek obrazovky s přehledem možností více grafů](./media/key-vaults-insights-overview/overview.png)
 
@@ -83,7 +83,7 @@ Přístup k Azure Monitor pro Key Vault přímo z trezoru klíčů:
 
 1. V Azure Portal vyberte trezory klíčů.
 
-2. V seznamu vyberte Trezor klíčů. V části monitorování vyberte přehledy (Preview).
+2. V seznamu vyberte Trezor klíčů. V části monitorování vyberte přehledy.
 
 Tato zobrazení jsou přístupná i tak, že v sešitu na úrovni Azure Monitor vyberete název prostředku trezoru klíčů.
 
@@ -140,21 +140,21 @@ Vlastní nastavení se ukládají do vlastního sešitu, aby se zabránilo přep
 
 Pomocí následujících kroků můžete nakonfigurovat předplatné s více předplatnými a trezory klíčů a neúspěšné sešity pro obor na konkrétní odběry nebo trezory klíčů při každém spuštění:
 
-1. Na portálu vyberte **monitor** a v levém podokně vyberte **trezory klíčů (Preview)** .
+1. Na portálu vyberte **monitor** a v levém podokně vyberte **trezory klíčů** .
 2. V sešitu **přehledu** na panelu příkazů vyberte **Upravit**.
 3. V rozevíracím seznamu **odběry** vyberte jedno nebo více předplatných, které má Jo použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až 10 předplatných.
 4. V rozevíracím seznamu **trezory klíčů** vyberte jeden nebo více účtů, které chcete použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až na celkem 200 účtů úložiště.
 5. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 
-Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při použití Azure Monitor pro Key Vault (Preview). K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
+Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při použití Azure Monitor pro Key Vault. K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Řešení potíží s výkonem nebo selhání
 
-Chcete-li pomoct řešit problémy související s trezorem klíčů, které identifikujete pomocí Azure Monitor pro Key Vault (Preview), přečtěte si [dokumentaci Azure Key Vault](../../key-vault/index.yml).
+Chcete-li pomoct řešit případné problémy související s trezorem klíčů, které se Azure Monitor pro Key Vault, přečtěte si [dokumentaci Azure Key Vault](../../key-vault/index.yml).
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Proč můžu zobrazit jenom trezory klíčů 200
 

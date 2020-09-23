@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: předpověď cen automobilů pomocí návrháře (Preview)'
+title: 'Kurz: předpověď cen automobilů pomocí návrháře'
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak pomocí rozhraní přetažení využít výuku, skóre a nasazení modelu strojového učení. Tento kurz je první částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
 author: peterclu
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 9d25d9e13cc7f3dba0f4254cda6e1119ff9e2e68
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659815"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896701"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Kurz: předpověď ceny automobilu pomocí návrháře
+
 
 V tomto kurzu se dozvíte, jak pomocí návrháře Azure Machine Learning naučit a nasazovat model strojového učení, který předpovídá cenu každého auta. Návrhář je nástroj pro přetahování, který umožňuje vytvářet modely strojového učení bez jediného řádku kódu.
 
@@ -49,10 +49,6 @@ Pokud chcete vytvořit kanál Azure Machine Learning, potřebujete Azure Machine
 ### <a name="create-a-new-workspace"></a>Vytvoření nového pracovního prostoru
 
 Aby bylo možné používat návrháře, musíte nejprve použít pracovní prostor Azure Machine Learning. Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte v Azure Machine Learning.
-
-Pokud máte pracovní prostor Azure Machine Learning s edicí Enterprise, [přejděte k další části](#create-the-pipeline).
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Vytvoření kanálu
 
@@ -179,7 +175,7 @@ V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované zt
 
     :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Vybrat – sloupec":::
 
-## <a name="train-a-machine-learning-model"></a>Výuka modelu strojového učení
+## <a name="train-a-machine-learning-model"></a>Trénování modelu strojového učení
 
 Teď, když máte moduly, které jsou pro zpracování dat k dispozici, můžete nastavit školicí moduly.
 

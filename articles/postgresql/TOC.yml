@@ -8,90 +8,110 @@
       items:
         - name: Platnost kořenového certifikátu SSL brzy vyprší
           href: concepts-certificate-rotation.md
-- name: Rychlé starty
+- name: Sdílená dokumentace
+  items:
+    - name: Migrace
+      items:
+        - name: Migrace dat s využitím pg_dump a pg_restore
+          href: howto-migrate-using-dump-and-restore.md
+          displayName: 'pg_dump, pg_restore'
+        - name: Migrace dat s využitím pg_dump a psql
+          href: howto-migrate-using-export-and-import.md
+          displayName: 'import , export'
+        - name: Migrace s minimem výpadků pomocí DMS
+          href: howto-migrate-online.md
+          displayName: 'dms, data migration service'
+- name: Jeden server
   expanded: true
   items:
-    - name: Jeden server
+    - name: Dokumentace k Jednomu serveru
+      href: single-server/index.yml
+    - name: Přehled
+      href: overview-single-server.md
+    - name: Rychlé starty
+      expanded: true
       items:
-        - name: Vytvoření databáze – portál
-          href: quickstart-create-server-database-portal.md
-        - name: Vytvoření databáze – Azure CLI
-          href: quickstart-create-server-database-azure-cli.md
-        - name: Vytvoření databáze – příkaz up Azure CLI
-          href: quickstart-create-server-up-azure-cli.md
-        - name: Vytvoření databáze – Azure PowerShell
-          href: quickstart-create-postgresql-server-database-using-azure-powershell.md
-        - name: Vytvoření databáze – šablona ARM
-          href: quickstart-create-postgresql-server-database-using-arm-template.md
-          displayName: deploy azure resource manager template
+        - name: Vytvoření serveru
+          items:
+            - name: portál Azure
+              href: quickstart-create-server-database-portal.md
+              displayName: 'create single server,portal'
+            - name: Azure CLI
+              href: quickstart-create-server-database-azure-cli.md
+              displayName: create single server in CLI
+            - name: Příkaz up Azure CLI
+              href: quickstart-create-server-up-azure-cli.md
+              displayName: create single server up command
+            - name: Azure PowerShell
+              href: quickstart-create-postgresql-server-database-using-azure-powershell.md
+            - name: Šablona ARM
+              href: quickstart-create-postgresql-server-database-using-arm-template.md
+              displayName: deploy azure resource manager template
         - name: Připojení a dotazování
           items:
             - name: Python
               href: connect-python.md
+              displayName: 'python, django , connect'
             - name: Node.js
               href: connect-nodejs.md
+              displayName: 'nodejs, express, connect'
             - name: Java
               href: connect-java.md
+              displayName: 'java , connect'
             - name: Java s JDBC služby Spring Data
               href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+              displayName: 'spring java, jdbc, connect'
             - name: Java s JPA služby Spring Data
               href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+              displayName: 'java jpa, spring data'
             - name: Java s R2DBC služby Spring Data
               href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+              displayName: 'java, r2dbc, spring data'
             - name: Ruby
               href: connect-ruby.md
+              displayName: connect with ruby
             - name: PHP
               href: connect-php.md
+              displayName: connect with php
             - name: .NET
               href: connect-csharp.md
+              displayName: connect with .net
             - name: Přejít
               href: connect-go.md
-    - name: Hyperscale (Citus)
+              displayName: connect with go
+    - name: Kurzy
       items:
-        - name: Vytvoření skupiny serverů – portál
-          href: quickstart-create-hyperscale-portal.md
-- name: Kurzy
-  items:
-    - name: Jeden server
-      items:
-        - name: 1. Návrh databáze
+        - name: Návrh databáze
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: tutorial-design-database-using-azure-portal.md
+              displayName: design database
             - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
-        - name: 2. Návrh webové aplikace – Python
+        - name: Sestavení a nasazení webové aplikace v Pythonu (Django)
           href: ../app-service/tutorial-python-postgresql-app.md
+          displayName: 'python, django, connect'
           maintainContext: true
-        - name: 3. Monitorování a ladění
+        - name: Monitorování a ladění
           href: tutorial-monitor-and-tune.md
-    - name: Hyperscale (Citus)
+          displayName: 'monitor, alerts, configure'
+    - name: ukázky
       items:
-        - name: Návrh víceklientské databáze
-          href: tutorial-design-database-hyperscale-multi-tenant.md
-        - name: Návrh řídicího panelu v reálném čase
-          href: tutorial-design-database-hyperscale-realtime.md
-- name: ukázky
-  items:
-    - name: Azure CLI
-      href: sample-scripts-azure-cli.md
-- name: Koncepty
-  items:
-    - name: Jeden server
+        - name: Azure CLI
+          href: sample-scripts-azure-cli.md
+        - name: Integrované služby Azure Policy
+          href: policy-samples.md
+    - name: Koncepty
       items:
-        - name: Servery a databáze
-          items:
-            - name: Servery
-              href: concepts-servers.md
-            - name: Podporované verze
-              href: concepts-supported-versions.md
-            - name: Rozšíření PostgreSQL
-              href: concepts-extensions.md
-            - name: Vysoká dostupnost
-              href: concepts-high-availability.md
-        - name: Zdroje a prostředky
+        - name: Servery
+          href: concepts-servers.md
+        - name: Podporované verze
+          href: concepts-supported-versions.md
+        - name: Rozšíření PostgreSQL
+          href: concepts-extensions.md
+        - name: Vysvětlení cenových úrovní
           items:
             - name: Cenové úrovně
               href: concepts-pricing-tiers.md
@@ -99,270 +119,485 @@
               href: concept-reserved-pricing.md
             - name: Omezení
               href: concepts-limits.md
-        - name: Zabezpečení a přístup k datům
+        - name: Zabezpečení
           items:
             - name: Přehled zabezpečení
               href: concepts-security.md
+              displayName: 'security, overview'
             - name: Konfigurace SSL
               href: concepts-ssl-connection-security.md
+              displayName: 'security,ssl'
             - name: Architektura připojení
               href: concepts-connectivity-architecture.md
-            - name: Pravidla brány firewall
-              href: concepts-firewall-rules.md
-            - name: Virtuální síť
-              href: concepts-data-access-and-security-vnet.md
+              displayName: 'security, architecture'
             - name: Rozšířená ochrana před internetovými útoky
               href: concepts-data-access-and-security-threat-protection.md
+              displayName: 'security, advanced threat protection'
             - name: Ověřování Azure AD
               href: concepts-aad-authentication.md
-            - name: Privátní propojení
-              href: concepts-data-access-and-security-private-link.md
+              displayName: 'security, aad, active directory'
             - name: Šifrování dat
               href: concepts-data-encryption-postgresql.md
+              displayName: 'security, data encryption'
             - name: Dvojité šifrování infrastruktury
               href: concepts-infrastructure-double-encryption.md
-            - name: Mechanismy zabezpečení služby Azure Policy
-              displayName: 'regulatory, compliance, standards, domains'
-              href: ./security-controls-policy.md
-            - name: Standardní hodnoty zabezpečení pro srovnávací test zabezpečení Azure
+              displayName: 'security, infrastructure encryption'
+            - name: Standardní hodnoty zabezpečení
               href: security-baseline.md
+        - name: Sítě
+          items:
+            - name: Pravidla brány firewall
+              href: concepts-firewall-rules.md
+              displayName: 'firewall rules, security, connect'
+            - name: Virtuální síť
+              href: concepts-data-access-and-security-vnet.md
+              displayName: 'security, service endpoint'
+            - name: Private Link
+              href: concepts-data-access-and-security-private-link.md
+              displayName: 'security, private link, private endpoint'
         - name: Kontinuita podnikových procesů
           items:
             - name: Úvod do provozní kontinuity
               displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
               href: concepts-business-continuity.md
+            - name: Vysoká dostupnost
+              href: concepts-high-availability.md
             - name: Zálohování a obnovení
               href: concepts-backup.md
+              displayName: 'backup ,restore, georestore, geo-restore, outage'
         - name: Monitorování a ladění
           items:
             - name: Monitorování a ladění
               href: concepts-monitoring.md
+              displayName: 'monitor, tune, alerts'
             - name: Protokoly
               href: concepts-server-logs.md
+              displayName: 'monitor, server logs'
             - name: Protokoly auditu
               href: concepts-audit.md
+              displayName: 'audit logs, monitor'
             - name: Úložiště dotazů
               items:
                 - name: Úložiště dotazů
                   href: concepts-query-store.md
+                  displayName: 'performance, optimize, query store'
                 - name: Scénáře použití úložiště dotazů
                   href: concepts-query-store-scenarios.md
+                  displayName: 'query store, performance, optimize'
                 - name: Osvědčené postupy pro úložiště dotazů
                   href: concepts-query-store-best-practices.md
-            - name: Query Performance Insight
+            - name: Informace o výkonu dotazu
               href: concepts-query-performance-insight.md
+              displayName: 'query store, performance, optimize, insights'
             - name: Doporučení k výkonu
               href: concepts-performance-recommendations.md
-        - name: Vývoj
+              displayName: 'query store, performance, optimize, recommendations'
+        - name: Vývoj aplikací
           items:
             - name: Knihovny připojení
               href: concepts-connection-libraries.md
+              displayName: 'libraries, drivers'
             - name: Odolnost připojení
               href: concepts-connectivity.md
-            - name: Vývoj s využitím služby Azure Kubernetes Service (AKS)
-              href: concepts-aks.md
-            - name: Java
-              items:
-                - name: Použití Javy a JDBC
-                  href: connect-java.md
-                - name: Konfigurace JDBC služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
-                - name: Konfigurace JPA služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
-                - name: Konfigurace R2DBC služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql
+              displayName: 'transient errors, connection issues, connectivity issues, pooling'
         - name: Replikace
           items:
             - name: Čtení replik
               href: concepts-read-replicas.md
+              displayName: 'replication, read replica'
             - name: Logické dekódování
               href: concepts-logical.md
-    - name: Hyperscale (Citus)
+              displayName: logical decoding
+    - name: Návody
       items:
-        - name: Distribuovaná data
-          items:
-            - name: Uzly a tabulky
-              href: concepts-hyperscale-nodes.md
-            - name: Určení typu aplikace
-              href: concepts-hyperscale-app-type.md
-            - name: Volba distribučního sloupce
-              href: concepts-hyperscale-choose-distribution-column.md
-            - name: Společné umístění tabulek
-              href: concepts-hyperscale-colocation.md
-        - name: Zabezpečení a přístup k datům
-          items:
-            - name: Pravidla brány firewall
-              href: concepts-hyperscale-firewall-rules.md
-            - name: Konfigurace SSL
-              href: concepts-hyperscale-ssl-connection-security.md
-            - name: Standardní hodnoty zabezpečení pro srovnávací test zabezpečení Azure
-              href: postgresql-hyperscale-security-baseline.md
-        - name: Kontinuita podnikových procesů
-          items:
-            - name: Zálohování a obnovení
-              href: concepts-hyperscale-backup.md
-        - name: Monitorování a ladění
-          items:
-            - name: Monitorování a ladění
-              href: concepts-hyperscale-monitoring.md
-        - name: Rozšíření PostgreSQL
-          href: concepts-hyperscale-extensions.md
-        - name: Vysoká dostupnost
-          href: concepts-hyperscale-high-availability.md
-        - name: Zdroje a prostředky
-          items:
-            - name: Možnosti konfigurace
-              href: concepts-hyperscale-configuration-options.md
-            - name: Předplacení záložní kapacity
-              href: concepts-hyperscale-reserved-pricing.md
-- name: Návody
-  items:
-    - name: Jeden server
-      items:
-        - name: Správa serveru
+        - name: Správa a škálování
           items:
             - name: portál Azure
               href: howto-create-manage-server-portal.md
-        - name: Authentication
+              displayName: 'scale server, reset password'
+            - name: Azure CLI
+              href: how-to-manage-server-cli.md
+              displayName: 'scale server, reset password'
+        - name: Restartování serveru
+          items:
+            - name: portál Azure
+              href: howto-restart-server-portal.md
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
+        - name: Pravidla brány firewall
+          items:
+            - name: portál Azure
+              href: howto-manage-firewall-using-portal.md
+              displayName: 'firewall, portal, rules'
+            - name: Azure CLI
+              href: howto-manage-firewall-using-cli.md
+              displayName: 'firewall, rules, cli'
+        - name: Průvodce připojením a dotazováním
+          href: how-to-connect-query-guide.md
+          displayName: application development
+        - name: Obnovení serveru
+          items:
+            - name: portál Azure
+              href: howto-restore-server-portal.md
+              displayName: 'restore, georestore, geo-restore, outage'
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+              displayName: 'restore, georestore, geo-restore, outage'
+            - name: Azure PowerShell
+              href: howto-restore-server-powershell.md
+              displayName: 'restore, georestore, geo-restore, outage'
+        - name: Povolit ověřování
           items:
             - name: Vytvoření uživatelů
               href: howto-create-users.md
+              displayName: 'non-admin user, application development'
             - name: Konfigurace integrace Azure AD
               href: howto-configure-sign-in-aad-authentication.md
+              displayName: 'application development, aad, active directory'
             - name: Připojení s využitím spravované identity
               href: howto-connect-with-managed-identity.md
         - name: Optimalizace
           items:
             - name: Hromadné vkládání
               href: howto-optimize-bulk-inserts.md
+              displayName: 'bulk inserts, optimzie'
             - name: Automatický úklid
               href: howto-optimize-autovacuum.md
+              displayName: 'optimize, autovacuum'
             - name: Kolekce statistik dotazů
               href: howto-optimize-query-stats-collection.md
+              displayName: 'query optimize, performance'
             - name: Strategie tabulek Toast
               href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-        - name: Správa brány firewall
-          items:
-            - name: Azure Portal
-              href: howto-manage-firewall-using-portal.md
-            - name: Azure CLI
-              href: howto-manage-firewall-using-cli.md
-        - name: Obnovení serveru
-          items:
-            - name: Azure Portal
-              href: howto-restore-server-portal.md
-            - name: Azure CLI
-              href: howto-restore-server-cli.md
-            - name: Azure PowerShell
-              href: howto-restore-server-powershell.md
-        - name: Migrace databáze
-          items:
-            - name: Výpis a obnovení
-              href: howto-migrate-using-dump-and-restore.md
-            - name: Import a export
-              href: howto-migrate-using-export-and-import.md
-            - name: Migrace s minimem výpadků
-              href: howto-migrate-online.md
-        - name: Připojení aplikací
-          items:
-            - name: Konfigurace TLS
-              href: howto-tls-configurations.md
-            - name: Azure PowerShell
-              href: howto-connection-string-powershell.md
+              displayName: 'query optimize, performance'
+        - name: Konfigurace TLS
+          href: howto-tls-configurations.md
+          displayName: 'application development, TLS'
+        - name: Připojovací řetězce
+          href: howto-connection-string-powershell.md
+          displayName: 'application development, TLS'
         - name: Konfigurace parametrů serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-parameters-using-portal.md
+              displayName: 'application development, server parameters'
             - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
+              displayName: 'application development, server parameters'
             - name: Azure PowerShell
               href: howto-configure-server-parameters-using-powershell.md
+              displayName: 'application development, server parameters'
         - name: Automatické zvětšení úložiště
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-auto-grow-storage-portal.md
+              displayName: 'business continuity, scale , storage'
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
+              displayName: 'business continuity, scale , storage'
             - name: Azure PowerShell
               href: howto-auto-grow-storage-powershell.md
+              displayName: 'business continuity, scale , storage'
         - name: Protokoly přístupu
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-logs-in-portal.md
+              displayName: 'access logs, monitor'
             - name: Azure CLI
               href: howto-configure-server-logs-using-cli.md
+              displayName: 'access logs, monitor'
         - name: Monitorování
           items:
             - name: Vytváření upozornění na metriky
               href: howto-alert-on-metric.md
+              displayName: 'alerts, metrics, monitor'
         - name: Řešení potíží
           items:
             - name: Řešení chyb připojení
               href: howto-troubleshoot-common-connection-issues.md
+              displayName: 'debug, connection, issues, firewall, ssl, port'
             - name: Řešení potíží s šifrováním dat
               href: howto-data-encryption-troubleshoot.md
+              displayName: 'debug, security, encryption'
         - name: Rozšířená ochrana před internetovými útoky
           items:
             - name: portál Azure
               href: howto-database-threat-protection-portal.md
-        - name: Virtual Network
+              displayName: 'advanced thread, security'
+        - name: Virtuální síť
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-manage-vnet-using-portal.md
+              displayName: 'service endpoint, vnet, virtual network'
             - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
-        - name: Privátní propojení
+              displayName: 'service endpoint, vnet, virtual network'
+        - name: Private Link
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-privatelink-portal.md
+              displayName: 'private endpoint, private link'
             - name: Azure CLI
               href: howto-configure-privatelink-cli.md
+              displayName: 'private endpoint, private link'
         - name: Šifrování dat
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-data-encryption-portal.md
+              displayName: 'encryption, security'
             - name: Azure CLI
               href: howto-data-encryption-cli.md
+              displayName: 'encryption, security'
             - name: Ověření šifrování dat
               href: howto-data-encryption-validation.md
+              displayName: 'encryption, security'
         - name: Dvojité šifrování infrastruktury
           items:
-            - name: Konfigurace dvojitého šifrování infrastruktury
+            - name: Konfigurace dvojitého šifrování
               href: howto-double-encryption.md
-        - name: Restartování serveru
-          items:
-            - name: Azure Portal
-              href: howto-restart-server-portal.md
-            - name: Azure CLI
-              href: howto-restart-server-cli.md
-            - name: Azure PowerShell
-              href: howto-restart-server-powershell.md
+              displayName: 'encryption, security'
         - name: Odepření přístupu k veřejné síti
           items:
             - name: portál Azure
               href: howto-deny-public-network-access.md
+              displayName: 'deny, public access, security'
         - name: Replikace
           items:
-            - name: Správa replik pro čtení – Azure Portal
+            - name: portál Azure
               href: howto-read-replicas-portal.md
-            - name: 'Správa replik pro čtení – Azure CLI, REST API'
+              displayName: replica
+            - name: 'Azure CLI, REST API'
               href: howto-read-replicas-cli.md
-            - name: Správa replik pro čtení – Azure PowerShell
+              displayName: read replica
+            - name: Azure PowerShell
               href: howto-read-replicas-powershell.md
+              displayName: read replica
         - name: Přesun mezi oblastmi
           items:
             - name: portál Azure
               href: howto-move-regions-portal.md
-    - name: Hyperscale (Citus)
+- name: Flexibilní server (Preview)
+  expanded: true
+  items:
+    - name: Dokumentace k Flexibilnímu serveru
+      href: flexible-server/index.yml
+    - name: Přehled
+      href: flexible-server/overview.md
+    - name: Rychlé starty
+      expanded: true
       items:
+        - name: Vytvoření serveru a databáze
+          items:
+            - name: portál Azure
+              href: flexible-server/quickstart-create-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/quickstart-create-server-cli.md
+            - name: Šablona ARM
+              href: flexible-server/quickstart-create-server-arm-template.md
+        - name: Připojení a dotazování
+          items:
+            - name: Python
+              href: flexible-server/connect-python.md
+    - name: Kurzy
+      items:
+        - name: Vytvoření webové aplikace ve virtuální síti
+          href: flexible-server/tutorial-webapp-server-vnet.md
+        - name: Nasazení aplikace v Djangu
+          href: flexible-server/tutorial-django-app-service-postgres.md
+    - name: Koncepty
+      items:
+        - name: Servery
+          href: flexible-server/concepts-servers.md
+        - name: Podporované verze
+          href: flexible-server/concepts-supported-versions.md
+        - name: Výpočetní výkon a úložiště
+          href: flexible-server/concepts-compute-storage.md
+        - name: Sítě
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual networks, vnet, IP address, public access'
+        - name: Omezení
+          href: flexible-server/concepts-limits.md
+        - name: Rozšíření
+          href: flexible-server/concepts-extensions.md
+        - name: Plánovaná údržba
+          href: flexible-server/concepts-maintenance.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Přehled provozní kontinuity
+              href: flexible-server/concepts-business-continuity.md
+            - name: Zálohování a obnovení
+              href: flexible-server/concepts-backup-restore.md
+            - name: Vysoká dostupnost
+              href: flexible-server/concepts-high-availability.md
+        - name: Monitorování a ladění
+          items:
+            - name: Přehled monitorování a optimalizace
+              href: flexible-server/concepts-monitoring.md
+              displayName: 'monitor, metrics'
+            - name: Protokoly
+              href: flexible-server/concepts-logging.md
+              displayName: 'monitor, server logs'
+            - name: Protokoly auditu
+              href: flexible-server/concepts-audit.md
+        - name: Replikace
+          href: flexible-server/concepts-logical.md
+          displayName: logical decoding
+    - name: Návody
+      items:
+        - name: Správa serveru
+          items:
+            - name: portál Azure
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Plánovaná údržba
+          items:
+            - name: portál Azure
+              href: flexible-server/how-to-maintenance-portal.md
+        - name: Sítě
+          items:
+            - name: Privátní přístup (integrace virtuální sítě)
+              items:
+                - name: portál Azure
+                  href: flexible-server/how-to-manage-virtual-network-portal.md
+                - name: Azure CLI
+                  href: flexible-server/how-to-manage-virtual-network-cli.md
+            - name: Veřejný přístup (povolené IP adresy)
+              items:
+                - name: portál Azure
+                  href: flexible-server/how-to-manage-firewall-portal.md
+                - name: Azure CLI
+                  href: flexible-server/how-to-manage-firewall-cli.md
+            - name: TLS/SSL
+              items:
+                - name: Připojení pomocí protokolu TLS/SSL
+                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: Konfigurace parametrů serveru
+          items:
+            - name: portál Azure
+              href: flexible-server/howto-configure-server-parameters-using-portal.md
+              displayName: 'application development, server parameters'
+            - name: Azure CLI
+              href: flexible-server/howto-configure-server-parameters-using-cli.md
+              displayName: 'application development, server parameters'
+        - name: Škálování serveru
+          items:
+            - name: portál Azure
+              href: flexible-server/how-to-scale-compute-storage-portal.md
+        - name: Restart serveru
+          items:
+            - name: portál Azure
+              href: flexible-server/how-to-restart-server-portal.md
+        - name: Obnovení serveru
+          items:
+            - name: portál Azure
+              href: flexible-server/how-to-restore-server-portal.md
+        - name: Zastavení/spuštění serveru
+          items:
+            - name: portál Azure
+              href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Správa vysoké dostupnosti
+          items:
+            - name: portál Azure
+              href: flexible-server/how-to-manage-high-availability-portal.md
+        - name: Monitorování
+          items:
+            - name: Vytváření upozornění na metriky
+              href: flexible-server/howto-alert-on-metrics.md
+            - name: Konfigurace a přístup k protokolům
+              href: flexible-server/howto-configure-and-access-logs.md
+- name: Hyperscale (Citus)
+  items:
+    - name: Dokumentace k Hyperscale (Citus)
+      href: hyperscale/index.yml
+    - name: Přehled
+      items:
+        - name: Co je to Hyperscale (Citus)?
+          href: hyperscale-overview.md
+    - name: Rychlé zprovoznění
+      items:
+        - name: Vytvoření skupiny serverů
+          items:
+            - name: portál Azure
+              href: quickstart-create-hyperscale-portal.md
+              displayName: 'portal, create hyperscale'
+    - name: Kurzy
+      items:
+        - name: Návrh víceklientské databáze
+          href: tutorial-design-database-hyperscale-multi-tenant.md
+          displayName: 'hyperscale, tutorial, multi-tenant'
+        - name: Návrh řídicího panelu v reálném čase
+          href: tutorial-design-database-hyperscale-realtime.md
+          displayName: 'hyperscale, tutorial, real-time'
+    - name: ukázky
+      items:
+        - name: Azure CLI
+          href: sample-scripts-azure-cli.md
+          displayName: 'samples, azure cli'
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ./policy-samples.md
+    - name: Koncepty
+      items:
+        - name: Distribuovaná data
+          items:
+            - name: Uzly a tabulky
+              href: concepts-hyperscale-nodes.md
+              displayName: 'nodes, tables'
+            - name: Určení typu aplikace
+              href: concepts-hyperscale-app-type.md
+            - name: Volba distribučního sloupce
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: Společné umístění tabulek
+              href: concepts-hyperscale-colocation.md
+            - name: Možnosti konfigurace
+              href: concepts-hyperscale-configuration-options.md
+            - name: Předplacení záložní kapacity
+              href: concepts-hyperscale-reserved-pricing.md
+        - name: Zabezpečení
+          items:
+            - name: Pravidla brány firewall
+              href: concepts-hyperscale-firewall-rules.md
+              displayName: 'firewall, rules, hyperscale'
+            - name: Konfigurace SSL
+              href: concepts-hyperscale-ssl-connection-security.md
+              displayName: 'hyperscale, ssl'
+            - name: Standardní hodnoty zabezpečení
+              href: postgresql-hyperscale-security-baseline.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Zálohování a obnovení
+              href: concepts-hyperscale-backup.md
+              displayName: 'backup, restore, outage, hyperscale'
+            - name: Vysoká dostupnost
+              href: concepts-hyperscale-high-availability.md
+        - name: Monitorování a ladění
+          items:
+            - name: Monitorování a ladění
+              href: concepts-hyperscale-monitoring.md
+        - name: Rozšíření PostgreSQL
+          href: concepts-hyperscale-extensions.md
+    - name: Referenční dokumentace ke knihovně API
+      items:
+        - name: Funkce SQL API
+          href: reference-hyperscale-functions.md
+        - name: Parametry serveru
+          href: reference-hyperscale-parameters.md
+        - name: Systémové tabulky
+          href: reference-hyperscale-metadata.md
+    - name: Návody
+      items:
+        - name: Škálování skupiny serverů
+          href: howto-hyperscale-scaling.md
+        - name: Pravidla brány firewall
+          items:
+            - name: portál Azure
+              href: howto-hyperscale-manage-firewall-using-portal.md
+              displayName: 'firewall rule, hyperscale'
         - name: Vytvoření uživatelů
           href: howto-hyperscale-create-users.md
-        - name: Velikost skupiny serverů
-          href: howto-hyperscale-scaling.md
-        - name: Správa brány firewall
-          items:
-            - name: Azure Portal
-              href: howto-hyperscale-manage-firewall-using-portal.md
         - name: Distribuovaná data
           items:
             - name: Distribuce a úprava tabulek
@@ -373,33 +608,23 @@
           items:
             - name: Vytváření upozornění na metriky
               href: howto-hyperscale-alert-on-metric.md
+              dispalyName: alerts on hyperscale
             - name: Přístup k protokolům databáze
               href: howto-hyperscale-logging.md
+              displayName: 'log, hyperscale'
         - name: Řešení potíží
           items:
             - name: Řešení chyb připojení
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
+              displayName: 'connection errors, hyperscale'
 - name: Referenční informace
   items:
-    - name: Jeden server
-      items:
-        - name: Azure CLI
-          href: /cli/azure/postgres
-        - name: REST API
-          href: /rest/api/postgresql
-        - name: Šablona Resource Manageru
-          href: /azure/templates/microsoft.dbforpostgresql/allversions
-    - name: Hyperscale (Citus)
-      items:
-        - name: Funkce SQL API
-          href: reference-hyperscale-functions.md
-        - name: Parametry serveru
-          href: reference-hyperscale-parameters.md
-        - name: Systémové tabulky
-          href: reference-hyperscale-metadata.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
+    - name: Azure CLI
+      href: /cli/azure/postgres
+    - name: REST API
+      href: /rest/api/postgresql
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.dbforpostgresql/allversions
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

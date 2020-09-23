@@ -1,14 +1,14 @@
 ---
 title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
-ms.date: 08/10/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 57e508048b5e628911db90b0b6835f88b5ebd8fb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648342"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895428"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -30,11 +30,13 @@ Výsledky dokončeného cyklu vyhodnocení jsou k dispozici ve `Microsoft.Policy
 
 K vyhodnocení přiřazených zásad a iniciativ dojde v důsledku různých událostí:
 
-- Zásada nebo iniciativa je nově přiřazena k oboru. Použití přiřazení pro definovaný obor trvá přibližně 30 minut. Jakmile se použije, cyklus hodnocení začne u prostředků v tomto rozsahu s nově přiřazenou zásadou nebo iniciativou a v závislosti na účincích používaných zásadami nebo iniciativou jsou prostředky označené jako vyhovující nebo nevyhovující. Velký počet zásad nebo iniciativ vyhodnocených pro velký rozsah prostředků může chvíli trvat. V takovém případě neexistuje předem definované očekávání po dokončení zkušebního cyklu. Po dokončení budou aktualizované výsledky dodržování předpisů k dispozici na portálu a sadách SDK.
+- Zásada nebo iniciativa je nově přiřazena k oboru. Použití přiřazení pro definovaný obor trvá přibližně 30 minut. Jakmile se použije, cyklus hodnocení začne u prostředků v tomto rozsahu s nově přiřazenou zásadou nebo iniciativou a v závislosti na účincích používaných zásadami nebo iniciativou jsou prostředky označené jako kompatibilní, nekompatibilní nebo vyloučené. Velký počet zásad nebo iniciativ vyhodnocených pro velký rozsah prostředků může chvíli trvat. V takovém případě neexistuje předem definované očekávání po dokončení zkušebního cyklu. Po dokončení budou aktualizované výsledky dodržování předpisů k dispozici na portálu a sadách SDK.
 
 - Zásada nebo iniciativa, která je již přiřazena k oboru, je aktualizována. Cyklus hodnocení a časování pro tento scénář je stejný jako u nového přiřazení k oboru.
 
 - Prostředek se nasazuje nebo aktualizuje v rámci oboru s přiřazením prostřednictvím Azure Resource Manager, REST API nebo podporované sady SDK. V tomto scénáři se na portálu budou k dispozici informace o vlivu události (připojení, audit, zamítnutí, nasazení) a odpovídajících informací o stavu pro jednotlivé prostředky na portálu a sady SDK o 15 minutách. Tato událost nezpůsobí vyhodnocení dalších prostředků.
+
+- [Výjimka zásad](../concepts/exemption-structure.md) je vytvořena, aktualizována nebo odstraněna. V tomto scénáři se odpovídající přiřazení vyhodnocuje pro definovaný obor výjimky.
 
 - Standardní cyklus hodnocení dodržování předpisů. Každých 24 hodin se přiřazení automaticky přehodnotí. Velké zásady nebo podněty mnoha prostředků můžou nějakou dobu trvat, takže není k dispozici předem definovaná Očekávaná doba, po které se zkušební cyklus dokončí. Po dokončení budou aktualizované výsledky dodržování předpisů k dispozici na portálu a sadách SDK.
 
@@ -127,18 +129,16 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>Jak dodržování předpisů funguje
 
-V přiřazení je prostředek **nekompatibilní** , pokud nedodržuje pravidla zásad nebo iniciativ.
-Následující tabulka ukazuje, jak různé účinky zásad fungují s hodnocením podmínek pro výsledný stav dodržování předpisů:
+V přiřazení není prostředek **nekompatibilní** , pokud nedodržuje pravidla zásad nebo iniciativ a není _vyloučený_. Následující tabulka ukazuje, jak různé účinky zásad fungují s hodnocením podmínek pro výsledný stav dodržování předpisů:
 
 | Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Pravda | Neodpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ano | Neodpovídající |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Odpovídající |
-| Nová | Audit, AuditIfNotExist\* | Pravda | Neodpovídající |
+| Nová | Audit, AuditIfNotExist\* | Ano | Neodpovídající |
 | Nová | Audit, AuditIfNotExist\* | Nepravda | Odpovídající |
 
-\* Účinky Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE.
-Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
+\* Efekty upravit, připojit, DeployIfNotExist a AuditIfNotExist vyžadují, aby příkaz IF byl pravdivý. Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
 
 Předpokládejme například, že máte skupinu prostředků – ContsoRG s některými účty úložiště (zvýrazněné červeně), které jsou vystaveny veřejným sítím.
 
@@ -146,22 +146,23 @@ Předpokládejme například, že máte skupinu prostředků – ContsoRG s něk
    Diagram znázorňující obrázky pro pět účtů úložiště ve skupině prostředků contoso R G  Účty úložiště One a tři jsou modré, zatímco účty úložiště dvě, čtyři a pět jsou červené.
 :::image-end:::
 
-V tomto příkladu je třeba přistupují opatrně rizika zabezpečení. Teď, když jste vytvořili přiřazení zásady, se vyhodnotí pro všechny účty úložiště ve skupině prostředků ContosoRG. Audituje tři účty úložiště, které nedodržují předpisy, proto mění stavy na **nevyhovující předpisům.**
+V tomto příkladu je třeba přistupují opatrně rizika zabezpečení. Teď, když jste vytvořili přiřazení zásady, se vyhodnotí pro všechny zahrnuté a nevyňaté účty úložiště ve skupině prostředků ContosoRG. Audituje tři účty úložiště, které nedodržují předpisy, proto mění stavy na **nevyhovující předpisům.**
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Diagram dodržování předpisů účtu úložiště ve skupině prostředků contoso R G" border="false":::
    Diagram znázorňující obrázky pro pět účtů úložiště ve skupině prostředků contoso R G Účty úložiště: 1 a tři teď mají zelenou zaškrtnutí pod nimi, zatímco účty úložiště dvě, čtyři a pět nyní mají červené upozornění pod nimi.
 :::image-end:::
 
-Kromě **kompatibilních** a **nekompatibilních**zásad a prostředků mají tři další stavy:
+Kromě **kompatibilních** a **nekompatibilních**zásad a prostředků mají čtyři další stavy:
 
-- **Konflikt**: Existují dvě nebo více zásad s konfliktními pravidly. Například dvě zásady připojují stejnou značku s různými hodnotami.
+- **Výjimka**: prostředek je v oboru přiřazení, ale má [definovanou výjimku](../concepts/exemption-structure.md).
+- **Konflikt**: Existují dvě nebo více definic zásad s konfliktními pravidly. Například dvě definice připojí stejnou značku s různými hodnotami.
 - **Nezahájeno**: cyklus vyhodnocení se nespustil pro zásady nebo prostředek.
 - **Neregistrováno**: poskytovatel prostředků Azure Policy nebyl zaregistrován nebo účet přihlášený nemá oprávnění ke čtení dat dodržování předpisů.
 
-Azure Policy používá pole **typ** a **název** v definici k určení, jestli se jedná o shodu prostředku. Pokud se prostředek shoduje, je považován za platný a má stav buď **kompatibilní** , nebo **nekompatibilní**. Pokud je v definici jediná vlastnost **Type** nebo **Name** , pak jsou vyhodnoceny všechny prostředky, které jsou považovány za použitelné a jsou vyhodnocovány.
+Azure Policy používá pole **typ** a **název** v definici k určení, jestli se jedná o shodu prostředku. Pokud se prostředek shoduje, je považován za platný a má stav buď **kompatibilní**, **nekompatibilní**nebo **vyloučený**. Pokud je v definici jediná vlastnost **Type** nebo **Name** , pak jsou vyhodnoceny všechny zahrnuté a nevyňaté prostředky, které jsou považovány za použitelné a jsou vyhodnocovány.
 
-Procento dodržování předpisů je určeno vydělením **odpovídajících** prostředků _celkovými prostředky_.
-_Celkem prostředků_ je definováno jako součet **kompatibilních**, **nekompatibilních**a **konfliktních** prostředků. Celková čísla dodržování předpisů jsou součtem různých prostředků, **které jsou v souladu s** hodnotou součet všech různých prostředků. Na následujícím obrázku je více než 20 různých prostředků, které jsou k dispozici, a pouze jeden z nich **nedodržuje předpisy**. Celkové dodržování předpisů prostředků je 95% (19 z 20).
+Procento dodržování předpisů je určeno vydělením **kompatibilních** a **osvobozených** prostředků _celkovými prostředky_. _Celkem prostředků_ je definováno jako součet **kompatibilních**a **nekompatibilních, nekompatibilních**a **konfliktních** prostředků. **Exempt** Celková čísla dodržování předpisů jsou součtem různých prostředků, které jsou v souladu s **předpisy** , a jejich **vyloučení** je dělené součtem všech různých prostředků. Na následujícím obrázku je více než 20 různých prostředků, které jsou k dispozici, a pouze jeden z nich **nedodržuje předpisy**.
+Celkové dodržování předpisů prostředků je 95% (19 z 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Snímek obrazovky s podrobnostmi o dodržování předpisů zásad ze stránky dodržování předpisů." border="false":::
 

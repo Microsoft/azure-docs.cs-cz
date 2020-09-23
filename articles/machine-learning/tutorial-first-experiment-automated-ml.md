@@ -10,20 +10,17 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f68867a7b24e9c5d8dafa0da65209e14eeae5210
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047847"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896482"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto kurzu se naučíte, jak vytvořit základní model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného strojového učení v Azure Machine Learning Studiu. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
->[!IMPORTANT]
-> Automatizované prostředí strojového učení v nástroji Azure Machine Learning Studio je ve verzi Preview. Některé funkce nemusí být podporované nebo mají omezené možnosti.
+V tomto kurzu se naučíte, jak vytvořit jednoduchý model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného strojového učení v Azure Machine Learning Studiu. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
 Pomocí automatizovaného strojového učení můžete automatizovat časově náročné úlohy. Automatizované Machine Learning rychle projde mnoho kombinací algoritmů a parametrů, které vám pomůžou najít nejlepší model na základě metriky úspěšnosti výběru.
 
@@ -37,7 +34,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -47,9 +44,9 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
 
-Pracovní prostor **Enterprise Edition** vytvoříte prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
+Vytvořte pracovní prostor prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
+[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
 > Poznamenejte si svůj **pracovní prostor** a **předplatné**. Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
@@ -76,7 +73,7 @@ Provedete následující kroky experimentu a spustíte je pomocí nástroje Azur
 
 Před konfigurací experimentu nahrajte datový soubor do svého pracovního prostoru ve formě Azure Machine Learning datové sady. V takovém případě vám umožní zajistit, aby vaše data byla pro váš experiment vhodně formátována.
 
-1. Vytvořte novou datovou sadu výběrem možnosti **místní soubory** z rozevíracího seznamu **+ vytvořit datovou sadu** . 
+1. Vytvořte novou datovou sadu výběrem možnosti **místní soubory** z rozevíracího seznamu  **+ vytvořit datovou sadu** . 
 
     1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Rozhraní Automated ML aktuálně podporuje pouze TabularDatasets, takže typ datové sady by měl být výchozí *tabulkou*.
 
@@ -96,7 +93,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Popis| Hodnota pro kurz
+        Pole|Description| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
@@ -114,29 +111,29 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
     
     1. Jakmile se datová sada zobrazí v seznamu, vyberte ji.
     
-    1. Přečtěte si **Náhled dat** a ujistěte se, že jste nezahrnuli **Day_of_week** pak vyberte **OK**.
+    1. Přečtěte si **Náhled dat**  a ujistěte se, že jste nezahrnuli **Day_of_week** pak vyberte **OK**.
 
-    1. Vyberte **Další**.
+    1. Vyberte  **Další**.
 
 ## <a name="configure-experiment-run"></a>Konfigurace experimentového běhu
 
 Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahrnuje úkoly návrhu, jako je například, výběr velikosti prostředí COMPUTE a určení toho, který sloupec chcete odhadnout. 
 
 1. Naplňte formulář pro **spuštění konfigurace** následujícím způsobem:
-    1. Zadejte tento název experimentu:`my-1st-automl-experiment`
+    1. Zadejte tento název experimentu: `my-1st-automl-experiment`
 
     1. Jako cílový sloupec vyberte **y** , co chcete předpovědět. Tento sloupec indikuje, jestli se klient přihlásil k odběru termínu nebo ne.
     
     1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Výpočetní cíl je místní nebo cloudové prostředí, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. Pro tento experiment používáme cloudový výpočetní výkon. 
 
-        Pole | Popis | Hodnota pro kurz
+        Pole | Description | Hodnota pro kurz
         ----|---|---
-        Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
+        Název výpočetních prostředků |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
         &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
         &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
         Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
         Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
-        Upřesnit nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
+        Pokročilá nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
 
             **Dokončení této akce trvá několik minut.** 
@@ -151,7 +148,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
 
     1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
-        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
+        Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
         Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
@@ -162,7 +159,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         
         Vyberte **Uložit**.
 
-1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění** se **stavem spuštění** v horní části.
+1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění**  se **stavem spuštění** v horní části.
 
 >[!IMPORTANT]
 > Příprava na Příprava spuštění experimentu trvá **10-15 minut** .
@@ -203,7 +200,7 @@ Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přib
     ----|----
     Název nasazení| Moje automl – nasazení
     Popis nasazení| Moje první automatizované nasazení experimentu Machine Learning
-    Typ výpočtu | Výběr instance služby Azure COMPUTE (ACI)
+    Typ výpočetních prostředků | Výběr instance služby Azure COMPUTE (ACI)
     Povolit ověřování| Zakázat. 
     Použití vlastních nasazení| Zakázat. Umožňuje automaticky vygenerovat výchozí soubor ovladače (skript bodování) a soubor prostředí. 
     

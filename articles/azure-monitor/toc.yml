@@ -65,7 +65,7 @@
           href: learn/tutorial-users.md
         - name: Řídicí panel s daty aplikací
           href: learn/tutorial-app-dashboards.md
-- name: ukázky
+- name: Ukázky
   items:
     - name: Šablony Resource Manageru
       items:
@@ -469,7 +469,7 @@
           href: platform/autoscale-custom-metric.md
         - name: Škálování škálovacích sad virtuálních počítačů
           href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
-        - name: Škálování škálovacích sad virtuálních počítačů s využitím šablon Resource Manageru
+        - name: Škálování škálovacích sad virtuálních počítačů pomocí šablon Resource Manageru
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: Použití webhooků a e-mailových oznámení
           href: platform/autoscale-webhook-email.md
@@ -677,7 +677,7 @@
           items:
             - name: Přehled
               href: app/codeless-overview.md
-            - name: Škálovací sada a virtuální počítač Azure
+            - name: Virtuální počítač Azure a škálovací sada virtuálních počítačů
               href: app/azure-vm-vmss-apps.md
             - name: Azure App Service
               displayname: 'App Service, web app, PaaS, Azure web app'
@@ -728,6 +728,8 @@
           href: app/create-new-resource.md
         - name: Vytvoření prostředku (na základě pracovního prostoru)
           href: app/create-workspace-resource.md
+        - name: Migrace do prostředku založeného na pracovním prostoru
+          href: app/convert-classic-resource.md
         - name: Řídicí panel aplikací
           displayname: 'dashboard, Application Insights dashboard'
           href: app/overview-dashboard.md
@@ -1010,8 +1012,6 @@
               href: insights/container-insights-region-mapping.md
         - name: Monitorování výkonu
           href: insights/container-insights-analyze.md
-        - name: Monitorování stavu
-          href: insights/container-insights-health.md
         - name: Monitorování výkonu GPU
           href: insights/container-insights-gpu-monitoring.md
         - name: Monitorování nasazení a HPA
@@ -1042,8 +1042,6 @@
           href: insights/container-insights-agent-config.md
         - name: Aktualizace pro zapnutí metrik
           href: insights/container-insights-update-metrics.md
-        - name: Konfigurace sledování pro cluster
-          href: insights/container-insights-health-monitors-config.md
         - name: Správa nákladů a využití
           href: insights/container-insights-cost.md
         - name: Zákaz monitorování

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014587"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982975"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -156,7 +156,8 @@ Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a pro
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Po načtení modelu se vykresluje šachovnicový vzor.
 
-Pokud vykreslený obrázek vypadá takto: ![ šachovnice ](../reference/media/checkerboard.png) narazí na [omezení mnohoúhelníku pro standardní velikost konfigurace](../reference/vm-sizes.md). Chcete-li zmírnit, buď přepněte na velikost konfigurace **Premium** , nebo snižte počet viditelných mnohoúhelníků.
+Pokud vykreslený obrázek vypadá takto: ![ snímek obrazovky zobrazuje mřížku černého a bílého čtverečku pomocí nabídky nástroje.](../reference/media/checkerboard.png)
+vykreslovací modul pak narazí na [omezení mnohoúhelníku pro standardní velikost konfigurace](../reference/vm-sizes.md). Chcete-li zmírnit, buď přepněte na velikost konfigurace **Premium** , nebo snižte počet viditelných mnohoúhelníků.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Vykreslený obraz v Unity je souběžný
 
@@ -216,7 +217,7 @@ Pokud byly výše uvedené kroky vyčerpány a zbývající z-boje je nepřijate
 
 Vlastnost ARR má funkci pro určení, zda by povrchy mohly z boje: [šachovnice zvýrazňování](../overview/features/z-fighting-mitigation.md). Můžete také určit vizuálně co způsobuje z-boje. Následující první animace ukazuje příklad ztráty hloubky ve vzdálenosti a druhá ukazuje příklad téměř coplanarch ploch:
 
-![Hloubka a přesnost z-boje](./media/depth-precision-z-fighting.gif)  ![coplanar-z-boj](./media/coplanar-z-fighting.gif)
+![Animace ukazuje příklad ztráty hloubkové přesnosti v rámci vzdálenosti.](./media/depth-precision-z-fighting.gif)  ![Animace ukazuje příklad téměř coplanar povrchů.](./media/coplanar-z-fighting.gif)
 
 Tyto příklady porovnejte s vaším z-bojeem a určete příčinu nebo volitelně postupujte podle kroků tohoto podrobného pracovního postupu:
 
@@ -247,4 +248,4 @@ Coplanar povrchy můžou mít řadu různých příčin:
 ## <a name="next-steps"></a>Další kroky
 
 * [Požadavky na systém](../overview/system-requirements.md)
-* [Síťové požadavky](../reference/network-requirements.md)
+* [Požadavky sítě](../reference/network-requirements.md)
