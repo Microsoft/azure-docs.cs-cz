@@ -7,24 +7,25 @@ author: dylankil
 manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-javascript
 ms.author: dylankil
-ms.openlocfilehash: 63a7e7756eee80b8d57c168890ba3613bbd11f01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 572bd35a916ed97ab0c846e2b8d561bd27b145cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602332"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978303"
 ---
-[Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
+[Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
 V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Když nakonfigurujete vlastnosti prostředí, budete potřebovat některé z hodnot, které jsou tady vytvořené. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 * [Git](https://git-scm.com/).
 * [Sada moderního čtecího zařízení](https://github.com/microsoft/immersive-reader-sdk).
@@ -34,27 +35,27 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Spustí nový projekt v Android Studio. Zdrojový kód pro tento příklad je k dispozici jako součást [sady pro moderní čtečku](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-![Nový projekt](../../media/android/java/android-studio-create-project.png)
+![Nový projekt – Android](../../media/android/java/android-studio-create-project.png)
 
 V okně **Zvolte projekt** vyberte možnost **prázdná aktivita**a potom vyberte možnost **Další**.
 
-![Prázdný projekt aktivity](../../media/android/java/android-studio-empty-activity.png)
+![Prázdný projekt aktivity – Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurace projektu
 
 Pojmenujte projekt **QuickstartJava**a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Java** a pak vyberte **Dokončit**.
 
-![Konfigurace projektu](../../media/android/java/android-studio-configure-project.png)
+![Konfigurace projektu – Android](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Nastavení prostředků a ověřování
 
 Vytvořte novou složku **/assets** .
 
-![Vytvoří novou složku assets.](../../media/android/java/android-studio-assets-folder.png)
+![Vytvoření nové složky assets – Android](../../media/android/java/android-studio-assets-folder.png)
 
  Ve složce assets (prostředky) vytvořte soubor s názvem **ENV** . Přidejte následující názvy a hodnoty a podle potřeby zadejte hodnoty. Tento soubor ENV Nepotvrzujte do správy zdrojových kódů, protože obsahuje tajné klíče, které by se neměly zveřejnit.
 
-![Vytvořit nový soubor ENV](../../media/android/java/android-studio-create-env-file.png)
+![Vytvoření nového souboru ENV – Android](../../media/android/java/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -81,13 +82,13 @@ dependencies {
 }
 ```
 
-![Implementace aplikace Gradle](../../media/android/java/android-studio-build-gradle.png)
+![Implementace aplikací Gradle – Android](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>Aktualizace řetězců aplikace a prostředků rozložení
 
 Nahraďte obsah v **res/Strings/strings.xml** pomocí následujících řetězců, které se mají v aplikaci použít.
 
-![strings.xml aplikace](../../media/android/java/android-studio-strings.png)
+![strings.xml aplikace – Android](../../media/android/java/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -97,7 +98,7 @@ Nahraďte obsah v **res/Strings/strings.xml** pomocí následujících řetězc�
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -105,7 +106,7 @@ Nahraďte obsah v **res/Strings/strings.xml** pomocí následujících řetězc�
 
 Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kódem XML, který se použije v aplikaci. Toto XML je rozložení uživatelského rozhraní aplikace.
 
-![activity_main.xml aplikace](../../media/android/java/android-studio-activity-main-xml.png)
+![activity_main.xml aplikace – Android](../../media/android/java/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,9 +207,9 @@ Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kóde
 
 Ve složce **res/layout/** Folder vytvořte nový soubor prostředků rozložení a pojmenujte ho **activity_immersive_reader**. Potom nahraďte jeho obsah následujícím kódem XML. Tento kód XML přidá komponentu WebView, kterou bude používat IRActivity kód Java, který bude vytvořen v pozdějším kroku. Prozatím není definováno a způsobí chyby.
 
-![Vytvořit nový soubor prostředků rozložení](../../media/android/java/android-studio-new-layout-resource.png)
+![Vytvořit nový soubor prostředků rozložení – Android](../../media/android/java/android-studio-new-layout-resource.png)
 
-![Konfigurace nového prostředku rozložení](../../media/android/java/android-studio-activity-immersive-reader.png)
+![Konfigurace nového prostředku rozložení – Android](../../media/android/java/android-studio-activity-immersive-reader.png)
 
 ```activity_immersive_reader.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +236,7 @@ Ve složce **res/layout/** Folder vytvořte nový soubor prostředků rozložen�
 
 Ve složce **/Java/com.example.quickstartjava** se zobrazí existující soubor třídy **MainActivity. Java** Java. Tato složka je tam, kde je vytvořená logika aplikace.
 
-![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
+![MainActivity – Android](../../media/android/java/android-studio-main-activity-java.png)
 
 Obsah **MainActivity. Java** nahraďte následujícím kódem. V kódu se odkazuje na několik tříd, které ještě neexistují, a vytvoří se později.
 
@@ -292,7 +293,7 @@ Ve složce **/Java/com.example.quickstartjava** vytvoříme 16 dalších soubor�
 
 Pokud chcete vytvořit nový soubor třídy Java **ImmersiveReader. Java** , klikněte pravým tlačítkem na složku v Android Studio, vyberte **Nový**a pak vyberte **Třída Java**. Stejnou metodu použijete k vytvoření souborů tříd Java pro každý nový soubor třídy Java, který vytvoříte.
 
-![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
+![ImmersiveReader – Android](../../media/android/java/android-studio-immersivereader-java.png)
 
 Obsah **ImmersiveReader. Java** nahraďte následujícím kódem:
 
@@ -376,7 +377,7 @@ public class ImmersiveReader {
 
 Vytvořte nový soubor třídy Java **IRActivity. Java** .
 
-![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
+![IRActivity – Android](../../media/android/java/android-studio-iractivity-java.png)
 
 Obsah **IRActivity. Java** nahraďte následujícím kódem:
 
@@ -460,7 +461,7 @@ public class ImmersiveReader {
 
 Vytvořte nový soubor třídy Java **IRError. Java** .
 
-![IRError](../../media/android/java/android-studio-irerror-java.png)
+![IRError – Android](../../media/android/java/android-studio-irerror-java.png)
 
 Obsah **IRError. Java** nahraďte následujícím kódem:
 
@@ -539,7 +540,7 @@ public class IRError implements Parcelable {
 
 Vytvoří novou **chybu.** soubor třídy Java Java.
 
-![Chyba](../../media/android/java/android-studio-error-java.png)
+![Chyba – Android](../../media/android/java/android-studio-error-java.png)
 
 Nahraďte **Error. Java** obsahem následujícím kódem:
 
@@ -570,7 +571,7 @@ public class Error {
 
 Vytvořte nový soubor třídy Java **ReadableContent. Java** .
 
-![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
+![ReadableContent – Android](../../media/android/java/android-studio-readablecontent-java.png)
 
 Obsah **ReadableContent. Java** nahraďte následujícím kódem:
 
@@ -614,7 +615,7 @@ public class ReadableContent {
 
 Vytvořte nový soubor třídy Java **ReadableTextChunk. Java** .
 
-![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
+![ReadableTextChunk – Android](../../media/android/java/android-studio-readabletextchunk-java.png)
 
 Obsah **ReadableTextChunk. Java** nahraďte následujícím kódem:
 
@@ -646,7 +647,7 @@ public class ReadableTextChunk {
 
 Vytvořte nový soubor třídy Java **IRDataHolder. Java** .
 
-![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
+![IRDataHolder – Android](../../media/android/java/android-studio-irdataholder-java.png)
 
 Obsah **IRDataHolder. Java** nahraďte následujícím kódem:
 
@@ -711,7 +712,7 @@ public class IRDataHolder {
 
 Vytvořte nový soubor třídy Java **IRAuthenticator. Java** .
 
-![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
+![IRAuthenticator – Android](../../media/android/java/android-studio-irauthenticator-java.png)
 
 Obsah **IRAuthenticator. Java** nahraďte následujícím kódem:
 
@@ -822,7 +823,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 Vytvořte nový soubor třídy Java **IRLauncher. Java** .
 
-![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
+![IRLauncher – Android](../../media/android/java/android-studio-irlauncher-java.png)
 
 Obsah **IRLauncher. Java** nahraďte následujícím kódem:
 
@@ -1015,7 +1016,7 @@ public class IRLauncher {
 
 Vytvořte nový soubor třídy Java **IRStore. Java** .
 
-![IRStore](../../media/android/java/android-studio-irstore-java.png)
+![IRStore – Android](../../media/android/java/android-studio-irstore-java.png)
 
 Obsah **IRStore. Java** nahraďte následujícím kódem:
 
@@ -1097,7 +1098,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 Vytvořte nový soubor třídy Java v **bloku. Java** .
 
-![Blok dat](../../media/android/java/android-studio-chunk-java.png)
+![Blok dat – Android](../../media/android/java/android-studio-chunk-java.png)
 
 Nahraďte obsah **bloku dat** pomocí následujícího kódu:
 
@@ -1134,7 +1135,7 @@ public class Chunk {
 
 Vytvoří nový soubor **. Java Class pro obsah.**
 
-![Obsah](../../media/android/java/android-studio-content-java.png)
+![Obsah – Android](../../media/android/java/android-studio-content-java.png)
 
 Obsah **. Java** nahraďte následujícím kódem:
 
@@ -1170,7 +1171,7 @@ public class Content {
 
 Vytvoří **nový soubor třídy Java Java.**
 
-![Možnosti](../../media/android/java/android-studio-options-java.png)
+![Možnosti – Android](../../media/android/java/android-studio-options-java.png)
 
 Nahraďte **možnostmi obsah. Java** následujícím kódem:
 
@@ -1204,7 +1205,7 @@ public class Options {
 
 Vytvořte nový soubor **. Java** Class třídy Java.
 
-![Zpráva](../../media/android/java/android-studio-message-java.png)
+![Zpráva – Android](../../media/android/java/android-studio-message-java.png)
 
 Obsah **Message. Java** nahraďte následujícím kódem:
 
@@ -1242,7 +1243,7 @@ public class Message {
 
 Vytvořte nový soubor třídy Java **WebAppInterface. Java** .
 
-![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
+![WebAppInterface – Android](../../media/android/java/android-studio-webappinterface-java.png)
 
 Obsah **WebAppInterface. Java** nahraďte následujícím kódem:
 
@@ -1293,9 +1294,9 @@ public class WebAppInterface {
 
 Implementace webového zobrazení potřebuje k práci HTML. Klikněte pravým tlačítkem na složku **/assets** , vytvořte nový soubor a pojmenujte ho **immersiveReader.html**.
 
-![Vytvořit nový soubor HTML](../../media/android/java/android-studio-immersive-reader-html.png)
+![Vytvoření nového souboru HTML – Android](../../media/android/java/android-studio-immersive-reader-html.png)
 
-![Umístění prostředku HTML](../../media/android/java/android-studio-immersive-reader-html-assets.png)
+![Umístění prostředku HTML – Android](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
 Přidejte následující kód HTML a JavaScript. Tento kód přidá do aplikace sadu pro moderní čtečku a použije ji k otevření moderního čtecího zařízení pomocí kódu aplikace, který jsme napsali.
 
@@ -1352,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>Nastavení oprávnění aplikace
 
-![Souboru AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
+![Souboru AndroidManifest – Android](../../media/android/java/android-studio-android-manifest-xml.png)
 
 Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady moderní čtečky, aby fungovala, potřebujeme, abyste zajistili, že oprávnění aplikace jsou nakonfigurovaná tak, aby povolovala přístup k síti. Obsah **/manifests/AndroidManifest.xml** nahraďte následujícím kódem XML:
 
@@ -1389,7 +1390,7 @@ Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady modern�
 
 Použijte Android Studio ke spuštění aplikace na emulátoru zařízení. Když vyberete **moderní čtečku**, otevře se moderní čtečka s obsahem aplikace.
 
-![Asistivní čtečka](../../media/android/java/android-studio-device-emulator.png)
+![Moderní čtečka – Android](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Další kroky
 

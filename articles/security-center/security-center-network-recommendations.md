@@ -13,42 +13,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 36118bb99da5f0c7f918009413394d931415886f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076377"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883895"
 ---
 # <a name="protect-your-network-resources"></a>Ochrana síťových prostředků
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
-
-Tento článek vysvětluje stránku **síť** v části věnované zabezpečení prostředků v Security Center.
 
 Úplný seznam doporučení pro sítě najdete v tématu [doporučení pro sítě](recommendations-reference.md#recs-network).
 
 Tento článek se zabývá doporučeními, která se vztahují na vaše prostředky Azure z hlediska zabezpečení sítě. Doporučení pro sítě – centrum pro brány firewall nové generace, skupiny zabezpečení sítě, přístup k virtuálnímu počítači JIT, který má nadlimitně povolující pravidla příchozího provozu a další. Seznam doporučení k síti a nápravné akce najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
-> [!NOTE]
-> Stránka **síť** vám umožňuje hluboko podrobně do stavu prostředků Azure z hlediska sítě. Mapa sítě a adaptivní síťové ovládací prvky jsou k dispozici pouze pro Azure Security Center úrovně Standard. [Pokud používáte úroveň Free, můžete kliknutím na toto tlačítko **Zobrazit starší síťové sítě** a přijímat doporučení síťových prostředků](#legacy-networking).
->
+Mezi **síťové** funkce Security Center patří: 
 
-Stránka **sítě** poskytuje přehled oddílů, které můžete hluboko podrobně, a získat další informace o stavu síťových prostředků:
-
-- Mapa sítě (jenom Azure Security Center úrovně Standard)
-- Adaptivní posilování zabezpečení sítě
-- Doporučení zabezpečení sítě.
-- Okno starší **sítě** (okno předchozí sítě) 
+- Mapa sítě (vyžaduje Azure Defender)
+- [Adaptivní posílení zabezpečení sítě](security-center-adaptive-network-hardening.md) (vyžaduje Azure Defender)
+- Doporučení pro zabezpečení sítě
  
-[![Podokno sítě](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
+## <a name="view-your-networking-resources-and-their-recommendations"></a>Zobrazení síťových prostředků a jejich doporučení
+
+Na [stránce inventář](asset-inventory.md)prostředků použijte filtr typ prostředku k výběru síťových prostředků, které chcete prozkoumat:
+
+:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="Typy síťových prostředků inventáře prostředků" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
+
 
 ## <a name="network-map"></a>Mapa sítě
+
 Mapa interaktivní sítě poskytuje grafické zobrazení s překryvy zabezpečení, které vám dává doporučení a přehledy o posílení vašich síťových prostředků. Pomocí mapy můžete zobrazit topologii sítě vašich úloh Azure, připojení mezi virtuálními počítači a podsítěmi a schopnost přejít k podrobnostem z mapy do konkrétních prostředků a doporučení pro tyto prostředky.
 
 Otevření mapy sítě:
 
-1. V Security Center v části hygiena zabezpečení prostředků vyberte **sítě**.
-2. V části **Mapa sítě** klikněte na **Zobrazit topologii**.
+1. V nabídce Security Center otevřete řídicí panel Azure Defender a vyberte **Mapa sítě**.
+
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Otevření mapy sítě z řídicího panelu Azure Defenderu" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+
+1. Vyberte nabídku **vrstvy** a zvolte možnost **topologie**.
  
 Výchozí zobrazení mapy topologie zobrazuje:
 
@@ -114,31 +116,8 @@ Přechod k podrobnostem prostředku:
 [![Mapa síťových přenosů](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## <a name="legacy-networking"></a>Starší verze sítě<a name ="legacy-networking"></a>
-
-Pokud nemáte Security Center úroveň Standard, v této části se dozvíte, jak zobrazit bezplatné síťové doporučení.
-
-Pokud chcete získat přístup k těmto informacím, klikněte v okně síť na **Zobrazit starší síťové služby**. 
-
-[![Starší verze sítě](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
-
-### <a name="internet-facing-endpoints-section"></a>Část internetových koncových bodů
-V části **internetové koncové body** uvidíte virtuální počítače, které jsou aktuálně nakonfigurované s internetovým koncovým bodem, a jeho stav.
-
-Tato tabulka obsahuje název koncového bodu, internetovou IP adresu a aktuální stav závažnosti skupiny zabezpečení sítě a doporučení pro NGFW. Tabulka je řazená podle závažnosti.
-
-### <a name="networking-topology-section"></a>Část topologie sítě
-Část **topologie sítě** obsahuje hierarchické zobrazení prostředků.
-
-Tato tabulka je seřazená podle závažnosti (virtuální počítače a podsítě).
-
-V tomto zobrazení topologie zobrazuje první úroveň virtuální sítě. Druhý zobrazí podsítě a třetí úroveň zobrazí virtuální počítače, které patří do těchto podsítí. V pravém sloupci se zobrazuje aktuální stav doporučení skupiny zabezpečení sítě pro tyto prostředky.
-
-Třetí úroveň zobrazuje virtuální počítače, které jsou podobné tomu, co bylo popsáno dříve. Kliknutím na libovolný prostředek můžete získat další informace nebo použít požadovaný ovládací prvek zabezpečení nebo konfiguraci.
-
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících tématech:
 
-* [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrana služby Azure SQL Service v Azure Security Center](security-center-sql-service-recommendations.md)
+- [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)

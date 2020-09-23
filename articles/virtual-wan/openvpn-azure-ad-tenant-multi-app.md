@@ -1,18 +1,18 @@
 ---
 title: 'Virtuální síť WAN: tenant Azure AD pro různé skupiny uživatelů: ověřování Azure AD'
-description: P2S VPN můžete použít pro připojení k virtuální síti pomocí ověřování Azure AD.
+description: Nastavte tenanta Azure AD pro ověřování OpenVPN P2S a vytvořte a zaregistrujte více aplikací v Azure AD, abyste povolili různé přístupy pro různé uživatele a skupiny.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507688"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988266"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory (AD) pro připojení protokolu P2S OpenVPN
 
@@ -123,11 +123,11 @@ Pomocí tohoto [odkazu](https://go.microsoft.com/fwlink/?linkid=2117554) si stá
 
 1. Vyberte tři tečky (...) vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
 
-    ![odstranění](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. Vyberte **Odebrat** a odstraňte.
 
-    ![odstranění](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>Postup diagnostiky problémů s připojením
 

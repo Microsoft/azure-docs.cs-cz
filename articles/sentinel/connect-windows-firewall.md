@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: 5804dcc840eb666c1d43ea7d7ed7640b8f7ff371
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657438"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883819"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Připojení brány firewall v programu Windows Defender s pokročilým zabezpečením do Azure Sentinel
 
@@ -31,7 +31,7 @@ ms.locfileid: "89657438"
 > [!NOTE]
 > - Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 >
-> - Pokud se do stejného pracovního prostoru shromažďují služby Azure Sentinel a Azure Defender (dřív Azure Security Center), není potřeba pomocí tohoto konektoru povolit řešení brány Windows Firewall. Pokud tuto možnost povolíte, nezpůsobí duplikovaná data. 
+> - Pokud jsou výstrahy v programu Azure Defender z Azure Security Center již shromážděny do pracovního prostoru služby Azure Sentinel, není nutné povolit řešení brány Windows Firewall prostřednictvím tohoto konektoru. Pokud jste to ale povolili, nezpůsobí duplikovaná data. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,40 +47,37 @@ ms.locfileid: "89657438"
 
 ### <a name="instructions-tab"></a>Karta pokyny
 
-Na kartě **pokyny** proveďte následující kroky.
+- **Pokud jsou počítače s Windows v Azure:**
 
-- **Pokud jsou počítače s Windows v Azure, proveďte tyto kroky:**
+    1. Vyberte **instalovat agenta na virtuálním počítači Azure s Windows**.
 
-   1. Vyberte **instalovat agenta na virtuálním počítači Azure s Windows**.
-   
-   1. Klikněte na tlačítko **stáhnout & nainstalovat agenta pro virtuální počítače Azure s Windows >** odkaz, který se zobrazí.
-   
-   1. V seznamu **virtuální počítače** vyberte počítač s Windows, který chcete streamovat do Azure Sentinel. (Pokud chcete zajistit, aby se zobrazily jenom virtuální počítače s Windows, můžete vybrat **Windows** ve filtru sloupců operačního systému).
-   
-   1. V okně, které se otevře pro daný virtuální počítač, klikněte na **připojit**.
-   
-   1. Vraťte se do podokna **Virtual Machines** a opakujte předchozí dva kroky pro všechny ostatní virtuální počítače, které chcete připojit. Až budete hotovi, vraťte se do podokna **Brána firewall systému Windows** .
+    1. Klikněte na tlačítko **stáhnout & nainstalovat agenta pro virtuální počítače Azure s Windows >** odkaz, který se zobrazí.
 
-- **Pokud Váš počítač s Windows není virtuální počítač Azure, proveďte tyto kroky:**
-   
-   1. Vyberte **instalovat agenta na počítači s Windows mimo Azure**.
-   
-   1. Klikněte na **stáhnout & nainstalovat agenta pro počítače s Windows, které nejsou v Azure, >** odkaz, který se zobrazí.
-   
-   1. V podokně **Správa agentů** vyberte buď možnost **Stáhnout agenta pro Windows (64 bitů)** , nebo **Stáhnout agenta pro Windows (bit 32) (** podle potřeby).
-   
-   1. Zkopírujte řetězce **ID pracovního prostoru**, **primární klíč**a **sekundární klíč** do textového souboru. Zkopírujte tento soubor a stažený instalační soubor do počítače s Windows. Spusťte instalační soubor a po zobrazení výzvy zadejte ID a řetězce klíčů v textovém souboru během instalace.
-   
-   1. Vraťte se do podokna **Brána firewall systému Windows** .
+    1. V seznamu **virtuální počítače** vyberte počítač s Windows, který chcete streamovat do Azure Sentinel. (Pokud chcete zajistit, aby se zobrazily jenom virtuální počítače s Windows, můžete vybrat **Windows** ve filtru sloupců operačního systému).
 
-Po dokončení kroků na kartě **pokyny** klikněte na **instalovat řešení**.
+    1. V okně, které se otevře pro daný virtuální počítač, klikněte na **připojit**.
+
+    1. Vraťte se do podokna **Virtual Machines** a opakujte předchozí dva kroky pro všechny ostatní virtuální počítače, které chcete připojit. Až budete hotovi, vraťte se do podokna **Brána firewall systému Windows** .
+
+- **Pokud Váš počítač s Windows není virtuální počítač Azure:**
+
+    1. Vyberte **instalovat agenta na počítači s Windows mimo Azure**.
+
+    1. Klikněte na **stáhnout & nainstalovat agenta pro počítače s Windows, které nejsou v Azure, >** odkaz, který se zobrazí.
+
+    1. V podokně **Správa agentů** vyberte buď možnost **Stáhnout agenta pro Windows (64 bitů)** , nebo **Stáhnout agenta pro Windows (bit 32) (** podle potřeby).
+
+    1. Zkopírujte řetězce **ID pracovního prostoru**, **primární klíč**a **sekundární klíč** do textového souboru. Zkopírujte tento soubor a stažený instalační soubor do počítače s Windows. Spusťte instalační soubor a po zobrazení výzvy zadejte ID a řetězce klíčů v textovém souboru během instalace.
+
+    1. Vraťte se do podokna **Brána firewall systému Windows** .
+
+1. Klikněte na **instalovat řešení**.
 
 ### <a name="next-steps-tab"></a>Karta Další kroky
 
-- Pokud chcete získat přehled o datech protokolu brány Windows Firewall, přečtěte si doporučené sešity a ukázky dotazů, které jsou připojené k datovým konektorem **brány Windows Firewall** .
+- Seznamte se s dostupnými sešity a ukázkami dotazů, které jsou připojené k datovým konektorem **brány Windows Firewall** . získáte tak přehled o datech protokolu brány Windows Firewall.
 
 - K dotazování dat brány Windows Firewall v **protokolech**zadejte **WindowsFirewall** do okna dotazu.
-
 
 ## <a name="validate-connectivity"></a>Ověřit připojení
  

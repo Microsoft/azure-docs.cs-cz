@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076029"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892554"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Zotavení po havárii v cloudu Azure jaře
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 Tento článek vysvětluje některé strategie, které můžete použít k ochraně vašich aplikací v cloudovém prostředí Azure, aby nedocházelo k výpadkům.  Jakékoli oblasti nebo datové centrum může nastat výpadky způsobené místními katastrofami, ale pečlivé plánování může zmírnit dopad na vaše zákazníky.
 
@@ -51,7 +53,7 @@ Budete potřebovat dvě instance služby jarního cloudu Azure nasazené ve dvou
 3. Vytvoření Traffic Manageru a dvou koncových bodů: [vytvořte profil Traffic Manager pomocí Azure Portal](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
 
 Tady je profil Traffic Manageru:
-* Traffic Manager název DNS:`http://asc-bcdr.trafficmanager.net`
+* Traffic Manager název DNS: `http://asc-bcdr.trafficmanager.net`
 * Profily koncového bodu: 
 
 | Profil | Typ | Cíl | Priorita | Vlastní nastavení hlaviček |
@@ -62,3 +64,8 @@ Tady je profil Traffic Manageru:
 4. Vytvořte záznam CNAME v zóně DNS: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
 
 5. Nyní je prostředí zcela nastaveno. Zákazníci by měli být schopni získat přístup k aplikaci prostřednictvím: bcdr-test.contoso.com
+
+## <a name="next-steps"></a>Další kroky
+
+* [Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md)
+ 

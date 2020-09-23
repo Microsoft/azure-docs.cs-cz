@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921210"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970682"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,17 +29,17 @@ Pokud chcete zobrazit a použít doporučení pro výkon, budete potřebovat spr
 
 Pomocí následujících kroků můžete najít doporučení týkající se výkonu Azure Portal:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejít na **všechny služby**  >  **databáze SQL**a vyberte svou databázi.
 3. Přejděte do **doporučení ke zvýšení výkonu** a zobrazte dostupná doporučení pro vybranou databázi.
 
 Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na následujícím obrázku:
 
-![Doporučení](./media/database-advisor-find-recommendations-portal/recommendations.png)
+![Snímek obrazovky ukazuje doporučení týkající se výkonu v tabulce s popisem akce a doporučení.](./media/database-advisor-find-recommendations-portal/recommendations.png)
 
 Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do následujících kategorií:
 
-| Dopad | Popis |
+| Dopad | Description |
 |:--- |:--- |
 | Vysoké |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
 | Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
@@ -156,7 +156,7 @@ Po úspěšném dokončení implementace doporučení (v současné době platí
 
 ![Sledovat dopad na výkon](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure SQL Database poskytuje doporučení pro zlepšení výkonu databáze. Díky skriptům T-SQL získáte pomoc při optimalizaci databáze a nakonec se zlepší výkon dotazů.
 
@@ -168,7 +168,7 @@ Sledujte vaše doporučení a pokračujte v jejich použití pro zlepšení výk
 * Přehled Azure SQL Databasech doporučení týkajících se výkonu najdete v tématu [doporučení pro výkon](database-advisor-implement-performance-recommendations.md) .
 * V tématu [Přehled výkonu dotazů](query-performance-insight-use.md) najdete informace o tom, jak zobrazit dopad vašich dotazů na výkon.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)

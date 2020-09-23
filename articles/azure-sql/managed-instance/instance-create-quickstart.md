@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1899baa927bffdaedd1d7ee00f442c449480fc04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533865"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986851"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Rychlý Start: vytvoření spravované instance spravované instance SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -77,7 +77,7 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure
    | Nastavení| Navrhovaná hodnota | Popis |
    | ------ | --------------- | ----------- |
    | **Virtuální síť** | Vyberte buď možnost **vytvořit novou virtuální síť** , nebo platnou virtuální síť a podsíť.| Pokud síť nebo podsíť není k dispozici, je nutné ji [upravit tak, aby splňovala požadavky na síť](vnet-existing-add-subnet.md) předtím, než ji vyberete jako cíl pro novou spravovanou instanci. Informace o požadavcích na konfiguraci prostředí sítě pro spravovanou instanci SQL najdete v tématu [Konfigurace virtuální sítě pro spravovanou instanci SQL](connectivity-architecture-overview.md). |
-   | **Typ připojení** | Vyberte mezi proxy serverem a typem připojení přesměrování.|Další informace o typech připojení najdete v tématu [Typ připojení spravované instance SQL Azure](../database/connectivity-architecture.md#connection-policy).|
+   | **Typ připojení**: | Vyberte mezi proxy serverem a typem připojení přesměrování.|Další informace o typech připojení najdete v tématu [Typ připojení spravované instance SQL Azure](../database/connectivity-architecture.md#connection-policy).|
    | **Veřejný koncový bod**  | Vyberte **Povolit**. | Aby bylo možné získat přístup ke spravované instanci prostřednictvím koncového bodu veřejné dat, je nutné povolit tuto možnost. | 
    | **Povolit přístup z** (Pokud je povolený **veřejný koncový bod** ) | Vyberte jednu z možností.   |Prostředí portálu umožňuje konfigurovat skupinu zabezpečení s veřejným koncovým bodem. </br> </br> V závislosti na vašem scénáři vyberte jednu z následujících možností: </br> <ul> <li>**Služby Azure**: tuto možnost doporučujeme, když se připojujete z Power BI nebo jiné víceklientské služby. </li> <li> **Internet**: použijte pro účely testování, pokud chcete rychle aktivovat spravovanou instanci. Nedoporučujeme ho pro produkční prostředí. </li> <li> **Bez přístupu**: Tato možnost vytvoří pravidlo zabezpečení **Odepřít** . Změnou tohoto pravidla zpřístupníte spravovanou instanci prostřednictvím veřejného koncového bodu. </li> </ul> </br> Další informace o veřejném koncovém bodu zabezpečení najdete v tématu [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md).|
 
@@ -124,7 +124,7 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure
 > 3. Vyberte probíhající operaci nasazení spravované instance SQL.
 
 > [!IMPORTANT]
-> - Vytváření spravované instance SQL je dlouhodobá operace, kterou může trvat několik hodin v závislosti na konkrétních okolnostech. Běžné časy vytváření najdete v tématu [Doba trvání operací správy](management-operations-overview.md#management-operations-duration) .
+> - Vytváření spravované instance SQL je dlouhodobá operace, kterou může trvat několik hodin v závislosti na konkrétních okolnostech. Běžné časy vytváření najdete v tématu [Doba trvání operací správy](management-operations-overview.md#duration) .
 > - Spuštění vytváření spravované instance SQL může být zpožděno v případech, kdy existují jiné operace s vlivem na změny, například dlouhotrvající operace obnovení nebo škálování na jiné spravované instance ve stejné podsíti. Další informace najdete v tématu [různé operace správy](management-operations-overview.md#management-operations-cross-impact).
 > - Aby bylo možné získat stav vytváření spravované instance, je nutné mít **oprávnění ke čtení pro** skupinu prostředků. Pokud toto oprávnění nemáte nebo ho odvoláte, zatímco je spravovaná instance v procesu vytváření, může to způsobit, že se spravovaná instance SQL nebude zobrazovat v seznamu nasazení skupiny prostředků.
 >
@@ -161,7 +161,7 @@ Pokud chcete volitelně doladit nastavení sítě, zkontrolujte následující:
 > Pokud jste nakonfigurovali veřejný koncový bod pro spravovanou instanci SQL, musíte otevřít porty a povolit tak síťové přenosy umožňující připojení ke spravované instanci SQL z veřejného Internetu. Další informace najdete v tématu [Konfigurace veřejného koncového bodu pro spravovanou instanci SQL](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) .
 >
 
-## <a name="retrieve-connection-details-to-sql-managed-instance"></a>Načíst podrobnosti o připojení do spravované instance SQL
+## <a name="retrieve-connection-details-to-sql-managed-instance"></a>Načtení podrobností připojení do služby SQL Managed Instance
 
 Pokud se chcete připojit ke spravované instanci SQL, postupujte podle těchto kroků a načtěte název hostitele a plně kvalifikovaný název domény (FQDN):
 

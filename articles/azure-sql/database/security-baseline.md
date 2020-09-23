@@ -4,15 +4,15 @@ description: Základní hodnoty zabezpečení Azure pro Azure SQL Database a Azu
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231023"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885213"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Základní hodnota zabezpečení Azure pro Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
 
-**Pokyny**: použití Azure Security Center rozšířené ochrany před internetovými útoky pro Azure SQL Database monitorování a upozorňování na aktivitu neobvyklé. Povolit pokročilou zabezpečení dat pro databáze SQL. Pokročilé zabezpečení dat zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, zpřístupněníí a zmírnění potenciálních ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly znamenat hrozbu pro vaši databázi.
+**Pokyny**: použití Azure Security Center rozšířené ochrany před internetovými útoky pro Azure SQL Database monitorování a upozorňování na aktivitu neobvyklé. Pro databáze SQL povolte Azure Defender pro SQL. Azure Defender pro SQL zahrnuje funkce pro zpřístupnění a zmírnění potenciálních ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly znamenat hrozbu pro vaši databázi.
 
 Pochopení rozšířené ochrany před internetovými útoky a upozorňování na Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-Jak povolit pokročilou zabezpečení dat pro Azure SQL Database:
+Jak povolit Azure Defender pro SQL pro Azure SQL Database:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Správa výstrah v Azure Security Center:
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: Azure Active Directory (AAD) mají předdefinované role, které se musí explicitně přiřadit a jsou Queryable. Pomocí modulu PowerShellu služby AAD můžete provádět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
+**Doprovodné**materiály: Azure Active Directory (Azure AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
 
 Jak získat roli adresáře ve službě Azure AD pomocí prostředí PowerShell:
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné**materiály: Povolte Azure Active Directory (AAD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
+**Doprovodné**materiály: povolte službu Azure Active Directory (Azure AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
 Jak povolit vícefaktorové ověřování v Azure:
 
@@ -445,13 +445,13 @@ Jak nakonfigurovat pojmenovaná umístění v Azure: https://docs.microsoft.com/
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Doprovodné**materiály: vytvořte správce Azure Active Directory (AAD) pro váš server.
+**Pokyny**: Vytvoření správce služby Azure Active Directory (Azure AD) pro váš server.
 
 Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL:
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-Jak vytvořit a nakonfigurovat instanci AAD:
+Jak vytvořit a nakonfigurovat instanci Azure AD:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Azure Active Directory (AAD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
+**Doprovodné**materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
 Jak používat kontroly přístupu Azure identity:
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
 
-**Pokyny**: konfigurace ověřování Azure Active Directory (AAD) pomocí Azure SQL a vytvoření nastavení diagnostiky pro Azure Active Directory uživatelských účtů, odesílání protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. Nakonfigurujte požadované výstrahy v rámci Log Analytics pracovního prostoru.
+**Pokyny**: konfigurace ověřování Azure Active Directory (Azure AD) pomocí Azure SQL a vytvoření nastavení diagnostiky pro Azure Active Directory uživatelských účtů, odesílání protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. Nakonfigurujte požadované výstrahy v rámci Log Analytics pracovního prostoru.
 
 Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL:
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Pokyny**: pomocí Azure Active Directory (AAD) Identity Protection a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Kromě toho můžete ingestovat data do služby Azure Sentinel pro další šetření.
+**Pokyny**: pomocí Azure Active Directory (Azure AD) Identity Protection a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Kromě toho můžete ingestovat data do služby Azure Sentinel pro další šetření.
 
 Postup zobrazení přihlášení rizik Azure AD:
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: použijte Azure Active Directory (AAD) pro ověřování a řízení přístupu k instancím Azure SQL Database.
+**Doprovodné**materiály: použijte Azure Active Directory (Azure AD) pro ověřování a řízení přístupu k instancím Azure SQL Database.
 
 Jak integrovat Azure SQL Database s Azure Active Directory pro ověřování:
 
@@ -655,15 +655,15 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Doprovodné**materiály: povolení pokročilých zabezpečení dat pro Azure SQL Database a použití doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení na serverech.
+**Doprovodné**materiály: Povolte Azure Defender pro SQL pro Azure SQL Database a použijte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení na serverech.
 
 Jak spustit posuzování ohrožení zabezpečení na Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-Jak povolit Pokročilá zabezpečení dat:
+Jak povolit Azure Defender pro SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center:
 
@@ -993,7 +993,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Doprovodné**materiály: použití spravovaných identit k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (AAD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování AAD, včetně Azure Key Vault bez jakýchkoli přihlašovacích údajů v kódu.
+**Pokyny**: použití spravovaných identit k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Azure Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
 Kurz: pro přístup k Azure SQL použijte spravovanou identitu přiřazenou systémem Windows VM:
 

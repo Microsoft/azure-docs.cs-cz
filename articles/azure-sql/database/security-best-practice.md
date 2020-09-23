@@ -8,14 +8,14 @@ ms.custom: sqldbrb=2
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442101"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885179"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -265,7 +265,7 @@ Následující osvědčené postupy jsou volitelné, ale výsledkem bude lepší
 
 - Mějte na paměti, že oprávnění v databázovém stroji se dají použít v následujících oborech (menším rozsahem je menší dopad udělených oprávnění):
   - Server (speciální role v hlavní databázi) v Azure
-  - Database
+  - Databáze
   - Schéma
     - Osvědčeným postupem je použití schémat k udělení oprávnění v rámci databáze. (viz také: [schéma – návrh: doporučení pro návrh schématu s ohledem na zabezpečení](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Objekt (tabulka, zobrazení, procedura atd.)
@@ -647,7 +647,7 @@ Rozšířená ochrana před internetovými útoky umožňuje rozpoznávat a reag
 
 **Osvědčené postupy**:
 
-- Konfigurace [rozšířeného zabezpečení dat (ADS)](advanced-data-security.md#getting-started-with-ads)   pro konkrétní server nebo spravovanou instanci. Můžete taky nakonfigurovat reklamu pro všechny servery a spravované instance v rámci předplatného tak, že přepnete na [úroveň Azure Security Center úrovně Standard](../../security-center/security-center-pricing.md).
+- Nakonfigurujte [Azure Defender pro SQL](azure-defender-for-sql.md)   pro konkrétní server nebo spravovanou instanci. Můžete také nakonfigurovat Azure Defender pro SQL pro všechny servery a spravované instance v rámci předplatného tak, že přepnete na [úroveň Azure Security Center úrovně Standard](../../security-center/security-center-pricing.md).
 
 - Pro úplné prostředí šetření doporučujeme povolit [SQL Database auditování](../../azure-sql/database/auditing-overview.md). Pomocí auditování můžete sledovat události databáze a zapisovat je do protokolu auditu v účtu Azure Storage nebo v pracovním prostoru Azure Log Analytics.
 

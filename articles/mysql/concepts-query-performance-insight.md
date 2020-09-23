@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 51b478e5184c79e11d95ff004a652b2e5298558f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83402618"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884902"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight ve službě Azure Database for MySQL
 
@@ -51,7 +51,7 @@ Karta **dlouho běžící dotazy** zobrazuje prvních 5 dotazů podle průměrn�
 
 Můžete kliknout a přetáhnout v grafu, abyste zmenšili konkrétní časové okno. Případně můžete použít ikony přiblížení a ven k zobrazení kratšího nebo většího časového období.
 
-![Query Performance Insight dlouho běžící dotazy](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Query Performance Insight dlouho běžící dotazy"::: 
 
 ### <a name="wait-statistics"></a>Statistiky čekání
 
@@ -64,7 +64,7 @@ Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace 
 
 Dotazy zobrazené v zobrazení statistiky čekání jsou seskupené podle dotazů, které vykazují největší čekání během zadaného časového intervalu.
 
-![Query Performance Insight čeká na statistiku](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight čeká na statistiku":::
 
 ## <a name="next-steps"></a>Další kroky
 

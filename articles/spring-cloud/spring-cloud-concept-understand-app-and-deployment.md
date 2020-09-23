@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9e909db0041979eb7bc4fc30bd9551382e83c488
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297531"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892496"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Pochopení aplikace a nasazení v Azure jaře cloudu
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 **Aplikace** a **nasazení** jsou dvě klíčové koncepty v modelu prostředků Azure jarního cloudu. V Azure jaře Cloud je *aplikace* abstrakcí jedné obchodní aplikace nebo jedné mikroslužby.  Jedna verze kódu nebo binárního souboru nasazeného jako *aplikace* běží v *nasazení*.  Aplikace běží v *instanci služby jarní cloudová služba Azure*nebo jednoduše *instance služby*, jak je uvedeno dále.
 
@@ -42,7 +44,7 @@ Následující funkce nebo vlastnosti jsou definovány na úrovni nasazení a bu
 | Výčet | Definice |
 |:--|:----------------|
 | Procesor | Počet virtuální jádra na instanci aplikace |
-| Paměť | Nastavení, které přiděluje paměť pro horizontální navýšení nebo navýšení kapacity nasazení |
+| Memory (Paměť) | Nastavení, které přiděluje paměť pro horizontální navýšení nebo navýšení kapacity nasazení |
 | Instance</br>Počet | Počet instancí aplikace, nastavit ručně nebo automaticky |
 | Automatické škálování | Automatické škálování počtu instancí na základě předdefinovaných pravidel a plánů |
 | JVM</br>Možnosti | nastavení: JAVA_OPTS |

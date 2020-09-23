@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu na úrovni DoD. 5
 description: Nasaďte kroky pro ukázku podrobného plánu na úrovni DoD – 5 včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 9267ed0de35107b8f6582d852ab925b4dbbbdba4
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: deb6ffa0f886cc6a4a9bea10a38d7cd82e7df8f1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85802670"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978236"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>Nasaďte ukázku podrobného plánu na úroveň dopadu DoD. 5
 
@@ -19,7 +19,7 @@ Chcete-li nasadit ukázkovou část podrobného plánu ochrany předních plán�
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
 
 ## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
@@ -91,7 +91,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Popis|
+|Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
 |DoD Impact Level 5|Přiřazení zásad|Seznam uživatelů, které musí být zahrnuté ve skupině Správci virtuálních počítačů s Windows|Středníkem oddělený seznam uživatelů, kteří by měli být zahrnutí do místní skupiny Administrators; Např.: Správce; myUser1; myUser2|
 |DoD Impact Level 5|Přiřazení zásad|Seznam uživatelů vyloučených ze skupiny správců virtuálních počítačů s Windows|Středníkem oddělený seznam uživatelů, kteří by měli být vyloučení v místní skupině Administrators; Např.: Správce; myUser1; myUser2|

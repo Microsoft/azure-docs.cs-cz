@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064787"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902142"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
@@ -43,7 +43,7 @@ DEKs šifrované pomocí KEK se ukládají samostatně. Pouze entita s přístup
 
 ## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Jak funguje šifrování dat pomocí klíče spravovaného zákazníkem
 
-![Diagram, který zobrazuje přehled Bring Your Own Key](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
+:::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png" alt-text="Diagram, který zobrazuje přehled Bring Your Own Key":::
 
 Aby mohl server PostgreSQL používat pro šifrování klíč DEK klíče, které jsou uložené v Key Vault, správce Key Vault poskytuje následující přístupová práva k serveru:
 
@@ -79,7 +79,7 @@ Pokud používáte šifrování dat pomocí klíče spravovaného zákazníkem, 
 * Ujistěte se, že Key Vault a Azure Database for PostgreSQL jeden server se nachází ve stejné oblasti, abyste zajistili rychlejší přístup k klíč DEK zalamování a rozbalení operací.
 * Trezor klíčů Azure můžete zamknout jenom na **privátní koncový bod a vybrané sítě** a povolit zabezpečení prostředků jenom *důvěryhodným službám Microsoftu* .
 
-    ![Trusted-Service-with-integrace](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Trusted-Service-with-integrace":::
 
 Tady jsou doporučení pro konfiguraci klíče spravovaného zákazníkem:
 

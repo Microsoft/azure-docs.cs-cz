@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: d94170ade3de7e7fc128fe85437db59822694add
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 25f263a5c9ccdc67f1ab8353e616a6dded0c7f7e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117810"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901665"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL – jeden server
 
@@ -34,7 +34,7 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
    - Povolit rozšířenou ochranu před internetovými útoky na serveru.
    - V části **Upřesnit nastavení ochrany před internetovými útoky**zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
   
-   ![Nastavení detekce hrozeb](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
+   :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Nastavení detekce hrozeb":::
 
 ## <a name="explore-anomalous-database-activities"></a>Prozkoumejte aktivity databáze neobvyklé
 
@@ -42,15 +42,15 @@ Po detekci neobvykléch databázových aktivit obdržíte e-mailové oznámení.
     
 1. Kliknutím na odkaz **Zobrazit nedávné výstrahy** v e-mailu spustíte Azure Portal a zobrazí se stránka Azure Security Center výstrahy, která poskytuje přehled aktivních hrozeb zjištěných v databázi SQL.
     
-    ![Sestava aktivity neobvyklé](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Sestava aktivity neobvyklé":::
 
     Zobrazit aktivní hrozby:
 
-    ![Aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Aktivní hrozby":::
 
 2. Kliknutím na konkrétní výstrahu získáte další podrobnosti a akce pro šetření této hrozby a opravaí budoucích hrozeb.
     
-    ![Konkrétní výstraha](./media/howto-database-threat-protection-portal/specific-alert.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Konkrétní výstraha":::
 
 ## <a name="explore-threat-detection-alerts"></a>Prozkoumat výstrahy detekce hrozeb
 
@@ -58,7 +58,7 @@ Rozšířená ochrana před internetovými útoky integruje své výstrahy s [Az
 
 Kliknutím na **výstrahy zabezpečení** v části **Ochrana před hrozbami** otevřete stránku Azure Security Center výstrahy a Získejte přehled o aktivních hrozbách SQL zjištěných v databázi.
 
-  ![Zabezpečení před hrozbami – ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Zabezpečení před hrozbami – ASC":::
 
 ## <a name="next-steps"></a>Další kroky
 
