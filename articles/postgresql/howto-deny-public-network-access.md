@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 01a256e17b1101782eaee9bebd85f5e7093773d3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1dfc8d473d0cfe663569d2508404bf190f2da841
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287795"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901576"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Odepřít přístup k veřejné síti na Azure Database for PostgreSQL jednom serveru pomocí Azure Portal
 
@@ -33,13 +33,13 @@ Pomocí těchto kroků nastavte PostgreSQL jeden server odepřít přístup k ve
 
 1. V nástroji **Odepřít přístup k veřejné síti**vyberte **Ano** , pokud chcete povolit přístup odepřít veřejný přístup pro váš PostgreSQL Server.
 
-    ![Azure Database for PostgreSQL jeden server odepřít přístup k síti](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access.PNG" alt-text="Azure Database for PostgreSQL jeden server odepřít přístup k síti":::
 
 1. Kliknutím na **Uložit** uložte změny.
 
 1. Oznámení ověří, že nastavení zabezpečení připojení bylo úspěšně povoleno.
 
-    ![Úspěch Azure Database for PostgreSQL odepření přístupu k síti jednomu serveru](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Úspěch Azure Database for PostgreSQL odepření přístupu k síti jednomu serveru":::
 
 ## <a name="next-steps"></a>Další kroky
 

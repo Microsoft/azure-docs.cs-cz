@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 1b2268426b66ddb9ffdd48d6901ab991e76cb95c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037439"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892069"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Test Stream Analytics dotazy místně proti vstupu živého datového proudu pomocí Visual Studio Code
 
@@ -21,39 +21,39 @@ Můžete použít Azure Stream Analytics nástroje pro Visual Studio Code k otes
 
 * Nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download) a restartujte Visual Studio Code.
 
-* V [tomto rychlém](quick-create-vs-code.md) startu se dozvíte, jak vytvořit Stream Analyticsovou úlohu pomocí Visual Studio Code.
+* V [tomto rychlém](quick-create-visual-studio-code.md) startu se dozvíte, jak vytvořit Stream Analyticsovou úlohu pomocí Visual Studio Code.
 
 ## <a name="define-a-live-stream-input"></a>Definice vstupu živého streamu
 
 1. V projektu Stream Analytics klikněte pravým tlačítkem na složku **vstupy** . Pak vyberte **ASA: přidat vstup** z místní nabídky.
 
-   ![Přidat vstup ze složky Inputs](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+   ![Přidat vstup ze složky Inputs](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
    Můžete také vybrat **CTRL + SHIFT + P** a otevřít paletu příkazů a zadat **ASA: přidat vstup**.
 
-   ![Přidat vstup Stream Analytics v Visual Studio Code](./media/quick-create-vs-code/add-input.png)
+   ![Přidat vstup Stream Analytics v Visual Studio Code](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Z rozevíracího seznamu vyberte typ zdroje vstupu.
 
-   ![Jako vstupní možnost vyberte IoT Hub.](./media/quick-create-vs-code/iot-hub.png)
+   ![Jako vstupní možnost vyberte IoT Hub.](./media/quick-create-visual-studio-code/iot-hub.png)
 
 3. Pokud jste přidali vstup z palety příkazů, vyberte Stream Analytics skript dotazu, který bude používat vstup. Měl by se automaticky naplnit cestou k souboru **myASAproj. asaql**.
 
-   ![Vyberte Stream Analytics skript v Visual Studio Code](./media/quick-create-vs-code/asa-script.png)
+   ![Vyberte Stream Analytics skript v Visual Studio Code](./media/quick-create-visual-studio-code/asa-script.png)
 
 4. V rozevírací nabídce **Vyberte vybrat z předplatných Azure** .
 
-    ![Vybrat z předplatných](./media/quick-create-vs-code/add-input-select-subscription.png)
+    ![Vybrat z předplatných](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
 5. Nakonfigurujte nově vygenerovaný soubor JSON. Můžete použít funkci CodeLens, která vám umožní zadat řetězec, vybrat z rozevíracího seznamu nebo změnit text přímo v souboru. Následující snímek obrazovky ukazuje jako příklad **možnost vybrat z vašich předplatných** .
 
-   ![Konfigurace vstupu v Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
+   ![Konfigurace vstupu v Visual Studio Code](./media/quick-create-visual-studio-code/configure-input.png)
 
 ## <a name="preview-input"></a>Náhled vstupu
 
 Aby se zajistilo, že vstupní data přicházejí, vyberte v horním řádku možnost **Zobrazit data** v konfiguračním souboru živého vstupu. Některá vstupní data přicházejí ze služby IoT Hub a zobrazují se v okně náhledu. Zobrazení náhledu může trvat několik sekund.
 
- ![Náhled živého vstupu](./media/quick-create-vs-code/preview-live-input.png)
+ ![Náhled živého vstupu](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>Spustit dotazy místně
 

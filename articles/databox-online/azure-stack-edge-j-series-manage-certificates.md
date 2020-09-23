@@ -1,6 +1,6 @@
 ---
-title: Použití certifikátů s grafickým procesorem Azure Stack Edge | Microsoft Docs
-description: Popisuje použití certifikátů s Azure Stackým zařízením s grafickým procesorem, včetně toho, jaké typy a jak na zařízení nahrávat certifikáty.
+title: Použití certifikátů s grafickým procesorem Azure Stack Edge pro | Microsoft Docs
+description: V této části najdete popis použití certifikátů s GRAFICKÝm zařízením Azure Stack Edge pro, včetně toho, jaké typy a jak na zařízení nahrávat certifikáty.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268872"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890755"
 ---
-# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Použití certifikátů pomocí zařízení s grafickým procesorem Azure Stack Edge
+# <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Použití certifikátů se zařízením Azure Stack Edge pro GPU
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Tento článek popisuje typy certifikátů, které lze nainstalovat do zařízení Azure Stack Edge. Článek obsahuje také podrobnosti o jednotlivých typech certifikátů spolu s postupem instalace a určení data vypršení platnosti. 
+Tento článek popisuje typy certifikátů, které je možné nainstalovat na zařízení Azure Stack Edge pro. Článek obsahuje také podrobnosti o jednotlivých typech certifikátů spolu s postupem instalace a určení data vypršení platnosti. 
 
 ## <a name="about-certificates"></a>Informace o certifikátech
 
 Certifikát poskytuje propojení mezi **veřejným klíčem** a entitou (jako je název domény), která byla **podepsána** (ověřena) důvěryhodnou třetí stranou (například **certifikační autorita**).  Certifikát nabízí pohodlný způsob distribuce důvěryhodných veřejných šifrovacích klíčů. Certifikáty zajistí, že vaše komunikace je důvěryhodná a že posíláte šifrované informace na správný server. 
 
-Při počáteční konfiguraci zařízení Azure Stack Edge se automaticky vygenerují certifikáty podepsané svým držitelem. Volitelně můžete uvést vlastní certifikáty. Pokud plánujete zahrnout vlastní certifikáty, je třeba postupovat podle pokynů.
+Při počáteční konfiguraci zařízení Azure Stack Edge pro se automaticky vygenerují certifikáty podepsané svým držitelem. Volitelně můžete uvést vlastní certifikáty. Pokud plánujete zahrnout vlastní certifikáty, je třeba postupovat podle pokynů.
 
 ## <a name="types-of-certificates"></a>Typy certifikátů
 
-K různým typům certifikátů, které se používají na Azure Stack hraničních zařízeních, patří následující: 
+Mezi různé typy certifikátů, které se používají na Azure Stack hraničních zařízeních pro, patří následující: 
 - Podpisové certifikáty
     - Kořenová CA
     - Středně pokročilý
@@ -68,7 +68,7 @@ Tyto certifikáty by mohly představovat kořenové certifikáty nebo zprostřed
 
 ## <a name="node-certificates"></a>Certifikáty uzlů
 
-<!--Your Azure Stack Edge device could be a 1-node device or a 4-node device.--> Všechny uzly v zařízení neustále vzájemně komunikují, a proto musí mít vztah důvěryhodnosti. Certifikáty uzlů poskytují způsob, jak vytvořit tento vztah důvěryhodnosti. Certifikáty uzlů také přicházejí do hry, pokud se připojujete k uzlu zařízení pomocí vzdálené relace PowerShellu přes protokol HTTPS.
+<!--Your Azure Stack Edge Pro device could be a 1-node device or a 4-node device.--> Všechny uzly v zařízení neustále vzájemně komunikují, a proto musí mít vztah důvěryhodnosti. Certifikáty uzlů poskytují způsob, jak vytvořit tento vztah důvěryhodnosti. Certifikáty uzlů také přicházejí do hry, pokud se připojujete k uzlu zařízení pomocí vzdálené relace PowerShellu přes protokol HTTPS.
 
 ### <a name="caveats"></a>Upozornění
 
@@ -121,9 +121,9 @@ K místnímu webovému uživatelskému rozhraní vašeho zařízení můžete p�
 
 ## <a name="iot-edge-device-certificates"></a>IoT Edge certifikátů zařízení
 
-Vaše zařízení Azure Stack Edge je také zařízení IoT s výpočetním prostředím, které je k němu připojené IoT Edge zařízení. Pro případnou zabezpečenou komunikaci mezi tímto zařízením IoT Edge a zařízeními pro příjem dat, která se k němu mohou připojit, můžete také odeslat IoT Edge certifikátů. 
+Vaše zařízení Azure Stack Edge pro je také zařízení IoT s výpočetním prostředím, které je k němu připojené IoT Edge zařízení. Pro případnou zabezpečenou komunikaci mezi tímto zařízením IoT Edge a zařízeními pro příjem dat, která se k němu mohou připojit, můžete také odeslat IoT Edge certifikátů. 
 
-Zařízení má certifikáty podepsané svým držitelem, které se dají použít, pokud chcete použít jenom výpočetní scénář se zařízením. Pokud je ale zařízení Azure Stack Edge připojené k zařízením pro příjem dat, budete muset uvést vlastní certifikáty.
+Zařízení má certifikáty podepsané svým držitelem, které se dají použít, pokud chcete použít jenom výpočetní scénář se zařízením. Pokud je ale zařízení Azure Stack Edge pro připojené k zařízením pro příjem dat, budete muset uvést vlastní certifikáty.
 
 Existují tři IoT Edge certifikátů, které je třeba nainstalovat, aby bylo možné tento vztah důvěryhodnosti povolit:
 
@@ -140,7 +140,7 @@ Další informace o IoT Edgech certifikátů najdete v tématu [Azure IoT Edge o
 
 ## <a name="support-session-certificates"></a>Podpora certifikátů relací
 
-Pokud se v zařízení Azure Stack Edge vyskytují nějaké problémy, pak při řešení těchto problémů můžete na zařízení otevřít relaci podpory vzdáleného prostředí PowerShell. Pokud chcete v rámci této relace podpory povolit zabezpečenou šifrovanou komunikaci, můžete nahrát certifikát.
+Pokud se v zařízení Azure Stack Edge pro vyskytují nějaké problémy, pak při řešení těchto problémů můžete na zařízení otevřít relaci podpory vzdáleného prostředí PowerShell. Pokud chcete v rámci této relace podpory povolit zabezpečenou šifrovanou komunikaci, můžete nahrát certifikát.
 
 ### <a name="caveats"></a>Upozornění
 
@@ -155,7 +155,7 @@ Pokud se v zařízení Azure Stack Edge vyskytují nějaké problémy, pak při 
 
 <!--## VPN certificates
 
-If VPN is configured on your Azure Stack Edge device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
+If VPN is configured on your Azure Stack Edge Pro device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
 
 ### Caveats
 
@@ -262,7 +262,7 @@ $DeviceSerial = "HWDC1T2"
 New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSerial.$domain","management.$AppName.$domain","login.$AppName.$domain","*.blob.$AppName.$domain" -Subject "CN=$AppName.$domain" -KeyExportPolicy Exportable  -HashAlgorithm sha256 -KeyLength 2048  -CertStoreLocation "Cert:\LocalMachine\My" -Signer $cert -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 ```
 
-Po vytvoření certifikátů je dalším krokem odeslání certifikátů do zařízení Azure Stack Edge.
+Po vytvoření certifikátů je dalším krokem nahrání certifikátů na zařízení Azure Stack Edge pro.
 
 
 ## <a name="upload-certificates"></a>Nahrávání certifikátů 
@@ -401,7 +401,7 @@ Záloha souboru. pfx se teď uloží do umístění, které jste vybrali a kter�
 
 ## <a name="supported-certificate-algorithms"></a>Podporované algoritmy certifikátů
 
- U Azure Stack hraničního zařízení jsou podporovány pouze certifikáty Rivest – Shamir – Adleman (RSA). Pokud se používají certifikáty ECDSA (s algoritmem eliptické křivky digitálního podpisu), je chování zařízení neurčité.
+ U zařízení Azure Stack Edge pro se podporují jenom certifikáty Rivest – Shamir – Adleman (RSA). Pokud se používají certifikáty ECDSA (s algoritmem eliptické křivky digitálního podpisu), je chování zařízení neurčité.
 
  Certifikáty, které obsahují veřejný klíč RSA, se označují jako certifikáty RSA. Certifikáty, které obsahují veřejný klíč kryptografických rozhraní s eliptickou křivkou (ECC), jsou označovány jako ECDSA (s algoritmem eliptické křivky digitálního podpisu). 
 
@@ -418,4 +418,4 @@ Zobrazte datum vypršení platnosti certifikátu na stránce **certifikáty** v 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nasazení zařízení Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)
+[Nasazení zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md)

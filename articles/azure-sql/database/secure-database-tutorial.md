@@ -7,15 +7,15 @@ ms.subservice: security
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
-ms.date: 09/03/2019
+ms.reviewer: ''
+ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496912"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885416"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Kurz: zabezpečení databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Co se v tomto kurzu naučíte:
 > - Vytvoření pravidel brány firewall na úrovni serveru a databáze
 > - Konfigurace správce Azure Active Directory (Azure AD)
 > - Správa přístupu uživatele s ověřováním SQL, ověřováním Azure AD a zabezpečenými připojovacími řetězci
-> - Povolit funkce zabezpečení, jako je například rozšířené zabezpečení dat, auditování, maskování dat a šifrování
+> - Povolení funkcí zabezpečení, jako je Azure Defender pro SQL, auditování, maskování dat a šifrování
 
 Azure SQL Database zabezpečuje data tím, že vám umožní:
 
@@ -62,7 +62,7 @@ Pro všechny kroky v tomto kurzu se přihlaste k [Azure Portal](https://portal.a
 
 Databáze v SQL Database jsou chráněny branami firewall v Azure. Ve výchozím nastavení se všechna připojení k serveru a databázi odmítnou. Další informace najdete v tématu [pravidla brány firewall na úrovni serveru a databáze](firewall-configure.md).
 
-**Pro nejbezpečnější** konfiguraci nastavte možnost **Povolení přístupu ke službám Azure** . Pak vytvořte [REZERVOVANÉ IP adresy (klasické nasazení)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) pro prostředek, který se potřebuje připojit, jako je třeba virtuální počítač Azure nebo cloudová služba, a povolte přístup k IP adrese jenom přes bránu firewall. Pokud používáte model nasazení [Resource Manageru](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) , vyžaduje se pro každý prostředek vyhrazená veřejná IP adresa.
+**Pro nejbezpečnější** konfiguraci nastavte možnost **Povolení přístupu ke službám Azure** . Pak vytvořte [REZERVOVANÉ IP adresy (klasické nasazení)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) pro prostředek, který se potřebuje připojit, jako je třeba virtuální počítač Azure nebo cloudová služba, a povolte přístup k IP adrese jenom přes bránu firewall. Pokud používáte model nasazení [Správce prostředků](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) , vyžaduje se pro každý prostředek vyhrazená veřejná IP adresa.
 
 > [!NOTE]
 > SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru, pokud správce neotevře port 1433.
@@ -233,30 +233,30 @@ Postup při kopírování zabezpečeného připojovacího řetězce:
 
 ## <a name="enable-security-features"></a>Povolit funkce zabezpečení
 
-Azure SQL Database poskytuje funkce zabezpečení, které jsou k dispozici pomocí Azure Portal. Tyto funkce jsou dostupné jak pro databázi, tak pro server, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématech [pokročilé zabezpečení dat](advanced-data-security.md), [auditování](../../azure-sql/database/auditing-overview.md), [Maskování dynamických dat](dynamic-data-masking-overview.md)a [transparentní šifrování dat](transparent-data-encryption-tde-overview.md).
+Azure SQL Database poskytuje funkce zabezpečení, které jsou k dispozici pomocí Azure Portal. Tyto funkce jsou dostupné jak pro databázi, tak pro server, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [Azure Defender pro SQL](azure-defender-for-sql.md), [auditování](../../azure-sql/database/auditing-overview.md), [Maskování dynamických dat](dynamic-data-masking-overview.md)a [transparentní šifrování dat](transparent-data-encryption-tde-overview.md).
 
-### <a name="advanced-data-security"></a>Pokročilé zabezpečení dat
+### <a name="azure-defender-for-sql"></a>Azure Defender pro SQL
 
-Funkce Rozšířené zabezpečení dat detekuje potenciální hrozby při jejich výskytu a poskytuje výstrahy zabezpečení pro aktivity neobvyklé. Uživatelé mohou tyto podezřelé události prozkoumat pomocí funkce auditování a určit, zda má událost přístup, porušení nebo zneužití dat v databázi. Uživatelům se taky poskytuje přehled zabezpečení, který obsahuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a zjišťování dat.
+Funkce Azure Defender pro SQL detekuje potenciální hrozby při jejich výskytu a poskytuje výstrahy zabezpečení pro aktivity neobvyklé. Uživatelé mohou tyto podezřelé události prozkoumat pomocí funkce auditování a určit, zda má událost přístup, porušení nebo zneužití dat v databázi. Uživatelům se taky poskytuje přehled zabezpečení, který obsahuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a zjišťování dat.
 
 > [!NOTE]
 > Ukázkovou hrozbou je vkládání SQL, což je proces, ve kterém útočníci vkládají do vstupů do aplikací škodlivý příkaz SQL. Aplikace pak může nevědomě spustit škodlivý systém SQL a umožnit útočníkům přístup k porušení nebo úpravě dat v databázi.
 
-Postup při povolení pokročilých zabezpečení dat:
+Povolení služby Azure Defender pro SQL:
 
 1. V Azure Portal v nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte svou databázi.
 
 1. Na stránce **Přehled** vyberte odkaz **název serveru** . Otevře se stránka Server.
 
-1. Na stránce **SQL Server** najděte část **zabezpečení** a vyberte **Upřesnit zabezpečení dat**.
+1. Na stránce **SQL Server** najděte část **zabezpečení** a vyberte **Security Center**.
 
-   1. Tuto funkci povolíte výběrem možnosti **v** části **Upřesnit zabezpečení dat** . Vyberte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Potom vyberte **Uložit**.
+   1. Pokud chcete tuto funkci povolit, vyberte **v** části **Azure Defender pro SQL** . Vyberte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Potom vyberte **Uložit**.
 
       ![Navigační podokno](./media/secure-database-tutorial/threat-settings.png)
 
       Můžete také nakonfigurovat e-maily pro příjem výstrah zabezpečení, podrobností úložiště a typů detekce hrozeb.
 
-1. Vraťte se na stránku databáze **SQL** databáze a v části **zabezpečení** vyberte **Rozšířené zabezpečení dat** . Zde najdete různé indikátory zabezpečení, které jsou pro databázi k dispozici.
+1. Vraťte se na stránku databáze **SQL** databáze a v části **zabezpečení** vyberte **Security Center** . Zde najdete různé indikátory zabezpečení, které jsou pro databázi k dispozici.
 
     ![Stav hrozby](./media/secure-database-tutorial/threat-status.png)
 
@@ -266,7 +266,7 @@ Pokud se zjistí aktivity neobvyklé, obdržíte e-mail s informacemi o událost
 
 ### <a name="auditing"></a>Auditování
 
-Funkce auditování sleduje události databáze a zapisuje je do protokolu auditu buď v úložišti Azure, Azure Monitor protokolů, nebo do centra událostí. Auditování pomáhá zajistit dodržování legislativních předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které by mohly znamenat možné narušení zabezpečení.
+Funkce auditování sleduje události databáze a zapisuje je do protokolu auditu buď v úložišti Azure, Azure Monitor protokolů, nebo do centra událostí. Auditování pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které můžou indikovat potenciální narušení zabezpečení.
 
 Povolení auditování:
 
@@ -276,7 +276,7 @@ Povolení auditování:
 
 1. V části nastavení **auditování** nastavte následující hodnoty:
 
-   1. Nastavte **auditování** na **zapnuto**.
+   1. Nastavte **Auditování** na **ZAPNUTO**.
 
    1. **Cíl protokolu auditu** vyberte jako kterýkoli z následujících:
 
@@ -347,7 +347,7 @@ V tomto kurzu jste se naučili, abyste vylepšili zabezpečení databáze pomoc�
 > - Vytvoření pravidel brány firewall na úrovni serveru a databáze
 > - Konfigurace správce Azure Active Directory (AD)
 > - Správa přístupu uživatele s ověřováním SQL, ověřováním Azure AD a zabezpečenými připojovacími řetězci
-> - Povolit funkce zabezpečení, jako je například rozšířené zabezpečení dat, auditování, maskování dat a šifrování
+> - Povolení funkcí zabezpečení, jako je Azure Defender pro SQL, auditování, maskování dat a šifrování
 
 Přejděte k dalšímu kurzu, kde se dozvíte, jak implementovat geografickou distribuci.
 

@@ -4,15 +4,15 @@ description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/18/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: cf1fc81ea63db21d2e864c00e1987eec3d376b59
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d7a158d91295aedc14f1f913ae152c496066fab5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853156"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891678"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Oblasti, které podporují Zóny dostupnosti v Azure
 
@@ -24,36 +24,36 @@ Služby, které jsou dostupné v jednotlivých oblastech, společně s nadcháze
 
 ## <a name="americas"></a>Amerika
 
-| Služba | Střední USA | East US | USA – východ 2 | Západní USA 2 |
-| --- | :---: | :---: | :---: | :---: |
+| Služba | Střední USA | East US | USA – východ 2 | Západní USA 2 | Střední Kanada
+| --- | :---: | :---: | :---: | :---: | :---: |
 | **Výpočetní služby** |  |  |  |  |
-| Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| INTERNÍHO nástroje prostředí Azure App Service | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| INTERNÍHO nástroje prostředí Azure App Service | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Storage** |  |  |  |  |
-| Spravované disky                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Zóna – redundantní úložiště             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Spravované disky                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Zóna – redundantní úložiště             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Sítě** |  |  |  |  |
-| Standardní IP adresa                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Standard Load Balancer             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Brána ExpressRoute               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Brána Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Standardní IP adresa                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Standard Load Balancer             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Brána ExpressRoute               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Databáze** |  |  |  |  |
-| Průzkumník dat Azure                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Databáze SQL                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | : heavy_check_mark: (Preview) |
-| Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Průzkumník dat Azure                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | : heavy_check_mark: (Preview) | :heavy_check_mark: |
+| Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analýzy** |  |  |  |  |
-| Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Integrace** |  |  |  |  |
-| Service Bus (jenom úroveň Premium)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Service Bus (jenom úroveň Premium)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Identita** |  |  |  |  |
-| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |   |
 
 ## <a name="europe"></a>Evropa
 
@@ -74,10 +74,10 @@ Služby, které jsou dostupné v jednotlivých oblastech, společně s nadcháze
 | VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Brána ExpressRoute               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Brána Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Databáze** |  |  |  |  |
 | Průzkumník dat Azure                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Databáze SQL                       | :heavy_check_mark: | : heavy_check_mark: (Preview) | :heavy_check_mark: | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | : heavy_check_mark: (Preview) | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analýzy** |  |  |  |  |
@@ -86,7 +86,7 @@ Služby, které jsou dostupné v jednotlivých oblastech, společně s nadcháze
 | Service Bus (jenom úroveň Premium)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Identita** |  |  |  |  |
-| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
@@ -96,8 +96,8 @@ Služby, které jsou dostupné v jednotlivých oblastech, společně s nadcháze
 | Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| INTERNÍHO nástroje prostředí Azure App Service | :heavy_check_mark: | :heavy_check_mark: |  |
-| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: |  |
+| INTERNÍHO nástroje prostředí Azure App Service | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Storage** |  |  |  |
 | Spravované disky                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Zóna – redundantní úložiště             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -107,17 +107,17 @@ Služby, které jsou dostupné v jednotlivých oblastech, společně s nadcháze
 | VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Brána ExpressRoute               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Brána Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Databáze** |  |  |  |
-| Průzkumník dat Azure                | :heavy_check_mark: | :heavy_check_mark: |  |
-| Databáze SQL                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: |  |
+| Průzkumník dat Azure                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analýzy** |  |  |  |
 | Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Integrace** |  |  |  |
 | Service Bus (jenom úroveň Premium)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: |  |
+| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Identita** |  |  |  |
 | Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: |  |
 
@@ -128,9 +128,8 @@ Azure také nabízí podporu Zóny dostupnosti v následujících oblastech:
 - USA (Gov) – Virginia
 - Jižní Afrika – sever
 - Středojižní USA
-- Střední Kanada
 
-Pokud chcete získat další informace o podpoře Zóny dostupnosti v těchto čtyřech oblastech, obraťte se na zákaznickou podporu společnosti Microsoft nebo na zástupce zákaznických služeb nebo otevřete žádost o technickou podporu.
+Pokud chcete získat další informace o podpoře Zóny dostupnosti v těchto třech oblastech, obraťte se na zákaznickou podporu od společnosti Microsoft nebo na zástupce pro zákazníky nebo otevřete žádost o technickou podporu.
 
 ## <a name="next-steps"></a>Další kroky
 

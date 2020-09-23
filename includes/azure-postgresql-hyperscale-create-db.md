@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "74973406"
 ---
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -24,7 +24,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Vytvoření Azure Database for PostgreSQL – Citus (škálování)
 
 Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
-1. V levém horním rohu Azure Portal klikněte na **vytvořit prostředek** .
+1. V levém horním rohu Azure Portal klikněte na **vytvořit prostředek**  .
 2. Na stránce **Nový** vyberte **Databáze** a na stránce **Databáze** vyberte **Azure Database for PostgreSQL**.
 3. U možnosti nasazení klikněte na tlačítko **vytvořit** pod **skupinou serverů Citus (škálování na úrovni).**
 4. Do formuláře podrobností o novém serveru zadejte následující informace:

@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Resource Manager na zařízení GPU Azure Stack Edge
-description: Popisuje, jak se připojit k Azure Resource Manager běžícímu na procesorovém GPU Azure Stack Edge pomocí Azure PowerShell.
+title: Připojení k Azure Resource Manager na zařízení GPU Azure Stack Edge pro
+description: Popisuje, jak se připojit k Azure Resource Manager běžícímu na grafickém procesoru Azure Stack Edge pro pomocí Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269807"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891240"
 ---
-# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Připojení k Azure Resource Manager na zařízení Azure Stack Edge
+# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Připojení k Azure Resource Manager na zařízení Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Resource Manager poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v předplatném Azure. Azure Stack hraniční zařízení podporuje stejná Azure Resource Manager rozhraní API k vytváření, aktualizaci a odstraňování virtuálních počítačů v místním předplatném. Tato podpora vám umožní spravovat zařízení způsobem konzistentním s cloudem. 
+Azure Resource Manager poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v předplatném Azure. Zařízení Azure Stack Edge pro podporuje stejná Azure Resource Manager rozhraní API k vytváření, aktualizaci a odstraňování virtuálních počítačů v místním předplatném. Tato podpora vám umožní spravovat zařízení způsobem konzistentním s cloudem. 
 
-V tomto kurzu se dozvíte, jak se připojit k místním rozhraním API na zařízení Azure Stack Edge přes Azure Resource Manager pomocí Azure PowerShell.
+V tomto kurzu se dozvíte, jak se připojit k místním rozhraním API na zařízení Azure Stack Edge pro prostřednictvím Azure Resource Manager pomocí Azure PowerShell.
 
 ## <a name="about-azure-resource-manager"></a>Informace o Azure Resource Manageru
 
-Azure Resource Manager poskytuje jednotnou vrstvu správy pro volání rozhraní API pro zařízení Azure Stack Edge a provádění operací, jako je vytváření, aktualizace a odstraňování virtuálních počítačů. Architektura Azure Resource Manager je podrobně popsána v následujícím diagramu.
+Azure Resource Manager poskytuje jednotnou vrstvu správy pro volání rozhraní API pro zařízení Azure Stack Edge pro a provádění operací, jako je vytváření, aktualizace a odstraňování virtuálních počítačů. Architektura Azure Resource Manager je podrobně popsána v následujícím diagramu.
 
 ![Diagram pro Azure Resource Manager](media/azure-stack-edge-j-series-connect-resource-manager/edge-device-flow.svg)
 
 
-## <a name="endpoints-on-azure-stack-edge-device"></a>Koncové body na Azure Stack hraničním zařízení
+## <a name="endpoints-on-azure-stack-edge-pro-device"></a>Koncové body na zařízení Azure Stack Edge pro
 
 Následující tabulka shrnuje různé koncové body, které jsou vystavené na vašem zařízení, podporované protokoly a porty pro přístup k těmto koncovým bodům. V celém článku najdete odkazy na tyto koncové body.
 
@@ -47,7 +47,7 @@ Proces připojení k místním rozhraním API zařízení pomocí Azure Resource
 
 | Krok # | Provedete tento krok... | .. v tomto umístění. |
 | --- | --- | --- |
-| 1. | [Konfigurace zařízení Azure Stack Edge](#step-1-configure-azure-stack-edge-device) | Místní webové uživatelské rozhraní |
+| 1. | [Konfigurace zařízení Azure Stack Edge pro](#step-1-configure-azure-stack-edge-pro-device) | Místní webové uživatelské rozhraní |
 | 2. | [Vytvoření a instalace certifikátů](#step-2-create-and-install-certificates) | Klient systému Windows/místní webové uživatelské rozhraní |
 | 3. | [Kontrola a konfigurace požadovaných součástí](#step-3-install-powershell-on-the-client) | Klient Windows |
 | 4. | [Nastavení Azure PowerShell na klientovi](#step-4-set-up-azure-powershell-on-the-client) | Klient Windows |
@@ -59,13 +59,13 @@ V následujících částech najdete podrobné informace o každém z výše uve
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že klient, který se používá pro připojení k zařízení přes Azure Resource Manager, používá protokol TLS 1,2. Další informace najdete [v konfiguraci TLS 1,2 na klientském počítači se systémem Windows přístup k Azure Stack hraničního zařízení](azure-stack-edge-j-series-configure-tls-settings.md).
+Než začnete, ujistěte se, že klient, který se používá pro připojení k zařízení přes Azure Resource Manager, používá protokol TLS 1,2. Další informace najdete [v konfiguraci TLS 1,2 na klientském počítači se systémem Windows přístup k zařízení Azure Stack Edge pro](azure-stack-edge-j-series-configure-tls-settings.md).
 
-## <a name="step-1-configure-azure-stack-edge-device"></a>Krok 1: konfigurace Azure Stack hraničního zařízení 
+## <a name="step-1-configure-azure-stack-edge-pro-device"></a>Krok 1: konfigurace zařízení Azure Stack Edge pro 
 
-V místním webovém uživatelském rozhraní zařízení Azure Stack Edge proveďte následující kroky.
+V místním webovém uživatelském rozhraní zařízení Azure Stack Edge pro proveďte následující kroky.
 
-1. Dokončete nastavení sítě pro zařízení Azure Stack Edge. 
+1. Dokončete nastavení sítě pro zařízení Azure Stack Edge pro. 
 
     ![Stránka místní webové uživatelské rozhraní "nastavení sítě"](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
@@ -83,7 +83,7 @@ V místním webovém uživatelském rozhraní zařízení Azure Stack Edge prove
 
 ## <a name="step-2-create-and-install-certificates"></a>Krok 2: vytvoření a instalace certifikátů
 
-Certifikáty zajišťují, že komunikace je důvěryhodná. Na zařízení Azure Stack Edge se automaticky vygenerují zařízení podepsané svým držitelem, objekty BLOB a certifikáty Azure Resource Manager. Volitelně můžete také přenést vlastní podepsané objekty BLOB a certifikáty Azure Resource Manager.
+Certifikáty zajišťují, že komunikace je důvěryhodná. Na zařízení Azure Stack Edge pro se automaticky vygenerují zařízení podepsané svým držitelem, objekty BLOB a certifikáty Azure Resource Manager. Volitelně můžete také přenést vlastní podepsané objekty BLOB a certifikáty Azure Resource Manager.
 
 Když přiřadíte podepsanému certifikátu vlastní, budete také potřebovat odpovídající podpisový řetězec certifikátu. Pro podpisový řetěz, Azure Resource Manager a certifikáty objektů BLOB v zařízení budete potřebovat odpovídající certifikáty na klientském počítači, aby bylo možné ověřit a komunikovat se zařízením.
 
@@ -319,7 +319,7 @@ Nastavte prostředí Azure Resource Manager a ověřte, že zařízení komuniku
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. Nastavte prostředí jako Azure Stack Edge a port, který se má použít pro Azure Resource Manager volání jako 443. Prostředí definujete dvěma způsoby:
+2. Nastavte prostředí jako Azure Stack Edge pro a port, který se má použít pro Azure Resource Manager volání jako 443. Prostředí definujete dvěma způsoby:
 
     - Nastavte prostředí. Zadejte následující příkaz:
 
@@ -329,7 +329,7 @@ Nastavte prostředí Azure Resource Manager a ověřte, že zařízení komuniku
     
     Další informace najdete na webu [set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
 
-    - Definujte prostředí vložené pro každou rutinu, kterou spustíte. Tím zajistíte, že všechna volání rozhraní API procházejí přes správné prostředí. Ve výchozím nastavení by volání procházela přes Azure Public, ale chcete, aby procházela s prostředím, které jste nastavili pro Azure Stack hraniční zařízení.
+    - Definujte prostředí vložené pro každou rutinu, kterou spustíte. Tím zajistíte, že všechna volání rozhraní API procházejí přes správné prostředí. Ve výchozím nastavení by volání procházela přes Azure Public, ale chcete, aby procházela s prostředím, které jste nastavili pro Azure Stack hraniční zařízení pro.
 
     - Přečtěte si další informace o [tom, jak přepnout prostředí AzureRM](#switch-environments).
 
@@ -376,7 +376,7 @@ Nastavte prostředí Azure Resource Manager a ověřte, že zařízení komuniku
 
 
 > [!IMPORTANT]
-> Platnost připojení k Azure Resource Manager vyprší každých 1,5 hodin nebo pokud se vaše zařízení Azure Stack hraničního zařízení restartuje. Pokud k tomu dojde, všechny rutiny, které spustíte, vrátí chybové zprávy, které už nejsou připojené k Azure. Budete se muset znovu přihlásit.
+> Platnost připojení k Azure Resource Manager vyprší každých 1,5 hodin nebo pokud se vaše zařízení Azure Stack Edge pro restartuje. Pokud k tomu dojde, všechny rutiny, které spustíte, vrátí chybové zprávy, které už nejsou připojené k Azure. Budete se muset znovu přihlásit.
 
 ## <a name="switch-environments"></a>Přepínání prostředí
 
@@ -460,4 +460,4 @@ Nyní jste přešli na zamýšlené prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nasaďte virtuální počítače na Azure Stack hraniční zařízení](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Nasaďte virtuální počítače na zařízení Azure Stack Edge pro](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

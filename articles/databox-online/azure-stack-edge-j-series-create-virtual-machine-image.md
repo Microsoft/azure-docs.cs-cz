@@ -1,6 +1,6 @@
 ---
-title: Vytvoření imagí virtuálních počítačů pro zařízení s grafickým procesorem Azure Stack Edge
-description: Popisuje, jak vytvořit image virtuálních počítačů se systémem Linux nebo Windows pro použití se zařízením s grafickým procesorem Azure Stack Edge.
+title: Vytvoření imagí virtuálních počítačů pro zařízení s grafickým procesorem Azure Stack Edge pro
+description: Popisuje, jak vytvořit image virtuálních počítačů se systémem Linux nebo Windows pro použití se zařízením s grafickým procesorem Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500279"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890983"
 ---
-# <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Vytváření vlastních imagí virtuálních počítačů pro zařízení Azure Stack Edge
+# <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Vytváření vlastních imagí virtuálních počítačů pro zařízení Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Pokud chcete nasadit virtuální počítače na Azure Stack hraničním zařízení, musíte mít možnost vytvářet vlastní image virtuálních počítačů, které můžete použít k vytvoření virtuálních počítačů. Tento článek popisuje kroky potřebné k vytvoření vlastních imagí pro Linux nebo Windows VM, které můžete použít k nasazení virtuálních počítačů na zařízení Azure Stack Edge.
+Pokud chcete nasadit virtuální počítače na zařízení Azure Stack Edge pro, musíte mít možnost vytvářet vlastní image virtuálních počítačů, které můžete použít k vytvoření virtuálních počítačů. Tento článek popisuje kroky potřebné k vytvoření vlastních imagí pro Linux nebo Windows VM, které můžete použít k nasazení virtuálních počítačů na zařízení Azure Stack Edge pro.
 
 ## <a name="vm-image-workflow"></a>Pracovní postup image virtuálního počítače
 
-Pracovní postup vyžaduje, abyste v Azure vytvořili virtuální počítač, přizpůsobili virtuální počítač, generalizaci a stažení virtuálního pevného disku odpovídajícího tomuto VIRTUÁLNÍmu počítači. Tento zobecněný virtuální pevný disk se nahraje do Azure Stack Edge, z tohoto virtuálního pevného disku se vytvoří spravovaný disk, image se vytvoří ze spravovaného disku a z této image se vytvoří virtuální počítače.   
+Pracovní postup vyžaduje, abyste v Azure vytvořili virtuální počítač, přizpůsobili virtuální počítač, generalizaci a stažení virtuálního pevného disku odpovídajícího tomuto VIRTUÁLNÍmu počítači. Tento zobecněný VHD se nahraje do Azure Stack Edge pro, z tohoto virtuálního pevného disku se vytvoří spravovaný disk, vytvoří se image ze spravovaného disku a nakonec se z této image vytvoří virtuální počítače.   
 
-Další informace najdete [v poznámkách k nasazení virtuálního počítače na zařízení Azure Stack Edge pomocí Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+Další informace najdete [v poznámkách k nasazení virtuálního počítače na zařízení Azure Stack Edge pro pomocí Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
 
 
 ## <a name="create-a-windows-custom-vm-image"></a>Vytvoření vlastní image virtuálního počítače s Windows
@@ -44,7 +44,7 @@ K vytvoření image virtuálního počítače s Windows proveďte následující
    
        Můžete se také podívat na [Přehled nástroje Sysprep (Příprava systému)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuální počítač na zařízení Azure Stack Edge.
+Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuální počítač na zařízení Azure Stack Edge pro.
 
 ## <a name="create-a-linux-custom-vm-image"></a>Vytvoření vlastní image virtuálního počítače se systémem Linux
 
@@ -69,9 +69,9 @@ Chcete-li vytvořit bitovou kopii virtuálního počítače se systémem Linux, 
 
 1. [Stáhněte si existující disk s operačním systémem](../virtual-machines/linux/download-vhd.md).
 
-Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuální počítač na zařízení Azure Stack Edge. Vlastní image pro Linux můžete vytvořit pomocí následujících dvou Azure Marketplace imagí:
+Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuální počítač na zařízení Azure Stack Edge pro. Vlastní image pro Linux můžete vytvořit pomocí následujících dvou Azure Marketplace imagí:
 
-|Název položky  |Popis  |Publisher  |
+|Název položky  |Description  |Publisher  |
 |---------|---------|---------|
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server je nejoblíbenější Linux pro cloudová prostředí na světě.|Canonical|
 |[Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux je jednou z nejoblíbenějších distribucí systému Linux.     |credativ|
@@ -81,4 +81,4 @@ Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuá
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nasaďte virtuální počítače na Azure Stack hraniční zařízení](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Nasaďte virtuální počítače na zařízení Azure Stack Edge pro](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

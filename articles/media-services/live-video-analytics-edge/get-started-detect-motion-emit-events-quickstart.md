@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568043"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884938"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -84,6 +84,9 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
 Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. Měli byste vidět aspoň jedno zařízení s názvem **lva-Sample-Device**. Pomocí místní nabídky teď můžete spravovat zařízení IoT Edge a pracovat s Azure IoT Hub. Chcete-li zobrazit moduly nasazené na hraničním zařízení, v části **lva-Sample-Device**rozbalte uzel **moduly** .
 
 ![lva – uzel Sample-Device](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> Pokud jste [ručně nasadili Live video Analytics na IoT Edge](deploy-iot-edge-device.md) yourselves na hraničním zařízení (třeba zařízení ARM64), zobrazí se v části Azure IoT Hub modul pod tímto zařízením. Tento modul můžete vybrat a postupovat podle dalších kroků níže.
 
 ## <a name="use-direct-method-calls"></a>Použití volání přímých metod
 

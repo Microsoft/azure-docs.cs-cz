@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180843"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883937"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -35,11 +35,11 @@ Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohr
 > [!NOTE]
 > Security Center neinstaluje agenta Log Analytics na partnerských virtuálních zařízeních, protože většina dodavatelů zabezpečení brání externím agentům běžícím na jejich zařízeních.
 
-Další informace o integraci nástrojů pro kontrolu ohrožení zabezpečení z Qualys, včetně integrovaného skeneru dostupného pro zákazníky úrovně Standard, najdete v tématu [posouzení ohrožení zabezpečení pro Azure Virtual Machines](deploy-vulnerability-assessment-vm.md).
+Další informace o integraci nástrojů pro kontrolu ohrožení zabezpečení z Qualys, včetně integrovaného skeneru dostupného pro zákazníky v Azure Defenderu, najdete v tématu [posouzení ohrožení zabezpečení pro azure Virtual Machines](deploy-vulnerability-assessment-vm.md).
 
 Security Center taky nabízí analýzu ohrožení zabezpečení pro vaše:
 
-* Databáze SQL – Přečtěte si téma [zkoumání sestav posouzení ohrožení zabezpečení na řídicím panelu posouzení ohrožení zabezpečení](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports) .
+* Databáze SQL – Přečtěte si téma [zkoumání sestav posouzení ohrožení zabezpečení na řídicím panelu posouzení ohrožení zabezpečení](defender-for-sql-usage.md#explore-vulnerability-assessment-reports) .
 * Azure Container Registry imagí – viz [integrace Azure Container Registry s Security Center (Preview)](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Způsob integrace řešení zabezpečení
@@ -88,7 +88,7 @@ Vyberte **zobrazení** pro další informace a možnosti, jako například:
 Security Center automaticky vyhledá řešení zabezpečení běžící v Azure, ale nepřipojená k Security Center a zobrazí řešení v části **zjištěná řešení** . Mezi tato řešení patří řešení Azure, jako jsou [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)a partnerská řešení.
 
 > [!NOTE]
-> Úroveň Standard Security Center se vyžaduje na úrovni předplatného funkce zjištěná řešení. Další informace o cenových úrovních najdete v tématu [ceny](security-center-pricing.md) .
+> Pro funkci zjištěná řešení povolte v **Azure Defenderu** na úrovni předplatného. Další informace o cenových úrovních najdete v tématu [ceny](security-center-pricing.md) .
 >
 
 Vyberte **připojit** v rámci řešení, které chcete integrovat s Security Center a upozorňovat na výstrahy zabezpečení.

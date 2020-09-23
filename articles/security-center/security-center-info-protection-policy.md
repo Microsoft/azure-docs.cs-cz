@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7586cca21d470bcb0cf637ca0370f5dfcb59406
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711081"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901098"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Přizpůsobení zásad SQL Information Protection v Azure Security Center (Preview)
  
@@ -56,7 +56,7 @@ Chcete-li upravit zásady ochrany informací pro vašeho tenanta Azure, musíte 
  
 4. Popisky jsou uvedené v pořadí podle vzestupné citlivosti. Chcete-li změnit pořadí mezi popisky, přetáhněte popisky, abyste je změnili v tabulce, nebo použijte tlačítka **nahoru a** **dolů** pro změnu pořadí. 
  
-    ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/move-up.png)
+    ![Seznam popisků](./media/security-center-info-protection-policy/move-up.png)
  
 5. Až skončíte, nezapomeňte kliknout na **Uložit** v horní části obrazovky.
  
@@ -66,7 +66,7 @@ Chcete-li upravit zásady ochrany informací pro vašeho tenanta Azure, musíte 
 1. Kliknutím na **Spravovat typy informací**můžete spravovat a upravovat typy informací.
 2. Chcete-li přidat nový **typ informací**, v horní nabídce vyberte možnost **vytvořit typ informací** . Pro **typ informací**můžete nakonfigurovat řetězec název, popis a vzor hledání. Řetězce vzorů hledání mohou volitelně používat klíčová slova se zástupnými znaky (pomocí znaku '% '), který modul automatizovaného zjišťování používá k identifikaci citlivých dat ve vašich databázích na základě metadat sloupců.
  
-    ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/info-types.png)
+    ![Vytvořit typ informací](./media/security-center-info-protection-policy/info-types.png)
  
 3. Můžete také nakonfigurovat integrované **typy informací** přidáním dalších řetězců vzorů hledání, zakázáním některých existujících řetězců nebo změnou popisu. Předdefinované **typy informací** nemůžete odstranit ani upravit jejich názvy. 
 4. **Typy informací** jsou uvedené v pořadí podle vzestupného řazení, což znamená, že se typy vyšší v seznamu pokusí porovnat jako první. Chcete-li změnit hodnocení mezi typy informací, přetáhněte typy na pravé místo v tabulce nebo pomocí tlačítek **nahoru** a **dolů** změňte pořadí. 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 390f44ffebb6531fde2f819fad0d4e9399cba218
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fbb6a7dbe73444ac9049573705e4d04bd868a806
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287509"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884567"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Rozšířená ochrana před internetovými útoky v Azure Database for PostgreSQL – jeden server
 
@@ -29,7 +29,7 @@ Ochrana před hrozbami je součástí nabídky rozšířené ochrany před inter
 
 Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje rozpoznávat a reagovat na potenciální hrozby při jejich výskytu tím, že poskytuje výstrahy zabezpečení pro aktivity neobvyklé. Uživatelé dostanou upozornění na podezřelé databázové aktivity a potenciální ohrožení zabezpečení a také neobvyklé přístup k databázi a vzor dotazů. Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), což zahrnuje podrobnosti o podezřelé aktivitě a doporučuje akci, jak tuto hrozbu prozkoumat a zmírnit. Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL usnadňuje řešení potenciálních hrozeb pro databázi, aniž by musel být odborníkem na zabezpečení nebo spravovali pokročilé systémy monitorování zabezpečení. 
 
-![Koncept rozšířené ochrany před internetovými útoky](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png" alt-text="Koncept rozšířené ochrany před internetovými útoky":::
 
 ## <a name="advanced-threat-protection-alerts"></a>Výstrahy rozšířené ochrany před internetovými útoky 
 Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL detekuje aktivity neobvyklé indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití a může aktivovat následující výstrahy:
