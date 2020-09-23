@@ -7,21 +7,23 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291292"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904249"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Nastavení instance jarního cloudového konfiguračního serveru pro vaši službu
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 V tomto článku se dozvíte, jak připojit instanci jarního cloudového konfiguračního serveru k vaší jarní cloudové službě Azure.
 
 Jarní cloudová konfigurace poskytuje podporu na straně serveru a klienta pro externou konfiguraci v distribuovaném systému. V případě instance konfiguračního serveru máte centrální místo pro správu externích vlastností pro aplikace ve všech prostředích. Další informace najdete v tématu [Reference k serveru pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config).
 
 ## <a name="prerequisites"></a>Požadavky
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 * Již zřízené a běžící cloudová služba Azure. Pokud chcete nastavit a spustit službu jarních cloudů Azure, přečtěte si [rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure](spring-cloud-quickstart.md).
 
 ## <a name="restriction"></a>Omezení
@@ -126,7 +128,7 @@ Všechny konfigurovatelné vlastnosti používané k nastavení úložišť Git 
 
 Teď, když jsou konfigurační soubory uložené v úložišti, musíte k ní připojit jarní cloud Azure.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 
@@ -163,7 +165,7 @@ Pokud chcete použít volitelné **úložiště vzorků** ke konfiguraci služby
 
 Pokud jste napsali soubor YAML s nastavením úložiště, můžete ho naimportovat přímo z místního počítače do jarního cloudu Azure. Jednoduchý soubor YAML pro privátní úložiště se základním ověřováním by vypadal takto:
 
-```yml
+```yaml
 spring:
     cloud:
         config:
@@ -210,7 +212,7 @@ Azure jaře Cloud má přístup k úložištím Git, které jsou veřejné, zabe
 
 ### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>Konfigurace přístupu Azure Spring Cloudu k úložišti Git
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 

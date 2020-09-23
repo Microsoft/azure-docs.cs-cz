@@ -13,22 +13,24 @@ metadata:
   ms.author: jmartens
   ms.date: 09/17/2020
   ms.custom: contperfq1
-  ms.openlocfilehash: c103b04fff2cc0b1d5b804c16f98e63fd1aa3e87
-  ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+  ms.openlocfilehash: 4359f18e51dffa26f1bfc7fbe74f5f89dff7c56f
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/14/2020
-  ms.locfileid: "90068281"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90900113"
 landingContent:
 - title: 'Začínáme: Založeno na kódu'
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Začínáme (Python)
+    - text: Začínáme se sadou Python SDK (1. den)
+      url: tutorial-1st-experiment-sdk-setup-local.md
+    - text: Použití Jupyter Notebooks
       url: tutorial-1st-experiment-sdk-setup.md
     - text: Dávkové odvozování s využitím kanálů ML (Python)
       url: tutorial-pipeline-batch-scoring-classification.md
-    - text: Začínáme (R)
+    - text: Začínáme s R
       url: tutorial-1st-r-experiment.md
 - title: 'Začínáme: Málo kódu nebo dokonce žádný kód'
   linkLists:

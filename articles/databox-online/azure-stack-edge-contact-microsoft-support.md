@@ -1,6 +1,6 @@
 ---
-title: Lístek podpory protokolu pro Azure Stack Edge Azure Data Box Gateway | Microsoft Docs
-description: Přečtěte si, jak protokolovat požadavky na problémy související s Azure Stack hraničním oddělením nebo Data Box Gateway objednávkami.
+title: Lístek podpory protokolu pro Azure Stack Edge pro, Azure Data Box Gateway | Microsoft Docs
+description: Naučte se, jak protokolovat žádosti o problémy související s Azure Stack hraniční verze pro nebo Data Box Gateway objednávky.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339905"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904526"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Otevření lístku podpory pro Azure Stack Edge a Azure Data Box Gateway
+# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Otevření lístku podpory pro Azure Stack Edge pro a Azure Data Box Gateway
 
-Tento článek se týká Azure Stack Edge a Azure Data Box Gateway, která jsou spravována Azure Stack hraniční/Azure Data Box Gateway služba. Pokud narazíte na nějaké problémy se službou, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede:
+Tento článek se týká Azure Stack Edge pro a Azure Data Box Gateway, které jsou spravovány službou Azure Stack Edge pro/Azure Data Box Gateway. Pokud narazíte na nějaké problémy se službou, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede:
 
 * Jak vytvořit žádost o podporu.
 * Jak spravovat životní cyklus žádosti o podporu v rámci portálu.
@@ -26,13 +26,13 @@ Tento článek se týká Azure Stack Edge a Azure Data Box Gateway, která jsou 
 
 Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
 
-1. Přejít na Azure Stack Edge nebo Data Box Gateway objednávku. Přejděte do části **Podpora a řešení potíží** a pak vyberte **Nová žádost o podporu**.
+1. Přejít na Azure Stack Edge pro nebo Data Box Gateway objednávky. Přejděte do části **Podpora a řešení potíží** a pak vyberte **Nová žádost o podporu**.
 
 2. V části **Nová žádost o podporu**na kartě **základy** proveďte následující kroky:
 
     1. V rozevíracím seznamu **typ problému** vyberte možnost **technický**.
     2. Vyberte své **předplatné**.
-    3. V části **Služba**zaškrtněte **moje služby**. V rozevíracím seznamu vyberte **Azure Stack Edge a data box Gateway**.
+    3. V části **Služba**zaškrtněte **moje služby**. V rozevíracím seznamu vyberte **Azure Stack Edge pro a data box Gateway**.
     4. Vyberte **prostředek**. To odpovídá názvu vaší objednávky.
     5. Zadejte stručné **Shrnutí** problému, ke kterému dochází. 
     6. Vyberte **typ problému**.
@@ -98,5 +98,5 @@ Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se [řešit problémy související s Azure Stack Edge](azure-stack-edge-troubleshoot.md).
+Naučte se [řešit problémy související s Azure Stack Edge pro](azure-stack-edge-troubleshoot.md).
 Naučte se [řešit problémy související s data box Gateway](data-box-gateway-troubleshoot.md).

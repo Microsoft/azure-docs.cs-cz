@@ -1,6 +1,6 @@
 ---
-title: Použití kubectl k nasazení stavové aplikace Kubernetes prostřednictvím dynamicky zřízené sdílené složky na zařízení GPU na Azure Stack hraničních zařízeních | Microsoft Docs
-description: Popisuje, jak vytvořit a spravovat nasazení stavové aplikace Kubernetes prostřednictvím dynamicky zřízené sdílené složky pomocí kubectl na zařízení GPU Microsoft Azure Stack Edge.
+title: Použití kubectl k nasazení stavové aplikace Kubernetes prostřednictvím dynamicky zřízené sdílené složky na zařízení GPU Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak vytvořit a spravovat nasazení stavové aplikace Kubernetes prostřednictvím dynamicky zřízené sdílené složky pomocí kubectl na zařízení GPU Microsoft Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: c787fc4c37c8fc3b4b8f007b1a84a5989a15fbc4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d37152f7dec78d5f5db21fdde9a8ec25c36c4e05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254317"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899475"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-gpu-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s StorageClass na zařízení GPU Azure Stack Edge
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s StorageClass na zařízení GPU Azure Stack Edge pro
 
 V tomto článku se dozvíte, jak nasadit stavovou aplikaci s jednou instancí v Kubernetes pomocí StorageClass k dynamickému zřízení úložiště a nasazení. Nasazení používá `kubectl` příkazy v existujícím clusteru Kubernetes a nasadí aplikaci MySQL. 
 
-Tento postup je určený pro uživatele, kteří si prozkoumali [Kubernetes Storage na Azure Stack hraničním zařízení](azure-stack-edge-gpu-kubernetes-storage.md) a jsou obeznámeni s koncepty [úložiště Kubernetes](https://kubernetes.io/docs/concepts/storage/).
+Tento postup je určený pro uživatele, kteří si zkontrolovali [Kubernetes úložiště na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-storage.md) a jsou obeznámeni s koncepty [úložiště Kubernetes](https://kubernetes.io/docs/concepts/storage/).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -28,30 +28,30 @@ Než budete moct nasadit stavovou aplikaci, ujistěte se, že jste na svém zař
 
 ### <a name="for-device"></a>Zařízení
 
-- Máte přihlašovací údaje pro přihlášení k Azure Stack hraničního zařízení s jedním uzlem.
+- Máte přihlašovací údaje pro přihlášení k zařízení Azure Stack Edge pro s jedním uzlem.
     - Zařízení se aktivuje. Viz [Aktivace zařízení](azure-stack-edge-gpu-deploy-activate.md).
     - Zařízení má výpočetní roli nakonfigurovanou prostřednictvím Azure Portal a má cluster Kubernetes. Viz [Konfigurace výpočtů](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 ### <a name="for-client-accessing-the-device"></a>Pro klientský přístup k zařízení
 
-- Máte klientský systém Windows, který se bude používat pro přístup k Azure Stack hraničního zařízení.
+- Máte klientský systém Windows, který se bude používat pro přístup k zařízení Azure Stack Edge pro.
     - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Můžete mít i jiné klienty s [podporovaným operačním systémem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Tento článek popisuje postup při použití klienta systému Windows. 
     
-    - Dokončili jste postup popsaný v tématu [přístup ke clusteru Kubernetes na zařízení Azure Stack Edge](azure-stack-edge-gpu-create-kubernetes-cluster.md). Máte:
+    - Dokončili jste postup popsaný v tématu [přístup ke clusteru Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md). Máte:
       - `userns1`Pomocí příkazu byl vytvořen obor názvů `New-HcsKubernetesNamespace` . 
       - `user1`Pomocí příkazu byl vytvořen uživatel `New-HcsKubernetesUser` . 
       - Byl udělen `user1` přístup `userns1` prostřednictvím `Grant-HcsKubernetesNamespaceAccess` příkazu.       
       - Nainstalováno `kubectl` na straně klienta a soubor byl uložen `kubeconfig` s konfigurací uživatele do jazyka C: \\ Uživatelé \\ &lt; uživatelské_jméno &gt; \\ . Kube. 
     
-    - Ujistěte se, že `kubectl` verze klienta nepřekračuje jednu verzi z hlavní verze Kubernetes, která běží na vašem zařízení Azure Stack Edge. 
+    - Ujistěte se, že `kubectl` verze klienta není ve verzi Kubernetes Master spuštěná na vašem zařízení Azure Stack Edge pro. 
         - Slouží `kubectl version` ke kontrole verze kubectl spuštěné v klientovi. Poznamenejte si plnou verzi.
-        - V místním uživatelském rozhraní zařízení Azure Stack Edge si přečtěte **Přehled** a poznamenejte si číslo Kubernetes softwaru. 
+        - V místním uživatelském rozhraní zařízení Azure Stack Edge pro se podívejte na **Přehled** a poznamenejte si číslo Kubernetes softwaru. 
         - Ověřte, že tyto dvě verze mají kompatibilitu z mapování uvedeného v podporované verzi Kubernetes.<!-- insert link-->. 
 
 
-Jste připraveni nasadit stavovou aplikaci na zařízení Azure Stack Edge. 
+Jste připraveni nasadit stavovou aplikaci na zařízení Azure Stack Edge pro. 
 
 
 ## <a name="deploy-mysql"></a>Nasazení MySQL
@@ -78,7 +78,7 @@ Všechny `kubectl` příkazy, které použijete k vytvoření a správě stavov�
 
 1. Budete používat následující soubory YAML. Tento `mysql-deployment.yml` soubor popisuje nasazení, které spouští MySQL, a odkazuje na okruh PVC. Soubor definuje připojení svazku pro `/var/lib/mysql` a pak vytvoří virtuální okruh, který bude hledat svazek o velikosti 20 GB. Je zřízena dynamická PV a virtuální okruh je vázán na tuto PV.
 
-    Zkopírujte a uložte následující `mysql-deployment.yml` soubor do složky na klientovi Windows, který používáte pro přístup k Azure Stack hraničního zařízení.
+    Zkopírujte a uložte následující `mysql-deployment.yml` soubor do složky na klientovi Windows, který používáte pro přístup k zařízení Azure Stack Edge pro.
     
     ```yml
     apiVersion: v1
@@ -126,7 +126,7 @@ Všechny `kubectl` příkazy, které použijete k vytvoření a správě stavov�
               claimName: mysql-pv-claim-sc
     ```
     
-2. Zkopírujte soubor a uložte `mysql-pvc.yml` ho jako soubor do stejné složky, kam jste uložili soubor `mysql-deployment.yml` . Chcete-li použít vestavěné StorageClass, které Azure Stack hraniční zařízení na připojeném datovém disku, nastavte `storageClassName` pole v objektu PVC na `ase-node-local` a accessModes `ReadWriteOnce` . 
+2. Zkopírujte soubor a uložte `mysql-pvc.yml` ho jako soubor do stejné složky, kam jste uložili soubor `mysql-deployment.yml` . Chcete-li použít vestavěné StorageClass, které Azure Stack Edge pro zařízení na připojeném datovém disku, nastavte `storageClassName` pole v objektu PVC na `ase-node-local` a accessModes `ReadWriteOnce` . 
 
     > [!NOTE] 
     > Ujistěte se, že soubory YAML mají správné odsazení. Můžete se podívat na [YAML Lint](http://www.yamllint.com/) a ověřit a uložit.
@@ -326,4 +326,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak nakonfigurovat síť přes kubectl, najdete v tématu [nasazení bezstavové aplikace na zařízení Azure Stack Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md) .
+Informace o tom, jak nakonfigurovat síť přes kubectl, najdete v tématu [nasazení bezstavové aplikace na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md) .

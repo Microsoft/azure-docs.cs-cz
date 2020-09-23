@@ -1,5 +1,5 @@
 ---
-title: Definování nového typu zařízení brány v Azure IoT Central | Microsoft Docs
+title: Kurz – definování nového typu zařízení brány v Azure IoT Central | Microsoft Docs
 description: V tomto kurzu se dozvíte jako tvůrce, jak v aplikaci IoT Central Azure definovat nový typ zařízení brány IoT Gateway.
 author: rangv
 ms.author: rangv
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81758129"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967901"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
+# <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Kurz – definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 
 *Tento článek se týká tvůrců řešení a vývojářů zařízení.*
 
@@ -31,6 +31,9 @@ I když chcete, aby zařízení komunikovala s aplikací IoT Central, může tak
 * Odeslat svou vlastní telemetrii, například teplotu.
 * Reaguje na aktualizace zapisovatelných vlastností provedené operátorem. Například operátor může změnit interval odesílání telemetrie.
 * Odpovězte na příkazy, jako je třeba restartování zařízení.
+
+> [!div class="checklist"]
+> Vytvoření šablon zařízení pro příjem dat vytvoření šablony zařízení brány publikování šablony zařízení vytvoření simulovaných zařízení
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,8 +110,8 @@ Chcete-li přidat vlastnosti cloudu do šablony **zařízení služby inteligent
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádné          | Date (Datum)   |
-    | Název zákazníka     | Žádné          | String |
+    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
+    | Název zákazníka     | Žádné          | Řetězec |
 
 2. Vyberte **Uložit**.
 

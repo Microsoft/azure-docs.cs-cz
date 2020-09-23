@@ -1,6 +1,6 @@
 ---
-title: sys. external_job_streams (Transact-SQL) – Azure SQL Edge (Preview)
-description: Další informace o použití sys. external_job_streams ve službě Azure SQL Edge (Preview)
+title: sys. external_job_streams (Transact-SQL) – Azure SQL Edge
+description: Další informace o použití sys. external_job_streams ve službě Azure SQL Edge
 keywords: sys. external_job_streams, Edge SQL
 services: sql-edge
 ms.service: sql-edge
@@ -9,21 +9,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 2634128f4d431e4283f59032c6474a71f2af364d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35010d3aba7f6d5ee3185291c917ff7726ba8bd7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233086"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900349"
 ---
 # <a name="sysexternal_job_streams-transact-sql"></a>sys.external_job_streams (Transact-SQL)
 
 Vrátí řádek pro vstupní nebo výstupní externí objekt datového proudu namapovaný na externí úlohu streamování.
 
-|Název sloupce|Datový typ|Description|  
+|Název sloupce|Datový typ|Popis|  
 |-----------------|---------------|-----------------|
-|**job_id**|**int**| Identifikační číslo objektu pro objekt úlohy streamování. Tento sloupec se mapuje na sloupec object_id sys. external_streaming_jobs.|
-|**stream_id**|**int**| Identifikační číslo objektu pro objekt datového proudu. Tento sloupec se mapuje na sloupec object_id sys. external_streams. |
+|**job_id**|**hmot**| Identifikační číslo objektu pro objekt úlohy streamování. Tento sloupec se mapuje na sloupec object_id sys. external_streaming_jobs.|
+|**stream_id**|**hmot**| Identifikační číslo objektu pro objekt datového proudu. Tento sloupec se mapuje na sloupec object_id sys. external_streams. |
 |**is_input**|**bit**| 1, pokud je objekt datového proudu použit jako vstup pro úlohu streamování, jinak 0.|
 |**is_output**|**bit**| 1, pokud je objekt datového proudu použit jako výstup pro úlohu streamování, jinak 0.|
 

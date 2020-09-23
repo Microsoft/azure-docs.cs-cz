@@ -1,6 +1,6 @@
 ---
-title: Nasadit modul GPU na zařízení Microsoft Azure Stack Edge z Azure Marketplace | Microsoft Docs
-description: V této části najdete popis postupu povolení výpočetní služby a zajištění, aby vaše zařízení Azure Stack Edge bylo připravené pomocí místního uživatelského rozhraní.
+title: Nasadit modul GPU na zařízení Microsoft Azure Stack Edge pro ze Azure Marketplace | Microsoft Docs
+description: V této části najdete popis postupu povolení výpočetní služby a zajištění, aby vaše zařízení Azure Stack Edge pro bylo připravené pomocí místního uživatelského rozhraní.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d29408c126844615666a4ab217027b6ae1d037d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a15e74dd2a1a2737675ef66284f348f33cd753dd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659947"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899947"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>Nasazení modulu IoT s povoleným GPU z Azure Marketplace na zařízení s grafickým procesorem Azure Stack Edge
+# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>Nasazení modulu IoT s povoleným grafickým procesorem z Azure Marketplace na zařízení GPU pro Azure Stack Edge pro
 
-Tento článek popisuje, jak nasadit modul IoT Edge s grafickým procesorem (GPU), který je povolený, z Azure Marketplace na Azure Stack hraničním zařízení. 
+Tento článek popisuje, jak nasadit modul IoT Edge s grafickým procesorem (GPU), který je povolený, z Azure Marketplace na zařízení Azure Stack Edge pro. 
 
 V tomto článku získáte informace o těchto tématech:
-  - Příprava Azure Stackho Edge na spuštění modulu GPU
+  - Připravte Azure Stack Edge pro pro spuštění modulu GPU.
   - Stáhněte a nasaďte modul IoT s povoleným GPU z Azure Marketplace.
   - Monitorujte výstup modulu.
 
@@ -57,11 +57,11 @@ Než začnete, ujistěte se, že máte následující:
 
     ![Získat vzorový modul](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
-5. Vyberte předplatné, které jste použili k nasazení Azure Stack hraničního zařízení.
+5. Vyberte předplatné, které jste použili k nasazení Azure Stack hraničního zařízení pro.
 
     ![Výběr předplatného](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/select-subscription-1.png)
 
-6. Zadejte název služby IoT Hub, kterou jste vytvořili při konfiguraci Azure Stack hraničního zařízení. Pokud chcete najít tento název služby IoT Hub, v Azure Portal přejít na prostředek Azure Stack Edge přidružený k vašemu zařízení. 
+6. Zadejte název služby IoT Hub, kterou jste vytvořili při konfiguraci zařízení Azure Stack Edge pro. Pokud chcete najít tento název služby IoT Hub, v Azure Portal přejít na prostředek Azure Stack Edge přidružený k vašemu zařízení. 
 
     1. V nabídce v levém podokně přejděte na **Edge compute > Začínáme**. 
 
@@ -71,7 +71,7 @@ Než začnete, ujistěte se, že máte následující:
 
     1. V okně **Konfigurace hraničních výpočtů** :
 
-        1. Poznamenejte si službu IoT Hub, která byla vytvořena při konfiguraci COMPUTE na zařízení Azure Stack Edge.
+        1. Poznamenejte si službu IoT Hub, která byla vytvořena při konfiguraci výpočtů na zařízení Azure Stack Edge pro.
         2. Poznamenejte si název zařízení IoT Edge, které bylo vytvořeno při konfiguraci Compute. Tento název použijete v následujícím kroku.
 
         ![Konfigurace výpočtů na hraničních zařízeních](media/azure-stack-edge-gpu-deploy-sample-module/view-compute-config-1.png)
@@ -95,9 +95,9 @@ Než začnete, ujistěte se, že máte následující:
 
 1. Na paletě příkazů VS Code spusťte **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: Vybrat IoT Hub).
 
-2. Zvolte předplatné a centrum IoT obsahující zařízení IoT Edge, které chcete nakonfigurovat. V takovém případě vyberte předplatné, které se používá k nasazení Azure Stack hraničního zařízení, a vyberte IoT Edge zařízení vytvořené pro Azure Stack hraniční zařízení. K tomu dochází při konfiguraci výpočetní kapacity prostřednictvím Azure Portal v předchozích krocích.
+2. Zvolte předplatné a centrum IoT obsahující zařízení IoT Edge, které chcete nakonfigurovat. V takovém případě vyberte předplatné, které se používá k nasazení Azure Stack Edge pro zařízení, a vyberte IoT Edge zařízení, které jste vytvořili pro zařízení Azure Stack Edge pro. K tomu dochází při konfiguraci výpočetní kapacity prostřednictvím Azure Portal v předchozích krocích.
 
-3. V Průzkumníku VS Code rozbalte část Azure IoT Hub. V části **zařízení**by se mělo zobrazit zařízení IoT Edge odpovídající vašemu zařízení Azure Stack Edge. 
+3. V Průzkumníku VS Code rozbalte část Azure IoT Hub. V části **zařízení**by se mělo zobrazit zařízení IoT Edge odpovídající vašemu zařízení Azure Stack Edge pro. 
 
     1. Vyberte toto zařízení, klikněte pravým tlačítkem myši a vyberte možnost **Spustit sledování vestavěného koncového bodu události**.
   
@@ -105,7 +105,7 @@ Než začnete, ujistěte se, že máte následující:
 
     2. Přejděte na **zařízení > moduly** a měli byste vidět, že je spuštěný **modul GPU** .
 
-    3. VS Code terminál by měl také zobrazit IoT Hub události jako výstup monitorování pro zařízení Azure Stack Edge.
+    3. VS Code terminál by měl také zobrazit IoT Hub události jako výstup monitorování pro zařízení Azure Stack Edge pro.
 
         ![Monitorování výstupu](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 

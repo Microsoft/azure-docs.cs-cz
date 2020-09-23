@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4edb0f356dd83ab1aa353e0791f619be497a9d91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c44c99016f507214869e45a66bdd27c0a5efec75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166021"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982928"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serializace mezipaměti tokenů v MSAL.NET
 Po [získání tokenu](msal-acquire-cache-tokens.md)je uložen do mezipaměti v rámci knihovny Microsoft Authentication Library (MSAL).  Kód aplikace by se měl pokusit získat token z mezipaměti před získáním tokenu jinou metodou.  Tento článek popisuje výchozí a vlastní serializaci mezipaměti tokenů v MSAL.NET.
@@ -39,8 +39,8 @@ Nezapomeňte, že vlastní serializace není k dispozici na mobilních platform�
 V serializaci mezipaměti tokenu se používají následující třídy a rozhraní:
 
 - `ITokenCache`, který definuje události pro přihlášení k odběru požadavků na serializaci mezipaměti tokenu a také metody pro serializaci nebo deserializaci mezipaměti v různých formátech (ADAL v 3.0, MSAL 2. x a MSAL 3. x = ADAL v 5.0).
-- `TokenCacheCallback`je zpětné volání předané do událostí, aby bylo možné zpracovat serializaci. Budou volány s argumenty typu `TokenCacheNotificationArgs` .
-- `TokenCacheNotificationArgs`poskytuje pouze `ClientId` aplikaci a odkaz na uživatele, pro který je token k dispozici.
+- `TokenCacheCallback` je zpětné volání předané do událostí, aby bylo možné zpracovat serializaci. Budou volány s argumenty typu `TokenCacheNotificationArgs` .
+- `TokenCacheNotificationArgs` poskytuje pouze `ClientId` aplikaci a odkaz na uživatele, pro který je token k dispozici.
 
   ![Diagram tříd](media/msal-net-token-cache-serialization/class-diagram.png)
 
@@ -283,7 +283,7 @@ Knihovna [Microsoft. identity. Web](https://github.com/AzureAD/microsoft-identit
 
 | Metoda rozšíření | Microsoft. identity. Web – dílčí obor názvů | Description  |
 | ---------------- | --------- | ------------ |
-| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | V serializaci mezipaměti tokenů paměti. Tato implementace je skvělé v ukázkách. Je to také dobré v produkčních aplikacích, pokud nezáleží na tom, jestli se při restartování webové aplikace ztratí mezipaměť tokenu. `AddInMemoryTokenCaches`přebírá volitelný parametr typu `MsalMemoryTokenCacheOptions` , který umožňuje zadat dobu, po jejímž uplynutí vyprší platnost položky mezipaměti, pokud se nepoužije.
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | V serializaci mezipaměti tokenů paměti. Tato implementace je skvělé v ukázkách. Je to také dobré v produkčních aplikacích, pokud nezáleží na tom, jestli se při restartování webové aplikace ztratí mezipaměť tokenu. `AddInMemoryTokenCaches` přebírá volitelný parametr typu `MsalMemoryTokenCacheOptions` , který umožňuje zadat dobu, po jejímž uplynutí vyprší platnost položky mezipaměti, pokud se nepoužije.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Mezipaměť tokenů je svázána s uživatelskou relací. Tato možnost není ideální, pokud token ID obsahuje mnoho deklarací identity, protože soubor cookie by byl příliš velký.
 | `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | Mezipaměť tokenu je adaptér s `IDistributedCache` implementací ASP.NET Core, takže můžete vybrat mezi distribuovanou mezipamětí, mezipamětí Redis, distribuovaným NCacheem nebo mezipamětí SQL Server. Podrobnosti o `IDistributedCache` implementacích naleznete v tématu https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache .
 
@@ -333,5 +333,5 @@ Následující ukázky ilustrují serializaci mezipaměti tokenů.
 
 | Ukázka | Platforma | Description|
 | ------ | -------- | ----------- |
-|[Active-Directory-dotnet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Plocha (WPF) | Aplikace Windows Desktop .NET (WPF), která volá rozhraní Microsoft Graph API. ![Topologie](media/msal-net-token-cache-serialization/topology.png)|
+|[Active-Directory-dotnet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Plocha (WPF) | Aplikace Windows Desktop .NET (WPF), která volá rozhraní Microsoft Graph API. ![Diagram znázorňuje topologii s desktopovou aplikací W P TodoListClient Flowing to Azure A D tím, že se token interaktivně a Microsoft Graph.](media/msal-net-token-cache-serialization/topology.png)|
 |[Active-Directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Plocha (konzola) | Sada řešení sady Visual Studio, která ilustruje migraci aplikací Azure AD v 1.0 (pomocí ADAL.NET) do aplikací Microsoft Identity Platform (pomocí MSAL.NET). Zejména viz [migrace mezipaměti tokenů](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

@@ -1,6 +1,6 @@
 ---
-title: Pochopení Access Control založeného na rolích na zařízení Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak probíhá Access Control na základě rolí na Azure Stack hraničním zařízení Kubernetes.
+title: Pochopení Access Control založeného na rolích na zařízení Azure Stack Edge pro Kubernetes | Microsoft Docs
+description: Popisuje, jak se Access Control na základě role na zařízení Azure Stack Edge pro Kubernetes.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318960"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899286"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Kubernetes na zařízení GPU Azure Stack Edge Access Control na základě rolí
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes Access Control na základě rolí na zařízení GPU pro Azure Stack Edge pro
 
 
-Při konfiguraci výpočetní role na zařízení Azure Stack Edge se vytvoří cluster Kubernetes. K omezení přístupu k prostředkům clusteru v zařízení můžete použít řízení přístupu na základě role (RBAC) Kubernetes.
+Když nakonfigurujete výpočetní roli na zařízení Azure Stack Edge pro, vytvoří se cluster Kubernetes. K omezení přístupu k prostředkům clusteru v zařízení můžete použít řízení přístupu na základě role (RBAC) Kubernetes.
 
-V tomto článku najdete přehled systému RBAC, který poskytuje Kubernetes, a o tom, jak je Kubernetes RBAC na zařízení Azure Stack Edge implementováno. 
+Tento článek poskytuje přehled o systému RBAC, který poskytuje Kubernetes, a o tom, jak je Kubernetes RBAC implementováno na zařízení Azure Stack Edge pro. 
 
 ## <a name="rbac-for-kubernetes"></a>RBAC pro Kubernetes
 
@@ -34,7 +34,7 @@ Prostředky Kubernetes, například lusky a nasazení, jsou logicky seskupeny do
 
 Obory názvů jsou určené pro použití v prostředích s mnoha uživateli, kteří jsou rozloženi mezi několik týmů nebo projektů. Další informace najdete v tématu [obory názvů Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
-Vaše zařízení Azure Stack Edge má následující obory názvů:
+Vaše zařízení Azure Stack Edge pro má následující obory názvů:
 
 - **Obor názvů System** – tento obor názvů tam, kde existují základní prostředky, jako jsou například síťové funkce jako DNS a proxy nebo řídicí panel Kubernetes. Do tohoto oboru názvů obvykle nesadíte vlastní aplikace. Tento obor názvů použijte k ladění všech problémů clusteru Kubernetes. 
 
@@ -73,9 +73,9 @@ Kubernetes má koncept vazby role a role, který umožňuje udělit oprávnění
 
 Tento přístup umožňuje logicky oddělit jeden Kubernetes cluster s uživateli, kteří mají jenom přístup k prostředkům aplikace v jejich přiřazeném oboru názvů. 
 
-## <a name="rbac-on-azure-stack-edge"></a>RBAC na Azure Stack Edge
+## <a name="rbac-on-azure-stack-edge-pro"></a>RBAC na Azure Stack Edge pro
 
-V aktuální implementaci RBAC Azure Stack Edge umožňuje provést následující akce z omezeného prostředí PowerShell prostředí PowerShell:
+V aktuální implementaci RBAC Azure Stack Edge pro umožňuje provést následující akce z prostředí PowerShell s omezeným přístupem:
 
 - Vytvořte obory názvů.  
 - Vytvořte další uživatele.
@@ -83,11 +83,11 @@ V aktuální implementaci RBAC Azure Stack Edge umožňuje provést následujíc
 - Získejte `kubeconfig` soubor s informacemi pro přístup ke clusteru Kubernetes.
 
 
-Azure Stack hraniční zařízení má několik oborů názvů System a můžete vytvořit uživatelské obory názvů se `kubeconfig` soubory pro přístup k těmto oborům názvů. Uživatelé mají plnou kontrolu nad těmito obory názvů a můžou vytvářet nebo upravovat uživatele nebo udělovat přístup uživatelům. Pouze správce clusteru má plný přístup k systémovým oborům názvů a prostředkům celého clusteru. `aseuser`Má přístup jen pro čtení k systémovým oborům názvů.
+Zařízení Azure Stack Edge pro má několik oborů názvů System a můžete vytvořit uživatelské obory názvů se `kubeconfig` soubory pro přístup k těmto oborům názvů. Uživatelé mají plnou kontrolu nad těmito obory názvů a můžou vytvářet nebo upravovat uživatele nebo udělovat přístup uživatelům. Pouze správce clusteru má plný přístup k systémovým oborům názvů a prostředkům celého clusteru. `aseuser`Má přístup jen pro čtení k systémovým oborům názvů.
 
-Tady je diagram, který znázorňuje implementaci RBAC na Azure Stack hraničním zařízení.
+Tady je diagram, který znázorňuje implementaci RBAC na zařízeních Azure Stack Edge pro.
 
-![RBAC na Azure Stack hraničním zařízení](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![RBAC na zařízení Azure Stack Edge pro](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 V tomto diagramu mají Alice, Bob a Karel přístup pouze k přiřazeným oborům názvů uživatelů, což v tomto případě jsou `ns1` , `ns2` a `ns3` . V těchto oborech názvů mají přístup správce. Správce clusteru na druhé straně má přístup správce k systémovým oborům názvů a prostředkům v rámci clusteru.
 
@@ -109,10 +109,10 @@ Pomocí příkazů můžete `kubectl` vytvářet obory názvů a uživatele, př
 
 5. Nainstalujte `kubectl` a začněte nasazovat aplikace do `kubectl` . 
 
-Podrobné pokyny najdete [v tématu přístup ke clusteru Kubernetes prostřednictvím kuebctl na Azure Stack hraničních](azure-stack-edge-gpu-create-kubernetes-cluster.md)zařízeních.
+Podrobné pokyny najdete [v tématu přístup ke clusteru Kubernetes prostřednictvím kuebctl na Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 
-Při práci s obory názvů a uživateli na Azure Stack hraničních zařízeních platí následující upozornění:
+Při práci s obory názvů a uživateli na zařízeních Azure Stack Edge pro platí následující upozornění:
 
 - Nemáte oprávnění k provádění operací, jako je vytváření uživatelů, udělení nebo odvolání přístupu k oboru názvů uživateli, pro všechny obory názvů System. Mezi příklady systémových oborů názvů patří `kube-system` , `metallb-system` , `kubernetes-dashboard` , `default` , `kube-node-lease` , `kube-public` . Obory názvů systému také zahrnují obory názvů rezervované pro typy nasazení, jako například `iotedge` obor názvů IoT Edge) a `azure-arc` (obor názvů Azure ARC).
 - Můžete vytvořit uživatelské obory názvů a v rámci těchto oborů názvů vytvořit další uživatele a udělit nebo odvolat přístup k oboru názvů těmto uživatelům.

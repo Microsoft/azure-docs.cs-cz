@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ea8c13e134eceeb27bd064e794d46d711092a867
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d8806b8c93f5a8cbceaa6efa16dfff978dda42e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450728"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905204"
 ---
 # <a name="resnet"></a>ResNet
 
-Tento článek popisuje, jak pomocí modulu **ResNet** v Návrháři Azure Machine Learning (Preview) vytvořit model klasifikace obrázků pomocí algoritmu ResNet..  
+Tento článek popisuje, jak pomocí modulu **ResNet** v Návrháři Azure Machine Learning vytvořit model klasifikace obrázků pomocí algoritmu ResNet..  
 
 Tento algoritmus klasifikace je metoda učení pod dohledem a vyžaduje datovou sadu s popiskem. Další informace o tom, jak získat adresář obrázků s popiskem, najdete v tématu [převod na modul adresáře imagí](convert-to-image-directory.md) . Model můžete vytvořit tak, že poskytnete model a s popiskem adresář obrázků jako vstupy pro [výuku modelu Pytorch](train-pytorch-model.md). Školený model se pak dá použít k předpovědi hodnot pro nové vstupní příklady pomocí [modelu obrázku skóre](score-image-model.md).
 
@@ -49,12 +49,12 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 | Name       | Rozsah | Typ    | Výchozí           | Description                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Název modelu | Všechny   | Mode    | resnext101 \_ 32x8d | Název určité struktury ResNet       |
-| Předvlakované | Všechny   | Logická hodnota | True              | Jestli se má používat model předučený na ImageNet |
+| Předvlakované | Všechny   | Logická hodnota | Ano              | Jestli se má používat model předučený na ImageNet |
 |            |       |         |                   |                                          |
 
 ###  <a name="output"></a>Výstup  
 
-| Name            | Typ                    | Description                              |
+| Název            | Typ                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nevlakový model | UntrainedModelDirectory | Nevlakový model ResNet, který se dá připojit ke Pytorch modelu výuky. |
 

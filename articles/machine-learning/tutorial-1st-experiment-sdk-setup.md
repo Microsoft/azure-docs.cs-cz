@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: experimentování v poznámkových blocích Jupyter (Python)'
-titleSuffix: Machine Learning - Azure
-description: V tomto kurzu se naučíte, jak začít používat sadu SDK Azure Machine Learning Python spuštěnou v poznámkových blocích Jupyter.  V části 1 vytvoříte pracovní prostor, ve kterém budete spravovat experimenty a modely ML.
+title: 'Kurz: Začínáme v poznámkových blocích Jupyter (Python)'
+titleSuffix: Azure Machine Learning
+description: Instalační program pro Jupyter Notebook kurzy.  Vytvořte Azure Machine Learning pracovní prostor, naklonujte poznámkové bloky Jupyter do pracovního prostoru a vytvořte výpočetní instanci, ve které spustíte poznámkové bloky.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,44 +10,42 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: de52013628f5d02bedcf72a99e0fad25cabe5d8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852714"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896863"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Kurz: Začínáme s Azure Machine Learning v poznámkových blocích Jupyter
 
-V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter. Tento kurz je **první částí série kurzů se dvěma částmi**a popisuje nastavení a konfiguraci prostředí Python a také vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení. [**Druhá část**](tutorial-1st-experiment-sdk-train.md) sestavení na této stránce umožňuje výuku více modelů strojového učení a zavedení procesu správy modelů pomocí Azure Machine Learning studia i sady SDK.
+V tomto kurzu provedete kroky, které vám pomohou začít s Azure Machine Learning pomocí poznámkových bloků Jupyter ve [spravované cloudové pracovní stanici (instanci COMPUTE)](concept-compute-instance.md). Tento kurz je prekurzorem všech dalších kurzů Jupyter Notebook.
 
 V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Vytvořte [pracovní prostor Azure Machine Learning](concept-workspace.md) pro použití v dalším kurzu.
+> * Vytvořte [pracovní prostor Azure Machine Learning](concept-workspace.md) pro použití v dalších Jupyter Notebookch kurzech.
 > * Naklonujte Poznámkový blok kurzů do složky v pracovním prostoru.
 > * Vytvořte cloudovou instanci COMPUTE s nainstalovanou a předem nakonfigurovanou sadou Azure Machine Learning Python SDK.
-
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
+Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě.
 
-Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure. 
+Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 > Poznamenejte si svůj **pracovní prostor** a **předplatné**. Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
 
 ## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>Spuštění poznámkového bloku v pracovním prostoru
 
-V tomto kurzu se v pracovním prostoru používá cloudový notebook pro instalaci bez předkonfigurovaného a předem nakonfigurovaného prostředí. Použijte [vlastní prostředí](how-to-configure-environment.md#local) , pokud dáváte přednost kontrole prostředí, balíčků a závislostí.
+Azure Machine Learning v pracovním prostoru obsahuje cloudový notebook pro instalaci bez předkonfigurovaného a předem nakonfigurovaného prostředí. Použijte [vlastní prostředí](tutorial-1st-experiment-sdk-setup-local.md) , pokud dáváte přednost kontrole prostředí, balíčků a závislostí.
 
- Postupujte podle tohoto videa nebo použijte podrobný postup k naklonování a spuštění kurzu z pracovního prostoru. 
+ Postupujte podle tohoto videa nebo pomocí podrobných kroků naklonujte a spusťte Poznámkový blok kurzu z pracovního prostoru.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
@@ -71,7 +69,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Kopírovat složku kurzů":::
 
-1. Seznam složek zobrazuje každého uživatele, který přistupuje k pracovnímu prostoru.  Vyberte složku, do které se má naklonovat složka s **kurzy** .
+1. Seznam složek zobrazuje každého uživatele, který přistupuje k pracovnímu prostoru.  Vyberte složku, do které se má naklonovat složka s **kurzy**  .
 
 ### <a name="open-the-cloned-notebook"></a><a name="open"></a>Otevřít Klonovaný Poznámkový blok
 
@@ -80,12 +78,11 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
     > [!IMPORTANT]
     > Poznámkové bloky můžete zobrazit ve složce **Samples** , ale nemůžete z nich spustit Poznámkový blok.  Pokud chcete spustit Poznámkový blok, ujistěte se, že jste v části **soubory uživatelů** otevřeli naklonované verze poznámkového bloku.
     
-1. V části tutorial **/vytvořit první-ml – experimenty** vyberte soubor **kurz-1. experiment-SDK-Training. ipynb** .
+1. V části **kurzy/image-klasifikace-mnist ručně zapsaných-data** vyberte **kurz – 1. experiment-SDK-ipynb** .
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Otevřít složku s kurzy":::
 
-
-1. Na horním panelu vyberte výpočetní instanci, kterou chcete použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se všemi [potřebnými ke spuštění Azure Machine Learning](concept-compute-instance.md#contents). 
+1. Na horním panelu vyberte výpočetní instanci, kterou chcete použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se všemi [potřebnými ke spuštění Azure Machine Learning](concept-compute-instance.md#contents).
 
 1. Pokud se nenaleznou žádné virtuální počítače, vyberte **+ Přidat** a vytvořte virtuální počítač instance Compute. 
 
@@ -107,17 +104,11 @@ Pokud máte vlastní widgety nebo dáváte přednost použití Jupyter/JupyterLa
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste dokončili tyto úkoly:
-
-* Byl vytvořen Azure Machine Learning pracovní prostor.
-* Vytvořili a nakonfigurovali jste v pracovním prostoru Server cloudového poznámkového bloku.
-
-Ve **druhé části** kurzu spouštíte kód v nástroji `tutorial-1st-experiment-sdk-train.ipynb` pro výuku modelu strojového učení. 
+Teď, když máte nastavené vývojové prostředí, pokračujte na výuku modelu ve Jupyter Notebook:
 
 > [!div class="nextstepaction"]
-> [Kurz: výuka prvního modelu](tutorial-1st-experiment-sdk-train.md)
+> [Kurz: analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – učení](tutorial-train-models-with-aml.md)
 
-> [!IMPORTANT]
-> Pokud neplánujete tuto část tohoto kurzu nebo žádné jiné kurzy, měli byste [zastavit virtuální počítač se serverem cloudového poznámkového bloku](tutorial-1st-experiment-sdk-train.md#clean-up-resources) , pokud ho nepoužíváte ke snížení nákladů.
+<a name="stop-compute-instance"></a> Pokud teď neplánujete žádné jiné kurzy, měli byste zastavit virtuální počítač se serverem cloudového poznámkového bloku, pokud ho nepoužíváte ke snížení nákladů:
 
-
+[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]

@@ -1,6 +1,6 @@
 ---
-title: Nasadit bezstavovou aplikaci Kubernetes na Azure Stack hraničních PROCESORů přes IoT Edge modul | Microsoft Docs
-description: Popisuje, jak nasadit bezstavovou aplikaci Kubernetes na zařízení GPU Azure Stack Edge pomocí modulu IoT Edge, ke kterému se přistupoval prostřednictvím externí IP adresy.
+title: Nasazení bezstavové aplikace Kubernetes na GPU Azure Stack Edge pro pomocí IoT Edge modulu | Microsoft Docs
+description: Popisuje, jak nasadit bezstavovou aplikaci Kubernetes na zařízení GPU Azure Stack Edge pro pomocí IoT Edge modulu, ke kterému se přistupoval prostřednictvím externí IP adresy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254164"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899523"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>Použití modulu IoT Edge ke spuštění bezstavové aplikace Kubernetes na zařízení GPU Azure Stack Edge
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>Použití modulu IoT Edge ke spuštění bezstavové aplikace Kubernetes na zařízení GPU Azure Stack Edge pro
 
-Tento článek popisuje, jak můžete použít modul IoT Edge k nasazení bezstavové aplikace na zařízení Azure Stack Edge.
+Tento článek popisuje, jak můžete použít modul IoT Edge k nasazení bezstavové aplikace na zařízení Azure Stack Edge pro.
 
 Pokud chcete nasadit bezstavovou aplikaci, proveďte následující kroky:
 
 - Před nasazením modulu IoT Edge zajistěte, aby byly požadavky dokončeny.
-- Přidejte modul IoT Edge pro přístup k výpočetní síti na Azure Stack Edge.
+- Přidejte modul IoT Edge pro přístup k výpočetní síti na Azure Stack Edge pro.
 - Ověřte, zda má modul přístup k aktivovanému síťovému rozhraní.
 
 V tomto článku s návodem k předvedení scénáře použijete modul aplikace webserver.
@@ -31,19 +31,19 @@ V tomto článku s návodem k předvedení scénáře použijete modul aplikace 
 
 Než začnete, budete potřebovat:
 
-- Azure Stack hraniční zařízení. Ujistěte se, že:
+- Zařízení Azure Stack Edge pro. Ujistěte se, že:
 
     - V zařízení jsou nakonfigurovaná nastavení výpočetního sítě.
     - Zařízení se aktivuje podle kroků v [kurzu: aktivace zařízení](azure-stack-edge-gpu-deploy-activate.md).
-- Dokončili jste **konfiguraci výpočetního** kroku podle [kurzu: Konfigurace výpočetních prostředků na zařízení Azure Stack Edge](azure-stack-edge-gpu-deploy-configure-compute.md) na vašem zařízení. Vaše zařízení by mělo mít přidružený prostředek IoT Hub, zařízení IoT a IoT Edge zařízení.
+- Dokončili jste **konfiguraci výpočetního** kroku podle [kurzu: Konfigurace výpočetních prostředků na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-compute.md) na vašem zařízení. Vaše zařízení by mělo mít přidružený prostředek IoT Hub, zařízení IoT a IoT Edge zařízení.
 
 
 ## <a name="add-webserver-app-module"></a>Přidat modul aplikace pro webserver
 
-Pomocí následujících kroků přidejte modul aplikace webserver do zařízení Azure Stack Edge.
+Pokud chcete přidat modul aplikace webserver do zařízení Azure Stack Edge pro, proveďte následující kroky.
 
 1. V IoT Hub prostředku, který je přidružený k vašemu zařízení, přejít na **Automatické řízení zařízení > IoT Edge**.
-1. Vyberte a klikněte na zařízení IoT Edge přidružené k vašemu zařízení Azure Stack Edge. 
+1. Vyberte a klikněte na zařízení IoT Edge přidružené k vašemu zařízení Azure Stack Edge pro. 
 
     ![Vybrat IoT Edge zařízení](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 

@@ -7,14 +7,16 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c86ff07d07ee0a29320315831a7abe28f37e38e6
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: a95ec76c63a35c29b061c2fddff67a28e0f8f553
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89671070"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883654"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>Jak spustit svou jarní cloudovou aplikaci ze zdrojového kódu
+
+**Tento článek se týká:** ✔️ Java
 
 Jarní cloud Azure umožňuje aplikacím mikroslužeb založeným na mikroslužbách v Azure na jaře.
 
@@ -29,7 +31,7 @@ V tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, ujistěte se, že vaše předplatné Azure má požadované závislosti:
 
 1. [Nainstalovat Git](https://git-scm.com/).

@@ -10,327 +10,423 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/18/2020
+ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f415294c77b743996993f1f00be45e36f9d6002
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660669"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906272"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Rozšířená detekce útoků s více fázemi v Azure Sentinel
 
 
 > [!IMPORTANT]
-> Některé funkce Fusion v Azure Sentinel jsou momentálně ve verzi Public Preview.
+> Některé funkce Fusion v Azure Sentinel jsou momentálně ve **verzi Public Preview**.
 > Tyto funkce se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+Pomocí technologie Fusion založené na strojovém učení může Azure Sentinel automaticky detekovat útoky s více fázemi tím, že identifikuje kombinace chování neobvyklé a podezřelých aktivit, které jsou pozorovány v různých fázích dezaktivačního řetězu. Na základě těchto zjištění Azure Sentinel generuje incidenty, které by jinak bylo obtížné zachytit. Tyto incidenty sestávají ze dvou nebo více výstrah nebo aktivit. V takovém případě mají tyto incidenty nízkou hlasitost, vysokou přesnost a vysokou závažnost.
 
-
-Pomocí technologie Fusion, která je založená na strojovém učení, může Azure Sentinel automaticky detekovat útoky s více fázemi kombinací chování neobvyklé a podezřelých aktivit, které jsou pozorovány v různých fázích dezaktivačního řetězu. Azure Sentinel pak generuje incidenty, které by jinak bylo obtížné zachytit. Tyto incidenty uzavřou dvě nebo více výstrah nebo aktivit. V takovém případě mají tyto incidenty nízký objem, vysokou přesnost a vysokou závažnost.
-
-Tato detekce přizpůsobená vašemu prostředí neomezuje jenom falešně pozitivní míru, ale může také detekovat útoky s omezenými nebo chybějícími informacemi.
+Tato technologie detekce přizpůsobená vašemu prostředí neomezuje jenom falešně pozitivní sazby, ale může také detekovat útoky s omezenými nebo chybějícími informacemi.
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>Konfigurace pro pokročilou detekci útoků s více fázemi
 
-Tato detekce je ve výchozím nastavení povolená v Azure Sentinel. Pokud chcete stav ověřit nebo ho zakázat, protože používáte alternativní řešení k vytváření incidentů na základě více výstrah, postupujte podle následujících pokynů:
+Tato detekce je ve výchozím nastavení povolená v Azure Sentinel. Pokud chcete stav ověřit nebo ho zakázat v případě, že používáte alternativní řešení k vytváření incidentů na základě více výstrah, postupujte podle následujících pokynů:
 
 1. Pokud jste to ještě neudělali, přihlaste se k [Portálu Azure](https://portal.azure.com).
 
-2. Přejít na **Azure Sentinel**  >  **Configuration**  >  **Analytics**
+1. Přejít na **Azure Sentinel**  >  **Configuration**  >  **Analytics**
 
-3. Vyberte **aktivní pravidla** a ve sloupci **název** vyhledejte **Pokročilé zjišťování útoků s více fázemi** . Zkontrolujte sloupec **stav** a potvrďte, jestli je toto zjišťování povolené nebo zakázané.
+1. Vyberte **aktivní pravidla**a potom pomocí filtrování seznamu pro typ pravidla **fúze** Najděte ve sloupci **název** **pokročilou detekci útoku s více fázemi** . Zkontrolujte sloupec **stav** a potvrďte, jestli je toto zjišťování povolené nebo zakázané.
 
-4. Chcete-li změnit stav, vyberte tuto položku a v okně **Pokročilé zjišťování útoků s více fázemi** vyberte možnost **Upravit**.
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{ALT-text}":::
 
-5. V okně **Průvodce vytvořením pravidla** se automaticky vybere Změna stavu, takže vyberte **Další: zkontrolovat**a pak **Uložit**. 
+1. Chcete-li změnit stav, vyberte tuto položku a v okně **Pokročilé zjišťování útoků s více fázemi** vyberte možnost **Upravit**.
 
-Šablony pravidel nelze použít pro pokročilou detekci útoku na více fází.
+1. V okně **Průvodce vytvořením pravidla** se automaticky vybere Změna stavu, takže vyberte **Další: zkontrolovat**a pak **Uložit**. 
+
+ Vzhledem k tomu, že typ pravidla **fúze** obsahuje pouze jedno pravidlo, které nelze upravit, šablony pravidel nelze použít pro tento typ pravidla.
 
 > [!NOTE]
 > Služba Azure Sentinel aktuálně používá ke studiu systémů strojového učení 30 dní historických dat. Tato data se vždycky šifrují pomocí klíčů Microsoftu při jejich předávání prostřednictvím kanálu strojového učení. Školicí data se ale nešifrují pomocí [zákaznických klíčů (CMK)](customer-managed-keys.md) , pokud jste v pracovním prostoru Sentinel Azure povolili CMK. Pokud se chcete odhlásit z fúze, přejděte na **Azure Sentinel**   \>  **Configuration**   \>  **Analytics \> aktivní pravidla \> Upřesnit detekci útoků ve více fázích** a ve sloupci **stav** vyberte **zakázat.**
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Fúze pomocí Palo Alto Networks a programu Microsoft Defender pro koncový bod (dříve Microsoft Defender ATP)
+## <a name="attack-detection-scenarios"></a>Scénáře detekce útoků
 
-Tyto scénáře kombinují dva základní protokoly používané analytiky zabezpečení: protokoly brány firewall z Palo Alto Networks a protokoly detekce koncových bodů z Microsoft Defenderu pro koncový bod. Ve všech scénářích uvedených níže se v koncovém bodě, který zahrnuje externí IP adresu, detekuje podezřelá aktivita, a pak se za ní potom neobvyklé provoz z externí IP adresy zpátky do brány firewall. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires).
+V následující části jsou uvedené typy scénářů korelace seskupených podle klasifikace hrozeb, kterou služba Azure Sentinel vyhledává pomocí technologie Fusion.
 
-### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Požadavek na síť na službu pro samoobslužné zpracování dat následovaný provozem neobvyklé označeným příznakem Palo Alto Networks firewall.
+Jak je uvedeno výše, vzhledem k tomu, že fúze koreluje více výstrah zabezpečení z různých produktů za účelem zjištění pokročilých útoků na více verzí, **se na stránce** **incidenty** Sentinel Azure zobrazují úspěšné detekce Fusion a ne jako **výstrahy** v tabulce **výstrahy zabezpečení** v **protokolech**.
 
-V tomto scénáři Azure Sentinel nejdřív detekuje výstrahu, že Microsoft Defender pro koncové body (dříve Microsoft Defender pro ATP) zjistil požadavek na síť pro službu pro automatizaci systému, která vede na neobvyklé aktivitu. To bylo iniciováno v účtu {account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}.
-Pak se zjistila neobvyklá aktivita v bráně firewall sítě Palo Alto na adrese {TimeGenerated}. To znamená, že se škodlivý provoz zadaný v síti cílová IP adresa pro síťový provoz je {DestinationIP}.
+Aby bylo možné tyto scénáře detekce útoků využívajících technologii Fusion povolit, musí být všechny uvedené zdroje dat ingestované pomocí přidružených datových konektorů Azure Sentinel.
 
-Tento scénář je aktuálně ve verzi Public Preview.
+> [!NOTE]
+> Některé z těchto scénářů jsou ve **verzi Public Preview**. Budou tak označeny.
 
+## <a name="compute-resource-abuse"></a>Zneužití prostředků COMPUTE
 
-### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Prostředí PowerShell provedlo podezřelé síťové připojení, po kterém následují přenosy neobvyklé s příznakem Palo Alto Networks firewall.
+### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>Několik aktivit vytváření virtuálních počítačů po podezřelých Azure Active Directory přihlášení
+Tento scénář je aktuálně ve **verzi Public Preview**.
 
-V tomto scénáři Azure Sentinel nejprve detekuje výstrahu, že program Microsoft Defender pro koncové body (dříve Microsoft Defender pro ATP) zjistil, že prostředí PowerShell provedlo podezřelé síťové připojení, které vedlo k neobvyklé aktivitě, kterou zjistila Palo Alto Network firewall. Toto spustil účet {Account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}. Pak se zjistila neobvyklá aktivita v bráně firewall sítě Palo Alto na adrese {TimeGenerated}. To znamená, že škodlivý provoz vstoupil do vaší sítě. Cílová IP adresa pro síťový provoz je {DestinationIP}.
+**Mitre ATT&CK taktiku:** Počáteční přístup, dopad 
 
-Tento scénář je aktuálně ve verzi Public Preview.
+**Mitre technologie ATT&CK:** Platný účet (T1078), zneužití prostředků (T1496)
 
-### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup následovaných neobvyklé provozem označenými příznakem Palo Alto Networks firewall
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
 
-V tomto scénáři služba Azure Sentinel detekuje výstrahu, že program Microsoft Defender pro koncové body (dříve Microsoft Defender pro ATP) zjistil odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup, které v bráně firewall Palo Alto Networks zavedly detekci neobvyklé aktivit. Toto spustil účet {Account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}. Po této instalaci zjistila brána firewall sítě Palo Alto v lokalitě {TimeGenerated} neobvyklé aktivity. To znamená, že škodlivý provoz vstoupil do vaší sítě. Cílová IP adresa pro síťový provoz je {DestinationIP}.
+**Popis:** Incidenty fúze tohoto typu označují, že neobvyklé počet virtuálních počítačů, které se v jedné relaci vytvořily po podezřelém přihlášení k účtu Azure AD. Tento typ výstrahy oznamuje vysokou mírou spolehlivosti, že účet uvedený v popisu incidentu fúze byl zneužit a používá se k vytvoření nových virtuálních počítačů pro neoprávněné účely, jako je třeba spuštění operací kryptografického dolování. Upozornění na podezřelé výstrahy týkající se přihlášení Azure AD s výstrahou aktivity vytvoření více virtuálních počítačů jsou:
 
-Tento scénář je aktuálně ve verzi Public Preview.
+- **Nepovedlo se cestovat do neobvyklých míst, což vede k vytvoření více virtuálních počítačů.**
 
+- **Přihlašovací událost z neznámého umístění, což vede k několika aktivitám vytváření virtuálních počítačů**
 
+- **Přihlašovací událost z nakaženého zařízení, což vede k několika činnostem při vytváření virtuálních počítačů**
 
-## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Fúze pomocí Identity Protection a Microsoft Cloud App Security
+- **Událost přihlášení z anonymní IP adresy, která vede k vytvoření více virtuálních počítačů**
 
-Pomocí pokročilé detekce útoků na více fází podporuje Azure Sentinel následující scénáře, které kombinují události anomálií z Azure Active Directory Identity Protection a Microsoft Cloud App Security:
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji, které vedly k několika aktivitám vytváření virtuálních počítačů**
 
-- [Nemožná cesta do neobvyklých umístění následovaných aktivitou neobvyklé Office 365](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
-- [Přihlašovací aktivita pro neznámé místo, po kterém následují neobvyklé aktivita Office 365](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
-- [Přihlašovací aktivita z infikovaného zařízení následovaný neobvyklé aktivitou Office 365](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
-- [Přihlašovací aktivita z anonymní IP adresy, za kterou následuje aktivita neobvyklé Office 365](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
-- [Přihlašovací aktivita od uživatele s nevrácenými přihlašovacími údaji následovanými aktivitou neobvyklé Office 365](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
+## <a name="data-exfiltration"></a>Exfiltrace dat
 
-Je nutné mít nakonfigurované [konektory Azure AD Identity Protection data](connect-azure-ad-identity-protection.md) a [Cloud App Security](connect-cloud-app-security.md) .
+### <a name="office-365-mailbox-exfiltration-following-a-suspicious-azure-ad-sign-in"></a>Poštovní schránka Office 365 po podezřelém přihlášení ke službě Azure AD exfiltrace
 
-V popisech, které následují, zobrazí Azure Sentinel skutečnou hodnotu z dat, která se na této stránce reprezentují jako proměnné v závorkách. Například skutečný zobrazovaný název účtu \<*account name*> , nikoli a skutečný počet, nikoli \<*number*> .
+**Mitre ATT&CK taktiku:** Počáteční přístup, exfiltrace, kolekce
 
-### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Nemožná cesta do neobvyklých umístění následovaných aktivitou neobvyklé Office 365
+**Mitre technologie ATT&CK:** Platný účet (T1078), kolekce e-mailů (T1114), automatizované exfiltrace (T1020)
 
-K dispozici je sedm možných incidentů Sentinel Azure, které spojují nepravděpodobné cesty k neobvyklým výstrahám umístění z Azure AD Identity Protection a neobvyklé výstrahy sady Office 365 vygenerované Microsoft Cloud App Security:
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
 
-- **Nemožná cesta do netypických míst, která vedou k exfiltrace poštovní schránky Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*account name*>  z nemožného cestování do \<*location*> neobvyklých umístění, po kterém následuje pravidlo pro přeposílání podezřelé doručené pošty, které je nastaveno v doručené poště uživatele.
-    
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> .
+**Popis:** Incidenty fúze tohoto typu označují, že v doručené poště uživatele bylo po podezřelém přihlášení k účtu služby Azure AD nastaveno pravidlo pro přesměrování doručené pošty. Tato indikace poskytuje vysokou jistotu, že účet uživatele (uvedený v popisu incidentu fúze) je napadený a že se použil k exfiltrovatí dat ze sítě vaší organizace povolením pravidla předávání poštovní schránky bez vědomí uživatele skutečný uživatel. Upozornění na podezřelé výstrahy služby Azure AD s upozorněním na exfiltrace poštovní schránky pro Office 365 jsou:
 
-- **Nemožná cesta do netypických míst, která by vedla k podezřelé aktivitě správy Cloud**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst.
-    
-    Dále účet, který se \<*account name*> provádí \<*number*> v rámci aktivit správy v jedné relaci.
+- **Nemožná cesta do neobvyklých míst, které vede k exfiltrace poštovní schránky Office 365**
 
-- **Nemožná cesta do netypických umístění, což vede k hromadnému odstranění souborů**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> do \<*location*> neobvyklých umístění. 
-    
-    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
-
-- **Nemožná cesta do netypických míst, která vedou ke stažení hromadného souboru**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst. 
-    
-    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
-
-- **Nemožná cesta k netypickým místům, které vede k zosobnění Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst. 
-    
-    Dále účet \<*account name*> provedl neobvyklé množství ( \<*number of activities*> ) zosobněných aktivit v jedné relaci.
-
-- **Nemožná cesta do netypických míst, která vedou ke sdílení souborů**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst. 
-    
-    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
-
-- **Nepovedlo se cestovat do neobvyklých míst, která ransomwarem v cloudové aplikaci.**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst. 
-    
-    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
-
-
-### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Přihlašovací aktivita pro neznámé místo, po kterém následují neobvyklé aktivita Office 365
-
-K dispozici je sedm možných incidentů Sentinel Azure, které spojují přihlašovací aktivitu pro neznámé výstrahy umístění od Azure AD Identity Protection a neobvyklé výstrahy sady Office 365 vygenerované Microsoft Cloud App Security.
-
-- **Přihlašovací událost z neznámého umístění, které vede k Exchange Online Mailbox exfiltrace**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění, po kterém následuje pravidlo pro přeposílání podezřelé doručené pošty, které bylo nastaveno v doručené poště uživatele.
-    
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> . 
-
-- **Přihlašovací událost z neznámého umístění vedoucí k podezřelé aktivitě správy cloudové aplikace**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
-    
-    Dále účet, který se \<*account name*> provádí \<*number of*> v rámci aktivit správy v jedné relaci.
-
-- **Událost přihlášení z neznámého umístění, které vede k odstranění souboru**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
-    
-    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
-
-- **Událost přihlášení z neznámého umístění, které vede k hromadnému stažení souboru**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
-    
-    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
-
-- **Přihlašovací událost z neznámého umístění, které vede k zosobnění Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění.
-    
-    V dalším kroku se účet \<*account name*> zosobňuje \<*number of*> v jedné relaci v rámci různých účtů.
-
-- **Událost přihlášení z neznámého umístění, které vede k hromadnému sdílení souborů**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
-    
-    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
-
-- **Přihlašovací událost z neznámého umístění, které vede k ransomwarem v cloudové aplikaci**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
-    
-    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
-
-### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Přihlašovací aktivita z infikovaného zařízení následovaný neobvyklé aktivitou Office 365
-
-Existuje sedm možných incidentů Sentinel Azure, které spojují přihlašovací aktivitu z nakažených výstrah zařízení od Azure AD Identity Protection a neobvyklé výstrah Office 365 generovaných Microsoft Cloud App Security:
+- **Přihlašovací událost z neznámého umístění, které vede k exfiltrace poštovní schránky Office 365**
 
 - **Přihlašovací událost z nakaženého zařízení, které vede k exfiltrace poštovní schránky Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> ze zařízení potenciálně nakaženého malwarem, po kterém následuje pravidlo pro přeposílání podezřelé doručené pošty, které je nastavené v doručené poště uživatele.
-    
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> . 
-
-- **Přihlašovací událost z nakaženého zařízení vedoucí k podezřelé aktivitě správy cloudové aplikace**
-    
-    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem.
-    
-    Dále účet, který se \<*account name*> provádí \<*number of*> v rámci aktivit správy v jedné relaci.
-
-- **Událost přihlášení z nakaženého zařízení, které by vedlo k odstranění souboru**
-    
-    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
-    
-    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
-
-- **Událost přihlášení z nakaženého zařízení, které vede k hromadnému stažení souboru**
-    
-    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
-    
-    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
-
-- **Přihlašovací událost z nakaženého zařízení, které vede k zosobnění Office 365**
-    
-    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
-    
-    V dalším kroku se účet \<*account name*> zosobňuje \<*number of*> v jedné relaci v rámci různých účtů.
-
-- **Událost přihlášení z nakaženého zařízení, které vede k hromadnému sdílení souborů**
-    
-    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
-    
-    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
-
-- **Přihlašovací událost z nakaženého zařízení, které se ransomwarem v cloudové aplikaci**
-    
-    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
-    
-    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
-
-### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Přihlašovací aktivita z anonymní IP adresy, za kterou následuje aktivita neobvyklé Office 365
-
-K dispozici je sedm možných incidentů ověřování Azure, které spojují přihlašovací aktivitu z výstrah anonymních IP adres z Azure AD Identity Protection a neobvyklé výstrahy sady Office 365 vygenerované Microsoft Cloud App Security:
 
 - **Událost přihlášení z anonymní IP adresy, která vede k exfiltrace poštovní schránky Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> , po které následuje pravidlo pro přeposílání podezřelé doručené pošty, které je nastaveno v doručené poště uživatele.
-    
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> . 
-
-- **Událost přihlášení z anonymní IP adresy, která vede k podezřelé aktivitě správy cloudové aplikace**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
-    
-    Dále účet, který se \<*account name*> provádí \<*number of*> v rámci aktivit správy v jedné relaci.
-
-- **Událost přihlášení z anonymní IP adresy, která vede k odstranění souboru**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
-    
-    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
-
-- **Událost přihlášení z anonymní IP adresy, která vede ke stažení hromadného souboru**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
-    
-    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
-
-- **Událost přihlášení z anonymní IP adresy, která vede k zosobnění systému Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
-    
-    V dalším kroku se účet \<*account name*> zosobňuje \<*number of*> v jedné relaci v rámci různých účtů.
-
-- **Událost přihlášení z anonymní IP adresy, která vede ke sdílení souborů**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
-    
-    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
-
-- **Událost přihlášení z anonymní IP adresy do ransomwarem v cloudové aplikaci**
-    
-    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
-    
-    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
-
-### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Přihlašovací aktivita od uživatele s nevrácenými přihlašovacími údaji následovanými aktivitou neobvyklé Office 365
-
-Existuje sedm možných incidentů Sentinel Azure, které spojují přihlašovací aktivitu od uživatele s nevrácenými výstrahami přihlašovacích údajů z Azure AD Identity Protection a neobvyklé výstrah Office 365 generovaných Microsoft Cloud App Security:
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k poštovní schránce Office 365 exfiltrace**
-    
-    Tato výstraha je označením, že přihlašovací událost, která po \<*account name*> odstraněných přihlašovacích údajích, následovaná pravidlem pro přesměrování doručené pošty, byla nastavena v doručené poště uživatele. 
-    
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> . 
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelé aktivitě správy cloudové aplikace**
-    
-    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje.
-    
-    Dále účet, který se \<*account name*> provádí \<*number of*> v rámci aktivit správy v jedné relaci.
+### <a name="mass-file-download-following-suspicious-azure-ad-sign-in"></a>Hromadně stahovat soubory po podezřelé přihlášení ke službě Azure AD
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k hromadnému odstranění souboru**
-    
-    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje.
-    
-    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
+**Mitre ATT&CK taktiku:** Počáteční přístup, exfiltrace
+
+**Mitre technologie ATT&CK:** Platný účet (T1078)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že neobvyklé počet souborů stažených uživatelem po podezřelém přihlášení k účtu služby Azure AD. Tato indikace poskytuje vysokou jistotu, že účet uvedený v popisu incidentu fúze byl zneužit a byl použit k exfiltrovatí dat ze sítě vaší organizace. Upozornění na podezřelé výstrahy služby Azure AD s upozorněním na stažení hromadného souboru jsou:  
+
+- **Nemožná cesta do neobvyklých míst, které vede ke stažení souboru**
+
+- **Událost přihlášení z neznámého umístění, které vede k hromadnému stažení souboru**
+
+- **Událost přihlášení z nakaženého zařízení, které vede k hromadnému stažení souboru**
+
+- **Událost přihlášení z anonymní IP adresy, která umožňuje stažení souboru**
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucím ke stažení souboru**
-    
-    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje.
-    
-    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k zosobnění systému Office 365**
-    
-    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje. 
-    
-    V dalším kroku se účet \<*account name*> zosobňuje \<*number of*> v jedné relaci v rámci různých účtů.
+### <a name="mass-file-sharing-following-suspicious-azure-ad-sign-in"></a>Hromadné sdílení souborů po podezřelém přihlášení ke službě Azure AD
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, exfiltrace
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), služba exfiltrace over Web Service (T1567)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že několik souborů nad určitou prahovou hodnotou bylo sdíleno ostatním po podezřelém přihlášení k účtu služby Azure AD. Tato indikace poskytuje vysokou jistotu, že účet uvedený v popisu incidentu fúze byl zneužit a slouží k exfiltrovatí dat ze sítě vaší organizace sdílením souborů, jako jsou dokumenty, tabulky atd., s neoprávněnými uživateli ke škodlivým účelům. V upozorněních, které jsou podezřelé při přihlašování pomocí hromadného sdílení souborů, se zobrazí následující:  
+
+- **Nemožná cesta do neobvyklých míst, které vede k hromadnému sdílení souborů**
+
+- **Událost přihlášení z neznámého umístění, které vede k hromadnému sdílení souborů**
+
+- **Událost přihlášení z nakaženého zařízení, které vede k hromadnému sdílení souborů**
+
+- **Událost přihlášení z anonymní IP adresy, která vede ke sdílení souborů**
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k hromadnému sdílení souborů**
-    
-    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje.
-    
-    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji do ransomwarem v cloudové aplikaci**
-    
-    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje. 
-    
-    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
+### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Podezřelá pravidla pro manipulaci s doručenou poštou nastavená po podezřelém přihlášení k Azure AD
+Tento scénář patří do dvou klasifikací hrozeb v tomto seznamu: **exfiltrace dat** a **boční pohyb**. V zájmu srozumitelnosti se tato položka zobrazuje v obou částech.
+
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, boční pohyb, exfiltrace
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), interní spear phishing (T1534)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že pravidla doručených zpráv neobvyklé byla nastavena v doručené poště uživatele po podezřelém přihlášení k účtu služby Azure AD. Tím je zajištěno, že účet uvedený v popisu incidentu fúze byl zneužit a byl použit k manipulaci s pravidly e-mailové schránky uživatele pro škodlivé účely. Důvodem může být to, že by útočník mohl exfiltrovat data ze sítě organizace. Případně se může útočník pokusit vygenerovat e-maily v organizaci podvodných zpráv v rámci organizace (obejít mechanismy detekce útoků phishing cílené na e-mail z externích zdrojů) pro účely pozdějšího přesunu získáním přístupu k dalším uživatelským a/nebo privilegovaným účtům. Výstrahy podezřelých přihlašovacích upozornění služby Azure AD s upozorněním na pravidla manipulace s podezřelými doručenými oznámeními jsou:  
+
+- **Nepovedlo se cestovat do neobvyklých míst, které vede k podezřelému pravidlu manipulace**
+
+- **Přihlašovací událost z neznámého umístění vedoucí na podezřelé pravidlo manipulace Doručená pošta**
+
+- **Přihlašovací událost z nakaženého zařízení, které vede k podezřelému pravidlu manipulace s doručenou poštou**
+
+- **Událost přihlášení z anonymní IP adresy, která vede na podezřelé pravidlo manipulace s doručenou poštou**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelému pravidlu manipulace s doručenou poštou**
+
+### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Různé aktivity sdílení sestav Power BI po podezřelém přihlášení ke službě Azure AD 
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, exfiltrace 
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), služba exfiltrace over Web Service (T1567)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že neobvyklé počet sestav Power BI v jedné relaci se sdílí po podezřelém přihlášení k účtu Azure AD. Tato indikace poskytuje vysokou jistotu, že účet uvedený v popisu incidentu fúze byl zneužit a byl použit k exfiltrovatí dat ze sítě vaší organizace sdílením Power BI sestav s neoprávněnými uživateli ke škodlivým účelům. Permutace podezřelých výstrah pro přihlášení Azure AD s více aktivitami sdílení sestav Power BI:  
+
+- **Nemožná cesta do neobvyklých umístění, která by vedla k více aktivitám sdílení sestav Power BI.**
+
+- **Přihlašovací událost z neznámého umístění, což vede k více aktivitám sdílení sestav Power BI.**
+
+- **Událost přihlášení z nakaženého zařízení, které má za následek více Power BI aktivit sdílení sestav**
+
+- **Událost přihlášení z anonymní IP adresy, která představí více Power BI aktivit sdílení sestav**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k více aktivitám sdílení sestav Power BI**
+
+### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>Podezřelá Power BI sdílení sestav po podezřelém přihlášení ke službě Azure AD
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, exfiltrace 
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), služba exfiltrace over Web Service (T1567)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že došlo k podezřelé aktivitě sdílení sestav Power BI po podezřelém přihlášení k účtu služby Azure AD. Aktivita sdílení byla identifikována jako podezřelá, protože sestava Power BI obsahovala citlivé informace identifikované pomocí zpracování přirozeného jazyka a protože byla sdílena s externí e-mailovou adresou, publikována na webu nebo jako snímek na externě odebírané e-mailovou adresu. Tato výstraha indikuje vysokou jistotu, že účet uvedený v popisu incidentu fúze byl zneužit a byl použit k exfiltrovat citlivých dat z vaší organizace tím, že sdílí Power BI sestavy s neoprávněnými uživateli ke škodlivým účelům. K podezřelým Power BIm sdílení sestav se používají permutace podezřelých upozornění na přihlášení ke službě Azure AD:  
+
+- **Nemožná cesta do neobvyklých míst, což vede k podezřelým Power BI sdílení sestav**
+
+- **Přihlašovací událost z neznámého umístění, což vede k podezřelým Power BI sdílení sestav**
+
+- **Událost přihlášení z nakaženého zařízení, které vedlo k podezřelým Power BI sdílení sestav**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k podezřelým Power BI sdílení sestav**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelému Power BI sdílení sestav**
+
+## <a name="data-destruction"></a>Zničení dat
+
+### <a name="mass-file-deletion-following-suspicious-azure-ad-sign-in"></a>Hromadné odstranění souborů po podezřelém přihlášení ke službě Azure AD
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, dopad
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), zničení dat (T1485)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že neobvyklé počet jedinečných souborů, který se odstranil po podezřelém přihlášení k účtu Azure AD. Tím se zobrazí informace o tom, že účet uvedený v popisu incidentu fúze mohl být napadený a byl použit k zničení dat pro škodlivé účely. Upozornění na podezřelé výstrahy týkající se přihlášení Azure AD s hromadnou odstraňováním souborů:  
+
+- **Nemožná cesta do neobvyklých míst, které by vedlo k odstranění souboru**
+
+- **Událost přihlášení z neznámého umístění, které vede k odstranění souboru**
+
+- **Událost přihlášení z nakaženého zařízení, které by vedlo k odstranění souboru**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k odstranění souboru**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k hromadnému odstranění souboru**
+
+### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>Podezřelá aktivita odstranění e-mailu po podezřelém přihlášení ke službě Azure AD
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, dopad 
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), zničení dat (T1485)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že v jedné relaci se odstranil neobvyklé počet e-mailů po podezřelém přihlášení k účtu Azure AD. To znamená, že účet uvedený v popisu incidentu fúze mohl být napadený a byl použit k zničení dat škodlivých účelů, jako je například poškození organizace nebo skrytí e-mailové aktivity týkající se spamu. Upozornění na podezřelé výstrahy týkající se přihlášení k Azure AD s podezřelou aktivitou aktivity odstranění e-mailu jsou tyto:   
+
+- **Nemožná cesta do neobvyklých míst, které vede k podezřelé aktivitě e-mail**
+
+- **Událost přihlášení z neznámého umístění, které vede k podezřelé aktivitě e-mailového odstranění**
+
+- **Přihlašovací událost z nakaženého zařízení, která vede k podezřelé aktivitě e-mailového odstranění**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k podezřelé aktivitě e-mailového odstranění**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji, která vede k podezřelé aktivitě e-mailového odstranění**
+
+## <a name="denial-of-service"></a>Odepření služby
+
+### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>Několik aktivit odstranění virtuálních počítačů po podezřelém přihlášení ke službě Azure AD
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, dopad
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), koncový bod DOS služby (T1499)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že neobvyklé počet virtuálních počítačů, které se v jedné relaci odstranily po podezřelém přihlášení k účtu Azure AD. Tato indikace poskytuje vysokou jistotu, že účet uvedený v popisu incidentu fúze byl zneužit a byl použit k pokusu o narušení nebo zničení cloudového prostředí organizace. Upozornění na podezřelé výstrahy týkající se přihlášení ke službě Azure AD pomocí výstrahy s více virtuálními počítači pro odstranění aktivit jsou:  
+
+- **Nepovedlo se cestovat do neobvyklých míst, které by vedlo k několika aktivitám odstranění**
+
+- **Přihlašovací událost z neznámého umístění, což vede k několika aktivitám odstranění virtuálního počítače**
+
+- **Událost přihlášení z nakaženého zařízení, které vedlo k několika aktivitám odstranění virtuálního počítače**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k několika aktivitám odstranění virtuálního počítače**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k více aktivitám odstranění virtuálního počítače**
+
+## <a name="lateral-movement"></a>Laterální pohyb
+
+### <a name="office-365-impersonation-following-suspicious-azure-ad-sign-in"></a>Zosobnění Office 365 po podezřelém přihlášení ke službě Azure AD
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, boční pohyb
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), interní spear phishing (T1534)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že neobvyklé počet zosobněných akcí při podezřelém přihlašování z účtu Azure AD nastal. V některém softwaru existují možnosti, jak uživatelům dovolit zosobnit jiné uživatele. Například e-mailové služby umožňují uživatelům autorizovat ostatním uživatelům odesílat e-maily jménem. Tato výstraha indikuje větší jistotu, že účet uvedený v popisu incidentu fúze byl napadený a byl použit k provádění aktivit zosobnění pro škodlivé účely, jako je například odesílání podvodných e-mailů pro distribuci malwaru nebo při jejich přesunu. K upozorněním na podezřelé výstrahy služby Azure AD s výstrahou zosobnění systému Office 365 patří:  
+
+- **Nemožná cesta do neobvyklých míst, které vede k zosobnění Office 365**
+
+- **Přihlašovací událost z neznámého umístění, které vede k zosobnění Office 365**
+
+- **Přihlašovací událost z nakaženého zařízení, které vede k zosobnění Office 365**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k zosobnění systému Office 365**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k zosobnění systému Office 365**
+ 
+### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Podezřelá pravidla pro manipulaci s doručenou poštou nastavená po podezřelém přihlášení k Azure AD
+Tento scénář patří do dvou klasifikací hrozeb v tomto seznamu: **boční pohyb** a **exfiltrace dat**. V zájmu srozumitelnosti se tato položka zobrazuje v obou částech.
+
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, boční pohyb, exfiltrace
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), interní spear phishing (T1534), automatizované exfiltrace (T1020)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že pravidla doručených zpráv neobvyklé byla nastavena v doručené poště uživatele po podezřelém přihlášení k účtu služby Azure AD. Tato indikace poskytuje vysokou jistotu, že účet uvedený v popisu incidentu fúze byl zneužit a byl použit k manipulaci s pravidly e-mailové schránky uživatele pro škodlivé účely. Důvodem může být to, že by útočník mohl exfiltrovat data ze sítě organizace. Případně se může útočník pokusit vygenerovat e-maily v organizaci podvodných zpráv v rámci organizace (obejít mechanismy detekce útoků phishing cílené na e-mail z externích zdrojů) pro účely pozdějšího přesunu získáním přístupu k dalším uživatelským a/nebo privilegovaným účtům. Výstrahy podezřelých přihlašovacích upozornění služby Azure AD s upozorněním na pravidla manipulace s podezřelými doručenými oznámeními jsou:
+
+- **Nepovedlo se cestovat do neobvyklých míst, které vede k podezřelému pravidlu manipulace**
+
+- **Přihlašovací událost z neznámého umístění vedoucí na podezřelé pravidlo manipulace Doručená pošta**
+
+- **Přihlašovací událost z nakaženého zařízení, které vede k podezřelému pravidlu manipulace s doručenou poštou**
+
+- **Událost přihlášení z anonymní IP adresy, která vede na podezřelé pravidlo manipulace s doručenou poštou**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelému pravidlu manipulace s doručenou poštou**
+
+## <a name="malicious-administrative-activity"></a>Škodlivá aktivita správy
+
+### <a name="suspicious-cloud-app-administrative-activity-following-suspicious-azure-ad-sign-in"></a>Podezřelá aktivita správy cloudových aplikací po podezřelém přihlášení ke službě Azure AD
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, trvalost, ochrana proti úniku dat, boční oběh, shromažďování, exfiltrace a dopad
+
+**Mitre technologie ATT&CK:** NENÍ K DISPOZICI
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že v jedné relaci se provedl neobvyklé počet aktivit správy, a to po podezřelém přihlášení ke službě Azure AD ze stejného účtu. To znamená, že účet uvedený v popisu incidentu fúze mohl být ohrožen a byl použit k provedení libovolného počtu neautorizovaných akcí správy se škodlivým záměrem. To také znamená, že došlo k ohrožení zabezpečení účtu s oprávněními správce. Upozornění na podezřelé výstrahy týkající se přihlášení Azure AD s podezřelou aktivitou správy cloudové aplikace jsou tyto:  
+
+- **Nepovedlo se cestovat do neobvyklých míst, které by vedlo k podezřelé aktivitě správy Cloud**
+
+- **Přihlašovací událost z neznámého umístění vedoucí k podezřelé aktivitě správy cloudové aplikace**
+
+- **Přihlašovací událost z nakaženého zařízení vedoucí k podezřelé aktivitě správy cloudové aplikace**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k podezřelé aktivitě správy cloudové aplikace**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelé aktivitě správy cloudové aplikace**
+
+## <a name="malicious-execution-with-legitimate-process"></a>Zlomyslné spouštění s legitimním procesem
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Prostředí PowerShell provedlo podezřelé síťové připojení, za kterým následuje neobvyklé provoz označený bránou firewall pro Palo Alto Networks.
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Realizaci
+
+**Mitre technologie ATT&CK:** Interpret příkazů a skriptování (T1059)
+
+**Zdroje datových konektorů:** Microsoft Defender pro koncový bod (dříve Microsoft Defender Advanced Threat Protection nebo MDATP), Palo Alto Networks 
+
+**Popis:** Incidenty fúze tohoto typu označují, že se odeslal požadavek na odchozí připojení prostřednictvím příkazu PowerShellu. za tímto se neobvyklé příchozí aktivity, které brána firewall Palo Alto sítě zjistila. To znamená, že útočník mohl získat přístup k vaší síti a snaží se provést škodlivé akce. Pokusy o připojení pomocí PowerShellu, které následují tento model, můžou být označením aktivity malwaru a řízení, požadavky na stažení dalšího malwaru nebo útočníka vytvářející vzdálený interaktivní přístup. Stejně jako u všech "živých útoků" se může jednat o legitimní použití PowerShellu. Spuštění příkazu PowerShellu následovaný podezřelou příchozí bránou firewall ale zvyšuje jistotu, že je prostředí PowerShell používáno škodlivým způsobem a mělo by se ještě prozkoumat. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires). Další podrobnosti výstrahy najdete také v protokolu hrozeb Palo Alto, který odpovídá [typu hrozby nebo obsahu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) uvedenému v popisu incidentu fúze.
+
+### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Podezřelé vzdálené spuštění služby WMI následovaný provozem neobvyklé označeným příznakem Palo Alto Networks firewall
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Spuštění, zjišťování
+
+**Mitre technologie ATT&CK:** Rozhraní WMI (Windows Management Instrumentation) (T1047)
+
+**Zdroje datových konektorů:** Microsoft Defender pro koncové body (dříve MDATP), Palo Alto Networks 
+
+**Popis:** Incidenty fúze tohoto typu označují, že příkazy rozhraní WMI (Windows Management Interface) byly vzdáleně spuštěny v systému a že jsou zjištěny podezřelé příchozí aktivity bránou firewall Palo Alto Networks. To poskytuje indikaci, že útočník mohl získat přístup k vaší síti a pokouší se později přesunout, zvýšit oprávnění nebo spustit škodlivou datovou část. Stejně jako u všech "živých útoků" se může jednat o legitimní používání služby WMI. Nicméně vzdálené spuštění příkazu WMI následovaný podezřelou příchozí bránou firewall zvyšuje jistotu, že služba WMI je používána škodlivým způsobem a měla by být prozkoumána dále. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires). Další podrobnosti výstrahy najdete také v protokolu hrozeb Palo Alto, který odpovídá [typu hrozby nebo obsahu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) uvedenému v popisu incidentu fúze.
+
+## <a name="malware-c2-or-download"></a>Malware C2 nebo stažení
+
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Požadavek na síť na službu pro samoobslužné zpracování dat následovaný provozem neobvyklé označeným příznakem Palo Alto Networks firewall.
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Příkaz a ovládací prvek
+
+**Mitre technologie ATT&CK:** Šifrovaný kanál (T1573), proxy (T1090)
+
+**Zdroje datových konektorů:** Microsoft Defender pro koncové body (dříve MDATP), Palo Alto Networks 
+
+**Popis:** Incidenty fúze tohoto typu označují, že došlo k žádosti o odchozí připojení ke službě pro vzdálenou komunikaci, a za tímto účelem se zjistila příchozí aktivita neobvyklé bránou firewall Palo Alto Networks. To znamená, že útočník mohl získat přístup k vaší síti a snaží se zakrývat své akce a záměr. Připojení k síti systému pomocí tohoto modelu by mohla být indikace činnosti příkazu malwaru a řízení, požadavků na stažení dalšího malwaru nebo útočníka vytvářejícího vzdálený interaktivní přístup. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires). Další podrobnosti výstrahy najdete také v protokolu hrozeb Palo Alto, který odpovídá [typu hrozby nebo obsahu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) uvedenému v popisu incidentu fúze.
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup následovaných neobvyklé provozem označenými příznakem Palo Alto Networks firewall
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Příkaz a ovládací prvek
+
+**Mitre technologie ATT&CK:** Nelze použít
+
+**Zdroje datových konektorů:** Microsoft Defender pro koncové body (dříve MDATP), Palo Alto Networks 
+
+**Popis:** Incidenty fúze tohoto typu označují, že odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup bylo navázáno, a za tímto účelem byla zjištěna aktivita neobvyklé bránou firewall sítě Palo Alto. Tím se zobrazí informace o tom, že útočník získal přístup k vaší síti. Počet pokusů o připojení, které následují tento model, by mohl být náznakem činnosti příkazu malware a řízení, požadavky na stažení dalšího malwaru nebo útočníka vytvářející vzdálený interaktivní přístup. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires). Další podrobnosti výstrahy najdete také v protokolu hrozeb Palo Alto, který odpovídá [typu hrozby nebo obsahu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) uvedenému v popisu incidentu fúze.
+
+## <a name="ransomware"></a>ransomare,
+
+### <a name="ransomware-execution-following-suspicious-azure-ad-sign-in"></a>Ransomwarem provádění po podezřelém přihlášení ke službě Azure AD
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, dopad
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), zašifrovaná data pro dopad (T1486)
+
+**Zdroje datových konektorů:** Microsoft Cloud App Security Azure Active Directory Identity Protection
+
+**Popis:** Incidenty fúze tohoto typu označují, že neobvyklé uživatelské chování indikující útok ransomwarem se zjistilo po podezřelém přihlášení k účtu Azure AD. Tato indikace poskytuje vysokou důvěru v tom, že účet uvedený v popisu incidentu fúze byl zneužit a byl použit k šifrování dat pro účely extorting vlastníka dat nebo odepření přístupu vlastníka dat ke svým datům. V upozorněních na spuštění ransomwarem jsou k dispermutaci podezřelá upozornění na přihlášení ke službě Azure AD:  
+
+- **Nemožná cesta do neobvyklých míst, které vede k ransomwarem v cloudové aplikaci**
+
+- **Přihlašovací událost z neznámého umístění, které vede k ransomwarem v cloudové aplikaci**
+
+- **Přihlašovací událost z nakaženého zařízení, které se ransomwarem v cloudové aplikaci**
+
+- **Přihlašovací událost z anonymní IP adresy vedoucí k ransomwarem v cloudové aplikaci**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k ransomwarem v cloudové aplikaci**
+
+## <a name="remote-exploitation"></a>Vzdálené využívání
+
+### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Podezření na použití architektury útoku, po kterém následují přenosy neobvyklé označené příznakem Palo Alto Networks firewall
+Tento scénář je aktuálně ve **verzi Public Preview**.
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, provádění, příčný pohyb, eskalace oprávnění
+
+**Mitre technologie ATT&CK:** Zneužití veřejné aplikace (T1190), zneužití pro spouštění klientů (T1203), využívání vzdálených služeb (T1210), využití pro eskalaci oprávnění (T1068)
+
+**Zdroje datových konektorů:** Microsoft Defender pro koncové body (dříve MDATP), Palo Alto Networks 
+
+**Popis:** Incidenty fúze tohoto typu označují, že nestandardní použití protokolů, které se podobá použití platforem útoku, jako je Metasploit, bylo zjištěno a následuje za tím, že v bráně firewall Palo Alto byly zjištěny podezřelé příchozí aktivity. Může se jednat o počáteční indikaci, že útočník zneužije službu k získání přístupu k síťovým prostředkům nebo že útočník už získal přístup a snaží se o další zneužití dostupných systémů a služeb k pozdějšímu přesunu nebo zvýšení oprávnění. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires). Další podrobnosti výstrahy najdete také v protokolu hrozeb Palo Alto, který odpovídá [typu hrozby nebo obsahu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) uvedenému v popisu incidentu fúze.
 
 ## <a name="next-steps"></a>Další kroky
 

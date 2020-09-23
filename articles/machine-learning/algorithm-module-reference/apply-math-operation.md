@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456739"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898896"
 ---
 # <a name="apply-math-operation"></a>Použití matematických operací
 
-Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
+Tento článek popisuje modul návrháře Azure Machine Learning.
 
 Použijte operaci použít matematický postup k vytvoření výpočtů, které jsou použity na číselné sloupce vstupní datové sady. 
 
@@ -32,15 +32,15 @@ Po definování operace a spuštění kanálu jsou hodnoty přidány do datové 
 
 Hledání potřebných operací v těchto kategoriích:  
 
-- [Základní](#basic-math-operations)  
+- [Basic](#basic-math-operations)  
   
      Funkce v kategorii **Basic** lze použít k manipulaci s jednou hodnotou nebo sloupcem hodnot. Například můžete získat absolutní hodnotu všech čísel ve sloupci nebo vypočítat druhou odmocninu každé hodnoty ve sloupci.  
   
--   [Porovnán](#comparison-operations)  
+-   [Porovnání](#comparison-operations)  
   
       Funkce v kategorii **porovnání** jsou použity pro porovnání: můžete provést párové porovnání hodnot ve dvou sloupcích nebo můžete porovnat jednotlivé hodnoty ve sloupci se zadanou konstantou. Můžete například porovnat sloupce a určit, zda byly hodnoty stejné ve dvou datových sadách. Nebo můžete použít konstantu, jako je například maximální povolená hodnota, abyste našli odlehlé hodnoty v číselném sloupci.  
   
--   [Provoz](#arithmetic-operations)  
+-   [Operace](#arithmetic-operations)  
   
      Kategorie **operace** zahrnuje základní matematické funkce: sčítání, odčítání, násobení a dělení. Můžete pracovat s buď sloupci, nebo konstantami. Například můžete přidat hodnotu do sloupce A do hodnoty ve sloupci B. Případně můžete z každé hodnoty ve sloupci A odečíst konstantu, jako je například dříve vypočtená střední hodnota.  
   
@@ -138,7 +138,7 @@ Vrátí hodnotu e umocněnou na mocninu hodnoty ve vybraném sloupci. To je stej
 
 Vrátí exponenciální hodnotu argumentu (Base-2) argumentů a řešení pro y = x * 2<sup>t</sup> , kde t je sloupec hodnot obsahující exponenty.  
 
-V části **sada sloupců**vyberte sloupec, který obsahuje hodnoty exponentu t.
+V části  **sada sloupců**vyberte sloupec, který obsahuje hodnoty exponentu t.
 
 Pro **exp2 –** můžete zadat druhý argument x, který může být buď konstantou, nebo jiným sloupcem hodnot. V poli **typ druhého argumentu**určete, zda budete zadat násobitel x jako konstantu nebo hodnotu ve sloupci.  
 

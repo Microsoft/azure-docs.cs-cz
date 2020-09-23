@@ -10,33 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1335b1034304b7efe2b113f7ff2d2927fea41638
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977369"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Azure Container Registry skenování imagí Security Center
 
 Azure Container Registry (ACR) je spravovaná privátní služba registru Docker, která ukládá a spravuje vaše image kontejnerů pro nasazení Azure v centrálním registru. Vychází z open source registru Docker Registry 2,0.
 
-Pokud pracujete na úrovni Standard Azure Security Center, můžete přidat sadu registrů kontejnerů. Tato volitelná funkce přináší hlubší přehled o chybách zabezpečení imagí v registrech založených na Azure Resource Manager. Povolte nebo zakažte sadu na úrovni předplatného tak, aby pokryla všechny Registry v rámci předplatného. Tato funkce se účtuje podle obrázku, jak je znázorněno na [stránce s cenami](security-center-pricing.md). Když zapnete sadu registrů kontejnerů, zajistíte, aby Security Center byla připravená na skenování imagí, které se připravují do registru. 
-
-## <a name="availability"></a>Dostupnost
-
-|Aspekt|Podrobnosti|
-|----|:----|
-|Stav vydaných verzí:|Všeobecná dostupnost|
-|Stanov|Úroveň Standard|
-|Podporované registry a Image:|![Ano ](./media/icons/yes-icon.png) . ACR Registry hostované pro Linux, které jsou přístupné z veřejného Internetu a poskytují přístup k prostředí.<br>![Žádné ](./media/icons/no-icon.png) Registry ACR hostované v systému Windows.<br>![Žádné ](./media/icons/no-icon.png) ' privátní ' Registry-Security Center vyžaduje, aby vaše registry byly přístupné z veřejného Internetu. Security Center se aktuálně nemůže připojit k registrům s přístupem, které jsou omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure.<br>![Žádné ](./media/icons/no-icon.png) Image minimalist, jako jsou [pomocné image Docker](https://hub.docker.com/_/scratch/) , nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému.|
-|Požadované role a oprávnění:|Role **Čtenář zabezpečení** a [Azure Container Registry Reader](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
-|||
-
-
+Povolte **Azure Defender pro Registry kontejnerů** , abyste měli hlubší přehled o chybách zabezpečení imagí v registrech založených na Azure Resource Manager. Povolte nebo zakažte plán na úrovni předplatného, aby pokryl všechny Registry v rámci předplatného. Tato funkce se účtuje podle obrázku, jak je znázorněno na [stránce s cenami](security-center-pricing.md). Když povolíte Azure Defender, zajistíte, aby byla Security Center připravená na skenování imagí, které se připravují do registru. 
 
 
 ## <a name="when-are-images-scanned"></a>Kdy jsou naskenované obrázky?
@@ -74,7 +61,7 @@ Při každém nabízení se spouštějí kontroly imagí.
 Ano. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Jaké typy registru jsou prohledávány? Jaké typy se účtují?
-V [části dostupnost](#availability) jsou uvedené typy registrů kontejnerů, které sada kontejnerů registrů kontejnerů podporuje. 
+V části dostupnost jsou uvedené typy registrů kontejnerů, které Azure Defender podporuje pro Registry kontejnerů. 
 
 Pokud jsou registry, které nejsou podporované, připojené k vašemu předplatnému Azure, nebudou se kontrolovat a nebudou se vám účtovat.
 
@@ -87,4 +74,4 @@ Další informace o funkcích zabezpečení kontejneru Security Center najdete v
 
 * [Integrace se službou Azure Kubernetes Service](azure-kubernetes-service-integration.md)
 
-* [Ochrana virtuálního počítače](security-center-virtual-machine-protection.md) – popisuje doporučení Security Center.
+

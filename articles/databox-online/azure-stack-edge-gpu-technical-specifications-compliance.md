@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge s technickými specifikacemi GPU a dodržování předpisů | Microsoft Docs
-description: Seznamte se s technickými specifikacemi a dodržováním předpisů pro Azure Stack hraniční zařízení pomocí GPU.
+title: Microsoft Azure Stack Edge pro s technickými specifikacemi GPU a dodržování předpisů | Microsoft Docs
+description: Seznamte se s technickými specifikacemi a dodržováním předpisů pro zařízení Azure Stack Edge pro s grafickým procesorem.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,30 +8,30 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266659"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899026"
 ---
-# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>Technické specifikace a dodržování předpisů pro Azure Stack Edge pomocí GPU 
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technické specifikace a dodržování předpisů pro Azure Stack Edge pro pomocí GPU 
 
-Hardwarové součásti Azure Stack hraničních zařízení s integrovaným grafickým procesorem (GPU) se řídí technickými specifikacemi a regulativními normami, které jsou uvedené v tomto článku. Technické specifikace popisují hardware, jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy.
+Hardwarové součásti vaší Azure Stack Edge pro s integrovaným grafickým procesorem (GPU) se řídí technickými specifikacemi a regulativními normami, které jsou uvedené v tomto článku. Technické specifikace popisují hardware, jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy.
 
 ## <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
-Azure Stack hraniční zařízení má následující specifikace pro výpočetní výkon a paměť:
+Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní výkon a paměť:
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
 | Procesor                     | 2 X procesor Intel Xeon stříbrné 4214 (Cascade Lake) – procesor            |
-| Paměť                  | 128 (8x16 GB) GB RAM                     |
+| Memory (Paměť)                  | 128 (8x16 GB) GB RAM                     |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikace zrychlení výpočtů
 
-Grafický procesor (GPU) je součástí každé Azure Stack hraniční zařízení, které umožňuje scénáře Kubernetes, hloubkového učení a strojového učení.
+Grafický procesor (GPU) je součástí každého zařízení Azure Stack Edge pro, které umožňuje scénáře Kubernetes, hloubkového učení a strojového učení.
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
@@ -40,25 +40,25 @@ Grafický procesor (GPU) je součástí každé Azure Stack hraniční zařízen
 
 ## <a name="power-supply-unit-specifications"></a>Specifikace jednotek napájení
 
-Hraniční zařízení Azure Stack má dvě 100-240 V jednotkách napájení (PSUs) s vysoce výkonnými ventilátory. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
+Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs) s vysoce výkonnými ventilátory. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
 
 | Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximální výstupní výkon    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
-| Horká, připojitelná           | Ano                        |
+| Horká, připojitelná           | Yes                        |
 
 
 ## <a name="network-interface-specifications"></a>Specifikace síťového rozhraní
 
-Vaše zařízení Azure Stack Edge má šest síťových rozhraní PORT1-PORT6.
+Vaše zařízení Azure Stack Edge pro má šest síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Popis                 |
+| Specifikace           | Description                 |
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | **rozhraní 2 X 1 GbE** – 1 rozhraní pro správu se používá pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý port rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>**4 X 25 rozhraní rozhraní** – tato datová rozhraní, port 3 až port 6, můžou být nakonfigurovaná uživatelem jako DHCP (výchozí) nebo static. Můžou také fungovat jako rozhraní s 10 GbE.  | 
 
-Vaše zařízení Azure Stack Edge má následující síťový hardware:
+Vaše zařízení Azure Stack Edge pro má následující síťový hardware:
 
 * **Vlastní Microsoft QLogic Cavium 25G Norwegian Developers Conference Adapter** -port 1 až 4.
 * **Mellanox Dual Port 25G ConnectX-4 síťový adaptér kanálu** – port 5 a port 6.
@@ -67,7 +67,7 @@ Tady jsou podrobnosti o kartě Mellanox:
 
 | Parametr           | Popis                 |
 |-------------------------|----------------------------|
-| Model    | ConnectX®-4 LX EN síťová karta                      |
+| Modelování    | ConnectX®-4 LX EN síťová karta                      |
 | Popis modelu               | 25GbE Dual-Port SFP28; PCIe 3.0 x8; ROHS R6                    |
 | Číslo součásti zařízení (R640) | MCX4121A-ACAT  |
 | PSID MÁ (R640)           | MT_2420110034                         |
@@ -79,7 +79,7 @@ Tady jsou podrobnosti o kartě Mellanox:
 
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
-Azure Stack hraniční zařízení mají pět 2,5 P4610 SSD DC, každé s kapacitou 1,6 TB. Spouštěcí jednotka je 240 GB SATA SSD. Celková použitelná kapacita pro zařízení je zhruba 8,28 TB. V následující tabulce je uvedena kapacita úložiště zařízení.
+Zařízení Azure Stack Edge pro mají pět 2,5 DC P4610 SSD, každé s kapacitou 1,6 TB. Spouštěcí jednotka je 240 GB SATA SSD. Celková použitelná kapacita pro zařízení je zhruba 8,28 TB. V následující tabulce je uvedena kapacita úložiště zařízení.
 
 |     Specifikace                          |     Hodnota             |
 |--------------------------------------------|-----------------------|
@@ -97,7 +97,7 @@ Azure Stack hraniční zařízení mají pět 2,5 P4610 SSD DC, každé s kapaci
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
 
-Your Azure Stack Edge device also contains the following hardware:
+Your Azure Stack Edge Pro device also contains the following hardware:
 
 * iDRAC baseboard management
 * Performance fans
@@ -172,4 +172,4 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nasazení Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)
+[Nasazení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md)
