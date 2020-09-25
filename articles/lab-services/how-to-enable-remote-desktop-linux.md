@@ -3,12 +3,12 @@ title: Povolit grafický vzdálenou plochu pro Linux v Azure Lab Services | Micr
 description: Přečtěte si, jak povolit vzdálenou plochu pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445759"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251605"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Povolení grafické vzdálené plochy pro virtuální počítače se systémem Linux v Azure Lab Services
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -46,7 +46,7 @@ Tento krok je potřebný jenom pro připojení pomocí protokolu RDP.  Pokud mí
 
 1.  Při vytváření testovacího prostředí má instruktor možnost **povolit připojení ke vzdálené ploše**.  Instruktor musí tuto možnost **Povolit** , aby otevřel port na virtuálním počítači Linux, který je potřeba pro relaci vzdálené plochy RDP.  V opačném případě, pokud je tato možnost **zakázána**, je otevřen pouze port pro SSH.
   
-    ![Povolení připojení ke vzdálené ploše pro bitovou kopii operačního systému Linux](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    ![Snímek obrazovky, který zobrazuje okno nové testovací prostředí s možností Enable Připojení ke vzdálené ploše.](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. V poli **povolit připojení ke vzdálené plošeovou** zprávu vyberte **pokračovat u možnosti Vzdálená plocha**. 
 
@@ -107,4 +107,4 @@ Klient X2Go se používá pro připojení k virtuálnímu počítači šablony s
 Jakmile instruktor nastaví RDP nebo X2Go na svém virtuálním počítači šablony a publikuje, studenti se můžou připojit ke svým virtuálním počítačům přes vzdálenou plochu GUI nebo SSH.
 
 Další informace naleznete v tématech:
- - [Připojení k virtuálnímu počítači se systémem Linux](how-to-use-remote-desktop-linux-student.md)
+ - [Připojení k virtuálnímu počítači s Linuxem](how-to-use-remote-desktop-linux-student.md)

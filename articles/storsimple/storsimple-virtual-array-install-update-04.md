@@ -1,6 +1,6 @@
 ---
 title: Instalace aktualizací ve virtuálním poli StorSimple | Microsoft Docs
-description: Popisuje, jak použít webové uživatelské rozhraní StorSimple Virtual Array k instalaci aktualizací pomocí metody Azure Portal a opravy hotfix.
+description: Popisuje, jak použít webové uživatelské rozhraní StorSimple Virtual Array k použití aktualizace 0,4 s použitím metody Azure Portal a Hot Fix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: f68abf6315c1ca344f90dec55bf8cdc813e58823
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 529b93e7754df7aa0a981f4389108b8f53b4be2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300560"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0,4 ve virtuálním poli StorSimple
 
@@ -27,7 +27,7 @@ ms.locfileid: "85513691"
 
 Tento článek popisuje kroky potřebné k instalaci aktualizace 0,4 ve virtuálním poli StorSimple prostřednictvím místního webového uživatelského rozhraní a prostřednictvím Azure Portal. Chcete-li, aby vaše virtuální pole StorSimple bylo aktuální, je třeba použít aktualizace softwaru nebo opravy hotfix. 
 
-Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix se zařízení restartuje. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení. 
+Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení. 
 
 Než použijete aktualizaci, doporučujeme, abyste nejprve převzali svazky nebo sdílené složky na hostiteli a pak zařízení. Minimalizuje se tak možnost poškození dat.
 
@@ -58,7 +58,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
    
     ![Prohledávání katalogu](./media/storsimple-virtual-array-install-update-04/download1.png)
 
-4. Klikněte na tlačítko **Add** (Přidat). Aktualizace se přidá do košíku.
+4. Klikněte na **Přidat**. Aktualizace se přidá do košíku.
 
 5. Klikněte na **Zobrazit košík**.
 

@@ -1,7 +1,7 @@
 ---
-title: Získat token & volání Microsoft Graph pomocí identity aplikace konzoly | Azure
+title: 'Rychlý Start: získání tokenu & volání Microsoft Graph v konzolové aplikaci | Azure'
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak získat token a volat chráněné rozhraní Microsoft Graph API z aplikace .NET Core.
+description: V tomto rychlém startu se dozvíte, jak může ukázková aplikace .NET Core používat tok přihlašovacích údajů klienta k získání tokenu a volání Microsoft Graph.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e33b912ab65a3565e42c294388949a5c55b4ee8a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257818"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API pomocí identity konzolové aplikace
 
 V tomto rychlém startu se dozvíte, jak napsat aplikaci .NET Core, která může získat přístupový token pomocí vlastní identity aplikace a pak volat rozhraní Microsoft Graph API pro zobrazení [seznamu uživatelů](/graph/api/user-list) v adresáři. Tento scénář je vhodný pro situace, kdy je potřeba bez identity uživatele spustit bezobslužnou úlohu nebo službu systému Windows s identitou aplikace. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý Start vyžaduje [.NET Core 2,2](https://www.microsoft.com/net/download/dotnet-core/2.2).
 
@@ -170,12 +170,7 @@ MSAL ([Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Ide
 
  MSAL.NET můžete nainstalovat spuštěním následujícího příkazu v **konzole správce balíčků**sady Visual Studio:
 
-```powershell
-Install-Package Microsoft.Identity.Client
-```
-
-Případně, pokud nepoužíváte aplikaci Visual Studio, můžete spustit následující příkaz pro přidání MSAL do projektu:
-
+```powershell twhitney
 ```console
 dotnet add package Microsoft.Identity.Client
 ```
@@ -204,7 +199,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | `config.ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 > | `config.Authority`    | Volitelné Koncový bod služby STS, který se má ověřit pro uživatele. Obvykle `https://login.microsoftonline.com/{tenant}` pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta.|
 
-Další informace najdete v [referenční dokumentaci pro `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)
+Další informace najdete v [referenční dokumentaci pro `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication)
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
@@ -219,28 +214,13 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
 
-Další informace najdete v [referenční dokumentaci pro `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)
+Další informace najdete v [referenční dokumentaci pro `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o aplikacích démona najdete na cílové stránce scénáře.
+Další informace o aplikacích démona najdete v přehledu scénářů:
 
 > [!div class="nextstepaction"]
 > [Aplikace démona, která volá webová rozhraní API](scenario-daemon-overview.md)
-
-Kurz pro aplikace démona najdete v těchto tématech:
-
-> [!div class="nextstepaction"]
-> [Kurz pro konzolu .NET Core s démony](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
-
-Další informace o oprávněních a souhlasu:
-
-> [!div class="nextstepaction"]
-> [Oprávnění a souhlas](v2-permissions-and-consent.md)
-
-Další informace o toku ověřování pro tento scénář najdete v tématu tok přihlašovacích údajů klienta OAuth 2,0:
-
-> [!div class="nextstepaction"]
-> [Tok OAuth přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md)

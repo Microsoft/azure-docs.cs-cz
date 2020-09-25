@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e853255f0fc1bc95a4a7fb1658fc41d4fe705c41
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420052"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269297"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Volání funkcí Azure Functions z Azure Logic Apps
 
@@ -27,7 +27,7 @@ Chcete-li spustit fragmenty kódu bez vytváření Azure Functions, přečtěte 
 > [!NOTE]
 > Integrace mezi Logic Apps a Azure Functions v současnosti nefunguje s povolenými sloty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

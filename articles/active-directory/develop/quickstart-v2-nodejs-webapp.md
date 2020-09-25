@@ -10,23 +10,23 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
-ms.openlocfilehash: 149ed7aa281e50673c86c0bd7339f304aa63914a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
+ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257686"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
 V tomto rychlém startu se dozvíte, jak nastavit ověřování OpenID Connect ve webové aplikaci vytvořené pomocí Node.js s využitím Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 
-* Nainstalovat Node.js zhttp://nodejs.org/
+* Nainstalovat Node.js z http://nodejs.org/
 
 * Buď [účet Microsoft](https://www.outlook.com) , nebo [Microsoft 365 vývojářský program](/office/developer-program/office-365-developer-program)
 
@@ -51,7 +51,7 @@ K provedení této ukázky budete potřebovat:
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Tuto hodnotu budete potřebovat ke konfiguraci aplikace později v tomto projektu.
 
 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-    - V části **identifikátory URI pro přesměrování** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování:`http://localhost:3000/auth/openid/return`
+    - V části **identifikátory URI pro přesměrování** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování: `http://localhost:3000/auth/openid/return`
     - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `https://localhost:3000` .
     - V části **Upřesnit nastavení > implicitního udělení oprávnění** ověřte **tokeny ID** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) povolen k přihlášení uživatele.
 
@@ -72,7 +72,7 @@ Z prostředí nebo příkazového řádku:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
-– nebo –
+nebo
 
 `$ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -110,7 +110,7 @@ Spusťte aplikaci pomocí následujícího příkazu z příkazového řádku.
 $ node app.js
 ```
 
-**Je pro vás výstup serveru obtížné?:** `bunyan`K přihlášení v této ukázce používáme. Konzola nebude velmi smyslná, pokud nenainstalujete Bunyan a spustíte server, jak je uvedeno výše, ale přesměrujte ho prostřednictvím binárního souboru Bunyan:
+**Je pro vás výstup serveru obtížné?:** `bunyan` K přihlášení v této ukázce používáme. Konzola nebude velmi smyslná, pokud nenainstalujete Bunyan a spustíte server, jak je uvedeno výše, ale přesměrujte ho prostřednictvím binárního souboru Bunyan:
 
 ```
 $ npm install -g bunyan

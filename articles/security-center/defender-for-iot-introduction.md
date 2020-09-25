@@ -3,16 +3,16 @@ title: Azure Defender for IoT
 description: Další informace o Azure Defenderu pro IoT
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 67bb01092cb6171ae56b8ab8b308e0c2ea3bece0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 307916680d9a05a5083aea057b2ef4b855a4ff57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301801"
 ---
 # <a name="introduction-to-azure-defender-for-iot"></a>Seznámení s Azure Defenderem pro IoT
 
@@ -58,6 +58,6 @@ SecOps týmy můžou:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o Azure Defenderu pro IoT v Azure Security Center. Další informace naleznete v tématu:
+V tomto článku jste se dozvěděli o Azure Defenderu pro IoT v Azure Security Center. Další informace naleznete v tématech:
 
 - [Představujeme Azure Security Center pro IoT](../asc-for-iot/overview.md)

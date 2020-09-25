@@ -13,31 +13,24 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257533"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: mobilní aplikace, která volá webová rozhraní API
 
 Naučte se, jak vytvořit mobilní aplikaci, která volá webová rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>Začínáme
 
-Vytvořte svou první mobilní aplikaci a vyzkoušejte si rychlý Start.
+Pokud jste to ještě neudělali, vytvořte svou první aplikaci dokončením rychlého startu:
 
-> [!div class="nextstepaction"]
-> [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro Android](./quickstart-v2-android.md)
->
-> [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro iOS](./quickstart-v2-ios.md)
->
-> [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace Xamarin iOS a Android](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+- [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro Android](./quickstart-v2-android.md)
+- [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro iOS](./quickstart-v2-ios.md)
+- [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace Xamarin iOS a Android](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) (GitHub)
 
 ## <a name="overview"></a>Přehled
 
@@ -60,7 +53,11 @@ Při vytváření mobilní aplikace na platformě Microsoft identity je potřeba
 - V systémech iOS a Android může MSAL použít externí prohlížeč pro přihlášení uživatelů. Externí prohlížeč se může zobrazit v horní části aplikace.
 - Nikdy nepoužívejte tajný klíč v mobilní aplikaci. V těchto aplikacích jsou tajné klíče přístupné všem uživatelům.
 
+## <a name="recommended-reading"></a>Doporučené čtení
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace aplikace](scenario-mobile-app-registration.md)
+> [Registrace aplikací](scenario-mobile-app-registration.md)

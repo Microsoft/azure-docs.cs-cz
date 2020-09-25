@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259369"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Experian s využitím Azure Active Directory B2C
 
@@ -30,13 +30,13 @@ V této ukázce se používá integrovaná Digitální identita Experian a rizik
 - Druhé jméno
 - příjmení
 - Adresa
-- City
+- City (Město)
 - Stát/kraj
 - PSČ
 - Země/oblast
 - Telefonní číslo
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -77,7 +77,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ### <a name="part-1---deploy-the-api"></a>Část 1 – nasazení rozhraní API
 
-Nasaďte poskytnutý kód rozhraní API do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 >[!NOTE]
 >Abyste mohli Azure AD nakonfigurovat pomocí požadovaných nastavení, budete potřebovat adresu URL nasazené služby.
@@ -117,7 +117,7 @@ Přečtěte si tento [dokument](https://docs.microsoft.com/azure/active-director
 
 ### <a name="part-5---replace-the-configuration-values"></a>Část 5 – nahrazení hodnot konfigurace
 
-V poskytnutých vlastních zásadách vyhledejte následující zástupné symboly a nahraďte je odpovídajícími hodnotami z vaší instance.
+V poskytnutých [vlastních zásadách](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy)vyhledejte následující zástupné symboly a nahraďte je odpovídajícími hodnotami z vaší instance.
 
 |                      Zástupný symbol                       |                                   Nahradit hodnotou                                 |                   Příklad                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |

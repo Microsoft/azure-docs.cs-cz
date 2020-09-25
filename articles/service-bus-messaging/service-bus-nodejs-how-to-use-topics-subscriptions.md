@@ -6,13 +6,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 08/09/2020
 ms.author: spelluru
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8a86a1bd9a312f3b1c6d94914d426422687b25a6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 219132fc8a0e618cdf2561947ae3904a9e2cb310
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300747"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: jak používat Service Bus témata a předplatná s Node.js a balíčkem Azure-Sb
 V tomto kurzu se naučíte vytvářet Node.js aplikace pro odesílání zpráv do Service Bus tématu a příjem zpráv z Service Bus předplatného pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky jsou napsané v JavaScriptu a používají Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá `azure-sb` balíček.

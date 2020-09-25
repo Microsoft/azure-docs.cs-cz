@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f550cb4e9069055da6569492b35fc7fe75d70980
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258055"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>Pokyny pro používání Xamarin iOS s MSAL.NET
 
@@ -81,7 +81,7 @@ Další informace najdete v dokumentaci k [oprávněním pro iOS](https://develo
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Povolit sdílení mezipaměti tokenů napříč aplikacemi pro iOS
 
-Od MSAL 2. x můžete zadat přístupovou skupinu pro řetězce klíčů, která bude uchovávat mezipaměť tokenů napříč více aplikacemi. Toto nastavení umožňuje sdílet mezipaměť tokenů mezi několika aplikacemi, které mají stejnou přístupovou skupinu pro řetězce klíčů. Token můžete sdílet mezi [ADAL.NET](https://aka.ms/adal-net) aplikacemi, MSAL.NET aplikacemi Xamarin. iOS a nativními aplikacemi pro iOS, které byly vyvinuty v [ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) nebo [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc).
+Od MSAL 2. x můžete zadat přístupovou skupinu pro řetězce klíčů, která bude uchovávat mezipaměť tokenů napříč více aplikacemi. Toto nastavení umožňuje sdílet mezipaměť tokenů mezi několika aplikacemi, které mají stejnou přístupovou skupinu pro řetězce klíčů. Mezipaměť tokenů můžete sdílet mezi [ADAL.NET](https://aka.ms/adal-net) aplikacemi, MSAL.NET aplikacemi Xamarin. iOS a nativními aplikacemi pro iOS, které byly vyvinuty v [ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) nebo [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc).
 
 Sdílením mezipaměti tokenů povolíte jednotné přihlašování (SSO) mezi všemi aplikacemi, které používají stejnou přístupovou skupinu pro řetězce klíčů.
 

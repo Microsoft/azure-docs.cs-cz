@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: fc83e5e8d14250ed163a56830311533144bbe344
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395430"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252625"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorování, metriky a výstrahy služby ExpressRoute
 
@@ -42,8 +42,8 @@ Po výběru metriky se použije výchozí agregace. Volitelně můžete použít
 |GlobalReachBitsOutPerSecond|Provoz|<ui><li>Skey okruhu s partnerským vztahem (klíč služby)</ui></li>|Global Reach|
 |AdminState|Fyzické připojení|Odkaz|ExpressRoute Direct|
 |LineProtocol|Fyzické připojení|Odkaz|ExpressRoute Direct|
-|RxLightLevel|Fyzické připojení|<ui><li>Propojit</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fyzické připojení|<ui><li>Propojit</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fyzické připojení|<ui><li>Odkaz</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fyzické připojení|<ui><li>Odkaz</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Použití *GlobalGlobalReachBitsInPerSecond* a *GlobalGlobalReachBitsOutPerSecond* se zobrazí jenom v případě, že se naváže aspoň jedno připojení Global REACH.
 >
@@ -154,6 +154,19 @@ Můžete zobrazit pakety za sekundu, které procházejí bránou.
 V části **kritéria výstrahy**můžete pro typ signálu vybrat **protokol aktivity** a vybrat signál.
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="protokoly aktivit":::
+
+## <a name="additional-metrics-in-log-analytics"></a>Další metriky v Log Analytics
+
+Metriky ExpressRoute můžete zobrazit také tak, že přejdete do svého prostředku okruhu ExpressRoute a vyberete kartu *protokoly* . Pro všechny metriky, které dotazují, bude výstup obsahovat následující sloupce.
+
+|**Sloupec**|**Typ**|**Popis**|
+| --- | --- | --- |
+|TimeGrain|řetězec|PT1M (hodnoty metriky se posunou každou minutu)|
+|Počet|real|Obvykle se rovná 2 (každý MSEE po každou minutu nahraje jednu hodnotu metriky)|
+|Minimum|real|Minimum dvou hodnot metrik nabízených dvěma směrovači msee|
+|Maximum|real|Maxiumum dvou hodnot metrik nabízených dvěma směrovači msee|
+|Průměr|real|Rovná se (minimálně + maximum)/2|
+|Celkem|real|Součet dvou hodnot metriky z obou směrovači msee (hlavní hodnota, která se má zaměřit na dotazování metriky)|
   
 ## <a name="next-steps"></a>Další kroky
 

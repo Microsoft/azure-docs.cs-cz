@@ -12,22 +12,18 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e530f76c8301dc74f73b675befa6f0710aedab7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c9ff9ae811a29685937b922f04a277e663e26f1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257360"
 ---
 # <a name="scenario-protected-web-api"></a>Scénář: chráněné webové rozhraní API
 
 V tomto scénáři se dozvíte, jak vystavit webové rozhraní API. Naučíte se také, jak chránit webové rozhraní API, aby k němu měli přístup jenom ověření uživatelé.
 
 Pokud chcete používat webové rozhraní API, musíte povolit ověřené uživatele s pracovními a školními účty, nebo povolit osobní účty Microsoft.
-
-## <a name="prerequisites"></a>Předpoklady
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="specifics"></a>Specifika
 
@@ -39,6 +35,10 @@ Tady jsou konkrétní informace, které potřebujete znát k ochraně webových 
 - Pokud vytváříte novou registraci aplikace webového rozhraní API, vyberte [verzi přístupového tokenu](reference-app-manifest.md#accesstokenacceptedversion-attribute) , kterou vaše webové rozhraní API přijalo `2` . U starších webových rozhraní API může být povolená verze tokenu `null` , ale tato hodnota omezuje cílovou skupinu pro přihlašování jenom na organizace a osobní účty Microsoft (MSA) se nepodporují.
 - Konfigurace kódu pro webové rozhraní API musí ověřit token použitý při volání webového rozhraní API.
 - Kód v akcích kontroleru musí ověřit role nebo obory v tokenu.
+
+## <a name="recommended-reading"></a>Doporučené čtení
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

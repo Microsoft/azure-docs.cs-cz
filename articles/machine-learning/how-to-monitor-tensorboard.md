@@ -5,17 +5,17 @@ description: Spusťte TensorBoard k vizualizaci historie spouštění experiment
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: maxluk
-ms.author: maxluk
+author: minxia
+ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: da5c128b9e0befd69e1ded6b47644a3c64b8f657
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b6d4ac2727e558ed3d4538b6d325b7304d7928f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250874"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizace běhů experimentů a metrik pomocí TensorBoard a Azure Machine Learning
 
@@ -25,7 +25,7 @@ V tomto článku se naučíte, jak zobrazit spuštění experimentů a metriky v
 [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) je sada webových aplikací pro kontrolu a porozumění vaší struktuře experimentů a výkonu.
 
 Způsob spuštění TensorBoard s Azure Machine Learning experimenty závisí na typu experimentu:
-+ Pokud váš experiment nativně Vypisuje soubory protokolů, které jsou spotřební TensorBoard, jako je PyTorch, chainer a TensorFlow experimenty, můžete [Spustit TensorBoard přímo](#direct) z historie spuštění experimentu. 
++ Pokud váš experiment nativně Vypisuje soubory protokolů, které jsou spotřební TensorBoard, jako je PyTorch, chainer a TensorFlow experimenty, můžete [Spustit TensorBoard přímo](#launch-tensorboard) z historie spuštění experimentu. 
 
 + V případě experimentů, které nemají nativně výstupní TensorBoardelné soubory, jako např. například Scikit-učí nebo Azure Machine Learning experimenty, použijte [ `export_to_tensorboard()` metodu](#export) pro export historie spuštění jako protokolů TensorBoard a z ní spusťte TensorBoard. 
 
@@ -35,30 +35,22 @@ Způsob spuštění TensorBoard s Azure Machine Learning experimenty závisí na
 ## <a name="prerequisites"></a>Požadavky
 
 * Chcete-li spustit TensorBoard a zobrazit historie spuštění experimentů, vaše experimenty musí mít dříve povolené protokolování, aby bylo možné sledovat jeho metriky a výkon.  
-
 * Kód v tomto dokumentu může běžet v jednom z následujících prostředí: 
-
     * Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
-
         * Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
-
         * Ve složce Samples na serveru poznámkového bloku najděte dva dokončené a rozšířené poznámkové bloky tak, že přejdete na tyto adresáře:
             * **How-to-> Training – s hloubkovým učením > export-Run-History to-tensorboard > export-Run-History-to-tensorboard. ipynb**
-
             * **Postup použití-AzureML > sledování a monitorování – experimenty > tensorboard. ipynb**
-
     * Váš vlastní server Juptyer notebook
        * [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) s `tensorboard` dalšími
         * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).  
         * [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
-  
-<a name="direct"></a>
 
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Možnost 1: přímo zobrazit historii spuštění v TensorBoard
 
 Tato možnost je vhodná pro experimenty, které nativně výstupují soubory protokolu TensorBoard, jako je PyTorch, chainer a TensorFlow experimenty. Pokud to není případ vašeho experimentu, použijte místo toho [ `export_to_tensorboard()` metodu](#export) .
 
-Následující příklad kódu používá vzorový [experiment mnist ručně zapsaných](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) z úložiště TensorFlow ve vzdáleném cíli služby compute, Azure Machine Learning Compute. V dalším kroku provedeme náš model pomocí vlastního [TensorFlow Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)sady SDK a potom zahájíte TensorBoard proti tomuto TensorFlow experimentu, tedy experiment, který nativně produkuje soubory událostí TensorBoard.
+Následující příklad kódu používá vzorový [experiment mnist ručně zapsaných](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) z úložiště TensorFlow ve vzdáleném cíli služby compute, Azure Machine Learning Compute. Dále nakonfigurujeme a zahájíme běh pro školení modelu TensorFlow a potom na tomto TensorFlow experimentu začneme TensorBoard.
 
 ### <a name="set-experiment-name-and-create-project-folder"></a>Nastavit název experimentu a vytvořit složku projektu
 
@@ -92,9 +84,9 @@ V celém souboru kódu mnist ručně zapsaných mnist_with_summaries. py, Všimn
 
  ### <a name="configure-experiment"></a>Konfigurovat experiment
 
-V následujícím příkladu nakonfigurujeme náš experiment a nastavíme adresáře pro protokoly a data. Tyto protokoly se nahrají do služby artefaktu, která TensorBoard přistupuje později.
+V následujícím příkladu nakonfigurujeme náš experiment a nastavíme adresáře pro protokoly a data. Tyto protokoly budou nahrány do historie spuštění, která TensorBoard přistupuje později.
 
->[!Note]
+> [!Note]
 > V tomto příkladu TensorFlow budete muset nainstalovat TensorFlow na svůj místní počítač. Kromě toho musí být modul TensorBoard (tj. ten, který je součástí TensorFlow) dostupný pro jádro tohoto poznámkového bloku, protože místní počítač je to, co spouští TensorBoard.
 
 ```Python
@@ -113,9 +105,9 @@ if not path.exists(data_dir):
 
 os.environ["TEST_TMPDIR"] = data_dir
 
-# Writing logs to ./logs results in their being uploaded to Artifact Service,
+# Writing logs to ./logs results in their being uploaded to the run history,
 # and thus, made accessible to our TensorBoard instance.
-script_params = ["--log_dir", logs_dir]
+args = ["--log_dir", logs_dir]
 
 # Create an experiment
 exp = Experiment(ws, experiment_name)
@@ -127,7 +119,7 @@ Pro tento experiment vytvoříme cluster AmlCompute, ale vaše experimenty se da
 ```Python
 from azureml.core.compute import ComputeTarget, AmlCompute
 
-cluster_name = "cpucluster"
+cluster_name = "cpu-cluster"
 
 cts = ws.compute_targets
 found = False
@@ -151,19 +143,23 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
-### <a name="submit-run-with-tensorflow-estimator"></a>Odeslat běh s TensorFlow Estimator
+### <a name="configure-and-submit-training-run"></a>Konfigurace a odeslání školicích běhů
 
-TensorFlow Estimator poskytuje jednoduchý způsob, jak spustit školicí úlohu TensorFlow na cílovém výpočetním cíli. Je implementována prostřednictvím obecné [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) třídy, kterou lze použít k podpoře libovolného rozhraní. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
+Nakonfigurujte úlohu školení vytvořením objektu ScriptRunConfig.
 
 ```Python
-from azureml.train.dnn import TensorFlow
+from azureml.core import ScriptRunConfig
+from azureml.core import Environment
 
-tf_estimator = TensorFlow(source_directory=exp_dir,
-                          compute_target=compute_target,
-                          entry_script='mnist_with_summaries.py',
-                          script_params=script_params)
+# Here we will use the TensorFlow 2.2 curated environment
+tf_env = Environment.get(ws, 'AzureML-TensorFlow-2.2-GPU')
 
-run = exp.submit(tf_estimator)
+src = ScriptRunConfig(source_directory=exp_dir,
+                      script='mnist_with_summaries.py',
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=tf_env)
+run = exp.submit(src)
 ```
 
 ### <a name="launch-tensorboard"></a>Spustit TensorBoard
@@ -184,8 +180,8 @@ tb.start()
 tb.stop()
 ```
 
->[!Note]
- I když se tento příklad používá TensorFlow, TensorBoard se dá snadno použít s PyTorch nebo modely zřetězení. TensorFlow musí být dostupná na počítači, na kterém běží TensorBoard, ale není potřeba na počítači, který provádí PyTorch nebo výpočetní modul. 
+> [!Note]
+> V tomto příkladu, který se používá TensorFlow, se TensorBoard dá použít stejně snadno jako PyTorch nebo chainer. TensorFlow musí být dostupná na počítači, na kterém běží TensorBoard, ale není potřeba na počítači, který provádí PyTorch nebo výpočetní modul. 
 
 
 <a name="export"></a>
@@ -273,11 +269,11 @@ export_to_tensorboard(root_run, logdir)
 root_run.complete()
 ```
 
->[!Note]
- Můžete také exportovat konkrétní běh do TensorBoard zadáním názvu spuštění.  `export_to_tensorboard(run_name, logdir)`
+> [!Note]
+> Můžete také exportovat konkrétní běh do TensorBoard zadáním názvu spuštění.  `export_to_tensorboard(run_name, logdir)`
 
 ### <a name="start-and-stop-tensorboard"></a>Spuštění a zastavení TensorBoard
-Jakmile je naše historie spuštění pro tento experiment exportována, můžeme spustit TensorBoard pomocí metody [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#&preserve-view=truestart-start-browser-false-) . 
+Jakmile je naše historie spuštění pro tento experiment exportována, můžeme spustit TensorBoard pomocí metody [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-start-browser-false-) . 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -289,7 +285,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-Až budete hotovi, ujistěte se, že zavoláte metodu [stop ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#&preserve-view=truestop--) objektu TensorBoard. V opačném případě bude TensorBoard běžet dál, dokud nevypnete jádro poznámkového bloku. 
+Až budete hotovi, ujistěte se, že zavoláte metodu [stop ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestop--) objektu TensorBoard. V opačném případě bude TensorBoard běžet dál, dokud nevypnete jádro poznámkového bloku. 
 
 ```python
 tb.stop()

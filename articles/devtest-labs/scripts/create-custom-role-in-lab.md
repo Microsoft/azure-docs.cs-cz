@@ -1,15 +1,15 @@
 ---
 title: PowerShell – vytvoření vlastní role v testovacím prostředí v Azure DevTest Labs
-description: Tento článek poskytuje skript Azure PowerShell, který přidá externího uživatele do testovacího prostředí v Azure DevTest Labs.
+description: Tento článek poskytuje skript Azure PowerShell, který vytváří vlastní roli v testovacím prostředí v Azure DevTest Labs.
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 9b6e4d47babd17916e31ab2762ec87f6aa433da6
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3757d6c16a762a0f76f4718f117da93322af074c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252795"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Použití PowerShellu k vytvoření vlastní role v testovacím prostředí v Azure DevTest Labs
 

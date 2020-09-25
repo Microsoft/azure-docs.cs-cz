@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301092"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Integrace RabbitMQ s Azure Service Bus
 
@@ -112,7 +112,7 @@ V rozhraní pro správu RabbitMQ můžete přejít na `Queues` , vybrat `azure` 
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Publikovat první zprávu":::
 
-Vraťte se do Azure a prověřte svou frontu. Klikněte na `Service Bus Explorer` levý panel. Pokud všechno proběhlo správně, zobrazí se ve vaší frontě jedna zpráva. Yay!
+Vraťte se do Azure a prověřte svou frontu. Klikněte na `Service Bus Explorer` levý panel a potom klikněte na tlačítko _Náhled_ . Pokud všechno proběhlo správně, zobrazí se ve vaší frontě jedna zpráva. Yay!
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Fronta služby Azure Service Bus":::
 
@@ -136,3 +136,8 @@ Blahopřejeme! Dosáhli jste hodně! Spravovali jste, abyste získali zprávy ze
 Podle předchozích kroků můžete integrovat oblasti vaší organizace mimo Azure. Modul plug-in Shovel vám umožní dodávat zprávy z RabbitMQ do Azure Service Bus. To má obrovské výhody, protože teď můžete důvěryhodným třetím stranám dovolit připojit své aplikace k nasazení Azure.
 
 V tomto případě zasílání zpráv o povolení připojení a tato technika právě otevřela nové.
+
+## <a name="next-steps"></a>Další kroky
+
+- Další informace o [Azure Service Bus](./service-bus-messaging-overview.md)
+- Další informace o [podpoře AMQP 1,0 v Service Bus](./service-bus-amqp-overview.md)

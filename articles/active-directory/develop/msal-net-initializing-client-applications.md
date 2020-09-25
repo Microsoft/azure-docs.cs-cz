@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 30f9f1998ee133c2546c9f4de7a99c51feb8740f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5ec419be5c7549553788d009f09fa3e0fb8655e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258281"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicializace klientských aplikací pomocí MSAL.NET
 Tento článek popisuje inicializaci veřejného klienta a důvěrných klientských aplikací pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).  Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
 
 Pomocí MSAL.NET 3. x je doporučený způsob vytvoření instance aplikace pomocí tvůrců aplikací: `PublicClientApplicationBuilder` a `ConfidentialClientApplicationBuilder` . Nabízí účinný mechanismus pro konfiguraci aplikace buď z kódu, nebo z konfiguračního souboru, nebo i smícháním obou přístupů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před inicializací aplikace je nejprve nutné [ji zaregistrovat](quickstart-register-app.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity.  Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
 - ID klienta (řetězec představující GUID)
@@ -96,9 +96,9 @@ V fragmentech kódu pomocí tvůrců aplikací `.With` lze použít několik met
 
 Modifikátory, které můžete nastavit ve veřejném klientovi nebo v nástroji pro vytváření důvěrných klientských aplikací, jsou tyto:
 
-|Modifikátor | Description|
+|Modifikátor | Popis|
 |--------- | --------- |
-|`.WithAuthority()`7 přepsání | Nastaví výchozí autoritu aplikace na autoritu Azure AD s možností výběru cloudu Azure, cílové skupiny, tenanta (ID tenanta nebo názvu domény) nebo poskytnutí přímo identifikátoru URI autority.|
+|`.WithAuthority()` 7 přepsání | Nastaví výchozí autoritu aplikace na autoritu Azure AD s možností výběru cloudu Azure, cílové skupiny, tenanta (ID tenanta nebo názvu domény) nebo poskytnutí přímo identifikátoru URI autority.|
 |`.WithAdfsAuthority(string)` | Nastaví výchozí autoritu aplikace jako autoritu služby ADFS.|
 |`.WithB2CAuthority(string)` | Nastaví výchozí autoritu aplikace jako autoritu Azure AD B2C.|
 |`.WithClientId(string)` | Přepíše ID klienta.|
@@ -115,7 +115,7 @@ Modifikátory, které můžete nastavit ve veřejném klientovi nebo v nástroji
 
 Modifikátory, které můžete nastavit na tvůrci veřejné klientské aplikace v Xamarin. iOS, jsou:
 
-|Modifikátor | Description|
+|Modifikátor | Popis|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Jenom Xamarin. iOS**: nastaví skupinu zabezpečení řetězu klíčů pro iOS (pro trvalost mezipaměti).|
 
@@ -123,7 +123,7 @@ Modifikátory, které můžete nastavit na tvůrci veřejné klientské aplikace
 
 V Tvůrci důvěrných klientských aplikací můžete nastavit Modifikátory:
 
-|Modifikátor | Description|
+|Modifikátor | Popis|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Nastaví certifikát identifikující aplikaci pomocí Azure AD.|
 |`.WithClientSecret(string clientSecret)` | Nastaví tajný klíč klienta (heslo aplikace) identifikující aplikaci pomocí Azure AD.|
@@ -137,7 +137,7 @@ Předpokládejme, že vaše aplikace je obchodní aplikace, která je určena po
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithAadAuthority(AzureCloudInstance.AzurePublic, tenantId)
+        .WithAuthority(AzureCloudInstance.AzurePublic, tenantId)
         .Build();
 ```
 
@@ -146,7 +146,7 @@ Tam, kde se to bude zajímavé, je teď zjednodušené programování pro národ
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithAadAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMultipleOrgs)
+        .WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
 ```
 

@@ -3,17 +3,17 @@ title: Azure Defender pro Key Vault – výhody a funkce
 description: Přečtěte si o výhodách a funkcích Azure Defenderu pro Key Vault.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 06818e443568918e2ee87bbfbec81836ea85648b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 78a522922f8580003e2d2ff588cbf10dbf5fff9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301767"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Seznámení s Azure Defenderem pro Key Vault
 
@@ -42,6 +42,11 @@ Když obdržíte výstrahu od Azure Defenderu pro Key Vault, doporučujeme, abys
 Výstrahy se zobrazí na stránce **zabezpečení** Key Vault, na řídicím panelu Azure Defender a na stránce s výstrahami Security Center.
 
 :::image type="content" source="./media/defender-for-key-vault-intro/key-vault-security-page.png" alt-text="Stránka zabezpečení Azure Key Vault":::
+
+
+> [!TIP]
+> Pomocí pokynů v tématu [ověřování Azure Key Vault detekce hrozeb v Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)můžete simulovat Azure Defender pro Key Vault výstrahy.
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,59 +3,18 @@ title: Obnovitelné odstranění pro SQL Server na virtuálním počítači Azur
 description: Přečtěte si, jak obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a SAP HANA v úlohách virtuálních počítačů Azure zajišťuje větší zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254291"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a SAP HANA v úlohách virtuálních počítačů Azure
 
 Azure Backup nyní poskytuje obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a SAP HANA v úlohách virtuálních počítačů Azure. To je navíc k již podporovanému [scénáři obnovitelného odstranění virtuálního počítače Azure](soft-delete-virtual-machines.md).
 
 [Obnovitelné odstranění](backup-azure-security-feature-cloud.md) je funkce zabezpečení, která umožňuje chránit zálohovaná data i po jejím odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu databáze (nebo se data zálohují omylem), se zálohovaná data uchovávají po dobu 14 dalších dnů. To umožňuje obnovení této zálohované položky bez ztráty dat. Tato dodatečná doba uchovávání dat ze zálohy 14 dnů ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka.
-
->[!NOTE]
->Po povolení verze Preview pro předplatné není možné deaktivovat možnost obnovitelné odstranění jenom pro SQL Server nebo SAP HANA databáze a přitom ponechat povolený virtuální počítač ve stejném trezoru. Pro podrobné řízení můžete vytvořit samostatné trezory.
-
-## <a name="steps-to-enroll-in-preview"></a>Postup pro registraci ve verzi Preview
-
-1. Přihlaste se ke svému účtu Azure.
-
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-2. Vyberte předplatné, které chcete zaregistrovat ve verzi Preview:
-
-   ```powershell
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-   ```
-
-3. Zaregistrujte toto předplatné do programu verze Preview:
-
-   ```powershell
-   Register-AzureRMProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-4. Počkejte 30 minut, než se předplatné zaregistruje do verze Preview.
-
-5. Chcete-li zjistit stav, spusťte následující rutiny:
-
-   ```powershell
-   Get-AzureRmProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-6. Jakmile se odběr zobrazí jako zaregistrované, spusťte následující příkaz:
-
-   ```powershell
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
->[!NOTE]
->Pokaždé, když se v předplatném s povoleným obnovitelnému odstranění vytvoří nový trezor nebo trezory, je potřeba znovu spustit následující příkaz, který funkci pro nově vytvořené trezory povolí.<BR>
-> `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 ## <a name="soft-delete-for-sql-server-in-azure-vm-using-azure-portal"></a>Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure pomocí Azure Portal
 

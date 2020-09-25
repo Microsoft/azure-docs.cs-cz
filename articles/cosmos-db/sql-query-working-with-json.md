@@ -1,21 +1,21 @@
 ---
-title: Práce s JSON v Azure Cosmos DB
+title: Práce s formátem JSON ve službě Azure Cosmos DB
 description: Další informace o dotazování a přístupu k vnořeným vlastnostem JSON a použití speciálních znaků v Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270846"
 ---
-# <a name="working-with-json-in-azure-cosmos-db"></a>Práce s JSON v Azure Cosmos DB
+# <a name="working-with-json-in-azure-cosmos-db"></a>Práce s formátem JSON ve službě Azure Cosmos DB
 
-V rozhraní API pro Azure Cosmos DB SQL (jádro) se položky ukládají jako JSON. Systém typů a výrazy jsou omezené, aby se jednalo jenom o typy JSON. Další informace najdete v tématu [specifikace JSON](https://www.json.org/).
+V rozhraní SQL (Core) API služby Azure Cosmos DB se položky ukládají ve formátu JSON. Systém typů a výrazy jsou omezené tak, aby pracovaly pouze s typy JSON. Další informace najdete v tématu [specifikace JSON](https://www.json.org/).
 
 Shrnujeme některé důležité aspekty práce s JSON:
 
@@ -138,6 +138,34 @@ WHERE EXISTS(
     WHERE n.checkingAccount < 0
 )
 ```
+
+## <a name="difference-between-null-and-undefined"></a>Rozdíl mezi hodnotou null a nedefinovaným
+
+Pokud vlastnost není definována v položce, její hodnota je `undefined` . Vlastnost s hodnotou `null` musí být explicitně definována a přiřazena `null` hodnota.
+
+Zvažte například tuto ukázkovou položku:
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": null
+}
+```
+
+V tomto příkladu `isRegistered` má vlastnost hodnotu, `undefined` protože je vynechána z položky. Vlastnost `creationDate` má `null` hodnotu.
+
+Azure Cosmos DB podporuje dvě užitečné funkce kontroly typů pro `null` a `undefined` vlastnosti:
+
+* [IS_NULL](sql-query-is-null.md) – kontroluje, jestli je hodnota vlastnosti `null`
+* [IS_DEFINED](sql-query-is-defined.md) – kontroluje, jestli je definovaná hodnota vlastnosti.
+
+Můžete získat informace o [podporovaných operátorech](sql-query-operators.md) a jejich chování `null` pro `undefined` hodnoty a.
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>Vyhrazená klíčová slova a speciální znaky ve formátu JSON
 

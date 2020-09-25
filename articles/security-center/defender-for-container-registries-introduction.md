@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 742d230d6ed1535bada9c35219d2ddf68fd64ae1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6254b78ad19e7034f78f7891d57a3474fee0c602
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977163"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301918"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Seznámení s Azure Defenderem pro Registry kontejnerů
 
@@ -64,14 +64,11 @@ Bitová kopie je načítána z registru. Pak se spustí v izolovaném izolované
 
 Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v pořádku, Security Center ho označí jako takový. Security Center generuje doporučení zabezpečení pouze pro image, které mají problémy, které mají být vyřešeny. Tím, že se upozorní jenom na problémy, Security Center snižuje potenciální informativní výstrahy.
 
-### <a name="how-often-does-security-center-scan-my-images"></a>Jak často Security Center kontrolovat obrázky?
-Kontroly imagí se spouštějí při každém vložení nebo importu a v případě, že se image obnovila během posledních 30 dnů. 
-
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Můžu získat výsledky kontroly prostřednictvím REST API?
 Ano. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Jaké typy registru jsou prohledávány? Jaké typy se účtují?
-V části dostupnost jsou uvedené typy registrů kontejnerů, které Azure Defender podporuje pro Registry kontejnerů. 
+Seznam typů registrů kontejnerů, které Azure Defender podporuje pro Registry kontejnerů, najdete v tématu [dostupnost](defender-for-container-registries-usage.md#availability).
 
 Pokud ke svému předplatnému Azure připojíte nepodporované Registry, nebudou se kontrolovat a nebudou se vám účtovat.
 

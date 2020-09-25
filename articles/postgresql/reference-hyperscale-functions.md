@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: eaada1981929cec890ce3c8ca89fe47393730b05
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136805"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250327"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Funkce v rozhraní Citus API pro škálování na více systému ()
 
@@ -20,7 +20,7 @@ Tato část obsahuje referenční informace o uživatelsky definovaných funkcí
 
 > [!NOTE]
 >
-> Skupiny serverů s technologií Citus se staršími verzemi modulu nemusí nabízet všechny níže uvedené funkce.
+> Skupiny serverů Citus (), na kterých běží starší verze modulu Citus, nemusí nabízet všechny funkce uvedené níže.
 
 ## <a name="table-and-shard-ddl"></a>Tabulka a horizontálních oddílů DDL
 
@@ -46,7 +46,7 @@ Pokud nová distribuovaná tabulka nesouvisí s jinými tabulkami, je nejlepší
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -70,7 +70,7 @@ Funkce vytvořit \_ referenční \_ tabulku () se používá k definování mal�
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -90,7 +90,7 @@ Funkce upgradu \_ na \_ referenční \_ tabulku () převezme existující distri
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -126,7 +126,7 @@ DETAIL:  Distribution column types don't match for apples and oranges.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -152,7 +152,7 @@ Cesta pro vyhledávání Postgres není šířena od koordinátora k pracovník�
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -359,7 +359,7 @@ Tato funkce funguje nezávisle na `pg_stat_statements_reset()` . Chcete-li obnov
 
 #### <a name="arguments"></a>Arguments
 
-–
+Není k dispozici
 
 #### <a name="return-value"></a>Návratová hodnota
 
@@ -387,7 +387,7 @@ K opravě horizontálních oddílů funkce nejprve přenechá nestavové horizon
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -427,7 +427,7 @@ Po úspěšné operaci přesunu se horizontálních oddílů ve zdrojovém uzlu 
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -477,7 +477,7 @@ Pokud je tento argument vynechán, funkce zvolí výchozí strategii, jak je uve
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -520,7 +520,7 @@ Po zahájení horizontálních oddílů rovnováha `get_rebalance_progress()` fu
 
 #### <a name="arguments"></a>Arguments
 
-–
+Není k dispozici
 
 #### <a name="return-value"></a>Návratová hodnota
 
@@ -575,7 +575,7 @@ Další informace o těchto argumentech naleznete v tématu odpovídající hodn
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 ### <a name="citus_set_default_rebalance_strategy"></a>citus \_ nastavit \_ výchozí \_ strategii pro vyrovnávání zatížení \_
 
@@ -587,7 +587,7 @@ Aktualizujte [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebal
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -601,7 +601,7 @@ SELECT citus_set_default_rebalance_strategy('by_disk_size');
 
 #### <a name="arguments"></a>Arguments
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -637,7 +637,7 @@ Pokud je tento argument vynechán, funkce zvolí výchozí strategii, jak je uve
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="example"></a>Příklad
 
@@ -687,7 +687,7 @@ Funkce replikovat \_ tabulku \_ horizontálních oddílů () replikuje replikova
 
 #### <a name="return-value"></a>Návratová hodnota
 
-–
+Není k dispozici
 
 #### <a name="examples"></a>Příklady
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259539"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Pokud používáte [toky uživatelů](user-flow-overview.md), můžete změnit v
 Pomocí [Azure Portal](tutorial-customize-ui.md) můžete nakonfigurovat přizpůsobení uživatelského rozhraní pro toky uživatelů.
 
 > [!TIP]
-> Chcete-li upravit pouze logo banner, obrázek pozadí a barvu pozadí stránek toku uživatele, můžete vyzkoušet funkci [Branding společnosti (verze Preview)](#company-branding-preview) popsanou dále v tomto článku.
+> Chcete-li upravit pouze logo banner, obrázek pozadí a barvu pozadí stránek toku uživatele, můžete vyzkoušet funkci [Branding společnosti](#company-branding) popsanou dále v tomto článku.
 
 ### <a name="custom-policies"></a>Vlastní zásady
 
@@ -155,16 +155,14 @@ V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B
 | Registrace místního účtu | Obsahuje formulář pro registraci místního účtu na základě e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je textové pole, vstupní pole pro heslo, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
 | Registrace účtu sociální sítě | Může se zobrazit při registraci pomocí existujícího účtu od poskytovatele sociální identity, jako je Facebook nebo Google. Používá se, když je potřeba shromáždit další informace od zákazníka pomocí registračního formuláře. |
 | Jednotné registrace nebo přihlašování | Zpracovává registraci i přihlašování zákazníků, kteří můžou používat poskytovatele sociálních identit, jako je Facebook, Google nebo místní účty. |
-| Vícefaktorové ověřování | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
+| Ověřování pomocí služby Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
 | Chyba | Poskytne zákazníkovi informace o chybě. |
 
-## <a name="company-branding-preview"></a>Branding společnosti (Preview)
+## <a name="company-branding"></a>Branding společnosti
 
 Můžete přizpůsobit stránky toku uživatele pomocí loga nápisu, obrázku pozadí a barvy pozadí pomocí Azure Active Directory [Branding společnosti](../active-directory/fundamentals/customize-branding.md).
 
 Chcete-li přizpůsobit stránky toku uživatele, je třeba nejprve nakonfigurovat Branding společnosti v Azure Active Directory a pak ji povolit v rozložení stránky vašich uživatelských toků v Azure AD B2C.
-
-[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
 
 ### <a name="configure-company-branding"></a>Konfigurace brandingu společnosti
 

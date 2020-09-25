@@ -4,12 +4,12 @@ description: Popisuje fronty nedoručených zpráv v Azure Service Bus. Service 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021676"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301019"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Přehled Service Bus front nedoručených zpráv
 
@@ -62,7 +62,7 @@ Zprávy s vypršenou platností jsou vymazány a přesunuty do DLQ, pokud je ale
 
 ## <a name="errors-while-processing-subscription-rules"></a>Chyby při zpracování pravidel předplatného
 
-Je-li pro odběr povolena vlastnost [SubscriptionDescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) , všechny chyby, ke kterým dojde při spuštění pravidla filtru SQL předplatného, jsou zachyceny v DLQ spolu s problematickou zprávou.
+Je-li pro odběr povolena vlastnost [SubscriptionDescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) , všechny chyby, ke kterým dojde při spuštění pravidla filtru SQL předplatného, jsou zachyceny v DLQ spolu s problematickou zprávou. Tuto možnost nepoužívejte v produkčním prostředí, ve kterém ne všechny typy zpráv mají předplatitele.
 
 ## <a name="application-level-dead-lettering"></a>Nedoručená písmena na úrovni aplikace
 

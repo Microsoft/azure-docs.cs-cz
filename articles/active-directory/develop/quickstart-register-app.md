@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: d52673f1c66c8e053639b24bb31a3159a75736b9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029048"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258128"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -32,11 +32,11 @@ Každá aplikace, pro kterou má platforma Microsoft Identity provádět správu
 
 ## <a name="register-an-application"></a>Registrace aplikace
 
-Při registraci aplikace se vytvoří vztah důvěryhodnosti mezi vaší aplikací a platformou Microsoft identity. Vztah důvěryhodnosti je jednosměrný: vaše aplikace důvěřuje platformě Microsoft identity, a ne jiným způsobem.
+Při registraci aplikace se vytvoří vztah důvěryhodnosti mezi vaší aplikací a platformou Microsoft identity. Vztah důvěryhodnosti je jednosměrný: vaše aplikace důvěřuje platformě identity Microsoftu, a ne jiným způsobem.
 
 Při vytváření registrace aplikace postupujte podle těchto kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat**vyberte **Registrace aplikací**a pak **Nová registrace**.

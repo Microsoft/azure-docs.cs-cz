@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 4a98007917e95b1880661fe35bfd3f85f633e9a3
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 5d2ff25762f28c19b6d389a779fb455de3c84f3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253764"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Značky image kontejneru Azure Cognitive Services
 
@@ -120,6 +120,8 @@ Tato image kontejneru má k dispozici následující značky:
 | Značky obrázku            | Poznámky |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.5.0-amd64`         |       |
+| `2.4.0-amd64-preview` |       |
 | `2.3.1-amd64-preview` |       | 
 | `2.3.0-amd64-preview` |       |
 | `2.2.0-amd64-preview` |       |
@@ -137,6 +139,8 @@ Tato image kontejneru má k dispozici následující značky:
 | Značky obrázku            | Poznámky |
 |-----------------------|:------|
 | `latest`              |       |
+| `1.7.0-amd64`         |       |
+| `1.6.0-amd64-preview` |       |
 | `1.6.0-amd64-preview` |       |
 | `1.5.0-amd64-preview` |       |
 | `1.4.0-amd64-preview` |       |
@@ -145,13 +149,52 @@ Tato image kontejneru má k dispozici následující značky:
 ## <a name="speech-to-text"></a>Převod řeči na text
 
 Obrázek s obrázkem [mluveného textu na text][sp-stt] najdete v `containerpreview.azurecr.io` registru kontejnerů. Je uložený v `microsoft` úložišti a má název `cognitive-services-speech-to-text` . Plně kvalifikovaný název Image kontejneru je, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` .
-Verze *) – Virginia* of Speech-to-text pro státní správu USA je podporována v 2.4.0 a je možné ji najít v `containerpreview.azurecr.io/microsoft/fairfax/cognitive-services-speech-to-text` .
+2.5.0 obrázky z převodu řeči na text v jsou podporované v *) – Virginia pro státní správu USA*. K vyzkoušení prosím použijte) – Virginia koncový bod a klíče rozhraní API pro *státní správu USA* .
 
 Tato image kontejneru má k dispozici následující značky:
 
 | Značky obrázku                  | Poznámky                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Obrázek kontejneru s `en-US` národním prostředím |
+| `2.5.0-amd64-ar-ae`         | Obrázek kontejneru s `ar-AE` národním prostředím |
+| `2.5.0-amd64-ar-eg`         | Obrázek kontejneru s `ar-EG` národním prostředím |
+| `2.5.0-amd64-ar-kw`         | Obrázek kontejneru s `ar-KW` národním prostředím |
+| `2.5.0-amd64-ar-qa`         | Obrázek kontejneru s `ar-QA` národním prostředím |
+| `2.5.0-amd64-ar-sa`         | Obrázek kontejneru s `ar-SA` národním prostředím |
+| `2.5.0-amd64-ca-es`         | Obrázek kontejneru s `ca-ES` národním prostředím |
+| `2.5.0-amd64-da-dk`         | Obrázek kontejneru s `da-DK` národním prostředím |
+| `2.5.0-amd64-de-de`         | Obrázek kontejneru s `de-DE` národním prostředím |
+| `2.5.0-amd64-en-au`         | Obrázek kontejneru s `en-AU` národním prostředím |
+| `2.5.0-amd64-en-ca`         | Obrázek kontejneru s `en-CA` národním prostředím |
+| `2.5.0-amd64-en-gb`         | Obrázek kontejneru s `en-GB` národním prostředím |
+| `2.5.0-amd64-en-in`         | Obrázek kontejneru s `en-IN` národním prostředím |
+| `2.5.0-amd64-en-nz`         | Obrázek kontejneru s `en-NZ` národním prostředím |
+| `2.5.0-amd64-en-us`         | Obrázek kontejneru s `en-US` národním prostředím |
+| `2.5.0-amd64-es-es`         | Obrázek kontejneru s `es-ES` národním prostředím |
+| `2.5.0-amd64-es-mx`         | Obrázek kontejneru s `es-MX` národním prostředím |
+| `2.5.0-amd64-fi-fi`         | Obrázek kontejneru s `fi-FI` národním prostředím |
+| `2.5.0-amd64-fr-ca`         | Obrázek kontejneru s `fr-CA` národním prostředím |
+| `2.5.0-amd64-fr-fr`         | Obrázek kontejneru s `fr-FR` národním prostředím |
+| `2.5.0-amd64-gu-in`         | Obrázek kontejneru s `gu-IN` národním prostředím |
+| `2.5.0-amd64-hi-in`         | Obrázek kontejneru s `hi-IN` národním prostředím |
+| `2.5.0-amd64-it-it`         | Obrázek kontejneru s `it-IT` národním prostředím |
+| `2.5.0-amd64-ja-jp`         | Obrázek kontejneru s `ja-JP` národním prostředím |
+| `2.5.0-amd64-ko-kr`         | Obrázek kontejneru s `ko-KR` národním prostředím |
+| `2.5.0-amd64-mr-in`         | Obrázek kontejneru s `mr-IN` národním prostředím |
+| `2.5.0-amd64-nb-no`         | Obrázek kontejneru s `nb-NO` národním prostředím |
+| `2.5.0-amd64-nl-nl`         | Obrázek kontejneru s `nl-NL` národním prostředím |
+| `2.5.0-amd64-pl-pl`         | Obrázek kontejneru s `pl-PL` národním prostředím |
+| `2.5.0-amd64-pt-br`         | Obrázek kontejneru s `pt-BR` národním prostředím |
+| `2.5.0-amd64-pt-pt`         | Obrázek kontejneru s `pt-PT` národním prostředím |
+| `2.5.0-amd64-ru-ru`         | Obrázek kontejneru s `ru-RU` národním prostředím |
+| `2.5.0-amd64-sv-se`         | Obrázek kontejneru s `sv-SE` národním prostředím |
+| `2.5.0-amd64-ta-in`         | Obrázek kontejneru s `ta-IN` národním prostředím |
+| `2.5.0-amd64-te-in`         | Obrázek kontejneru s `te-IN` národním prostředím |
+| `2.5.0-amd64-th-th`         | Obrázek kontejneru s `th-TH` národním prostředím |
+| `2.5.0-amd64-tr-tr`         | Obrázek kontejneru s `tr-TR` národním prostředím |
+| `2.5.0-amd64-zh-cn`         | Obrázek kontejneru s `zh-CN` národním prostředím |
+| `2.5.0-amd64-zh-hk`         | Obrázek kontejneru s `zh-HK` národním prostředím |
+| `2.5.0-amd64-zh-tw`         | Obrázek kontejneru s `zh-TW` národním prostředím |
 | `2.4.0-amd64-ar-ae-preview` | Obrázek kontejneru s `ar-AE` národním prostředím |
 | `2.4.0-amd64-ar-eg-preview` | Obrázek kontejneru s `ar-EG` národním prostředím |
 | `2.4.0-amd64-ar-kw-preview` | Obrázek kontejneru s `ar-KW` národním prostředím |
@@ -591,6 +634,87 @@ Tato image kontejneru má k dispozici následující značky:
 | Značky obrázku                                  | Poznámky                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaRUS` hlasem         |
+| `1.7.0-amd64-ar-eg-hoda`                    | Obrázek kontejneru s `ar-EG` národním prostředím a `ar-EG-Hoda` hlasem            |
+| `1.7.0-amd64-ar-sa-naayf`                   | Obrázek kontejneru s `ar-SA` národním prostředím a `ar-SA-Naayf` hlasem           |
+| `1.7.0-amd64-bg-bg-ivan`                    | Obrázek kontejneru s `bg-BG` národním prostředím a `bg-BG-Ivan` hlasem            |
+| `1.7.0-amd64-ca-es-herenarus`               | Obrázek kontejneru s `ca-ES` národním prostředím a `ca-ES-HerenaRUS` hlasem       |
+| `1.7.0-amd64-cs-cz-jakub`                   | Obrázek kontejneru s `cs-CZ` národním prostředím a `cs-CZ-Jakub` hlasem           |
+| `1.7.0-amd64-da-dk-hellerus`                | Obrázek kontejneru s `da-DK` národním prostředím a `da-DK-HelleRUS` hlasem        |
+| `1.7.0-amd64-de-at-michael`                 | Obrázek kontejneru s `de-AT` národním prostředím a `de-AT-Michael` hlasem         |
+| `1.7.0-amd64-de-ch-karsten`                 | Obrázek kontejneru s `de-CH` národním prostředím a `de-CH-Karsten` hlasem         |
+| `1.7.0-amd64-de-de-hedda`                   | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-Hedda` hlasem           |
+| `1.7.0-amd64-de-de-heddarus`                | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-Hedda` hlasem           |
+| `1.7.0-amd64-de-de-stefan-apollo`           | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-Stefan-Apollo` hlasem   |
+| `1.7.0-amd64-el-gr-stefanos`                | Obrázek kontejneru s `el-GR` národním prostředím a `el-GR-Stefanos` hlasem        |
+| `1.7.0-amd64-en-au-catherine`               | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-Catherine` hlasem       |
+| `1.7.0-amd64-en-au-hayleyrus`               | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-HayleyRUS` hlasem       |
+| `1.7.0-amd64-en-ca-heatherrus`              | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-HeatherRUS` hlasem      |
+| `1.7.0-amd64-en-ca-linda`                   | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-Linda` hlasem           |
+| `1.7.0-amd64-en-gb-george-apollo`           | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-George-Apollo` hlasem   |
+| `1.7.0-amd64-en-gb-hazelrus`                | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-HazelRUS` hlasem        |
+| `1.7.0-amd64-en-gb-susan-apollo`            | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-Susan-Apollo` hlasem    |
+| `1.7.0-amd64-en-ie-sean`                    | Obrázek kontejneru s `en-IE` národním prostředím a `en-IE-Sean` hlasem            |
+| `1.7.0-amd64-en-in-heera-apollo`            | Obrázek kontejneru s `en-IN` národním prostředím a `en-IN-Heera-Apollo` hlasem    |
+| `1.7.0-amd64-en-in-priyarus`                | Obrázek kontejneru s `en-IN` národním prostředím a `en-IN-PriyaRUS` hlasem        |
+| `1.7.0-amd64-en-in-ravi-apollo`             | Obrázek kontejneru s `en-IN` národním prostředím a `en-IN-Ravi-Apollo` hlasem     |
+| `1.7.0-amd64-en-us-benjaminrus`             | Obrázek kontejneru s `en-US` národním prostředím a `en-US-BenjaminRUS` hlasem     |
+| `1.7.0-amd64-en-us-guy24krus`               | Obrázek kontejneru s `en-US` národním prostředím a `en-US-Guy24kRUS` hlasem       |
+| `1.7.0-amd64-en-us-aria24krus`              | Obrázek kontejneru s `en-US` národním prostředím a `en-US-Aria24kRUS` hlasem      |
+| `1.7.0-amd64-en-us-ariarus`                 | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaRUS` hlasem         |
+| `1.7.0-amd64-en-us-zirarus`                 | Obrázek kontejneru s `en-US` národním prostředím a `en-US-ZiraRUS` hlasem         |
+| `1.7.0-amd64-es-es-helenarus`               | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-HelenaRUS` hlasem       |
+| `1.7.0-amd64-es-es-laura-apollo`            | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-Laura-Apollo` hlasem    |
+| `1.7.0-amd64-es-es-pablo-apollo`            | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-Pablo-Apollo` hlasem    |
+| `1.7.0-amd64-es-mx-hildarus`                | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-HildaRUS` hlasem        |
+| `1.7.0-amd64-es-mx-raul-apollo`             | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-Raul-Apollo` hlasem     |
+| `1.7.0-amd64-fi-fi-heidirus`                | Obrázek kontejneru s `fi-FI` národním prostředím a `fi-FI-HeidiRUS` hlasem        |
+| `1.7.0-amd64-fr-ca-caroline`                | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-Caroline` hlasem        |
+| `1.7.0-amd64-fr-ca-harmonierus`             | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-HarmonieRUS` hlasem     |
+| `1.7.0-amd64-fr-ch-guillaume`               | Obrázek kontejneru s `fr-CH` národním prostředím a `fr-CH-Guillaume` hlasem       |
+| `1.7.0-amd64-fr-fr-hortenserus`             | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-HortenseRUS` hlasem     |
+| `1.7.0-amd64-fr-fr-julie-apollo`            | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-Julie-Apollo` hlasem    |
+| `1.7.0-amd64-fr-fr-paul-apollo`             | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-Paul-Apollo` hlasem     |
+| `1.7.0-amd64-he-il-asaf`                    | Obrázek kontejneru s `he-IL` národním prostředím a `he-IL-Asaf` hlasem            |
+| `1.7.0-amd64-hi-in-hemant`                  | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Hemant` hlasem          |
+| `1.7.0-amd64-hi-in-kalpana-apollo`          | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Kalpana-Apollo` hlasem  |
+| `1.7.0-amd64-hi-in-kalpana`                 | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Kalpana` hlasem         |
+| `1.7.0-amd64-hr-hr-matej`                   | Obrázek kontejneru s `hr-HR` národním prostředím a `hr-HR-Matej` hlasem           |
+| `1.7.0-amd64-hu-hu-szabolcs`                | Obrázek kontejneru s `hu-HU` národním prostředím a `hu-HU-Szabolcs` hlasem        |
+| `1.7.0-amd64-id-id-andika`                  | Obrázek kontejneru s `id-ID` národním prostředím a `id-ID-Andika` hlasem          |
+| `1.7.0-amd64-it-it-cosimo-apollo`           | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-Cosimo-Apollo` hlasem   |
+| `1.7.0-amd64-it-it-luciarus`                | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-LuciaRUS` hlasem        |
+| `1.7.0-amd64-ja-jp-ayumi-apollo`            | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-Ayumi-Apollo` hlasem    |
+| `1.7.0-amd64-ja-jp-harukarus`               | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-HarukaRUS` hlasem       |
+| `1.7.0-amd64-ja-jp-ichiro-apollo`           | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-Ichiro-Apollo` hlasem   |
+| `1.7.0-amd64-ko-kr-heamirus`                | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-HeamiRUS` hlasem        |
+| `1.7.0-amd64-ms-my-rizwan`                  | Obrázek kontejneru s `ms-MY` národním prostředím a `ms-MY-Rizwan` hlasem          |
+| `1.7.0-amd64-nb-no-huldarus`                | Obrázek kontejneru s `nb-NO` národním prostředím a `nb-NO-HuldaRUS` hlasem        |
+| `1.7.0-amd64-nl-nl-hannarus`                | Obrázek kontejneru s `nl-NL` národním prostředím a `nl-NL-HannaRUS` hlasem        |
+| `1.7.0-amd64-pl-pl-paulinarus`              | Obrázek kontejneru s `pl-PL` národním prostředím a `pl-PL-PaulinaRUS` hlasem      |
+| `1.7.0-amd64-pt-br-daniel-apollo`           | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-Daniel-Apollo` hlasem   |
+| `1.7.0-amd64-pt-br-heloisarus`              | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-HeloisaRUS` hlasem      |
+| `1.7.0-amd64-pt-pt-heliarus`                | Obrázek kontejneru s `pt-PT` národním prostředím a `pt-PT-HeliaRUS` hlasem        |
+| `1.7.0-amd64-ro-ro-andrei`                  | Obrázek kontejneru s `ro-RO` národním prostředím a `ro-RO-Andrei` hlasem          |
+| `1.7.0-amd64-ru-ru-ekaterinarus`            | Obrázek kontejneru s `ru-RU` národním prostředím a `ru-RU-EkaterinaRUS` hlasem    |
+| `1.7.0-amd64-ru-ru-irina-apollo`            | Obrázek kontejneru s `ru-RU` národním prostředím a `ru-RU-Irina-Apollo` hlasem    |
+| `1.7.0-amd64-ru-ru-pavel-apollo`            | Obrázek kontejneru s `ru-RU` národním prostředím a `ru-RU-Pavel-Apollo` hlasem    |
+| `1.7.0-amd64-sk-sk-filip`                   | Obrázek kontejneru s `sk-SK` národním prostředím a `sk-SK-Filip` hlasem           |
+| `1.7.0-amd64-sl-si-lado`                    | Obrázek kontejneru s `sl-SI` národním prostředím a `sl-SI-Lado` hlasem            |
+| `1.7.0-amd64-sv-se-hedvigrus`               | Obrázek kontejneru s `sv-SE` národním prostředím a `sv-SE-HedvigRUS` hlasem       |
+| `1.7.0-amd64-ta-in-valluvar`                | Obrázek kontejneru s `ta-IN` národním prostředím a `ta-IN-Valluvar` hlasem        |
+| `1.7.0-amd64-te-in-chitra`                  | Obrázek kontejneru s `te-IN` národním prostředím a `te-IN-Chitra` hlasem          |
+| `1.7.0-amd64-th-th-pattara`                 | Obrázek kontejneru s `th-TH` národním prostředím a `th-TH-Pattara` hlasem         |
+| `1.7.0-amd64-tr-tr-sedarus`                 | Obrázek kontejneru s `tr-TR` národním prostředím a `tr-TR-SedaRUS` hlasem         |
+| `1.7.0-amd64-vi-vn-an`                      | Obrázek kontejneru s `vi-VN` národním prostředím a `vi-VN-An` hlasem              |
+| `1.7.0-amd64-zh-cn-huihuirus`               | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-HuihuiRUS` hlasem       |
+| `1.7.0-amd64-zh-cn-kangkang-apollo`         | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-Kangkang-Apollo` hlasem |
+| `1.7.0-amd64-zh-cn-yaoyao-apollo`           | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-Yaoyao-Apollo` hlasem   |
+| `1.7.0-amd64-zh-hk-danny-apollo`            | Obrázek kontejneru s `zh-HK` národním prostředím a `zh-HK-Danny-Apollo` hlasem    |
+| `1.7.0-amd64-zh-hk-tracy-apollo`            | Obrázek kontejneru s `zh-HK` národním prostředím a `zh-HK-Tracy-Apollo` hlasem    |
+| `1.7.0-amd64-zh-hk-tracyrus`                | Obrázek kontejneru s `zh-HK` národním prostředím a `zh-HK-TracyRUS` hlasem        |
+| `1.7.0-amd64-zh-tw-hanhanrus`               | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-HanHanRUS` hlasem       |
+| `1.7.0-amd64-zh-tw-yating-apollo`           | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-Yating-Apollo` hlasem   |
+| `1.7.0-amd64-zh-tw-zhiwei-apollo`           | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-Zhiwei-Apollo` hlasem   |
 | `1.6.0-amd64-ar-eg-hoda-preview`            | Obrázek kontejneru s `ar-EG` národním prostředím a `ar-EG-Hoda` hlasem            |
 | `1.6.0-amd64-ar-sa-naayf-preview`           | Obrázek kontejneru s `ar-SA` národním prostředím a `ar-SA-Naayf` hlasem           |
 | `1.6.0-amd64-bg-bg-ivan-preview`            | Obrázek kontejneru s `bg-BG` národním prostředím a `bg-BG-Ivan` hlasem            |
@@ -616,8 +740,8 @@ Tato image kontejneru má k dispozici následující značky:
 | `1.6.0-amd64-en-in-ravi-apollo-preview`     | Obrázek kontejneru s `en-IN` národním prostředím a `en-IN-Ravi-Apollo` hlasem     |
 | `1.6.0-amd64-en-us-benjaminrus-preview`     | Obrázek kontejneru s `en-US` národním prostředím a `en-US-BenjaminRUS` hlasem     |
 | `1.6.0-amd64-en-us-guy24krus-preview`       | Obrázek kontejneru s `en-US` národním prostředím a `en-US-Guy24kRUS` hlasem       |
-| `1.6.0-amd64-en-us-aria24krus-preview`      | Obrázek kontejneru s `en-US` národním prostředím a `en-US-Aria24kRUS` hlasem     |
-| `1.6.0-amd64-en-us-ariarus-preview`         | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaRUS` hlasem        |
+| `1.6.0-amd64-en-us-aria24krus-preview`      | Obrázek kontejneru s `en-US` národním prostředím a `en-US-Aria24kRUS` hlasem      |
+| `1.6.0-amd64-en-us-ariarus-preview`         | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaRUS` hlasem         |
 | `1.6.0-amd64-en-us-zirarus-preview`         | Obrázek kontejneru s `en-US` národním prostředím a `en-US-ZiraRUS` hlasem         |
 | `1.6.0-amd64-es-es-helenarus-preview`       | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-HelenaRUS` hlasem       |
 | `1.6.0-amd64-es-es-laura-apollo-preview`    | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-Laura-Apollo` hlasem    |

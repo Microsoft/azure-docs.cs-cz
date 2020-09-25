@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 09/13/2020
 ms.author: memildin
-ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 416968229e37fe6474da38df5402b0cebf02d54c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301971"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -187,6 +187,6 @@ V tomto článku jste zjistili, jak nakonfigurovat průběžné export vašich d
 Související materiály najdete v následující dokumentaci: 
 
 - [Dokumentace ke službě Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
-- [Dokumentace k ověřovacím službám Azure](https://docs.microsoft.com/azure/sentinel/)
+- [Dokumentace ke službě Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Dokumentace k Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 - [Schémata datových typů automatizace a průběžného exportu pracovního postupu](https://aka.ms/ASCAutomationSchemas)

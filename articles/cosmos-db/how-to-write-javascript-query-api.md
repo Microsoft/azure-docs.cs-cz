@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2182e77ee673ea655762c765e2cfccb3decbe6af
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 4251a9ec0766f6e1956e4885b58dc874e01b0960
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253067"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Postup zápisu uložených procedur a triggerů v Azure Cosmos DB pomocí rozhraní API pro dotazy jazyka JavaScript
 
@@ -23,7 +23,7 @@ Azure Cosmos DB umožňuje provádět optimalizované dotazy pomocí rozhraní F
 Následující ukázka kódu je příkladem použití rozhraní API pro dotazování jazyka JavaScript v kontextu uložené procedury. Uložená procedura vloží položku Azure Cosmos, která je určená vstupním parametrem, a aktualizuje dokument metadat pomocí `__.filter()` metody, parametru minSize, MaxSize a TotalSize v závislosti na vlastnosti Size položky Input.
 
 > [!NOTE]
-> `__`(dvojité podtržítko) je alias pro `getContext().getCollection()` při použití rozhraní API pro dotazování jazyka JavaScript.
+> `__` (dvojité podtržítko) je alias pro `getContext().getCollection()` při použití rozhraní API pro dotazování jazyka JavaScript.
 
 ```javascript
 /**

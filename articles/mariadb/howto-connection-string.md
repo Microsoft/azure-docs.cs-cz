@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1d24f06631bd3fd52061637892423c94e12127af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 73c91343057c12d7534cd79de346182f32964f72
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021353"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268755"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Postup připojení aplikací k Azure Database for MariaDB
 Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azure Database for MariaDB, spolu se šablonami a příklady. V připojovacím řetězci můžete mít různé parametry a nastavení.

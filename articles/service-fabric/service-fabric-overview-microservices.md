@@ -4,12 +4,12 @@ description: Přehled důvodů, proč je vytváření cloudových aplikací s p�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4345c919e73e57667fb3b9c90c42224326bc3552
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300764"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat při sestavování aplikací přístup k mikroslužbám
 
@@ -138,6 +138,9 @@ Pokyny k [navrhování a vytváření mikroslužeb v Azure](/azure/architecture/
 Služba Azure Service Fabric v případě, kdy Microsoft přešla z doručování zabalených produktů, které se obvykle monolitické, na poskytování služeb. Prostředí pro vytváření a provozování velkých služeb, jako je Azure SQL Database a Azure Cosmos DB, Service Fabric tvarování. Platforma se v průběhu času vyvinula jako další služby, které ji přijaly. Service Fabric musela běžet nejen v Azure, ale také v samostatných nasazeních Windows serveru.
 
 ***Cílem Service Fabric je vyřešit závažné problémy s vytvářením a provozem služby a efektivně využívat prostředky infrastruktury, takže týmy mohou řešit obchodní problémy pomocí přístupu k mikroslužbám.***
+
+Toto krátké video představuje Service Fabric a mikroslužby:
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 Service Fabric vám pomůže vytvářet aplikace, které využívají přístup k mikroslužbám, poskytováním těchto možností:
 

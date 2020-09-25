@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93c796fd16dde8c238265d16a96b9cfa4a254ea9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995104"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269722"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Umožňuje spravovat prostředky Azure a monitorovat náklady vytvořením úloh automatizace (Preview).
 
@@ -30,6 +30,7 @@ Tady jsou aktuálně dostupné šablony úloh v této verzi Preview:
 | Všechny prostředky v Azure | **Odeslání měsíčních nákladů na prostředek** |
 | Virtuální počítače Azure | Dále: <p>- **Vypínání virtuálního počítače** <br>- **Spustit virtuální počítač** |
 | Účty úložiště Azure | Dále: <p>- **Odstranit staré objekty blob** |
+| Azure Cosmos DB | Také <p>- **Odeslat výsledek dotazu prostřednictvím e-mailu** |
 |||
 
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -40,11 +41,13 @@ V tomto článku se dozvíte, jak provádět následující úlohy:
 
 * [Upravte úkol](#edit-task) tak, abyste mohli úlohu aktualizovat, nebo můžete upravit základní pracovní postup úkolu v návrháři aplikace logiky.
 
+<a name="differences"></a>
+
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>Jak se liší úlohy automatizace od Azure Automation?
 
-V současné době můžete vytvořit úlohu automatizace jenom na úrovni prostředků, zobrazit historii spuštění úkolu a upravit základní pracovní postup aplikace logiky úlohy, který používá služba [Azure Logic Apps](../logic-apps/logic-apps-overview.md) .
+V současné době můžete vytvořit úlohu automatizace jenom na úrovni prostředků, zobrazit historii spuštění úkolu a upravit základní pracovní postup aplikace logiky úlohy, který používá služba [Azure Logic Apps](../logic-apps/logic-apps-overview.md) . Úlohy služby Automation jsou více základní a nenáročné než [Azure Automation](../automation/automation-intro.md).
 
-[Azure Automation](../automation/automation-intro.md) je cloudová služba pro automatizaci a konfiguraci, která podporuje konzistentní správu napříč prostředími Azure a mimo Azure. Služba zahrnuje [automatizaci procesů pro orchestraci procesů](../automation/automation-intro.md#process-automation) pomocí [runbooků](../automation/automation-runbook-execution.md), správy konfigurace se [sledováním změn a inventáře](../automation/change-tracking.md), správy aktualizací, sdílených možností a heterogenních funkcí. Automatizace poskytuje plnou kontrolu nad nasazením, provozem a vyřazením úloh a prostředků z provozu.
+Porovnáním Azure Automation je cloudová služba pro automatizaci a konfiguraci, která podporuje konzistentní správu napříč prostředími Azure a mimo Azure. Služba zahrnuje [automatizaci procesů pro orchestraci procesů](../automation/automation-intro.md#process-automation) pomocí [runbooků](../automation/automation-runbook-execution.md), správy konfigurace se [sledováním změn a inventáře](../automation/change-tracking.md), správy aktualizací, sdílených možností a heterogenních funkcí. Automatizace poskytuje plnou kontrolu nad nasazením, provozem a vyřazením úloh a prostředků z provozu.
 
 ## <a name="prerequisites"></a>Požadavky
 

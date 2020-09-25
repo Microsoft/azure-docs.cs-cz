@@ -10,13 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/10/2020
 ms.author: juliako
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5f418384d4ec1272600df2488dc71d2102d6a24d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js
+ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268617"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
 
@@ -30,7 +30,7 @@ Počínaje verzí 2 se základní adresa URL widgetu skládá z oblasti zadanéh
 
 Widget Cognitive Insights zahrnuje všechny vizuální přehledy, které se extrahovaly z indexování videa. Pomůcka pro rozpoznávání poznatků podporuje následující volitelné parametry adresy URL:
 
-|Název|Definice|Popis|
+|Name|Definice|Popis|
 |---|---|---|
 |`widgets` | Řetězce oddělené čárkami | Umožňuje řídit přehledy, které chcete vykreslit.<br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` vykreslí jenom lidé a klíčová slova UI Insights.<br/>Dostupné možnosti: lidé, animatedCharacters, klíčová slova, popisky, zabarvení, emoce, témata, klíčové snímky, přepisy, optické rozpoznávání znaků, reproduktory, scény a namedEntities.|
 |`controls`|Řetězce oddělené čárkami|Umožňuje řídit ovládací prvky, které chcete vykreslit.<br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` vykreslí jenom možnost hledání a tlačítko Stáhnout.<br/>Dostupné možnosti: Hledat, stáhnout, předvolby, jazyk.|
@@ -43,7 +43,7 @@ Widget Cognitive Insights zahrnuje všechny vizuální přehledy, které se extr
 
 Pomůcku přehrávače můžete použít ke streamování videa pomocí adaptivní přenosové rychlosti. Widget přehrávače podporuje následující volitelné parametry adresy URL.
 
-|Název|Definice|Popis|
+|Name|Definice|Popis|
 |---|---|---|
 |`t` | Sekund od začátku | Nastaví, aby se hráč od zadaného časového bodu začal přehrávat.<br/> Příklad: `t=60`. |
 |`captions` | Kód jazyka | Načte titulek v zadaném jazyce během načítání pomůcky, aby byl dostupný v nabídce **titulků** .<br/> Příklad: `captions=en-US`. |
@@ -57,7 +57,7 @@ Pomůcku přehrávače můžete použít ke streamování videa pomocí adaptivn
 
 Pomůcku editoru můžete použít k vytvoření nových projektů a správě přehledů videa. Pomůcka editoru podporuje následující volitelné parametry adresy URL.
 
-|Název|Definice|Popis|
+|Name|Definice|Popis|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Řetězec | Poskytuje přístup k videím, která jsou pouze v účtu, který se používá k vložení widgetu.<br> Widget pro Editor vyžaduje `accessToken` parametr. |
 |`language` | Kód jazyka | Řídí jazyk přehrávače. Výchozí hodnota je `en-US`.<br/>Příklad: `language=de-DE`. |

@@ -2,13 +2,13 @@
 title: Funkce Azure Functions jako obslužná rutina události pro Azure Event Grid události
 description: Popisuje, jak můžete používat Azure Functions jako obslužné rutiny událostí pro Event Grid události.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 8e48949bb5fecdf370fdf23146209ad757ffa062
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/18/2020
+ms.openlocfilehash: 87aeb78729dcc7bec9f193fab389e5c0952e63d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270306"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Funkce Azure Functions jako obslužná rutina události pro Event Grid události
 
@@ -39,14 +39,40 @@ Další informace najdete v tématu [Event Grid trigger Azure Functions](../azur
             "properties": 
             {
                 "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Web/sites/<FUNCTION APP NAME>/functions/<FUNCTION NAME>",
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64
+                "maxEventsPerBatch": 10,
+                "preferredBatchSizeInKilobytes": 6400
             }
         },
         "eventDeliverySchema": "EventGridSchema"
     }
 }
 ```
+
+## <a name="enable-batching"></a>Povolit dávkování
+Pro zajištění vyšší propustnosti povolte dávkování u předplatného. Pokud používáte Azure Portal, můžete nastavit maximální počet událostí na dávku a preferovanou velikost dávky v kilobajtech v době vytváření předplatného nebo po jeho vytvoření. 
+
+Nastavení dávky můžete nakonfigurovat pomocí šablony Azure Portal, PowerShellu, rozhraní příkazového řádku nebo Správce prostředků. 
+
+### <a name="azure-portal"></a>portál Azure
+Při vytváření odběru v uživatelském rozhraní na stránce **vytvořit odběr události** přepněte na kartu **Pokročilé funkce** a nastavte hodnoty **maximálního počtu událostí na dávku** a **upřednostňovanou velikost dávky v kilobajtech**. 
+    
+:::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Povolit dávkování v době vytváření předplatného":::
+
+Tyto hodnoty pro existující předplatné můžete aktualizovat na kartě **funkce** na stránce **Event Grid tématu** . 
+
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Povolit dávkování po vytvoření":::
+
+### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
+V šabloně Azure Resource Manager můžete nastavit **maxEventsPerBatch** a **preferredBatchSizeInKilobytes** . Další informace najdete v referenčních informacích k [šabloně Microsoft. EventGrid eventSubscriptions](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions).
+
+### <a name="azure-cli"></a>Azure CLI
+Pomocí příkazu [AZ eventgrid Event-Subscription Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) nebo [AZ eventgrid Event-Subscription Update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) můžete nakonfigurovat nastavení související s dávkou pomocí následujících parametrů: `--max-events-per-batch` nebo `--preferred-batch-size-in-kilobytes` .
+
+### <a name="azure-powershell"></a>Azure PowerShell
+Pomocí rutiny [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) nebo [Update-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) můžete nakonfigurovat nastavení související s Batch pomocí následujících parametrů: `-MaxEventsPerBatch` nebo `-PreferredBatchSizeInKiloBytes` .
+
+> [!NOTE]
+> Doručování událostí do funkce Azure Functions v **jiném tenantovi** se nepodporuje. 
 
 ## <a name="next-steps"></a>Další kroky
 Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) . 

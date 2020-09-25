@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8e8479179aa74f2fb2ead41dec28d247de9657c3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: dd54dd17e5a9a828935ad0d6ac3d713aaedd9535
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251588"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell
 
@@ -47,7 +47,7 @@ Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejný Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Jiné  | Libovolný | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Další  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Nastavení proměnných
 
-Nejdřív nastavte proměnné, které budou používat rutiny prostředí PowerShell v následujících krocích. Nezapomeňte aktualizovat <YourResourceGroupName> <YourStorageAccountName> <YourKeyVaultName> zástupné symboly, a a nastavit $keyVaultSpAppId na `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (jak je uvedeno v [ID aplikace instančního objektu](#service-principal-application-id)výše).
+Nejdřív nastavte proměnné, které budou používat rutiny prostředí PowerShell v následujících krocích. Nezapomeňte aktualizovat zástupné symboly "YourResourceGroupName", "YourStorageAccountName" a "YourKeyVaultName" a nastavit $keyVaultSpAppId na `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (jak je uvedeno v [ID aplikace instančního objektu](#service-principal-application-id)výše).
 
 Pomocí rutin Azure PowerShell [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) a Get-AzStorageAccount budeme k získání ID uživatele a kontextu vašeho účtu služby Azure Storage používat také rutiny Get-a [Get-](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) .
 

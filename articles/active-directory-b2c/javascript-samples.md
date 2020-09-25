@@ -5,19 +5,19 @@ description: Přečtěte si o používání JavaScriptu v Azure Active Directory
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 947111edf7741f78a40b7d3e77a1dfae22383500
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a9faca55f8440a28a845e892ee38df2de3489f97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259488"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky JavaScriptu pro použití v Azure Active Directory B2C
 

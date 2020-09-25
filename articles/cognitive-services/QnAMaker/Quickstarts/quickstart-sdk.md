@@ -3,14 +3,14 @@ title: 'Rychlý Start: použití sady SDK k vytvoření a správě znalostní b�
 description: V tomto rychlém startu se dozvíte, jak vytvořit a spravovat znalostní bázi pomocí klientské sady SDK.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-sixteen
-ms.openlocfilehash: 1517b84b38aaf1878b63d85c3e2f867bcd8e6586
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: aae9bce5542dc4c610df91d8176916adc459fe86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253920"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>Rychlý Start: QnA Maker Klientská knihovna
 

@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/14/2020
-ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/16/2020
+ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927115"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268362"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
@@ -41,7 +41,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
 
@@ -177,3 +177,8 @@ Po zřízení služby můžete na portálu pokračovat a vytvořit svůj první 
 
 > [!div class="nextstepaction"]
 > [Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání na portálu](search-get-started-portal.md)
+
+Chcete optimalizovat a uložit své útraty do cloudu?
+
+> [!div class="nextstepaction"]
+> [Zahájení analýzy nákladů pomocí Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

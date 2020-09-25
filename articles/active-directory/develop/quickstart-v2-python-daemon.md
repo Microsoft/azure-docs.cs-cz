@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity Platform Python daemon | Azure
-description: Zjistěte, jak může proces Pythonu získat přístupový token a volat rozhraní API chráněné koncovým bodem Microsoft Identity Platform pomocí vlastní identity aplikace.
+title: 'Rychlý Start: volání Microsoft Graph z démona Pythonu | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak může proces Pythonu získat přístupový token a volat rozhraní API chráněné koncovým bodem Microsoft Identity Platform, pomocí vlastní identity aplikace.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257737"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -25,7 +26,7 @@ V tomto rychlém startu napište aplikaci v Pythonu, která získá token přís
 > [!div renderon="docs"]
 > ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 
@@ -224,18 +225,3 @@ Další informace o aplikacích démona najdete na cílové stránce scénáře.
 
 > [!div class="nextstepaction"]
 > [Aplikace démona, která volá webová rozhraní API](scenario-daemon-overview.md)
-
-Kurz pro aplikace démona najdete v těchto tématech:
-
-> [!div class="nextstepaction"]
-> [Kurz pro konzolu Pythonu pro démony](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-Další informace o oprávněních a souhlasu:
-
-> [!div class="nextstepaction"]
-> [Oprávnění a souhlas](v2-permissions-and-consent.md)
-
-Další informace o toku ověřování pro tento scénář najdete v tématu tok přihlašovacích údajů klienta OAuth 2,0:
-
-> [!div class="nextstepaction"]
-> [Tok OAuth přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md)

@@ -1,11 +1,11 @@
 - name: Azure
-  tocHref: /DocsLegal/
+  tocHref: /legal/
   topicHref: /azure/index
   items:
     - name: Počítačové zpracování obrazu
-      tocHref: /DocsLegal/computer-vision
+      tocHref: /legal/computer-vision
       topicHref: /azure/cognitive-services/Computer-vision/index
       items:
         - name: Prostorová analýza počítačového zpracování obrazu
-          tocHref: /DocsLegal/cognitive-services/computer-vision/
+          tocHref: /legal/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/Computer-vision/index

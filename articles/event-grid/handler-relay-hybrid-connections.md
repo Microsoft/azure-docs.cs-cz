@@ -3,12 +3,12 @@ title: Přenos hybridního připojení jako obslužné rutiny události pro Azur
 description: Popisuje, jak můžete použít Azure Relay Hybrid Connections jako obslužné rutiny událostí pro Azure Event Grid události.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 38233a2e103600f07837ce9a1ad8d63fe7e4fb99
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3807e2d125d652b8f5ed7c9dec1b972d69f699f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270198"
 ---
 # <a name="relay-hybrid-connection-as-an-event-handler-for-azure-event-grid-events"></a>Přenos hybridního připojení jako obslužné rutiny události pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede několik dalších akcí zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovával události a **Azure Relay** je jednou z nich. 
@@ -40,6 +40,9 @@ V následujícím kurzu najdete příklad použití hybridního připojení Azur
     }
 }
 ```
+
+> [!NOTE]
+> Doručování událostí do Azure Relay hybridního připojení v **jiném tenantovi** se nepodporuje. 
 
 ## <a name="next-steps"></a>Další kroky
 Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) . 

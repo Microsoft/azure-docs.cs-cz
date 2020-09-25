@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170050"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259064"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Integrace aplikace Twilio Verify s Azure Active Directory B2C
 
@@ -34,8 +34,8 @@ Abyste mohli začít, budete potřebovat:
 
 Řešení Twilio tvoří následující komponenty:
 
-- Ukázková webová aplikace .NET PSD2, která poskytuje možnost přihlásit se nebo zaregistrovat a provést fiktivní vysoce rizikové transakce.
-- Azure AD B2C kombinované přihlášení a zásady registrace.
+- [Ukázková webová aplikace .NET PSD2](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App), která poskytuje možnost přihlásit se nebo zaregistrovat a provést fiktivní vysoce rizikové transakce.
+- Azure AD B2C kombinované [přihlášení a zásady registrace](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy).
 - Zásada Azure AD B2C integrovaná s Twilio ověřuje rozhraní API pomocí `id_token_hint` .
 - Webová aplikace .NET, která hostuje `.well-known` koncový bod OpenIdConnect, aby povolovala ověřování `id_token_hint` .
 
@@ -73,7 +73,7 @@ Abyste mohli začít, budete potřebovat:
    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
    ```
 
-2. Webová aplikace taky hostuje generátor pomocného tokenu ID a koncový bod metadat.
+2. [Webová aplikace](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App) taky hostuje generátor pomocného tokenu ID a koncový bod metadat.
    - Vytvořte podpisový certifikát, jak je popsáno v tomto [ukázkovém popisu](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate).
    - Aktualizujte následující řádky na základě vašeho certifikátu v web.config:
    
@@ -86,7 +86,7 @@ Abyste mohli začít, budete potřebovat:
 
 4. Aktualizujte svou registraci aplikace Azure AD B2C přidáním adresy URL odpovědi, která odpovídá adrese URL, na které je aplikace hostovaná.
 
-5. Otevřete soubory zásad a nahraďte všechny výskyty  `contoso` názvem vašeho tenanta.
+5. Otevřete [soubory zásad](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy) a nahraďte všechny výskyty  `contoso` názvem vašeho tenanta.
 
 6. Vyhledejte Twilio REST API Technical Profile **Custom – SMS – zapsat**. Aktualizujte  `ServiceURL`   ho pomocí Twilio AccountSID a číslo od do zakoupeného telefonního čísla.
 

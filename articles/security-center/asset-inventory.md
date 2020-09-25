@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e62973c83db90df2857186fe6a556278a3c41a7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302039"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků a nástrojů pro správu.
 
@@ -54,7 +54,7 @@ Na stránce inventarizace najdete následující nástroje:
 - **Souhrny** – před definováním filtrů se v horní části zobrazení inventáře zobrazí výrazný pruh hodnot:
 
     - **Celkem prostředků**: celkový počet prostředků, které jsou připojené k Security Center.
-    - **Chybné prostředky**: prostředky s aktivními bezpečnostními doporučeními. [Přečtěte si další informace o doporučeních zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+    - **Chybné prostředky**: prostředky s aktivními bezpečnostními doporučeními. [Přečtěte si další informace o doporučeních zabezpečení](security-center-recommendations.md).
     - **Nemonitorované prostředky**: prostředky s problémy monitorování agenta – mají nasazeného agenta Log Analytics, ale agent neodesílá data nebo má jiné problémy se stavem.
 
 - **Filtry** – více filtrů v horní části stránky nabízí způsob, jak rychle Upřesnit seznam prostředků podle otázky, na kterou se snažíte odpovědět. Pokud byste například chtěli odpovědět na dotaz, který má ve *svém počítači označení "produkční", chybí agent Log Analytics?* můžete zkombinovat filtr **monitorování agenta** s filtrem **značek** , jak je znázorněno v následujícím klipu:

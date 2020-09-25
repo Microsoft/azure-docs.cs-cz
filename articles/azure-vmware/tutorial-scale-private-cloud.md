@@ -1,20 +1,18 @@
 ---
-title: 'Kurz: škálování privátního cloudu'
-description: V tomto kurzu použijete Azure Portal ke škálování privátního cloudu řešení Azure VMware ve verzi Preview.
+title: Kurz – škálování privátního cloudu
+description: V tomto kurzu použijete Azure Portal ke škálování privátního cloudu řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: dddfbddd57f3ad6b541d11c360aeadea4383044a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: e1226eb98607a34869bda1f998c7cecea2e50919
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750430"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254410"
 ---
-# <a name="tutorial-scale-an-azure-vmware-solution-preview-private-cloud"></a>Kurz: škálování privátního cloudu řešení Azure VMware Preview
+# <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Kurz: škálování privátního cloudu řešení Azure VMware
 
-Abyste mohli využít Azure VMware ve verzi Preview cloudového prostředí ve verzi Preview, můžete škálovat clustery a hostitele tak, aby odrážely to, co potřebujete pro plánované úlohy. Vzhledem k tomu, že řešení Azure VMware v rámci verze Preview nepodporuje vaše místní vCenter, budete muset použít, co jste už vytvořili prostřednictvím Azure Portal.
-
-Počet clusterů a počet hostitelů v privátním cloudu můžete škálovat podle potřeby pro zatížení vaší aplikace. Omezení výkonu a dostupnosti pro konkrétní služby se musí řešit na základě případu v cloudovém prostředí Azure VMware Preview. Omezení clusteru a hostitele v privátním cloudu jsou uvedená v [článku konceptu privátního cloudu](concepts-private-clouds-clusters.md).
+Aby bylo možné využít privátní cloudové prostředí Azure VMware, škálovat clustery a hostitele tak, aby odrážely to, co potřebujete pro plánované úlohy. Počet clusterů a počet hostitelů v privátním cloudu můžete škálovat podle potřeby pro zatížení vaší aplikace. Omezení výkonu a dostupnosti pro konkrétní služby se musí řešit na základě případu v rámci vašeho privátního cloudového prostředí řešení Azure VMware. Omezení clusteru a hostitele jsou uvedená v článku [konceptu privátního cloudu](concepts-private-clouds-clusters.md) .
 
 V tomto kurzu použijete Azure Portal k těmto akcím:
 
@@ -22,9 +20,9 @@ V tomto kurzu použijete Azure Portal k těmto akcím:
 > * Přidání clusteru do existujícího privátního cloudu
 > * Přidání hostitelů do existujícího clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete privátní cloud. Pokud jste ještě nevytvořili privátní cloud, můžete pomocí [kurzu Vytvoření privátního cloudu](tutorial-create-private-cloud.md) vytvořit privátní cloud a nakonfigurovat síť pro privátní cloud VMware v Azure, aby se nastavila požadovaná virtuální síť.
+K dokončení tohoto kurzu potřebujete privátní cloud. Pokud jste ještě privátní cloud nevytvořili, vytvořte si ho pomocí [kurzu Vytvoření privátního cloudu](tutorial-create-private-cloud.md) a nakonfigurujte v Azure sítě pro privátní cloud VMware a nastavte požadovanou virtuální síť.
 
 ## <a name="add-a-new-cluster"></a>Přidat nový cluster
 

@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e72875135243733a6acf03bb3aa6fb9405392d9d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a7fb97f1036515f82fa3e61c18f95eadf0af704d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301699"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Seznámení s Azure Defenderem pro Kubernetes
 
@@ -44,14 +44,14 @@ Security Center poskytuje ochranu před hrozbami na různých úrovních:
 
 - **Úroveň hostitele (poskytovaná pomocí Azure Defenderu pro servery)** – pomocí stejného log Analyticsho agenta, který Security Center používá na jiných virtuálních počítačích, Azure Defender monitoruje své uzly Linux AKS na podezřelé aktivity, jako je detekce webového prostředí a připojení se známými podezřelými IP adresami. Agent také monitoruje analýzy specifické pro kontejner, jako je například vytvoření privilegovaného kontejneru, podezřelý přístup k serverům rozhraní API a servery Secure Shell (SSH) běžící uvnitř kontejneru Docker.
 
-    Seznam výstrah na úrovni hostitele AKS najdete v [referenční tabulce výstrah](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost).
+    Seznam výstrah na úrovni hostitele AKS najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-containerhost).
 
     >[!IMPORTANT]
     > Pokud se rozhodnete neinstalovat agenty na hostitele, obdržíte pouze podmnožinu výhod ochrany před hrozbami a výstrahy zabezpečení. Pořád budete dostávat výstrahy týkající se analýzy sítě a komunikace se škodlivými servery.
 
 - **Úroveň clusteru AKS (poskytovaná službou Azure Defender pro Kubernetes)** – na úrovni clusteru je ochrana před hrozbami založená na analýze protokolů auditu Kubernetes. Pokud chcete povolit toto monitorování bez **agentů** , povolte Azure Defender. Pokud chcete na této úrovni generovat výstrahy, Security Center monitorovat služby spravované AKS pomocí protokolů načtených pomocí AKS. Mezi příklady událostí na této úrovni patří exponované řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a vytváření citlivých připojení.
 
-    Seznam výstrah na úrovni clusteru AKS najdete v [referenční tabulce výstrah](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster).
+    Seznam výstrah na úrovni clusteru AKS najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-akscluster).
 
     >[!NOTE]
     > Security Center vygeneruje výstrahy zabezpečení pro akce a nasazení služby Azure Kubernetes, ke kterým dochází po povolení možnosti Kubernetes v nastaveních předplatného. 

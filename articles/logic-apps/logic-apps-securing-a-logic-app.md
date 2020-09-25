@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 75c434b5c1927251940a691a16069425b4cc88a3
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/19/2020
+ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269161"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -75,6 +75,8 @@ Každá adresa URL obsahuje `sp` `sv` parametr dotazu, a, `sig` jak je popsáno 
 | `sig` | Určuje podpis, který se má použít pro ověřování přístupu k triggeru. Tento podpis se vygeneruje pomocí algoritmu SHA256 s tajným přístupovým klíčem na všech cestách a vlastnostech adresy URL. Tento klíč zůstane zašifrovaný a uložený v aplikaci logiky, který není přístupný nebo publikovaný. Vaše aplikace logiky autorizuje jenom ty triggery, které obsahují platný podpis vytvořený s tajným klíčem. |
 |||
 
+Příchozí volání koncového bodu požadavku můžou použít jenom jedno schéma autorizace, buď SAS, nebo [Azure Active Directory otevřít ověřování](#enable-oauth). I když použití jednoho schématu nezakáže jiné schéma, při použití obou schémat zároveň dojde k chybě, protože služba neví, které schéma zvolit.
+
 Další informace o zabezpečení přístupu pomocí SAS najdete v těchto oddílech v tomto tématu:
 
 * [Znovu vygenerovat přístupové klíče](#access-keys)
@@ -121,62 +123,62 @@ V těle zahrňte `KeyType` vlastnost buď `Primary` nebo `Secondary` . Tato vlas
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Povolit Azure Active Directory Open Authentication (Azure AD OAuth)
 
-Pokud vaše aplikace logiky začíná [triggerem žádosti](../connectors/connectors-native-reqres.md), můžete povolit [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml) tak, že definujete nebo přidáte zásady autorizace pro příchozí volání do triggeru žádosti.
+Pro příchozí volání koncového bodu vytvořeného triggerem na základě požadavků můžete povolit [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) tak, že definujete nebo přidáte zásady autorizace pro vaši aplikaci logiky. Tímto způsobem příchozí volání využívají [přístupové tokeny](../active-directory/develop/access-tokens.md) OAuth pro autorizaci.
 
-Než povolíte toto ověřování, přečtěte si tyto požadavky:
+Když aplikace logiky obdrží příchozí požadavek, který obsahuje přístupový token OAuth, služba Azure Logic Apps porovnává deklarace identity tokenů s deklaracemi, které jsou zadané jednotlivými zásadami autorizace. Pokud existuje shoda mezi deklaracemi tokenu a všemi deklaracemi v alespoň jedné zásadě, autorizace pro příchozí požadavek bude úspěšná. Token může mít více deklarací identity než číslo zadané v zásadách autorizace.
 
-* Příchozí volání triggeru požadavku může používat pouze jedno schéma autorizace, buď Azure AD OAuth pomocí ověřovacího tokenu, který je podporován pouze pro aktivační událost požadavku, nebo pomocí [adresy URL sdíleného přístupového podpisu (SAS)](#sas) , nelze použít oba systémy.
+Než povolíte službu OAuth pro Azure AD, přečtěte si tyto požadavky:
 
-  I když použití jednoho schématu nezakáže jiné schéma, při použití obou schémat zároveň dojde k chybě, protože služba neví, které schéma zvolit. Ověřovací tokeny OAuth podporují taky jenom schémata autorizace [typu nosiče](../active-directory/develop/active-directory-v2-protocols.md#tokens) , která jsou podporovaná jenom pro aktivační událost žádosti. Ověřovací token musí být uveden `Bearer-type` v autorizační hlavičce.
+* Příchozí volání koncového bodu může používat jenom jedno schéma autorizace, buď Azure AD OAuth, nebo [sdílený přístupový podpis (SAS)](#sas). I když použití jednoho schématu nezakáže jiné schéma, při použití obou schémat zároveň dojde k chybě, protože služba Logic Apps neví, jaké schéma zvolit.
+
+* Pro přístupové tokeny Azure AD OAuth se podporují jenom schémata autorizace [typu nosiče](../active-directory/develop/active-directory-v2-protocols.md#tokens) , což znamená, že `Authorization` Hlavička pro přístupový token musí určovat `Bearer` typ.
 
 * Aplikace logiky je omezená na maximální počet zásad autorizace. Každá zásada autorizace má také maximální počet [deklarací identity](../active-directory/develop/developer-glossary.md#claim). Další informace najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
 
-* Zásady autorizace musí zahrnovat aspoň deklaraci identity **vystavitele** , která má hodnotu začínající `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` (OAuth v2) jako ID vystavitele Azure AD. Další informace o přístupových tokenech najdete v tématu [Microsoft Identity Platform Access tokens](../active-directory/develop/access-tokens.md).
+* Zásady autorizace musí zahrnovat aspoň deklaraci identity **vystavitele** , která má hodnotu začínající buď `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` (OAuth v2) jako ID vystavitele Azure AD.
 
-Když aplikace logiky obdrží příchozí požadavek, který obsahuje ověřovací token OAuth, Azure Logic Apps porovnává deklarace identity tokenu s deklaracemi v každé zásadě autorizace. Pokud existuje shoda mezi deklaracemi tokenu a všemi deklaracemi v alespoň jedné zásadě, autorizace pro příchozí požadavek bude úspěšná. Token může mít více deklarací identity než číslo zadané v zásadách autorizace.
+  Předpokládejme například, že vaše aplikace logiky má zásady autorizace, které vyžadují dva typy deklarací identity, **cílovou skupinu** a **Vystavitel**. Tento vzorový [oddíl](../active-directory/develop/access-tokens.md#payload-claims) pro dekódování přístupového tokenu obsahuje oba typy deklarací, kde `aud` je hodnota **cílové skupiny** a `iss` je hodnotou **vystavitele** :
 
-Předpokládejme například, že vaše aplikace logiky má zásady autorizace, které vyžadují dva typy deklarací identity, **Vystavitel** a **cílovou skupinu**. Tento ukázkový dekódování [přístupového tokenu](../active-directory/develop/access-tokens.md) zahrnuje tyto typy deklarací identity:
-
-```json
-{
-   "aud": "https://management.core.windows.net/",
-   "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
-   "iat": 1582056988,
-   "nbf": 1582056988,
-   "exp": 1582060888,
-   "_claim_names": {
-      "groups": "src1"
-   },
-   "_claim_sources": {
-      "src1": {
-         "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
-    }
-   },
-   "acr": "1",
-   "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
-   "amr": [
-      "rsa",
-      "mfa"
-   ],
-   "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
-   "appidacr": "2",
-   "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
-   "family_name": "Sophia Owen",
-   "given_name": "Sophia Owen (Fabrikam)",
-   "ipaddr": "167.220.2.46",
-   "name": "sophiaowen",
-   "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
-   "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
-   "puid": "1003000000098FE48CE",
-   "scp": "user_impersonation",
-   "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
-   "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "unique_name": "SophiaOwen@fabrikam.com",
-   "upn": "SophiaOwen@fabrikam.com",
-   "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
-   "ver": "1.0"
-}
-```
+  ```json
+  {
+      "aud": "https://management.core.windows.net/",
+      "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
+      "iat": 1582056988,
+      "nbf": 1582056988,
+      "exp": 1582060888,
+      "_claim_names": {
+         "groups": "src1"
+      },
+      "_claim_sources": {
+         "src1": {
+            "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
+         }
+      },
+      "acr": "1",
+      "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
+      "amr": [
+         "rsa",
+         "mfa"
+      ],
+      "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
+      "appidacr": "2",
+      "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
+      "family_name": "Sophia Owen",
+      "given_name": "Sophia Owen (Fabrikam)",
+      "ipaddr": "167.220.2.46",
+      "name": "sophiaowen",
+      "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
+      "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
+      "puid": "1003000000098FE48CE",
+      "scp": "user_impersonation",
+      "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
+      "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "unique_name": "SophiaOwen@fabrikam.com",
+      "upn": "SophiaOwen@fabrikam.com",
+      "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
+      "ver": "1.0"
+   }
+   ```
 
 <a name="define-authorization-policy-portal"></a>
 
@@ -190,14 +192,14 @@ Pokud chcete povolit službu Azure AD OAuth pro vaši aplikaci logiky v Azure Po
 
    ![Vyberte Authorization > přidat zásadu.](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
 
-1. Zadejte informace o zásadách autorizace zadáním typů a hodnot [deklarací identity](../active-directory/develop/developer-glossary.md#claim) , které vaše aplikace logiky očekává v ověřovacím tokenu, který prezentuje každé příchozí volání triggeru požadavku:
+1. Zadejte informace o zásadách autorizace zadáním typů a hodnot [deklarací identity](../active-directory/develop/developer-glossary.md#claim) , které vaše aplikace logiky očekává v přístupovém tokenu, který prezentuje každé příchozí volání triggeru požadavku:
 
    ![Zadání informací pro zásady autorizace](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
    | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Název zásady** | Yes | Název, který chcete použít pro zásady autorizace |
-   | **Žádosti** | Yes | Typy a hodnoty deklarací, které vaše aplikace logiky přijímá při příchozích voláních. Tady jsou dostupné typy deklarací identity: <p><p>- **Stavil** <br>- **Osoby** <br>- **Závislosti** <br>- **ID JWT** (ID JSON web token) <p><p>Minimální seznam **deklarací identity** musí zahrnovat deklaraci identity **vystavitele** , která má hodnotu začínající `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity. |
+   | **Žádosti** | Yes | Typy a hodnoty deklarací, které vaše aplikace logiky přijímá při příchozích voláních. Tady jsou dostupné typy deklarací identity: <p><p>- **Stavil** <br>- **Osoby** <br>- **Závislosti** <br>- **ID JWT** (ID JSON web token) <p><p>Seznam **deklarací** musí obsahovat minimálně deklaraci identity **vystavitele** , která má hodnotu začínající `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity. |
    |||
 
 1. Pokud chcete přidat další deklaraci identity, vyberte si z těchto možností:
@@ -210,14 +212,27 @@ Pokud chcete povolit službu Azure AD OAuth pro vaši aplikaci logiky v Azure Po
 
 1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
+1. Chcete-li zahrnout `Authorization` hlavičku z přístupového tokenu v výstupech triggerů na základě požadavků, přečtěte si část [zahrnutí "autorizace" v výstupech triggeru žádosti](#include-auth-header).
+
 <a name="define-authorization-policy-template"></a>
 
 #### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Definování zásad autorizace v šabloně Azure Resource Manager
 
-Pokud chcete povolit službu Azure AD OAuth v šabloně ARM pro nasazení aplikace logiky, v `properties` části pro [definici prostředků vaší aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)přidejte `accessControl` objekt, pokud žádný neexistuje, který obsahuje `triggers` objekt. V `triggers` objektu přidejte `openAuthenticationPolicies` objekt, kde definujete jednu nebo více autorizačních zásad, pomocí této syntaxe:
+Pokud chcete povolit službu Azure AD OAuth v šabloně ARM pro nasazení aplikace logiky, použijte následující postup a následující syntaxi:
 
-> [!NOTE]
-> Minimální `claims` hodnota pole musí zahrnovat `iss` deklaraci identity, která má hodnotu, která začíná `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity.
+1. V `properties` části pro [definici prostředků vaší aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)přidejte `accessControl` objekt, pokud žádný neexistuje, který obsahuje `triggers` objekt.
+
+   Další informace o objektu najdete v `accessControl` tématu věnovaném [omezení rozsahů příchozích IP adres v šablonách Azure Resource Manager](#restrict-inbound-ip-template) a [odkazech na šablonu Microsoft. Logic](/azure/templates/microsoft.logic/2019-05-01/workflows).
+
+1. Do `triggers` objektu přidejte `openAuthenticationPolicies` objekt, který obsahuje `policies` objekt, ve kterém definujete jednu nebo více zásad autorizace.
+
+1. Zadejte název zásady autorizace, nastavte typ zásady na `AAD` a přidejte `claims` pole, ve kterém zadáte jeden nebo více typů deklarací identity.
+
+   `claims`Pole musí obsahovat minimálně typ deklarace vystavitele, u kterého nastavíte `name` vlastnost deklarace na `iss` a nastavíte, aby byla `value` začínat `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity.
+
+1. Chcete-li zahrnout `Authorization` hlavičku z přístupového tokenu v výstupech triggerů na základě požadavků, přečtěte si část [zahrnutí "autorizace" v výstupech triggeru žádosti](#include-auth-header).
+
+Tady je syntaxe, která se má provést:
 
 ```json
 "resources": [
@@ -256,7 +271,30 @@ Pokud chcete povolit službu Azure AD OAuth v šabloně ARM pro nasazení aplika
 ],
 ```
 
-Další informace o této `accessControl` části najdete v tématu věnovaném [omezení rozsahů příchozích IP adres v šablonách Azure Resource Manager](#restrict-inbound-ip-template) a [odkazech na šablonu Microsoft. Logic](/azure/templates/microsoft.logic/2019-05-01/workflows).
+<a name="include-auth-header"></a>
+
+#### <a name="include-authorization-header-in-request-trigger-outputs"></a>Zahrnout do výstupů triggerů žádosti hlavičku Authorization
+
+Pro Logic Apps, které [umožňují Azure Active Directory Open Authentication (Azure AD OAuth)](#enable-oauth) pro autorizaci příchozích volání s přístupem k aktivačním událostem založeným na žádostech, můžete povolit aktivační události triggeru požadavku nebo aktivační události Webhooku protokolu HTTP, které budou zahrnovat `Authorization` hlavičku z přístupového tokenu OAuth. V základní definici JSON triggeru přidejte a nastavte `operationOptions` vlastnost na `IncludeAuthorizationHeadersInOutputs` . Tady je příklad triggeru žádosti:
+
+```json
+"triggers": {
+   "manual": {
+      "inputs": {
+         "schema": {}
+      },
+      "kind": "Http",
+      "type": "Request",
+      "operationOptions": "IncludeAuthorizationHeadersInOutputs"
+   }
+}
+```
+
+Další informace najdete v těchto tématech:
+
+* [Referenční dokumentace schématu pro aktivační události a typy akcí – Trigger žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)
+* [Referenční dokumentace schématu pro typy triggerů a akcí – Trigger Webhooku protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Referenční dokumentace schématu pro triggery a typy akcí – možnosti operací](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
 <a name="azure-api-management"></a>
 
@@ -825,7 +863,7 @@ Pokud je k dispozici možnost [základní](../active-directory-b2c/secure-rest-a
 
 | Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Authentication** | `type` | Yes | Basic | Typ ověřování, který se má použít |
+| **Authentication** | `type` | Yes | Základní | Typ ověřování, který se má použít |
 | **Uživatelské jméno** | `username` | Yes | <*uživatelské jméno*>| Uživatelské jméno pro ověřování přístupu k cílovému koncovému bodu služby |
 | **Heslo** | `password` | Yes | <*zadáno*> | Heslo pro ověřování přístupu k cílovému koncovému bodu služby |
 ||||||
@@ -896,12 +934,12 @@ Na triggerech žádosti můžete pomocí [Azure Active Directory otevřít ově�
 | Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Yes | **Protokol OAuth pro Active Directory** <br>nebo <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
-| **Autorita** | `authority` | No | <*Adresa URL pro vystavitele tokenu pro-Authority*> | Adresa URL pro autoritu, která poskytuje ověřovací token. Ve výchozím nastavení je tato hodnota `https://login.windows.net` . |
+| **Autorita** | `authority` | No | <*Adresa URL pro vystavitele tokenu pro-Authority*> | Adresa URL pro autoritu, která poskytuje přístupový token. Ve výchozím nastavení je tato hodnota `https://login.windows.net` . |
 | **Tenant** | `tenant` | Yes | <*ID tenanta*> | ID tenanta pro tenanta Azure AD |
 | **Cílová skupina** | `audience` | Yes | <*prostředek k autorizaci*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
 | **ID klienta** | `clientId` | Yes | <*ID klienta*> | ID klienta pro aplikaci požadující autorizaci |
 | **Typ přihlašovacích údajů** | `credentialType` | Yes | Certifikát <br>nebo <br>Tajný kód | Typ přihlašovacích údajů, který klient používá k vyžádání autorizace. Tato vlastnost a hodnota se nezobrazí v základní definici vaší aplikace logiky, ale určuje vlastnosti, které se zobrazí pro vybraný typ přihlašovacích údajů. |
-| **Otázku** | `secret` | Ano, ale jenom pro typ přihlašovacích údajů tajného klíče | <*tajný kód klienta*> | Tajný klíč klienta pro vyžádání autorizace |
+| **Tajný kód** | `secret` | Ano, ale jenom pro typ přihlašovacích údajů tajného klíče | <*tajný kód klienta*> | Tajný klíč klienta pro vyžádání autorizace |
 | **PFX** | `pfx` | Ano, ale pouze pro typ přihlašovacích údajů certifikát | <*Encoded – obsah-souboru PFX*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) |
 | **Heslo** | `password` | Ano, ale pouze pro typ přihlašovacích údajů certifikát | <*heslo-pro-PFX – soubor*> | Heslo pro přístup k souboru PFX |
 |||||

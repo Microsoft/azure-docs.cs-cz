@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/08/2020
+ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ad5c2ad76f9ab98a6ad284a0bb50f3a611dc9a00
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206030"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257669"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -51,16 +51,13 @@ V knihovnách MSAL se přihlašovací údaje klienta (tajný kód nebo certifik�
 
 Konfigurační soubor definuje:
 
-- Autorita nebo instance cloudu a ID tenanta.
+- Instance cloudu a ID tenanta, které dohromady tvoří *autoritu*.
 - ID klienta, které jste získali z registrace aplikace.
 - Buď tajný klíč klienta, nebo certifikát.
 
-> [!NOTE]
-> Fragmenty kódu .NET ve zbývající části článku referenční [Konfigurace](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) najdete v ukázce [Active-Directory-dotnetcore-démon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[appsettings.js](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) z ukázky [procesu démona konzoly .NET Core](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
+Tady je příklad definování konfigurace v [*appsettings.js*](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) souboru. Tento příklad pochází z ukázky kódu [démona konzoly .NET Core](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) na GitHubu.
 
 ```json
 {
@@ -124,9 +121,9 @@ Odkazování na balíček MSAL v kódu aplikace.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Přidejte do své aplikace balíček NuGet [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) .
+Přidejte do své aplikace balíček NuGet [Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client) a potom do `using` kódu přidejte direktivu, která na něj odkazuje.
+
 V MSAL.NET je aplikace důvěrného klienta reprezentovaná `IConfidentialClientApplication` rozhraním.
-Použijte obor názvů MSAL.NET ve zdrojovém kódu.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -167,6 +164,23 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
            .Build();
+```
+
+`Authority`Je zřetězení instance cloudu a ID klienta, například `https://login.microsoftonline.com/contoso.onmicrosoft.com` nebo `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` . V *appsettings.jsv* souboru, který je zobrazen v části [konfigurační soubor](#configuration-file) , jsou tyto hodnoty reprezentované `Instance` hodnotami a v `Tenant` uvedeném pořadí.
+
+V ukázce kódu, ze kterého byl předchozí fragment kódu získán, `Authority` je vlastnost třídy  [AuthenticationConfig](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/ffc4a9f5d9bdba5303e98a1af34232b434075ac7/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs#L61-L70) a je definována takto:
+
+```csharp
+/// <summary>
+/// URL of the authority
+/// </summary>
+public string Authority
+{
+    get
+    {
+        return String.Format(CultureInfo.InvariantCulture, Instance, Tenant);
+    }
+}
 ```
 
 # <a name="python"></a>[Python](#tab/python)

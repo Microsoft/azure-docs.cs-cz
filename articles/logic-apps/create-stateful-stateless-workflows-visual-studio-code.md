@@ -5,24 +5,24 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 94d970390f62107a82dc586605d34dd61cae0c26
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: abb6f8bcaa3b8e356bea00185702bc0ae783e071
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270228"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
 > [!IMPORTANT]
 > Tato funkce je ve verzi Public Preview, která se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-K vytváření pracovních postupů aplikací logiky, které se integrují napříč aplikacemi, daty, Cloud Services a systémy, můžete použít Visual Studio Code a rozšíření Azure Logic Apps (Preview) k sestavování a spouštění [ *stateful* pracovních a *stavových* pracovních postupů aplikací logiky](#stateful-stateless).
+K vytváření pracovních postupů aplikací logiky, které se integrují napříč aplikacemi, daty, Cloud Services a systémy, můžete použít Visual Studio Code a rozšíření Azure Logic Apps (Preview) k sestavování a místnímu spuštění stavových a místně spuštěných [ *stateful* pracovních postupů aplikací logiky *stateless* ](#stateful-stateless) ve vašem vývojovém prostředí.
 
 ![Snímek obrazovky zobrazující Visual Studio Code a pracovní postup aplikace logiky](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
 
-Aplikace logiky, které vytvoříte s rozšířením Public Preview, používají nový typ prostředku **Aplikace logiky (Preview)** a využívají modul runtime [Azure Functions](../azure-functions/functions-overview.md) . Tento nový typ prostředku může zahrnovat několik pracovních postupů a je podobný jako u **Function Appho** typu prostředku, který může zahrnovat víc funkcí.
+Aplikace logiky, které vytvoříte s rozšířením Public Preview, používají nový typ prostředku **Aplikace logiky (Preview)** a využívají modul runtime [Azure Functions](../azure-functions/functions-overview.md) v místním prostředí. Tento nový typ prostředku může zahrnovat několik pracovních postupů a je podobný jako u **Function Appho** typu prostředku, který může zahrnovat víc funkcí.
 
 Dále existuje původní typ prostředku **Logic Apps** pro vytvoření a použití v Visual Studio Code a Azure Portal. Prostředí pro původní typ prostředku se ale liší od nového typu prostředku. V současné době mohou současně existovat typy prostředků **Logic Apps** i **Logic App (Preview)** v Visual Studio Code a Azure Portal. Můžete zobrazit a přistupovat ke všem nasazeným Logic Apps v předplatném Azure, ale zobrazí se a uchovávají se samostatně ve vlastních kategoriích a oddílech.
 
@@ -34,6 +34,8 @@ Tento článek obsahuje podrobný [Přehled této veřejné verze Preview](#what
 
 * Postup sestavení nových pracovních postupů **Aplikace logiky (Preview)** [vytvořením projektu a výběrem šablony pracovního postupu](#create-project).
 
+* Jak místně spouštět a ladit nové Logic Apps v Visual Studio Code.
+
 * Jak publikovat tyto nové aplikace logiky přímo z Visual Studio Code [do Azure](#publish-azure) nebo [do kontejneru Docker](#deploy-docker) , který můžete spustit kdekoli. Další informace o Docker najdete v tématu [co je Docker](/dotnet/architecture/microservices/container-docker-introduction/docker-defined)?
 
 <a name="whats-new"></a>
@@ -42,14 +44,14 @@ Tento článek obsahuje podrobný [Přehled této veřejné verze Preview](#what
 
 Rozšíření Azure Logic Apps (Preview) přináší do místního prostředí pro vývoj v Visual Studio Code mnoho současných a dalších možností Logic Apps, například:
 
-* Sestavujte aplikace logiky pro integrační a automatizované pracovní postupy z [300 + konektorů](/connectors/connector-reference/connector-reference-logicapps-connectors) pro aplikace typu software jako služba (SaaS) a PaaS (Platform-as-a-Service) a konektory pro místní systémy.
+* Sestavujte aplikace logiky pro integrační a automatizované pracovní postupy z [390 + konektorů](/connectors/connector-reference/connector-reference-logicapps-connectors) pro aplikace typu software jako služba (SaaS) a PaaS (Platform-as-a-Service) plus konektory pro místní systémy.
 
   * Některé spravované konektory, jako je Azure Service Bus, Azure Event Hubs a SQL Server, se spouštějí podobně jako integrované nativní triggery a akce, jako je třeba akce HTTP.
 
   * Vytvářejte a nasaďte Logic Apps, které se dají spustit kdekoli, protože služba Azure Logic Apps generuje připojovací řetězce sdíleného přístupového podpisu (SAS), které tyto aplikace logiky můžou použít k odesílání požadavků do koncového bodu cloudového připojení. Služba Logic Apps ukládá tyto připojovací řetězce s dalšími nastaveními aplikace, takže tyto hodnoty můžete snadno uložit do Azure Key Vault při nasazení do Azure.
 
     > [!NOTE]
-    > Ve výchozím nastavení má prostředek **Aplikace logiky (Preview)** k ověřování připojení za běhu automaticky [přiřazenou identitu systému](../logic-apps/create-managed-service-identity.md) . Tato identita se liší od přihlašovacích údajů k ověřování nebo připojovacího řetězce, který používáte při vytváření připojení. Pokud tuto identitu zakážete, nebudou připojení fungovat za běhu.
+    > Ve výchozím nastavení má prostředek **Aplikace logiky (Preview)** k dispozici [spravovanou identitu přiřazenou systémem](../logic-apps/create-managed-service-identity.md) automaticky pro ověřování připojení za běhu. Tato identita se liší od přihlašovacích údajů k ověřování nebo připojovacího řetězce, který používáte při vytváření připojení. Pokud tuto identitu zakážete, nebudou připojení fungovat za běhu.
 
 * Vytvářejte bezstavové aplikace logiky, které běží jenom v paměti, takže rychleji dostanou rychlejší, mají vyšší propustnost a náklady méně, než se spustí, protože historie spuštění a data mezi akcemi nejsou v externím úložišti trvalé. Volitelně můžete povolit historii spuštění pro snazší ladění. Další informace najdete v tématu [stavová versus Bezstavová Logic aplikace](#stateful-stateless).
 
@@ -104,7 +106,7 @@ Další informace o cenových modelech, které se vztahují na tento nový typ p
 
   Pokud se rozhodnete použít jiný [e-mailový konektor, který podporuje Azure Logic Apps](/connectors/), jako je například Outlook.com nebo [Gmail](../connectors/connectors-google-data-security-privacy-policy.md), můžete postupovat dál a obecné kroky jsou stejné, ale vaše uživatelské rozhraní a možnosti se můžou v některých případech lišit. Pokud například použijete konektor Outlook.com, použijte místo toho osobní účet Microsoft k přihlášení.
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 * [Visual Studio Code 1.30.1 (leden 2019) nebo vyšší](https://code.visualstudio.com/), což je zdarma. Také si stáhněte a nainstalujte tyto další nástroje pro Visual Studio Code, pokud je ještě nemáte:
 
@@ -130,13 +132,13 @@ Další informace o cenových modelech, které se vztahují na tento nový typ p
     >
     > * Složka **Microsoft. Azure. Functions. ExtensionBundle. Workflows** , která obsahuje předchozí sady rozšíření a která se nachází podél cesty:
     >
-    >   * `C:\Users\<username>\AppData\Local\Temp\Functions\ExtensionBundles`
+    >   * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
     >
-    >   * `C:\Users\<username>.azure-functions-core-tools\Functions\ExtensionBundles`
+    >   * `C:\Users\{userName}.azure-functions-core-tools\Functions\ExtensionBundles`
     >
     > * Složka **Microsoft. Azure. Workflows. WebJobs. Extension** , což je mezipaměť [NuGet](/nuget/what-is-nuget) pro rozšíření Private Preview a je umístěná na této cestě:
     >
-    >   `C:\Users\<username>\.nuget\packages`
+    >   `C:\Users\{userName}\.nuget\packages`
 
     Chcete-li nainstalovat rozšíření **Azure Logic Apps (Preview)** , postupujte podle následujících kroků:
 
@@ -154,7 +156,7 @@ Další informace o cenových modelech, které se vztahují na tento nový typ p
 
 ### <a name="storage-requirements"></a>Požadavky na úložiště
 
-V současné době není vytváření nového prostředku **Aplikace logiky (Preview)** na Mac OS k dispozici. Pro Windows nebo jiný operační systém, jako je Linux, ale nastavte tento požadavek na úložiště.
+Vytvoření nového prostředku **Aplikace logiky (Preview)** v současné době není v MacOS k dispozici. Pro Windows nebo jiný operační systém, jako je Linux, ale nastavte tento požadavek na úložiště.
 
 1. Stáhněte a nainstalujte [emulátor Azure Storage 5,10](https://go.microsoft.com/fwlink/p/?linkid=717179).
 
@@ -223,9 +225,22 @@ V současné době není vytváření nového prostředku **Aplikace logiky (Pre
 
 ## <a name="create-a-local-project"></a>Vytvořit místní projekt
 
-Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste mohli spravovat a nasazovat aplikaci logiky z Visual Studio Code. Podkladový projekt je velmi podobný projektu Azure Functions, označovaný také jako projekt Function App.
+Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste mohli spravovat a nasazovat aplikaci logiky z Visual Studio Code. Podkladový projekt je podobný projektu Azure Functions, označovaný také jako projekt Function App. Tyto typy projektů jsou však oddělené od sebe navzájem, takže pracovní postupy a funkce logiky aplikace logiky nemohou existovat ve stejném projektu.
 
 1. V počítači vytvořte *prázdnou* místní složku, kterou chcete použít pro projekt, který později vytvoříte v Visual Studio Code.
+
+   Pokud máte nainstalovanou .NET Core SDK 5,0, vytvořte **global.jsv** souboru, který odkazuje na libovolný modul runtime .NET Core verze 3. x, který je pozdější než 3.1.201, například:
+
+   ```json
+   {
+      "sdk": {
+         "version": "3.1.8",
+         "rollForward": "disable"
+      }
+   }
+   ```
+
+   Později, po vytvoření projektu, ale před tím, než se pokusíte otevřít **workflow.js** v souboru v návrháři aplikace logiky, je nutné přidat tento **global.js** do kořenového umístění projektu do souboru.
 
 1. V Visual Studio Code zavřete všechny otevřené složky.
 
@@ -255,11 +270,16 @@ Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste m
 
    ![Snímek obrazovky, který zobrazuje okno Průzkumníka se složkou projektu, složkou pracovního postupu a souborem "workflow.jsna".](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
 
-V dalším kroku otevřete **workflow.js** v souboru v návrháři aplikace logiky.
+1. Pokud máte nainstalovanou .NET Core SDK 5,0 a vytvořili jste **global.jsv** souboru, který odkazuje na modul runtime .NET Core verze 3. x, který je pozdější než 3.1.201, musíte tento **global.js** do kořenového umístění projektu přidat z interního Visual Studio Code.
 
-### <a name="open-the-workflow-definition-file-in-logic-app-designer"></a>Otevření souboru definice pracovního postupu v návrháři aplikace logiky
+   > [!NOTE]
+   > Ujistěte se, že jste tento krok dokončili předtím, než se pokusíte otevřít **workflow.jsv** souboru, který obsahuje základní definici JSON vašeho pracovního postupu v návrháři aplikace logiky. V opačném případě se Návrhář neotevře.
 
-Než se pokusíte otevřít soubor definice pracovního postupu v návrháři, pokud Visual Studio Code běží v systému Windows nebo Linux, ujistěte se, že je spuštěný emulátor Azure Storage. Další informace najdete v části [požadavky](#prerequisites).
+<a name="open-workflow-definition-designer"></a>
+
+## <a name="open-the-workflow-definition-file-in-logic-app-designer"></a>Otevření souboru definice pracovního postupu v návrháři aplikace logiky
+
+1. Pokud je Visual Studio Code spuštěná v systému Windows nebo Linux, ujistěte se, že je spuštěný emulátor Azure Storage. Další informace najdete v části [požadavky](#prerequisites).
 
 1. Rozbalte složku projektu pro váš pracovní postup. Otevřete místní nabídku souboru **workflow.js** a v **Návrháři vyberte otevřít**.
 
@@ -278,8 +298,8 @@ Než se pokusíte otevřít soubor definice pracovního postupu v návrháři, p
    1. Zkontrolujte výstup a zkontrolujte, zda se zobrazí tato chybová zpráva:
 
       ```text
-      A host error has occurred during startup operation '<operation-ID>'.
-      System.Private.CoreLib: The file 'C:\Users\<your-username>\AppData\Local\Temp\Functions\
+      A host error has occurred during startup operation '{operationID}'.
+      System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
       ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.1\bin\
       DurableTask.AzureStorage.dll' already exists.
       Value cannot be null. (Parameter 'provider')
@@ -303,10 +323,10 @@ Než se pokusíte otevřít soubor definice pracovního postupu v návrháři, p
 
    ![Snímek obrazovky, který zobrazuje podokno Průzkumníka a název skupiny prostředků.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-name-for-resource-group.png)
 
-1. V seznamu umístění vyhledejte a vyberte oblast Azure, která se má použít k vytvoření skupiny prostředků a prostředků. Tento příklad používá **středozápadní USA**.
+1. V seznamu umístění vyhledejte a vyberte [podporovanou oblast Azure](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions) , která se má použít k vytvoření skupiny prostředků a prostředků. Tento příklad používá **středozápadní USA**.
 
-   > [!NOTE]
-   > V současné době nejsou podporovány všechny oblasti, i když jsou aktualizace probíhají. Další informace najdete na [stránce GitHub známé problémy s](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)rozšířením Preview.
+   > [!IMPORTANT]
+   > Ne všechny oblasti jsou momentálně podporované, ale aktualizace pro přidání dalších oblastí probíhají. Výběr nepodporované oblasti může mít za následek problémy, jako je vytváření připojení. V případě aktuálně podporovaných oblastí si Projděte [stránku GitHub se známými problémy s](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)rozšířením Preview.
 
    ![Snímek obrazovky, který zobrazuje podokno Průzkumník se seznamem umístění a vybraným "Středozápadní USA".](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-region.png)
 
@@ -374,6 +394,9 @@ Pracovní postup aplikace logiky v tomto příkladu používá tuto aktivační 
 
    ![Snímek obrazovky, který zobrazuje návrháře aplikace logiky a * * odeslat e-mail (v2) * * podokno s vybraným možnost přihlásit](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
 
+   > [!NOTE]
+   > Pokud se zobrazí chyba, `Failed to create connection...` Možná jste vybrali aktuálně nepodporovanou oblast pro vaši aplikaci logiky. Aktualizace pro přidání dalších oblastí probíhají. Zatím pro aktuálně podporované oblasti si Projděte [stránku GitHub se známými problémy s](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)rozšířením Preview.
+
 1. Když Visual Studio Code zobrazí výzvu k zadání souhlasu pro přístup k e-mailovému účtu, vyberte **otevřít**.
 
    ![Snímek obrazovky zobrazující Visual Studio Code výzvy k povolení přístupu](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-open-external-website.png)
@@ -392,6 +415,8 @@ Pracovní postup aplikace logiky v tomto příkladu používá tuto aktivační 
 
    > [!TIP]
    > Chcete-li zabránit budoucím výzvám, vyberte **pro toto rozšíření nedotazování znovu**.
+
+   Po Visual Studio Code vytvoří připojení některé konektory zobrazí zprávu s `The connection will be valid for {n} days only.` tímto časovým limitem, která se vztahuje pouze na dobu trvání při vytváření aplikace logiky v Visual Studio Code. Po nasazení už toto omezení neplatí, protože aplikace logiky se může ověřit za běhu pomocí své automaticky povolené [spravované identity přiřazené systémem](../logic-apps/create-managed-service-identity.md). Tato spravovaná identita se liší od přihlašovacích údajů k ověřování nebo připojovacího řetězce, který používáte při vytváření připojení. Pokud tuto spravovanou identitu přiřazenou systémem zakážete, nebudou připojení fungovat za běhu.
 
 1. Pokud se v Návrháři nezobrazí vybraná akce **Odeslat e-mail** , vyberte tuto akci.
 
@@ -551,7 +576,7 @@ Z Visual Studio Code můžete nasadit projekt přímo do Azure, který publikuje
 * [Horizontální navýšení kapacity v Azure App Service](../app-service/manage-scale-up.md)
 * [Hostování a škálování Azure Functions](../azure-functions/functions-scale.md)
 
-Aplikaci logiky můžete publikovat jako nový prostředek, který automaticky vytvoří další nezbytné prostředky, například [účet Azure Storage, podobně jako požadavky na aplikace funkcí](../azure-functions/storage-considerations.md). Nebo můžete aplikaci logiky publikovat do dříve nasazeného prostředku **Aplikace logiky (Preview)** , který proces nasazení přepíše v Azure.
+Aplikaci logiky můžete publikovat jako nový prostředek, který automaticky vytvoří další nezbytné prostředky, například [účet Azure Storage, podobně jako požadavky na aplikace funkcí](../azure-functions/storage-considerations.md). Nebo můžete aplikaci logiky publikovat do dříve nasazeného prostředku **Aplikace logiky (Preview)** , který přepíše tuto aplikaci logiky.
 
 ### <a name="publish-as-a-new-logic-app-preview-resource"></a>Publikování jako nového prostředku aplikace logiky (Preview)
 
@@ -573,7 +598,7 @@ Aplikaci logiky můžete publikovat jako nový prostředek, který automaticky v
 
 1. K vytvoření nového prostředku **Aplikace logiky (Preview)** použijte následující postup:
 
-   1. Zadejte globálně jedinečný název nové aplikace logiky, což je název, který se má použít pro prostředek **Aplikace logiky (Preview)** .
+   1. Zadejte globálně jedinečný název nové aplikace logiky, což je název, který se má použít pro prostředek **Aplikace logiky (Preview)** . Tento příklad používá `example-logic-app-preview` .
 
       ![Snímek obrazovky, který zobrazuje podokno "Azure: Logic Apps (Preview)" a výzvu k zadání názvu nové aplikace logiky, která se má vytvořit.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
@@ -639,21 +664,13 @@ Aplikaci logiky můžete publikovat jako nový prostředek, který automaticky v
 
    Blahopřejeme, vaše aplikace logiky je teď v Azure živá a ve výchozím nastavení povolená.
 
-Dále se naučíte, [Jak najít nasazenou aplikaci logiky v Azure Portal](#find-manage-deployed-workflows-portal) nebo [v Visual Studio Code](#find-manage-deployed-workflows-vs-code).
+V dalším kroku se dozvíte, jak provádět tyto úlohy:
 
-### <a name="enable-monitoring-for-deployed-logic-app-preview-resources"></a>Povolit monitorování nasazených prostředků aplikace logiky (Preview)
+* [Najděte nasazenou aplikaci logiky v Azure Portal](#find-manage-deployed-workflows-portal) nebo [v Visual Studio Code](#find-manage-deployed-workflows-vs-code).
 
-Pokud chcete povolit historii spuštění a monitorování nasazeného prostředku **Aplikace logiky (Preview)** , postupujte takto:
+* [Povolí historii spuštění v pracovních postupech aplikace logiky bez stavů](#run-history).
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte nasazený prostředek **Aplikace logiky (Preview)** .
-
-1. V nabídce tohoto prostředku v části **rozhraní API**vyberte **CORS**.
-
-1. V podokně **CORS** v části **Povolené zdroje**přidejte zástupný znak (*).
-
-1. Až budete hotovi, vyberte na panelu nástrojů **CORS** možnost **Uložit**.
-
-   ![Snímek obrazovky zobrazující Azure Portal s nasazeným prostředkem Logic Apps (Preview). V nabídce prostředek se vybere "CORS" s novou položkou "povolené zdroje" nastavenou na zástupný znak "*".](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+* [Povolí monitorování nasazeného prostředku **Aplikace logiky (Preview)** ](#enable-monitoring).
 
 <a name="find-manage-deployed-workflows-vs-code"></a>
 
@@ -669,7 +686,17 @@ V Visual Studio Code můžete zobrazit všechny nasazené aplikace logiky ve va�
 
    ![Snímek obrazovky, který zobrazuje Visual Studio Code s otevřeným podoknem rozšíření Azure Logic Apps (Preview) a nasazeným pracovním postupem.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
-1. Pokud chcete otevřít nasazenou aplikaci logiky v Azure Portal, v Visual Studio Code otevřete místní nabídku aplikace logiky a vyberte **otevřít na portálu**.
+1. Pokud chcete zobrazit všechny pracovní postupy v aplikaci logiky, rozbalte svou aplikaci logiky a potom rozbalte uzel **pracovní postupy** .
+
+1. Pokud chcete zobrazit konkrétní pracovní postup, otevřete místní nabídku pracovního postupu a vyberte **otevřít v Návrháři**, který otevře pracovní postup v režimu jen pro čtení.
+
+   Chcete-li upravit pracovní postup, máte tyto možnosti:
+
+   * V Visual Studio Code otevřete **workflow.js** projektu v souboru v návrháři aplikace logiky, proveďte úpravy a znovu nasaďte svoji aplikaci logiky do Azure.
+
+   * V Azure Portal [Najděte a otevřete aplikaci logiky](#find-manage-deployed-workflows-portal). Vyhledejte, upravte a uložte pracovní postup.
+
+1. Pokud chcete otevřít nasazenou aplikaci logiky v Azure Portal, otevřete místní nabídku aplikace logiky a vyberte **otevřít na portálu**.
 
    Azure Portal se otevře v prohlížeči, přihlásí se k portálu automaticky, pokud jste přihlášeni k Visual Studio Code a zobrazíte vaši aplikaci logiky.
 
@@ -742,6 +769,73 @@ Prostřednictvím Azure Portal můžete přidat prázdné pracovní postupy do p
 
    ![Snímek obrazovky zobrazující návrháře aplikace logiky a prázdný pracovní postup](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
 
+<a name="run-history"></a>
+
+## <a name="run-history-for-stateless-logic-app-workflows"></a>Historie spuštění pro bezstavové pracovní postupy aplikace logiky
+
+Chcete-li snadněji ladit pracovní postup aplikace s bezstavovou logikou, můžete pro tento pracovní postup povolit historii spuštění buď v Visual Studio Code, nebo v Azure Portal. po dokončení pak zakažte historii spuštění.
+
+### <a name="for-a-stateless-logic-app-workflow-in-visual-studio-code"></a>Pro nestavový pracovní postup aplikace logiky v Visual Studio Code
+
+Pokud pracujete se spuštěným pracovním postupem bezstavové aplikace logiky v Visual Studio Code, postupujte podle následujících kroků:
+
+1. V projektu vyhledejte a rozbalte složku **Workflow-DesignTime** . Vyhledejte a otevřete **local.settings.jsv** souboru.
+
+1. Přidejte `Workflows.{yourWorkflowName}.operationOptions` vlastnost a nastavte hodnotu na `WithStatelessRunHistory` , například:
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+         "Workflows.{yourWorkflowName}.OperationOptions": "WithStatelessRunHistory"
+      }
+   }
+   ```
+
+1. Pokud chcete zakázat historii spuštění po dokončení, buď odstraňte `Workflows.{yourWorkflowName}.OperationOptions` vlastnost a její hodnotu, nebo nastavte vlastnost na `None` .
+
+### <a name="for-a-stateless-logic-app-workflow-in-the-azure-portal"></a>Pro nestavový pracovní postup aplikace logiky v Azure Portal
+
+Pokud jste projekt již nasadili do Azure Portal, postupujte takto:
+
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete prostředek **Aplikace logiky (Preview)** .
+
+1. V nabídce aplikace logiky v části **Nastavení**vyberte **Konfigurace**.
+
+1. Na kartě **nastavení aplikace** vyberte možnost **nové nastavení aplikace**.
+
+1. V podokně **Přidat nebo upravit nastavení aplikace** v poli **název** zadejte název možnosti této operace: 
+
+   `Workflows.{yourWorkflowName}.OperationOptions`
+
+1. Do pole **hodnota** zadejte následující hodnotu: `WithStatelessRunHistory`
+
+   Příklad:
+
+   ![Snímek obrazovky, který zobrazuje prostředek Azure Portal a aplikace logiky (Preview) s názvem "konfigurace" > "nastavení nového aplikace" < otevře podokno přidat/upravit nastavení aplikace, a pracovní postupy. {yourWorkflowName}. Možnost OperationOptions je nastavena na hodnotu "WithStatelessRunHistory".](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
+
+1. Až to bude hotové, vyberte **OK**. V podokně **Konfigurace** vyberte **Uložit**.
+
+Pokud chcete povolit monitorování nasazeného prostředku aplikace logiky (Preview), pokračujte k další části.
+
+<a name="enable-monitoring"></a>
+
+## <a name="enable-monitoring-for-deployed-logic-app-preview-resources"></a>Povolit monitorování nasazených prostředků aplikace logiky (Preview)
+
+Pokud chcete povolit monitorování nasazeného prostředku **Aplikace logiky (Preview)** , postupujte následovně:
+
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte nasazený prostředek **Aplikace logiky (Preview)** .
+
+1. V nabídce tohoto prostředku v části **rozhraní API**vyberte **CORS**.
+
+1. V podokně **CORS** v části **Povolené zdroje**přidejte zástupný znak (*).
+
+1. Až budete hotovi, vyberte na panelu nástrojů **CORS** možnost **Uložit**.
+
+   ![Snímek obrazovky zobrazující Azure Portal s nasazeným prostředkem Logic Apps (Preview). V nabídce prostředek se vybere "CORS" s novou položkou "povolené zdroje" nastavenou na zástupný znak "*".](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+
 <a name="deploy-docker"></a>
 
 ## <a name="deploy-to-docker-container"></a>Nasadit do kontejneru Docker
@@ -769,9 +863,16 @@ Pomocí [nástroje rozhraní příkazového řádku (CLI) .NET Core](/dotnet/cor
 
    `docker build --tag local/workflowcontainer .`
 
-   Například tady je ukázkový soubor Docker pro pracovní postup .NET, ale nahraďte hodnotu <*řetězec úložiště-účet připojení*> hodnotou připojovacího řetězce vašeho účtu Azure Storage, který jste předtím uložili, což vypadá jako v tomto příkladu:
+   Tady je příklad ukázkového souboru Docker, který nasadí stavovou aplikaci logiky a určuje připojovací řetězec pro účet Azure Storage, který se použil k publikování aplikace logiky do Azure Portal. Pokud chcete najít a zkopírovat připojovací řetězec účtu úložiště v Azure Portal, přečtěte si téma [Správa klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys).
 
-   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageaccount;AccountKey=<access-key>;EndpointSuffix=core.windows.net`
+   ![Snímek obrazovky zobrazující Azure Portal s přístupovými klíči účtu úložiště a zkopírovaným připojovacím řetězcem](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
+
+   Připojovací řetězec vypadá podobně jako v této ukázce:
+
+   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageaccount;AccountKey={access-key};EndpointSuffix=core.windows.net`
+
+   Tady je formát souboru Docker:
+
 
    ```text
    FROM mcr.microsoft.com/azure-functions/dotnet:3.0.14492-appservice
@@ -786,6 +887,8 @@ Pomocí [nástroje rozhraní příkazového řádku (CLI) .NET Core](/dotnet/cor
    ```
 
    Další informace najdete v tématu [sestavení Docker](https://docs.docker.com/engine/reference/commandline/build/).
+
+1. Uložte řetězec někam do trezoru, abyste později mohli přidat řetězec do **local.settings.js** soubory v projektu, které používáte pro vytvoření aplikace logiky v Visual Studio Code.
 
 1. Spusťte kontejner místně pomocí tohoto příkazu:
 
@@ -810,55 +913,6 @@ Pomocí [nástroje rozhraní příkazového řádku (CLI) .NET Core](/dotnet/cor
      <...>
    }
    ```
-
-<a name="run-history"></a>
-
-## <a name="run-history-for-stateless-logic-app-workflows"></a>Historie spuštění pro bezstavové pracovní postupy aplikace logiky
-
-Chcete-li snadněji ladit pracovní postup aplikace s bezstavovou logikou, můžete povolit historii spuštění pro daný pracovní postup a po dokončení pak zakázat historii spuštění.
-
-### <a name="for-a-stateless-logic-app-workflow-in-visual-studio-code"></a>Pro nestavový pracovní postup aplikace logiky v Visual Studio Code
-
-Pokud pracujete se spuštěným pracovním postupem bezstavové aplikace logiky v Visual Studio Code, postupujte podle následujících kroků:
-
-1. V projektu vyhledejte a rozbalte složku **Workflow-DesignTime** . Vyhledejte a otevřete **local.settings.jsv** souboru.
-
-1. Přidejte `Workflow.<yourWorkflowName>.operationOptions` vlastnost a nastavte hodnotu na `WithStatelessRunHistory` , například:
-
-   ```json
-   {
-      "IsEncrypted": false,
-      "Values": {
-         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-         "Workflow.<yourWorkflowName>.OperationOptions": "WithStatelessRunHistory"
-      }
-   }
-   ```
-
-1. Pokud chcete zakázat historii spuštění po dokončení, buď odstraňte `Workflow.<yourWorkflowName>.OperationOptions` vlastnost a její hodnotu, nebo nastavte vlastnost na `None` .
-
-### <a name="for-a-stateless-logic-app-workflow-in-the-azure-portal"></a>Pro nestavový pracovní postup aplikace logiky v Azure Portal
-
-Pokud jste projekt již nasadili do Azure Portal, postupujte takto:
-
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete prostředek **Aplikace logiky (Preview)** .
-
-1. V nabídce aplikace logiky v části **Nastavení**vyberte **Konfigurace**.
-
-1. Na kartě **nastavení aplikace** vyberte možnost **nové nastavení aplikace**.
-
-1. V podokně **Přidat nebo upravit nastavení aplikace** v poli **název** zadejte název možnosti této operace: 
-
-   `Workflow.<yourWorkflowName>.OperationOptions`
-
-1. Do pole **hodnota** zadejte následující hodnotu: `WithStatelessRunHistory`
-
-   Příklad:
-
-   ![Snímek obrazovky, který zobrazuje prostředek Azure Portal a aplikace logiky (Preview) s názvem "konfigurace" > "nové nastavení aplikace" < "Přidat/upravit nastavení aplikace", a možnost "pracovní postup. <yourWorkflowName>OperationOptions" nastavená na hodnotu "WithStatelessRunHistory".](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
-
-1. Až to bude hotové, vyberte **OK**. V podokně **Konfigurace** vyberte **Uložit**.
 
 <a name="nested-behavior"></a>
 
@@ -886,7 +940,7 @@ Tato tabulka určuje chování podřízeného pracovního postupu na základě t
 
 | Nadřazený pracovní postup | Podřízený pracovní postup | Podřízené chování |
 |-----------------|----------------|----------------|
-| Stavové | Stavové | Asynchronní nebo synchronní s `operationOptions=DisableSynPattern` nastavením |
+| Stavové | Stavové | Asynchronní nebo synchronní s `"operationOptions": "DisableAsyncPattern"` nastavením |
 | Stavové | Bezstavová | Aktivovat a počkat |
 | Bezstavová | Stavové | Synchronní |
 | Bezstavová | Bezstavová | Aktivovat a počkat |
@@ -910,15 +964,13 @@ I když je mnoho [stávajících omezení pro Azure Logic Apps](../logic-apps/lo
 
 Pro tuto veřejnou verzi Preview nejsou tyto možnosti k dispozici nebo nejsou podporované:
 
-* Vytvoření nového prostředku **Aplikace logiky (Preview)** je momentálně v Mac OS nedostupné.
+* Vytvoření nového prostředku **Aplikace logiky (Preview)** není v současné době v MacOS k dispozici.
 
-* Vlastní konektory, triggery založené na webhookech a posuvná aktivační událost okna nejsou v této verzi Preview podporovaná.
+* Vlastní konektory, triggery založené na webhookech a posuvná aktivační událost okna nejsou v této verzi Preview podporovaná. Pro nestavové pracovní postupy aplikace logiky můžete přidat jenom akce pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), ne triggery. Pokud chcete spustit pracovní postup, použijte [integrovaný požadavek, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md#built-ins).
 
-* Pro nestavové pracovní postupy aplikace logiky můžete přidat jenom akce pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), ne triggery. Pokud chcete spustit pracovní postup, použijte [integrovaný požadavek, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md#built-ins).
+* Nový typ prostředku **Aplikace logiky (Preview)** můžete nasadit jenom do [plánu hostování Premium nebo App Service v Azure](#publish-azure) nebo do [kontejneru Docker](#deploy-docker), a ne do [prostředí ISEs (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Plány hostování **spotřeby** nejsou podporované ani nejsou k dispozici pro nasazení tohoto typu prostředku.
 
 * V Azure Portal nemůžete vytvářet nové aplikace logiky s novým typem prostředku **Aplikace logiky (Preview)** . Tyto aplikace logiky můžete vytvořit pouze v Visual Studio Code. Po nasazení Logic Apps s tímto typem prostředku z Visual Studio Code do Azure ale můžete [do těchto aplikací logiky přidávat nové pracovní postupy](#add-workflows).
-
-* Plány hostování **spotřeby** nejsou podporované pro nasazení aplikace logiky.
 
 ## <a name="next-steps"></a>Další kroky
 

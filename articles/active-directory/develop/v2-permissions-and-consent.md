@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5d1aa4ff87b272911e4e39076f337ea249b962d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256598"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
 
@@ -48,15 +48,15 @@ V případě OAuth 2,0 se tyto typy oprávnění nazývají *obory*. Jsou také 
 * Zápis do kalendáře uživatele pomocí `Calendars.ReadWrite`
 * Odeslat e-mail jako uživatel pomocí `Mail.Send`
 
-Aplikace tyto oprávnění nejčastěji vyžádá zadáním oborů v požadavcích na koncový bod autorizace platformy Microsoft Identity Platform. Určitá oprávnění s vysokou úrovní oprávnění je však možné udělit pouze prostřednictvím souhlasu správce a žádosti nebo uděleny pomocí [koncového bodu souhlasu správce](v2-permissions-and-consent.md#admin-restricted-permissions). Přečtěte si další informace.
+Aplikace tyto oprávnění nejčastěji vyžádá zadáním oborů v požadavcích na koncový bod autorizace platformy Microsoft Identity Platform. Určitá oprávnění s vysokou úrovní oprávnění je však možné udělit pouze prostřednictvím souhlasu správce a žádosti nebo uděleny pomocí [koncového bodu souhlasu správce](#admin-restricted-permissions). Přečtěte si další informace.
 
 ## <a name="permission-types"></a>Typy oprávnění
 
 Platforma Microsoft Identity Platform podporuje dva typy oprávnění: **delegovaná oprávnění** a **oprávnění aplikací**.
 
-* **Delegovaná oprávnění** se používají v aplikacích, které mají přihlášeného uživatele k dispozici. Pro tyto aplikace buď uživatel nebo správce souhlasí s oprávněními, která aplikace požaduje, a aplikace je delegovaná oprávnění, aby fungovala jako přihlášený uživatel při volání cílového prostředku. Některá delegovaná oprávnění mohou být odsouhlasena uživateli bez oprávnění správce, ale některá z vyšších privilegovaných oprávnění vyžadují [souhlas správce](v2-permissions-and-consent.md#admin-restricted-permissions). Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+* **Delegovaná oprávnění** se používají v aplikacích, které mají přihlášeného uživatele k dispozici. Pro tyto aplikace buď uživatel nebo správce souhlasí s oprávněními, která aplikace požaduje, a aplikace je delegovaná oprávnění, aby fungovala jako přihlášený uživatel při volání cílového prostředku. Některá delegovaná oprávnění mohou být odsouhlasena uživateli bez oprávnění správce, ale některá z vyšších privilegovaných oprávnění vyžadují [souhlas správce](#admin-restricted-permissions). Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
-* **Oprávnění aplikací** se používají v aplikacích, které se spouštějí bez přihlášeného uživatele. například aplikace, které běží jako služby nebo procesy na pozadí.  Oprávnění aplikace může pouze [zasílat správce](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
+* **Oprávnění aplikací** se používají v aplikacích, které se spouštějí bez přihlášeného uživatele. například aplikace, které běží jako služby nebo procesy na pozadí.  Oprávnění aplikace může pouze [zasílat správce](#requesting-consent-for-an-entire-tenant).
 
 _Skutečná oprávnění_ jsou oprávnění, která aplikace bude mít při provádění požadavků na cílový prostředek. Je důležité pochopit rozdíl mezi delegovanými a aplikačními oprávněními, ke kterým je vaše aplikace udělena, a jejím efektivním oprávněním při volání cílového prostředku.
 
@@ -302,6 +302,16 @@ response_type=token            //code or a hybrid flow is also possible here
 
 Tím vznikne obrazovka pro vyjádření souhlasu pro všechna registrovaná oprávnění (Pokud je k dispozici na základě výše uvedeného popisu souhlasu a `/.default` ), vrátí id_token místo přístupového tokenu.  Toto chování existuje u některých starších klientů, kteří přesunují z ADAL na MSAL a **neměly by** je používat noví klienti, kteří cílí na koncový bod Microsoft Identity Platform.
 
+### <a name="client-credentials-grant-flow-and-default"></a>Přihlašovací údaje klienta udělují tok a/.Default
+
+Další možností použití `./default` je při žádosti o oprávnění (nebo *rolích*) aplikace v neinteraktivní aplikaci, jako je například aplikace typu démon, která používá tok udělení [přihlašovacích údajů klienta](v2-oauth2-client-creds-grant-flow.md) k volání webového rozhraní API.
+
+Chcete-li vytvořit oprávnění aplikace (role) pro webové rozhraní API, přečtěte si téma [How to: Add App Roles in a Application](howto-add-app-roles-in-azure-ad-apps.md).
+
+Žádosti o přihlašovací údaje klienta v klientské aplikaci **musí** zahrnovat `scope={resource}/.default` , kde `{resource}` je webové rozhraní API, které vaše aplikace zamýšlí volat. Vydání žádosti o přihlašovací údaje klienta s individuálními oprávněními aplikace (role **) se nepodporuje** . Všechna oprávnění aplikace (role), která byla udělena pro toto webové rozhraní API, budou součástí vráceného přístupového tokenu.
+
+Pokud chcete udělit přístup k oprávněním aplikace, která definujete, včetně udělení souhlasu správce pro aplikaci, přečtěte si [rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API](quickstart-configure-app-access-web-apis.md).
+
 ### <a name="trailing-slash-and-default"></a>Koncové lomítko a/.Default
 
 Některé identifikátory URI prostředků mají koncové lomítko ( `https://contoso.com/` na rozdíl od `https://contoso.com` ), což může způsobit problémy s ověřováním tokenu.  K tomu může dojít hlavně při žádosti o token pro správu prostředků Azure ( `https://management.azure.com/` ), který má koncové lomítko na svůj identifikátor URI prostředku a vyžaduje, aby byl k dispozici při žádosti o token.  Proto se při požadavku na token pro `https://management.azure.com/` a použití `/.default` vyžaduje, abyste `https://management.azure.com//.default` poznamenali dvojité lomítko.
@@ -311,3 +321,8 @@ Obecně – Pokud jste ověřili, že se token vystavuje, a token se zamítl roz
 ## <a name="troubleshooting-permissions-and-consent"></a>Řešení potíží s oprávněními a souhlasem
 
 Pokud se vám nebo uživatelům vaší aplikace zobrazuje neočekávané chyby během procesu souhlasu, přečtěte si tento článek, kde najdete postup řešení potíží: [Neočekávaná chyba při provádění souhlasu s aplikací](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+
+## <a name="next-steps"></a>Další kroky
+
+* [Tokeny ID | Platforma Microsoft identity](id-tokens.md)
+* [Přístupové tokeny | Platforma Microsoft identity](access-tokens.md)

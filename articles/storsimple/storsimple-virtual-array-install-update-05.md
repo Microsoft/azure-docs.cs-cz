@@ -1,6 +1,6 @@
 ---
 title: Instalace aktualizace 0,5 ve virtuálním poli StorSimple | Microsoft Docs
-description: Popisuje, jak použít webové uživatelské rozhraní StorSimple Virtual Array k instalaci aktualizací pomocí metody Azure Portal a opravy hotfix.
+description: Popisuje, jak použít webové uživatelské rozhraní StorSimple Virtual Array k použití aktualizace 0,5 s použitím metody Azure Portal a Hot Fix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: 9b95593dd7ce7e10300ecef9b3636073a3096a7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513658"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300595"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0,5 ve virtuálním poli StorSimple
 
@@ -34,7 +34,7 @@ Než použijete aktualizaci, doporučujeme, abyste nejprve převzali svazky nebo
 >
 > - Pokud používáte aktualizaci 0,2 nebo novější, doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Pokud používáte Software Update 0,1 nebo GA, je nutné použít metodu hotfix prostřednictvím místního webového uživatelského rozhraní k instalaci aktualizace 0,5.
 >
-> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix se zařízení restartuje. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
+> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 

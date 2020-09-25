@@ -1,14 +1,14 @@
 ---
 title: Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services | Microsoft Docs
-description: Přečtěte si, jak vytvořit virtuální počítač šablony s několika virtuálními počítači v rámci.  Jinými slovy, povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services.
+description: V tomto článku se dozvíte, jak nastavit vnořenou virtualizaci na počítači šablony v Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a2f045cbf7c107e7f5dbeff0d78bf5e8d9d8fba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 319695088e967dc3156ecab5c1b9458e77fcc186
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445232"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251470"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services
 
@@ -25,7 +25,7 @@ Další informace o vnořené virtualizaci naleznete v následujících článc�
 - [Vnořená virtualizace v Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
 - [Jak povolit vnořenou virtualizaci na virtuálním počítači Azure](../virtual-machines/windows/nested-virtualization.md)
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Před nastavením testovacího prostředí s vnořenou virtualizací je zde několik věcí, které je potřeba vzít v úvahu.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269280"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -21,9 +21,9 @@ Ke kontrole stavu oboru můžete použít stejná kritéria, která použijete k
 
 Tady je například aplikace logiky vysoké úrovně, která používá obor ke spouštění specifických akcí a podmínku pro kontrolu stavu oboru. Pokud některé akce v oboru selžou nebo neočekávaně skončí, je obor označený jako "neúspěšné" nebo "přerušeno" a aplikace logiky pošle zprávu "obor se nepovedlo". Pokud všechny akce v oboru proběhnou úspěšně, aplikace logiky pošle zprávu "obor byl úspěšný".
 
-![Nastavení triggeru "plán-opakování"](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Diagram znázorňuje tok oboru aplikace logiky s příklady "obor se selháním" a "obor byl úspěšný".](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li postupovat podle příkladu v tomto článku, budete potřebovat tyto položky:
 
@@ -77,12 +77,12 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
       | ------- | ----- | ----------- |
       | **Bod na trase 1** | <*Čína*> | Zadejte původ trasy. | 
       | **Bod na trase 2** | <*účelu*> | Zadejte cíl trasy. | 
-      | **Vyhnutí se** | Žádný | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route). | 
+      | **Vyhnutí se** | Žádné | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route). | 
       | **Optimalizace** | timeWithTraffic | Vyberte parametr pro optimalizaci trasy, například vzdálenost, čas s aktuálními informacemi o provozu a tak dále. V tomto příkladu se používá tato hodnota: "timeWithTraffic" | 
       | **Jednotka vzdálenosti** | <*vaše preference*> | Zadejte jednotku ke vzdálenosti pro výpočet trasy. V tomto příkladu se používá tato hodnota: km. | 
       | **Způsob cestování** | Autem | Zadejte režim cesty pro trasu. V tomto příkladu se používá tato hodnota "jízda". | 
-      | **Datum a čas přejezdu** | Žádný | Platí jenom pro režim přenosu. | 
-      | **Typ data přenosu – typ typu** | Žádný | Platí jenom pro režim přenosu. | 
+      | **Datum a čas přejezdu** | Žádné | Platí jenom pro režim přenosu. | 
+      | **Typ data přenosu – typ typu** | Žádné | Platí jenom pro režim přenosu. | 
       ||||  
 
 1. [Přidejte podmínku](../logic-apps/logic-apps-control-flow-conditional-statement.md) , která zkontroluje, jestli aktuální doba trvání cesty s provozem přesáhne zadaný čas. 
@@ -143,7 +143,7 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
    1. Po dokončení vyberte **OK**.
 
    <!-- markdownlint-disable MD038 -->
-   1. Po vyřešení výrazu přidejte tento text do úvodního prostoru:``` minutes```
+   1. Po vyřešení výrazu přidejte tento text do úvodního prostoru: ``` minutes```
   
        Vaše pole **tělo** teď vypadá jako v tomto příkladu:
 
@@ -192,7 +192,7 @@ Dále přidejte obor, abyste mohli seskupit konkrétní akce a vyhodnotit jejich
    
       `result('Scope')[0]['status']`
 
-      ![Přidat výraz, který kontroluje stav oboru](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Snímek obrazovky zobrazující okno Přidat výraz se zvýrazněným výrazem výsledku](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Pro oba řádky vyberte **je rovno** jako operátor. 
    

@@ -9,15 +9,19 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 21b571c859ec8ecc66c1c9a222e0648dc7f28f4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249412"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>Zabezpečení přihlašovacích údajů prostřednictvím propojených služeb pomocí TokenLibrary
-Přístup k datům z externích zdrojů je běžným vzorem. Pokud externí zdroj dat nepovoluje anonymní přístup, je nutné zabezpečit připojení pomocí přihlašovacích údajů, tajného klíče nebo připojovacího řetězce.  Služba Azure synapse Analytics poskytuje propojené služby, které usnadňují proces integrace tím, že ukládá podrobnosti o připojení do propojené služby nebo Azure Key Vault. Po vytvoření propojené služby může Apache Spark odkazovat na propojenou službu a použít tak informace o připojení ve vašem kódu. Další informace najdete v tématu [propojené služby](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Přístup k datům z externích zdrojů je běžným vzorem. Pokud externí zdroj dat nepovoluje anonymní přístup, je nutné zabezpečit připojení pomocí přihlašovacích údajů, tajného klíče nebo připojovacího řetězce.  
+
+Služba Azure synapse Analytics poskytuje propojené služby, které usnadňují proces integrace tím, že ukládá podrobnosti o připojení do propojené služby nebo Azure Key Vault. Po vytvoření propojené služby může Apache Spark odkazovat na propojenou službu a použít tak informace o připojení ve vašem kódu. 
+
+Další informace najdete v tématu [propojené služby](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 > [!NOTE]
 > Přístup k souborům z Azure Data Lake Storage v pracovním prostoru používá pro ověřování průchozí služby AAD, takže nebudete muset používat TokenLibrary. 
 
@@ -26,7 +30,7 @@ Přístup k datům z externích zdrojů je běžným vzorem. Pokud externí zdro
 * Propojená služba – musíte vytvořit propojenou službu s externím zdrojem dat a odkazovat na propojenou službu z knihovny tokenů. Přečtěte si další informace o [propojených službách](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 
-## <a name="connecting-to-adls-gen2-outside-of-synapse-workspace"></a>Připojení k ADLS Gen2 mimo pracovní prostor synapse
+## <a name="connect-to-adls-gen2-outside-of-synapse-workspace"></a>Připojení k ADLS Gen2 mimo pracovní prostor synapse
 
 Synapse poskytuje prostředí integrovaných propojených služeb pro Azure Data Lake Storage Gen2.
 
@@ -52,7 +56,7 @@ df = spark.read.csv("abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTO
 
 df.show()
 ```
-## <a name="using-the-token-library"></a>Použití knihovny tokenů
+## <a name="use-the-token-library"></a>Použití knihovny tokenů
 
 Pokud se chcete připojit k jiným propojeným službám, můžete vytvořit přímé volání TokenLibrary.
 

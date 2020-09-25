@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 440f901f06e431c371b7445f4a04499c475c9aa1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5ffa5398143bff4e24d81a28a541e16c44700c99
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254019"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Postupy: nasazení webové aplikace pro počítání lidí
 
@@ -181,8 +181,8 @@ Po zadání výše uvedených parametrů klikněte na **zkontrolovat + vytvořit
 
 Počkejte, až se instalace dokončí, a přejděte k prostředku v Azure Portal. Přejít do **konfiguračního** oddílu a přidejte následující dvě **nastavení aplikace**.
 
-* `EventHubConsumerGroup` – Název řetězce skupiny příjemců z Azure IoT Hub, můžete vytvořit novou skupinu uživatelů ve službě IoT Hub nebo použít výchozí skupinu. 
-* `IotHubConnectionString` – Připojovací řetězec ke službě Azure IoT Hub, můžete ho načíst z části klíče v prostředku Azure IoT Hub ![ Konfigurace parametrů.](./media/spatial-analysis/solution-app-config-page.png)
+* `EventHubConsumerGroup` – Název řetězce skupiny příjemců z IoT Hub Azure, můžete v IoT Hub vytvořit novou skupinu uživatelů nebo použít výchozí skupinu. 
+* `IotHubConnectionString`– Připojovací řetězec k vašemu IoT Hub Azure, můžete ho načíst z části klíče v tématu Konfigurace parametrů prostředků Azure IoT Hub ![](./media/spatial-analysis/solution-app-config-page.png)
 
 Po přidání těchto dvou nastavení klikněte na **Uložit**. Pak v levé navigační nabídce klikněte na **ověřování/autorizace** a aktualizujte je s požadovanou úrovní ověřování. Doporučujeme Azure Active Director (Azure AD) Express. 
 

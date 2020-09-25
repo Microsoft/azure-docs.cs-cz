@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256752"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
@@ -117,6 +117,9 @@ Aplikace nainstalované v zařízení, například mobilní a desktopové aplika
 V tomto toku aplikace získá autorizační kód z koncového bodu Microsoft Identity Platform, když se uživatel přihlásí. Autorizační kód představuje oprávnění aplikace pro volání back-endové služby jménem uživatele, který je přihlášený. Aplikace může vyměňovat autorizační kód na pozadí pro přístupový token OAuth 2,0 a obnovovací token. Aplikace může pomocí přístupového tokenu ověřit u webových rozhraní API v požadavcích HTTP a pomocí aktualizačního tokenu získat nové přístupové tokeny, když vyprší platnost starších přístupových tokenů.
 
 ![Zobrazuje tok ověřování nativní aplikace.](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> Pokud aplikace používá výchozí systémové WebView, Projděte si informace o možnosti "potvrdit moje přihlášení" a kód chyby AADSTS50199 ve [službě Azure AD ověřování a kódy chyb autorizace](reference-aadsts-error-codes.md).
 
 ## <a name="daemons-and-server-side-apps"></a>Démoni a aplikace na straně serveru
 

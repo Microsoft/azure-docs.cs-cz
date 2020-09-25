@@ -3,12 +3,12 @@ title: Ověřování pomocí spravované identity
 description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí uživatelsky přiřazené spravované identity Azure, která je přiřazená uživatelem nebo systémem.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253458"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
 
@@ -230,6 +230,8 @@ Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` p�
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> Identity spravované služby přiřazené systémem se dají použít k interakci s záznamů ACR a App Service můžou používat identity spravované služby přiřazené systémem. Nemůžete je ale kombinovat, protože App Service nemůže použít MSI ke komunikaci s ACR. Jediným způsobem je povolit správcům ACR a používat uživatelské jméno a heslo správce.
 
 ## <a name="next-steps"></a>Další kroky
 

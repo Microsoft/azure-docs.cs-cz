@@ -3,12 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017307"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254580"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -29,10 +29,10 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
 
 * Pokud máte databázi se soubory ve vzdálené sdílené složce, ochrana se nezdaří a ID chyby bude 104. DPM nepodporuje ochranu pro SQL Server dat ve vzdálené sdílené složce souborů.
 * Aplikace DPM nemůže chránit databáze, které jsou uloženy ve vzdálených sdílených složkách protokolu SMB.
-* Ujistěte se, že [repliky skupin dostupnosti jsou nakonfigurovány jen pro čtení](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Ujistěte se, že [repliky skupin dostupnosti jsou nakonfigurovány jen pro čtení](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server).
 * Účet System **NTAUTHORITY\SYSTEM.** musíte explicitně přidat do skupiny Sysadmin na SQL Server.
-* Když provedete obnovení do alternativního umístění pro částečně databázi s omezením, je nutné zajistit, aby byla v cílové instanci SQL povolena funkce [databáze s omezením](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) .
-* Když provádíte obnovení do alternativního umístění databáze datového proudu souborů, musíte zajistit, aby cílová instance SQL měla povolenou funkci [databáze streamování souborů](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) .
+* Když provedete obnovení do alternativního umístění pro částečně databázi s omezením, je nutné zajistit, aby byla v cílové instanci SQL povolena funkce [databáze s omezením](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) .
+* Když provádíte obnovení do alternativního umístění databáze datového proudu souborů, musíte zajistit, aby cílová instance SQL měla povolenou funkci [databáze streamování souborů](/sql/relational-databases/blob/enable-and-configure-filestream) .
 * Ochrana SQL Serveru AlwaysOn:
   * Aplikace DPM při spuštění dotazu při vytváření skupiny ochrany vyhledá skupiny dostupnosti.
   * Aplikace zjistí převzetí služeb při selhání a pokračuje v ochraně databáze.
@@ -50,7 +50,7 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
     * Pokud se zálohování na vybraném uzlu nepovede, operace zálohování se nezdařila.
     * Obnovení do původního umístění není podporováno.
 * SQL Server 2014 nebo vyšší problémy se zálohováním:
-  * SQL Server 2014 Přidal novou funkci pro vytvoření [databáze pro místní SQL Server v úložišti objektů BLOB v systému Windows Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). Aplikaci DPM nelze použít k ochraně této konfigurace.
+  * SQL Server 2014 Přidal novou funkci pro vytvoření [databáze pro místní SQL Server v úložišti objektů BLOB v systému Windows Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure). Aplikaci DPM nelze použít k ochraně této konfigurace.
   * U možnosti "Preferovat sekundární" zálohování pro možnost SQL AlwaysOn Existují známé problémy. DPM vždycky provede zálohu ze sekundárního serveru. Pokud není možné najít sekundární, zálohování se nepovede.
 
 ## <a name="before-you-start"></a>Než začnete
@@ -62,7 +62,7 @@ Než začnete, ujistěte se, že jste splnili [požadavky](backup-azure-dpm-intr
 * Nainstalujte agenta Azure Backup.
 * Zaregistrujte server v trezoru.
 
-## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+## <a name="create-a-backup-policy"></a>Vytvoření zásad zálohování
 
 Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady zálohování:
 

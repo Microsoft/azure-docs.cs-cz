@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255232"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s virtuální sítí Azure
 
@@ -54,6 +54,10 @@ Aplikace v App Service jsou hostované na rolích pracovního procesu. Cenové t
 
 Pokud je povolená místní integrace virtuální sítě, vaše aplikace provede odchozí volání na Internet přes stejné kanály jako normální. Odchozí adresy, které jsou uvedeny na portálu vlastností aplikace, jsou adresy, které vaše aplikace ještě používá. Jaké změny vaší aplikace jsou voláním služeb zabezpečeného koncovým bodem služby, nebo adresy RFC 1918 přecházejí do vaší virtuální sítě. Pokud je WEBSITE_VNET_ROUTE_ALL nastavené na 1, všechny odchozí přenosy se můžou poslat do vaší virtuální sítě.
 
+> [!NOTE]
+> `WEBSITE_VNET_ROUTE_ALL` v kontejnerech Windows není aktuálně podporován.
+> 
+
 Funkce podporuje pouze jedno virtuální rozhraní na pracovní proces. Jedno virtuální rozhraní na pracovní proces znamená jednu místní integraci virtuální sítě podle plánu App Service. Všechny aplikace ve stejném plánu App Service můžou používat stejnou integraci virtuální sítě. Pokud potřebujete aplikaci pro připojení k další virtuální síti, je potřeba vytvořit jiný plán App Service. Použité virtuální rozhraní není prostředkem, ke kterému mají zákazníci přímý přístup.
 
 Vzhledem k tomu, jak tato technologie funguje, se provoz, který se používá při integraci virtuální sítě, nezobrazuje v protokolech Azure Network Watcher ani NSG Flow.
@@ -72,7 +76,8 @@ Brána – požadovaná integrace virtuální sítě podporuje připojení k vir
 Nemůžete použít integraci virtuální sítě požadovaná bránou:
 
 * S virtuální sítí připojenou ke službě Azure ExpressRoute.
-* Z aplikace pro Linux
+* Z aplikace pro Linux.
+* Z [kontejneru Windows](quickstart-custom-container.md).
 * Pro přístup k prostředkům zabezpečeného koncového bodu služby.
 * S bránou koexistence, která podporuje ExpressRoute i sítě VPN typu Point-to-site nebo site-to-site.
 

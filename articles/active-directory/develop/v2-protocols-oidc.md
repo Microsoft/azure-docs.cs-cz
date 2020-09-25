@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 741e7a13513d571fbaabd17016b2282a860271cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263274"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256581"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
 
@@ -37,13 +37,13 @@ Nejzákladnější tok přihlášení má kroky uvedené v dalším diagramu. Je
 
 OpenID Connect popisuje dokument metadat [(RFC)](https://openid.net/specs/openid-connect-discovery-1_0.html) , který obsahuje většinu informací potřebných k tomu, aby se aplikace mohla přihlásit. Zahrnuje to i informace, jako jsou adresy URL, které se mají použít, a umístění veřejných podpisových klíčů služby. Tento dokument můžete najít tak, že připojíte cestu k dokumentu zjišťování k adrese URL autority:
 
-Cesta k dokumentu zjišťování:`/.well-known/openid-configuration`
+Cesta k dokumentu zjišťování: `/.well-known/openid-configuration`
 
-Dohled`https://login.microsoftonline.com/{tenant}/v2.0`
+Dohled `https://login.microsoftonline.com/{tenant}/v2.0`
 
 `{tenant}`Může mít jednu ze čtyř hodnot:
 
-| Hodnota | Description |
+| Hodnota | Popis |
 | --- | --- |
 | `common` |Uživatelé, kteří mají osobní účet Microsoft a pracovní nebo školní účet z Azure AD, se můžou k aplikaci přihlásit. |
 | `organizations` |K aplikaci se můžou přihlásit jenom uživatelé s pracovními nebo školními účty ze služby Azure AD. |
@@ -116,16 +116,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| Parametr | Podmínka | Description |
+| Parametr | Stav | Popis |
 | --- | --- | --- |
-| `tenant` | Vyžadováno | `{tenant}`Hodnotu v cestě k požadavku můžete použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další informace najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
+| `tenant` | Povinné | `{tenant}`Hodnotu v cestě k požadavku můžete použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další informace najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
 | `response_type` | Vyžadováno | Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může také obsahovat další `response_type` hodnoty, například `code` . |
-| `redirect_uri` | Doporučené | Identifikátor URI pro přesměrování vaší aplikace, ve kterém může vaše aplikace odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s tím rozdílem, že musí být kódovaný v adrese URL. Pokud tato akce není k dispozici, koncový bod vybere jednu registrovanou redirect_uri náhodně, aby bylo možné uživatele odeslat zpět do. |
+| `redirect_uri` | Doporučeno | Identifikátor URI pro přesměrování vaší aplikace, ve kterém může vaše aplikace odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s tím rozdílem, že musí být kódovaný v adrese URL. Pokud tato akce není k dispozici, koncový bod vybere jednu registrovanou redirect_uri náhodně, aby bylo možné uživatele odeslat zpět do. |
 | `scope` | Vyžadováno | Mezerou oddělený seznam oborů. Pro OpenID Connect musí zahrnovat obor `openid` , který se v uživatelském rozhraní souhlasu překládá na oprávnění přihlásit se. V této žádosti můžete také zahrnout další obory pro žádost o souhlas. |
 | `nonce` | Vyžadováno | Hodnota obsažená v požadavku, která se vygenerovala aplikací, která se zahrne do výsledné id_token hodnoty jako deklarace. Aplikace může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu žádosti. |
-| `response_mode` | Doporučené | Určuje metodu, která se má použít k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může být `form_post` nebo `fragment`. Pro webové aplikace doporučujeme použít `response_mode=form_post` , abyste zajistili nejbezpečnější přenos tokenů do aplikace. |
-| `state` | Doporučené | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně generovaná jedinečná hodnota se obvykle používá k [zabránění útokům proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informací o stavu uživatele v aplikaci před tím, než k žádosti o ověření dojde, například na stránce nebo zobrazení, na které uživatel byl. |
+| `response_mode` | Doporučeno | Určuje metodu, která se má použít k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může být `form_post` nebo `fragment`. Pro webové aplikace doporučujeme použít `response_mode=form_post` , abyste zajistili nejbezpečnější přenos tokenů do aplikace. |
+| `state` | Doporučeno | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně generovaná jedinečná hodnota se obvykle používá k [zabránění útokům proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informací o stavu uživatele v aplikaci před tím, než k žádosti o ověření dojde, například na stránce nebo zobrazení, na které uživatel byl. |
 | `prompt` | Volitelné | Určuje typ interakce uživatele, která je povinná. Jediné platné hodnoty jsou v tomto okamžiku `login` , `none` a `consent` . `prompt=login`Deklarace identity vynutí, aby uživatel zadal své přihlašovací údaje k této žádosti, který má na starosti jednotné přihlašování. `prompt=none`Deklarace identity je opak. Tato deklarace identity zajišťuje, že uživatel nebude mít žádné interaktivní výzvy na adrese. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncová platforma Microsoft Identity Platform chybu. `prompt=consent`Deklarace identity aktivuje dialogové okno pro vyjádření souhlasu OAuth, až se uživatel přihlásí. Dialogové okno požádá uživatele o udělení oprávnění k aplikaci. |
 | `login_hint` | Volitelné | Tento parametr můžete použít k předvyplnění pole uživatelské jméno a e-mailová adresa přihlašovací stránky pro uživatele, pokud znáte uživatelské jméno předem. Aplikace často používají tento parametr během opakovaného ověřování, po již extrakci uživatelského jména z dřívějšího přihlášení pomocí `preferred_username` deklarace identity. |
 | `domain_hint` | Volitelné | Sféra uživatele ve federovaném adresáři.  Tím se přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na přihlašovací stránce, aby bylo poněkud jednodušší uživatelské prostředí. Pro klienty, kteří jsou federované prostřednictvím místního adresáře, jako je AD FS, to často vede k bezproblémovému přihlášení kvůli stávající přihlašovací relaci. |
@@ -172,7 +172,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 V následující tabulce jsou popsány chybové kódy, které lze vrátit v `error` parametru chybové odpovědi:
 
-| Kód chyby | Description | Akce klienta |
+| Kód chyby | Popis | Akce klienta |
 | --- | --- | --- |
 | `invalid_request` | Chyba protokolu, například chybějící, povinný parametr. |Opravte a odešlete požadavek znovu. Jedná se o chybu vývoje, která se obvykle zachycuje při počátečním testování. |
 | `unauthorized_client` | Klientská aplikace nemůže požádat o autorizační kód. |K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -249,7 +249,7 @@ Parametry odpovědi znamenají stejnou věc bez ohledu na tok, který je použí
 
 | Parametr | Popis |
 | --- | --- |
-| `token` | Token, který bude použit pro volání koncového bodu UserInfo.|
+| `access_token` | Token, který bude použit pro volání koncového bodu UserInfo.|
 | `token_type` | Vždy "nosič" |
 | `expires_in`| Doba do vypršení platnosti přístupového tokenu (v sekundách) |
 | `scope` | Oprávnění udělená u přístupového tokenu.  Vzhledem k tomu, že koncový bod UserInfo je hostovaný v MS graphu, můžou zde uvedené další obory grafu (třeba User. Read), pokud se jim dřív udělila aplikace.  Důvodem je skutečnost, že token pro daný prostředek vždy zahrnuje každé oprávnění, které je aktuálně uděleno klientovi.  |
@@ -292,9 +292,9 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Parametr | Podmínka | Description |
+| Parametr | Stav | Popis |
 | ----------------------- | ------------------------------- | ------------ |
-| `post_logout_redirect_uri` | Doporučené | Adresa URL, na kterou je uživatel přesměrován po úspěšném odhlášení. Pokud parametr není zahrnutý, zobrazí se uživateli obecná zpráva generovaná koncovým bodem Microsoft Identity Platform. Tato adresa URL se musí shodovat s jedním z identifikátorů URI přesměrování registrovaných pro vaši aplikaci na portálu pro registraci aplikací. |
+| `post_logout_redirect_uri` | Doporučeno | Adresa URL, na kterou je uživatel přesměrován po úspěšném odhlášení. Pokud parametr není zahrnutý, zobrazí se uživateli obecná zpráva generovaná koncovým bodem Microsoft Identity Platform. Tato adresa URL se musí shodovat s jedním z identifikátorů URI přesměrování registrovaných pro vaši aplikaci na portálu pro registraci aplikací. |
 
 ## <a name="single-sign-out"></a>Jednotné odhlašování
 

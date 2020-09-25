@@ -3,16 +3,16 @@ title: Postup reakce na Key Vault výstrahy na Azure Defender
 description: Přečtěte si o krocích nezbytných pro reakci na výstrahy z Azure Defenderu pro Key Vault.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a3f47f00b171601e73ea4668286adf944f48459f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd153eb1b0e96165bccc807a72bc3614ded49428
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301682"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Reakce na upozornění Azure Defenderu pro Key Vault
 Když obdržíte výstrahu od Azure Defenderu pro Key Vault, doporučujeme, abyste si vyšetřili a odpověděli na výstrahu, jak je popsáno níže. Azure Defender pro Key Vault chrání aplikace a přihlašovací údaje, takže i v případě, že jste obeznámeni s aplikací nebo uživatelem, který výstrahu aktivoval, je důležité ověřit situaci okolní s každou výstrahou.  

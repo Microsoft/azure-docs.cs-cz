@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c9cdf01c9dac3c37b3af7b07adb8d202761e7640
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258638"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -109,7 +109,7 @@ Organizace musí provést následující kroky, aby vyžadovaly použití zaregi
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 (Preview)**.
+1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365**.
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Zahrňte **Android** a **iOS**.

@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299906"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Možnosti přihlášení uživatele Azure AD Connect
 Azure Active Directory (Azure AD) Connect umožňuje vašim uživatelům přihlašovat se ke cloudovým i místním prostředkům pomocí stejných hesel. Tento článek popisuje klíčové koncepty pro každý model identity, které vám pomůžou zvolit identitu, kterou chcete použít pro přihlášení k Azure AD.
@@ -68,7 +68,7 @@ Předávací ověřování používá jednoduchého agenta na počítači připo
 Kromě toho můžete také povolit jednotné přihlašování pro uživatele na počítačích připojených k doméně, které jsou v podnikové síti. Při jednotném přihlašování stačí uživatelům zadat jenom uživatelské jméno, které jim pomůžou zajistit zabezpečený přístup k prostředkům v cloudu.
 ![Předávací ověřování](./media/plan-connect-user-signin/pta.png)
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 - [Předávací ověřování](how-to-connect-pta.md)
 - [Jednotné přihlašování](how-to-connect-sso.md)
 
@@ -155,7 +155,7 @@ Následující informace vám předpokládají, že máme obavy s příponou UPN
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Expresní nastavení/synchronizace hodnot hash hesel
 
-| State | Vliv na uživatelské prostředí Azure pro přihlašování |
+| Stav | Vliv na uživatelské prostředí Azure pro přihlašování |
 |:---:|:--- |
 | Nepřidáno |V tomto případě se v adresáři Azure AD nepřidala žádná vlastní doména pro contoso.com. Uživatelé, kteří mají místní uživatelské jméno (UPN) s příponou, nebudou @contoso.com moct používat svůj místní hlavní název uživatele (UPN), aby se mohli přihlásit k Azure. Místo toho budou muset použít nový hlavní název uživatele, který jim poskytla služba Azure AD, a to přidáním přípony pro výchozí adresář služby Azure AD. Pokud například provádíte synchronizaci uživatelů s adresářem Azure AD azurecontoso.onmicrosoft.com, bude místnímu uživateli user@contoso.com přiřazen hlavní název uživatele (UPN) user@azurecontoso.onmicrosoft.com . |
 | Neověřeno |V tomto případě máme vlastní doménu contoso.com, která se přidá do adresáře Azure AD. Ale zatím se neověřuje. Pokud budete pokračovat s synchronizací uživatelů bez ověřování domény, pak se uživatelům přiřadí nový hlavní název uživatele (UPN) Azure AD, stejně jako ve scénáři "nepřidáno". |
@@ -166,7 +166,7 @@ Nemůžete vytvořit federaci s výchozí doménou. onmicrosoft.com ve službě 
 
 Pokud jste vybrali možnost přihlašování uživatele v rámci **AD FS**, musíte mít vlastní doménu, abyste mohli pokračovat v vytváření federace ve službě Azure AD. Pro naši diskuzi to znamená, že by měl být do adresáře služby Azure AD přidán vlastní contoso.com domény.
 
-| State | Vliv na uživatelské prostředí Azure pro přihlašování |
+| Stav | Vliv na uživatelské prostředí Azure pro přihlašování |
 |:---:|:--- |
 | Nepřidáno |V takovém případě Azure AD Connect nenalezl odpovídající vlastní doménu pro příponu UPN contoso.com v adresáři služby Azure AD. Pokud potřebujete, aby se uživatelé přihlásili pomocí AD FS s místním hlavním názvem uživatele (například), musíte přidat vlastní doménu contoso.com user@contoso.com . |
 | Neověřeno |V takovém případě vás Azure AD Connect vyzve s příslušnými podrobnostmi o tom, jak můžete doménu ověřit v pozdější fázi. |
@@ -179,7 +179,7 @@ Metodu přihlašování uživatelů můžete změnit z federace, synchronizace h
 
 Na další stránce budete požádáni o zadání přihlašovacích údajů pro Azure AD.
 
-![Připojení k Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
+![Snímek obrazovky, který ukazuje, kde byste měli zadat přihlašovací údaje pro Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
 
 Na **přihlašovací stránce uživatele** vyberte přihlášení požadovaného uživatele.
 

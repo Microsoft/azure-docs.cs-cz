@@ -10,16 +10,40 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930906"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271167"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku najdete informace o nových vydaných verzích a funkcích, abyste měli přehled o aktuálním vývoji.
+
+## <a name="september-2020"></a>Září 2020
+
+### <a name="general-api-updates"></a>Obecné aktualizace rozhraní API
+
+* Vydání nové adresy URL pro verzi Public Preview Analýza textu v 3.1 pro podporu aktualizací následujících koncových bodů pro rozpoznávání pojmenovaných entit: 
+    * `/pii` koncový bod nyní zahrnuje novou `redactedText` vlastnost v odpovědi JSON, kde zjištěné entity PII ve vstupním textu jsou nahrazeny řetězcem `*` pro každý znak těchto entit.
+    * `/linking` koncový bod teď obsahuje `bingID` vlastnost v odpovědi JSON pro propojené entity.
+* Následující koncové body rozhraní API Analýza textu Preview byly vyřazeny ze září 4. září 2020:
+    * v 2.1 – Preview
+    * v3.0-preview
+    * v 3.0 – Preview. 1
+    
+> [!div class="nextstepaction"]
+> [Další informace o rozhraní API pro analýzu textu v 3.1 – Preview. 2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+
+### <a name="text-analytics-for-health-container-updates"></a>Analýza textu pro aktualizace kontejneru stavu
+
+Následující aktualizace jsou specifické pro září vydané verze Analýza textu jenom pro kontejner Health.
+* Do úložiště containerpreview byla vydána nová image kontejneru s označením `1.1.013530001-amd64-preview` s novým modelem verze `2020-09-03` . 
+* Tato verze modelu přináší vylepšení rozpoznávání entit, detekce zkratky a vylepšení latence.
+
+> [!div class="nextstepaction"]
+> [Další informace o Analýza textu pro stav](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>Srpen 2020
 
@@ -31,7 +55,7 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 * V případě požadavků V3 API, které překračují omezení publikovaných [dat](concepts/data-limits.md), se teď vrátí chyba HTTP 400. 
 * Koncové body, které vrací posun, teď podporují volitelný `stringIndexType` parametr, který upraví vrácené `offset` `length` hodnoty a hodnot tak, aby odpovídaly podporovanému [schématu řetězcového indexu](concepts/text-offsets.md).
 
-### <a name="text-analytics-for-health-container-august-updates"></a>Aktualizace kontejneru stavů Analýza textu. srpna
+### <a name="text-analytics-for-health-container-updates"></a>Analýza textu pro aktualizace kontejneru stavu
 
 Následující aktualizace jsou specifické pro verzi Analýza textu ze srpna pro kontejner Health.
 
@@ -147,11 +171,11 @@ Další typy entit jsou teď dostupné ve službě pro rozpoznávání pojmenova
     * Tuhle
 
 * Rozpoznávání následujících typů entit osobních informací (jenom v angličtině):
-    * Person (Osoba)
+    * Osoba
     * Organizace
     * Stáří jako podtyp v rámci množství
     * Datum jako podtyp v hodnotě DateTime
-    * E-mailu 
+    * E-mail 
     * Telefonní číslo (jenom USA)
     * URL
     * IP adresa

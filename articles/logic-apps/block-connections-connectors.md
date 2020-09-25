@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: cccc45f182f3ae826440df8bc163080b82226c9f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269756"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Blokovat připojení vytvořená pomocí konektorů v Azure Logic Apps
 
@@ -121,15 +121,15 @@ Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupuj
 
 1. V části **definice zásad**zadejte informace o definici zásady na základě vlastností popsaných v tomto příkladu:
 
-   ![Vlastnosti definice zásad](./media/block-connections-connectors/policy-definition-create-connections-1.png)
+   ![Snímek obrazovky se zobrazením vlastností "definice zásad".](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Umístění definice** | Ano | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro definici zásady <p><p>1. Pokud chcete najít předplatné, vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **odběr** vyhledejte a vyberte své předplatné. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
-   | **Název** | Ano | <*Policy – definice – název*> | Název, který se má použít pro definici zásady |
-   | **Popis** | Ne | <*Policy – definice – název*> | Popis definice zásady |
-   | **Kategorie** | Ano | **Logic Apps** | Název existující kategorie nebo nové kategorie pro definici zásady |
-   | **Vynucení zásad** | Ano | **Povoleno** | Toto nastavení určuje, jestli se má při ukládání vaší práce povolit nebo zakázat definici zásady. |
+   | **Umístění definice** | Yes | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro definici zásady <p><p>1. Pokud chcete najít předplatné, vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **odběr** vyhledejte a vyberte své předplatné. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
+   | **Název** | Yes | <*Policy – definice – název*> | Název, který se má použít pro definici zásady |
+   | **Popis** | No | <*Policy – definice – název*> | Popis definice zásady |
+   | **Kategorie** | Yes | **Logic Apps** | Název existující kategorie nebo nové kategorie pro definici zásady |
+   | **Vynucení zásad** | Yes | **Povoleno** | Toto nastavení určuje, jestli se má při ukládání vaší práce povolit nebo zakázat definici zásady. |
    ||||
 
 1. V části **pravidlo zásad**se pole pro úpravy JSON předem vyplní šablonou definic zásad. Nahraďte tuto šablonu [definicí zásad](../governance/policy/concepts/definition-structure.md) na základě vlastností popsaných v následující tabulce a pomocí této syntaxe:
@@ -155,7 +155,7 @@ Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupuj
    | `mode` | `All` | Režim, který určuje typy prostředků, které zásada vyhodnocuje. <p><p>Tento scénář nastavuje `mode` `All` , který platí pro zásady skupiny prostředků Azure, odběry a všechny typy prostředků. <p><p>Další informace najdete v tématu [Struktura definice zásad – režim](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | Podmínka, která určuje, kdy se má vyhovět pravidlo zásad <p><p>V tomto scénáři určuje, `{condition-to-evaluate}` zda je `api.id` hodnota shodná s hodnotou `Microsoft.Web/connections/api.id` `*managedApis/{connector-name}` , která určuje zástupnou hodnotu (*). <p><p>Další informace najdete v tématu [Struktura definice zásad – pravidlo zásad](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `field` | `Microsoft.Web/connections/api.id` | `field`Hodnota, která se má porovnat s podmínkou <p><p>V tomto scénáři `field` používá [*alias*](../governance/policy/concepts/definition-structure.md#aliases) `Microsoft.Web/connections/api.id` k přístupu k hodnotě ve vlastnosti konektoru `api.id` . |
-   | `like` | `*managedApis/{connector-name}` | Logický operátor a hodnota, která se má použít pro porovnání `field` hodnoty <p><p>V tomto scénáři `like` operátor a zástupný znak (*) zajistí, že pravidlo funguje bez ohledu na oblast a řetězec, `*managedApis/{connector-name}` je hodnota, která má být shodná s `{connector-name}` identifikátorem ID konektoru, který chcete blokovat. <p><p>Předpokládejme například, že chcete blokovat vytváření připojení k platformám nebo databázím sociálních médií: <p><p>Službě`twitter` <br>Instagramu`instagram` <br>Přes`facebook` <br>Pinterestu`pinterest` <br>-SQL Server nebo Azure SQL:`sql` <p><p>Chcete-li najít Tato ID konektoru, viz výše v tomto tématu v části [Najít referenční ID konektoru](#connector-reference-ID) . |
+   | `like` | `*managedApis/{connector-name}` | Logický operátor a hodnota, která se má použít pro porovnání `field` hodnoty <p><p>V tomto scénáři `like` operátor a zástupný znak (*) zajistí, že pravidlo funguje bez ohledu na oblast a řetězec, `*managedApis/{connector-name}` je hodnota, která má být shodná s `{connector-name}` identifikátorem ID konektoru, který chcete blokovat. <p><p>Předpokládejme například, že chcete blokovat vytváření připojení k platformám nebo databázím sociálních médií: <p><p>Službě `twitter` <br>Instagramu `instagram` <br>Přes `facebook` <br>Pinterestu `pinterest` <br>-SQL Server nebo Azure SQL: `sql` <p><p>Chcete-li najít Tato ID konektoru, viz výše v tomto tématu v části [Najít referenční ID konektoru](#connector-reference-ID) . |
    | `then` | `{effect-to-apply}` | Efekt, který se má použít, pokud `if` je splněna podmínka <p><p>V tomto scénáři je potřeba `{effect-to-apply}` Blokovat a podařit požadavek nebo operaci, které nevyhovují zásadám. <p><p>Další informace najdete v tématu [Struktura definice zásad – pravidlo zásad](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `effect` | `deny` | `effect`Je zablokování žádosti, která má vytvořit zadané připojení. <p><p>Další informace najdete v tématu [vysvětlení Azure Policy efektů – Deny](../governance/policy/concepts/effects.md#deny). |
    ||||
@@ -180,7 +180,7 @@ Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupuj
 
    Tady je způsob, jakým se zobrazuje pole **pravidlo zásad** :
 
-   ![Pravidlo pro definici zásady](./media/block-connections-connectors/policy-definition-create-connections-2.png)
+   ![Snímek obrazovky s polem pravidlo zásad s příkladem pravidla zásad](./media/block-connections-connectors/policy-definition-create-connections-2.png)
 
    V případě více konektorů můžete přidat další podmínky, například:
 
@@ -246,11 +246,11 @@ Když vytvoříte připojení v aplikaci logiky, toto připojení existuje jako 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Umístění definice** | Ano | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro definici zásady <p><p>1. Pokud chcete najít předplatné, vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **odběr** vyhledejte a vyberte své předplatné. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
-   | **Název** | Ano | <*Policy – definice – název*> | Název, který se má použít pro definici zásady |
-   | **Popis** | Ne | <*Policy – definice – název*> | Popis definice zásady |
-   | **Kategorie** | Ano | **Logic Apps** | Název existující kategorie nebo nové kategorie pro definici zásady |
-   | **Vynucení zásad** | Ano | **Povoleno** | Toto nastavení určuje, jestli se má při ukládání vaší práce povolit nebo zakázat definici zásady. |
+   | **Umístění definice** | Yes | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro definici zásady <p><p>1. Pokud chcete najít předplatné, vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **odběr** vyhledejte a vyberte své předplatné. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
+   | **Název** | Yes | <*Policy – definice – název*> | Název, který se má použít pro definici zásady |
+   | **Popis** | No | <*Policy – definice – název*> | Popis definice zásady |
+   | **Kategorie** | Yes | **Logic Apps** | Název existující kategorie nebo nové kategorie pro definici zásady |
+   | **Vynucení zásad** | Yes | **Povoleno** | Toto nastavení určuje, jestli se má při ukládání vaší práce povolit nebo zakázat definici zásady. |
    ||||
 
 1. V části **pravidlo zásad**se pole pro úpravy JSON předem vyplní šablonou definic zásad. Nahraďte tuto šablonu [definicí zásad](../governance/policy/concepts/definition-structure.md) na základě vlastností popsaných v následující tabulce a pomocí této syntaxe:
@@ -276,7 +276,7 @@ Když vytvoříte připojení v aplikaci logiky, toto připojení existuje jako 
    | `mode` | `All` | Režim, který určuje typy prostředků, které zásada vyhodnocuje. <p><p>Tento scénář nastavuje `mode` `All` , který platí pro zásady skupiny prostředků Azure, odběry a všechny typy prostředků. <p><p>Další informace najdete v tématu [Struktura definice zásad – režim](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | Podmínka, která určuje, kdy se má vyhovět pravidlo zásad <p><p>V tomto scénáři určuje, `{condition-to-evaluate}` zda výstup řetězce z `[string(field('Microsoft.Logic/workflows/parameters'))]` obsahuje řetězec, `{connector-name}` . <p><p>Další informace najdete v tématu [Struktura definice zásad – pravidlo zásad](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `value` | `[string(field('Microsoft.Logic/workflows/parameters'))]` | Hodnota, která se má porovnat s podmínkou <p><p>V tomto scénáři `value` je výstup řetězce z `[string(field('Microsoft.Logic/workflows/parameters'))]` , který převede `$connectors` objekt uvnitř `Microsoft.Logic/workflows/parameters` objektu na řetězec. |
-   | `contains` | `{connector-name}` | Logický operátor a hodnota, která se má použít pro porovnání s `value` vlastností <p><p>V tomto scénáři `contains` operátor zajišťuje, že pravidlo funguje bez ohledu na to, kde `{connector-name}` se zobrazí, kde řetězec, `{connector-name}` je ID konektoru, který chcete omezit nebo blokovat. <p><p>Předpokládejme například, že chcete blokovat použití připojení k platformám nebo databázím sociálních médií: <p><p>Službě`twitter` <br>Instagramu`instagram` <br>Přes`facebook` <br>Pinterestu`pinterest` <br>-SQL Server nebo Azure SQL:`sql` <p><p>Chcete-li najít Tato ID konektoru, viz výše v tomto tématu v části [Najít referenční ID konektoru](#connector-reference-ID) . |
+   | `contains` | `{connector-name}` | Logický operátor a hodnota, která se má použít pro porovnání s `value` vlastností <p><p>V tomto scénáři `contains` operátor zajišťuje, že pravidlo funguje bez ohledu na to, kde `{connector-name}` se zobrazí, kde řetězec, `{connector-name}` je ID konektoru, který chcete omezit nebo blokovat. <p><p>Předpokládejme například, že chcete blokovat použití připojení k platformám nebo databázím sociálních médií: <p><p>Službě `twitter` <br>Instagramu `instagram` <br>Přes `facebook` <br>Pinterestu `pinterest` <br>-SQL Server nebo Azure SQL: `sql` <p><p>Chcete-li najít Tato ID konektoru, viz výše v tomto tématu v části [Najít referenční ID konektoru](#connector-reference-ID) . |
    | `then` | `{effect-to-apply}` | Efekt, který se má použít, pokud `if` je splněna podmínka <p><p>V tomto scénáři je potřeba `{effect-to-apply}` Blokovat a podařit požadavek nebo operaci, které nedodržují zásady. <p><p>Další informace najdete v tématu [Struktura definice zásad – pravidlo zásad](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `effect` | `deny` | `effect`Je `deny` nebo zablokuje požadavek na uložení aplikace logiky, která používá zadané připojení. <p><p>Další informace najdete v tématu [vysvětlení Azure Policy efektů – Deny](../governance/policy/concepts/effects.md#deny). |
    ||||
@@ -329,16 +329,16 @@ Dál je potřeba přiřadit definici zásady, ve které chcete zásady vyhovět,
 
 1. V části **základy**zadejte tyto informace pro přiřazení zásady:
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Rozsah** | Ano | Prostředky, u kterých chcete vynutilit přiřazení zásady. <p><p>1. vedle pole **obor** vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **předplatné** vyberte předplatné Azure. <br>3. v seznamu **Skupina prostředků** vyberte skupinu prostředků. <br>4. Jakmile budete hotovi, vyberte **Vybrat**. |
-   | **Vyloučení** | Ne | Všechny prostředky Azure, které se mají vyloučit z přiřazení zásad. <p><p>1. klikněte na tlačítko se třemi tečkami (**...**) vedle pole **vyloučení** . <br>2. v seznamu **prostředků** vyberte prostředek > **Přidat do vybraného oboru**. <br>3. Jakmile budete hotovi, vyberte **Uložit**. |
-   | **Definice zásady** | Ano | Název definice zásady, kterou chcete přiřadit a vykonat. Tento příklad pokračuje s příkladem zásady Instagramu, "Block Instagramu Connections". <p><p>1. Vyberte tlačítko se třemi tečkami (**...**) vedle pole **definice zásady** . <br>2. Vyhledejte a vyberte definici zásady pomocí filtru **typů** nebo **vyhledávacího** pole. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
-   | **Název přiřazení** | Ano | Název, který se má použít pro přiřazení zásady, pokud se liší od definice zásady |
-   | **ID přiřazení** | Ano | Automaticky vygenerované ID pro přiřazení zásady |
-   | **Popis** | Ne | Popis přiřazení zásady |
-   | **Vynucení zásad** | Ano | Nastavení, které povoluje nebo zakazuje přiřazení zásady |
-   | **Přiřadil** | Ne | Jméno osoby, která vytvořila a používala přiřazení zásady |
+   | **Rozsah** | Yes | Prostředky, u kterých chcete vynutilit přiřazení zásady. <p><p>1. vedle pole **obor** vyberte tlačítko se třemi tečkami (**...**). <br>2. v seznamu **předplatné** vyberte předplatné Azure. <br>3. v seznamu **Skupina prostředků** vyberte skupinu prostředků. <br>4. Jakmile budete hotovi, vyberte **Vybrat**. |
+   | **Vyloučení** | No | Všechny prostředky Azure, které se mají vyloučit z přiřazení zásad. <p><p>1. klikněte na tlačítko se třemi tečkami (**...**) vedle pole **vyloučení** . <br>2. v seznamu **prostředků** vyberte prostředek > **Přidat do vybraného oboru**. <br>3. Jakmile budete hotovi, vyberte **Uložit**. |
+   | **Definice zásady** | Yes | Název definice zásady, kterou chcete přiřadit a vykonat. Tento příklad pokračuje s příkladem zásady Instagramu, "Block Instagramu Connections". <p><p>1. Vyberte tlačítko se třemi tečkami (**...**) vedle pole **definice zásady** . <br>2. Vyhledejte a vyberte definici zásady pomocí filtru **typů** nebo **vyhledávacího** pole. <br>3. Jakmile budete hotovi, vyberte **Vybrat**. |
+   | **Název přiřazení** | Yes | Název, který se má použít pro přiřazení zásady, pokud se liší od definice zásady |
+   | **ID přiřazení** | Yes | Automaticky vygenerované ID pro přiřazení zásady |
+   | **Popis** | No | Popis přiřazení zásady |
+   | **Vynucení zásad** | Yes | Nastavení, které povoluje nebo zakazuje přiřazení zásady |
+   | **Přiřadil** | No | Jméno osoby, která vytvořila a používala přiřazení zásady |
    ||||
 
    Například pokud chcete přiřadit zásadu ke skupině prostředků Azure pomocí příkladu Instagramu:

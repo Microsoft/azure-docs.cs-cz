@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258775"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Jak vztahy důvěryhodnosti fungují pro doménové struktury prostředků v Azure Active Directory Domain Services
 
@@ -99,12 +99,12 @@ Například když se vztah důvěryhodnosti doménové struktury vytvoří mezi 
 Než budete moct vytvořit vztah důvěryhodnosti doménové struktury, musíte ověřit, jestli máte zavedenou správnou infrastrukturu DNS (Domain Name System). Vztahy důvěryhodnosti doménové struktury lze vytvořit pouze v případě, že je k dispozici jedna z následujících konfigurací služby DNS:
 
 * Jeden kořenový server DNS je kořenový server DNS pro oba obory názvů DNS doménové struktury – kořenová zóna obsahuje delegování pro každý obor názvů DNS a kořenové odkazy všech serverů DNS zahrnuje kořenový server DNS.
-* V případě, že není k dispozici žádný sdílený kořenový server DNS, a kořenové servery DNS pro každý obor názvů DNS doménové struktury používají pro každý obor názvů DNS pro směrování dotazů na názvy v jiném oboru názvů DNS podmíněné předávací služby DNS.
+* Pokud není žádný sdílený kořenový server DNS a kořenové servery DNS v každém oboru názvů DNS doménové struktury, použijte k Směrování dotazů na názvy v jiném oboru názvů DNS podmíněné předávací služby DNS.
 
     > [!IMPORTANT]
     > Tato konfigurace DNS musí používat Azure AD Domain Services doménová struktura prostředků. Hostování jiného oboru názvů DNS, než je obor názvů DNS doménové struktury prostředků, není funkce Azure AD Domain Services. Je vhodná konfigurace pro podmíněné dopředné.
 
-* Pokud není žádný sdílený kořenový server DNS a kořenové servery DNS pro každý obor názvů DNS doménové struktury používají sekundární zóny DNS, nakonfigurují se v každém oboru názvů DNS na směrování dotazů na názvy v jiném oboru názvů.
+* Pokud není žádný sdílený kořenový server DNS a kořenové servery DNS v každém oboru názvů DNS doménové struktury, v každém oboru názvů DNS se nakonfigurují sekundární zóny DNS na směrování dotazů na názvy v jiném oboru názvů.
 
 Chcete-li vytvořit vztah důvěryhodnosti doménové struktury, musíte být členem skupiny Domain Admins (v kořenové doméně doménové struktury) nebo skupiny Enterprise Admins ve službě Active Directory. Každému vztahu důvěryhodnosti je přiřazeno heslo, které musí znát správci v obou doménových strukturách. Členové skupiny Enterprise Admins v obou doménových strukturách můžou vytvářet vztahy důvěryhodnosti v obou doménových strukturách najednou a v tomto případě je heslo, které je kryptograficky náhodné, automaticky vygenerováno a napsáno pro obě doménové struktury.
 

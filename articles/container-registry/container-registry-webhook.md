@@ -3,16 +3,16 @@ title: Webhooky, které reagují na akce registru
 description: Naučte se, jak pomocí webhooků aktivovat události, když se akce push nebo Pull vyskytnou v úložištích registru.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83685032"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253390"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
 
-Registr kontejnerů Azure uchovává a spravuje privátní image kontejnerů Dockeru podobným způsobem, jakým Docker Hub uchovává veřejné image Dockeru. Může také hostovat úložiště pro [grafy Helm](container-registry-helm-repos.md) (Preview), formát balení pro nasazení aplikací do Kubernetes. Webhooky můžete použít k aktivaci událostí, když probíhají určité akce v jednom z úložišť registru. Webhooky můžou reagovat na události na úrovni registru nebo můžou být vymezené na konkrétní značku úložiště. Pomocí [geograficky replikovaného](container-registry-geo-replication.md) registru můžete každý Webhook nakonfigurovat tak, aby reagoval na události v konkrétní místní replice.
+Registr kontejnerů Azure uchovává a spravuje privátní image kontejnerů Dockeru podobným způsobem, jakým Docker Hub uchovává veřejné image Dockeru. Může také hostovat úložiště pro [grafy Helm](container-registry-helm-repos.md) (Preview), formát balení pro nasazení aplikací do Kubernetes. Webhooky můžete použít k aktivaci událostí, když probíhají určité akce v jednom z úložišť registru. Webhooky můžou reagovat na události na úrovni registru nebo můžou být vymezené na konkrétní značku úložiště. Pomocí  [geograficky replikovaného](container-registry-geo-replication.md) registru můžete každý Webhook nakonfigurovat tak, aby reagoval na události v konkrétní místní replice.
 
 Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry Reference k schématu Webhooku](container-registry-webhook-reference.md).
 
@@ -23,13 +23,13 @@ Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry
 
 ## <a name="create-webhook---azure-portal"></a>Vytvořit Webhook – Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte do registru kontejneru, ve kterém chcete vytvořit Webhook.
 1. V části **služby**vyberte **Webhooky**.
 1. Na panelu nástrojů Webhooku vyberte **Přidat** .
 1. Vyplňte formulář *vytvořit Webhook* s následujícími informacemi:
 
-| Hodnota | Description |
+| Hodnota | Popis |
 |---|---|
 | Název Webhooku | Název, který chcete předat Webhooku. Může obsahovat jenom písmena a číslice a musí mít délku 5-50 znaků. |
 | Umístění | V případě [geograficky replikovaného](container-registry-geo-replication.md) registru zadejte oblast Azure repliky registru. 
@@ -37,11 +37,11 @@ Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry
 | Vlastní hlavičky | Hlavičky, které chcete předat spolu s požadavkem POST. Měly by být ve formátu "klíč: hodnota". |
 | Aktivační akce | Akce, které aktivují Webhook Akce zahrnují vložení obrázku, odstranění obrázku, vložení grafu Helm, odstranění grafu Helm a karanténu obrázku. Můžete vybrat jednu nebo více akcí pro aktivaci Webhooku. |
 | Status | Stav Webhooku po jeho vytvoření. Tato možnost je ve výchozím nastavení povolená. |
-| Rozsah | Rozsah, ve kterém Webhook pracuje. Pokud tento parametr nezadáte, bude obor pro všechny události v registru. Dá se zadat pro úložiště nebo značku pomocí formátu "úložiště: Značka" nebo "úložiště: *" pro všechny značky v úložišti. |
+| Obor | Rozsah, ve kterém Webhook pracuje. Pokud tento parametr nezadáte, bude obor pro všechny události v registru. Dá se zadat pro úložiště nebo značku pomocí formátu "úložiště: Značka" nebo "úložiště: *" pro všechny značky v úložišti. |
 
 Příklad formuláře Webhooku:
 
-![ACR uživatelského rozhraní pro vytvoření Webhooku v Azure Portal](./media/container-registry-webhook/webhook.png)
+![Snímek obrazovky, který ukazuje vytvoření Webhooku ACR U I v Azure Portal.](./media/container-registry-webhook/webhook.png)
 
 ## <a name="create-webhook---azure-cli"></a>Vytvoření Webhooku – Azure CLI
 

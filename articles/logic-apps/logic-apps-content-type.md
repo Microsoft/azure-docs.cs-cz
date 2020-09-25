@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75666869"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269093"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Zpracování typů obsahu v Azure Logic Apps
 
@@ -61,7 +61,7 @@ Logic Apps poskytuje možnost generovat uživatelsky přívětivé tokeny, kter�
   
   2. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte ukázkovou datovou část a pak zvolte **Hotovo**. Příklad: 
 
-     ![Poskytnout ukázkovou datovou část JSON](./media/logic-apps-content-type/request-trigger.png)
+     ![Snímek obrazovky zobrazující okno při přijetí požadavku HTTP s ukázkovou datovou částí JSON](./media/logic-apps-content-type/request-trigger.png)
 
      Ve triggeru se nyní zobrazí vygenerované schéma.
 
@@ -136,13 +136,13 @@ Aby bylo možné zachovat některé typy dat, Logic Apps převede obsah na biná
 
 Tento seznam popisuje, jak Logic Apps převádí obsah při použití těchto [funkcí](../logic-apps/workflow-definition-language-functions-reference.md):
 
-* `json()`: Přetypování dat na`application/json`
-* `xml()`: Přetypování dat na`application/xml`
-* `binary()`: Přetypování dat na`application/octet-stream`
-* `string()`: Přetypování dat na`text/plain`
+* `json()`: Přetypování dat na `application/json`
+* `xml()`: Přetypování dat na `application/xml`
+* `binary()`: Přetypování dat na `application/octet-stream`
+* `string()`: Přetypování dat na `text/plain`
 * `base64()`: Převede obsah na řetězec kódovaný v kódování Base64.
-* `base64toString()`: Převede řetězec kódovaný v kódování Base64 na`text/plain`
-* `base64toBinary()`: Převede řetězec kódovaný v kódování Base64 na`application/octet-stream`
+* `base64toString()`: Převede řetězec kódovaný v kódování Base64 na `text/plain`
+* `base64toBinary()`: Převede řetězec kódovaný v kódování Base64 na `application/octet-stream`
 * `dataUri()`: Převede řetězec na identifikátor URI dat.
 * `dataUriToBinary()`: Převede identifikátor URI dat na binární řetězec.
 * `dataUriToString()`: Převede identifikátor URI dat na řetězec.

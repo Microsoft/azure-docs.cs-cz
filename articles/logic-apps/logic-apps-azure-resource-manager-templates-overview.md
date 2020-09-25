@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a3d7386e976551d70fbbc08930b2ab5603aa5d50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269042"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
@@ -34,12 +34,14 @@ Další informace o šablonách Správce prostředků najdete v těchto tématec
 * [Osvědčené postupy pro šablony Azure Resource Manageru](../azure-resource-manager/templates/template-best-practices.md)
 * [Vývoj šablon Azure Resource Manageru pro konzistenci cloudu](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
+Informace o prostředcích šablon specifických pro aplikace logiky, integrační účty, artefakty integračních účtů a prostředí integrační služby najdete v tématu [typy prostředků Microsoft. Logic](/azure/templates/microsoft.logic/allversions).
+
 Ukázkové šablony aplikací logiky najdete v těchto příkladech:
 
 * [Úplná šablona](#full-example-template) , která se používá v příkladech tohoto tématu
 * [Ukázka šablony aplikace logiky rychlého](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) startu v GitHubu
 
-Informace o prostředcích šablon specifických pro Logic Apps, účty pro integraci a artefakty integračních účtů najdete v tématu [typy prostředků Microsoft. Logic](/azure/templates/microsoft.logic/allversions).
+Pro REST API Logic Apps začněte s [přehledem Azure Logic Apps REST API](/rest/api/logic).
 
 <a name="template-structure"></a>
 
@@ -280,7 +282,7 @@ Obecné informace o prostředcích šablon a jejich atributech najdete v těchto
 
 ### <a name="logic-app-resource-definition"></a>Definice prostředků aplikace logiky
 
-Definice prostředků vaší aplikace logiky začíná `properties` objektem, který obsahuje tyto informace:
+[Definice prostředků pracovního postupu](/azure/templates/microsoft.logic/workflows) vaší aplikace logiky v šabloně začíná `properties` objektem, který obsahuje tyto informace:
 
 * Stav vaší aplikace logiky při nasazení
 * ID pro libovolný účet pro integraci, který používá aplikace logiky
@@ -328,13 +330,37 @@ Tady jsou atributy, které jsou specifické pro vaši definici prostředků apli
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
 | `state` | Ano | Řetězec | Stav vaší aplikace logiky při nasazení, kde je vaše aplikace logiky `Enabled` živá a `Disabled` to znamená, že vaše aplikace logiky je neaktivní. Pokud například nejste připraveni k tomu, aby vaše aplikace logiky přešla do provozu, ale chcete nasadit koncept verze, můžete použít `Disabled` možnost. |
-| `integrationAccount` | Ne | Objekt | Pokud vaše aplikace logiky používá účet pro integraci, který ukládá artefakty pro scénáře B2B (Business-to-Business), tento objekt obsahuje `id` atribut, který určuje ID pro účet pro integraci. |
-| `definition` | Ano | Objekt | Základní definice pracovního postupu aplikace logiky, což je stejný objekt, který se zobrazuje v zobrazení kódu a je plně popsán v tématu [Referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . V této definici pracovního postupu `parameters` objekt deklaruje parametry pro hodnoty, které mají být použity v prostředí Logic App runtime. Další informace najdete v tématu [definice a parametry pracovního postupu](#workflow-definition-parameters). <p><p>Chcete-li zobrazit atributy v definici pracovního postupu vaší aplikace logiky, přepněte z "zobrazení návrhu" na "zobrazení kódu" v Azure Portal nebo v aplikaci Visual Studio nebo pomocí nástroje, jako je například [Azure Resource Explorer](https://resources.azure.com). |
-| `parameters` | Ne | Objekt | [Hodnoty parametrů definice pracovního postupu](#workflow-definition-parameters) , které se mají použít v prostředí Logic App runtime Definice parametrů těchto hodnot se zobrazí uvnitř [objektu parametrů definice pracovního postupu](#workflow-definition-parameters). Také Pokud vaše aplikace logiky používá [spravované konektory](../connectors/apis-list.md) pro přístup k jiným službám a systémům, tento objekt obsahuje `$connections` objekt, který nastaví hodnoty připojení, které se mají použít za běhu. |
-| `accessControl` | Ne | Objekt | Pro zadání atributů zabezpečení pro vaši aplikaci logiky, jako je například omezení přístupu IP k aktivačním událostem žádosti nebo vstupy a výstupy historie spouštění. Další informace najdete v tématu [zabezpečený přístup k Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `integrationAccount` | No | Objekt | Pokud vaše aplikace logiky používá účet pro integraci, který ukládá artefakty pro scénáře B2B (Business-to-Business), tento objekt obsahuje `id` atribut, který určuje ID pro účet pro integraci. |
+| `definition` | Yes | Objekt | Základní definice pracovního postupu aplikace logiky, což je stejný objekt, který se zobrazuje v zobrazení kódu a je plně popsán v tématu [Referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . V této definici pracovního postupu `parameters` objekt deklaruje parametry pro hodnoty, které mají být použity v prostředí Logic App runtime. Další informace najdete v tématu [definice a parametry pracovního postupu](#workflow-definition-parameters). <p><p>Chcete-li zobrazit atributy v definici pracovního postupu vaší aplikace logiky, přepněte z "zobrazení návrhu" na "zobrazení kódu" v Azure Portal nebo v aplikaci Visual Studio nebo pomocí nástroje, jako je například [Azure Resource Explorer](https://resources.azure.com). |
+| `parameters` | No | Objekt | [Hodnoty parametrů definice pracovního postupu](#workflow-definition-parameters) , které se mají použít v prostředí Logic App runtime Definice parametrů těchto hodnot se zobrazí uvnitř [objektu parametrů definice pracovního postupu](#workflow-definition-parameters). Také Pokud vaše aplikace logiky používá [spravované konektory](../connectors/apis-list.md) pro přístup k jiným službám a systémům, tento objekt obsahuje `$connections` objekt, který nastaví hodnoty připojení, které se mají použít za běhu. |
+| `accessControl` | No | Objekt | Pro zadání atributů zabezpečení pro vaši aplikaci logiky, jako je například omezení přístupu IP k aktivačním událostem žádosti nebo vstupy a výstupy historie spouštění. Další informace najdete v tématu [zabezpečený přístup k Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
-Informace o prostředcích šablon specifických pro Logic Apps, účty pro integraci a artefakty integračních účtů najdete v tématu [typy prostředků Microsoft. Logic](/azure/templates/microsoft.logic/allversions).
+Další informace o definicích prostředků pro tyto Logic Apps objekty najdete v tématu [typy prostředků Microsoft. Logic](/azure/templates/microsoft.logic/allversions):
+
+* [Definice prostředku pracovního postupu](/azure/templates/microsoft.logic/workflows)
+* [Definice prostředků prostředí integrační služby](/azure/templates/microsoft.logic/integrationserviceenvironments)
+* [Definice prostředků rozhraní API spravovaného prostředí integrační služby](/azure/templates/microsoft.logic/integrationserviceenvironments/managedapis)
+
+* [Definice prostředků účtu pro integraci](/azure/templates/microsoft.logic/integrationaccounts)
+
+* Artefakty účtu pro integraci:
+
+  * [Definice prostředků smlouvy](/azure/templates/microsoft.logic/integrationaccounts/agreements)
+
+  * [Definice prostředků sestavení](/azure/templates/microsoft.logic/integrationaccounts/assemblies)
+
+  * [Definice prostředků konfigurace dávky](/azure/templates/microsoft.logic/integrationaccounts/batchconfigurations)
+
+  * [Definice prostředků certifikátu](/azure/templates/microsoft.logic/integrationaccounts/certificates)
+
+  * [Mapování definice prostředků](/azure/templates/microsoft.logic/integrationaccounts/maps)
+
+  * [Definice partnerského prostředku](/azure/templates/microsoft.logic/integrationaccounts/partners)
+
+  * [Definice prostředků schématu](/azure/templates/microsoft.logic/integrationaccounts/schemas)
+
+  * [Definice prostředku relace](/azure/templates/microsoft.logic/integrationaccounts/sessions)
 
 <a name="workflow-definition-parameters"></a>
 

@@ -3,17 +3,17 @@ title: Azure Defender pro SQL – výhody a funkce
 description: Přečtěte si o výhodách a funkcích Azure Defenderu pro SQL.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e76fd33ccca73394c4ee48b3737db8b93a990659
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dcdbc3efba53f78890816721b6659aa69553d6ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301597"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 

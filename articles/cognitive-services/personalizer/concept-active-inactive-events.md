@@ -1,14 +1,16 @@
 ---
 title: Aktivní a neaktivní události – Přizpůsobte si
 description: Tento článek popisuje použití aktivních a neaktivních událostí v rámci služby přizpůsobeného modulu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f27542208965e2b820b9fc45cfcc5353a7f193
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253645"
 ---
 # <a name="active-and-inactive-events"></a>Aktivní a neaktivní události
 
@@ -37,9 +39,9 @@ Pokud aplikace používá informace z volání pořadí, použijte později v ob
 
 ## <a name="inactive-events"></a>Neaktivní události
 
-Chcete-li zakázat školení pro událost, zakažte pořadí `learningEnabled = False`volání pomocí.
+Chcete-li zakázat školení pro událost, zakažte pořadí volání pomocí `learningEnabled = False` .
 
-V případě neaktivní události se učení implicitně aktivuje, pokud odešlete nějakou odměnu pro ID události nebo `activate` zavoláte rozhraní API pro daný ID události.
+V případě neaktivní události se učení implicitně aktivuje, pokud odešlete nějakou odměnu pro ID události nebo zavoláte `activate` rozhraní API pro daný ID události.
 
 ## <a name="next-steps"></a>Další kroky
 

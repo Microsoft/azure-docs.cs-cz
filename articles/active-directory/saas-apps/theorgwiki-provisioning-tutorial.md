@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 5959ccd2699ef1162779a4a1d90ab6bb8af1bbbf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255775"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Kurz: Konfigurace TheOrgWiki pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v TheOrgWiki a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro TheOrgWiki.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
@@ -55,23 +55,23 @@ Před konfigurací TheOrgWiki pro Automatické zřizování uživatelů pomocí 
 
 1. Přihlaste se ke [konzole pro správu TheOrgWiki](https://www.theorgwiki.com/login/). Klikněte na **Konzola pro správu**.
 
-    ![TheOrgWiki přidat SCIM](media/theorgwiki-provisioning-tutorial/login.png)
+    ![Snímek org wiki s uživatelem a konzolou pro správu s názvem.](media/theorgwiki-provisioning-tutorial/login.png)
 
 2. V konzole pro správu klikněte na **kartu nastavení**. 
 
-    ![TheOrgWiki přidat SCIM](media/theorgwiki-provisioning-tutorial/settings.png)
+    ![Snímek obrazovky s konzolou pro správu organizace v organizaci, která má kartu nastavení s názvem.](media/theorgwiki-provisioning-tutorial/settings.png)
     
 3. Přejděte na **účty služeb**.
 
-    ![TheOrgWiki přidat SCIM](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
+    ![Snímek obrazovky se stránkou s účty služby v konzole pro správu organizace na wikiwebu](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
 4. Klikněte na **+ účet služby**. V části **typ účtu služby**vyberte **založené na tokenech**. Klikněte na **Uložit**.
 
-    ![TheOrgWiki přidat SCIM](media/theorgwiki-provisioning-tutorial/auth.png)
+    ![Snímek obrazovky dialogového okna nový účet služby s typem účtu služby, založeným na tokenech a možnostmi Uložit.](media/theorgwiki-provisioning-tutorial/auth.png)
 
 5.  Zkopírujte **aktivní tokeny**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace TheOrgWiki ve Azure Portal.
      
-    ![TheOrgWiki přidat SCIM](media/theorgwiki-provisioning-tutorial/token.png)
+    ![Snímek obrazovky s dialogovým oknem spravovat tokeny pro zřizování C I M.](media/theorgwiki-provisioning-tutorial/token.png)
 
 ## <a name="add-theorgwiki-from-the-gallery"></a>Přidání TheOrgWiki z Galerie
 
@@ -95,15 +95,15 @@ Pokud chcete nakonfigurovat TheOrgWiki pro Automatické zřizování uživatelů
 
 5. Vyberte tlačítko **zaregistrovat se k TheOrgWiki** , které vás přesměruje na přihlašovací stránku TheOrgWiki. 
 
-    ![TheOrgWiki přidat SCIM](media/theorgwiki-provisioning-tutorial/image00.png)
+    ![Snímek přihlašovací stránky org wiki s adresou URL, která se vyvolala](media/theorgwiki-provisioning-tutorial/image00.png)
 
 6.  V pravém horním rohu vyberte **přihlášení**.
 
-    ![TheOrgWiki přidat SCIM](media/theorgwiki-provisioning-tutorial/image02.png)
+    ![Snímek obrazovky v pravém horním rohu přihlašovací stránky s názvem možnost přihlásit se.](media/theorgwiki-provisioning-tutorial/image02.png)
 
 7. TheOrgWiki je aplikace OpenIDConnect, která se rozhodne přihlásit k OrgWiki pomocí pracovního účtu Microsoft.
 
-    ![TheOrgWiki přidat SCIM](media/theorgwiki-provisioning-tutorial/image03.png)
+    ![Snímek obrazovky se stránkou pro přihlášení k organizaci wiki s možností Přihlásit se účtem Microsoft s názvem.](media/theorgwiki-provisioning-tutorial/image03.png)
     
 8. Po úspěšném ověření se aplikace automaticky přidá do vašeho tenanta a budete přesměrováni na svůj účet TheOrgWiki.
 
@@ -116,21 +116,21 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro TheOrgWiki ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **TheOrgWiki**.
 
     ![Odkaz OrgWiki v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** zadejte `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` **adresu URL tenanta**. 
 
@@ -145,7 +145,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 7. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mail s oznámením](common/provisioning-notification-email.png)
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
 8. Klikněte na **Uložit**.
 
@@ -157,19 +157,19 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Atributy uživatele TheOrgWiki](media/theorgwiki-provisioning-tutorial/userattribute.png).
 
-11. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Pokud chcete povolit službu Azure AD Provisioning pro TheOrgWiki, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
 13. Definujte uživatele nebo skupiny, které chcete zřídit pro OrgWiki, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-14. Až budete připraveni zřídit, klikněte na **Uložit**.
+14. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace o tom, jak dlouho bude trvat pro uživatele a/nebo skupiny, najdete v článku [Jak dlouho bude trvat, než budou uživatelé zřizovat](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 

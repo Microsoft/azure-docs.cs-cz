@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302090"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Načíst datovou sadu podle názvu
 
-Ve výchozím nastavení metoda [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) `Dataset` třídy vrací nejnovější verzi datové sady registrované v pracovním prostoru. 
+Ve výchozím nastavení metoda [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) `Dataset` třídy vrací nejnovější verzi datové sady registrované v pracovním prostoru. 
 
 Následující kód Získá verzi 1 `titanic_ds` datové sady.
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 Pro každý Machine Learning experiment můžete snadno trasovat datové sady použité jako vstup prostřednictvím `Run` objektu experiment.
 
-Následující kód používá [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-details--) metodu ke sledování, které vstupní datové sady byly použity při spuštění experimentu:
+Následující kód používá [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) metodu ke sledování, které vstupní datové sady byly použity při spuštění experimentu:
 
 ```Python
 # get input datasets

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 87b674a9c6b7f7d591b39f1baf54c4d54082f306
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252829"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
@@ -27,7 +27,7 @@ Můžete také spravovat koncové body a trasy pomocí [rozhraní API EventRoute
 ## <a name="prerequisites"></a>Požadavky
 
 * Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
+* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
     - Název instance
     - Skupina prostředků
 
@@ -58,7 +58,7 @@ Jakmile téma vytvoříte, můžete ho propojit s digitálními výsledky Azure 
 
 V nabídce instance vyberte _koncové body_. Pak na stránce *koncové body* , které následuje, vyberte *+ vytvořit koncový bod*. 
 
-Na stránce *vytvořit koncový bod* , která se otevře, můžete vytvořit koncový bod typu _Event Grid_ tak, že vyberete odpovídající přepínač. Dokončete ostatní podrobnosti: do pole _název_ zadejte název vašeho koncového bodu, v rozevíracím seznamu vyberte své _předplatné_ a z třetího rozevíracího seznamu vyberte předem vytvořené _Event Grid téma_ .
+Na stránce *vytvořit koncový bod* , která se otevře, můžete vytvořit koncový bod typu _Event Grid_ tak, že vyberete odpovídající přepínač. Dokončete ostatní podrobnosti: do pole _název_ zadejte název vašeho koncového bodu, v rozevíracím seznamu vyberte své _předplatné_ a z třetího rozevíracího seznamu vyberte předem vytvořené  _Event Grid téma_ .
 
 Pak vytvořte svůj koncový bod tím, že kliknete na _Uložit_.
 
@@ -133,8 +133,8 @@ Definice trasy události obsahuje tyto prvky:
 * Název trasy, kterou chcete použít
 * Název koncového bodu, který chcete použít
 * Filtr definující události odesílané do koncového bodu
-    - Pokud chcete zakázat trasu, aby se neodesílaly žádné události, použijte hodnotu filtru.`false`
-    - Pokud chcete povolit trasu, která nemá žádné konkrétní filtrování, použijte hodnotu filtru.`true`
+    - Pokud chcete zakázat trasu, aby se neodesílaly žádné události, použijte hodnotu filtru. `false`
+    - Pokud chcete povolit trasu, která nemá žádné konkrétní filtrování, použijte hodnotu filtru. `true`
     - Podrobnosti o jakémkoli jiném typu filtru najdete v části [*události filtru*](#filter-events) níže.
 
 Jedna trasa může umožňovat výběr více oznámení a typů událostí.

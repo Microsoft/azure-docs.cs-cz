@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900263"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253186"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
 
@@ -60,7 +60,7 @@ V důsledku analytických dotazů neexistuje žádný vliv na výkon transakčn�
 
 ### <a name="auto-sync"></a>Automatická synchronizace
 
-Automatická synchronizace odkazuje na plně spravovanou funkci Azure Cosmos DB, kde se vložení, aktualizace a odstranění dat na provozní data automaticky synchronizují z transakčního úložiště do analytického úložiště téměř v reálném čase do 5 minut.
+Automatická synchronizace odkazuje na plně spravovanou funkci Azure Cosmos DB, kde se vložení, aktualizace a odstranění dat na provozní data automaticky synchronizují z transakčního úložiště do analytického úložiště téměř v reálném čase. Latence automatické synchronizace je obvykle do 2 minut. V případě sdílené databáze propustnosti s velkým počtem kontejnerů může být latence automatické synchronizace v jednotlivých kontejnerech vyšší a trvat až 5 minut. Rádi bychom se dozvěděli, jak tato latence vyhovuje vašim scénářům. V takovém případě se prosím obraťte na [tým Azure Cosmos DB](mailto:cosmosdbsynapselink@microsoft.com).
 
 Funkce automatické synchronizace společně s analytickým úložištěm nabízí tyto klíčové výhody:
 
@@ -138,7 +138,7 @@ salary: 1000000
 }
 ```
 
-Vlastnost List `streetName` v rámci vnořeného objektu `address` bude reprezentována ve schématu analytického úložiště jako sloupec `address.object.streetName.int32` . Datový typ se přidá jako přípona do sloupce. To znamená, že pokud se do transakčního úložiště přidá jiný dokument, kde hodnota vlastnosti listu `streetNo` je "123" (Všimněte si, že se jedná o řetězec), schéma analytického úložiště se automaticky rozvíjejí bez změny typu dříve zapsaného sloupce. Nový sloupec přidaný do analytického úložiště, ve `address.object.streetName.string` kterém je tato hodnota "123" uložena.
+Vlastnost List `streetNo` v rámci vnořeného objektu `address` bude reprezentována ve schématu analytického úložiště jako sloupec `address.object.streetNo.int32` . Datový typ se přidá jako přípona do sloupce. To znamená, že pokud se do transakčního úložiště přidá jiný dokument, kde hodnota vlastnosti listu `streetNo` je "123" (Všimněte si, že se jedná o řetězec), schéma analytického úložiště se automaticky rozvíjejí bez změny typu dříve zapsaného sloupce. Nový sloupec přidaný do analytického úložiště, ve `address.object.streetNo.string` kterém je tato hodnota "123" uložena.
 
 **Mapování datového typu na mapu přípon**
 

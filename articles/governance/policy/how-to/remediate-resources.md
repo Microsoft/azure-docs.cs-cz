@@ -1,14 +1,14 @@
 ---
 title: Oprava prostředků, které nevyhovují předpisům
 description: Tato příručka vás provede opravou prostředků, které nedodržují zásady v Azure Policy.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269841"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Napravit nekompatibilní prostředky pomocí Azure Policy
 
@@ -17,12 +17,16 @@ Prostředky, které nejsou kompatibilní se zásadami **deployIfNotExists** nebo
 ## <a name="how-remediation-security-works"></a>Jak funguje Oprava zabezpečení
 
 Když Azure Policy spustí šablonu v definici zásady **deployIfNotExists** , použije [spravovanou identitu](../../../active-directory/managed-identities-azure-resources/overview.md).
-Azure Policy vytvoří spravovanou identitu pro každé přiřazení, ale musí obsahovat podrobnosti o rolích, které mají udělit spravovanou identitu. Pokud ve spravované identitě chybí role, zobrazí se tato chyba při přiřazování zásady nebo k iniciativě. Při použití portálu Azure Policy automaticky uděluje spravované identitě uvedené role po spuštění přiřazení. _Umístění_ spravované identity nemá vliv na jeho operaci s Azure Policy.
+Azure Policy vytvoří spravovanou identitu pro každé přiřazení, ale musí obsahovat podrobnosti o rolích, které mají udělit spravovanou identitu. Pokud ve spravované identitě chybí role, zobrazí se tato chyba při přiřazování zásady nebo k iniciativě. Při použití portálu Azure Policy automaticky uděluje spravované identitě uvedené role po spuštění přiřazení. Při použití sady SDK musí být role uděleny manuálně spravované identitě. _Umístění_ spravované identity nemá vliv na jeho operaci s Azure Policy.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Snímek obrazovky se zásadou deployIfNotExists, ve které chybí definované oprávnění ke spravované identitě" border="false":::
 
 > [!IMPORTANT]
-> Pokud se prostředek upravený pomocí **deployIfNotExists** nebo **Upravit** nachází mimo rozsah přiřazení zásady nebo šablona přistupuje k vlastnostem na prostředcích mimo obor přiřazení zásady, musí se spravované identitě přiřazení [ručně udělit přístup](#manually-configure-the-managed-identity) , jinak se nasazení opravy nezdaří.
+> V následujících scénářích musí mít spravovaná identita přiřazení [manuálně udělený přístup](#manually-configure-the-managed-identity) , jinak se nasazení opravy nezdaří:
+>
+> - Pokud je přiřazení vytvořeno prostřednictvím sady SDK
+> - Pokud se prostředek upravený pomocí **deployIfNotExists** nebo **Upravit** nachází mimo obor přiřazení zásady.
+> - Pokud šablona přistupuje k vlastnostem v prostředcích mimo obor přiřazení zásady
 
 ## <a name="configure-policy-definition"></a>Konfigurace definice zásad
 

@@ -3,12 +3,12 @@ title: Service Bus fronty a témata jako obslužné rutiny událostí pro Azure 
 description: Popisuje, jak můžete použít Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 00f937a66ff17c2d5f502fe976675c999ee02a58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440792"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270164"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede několik dalších akcí zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovával události a **Azure Service Bus** je jednou z nich. 
@@ -51,7 +51,7 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="message-properties"></a>Vlastnosti zprávy
-Použijete-li **Service Bus téma nebo frontu** jako obslužnou rutinu události z Event Grid, nastavte následující záhlaví zpráv: 
+Použijete-li **Service Bus téma nebo frontu** jako obslužnou rutinu události z Event Grid, jedná se o vlastnosti, které obdržíte v hlavičkách zprávy: 
 
 | Název vlastnosti | Popis |
 | ------------- | ----------- | 
@@ -156,6 +156,9 @@ Interní ID systému pro zprávu bude udržováno v průběhu předoručení ud�
     }
 }
 ```
+
+> [!NOTE]
+> Doručování událostí do fronty nebo tématu služby Azure pro službu Azure v **jiném tenantovi** se nepodporuje. 
 
 ## <a name="next-steps"></a>Další kroky
 Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) . 

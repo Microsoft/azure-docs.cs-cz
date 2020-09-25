@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25be55021e4f07b0803d8b7cc1bb48ab05a3ea3b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: devx-track-js
+ms.openlocfilehash: 567def7abaff3cd8d70eb56f0aa117d1eeb52a13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889609"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300424"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Ladění uživatelem definovaných funkcí v Azure Stream Analytics 
 

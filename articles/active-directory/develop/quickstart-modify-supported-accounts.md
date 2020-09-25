@@ -1,6 +1,6 @@
 ---
-title: Upravit Microsoft Identifikujte účty aplikací platformy | Azure
-description: Konfigurací aplikace zaregistrované na platformě Microsoft Identity Platform můžete změnit, kdo (jaké účty) může k aplikaci přistupovat.
+title: 'Rychlý Start: Úprava Microsoft identifikuje účty aplikací platformy | Azure'
+description: V tomto rychlém startu nakonfigurujete aplikaci registrovanou s platformou Microsoft identity, abyste změnili, kdo nebo jaké účty mají přístup k aplikaci.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258009"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý Start: Změna účtů podporovaných aplikací
 
@@ -27,11 +27,7 @@ V tomto rychlém startu se dozvíte, jak úpravou konfigurace vaší aplikace zm
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, musíte splnit následující požadavky:
-
-* Přečtěte si o podporovaných [oprávněních a souhlasu](v2-permissions-and-consent.md), kterým je důležité rozumět při vytváření aplikací, které budou používat jiní uživatelé či jiné aplikace.
-* Máte tenanta, ke kterému jsou zaregistrované aplikace.
-  * Pokud nemáte žádné zaregistrované aplikace, [přečtěte si o registraci aplikací na platformě Microsoft Identity Platform](quickstart-register-app.md).
+* Dokončení [rychlého startu: registrace aplikace s platformou Microsoft Identity](quickstart-register-app.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Přihlášení k webu Azure Portal a výběr aplikace
 
@@ -78,13 +74,5 @@ Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázan
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
-
-* [Registrace aplikace na platformě Microsoft Identity Platform](quickstart-register-app.md)
-* [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md)
-* [Konfigurace aplikace pro zveřejnění webových rozhraní API](quickstart-configure-app-expose-web-apis.md)
-* [Odebrání aplikace zaregistrované na platformě Microsoft Identity Platform](quickstart-remove-app.md)
-
-Další informace o dvou objektech Azure AD, které představují zaregistrovanou aplikaci, a vztahu mezi nimi, najdete v článku o [objektech aplikací a instančních objektech](app-objects-and-service-principals.md).
-
-Další informace o pokynech pro branding, kterými byste se měli řídit při vývoji aplikací s využitím Azure Active Directory, najdete v článku [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md).
+> [!div class="nextstepaction"]
+> [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md)

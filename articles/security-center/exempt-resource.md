@@ -3,16 +3,16 @@ title: Vyloučení prostředku z Azure Security Center doporučení zabezpečen�
 description: Zjistěte, jak vyloučit prostředek z doporučení zabezpečení a zabezpečeného skóre.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b4d043812800bec1070624382755aeb355ea595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301529"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Vyloučení prostředku z doporučení a zabezpečeného skóre
 
@@ -30,7 +30,7 @@ Prostředek bude uvedený jako nepoužitý a důvod se zobrazí jako vyloučený
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Náhled|
 |Stanov|Toto je funkce zásad Azure Premium, která je nabízená pro zákazníky v Azure Defenderu bez dalších nákladů. Pro ostatní uživatele se poplatky můžou v budoucnu uplatňovat.|
 |Požadované role a oprávnění:|**Vlastník předplatného** nebo **Přispěvatel zásad** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění RBAC](../governance/policy/overview.md#rbac-permissions-in-azure-policy).|
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
@@ -62,7 +62,7 @@ Prostředek bude uvedený jako nepoužitý a důvod se zobrazí jako vyloučený
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Úprava výjimky":::
 
-    Důvody pro každou výjimku jsou obsaženy v tabulce. 
+    Důvody pro každou výjimku jsou obsaženy v tabulce (1).
 
     Chcete-li změnit nebo odstranit výjimku, vyberte nabídku se třemi tečkami ("..."), jak je zobrazeno (2).
 

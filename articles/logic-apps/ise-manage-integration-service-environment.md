@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598415"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269365"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Správa prostředí integrační služby (ISE) v Azure Logic Apps
 
@@ -23,7 +23,7 @@ Tento článek ukazuje, jak provádět úlohy správy pro [prostředí integrač
 
 ## <a name="view-your-ise"></a>Zobrazení ISE
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole na portálu zadejte "prostředí integračních služeb" a pak vyberte **prostředí integrační služby**.
 
@@ -122,7 +122,7 @@ Základní jednotka ISE úrovně Premium má pevnou kapacitu, takže pokud potř
    * [**Ruční škálování**](#manual-scale): škálování na základě počtu zpracovávaných jednotek, které chcete použít.
    * [**Vlastní automatické škálování**](#custom-autoscale): škálování na základě metrik výkonu výběrem z různých kritérií a určením mezních podmínek pro splnění těchto kritérií.
 
-   ![Vyberte typ škálování, který chcete.](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+   ![Snímek obrazovky zobrazující stránku horizontálního navýšení kapacity s vybraným ručním škálováním](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 

@@ -1,8 +1,8 @@
 ---
 title: Posílání nabízených oznámení konkrétním uživatelům pomocí Azure Notification Hubs | Microsoft Docs
-description: Zjistěte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům.
+description: Přečtěte si, jak odesílat nabízená oznámení konkrétním uživatelům iOS pomocí Azure Notification Hubs.
 documentationcenter: ios
-author: sethm
+author: sethmanheim
 manager: femila
 services: notification-hubs
 ms.service: notification-hubs
@@ -14,12 +14,12 @@ ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302185"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení konkrétním uživatelům pomocí Azure Notification Hubs
 
@@ -312,7 +312,7 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
     ```
 
     > [!NOTE]
-    > Následující fragment kódu není schématem zabezpečeného ověřování. měli byste nahradit implementaci `createAndSetAuthenticationHeaderWithUsername:AndPassword:` pomocí konkrétního ověřovacího mechanismu, který vygeneruje ověřovací token, který má být využíván registrací třídy klienta, například OAuth, Active Directory.
+    > Následující fragment kódu není schématem zabezpečeného ověřování. měli byste nahradit implementaci    `createAndSetAuthenticationHeaderWithUsername:AndPassword:` pomocí konkrétního ověřovacího mechanismu, který vygeneruje ověřovací token, který má být využíván registrací třídy klienta, například OAuth, Active Directory.
 
 10. Pak v `@implementation` části `ViewController.m` přidejte následující kód, který přidá implementaci pro nastavení tokenu zařízení a záhlaví ověřování.
 

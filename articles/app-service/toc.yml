@@ -146,7 +146,7 @@
           href: configure-language-java.md
         - name: Konfigurace Ruby
           href: configure-language-ruby.md
-        - name: Konfigurace vlastního linuxového kontejneru
+        - name: Konfigurace vlastního kontejneru
           href: configure-custom-container.md
         - name: Připojení k místním prostředkům
           href: web-sites-integrate-with-vnet.md

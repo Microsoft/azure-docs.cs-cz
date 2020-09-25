@@ -2,19 +2,19 @@
 title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare.
 ms.topic: tutorial
-ms.date: 09/07/2020
-ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/21/2020
+ms.openlocfilehash: 47ad5ca5e9d6b116ea48e1120b5ad3defaec7509
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254620"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu řešení Azure VMware v Azure
 
 Řešení Azure VMware nabízí možnost nasadit cluster vSphere v Azure. Minimální počáteční nasazení je tři hostitele. Další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster. 
 
-Vzhledem k tomu, že řešení Azure VMware vám neumožňuje spravovat váš privátní cloud s vaším místním systémem vCenter při spuštění, je potřeba další konfigurace a připojení k místní instanci vCenter, virtuální síti a další. Tyto postupy a související požadavky jsou pokryté v tomto kurzu.
+Vzhledem k tomu, že řešení Azure VMware neumožňuje spravovat váš privátní cloud s vaším místním systémem vCenter při spuštění, je potřeba provést další konfiguraci. Tyto postupy a související požadavky jsou pokryté v tomto kurzu.
 
 V tomto kurzu se naučíte:
 
@@ -43,11 +43,11 @@ Privátní cloud řešení Azure VMware můžete vytvořit pomocí [Azure Portal
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Místo Azure Portal vytvoření privátního cloudu řešení Azure VMware můžete použít rozhraní příkazového řádku Azure pomocí Azure Cloud Shell. Je to bezplatné interaktivní prostředí s předinstalovanými a nakonfigurovanými běžnými nástroji Azure pro použití s vaším účtem. 
+Místo Azure Portal vytvoření privátního cloudu řešení Azure VMware můžete použít rozhraní příkazového řádku Azure pomocí Azure Cloud Shell.  Seznam příkazů, které můžete použít s řešením Azure VMware, najdete v tématu [příkazy Azure VMware](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
 
 #### <a name="open-azure-cloud-shell"></a>Otevření služby Azure Cloud Shell
 
-Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
+Vyberte **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
 
 #### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -60,7 +60,7 @@ az group create --name myResourceGroup --location eastus
 
 #### <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
-Zadejte název skupiny prostředků, název privátního cloudu, umístění a velikost clusteru.
+Zadejte název skupiny prostředků a privátního cloudu, umístění a velikost clusteru.
 
 | Vlastnost  | Popis  |
 | --------- | ------------ |
@@ -95,6 +95,10 @@ Po odstranění privátního cloudu neexistuje žádný způsob, jak obnovit vir
  
 3. Zadejte název privátního cloudu a vyberte **Ano**. Během několika hodin se proces odstranění dokončí.  
 
+## <a name="azure-vmware-commands"></a>Příkazy Azure VMware
+
+Seznam příkazů, které můžete použít s řešením Azure VMware, najdete v tématu [příkazy Azure VMware](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
@@ -104,7 +108,8 @@ V tomto kurzu jste se naučili:
 > * Ověření nasazení privátního cloudu
 > * Odstranění privátního cloudu řešení Azure VMware
 
-Přejděte k dalšímu kurzu, kde se dozvíte, jak vytvořit virtuální síť pro použití s privátním cloudem v rámci nastavení místní správy pro clustery privátních cloudů.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak vytvořit pole s odkazem. Pomocí tohoto pole se můžete připojit k vašemu prostředí, abyste mohli místně spravovat svůj privátní cloud.
+
 
 > [!div class="nextstepaction"]
-> [Vytvoření Virtual Network](tutorial-configure-networking.md)
+> [Přístup k privátnímu cloudu řešení Azure VMware](tutorial-access-private-cloud.md)

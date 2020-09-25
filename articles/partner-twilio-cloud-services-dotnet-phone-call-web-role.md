@@ -1,6 +1,6 @@
 ---
 title: Jak uskutečnit telefonní hovor z Twilio (.NET) | Microsoft Docs
-description: Naučte se, jak uskutečnit telefonní hovor a poslat zprávu SMS pomocí služby Twilio API v Azure. Ukázky kódu napsané v .NET
+description: Naučte se, jak uskutečnit telefonní hovor pomocí služby Twilio API v Azure. Ukázky kódu napsané v .NET
 services: ''
 documentationcenter: .net
 author: mimckitt
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 90e7bafab3fb9658cd9e11d0417f84269adcfa13
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268481"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio ve webové roli v Azure
 Tato příručka ukazuje, jak pomocí Twilio uskutečnit volání z webové stránky hostované v Azure. Výsledná aplikace vyzve uživatele, aby provedl volání s daným číslem a zprávou, jak je znázorněno na následujícím snímku obrazovky.
 
 ![Formulář volání Azure pomocí Twilio a ASP.NET][twilio_dotnet_basic_form]
 
-## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Předpoklady
+## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Požadavky
 K použití kódu v tomto tématu budete muset provést následující:
 
 1. Získejte účet Twilio a ověřovací token z [konzoly Twilio][twilio_console]. Pokud chcete začít s Twilio, zaregistrujte se [https://www.twilio.com/try-twilio][try_twilio] . Ceny můžete vyhodnotit na adrese [https://www.twilio.com/pricing][twilio_pricing] . Informace o rozhraní API, které poskytuje Twilio, najdete v tématu [https://www.twilio.com/voice/api][twilio_api] .

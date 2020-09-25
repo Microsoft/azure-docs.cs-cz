@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269705"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -65,6 +65,23 @@ Aktuální limit počtu je 100.
 
 Pro export skupiny exportujeme zahrnuté odkazy ze skupiny, ale ne všechny vlastnosti [prostředku skupiny](https://www.hl7.org/fhir/group.html).
 
+### <a name="can-i-post-a-bundle-to-the-azure-api-for-fhir"></a>Můžu do Azure API pro FHIR Publikovat sadu prostředků?
+
+V současné době podporujeme [dávkové balíky](https://www.hl7.org/fhir/valueset-bundle-type.html) , ale nepodporují transakce se zaúčtováním v rozhraní Azure API pro FHIR. K publikování sad transakcí můžete použít Open Source Server FHIR, který je založený na SQL.
+
+### <a name="how-can-i-get-all-resources-for-a-single-patient-in-the-azure-api-for-fhir"></a>Jak získám všechny prostředky pro jednoho pacienta v rozhraní API Azure pro FHIR?
+
+Pro FHIR podporujeme [vyhledávání oddílů](https://www.hl7.org/fhir/compartmentdefinition.html) v rozhraní API Azure. To vám umožní získat všechny prostředky, které se týkají konkrétního pacienta. Všimněte si, že teď oddíl obsahuje všechny prostředky, které se týkají pacienta, ale ne samotný pacient, takže budete muset také vyhledat pacienta, pokud potřebujete prostředek pacienta ve výsledcích.
+
+Níže jsou uvedeny některé příklady:
+
+* ZÍSKAT pacienta/<id>/*
+* ZÍSKAT pacienta/ <id> /Observation
+* ZÍSKAT pacient/ <id> /Observation? Code = 8302-2
+
+### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Kde se můžu podívat na některé příklady použití rozhraní Azure API pro FHIR v rámci pracovního postupu?
+
+Na [stránce GitHub architektury Health Architecture](https://github.com/microsoft/health-architectures)máme k dispozici kolekci referenčních architektur.
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector pro FHIR (Preview)
 

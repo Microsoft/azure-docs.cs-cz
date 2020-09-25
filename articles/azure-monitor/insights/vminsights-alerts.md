@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
-ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80289599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254801"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Jak vytvořit výstrahy z Azure Monitor pro virtuální počítače
 [Výstrahy v Azure monitor](../platform/alerts-overview.md) proaktivně upozorňují na zajímavá data a vzory v datech monitorování. Azure Monitor pro virtuální počítače nezahrnuje předem nakonfigurovaná pravidla výstrah, ale můžete vytvořit vlastní, a to na základě dat, která shromažďuje. Tento článek obsahuje pokyny týkající se vytváření pravidel výstrah, včetně sady ukázkových dotazů.
@@ -22,8 +22,8 @@ Azure Monitor má [různé typy pravidel upozornění](../platform/alerts-overvi
 
 Existují dva typy upozornění protokolu v Azure Monitor:
 
-- [Počet výstrah výsledků](../platform/alerts-unified-log.md#number-of-results-alert-rules) vytvoří jednu výstrahu, když dotaz vrátí alespoň zadaný počet záznamů. Ty jsou ideální pro nečíselná data, například pro události Windows a syslog shromažďované [agentem Log Analytics](../platform/log-analytics-agent.md) nebo pro analýzu trendů výkonu napříč více počítači.
-- [Výstrahy měření metriky](../platform/alerts-unified-log.md#metric-measurement-alert-rules) vytvoří samostatnou výstrahu pro každý záznam v dotazu, který má hodnotu, která překračuje prahovou hodnotu definovanou v pravidle výstrahy. Tato pravidla výstrah jsou ideální pro data o výkonu shromážděná Azure Monitor pro virtuální počítače, protože mohou vytvořit jednotlivé výstrahy pro každý počítač.
+- [Počet výstrah výsledků](../platform/alerts-unified-log.md#count-of-the-results-table-rows) vytvoří jednu výstrahu, když dotaz vrátí alespoň zadaný počet záznamů. Ty jsou ideální pro nečíselná data, například pro události Windows a syslog shromažďované [agentem Log Analytics](../platform/log-analytics-agent.md) nebo pro analýzu trendů výkonu napříč více počítači.
+- [Výstrahy měření metriky](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) vytvoří samostatnou výstrahu pro každý záznam v dotazu, který má hodnotu, která překračuje prahovou hodnotu definovanou v pravidle výstrahy. Tato pravidla výstrah jsou ideální pro data o výkonu shromážděná Azure Monitor pro virtuální počítače, protože mohou vytvořit jednotlivé výstrahy pro každý počítač.
 
 
 ## <a name="alert-rule-walkthrough"></a>Návod pro pravidlo upozornění

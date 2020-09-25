@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259216"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Onfido s využitím Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ V tomto ukázkovém kurzu poskytujeme pokyny pro integraci Azure AD B2C s [Onfid
 
 V této ukázce připojíme k ověření identity službu Onfido v procesu registrace nebo přihlašování. Informovaná rozhodnutí o tom, ke kterému produktu a službě může uživatel přistupovat, se provádí na základě výsledků Onfido.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -94,7 +94,7 @@ Nastavení aplikace je možné nakonfigurovat ve [službě App Service v Azure](
 
 1. Nastavení [kontejneru úložiště objektů BLOB v účtu úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
 
-2. Soubory uživatelského rozhraní uložte ze složky uživatelského rozhraní do kontejneru objektů BLOB.
+2. Soubory uživatelského rozhraní uložte ze [složky uživatelského rozhraní](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) do kontejneru objektů BLOB.
 
 3. Pomocí těchto pokynů povolte přístup CORS k kontejneru úložiště, který jste vytvořili:
 
@@ -124,7 +124,7 @@ Nastavení aplikace je možné nakonfigurovat ve [službě App Service v Azure](
 
 #### <a name="replace-the-configuration-values"></a>Nahraďte konfigurační hodnoty.
 
-V části poskytnuté vlastní zásady vyhledejte následující zástupné symboly a nahraďte je odpovídajícími hodnotami z vaší instance.
+V části poskytnuté [vlastní zásady](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies)vyhledejte následující zástupné symboly a nahraďte je odpovídajícími hodnotami z vaší instance.
 
 | Zástupný symbol | Nahradit hodnotou | Příklad  |
 |:---------------|:----------------|:-------------------|

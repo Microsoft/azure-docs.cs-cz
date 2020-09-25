@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/15/2020
-ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268719"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
@@ -36,7 +36,7 @@ Nabídky, které dosahují **společného prodeje Azure IP motivovaní** stav z�
 * Poplatek za službu Marketplace se snižuje z 20% na 10%. Tato sleva se vztahuje na vaši nabídku IaaS nebo SaaS prodanou prostřednictvím komerčního tržiště. Další podrobnosti najdete v tématu [snížený poplatek za službu](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) .
 * Partneři poskytovatele Cloud Solution Provider (CSP) obdrží 10% pobídky k prodeji vaší nabídky IaaS nebo SaaS. Přečtěte si další informace o programu CSP v [programu Cloud Solution Provider](cloud-solution-providers.md).
 * Prodej vaší nabídky prostřednictvím komerčního tržiště přispěje ke svým zákaznickým závazkům za využití Azure. Oprávnění zákazníci uvidí na webu Azure Portal nabídku označenou jako **nárok na zvýhodněné výhody Azure** . Další podrobnosti najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md) .
-* Vaše nabídka dostane na prodejní místa **označení "upřednostňovaná řešení"** . Označení propaguje nabídky kvality, výkonu a možnosti řešení potřeb zákazníků v určité odvětví vertikálně nebo v oblasti řešení. Přečtěte si další informace o [preferovaných řešeních v Microsoft AppSource a Azure Marketplace](preferred-solutions.md).
+* Nabídky, které dosahují motivovaní nebo **Business Applications spoluprodávajího motivovaní** ve spolupráci **Azure IP** , obdrží v prodejní místa **označení "upřednostňovaná řešení"** . Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení. Přečtěte si další informace o [preferovaných řešeních v Microsoft AppSource a Azure Marketplace](preferred-solutions.md).
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Společný prodej kroků a požadavků publikování
 

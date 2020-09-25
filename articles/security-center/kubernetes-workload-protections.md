@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 332c33ce46298e5338587cd4d001466d30c1a9e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 138b3b35633b432193a1972421f05d0a8e52b90a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301351"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Ochrana úloh Kubernetes
 
@@ -35,7 +35,7 @@ Pokud povolíte Azure Defender, Security Center nabízí více funkcí zabezpeč
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Náhled|
 |Stanov|Free|
 |Požadované role a oprávnění:|**Vlastník** nebo **Správce zabezpečení** pro úpravu přiřazení<br>**Čtenář** pro zobrazení doporučení|
 |Podporované clustery|Kubernetes v 1.14 (nebo vyšší) je povinný údaj.<br>Žádný prostředek PodSecurityPolicy (starý model PSP) v clusterech<br>Uzly Windows nejsou podporované.|
@@ -95,11 +95,15 @@ Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po ins
     1. Vyberte **Uložit**.
 
 
-1. Pokud chcete vynutilit některá z doporučení, nastavte **Odepřít** na kartě **parametry** zásad zabezpečení pro Security Center:
+1. K vykonání všech doporučení 
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Možnost Deny pro parametr Azure Policy":::
+    1. Otevřete stránku s podrobnostmi o doporučení a vyberte **Odepřít**:
 
-    Tím se v clusterech AKS odepře všechny žádosti, které nedodržují předpisy.
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Možnost Deny pro parametr Azure Policy":::
+
+        Otevře se podokno, ve kterém jste obor nastavili. 
+
+    1. Po nastavení oboru vyberte **změnit na odepřít**.
 
 1. Pokud chcete zjistit, která doporučení se vztahují na vaše clustery:
 

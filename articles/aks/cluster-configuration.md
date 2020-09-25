@@ -3,28 +3,30 @@ title: Konfigurace clusteru ve službě Azure Kubernetes Services (AKS)
 description: Informace o tom, jak nakonfigurovat cluster ve službě Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433445"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255294"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
 V rámci vytváření clusteru AKS možná budete muset přizpůsobit konfiguraci clusteru tak, aby vyhovovala vašim potřebám. Tento článek představuje několik možností přizpůsobení clusteru AKS.
 
-## <a name="os-configuration-preview"></a>Konfigurace operačního systému (Preview)
+## <a name="os-configuration"></a>Konfigurace operačního systému
 
-AKS nyní podporuje Ubuntu 18,04 jako operační systém Node (OS) ve verzi Preview. Během období Preview jsou k dispozici obě Ubuntu 16,04 a Ubuntu 18,04.
+AKS nyní podporuje Ubuntu 18,04 jako operační systém Node (OS) ve všeobecné dostupnosti pro clustery ve verzích Kubernetes vyšších než 1.18.8. Pro verze nižší než 1.18. x je výchozí základní bitová kopie i AKS Ubuntu 16,04. Od Kubernetes v 1.18. x a dalších je výchozí základ AKS Ubuntu 18,04.
 
 > [!IMPORTANT]
-> Fondy uzlů vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší v požadované `AKS Ubuntu 18.04` imagi uzlu. Fondy uzlů na podporované verzi Kubernetes, která je menší než 1,18, se přijímají `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu uzlů na verzi v 1.18 nebo vyšší.
+> Fondy uzlů vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů na podporované verzi Kubernetes, která je menší než 1,18, se přijímají `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu uzlů na verzi v 1.18 nebo vyšší.
 > 
 > Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04. Přečtěte si informace o [testování fondů uzlů Ubuntu 18,04](#use-aks-ubuntu-1804-existing-clusters-preview).
+
+V následující části se dozvíte, jak používat a testovat AKS Ubuntu 18,04 na clusterech, které ještě nepoužívají Kubernetes verze 1.18. x nebo vyšší, nebo které byly vytvořené před tím, než byla tato funkce všeobecně dostupná, pomocí verze Preview konfigurace operačního systému.
 
 Musíte mít nainstalované následující zdroje:
 
@@ -44,13 +46,13 @@ Zaregistrujte `UseCustomizedUbuntuPreview` funkci:
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) :
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -122,14 +124,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) :
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -179,7 +181,7 @@ Azure podporuje [virtuální počítače generace 2 (Gen2) (VM](../virtual-machi
 Virtuální počítače generace 2 používají novou architekturu na bázi rozhraní UEFI namísto architektury založené na systému BIOS používané virtuálními počítači 1. generace.
 Virtuální počítače Gen2 podporují jenom určité SKU a velikosti. Zkontrolujte [seznam podporovaných velikostí](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes), abyste viděli, jestli vaše SKU podporuje nebo vyžaduje Gen2.
 
-Kromě toho ne všechny image virtuálních počítačů podporují Gen2, na virtuálních počítačích s AKS Gen2 použije nový [Obrázek AKS Ubuntu 18,04](#os-configuration-preview). Tento obrázek podporuje všechny SKU a velikosti Gen2.
+Kromě toho ne všechny image virtuálních počítačů podporují Gen2, na virtuálních počítačích s AKS Gen2 použije nový [Obrázek AKS Ubuntu 18,04](#os-configuration). Tento obrázek podporuje všechny SKU a velikosti Gen2.
 
 Pokud chcete ve verzi Preview používat virtuální počítače s Gen2, budete potřebovat:
 - `aks-preview`Rozšíření CLI je nainstalované.
@@ -191,13 +193,13 @@ Zaregistrujte `Gen2VMPreview` funkci:
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) :
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -248,17 +250,19 @@ Zaregistrujte `EnableEphemeralOSDiskPreview` funkci:
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) :
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
 ```
 
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
+
+Dočasný operační systém vyžaduje minimálně verzi 0.4.63 rozšíření CLI AKS-Preview.
 
 K instalaci rozšíření AKS-Preview rozhraní příkazového řádku použijte následující příkazy rozhraní příkazového řádku Azure:
 
@@ -274,25 +278,25 @@ az extension update --name aks-preview
 
 ### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Použít dočasný operační systém pro nové clustery (Preview)
 
-Nakonfigurujte cluster, aby při vytvoření clusteru používal dočasné disky s operačním systémem. Pomocí `--aks-custom-headers` příznaku nastavte dočasný operační systém jako typ disku operačního systému pro nový cluster.
+Nakonfigurujte cluster, aby při vytvoření clusteru používal dočasné disky s operačním systémem. Pomocí `--node-osdisk-type` příznaku nastavte dočasný operační systém jako typ disku operačního systému pro nový cluster.
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Pokud chcete vytvořit běžný cluster pomocí disků s operačním systémem připojeného k síti, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku. Můžete se také rozhodnout přidat další dočasné fondy uzlů operačního systému podle níže uvedených pokynů.
+Pokud chcete vytvořit běžný cluster pomocí disků s operačním systémem připojeného k síti, můžete to udělat tak, že vynecháte vlastní `--node-osdisk-type` značku nebo zadáte `--node-osdisk-type=Managed` . Můžete se také rozhodnout přidat další dočasné fondy uzlů operačního systému podle níže uvedených pokynů.
 
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Použití dočasného operačního systému na existujících clusterech (Preview)
-Nakonfigurujte nový fond uzlů, aby používal dočasné disky s operačním systémem. Pomocí `--aks-custom-headers` příznaku pro tento fond uzlů nastavte jako typ disku s operačním systémem jako typ disku s operačním systémem.
+Nakonfigurujte nový fond uzlů, aby používal dočasné disky s operačním systémem. Pomocí `--node-osdisk-type` příznaku pro tento fond uzlů nastavte jako typ disku s operačním systémem jako typ disku s operačním systémem.
 
 ```azurecli
-az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
 > [!IMPORTANT]
 > S dočasným operačním systémem můžete nasadit image virtuálních počítačů a instancí až do velikosti mezipaměti virtuálních počítačů. V případě AKS používá výchozí konfigurace disku s operačním systémem Node 100GiB, což znamená, že potřebujete velikost virtuálního počítače, která má mezipaměť větší než 100 GiB. Výchozí Standard_DS2_v2 má velikost mezipaměti 86 GiB, která není dostatečně velká. Standard_DS3_v2 má velikost mezipaměti 172 GiB, která je dostatečně velká. Výchozí velikost disku s operačním systémem můžete také snížit pomocí `--node-osdisk-size` . Minimální velikost pro Image AKS je 30GiB. 
 
-Pokud chcete vytvořit fondy uzlů s disky s operačním systémem připojené k síti, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
+Pokud chcete vytvořit fondy uzlů s disky s operačním systémem připojené k síti, můžete to udělat tak, že vynecháte vlastní `--node-osdisk-type` značku.
 
 ## <a name="custom-resource-group-name"></a>Název vlastní skupiny prostředků
 
