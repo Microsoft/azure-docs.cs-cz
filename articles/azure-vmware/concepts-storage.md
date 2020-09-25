@@ -1,16 +1,16 @@
 ---
 title: Koncepty – úložiště
-description: Seznamte se s možnostmi úložiště klíčů ve službě Azure VMware Preview v privátních cloudech.
+description: Seznamte se s možnostmi úložiště klíčů v privátních cloudech řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024311"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316813"
 ---
-# <a name="azure-vmware-solution-preview-storage-concepts"></a>Koncepty úložiště Azure VMware Preview
+#  <a name="azure-vmware-solution-storage-concepts"></a>Koncepty úložiště řešení Azure VMware
 
 Privátní cloudy řešení Azure VMware poskytují nativní prostředí pro úložiště v rámci clusteru s VMware síti vSAN. V úložišti dat síti vSAN se používá všechny místní úložiště z každého hostitele v clusteru a šifrování na základě dat je k dispozici a je ve výchozím nastavení povolené. Prostředky Azure Storage můžete použít k rozšiřování možností úložiště privátních cloudů.
 
@@ -28,7 +28,7 @@ Místní úložiště v hostitelích clusteru se používá v síti vSAN úloži
 
 ## <a name="data-at-rest-encryption"></a>Šifrování při neaktivním umístění dat
 
-úložiště dat síti vSAN ve výchozím nastavení používají šifrování neaktivních dat. Řešení šifrování je založené na službě správy klíčů a podporuje operace vCenter pro správu klíčů. Klíčové šifrovací klíče se ukládají do Azure Key Vault a když se z nějakého důvodu odebere hostitel z clusteru, data v SSD se okamžitě zruší.
+úložiště dat síti vSAN ve výchozím nastavení používají šifrování neaktivních dat. Řešení šifrování je založené na službě správy klíčů a podporuje operace vCenter pro správu klíčů. Klíče jsou uloženy zašifrované, zabalené Azure Key Vault hlavní klíč založený na HSM. Pokud z jakéhokoli důvodu dojde k odebrání hostitele z clusteru, data v SSD se okamžitě zruší.
 
 ## <a name="scaling"></a>Škálování
 

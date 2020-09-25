@@ -3,14 +3,14 @@ title: Protokoly Update Management Azure Automation dotazů
 description: V tomto článku se dozvíte, jak zadat dotaz na protokoly pro Update Management v pracovním prostoru Log Analytics.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 290fb0165038eea8740361a12a6d4bfe2c1bf138
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450132"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264299"
 ---
 # <a name="query-update-management-logs"></a>Dotazování na protokoly Update Managementu
 
@@ -110,9 +110,9 @@ Vytvoří se záznam s typem `UpdateRunProgress` , který poskytuje stav nasazen
 | Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | ComputerEnvironment | Hlediska. Hodnoty jsou Azure nebo mimo Azure. |
 | CorrelationId | Jedinečný identifikátor spuštění úlohy Runbooku pro aktualizaci. |
-| EndTime | Čas ukončení procesu synchronizace. |
+| EndTime | Čas ukončení procesu synchronizace. *Tato vlastnost se v tuto chvíli nepoužívá. Viz TimeGenerated.* |
 | ErrorResult | Při instalaci aktualizace se vygeneroval kód chyby web Windows Update. |
-| InstallationStatus | Možné stavy instalace aktualizace na klientském počítači,<br> `NotStarted`-úloha se ještě neaktivovala.<br> `FailedToStart`-nelze spustit úlohu v počítači.<br> `Failed`-úloha se spustila, ale došlo k chybě s výjimkou.<br> `InProgress`-úloha probíhá.<br> `MaintenanceWindowExceeded`– Pokud bylo provádění zbývající, ale interval časového období údržby byl dosažen.<br> `Succeeded`-úloha byla úspěšná.<br> `InstallFailed`-aktualizaci se nepovedlo úspěšně nainstalovat.<br> `NotIncluded`<br> `Excluded` |
+| InstallationStatus | Možné stavy instalace aktualizace na klientském počítači,<br> `NotStarted` -úloha se ještě neaktivovala.<br> `FailedToStart` -nelze spustit úlohu v počítači.<br> `Failed` -úloha se spustila, ale došlo k chybě s výjimkou.<br> `InProgress` -úloha probíhá.<br> `MaintenanceWindowExceeded` – Pokud bylo provádění zbývající, ale interval časového období údržby byl dosažen.<br> `Succeeded` -úloha byla úspěšná.<br> `InstallFailed` -aktualizaci se nepovedlo úspěšně nainstalovat.<br> `NotIncluded`<br> `Excluded` |
 | KBID | ID článku znalostní báze pro Windows Update |
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
 | OSType | Typ operačního systému. Hodnoty jsou Windows nebo Linux. |
@@ -123,12 +123,12 @@ Vytvoří se záznam s typem `UpdateRunProgress` , který poskytuje stav nasazen
 | ResourceType | Typ prostředku. |
 | SourceComputerId | Jedinečný identifikátor představující zdrojový počítač. |
 | SourceSystem | Zdrojový systém záznamu Hodnota je `OperationsManager`. |
-| StartTime | Čas, kdy má být aktualizace naplánována k instalaci. |
-| SubscriptionId | Jedinečný identifikátor předplatného Azure. | 
+| StartTime | Čas, kdy má být aktualizace naplánována k instalaci. *Tato vlastnost se v tuto chvíli nepoužívá. Viz TimeGenerated.* |
+| SubscriptionId | Jedinečný identifikátor předplatného Azure. |
 | SucceededOnRetry | Hodnota označující, zda se při prvním pokusu spuštění aktualizace nezdařila, a aktuální operace je pokus o opakování. |
 | TimeGenerated | Datum a čas vytvoření záznamu. |
 | Nadpis | Název aktualizace |
-| Typ | Typ aktualizace. Hodnota je `UpdateRunProgress`. |
+| Typ | Typ aktualizace: Hodnota je `UpdateRunProgress`. |
 | UpdateID naformátovat | Jedinečný identifikátor aktualizace softwaru. |
 | VMUUID | Jedinečný identifikátor pro virtuální počítač. |
 | ResourceId | Jedinečný identifikátor prostředku přidruženého k záznamu |
@@ -209,7 +209,7 @@ Pokud chcete ověřit, že skupina pro správu Operations Manager komunikuje s p
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Dotazy na vyhodnocení pro jeden virtuální počítač Azure (Windows)
 
-Hodnotu VMUUID nahraďte identifikátorem GUID virtuálního počítače, na který se dotaz provádí. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Hodnotu VMUUID nahraďte identifikátorem GUID virtuálního počítače, na který se dotaz provádí. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací
 
@@ -238,7 +238,7 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>Dotazy na posuzování virtuálních počítačů Azure (Linux)
 
-U některých Linux distribuce se [neshoduje s hodnotou](https://en.wikipedia.org/wiki/Endianness) VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor:`Update | where Computer == "<machine name>"
+U některých Linux distribuce se [neshoduje s hodnotou](https://en.wikipedia.org/wiki/Endianness) VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací

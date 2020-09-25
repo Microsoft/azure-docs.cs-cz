@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: d6222c9275dfe022e897bb6324df5bb30e1a8905
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706807"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276811"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Zajištění vysoké dostupnosti pomocí Azure Cosmos DB
 
@@ -129,6 +129,8 @@ Zóny dostupnosti můžete povolit pomocí Azure Portal při vytváření účtu
 
 ## <a name="building-highly-available-applications"></a>Vytváření vysoce dostupných aplikací
 
+- V těchto událostech zkontrolujte očekávané [chování sady SDK Azure Cosmos](troubleshoot-sdk-availability.md) a které jsou konfigurace, které to ovlivňují.
+
 - Abyste zajistili vysokou dostupnost zápisu a čtení, nakonfigurujte účet Azure Cosmos tak, aby zahrnoval alespoň dvě oblasti s více oblastmi zápisu. Tato konfigurace poskytuje nejvyšší dostupnost, nejnižší latenci a nejlepší škálovatelnost pro čtení i zápis zálohovaných službou SLA. Další informace najdete v tématu [Konfigurace účtu Azure Cosmos s více oblastmi zápisu](tutorial-global-distribution-sql-api.md).
 
 - Pro účty Azure Cosmos s více oblastmi, které jsou nakonfigurované s jednou oblastí pro zápis, [umožňují automatické převzetí služeb při selhání pomocí Azure CLI nebo Azure Portal](how-to-manage-database-account.md#automatic-failover). Po povolení automatického převzetí služeb při selhání dojde k automatickému převzetí služeb při selhání Cosmos DB, když dojde k místní havárii.  
@@ -146,3 +148,4 @@ Dále si můžete přečíst následující články:
 - [Globální distribuce – pod pokličkou](global-dist-under-the-hood.md)
 - [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)
 - [Jak nakonfigurovat účet Cosmos s více oblastmi zápisu](how-to-multi-master.md)
+- [Chování sady SDK v prostředích s více oblastmi](troubleshoot-sdk-availability.md)

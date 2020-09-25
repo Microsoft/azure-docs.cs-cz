@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409311594cc26680217948e2394420fdaea29024
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015369"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260848"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Sdílená databáze Azure synapse Analytics
 
@@ -23,7 +23,7 @@ Azure synapse Analytics umožňuje různým výpočetním modulům pracovních p
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Databáze vytvořená pomocí úlohy Spark se bude zobrazovat se stejným názvem jako všechny aktuální a budoucí fondy Spark (Preview) v pracovním prostoru i v modulu SQL na vyžádání.
+Databáze vytvořená pomocí úlohy Spark se bude zobrazovat se stejným názvem jako všechny aktuální a budoucí fondy Spark (Preview) v pracovním prostoru, včetně modulu SQL na vyžádání.
 
 Výchozí databáze Spark, která je volána `default` , bude v kontextu SQL na vyžádání zobrazena také jako databáze s názvem `default` .
 

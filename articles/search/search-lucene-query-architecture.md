@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329478"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Fulltextové vyhledávání v Azure Kognitivní hledání
 
@@ -51,7 +51,7 @@ Požadavek hledání je kompletní specifikace toho, co by mělo být vráceno v
 
 V následujícím příkladu se nachází požadavek hledání, který můžete odeslat do služby Azure Kognitivní hledání pomocí [REST API](/rest/api/searchservice/search-documents).  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 Pro tento požadavek vyhledávací modul provede následující akce:
 
@@ -76,9 +76,9 @@ Většina tohoto článku se týká zpracování *vyhledávacího dotazu*: `"Spa
 
 Jak je uvedeno, řetězec dotazu je první řádek požadavku: 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 Analyzátor dotazů odděluje operátory (například `*` a `+` v příkladu) z vyhledávaných podmínek a dekonstruuje vyhledávací dotaz na *poddotazy* podporovaného typu: 
 
@@ -104,9 +104,9 @@ Dalším parametrem žádosti o vyhledávání, který má vliv na analýzu, je 
 
 Když `searchMode=any` , což je výchozí hodnota, oddělovač mezer mezi spacious a Air je nebo ( `||` ), což znamená, že text ukázkového dotazu odpovídá: 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 Explicitní operátory, jako `+` v `+"Ocean view"` , jsou v konstruktoru logického dotazu jednoznačné (podmínky se *musí* shodovat). Méně zjevně je způsob, jak interpretovat zbývající podmínky: spacious a letecký stav. Vyhledá vyhledávací modul shody v zobrazení oceánu *a* v spacious *a* v klimatizačním prostředí? Nebo by mělo najít zobrazení oceánu plus *jednu* ze zbývajících podmínek? 
 
@@ -114,9 +114,9 @@ Ve výchozím nastavení ( `searchMode=any` ) vyhledávací modul předpokládá
 
 Předpokládejme, že jsme teď nastavili `searchMode=all` . V tomto případě je místo interpretováno jako operace "a". Každý z zbývajících podmínek musí být uveden v dokumentu, aby mohl být kvalifikován jako shoda. Výsledný vzorový dotaz by byl interpretován takto: 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 Upravený strom dotazu pro tento dotaz by byl následující, kde odpovídající dokument je průnik všech tří poddotazů: 
 
@@ -152,16 +152,16 @@ Když výchozí analyzátor zpracuje termín, bude se jednat o malý pohled na o
 
 Chování analyzátoru se dá testovat pomocí [rozhraní API pro analýzu](/rest/api/searchservice/test-analyzer). Zadejte text, který chcete analyzovat, aby se zobrazily informace o tom, jaké výrazy vygeneroval analyzátor. Například chcete-li zjistit, jak by standardní analyzátor zpracovával text "letecký stav", můžete vydat následující požadavek:
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 Standardní analyzátor přerušuje vstupní text do následujících dvou tokenů a přiřadí je k atributům, jako jsou počáteční a koncové posuny (používané pro zvýrazňování přístupů), a také na jejich pozici (používané pro shodu frází):
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ Standardní analyzátor přerušuje vstupní text do následujících dvou token
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ Lexikální analýza se vztahuje pouze na typy dotazů, které vyžadují úpln�
 
 Načtení dokumentu odkazuje na hledání dokumentů s vyhovujícími podmínkami v indexu. Tato fáze je nejlépe pochopením příkladu. Pojďme začít s indexem hotelů, který má následující jednoduché schéma: 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ Načtení dokumentu odkazuje na hledání dokumentů s vyhovujícími podmínkam
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 Dále předpokládáme, že tento rejstřík obsahuje následující čtyři dokumenty: 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Dále předpokládáme, že tento rejstřík obsahuje následující čtyři dok
         }
     ]
 }
-~~~~
+```
 
 **Jak jsou indexovány výrazy**
 
@@ -321,10 +321,12 @@ Každému dokumentu v sadě výsledků hledání je přiřazeno skóre relevance
 ### <a name="scoring-example"></a>Příklad bodování
 
 Odvolat tři dokumenty, které odpovídají našemu ukázkovému dotazu:
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 V dokumentu 1 se shodoval dotaz, protože v poli Description se vyskytuje jak pojem *spacious* , tak i požadované *zobrazení v oceánu* . Následující dva dokumenty odpovídají pouze *zobrazení*fráze pro fráze. Je možné, že se skóre relevance pro dokument 2 a 3 liší, i když odpovídají dotazu stejným způsobem. Je to proto, že vzorec bodování má víc součástí, než jenom TF/IDF. V tomto případě byl dokumentu 3 přiřazeno trochu větší skóre, protože jeho popis je kratší. Přečtěte si [vzorec praktického bodování pro Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , který vám pomůže pochopit, jak délka pole a další faktory mohou ovlivnit skóre relevance.
 

@@ -8,18 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 10ff324e85082a4a5911e2c949744e7df1d9ad0b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2f36e568603ded5a89f88cf11627a09a5a240fac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316983"
 ---
 # <a name="configure-vnn-with-azure-load-balancer-sql-server-on-azure-vms"></a>Konfigurace VNN s využitím Azure Load Balancer (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,7 +45,7 @@ K vytvoření nástroje pro vyrovnávání zatížení použijte [Azure Portal](
 
 1. V Azure Portal přejdete do skupiny prostředků, která obsahuje virtuální počítače.
 
-1. Vyberte možnost **Přidat**. Vyhledejte Azure Marketplace **Load Balancer**. Vyberte **Load Balancer**.
+1. Vyberte **Přidat**. Vyhledejte Azure Marketplace **Load Balancer**. Vyberte **Load Balancer**.
 
 1. Vyberte **Vytvořit**.
 
@@ -82,7 +82,7 @@ K vytvoření nástroje pro vyrovnávání zatížení použijte [Azure Portal](
 
 1. V podokně vyrovnávání zatížení vyberte **sondy stavu**.
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 1. V podokně **Přidat sondu stavu** <span id="probe"> </span> nastavte následující parametry sondy stavu:
 
@@ -98,7 +98,7 @@ K vytvoření nástroje pro vyrovnávání zatížení použijte [Azure Portal](
 
 1. V podokně vyrovnávání zatížení vyberte **pravidla vyrovnávání zatížení**.
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 1. Nastavte parametry pravidla vyrovnávání zatížení:
 
@@ -157,7 +157,7 @@ Testovací převzetí služeb při selhání v clusterovém prostředku pro ově
 
 # <a name="failover-cluster-instance"></a>[Instance clusteru s podporou převzetí služeb při selhání](#tab/fci)
 
-Proveďte následující kroky:
+Postupujte následovně:
 
 1. Připojte se k jednomu z SQL Server uzlů clusteru pomocí protokolu RDP.
 1. Otevřete **Správce clusteru s podporou převzetí služeb při selhání**. Vyberte **role**. Všimněte si, že uzel je vlastníkem role SQL Server FCI.
@@ -170,7 +170,7 @@ Proveďte následující kroky:
 
 # <a name="ag-listener"></a>[Naslouchací proces AG](#tab/ag)
 
-Proveďte následující kroky:
+Postupujte následovně:
 
 1. Otevřete [SQL Server Management Studio)](/sql/ssms/download-sql-server-management-studio-ssms) a připojte se ke svému naslouchacího procesu skupiny dostupnosti. 
 

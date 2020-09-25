@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987192"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277287"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -30,7 +30,7 @@ Kontejner prostorových analýz vám umožňuje analyzovat streamování videa v
 
 ### <a name="spatial-analysis-container-requirements"></a>Požadavky na kontejner prostorových analýz
 
-Ke spuštění kontejneru prostorových analýz budete potřebovat výpočetní zařízení s [grafickým procesorem NVIDIA Tesla T4](https://www.nvidia.com/data-center/tesla-t4/). Doporučujeme, abyste používali [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) s akcelerací GPU, ale kontejner běží na jakémkoli jiném počítači, který splňuje minimální požadavky. Do tohoto zařízení odkazujeme jako na hostitelském počítači.
+Ke spuštění kontejneru prostorových analýz budete potřebovat výpočetní zařízení s [grafickým procesorem NVIDIA Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/). Doporučujeme, abyste používali [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) s akcelerací GPU, ale kontejner běží na jakémkoli jiném počítači, který splňuje minimální požadavky. Do tohoto zařízení odkazujeme jako na hostitelském počítači.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack hraniční zařízení](#tab/azure-stack-edge)
 
@@ -63,7 +63,7 @@ V tomto článku budete stahovat a instalovat následující softwarové balíč
 
 ---
 
-| Požadavek | Description |
+| Požadavek | Popis |
 |--|--|
 | Camera | Kontejner prostorových analýz není svázaný s konkrétní značkou kamery. Zařízení kamery potřebuje: podporovat kódování protokolu RTSP (Real-time streaming Protocol) a H. 264, které je dostupné pro hostitelský počítač, a umožňuje streamování při řešení 15FPS a 1080p. |
 | Operační systém Linux | Na hostitelském počítači musí být nainstalovaný [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) .  |
@@ -71,7 +71,7 @@ V tomto článku budete stahovat a instalovat následující softwarové balíč
 
 ## <a name="request-approval-to-run-the-container"></a>Požádat o schválení ke spuštění kontejneru
 
-Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) , který vyžádá schválení pro spuštění kontejneru. 
+Vyplňte a odešlete [formulář žádosti](https://aka.ms/csgate) , který vyžádá schválení pro spuštění kontejneru.
 
 Formulář požaduje informace o vás, vaší společnosti a scénáři uživatele, pro které budete kontejner používat. Po odeslání formuláře ho tým Azure Cognitive Services zkontroluje a pošle vám e-mail s rozhodnutím.
 
@@ -116,7 +116,8 @@ Klikněte na **Vytvořit**. Vytváření prostředků IoT Hub může trvat něko
 Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V zařízení IoT Edge již bude spuštěn modul runtime Azure IoT Edge.            
 
 > [!NOTE]
-> Pro IoT Edge zařízení je momentálně dostupná jenom Platforma Linux. Pomoc při řešení potíží se zařízením Azure Stack Edge naleznete v článku [protokolování a řešení potíží](spatial-analysis-logging.md) .
+> * Pro IoT Edge zařízení je momentálně podporovaná jenom Platforma Linux. Pomoc při řešení potíží se zařízením Azure Stack Edge naleznete v článku [protokolování a řešení potíží](spatial-analysis-logging.md) .
+> * Další informace o tom, jak nakonfigurovat zařízení IoT Edge pro komunikaci pomocí proxy server, najdete v tématu [konfigurace IoT Edge zařízení pro komunikaci prostřednictvím proxy server](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Povolit MPS na Azure Stack Edge 
 
@@ -260,13 +261,14 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) verze 1.0.8. Pomocí těchto kroků si stáhněte správnou verzi: Ubuntu Server 18,04:
+Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) verze 1.0.8. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
+
+Ubuntu Server 18,04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
 ```
 
 Zkopírujte vygenerovaný seznam.
-
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 ```
@@ -324,8 +326,8 @@ V následující tabulce jsou uvedeny různé proměnné prostředí používan�
 | ARCHON_NODES_LOG_LEVEL | Příjemce Podrobné | Úroveň protokolování, vyberte jednu ze dvou hodnot.|
 | OMP_WAIT_POLICY | PASIVNÍ | Neupravovat|
 | QT_X11_NO_MITSHM | 1 | Neupravovat|
-| API_KEY | váš klíč rozhraní API| Tuto hodnotu z prostředku Počítačové zpracování obrazu Shromážděte z Azure Portal. Můžete ji najít v části **klíč a koncový bod** pro váš prostředek v Azure Portal. |
-| BILLING_ENDPOINT | identifikátor URI koncového bodu| Tuto hodnotu z prostředku Počítačové zpracování obrazu Shromážděte z Azure Portal. Můžete ji najít v části **klíč a koncový bod** pro váš prostředek v Azure Portal.|
+| API_KEY | váš klíč rozhraní API| Tuto hodnotu z prostředku Počítačové zpracování obrazu Shromážděte z Azure Portal. Můžete ji najít v části **klíč a koncový bod** pro váš prostředek. |
+| BILLING_ENDPOINT | identifikátor URI koncového bodu| Tuto hodnotu z prostředku Počítačové zpracování obrazu Shromážděte z Azure Portal. Můžete ji najít v části **klíč a koncový bod** pro váš prostředek.|
 | KONKRÉTNÍ | vyjádřit | Tato hodnota musí být nastavena na hodnotu *přijmout* , aby bylo možné kontejner spustit. |
 | Otevřete | : 1 | Tato hodnota musí být stejná jako výstup `echo $DISPLAY` na hostitelském počítači. Hraniční zařízení Azure Stack neobsahují displej. Toto nastavení se nedá použít.|
 
@@ -339,7 +341,6 @@ Po aktualizaci ukázkové [DeploymentManifest.jsv](https://go.microsoft.com/fwli
 az login
 az extension add --name azure-iot
 az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
-
 ```
 
 |Parametr  |Popis  |

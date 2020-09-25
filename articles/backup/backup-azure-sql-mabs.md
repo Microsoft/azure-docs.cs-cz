@@ -3,12 +3,12 @@ title: Zálohování SQL Server pomocí Azure Backup Server
 description: V tomto článku se dozvíte, jak nakonfigurovat zálohování SQL Server databází pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: b47cb74c6e5dbb868c03f8f7b79c00b0c4ce7886
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182305"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316915"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Zálohování SQL Server do Azure pomocí Azure Backup Server
 
@@ -24,10 +24,10 @@ Postup zálohování databáze SQL Server a její obnovení z Azure:
 
 * Pokud máte databázi se soubory ve vzdálené sdílené složce, ochrana se nezdaří a ID chyby bude 104. MABS nepodporuje ochranu pro SQL Server dat ve vzdálené sdílené složce souborů.
 * MABS nemůže chránit databáze, které jsou uložené ve vzdálených sdílených složkách protokolu SMB.
-* Ujistěte se, že [repliky skupin dostupnosti jsou nakonfigurovány jen pro čtení](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Ujistěte se, že [repliky skupin dostupnosti jsou nakonfigurovány jen pro čtení](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server).
 * Účet System **NTAUTHORITY\SYSTEM.** musíte explicitně přidat do skupiny Sysadmin na SQL Server.
-* Když provedete obnovení do alternativního umístění pro částečně databázi s omezením, je nutné zajistit, aby byla v cílové instanci SQL povolena funkce [databáze s omezením](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) .
-* Když provádíte obnovení do alternativního umístění databáze datového proudu souborů, musíte zajistit, aby cílová instance SQL měla povolenou funkci [databáze streamování souborů](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) .
+* Když provedete obnovení do alternativního umístění pro částečně databázi s omezením, je nutné zajistit, aby byla v cílové instanci SQL povolena funkce [databáze s omezením](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) .
+* Když provádíte obnovení do alternativního umístění databáze datového proudu souborů, musíte zajistit, aby cílová instance SQL měla povolenou funkci [databáze streamování souborů](/sql/relational-databases/blob/enable-and-configure-filestream) .
 * Ochrana SQL Serveru AlwaysOn:
   * MABS detekuje skupiny dostupnosti při spuštění dotazu při vytváření skupiny ochrany.
   * MABS detekuje převzetí služeb při selhání a pokračuje v ochraně databáze.
@@ -45,14 +45,14 @@ Postup zálohování databáze SQL Server a její obnovení z Azure:
     * Pokud se zálohování na vybraném uzlu nepovede, operace zálohování se nezdařila.
     * Obnovení do původního umístění není podporováno.
 * SQL Server 2014 nebo vyšší problémy se zálohováním:
-  * SQL Server 2014 Přidal novou funkci pro vytvoření [databáze pro místní SQL Server v úložišti objektů BLOB v systému Windows Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). MABS nejde použít k ochraně této konfigurace.
+  * SQL Server 2014 Přidal novou funkci pro vytvoření [databáze pro místní SQL Server v úložišti objektů BLOB v systému Windows Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure). MABS nejde použít k ochraně této konfigurace.
   * U možnosti "Preferovat sekundární" zálohování pro možnost SQL AlwaysOn Existují známé problémy. MABS vždycky provede zálohu ze sekundárního. Pokud není možné najít sekundární, zálohování se nepovede.
 
 ## <a name="before-you-start"></a>Než začnete
 
 Než začnete, ujistěte se, že jste [nainstalovali a připravili Azure Backup Server](backup-azure-microsoft-azure-backup.md).
 
-## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+## <a name="create-a-backup-policy"></a>Vytvoření zásad zálohování
 
 Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady zálohování:
 

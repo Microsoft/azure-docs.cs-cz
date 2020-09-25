@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu a Java.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 4850daf8544129e29333be6a807c91106cc11f05
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dc20b6abaf04b3743218e35d258bc8beab33c542
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277440"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java
 
@@ -71,7 +71,7 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-and-send-the-search-request"></a>Sestavit a odeslat požadavek hledání
 
-1. Vytvořte novou metodu s názvem `get_suggestions()` a proveďte následující kroky:
+1. Vytvořte novou metodu s názvem  `get_suggestions()` a proveďte následující kroky:
 
    1. Vytvořte adresu URL pro vaši žádost kombinací hostitele rozhraní API, cesty a kódování vyhledávacího dotazu. Před připojením dotazu nezapomeňte dotaz zakódovat. Vytvořte řetězec parametrů pro dotaz připojením kódu na trhu k `mkt=` parametru a dotazem na `q=` parametr.
     
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Vytvořte `HttpsURLConnection` objekt a použijte `openConnection()` k vytvoření připojení. Nastavte metodu Request na `GET` a přidejte do hlavičky klíč předplatného `Ocp-Apim-Subscription-Key` .
+   3. Vytvořte `HttpsURLConnection` objekt a použijte  `openConnection()` k vytvoření připojení. Nastavte metodu Request na `GET` a přidejte do hlavičky klíč předplatného `Ocp-Apim-Subscription-Key` .
 
       ```java
        //...

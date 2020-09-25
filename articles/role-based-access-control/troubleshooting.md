@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/28/2020
+ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329500"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Převod předplatného do jiného adresáře
 
-- Pokud potřebujete postup, jak přenést předplatné do jiného adresáře služby Azure AD, přečtěte si téma [přenos vlastnictví předplatného Azure na jiný účet](../cost-management-billing/manage/billing-subscription-transfer.md).
+- Pokud potřebujete postup, jak přenést předplatné do jiného adresáře služby Azure AD, přečtěte si téma [přenos předplatného Azure do jiného adresáře Azure AD (Preview)](transfer-subscription.md).
 - Pokud přenesete předplatné do jiného adresáře služby Azure AD, všechna přiřazení rolí se **trvale** odstraní ze zdrojového adresáře služby Azure AD a nemigrují se do cílového adresáře služby Azure AD. V cílovém adresáři musíte znovu vytvořit přiřazení rolí. Je také nutné ručně znovu vytvořit spravované identity pro prostředky Azure. Další informace najdete v tématu [Nejčastější dotazy a známé problémy se spravovanými identitami](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Pokud jste globálním správcem služby Azure AD a nemáte přístup k předplatnému po jeho přenosu mezi adresáři, použijte přepínač **Správa přístupu pro prostředky Azure** a dočasně [zvyšte přístup](elevate-access-global-admin.md) k předplatnému, abyste získali přístup k předplatnému.
 
@@ -99,11 +99,17 @@ $ras.Count
 - Pokud při pokusu o vytvoření prostředku dojde k chybě oprávnění Klient s ID objektu nemá oprávnění k provedení akce v oboru (kód: AuthorizationFailed), zkontrolujte, že jste přihlášeni jako uživatel s přiřazenou rolí s oprávněním k zápisu pro prostředek ve vybraném oboru. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění pro jednotlivé předdefinované role najdete v tématu [předdefinované role Azure](built-in-roles.md).
 - Pokud se zobrazí chyba oprávnění "nemáte oprávnění k vytvoření žádosti o podporu" při pokusu o vytvoření nebo aktualizaci lístku podpory, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s `Microsoft.Support/supportTickets/write` oprávněním, jako je například [Přispěvatel žádostí o podporu](built-in-roles.md#support-request-contributor).
 
+## <a name="move-resources-with-role-assignments"></a>Přesunutí prostředků s přiřazením rolí
+
+Pokud přesunete prostředek, který má přiřazenou roli Azure, přímo k prostředku (nebo podřízenému prostředku), přiřazení role se nepřesune a bude osamocené. Po přesunutí musíte znovu vytvořit přiřazení role. Nakonec se automaticky odebere přiřazení osamocené role, ale je osvědčeným postupem odebrání přiřazení role před přesunutím prostředku.
+
+Informace o tom, jak přesunout prostředky, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+
 ## <a name="role-assignments-with-identity-not-found"></a>Přiřazení rolí s identitou se nenašlo.
 
 V seznamu přiřazení rolí pro Azure Portal můžete všimnout, že je objekt zabezpečení (uživatel, skupina, instanční objekt nebo spravovaná identita) uvedený jako **Identita nenalezena** s **neznámým** typem.
 
-![Skupina prostředků webové aplikace](./media/troubleshooting/unknown-security-principal.png)
+![V seznamu přiřazení rolí Azure se nenašla identita.](./media/troubleshooting/unknown-security-principal.png)
 
 Identita se nemusí najít ze dvou důvodů:
 
@@ -242,5 +248,5 @@ Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vy�
 ## <a name="next-steps"></a>Další kroky
 
 - [Řešení potíží pro uživatele typu Host](role-assignments-external-users.md#troubleshoot)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](role-assignments-portal.md)
 - [Zobrazení protokolů aktivit pro změny v Azure RBAC](change-history-report.md)

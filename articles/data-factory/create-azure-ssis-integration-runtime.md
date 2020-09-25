@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 07cfb0048e6027b0bac219b3fe28018db2d10257
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d193438a232cc6bc113efb31ce4276117a366add
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276845"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory
 
@@ -39,7 +39,7 @@ V kurzu [zřizování Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.m
 
 V tomto článku se dozvíte, jak zřídit Azure-SSIS IR pomocí šablony Azure Portal, Azure PowerShell a Azure Resource Manager.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -79,7 +79,7 @@ Seznam oblastí Azure, ve kterých jsou k dispozici Data Factory a Azure-SSIS IR
 
 Následující tabulka porovnává některé funkce serveru Azure SQL Database a SQL Managed instance, protože se vztahují k Azure-SSIR IR:
 
-| Funkce | SQL Database| Spravovaná instance SQL |
+| Příznak | SQL Database| Spravovaná instance SQL |
 |---------|--------------|------------------|
 | **Plánování** | Agent SQL Server není k dispozici.<br/><br/>Viz [Naplánování spuštění balíčku ve data Factoryovém kanálu](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Agent spravované instance je k dispozici. |
 | **Authentication** | Můžete vytvořit instanci SSISDB s uživatelem databáze s omezením, který představuje libovolnou skupinu Azure AD se spravovanou identitou vaší datové továrny jako členem v roli **db_owner** .<br/><br/>Další informace najdete [v tématu Povolení ověřování Azure AD při vytváření SSISDB na serveru Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Můžete vytvořit instanci SSISDB s databází s omezením uživatele, která představuje spravovanou identitu vaší datové továrny. <br/><br/>Viz [Povolení ověřování Azure AD k vytvoření SSISDB ve spravované instanci Azure SQL](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |
@@ -114,19 +114,21 @@ Na stránce **Obecné nastavení** v podokně **instalace prostředí Integratio
 
    1. Jako **Název** zadejte název vašeho prostředí Integration Runtime.
 
-   1. Jako **Popis** zadejte popis vašeho prostředí Integration Runtime.
+   2. Jako **Popis** zadejte popis vašeho prostředí Integration Runtime.
 
-   1. Jako **Umístění** vyberte umístění vašeho prostředí Integration Runtime. Zobrazí se pouze podporovaná umístění. Doporučujeme vybrat stejné umístění, jako má váš databázový server pro hostování databáze SSISDB.
+   3. Jako **Umístění** vyberte umístění vašeho prostředí Integration Runtime. Zobrazí se pouze podporovaná umístění. Doporučujeme vybrat stejné umístění, jako má váš databázový server pro hostování databáze SSISDB.
 
-   1. V poli **Velikost uzlu**vyberte velikost uzlu v clusteru Integration runtime. Zobrazí se pouze podporované velikosti uzlů. Pokud chcete spustit mnoho balíčků náročných na výpočetní výkon nebo paměť s náročnou na paměť, vyberte velikost velkého uzlu (horizontální navýšení kapacity).
+   4. V poli **Velikost uzlu**vyberte velikost uzlu v clusteru Integration runtime. Zobrazí se pouze podporované velikosti uzlů. Pokud chcete spustit mnoho balíčků náročných na výpočetní výkon nebo paměť s náročnou na paměť, vyberte velikost velkého uzlu (horizontální navýšení kapacity).
+   > [!NOTE]
+   > Pokud požadujete [izolaci výpočtů](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation), vyberte prosím velikost uzlu **Standard_E64i_v3** . Tato velikost uzlu představuje izolované virtuální počítače, které využívají svého celého fyzického hostitele, a poskytuje potřebnou úroveň izolace, kterou vyžadují určité úlohy, jako je USA – ministerstvo IL5 (US level of obrany).
+   
+   5. Jako **Počet uzlů** vyberte počet uzlů ve vašem clusteru Integration Runtime. Zobrazí se pouze podporované počty uzlů. Vyberte velký cluster s mnoha uzly (horizontální navýšení kapacity), pokud chcete souběžně spouštět mnoho balíčků.
 
-   1. Jako **Počet uzlů** vyberte počet uzlů ve vašem clusteru Integration Runtime. Zobrazí se pouze podporované počty uzlů. Vyberte velký cluster s mnoha uzly (horizontální navýšení kapacity), pokud chcete souběžně spouštět mnoho balíčků.
+   6. V části **edice/licence**vyberte edici SQL Server pro modul runtime integrace: Standard nebo Enterprise. Vyberte možnost Enterprise, pokud chcete používat pokročilé funkce v prostředí Integration runtime.
 
-   1. V části **edice/licence**vyberte edici SQL Server pro modul runtime integrace: Standard nebo Enterprise. Vyberte možnost Enterprise, pokud chcete používat pokročilé funkce v prostředí Integration runtime.
+   7. Pro **Uložit peníze**vyberte možnost zvýhodněné hybridní využití Azure pro prostředí Integration Runtime: **Ano** nebo **ne**. Vyberte **Ano** , pokud chcete využít vlastní licenci SQL Server se Software Assurance, abyste využili úspory nákladů s využitím hybridního použití.
 
-   1. Pro **Uložit peníze**vyberte možnost zvýhodněné hybridní využití Azure pro prostředí Integration Runtime: **Ano** nebo **ne**. Vyberte **Ano** , pokud chcete využít vlastní licenci SQL Server se Software Assurance, abyste využili úspory nákladů s využitím hybridního použití.
-
-   1. Vyberte **Další**.
+   8. Vyberte **Další**.
 
 #### <a name="deployment-settings-page"></a>Stránka nastavení nasazení
 
@@ -228,7 +230,7 @@ Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to �
 
 Na stránce **Upřesnit nastavení** v podokně **instalace prostředí Integration runtime** proveďte následující kroky.
 
-   ![Rozšířená nastavení](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
+   ![Pokročilá nastavení](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
    1. Pro **maximální paralelní spouštění na uzel**vyberte maximální počet balíčků, které mají být spuštěny souběžně na jeden uzel v clusteru Integration runtime. Zobrazí se pouze podporované počty balíčků. Vyberte nízké číslo, pokud chcete použít více než jedno jádro pro spuštění jednoho velkého balíčku, který je náročné na výpočetní výkon nebo paměť. Vyberte vysoké číslo, pokud chcete spustit jeden nebo více malých balíčků v jednom jádru.
 
@@ -944,7 +946,7 @@ V této části použijete šablonu Azure Resource Manager k vytvoření prostř
     }
     ```
 
-2. Chcete-li nasadit šablonu Azure Resource Manager, spusťte `New-AzResourceGroupDeployment` příkaz, jak je znázorněno v následujícím příkladu. V tomto příkladu `ADFTutorialResourceGroup` je název vaší skupiny prostředků. `ADFTutorialARM.json`je soubor, který obsahuje definici JSON pro datovou továrnu a Azure-SSIS IR.
+2. Chcete-li nasadit šablonu Azure Resource Manager, spusťte `New-AzResourceGroupDeployment` příkaz, jak je znázorněno v následujícím příkladu. V tomto příkladu `ADFTutorialResourceGroup` je název vaší skupiny prostředků. `ADFTutorialARM.json` je soubor, který obsahuje definici JSON pro datovou továrnu a Azure-SSIS IR.
 
     ```powershell
     New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json

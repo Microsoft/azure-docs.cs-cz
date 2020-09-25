@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 605df0f26600f962bda7a0a0def800a91d74b022
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328629"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -26,15 +26,19 @@ Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skript
 
 [!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
+## <a name="prerequisites-download-the-script"></a>Požadavky: Stáhněte si skript
+
+Vzorový skript je napsán v prostředí PowerShell. Je součástí [**ukázek digitálních vláken Azure**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/), které si můžete stáhnout do svého počítače tak, že přejdete na tento ukázkový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem.
+
+Tím se na váš počítač stáhne ukázkový projekt jako _**Azure_Digital_Twins_samples.zip**_. Přejděte do složky na svém počítači a rozbalte ji, abyste soubory rozbalíte.
+
+Ve složce unzip se skript nasazení nachází v _Azure_Digital_Twins_samples > skripty > **deploy.ps1** _.
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="run-the-deployment-script"></a>Spuštění skriptu nasazení
+## <a name="run-the-deployment-script"></a>Spuštění zaváděcího skriptu
 
 V tomto článku se používá ukázka kódu pro digitální vlákna Azure, která umožňuje nasadit instanci digitálních vláken Azure a požadované ověřování částečně automaticky. Můžete ji také použít jako výchozí bod pro psaní vlastních skriptových interakcí.
-
-Vzorový skript je napsán v prostředí PowerShell. Je součástí [ukázek digitálních vláken Azure](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/), které si můžete stáhnout do svého počítače tak, že přejdete na tento ukázkový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem.
-
-Ve složce stažené ukázkové složky se skript nasazení nachází na _Azure_Digital_Twins_samples.zip > skripty > **deploy.ps1** _.
 
 Tady je postup, jak spustit skript nasazení v Cloud Shell.
 1. V prohlížeči přejdete do okna [Azure Cloud Shell](https://shell.azure.com/) . Přihlaste se pomocí tohoto příkazu:
@@ -43,13 +47,23 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
     ```
     Pokud rozhraní příkazového řádku může otevřít výchozí prohlížeč, bude to mít za následek a načíst přihlašovací stránku Azure. V opačném případě otevřete stránku prohlížeče na adrese *https://aka.ms/devicelogin* a zadejte autorizační kód zobrazený v terminálu.
  
-2. Po přihlášení se podívejte na panel ikon Cloud Shellového okna. Vyberte ikonu Odeslat/stáhnout soubory a zvolte nahrát.
+2. Na panelu s ikonami Cloud Shell se ujistěte, že je Cloud Shell nastavená tak, aby běžela verze prostředí PowerShell.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell okno zobrazující výběr možnosti nahrání":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell":::
 
-    Na svém počítači přejděte na soubor _**deploy.ps1**_ a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
+1. Vyberte ikonu Odeslat/stáhnout soubory a zvolte nahrát.
 
-3. Spusťte skript odesláním `./deploy.ps1` příkazu v okně Cloud Shell. Když se skript spustí pomocí automatizovaného postupu nastavení, budete vyzváni k předání těchto hodnot:
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Okno Cloud Shell znázorňující výběr ikony nahrávání":::
+
+    Přejděte na soubor _**deploy.ps1**_ na vašem počítači (v _Azure_Digital_Twins_samples > skripty > **deploy.ps1** _) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
+
+4. Spusťte skript odesláním `./deploy.ps1` příkazu v okně Cloud Shell. (Pokud chcete vložit do Cloud Shell, můžete použít **CTRL + SHIFT + v** v systémech Windows a Linux nebo **Cmd + Shift + v** v MacOS. Můžete také použít nabídku kliknutím pravým tlačítkem myši.)
+
+    ```azurecli
+    ./deploy.ps1
+    ```
+
+    Když se skript spustí pomocí automatizovaného postupu nastavení, budete vyzváni k předání těchto hodnot:
     * Pro instanci: *ID předplatného* vašeho předplatného Azure, které se má použít.
     * Pro instanci: *umístění* , kam chcete instanci nasadit. Pokud chcete zjistit, které oblasti podporují digitální vlákna Azure, přejděte na [*produkty Azure dostupné v jednotlivých oblastech*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * Pro instanci: název *skupiny prostředků* . Můžete použít existující skupinu prostředků nebo zadat nový název, který chcete vytvořit.
@@ -107,9 +121,15 @@ Poznamenejte si *ID aplikace (klienta)* a *ID adresáře (tenanta)* **zobrazené
 
 Pokud chcete ověřit vytvoření prostředků a oprávnění nastavených skriptem, můžete si je prohlédnout v [Azure Portal](https://portal.azure.com).
 
+Pokud nemůžete ověřit úspěch libovolného kroku, zkuste krok zopakovat. Jednotlivé kroky můžete provádět podle pokynů [Azure Portal](how-to-set-up-instance-portal.md) nebo [CLI](how-to-set-up-instance-cli.md) .
+
 ### <a name="verify-instance"></a>Ověřit instanci
 
-Pokud chcete ověřit, jestli se vaše instance vytvořila, na [stránce Azure Portal digitální vlákna](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) na webu Azure. Tato stránka obsahuje seznam všech instancí digitálních vláken Azure. V seznamu vyhledejte název nově vytvořené instance.
+Pokud chcete ověřit, jestli se vaše instance vytvořila, na [stránce Azure Portal digitální vlákna](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) na webu Azure. Na tuto stránku se dostanete tak, že na panelu hledání na portálu vyhledáte *digitální vlákna Azure* .
+
+Tato stránka obsahuje seznam všech instancí digitálních vláken Azure. V seznamu vyhledejte název nově vytvořené instance.
+
+Pokud ověření nebylo úspěšné, můžete znovu vytvořit instanci pomocí [portálu](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) nebo rozhraní příkazového [řádku](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).
 
 ### <a name="verify-user-role-assignment"></a>Ověřit přiřazení role uživatele
 
@@ -117,16 +137,18 @@ Pokud chcete ověřit, jestli se vaše instance vytvořila, na [stránce Azure P
 
 > [!NOTE]
 > Odvolání, že skript aktuálně přiřadí tuto požadovanou roli stejnému uživateli, který spouští skript z Cloud Shell. Pokud potřebujete tuto roli přiřadit někomu jinému, kdo bude spravovat instanci, můžete to udělat hned pomocí Azure Portal ([pokyny](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) nebo rozhraní příkazového řádku ([pokynů](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
->
-> Portál nebo rozhraní příkazového řádku můžete použít také k opakovanému provedení vlastního přiřazení role, pokud došlo k nějakým problémům se skriptovým nastavením.
+
+Pokud ověření nebylo úspěšné, můžete také znovu použít vlastní přiřazení role pomocí [portálu](how-to-set-up-instance-portal.md#set-up-user-access-permissions) nebo rozhraní příkazového [řádku](how-to-set-up-instance-cli.md#set-up-user-access-permissions).
 
 ### <a name="verify-app-registration"></a>Ověřit registraci aplikace
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-Nejdřív ověřte, že nastavení oprávnění pro digitální vlákna Azure byla v registraci správně nastavená. Provedete to tak, že v řádku nabídek vyberete *manifest* a zobrazí se kód manifestu registrace aplikace. Posuňte se do dolní části okna Code (kód) a vyhledejte tato pole v části `requiredResourceAccess` . Hodnoty by měly odpovídat hodnotám na snímku obrazovky níže:
+Dále ověřte, že nastavení oprávnění digitálního vlákna Azure byla správně nastavena při registraci. Provedete to tak, že v řádku nabídek vyberete *manifest* a zobrazí se kód manifestu registrace aplikace. Posuňte se do dolní části okna Code (kód) a vyhledejte tato pole v části `requiredResourceAccess` . Hodnoty by měly odpovídat hodnotám na snímku obrazovky níže:
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+
+Pokud jeden nebo oba tyto kroky ověřování neproběhlo úspěšně, zkuste registraci aplikace znovu vytvořit pomocí [portálu](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) nebo pokynů pro rozhraní příkazového [řádku](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) .
 
 ## <a name="other-possible-steps-for-your-organization"></a>Další možné kroky pro vaši organizaci
 
@@ -135,7 +157,7 @@ Nejdřív ověřte, že nastavení oprávnění pro digitální vlákna Azure by
 ## <a name="next-steps"></a>Další kroky
 
 Otestujte jednotlivá REST API volání na vaši instanci pomocí příkazů rozhraní příkazového řádku Azure Digital revlákens CLI: 
-* [AZ DT reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [AZ DT reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)
 
 Případně můžete informace o tom, jak připojit klientskou aplikaci k instanci, napsáním ověřovacího kódu klientské aplikace:

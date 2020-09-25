@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b42624506b3fe3a40cd19353c0dc25ecd8a5da02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328798"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu v Azure Synchronizace dat SQL
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -173,7 +173,7 @@ Při přejmenování sloupců nebo tabulek se synchronizace dat přestane fungov
 
 Pro jiné typy změn schématu – například vytváření uložených procedur nebo odstranění indexu – aktualizace schématu synchronizace není vyžadována.
 
-## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Řešení potíží s automatickou replikací změn schématu
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a> Řešení potíží s automatickou replikací změn schématu
 
 Logika replikace popsaná v tomto článku v některých situacích přestane fungovat – například pokud jste provedli změnu schématu v místní databázi, která není v Azure SQL Database podporovaná. V takovém případě se synchronizace tabulky sledování změn schématu nezdařila. Tento problém je potřeba vyřešit ručně:
 
@@ -201,7 +201,7 @@ Logika replikace popsaná v tomto článku v některých situacích přestane fu
 
 Chcete-li vyčistit záznamy v tabulce sledování změn schématu, použijte příkaz DELETE místo ZKRÁCENí. Nikdy neměňte základ sloupce identity v tabulce sledování změn schématu pomocí DBCC CHECKIDENT. Pokud je požadováno opětovné osazení, můžete vytvořit nové tabulky sledování změn schématu a aktualizovat název tabulky v triggeru DDL.
 
-## <a name="other-considerations"></a><a name="other"></a>Další požadavky
+## <a name="other-considerations"></a><a name="other"></a> Další požadavky
 
 -   Uživatelé databáze, kteří konfigurují centrum a členské databáze, musí mít dostatečná oprávnění ke spuštění příkazů změny schématu.
 

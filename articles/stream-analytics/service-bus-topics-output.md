@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ef5802d0c5e35b9c12db1f40782ba5f190ad1883
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: cc09912bb0c9ab553d180ff5cc06fc52c4c5cc0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261038"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus výstup témat z Azure Stream Analytics
 
@@ -20,7 +20,7 @@ Fronty Service Bus poskytují metodu komunikace 1:1 od odesílatele k přijíma�
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vytvoření výstupu Service Bus tématu.
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k přesměrování výstupu dotazu do tohoto Service Bus tématu. |
 | Obor názvů Service Bus |Kontejner pro sadu entit zasílání zpráv. Při vytváření nového centra událostí jste také vytvořili Service Bus obor názvů. |
@@ -46,6 +46,22 @@ Maximální velikost zprávy je 256 KB na jednu zprávu pro úroveň Standard a 
 ## <a name="custom-metadata-properties-for-output"></a>Vlastnosti vlastních metadat pro výstup
 
 Sloupce dotazu můžete k odchozím zprávám připojit jako vlastnosti uživatele. Tyto sloupce neobsahují datovou část. Vlastnosti jsou k dispozici ve formě slovníku ve výstupní zprávě. *Klíč* je název sloupce a *hodnota* je hodnota sloupce ve slovníku Properties (vlastnosti). Všechny datové typy Stream Analytics jsou podporovány kromě záznamu a pole.
+
+V následujícím příkladu `DeviceId` jsou pole a `DeviceStatus` přidána do metadat.
+
+1. Použijte následující dotaz:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. Nakonfigurujte `DeviceId,DeviceStatus` jako sloupce vlastností ve výstupu.
+
+   :::image type="content" source="media/service-bus-topics-output/property-columns.png" alt-text="Sloupce vlastností":::
+
+Následující obrázek má očekávané vlastnosti výstupní zprávy, které byly zkontrolovány v centru EventHub pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer).
+
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="Vlastní vlastnosti události":::
 
 ## <a name="system-properties"></a>Systémové vlastnosti
 

@@ -1,6 +1,6 @@
 ---
 title: Role čtenáři adresáře v Azure Active Directory pro Azure SQL
-description: Aplikace Azure AD (instanční objekty) podporují vytváření uživatelů Azure AD v Azure SQL Database, Managed instance Azure SQL a Azure synapse Analytics.
+description: Přečtěte si o roli čtečky adresářů ve službě Azure AD pro Azure SQL.
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse
@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: a517a4b14a64be2b9bf12270eef3d08e14d8f3c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5a6fb2c1c539c5b8e353f5c3720cb9d001dcbbc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277939"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Role čtenáři adresáře v Azure Active Directory pro Azure SQL
 

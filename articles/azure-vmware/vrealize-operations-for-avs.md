@@ -2,13 +2,13 @@
 title: Nastavení operací vRealize pro řešení Azure VMware
 description: Naučte se, jak nastavit operace vRealize pro privátní cloud řešení Azure VMware.
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 729ee5c64776d7d04f702af62451175f7c53421b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 06b88eb610c4633018889315ab1cfd340d3f4b57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750400"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293139"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Nastavení operací vRealize pro řešení Azure VMware
 
@@ -28,7 +28,7 @@ vRealize Operations Manager je platforma pro správu provozu, která správcům 
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * VPN nebo Azure ExpressRoute by se měly nakonfigurovat mezi místními a Azure VMware Solution SDDC.
 * V Azure je nasazený privátní cloud řešení Azure VMware.
 
@@ -58,7 +58,23 @@ Po nasazení instance řešení Azure VMware pro vRealize operace můžete nakon
 > Podrobného průvodce pro instalaci vRealize Operations Manager najdete v [dokumentaci k VMware](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) .
 
 
+## <a name="known-limitations"></a>Známá omezení
 
+- **cloudadmin@vsphere.local**Uživatel v řešení Azure VMware má [omezená oprávnění](concepts-rbac.md). Shromažďování paměti v hostovaném prostředí pomocí nástrojů VMware není podporováno u virtuálních počítačů v řešení Azure VMware. V tomto případě budou v tomto případě nadále fungovat aktivní a spotřebovaná využití paměti.
+- Optimalizace úloh pro obchodní záměr založený na hostiteli nefunguje, protože řešení Azure VMware spravují konfigurace clusteru, včetně nastavení DRS.
+- Optimalizace zatížení pro umístění mezi clustery v rámci SDDC pomocí podnikového záměru založeného na clusteru je plně podporovaná s vRealize Operations Manager 8,0 a vyššími. Optimalizace úloh ale neví o fondech zdrojů a umísťuje virtuální počítače na úrovni clusteru. Uživatel ho může ručně opravit v rozhraní Azure VMware Solution vCenter Server.
+- K vRealize Operations Manager se nemůžete přihlásit pomocí vCenter Server přihlašovacích údajů k řešení Azure VMware. 
+- Řešení Azure VMware nepodporuje modul plug-in vRealize Operations Manager.
+
+Při připojení Azure VMware Solution vCenter k vRealize Operations Manager pomocí vCenter Server cloudového účtu se zobrazí následující upozornění:
+
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Vytvoření instance upozornění se podařilo.":::
+
+K tomuto upozornění dochází, protože **cloudadmin@vsphere.local** uživatel v řešení Azure VMware nemá dostatečná oprávnění, aby mohl provádět všechny vCenter Server akce vyžadované k registraci. Tato oprávnění jsou nicméně dostačující pro instance adaptéru k shromažďování dat, jak je vidět níže:
+
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Instance adaptéru pro provedení shromažďování dat":::
+
+Další informace najdete v tématu [oprávnění požadovaná pro konfiguraci instance adaptéru vCenter](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html).
 
 <!-- LINKS - external -->
 

@@ -1,6 +1,6 @@
 ---
 title: Virtuální počítače Azure s vysokou dostupností pro SAP NW v RHEL s využitím Azure NetApp Files | Microsoft Docs
-description: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
+description: Navažte vysokou dostupnost pro SAP NW na virtuálních počítačích Azure (VM) RHEL s Azure NetApp Files.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 5ba5ebcb68ed206bab038f0a892e24834ddb0f22
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 51da96ab5c42c0b48f53969139bd8b87690b8319
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329274"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP
 

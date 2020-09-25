@@ -3,14 +3,14 @@ title: Koncepty – privátní cloudy a clustery
 description: Seznamte se s klíčovými možnostmi pro služby Azure VMware Software-Defined data Centers a vSphere v řešení VMware v Azure pomocí VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752291"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316864"
 ---
-# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Koncept řešení Azure VMware ve verzi Preview privátní cloud a cluster
+#  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Koncepce privátního cloudu a clusteru řešení Azure VMware
 
 Řešení Azure VMware poskytuje privátní cloudy založené na VMware v Azure. Privátní cloudy jsou sestavené z clusterů vyhrazených hostitelů holých počítačů a nasazují a spravují prostřednictvím Azure Portal. Clustery v privátních cloudech se zřídí pomocí softwaru VMware vSphere, vCenter, síti vSAN a NSX. Nasazení hardwaru a softwaru privátního cloudu řešení Azure VMware jsou v Azure plně integrovaná a automatizovaná.
 
@@ -61,7 +61,7 @@ Obecné zásady a procesy upgradu pro software platformy řešení Azure VMware 
 
 Údržba hostitelů a správa životního cyklu se provádí bez dopadu na kapacitu nebo výkon clusterů privátního cloudu. Mezi příklady automatizované údržby hostitele patří upgrady firmwaru a oprava hardwaru nebo náhrada.
 
-Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování na sever-jih. Jako správce privátního cloudu vašeho řešení VMware Azure zodpovídáte za NSX konfiguraci SDN, jako jsou segmenty sítě, pravidla brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
+Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování na sever-jih. Jako správce privátního cloudu vašeho řešení VMware Azure zodpovídáte za konfiguraci NSX-T SDN. Například segmenty sítě, pravidla pro distribuované brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
 
 > [!IMPORTANT]
 > Správce řešení Azure VMware nesmí měnit konfiguraci brány NSX-T Edge nebo vrstvy 0. To může mít za následek ztrátu služby.

@@ -5,19 +5,22 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 11783f8fac147e6fb2cf371ee1a588cf318a5e9c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5de121a1a905a58f8b5eaf8e60c1f8da71ee8cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75379420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276934"
 ---
 Nástroj pro rozpoznávání formulářů funguje na vstupních dokumentech, které splňují tyto požadavky:
 
 * Formát musí být JPG, PNG, PDF (text nebo naskenovaný) nebo TIFF. Soubory PDF vložené jako text jsou nejlepší, protože v extrakci znaků a umístění není možnost chyba.
+* Velikost souboru musí být menší než 20 MB.
+* Rozměry obrázku musí být mezi 50 × 50 pixelů a 10000 × 10000 pixelů.
+* Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají zákonným nebo a3 velikosti papíru a menšímu.
+* Pro PDF a TIFF se zpracovávají jenom první 200 stránky (s předplatným úrovně Free, zpracovávají se jenom první dvě stránky).
+* Celková velikost sady školicích dat musí být 500 stránek nebo méně.
 * Pokud jsou vaše soubory PDF zamčené heslem, musíte zámek před odesláním odebrat.
-* Dokumenty PDF a TIFF musí mít 200 nebo méně stránek a celková velikost sady školicích dat musí být 500 nebo méně.
-* V případě obrázků musí být rozměry v rozsahu 600 × 100 pixelů až 4200 × 4200 pixelů.
 * Pokud je naskenovaný z papírových dokumentů, formuláře by měly být vysoce kvalitní kontroly.
 * Text musí používat latinku (anglické znaky).
 * V případě bezdohledového učení (bez popisků dat) musí data obsahovat klíče a hodnoty.

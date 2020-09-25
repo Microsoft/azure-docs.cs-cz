@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 07/27/2020
 tags: azure-synapse
-ms.openlocfilehash: b2d179121b05d7bf3493937a9ff72e302fd31f3d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277797"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Použití ověřování Multi-Factor Azure Active Directory
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,7 +29,7 @@ Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics podporu
 
 Pro všechny funkce popsané v tomto článku použijte minimálně červenec 2017, verze 17,2. Dialogové okno nejaktuálnější připojení by mělo vypadat podobně jako na následujícím obrázku:
 
-  ![1mfa – Universal-Connect](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png "Dokončí pole uživatelské jméno.")  
+  ![Snímek obrazovky dialogového okna připojit k serveru v SQL Server Management Studio, v němž se zobrazí nastavení pro typ serveru, název serveru a ověřování.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
 
 ## <a name="authentication-options"></a>Možnosti ověřování
 
@@ -57,11 +57,11 @@ Všichni uživatelé typu Host, kteří chtějí být ověřeni pomocí univerz�
 1. Otevřete připojení v SSMS. Zadejte název serveru a vyberte **Azure Active Directory – univerzální s** ověřováním MFA. Přidejte **uživatelské jméno** , se kterým se chcete přihlásit.
 1. Vyberte pole **Možnosti** a přejděte na kartu **Vlastnosti připojení** . V dialogovém okně **připojit k databázi** vyplňte dialogové okno pro vaši databázi. Zaškrtněte pole **název domény služby AD nebo ID tenanta** a poskytněte ověřovací autoritu, jako je například název domény (**contosotest.onmicrosoft.com**) nebo identifikátor GUID ID tenanta. 
 
-   ![MFA – tenant – SSMS](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
+   ![Snímek obrazovky s kartou vlastností připojení zvýrazněním nastavení pro připojení k databázi a názvu domény služby AD nebo ID tenanta.](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
 Pokud používáte SSMS 18. x nebo novější, název domény služby AD nebo ID tenanta už není potřeba pro uživatele typu Host, protože 18. x nebo novější ho automaticky rozpoznává.
 
-   ![MFA – tenant – SSMS](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
+   ![Snímek obrazovky karty Vlastnosti připojení v dialogovém okně připojit k serveru v S s M s. "MyDatabase" je vybrán v poli připojit k databázi.](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Podpora Azure AD pro firmy
 
@@ -97,4 +97,4 @@ Po vytvoření uživatele databáze se uživatel `steve@gmail.com` může přihl
 - [Import souboru BACPAC do nové databáze](database-import.md)  
 - [Export databáze do souboru BACPAC](database-export.md)  
 - [Rozhraní IUniversalAuthProvider](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx) pro rozhraní C#  
-- Při použití **Azure Active Directory – Universal s** ověřováním MFA je k dispozici trasování ADAL od [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ve výchozím nastavení můžete trasování ADAL zapnout pomocí nabídky **nástroje**, **Možnosti** , v části **služby Azure**, **cloud Azure**, **ADAL okno výstup úroveň trasování**a následným povolením **výstupu** v nabídce **zobrazení** . Trasování jsou k dispozici v okně výstup při výběru **možnosti Azure Active Directory**.  
+- Při použití **Azure Active Directory – Universal s** ověřováním MFA je k dispozici trasování ADAL od [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ve výchozím nastavení můžete trasování ADAL zapnout pomocí nabídky **nástroje**, **Možnosti** , v části **služby Azure**, **cloud Azure**, **ADAL okno výstup úroveň trasování**a následným povolením **výstupu**  v nabídce **zobrazení** . Trasování jsou k dispozici v okně výstup při výběru **možnosti Azure Active Directory**.  

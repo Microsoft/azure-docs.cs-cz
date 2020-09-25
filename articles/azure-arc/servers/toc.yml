@@ -47,6 +47,8 @@
       items:
         - name: Problémy s připojením agentů
           href: troubleshoot-agent-onboard.md
+        - name: Problémy s rozšířením virtuálního počítače
+          href: troubleshoot-vm-extensions.md
 - name: Referenční informace
   items:
     - name: Rezidence dat

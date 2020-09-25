@@ -10,16 +10,16 @@ ms.devlang: python
 ms.topic: quickstart
 author: garyericson
 ms.author: garye
-ms.reviewer: davidph, carlrab
+ms.reviewer: davidph, sstein
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3a939c816cac44ed85802ecfa591564effc1ee73
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328828"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Rychlý Start: použití R s Azure SQL Database Machine Learning Services (Preview) k dotazování databáze 
 
@@ -45,9 +45,9 @@ Machine Learning Services s R je funkce Azure SQL Database používaná ke spou�
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle pole **název serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaný název serveru vedle **hostitele** pro SPRAVOVANOU instanci ve spravované instanci Azure SQL. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 

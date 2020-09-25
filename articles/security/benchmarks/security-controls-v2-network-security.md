@@ -4,17 +4,17 @@ description: Zabezpečení sítě Azure Security test v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184416794011d259af3568c81e4648d822a2c4a5
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059237"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329427"
 ---
-# <a name="security-control-network-security"></a>Řízení zabezpečení: zabezpečení sítě
+# <a name="security-control-v2-network-security"></a>Řízení zabezpečení v2: zabezpečení sítě
 
 Zabezpečení sítě pokrývá ovládací prvky pro zabezpečení a ochranu sítí Azure. To zahrnuje zabezpečení virtuálních sítí, vytváření privátních připojení, prevenci a zmírnění externích útoků a zabezpečení DNS.
 
@@ -30,15 +30,19 @@ Na základě vašich aplikací a strategie segmentace segmentace můžete omezit
 
 Pomocí Azure Security Center adaptivního posílení zabezpečení sítě můžete doporučit konfigurace skupin zabezpečení sítě, které omezují porty a zdrojové IP adresy na základě odkazu na pravidla pro přenos externích sítí.
 
+Pomocí ověřování Azure můžete zjistit použití starších nezabezpečených protokolů, jako jsou SSL/TLSv1, SMBv1, LM/ověřovací NTLMv1, wDigest, nepodepsané vazby LDAP a slabá šifra v protokolu Kerberos.
+
 - [Jak vytvořit skupinu zabezpečení sítě s pravidly zabezpečení](../../virtual-network/tutorial-filter-network-traffic.md)
 
 - [Jak nasadit a nakonfigurovat Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
 - [Adaptivní posílení zabezpečení sítě v Azure Security Center](../../security-center/security-center-adaptive-network-hardening.md)
 
+- [Sešit nezabezpečených protokolů služby Azure Sentinel](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
+
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -50,11 +54,11 @@ Pomocí Azure Security Center adaptivního posílení zabezpečení sítě můž
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| NS – 2 | – | CA – 3, AC-17, MA-4 |
+| NS – 2 | Není k dispozici | CA – 3, AC-17, MA-4 |
 
 Pomocí Azure ExpressRoute nebo virtuální privátní sítě (VPN) Azure můžete vytvořit privátní připojení mezi datacentry Azure a místní infrastrukturou v prostředí s okolním umístěním. Připojení ExpressRoute nevyužívají veřejný Internet a nabízejí spolehlivější, rychlejší a nižší latenci než typická připojení k Internetu. Pro sítě VPN typu Point-to-site a VPN typu Site-to-site můžete připojit místní zařízení nebo sítě k virtuální síti pomocí libovolné kombinace těchto možností sítě VPN a Azure ExpressRoute.
 
-Pokud chcete propojit dvě nebo víc virtuálních sítí v Azure společně, použijte partnerský vztah virtuálních sítí. Síťový provoz mezi partnerskými virtuálními sítěmi je privátní a udržuje se v páteřní síti Azure. 
+Pokud chcete propojit dvě nebo víc virtuálních sítí v Azure společně, použijte partnerský vztah virtuální sítě nebo privátní odkaz. Síťový provoz mezi partnerskými virtuálními sítěmi je privátní a udržuje se v páteřní síti Azure. 
 
 - [Jaké jsou modely připojení ExpressRoute](../../expressroute/expressroute-connectivity-models.md) 
 
@@ -62,9 +66,11 @@ Pokud chcete propojit dvě nebo víc virtuálních sítí v Azure společně, po
 
 - [Partnerský vztah virtuální sítě](../../virtual-network/virtual-network-peering-overview.md)
 
+- [Azure Private Link](../../private-link/private-link-service-overview.md)
+
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -88,7 +94,7 @@ Soukromý přístup je kromě ověřování a zabezpečení provozu nabízených
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -108,6 +114,7 @@ Chraňte prostředky Azure před útoky z externích sítí, včetně útoků di
 -   Využijte možnosti firewallu webových aplikací (WAF) v Azure Application Gateway, přední dveře Azure a Azure Content Delivery Network (CDN) k ochraně aplikací, služeb a rozhraní API proti útokům na aplikační vrstvu. 
 
 -   Chraňte své prostředky proti útokům DDoS tím, že ve svých virtuálních sítích Azure povolíte standardní ochranu DDoS. 
+-   K detekci rizik s konfigurací, které souvisí s výše uvedeným, použijte Azure Security Center. 
 
 - [Dokumentace brány Azure Firewall](/azure/firewall/)
 
@@ -117,7 +124,7 @@ Chraňte prostředky Azure před útoky z externích sítí, včetně útoků di
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Žádné
 
@@ -139,7 +146,7 @@ Poznámka: Pokud máte regulativní nebo jiný požadavek na použití IDENTIFIK
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -165,7 +172,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -177,7 +184,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| NS – 7 | – | SC-20, SC-21 |
+| NS – 7 | Není k dispozici | SC-20, SC-21 |
 
 Dodržujte osvědčené postupy pro zabezpečení DNS, které vám umožní zmírnit časté útoky, jako je dangling DNS, útoky na servery DNS, poškození DNS a falšování identity atd. 
 
@@ -191,7 +198,7 @@ Pokud se jako autoritativní služba DNS používá Azure DNS, zajistěte, aby b
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

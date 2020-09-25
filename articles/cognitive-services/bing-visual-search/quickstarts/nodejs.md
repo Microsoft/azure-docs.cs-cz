@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a Node.js-Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
+description: Naučte se nahrát obrázek pomocí rozhraní API pro vizuální vyhledávání Bingu a Node.js a získat přehled o imagi.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1e5594fab6e4b1758e8e3cd722c053b9d3d301ce
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: e96ff9173d920208e067988602323626767d9017
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277088"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a Node.js
 
 V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu. Tato jednoduchá aplikace JavaScriptu nahraje obrázek do rozhraní API a zobrazí vrácené informace. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/)
 * Modul žádosti pro JavaScript `npm install request`K instalaci modulu můžete použít příkaz.

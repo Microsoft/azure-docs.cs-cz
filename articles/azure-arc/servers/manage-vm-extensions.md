@@ -1,14 +1,14 @@
 ---
 title: Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
-ms.date: 09/02/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c3d50f407f4412a14201dfe669334dbb083d323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329070"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 
@@ -34,7 +34,7 @@ Funkce rozšíření virtuálních počítačů jsou k dispozici pouze v seznamu
 
 ## <a name="extensions"></a>Rozšíření
 
-V této verzi Preview podporujeme následující rozšíření virtuálních počítačů na počítačích s Windows a Linux.
+V této verzi podporujeme následující rozšíření virtuálních počítačů na počítačích s Windows a Linux.
 
 |Rozšíření |Operační systém |Publisher |Další informace |
 |----------|---|----------|-----------------------|
@@ -66,10 +66,7 @@ Rozšíření virtuálního počítače agenta Log Analytics pro Linux vyžaduje
 
 Ověřte, že počítač odpovídá [podporovaným verzím](agent-overview.md#supported-operating-systems) operačního systému Windows a Linux pro agenta připojeného počítače Azure.
 
-Minimální verze agenta připojeného počítače, který je podporován touto funkcí:
-
-* Windows – 0,7. x
-* Linux-0,8. x
+Minimální verze agenta připojeného počítače, který je podporovaný touto funkcí v systému Windows a Linux, je verze 1,0.
 
 Pokud chcete upgradovat počítač na požadovanou verzi agenta, přečtěte si téma [Upgrade agenta](manage-agent.md#upgrading-agent).
 
@@ -77,7 +74,7 @@ Pokud chcete upgradovat počítač na požadovanou verzi agenta, přečtěte si 
 
 Rozšíření virtuálních počítačů můžete použít k použití ARC pro serverový počítač spravovaný pomocí Azure Portal.
 
-1. V prohlížeči přejdete na [Azure Portal](https://aka.ms/arcserver-preview).
+1. V prohlížeči přejdete na [Azure Portal](https://portal.azure.com).
 
 2. Na portálu přejděte na **servery – Azure ARC** a ze seznamu vyberte svůj hybridní počítač.
 
@@ -719,22 +716,10 @@ Odebrání jedné nebo více rozšíření ze serveru s povoleným obloukem se d
 
 4. Vyberte možnost **odinstalovat** a když se zobrazí výzva k ověření, vyberte **Ano** a pokračujte.
 
-## <a name="troubleshooting"></a>Řešení potíží
-
-Data o stavu nasazení rozšíření lze načíst z Azure Portal.
-
-Následující kroky pro řešení potíží se vztahují na všechna rozšíření virtuálních počítačů.
-
-1. Pokud chcete zkontrolovat protokol hostovaného agenta, podívejte se na aktivitu při zřizování rozšíření `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` pro Windows a v části pro Linux v `/var/lib/GuestConfig/ext_mgr_logs` .
-
-2. Další podrobnosti v systému Windows najdete v protokolech rozšíření pro konkrétní rozšíření `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` . Výstup rozšíření se zaznamená do souboru pro každé rozšíření nainstalované v systému Linux `/var/lib/GuestConfig/extension_logs` .
-
-3. Podívejte se na oddíly řešení potíží v dokumentaci ke konkrétnímu rozšíření pro kódy chyb, známé problémy atd. Další informace o řešení potíží pro jednotlivá rozšíření najdete v části **řešení potíží a podpora** v tématu Přehled tohoto rozšíření. To zahrnuje Popis chybových kódů zapsaných do protokolu. Články rozšíření jsou propojeny v [tabulce rozšíření](#extensions) , kterou najdete dříve v tomto článku.
-
-4. Podívejte se na systémové protokoly. Vyhledejte další operace, které mohly být v konfliktu s rozšířením, například dlouhodobě běžící instalace jiné aplikace, která vyžadovala výhradní přístup správce balíčků.
-
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md)a mnohem víc.
+* Informace o řešení potíží najdete v [Průvodci pro řešení potíží s rozšířeními virtuálních počítačů](troubleshoot-vm-extensions.md).
 
-- Přečtěte si další informace o nástroji [[Log Analytics agent]](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
+* Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md)a mnohem víc.
+
+* Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).

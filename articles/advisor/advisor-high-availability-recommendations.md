@@ -3,12 +3,12 @@ title: Vylepšení spolehlivosti aplikace pomocí služby Advisor
 description: Pomocí Azure Advisor můžete zajistit a zlepšit spolehlivost vašich důležitých nasazení v Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264588"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Zlepšení spolehlivosti aplikace pomocí Azure Advisor
 
@@ -76,7 +76,7 @@ Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sd�
 
 ## <a name="repair-invalid-log-alert-rules"></a>Opravit neplatná pravidla upozornění protokolu
 
-Azure Advisor detekuje pravidla výstrah, která mají v oddílu podmínky zadány neplatné dotazy. Můžete vytvořit pravidla upozornění protokolu v Azure Monitor a použít je ke spouštění analytických dotazů v zadaných intervalech. Výsledky dotazu určují, zda je třeba aktivovat výstrahu. Analytické dotazy se můžou v průběhu času stát neplatnými kvůli změnám v odkazovaných prostředcích, tabulkách nebo příkazech. Poradce doporučuje, abyste v pravidle výstrahy opravili dotaz, abyste zabránili jeho automatickému zakázání a zajistili monitorování pokrytí vašich prostředků v Azure. [Přečtěte si další informace o řešení potíží s pravidly výstrah.](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor detekuje pravidla upozornění protokolu, která mají v oddílu podmínky zadány neplatné dotazy. Azure Monitor pravidla upozornění protokolů spouštějí dotazy v zadaném četnosti a výstrahy požáru na základě výsledků. Dotazy se můžou v průběhu času stát neplatnými kvůli změnám v odkazovaných prostředcích, tabulkách nebo příkazech. Poradce doporučuje opravy pro dotazy na výstrahy, aby nedocházelo k automatickému zakázání pravidel a zajistili monitorování pokrytí. Další informace najdete v tématu [řešení potíží s pravidly výstrah](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid) .
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konfigurace konzistentního režimu indexování v kolekci Azure Cosmos DB
 

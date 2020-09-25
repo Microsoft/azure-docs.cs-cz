@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316728"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -105,7 +105,7 @@ Chybová zpráva: operace snímku se nezdařila, protože zapisovače VSS byly v
 
 K této chybě dochází, protože zapisovače VSS byly ve špatném stavu. Rozšíření Azure Backup komunikují se zapisovači VSS, aby bylo možné pořizovat snímky disků. Pokud chcete tento problém vyřešit, postupujte následovně:
 
-Restartujte zapisovače služby VSS, které jsou ve špatném stavu.
+Krok 1: Restartujte zapisovače služby VSS, které jsou ve špatném stavu.
 - Z příkazového řádku se zvýšenými oprávněními spusťte příkaz ```vssadmin list writers``` .
 - Výstup obsahuje všechny zapisovače VSS a jejich stav. U každého zapisovače VSS se stavem, který není **[1] stabilní**, restartujte příslušnou službu zapisovače VSS. 
 - Chcete-li službu restartovat, spusťte následující příkazy z příkazového řádku se zvýšenými oprávněními:
@@ -117,12 +117,20 @@ Restartujte zapisovače služby VSS, které jsou ve špatném stavu.
 > Restartování některých služeb může mít dopad na produkční prostředí. Zajistěte, aby byl proces schválení následován a služba se restartovala v naplánovaném výpadku.
  
    
-Pokud restartování zapisovače VSS nevyřeší problém a problém přetrvává z důvodu vypršení časového limitu, pak:
-- Spusťte následující příkaz z příkazového řádku se zvýšenými oprávněními (jako správce), aby se zabránilo vytváření vláken pro snímky objektů BLOB.
+Krok 2: Pokud restartování zapisovačů VSS nevyřešilo problém, spusťte následující příkaz z příkazového řádku se zvýšenými oprávněními (jako správce), aby se zabránilo vytváření vláken pro snímky objektů BLOB.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+Krok 3: Pokud kroky 1 a 2 nevyřešily problém, může být selhání způsobeno vypršením časového limitu zapisovače VSS z důvodu omezeného IOPS.<br>
+
+Chcete-li ověřit, přejděte do části ***systémové a prohlížeč událostí protokoly aplikací*** a zkontrolujte následující chybovou zprávu:<br>
+*Vypršel časový limit poskytovatele stínové kopie při ukládání zápisů do svazku, ve kterém je stín kopírovaný. To je pravděpodobně způsobeno nadměrnými činnostmi na svazku aplikace nebo systémovou službou. Zkuste to znovu později, až bude snížena aktivita na svazku.*<br>
+
+Řešení:
+- Vyhledejte možnosti pro distribuci zatížení mezi disky virtuálních počítačů. Tím se sníží zatížení na jednom disku. [Omezení IOPS můžete kontrolovat tím, že povolíte diagnostické metriky na úrovni úložiště](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
+- Změňte zásadu zálohování tak, aby prováděla zálohování v době mimo špičku, kdy je zatížení virtuálního počítače na nejnižší úrovni.
+- Upgradujte disky Azure tak, aby podporovaly vyšší IOPs. [Další informace](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>Operace ExtensionFailedVssServiceInBadState-Snapshot selhala, protože služba Stínová kopie svazku (VSS) je ve špatném stavu.
 
@@ -306,6 +314,13 @@ Pokud máte Azure Policy, který [řídí značky v rámci vašeho prostředí](
 | Zálohování se nepodařilo zrušit úlohu: <br>Počkejte, až se úloha dokončí. |Žádné |
 
 ## <a name="restore"></a>Obnovení
+
+#### <a name="disks-appear-offline-after-file-restore"></a>Po obnovení souboru se disky zobrazí v režimu offline.
+
+Po obnovení si všimněte, že jsou disky v režimu offline: 
+* Ověřte, zda počítač, ve kterém je spuštěn skript, splňuje požadavky na operační systém. [Přečtěte si další informace](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
+* Ujistěte se, že neprovádíte obnovení do stejného zdroje. další [informace](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)najdete v části.
+
 
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |

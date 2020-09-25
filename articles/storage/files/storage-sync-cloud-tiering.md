@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329308"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Když je soubor vrstvený, Azure File Sync filtr systému souborů (StorageSync.sys) nahradí soubor místně s ukazatelem nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
@@ -40,7 +40,7 @@ Vrstvení cloudu nezávisí na funkci systému souborů NTFS ke sledování čas
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Jaká je minimální velikost souboru pro soubor do vrstvy?
 
-U agentů verze 9 a novějších je minimální velikost souboru na vrstvu založená na velikosti clusteru systému souborů. Minimální velikost souboru způsobilá pro vytváření vrstev cloudu se počítá podle dvojnásobku velikosti clusteru a minimálně 8 KB. Následující tabulka ilustruje minimální velikosti souborů, které je možné rozvrstvit, na základě velikosti clusteru svazku:
+U agentů verze 12 a novějších je minimální velikost souboru na vrstvu založená na velikosti clusteru systému souborů. Minimální velikost souboru způsobilá pro vytváření vrstev cloudu se počítá podle dvojnásobku velikosti clusteru a minimálně 8 KB. Následující tabulka ilustruje minimální velikosti souborů, které je možné rozvrstvit, na základě velikosti clusteru svazku:
 
 |Velikost clusteru svazků (bajty) |Soubory této velikosti nebo větší lze převrstveny  |
 |----------------------------|---------|
@@ -48,9 +48,9 @@ U agentů verze 9 a novějších je minimální velikost souboru na vrstvu zalo�
 |8 KB (8192)                 | 16 kB   |
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 kB   |
-|64 KB (65536)               | 128 kB  |
+|64 KB (65536) a větší    | 128 kB  |
 
-V systémech Windows Server 2019 a Azure File Sync Agent verze 12 a novějších jsou podporovány také velikosti clusterů až 2 MB a vrstvení na tyto větší velikosti clusterů funguje stejným způsobem. Starší verze operačního systému nebo agenta podporují velikost clusteru až do 64 KB.
+V systémech Windows Server 2019 a Azure File Sync Agent verze 12 a novějších jsou podporovány také velikosti clusterů až 2 MB a vrstvení na tyto větší velikosti clusterů funguje stejným způsobem. Starší verze operačních systémů nebo agentů podporují velikosti clusterů až do 64 KB, ale i přes tuto úroveň nefungují.
 
 Všechny systémy souborů používané systémem Windows organizují pevný disk na základě velikosti clusteru (označované také jako velikost alokační jednotky). Velikost clusteru představuje nejmenší množství místa na disku, které lze použít k uložení souboru. Když velikosti souborů nejdou na sudý násobek velikosti clusteru, je potřeba použít další místo pro uložení souboru do další násobky velikosti clusteru.
 
@@ -85,11 +85,23 @@ Pokud je na svazku více než jeden koncový bod serveru, je prahová hodnota pl
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Jak fungují zásady vrstvení podle data ve spojení se zásadami vrstvení volného místa svazku? 
 Při povolování vrstvení cloudu na koncovém bodu serveru se nastavuje zásada pro volné místo svazku. Vždycky má přednost před všemi ostatními zásadami, včetně zásad data. Volitelně můžete pro každý koncový bod serveru na tomto svazku povolit zásady pro data. Tato zásada spravuje, že v rámci rozsahu dnů se budou tyto zásady uchovávat jenom v případě, že jsou k dispozici pouze soubory (které jsou, přečteny nebo zapsány do). Soubory, které nejsou v zadaném počtu dnů k dispozici, budou vrstveny. 
 
-Vrstvení cloudu využívá čas posledního přístupu k určení, které soubory by měly být vrstveny. Ovladač filtru vrstvy cloudu (storagesync.sys) sleduje čas posledního přístupu a zapisuje informace do úložiště s navýšenou úrovní cloudu. Úložiště tepla můžete zobrazit pomocí místní rutiny prostředí PowerShell.
+Vrstvení cloudu využívá čas posledního přístupu k určení, které soubory by měly být vrstveny. Ovladač filtru vrstvy cloudu (storagesync.sys) sleduje čas posledního přístupu a zapisuje informace do úložiště s navýšenou úrovní cloudu. Můžete načíst tepelný obchod a uložit ho do souboru CSV pomocí rutiny prostředí PowerShell pro místní server.
 
 ```powershell
+# There is a single heat store for files on a volume / server endpoint / individual file.
+# The heat store can get very large. If you only need to retrieve the "coolest" number of items, use -Limit and a number
+
+# Import the PS module:
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
-Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+
+# VOLUME FREE SPACE: To get the order in which files will be tiered using the volume free space policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrder
+
+# DATE POLICY: To get the order in which files will be tiered using the date policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrderV2
+
+# Find the heat store information for a particular file:
+Get-StorageSyncHeatStoreInformation -FilePath '<PathToSpecificFile>'
 ```
 
 > [!IMPORTANT]
@@ -125,7 +137,7 @@ Existuje několik způsobů, jak ověřit, zda byl soubor vrstven do sdílené s
         
         | Písmeno atributu | Atribut | Definice |
         |:----------------:|-----------|------------|
-        | A | Archiv | Indikuje, že by měl být soubor zálohovaný zálohovacím softwarem. Tento atribut je vždy nastaven bez ohledu na to, zda je soubor na disku povrstvený nebo uložený jako plný. |
+        | A | Archivovat | Indikuje, že by měl být soubor zálohovaný zálohovacím softwarem. Tento atribut je vždy nastaven bez ohledu na to, zda je soubor na disku povrstvený nebo uložený jako plný. |
         | P | Zhuštěný soubor | Označuje, že se jedná o zhuštěný soubor. Zhuštěný soubor je specializovaný typ souboru, který systém souborů NTFS nabízí pro efektivní použití v případě, že je soubor na diskovém streamu většinou prázdný. Azure File Sync používá zhuštěné soubory, protože soubor je buď úplně vrstven, nebo částečně odvolán. V plně vrstveném souboru je datový proud souboru uložený v cloudu. V částečně vráceném souboru je tato část souboru již na disku. Pokud je soubor zcela znovu volán na disk, Azure File Sync jej převede ze zhuštěného souboru do normálního souboru. Tento atribut je nastaven pouze v systémech Windows Server 2016 a starších.|
         | M | Odvolat při přístupu k datům | Indikuje, že data souboru nejsou plně přítomná v místním úložišti. Při čtení souboru dojde k tomu, že se alespoň část obsahu souboru načte ze sdílené složky Azure, ke které je připojený koncový bod serveru. Tento atribut je nastaven pouze v systému Windows Server 2019. |
         | L | Spojovací bod | Označuje, že soubor obsahuje bod rozboru. Bod rozboru je speciální ukazatel pro použití filtrem systému souborů. Azure File Sync používá spojovací body k definování do Azure File Syncho filtru systému souborů (StorageSync.sys) umístění v cloudu, kde je soubor uložený. To podporuje bezproblémový přístup. Uživatelé nebudou muset znát, že se používá Azure File Sync nebo jak získat přístup k souboru ve sdílené složce Azure. Když je soubor zcela znovu vyvolán, Azure File Sync odebere bod rozboru ze souboru. |
@@ -158,10 +170,10 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 Volitelné parametry:
-* `-Order CloudTieringPolicy`Nejdřív odvolá naposledy změněné nebo dostupné soubory a povolí aktuální zásady vrstvení. 
+* `-Order CloudTieringPolicy` Nejdřív odvolá naposledy změněné nebo dostupné soubory a povolí aktuální zásady vrstvení. 
     * Pokud je nakonfigurovaná zásada volného místa svazku, budou se soubory volat, dokud nedosáhnete nastavení zásad pro volné místo svazku. Pokud je například nastavení zásad Free o svazku 20%, bude odvolání zastaveno, jakmile volné místo na svazku dosáhne 20%.  
     * Pokud je nakonfigurované volné místo na svazku a data zásad, budou se soubory volat, dokud nedosáhnete nastavení pro volné místo na svazku nebo pro datum. Pokud má například nastavení zásad Free hodnotu 20% a zásada data je 7 dní, pak se odvolání zastaví, jakmile velikost volného místa na svazku dosáhne 20% nebo jsou všechny soubory, ke kterým se přistupovalo nebo upraveno, do 7 dnů, místní.
-* `-ThreadCount`Určuje, kolik souborů lze paralelně volat.
+* `-ThreadCount` Určuje, kolik souborů lze paralelně volat.
 * `-PerFileRetryCount`Určuje, jak často se bude opakovat pokus o odvolání souboru, který je aktuálně blokován.
 * `-PerFileRetryDelaySeconds`Určuje dobu v sekundách mezi opakovanými pokusy o odvolání a měla by být vždy použita v kombinaci s předchozím parametrem.
 
@@ -196,7 +208,7 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Proč mé vrstvené soubory neobsahují miniatury nebo náhledy v Průzkumníkovi Windows?
 V případě vrstvených souborů se miniatury a verze Preview nebudou zobrazovat na koncovém bodu serveru. Toto chování je očekávané, protože funkce mezipaměti miniatur ve Windows záměrně přeskočí čtení souborů s atributem offline. Díky povoleným vrstvám cloudu by čtení přes vrstvených souborů způsobilo stažení (vráceno).
 
-Toto chování není specifické pro Azure File Sync, Průzkumník Windows zobrazuje "šedou X" pro všechny soubory, které mají nastaven atribut offline. Při přístupu k souborům přes SMB se zobrazí ikona X. Podrobné vysvětlení tohoto chování najdete v tématu.[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+Toto chování není specifické pro Azure File Sync, Průzkumník Windows zobrazuje "šedou X" pro všechny soubory, které mají nastaven atribut offline. Při přístupu k souborům přes SMB se zobrazí ikona X. Podrobné vysvětlení tohoto chování najdete v tématu. [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
 <a id="afs-tiering-disabled"></a>
 ### <a name="i-have-cloud-tiering-disabled-why-are-there-tiered-files-in-the-server-endpoint-location"></a>Mám zakázanou vrstvu cloudu, proč jsou v umístění koncového bodu serveru umístěny soubory?

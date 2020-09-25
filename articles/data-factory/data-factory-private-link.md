@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 48ab83db3dcbcf5c99b640ccab205ed1f0ee7ca1
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328560"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Privátní odkaz Azure pro Azure Data Factory
 
@@ -37,9 +37,9 @@ Místní prostředí Integration runtime můžete také nainstalovat do místní
 
 Mezi Azure Data Factory a zákaznickou virtuální sítí se vyžaduje několik komunikačních kanálů, jak je znázorněno v následující tabulce:
 
-| Doména | Port | Description |
+| Doména | Port | Popis |
 | ---------- | -------- | --------------- |
-| `pe-adf.azure.com` | 443 | Rovina ovládacího prvku, kterou vyžaduje Data Factory vytváření a monitorování. |
+| `adf.azure.com` | 443 | Rovina ovládacího prvku, kterou vyžaduje Data Factory vytváření a monitorování. |
 | `*.{region}.datafactory.azure.net` | 443 | Požadováno místním prostředím Integration runtime pro připojení ke službě Data Factory. |
 | `*.servicebus.windows.net` | 443 | Vyžadováno místním prostředím Integration runtime pro interaktivní vytváření. |
 | `download.microsoft.com` | 443 | Požadováno místním prostředím Integration runtime pro stahování aktualizací. |

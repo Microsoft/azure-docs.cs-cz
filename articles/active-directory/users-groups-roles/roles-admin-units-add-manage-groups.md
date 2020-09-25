@@ -1,5 +1,5 @@
 ---
-title: Přidání, odebrání a výpis skupin v jednotce pro správu (Preview) – Azure Active Directory | Microsoft Docs
+title: Přidání, odebrání a výpis skupin v jednotce pro správu – Azure Active Directory | Microsoft Docs
 description: Správa skupin a jejich oprávnění role v jednotce pro správu v Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 06/23/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 324d0ff0659270c6f2e90c0456ded83344f73936
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850917"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264993"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Přidávání a Správa skupin v jednotkách pro správu v Azure Active Directory
 
@@ -31,7 +31,7 @@ Postup přípravy na používání PowerShellu a Microsoft Graph pro správu jed
 
 ### <a name="azure-portal"></a>portál Azure
 
-Ve verzi Preview můžete přiřadit skupiny pouze jednotlivě do jednotky pro správu. Neexistuje možnost hromadného přiřazování skupin do jednotky pro správu. Skupinu můžete přiřadit jednotce pro správu jedním ze dvou způsobů na portálu:
+Skupiny můžete přiřadit pouze jednotlivě do jednotky pro správu. Neexistuje možnost hromadného přiřazování skupin do jednotky pro správu. Skupinu můžete přiřadit jednotce pro správu jedním ze dvou způsobů na portálu:
 
 1. Na stránce **skupin Azure AD >**
 

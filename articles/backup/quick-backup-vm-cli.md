@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 98eff02dacb5b44839937f826cd676fe16670cbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92990df3049f7fa1074d55fc34734e13d6673cd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328815"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku
 
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Geograficky redundantní úložiště zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti od sebe stovky mil. Pokud je potřeba upravit nastavení redundance úložiště, použijte příkaz [AZ Backup trezor Backup-Properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) rutina.
+Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Geograficky redundantní úložiště zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti od sebe stovky mil. Pokud je potřeba upravit nastavení redundance úložiště, použijte příkaz [AZ Backup trezor Backup-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) rutina.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -118,7 +118,7 @@ Když se *Status* (Stav) úlohy zálohovaní změní na *Completed* (Dokončeno)
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pokud už ochrana virtuálního počítače není potřeba, můžete ji vypnout, odebrat body obnovení a trezor služby Recovery Services a pak odstranit skupinu prostředků a související prostředky virtuálního počítače. Pokud jste použili existující virtuální počítač, můžete vynechat poslední příkaz [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete), aby se zachovala skupina prostředků a virtuální počítač.
+Pokud už ochrana virtuálního počítače není potřeba, můžete ji vypnout, odebrat body obnovení a trezor služby Recovery Services a pak odstranit skupinu prostředků a související prostředky virtuálního počítače. Pokud jste použili existující virtuální počítač, můžete vynechat poslední příkaz [az group delete](/cli/azure/group#az-group-delete), aby se zachovala skupina prostředků a virtuální počítač.
 
 Pokud chcete vyzkoušet kurz služby Backup, který vysvětluje postup obnovení dat virtuálního počítače, přejděte na [Další kroky](#next-steps).
 

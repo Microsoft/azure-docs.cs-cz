@@ -3,12 +3,12 @@ title: Zálohování SQL Server databází do Azure
 description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 3627162ef2f4330a4b6a78625b5e07bdcf56419b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376532"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316833"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -27,13 +27,13 @@ Toto řešení využívá rozhraní API systému SQL Native k převzetí záloh 
 
 * Jakmile zadáte SQL Server virtuální počítač, který chcete chránit, a dotaz na databáze v něm, služba Azure Backup Service nainstaluje na virtuálním počítači rozšíření zálohování úlohy pomocí `AzureBackupWindowsWorkload` přípony názvu.
 * Toto rozšíření se skládá z koordinátora a modulu plug-in SQL. I když je koordinátor zodpovědný za aktivaci pracovních postupů pro různé operace, jako je konfigurace zálohování, zálohování a obnovení, je za skutečný tok dat zodpovědný modul plug-in.
-* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup účet vytvoří `NT SERVICE\AzureWLBackupPluginSvc` . Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. `NT SERVICE\AzureWLBackupPluginSvc`Účet je [účet virtuální služby](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje správu hesel. Azure Backup používá `NT AUTHORITY\SYSTEM` účet pro zjišťování nebo dotazování databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
+* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup účet vytvoří `NT SERVICE\AzureWLBackupPluginSvc` . Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. `NT SERVICE\AzureWLBackupPluginSvc`Účet je [účet virtuální služby](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje správu hesel. Azure Backup používá `NT AUTHORITY\SYSTEM` účet pro zjišťování nebo dotazování databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač s SQL Serverem nevytvořili z Azure Marketplace, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
 * Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači.
 * V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat z SQL serveru pomocí infrastruktury virtuálních klientských počítačů (VDI).  
 * Modul plug-in odesílá data přímo do trezoru Recovery Services, čímž eliminuje nutnost pracovní polohy. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.
 * Po dokončení přenosu dat koordinátor potvrdí potvrzení u služby zálohování.
 
-  ![Architektura zálohování SQL](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![Architektura zálohování SQL](./media/backup-azure-sql-database/azure-backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -43,7 +43,7 @@ Než začnete, ověřte následující požadavky:
 2. Seznamte se s [požadavky na funkce](sql-support-matrix.md#feature-considerations-and-limitations) a s [podporou scénářů](sql-support-matrix.md#scenario-support).
 3. [Přečtěte si běžné otázky](faq-backup-sql-server.md) k tomuto scénáři.
 
-## <a name="set-vm-permissions"></a>Nastavení oprávnění virtuálních počítačů
+## <a name="set-vm-permissions"></a>Nastavení oprávnění virtuálního počítače
 
   Když spustíte zjišťování na SQL Server, Azure Backup provede následující akce:
 
@@ -80,7 +80,7 @@ U všech ostatních verzí opravte oprávnění pomocí následujících kroků:
 
   7. Podívejte se na průběh v **oznamovací** oblasti. Když se najde vybrané databáze, zobrazí se zpráva o úspěchu.
 
-      ![Zpráva o úspěšném nasazení](./media/backup-azure-sql-database/notifications-db-discovered.png)
+      ![Zpráva o úspěchu nasazení](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
 > [!NOTE]
 > Pokud je v SQL Server nainstalovaná více instancí SQL Server, musíte do všech instancí SQL přidat oprávnění sysadmin pro účet **NT Service\AzureWLBackupPluginSvc** .

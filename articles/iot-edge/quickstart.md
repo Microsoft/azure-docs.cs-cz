@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328581"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rychlý Start: nasazení prvního IoT Edge modulu do virtuálního zařízení s Windows
 
@@ -82,7 +82,7 @@ Zařízení IoT Edge:
 >
 > Pokud jste připraveni ke konfiguraci vlastního zařízení s Windows pro IoT Edge, včetně zařízení se systémem IoT Core, postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 Začněte s rychlým startem vytvořením služby IoT Hub pomocí Azure CLI.
 
@@ -118,10 +118,10 @@ Vzhledem k tomu, že se zařízení IoT Edge chovají a dají se spravovat jinak
 2. Zobrazení připojovacího řetězce pro vaše zařízení, který propojuje fyzické zařízení s jeho identitou v IoT Hub. Obsahuje název vašeho centra IoT, název vašeho zařízení a pak sdílený klíč, který ověřuje připojení mezi nimi.
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Zkopírujte hodnotu `connectionString` klíče z výstupu JSON a uložte ho. Tato hodnota je připojovací řetězec zařízení. Tento připojovací řetězec použijete ke konfiguraci modulu runtime IoT Edge v další části.
+3. Zkopírujte hodnotu klíče `connectionString` z výstupu JSON a uložte ji. Tato hodnota je připojovací řetězec zařízení. Tento připojovací řetězec použijete ke konfiguraci modulu runtime IoT Edge v další části.
 
    ![Načtení připojovacího řetězce z výstupu rozhraní příkazového řádku](./media/quickstart/retrieve-connection-string.png)
 

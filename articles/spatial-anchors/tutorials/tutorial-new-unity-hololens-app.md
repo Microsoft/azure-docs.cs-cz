@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: cd4ec60691344cef4030472b474a82e84c70244f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261171"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Kurz: podrobné pokyny k vytvoření nové aplikace Unity pro HoloLens pomocí prostorových kotev Azure
 
@@ -204,11 +204,11 @@ Než budete pokračovat, budete muset vytvořit účet prostorových kotev Azure
 
 Jakmile budete mít identifikátor účtu prostorových kotev Azure, klíč a doménu, přejdete do části a vložíte `Account Id` do `SpatialAnchorsAccountId` `Account Key` `SpatialAnchorsAccountKey` `Account Domain` `SpatialAnchorsAccountDomain` .
 
-Nakonec připojovat všechno dohromady. Do `SpawnNewAnchoredObject()` metody přidejte následující kód. Vyvolá `CreateAnchorAsync()` metodu hned po vytvoření vaší koule. Jakmile se metoda vrátí, kód níže aktualizuje vaši sféru o jednu poslední, změna barvy na modrou.
+Nakonec připojovat všechno dohromady. Do `CreateAndSaveSphere()` metody přidejte následující kód. Vyvolá `CreateAnchorAsync()` metodu hned po vytvoření vaší koule. Jakmile se metoda vrátí, kód níže aktualizuje vaši sféru o jednu poslední, změna barvy na modrou.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Spusťte aplikaci ze sady **Visual Studio** , a to ještě jednou. Pohybujte kolem své hlavy a potom klepněte v duchu na umístění své koule. Jakmile máme dostatek snímků, koule se změní žlutě a spustí se nahrávání do cloudu. Až se nahrávání dokončí, vaše koule se změní na modrou. V případě potřeby můžete také použít okno výstup v **aplikaci Visual Studio** a monitorovat zprávy protokolu, které vaše aplikace posílá. Můžete sledovat `RecommendedForCreateProgress` , a až se nahrávání dokončí, budete moct zobrazit identifikátor kotvy vrácený z cloudu.
+Spusťte aplikaci ze sady **Visual Studio** , a to ještě jednou. Pohybujte kolem své hlavy a potom klepněte v duchu na umístění své koule. Jakmile máme dostatek snímků, koule se změní žlutě a spustí se nahrávání do cloudu. Až se nahrávání dokončí, vaše koule se změní na modrou. V případě potřeby můžete také použít [okno výstup](https://docs.microsoft.com/visualstudio/ide/reference/output-window) při ladění v **aplikaci Visual Studio** a monitorovat zprávy protokolu, které vaše aplikace posílá. Můžete sledovat `RecommendedForCreateProgress` , a až se nahrávání dokončí, budete moct zobrazit identifikátor kotvy vrácený z cloudu.
 
 > [!NOTE]
 > Pokud se zobrazí "DllNotFoundException –: nejde načíst knihovnu DLL" AzureSpatialAnchors ": zadaný modul se nepovedlo najít.", měli byste řešení **vyčistit** a znovu **sestavit** .

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260727"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Sdílené tabulky metadat Azure synapse Analytics
 
@@ -105,7 +105,7 @@ Spuštěním následujícího příkazu vytvořte spravovanou tabulku Spark pomo
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Tím se vytvoří tabulka `myParquetTable` v databázi `mytestdb` . Po krátké prodlevě uvidíte tabulku v SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
+Tento příkaz vytvoří tabulku `myParquetTable` v databázi `mytestdb` . Po krátké prodlevě uvidíte tabulku v SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
 
 ```sql
     USE mytestdb;

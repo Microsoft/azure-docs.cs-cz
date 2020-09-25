@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8221c77c0e6adeabe869a088089733d289a2f6ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277930"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Použití ověřování Azure Active Directory
 
@@ -168,7 +168,7 @@ Pro objekty zabezpečení serveru Azure AD (přihlášení) se podporují násle
 - Přehled přihlašovacích údajů, uživatelů, databázových rolí a oprávnění v SQL Database najdete v tématu [přihlášení, uživatelé, databázové role a oprávnění](logins-create-manage.md).
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx).
 - Další informace o databázových rolích najdete v tématu věnovaném [databázovým rolím](https://msdn.microsoft.com/library/ms189121.aspx).
-- Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) pro spravovanou instanci SQL najdete v tématu  [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)údajů.
+- Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) pro spravovanou instanci SQL najdete v tématu  [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)údajů.
 - Další informace o pravidlech brány firewall pro SQL Database najdete v tématu [Pravidla brány firewall služby SQL Database](firewall-configure.md).
 
 <!--Image references-->

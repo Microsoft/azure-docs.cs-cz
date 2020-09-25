@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: interaktivní vyhledávání map pomocí Azure Maps'
-description: Naučte se vytvářet interaktivní a prohledávatelné mapy. Podívejte se, jak vytvořit účet Azure Maps, získat primární klíč a pomocí webové sady SDK nastavit aplikace mapy.
+description: 'Rychlý Start: Naučte se vytvářet interaktivní a prohledávatelné mapy. Přečtěte si, jak vytvořit účet Azure Maps, získat primární klíč a použít web SDK k nastavení map aplikací.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264282"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Rychlý Start: vytvoření interaktivní vyhledávací mapy pomocí Azure Maps
 
@@ -92,17 +92,15 @@ Pokud neplánujete pokračovat v kurzech, proveďte tyto kroky a vyčistěte pro
 2. Přejděte na stránku Azure Portal. Na hlavní stránce portálu vyberte **všechny prostředky** . Případně klikněte na ikonu nabídky v levém horním rohu. Vyberte **Všechny prostředky**.
 3. Klikněte na účet Azure Maps. V horní části stránky klikněte na **Odstranit**.
 
+Další příklady kódu a interaktivní prostředí pro kódování najdete v těchto příručkách:
+
+[Najít adresu pomocí služby Azure Maps Search Service](how-to-search-for-address.md)
+
+[Použití Azure Maps Ovládací prvek Mapa](how-to-use-map-control.md)
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili účet Azure Maps a vytvořili jste ukázkovou aplikaci. Další informace o Azure Maps najdete v následujících kurzech:
 
 > [!div class="nextstepaction"]
 > [Prohledejte okolní body zájmu pomocí Azure Maps](tutorial-search-location.md)
-
-Další příklady kódu a interaktivní prostředí pro kódování najdete v těchto příručkách:
-
-> [!div class="nextstepaction"]
-> [Najít adresu pomocí služby Azure Maps Search Service](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [Použití Azure Maps Ovládací prvek Mapa](how-to-use-map-control.md)

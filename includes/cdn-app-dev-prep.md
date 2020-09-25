@@ -4,12 +4,12 @@ ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77608713"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316748"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete psát kód pro správu CDN, musíte provést nějakou přípravu, aby kód mohl pracovat s Azure Resource Manager. K provedení této přípravy potřebujete:
@@ -20,16 +20,16 @@ Než začnete psát kód pro správu CDN, musíte provést nějakou přípravu, 
 
 ### <a name="creating-the-resource-group"></a>Vytvoření skupiny prostředků
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Klikněte na **Vytvořit prostředek**.
+2. Klikněte na **vytvořit prostředek**.
 3. Vyhledejte **skupinu prostředků** a v podokně skupina prostředků klikněte na **vytvořit**.
 
     ![Vytváří se nová skupina prostředků.](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
 3. Pojmenujte skupinu prostředků *CdnConsoleTutorial*.  Vyberte své předplatné a zvolte umístění poblíž.  Pokud chcete, můžete kliknutím na zaškrtávací políčko **Připnout na řídicí panel** připnout skupinu prostředků na řídicí panel na portálu.  Připnutí usnadňuje vyhledání později.  Po provedení výběru klikněte na **vytvořit**.
 
-    ![Pojmenování skupiny prostředků](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+    ![Snímek obrazovky dialogového okna skupiny prostředků](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 4. Pokud jste po vytvoření skupiny prostředků ji nepřidali do řídicího panelu, můžete ji najít kliknutím na **Procházet**a pak na **skupiny prostředků**.  Pokud ho chcete otevřít, klikněte na skupinu prostředků.  Poznamenejte si **ID předplatného**. Budeme ho potřebovat později.
 
-    ![Pojmenování skupiny prostředků](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+    ![Snímek obrazovky s oddílem kurzu konzoly C D N.](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Vytvoření aplikace Azure AD a používání oprávnění
 Existují dva přístupy k ověřování aplikací pomocí Azure Active Directory: jednotliví uživatelé nebo instančního objektu. Instanční objekt je podobný účtu služby v systému Windows.  Místo udělení konkrétních uživatelských oprávnění k interakci s profily CDN se jim místo toho udělí oprávnění instančnímu objektu.  Instanční objekty se obvykle používají pro automatizované procesy, které nejsou interaktivní.  I když v tomto kurzu píšete interaktivní konzolovou aplikaci, zaměřte se na přístup instančního objektu.
@@ -41,7 +41,7 @@ Vytvoření instančního objektu se skládá z několika kroků, včetně vytvo
 >
 > Až se dostanete ke kroku s názvem konfigurace víceklientské aplikace, vyberte **ne**.
 >
-> Když se dostanete k kroku [přiřazení aplikace k roli](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application), použijte skupinu prostředků vytvořenou dříve, *CdnConsoleTutorial*, ale místo role **Čtenář** , přiřaďte roli **Přispěvatel profilu CDN** .  Po přiřazení aplikace k roli **Přispěvatel profilu CDN** ve vaší skupině prostředků se vraťte k tomuto kurzu. 
+> Když se dostanete k kroku [přiřazení aplikace k roli](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application), použijte skupinu prostředků vytvořenou dříve,  *CdnConsoleTutorial*, ale místo role **Čtenář** , přiřaďte roli **Přispěvatel profilu CDN** .  Po přiřazení aplikace k roli **Přispěvatel profilu CDN** ve vaší skupině prostředků se vraťte k tomuto kurzu. 
 >
 >
 
@@ -62,6 +62,6 @@ Pokud místo instančního objektu potřebujete interaktivní ověřování indi
     ![Nativní aplikace](./media/cdn-app-dev-prep/cdn-native-application-include.png)
 2. Na další stránce se zobrazí výzva k zadání **identifikátoru URI přesměrování**.  Identifikátor URI se neověří, ale zapamatujte si, co jste zadali. Budete ho potřebovat později.
 3. Není nutné vytvářet **ověřovací klíč klienta**.
-4. Místo přiřazení instančního objektu k roli **Přispěvatel profilů CDN** přiřadíme jednotlivé uživatele nebo skupiny.  V tomto příkladu vidíte, že byl přiřazen *ukázkový uživatel CDN* k roli **Přispěvatel profilu CDN** .  
+4. Místo přiřazení instančního objektu k roli **Přispěvatel profilů CDN** přiřadíme jednotlivé uživatele nebo skupiny.  V tomto příkladu vidíte, že byl přiřazen  *ukázkový uživatel CDN* k roli **Přispěvatel profilu CDN** .  
 
     ![Přístup jednotlivých uživatelů](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
