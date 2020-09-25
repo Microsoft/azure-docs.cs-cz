@@ -1,14 +1,14 @@
 ---
 title: Doručování výstrah protokolu aktivit v oznámeních o službě Azure pomocí Azure Portal
-description: Když dojde ke službě Azure, dostanete oznámení prostřednictvím SMS, e-mailu nebo Webhooku.
+description: Naučte se používat Azure Portal k nastavení výstrah protokolu aktivit pro oznámení o stavu služby pomocí Azure Portal.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499253"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289782"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Vytváření výstrah protokolu aktivit u oznámení služby pomocí Azure Portal
 ## <a name="overview"></a>Přehled

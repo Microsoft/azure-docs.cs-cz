@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 27b745353521a44733c46170a5f5952c194c2343
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2cde352738c1aa545c77cbcf5d974030cd75b1e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326520"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -27,7 +27,7 @@ Dají se taky spravovat prostřednictvím [Azure Portal](https://portal.azure.co
 ## <a name="prerequisites"></a>Požadavky
 
 * Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
+* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
     - Název instance
     - Skupina prostředků
     
@@ -44,7 +44,7 @@ Aby bylo možné propojit koncový bod s digitálními podsítěmi Azure, musí 
 
 ### <a name="create-an-event-grid-endpoint"></a>Vytvoření koncového bodu Event Grid
 
-Následující příklad ukazuje, jak vytvořit koncový bod Event gridu pomocí rozhraní příkazového řádku Azure CLI. Můžete použít [Azure Cloud Shell](https://shell.azure.com)nebo [místně nainstalovat rozhraní](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)příkazového řádku.
+Následující příklad ukazuje, jak vytvořit koncový bod Event gridu pomocí rozhraní příkazového řádku Azure CLI. Můžete použít [Azure Cloud Shell](https://shell.azure.com)nebo [místně nainstalovat rozhraní](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)příkazového řádku.
 
 Nejprve vytvořte téma Event Grid. Můžete použít následující příkaz nebo zobrazit kroky podrobněji pomocí postupu v [části *Vytvoření vlastního tématu* ](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) v rychlém startu Event Grid *vlastních událostí* .
 

@@ -2,14 +2,15 @@
 author: aahill
 ms.author: aahi
 ms.service: cognitive-services
+ms.subservice: ink-recognizer
 ms.topic: include
 ms.date: 06/20/2019
-ms.openlocfilehash: 9d46b304d598b4830cf325909f77eea6b68af757
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ede1fb4bd2a9a6e6536959053e3ca4d8e4a82f87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304126"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327343"
 ---
 >[!NOTE]
 > Koncové body pro prostředky vytvořené po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 

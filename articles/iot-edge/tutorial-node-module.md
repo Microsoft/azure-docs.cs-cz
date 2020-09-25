@@ -2,19 +2,19 @@
 title: Kurz pro vývoj Node.js modul pro Linux-Azure IoT Edge | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem v jazyce Node.js a jak ho nasadit na hraniční zařízení.
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc, devx-track-python, devx-track-javascript
-ms.openlocfilehash: b1a24c4e97ba73dc5097e7b3c09c0c1c5a8771ac
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: mvc, devx-track-python, devx-track-js
+ms.openlocfilehash: fd7e5c74876f9c7457d4ef29827527191f6558d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875417"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336799"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Node.js IoT Edge pro zařízení se systémem Linux
 
@@ -84,7 +84,7 @@ Pomocí **npm** vytvořte šablonu řešení Node.js, na jejímž základě bude
    | ----- | ----- |
    | Vybrat složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
    | Zadejte název řešení | Zadejte popisný název vašeho řešení nebo přijměte výchozí **EdgeSolution**. |
-   | Vyberte šablonu modulu | Vyberte **modulNode.js**. |
+   | Vyberte šablonu modulu | Vyberte ** modulNode.js**. |
    | Zadejte název modulu | Dejte modulu název **NodeModule**. |
    | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Položku **localhost: 5000** nahraďte hodnotou **přihlašovacího serveru** z služby Azure Container Registry. Přihlašovací server můžete načíst ze stránky přehled v registru kontejneru v Azure Portal. <br><br>Konečné úložiště imagí vypadá jako \<registry name\> . azurecr.IO/nodemodule. |
 

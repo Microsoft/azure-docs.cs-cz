@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: da0c00f0b4a8f2c49996fbcb9b34ee4a1ab65273
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6648a20e03facad4b791cacba8513f9f1aa7d2f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291907"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Známé problémy/omezení migrace pro online migrace Azure SQL Database
 
@@ -40,7 +40,7 @@ Pokud se zdrojová databáze skládá z jedné nebo několika dočasných tabule
 
 **Alternativní řešení**
 
-Postupujte následovně.
+Použijte k tomu následující postup.
 
 1. Pomocí níže uvedeného dotazu Najděte dočasné tabulky ve zdrojovém schématu.
 
@@ -66,7 +66,7 @@ Při operaci úplného načtení dat se může zobrazit výjimka SQL naznačují
 
 **Alternativní řešení**
 
-Postupujte následovně.
+Použijte k tomu následující postup.
 
 1. Pomocí dotazu níže vyhledejte tabulky uživatelů, které obsahují sloupce s datovým typem hierarchyid.
 
@@ -82,7 +82,7 @@ Postupujte následovně.
 
 **Alternativní řešení**
 
-Postupujte následovně.
+Použijte k tomu následující postup.
 
 1. Vyhledá aktivační události, které jsou aktuálně aktivní ve zdrojové databázi, pomocí následujícího dotazu:
 

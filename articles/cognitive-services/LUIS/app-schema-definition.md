@@ -1,14 +1,16 @@
 ---
 title: Definice schématu aplikace
 description: Aplikace LUIS je reprezentovaná v rámci `.json` nebo `.lu` zahrnuje všechny záměry, entity, příklad projevy, funkce a nastavení.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
-ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756784"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327319"
 ---
 # <a name="app-schema-definition"></a>Definice schématu aplikace
 

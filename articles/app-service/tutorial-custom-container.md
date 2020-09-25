@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web App, Linux, Windows, Docker, kontejner
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: fdc15ecd79a6672d2a46b4da284533965977d753
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312052"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrace vlastního softwaru na Azure App Service pomocí vlastního kontejneru
 
@@ -72,7 +72,7 @@ Projekt je teď nastavený tak, aby běžel v kontejneru Windows. Do projektu **
 
 V Průzkumníku řešení otevřete soubor **Dockerfile**.
 
-Musíte použít [podporovanou nadřazenou image](quickstart-custom-container.md#use-a-different-parent-image). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem:
+Musíte použít [podporovanou nadřazenou image](configure-custom-container.md#supported-parent-images). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem:
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -618,6 +618,8 @@ Prostředky, které jste vytvořili v tomto článku, můžou účtovat průbě�
 az group delete --name AppSvc-DockerTutorial-rg
 ```
 
+::: zone-end
+
 ## <a name="next-steps"></a>Další kroky
 
 Naučili jste se:
@@ -625,9 +627,13 @@ Naučili jste se:
 > [!div class="checklist"]
 > * Nasazení vlastní image do privátního registru kontejnerů
 > * Nasazení a vlastní image v App Service
+::: zone pivot="container-linux"
 > * Aktualizace a opětovné nasazení image
+::: zone-end
 > * Přístup k diagnostickým protokolům
+::: zone pivot="container-linux"
 > * Připojit se ke kontejneru pomocí SSH
+::: zone-end
 
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
@@ -639,7 +645,7 @@ Nebo si prohlédněte další zdroje informací:
 > [!div class="nextstepaction"]
 > [Konfigurace vlastního kontejneru](configure-custom-container.md)
 
+::: zone pivot="container-linux"
 > [!div class="nextstepaction"]
 > [Kurz: aplikace pro více kontejnerů WordPress](tutorial-multi-container-app.md)
-
 ::: zone-end

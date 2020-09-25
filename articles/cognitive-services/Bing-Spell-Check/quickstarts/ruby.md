@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Ruby-Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky pomocí tohoto rychlého startu.
+description: Začněte používat Kontrola pravopisu Bingu REST API a Ruby pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: fae466124244f5d2b04ad6e59681011b9c5ba974
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0b29ba1b09123784bfbac6fda4f5a1c6953f4e49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327387"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Ruby
 

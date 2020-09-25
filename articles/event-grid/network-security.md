@@ -1,16 +1,16 @@
 ---
 title: Zabezpečení sítě pro prostředky Azure Event Grid
-description: Tento článek popisuje, jak nakonfigurovat přístup z privátních koncových bodů.
+description: Tento článek popisuje, jak používat značky služeb pro odchozí přenosy, pravidla brány firewall protokolu IP pro příchozí komunikaci a privátní koncové body pro příchozí komunikaci s Azure Event Grid.
 author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119238"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326452"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Grid: 
@@ -57,7 +57,7 @@ Při vytváření privátního koncového bodu se záznam CNAME DNS pro prostře
 
 Když vyřešíte adresu URL tématu nebo adresy URL koncového bodu domény mimo virtuální síť s privátním koncovým bodem, přeloží se na veřejný koncový bod služby. Záznamy o prostředcích DNS pro "téma", pokud jsou vyřešeny **mimo virtuální síť** hostující soukromý koncový bod, bude:
 
-| Name                                          | Typ      | Hodnota                                         |
+| Název                                          | Typ      | Hodnota                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
@@ -66,7 +66,7 @@ Pomocí [brány firewall protokolu IP](#ip-firewall)můžete odepřít nebo ří
 
 Při překladu z virtuální sítě hostující soukromý koncový bod se v tématu nebo adrese URL koncového bodu domény přeloží na IP adresu privátního koncového bodu. Záznamy o prostředcích DNS pro téma "kapitola", při jejich vyřešení z **virtuální** sítě, která je hostitelem privátního koncového bodu, bude:
 
-| Name                                          | Typ      | Hodnota                                         |
+| Název                                          | Typ      | Hodnota                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5
@@ -85,7 +85,7 @@ Následující tabulka popisuje různé stavy připojení privátního koncovéh
 | ------------------ | -------------------------------|
 | Schválené           | Yes                            |
 | Zamítnuto           | No                             |
-| Čekající na vyřízení            | No                             |
+| Čekající            | No                             |
 | Propojení       | No                             |
 
 Aby publikování bylo úspěšné, měla by být **schválen**stav připojení privátního koncového bodu. Pokud se připojení odmítne, nebude možné ho schválit pomocí Azure Portal. Jedinou možností je odstranit připojení a místo toho vytvořit nový.
