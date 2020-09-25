@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB rozhraní API pro tabulky pro jazyk Java
-description: Seznamte se s Azure Cosmos DB rozhraní API pro tabulky včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi.
+description: Seznamte se s Azure Cosmos DB rozhraní API pro tabulky pro jazyk Java, včetně dat o verzích, data odchodu a změn provedených mezi jednotlivými verzemi.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
@@ -9,12 +9,12 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: fc78688a413bf182d2a0489189a3ad9348ac4d21
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40722053d28a0479e3f9ebaadd0fd04478a4f1aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308113"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261885"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky pro jazyk Java: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -49,9 +49,9 @@ Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SD
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15. listopadu 2017 |--- |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) . 
 

@@ -11,31 +11,26 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257312"
 ---
 # <a name="scenario-single-page-application"></a>Scénář: jednostránkové aplikace
 
 Naučte se všechno, co potřebujete k vytvoření jednostránkové aplikace (SPA).
 
-## <a name="prerequisites"></a>Požadavky
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>Začínáme
 
-Svou první aplikaci můžete vytvořit pomocí rychlého startu pro JavaScript SPA:
+Pokud jste to ještě neudělali, vytvořte svou první aplikaci tím, že dokončíte rychlý Start pro JavaScript SPA:
 
-> [!div class="nextstepaction"]
-> [Rychlý Start: jednostránkové aplikace](./quickstart-v2-javascript.md)
+[Rychlý Start: jednostránkové aplikace](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>Přehled
 
-Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Vývojáři si je zapisují pomocí JavaScriptu nebo architektury SPA, jako je například úhlová, Vue a reakce. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru. 
+Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Vývojáři si je zapisují pomocí JavaScriptu nebo architektury SPA, jako je například úhlová, Vue a reakce. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru.
 
 Platforma Microsoft Identity Platform nabízí **dvě** možnosti, jak přihlašovat jednostránkové aplikace uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API:
 
@@ -57,7 +52,11 @@ Chcete-li povolit tento scénář pro vaši aplikaci, budete potřebovat:
 * Konfigurace aplikace s registrovanými vlastnostmi aplikace, jako je ID aplikace
 * Použití knihovny ověřování Microsoft pro JavaScript (MSAL.js) k tomu, aby tok ověřování se přihlásil a získal tokeny.
 
+## <a name="recommended-reading"></a>Doporučené čtení
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace aplikace](scenario-spa-app-registration.md)
+> [Registrace aplikací](scenario-spa-app-registration.md)

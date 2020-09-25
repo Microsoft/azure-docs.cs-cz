@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e9faea3462ae953e474b5053b651808b03f07c23
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c1c882694f6ae3d8a3b217ed5e7e3d6050189135
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257179"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
 
@@ -27,9 +27,18 @@ Kód, který použijete ke konfiguraci webového rozhraní API tak, aby volal po
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
+## <a name="microsoftidentityweb"></a>Microsoft. identity. Web
+
+Microsoft doporučuje při vývoji ASP.NET Coreho rozhraní API s voláním pro podřízená webová rozhraní API použít balíček NuGet [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) . Viz [chráněné webové rozhraní API: Konfigurace kódu | Microsoft. identity. Web](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) pro rychlou prezentaci této knihovny v kontextu webového rozhraní API.
+
 ## <a name="client-secrets-or-client-certificates"></a>Klientské tajné klíče nebo klientské certifikáty
 
-Vzhledem k tomu, že vaše webové rozhraní API nyní volá webové rozhraní API pro příjem dat, je nutné zadat tajný klíč klienta nebo klientský certifikát v *appsettings.js* souboru.
+Vzhledem k tomu, že vaše webové rozhraní API nyní volá webové rozhraní API pro příjem dat, je nutné zadat tajný klíč klienta nebo klientský certifikát v *appsettings.js* souboru. Můžete také přidat oddíl, který určuje:
+
+- Adresa URL webového rozhraní API pro příjem dat
+- Rozsahy vyžadované pro volání rozhraní API
+
+V následujícím příkladu obsahuje `GraphBeta` oddíl tato nastavení.
 
 ```JSON
 {
@@ -37,12 +46,16 @@ Vzhledem k tomu, že vaše webové rozhraní API nyní volá webové rozhraní A
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
    "ClientCertificates": [
   ]
- }
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
@@ -54,7 +67,7 @@ Místo tajného kódu klienta můžete zadat klientský certifikát. Následují
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientCertificates": [
       {
@@ -62,8 +75,12 @@ Místo tajného kódu klienta můžete zadat klientský certifikát. Následují
         "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
         "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
       }
-  ]
- }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
 }
 ```
 
@@ -71,28 +88,88 @@ Microsoft. identity. Web nabízí několik způsobů, jak popsat certifikáty, j
 
 ## <a name="startupcs"></a>Startup.cs
 
-Pokud chcete, aby vaše webové rozhraní API volalo webové rozhraní API pro příjem dat, použijte Microsoft. identity. Web, přidejte `.EnableTokenAcquisitionToCallDownstreamApi()` řádek po `.AddMicrosoftIdentityWebApi(Configuration)` a pak zvolte implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs*:
+Vaše webové rozhraní API bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zveřejňuje `ITokenAcquisition` službu, kterou můžete použít v akcích kontroleru nebo stránek. Jak vidíte v následujících dvou odrážekch, můžete dokonce dělat jednodušší. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
 
 public class Startup
 {
-  ...
+  // ...
   public void ConfigureServices(IServiceCollection services)
   {
-   // ...
-    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
-                .EnableTokenAcquisitionToCallDownstreamApi()
-                .AddInMemoryTokenCaches();
   // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+            .AddInMemoryTokenCaches();
+   // ...
   }
   // ...
 }
 ```
 
-Stejně jako u Web Apps můžete zvolit různé implementace mezipaměti tokenů. Podrobnosti najdete v tématu [Microsoft Identity web wiki – serializace mezipaměti tokenu](https://aka.ms/ms-id-web/token-cache-serialization) na GitHubu.
+Pokud nechcete získat token sami, *Microsoft. identity. Web* poskytuje dva mechanismy pro volání webového rozhraní API pro příjem dat z jiného rozhraní API. Možnost, kterou zvolíte, závisí na tom, jestli chcete volat Microsoft Graph nebo jiné rozhraní API.
+
+### <a name="option-1-call-microsoft-graph"></a>Možnost 1: volání Microsoft Graph
+
+Pokud chcete volat Microsoft Graph, Microsoft. identity. Web vám umožní přímo použít `GraphServiceClient` (zveřejněné v sadě Microsoft Graph SDK) ve svých akcích rozhraní API. Postup vystavení Microsoft Graph:
+
+1. Do projektu přidejte balíček NuGet [Microsoft. identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) .
+1. Přidejte `.AddMicrosoftGraph()` po `.EnableTokenAcquisitionToCallDownstreamApi()` v souboru *Startup.cs* . `.AddMicrosoftGraph()` má několik přepsání. Pomocí přepsání, které přebírá konfigurační oddíl jako parametr, se kód změní na:
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>Možnost 2: volání podřízeného webového rozhraní API kromě Microsoft Graph
+
+Chcete-li volat jiné než Microsoft Graph rozhraní API, poskytuje *Microsoft. identity. Web* `.AddDownstreamWebApi()` , který vyžaduje tokeny a volá webové rozhraní API pro příjem dat.
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+Stejně jako u Web Apps můžete zvolit různé implementace mezipaměti tokenů. Podrobnosti najdete v tématu [serializace mezipaměti webového tokenu Microsoft Identity](https://aka.ms/ms-id-web/token-cache-serialization) na GitHubu.
+
+Následující obrázek znázorňuje různé možnosti *Microsoft. identity. Web* a jejich dopad na soubor *Startup.cs* :
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Při vytváření webového rozhraní API se můžete rozhodnout volat rozhraní API pro příjem dat a implementace mezipaměti tokenů.":::
+
+> [!NOTE]
+> Pokud chcete plně pochopit příklady kódu, musíte být obeznámeni s [ASP.NET Core základy](/aspnet/core/fundamentals)a zejména pomocí injektáže a [možností](/aspnet/core/fundamentals/configuration/options) [závislosti](/aspnet/core/fundamentals/dependency-injection) .
 
 # <a name="java"></a>[Java](#tab/java)
 

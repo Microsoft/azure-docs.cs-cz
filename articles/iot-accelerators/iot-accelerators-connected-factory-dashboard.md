@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261868"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>Použití funkcí v řídicím panelu akcelerátoru řešení propojené továrny
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 [Nasazení cloudového řešení pro správu zařízení IoT v průmyslu](quickstart-connected-factory-deploy.md) vám ukáže, jak přejít na řídicí panel a reagovat na alarmy. V této příručce se dozvíte několik dalších funkcí řídicího panelu, pomocí kterých můžete monitorovat a spravovat zařízení v průmyslových zařízeních IoT.
 

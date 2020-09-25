@@ -1,7 +1,7 @@
 ---
 title: Ověřit obory a chráněné webové rozhraní API pro obory a role aplikace | Azure
 titleSuffix: Microsoft identity platform
-description: Naučte se vytvářet chráněné webové rozhraní API a konfigurovat kód vaší aplikace.
+description: Ověřte, že rozhraní API se volá jenom aplikacemi jménem uživatelů, kteří mají správné obory a aplikace démona, které mají správnou aplikační role.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3cf8bfd2810e9c26a6f65c50c1a22baeec892af
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1e5c8b788f1abbfbd46c4dfe6c7bb9d87adcee86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257262"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Chráněné webové rozhraní API: ověření oborů a rolí aplikací
 
