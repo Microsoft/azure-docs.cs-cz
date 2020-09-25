@@ -2,173 +2,171 @@
   href: index.yml
   items:
     - name: Aktualizace komerčního marketplace
-      href: ./marketplace-roadmap.md
-    - name: Podmínky a zásady komerčního marketplace
-      href: ./policies-terms.md
+      href: marketplace-roadmap.md
     - name: Přehled a výhody komerčního marketplace
-      href: ./marketplace-publishers-guide.md
+      href: marketplace-publishers-guide.md
       items:
         - name: 'Jeden marketplace, dvě prodejní místa online'
-          href: ./comparing-appsource-azure-marketplace.md
+          href: comparing-appsource-azure-marketplace.md
         - name: Aspekty a možnosti publikování
-          href: ./determine-your-listing-type.md
+          href: determine-your-listing-type.md
           items:
             - name: Správa potenciálních zákazníků
-              href: ./lead-management-for-cloud-marketplace.md
+              href: lead-management-for-cloud-marketplace.md
             - name: Transakce na komerčním marketplace
-              href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+              href: marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: Plány a ceny
               href: plans-pricing.md
             - name: Soukromé nabídky
-              href: ./private-offers.md
+              href: private-offers.md
             - name: Standardní kontrakt
-              href: ./standard-contract.md
+              href: standard-contract.md
             - name: Přisuzování využití ze strany zákazníků partnerům Azure
-              href: ./azure-partner-customer-usage-attribution.md
+              href: azure-partner-customer-usage-attribution.md
             - name: Podporované země a oblasti
-              href: ./sell-from-countries.md
+              href: sell-from-countries.md
         - name: Průvodci publikováním podle typu nabídky
-          href: ./publisher-guide-by-offer-type.md
+          href: publisher-guide-by-offer-type.md
           items:
             - name: Naplánování nabídky SaaS
-              href: ./plan-saas-offer.md
+              href: plan-saas-offer.md
             - name: Virtuální počítače
-              href: ./marketplace-virtual-machines.md
+              href: marketplace-virtual-machines.md
             - name: 'Aplikace Azure: šablony řešení'
-              href: ./marketplace-solution-templates.md
+              href: marketplace-solution-templates.md
             - name: 'Aplikace Azure: spravované aplikace'
-              href: ./marketplace-managed-apps.md
+              href: marketplace-managed-apps.md
             - name: Containers
-              href: ./marketplace-containers.md
+              href: marketplace-containers.md
             - name: Moduly IoT Edge
-              href: ./iot-edge-module.md
+              href: iot-edge-module.md
             - name: Konzultační služby
-              href: ./consulting-services.md
+              href: consulting-services.md
             - name: 'Microsoft 365, Dynamics 365 a Power BI'
-              href: ./appsource-offer-publishing-guide.md
+              href: appsource-offer-publishing-guide.md
             - name: Povolení ověřování nabídek s využitím Azure AD
-              href: ./enable-appsource-marketplace-using-azure-ad.md
+              href: enable-appsource-marketplace-using-azure-ad.md
             - name: Integrovaná řešení
-              href: ./integrated-solutions-for-publishers.md
+              href: integrated-solutions-for-publishers.md
         - name: Marketingové osvědčené postupy
-          href: ./gtm-marketing-best-practices.md
+          href: gtm-marketing-best-practices.md
           items:
             - name: Osvědčené postupy nabídky
-              href: ./gtm-offer-listing-best-practices.md
+              href: gtm-offer-listing-best-practices.md
             - name: Získání doporučení
-              href: ./gtm-how-to-get-featured.md
+              href: gtm-how-to-get-featured.md
             - name: Ověření obsahu na Marketplace
-              href: ./marketplace-criteria-content-validation.md
+              href: marketplace-criteria-content-validation.md
             - name: Poskytovatelé cloudových řešení
-              href: ./cloud-solution-providers.md
+              href: cloud-solution-providers.md
             - name: Průvodce onboardingem programu Connect
-              href: ./business-applications-isv-program.md
+              href: business-applications-isv-program.md
         - name: Vaše výhody na trhu
-          href: ./gtm-your-marketplace-benefits.md
+          href: gtm-your-marketplace-benefits.md
           items:
             - name: Zvýhodnění závazku využití Azure
-              href: ./azure-consumption-commitment-benefit.md
+              href: azure-consumption-commitment-benefit.md
             - name: Zapojení partnerů do společného prodeje
-              href: ./marketplace-co-sell.md
+              href: marketplace-co-sell.md
             - name: Upřednostňovaná řešení
-              href: ./preferred-solutions.md
+              href: preferred-solutions.md
             - name: Integrovaná řešení
-              href: ./integrated-solutions.md
+              href: integrated-solutions.md
         - name: Podpora pro komerční marketplace
-          href: ./support-azure-marketplace.md
+          href: support-azure-marketplace.md
           items:
             - name: Nejčastější dotazy ke komerčnímu marketplace
-              href: ./marketplace-faq-publisher-guide.md
+              href: marketplace-faq-publisher-guide.md
             - name: Geografická dostupnost a měny
-              href: ./marketplace-geo-availability-currencies.md
+              href: marketplace-geo-availability-currencies.md
 - name: Komerční marketplace v Partnerském centru
   items:
     - name: Přehled komerčního marketplace
-      href: ./partner-center-portal/commercial-marketplace-overview.md
+      href: partner-center-portal/commercial-marketplace-overview.md
     - name: Nejčastější dotazy k migraci
-      href: ./cloud-partner-portal-migration-faq.md
+      href: cloud-partner-portal-migration-faq.md
     - name: Správa účtů
       items:
         - name: Vytvoření nového účtu v partnerském centru
-          href: ./partner-center-portal/create-account.md
+          href: partner-center-portal/create-account.md
         - name: Správa účtu v partnerském centru
-          href: ./partner-center-portal/manage-account.md
+          href: partner-center-portal/manage-account.md
         - name: Vyhledání nebo vytvoření pracovního účtu společnosti
-          href: ./partner-center-portal/company-work-accounts.md
+          href: partner-center-portal/company-work-accounts.md
         - name: Migrace účtu z CPP do partnerského centra
-          href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
+          href: partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Vytvoření nové nabídky
       items:
         - name: Nabídky aplikací Azure
           items:
             - name: Vytvoření nabídky aplikací Azure
-              href: ./partner-center-portal/create-new-azure-apps-offer.md
+              href: partner-center-portal/create-new-azure-apps-offer.md
             - name: Fakturace aplikací Azure na základě měření
-              href: ./partner-center-portal/azure-app-metered-billing.md
+              href: partner-center-portal/azure-app-metered-billing.md
             - name: Zpracování zpětné vazby
-              href: ./partner-center-portal/azure-apps-review-feedback.md
+              href: partner-center-portal/azure-apps-review-feedback.md
             - name: Rozhraní API pro onboarding
-              href: ./partner-center-portal/azure-app-apis.md
+              href: partner-center-portal/azure-app-apis.md
         - name: Nabídky kontejnerů Azure
           items:
             - name: Příprava technických prostředků
-              href: ./partner-center-portal/create-azure-container-technical-assets.md
+              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Vytvoření nabídky kontejnerů Azure
-              href: ./partner-center-portal/create-azure-container-offer.md
+              href: partner-center-portal/create-azure-container-offer.md
         - name: Nabídka virtuálních počítačů
           items:
             - name: Vytvoření nabídky virtuálních počítačů Azure
-              href: ./partner-center-portal/azure-vm-create-offer.md
+              href: partner-center-portal/azure-vm-create-offer.md
             - name: Vytvoření technického prostředku virtuálního počítače Azure
               items:
                 - name: Certifikace virtuálních počítačů – problémy a řešení
-                  href: ./partner-center-portal/vm-certification-issues-solutions.md
+                  href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: Vytvoření technického prostředku virtuálního počítače Azure
-                  href: ./partner-center-portal/create-azure-vm-technical-asset.md
+                  href: partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Nejčastější dotazy k technickým prostředkům virtuálního počítače Azure
-                  href: ./partner-center-portal/common-issues-during-vhd-creation.md
+                  href: partner-center-portal/common-issues-during-vhd-creation.md
                 - name: Testovací virtuální počítač nasazený z VHD
-                  href: ./partner-center-portal/azure-vm-image-certification.md
+                  href: partner-center-portal/azure-vm-image-certification.md
                 - name: Identifikátor URI sdíleného přístupového podpisu
                   items:
                     - name: Získání identifikátoru URI sdíleného přístupového podpisu
-                      href: ./partner-center-portal/get-sas-uri.md
+                      href: partner-center-portal/get-sas-uri.md
                     - name: Nejčastější dotazy k identifikátoru URI sdíleného přístupového podpisu
-                      href: ./partner-center-portal/common-sas-uri-issues.md
+                      href: partner-center-portal/common-sas-uri-issues.md
         - name: Konzultační služby
           items:
             - name: Požadavky
-              href: ./partner-center-portal/consulting-service-prerequisites.md
+              href: partner-center-portal/consulting-service-prerequisites.md
             - name: Vytvoření nabídky konzultačních služeb
-              href: ./partner-center-portal/create-consulting-service-offer.md
+              href: partner-center-portal/create-consulting-service-offer.md
         - name: Nabídky Dynamics 365
           items:
             - name: Vytvoření nabídky Dynamics 365 for Customer Engagement a Power Apps
-              href: ./partner-center-portal/create-new-customer-engagement-offer.md
+              href: partner-center-portal/create-new-customer-engagement-offer.md
             - name: Vytvoření nabídky Dynamics 365 for Operations
               items:
                 - name: Vytvoření nabídky Dynamics 365 for Operations
-                  href: ./partner-center-portal/create-new-operations-offer.md
+                  href: partner-center-portal/create-new-operations-offer.md
                 - name: Funkční ověření
-                  href: ./dynamics-365-finance-operations-functional-validation.md
+                  href: dynamics-365-finance-operations-functional-validation.md
             - name: Vytvoření nabídky Dynamics 365 Business Central
-              href: ./partner-center-portal/create-new-business-central-offer.md
+              href: partner-center-portal/create-new-business-central-offer.md
         - name: Nabídky modulů IoT Edge
           items:
             - name: Vytvoření nabídky modulu IoT Edge
-              href: ./partner-center-portal/azure-iot-edge-module-creation.md
+              href: partner-center-portal/azure-iot-edge-module-creation.md
             - name: Příprava technických prostředků modulu IoT Edge
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
+              href: partner-center-portal/create-iot-edge-module-asset.md
         - name: Nabídky spravované služby
           items:
             - name: Vytvoření nabídky spravované služby
-              href: ./partner-center-portal/create-new-managed-service-offer.md
+              href: partner-center-portal/create-new-managed-service-offer.md
         - name: Nabídky aplikací Power BI
           items:
             - name: Přehled publikování
-              href: ./partner-center-portal/create-power-bi-app-overview.md
+              href: partner-center-portal/create-power-bi-app-overview.md
             - name: Vytvoření nabídky aplikací Power BI
-              href: ./partner-center-portal/create-power-bi-app-offer.md
+              href: partner-center-portal/create-power-bi-app-offer.md
         - name: Nabídky SaaS
           items:
             - name: Naplánování nabídky SaaS
@@ -176,13 +174,13 @@
             - name: Ověřování Azure AD pro SaaS
               items:
                 - name: Přehled Azure AD a SaaS
-                  href: ./azure-ad-saas.md
+                  href: azure-ad-saas.md
                 - name: Vstupní stránka pro nabídky s možností transakcí
-                  href: ./azure-ad-transactable-saas-landing-page.md
+                  href: azure-ad-transactable-saas-landing-page.md
                 - name: Vstupní stránka pro bezplatné nebo zkušební nabídky
-                  href: ./azure-ad-free-or-trial-landing-page.md
+                  href: azure-ad-free-or-trial-landing-page.md
             - name: Fakturace SaaS podle objemu dat
-              href: ./partner-center-portal/saas-metered-billing.md
+              href: partner-center-portal/saas-metered-billing.md
             - name: Vytvoření a publikování nabídky SaaS
               items:
                 - name: Vytvoření nabídky SaaS
@@ -202,129 +200,141 @@
             - name: Uvedení nabídky SaaS na trh
               href: create-new-saas-offer-marketing.md
             - name: Rozhraní API naplnění SaaS
-              href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+              href: partner-center-portal/pc-saas-fulfillment-apis.md
               items:
                 - name: Registrace aplikace SaaS
-                  href: ./partner-center-portal/pc-saas-registration.md
+                  href: partner-center-portal/pc-saas-registration.md
                 - name: Rozhraní API pro naplnění SaaS v2
-                  href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+                  href: partner-center-portal/pc-saas-fulfillment-api-v2.md
                 - name: Rozhraní API pro naplnění SaaS v1 (zastaralá)
-                  href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+                  href: partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: Rozhraní API pro naplnění SaaS – nejčastější dotazy
-                  href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+                  href: partner-center-portal/saas-fulfillment-apis-faq.md
         - name: Přehled správy potenciálních zákazníků
-          href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
+          href: partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
             - name: Azure Blob
-              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
+              href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
             - name: Tabulka Azure
-              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
+              href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
             - name: Dynamics 365 for Customer Engagement
-              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
+              href: partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
             - name: Koncový bod Https
-              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
+              href: partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
             - name: Marketo
-              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
+              href: partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: Salesforce
-              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+              href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Služba měření na marketplace
           items:
             - name: Strategie ověřování
-              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+              href: partner-center-portal/marketplace-metering-service-authentication.md
             - name: Rozhraní API služeb měření na marketplace
-              href: ./partner-center-portal/marketplace-metering-service-apis.md
+              href: partner-center-portal/marketplace-metering-service-apis.md
             - name: Rozhraní API služeb měření na marketplace – nejčastější dotazy
-              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+              href: partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: Testovací verze
           items:
             - name: Co je testovací verze?
-              href: ./what-is-test-drive.md
+              href: what-is-test-drive.md
             - name: Technická konfigurace testovací verze
-              href: ./test-drive-technical-configuration.md
+              href: test-drive-technical-configuration.md
             - name: Testovací verze pro Azure Resource Manager
-              href: ./azure-resource-manager-test-drive.md
+              href: azure-resource-manager-test-drive.md
         - name: Možnost společného prodeje
-          href: ./partner-center-portal/commercial-marketplace-co-sell.md
+          href: partner-center-portal/commercial-marketplace-co-sell.md
           items:
             - name: Kódy zemí a oblastí
-              href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
+              href: partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: Stavové kódy
-              href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
+              href: partner-center-portal/commercial-marketplace-co-sell-states.md
     - name: Kontrola a publikování
       href: review-publish-offer.md
     - name: Aktualizace stávajících nabídek
-      href: ./partner-center-portal/update-existing-offer.md
+      href: partner-center-portal/update-existing-offer.md
     - name: Aktivace programu Marketplace Rewards
-      href: ./partner-center-portal/marketplace-rewards.md
+      href: partner-center-portal/marketplace-rewards.md
     - name: Analýzy partnerského centra
       items:
         - name: Analýzy pro komerční marketplace
-          href: ./partner-center-portal/analytics.md
+          href: partner-center-portal/analytics.md
         - name: Souhrnný řídicí panel
-          href: ./partner-center-portal/summary-dashboard.md
+          href: partner-center-portal/summary-dashboard.md
         - name: Řídicí panel objednávek
-          href: ./partner-center-portal/orders-dashboard.md
+          href: partner-center-portal/orders-dashboard.md
         - name: Řídicí panel využití
-          href: ./partner-center-portal/usage-dashboard.md
+          href: partner-center-portal/usage-dashboard.md
         - name: Řídicí panel zákazníků
-          href: ./partner-center-portal/customer-dashboard.md
+          href: partner-center-portal/customer-dashboard.md
         - name: Řídicí panel přehledů Marketplace
-          href: ./partner-center-portal/insights-dashboard.md
+          href: partner-center-portal/insights-dashboard.md
         - name: Řídicí panel stahování
-          href: ./partner-center-portal/downloads-dashboard.md
+          href: partner-center-portal/downloads-dashboard.md
         - name: Řídicí panel hodnocení a recenzí
-          href: ./partner-center-portal/ratings-reviews.md
+          href: partner-center-portal/ratings-reviews.md
         - name: Nejčastější dotazy a terminologie
-          href: ./partner-center-portal/faq-terminology.md
+          href: partner-center-portal/faq-terminology.md
     - name: Vyplacení
       items:
         - name: Vyplacení
-          href: ./partner-center-portal/get-paid.md
+          href: partner-center-portal/get-paid.md
         - name: Nastavení platebního účtu a daňových formulářů
-          href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+          href: partner-center-portal/set-up-your-payout-account-tax-forms.md
         - name: 'Prahové hodnoty, způsoby a časové rámce plateb'
-          href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+          href: partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: Souhrnný přehled plateb
-          href: ./partner-center-portal/payout-summary-overview.md
+          href: partner-center-portal/payout-summary-overview.md
         - name: Přehledy plateb
-          href: ./partner-center-portal/payout-summary.md
+          href: partner-center-portal/payout-summary.md
         - name: Podrobnosti zásad plateb
-          href: ./partner-center-portal/payout-policy-details.md
+          href: partner-center-portal/payout-policy-details.md
         - name: Podrobné informace o daních
-          href: ./partner-center-portal/tax-details-paid-transactions.md
+          href: partner-center-portal/tax-details-paid-transactions.md
     - name: Referenční materiály k rozhraní API CPP
       items:
         - name: Přehled
-          href: ./cloud-partner-portal-api-overview.md
+          href: cloud-partner-portal-api-overview.md
         - name: Požadavky
-          href: ./cloud-partner-portal-api-prerequisites.md
+          href: cloud-partner-portal-api-prerequisites.md
         - name: Požadavky
-          href: ./cloud-partner-portal-api-considerations.md
+          href: cloud-partner-portal-api-considerations.md
         - name: Řízení souběžnosti
-          href: ./cloud-partner-portal-api-concurrency-control.md
+          href: cloud-partner-portal-api-concurrency-control.md
         - name: Načtení nabídek
-          href: ./cloud-partner-portal-api-retrieve-offers.md
+          href: cloud-partner-portal-api-retrieve-offers.md
         - name: Načtení konkrétní nabídky
-          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
+          href: cloud-partner-portal-api-retrieve-specific-offer.md
         - name: Přidání nebo úprava nabídky
-          href: ./cloud-partner-portal-api-creating-offer.md
+          href: cloud-partner-portal-api-creating-offer.md
         - name: Načtení stavu nabídky
-          href: ./cloud-partner-portal-api-retrieve-offer-status.md
+          href: cloud-partner-portal-api-retrieve-offer-status.md
         - name: Publikování nabídky
-          href: ./cloud-partner-portal-api-publish-offer.md
+          href: cloud-partner-portal-api-publish-offer.md
         - name: Načtení operací
-          href: ./cloud-partner-portal-api-retrieve-operations.md
+          href: cloud-partner-portal-api-retrieve-operations.md
         - name: Zrušení operací
-          href: ./cloud-partner-portal-api-cancel-operations.md
+          href: cloud-partner-portal-api-cancel-operations.md
         - name: Zveřejnění
-          href: ./cloud-partner-portal-api-go-live.md
+          href: cloud-partner-portal-api-go-live.md
         - name: Ceny nabídek virtuálních počítačů
-          href: ./cloud-partner-portal-api-setting-price.md
+          href: cloud-partner-portal-api-setting-price.md
         - name: Řešení potíží s chybami ověřování
-          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+          href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Možnosti podpory
-      href: ./partner-center-portal/support.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Podporované značky HTML
-          href: supported-html-tags.md
+      href: partner-center-portal/support.md
+- name: Podmínky a zásady komerčního marketplace
+  items:
+    - name: Informace o našich zásadách a podmínkách
+      href: policies-terms.md
+    - name: Zásady certifikace na komerčním marketplace
+      href: /legal/marketplace/offer-policies-change-history?context=/azure/marketplace/context/context
+    - name: Zásady kontroly pro komerční marketplace
+      href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
+    - name: Zásady účasti na Azure Marketplace
+      href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
+    - name: Podmínky Azure Marketplace
+      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+- name: Zdroje a prostředky
+  items:
+    - name: Podporované značky HTML
+      href: supported-html-tags.md

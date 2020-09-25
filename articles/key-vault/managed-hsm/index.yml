@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Dokumentace k Managed HSM služby Azure Key Vault
+summary: Naučte se využívat Managed HSM k vytváření a správě klíčů, které zajišťují přístup k vašim cloudovým prostředkům, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
+metadata:
+  title: Dokumentace k Azure Managed HSM
+  description: Naučte se využívat tuto službu k vytváření a správě klíčů, které zajišťují přístup k vašim cloudovým prostředkům, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/15/2020
+  ms.openlocfilehash: d17d119528c04b270e9dffe5b824bafcc89472dc
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991956"
+landingContent:
+- title: Informace o Managed HSM služby Azure Key Vault (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Managed HSM služby Azure Key Vault?
+      url: overview.md
+    - text: Přehled rozhraní REST API
+      url: ../general/about-keys-secrets-certificates.md
+    - text: Podporované klíče a algoritmy
+      url: ../keys/about-keys.md
+- title: Koncepce
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Osvědčené postupy pro Managed HSM
+      url: best-practices.md
+    - text: Řízení přístupu pro Managed HSM
+      url: access-control.md
+    - text: Doména zabezpečení
+      url: security-domain.md
+    - text: Místní předdefinované role řízení přístupu na základě role
+      url: built-in-roles.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure Resource Manager
+      url: quick-create-template.md
+- title: Návody
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa pomocí Azure CLI
+      url: key-management.md
+    - text: Správa rolí pro Managed HSM
+      url: role-management.md
+    - text: Zabezpečený přístup ke službě Managed HSM
+      url: secure-your-managed-hsm.md
+- title: Kurzy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zálohování a obnovení
+      url: backup-restore.md
+    - text: Zotavení po havárii
+      url: disaster-recovery-guide.md
+    - text: Import klíčů chráněných modulem HSM (přehled)
+      url: hsm-protected-keys-byok.md
+    - text: Konfigurace protokolování pro Managed HSM
+      url: logging.md
+- title: Další informace o službě Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled služby Key Vault
+      url: ../general/overview.md
+    - text: Základní koncepce trezoru klíčů
+      url: ../general/basic-concepts.md
+    - text: Přehled obnovitelného odstranění
+      url: ../general/soft-delete-overview.md
+    - text: Přehled zabezpečení
+      url: ../general/overview-security.md

@@ -8,18 +8,18 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/21/2020
 ms.author: banders
-ms.openlocfilehash: 6cfebc9cfbd856567fde3d6736c6ddc5f1a94b4d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ad580ae5e3ffe7a7f5781423f96897272a4844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688704"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972078"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Postup placení vyúčtování služeb Microsoft Azure
 
-Tento článek se týká zákazníků se smlouvou se zákazníkem Microsoftu, kteří se zaregistrovali k Azure prostřednictvím webu Azure. [Kontrola přístupu ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement)
+Tento článek se týká zákazníků se smlouvou se zákazníkem Microsoftu (MCA – Microsoft Customer Agreement), kteří si zaregistrovali Azure prostřednictvím webu Azure. [Kontrola přístupu ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement)
 
 Výchozí způsob platby vašeho fakturačního profilu může být buď platební karta, nebo šek či bankovní převod. Pokud máte kredity Azure, automaticky se na fakturu uplatní každé fakturační období. Pokud chcete mít nárok na platbu bankovním převodem nebo šekem, přečtěte si, [jak platit fakturou](../manage/pay-by-invoice.md).
 
@@ -29,11 +29,11 @@ Pokud máte jako výchozí způsob platby platební kartu, po vygenerování fak
 
 ## <a name="pay-now-in-the-azure-portal"></a>Platba na webu Azure Portal
 
-Pokud chcete platit faktury na webu Azure Portal, musíte být vlastníkem, přispěvatelem nebo správcem faktur daného fakturačního profilu.
+Abyste mohli platit faktury na webu Azure Portal, musíte být správcem fakturačního účtu. Správce fakturačního účtu je uživatel, který zaregistroval účet MCA.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
-1. V nabídce vlevo v části Fakturace vyberte **Faktury**.
+1. V nabídce vlevo v části **Fakturace** vyberte **Faktury**.
 1. Pokud jsou některé faktury splatné nebo po splatnosti, uvidíte u této faktury modrý odkaz **Zaplatit**. Vyberte **Zaplatit**.
 1. V novém okně klikněte na **Vybrat způsob platby** a zvolte existující platební kartu nebo přidejte novou.
 1. Jakmile je vybraný způsob platby, klikněte na **Zaplatit**.
@@ -42,3 +42,7 @@ Stav faktury se v okně faktury aktualizuje na zaplaceno.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
+
+## <a name="next-steps"></a>Další kroky
+
+- Pokud chcete mít nárok na platbu bankovním převodem nebo šekem, přečtěte si, [jak platit fakturou](../manage/pay-by-invoice.md).

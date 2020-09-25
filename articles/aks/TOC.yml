@@ -132,6 +132,8 @@
       items:
         - name: Škálování clusteru AKS
           href: scale-cluster.md
+        - name: Zastavení clusteru AKS (Preview)
+          href: start-stop-cluster.md
         - name: Upgrade clusteru AKS
           href: upgrade-cluster.md
         - name: Použití smlouvy SLA pro dobu provozu
@@ -307,8 +309,10 @@
           href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: Vývoj a spouštění aplikací
       items:
-        - name: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)
-          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
+        - name: Použití přemostění na Kubernetes s využitím nástroje Visual Studio Code
+          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+        - name: Použití přemostění na Kubernetes s využitím sady Visual Studio
+          href: /visualstudio/containers/bridge-to-kubernetes
         - name: Instalace existujících aplikací s využitím Helmu
           href: kubernetes-helm.md
         - name: Použití OpenFaaS

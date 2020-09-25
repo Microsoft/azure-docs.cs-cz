@@ -39,6 +39,10 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
+    - name: Nástroj pro vyrovnávání zatížení mezi oblastmi
+      href: cross-region-overview.md
+    - name: Co je nového?
+      href: whats-new.md
     - name: Komponenty
       href: components.md
     - name: Koncepty

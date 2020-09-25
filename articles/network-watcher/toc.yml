@@ -31,6 +31,8 @@
       href: connection-monitor-preview.md
     - name: Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů
       href: network-watcher-ip-flow-verify-overview.md
+    - name: Diagnostika pravidel NSG a filtrování provozu
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: Diagnostika potíží se směrováním virtuálních počítačů
       href: network-watcher-next-hop-overview.md
     - name: Diagnostika potíží s odchozí komunikací virtuálních počítačů

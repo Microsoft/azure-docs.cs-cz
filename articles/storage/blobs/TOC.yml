@@ -137,14 +137,14 @@
             - name: Šifrování neaktivních uložených dat ve službě Azure Storage
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
-                - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
-                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Klíče poskytované zákazníkem na vyžádání
-                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Šifrování s využitím klíčů spravovaných zákazníkem
+                  href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Šifrování na vyžádání s využitím klíčů poskytnutých zákazníkem
+                  href: encryption-customer-provided-keys.md
+                - name: Obory šifrování
+                  href: encryption-scope-overview.md
             - name: Neměnné objekty blob
               href: storage-blob-immutable-storage.md
-            - name: Rozšířená ochrana před internetovými útoky
-              href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Integrované ovládací prvky zabezpečení
               href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Použití privátních koncových bodů Azure
@@ -380,19 +380,17 @@
                   items:
                     - name: Kontrola modelu šifrovacího klíče pro účet
                       href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Konfigurace šifrovacích klíčů spravovaných zákazníkem
+                    - name: Konfigurace šifrování s využitím klíčů spravovaných zákazníkem
                       items:
-                        - name: Portál
-                          href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: PowerShell
-                          href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure CLI
-                          href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                        - name: Uložení klíčů spravovaných zákazníkem v trezoru klíčů
+                          href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                        - name: Uložení klíčů spravovaných zákazníkem ve službě Managed HSM
+                          href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Poskytnutí šifrovacího klíče v rámci požadavku
                   href: storage-blob-customer-provided-key.md
                 - name: Správa oborů šifrování
                   href: encryption-scope-manage.md
-                - name: Povolení šifrování infrastruktury pro účet úložiště
+                - name: Povolení šifrování infrastruktury pro účet
                   href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Konfigurace šifrování na straně klienta
               items:
@@ -414,6 +412,8 @@
                       href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Konfigurace verze TLS pro klientskou aplikaci
                       href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Konfigurace Azure Defenderu pro ochranu před hrozbami
+              href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Nastavení a správa zásad neměnnosti
               href: storage-blob-immutability-policies-manage.md
         - name: Správa redundance dat

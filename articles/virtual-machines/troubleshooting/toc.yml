@@ -234,6 +234,12 @@
           items:
             - name: Použití PerfInsights
               href: how-to-use-perfinsights-linux.md
+- name: Řešení potíží se sdílenými galeriemi imagí
+  items:
+    - name: Řešení potíží se sdílenými galeriemi imagí – Windows
+      href: ../windows/troubleshooting-shared-images.md
+    - name: Řešení potíží se sdílenými galeriemi imagí – Linux
+      href: ../linux/troubleshooting-shared-images.md
 - name: Problémy s rozšířením virtuálního počítače
   items:
     - name: Přehled rozšíření Azure

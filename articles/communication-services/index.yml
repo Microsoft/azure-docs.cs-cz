@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure Communication Services
+summary: Azure Communication Services je cloudová komunikační služba, která vám umožní přidat do vašich aplikací hlas, video, chat a telefonii. Upozorňujeme, že služby Azure Communication Services jsou momentálně ve verzi Public Preview.
+metadata:
+  title: Azure Communication Services
+  description: Azure Communication Services je cloudová komunikační služba, která vám umožní přidat do vašich aplikací hlas, video, chat a telefonii. Upozorňujeme, že služby Azure Communication Services jsou momentálně ve verzi Public Preview.
+  ms.service: azure-communication-services
+  ms.topic: landing-page
+  author: mikben
+  ms.author: mikben
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 6081063605439982e29984cc4378ec3aee7ac08a
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928750"
+landingContent:
+- title: Informace o službě Azure Communication Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Communication Services?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Možnosti klientských knihoven
+      url: concepts/sdk-options.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření prostředku Communication Services
+      url: quickstarts/create-communication-resource.md
+    - text: Vytvoření a správa uživatelských přístupových tokenů
+      url: quickstarts/access-tokens.md
+  - linkListType: concept
+    links:
+    - text: Klientská a serverová architektura
+      url: concepts/client-and-server-architecture.md
+    - text: Ověřování a autorizace
+      url: concepts/authentication.md
+    - text: Zpracování událostí
+      url: concepts/event-handling.md
+    - text: Oznámení
+      url: concepts/notifications.md
+- title: Hlasové hovory a videohovory
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Přidání hlasových hovorů a videohovorů do aplikace
+      url: quickstarts/voice-video-calling/getting-started-with-calling.md
+    - text: Použití klientské knihovny pro hovory
+      url: quickstarts/voice-video-calling/calling-client-samples.md
+  - linkListType: concept
+    links:
+    - text: Koncepce hlasových hovorů a videohovorů
+      url: concepts/voice-video-calling/about-call-types.md
+    - text: Přehled klientských knihoven pro hovory
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Toky volání
+      url: concepts/call-flows.md
+- title: Telefonie a SMS
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Získání telefonního čísla
+      url: quickstarts/telephony-sms/get-phone-number.md
+    - text: Odeslání zprávy SMS
+      url: quickstarts/telephony-sms/send.md
+    - text: Zpracování událostí SMS
+      url: quickstarts/telephony-sms/handle-sms-events.md
+  - linkListType: concept
+    links:
+    - text: Koncepce SMS
+      url: concepts/telephony-sms/concepts.md
+    - text: Přehled klientských knihoven pro SMS
+      url: concepts/telephony-sms/sdk-features.md
+    - text: Přehled volání
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Plánování telefonie a řešení pro SMS
+      url: concepts/telephony-sms/plan-solution.md
+- title: Chat
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Přidání chatu do aplikace
+      url: quickstarts/chat/get-started.md
+  - linkListType: concept
+    links:
+    - text: Koncepce chatu
+      url: concepts/chat/concepts.md
+    - text: Přehled klientských knihoven pro chat
+      url: concepts/chat/sdk-features.md
+- title: Ukázky
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Začínáme s ukázkou pro skupinové hovory
+      url: samples/calling-hero-sample.md
+    - text: Začínáme s ukázkou pro chat
+      url: samples/chat-hero-sample.md

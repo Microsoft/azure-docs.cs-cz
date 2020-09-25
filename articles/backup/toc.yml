@@ -50,6 +50,8 @@
       items:
         - name: Matice podpory pro Azure Backup
           href: backup-support-matrix.md
+        - name: Matice podpory pro centrum zálohování
+          href: backup-center-support-matrix.md
         - name: Matice podpory pro zálohování virtuálních počítačů Azure
           href: backup-support-matrix-iaas.md
         - name: Matice podpory pro DPM / Azure Backup Server (MABS)
@@ -68,6 +70,8 @@
       items:
         - name: Nejčastější dotazy k trezorům služby Recovery Services
           href: backup-azure-backup-faq.md
+        - name: Nejčastější dotazy k centru zálohování
+          href: backup-center-faq.md
         - name: Nejčastější dotazy k zálohování virtuálních počítačů Azure
           href: backup-azure-vm-backup-faq.md
         - name: Nejčastější dotazy k agentům MARS
@@ -88,18 +92,36 @@
       href: guidance-best-practices.md
 - name: Průvodce postupy
   items:
-    - name: Trezor služby Recovery Services
+    - name: Trezory
+      items:
+        - name: Trezor služby Recovery Services
+          items:
+            - name: Přehled
+              href: backup-azure-recovery-services-vault-overview.md
+            - name: Vytvořit
+              href: backup-create-rs-vault.md
+            - name: Odstranit
+              href: backup-azure-delete-vault.md
+            - name: Přesunout
+              href: backup-azure-move-recovery-services-vault.md
+            - name: Spravovat
+              href: backup-azure-manage-windows-server.md
+        - name: Trezor služby Backup
+          items:
+            - name: Přehled
+              href: backup-vault-overview.md
+    - name: Centrum zálohování
       items:
         - name: Přehled
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: Vytvořit
-          href: backup-create-rs-vault.md
-        - name: Odstranit
-          href: backup-azure-delete-vault.md
-        - name: Přesunout
-          href: backup-azure-move-recovery-services-vault.md
-        - name: Spravovat
-          href: backup-azure-manage-windows-server.md
+          href: backup-center-overview.md
+        - name: Monitorování a provoz
+          href: backup-center-monitor-operate.md
+        - name: Získání přehledů
+          href: backup-center-obtain-insights.md
+        - name: Řízení prostředí
+          href: backup-center-govern-environment.md
+        - name: Provádění akcí
+          href: backup-center-actions.md
     - name: Zálohování virtuálních počítačů Azure
       items:
         - name: Přehled
@@ -150,6 +172,10 @@
           href: restore-sql-database-azure-vm.md
         - name: Spravovat
           href: manage-monitor-sql-database-backup.md
+    - name: Záloha Azure Database for PostgreSQL
+      items:
+        - name: Backup
+          href: backup-azure-database-postgresql.md
     - name: Zálohování Windows s využitím agenta MARS
       items:
         - name: Přehled

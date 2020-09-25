@@ -165,18 +165,24 @@
           href: directory-manage-roles-portal.md
         - name: Vlastní role
           items:
-            - name: Vlastní role
+            - name: Přehled vlastních rolí
               href: roles-custom-overview.md
             - name: Vytvoření vlastní role
               href: roles-create-custom.md
             - name: Zobrazení přiřazení vlastních rolí
               href: roles-view-assignments.md
-            - name: Přiřazování rolí v centru správy Azure AD
+            - name: Přiřazení vlastních rolí na webu Azure Portal
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: Přiřazení vlastních rolí v PowerShellu
               href: roles-assign-powershell.md
+            - name: Přiřazení vlastních rolí pro podnikové aplikace
+              href: custom-enterprise-apps.md
             - name: Vlastní role/oprávnění
-              href: roles-custom-available-permissions.md
+              items:
+                - name: Oprávnění registrace aplikací
+                  href: roles-custom-available-permissions.md
+                - name: Oprávnění podnikových aplikací
+                  href: custom-enterprise-app-permissions.md
             - name: Delegování oprávnění správce aplikace
               href: roles-delegate-app-roles.md
         - name: Využití skupin ke správě přiřazení rolí

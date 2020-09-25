@@ -1,0 +1,88 @@
+- name: Dokumentace k Azure Communication Services
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je služba Azure Communication Services?
+      href: overview.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Vytvoření prostředku Communication Services
+      href: quickstarts/create-communication-resource.md
+    - name: Vytvoření a správa přístupových tokenů
+      href: quickstarts/access-tokens.md
+    - name: Chat
+      items:
+        - name: Přidání chatu do aplikace
+          href: quickstarts/chat/get-started.md
+    - name: Telefonie a SMS
+      items:
+        - name: Získání telefonního čísla
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: Odeslání zprávy SMS
+          href: quickstarts/telephony-sms/send.md
+        - name: Zpracování událostí SMS
+          href: quickstarts/telephony-sms/handle-sms-events.md
+    - name: Hlasové hovory a videohovory
+      items:
+        - name: Přidání hlasových hovorů do aplikace
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Použití klientské knihovny pro hovory
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+- name: Kurzy
+  expanded: false
+  items:
+    - name: Vytvoření důvěryhodné ověřovací služby s využitím Azure Functions
+      href: tutorials/trusted-service-tutorial.md
+- name: Koncepty
+  expanded: false
+  items:
+    - name: Chat
+      items:
+        - name: Přehled klientských knihoven pro chat
+          href: concepts/chat/sdk-features.md
+        - name: Koncepce chatu
+          href: concepts/chat/concepts.md
+    - name: Telefonie a SMS
+      items:
+        - name: Přehled klientských knihoven pro SMS
+          href: concepts/telephony-sms/sdk-features.md
+        - name: Koncepce SMS
+          href: concepts/telephony-sms/concepts.md
+        - name: Plánování telefonie a řešení pro SMS
+          href: concepts/telephony-sms/plan-solution.md
+    - name: Hlasové hovory a videohovory
+      items:
+        - name: Přehled klientských knihoven pro hovory
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: Koncepce hlasových hovorů a videohovorů
+          href: concepts/voice-video-calling/about-call-types.md
+    - name: Klientská a serverová architektura
+      href: concepts/client-and-server-architecture.md
+    - name: Toky volání
+      href: concepts/call-flows.md
+    - name: Klientské knihovny a rozhraní REST API
+      href: concepts/sdk-options.md
+    - name: Cenový model
+      href: concepts/pricing.md
+    - name: Authentication
+      href: concepts/authentication.md
+    - name: Zpracování událostí
+      href: concepts/event-handling.md
+    - name: Oznámení
+      href: concepts/notifications.md
+- name: Ukázky
+  items:
+    - name: Ukázka pro skupinové hovory
+      href: samples/calling-hero-sample.md
+    - name: Ukázka pro skupinový chat
+      href: samples/chat-hero-sample.md
+- name: Reference
+  items:
+    - name: Rozhraní REST API dokumentace
+      href: 'https://docs.microsoft.com/rest/api/azure/'
+- name: Zdroje a prostředky
+  items:
+    - name: "Poznámky k\_verzi"
+      href: release-notes.md

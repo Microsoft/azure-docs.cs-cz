@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: ac8900298670323551a25d4ef7ac3f7b44249c5a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: 0100ace6dcf4701a8491f034f36075dc483849ec
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209886"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90970065"
 landingContent:
 - title: Informace o Azure Dev Spaces
   linkLists:
@@ -46,13 +46,11 @@ landingContent:
       url: how-to/ingress-https-traefik.md
     - text: Použití NGINX pro vlastní příchozí přenos dat a HTTPS
       url: how-to/ingress-https-nginx.md
-- title: Funkce Preview
+- title: Přemostění na Kubernetes
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Použití akcí GitHubu s Azure Dev Spaces
-      url: how-to/github-actions.md
-    - text: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code
-      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-    - text: Použití místního procesu s Kubernetes s využitím sady Visual Studio
-      url: /visualstudio/containers/local-process-kubernetes
+    - text: Použití přemostění na Kubernetes s využitím nástroje Visual Studio Code
+      url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+    - text: Použití přemostění na Kubernetes s využitím sady Visual Studio
+      url: /visualstudio/containers/bridge-to-kubernetes

@@ -60,7 +60,7 @@
               href: entitlement-management-catalog-create.md
             - name: Delegování na správce přístupových balíčků
               href: entitlement-management-delegate-managers.md
-        - name: Správci přístupových balíčků
+        - name: Správci přístupových balíčků a správci přiřazení přístupových balíčků
           items:
             - name: Vytvoření nového přístupového balíčku
               href: entitlement-management-access-package-create.md
@@ -68,8 +68,10 @@
               href: entitlement-management-access-package-settings.md
             - name: Změna rolí prostředků
               href: entitlement-management-access-package-resources.md
-            - name: Změna nastavení žádostí a schválení
+            - name: Změna nastavení požadavků
               href: entitlement-management-access-package-request-policy.md
+            - name: Změna nastavení schvalování
+              href: entitlement-management-access-package-approval-policy.md
             - name: Změnit nastavení životního cyklu
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: Zobrazení požadavků

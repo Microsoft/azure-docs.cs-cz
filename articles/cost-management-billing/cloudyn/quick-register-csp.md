@@ -1,6 +1,6 @@
 ---
 title: Registrace u Cloudyn v Azure s použitím informací o partnerovi CSP
-description: Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn.
+description: Přečtěte si podrobné informace o procesu registrace pro vytvoření zkušebního předplatného Cloudyn a přihlášení k portálu Cloudyn.
 author: bandersmsft
 ms.author: banders
 ms.date: 03/12/2020
@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 518d4d0f672ae0e83748dbf7dc0a87097ca7bbf7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92d4c84cc73ea05f58912549674f76513e3faeb1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688160"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985507"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrace do partnerského programu CSP a zobrazení informací o nákladech
 

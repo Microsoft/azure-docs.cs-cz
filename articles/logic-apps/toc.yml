@@ -61,10 +61,14 @@
       items:
         - name: Vytvoření z předem připravených šablon
           href: logic-apps-create-logic-apps-from-templates.md
+        - name: Správa prostředků Azure vytvářením úloh automatizace
+          href: create-automation-tasks-azure-resources.md
         - name: Migrace ze služby BizTalk Services
           href: logic-apps-move-from-mabs.md
         - name: Export toků z Power Automate a nasazení do Azure Logic Apps
           href: export-from-microsoft-flow-logic-app-template.md
+        - name: Vytváření stavových a bezstavových pracovních postupů v nástroji Visual Studio Code
+          href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Řízení spouštění pracovních postupů
           items:
             - name: Podmíněné příkazy
@@ -166,8 +170,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: Zpracování souborů EDIFACT se segmentem UNH2.5
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: Výměna zpráv RosettaNet
-          href: logic-apps-enterprise-integration-rosettanet.md
+            - name: Výměna zpráv RosettaNet
+              href: logic-apps-enterprise-integration-rosettanet.md
         - name: Výměna zpráv X12
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -312,7 +316,7 @@
         - name: Správa aplikací logiky – Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: Správa účtů pro integraci
-          href: ./logic-apps-enterprise-integration-create-integration-account.md
+          href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Správa prostředí integrační služby
           href: ise-manage-integration-service-environment.md
         - name: Přesun prostředků aplikace logiky

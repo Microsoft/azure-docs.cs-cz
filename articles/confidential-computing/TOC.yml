@@ -1,27 +1,65 @@
 - name: Důvěrné výpočetní operace Azure
-  href: overview.md
+  href: ./index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Vítají vás důvěrné výpočetní operace Azure
+      href: overview.md
+    - name: Případy použití a scénáře
+      href: use-cases-scenarios.md
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření na webu Azure Portal
-      href: quick-create-portal.md
-    - name: Vytvoření s využitím Marketplace
-      href: quick-create-marketplace.md
+    - name: Virtuální počítače
+      items:
+        - name: Vytvoření na webu Azure Portal
+          href: quick-create-portal.md
+        - name: Vytvoření s využitím Marketplace
+          href: quick-create-marketplace.md
+    - name: Azure Kubernetes Services (AKS)
+      items:
+        - name: Přehled důvěrných uzlů v AKS
+          href: confidential-nodes-aks-overview.md
+        - name: Důvěrné uzly s využitím Azure CLI
+          href: confidential-nodes-aks-get-started.md
+        - name: Nejčastější dotazy k důvěrným uzlům v AKS
+          href: confidential-nodes-aks-faq.md
 - name: Koncepty
   expanded: true
   items:
-    - name: Řešení na virtuálních počítačích
-      href: virtual-machine-solutions.md
+    - name: Virtuální počítače
+      items:
+        - name: Virtuální počítače s podporou enklávy
+          href: confidential-computing-enclaves.md
+        - name: Řešení na virtuálních počítačích
+          href: virtual-machine-solutions.md
+        - name: Nejčastější dotazy k virtuálním počítačům s důvěrnými výpočetními operacemi
+          href: faq.md
+    - name: Výpočetní prostředky kontejneru
+      expanded: true
+      items:
+        - name: Důvěrné kontejnery (metoda „lift and shift“)
+          items:
+            - name: Začínáme
+              href: confidential-containers.md
+        - name: Kontejnery s podporou enklávy
+          items:
+            - name: Začínáme
+              href: enclave-aware-containers.md
+    - name: Attestation
+      href: attestation.md
+    - name: Vývoj aplikací
+      href: application-development.md
 - name: Postupy
-  expanded: true
   items:
     - name: Fortanix Enclave Manager
       href: how-to-fortanix-enclave-manager.md
-- name: Zdroje a prostředky
-  expanded: true
+- name: Reference
   items:
-    - name: Nejčastější dotazy
-      href: faq.md
+    - name: Pomocná funkce SGX Quote
+      href: confidential-nodes-out-of-proc-attestation.md
+- name: Zdroje informací
+  items:
     - name: Názory na důvěrné výpočetní operace
       href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
     - name: StackOverflow

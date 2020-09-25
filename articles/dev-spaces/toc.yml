@@ -11,6 +11,8 @@
           href: get-started-netcore-visualstudio.md
     - name: Koncepty
       items:
+        - name: Migrace na přemostění na Kubernetes
+          href: migrate-to-bridge-to-kubernetes.md
         - name: Jak funguje služba Dev Spaces
           items:
             - name: Přehled
