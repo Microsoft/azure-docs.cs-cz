@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275281"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity
 
@@ -79,7 +79,7 @@ api-key: [Search service admin key]
 
 Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat následující pole:
 
-| Pole   | Description |
+| Pole   | Popis |
 |---------|-------------|
 | **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
 |**textový**| Povinná hodnota. Musí být `cosmosdb` . |
@@ -136,6 +136,14 @@ Tento indexer se spustí každé dvě hodiny (časový interval je nastaven na "
 Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](/rest/api/searchservice/create-indexer).
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud zjistíte, že nemůžete indexovat data z Cosmos DB zvažte následující:
+
+1. Pokud jste nedávno provedli použití klíčů účtu Cosmos DB, budete muset počkat až 15 minut, než se v připojovacím řetězci spravované identity dokončí.
+
+1. Zkontrolujte, jestli má účet Cosmos DB omezený přístup pro vybrané sítě. Pokud tomu tak je, přečtěte si téma [přístup k indexerům ke zdrojům dat pomocí funkcí zabezpečení sítě Azure](search-indexer-securing-resources.md).
 
 ## <a name="see-also"></a>Viz také
 

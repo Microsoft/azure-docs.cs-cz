@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310165"
 ---
 # <a name="supported-data-format-details"></a>Podrobnosti o podporovaných formátech dat
 
@@ -52,7 +52,7 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `atom:author`        | ano     | ano     |                                                                                                                            |
 | `atom:link`          | ano     | ano     |                                                                                                                            |
 | `atom:name`          | ano     | ano     |                                                                                                                            |
-| `BalloonStyle`       | partial | partial | `displayMode`není podporováno. Převedeno na `PopupTemplate` . Chcete-li zapisovat, přidejte `popupTemplate` vlastnost jako vlastnost funkce, pro kterou chcete zapisovat. |
+| `BalloonStyle`       | partial | partial | `displayMode` není podporováno. Převedeno na `PopupTemplate` . Chcete-li zapisovat, přidejte `popupTemplate` vlastnost jako vlastnost funkce, pro kterou chcete zapisovat. |
 | `begin`              | ano     | ano     |                                                                                                                            |
 | `color`              | ano     | ano     | Zahrnuje `#AABBGGRR` a `#BBGGRR` . Analyzováno na řetězec barvy CSS                                                           |
 | `colorMode`          | ano     | ne      |                                                                                                                            |
@@ -68,7 +68,7 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `extrude`            | partial | partial | Podporováno pouze pro mnohoúhelníky. Více geometrie, které mají mnohoúhelníky s různou výškou, budou rozděleny na jednotlivé funkce. Styly čar nejsou podporovány. Mnohoúhelníky s nadmořskou výškou 0 se vykreslí jako plochý mnohoúhelník. Při čtení se výška první souřadnice v vnějším prstenci přidá jako vlastnost výšky mnohoúhelníku. Pak se výška první souřadnice použije pro vykreslení mnohoúhelníku na mapě. |
 | `fill`               | ano     | ano     |                                                                                                                            |
 | `Folder`             | ano     | ano     |                                                                                                                            |
-| `GroundOverlay`      | ano     | ano     | `color`není podporováno                                                                                                   |
+| `GroundOverlay`      | ano     | ano     | `color` není podporováno                                                                                                   |
 | `heading`            | partial | ne      | Analyzovány, ale nebyly vykreslovány `SimpleDataLayer` . Zapisuje pouze, pokud jsou data uložena ve vlastnosti obrazce.                 |
 | `hotSpot`            | ano     | partial | Zapisuje pouze, pokud jsou data uložena ve vlastnosti obrazce. Jednotky jsou výstupy jenom jako pixely.                         |
 | `href`               | ano     | ano     |                                                                                                                            |
@@ -81,7 +81,7 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `gx:LatLonQuad`      | ano     | ano     |                                                                                                                            |
 | `LinearRing`         | ano     | ano     |                                                                                                                            |
 | `LineString`         | ano     | ano     |                                                                                                                            |
-| `LineStyle`          | ano     | ano     | `colorMode`není podporováno.                                                                                         |
+| `LineStyle`          | ano     | ano     | `colorMode` není podporováno.                                                                                         |
 | `Link`               | ano     | ne      | `href`Pro síťová propojení je podporována pouze vlastnost.                                                                   |
 | `MultiGeometry`      | partial | partial | Můžou být při čtení rozdělené do jednotlivých funkcí.                                                                     |
 | `name`               | ano     | ano     |                                                                                                                            |
@@ -92,14 +92,14 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `outerBoundaryIs`    | ano     | ano     |                                                                                                                            |
 | `outline`            | ano     | ano     |                                                                                                                            |
 | `overlayXY`          | ne      | ne      |                                                                                                                            |
-| `Pair`               | partial | ne      | `normal`Podporován je pouze styl ve stylu `StyleMap` . `highlight`není podporováno.                                   |
+| `Pair`               | partial | ne      | `normal`Podporován je pouze styl ve stylu `StyleMap` . `highlight` není podporováno.                                   |
 | `phoneNumber`        | ano     | ano     |                                                                                                                            |
 | `PhotoOverlay`       | ne      | ne      |                                                                                                                            |
 | `Placemark`          | ano     | ano     |                                                                                                                            |
 | `Point`              | ano     | ano     |                                                                                                                            |
 | `Polygon`            | ano     | ano     |                                                                                                                            |
 | `PolyStyle`          | ano     | ano     |                                                                                                                            |
-| `Region`             | partial | partial | `LatLongBox`je podporován na úrovni dokumentu.                                                                      |
+| `Region`             | partial | partial | `LatLongBox` je podporován na úrovni dokumentu.                                                                      |
 | `rotation`           | ne      | ne      |                                                                                                                            |
 | `rotationXY`         | ne      | ne      |                                                                                                                            |
 | `scale`              | ne      | ne      |                                                                                                                            |
@@ -111,7 +111,7 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `SimpleData`         | ano     | ano     |                                                                                                                            |
 | `SimpleField`        | ano     | ano     |                                                                                                                            |
 | `size`               | ne      | ne      |                                                                                                                            |
-| `Snippet`            | partial | partial | `maxLines`atribut je ignorován.                                                                                  |
+| `Snippet`            | partial | partial | `maxLines` atribut je ignorován.                                                                                  |
 | `south`              | ano     | ano     |                                                                                                                            |
 | `Style`              | ano     | ano     |                                                                                                                            |
 | `StyleMap`           | partial | ne      | Podporován je pouze normální styl v rámci `StyleMap` .                                                                        |
@@ -225,12 +225,12 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `gml:LineString`        | ano  | ano   |                                                                                        |
 | `gml:lineStringMember`  | ano  | ano   |                                                                                        |
 | `gml:lineStringMembers` | ano  | ne    |                                                                                        |
-| `gml:MultiCurve`        | ano  | ne    | Čte pouze `gml:LineString` členy. Zapsáno jako`gml.MultiLineString`                  |
+| `gml:MultiCurve`        | ano  | ne    | Čte pouze `gml:LineString` členy. Zapsáno jako `gml.MultiLineString`                  |
 | `gml:MultiGeometry`     | partial  | partial   | Pouze číst jako Součástcollection.                                              |
 | `gml:MultiLineString`   | ano  | ano   |                                                                                        |
 | `gml:MultiPoint`        | ano  | ano   |                                                                                        |
 | `gml:MultiPolygon`      | ano  | ano   |                                                                                        |
-| `gml:MultiSurface`      | ano  | ne    | Čte pouze `gml:Polygon` členy. Zapsáno jako`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | ano  | ne    | Čte pouze `gml:Polygon` členy. Zapsáno jako `gml.MultiPolygon`                        |
 | `gml:name`              | ano  | ano   |                                                                                        |
 | `gml:outerBoundaryIs`   | ano  | ne    | Napsáno pomocí `gml.exterior` .                                                          |
 | `gml:Point`             | ano  | ano   |                                                                                        |
@@ -246,7 +246,7 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 #### <a name="additional-notes"></a>Další poznámky
 
 - Prvky členů budou prohledány na geometrii, která může být ukryto v rámci podřízených elementů. Tato operace hledání je nutná, protože mnoho formátů XML, které rozšiřuje z GML, nesmí umístit geometrii jako přímý podřízený prvek člena.
-- `srsName`je částečně podporováno pro souřadnice WGS84 a následující kódy:[EPSG: 4326](https://epsg.io/4326)) a web Mercator ([EPSG: 3857](https://epsg.io/3857) nebo jeden z jeho alternativních kódů. Všechny ostatní systémy souřadnic se budou analyzovat jako WGS84 tak, jak jsou.
+- `srsName` je částečně podporováno pro souřadnice WGS84 a následující kódy:[EPSG: 4326](https://epsg.io/4326)) a web Mercator ([EPSG: 3857](https://epsg.io/3857) nebo jeden z jeho alternativních kódů. Všechny ostatní systémy souřadnic se budou analyzovat jako WGS84 tak, jak jsou.
 - Pokud není zadána při čtení datového kanálu XML, je pořadí osy určeno na základě pokynů v informačním kanálu XML. Pro pořadí osy "Zeměpisná délka" Zeměpisná délka je uvedena předvolba.
 - Pokud není pro vlastnosti při zápisu do souboru GML zadán vlastní obor názvů GML, další informace o vlastnostech nebudou přidány.
 
@@ -410,7 +410,7 @@ Při kontrole řádku záhlaví budou všechny informace o typu, které jsou v n
 #### <a name="dates"></a>Kalendářní data
 
 - EDM. DateTime
-- date
+- datum
 - datetime
 
 #### <a name="geography"></a>Geography
@@ -431,5 +431,4 @@ Pokud nelze extrahovat žádné informace o typu z hlavičky a možnost dynamick
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
-> [!div class="nextstepaction"]
-> [Čtení a zápis prostorových dat](spatial-io-read-write-spatial-data.md)
+[Čtení a zápis prostorových dat](spatial-io-read-write-spatial-data.md)

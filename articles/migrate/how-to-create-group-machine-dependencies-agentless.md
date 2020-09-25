@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Asse
 description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275587"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Analýza závislostí počítačů (bez agentů)
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure 
 
 - V zobrazení analýzy závislostí nemůžete aktuálně přidat nebo odebrat server ze skupiny.
 - Mapování závislostí pro skupinu serverů není aktuálně k dispozici.
-- Shromažďování dat závislostí lze pro servery 400 nastavit současně. Můžete analyzovat větší počet serverů pomocí sekvenceování v dávkách 400.
+- Shromažďování dat závislostí lze pro servery 1000 nastavit současně. Můžete analyzovat větší počet serverů pomocí sekvenceování v dávkách 1000.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -57,7 +57,7 @@ Přidejte uživatelský účet do zařízení.
 
 ## <a name="start-dependency-discovery"></a>Spustit zjišťování závislosti
 
-Vyberte počítače, u kterých chcete povolit zjišťování závislostí.
+Vyberte počítače, u kterých chcete povolit zjišťování závislostí. 
 
 1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
 2. Klikněte na ikonu **Analýza závislostí** .
@@ -68,7 +68,7 @@ Vyberte počítače, u kterých chcete povolit zjišťování závislostí.
 
     ![Spustit zjišťování závislosti](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-Po spuštění zjišťování závislostí můžete vizualizovat závislosti přibližně po šesti hodinách.
+Po spuštění zjišťování závislostí můžete vizualizovat závislosti přibližně po šesti hodinách. Pokud chcete povolit několik počítačů, můžete k tomu použít [PowerShell](#start-or-stop-dependency-discovery-using-powershell) .
 
 ## <a name="visualize-dependencies"></a>Vizualizace závislostí
 
@@ -125,7 +125,7 @@ Cílový port | Číslo portu na cílovém počítači
 
 ## <a name="stop-dependency-discovery"></a>Zastavit zjišťování závislosti
 
-Vyberte počítače, u kterých chcete zastavit zjišťování závislostí.
+Vyberte počítače, u kterých chcete zastavit zjišťování závislostí. 
 
 1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
 2. Klikněte na ikonu **Analýza závislostí** .
@@ -133,6 +133,114 @@ Vyberte počítače, u kterých chcete zastavit zjišťování závislostí.
 3. Na stránce **odebrat servery** vyberte **zařízení** , které zjišťuje virtuální počítače, na kterých jste se vyhledali zjišťování závislostí.
 4. V seznamu počítač vyberte počítače.
 5. Klikněte na **odebrat servery**.
+
+Pokud chcete zastavit závislost na několika počítačích, můžete k tomu použít [PowerShell](#start-or-stop-dependency-discovery-using-powershell) .
+
+
+### <a name="start-or-stop-dependency-discovery-using-powershell"></a>Spuštění nebo zastavení zjišťování závislosti pomocí prostředí PowerShell
+
+Stáhněte modul PowerShell z [Azure PowerShellho úložiště ukázek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) na GitHubu.
+
+
+#### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+
+1. Přihlaste se k předplatnému Azure pomocí rutiny Connect-AzAccount.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+    Pokud používáte Azure Government, použijte následující příkaz.
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+2. Vyberte předplatné, ve kterém jste vytvořili Azure Migrate projekt. 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. Import staženého modulu AzMig_Dependencies PowerShell
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+#### <a name="enable-or-disable-dependency-data-collection"></a>Povolit nebo zakázat shromažďování dat závislostí
+
+1. Pomocí následujících příkazů Získejte seznam zjištěných virtuálních počítačů VMware v projektu Azure Migrate. V následujícím příkladu je název projektu FabrikamDemoProject a skupina prostředků, do které patří, je FabrikamDemoRG. Seznam počítačů bude uložený v FabrikamDemo_VMs.csv
+
+    ```PowerShell
+    Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
+    ```
+
+    V souboru můžete zobrazit zobrazovaný název virtuálního počítače, aktuální stav kolekce závislostí a ID ARM všech zjištěných virtuálních počítačů. 
+
+2. Pokud chcete povolit nebo zakázat závislosti, vytvořte vstupní soubor CSV. Soubor musí obsahovat sloupec s hlavičkou "ARM ID". Všechny další hlavičky v souboru CSV budou ignorovány. Sdílený svazek clusteru můžete vytvořit pomocí souboru vygenerovaného v předchozím kroku. Vytvořte kopii souboru, ve kterém jsou zachovány virtuální počítače, u kterých chcete zapnout nebo vypnout závislosti. 
+
+    V následujícím příkladu je v seznamu virtuálních počítačů ve vstupním souboru povolená analýza závislostí FabrikamDemo_VMs_Enable.csv.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Enable.csv -Enable
+    ```
+
+    V následujícím příkladu se v seznamu virtuálních počítačů ve vstupním souboru FabrikamDemo_VMs_Disable.csv zakáže analýza závislostí.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Disable.csv -Disable
+    ```
+
+## <a name="visualize-network-connections-in-power-bi"></a>Vizualizovat síťová připojení v Power BI
+
+Azure Migrate nabízí šablonu Power BI, kterou můžete použít k vizualizaci síťových připojení mnoha serverů najednou a filtrovat podle procesů a serverů. Chcete-li vizualizovat, načtěte Power BI s daty závislosti podle následujících pokynů.
+
+1. Stáhněte modul PowerShell a šablonu Power BI z [Azure PowerShellho úložiště ukázek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) na GitHubu.
+
+2. Přihlaste se k Azure pomocí následujících pokynů: 
+- Přihlaste se k předplatnému Azure pomocí rutiny Connect-AzAccount.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+
+- Pokud používáte Azure Government, použijte následující příkaz.
+
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+- Vyberte předplatné, ve kterém jste vytvořili Azure Migrate projekt. 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. Import staženého modulu AzMig_Dependencies PowerShell
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+4. Spusťte následující příkaz. Tento příkaz stáhne data závislostí do sdíleného svazku clusteru a zpracuje je, aby vygenerovala seznam jedinečných závislostí, které lze použít pro vizualizaci v Power BI. V příkladu pod názvem projektu je FabrikamDemoProject a skupina prostředků, do které patří, je FabrikamDemoRG. Závislosti budou staženy pro počítače zjištěné nástrojem FabrikamAppliance. Jedinečné závislosti budou uloženy v FabrikamDemo_Dependencies.csv
+
+    ```PowerShell
+    Get-AzMigDependenciesAgentless -ResourceGroup FabrikamDemoRG -Appliance FabrikamAppliance -ProjectName FabrikamDemoProject -OutputCsvFile "FabrikamDemo_Dependencies.csv"
+    ```
+
+5. Otevřít staženou šablonu Power BI
+
+6. Načte stažená data závislosti v Power BI.
+    - Otevřete šablonu v Power BI.
+    - Na panelu nástrojů klikněte na **načíst data** . 
+    - Z běžných zdrojů dat vyberte **text/CSV** .
+    - Vyberte stažený soubor se závislostmi.
+    - Klikněte na **načíst**.
+    - Zobrazí se tabulka s názvem souboru CSV. Tabulku můžete zobrazit na panelu pole na pravé straně. Přejmenujte ji na AzMig_Dependencies
+    - Na panelu nástrojů klikněte na aktualizovat.
+
+    V grafu síťových připojení a názvu zdrojového serveru, název cílového serveru, název zdrojového procesu, průřezy názvu cílového procesu by se měly dosvítit s importovanými daty.
+
+7. Vizualizujte mapování síťových připojení podle serverů a procesů. Uložte soubor.
 
 
 ## <a name="next-steps"></a>Další kroky

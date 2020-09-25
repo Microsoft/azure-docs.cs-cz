@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904192"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336152"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Řešení běžných problémů s jarním cloudem v Azure
 
@@ -131,7 +131,7 @@ Soubor *. zip* pro aplikaci .NET Core Steeltoe nemůžete nahrát pomocí Azure 
 
 Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
 
-Ujistěte se, že je vaše aplikace zabalená ve správném formátu *. zip* . Pokud není zabaleno správně, proces se zablokuje nebo se zobrazí chybová zpráva.
+Ujistěte se, že je vaše aplikace zabalená ve správném formátu *. zip* . Pokud není zabalen správně, proces přestane reagovat nebo se zobrazí chybová zpráva.
 ::: zone-end
 
 ::: zone pivot="programming-language-java"

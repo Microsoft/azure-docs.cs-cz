@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336645"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – použití clusteru Azure HDInsight Hadoop s datovou sadou 1 TB
 
@@ -67,7 +67,7 @@ Nastavte své prostředí pro datové vědy pro Azure pro vytváření prediktiv
 
    * Propojte účet úložiště vytvořený v kroku 1 s clusterem HDInsight při jeho vytvoření. Tento účet úložiště se používá pro přístup k datům, která se dají zpracovat v rámci clusteru.
    * Po vytvoření služby Povolte vzdálený přístup k hlavnímu uzlu clusteru. Zapamatování přihlašovacích údajů vzdáleného přístupu, které tady zadáte (liší se od přihlašovacích údajů zadaných při vytváření clusteru): proveďte následující postupy.
-3. [Vytvoření pracovního prostoru Azure Machine Learning Studio (klasický)](../studio/create-workspace.md): Tento Azure Machine Learning pracovní prostor se používá k sestavování modelů strojového učení po počátečním zkoumání dat a jejich vzorkování v clusteru HDInsight.
+3. [Vytvoření pracovního prostoru Azure Machine Learning Studio (klasický)](../classic/create-workspace.md): Tento Azure Machine Learning pracovní prostor se používá k sestavování modelů strojového učení po počátečním zkoumání dat a jejich vzorkování v clusteru HDInsight.
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>Získání a využití dat z veřejného zdroje
 K datové sadě [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) lze získat pøístup kliknutím na odkaz, přijetím podmínek použití a zadáním názvu. Snímek je zobrazen zde:
@@ -98,7 +98,7 @@ Vlevo je příkazový řádek Hadoop, který je náš WorkHorse pro zkoumání d
 
 Nyní jste nastavili a připraveni začít první část návodu: zkoumání dat pomocí podregistru a získání dat pro Azure Machine Learning.
 
-## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a>Vytvoření databáze a tabulek podregistru
+## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Vytvoření databáze a tabulek podregistru
 Chcete-li vytvořit tabulky podregistru pro naši datovou sadu Criteo, otevřete ***příkazový řádek Hadoop*** na ploše hlavního uzlu a zadejte adresář podregistru zadáním příkazu.
 
 ```console
@@ -208,7 +208,7 @@ criteo_train
 Time taken: 1.437 seconds, Fetched: 4 row(s)
 ```
 
-## <a name="data-exploration-in-hive"></a><a name="exploration"></a>Zkoumání dat v podregistru
+## <a name="data-exploration-in-hive"></a><a name="exploration"></a> Zkoumání dat v podregistru
 Nyní jste připraveni provést některé základní zkoumání dat v podregistru. Začnete tím, že počítáte počet příkladů v tabulkách vlakových a testovacích dat.
 
 ### <a name="number-of-train-examples"></a>Počet příkladů vlaků
@@ -402,7 +402,7 @@ e5f3fd8d        a0aaffa6        792250
 Time taken: 560.22 seconds, Fetched: 15 row(s)
 ```
 
-## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a>Debrat ukázku datových sad pro Azure Machine Learning
+## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a> Debrat ukázku datových sad pro Azure Machine Learning
 Po prozkoumání datových sad a demonstrace toho, jak tento typ průzkumu provést pro jakékoli proměnné (včetně kombinací), vypište vzorek datových sad tak, aby bylo možné sestavit modely v Azure Machine Learning. Zajistěte, aby se při výběru problému objevila tato: předána sada ukázkových atributů (hodnoty funkcí z col2-Col40), předpověď, pokud je hodnota Sloupec1 0 (žádné kliknutí), nebo 1 (klikněte).
 
 Chcete-li vzorkovat sadu vlakových a testovacích datových sad na 1% původní velikosti, použijte funkci Native RAND () podregistru. Další skript, [ukázkový&#95;podregistr&#95;criteo&#95;převzorkovat&#95;vlak&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) pro datovou sadu vlaků:
@@ -471,7 +471,7 @@ Díky tomu jste připraveni k použití našich ukázek výukových a testovací
 
 Před přechodem na Azure Machine Learning, která se týká tabulky Count, existuje finální důležitá součást. V následující podsekci je tabulka Count podrobněji popsána.
 
-## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a>Stručná diskuze o tabulce Count
+## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a> Stručná diskuze o tabulce Count
 Jak jste viděli, několik proměnných kategorií má vysokou dimenzionální hodnotu. V tomto návodu se jedná o výkonnou techniku [s názvem učení se](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) zakódováním těchto proměnných efektivním a robustním způsobem. Další informace o této technice najdete v zadaném odkazu.
 
 >[!NOTE]
@@ -480,7 +480,7 @@ Jak jste viděli, několik proměnných kategorií má vysokou dimenzionální h
 
 K sestavování tabulek Count na základě počtu dat použijte data ve složce RAW/Count. V části modelování se uživatelům zobrazují informace o tom, jak sestavovat tyto tabulky Count pro funkce kategorií od začátku, nebo můžete použít předem sestavenou tabulku Count pro své průzkumy. V tom, co následuje, když se říká "předem sestavenými tabulkami Count", znamená to, že používáme tabulky Count, které byly k dispozici. Podrobné pokyny k přístupu k těmto tabulkám najdete v další části.
 
-## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a>Vytvoření modelu pomocí Azure Machine Learning
+## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a> Vytvoření modelu pomocí Azure Machine Learning
 Náš proces sestavení modelu v Azure Machine Learning provede následující kroky:
 
 1. [Získat data z tabulek podregistru do Azure Machine Learning](#step1)
@@ -491,7 +491,7 @@ Náš proces sestavení modelu v Azure Machine Learning provede následující k
 
 Nyní jste připraveni sestavit modely v Azure Machine Learning Studiu. Naše ukázková data se ukládají jako tabulky podregistru v clusteru. Pro čtení těchto dat použijte modul Azure Machine Learning **importovat data** . Přihlašovací údaje pro přístup k účtu úložiště tohoto clusteru jsou k dispozici v následujících ohledech.
 
-### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>Krok 1: získání dat z tabulek podregistru do Azure Machine Learning pomocí modulu import dat a výběr pro experimentování ve službě Machine Learning
+### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a> Krok 1: získání dat z tabulek podregistru do Azure Machine Learning pomocí modulu import dat a výběr pro experimentování ve službě Machine Learning
 Začněte tím, že vyberete **+ Nový**  ->  **experiment**  ->  **prázdný experiment**. Pak z **vyhledávacího** pole v levém horním rohu vyhledejte "Import dat". Přetažením modulu pro **Import dat** na plátno experimentu (střední část obrazovky) použijte modul pro přístup k datům.
 
 **Importovaná data** vypadají při získávání dat z tabulky podregistru:
@@ -525,7 +525,7 @@ Pokud chcete vybrat uloženou datovou sadu pro použití v experimentu machine l
 >
 >
 
-### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a>Krok 2: vytvoření experimentu v Azure Machine Learning k předpovědi kliknutí/bez kliknutí
+### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a> Krok 2: vytvoření experimentu v Azure Machine Learning k předpovědi kliknutí/bez kliknutí
 Náš Azure Machine Learning Studio (klasický) experiment vypadá takto:
 
 ![Machine Learning experiment](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -602,7 +602,7 @@ V tomto výňatku se dozvíte, že pro sloupce, které se počítají, získáte
 
 Nyní jste připraveni sestavit Azure Machine Learning model pomocí těchto transformovaných datových sad. V další části se dozvíte, jak to lze provést.
 
-### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a>Krok 3: sestavování, výuka a určení skóre modelu
+### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a> Krok 3: sestavování, výuka a určení skóre modelu
 
 #### <a name="choice-of-learner"></a>Výběr učení
 Nejdřív je potřeba vybrat si ho. Využijte ke zvýšení rozhodovacího stromu se dvěma třídami svůj náš učí. Tady jsou výchozí možnosti pro tento učí:
@@ -616,12 +616,12 @@ Pro školení stačí vyvolat modul **vlakového modelu** . Těmito dvěma vstup
 
 ![Modul vlakového modelu](./media/hive-criteo-walkthrough/2bZDZTy.png)
 
-#### <a name="score-the-model"></a>Ohodnocení modelu
+#### <a name="score-the-model"></a>Určení skóre modelu
 Jakmile budete mít školený model, jste připraveni na skóre pro testovací datovou sadu a k vyhodnocení jeho výkonu. K tomu použijte modul **skóre modelu** , který je znázorněný na následujícím obrázku, společně s modulem **vyhodnocení modelu** :
 
 ![Modul Určení skóre modelu](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step-4-evaluate-the-model"></a><a name="step4"></a>Krok 4: vyhodnocení modelu
+### <a name="step-4-evaluate-the-model"></a><a name="step4"></a> Krok 4: vyhodnocení modelu
 Nakonec byste měli analyzovat výkon modelu. Pro dva problémy klasifikace třídy (binární) obvykle je vhodná míra AUC. Chcete-li vizualizovat tuto křivku, připojte modul určení **skóre** modelu k modulu **vyhodnocení modelu** . Kliknutí na **vizualizaci** v modulu **vyhodnocení modelu** poskytuje obrázek podobný následujícímu:
 
 ![Zhodnotit model BDT modulu](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -630,7 +630,7 @@ V binárních problémech klasifikace (nebo dvou tříd) je dobrým měřítkem 
 
 ![Vizualizace modulu vyhodnocení modelu](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a>Krok 5: publikování modelu jako webové služby
+### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a> Krok 5: publikování modelu jako webové služby
 Možnost publikovat Azure Machine Learning model jako webové služby s minimálním počtem Fuss je cennou funkcí pro zajištění jejich široké dostupnosti. Až to bude hotové, kdokoli může prostřednictvím webové služby volat vstupní data, která potřebují předpovědi pro, a webová služba použije model k vrácení těchto předpovědi.
 
 Nejdřív uložte náš vycvičený model jako školený objekt modelu tak, že kliknete pravým tlačítkem na modul **vlakového modelu** a použijete možnost **Uložit jako trained model** .
@@ -695,4 +695,3 @@ Výchozí klíč rozhraní API byl nahrazen klíčem rozhraní API naší webov�
 Pro dva příklady testů, které se týkají v rozhraní JSON Script v Pythonu, získáte odpovědi ve formě "popisků s skóre, pravděpodobnosti skóre". V tomto případě byly zvoleny výchozí hodnoty, které zakonzervovaný kód poskytuje (0 pro všechny číselné sloupce a řetězec "hodnota" pro všechny sloupce kategorií).
 
 V závěru náš Názorný postup ukazuje, jak zpracovat rozsáhlou datovou sadu pomocí Azure Machine Learning. Začali jste s terabajty dat, vytvářeli předpovědní model a nasadili jste ho jako webovou službu v cloudu.
-

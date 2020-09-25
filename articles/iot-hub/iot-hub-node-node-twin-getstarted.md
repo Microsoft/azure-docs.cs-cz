@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 874e9dd0454fa4f0a0877d949a34058baa711b83
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336781"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Začínáme s nevlákenou zařízení (Node.js)
 
@@ -30,7 +30,7 @@ Na konci tohoto kurzu budete mít dvě Node.js konzolové aplikace:
 > V článku sady [SDK Azure IoT](iot-hub-devguide-sdks.md) najdete informace o sadách SDK Azure IoT, které můžete použít k vytvoření zařízení i back-endové aplikace.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -40,7 +40,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -109,7 +109,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, která přidá metadata
 
     Po aktualizaci značek volá funkci **queryTwins** .
 
-5. Přidejte následující kód na konec **AddTagsAndQuery.js** k implementaci funkce **queryTwins** :
+5. Přidejte následující kód na konec  **AddTagsAndQuery.js** k implementaci funkce **queryTwins** :
 
    ```javascript
         var queryTwins = function() {
@@ -149,7 +149,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, která přidá metadata
 
 V další části vytvoříte aplikaci pro zařízení, která oznamuje informace o připojení a mění výsledek dotazu v předchozí části.
 
-## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
+## <a name="create-the-device-app"></a>Vytvoření aplikace zařízení
 
 V této části vytvoříte konzolovou aplikaci Node.js, která se připojí k vašemu rozbočovači jako **myDeviceId**, a pak aktualizuje nahlášené vlastnosti, které jsou v zařízení připojené, aby obsahovaly informace, které jsou připojené pomocí mobilní sítě.
 

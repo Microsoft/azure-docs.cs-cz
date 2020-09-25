@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458633"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285056"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Auditovat dotazy v protokolech Azure Monitor (Preview)
 Protokoly auditu dotazů na protokol poskytují telemetrii o dotazech protokolů spouštěných v Azure Monitor. Obsahuje například informace o tom, kdy se dotaz spustil, kdo ho spustil, jaký nástroj se použil, text dotazu a Statistika výkonu popisující spuštění dotazu.
@@ -64,6 +64,7 @@ Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešl
 
 ## <a name="considerations"></a>Požadavky
 
+- Dotazy jsou protokolovány pouze při spuštění v kontextu uživatele. V rámci Azure nebude zaznamenána žádná služba pro službu. Dvě primární sady dotazů, které toto vyloučení zahrnuje, jsou výpočty fakturace a automatizované provádění výstrah. V případě výstrah se neprotokoluje pouze plánovaný dotaz výstrahy. počáteční spuštění výstrahy na obrazovce pro vytvoření výstrahy se provádí v uživatelském kontextu a bude k dispozici pro účely auditu. 
 - Statistiky výkonu nejsou k dispozici pro dotazy přicházející z proxy serveru Azure Průzkumník dat. Všechna ostatní data pro tyto dotazy budou i nadále naplněna.
 - Pomocný parametr *h* v řetězcích, který zapisuje [řetězcové literály](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) , nebude mít vliv na protokoly auditu dotazů. Dotazy budou zachyceny přesně tak, jak byly odeslány bez řetězce, který je zakódován. Měli byste zajistit, aby tato data mohli používat jenom uživatelé, kteří mají oprávnění k dodržování předpisů, a to v různých režimech RBAC, které jsou dostupné v Log Analytics pracovních prostorech.
 - Dotazy, které obsahují data z několika pracovních prostorů, budou zachyceny pouze v těch pracovních prostorech, ke kterým má uživatel přístup.

@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660834"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306391"
 ---
 # <a name="risky-ip-report-public-preview"></a>Sestava rizikových IP adres (Public Preview)
 Zákazníci AD FS můžou zveřejnit koncové body ověřování hesla pro Internet, aby koncovým uživatelům poskytovali služby ověřování pro přístup k aplikacím SaaS, jako je Microsoft 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
@@ -39,7 +39,7 @@ Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za n�
 > 
 
 ## <a name="what-is-in-the-report"></a>Co je v sestavě?
-IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictvím proxy serverů webových aplikací. Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4a.png)
+IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictvím proxy serverů webových aplikací. Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![ snímek obrazovky, který zobrazuje rizikové zprávy IP se zvýrazněnými záhlavími sloupců.](./media/how-to-connect-health-adfs/report4a.png)
 
 | Položky sestavy | Popis |
 | ------- | ----------- |
@@ -52,7 +52,7 @@ IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictv
 
 Například níže uvedená položka sestavy značí, že 28. 2. 2018 v časovém intervalu od 18:00 do 19:00 u IP adresy <i>104.2XX.2XX.9</i> nedošlo k žádnému chybnému zadání hesla, ale došlo k 284 chybám uzamčení extranetu. V rámci kritérií to mělo dopad na 14 jedinečných uživatelů. Událost aktivity překročila určenou hodinovou prahovou hodnotu sestavy. 
 
-![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4b.png)
+![Snímek obrazovky, který ukazuje příklad záznamu rizikové IP adresy.](./media/how-to-connect-health-adfs/report4b.png)
 
 > [!NOTE]
 > - V seznamu sestavy se zobrazí pouze aktivity překračující určenou prahovou hodnotu. 
@@ -60,7 +60,7 @@ Například níže uvedená položka sestavy značí, že 28. 2. 2018 v časové
 > - V této sestavě upozornění se nezobrazují IP adresy Exchange ani privátní IP adresy. Ty jsou však stále součástí exportovaného seznamu. 
 >
 
-![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4c.png)
+![Snímek obrazovky zobrazující sestavu rizikových IP adres se zvýrazněnou možností "Stáhnout", "nastavení oznámení" a "mezní hodnota".](./media/how-to-connect-health-adfs/report4c.png)
 
 ## <a name="load-balancer-ip-addresses-in-the-list"></a>IP adresy služby Vyrovnávání zatížení v seznamu
 Nástroj pro vyrovnávání zatížení agreguje aktivity přihlášení, které selhaly, a překročení prahové hodnoty výstrahy. Pokud se vám zobrazují IP adresy nástroje pro vyrovnávání zatížení, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta. Nakonfigurujte ve svém nástroji pro vyrovnávání zatížení správně předávání IP adresy klienta. 
@@ -97,7 +97,7 @@ Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení 
 >
 >
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 **Proč se v sestavě zobrazují rozsahy privátních IP adres?**  <br />
 Privátní IP adresy (<i>10. x. x. x, 172. x. x. x & 192.168. x. x</i>) a IP adresy Exchange se filtrují a v seznamu schválených IP adres jsou označené jako true. Pokud se vám zobrazují rozsahy privátních IP adres, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta.
 

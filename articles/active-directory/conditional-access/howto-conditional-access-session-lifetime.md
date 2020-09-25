@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265931"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
 
@@ -89,6 +89,8 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
 
 > [!WARNING]
 > Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a další s funkcí konfigurovatelný životností tokenu. Microsoft plánuje vyřadit z provozu konfigurovatelnou funkci životnosti tokenu 1. května 2020 a nahradit ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
+>
+> Než povolíte frekvenci přihlašování, ujistěte se, že je ve vašem tenantovi zakázané jiné nastavení pro opakované ověřování. Pokud je povolená možnost Zapamatovat MFA u důvěryhodných zařízení, nezapomeňte ji před použitím četnosti přihlášení zakázat, protože použití těchto dvou nastavení společně může vést k neočekávanému zobrazení výzvy uživatelů. Další informace o výzvách k opakovanému ověření a době platnosti relace najdete v článku věnovaném [optimalizaci výzev k opakovanému ověření a porozumění životnosti relace pro Azure Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: řízení četnosti přihlašování
 

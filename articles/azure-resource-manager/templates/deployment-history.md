@@ -3,13 +3,13 @@ title: Historie nasazení
 description: Popisuje postup zobrazení Azure Resource Manager operací nasazení pomocí portálu, PowerShellu, rozhraní příkazového řádku Azure a REST API.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117833"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284614"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Zobrazit historii nasazení pomocí Azure Resource Manager
 
@@ -21,7 +21,7 @@ Nápovědu k řešení konkrétních chyb nasazení najdete v tématu [řešení
 
 ## <a name="get-deployments-and-correlation-id"></a>Získání nasazení a ID korelace
 
-Podrobnosti o nasazení můžete zobrazit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Každé nasazení má ID korelace, které se používá ke sledování souvisejících událostí. Může být užitečné při práci s technickou podporou pro řešení potíží s nasazením.
+Podrobnosti o nasazení můžete zobrazit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Každé nasazení má ID korelace, které se používá ke sledování souvisejících událostí. Pokud [vytvoříte žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md), může vám podpora požádat o ID korelace. Podpora používá ID korelace k identifikaci operací nasazení, které selhalo.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -61,13 +61,13 @@ ID korelace získáte pomocí:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete zobrazit seznam nasazení pro skupinu prostředků, použijte příkaz [AZ Deployment Group list](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list).
+Pokud chcete zobrazit seznam nasazení pro skupinu prostředků, použijte příkaz [AZ Deployment Group list](/cli/azure/group/deployment#az-deployment-group-list).
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Konkrétní nasazení získáte pomocí [skupiny AZ Deployment Group show](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show).
+Konkrétní nasazení získáte pomocí [skupiny AZ Deployment Group show](/cli/azure/group/deployment#az-deployment-group-show).
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -81,7 +81,7 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Chcete-li zobrazit seznam nasazení pro skupinu prostředků, použijte následující operaci. Nejnovější číslo verze rozhraní API, které se má použít v žádosti, najdete v tématu [nasazení – seznam podle skupiny prostředků](/rest/api/resources/deployments/listbyresourcegroup).
+Chcete-li zobrazit seznam nasazení pro skupinu prostředků, použijte následující operaci. Nejnovější číslo verze rozhraní API, které se má použít v žádosti, najdete v tématu  [nasazení – seznam podle skupiny prostředků](/rest/api/resources/deployments/listbyresourcegroup).
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}

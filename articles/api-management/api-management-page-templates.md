@@ -1,6 +1,6 @@
 ---
 title: Šablony stránek v Azure API Management | Microsoft Docs
-description: Naučte se přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon v Azure API Management.
+description: Naučte se přizpůsobit obsah šablon stránek portálu pro vývojáře v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 78866804f10d12beda46f1fab9c8c78509a5a0b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 24d026785025dba4ae45de404edec67c2cf3871a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335581"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Šablony stránek v Azure API Management
 Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
@@ -38,7 +38,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="sign-in"></a><a name="SignIn"></a>Přihlásit se  
+##  <a name="sign-in"></a><a name="SignIn"></a> Přihlásit se  
  Šablona **přihlášení** vám umožní přizpůsobit přihlašovací stránku na portálu pro vývojáře.  
   
  ![Přihlašovací stránka](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "Šablony portálu pro vývojáře pro APIM přihlašovací stránky")  
@@ -137,7 +137,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }
 ```  
   
-##  <a name="sign-up"></a><a name="SignUp"></a>Registrace  
+##  <a name="sign-up"></a><a name="SignUp"></a> Registrace  
  Šablona pro **registraci** vám umožní přizpůsobit si přihlašovací stránku na portálu pro vývojáře.  
   
  ![Přihlašovací stránka](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "Šablony portálu pro APIM pro registraci stránek pro vývojáře")  
@@ -185,7 +185,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```  
   
-##  <a name="page-not-found"></a><a name="PageNotFound"></a>Stránka nenalezena  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a> Stránka nenalezena  
  Šablona **nenalezené stránky** vám umožní přizpůsobit stránku nenalezené stránky na portálu pro vývojáře.  
   
  ![Stránka nenalezena](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Šablony portálu pro vývojáře stránky APIM se nenašly.")  

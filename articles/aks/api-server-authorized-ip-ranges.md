@@ -3,13 +3,13 @@ title: Počet povolených IP adres serveru API ve službě Azure Kubernetes (AKS
 description: Naučte se zabezpečit cluster pomocí rozsahu IP adres pro přístup k serveru rozhraní API ve službě Azure Kubernetes (AKS).
 services: container-service
 ms.topic: article
-ms.date: 11/05/2019
-ms.openlocfilehash: 404bd600f825a5da334811744132c6aa9b751566
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/21/2020
+ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006889"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299659"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -17,18 +17,21 @@ V Kubernetes Server rozhraní API přijímá požadavky na provádění akcí v 
 
 V tomto článku se dozvíte, jak pomocí rozsahů povolených IP adres serveru API omezit, které IP adresy a CIDRs můžou získat přístup k rovině řízení.
 
-> [!IMPORTANT]
-> U clusterů vytvořených po uplynutí verze Preview se rozsahy IP adres serveru API v říjnu 2019 nepřesunuly, ale v nástroji pro vyrovnávání zatížení *Standard* SKU se podporují jenom tyto rozsahy IP adres serveru API. Stávající clustery s nakonfigurovanými rozsahy služby Load Balancer *základní* skladové položky a povolenými rozsahy IP adres serveru API budou nadále fungovat, jak je, ale nelze je migrovat do nástroje pro vyrovnávání zatížení *Standard* SKU. Tyto existující clustery budou i nadále fungovat, pokud se upgradují jejich verze Kubernetes nebo řídicí plocha. Rozsahy IP adres autorizovaných serverem API se pro privátní clustery nepodporují.
-
 ## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se dozvíte, jak vytvořit cluster AKS pomocí Azure CLI.
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
+### <a name="limitations"></a>Omezení
+
+Funkce rozsahů povolených IP adres serveru API má následující omezení:
+- U clusterů vytvořených po uplynutí verze Preview se rozsahy IP adres serveru API v říjnu 2019 nepřesunuly, ale v nástroji pro vyrovnávání zatížení *Standard* SKU se podporují jenom tyto rozsahy IP adres serveru API. Stávající clustery s nakonfigurovanými rozsahy služby Load Balancer *základní* skladové položky a povolenými rozsahy IP adres serveru API budou nadále fungovat, jak je, ale nelze je migrovat do nástroje pro vyrovnávání zatížení *Standard* SKU. Tyto existující clustery budou i nadále fungovat, pokud se upgradují jejich verze Kubernetes nebo řídicí plocha. Rozsahy IP adres autorizovaných serverem API se pro privátní clustery nepodporují.
+- Tato funkce není kompatibilní s clustery, které používají [veřejné IP adresy pro fondy uzlů uzlů v rámci funkce Preview](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview).
+
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Přehled povolených IP adres serveru rozhraní API
 
-Kubernetes API Server je způsob, jakým jsou vystavená základní rozhraní Kubernetes API. Tato součást poskytuje interakci pro nástroje pro správu, například `kubectl` nebo řídicí panel Kubernetes. AKS poskytuje hlavní server s jedním nájemcem, který má vyhrazený server API. Ve výchozím nastavení je serveru rozhraní API přiřazena veřejná IP adresa a měli byste řídit přístup pomocí řízení přístupu na základě role (RBAC).
+Kubernetes API Server je způsob, jakým jsou vystavená základní rozhraní Kubernetes API. Tato součást poskytuje interakci pro nástroje pro správu, například `kubectl` nebo řídicí panel Kubernetes. AKS poskytuje rovinu řízení clusteru s jedním klientem a vyhrazeným serverem API. Ve výchozím nastavení je serveru rozhraní API přiřazena veřejná IP adresa a měli byste řídit přístup pomocí řízení přístupu na základě role (RBAC).
 
 Chcete-li zabezpečit přístup k jinému veřejně přístupné rovině AKS ovládacího prvku nebo serveru rozhraní API, můžete povolit a použít autorizované rozsahy IP adres. Tyto autorizované rozsahy IP adres povolují komunikaci se serverem API jenom definované rozsahy IP adres. Požadavek na server rozhraní API z IP adresy, která není součástí těchto povolených rozsahů IP adres, je blokovaný. Nadále používejte RBAC k autorizaci uživatelů a akcí, které požadují.
 
@@ -66,7 +69,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Zadejte odchozí IP adresy pro nástroj pro vyrovnávání zatížení Standard SKU.
 
-Pokud při vytváření clusteru AKS zadáte odchozí IP adresy nebo předpony pro cluster, jsou povoleny také tyto adresy nebo předpony. Například:
+Pokud při vytváření clusteru AKS zadáte odchozí IP adresy nebo předpony pro cluster, jsou povoleny také tyto adresy nebo předpony. Příklad:
 
 ```azurecli-interactive
 az aks create \
@@ -82,7 +85,7 @@ az aks create \
 
 V předchozím příkladu jsou povoleny všechny IP adresy, které jsou zadány v parametru, *`--load-balancer-outbound-ip-prefixes`* spolu s IP adresami v *`--api-server-authorized-ip-ranges`* parametru.
 
-Alternativně můžete zadat *`--load-balancer-outbound-ip-prefixes`* parametr, který povoluje předpony IP adres odchozího vyrovnávání zatížení.
+Místo toho můžete zadat *`--load-balancer-outbound-ip-prefixes`* parametr, který povoluje předpony IP adres odchozího nástroje pro vyrovnávání zatížení.
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Povolí jenom odchozí veřejnou IP adresu pro nástroj pro vyrovnávání zatížení Standard SKU.
 
@@ -118,7 +121,7 @@ Při zadání parametru můžete použít taky *0.0.0.0/32* , *`--api-server-aut
 
 ## <a name="disable-authorized-ip-ranges"></a>Zakázat autorizované rozsahy IP adres
 
-Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz [AZ AKS Update][az-aks-update] a zadáním prázdného rozsahu zakažte rozsahy IP adres autorizovaných serverem API. Například:
+Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz [AZ AKS Update][az-aks-update] a zadáním prázdného rozsahu zakažte rozsahy IP adres autorizovaných serverem API. Příklad:
 
 ```azurecli-interactive
 az aks update \

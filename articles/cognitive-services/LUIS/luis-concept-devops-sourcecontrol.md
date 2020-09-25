@@ -1,20 +1,22 @@
 ---
 title: Správa zdrojového kódu a vývojové větve – LUIS
 description: Postup udržování aplikace Language Understanding (LUIS) v rámci správy zdrojového kódu. Jak použít aktualizace aplikace LUIS při práci ve vývojové větvi.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 2d060fefbd32ecea1f91e6b062da7606699a63c4
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309502"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps postupy pro LUIS
 
 Technici softwaru, kteří vyvíjí aplikaci Language Understanding (LUIS), mohou uplatnit DevOps postupy kolem [správy zdrojového kódu](luis-concept-devops-sourcecontrol.md), [automatizované sestavení](luis-concept-devops-automation.md), [testování](luis-concept-devops-testing.md)a [správy](luis-concept-devops-automation.md#release-management) vydaných verzí pomocí následujících pokynů.
 
-## <a name="source-control-and-branch-strategies-for-luis"></a>Správa zdrojového kódu a strategie větví pro LUIS
+## <a name="source-control-and-branch-strategies-for-luis"></a>Správa zdrojového kódu a strategie větvení pro LUIS
 
 Jedním z klíčových faktorů, na kterých je úspěch DevOps závislý, je [Správa zdrojového kódu](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops). Systém správy zdrojového kódu umožňuje vývojářům spolupracovat na kódu a sledovat změny. Použití větví umožňuje vývojářům přepínat mezi různými verzemi základu kódu a pracovat nezávisle na jiných členech týmu. Když vývojáři vyvolají [žádost o](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) přijetí změn (PR), aby navrhli aktualizace z jedné větve do druhé nebo když jsou změny sloučeny, mohou být triggerem pro [automatizované sestavení](luis-concept-devops-automation.md) pro sestavení a průběžný testování kódu.
 
@@ -40,7 +42,7 @@ Pomocí konceptů a návodů, které jsou popsány v tomto dokumentu, můžete v
 
 ## <a name="source-control"></a>Správa zdrojového kódu
 
-Chcete-li zachovat [definici schématu aplikace](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) aplikace Luis v systému správy zdrojového kódu, použijte reprezentaci aplikace [LUDown Format ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0) . `.lu`formát je preferovaný `.json` , protože je čitelný pro člověka, což usnadňuje provádění a kontrolu změn v pr.
+Chcete-li zachovat [definici schématu aplikace](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) aplikace Luis v systému správy zdrojového kódu, použijte reprezentaci aplikace [LUDown Format ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  . `.lu` formát je preferovaný `.json` , protože je čitelný pro člověka, což usnadňuje provádění a kontrolu změn v pr.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Uložení aplikace LUIS pomocí formátu LUDown
 
@@ -66,7 +68,7 @@ Pro aplikaci LUIS, která se má vytvořit *ze zdrojové* [verze, vytvoří novo
 
 V rámci správy zdrojového kódu by měly být zachovány následující typy souborů pro aplikaci LUIS:
 
-- `.lu`soubor pro aplikaci LUIS
+- `.lu` soubor pro aplikaci LUIS
 
 - [Soubory definice testu jednotek](luis-concept-devops-testing.md#writing-tests) (projevy a očekávané výsledky)
 

@@ -1,14 +1,14 @@
 ---
 title: Správa hybridní infrastruktury ve velkém měřítku pomocí ARC Azure
 description: Naučte se efektivně spravovat počítače zákazníků a Kubernetes clustery mimo Azure.
-ms.date: 09/15/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ffbe9019398896c594b7cb0e0424d2b5f4dc37a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336611"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Správa hybridní infrastruktury ve velkém měřítku pomocí ARC Azure
 
@@ -16,19 +16,16 @@ Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../overview.md)k di
 
 [Azure ARC](../../azure-arc/overview.md) pomáhá zjednodušit složitá a distribuovaná prostředí v místním, hraničním i cloudovém prostředí a umožňuje nasazení služeb Azure kdekoli a rozšíření správy Azure na jakoukoli infrastrukturu.
 
-U [serverů s podporou Azure ARC (Preview)](../../azure-arc/servers/overview.md)můžou zákazníci spravovat všechny počítače se systémem Windows a Linux hostované mimo Azure ve své podnikové síti stejným způsobem jako při správě nativních virtuálních počítačů Azure. Propojením hybridního počítače s Azure se počítač stane připojeným a bude se v Azure považovat za prostředek. Poskytovatelé služeb pak můžou spravovat tyto počítače mimo Azure spolu s prostředky Azure svých zákazníků.
+U [serverů s podporou ARC Azure](../../azure-arc/servers/overview.md)mohou zákazníci spravovat všechny počítače se systémem Windows a Linux hostované mimo Azure ve své podnikové síti stejným způsobem jako při správě nativních virtuálních počítačů Azure. Propojením hybridního počítače s Azure se počítač stane připojeným a bude se v Azure považovat za prostředek. Poskytovatelé služeb pak můžou spravovat tyto počítače mimo Azure spolu s prostředky Azure svých zákazníků.
 
 [Azure ARC s povoleným Kubernetes (Preview)](../../azure-arc/kubernetes/overview.md) umožňuje zákazníkům připojit a nakonfigurovat Kubernetes clustery v rámci nebo mimo Azure. Když je cluster Kubernetes připojený ke službě Azure ARC, zobrazí se v Azure Portal s ID Azure Resource Manager a spravovanou identitou. Clustery jsou připojené ke standardním předplatným Azure, jsou umístěné ve skupině prostředků a můžou přijímat značky stejně jako všechny ostatní prostředky Azure.
 
-Toto téma poskytuje přehled o tom, jak můžou poskytovatelé služeb používat servery s podporou Azure ARC (Preview) a Kubernetes (Preview) s povoleným rozšířením Azure ARC, a to škálovatelným způsobem pro správu hybridního prostředí vašich zákazníků s viditelností ve všech spravovaných klientech zákazníků.
+Toto téma poskytuje přehled o tom, jak můžou poskytovatelé služeb používat servery s podporou ARC Azure a Kubernetes (Preview), a to škálovatelným způsobem, jak spravovat hybridní prostředí svých zákazníků s viditelností ve všech spravovaných klientech zákazníků.
 
 > [!TIP]
 > I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, tyto doprovodné materiály se vztahují také na [podniky, které používají Azure Lighthouse ke správě více tenantů](../concepts/enterprise.md).
 
-## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers-preview"></a>Správa hybridních serverů ve velkém měřítku pomocí serverů s podporou ARC Azure (Preview)
-
-> [!NOTE]
-> Servery s podporou ARC Azure jsou momentálně ve verzi Preview. V tuto chvíli to nedoporučujeme pro produkční úlohy.
+## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>Správa hybridních serverů se škálováním pomocí serverů s podporou ARC Azure
 
 Jako poskytovatel služeb můžete spravovat místní počítače se systémem Windows Server nebo Linux mimo Azure, které vaši zákazníci připojili ke svému předplatnému pomocí [agenta připojeného počítače Azure](../../azure-arc/servers/agent-overview.md).
 

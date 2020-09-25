@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 80fa5b7264d675317fba3cc12fa5049bdea76906
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0c4a3c97649f168d339f5209cc10a46f56e97381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335173"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -147,7 +147,7 @@ Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal.
     - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny převzetí služeb při selhání, například `failovergrouptutorial` .
     - **Sekundární server**: vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot pro nový sekundární server vyberte **Vybrat**.
         - **Název serveru**: Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary` .
-        - **Přihlašovací jméno správce serveru**: typ`azureuser`
+        - **Přihlašovací jméno správce serveru**: typ `azureuser`
         - **Heslo**: zadejte komplexní heslo, které splňuje požadavky na heslo.
         - **Umístění**: vyberte umístění z rozevíracího seznamu, například `East US` . Toto umístění nemůže být stejné jako primární server.
 
@@ -355,7 +355,7 @@ Vyčistěte prostředky odstraněním skupiny prostředků.
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com).
-1. Vyberte **Odstranit skupinu prostředků** a odstraňte všechny prostředky ve skupině a také samotnou skupinu prostředků.
+1. Vyberte  **Odstranit skupinu prostředků** a odstraňte všechny prostředky ve skupině a také samotnou skupinu prostředků.
 1. Zadejte název skupiny prostředků, `myResourceGroup` v textovém poli a pak vyberte **Odstranit** a odstraňte skupinu prostředků.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -414,7 +414,7 @@ Pro Azure Portal nejsou k dispozici žádné skripty.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste do skupiny převzetí služeb při selhání přidali elastický fond Azure SQL Database a otestujete převzetí služeb při selhání. Naučili jste se tyto postupy:
+V tomto kurzu jste do skupiny převzetí služeb při selhání přidali elastický fond Azure SQL Database a otestujete převzetí služeb při selhání. Naučili jste se:
 
 > [!div class="checklist"]
 >

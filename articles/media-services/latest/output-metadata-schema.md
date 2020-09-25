@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services schéma metadat pro výstup | Microsoft Docs
-description: Tento článek obsahuje přehled schématu Azure Media Services výstupní metadata.
+description: Tento článek obsahuje přehled schématu výstupní metadata Azure Media Services V3.
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336407"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
 

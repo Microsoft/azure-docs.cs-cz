@@ -3,34 +3,35 @@ title: Virtuální počítače Zvýhodněné hybridní využití Azure a Linux
 description: Zvýhodněné hybridní využití Azure vám umožní ušetřit peníze na virtuálních počítačích Linux běžících v Azure.
 services: virtual-machines
 documentationcenter: ''
-author: asinn826
+author: mathapli
 manager: westonh
-editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: a9ea3b21908d1f461745ffe2689b36f8efcb6f89
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995423"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279769"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Zvýhodněné hybridní využití Azure – způsob použití pro Linux Virtual Machines
+# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Verze Preview: Zvýhodněné hybridní využití Azure – jak se vztahuje Linux Virtual Machines
 
 ## <a name="overview"></a>Přehled
 
-Zvýhodněné hybridní využití Azure vám umožní snadněji migrovat místní server s Red Hat Enterprise Linux (RHEL) a SUSE Linux Enterprise (SLES) do Azure pomocí vlastního předplatného Red Hat nebo SUSE softwaru. S touto výhodou platíte jenom za náklady na infrastrukturu vašeho virtuálního počítače, protože poplatek za software je pokrytý vaším předplatným RHEL nebo SLES. Tato výhoda se vztahuje na všechny image RHEL a SLES Marketplace s průběžnými platbami (PAYG).
+Zvýhodněné hybridní využití Azure vám umožní snadněji migrovat místní virtuální počítače s Red Hat Enterprise Linux (RHEL) a SUSE Linux Enterprise Server (SLES) do Azure pomocí vlastního předplatného Red Hat nebo SUSE softwaru. S touto výhodou platíte jenom za náklady na infrastrukturu vašeho virtuálního počítače, protože poplatek za software je pokrytý vaším předplatným RHEL nebo SLES. Tato výhoda se vztahuje na všechny image RHEL a SLES Marketplace s průběžnými platbami (PAYG).
+
+> [!IMPORTANT]
+> Zvýhodněné hybridní využití Azure pro virtuální počítače se systémem Linux je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="benefit-description"></a>Popis výhod
 
 Prostřednictvím Zvýhodněné hybridní využití Azure můžete snadněji migrovat místní servery RHEL a SLES do Azure tím, že převedete stávající virtuální počítače RHEL a SLES PAYG v Azure a budete mít k disu fakturaci s vlastními předplatnými (BYOS). Virtuální počítače nasazené z imagí PAYG v Azure se obvykle účtují jako poplatek za infrastrukturu i jako poplatek za software. Pomocí Zvýhodněné hybridní využití Azure můžete virtuální počítače s PAYG převést na model fakturace BYOS bez nutnosti opětovného nasazení, což zaloučí případné riziko výpadku.
 
-![Zvýhodněné hybridní využití Azure vizualizace nákladů na virtuální počítače se systémem Linux](./media/ahb-linux/azure-hybrid-benefit-cost.png)
+:::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Zvýhodněné hybridní využití Azure vizualizace nákladů na virtuální počítače se systémem Linux.":::
 
 Po povolení výhody na virtuálním počítači s RHEL nebo SLES se už nebudete účtovat za další poplatek za software, který se obvykle účtuje na virtuálním počítači s PAYG. Místo toho začne váš virtuální počítač vysílat poplatek za BYOS, který zahrnuje jenom výpočetní a licenční poplatek.
 
@@ -46,7 +47,7 @@ Rezervované instance, vyhrazené hostitele a zvýhodněné hybridní využití 
 
 Zvýhodněné hybridní využití Azure je aktuálně ve fázi Preview pro virtuální počítače se systémem Linux. Jakmile získáte přístup k verzi Preview, můžete povolit zvýhodnění pomocí Azure Portal nebo Azure CLI.
 
-### <a name="preview"></a>Preview
+### <a name="preview"></a>Náhled
 
 V této fázi můžete získat přístup k výhodám vyplněním formuláře [zde](https://aka.ms/ahb-linux-form). Po vyplnění formuláře budou vaše předplatná Azure pro tuto výhodu povolené a obdržíte potvrzení od Microsoftu do tří pracovních dnů.
 

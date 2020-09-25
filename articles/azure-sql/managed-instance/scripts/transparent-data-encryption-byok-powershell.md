@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/25/2020
-ms.openlocfilehash: c812dfa0be3e5ced40b7f347639aeb2540b75351
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 34a849fde315b45bdb1df577cf26c91f458abd72
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871526"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323219"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>transparentní šifrování dat ve spravované instanci SQL pomocí vlastního klíče z Azure Key Vault
 
@@ -25,7 +25,7 @@ ms.locfileid: "88871526"
 
 Tento ukázkový skript PowerShellu nakonfiguruje transparentní šifrování dat (TDE) s klíčem spravovaným zákazníkem pro spravovanou instanci Azure SQL pomocí klíče z Azure Key Vault. To se často označuje jako scénář BYOK (Přineste si vlastní klíč) pro TDE. Další informace najdete v tématu [Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem](../../database/transparent-data-encryption-byok-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Existující spravovaná instance. Viz [použití PowerShellu k vytvoření spravované instance](create-configure-managed-instance-powershell.md).
 

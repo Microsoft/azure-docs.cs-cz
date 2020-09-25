@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900597"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284478"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Poznámky k verzi Azure SQL Edge 
 
@@ -23,17 +23,23 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
 
-### <a name="sql-engine-build-number---15020001549"></a>Číslo sestavení pro modul SQL Engine – 15.0.2000.1549
+### <a name="sql-engine-build-number---15020001552"></a>Číslo sestavení pro modul SQL Engine – 15.0.2000.1552
 
 ### <a name="whats-new"></a>Co je nového?
 1. Image kontejnerů založené na Ubuntu 18,04 
 2. Podpora `IGNORE NULL` a `RESPECT NULL` syntaxe `LAST_VALUE()` `FIRST_VALUE()` funkcí a. 
 3. Vylepšení spolehlivosti pro předpověď pomocí ONNX.
-4. Podpora pro vyčištění na základě zásad uchovávání dat.      
-   - Podpora optimalizovaného čištění clusterovaných indexů columnstore.
+4. Podpora pro vyčištění na základě zásad uchovávání dat.
+   - Podpora kruhové vyrovnávací paměti pro úlohu čištění uchování pro řešení potíží.
 5. Podpora nových funkcí 
    - Rychlé obnovení
    - Automatické ladění dotazů
+   - Povolit scénáře paralelního provádění
+6. Vylepšení úspory energie v režimu snížené spotřeby
+7. Podpora streamování nových funkcí 
+   - [Snímky oken](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : nový typ okna umožňující seskupit podle událostí přicházejících ve stejnou dobu. 
+   - Povolí [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) a [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) jako analytickou funkci. to umožňuje vracet záznamy seřazené podle sloupce podle vašeho výběru, aniž by bylo nutné být součástí okna. 
+   - Vylepšení [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics). 
 
 ### <a name="fixes"></a>Opravy
 1. Další chybové zprávy a podrobnosti pro řešení potíží s operacemi streamování TSQL. 
@@ -41,9 +47,13 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
 3. Opravy modulu streamování TSQL: 
    - Vyčištění pro zastavenou úlohu streamování 
    - Opravy pro vylepšení lokalizace a zpracování kódu Unicode
+   - Vylepšete rozladění pro TSQL Edge – streamování umožní uživatelům dotazovat se na chyby při selhání úlohy z get_streaming_job.
 4. Vyčištění na základě zásad uchovávání dat
    - Opravy pro scénáře vytvoření a vyčištění zásad uchovávání informací.
 5. Opravy pro úlohy časovače na pozadí pro zlepšení úspory energie v režimu snížené spotřeby.
+
+### <a name="known-issues"></a>Známé problémy 
+1. V počítaném sloupci nelze použít funkci Date_Bucket T-SQL.
 
 
 ## <a name="ctp-23"></a>CTP 2,3

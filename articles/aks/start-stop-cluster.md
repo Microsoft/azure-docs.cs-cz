@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 author: palma21
-ms.openlocfilehash: a743a6c30d5ce8bcaf275bf1a658f8343de4d4fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278562"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Zastavení a spuštění clusteru Azure Kubernetes Service (AKS) (Preview)
 
@@ -69,7 +69,7 @@ Pomocí `az aks stop` příkazu můžete zastavit běžící uzly clusteru AKS a
 az aks stop --name myAKSCluster --resource-group myResourceGroup
 ```
 
-Můžete ověřit, jestli je cluster zastavený, pomocí příkazu [az AKS show] [az-AKS-show] a potvrzením, `powerState` jak ukazuje `Stopped` následující výstup:
+Můžete ověřit, jestli je cluster zastavený, pomocí příkazu [AZ AKS show][az-aks-show] a potvrzením, `powerState` jak ukazuje `Stopped` následující výstup:
 
 ```json
 {
@@ -100,7 +100,7 @@ Následující příklad spustí cluster s názvem *myAKSCluster*:
 az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
-Můžete ověřit, jestli se cluster spustil, pomocí příkazu [az AKS show] [az-AKS-show] a potvrzením, `powerState` `Running` jak ukazuje následující výstup:
+Spuštění clusteru můžete ověřit pomocí příkazu [AZ AKS show][az-aks-show] a potvrzením, `powerState` `Running` jak ukazuje následující výstup:
 
 ```json
 {
@@ -136,3 +136,4 @@ Pokud `provisioningState` to ukazuje `Starting` , že váš cluster ještě nen�
 [az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az_aks_show

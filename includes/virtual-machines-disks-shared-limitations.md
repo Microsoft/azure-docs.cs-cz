@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/26/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88944517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279552"
 ---
 Povolení sdílených disků je dostupné jenom pro podmnožinu typů disků. Sdílené disky teď můžou povolit jenom disky Ultra a Premium SSD. U každého spravovaného disku, na kterém jsou povolené sdílené disky, platí následující omezení uspořádaná podle typu disku:
 
@@ -51,15 +51,15 @@ Shared Premium SSD se podporuje jenom v těchto oblastech:
 - USA – středozápad
 - Středojižní USA
 - USA – středosever
-- Střední USA
-- Západní Evropa
+- USA – střed
+- West Europe
 - Severní Evropa
 - Jižní Korea – střed
 - Střední Kanada
 - Kanada – východ
 - Japonsko – východ
 - Japonsko – západ
+- Jihovýchodní Asie
+- Východní Asie
 - USA (Gov) – Virginia
 - USA (Gov) – Arizona
-
-Pokud vás zajímá, že budete chtít vyzkoušet Shared Premium SSD, [Zaregistrujte si přístup](https://aka.ms/AzureSharedDiskGASignUp).

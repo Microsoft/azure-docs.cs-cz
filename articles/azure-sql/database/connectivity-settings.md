@@ -7,14 +7,14 @@ titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data W
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: f664ffbfc9aa38dcf8eb7736b28613efb95bde63
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 431d7ff2631f9b4a0a20db82c40b512c41209b7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325364"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Nastavení připojení k Azure SQL
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,7 +31,7 @@ Nastavení připojení jsou přístupná z obrazovky **brány firewall a virtuá
 > [!NOTE]
 > Po použití těchto nastavení se projeví **okamžitě** a může dojít ke ztrátě připojení pro klienty, pokud nesplňují požadavky pro každé nastavení.
 
-## <a name="deny-public-network-access"></a>Odepřít přístup k veřejné síti
+## <a name="deny-public-network-access"></a>Odepření přístupu k veřejné síti
 
 Když je nastavení **Odepřít přístup k veřejné síti** nastavené na **Ano**, povolí se jenom připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na hodnotu **ne** (výchozí), klienti se mohou připojit pomocí veřejných koncových bodů (pravidla brány firewall založené na protokolu IP, pravidel brány firewall založené na virtuální síti) nebo soukromých koncových bodů (pomocí privátního propojení), jak je uvedeno v části [Přehled přístupu k síti](network-access-controls-overview.md). 
 
@@ -76,7 +76,7 @@ Následující skript prostředí PowerShell ukazuje, jak `Get` a `Set` vlastnos
 # Update Public Network Access to Disabled
 $SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
 
-Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Enabled"
+Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Disabled"
 ```
 
 ## <a name="change-public-network-access-via-cli"></a>Změna přístupu k veřejné síti přes rozhraní příkazového řádku

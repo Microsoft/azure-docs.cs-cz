@@ -6,27 +6,30 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2f9430ae039cc54c3e6180eb8ea76791d17f67f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285124"
 ---
-# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Provádění dotazů protokolu pro více prostředků v Azure Monitor  
+# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Provádění dotazů protokolu v Azure Monitor, které jsou rozloženy mezi pracovními prostory a aplikacemi
+
+Protokoly Azure Monitor podporují dotaz napříč několika pracovními prostory Log Analytics a Application Insights aplikaci ve stejné skupině prostředků, jiné skupině prostředků nebo jiném předplatném. Získáte tak zobrazení dat v rámci systému.
+
+Existují dvě metody dotazování na data, která jsou uložená ve více pracovních prostorech a aplikacích:
+1. Explicitně zadáním pracovního prostoru a podrobností aplikace. Tato technika je podrobně popsána v tomto článku.
+2. Implicitně pomocí [dotazů kontextu prostředků](../platform/design-logs-deployment.md#access-mode). Při dotazování v kontextu konkrétního prostředku, skupiny prostředků nebo předplatného budou relevantní data načtena ze všech pracovních prostorů, které obsahují data pro tyto prostředky. Application Insights data uložená v aplikacích nebudou načtena.
 
 > [!IMPORTANT]
 > Pokud používáte telemetrii [prostředků Application Insights na základě pracovního prostoru](../app/create-workspace-resource.md) , je uložena v pracovním prostoru Log Analytics se všemi ostatními daty protokolů. Použijte výraz log () k zápisu dotazu, který obsahuje aplikaci ve více pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
 
-Dřív s Azure Monitor mohli analyzovat data jenom z aktuálního pracovního prostoru a omezili jsme možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho můžete hledat pouze položky telemetrie shromážděné z vaší webové aplikace pomocí Application Insights přímo v Application Insights nebo ze sady Visual Studio. Tím se také provedla výzva k nativně analýze provozu a dat aplikací dohromady.
-
-Nyní se můžete dotazovat nejen na více Log Analytics pracovních prostorů, ale také na data z konkrétní Application Insights aplikace ve stejné skupině prostředků, na jiné skupině prostředků nebo v jiném předplatném. Získáte tak zobrazení dat v rámci systému. Tyto typy dotazů můžete provádět pouze v [Log Analytics](./log-query-overview.md).
 
 ## <a name="cross-resource-query-limits"></a>Omezení dotazů mezi prostředky 
 
 * Počet Application Insightsch prostředků a Log Analytics pracovních prostorů, které můžete zahrnout do jednoho dotazu, je omezený na 100.
 * Dotaz mezi prostředky není v Návrháři zobrazení podporován. Dotaz můžete v Log Analytics vytvořit a připnout na řídicí panel Azure a [vizualizovat dotaz protokolu](../learn/tutorial-logs-dashboards.md). 
-* Dotaz na více prostředků v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pomocí [šablony Azure Resource Manager pro rozhraní API pro scheduledQueryRules](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) můžete vytvořit pravidla upozornění protokolu pro více prostředků, aniž byste museli provést tento přepínač, ale toto pravidlo výstrah lze spravovat i přes [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
+* Dotazy na více prostředků v upozorněních protokolu jsou podporovány pouze v aktuálním [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Pokud používáte starší rozhraní API pro výstrahy Log Analytics, budete muset [Přepnout na aktuální rozhraní API](../platform/alerts-log-api-switch.md).
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč Log Analyticsmi pracovními prostory a z Application Insights
@@ -55,7 +58,7 @@ Určení pracovního prostoru lze provést jedním z několika způsobů:
 
 * ID prostředku Azure – jedinečná identita pracovního prostoru definovaná v Azure ID prostředku použijete, pokud je název prostředku dvojznačný.  U pracovních prostorů je ve formátu: */Subscriptions/SubscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/pracovní prostory/součásti*.  
 
-    Například:
+    Příklad:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -86,7 +89,7 @@ Určení aplikace v Application Insights lze provést pomocí výrazu *aplikace 
 
 * ID prostředku Azure – jedinečná identita aplikace definovaná pro Azure ID prostředku použijete, pokud je název prostředku dvojznačný. Formát je: */Subscriptions/SubscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/Components/* Component.  
 
-    Například:
+    Příklad:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -132,7 +135,7 @@ applicationsScoping
 ```
 
 >[!NOTE]
->Tuto metodu nelze použít s upozorněními protokolu, protože ověření přístupu prostředků pravidla výstrahy, včetně pracovních prostorů a aplikací, se provádí při vytváření výstrahy. Přidání nových prostředků do funkce po vytvoření výstrahy není podporováno. Pokud upřednostňujete použití funkce pro obory prostředků v upozorněních protokolu, je nutné upravit pravidlo výstrahy na portálu nebo pomocí šablony Správce prostředků pro aktualizaci oboru prostředků. Případně můžete do dotazu protokolu výstrahy zahrnout seznam prostředků.
+> Tuto metodu nelze použít s upozorněními protokolu, protože ověření přístupu prostředků pravidla výstrahy, včetně pracovních prostorů a aplikací, se provádí při vytváření výstrahy. Přidání nových prostředků do funkce po vytvoření výstrahy není podporováno. Pokud upřednostňujete použití funkce pro obory prostředků v upozorněních protokolu, je nutné upravit pravidlo výstrahy na portálu nebo pomocí šablony Správce prostředků pro aktualizaci oboru prostředků. Případně můžete do dotazu protokolu výstrahy zahrnout seznam prostředků.
 
 
 ![Timechart](media/cross-workspace-query/chart.png)

@@ -3,12 +3,12 @@ title: Předplatná Azure Event Grid prostřednictvím portálu
 description: Tento článek popisuje, jak vytvořit předplatná Event Grid pro podporované zdroje, jako je Azure Blob Storage, pomocí Azure Portal.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526455"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308499"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Přihlášení k odběru událostí prostřednictvím portálu
 
@@ -40,7 +40,7 @@ Chcete-li vytvořit předplatné Event Grid pro některý z podporovaných [zdro
 
 1. Zadejte další podrobnosti o odběru události, například koncový bod pro zpracování událostí a název předplatného.
 
-   ![Zadat podrobnosti předplatného](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Snímek obrazovky zobrazující oddíly "Podrobnosti koncového bodu" a "Podrobnosti odběru události" se zadanou hodnotou názvu předplatného.](./media/subscribe-through-portal/provide-subscription-details.png)
 
 1. Pokud chcete povolit nedoručené dopisy a přizpůsobovat zásady opakování, vyberte **Další funkce**.
 

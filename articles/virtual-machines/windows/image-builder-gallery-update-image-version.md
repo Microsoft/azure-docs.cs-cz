@@ -1,17 +1,17 @@
 ---
 title: Vytvoří novou verzi image z existující verze Image pomocí Azure image Builder (Preview).
-description: Vytvoří novou verzi image virtuálního počítače z existující verze Image pomocí Azure image Builder.
+description: Vytvoří novou verzi image virtuálního počítače z existující verze Image pomocí Azure image Builder ve Windows.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: bdae608d573bc411242b4bf66ea033a7df421cfc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7515e0a39d1cf0da74d2a23457443e96716b4275
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335948"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>Preview: vytvoření nové verze image virtuálního počítače z existující verze Image pomocí Azure image Builder ve Windows
 
@@ -171,8 +171,8 @@ dir c:\
 ```
 
 Nyní byste měli vidět dva adresáře:
-- `buildActions`který byl vytvořen v první verzi bitové kopie.
-- `buildActions2`který byl vytvořen jako součást aktualizace první verze image, aby se vytvořila druhá verze image.
+- `buildActions` který byl vytvořen v první verzi bitové kopie.
+- `buildActions2` který byl vytvořen jako součást aktualizace první verze image, aby se vytvořila druhá verze image.
 
 
 ## <a name="next-steps"></a>Další kroky

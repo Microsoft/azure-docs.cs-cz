@@ -1,6 +1,6 @@
 ---
 title: Streamování videosouborů pomocí služby Azure Media Services – .NET | Microsoft Docs
-description: Pomocí kroků v tomto kurzu vytvoříte nový účet Azure Media Services, zakódujete soubor a Streamujte ho do Azure Media Player.
+description: Postupujte podle kroků v tomto kurzu a pomocí .NET vytvořte nový účet Azure Media Services, zakódovat soubor a Streamujte ho do Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268685"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET
 
@@ -70,7 +70,7 @@ Když spustíte aplikaci, zobrazí se adresy URL, které můžete použít k př
 1. Stisknutím kombinace kláves Ctrl+F5 spusťte aplikaci *EncodeAndStreamFiles*.
 2. Vyberte protokol **HLS** společnosti Apple (končí řetězcem *manifest(format=m3u8-aapl)*) a zkopírujte adresu URL streamování z konzoly.
 
-![Výstup](./media/stream-files-tutorial-with-api/output.png)
+![Snímek obrazovky s výstupem z aplikace EncodeAndStreamFiles v aplikaci Visual Studio zobrazující tři adresy URL streamování pro použití v Azure Media Player.](./media/stream-files-tutorial-with-api/output.png)
 
 Ve [zdrojovém kódu](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) ukázky můžete vidět, jak je adresa URL tvořená. Pokud ji chcete vytvořit, musíte zřetězit název hostitele koncového bodu hostování a cestu lokátoru streamování.  
 

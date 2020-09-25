@@ -4,12 +4,12 @@ description: Naučte se zjišťovat instance AWS pomocí posouzení serveru Azur
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: c2d91e0b2c2eaa2df8b01aca60e5a0e18e251fb8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603692"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275451"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Kurz: zjištění instancí AWS pomocí posouzení serveru
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti.  
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,7 +47,7 @@ Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zaříze
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
 - Oprávnění k registraci aplikací Azure Active Directory.
 
-Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
+Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
 1. V Azure Portal vyhledejte "předplatná" a v části **služby**vyberte **předplatná**.
 
@@ -76,7 +76,18 @@ Nastavte účet, který může zařízení použít pro přístup k AWS instanc�
 
 - Pro Windows servery nastavte místní uživatelský účet na všech serverech Windows, které chcete zahrnout do zjišťování. Přidejte uživatelský účet do následujících skupin:-Remote Management Users-Performance Monitor Users-Performance Log Users.
  - V případě serverů s Linuxem musíte na serverech s Linuxem, které chcete vyhledat, mít účet superuživatele.
-
+- Azure Migrate používá ověřování hesla při zjišťování instancí AWS. Instance AWS ve výchozím nastavení nepodporují ověřování hesla. Než budete moct zjistit instanci, musíte povolit ověřování hesla.
+    - U počítačů s Windows povolte port WinRM 5985 (HTTP). To umožňuje vzdálené volání rozhraní WMI.
+    - Pro počítače se systémem Linux:
+        1. Přihlaste se ke každému počítači se systémem Linux.
+        2. Otevřete sshd_config soubor: VI/etc/ssh/sshd_config
+        3. V souboru vyhledejte řádek **PasswordAuthentication** a změňte hodnotu na **Ano**.
+        4. Uložte soubor a zavřete ho. Restartujte službu SSH.
+    - Pokud ke zjištění virtuálních počítačů se systémem Linux používáte uživatele root, ujistěte se, že se na virtuálních počítačích povoluje přihlašovací jméno uživatele root.
+        1. Přihlaste se ke každému počítači se systémem Linux
+        2. Otevřete sshd_config soubor: VI/etc/ssh/sshd_config
+        3. V souboru vyhledejte řádek **PermitRootLogin** a změňte hodnotu na **Ano**.
+        4. Uložte soubor a zavřete ho. Restartujte službu SSH.
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
 
@@ -118,7 +129,7 @@ Nastavení zařízení:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
 
-1. V **Azure Migrate cíle migrace**  >  **Servers**  >  **Azure Migrate: Server Assessment**vyberte **Vyhledat**.
+1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V možnosti **zjišťovat počítače**  >  **jsou virtualizované počítače?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
 3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název pro Azure Migrate zařízení, které nastavíte pro zjišťování fyzických nebo virtuálních serverů. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťovacích počítačů.
@@ -240,11 +251,11 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
 
 Spustí se zjišťování. Bude trvat přibližně 2 minuty na server, aby se metadata zjištěného serveru zobrazila v Azure Portal.
 
-## <a name="verify-servers-in-the-portal"></a>Ověřit servery na portálu
+## <a name="verify-servers-in-the-portal"></a>Ověření serverů na portálu
 
 Po dokončení zjišťování můžete ověřit, že se servery zobrazují na portálu.
 
-1. Otevřete řídicí panel Azure Migrate.
+1. Otevřete řídicí panel služby Azure Migrate.
 2. V **Azure Migrate-servery**  >  **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 ## <a name="next-steps"></a>Další kroky

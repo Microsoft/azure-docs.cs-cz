@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e03850dcc75e639c0436ceea339da5f2da5df4b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277865"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD
 
@@ -167,11 +167,11 @@ Podobný přístup k nastavení oprávnění **čtenářů adresáře** pro SPRA
 
     Nezapomeňte přidat **oprávnění aplikace** i **delegovaná oprávnění**.
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="AAD – aplikace":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Snímek obrazovky zobrazující stránku Registrace aplikací Azure Active Directory Aplikace se zobrazeným názvem AppSP se zvýrazní.":::
 
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="rozhraní API – oprávnění":::
 
-2. Také budete muset vytvořit tajný klíč klienta pro přihlášení. Pomocí příručky sem [Nahrajte certifikát nebo vytvořte tajný klíč pro přihlášení](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in).
+2. Také budete muset vytvořit tajný klíč klienta pro přihlášení. Pomocí příručky sem [Nahrajte certifikát nebo vytvořte tajný klíč pro přihlášení](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
 3. Zaznamenejte následující z registrace aplikace. Měl by být k dispozici v podokně s **přehledem** :
     - **ID aplikace**

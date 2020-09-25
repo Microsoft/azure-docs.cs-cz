@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266492"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -40,7 +40,7 @@ Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Testovací prostředí s Azure AD Connect synchronizace verze 1.4.32.0 nebo novější
 - Organizační jednotka nebo skupina, která je v rozsahu synchronizace a kterou lze použít pro pilotní nasazení. Doporučujeme začít s malou sadou objektů.
 - Server se systémem Windows Server 2012 R2 nebo novějším, který bude hostovat agenta zřizování.  Nemůže se jednat o stejný server, jako Azure AD Connect Server.
-- Zdrojová kotva pro synchronizaci AAD Connect musí být buď *objectGUID* , nebo *MS-DS-consistencyGUID* .
+- Zdrojová kotva pro Azure AD Connect Sync by měla být buď *objectGUID* , nebo *MS-DS-consistencyGUID* .
 
 ## <a name="update-azure-ad-connect"></a>Aktualizovat Azure AD Connect
 
@@ -54,7 +54,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
 3.  Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $false`.
 
 >[!NOTE] 
->Pokud používáte vlastní Plánovač pro synchronizaci AAD Connect, zakažte prosím Plánovač. 
+>Pokud používáte vlastní Plánovač pro Azure AD Connect synchronizaci, zakažte prosím Plánovač. 
 
 ## <a name="create-custom-user-inbound-rule"></a>Vytvořit vlastní příchozí pravidlo pro uživatele
 
@@ -62,7 +62,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
  ![Nabídka editoru synchronizačního pravidla](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
  2. V rozevíracím seznamu vyberte **příchozí** a klikněte na **Přidat nové pravidlo**.
- ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user1.png)</br>
+ ![Snímek obrazovky s oknem zobrazit a spravovat vaše pravidla synchronizace s možností příchozí a vybrané tlačítko Přidat nové pravidlo](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
  3. Na stránce **Popis** zadejte následující text a klikněte na tlačítko **Další**:
 
@@ -74,7 +74,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
     **Typ odkazu:** Zúčastnit<br>
     **Priorita:** Zadejte hodnotu, která je v systému jedinečná.<br>
     **Značka:** Ponechat toto prázdné<br>
-    ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user2.png)</br>
+    ![Snímek obrazovky zobrazující stránku vytvořit příchozí synchronizaci pravidla – popis s zadanými hodnotami](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
  4. Na stránce **Filtr oboru** zadejte organizační jednotku nebo skupinu zabezpečení, na které se má pilotní nasazení vycházet.  Pokud chcete filtrovat podle organizační jednotky, přidejte část s názvem organizační jednotky rozlišujícího názvu. Toto pravidlo bude použito pro všechny uživatele, kteří jsou v dané organizační jednotce.  Pokud tedy DN končí na "OU = procesory, DC = contoso, DC = com, přidáte tento filtr.  Potom klikněte na **Další**. 
 
@@ -83,31 +83,31 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
     |Určení oboru organizační jednotky|JMÉNA|ENDSWITH|Rozlišující název organizační jednotky|
     |Rozsah skupiny||-MEMBEROF|Rozlišující název skupiny zabezpečení|
 
-    ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user3.png)</br>
+    ![Snímek obrazovky se stránkou vytvořit příchozí synchronizační pravidlo – filtr rozsahu s zadanou hodnotou filtru oborů](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Na stránce pravidla **spojování** klikněte na **Další**.
  6. Na stránce **transformace** přidejte konstantní transformaci: Flow true do atributu cloudNoFlow. Klikněte na **Přidat**.
- ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user4.png)</br>
+ ![Snímek obrazovky s přidaným stránkou "Vytvoření příchozího synchronizačního pravidla – transformace" s přidaným tokem "konstantní transformace".](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stejný postup. Opakujte kroky podle nakonfigurované doménové struktury AD Connector/AD na jednu. 
 
 ## <a name="create-custom-user-outbound-rule"></a>Vytvořit vlastní pravidlo odchozího uživatele
 
  1. Zvolte **odchozí** z rozevíracího seznamu pro směr a klikněte na **Přidat pravidlo**.
- ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user5.png)</br>
+ ![Snímek obrazovky zobrazující vybraný směr "odchozího" a zvýrazněno tlačítko Přidat nové pravidlo.](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
  2. Na stránce **Popis** zadejte následující text a klikněte na tlačítko **Další**:
 
     **Název:** Udělení pravidla smysluplnému názvu<br>
     **Popis:** Přidat smysluplný popis<br>
-    **Připojený systém:** Vyberte konektor AAD, pro který píšete vlastní pravidlo synchronizace.<br>
+    **Připojený systém:** Vyberte konektor Azure AD, pro který píšete vlastní pravidlo synchronizace.<br>
     **Typ připojeného systémového objektu:** Uživatelský<br>
     **Typ objektu úložiště metaverse:** Uživateli<br>
     **Typ odkazu:** JoinNoFlow<br>
     **Priorita:** Zadejte hodnotu, která je v systému jedinečná.<br>
     **Značka:** Ponechat toto prázdné<br>
     
-    ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user6.png)</br>
+    ![Snímek obrazovky zobrazující stránku popisu s zadanými vlastnostmi](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
  3. Na stránce **Filtr oboru** vyberte **CloudNoFlow** rovná se **true**. Potom klikněte na **Další**.
  ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user7.png)</br>
@@ -122,14 +122,14 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 2. Stáhněte si tohoto Azure AD Connectho agenta zřizování cloudu pomocí kroků uvedených [tady](how-to-install.md#install-the-agent).
 3. Spuštění zřizování cloudu Azure AD Connect (AADConnectProvisioningAgent. Installer)
 3. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
-![Obrazovka Vítejte](media/how-to-install/install1.png)</br>
+![Snímek obrazovky s úvodní obrazovkou "Microsoft Azure A D Connect zřizovací agent.](media/how-to-install/install1.png)</br>
 
 4. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.
 5. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce služby Active Directory.  Tato operace přidá váš místní adresář.  Klikněte na **Next** (Další).</br>
-![Obrazovka Vítejte](media/how-to-install/install3.png)</br>
+![Snímek obrazovky, který zobrazuje obrazovku "připojit službu Active Directory" se zadanou hodnotou adresáře.](media/how-to-install/install3.png)</br>
 
 6. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
-![Obrazovka Vítejte](media/how-to-install/install4.png)</br>
+![Snímek obrazovky zobrazující obrazovku "konfigurace dokončena" s vybraným tlačítkem potvrdit.](media/how-to-install/install4.png)</br>
 
 7. Po dokončení této operace by se měla zobrazit oznámení, že **vaše ověření bylo úspěšné.**  Můžete kliknout na tlačítko **konec**.</br>
 ![Obrazovka Vítejte](media/how-to-install/install5.png)</br>
