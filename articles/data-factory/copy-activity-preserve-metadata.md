@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a96b04df56dc7d5ea26463073d673275b8a4a8c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891752"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324293"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Zachování metadat a seznamů ACL pomocí aktivity kopírování v Azure Data Factory
 
@@ -24,18 +24,18 @@ ms.locfileid: "82891752"
 
 Když použijete aktivitu Azure Data Factory kopírování ke kopírování dat ze zdroje do jímky, můžete také v následujících scénářích zachovat metadata a seznamy ACL společně.
 
-## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a>Zachovat metadata pro migraci Lake
+## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Zachovat metadata pro migraci Lake
 
-Když migrujete data z jedné služby Data Lake do druhé včetně [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md)a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), můžete se rozhodnout zachovat metadata souboru spolu s daty.
+Když migrujete data z jedné služby Data Lake do druhé včetně [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)a [Azure File Storage](connector-azure-file-storage.md), můžete se rozhodnout zachovat metadata souboru spolu s daty.
 
 Aktivita kopírování podporuje zachování následujících atributů během kopírování dat:
 
 - **Všechna zadaná metadata zákazníka** 
 - A následující **pět integrovaných systémových vlastností úložiště**: `contentType` , `contentLanguage` (s výjimkou Amazon S3),, `contentEncoding` `contentDisposition` , `cacheControl` .
 
-**Zpracování rozdílů v metadatech:** Amazon S3 a Azure Storage v klíčích metadat určených zákazníky povoluje různé sady znaků. Pokud se rozhodnete zachovat metadata pomocí příkazu copy aktivit, ADF automaticky nahradí neplatné znaky podtržítkem (_).
+**Zpracování rozdílů v metadatech:** Amazon S3 a Azure Storage v klíčích metadat určených zákazníky povoluje různé sady znaků. Pokud se rozhodnete zachovat metadata pomocí aktivity kopírování, ADF automaticky nahradí neplatné znaky podtržítkem (_).
 
-Když kopírujete soubory tak, jak jsou z Amazon S3/Azure Data Lake Storage Gen2/Azure Blob pro Azure Data Lake Storage Gen2/Azure Blob s binárním formátem, najdete možnost **zachování** na kartě **Nastavení aktivity kopírování**  >  **Settings** pro vytváření aktivit nebo na stránce **Nastavení** v nástroji kopírování dat.
+Když kopírujete soubory tak, jak jsou z webu Amazon S3/Azure Data Lake Storage Gen2/Azure blob/Azure File Storage do Azure Data Lake Storage Gen2/Azure Blob nebo Azure File Storage s binárním formátem, najdete možnost **zachovat** na kartě nastavení **aktivity kopírování**  >  **Settings** pro vytváření aktivit nebo na stránce **Nastavení** v nástroji kopírování dat.
 
 ![Aktivita kopírování – zachovat metadata](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
@@ -80,7 +80,7 @@ Tady je příklad konfigurace JSON aktivity kopírování (viz `preserve` ):
 ]
 ```
 
-## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a>Zachovat seznamy ACL z Data Lake Storage Gen1/Gen2 do Gen2
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a> Zachovat seznamy ACL z Data Lake Storage Gen1/Gen2 do Gen2
 
 Při upgradu z Azure Data Lake Storage Gen1 na Gen2 nebo kopírování dat mezi ADLS Gen2 se můžete rozhodnout zachovat seznamy řízení přístupu (ACL) POSIX spolu s datovými soubory. Další informace o řízení přístupu najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md) a [řízení přístupu v Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 

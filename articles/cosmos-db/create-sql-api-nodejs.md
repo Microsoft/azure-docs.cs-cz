@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8ec5562af254aa1bcdb030057f61db496a17826b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 25e5d583b2ae94277b155e8e03d61a308a88ec8d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322746"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rychlý Start: použití Node.js k připojení a dotazování dat z Azure Cosmos DB účtu SQL API
 
@@ -22,6 +22,7 @@ ms.locfileid: "87423384"
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > - [Sada Java SDK v4](create-sql-api-java.md)
+> * [Jarní data V3](create-sql-api-spring-data.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -34,7 +35,7 @@ V tomto videu získáte kompletní návod k obsahu v tomto článku.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Quickstart-Use-Nodejs-to-connect-and-query-data-from-Azure-Cosmos-DB-SQL-API-account/player]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
 - [Node.js 6.0.0 +](https://nodejs.org/).
@@ -66,7 +67,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
 
    | Nastavení           | Navrhovaná hodnota | Popis                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **ID databáze**   | Úkoly           | Jako název nové databáze zadejte _Tasks_. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+   | **ID databáze**   | Úlohy           | Jako název nové databáze zadejte _Tasks_. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
    | **Propustnost**    | 400             | Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.                                                                                                                                                                                                                                                    |
    | **ID kontejneru**  | Položky           | Jako název nového kontejneru zadejte _položky_ . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.                                                                                                                                                                                                                                                               |
    | **Klíč oddílu** | /kategorie       | Ukázka popsaná v tomto článku používá jako klíč oddílu _/Category_ .                                                                                                                                                                                                                                                                                                           |

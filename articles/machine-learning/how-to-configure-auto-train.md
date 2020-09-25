@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: c5e81b07bf43b86543af546ab5453563e7cf4004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3194198447f024154c369d519d6ff55ee8ee699
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886220"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296683"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -179,8 +179,29 @@ Možné příklady:
 
 Automatizované strojové učení během procesu automatizace a optimalizace zkouší různé modely a algoritmy. Jako uživatel není nutné zadávat algoritmus. 
 
-Tři různé `task` hodnoty parametrů (třetí typ úlohy je `forecasting` a jako úlohy používá podobný fond algoritmů `regression` ) určují seznam algoritmů a modelů, které se mají použít. Pomocí `allowed_models` parametrů nebo `blocked_models` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt v [SupportedModels třídy](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) pro [klasifikaci](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [prognózy](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)a [regresi](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression).
+Tři různé `task` hodnoty parametrů určují seznam algoritmů neboli modelů, které se mají použít. Pomocí `allowed_models` parametrů nebo `blocked_models` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. 
 
+Následující tabulka shrnuje podporované modely podle typu úkolu. 
+
+> [!NOTE]
+> Pokud plánujete exportovat vytvořené modely automl do [modelu ONNX](concept-onnx.md), je možné převést pouze ty algoritmy označené znakem * na formát ONNX. Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Všimněte si také, že ONNX podporuje v tuto chvíli pouze úlohy klasifikace a regrese. 
+
+Classification | Regrese | Prognózování časové řady
+|-- |-- |--
+[Logistická regrese](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineární SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS laso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Podpora klasifikace vektoru (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Náhodná doménová struktura](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Náhodná doménová struktura](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[Průměrný Perceptron klasifikátor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)|[Online gradient regresor klesání](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest&preserve-view=true) |[Automatické ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Rychlé lineární regresor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest&preserve-view=true)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
+|[Lineární třídění SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)*||
 
 ### <a name="primary-metric"></a>Primární metrika
 `primary metric`Parametr určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.
@@ -201,7 +222,7 @@ U každého automatizovaného experimentu strojového učení se vaše data auto
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Konfigurace Featurization | Description |
+|Konfigurace Featurization | Popis |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
 |`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|
@@ -329,7 +350,6 @@ Chcete-li získat souhrn featurization a pochopit, jaké funkce byly přidány d
 ## <a name="register-and-deploy-models"></a>Registrace a nasazení modelů
 
 Podrobnosti o tom, jak stáhnout nebo zaregistrovat model pro nasazení do webové služby, najdete v tématu [jak a kde nasadit model](how-to-deploy-and-where.md).
-
 
 <a name="explain"></a>
 

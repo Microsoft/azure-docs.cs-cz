@@ -4,14 +4,14 @@ description: Naučte se pracovat s prostředky Kubernetes a spravovat cluster Az
 services: container-service
 author: laurenhughes
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335598"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Přístup k prostředkům Kubernetes z Azure Portal (Preview)
 
@@ -24,7 +24,7 @@ Zobrazení prostředků Kubernetes z Azure Portal nahrazuje [doplněk řídicíh
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K zobrazení prostředků Kubernetes v Azure Portal potřebujete cluster AKS. Podporuje se libovolný cluster, ale pokud používáte integraci Azure Active Directory (Azure AD), musí cluster používat [integraci Azure AD spravovanou pomocí AKS][aks-managed-aad]. Pokud váš cluster používá starší verzi služby Azure AD, můžete cluster upgradovat na portálu nebo pomocí rozhraní příkazového [řádku Azure CLI][cli-aad-upgrade].
 
@@ -75,11 +75,25 @@ Tato část řeší běžné problémy a postup řešení potíží.
 
 Chcete-li získat přístup k prostředkům Kubernetes, musíte mít přístup ke clusteru AKS, rozhraní Kubernetes API a objektům Kubernetes. Ujistěte se, že jste buď Správce clusteru, nebo uživatel s příslušnými oprávněními pro přístup ke clusteru AKS. Další informace o zabezpečení clusteru najdete v tématu [Možnosti přístupu a identit pro AKS][concepts-identity].
 
+>[!NOTE]
+> Zobrazení prostředků Kubernetes na webu Azure Portal se podporuje jenom u [clusterů s povolenou správou AAD](managed-aad.md) nebo u clusterů, které nejsou s povoleným AAD. Pokud používáte cluster s povoleným systémem AAD, musí mít uživatel nebo identita pro AAD k přístupu k rozhraní Kubernetes API příslušné role nebo role, aby mohli získat přístup k rozhraní API, a to i oprávnění k vyžádání [uživatele `kubeconfig` ](control-kubeconfig-access.md).
+
 ### <a name="enable-resource-view"></a>Povolit zobrazení prostředků
 
 Pro existující clustery možná budete muset povolit zobrazení prostředků Kubernetes. Pokud chcete povolit zobrazení prostředků, postupujte podle výzev na portálu pro váš cluster.
 
 :::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portalovou zprávu pro povolení zobrazení prostředků Kubernetes." lightbox="media/kubernetes-portal/enable-resource-view.png":::
+
+> [!TIP]
+> Funkci AKS pro [**rozsahy IP adres autorizovaných serverem API**](api-server-authorized-ip-ranges.md) lze přidat k omezení přístupu serveru rozhraní API pouze k veřejnému koncovému bodu brány firewall. Další možností pro tyto clustery je aktualizace `--api-server-authorized-ip-ranges` , aby zahrnovaly přístup k místnímu klientskému počítači nebo rozsahu IP adres (ze kterého se právě prohlíží portál). K povolení tohoto přístupu potřebujete veřejnou IPv4 adresu tohoto počítače. Tuto adresu můžete najít pomocí příkazu níže nebo v internetovém prohlížeči pomocí hledání "Co je moje IP adresa".
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+
+```
 
 ## <a name="next-steps"></a>Další kroky
 

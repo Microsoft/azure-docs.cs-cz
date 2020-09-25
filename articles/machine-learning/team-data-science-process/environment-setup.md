@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6d1185e13397b3e466bd1e8d609a46f2f68bf390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b5571f24cc7acfd35cf2979318110ba2eecbb0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063935"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320536"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Nastavení prostředí vědeckého zkoumání dat pro použití v rámci vědeckého zpracování týmových dat
 Vědecké zpracování týmových dat používá pro ukládání, zpracování a analýzu dat různé prostředí pro datové vědy. Zahrnují Azure Blob Storage, několik typů clusterů Azure Virtual Machine, HDInsight (Hadoop) a pracovní prostory Azure Machine Learning. Rozhodnutí o tom, které prostředí se má použít, závisí na typu a množství dat, která se mají modelovat, a na cílovém cíli pro tato data v cloudu. 
@@ -28,7 +28,7 @@ Následující články popisují, jak nastavit různá prostředí pro datové 
 
 * [Účet úložiště Azure](../../storage/common/storage-account-create.md)
 * [Cluster HDInsight (Hadoop)](customize-hadoop-cluster.md)
-* [Pracovní prostor Azure Machine Learning Studio (klasický)](../studio/create-workspace.md)
+* [Pracovní prostor Azure Machine Learning Studio (klasický)](../classic/create-workspace.md)
 
 **Microsoft Data Science Virtual Machine (DSVM)** je také k dispozici jako image virtuálních počítačů Azure. Tento virtuální počítač je předem nainstalovaný a nakonfigurovaný pomocí několika oblíbených nástrojů, které se běžně používají pro analýzu dat a strojové učení. DSVM je k dispozici v systémech Windows i Linux. Další informace najdete v tématu [Úvod do cloudového Data Science Virtual Machine pro Linux a Windows](../data-science-virtual-machine/overview.md).
 

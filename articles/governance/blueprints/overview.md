@@ -3,12 +3,12 @@ title: Přehled Azure Blueprints
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
 ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a687bcbaff56fa1229794b6977e3565070c56e2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050773"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302668"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -78,7 +78,9 @@ K existujícímu předplatnému se dá přiřadit každá **publikovaná** **ver
 
 ## <a name="permissions-in-azure-blueprints"></a>Oprávnění v Azure Blueprints
 
-Pokud chcete použít podrobné plány, musíte mít udělená oprávnění prostřednictvím [řízení přístupu na základě role](../../role-based-access-control/overview.md). Abyste mohli podrobné plány vytvářet, váš účet potřebuje tato oprávnění:
+Pokud chcete použít podrobné plány, musíte mít udělená oprávnění prostřednictvím [řízení přístupu na základě role](../../role-based-access-control/overview.md). Chcete-li číst nebo zobrazit podrobný plán v Azure Portal, váš účet musí mít oprávnění ke čtení oboru, ve kterém je umístěna definice podrobného plánu.
+
+Abyste mohli podrobné plány vytvářet, váš účet potřebuje tato oprávnění:
 
 - `Microsoft.Blueprint/blueprints/write` – vytvořit definici podrobného plánu
 - `Microsoft.Blueprint/blueprints/artifacts/write` – vytvořit artefakty v definici podrobného plánu

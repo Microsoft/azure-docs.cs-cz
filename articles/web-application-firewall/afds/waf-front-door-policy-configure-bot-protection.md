@@ -1,18 +1,18 @@
 ---
 title: Konfigurace ochrany robotů pro Firewall webových aplikací pomocí služby Azure front-dveří (Preview)
-description: Zjistěte, jak Firewall webových aplikací (WAF).
+description: Přečtěte si, jak nakonfigurovat pravidlo ochrany robota v bráně firewall webových aplikací Azure (WAF) pro přední dveře pomocí Azure Portal.
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: f48b683044bc727cda461fb64a743c055188962a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2357c51f47bcb9bd8bbc6c408cb6d8edbab4d10e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76934654"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267002"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Konfigurace ochrany bot pro Firewall webových aplikací (Preview)
 V tomto článku se dozvíte, jak nakonfigurovat pravidlo ochrany robota v bráně firewall webových aplikací Azure (WAF) pro přední dveře pomocí Azure Portal. Pravidlo ochrany robota se dá nakonfigurovat taky pomocí šablony CLI, Azure PowerShell nebo Azure Resource Manager.

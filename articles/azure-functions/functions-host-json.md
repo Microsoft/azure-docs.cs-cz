@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 2. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem runtime v2.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055290"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321845"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
 
@@ -162,12 +162,12 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 | isEnabled | true | Povolí nebo zakáže vzorkování. | 
 | maxTelemetryItemsPerSecond | 20 | Cílový počet položek telemetrie protokolovaných za sekundu na každém hostiteli serveru. Pokud vaše aplikace běží na mnoha hostitelích, snižte tuto hodnotu tak, aby zůstala v rámci celkové cílové míry provozu. | 
 | evaluationInterval | 01:00:00 | Interval, ve kterém je aktuální frekvence telemetrie znovu vyhodnocena. Hodnocení se provádí jako klouzavý průměr. Pokud je vaše telemetrie příčinou náhlého nárůstu, možná budete chtít tento interval zkrátit. |
-| initialSamplingPercentage| 1.0 | Počáteční procentuální hodnota vzorkování použitá na začátku procesu vzorkování, která dynamicky mění procento. Při ladění nezmenšujte hodnotu. |
+| initialSamplingPercentage| 100,0 | Počáteční procentuální hodnota vzorkování použitá na začátku procesu vzorkování, která dynamicky mění procento. Při ladění nezmenšujte hodnotu. |
 | samplingPercentageIncreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může znovu vyvolat procento vzorkování a zachytit další data. |
 | samplingPercentageDecreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může snížit procento vzorkování znovu a zachytit tak méně dat. |
-| minSamplingPercentage | 0.1 | Když se procento vzorkování liší, tato vlastnost určuje minimální povolený procentuální podíl vzorkování. |
-| maxSamplingPercentage | 0.1 | Když se procento vzorkování liší, tato vlastnost určuje maximální povolené procento vzorkování. |
-| movingAverageRatio | 1.0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
+| minSamplingPercentage | 0,1 | Když se procento vzorkování liší, tato vlastnost určuje minimální povolený procentuální podíl vzorkování. |
+| maxSamplingPercentage | 100,0 | Když se procento vzorkování liší, tato vlastnost určuje maximální povolené procento vzorkování. |
+| movingAverageRatio | 1,0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
 | excludedTypes | null | Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
 | includedTypes | null | Seznam typů, které chcete vzorkovat, oddělený středníky; prázdný seznam zahrnuje všechny typy. Typ uvedený v seznamu přepsat typy, které jsou `excludedTypes` zde uvedeny. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Instance zadaných typů jsou vzorkované; typy, které nejsou zadány nebo implicitně jsou přenášeny bez vzorkování. |
 
@@ -186,7 +186,7 @@ Další informace o snímcích najdete v tématu [ladění snímků při výjimk
 |Vlastnost | Výchozí | Popis |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Koncový bod, který se používá pro připojení ke službě Application Insights Snapshot Debugger. Pokud je null, použije se výchozí koncový bod. |
-| captureSnapshotMemoryWeight | 0.5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0,5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | Omezení počtu neúspěšných žádostí o snímky, než je procesor telemetrie zakázán.|
 | handleUntrackedExceptions | true | Povolí nebo zakáže sledování výjimek, které nejsou sledovány Application Insights telemetrie. |
 | isEnabled | true | Povolí nebo zakáže shromažďování snímků. | 
@@ -246,7 +246,7 @@ Označuje dobu trvání časového limitu pro všechny funkce. Postupuje podle f
 
 | Typ plánu | Výchozí (min.) | Maximum (min) |
 | -- | -- | -- |
-| Využití | 5 | 10 |
+| Consumption | 5 | 10 |
 | Premium<sup>1</sup> | 30 | -1 (nevázané)<sup>2</sup> |
 | Vyhrazeno (App Service) | 30 | -1 (nevázané)<sup>2</sup> |
 

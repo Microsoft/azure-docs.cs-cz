@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 8c5c4a6e5d8b2997d80c7263ba17a705d3846ed8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 4e970f242d1c51218865fe459b8012f97add3d02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299285"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
@@ -37,19 +37,19 @@ AKS používá několik spravovaných identit pro předdefinované služby a dop
 
 | Identita                       | Name    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
 |----------------------------|-----------|----------|
-| Řídicí rovina | neviditelné | Používá se v AKS pro spravované síťové prostředky, včetně nástrojů pro vyrovnávání zatížení vstupu a AKS spravované veřejné IP adresy. | Role přispěvatele pro skupinu prostředků uzlu | Preview
-| Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | Role čtecího modulu pro skupinu prostředků uzlu | Aktuálně se nepodporuje.
-| Doplněk | AzureNPM | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | azurepolicy (gatekeeper) | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | azurepolicy | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | Calico | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | Řídicí panel | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | Ne
-| Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | Ne
-| Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | Ne
-| Doplněk | Virtuální uzel (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | Ne
-
+| Řídicí rovina | neviditelné | Používá se v AKS pro spravované síťové prostředky, včetně nástrojů pro vyrovnávání zatížení vstupu a AKS spravované veřejné IP adresy. | Role přispěvatele pro skupinu prostředků uzlu | Náhled
+| Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | NEDEF (pro Kubernetes v 1.15 +) | Aktuálně se nepodporuje.
+| Doplněk | AzureNPM | Není nutná žádná identita. | Není k dispozici | No
+| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | Není k dispozici | No
+| Doplněk | azurepolicy (gatekeeper) | Není nutná žádná identita. | Není k dispozici | No
+| Doplněk | azurepolicy | Není nutná žádná identita. | Není k dispozici | No
+| Doplněk | Calico | Není nutná žádná identita. | Není k dispozici | No
+| Doplněk | Řídicí panel | Není nutná žádná identita. | Není k dispozici | No
+| Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | No
+| Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | No
+| Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | No
+| Doplněk | Virtuální uzel (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | No
+| Projekt OSS | AAD-pod-identity | Umožňuje aplikacím zabezpečeně přistupovat k prostředkům cloudu pomocí Azure Active Directory (AAD). | Není k dispozici | Kroky pro udělení oprávnění v https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Vytvoření clusteru AKS se spravovanými identitami
 
@@ -132,13 +132,13 @@ az extension list
 az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
 ```
 
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
 ```
 
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -204,9 +204,9 @@ az aks create \
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Pomocí [šablon Azure Resource Manager (ARM)][aks-arm-template] vytvoříte clustery s povolenou správou identit.
+* Pomocí [šablon Azure Resource Manager (ARM) ][aks-arm-template] vytvoříte clustery s povolenou správou identit.
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create
-[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list
+[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create&preserve-view=true
+[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list&preserve-view=true

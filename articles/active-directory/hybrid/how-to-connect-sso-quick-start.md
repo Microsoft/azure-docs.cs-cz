@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295018"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
@@ -125,7 +125,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
 3. Přejděte do části zásady **Konfigurace uživatele**  >  **Policy**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**  >  Stránka zabezpečení**ovládacích panelů Internetu**  >  **Security Page**. Pak vyberte **seznam přiřazení lokality k zóně**.
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso6.png)
+    ![Snímek obrazovky se zvolenou stránkou zabezpečení se seznamem pro přiřazení na webu k zóně](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Povolte tuto zásadu a v dialogovém okně zadejte následující hodnoty:
    - **Název hodnoty**: adresa URL služby Azure AD, na které se předávají lístky protokolu Kerberos.
    - **Hodnota** (data): **1** označuje zónu intranetu.
@@ -142,15 +142,15 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 5. Vyberte **OK** a potom znovu vyberte **OK**.
 
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![Snímek obrazovky zobrazující okno zobrazit obsah s vybraným přiřazením zóny](./media/how-to-connect-sso-quick-start/sso7.png)
 
 6. Přejděte do části zásady **Konfigurace uživatele**  >  **Policy**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer Internet Explorer**  >  Stránka zabezpečení**ovládací panel**  >  **stránky**  >  **intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
 
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso11.png)
+    ![Snímek obrazovky zobrazující stránku intranetová zóna s vybraným příkazem pro povolení aktualizací stavového řádku prostřednictvím skriptu.](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. Povolte nastavení zásad a pak vyberte **OK**.
 
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![Snímek obrazovky zobrazující, že okno Povolit aktualizace stavového řádku prostřednictvím skriptu s povoleným nastavením zásad](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>Možnost "Předvolby zásad skupiny" – podrobný postup
 
@@ -158,7 +158,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
 3. Přejděte do okna Předvolby **Konfigurace uživatele**  >  **Preferences**  >  **registr nastavení systému Windows**  >  **Registry**  >  **Nová**  >  **položka registru**.
 
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso15.png)
+    ![Snímek obrazovky s vybraným registrem a položkou registru](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Do příslušných polí zadejte následující hodnoty a klikněte na **OK**.
    - **Cesta ke klíči**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
@@ -166,7 +166,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
    - **Typ hodnoty**: ***REG_DWORD***
    - **Data hodnoty**: ***00000001***
  
-     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Snímek obrazovky se zobrazeným oknem "nové vlastnosti registru".](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso17.png)
 

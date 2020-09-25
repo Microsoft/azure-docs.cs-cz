@@ -1,17 +1,17 @@
 ---
 title: Použití Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB
 description: Naučte se používat Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB.
-author: plzm
-ms.author: paelaz
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431974"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320893"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Použití Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB
 
@@ -19,7 +19,10 @@ ms.locfileid: "84431974"
 
 Azure Policy poskytuje předdefinované definice zásad. Můžete vytvořit vlastní definice zásad pro scénáře, které nejsou řešeny integrovanými definicemi zásad. Další podrobnosti najdete v [dokumentaci k Azure Policy](../governance/policy/overview.md) .
 
-## <a name="assign-a-built-in-policy-definition"></a>Přiřazení předdefinované definice zásady
+> [!IMPORTANT]
+> Azure Policy se vynutilo na úrovni poskytovatele prostředků pro služby Azure. Sady Cosmos DB SDK můžou provádět většinu operací správy v databázi, kontejneru a propustnosti prostředků, které obcházejí poskytovatele prostředků Cosmos DB, takže se ignorují všechny zásady vytvořené pomocí Azure Policy. Aby bylo zajištěno vynucování zásad, přečtěte si téma [prevence změn ze sady Azure Cosmos DB SDK](role-based-access-control.md#prevent-sdk-changes) .
+
+## <a name="assign-a-built-in-policy-definition"></a>Přiřazení definice předdefinované zásady
 
 Definice zásad popisují podmínky dodržování předpisů prostředků a efekt, který se má provést, pokud je splněna podmínka. _Přiřazení_ zásad se vytvářejí z _definic_zásad. Můžete použít předdefinované nebo vlastní definice zásad pro prostředky Azure Cosmos DB. Přiřazení zásad mají rozsah pro skupinu pro správu Azure, předplatné Azure nebo skupinu prostředků a používají se pro prostředky v rámci vybraného oboru. Volitelně můžete z oboru vyloučit konkrétní prostředky.
 

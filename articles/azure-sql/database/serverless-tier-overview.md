@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 9/8/2020
-ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.reviewer: sstein
+ms.date: 9/17/2020
+ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321403"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Na rozdíl od zřízených výpočetních databází je paměť z mezipaměti SQ
 
 V neserverových a zřízených výpočetních databázích se můžou položky mezipaměti vyřadit, pokud se použije veškerá dostupná paměť.
 
-Všimněte si, že pokud je využití procesoru nízké, může využití aktivní mezipaměti zůstat vysoké v závislosti na způsobu použití a zabránit recyklaci paměti.  V důsledku pravidelného zpracování na pozadí reaguje na předchozí činnost uživatele může také docházet k dalšímu zpoždění po zastavení aktivity uživatele před tím, než dojde k opakovanému získávání paměti.  Například operace delete generují opuštěné záznamy, které jsou označené k odstranění, ale nejsou fyzicky odstraněny, dokud nebude spuštěn proces čištění Ghost, který může zahrnovat čtení datových stránek do mezipaměti.
+Všimněte si, že pokud je využití procesoru nízké, může využití aktivní mezipaměti zůstat vysoké v závislosti na způsobu použití a zabránit recyklaci paměti.  V důsledku pravidelného zpracování na pozadí reaguje na předchozí činnost uživatele může také docházet k dalšímu zpoždění po zastavení aktivity uživatele před tím, než dojde k opakovanému získávání paměti.  Například úlohy odstranit operace a vyčištění QDS generují opuštěné záznamy, které jsou označené k odstranění, ale nejsou fyzicky smazány, dokud se nespustí proces čištění Ghost, který může zahrnovat čtení datových stránek do mezipaměti.
 
 #### <a name="cache-hydration"></a>Vysazování mezipaměti
 

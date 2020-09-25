@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e8a2fd709b40c68b90e5ed139f18997e4cb29e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a197f8a11186d799f320c03a5bbe980b1f38e126
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272064"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL (RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -241,7 +241,7 @@ Postup upgradu režimu agenta na úplný:
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejít na prostředek [virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Vyberte svůj virtuální počítač SQL Server a vyberte **Přehled**. 
 1. V případě SQL Server virtuálních počítačů pomocí agenta nebo režimu zjednodušeného IaaS vyberte možnost **jediný typ licence a aktualizace edice jsou k dispozici ve zprávě rozšíření SQL IaaS** .
@@ -282,7 +282,7 @@ Můžete ověřit, jestli váš virtuální počítač s SQL Server už je zareg
 
 ### <a name="azure-portal"></a>portál Azure 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Přejít na [virtuální počítače s SQL Server](manage-sql-vm-portal.md).
 1. Ze seznamu vyberte svůj virtuální počítač SQL Server. Pokud zde SQL Server virtuální počítač, pravděpodobně není zaregistrovaný u poskytovatele prostředků virtuálního počítače SQL. 
 1. Zobrazit hodnotu v části **stav** Pokud **Status** je stav **úspěšný**, byl virtuální počítač SQL Server zaregistrován u poskytovatele prostředků virtuálního počítače SQL úspěšně. 
@@ -422,7 +422,7 @@ No. Upgrade režimu spravovatelnosti na úplný nebo lehký není pro režim bez
 
 **Můžu upgradovat rozšíření SQL Server IaaS z režimu prostého režimu na režim Full?**
 
-Yes. Upgrade režimu spravovatelnosti z jednoduchého na plný se podporuje přes PowerShell nebo Azure Portal. Vyžaduje restart SQL Server služby.
+Ano. Upgrade režimu spravovatelnosti z jednoduchého na plný se podporuje přes PowerShell nebo Azure Portal. Vyžaduje restart SQL Server služby.
 
 **Můžu SQL Server rozšíření IaaS z úplného režimu snížit na režim No-agent nebo pro zjednodušenou správu?**
 
@@ -440,15 +440,15 @@ No. Aby se virtuální počítač mohl úspěšně zaregistrovat u poskytovatele
 
 **Je možné zaregistrovat virtuální počítač s poskytovatelem prostředků SQL VM, pokud existuje více instancí SQL Server?**
 
-Yes. Poskytovatel prostředků virtuálního počítače SQL bude registrovat jenom jednu instanci SQL Server (databázový stroj). Poskytovatel prostředků virtuálního počítače SQL zaregistruje výchozí instanci SQL Server v případě více instancí. Pokud neexistuje žádná výchozí instance, je podporována pouze registrace v režimu prostého režimu. Chcete-li provést upgrade z prostého režimu na režim správy, musí být použita výchozí instance SQL Server, nebo by měl mít virtuální počítač pouze jednu pojmenovanou instanci SQL Server.
+Ano. Poskytovatel prostředků virtuálního počítače SQL bude registrovat jenom jednu instanci SQL Server (databázový stroj). Poskytovatel prostředků virtuálního počítače SQL zaregistruje výchozí instanci SQL Server v případě více instancí. Pokud neexistuje žádná výchozí instance, je podporována pouze registrace v režimu prostého režimu. Chcete-li provést upgrade z prostého režimu na režim správy, musí být použita výchozí instance SQL Server, nebo by měl mít virtuální počítač pouze jednu pojmenovanou instanci SQL Server.
 
 **Můžu u SQL Server instance clusteru s podporou převzetí služeb při selhání zaregistrovat poskytovatele prostředků virtuálního počítače SQL?**
 
-Yes. SQL Server instancí clusteru s podporou převzetí služeb při selhání na virtuálním počítači Azure je možné zaregistrovat u poskytovatele prostředků virtuálního počítače SQL v jednoduchém režimu. SQL Server instancí clusteru s podporou převzetí služeb při selhání se ale nedá upgradovat na režim úplné správy.
+Ano. SQL Server instancí clusteru s podporou převzetí služeb při selhání na virtuálním počítači Azure je možné zaregistrovat u poskytovatele prostředků virtuálního počítače SQL v jednoduchém režimu. SQL Server instancí clusteru s podporou převzetí služeb při selhání se ale nedá upgradovat na režim úplné správy.
 
 **Můžu zaregistrovat virtuální počítač k poskytovateli prostředků SQL VM, pokud je nakonfigurovaná Skupina dostupnosti Always On?**
 
-Yes. Pokud se účastníte konfigurace skupiny dostupnosti AlwaysOn, neexistují žádná omezení k registraci instance SQL Server na virtuálním počítači Azure s poskytovatelem prostředků SQL VM.
+Ano. Pokud se účastníte konfigurace skupiny dostupnosti AlwaysOn, neexistují žádná omezení k registraci instance SQL Server na virtuálním počítači Azure s poskytovatelem prostředků SQL VM.
 
 **Jaké jsou náklady na registraci u poskytovatele prostředků SQL VM nebo při upgradu na režim úplné správy?**
 Žádné K registraci u poskytovatele prostředků SQL VM nebo pomocí žádného ze tří režimů správy se neúčtují žádné poplatky. Správa virtuálního počítače s SQL Server pomocí poskytovatele prostředků je zcela zadarmo. 

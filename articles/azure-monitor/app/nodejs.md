@@ -3,13 +3,13 @@ title: Monitorování služeb Node.js pomocí Azure Application Insights | Dokum
 description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323290"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
@@ -32,9 +32,9 @@ Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: ../../active-directory/fundamentals/add-users-azure-active-directory.md
 
-### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Nastavení prostředku Application Insights
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> Nastavení prostředku Application Insights
 
-1. Přihlaste se na [Azure Portal][portal].
+1. Přihlaste se k webu [Azure Portal][portal].
 2. [Vytvoření prostředku Application Insights](create-new-resource.md)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a>Nastavení sady Node.js SDK
@@ -59,7 +59,7 @@ Vložte do své aplikace sadu SDK, aby mohla shromažďovat data.
    ```javascript
    let appInsights = require('applicationinsights');
    ```
-4.  Můžete také zadat ikey prostřednictvím proměnné prostředí `APPINSIGHTS_INSTRUMENTATIONKEY` místo ručního předání do `setup()` nebo `new appInsights.TelemetryClient()` . Tento postup umožňuje oddělit instrumentační klíče od potvrzeného zdrojového kódu a pro různá prostředí můžete určit různé instrumentační klíče. Pro ruční konfiguraci volání `appInsights.setup('[your ikey]');` .
+4.  Můžete také zadat ikey prostřednictvím proměnné prostředí `APPINSIGHTS_INSTRUMENTATIONKEY` místo ručního předání do  `setup()` nebo `new appInsights.TelemetryClient()` . Tento postup umožňuje oddělit instrumentační klíče od potvrzeného zdrojového kódu a pro různá prostředí můžete určit různé instrumentační klíče. Pro ruční konfiguraci volání `appInsights.setup('[your ikey]');` .
 
     Další možnosti konfigurace najdete v následujících částech.
 
@@ -67,7 +67,7 @@ Vložte do své aplikace sadu SDK, aby mohla shromažďovat data.
 
 5. Zahajte automatické shromažďování a posílání dat voláním `appInsights.start();` .
 
-### <a name="monitor-your-app"></a><a name="monitor"></a>Monitorování aplikace
+### <a name="monitor-your-app"></a><a name="monitor"></a> Monitorování aplikace
 
 Sada SDK automaticky shromažďuje telemetrii o modulu runtime Node.js a některých běžných modulech třetích stran. Použijte svou aplikaci k vygenerování nějakých dat.
 
@@ -110,7 +110,7 @@ Existují zásadní změny mezi verzemi před verzí 0,22 a novější. Tyto zm�
 Obecně platí, že můžete migrovat pomocí následujících možností:
 
 - Nahraďte odkazy na `appInsights.client` s `appInsights.defaultClient` .
-- Nahradit odkazy na `appInsights.getClient()` s`new appInsights.TelemetryClient()`
+- Nahradit odkazy na `appInsights.getClient()` s `new appInsights.TelemetryClient()`
 - Nahradí všechny argumenty na Client. Track * metody s jedním objektem, který obsahuje pojmenované vlastnosti jako argumenty. Podívejte se na integrované pomocné informace o typu integrovaného vývojového prostředí ( [TelemetryTypes](https://github.com/Microsoft/ApplicationInsights-node.js/tree/develop/Declarations/Contracts/TelemetryTypes) ) pro objekt s výjimkou objektu pro každý typ telemetrie.
 
 Pokud máte přístup ke konfiguračním funkcím sady SDK bez jejich zřetězení do `appInsights.setup()` , můžete tyto funkce nyní najít na `appInsights.Configurations` (například `appInsights.Configuration.setAutoCollectDependencies(true)` ). Projděte si změny výchozí konfigurace v následující části.
@@ -374,7 +374,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Můžete vytvořit několik prostředků Application Insights a do každého odeslat různá data pomocí příslušných klíčů instrumentace ("ikey").
 
- Například:
+ Příklad:
 
 ```javascript
 let appInsights = require("applicationinsights");

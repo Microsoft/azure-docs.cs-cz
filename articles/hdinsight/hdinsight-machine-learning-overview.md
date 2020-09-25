@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 6c7f50e4ba3803b5cb929b75f5ad1127f7f063d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3c050b414e322f08fd45a569a22cea2db591b99
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75931679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302685"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning v HDInsight
 
@@ -41,7 +41,7 @@ Azure Machine Learning poskytuje nástroje pro modelování prediktivních anal�
 
 ![Přehled Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-Vytvářejte funkce pro data v clusteru HDInsight Hadoop pomocí [dotazů na podregistry](../machine-learning/team-data-science-process/create-features-hive.md). Konstrukce *funkcí* se snaží zvýšit prediktivní výkon výukových algoritmů vytvořením funkcí z nezpracovaných dat, která usnadňují proces učení. Pomocí [modulu import dat](../machine-learning/studio/import-data.md)můžete spouštět dotazy HiveQL z Azure Machine Learning Studio (Classic) a přistupovat k datům zpracovávaným v podregistru a uložit je do úložiště objektů BLOB.
+Vytvářejte funkce pro data v clusteru HDInsight Hadoop pomocí [dotazů na podregistry](../machine-learning/team-data-science-process/create-features-hive.md). Konstrukce *funkcí* se snaží zvýšit prediktivní výkon výukových algoritmů vytvořením funkcí z nezpracovaných dat, která usnadňují proces učení. Pomocí [modulu import dat](../machine-learning/classic/import-data.md)můžete spouštět dotazy HiveQL z Azure Machine Learning Studio (Classic) a přistupovat k datům zpracovávaným v podregistru a uložit je do úložiště objektů BLOB.
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 

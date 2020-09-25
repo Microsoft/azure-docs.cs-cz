@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899286"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320808"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes Access Control na základě rolí na zařízení GPU pro Azure Stack Edge pro
 
@@ -91,25 +91,7 @@ Tady je diagram, který znázorňuje implementaci RBAC na zařízeních Azure St
 
 V tomto diagramu mají Alice, Bob a Karel přístup pouze k přiřazeným oborům názvů uživatelů, což v tomto případě jsou `ns1` , `ns2` a `ns3` . V těchto oborech názvů mají přístup správce. Správce clusteru na druhé straně má přístup správce k systémovým oborům názvů a prostředkům v rámci clusteru.
 
-Pomocí příkazů můžete `kubectl` vytvářet obory názvů a uživatele, přiřazovat uživatele k oborům názvů nebo stahovat `kubeconfig` soubory. Tady je pracovní postup vysoké úrovně:
-
-1. Vytvořte obor názvů a uživatele.  
-
-    `New-HcsKubernetesNamespace -Namespace`  
-
-2. Vytvořte uživatele.  
-
-    `New-HcsKubernetesUser -UserName`  
-
-3. Přidružte obor názvů k uživateli, který jste vytvořili.  
-
-    `Grant-HcsKubernetesNamespaceAccess -Namespace -UserName`  
-
-4. Uložte konfiguraci uživatele do `C:\Users\<username>\.kube` .  
-
-5. Nainstalujte `kubectl` a začněte nasazovat aplikace do `kubectl` . 
-
-Podrobné pokyny najdete [v tématu přístup ke clusteru Kubernetes prostřednictvím kuebctl na Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+Jako uživatel můžete vytvářet obory názvů a uživatele, přiřazovat uživatele k oborům názvů nebo stahovat `kubeconfig` soubory. Podrobné pokyny najdete [v tématu přístup ke clusteru Kubernetes prostřednictvím kuebctl na Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 
 Při práci s obory názvů a uživateli na zařízeních Azure Stack Edge pro platí následující upozornění:

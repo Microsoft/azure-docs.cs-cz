@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322627"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
 
@@ -22,7 +22,7 @@ Metriky jsou ve výchozím nastavení povolené. Z [Azure Portal](https://portal
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>Jak zobrazit metriky digitálních vláken Azure
 
-1. Vytvořte instanci digitálních vláken Azure. Pokyny, jak nastavit instanci digitálních vláken Azure v tématu, najdete v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md).
+1. Vytvořte instanci digitálních vláken Azure. Pokyny, jak nastavit instanci digitálních vláken Azure v tématu, najdete v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md).
 
 2. Najděte instanci digitálních vláken Azure v [Azure Portal](https://portal.azure.com) (můžete pro ni otevřít stránku zadáním jejího názvu do panelu hledání na portálu). 
 
@@ -69,7 +69,7 @@ Metriky, které je potřeba provést s fakturací:
 | Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Fakturační operace rozhraní API (Preview) | Počet | Celkem | Metrika fakturace pro počet všech požadavků rozhraní API provedených vůči službě Azure Digital requests. | ID měřiče |
-| BillingMessagesProcessed | Zpracované účtovací zprávy (Preview) | Počet | Celkem | Metrika fakturace počtu zpráv odeslaných z digitálních vláken Azure do externích koncových bodů. | ID měřiče |
+| BillingMessagesProcessed | Zpracované účtovací zprávy (Preview) | Počet | Celkem | Metrika fakturace počtu zpráv odeslaných z digitálních vláken Azure do externích koncových bodů.<br><br>Aby bylo možné považovat za jednu zprávu pro účely účtování, datová část nesmí být větší než 1 KB. Datové části větší než tato se budou počítat jako další zprávy v přírůstcích po 1 KB (takže zpráva mezi 1 a 2 KB se bude počítat jako 2 zprávy, mezi 2 a 3 KB budou 3 zprávy atd.).<br>Toto omezení platí také pro odpovědi, takže volání, které vrátí 1,5 KB v těle odpovědi, se například bude účtovat jako 2 operace. | ID měřiče |
 | BillingQueryUnits | Fakturační jednotky dotazů (Preview) | Počet | Celkem | Počet jednotek dotazu, interně vypočtené míry využití prostředků služby, spotřebované pro provádění dotazů. K dispozici je také pomocné rozhraní API pro měření jednotek dotazu: [Třída QueryChargeHelper](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | ID měřiče |
 
 #### <a name="ingress-metrics"></a>Metriky příchozího přenosu dat

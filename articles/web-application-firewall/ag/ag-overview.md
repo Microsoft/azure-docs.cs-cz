@@ -5,15 +5,15 @@ description: Tento článek poskytuje přehled firewallu webových aplikací (WA
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226994"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267019"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Co je firewall webových aplikací Azure v Azure Application Gateway?
 
@@ -75,9 +75,21 @@ Tato část popisuje základní výhody, které WAF Application Gateway poskytuj
 - Přenos geografického filtru, který umožňuje nebo blokuje určité země nebo oblasti, aby získal přístup k vašim aplikacím. (Preview)
 - Chraňte své aplikace z roboty pomocí RuleSet zmírnění ochrany bot. (Preview)
 
-## <a name="waf-policy"></a>Zásady WAF
+## <a name="waf-policy-and-rules"></a>Zásady a pravidla WAF
 
-Pokud chcete povolit bránu firewall webových aplikací v Application Gateway, musíte vytvořit zásadu WAF. Tato zásada je tam, kde existují všechna spravovaná pravidla, vlastní pravidla, vyloučení a další přizpůsobení, jako je například limit nahrávání souborů. 
+Pokud chcete povolit bránu firewall webových aplikací na Application Gateway, musíte vytvořit zásadu WAF. Tato zásada je tam, kde existují všechna spravovaná pravidla, vlastní pravidla, vyloučení a další přizpůsobení, jako je například limit nahrávání souborů.
+
+Můžete nakonfigurovat zásady WAF a přidružit tuto zásadu k jedné nebo více aplikačním branám, které se mají chránit. Zásady WAF se skládají ze dvou typů pravidel zabezpečení:
+
+- Vlastní pravidla, která vytvoříte
+
+- Spravované sady pravidel, které jsou kolekcí předem nakonfigurovaných sad pravidel spravovaných Azure
+
+Pokud jsou přítomny obě, před zpracováním pravidel v sadě spravovaných pravidel se zpracují vlastní pravidla. Pravidlo se skládá z podmínky shody, priority a akce. Podporované typy akcí: ALLOW, BLOCK a LOG. Můžete vytvořit plně přizpůsobené zásady, které vyhovují konkrétním požadavkům na ochranu aplikací, a to kombinováním spravovaných a vlastních pravidel.
+
+Pravidla v rámci zásad jsou zpracovávána v pořadí podle priority. Priorita je jedinečné celé číslo, které definuje pořadí pravidel pro zpracování. Menší celočíselná hodnota znamená vyšší prioritu a tato pravidla se vyhodnocují před pravidly s vyšší celočíselnou hodnotou. Po porovnání pravidla se na žádost aplikuje odpovídající akce, která byla definována v pravidle. Po zpracování této shody se pravidla s nižšími prioritami nezpracují dále.
+
+Webová aplikace, kterou poskytuje Application Gateway, může mít přidruženou zásadu WAF na globální úrovni, na úrovni jednotlivých lokalit nebo na úrovni jednotlivých identifikátorů URI.
 
 ### <a name="core-rule-sets"></a>Základní sady pravidel
 
@@ -125,7 +137,7 @@ V režimu bodování anomálií není přenos, který odpovídá libovolnému pr
 
 |Závažnost  |Hodnota  |
 |---------|---------|
-|Kritická     |5|
+|Kritické     |5|
 |Chyba        |4|
 |Upozornění      |3|
 |Šestiměsíční       |2|
@@ -160,7 +172,12 @@ S integrovaným sešitem událostí brány firewall Azure WAF můžete získat p
 
 ![Sešit událostí brány firewall Azure WAF](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>Protokolování
+
+#### <a name="azure-monitor-workbook-for-waf"></a>Azure Monitor sešitu pro WAF
+
+Tento sešit umožňuje vlastní vizualizaci událostí WAF souvisejících se zabezpečením napříč několika panely, které lze filtrovat. Funguje se všemi WAF typy, včetně Application Gateway, frontových dveří a CDN a dá se filtrovat podle typu WAF nebo konkrétní instance WAF. Import přes šablonu nebo šablonu ARM. Pokud chcete nasadit tento sešit, přečtěte si článek [WAF Workbook](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook).
+
+#### <a name="logging"></a>protokolování
 
 Application Gateway WAF poskytuje podrobné hlášení o každé zjištěné hrozbě. Protokolování je integrované s protokoly Azure Diagnostics. Výstrahy se zaznamenávají ve formátu. JSON. Tyto protokoly je možné integrovat s [protokoly Azure monitor](../../azure-monitor/insights/azure-networking-analytics.md).
 

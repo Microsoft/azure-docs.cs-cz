@@ -1,6 +1,6 @@
 ---
 title: Vytvoření datové továrny Azure pomocí sady .NET SDK
-description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
+description: Vytvoření datové továrny Azure a kanálu pomocí sady .NET SDK ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322848"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí sady .NET SDK
 
@@ -49,7 +49,7 @@ V části *Postupy: použití portálu k vytvoření aplikace a instančního ob
 
 1. V části [vytvořit aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)vytvořte aplikaci, která představuje aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
 2. V poli [získat hodnoty pro přihlášení](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Získejte **ID aplikace** a **ID tenanta**a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
-3. V části [certifikáty a tajné](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)klíče Získejte **ověřovací klíč**a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
+3. V části [certifikáty a tajné](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)klíče Získejte **ověřovací klíč**a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
 4. V části [přiřadit aplikaci k roli](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)přiřaďte aplikaci roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla vytvářet datové továrny v rámci předplatného.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu

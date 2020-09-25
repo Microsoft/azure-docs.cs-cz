@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322185"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -23,11 +23,7 @@ V některých případech se během [propojování účtu úložiště](../how-t
 
 ## <a name="client-cant-connect-to-server"></a>Klient se nemůže připojit k serveru.
 
-Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblokují následující porty:
-
-* **50051 (TCP)** – vyžaduje se pro počáteční připojení (http handshake)
-* **8266 (TCP + UDP)** – vyžadováno pro přenos dat
-* **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** – požadováno pro [ArrInspector](tools/arr-inspector.md)
+Zajistěte, aby brány firewall (na zařízení, ve směrovačích atd.) neblokovaly porty uvedené v [požadavcích na systém](../overview/system-requirements.md#network-ports).
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Chyba: `Disconnected: VideoFormatNotAvailable` ' '
 
@@ -152,7 +148,7 @@ Existují dva problémy s tímto ohraničujícím polem, které vedou k nevidite
 
 Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a provede kompozici snímků s videem a provede reprojekci. Chcete-li ověřit, zda tyto zavěšení existují, otevřete nabídku *:::no-loc text="Window > Analysis > Frame debugger":::* . Povolte ji a ujistěte se, že v kanálu existují dvě položky `HolographicRemotingCallbackPass` :
 
-![Ladicí program rámce Unity](./media/troubleshoot-unity-pipeline.png)
+![Kanál vykreslování Unity](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Po načtení modelu se vykresluje šachovnicový vzor.
 
@@ -184,6 +180,12 @@ Při pokusu o kompilaci ukázek Unity (rychlý Start, ShowCaseApp,..) pro HoloLe
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Arm64 sestavení pro projekty Unity selžou, protože chybí AudioPluginMsHRTF.dll
 
 Rozhraní `AudioPluginMsHRTF.dll` pro Arm64 bylo přidáno do balíčku *Windows Mixed reality* *(com. Unity. XR. windowsmr. metro)* ve verzi 3.0.1. Ujistěte se, že máte nainstalovanou verzi 3.0.1 nebo novější prostřednictvím Správce balíčků Unity. V řádku nabídek Unity přejděte do *okna > správce balíčků* a vyhledejte balíček *Windows Mixed reality* .
+
+## <a name="native-c-based-application-does-not-compile"></a>Nativní aplikace založená na jazyce C++ není zkompilována.
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>Chyba knihovny nenalezena pro aplikaci UWP nebo knihovnu DLL
+
+Uvnitř balíčku NuGet jazyka C++ je soubor souboru `microsoft.azure.remoterendering.Cpp.targets` , který definuje, který binární charakter má být použit. Chcete-li identifikovat `UWP` , podmínky v souboru pro kontrolu `ApplicationType == 'Windows Store'` . Proto je nutné zajistit, aby byl tento typ nastaven v projektu. To by mělo být případ při vytváření aplikace UWP nebo knihovny DLL prostřednictvím Průvodce projektu sady Visual Studio.
 
 ## <a name="unstable-holograms"></a>Nestabilní hologramy
 

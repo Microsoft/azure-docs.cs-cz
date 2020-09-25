@@ -4,12 +4,12 @@ description: Obnovte virtuální počítač Azure z bodu obnovení pomocí Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 90179ee78569f1c7b0a7bdf4b4da031c26f01783
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271864"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -163,9 +163,6 @@ Funkce obnovení koncového uživatele v sekundární oblasti bude podobná prim
 ![Vybrat bod obnovení](./media/backup-azure-arm-restore-vms/sec-rp.png)
 
 ![Obnovit konfiguraci](./media/backup-azure-arm-restore-vms/rest-config.png)
-
->[!NOTE]
->Virtuální síť v sekundární oblasti musí být přiřazena jedinečně a nelze ji použít pro žádné jiné virtuální počítače v dané skupině prostředků.
 
 ![Oznámení o průběhu obnovení aktivační události](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 

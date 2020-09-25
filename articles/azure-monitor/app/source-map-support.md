@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: de475cbd7cbb0d8dbcda026109b0387da14bedff
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386788"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335126"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Podpora zdrojového mapování pro aplikace JavaScriptu
 
@@ -78,7 +78,7 @@ Každý uživatel na portálu, který tuto funkci používá, musí být aspoň 
 
 1. Ověřte, jestli se odpovídající zdrojová mapa nahrála do správného kontejneru objektů BLOB.
 2. Ověřte, zda je zdrojový soubor mapování pojmenován po souboru JavaScriptu, na který je namapován, s příponou `.map` .
-    - Vyhledá třeba `/static/js/main.4e2ca5fa.chunk.js` objekt BLOB s názvem`main.4e2ca5fa.chunk.js.map`
+    - Vyhledá třeba `/static/js/main.4e2ca5fa.chunk.js` objekt BLOB s názvem `main.4e2ca5fa.chunk.js.map`
 3. Zkontrolujte konzolu prohlížeče a zjistěte, jestli se nějaké chyby protokolují. Zahrňte do libovolného lístku podpory.
 
 ## <a name="next-steps"></a>Další kroky

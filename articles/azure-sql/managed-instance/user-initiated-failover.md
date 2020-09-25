@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: douglas, carlrab, sstein
+ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e805de26b7d2e5ec8d29801a05291acfe086bb1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323154"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
 
@@ -94,7 +94,7 @@ Použijte následující příkaz rozhraní příkazového řádku pro převzet�
 az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableSecondary
 ```
 
-### <a name="using-rest-api"></a>Použití rozhraní REST API
+### <a name="using-rest-api"></a>S využitím rozhraní REST API
 
 Pokročilým uživatelům, kteří by museli potřebovat automatizovat převzetí služeb při selhání svých spravovaných instancí SQL pro účely implementace kanálu nepřetržitého testování nebo automatizovaného zmírnění výkonu, je možné tuto funkci provést prostřednictvím volání rozhraní API při inicializaci převzetí služeb při selhání. Podrobnosti najdete v tématu [spravované instance – převzetí služeb při selhání REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) .
 

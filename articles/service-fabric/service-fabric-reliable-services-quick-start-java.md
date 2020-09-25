@@ -1,17 +1,17 @@
 ---
 title: Vytvoření první spolehlivé služby v jazyce Java
-description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric se stavovou a stavovou službou.
+description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric se stavovou a stavovou službou v jazyce Java.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: 30797e68081e346ee0f31f77da15f820776337a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f74265c7b774e4b471c8621e99377a009f939ee1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250092"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Začínáme s Reliable Services v jazyce Java
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ Platforma volá tuto metodu, když je umístěna instance služby a je připrave
 
 Tato orchestrace je spravovaná nástrojem Service Fabric, aby byla vaše služba vysoce dostupná a správně vyvážená.
 
-`runAsync()`nemělo by se blokovat synchronně. Vaše implementace runAsync by měla vrátit CompletableFuture, aby bylo možné pokračovat v běhu. Pokud vaše úlohy potřebují implementovat dlouhodobou spuštěnou úlohu, která by se měla provést v rámci CompletableFuture.
+`runAsync()` nemělo by se blokovat synchronně. Vaše implementace runAsync by měla vrátit CompletableFuture, aby bylo možné pokračovat v běhu. Pokud vaše úlohy potřebují implementovat dlouhodobou spuštěnou úlohu, která by se měla provést v rámci CompletableFuture.
 
 #### <a name="cancellation"></a>Zrušení
 Zrušení úloh je úsilí v družstvu, které provádí poskytnutý token zrušení. Systém čeká na ukončení úlohy (po úspěšném dokončení, zrušení nebo chybě) před tím, než se přesune. Je důležité přijmout token zrušení, dokončit práci a skončit `runAsync()` co nejrychleji, když systém požaduje zrušení. Následující příklad ukazuje, jak zpracovat událost zrušení:
@@ -184,7 +184,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()` . Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
+`RunAsync()` funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()` . Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a správce spolehlivého stavu
 ```java

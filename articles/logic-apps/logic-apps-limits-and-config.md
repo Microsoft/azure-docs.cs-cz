@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/03/2020
-ms.openlocfilehash: d5db970d4ed3c3988c96a2c0c33775bcbfb00d92
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/16/2020
+ms.openlocfilehash: 41a43abc3ebae0dad6892bebd06cf995cce143f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322406"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -283,7 +283,7 @@ Tady jsou omezení velikosti zpráv, která se vztahují na protokoly B2B:
 
 | Name | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
-| AS2 | V2 – 100 MB<br>V1 – 50 MB | V2 – 200 MB <br>V1 – 50 MB | Platí pro dekódování a kódování. |
+| AS2 | V2 – 100 MB<br>V1 – 25 MB | V2 – 200 MB <br>V1 – 25 MB | Platí pro dekódování a kódování. |
 | X12 | 50 MB | 50 MB | Platí pro dekódování a kódování. |
 | EDIFACT | 50 MB | 50 MB | Platí pro dekódování a kódování. |
 ||||
@@ -437,7 +437,7 @@ V této části jsou uvedeny odchozí IP adresy pro službu Azure Logic Apps a s
 
 #### <a name="azure-government---outbound-ip-addresses"></a>Azure Government – odchozí IP adresy
 
-| Oblast | Logic Apps IP | IP adresa spravovaného konektoru |
+| Region | Logic Apps IP | IP adresa spravovaného konektoru |
 |--------|---------------|-----------------------|
 | US DoD – střed | 52.182.48.215, 52.182.92.143 | 52.127.58.160 - 52.127.58.175, 52.182.54.8, 52.182.48.136, 52.127.61.192 - 52.127.61.223 |
 | USA (Gov) – Arizona | 52.244.67.143, 52.244.65.66, 52.244.65.190 | 52.127.2.160 - 52.127.2.175, 52.244.69.0, 52.244.64.91, 52.127.5.224 - 52.127.5.255 |

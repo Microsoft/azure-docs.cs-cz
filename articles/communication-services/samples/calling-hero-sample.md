@@ -1,5 +1,5 @@
 ---
-title: Ukázka volání Hero skupiny
+title: Ukázka pro skupinové hovory
 titleSuffix: An Azure Communication Services sample overview
 description: Přehled volání Hero Sample pomocí komunikačních služeb Azure, který vývojářům umožní získat další informace o vnitřních pracovních způsobech ukázky.
 author: ddematheu
@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: caee5686695594604f49dcbade54342a9134abc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9bd203586d6a9da974604099d361d2908a39e1d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946891"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297979"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Začínáme se skupinou volajícím Hero Sample
 
@@ -30,7 +30,7 @@ Skupina komunikačních služeb Azure, která **volá Hero Sample** , ukazuje, j
 V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
 
 > [!IMPORTANT]
-> [Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples)
+> [Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
 
 ## <a name="overview"></a>Přehled
 
@@ -54,7 +54,7 @@ Součásti hlavní volající obrazovky:
 - **Záhlaví**: Zde jsou umístěny primární ovládací prvky volání pro přepínání nastavení a bočního panelu účastníka, zapnutí a vypnutí videa, sdílení obrazovky a opuštění volání.
 - **Boční panel**: tady jsou informace o účastnících se účastníků a nastavení při přepínání pomocí ovládacích prvků v záhlaví. Komponenta se může v pravém horním rohu vynechává pomocí ' X '. Na bočním panelu účastníci se zobrazí seznam účastníků a odkaz pro pozvání více uživatelů k chatu. Postranní panel nastavení umožňuje konfigurovat nastavení mikrofonu a kamery.
 
-Níže najdete další informace o požadavcích, krocích k nastavení ukázky a podrobných kurzech, které vám pomůžou seznámit se s různými komponentami.
+Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -72,23 +72,17 @@ Když chceme místně nasadit, musíme spustit obě aplikace. Když se serverov�
 
 Ukázku můžete otestovat místně tak, že otevřete několik relací prohlížeče s adresou URL volání, abyste mohli simulovat volání více uživatelů.
 
-### <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
+## <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
 
 1. Otevřete instanci PowerShellu, Windows Terminal, Command Prompt nebo ekvivalentní a přejděte do adresáře, do kterého chcete ukázku naklonovat.
-2. `git clone`
-3. Přejít do **složky Call/clientapp** a spustit `npm run setup`
-   1. Pokud se zobrazí chyba 1, podívejte se ve výstupu na adresu URL, na kterou budete potřebovat ověřit klienta. (Adresa URL bude vypadat takto: `app.vssps.visualstudio.com/oauth2/authorize?clientid=...` ) Jakmile navštívíte adresu URL v prohlížeči, zkopírujte příkaz z okna prohlížeče a spusťte ho.
-   2. `npm run setup-vsts-auth`Po dokončení předchozího kroku znovu spusťte příkaz.
-4. Získat `Connection String` z Azure Portal. Další informace o připojovacích řetězcích najdete v tématu [vytvoření prostředků komunikace Azure](../quickstarts/create-communication-resource.md) .
-5. Po získání připojovacího řetězce přidejte do souboru **Called/appsetting.js** , který se nachází ve složce služby .NET, připojovací řetězec. Zadejte připojovací řetězec do proměnné: `ResourceConnectionString` .
+2. `git clone https://github.com/Azure/Communication.git`
+3. Získat `Connection String` z Azure Portal. Další informace o připojovacích řetězcích najdete v tématu [vytvoření prostředků komunikace Azure](../quickstarts/create-communication-resource.md) .
+4. Po získání přidejte do `Connection String` souboru **Called/appsetting.jsv** souboru, který se nachází ve složce služby .NET, připojovací řetězec. Zadejte připojovací řetězec do proměnné: `ResourceConnectionString` .
 
 ### <a name="local-run"></a>Místní spuštění
 
-1. Přejít na volající složku
-2. Otevřete `Calling.csproj` řešení v aplikaci Visual Studio
-2. Spusťte `Calling` projekt *
-
-* Otevře se prohlížeč v umístění `localhost:5000` (kde uzel nasazuje klientskou aplikaci). Aplikace není v Internet Exploreru podporovaná.
+1. Přejít na volající složku a otevřít `Calling.csproj` řešení v aplikaci Visual Studio
+2. Spusťte `Calling` projekt. Prohlížeč se otevře v localhost: 5001
 
 #### <a name="troubleshooting"></a>Řešení potíží
 
@@ -108,6 +102,9 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 ## <a name="next-steps"></a>Další kroky
 
+>[!div class="nextstepaction"] 
+>[Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
+
 Další informace najdete v následujících článcích:
 
 - Seznamte se s [použitím volání klientské knihovny](../quickstarts/voice-video-calling/calling-client-samples.md)
@@ -116,7 +113,7 @@ Další informace najdete v následujících článcích:
 
 ## <a name="additional-reading"></a>Další materiály ke čtení
 
-- [Azure Communications Preview](https://github.com/Azure/communication-preview) – Další informace o volání webové sady SDK
+- [GitHub pro komunikaci Azure](https://github.com/Azure/communication) – další příklady a informace najdete na oficiální stránce GitHubu.
 - [Redux](https://redux.js.org/) – Správa stavu na straně klienta
 - [FluentUI](https://developer.microsoft.com/fluentui#/) – knihovna rozhraní založená na Microsoftu
 - [Reagovat](https://reactjs.org/) – knihovna pro sestavování uživatelských rozhraní

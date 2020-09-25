@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 76671ba2dec2590baf4f3df38325b4cfb0129e8d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-js
+ms.openlocfilehash: 8334f8bbbdb6cad210839fc724c46834f559bf91
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324363"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.locfileid: "88586099"
 |Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-sdk-for-js)
 |Přispívání do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| ukázky | [ Ukázky kóduNode.js](sql-api-nodejs-samples.md)
+| Ukázky | [ Ukázky kóduNode.js](sql-api-nodejs-samples.md)
 | Úvodní kurz | [Začínáme se sadou JavaScript SDK](sql-api-nodejs-get-started.md)
 | Kurz webové aplikace | [Vytvoření Node.js webové aplikace pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
 | Aktuální podporovaná platforma | [Node.js V12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK verze 3. x. x<br/>[Node.js v10 za účelem. x](https://nodejs.org/en/blog/release/v10.6.0/) -SDK verze 3. x. x<br/>[Node.js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK verze 3. x. x<br/>[Node.js v6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK verze 2. x. x<br/>[Node.js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)– sada SDK verze 1. x. x<br/> [Node.js v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)– sada SDK verze 1. x. x<br/> [Node.js v 0.10](https://nodejs.org/en/blog/release/v0.10.0/)– sada SDK verze 1. x. x
@@ -236,7 +236,7 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * Oprava chyby v signatuře typu executeNext ()
 * Opravy překlepu
 
-### <a name="211"></a><a name="2.1.1"></a>2.1.1
+### <a name="211"></a><a name="2.1.1"></a>bodů
 * Restrukturalizace sestavení Umožňuje vystavení verze sady SDK v době sestavení.
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
@@ -427,7 +427,7 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 | [2.1.4](#2.1.4) |15. března 2019 |--- |
 | [2.1.3](#2.1.3) |8. března 2019 |--- |
 | [2.1.2](#2.1.2) |28. ledna 2019 |--- |
-| [2.1.1](#2.1.1) |5. prosince 2018 |--- |
+| [bodů](#2.1.1) |5. prosince 2018 |--- |
 | [2.1.0](#2.1.0) |4. prosince 2018 |--- |
 | [2.0.5](#2.0.5) |7. listopadu 2018 |--- |
 | [2.0.4](#2.0.4) |30. října 2018 |--- |

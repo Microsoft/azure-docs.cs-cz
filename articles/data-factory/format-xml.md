@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e0fadf4ac8cea1c8804b17f5549a99bc360e2950
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334289"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Formát XML v Azure Data Factory
 
@@ -85,7 +85,9 @@ Podporovaná **nastavení čtení XML** v rámci `formatSettings` :
 | ------------- | ------------------------------------------------------------ | -------- |
 | typ          | Typ formatSettings musí být nastaven na hodnotu **XmlReadSettings**. | Yes      |
 | validationMode | Určuje, zda se má ověřit schéma XML.<br>Povolené hodnoty jsou **none** (výchozí, bez ověřování), **XSD** (ověřování pomocí XSD), **DTD** (ověření pomocí DTD). | No |
+| obsažené | Určuje, zda má být při analýze souborů XML povolen obor názvů. Povolené hodnoty jsou: **true** (výchozí), **false**. | No |
 | namespacePrefixes | Identifikátor URI oboru názvů mapování předpon, který se používá k pojmenování polí při analýze souboru XML.<br/>Pokud je v souboru XML povolen obor názvů a obor názvů, ve výchozím nastavení je název pole stejný jako v dokumentu XML.<br>Pokud je v této mapě definována položka pro identifikátor URI oboru názvů, název pole je `prefix:fieldName` . | No |
+| detectDataType | Určuje, zda mají být zjišťovány datové typy integer, Double a Boolean. Povolené hodnoty jsou: **true** (výchozí), **false**.| No |
 | compressionProperties | Skupina vlastností, jak dekomprimovat data pro daný Kompresní kodek. | No       |
 | preserveZipFileNameAsFolder<br>(*v části `compressionProperties` -> `type` jako `ZipDeflateReadSettings` *)  | Platí v případě, že je vstupní datová sada nakonfigurovaná s **ZipDeflate** kompresí. Určuje, jestli se má při kopírování zachovat název zdrojového souboru ZIP jako struktura složek.<br>-Když je nastavená **hodnota true (výchozí)**, Data Factory zapisuje soubory unzip do `<path specified in dataset>/<folder named as source zip file>/` .<br>– Pokud je nastavené na **false**, Data Factory zapisuje soubory unzip přímo do `<path specified in dataset>` . Ujistěte se, že nemáte duplicitní názvy souborů v různých zdrojových souborech ZIP, abyste se vyhnuli neočekávanému chování.  | No |
 | preserveCompressionFileNameAsFolder<br>(*v části `compressionProperties` -> `type` jako `TarGZipReadSettings` *) | Platí v případě, že je vstupní datová sada nakonfigurovaná s **TarGzip** kompresí. Určuje, zda se má při kopírování zachovat zdrojový komprimovaný název souboru jako struktura složky.<br>-Když je nastavená **hodnota true (výchozí)**, Data Factory zapisuje dekomprimované soubory do `<path specified in dataset>/<folder named as source compressed file>/` . <br>– Pokud je nastavené na **false**, Data Factory zapisuje dekomprimované soubory přímo do `<path specified in dataset>` . Ujistěte se, že nemáte duplicitní názvy souborů v různých zdrojových souborech, abyste se vyhnuli neočekávanému chování. | No |
@@ -109,6 +111,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem XML. Tyto
 | Režim ověřování | Určuje, zda se má ověřit schéma XML. | No | `None` (výchozí, bez ověření)<br>`xsd` (ověřit pomocí XSD)<br>`dtd` (ověření pomocí DTD). | validationMode |
 | Obory názvů | Určuje, zda má být při analýze souborů XML povolen obor názvů. | No | `true` (výchozí) nebo `false` | obsažené |
 | Páry předpon oboru názvů | Identifikátor URI oboru názvů mapování předpon, který se používá k pojmenování polí při analýze souboru XML.<br/>Pokud je v souboru XML povolen obor názvů a obor názvů, ve výchozím nastavení je název pole stejný jako v dokumentu XML.<br>Pokud je v této mapě definována položka pro identifikátor URI oboru názvů, název pole je `prefix:fieldName` . | No | Pole se vzorem`['URI1'->'prefix1','URI2'->'prefix2']` | namespacePrefixes |
+| Nenalezeny žádné soubory | Pokud je nastaveno na true, chyba není vyvolána, pokud nebyly nalezeny žádné soubory. | ne | `true` nebo `false` | ignoreNoFilesFound |
 
 ### <a name="xml-source-script-example"></a>Příklad zdrojového skriptu XML
 

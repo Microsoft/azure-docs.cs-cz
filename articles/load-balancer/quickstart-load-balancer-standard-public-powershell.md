@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 3589aeb21053525e481f3448270d236265dd698e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca16e334e594f8adf0c0a3b0354db827fc475fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333969"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure PowerShell
 
@@ -61,7 +61,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
-## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
+## <a name="create-a-public-ip-address-in-the-standard-sku"></a>Vytvoření veřejné IP adresy v SKU Standard
 
 Pokud chcete mít k webové aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. 
 
@@ -215,7 +215,7 @@ $lb =
 New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
 ```
 
-## <a name="configure-virtual-network"></a>Konfigurace virtuální sítě
+## <a name="configure-virtual-network-in-the-standard-sku"></a>Konfigurace virtuální sítě v SKU Standard
 
 Než nasadíte virtuální počítače a otestujete Nástroj pro vyrovnávání zatížení, vytvořte podpůrné prostředky virtuální sítě.
 
@@ -712,7 +712,7 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPool
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
-## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
+## <a name="create-a-public-ip-address-in-the-basic-sku"></a>Vytvoření veřejné IP adresy v základní skladové jednotce
 
 Pokud chcete mít k webové aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. 
 
@@ -854,7 +854,7 @@ $lb =
 New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
 ```
 
-## <a name="configure-virtual-network"></a>Konfigurace virtuální sítě
+## <a name="configure-virtual-network-in-the-basic-sku"></a>Konfigurace virtuální sítě v základní skladové jednotce
 
 Než nasadíte virtuální počítače a otestujete Nástroj pro vyrovnávání zatížení, vytvořte podpůrné prostředky virtuální sítě.
 

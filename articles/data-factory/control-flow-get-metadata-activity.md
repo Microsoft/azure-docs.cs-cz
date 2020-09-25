@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: c761cf1265ad61517a9d0123b932d31b27d157dd
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297602"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
 
@@ -35,7 +35,7 @@ V toku ovládacích prvků jsou k dispozici následující funkce:
 
 ## <a name="capabilities"></a>Možnosti
 
-Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace o metadatech jako výstup. V současné době jsou podporovány následující konektory a odpovídající metadata k dispozici. Maximální velikost vrácených metadat je 2 MB.
+Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace o metadatech jako výstup. V současné době jsou podporovány následující konektory a odpovídající metadata k dispozici. Maximální velikost vrácených metadat je okolo 4 MB.
 
 >[!NOTE]
 >Pokud spustíte aktivitu získat metadata v místním prostředí Integration runtime, jsou nejnovější funkce podporované ve verzi 3,6 nebo novější.
@@ -87,7 +87,7 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 | contentMD5 | Algoritmus MD5 souboru Platí pouze pro soubory. |
 | – struktura | Datová struktura tabulky souborů nebo relačních databází. Vrácená hodnota je seznam názvů sloupců a typů sloupců. |
 | Sloupců | Počet sloupců v souboru nebo relační tabulce |
-| neexistuje| Zda existuje soubor, složka nebo tabulka. Všimněte si, že pokud `exists` je zadaný v seznamu pole získat metadata, aktivita se nezdařila, i když soubor, složka nebo tabulka neexistují. Místo toho `exists: false` se vrátí ve výstupu. |
+| neexistuje| Zda existuje soubor, složka nebo tabulka. Pokud `exists` je zadaný v seznamu pole získat metadata, aktivita se nezdařila ani v případě, že soubor, složka nebo tabulka neexistují. Místo toho `exists: false` se vrátí ve výstupu. |
 
 >[!TIP]
 >Pokud chcete ověřit, zda existuje soubor, složka nebo tabulka, zadejte `exists` v seznamu pole aktivity získat metadata. Pak můžete `exists: true/false` výsledek ověřit ve výstupu aktivity. Pokud `exists` není zadaný v seznamu polí, aktivita získat metadata se nezdaří, pokud se objekt nenajde.

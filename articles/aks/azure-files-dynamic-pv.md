@@ -5,12 +5,12 @@ description: Zjistěte, jak dynamicky vytvořit trvalý svazek se soubory Azure 
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299262"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -33,6 +33,7 @@ Třída úložiště se používá k definování způsobu vytvoření sdílené
 * *Standard_ZRS* – standardní zóna redundantního úložiště (ZRS)
 * *Standard_RAGRS* – standardní geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)
 * *Premium_LRS* – Premium místně redundantní úložiště (LRS)
+* *Premium_ZRS* – redundantní úložiště zóny Premium (ZRS)
 
 > [!NOTE]
 > Služba soubory Azure podporuje Prémiové úložiště v clusterech AKS, které používají Kubernetes 1,13 nebo vyšší, je minimální úroveň Premium pro sdílení souborů 100 GB

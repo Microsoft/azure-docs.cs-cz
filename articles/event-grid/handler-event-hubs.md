@@ -3,12 +3,12 @@ title: Centrum událostí jako obslužná rutina události pro Azure Event Grid 
 description: Popisuje, jak můžete používat centra událostí jako obslužné rutiny událostí pro Azure Event Grid události.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fa8fdd66eb153f6a972753eb359261100f19cd15
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5e6a84c1737c6b8a575f47576aeb1d3d9efae6eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105825"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322559"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Centrum událostí jako obslužná rutina události pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede akci zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovávala události a **Azure Event Hubs** je jednou z nich. 
@@ -24,9 +24,9 @@ Podívejte se na následující příklady:
 | [Správce prostředků Šablona: Vytvoření vlastního tématu Event Grid a odeslání událostí do centra událostí](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Správce prostředků šablonu, která vytvoří odběr pro vlastní téma. Odesílá události do Azure Event Hubs. |
 
 ## <a name="message-properties"></a>Vlastnosti zprávy
-Pokud používáte **centrum událostí** jako obslužnou rutinu události pro události z Event Grid, nastavte následující záhlaví zpráv: 
+Použijete-li **centrum událostí** jako obslužnou rutinu události pro události z Event Grid, jsou vlastnosti, které jste obdrželi v záhlavích zpráv: 
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ------------- | ----------- | 
 | AEG-Subscription-Name | Název odběru události |
 | AEG – počet doručení | <p>Počet pokusů o provedení události.</p> <p>Příklad: "1"</p> |
@@ -81,6 +81,9 @@ Pokud používáte **centrum událostí** jako obslužnou rutinu události pro u
     }
 }
 ```
+
+> [!NOTE]
+> Doručování událostí do centra událostí Azure v **jiném tenantovi** se nepodporuje. 
 
 ## <a name="next-steps"></a>Další kroky
 Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) . 

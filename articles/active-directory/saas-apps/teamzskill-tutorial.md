@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/04/2020
+ms.date: 09/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 319f3a116d52c482dde009a218ba4d2cf93d80e5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4e7d8c4917f7860ba07ef9eb749337afd83f723a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662648"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255515"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamzskill"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TeamzSkill
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat TeamzSkill s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TeamzSkill svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -94,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace TeamzSkill několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ------------ | --------- |
     | FirstName | User. křestní jméno |
     | Polím | User. příjmení |
@@ -103,6 +103,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | zaměstnance | User. ČísloZaměstnance |
     | ovládacím | User. PostalCode |
     | country | uživatel. Country |
+    | role | User. assignedroles |
+
+    > [!NOTE]
+    > TeamzSkill očekává role pro uživatele přiřazené k aplikaci. Nastavte prosím tyto role ve službě Azure AD, aby bylo možné uživatelům přiřadit příslušné role. Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -134,7 +138,6 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
-
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-teamzskill-sso"></a>Konfigurace jednotného přihlašování TeamzSkill

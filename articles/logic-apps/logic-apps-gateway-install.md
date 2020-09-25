@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322508"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -114,7 +114,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
    Poznamenejte si možnost **Přidat existující cluster brány**, který vyberete při instalaci dalších bran pro [scénáře s vysokou dostupností](#high-availability).
 
-1. Ověřte oblast pro cloudovou službu brány a [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) , kterou používá instalace brány. Ve výchozím nastavení má tato oblast stejné umístění jako tenant Azure AD pro váš účet Azure.
+1. Ověřte oblast pro cloudovou službu brány a [Azure Service Bus instanci zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md) , kterou používá instalace brány. Ve výchozím nastavení má tato oblast stejné umístění jako tenant Azure AD pro váš účet Azure.
 
    ![Potvrdit oblast pro službu brány a Service Bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -140,7 +140,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 ## <a name="check-or-adjust-communication-settings"></a>Kontrolovat nebo upravovat nastavení komunikace
 
-Místní brána dat závisí na [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) pro cloudové připojení a stanovuje odpovídající odchozí připojení k příslušné oblasti Azure přidružené k bráně. Pokud vaše pracovní prostředí vyžaduje, aby provoz prochází přes proxy server nebo bránu firewall pro přístup k Internetu, může toto omezení zabránit místní bráně dat v připojení ke cloudové službě brány a Azure Service Bus. Brána má několik nastavení komunikace, která můžete upravit. Další informace najdete v těchto tématech:
+Místní brána dat závisí na [Azure Service Bus zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md) pro cloudové připojení a stanovuje odpovídající odchozí připojení k příslušné oblasti Azure přidružené k bráně. Pokud vaše pracovní prostředí vyžaduje, aby provoz prochází přes proxy server nebo bránu firewall pro přístup k Internetu, může toto omezení zabránit místní bráně dat v připojení ke cloudové službě brány a Azure Service Bus zasílání zpráv. Brána má několik nastavení komunikace, která můžete upravit. Další informace najdete v těchto tématech:
 
 * [Úprava nastavení komunikace pro místní bránu dat](/data-integration/gateway/service-gateway-communication)
 * [Konfigurace nastavení proxy serveru pro místní bránu dat](/data-integration/gateway/service-gateway-proxy)
@@ -206,7 +206,7 @@ Uživatelé ve vaší organizaci mají přístup k místním datům, ke kterým 
 
 Brána usnadňuje rychlejší a bezpečnější komunikaci na pozadí. Tato komunikace komunikuje mezi uživatelem v cloudu, cloudovou službou brány a vaším místním zdrojem dat. Cloudová služba brány šifruje a ukládá vaše přihlašovací údaje ke zdroji dat a podrobnosti o bráně. Služba také směruje dotazy a jejich výsledky mezi uživatelem, bránou a vaším místním zdrojem dat.
 
-Brána pracuje s branami firewall a používá jenom odchozí připojení. Veškerý provoz pochází z agenta brány jako zabezpečený odchozí provoz. Brána přenáší data z místních zdrojů do šifrovaných kanálů prostřednictvím [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Tato služba Service Bus vytváří kanál mezi bránou a volající službou, ale neukládá žádná data. Všechna data, která jsou přenášena přes bránu, jsou zašifrovaná.
+Brána pracuje s branami firewall a používá jenom odchozí připojení. Veškerý provoz pochází z agenta brány jako zabezpečený odchozí provoz. Brána odesílá data z místních zdrojů do šifrovaných kanálů prostřednictvím [Azure Service Bus zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md). Tato služba Service Bus vytváří kanál mezi bránou a volající službou, ale neukládá žádná data. Všechna data, která jsou přenášena přes bránu, jsou zašifrovaná.
 
 ![Architektura pro místní bránu dat](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +217,9 @@ Tyto kroky popisují, co se stane, když budete pracovat s prvkem, který je př
 
 1. Cloudová služba vytvoří dotaz společně se zašifrovanými přihlašovacími údaji pro zdroj dat. Služba pak odešle dotaz a přihlašovací údaje do fronty brány ke zpracování.
 
-1. Cloudová služba brány dotaz analyzuje a odešle požadavek do Azure Service Busu.
+1. Cloudová služba brány dotaz analyzuje a odešle požadavek pro Azure Service Bus zasílání zpráv.
 
-1. Azure Service Bus odešle nevyřízené požadavky do brány.
+1. Azure Service Bus zasílání zpráv odesílá nedokončené žádosti do brány.
 
 1. Brána obdrží dotaz, dešifruje přihlašovací údaje a pomocí nich se připojí k jednomu nebo více zdrojům dat.
 

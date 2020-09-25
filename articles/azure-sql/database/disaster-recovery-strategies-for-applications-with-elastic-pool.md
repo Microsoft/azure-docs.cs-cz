@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8ba9edc129cc169ccc146c7bc314d8f5ffe573b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321641"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Strategie zotavení po havárii pro aplikace používající Azure SQL Database elastické fondy
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -179,7 +179,7 @@ Hlavní kompromisy jsou:
 * Vyžaduje složitější návrh databáze správy. Každý záznam tenanta má například značku umístění, kterou je třeba změnit během převzetí služeb při selhání a navrácení služeb po obnovení.  
 * Zákazníci s platbami můžou vyskytnout nižší výkon než obvykle, dokud se nedokončí upgrade fondu v oblasti B.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Tento článek se zaměřuje na strategie zotavení po havárii pro databázovou vrstvu, kterou používá aplikace SaaS ISV pro více tenantů. Zvolená strategie je založená na potřebách aplikace, jako je obchodní model, smlouva SLA, kterou chcete zákazníkům nabídnout, a omezení rozpočtu atd. V každé popsané strategii se dozvíte o výhodách a obchodu, abyste mohli učinit rozhodnutí v informování. Vaše konkrétní aplikace taky může zahrnovat jiné součásti Azure. Proto si Projděte pokyny pro provozní kontinuitu a orchestrujte obnovení databázové vrstvy. Další informace o správě obnovení databázových aplikací v Azure najdete v tématu [navrhování cloudových řešení pro zotavení po havárii](designing-cloud-solutions-for-disaster-recovery.md).  
 

@@ -3,12 +3,12 @@ title: Konverzace s vícenásobným zapnete – QnA Maker
 description: Pomocí výzev a kontextu můžete spravovat vícenásobná vypnutí, označovaná jako vícenásobný křížek, pro robota z jedné otázky do druhé. Vícenásobné zapínání je schopnost mít v případě potřeby konverzaci, kde kontext předchozí otázky ovlivňuje další otázku a odpověď.
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: eff2eccac55bc05784636ecd9d2dfb784f86c4ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322831"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
 
@@ -52,7 +52,7 @@ Když vyberete tuto možnost, QnA Maker extrahuje hierarchii přítomnou ve stru
 
 Strukturu vícenásobného navýšení můžete odvodit jenom z adres URL, souborů PDF nebo souborů DOCX. Příklad struktury najdete v obrazovém [souboru PDF Microsoft Surface User Manually](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf).
 
-![! [Příklad struktury v uživatelské příručce] (.. /Media/Conversational-Context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+:::image type="content" source="../media/conversational-context/import-file-with-conversational-structure.png" alt-text="Snímek obrazovky ukazuje příklad struktury v uživatelské příručce." lightbox="../media/conversational-context/import-file-with-conversational-structure.png":::
 
 ### <a name="building-your-own-multi-turn-document"></a>Sestavení vlastního dokumentu s vícenásobným zahnutím
 
@@ -92,7 +92,7 @@ Vyberte **Možnosti zobrazení**a pak vyberte **Zobrazit kontext**. V seznamu se
 
 V prvním sloupci se zobrazí kontext vícenásobného zapnutí.
 
-![! ["Kontextový (PREVIEW)" sloupec] (.. /Media/Conversational-Context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Snímek obrazovky ukazuje zvýrazněný kontextový oddíl." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 V předchozím obrázku **#1** označuje tučný text ve sloupci, který označuje aktuální otázku. Nadřazená otázka je nejvyšší položka na řádku. Všechny dotazy pod ní jsou propojené páry otázek a odpovědí. Tyto položky jsou vybrané, takže můžete okamžitě přejít k ostatním položkám kontextu.
 
@@ -167,7 +167,7 @@ Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá 
 
     Nadřazený dotaz zobrazí novou otázku jako jednu z možností.
 
-    ![! [Kontextový sloupec pro obě otázky indikuje vztah následné výzvy] (.. /Media/Conversational-Context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Snímek obrazovky zobrazující kontextový sloupec pro obě otázky indikuje vztah následné výzvy." lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. Po přidání následné výzvy vyberte v horním navigačním panelu možnost **Uložit a výuka** .
 

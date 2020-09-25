@@ -3,12 +3,12 @@ title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Přečtěte si, jak zjistit, co způsobilo nedodržení předpisů.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 102a1a6a9573c73b4c1158a3c412be233e1a12b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334170"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -106,9 +106,15 @@ V následující matrici je možné podle příslušné [podmínky](../concepts/
 
 ## <a name="compliance-details-for-guest-configuration"></a>Podrobnosti o dodržování předpisů pro konfiguraci hosta
 
-U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ se ve virtuálním počítači může vyhodnotit víc nastavení a budete muset zobrazit podrobnosti o jednotlivých nastaveních. Pokud například provádíte audit pro seznam zásad hesel a jenom jeden z nich má _nevyhovující_stav, budete muset zjistit, které konkrétní zásady hesel nejsou kompatibilní a proč.
+U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ může být ve virtuálním počítači vyhodnoceno více nastavení a bude nutné zobrazit podrobnosti o jednotlivých nastaveních. Pokud například provádíte audit pro seznam zásad hesel a jenom jeden z nich má _nevyhovující_stav, budete muset zjistit, které konkrétní zásady hesel nejsou kompatibilní a proč.
 
 Je také možné, že nebudete mít přístup k virtuálnímu počítači přímo, ale potřebujete podávat zprávu o tom, proč virtuální počítač _nedodržuje předpisy_.
+
+## <a name="compliance-details-for-resource-provider-modes"></a>Podrobnosti o dodržování předpisů pro režimy poskytovatele prostředků
+
+Pro přiřazení s [režimem poskytovatele prostředků](../concepts/definition-structure.md#resource-manager-modes)vyberte prostředek, který _nedodržuje předpisy_ , aby bylo možné otevřít hlubší zobrazení. Na kartě **dodržování předpisů komponent** jsou další informace, které jsou specifické pro režim poskytovatele prostředků na přiřazené zásadě ukazující **komponentu** a **ID komponenty**, _které nedodržují předpisy_ .
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Snímek obrazovky karty dodržování předpisů pro součásti a podrobnosti o dodržování předpisů pro přiřazení režimu poskytovatele prostředků." border="false":::
 
 ### <a name="azure-portal"></a>portál Azure
 

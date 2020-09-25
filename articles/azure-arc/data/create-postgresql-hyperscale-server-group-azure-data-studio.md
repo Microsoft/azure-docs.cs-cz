@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: af0cdb814433b739b15d79bec9cb399cf0a2fef7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936427"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273003"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Vytvoření PostgreSQL s povoleným rozšířením Azure ARC pomocí Azure Data Studio
 
@@ -42,6 +42,19 @@ Password:
 Namespace: arc
 Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
 ```
+
+## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>Předběžný a dočasný krok jenom pro uživatele OpenShift
+
+Před přechodem k dalšímu kroku implementujte tento krok. Pokud chcete nasadit skupinu serverů PostgreSQL s vlastním škálováním na Red Hat OpenShift v jiném projektu než ve výchozím nastavení, musíte pro svůj cluster spustit následující příkazy, abyste mohli aktualizovat omezení zabezpečení. Tento příkaz uděluje potřebná oprávnění účtům služeb, které budou spouštět PostgreSQL skupinu serverů s vlastním škálováním. V poli omezení kontextu zabezpečení (SCC) **_ARC – data-SCC_** je ten, který jste přidali při nasazení řadiče dat ARC Azure.
+
+```console
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
+```
+
+_**Server-Group-Name** je název skupiny serverů, kterou budete nasazovat během dalšího kroku._
+   
+Další informace o SCCs v OpenShift najdete v [dokumentaci k OpenShift](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html).
+Teď můžete implementovat další krok.
 
 ## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů s povoleným PostgreSQLm rozšířením Azure ARC
 
@@ -80,6 +93,5 @@ Během několika minut by se vytváření mělo úspěšně dokončit.
 
 - [Horizontální navýšení kapacity Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním](scale-out-postgresql-hyperscale-server-group.md)
 - [Koncepty konfigurace úložiště a Kubernetes úložiště](storage-configuration.md)
-- [Rozšiřování deklarací trvalých svazků](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Model prostředků Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 

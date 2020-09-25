@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477149"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320519"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Provádění úloh pro datové vědy: průzkum, modelování a nasazení
 
@@ -98,11 +98,11 @@ Existují různé přístupy a platformy pro vložení modelů do produkčního 
 Další příklady jsou k dispozici v návodech, které ukazují všechny kroky v procesu pro **konkrétní scénáře**. Jsou uvedeny a propojeny s popisy miniatur v článku [příklad návodu](walkthroughs.md) . Ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci.
 
 > [!NOTE]
-> Informace o nasazení pomocí Azure Machine Learning Studio najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
+> Informace o nasazení pomocí Azure Machine Learning Studio najdete v tématu [nasazení webové služby Azure Machine Learning](../classic/deploy-a-machine-learning-web-service.md).
 >
 >
 
-### <a name="ab-testing"></a>Testování a/B
+### <a name="ab-testing"></a>Testování A/B
 Pokud je v produkčním prostředí více modelů, může být užitečné provést [testování a/B](https://en.wikipedia.org/wiki/A/B_testing) pro porovnání výkonu modelů. 
 
  
@@ -111,5 +111,3 @@ Pokud je v produkčním prostředí více modelů, může být užitečné prov�
 [Sledování průběhu projektů pro datové vědy](track-progress.md) ukazuje, jak může vědecký pracovník dat sledovat průběh projektu pro datové vědy.
 
 [Operace modelu a CI/CD](ci-cd-flask.md) ukazuje, jak se dají provádět CI/CD s využitím rozvinutých modelů.
-
-

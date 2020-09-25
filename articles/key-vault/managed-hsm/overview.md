@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 9eee3d5bc53ebe40ba4462f394ffe30cea6b70fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320553"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Co je Azure Key Vault spravovaný HSM (Preview)?
 
@@ -33,7 +33,7 @@ Azure Key Vault spravovaný modul HSM je plně spravovaná cloudová služba s v
 
 - **Centralizovaná správa klíčů**: na jednom místě spravujte kritické klíče s vysokými hodnotami napříč vaší organizací. S podrobnými oprávněními na klíč můžete řídit přístup ke každému klíči v zásadě nejnižší privilegovaný přístup.
 - **Izolované řízení přístupu**: spravovaný modul pro řízení přístupu "místní služba HSM" umožňuje správcům clusteru HSM úplnou kontrolu nad hsmou, kterou dokonce skupina pro správu, předplatné nebo skupiny prostředků nemůže přepsat.
-- **Ověření fips 140-2 Level 3 HSM**: Chraňte vaše data a splňovat požadavky na dodržování předpisů pomocí standardu FIPS ((federální Information Protection Standard)) 140-2 úrovně 3 ověřený HSM. Spravované HSM používají rodinu HSM řady PERC LiquidSecurity.
+- **Ověření fips 140-2 Level 3 HSM**: Chraňte vaše data a splňovat požadavky na dodržování předpisů pomocí standardu FIPS ((federální Information Protection Standard)) 140-2 úrovně 3 ověřený HSM. Spravované HSM používají adaptéry PERC LiquidSecurity HSM.
 - **Monitorování a audit**: plně integrovaná se službou Azure monitor. Získat kompletní protokoly o všech aktivitách prostřednictvím Azure Monitor. Pro analýzy a výstrahy použijte Azure Log Analytics.
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Integrace s Azure a službami Microsoft PaaS/SaaS 

@@ -10,23 +10,23 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266305"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Kurz: základní prostředí služby Active Directory
 
 Tento kurz vás provede vytvořením základního prostředí Active Directory. 
 
-![Vytvořit](media/tutorial-single-forest/diagram1.png)
+![Diagram, který znázorňuje základní prostředí Azure A D.](media/tutorial-single-forest/diagram1.png)
 
 Prostředí, které vytvoříte v tomto kurzu, můžete použít k otestování různých aspektů hybridních scénářů identity a pro některé z těchto kurzů se vyžaduje předpoklad.  Pokud již máte existující prostředí služby Active Directory, můžete ho použít jako náhradu.  Tyto informace jsou k dispozici pro jednotlivce, kteří začínají od Nothing.
 
 Tento kurz se skládá z
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Externí síťový adaptér](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
@@ -199,8 +199,8 @@ Teď je potřeba vytvořit tenanta Azure AD, abyste mohli synchronizovat naše u
 1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu, který má předplatné Azure.
 2. Vyberte **ikonu plus (+)** a vyhledejte **Azure Active Directory**.
 3. Vyberte ve výsledcích hledání **Azure Active Directory**.
-4. Vyberte **Create** (Vytvořit).</br>
-![Vytvoření](media/tutorial-single-forest/create1.png)</br>
+4. Vyberte **Vytvořit**.</br>
+![Snímek obrazovky zobrazující stránku Azure Active Directory v Azure Portal](media/tutorial-single-forest/create1.png)</br>
 5. Zadejte **název organizace** společně s **počátečním názvem domény**. Potom vyberte **Vytvořit**. Vytvoří se váš adresář.
 6. Po dokončení této možnosti klikněte na odkaz **tady** a adresář spravujte.
 
@@ -208,7 +208,7 @@ Teď je potřeba vytvořit tenanta Azure AD, abyste mohli synchronizovat naše u
 Teď, když máte tenanta Azure AD, vytvoříte účet globálního správce.  Účet globálního správce vytvoříte takto.
 
 1.  V části **Spravovat** vyberte **Uživatelé**.</br>
-![Vytvoření](media/tutorial-single-forest/administrator1.png)</br>
+![Snímek obrazovky, který zobrazuje nabídku "Přehled" s vybranými možnostmi uživatelé](media/tutorial-single-forest/administrator1.png)</br>
 2.  Vyberte **Všichni uživatelé** a pak vyberte **+ Nový uživatel**.
 3.  Zadejte jméno a uživatelské jméno uživatele. To bude globální správce pro tenanta. Také budete chtít změnit **roli adresáře** na **globální správce.** A můžete i zobrazit dočasné heslo. Po dokončení vyberte **Vytvořit**.</br>
 ![Vytvoření](media/tutorial-single-forest/administrator2.png)</br>

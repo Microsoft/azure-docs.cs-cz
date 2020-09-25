@@ -1,17 +1,17 @@
 ---
 title: Konfigurace sady škálování virtuálních počítačů pomocí existující Azure Load Balancer-Azure Portal
-description: Naučte se konfigurovat sadu škálování virtuálního počítače s existujícím Azure Load Balancer.
+description: Naučte se konfigurovat sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure Portal.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e12532107ed554385ccf38531bb95b7b70298934
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333881"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Konfigurace sady škálování virtuálních počítačů pomocí existující Azure Load Balancer pomocí Azure Portal
 
@@ -49,11 +49,11 @@ V této části vytvoříte v Azure Portal sadu škálování virtuálního poč
     | Skupina prostředků                 | Vyberte vytvořit novou, zadejte **myResourceGroup**, vyberte OK nebo vyberte existující skupinu prostředků. |
     | **Podrobnosti o škále sady**          |                                                                                                       |
     | Název škálovací sady virtuálních počítačů | Zadejte **myVMSS**                                                                                      |
-    | Oblast                         | Vyberte **východní USA 2**                                                                                    |
+    | Region                         | Vyberte **východní USA 2**                                                                                    |
     | Zóna dostupnosti              | Vybrat **žádné**                                                                                       |
-    | **Podrobnosti instance**           |                                                                                                       |
+    | **Podrobnosti o instancích**           |                                                                                                       |
     | Image                          | Vyberte **Ubuntu Server 18,04 LTS**                                                                    |
-    | Instance bodu Azure            | Vybrat **ne**                                                                                         |
+    | Instance Azure Spot            | Vybrat **ne**                                                                                         |
     | Velikost                           | Ponechat ve výchozím nastavení                                                                                      |
     | **Účet správce**      |                                                                                                       |
     | Typ ověřování            | Vybrat **heslo**                                                                                   |
@@ -73,7 +73,7 @@ V této části vytvoříte v Azure Portal sadu škálování virtuálního poč
     | **Konfigurace Virtual Network** |                                                          |
     | Virtuální síť                   | Vyberte **myVNet** nebo existující virtuální síť.      |
     | **Vyrovnávání zatížení**                |                                                          |
-    | Použití nástroje pro vyrovnávání zatížení               | Vyberte **Ano**                                           |
+    | Použití nástroje pro vyrovnávání zatížení               | Vyberte **Ano**.                                           |
     | **Nastavení vyrovnávání zatížení**       |                                                          |
     | Možnosti vyrovnávání zatížení            | Výběr **služby Azure Load Balancer**                           |
     | Vyberte nástroj pro vyrovnávání zatížení.            | Vyberte **myLoadBalancer** nebo existující Nástroj pro vyrovnávání zatížení. |

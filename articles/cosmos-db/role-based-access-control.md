@@ -4,14 +4,14 @@ description: Přečtěte si, jak Azure Cosmos DB poskytuje ochranu databáze pom
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6edf5de852ea836de8be02636dd8a971ccebb86d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e65c17be47cdc59f929aa539071cf1c758e271f7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320876"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
 
@@ -25,8 +25,8 @@ Níže jsou uvedené předdefinované role podporované nástrojem Azure Cosmos 
 |---------|---------|
 |[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB.|
 |[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu.|
-|[Cosmos – operátor zálohování](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Může odeslat žádost o obnovení pro databázi Azure Cosmos nebo kontejner.|
-|[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Může zřídit účty, databáze a kontejnery Azure Cosmos, ale nemůže získat přístup k klíčům, které jsou nutné pro přístup k datům.|
+|[Cosmos – operátor zálohování](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Může odeslat žádost o obnovení pro databázi Azure Cosmos nebo kontejner. Nelze získat přístup k žádným datům ani použít Průzkumník dat.|
+|[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Může zřídit účty, databáze a kontejnery služby Azure Cosmos. Nelze získat přístup k žádným datům ani použít Průzkumník dat.|
 
 > [!IMPORTANT]
 > Podpora RBAC v Azure Cosmos DB se vztahuje pouze na operace řízení roviny. Operace roviny dat se zabezpečují pomocí hlavních klíčů nebo tokenů prostředků. Další informace najdete v tématu [zabezpečený přístup k datům v Azure Cosmos DB](secure-access-to-data.md)
@@ -40,6 +40,9 @@ Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci ř
 ## <a name="custom-roles"></a>Vlastní role
 
 Kromě předdefinovaných rolí můžou uživatelé také vytvářet [vlastní role](../role-based-access-control/custom-roles.md) v Azure a tyto role použít pro instanční objekty ve všech předplatných v rámci svého tenanta služby Active Directory. Vlastní role poskytují uživatelům způsob, jak vytvořit definice rolí Azure s vlastní sadou operací poskytovatele prostředků. Informace o tom, které operace jsou k dispozici pro vytváření vlastních rolí pro Azure Cosmos DB najdete v tématu [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb) .
+
+> [!TIP]
+> Vlastní role, které potřebují přístup k datům uloženým v Cosmos DB nebo používají Průzkumník dat v Azure Portal musí mít `Microsoft.DocumentDB/databaseAccounts/listKeys/*` akci.
 
 ## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Zabránění změnám z Azure Cosmos DB SDK
 

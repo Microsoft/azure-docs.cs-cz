@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336628"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -48,7 +48,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 [ARC Azure](../../azure-arc/index.yml):
 
-- Správa hybridních serverů ve velkém měřítku – [servery s podporou ARC Azure (Preview)](../../azure-arc/servers/overview.md):
+- Spravujte hybridní servery ve velkém měřítku – [servery s podporou ARC Azure](../../azure-arc/servers/overview.md):
   - [Správa počítačů s Windows serverem nebo Linux mimo Azure, které jsou připojené](../../azure-arc/servers/onboard-portal.md) k delegovaným předplatným nebo skupinám prostředků v Azure
   - Spravujte připojené počítače pomocí konstrukcí Azure, například Azure Policy a označování.
   - Zajistěte, aby se stejná sada zásad používala v hybridních prostředích zákazníků.

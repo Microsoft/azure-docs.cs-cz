@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336509"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: použití clusterů Azure HDInsight Hadoop
 V tomto návodu použijeme [TDSP (Team data Sciences)](overview.md) v uceleném scénáři. Pro ukládání, prozkoumávání a inženýrské údaje z veřejně dostupné datové sady [taxislužby pro NYC](https://www.andresmh.com/nyctaxitrips/) a pro data ukázek používáme [cluster Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) . Pro zpracování binárních a regresních klasifikací a regresních prediktivních úkolů sestavíme modely dat s Azure Machine Learning. 
@@ -89,7 +89,7 @@ Prostředí Azure pro pokročilou analýzu, která využívá cluster HDInsight,
    
    * Nezapomeňte propojit účet úložiště vytvořený v kroku 1 s clusterem HDInsight při jeho vytváření. Tento účet úložiště přistupuje k datům zpracovávaným v rámci clusteru.
    * Po vytvoření clusteru Povolte vzdálený přístup k hlavnímu uzlu clusteru. Přejděte na kartu **Konfigurace** a vyberte **Povolit vzdálenou**. Tento krok určuje přihlašovací údaje uživatele používané pro vzdálené přihlášení.
-3. [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md): pomocí tohoto pracovního prostoru sestavíte modely strojového učení. Tato úloha se řeší po dokončení počátečního zkoumání dat a vzorkování dolů pomocí clusteru HDInsight.
+3. [Vytvoření pracovního prostoru Azure Machine Learning](../classic/create-workspace.md): pomocí tohoto pracovního prostoru sestavíte modely strojového učení. Tato úloha se řeší po dokončení počátečního zkoumání dat a vzorkování dolů pomocí clusteru HDInsight.
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>Získat data z veřejného zdroje
 > [!NOTE]
@@ -639,7 +639,7 @@ hdfs dfs -mkdir wasb:///queryoutputdir
 hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 ```
 
-Výsledky dotazu jsou zapisovány do devíti objektů blob Azure (**queryoutputdir/000000 \_ 0** do **queryoutputdir/000008 \_ 0**) ve výchozím kontejneru clusteru Hadoop.
+Výsledky dotazu jsou zapisovány do devíti objektů blob Azure (**queryoutputdir/000000 \_ 0** do  **queryoutputdir/000008 \_ 0**) ve výchozím kontejneru clusteru Hadoop.
 
 Chcete-li zobrazit velikost jednotlivých objektů blob, spusťte následující příkaz na příkazovém řádku adresáře podregistr:
 
@@ -654,7 +654,7 @@ hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 ```
 
 > [!WARNING]
-> `copyToLocal`může být u velkých souborů velmi pomalé a nedoporučuje se je používat s nimi.  
+> `copyToLocal` může být u velkých souborů velmi pomalé a nedoporučuje se je používat s nimi.  
 > 
 > 
 
@@ -894,7 +894,7 @@ Nyní můžete přejít k sestavení modelu a nasazení modelu v [Machine Learni
 
   b. Pro tento experiment používáme nejasnou matrici k zobrazení předpovědi přesností, jak je znázorněno zde:
 
-  ![Nejasná matice](./media/hive-walkthrough/cxFmErM.png)
+  ![Konfuzní matice](./media/hive-walkthrough/cxFmErM.png)
 
   I když je třída přesností na předaných třídách dobrá, model není dobrým úkolem "učení" na třídách rarer.
 
@@ -915,7 +915,7 @@ Nyní můžete přejít k sestavení modelu a nasazení modelu v [Machine Learni
   Zde je koeficient stanovení 0,709, což znamená, že o 71 procent odchylky je vysvětleno v koeficientech modelu.
 
 > [!IMPORTANT]
-> Další informace o Machine Learning a o tom, jak k nim přistupovat a jak ji používat, najdete v tématu [co je Machine Learning](../studio/what-is-machine-learning.md). Kromě toho [Azure AI Gallery](https://gallery.cortanaintelligence.com/) pokrývá rozsah experimentů a poskytuje důkladný úvod do rozsahu možností Machine Learning.
+> Další informace o Machine Learning a o tom, jak k nim přistupovat a jak ji používat, najdete v tématu [co je Machine Learning](../classic/index.yml). Kromě toho [Azure AI Gallery](https://gallery.cortanaintelligence.com/) pokrývá rozsah experimentů a poskytuje důkladný úvod do rozsahu možností Machine Learning.
 > 
 > 
 
@@ -923,9 +923,9 @@ Nyní můžete přejít k sestavení modelu a nasazení modelu v [Machine Learni
 Tento ukázkový návod a jeho doprovodné skripty sdílí Microsoft v rámci licence MIT. Další informace najdete v souboru **LICENSE.txt** v adresáři ukázkového kódu na GitHubu.
 
 ## <a name="references"></a>Reference
-• [Stránka pro stažení Andrés MONROY NYC taxislužby](https://www.andresmh.com/nyctaxitrips/)  
-• [Fólie NYC data taxislužby na cestách pomocí chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC taxislužby a Limousine výzkumu a statistiky Komise](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+•    [Stránka pro stažení Andrés MONROY NYC taxislužby](https://www.andresmh.com/nyctaxitrips/)  
+•    [Fólie NYC data taxislužby na cestách pomocí chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [NYC taxislužby a Limousine výzkumu a statistiky Komise](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png
 [11]: ./media/hive-walkthrough/hive-reader-properties.png
@@ -937,6 +937,3 @@ Tento ukázkový návod a jeho doprovodné skripty sdílí Microsoft v rámci li
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-

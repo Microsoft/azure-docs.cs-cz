@@ -1,21 +1,21 @@
 ---
-title: Vytvoření vnitřních map pomocí autora
-description: K vytvoření vnitřních map použijte Tvůrce Azure Maps.
+title: 'Kurz: vytvoření vnitřních map pomocí autora'
+description: Kurz použití Tvůrce Azure Maps k vytvoření vnitřních map
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/29/2020
-ms.topic: conceptual
+ms.date: 09/22/2020
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 01182343fb0c96040ec8e86ddf915050ba68cf9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469911"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335207"
 ---
-# <a name="use-creator-to-create-indoor-maps"></a>Vytvoření vnitřních map pomocí autora
+# <a name="tutorial-use-creator-to-create-indoor-maps"></a>Kurz: vytvoření vnitřních map pomocí autora
 
 V tomto kurzu se dozvíte, jak vytvořit mapy vnitřních. V tomto kurzu se naučíte používat rozhraní API k těmto akcím:
 
@@ -404,43 +404,11 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 
 [Rozhraní API pro získání](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) stavů funkce umožňuje načíst stav funkce pomocí její funkce `ID` . Stateset a jeho prostředky můžete také odstranit pomocí [rozhraní API pro odstranění stavu funkce](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview).
 
+Další informace o různých službách Azure Maps Creator popsaných v tomto článku najdete v tématu [Tvůrce vnitřních map](creator-indoor-maps.md).
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Nahrání balíčku pro vykreslování mapy interiéru
-> * Převod balíčku pro kreslení na data mapy
-> * Vytvoření datové sady z dat mapy
-> * Vytvoření TILESET z dat v datové sadě
-> * Dotazování na službu Azure Maps WFS, kde se dozvíte o funkcích map
-> * Vytvoření funkce stateset pomocí vašich funkcí mapy a dat v datové sadě
-> * Aktualizace stateset funkcí
-
-Nyní jste vybaveni dovednostmi, které potřebujete k přechodu na další příručky:
+Další informace o použití modulu mapy vnitřníchy najdete v tématu.
 
 > [!div class="nextstepaction"]
 > [Použití modulu mapy Vnitřníchy](how-to-use-indoor-module.md)
-
-> [!div class="nextstepaction"]
-> [Implementovat dynamické styly pro mapy vnitřních.](indoor-map-dynamic-styling.md)
-
-Další informace o různých Azure Mapsch službách popsaných v tomto článku:
-
-> [!div class="nextstepaction"]
-> [Nahrávání dat](creator-indoor-maps.md#upload-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Převod dat](creator-indoor-maps.md#convert-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Datová sada](creator-indoor-maps.md#datasets)
-
-> [!div class="nextstepaction"]
-> [Tileset](creator-indoor-maps.md#tilesets)
-
-> [!div class="nextstepaction"]
-> [Sada stavů funkcí](creator-indoor-maps.md#feature-statesets)
-
-> [!div class="nextstepaction"]
-> [Služba WFS](creator-indoor-maps.md#web-feature-service-api)

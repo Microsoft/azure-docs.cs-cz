@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322355"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpretace modelu v Azure Machine Learning (Náhled)
 
@@ -39,20 +39,11 @@ Povolení funkce vysvětlení modelu strojového učení je důležité během d
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretace pomocí Azure Machine Learning
 
-Třídy interpretace jsou zpřístupněny prostřednictvím více balíčků sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
+Třídy interpretace jsou zpřístupněny prostřednictvím následujícího balíčku sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
 
-* `azureml.interpret`, hlavní balíček obsahující funkce podporované Microsoftem.
+* `azureml.interpret`obsahuje funkce podporované Microsoftem.
 
-* `azureml.contrib.interpret`, ve verzi Preview a experimentálních funkcích, které můžete vyzkoušet.
-
-Použití `pip install azureml-interpret` a `pip install azureml-contrib-interpret` pro obecné použití.
-
-
-> [!IMPORTANT]
-> Obsah v `contrib` oboru názvů není plně podporován. Vzhledem k tomu, že experimentální funkce začnou být v zralosti, budou postupně přesunuty do hlavního oboru názvů.
-.
-
-
+Používá se `pip install azureml-interpret` pro obecné použití.
 
 ## <a name="how-to-interpret-your-model"></a>Jak interpretovat model
 
@@ -71,7 +62,7 @@ Přečtěte si o podporovaných technikách interpretace, podporovaných modelec
 
  `azureml-interpret` používá techniky interpretace vyvinuté v [interpretství – Community](https://github.com/interpretml/interpret-community/), open source balíček Pythonu pro účely školení uživatelsky interpretované modely a pomáhá vysvětlit Blackbox systémy AI. [Interpretace – komunita](https://github.com/interpretml/interpret-community/) slouží jako hostitel pro vysvětlení podporovaná v sadě SDK a aktuálně podporuje následující techniky interpretace:
 
-|Technika interpretace|Description|Typ|
+|Technika interpretace|Popis|Typ|
 |--|--|--------------------|
 |SHAP stromové struktury| [SHAP](https://github.com/slundberg/shap)na stromové struktuře, který se zaměřuje na polynomická rychlá hodnota SHAP algoritmu odhadu, která je specifická pro **stromy a komplety stromů**.|Specifické pro model|
 |SHAP hluboký vysvětlující| Na základě vysvětlení z SHAP je hluboko vysvětlující algoritmus pro hodnoty SHAP v modelech hloubkového učení s vysokou rychlostí, který se vytváří na základě připojení s DeepLIFT popsané v [dokumentu SHAP nips](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **TensorFlow** modely a modely **Keras** používající back-end TensorFlow jsou podporované (k dispozici je také předběžná podpora pro PyTorch).|Specifické pro model|

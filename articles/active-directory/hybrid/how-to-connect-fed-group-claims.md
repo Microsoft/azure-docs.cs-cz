@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265465"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory
 
@@ -78,11 +78,11 @@ Pokud chcete nakonfigurovat deklarace skupin pro aplikaci v galerii nebo mimo ga
 
 Klikněte na **přidat deklaraci skupiny** .  
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![Snímek obrazovky zobrazující stránku atributy uživatele & deklarace identity s vybranou možnost přidat deklaraci skupiny](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
 Pomocí přepínačů vyberte, které skupiny se mají do tokenu zahrnout.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![Snímek obrazovky, který zobrazuje okno deklarace skupiny se zvolenými možnostmi skupiny zabezpečení](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | Výběr | Popis |
 |----------|-------------|
@@ -93,15 +93,15 @@ Pomocí přepínačů vyberte, které skupiny se mají do tokenu zahrnout.
 
 Pokud například chcete vygenerovat všechny skupiny zabezpečení, které je uživatel členem, vyberte skupiny zabezpečení.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![Snímek obrazovky, který zobrazuje okno deklarace skupiny se zvolenými možnostmi skupiny zabezpečení a otevře se rozevírací nabídka "zdrojový atribut".](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
 Pokud chcete vygenerovat skupiny pomocí atributů služby Active Directory synchronizovaných ze služby Active Directory místo identifikátorů objectID služby Azure AD, v rozevíracím seznamu vyberte požadovaný formát. V deklaracích budou zahrnuty pouze skupiny synchronizované ze služby Active Directory.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![Snímek obrazovky zobrazující, že je otevřená rozevírací nabídka "zdrojový atribut"](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
 Pokud chcete vygenerovat jenom skupiny přiřazené k aplikaci, vyberte **skupiny přiřazené k aplikaci** .
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![Snímek obrazovky, který zobrazuje okno deklarace skupin s vybranými skupinami "skupiny přiřazené k aplikaci".](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
 Do tokenu budou zahrnuty skupiny přiřazené k aplikaci.  Další skupiny, kterých je uživatel členem, budou vynechány.  S touto možností nejsou zahrnuty vnořené skupiny a uživatel musí být přímo členem skupiny přiřazené k aplikaci.
 
@@ -115,11 +115,11 @@ Způsob, jakým se generují deklarace skupin, se dají upravit pomocí nastaven
 
 Přizpůsobit název deklarace skupiny: Pokud je tato možnost vybraná, pro deklarace skupin se dá zadat jiný typ deklarace identity.   Do pole název zadejte typ deklarace identity a v poli obor názvů volitelný obor názvů pro deklaraci identity.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![Snímek obrazovky s oddílem rozšířené možnosti s názvem upravit název vybrané deklarace skupiny a zadat hodnoty název a obor názvů.](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
 Některé aplikace vyžadují, aby se informace o členství ve skupině zobrazovaly v deklaraci identity role. Skupiny uživatelů můžete volitelně vygenerovat jako role zaškrtnutím políčka Generovat skupiny a deklarace identity role.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![Snímek obrazovky s oddílem rozšířené možnosti s možností přizpůsobit název deklarace skupiny a vybrat skupiny pro vygenerování jako deklarace identity pro role](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
 > Pokud se použije možnost Generovat data skupiny jako role, v deklaraci identity role se zobrazí jenom skupiny.  Všechny role aplikace, ke kterým se uživatel přiřadí, se nezobrazí v deklaraci identity role.

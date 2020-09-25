@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527169"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322049"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -100,6 +100,8 @@ Pro zajištění optimálního výkonu zajistěte, aby vaše síť splňovala n�
 * Latence operace Round-Trip (RTT) ze sítě klienta do oblasti Azure, ve které byly nasazené fondy hostitelů, musí být nižší než 150 ms. K zobrazení stavu připojení a doporučené oblasti Azure použijte [prostředí Estimator Experience](https://azure.microsoft.com/services/virtual-desktop/assessment) .
 * Síťový provoz se může směrovat mimo hranice země/oblasti, když se virtuální počítače, které hostují desktopy a aplikace, připojí ke službě správy.
 * Pro optimalizaci výkonu sítě doporučujeme, aby se virtuální počítače hostitele relace společně umístěného ve stejné oblasti Azure jako služba pro správu.
+
+V naší [architektuře documenation](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)se můžete podívat na typické nastavení architektury virtuálního klienta Windows pro podnik.
 
 ## <a name="supported-remote-desktop-clients"></a>Podporovaní klienti vzdálené plochy
 

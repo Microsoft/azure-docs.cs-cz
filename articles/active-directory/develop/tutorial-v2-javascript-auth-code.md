@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, devx-track-javascript
-ms.openlocfilehash: 4613e22193de8dc374d1a9e1a293c317fb9c1b9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256802"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z jednostránkové aplikace v JavaScriptu (SPA) pomocí toku kódu ověřování
 
@@ -325,7 +325,7 @@ Upravte hodnoty v `msalConfig` části, jak je popsáno zde:
 - `Enter_the_Cloud_Instance_Id_Here`: Cloudová instance Azure, ve které je vaše aplikace zaregistrovaná.
   - V případě hlavního (nebo *globálního*) cloudu Azure zadejte `https://login.microsoftonline.com` .
   - Pro **národní** cloudy (například Čína) můžete najít odpovídající hodnoty v [národních cloudech](authentication-national-cloud.md).
-- `Enter_the_Tenant_info_here`měla by být jedna z následujících:
+- `Enter_the_Tenant_info_here` měla by být jedna z následujících:
   - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta**. Například, `contoso.microsoft.com`.
   - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu hodnotou `organizations` .
   - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu hodnotou `common` .
@@ -350,7 +350,7 @@ const graphConfig = {
 
 Upravte hodnoty v `graphConfig` části, jak je popsáno zde:
 
-- `Enter_the_Graph_Endpoint_Here`je instancí rozhraní API Microsoft Graph, se kterou by měla aplikace komunikovat.
+- `Enter_the_Graph_Endpoint_Here` je instancí rozhraní API Microsoft Graph, se kterou by měla aplikace komunikovat.
   - Pro **globální** koncový bod rozhraní API Microsoft Graph nahraďte oba výskyty řetězce `https://graph.microsoft.com` .
   - V případě koncových bodů v **národních** cloudových nasazeních najdete informace v tématu věnovaném [národním cloudovým nasazením](https://docs.microsoft.com/graph/deployments) v dokumentaci Microsoft Graph.
 
@@ -557,7 +557,7 @@ SPA, které jste vytvořili v tomto kurzu, volá nebo `acquireTokenSilent` `acqu
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po prvním přihlášení by vaše aplikace neměla požádat uživatele, aby se znovu ověřili pokaždé, když potřebují přístup k chráněnému prostředku (to znamená vyžádání tokenu). Chcete-li zabránit takové žádosti o opakované ověření, zavolejte `acquireTokenSilent` . Existují však situace, kdy může být nutné vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Například:
+Po prvním přihlášení by vaše aplikace neměla požádat uživatele, aby se znovu ověřili pokaždé, když potřebují přístup k chráněnému prostředku (to znamená vyžádání tokenu). Chcete-li zabránit takové žádosti o opakované ověření, zavolejte `acquireTokenSilent` . Existují však situace, kdy může být nutné vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklad:
 
 - Uživatelé musí znovu zadat své přihlašovací údaje, protože vypršela platnost hesla.
 - Vaše aplikace požaduje přístup k prostředku a potřebujete souhlas uživatele.
@@ -567,7 +567,7 @@ Volání `acquireTokenPopup` otevře automaticky otevírané okno (nebo `acquire
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-`acquireTokenSilent`Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginPopup` `loginRedirect` prvním spuštění (nebo) `acquireTokenSilent` je metoda, která se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům pro následná volání. (Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.) `acquireTokenSilent`v některých případech může selhat. Může například dojít k vypršení platnosti hesla uživatele. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
+`acquireTokenSilent`Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginPopup` `loginRedirect` prvním spuštění (nebo) `acquireTokenSilent` je metoda, která se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům pro následná volání. (Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.) `acquireTokenSilent` v některých případech může selhat. Může například dojít k vypršení platnosti hesla uživatele. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
 
 1. Okamžitě zavolejte, `acquireTokenPopup` aby se aktivovala výzva k přihlášení uživatele. Tento model se běžně používá v online aplikacích, kde není k dispozici žádný neautorizovaný obsah v aplikaci pro uživatele. Ukázka vygenerovaná tímto procesem instalace používá tento model.
 1. Vizuálně nahlaste uživateli, že je vyžadováno interaktivní přihlášení, aby mohl uživatel vybrat správný čas pro přihlášení, nebo může aplikace opakovat `acquireTokenSilent` později. Tato technika se běžně používá v případě, že uživatel může použít jiné funkce aplikace, aniž by došlo k přerušení. V aplikaci může být například dostupný neautorizovaný obsah. V takovém případě se uživatel může rozhodnout, kdy se chce přihlásit k přístupu k chráněnému prostředku, nebo aktualizovat zastaralé informace.

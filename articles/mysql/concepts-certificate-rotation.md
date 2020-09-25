@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4599346cd4538151f6c758253f1f1bf29bafdcbf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9faa9dcd664f5dc8b7b0b633eedd19431a4b826
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322202"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Porozumění změnám v kořenové CA se mění Azure Database for MySQL
 
@@ -30,6 +30,7 @@ Nový certifikát se použije od 26. října 2020 (10/26/2020). Pokud při přip
 Všechny aplikace, které používají protokol SSL/TLS a ověřují kořenový certifikát, musí aktualizovat kořenový certifikát. Můžete zjistit, jestli vaše připojení ověřují kořenový certifikát, a to tak, že zkontrolujete připojovací řetězec.
 -   Pokud váš připojovací řetězec obsahuje `sslmode=verify-ca` nebo `sslmode=verify-full` , musíte aktualizovat certifikát.
 -   Pokud váš připojovací řetězec obsahuje `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` nebo `sslmode=require` , nemusíte aktualizovat certifikáty. 
+-  Pokud používáte konektory Java a váš připojovací řetězec zahrnuje useSSL = false nebo vlastnost requireSSL = false, nemusíte aktualizovat certifikáty.
 -   Pokud v připojovacím řetězci neurčíte sslmode, nemusíte aktualizovat certifikáty.
 
 Pokud používáte klienta, který vyabstrakce připojovací řetězec, přečtěte si dokumentaci klienta, abyste zjistili, zda ověřuje certifikáty.

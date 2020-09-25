@@ -3,12 +3,12 @@ title: Formát Markdownu – QnA Maker
 description: Následuje seznam formátů Markdownu, které můžete použít v textu odpovědi QnA Maker.
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: 38532783c38263b3f1364e30125414958eab1394
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d5bf8342b3e595ed4b381ec5104a0c82f0d7ecc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652752"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321029"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Formát Markdownu podporovaný v textu odpovědi QnA Maker
 
@@ -38,7 +38,7 @@ Nový řádek mezi 2 větami.|`\n\n`|`How can I create a bot with \n\n QnA Maker
 |Tučné a kurzívy|`***text***`|`How can I create a ***QnA Maker*** bot?`|![formát pro tučné písmo a kurzívu](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
 |Tučná adresa URL odkazu|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![formát pro adresu URL tučného písma](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Adresa URL pro odkaz na kurzívu|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![formát pro adresu URL kurzívou](./media/qnamaker-concepts-datasources/format-url-italics.png)|
-|Řídicí symboly Markdownu|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![formát pro adresu URL kurzívou](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|Řídicí symboly Markdownu|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Formát pro řídicí symboly Markdownu](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Seřazený seznam|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Předchozí příklad používá automatické číslování integrovaný do Markdownu.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Předchozí příklad používá explicitní číslování.|![formát pro uspořádaný seznam](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |Neseřazený seznam|`\n * item1 \n * item2`<br>nebo<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![formát pro neuspořádaný seznam](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |Vnořené seznamy|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Můžete vnořit seřazené a neuspořádané seznamy dohromady. Karta `\t` označuje úroveň odsazení podřízeného prvku.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![formát pro vnořený seznam neuspořádaných](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![formát pro vnořený uspořádaný seznam](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
@@ -49,8 +49,8 @@ Pokud chcete přidat obsah pomocí direktivy Update nebo nahradit rozhraní API 
 
 | Zachovat HTML  | Reprezentace v žádosti rozhraní API  | Reprezentace v KB |
 |-----------|---------|-------------------------|
-| Ano | \&lt; br \& gt; | &lt;BR&gt; |
-| Ano | \&lt; H3 \& gt; Header \& lt;/H3 \& gt; | &lt;H3 – &gt; záhlaví &lt; /H3&gt; |
+| Yes | \&lt; br \& gt; | &lt;BR&gt; |
+| Yes | \&lt; H3 \& gt; Header \& lt;/H3 \& gt; | &lt;H3 – &gt; záhlaví &lt; /H3&gt; |
 
 Znaky CR (\r\n) se navíc v KB převádějí na \n. LF (\n) se udržuje tak, jak je. V případě, že chcete řídicí sekvenci řídicích znaků, jako je například \t nebo \n, můžete použít zpětné lomítko, například: \\ \\ r \\ \\ n a \\ \\ t.
 

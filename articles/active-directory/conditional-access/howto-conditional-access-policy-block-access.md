@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e57da384253912a875bacbc5f43aa9f9b99b45b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601584"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265982"
 ---
 # <a name="conditional-access-block-access"></a>Podmíněný přístup: blokovat přístup
 
@@ -38,7 +38,7 @@ Zásady podmíněného přístupu jsou výkonné nástroje. doporučujeme, abyst
 
 ## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
-Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které budou blokovat přístup ke všem aplikacím kromě [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) , pokud uživatelé nejsou v důvěryhodné síti. Tyto zásady jsou uváděné do [režimu pouze](howto-conditional-access-insights-reporting.md) pro spouštění sestav, aby správci mohli určit dopad, který budou mít u stávajících uživatelů. Když mají správci možnost si být jistí, že se zásady použijí podle svých záměrů, můžou je přepnout na **zapnuto**.
+Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které budou blokovat přístup ke všem aplikacím kromě [Office 365](concept-conditional-access-cloud-apps.md#office-365) , pokud uživatelé nejsou v důvěryhodné síti. Tyto zásady jsou uváděné do [režimu pouze](howto-conditional-access-insights-reporting.md) pro spouštění sestav, aby správci mohli určit dopad, který budou mít u stávajících uživatelů. Když mají správci možnost si být jistí, že se zásady použijí podle svých záměrů, můžou je přepnout na **zapnuto**.
 
 První zásada blokuje přístup ke všem aplikacím s výjimkou Microsoft 365ch aplikací, pokud nejsou v důvěryhodném umístění.
 
@@ -52,7 +52,7 @@ První zásada blokuje přístup ke všem aplikacím s výjimkou Microsoft 365ch
    1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**vyberte následující možnosti:
    1. V části **Zahrnout**vyberte **všechny cloudové aplikace**.
-   1. V části **vyloučit**vyberte **Office 365 (Preview)**, vyberte **Vybrat**a pak vyberte **Hotovo**.
+   1. V části **vyloučit**vyberte možnost **Office 365**, vyberte **možnost vybrat**a pak vyberte možnost **Hotovo**.
 1. V části **podmínky**:
    1. V **Conditions**části  >  **umístění**podmínek.
       1. Nastavte **Konfigurovat** na **Ano** .
@@ -72,7 +72,7 @@ Níže je vytvořena druhá zásada, která vyžaduje vícefaktorové ověřová
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Hotovo**.
-1. V **části cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**, zvolte **Office 365 (Preview)**, vyberte **Vybrat**a pak **Hotovo**.
+1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**, zvolte **Office 365**a pak vyberte **Vybrat**a pak **Hotovo**.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**.
    1. Vyberte možnost **požadovat vícefaktorové ověřování** a **vyžadovat, aby zařízení byla označena jako vyhovující** vyberte vybrat. **Select**
    1. Ujistěte se, že je vybrána možnost **vyžadovat všechny vybrané ovládací prvky** .

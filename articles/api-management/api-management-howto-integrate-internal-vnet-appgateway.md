@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025111"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321879"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
 
@@ -35,7 +35,7 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -91,12 +91,12 @@ V této příručce zveřejníme také portál pro **vývojáře** pro externí 
 > 
 > Application Gateway WAF pravidla, která můžou narušit funkčnost portálu, zahrnují:
 > 
-> - `920330`, `931130` , `942100` , `942110` , `942180` , `942200` , `942260` , `942370` , `949110` , `980130` pro režim správy
+> - `920300`, `920330` , `931130` , `942100` , `942110` , `942180` , `942200` , `942260` , `942340` , `942370` pro režim správy
 > - `942200`, `942260` , `942370` , `942430` , `942440` pro publikovaný portál
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Přihlaste se k Azure.
 
@@ -131,7 +131,7 @@ Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umí
 
 Následující příklad ukazuje, jak vytvořit Virtual Network pomocí Správce prostředků.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Přiřaďte proměnné podsítě rozsah adres 10.0.0.0/24, který se má použít pro Application Gateway při vytváření Virtual Network.
 
@@ -168,7 +168,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Následující příklad ukazuje, jak vytvořit službu API Management ve virtuální síti nakonfigurovanou pouze pro interní přístup.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Vytvořte objekt API Management Virtual Network pomocí podsítě $apimsubnetdata vytvořené výše.
 
@@ -194,7 +194,7 @@ Po úspěšném provedení výše uvedeného příkazu se podívejte na [konfigu
 > [!IMPORTANT]
 > [Nový portál pro vývojáře](api-management-howto-developer-portal.md) také vyžaduje povolení připojení ke koncovému bodu správy API Management kromě následujících kroků.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Inicializujte následující proměnné s podrobnostmi o certifikátech a soukromých klíčích pro domény. V tomto příkladu použijeme `api.contoso.net` a `portal.contoso.net` .  
 
@@ -241,7 +241,7 @@ IP adresa je ke službě Application Gateway přiřazena při spuštění služb
 
 Před vytvořením služby Application Gateway musí být nastaveny všechny položky konfigurace. Následující kroky slouží k vytvoření položek konfigurace potřebné pro prostředek služby Application Gateway.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Vytvořte konfiguraci protokolu IP služby Application Gateway s názvem **gatewayIP01**. Při spuštění služby Application Gateway se předá IP adresa z nakonfigurované podsítě a síťový provoz se bude směrovat na IP adresy ve fondu back-end IP adres. Uvědomte si, že každá instance vyžaduje jednu IP adresu.
 
@@ -315,7 +315,7 @@ $apimPoolPortalSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apim
 
 ### <a name="step-9"></a>Krok 9
 
-Nakonfigurujte fond back-end IP adres s názvem **apimbackend** s interní virtuální IP adresou služby API Management vytvořené výše.
+Nakonfigurujte fond back-end IP adres s názvem **apimbackend**  s interní virtuální IP adresou služby API Management vytvořené výše.
 
 ```powershell
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]

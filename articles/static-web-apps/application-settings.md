@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 33a40e7a0e7e3be4433b3cbd4ba7a8e09a84e689
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428049"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250024"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Konfigurace nastavení aplikace pro Azure static Web Apps Preview
 
@@ -31,7 +31,7 @@ Nastavení aplikace se někdy označují také jako proměnné prostředí.
 >
 > Informace o použití proměnných prostředí u vaší webové aplikace front-end najdete v dokumentaci k vašemu [rozhraní JavaScript](#javascript-frameworks-and-libraries) nebo ke [generátoru statických webů](#static-site-generators).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aplikace statického Web Apps Azure
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)

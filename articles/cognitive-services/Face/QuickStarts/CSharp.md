@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fe6def8a935fcc6f093c4489409a3bcde829ac10
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294930"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323052"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a C #
 
 V tomto rychlém startu použijete REST API Azure Face v jazyce C# k detekci lidských plošek v obrázku.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
@@ -75,7 +75,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>Příjem vstupu z obrázku
 
-Do metody **Main** třídy **program** přidejte následující kód. Tento kód zapíše výzvu do konzoly s výzvou, aby uživatel zadal adresu URL obrázku. Pak volá jinou metodu, **MakeAnalysisRequest**a zpracovává image v tomto umístění.
+Do metody **Main** třídy **program** přidejte následující kód. Tento kód zapíše výzvu do konzoly s výzvou, aby uživatel zadal svou místní cestu k souboru bitové kopie. Pak volá jinou metodu, **MakeAnalysisRequest**a zpracovává image v tomto umístění.
 
 ```csharp
         static void Main(string[] args)
@@ -159,7 +159,7 @@ Pomocná metoda bude definována v následujících krocích.
 
 ### <a name="process-the-input-image-data"></a>Zpracování dat vstupní bitové kopie
 
-Do třídy **Program** přidejte následující metodu. Tato metoda převede obrázek na zadané adrese URL do pole bajtů.
+Do třídy **Program** přidejte následující metodu. Tato metoda převede obrázek v zadané cestě k souboru na bajtové pole.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.

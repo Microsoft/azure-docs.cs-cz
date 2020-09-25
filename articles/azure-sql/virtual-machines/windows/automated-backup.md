@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 08ede149c24d8ba4921c0e0b75f5e6eff3f2250f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0aa6a9114635ddc7935f7923a1552ad1583625ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299081"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro virtuální počítače Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 
 ### <a name="basic-settings"></a>Základní nastavení
 
-| Nastavení | Rozsah (výchozí) | Description |
+| Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
 | **Automatizované zálohování** | Povolit/zakázat (zakázáno) | Povolí nebo zakáže automatizované zálohování pro virtuální počítač Azure se systémem SQL Server 2016/2017 Developer, Standard nebo Enterprise. |
 | **Doba uchování** | 1-30 dní (30 dní) | Počet dní uchovávání záloh. |
@@ -69,7 +69,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 
 ### <a name="advanced-settings"></a>Upřesnit nastavení
 
-| Nastavení | Rozsah (výchozí) | Description |
+| Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
 | **Zálohy systémových databází** | Povolit/zakázat (zakázáno) | Když je tato funkce povolená, zálohuje taky systémové databáze: Master, MSDB a model. Pro databáze MSDB a model ověřte, zda jsou v režimu úplného obnovení, pokud chcete provádět zálohy protokolu. Zálohy protokolů se nikdy neprovádí pro hlavní server. A pro databázi TempDB nejsou vyřízeny žádné zálohy. |
 | **Plán zálohování** | Ruční/automatizovaná (automatizovaná) | Ve výchozím nastavení se plán zálohování automaticky určí na základě nárůstu protokolu. Plán ručního zálohování umožňuje uživateli zadat časový interval pro zálohování. V takovém případě zálohy probíhají pouze v zadaném intervalu a v určeném časovém intervalu daného dne. |
@@ -170,7 +170,7 @@ Set-AzVMSqlServerExtension -VMName $vmname `
     -Version "2.0" -Location $region 
 ```
 
-### <a name="verify-current-settings"></a><a id="verifysettings"></a>Ověřit aktuální nastavení
+### <a name="verify-current-settings"></a><a id="verifysettings"></a> Ověřit aktuální nastavení
 Pokud jste během zřizování povolili automatické zálohování, můžete ke kontrole aktuální konfigurace použít PowerShell. Spusťte příkaz **Get-AzVMSqlServerExtension** a prověřte vlastnost **AutoBackupSettings** :
 
 ```powershell

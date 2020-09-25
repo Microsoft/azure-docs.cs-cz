@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9942ad359bf1e1e7a02f30979ba4a9325d90d484
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336050"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Zpracování plánované údržby pomocí PowerShellu
 
@@ -25,6 +25,18 @@ Informace o údržbě jsou vráceny pouze v případě, že je naplánována úd
 
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
+```
+
+Výstup
+
+```
+MaintenanceRedeployStatus               : 
+  IsCustomerInitiatedMaintenanceAllowed : True
+  PreMaintenanceWindowStartTime         : 5/14/2018 12:30:00 PM
+  PreMaintenanceWindowEndTime           : 5/19/2018 12:30:00 PM
+  MaintenanceWindowStartTime            : 5/21/2018 4:30:00 PM
+  MaintenanceWindowEndTime              : 6/4/2018 4:30
+  LastOperationResultCode               : None 
 ```
 
 V MaintenanceRedeployStatus se vrátí následující vlastnosti: 

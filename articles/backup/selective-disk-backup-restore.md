@@ -4,19 +4,16 @@ description: V tomto článku se dozvíte o selektivním zálohování a obnoven
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271371"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektivní zálohování a obnovení disku pro virtuální počítače Azure
 
 Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s použitím řešení zálohování virtuálních počítačů. Teď můžete pomocí funkce zálohování a obnovení selektivních disků zálohovat podmnožinu datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje pouze disky, které jsou součástí operace zálohování. Tím umožníte, aby se v průběhu operace obnovení obnovila podmnožina disků z daného bodu obnovení. To platí pro obnovení ze snímků i z trezoru.
-
->[!NOTE]
->Selektivní zálohování disku a obnovení pro virtuální počítače Azure je ve verzi Public Preview ve všech oblastech.
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -62,7 +59,7 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 Pokud virtuální počítač není ve stejné skupině prostředků jako trezor **, pak skupina** prostředků odkazuje na skupinu prostředků, ve které se vytvořil trezor. Místo názvu virtuálního počítače zadejte ID virtuálního počítače, jak je uvedeno níže.
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>Úprava ochrany pro už zálohované virtuální počítače pomocí Azure CLI
@@ -86,7 +83,7 @@ az backup protection update-for-vm --resource-group {resourcegroup} --vault-name
 ### <a name="restore-disks-with-azure-cli"></a>Obnovení disků pomocí Azure CLI
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Obnovení jenom disku s operačním systémem pomocí Azure CLI
@@ -289,11 +286,32 @@ Funkce zálohování selektivních disků se u klasických virtuálních počít
 
 Možnosti obnovení pro **Vytvoření nového virtuálního počítače** a **nahradit existující** nejsou podporované pro virtuální počítač, u kterého je povolená funkce zálohování na selektivních discích.
 
+V současné době zálohování virtuálních počítačů Azure nepodporuje virtuální počítače s extrémně disky nebo sdílenými disky, které jsou k nim připojené. V takových případech nelze použít zálohování na selektivním disku, která tento disk vyloučí a zálohuje virtuální počítač.
+
 ## <a name="billing"></a>Fakturace
 
 Zálohování virtuálního počítače Azure se řídí stávajícím cenovým modelem, který je podrobně [vysvětlen.](https://azure.microsoft.com/pricing/details/backup/)
 
-**Náklady na chráněnou instanci (pi)** se vypočítávají pro disk s operačním systémem jenom v případě, že se rozhodnete zálohovat jenom pomocí možnosti **disku s operačním systémem** .  Pokud nakonfigurujete zálohování a vyberete alespoň jeden datový disk, budou náklady na PI vypočítány pro všechny disky připojené k virtuálnímu počítači. **Náklady na úložiště zálohování** se vypočítávají jenom na zahrnutých discích, takže se budete moct uložit na náklady na úložiště. **Náklady na snímek** se vždycky vypočítávají pro všechny disky ve virtuálním počítači (zahrnuté i vyloučené disky).  
+**Náklady na chráněnou instanci (pi)** se vypočítávají pro disk s operačním systémem jenom v případě, že se rozhodnete zálohovat jenom pomocí možnosti **disku s operačním systémem** .  Pokud nakonfigurujete zálohování a vyberete alespoň jeden datový disk, budou náklady na PI vypočítány pro všechny disky připojené k virtuálnímu počítači. **Náklady na úložiště zálohování** se vypočítávají jenom na zahrnutých discích, takže se budete moct uložit na náklady na úložiště. **Náklady na snímek** se vždycky vypočítávají pro všechny disky ve virtuálním počítači (zahrnuté i vyloučené disky).
+
+Pokud jste zvolili funkci obnovení mezi oblastmi (CRR), pak se [ceny crr](https://azure.microsoft.com/pricing/details/backup/) vztahují na náklady na úložiště zálohování po vyloučení disku.
+
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>Jak se náklady na chráněnou instanci (PI) vypočítávají jenom pro zálohování na disk s operačním systémem Windows a Linux?
+
+Náklady na PI se počítají na základě skutečné (použité) velikosti virtuálního počítače.
+
+- Pro Windows: použitý výpočet místa je založený na jednotce, na které je uložený operační systém (obvykle C:).
+- Pro Linux: použitý výpočet místa je založený na zařízení, na kterém je připojený kořenový systém souborů (/).
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>Mám nakonfigurovanou jenom zálohu disku s operačním systémem, proč se u všech disků děje snímek?
+
+Funkce zálohování na základě selektivního disku vám umožní ušetřit náklady na úložiště záloh tím, že posílí zahrnuté disky, které jsou součástí zálohy. Snímek se ale povede pro všechny disky, které jsou připojené k virtuálnímu počítači. Takže náklady na snímek se vždycky vypočítávají pro všechny disky ve virtuálním počítači (zahrnuté i vyloučené disky). Další informace najdete v tématu [fakturace](#billing).
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>Nejde nakonfigurovat zálohování pro virtuální počítač Azure tím, že se mají vyloučit disky nebo sdílené disky připojené k VIRTUÁLNÍmu počítači.
+
+Funkce zálohování na základě selektivního disku je funkce poskytovaná nad řešením zálohování virtuálních počítačů Azure. V současné době zálohování virtuálních počítačů Azure nepodporuje virtuální počítače, které jsou k nim připojené pomocí Ultra disk nebo sdíleného disku.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,13 +11,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: 32a766fc1a161d87e0b42f2551eca0328006ed9b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+- devx-track-js
+ms.openlocfilehash: f8b7e55d95c08a31a20503e329e64b9e65e3b723
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323919"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node.js SDK pro zařízení pro IoT Hub Device Provisioning Service
 

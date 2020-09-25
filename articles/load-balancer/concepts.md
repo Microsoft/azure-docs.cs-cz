@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 96b91c08e0bf9a176af2ed844cd63a2cfa1e233d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9765f685f2fccc9332a2f07d907aac415aa2c57f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589635"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333915"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer koncepty
 
@@ -83,9 +83,9 @@ Na úrovni platformy Azure Load Balancer vždy pracuje s topologií toku DSR bez
 Bez plovoucí IP adresy poskytuje Azure tradiční schéma mapování IP adres pro vyrovnávání zatížení, které umožňuje snadné použití (IP instance virtuálních počítačů). Povolením plovoucí IP adresy změní mapování IP adres na front-end IP adresu nástroje pro vyrovnávání zatížení, aby byla umožněna další flexibilita. Další informace najdete [tady](load-balancer-multivip-overview.md).
 
 
-## <a name="limitations"></a><a name = "limitations"></a>Určitá
+## <a name="limitations"></a><a name = "limitations"></a>Omezení
 
-- Plovoucí IP adresa se v současné době nepodporuje u sekundárních konfigurací IP pro scénáře interního vyrovnávání zatížení.
+- Plovoucí IP adresa se v současné době nepodporuje u sekundárních konfigurací IP pro scénáře interního vyrovnávání zatížení nebo pro scénáře veřejného vyrovnávání zatížení.
 
 - Pravidlo nástroje pro vyrovnávání zatížení nemůže zahrnovat dvě virtuální sítě.  Front-endové a jejich instance back-endu se musí nacházet ve stejné virtuální síti.  
 

@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321942"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
@@ -77,6 +77,14 @@ K těmto chybám dochází, když aplikace, se kterou se uživatel snaží souhl
     -   Udělení oprávnění aplikace prostřednictvím Azure Portal
 
     -   Přidání aplikace z Galerie aplikací Azure AD
+
+## <a name="risky-app-error-and-warning"></a>Chybová zpráva a upozornění rizikové aplikace
+* Tato aplikace může být riskantní. Pokud tuto aplikaci považujete za důvěryhodnou, požádejte správce, aby vám udělil přístup.
+* Tato aplikace může být riskantní. Pokračujte pouze v případě, že tuto aplikaci důvěřujete.
+
+Obě tyto zprávy se zobrazí, když společnost Microsoft zjistí, že žádost o souhlas může být riskantní. V mnoha dalších faktorech to může nastat, pokud se [ověřený vydavatel](../develop/publisher-verification-overview.md) nepřidal do registrace aplikace. První zpráva se zobrazí koncovým uživatelům, když je [pracovní postup pro vyjádření souhlasu správce](configure-admin-consent-workflow.md) zakázán. Druhá zpráva se zobrazí koncovým uživatelům, když je povolen pracovní postup souhlasu správce a správců. 
+
+Koncoví uživatelé nebudou moci udělit souhlas aplikacím, které byly zjištěny jako rizikové. Správci jsou schopni, ale měli by zhodnotit, že aplikace je velmi opatrní a bude postupovat opatrně. Pokud se aplikace při další kontrole jeví jako podezřelá, může se Microsoftu ohlásit na obrazovce pro vyjádření souhlasu. 
 
 ## <a name="next-steps"></a>Další kroky 
 

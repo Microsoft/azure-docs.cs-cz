@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271184"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
 
@@ -42,7 +42,7 @@ Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému 
 
 Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V návrháři do vyhledávacího pole zadejte "Swagger" jako filtr. V seznamu **triggery** vyberte aktivační událost **http + Swagger** .
 
@@ -54,17 +54,17 @@ Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro 
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Zadejte adresu URL koncového bodu Swagger.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Snímek obrazovky, který zobrazuje návrháře aplikace logiky s triggerem "H T T P + Swagger" a vlastností "koncový bod" koncového bodu U R L nastavenou na hodnotu U R L.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Když Návrhář zobrazí operace popsané souborem Swagger, vyberte operaci, kterou chcete použít.
 
-   ![Operace v souboru Swagger](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Snímek obrazovky, který zobrazuje návrháře aplikace logiky s triggerem "H T T P + Swagger" a seznamem, který zobrazuje operace Swagger.](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. Zadejte hodnoty pro parametry triggeru, které se liší v závislosti na vybrané operaci, kterou chcete zahrnout do volání koncového bodu. Nastavte opakování pro to, jak často chcete, aby Trigger volal koncový bod.
 
    Tento příklad přejmenuje aktivační událost na "aktivační událost HTTP + Swagger: Face-Detect", aby měl krok výstižnější název.
 
-   ![Podrobnosti o operaci](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![Snímek obrazovky, který zobrazuje návrháře aplikace logiky s triggerem "H T T P + Swagger", který zobrazuje operaci "obličeje-rozpoznávání".](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. Chcete-li přidat další dostupné parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry.
 
@@ -78,7 +78,7 @@ Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro 
 
 Tato Vestavěná akce vytvoří požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
 1. V kroku, kam chcete přidat akci HTTP + Swagger, vyberte **Nový krok**.
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 03/19/2020
+ms.date: 09/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908648"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274040"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
 
@@ -61,7 +61,7 @@ Pokud uživatel nemá přiřazenou roli omezeného správce, nebudou uživatelé
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Můžu přístup k Azure Portal zablokovat pro uživatele typu Host?
 
-Ano. Můžete vytvořit zásadu podmíněného přístupu, která zablokuje všem uživatelům typu Host a externím uživatelům přístup k Azure Portal. Při konfiguraci této zásady buďte opatrní, abyste se vyhnuli nechtěnému blokování přístupu ke členům a správcům.
+Ano! Můžete vytvořit zásadu podmíněného přístupu, která zablokuje všem uživatelům typu Host a externím uživatelům přístup k Azure Portal. Při konfiguraci této zásady buďte opatrní, abyste se vyhnuli nechtěnému blokování přístupu ke členům a správcům.
 
 1. Přihlaste se k vašemu [Azure Portal](https://portal.azure.com/) jako správce zabezpečení nebo správce podmíněného přístupu.
 2. V Azure Portal vyberte **Azure Active Directory**. 
@@ -116,6 +116,9 @@ Pokud má partner tenanta Azure AD federovaného do místní ověřovací infras
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Myslelo se, že služba Azure AD B2B nepřijímala e-mailové adresy gmail.com a outlook.com a tato B2C se použila pro tyto typy účtů?
 Odstraňujeme rozdíly mezi spoluprací B2B a B2C (Business-to-Consumer), z nichž jsou identity podporované. Použitá identita není dobrým důvodem pro výběr mezi použitím B2B nebo pomocí B2C. Informace o volbě možnosti spolupráce najdete v tématu [porovnání spolupráce B2B a B2C v Azure Active Directory](compare-with-b2c.md).
+
+### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>Může se místní účet Azure AD B2C pozvat do tenanta Azure AD pro spolupráci B2B?
+No. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Jaké aplikace a služby podporují uživatele typu Host Azure B2B?
 Všechny aplikace integrované s Azure AD můžou podporovat uživatele typu Host Azure B2B, ale musí používat koncový bod nastavený jako tenant k ověřování uživatelů typu Host. Je také možné, že budete muset [přizpůsobit deklarace identity](claims-mapping.md) v tokenu SAML, který je vydaný, když se uživatel typu Host ověří do aplikace. 

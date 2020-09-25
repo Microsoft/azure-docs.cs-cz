@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 900471675c0e77cc5d82641fead3f019a0fa90c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d81836b47acb19f624075480aafef74c9c0934c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358680"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306119"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronizace: podruhé spuštění Průvodce instalací
 Při prvním spuštění Průvodce instalací Azure AD Connect vás provede konfigurací instalace. Pokud znovu spustíte Průvodce instalací, nabízí možnosti údržby.
@@ -79,7 +79,7 @@ Když vyberete tuto možnost, zobrazí se všechny adresáře ve vaší konfigur
 Tato možnost umožňuje povolit nebo zakázat pracovní režim na serveru. Další informace o pracovním režimu a způsobu jejich použití najdete v tématu [operace](how-to-connect-sync-staging-server.md).
 
 Možnost zobrazuje, zda je pracovní postup aktuálně povolen nebo zakázán:  
-![Možnost, která zobrazuje aktuální stav pracovního režimu](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
+![Snímek obrazovky, který zobrazuje pracovní režim zakázán.](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
 
 Chcete-li změnit stav, vyberte tuto možnost a zaškrtněte nebo zrušte zaškrtnutí políčka.  
 ![Možnost, která zobrazuje aktuální stav pracovního režimu](./media/how-to-connect-installation-wizard/stagingmodeenable.png)

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 81c4558bde3ffdbec72a756562b972c2eed4a1ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936430"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273037"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
 
@@ -45,7 +45,7 @@ V současné době podporuje seznam Kubernetes služeb a distribucí následují
 > [!NOTE]
 > Pokud používáte platformu Red Hat OpenShift Container Platform v Azure, doporučuje se použít nejnovější dostupnou verzi.
 
-V závislosti na zvolené možnosti se budou _vyžadovat_některé nástroje, ale před zahájením vytváření kontroleru dat ARC Azure se doporučuje [nainstalovat všechny nástroje klienta](install-client-tools.md) .
+V závislosti na zvolené možnosti se budou _vyžadovat_některé nástroje, ale před zahájením vytváření kontroleru dat ARC Azure se doporučuje [nainstalovat všechny nástroje klienta](./install-client-tools.md) .
 
 Bez ohledu na to, kterou možnost zvolíte, budete muset během procesu vytváření zadat následující informace:
 
@@ -53,7 +53,7 @@ Bez ohledu na to, kterou možnost zvolíte, budete muset během procesu vytvář
 - **Uživatelské jméno kontroleru dat** – jakékoli uživatelské jméno pro uživatele správce kontroleru dat.
 - **Heslo ke službě data Controller** – heslo pro uživatele správce kontroleru dat.
 - **Název oboru názvů Kubernetes** – název oboru názvů Kubernetes, ve kterém chcete vytvořit řadič dat.
-- **Režim připojení** – [režim připojení](connectivity.md) vašeho clusteru. V současné době je podporována pouze "nepřímá".
+- **Režim připojení** – [režim připojení](./connectivity.md) vašeho clusteru. V současné době je podporována pouze "nepřímá".
 - **ID předplatného Azure** – identifikátor GUID předplatného Azure, kde chcete vytvořit prostředek řadiče dat v Azure.
 - **Název skupiny prostředků Azure** – název skupiny prostředků, ve které chcete vytvořit prostředek řadiče dat v Azure.
 - **Umístění Azure** – umístění Azure, kde se metadata prostředku řadiče dat uloží do Azure. Seznam oblastí, které jsou k dispozici, najdete v tématu [globální infrastruktura/produkty Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
@@ -68,5 +68,5 @@ K dispozici je několik možností pro vytvoření kontroleru dat ARC Azure:
 - [Vytvoření kontroleru dat pomocí Azure Data CLI (azdata)](create-data-controller-using-azdata.md)
 - [Vytvoření kontroleru dat pomocí Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Z Azure Portal pomocí poznámkového bloku Jupyter v Azure Data Studio vytvořit řadič dat](create-data-controller-resource-in-azure-portal.md)
-- [Vytvoření kontroleru dat s Kubernetes nástroji, jako je kubectl nebo oC](create-data-controller-using-k8s-native-tools.md)
+- [Vytvoření kontroleru dat s Kubernetes nástroji, jako je kubectl nebo oC](create-data-controller-using-kubernetes-native-tools.md)
 - [Vytvoření kontroleru dat pomocí Azure ARC rychlé zprovoznění pro urychlené prostředí testovacího nasazení](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)

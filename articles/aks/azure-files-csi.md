@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d845e7589b57bf76d3da48c48fa0a520b09e1f94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299302"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní pro kontejnerové úložiště Azure Files ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -194,16 +194,98 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
+
+## <a name="nfs-file-shares"></a>Sdílené složky NFS
+[Soubory Azure teď podporují protokol NFS verze 4.1](../storage/files/storage-files-how-to-create-nfs-shares.md). Podpora NFS 4,1 pro soubory Azure poskytuje plně spravovaný systém souborů NFS jako službu postavenou na vysoce dostupné a vysoce odolné platformě odolného úložiště.
+
+ Tato možnost je optimalizovaná pro úlohy s náhodným přístupem s aktualizacemi místních dat a poskytuje úplnou podporu systému souborů POSIX. V této části se dozvíte, jak používat sdílené složky NFS s ovladačem Azure File CSI v clusteru AKS.
+
+Nezapomeňte zkontrolovat [omezení](../storage/files/storage-files-compare-protocols.md#limitations) a [dostupnost oblasti](../storage/files/storage-files-compare-protocols.md#regional-availability) v rámci fáze Preview.
+
+### <a name="register-the-allownfsfileshares-preview-feature"></a>Registrace `AllowNfsFileShares` funkce Preview
+
+Pokud chcete vytvořit sdílenou složku, která využívá NFS 4,1, musíte `AllowNfsFileShares` u svého předplatného povolit příznak funkce.
+
+Příznak funkce Zaregistrujte `AllowNfsFileShares` pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
+```
+
+Zobrazení stavu v *registraci*trvá několik minut. Pomocí příkazu [AZ Feature list][az-feature-list] ověřte stav registrace:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
+```
+
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. Storage* pomocí příkazu [AZ Provider Register][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Storage
+```
+
+### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Vytvoření účtu úložiště pro sdílenou složku NFS
+
+[Vytvořit `Premium_LRS` Účet služby Azure Storage](../storage/files/storage-how-to-create-premium-fileshare.md) s následujícími konfiguracemi pro podporu sdílených složek NFS:
+- druh účtu: úložiště
+- je vyžadován zabezpečený přenos (povolit pouze provoz HTTPS): false
+- Vyberte virtuální síť uzlů agentů v bránách firewall a virtuálních sítích.
+
+### <a name="create-nfs-file-share-storage-class"></a>Vytvoření souborové třídy úložiště sdílené složky systému souborů NFS
+
+Uložte `nfs-sc.yaml` soubor s manifestem níže úpravou příslušných zástupných symbolů.
+
+```yml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: azurefile-csi
+provisioner: file.csi.azure.com
+parameters:
+  resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
+  storageAccount: EXISTING_STORAGE_ACCOUNT_NAME
+  protocol: nfs
+```
+
+Po úpravě a uložení souboru vytvořte třídu úložiště pomocí příkazu [kubectl Apply][kubectl-apply] :
+
+```console
+$ kubectl apply -f nfs-sc.yaml
+
+storageclass.storage.k8s.io/azurefile-csi created
+```
+
+### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>Vytvoření nasazení se sdílenou složkou zálohovanou systémem souborů NFS
+Můžete nasadit ukázkovou [stavovou sadu](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) , která uloží časová razítka do souboru `data.txt` nasazením následujícího příkazu pomocí příkazu [kubectl Apply][kubectl-apply] :
+
+ ```console
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+
+statefulset.apps/statefulset-azurefile created
+```
+
+Ověřte obsah svazku spuštěním:
+
+```console
+$ kubectl exec -it statefulset-azurefile-0 -- df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+...
+/dev/sda1                                                                                 29G   11G   19G  37% /etc/hosts
+accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
+...
+```
+
 ## <a name="windows-containers"></a>Kontejnery Windows
 
-Ovladač Azure Files CSI podporuje i uzly a kontejnery Windows. Pokud chcete použít kontejnery Windows, postupujte podle [kurzu Windows Containers](windows-container-cli.md) (Přidat fond uzlů Windows).
+Ovladač Azure Files CSI podporuje i uzly a kontejnery Windows. Pokud chcete používat kontejnery Windows, přidejte fond uzlů Windows podle [kurzu Windows Containers](windows-container-cli.md) .
 
 Po použití fondu uzlů Windows použijte předdefinované třídy úložiště, například `azurefile-csi` nebo vytvořte vlastní. Můžete nasadit ukázkovou [stavovou sadu založenou na Windows](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) , která uloží časová razítka do souboru `data.txt` nasazením následujícího příkazu pomocí příkazu [kubectl Apply][kubectl-apply] :
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
 
-statefulset.apps/busybox-azuredisk created
+statefulset.apps/busybox-azurefile created
 ```
 
 Ověřte obsah svazku spuštěním:
@@ -248,10 +330,10 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [storage-skus]: ../storage/common/storage-redundancy.md
