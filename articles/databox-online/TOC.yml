@@ -7,6 +7,10 @@
       items:
         - name: Co je Azure Stack Edge Pro s GPU?
           href: azure-stack-edge-gpu-overview.md
+    - name: Rychlé starty
+      items:
+        - name: Začínáme
+          href: azure-stack-edge-gpu-quickstart.md
     - name: Kurzy
       items:
         - name: 0. Zajištění kontrolního seznamu

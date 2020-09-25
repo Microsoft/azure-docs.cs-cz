@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c4c19850cda158afdb888188d3f99b7d93195aa5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808843"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334850"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Dlouhodobé uchovávání – Azure SQL Database a Azure SQL Managed instance
 
@@ -79,7 +79,7 @@ Pokud jako řešení provozní kontinuity používáte aktivní geografickou rep
 > [!NOTE]
 > Když se původní primární databáze obnoví z výpadku, který způsobil převzetí služeb při selhání, stane se nová sekundární. Vytvoření zálohy proto nebude pokračovat a stávající zásady LTR se neprojeví, dokud se znovu nevrátí k primárnímu. 
 
-## <a name="sql-managed-instance-support"></a>Podpora spravované instance SQL
+## <a name="sql-managed-instance-support"></a>Podpora SQL Managed Instance
 
 Použití dlouhodobého uchovávání záloh se spravovanou instancí Azure SQL má následující omezení:
 

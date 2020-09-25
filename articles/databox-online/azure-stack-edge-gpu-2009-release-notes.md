@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 09/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 6f1199b29e3bdaa2200aeb7fe4f76c4c9d0d8e19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9d3aafad457f5c72a8c45f4f98f8f03eb8d978d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324259"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Zpráva k vydání verze pro obecné dostupnosti GPU (GA) Azure Stack Edge pro
 
@@ -21,11 +21,9 @@ Následující poznámky k verzi identifikují kritické otevřené problémy a 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením zařízení Azure Stack Edge pro pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Tento článek se týká verze softwaru **Azure Stack Edge Pro 2009** . 
+Tento článek se týká verze **Azure Stack Edge pro 2009** , která se mapuje na číslo verze softwaru **2.1.1358.2075**.
 
-<!--- This software release corresponds to software version number **2.1.1328.1904**-->
-
-## <a name="whats-new"></a>Novinky
+## <a name="whats-new"></a>Co je nového
 
 Ve verzi Azure Stack Edge 2009 jsou k dispozici následující nové funkce. 
 

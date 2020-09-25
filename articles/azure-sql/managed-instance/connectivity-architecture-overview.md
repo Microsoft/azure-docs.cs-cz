@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 059828336288eeadc0567fed060db07e323f885c
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 81d0731f6ea77325b3f33f91bf8d5d1386dab2fb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283373"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -96,7 +96,7 @@ Koncové body služby se daly použít ke konfiguraci pravidel brány firewall v
 > [!IMPORTANT]
 > Z důvodu specifičnosti konfigurace roviny řízení by konfigurace podsítě pro službu nepovolovala koncové body služby v národních cloudech. 
 
-### <a name="network-requirements"></a>Síťové požadavky
+### <a name="network-requirements"></a>Požadavky sítě
 
 Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální sítě. Podsíť musí mít tyto charakteristiky:
 
@@ -333,7 +333,7 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 
 | Name       |Port                        |Protokol|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|správa  |9000, 9003, 1438, 1440, 1452|TCP     |Libovolný              |PODSÍŤ MI  |Povolit |
+|správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |PODSÍŤ MI  |Povolit |
 |mi_subnet   |Všechny                         |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 |health_probe|Všechny                         |Všechny     |AzureLoadBalancer|PODSÍŤ MI  |Povolit |
 

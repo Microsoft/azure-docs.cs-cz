@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a7cd807de7e723d48faaa0944ea55b1887c9721
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284104"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Zjistitelné typy slabých míst výkonu dotazů v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -58,7 +58,7 @@ Neoptimální plán generovaný optimalizátorem dotazů SQL může být příč
 
 Následující části popisují, jak řešit dotazy s nejoptimálním plánem spouštění dotazů.
 
-### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a>Dotazy, které mají problémy s parametrem citlivostní plán (PSP)
+### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a> Dotazy, které mají problémy s parametrem citlivostní plán (PSP)
 
 K problému s parametrem s citlivým plánem (PSP) dochází, když Optimalizátor dotazů generuje plán spouštění dotazů, který je optimální pouze pro konkrétní hodnotu parametru (nebo sadu hodnot) a plán uložený v mezipaměti není optimální pro hodnoty parametrů, které se používají při následném spuštění. Plány, které nejsou optimální, můžou následně způsobit problémy s výkonem dotazů a snižovat celkovou propustnost úloh.
 

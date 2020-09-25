@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c01d1bcb682a5f711dcba3cc7b32ef69b2642ef6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 47b8c45e22569cc758d00fb8534f409ecebf58ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900763"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299927"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Prozkoumejte centrum synapse Knowledge Center
 
@@ -46,7 +46,6 @@ Vyberte jednu z metod a otevřete **Centrum znalostí**.
 1. Klikněte na Spustit. Spustí se vybraný text.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Načítají se další data taxislužby NYC.
-
 1. **Centrum znalostí**klikněte na **Procházet dostupné ukázky** . 
 1. Vyberte kartu **skripty SQL** v horní části.
 1. Vyberte **načíst datovou sadu taxislužby města New York** .
@@ -58,5 +57,6 @@ Vyberte jednu z metod a otevřete **Centrum znalostí**.
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Analýza pomocí fondu SQL](get-started-analyze-sql-pool.md)
+* [Začínáme s Azure synapse Analytics](get-started.md)
+* [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
+* [Používání SQL na vyžádání](quickstart-sql-on-demand.md)

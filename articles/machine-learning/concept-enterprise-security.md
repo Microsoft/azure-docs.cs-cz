@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302617"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -42,7 +42,7 @@ Další informace najdete v tématu [nastavení ověřování pro Azure Machine 
 
 Azure Machine Learning podporuje dvě formy ověřování pro webové služby: klíč a token. Každá webová služba může současně povolit jenom jednu formu ověřování.
 
-|Metoda ověřování|Description|Azure Container Instances|AKS|
+|Metoda ověřování|Popis|Azure Container Instances|AKS|
 |---|---|---|---|
 |Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
 |Token|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
@@ -118,7 +118,7 @@ Můžete také povolit privátní propojení Azure pro váš pracovní prostor. 
 ### <a name="encryption-at-rest"></a>Šifrování neaktivních uložených dat
 
 > [!IMPORTANT]
-> Pokud váš pracovní prostor obsahuje citlivá data, doporučujeme při vytváření pracovního prostoru nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) . `hbi_workspace`Příznak lze nastavit pouze v případě, že je vytvořen pracovní prostor. Nedá se změnit pro existující pracovní prostor.
+> Pokud váš pracovní prostor obsahuje citlivá data, doporučujeme při vytváření pracovního prostoru nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) . `hbi_workspace`Příznak lze nastavit pouze v případě, že je vytvořen pracovní prostor. Nedá se změnit pro existující pracovní prostor.
 
 `hbi_workspace`Příznak řídí množství dat, která [Microsoft shromažďuje pro účely diagnostiky](#microsoft-collected-data) , a umožňuje [Další šifrování v prostředích spravovaných Microsoftem](../security/fundamentals/encryption-atrest.md). Kromě toho umožňují následující akce:
 
@@ -156,7 +156,7 @@ Pokud chcete ve svém předplatném povolit zřizování Cosmos DB instance pomo
     * `cmk_keyvault`: Tento parametr je ID prostředku pro Trezor klíčů v rámci vašeho předplatného. Tento Trezor klíčů musí být ve stejné oblasti a předplatném, které budete používat pro Azure Machine Learning pracovní prostor. 
     
         > [!NOTE]
-        > Tato instance trezoru klíčů se může lišit od trezoru klíčů, který je vytvořený Azure Machine Learning při zřizování pracovního prostoru. Pokud chcete pro pracovní prostor použít stejnou instanci trezoru klíčů, předejte stejný Trezor klíčů při zřizování pracovního prostoru pomocí [parametru key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
+        > Tato instance trezoru klíčů se může lišit od trezoru klíčů, který je vytvořený Azure Machine Learning při zřizování pracovního prostoru. Pokud chcete pro pracovní prostor použít stejnou instanci trezoru klíčů, předejte stejný Trezor klíčů při zřizování pracovního prostoru pomocí [parametru key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
 Tato instance Cosmos DB je vytvořená ve skupině prostředků spravované Microsoftem ve vašem předplatném, spolu s případnými prostředky, které potřebuje. Spravovaná skupina prostředků je pojmenována ve formátu `<AML Workspace Resource Group Name><GUID>` . Pokud váš pracovní prostor Azure Machine Learning používá privátní koncový bod, vytvoří se pro instanci Cosmos DB taky virtuální síť. Tato virtuální síť slouží k zabezpečení komunikace mezi Cosmos DB a Azure Machine Learning.
 
@@ -197,7 +197,7 @@ Pokud chcete klíč použít při nasazování modelu do služby Azure Container
 
 Další informace o vytváření a používání konfigurace nasazení najdete v následujících článcích:
 
-* Odkaz na [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
+* Odkaz na [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
 * [Kde a jak nasadit](how-to-deploy-and-where.md)
 * [Nasazení modelu do služby Azure Container Instances](how-to-deploy-azure-container-instance.md)
 
@@ -291,6 +291,10 @@ Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights. P
 >
 > Některé z těchto akcí se zobrazí v oblasti **aktivity** pracovního prostoru, ale tato oznámení nenaznačují, kdo aktivitu inicioval.
 
+### <a name="vulnerability-scanning"></a>Kontrola ohrožení zabezpečení
+
+Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Pro Azure Machine Learning byste měli povolit kontrolu Azure Container Registry prostředků a prostředků služby Azure Kubernetes. Přečtěte si téma [Azure Container Registry prohledávání imagí pomocí Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) a [integrace služby Azure Kubernetes Services s Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
+
 ## <a name="data-flow-diagrams"></a>Diagramy toku dat
 
 ### <a name="create-workspace"></a>Vytvoření pracovního prostoru
@@ -362,7 +366,7 @@ Podrobnosti najdete tady:
 
 [![Pracovní postup odvození](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
-## <a name="audit-and-manage-compliance"></a>Auditovat a spravovat dodržování předpisů
+## <a name="audit-and-manage-compliance"></a>Auditování a správa dodržování předpisů
 
 [Azure Policy](/azure/governance/policy) je nástroj zásad správného řízení, který vám umožní zajistit, aby prostředky Azure vyhovovaly vašim zásadám. Pomocí Azure Machine Learning můžete přiřadit následující zásady:
 

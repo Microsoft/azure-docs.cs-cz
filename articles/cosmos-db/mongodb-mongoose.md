@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
-ms.custom: seodec18, devx-track-javascript
-ms.openlocfilehash: eb91b6108cedd12299fcb3cfa89bf2cc91bcd69f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: seodec18, devx-track-js
+ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324548"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojení aplikace Node.js Mongoose k Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Tento kurz ukazuje, jak používat [rozhraní Mongoose](https://mongoosejs.com/)
 
 Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, klíčů a hodnot a grafů, z nichž všechno přináší výhody funkcí globální distribuce a horizontálního škálování v jádru Cosmos DB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,7 +40,7 @@ Pojďme vytvořit účet Cosmos. Pokud již máte účet, který chcete použít
 V této aplikaci se budeme zabývat dvěma způsoby vytváření kolekcí v Azure Cosmos DB: 
 - **Ukládání každého objektového modelu do samostatné kolekce**: doporučujeme [vytvořit databázi s vyhrazenou propustností](set-throughput.md#set-throughput-on-a-database). Použití tohoto modelu kapacity vám poskytne lepší náklady na efektivitu.
 
-    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="KurzNode.js – snímek obrazovky Azure Portal, který ukazuje, jak vytvořit databázi v Průzkumník dat pro účet Azure Cosmos DB pro použití s modulem Mongoose Node":::
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text=" KurzNode.js – snímek obrazovky Azure Portal, který ukazuje, jak vytvořit databázi v Průzkumník dat pro účet Azure Cosmos DB pro použití s modulem Mongoose Node":::
 
 - **Ukládání všech objektových modelů do jedné kolekce Cosmos DB**: Chcete-li uložit všechny modely do jedné kolekce, stačí vytvořit novou databázi bez výběru možnosti pro zajištění propustnosti. Použití tohoto modelu kapacity vytvoří každou kolekci s vlastní kapacitou propustnosti pro každý objektový model.
 
@@ -197,7 +197,7 @@ V této části se seznámíte s tím, jak toho dosáhnout pomocí rozhraní Azu
 
 1. Nyní se v Azure Portal stanete dvěma kolekcemi vytvořenými v Cosmos DB.
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="KurzNode.js – snímek obrazovky Azure Portal se zobrazeným účtem Azure Cosmos DB se zvýrazněnými názvy více kolekcí – databáze Node":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text=" KurzNode.js – snímek obrazovky Azure Portal se zobrazeným účtem Azure Cosmos DB se zvýrazněnými názvy více kolekcí – databáze Node":::
 
 1. Nakonec načteme data z Cosmos DB. Vzhledem k tomu, že používáme výchozí provozní model Mongoose, probíhá čtení stejným způsobem jako jakákoli jiná čtení pomocí Mongoose.
 
@@ -302,7 +302,7 @@ Tady vytvoříme základní objektový model, nadefinujeme odlišující klíč 
 
 1. Pokud se teď vrátíte na web Azure Portal, zjistíte, že máte pouze jednu kolekci ```alldata``` obsahující data modelů Family i VacationDestinations.
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="KurzNode.js – snímek obrazovky Azure Portal se zobrazeným účtem Azure Cosmos DB s názvem kolekce zvýrazněný – databáze Node":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text=" KurzNode.js – snímek obrazovky Azure Portal se zobrazeným účtem Azure Cosmos DB s názvem kolekce zvýrazněný – databáze Node":::
 
 1. Všimněte si také, že každý objekt má jiný atribut ```__type```, který pomáhá s odlišováním těchto dvou různých objektových modelů.
 

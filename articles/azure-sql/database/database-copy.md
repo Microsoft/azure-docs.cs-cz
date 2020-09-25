@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f6a3ccbcdb3d29434b196dbf75dc61c4177de271
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284274"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -26,7 +26,7 @@ Azure SQL Database poskytuje několik metod pro vytvoření kopie existující [
 
 ## <a name="overview"></a>Přehled
 
-Kopie databáze je nekonzistentně konzistentní snímek zdrojové databáze k určitému bodu v čase po zahájení žádosti o zkopírování. Pro kopii můžete vybrat stejný server nebo jiný server. Také se můžete rozhodnout zachovat úroveň služby a výpočetní velikost zdrojové databáze nebo použít jinou výpočetní velikost v rámci stejné nebo jiné úrovně služby. Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. Přihlašovací jména, uživatele a oprávnění ve zkopírované databázi jsou spravovány nezávisle na zdrojové databázi. Kopie se vytvoří pomocí technologie geografické replikace. Po dokončení počátečního dokončování repliky se připojení geografické replikace automaticky ukončí. Všechny požadavky na použití geografické replikace se vztahují na operaci kopírování databáze. Podrobnosti najdete v tématu [Aktivní geografická replikace – přehled](active-geo-replication-overview.md) .
+Kopie databáze je nekonzistentně konzistentní snímek zdrojové databáze k určitému bodu v čase po zahájení žádosti o zkopírování. Pro kopii můžete vybrat stejný server nebo jiný server. Také se můžete rozhodnout zachovat úroveň služby a výpočetní velikost zdrojové databáze nebo použít jinou výpočetní velikost v rámci stejné nebo jiné úrovně služby. Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. Přihlašovací jména, uživatele a oprávnění ve zkopírované databázi jsou spravovány nezávisle na zdrojové databázi. Kopie se vytvoří pomocí technologie geografické replikace. Po dokončení počáteční repliky se připojení geografické replikace automaticky ukončí. Všechny požadavky pro používání geografické replikace se vztahují i na operaci kopírování databáze. Podrobnosti najdete v tématu [Aktivní geografická replikace – přehled](active-geo-replication-overview.md) .
 
 ## <a name="logins-in-the-database-copy"></a>Přihlašovací údaje v kopii databáze
 
@@ -36,7 +36,7 @@ Při kopírování databáze na jiný server se objekt zabezpečení, který ini
 
 Bez ohledu na cílový server se všechny uživatele databáze, jejich oprávnění a identifikátory zabezpečení (SID) zkopírují do kopie databáze. Použití [uživatelů databáze s omezením](logins-create-manage.md) pro přístup k datům zajišťuje, že zkopírovaná databáze má stejné přihlašovací údaje uživatele, takže po dokončení kopie můžete k ní hned přistupovat pomocí stejných přihlašovacích údajů.
 
-Pokud používáte přihlášení na úrovni serveru pro přístup k datům a kopírujete databázi na jiný server, nemusí přístup založený na přihlášení fungovat. K tomu může dojít, protože přihlášení na cílovém serveru neexistují nebo se liší jejich hesla a identifikátory zabezpečení (SID). Další informace o správě přihlášení po zkopírování databáze na jiný server najdete v tématu [Správa zabezpečení Azure SQL Database po zotavení po havárii](active-geo-replication-security-configure.md). Po úspěšném dokončení operace kopírování na jiném serveru a před přemapováním dalších uživatelů se může do zkopírované databáze přihlásit pouze přihlášení přidružené k vlastníkovi databáze nebo správce serveru. Chcete-li vyřešit přihlášení a vytvořit přístup k datům po dokončení operace kopírování, přečtěte si téma [řešení přihlášení](#resolve-logins).
+Pokud používáte pro přístup k datům přihlášení na úrovni serveru a kopírujete databázi na jiný server, nemusí přístup založený na přihlášení fungovat. K tomu může dojít, protože přihlašovací údaje na cílovém serveru neexistují nebo se jejich hesla a identifikátory zabezpečení (SID) liší. Další informace o správě přihlášení po zkopírování databáze na jiný server najdete v tématu [Správa zabezpečení Azure SQL Database po zotavení po havárii](active-geo-replication-security-configure.md). Po úspěšném dokončení operace kopírování na jiném serveru a před přemapováním dalších uživatelů se může do zkopírované databáze přihlásit pouze přihlášení přidružené k vlastníkovi databáze nebo správce serveru. Chcete-li vyřešit přihlášení a vytvořit přístup k datům po dokončení operace kopírování, přečtěte si téma [řešení přihlášení](#resolve-logins).
 
 ## <a name="copy-using-the-azure-portal"></a>Kopírování s použitím webu Azure Portal
 

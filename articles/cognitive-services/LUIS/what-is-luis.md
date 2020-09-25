@@ -2,15 +2,17 @@
 title: Co je Language Understanding (LUIS)?
 description: Language Understanding (LUIS) – cloudová služba API, která využívá strojové učení ke konverzaci, přirozenému jazyku pro předpověď významu a extrakci informací.
 keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NLP, přirozené jazykové porozumění, NLU, LUIS, konverzace AI, AI chatovací robot, NLP AI, Azure Luis
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3a8905ca1b9e7d7b4b1e4f5add000def9e91f9c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 242d131e79966ebdb286a20f75d20f91f5fa7406
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985867"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334646"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -131,7 +133,7 @@ Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-starte
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je nového](whats-new.md "Novinky") u služby a dokumentace
+* [Co je nového](whats-new.md "Co je nového") u služby a dokumentace
 * [Plánování aplikace](luis-how-plan-your-app.md "Plánování aplikace") s využitím [záměrů](luis-concept-intent.md "záměry") a [entit](luis-concept-entity-types.md "podnikům")
 * [Dotaz na koncový bod předpovědi](luis-get-started-get-intent-from-browser.md "Dotazování koncového bodu předpovědi").
 * [Materiály pro vývojáře](developer-reference-resource.md "Materiály pro vývojáře") pro Luis.

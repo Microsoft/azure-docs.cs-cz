@@ -1,14 +1,16 @@
 ---
 title: Nepřetržité pracovní postupy pro aplikace LUIS
 description: Jak implementovat pracovní postupy CI/CD pro DevOps pro Language Understanding (LUIS)
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 4cedf0cbe3f9ab675c191f8e4639688bb7916ee0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a74ad7b995f0112346e2212866655107f72c03e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072992"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324803"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Pracovní postupy průběžné integrace a průběžného doručování pro LUIS DevOps
 

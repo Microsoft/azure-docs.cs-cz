@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: ddc8186e85001a2a3ed2ed9f57b8f025133ef16a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302379"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
 
@@ -84,6 +84,74 @@ response = requests.post(published_pipeline1.endpoint,
                          json={"ExperimentName": "My_Pipeline",
                                "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
+`json`Argument žádosti post musí pro `ParameterAssignments` klíč obsahovat slovník obsahující parametry kanálu a jejich hodnoty. Kromě toho `json` argument může obsahovat následující klíče:
+
+| Klíč | Popis |
+| --- | --- | 
+| `ExperimentName` | Název experimentu přidruženého k tomuto koncovému bodu |
+| `Description` | Text volného tvaru popisující koncový bod | 
+| `Tags` | Nezadatelné páry klíč-hodnota, které se dají použít k označení a komentování žádostí  |
+| `DataSetDefinitionValueAssignments` | Slovník používaný pro změnu datových sad bez přeškolení (viz diskuze níže) | 
+| `DataPathAssignments` | Slovník používaný pro změnu datapaths bez přeškolení (viz diskuze níže) | 
+
+### <a name="changing-datasets-and-datapaths-without-retraining"></a>Změna datových sad a datových cest bez přeškolení
+
+Je možné, že budete chtít naučit a odvozovat na různých datových sadách a datacestách. Například můžete chtít vytvořit na menší, zhuštěnou datovou sadu, ale odvozovat pro kompletní datovou sadu. Datové sady můžete přepínat pomocí `DataSetDefinitionValueAssignments` klíče v `json` argumentu požadavku. V případě, že jste přepnuli datapaths `DataPathAssignments` . Postup pro obojí je podobný:
+
+1. Ve svém skriptu definice kanálu vytvořte `PipelineParameter` pro datovou sadu. Vytvořte `DatasetConsumptionConfig` nebo `DataPath` z `PipelineParameter` :
+
+    ```python
+    tabular_dataset = Dataset.Tabular.from_delimited_files('https://dprepdata.blob.core.windows.net/demo/Titanic.csv')
+    tabular_pipeline_param = PipelineParameter(name="tabular_ds_param", default_value=tabular_dataset)
+    tabular_ds_consumption = DatasetConsumptionConfig("tabular_dataset", tabular_pipeline_param)
+    ```
+
+1. Do skriptu ML získáte přístup k dynamicky zadané datové sadě pomocí `Run.get_context().input_datasets` :
+
+    ```python
+    from azureml.core import Run
+    
+    input_tabular_ds = Run.get_context().input_datasets['tabular_dataset']
+    dataframe = input_tabular_ds.to_pandas_dataframe()
+    # ... etc ...
+    ```
+
+    Všimněte si, že skript ML přistupuje k hodnotě zadané pro `DatasetConsumptionConfig` ( `tabular_dataset` ) a nikoli hodnotě `PipelineParameter` ( `tabular_ds_param` ).
+
+1. Ve svém skriptu definice kanálu nastavte `DatasetConsumptionConfig` jako parametr na `PipelineScriptStep` :
+
+    ```python
+    train_step = PythonScriptStep(
+        name="train_step",
+        script_name="train_with_dataset.py",
+        arguments=["--param1", tabular_ds_consumption],
+        inputs=[tabular_ds_consumption],
+        compute_target=compute_target,
+        source_directory=source_directory)
+    
+    pipeline = Pipeline(workspace=ws, steps=[train_step])
+    ```
+
+1. K dynamickému přepínání datových sad v volání Inferencing REST použijte `DataSetDefinitionValueAssignments` :
+    
+    ```python
+    tabular_ds1 = Dataset.Tabular.from_delimited_files('path_to_training_dataset')
+    tabular_ds2 = Dataset.Tabular.from_delimited_files('path_to_inference_dataset')
+    ds1_id = tabular_ds1.id
+    d22_id = tabular_ds2.id
+    
+    response = requests.post(rest_endpoint, 
+                             headers=aad_token, 
+                             json={
+                                "ExperimentName": "MyRestPipeline",
+                               "DataSetDefinitionValueAssignments": {
+                                    "tabular_ds_param": {
+                                        "SavedDataSetReference": {"Id": ds1_id #or ds2_id
+                                    }}}})
+    ```
+
+Poznámkové bloky [předvádí DataSet a PipelineParameter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb) a [předvádí DataPath a PipelineParameter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) mají kompletní příklady této techniky.
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Vytvoření koncového bodu kanálu se správou verzí
 

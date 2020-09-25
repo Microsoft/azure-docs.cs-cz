@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334544"
 ---
 # <a name="business-card-concepts"></a>Principy vizitek
 
@@ -88,8 +88,8 @@ Podívejte se na následující příklad úspěšné odpovědi JSON: uzel "read
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                "lines": 
-                          {
+                   "lines": 
+                             {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,
@@ -389,7 +389,9 @@ Rozhraní API na vizitce také zajišťuje [funkci pro zpracování AIBuilder ob
 
 ## <a name="next-steps"></a>Další kroky
 
-- Postupujte podle pokynů v rychlém startu a začněte s [rozhraním rychlý Start pro Python na vizitce](./quickstarts/python-business-cards.md)
-- Další informace o [REST API pro rozpoznávání formulářů](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
-- Další informace o funkci [pro rozpoznávání formulářů](overview.md)
+- Postupujte podle pokynů pro [rychlý Start k rozhraní API vizitky v Pythonu](./quickstarts/python-business-cards.md) a začněte rozpoznávat obchodní karty.
 
+## <a name="see-also"></a>Viz také
+
+* [Co je služba Rozpoznávání formulářů?](./overview.md)
+* [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

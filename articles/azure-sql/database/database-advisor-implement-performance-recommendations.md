@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254935"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284355"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Database Advisor doporučení k výkonu pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,10 +40,10 @@ Možnosti pro doporučení výkonu dostupné v Azure SQL Database jsou:
 
 | Doporučení pro výkon | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
 | :----------------------------- | ----- | ----- |
-| **Vytvoření doporučení indexu** – doporučuje vytváření indexů, které můžou zlepšit výkon vašich úloh. | Ano | No |
-| **Vyřazení doporučení indexu** – doporučuje, abyste každý den odebrali redundantní a duplicitní indexy, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Ano | No |
-| **Parametrizovat dotazy doporučení (Preview)** – doporučuje vynucené Parametrizace v případech, kdy máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. | Ano | No |
-| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se vyskytují ve vaší databázi. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Ano | No |
+| **Vytvoření doporučení indexu** – doporučuje vytváření indexů, které můžou zlepšit výkon vašich úloh. | Yes | No |
+| **Vyřazení doporučení indexu** – doporučuje, abyste každý den odebrali redundantní a duplicitní indexy, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Yes | No |
+| **Parametrizovat dotazy doporučení (Preview)** – doporučuje vynucené Parametrizace v případech, kdy máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. | Yes | No |
+| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se vyskytují ve vaší databázi. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Yes | No |
 
 ![Doporučení k výkonu pro Azure SQL Database](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -84,9 +84,9 @@ Vyřadit doporučení indexu také po implementaci projít ověřením. Pokud se
 
 Každý první dotaz musí být zkompilován, aby vygeneroval plán spuštění. Každý vygenerovaný plán se přidá do mezipaměti plánu. Následná spuštění stejného dotazu může tento plán znovu použít z mezipaměti, což eliminuje nutnost další kompilace.
 
-Dotazy s neparametrizovanými hodnotami mohou vést k režii na výkon, protože plán spuštění je znovu zkompilován pokaždé, když se neparametrizované hodnoty liší. V mnoha případech se stejné plány spuštění generují stejnými dotazy s různými hodnotami parametrů. Tyto plány jsou však stále samostatně přidány do mezipaměti plánu.
+Dotazy s neparametrizovanými hodnotami mohou vést k režii výkonu, protože plán spuštění se překompiluje vždy, když se neparametrizované hodnoty liší. V mnoha případech stejné dotazy s různými hodnotami parametrů generují stejné plány spuštění. Tyto plány se ale stále přidávají do mezipaměti plánu samostatně.
 
-Proces opětovné kompilace plánů spouštění používá databázové prostředky, zvyšuje dobu trvání dotazu a přetéká mezipaměť plánu. Tyto události zase způsobí vyřazení plánů z mezipaměti. Toto chování lze změnit nastavením vynucené možnosti PARAMETRIZACE v databázi.
+Proces překompilování plánů spuštění používá databázové prostředky, prodlužuje dobu trvání dotazu a přetéká mezipaměť plánu. Tyto události zase způsobují vyřazení plánů z mezipaměti. Toto chování lze změnit nastavením vynucené možnosti PARAMETRIZACE v databázi.
 
 Abychom vám pomohli odhadnout dopad tohoto doporučení, máte k dispozici porovnání skutečného využití procesoru a předpokládaného využití procesoru (jako kdyby se doporučení uplatnilo). Toto doporučení vám může pomáhat získat úspory procesoru. Může vám také snížit dobu trvání dotazu a režii pro mezipaměť plánu, což znamená, že další plány mohou zůstat v mezipaměti a znovu použít. Toto doporučení můžete použít rychle tak, že vyberete příkaz **použít** .
 

@@ -5,39 +5,32 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 09/24/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 9eff9b5356f3201f151cc959a96b070d2afaa267
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76759840"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283444"
 ---
 Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu Azure Portal, postupujte takto:
 
 1. V nabídce webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Účty úložiště**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **účty úložiště**.
-2. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
-3. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
-4. Pod polem **Skupina prostředků** vyberte **Vytvořit novou**. Zadejte název nové skupiny prostředků, jak je znázorněno na následujícím obrázku.
+1. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
+1. Na kartě **základy** vyberte předplatné, ve kterém chcete účet úložiště vytvořit.
+1. V poli **Skupina prostředků** vyberte požadovanou skupinu prostředků nebo vytvořte novou skupinu prostředků.  Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md).
+1. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název musí mít také délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
+1. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
+1. Vyberte úroveň výkonu. Výchozí úroveň je *Standard*.
+1. Nastavte pole **druh účtu** na *Storage v2 (Obecné-účel v2)*.
+1. Určete, jak se bude účet úložiště replikovat. Výchozí možnost replikace je *geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)*. Další informace o dostupných možnostech replikace najdete v tématu [Azure Storage redundance](../articles/storage/common/storage-redundancy.md).
+1. Zadejte úroveň přístupu pro objekty BLOB v účtu úložiště. Výchozí úroveň je *horká*. Další informace o úrovních přístupu do objektů BLOB najdete v tématu [horké, studené a archivní úrovně přístupu pro objekty blob](../articles/storage/blobs/storage-blob-storage-tiers.md).
+1. Chcete-li použít [Azure Data Lake Storage](/services/storage/data-lake-storage/), zvolte kartu **Upřesnit** a pak nastavte **hierarchický obor názvů** na **Enabled**.
+1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
+1. Vyberte **Vytvořit**.
 
-    ![Snímek obrazovky znázorňující postup vytvoření skupiny prostředků na portálu](./media/storage-create-account-portal-include/create-resource-group-for-storage.png)
+Následující obrázek ukazuje nastavení na kartě **základy** pro nový účet úložiště:
 
-5. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název také musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
-6. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
-7. Tato pole nechte nastavená na výchozí hodnoty:
-
-   |Pole  |Hodnota  |
-   |---------|---------|
-   |Model nasazení     |Resource Manager         |
-   |Výkon     |Standard         |
-   |Druh účtu     |StorageV2 (obecné účely v2)         |
-   |Replikace     |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)         |
-   |Úroveň přístupu     |Horká         |
-
-8. Pokud plánujete použít [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), zvolte kartu **Upřesnit** a pak nastavte **hierarchický obor názvů** na **Enabled**.
-9. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
-10. Vyberte **Vytvořit**.
-
-Další informace o typech účtů úložiště a dalším nastavení účtu úložiště najdete v článku s [přehledem účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Další informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
+:::image type="content" source="media/storage-create-account-portal-include/account-create-portal.png" alt-text="Snímek obrazovky ukazující postup vytvoření účtu úložiště na webu Azure Portal":::

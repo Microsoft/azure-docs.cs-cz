@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cc00cfa9f44c69a5880d53c0b7ac623f60be16b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6021bb4fa5d30de423ab56bfb5fdea6af2665a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334476"
 ---
-# <a name="calling-client-library-overview"></a>Přehled volání klientské knihovny
+# <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -55,8 +55,7 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Umístěte volání skupiny do účastníků veřejné telefonní sítě.                                                                           | ✔️   | ✔️            | ✔️
 |                   | Zvýšení úrovně volání 1:1 s účastníkem veřejné sítě na volání skupiny                                                 | ✔️   | ✔️            | ✔️
 |                   | Telefonické připojení z volání skupiny jako účastník veřejné sítě                                                                    | ✔️   | ✔️            | ✔️   
-| Obecné           | Zúčastnit se volání skupiny, které obsahuje až 350 účastníků                                                       |  ✔️  | ✔️            | ✔️    
-|                   | Testování mikrofonu, mluvčího a fotoaparátu pomocí služby zvukové testování (k dispozici při volání 8: echo123)                   |  ✔️  | ✔️            | ✔️   
+| Obecné           | Testování mikrofonu, mluvčího a fotoaparátu pomocí služby zvukové testování (k dispozici při volání 8: echo123)                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="calling-client-library-browser-support"></a>Volání podpory prohlížeče klientské knihovny
 

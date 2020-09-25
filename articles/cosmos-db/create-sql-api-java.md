@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 474e8152341aeb5e05af1859e531810f2be31e7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c8f93548443b043f26bdb3bd7d7d38e6efb39852
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334493"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -23,6 +23,7 @@ ms.locfileid: "87322801"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > * [Sada Java SDK v4](create-sql-api-java.md)
+> * [Jarní data V3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -94,11 +95,11 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* `CosmosDatabase`vytvořena.
+* `CosmosDatabase` vytvořena.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosContainer`vytvořena.
+* `CosmosContainer` vytvořena.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -124,11 +125,11 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
 
-* `CosmosAsyncDatabase`vytvořena.
+* `CosmosAsyncDatabase` vytvořena.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosAsyncContainer`vytvořena.
+* `CosmosAsyncContainer` vytvořena.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -171,8 +172,8 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
 
     V okně terminálu se zobrazí oznámení o vytvoření databáze FamilyDB. 
     
-4. Aplikace vytvoří databázi s názvem.`AzureSampleFamilyDB`
-5. Aplikace vytvoří kontejner s názvem.`FamilyContainer`
+4. Aplikace vytvoří databázi s názvem. `AzureSampleFamilyDB`
+5. Aplikace vytvoří kontejner s názvem. `FamilyContainer`
 6. Aplikace provede čtení bodů pomocí ID objektů a hodnoty klíče oddílu (což je lastName v naší ukázce). 
 7. Aplikace se bude dotazovat na položky a načíst všechny rodiny s posledním názvem v (' Andersen ', ' Wakefieldů ', ' Johnsonem ').
 

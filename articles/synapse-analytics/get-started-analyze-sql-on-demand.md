@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Začínáme s analýzou dat pomocí SQL na vyžádání'
+title: 'Kurz: Začínáme s analýzou dat pomocí serverles SQL'
 description: V tomto kurzu se naučíte analyzovat data pomocí SQL na vyžádání pomocí dat umístěných v databázích Spark.
 services: synapse-analytics
 author: saveenr
@@ -9,18 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 93ebc1c5e89e54f4813f270b9f8b7b13f672fbe3
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300220"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>Analýza dat pomocí SQL na vyžádání
 
-V tomto kurzu se naučíte analyzovat data pomocí SQL na vyžádání pomocí dat umístěných v databázích Spark. 
+V tomto kurzu se dozvíte, jak analyzovat data s využitím SQL serveru bez serveru pomocí služby SQL na vyžádání s využitím dat umístěných v databázích Spark. 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage--using-sql-on-demand"></a>Analýza dat NYC taxislužby v úložišti objektů BLOB pomocí SQL na vyžádání
+## <a name="analyze-nyc-taxi-data-in-blob-storage-using-sql-on-demand-pool"></a>Analýza dat NYC taxislužby v BLOB Storage s využitím fondu SQL na vyžádání
 
 1. V **datovém** centru pod **odkazem**klikněte pravým tlačítkem na **Azure Blob Storage > ukázkové datové sady > nyc_tlc_yellow** a vyberte **Vybrat prvních 100 řádků** .
 1. Tím se vytvoří nový skript SQL s následujícím kódem:

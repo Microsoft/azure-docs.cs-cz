@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e909db0041979eb7bc4fc30bd9551382e83c488
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323633"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Pochopení aplikace a nasazení v Azure jaře cloudu
 
@@ -29,11 +29,11 @@ Standardní úroveň cloudu Azure umožňuje, aby jedna aplikace měla jedno vý
 ## <a name="app"></a>Aplikace
 Na úrovni aplikace jsou definované následující funkce nebo vlastnosti.
 
-| Výčet | Definice |
+| Funkce | Popis |
 |:--|:----------------|
 | Public</br>Koncový bod | Adresa URL pro přístup k aplikaci |
 | Vlastní</br>Doména | Záznam CNAME, který zabezpečuje vlastní doménu |
-| Služba</br>Vazba | Vlastnosti konfigurace vazby nastavené v function.jspro soubor a atribut *ServiceBusTrigger* |
+| Služba</br>Vazba | Připojení k jiným službám Azure mimo box |
 | Spravované</br>Identita | Spravovaná identita pomocí Azure Active Directory umožňuje vaší aplikaci snadný přístup k dalším prostředkům chráněným službou Azure AD, jako je například Azure Key Vault |
 | Trvalý</br>Storage | Nastavení, které umožňuje zachovat data po restartování aplikace |
 
@@ -41,14 +41,14 @@ Na úrovni aplikace jsou definované následující funkce nebo vlastnosti.
 
 Následující funkce nebo vlastnosti jsou definovány na úrovni nasazení a budou vyměněny při záměně produkčního a přípravného nasazení.
 
-| Výčet | Definice |
+| Funkce | Popis |
 |:--|:----------------|
 | Procesor | Počet virtuální jádra na instanci aplikace |
-| Memory (Paměť) | Nastavení, které přiděluje paměť pro horizontální navýšení nebo navýšení kapacity nasazení |
+| Memory (Paměť) | GB paměti na instanci aplikace|
 | Instance</br>Počet | Počet instancí aplikace, nastavit ručně nebo automaticky |
 | Automatické škálování | Automatické škálování počtu instancí na základě předdefinovaných pravidel a plánů |
-| JVM</br>Možnosti | nastavení: JAVA_OPTS |
-| Prostředí</br>Proměnné | Nastavení, která se vztahují na celé jaře cloudové prostředí Azure |
+| JVM</br>Možnosti | Nastavení možností JVM  |
+| Prostředí</br>Proměnné | Nastavení proměnných prostředí |
 | Modul runtime</br>Verze | Java 8/Java 11|
 
 ## <a name="restrictions"></a>Omezení

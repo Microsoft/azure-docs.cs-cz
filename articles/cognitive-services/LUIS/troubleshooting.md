@@ -1,15 +1,17 @@
 ---
 title: Nejčastější dotazy (FAQ) – LUIS
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: ff7beff6682d594f9b9fc1901d396d29028ec989
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054827"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334697"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
@@ -78,7 +80,7 @@ Přečtěte si další informace o [chybách importu verzí](luis-how-to-manage-
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Návody dát spolupracovníkům přístup k LUIS pomocí Azure Active Directory (Azure AD) nebo řízení přístupu na základě role (RBAC)?
 
-Informace o tom, jak dát spolupracovníkům přístup, najdete v tématu [Azure Active Directory prostředky](luis-how-to-collaborate.md#azure-active-directory-resources) a [Azure Active Directory uživatele klienta](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
+Informace o tom, jak dát spolupracovníkům přístup, najdete v tématu [Azure Active Directory prostředky](luis-how-to-collaborate.md#azure-active-directory-resources)  a [Azure Active Directory uživatele klienta](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
 
 <a name="luis-endpoint"></a>
 
@@ -267,7 +269,7 @@ Prvním problémem je izolovat, jestli problém souvisí s LUIS nebo nastane mim
 #### <a name="resolve-issue-in-luis"></a>Řešení potíží v LUIS
 Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Pokud se zobrazí chyba, vyřešte problém v LUIS, dokud nebude chyba nadále vrácena. Mezi běžné chyby patří:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`– Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier).
+* `Out of call volume quota. Quota will be replenished in <time>.` – Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier).
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Řešení potíží v Azure Bot Service
 

@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: ae139dd65242be9456f3498c494e1a7c5a29402f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48dfc456616fa4876b7053483f7377eda21aabde
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283815"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Vytvoření upozornění pro Azure SQL Managed instance pomocí Azure Portal
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-V tomto článku se dozvíte, jak nastavit výstrahy pro databáze v databázi spravované instance Azure SQL pomocí Azure Portal. Výstrahy vás můžou poslat e-mailem, zavolat webovému Hooku, spustit Azure Functions, Runbook, zavolat externí systém pro lístky s ITSM kompatibilním, zavolat vám na telefon nebo poslat textovou zprávu, když některá metrika, jako je například velikost úložiště instance nebo využití procesoru, dosáhne předem definované prahové hodnoty. Tento článek také poskytuje osvědčené postupy pro nastavení dob upozornění.
+V tomto článku se dozvíte, jak nastavit výstrahy pro databáze v databázi spravované instance Azure SQL pomocí Azure Portal. Upozornění můžou poslat e-mail, zavolat webhook, spustit funkci Azure Functions nebo runbook, zavolat externí systém lístků kompatibilní s ITSM, zavolat na telefon nebo poslat textovou zprávu, když určitá metrika, například metrika velikosti úložiště instance nebo využití procesoru, dosáhne předdefinované prahové hodnoty. Tento článek také poskytuje osvědčené postupy pro nastavení dob upozornění.
 
 
 ## <a name="overview"></a>Přehled
@@ -50,13 +50,13 @@ Pomocí [Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure](
 
 Pro konfiguraci výstrah jsou k dispozici následující metriky spravované instance:
 
-| Metric | Popis | Měrná jednotka \ možné hodnoty |
+| Metrika | Popis | Měrná jednotka \ možné hodnoty |
 | :--------- | --------------------- | ----------- |
 | Průměrné procento procesoru | Průměrné procento využití procesoru ve vybraném časovém období | 0-100 (procenta) |
 | Přečtené vstupně-výstupní bajty | Ve vybraném časovém období je přečtených vstupně-výstupních bajtů. | Bajty |
 | Zapsané vstupně-výstupní bajty | Vstupně-výstupní bajty zapsané ve vybraném časovém období | Bajty |
 | Počet požadavků v/v | Počet vstupně-výstupních požadavků ve vybraném časovém období | Číselné |
-| Rezervované místo v úložišti | Aktuální max. místo úložiště rezervované pro spravovanou instanci. Změny s operací škálování prostředků. | MB (MB) |
+| Rezervované místo v úložišti | Aktuální maximální místo v úložišti rezervované pro spravovanou instanci. Změny s operací škálování prostředků. | MB (MB) |
 | Využité místo úložiště | Prostor úložiště použitý ve vybraném období Změny s využitím úložiště databázemi a instancemi. | MB (MB) |
 | Počet virtuálních jader | Virtuální jádra zřízené pro spravovanou instanci. Změny s operací škálování prostředků. | 4-80 (virtuální jádra) |
 

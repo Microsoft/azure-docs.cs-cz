@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, srbozovi, bonova
+ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 72d5a722e6c1e6b936c6ec0386036317e887bb92
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 072dc3c453984eb30805bb6c2c8c44cc39b06d17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969831"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283594"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -112,7 +112,7 @@ Následující kroky ukazují, jak se připojit k nově vytvořenému virtuáln�
 
     ![Snímek obrazovky se zobrazí Azure Portal se stránkou přehled pro vybraný virtuální počítač a zvýrazněným připojením.](./media/connect-vm-instance-configure/vm.png)  
 
-2. Vyberte **Connect** (Připojit).
+2. Vyberte **Připojit**.
 
    Zobrazí se formulář soubor protokol RDP (Remote Desktop Protocol) (soubor. RDP) s veřejnou IP adresou a číslem portu pro virtuální počítač.
 

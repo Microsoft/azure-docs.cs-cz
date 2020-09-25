@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1346fed738bb9afa595b63c91064a481e2ee2b51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334879"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Správa postupného upgradu cloudových aplikací pomocí SQL Database aktivní geografická replikace
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ K dosažení těchto cílů Kromě použití Web Apps prostředí můžete využ
 * Primární databáze v primární oblasti (2)
 * Pohotovostní instance webové aplikace v oblasti zálohování (3)
 * Geograficky replikovaná sekundární databáze v oblasti zálohování (4)
-* Traffic Manager profil výkonu s názvem online koncový bod `contoso-1.azurewebsites.net` a s názvem offline koncový bod`contoso-dr.azurewebsites.net`
+* Traffic Manager profil výkonu s názvem online koncový bod `contoso-1.azurewebsites.net` a s názvem offline koncový bod `contoso-dr.azurewebsites.net`
 
 Aby bylo možné vrátit zpět upgrade, je nutné vytvořit přípravné prostředí s plně synchronizovanou kopií aplikace. Vzhledem k tomu, že je potřeba zajistit, aby se aplikace mohla rychle obnovit v případě, že během procesu upgradu dojde k závažným chybám, musí být pracovní prostředí také geograficky redundantní. Pro vytvoření přípravného prostředí pro upgrade je potřeba provést tyto kroky:
 
@@ -145,7 +145,7 @@ Klíčovou výhodou této možnosti je, že můžete upgradovat aplikaci i její
 
 Hlavním kompromisem je to, že vyžaduje dvojí redundanci každé součásti aplikace, a proto se zvýší náklady na dolar. Zahrnuje taky složitější pracovní postup.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Tyto dvě metody upgradu popsané v článku se liší od nákladů na složitost a dolar, ale obě se zaměřují na minimalizaci toho, jak dlouho je uživatel omezený na operace jen pro čtení. Tato doba je přímo definovaná po dobu trvání skriptu upgradu. Nezávisí na velikosti databáze, zvolené úrovni služby, konfiguraci webu nebo jiných faktorech, které nemůžete snadno ovládat. Všechny kroky přípravy jsou oddělené od kroků upgradu a neovlivňují produkční aplikaci. Efektivita skriptu upgradu je klíčovým faktorem, který určuje prostředí uživatele během upgradů. Nejlepším způsobem, jak toto prostředí zlepšit, je zaměřit se na to, co je potřeba k tomu, aby byl skript upgradu co nejefektivnější.
 

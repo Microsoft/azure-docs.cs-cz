@@ -3,12 +3,12 @@ title: Úprava znalostní báze – QnA Maker
 description: QnA Maker vám umožní spravovat obsah znalostní báze tím, že nabízí snadno použitelné prostředí pro úpravy.
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34eec343defa4614881e23543f2099040b866997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324616"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Úprava párů QnA ve znalostní bázi
 
@@ -72,7 +72,7 @@ Textové úpravy textu odpovědi vám umožní Markdownu styl z jednoduchého pa
 
 
     > [!div class="mx-imgBorder"]
-    > ![Použijte Editor formátovaného textu a přidejte veřejně přístupný obrázek a jeho alternativní text.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+    > ![Snímek obrazovky zobrazuje Editor v místě s veřejně přístupným URL obrázkem a alternativním textem pro zadanou bitovou kopii.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
 1. Přidejte odkaz na adresu URL, a to tak, že vyberete text v odpovědi, pak na panelu nástrojů vyberete ikonu odkazu nebo na panelu nástrojů vyberete ikonu odkazu a pak zadáte nový text a adresu URL.
 

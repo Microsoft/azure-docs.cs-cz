@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e960914f86f2f9fc63a62d62fe1f923d21b9d31
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334833"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Základní plán zabezpečení Azure pro zálohování
 
@@ -252,9 +252,9 @@ Můžete taky připojit Log Analytics pracovní prostor ke službě Azure Sentin
 
 Podpůrná dokumentace:
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -760,9 +760,9 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
+- [Dokumentace k Azure Repos](/azure/devops/repos/index)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -914,7 +914,7 @@ Zálohujte spravované klíče zákazníka v rámci Azure Key Vault.
 
 **Pokyny**: testování obnovení zálohovaných spravovaných klíčů zákazníků.
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Monitorování Azure Security Center**: nelze použít
 

@@ -9,14 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300101"
 ---
-# <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
+# <a name="prerequisites"></a>Požadavky
+
+Tento krok tohoto kurzu dokončíte tak, že budete mít přístup ke skupině prostředků, ke které jste přiřadili roli **vlastníka** . V této skupině prostředků vytvořte pracovní prostor synapse.
+
+## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
 
 V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a fond Apache Spark. 
 
@@ -66,7 +70,7 @@ Fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivní. Fond m�
     |Nastavení | Navrhovaná hodnota | 
     |---|---|---|
     |**Název Apache Spark fondu**|**Spark1**
-    |**Velikost uzlu**| **Malý**|
+    |**Velikost uzlu**| **Malá**|
     |**Počet uzlů**| Nastavte minimum na 3 a maximum na 3.|
 
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš fond Apache Spark bude připravený během několika sekund.

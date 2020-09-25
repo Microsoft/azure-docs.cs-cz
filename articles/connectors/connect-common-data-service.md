@@ -7,12 +7,12 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284111"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334578"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service pomocí Azure Logic Apps
 
@@ -49,11 +49,11 @@ V tomto příkladu přidejte Trigger Common Data Service, který se aktivuje př
 
    ![Aktivovat informace o prostředí pro monitorování](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Prostředí** | Ano | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview). |
-   | **Název entity** | Ano | Entita, která se má monitorovat například "Zájemci" |
-   | **Rozsah** | Ano | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
+   | **Prostředí** | Yes | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview). |
+   | **Název entity** | Yes | Entita, která se má monitorovat například "Zájemci" |
+   | **Rozsah** | Yes | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Přidat Common Data Service akci
@@ -70,10 +70,10 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
    ![Informace o akcích pro prostředí, kde se má záznam vytvořit](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Název organizace** | Ano | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
-   | **Název entity** | Ano | Entita, ve které chcete záznam vytvořit, například "úkoly" |
+   | **Název organizace** | Yes | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
+   | **Název entity** | Yes | Entita, ve které chcete záznam vytvořit, například "úkoly" |
    | **Předmět** | Ano, na základě entity vybrané v tomto příkladu | Krátký popis cíle pro tuto úlohu |
    ||||
 
@@ -108,7 +108,7 @@ Pro aktivační události, které se spouštějí při aktualizaci záznamů, ja
 
 1. V aktivační události v seznamu **Přidat nový parametr** vyberte **filtry atributů**.
 
-   ![Přidat vlastnost "Filters" (filtry atributů)](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
+   ![Snímek obrazovky zobrazující akci aktualizovat záznam "když je aktualizován" a otevře se seznam přidat nový parametr s vybranou vlastností "filtry atributů".](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
 1. Pro každou **položku filtrování atributů**vyberte atribut, který chcete monitorovat, například:
 
@@ -122,7 +122,7 @@ U akcí, které vracejí záznamy, jako je například akce **seznam záznamů**
 
    ![Přidat vlastnost dotaz filtru](./media/connect-common-data-service/list-records-action-filter-query.png)
 
-1. Do vlastnosti **dotaz filtru** , která se nyní zobrazí v akci, zadejte tento dotaz filtru OData:`statuscode eq 1`
+1. Do vlastnosti **dotaz filtru** , která se nyní zobrazí v akci, zadejte tento dotaz filtru OData: `statuscode eq 1`
 
    ![Zadejte dotaz filtru ODATA pro filtrování záznamů.](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
@@ -136,7 +136,7 @@ U akcí, které vracejí záznamy, jako je například akce **seznam záznamů**
 
    ![Přidat vlastnost ORDER by](./media/connect-common-data-service/list-records-action-order-by.png)
 
-1. Do vlastnosti **ORDER by** , která se teď zobrazí v akci, zadejte tento dotaz filtru OData:`name`
+1. Do vlastnosti **ORDER by** , která se teď zobrazí v akci, zadejte tento dotaz filtru OData: `name`
 
    ![Zadejte dotaz filtru ODATA pro řazení záznamů.](./media/connect-common-data-service/list-records-action-order-by-value.png)
 

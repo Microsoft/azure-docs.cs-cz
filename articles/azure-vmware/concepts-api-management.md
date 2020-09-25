@@ -1,22 +1,22 @@
 ---
 title: Koncepty – API Management
-description: Přečtěte si, jak API Management chránit rozhraní API spuštěná na virtuálních počítačích Azure VMware Solution (AVS) (VM).
+description: Přečtěte si, jak API Management chránit rozhraní API spuštěná na virtuálních počítačích řešení Azure VMware (VM).
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 62112bf3c0bf551232e09e5910e3eaae228dc202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 346d0f795c3d19b115ced771991263cce2104217
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85306876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262973"
 ---
-# <a name="api-management-to-publish-and-protect-apis-running-on-avs-based-vms"></a>API Management k publikování a ochraně rozhraní API spuštěných na virtuálních počítačích využívajících službu AVS
+# <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>API Management k publikování a ochraně rozhraní API běžících na virtuálních počítačích založených na řešení Azure VMware
 
 Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) umožňuje vývojářům a týmům v DevOps bezpečně publikovat buď pro interní, nebo externí uživatele.
 
-I když je tato možnost nabízena v několika SKU, umožňuje integraci se službou Azure Virtual Network, aby mohla publikovat rozhraní API spuštěná v úlohách Azure VMware Solution (AVS), pouze SKU Developer a Premium. Tyto dvě SKU bezpečně umožňují připojení mezi službou API Management a back-endu. SKU pro vývojáře je určeno pro vývoj a testování, zatímco skladové položky Premium jsou určené pro produkční nasazení.
+I když je tato možnost nabízena v několika SKU, umožňuje integraci se službou Azure Virtual Network jenom k publikování rozhraní API spuštěných v úlohách řešení Azure VMware. Tyto dvě SKU bezpečně umožňují připojení mezi službou API Management a back-endu. SKU pro vývojáře je určeno pro vývoj a testování, zatímco skladové položky Premium jsou určené pro produkční nasazení.
 
-V případě back-end služeb, které běží na virtuálních počítačích služby AVS, je konfigurace v API Management ve výchozím nastavení stejná jako u místních back-end služeb. U interních i externích nasazení API Management konfiguruje virtuální IP (VIP) Nástroj pro vyrovnávání zatížení jako koncový bod back-endu, když je back-end server umístěný za Load Balancer NSX na straně služby AVS.
+V případě back-end služeb, které běží na virtuálních počítačích řešení Azure VMware, je konfigurace v API Management ve výchozím nastavení stejná jako u místních back-end služeb. U interních i externích nasazení API Management konfiguruje virtuální IP (VIP) Nástroj pro vyrovnávání zatížení jako koncový bod back-endu, když je back-end server umístěný za Load Balancer NSX na straně řešení Azure VMware.
 
 ## <a name="external-deployment"></a>Externí nasazení
 
@@ -24,7 +24,7 @@ Externí nasazení publikuje rozhraní API spotřebovaná externími uživateli 
 
 Diagram externího nasazení zobrazuje celý proces a příslušné aktéry (zobrazené v horní části). Objekty actor jsou:
 
-- **Správci:** Představuje tým správce nebo DevOps, který spravuje službu AVS prostřednictvím mechanismů Azure Portal a automatizace, jako je PowerShell nebo Azure DevOps.
+- **Správci:** Představuje tým správce nebo DevOps, který spravuje řešení Azure VMware prostřednictvím mechanismů Azure Portal a automatizace, jako je PowerShell nebo Azure DevOps.
 
 - **Uživatelé:**  Představuje uživatele vystavených rozhraní API a představuje uživatele i služby, které rozhraní API využívají.
 
@@ -32,7 +32,7 @@ Tok přenosů prochází API Management instance, která vyabstrakce back-end sl
 
 API Management má veřejné rozhraní API Azure a doporučuje se aktivovat službu Azure DDOS Protection. 
 
-:::image type="content" source="media/api-management/external-deployment.png" alt-text="Externí nasazení – API Management pro funkci AVS":::
+:::image type="content" source="media/api-management/external-deployment.png" alt-text="Externí nasazení – API Management pro řešení Azure VMware":::
 
 
 ## <a name="internal-deployment"></a>Interní nasazení
@@ -49,11 +49,11 @@ Interní nasazení můžou být [s Azure Application Gateway](../api-management/
 
 Níže uvedený diagram nasazení znázorňuje uživatele, kteří můžou být interní nebo externí, přičemž každý typ přistupuje ke stejným nebo jiným rozhraním API.
 
-V interním nasazení se rozhraní API zveřejňují na stejnou instanci API Management. Před API Management se Application Gateway nasazeny s aktivovanou funkcí WAF (Azure Web Application firewall) a sadou naslouchacího procesu HTTP a pravidel pro filtrování provozu, což zveřejňuje jenom podmnožinu back-end služeb spuštěných na funkci AVS.
+V interním nasazení se rozhraní API zveřejňují na stejnou instanci API Management. Před API Management se Application Gateway nasazeny s aktivovanou funkcí WAF (Azure Web Application firewall) a sadou naslouchacího procesu HTTP a pravidel pro filtrování provozu, což zveřejňuje jenom podmnožinu back-end služeb spuštěných v řešení Azure VMware.
 
 * Interní provoz se směruje prostřednictvím brány ExpressRoute, aby se Azure Firewall, a pak API Management, jestli jsou pravidla pro přenos dat navázána nebo přímo API Management.  
 
 * Externí provoz vstoupí do Azure prostřednictvím Application Gateway, která používá vrstvu externí ochrany pro API Management.
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Interní nasazení – API Management pro funkci AVS":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Interní nasazení – API Management pro řešení Azure VMware":::

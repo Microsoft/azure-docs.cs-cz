@@ -80,7 +80,7 @@
     - name: Exportovat data
       expanded: false
       items:
-        - name: Deidentifikovaný export
+        - name: Exportovat data
           href: export-data.md
     - name: Vyhledání ID objektů identit
       href: find-identity-object-ids.md

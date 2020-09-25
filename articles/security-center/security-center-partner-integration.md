@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323651"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -40,7 +40,7 @@ Další informace o integraci nástrojů pro kontrolu ohrožení zabezpečení z
 Security Center taky nabízí analýzu ohrožení zabezpečení pro vaše:
 
 * Databáze SQL – Přečtěte si téma [zkoumání sestav posouzení ohrožení zabezpečení na řídicím panelu posouzení ohrožení zabezpečení](defender-for-sql-usage.md#explore-vulnerability-assessment-reports) .
-* Azure Container Registry imagí – viz [integrace Azure Container Registry s Security Center (Preview)](azure-container-registry-integration.md)
+* Azure Container Registry imagí – viz [použití Azure Defenderu pro Registry kontejnerů pro kontrolu ohrožení zabezpečení v imagí](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Způsob integrace řešení zabezpečení
 Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete taky připojit další zdroje dat zabezpečení, včetně počítačů, které jsou spuštěné místně nebo v jiných cloudech.

@@ -1,14 +1,16 @@
 ---
 title: Správa nastavení modelu a učení – přizpůsobování
 description: Nastavení strojového a výukového modelu, které se naučilo počítačem, se dá exportovat pro zálohování ve vlastním systému správy zdrojového kódu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 59af5a64ea5752ec03fb44df91440e8d395e3782
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303450"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Jak spravovat nastavení modelu a učení
 

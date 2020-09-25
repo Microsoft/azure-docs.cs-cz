@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Začínáme s analýzou dat pomocí fondu SQL'
+title: 'Kurz: Začínáme analyzovat data pomocí vyhrazených fondů SQL'
 description: V tomto kurzu použijete ukázková data NYC taxislužby k prozkoumání možností analytického fondu SQL.
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,16 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300118"
 ---
-# <a name="analyze-data-with-sql-pools"></a>Analýza dat pomocí fondů SQL
+# <a name="analyze-data-with-sql-dedicated-pools"></a>Analýza dat pomocí vyhrazených fondů SQL
 
-Azure synapse Analytics nabízí možnost analyzovat data pomocí fondu SQL. V tomto kurzu použijete ukázková data NYC taxislužby k prozkoumání možností analytického fondu SQL.
+Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného fondu SQL. V tomto kurzu použijete data NYC taxislužby k prozkoumávání schopností dedicted fondu SQL.
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Načtení dat taxislužby NYC do SQLDB1
 
@@ -71,7 +71,7 @@ Azure synapse Analytics nabízí možnost analyzovat data pomocí fondu SQL. V t
     ```
 1. Spuštění tohoto skriptu bude trvat přibližně 1 minutu. Načte 2 000 000 řádků taxislužby dat NYC do tabulky nazvané **dbo. Cesta**
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>Prozkoumejte data NYC taxislužby ve fondu SQL.
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Prozkoumat data taxislužby NYC ve vyhrazeném fondu SQL
 
 1. V synapse studiu přejdete do centra **dat** .
 1. Přejít na **SQLDB1**  >  **tabulky**SQLDB1. Zobrazí se několik načtených tabulek.

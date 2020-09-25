@@ -4,18 +4,18 @@ description: Použití blockchain Data Manager pro službu Azure blockchain k od
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79533177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283445"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Kurz: použití Data Manager blockchain k odesílání dat do Azure Cosmos DB
 
 V tomto kurzu použijete blockchain Data Manager pro službu Azure blockchain k záznamu dat transakcí blockchain v Azure Cosmos DB. Blockchain Data Manager zachycuje, transformuje a doručuje Blockchainá data pro Azure Event Grid témata. Z Azure Event Grid k vytváření dokumentů v databázi Azure Cosmos DB používáte konektor aplikace logiky Azure. Po dokončení kurzu můžete prozkoumat data blockchain transakcí v Azure Cosmos DB Průzkumník dat.
 
-[![Podrobnosti transakce blockchain](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![Snímek obrazovky ukazuje podrobnosti transakce blockchain.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 V tomto kurzu jste:
 
@@ -41,7 +41,7 @@ V tomto kurzu jste:
 
 Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí služby Azure blockchain. Instance zachycuje všechna nepracovaná data bloku a nezpracovaná transakce z uzlu transakce. Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejít na člen služby Azure blockchain, který jste vytvořili v části [rychlý Start: Vytvoření členu blockchain pomocí Azure Portal](create-member.md). Vyberte **Blockchain data Manager**.
 1. Vyberte **Přidat**.
 
@@ -271,7 +271,7 @@ Teď, když jste se připojili Data Manager blockchain k Azure Cosmos DB, může
 
 1. Procházejte zprávami tak, že vyberete ID položky a vyhledáte zprávu s hodnotou hash transakce odpovídajícího transakce.
 
-    [![Podrobnosti transakce blockchain](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![Snímek obrazovky ukazuje podrobnosti transakce blockchain pro vybranou položku.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
     Zpráva o nezpracované transakci obsahuje podrobnosti o transakci. Informace o vlastnostech jsou ale šifrované.
 

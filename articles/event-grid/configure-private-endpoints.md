@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak nakonfigurovat soukromé koncové body
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508834"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324140"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurace privátních koncových bodů pro Azure Event Grid témata nebo domény
 Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) můžete v případě, že chcete přijímat události přímo z vaší virtuální sítě, zabezpečit vaše témata a domény přes [privátní propojení](../private-link/private-link-overview.md) , aniž byste museli procházet veřejným internetem. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro vaše téma nebo doménu. Další koncepční informace najdete v tématu [zabezpečení sítě](network-security.md).
@@ -42,7 +42,7 @@ V této části se dozvíte, jak použít Azure Portal k vytvoření privátníh
         3. Potvrďte, že je **cílový podprostředek** nastavený na **téma** nebo **doménu** (na základě vybraného typu prostředku).    
         4. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
 
-            ![Privátní koncový bod – stránka prostředků](./media/configure-private-endpoints/resource-page.png)
+            ![Snímek obrazovky se stránkou vytvořit privátní koncový bod – prostředek](./media/configure-private-endpoints/resource-page.png)
     2. Pokud vyberete **připojit k prostředku pomocí ID prostředku nebo aliasu**, postupujte podle následujících kroků:
         1. Zadejte ID prostředku. Například: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. Jako **prostředek**zadejte **téma** nebo **doména**. 
@@ -108,7 +108,7 @@ Můžete odmítat soukromý koncový bod, který je ve stavu čekání nebo schv
 
 1. Vyberte **soukromý koncový bod** , který chcete odmítnout, a na panelu nástrojů vyberte **odmítnout** .
 
-    ![Soukromý koncový bod – zamítnout](./media/configure-private-endpoints/reject-button.png)
+    ![Snímek obrazovky zobrazující, že je vybrána možnost síť – privátní připojení ke koncovému bodu (Preview) s vybraným názvem odmítnout.](./media/configure-private-endpoints/reject-button.png)
 1. V dialogovém okně **odmítnout připojení** zadejte komentář (volitelné) a vyberte **Ano**. 
 
     ![Soukromý koncový bod – zamítnout](./media/configure-private-endpoints/reject.png)

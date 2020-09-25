@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255234"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -56,7 +56,7 @@ Pro každou instanci plánu se používá jedna adresa. Při škálování aplik
 
 Pokud chcete, aby vaše aplikace v jiném plánu dosáhly virtuální sítě, ke které už jsou připojené aplikace v jiném plánu, vyberte jinou podsíť, než kterou používá stávající integrace virtuální sítě.
 
-Tato funkce je plně podporovaná pro webové aplikace Windows i Linux. Všechna chování se chovají stejně jako aplikace pro Windows a aplikace pro Linux.
+Tato funkce je plně podporovaná pro aplikace pro Windows i Linux, včetně [vlastních kontejnerů](../articles/app-service/quickstart-custom-container.md). Všechna chování se chovají stejně jako aplikace pro Windows a aplikace pro Linux.
 
 ### <a name="service-endpoints"></a>Koncové body služby
 
@@ -65,7 +65,7 @@ Místní integrace virtuální sítě umožňuje používat koncové body služb
 1. Konfigurace místní integrace virtuální sítě pomocí webové aplikace
 1. Přejít na cílovou službu a nakonfigurovat koncové body služby proti podsíti používané pro integraci
 
-### <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
 Skupiny zabezpečení sítě můžete použít k blokování příchozího a odchozího provozu do prostředků ve virtuální síti. Aplikace, která používá místní integraci virtuální sítě, může používat [skupinu zabezpečení sítě][VNETnsg] k blokování odchozího provozu do prostředků ve vaší virtuální síti nebo v Internetu. Chcete-li zablokovat provoz na veřejné adresy, je nutné, aby nastavení aplikace WEBSITE_VNET_ROUTE_ALL nastaveno na hodnotu 1. Příchozí pravidla ve NSG se nevztahují na vaši aplikaci, protože integrace virtuální sítě má vliv jenom na odchozí přenosy z vaší aplikace.
 

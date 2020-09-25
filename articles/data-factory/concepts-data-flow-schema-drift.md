@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324344"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Posun schématu v mapování toku dat
 
@@ -60,7 +60,7 @@ Pokud je zapnutý posun schématu, ujistěte se, že je zapnutý posuvník **aut
 Když datový tok obsahuje sloupce, můžete k nim přistupovat v transformacích pomocí následujících metod:
 
 * Použijte `byPosition` výrazy a `byName` k explicitnímu odkazu na sloupec podle názvu nebo čísla pozice.
-* Přidejte do odvozeného sloupce vzor sloupce nebo agregovanou transformaci podle libovolné kombinace názvu, datového proudu, pozice nebo typu.
+* Přidejte do odvozeného sloupce vzor sloupce nebo agregovanou transformaci, která se bude shodovat s libovolnou kombinací názvu, datového proudu, pozice, zdroje nebo typu.
 * Přidání mapování založeného na pravidlech v transformaci SELECT nebo Sink tak, aby se shodovaly se sloupci s aliasy přes vzor
 
 Další informace o implementaci vzorů sloupců najdete v tématu [vzory sloupců v části mapování toku dat](concepts-data-flow-column-pattern.md).

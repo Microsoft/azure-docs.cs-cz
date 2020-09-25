@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 295c4bde64ad21a19d21fd48f2556114b26b202d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fe5fe29a66483934ae47f70512a310a4ae6bb1b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303232"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -30,7 +30,7 @@ ms.locfileid: "90946846"
 V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
 
 > [!IMPORTANT]
-> [Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples)
+> [Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
 ## <a name="overview"></a>Přehled
 
@@ -72,29 +72,24 @@ Otevřete Visual Studio na chatu. csproj a spusťte v režimu ladění. tím se 
 
 Ukázku můžete otestovat místně tak, že otevřete několik relací prohlížeče s adresou URL chatu pro simulaci konverzace s více uživateli.
 
-### <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
+## <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
 
 1. Otevřete instanci PowerShellu, Windows Terminal, Command Prompt nebo ekvivalentní a přejděte do adresáře, do kterého chcete ukázku naklonovat.
-2. `git clone`
-3. Přejít do složky **chat/clientapp** a spustit `npm run setup`
-   1. Pokud se zobrazí chyba 1, podívejte se ve výstupu na adresu URL, na kterou budete potřebovat ověřit klienta. (Adresa URL bude vypadat takto: `app.vssps.visualstudio.com/oauth2/authorize?clientid=...` ) Jakmile navštívíte adresu URL v prohlížeči, zkopírujte příkaz z okna prohlížeče a spusťte ho.
-   2. `npm run setup`Po dokončení předchozího kroku znovu spusťte příkaz.
-4. Získat `Connection String` z Azure Portal. Další informace o připojovacích řetězcích najdete v tématu [vytvoření prostředků komunikace Azure](../quickstarts/create-communication-resource.md) .
-5. Jakmile získáte `Connection String` připojovací řetězec, přidejte ho do souboru **chat nebo appsettings.js** , který se nachází ve složce chat. Zadejte připojovací řetězec do proměnné: `ResourceConnectionString` .
+2. `git clone https://github.com/Azure/Communication.git`
+3. Získat `Connection String` z Azure Portal. Další informace o připojovacích řetězcích najdete v tématu [vytvoření prostředků komunikace Azure](../quickstarts/create-communication-resource.md) .
+4. Jakmile získáte `Connection String` připojovací řetězec, přidejte ho do souboru **chat nebo appsettings.js** , který se nachází ve složce chat. Zadejte připojovací řetězec do proměnné: `ResourceConnectionString` .
+5. Aktualizujte ENVIRONMENT_URL v `./Chat/ClientApp/src/constants.tsx` umístění prostředku. (např. https://<RESOURCE_NAME>. communication.azure.com)
 
 ### <a name="local-run"></a>Místní spuštění
 
-1. Přejít do složky chat
-2. Otevřete `Chat.csproj` řešení v aplikaci Visual Studio
-3. Spusťte `Chat` projekt. *
-
-* Prohlížeč se otevře v localhost: 5000 (kde uzel nasazuje klientskou aplikaci). Aplikace není v Internet Exploreru podporovaná.
+1. Přejít do složky chat a otevřít `Chat.csproj` řešení v aplikaci Visual Studio
+2. Spusťte projekt. Prohlížeč se otevře v localhost: 5000.
 
 #### <a name="troubleshooting"></a>Řešení potíží
 
 - Řešení se nevytvoří, vyvolá chyby během instalace/buildu NPM.
 
-Vyčistit/znovu sestavit řešení C#
+   Vyčistit/znovu sestavit řešení C#
 
 ## <a name="publish-the-sample-to-azure"></a>Publikování ukázky do Azure
 
@@ -108,6 +103,9 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 ## <a name="next-steps"></a>Další kroky
 
+>[!div class="nextstepaction"] 
+>[Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+
 Další informace najdete v následujících článcích:
 
 - Další informace o [konceptech chatu](../concepts/chat/concepts.md)
@@ -115,7 +113,7 @@ Další informace najdete v následujících článcích:
 
 ## <a name="additional-reading"></a>Další materiály ke čtení
 
-- [Azure Communications Preview](https://github.com/Azure/communication-preview) – Další informace o sadě web SDK pro chat
+- [GitHub pro komunikaci Azure](https://github.com/Azure/communication) – další příklady a informace najdete na oficiální stránce GitHubu.
 - [Redux](https://redux.js.org/) – Správa stavu na straně klienta
 - [FluentUI](https://developer.microsoft.com/fluentui#/) – knihovna rozhraní založená na Microsoftu
 - [Reagovat](https://reactjs.org/) – knihovna pro sestavování uživatelských rozhraní

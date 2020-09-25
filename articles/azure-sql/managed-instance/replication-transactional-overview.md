@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a335f6ac015397ba2b2634d0d604c194a768260a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283203"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transakční replikace se spravovanou instancí Azure SQL (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,7 +43,7 @@ Klíčovými součástmi transakční replikace jsou **Vydavatel**, **distributo
 
 ![replikace s SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL Database | Azure SQL Managed Instance |
+| Role | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
 | **Publisher** | No | Yes |
 | **Rozdělovač** | No | Yes|
@@ -72,7 +72,7 @@ Spravovaná instance Azure SQL může podporovat předplatitele z následující
 
 Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
 
-| Replikace | Azure SQL Database | Azure SQL Managed Instance |
+| Replikace | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
 | [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Yes |
 | [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Yes|

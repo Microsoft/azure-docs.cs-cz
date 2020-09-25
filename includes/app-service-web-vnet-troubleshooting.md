@@ -4,23 +4,27 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255233"
 ---
 Tato funkce se snadno nastavuje, ale to neznamená, že vaše prostředí bude mít problém zdarma. Pokud narazíte na problémy s přístupem k požadovanému koncovému bodu, můžete použít k otestování připojení z konzoly aplikace některé nástroje. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, navštivte **Nástroj nástroje**  >  **Kudu**. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu **ladit konzolu** . Pokud se chcete dostat do konzoly hostované pro Azure Portal z vaší aplikace, pokračujte **Tools**v  >  **konzole**nástroje.
 
 #### <a name="tools"></a>nástroje
-Nástroje **příkazového testu**, **nslookup**a **tracert** nefungují prostřednictvím konzoly z důvodu omezení zabezpečení. K vyplnění void se přidají dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem **nameresolver.exe**. Syntaxe je:
+V nativních aplikacích pro Windows nebudou nástroje **příkazového testu, příkazy** **nslookup**a **tracert** fungovat prostřednictvím konzoly z důvodu omezení zabezpečení (pracují ve [vlastních kontejnerech Windows](../articles/app-service/quickstart-custom-container.md)). K vyplnění void se přidají dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem **nameresolver.exe**. Syntaxe je:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
 ```
 
 Nameresolver můžete použít ke kontrole názvů hostitelů, na kterých vaše aplikace závisí. Tímto způsobem můžete testovat, jestli máte nějaké nesprávně nakonfigurované služby DNS nebo možná nemáte přístup k vašemu serveru DNS. Server DNS, který vaše aplikace používá, můžete zobrazit v konzole nástroje tak, že prohlížíte proměnné prostředí WEBSITE_DNS_SERVER a WEBSITE_DNS_ALT_SERVER.
+
+> [!NOTE]
+> nameresolver.exe v současnosti nefungují v vlastních kontejnerech Windows.
+>
 
 K otestování připojení TCP k hostitelskému a kombinaci portů můžete použít další nástroj. Tento nástroj se nazývá **tcpping** a syntaxe je:
 

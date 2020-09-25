@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302927"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
 
@@ -164,7 +164,7 @@ Více **mnohoúhelníků** je pole nula nebo více mnohoúhelníků. U více **m
 
 Vzhledem k tomu, že tvar země je nepravidelný, jsou souřadnice geograficky geoprostorového data zastoupeny v mnoha referenčních systémech (počítačový systém), každý s vlastními snímky odkazů a jednotkami měření. Například "národní mřížka Británie" je referenční systém pro Spojené království, ale ne mimo něj.
 
-Nejoblíbenější počítačový systém používaný v současnosti dnes je World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Zařízení GPS a mnoho služeb mapování, včetně rozhraní API Map Google a Bing Maps, používají WGS-84. Azure Cosmos DB podporuje indexování geograficky geoprostorového data a jejich dotazování jenom pomocí POČÍTAČového systému WGS-84.
+Nejoblíbenější počítačový systém používaný v současnosti dnes je World Geodetic System  [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Zařízení GPS a mnoho služeb mapování, včetně rozhraní API Map Google a Bing Maps, používají WGS-84. Azure Cosmos DB podporuje indexování geograficky geoprostorového data a jejich dotazování jenom pomocí POČÍTAČového systému WGS-84.
 
 ## <a name="creating-documents-with-spatial-data"></a>Vytváření dokumentů s prostorovými daty
 Když vytváříte dokumenty, které obsahují hodnoty typu injson, jsou automaticky indexovány pomocí prostorového indexu v souladu se zásadami indexování kontejneru. Pokud pracujete se sadou Azure Cosmos DB SDK v dynamicky typovaném jazyce, jako je Python nebo Node.js, je nutné vytvořit platný typ injson.
