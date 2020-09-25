@@ -17,13 +17,13 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9b914c631c829c2e3dc71940a171cdb3dc81960
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250415"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Posílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 
@@ -96,10 +96,10 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 `NotificationHubService`Objekt zpřístupňuje následující instance objektů pro posílání nabízených oznámení na konkrétní zařízení a aplikace:
 
-- **Android** – použijte `GcmService` objekt, který je k dispozici na`notificationHubService.gcm`
-- **iOS** – použijte `ApnsService` objekt, který je dostupný na`notificationHubService.apns`
-- **Windows Phone** – použijte `MpnsService` objekt, který je k dispozici na`notificationHubService.mpns`
-- **Univerzální platforma Windows** – použijte `WnsService` objekt, který je k dispozici na`notificationHubService.wns`
+- **Android** – použijte `GcmService` objekt, který je k dispozici na `notificationHubService.gcm`
+- **iOS** – použijte `ApnsService` objekt, který je dostupný na `notificationHubService.apns`
+- **Windows Phone** – použijte `MpnsService` objekt, který je k dispozici na `notificationHubService.mpns`
+- **Univerzální platforma Windows** – použijte `WnsService` objekt, který je k dispozici na `notificationHubService.wns`
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>Postupy: odesílání nabízených oznámení do aplikací pro Android
 
@@ -155,7 +155,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Tags** – identifikátor značky. Pokud není zadaná žádná značka, pošle se oznámení všem klientům.
 - **Datová** část XML zprávy.
-- **TargetName**  -  Cílový_název `toast` pro informační zprávy. `token`pro oznámení na dlaždici.
+- **TargetName**  -  Cílový_název `toast` pro informační zprávy. `token` pro oznámení na dlaždici.
 - **NotificationClass** – priorita oznámení Platné hodnoty najdete v části **elementy hlavičky protokolu HTTP** v [nabízených oznámeních z dokumentu serveru](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) .
 - **Možnosti** – nepovinné hlavičky požadavku.
 - **Zpětné volání** – funkce zpětného volání.

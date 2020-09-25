@@ -1,7 +1,7 @@
 ---
 title: Jazyková podpora – rozhraní API Bingu pro vyhledávání na webu
 titleSuffix: Azure Cognitive Services
-description: Seznam přirozených jazyků, zemí a oblastí, které jsou podporovány rozhraní API Bingu pro vyhledávání zpráv.
+description: Seznam přirozených jazyků, zemí a oblastí, které jsou podporovány rozhraní API Bingu pro vyhledávání na webu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262820"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání na webu
 
 Rozhraní API Bingu pro vyhledávání na webu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Zadání země nebo oblasti s dotazem vám pomůže Upřesnit výsledky hledání na základě zájmů těchto zemí nebo oblastí. Výsledky můžou zahrnovat odkazy na Bing a tyto odkazy můžou lokalizovat uživatelské prostředí Bingu podle konkrétní země nebo oblasti nebo jazyka.
 
-Můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud je zadána země nebo oblast, je nutné zadat jeden nebo více kódů jazyka s [ `Accept-Language` hlavičkou](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). V [tabulce trhy](#markets) můžete zobrazit seznam jazyků podporovaných na jednotlivých trzích.
+Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud je zadána země nebo oblast, je nutné zadat jeden nebo více kódů jazyka s [ `Accept-Language` hlavičkou](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). V [tabulce trhy](#markets) můžete zobrazit seznam jazyků podporovaných na jednotlivých trzích.
 
-Alternativně můžete zadat trh s parametrem `mkt` dotazu a kód z tabulky **trhy** . Určování trhu současně určuje zemi nebo oblast a preferovaný jazyk. Jazyk můžete explicitně nastavit pomocí parametru `setLang` dotazu.
+Alternativně můžete zadat trh s `mkt` parametrem dotazu a kód z tabulky **trhy** . Určování trhu současně určuje zemi nebo oblast a preferovaný jazyk. Jazyk můžete explicitně nastavit pomocí `setLang` parametru dotazu.
 
 ## <a name="countriesregions"></a>Země nebo oblasti
 
-|Země|kód|
+|Země|Kód|
 |-------|----|
 |Argentina|AR|
 |Austrálie|AU|
@@ -40,7 +40,7 @@ Alternativně můžete zadat trh s parametrem `mkt` dotazu a kód z tabulky **tr
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong – zvláštní správní oblast|HK|
+|Hongkong – zvláštní administrativní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
@@ -64,7 +64,7 @@ Alternativně můžete zadat trh s parametrem `mkt` dotazu a kód z tabulky **tr
 |Tchaj-wan|TW|
 |Turecko|TR|
 |Spojené království|GB|
-|Spojené státy|USA|
+|USA|USA|
 
 ## <a name="markets"></a>Trhy
 
@@ -83,7 +83,7 @@ Alternativně můžete zadat trh s parametrem `mkt` dotazu a kód z tabulky **tr
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong – zvláštní správní oblast|Tradiční čínština|zh – HK|
+|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh – HK|
 |Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|EN-ID|
 |Itálie|Italština|it-IT|
@@ -94,7 +94,7 @@ Alternativně můžete zadat trh s parametrem `mkt` dotazu a kód z tabulky **tr
 |Nizozemsko|Nizozemština|nl-NL|
 |Nový Zéland|Angličtina|EN-NZ|
 |Norsko|Norština|Ne – ne|
-|Čína|Chinese|zh-CN|
+|Čína|Čínština|zh-CN|
 |Polsko|Polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
 |Filipíny|Angličtina|EN-PH|
@@ -108,8 +108,8 @@ Alternativně můžete zadat trh s parametrem `mkt` dotazu a kód z tabulky **tr
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|ES – US|
+|USA|Angličtina|cs-CZ|
+|USA|Španělština|ES – US|
 
 ## <a name="next-steps"></a>Další kroky
 

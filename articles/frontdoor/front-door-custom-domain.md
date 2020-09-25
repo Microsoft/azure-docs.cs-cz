@@ -10,19 +10,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2018
+ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ebc0ee2e029e1f349972e3cd7fada46495534d54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648804"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252387"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Kurz: Přidání vlastní domény do služby Front Door
 V tomto kurzu se dozvíte, jak do služby Front Door přidat vlastní doménu. Pokud používáte přední dveře Azure pro doručování aplikací, je potřeba vlastní doména, pokud chcete, aby se váš vlastní název domény zobrazoval v žádosti koncového uživatele. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky.
 
-Po vytvoření služby Front Door se do adresy URL pro doručování obsahu služby Front Door z back-endu ve výchozím nastavení zahrne výchozí hostitel front-endu, což je subdoména `azurefd.net` (například https:\//contoso.azurefd.net/activeusers.htm). Pro usnadnění práce poskytuje Azure Front Door možnost přidružit k výchozímu hostiteli vlastní doménu. Díky této možnosti můžete doručovat obsah na adrese URL s vlastní doménou místo názvu domény vlastněné službou Front Door (například https:\//www.contoso.com/photo.png). 
+Po vytvoření front-endu je výchozí hostitel front-end, který je subdoménou `azurefd.net` , zahrnut v adrese URL pro doručování obsahu front-endu z back-endu ve výchozím nastavení (například https: \/ /Contoso-frontend.azurefd.NET/activeusers.htm). Pro usnadnění práce poskytuje Azure Front Door možnost přidružit k výchozímu hostiteli vlastní doménu. Díky této možnosti můžete doručovat obsah na adrese URL s vlastní doménou místo názvu domény vlastněné službou Front Door (například https:\//www.contoso.com/photo.png). 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -46,7 +46,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-a-cname-dns-record"></a>Vytvoření záznamu DNS CNAME
 
-Než budete moct použít vlastní doménu s předními dvířky, musíte nejdřív vytvořit záznam kanonického názvu (CNAME) se svým poskytovatelem domény, aby odkazoval na výchozího hostitele front-endu na front-endu (například contoso.azurefd.net). Záznam CNAME je typem záznamu DNS, který mapuje zdrojový název domény na cílový název domény. U front-bran Azure je názvem zdrojové domény vlastní název domény a cílovým názvem domény je výchozí název hostitele front-dveří. Jakmile se přední dveře ověří, který záznam CNAME vytvoříte, bude provoz adresovaný do zdrojové vlastní domény (například na webové \. contoso.com) směrován do zadaného cílového umístění front-endu na výchozím hostiteli (například contoso.azurefd.NET). 
+Než budete moct použít vlastní doménu s předními dvířky, musíte nejdřív vytvořit záznam kanonického názvu (CNAME) se svým poskytovatelem domény, aby odkazoval na výchozího hostitele front-endu na front-endu (například contoso.azurefd.net). Záznam CNAME je typem záznamu DNS, který mapuje zdrojový název domény na cílový název domény. U front-bran Azure je názvem zdrojové domény vlastní název domény a cílovým názvem domény je výchozí název hostitele front-dveří. Jakmile se přední dveře ověří, který záznam CNAME vytvoříte, bude provoz adresovaný do zdrojové vlastní domény (například na webové \. contoso.com) směrován do zadaného cílového umístění front-endu na výchozím hostiteli (například contoso-frontend.azurefd.NET). 
 
 Vlastní doménu a její subdoménu lze současně přidružit pouze k jednomu přednímu Dvířku. Můžete ale použít různé subdomény ze stejné vlastní domény pro různé přední dveře pomocí několika záznamů CNAME. Můžete také namapovat vlastní doménu s různými subdoménami na stejné přední dveře.
 
@@ -67,13 +67,13 @@ Vytvoření záznamu CNAME se subdoménou afdverify:
 
     | Zdroj                    | Typ  | Cíl                     |
     |---------------------------|-------|---------------------------------|
-    | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
+    | afdverify.www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
     - Zdroj: zadejte název vlastní domény včetně subdomény afdverify v následujícím formátu: afdverify. _ &lt; vlastní název &gt; domény_. Například afdverify.www.contoso.com.
 
     - Typ: Zadejte *CNAME*.
 
-    - Cíl: zadejte výchozího hostitele front-endu front-endu, včetně subdomény afdverify, v následujícím formátu: afdverify. _ &lt; název &gt; koncového bodu_. azurefd.NET. Například afdverify.contoso.azurefd.net.
+    - Cíl: zadejte výchozího hostitele front-endu front-endu, včetně subdomény afdverify, v následujícím formátu: afdverify. _ &lt; název &gt; koncového bodu_. azurefd.NET. Například afdverify.contoso-frontend.azurefd.net.
 
 4. Uložte provedené změny.
 
@@ -93,7 +93,7 @@ Například postup pro registrátora domén GoDaddy je následující:
 
     - Host (Hostitel): Zadejte subdoménu své vlastní domény, kterou chcete použít, včetně názvu subdomény afdverify. Například afdverify.www.
 
-    - Points to (Odkazuje na): Zadejte název výchozího hostitele front-endu služby Front Door včetně názvu subdomény afdverify. Například afdverify.contoso.azurefd.net. 
+    - Points to (Odkazuje na): Zadejte název výchozího hostitele front-endu služby Front Door včetně názvu subdomény afdverify. Například afdverify.contoso-frontend.azurefd.net. 
 
     - TTL: ponechte vybranou *jednu hodinu* .
 
@@ -144,13 +144,13 @@ Vytvoření záznamu CNAME pro vlastní doménu:
 
     | Zdroj          | Typ  | Cíl           |
     |-----------------|-------|-----------------------|
-    | <www.contoso.com> | CNAME | contoso.azurefd.net |
+    | <www.contoso.com> | CNAME | contoso-frontend.azurefd.net |
 
    - Zdroj: zadejte název vlastní domény (například webová \. contoso.com).
 
    - Typ: Zadejte *CNAME*.
 
-   - Cíl: Zadejte výchozího hostitele front-endu služby Front Door. Musí být v následujícím formátu:_ &lt; hostname &gt; _. azurefd.NET. Například contoso.azurefd.net.
+   - Cíl: Zadejte výchozího hostitele front-endu služby Front Door. Musí být v následujícím formátu:_ &lt; hostname &gt; _. azurefd.NET. Například contoso-frontend.azurefd.net.
 
 4. Uložte provedené změny.
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7b0ac1e301705b24d706638deb3ee0a15d49c87b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 4b069dea3f07477fcbca21e08166cdfad8cad2cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326724"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API Azure Cosmos DB pro MongoDB 
 
@@ -26,14 +26,14 @@ Rozhraní API Azure Cosmos DB pro MongoDB je kompatibilní s MongoDB serverem ve
 
 Následující příkazy rozšíření poskytují možnost vytvářet a upravovat prostředky specifické pro Azure Cosmos DB přes požadavky databáze:
 
-* [Vytvoření databáze](#create-database)
+* [Vytvořit databázi](#create-database)
 * [Aktualizovat databázi](#update-database)
 * [Získat databázi](#get-database)
 * [Vytvořit kolekci](#create-collection)
 * [Aktualizovat kolekci](#update-collection)
 * [Získat kolekci](#get-collection)
 
-## <a name="create-database"></a><a id="create-database"></a>Vytvořit databázi
+## <a name="create-database"></a><a id="create-database"></a> Vytvořit databázi
 
 Příkaz vytvořit rozšíření databáze vytvoří novou databázi MongoDB. Název databáze lze použít z kontextu databáze nastaveného `use database` příkazem. Následující tabulka popisuje parametry v rámci příkazu:
 
@@ -86,7 +86,7 @@ use test
 db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughput: 20000 } });
 ```
 
-## <a name="update-database"></a><a id="update-database"></a>Aktualizovat databázi
+## <a name="update-database"></a><a id="update-database"></a> Aktualizovat databázi
 
 Příkaz aktualizovat databázi rozšíření aktualizuje vlastnosti přidružené k zadané databázi. Následující tabulka popisuje parametry v rámci příkazu:
 
@@ -129,7 +129,7 @@ db.runCommand({customAction: "UpdateDatabase", autoScaleSettings: { maxThroughpu
 ```
 
 
-## <a name="get-database"></a><a id="get-database"></a>Získat databázi
+## <a name="get-database"></a><a id="get-database"></a> Získat databázi
 
 Příkaz Get Database Extension vrátí objekt databáze. Název databáze je použit z kontextu databáze, proti kterému je příkaz spuštěn.
 
@@ -154,7 +154,7 @@ Pokud je příkaz úspěšný, odpověď obsahuje dokument s následujícími po
 |---------|---------|---------|
 |  `ok`   |   `int`     |   Stav odpovědi 1 = = úspěch. 0 = = chyba.      |
 | `database`    |    `string`        |   Název databáze.      |
-|   `provisionedThroughput`  |    `int`      |    Zřízená propustnost, která je nastavena v databázi, pokud databáze používá [Ruční propustnost na úrovni databáze](set-throughput.md#set-throughput-on-a-database)     |
+|   `provisionedThroughput`  |    `int`      |    Zřízená propustnost, která je nastavena v databázi, pokud databáze používá  [Ruční propustnost na úrovni databáze](set-throughput.md#set-throughput-on-a-database)     |
 | `autoScaleSettings` | `Object` | Tento objekt obsahuje parametry kapacity přidružené k databázi, pokud používá [režim automatického škálování](provision-throughput-autoscale.md). `maxThroughput`Hodnota popisuje nejvyšší množství jednotek požadavků, které se databáze zvýší na dynamicky. |
 
 Pokud příkaz neproběhne úspěšně, vrátí se výchozí odpověď vlastního příkazu. Podívejte se na [výchozí výstup](#default-output) vlastního příkazu pro parametry ve výstupu.
@@ -195,7 +195,7 @@ Pokud má databáze přidruženou [propustnost automatického škálování na �
 }
 ```
 
-## <a name="create-collection"></a><a id="create-collection"></a>Vytvořit kolekci
+## <a name="create-collection"></a><a id="create-collection"></a> Vytvořit kolekci
 
 Příkaz vytvořit rozšíření kolekce vytvoří novou kolekci MongoDB. Název databáze se používá z kontextu databáze nastaveného `use database` příkazem. Formát příkazu Vytvořitcollection je následující:
 
@@ -213,8 +213,8 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 | **Pole** | **Typ** | **Požadováno** | **Popis** |
 |---------|---------|---------|---------|
-| `customAction` | `string` | Povinné | Název vlastního příkazu Musí být "Vytvořitcollection".|
-| `collection` | `string` | Povinné | Název kolekce Nejsou povoleny žádné speciální znaky ani mezery.|
+| `customAction` | `string` | Vyžadováno | Název vlastního příkazu Musí být "Vytvořitcollection".|
+| `collection` | `string` | Vyžadováno | Název kolekce Nejsou povoleny žádné speciální znaky ani mezery.|
 | `offerThroughput` | `int` | Volitelné | Zřízená propustnost pro nastavení databáze. Pokud tento parametr není zadán, bude výchozí hodnota minimálně 400 RU/s. * Pokud chcete zadat propustnost přesahující 10 000 RU/s, `shardKey` parametr je povinný.|
 | `shardKey` | `string` | Vyžadováno pro kolekce s velkou propustností | Cesta k horizontálních oddílůmu klíči pro kolekci horizontálně dělené Tento parametr je vyžadován, pokud nastavíte více než 10 000 RU/s v `offerThroughput` .  Pokud je zadáno, budou všechny vložené dokumenty vyžadovat tento klíč a hodnotu. |
 | `autoScaleSettings` | `Object` | Vyžaduje se pro [režim automatického škálování](provision-throughput-autoscale.md) . | Tento objekt obsahuje nastavení přidružená k režimu kapacity automatického škálování. Můžete nastavit `maxThroughput` hodnotu, která popisuje nejvyšší množství jednotek požadavků, na které se kolekce zvyšuje dynamicky. |
@@ -288,7 +288,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", shardKey: "a.b", autoScaleSettings: { maxThroughput: 20000 }});
 ```
 
-## <a name="update-collection"></a><a id="update-collection"></a>Aktualizovat kolekci
+## <a name="update-collection"></a><a id="update-collection"></a> Aktualizovat kolekci
 
 Příkaz rozšíření kolekce aktualizací aktualizuje vlastnosti přidružené k zadané kolekci.
 
@@ -324,7 +324,7 @@ use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a name="get-collection"></a><a id="get-collection"></a>Získat kolekci
+## <a name="get-collection"></a><a id="get-collection"></a> Získat kolekci
 
 Vlastní příkaz Get Collection vrátí objekt kolekce.
 
@@ -413,7 +413,7 @@ Pokud kolekce sdílí propustnost na [úrovni databáze](set-throughput.md#set-t
 ```
 
 
-## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a>Výchozí výstup vlastního příkazu
+## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a> Výchozí výstup vlastního příkazu
 
 Pokud tento parametr nezadáte, vlastní odpověď obsahuje dokument s následujícími poli:
 

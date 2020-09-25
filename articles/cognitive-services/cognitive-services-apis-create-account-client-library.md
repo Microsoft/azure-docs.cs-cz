@@ -3,23 +3,28 @@ title: Vytvoření prostředku Cognitive Services pomocí klientské knihovny pr
 titleSuffix: Azure Cognitive Services
 description: Vytvářejte a spravujte prostředky Azure Cognitive Services pomocí klientské knihovny pro správu Azure.
 services: cognitive-services
+keywords: služby pro rozpoznávání, rozpoznávání, rozpoznávání, rozpoznávání, služby AI
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 07/29/2020
+ms.date: 09/14/2020
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: e56e9226593884045eb4533bfe3ffddce7aad883
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e8628d051db7f5066a81171567f6f7e54fb0ab97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321548"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262446"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-management-client-library"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí klientské knihovny pro správu Azure
 
-Tento rychlý Start slouží k vytváření a správě prostředků Azure Cognitive Services pomocí klientské knihovny pro správu Azure. Jednotlivé služby AI jsou reprezentovány [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) Azure, které vytvoříte v rámci vašeho předplatného Azure. Po vytvoření prostředku můžete k ověřování aplikací použít klíče a vygenerované koncové body.
+Tento rychlý Start slouží k vytváření a správě prostředků Azure Cognitive Services pomocí klientské knihovny pro správu Azure.
+
+Azure Cognitive Services jsou cloudové služby s rozhraními REST API a sady SDK klientské knihovny, které vývojářům umožňují vytvářet v aplikacích rozpoznávání dat bez nutnosti přímých dovedností (AI) nebo znalostí v oblasti datových věd. Azure Cognitive Services umožňuje vývojářům snadno přidat funkce rozpoznávání do svých aplikací s rozpoznáváním řešení, která mohou vidět, slyšet, mluvit, pochopit a dokonce i začít.
+
+Jednotlivé služby AI jsou reprezentovány [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) Azure, které vytvoříte v rámci vašeho předplatného Azure. Po vytvoření prostředku můžete k ověřování aplikací použít klíče a vygenerované koncové body.
 
 ::: zone pivot="programming-language-csharp"
 

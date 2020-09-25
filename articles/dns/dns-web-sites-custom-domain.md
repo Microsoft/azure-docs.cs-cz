@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252863"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření záznamů A a TXT pro vlastní doménu
 > * Vytvoření záznamu CNAME pro vlastní doménu
 > * Testování nových záznamů
-> * Přidání vlastních názvů hostitele do webové aplikace
+> * Přidání vlastních názvů hostitelů do vaší webové aplikace
 > * Testování vlastních názvů hostitele
 
 
@@ -175,7 +175,7 @@ Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://
 > [!NOTE]
 > Ujistěte se, že jste `http://` předponu zahrnuli, jinak se může váš prohlížeč pokusit předpovědět adresu URL.
 
-Pro obě adresy URL by se vám měla zobrazit stejná stránka. Například:
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
 
 ![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

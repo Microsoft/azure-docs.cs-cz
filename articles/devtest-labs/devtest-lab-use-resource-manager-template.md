@@ -3,12 +3,12 @@ title: Zobrazení a použití šablony Azure Resource Manager virtuálního poč
 description: Naučte se používat Azure Resource Manager šablonu z virtuálního počítače k vytvoření dalších virtuálních počítačů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282489"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytváření virtuálních počítačů pomocí šablony Azure Resource Manager 
 
@@ -23,7 +23,7 @@ Existují dva způsoby, jak vytvořit virtuální počítače v DevTest Labs pom
 
 - Správce prostředků šablony, které používají typ prostředku Microsoft. DevTestLab/Labs/VirtualMachines (jak je deklarované v šabloně "prostředku") mohou zřídit jednotlivé virtuální počítače v testovacím prostředí. Každý virtuální počítač se pak v seznamu virtuálních počítačů DevTest Labs zobrazí jako jedna položka:
 
-   ![Seznam virtuálních počítačů jako jedné položky v seznamu virtuálních počítačů DevTest Labs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
+   ![Snímek obrazovky, který zobrazuje seznam virtuálních počítačů jako jednu položku v seznamu virtuálních počítačů DevTest Labs.](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
    Tento typ šablony Správce prostředků můžete zřídit pomocí příkazu Azure PowerShell **New-AzResourceGroupDeployment** nebo pomocí příkazu Azure CLI **AZ Group Deployment Create**. Vyžaduje oprávnění správce, takže uživatelé, kteří jsou přiřazeni pomocí role uživatele DevTest Labs, nemůžou nasazení provést. 
 
@@ -40,7 +40,7 @@ Zbývající část tohoto článku se zabývá Správce prostředkůmi šablona
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Zobrazení a uložení šablony Správce prostředků virtuálního počítače
 1. Pokud chcete začít vytvářet virtuální počítač, postupujte podle kroků v části [Vytvoření prvního virtuálního počítače v testovacím prostředí](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) .
 1. Zadejte požadované informace pro virtuální počítač a přidejte všechny artefakty, které chcete pro tento virtuální počítač.
-1. Swtich na kartu **Upřesnit nastavení** . 
+1. Přepněte na kartu **Upřesnit nastavení** . 
 1. V dolní části okna Konfigurovat nastavení vyberte možnost **Zobrazit šablonu ARM**.
 1. Zkopírujte a uložte šablonu Správce prostředků pro pozdější použití k vytvoření dalšího virtuálního počítače.
 

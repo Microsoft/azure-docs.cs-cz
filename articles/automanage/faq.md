@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: ed97f7861f5dd959fd41ac22b4e497f492dbc3a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311542"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Nejčastější dotazy k Azure automanage pro virtuální počítače
 
@@ -36,7 +36,9 @@ Níže jsou uvedené předpoklady pro povolení služby Azure automanage:
 
 **Jaká oprávnění RBAC je potřeba k povolení automanage?**
 
-Uživatelé musí mít roli vlastníka. Další možností je, že uživatelé můžou mít roli Přispěvatel společně s rolí správce přístupu uživatelů, aby mohli použít možnost automanage.
+Pokud povolíte možnost automanage na virtuálním počítači s existujícím účtem pro správu, budete potřebovat roli přispěvatele pro skupinu prostředků, ve které se virtuální počítač nachází. 
+
+Pokud při povolování používáte nový účet automanage, uživatelé musí mít roli vlastníka nebo mít k předplatnému roli správce přístupu Přispěvatel + uživatel.
 
 
 **Které oblasti jsou podporovány?**
@@ -82,6 +84,11 @@ Ano, máme vestavěnou zásadu, která automaticky aplikuje správu na všechny 
 **Co je účet pro autosprávu?**
 
 Účet automatické správy je soubor MSI (Identita spravované služby), který poskytuje kontext zabezpečení nebo identitu, pod kterou se automatizované operace vyskytují.
+
+
+**Při povolování automanage má vliv na všechny další virtuální počítače kromě vybraných virtuálních počítačů?**
+
+Pokud je váš virtuální počítač propojený s existujícím pracovním prostorem Log Analytics, bude možné tento pracovní prostor použít k použití těchto řešení: Change Tracking, inventarizaci a Update Management. Všem virtuálním počítačům připojeným k tomuto pracovnímu prostoru budou tato řešení povolena. 
 
 
 **Můžu změnit konfigurační profil mého virtuálního počítače?**

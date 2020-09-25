@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 6a5415e12a5a063790077eeefdc9ea4d1487d68b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282456"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>Kurz: migrace Azure DB pro PostgreSQL – jeden server do Azure DB pro PostgreSQL-Single server nebo škálovatelné (Citus) online pomocí DMS přes Azure Portal
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Migrace z Azure Database for PostgreSQL se podporuje pro PostgreSQL verze 10 a novější. Tento kurz můžete také použít k migraci z jedné instance Azure Database for PostgreSQL do jiné instance Azure Database for PostgreSQL nebo instance Citus ().
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

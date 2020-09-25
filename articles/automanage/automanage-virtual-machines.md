@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 8e48a5c896c4927b82f7d77f31b7f1c47fd156c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311559"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -43,12 +43,11 @@ Před tím, než se pokusíte povolit službu Azure na virtuálních počítač�
 
 - Jenom virtuální počítače s Windows serverem
 - Musí být spuštěny virtuální počítače.
-- Jenom virtuální počítače bez škálování
 - Virtuální počítače musí být v podporované oblasti.
 - Uživatel musí mít správná oprávnění.
 - Virtuální počítače nesmí odkazovat na pracovní prostor Log Analytics v jiném předplatném.
 
-Následující oprávnění RBAC je potřeba k povolení funkce automanage: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
+Abyste mohli povolit autosprávu pomocí stávajícího účtu pro správu, musíte mít roli **Přispěvatel** . Pokud povolujete možnost autospráva pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
 
 Je také důležité si uvědomit, že automanage podporuje jenom virtuální počítače s Windows, které jsou v následujících oblastech: Západní Evropa, Východní USA, Západní USA 2, Kanada – střed, Středozápadní USA.
 
@@ -105,7 +104,7 @@ Nastavení výchozího konfiguračního profilu můžete upravit pomocí předvo
 V prostředí Azure Portal máte při povolování funkce automanage na vašich virtuálních počítačích pokročilý rozevírací seznam v okně **Povolit osvědčené postupy pro virtuální počítače Azure** , které vám umožní přiřadit nebo ručně vytvořit účet pro správu.
 
 > [!NOTE]
-> Následující oprávnění RBAC je potřeba k povolení funkce automanage: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
+> Abyste mohli povolit autosprávu pomocí stávajícího účtu pro správu, musíte mít roli **Přispěvatel** . Pokud povolujete možnost autospráva pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
 
 
 ## <a name="status-of-vms"></a>Stav virtuálních počítačů

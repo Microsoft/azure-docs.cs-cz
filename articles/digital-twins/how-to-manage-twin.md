@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282370"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -166,7 +166,7 @@ Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-m
 Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
 * ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
 * `$etag`, standardní pole HTTP přiřazené webovým serverem
-* Další vlastnosti v `$metadata` oddílu. Zde jsou některé z nich:
+* Další vlastnosti v `$metadata` oddílu. Tady jsou některé z nich:
     - DTMI modelu digitálního vlákna.
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
     - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 
@@ -383,6 +383,17 @@ Příklad, jak odstranit všechny vlákna najednou, si můžete stáhnout ukázk
 Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
+## <a name="view-all-digital-twins"></a>Zobrazit všechny digitální vlákna
+
+Chcete-li zobrazit všechny digitální vlákna ve vaší instanci, použijte [dotaz](how-to-query-graph.md). Dotaz můžete spustit pomocí [rozhraní API pro dotazy](how-to-use-apis-sdks.md) nebo [příkazů CLI](how-to-use-cli.md).
+
+Zde je text základního dotazu, který vrátí seznam všech digitálních vláken v instanci:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="next-steps"></a>Další kroky
 

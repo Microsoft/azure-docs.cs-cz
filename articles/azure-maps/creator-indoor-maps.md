@@ -1,6 +1,6 @@
 ---
 title: Práce s mapami ve službě Azure Maps Creator
-description: Tento článek představuje koncepty, které se vztahují na služby Azure Maps Creator.
+description: V tomto článku se seznámíte s koncepty, které se vztahují na služby Azure Maps Creator.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 05/18/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d55a0726000a6ed55f049ac4a4146f66421a7085
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ad1b7ae08e74f455190c44a813dde44b0b683014
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311355"
 ---
 # <a name="creator-for-indoor-maps"></a>Autor pro mapy vnitřníchy
 
@@ -65,7 +65,7 @@ Kromě vektorových dat poskytuje TILESET metadata pro optimalizaci vykreslován
 
 Po vytvoření je TILESET může získat [Služba vykreslování v2](#render-v2-service).
 
-Pokud se TILESET stane zastaralým a již není užitečný, můžete TILESET odstranit. Další informace o tom, jak odstranit tilesets, najdete v tématu [Údržba dat](#data-maintenance).
+Pokud se TILESET stane zastaralým a již není užitečný, můžete TILESET odstranit. Další informace o tom, jak odstranit tilesets, najdete v tématu  [Údržba dat](#data-maintenance).
 
 >[!NOTE]
 >TILESET je nezávislý na datové sadě, ze které byla vytvořena. Pokud vytvoříte tilesets z datové sady a následně aktualizujete tuto datovou sadu, tilesets se neaktualizuje. Aby se projevily změny v datové sadě, je nutné vytvořit nové tilesets. Podobně pokud odstraníte TILESET, datová sada nebude ovlivněna.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311593"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
 
@@ -25,7 +25,7 @@ Migrace probíhá ve dvou fázích:
 
 Tento článek popisuje migraci konfigurace. Migrace provozu klientů se liší v závislosti na konkrétním prostředí. [Jsou však k dispozici](#migrate-client-traffic)některá obecná doporučení.
 
-## <a name="migration-overview"></a>Migrace – přehled
+## <a name="migration-overview"></a>Přehled migrace
 
 K dispozici je skript Azure PowerShell, který provede následující akce:
 
@@ -36,6 +36,8 @@ K dispozici je skript Azure PowerShell, který provede následující akce:
 
 * Nová brána v2 má nové veřejné a privátní IP adresy. Není možné bezproblémově přesunout IP adresy přidružené k existující bráně V1 na v2. K nové bráně v2 ale můžete přiřadit existující (nepřiřazenou) veřejnou nebo privátní IP adresu.
 * Je nutné zadat adresní prostor IP adres pro jinou podsíť ve virtuální síti, kde se nachází brána v1. Skript nemůže vytvořit bránu V2 v žádné z existujících podsítí, které již mají bránu v1. Nicméně pokud již existující podsíť má bránu v2, která může fungovat i v případě, že je k dispozici dostatek adresního prostoru IP adres.
+* Pokud máte skupinu zabezpečení sítě nebo trasy definované uživatelem přidružené k podsíti brány v2, ujistěte se, že splňují [požadavky NSG](../application-gateway/configuration-infrastructure.md#network-security-groups) a [udr požadavky](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes) na úspěšnou migraci.
+* [Zásady koncového bodu služby virtuální sítě](../virtual-network/virtual-network-service-endpoint-policies-overview.md) se v Application Gateway podsíti v tuto chvíli nepodporují.
 * Při migraci konfigurace TLS/SSL musíte zadat všechny certifikáty TLS/SSL použité v bráně v1.
 * Pokud máte pro bránu v1 povolený režim FIPS, nebude se migrovat na novou bránu v2. V v2 není podporován režim FIPS.
 * V2 nepodporuje protokol IPv6, protože brány V1 s povoleným protokolem IPv6 nejsou migrovány. Pokud skript spustíte, nemusí se dokončit.
@@ -44,7 +46,7 @@ K dispozici je skript Azure PowerShell, který provede následující akce:
 
 ## <a name="download-the-script"></a>Stáhnout skript
 
-Stáhněte si skript migrace z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAppGWMigration).
+Stáhněte si skript migrace z  [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAppGWMigration).
 
 ## <a name="use-the-script"></a>Použití skriptu
 
@@ -180,7 +182,7 @@ Ano.
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Přepíná skript Azure PowerShell také přenos dat z mé brány V1 na nově vytvořenou bránu v2?
 
-Ne. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
+No. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Je nová brána v2 vytvořená o správné velikosti skriptu Azure PowerShell pro zpracování všech přenosů, které aktuálně obsluhuje moje brána v1?
 
@@ -188,11 +190,11 @@ Skript Azure PowerShell vytvoří novou bránu v2, která má odpovídající ve
 
 ### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Nakonfigurovali jsem moji bránu V1, aby odesílala protokoly do služby Azure Storage. Replikuje tento skript tuto konfiguraci pro v2?
 
-Ne. Skript nereplikuje tuto konfiguraci pro v2. Je nutné přidat konfiguraci protokolu odděleně od migrované brány v2.
+No. Skript nereplikuje tuto konfiguraci pro v2. Je nutné přidat konfiguraci protokolu odděleně od migrované brány v2.
 
 ### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Podporuje tento skript certifikáty nahrané do služby Azure webtrezor?
 
-Ne. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se ale zvažuje i v budoucí verzi.
+No. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se ale zvažuje i v budoucí verzi.
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
   

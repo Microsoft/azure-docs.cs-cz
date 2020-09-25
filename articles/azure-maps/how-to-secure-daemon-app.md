@@ -5,16 +5,16 @@ description: Pomocí Azure Portal můžete spravovat ověřování a nakonfiguro
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e445f26458d13d28dd4ef50c6c17d434554d9fd5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311066"
 ---
 # <a name="secure-a-daemon-application"></a>Zabezpečení aplikace démona
 
@@ -120,14 +120,14 @@ V případě, že nejsou k dispozici spravované identity prostředí mimo Azure
     > ![Udělení přístupu pomocí Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Na kartě **přiřazení rolí** **přidejte** přiřazení role. 
-    
+
     > [!div class="mx-imgBorder"]
     > ![Přidat přiřazení role](./media/how-to-manage-authentication/add-role-assignment.png)
 
 3. Vyberte předdefinované definice role Azure Maps, například **Azure Maps data Reader** nebo **Přispěvatel dat Azure Maps**. V části **přiřadit přístup k**vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD** s přiřazenou **User assigned managed identity**  /  **spravovanou identitou**přiřazenou uživatelem spravované identity. Vyberte objekt zabezpečení. Potom vyberte **Uložit**.
 
     > [!div class="mx-imgBorder"]
-    > ![Přidat přiřazení role](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
+    > ![Postup přidání přiřazení role](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
 
 4. Na kartě přiřazení role můžete potvrdit použití přiřazení role.
 
@@ -139,7 +139,7 @@ Po nakonfigurování spravované identity pro hostující prostředek použijte 
 
 Po registraci aplikace a jejím přidružení k Azure Maps můžete požádat o přístupové tokeny.
 
-* ID prostředku Azure AD`https://atlas.microsoft.com/`
+* ID prostředku Azure AD `https://atlas.microsoft.com/`
 * ID Aplikace Azure AD
 * ID klienta Azure AD
 * Tajný kód klienta pro registraci Aplikace Azure AD

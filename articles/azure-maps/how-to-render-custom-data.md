@@ -4,17 +4,17 @@ description: Přečtěte si, jak přidat špendlíky, popisky a geometrické obr
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/23/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: ec62461e5a12f0c566becdfc7d9a1464433ee656
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311015"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Vykreslovat vlastní data na rastrové mapě
 
@@ -148,7 +148,7 @@ Můžete také získat cestu a informace o umístění PIN pomocí [rozhraní AP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Pokud chcete získat udId, otevřete novou kartu v aplikaci pro odesílání. Na kartě tvůrce vyberte získat metodu HTTP. proveďte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId.
+6. Pokud chcete získat udId, otevřete novou kartu v aplikaci pro odesílání. Na kartě tvůrce vyberte získat metodu HTTP. Vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId.
 
    ```JSON
    {

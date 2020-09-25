@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282302"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -25,6 +25,15 @@ Ve zbývající části tohoto článku najdete příklady použití těchto ope
 ## <a name="query-syntax"></a>Syntaxe dotazů
 
 Tato část obsahuje ukázkové dotazy, které ilustrují strukturu dotazovacího jazyka a provádějí možné operace dotazů u [digitálních vláken](concepts-twins-graph.md).
+
+### <a name="show-all-existing-digital-twins"></a>Zobrazit všechny existující digitální vlákna
+
+Tady je základní dotaz, který vrátí seznam všech digitálních vláken v instanci:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+```
 
 ### <a name="select-top-items"></a>Vybrat horní položky
 
@@ -208,8 +217,8 @@ Podporovány jsou následující řetězcové funkce:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| STARTS_WITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
-| ENDS_WITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |
+| STARTSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
+| ENDSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |
 
 ## <a name="run-queries-with-an-api-call"></a>Spouštění dotazů pomocí volání rozhraní API
 

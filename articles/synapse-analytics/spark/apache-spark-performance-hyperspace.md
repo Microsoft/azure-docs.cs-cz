@@ -10,33 +10,35 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249361"
 ---
-# <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Hyperprostoru – subsystém indexování pro Apache Spark
+# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperprostoru: subsystém indexování pro Apache Spark
 
-Výkop do hyperprostoru přináší možnost Apache Spark uživatelům vytvářet indexy na svých datových sadách (například CSV, JSON, Parquet atd.) a využívat je pro potenciální akceleraci dotazů a úloh.
+Výkop do hyperprostoru přináší možnost Apache Spark uživatelům vytvářet indexy na svých datových sadách, jako je CSV, JSON a Parquet, a používat je k možné akceleraci dotazů a úloh.
 
-V tomto článku se seznámíte se základy hyperprostoru, důrazně na jeho jednoduchost a ukazuje, jak ho může používat jenom o kohokoli.
+V tomto článku se seznámíte se základy hyperprostoru, zvýrazníte jeho jednoduchost a ukážete, jak ho může používat jenom o kohokoli.
 
-Právní omezení: hyperprostoru pomáhá zrychlit vaše úlohy a dotazy za dvou okolností:
+Právní omezení: hyperprostoru pomáhá zrychlit vaše úlohy nebo dotazy za dvou okolností:
 
-* Dotazy obsahují filtry pro predikáty s vysokou selektivitou (například chcete vybrat 100, které odpovídají řádkům v milionech kandidátů).
-* Dotazy obsahují spojení, které vyžaduje, abyste se připojili k datové sadě 100 až GB s datovou sadou o velikosti 10 GB).
+* Dotazy obsahují filtry pro predikáty s vysokou selektivitou. Například můžete chtít vybrat 100 řádků, které odpovídají milionům kandidátům.
+* Dotazy obsahují spojení, které vyžaduje silná přemísení. Například můžete chtít připojit datovou sadu 100 GB s datovou sadou o velikosti 10 GB.
 
 Můžete chtít pečlivě monitorovat vaše úlohy a zjistit, zda vám indexování pomůže na základě velkých a malých písmen.
 
-Tento dokument je také k dispozici ve formě poznámkového bloku pro [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), pro [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) a [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)
+Tento dokument je také k dispozici ve formě poznámkového bloku pro [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)a [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)
 
 ## <a name="setup"></a>Nastavení
 
-Začněte tím, že spustíte novou relaci Spark. Vzhledem k tomu, že se jedná o kurz jenom k ilustraci toho, co může výkop nabízí, provedete změnu konfigurace, která nám umožní zvýraznit, co se v malých datových sadách dělá. Ve výchozím nastavení Spark používá připojení všesměrového vysílání k optimalizaci dotazů JOIN, když je velikost dat pro jednu stranu spojení malá (což je případ pro vzorová data, která v tomto kurzu používáme). Proto jsme zakázali spojení všesměrového vysílání, takže později při spuštění JOIN dotazů používá Spark spojení řazení a sloučení. Slouží hlavně k tomu, jak ukázat, jak se ve velkém měřítku použijí indexy hyperprostoru pro zrychlení spojování dotazů.
+Začněte tím, že spustíte novou relaci Spark. Vzhledem k tomu, že se jedná o kurz jenom k ilustraci toho, co může výkop nabízí, provedete změnu konfigurace, která nám umožní zvýraznit, co se v malých datových sadách dělá. 
 
-Výstup spuštění následující buňky ukazuje odkaz na úspěšně vytvořenou relaci Spark a vypíše '-1 ' jako hodnotu pro upravenou konfiguraci spojení, která indikuje, že spojení všesměrového vysílání je úspěšně zakázáno.
+Ve výchozím nastavení Spark používá připojení všesměrového vysílání k optimalizaci dotazů JOIN, když je velikost dat pro jednu stranu spojení malá (což je případ pro vzorová data, která v tomto kurzu používáme). Proto jsme zakázali spojení všesměrového vysílání, takže později při spuštění JOIN dotazů používá Spark spojení řazení a sloučení. Slouží hlavně k tomu, jak ukázat, jak se ve velkém měřítku použijí indexy hyperprostoru pro zrychlení spojování dotazů.
+
+Výstup spuštění následující buňky ukazuje odkaz na úspěšně vytvořenou relaci Spark a vypíše '-1 ' jako hodnotu pro upravenou konfiguraci spojení, což znamená, že spojení všesměrového vysílání je úspěšně zakázáno.
 
 :::zone pivot = "programming-language-scala"
 
@@ -44,7 +46,7 @@ Výstup spuštění následující buňky ukazuje odkaz na úspěšně vytvořen
 // Start your Spark session
 spark
 
-// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 // Verify that BroadcastHashJoin is set correctly
@@ -57,10 +59,10 @@ println(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-python"
 
 ```python
-# Start your Spark session
+# Start your Spark session.
 spark
 
-# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently Hyperspace indexes utilize SortMergeJoin to speed up query.
+# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 # Verify that BroadcastHashJoin is set correctly 
@@ -72,10 +74,10 @@ print(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-// Disable BroadcastHashJoin, so Spark™ will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.Conf().Set("spark.sql.autoBroadcastJoinThreshold", -1);
 
-// Verify that BroadcastHashJoin is set correctly 
+// Verify that BroadcastHashJoin is set correctly.
 Console.WriteLine(spark.Conf().Get("spark.sql.autoBroadcastJoinThreshold"));
 ```
 
@@ -90,11 +92,11 @@ res3: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@297e
 
 ## <a name="data-preparation"></a>Příprava dat
 
-Pro přípravu prostředí vytvoříte ukázkové záznamy dat a uložíte je jako soubory dat Parquet. I když se pro ilustraci používá Parquet, můžete použít jiné formáty, jako je CSV. V následujících buňkách se dozvíte, jak vytvořit několik indexů hyperprostoru pro tuto ukázkovou datovou sadu a jak je můžete využít pro Spark při spouštění dotazů.
+Pro přípravu prostředí vytvoříte ukázkové záznamy dat a uložíte je jako soubory dat Parquet. Parquet se používá pro ilustraci, ale můžete použít i jiné formáty, jako je CSV. V následujících buňkách uvidíte, jak můžete pro tuto ukázkovou datovou sadu vytvořit několik indexů hyperprostoru a při spouštění dotazů je použít.
 
-Ukázkové záznamy odpovídají dvěma datovým sadám: oddělení a zaměstnanec. Měli byste nakonfigurovat cesty "empLocation" a "deptLocation", aby na účtu úložiště odkazovaly na požadované umístění pro ukládání vygenerovaných datových souborů.
+Ukázkové záznamy odpovídají dvěma datovým sadám: oddělení a zaměstnanec. Měli byste nakonfigurovat cesty "empLocation" a "deptLocation", aby na účtu úložiště odkazovaly na požadované umístění, aby se ukládaly vygenerované datové soubory.
 
-Výstup běhu pod buňkou zobrazuje obsah našich datových sad jako seznam Triplets následovaný odkazy na datové rámečky vytvořené za účelem uložení obsahu jednotlivých datových sad do našeho upřednostňovaného umístění.
+Výstupem následující buňky je zobrazení obsahu našich datových sad jako seznamů Triplets následovaných odkazy na datové rámce vytvořené za účelem uložení obsahu každé datové sady do našeho upřednostňovaného umístění.
 
 :::zone pivot = "programming-language-scala"
 
@@ -240,9 +242,9 @@ empLocation: String = /your-path/employees.parquet
 deptLocation: String = /your-path/departments.parquet  
 ```
 
-Pojďme ověřit obsah souborů Parquet, které jsme vytvořili výše, abyste se ujistili, že obsahují očekávané záznamy ve správném formátu. Později tyto datové soubory použijeme k vytvoření indexů hyperprostoru a spuštění ukázkových dotazů.
+Pojďme ověřit obsah souborů Parquet, které jsme vytvořili, abyste se ujistili, že obsahují očekávané záznamy ve správném formátu. Později tyto datové soubory použijeme k vytvoření indexů hyperprostoru a spuštění ukázkových dotazů.
 
-Po spuštění níže uvedené buňky výstup zobrazí v tabulkovém formátu řádky v datarámečcích zaměstnanci a oddělení. Mělo by to být 14 zaměstnanců a 4 oddělení, přičemž každý z nich bude odpovídat jednomu z Triplets, který jste vytvořili v předchozí buňce.
+Spuštění následující buňky vytvoří a zobrazí výstup, který zobrazuje řádky v datarámečcích zaměstnanci a oddělení v tabulkovém formátu. Mělo by to být 14 zaměstnanců a 4 oddělení, přičemž každý z nich bude odpovídat jednomu z Triplets, který jste vytvořili v předchozí buňce.
 
 :::zone pivot = "programming-language-scala"
 
@@ -262,7 +264,7 @@ deptDF.show()
 
 ```python
 
-# emp_Location and dept_Location are the user defined locations above to save parquet files
+# emp_Location and dept_Location are the user-defined locations above to save parquet files
 emp_DF = spark.read.parquet(emp_Location)
 dept_DF = spark.read.parquet(dept_Location)
 
@@ -278,7 +280,7 @@ dept_DF.show()
 
 ```csharp
 
-// empLocation and deptLocation are the user defined locations above to save parquet files
+// empLocation and deptLocation are the user-defined locations above to save parquet files
 DataFrame empDF = spark.Read().Parquet(empLocation);
 DataFrame deptDF = spark.Read().Parquet(deptLocation);
 
@@ -329,18 +331,22 @@ deptDF: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 mo
 
 ## <a name="indexes"></a>Indexy
 
-Hyperprostoru umožňuje vytvářet indexy na záznamech prověřených z trvalých datových souborů. Po úspěšném vytvoření se položka odpovídající indexu přidá do metadat hyperprostoru. Tato metadata později používá Optimalizátor Apache Spark (s našimi rozšířeními) během zpracování dotazu k vyhledání a použití správných indexů.
+Hyperprostoru umožňuje vytvářet indexy na záznamech prověřených z trvalých datových souborů. Po úspěšném vytvoření se položka, která odpovídá indexu, přidá do metadat hyperprostoru. Tato metadata později používá Optimalizátor Apache Spark (s našimi rozšířeními) během zpracování dotazu k vyhledání a použití správných indexů.
 
 Po vytvoření indexů můžete provést několik akcí:
 
+* **Aktualizovat, pokud se změní podkladová data.** Pokud chcete zachytit změny, můžete aktualizovat existující index.
+* **Odstraňte, pokud index není potřeba.** Můžete provést obnovitelné odstranění, to znamená, že index se fyzicky neodstraní, ale je označený jako odstraněný, aby se už nepoužíval ve vašich úlohách.
+* **V případě, že index již není požadován, je vaku.** Index můžete vyhodnotit, což vynutí fyzické odstranění obsahu indexu a přidružená metadata zcela z metadat hyperprostoru.
+
 Aktualizovat Pokud se změní podkladová data, můžete aktualizovat existující index a zachytit ho.
 Pokud index nepotřebujete, můžete provést obnovitelné odstranění, což znamená, že index není fyzicky odstraněný, ale je označený jako odstraněný, takže se už nepoužívá ve vašich úlohách.
-V případě, že index již není vyžadován, můžete ho vyhodnotit, což vynutí fyzické odstranění obsahu indexu a přidružených metadat z metadat hyperprostoru.
-Níže uvedené části ukazují, jak se tyto operace správy indexů dají provádět v hyperprostoru.
+
+Následující části ukazují, jak se tyto operace správy indexů dají provádět v hyperprostoru.
 
 Nejprve je třeba importovat požadované knihovny a vytvořit instanci hyperprostoru. Později tuto instanci použijete k vyvolání různých rozhraní API hyperprostoru k vytváření indexů pro ukázková data a k úpravě těchto indexů.
 
-Výstup spuštěný pod buňkou zobrazuje odkaz na vytvořenou instanci hyperprostoru.
+Výstup spuštění následující buňky ukazuje odkaz na vytvořenou instanci hyperprostoru.
 
 :::zone pivot = "programming-language-scala"
 
@@ -388,9 +394,10 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 
 Chcete-li vytvořit index hyperprostoru, je nutné zadat dvě části informací:
 
-Spark dataframe, který odkazuje na data, která mají být indexována.
-Objekt konfigurace indexu: IndexConfig, který určuje název indexu, indexované a zahrnuté sloupce indexu.
-Začnete vytvořením tří indexů hyperprostoru na našich ukázkových datech: dva indexy pro datovou sadu oddělení s názvem "deptIndex1" a "deptIndex2" a jeden index pro datovou sadu zaměstnanců s názvem "empIndex". Pro každý index potřebujete odpovídající IndexConfig pro zachycení názvu spolu se seznamy sloupců pro indexované a zahrnuté sloupce. Po spuštění níže se vytvoří tyto indexConfigs a jejich výstup.
+* Spark dataframe, který odkazuje na data, která mají být indexována.
+* Objekt konfigurace indexu, IndexConfig, který určuje název indexu a indexované a zahrnuté sloupce indexu.
+
+Začnete vytvořením tří indexů hyperprostoru na našich ukázkových datech: dva indexy pro datovou sadu oddělení s názvem "deptIndex1" a "deptIndex2" a jeden index pro datovou sadu zaměstnanců s názvem "empIndex". Pro každý index potřebujete odpovídající IndexConfig pro zachycení názvu spolu se seznamy sloupců pro indexované a zahrnuté sloupce. Při spuštění následující buňky se vytvoří tyto IndexConfigs a jejich výstup se zobrazí.
 
 > [!Note]
 > Indexový sloupec je sloupec, který se zobrazí ve vašich filtrech nebo podmínkách připojení. Zahrnutý sloupec je sloupec, který se zobrazí ve vašem výběru nebo projektu.
@@ -454,8 +461,7 @@ empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empInde
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
 ```
-
-Nyní vytvoříte tři indexy pomocí konfigurací indexu. Pro tento účel vyvoláte příkaz "createIndex" v naší instanci hyperprostoru. Tento příkaz vyžaduje konfiguraci indexu a datový rámec obsahující řádky, které mají být indexovány. Při spuštění níže uvedené buňky se vytvoří tři indexy.
+Nyní vytvoříte tři indexy pomocí konfigurací indexu. Pro tento účel vyvoláte příkaz "createIndex" v naší instanci hyperprostoru. Tento příkaz vyžaduje konfiguraci indexu a datový rámec obsahující řádky, které mají být indexovány. Když spustíte následující buňku, vytvoří se tři indexy.
 
 :::zone pivot = "programming-language-scala"
 
@@ -505,14 +511,17 @@ import com.microsoft.hyperspace.index.Index
 
 ## <a name="list-indexes"></a>Zobrazit indexy
 
-Níže uvedený kód ukazuje, jak můžete zobrazit seznam všech dostupných indexů v instanci hyperprostoru. Používá "indexy" rozhraní API, které vrací informace o existujících indexech jako datový rámec Sparku, takže můžete provádět další operace. Například můžete vyvolat platné operace s tímto datovým rámcem pro kontrolu jeho obsahu nebo jeho následné analýze (například filtrování konkrétních indexů nebo jejich seskupení podle některé požadované vlastnosti).
+Následující kód ukazuje, jak můžete zobrazit seznam všech dostupných indexů v instanci hyperprostoru. Používá "indexy" rozhraní API, které vrací informace o existujících indexech jako datový rámec Sparku, takže můžete provádět další operace. 
 
-Následující buňka používá akci zobrazení objektu dataframe k úplnému tisku řádků a zobrazení podrobností o indexech v tabulkovém formátu. U každého indexu můžete zobrazit všechny informace v poli hyperprostoru v metadatech. Okamžitě se zobrazí následující informace:
+Například můžete vyvolat platné operace s tímto datovým rámcem pro kontrolu jeho obsahu nebo jeho následné analýze (například filtrování konkrétních indexů nebo jejich seskupení podle některé požadované vlastnosti).
 
-* "config. indexer", "config. indexedColumns", "config. includedColumns" a "status. status" jsou pole, na které uživatel obvykle odkazuje.
-* "dfSignature" se automaticky generuje do hyperprostoru a je pro každý index jedinečný. Výkop používá tento podpis interně k údržbě indexu a jeho zneužití v době dotazu.
+Následující buňka používá akci "show" objektu dataframe k úplnému tisku řádků a zobrazení podrobností o indexech v tabulkovém formátu. U každého indexu můžete zobrazit všechny informace v poli hyperprostoru v metadatech. Okamžitě se zobrazí následující informace:
 
-Ve výstupu níže by všechny tři indexy měly mít stav "aktivní" jako stav a jejich název, indexované sloupce a zahrnuté sloupce by se měly shodovat s tím, co jsme definovali v konfiguracích indexu výše.
+* config. indexer, config. indexedColumns, config. includedColumns a status. status jsou pole, na která uživatel normálně odkazuje.
+* dfSignature se automaticky generuje do hyperprostoru a je pro každý index jedinečný. Výkop používá tento podpis interně k údržbě indexu a jeho zneužití v době dotazu.
+
+
+V následujícím výstupu mají všechny tři indexy stav "aktivní" jako stav a jejich název, indexované sloupce a zahrnuté sloupce by se měly shodovat s tím, co jsme definovali v konfiguracích indexu výše.
 
 :::zone pivot = "programming-language-scala"
 
@@ -554,9 +563,11 @@ Výsledky:
 
 ## <a name="delete-indexes"></a>Odstranit indexy
 
-Existující index můžete odstranit pomocí rozhraní API "deleteIndex" a zadáním názvu indexu. Odstranění indexu provádí obnovitelné odstranění: hlavně aktualizuje stav indexu v metadatech hyperprostoru z "aktivní" na "SMAZÁNo". Tím dojde k vyloučení vyřazeného indexu z jakékoli budoucí optimalizace dotazů a hyperprostoru již nebere index pro žádný dotaz. Soubory indexu pro odstraněný index stále zůstávají k dispozici (vzhledem k tomu, že se jedná o obnovitelné odstranění), aby bylo možné index obnovit, pokud se uživatel zeptá na.
+Existující index můžete odstranit pomocí rozhraní API "deleteIndex" a zadáním názvu indexu. Odstranění indexu provádí obnovitelné odstranění: hlavně aktualizuje stav indexu v metadatech hyperprostoru z "aktivní" na "SMAZÁNo". Tím dojde k vyloučení vyřazeného indexu z jakékoli budoucí optimalizace dotazů a hyperprostoru již nebere index pro žádný dotaz. 
 
-Pod buňkou se odstraní index s názvem "deptIndex2" a v něm se zobrazí metadata hyperprostoru. Výstup by měl být podobný jako u "indexů seznamu", s výjimkou "deptIndex2", ve kterém by se teď měl stav změnit na "ODSTRANĚNo".
+Soubory indexu pro odstraněný index stále zůstávají k dispozici (vzhledem k tomu, že se jedná o obnovitelné odstranění), aby bylo možné index obnovit, pokud se uživatel zeptá na.
+
+Následující buňka odstraní index s názvem "deptIndex2" a vypíše metadata hyperprostoru. Výstup by měl být podobný jako u "indexů seznamu", s výjimkou "deptIndex2", ve kterém by se teď měl stav změnit na "ODSTRANĚNo".
 
 :::zone pivot = "programming-language-scala"
 
@@ -602,7 +613,7 @@ Výsledky:
 
 ## <a name="restore-indexes"></a>Obnovit indexy
 
-K obnovení odstraněného indexu můžete použít rozhraní API "restoreIndex". Tím se vrátí nejnovější verze indexu do aktivního stavu a pro dotazy bude znovu použitelné. Následující buňka zobrazuje příklad použití "restoreIndex". Odstraníte "deptIndex1" a obnovíte ho. Po volání příkazu "deleteIndex" se ve výstupu zobrazí zpráva "deptIndex1", nejprve se vrátí do stavu "ODSTRANĚNo" a po volání "restoreIndex" se vrátí do stavu "aktivní".
+K obnovení odstraněného indexu můžete použít rozhraní API "restoreIndex". Tím se vrátí nejnovější verze indexu do aktivního stavu a pro dotazy bude znovu použitelné. Následující buňka ukazuje příklad použití "restoreIndex". Odstraníte "deptIndex1" a obnovíte ho. Po volání příkazu "deleteIndex" se ve výstupu zobrazí zpráva "deptIndex1", nejprve se vrátí do stavu "ODSTRANĚNo" a po volání "restoreIndex" se vrátí do stavu "aktivní".
 
 :::zone pivot = "programming-language-scala"
 
@@ -666,9 +677,9 @@ Výsledky:
 
 ## <a name="vacuum-indexes"></a>Vakuové indexy
 
-Pomocí příkazu "vacuumIndex" můžete provést pevné odstranění, které je úplné odebrání souborů a položka metadat pro odstraněný index. Až to bude hotové, tato akce je nevratná, protože fyzicky odstraní všechny soubory indexu (což je důvod, proč se jedná o pevné odstranění).
+Můžete provést pevné odstranění, tedy úplné odebrání souborů a položku metadat pro odstraněný index pomocí příkazu **vacuumIndex** . Tato akce je nevratná. Fyzicky odstraní všechny soubory indexů, což je důvod, proč se jedná o pevné odstranění.
 
-V níže uvedené buňce je index "deptIndex2" a po vakuy se zobrazují metadata hyperprostoru. Měly by se zobrazit položky metadat pro dva indexy "deptIndex1" a "empIndex" s "AKTIVNÍm" stavem a bez zadání pro "deptIndex2".
+Následující buňka vyznačuje index "deptIndex2" a po vakuě zobrazuje metadata hyperprostoru. Měly by se zobrazit položky metadat pro dva indexy "deptIndex1" a "empIndex" s "AKTIVNÍm" stavem a bez zadání pro "deptIndex2".
 
 :::zone pivot = "programming-language-scala"
 
@@ -711,13 +722,14 @@ Výsledky:
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="enabledisable-hyperspace"></a>Povolit/zakázat hyperprostoru
+## <a name="enable-or-disable-hyperspace"></a>Povolit nebo zakázat hyperprostoru
 
 Výkop poskytuje rozhraní API pro povolení nebo zakázání využití indexu pomocí Sparku.
 
-Pomocí příkazu "enableHyperspace" se pravidla optimalizace hyperprostoru stanou viditelným nástrojem pro optimalizaci Sparku a budou k optimalizaci uživatelských dotazů využívat stávající indexy hyperprostoru.
-Po použití příkazu "disableHyperspace" už pravidla hyperprostoru neplatí během optimalizace dotazů. Měli byste si uvědomit, že vypnutí hyperprostoru nemá žádný vliv na vytvořené indexy, protože zůstávají beze změny.
-Následující buňka ukazuje, jak můžete použít tyto příkazy k povolení nebo zakázání hyperprostoru. Výstup jednoduše zobrazuje odkaz na existující relaci Spark, jejíž konfigurace je aktualizována.
+* Pomocí příkazu **enableHyperspace** se pravidla optimalizace hyperprostoru stanou viditelným nástrojem pro optimalizaci Spark a zneužít stávající indexy hyperprostoru k optimalizaci uživatelských dotazů.
+* Po použití příkazu **disableHyperspace** už pravidla hyperprostoru neplatí během optimalizace dotazů. Vypnutí hyperprostoru nemá žádný vliv na vytvořené indexy, protože zůstávají beze změny.
+
+Následující buňka ukazuje, jak můžete tyto příkazy použít k povolení nebo zakázání hyperprostoru. Výstup zobrazuje odkaz na existující relaci Spark, jejíž konfigurace je aktualizována.
 
 :::zone pivot = "programming-language-scala"
 
@@ -768,7 +780,7 @@ res51: org.apache.spark.sql.Spark™Session = org.apache.spark.sql.SparkSession@
 
 ## <a name="index-usage"></a>Využití indexu
 
-Aby bylo možné při zpracování dotazů použít index hyperprostoru, je nutné zajistit, aby bylo povoleno hyperprostoru.
+Aby bylo možné při zpracování dotazů použít indexy hyperprostoru, je nutné zajistit, aby bylo povoleno hyperprostoru.
 
 Následující buňka povolí výkop a vytvoří dva datové rámce, které obsahují záznamy vzorových dat, které používáte pro spouštění ukázkových dotazů. Pro každý datový rámec se vytisknou několik vzorových řádků.
 
@@ -857,11 +869,11 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 V současné době má výkop pravidla pro zneužití indexů pro dvě skupiny dotazů:
 
 * Dotazy výběru s predikáty filtrování nebo výběru rozsahu.
-* Spojování dotazů s predikátem spojení rovnosti (tj. operátorem rovnosti spojení).
+* Spojování dotazů s predikátem spojení rovnosti (tj. equijoins)
 
 ## <a name="indexes-for-accelerating-filters"></a>Indexy pro urychlení filtrů
 
-První vzorový dotaz provede vyhledávání na záznamech oddělení (viz následující buňka). Tento dotaz v SQL vypadá takto:
+První vzorový dotaz provede vyhledávání u záznamů oddělení, jak je znázorněno v následující buňce. V jazyce SQL tento dotaz vypadá jako v následujícím příkladu:
 
 ```sql
 SELECT deptName
@@ -869,12 +881,12 @@ FROM departments
 WHERE deptId = 20
 ```
 
-Výstup následující buňky ukazuje:
+Výstup spuštění následující buňky ukazuje:
 
 * Výsledek dotazu, což je jeden název oddělení.
 * Plán dotazu, který Spark použil ke spuštění dotazu.
 
-V plánu dotazu zobrazuje operátor "prohledání" v dolní části plánu zdroj dat, ze kterého byly záznamy načteny. Umístění tohoto souboru označuje cestu k nejnovější verzi indexu "deptIndex1". To ukazuje, že v závislosti na dotazu a používání pravidel optimalizace hyperprostoru se Spark rozhodl zneužít správný index za běhu.
+V plánu dotazu operátor **prověřování** na konci plánu zobrazuje zdroj dat, ze kterého byly záznamy načteny. Umístění tohoto souboru označuje cestu k nejnovější verzi indexu "deptIndex1". Tyto informace ukazují, že v závislosti na dotazu a používání pravidel optimalizace hyperprostoru se Spark rozhodl zneužít správný index za běhu.
 
 :::zone pivot = "programming-language-scala"
 
@@ -954,7 +966,7 @@ Project [deptName#534]
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), EqualTo(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-Druhý příklad je dotaz výběru rozsahu u záznamů oddělení. Tento dotaz v SQL vypadá takto:
+Druhý příklad je dotaz výběru rozsahu u záznamů oddělení. V jazyce SQL tento dotaz vypadá jako v následujícím příkladu:
 
 ```sql
 SELECT deptName
@@ -962,7 +974,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-Podobně jako v prvním příkladu zobrazuje výstup buňky níže výsledky dotazu (názvy dvou oddělení) a plán dotazu. Umístění datového souboru v operátoru prověřování souborů ukazuje, že se pro spuštění dotazu použila možnost deptIndex1.
+Podobně jako v prvním příkladu zobrazuje výstup následující buňky výsledky dotazu (názvy dvou oddělení) a plán dotazu. Umístění datového souboru v operátoru **prověřování** souborů ukazuje, že pro spuštění dotazu byl použit příkaz "deptIndex1".
 
 :::zone pivot = "programming-language-scala"
 
@@ -1041,16 +1053,14 @@ Project [deptName#534]
 +- *(1) Filter (isnotnull(deptId#533) && (deptId#533 > 20))
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
-
-Třetí příklad je dotaz spojující oddělení a záznamy o zaměstnancích s ID oddělení. Ekvivalentní příkaz jazyka SQL je uveden níže:
+Třetí příklad je dotaz spojující oddělení a záznamy o zaměstnancích s ID oddělení. Ekvivalentní příkaz jazyka SQL se zobrazí takto:
 
 ```sql
 SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-
-Výstup následující buňky ukazuje výsledky dotazu, které jsou názvy 14 zaměstnanců a jméno oddělení, ve kterém každý zaměstnanec pracuje. Ve výstupu je také obsažen plán dotazu. Všimněte si, že umístění souborů pro dva operátory prohledání souborů ukazují, že Spark použil k spuštění dotazu indexy "empIndex" a "deptIndex1".
+Výstup spuštění následující buňky zobrazuje výsledky dotazu, které jsou názvy 14 zaměstnanců a jméno oddělení, ve kterém každý zaměstnanec pracuje. Ve výstupu je také obsažen plán dotazu. Všimněte si, že umístění souborů pro dva operátory **prohledání** souborů ukazují, že Spark použil k spuštění dotazu indexy "empIndex" a "deptIndex1".
 
 :::zone pivot = "programming-language-scala"
 
@@ -1286,7 +1296,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="explain-api"></a>Vysvětlit rozhraní API
 
-Indexy jsou skvělé, ale jak víte, jestli se používají? Výkop umožňuje uživatelům porovnat původní plán vs s aktualizovaným plánem závislým na indexu před spuštěním dotazu. Chcete-li zobrazit výstup příkazu, můžete zvolit možnost z režimu HTML/prostého textu nebo konzoly.
+Indexy jsou skvělé, ale jak zjistíte, jestli se používají? Výkop umožňuje uživatelům porovnat původní plán oproti aktualizovanému plánu závislému na indexu před spuštěním dotazu. Pro zobrazení výstupu příkazu máte možnost zvolit si z HTML, prostého textu nebo režimu konzoly.
 
 Následující buňka ukazuje příklad s HTML. Zvýrazněná část představuje rozdíl mezi původními a aktualizovanými plány společně s použitými indexy.
 
@@ -1367,12 +1377,12 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 ## <a name="refresh-indexes"></a>Aktualizovat indexy
 
-Pokud se původní data, na kterých byl index vytvořen, změní, index již nebude zachytit poslední stav dat. Tento zastaralý index můžete aktualizovat pomocí příkazu "refreshIndex". To způsobí, že se index kompletně znovu sestaví a aktualizuje v závislosti na nejnovějších datových záznamech (bez obav, ukážeme vám, jak přírůstkově aktualizovat index v jiných poznámkových blocích).
+Pokud se původní data, na kterých byl index vytvořen, změní, index již nebude zachytit poslední stav dat. Zastaralý index můžete aktualizovat pomocí příkazu **refreshIndex** . Tento příkaz způsobí, že se index kompletně znovu sestaví a aktualizuje v závislosti na nejnovějších datových záznamech. Ukážeme vám, jak přírůstkově aktualizovat index v jiných poznámkových blocích.
 
 Následující dvě buňky ukazují příklad pro tento scénář:
 
-* První buňka přidá do originálních dat oddělení dvě další oddělení. Čte a tiskne seznam oddělení pro ověření, že se nová oddělení přidávají správně. Výstup zobrazuje celkem šest oddělení: čtyři staré a dvě nové. Vyvolají se "refreshIndex" aktualizace "deptIndex1", takže index zachycuje nová oddělení.
-* Druhá buňka spouští příklad dotazu výběru rozsahu. Výsledky by teď měly obsahovat čtyři oddělení: dvě jsou ta, která se zobrazila dřív, než jsme spustili dotaz výše, a dvě jsou nová oddělení, která jsme právě přidali.
+* První buňka přidá do originálních dat oddělení dvě další oddělení. Čte a tiskne seznam oddělení pro ověření, že se nová oddělení přidávají správně. Výstup zobrazuje celkem šest oddělení: čtyři staré a dvě nové. Volá **refreshIndex** Updates "deptIndex1", aby se v indexu zachytí nová oddělení.
+* Druhá buňka spustí příklad dotazu výběru rozsahu. Výsledky by teď měly obsahovat čtyři oddělení: dvě jsou ta, která se zobrazila dřív, když jsme spustili předchozí dotaz a dva jsou nová oddělení, která jsme přidali.
 
 ### <a name="specific-index-refresh"></a>Konkrétní aktualizace indexu
 

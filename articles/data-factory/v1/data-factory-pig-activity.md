@@ -1,6 +1,6 @@
 ---
 title: Transformace dat pomocí aktivity prasete v Azure Data Factory
-description: Zjistěte, jak můžete pomocí aktivity prasete v datové továrně Azure spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
+description: Zjistěte, jak můžete pomocí aktivity prasete v Azure Data Factory v1 spouštět skripty pro vepřové prostředí na vyžádání nebo vlastním clusteru HDInsight.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e20b7a92d054a6664a00064fa7263b1150c3df9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703193"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282574"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity prasete v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -82,10 +82,10 @@ Aktivita prasete v HDInsight v [kanálu](data-factory-create-pipelines.md) Data 
 
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| name |Název aktivity |Yes |
-| description |Text popisující, k čemu se aktivita používá |No |
+| jméno |Název aktivity |Yes |
+| Popis |Text popisující, k čemu se aktivita používá |No |
 | typ |HDinsightPig |Yes |
 | vztahují |Jeden nebo více vstupů spotřebovaných aktivitou prasete |No |
 | činnosti |Jeden nebo více výstupů vyprodukovaných aktivitou prasete |Yes |

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
-ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
+ms.openlocfilehash: f0cb3d5f9184bacef42a0258add6dd2461a71dd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2020
-ms.locfileid: "90817866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326656"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v3 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -96,17 +96,6 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>Operace dokumentů
 
-Vytvořit:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
-
-Odstranit:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
-
-# <a name="query"></a>[Dotaz](#tab/queries)
-
-Dotaz:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
-
 ---
 
 ## <a name="resources"></a>Zdroje a prostředky
@@ -115,60 +104,9 @@ Dotaz:
 
 * **Kurz**: [Azure Cosmos DB kurz pro jarní data na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
-## <a name="release-history"></a>Historie verzí
+[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
-### <a name="300-beta2-september-17-2020"></a>3.0.0-beta. 2 (17. září 2020)
-
-#### <a name="new-features"></a>Nové funkce
-
-* ID artefaktu se aktualizovalo na `azure-spring-data-cosmos` .
-* Byla aktualizována závislost Azure-Cosmos na `4.5.0` .
-* `Query Annotation` Podpora pro nativní dotazy.
-* Podpora pro Java 11.
-* Byla přidána podpora pro vnořený klíč oddílu vyvoláním `partitionKeyPath` pole v `@Container` poznámce.
-* Přidaná podpora pro `limit` typ dotazu povoluje `top` a `first` má být použita při definování rozhraní API úložiště.
-
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-
-* Opravená chyba klíče vnořeného oddílu při použití s `@GeneratedValue` poznámkou
-
-### <a name="300-beta1-august-17-2020"></a>3.0.0-beta. 1 (17. srpna 2020)
-
-#### <a name="new-features"></a>Nové funkce
-
-* Aktualizuje ID skupiny na `com.azure` .
-* Aktualizuje ID artefaktu na `azure-spring-data-2-3-cosmos` .
-* Aktualizuje závislost Azure-Cosmos SDK na `4.3.2-beta.2` .
-* Přidává podporu pro entity auditování: automatickou správu `createdBy` polí s `createdDate` `lastModifiedBy` poznámkami,, a `lastModifiedDate` .
-* Přidá `@GeneratedValue` podporu poznámek pro automatické generování ID pro pole ID `String` typu.
-* Přidá podporu konfigurace více databází pro jeden Azure Cosmos DB účet s více databázemi a více Azure Cosmos DBch účtů s více databázemi.
-* Přidá podporu pro `@Version` anotaci v libovolném poli řetězce.
-* Aktualizuje návratové typy rozhraní API pro synchronizaci na `Iterable` typy namísto `List` .
-* Zpřístupňuje `CosmosClientBuilder` z Azure Cosmos DB SDK jako jarní Bob do `@Configuration` třídy.
-* Aktualizace `CosmosConfig` obsahují metriky dotazů a implementaci procesoru pro diagnostiku odpovědí.
-* Přidá podporu pro vrácení `Optional` datového typu pro dotazy s jedním výsledkem.
-
-#### <a name="renames"></a>Přejmenuje
-
-* `CosmosDbFactory` na `CosmosFactory` .
-* `CosmosDBConfig` na `CosmosConfig` .
-* `CosmosDBAccessException` na `CosmosAccessException` .
-* `Document` Anotace `Container` .
-* `DocumentIndexingPolicy` Anotace `CosmosIndexingPolicy` .
-* `DocumentQuery` na `CosmosQuery` .
-* příznak Application. Properties `populateQueryMetrics` `queryMetricsEnabled` .
-
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-
-* Plánování úlohy protokolování diagnostiky na `Parallel` vlákna, aby se zabránilo zablokování vstupně-výstupních vláken v síťovině.
-* Opravuje optimistické zamykání při operaci DELETE.
-* Opravuje problém s dotazy na uvozovací znaky `IN` klauzule for.
-* Opraví problém tím, že povoluje `long` datový typ pro `@Id` .
-* Opravuje problém tím, že umožňuje `boolean` , `long` , `int` a `double` jako datové typy pro `@PartitionKey` anotaci.
-* Opravy `IgnoreCase` a `AllIgnoreCase` klíčová slova pro dotazy na ignorovat velikost písmen
-* Odebere výchozí hodnotu jednotky žádosti 4 000 při automatickém vytvoření kontejnerů.
-
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

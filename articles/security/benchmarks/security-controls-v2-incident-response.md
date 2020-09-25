@@ -4,17 +4,17 @@ description: Reakce na incidenty Azure Security test v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2dbdb1af139472d5c7f4537399d434e045bb05cb
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326384"
 ---
-# <a name="security-control-incident-response"></a>Řízení zabezpečení: reakce na incidenty
+# <a name="security-control-v2-incident-response"></a>Řízení zabezpečení v2: reakce na incidenty
 
 Reakce na incidenty pokrývá ovládací prvky v životním cyklu reakce na incidenty – přípravu, zjišťování a analýzy, zahrnutí a následné incidenty. To zahrnuje použití služeb Azure, jako jsou Azure Security Center a Sentinel, k automatizaci procesu reakce na incidenty.
 
@@ -28,13 +28,13 @@ Ujistěte se, že vaše organizace má procesy, které reagují na incidenty zab
 
 - [Implementace zabezpečení v podnikovém prostředí](https://aka.ms/AzSec4)
 
-- [Referenční příručka k reakci na incidenty](https://aka.ms/IRRG)
+- [Referenční příručka k reakci na incidenty](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -52,9 +52,9 @@ Nastavte kontaktní informace incidentu zabezpečení v Azure Security Center. T
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -78,9 +78,9 @@ Vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce expor
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -92,17 +92,19 @@ Vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce expor
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
-Zajistěte, aby Analytiki mohli zadávat dotazy a používat různé zdroje dat při zkoumání potenciálních incidentů, abyste mohli vytvořit úplný přehled o tom, co se stalo. Ujistěte se, že jsou přehledy a poznatky zachyceny pro ostatní analytiky a budoucí historické reference. 
+Zajistěte, aby Analytiki mohli zadávat dotazy a používat různé zdroje dat při zkoumání potenciálních incidentů, abyste mohli vytvořit úplný přehled o tom, co se stalo. K tomu, aby bylo možné sledovat aktivity potenciálního útočníka v rámci dezaktivačního řetězu, by měly být shromažďovány různé protokoly.  Měli byste taky zajistit, aby byly informace o studiu a učení pro jiné analytiky a budoucí historické odkazy.  
 
 Zdroje dat pro účely šetření zahrnují centralizované zdroje protokolování, které jsou již shromažďovány ze služeb v oboru a spuštěných systémů, ale mohou také zahrnovat:
 
-Síťová data – pomocí protokolů toků služby skupiny zabezpečení sítě, Azure Network Watcher a Azure Monitor zaznamenává protokoly toku sítě a další informace o analýze. Snímky spuštěných systémů: 
+- Síťová data – pomocí protokolů toků služby skupiny zabezpečení sítě, Azure Network Watcher a Azure Monitor zaznamenává protokoly toku sítě a další informace o analýze. 
 
--   Použijte schopnost snímku virtuálního počítače Azure a vytvořte snímek disku běžícího systému. 
+- Snímky spuštěných systémů: 
 
--   Pomocí funkce nativního výpisu paměti operačního systému vytvořte snímek paměti běžícího systému.
+    - Použijte schopnost snímku virtuálního počítače Azure a vytvořte snímek disku běžícího systému. 
 
--   Pomocí funkce snímků služeb Azure nebo vlastní schopnosti svého softwaru můžete vytvářet snímky spuštěných systémů.
+    - Pomocí funkce nativního výpisu paměti operačního systému vytvořte snímek paměti běžícího systému.
+
+    - Pomocí funkce snímků služeb Azure nebo vlastní schopnosti svého softwaru můžete vytvářet snímky spuštěných systémů.
 
 Azure Sentinel poskytuje rozsáhlou analýzu dat napříč všemi zdroji protokolů a portálem pro správu případů, který umožňuje spravovat úplný životní cyklus incidentů. Informace o dataintelligence během šetření můžou být přidruženy k incidentu pro účely sledování a vytváření sestav. 
 
@@ -116,9 +118,9 @@ Azure Sentinel poskytuje rozsáhlou analýzu dat napříč všemi zdroji protoko
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -134,7 +136,7 @@ Poskytněte kontext analytikům, na kterých se incidenty zaměřuje na první, 
 
 Azure Security Center přiřadí každému upozornění závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u které došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
-Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenování k identifikaci a kategorizaci prostředků Azure, zejména těch, které zpracovávají citlivá data.  Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
+Navíc můžete označovat prostředky pomocí značek a vytvořit systém pojmenování k identifikaci a kategorizaci prostředků Azure, zejména těch, které zpracovávají citlivá data.  Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
@@ -142,9 +144,9 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -166,9 +168,9 @@ Automatizace ručních opakujících se úloh, které urychlují dobu odezvy a s
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 

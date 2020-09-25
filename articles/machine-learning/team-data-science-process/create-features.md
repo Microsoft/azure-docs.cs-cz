@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250653"
 ---
 # <a name="feature-engineering-in-data-science"></a>Strojírenství funkcí v oblasti datových věd
 
-V tomto článku se seznámíte s technologickými postupy a jejími rolemi v tématu zvyšování dat ve službě Machine Learning. Naučte se z ilustrované příklady vypracované z [Azure Machine Learning Studio (klasické)](../studio/what-is-ml-studio.md) experimenty. 
+V tomto článku se seznámíte s technologickými postupy a jejími rolemi v tématu zvyšování dat ve službě Machine Learning. Naučte se z ilustrované příklady vypracované z [Azure Machine Learning Studio (klasické)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experimenty. 
 
 * **Inženýrské funkce**: proces vytváření nových funkcí z nezpracovaných dat za účelem zvýšení prediktivního výkonu výukového algoritmu. Inženýrské funkce by měly zachytit Další informace, které nejsou v původní sadě funkcí snadno zjevné.
 * **Výběr funkcí**: proces výběru klíčové sady funkcí k omezení dimenzionálního problému při školení.
@@ -74,7 +74,7 @@ Porovnání výsledků těchto čtyř modelů je shrnuto v následující tabulc
 
 Nejlepší výsledky jsou zobrazeny funkcemi A + B + C. Rychlost chyb se snižuje, když jsou do školicích dat zahrnuty další sady funkcí. Ověřuje domněnku, že funkce nastavená B, C poskytuje další důležité informace pro regresní úlohu. Přidání funkce D ale pravděpodobně neposkytuje žádné další snížení míry chyb.
 
-## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a>Příklad 2: vytvoření funkcí pro dolování textu
+## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a> Příklad 2: vytvoření funkcí pro dolování textu
 
 V úlohách souvisejících s dolováním textu, jako je klasifikace dokumentů a analýza mínění, se běžně používá strojírenství funkcí. Vzhledem k tomu, že jednotlivé části nezpracovaného textu obvykle slouží jako vstupní data, proces technické funkce je nutný k vytvoření funkcí, které zahrnují frekvence slov a frází.
 

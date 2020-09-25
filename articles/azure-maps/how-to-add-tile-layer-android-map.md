@@ -4,16 +4,16 @@ description: Naučte se, jak přidat vrstvu dlaždice na mapu. Podívejte se na 
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311083"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Přidání vrstvy dlaždice na mapu pomocí Azure Maps Android SDK
 
@@ -30,12 +30,12 @@ Vrstva dlaždice se načte do dlaždic ze serveru. Tyto obrázky mohou být pře
 
 Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protokolu HTTP/HTTPS pro prostředek TileJSON nebo šablona adresy URL dlaždice, která používá následující parametry: 
 
-* `{x}`-X pozice dlaždice. Také potřebuje `{y}` a `{z}` .
-* `{y}`-Y pozice dlaždice. Také potřebuje `{x}` a `{z}` .
-* `{z}`– Úroveň přiblížení dlaždice Také potřebuje `{x}` a `{y}` .
-* `{quadkey}`-Dlaždice quadkey identifikátor založený na konvenci pojmenování systému dlaždice mapy Bing.
-* `{bbox-epsg-3857}`– Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
-* `{subdomain}`– Zástupný symbol pro hodnoty subdomény, pokud je zadána hodnota subdomény.
+* `{x}` -X pozice dlaždice. Také potřebuje `{y}` a `{z}` .
+* `{y}` -Y pozice dlaždice. Také potřebuje `{x}` a `{z}` .
+* `{z}` – Úroveň přiblížení dlaždice Také potřebuje `{x}` a `{y}` .
+* `{quadkey}` -Dlaždice quadkey identifikátor založený na konvenci pojmenování systému dlaždice mapy Bing.
+* `{bbox-epsg-3857}` – Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
+* `{subdomain}` – Zástupný symbol pro hodnoty subdomény, pokud je zadána hodnota subdomény.
 
 ## <a name="prerequisites"></a>Požadavky
 

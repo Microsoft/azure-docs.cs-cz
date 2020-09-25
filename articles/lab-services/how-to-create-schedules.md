@@ -3,12 +3,12 @@ title: Vytvořte plán pro učebn Labs v Azure Lab Services | Microsoft Docs
 description: Naučte se vytvářet plány pro učebn Labs v Azure Lab Services tak, aby se virtuální počítače v laboratořích spouštěly v určitou dobu.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d6dcdd8d09c2c71c2d41aebd358639883ccfb33d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445776"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326435"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Vytváření a Správa plánů pro učebn Labs v Azure Lab Services 
 Plány umožňují nakonfigurovat prostředí učebny tak, aby se virtuální počítače v testovacím prostředí automaticky spouštěly a vypnuly v určitou dobu. Můžete definovat Jednorázový plán nebo plán opakování. Následující postupy vám poskytnou kroky pro vytváření a správu plánů pro prostředí učebny: 
@@ -27,7 +27,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
 
 1. Přepněte na stránku **plány** a na panelu nástrojů vyberte **Přidat naplánovanou událost** . 
 
-    ![Tlačítko Přidat plán na stránce plány](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Snímek obrazovky zobrazující stránku Azure Lab Services "plán" a vybraným tlačítkem Přidat plán.](./media/how-to-create-schedules/add-schedule-button.png)
 2. Potvrďte, že **Standard** je vybraný jako **Typ události**. Vyberte **pouze spustit** , chcete-li zadat pouze počáteční čas pro virtuální počítače. Vyberte možnost **zastavit pouze** a zadejte pouze dobu zastavení virtuálních počítačů. 
 7. V části **Opakovat** vyberte aktuální plán. 
 

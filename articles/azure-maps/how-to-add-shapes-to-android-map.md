@@ -4,16 +4,16 @@ description: Naučte se přidávat obrazce do map. Viz ukázky kódu, které pou
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9dd8718a6a96627781a578edb514d797e40f01fb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037418"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311304"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Přidání obrazce na mapu pomocí Azure Maps Android SDK
 
@@ -238,7 +238,7 @@ Pokud teď svou aplikaci spustíte, měli byste vidět čáru na mapě, jak vid�
     });
     ```
 
-    Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Potom vytvoří objekt zdroje dat pomocí třídy **DataSource** a přidá jej do mapy. Objekt **mnohoúhelníku** se pak vytvoří ze seznamu objektů **Point** a přidá se do zdroje dat. **Mnohoúhelníková vrstva** vykresluje data zabalená ve zdroji dat na mapě. Potom vytvoří mnohoúhelníkovou vrstvu pro vykreslení oblasti mnohoúhelníku a přidá do ní zdroj dat. **Spojnicová vrstva** vykresluje objekty čáry zabalené ve zdroji dat. Poslední část fragmentu kódu vytvoří řádkovou vrstvu, která vykreslí obrys mnohoúhelníku a přidá do něj zdroj dat.
+    Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Potom vytvoří objekt zdroje dat pomocí třídy **DataSource** a přidá jej do mapy. Objekt **mnohoúhelníku** se pak vytvoří ze seznamu objektů **Point**  a přidá se do zdroje dat. **Mnohoúhelníková vrstva** vykresluje data zabalená ve zdroji dat na mapě. Potom vytvoří mnohoúhelníkovou vrstvu pro vykreslení oblasti mnohoúhelníku a přidá do ní zdroj dat. **Spojnicová vrstva** vykresluje objekty čáry zabalené ve zdroji dat. Poslední část fragmentu kódu vytvoří řádkovou vrstvu, která vykreslí obrys mnohoúhelníku a přidá do něj zdroj dat.
 
     Po přidání výše uvedeného fragmentu kódu `MainActivity.java` by měl vypadat takto:
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249582"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Řešení potíží se soubory Azure v systému Linux (SMB)
 
@@ -49,7 +49,7 @@ Mezi běžné příčiny tohoto problému patří:
 
 ### <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, použijte [Nástroj pro řešení potíží s chybami při připojování souborů Azure pro Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Tento nástroj:
+Pokud chcete tento problém vyřešit, použijte [Nástroj pro řešení potíží s chybami při připojování souborů Azure pro Linux](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux). Tento nástroj:
 
 * Pomáhá ověřit spuštěné prostředí klienta.
 * Zjistí nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure.

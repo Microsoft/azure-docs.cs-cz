@@ -1,6 +1,6 @@
 ---
 title: Nasazení služby StorSimple Device Manager v Azure | Microsoft Docs
-description: Vysvětluje, jak vytvořit a odstranit službu StorSimple Device Manager v Azure Portal a popisuje, jak spravovat registrační klíč služby.
+description: Přečtěte si o krocích potřebných k vytvoření, odstranění, migraci služby a správě registračního klíče služby.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249548"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby StorSimple Device Manager pro zařízení řady StorSimple 8000
 
@@ -177,21 +177,21 @@ Provedením následujících kroků aktualizujte šifrování dat služby na va�
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>Aktualizace šifrovacího klíče dat služby na fyzických zařízeních
 1. K připojení ke konzole použijte Windows PowerShell pro StorSimple. Vyberte možnost 1 pro přihlášení s úplným přístupem.
-2. Do příkazového řádku zadejte:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. Do příkazového řádku zadejte:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. Zadejte šifrovací klíč dat služby, který jste získali v [kroku 2: použití Windows PowerShell pro StorSimple k inicializaci změny šifrovacího klíče dat služby](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Aktualizace šifrovacího klíče dat služby ve všech cloudových zařízeních 8010/8020
 1. Stáhněte a nastavte [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) powershellový skript. 
-2. Otevřete PowerShell a na příkazovém řádku zadejte:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Otevřete PowerShell a na příkazovém řádku zadejte:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Tento skript zajistí, aby se šifrovací klíč dat služby nastavil na všech cloudových zařízeních 8010/8020 ve Správci zařízení.
 
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Podporované operace na zařízeních s verzemi staršími než aktualizace 5,0
 V Azure Portal se podporují jenom zařízení StorSimple, která používají aktualizaci 5,0 a vyšší. Zařízení, na kterých běží starší verze, mají omezená podpora. Po dokončení migrace na Azure Portal použijte následující tabulku, která vám pomůže pochopit, které operace jsou podporované na zařízeních s verzemi staršími než aktualizace 5,0.
 
-| Operace                                                                                                                       | Podporuje se      |
+| Operace                                                                                                                       | Podporováno      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Registrování zařízení                                                                                                               | Yes            |
+| Registrace zařízení                                                                                                               | Yes            |
 | Konfigurace nastavení zařízení, jako jsou obecné, síť a zabezpečení                                                                | Yes            |
 | Hledání, stahování a instalace aktualizací                                                                                             | Yes            |
 | Deaktivovat zařízení                                                                                                               | Yes            |
@@ -200,7 +200,7 @@ V Azure Portal se podporují jenom zařízení StorSimple, která používají a
 | Vytvoření, úprava a odstranění svazku                                                                                             | No             |
 | Vytváření, úpravy a odstraňování zásad zálohování                                                                                      | No             |
 | Provedení ručního zálohování                                                                                                            | No             |
-| Proveďte naplánované zálohování.                                                                                                         | Nelze použít |
+| Proveďte naplánované zálohování.                                                                                                         | - |
 | Obnovení ze sady záloh                                                                                                        | No             |
 | Klonování na zařízení se systémem Update 3,0 a novějším <br> Na zdrojovém zařízení je spuštěná verze před aktualizací 3,0.                                | Yes            |
 | Klonování na zařízení s verzemi staršími než aktualizace 3,0                                                                          | No             |

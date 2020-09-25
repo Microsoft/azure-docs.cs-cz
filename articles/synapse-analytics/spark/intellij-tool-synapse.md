@@ -4,19 +4,19 @@ description: Kurz – použití Azure Toolkit for IntelliJ k vývoji aplikací S
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c17addc313954fbca5b81c4594d7317065350c09
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85194930"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249565"
 ---
-# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Kurz: vytvoření Apache Sparkch aplikací pomocí IntelliJ pomocí pracovního prostoru synapse
+# <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Kurz: Vytvoření aplikace Apache Spark s použitím IntelliJ pomocí pracovního prostoru synapse
 
 V tomto kurzu se dozvíte, jak používat modul plug-in Azure Toolkit for IntelliJ k vývoji Apache Spark aplikací, které jsou napsané v [Scala](https://www.scala-lang.org/), a pak je odeslat do fondu Spark (Preview) přímo z integrovaného vývojového prostředí (IDE) IntelliJ. Modul plug-in můžete použít několika způsoby:
 
@@ -31,13 +31,13 @@ V tomto kurzu se naučíte:
 > - Vývoj aplikací Apache Spark
 > - Odeslat aplikaci do fondů Spark
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Komunita INTELLIJ nápadu](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)
 - Modul plug-in Azure Toolkit 3.27.0-2019.2 – instalace z [úložiště modulu plug-in IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [JDK (verze 1,8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - Modul plug-in Scala – nainstalujte z [úložiště modulu plug-in IntelliJ](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
-- Tato součást je určena pouze pro uživatele systému Windows.
+- Tato požadovaná součást je určena pouze pro uživatele systému Windows:
 
   Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K výjimce dochází, protože ve Windows chybí WinUtils.exe.
   Chcete-li tuto chybu vyřešit, stáhněte [spustitelný soubor WinUtils](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do umístění, jako je například **C:\WinUtils\bin**. Pak přidejte proměnnou prostředí **HADOOP_HOME**a nastavte hodnotu proměnné na **C:\WinUtils**.
@@ -100,11 +100,11 @@ Přihlaste se k předplatnému Azure a připojte se k vašim fondům Spark.
 
     ![IntelliJ nápad – přihlášení k Azure](./media/intellij-tool-synapse/intellij-view-explorer2.png)
 
-4. V dialogovém okně **přihlášení k zařízení Azure** klikněte na **Kopírovat&otevřít**.
+4. V dialogovém okně **přihlášení k zařízení Azure** vyberte **Kopírovat&otevřít**.
 
    ![IntelliJ nápad – přihlášení k zařízení Azure](./media/intellij-tool-synapse/intellij-view-explorer5.png)
 
-5. V rozhraní prohlížeče vložte kód a potom klikněte na tlačítko **Další**.
+5. V rozhraní prohlížeče vložte kód a pak vyberte **Další**.
 
    ![Microsoft zadá pro HDI dialog Code (kód).](./media/intellij-tool-synapse/intellij-view-explorer6.png)
 
@@ -112,7 +112,7 @@ Přihlaste se k předplatnému Azure a připojte se k vašim fondům Spark.
 
    ![Dialog Microsoftu vstupuje do e-mailu pro HDI](./media/intellij-tool-synapse/intellij-view-explorer7.png)
 
-7. Po přihlášení se v dialogovém okně **Vybrat odběry** zobrazí všechna předplatná Azure, která jsou přidružená k přihlašovacím údajům. Vyberte své předplatné a pak klikněte na **Vybrat**.
+7. Po přihlášení se v dialogovém okně **Vybrat odběry** zobrazí všechna předplatná Azure, která jsou přidružená k přihlašovacím údajům. Vyberte své předplatné a pak vyberte **Vybrat**.
 
     ![Dialogové okno Select Subscriptions (Výběr předplatných)](./media/intellij-tool-synapse/Select-Subscriptions.png)
 
@@ -128,13 +128,13 @@ Přihlaste se k předplatnému Azure a připojte se k vašim fondům Spark.
 
 Po vytvoření aplikace v Scala můžete tuto aplikaci spustit vzdáleně.
 
-1. Otevřete okno **Konfigurace spuštění/ladění** kliknutím na ikonu.
+1. Otevřete okno **Konfigurace spuštění/ladění** výběrem ikony.
 
-    ![Příkaz Odeslat aplikaci Spark do HDInsight](./media/intellij-tool-synapse/open-configuration-window.png)
+    ![Odeslání aplikace Spark do HDInsight – příkaz 1](./media/intellij-tool-synapse/open-configuration-window.png)
 
-2. V dialogovém okně **Spustit/ladit konfigurace** klikněte na **+** a vyberte **Apache Spark v synapse**.
+2. V dialogovém okně **Spustit/ladit konfigurace** vyberte **+** a pak vyberte **Apache Spark v synapse**.
 
-    ![Příkaz Odeslat aplikaci Spark do HDInsight](./media/intellij-tool-synapse/create-synapse-configuration02.png)
+    ![Odeslání aplikace Spark do HDInsight – příkaz 2](./media/intellij-tool-synapse/create-synapse-configuration02.png)
 
 3. V okně **Spustit/ladit konfigurace** zadejte následující hodnoty a pak vyberte **OK**:
 
@@ -152,13 +152,13 @@ Po vytvoření aplikace v Scala můžete tuto aplikaci spustit vzdáleně.
     |Klíč úložiště|Zadejte svůj klíč úložiště.|
     |Kontejner úložiště|Po zadání **účtu úložiště** a **klíče úložiště** vyberte z rozevíracího seznamu svůj kontejner úložiště.|
 
-    ![Dialogové okno pro odeslání Sparku](./media/intellij-tool-synapse/create-synapse-configuration03.png)
+    ![Dialogové okno pro odeslání Sparku 1](./media/intellij-tool-synapse/create-synapse-configuration03.png)
 
-4. Kliknutím na ikonu **SparkJobRun** odešlete projekt do vybraného fondu Spark. **Vzdálená úloha Spark na kartě cluster** zobrazuje průběh provádění úlohy v dolní části. Aplikaci můžete zastavit kliknutím na tlačítko červené.
+4. Vyberte ikonu **SparkJobRun** a odešlete projekt do vybraného fondu Spark. **Vzdálená úloha Spark na kartě cluster** zobrazuje průběh provádění úlohy v dolní části. Aplikaci můžete zastavit tak, že vyberete tlačítko červené.
 
     ![Okno pro odeslání Apache Spark](./media/intellij-tool-synapse/remotely-run-synapse.png)
 
-    ![Dialogové okno pro odeslání Sparku](./media/intellij-tool-synapse/remotely-run-result.png)
+    ![Dialogové okno pro odeslání Sparku 2](./media/intellij-tool-synapse/remotely-run-result.png)
 
 ## <a name="local-rundebug-apache-spark-applications"></a>Místní spouštěné/ladicí Apache Spark aplikace
 
@@ -168,26 +168,26 @@ Můžete postupovat podle pokynů níže pro nastavení místního běhu a míst
 
 1. Otevřete dialog **Konfigurace spuštění/ladění** a vyberte znaménko plus ( **+** ). Pak vyberte možnost **Apache Spark v synapse** . Zadejte informace pro **název**, **název hlavní třídy** , který chcete uložit.
 
-    ![IntelliJ spustit místní běh konfigurací ladění](./media/intellij-tool-synapse/local-run-synapse.png)
+    ![IntelliJ spustit konfiguraci ladění s místním spuštěním 1](./media/intellij-tool-synapse/local-run-synapse.png)
 
     - Proměnné prostředí a WinUtils.exe umístění jsou pouze pro uživatele systému Windows.
     - Proměnné prostředí: proměnná prostředí systému může být automaticky rozpoznána, pokud jste ji nastavili před a není nutné ji přidat ručně.
-    - [ UmístěníWinUtils.exe](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): umístění WinUtils můžete zadat kliknutím na ikonu složky na pravé straně.
+    - [ UmístěníWinUtils.exe](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): umístění WinUtils můžete zadat tak, že na pravé straně vyberete ikonu složky.
 
-2. Pak klikněte na tlačítko místní přehrávání.
+2. Pak vyberte místní tlačítko Play.
 
-    ![IntelliJ spustit místní běh konfigurací ladění](./media/intellij-tool-synapse/local-run-synapse01.png)
+    ![IntelliJ spustit konfiguraci ladění v místním běhu 2](./media/intellij-tool-synapse/local-run-synapse01.png)
 
 3. Po dokončení místního spuštění, pokud skript obsahuje výstup, můžete výstupní soubor kontrolovat z dat ve **data**  >  **__výchozím nastavení__**.
 
-    ![Výsledek místního běhu projektu IntelliJ](./media/intellij-tool-synapse/spark-local-run-result.png)
+    ![Výsledek místního běhu projektu IntelliJ 1](./media/intellij-tool-synapse/spark-local-run-result.png)
 
 ### <a name="scenario-2-do-local-debugging"></a>Scénář 2: proveďte místní ladění
 
 1. Otevřete skript **LogQuery** , nastavte zarážky.
-2. Kliknutím na ikonu **místního ladění** proveďte místní ladění.
+2. Pro místní ladění vyberte ikonu **místního ladění** .
 
-    ![Výsledek místního běhu projektu IntelliJ](./media/intellij-tool-synapse/local-debug-synapse.png)
+    ![Výsledek místního běhu projektu IntelliJ 2](./media/intellij-tool-synapse/local-debug-synapse.png)
 
 ## <a name="access-and-manage-synapse-workspace"></a>Přístup a Správa pracovního prostoru synapse
 
@@ -201,9 +201,9 @@ V Azure Exploreru můžete v rámci Azure Toolkit for IntelliJ provádět různ�
 
 2. Klikněte pravým tlačítkem myši na pracovní prostor a vyberte možnost **Spustit pracovní prostor**, web bude otevřen.
 
-    ![Podrobnosti o aplikaci pro zobrazení úlohy Spark](./media/intellij-tool-synapse/launch-workspace-synapse.png)
+    ![Zobrazení úlohy Spark podrobnosti o aplikaci 1](./media/intellij-tool-synapse/launch-workspace-synapse.png)
 
-    ![Podrobnosti o aplikaci pro zobrazení úlohy Spark](./media/intellij-tool-synapse/launch-workspace-result.png)
+    ![Zobrazení úlohy Spark podrobnosti o aplikaci 2](./media/intellij-tool-synapse/launch-workspace-result.png)
 
 ## <a name="spark-console"></a>Konzola Spark
 
@@ -233,7 +233,7 @@ Ujistěte se, že jste splnili požadavky na WINUTILS.EXE.
 
     ![IntelliJ nápad Spark auto Fix dialog2](./media/intellij-tool-synapse/intellij-console-autofix2.png)
 
-8. Konzola by měla vypadat podobně jako na obrázku níže. V okně konzoly zadejte `sc.appName` a stiskněte kombinaci kláves CTRL + ENTER. Zobrazí se výsledek. Místní konzolu můžete zastavit kliknutím na tlačítko červené.
+8. Konzola by měla vypadat podobně jako na obrázku níže. V okně konzoly zadejte `sc.appName` a stiskněte kombinaci kláves CTRL + ENTER. Zobrazí se výsledek. Místní konzolu můžete zastavit tak, že vyberete červené tlačítko.
 
     ![Výsledek místní konzoly IntelliJ](./media/intellij-tool-synapse/local-console-result.png)
 
@@ -260,13 +260,13 @@ Podporuje se jenom na IntelliJ 2018,2 a 2018,3.
 5. Z projektu přejděte do **MyApp**  >  **Src**  >  **Main**  >  **Scala**  >  **MyApp**.
 
 6. V řádku nabídek přejděte do konzoly **nástroje**  >  **Spark**  >  **Spustit Livy interaktivní relace (Scala) Sparku**.
-7. Konzola by měla vypadat podobně jako na obrázku níže. V okně konzoly zadejte `sc.appName` a stiskněte kombinaci kláves CTRL + ENTER. Zobrazí se výsledek. Místní konzolu můžete zastavit kliknutím na tlačítko červené.
+7. Konzola by měla vypadat podobně jako na obrázku níže. V okně konzoly zadejte `sc.appName` a stiskněte kombinaci kláves CTRL + ENTER. Zobrazí se výsledek. Místní konzolu můžete zastavit tak, že vyberete červené tlačítko.
 
     ![Výsledek IntelliJ NÁPADu pro interaktivní konzolu](./media/intellij-tool-synapse/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>Odeslat výběr do konzoly Spark
 
-Je vhodné, abyste mohli výsledek skriptu předvídat odesláním kódu do místní konzoly nebo konzoly Livy Interactive Session (Scala). Můžete zvýraznit nějaký kód v souboru Scala a pak klikněte pravým tlačítkem myši na **Odeslat výběr do konzoly Spark**. Vybraný kód se odešle do konzoly a provede se. Výsledek se zobrazí za kódem v konzole nástroje. Konzola zkontroluje chyby, pokud již existují.
+Výsledek skriptu můžete chtít zobrazit tak, že odešlete nějaký kód do místní konzoly nebo do konzoly Livy Interactive relace (Scala). Uděláte to tak, že v souboru Scala zvýrazníte nějaký kód a potom kliknete pravým tlačítkem myši na **Odeslat výběr do konzoly Spark**. Vybraný kód se odešle do konzoly a provede se. Výsledek se zobrazí za kódem v konzole nástroje. Konzola zkontroluje existující chyby.
 
    ![Odeslat výběr do konzoly Spark](./media/intellij-tool-synapse/send-selection-to-console.png)
 
