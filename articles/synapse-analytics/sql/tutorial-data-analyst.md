@@ -1,6 +1,6 @@
 ---
 title: Použití SQL na vyžádání (Preview) k analýze otevřených datových sad Azure v Azure synapse Studio (Preview)
-description: V tomto kurzu se naučíte, jak snadno provádět analýzu průzkumného data s kombinací různých otevřených datových sad Azure pomocí SQL na vyžádání (Preview) a vizualizovat výsledky v Azure synapse studiu.
+description: Naučte se, jak snadno provádět analýzu průzkumného data s kombinací různých otevřených datových sad Azure pomocí SQL na vyžádání (Preview) a vizualizovat výsledky v Azure synapse studiu.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 6325c5c597ce0f85615780f7970a4a3c6c4c451b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288048"
 ---
 # <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Použití SQL na vyžádání k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse studiu
 
@@ -135,7 +135,7 @@ Data pak můžete snadno vizualizovat tak, že vykreslíte **sloupcový** graf s
 
 ![Sloupcový graf zobrazující denní počet jezdí pro 2016](./media/tutorial-data-analyst/7.png)
 
-Z diagramu grafu vidíte, že existuje týdenní vzor s sobotu jako den špičky. Během letního měsíce je z důvodu dovolené méně taxislužby jezdí. Existují také některé významné kapky počtu taxislužby jezdí bez jasného vzoru, kdy a proč k nim dojde.
+V grafu se zobrazí týdenní vzor s sobotu jako den špičky. Během letního měsíce je z důvodu dovolené méně taxislužby jezdí. Všimněte si také, že některé významné kapky v počtu taxislužby jezdí bez jasného vzoru, kdy a proč k nim dojde.
 
 Teď se podívejme, jestli se akce v souvislosti s veřejnými svátky připojí k datové sadě NYC taxislužby jezdí s datovou sadou veřejných svátků:
 

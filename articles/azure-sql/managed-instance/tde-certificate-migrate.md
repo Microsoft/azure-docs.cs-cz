@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: carlrab, jovanpop
+ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: ba2dd167cdf49b5f1a4b4f2dcd0edd48ea969fae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5311d6504e98c107b6ceb893babb6db31c9aff51
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325041"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>Migrace certifikátu chráněné databáze TDE do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Alternativní možnost použití plně spravované služby pro bezproblémové m
 > [!IMPORTANT]
 > Migrovaný certifikát se používá pouze pro obnovení databáze chráněné TDE. Po dokončení obnovení se migrované certifikát nahradí jiným modulem ochrany, buď certifikátem spravovaným službou, nebo asymetrický klíč z trezoru klíčů, a to v závislosti na typu TDE, který jste pro instanci nastavili.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 

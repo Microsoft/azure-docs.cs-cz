@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 78758fbfd14810cb7320d95026f8d4af647a3f2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436778"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334952"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -55,7 +55,7 @@ Je potřeba si vymezit několik rozdílů mezi agentem SQL (dostupnými místně
 
 | |Elastické úlohy |Agent SQL |
 |---------|---------|---------|
-|**Scope** | Libovolný počet databází v Azure SQL Database nebo datových skladech ve stejném cloudu Azure jako Agent úlohy. Cíle můžou být na různých serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci jako Agent SQL. |
+|**Rozsah** | Libovolný počet databází v Azure SQL Database nebo datových skladech ve stejném cloudu Azure jako Agent úlohy. Cíle můžou být na různých serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci jako Agent SQL. |
 |**Podporovaná rozhraní API a nástroje** | Portál, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>Úlohy agenta SQL

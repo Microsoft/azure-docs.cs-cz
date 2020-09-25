@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 329d3208037548bd1cb5a5564a4a393747ed48f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0dfe507163237402b66c2bbd639290cea035ca78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017273"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334986"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Řešení potíží s Azure SQL Database a problémy s výkonem spravované instance Azure SQL pomocí Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Tato stránka poskytuje informace o Azure SQL Database a potížích s výkonem 
 
 Intelligent Insights automaticky detekuje problémy s výkonem na základě čekací doby spuštění dotazu, chyb nebo časových limitů. Intelligent Insights výstupy zjistily vzorce výkonu v protokolu prostředků. V následující tabulce jsou shrnuty zjistitelné vzorce výkonu.
 
-| Rozpoznatelné vzory výkonu | Azure SQL Database | Azure SQL Managed Instance |
+| Rozpoznatelné vzory výkonu | Azure SQL Database | Spravovaná instance Azure SQL |
 | :------------------- | ------------------- | ------------------- |
 | [Dosažení limitů prostředků](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Vaše omezení prostředků dosáhly spotřeby dostupných prostředků (DTU), pracovních vláken databáze nebo relací přihlášení k databázi dostupným u monitorovaného předplatného. To má vliv na výkon. | Spotřeba prostředků procesoru dosáhne svých omezení prostředků. To má vliv na výkon databáze. |
 | [Zvýšení zatížení](intelligent-insights-troubleshoot-performance.md#workload-increase) | Zjistilo se zvýšení zátěže nebo nepřetržité akumulace úloh v databázi. To má vliv na výkon. | Bylo zjištěno zvýšení zátěže. To má vliv na výkon databáze. |

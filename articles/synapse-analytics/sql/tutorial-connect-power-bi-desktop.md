@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: a5944f4d512914c956d8e6fbbdbd1b8c30e35417
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288031"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Kurz: použití SQL na vyžádání pomocí Power BI Desktop & vytvoření sestavy
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > - Připojení Power BI Desktop k SQL na vyžádání
 > - Vytvořit sestavu na základě zobrazení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -45,7 +45,7 @@ Hodnoty pro následující parametry:
 | Adresa koncového bodu služby SQL na vyžádání    | Používá se jako název serveru.                                   |
 | Oblast koncového bodu služby SQL na vyžádání     | Slouží k určení úložiště používaného v ukázkách. |
 | Uživatelské jméno a heslo pro přístup ke koncovému bodu | Používá se pro přístup ke koncovému bodu.                               |
-| Databáze, kterou použijete k vytváření zobrazení     | Databáze použitá jako výchozí bod v ukázkách       |
+| Databáze, kterou použijete k vytvoření zobrazení     | Databáze použitá jako výchozí bod v ukázkách       |
 
 ## <a name="1---create-database"></a>1. vytvoření databáze
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: overview
 author: urosmil
 ms.author: urmilano
-ms.reviewer: sstein, carlrab, MashaMSFT
+ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
-ms.openlocfilehash: 871de5b5b7263a0c4d3b87cc459f3e573316f501
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323188"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Přehled operací správy spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

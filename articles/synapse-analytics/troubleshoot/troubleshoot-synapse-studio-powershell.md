@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287708"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnostika potíží s připojením ke službě Azure synapse Studio (Preview) pomocí skriptu PowerShellu
 
@@ -27,13 +27,13 @@ Azure synapse Studio (Preview) závisí na sadě koncových bodů webového rozh
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-Klikněte pravým tlačítkem na následující odkaz a klikněte na Uložit cíl jako:
+Klikněte pravým tlačítkem na následující odkaz a vyberte Uložit cíl jako:
 
 - [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 Alternativně můžete odkaz otevřít přímo a uložit otevřený soubor skriptu. Neuloží adresu odkazu výše, jak se může v budoucnu změnit.
 
-V Průzkumníku souborů klikněte pravým tlačítkem na stažený soubor skriptu a klikněte na spustit s prostředím PowerShell.
+V Průzkumníku souborů klikněte pravým tlačítkem na stažený soubor skriptu a vyberte spustit s prostředím PowerShell.
 
 ![Spustit stažený soubor skriptu pomocí PowerShellu](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 
@@ -58,4 +58,4 @@ Pokud jste správcem sítě a vyladěním konfigurace brány firewall pro Azure 
 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud vám předchozí kroky nepomohly vyřešit problém s [vytvořením lístku podpory](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).
+Pokud vám předchozí kroky nepomohly problém vyřešit, [vytvořte lístek podpory](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

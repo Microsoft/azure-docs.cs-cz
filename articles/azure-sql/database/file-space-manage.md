@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335063"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Správa prostoru souborů pro databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ Většina metrik prostorů úložiště se zobrazuje v Azure Portal a následuj�
 
 Následující rozhraní API však také měří velikost vyhrazeného místa pro databáze a elastické fondy:
 
-- T-SQL: [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL:  [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Zmenšení datových souborů
@@ -236,7 +236,7 @@ Až budou soubory dat databáze zmenšené, indexy se můžou fragmentovat a ztr
 
 - Informace o maximální velikosti databáze najdete v těchto tématech:
   - [Azure SQL Database omezení pro nákupní model založený na vCore pro jednu databázi](resource-limits-vcore-single-databases.md)
-  - [Omezení prostředků pro izolované databáze s využitím nákupního modelu založeného na DTU](resource-limits-dtu-single-databases.md)
+  - [Limity prostředků pro jednoúčelové databáze využívající nákupní model založený na jednotkách DTU](resource-limits-dtu-single-databases.md)
   - [Azure SQL Database omezení pro nákupní model založený na vCore pro elastické fondy](resource-limits-vcore-elastic-pools.md)
   - [Omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na DTU](resource-limits-dtu-elastic-pools.md)
 - Další informace o příkazu naleznete `SHRINKDATABASE` v tématu [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).

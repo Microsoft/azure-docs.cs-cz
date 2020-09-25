@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b7cb55b5d14208128c894a007d13f4e73fc54b3b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d217f21b0a2dbdad56f2147c8800bbb50b0fa45e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265502"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler tří pro Automatické zřizování uživatelů
 
@@ -119,7 +119,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 11. Zkontrolujte atributy uživatele synchronizované z Azure AD až Zscaler tři v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Zscaler tři pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
 
-    ![Mapování atributů](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
+    ![Snímek obrazovky s oddílem mapování atributů se zobrazenými sedmi mapováními](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
 
 12. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do ZscalerThree**:
 
@@ -127,7 +127,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 13. Zkontrolujte atributy skupiny synchronizované z Azure AD až Zscaler tři v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Zscaler třech pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
 
-    ![Mapování atributů](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
+    ![Snímek obrazovky oddílu mapování atributů se třemi zobrazenými mapováními](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si pokyny v [kurzu filtr oboru](./../active-directory-saas-scoping-filters.md).
 
@@ -154,7 +154,7 @@ Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../active-directory-saas-provisioning-reporting.md).
 
 <!--Image references-->
 [1]: ./media/zscaler-three-provisioning-tutorial/tutorial-general-01.png

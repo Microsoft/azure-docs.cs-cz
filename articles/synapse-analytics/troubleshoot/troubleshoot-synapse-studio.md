@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f859700be32bda5d8245429076c2359d1adf9d5a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988057"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287743"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Řešení potíží s Azure synapse Studio (Preview)
 
@@ -31,7 +31,8 @@ Možnost "SQL na vyžádání" je v rozevíracím seznamu připojit k zobrazena 
 
 Spuštění dotazu s "SQL na vyžádání" vám poskytne chybovou zprávu "vytvoření připojení k serveru" se nezdařilo.
 
-![Snímek obrazovky se nepodařilo navázat spojení se zprávou serveru.](media/troubleshooting-synapse-studio/symptom2.png)
+![příznak 2](media/troubleshooting-synapse-studio/symptom2.png)
+ 
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
@@ -54,7 +55,7 @@ Ujistěte se, že je zaškrtnuté políčko Zakázat mezipaměť na panelu síť
 
 Opakujte operaci, kterou jste provedli v Azure synapse studiu. V seznamu "síť" v "Vývojářské nástroje" mohou být zobrazeny nové položky. Poznamenejte si aktuální systémový čas, který chcete poskytnout v rámci lístku podpory.
 
-![Snímek obrazovky zobrazuje okno DevTools se sítí a zakázáním online mezipaměti.](media/troubleshooting-synapse-studio/network-panel.png)
+![Síťová panel 1](media/troubleshooting-synapse-studio/network-panel.png)
 
 Vyhledejte položku, jejíž sloupec URL odpovídá následujícímu vzoru:
 
@@ -64,9 +65,9 @@ Kde [*A*] je název vašeho pracovního prostoru a "-OnDemand" může být "-sql
 
 Pokud jeden z nich má jinou hodnotu než "20krát" a:
 
-- stav začíná znakem "(neúspěch)", buď zvětšete sloupec status (stav), nebo umístěte ukazatel myši na stavový text, aby se zobrazil celý text. Při otevření lístku podpory zahrňte text nebo snímek obrazovky.
+- Stav začíná znakem "(neúspěch)", buď zvětšete sloupec status (stav), nebo umístěte ukazatel myši na stavový text, aby se zobrazil celý text. Při otevření lístku podpory zahrňte text nebo snímek obrazovky.
 
-    ![Snímek obrazovky zobrazuje výsledky, včetně neúspěšné hodnoty ve sloupci Stav.](media/troubleshooting-synapse-studio/status-text.png)
+    ![Stavový text](media/troubleshooting-synapse-studio/status-text.png)
 
     - Pokud vidíte ERR_NAME_NOT_RESOLVED a pracovní prostor jste vytvořili během 10 minut, počkejte 10 minut a zkuste zjistit, jestli problém stále existuje.
     - Pokud vidíte ERR_INTERNET_DISCONNECTED nebo ERR_NETWORK_CHANGED, může to znamenat, že vaše síťové připojení k počítači má problémy. Ověřte připojení k síti a zkuste operaci zopakovat.
@@ -74,7 +75,7 @@ Pokud jeden z nich má jinou hodnotu než "20krát" a:
     - Pokud vidíte ERR_NETWORK_ACCESS_DENIED, může být nutné, abyste se u správce zkontrolovali, jestli vaše místní zásady brány firewall zablokovaly přístup k doméně *. database.windows.net nebo vzdálenému portu 1443.
     - Volitelně zkuste stejnou operaci hned na jiném počítači nebo v síťovém prostředí, abyste si vyzkoušeli problém s konfigurací sítě v počítači.
 
-- stav je "40x", "50krát" nebo jiné čísla. Chcete-li zobrazit podrobnosti, vyberte položku (y). Měli byste vidět podrobnosti položky vpravo. Vyhledejte část hlavička odpovědi. potom zkontrolujte, zda existuje položka s názvem Access-Control-Allow-Origin. Pokud ano, ověřte, zda má jednu z následujících hodnot:
+- Stav je "40x", "50krát" nebo jiné čísla. Chcete-li zobrazit podrobnosti, vyberte položku (y). Měli byste vidět podrobnosti položky vpravo. Vyhledejte část hlavička odpovědi. potom zkontrolujte, zda existuje položka s názvem Access-Control-Allow-Origin. Pokud ano, ověřte, zda má jednu z následujících hodnot:
 
     - `*` (jedna hvězdička)
     - https://web.azuresynapse.net/ (nebo jinou hodnotu, na které se text v adresním řádku prohlížeče začíná)
@@ -83,21 +84,22 @@ Pokud hlavička odpovědi obsahuje jednu z výše uvedených hodnot, znamená to
 
 Pokud záhlaví nevidíte nebo záhlaví nemá jednu z výše uvedených hodnot, připojte snímek obrazovky s podrobnostmi o položce při otevření lístku.
 
-![Snímek obrazovky ukazuje okno DevTools s písmenem U R L zvýrazněným v hlavičkách odpovědi.](media/troubleshooting-synapse-studio/item-details.png)
-
+ 
+![Podrobnosti položky](media/troubleshooting-synapse-studio/item-details.png)
+ 
 Pokud výše uvedené kroky problém nevyřeší, možná budete muset otevřít lístek podpory. Při odesílání lístku podpory zahrňte na začátku tohoto průvodce "ID relace" nebo "diagnostické informace".
 
 Při nahlášení problému můžete případně pořídit snímek obrazovky s kartou konzola v Vývojářské nástroje a připojit ji k lístku podpory. Posuňte obsah a při zachytávání celé zprávy Vezměte v případě potřeby více snímků obrazovky.
 
-![Snímek obrazovky zobrazuje okno DevTools velikosti, aby se zobrazila celá zpráva pro možný snímek obrazovky.](media/troubleshooting-synapse-studio/developer-tool-console.png)
+![Konzola nástrojů pro vývojáře](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
 Pokud přidáváte snímky obrazovky, zadejte čas (nebo odhadovaný časový rozsah), kdy jste pořídili snímky obrazovky. Při hledání problému nám pomůže.
 
 Některé prohlížeče podporují zobrazování časových razítek na kartě konzola. V případě chromového okraje/Chromu otevřete dialog "nastavení" v "Vývojářské nástroje" a na kartě Předvolby zrušte "Zobrazit časová razítka".
 
-![Snímek obrazovky se zobrazí okno DevTools s nastavením vybraným v kontextové nabídce.](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
+![nastavení konzoly nástroje pro vývojáře](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
-![Snímek obrazovky zobrazuje předvolby okna DevTools s vybranými možnostmi Zobrazit časová razítka.](media/troubleshooting-synapse-studio/show-time-stamp.png)
+![Zobrazit časové razítko](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>Další kroky
 Pokud předchozí kroky nepomohly vyřešit váš problém [Vytvoření lístku podpory](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

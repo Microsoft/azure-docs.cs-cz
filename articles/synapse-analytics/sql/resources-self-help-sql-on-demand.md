@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7a6b145e9a1efb29bbb6c233f2a09498b4a4ea7f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287997"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>Samoobslužná Pomocník pro SQL na vyžádání (Preview)
 
@@ -33,9 +33,9 @@ Pokud se dotaz nezdařil s chybou říká ' soubor nelze otevřít, protože nee
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Dotaz se nezdařil, protože jej nelze provést z důvodu aktuálních omezení prostředků. 
 
-Pokud se dotaz nezdařil s chybovou zprávou "Tento dotaz nelze provést z důvodu aktuálních omezení prostředků", znamená to, že SQL na vyžádání není schopen ho v tuto chvíli spustit v důsledku omezení prostředků: 
+Pokud se dotaz nezdařil s chybovou zprávou "Tento dotaz nelze provést z důvodu aktuálních omezení prostředků", znamená to, že SQL na vyžádání není schopen ho v tuto chvíli v důsledku omezení prostředků spustit. 
 
-- Ujistěte se, že používáte datové typy přiměřených velikostí. Kromě toho pro soubory Parquet určete schéma sloupců řetězců, které jsou ve výchozím nastavení datového typu VARCHAR(8000). 
+- Zajistěte, aby byly použity datové typy přiměřených velikostí. Také určete schéma pro soubory Parquet pro sloupce řetězců, protože budou ve výchozím nastavení VARCHAR (8000). 
 
 - Pokud vaše dotazy cílí na soubory CSV, zvažte [vytvoření statistiky](develop-tables-statistics.md#statistics-in-sql-on-demand-preview). 
 
@@ -61,7 +61,7 @@ To znamená, že hlavní databáze na vyžádání SQL na vyžádání nepodporu
 CREATE DATABASE <DATABASE_NAME>
 ```
 
-  2. Příkaz EXECUTE Create v kontextu <DATABASE_NAME> který se dřív nezdařil pro hlavní databázi. 
+  2. Příkaz EXECUTE Create v kontextu <DATABASE_NAME>, který se dřív nezdařil pro hlavní databázi. 
   
   Příklad pro vytvoření formátu externího souboru:
     

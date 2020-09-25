@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5d1d7008151ae61a72368d3d8ecfaf545a2080fa
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: f480419bb25f3fe8d49c6b4af4a5d1873e286b58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406162"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324730"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -155,7 +155,7 @@ Stav můžeme zjistit načtením obsahu na adrese URL, kterou jsme dostali při 
 
 Toto je kód pro cyklické dotazování se zobrazením stavu pro vše s výjimkou úspěšného dokončení. provedeme to ještě dál. 
 
-`CheckTranscriptionStatus`převezme adresu URL stavu z žádosti o přepis a každých 5 sekund se dotazuje, dokud neindikuje úspěch nebo a chybu. Pak volá `PrintResults` k vytištění výsledků přepisu. Budeme implementovat `PrintResults` Další.
+`CheckTranscriptionStatus` převezme adresu URL stavu z žádosti o přepis a každých 5 sekund se dotazuje, dokud neindikuje úspěch nebo a chybu. Pak volá `PrintResults` k vytištění výsledků přepisu. Budeme implementovat `PrintResults` Další.
 ```csharp
 function CheckTranscriptionStatus(statusUrl) {
     transcription = null;

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 54fe96ecee99f3de37667d255b57b89c34aecc14
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 2701b4cd17a132de07c031166bbe4cb1086227e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324734"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro JavaScript pro použití s webovou stránkou.
 
@@ -29,11 +29,11 @@ Vytvořte novou prázdnou složku. Pokud chcete ukázku hostovat na webovém ser
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>Rozbalení sady Speech SDK pro JavaScript do příslušné složky
 
 Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. To má za následek pět souborů, které jsou rozbalené:
-* `microsoft.cognitiveservices.speech.sdk.bundle.js`Verze sady Speech SDK pro lidskou čitelnost.
-* `microsoft.cognitiveservices.speech.sdk.bundle.js.map`Soubor mapy používaný pro ladění kódu sady SDK.
-* `microsoft.cognitiveservices.speech.sdk.bundle.d.ts`Definice objektů pro použití s TypeScript
-* `microsoft.cognitiveservices.speech.sdk.bundle-min.js`Minifikovaného verze sady Speech SDK.
-* `speech-processor.js`Kód pro zlepšení výkonu v některých prohlížečích.
+* `microsoft.cognitiveservices.speech.sdk.bundle.js` Verze sady Speech SDK pro lidskou čitelnost.
+* `microsoft.cognitiveservices.speech.sdk.bundle.js.map` Soubor mapy používaný pro ladění kódu sady SDK.
+* `microsoft.cognitiveservices.speech.sdk.bundle.d.ts` Definice objektů pro použití s TypeScript
+* `microsoft.cognitiveservices.speech.sdk.bundle-min.js` Minifikovaného verze sady Speech SDK.
+* `speech-processor.js` Kód pro zlepšení výkonu v některých prohlížečích.
 
 ## <a name="create-an-indexhtml-page"></a>Vytvoření stránky index.html
 

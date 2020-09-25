@@ -4,12 +4,12 @@ description: Tento kurz vás provede postupem nastavení architektury událostí
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004540"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324123"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
 Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.
@@ -43,7 +43,7 @@ Nezapomeňte tuto adresu URL poznamenat, protože ji budete potřebovat později
 
 Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako primární a sekundární. Ve výchozím nastavení budou vaše události procházet vaším primárním tématem. Pokud v primární oblasti dojde k výpadku služby, vaše sekundární převezme.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 1. V levém horním rohu hlavní nabídky Azure zvolte **všechny služby** > vyhledejte **Event Grid** > vyberte **Event Grid témata**.
 
@@ -72,7 +72,7 @@ Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako prim
    * Vyberte typ koncového bodu Webhook.
    * Nastavte koncový bod na adresu URL události vašeho přijímače událostí, který by měl vypadat nějak takto: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![Event Grid odběr primárních událostí](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Snímek obrazovky zobrazující stránku "vytvořit odběr události – Basic" se zvýrazněnými hodnotami "název", "typ koncového bodu" a "koncový bod".](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Opakováním stejného toku Vytvořte sekundární téma a předplatné. Tentokrát pro snazší sledování Nahraďte příponu "-Primary" pomocí "-Secondary". Nakonec se ujistěte, že jste ji umístili do jiné oblasti Azure. I když ho můžete umístit kdekoli, doporučujeme používat [spárované oblasti Azure](../best-practices-availability-paired-regions.md). Vložením sekundárního tématu a předplatného do jiné oblasti zajistíte, aby se vaše nové události vytekly i v případě, že dojde k výpadku primární oblasti.
 

@@ -10,13 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c2e0e907734f30010690817ddb7bb15527c93bbf
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: d5dc762499342f0004073fb6c240c98c4ac2bc09
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404011"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334561"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Kurz: nahrání obrázků do rozhraní API pro vizuální vyhledávání Bingu
 
@@ -31,7 +31,7 @@ Ukázková aplikace předvádí, jak:
 > * Zobrazení výsledků hledání obrázků ve webové aplikaci
 > * Prozkoumejte různé přehledy poskytované rozhraním API
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 

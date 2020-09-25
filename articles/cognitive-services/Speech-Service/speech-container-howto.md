@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: b51319716035cc4f59d50922846b067f4eda31d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6a1f8cc9526d1f8393f8e7aa434587d8e4c0e979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334666"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech 
 
@@ -37,16 +37,16 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 >
 > Chcete-li použít kontejnery řeči, musíte odeslat online žádost a nechat ji schválit. Další informace najdete v části **schválení žádosti v níže uvedeném kontejneru spustit kontejner** .
 
-| Funkce | Funkce | Latest (Nejnovější) |
+| Kontejner | Funkce | Latest (Nejnovější) |
 |--|--|--|
-| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | kládají |
-| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | kládají |
-| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
-| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
+| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.5.0 |
+| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.5.0 |
+| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.7.0 |
+| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.7.0 |
 | Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1,0 |
 | Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.1.0 |
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -96,7 +96,7 @@ Základní a paměť odpovídají `--cpus` `--memory` nastavení a, která se po
 
 ## <a name="request-approval-to-the-run-the-container"></a>Žádost o schválení ke spuštění kontejneru
 
-Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) pro vyžádání přístupu ke kontejneru. 
+Vyplňte a odešlete [formulář žádosti](https://aka.ms/csgate) pro vyžádání přístupu ke kontejneru. 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -468,7 +468,7 @@ Tento příkaz:
 * Pokud se vlastní model stáhl dříve, `ModelId` ignoruje se.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
-# <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/lid)
+# <a name="speech-language-detection"></a>[Rozpoznávání jazyka řeči](#tab/lid)
 
 Pokud chcete spustit *rozpoznávání jazyka kontejneru řeči* , spusťte následující `docker run` příkaz.
 
@@ -482,7 +482,7 @@ ApiKey={API_KEY}
 
 Tento příkaz: 
 
-* Spustí kontejner rozpoznávání jazyka řeči z image kontejneru.
+* Spustí kontejner rozpoznávání jazyka řeči z image kontejneru. V současné době se vám neúčtují za běhu této image. 
 * Přiděluje 1 jádra procesoru a 1 gigabajt (GB) paměti.
 * Zveřejňuje port TCP 5003 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
@@ -506,10 +506,10 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 > [!NOTE]
 > Pokud spouštíte více kontejnerů, použijte jedinečné číslo portu.
 
-| Kontejnery | Adresa URL hostitele sady SDK | Protokol |
+| Containers | Adresa URL hostitele sady SDK | Protokol |
 |--|--|--|
 | Standardní převod řeči na text a Custom Speech na text | `ws://localhost:5000` | WS |
-| Převod textu na řeč (včetně standardních, vlastních a neuronové), rozpoznávání jazyka | `http://localhost:5000` | HTTP |
+| Převod textu na řeč (včetně standardních, vlastních a neuronové), detekce jazyka řeči | `http://localhost:5000` | HTTP |
 
 Další informace o používání protokolů WSS a HTTPS najdete v tématu [zabezpečení kontejnerů](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 

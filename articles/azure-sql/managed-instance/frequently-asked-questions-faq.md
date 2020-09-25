@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325211"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Toto je aktuální omezení základní součásti, která ověřuje název pods�
 
 **Jak můžu škálovat spravovanou instanci?**
 
-Spravovanou instanci můžete škálovat z [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShellu](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) nebo [šablon ARM](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
+Spravovanou instanci můžete škálovat z [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShellu](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) nebo [šablon ARM](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
 
 **Můžu svoje spravované instance přesunout z jedné oblasti do druhé?**
 
@@ -102,7 +102,7 @@ Ano, můžete. Pokyny najdete v tématu [Přesunutí prostředků do různých o
 
 **Jak můžu odstranit spravovanou instanci?**
 
-Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) nebo [Správce prostředků REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete).
+Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true), rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) nebo [Správce prostředků REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete).
 
 **Jak dlouho trvá vytvoření nebo aktualizace instance nebo obnovení databáze?**
 
@@ -135,9 +135,9 @@ Managed instance nabízí stejné úrovně výkonu na výpočetní úrovni a vel
 
 Jednou z možností je [exportovat databázi do BacPac](../database/database-export.md) a potom [importovat soubor BacPac](../database/database-import.md). Toto je doporučený postup, pokud je databáze menší než 100 GB.
 
-[Transakční replikaci](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017) je možné použít, pokud všechny tabulky v databázi mají *primární* klíče a v databázi nejsou žádné objekty OLTP v paměti.
+[Transakční replikaci](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) je možné použít, pokud všechny tabulky v databázi mají *primární* klíče a v databázi nejsou žádné objekty OLTP v paměti.
 
-Nativní COPY_ONLY zálohy pořízené ze spravované instance nelze obnovit do SQL Server, protože spravovaná instance má vyšší verzi databáze v porovnání s SQL Server. Další podrobnosti najdete v tématu [zálohování pouze pro kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15).
+Nativní COPY_ONLY zálohy pořízené ze spravované instance nelze obnovit do SQL Server, protože spravovaná instance má vyšší verzi databáze v porovnání s SQL Server. Další podrobnosti najdete v tématu [zálohování pouze pro kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true).
 
 **Jak můžu migrovat instanci SQL Server do spravované instance SQL?**
 
@@ -184,11 +184,11 @@ Všechny možné možnosti monitorování a upozorňování na využití a výko
 
 **Můžu použít Profiler SQL pro sledování výkonu?**
 
-Ano, podporuje se SQL Profiler nebo spravovaná instance SQL. Další podrobnosti najdete v tématu [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15).
+Ano, podporuje se SQL Profiler nebo spravovaná instance SQL. Další podrobnosti najdete v tématu [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true).
 
 **Jsou Database Advisor a Query Performance Insight podporovány pro databáze spravované instance?**
 
-Ne, nejsou podporovány. [Zobrazení dynamické správy](../database/monitoring-with-dmvs.md) a [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) můžete použít společně s [SQL profilerem](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) a [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) pro monitorování vašich databází.
+Ne, nejsou podporovány. [Zobrazení dynamické správy](../database/monitoring-with-dmvs.md) a [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) můžete použít společně s [SQL profilerem](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) a [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) pro monitorování vašich databází.
 
 **Můžu vytvořit upozornění metriky na spravované instanci SQL?**
 
@@ -228,7 +228,7 @@ Pokud chcete sledovat, kdy se na spravované instanci provádělo automatizovan�
 
 **Je podporováno zálohování na vyžádání?**
 
-Ano, v Blob Storage Azure můžete vytvořit úplnou zálohu, která je jen pro kopírování, ale bude obnovitelné jenom ve spravované instanci. Podrobnosti najdete v tématu [zálohování jen pro kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Zálohování jen pro kopírování ale není možné, pokud je databáze zašifrovaná službou TDE spravované službou, protože certifikát použitý k šifrování je nepřístupný. V takovém případě použijte funkci obnovení k bodu v čase k přesunu databáze na jinou spravovanou instanci SQL nebo přepněte na klíč spravovaný zákazníkem.
+Ano, v Blob Storage Azure můžete vytvořit úplnou zálohu, která je jen pro kopírování, ale bude obnovitelné jenom ve spravované instanci. Podrobnosti najdete v tématu [zálohování jen pro kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true). Zálohování jen pro kopírování ale není možné, pokud je databáze zašifrovaná službou TDE spravované službou, protože certifikát použitý k šifrování je nepřístupný. V takovém případě použijte funkci obnovení k bodu v čase k přesunu databáze na jinou spravovanou instanci SQL nebo přepněte na klíč spravovaný zákazníkem.
 
 **Je nativní obnovení (ze souborů. bak) do podporované spravované instance?**
 
@@ -390,7 +390,7 @@ Ano, transparentní šifrování dat je podporována pro spravovanou instanci SQ
 
 **Můžu využít model "Přineste si vlastní klíč" pro TDE?**
 
-Ano, Azure Key Vault pro scénář BYOK je k dispozici pro spravovanou instanci Azure SQL. Podrobnosti najdete v tématu [transparentní šifrování dat s klíčem spravovaným zákazníkem](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key).
+Ano, Azure Key Vault pro scénář BYOK je k dispozici pro spravovanou instanci Azure SQL. Podrobnosti najdete v tématu [transparentní šifrování dat s klíčem spravovaným zákazníkem](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true).
 
 **Můžu migrovat šifrovanou databázi SQL Server?**
 
@@ -509,6 +509,10 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 
 ## <a name="service-updates"></a>Aktualizace služeb
+
+**Jakou změnu má kořenová CA pro Azure SQL Database & SQL Managed instance?**
+
+Přečtěte si téma [otočení certifikátu pro Azure SQL Database & spravované instance SQL](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring). 
 
 **Jaká je plánovaná událost údržby pro spravovanou instanci SQL?**
 

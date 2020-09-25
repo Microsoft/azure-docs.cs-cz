@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: c699186c77bba16e96de2dc8b5968f5a83a5a9ce
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4d00abdd3caf6c77b2227d9edfea3cc23d13e392
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288201"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse využití prostředků SQL
 
@@ -29,7 +29,7 @@ Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU) pro 
 
 ### <a name="data-warehouse-units"></a>Jednotky datového skladu
 
-Synapse fond SQL představuje kolekci analytických prostředků, které se zřídí. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vstupně-výstupních operací. Tyto tři prostředky jsou seskupené do jednotek výpočetního škálování s názvem jednotky datového skladu (DWU). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služby mění počet DWU, které jsou k dispozici pro systém, což zase upravuje výkon a náklady vašeho systému.
+Synapse fond SQL představuje kolekci analytických prostředků, které se zřídí. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vstupně-výstupních operací. Tyto tři prostředky jsou seskupené do jednotek výpočetního škálování s názvem jednotky datového skladu (DWU). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služby změní počet DWU, které jsou k dispozici pro systém. Tato změna pak upraví výkon a náklady na váš systém.
 
 Pro vyšší výkon můžete zvýšit počet jednotek datového skladu. Pro méně výkon omezte jednotky datového skladu. Náklady na úložiště a výpočetní prostředky se účtují zvlášť, takže změna jednotek datového skladu nemá vliv na náklady na úložiště.
 
@@ -124,11 +124,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 Postup změny DWU:
 
-1. Otevřete [Azure Portal](https://portal.azure.com), otevřete databázi a klikněte na možnost **škálovat**.
+1. Otevřete [Azure Portal](https://portal.azure.com), otevřete databázi a vyberte možnost **škálovat**.
 
 2. V části **škálovat**přesuňte posuvník doleva nebo doprava, abyste změnili nastavení DWU.
 
-3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na **Ano** ji potvrďte nebo ji kliknutím na **Ne** zrušte.
+3. Vyberte **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na tlačítko **Ano** potvrďte nebo **ne** .
 
 #### <a name="powershell"></a>PowerShell
 

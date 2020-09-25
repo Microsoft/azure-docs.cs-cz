@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886321"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276080"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -102,24 +102,17 @@ Spuštění vytvoříte při odeslání skriptu pro výuku modelu. Spuštění m
 
 [Pracovní prostor](#workspace)  >  [Experimenty](#experiments)  >  [Spustit příkaz](#runs)  >  **Konfigurace spuštění**
 
-Konfigurace spuštění je sada instrukcí, které definují, jak by měl skript běžet v zadaném výpočetním cíli. Tato konfigurace zahrnuje rozsáhlou sadu definic chování, například to, jestli se má použít existující prostředí Pythonu nebo jak používat conda prostředí, které je sestavené ze specifikace.
+Konfigurace spuštění definuje, jak by se měl skript spustit v zadaném výpočetním cíli. Pomocí konfigurace můžete zadat skript, cíl výpočtů a prostředí Azure ML, na kterém budou spouštěny všechny distribuované konfigurace specifické pro danou úlohu a některé další vlastnosti. Další informace o kompletní sadě konfigurovatelných možností pro spuštění najdete v tématu [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
 
 Konfigurace spuštění může být trvalá do souboru v adresáři, který obsahuje školicí skript.   Nebo může být vytvořen jako objekt v paměti a použit k odeslání běhu.
 
-Například konfigurace spuštění najdete v tématu [použití výpočetní cíle ke školení modelu](how-to-set-up-training-targets.md).
-
-### <a name="estimators"></a>Odhady
-
-Pro usnadnění školení modelů s oblíbenými rozhraními vám třída Estimator umožňuje snadno sestavit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení).
-
-Další informace o odhady najdete v tématu o [modelech vlak ml pomocí odhady](how-to-train-ml-models.md).
+Například konfigurace spuštění najdete v tématu [Konfigurace školicího běhu](how-to-set-up-training-targets.md).
 
 ### <a name="snapshots"></a>Snímky
 
 [Pracovní prostor](#workspace)  >  [Experimenty](#experiments)  >  [Spustit příkaz](#runs)  >  **Snímek**
 
 Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor ZIP jako snímek jako součást záznamu spuštění. Kdokoli s přístupem k pracovnímu prostoru může procházet záznam spuštění a stáhnout snímek.
-
 
 ### <a name="logging"></a>protokolování
 
@@ -133,7 +126,7 @@ Existují různé způsoby zobrazení protokolů: sledování stavu spuštění 
 
 ### <a name="git-tracking-and-integration"></a>Sledování a integrace Git
 
-Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Tato funkce funguje s poslanými běhy s použitím kanálu Estimator, ML nebo spuštění skriptu. Funguje taky pro spuštění odeslaná ze sady SDK nebo rozhraní příkazového řádku Machine Learning.
+Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Tato funkce funguje s poslanými běhy na základě konfigurace běhu skriptu nebo kanálu ML. Funguje taky pro spuštění odeslaná ze sady SDK nebo rozhraní příkazového řádku Machine Learning.
 
 Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 

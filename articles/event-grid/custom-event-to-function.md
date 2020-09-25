@@ -3,12 +3,12 @@ title: 'Rychlý Start: odeslání vlastních událostí do funkce Azure Function
 description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI nebo portálu můžete publikovat téma a přihlásit se k odběru této události. Pro koncový bod se používá funkce Azure Functions.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324384"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid
 
@@ -17,14 +17,17 @@ Azure Event Grid je služba zpracování událostí pro cloud. Azure Functions j
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-azure-function"></a>Vytvoření funkce Azure
+Před přihlášením k odběru vlastního tématu vytvořte funkci pro zpracování událostí. 
 
-Před přihlášením k odběru vlastního tématu pojďme vytvořit funkci pro zpracování událostí. V Azure Portal klikněte na vytvořit prostředek, zadejte ' function ' a pak zvolte ' Function App ' a klikněte na vytvořit. V části Skupina prostředků vyberte vytvořit novou a pojmenujte ji. Použijete ji pro zbytek kurzu. Zadejte Function App název, ponechte přepínač ' publikovat ' na ' Code ', vyberte libovolný modul runtime a oblast a potom stiskněte vytvořit.
+1. Vytvořte aplikaci funkcí pomocí pokynů v tématu [Vytvoření aplikace Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
+2. Vytvořte funkci pomocí **triggeru Event Grid**. Pokud tuto aktivační událost použijete poprvé, můžete tuto možnost vybrat kliknutím na nainstalovat a instalaci rozšíření nainstalovat.
+    1. Na stránce **Function App** v nabídce vlevo vyberte **funkce** , vyhledejte **Event Grid** v části šablony a potom vyberte **Azure Event Grid Trigger**. 
 
-Až budete Function App připraveni, přejděte na něj a klikněte na + nová funkce. Vyberte na portálu možnost pro vývojové prostředí a stiskněte pokračovat. V části Vytvoření funkce zvolte Další šablony a zobrazte další šablony, vyhledejte Azure Event Grid Trigger a vyberte ho. Pokud tuto aktivační událost použijete poprvé, bude pravděpodobně nutné kliknutím na tlačítko nainstalovat nainstalovat rozšíření.
+        :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Vybrat aktivační událost Event Grid":::
+3. Na stránce **Nová funkce** zadejte název funkce a vyberte **vytvořit funkci**.
 
-![Aktivační událost Event Grid funkce](./media/custom-event-to-function/grid-trigger.png)
-
-Po instalaci rozšíření klikněte na pokračovat, zadejte název funkce a potom stiskněte vytvořit.
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Nová stránka funkce":::
+4. Pomocí stránky **Code + test** zobrazte existující kód funkce a aktualizujte ji. 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -81,8 +84,12 @@ K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla
     5. V případě koncového bodu funkce vyberte předplatné Azure a skupinu prostředků, ve které je Function App, a pak vyberte Function App a funkci, kterou jste vytvořili dříve. Zvolte **Potvrdit výběr**.
 
        ![Zadání adresy URL koncového bodu](./media/custom-event-to-function/provide-endpoint.png)
-
-    6. Zpátky na stránce **vytvořit odběr události** vyberte **vytvořit**.
+    6. Tento krok je nepovinný, ale doporučuje se pro produkční scénáře. Na stránce **vytvořit odběr události** přepněte na kartu **Pokročilé funkce** a nastavte hodnoty **maximálního počtu událostí na dávku** a **upřednostňovanou velikost dávky v kilobajtech**. 
+    
+        Dávkování vám může poskytnout vysokou propustnost. Pro **Maximum událostí na jednu dávku**nastavte maximální počet událostí, které bude předplatné zahrnovat do dávky. Upřednostňovaná velikost dávky nastaví upřednostňovanou horní mez velikosti dávky v kilobajtech, ale může být překročena, pokud je jediná událost větší než tato prahová hodnota.
+    
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Povolit dávkování":::
+    6. Na stránce **vytvořit odběr události** vyberte **vytvořit**.
 
 ## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlr
+ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 332b5198f046d0096e95e79e27cbc49408e6d136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325194"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Referenční dokumentace obsahu spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 
 - [Konfigurace ověřování Azure AD](../database/authentication-aad-configure.md)
 - [Konfigurace podmíněného přístupu](../database/conditional-access-configure.md)
-- [Ověřování Multi-Factor Azure AD](../database/authentication-mfa-ssms-overview.md)
+- [Vícefaktorové ověřování Azure AD](../database/authentication-mfa-ssms-overview.md)
 - [Konfigurace vícefaktorového ověřování](../database/authentication-mfa-ssms-configure.md)
 - [Konfigurace dočasné zásady uchovávání informací](../database/temporal-tables-retention-policy.md)
 - [Transparentní šifrování dat s využitím služby BYOK](../database/transparent-data-encryption-byok-configure.md)
@@ -77,7 +77,7 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 
 ### <a name="alerting"></a>Zobrazení výstrah
 
-- [Vytvoření upozornění na spravovanou instanci](alerts-create.md)
+- [Vytváření upozornění pro spravovanou instanci](alerts-create.md)
 
 ## <a name="operations"></a>Operace
 

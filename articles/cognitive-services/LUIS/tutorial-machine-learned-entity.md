@@ -1,14 +1,16 @@
 ---
 title: 'Kurz: extrakce strukturovaných dat pomocí entity Machine-Learning – LUIS'
 description: Extrahujte strukturovaná data z utterance pomocí entity Machine-Learning. Chcete-li zvýšit přesnost extrakce, přidejte dílčí entity s funkcemi.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86045599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334718"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Kurz: extrakce strukturovaných dat ze utterance uživatelů pomocí entit strojového učení v Language Understanding (LUIS)
 
@@ -79,12 +81,12 @@ K extrakci podrobností o pizzaém pořadí vytvořte entitu Machine-Learning ne
 
 1. V poli **Zvolte typ entity** vyberte **přidat strukturu** a pak vyberte **Další**. Struktura je nutná pro přidání podentit, jako je velikost a množství.
 
-    ![Přidání struktury k entitě](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
+    ![Snímek obrazovky zobrazuje okno zvolit typ entity s zaškrtnutou možností přidat strukturu.](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. V poli **Přidat dílčí entity (volitelné)** vyberte **+** na `Order` řádku, pak přidat `Size` a `Quantity` jako subentity a pak vyberte **vytvořit**.
 
     > [!div class="mx-imgBorder"]
-    > ![Přidání struktury k entitě](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
+    > ![Snímek obrazovky se zvýrazněným oknem přidat podentity (volitelné) s vybranými subentitami.](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
 ## <a name="edit-subentities-to-improve-extraction"></a>Upravit podentity pro zlepšení extrakce
 
@@ -114,14 +116,14 @@ Přidání seznamu známých velikostí, které klientská aplikace rozpozná, p
 
     |Normalizovaná hodnota|Synonyma|
     |--|--|
-    |Malý|SM, SML, malý, nejmenší|
+    |Malá|SM, SML, malý, nejmenší|
     |Střední|MD, MDM, Regular, Average, prostřední|
-    |Velký|LG, LRG, velký|
+    |Velká|LG, LRG, velký|
     |XLarge|XL, největší, Obří|
 
 
     > [!div class="mx-imgBorder"]
-    > ![Přidání struktury k entitě](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
+    > ![Snímek obrazovky se zobrazí okno SizeList a položky seznamu s vybranou položkou XLarge.](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
 ### <a name="add-feature-of-sizelist-entity"></a>Přidat funkci entity SizeList
 
@@ -160,7 +162,7 @@ Přidání předdefinované číselné entity také pomůže extrakci.
 Na stránce podrobností entity pro entitu **objednávky** vyberte hvězdičku, `*` pro funkci **@ SizeList** i pro funkci **@ Number** . Hvězdička se zobrazí ve stejném popisku jako název funkce.
 
 > [!div class="mx-imgBorder"]
-> ![Přidání struktury k entitě](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
+> ![Snímek obrazovky ukazuje @SizeList funkci s hvězdičkou a vyžaduje upozornění.](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
 <a name="label-text-as-entities-in-example-utterances"></a>
 <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
@@ -200,7 +202,7 @@ Pokud chcete aplikaci naučit, vyberte **vlak**. Školení aplikuje změny, jako
 1. Chcete-li změnit předpověď na entitu s popiskem, zaškrtněte políčko značka zaškrtnutí na stejném řádku.
 
     > [!div class="mx-imgBorder"]
-    > ![Částečný snímek obrazovky s novým příkladem utterance s předpovídat entitou](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
+    > ![Snímek obrazovky ukazuje příklad utterance se zvýrazněnou značkou zaškrtnutí.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
     V tomto okamžiku entita strojového učení funguje, protože může najít entitu v rámci nového ukázkového utteranceu. Když přidáte příklad projevy, pokud entita není předpovězená správně, označte entitu a subentity. Pokud je entita předpokládaná správně, nezapomeňte předpovědi potvrdit.
 
