@@ -3,12 +3,12 @@ title: Zjistit vlastnosti prostředku
 description: Popisuje, jak vyhledat vlastnosti prostředku.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057071"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327744"
 ---
 # <a name="discover-resource-properties"></a>Zjistit vlastnosti prostředku
 
@@ -71,10 +71,10 @@ Průzkumník prostředků je vložen do Azure Portal. Před použitím této met
 
 [![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Do vyhledávacího pole zadejte **Průzkumník prostředků**a potom vyberte **Průzkumník prostředků**.
 
-    ![Azure Portal Průzkumník prostředků](./media/view-resources/azure-portal-resource-explorer.png)
+    ![Snímek obrazovky ukazuje hledání Průzkumník prostředků v Azure Portal.](./media/view-resources/azure-portal-resource-explorer.png)
 
 1. Vlevo rozbalte položku **předplatná**a potom rozbalte své předplatné Azure. Účet úložiště můžete najít buď v části **poskytovatelé** , nebo v **ResourceGroups**.
 

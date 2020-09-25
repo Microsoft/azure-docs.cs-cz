@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 848a0c9817472086dbaf3973dad9c64e3ed74b10
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f47569eef7281840108c32283f664c3218de23dc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954237"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357775"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Konfigurace Always Encrypted pomocí úložiště certifikátů Windows
 
@@ -107,7 +107,7 @@ Kliknutím na tlačítko **Další** na **úvodní** stránce otevřete stránku
 
 Zašifrujte informace **SSN** a **DatumNarození** pro každého pacienta. Sloupec **SSN** bude používat deterministické šifrování, které podporuje vyhledávání rovnosti, spojení a seskupování podle. Sloupec **DatumNarození** bude používat náhodné šifrování, které nepodporuje operace.
 
-Nastavte **typ šifrování** pro sloupec **SSN** na **deterministické** a sloupec **DatumNarození** , který se má **náhodným**nastavením. Klikněte na **Další**.
+Nastavte **typ šifrování** pro sloupec **SSN** na **deterministické** a sloupec **DatumNarození** , který se má **náhodným**nastavením. Klikněte na **Next** (Další).
 
 ![Šifrovat sloupce](./media/always-encrypted-certificate-store-configure/column-selection.png)
 
@@ -123,11 +123,11 @@ Ověřte, zda je vybráno **úložiště certifikátů systému Windows** , a kl
 
 Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro pozdější spuštění. Pro tento kurz vyberte **pokračovat** a klikněte na **Další**.
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Ověřte správnost nastavení a kliknutím na **Dokončit** dokončete instalaci pro Always Encrypted.
 
-![Souhrn](./media/always-encrypted-certificate-store-configure/summary.png)
+![Snímek obrazovky zobrazující stránku výsledků s úkoly označenými jako prošlé.](./media/always-encrypted-certificate-store-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Ověření akcí Průvodce
 
@@ -544,7 +544,7 @@ Po vytvoření databáze, která používá Always Encrypted, je vhodné provés
 ## <a name="related-information"></a>Související informace
 
 * [Always Encrypted (vývoj klientů)](https://msdn.microsoft.com/library/mt147923.aspx)
-* [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx)
 * [SQL Server šifrování](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Průvodce Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Blog Always Encrypted](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

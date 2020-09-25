@@ -1,6 +1,6 @@
 ---
 title: Přeložit odkazy a adresy URL Aplikace Azure AD proxy | Microsoft Docs
-description: Zahrnuje základní informace o konektorech Azure Proxy aplikací služby AD.
+description: Přečtěte si, jak přesměrovat pevně kódované odkazy pro aplikace publikované pomocí proxy aplikací služby Azure AD.
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 544aa1a4a859a9c328eb1d36e72d0f9f9ddb55b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327897"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódovaných odkazů pro aplikace publikované s Azure Proxy aplikací služby AD
 
@@ -100,7 +100,7 @@ Existují dva běžné typy interních propojení v místních aplikacích:
 * iframe
 * obrázek
 * vstup
-* propojit
+* odkaz
 * MenuItem
 * meta
 * object

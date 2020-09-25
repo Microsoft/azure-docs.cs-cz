@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 45dc137141491938367fb57c6955e8e3145f8ff9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.custom: devx-track-js
+ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050450"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327614"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Ověřování služby Azure SignalR s využitím služby Azure Functions
 
@@ -52,7 +52,7 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
 
 1. Klikněte na tlačítko **vytvořit prostředek** ( **+** ) pro vytvoření nového prostředku Azure.
 
-1. Vyhledejte a vyberte **službu SignalR**. Klikněte na možnost **Vytvořit**.
+1. Vyhledejte a vyberte **službu SignalR**. Klikněte na **Vytvořit**.
 
     ![Nová služba SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
@@ -65,7 +65,7 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
     | Umístění | Vyberte umístění, které je blízko vás. |
     | Cenová úroveň | Free |
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 1. Po nasazení instance ho otevřete na portálu a najděte jeho stránku nastavení. Změňte nastavení režimu služby na možnost bez *serveru*.
 
@@ -497,7 +497,7 @@ Přestože soubor **local.settings.json** obsahuje nastavení CORS, toto nastave
 
 1. Soukromé zprávy můžete odesílat kliknutím na uživatelské jméno v historii chatu. Tyto zprávy obdrží pouze vybraný příjemce.
 
-Gratulujeme! Nasadili jste chatovací aplikaci bez serveru, která funguje v reálném čase.
+Blahopřejeme! Nasadili jste chatovací aplikaci bez serveru, která funguje v reálném čase.
 
 ![Ukázka](media/signalr-tutorial-authenticate-azure-functions/signalr-serverless-chat.gif)
 

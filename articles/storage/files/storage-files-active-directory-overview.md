@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 3f2fd9f2b75faeeb2d40bd71d074a929e86eebdf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561819"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358368"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -21,7 +21,7 @@ Informace o tom, jak povolit místní ověřování Active Directory Domain Serv
 
 Informace o tom, jak povolit ověřování Azure služba AD DS pro sdílené složky Azure, najdete v tématu [povolení Azure Active Directory Domain Servicesho ověřování u souborů Azure](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
-## <a name="glossary"></a>Glosář 
+## <a name="glossary"></a>Slovníček 
 Je užitečné pochopit některé klíčové podmínky týkající se ověřování služby Azure AD Domain Services přes SMB pro sdílené složky Azure:
 
 -   **Ověřování protokolu Kerberos**
@@ -114,7 +114,7 @@ Následující diagram představuje pracovní postup pro ověřování Azure slu
 
 - Nejdřív nemusíte vytvářet identitu ve službě Azure služba AD DS, která by představovala účet úložiště. To se provádí v procesu povolení na pozadí.
 
-- Za druhé, všichni uživatelé existují v Azure AD, můžou být ověřeni a autorizováni. Uživatel může být pouze Cloud nebo hybridní. Synchronizace z Azure AD do Azure služba AD DS spravovaná platformou bez nutnosti konfigurace uživatele. Klient musí být ale připojený k doméně Azure služba AD DS, ale nemůže být připojený k Azure AD ani zaregistrován. 
+- Za druhé, všichni uživatelé, kteří existují v Azure AD, můžou být ověřeni a autorizováni. Uživatel může být pouze Cloud nebo hybridní. Synchronizace z Azure AD do Azure služba AD DS spravovaná platformou bez nutnosti konfigurace uživatele. Klient musí být ale připojený k doméně Azure služba AD DS, ale nemůže být připojený k Azure AD ani zaregistrován. 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram":::
 

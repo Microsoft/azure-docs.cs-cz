@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357569"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -29,7 +29,7 @@ Odpověď **: základní**model byl vyučen pomocí dat vlastněných společnos
 
 **Otázka: kde se mám začít používat základní model?**
 
-Odpověď **: nejdřív**Získejte [klíč předplatného](get-started.md). Chcete-li provést volání REST do přednasazených standardních modelů, přečtěte si téma [rozhraní REST API](rest-apis.md). Pokud chcete použít objekty WebSockets, [Stáhněte si sadu SDK](speech-sdk.md).
+Odpověď **: nejdřív**Získejte [klíč předplatného](overview.md#try-the-speech-service-for-free). Chcete-li provést volání REST do přednasazených standardních modelů, přečtěte si téma [rozhraní REST API](rest-apis.md). Pokud chcete použít objekty WebSockets, [Stáhněte si sadu SDK](speech-sdk.md).
 
 **Otázka: Musím vždy vytvořit vlastní model řeči?**
 
@@ -166,5 +166,5 @@ Prostředí pro rozpoznávání řeči, která jsou integrovaná do Office 365, 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Odstraňování potíží](troubleshooting.md)
+- [Řešení potíží](troubleshooting.md)
 - [Zpráva k vydání verze](releasenotes.md)

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 467f7b3525883e16e57a06ff97cf4fd386279d22
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b38ba59b3efc7e5869eecbc84879a6c0a4ce7369
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360204"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
 
@@ -32,7 +32,7 @@ Aplikace a funkce hostované ve službě Azure App Service můžou vykazovat jed
 Hlavní příčinou těchto symptomů je, že instance aplikace nemůže otevřít nové připojení k externímu koncovému bodu, protože dosáhlo jednoho z následujících omezení:
 
 * Připojení TCP: existuje omezení počtu odchozích připojení, která lze vytvořit. Tato hodnota je přidružená k velikosti použitého pracovního procesu.
-* Porty SNAT: jak je popsáno v části [odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md), používá Azure ke komunikaci s koncovými body mimo Azure ve veřejném adresním prostoru IP adres zdrojový překlad adres (SNAT) a Load Balancer (nezveřejněné pro zákazníky). Každé instanci ve službě Azure App Service se zpočátku dostal předem přidělený počet portů **128** SNAT. Toto omezení má vliv na otevírání připojení ke stejné kombinaci hostitelů a portů. Pokud vaše aplikace vytvoří připojení ke kombinaci adres a kombinací portů, nebudete používat porty SNAT. Porty SNAT se používají, když máte opakovaná volání stejné kombinace adres a portů. Po uvolnění portu je možné port v případě potřeby znovu použít. Nástroj pro vyrovnávání zatížení sítě Azure uvolní port SNAT z uzavřených připojení jenom po 4 minutách.
+* Porty SNAT: jak je popsáno v části [odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md), Azure používá překlad zdrojového síťového adres (SNAT) a Load Balancer (nevystavený zákazníkům) ke komunikaci s koncovými body mimo Azure ve veřejném adresním prostoru IP adres a koncovými body interních pro Azure, které nevyužívají koncové body služby. Každé instanci ve službě Azure App Service se zpočátku dostal předem přidělený počet portů **128** SNAT. Toto omezení má vliv na otevírání připojení ke stejné kombinaci hostitelů a portů. Pokud vaše aplikace vytvoří připojení ke kombinaci adres a kombinací portů, nebudete používat porty SNAT. Porty SNAT se používají, když máte opakovaná volání stejné kombinace adres a portů. Po uvolnění portu je možné port v případě potřeby znovu použít. Nástroj pro vyrovnávání zatížení sítě Azure uvolní port SNAT z uzavřených připojení jenom po 4 minutách.
 
 Když aplikace nebo funkce rychle otevřou nové připojení, můžou rychle vyčerpat svou předem přidělenou kvótu 128 portů. Pak jsou zablokované, dokud nebude k dispozici nový port SNAT, a to prostřednictvím dynamického přidělování dalších portů SNAT nebo opakovaného použití uvolněného portu SNAT. Aplikace nebo funkce, které jsou blokované z důvodu neschopnosti vytvářet nová připojení, začnou mít jeden nebo více problémů popsaných v části **příznaky** v tomto článku.
 

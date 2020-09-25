@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: cae0ec1daed8277d1e7e4f3c5cbc701965ac00b8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327489"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Reference ke stroji pravidel Standard pro Azure CDN
 
@@ -40,7 +40,7 @@ Součástí tohoto omezení je výchozí *globální pravidlo*. Globální pravi
 
 Každý koncový bod Azure CDN může mít až 25 pravidel. Každé pravidlo může mít až deset podmínek shody a pět akcí. Ceny pro modul pravidel řídí následující dimenze: 
 - Pravidla: $1 na pravidlo za měsíc 
-- Počet zpracovaných požadavků: $0,60 za milion requets
+- Počet zpracovaných požadavků: $0,60 za milion požadavků
 - Prvních 5 pravidel zůstane zadarmo.
 
 ## <a name="syntax"></a>Syntax

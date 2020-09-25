@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66f22fa2781fb4c0f4caa07323b3de8cac1ef9fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437441"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361105"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Prozkoumejte SaaS Analytics pomocí Azure SQL Database, Azure synapse Analytics, Data Factory a Power BI
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -111,7 +111,7 @@ V Průzkumník objektů:
     1. Tabulky schématu hvězdiček jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**a **dim_Dates**.
     1. Uložená procedura, **sp_transformExtractedData** slouží k transformaci dat a jejich načtení do tabulek se schématem hvězdiček.
 
-![DWtables](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
+![Snímek obrazovky zobrazuje Průzkumník objektů s rozbalenými tabulkami k zobrazení různých databázových objektů.](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob Storage
 
@@ -167,7 +167,7 @@ Vzhledem k třem propojeným službám existují tři datové sady, které odkaz
   
 ### <a name="data-warehouse-pattern-overview"></a>Přehled vzoru datového skladu
 
-Azure synapse (dříve SQL Data Warehouse) se používá jako úložiště analýzy k provádění agregace pro data tenanta. V této ukázce se používá základ k načtení dat do datového skladu. Nezpracovaná data se načítají do pracovních tabulek, které mají sloupec identity, aby bylo možné sledovat řádky, které byly transformované na tabulky se schématy hvězdiček. Vzor načítání je znázorněn na následujícím obrázku: ![ loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure synapse (dříve SQL Data Warehouse) se používá jako úložiště analýzy k provádění agregace pro data tenanta. V této ukázce se používá základ k načtení dat do datového skladu. Nezpracovaná data se načítají do pracovních tabulek, které mají sloupec identity, aby bylo možné sledovat řádky, které byly transformované na tabulky se schématy hvězdiček. Následující obrázek znázorňuje vzor načítání: ![ diagram znázorňuje vzor načítání databázových tabulek.](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 V tomto příkladu se používají tabulky dimenzí typu s pomalou změnou (SCD). Každá dimenze má definován náhradní klíč pomocí sloupce identity. Jako osvědčený postup je předem vyplněna tabulka dimenze kalendářních dat za účelem úspory času. Pro ostatní tabulky dimenzí CREATE TABLE jako vyberte... (CTAS) příkaz slouží k vytvoření dočasné tabulky obsahující existující upravené a neupravené řádky spolu s náhradními klíči. To se provádí s IDENTITY_INSERT = ON. Nové řádky jsou potom vloženy do tabulky pomocí IDENTITY_INSERT = OFF. U snadného vrácení se změnami se přejmenuje stávající tabulka dimenzí a dočasná tabulka se přejmenuje, aby se stala novou tabulkou dimenzí. Před každým spuštěním se stará tabulka dimenzí odstraní.
 
@@ -181,14 +181,14 @@ Pomocí následujících kroků spusťte kompletní kanál pro extrakci, načten
 
 1. Na kartě **Autor** v UŽIVATELSKÉM rozhraní ADF v levém podokně vyberte kanál **SQLDBToDW** .
 1. Klikněte na **aktivační událost** a v rozevírací nabídce klikněte na **aktivovat hned**. Tato akce spustí kanál okamžitě. V produkčním scénáři byste definovali časový harmonogram pro spuštění kanálu, který aktualizuje data podle plánu.
-  ![adf_trigger](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
+  ![Snímek obrazovky ukazuje prostředky továrny pro kanál s názvem S Q L D B až D W s rozbalenou možností triggeru a aktivací nyní.](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
 1. Na stránce **spuštění kanálu** klikněte na **Dokončit**.
 
 ### <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
 1. V uživatelském rozhraní ADF přepněte v nabídce na levé straně na kartu **monitorování** .
 1. Klikněte na **aktualizovat** až do **úspěšného**stavu kanálu SQLDBToDW.
-  ![adf_monitoring](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
+  ![Snímek obrazovky ukazuje kanál S Q L D B až D W se stavem úspěch.](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
 1. Připojte se k datovému skladu pomocí SSMS a vytvořte dotaz na tabulky se schématem hvězdiček, abyste ověřili, že data byla načtena v těchto tabulkách.
 
 Po dokončení kanálu budou v tabulce faktů uložena data o prodeji lístků pro všechna místa a tabulky dimenzí jsou vyplněny odpovídajícími místy, událostmi a zákazníky.
@@ -214,7 +214,7 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 
 6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** a **dim_Dates**. Pak vyberte **načíst**.
 
-Gratulujeme! Data byla úspěšně načtena do Power BI. Teď Prozkoumejte zajímavé vizualizace, abyste získali přehled o vašich klientech. Podívejme se, jak Analytics může poskytnout některá doporučení řízená daty do obchodního týmu Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď Prozkoumejte zajímavé vizualizace, abyste získali přehled o vašich klientech. Podívejme se, jak Analytics může poskytnout některá doporučení řízená daty do obchodního týmu Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začněte analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte možnosti zobrazené v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. (Kvůli náhodné variaci generátoru lístků se vaše výsledky můžou lišit.)
 
@@ -272,7 +272,7 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytického datového skladu.
 > - Pomocí Power BI pro vizualizaci dat zvýrazněte trendy v datech tenanta a udělejte doporučení na vylepšení.
 
-Gratulujeme!
+Blahopřejeme!
 
 ## <a name="additional-resources"></a>Další zdroje
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 446517f56d1f5ba6fa32408489f07411ee1a3e02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442901"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356795"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analýza mezi klienty pomocí extrahovaných dat – více tenantů aplikace
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Co se v tomto kurzu naučíte:
 > - Dotazování analytické databáze
 > - Pomocí Power BI pro vizualizaci dat zvýrazněte trendy v datech tenanta a udělejte doporučení na vylepšení.
 
-![architectureOverView](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
+![Diagram zobrazuje přehled architektury používané pro tento článek.](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Model analýzy klientů offline
 
@@ -53,7 +53,7 @@ V dalším kroku jsou agregovaná data skartována do sady tabulek se [schémate
 
 Společně centrální tabulky a tabulky dimenzí umožňují efektivní analytické zpracování. Schéma hvězdičky používané v tomto kurzu se zobrazuje na následujícím obrázku:
  
-![StarSchema](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![Databázový diagram zobrazuje čtyři databázové objekty, které jsou připojeny k objektu centrální databáze.](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
 Nakonec se dotazují tabulky schématu hvězdičky. Výsledky dotazu se zobrazují vizuálně, aby bylo zdůrazněno, co je přehled o chování tenanta a jejich použití. Pomocí tohoto schématu hvězdičky můžete spouštět dotazy, které vám pomůžou najít následující položky:
 
@@ -111,7 +111,7 @@ Rozbalením uzlu analytického úložiště se podívejte na následující polo
 - Tabulky schématu hvězdiček jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**a **dim_Dates**.
 - Uložená procedura **sp_ShredRawExtractedData** slouží k naplnění tabulek schématu hvězdiček z nezpracovaných tabulek dat.
 
-![tenantAnalytics](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
+![Snímek obrazovky zobrazuje Průzkumník objektů S S M M S pro uzel úložiště analýzy, včetně tabulek, zobrazení a uzlů.](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Extrakce dat 
 
@@ -139,7 +139,7 @@ Každá úloha extrahuje svá data a odešle je do úložiště analýz. V rámc
 4. Stisknutím klávesy **F5** spusťte skript, který vytvoří a spustí úlohu, která extrahuje údaje o lístkech a zákaznících z každé databáze tenanta. Úloha uloží data do úložiště analýz.
 5. Dotaz na tabulku TicketsRawData v databázi tenantanalytics, aby se zajistilo, že se tabulka vyplní informacemi z lístků ze všech tenantů.
 
-![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![Snímek obrazovky zobrazuje databázi ExtractTickets s TicketsRawDataem d b o vybraným v Průzkumník objektů.](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
 Opakujte předchozí kroky, kromě této doby nahraďte **\ExtractTickets.SQL** pomocí **\ExtractVenuesEvents.SQL** v kroku 2.
 
@@ -159,7 +159,7 @@ V této části kurzu definujete a spustíte úlohu, která sloučí extrahovan�
 4. Umožněte, aby úloha běžela dostatečně dlouho.
     - Prohlédněte si sloupec **životní cyklus** úloh. jobs_execution tabulce stav úlohy. Než budete pokračovat, ujistěte se, že byla úloha **úspěšně dokončena** . Úspěšné spuštění zobrazuje data podobná následujícímu grafu:
 
-![shreddingJob](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![Snímek obrazovky ukazuje úspěšný výsledek spuštění sp_ShredRawExtractedData postupu.](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
 ## <a name="data-exploration"></a>Zkoumání dat
 
@@ -174,25 +174,25 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 3. V okně **získat data** vyberte Azure SQL Database.
 4. V okně přihlášení k databázi zadejte název vašeho serveru (Catalog-MT- \<User\> . Database.Windows.NET). Vyberte možnost **importovat** do **režimu připojení dat**a pak klikněte na tlačítko OK. 
 
-    ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
+    ![Snímek obrazovky se zobrazí dialogové okno SQL Server Database, kde můžete zadat server a databázi.](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
 5. V levém podokně vyberte **databáze** a pak zadejte uživatelské jméno = *vývojář*a zadejte heslo = *P \@ ssword1*. Klikněte na **Připojit**.  
 
-    ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![Snímek obrazovky se zobrazí v dialogovém okně SQL Server databázi, kde můžete zadat uživatelské jméno a heslo.](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
 6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: fact_Tickets, dim_Events, dim_Venues, dim_Customers a dim_Dates. Pak vyberte **načíst**. 
 
-Gratulujeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začnete analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte následující možnosti v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. V důsledku náhodné variace generátoru lístků se vaše výsledky můžou lišit.
  
-![TotalTicketsByVenues](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![Snímek obrazovky ukazuje vizualizaci a ovládací prvky pro vizualizaci dat na pravé straně.](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
 Předchozí vykreslení potvrdí, že počet lístků prodávaných jednotlivými místy se liší. Místa, která prodávají další lístky, využívají vaši službu více než místo míst, které prodávají méně lístků. Tady může být příležitost přizpůsobit přidělování prostředků podle různých potřeb tenanta.
 
 Data můžete dál analyzovat, abyste viděli, jak se v průběhu času mění prodej lístku. Vyberte následující možnosti v Power BI pro vykreslení celkového počtu lístků prodaných každý den po dobu 60 dnů.
  
-![SaleVersusDate](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
+![Snímek obrazovky zobrazuje vizualizaci Power B s názvem distribuce prodeje lístků vs. den prodeje.](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
 V předchozím grafu se zobrazuje špička prodeje lístků pro určité místo. Tyto špičky posílí představu o tom, že některá místa můžou spotřebovávat systémové prostředky neúměrně. Zatím v době, kdy dojde k špičkám, neexistuje žádný zřejmý vzor.
 
@@ -237,7 +237,7 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytické databáze 
 > - Použití Power BI pro vizualizaci dat ke sledování trendů v datech tenanta 
 
-Gratulujeme!
+Blahopřejeme!
 
 ## <a name="additional-resources"></a>Další zdroje
 

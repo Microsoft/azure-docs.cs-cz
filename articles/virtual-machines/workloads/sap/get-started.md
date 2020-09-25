@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 986e4fd8c7043f5c01868302ffc2b554e2ce76f7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f778e996eeda0f2b850864c9c90cd522c411b032
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328016"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -82,6 +82,7 @@ V této části najdete informace v tématu Postup konfigurace jednotného přih
 
 ## <a name="change-log"></a>Protokol změn
 
+- 09/02/2020: přidejte nové certifikované SKU pro HLI v [dostupných SKU pro HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) . 
 - 09/08/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SLES](./sap-hana-high-availability.md) pro vysvětlení definicí stonith
 - 09/03/2020: Změna v [SAP HANA konfigurací úložiště virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) pro přizpůsobení minimálně 2 vstupně-výstupních operací na 1 GB s Ultra diskem
 - 09/02/2020: Změna [dostupných SKU pro HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) , aby se lépe transparentní v tom, jaké SKU jsou certifikované pro Hana

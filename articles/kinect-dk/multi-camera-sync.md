@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, specifikace, hardware, DK, možnosti, Hloubka, barva, RGB, IMU, pole, Hloubka, více, synchronizace
-ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277220"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361156"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synchronizace více zařízení Azure s Kinect DK
 
@@ -26,7 +26,7 @@ Existuje mnoho důvodů, proč použít více zařízení Azure Kinect DK, včet
 
 - Vyplňte Occlusions. I když transformace dat v Azure Kinect DK vytvoří jeden obrázek, dva kamery (hloubka a RGB) jsou ve skutečnosti malé vzdálenosti. Posun způsobuje Occlusions. K překrytí dojde, když objekt popředí zablokuje zobrazení části objektu na pozadí pro jednu ze dvou kamer na zařízení. Ve výsledné barvě obrázku se zdá, že objekt popředí přetypování stín na objekt na pozadí.  
    Například v následujícím diagramu se u kamery na levé straně zobrazuje šedý pixel "P2". Ale bílý objekt na popředí blokuje paprskový paprsek kamery na pravé straně. Kamera na pravé straně nemá žádná data pro P2.  
-   ![Překrytí](./media/occlusion.png)  
+   ![Diagram znázorňuje dva kamery směrované na stejný bod s jedním z nich blokovaných.](./media/occlusion.png)  
    Další synchronizovaná zařízení můžou poskytovat zastíněna data.
 - Naskenujte objekty ve třech rozměrech.
 - Zvyšte efektivní kmitočet snímků na hodnotu, která je větší než 30 snímků za sekundu (FPS).

@@ -1,24 +1,24 @@
 ---
-title: Připojit hybridní počítač k serverům s podporou ARC Azure (Preview)
-description: Přečtěte si, jak připojit a zaregistrovat svůj hybridní počítač pomocí serverů s podporou ARC Azure (Preview).
+title: Připojit hybridní počítač k serverům s podporou ARC Azure
+description: Naučte se připojit a zaregistrovat svůj hybridní počítač se servery s podporou ARC Azure.
 ms.topic: quickstart
-ms.date: 08/12/2020
-ms.openlocfilehash: eacf75871b1f7cc7fc3b703d8859338578e43456
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213609"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327880"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers-preview"></a>Rychlý Start: připojení hybridního počítače k serverům s podporou ARC Azure (Preview)
+# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure
 
-[Servery s podporou ARC Azure](../overview.md) (ve verzi Preview) umožňují spravovat a řídit počítače s Windows a Linux hostovanými v místních, hraničních a prostředích s více cloudy. V tomto rychlém startu nasadíte a nakonfigurujete agenta připojeného počítače na počítači s Windows nebo Linux hostovaným mimo Azure za účelem správy prostřednictvím serverů s podporou ARC (Preview).
+[Servery s podporou ARC Azure](../overview.md) vám umožňují spravovat a řídit počítače s Windows a Linux hostovanými v místních, hraničních i cloudových prostředích. V tomto rychlém startu nasadíte a nakonfigurujete agenta připojeného počítače na počítači se systémem Windows nebo Linux, který je hostovaný mimo Azure pro správu prostřednictvím serverů s podporou ARC.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Nasazení serveru s povoleným ARC (Preview) Agent Hybrided Machine Connect vyžaduje, abyste na počítači měli oprávnění správce pro instalaci a konfiguraci agenta. V systému Linux, pomocí kořenového účtu a ve Windows, s účtem, který je členem místní skupiny Administrators.
+* Nasazení serveru s povoleným ARC Agent pro hybridní připojení počítače vyžaduje, abyste na počítači měli oprávnění správce pro instalaci a konfiguraci agenta. V systému Linux, pomocí kořenového účtu a ve Windows, s účtem, který je členem místní skupiny Administrators.
 
 * Než začnete, nezapomeňte si projít [požadavky](../agent-overview.md#prerequisites) agenta a ověřit následující:
 
@@ -28,13 +28,13 @@ ms.locfileid: "88213609"
 
     * Pokud se počítač připojuje prostřednictvím brány firewall nebo proxy server komunikovat přes Internet, ujistěte se, že [uvedené](../agent-overview.md#networking-configuration) adresy URL nejsou blokované.
 
-    * Servery s podporou ARC Azure (Preview) podporují jenom oblasti, které jsou [tady](../overview.md#supported-regions)uvedené.
+    * Servery s podporou ARC Azure podporují jenom oblasti, které jsou [tady](../overview.md#supported-regions)uvedené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="register-azure-resource-providers"></a>Registrovat poskytovatele prostředků Azure
 
-Servery s podporou ARC Azure (Preview) závisí na následujících poskytovatelích prostředků Azure ve vašem předplatném, aby bylo možné tuto službu používat:
+Servery s podporou ARC Azure jsou závislé na následujících poskytovatelích prostředků Azure ve vašem předplatném, aby bylo možné tuto službu používat:
 
 * Microsoft. HybridCompute
 * Microsoft. GuestConfiguration
@@ -97,7 +97,7 @@ Skript pro automatizaci stahování, instalace a navázání připojení ke slu�
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Ověření připojení k Azure Arcu
 
-Po nainstalování agenta a jeho konfiguraci pro připojení k serverům s podporou Azure ARC (verze Preview) přejdete na Azure Portal a ověříte tak, že se server úspěšně připojil. Zobrazte počítač v [Azure Portal](https://aka.ms/hybridmachineportal).
+Po instalaci agenta a jeho konfiguraci pro připojení k serverům s podporou ARC Azure klikněte na Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte počítač v [Azure Portal](https://aka.ms/hybridmachineportal).
 
 :::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Úspěšné připojení k počítači" border="false":::
 
@@ -105,7 +105,7 @@ Po nainstalování agenta a jeho konfiguraci pro připojení k serverům s podpo
 
 Teď, když jste povolili hybridní počítač se systémem Linux nebo Windows a úspěšně jste se připojili ke službě, jste připraveni povolit Azure Policy pro pochopení dodržování předpisů v Azure.
 
-Další informace o tom, jak identifikovat počítač s povolenou službou Azure ARC (Preview), na kterém není nainstalovaný agent Log Analytics, najdete v tomto kurzu:
+Pokud chcete zjistit, jak identifikovat počítač s povolenou podporou ARC Azure, na kterém není nainstalovaný agent Log Analytics, přejděte k kurzu:
 
 > [!div class="nextstepaction"]
 > [Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy](tutorial-assign-policy-portal.md)

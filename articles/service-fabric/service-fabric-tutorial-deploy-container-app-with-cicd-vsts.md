@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak nastavit průběžnou integraci a n
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 498513d1e31108d633de8165b2684dffbebdf37d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326299"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
 
@@ -46,11 +46,11 @@ Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Sourc
 
 V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 
-![Nasdílení úložiště Git][push-git-repo]
+![Snímek obrazovky okna Team Explorer-synchronizace v aplikaci Visual Studio. V části push do Azure DevOps se zvýrazní tlačítko publikovat na úložiště Git.][push-git-repo]
 
 Ověřte svůj e-mail a v rozevíracím seznamu **účet** vyberte svou organizaci. Je možné, že budete muset nastavit organizaci, pokud ji ještě nemáte. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
 
-![Nasdílení úložiště Git][publish-code]
+![Snímek obrazovky okna push do Azure DevOps. Zvýrazní se nastavení pro E-mail, účet, název úložiště a tlačítko publikovat úložiště.][publish-code]
 
 Publikováním úložiště se ve vašem účtu vytvoří nový týmový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím týmovém projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte týmový projekt. Svůj kód můžete zobrazit na webu výběrem možnosti **Podívejte se na webu**.
 
@@ -158,7 +158,7 @@ Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v
 
 Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
 
-![Service Fabric Explorer][sfx1]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer Na kartě základy se zvýrazní verze aplikace "1.0.0.20170815.3".][sfx1]
 
 ## <a name="update-the-application"></a>Aktualizace aplikace
 
@@ -166,11 +166,11 @@ Proveďte v aplikaci změny kódu.  Podle předchozích kroků změny uložte a 
 
 Jakmile začne upgrade aplikace, můžete průběh upgradu sledovat v Service Fabric Exploreru:
 
-![Service Fabric Explorer][sfx2]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer Zpráva "probíhá upgrade" je zvýrazněna a stav aplikace je "upgrade".][sfx2]
 
 Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplikace používat další verzi.  V tomto příkladu verzi 1.0.0.20170815.4.
 
-![Service Fabric Explorer][sfx3]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer Na kartě základy je zvýrazněna aktualizovaná verze aplikace "1.0.0.20170815.4".][sfx3]
 
 ## <a name="next-steps"></a>Další kroky
 

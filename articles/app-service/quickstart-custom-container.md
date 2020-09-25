@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356413"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Spuštění vlastního kontejneru v Azure
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak nasadit aplikaci ASP.NET v imagi Window
 > App Service v kontejnerech Windows je ve verzi Preview.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -57,7 +57,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 1. Pokud se soubor _Dockerfile_ neotevře automaticky, otevřete ho z **Průzkumníka řešení**.
 
-1. Potřebujete [podporovanou nadřazenou image](#use-a-different-parent-image). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem a soubor uložíte:
+1. Potřebujete [podporovanou nadřazenou image](configure-custom-container.md#supported-parent-images). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem a soubor uložíte:
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -87,7 +87,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 ## <a name="create-a-windows-container-app"></a>Vytvoření aplikace typu kontejner pro Windows
 
-1. Přihlaste se na [Azure Portal]( https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal]( https://portal.azure.com).
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
@@ -169,28 +169,22 @@ Znovu [přejděte do aplikace typu kontejner](#browse-to-the-container-app). Po 
 
 ![Aktualizovaná webová aplikace v Azure](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>Použití jiné nadřazené image
-
-Pro spuštění vaší aplikace můžete použít jinou vlastní image Docker. Je však nutné zvolit správnou [nadřazenou Image (základní bitovou kopii)](https://docs.docker.com/develop/develop-images/baseimages/) pro rozhraní, které chcete:
-
-- K nasazení aplikací .NET Framework použijte nadřazenou bitovou kopii na základě verze Windows Server Core 2019 [(LTSC) (dlouhodobá údržba kanálu)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . 
-- Pokud chcete nasadit aplikace .NET Core, použijte nadřazenou bitovou kopii založenou na vydání Windows Server nano 1809 [(konzola pro správu)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
-
-Stažení nadřazené image při spuštění aplikace nějakou dobu trvá. Čas spuštění však můžete zkrátit použitím některé z následujících nadřazených imagí, které jsou již uložené v mezipaměti ve službě Azure App Service:
-
-- [MCR.Microsoft.com/DotNET/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – tento obrázek je základní kontejner používaný v Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) imagí Microsoft Windows nano serveru.
-
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Migrace na kontejner Windows v Azure](tutorial-custom-container.md)
+
+Nebo si prohlédněte další zdroje informací:
+
+> [!div class="nextstepaction"]
+> [Konfigurace vlastního kontejneru](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
 App Service v systému Linux poskytuje předdefinované zásobníky aplikací v systému Linux s podporou pro jazyky, jako je například .NET, PHP, Node.js a další. Můžete také použít vlastní image Dockeru a spouštět webovou aplikaci v zásobníku aplikací, který ještě není v Azure definovaný. V tomto rychlém startu se dozvíte, jak nasadit image z [Azure Container Registry](../container-registry/index.yml) (ACR) do App Service.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Účet Azure](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
@@ -225,7 +219,7 @@ docker --version
 
 Nakonec zajistěte, aby byl váš Azure Container Registry připojený. Pokud to chcete provést, vyberte na panelu aktivity logo Docker a pak přejděte do části **Registry**.
 
-![Registry](./media/quickstart-docker/registries.png)
+![Snímek obrazovky ukazuje hodnotu Registry s rozšířenou službou Azure a souborem s příponou tečka i o filename.](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>Nasaďte bitovou kopii na Azure App Service
 
@@ -260,5 +254,10 @@ Pak se podívejte na další rozšíření Azure.
 * [Nástroje Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 Nebo si je všechny nainstalujte pomocí balíčku rozšíření [nástroje Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) .
+
+Podívejte se na další zdroje informací:
+
+> [!div class="nextstepaction"]
+> [Konfigurace vlastního kontejneru](configure-custom-container.md)
 
 ::: zone-end

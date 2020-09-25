@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cfe440cb8ac98518547248485201b85dc0d0076d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542242"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356821"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Nasaďte a prozkoumejte aplikaci víceklientské SaaS, která používá model databáze na tenanta s Azure SQL Database
 
@@ -53,7 +53,7 @@ V krocích v této části zadáte hodnotu uživatele, která se používá k uj
 
 Vyberte si své názvy a napište je.
 
-### <a name="steps"></a>Kroky
+### <a name="steps"></a>Postup
 
 1. Pokud chcete v Azure Portal otevřít šablonu nasazení Database – SaaS pro jednotlivé klienty, vyberte **nasadit do Azure**.
 
@@ -128,7 +128,7 @@ Aplikace Wingtip používá k řízení distribuce příchozích žádostí slu�
 
     Části předchozího formátu jsou vysvětleny v následující tabulce.
 
-    | Část adresy URL        | Description       |
+    | Část adresy URL        | Popis       |
     | :-------------- | :---------------- |
     | události. Wingtip-DPT | Části události aplikace Wingtip.<br /><br /> *– DPT* rozlišuje implementaci lístků Wingtip *na základě databáze* z jiných implementací. Příklady jsou implementace s *jedním* z aplikací na tenanta (*-SA*) nebo *víceklientské databáze* (*-Mt*). |
     | . * &lt; Uživatel &gt; * | *AF1* v příkladu. |
@@ -225,7 +225,7 @@ Teď, když jste spustili zatížení pro kolekci tenantů, si podívejme na ně
 1. V [Azure Portal](https://portal.azure.com)přejděte do seznamu serverů SQL. Pak otevřete **Catalog-DPT- &lt; User &gt; ** Server.
     - Katalogový server obsahuje dvě databáze **tenantcatalog** a **basetenantdb** (databáze šablon, která je zkopírovaná k vytváření nových tenantů).
 
-   ![Databáze](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![Snímek obrazovky se stránkou přehled serveru katalogu, která obsahuje dvě databáze.](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Vraťte se do seznamu serverů SQL.
 

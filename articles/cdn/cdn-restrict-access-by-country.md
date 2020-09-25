@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358130"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Omezení obsahu Azure CDN podle země nebo oblasti
 
@@ -38,7 +38,7 @@ Pro **Azure CDN Premium ze profilů Verizon** je nutné pomocí portálu pro **s
 ### <a name="define-the-directory-path"></a>Definujte cestu k adresáři.
 Pokud chcete získat přístup k funkci geografického filtrování, vyberte koncový bod CDN na portálu a potom v části nastavení v nabídce na levé straně vyberte **geografická filtrování** . 
 
-![Standard geografického filtrování](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![Snímek obrazovky znázorňující geografické filtrování vybrané z nabídky pro koncový bod](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
 V poli **cesta** zadejte relativní cestu k umístění, do kterého budou mít uživatelé povolený nebo odepřený přístup. 
 
@@ -67,7 +67,7 @@ V seznamu **kódy země** vyberte země nebo oblasti, které chcete pro cestu za
 
 Po dokončení výběru zemí nebo oblastí vyberte **Uložit** a aktivujte nové pravidlo geografického filtrování. 
 
-![Pravidla geografického filtrování](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![Snímek obrazovky se zobrazí kódy zemí, které se použijí k blokování nebo povolení zemí nebo oblastí.](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud chcete pravidlo odstranit, vyberte ho ze seznamu na stránce **geografické filtrování** a pak zvolte **Odstranit**.
@@ -79,7 +79,7 @@ Pro **Azure CDN Premium od profilů Verizon** se uživatelské rozhraní pro vyt
 
 2. Na portálu Verizon vyberte možnost **http Velká**a pak vyberte **filtrování země**.
 
-    ![Standard geografického filtrování](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![Snímek obrazovky ukazuje, jak vybrat filtrování země v Azure C D N.](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
 3. Vyberte **Přidat filtr země**.
 
@@ -93,12 +93,12 @@ Pro **Azure CDN Premium od profilů Verizon** se uživatelské rozhraní pro vyt
     
     Nové pravidlo se zobrazí v tabulce na stránce **filtrování země** .
 
-    ![Pravidla geografického filtrování](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![Snímek obrazovky ukazuje, kde se pravidlo zobrazuje při filtrování země.](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 V tabulce pravidla filtrování země nebo oblasti vyberte ikonu Odstranit vedle pravidla, které chcete odstranit, nebo ikonu Upravit a upravte ji.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 * Změny v konfiguraci geografického filtrování se neprojeví okamžitě:
    * U profilů **Azure CDN Standard od Microsoftu** trvá šíření většinou 10 minut. 
    * V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 

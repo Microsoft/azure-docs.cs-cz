@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594255"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361037"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -766,7 +766,7 @@ V prohlížeči přejděte na IP adresu front-endu Azure Firewall a ověřte př
 Měla by se zobrazit hlasovací aplikace AKS. V tomto příkladu byla veřejná IP adresa brány firewall `52.253.228.132` .
 
 
-![AKS – hlas](media/limit-egress-traffic/aks-vote.png)
+![Snímek obrazovky zobrazuje hlasovací aplikaci A K S s tlačítky pro kočky, psy a Reset a součty.](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků

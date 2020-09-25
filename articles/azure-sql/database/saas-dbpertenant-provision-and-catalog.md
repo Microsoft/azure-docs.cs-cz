@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 368843cf9b6e59497fe00e69433ae0d14b3f3398
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb962efd4bcf82518a80eb120579db7835e7115c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356770"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Naučte se zřizovat nové klienty a registrovat je v katalogu.
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Aby bylo možné pochopit, jak aplikace Wingtip Tickets implementuje nové zřiz
 
 2. Chcete-li přidat zarážku, umístěte kurzor na libovolné místo na řádku, který říká *New-tenant*. Pak stiskněte F9.
 
-   ![Bodu](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
+   ![Snímek obrazovky se zvýrazněním nového tenanta, který je zvýrazněný pro přidání zarážky.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
 3. Pokud chcete skript spustit, stiskněte klávesu F5.
 

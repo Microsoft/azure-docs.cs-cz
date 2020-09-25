@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ca330357e88ff6f4824c74a6048769638542cc29
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278018"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Kurz: přiřazení role čtenářů adresáře ke skupině Azure AD a správa přiřazení rolí
 
@@ -55,7 +55,7 @@ Další informace o výhodách přiřazení role čtenáři adresáře ke skupin
 
 Chcete-li ověřit a spravovat vytvořenou skupinu, vraťte se zpět do podokna **skupiny** v Azure Portal a vyhledejte název skupiny. Další vlastníky a členy lze přidat do nabídky **vlastníci** a **Členové** v nastavení **Spravovat** po výběru skupiny. Můžete také zkontrolovat **přiřazené role** pro skupinu.
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="Azure-AD-Group-Created":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="Snímek obrazovky podokna skupiny s odkazy, které otevřou nabídky nastavení pro členy, vlastníky a přiřazené role (Preview) zvýrazněné.":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Přidat spravovanou identitu SQL Azure do skupiny
 
@@ -68,17 +68,17 @@ Pro následné kroky už správce globálního správce nebo privilegované role
 
 1. V Azure Portal vyhledejte název prostředku **spravované instance SQL** .
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="Azure-AD – spravovaná – instance":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="Snímek obrazovky spravované instance SQL s názvem instance SQL ssomitest a názvem podsítě ManagedInstance zvýrazněný.":::
 
    Během vytváření spravované instance SQL se pro vaši instanci vytvořila identita Azure. Vytvořená identita má stejný název jako předpona názvu spravované instance SQL. Instanční objekt pro identitu spravované instance SQL, který se vytvoří jako aplikace Azure AD, najdete pomocí následujících kroků:
 
     - Přejít na prostředek **Azure Active Directory** . V nastavení **Spravovat** vyberte **podnikové aplikace**. **ID objektu** je identita instance.
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="Azure-AD-Managed-instance-Service-Principal":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="Snímek obrazovky se stránkou podnikových aplikací pro Azure Active Directory prostředek s ID objektu spravované instance SQL zvýrazněný":::
 
 1. Přejít na prostředek **Azure Active Directory** . V části **spravováno**, přejít na **skupiny**. Vyberte skupinu, kterou jste vytvořili. V části **spravované** nastavení vaší skupiny vyberte **Členové**. Vyberte **přidat členy** a přidejte instanční objekt spravované instance SQL jako člena skupiny, a to tak, že vyhledáte výše uvedený název.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Azure-AD-přidat-spravovaná-instance-Service-Principal":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Snímek obrazovky se stránkou členů pro Azure Active Directory prostředek s možnostmi zvýrazněnými pro přidání spravované instance SQL jako nového člena.":::
 
 > [!NOTE]
 > Rozšíření oprávnění instančního objektu prostřednictvím systému Azure může trvat několik minut, než se povolí přístup k Graph APIům služby Azure AD. Možná budete muset několik minut počkat, než zřídíte správce Azure AD pro spravovanou instanci SQL.
