@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04ea73825d6ffe2282a8d5564bfb6bb965a8190e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320233"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
 
@@ -24,6 +24,7 @@ Následující partneři mají schválená klienta virtuální plochy Windows pr
 |Partner|Dokumentace k partnerům|Partnerská podpora|
 |:------|:--------------------|:--------------|
 |![Logo IGEL](./media/partners/igel.png)|[Dokumentace ke klientovi IGEL](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[Podpora IGEL](https://www.igel.com/support/)|
+|![Logo NComputing](./media/partners/ncomputing.png)|[Dokumentace ke klientovi NComputing](https://www.ncomputing.com/microsoft)|[Podpora NComputing](https://www.ncomputing.com/support/support-options)|
 |![Logo Stratodesk](./media/partners/stratodesk.png)|[Dokumentace ke klientovi Stratodesk](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Podpora Stratodesk](https://www.stratodesk.com/support-3/)|
 
 ## <a name="next-steps"></a>Další kroky

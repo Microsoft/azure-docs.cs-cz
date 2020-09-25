@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f01ef1a4cf5bc5b805da3dd4d825ef17f81ce53e
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 8b10dd2d87ab7d4cf41a0bf860798f27651294d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258995"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Kurz: ochrana a udělení přístupu k Node.js webovému rozhraní API z jednostránkové aplikace s Azure AD B2C
 
@@ -131,7 +131,7 @@ I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigu
 
 ### <a name="run-the-nodejs-web-api"></a>Spuštění Node.js webového rozhraní API
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node.js webového rozhraní API. Například:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node.js webového rozhraní API. Příklad:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -152,7 +152,7 @@ I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigu
 
 ### <a name="run-the-single-page-app"></a>Spuštění jednostránkové aplikace
 
-1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Například:
+1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Příklad:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp

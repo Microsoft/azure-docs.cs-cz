@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053282"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317612"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md) a teď podporuje další scénáře, které se dřív nepodporovaly.
@@ -37,7 +37,7 @@ Automatický upgrade je ve výchozím nastavení povolený pro následující:
 
 Aktuální stav automatického upgradu můžete zobrazit pomocí rutiny PowerShellu `Get-ADSyncAutoUpgrade` . Má následující stavy:
 
-| State | Komentář |
+| Stav | Komentář |
 | --- | --- |
 | Povoleno |Automatický upgrade je povolen. |
 | Dočasně blokován. |Nastaveno pouze systémem. Systém nemá v **současné době** nárok na příjem automatických upgradů. |
@@ -63,8 +63,8 @@ Je také možné získat výsledek, který není UpgradeResult, tj. "AADHealthEn
 
 Pak se ujistěte, že jste na proxy serveru nebo v bráně firewall otevřeli požadované adresy URL. Automatická aktualizace používá Azure AD Connect Health, jak je popsáno v [přehledu](#overview). Pokud používáte proxy server, ujistěte se, že stav byl nakonfigurován tak, aby používal [proxy server](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Také otestujte [připojení ke stavu](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) Azure AD.
 
-Po ověření připojení k Azure AD je čas na to, abyste se mohli podívat na protokol událostí. Spusťte prohlížeč událostí a podívejte se do protokolu událostí **aplikace** . Přidejte filtr EventLog pro zdroj **Azure AD Connect upgradujte** a rozsah id události **300-399**.  
-![Filtr protokolu událostí pro automatický upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+Po ověření připojení k Azure AD je čas na to, abyste se mohli podívat na protokol událostí. Spusťte prohlížeč událostí a podívejte se do protokolu událostí **aplikace** . Přidejte filtr EventLog pro zdroj **Azure AD Connect upgradujte** a rozsah ID události **300-399**.  
+![Snímek obrazovky, který zobrazuje okno "Filtrovat aktuální protokol" se "zdroji událostí" a zvýrazněným polem pro ID události zahrnutí/vyloučení.](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 Teď můžete zobrazit události související se stavem pro automatický upgrade.  
 ![Filtr protokolu událostí pro automatický upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  

@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319890"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect synchronizace: konfigurace upřednostňovaného umístění dat pro prostředky Microsoft 365
 Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá v Microsoft 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Microsoft 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
@@ -118,7 +118,7 @@ Ne všechny atributy služby Azure AD se importují do místního prostoru konek
 4. Ujistěte se, že zdrojový atribut, který jste vybrali k použití, je zaškrtnuté v seznamu atributů. Pokud atribut nevidíte, zaškrtněte políčko **Zobrazit vše** .
 5. Pokud ho chcete uložit, vyberte **OK**.
 
-![Snímek obrazovky dialogového okna Synchronization Service Manager a vlastnosti](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+![Snímek obrazovky, který zobrazuje dialogové okno Synchronization Service Manager a vlastnosti se zvýrazněným seznamem atributy.](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
 ## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Krok 4: přidání **preferredDataLocation** do schématu konektoru služby Azure AD
 **Tento krok je nutný jenom v případě, že používáte Connect verze 1.3.21 nebo starší. Pokud používáte 1.4.18 nebo novější, přejděte ke kroku 5.**  
@@ -184,7 +184,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | Pravda |
+    | cloudMastered | NOTEQUAL | Ano |
 
     Filtr oboru určuje, na které objekty služby Azure AD se toto pravidlo odchozí synchronizace použije. V tomto příkladu používáme stejný filtr pro vytváření oborů z "out do Azure AD – identita uživatele" OOB (dopředný) – pravidlo synchronizace. Zabraňuje použití synchronizačního pravidla pro **uživatelské** objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324246"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318292"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Aktivovat spuštění kanálu Machine Learning z aplikace logiky
 
@@ -94,3 +94,14 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
     > ![Nastavení HTTP](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. Vyberte **Uložit** a váš plán je teď připravený.
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace naleznete v tématech:
+
+> [!div class="nextstepaction"]
+> [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)
+
+* Další informace o [kanálech](concept-ml-pipelines.md)
+* Další informace o [prozkoumání Azure Machine Learning pomocí Jupyter](samples-notebooks.md)
+

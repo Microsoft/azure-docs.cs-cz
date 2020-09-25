@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e1718ac9a7b7fcaab096595ea7341fcc90c2ddd6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3906878755b7c7c2e3801da1bfa70a50d73ea16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422330"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318785"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databázemi, kontejnery a položkami v Azure Cosmos DB
 
@@ -39,15 +39,15 @@ S Azure Cosmos Database můžete pracovat s Azure Cosmos API, jak je popsáno v 
 
 | Operace | Azure CLI | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-|Zobrazit výčet všech databází| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | Není k dispozici | Není k dispozici |
-|Čtení databáze| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | Není k dispozici | Není k dispozici |
-|Vytvořit novou databázi| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | Není k dispozici | Není k dispozici |
-|Aktualizovat databázi| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | Není k dispozici | Není k dispozici |
+|Zobrazit výčet všech databází| Yes | Yes | Ano (databáze je namapována na místo na disku) | Yes | Není k dispozici | Není k dispozici |
+|Čtení databáze| Yes | Yes | Ano (databáze je namapována na místo na disku) | Yes | Není k dispozici | Není k dispozici |
+|Vytvořit novou databázi| Yes | Yes | Ano (databáze je namapována na místo na disku) | Yes | Není k dispozici | Není k dispozici |
+|Aktualizovat databázi| Yes | Yes | Ano (databáze je namapována na místo na disku) | Yes | Není k dispozici | Není k dispozici |
 
 
-## <a name="azure-cosmos-containers"></a>Kontejnery Azure Cosmos DB
+## <a name="azure-cosmos-containers"></a>Kontejnery Azure Cosmos
 
-Kontejner Azure Cosmos je jednotka škálovatelnosti pro zřízenou propustnost a úložiště. Kontejner je vodorovně rozdělený a pak replikován napříč více oblastmi. Položky, které přidáte do kontejneru a propustnost, kterou zřídíte, se automaticky distribuují napříč sadou logických oddílů na základě klíče oddílu. Další informace o dělení a klíčích oddílů naleznete v tématu [data oddílů](partition-data.md). 
+Kontejner Azure Cosmos je jednotka škálovatelnosti pro zřízenou propustnost a úložiště. Kontejner je vodorovně rozdělený a pak replikován napříč více oblastmi. Položky, které přidáte do kontejneru, se automaticky seskupí do logických oddílů, které jsou distribuované mezi fyzickými oddíly, a to na základě klíče oddílu. Propustnost na kontejneru je rovnoměrně rozložená napříč fyzickými oddíly. Další informace o dělení a klíčích oddílů naleznete v tématu [data oddílů](partition-data.md). 
 
 Když vytvoříte kontejner Azure Cosmos, nakonfigurujete propustnost v jednom z následujících režimů:
 
@@ -85,15 +85,15 @@ Kontejner Azure Cosmos obsahuje sadu vlastností definovaných systémem. V záv
 
 | Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné | Účel | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Generované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
-|\_značk | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
-|\_licence | Generované systémem | Poslední aktualizované časové razítko kontejneru | Ano | Ne | Ne | Ne | Ne |
-|\_samorozbalující | Generované systémem | Adresovatelný identifikátor URI kontejneru | Ano | Ne | Ne | Ne | Ne |
-|id | Uživatelsky konfigurovatelné | Uživatelsky definovaný jedinečný název kontejneru | Ano | Ano | Ano | Ano | Ano |
-|indexingPolicy | Uživatelsky konfigurovatelné | Poskytuje možnost změnit cestu indexu, typ indexu a režim indexu. | Ano | Ne | Ne | Ne | Ano |
-|TimeToLive | Uživatelsky konfigurovatelné | Poskytuje možnost automaticky odstraňovat položky z kontejneru po nastaveném časovém období. Podrobnosti najdete v tématu [Time to Live](time-to-live.md). | Ano | Ne | Ne | Ne | Ano |
-|changeFeedPolicy | Uživatelsky konfigurovatelné | Slouží ke čtení změn provedených u položek v kontejneru. Podrobnosti najdete v tématu [Změna kanálu](change-feed.md). | Ano | Ne | Ne | Ne | Ano |
-|uniqueKeyPolicy | Uživatelsky konfigurovatelné | Slouží k zajištění jedinečnosti jedné nebo více hodnot v logickém oddílu. Další informace najdete v tématu [omezení jedinečnosti klíčů](unique-keys.md). | Ano | Ne | Ne | Ne | Ano |
+|\_rid | Generované systémem | Jedinečný identifikátor kontejneru | Yes | No | No | No | No |
+|\_značk | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Yes | No | No | No | No |
+|\_licence | Generované systémem | Poslední aktualizované časové razítko kontejneru | Yes | No | No | No | No |
+|\_samorozbalující | Generované systémem | Adresovatelný identifikátor URI kontejneru | Yes | No | No | No | No |
+|id | Uživatelsky konfigurovatelné | Uživatelsky definovaný jedinečný název kontejneru | Yes | Yes | Yes | Yes | Yes |
+|indexingPolicy | Uživatelsky konfigurovatelné | Poskytuje možnost změnit cestu indexu, typ indexu a režim indexu. | Yes | No | No | No | Yes |
+|TimeToLive | Uživatelsky konfigurovatelné | Poskytuje možnost automaticky odstraňovat položky z kontejneru po nastaveném časovém období. Podrobnosti najdete v tématu [Time to Live](time-to-live.md). | Yes | No | No | No | Yes |
+|changeFeedPolicy | Uživatelsky konfigurovatelné | Slouží ke čtení změn provedených u položek v kontejneru. Podrobnosti najdete v tématu [Změna kanálu](change-feed.md). | Yes | No | No | No | Yes |
+|uniqueKeyPolicy | Uživatelsky konfigurovatelné | Slouží k zajištění jedinečnosti jedné nebo více hodnot v logickém oddílu. Další informace najdete v tématu [omezení jedinečnosti klíčů](unique-keys.md). | Yes | No | No | No | Yes |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Operace na kontejneru Azure Cosmos
 
@@ -101,11 +101,11 @@ Kontejner Azure Cosmos podporuje následující operace při použití kterékol
 
 | Operace | Azure CLI | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Zobrazení výčtu kontejnerů v databázi | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Čtení kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Vytvořit nový kontejner | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Aktualizace kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Odstranění kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Zobrazení výčtu kontejnerů v databázi | Yes | Yes | Yes | Yes | Není k dispozici | Není k dispozici |
+| Čtení kontejneru | Yes | Yes | Yes | Yes | Není k dispozici | Není k dispozici |
+| Vytvořit nový kontejner | Yes | Yes | Yes | Yes | Není k dispozici | Není k dispozici |
+| Aktualizace kontejneru | Yes | Yes | Yes | Yes | Není k dispozici | Není k dispozici |
+| Odstranění kontejneru | Yes | Yes | Yes | Yes | Není k dispozici | Není k dispozici |
 
 ## <a name="azure-cosmos-items"></a>Položky Azure Cosmos
 
@@ -121,12 +121,12 @@ Každá položka Azure Cosmos má následující vlastnosti definované systéme
 
 | Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné| Účel | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Generované systémem | Jedinečný identifikátor položky | Ano | Ne | Ne | Ne | Ne |
-|\_značk | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
-|\_licence | Generované systémem | Časové razítko poslední aktualizace položky | Ano | Ne | Ne | Ne | Ne |
-|\_samorozbalující | Generované systémem | Adresovatelný identifikátor URI položky | Ano | Ne | Ne | Ne | Ne |
-|id | Buď | Uživatelsky definovaný jedinečný název v logickém oddílu. | Ano | Ano | Ano | Ano | Ano |
-|Libovolné uživatelsky definované vlastnosti | Definované uživatelem | Uživatelsky definované vlastnosti reprezentované v rozhraní API – nativní reprezentace (včetně JSON, BSON a CQL) | Ano | Ano | Ano | Ano | Ano |
+|\_rid | Generované systémem | Jedinečný identifikátor položky | Yes | No | No | No | No |
+|\_značk | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Yes | No | No | No | No |
+|\_licence | Generované systémem | Časové razítko poslední aktualizace položky | Yes | No | No | No | No |
+|\_samorozbalující | Generované systémem | Adresovatelný identifikátor URI položky | Yes | No | No | No | No |
+|id | Kteroukoli | Uživatelsky definovaný jedinečný název v logickém oddílu. | Yes | Yes | Yes | Yes | Yes |
+|Libovolné uživatelsky definované vlastnosti | Definované uživatelem | Uživatelsky definované vlastnosti reprezentované v rozhraní API – nativní reprezentace (včetně JSON, BSON a CQL) | Yes | Yes | Yes | Yes | Yes |
 
 > [!NOTE]
 > Jedinečnost `id` vlastnosti je vynutila pouze v rámci každého logického oddílu. U více dokumentů může být stejná `id` vlastnost s různými hodnotami klíče oddílu.
@@ -137,7 +137,7 @@ Položky Azure Cosmos podporují následující operace. K provedení operací m
 
 | Operace | Azure CLI | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Vložení, nahrazení, odstranění, Upsert, čtení | Ne | Ano | Ano | Ano | Ano | Ano |
+| Vložení, nahrazení, odstranění, Upsert, čtení | No | Yes | Yes | Yes | Yes | Ano |
 
 ## <a name="next-steps"></a>Další kroky
 

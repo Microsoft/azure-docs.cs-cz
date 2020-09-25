@@ -1,14 +1,16 @@
 ---
 title: Skóre předpovědi – LUIS
 description: Skóre předpovědi indikuje stupeň spolehlivosti, který Služba LUIS API má pro výsledky předpovědi na základě utterance uživatele.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d836273e61752ff208133466016ce7c6ff9c28fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382363"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316456"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Skóre předpovědi označují přesnost předpovědi pro záměr a entity.
 
@@ -46,7 +48,7 @@ Kontrola skóre pro všechny záměry je dobrým způsobem, jak ověřit, že ne
 
 Pokud má více záměrů uzavřít skóre na základě kontextu utterance, LUIS může přepínat mezi záměry. Chcete-li tuto situaci opravit, pokračujte v přidávání projevy k jednotlivým záměrům s širší škálou kontextových rozdílů, nebo můžete mít klientskou aplikaci, jako je například robotka chatu, nastavit programovou volbu pro zpracování 2 nejdůležitějších záměrů.
 
-2 záměry, které jsou příliš pečlivě skóre, mohou Invertovat kvůli **nedeterministickému školení**. Nejvyšší skóre by se mohlo stát druhým nahoru a druhé horní skóre by mohlo být první horní skóre. Aby nedocházelo k této situaci, přidejte příklad projevy ke každému hornímu dvou záměrům pro daný utterance s volbou a kontextem pro Word, který rozlišuje 2 záměry. Oba záměry by měly mít stejný počet příkladů projevy. Pravidlo pro oddělení, které zabrání inverzi z důvodu školení, je o 15% rozdílu ve skórech.
+Z důvodu **nedeterministického trénování** může dojít k záměně 2 záměrů s příliš těsným skóre. Nejvyšší skóre by se mohlo stát druhým nahoru a druhé horní skóre by mohlo být první horní skóre. Aby nedocházelo k této situaci, přidejte příklad projevy ke každému hornímu dvou záměrům pro daný utterance s volbou a kontextem pro Word, který rozlišuje 2 záměry. Oba záměry by měly mít stejný počet příkladů projevy. Pravidlo pro oddělení, které zabrání inverzi z důvodu školení, je o 15% rozdílu ve skórech.
 
 **Nedeterministické školení** můžete vypnout [školením se všemi daty](luis-how-to-train.md#train-with-all-data).
 
@@ -60,7 +62,7 @@ Pokud váš chat robot vyžaduje konkrétní LUIS skóre k označení důvěry v
 
 ## <a name="e-exponent-notation"></a>Notaci E (exponent)
 
-Skóre předpovědi můžou používat notaci exponentů, který se _zobrazuje_ nad rozsahem 0-1 `9.910309E-07`, například. Toto skóre je označením velmi **malého** čísla.
+Skóre předpovědi můžou používat notaci exponentů, který se _zobrazuje_ nad rozsahem 0-1, například `9.910309E-07` . Toto skóre je označením velmi **malého** čísla.
 
 |Skóre zápisu E |Skutečné skóre|
 |--|--|

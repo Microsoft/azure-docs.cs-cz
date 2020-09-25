@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320009"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder
 
@@ -161,7 +161,7 @@ vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> Pro zdrojovou image musíte vždycky [zadat verzi](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), kterou nemůžete použít `latest` .
+> Pro zdrojovou image musíte vždycky [zadat verzi](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version), kterou nemůžete použít `latest` .
 > Pokud přidáte nebo změníte skupinu prostředků, do které je bitová kopie distribuována, musíte [nastavit oprávnění](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) pro skupinu prostředků.
  
 ## <a name="create-the-image"></a>Vytvoření image
@@ -179,13 +179,13 @@ az resource create \
 
 Po dokončení Tato akce vrátí zprávu o úspěchu zpět do konzoly a vytvoří `Image Builder Configuration Template` v `$imageResourceGroup` . Tento prostředek můžete zobrazit ve skupině prostředků v Azure Portal, pokud povolíte možnost Zobrazit skryté typy.
 
-Na pozadí vytvoří Tvůrce imagí také pracovní skupinu prostředků ve vašem předplatném. Tato skupina prostředků se používá pro sestavení image. Bude v tomto formátu:`IT_<DestinationResourceGroup>_<TemplateName>`
+Na pozadí vytvoří Tvůrce imagí také pracovní skupinu prostředků ve vašem předplatném. Tato skupina prostředků se používá pro sestavení image. Bude v tomto formátu: `IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
 > Pracovní skupinu prostředků nesmíte odstranit přímo. Nejprve odstraňte artefakt šablony imagí, což způsobí odstranění pracovní skupiny prostředků.
 
 Pokud služba ohlásí chybu během odesílání šablony konfigurace obrázku:
--  Projděte si tyto kroky pro [řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) . 
+-  Projděte si tyto kroky pro [řešení potíží](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors) . 
 - Před opakováním odeslání budete muset šablonu odstranit pomocí následujícího fragmentu kódu.
 
 ```azurecli-interactive
@@ -208,7 +208,7 @@ az resource invoke-action \
 
 Počkejte na dokončení sestavení. Tato možnost může trvat přibližně 15 minut.
 
-Pokud narazíte na nějaké chyby, přečtěte si prosím tyto kroky pro [řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) .
+Pokud narazíte na nějaké chyby, přečtěte si prosím tyto kroky pro [řešení potíží](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors) .
 
 
 ## <a name="create-the-vm"></a>Vytvoření virtuálního počítače

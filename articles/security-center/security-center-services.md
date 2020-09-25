@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cece53544bfc8287f6ef542575d92b05032991f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904712"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318037"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -45,7 +45,7 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Ano|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
 |[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
-|Vyhodnocení šifrování disku|✔|✔|-|Free|
+|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Free|
 |Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Free|
 |[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Free|
 
@@ -69,7 +69,7 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Ano|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Ano|
 |[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
-|Vyhodnocení šifrování disku|✔|✔|-|Free|
+|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Free|
 |Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Free|
 |[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Free|
 

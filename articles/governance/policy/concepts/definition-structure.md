@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330277"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -102,16 +102,19 @@ Ve většině případů doporučujeme nastavit **režim** na `all` . Všechny d
 
 `indexed` by měla být použita při vytváření zásad, které vysazují značky nebo umístění. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků** a **předplatná**. Definice zásad, které vynutily umístění nebo značky v rámci skupiny prostředků nebo předplatného, by měly nastavit **režim** na `all` a konkrétně cílit na `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` typ nebo. Příklad naleznete v tématu [Pattern: Tags-Sample #1](../samples/pattern-tags.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/management/tag-support.md).
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Režimy poskytovatele prostředků (Preview)
+### <a name="resource-provider-modes"></a>Režimy poskytovatele prostředků
 
-V současné době jsou podporovány následující režimy poskytovatele prostředků ve verzi Preview:
+Následující uzel poskytovatele prostředků je plně podporovaný:
+
+- `Microsoft.Kubernetes.Data` pro správu clusterů Kubernetes v systému Azure nebo mimo něj. Definice používající tento režim poskytovatele prostředků používají účinky _audit_, _Deny_a _disabled_. Použití efektu [EnforceOPAConstraint](./effects.md#enforceopaconstraint) je _zastaralé_.
+
+V současné době jsou podporovány následující režimy poskytovatele prostředků ve **verzi Preview**:
 
 - `Microsoft.ContainerService.Data` pro správu pravidel kontroleru přístupu pro [službu Azure Kubernetes](../../../aks/intro-kubernetes.md). Definice používající tento režim poskytovatele prostředků **musí** používat efekt [EnforceRegoPolicy](./effects.md#enforceregopolicy) . Tento režim je _zastaralý_.
-- `Microsoft.Kubernetes.Data` pro správu clusterů Kubernetes v systému Azure nebo mimo něj. Definice používající tento režim poskytovatele prostředků používají účinky _audit_, _Deny_a _disabled_. Použití efektu [EnforceOPAConstraint](./effects.md#enforceopaconstraint) se _už nepoužívá_.
 - `Microsoft.KeyVault.Data` pro správu trezorů a certifikátů v [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
-> Režimy poskytovatele prostředků podporují jenom integrované definice zásad a nepodporují iniciativy ve verzi Preview.
+> Režimy poskytovatele prostředků podporují pouze předdefinované definice zásad.
 
 ## <a name="metadata"></a>Metadata
 
@@ -552,9 +555,9 @@ Azure Policy podporuje následující typy účinku:
 - **Deny**: vygeneruje událost v protokolu aktivit a neuspěje požadavek.
 - **DeployIfNotExists**: nasadí související prostředek, pokud ještě neexistuje.
 - **Zakázáno**: nevyhodnotí prostředky pro dodržování předpisů pro pravidlo zásad.
-- **EnforceOPAConstraint** (Preview): konfiguruje Open Controller agent admissioning Controller s gatekeeper v3 pro samoobslužně spravované clustery Kubernetes v Azure (Preview).
-- **EnforceRegoPolicy** (Preview): konfiguruje Open Controller agent admissioning Controller s gatekeeper v2 ve službě Azure Kubernetes.
 - **Upravit**: Přidání, aktualizace nebo odebrání definovaných značek z prostředku
+- **EnforceOPAConstraint** (zastaralé): konfiguruje Open Controller agent admissioning Controller s gatekeeper v3 pro samoobslužně spravované clustery Kubernetes v Azure.
+- **EnforceRegoPolicy** (zastaralé): konfiguruje správce otevřeného agenta zásad přístupu s gatekeeper v2 ve službě Azure Kubernetes.
 
 Podrobné informace o každém z efektů, pořadí vyhodnocení, vlastností a příkladů najdete v tématu [principy Azure Policych efektů](effects.md).
 
@@ -592,6 +595,18 @@ Následující funkce jsou dostupné jenom v pravidlech zásad:
 - `requestContext().apiVersion`
   - Vrátí verzi rozhraní API žádosti, která aktivovala vyhodnocování zásad (například: `2019-09-01` ).
     Tato hodnota je verze rozhraní API, která se použila v požadavku PUT/PATCH k vyhodnocení při vytváření nebo aktualizaci prostředku. Nejnovější verze rozhraní API se vždycky používá během hodnocení dodržování předpisů u stávajících prostředků.
+- `policy()`
+  - Vrátí následující informace o vyhodnocené zásadě. K vlastnostem lze přistup z vráceného objektu (například: `[policy().assignmentId]` ).
+  
+  ```json
+  {
+    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+    "definitionReferenceId": "StorageAccountNetworkACLs"
+  }
+  ```
+  
   
 #### <a name="policy-function-example"></a>Příklad funkce zásad
 

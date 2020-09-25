@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329257"
 ---
 # <a name="public-ip-addresses"></a>Veřejné IP adresy
 
@@ -27,10 +27,10 @@ Veřejné IP adresy umožňují internetovým prostředkům příchozí komunika
 
 [Veřejná IP](virtual-network-public-ip-address.md) adresa v Azure Resource Manageru je prostředek, který má svoje vlastní vlastnosti. K některým prostředkům můžete přidružit prostředek veřejné IP adresy:
 
-* Síťová rozhraní virtuálního počítače
+* síťová rozhraní virtuálních počítačů,
 * Internetové nástroje pro vyrovnávání zatížení
 * VPN Gateway
-* Application Gateway
+* brány Application Gateway.
 * Brána Azure Firewall
 
 ## <a name="ip-address-version"></a>Verze IP adresy
@@ -62,7 +62,7 @@ Veřejné IP adresy standardní SKU:
 
 ### <a name="basic"></a>Základní
 
-Všechny veřejné IP adresy vytvořené před zavedením skladových položek jsou veřejné IP adresy základních SKU. 
+Všechny veřejné IP adresy vytvořené před zavedením položek SKU jsou základní SKU veřejných IP adres. 
 
 Když zadáváte SKU, určete, která SKU má být veřejná IP adresa. 
 
@@ -70,7 +70,7 @@ Adresy základní SKU:
 
 - Jsou přiřazované pomocí metody statického nebo dynamického přidělení.
 - Musí mít nastavitelný časový limit nečinnosti příchozího výstupního toku 4-30 minut, výchozí hodnota je 4 minuty a pevný časový limit odchozího pocházejícího toku je 4 minuty.
-- Jsou standardně otevřené.  K omezení příchozího a odchozího provozu se doporučuje použít skupiny zabezpečení sítě, ale není to nezbytné.
+- Jsou standardně otevřené.  Tyto skupiny jsou doporučené k omezení příchozího nebo odchozího provozu, ale nejsou povinné.
 - Přiřazen k jakémukoli prostředku Azure, ke kterému se dá přiřadit veřejná IP adresa, třeba:
     * Síťová rozhraní
     * Brány VPN Gateway
@@ -158,12 +158,19 @@ Další informace o skladových položkách nástroje pro vyrovnávání zatíž
 
 K VPN Gateway je přiřazena veřejná IP adresa, která umožňuje komunikaci se vzdálenou sítí. Službě VPN Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu úrovně Basic.
 
-## <a name="application-gateways"></a>Application Gateway
+## <a name="application-gateways"></a>brány Application Gateway.
 
 Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tak, že ji přiřadíte konfiguraci **front-endu** této brány. 
 
 * Přiřaďte konfiguraci front-endu služby Application Gateway v1 **dynamické** základní veřejné IP adresy. 
 * Přiřaďte **statickou** adresu Standard SKU pro konfiguraci front-endu v2.
+
+## <a name="azure-firewall"></a>Brána Azure Firewall
+
+[Azure firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) umožňuje vytvářet, vysazovat a protokolovat zásady pro připojení aplikací a sítí napříč předplatnými a virtuálními sítěmi.
+
+Pomocí brány firewall můžete přidružit pouze **statické** standardní veřejné IP adresy. To umožňuje, aby mimo brány firewall identifikovaly provoz pocházející z vaší virtuální sítě. 
+
 
 ## <a name="at-a-glance"></a>Přehledně
 
@@ -171,10 +178,11 @@ V následující tabulce je uvedena vlastnost, jejímž prostřednictvím je mo�
 
 | Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Static |
 | --- | --- | --- | --- |
-| Virtuální počítač |Síťové rozhraní |Ano |Ano |
-| Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
+| Virtuální počítač |Síťové rozhraní |Yes |Yes |
+| Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Yes |Yes |
 | VPN Gateway |Konfigurace protokolu IP brány |Yes |No |
 | Application Gateway |Konfigurace front-endu |Ano (jenom V1) |Ano (jenom v2) |
+| Brána Azure Firewall | Konfigurace front-endu | No | Yes|
 
 ## <a name="limits"></a>Omezení
 

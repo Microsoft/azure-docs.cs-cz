@@ -1,18 +1,18 @@
 ---
 title: Propojení s Čínou pomocí Azure Virtual WAN a zabezpečeného centra
-description: Seznamte se s automatizovaným škálovatelným připojením mezi větevmi, dostupnými oblastmi a partnery služby Virtual WAN.
+description: Naučte se, jak propojit s Čínou pomocí Azure Virtual WAN a zabezpečeného centra.
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d95330c14e0d088bdee03c0edbc2eb9d1deb12cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329223"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Propojení s Čínou pomocí Azure Virtual WAN a zabezpečeného centra
 

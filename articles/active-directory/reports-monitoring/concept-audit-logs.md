@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
+ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331246"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
 Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete k určení toho, jak vaše prostředí dělá.
+
+
 
 Architektura vytváření sestav se skládá z následujících součástí:
 
@@ -45,7 +47,7 @@ Tento článek vám poskytne přehled o sestavě auditu.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **monitorování** v **Azure Active Directory**možnost **protokoly auditu** . Všimněte si, že protokoly auditu můžou mít latenci až hodinu, takže může trvat dlouhou dobu, než se na portálu po dokončení úkolu zobrazí data o aktivitě auditu.
+Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **monitorování** v **Azure Active Directory**možnost **protokoly auditu** . 
 
 
 
@@ -58,19 +60,19 @@ Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující
 - cíl
 - iniciátor/aktér aktivity (kdo)
 
-![Protokoly auditu](./media/concept-audit-logs/listview.png "Protokoly auditu")
+![Protokoly auditování](./media/concept-audit-logs/listview.png "Protokoly auditu")
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Protokoly auditu](./media/concept-audit-logs/columns.png "Protokoly auditu")
+![Sloupce auditu](./media/concept-audit-logs/columns.png "Sloupce auditu")
 
 To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazená.
 
-![Protokoly auditu](./media/concept-audit-logs/columnselect.png "Protokoly auditu")
+![Odebrat pole](./media/concept-audit-logs/columnselect.png "Odebrat pole")
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Protokoly auditu](./media/concept-audit-logs/details.png "Protokoly auditu")
+![vybrat položku](./media/concept-audit-logs/details.png "Vybrat položku")
 
 
 ## <a name="filtering-audit-logs"></a>Filtrování protokolů auditu
@@ -85,7 +87,7 @@ Data auditu můžete filtrovat v následujících polích:
 - Spustil(a) (činitel)
 - Rozsah dat
 
-![Protokoly auditu](./media/concept-audit-logs/filter.png "Protokoly auditu")
+![Filter – objekt](./media/concept-audit-logs/filter.png "Filter – objekt")
 
 Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
@@ -124,8 +126,8 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - GroupManagement
 - KerberosDomain
 - Správa
-- Popisek
-- Jiné
+- Štítek
+- Další
 - PermissionGrantPolicy
 - Zásady
 - ResourceManagement
@@ -157,7 +159,7 @@ Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a
 
 Můžete si také stáhnout filtrovaná data, až 250 000 záznamů, a to tak, že vyberete tlačítko **Stáhnout** . Protokoly si můžete stáhnout buď ve formátu CSV, nebo ve formátu JSON. Počet záznamů, které si můžete stáhnout, je omezený o [Azure Active Directory zásady uchovávání sestav](reference-reports-data-retention.md).
 
-![Protokoly auditu](./media/concept-audit-logs/download.png "Protokoly auditu")
+![Stahování souborů](./media/concept-audit-logs/download.png "Stahování souborů")
 
 ## <a name="audit-logs-shortcuts"></a>Zástupci pro protokoly auditu
 
@@ -170,7 +172,7 @@ Kromě **Azure Active Directory** poskytuje web Azure Portal dva další vstupn�
 
 S použitím sestav auditu orientovaných na uživatele a skupiny můžete najít odpovědi na otázky tohoto typu:
 
-- Jaké typy aktualizací uživatelé použili?
+- Jaké typy aktualizací byly pro uživatele aplikovány?
 
 - Kolik uživatelů bylo změněno?
 
@@ -188,11 +190,11 @@ S použitím sestav auditu orientovaných na uživatele a skupiny můžete nají
 
 Chcete-li zkontrolovat pouze auditovaná data, která se vztahují k uživatelům, můžete filtrované zobrazení najít v části **protokoly auditu** v části **monitorování** na kartě **Uživatelé** . Tento vstupní bod má **UserManagement** jako předvybranou kategorii.
 
-![Protokoly auditu](./media/concept-audit-logs/users.png "Protokoly auditu")
+![Uživatel](./media/concept-audit-logs/users.png "Uživatel")
 
 Pokud chcete zkontrolovat jenom auditovaná data, která souvisí se skupinami, najdete filtrované zobrazení v části **protokoly auditu** v části **monitorování** na kartě **skupiny** . Tento vstupní bod má **GroupManagement** jako předvybranou kategorii.
 
-![Protokoly auditu](./media/concept-audit-logs/groups.png "Protokoly auditu")
+![Filtrovat skupiny](./media/concept-audit-logs/groups.png "Filtrovat skupiny")
 
 ### <a name="enterprise-applications-audit-logs"></a>Protokoly auditu podnikových aplikací
 
@@ -206,7 +208,7 @@ S použitím sestav auditu orientovaných na aplikace můžete najít odpovědi 
 
 Pokud chcete zkontrolovat data auditu související s vašimi aplikacemi, najdete filtrované zobrazení v části **protokoly auditu** v části **aktivita** v okně **podnikové aplikace** . Tento vstupní bod má jako **Typ aplikace**předvybranou možnost **podnikové aplikace** .
 
-![Protokoly auditu](./media/concept-audit-logs/enterpriseapplications.png "Protokoly auditu")
+![Podnikové aplikace](./media/concept-audit-logs/enterpriseapplications.png "Podnikové aplikace")
 
 ## <a name="microsoft-365-activity-logs"></a>Protokoly aktivit Microsoft 365
 

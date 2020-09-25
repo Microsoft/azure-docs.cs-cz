@@ -4,17 +4,17 @@ description: Protokolování a detekce hrozeb v Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 24ddca37a729a459382fc96a2f6e0ef1a7832f37
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059207"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295460"
 ---
-# <a name="security-control-logging-and-threat-detection"></a>Řízení zabezpečení: protokolování a detekce hrozeb
+# <a name="security-control-v2-logging-and-threat-detection"></a>Řízení zabezpečení v2: protokolování a detekce hrozeb
 
 Protokolování a detekce hrozeb pokrývá ovládací prvky pro detekci hrozeb v Azure a povolení, shromažďování a ukládání protokolů auditu pro služby Azure. To zahrnuje povolení zjišťování, vyšetřování a nápravy procesů s ovládacími prvky pro generování výstrah s vysokou kvalitou s nativní detekcí hrozeb ve službách Azure. zahrnuje také shromažďování protokolů s Azure Monitor, centralizaci analýzy zabezpečení s použitím Sentinel Azure, synchronizaci času a uchovávání protokolů. 
 
@@ -40,11 +40,11 @@ Kromě toho použijte Azure Sentinel k vytváření pravidel analýzy, které us
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -77,11 +77,11 @@ Azure Security Center může také upozorňovat na určité podezřelé aktivity
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -111,11 +111,11 @@ Povolte a Shromážděte protokoly o prostředcích skupiny zabezpečení sítě
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -129,7 +129,7 @@ Povolte a Shromážděte protokoly o prostředcích skupiny zabezpečení sítě
 |--|--|--|--|
 | LT-4 | 6,2, 6,3, 8,8 | AU-3, AU-12 |
 
-Povolte protokolování prostředků Azure tak, aby splňovalo požadavky na dodržování předpisů, detekci a vyšetřování hrozeb a loveckí hrozeb. 
+Povolte protokolování prostředků Azure tak, aby splňovalo požadavky na dodržování předpisů, detekci hrozeb, lov a vyšetřování incidentů. 
 
 Pomocí Azure Security Center a Azure Policy můžete povolit protokoly prostředků a data protokolů, která se shromažďují v prostředcích Azure, a získat tak přístup k protokolům auditu, zabezpečení a prostředků. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. 
 
@@ -141,9 +141,9 @@ Pomocí Azure Security Center a Azure Policy můžete povolit protokoly prostře
 
 **Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 Zabezpečení infrastruktury a koncových bodů 
 
@@ -171,7 +171,7 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -185,25 +185,25 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 |--|--|--|--|
 | LT – 6 | 6.4 | AU-3, AU-11 |
 
-Nakonfigurujte uchovávání protokolů podle dodržování předpisů, nařízení a dalších požadavků. 
+Nakonfigurujte uchovávání protokolů podle vašich požadavků na dodržování předpisů, nařízení a podnikových požadavků. 
 
 V Azure Monitor můžete nastavit dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte Azure Storage, Data Lake nebo Log Analytics účty pracovního prostoru pro dlouhodobé a archivační úložiště.
 
 - [Změnit dobu uchovávání dat v Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-Jak nakonfigurovat zásady uchovávání informací pro Azure Storage protokoly účtů: ttps://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 - [Azure Security Center upozornění a export doporučení](../../security-center/continuous-export.md)
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -225,7 +225,7 @@ Všechny protokoly generované prostředky v Azure poskytují časová razítka 
 
 **Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zásady a standardy](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

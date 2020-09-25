@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat fyzické počítače do Azure
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 7091d95a07da60faed7012df04c05def340df7b4
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2f9b3d43effff49da6aa348e22c0c974606f4c2b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376073"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296327"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -35,12 +35,12 @@ Tento kurz je třetí v řadě, který ukazuje, jak vyhodnocovat a migrovat fyzi
 > * Spusťte úplnou migraci do Azure.
 
 > [!NOTE]
-> Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu How to Azure Migrate.
+> Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. V těchto kurzech se v rámci možností používají jen výchozí možnosti a neuvádějí se všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v tématu How to Azure Migrate.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
@@ -50,7 +50,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 Připravte Azure na migraci pomocí migrace serveru.
 
-**Úkol** | **Podrobnosti**
+**Úloha** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka.
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
@@ -58,11 +58,11 @@ Připravte Azure na migraci pomocí migrace serveru.
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu
 
-1. V Azure Portal otevřete předplatné a vyberte **řízení přístupu (IAM)**.
+1. Na webu Azure Portal otevřete předplatné a vyberte **Řízení přístupu (IAM)** .
 2. V části **kontrolovat přístup**Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění.
 3. Měli byste mít oprávnění **Přispěvatel** nebo **Owner** .
-    - Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného.
-    - Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte roli.
+    - Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného.
+    - Pokud nejste vlastníkem předplatného, přidělte odpovídající roli ve spolupráci s vlastníkem.
 
 
 ### <a name="assign-azure-account-permissions"></a>Přiřazení oprávnění účtu Azure
@@ -120,7 +120,7 @@ Nastavte projekt Azure Migrate a potom do něj přidejte Nástroj pro migraci se
 3. V části **Přehled** klikněte na **Posoudit a migrovat servery**.
 4. V části **zjišťování, vyhodnocení a migrace serverů**klikněte na možnost **zhodnotit a migrovat servery**.
 
-    ![Zjišťování a vyhodnocení serverů](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
+    ![Zjištění a posouzení serverů](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
 
 5. V části **Zjistit, posoudit a migrovat servery** klikněte na **Přidat nástroje**.
 6. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
@@ -228,14 +228,14 @@ Teď vyberte počítače pro migraci.
 
 1. V Azure Migrate Project > **servery** **Azure Migrate: Migrace serveru**klikněte na **replikovat**.
 
-    ![Replikace virtuálních počítačů](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
+    ![Snímek obrazovky Azure Migrate-servery zobrazující tlačítko replikovat vybrané v Azure Migrate: Migrace serveru v části nástroje pro migraci.](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
 2. V případě **replikace**> **Nastavení zdroje**  >  **jsou vaše počítače virtualizované?** vyberte **nevirtualizované/jiné**.
 3. V části **místní zařízení**vyberte název zařízení Azure Migrate, které jste nastavili.
 4. V části **procesový Server**vyberte název zařízení replikace.
 6. V části **přihlašovací údaje hosta**vyberte během [instalace instalačního programu replikace](#download-the-replication-appliance-installer) prosím fiktivní účet, který jste dříve vytvořili, abyste službu mobility nainstalovali ručně (nabízená instalace není podporovaná). Pak klikněte na **Další: virtuální počítače**.   
 
-    ![Replikace virtuálních počítačů](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![Snímek obrazovky karty nastavení zdroje na obrazovce replikace se zvýrazněným polem pověření hosta](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 
 7. V **Virtual Machines**v části **Import nastavení migrace z posouzení**ponechte výchozí nastavení **Ne, nastavení migrace určíte ručně**.
 8. Ověřte každý virtuální počítač, který chcete migrovat. Pak klikněte na **Další: nastavení cíle**.
@@ -264,9 +264,9 @@ Teď vyberte počítače pro migraci.
     - **Skupina dostupnosti**: Určete skupinu dostupnosti, která se má použít.
 
 > [!NOTE]
->Pokud chcete pro sady virtuálních počítačů vybrat jinou možnost dostupnosti, pokračujte na krok 1 a po spuštění replikace pro jednu sadu virtuálních počítačů opakujte postup výběrem různých možností dostupnosti.
+> Pokud chcete pro sady virtuálních počítačů vybrat jinou možnost dostupnosti, pokračujte na krok 1 a po spuštění replikace pro jednu sadu virtuálních počítačů opakujte postup výběrem různých možností dostupnosti.
 
-    ![Compute settings](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
+   ![Nastavení výpočtů](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
 13. V části **disky**určete, jestli se mají disky virtuálních počítačů replikovat do Azure, a v Azure vyberte typ disku (standardní disk SSD/HDD nebo Premium Managed Disks). Potom klikněte na **Další**.
     - Disky můžete z replikace vyloučit.

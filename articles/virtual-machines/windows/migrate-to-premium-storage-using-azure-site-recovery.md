@@ -1,18 +1,18 @@
 ---
 title: Migrace virtuálních počítačů s Windows do Azure Premium Storage s využitím Azure Site Recovery
-description: Migrujte stávající virtuální počítače do Azure Premium Storage pomocí Site Recovery. Premium Storage nabízí podporu vysoce výkonných disků s nízkou latencí pro úlohy náročné na vstupně-výstupní operace běžící na Azure Virtual Machines.
+description: Naučte se migrovat disky virtuálních počítačů z účtu úložiště úrovně Standard na účet Premium Storage pomocí Azure Site Recovery.
 author: luywang
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 51fa0c063de106f627fc097910514e7c5416ee51
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320094"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
 
@@ -62,7 +62,7 @@ Toto jsou požadavky Azure pro tento scénář migrace:
 * Virtuální síť Azure, ke které se virtuální počítače připojí při jejich vytvoření při převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ta, ve které Site Recovery běží.
 * Účet úložiště Azure standard pro ukládání protokolů replikace. Může to být stejný účet úložiště pro disky virtuálních počítačů, které se migrují.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pochopení relevantních součástí scénáře migrace v předchozí části.
 * Naplánujte prostoje o [převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md).

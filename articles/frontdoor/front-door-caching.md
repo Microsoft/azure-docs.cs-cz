@@ -1,6 +1,6 @@
 ---
 title: Přední vrátka Azure – ukládání do mezipaměti | Microsoft Docs
-description: Tento článek vám pomůže pochopit, jak přední dveře Azure monitorují stav back-endu.
+description: Tento článek vám pomůže porozumět chování pro přední dveře pomocí pravidel směrování, která povolují ukládání do mezipaměti.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024277"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318450"
 ---
 # <a name="caching-with-azure-front-door"></a>Ukládání do mezipaměti s předními dvířky Azure
 Následující dokument určuje chování před dveřmi pomocí pravidel směrování s povoleným ukládáním do mezipaměti. Přední dvířka jsou moderní Content Delivery Network (CDN), a to společně s akcelerací a vyrovnáváním zatížení na dynamickém webu, ale také podporuje chování ukládání do mezipaměti stejně jako jakékoli jiné CDN.
@@ -29,7 +29,7 @@ Přední dveře Azure poskytují velké soubory bez Cap k velikosti souborů. P�
 </br>Pokud chcete získat další informace o požadavku na rozsah bajtů, přečtěte si [dokument RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
 Přední dveře ukládá do mezipaměti všechny bloky, jak jsou přijaty, a takže celý soubor není nutné ukládat do mezipaměti na front-dveřích. Následné požadavky na rozsahy souborů nebo bajtů jsou obsluhovány z mezipaměti. Pokud nejsou všechny bloky dat uložené v mezipaměti, pro vyžádání bloků dat z back-endu se používá předběžné načítání. Tato optimalizace spoléhá na schopnost back-endu podporovat požadavky na rozsah bajtů; Pokud back-end nepodporuje požadavky na rozsah bajtů, tato optimalizace se neprojeví.
 
-## <a name="file-compression"></a>Komprese souborů
+## <a name="file-compression"></a>Komprese souboru
 Přední dvířka můžou dynamicky Komprimovat obsah na hranici, což vede k menší a rychlejší reakci na vaše klienty. Všechny soubory mají nárok na kompresi. Soubor musí mít ale typ MIME, který je vhodný pro seznam komprese. V současné době přední dveře neumožňují změnu tohoto seznamu. Aktuální seznam je:</br>
 - "Application/EOT"
 - "Application/Font"
@@ -113,7 +113,7 @@ Následující pořadí hlaviček se používá k určení, jak dlouho bude polo
 2. Řízení mezipaměti: max. stáří =\<seconds>
 3. Expires \<http-date>
 
-Hlavičky odpovědí, které určují, že odpověď nebude ukládána do mezipaměti, jako je například řízení mezipaměti: soukromé, Cache-Control: no-cache a Cache-Control: No-Store se nerespektuje. Pokud je ale pro stejnou adresu URL víc požadavků za letu na jednom místě, můžou tuto odpověď sdílet. Pokud není k dispozici žádný ovládací prvek Cache-Control, znamená to, že AFD bude prostředek ukládat do mezipaměti za X dobu, kdy je X náhodně vyskladněno mezi 1 až 3 dny.
+Hlavičky odpovědí, které určují, že odpověď nebude ukládána do mezipaměti, jako je například řízení mezipaměti: soukromé, Cache-Control: no-cache a Cache-Control: No-Store se nerespektuje.  Pokud není k dispozici žádný ovládací prvek Cache-Control, znamená to, že AFD bude prostředek ukládat do mezipaměti za X dobu, kdy je X náhodně vyskladněno mezi 1 až 3 dny.
 
 ## <a name="request-headers"></a>Hlavičky požadavku
 

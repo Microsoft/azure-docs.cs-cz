@@ -4,12 +4,12 @@ description: Přečtěte si o podpoře migrace fyzického serveru v Azure Migrat
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 95456298b3275c83152115d700a4539cab2d2a67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318156"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Matice podpory pro migraci fyzických serverů
 
@@ -42,11 +42,11 @@ Tabulka shrnuje podporu pro fyzické servery, které chcete migrovat pomocí mig
 **Systém souborů Linux/úložiště hostů** | Nejnovější informace najdete v části [Podpora systému souborů Linux](../site-recovery/vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) pro Site Recovery. Azure Migrate poskytuje stejnou podporu systému souborů Linux.
 **Síť/úložiště** | Nejnovější informace najdete v části požadavky na [síť](../site-recovery/vmware-physical-azure-support-matrix.md#network) a [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#storage) pro Site Recovery. Azure Migrate poskytuje identické požadavky na síť a úložiště.
 **Požadavky na Azure** | Nejnovější informace najdete v části požadavky na [síť](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)a [výpočetní](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) prostředky Azure pro Site Recovery. Azure Migrate má stejné požadavky na migraci fyzického serveru.
-**Služba mobility** | Na každý počítač, který chcete migrovat, musí být nainstalovaný agent služby mobility.
-**Spouštění UEFI** | Migrovaný počítač v Azure se automaticky převede na virtuální počítač s spouštěcím rozhraním systému BIOS. Podporován je pouze server se systémem Windows Server 2012 a novějším.<br/><br/> Disk s operačním systémem by měl mít až čtyři oddíly a svazky by měly být naformátované pomocí systému souborů NTFS.
+**Služba Mobility** | Na každý počítač, který chcete migrovat, musí být nainstalovaný agent služby mobility.
+**Spouštění UEFI** | Podporuje se. Počítače založené na rozhraní UEFI se migrují na virtuální počítače Azure generace 2.  <br/><br/> Disk s operačním systémem by měl mít až čtyři oddíly a svazky by měly být naformátované pomocí systému souborů NTFS.
 **Rozhraní UEFI – zabezpečené spouštění**         | Migrace se nepodporuje.
 **Cílový disk** | Počítače se dají migrovat jenom na spravované disky (standardní pevný disk, Standard SSD, Premium SSD) v Azure.
-**Velikost disku** | 2 TB disk s operačním systémem; 8 TB pro datové disky.
+**Velikost disku** | 2 TB disk s operačním systémem (spouštěcí počítač BIOS); 4 TB disk s operačním systémem (spouštění UEFI); 8 TB pro datové disky.
 **Omezení disku** |  Až 63 disků na počítač.
 **Šifrované disky/svazky** |  Počítače se zašifrovanými disky/svazky se pro migraci nepodporují.
 **Cluster sdíleného disku** | Nepodporováno

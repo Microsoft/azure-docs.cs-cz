@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 40549fa8880fb4dc4d29046b0037621610f0b130
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544179"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331153"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Kurz: Konfigurace Foodee pro Automatické zřizování uživatelů
 
@@ -104,13 +104,13 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
     ![Odkaz Foodee v seznamu aplikací](common/all-applications.png)
 
-1. Vyberte kartu **zřizování** .
+1. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
 1. V rozevíracím seznamu **režim zřizování** vyberte **automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 1. V části **přihlašovací údaje správce**postupujte takto:
 
@@ -171,4 +171,4 @@ Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat p
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

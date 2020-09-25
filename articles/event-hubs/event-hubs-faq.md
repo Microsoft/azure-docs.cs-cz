@@ -3,12 +3,12 @@ title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aa108d961fca3819b0747332c363b324c05b7994
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883390"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318496"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -97,10 +97,10 @@ Pokud používáte **redundanci zóny** pro svůj obor názvů, musíte provést
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
     > [!NOTE]
     > IP adresa vrácená `nslookup` příkazem není statická IP adresa. Zůstává ale konstantní, dokud se základní nasazení neodstraní nebo nepřesune do jiného clusteru.
-3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
 ### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Kde najdu adresu IP klienta při posílání nebo přijímání zpráv do mého oboru názvů?
 Nejdřív v oboru názvů povolte [filtrování IP adres](event-hubs-ip-filtering.md) . 

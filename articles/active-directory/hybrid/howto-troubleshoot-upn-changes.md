@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279784"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319839"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Plánování a odstraňování potíží se změnami hlavního názvu uživatele v Azure Active Directory
 
@@ -94,7 +94,7 @@ Podívejte se na známé problémy a alternativní řešení v tomto dokumentu.
 
 Při synchronizaci uživatelských účtů ze služby Active Directory do Azure AD zajistěte, aby se UPN ve službě Active Directory mapovaly na ověřené domény ve službě Azure AD.
 
-![Snímek obrazovky ověřených domén](./media/howto-troubleshoot-upn-changes/verified-domains.png)
+![Snímek obrazovky zobrazující příklady názvů UPN mapovaných k ověřeným doménám Azure A D](./media/howto-troubleshoot-upn-changes/verified-domains.png)
 
 Pokud hodnota atributu userPrincipalName neodpovídá ověřené doméně ve službě Azure AD, proces synchronizace nahradí příponu výchozí hodnotou. onmicrosoft.com.
 

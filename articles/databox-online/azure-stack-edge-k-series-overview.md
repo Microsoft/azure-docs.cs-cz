@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 20efae411ae4d2fae9bf3b5e69dbfdd98da1603a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318551"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Co je Azure Stack hraniční Mini R?
 
-Azure Stack hraniční Mini R je řešení typu hardware jako služba. Společnost Microsoft dodává robustní, cloudově spravované a vysoce přenosné zařízení s vestavěnou výpočetní jednotkou (VPU), která umožňuje akcelerované AI-Inferencing a má všechny možnosti brány síťového úložiště. Tato zařízení jsou vhodná pro použití v prostředích harshest a jsou optimalizovaná pro AI, analýzu a výpočetní výkon serveru.
+Azure Stack hraniční Mini R je vysoce přenosné, robustní a hraniční výpočetní zařízení navržené pro použití v prostředích Harsh. Azure Stack hraniční Mini R se doručuje jako řešení typu hardware jako služba. Společnost Microsoft si dodává cloudové zařízení, které funguje jako brána síťového úložiště, a má integrovanou VPU (Vision Processing Unit), která umožňuje akcelerovanou AI-Inferencing.
 
 Tento článek vám poskytne přehled o Azure Stackovém minimu řešení R, klíčovým funkcím a scénářích, kde můžete nasadit toto zařízení.
 
@@ -26,9 +26,9 @@ Tento článek vám poskytne přehled o Azure Stackovém minimu řešení R, kl�
 
 Azure Stack hraniční Mini R má následující možnosti:
 
-|Schopnost |Description  |
+|Schopnost |Popis  |
 |---------|---------|
-|Robustní hardware| Robustní hardware určený pro harshest prostředí.|
+|Robustní hardware| Robustní hardware určený pro Harsh prostředí.|
 |Ultra Portable| Ultra Portable, formulář založený na baterii.|
 |Spravované v cloudu|Zařízení a služba se spravují prostřednictvím Azure Portal.|
 |Výpočetní úlohy hraničních procesů|Umožňuje analýzu, zpracování a filtrování dat.<br>Podporuje virtuální počítače a kontejnerové úlohy. |
@@ -36,7 +36,7 @@ Azure Stack hraniční Mini R má následující možnosti:
 |Drátové a bezdrátové sítě | Povoluje přenos drátových a bezdrátových dat.|
 |Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
 |Odpojený režim|  Zařízení a službu je možné volitelně spravovat prostřednictvím centra Azure Stack. Nasaďte, spouštějte a spravujte aplikace v offline režimu. <br> Odpojený režim podporuje scénáře nahrání v režimu offline.|
-|Podporované protokoly     |Podporuje standardní protokoly SMB, NFS a REST pro přijímání dat. <br> Další informace o podporovaných verzích najdete v [Azure Stackch Mini R požadavky na systém](azure-stack-edge-gpu-system-requirements.md).|
+|Podporované protokoly pro přenos souborů      |Podporuje standardní protokoly SMB, NFS a REST pro přijímání dat. <br> Další informace o podporovaných verzích najdete v [Azure Stackch Mini R požadavky na systém](azure-stack-edge-gpu-system-requirements.md).|
 |Aktualizace dat     | Možnost aktualizovat místní soubory pomocí nejnovějších souborů z cloudu.|
 |Dvojité šifrování    | Použití samočinně zašifrovaného disku poskytuje první vrstvu šifrování. SÍŤ VPN poskytuje druhou vrstvu šifrování. Podpora BitLockeru pro místně zašifrování dat a zabezpečení přenosu dat do cloudu přes *https* .|
 |Omezení šířky pásma| Omezí omezení využití šířky pásma během špičky.|
@@ -60,13 +60,13 @@ Tady jsou různé scénáře, kdy Azure Stack hraniční Mini R je možné použ
 
 Řešení Azure Stack Edge Mini R se skládá z Azure Stack hraničního prostředku, Azure Stack hraničního a nerobustního, Ultra přenosného fyzického zařízení a místního webového uživatelského rozhraní.
 
-* **Azure Stack hraniční Mini R fyzické zařízení** – ultra přenosné zařízení s integrovaným baterií a robustním encasing poskytnutým společností Microsoft, které se dá nakonfigurovat tak, aby odesílalo data do Azure. Zařízení s baterií se vyváží méně než 7 kg.
+* **Azure Stack hraničních zařízení na Mini R** – ultra přenosné, robustní, výpočetní a úložné zařízení dodávané Microsoftem. Zařízení má baterii na desce a váží méně než 7 kg.
 
     ![Azure Stack hraničních zařízení v R](media/azure-stack-edge-k-series-overview/perspective-view-1.png)
 
 * **Prostředek Azure Stack Edge** – prostředek v Azure Portal, který vám umožní spravovat robustní, Azure Stack hraniční Mini zařízení R z webového rozhraní, ke kterému můžete přistupovat z různých geografických umístění. Pomocí Azure Stackho hraničního prostředku můžete vytvářet a spravovat prostředky, zobrazovat a spravovat zařízení a výstrahy a spravovat sdílené složky.  
 
-* **Azure Stack hraniční Mini R lokální webové uživatelské rozhraní** – pomocí místního webového uživatelského rozhraní pro počáteční konfiguraci zařízení spusťte diagnostiku, vypněte a znovu spusťte Azure Stack hraničního zařízení R, zobrazte kopírování protokolů a kontaktujte podpora Microsoftu a zaznamenejte žádost o službu.
+* **Azure Stackí hraničních zařízení – místní webové uživatelské** rozhraní – místní uživatelské rozhraní založené na prohlížeči na Azure Stack hraničních zařízeních v programu r je primárně určeno pro počáteční konfiguraci zařízení. Pomocí místního webového uživatelského rozhraní můžete spustit diagnostiku, vypnout a restartovat zařízení Azure Stack Edge pro, zobrazit kopírování protokolů a kontaktovat podpora Microsoftu a požádat o soubor žádosti o službu.
 
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
@@ -74,6 +74,8 @@ Tady jsou různé scénáře, kdy Azure Stack hraniční Mini R je možné použ
 Azure Stack fyzické zařízení, které je na hraničních zařízeních, a cílový účet úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
 
 - **Dostupnost prostředků** – seznam všech oblastí, ve kterých je prostředek Azure Stack Edge dostupný, najdete v části [produkty Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). 
+
+- **Dostupnost zařízení** – seznam všech zemí, ve kterých je k dispozici Azure Stack hraniční Mini r zařízení, najdete v části dostupnost na kartě Azure Stack Edge Mini r pro [Azure Stack ceny na Mini r](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeMiniR).
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých se ukládají účty úložiště Azure Stack data o minim R, se nacházejí blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
 

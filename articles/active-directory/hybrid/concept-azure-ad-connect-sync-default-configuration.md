@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295222"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace služby Azure AD Connect: Principy výchozí konfigurace
 Tento článek vysvětluje předem připravená konfigurační pravidla. Dokumentuje pravidla a způsob, jakým tato pravidla ovlivňují konfiguraci. Také vás provede výchozí konfigurací Azure AD Connect synchronizace. Cílem je, aby čtenář pochopil, jak model konfigurace s názvem deklarativní zřizování funguje v reálném příkladu. V tomto článku se předpokládá, že jste už nainstalovali a nakonfigurovali Azure AD Connect synchronizaci pomocí Průvodce instalací nástroje.
@@ -160,7 +160,7 @@ Můžete také zjistit, že se toto pravidlo synchronizace používá pro synchr
 #### <a name="scoping-filter"></a>Filtr oboru
 Oddíl filtr oboru se používá ke konfiguraci, kdy se má pravidlo synchronizace vztahovat. Vzhledem k tomu, že název synchronizačního pravidla, které se chystáte, by měl být použit pouze pro povolené uživatele, je rozsah nakonfigurován tak, aby mohl uživatel **s atributem** AD bez tohoto nastavení obsahovat bit 2. Když synchronizační modul najde uživatele ve službě AD, použije toto pravidlo synchronizace, **Pokud je uživatel** nastavený na desítkovou hodnotu 512 (povoleno normálnímu uživateli). Toto pravidlo neplatí, pokud má **uživatel nastaveno na hodnotu 514** (zakázaný normální uživatel).
 
-![Karta obor v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Snímek obrazovky, který zobrazuje část "filtr oboru" v okně Upravit pravidlo příchozí synchronizace.](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Filtr oboru má skupiny a klauzule, které mohou být vnořené. Aby bylo možné použít synchronizační pravidlo, musí být splněny všechny klauzule uvnitř skupiny. Pokud je definováno více skupin, musí být pro pravidlo splněna aspoň jedna skupina. To znamená, že logická nebo je vyhodnocena mezi skupinami a logickou a je vyhodnocena uvnitř skupiny. Příklad této konfigurace najdete v odchozím synchronizačním pravidle z protokolu **AAD – připojení ke skupině**. Existuje několik skupin filtru synchronizace, například jeden pro skupiny zabezpečení ( `securityEnabled EQUAL True` ) a jeden pro distribuční skupiny ( `securityEnabled EQUAL False` ).
 

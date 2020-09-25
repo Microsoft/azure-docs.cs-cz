@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: bae6e9f04eced02130ae628d5308a87a1baaa8fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a5bab13dbaa5715aa8dd34e41aba34ce62557a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947292"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329524"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Rychlý Start: vytvoření Azure Database for MySQL flexibilního serveru pomocí Azure CLI
 
@@ -28,17 +28,17 @@ V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazov
 
 Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to tak, že kliknete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a vyberte **ENTER** pro spuštění.
 
-Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 
 ```azurecli-interactive
 az login
 ```
 
-Pomocí příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list).
+Pomocí příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](https://docs.microsoft.com/cli/azure/account#az-account-list).
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -46,13 +46,13 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>Vytvoření flexibilního serveru
 
-Pomocí příkazu vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) `az group create` a pak v této skupině prostředků vytvořte svůj flexibilní Server MySQL. Měli byste zadat jedinečný název. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
+Pomocí příkazu vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) `az group create` a pak v této skupině prostředků vytvořte svůj flexibilní Server MySQL. Měli byste zadat jedinečný název. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `eastus2`.
 
 ```azurecli-interactive
-az group create --name myresourcegroup --location westus
+az group create --name myresourcegroup --location eastus2
 ```
 
-Pomocí příkazu vytvořte flexibilní server `az mysql flexible-server create` . Server může obsahovat více databází. Následující příkaz vytvoří server pomocí výchozího nastavení služby a hodnot z [místního kontextu](https://docs.microsoft.com/cli/azure/local-context?view=azure-cli-latest)rozhraní příkazového řádku Azure. 
+Pomocí příkazu vytvořte flexibilní server `az mysql flexible-server create` . Server může obsahovat více databází. Následující příkaz vytvoří server pomocí výchozího nastavení služby a hodnot z [místního kontextu](https://docs.microsoft.com/cli/azure/local-context)rozhraní příkazového řádku Azure. 
 
 ```azurecli
 az mysql flexible-server create
@@ -66,7 +66,35 @@ Vytvořený server má následující atributy:
 > [!NOTE] 
 > Po vytvoření serveru se metoda připojení nedá změnit. Pokud jste například vybrali *privátní přístup (Integration VNET)* během vytváření, pak po vytvoření se nemůžete změnit na *veřejný přístup (povolených IP adres)* . Důrazně doporučujeme vytvořit server s privátním přístupem k zabezpečenému přístupu k serveru pomocí integrace virtuální sítě. Přečtěte si další informace o privátním přístupu v [článku koncepty](./concepts-networking.md).
 
-Pokud chcete změnit výchozí nastavení, přečtěte si referenční dokumentaci k Azure CLI. <!--FIXME --> Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku. 
+Pokud chcete změnit výchozí nastavení, přečtěte si v [referenční dokumentaci](/cli/azure/mysql/flexible-server) k Azure CLI úplný seznam KONFIGUROVATELNÝCH parametrů CLI. 
+
+Níže je uvedený ukázkový výstup: 
+
+```json
+Command group 'mysql flexible-server' is in preview. It may be changed/removed in a future release.
+Creating Resource Group 'groupXXXXXXXXXX'...
+Creating new vnet "serverXXXXXXXXXVNET" in resource group "groupXXXXXXXXXX"...
+Creating new subnet "serverXXXXXXXXXSubnet" in resource group "groupXXXXXXXXXX" and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
+Creating MySQL Server 'serverXXXXXXXXX' in group 'groupXXXXXXXXXX'...
+Your server 'serverXXXXXXXXX' is using sku 'Standard_B1ms' (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating MySQL database 'flexibleserverdb'...
+Make a note of your password. If you forget, you would have to reset your password with 'az mysql flexible-server update -n serverXXXXXXXXX -g groupXXXXXXXXXX -p <new-password>'.
+{
+  "connectionString": "server=serverXXXXXXXXX.mysql.database.azure.com;database=flexibleserverdb;uid=secureusername;pwd=securepasswordstring",
+  "databaseName": "flexibleserverdb",
+  "host": "serverXXXXXXXXX.mysql.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/groupXXXXXXXXXX/providers/Microsoft.DBforMySQL/flexibleServers/serverXXXXXXXXX",
+  "location": "East US 2",
+  "password": "securepasswordstring",
+  "resourceGroup": "groupXXXXXXXXXX",
+  "skuname": "Standard_B1ms",
+  "subnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/groupXXXXXXXXXX/providers/Microsoft.Network/virtualNetworks/serverXXXXXXXXXVNET/subnets/serverXXXXXXXXXSubnet",
+  "username": "secureusername",
+  "version": "5.7"
+}
+```
+
+Pokud chcete změnit výchozí nastavení, přečtěte si v [referenční dokumentaci](/cli/azure/mysql/flexible-server) k Azure CLI úplný seznam KONFIGUROVATELNÝCH parametrů CLI. 
 
 > [!NOTE]
 > Připojení ke službě Azure Database for MySQL komunikují přes port 3306. Pokud se pokoušíte připojit z podnikové sítě, odchozí provoz přes port 3306 nemusí být povolený. V takovém případě se k serveru nemůžete připojit, dokud vaše IT oddělení neotevře port 3306.
@@ -79,33 +107,35 @@ Pokud se chcete připojit k serveru, budete muset zadat informace o hostiteli a 
 az mysql flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin**.
+Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin**. Níže je ukázka výstupu JSON: 
 
-<!--FIXME-->
 ```json
 {
-  "administratorLogin": "myadmin",
-  "earliestRestoreDate": null,
+  "administratorLogin": "myadminusername",
+  "administratorLoginPassword": null,
+  "delegatedSubnetArguments": {
+    "subnetArmResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/mydemoserverVNET/subnets/mydemoserverSubnet"
+  },
   "fullyQualifiedDomainName": "mydemoserver.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforMySQL/flexibleServers/mydemoserver",
-  "location": "westus",
+  "location": "East US 2",
   "name": "mydemoserver",
+  "publicNetworkAccess": "Disabled",
   "resourceGroup": "myresourcegroup",
   "sku": {
-    "capacity": 1,
+    "capacity": 0,
     "name": "Standard_B1ms",
-    "size": null,
     "tier": "Burstable"
   },
-  "publicAccess": "Enabled",
   "storageProfile": {
     "backupRetentionDays": 7,
-    "geoRedundantBackup": "Disabled",
-    "storageMb": 5120
+    "fileStorageSkuName": "Premium_LRS",
+    "storageAutogrow": "Disabled",
+    "storageIops": 0,
+    "storageMb": 10240
   },
   "tags": null,
   "type": "Microsoft.DBforMySQL/flexibleServers",
-  "userVisibleState": "Ready",
   "version": "5.7"
 }
 ```

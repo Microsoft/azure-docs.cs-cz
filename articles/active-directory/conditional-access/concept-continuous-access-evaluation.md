@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266055"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -66,8 +66,8 @@ Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k firemním s
 
 | | Webové aplikace Office | Aplikace Office Win32 | Office pro iOS | Office pro Android | Office pro Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Podporováno | Podporováno | Nepodporuje se | Podporováno | Podporováno |
-| **Exchange Online** | Podporováno | Podporováno | Nepodporuje se | Podporováno | Podporováno |
+| **SharePoint Online** | Nepodporuje se | Podporováno | Podporováno | Podporováno | Podporováno |
+| **Exchange Online** | Nepodporuje se | Podporováno | Podporováno | Podporováno | Podporováno |
 
 ### <a name="client-side-claim-challenge"></a>Výzva k deklaracím na straně klienta
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ed19b9dae179c3e4fe89a9ce28df4ad0cd080af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e35366e35fc127057020906ac6d3dfb0f207ab72
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263208"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331331"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal
 
@@ -63,7 +63,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
 
 3. V části **přiřazeno systému**, **stav**, vyberte **zapnuto** a potom klikněte na **Uložit**:
 
-   ![Snímek obrazovky konfigurační stránky](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![Snímek obrazovky zobrazující stránku identita (Preview) se stavem přiřazeno systémem nastaveným na zapnuto](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>Odebrání spravované identity přiřazené systémem z virtuálního počítače
 
@@ -99,7 +99,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure, které obsahuje virtuální počítač.
 2. Přejděte na požadovaný virtuální počítač, klikněte na **Identita**, **přiřazený uživatel** a pak na ** \+ Přidat**.
 
-   ![Přidání spravované identity přiřazené uživatelem do virtuálního počítače](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
+   ![Snímek obrazovky zobrazující stránku identita s vybraným uživatelem přiřazenou a zvýrazněným tlačítkem Přidat](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 
 3. Klikněte na identitu přiřazenou uživateli, kterou chcete přidat k virtuálnímu počítači, a pak klikněte na **Přidat**.
 

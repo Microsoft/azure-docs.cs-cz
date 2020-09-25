@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958316"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331093"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Rychlý Start: směrování webového provozu pomocí Azure Application Gateway pomocí Azure PowerShell
 
@@ -24,7 +24,7 @@ Aplikační brána směruje webový provoz aplikace do konkrétních prostředk�
 
 Tento rychlý Start můžete také dokončit pomocí [Azure CLI](quick-create-cli.md) nebo [Azure Portal](quick-create-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure PowerShell verze 1.0.0 nebo novější](/powershell/azure/install-az-ps) (Pokud Azure PowerShell spustíte místně).
@@ -53,6 +53,8 @@ Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virt
 1. Vytvořte konfigurace podsítě pomocí `New-AzVirtualNetworkSubnetConfig` .
 2. Vytvořte virtuální síť s konfiguracemi podsítí pomocí `New-AzVirtualNetwork` . 
 3. Vytvořte veřejnou IP adresu pomocí `New-AzPublicIpAddress` . 
+> [!NOTE]
+> [Zásady koncového bodu služby virtuální sítě](../virtual-network/virtual-network-service-endpoint-policies-overview.md) se v Application Gateway podsíti v tuto chvíli nepodporují.
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `

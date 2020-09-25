@@ -3,12 +3,12 @@ title: Podpora pro migraci VMware v Azure Migrate
 description: Přečtěte si o podpoře migrace virtuálních počítačů VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 430b491780e10840274f16315b159a8095c11889
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: f7fd5b15d9671ed160166d16c1aceda818faa8e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318139"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -41,7 +41,7 @@ Tabulka shrnuje požadavky hypervisoru VMware.
 --- | ---
 **vCenter Server VMware** | Verze 5,5, 6,0, 6,5 nebo 6,7.
 **VMware vSphere hostitele ESXI** | Verze 5,5, 6,0, 6,5 nebo 6,7.
-**vCenter Server oprávnění** | Migrace bez agentů používá [zařízení migrace](migrate-appliance.md). Zařízení potřebuje tato oprávnění v vCenter Server:<br/><br/> - **Úložiště dat. procházet**: povolí procházení souborů protokolu virtuálních počítačů k řešení potíží při vytváření a odstraňování snímků.<br/><br/> - **DataStore. Management**: povolí operace čtení, zápisu, odstranění a přejmenování v prohlížeči úložiště dat, aby bylo možné řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **VirtualMachine.Config. Sledování změn ve**: umožňuje povolit nebo zakázat sledování změn disků virtuálních počítačů, aby se daly načíst změněné bloky dat mezi snímky.<br/><br/> - **VirtualMachine.Config. DiskLease**: Povolte operace zapůjčení disku pro virtuální počítač a přečtěte si disk pomocí sady VMware vSphere Virtual disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. DiskAccess**: (konkrétně pro vSphere 6,0 a vyšší) povolí otevření disku na virtuálním počítači s náhodným přístupem pro čtení na disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomRead**: povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomAccess**: povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. GetVmFiles**: umožňuje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů a řešení potíží, pokud dojde k selhání.<br/><br/> - **VirtualMachine. State. \* **: povoluje vytváření a správu snímků virtuálních počítačů pro replikaci.<br/><br/> - **Virtuální počítač. interaktivně. stavu PowerOff**: povolí vypnutí virtuálního počítače během migrace do Azure.
+**vCenter Server oprávnění** | Migrace bez agentů používá [zařízení migrace](migrate-appliance.md). Zařízení potřebuje tato oprávnění v vCenter Server:<br/><br/> - **Úložiště dat. procházet**: povolí procházení souborů protokolu virtuálních počítačů k řešení potíží při vytváření a odstraňování snímků.<br/><br/> - **DataStore. Management**: povolí operace čtení, zápisu, odstranění a přejmenování v prohlížeči úložiště dat, aby bylo možné řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **VirtualMachine.Config. Sledování změn ve**: umožňuje povolit nebo zakázat sledování změn disků virtuálních počítačů, aby se daly načíst změněné bloky dat mezi snímky.<br/><br/> - **VirtualMachine.Config. DiskLease**: Povolte operace zapůjčení disku pro virtuální počítač a přečtěte si disk pomocí sady VMware vSphere Virtual disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. DiskAccess**: (konkrétně pro vSphere 6,0 a vyšší) povolí otevření disku na virtuálním počítači s náhodným přístupem pro čtení na disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomRead**: povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomAccess**: povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. GetVmFiles**: umožňuje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů a řešení potíží, pokud dojde k selhání.<br/><br/> - **VirtualMachine. State. \* **: povoluje vytváření a správu snímků virtuálních počítačů pro replikaci.<br/><br/> - **VirtualMachine. interaktivně. stavu PowerOff**: povolí vypnutí virtuálního počítače během migrace do Azure.
 
 
 
@@ -53,10 +53,10 @@ Tabulka shrnuje požadavky na migraci bez agenta pro virtuální počítače VMw
 --- | ---
 **Podporované operační systémy** | Můžete migrovat operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](../virtual-machines/linux/endorsed-distros.md) , které podporuje Azure.
 **Virtuální počítače s Windows v Azure** | Před migrací možná budete muset [provést nějaké změny](prepare-for-migration.md#verify-required-changes-before-migrating) virtuálních počítačů. 
-**Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> – CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8. Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#verify-required-changes-before-migrating) ručně.
+**Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#verify-required-changes-before-migrating) ručně.
 **Spouštění ze systému Linux** | Pokud je/Boot ve vyhrazeném oddílu, měl by být umístěn na disku s operačním systémem a nesmí být rozložen na více disků.<br/> Pokud je/Boot součástí kořenového oddílu (/), musí být oddíl '/' na disku s operačním systémem a nesmí zabírat jiné disky.
-**Spouštění UEFI** | Virtuální počítače se spouštěním UEFI se pro migraci nepodporují.
-**Velikost disku** | 2 TB disk s operačním systémem; 8 TB pro datové disky.
+**Spouštění UEFI** | Podporuje se. Virtuální počítače založené na rozhraní UEFI se migrují na virtuální počítače Azure generace 2. 
+**Velikost disku** | 2 TB disk s operačním systémem (spouštěcí počítač BIOS); 4 TB disk s operačním systémem (spouštění UEFI); 8 TB pro datové disky.
 **Omezení disku** |  Až 60 disků na virtuální počítač.
 **Šifrované disky/svazky** | Virtuální počítače se zašifrovanými disky nebo svazky se nepodporují pro migraci.
 **Cluster sdíleného disku** | Nepodporováno
@@ -115,11 +115,11 @@ Tabulka shrnuje podporu virtuálních počítačů VMware pro virtuální počí
 **Systém souborů Linux/úložiště hostů** | Nejnovější informace najdete v části [Podpora systému souborů Linux](../site-recovery/vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) pro Site Recovery. Azure Migrate má stejnou podporu systému souborů Linux.
 **Síť/úložiště** | Nejnovější informace najdete v části požadavky na [síť](../site-recovery/vmware-physical-azure-support-matrix.md#network) a [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#storage) pro Site Recovery. Azure Migrate poskytuje identické požadavky na síť a úložiště.
 **Požadavky na Azure** | Nejnovější informace najdete v části požadavky na [síť](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)a [výpočetní](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) prostředky Azure pro Site Recovery. Azure Migrate má stejné požadavky na migraci VMware.
-**Služba mobility** | Na každý virtuální počítač, který chcete migrovat, musí být nainstalovaný agent služby mobility.
-**Spouštění UEFI** | Podporuje se.
+**Služba Mobility** | Na každý virtuální počítač, který chcete migrovat, musí být nainstalovaný agent služby mobility.
+**Spouštění UEFI** | Podporuje se. Virtuální počítače založené na rozhraní UEFI se migrují na virtuální počítače Azure generace 2. 
 **Rozhraní UEFI – zabezpečené spouštění**         | Migrace se nepodporuje.
 **Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (standardní pevný disk, Standard SSD, Premium SSD) v Azure.
-**Velikost disku** | 2 TB disk s operačním systémem; 8 TB pro datové disky.
+**Velikost disku** | 2 TB disk s operačním systémem (spouštěcí počítač BIOS); 4 TB disk s operačním systémem (spouštění UEFI); 8 TB pro datové disky.
 **Omezení disku** |  Až 63 disků na virtuální počítač.
 **Šifrované disky/svazky** | Virtuální počítače se zašifrovanými disky nebo svazky se nepodporují pro migraci.
 **Cluster sdíleného disku** | Nepodporováno

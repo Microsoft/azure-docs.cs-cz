@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320349"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Druhá část: přiřazení oprávnění na úrovni sdílení k identitě
 
@@ -47,7 +47,7 @@ Pokud chcete přiřadit roli Azure k identitě Azure AD, použijte [Azure Portal
 1. V Azure Portal přejdete do sdílené složky nebo [vytvoříte sdílenou složku](storage-how-to-create-file-share.md).
 1. Vyberte **Access Control (IAM)**.
 1. Vyberte **Přidat přiřazení role** .
-1. V okně **Přidat přiřazení role** vyberte příslušnou integrovanou roli (soubor úložiště, sdílenou složku SMB pro sdílení souborů úložiště, přispěvatel sdílené složky SMB) ze seznamu **rolí** . Nechte **přiřadit přístup k** výchozímu nastavení: **uživatel, skupina nebo instanční objekt služby Azure AD**. Vyberte cílovou identitu Azure AD podle jména nebo e-mailové adresy. Vybraná identita Azure AD musí být hybridní identitou a nemůže být Cloudová identita. To znamená, že stejná identita je také zastoupena v služba AD DS.
+1. V okně **Přidat přiřazení role** vyberte příslušnou integrovanou roli (soubor úložiště, sdílenou složku SMB pro sdílení souborů úložiště, přispěvatel sdílené složky SMB) ze seznamu **rolí** . Nechte **přiřadit přístup k** výchozímu nastavení: **uživatel, skupina nebo instanční objekt služby Azure AD**. Vyberte cílovou identitu Azure AD podle jména nebo e-mailové adresy. **Vybraná identita Azure AD musí být hybridní identitou a nemůže být Cloudová identita.** To znamená, že stejná identita je také zastoupena v služba AD DS.
 1. Výběrem **Uložit** dokončete operaci přiřazení role.
 
 ### <a name="powershell"></a>PowerShell

@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329342"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -24,18 +24,18 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 | Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Místně připojit |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Ano | Ano |
-| Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
-| Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Ano | Ano |
-| Windows Server 2016 | SMB 3.0 | Ano | Ano |
-| Windows 8.1 | SMB 3.0 | Ano | Ano |
-| Windows Server 2012 R2 | SMB 3.0 | Ano | Ano |
-| Windows Server 2012 | SMB 3.0 | Ano | Ano |
-| Systém Windows 7<sup>3</sup> | SMB 2.1 | Ano | Ne |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ano | Ne |
+| Windows Server 2019 | SMB 3.0 | Yes | Yes |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
+| Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server 2016 | SMB 3.0 | Yes | Yes |
+| Windows 8.1 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 | SMB 3.0 | Yes | Yes |
+| Systém Windows 7<sup>3</sup> | SMB 2.1 | Yes | No |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | No |
 
-<sup>1</sup> Windows 10, verze 1507, 1607, 1709, 1803, 1809, 1903 a 1909.  
-<sup>2</sup> . Windows Server, verze 1809, 1903 a 1909.  
+<sup>1</sup> Windows 10, verze 1507, 1607, 1803, 1809, 1903, 1909 a 2004.  
+<sup>2</sup> . Windows Server, verze 1809, 1903, 1909, 2004.  
 <sup>3</sup> . Pravidelná podpora Microsoftu pro Windows 7 a Windows Server 2008 R2 skončila. Další podporu pro aktualizace zabezpečení je možné zakoupit jenom prostřednictvím [programu Extended Security Update (EVJ)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates). Důrazně doporučujeme tyto operační systémy migrovat.
 
 > [!Note]  
@@ -139,7 +139,7 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 | Windows 8.1                               | Povoleno              | Odebrání pomocí funkce Windows | 
 | Windows Server 2012                       | Povoleno              | Zakázání pomocí registru       | 
 | Windows Server 2008 R2                    | Povoleno              | Zakázání pomocí registru       |
-| Windows 7                                 | Povoleno              | Zakázání pomocí registru       | 
+| Windows 7                                 | Povoleno              | Zakázání pomocí registru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Auditování využití protokolu SMB 1
 > Platí pro Windows Server 2019, půlroční kanál Windows serveru (verze 1709 a 1803), Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1

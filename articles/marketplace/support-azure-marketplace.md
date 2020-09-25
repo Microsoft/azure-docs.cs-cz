@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037503"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329750"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Podpora komerčního tržiště Microsoftu
 
@@ -38,10 +38,9 @@ Otevřete lístek s [podporou vydavatele na webu Microsoft Marketplace](https://
 ## <a name="marketing-resources"></a>Marketingové prostředky  
 
 | Kanál podpory | Popis | Dostupnost |  
-|:--- |:--- |:--- |  
-| Elektron[cosell@microsoft.com](mailto:cosell@microsoft.com) | Podpora pro procesy připojování a dotazy týkající se programu společného prodeje. | Založený na časovém pásmu tichomořského. |  
-| Elektron[gtm@microsoft.com](mailto:gtm@microsoft.com) | Podpora GTMch výhod a otázek programu. | Pracovní doba je v časovém pásmu tichomořského. |  
-| Elektron[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Odpovědi na otázky týkající se využití loga a brandingu Azure. |  |  
+|:--- |:--- |:--- |
+| Elektron [gtm@microsoft.com](mailto:gtm@microsoft.com) | Podpora GTMch výhod a otázek programu. | Pracovní doba je v časovém pásmu tichomořského. |  
+| Elektron [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Odpovědi na otázky týkající se využití loga a brandingu Azure. |  |  
 
 ## <a name="next-steps"></a>Další kroky
 

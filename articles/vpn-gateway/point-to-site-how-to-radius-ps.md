@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e45afed3332d26006cf0b4296986edb6f6588962
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329155"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-site k virtuální síti pomocí ověřování RADIUS: PowerShell
 
@@ -24,8 +24,9 @@ Připojení VPN typu P2S se zahájí ze zařízení se systémem Windows nebo Ma
 
 * Server RADIUS
 * VPN Gateway ověřování nativního certifikátu
+* Nativní ověřování Azure Active Directory (jenom Windows 10)
 
-Tento článek vám pomůže nakonfigurovat konfiguraci P2S s ověřováním pomocí serveru RADIUS. Pokud místo toho chcete ověřovat pomocí vygenerovaných certifikátů a nativního ověřování certifikátů pomocí brány VPN, přečtěte si téma [Konfigurace připojení typu Point-to-site k virtuální síti pomocí ověřování nativního certifikátu pomocí brány VPN](vpn-gateway-howto-point-to-site-rm-ps.md).
+Tento článek vám pomůže nakonfigurovat konfiguraci P2S s ověřováním pomocí serveru RADIUS. Pokud se chcete ověřit pomocí vygenerovaných certifikátů a nativního ověřování certifikátů pomocí služby VPN Gateway, přečtěte si téma [Konfigurace připojení typu Point-to-site k virtuální síti pomocí ověřování nativního certifikátu pomocí brány VPN](vpn-gateway-howto-point-to-site-rm-ps.md) nebo [Vytvoření klienta Azure Active Directory pro připojení protokolu P2S OpenVPN](openvpn-azure-ad-tenant.md) pro ověřování Azure Active Directory.
 
 ![Diagram připojení – RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
@@ -40,7 +41,7 @@ Připojení typu Point-to-Site nevyžadují zařízení VPN ani veřejnou IP adr
 Připojení typu Point-to-Site vyžadují:
 
 * Bránu VPN typu RouteBased. 
-* Server RADIUS pro zpracování ověření uživatele. Server RADIUS se dá nasadit místně nebo ve virtuální síti Azure.
+* Server RADIUS pro zpracování ověření uživatele. Server RADIUS se dá nasadit místně nebo ve virtuální síti Azure. Pro zajištění vysoké dostupnosti můžete také nakonfigurovat dva servery RADIUS.
 * Konfigurační balíček klienta VPN pro zařízení s Windows, která se budou připojovat k virtuální síti. Konfigurační balíček klienta VPN poskytuje nastavení potřebné pro připojení klienta VPN přes P2S.
 
 ## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>Ověřování domény služby Active Directory (AD) pro sítě VPN P2S
@@ -223,6 +224,17 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
+   Chcete-li zadat **dva** servery RADIUS **(verze Preview)** , použijte následující syntaxi. Upravte hodnotu **-VpnClientProtocol** podle potřeby.
+
+    ```azurepowershell-interactive
+    $radiusServer1 = New-AzRadiusServer -RadiusServerAddress 10.1.0.15 -RadiusServerSecret $radiuspd -RadiusServerScore 30
+    $radiusServer2 = New-AzRadiusServer -RadiusServerAddress 10.1.0.16 -RadiusServerSecret $radiuspd -RadiusServerScore 1
+
+    $radiusServers = @( $radiusServer1, $radiusServer2 )
+
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
+    ```
+
 ## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> Stáhněte si konfigurační balíček klienta VPN a nastavte klienta VPN.
 
 Konfigurace klienta VPN umožňuje zařízením připojit se k virtuální síti přes připojení P2S.Pokud chcete vygenerovat konfigurační balíček klienta VPN a nastavit klienta VPN, přečtěte si téma [Vytvoření konfigurace klienta VPN pro ověřování RADIUS](point-to-site-vpn-client-configuration-radius.md).
@@ -268,7 +280,7 @@ V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, 
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 Tyto nejčastější dotazy platí pro P2S pomocí ověřování RADIUS.
 

@@ -1,26 +1,26 @@
 ---
 title: Přehled zabezpečení
-description: Bezpečnostní informace o serverech s podporou ARC Azure (Preview)
+description: Bezpečnostní informace o serverech s podporou ARC Azure
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 17641fab9933d9d6a60c2b21912f755acc01a6dd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/23/2020
+ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329036"
 ---
-# <a name="azure-arc-for-servers-preview-security-overview"></a>Přehled zabezpečení Azure ARC for Servers (Preview)
+# <a name="azure-arc-for-servers-security-overview"></a>Přehled zabezpečení ARC pro servery Azure
 
 Tento článek popisuje konfiguraci zabezpečení a posouzení, které byste měli před nasazením serverů s podporou ARC Azure v podniku vyhodnotit.
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-Každý server s podporou ARC Azure má spravovanou identitu jako součást skupiny prostředků v rámci předplatného Azure, které představuje server, na kterém běží místně nebo jiné cloudové prostředí. Přístup k tomuto prostředku se řídí standardním [řízením přístupu na základě role Azure](../../role-based-access-control/overview.md). Na stránce [**Access Control (IAM)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) v Azure Portal můžete ověřit, kdo má přístup k serveru s podporou ARC Azure.
+Každý server s podporou ARC Azure má spravovanou identitu jako součást skupiny prostředků v rámci předplatného Azure. Tato identita představuje server, na kterém běží místní nebo jiné cloudové prostředí. Přístup k tomuto prostředku se řídí standardním [řízením přístupu na základě role Azure](../../role-based-access-control/overview.md). Na stránce [**Access Control (IAM)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) v Azure Portal můžete ověřit, kdo má přístup k serveru s podporou ARC Azure.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Řízení přístupu k serveru s podporou ARC Azure" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
-Uživatelé a aplikace, kterým byl udělen přístup k prostředku prostřednictvím role [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) nebo správce, můžou provádět změny prostředku, včetně nasazení nebo odstranění [rozšíření](manage-vm-extensions.md) v počítači. Rozšíření můžou zahrnovat libovolné skripty, které se spouštějí v privilegovaném kontextu. proto je třeba zvážit, že kterýkoli Přispěvatel v prostředku Azure bude nepřímým správcem serveru, který není Azure.
+Uživatelé a aplikace, kterým byl udělen přístup k prostředku prostřednictvím role [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) nebo správce, můžou provádět změny prostředku, včetně nasazení nebo odstranění [rozšíření](manage-vm-extensions.md) v počítači. Rozšíření můžou zahrnovat libovolné skripty, které se spouštějí v privilegovaném kontextu. proto je třeba zvážit, že kterýkoli Přispěvatel v prostředku Azure bude mít nepřímý správce tohoto serveru.
 
 Role registrace **počítače připojeného k Azure** je dostupná pro škálování na více počítačů a umožňuje číst nebo vytvářet nové servery s podporou ARC v Azure. Nedá se použít k odstranění serverů, které už jsou zaregistrované nebo spravují rozšíření. Jako osvědčený postup doporučujeme, abyste tuto roli přidělili jenom tomuto instančnímu objektu služby Azure Active Directory (Azure AD), který se používá k připojování počítačů ve velkém měřítku.
 
@@ -28,7 +28,7 @@ Uživatelé jako členové role **Správce prostředků počítače připojenéh
 
 ## <a name="agent-security-and-permissions"></a>Zabezpečení a oprávnění agenta
 
-Pokud chcete spravovat agenta připojeného počítače Azure (azcmagent), musí být ve Windows váš uživatelský účet členem místní skupiny Administrators a v systému Linux musíte mít oprávnění root Access.
+Pokud chcete spravovat agenta připojeného počítače Azure (azcmagent) v systému Windows, musí být uživatelský účet členem místní skupiny Administrators. V systému Linux musíte mít oprávnění root Access.
 
 Agent připojeného počítače Azure se skládá ze tří služeb, které běží na vašem počítači.
 
@@ -56,4 +56,4 @@ Agent připojeného počítače Azure používá ke komunikaci se službou Azure
 
 ## <a name="next-steps"></a>Další kroky
 
-Před vyhodnocením nebo povolením serverů s povoleným ARC (ve verzi Preview) na více hybridních počítačích si přečtěte téma [Přehled agenta připojení počítačů](agent-overview.md) , abyste pochopili požadavky, technické podrobnosti o agentovi a metody nasazení.
+Před vyhodnocením nebo povolením serverů s povoleným obloukem na více hybridních počítačích si Projděte [Přehled připojení agenta připojeného počítače](agent-overview.md) , abyste porozuměli požadavkům, technickým podrobnostem o agentovi a metodám

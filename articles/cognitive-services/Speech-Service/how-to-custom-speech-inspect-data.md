@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319100"
 ---
 # <a name="inspect-custom-speech-data"></a>Kontrola dat služby Custom Speech
 
@@ -79,17 +79,19 @@ Po úspěšném importu dat můžete kliknout na datové sady a začít upravova
 
 ### <a name="edit-transcription-by-listening-to-audio"></a>Úpravy přepisu naslouchat zvukům
 
-Po úspěšném odeslání dat kliknutím na název každé položky zobrazíte podrobnosti o datech. Stránka podrobností obsahuje seznam všech souborů ve vaší datové sadě a můžete kliknout na požadované utterance. U každého utterance můžete přehrát zvuk a prohlédnout si přepisy, pokud najdete jakékoli chyby vložení, odstranění nebo nahrazení, upravte přepisy. Další informace o typech chyb naleznete v tématu [vyhodnocení dat](how-to-custom-speech-evaluate-data.md) .
+Po úspěšném odeslání dat kliknutím na název každé položky zobrazíte podrobnosti o datech. K přesunu mezi jednotlivými soubory můžete použít také **předchozí** a **Další** .
+
+Stránka podrobností obsahuje všechny segmenty v každém zvukovém souboru a můžete kliknout na požadované utterance. U každého utterance můžete přehrát zvuk a prohlédnout si přepisy, pokud najdete jakékoli chyby vložení, odstranění nebo nahrazení, upravte přepisy. Další informace o typech chyb naleznete v tématu [vyhodnocení dat](how-to-custom-speech-evaluate-data.md) .
 
 ![Stránka editoru](media/custom-speech/custom-speech-editor.png)
 
-Pokud je zvukový soubor dlouhý, je automaticky rozdělen do menších částí. Můžete je upravit jednou po jednom pomocí **předchozích** a **dalších** pro přesun mezi stránkami. Po provedení úprav klikněte na tlačítko **Uložit** .
+Po provedení úprav klikněte na tlačítko **Uložit** .
 
 ### <a name="export-datasets-from-the-editor"></a>Export datových sad z editoru
 
 Chcete-li exportovat datové sady zpět na kartu **data** , přejděte na stránku s podrobnostmi o datech a kliknutím na tlačítko **exportovat** Exportujte všechny soubory jako novou datovou sadu. Soubory můžete také filtrovat podle času poslední úpravy, dob trvání zvuku atd. k částečnému výběru požadovaných souborů. 
 
-![Export dat](media/custom-speech/custom-speech-editor-export.png)
+![Exportovat data](media/custom-speech/custom-speech-editor-export.png)
 
 Soubory exportované do dat budou použity jako značka – Nová datová sada a nebudou mít vliv na žádnou existující entitu dat, školení a testování.
 

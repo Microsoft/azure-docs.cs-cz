@@ -2,18 +2,18 @@
 title: Vývoj a ladění modulů v aplikaci Visual Studio – Azure IoT Edge
 description: Pomocí sady Visual Studio s nástroji Azure IoT můžete vyvinout modul IoT Edge jazyka C nebo C# a vložit ho z IoT Hub do zařízení IoT, jak je nakonfigurované v manifestu nasazení.
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80384853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297041"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -230,7 +230,7 @@ V článku Rychlý start, pomocí kterého jste nastavili své zařízení IoT E
 
 1. Kliknutím na tlačítko Aktualizovat zobrazíte nové moduly běžící společně s modulem **SimulatedTemperatureSensor** a **$edgeAgent** a **$edgeHub**.
 
-## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
+## <a name="view-generated-data"></a>Zobrazit vygenerovaná data
 
 1. Pokud chcete monitorovat zprávu D2C pro konkrétní zařízení IoT-Edge, vyberte ho v centru IoT v **Průzkumníku cloudu** a potom v okně **Akce** klikněte na **Spustit sledování vestavěného koncového bodu události** .
 

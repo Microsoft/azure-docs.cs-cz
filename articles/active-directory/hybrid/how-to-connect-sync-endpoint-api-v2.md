@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319907"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Rozhraní API koncového bodu služby Azure AD Connect Sync v2 (Public Preview) 
 Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje následující:
@@ -116,12 +116,12 @@ K navýšení limitu členství můžete použít následující kroky:
 1. Otevřít Editor pravidel synchronizace Azure AD 
 2. V editoru vyberte **odchozí** pro směr 
 3. Klikněte na možnost **ven do AAD –** pravidlo synchronizace připojení ke skupině. 
-4. Klikněte na **Edit** tlačítko Upravit ![ Upravit pravidlo synch.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. Klikněte na **Edit** ![ snímek obrazovky pro úpravy, na kterém se zobrazí vybraná možnost zobrazit a spravovat vaše synchronizační pravidla pomocí příkazu připojit k službě AAD-Group Join.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Kliknutím na tlačítko **Ano** zakážete výchozí pravidlo a vytvoříte upravitelnou kopii.
- ![Upravit pravidlo synchronizace](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ ![Snímek obrazovky, na kterém se zobrazí okno Upravit potvrzení rezervovaného pravidla s vybraným tlačítkem Ano](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. V automaticky otevíraném okně na stránce **Popis** nastavte prioritu na dostupnou hodnotu v rozmezí 1 až 99 ![ Upravit pravidlo synch.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. V automaticky otevíraném okně na stránce **Popis** nastavte prioritu na dostupnou hodnotu mezi 1 a 99 snímků ![ obrazovky, která zobrazuje okno Upravit pravidlo odchozí synchronizace s zvýrazněnou prioritou.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. Na stránce **transformace** aktualizujte **zdrojovou** hodnotu pro transformaci **členů** a nahraďte hodnotu ' 50000 ' hodnotou v rozmezí 50001 až 250000. Tato náhrada zvýší maximální velikost členství skupin, které se budou synchronizovat do Azure AD. Doporučujeme začít s řadou 100 tisíc, abyste pochopili, jaký dopad synchronizace velkých skupin bude na výkon synchronizace. 
  

@@ -2,13 +2,13 @@
 title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 2325e9f5a03f7451492c9b9b8e929df95ddc3852
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: 0c5ed8d2427a9e0329db6ebd7f0aa48aa4912a48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284818"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Vytváření prostředků na úrovni skupiny pro správu
 
@@ -45,7 +45,7 @@ Pro správu prostředků použijte:
 
 * [značky](/azure/templates/microsoft.resources/tags)
 
-### <a name="schema"></a>Schéma
+## <a name="schema"></a>Schéma
 
 Schéma, které používáte pro nasazení skupiny pro správu, se liší od schématu pro nasazení skupin prostředků.
 
@@ -60,6 +60,30 @@ Schéma pro soubor parametrů je pro všechny obory nasazení stejné. Pro soubo
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>Obory nasazení
+
+Při nasazování do skupiny pro správu můžete cílit na skupinu pro správu zadanou v příkazu nasazení nebo můžete vybrat jinou skupinu pro správu v tenantovi.
+
+Prostředky definované v části Resources v šabloně jsou aplikovány na skupinu pro správu z příkazu nasazení.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
+
+Chcete-li cílit na jinou skupinu pro správu, přidejte vnořené nasazení a zadejte `scope` vlastnost. Nastavte `scope` vlastnost na hodnotu ve formátu `Microsoft.Management/managementGroups/<mg-name>` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+
+V rámci skupiny pro správu můžete také cílit na předplatná nebo skupiny prostředků. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
+
+Chcete-li cílit na předplatné v rámci skupiny pro správu, použijte vnořené nasazení a `subscriptionId` vlastnost.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+
+Pokud chcete cílit na skupinu prostředků v rámci tohoto předplatného, přidejte další vnořené nasazení a `resourceGroup` vlastnost.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+
+Pokud chcete použít nasazení skupiny pro správu pro vytvoření skupiny prostředků v rámci předplatného a nasazení účtu úložiště do této skupiny prostředků, přečtěte si téma [nasazení do předplatného a skupiny prostředků](#deploy-to-subscription-and-resource-group).
 
 ## <a name="deployment-commands"></a>Příkazy nasazení
 
@@ -94,97 +118,6 @@ Pro nasazení na úrovni skupiny pro správu musíte zadat umístění pro nasaz
 Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy.jsv** vytvoří výchozí název nasazení **azuredeploy**.
 
 Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí kód chyby `InvalidDeploymentLocation` , použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
-
-## <a name="deployment-scopes"></a>Obory nasazení
-
-Při nasazování do skupiny pro správu můžete cílit na skupinu pro správu zadanou v příkazu nasazení nebo v jiných skupinách pro správu v tenantovi. V rámci skupiny pro správu můžete také cílit na předplatná nebo skupiny prostředků. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
-
-Prostředky definované v části Resources v šabloně jsou aplikovány na skupinu pro správu z příkazu nasazení.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        management-group-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Chcete-li cílit na jinou skupinu pro správu, přidejte vnořené nasazení a zadejte `scope` vlastnost.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
-            "name": "nestedDeployment",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-different-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-Chcete-li cílit na předplatné v rámci skupiny pro správu, použijte vnořené nasazení a `subscriptionId` vlastnost. Pokud chcete cílit na skupinu prostředků v rámci tohoto předplatného, přidejte další vnořené nasazení a `resourceGroup` vlastnost.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
-      "name": "nestedSub",
-      "location": "westus2",
-      "subscriptionId": "00000000-0000-0000-0000-000000000000",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-06-01",
-              "name": "nestedRG",
-              "resourceGroup": "rg2",
-              "properties": {
-                "mode": "Incremental",
-                "template": {
-                  nested-template-with-resources-in-resource-group
-                }
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-Pokud chcete použít nasazení skupiny pro správu pro vytvoření skupiny prostředků v rámci předplatného a nasazení účtu úložiště do této skupiny prostředků, přečtěte si téma [nasazení do předplatného a skupiny prostředků](#deploy-to-subscription-and-resource-group).
 
 ## <a name="use-template-functions"></a>Použití funkcí šablon
 

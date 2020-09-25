@@ -1,22 +1,22 @@
 ---
-title: Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – škálovatelné
-description: Azure Database for PostgreSQL – směrný plán zabezpečení s ochranou rozsahu poskytuje pokyny a prostředky pro implementaci doporučení zabezpečení, která jsou určená v srovnávacím testu zabezpečení Azure.
+title: Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – Citus (škálovatelné)
+description: Směrný plán zabezpečení Azure Database for PostgreSQL (Citus) poskytuje pokyny a materiály k postupům pro implementaci doporučení zabezpečení, která jsou určená v srovnávacím testu zabezpečení Azure.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231295"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318122"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – škálovatelné
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – Citus (škálovatelné)
 
-Základní plán zabezpečení Azure pro Azure Database for PostgreSQL – škálovatelné řešení obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
+Základní plán zabezpečení Azure pro Azure Database for PostgreSQL – Citus) obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
 Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
@@ -631,7 +631,7 @@ Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních pro
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny klíče spravované zákazníkem.
 
-**Doprovodné**materiály: alespoň jednou denně Azure Database for PostgreSQL pořizování snímků datových souborů a protokolu transakcí databáze. Zálohy umožňují obnovit server do libovolného bodu v čase v rámci doby uchování. Doba uchovávání dat je v současnosti 35 dní pro všechny clustery. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
+**Doprovodné**materiály: alespoň jednou denně Azure Database for PostgreSQL pořizování snímků datových souborů a protokolu transakcí databáze. Zálohy umožňují obnovit server do libovolného bodu v čase v rámci doby uchování. Doba uchovávání dat je v současnosti 35 dní pro všechny clustery. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
 
 V oblastech Azure, které podporují zóny dostupnosti, se záložní snímky ukládají ve třech zónách dostupnosti. Pokud je aspoň jedna zóna dostupnosti online, cluster Citus () je obnovitelné.
 

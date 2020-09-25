@@ -1,6 +1,6 @@
 ---
 title: Vysvětlení konektorů služby Azure Proxy aplikací služby AD | Microsoft Docs
-description: Zahrnuje základní informace o konektorech Azure Proxy aplikací služby AD.
+description: Přečtěte si o konektorech Azure Proxy aplikací služby AD.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764668"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319822"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Vysvětlení konektorů Azure Proxy aplikací služby AD
 
@@ -99,7 +99,7 @@ Obecně platí, že čím více uživatelů máte, tím větší je počítač, 
 |8|32|270|1190|
 |16|64|245|1200 *|
 
-\*Tento počítač použil vlastní nastavení k vyvolání některých výchozích omezení připojení nad rámec doporučených nastavení .NET. Doporučujeme spustit test s výchozím nastavením předtím, než se obrátíte na podporu, aby se tento limit u vašeho tenanta změnil.
+\* Tento počítač použil vlastní nastavení k vyvolání některých výchozích omezení připojení nad rámec doporučených nastavení .NET. Doporučujeme spustit test s výchozím nastavením předtím, než se obrátíte na podporu, aby se tento limit u vašeho tenanta změnil.
 
 > [!NOTE]
 > Maximální počet TPS počítačů mezi 4, 8 a 16 jádry není velký. Hlavní rozdíl mezi nimi je v očekávané latenci.

@@ -1,27 +1,29 @@
 ---
 title: Co je rozhraní API Detektoru anomálií?
 titleSuffix: Azure Cognitive Services
-description: Pomocí pokročilých algoritmů rozhraní API pro detekci anomálií můžete identifikovat anomálie v datech časových řad.
+description: Pomocí algoritmu rozhraní API pro detekci anomálií můžete pro data časových řad použít detekci anomálií.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: aahi
-ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: detekce anomálií, strojové učení, algoritmy
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319312"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení. Rozhraní API detektoru anomálií se přizpůsobí tím, že se automaticky identifikují a aplikují nejvhodnější modely pro vaše data, bez ohledu na obor, scénář nebo objem dat. Pomocí dat časových řad rozhraní API určuje hranice pro detekci anomálií, očekávané hodnoty a které datové body jsou anomálie.
+Rozhraní API pro detekci anomálií umožňuje monitorovat a detekovat anomálie v datech časových řad bez nutnosti znát strojové učení. Algoritmy rozhraní API pro detekci anomálií se přizpůsobují tak, že automaticky identifikují a aplikují nejvhodnější modely na vaše data, bez ohledu na obor, scénář nebo objem dat. Pomocí dat časových řad rozhraní API určuje hranice pro detekci anomálií, očekávané hodnoty a které datové body jsou anomálie.
 
 ![Zjistit změny vzoru v žádostech o služby](./media/anomaly_detection2.png)
 
@@ -33,7 +35,7 @@ Pomocí detektoru anomálií můžete automaticky detekovat anomálie v rámci v
 
 |Funkce  |Popis  |
 |---------|---------|
-|Detekuje anomálie při výskytu v reálném čase. | Pomocí dříve zjištěných datových bodů můžete zjistit anomálie v datech streamování, abyste zjistili, jestli je vaše nejnovější anomálií. Tato operace generuje model pomocí datových bodů, které odesíláte, a určuje, zda je cílovým bodem anomálie. Voláním rozhraní API s každým novým datovým bodem, který vygenerujete, můžete monitorovat data tak, jak jsou vytvořená. |
+|Detekce anomálií v reálném čase. | Pomocí dříve zjištěných datových bodů můžete zjistit anomálie v datech streamování, abyste zjistili, jestli je vaše nejnovější anomálií. Tato operace generuje model pomocí datových bodů, které odesíláte, a určuje, zda je cílovým bodem anomálie. Voláním rozhraní API s každým novým datovým bodem, který vygenerujete, můžete monitorovat data tak, jak jsou vytvořená. |
 |Detekuje anomálie v celé sadě dat jako dávku. | Použijte svoji časovou řadu ke zjištění anomálií, které by mohly existovat v rámci vašich dat. Tato operace vygeneruje model s využitím celých dat časových řad, přičemž každý bod se analyzuje se stejným modelem.         |
 |Detekuje body změn v celé sadě dat jako dávku. | Použijte svoji časovou řadu ke zjištění všech bodů změny trendů, které existují ve vašich datech. Tato operace vygeneruje model s využitím celých dat časových řad, přičemž každý bod se analyzuje se stejným modelem.    |
 | Získejte další informace o vašich datech. | Získáte užitečné podrobnosti o datech a všech pozorovaných anomáliích, včetně očekávaných hodnot, hranic anomálií a pozic. |

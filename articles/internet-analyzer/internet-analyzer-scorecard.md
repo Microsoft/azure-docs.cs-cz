@@ -1,18 +1,18 @@
 ---
 title: Interpretace přehledu výkonnostních metrik | Microsoft Docs
-description: Nejčastější dotazy k Azure Internet Analyzer.
+description: Naučte se interpretovat scorecard. Karta Scorecard obsahuje agregované a analyzované výsledky testů.
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
 ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 5ed8621fbfd1528bfffeaa986fa9c2e17c19f82b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f43d094193fb266d1ecec7089b44d8b3fd5e9b43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744030"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330209"
 ---
 # <a name="interpreting-your-scorecard"></a>Interpretace přehledu výkonnostních metrik
 
@@ -50,7 +50,7 @@ Intervaly spolehlivosti (CI) představují rozsah hodnot, které mají pravděpo
 
 Pro nástroj Internet Analyzer je vhodný interval s úzkým spolehlivostí, protože ukazuje, že ukázková metrika je pravděpodobně velmi blízko se skutečnou metrikou populace. Velký interval spolehlivosti znamená menší jistotu, že naše ukázková metrika odráží skutečnou metriku naplnění. Nejlepším způsobem, jak vylepšit CI, je zvýšit počty měření.
 
-## <a name="time-series"></a>Časová řada 
+## <a name="time-series"></a>time series (časová řada) 
 
 Časová řada ukazuje, jak se metrika mění v čase. Na internetu existuje mnoho dočasných faktorů, které mají vliv na výkon, jako je špička provozních dob, dny v týdnu a svátky.
 

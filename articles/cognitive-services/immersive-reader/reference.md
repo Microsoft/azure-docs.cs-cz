@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 73322cdee151969e6e765690284bbffc1c871f4e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330600"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)
 
@@ -192,7 +192,7 @@ Obsahuje informace o chybě.
 
 ## <a name="types"></a>Typy
 
-### <a name="content"></a>Content
+### <a name="content"></a>Obsah
 
 Obsahuje obsah, který se zobrazí v moderní čtečce.
 
@@ -514,7 +514,7 @@ enum CookiePolicy { Disable, Enable }
 
 ## <a name="supported-languages"></a>Podporované jazyky
 
-Funkce překladu moderního čtecího zařízení podporuje mnoho jazyků. Další podrobnosti najdete v [tomto článku](https://www.onenote.com/learningtools/languagesupport) .
+Funkce překladu moderního čtecího zařízení podporuje mnoho jazyků. Další podrobnosti najdete v tématu [Podpora jazyků](./language-support.md) .
 
 <br>
 

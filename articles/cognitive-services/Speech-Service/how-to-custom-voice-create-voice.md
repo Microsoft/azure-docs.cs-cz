@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629000"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319057"
 ---
 # <a name="create-a-custom-voice"></a>Vytvoření vlastního hlasu
 
@@ -44,11 +44,11 @@ Datové sady se po stisknutí tlačítka Odeslat automaticky ověřují. Ověřo
 
 V následující tabulce jsou uvedeny stavy zpracování pro importované datové sady:
 
-| State | Význam |
+| Stav | Význam |
 | ----- | ------- |
 | Zpracování | Vaše datová sada byla přijata a je zpracovávána. |
-| Úspěch | Vaše datová sada byla ověřena a lze ji nyní použít k sestavení hlasového modelu. |
-| Failed | Vaše datová sada se během zpracování v důsledku mnoha důvodů nezdařila, například chyby souborů, problémy s daty nebo problémy se sítí. |
+| Úspěšný | Vaše datová sada byla ověřena a lze ji nyní použít k sestavení hlasového modelu. |
+| Neúspěšný | Vaše datová sada se během zpracování v důsledku mnoha důvodů nezdařila, například chyby souborů, problémy s daty nebo problémy se sítí. |
 
 Po dokončení ověření uvidíte celkový počet odpovídajících projevy pro každou datovou sadu ve sloupci **projevy** . Pokud datový typ, který jste vybrali, vyžaduje segmentaci dlouhého zvuku, tento sloupec odráží jenom projevy, které jsme pro vás segmentoval buď na základě vašich přepisů, nebo prostřednictvím služby přepisu řeči. Můžete ještě více stáhnout datovou sadu, která je ověřená, aby se zobrazily podrobné výsledky projevy úspěšně naimportované a jejich přepisů mapování. Pomocný parametr: dlouhé segmentace zvuku může trvat déle než hodinu, než se zpracování dat dokončí.
 
@@ -86,11 +86,11 @@ V tabulce školení se zobrazí nová položka, která odpovídá nově vytvoře
 
 Zobrazený stav odráží proces převodu datové sady na hlasový model, jak je znázorněno zde.
 
-| State | Význam |
+| Stav | Význam |
 | ----- | ------- |
 | Zpracování | Probíhá vytváření hlasového modelu. |
-| Úspěch | Váš hlasový model byl vytvořen a lze jej nasadit. |
-| Failed | Váš hlasový model se v rámci školení nezdařil z důvodu mnoha důvodů, například problémy s nezpracovanými daty nebo problémy se sítí. |
+| Úspěšný | Váš hlasový model byl vytvořen a lze jej nasadit. |
+| Neúspěšný | Váš hlasový model se v rámci školení nezdařil z důvodu mnoha důvodů, například problémy s nezpracovanými daty nebo problémy se sítí. |
 
 Doba školení se liší v závislosti na objemu zpracovaných zvukových dat. Typický časový rozsah od přibližně 30 minut po stovky projevy až 40 hodin za 20 000 projevy. Po úspěšném školení o modelu ho můžete začít testovat.
 

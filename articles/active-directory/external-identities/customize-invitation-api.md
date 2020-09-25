@@ -1,6 +1,6 @@
 ---
 title: Rozhraní API pro spolupráci B2B a přizpůsobení – Azure Active Directory
-description: Spolupráce B2B ve službě Azure Active Directory podporuje vaše vztahy s ostatními společnostmi tím, že vašim obchodním partnerům umožní selektivní přístup ke podnikovým aplikacím
+description: Azure Active Directory spolupráce B2B podporuje vztahy mezi společnostmi tím, že umožňuje obchodním partnerům selektivní přístup k podnikovým aplikacím.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f62ece12732c45037bcad328eec162bebb4e6a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2cc959d23aebea082d873e9474998e7f17b1b320
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908677"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295154"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory rozhraní API pro spolupráci B2B a přizpůsobení
 
@@ -80,7 +80,7 @@ V tomto režimu musí, kdo používá rozhraní API, mít oprávnění k vytvá�
 
 V kontextu pouze aplikace potřebuje aplikace uživatele. pozve. All, aby bylo pozvání úspěšné.
 
-Další informace najdete v tématu:https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+Další informace najdete v tématu: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell

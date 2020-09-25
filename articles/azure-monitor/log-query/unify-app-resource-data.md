@@ -7,12 +7,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 40ce2844e33c9a71f87e434a6a3e9f8e0f7e3cc6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322104"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330889"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení více Azure Monitorch prostředků Application Insights 
 Tento článek popisuje, jak zadávat dotazy a zobrazovat všechna data protokolu Application Insights na jednom místě, i když jsou v různých předplatných Azure, jako náhrada za vyřazení Application Insights Connector. Počet prostředků Application Insights, které můžete zahrnout do jednoho dotazu, je omezený na 100.
@@ -57,7 +57,7 @@ Dotaz používá Application Insights schéma, i když se dotaz spustí v pracov
 ![Příklad výsledků mezi dotazy](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->[Dotaz na více prostředků](./cross-workspace-query.md) v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pravidla upozornění protokolu [dotazu pro více prostředků](./cross-workspace-query.md) můžete vytvořit bez toho, aby byl přepínač použit pomocí [šablony ARM pro rozhraní scheduledQueryRules API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale toto pravidlo upozornění lze spravovat i v případě, že [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
+>[Dotazy na více prostředků](./cross-workspace-query.md) v upozorněních protokolu jsou podporovány pouze v aktuálním [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Pokud používáte starší rozhraní API pro výstrahy Log Analytics, budete muset [Přepnout na aktuální rozhraní API](../platform/alerts-log-api-switch.md). [Viz příklady šablon](../platform/alerts-log-create-templates.md).
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Rozdíly mezi Application Insights a Log Analytics schémat pracovního prostoru
 V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics a Application Insights.  
@@ -73,16 +73,16 @@ V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics 
 | AvailabilityMessage | zpráva |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | name |
+| AvailabilityTestName | jméno |
 | AvailabilityTimestamp | časové razítko |
 | Prohlížeč | client_browser |
-| Město | client_city |
+| City (Město) | client_city |
 | IP adresa klienta | client_IP |
 | Počítač | cloud_RoleInstance | 
 | Země | client_CountryOrRegion | 
 | CustomEventCount | Vlastnost ItemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | name | 
+| CustomEventName | jméno | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | Vlastnost ItemCount | 
@@ -94,12 +94,12 @@ V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics 
 | Operační systém | client_OS | 
 | PageViewCount | Vlastnost ItemCount |
 | PageViewDuration | doba trvání | 
-| PageViewName | name | 
+| PageViewName | jméno | 
 | ParentOperationID | operation_Id | 
 | RequestCount | Vlastnost ItemCount | 
 | RequestDuration | doba trvání | 
 | ID požadavku | id | 
-| Žádost o zadání | name | 
+| Žádost o zadání | jméno | 
 | RequestSuccess | úspěch | 
 | ResponseCode | resultCode | 
 | Role | cloud_RoleName |

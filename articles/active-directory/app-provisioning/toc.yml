@@ -78,7 +78,7 @@
     - name: Vytvoření koncového bodu SCIM a konfigurace zřizování
       href: use-scim-to-provision-users-and-groups.md
     - name: Automatizace konfigurace s využitím MS Graphu
-      href: application-provisioning-configure-api.md
+      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
 - name: Referenční informace
   items:
     - name: Kompatibilita s protokolem SCIM 2.0

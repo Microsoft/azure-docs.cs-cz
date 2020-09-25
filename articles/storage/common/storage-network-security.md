@@ -9,14 +9,14 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 3ec4e6ee49052657210fffa8976b661c1a9e5948
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 474b3c4261b412c0c875f7a05802095c9e0c2cd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320366"
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace Azure Storage bran firewall a virtuálních sítí
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
 Azure Storage zajišťuje vrstvený model zabezpečení. Tento model umožňuje zabezpečit a řídit úroveň přístupu k vašim účtům úložiště, které vyžadují vaše aplikace a podniková prostředí, v závislosti na typu a podmnožině použitých sítí. Při konfiguraci síťových pravidel mají přístup k účtu úložiště jenom aplikace požadující data přes zadanou sadu sítí. Přístup k účtu úložiště můžete omezit na požadavky pocházející ze zadaných IP adres, rozsahů IP adres nebo ze seznamu podsítí v Azure Virtual Network (virtuální síť).
 
@@ -256,7 +256,7 @@ Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy
 
 Pro konfiguraci pravidel brány firewall úložiště se podporují jenom IPV4 adresy.
 
-Každý účet úložiště podporuje až 100 pravidel sítě IP.
+Každý účet úložiště podporuje až 200 pravidel sítě IP.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurace přístupu z místních sítí
 

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, seo-javascript-september2019, devx-track-javascript
+ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: c8aca82567de0b564aadc355b198502450dd7a5c
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 42c2ca777a999a4d4387646110ed88af84631183
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258894"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C
 
@@ -51,7 +51,7 @@ V místním vývojovém prostředí budete navíc potřebovat následující:
 
 V druhém kurzu, který jste dokončili v rámci požadavků, jste zaregistrovali webovou aplikaci v Azure AD B2C. Pokud chcete povolit komunikaci s ukázkami kódu v tomto kurzu, přidejte do registrace aplikace adresu URL odpovědi (označuje se taky jako identifikátor URI přesměrování).
 
-Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
@@ -92,8 +92,8 @@ Teď, když jste získali ukázku, aktualizujte kód pomocí Azure AD B2C název
 
 1. Otevřete soubor *authConfig.js* ve složce *JavaScriptSPA* .
 1. V `msalConfig` objektu aktualizujte:
-    * `clientId`s hodnotou s **ID aplikace (klienta)** , které jste si poznamenali v dřívějším kroku
-    * `authority`Identifikátor URI s vaším Azure AD B2Cm jménem tenanta a názvem uživatelského toku pro registraci a přihlašování, který jste vytvořili jako součást požadavků (například *B2C_1_signupsignin1*)
+    * `clientId` s hodnotou s **ID aplikace (klienta)** , které jste si poznamenali v dřívějším kroku
+    * `authority` Identifikátor URI s vaším Azure AD B2Cm jménem tenanta a názvem uživatelského toku pro registraci a přihlašování, který jste vytvořili jako součást požadavků (například *B2C_1_signupsignin1*)
 
     ```javascript
     const msalConfig = {
@@ -119,7 +119,7 @@ Teď, když jste získali ukázku, aktualizujte kód pomocí Azure AD B2C název
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku. Například:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku. Příklad:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp

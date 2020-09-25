@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: bcc7ebd8d9a6e61425ba7cd980a400c3fe756492
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 47a280a46cbc0650efb9a7576bb21bb31d1d2613
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762330"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330413"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Aktivita odstranění v Azure Data Factory
 
@@ -52,6 +52,7 @@ Tady je několik doporučení pro použití aktivity odstranit:
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Cloudové úložiště Googlu](connector-google-cloud-storage.md)
+-   [HDFS](connector-hdfs.md)
 
 ## <a name="syntax"></a>Syntax
 
@@ -85,13 +86,13 @@ Tady je několik doporučení pro použití aktivity odstranit:
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| integrován | Poskytuje odkaz na datovou sadu pro určení souborů nebo složky, které chcete odstranit. | Ano |
-| zahrnout | Určuje, zda se mají rekurzivně odstranit soubory z podsložek nebo pouze ze zadané složky.  | Ne. Výchozí formát je `false`. |
-| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště, pro odstraňování složek nebo souborů.   |  Ne. Výchozí formát je `1`. |
-| enablelogging | Určuje, zda je třeba zaznamenat název složky nebo souboru, které byly odstraněny. Je-li nastavena hodnota true, je třeba zadat účet úložiště pro uložení souboru protokolu, aby bylo možné sledovat chování aktivity odstranit pomocí čtení souboru protokolu. | Ne |
-| logStorageSettings | Platí pouze v případě, že EnableLogging = true.<br/><br/>Skupina vlastností úložiště, které se dají zadat, kam chcete uložit soubor protokolu obsahující název složky nebo souboru, který odstranila aktivita odstranit. | Ne |
-| linkedServiceName | Platí pouze v případě, že EnableLogging = true.<br/><br/>Propojená služba [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) pro uložení souboru protokolu, který obsahuje název složky nebo souboru, který odstranila aktivita odstranit. Mějte na paměti, že je potřeba nakonfigurovat stejný typ Integration Runtime od toho, který používá aktivita odstranit k odstranění souborů. | Ne |
-| program | Platí pouze v případě, že EnableLogging = true.<br/><br/>Cesta k uložení souboru protokolu v účtu úložiště. Pokud cestu nezadáte, služba vytvoří kontejner. | Ne |
+| integrován | Poskytuje odkaz na datovou sadu pro určení souborů nebo složky, které chcete odstranit. | Yes |
+| zahrnout | Určuje, zda se mají rekurzivně odstranit soubory z podsložek nebo pouze ze zadané složky.  | No. Výchozí formát je `false`. |
+| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště, pro odstraňování složek nebo souborů.   |  No. Výchozí formát je `1`. |
+| enablelogging | Určuje, zda je třeba zaznamenat název složky nebo souboru, které byly odstraněny. Je-li nastavena hodnota true, je třeba zadat účet úložiště pro uložení souboru protokolu, aby bylo možné sledovat chování aktivity odstranit pomocí čtení souboru protokolu. | No |
+| logStorageSettings | Platí pouze v případě, že EnableLogging = true.<br/><br/>Skupina vlastností úložiště, které se dají zadat, kam chcete uložit soubor protokolu obsahující název složky nebo souboru, který odstranila aktivita odstranit. | No |
+| linkedServiceName | Platí pouze v případě, že EnableLogging = true.<br/><br/>Propojená služba [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) pro uložení souboru protokolu, který obsahuje název složky nebo souboru, který odstranila aktivita odstranit. Mějte na paměti, že je potřeba nakonfigurovat stejný typ Integration Runtime od toho, který používá aktivita odstranit k odstranění souborů. | No |
+| program | Platí pouze v případě, že EnableLogging = true.<br/><br/>Cesta k uložení souboru protokolu v účtu úložiště. Pokud cestu nezadáte, služba vytvoří kontejner. | No |
 
 ## <a name="monitoring"></a>Monitorování
 
