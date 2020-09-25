@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661268"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274108"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení Active Directory Federation Services (AD FS) pomocí Azure AD Connect
 Tento článek popisuje, jak spravovat a přizpůsobovat Active Directory Federation Services (AD FS) (AD FS) pomocí Azure Active Directory (Azure AD) Connect. Zahrnuje taky další běžné AD FS úlohy, které může být potřeba udělat pro kompletní konfiguraci AD FS farmy.
@@ -52,11 +52,11 @@ Azure AD Connect můžete použít ke kontrole aktuálního stavu AD FS a vztahu
    ![Oprava AAD a vztahu důvěryhodnosti služby ADFS](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. Na stránce **připojit ke službě Azure AD** zadejte přihlašovací údaje globálního správce služby Azure AD a klikněte na **Další**.
-   ![Připojení k Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![Snímek obrazovky zobrazující stránku připojit k Azure AD s ukázkovými přihlašovacími údaji](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. Na stránce **přihlašovací údaje vzdáleného přístupu** zadejte přihlašovací údaje správce domény.
 
-   ![Přihlašovací údaje vzdáleného přístupu](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![Snímek obrazovky se stránkou přihlašovací údaje pro vzdálený přístup, která obsahuje příklady zadaných přihlašovacích údajů](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
     Po kliknutí na tlačítko **další**Azure AD Connect zkontroluje stav certifikátu a zobrazí všechny problémy.
 
@@ -64,7 +64,7 @@ Azure AD Connect můžete použít ke kontrole aktuálního stavu AD FS a vztahu
 
     Stránka **připraveno ke konfiguraci** zobrazuje seznam akcí, které budou provedeny k opravě vztahu důvěryhodnosti.
 
-    ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Snímek obrazovky, na které se zobrazí stránka připraveno ke konfiguraci se seznamem akcí](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. Kliknutím na **instalovat** opravíte vztah důvěryhodnosti.
 
@@ -98,7 +98,7 @@ Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou h
 
 2. Na stránce **připojit ke službě Azure AD** zadejte přihlašovací údaje globálního správce pro Azure AD a klikněte na **Další**.
 
-   ![Připojení k Azure AD](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![Snímek obrazovky zobrazující stránku připojit k Azure AD s zadanými ukázkovými přihlašovacími údaji](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. Zadejte přihlašovací údaje správce domény.
 
@@ -106,9 +106,9 @@ Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou h
 
 4. Azure AD Connect požádá o heslo k souboru PFX, který jste zadali při konfiguraci nové farmy AD FS pomocí Azure AD Connect. Kliknutím na **zadat heslo** zadejte heslo pro soubor PFX.
 
-   ![Heslo certifikátu](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![Snímek obrazovky zobrazující stránku zadat certifikát SSL s otevřeným oknem heslo certifikátu](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![Zadat certifikát TLS/SSL](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![Snímek obrazovky, který po zadání hesla pro soubor PFX zobrazuje stránku zadat certifikát SSL.](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. Na stránce **AD FS servery** zadejte název nebo IP adresu serveru, který chcete přidat do farmy AD FS.
 
@@ -116,9 +116,9 @@ Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou h
 
 6. Klikněte na **Další**a přejděte na stránku finální **Konfigurace** . Až Azure AD Connect dokončí přidávání serverů do farmy AD FS, budete mít možnost ověřit připojení.
 
-   ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Snímek obrazovky, na které se zobrazí stránka připraveno ke konfiguraci se seznamem akcí, které mají být dokončeny po kliknutí na tlačítko nainstalovat.](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![Instalace dokončena](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    ![Snímek obrazovky, na které se zobrazí stránka Instalace byla dokončena, se zobrazí zpráva "konfigurace intranetu byla úspěšně ověřena". ](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
 ## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>Přidat AD FS Server WAP 
 
@@ -131,7 +131,7 @@ Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou h
 
 2. Zadejte přihlašovací údaje globálního správce Azure.
 
-   ![Připojení k Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![Snímek obrazovky zobrazující stránku připojit k Azure AD s uvedeným příkladem uživatelského jména a hesla.](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. Na stránce **zadat certifikát SSL** zadejte heslo k souboru PFX, který jste zadali při konfiguraci AD FS farmy pomocí Azure AD Connect.
    ![Heslo certifikátu](./media/how-to-connect-fed-management/WapServer3.PNG)
@@ -148,7 +148,7 @@ Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou h
 
 6. Na stránce **připraveno ke konfiguraci** se v průvodci zobrazí seznam akcí, které budou provedeny.
 
-   ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Snímek obrazovky, na které se zobrazí stránka připraveno ke konfiguraci se seznamem akcí, které mají být provedeny.](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. Kliknutím na **instalovat** dokončete konfiguraci. Po dokončení konfigurace vám průvodce nabídne možnost ověřit připojení k serverům. Kliknutím na **ověřit** zkontrolujte připojení.
 

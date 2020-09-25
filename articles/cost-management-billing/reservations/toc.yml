@@ -54,6 +54,7 @@
     - name: Data o využití pro podnikové zákazníky
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Návody
+  expanded: true
   items:
     - name: 'Určení, co koupit'
       items:

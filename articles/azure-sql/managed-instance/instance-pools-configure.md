@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 9bd98d69c9a941e8da08fc7ab798c37b1a22f0bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5ee1f1fbd55bfa44f78f2d1f0129b60be8ea34c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325177"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Nasazení spravované instance Azure SQL do fondu instancí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,16 +30,16 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
-|Vytvoření fondu instancí|No|Ano|
-|Aktualizace fondu instancí (omezený počet vlastností)|No |Ano |
-|Ověření využití fondu instancí a vlastností|No|Ano |
-|Odstranění fondu instancí|No|Ano|
-|Vytvoření spravované instance v rámci fondu instancí|No|Ano|
-|Aktualizace využití prostředků pro spravovanou instanci|Ano |Ano|
-|Zkontroluje využití a vlastnosti spravované instance.|Ano|Ano|
-|Odstranění spravované instance z fondu|Ano|Ano|
-|Vytvoření databáze v instanci v rámci fondu|Ano|Ano|
-|Odstranění databáze z spravované instance SQL|Ano|Ano|
+|Vytvoření fondu instancí|No|Yes|
+|Aktualizace fondu instancí (omezený počet vlastností)|No |Yes |
+|Ověření využití fondu instancí a vlastností|No|Yes |
+|Odstranění fondu instancí|No|Yes|
+|Vytvoření spravované instance v rámci fondu instancí|No|Yes|
+|Aktualizace využití prostředků pro spravovanou instanci|Yes |Yes|
+|Zkontroluje využití a vlastnosti spravované instance.|Yes|Yes|
+|Odstranění spravované instance z fondu|Yes|Yes|
+|Vytvoření databáze v instanci v rámci fondu|Yes|Yes|
+|Odstranění databáze z spravované instance SQL|Yes|Yes|
 
 Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/):
 

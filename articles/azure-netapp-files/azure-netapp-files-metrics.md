@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f83baf7a038ad8cf17421c778deccbc7dc389d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325551"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriky pro Azure NetApp Files
 
@@ -37,21 +37,24 @@ Azure NetApp Files poskytuje metriky přiděleného úložiště, skutečné vyu
 - *Velikost spotřebovaného fondu*  
     Celkový počet logických prostorů (GiB) používaných napříč svazky ve fondu kapacit.  
 
-- *Celková velikost snímku fondu*    
-    Součet velikosti snímku všech svazků ve fondu.
+- *Celková velikost snímku pro fond*    
+    Součet velikosti snímku ze všech svazků ve fondu.
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Metriky využití pro svazky
 
-<!--
-- *Volume Quota Size*    
-    The quota size (GiB) the volume is provisioned with.   
-    This size is the size you selected during capacity pool creation. 
+<!-- ANF-5023: fixed version: 2020.08, 2020.09
+- *Percentage Volume Consumed Size*    
+    The percentage of the volume consumed, including snapshots.  
 -->
+- *Velikost přiděleného svazku*   
+    Zřízená velikost svazku
+- *Velikost kvóty svazku*    
+    Velikost kvóty (GiB), se kterou je svazek zřízený.   
 - *Velikost spotřebovaného svazku*   
-    Celkové logické místo použité ve svazku (GiB).  
+    Logická velikost svazku (využitých bajtů).  
     Tato velikost zahrnuje logický prostor používaný aktivními systémy souborů a snímky.  
 - *Velikost snímku svazku*   
-   Přírůstkový logický prostor používaný snímky ve svazku.  
+   Velikost všech snímků ve svazku.  
 
 ## <a name="performance-metrics-for-volumes"></a>Metriky výkonu pro svazky
 
@@ -63,11 +66,28 @@ Azure NetApp Files poskytuje metriky přiděleného úložiště, skutečné vyu
     Počet čtení na svazek za sekundu.
 - *Zápis IOPS*   
     Počet zápisů na svazek za sekundu.
+- *Čtení MiB/s*   
+    Propustnost čtení v bajtech za sekundu.
+- *Zápis MiB/s*   
+    Propustnost zápisu v bajtech za sekundu.
+
+<!-- ANF-4128; 2020.07
+- *Pool Provisioned Throughput*   
+    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
+- *Pool Allocated to Volume Throughput*   
+    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
+-->
+
+<!-- ANF-6443; future
+- *Pool Consumed Throughput*    
+    The total throughput being consumed by volumes in a given capacity pool.
+-->
+
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Metriky replikace svazků
 
 - *Je stav replikace svazku v pořádku*   
-    Podmínka vztahu replikace. 
+    Podmínka vztahu replikace. Dobrý stav je označený `1` . Stav není v pořádku je označený `0` .
 
 - *Je přenos replikace svazků*    
     Určuje, jestli je stav replikace svazku "přenos". 

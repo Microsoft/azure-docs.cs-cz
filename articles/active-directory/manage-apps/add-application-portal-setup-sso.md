@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: nastavení jednotného přihlašování (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)'
-description: Tento rychlý Start vás provede procesem nastavení jednotného přihlašování (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD).
+title: 'Rychlý Start: nastavení jednotného přihlašování založeného na SAML (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)'
+description: Tento rychlý Start vás provede procesem nastavení jednotného přihlašování založeného na SAML (SSO) pro aplikace ve vašem tenantovi Azure Active Directory (Azure AD).
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,19 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 040cc2dfa48f24fff4c7dda2cb6010efb01e9b86
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d9ef069291f010db510d626ceda959a0342c39e2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300132"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305779"
 ---
-# <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: nastavení jednotného přihlašování (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)
+# <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: nastavení jednotného přihlašování založeného na SAML (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)
 
 Začněte s zjednodušeným přihlášením uživatelů nastavením jednotného přihlašování (SSO) pro aplikaci, kterou jste přidali do svého tenanta Azure Active Directory (Azure AD). Když nastavíte jednotné přihlašování, uživatelé se budou moct přihlašovat k aplikaci pomocí svých přihlašovacích údajů Azure AD. Jednotné přihlašování je součástí bezplatné edice služby Azure AD.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nastavení jednotného přihlašování pro aplikaci, kterou jste přidali do tenanta Azure AD, budete potřebovat:
 
@@ -38,7 +37,6 @@ K nastavení jednotného přihlašování pro aplikaci, kterou jste přidali do 
 >[!IMPORTANT]
 >K otestování kroků v tomto rychlém startu použijte neprodukční prostředí.
 
-
 ## <a name="enable-single-sign-on-for-an-app"></a>Povolení jednotného přihlašování pro aplikaci
 
 Po dokončení přidávání aplikace do tenanta služby Azure AD se zobrazí stránka přehled. Pokud konfigurujete aplikaci, která již byla přidána, podívejte se do prvního rychlého startu. Provede vás zobrazením aplikací přidaných do tenanta. 
@@ -47,6 +45,9 @@ Nastavení jednotného přihlašování pro aplikaci:
 
 1. Na portálu Azure AD vyberte **podnikové aplikace**. Pak vyhledejte a vyberte aplikaci, kterou chcete nastavit pro jednotné přihlašování.
 1. V části **Spravovat** vyberte **jednotné přihlašování** . otevře se podokno **jednotného přihlašování** pro úpravy.
+
+    > [!IMPORTANT]
+    > Pokud aplikace používá standard OpenID Connect (OIDC) pro jednotné přihlašování, neuvidíte v navigaci možnost jednotného přihlašování. Informace o tom, jak je nastavit, najdete v rychlém startu pro jednotné přihlašování založené na OIDC.
 
     :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="Snímek obrazovky zobrazující konfigurační stránku jednotného přihlašování na portálu Azure AD.":::
 
@@ -60,7 +61,6 @@ Nastavení jednotného přihlašování pro aplikaci:
     > Další informace o možnostech konfigurace SAML najdete v tématu [Konfigurace jednotného přihlašování založeného na SAML](configure-saml-single-sign-on.md).
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Snímek obrazovky s možností jednotného přihlašování v podnikovém předplatném na stránce s cenami GitHubu.":::
-
 
 > [!TIP]
 > Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).

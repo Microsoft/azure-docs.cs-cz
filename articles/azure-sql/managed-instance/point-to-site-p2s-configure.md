@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab, bonova, jovanpop
+ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a629d230d63506a163cac0c530a1a8fbfed9627f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325075"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Rychlý Start: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního prostředí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ Tento rychlý Start ukazuje, jak se připojit ke spravované instanci Azure SQL 
 
 Tento rychlý start:
 
-- Používá prostředky vytvořené v části [Vytvoření spravované instance](instance-create-quickstart.md) jako počáteční bod.
+- Používá prostředky vytvořené v části  [Vytvoření spravované instance](instance-create-quickstart.md) jako počáteční bod.
 - Vyžaduje PowerShell 5,1 a Azure PowerShell 1.4.0 nebo novější na místním klientském počítači. V případě potřeby si přečtěte pokyny k [instalaci modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module).
 - Vyžaduje nejnovější verzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) na místním klientském počítači.
 
@@ -65,7 +65,7 @@ Tento rychlý start:
 
 ## <a name="create-a-vpn-connection"></a>Vytvoření připojení VPN
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete skupinu prostředků, ve které jste vytvořili bránu virtuální sítě, a pak otevřete prostředek brány virtuální sítě.
 3. Vyberte **Konfigurace Point-to-site** a pak vyberte **stáhnout klienta VPN**.
 

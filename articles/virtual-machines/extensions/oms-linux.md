@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307445"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Rozšíření Log Analytics pro virtuální počítače pro Linux
 
@@ -32,7 +32,7 @@ Protokoly Azure Monitor poskytují možnosti monitorování, upozorňování a n
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -43,7 +43,7 @@ Následující tabulka poskytuje mapování verze Log Analyticsho rozšíření 
 
 | Verze rozšíření virtuálního počítače s Log Analytics Linux | Verze sady prostředků agenta Log Analytics | 
 |--------------------------------|--------------------------|
-| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0 – 9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -104,7 +104,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
@@ -211,7 +211,9 @@ Výstup spuštění rozšíření se zaznamená do následujícího souboru:
 | 19 | Chyba instalace balíčku OMI | 
 | 20 | Chyba instalace balíčku SCX |
 | 51 | Toto rozšíření není v operačním systému virtuálního počítače podporované. | |
-| 55 | Nelze se připojit ke službě Azure Monitor nebo chybí požadované balíčky nebo je správce balíčků bázi dpkg uzamčen.| Ověřte, že systém buď má přístup k Internetu, nebo jestli je zadaný platný proxy server HTTP. Dále zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalovány nástroje pro instalaci a vkládání. |
+| 52 | Toto rozšíření selhalo z důvodu chybějící závislosti. | Další informace o tom, která závislost chybí, najdete ve výstupu a v protokolech. |
+| 53 | Toto rozšíření se nepovedlo kvůli chybějícím nebo chybným parametrům konfigurace. | Další informace o chybě najdete ve výstupu a v protokolech. Dále zkontrolujte správnost ID pracovního prostoru a ověřte, zda je počítač připojen k Internetu. |
+| 55 | Nelze se připojit ke službě Azure Monitor nebo chybí požadované balíčky nebo je správce balíčků bázi dpkg uzamčen.| Ověřte, že systém buď má přístup k Internetu, nebo jestli je zadaný platný proxy server HTTP. Dále zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalovány nástroje pro kudrlinkou a tar. |
 
 Další informace o řešení potíží najdete v [Průvodci odstraňováním potíží s Log Analytics-agenty pro Linux](../../azure-monitor/platform/vmext-troubleshoot.md).
 

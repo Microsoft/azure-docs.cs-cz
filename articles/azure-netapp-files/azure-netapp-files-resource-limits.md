@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 9/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 870863cc0b1a98aa0efe671da4a8f6a5bb7f53aa
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708100"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325483"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -44,7 +44,9 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 |  Maximální velikost jednoho svazku     |    100 TiB    |    No    |
 |  Maximální velikost jednoho souboru     |    16 TiB    |    No    |    
 |  Maximální velikost metadat adresáře v jednom adresáři      |    320 MB    |    No    |    
-|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Yes    |   
+|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Yes    |    
+|  Minimální přiřazená propustnost pro ruční svazek technologie QoS     |    1 MiB/s   |    No    |    
+|  Maximální přiřazená propustnost pro ruční svazek technologie QoS     |    soubory MiB 4 500/s    |    No    |    
 |  Počet svazků ochrany dat replikace mezi oblastmi (cílové svazky)     |    5    |    Yes    |     
 
 Další informace najdete v tématu [Nejčastější dotazy ke správě kapacity](azure-netapp-files-faqs.md#capacity-management-faqs).

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324055"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -79,7 +79,7 @@ Přední dvířka Azure je globálně distribuovaná služba pro více tenantů.
 
 ### <a name="is-http-https-redirection-supported"></a>Je podporováno přesměrování HTTP->HTTPS?
 
-Yes. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
+Ano. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>V jakém pořadí jsou pravidla směrování zpracovaná?
 
@@ -99,6 +99,31 @@ Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrét
     > Back-endové IP místo pro front-endu se může později změnit, ale zajistíme, že budeme integrovat s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme, abyste se přihlásili k odběru [rozsahů IP adres Azure a značek služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro jakékoli změny nebo aktualizace.
 
 -    Proveďte operaci GET na front-dveřích s verzí rozhraní API `2020-01-01` nebo vyšší. V volání rozhraní API vyhledejte `frontdoorID` pole. Vyfiltrujte příchozí hlavičku**X-Azure-FDID**, kterou odeslala přední dvířka do back-endu, s hodnotou, která je v poli `frontdoorID` . Hodnotu můžete najít také `Front Door ID` v části Přehled na stránce portálu front dveří. 
+
+- Na webovém serveru back-end použijte filtrování pravidel pro omezení provozu na základě výsledné hodnoty hlavičky X-Azure-FDID.
+
+  Tady je příklad pro [Microsoft Internetová informační služba (IIS)](https://www.iis.net/):
+
+    ``` xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="Filter_X-Azure-FDID" patternSyntax="Wildcard" stopProcessing="true">
+                        <match url="*" />
+                        <conditions>
+                            <add input="{HTTP_X_AZURE_FDID}" pattern="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" negate="true" />
+                        </conditions>
+                        <action type="AbortRequest" />
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Může se IP adresa libovolného vysílání změnit během životnosti mých front-dveří?
 
@@ -132,6 +157,10 @@ Přední dvířka Azure (AFD) vyžadují pro směrování provozu veřejnou IP a
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Jaké jsou různé časové limity a omezení pro přední dveře Azure?
 
 Přečtěte si o všech dokumentovaných [časových limitech a omezeních pro přední dveře Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
+
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Jak dlouho trvá, než se pravidlo projeví po přidání do modulu pravidel pro přední dveře?
+
+Dokončení aktualizace v konfiguraci modulu pravidel trvá přibližně 10 až 15 minut. Můžete očekávat, že se pravidlo projeví až po dokončení aktualizace. 
 
 ## <a name="performance"></a>Výkon
 

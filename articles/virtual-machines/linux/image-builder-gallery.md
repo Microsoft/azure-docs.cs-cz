@@ -1,6 +1,6 @@
 ---
 title: Použití Azure image Builder & Galerie sdílených imagí pro virtuální počítače se systémem Linux (Preview)
-description: Vytvářejte image virtuálních počítačů se systémem Linux pomocí nástroje Azure image Builder a galerie sdílených imagí.
+description: Naučte se používat Azure image Builder a Azure CLI k vytvoření verze image v galerii sdílených imagí a pak image distribuovat globálně.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 1eeb8df2605bbe63fe72c5bd451b43111322a7f6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bab5a86cdf8e3fa6b17866fe4088b28ed3ece6f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500908"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307292"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření image pro Linux a její distribuce do galerie sdílených imagí 
 

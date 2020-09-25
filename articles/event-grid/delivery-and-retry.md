@@ -3,12 +3,12 @@ title: Azure Event Grid doručování a opakování
 description: Popisuje, jak Azure Event Grid doručuje události a jak zpracovává nedoručené zprávy.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 924abaa1e5c12c4477bddf888541e7414b7bdbec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324089"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
@@ -89,11 +89,151 @@ Event Grid pošle událost do umístění nedoručených zpráv, když se pokus�
 
 Poslední pokus o doručení události a při jejím doručování do umístění nedoručených zpráv je prodleva pět minut. Toto zpoždění má za cíl snížit počet operací BLOB Storage. Pokud umístění nedoručených zpráv není k dispozici po dobu čtyř hodin, událost se zahozena.
 
-Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Koncový bod pro tento kontejner zadáte při vytváření odběru události. Koncový bod je ve formátu:`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Koncový bod pro tento kontejner zadáte při vytváření odběru události. Koncový bod je ve formátu: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Po odeslání události do umístění nedoručených zpráv můžete chtít být upozorněni. Pokud chcete použít Event Grid k reakci na nedoručené události, [Vytvořte odběr událostí](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) pro úložiště objektů BLOB s nedoručenými písmeny. Pokaždé, když úložiště BLOB nedoručených zpráv obdrží nedoručenou událost, Event Grid upozorní vaši obslužnou rutinu. Obslužná rutina reaguje na akce, které chcete provést pro sjednocení nedoručených událostí.
+Po odeslání události do umístění nedoručených zpráv můžete chtít být upozorněni. Pokud chcete použít Event Grid k reakci na nedoručené události, [Vytvořte odběr událostí](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) pro úložiště objektů BLOB s nedoručenými písmeny. Pokaždé, když úložiště BLOB nedoručených zpráv obdrží nedoručenou událost, Event Grid upozorní vaši obslužnou rutinu. Obslužná rutina reaguje na akce, které chcete provést pro sjednocení nedoručených událostí. Příklad nastavení umístění nedoručeného písmen a zásad opakování najdete v tématu [zásady nedoručených zpráv a opakování](manage-event-delivery.md).
 
-Příklad nastavení umístění nedoručených zpráv najdete v tématu [zásady nedoručených zpráv a opakování](manage-event-delivery.md).
+## <a name="delivery-event-formats"></a>Formáty událostí doručení
+V této části najdete příklady událostí a nedoručených událostí v různých formátech schématu doručení (Event Grid schéma, schéma CloudEvents 1,0 a vlastní schéma). Další informace o těchto formátech najdete v článku [Event Grid schématu](event-schema.md) a [cloudové události 1,0](cloud-event-schema.md) . 
+
+### <a name="event-grid-schema"></a>Schéma služby Event Grid
+
+#### <a name="event"></a>Událost 
+```json
+{
+    "id": "93902694-901e-008f-6f95-7153a806873c",
+    "eventTime": "2020-08-13T17:18:13.1647262Z",
+    "eventType": "Microsoft.Storage.BlobCreated",
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/000000000-0000-0000-0000-00000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.Storage/storageAccounts/myegteststgfoo",
+    "subject": "/blobServices/default/containers/deadletter/blobs/myBlobFile.txt",    
+    "data": {
+        "api": "PutBlob",
+        "clientRequestId": "c0d879ad-88c8-4bbe-8774-d65888dc2038",
+        "requestId": "93902694-901e-008f-6f95-7153a8000000",
+        "eTag": "0x8D83FACDC0C3402",
+        "contentType": "text/plain",
+        "contentLength": 0,
+        "blobType": "BlockBlob",
+        "url": "https://myegteststgfoo.blob.core.windows.net/deadletter/myBlobFile.txt",
+        "sequencer": "00000000000000000000000000015508000000000005101c",
+        "storageDiagnostics": { "batchId": "cfb32f79-3006-0010-0095-711faa000000" }
+    }
+}
+```
+
+#### <a name="dead-letter-event"></a>Nedoručená událost
+
+```json
+{
+    "id": "93902694-901e-008f-6f95-7153a806873c",
+    "eventTime": "2020-08-13T17:18:13.1647262Z",
+    "eventType": "Microsoft.Storage.BlobCreated",
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.Storage/storageAccounts/myegteststgfoo",
+    "subject": "/blobServices/default/containers/deadletter/blobs/myBlobFile.txt",    
+    "data": {
+        "api": "PutBlob",
+        "clientRequestId": "c0d879ad-88c8-4bbe-8774-d65888dc2038",
+        "requestId": "93902694-901e-008f-6f95-7153a8000000",
+        "eTag": "0x8D83FACDC0C3402",
+        "contentType": "text/plain",
+        "contentLength": 0,
+        "blobType": "BlockBlob",
+        "url": "https://myegteststgfoo.blob.core.windows.net/deadletter/myBlobFile.txt",
+        "sequencer": "00000000000000000000000000015508000000000005101c",
+        "storageDiagnostics": { "batchId": "cfb32f79-3006-0010-0095-711faa000000" }
+    },
+
+    "deadLetterReason": "MaxDeliveryAttemptsExceeded",
+    "deliveryAttempts": 1,
+    "lastDeliveryOutcome": "NotFound",
+    "publishTime": "2020-08-13T17:18:14.0265758Z",
+    "lastDeliveryAttemptTime": "2020-08-13T17:18:14.0465788Z" 
+}
+```
+
+### <a name="cloudevents-10-schema"></a>Schéma CloudEvents 1,0
+
+#### <a name="event"></a>Událost
+
+```json
+{
+    "id": "caee971c-3ca0-4254-8f99-1395b394588e",
+    "source": "mysource",
+    "dataversion": "1.0",
+    "subject": "mySubject",
+    "type": "fooEventType",
+    "datacontenttype": "application/json",
+    "data": {
+        "prop1": "value1",
+        "prop2": 5
+    }
+}
+```
+
+#### <a name="dead-letter-event"></a>Nedoručená událost
+
+```json
+{
+    "id": "caee971c-3ca0-4254-8f99-1395b394588e",
+    "source": "mysource",
+    "dataversion": "1.0",
+    "subject": "mySubject",
+    "type": "fooEventType",
+    "datacontenttype": "application/json",
+    "data": {
+        "prop1": "value1",
+        "prop2": 5
+    },
+
+    "deadletterreason": "MaxDeliveryAttemptsExceeded",
+    "deliveryattempts": 1,
+    "lastdeliveryoutcome": "NotFound",
+    "publishtime": "2020-08-13T21:21:36.4018726Z",
+}
+```
+
+### <a name="custom-schema"></a>Vlastní schéma
+
+#### <a name="event"></a>Událost
+
+```json
+{
+    "prop1": "my property",
+    "prop2": 5,
+    "myEventType": "fooEventType"
+}
+
+```
+
+#### <a name="dead-letter-event"></a>Nedoručená událost
+```json
+{
+    "id": "8bc07e6f-0885-4729-90e4-7c3f052bd754",
+    "eventTime": "2020-08-13T18:11:29.4121391Z",
+    "eventType": "myEventType",
+    "dataVersion": "1.0",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/00000000000-0000-0000-0000-000000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.EventGrid/topics/myCustomSchemaTopic",
+    "subject": "subjectDefault",
+  
+    "deadLetterReason": "MaxDeliveryAttemptsExceeded",
+    "deliveryAttempts": 1,
+    "lastDeliveryOutcome": "NotFound",
+    "publishTime": "2020-08-13T18:11:29.4121391Z",
+    "lastDeliveryAttemptTime": "2020-08-13T18:11:29.4277644Z",
+  
+    "data": {
+        "prop1": "my property",
+        "prop2": 5,
+        "myEventType": "fooEventType"
+    }
+}
+```
+
 
 ## <a name="message-delivery-status"></a>Stav doručení zprávy
 
@@ -117,7 +257,7 @@ Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), jsou 
 | ------------|----------------|
 | 400 – Chybný požadavek | Zkuste to znovu po 5 minutách a dalších (nedoručených zpráv hned po nastavení nedoručených zpráv) |
 | 401 – Neautorizováno | Zkusit znovu za 5 minut nebo déle |
-| 403 – Zakázáno | Zkusit znovu za 5 minut nebo déle |
+| 403 zakázané | Zkusit znovu za 5 minut nebo déle |
 | 404 Nenalezeno | Zkusit znovu za 5 minut nebo déle |
 | 408 – Časový limit žádosti | Opakovat po 2 nebo více minutách |
 | Entita požadavku 413 je moc velká. | Opakovat po 10 sekundách nebo dalších (nedoručené zprávy hned po nastavení nedoručených zpráv) |

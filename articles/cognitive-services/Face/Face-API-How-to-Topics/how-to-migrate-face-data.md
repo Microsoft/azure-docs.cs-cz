@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d52cd57d48a03c5dab8cb8098cd212e76ca76a1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6f6b2ed9357acf4dceeb960b1abdf6813987f657
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324888"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace vašich obličejových dat na jiný obličejový odběr
 
@@ -24,7 +24,7 @@ V této příručce se dozvíte, jak přesunout data obličeje, jako je uložen�
 
 Tato strategie migrace se vztahuje také na objekty LargePersonGroup a LargeFaceList. Pokud nejste obeznámeni s koncepty v této příručce, přečtěte si téma jejich definice v příručce věnovaném [koncepcím rozpoznávání obličeje](../concepts/face-recognition.md) . Tato příručka používá klientskou knihovnu rozhraní .NET s jazykem C#.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Potřebujete následující položky:
 
@@ -237,4 +237,3 @@ Dále si přečtěte relevantní referenční dokumentaci k rozhraní API, prozk
 - [Ukázka snímku obličeje](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Přidání tváří](how-to-add-faces.md)
 - [Rozpoznávání tváří na obrázku](HowtoDetectFacesinImage.md)
-- [Identifikace plošek v obrázku](HowtoIdentifyFacesinImage.md)

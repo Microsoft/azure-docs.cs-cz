@@ -3,16 +3,16 @@ title: Azure Defender pro úložiště – výhody a funkce
 description: Seznamte se s výhodami a funkcemi Azure Defenderu pro úložiště.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 31d1bde1555f98164ccba32d4615ba51837c5ef7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c47c1cd464c9dc0ac8dc78f5d6f91f33481922a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307513"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Seznámení se službou Azure Defender pro službu Storage
 

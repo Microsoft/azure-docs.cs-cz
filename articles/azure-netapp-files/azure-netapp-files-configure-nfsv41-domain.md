@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: dda911add42568e76160e4233502a1f4f550520d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483716"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325619"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Konfigurace výchozí domény NFSv4.1 pro Azure NetApp Files
 
@@ -32,7 +32,7 @@ Výchozí mapování je nastaveno na hodnotu `nobody` uživatel, protože domén
 
 Jak ukazuje výše uvedený příklad, uživatel `file1` by měl mít `root` hodnotu, ale `nobody` ve výchozím nastavení je namapován.  V tomto článku se dozvíte, jak nastavit `file1` uživatele na `root` .  
 
-## <a name="steps"></a>Kroky 
+## <a name="steps"></a>Postup 
 
 1. Upravte `/etc/idmapd.conf` soubor v klientovi NFS.   
     Odkomentujte řádek `#Domain` (to znamená, odeberte `#` z řádku) a změňte hodnotu `localdomain` na `defaultv4iddomain.com` . 
@@ -54,7 +54,7 @@ Jak ukazuje výše uvedený příklad, uživatel `file1` by měl mít `root` hod
 
 Následující příklad ukazuje výslednou změnu uživatele nebo skupiny: 
 
-![Výsledná konfigurace pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![Snímek obrazovky, který ukazuje příklad výsledné změny uživatele nebo skupiny.](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
 Jak ukazuje příklad, uživatel nebo skupina se teď změnil z `nobody` na `root` .
 
@@ -64,7 +64,7 @@ Azure NetApp Files podporuje místní uživatele (uživatele vytvořené místn�
 
 V následujícím příkladu `Host1` má tři existující zkušební uživatelské účty ( `testuser01` , `testuser02` , `testuser03` ): 
 
-![Výsledná konfigurace pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![Snímek obrazovky, který ukazuje, že Hostitel1 má tři existující testovací uživatelské účty.](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
 `Host2`Všimněte si, že jste nevytvořili účty testovacích uživatelů, ale stejný svazek je připojen na oba hostitele:
 

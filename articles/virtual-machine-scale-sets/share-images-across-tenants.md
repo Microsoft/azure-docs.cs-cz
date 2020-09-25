@@ -1,6 +1,6 @@
 ---
-title: Sdílení imagí Galerie napříč klienty v Azure
-description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí.
+title: Sdílení imagí Galerie mezi klienty
+description: Naučte se vytvářet sady škálování pomocí imagí sdílených napříč klienty Azure pomocí galerií sdílených imagí.
 author: cynthn
 ms.author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.subservice: imaging
 ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: 542dfbc28621e02cd2842fb174e986bfeb91e6ec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea61b3bd76fc4ada48a8a2fb734a841b8a969272
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501674"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323477"
 ---
-# <a name="share-gallery-vm-images-across-tenants-in-azure"></a>Sdílení imagí virtuálních počítačů Galerie mezi klienty v Azure
+# <a name="share-images-across-tenants-with-shared-image-gallery"></a>Sdílení imagí napříč klienty pomocí Galerie sdílených imagí
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -51,4 +51,4 @@ az vmss create \
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud narazíte na nějaké problémy, můžete [řešit problémy s galerií sdílených imagí](troubleshooting-shared-images.md).
+Pokud narazíte na nějaké problémy, můžete [řešit problémy s galerií sdílených imagí](../virtual-machines/troubleshooting-shared-images.md).

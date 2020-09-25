@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c8497d50f86155ef7df0de995864e74753542750
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: b037eec13fda0b5ec16a4f2f53ad2a64fb5f8da1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275553"
 ---
 # <a name="url-rewriter"></a>Přepisovač adres URL #
 
@@ -33,7 +33,7 @@ Pokud ale chcete přepsat adresu URL, můžete to udělat tak, že `disableUrlRe
     </video>
 ```
 
-– nebo –
+nebo
 
 ```javascript
     myPlayer.src([
@@ -50,7 +50,7 @@ Pokud chcete, můžete také zadat konkrétní formáty streamování, které ch
     </video>
 ```
 
-– nebo –
+nebo
 
 ```javascript
     myPlayer.src([

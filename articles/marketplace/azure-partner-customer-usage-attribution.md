@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261375"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -266,41 +266,9 @@ Když tuto šablonu nasadíte, Microsoft dokáže identifikovat instalaci \<PART
 
 Když nasadíte \<PARTNER> software, společnost Microsoft dokáže identifikovat instalaci \<PARTNER> softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter .
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-Existují dva kanály podpory v závislosti na problémech, které máte k dispozici.
-
-Pokud narazíte na nějaké problémy v partnerském centru, jako je například zobrazení sestavy týkající se zákaznického používání nebo přihlašování, vytvořte žádost o podporu pomocí týmu podpory partnerského centra, který najdete tady: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
-
-![Snímek obrazovky se stránkou pro získání podpory](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-Pokud potřebujete pomoc s registrací na tržišti a/nebo s uvedením údajů o využití zákazníka, jako je například nastavení označení zákaznického využití, postupujte podle následujících kroků:
-
-1. Přejít na [stránku podpory](https://go.microsoft.com/fwlink/?linkid=844975).
-
-1. V části **typ problému**vyberte možnost **připojování Marketplace**.
-
-1. Vyberte **kategorii** problému:
-
-   - V případě problémů s přidružením využití vyberte **jiné**.
-   - Pro problémy s přístupem k Azure Marketplace vyberte **problém s přístupem**.
-
-     ![Výběr kategorie problému](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. Vyberte možnost **Spustit požadavek**.
-
-1. Na další stránce zadejte požadované hodnoty. Vyberte **pokračovat**.
-
-1. Na další stránce zadejte požadované hodnoty.
-
-   > [!IMPORTANT]
-   > Do pole **název incidentu** zadejte **sledování využívání ISV**. Podrobně popište svůj problém.
-
-   ![Zadat sledování využití ISV pro název incidentu](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. Vyplňte formulář a pak vyberte **Odeslat**.
-
-Můžete také získat technické pokyny od Microsoft Partner Technical konzultanta k technickým scénářům pro účely předprodeji, nasazení a vývoje aplikací, které vám pomůžou pochopit a začlenit jejich přidělení.
+Seznamte se s možnostmi podpory na komerčním tržišti v části [Podpora programu komerčního tržiště v partnerském centru](./partner-center-portal/support.md).
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Odeslání žádosti o technickou spolupráci
 
@@ -319,7 +287,7 @@ Prohlédněte si podrobné pokyny k snímkům obrazovky s [použitím služeb te
 
 Obraťte se na partnera Microsoftu, který vám poskytne odborného technického konzultanta k nastavení volání podle rozsahu vašich potřeb.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Jaké jsou výhody přidání identifikátoru GUID do šablony?**
 

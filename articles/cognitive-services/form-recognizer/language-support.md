@@ -6,31 +6,29 @@ services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: immersive-reader
+ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 6cf0c73876d6d261ba25f32fd5112abaf253acdf
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: ba89db30e11b35840adada8fdfa6a9d15e0e79d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324480"
 ---
 # <a name="language-support-for-form-recognizer"></a>Jazyková podpora pro rozpoznávání formulářů
 
-V tomto článku jsou uvedené lidské jazyky, které podporuje služba pro rozpoznávání formulářů (Preview).
+V tomto článku jsou uvedené lidské jazyky, které podporuje služba pro rozpoznávání formulářů.
 
 
-|Jazyk| Kód jazyka | Nástroj pro rozpoznávání formulářů v 2.0 | Nástroj pro rozpoznávání formulářů v 2.1 Public Preview \*|
+|Jazyk| Kód jazyka | Nástroj pro rozpoznávání formulářů v 2.0 | Nástroj pro rozpoznávání formulářů v 2.1 Preview|
 |:-----|:----:|:-----:|:---:|
 |Čínština (zjednodušená) | `zh-Hans`| | ✔ |
 |Nizozemština | `nl` | | ✔ |
-|Angličtina (vytištěno & ručně) | `en` | ✔ | |
+|Angličtina (vytištěno & ručně) | `en` | ✔ | ✔|
 |Francouzština | `fr` | | ✔ |
 |Němčina | `de` | | ✔ |
 |Italština | `it` | | ✔ |
 |Portugalština | `pt` | | ✔ |
-|španělština | `es` | | ✔ |
-
-\* Nástroj pro rozpoznávání formulářů v 2.1 Public Preview podporuje tyto jazyky pro rozložení a vlastní. Předem připravená příjem a předem sestavená obchodní karta jsou podporovány pouze v angličtině.
+|Španělština | `es` | | ✔ |

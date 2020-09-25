@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: ''
 ms.date: 09/03/2020
 ms.author: pimorano
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 99f4471a3b64990fb71341dc8210bf7f8e5b0d5a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.reviewer: jrasnick
+ms.openlocfilehash: cbf7fb8deba86dd966ccb8087823c76b20413db8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260355"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure synapse pomocí Azure Portal.
@@ -30,7 +30,7 @@ Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure sy
     |Základy|**Název pracovního prostoru**|Můžete si je pojmenovat.| V tomto dokumentu budeme používat **MyWorkspace**.|
     |Základy|**Oblast**|Porovnává s oblastí účtu úložiště.|
 
-1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2. Nejjednodušší volbou je vytvořit nové. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
+1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2. Nejjednodušší volbou je vytvoření nového. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
 1. MOŽNOST 1 Vytvoření nového účtu ADLSGEN2 
     1. V části **vybrat data Lake Storage Gen 2**klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
     1. V části **vybrat data Lake Storage obecné 2**klikněte na **systém souborů** a pojmenujte ho **Uživatelé**.

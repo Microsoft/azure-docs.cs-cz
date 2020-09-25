@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302498"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co jsou Azure Machine Learning prostředí?
 
@@ -85,7 +85,7 @@ Druhý krok se vynechá, pokud zadáte [závislosti spravované uživatelem](htt
 
 Použijete-li stejnou definici prostředí pro jiný běh, služba Azure Machine Learning znovu použije obrázek uložený v mezipaměti z pracovního prostoru ACR. 
 
-Chcete-li zobrazit podrobnosti obrázku v mezipaměti, použijte metodu [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) .
+Chcete-li zobrazit podrobnosti obrázku v mezipaměti, použijte metodu [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) .
 
 Aby bylo možné určit, zda znovu použít bitovou kopii v mezipaměti nebo vytvořit novou, služba vypočítá [hodnotu hash](https://en.wikipedia.org/wiki/Hash_table) z definice prostředí a porovná ji s hodnotami hash stávajících prostředí. Hodnota hash je založena na:
  
@@ -108,10 +108,10 @@ Následující diagram znázorňuje tři definice prostředí. Dva z nich mají 
 Chcete-li aktualizovat balíček, zadejte číslo verze pro vynucení opětovného sestavení bitové kopie, například ```numpy==1.18.1``` . Budou nainstalovány nové závislosti, včetně vnořených, které mohou přerušit předchozí pracovní scénář. 
 
 > [!WARNING]
->  Metoda [prostředí. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) znovu sestaví bitovou kopii v mezipaměti s případným vedlejším účinkem aktualizace nepřipnutých balíčků a zásadní reprodukovatelnosti pro všechny definice prostředí odpovídající tomuto obrázku v mezipaměti.
+>  Metoda [prostředí. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=truebuild-workspace--image-build-compute-none-) znovu sestaví bitovou kopii v mezipaměti s případným vedlejším účinkem aktualizace nepřipnutých balíčků a zásadní reprodukovatelnosti pro všechny definice prostředí odpovídající tomuto obrázku v mezipaměti.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Naučte se [vytvářet a používat prostředí](how-to-use-environments.md) v Azure Machine Learning.
-* Viz Referenční dokumentace sady Python SDK pro [třídu prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true).
+* Viz Referenční dokumentace sady Python SDK pro [třídu prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true).
 * Podívejte se na referenční dokumentaci sady R SDK pro [prostředí](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments).

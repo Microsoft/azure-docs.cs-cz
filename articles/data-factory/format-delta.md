@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044524"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276497"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Rozdílový formát v Azure Data Factory
 
@@ -35,12 +35,13 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované rozdílovým zdro
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formát | Formát musí být`delta` | ano | `delta` | formát |
+| Formát | Formát musí být `delta` | ano | `delta` | formát |
 | Systém souborů | Kontejner/souborový systém rozdílových Lake | ano | Řetězec | Systému souborů |
 | Cesta ke složce | Přímo na rozdíl od rozdílových Lake | ano | Řetězec | folderPath |
 | Typ komprese | Typ komprese tabulky Delta | ne | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | Argument |
 | Úroveň komprese | Vyberte, jestli se komprese dokončí co nejrychleji, nebo jestli se má výsledný soubor optimálně komprimovat. | požadováno `compressedType` , pokud je zadáno. | `Optimal` nebo `Fastest` | compressionLevel |
 | Doba jízdy | Vyberte, jestli se má dotazovat na starší snímek tabulky Delta. | ne | Dotaz podle časového razítka: časové razítko <br> Dotaz podle verze: celé číslo | timestampAsOf <br> versionAsOf |
+| Nenalezeny žádné soubory | Pokud je nastaveno na true, chyba není vyvolána, pokud nebyly nalezeny žádné soubory. | ne | `true` nebo `false` | ignoreNoFilesFound |
 
 #### <a name="import-schema"></a>Importovat schéma
 
@@ -71,7 +72,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které jsou podporovány rozd
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formát | Formát musí být`delta` | ano | `delta` | formát |
+| Formát | Formát musí být `delta` | ano | `delta` | formát |
 | Systém souborů | Kontejner/souborový systém rozdílových Lake | ano | Řetězec | Systému souborů |
 | Cesta ke složce | Přímo na rozdíl od rozdílových Lake | ano | Řetězec | folderPath |
 | Typ komprese | Typ komprese tabulky Delta | ne | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | Argument |

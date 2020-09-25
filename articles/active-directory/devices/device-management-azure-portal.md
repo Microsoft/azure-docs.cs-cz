@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9efb3b451f6fc6c70c5d9ec346132bfc763ca28
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705771"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278852"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
 
 Azure AD poskytuje centrální místo pro správu identit zařízení.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**  >  **zařízení**.
-
-[![Zobrazení všech zařízení v Azure Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
 Stránka **všechna zařízení** vám umožní:
 
@@ -38,6 +33,13 @@ Stránka **všechna zařízení** vám umožní:
 - Nakonfigurujte nastavení identity zařízení.
 - Povolí nebo zakáže Enterprise State Roaming.
 - Kontrola protokolů auditu souvisejících se zařízením
+
+[![Zobrazení všech zařízení v Azure Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
+
+Přístup k portálu zařízení získáte pomocí následujících kroků:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Azure Active Directory**  >  **zařízení**.
 
 ## <a name="manage-devices"></a>Správa zařízení
 
@@ -146,6 +148,13 @@ Teď budete mít možnost **Přidat filtry** do zobrazení **všechna zařízen�
 ## <a name="configure-device-settings"></a>Konfigurace nastavení zařízení
 
 Pokud chcete spravovat identity zařízení pomocí portálu Azure AD, musí být tato zařízení [zaregistrovaná nebo připojená](overview.md) k Azure AD. Jako správce můžete řídit proces registrace a připojení zařízení pomocí konfigurace následujících nastavení zařízení.
+
+Chcete-li zobrazit nebo spravovat nastavení zařízení v Azure Portal, je nutné přiřadit jednu z následujících rolí:
+
+- Globální správce
+- Správce cloudového zařízení
+- Globální čtenář
+- Čtečka adresářů
 
 ![Nastavení zařízení související s Azure AD](./media/device-management-azure-portal/device-settings-azure-portal.png)
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 751fbbb83f1ccb75cb84453f8c03296f6d1a786c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647829"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275775"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Ověření image virtuálního počítače Azure
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak otestovat a odeslat image virtuálního počítače
 
 Před odesláním nabídky virtuálního počítače dokončete tyto kroky:
 
-- Nasaďte virtuální počítač Azure pomocí generalizované image.
+- Nasaďte virtuální počítač Azure pomocí generalizované image. Další informace o [zobecněných obrázcích](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-vm-technical-asset#generalize-the-image)najdete tady.
 - Spusťte ověřování.
 
 ## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Nasazení virtuálního počítače Azure pomocí generalizované image
@@ -31,7 +31,7 @@ Tato část popisuje, jak nasadit zobecněnou image virtuálního pevného disku
 
 Tato část popisuje, jak vytvořit a nasadit image virtuálního počítače (VM) zadaného uživatelem. To můžete provést tak, že zadáte image virtuálního pevného disku operačního systému a datového disku z virtuálního pevného disku nasazeného v Azure. Tyto kroky nasadí virtuální počítač pomocí zobecněného virtuálního pevného disku.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Nahrajte na účet Azure Storage svůj zobecněný virtuální pevný disk s operačním systémem a virtuální pevné disky s daty.
 3. Na domovské stránce vyberte **vytvořit prostředek**, vyhledejte "nasazení šablony" a vyberte **vytvořit**.
 4. **V editoru vyberte vytvořit vlastní šablonu**.
@@ -599,7 +599,9 @@ Po dokončení automatizovaného testu zadejte další informace o imagi virtuá
 
 Poslední obrazovka vám umožní zadat další informace, například informace o přístupu SSH pro image virtuálního počítače se systémem Linux, a vysvětlení všech neúspěšných posouzení, pokud hledáte výjimky.
 
-Nakonec vyberte možnost generovat sestavu pro stažení výsledků testů a souborů protokolu pro provedené testovací případy spolu s vašimi odpověďmi na dotazník. Výsledky uložte do stejného kontejneru jako vaše virtuální pevné disky.
+Nakonec vyberte možnost generovat sestavu pro stažení výsledků testů a souborů protokolu pro provedené testovací případy spolu s vašimi odpověďmi na dotazník. 
+> [!Note]
+> Někteří vydavatelé mají scénáře, kdy je potřeba, aby virtuální počítače byly uzamčené, protože mají na virtuálním počítači nainstalovaný software, jako jsou třeba brány firewall. V takovém případě mohou vydavatelé stáhnout [Nástroj certifikovaný test](https://aka.ms/AzureCertificationTestTool) a poskytnout zprávu na [webu Marketplace podpora vydavatelů](https://aka.ms/marketplacepublishersupport) .
 
 ## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Použití PowerShellu ke využívání rozhraní API pro samočinné testování
 

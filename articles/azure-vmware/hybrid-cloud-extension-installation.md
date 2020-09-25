@@ -1,18 +1,18 @@
 ---
-title: Instalace hybridního cloudového rozšíření (HCX)
-description: Nastavení řešení HCX (VMware Hybrid Cloud Extension) pro privátní cloud řešení Azure VMware
+title: Nainstalovat VMware HCX
+description: Nastavení řešení VMware HCX pro privátní cloud řešení Azure VMware
 ms.topic: how-to
-ms.date: 07/15/2020
-ms.openlocfilehash: fb8497af33b364c1d2ab475233bd2a83ef1befad
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/24/2020
+ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752313"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263197"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMware pro Azure
 
-V tomto článku se seznámíme s postupy pro nastavení řešení VMWare Hybrid Cloud Extension (HCX) pro váš privátní cloud řešení Azure VMWare. HCX umožňuje migrovat úlohy VMware do cloudu a další připojené lokality prostřednictvím různých integrovaných typů migrace HCX.
+V tomto článku Vás provedeme postupy pro nastavení řešení VMWare HCX pro privátní cloud řešení Azure VMWare. HCX umožňuje migrovat úlohy VMware do cloudu a další připojené lokality prostřednictvím různých integrovaných typů migrace HCX.
 
 HCX Advanced – výchozí instalace podporuje až tři připojení lokality (v místním prostředí nebo cloudu do cloudu). Pokud potřebujete víc než tři připojení lokalit, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory, která je aktuálně ve verzi Preview. HCX Enterprise přináší zákazníkům po obecné dostupnosti další poplatky (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
@@ -40,7 +40,7 @@ Po dokončení instalace můžete postupovat podle doporučených dalších krok
 
 Při přípravě na použití řešení Azure VMware pro privátní cloud HCX je zásadní krok plánování pro změnu velikosti úloh na výpočetní prostředky a prostředky úložiště. Vyřešte krok změny velikosti jako součást prvotního plánování prostředí privátního cloudu. 
 
-Velikost úloh můžete také provádět provedením posouzení řešení Azure VMware na portálu Azure Migrate ( https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) .
+Velikost úloh můžete také provádět provedením [posouzení řešení Azure VMware](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) na portálu Azure Migrate.
 
 ## <a name="software-version-requirements"></a>Požadavky na verzi softwaru
 
@@ -53,7 +53,7 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 | NSX    | Pro HCX síťové rozšíření logických přepínačů ve zdroji: NSXv 6.2 + nebo NSX-T 2.4 +   | NSXv 6.2 + nebo NSX-T 2.4 +<br/><br/>Pro směrování blízkosti HCX: NSXv 6.4 + (pro NSX-T není podporováno směrování blízkosti). |
 | vCloud ředitel   | Nepožadováno – bez interoperability s vCloud ředitelem ve zdrojové lokalitě | Při integraci cílového prostředí s vCloud Directorem je minimum 9.1.0.2.  |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * ExpressRoute Global Reach by měly být nakonfigurované mezi místními a SDDC ExpressRoutemi okruhy v rámci řešení Azure VMware.
 
@@ -67,15 +67,13 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>Nasazení HCX vajíček v místním prostředí VMware
 
+1. Přihlaste se ke službě Azure VMware Solution Manager HCX Manager na `https://x.x.x.9` portu 443 s přihlašovacími údaji uživatele **cloudadmin** a pak pokračujte na **podporu**.
+
+1. Vyberte odkaz ke stažení pro soubor VMware HCX vajíček. 
+
 1. Přihlaste se k Azure VMware Solution SDDC vCenter a vyberte **HCX**.
-
-   :::image type="content" source="media/hybrid-cloud-extension-installation/avs-vsphere-client.png" alt-text="Přihlaste se k Azure VMware Solution SDDC vCenter a vyberte HCX.":::
-
-1. V části **Správa**vyberte možnost **aktualizace systému** a pak vyberte **odkaz pro stažení požadavku** . Stáhněte si soubor VMware HCX vajíček.
-
-   :::image type="content" source="media/hybrid-cloud-extension-installation/administration-updates.png" alt-text="V části Správa vyberte možnost aktualizace systému a pak vyberte odkaz pro stažení požadavku. Stáhněte si soubor VMware HCX vajíček.":::
-
-1. Pak přejdete na místní Server vCenter a vyberte šablonu OVF, která se nasadí do místního serveru vCenter.  
+   
+1. Přejít na místní Server vCenter a vybrat šablonu OVF, která se nasadí do místního serveru vCenter.  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="Pak přejdete na místní Server vCenter a vyberte šablonu OVF, která se nasadí do místního serveru vCenter.":::
 
@@ -95,7 +93,7 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 
 Po instalaci proveďte následující kroky.
 
-1. Přihlaste se k místnímu HCX Manageru `https://HCXManagerIP:9443` a přihlaste se pomocí svého uživatelského jména a hesla. 
+1. Přihlaste se k místnímu HCX Manageru `https://HCXManagerIP:9443` a přihlaste se pomocí přihlašovacích údajů pro uživatelské jméno **správce** . 
 
    > [!IMPORTANT]
    > Nezapomeňte zahrnout `9443` číslo portu s IP adresou HCX Manageru.

@@ -10,12 +10,12 @@ ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: cdcd11b6bd9c773e8018ee303564fff6abd098a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c056db21eea2d87471c80ea7c4811eed418fcbd0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494900"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323460"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Vytvoření a použití sdílených imagí pro Virtual Machine Scale Sets pomocí Azure CLI 2,0
 
@@ -31,4 +31,4 @@ Galerie sdílených imagí umožňuje sdílet obrázky s ostatními. Vyberte, kt
 
 Vytvořte verzi image z [virtuálního počítače](../virtual-machines/image-version-vm-cli.md)nebo [spravované image](../virtual-machines/image-version-managed-image-cli.md).
 
-Další informace o galeriích sdílených imagí najdete v [přehledu](shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](troubleshooting-shared-images.md).
+Další informace o galeriích sdílených imagí najdete v [přehledu](shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](../virtual-machines/troubleshooting-shared-images.md).

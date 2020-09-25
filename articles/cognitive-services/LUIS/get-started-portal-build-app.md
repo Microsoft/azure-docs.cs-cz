@@ -1,14 +1,16 @@
 ---
 title: 'Rychlý Start: vytvoření nové aplikace na portálu LUIS'
 description: V tomto rychlém startu vytvoříte základní části aplikace, záměry a entity a otestujete je pomocí Sample utterance na portálu LUIS.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697258"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303841"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
 
@@ -135,7 +137,7 @@ Příklad projevy záměru **none** by měl být mimo vaši doménu klientské a
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Podívejte se na entitu regulární výraz v příkladu projevy
 
-1. Ověřte, že se entita nachází v **FindForm** záměru tím, že v nabídce vlevo vyberete **záměry** . Pak vyberte **FindForm** záměr.
+1. Ověřte, že se entita nachází v **FindForm**  záměru tím, že v nabídce vlevo vyberete **záměry** . Pak vyberte **FindForm** záměr.
 
    Entita je označena tak, jak se zobrazuje v příkladu projevy.
 
@@ -161,7 +163,7 @@ Pomocí interaktivního **testovacího** podokna na portálu Luis ověřte, že 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi a nepřesouváte se k dalšímu rychlému startu, vyberte **Moje aplikace** z horní navigační nabídky. Pak ze seznamu vyberte levé políčko aplikace a na panelu nástrojů kontext vyberte tlačítko **Odstranit** nad seznamem.
+Až budete s tímto rychlým startem hotovi a nepřesouváte se k dalšímu rychlému startu, vyberte **Moje aplikace** z horní navigační nabídky. Pak ze seznamu vyberte levé políčko aplikace a na panelu nástrojů kontext vyberte tlačítko  **Odstranit** nad seznamem.
 
 ## <a name="next-steps"></a>Další kroky
 

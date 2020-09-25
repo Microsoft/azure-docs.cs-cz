@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ac440db4c1dbddd317743e2d681a62251624d9bd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cc7ca9d217e405b0b39779cf256edcf0669afd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302430"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Vytváření výpočetních cílů pro školení modelů a nasazení pomocí sady Python SDK
 
@@ -81,7 +81,7 @@ Při vykonávání odvození Azure Machine Learning vytvoří kontejner Docker, 
 
 Pokud používáte místní počítač pro **školení**, není nutné vytvářet cíl výpočtů.  Stačí jenom [Odeslat školicí běh](how-to-set-up-training-targets.md) z místního počítače.
 
-Použijete-li místní počítač pro **odvození**, je nutné mít nainstalovaný Docker. Chcete-li provést nasazení, použijte [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) a definujte port, který bude webová služba používat. Pak použijte normální proces nasazení, jak je popsáno v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
+Použijete-li místní počítač pro **odvození**, je nutné mít nainstalovaný Docker. Chcete-li provést nasazení, použijte [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-) a definujte port, který bude webová služba používat. Pak použijte normální proces nasazení, jak je popsáno v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning výpočetní cluster
 
@@ -105,8 +105,7 @@ Azure Machine Learning výpočetní prostředí je možné znovu použít v rám
     
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-   Při vytváření Azure Machine Learning výpočetních prostředků můžete také nakonfigurovat několik pokročilých vlastností. Vlastnosti umožňují vytvořit trvalý cluster s pevnou velikostí nebo v rámci stávajícího Virtual Network Azure v rámci vašeho předplatného.  Podrobnosti najdete v tématu [Třída AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
-    ) .
+   Při vytváření Azure Machine Learning výpočetních prostředků můžete také nakonfigurovat několik pokročilých vlastností. Vlastnosti umožňují vytvořit trvalý cluster s pevnou velikostí nebo v rámci stávajícího Virtual Network Azure v rámci vašeho předplatného.  Podrobnosti najdete v tématu [Třída AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) .
 
     Nebo můžete vytvořit a připojit trvalé Azure Machine Learning výpočetní prostředky v [Azure Machine Learning Studiu](how-to-create-attach-compute-studio.md#portal-create).
 
@@ -276,8 +275,25 @@ Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako vir
 
 1. **Konfigurace**: Vytvořte konfiguraci spuštění pro cíl služby DSVM Compute. Docker a conda slouží k vytvoření a konfiguraci školicího prostředí na DSVM.
 
-   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
-
+   ```python
+   from azureml.core import ScriptRunConfig
+   from azureml.core.environment import Environment
+   from azureml.core.conda_dependencies import CondaDependencies
+   
+   # Create environment
+   myenv = Environment(name="myenv")
+   
+   # Specify the conda dependencies
+   myenv.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
+   
+   # If no base image is explicitly specified the default CPU image "azureml.core.runconfig.DEFAULT_CPU_IMAGE" will be used
+   # To use GPU in DSVM, you should specify the default GPU base Docker image or another GPU-enabled image:
+   # myenv.docker.enabled = True
+   # myenv.docker.base_image = azureml.core.runconfig.DEFAULT_GPU_IMAGE
+   
+   # Configure the run configuration with the Linux DSVM as the compute target and the environment defined above
+   src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
+   ```
 
 Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](how-to-set-up-training-targets.md).
 
@@ -494,7 +510,7 @@ Příklady školení s různými cíli výpočtů najdete v těchto poznámkový
 
 ## <a name="next-steps"></a>Další kroky
 
-* Použijte výpočetní prostředek k [odeslání školicího běhu](how-to-set-up-training-targets.md).
+* Pomocí výpočetního prostředku můžete [nakonfigurovat a odeslat školicí běh](how-to-set-up-training-targets.md).
 * [Kurz: výuka modelu](tutorial-train-models-with-aml.md) používá ke školení modelu spravovaný výpočetní cíl.
 * Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.
 * Jakmile budete mít školený model, zjistěte, [jak a kde nasadit modely](how-to-deploy-and-where.md).

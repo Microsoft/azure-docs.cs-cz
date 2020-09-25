@@ -1,5 +1,5 @@
 ---
-title: Co je služba komunikace Azure?
+title: Co je služba Azure Communication Services?
 description: Přečtěte si, jak vám komunikační služby Azure pomáhají vyvíjet bohatou práci s uživateli v reálném čase.
 author: mikben
 manager: jken
@@ -8,18 +8,25 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a006ece278e4ec750040bde5bd4b7a6144c9e720
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947316"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303365"
 ---
-# <a name="what-is-azure-communication-services"></a>Co je služba komunikace Azure?
+# <a name="what-is-azure-communication-services"></a>Co je služba Azure Communication Services?
 
 [!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
 
 Komunikační služby Azure umožňují snadno přidávat do vašich aplikací funkce pro komunikaci multimédií, videa a telefonování přes protokol IP v reálném čase. Klientské knihovny komunikačních služeb také umožňují přidat do komunikačních řešení funkce Chat a SMS.
+
+<br>
+
+> [!VIDEO https://www.youtube.com/embed/49oshhgY6UQ]
+
+<br>
+<br>
 
 Komunikační služby můžete použít pro komunikaci hlasu, videa, textu a dat v nejrůznějších scénářích:
 
@@ -36,7 +43,7 @@ Následující zdroje jsou skvělým místem, kde se můžete začít, pokud za�
 
 | Prostředek                               |Popis                           |
 |---                                    |---                                   |
-|**[Vytvořit prostředek komunikačních služeb](./quickstarts/create-communication-resource.md)**|Ke zřízení prvního prostředku komunikačních služeb můžete začít používat komunikační služby Azure pomocí klientské knihovny pro správu Azure Portal nebo služby Communication Services. Jakmile budete mít připojovací řetězec prostředků služby Communication Services, můžete zřídit své první tokeny přístupu uživatele.|
+|**[Vytvoření prostředku Communication Services](./quickstarts/create-communication-resource.md)**|Ke zřízení prvního prostředku komunikačních služeb můžete začít používat komunikační služby Azure pomocí klientské knihovny pro správu Azure Portal nebo služby Communication Services. Jakmile budete mít připojovací řetězec prostředků služby Communication Services, můžete zřídit své první tokeny přístupu uživatele.|
 |**[Vytvoření prvního přístupového tokenu uživatele](./quickstarts/access-tokens.md)**|Tokeny přístupu uživatele slouží k ověřování vašich služeb proti vašemu prostředku služby Azure Communication Services. Tyto tokeny se zřídí a znovu vydávají pomocí klientské knihovny pro správu komunikačních služeb.|
 |**[Získat telefonní číslo](./quickstarts/telephony-sms/get-phone-number.md)**|K zřizování a vydávání telefonních čísel můžete použít komunikační služby Azure. Tato telefonní čísla lze použít k zahájení odchozích volání a k sestavování řešení komunikace SMS.|
 |**[Poslat SMS z vaší aplikace](./quickstarts/telephony-sms/send.md)**|Klientská knihovna služby Azure Communications Services umožňuje odesílat a přijímat zprávy SMS z aplikací .NET a JavaScript.|
@@ -49,7 +56,7 @@ Následující zdroje jsou skvělým místem, kde se můžete začít, pokud za�
 Následující ukázky ukazují ucelené využití klientských knihoven služby Azure Communications. Využijte tyto ukázky k zavedení vlastních řešení komunikačních služeb.
 <br>
 
-| Název vzorku                               | Description                           |
+| Název vzorku                               | Popis                           |
 |---                                    |---                                   |
 |**[Ukázka volání Hero skupiny](./samples/calling-hero-sample.md)**|Podívejte se, jak lze pomocí klientských knihoven komunikačních služeb vytvořit skupinu volání.|
 |**[Ukázka Hero ve skupině chat](./samples/chat-hero-sample.md)**|Podívejte se, jak lze pomocí klientských knihoven komunikačních služeb vytvořit prostředí pro konverzaci ve skupině.|
@@ -62,9 +69,9 @@ Následující zdroje vám pomůžou získat informace o klientských knihovnác
 | Prostředek                               | Popis                           |
 |---                                    |---                                   |
 |**[Klientské knihovny a rozhraní REST API](./concepts/sdk-options.md)**|Funkce komunikačních služeb Azure jsou koncepčně rozdělené do šesti oblastí, z nichž každý představuje knihovna klienta. Můžete se rozhodnout, které klientské knihovny se budou používat v závislosti na vašich potřebách komunikace v reálném čase.|
-|**[Přehled volání klientské knihovny](./concepts/voice-video-calling/calling-sdk-features.md)**|Projděte si přehled o klientské knihovně volání komunikačních služeb.|
-|**[Přehled klientské knihovny pro chat](./concepts/chat/sdk-features.md)**|Projděte si přehled klientské knihovny služby Communications chat.|
-|**[Přehled klientské knihovny SMS](./concepts/telephony-sms/sdk-features.md)**|Projděte si přehled klientské knihovny SMS služby Communications Services.|
+|**[Přehled klientských knihoven pro hovory](./concepts/voice-video-calling/calling-sdk-features.md)**|Projděte si přehled o klientské knihovně volání komunikačních služeb.|
+|**[Přehled klientských knihoven pro chat](./concepts/chat/sdk-features.md)**|Projděte si přehled klientské knihovny služby Communications chat.|
+|**[Přehled klientských knihoven pro SMS](./concepts/telephony-sms/sdk-features.md)**|Projděte si přehled klientské knihovny SMS služby Communications Services.|
 
 ## <a name="compare-azure-communication-services"></a>Porovnání komunikačních služeb Azure
 
@@ -77,4 +84,4 @@ Existují dva další komunikační produkty Microsoftu, které byste měli zvá
 
 ## <a name="next-steps"></a>Další kroky
 
- - [Vytvořit prostředek komunikačních služeb](./quickstarts/create-communication-resource.md)
+ - [Vytvoření prostředku Communication Services](./quickstarts/create-communication-resource.md)

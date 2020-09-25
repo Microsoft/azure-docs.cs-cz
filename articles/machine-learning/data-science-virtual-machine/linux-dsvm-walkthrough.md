@@ -5,16 +5,16 @@ description: Naučte se, jak dokončit několik běžných úloh pro datové vě
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/17/2020
+ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275978"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Datové vědy s Ubuntu Data Science Virtual Machine v Azure
 
@@ -22,7 +22,7 @@ V tomto návodu se dozvíte, jak dokončit několik běžných úloh pro datové
 
 V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase je sada e-mailů, které jsou označené buď spam, nebo HAM (nikoli spam). Spambase také obsahuje statistiku o obsahu e-mailů. V tomto návodu budeme mluvit o statistice později.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
 
@@ -374,7 +374,7 @@ Rattle také může spustit analýzu clusteru. Pojďme vyloučíme některé fun
 * word_freq_business
 * spam
 
-Vraťte se na kartu **cluster** . Vyberte **KMeans**a pak nastavte **počet clusterů** na **4**. Vyberte **Execute** (Provést). Výsledky se zobrazí v okně výstup. Jeden cluster má vysokou frekvenci _Jiří_ a _HP_a je pravděpodobně legitimním podnikovým e-mailem.
+Vraťte se na kartu **clusteru** . Vyberte **KMeans**a pak nastavte **počet clusterů** na **4**. Vyberte **Execute** (Provést). Výsledky se zobrazí v okně výstup. Jeden cluster má vysokou frekvenci _Jiří_ a _HP_a je pravděpodobně legitimním podnikovým e-mailem.
 
 Postup sestavení základního modelu Machine Learning pro rozhodovací strom:
 

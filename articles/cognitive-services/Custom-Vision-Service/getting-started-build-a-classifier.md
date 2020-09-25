@@ -10,18 +10,19 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 44d5a4ae800e87404e5a207727c22a75f0fb75c8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277338"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision
 
 V tomto rychlém startu se dozvíte, jak vytvořit klasifikátor imagí prostřednictvím webu Custom Vision. Po vytvoření modelu můžete testovat s využitím nových imagí a následně je integrovat do vlastního softwaru pro rozpoznávání imagí.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 

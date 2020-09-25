@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d398e450175c9f97c419b397266cda0a52e7e21c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7401bc0661459e1322c9b2f2226d45794f814732
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302923"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v Node.js prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -22,7 +22,7 @@ ms.locfileid: "87416090"
 
 V tomto rychlém startu spustíte aplikaci na straně služby a nastavíte komunikaci mezi zařízením a službou pomocí datových proudů zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Během veřejné verze Preview podporuje Node.js SDK na straně služby pouze datové proudy zařízení. V důsledku toho se v tomto rychlém startu vztahují jenom na pokyny ke spuštění aplikace na straně služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončíní [komunikace s aplikacemi zařízení v C prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-c.md) nebo [komunikace s aplikacemi zařízení v jazyce C# prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md).
 
@@ -43,7 +43,7 @@ Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve
 > [!IMPORTANT]
 > Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 >
-> * Střední USA
+> * USA – střed
 > * Střed USA EUAP
 > * Severní Evropa
 > * Jihovýchodní Asie
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 

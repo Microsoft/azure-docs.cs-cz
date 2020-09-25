@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: b808038c9b973cbf4ba9e0b2e54d97bd41664297
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 3e19701abe152e947e87ef624a003538ab7062a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378249"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271796"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak:
 
 Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [tom, co skript](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) pro předběžnou registraci zahrnuje oddíly k nastavení databáze pro zálohování.
 
-### <a name="establish-network-connectivity"></a>Navázat připojení k síti
+### <a name="establish-network-connectivity"></a>Navázání připojení k síti
 
 Pro všechny operace vyžaduje databáze SAP HANA běžící na virtuálním počítači Azure připojení ke službě Azure Backup, Azure Storage a Azure Active Directory. Toho lze dosáhnout použitím privátních koncových bodů nebo povolením přístupu k požadovaným veřejným IP adresám nebo plně kvalifikovanému názvu domény. Pokud nepovolíte správné připojení k požadovaným službám Azure, může dojít k selhání operací, jako je zjišťování databáze, konfigurace zálohování, provádění zálohování a obnovování dat.
 
@@ -57,7 +57,7 @@ Soukromé koncové body umožňují zabezpečené připojení ze serverů ve vir
 
 #### <a name="nsg-tags"></a>Značky NSG
 
-Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *AzureBackup* povolte odchozí přístup k Azure Backup. Kromě značky Azure Backup je také potřeba, abyste umožnili připojení k ověřování a přenosu dat vytvořením podobných [pravidel NSG](../virtual-network/security-overview.md#service-tags) pro *Azure AD* a *Azure Storage*.  Následující kroky popisují proces vytvoření pravidla pro Azure Backup značku:
+Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *AzureBackup* povolte odchozí přístup k Azure Backup. Kromě značky Azure Backup musíte také umožňovat připojení k ověřování a přenosu dat vytvořením podobných [pravidel NSG](../virtual-network/security-overview.md#service-tags) pro Azure AD (*azureactivedirectory selhala*) a Azure Storage (*úložiště*).  Následující kroky popisují proces vytvoření pravidla pro Azure Backup značku:
 
 1. Ve **všech službách**klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
 
@@ -89,7 +89,7 @@ K povolení přístupu k požadovaným službám z vašich serverů můžete pou
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Použití proxy server HTTP ke směrování provozu
 
-Při zálohování databáze SAP HANA běžící na virtuálním počítači Azure používá rozšíření zálohování na virtuálním počítači rozhraní API HTTPS k posílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování používá pro ověřování taky službu Azure AD. Přesměrujte provoz rozšíření zálohování pro tyto tři služby prostřednictvím proxy serveru HTTP. Pro povolení přístupu k požadovaným službám použijte seznam IP adres a plně kvalifikovaných názvů domén uvedených výše. Ověřené proxy servery se nepodporují.
+Při zálohování databáze SAP HANA běžící na virtuálním počítači Azure používá rozšíření zálohování na virtuálním počítači rozhraní API HTTPS k posílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování používá pro ověřování taky službu Azure AD. Přesměrujte provoz rozšíření zálohování pro tyto tři služby přes proxy server HTTP. Pro povolení přístupu k požadovaným službám použijte seznam IP adres a plně kvalifikovaných názvů domén uvedených výše. Ověřené proxy servery se nepodporují.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -127,12 +127,12 @@ Nyní povolte zálohování.
     ![Povolit zálohování](./media/backup-azure-sap-hana-database/enable-backup.png)
 5. Sledujte průběh konfigurace zálohování v oblasti **oznámení** na portálu.
 
-### <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+### <a name="create-a-backup-policy"></a>Vytvoření zásad zálohování
 
 Zásady zálohování definují, kdy se zálohují zálohy a jak dlouho se uchovávají.
 
-* Zásada se vytvoří na úrovni trezoru.
-* Několik trezorů může používat stejné zásady zálohování, ale je nutné použít zásady zálohování pro každý trezor.
+* Zásady se vytvářejí na úrovni trezoru.
+* Stejné zásady zálohování může používat více trezorů, ale je potřeba je pro každý trezor použít zvlášť.
 
 >[!NOTE]
 >Azure Backup se při zálohování databáze SAP HANA běžící na virtuálním počítači Azure automaticky neupraví na letní čas při ukládání.
@@ -141,14 +141,14 @@ Zásady zálohování definují, kdy se zálohují zálohy a jak dlouho se uchov
 
 Nastavení zásad určete následujícím způsobem:
 
-1. Do pole **název zásady**zadejte název nové zásady.
+1. Do pole **Název zásad** zadejte název nových zásad.
 
    ![Zadejte název zásady.](./media/backup-azure-sap-hana-database/policy-name.png)
-2. V **zásadách úplného zálohování**vyberte **četnost záloh**, zvolte **denně** nebo **týdně**.
+2. V části **Zásady úplného zálohování** vyberte **frekvenci zálohování** – zvolte **Denní** nebo **Týdenní**.
    * **Denně**: vyberte hodinu a časové pásmo, ve kterém se spustí úloha zálohování.
        * Musíte spustit úplnou zálohu. Tuto možnost nemůžete vypnout.
-       * Pro zobrazení zásady vyberte **úplné zálohování** .
-       * Pro každodenní úplné zálohování nemůžete vytvořit rozdílové zálohy.
+       * Zásady zobrazíte výběrem možnosti **Úplné zálohování**.
+       * Pro denní úplné zálohování nemůžete vytvořit rozdílové zálohování.
    * **Týdně**: vyberte den v týdnu, hodinu a časové pásmo, ve kterém se úloha zálohování spustí.
 
    ![Vybrat četnost zálohování](./media/backup-azure-sap-hana-database/backup-frequency.png)
@@ -156,22 +156,22 @@ Nastavení zásad určete následujícím způsobem:
 3. V části **Rozsah uchování**nakonfigurujte nastavení uchovávání pro úplnou zálohu.
     * Ve výchozím nastavení jsou vybrány všechny možnosti. Vymažte všechny limity rozsahu uchování, které nechcete používat, a nastavte ty, které chcete provést.
     * Minimální doba uchování pro jakýkoli typ zálohy (úplný/rozdíl/protokol) je sedm dní.
-    * Body obnovení jsou označeny pro uchování na základě jejich rozsahu uchovávání. Pokud například vyberete denní úplnou zálohu, spustí se každý den jenom jedno úplné zálohování.
+    * Body obnovení se označují pro uchovávání na základě jejich rozsahu uchovávání. Například pokud vyberete denní úplné zálohování, každý den se aktivuje pouze jedno úplné zálohování.
     * Záloha pro určitý den je označená a zachovaná na základě rozsahu a nastavení týdenního uchování.
-    * Měsíční a roční rozsah uchování se chová podobným způsobem.
+    * Měsíční a roční rozsahy uchovávání se chovají podobným způsobem.
 
-4. V nabídce **zásady úplného zálohování** vyberte **OK** a přijměte nastavení.
+4. V nabídce **Zásady úplného zálohování** výběrem možnosti **OK** přijměte nastavení.
 5. Pokud chcete přidat rozdílové zásady, vyberte **rozdílové zálohování** .
-6. V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
-    * Ve většině případů můžete aktivovat jednu rozdílovou zálohu za den.
-    * Rozdílové zálohy je možné uchovávat maximálně po dobu 180 dnů. Pokud budete potřebovat delší dobu uchovávání, je nutné použít úplné zálohování.
+6. V části **Zásady rozdílového zálohování** výběrem možnosti **Povolit** otevřete ovládací prvky frekvence a uchovávání.
+    * Maximálně můžete aktivovat jedno rozdílové zálohování za den.
+    * Rozdílové zálohy je možné uchovávat maximálně po dobu 180 dnů. Pokud potřebujete delší dobu uchovávání, musíte použít úplné zálohování.
 
     ![Zásady rozdílového zálohování](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
     > Přírůstkové zálohování není aktuálně podporováno.
 
-7. Výběrem **OK** zásadu uložíte a vrátíte se do nabídky hlavní **zásady zálohování** .
+7. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
 8. Vyberte **zálohování protokolu** a přidejte zásady zálohování transakčního protokolu.
     * V případě **zálohování protokolu**vyberte **Povolit**.  Toto nejde zakázat, protože SAP HANA spravuje všechny zálohy protokolů.
     * Nastavte četnost a ovládací prvky uchování.
@@ -179,7 +179,7 @@ Nastavení zásad určete následujícím způsobem:
     > [!NOTE]
     > Zálohy protokolu se začnou přesměrovat až po úspěšném úplném zálohování.
 
-9. Výběrem **OK** zásadu uložíte a vrátíte se do nabídky hlavní **zásady zálohování** .
+9. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
 10. Po dokončení definování zásad zálohování vyberte **OK**.
 
 > [!NOTE]

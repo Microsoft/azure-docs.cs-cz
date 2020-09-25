@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: e7d424435c29eb3e7a6779a7036816a7bedd2085
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708655"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278290"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replikace Azure NetApp Files svazků mezi oblastmi
 
@@ -45,6 +45,7 @@ Replikace svazku Azure NetApp Files je aktuálně dostupná v následujících d
 * Japonsko – východ a Japonsko – západ
 * Velká Británie – jih a Německo – středozápad
 * Jihovýchodní Asie a Austrálie – východ
+* Střed Indie a Jižní Indie
 
 ## <a name="service-level-objectives"></a>Cíle na úrovni služby
 
@@ -110,7 +111,7 @@ Na cílový svazek se vztahuje normální Azure NetApp Files poplatek za kapacit
 
 ## <a name="next-steps"></a>Další kroky
 * [Požadavky a předpoklady pro použití replikace mezi oblastmi](cross-region-replication-requirements-considerations.md)
-* [Vytvoření partnerského vztahu replikace](cross-region-replication-create-peering.md)
+* [Vytvoření peeringu replikace](cross-region-replication-create-peering.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)

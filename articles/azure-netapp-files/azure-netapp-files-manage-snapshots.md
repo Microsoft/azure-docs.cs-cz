@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459057"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325685"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
@@ -65,7 +65,7 @@ Funkce **zásad snímku** je aktuálně ve verzi Preview. Pokud tuto funkci pou�
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-Můžete také použít příkazy rozhraní příkazového řádku Azure [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) a [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) zaregistrovat funkci a zobrazit stav registrace. 
+Můžete také použít [příkazy rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
 ### <a name="create-a-snapshot-policy"></a>Vytvoření zásady snímku 
 
@@ -179,7 +179,7 @@ Pokud jste při vytváření svazku zaškrtli políčko Skrýt cestu ke snímku,
 
 1. `ls`K vypsání souboru, který chcete obnovit z adresáře, použijte příkaz Linux `.snapshot` . 
 
-    Například:
+    Příklad:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -194,7 +194,7 @@ Pokud jste při vytváření svazku zaškrtli políčko Skrýt cestu ke snímku,
 
 2. Pomocí `cp` příkazu zkopírujte soubor do nadřazeného adresáře.  
 
-    Například: 
+    Příklad: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -221,6 +221,6 @@ Pokud jste při vytváření svazku zaškrtli políčko Skrýt cestu ke snímku,
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vysvětlení hierarchie úložiště služby Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
+* [Řešení potíží se zásadami snímků](troubleshoot-snapshot-policies.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Video o Azure NetApp Files snímků 101](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

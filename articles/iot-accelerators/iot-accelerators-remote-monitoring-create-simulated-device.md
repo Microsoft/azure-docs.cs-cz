@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: c0aac897d85cd96d537238bc81cbc89d3626a07c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324038"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Vytvoření a otestování nového simulovaného zařízení
 
@@ -31,7 +31,7 @@ Ve druhém scénáři chce contoso otestovat nové zařízení inteligentního �
 
 *Vlastnosti*
 
-| Název                     | Hodnoty                      |
+| Name                     | Hodnoty                      |
 | ------------------------ | --------------------------- |
 | Color                    | Bílá, červená, modrá            |
 | Světlost               | 0 až 100                    |
@@ -41,7 +41,7 @@ Ve druhém scénáři chce contoso otestovat nové zařízení inteligentního �
 
 V následující tabulce jsou uvedena data, která žárovky do cloudu, jako datový proud:
 
-| Název   | Hodnoty      |
+| Name   | Hodnoty      |
 | ------ | ----------- |
 | Status | "zapnuto", "vypnuto" |
 | Teplota | Stupně F |
@@ -54,7 +54,7 @@ V následující tabulce jsou uvedena data, která žárovky do cloudu, jako dat
 
 Následující tabulka uvádí akce, které nové zařízení podporuje:
 
-| Název        |
+| Name        |
 | ----------- |
 | Přepnout na   |
 | Přepnout  |
@@ -63,7 +63,7 @@ Následující tabulka uvádí akce, které nové zařízení podporuje:
 
 V následující tabulce je uveden počáteční stav zařízení:
 
-| Název                     | Hodnoty |
+| Name                     | Hodnoty |
 | ------------------------ | -------|
 | Počáteční barva            | White  |
 | Počáteční jas       | 75     |
@@ -77,7 +77,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle tohoto návodu, budete potřebovat:
 
@@ -108,7 +108,7 @@ Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azu
 
 Otevřete složku **Remote-Monitoring-Services-dotnet-master\storage-Adapter** v Visual Studio Code. Kliknutím na jakékoli tlačítko **obnovit** opravíte nevyřešené závislosti.
 
-Otevřete soubor **Storage-Adapter/WebService/appsettings.ini** a přiřaďte k proměnné **documentDBConnectionString** připojovací řetězec Cosmos DB.
+Otevřete soubor **Storage-Adapter/WebService/appsettings.ini** a přiřaďte k proměnné **documentDBConnectionString**  připojovací řetězec Cosmos DB.
 
 Pokud chcete spustit mikroslužbu místně, klikněte na **ladění > spustit ladění**.
 

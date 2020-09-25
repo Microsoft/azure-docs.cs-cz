@@ -3,17 +3,17 @@ title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12-JavaScrip
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro JavaScript vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 09/17/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c4343012c7d0abb7c8b8a22da687dc5ac668dc19
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.custom: devx-track-js
+ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307530"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node.js
 
@@ -24,7 +24,7 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-blob)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-blob)
-* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -136,7 +136,7 @@ Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s kli
 * [Získání připojovacího řetězce](#get-the-connection-string)
 * [Vytvoření kontejneru](#create-a-container)
 * [Nahrání objektů blob do kontejneru](#upload-blobs-to-a-container)
-* [Zobrazí seznam objektů blob v kontejneru](#list-the-blobs-in-a-container)
+* [Seznam objektů blob v kontejneru](#list-the-blobs-in-a-container)
 * [Stáhnout objekty blob](#download-blobs)
 * [Odstranění kontejneru](#delete-a-container)
 
@@ -210,7 +210,7 @@ const uploadBlobResponse = await blockBlobClient.upload(data, data.length);
 console.log("Blob was uploaded successfully. requestId: ", uploadBlobResponse.requestId);
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Seznam objektů BLOB v kontejneru zavoláním metody [listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) . V tomto případě byl do kontejneru přidán pouze jeden objekt blob, takže operace výpisu vrátí pouze jeden objekt BLOB.
 
@@ -312,7 +312,8 @@ V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objek
 Výukové programy, ukázky, rychlé starty a další dokumentaci najdete na webu:
 
 > [!div class="nextstepaction"]
-> [Dokumentace k Azure pro JavaScript](/azure/developer/javascript/)
+> [Azure pro středisko pro vývojáře JavaScriptu](/azure/developer/javascript/)
 
-* Další informace najdete v tématu [Klientská knihovna pro úložiště objektů BLOB v Azure pro JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob).
+* Informace o tom, jak nasadit webovou aplikaci, která využívá úložiště objektů BLOB v Azure, najdete v tématu [kurz: nahrání obrazových dat v cloudu pomocí Azure Storage](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true)
 * Ukázková aplikace služby Blob Storage najdete v [ukázkách V12 JavaScriptu v klientské knihovně pro úložiště objektů BLOB v Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples).
+* Další informace najdete v tématu [Klientská knihovna pro úložiště objektů BLOB v Azure pro JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob).

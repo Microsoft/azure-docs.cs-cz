@@ -1,15 +1,17 @@
 ---
 title: Extrakce dat – LUIS
 description: Extrahovat data z utterance textu s záměry a entitami. Zjistěte, jaký druh dat je možné extrahovat z Language Understanding (LUIS).
+ms.service: cognitive-services
+ms.subservice: language-understanding
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c69971b36bf945086d1a8f398043444071acea5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324820"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrakce dat z utterance textu s využitím záměrů a entit
 LUIS poskytuje možnost získávat informace z přirozeného jazyka projevy uživatele. Informace jsou extrahovány způsobem, který může být použit programem, aplikací nebo robotem chatu k provedení akce. V následujících částech se dozvíte, jaká data se vracejí z záměrů a entit s příklady JSON.
@@ -71,7 +73,7 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 |Datový objekt|Typ dat|Umístění dat|Hodnota|
 |--|--|--|--|
-|Záměr|String|topScoringIntent. záměr|"GetStoreInfo"|
+|Záměr|Řetězec|topScoringIntent. záměr|"GetStoreInfo"|
 
 Pokud vaše aplikace chatovací robot nebo LUIS volá rozhodnutí na základě více než jednoho skóre záměru, vrátí všechny skóre záměrů.
 
@@ -133,8 +135,8 @@ Záměry jsou seřazené od nejvyšších po nejnižší skóre.
 
 |Datový objekt|Typ dat|Umístění dat|Hodnota|Skóre|
 |--|--|--|--|:--|
-|Záměr|String|záměry [0]. záměr|"GetStoreInfo"|0,984749258|
-|Záměr|String|záměry [1]. záměr|NTato|0,0168218873|
+|Záměr|Řetězec|záměry [0]. záměr|"GetStoreInfo"|0,984749258|
+|Záměr|Řetězec|záměry [1]. záměr|NTato|0,0168218873|
 
 Pokud přidáte předem připravené domény, název záměru označuje doménu, například nebo, a `Utilties` `Communication` také záměr:
 
@@ -192,11 +194,11 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 * * *
 
-|Domain (Doména)|Datový objekt|Typ dat|Umístění dat|Hodnota|
+|Doména|Datový objekt|Typ dat|Umístění dat|Hodnota|
 |--|--|--|--|--|
-|Nástroje|Záměr|String|záměry [0]. záměr|"<b>Nástroje</b>. ShowNext"|
-|Communication|Záměr|String|záměry [1]. záměr|<b>Komunikace</b>. StartOver"|
-||Záměr|String|záměry [2]. záměr|NTato|
+|Nástroje|Záměr|Řetězec|záměry [0]. záměr|"<b>Nástroje</b>. ShowNext"|
+|Komunikace|Záměr|Řetězec|záměry [1]. záměr|<b>Komunikace</b>. StartOver"|
+||Záměr|Řetězec|záměry [2]. záměr|NTato|
 
 
 ## <a name="data-from-entities"></a>Data z entit

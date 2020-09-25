@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 00eb064aaf549ee0d83d0cf7d9c9b47c2dc5ef78
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324939"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
 
@@ -23,11 +23,11 @@ Ano.
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>Můžu server zaregistrovat do více trezorů?
 
-Ne. Server DPM nebo Azure Backup lze zaregistrovat pouze do jednoho trezoru.
+No. Server DPM nebo Azure Backup lze zaregistrovat pouze do jednoho trezoru.
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžu použít DPM k zálohování aplikací v Azure Stack?
 
-Ne. Azure Backup můžete použít k ochraně Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikací v Azure Stack.
+No. Azure Backup můžete použít k ochraně Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikací v Azure Stack.
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Je-li nainstalován agent Azure Backup pro ochranu souborů a složek, je možné nainstalovat aplikaci System Center DPM pro zálohování místních úloh do Azure?
 
@@ -39,7 +39,7 @@ Pro servery DPM se zdroji dat, které jsou chráněny do cloudu (pomocí kumulat
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Existují doporučení pro konfiguraci vyloučení pro antivirový software?
 
-Ano, doporučuje se nakonfigurovat vyloučení antivirové ochrany. Informace o vyloučení pro aplikaci DPM najdete v tématu [spuštění antivirového softwaru na serveru aplikace DPM](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019). Informace o vyloučení pro MABS najdete v tématu [Konfigurace antivirového programu pro server MABS](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
+Ano, doporučuje se nakonfigurovat vyloučení antivirové ochrany. Informace o vyloučení pro aplikaci DPM najdete v tématu [spuštění antivirového softwaru na serveru aplikace DPM](https://docs.microsoft.com/system-center/dpm/run-antivirus-server). Informace o vyloučení pro MABS najdete v tématu [Konfigurace antivirového programu pro server MABS](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>Zálohování VMware a Hyper-V
 

@@ -1,6 +1,6 @@
 ---
 title: Sériová konzola Azure pro Linux | Microsoft Docs
-description: Obousměrná sériová Konzola pro Azure Virtual Machines a Virtual Machine Scale Sets.
+description: Obousměrná sériová Konzola pro Azure Virtual Machines a Virtual Machine Scale Sets pomocí příkladu Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306867"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console for Linux
 
@@ -33,7 +33,7 @@ Dokumentaci k sériové konzole pro Windows najdete v tématu [sériová Konzola
 > [!NOTE]
 > Sériová konzola je aktuálně nekompatibilní se spravovaným účtem úložiště diagnostiky spouštění. Pokud chcete použít sériovou konzolu, ujistěte se, že používáte vlastní účet úložiště.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovaná.
 
@@ -111,7 +111,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 > [!CAUTION]
 > To znamená, že odpojený uživatel nebude odhlášen. Možnost vymáhat odhlášení po odpojení (pomocí SIGHUP nebo podobného mechanismu) je stále v plánu. Pro systém Windows je povolen automatický časový limit ve speciální konzole pro správu (SAC); pro Linux ale můžete nakonfigurovat nastavení časový limit terminálu. Chcete-li to provést, přidejte `export TMOUT=600` do souboru *. bash_profile* nebo *. profil* pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
 
-## <a name="accessibility"></a>Přístupnost
+## <a name="accessibility"></a>Usnadnění
 Přístupnost je klíčovým fokusem pro konzolu sériového rozhraní Azure. Za tímto účelem jsme zajistili, že sériová konzola je plně přístupná.
 
 ### <a name="keyboard-navigation"></a>Navigace přes klávesnici
@@ -133,40 +133,40 @@ Nestabilní vstup klávesnice v obrázcích SLES BYOS. Vstup z klávesnice je je
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka: Jak mohu odeslat zpětnou vazbu?**
+**Č. Jak mohu odeslat zpětnou vazbu?**
 
-A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese https://aka.ms/serialconsolefeedback . Případně (méně upřednostňovaná) můžete odeslat zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuálního počítače v https://feedback.azure.com .
+A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese  https://aka.ms/serialconsolefeedback . Případně (méně upřednostňovaná) můžete odeslat zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuálního počítače v https://feedback.azure.com .
 
-**Otázka: podporuje konzola sériového kopírování/vkládání?**
+**Č. Podporuje sériová konzola kopírování/vkládání?**
 
-A. Yes. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
+A. Ano. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
 
-**Otázka: můžu použít sériovou konzolu místo připojení SSH?**
+**Č. Můžu místo připojení SSH použít sériovou konzolu?**
 
 A. I když se může zdát, že by toto použití mohlo být technicky možné, má se tato konzola používat primárně jako nástroj pro řešení potíží v situacích, kdy připojení přes SSH není možné. K použití konzoly sériového rozhraní jako náhrady SSH doporučujeme z následujících důvodů:
 
 - Konzola sériového portu nemá jako SSH větší šířku pásma. Vzhledem k tomu, že se jedná o textové připojení, je obtížné pracovat s velkým grafickým rozhraním.
 - Přístup k Sériová konzola je aktuálně možný jenom pomocí uživatelského jména a hesla. Vzhledem k tomu, že klíče SSH jsou mnohem bezpečnější než kombinace uživatelského jména a hesla, z hlediska zabezpečení přihlášení doporučujeme protokol SSH přes sériovou konzolu.
 
-**Otázka. kdo může povolit nebo zakázat sériová Konzola pro moje předplatné?**
+**Č. Kdo může povolit nebo zakázat sériovou konzolu pro moje předplatné?**
 
 A. Pokud chcete povolit nebo zakázat sériovou konzolu na úrovni předplatného, musíte mít oprávnění k zápisu do předplatného. Role, které mají oprávnění k zápisu, zahrnují role správce nebo vlastníka. Vlastní role můžou mít taky oprávnění k zápisu.
 
-**Dotaz, který má přístup ke konzole sériového portu pro virtuální počítač/sadu škálování virtuálního počítače?**
+**Č. Kdo má přístup ke konzole sériového portu pro virtuální počítač/sadu škálování virtuálního počítače?**
 
 A. Pro přístup ke konzole sériového portu musíte mít roli Přispěvatel virtuálních počítačů nebo vyšší pro virtuální počítač nebo sadu škálování virtuálního počítače.
 
-**Otázka. moje konzola sériového zobrazení nezobrazuje vše, co mám dělat?**
+**Č. Moje konzola sériového zobrazení nezobrazuje vše, co mám dělat?**
 
 A. Bitová kopie je pro přístup k sériové konzole nejspíš nesprávně nakonfigurovaná. Informace o konfiguraci image pro povolení služby sériového prostředí najdete v tématu [dostupnost distribuce sériová konzola Linux](#serial-console-linux-distribution-availability).
 
-**Otázka. je k dispozici konzola sériového portu pro služby Virtual Machine Scale Sets?**
+**Č. Je k dispozici sériová Konzola pro sady škálování virtuálních počítačů?**
 
 A. Ano, je! Další informace najdete v tématu [sériová Konzola pro Virtual Machine Scale Sets](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-**Dotaz. Pokud mám virtuální počítač nebo sadu škálování virtuálního počítače nastavili jenom pomocí ověřování pomocí protokolu SSH, můžu stále používat sériovou konzolu pro připojení k virtuálnímu počítači nebo instanci sady škálování virtuálního počítače?**
+**Č. Když nastavil (a) jsem virtuální počítač nebo sadu škálování virtuálního počítače jenom pomocí ověřování pomocí klíče SSH, můžu stále používat sériovou konzolu pro připojení k virtuálnímu počítači nebo instanci sady škálování virtuálního počítače?**
 
-A. Yes. Vzhledem k tomu, že konzola sériového portu nevyžaduje klíče SSH, stačí nastavit kombinaci uživatelského jména a hesla. Můžete to udělat tak, že v Azure Portal vyberete **resetovat heslo** a pomocí těchto přihlašovacích údajů se přihlásíte ke konzole sériového portu.
+A. Ano. Vzhledem k tomu, že konzola sériového portu nevyžaduje klíče SSH, stačí nastavit kombinaci uživatelského jména a hesla. Můžete to udělat tak, že v Azure Portal vyberete **resetovat heslo** a pomocí těchto přihlašovacích údajů se přihlásíte ke konzole sériového portu.
 
 ## <a name="next-steps"></a>Další kroky
 * Použijte konzolu sériového [přístupu pro přístup k grub a jednomu uživatelskému režimu](serial-console-grub-single-user-mode.md).

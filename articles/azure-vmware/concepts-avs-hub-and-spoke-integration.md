@@ -3,12 +3,12 @@ title: Koncept – integrace nasazení řešení Azure VMware v architektuře hu
 description: Přečtěte si o doporučeních pro integraci nasazení řešení Azure VMware do existující nebo nové architektury hub a paprsků v Azure.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 1862b98b40788b6b71d05eb4be43bdacd39e927f
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a2007e159d23a02ca573fd833590651061c59973
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659215"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271728"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
@@ -100,7 +100,7 @@ Druhá úroveň segmentace přenosu dat pomocí skupin zabezpečení sítě v Pa
 
 Azure Application Gateway V1 a v2 byly testovány pomocí webových aplikací, které běží na virtuálních počítačích řešení VMware Azure jako fond back-end. Application Gateway je aktuálně jedinou podporovanou metodou pro vystavení webových aplikací běžících na virtuálních počítačích řešení VMware Azure na internetu. Můžou aplikace bezpečně zveřejnit i pro interní uživatele.
 
-Podrobnosti a požadavky najdete v článku týkajícím se řešení Azure VMware pro [Application Gateway](./protect-avs-web-apps-with-app-gateway.md) .
+Podrobnosti a požadavky najdete v článku týkajícím se [Application Gateway](./protect-avs-web-apps-with-app-gateway.md) pro řešení Azure VMware.
 
 :::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Druhá úroveň segmentace provozu pomocí skupin zabezpečení sítě" border="false":::
 
@@ -109,7 +109,7 @@ Podrobnosti a požadavky najdete v článku týkajícím se řešení Azure VMwa
 
 Přístup k prostředí řešení Azure VMware pomocí JumpBox, což je virtuální počítač s Windows 10 nebo Windows Server nasazený v podsíti sdílené služby v rámci centrální virtuální sítě.
 
-Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bastionu](../bastion/index.yml) v rámci virtuální sítě rozbočovače. Azure bastionu poskytuje bezproblémové připojení RDP a SSH k virtuálním počítačům nasazeným v Azure bez nutnosti zřídit pro tyto prostředky veřejné IP adresy. Po zřízení služby Azure bastionu můžete k vybranému virtuálnímu počítači přistupovat z Azure Portal. Po navázání připojení se otevře nová karta, kde se zobrazí plocha JumpBox a z této plochy můžete získat přístup k rovině správy privátního cloudu řešení Azure VMware.
+Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bastionu](../bastion/index.yml) v rámci virtuální sítě rozbočovače. Azure bastionu poskytuje bezproblémové připojení RDP a SSH k virtuálním počítačům nasazeným v Azure bez nutnosti zřídit pro tyto prostředky veřejné IP adresy. Po zřízení služby Azure bastionu můžete k vybranému virtuálnímu počítači přistupovat z Azure Portal. Po navázání připojení se otevře nová karta, kde se zobrazí plocha JumpBox, kde můžete získat přístup k rovině správy privátního cloudu řešení Azure VMware.
 
 > [!IMPORTANT]
 > Neposkytněte virtuálnímu počítači s JumpBox veřejnou IP adresu nebo zveřejňujte port 3389/TCP veřejnému Internetu. 
@@ -142,7 +142,7 @@ Místní a servery řešení Azure VMware je možné nakonfigurovat s použitím
 
 ## <a name="identity-considerations"></a>Požadavky na identitu
 
-Pro účely identity je nejlepší přístup k nasazení aspoň jednoho řadiče domény služby Active Directory v centru pomocí podsítě sdílené služby, která je v ideálním případě dvě v rámci distribuované zóny nebo skupiny dostupnosti virtuálního počítače. Další informace najdete v tématu [cetrum architektury Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain) pro rozšíření místní domény AD do Azure.
+Pro účely identity je nejlepším řešením nasazení aspoň jednoho řadiče domény služby Active Directory v centru pomocí podsítě sdílené služby. V ideálním případě dva z nich v rámci distribuované zóny nebo skupiny dostupnosti virtuálního počítače. Další informace najdete v tématu [cetrum architektury Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain) pro rozšíření místní domény AD do Azure.
 
 Navíc můžete nasadit jiný řadič domény na straně řešení Azure VMware, aby fungoval jako identita a zdroj DNS v prostředí vSphere.
 

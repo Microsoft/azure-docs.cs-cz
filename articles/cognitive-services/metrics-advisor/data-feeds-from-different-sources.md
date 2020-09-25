@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: ''
+ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324463"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky
 
@@ -23,7 +23,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 
 ## <a name="supported-authentication-types"></a>Podporované typy ověřování
 
-| Typy ověřování | Description |
+| Typy ověřování | Popis |
 | ---------------------|-------------|
 |**Basic** | Budete muset být schopni zadat základní parametry pro přístup ke zdrojům dat. Například připojovací řetězec nebo klíč. Správci datového kanálu můžou tyto přihlašovací údaje zobrazit. |
 | **AzureManagedIdentity** | [Spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) prostředků Azure je funkce Azure Active Directory. Poskytuje služby Azure s automaticky spravovanou identitou ve službě Azure AD. Identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD.|
@@ -40,7 +40,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 |[**Azure Application Insights**](#appinsights)|  Základní |
 |[**Azure Blob Storage (JSON)**](#blob) | Základní<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Základní |
-|[**Průzkumník dat Azure (Kusto)**](#kusto) | Základní<br>ManagedIdentity|
+|[**Azure Data Explorer (Kusto)**](#kusto) | Základní<br>ManagedIdentity|
 |[**Azure Data Lake Storage Gen2**](#adl) | Základní<br>DataLakeGen2SharedKey<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | Základní<br>ManagedIdentity<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br>AzureSQLConnectionString
 |[**Azure Table Storage**](#table) | Základní | 
@@ -131,7 +131,7 @@ Pro každý soubor JSON je povoleno pouze jedno časové razítko.
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Průzkumník dat Azure (Kusto)</span>
+## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
 * **Připojovací řetězec**: informace o tom, jak načíst připojovací řetězec z Azure Průzkumník dat (Kusto), najdete v tématu [zobrazení a zkopírování připojovacího řetězce](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) .
 

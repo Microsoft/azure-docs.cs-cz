@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 5cb504e10c9a1b10c5bad201f4f599a3c00992fe
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306935"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Řízení aktualizací pomocí řízení údržby a Azure PowerShell
 
@@ -66,6 +66,33 @@ K dostupným konfiguracím údržby se můžete dotázat pomocí příkazu [Get-
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>Vytvoření konfigurace údržby pomocí naplánovaného okna (ve verzi Preview)
+
+
+> [!IMPORTANT]
+> Funkce naplánované okno je aktuálně ve Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Pomocí New-AzMaintenanceConfiguration můžete vytvořit konfiguraci údržby s plánovaným oknem, když Azure použije aktualizace vašich prostředků. Tento příklad vytvoří konfiguraci údržby s názvem myConfig s plánovaným oknem 5 hodin ve čtvrtém pondělí každého měsíce. Po vytvoření naplánovaného okna už aktualizace nemusíte instalovat ručně.
+
+```azurepowershell-interactive
+$config = New-AzMaintenanceConfiguration `
+   -ResourceGroup $RGName `
+   -Name $MaintenanceConfig `
+   -MaintenanceScope Host `
+   -Location $location `
+   -StartDateTime "2020-10-01 00:00" `
+   -TimeZone "Pacific Standard Time" `
+   -Duration "05:00" `
+   -RecurEvery "Month Fourth Monday"
+```
+> [!IMPORTANT]
+> **Doba trvání** údržby musí být *2 hodiny* nebo déle. **Opakování** údržby musí být nastavené na nejméně jednou za 35 dní.
+
+**Opakování** údržby může být vyjádřeno jako denní, týdenní nebo měsíční plány. Příklady denního plánu jsou recurEvery: Day, recurEvery: 3Days. Příklady týdenního plánu jsou recurEvery: 3Weeks, recurEvery: týden sobotu, neděle. Příklady měsíčního plánu jsou recurEvery: month day23, day24, recurEvery: měsíc poslední neděle, recurEvery: měsíc čtvrtého pondělí.
+
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace
 

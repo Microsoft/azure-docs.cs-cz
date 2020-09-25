@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274006"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Kontrola přístupu pro vlastní skupiny nebo aplikace v prohlídekch služby Azure AD
 
@@ -65,13 +65,13 @@ Po otevření kontroly přístupu uvidíte svůj přístup.
 
     Pokud je žádost o kontrolu přístupu pro ostatní, stránka bude vypadat jinak. Další informace najdete v tématu [Kontrola přístupu ke skupinám nebo aplikacím](perform-access-review.md).
 
-    ![Otevřete kontrolu přístupu s dotazem, jestli stále potřebujete přístup ke skupině.](./media/review-your-access/perform-access-review.png)
+    ![Snímek obrazovky, který zobrazuje otevřenou kontrolu přístupu s dotazem, jestli stále potřebujete přístup ke skupině.](./media/review-your-access/perform-access-review.png)
 
 1. Kliknutím na **Ano** zachováte přístup, nebo kliknutím na **ne** odeberte přístup.
 
 1. Pokud kliknete na **Ano**, možná budete muset zadat odůvodnění v poli **důvod** .
 
-    ![Dokončila se kontrola přístupu s dotazem, jestli stále potřebujete přístup ke skupině.](./media/review-your-access/perform-access-review-submit.png)
+    ![Snímek obrazovky zobrazující dokončenou kontrolu přístupu, která se zeptá, jestli stále potřebujete přístup ke skupině, a vyberte Ano.](./media/review-your-access/perform-access-review-submit.png)
 
 1. Klikněte na **Odeslat**.
 

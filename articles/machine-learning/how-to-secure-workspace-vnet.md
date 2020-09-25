@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 4dc1f86ce7dbb060c747c4433f0c2b871ce5582d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 92975251955b608d9dd888328b54a4b40f4592d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275826"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho pracovního prostoru pomocí virtuálních sítí
 
@@ -67,7 +67,7 @@ V této části se dozvíte, jak zabezpečit účet úložiště Azure pomocí k
 >
 > Výchozí účet úložiště se automaticky zřídí při vytváření pracovního prostoru.
 >
-> U jiných než výchozích účtů úložiště `storage_account` vám parametr ve [ `Workspace.create()` funkci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) umožní zadat vlastní účet úložiště podle ID prostředku Azure.
+> U jiných než výchozích účtů úložiště `storage_account` vám parametr ve [ `Workspace.create()` funkci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) umožní zadat vlastní účet úložiště podle ID prostředku Azure.
 
 Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuální síti, použijte následující postup:
 
@@ -180,6 +180,8 @@ Chcete-li použít Azure Container Registry v rámci virtuální sítě, je nutn
 
     Když je ACR za virtuální sítí, Azure Machine Learning ji nemůže použít k přímému vytváření imagí Docker. Místo toho se k sestavení imagí používá výpočetní cluster.
 
+* Před použitím ACR s Azure Machine Learning ve virtuální síti musíte otevřít incident podpory, abyste tuto funkci mohli povolit. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+
 Po splnění těchto požadavků můžete Azure Container Registry povolit pomocí následujícího postupu.
 
 1. Vyhledejte název Azure Container Registry pro váš pracovní prostor pomocí jedné z následujících metod:
@@ -215,7 +217,7 @@ Po splnění těchto požadavků můžete Azure Container Registry povolit pomoc
     > [!IMPORTANT]
     > Váš účet úložiště, výpočetní cluster a Azure Container Registry musí být všechny ve stejné podsíti virtuální sítě.
     
-    Další informace najdete v referenčních informacích k metodě [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) .
+    Další informace najdete v referenčních informacích k metodě [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) .
 
 1. Použijte následující šablonu Azure Resource Manager. Tato šablona umožňuje vašemu pracovnímu prostoru komunikovat s ACR.
 

@@ -1,14 +1,16 @@
 ---
 title: Jak přizpůsobovat funkce přizpůsobování
 description: _Smyčka_ přizpůsobování využívá Machine Learning k sestavení modelu, který předpovídá hlavní akci pro váš obsah. Model je vyškolen výhradně na vašich datech, která jste jim poslali pomocí volání pořadí a odměny.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303603"
 ---
 # <a name="how-personalizer-works"></a>Jak služba Personalizace funguje
 

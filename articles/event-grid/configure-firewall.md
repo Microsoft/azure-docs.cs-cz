@@ -3,12 +3,12 @@ title: Konfigurace brány firewall protokolu IP pro Azure Event Grid témata neb
 description: Tento článek popisuje, jak nakonfigurovat nastavení brány firewall pro Event Grid témata nebo domény.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324157"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Konfigurace brány firewall protokolu IP pro Azure Event Grid témata nebo domény 
 Ve výchozím nastavení je k tématům a doménám přístup z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Vydavatelé pocházející z jakékoli jiné IP adresy se odmítnou a obdrží odpověď 403 (zakázáno). Další informace o funkcích zabezpečení sítě podporovaných nástrojem Event Grid najdete v tématu [zabezpečení sítě pro Event Grid](network-security.md).
@@ -23,7 +23,7 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
 
     Přenos můžete omezit pomocí pravidel brány firewall založené na protokolu IP. Zadejte jednu adresu IPv4 nebo rozsah IP adres v zápisu CIDR (Classless Inter-Domain Routing). 
 
-    ![Stránka veřejné sítě](./media/configure-firewall/public-networks-page.png)
+    ![Snímek obrazovky zobrazující stránku přístup k veřejné síti s vybranými možnostmi veřejné sítě.](./media/configure-firewall/public-networks-page.png)
 3. Vyberte **soukromé koncové body jenom** pro přístup k tomuto prostředku jenom připojením privátního koncového bodu. Pomocí karty **připojení privátního koncového bodu** na této stránce můžete spravovat připojení. 
 
     ![Stránka veřejné sítě](./media/configure-firewall/private-endpoints-page.png)

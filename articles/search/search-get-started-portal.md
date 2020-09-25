@@ -7,29 +7,21 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/16/2020
+ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307717"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
-> [!div class="op_single_selector"]
-> * [Azure Portal](search-get-started-portal.md)
-> * [C#](search-get-started-dotnet.md)
-> * [Java](search-get-started-java.md)
-> * [Node.js](search-get-started-nodejs.md)
-> * [PowerShell](search-get-started-powershell.md)
-> * [Postman](search-get-started-postman.md)
-> * [Python](search-get-started-python.md)
 
 Průvodce **importem dat** je Azure Portal nástroj, který vás provede vytvořením indexu hledání, abyste mohli psát zajímavé dotazy během několika minut. 
 
 Průvodce má také stránky pro rozšíření AI, takže můžete extrahovat text a strukturu ze souborů obrázků a nestrukturovaného textu. Zpracování obsahu pomocí AI zahrnuje optické rozpoznávání znaků (OCR), klíčové fráze a extrakci entit a analýzu obrázků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
@@ -276,8 +268,3 @@ Pomocí Průvodce portálem vygenerujte webovou aplikaci připravenou k použit�
 
 > [!div class="nextstepaction"]
 > [Vytvoření ukázkové aplikace na portálu](search-create-app-portal.md)
-
-Chcete optimalizovat a uložit své útraty do cloudu?
-
-> [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

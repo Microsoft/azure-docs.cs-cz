@@ -3,13 +3,13 @@ title: Partneři, kteří integrují Azure Monitor
 description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete získat přístup k dokumentaci pro integraci s nimi.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/21/2020
+ms.openlocfilehash: a99d391b34ff1ad783ba4cb7b746760835bd3f43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278800"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -74,11 +74,19 @@ CloudMonix nabízí služby pro monitorování, automatizaci a samočinné oprav
 
 ![Logo služby Datadog](./media/partners/datadog.png)
 
-Služby Datadog je špičková služba monitorování pro aplikace v cloudovém měřítku. Spojuje data ze serverů, databází, nástrojů a služeb a prezentuje tak jednotný přehled o celém zásobníku. Tyto možnosti jsou k dispozici na platformě pro analýzu dat založené na SaaS. Tato služba umožňuje týmům pro vývoj a provoz spolupracovat, aby se předešlo výpadkům, vyřešila problémy s výkonem a zajistila, že se cykly vývoje a nasazení dokončí včas. Integrací služby Datadog a Azure můžete shromažďovat a zobrazovat metriky z celé infrastruktury. Vykorelujte metriky virtuálních počítačů s metrikami na úrovni aplikace. Rozřezání metrik a kostky pomocí libovolné kombinace vlastností a vlastních značek.
+Azure umožňuje zákazníkům migrovat a modernizovat své aplikace tak, aby běžely v cloudu, a to v koordinaci s mnoha partnerskými řešeními. Jedním z těchto partnerů je služby Datadog, který poskytuje možnosti pro pozorování a zabezpečení pro uživatele, aby pochopili stav a výkon svých aplikací napříč hybridními a víceúčelovými prostředími.  Ale konfigurace potřebných integrací často vyžaduje navigaci mezi Azure Portal a služby Datadog.  Tím se zvyšuje složitost, trvá čas a je obtížné řešit potíže, pokud nefungují.  Aby se snížilo zatížení na více portálech, společnost Microsoft pracovala s služby Datadog, aby vytvořila integrované řešení služby Datadog na cloudové platformě Azure.  Toto řešení je dostupné prostřednictvím Azure Marketplace, nabízí bezproblémové prostředí pro použití řešení monitorování cloudu služby Datadog v Azure.  
 
-[Přejít na dokumentaci.][datadog-doc]
+Díky nové integraci Azure-služby Datadog můžou organizace plně namapovat starší a cloudové systémy, sledovat data v reálném čase během každé fáze přechodu do cloudu a zajistit, aby migrované aplikace splňovaly cíle výkonu. Tato integrace kombinuje globální přítomnost, flexibilitu, zabezpečení a dodržování předpisů pomocí funkcí protokolování a monitorování služby Datadog a umožňuje tak vytvářet nejlepší prostředí pro podniky. Prostřednictvím tohoto sjednoceného prostředí budete moci: 
 
-Nová integrace služby služby Datadog na webu Azure Marketplace je naplánována k vydání v rané 2020. října. Odkaz se sem přidá po vydání verze. 
+- Zřídit novou organizaci služby Datadog a nakonfigurovat jejich prostředky Azure tak, aby odesílaly protokoly a metriky do služby Datadog – plně spravované nastavení bez infrastruktury pro nastavování a provoz pro zákazníky.  
+- Bezproblémově odesílají protokoly a metriky do služby Datadog. Proces předávání protokolů byl zcela automatizovaný; místo vytvoření kanálu pro předávání protokolů s nastavením diagnostiky, Event Hubs a funkcemi můžete nakonfigurovat vše pomocí několika kliknutí.
+-   Snadno nainstalujte agenta služby Datadog na hostitele virtuálních počítačů jediným kliknutím.
+-   Zjednodušení jednotného přihlašování (SSO) k služby Datadog – samostatné přihlášení z portálu služby Datadog už není potřeba. 
+-   Získejte jednotnou fakturaci za službu služby Datadog prostřednictvím fakturace předplatného Azure.
+
+Zaregistrujte se [Public Preview](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) nové integrace služby Datadog s Azure.  Verze Public Preview bude k dispozici na Azure Marketplace od října 2020.
+
+Pokud stále používáte předchozí ručně nakonfigurovanou integraci, přečtěte si [dokumentaci na webu služby Datadog][datadog-doc] .
 
 ## <a name="dynatrace"></a>Dynatrace
 

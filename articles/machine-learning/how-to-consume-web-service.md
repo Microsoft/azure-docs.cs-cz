@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5427d62f93eb6284ecda9a0762e3d8c4e99c06e2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2e1c7c1ca15d7c47ec8973ac8e93f7391916f5e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302396"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využívání modelu služby Azure Machine Learning nasazeného jako webová služba
 
@@ -39,7 +39,7 @@ Obecný pracovní postup pro vytvoření klienta, který používá webovou slu�
 > [!NOTE]
 > K získání informací o webové službě použijte sadu SDK Azure Machine Learning. Toto je sada Python SDK. Pro vytvoření klienta pro službu můžete použít libovolný jazyk.
 
-Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) poskytuje informace, které potřebujete k vytvoření klienta. Následující `Webservice` vlastnosti jsou užitečné při vytváření klientské aplikace:
+Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) poskytuje informace, které potřebujete k vytvoření klienta. Následující `Webservice` vlastnosti jsou užitečné při vytváření klientské aplikace:
 
 * `auth_enabled` – Pokud je povolené ověřování klíčů, `True` ; jinak `False` .
 * `token_auth_enabled` – Pokud je povolené ověřování tokenu, `True` ; jinak `False` .
@@ -113,7 +113,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Pokud potřebujete znovu vygenerovat klíč, použijte [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) .
+> Pokud potřebujete znovu vygenerovat klíč, použijte [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) .
 
 #### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
 
@@ -501,7 +501,7 @@ Vrácené výsledky jsou podobné následujícímu dokumentu JSON:
 
 ## <a name="web-service-schema-openapi-specification"></a>Schéma webové služby (specifikace OpenAPI)
 
-Pokud jste s vaším nasazením použili automatické generování schématu, můžete získat adresu specifikace OpenAPI pro službu pomocí [vlastnosti swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri). (Například `print(service.swagger_uri)` .) K načtení specifikace použijte požadavek GET nebo otevřete identifikátor URI v prohlížeči.
+Pokud jste s vaším nasazením použili automatické generování schématu, můžete získat adresu specifikace OpenAPI pro službu pomocí [vlastnosti swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri). (Například `print(service.swagger_uri)` .) K načtení specifikace použijte požadavek GET nebo otevřete identifikátor URI v prohlížeči.
 
 Následující dokument JSON je příklad schématu (specifikace OpenAPI) generovaného pro nasazení:
 
@@ -643,7 +643,7 @@ Nástroj, který umožňuje vytvářet klientské knihovny ze specifikace, najde
 
 
 > [!TIP]
-> Po nasazení služby můžete načíst dokument JSON schématu. Použijte [vlastnost swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri) z nasazené webové služby (například `service.swagger_uri` ) k získání identifikátoru URI do souboru Swagger místní webové služby.
+> Po nasazení služby můžete načíst dokument JSON schématu. Použijte [vlastnost swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri) z nasazené webové služby (například `service.swagger_uri` ) k získání identifikátoru URI do souboru Swagger místní webové služby.
 
 ## <a name="consume-the-service-from-power-bi"></a>Využívání služby v Power BI
 

@@ -9,36 +9,35 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276933"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Sestavení sady školicích dat pro vlastní model
 
-Když použijete vlastní model pro rozpoznávání formulářů, budete mít k dispozici vlastní školicí data, aby model mohl vytvořit výukové formuláře pro konkrétní obor. 
+Když použijete vlastní model pro rozpoznávání formulářů, poskytnete vlastní školicí data do operace [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) , aby model mohl vytvořit výukové formuláře pro konkrétní odvětví. V této příručce se dozvíte, jak shromažďovat a připravovat data pro efektivní výuku modelu.
 
 Pokud provádíte školení bez ručních popisků, můžete použít 5 vyplněné formuláře nebo prázdnou formu (v názvu souboru musíte uvést slovo "Empty") a dva vyplněné formuláře. I v případě, že máte dost vyplněné formuláře, může přidání prázdného formuláře do sady školicích dat zlepšit přesnost modelu.
 
 Pokud chcete použít manuálně popsání školicích dat, musíte začínat aspoň s 5 vyplněnými formuláři stejného typu. Kromě požadované datové sady můžete stále používat neoznačené formuláře a prázdný formulář.
 
+## <a name="custom-model-input-requirements"></a>Požadavky na vstup vlastního modelu
+
+Nejprve se ujistěte, že se vaše školicí data nastavují podle požadavků na vstup pro nástroj pro rozpoznávání formulářů.
+
+[!INCLUDE [input requirements](./includes/input-requirements.md)]
+
 ## <a name="training-data-tips"></a>Tipy k datům školení
 
-Je důležité použít datovou sadu optimalizovanou pro školení. Následující tipy vám pomohou zajistit, abyste získali nejlepší výsledky z operace [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) :
+Pomocí těchto dalších tipů můžete dále optimalizovat datovou sadu pro školení.
 
 * Pokud je to možné, používejte textové dokumenty PDF namísto dokumentů na základě obrázků. Naskenované soubory PDF jsou zpracovávány jako obrázky.
 * Pro vyplněné formuláře použijte příklady, které mají všechna jejich pole vyplněna.
 * Používejte formuláře s různými hodnotami v každém poli.
 * Pokud jsou obrázky z formuláře nižší kvality, použijte větší sadu dat (například obrázek 10-15).
-* Celková velikost sady školicích dat může být až 500 stránek.
-
-## <a name="general-input-requirements"></a>Obecné požadavky na vstupy
-
-Ujistěte se, že vaše školicí data budou také postupovat podle požadavků na vstup pro veškerý obsah nástroje pro rozpoznávání formulářů. 
-
-[!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="upload-your-training-data"></a>Nahrajte školicí data.
 
@@ -73,7 +72,12 @@ Pokud do textu žádosti přidáte následující obsah, rozhraní API bude zaš
 
 Teď, když jste se naučili, jak vytvořit školicí sadu dat, postupujte podle rychlého startu a Naučte se vlastní model pro rozpoznávání formulářů a začněte ho používat na formulářích.
 
+* [Výuka modelu a extrakce dat formuláře pomocí klientské knihovny](./quickstarts/client-library.md)
 * [Výuka modelu a extrakce dat z formuláře pomocí kudrlinkou](./quickstarts/curl-train-extract.md)
 * [Výuka modelu a extrakce dat formuláře pomocí REST API a Pythonu](./quickstarts/python-train-extract.md)
 * [Výuka pomocí popisků pomocí ukázkového nástroje pro označování](./quickstarts/label-tool.md)
 * [Trénování s popisky s využitím REST API a Pythonu](./quickstarts/python-labeled-data.md)
+
+## <a name="see-also"></a>Viz také
+
+* [Co je služba Rozpoznávání formulářů?](./overview.md)

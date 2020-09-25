@@ -1,19 +1,19 @@
 ---
 title: 'Generování a export certifikátů pro P2S: PowerShell'
 titleSuffix: Azure VPN Gateway
-description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pomocí prostředí PowerShell ve Windows 10 nebo Windows serveru 2016.
+description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pro P2S pomocí prostředí PowerShell ve Windows 10 nebo Windows serveru 2016.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: dc9f9ca72247ac54286037475912cf6051d8d2af
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c1c69b301199b054fe6b1ef42cfcf7878a7a161c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306680"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro připojení typu point-to-site pomocí PowerShellu
 

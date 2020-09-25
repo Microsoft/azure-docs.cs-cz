@@ -12,23 +12,27 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e6686c69eb6dababb577e9c556a8a13ec42485a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3b2c89086688451b16a8a6e10c25be65ffd4d9dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273853"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 
 Tento dokument vás provede procesem instalace a konfigurace agentů služby Azure AD Connect Health. Agenty si můžete stáhnout [tady](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
 
 ## <a name="requirements"></a>Požadavky
+
+
+> [!IMPORTANT]
+> Instalace agenta Azure AD Connect Health v systému Windows Server Core není podporována.
 
 Následující tabulka představuje seznam požadavků pro používání služby Azure AD Connect Health.
 
@@ -48,7 +52,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 
 > [!NOTE]
 > Pokud máte vysoce uzamčené a extrémně omezené prostředí, budete muset přidat adresy URL uvedené v níže uvedených seznamech koncových bodů služby, které jsou uvedené v části povolená konfigurace rozšířeného zabezpečení aplikace Internet Explorer. 
->
+
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Odchozí připojení ke koncovým bodům služby Azure
 

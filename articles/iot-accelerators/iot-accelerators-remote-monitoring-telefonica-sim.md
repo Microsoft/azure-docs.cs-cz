@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61442209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323953"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrace dat SIM do řešení vzdáleného monitorování
 
@@ -61,7 +61,7 @@ Publikují se následující parametry připojení:
 * Síťové umístění
 * Spotřebovaný přenos dat
 
-![Řídicí panel](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
+![Snímek obrazovky okna Device Explorer na řídicím panelu vzdáleného monitorování Azure IoT Zobrazí se řádek se zvýrazněnými podrobnostmi o zařízení WeatherStation.](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -70,5 +70,5 @@ Teď, když máte přehled o tom, jak integrovat data z SIM do Azure IoT Remote 
 * [Provozování řešení vzdáleného monitorování Azure IoT](quickstart-remote-monitoring-deploy.md)
 * [Realizace pokročilého monitorování](iot-accelerators-remote-monitoring-monitor.md)
 * [správu zařízení](iot-accelerators-remote-monitoring-manage.md)
-* [Řešení problémů se zařízeními](iot-accelerators-remote-monitoring-maintain.md)
+* [Řešení potíží se zařízeními](iot-accelerators-remote-monitoring-maintain.md)
 

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324327"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Funkce optimalizace výkonu aktivity kopírování
 
@@ -124,32 +124,36 @@ Když zadáte hodnotu `parallelCopies` vlastnosti, požádejte o navýšení zat
 
 ## <a name="staged-copy"></a>Připravené kopírování
 
-Když kopírujete data ze zdrojového úložiště dat do úložiště dat jímky, můžete použít úložiště objektů BLOB jako dočasné pracovní úložiště. Příprava je užitečná hlavně v následujících případech:
+Když kopírujete data ze zdrojového úložiště dat do úložiště dat jímky, můžete použít službu Azure Blob Storage nebo Azure Data Lake Storage Gen2 jako dočasné pracovní úložiště. Příprava je užitečná hlavně v následujících případech:
 
-- **Chcete ingestovat data z různých úložišť dat do služby Azure synapse Analytics (dříve SQL Data Warehouse) prostřednictvím základu.** Azure synapse Analytics používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do Azure synapse Analytics. Zdrojová data musí být ve službě BLOB Storage nebo Azure Data Lake Store a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů BLOB nebo z Azure Data Lake Store můžete aktivovat kopírování dat přes dočasné pracovní úložiště objektů BLOB. V takovém případě Azure Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak používá základnu k efektivnímu načítání dat do služby Azure synapse Analytics. Další informace najdete v tématu [použití základny k načtení dat do služby Azure synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
+- **Chcete ingestovat data z různých úložišť dat do služby Azure synapse Analytics (dříve SQL Data Warehouse) prostřednictvím základny, kopírovat data z/do Snowflake nebo ingestovat data z Amazon RedShift/HDFS performantly.** Další podrobnosti najdete tady:
+  - [K načtení dat do služby Azure synapse Analytics použijte základnu](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
+  - [Konektor Snowflake](connector-snowflake.md)
+  - [Konektor Amazon RedShift](connector-amazon-redshift.md)
+  - [Konektor HDFS](connector-hdfs.md)
+- **Nechcete v bráně firewall otevírat jiné porty než port 80 a port 443 kvůli podnikovým zásadám IT.** Když například kopírujete data z místního úložiště dat do Azure SQL Database nebo analýzy Azure synapse, musíte aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři může připravené kopírování využít výhod místního prostředí Integration runtime k prvnímu kopírování dat do pracovního úložiště přes HTTP nebo HTTPS na portu 443 a pak načíst data z přípravy do SQL Database nebo Azure synapse Analytics. V tomto toku nemusíte povolit port 1433.
 - **V některých případech trvá i v průběhu provádění hybridního přesunu dat (tedy kopírování z místního úložiště dat do cloudového úložiště dat) prostřednictvím pomalého síťového připojení.** Za účelem zvýšení výkonu můžete pomocí připravené kopie komprimovat data v místním prostředí, aby při přesunu dat do pracovního úložiště dat v cloudu trvalo méně času. Pak můžete data v pracovním úložišti dekomprimovat ještě předtím, než se načtou do cílového úložiště dat.
-- **Nechcete v bráně firewall otevírat jiné porty než port 80 a port 443 kvůli podnikovým zásadám IT.** Když například kopírujete data z místního úložiště dat do jímky Azure SQL Database nebo do jímky služby Azure synapse Analytics, musíte aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři může připravené kopírování využít výhod místního prostředí Integration runtime k prvnímu kopírování dat do pracovní instance úložiště objektů BLOB přes protokol HTTP nebo HTTPS na portu 443. Pak může data načíst do SQL Database nebo Azure synapse Analytics z přípravy úložiště objektů BLOB. V tomto toku nemusíte povolit port 1433.
 
 ### <a name="how-staged-copy-works"></a>Jak funguje dvoufázové kopírování
 
-Když aktivujete pracovní funkci, nejdřív se data zkopírují ze zdrojového úložiště dat do pracovního úložiště objektů BLOB (Přineste si vlastní). V dalším kroku se data zkopírují z pracovního úložiště dat do úložiště dat jímky. Azure Data Factory pro vás automaticky spravuje tok se dvěma fázemi. Po dokončení přesunu dat Azure Data Factory taky vyčistit dočasná data z pracovního úložiště.
+Když aktivujete pracovní funkci, nejdřív se data zkopírují ze zdrojového úložiště dat do pracovního úložiště (Přineste si vlastní objekt blob Azure nebo Azure Data Lake Storage Gen2). V dalším kroku se data zkopírují z pracovní databáze do úložiště dat jímky. Aktivita kopírování Azure Data Factory pro vás automaticky spravuje tok se dvěma fázemi a po dokončení přesunu dat vyčistí dočasná data z pracovního úložiště.
 
 ![Připravené kopírování](media/copy-activity-performance/staged-copy.png)
 
-Když provedete přesun dat pomocí pracovního úložiště, můžete určit, jestli chcete data zkomprimovat před přesunem dat ze zdrojového úložiště dat do dočasného nebo přípravného úložiště dat a pak je dekomprimovat předtím, než přesunete data z dočasného nebo přípravného úložiště dat do úložiště dat jímky.
+Když provedete přesun dat pomocí pracovního úložiště, můžete určit, jestli chcete data před přesunem dat ze zdrojového úložiště dat do pracovního úložiště a pak je dekomprimovat, a teprve potom přesunout data z dočasného nebo přípravného úložiště dat do úložiště dat jímky.
 
 V současné době nemůžete kopírovat data mezi dvěma datovými úložišti, která jsou propojena prostřednictvím jiného samoobslužného úřadu pro hostování, ani bez dvoufázové kopie. V takovém případě můžete nakonfigurovat dvě explicitně zřetězené aktivity kopírování ke kopírování ze zdroje do přípravy, a to z přípravy do jímky.
 
 ### <a name="configuration"></a>Konfigurace
 
-Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování, abyste určili, jestli chcete data připravit v úložišti objektů blob, než je načtete do cílového úložiště dat. Při nastavování **enableStaging** na `TRUE` Zadejte další vlastnosti uvedené v následující tabulce. Je také potřeba vytvořit sdílenou službu Azure Storage nebo sdílený přístupový podpis s úložištěm pro přípravu, pokud ji ještě nemáte.
+Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování, abyste určili, jestli chcete data připravit v úložišti, než je načtete do cílového úložiště dat. Při nastavování **enableStaging** na `TRUE` Zadejte další vlastnosti uvedené v následující tabulce. 
 
 | Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
-| enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Nepravda |No |
-| linkedServiceName |Zadejte název propojené služby [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem se nedá použít k načtení dat do služby Azure synapse Analytics prostřednictvím základu. Můžete ho použít ve všech ostatních scénářích. |– |Ano, pokud je **enableStaging** nastavené na true |
-| program |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |– |No |
-| Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Nepravda |No |
+| enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Ne |No |
+| linkedServiceName |Zadejte název [úložiště objektů BLOB v Azure](connector-azure-blob-storage.md#linked-service-properties) nebo propojené služby [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) , který odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. |Není k dispozici |Ano, pokud je **enableStaging** nastavené na true |
+| program |Zadejte cestu, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. |Není k dispozici |No |
+| Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Ne |No |
 
 >[!NOTE]
 > Pokud použijete připravené kopírování s povolenou kompresí, instanční objekt nebo ověřování MSI pro propojenou službu pracovního objektu BLOB se nepodporuje.
@@ -159,25 +163,24 @@ Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v p�
 ```json
 "activities":[
     {
-        "name": "Sample copy activity",
+        "name": "CopyActivityWithStaging",
         "type": "Copy",
         "inputs": [...],
         "outputs": [...],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "OracleSource",
             },
             "sink": {
-                "type": "SqlSink"
+                "type": "SqlDWSink"
             },
             "enableStaging": true,
             "stagingSettings": {
                 "linkedServiceName": {
-                    "referenceName": "MyStagingBlob",
+                    "referenceName": "MyStagingStorage",
                     "type": "LinkedServiceReference"
                 },
-                "path": "stagingcontainer/path",
-                "enableCompression": true
+                "path": "stagingcontainer/path"
             }
         }
     }

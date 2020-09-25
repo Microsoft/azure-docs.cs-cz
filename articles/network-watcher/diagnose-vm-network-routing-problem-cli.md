@@ -1,7 +1,7 @@
 ---
 title: Diagnostika problému se směrováním sítě virtuálních počítačů – Azure CLI
 titleSuffix: Azure Network Watcher
-description: V tomto článku se dozvíte, jak diagnostikovat potíže se síťovým směrováním virtuálního počítače pomocí funkce dalšího směrování Azure Network Watcher.
+description: V tomto článku se dozvíte, jak pomocí Azure CLI diagnostikovat potíže s směrováním sítě virtuálního počítače pomocí funkce dalšího směrování Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -17,22 +17,22 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 889db5cdcb1807b859339eaf326e3cec7ea64b84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302226"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostika potíží se síťovým směrováním virtuálního počítače – Azure CLI
 
 V tomto článku nasadíte virtuální počítač (VM) a pak zkontrolujete komunikaci s IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Po ověření verze Azure CLI spusťte příkaz `az login` a vytvořte připojení k Azure. Příkazy Azure CLI v tomto článku jsou formátované tak, aby se spouštěly v prostředí bash.
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Po ověření verze Azure CLI spusťte příkaz `az login`  a vytvořte připojení k Azure. Příkazy Azure CLI v tomto článku jsou formátované tak, aby se spouštěly v prostředí bash.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 

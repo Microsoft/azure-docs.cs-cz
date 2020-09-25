@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323721"
 ---
 # <a name="system-requirements"></a>Požadavky na systém
 
@@ -63,6 +63,17 @@ Stabilní síťové připojení s nízkou latencí je důležité pro dobré už
 [Požadavky na síť](../reference/network-requirements.md)najdete v tématu vyhrazená kapitola.
 
 Informace o řešení problémů se sítí najdete v [Průvodci odstraňováním potíží](../resources/troubleshoot.md#unstable-holograms).
+
+### <a name="network-ports"></a>Síťové porty
+
+Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblokují následující porty:
+
+| Port              | Protokol | Povolit    | Popis |
+|-------------------|----------|----------|-------------|
+| 50051             | TCP      | Odesílaná | Počáteční připojení (HTTP handshake) |
+| 8266              | UDP      | Odesílaná | Přenos dat |
+| 5000, 5433, 8443  | TCP      | Odesílaná | Vyžadováno pro [Nástroj ArrInspector](../resources/tools/arr-inspector.md)|
+
 
 ## <a name="software"></a>Software
 

@@ -1,18 +1,18 @@
 ---
 title: Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty
-description: Přečtěte si, jak maximalizovat výhody programu Software Assurance pro Windows, aby se do Azure přinášejí místní licence.
+description: Přečtěte si, jak maximalizovat výhody Software Assurance v systému Windows, aby se zajistilo poskytování místních licencí do Azure s právy pro hostování s více klienty.
 author: xujing
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279021"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
 Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k virtuálnímu počítači s Windows na úrovni uživatele (licence pro předplatné uživatele nebo licence k předplatnému uživatele) umožňuje víceklientské hostování pro Windows 10 přístup k cloudu a spouštění Windows 10 Virtual Machines v Azure bez placení na jinou licenci. Další informace najdete v tématu hostování s více [klienty pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277729"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -213,11 +213,11 @@ K ilustraci sekvence změn se předpokládá, že server A je primárním server
 
 ## <a name="best-practices-for-sql-managed-instance"></a>Osvědčené postupy pro spravovanou instanci SQL
 
-Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primární instanci a bude připojena k sekundární instanci v jiné oblasti Azure.  Všechny databáze v instanci budou replikovány do sekundární instance.
+Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primární instanci, kterou připojí k sekundární instanci v jiné oblasti Azure.  Všechny databáze v instanci se budou replikovat do sekundární instance.
 
 Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace pomocí spravované instance a skupiny automatického převzetí služeb při selhání.
 
-![automatické převzetí služeb při selhání](./media/auto-failover-group-overview/auto-failover-group-mi.png)
+![Diagram automatického převzetí služeb při selhání](./media/auto-failover-group-overview/auto-failover-group-mi.png)
 
 > [!NOTE]
 > Podrobný kurz přidání spravované [instance do skupiny převzetí služeb při selhání](../managed-instance/failover-group-add-instance-tutorial.md) najdete v článku o podrobném kurzu přidání spravované instance SQL pro použití skupiny převzetí služeb při selhání.
@@ -242,11 +242,11 @@ Vzhledem k tomu, že každá instance je izolovaná ve své vlastní virtuální
 Skupinu převzetí služeb při selhání můžete vytvořit mezi spravovanými instancemi SQL ve dvou různých předplatných, pokud jsou předplatná přidružená ke stejnému [Azure Active Directory tenantovi](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Při použití rozhraní API PowerShellu to můžete provést zadáním `PartnerSubscriptionId` parametru pro sekundární SQL spravovanou instanci. Při použití REST API může mít každé ID instance obsažené v `properties.managedInstancePairs` parametru vlastní subscriptionID.
   
 > [!IMPORTANT]
-> Azure Portal nepodporuje vytváření skupin převzetí služeb při selhání v různých předplatných. Pro existující skupiny převzetí služeb při selhání v různých předplatných nebo skupinách prostředků se převzetí služeb při selhání nedá iniciovat ručně prostřednictvím portálu z primární spravované instance SQL. Místo toho ji inicializujte z instance geografické sekundární instance.
+> Azure Portal nepodporuje vytváření skupin převzetí služeb při selhání v různých předplatných. Pro existující skupiny převzetí služeb při selhání v různých předplatných nebo skupinách prostředků se převzetí služeb při selhání nedá iniciovat ručně prostřednictvím portálu z primární spravované instance SQL. Místo toho ji můžete zahájit z instance v sekundární geografické oblasti.
 
 ### <a name="managing-failover-to-secondary-instance"></a>Správa převzetí služeb při selhání do sekundární instance
 
-Skupina převzetí služeb při selhání bude spravovat převzetí služeb při selhání všech databází ve spravované instanci SQL. Při vytvoření skupiny se všechny databáze v instanci automaticky geograficky replikují do sekundární spravované instance SQL. Skupiny převzetí služeb při selhání nelze použít k zahájení částečného převzetí služeb při selhání podmnožiny databází.
+Skupina převzetí služeb při selhání bude spravovat převzetí služeb při selhání všech databází ve službě SQL Managed Instance. Po vytvoření skupiny se všechny databáze v instanci budou automaticky geograficky replikovat do sekundární instance služby SQL Managed Instance. Pomocí skupin převzetí služeb při selhání nemůžete zahájit částečné převzetí služeb při selhání podmnožiny databází.
 
 > [!IMPORTANT]
 > Pokud je databáze z primární spravované instance SQL odebrána, bude také automaticky zrušena na geograficky sekundární instanci SQL Managed.
@@ -260,7 +260,7 @@ Při provádění operací OLTP použijte `<fog-name>.zone_id.database.windows.n
 Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. Chcete-li se připojit přímo k geograficky replikovanému sekundárnímu serveru, použijte `<fog-name>.secondary.<zone_id>.database.windows.net` jako adresu URL serveru a připojení se provede přímo na geograficky replikovanou sekundární hodnotu.
 
 > [!NOTE]
-> V některých úrovních služby SQL Database podporuje použití [replik jen pro čtení](read-scale-out.md) k vyrovnávání zatížení úloh dotazů jen pro čtení pomocí kapacity jedné repliky jen pro čtení a použitím `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Když jste nakonfigurovali geograficky replikovanou sekundární položku, můžete tuto možnost použít k připojení k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
+> V některých úrovních služby SQL Database podporuje použití [replik jen pro čtení](read-scale-out.md) k vyrovnávání zatížení úloh dotazů jen pro čtení pomocí kapacity jedné repliky jen pro čtení a použitím `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Pokud jste nakonfigurovali geograficky replikované sekundární umístění, můžete se s využitím této možnosti připojit k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
 >
 > - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `<fog-name>.<zone_id>.database.windows.net` .
 > - Pokud se chcete připojit k replice jen pro čtení v sekundárním umístění, použijte `<fog-name>.secondary.<zone_id>.database.windows.net` .
@@ -348,16 +348,16 @@ Výše uvedená konfigurace zajistí, že automatické převzetí služeb při s
 > [!IMPORTANT]
 > Pro zajištění kontinuity podnikových důvodů pro regionální výpadky musíte zajistit geografickou redundanci pro front-end komponenty i databáze.
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Povolení geografické replikace mezi spravovanými instancemi a jejich virtuální sítě
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Povolení geografické replikace mezi spravovanými instancemi a jejich virtuálními sítěmi
 
 Při nastavování skupiny převzetí služeb při selhání mezi primárními a sekundárními spravovanými instancemi SQL ve dvou různých oblastech se každá instance izoluje pomocí nezávislé virtuální sítě. Pokud chcete zajistit, aby provoz replikace mezi těmito virtuální sítěmi splňoval tyto požadavky:
 
 - Tyto dvě instance spravované instance SQL musí být v různých oblastech Azure.
 - Tyto dvě instance spravované instance SQL musí být stejné úrovně služby a musí mít stejnou velikost úložiště.
 - Vaše sekundární instance spravované instance SQL musí být prázdná (žádné uživatelské databáze).
-- Virtuální sítě používané instancemi spravované instance SQL musí být připojené prostřednictvím [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Pokud se dvě virtuální sítě připojují prostřednictvím místní sítě, ujistěte se, že neexistuje žádné pravidlo brány firewall blokující porty 5022 a 11000-11999. Globální partnerský vztah virtuálních sítí se nepodporuje.
+- Virtuální sítě používané instancemi spravované instance SQL musí být připojené prostřednictvím [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Pokud jsou tyto dvě virtuální sítě propojené prostřednictvím místní sítě, ujistěte se, že žádné pravidlo firewallu neblokuje porty 5022 a 11000–11999. Globální VNET Peering se nepodporuje.
 - Dvě spravované instance SQL virtuální sítě nemůžou mít překrývající se IP adresy.
-- Musíte nastavit skupiny zabezpečení sítě (NSG) tak, aby porty 5022 a rozsah 11000 ~ 12000 byly otevřené příchozí a odchozí pro připojení z podsítě jiné spravované instance. To umožňuje provoz replikace mezi instancemi.
+- Je potřeba nastavit skupiny zabezpečení sítě (NSG) tak, aby porty 5022 a 11000–12000 byly otevřené pro příchozí i odchozí připojení z podsítě druhé spravované instance. Důvodem je umožnit provoz replikace mezi instancemi.
 
    > [!IMPORTANT]
    > Nesprávně nakonfigurovaná pravidla zabezpečení NSG vede k zablokování operací kopírování databáze.
@@ -369,9 +369,9 @@ Při nastavování skupiny převzetí služeb při selhání mezi primárními a
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade nebo downgrade primární databáze
 
-Primární databázi můžete upgradovat nebo downgradovat na jinou výpočetní velikost (v rámci stejné úrovně služby, ne mezi Pro obecné účely a Pro důležité obchodní informace), aniž byste museli odpojit sekundární databáze. Při upgradu doporučujeme nejdřív upgradovat všechny sekundární databáze a potom upgradovat primární. Když se downgrade, obrátí se pořadí: nejprve nastavte downgrade primární databáze a pak vytvořte downgrade všech sekundárních databází. Když provedete upgrade nebo downgrade databáze na jinou úroveň služby, toto doporučení se vynutilo.
+Primární databázi můžete upgradovat nebo downgradovat na jinou výpočetní velikost (v rámci stejné úrovně služby, ne mezi Pro obecné účely a Pro důležité obchodní informace), aniž byste museli odpojit sekundární databáze. Při upgradu doporučujeme nejdřív upgradovat všechny sekundární databáze a potom upgradovat primární. Když se downgrade, obrátí se pořadí: nejprve nastavte downgrade primární databáze a pak vytvořte downgrade všech sekundárních databází. Toto doporučení se vynucuje při upgradu nebo downgradu databáze na jinou úroveň služby.
 
-Tato sekvence se doporučuje výslovně vyhnout problému, při kterém se sekundární položka u menší skladové položky (SKU) přetěžuje a že se musí znovu naplnit během upgradu nebo procesu downgrade. Můžete se taky vyhnout problému tím, že nastavíte primární jen pro čtení, na úkor všech úloh, které mají vliv na čtení a zápis na primární úrovni.
+Toto pořadí se doporučuje zejména proto, aby se během procesu upgradu nebo downgradu zabránilo problému s přetížením sekundární instance s nižší skladovou položkou, kterou by tak bylo potřeba znovu naplnit. Tomuto problému můžete zabránit také tak, že primární instanci nastavíte jen pro čtení – bude to však mít vliv na všechny úlohy čtení z primární instance i zápisu na ni.
 
 > [!NOTE]
 > Pokud jste jako součást konfigurace skupiny převzetí služeb při selhání vytvořili sekundární databázi, nedoporučuje se ji převést na downgrade sekundární databáze. Tím zajistíte, že vaše datová úroveň má dostatečnou kapacitu pro zpracování pravidelného zatížení po aktivaci převzetí služeb při selhání.

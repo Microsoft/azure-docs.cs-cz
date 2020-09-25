@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259631"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
@@ -53,7 +53,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
 | {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
 
-### <a name="policy"></a>Zásada
+### <a name="policy"></a>Zásady
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
@@ -90,7 +90,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Context: IPAddress} | IP adresa uživatele. | 11.111.111.11 |
 | {Context: políčko zůstat přihlášeni} | Určuje, zda je zaškrtnuto políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . |  true |
 
-### <a name="claims"></a>Deklarace identity 
+### <a name="claims"></a>Deklarace identit 
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
@@ -113,6 +113,7 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
 | {OAuth2: access_token} | Přístupový token | Není k dispozici |
+| {OAuth2: refresh_token} | Obnovovací token | Není k dispozici |
 
 
 ### <a name="saml"></a>SAML
@@ -122,8 +123,8 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {SAML: AuthnContextClassReferences} | `AuthnContextClassRef`Hodnota elementu, od požadavku SAML. | urn: Oasis: names: TC: SAML: 2.0: AC: třídy: PasswordProtectedTransport |
 | {SAML: NameIdPolicyFormat} | `Format`Atribut z `NameIDPolicy` prvku požadavku SAML. | urn: Oasis: names: TC: SAML: 1.1: NameId-Format: emailAddress |
 | {SAML: Issuer} |  `Issuer`Hodnota prvku SAML požadavku SAML.| `https://contoso.com` |
-| {SAML: AllowCreate} | `AllowCreate`Hodnota atributu z `NameIDPolicy` prvku požadavku SAML. | True |
-| {SAML: ForceAuthn} | `ForceAuthN`Hodnota atributu z `AuthnRequest` prvku požadavku SAML. | True |
+| {SAML: AllowCreate} | `AllowCreate`Hodnota atributu z `NameIDPolicy` prvku požadavku SAML. | Ano |
+| {SAML: ForceAuthn} | `ForceAuthN`Hodnota atributu z `AuthnRequest` prvku požadavku SAML. | Ano |
 | {SAML: ProviderName} | `ProviderName`Hodnota atributu z `AuthnRequest` prvku požadavku SAML.| Contoso.com |
 | {SAML: RelayState} | `RelayState`Parametr řetězce dotazu.| 
 

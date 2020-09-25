@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884331"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275417"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Správa pravidel brány firewall pro Azure Database for PostgreSQL – Citus (škálování)
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k uzlu koordinátoru Citus () ze zadané IP adresy nebo rozsahu IP adres.
@@ -49,7 +49,7 @@ Alternativně můžete kliknutím na **+ Přidat 0.0.0.0-255.255.255.255** (napr
 
 ## <a name="connecting-from-azure"></a>Připojení z Azure
 
-Existuje snadný způsob, jak udělit přístup k databázi pomocí technologie Hyper-v, která je hostovaná v Azure (například aplikace Azure Web Apps, nebo ty, které běží na virtuálním počítači Azure). Jednoduše nastavte možnost **Povolení služeb a prostředků Azure pro přístup k této skupině serverů** na **Ano** v portálu v podokně **síť** a stiskněte **Uložit**.
+Existuje snadný způsob, jak udělit přístup k databázi Citus () aplikacím hostovaným v Azure (jako je třeba aplikace Azure Web Apps nebo ty, které běží na virtuálním počítači Azure). Jednoduše nastavte možnost **Povolení služeb a prostředků Azure pro přístup k této skupině serverů** na **Ano** v portálu v podokně **síť** a stiskněte **Uložit**.
 
 > [!IMPORTANT]
 > Touto možností se brána firewall nakonfiguruje tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup jenom na autorizované uživatele.

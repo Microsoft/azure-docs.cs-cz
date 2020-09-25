@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275128"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Nastavení připojení k účtu Azure Storage pomocí spravované identity
 
@@ -143,6 +143,10 @@ Tento indexer se spustí každé dvě hodiny (časový interval je nastaven na "
 Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](/rest/api/searchservice/create-indexer).
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>Přístup k zabezpečeným datům v účtech úložiště
+
+Účty Azure Storage je možné dále zabezpečit pomocí bran firewall a virtuálních sítí. Pokud chcete indexovat obsah z účtu BLOB Storage nebo Data Lake Gen2 účet úložiště, který je zabezpečený pomocí brány firewall nebo virtuální sítě, postupujte podle pokynů pro [přístup k datům v účtech úložiště bezpečně prostřednictvím výjimky důvěryhodné služby](search-indexer-howto-access-trusted-service-exception.md).
 
 ## <a name="see-also"></a>Viz také
 

@@ -3,17 +3,17 @@ title: 'Tenant Azure AD pro uživatelská připojení VPN: ověřování Azure A
 description: K připojení k virtuální síti pomocí ověřování Azure AD můžete použít Azure Virtual WAN User VPN (Point-to-site).
 titleSuffix: Azure Virtual WAN
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: e88437dc03772348ebbe0d179afc7fd4ddd24bd9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f77d17881054440b01e30e738a8c38407c38b4a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306544"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Příprava Azure Active Directory tenanta pro připojení VPN OpenVPN protokolu uživatelů
 
@@ -46,7 +46,7 @@ Pomocí kroků v [tomto článku](../active-directory/fundamentals/add-users-azu
 
 2. Potom pro vaši organizaci udělte souhlas správce, což umožňuje aplikacím Azure VPN přihlašovat se a číst profily uživatelů. Zkopírujte a vložte adresu URL, která se vztahuje k umístění vašeho nasazení, do adresního řádku v prohlížeči:
 
-    Veřejný
+    Public
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent

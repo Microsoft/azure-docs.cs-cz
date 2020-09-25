@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305626"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Kurz: Konfigurace funkce pro Automatické zřizování uživatelů
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve 
 
 1. V [Azure Portal](https://portal.azure.com)vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 1. V seznamu aplikace vyberte možnost **převyužívat**.
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve 
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. Do pole **Adresa URL tenanta** zadejte **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
+   a. Do pole **Adresa URL tenanta** zadejte **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** . Pokud jste se přihlásili ke službě, můžete získat ID svého účtu z adresy URL v prohlížeči.
    b. Do pole **token tajného klíče** zadejte hodnotu ověřovacího tokenu SCIM, kterou jste uložili v kroku 6 části nastavení "nastavení svazku pro zřizování".  
    c. Vyberte **Test připojení** , aby se služba Azure AD mohla připojit k tomuto svazku. Pokud se připojení nepovede, ujistěte se, že váš účet správce má oprávnění *správce* , a zkuste to znovu.
 
@@ -177,4 +177,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

@@ -1,6 +1,6 @@
 ---
 title: Použití vlastních aktivit v kanálu
-description: Naučte se vytvářet vlastní aktivity a používat je v kanálu Azure Data Factory.
+description: Naučte se vytvářet vlastní aktivity pomocí .NET a pak aktivity používat v kanálu Azure Data Factory.
 services: data-factory
 ms.service: data-factory
 author: nabhishek
@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276488"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
@@ -100,10 +100,10 @@ V této ukázce je helloworld.exe vlastní aplikací uloženou ve složce custom
 
 V následující tabulce jsou popsány názvy a popisy vlastností, které jsou specifické pro tuto aktivitu.
 
-| Vlastnost              | Popis                              | Vyžadováno |
+| Vlastnost              | Popis                              | Povinné |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Název aktivity v kanálu     | Yes      |
-| description           | Text popisující, co aktivita dělá.  | No       |
+| jméno                  | Název aktivity v kanálu     | Yes      |
+| Popis           | Text popisující, co aktivita dělá.  | No       |
 | typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Yes      |
 | linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Yes      |
 | command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz `cmd /c dir` , který bude nativně podporován uzlem fondu služby Batch systému Windows. | Yes      |
@@ -325,7 +325,7 @@ Tato serializace není skutečně zabezpečená a není určena k zabezpečení.
 
 Chcete-li získat přístup k vlastnostem typu *SecureString* z vlastní aktivity, přečtěte si `activity.json` soubor, který je umístěn ve stejné složce jako vaše. EXE, deserializace JSON a pak přístup k vlastnosti JSON (extendedProperties => [propertyName] => Value).
 
-## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>Porovnání aktivity vlastní aktivity v2 a verze 1 (vlastní)
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> Porovnání aktivity vlastní aktivity v2 a verze 1 (vlastní)
 
 V Azure Data Factory verze 1 implementujete (vlastní) aktivitu DotNet tím, že vytvoříte projekt knihovny tříd .NET s třídou, která implementuje `Execute` metodu `IDotNetActivity` rozhraní. Propojené služby, datové sady a rozšířené vlastnosti v datové části JSON aktivity (vlastní) DotNet jsou předány metodě spuštění jako objekty silného typu. Podrobnosti o chování verze 1 najdete [v tématu (vlastní) dotnet ve verzi 1](v1/data-factory-use-custom-activities.md). Z důvodu této implementace musí kód aktivity DotNet verze 1 cílit na .NET Framework 4.5.2. Aktivita rozhraní DotNet verze 1 musí být také spuštěna v uzlech Azure Batch se systémem Windows.
 

@@ -4,22 +4,22 @@ description: V tomto článku se dozvíte, jak zobrazit data o přenosech na map
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272952"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Zobrazit data o přenosech na mapě pomocí Azure Maps Android SDK
 
 Data toku a data incidentů jsou dva typy dat přenosů, které lze zobrazit na mapě. V této příručce se dozvíte, jak zobrazit oba typy dat přenosů. Data incidentů se skládají z bodových a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody. Data toku zobrazují metriky týkající se toku provozu na cestách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moci zobrazit provoz na mapě, je třeba [vytvořit účet Azure](quick-demo-map-app.md#create-an-azure-maps-account)a [získat klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account). Pak je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) a načíst mapu.
 

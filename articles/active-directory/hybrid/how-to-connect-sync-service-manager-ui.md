@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2975bb95511ba0a0d9f61886109c12715105fd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01d3b8a0ffaef1b1f03f6f9f8dab6af04a965ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357116"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306017"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Úvod do uživatelského rozhraní Azure AD Connect Synchronization Service Manager
 
-![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
+![Snímek obrazovky zobrazující Synchronization Service Manager U I](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
 
 Rozhraní **Synchronization Service Manager** se používá ke konfiguraci pokročilejších aspektů synchronizačního modulu a k zobrazení provozních aspektů služby.
 

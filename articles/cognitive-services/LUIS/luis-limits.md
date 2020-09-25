@@ -1,14 +1,16 @@
 ---
 title: Omezení – LUIS
 description: Tento článek obsahuje známé limity Azure Cognitive Services Language Understanding (LUIS). LUIS má několik omezených oblastí. Model omezuje ovládací prvky pro záměry, entity a funkce v LUIS. Omezení kvóty na základě typu klíče. Kombinace kláves řídí web LUIS.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055337"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324701"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Omezení pro LUIS model a klíče
 LUIS má několik omezených oblastí. První je [limit modelu](#model-limits), který řídí záměry, entity a funkce v Luis. Druhá oblast má [omezení kvóty](#key-limits) na základě typu klíče. Třetí oblastí omezení je [kombinace kláves](#keyboard-controls) pro řízení webu Luis. Čtvrtá oblast je [mapování světové oblasti](luis-reference-regions.md) mezi vytvářením webu Luis a rozhraními API [koncového bodu](luis-glossary.md#endpoint) Luis.
@@ -39,7 +41,7 @@ Pokud vaše aplikace překračuje omezení modelu LUIS, zvažte použití aplika
 | [Role](luis-concept-roles.md)|role 300 na aplikaci 10 rolí na entitu|
 | [Promluva][utterances] | 500 znaků<br><br>Pokud máte text delší, než je tento limit znaků, je nutné nejprve segmentovat utterance před vstupem do LUIS a obdržíte jednotlivé reakce na segment. Existují zřejmé přestávky, se kterými můžete pracovat, jako jsou například interpunkční znaménka a dlouhá pauza v řeči.|
 | [Příklady utterance][utterances] | 15 000 na aplikaci – počet projevy na záměr není nijak omezený.<br><br>Pokud potřebujete vytvořit výuku aplikace s dalšími příklady, použijte přístup k modelu [odeslání](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) . Jednotlivé aplikace LUIS (označované jako podřízené aplikace pro nadřazenou aplikaci pro expedici) provedete pomocí jednoho nebo více záměrů a potom zajistěte odeslání aplikace, která se vzorkuje z každého podřízeného projevy aplikace LUIS, aby směrovala požadavek předpovědi na správnou podřízenou aplikaci. |
-| [Zachovávaných](luis-concept-version.md)| verze 100 na aplikaci |
+| [Versions](luis-concept-version.md) (Verze)| verze 100 na aplikaci |
 | [Název verze][luis-how-to-manage-versions] | 128 znaků |
 
 * Výchozí znak maxima je 50 znaků.
@@ -106,7 +108,7 @@ _kind_ `LUIS` Při filtrování prostředků v Azure Portal použijte druh. Pros
 
 ## <a name="keyboard-controls"></a>Ovládací prvky klávesnice
 
-|Vstup z klávesnice | Description |
+|Vstup z klávesnice | Popis |
 |--|--|
 |CTRL + E|Přepíná mezi tokeny a entitami v seznamu projevy.|
 

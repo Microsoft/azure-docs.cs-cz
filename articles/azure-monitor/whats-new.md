@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 0809894964ff99c468f8bf3876bfdb44995656f7
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325653"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
@@ -48,7 +48,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Analýza využití pomocí Azure Application Insights](app/usage-overview.md) – přidané video
 
 ### <a name="autoscale"></a>Automatické škálování
-- [Začínáme s AutoScale v Azure](platform/autoscale-get-started.md) – Přidání oddílu o směrování do instancí healty pro App Service.
+- [Začínáme s AutoScale v Azure](platform/autoscale-get-started.md) – Přidání oddílu o směrování na instance v pořádku pro App Service.
 
 ### <a name="data-collection"></a>Shromažďování dat
 - [Nakonfigurujte shromažďování dat pro agenta Azure monitor (Preview)](platform/data-collection-rule-azure-monitor-agent.md) – nový článek.
@@ -87,7 +87,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Nasazení Azure monitor](deploy-scale.md) -restrukturování obsahu Azure monitor pro virtuální počítače registraci.
 - [Použití privátního odkazu Azure k bezpečnému propojení sítí s Azure Monitormi](platform/private-link-security.md) přidanými částmi na omezeních.
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 - [Pravidla akcí pro Azure monitor výstrahy](platform/alerts-action-rules.md) – přidání procesů CLI.
 - [Vytvoření a Správa skupin akcí v Azure Portal](platform/action-groups.md) – aktualizuje se, aby odrážely změny v uživatelském rozhraní.
 - [Uložené dotazy v Azure Monitor Log Analytics](log-query/saved-queries.md) – nový článek.
@@ -148,7 +148,7 @@ Nové a aktualizované články z změny struktury Azure Monitor pro virtuální
 ### <a name="agents"></a>Agenti
 - [Přehled agenta Log Analytics](platform/log-analytics-agent.md) – přidání požadavku Pythonu 2
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 - [Jak aktualizovat pravidla upozornění nebo pravidla akcí, když se jejich cílový prostředek přesune do jiné oblasti Azure](platform/alerts-resource-move.md) – nový článek.
 - [Řešení potíží s upozorněními Azure Metrics](platform/alerts-troubleshoot-metric.md) – nový článek
 - [Řešení potíží s výstrahami protokolu v Azure monitor](platform/alerts-troubleshoot-metric.md) – nový článek.
@@ -316,7 +316,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - Azure Monitor oddílem přidaných uživatelem [spravovaný klíč](platform/customer-managed-keys.md) na asynchronních operacích
 - [Správa pracovních prostorů Log Analytics v](platform/manage-access.md) oddílech s aktualizovanými vlastními protokoly Azure monitor.
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 - [Pravidla akcí pro výstrahy Azure monitor](platform/alerts-action-rules.md) – přidané video
 - [Přehled upozorňování a monitorování oznámení v Azure](platform/alerts-overview.md) – přidané video
@@ -366,7 +366,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Azure monitor konfiguraci klíče spravovaného zákazníkem](platform/customer-managed-keys.md) – obecné aktualizace.
 - [Referenční informace o Azure monitor dat](/azure/azure-monitor/reference/) – nový web
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 - [Umožňuje vytvářet, zobrazovat a spravovat výstrahy protokolu aktivit v Azure monitor](platform/alerts-activity-log.md) – další vysvětlení správce prostředků šablony.
 - [Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.](platform/alerts-metric-overview.md) – Aktualizováno pro státní podporu.
@@ -490,7 +490,7 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 
 - [Shromažďovat data protokolu v](platform/log-analytics-agent.md) tabulce požadavků brány firewall pro službu Azure Log Analytics agent – aktualizované
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 - [Vytváření a Správa skupin akcí ve Azure Portal](platform/action-groups.md) – nastavení odebrané pro funkce v2, které už nejsou potřeba.
 - [Vytvořte upozornění na metriku správce prostředků s](platform/alerts-metric-create-templates.md) příkladem přidaným šablonou pro parametr *ignoreDataBefore* .  Přidali jsme omezení pro pravidla s více kritérii.
@@ -544,7 +544,7 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 
 - [Připojte počítače se systémem Linux k Azure monitor](platform/agent-linux.md) – nový článek.
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 - [Vytvoření upozornění na metriku s](platform/alerts-metric-create-templates.md) příkladem pro vlastní metriku správce prostředků přidány šablony
 - [Vytváření výstrah s dynamickými mezními hodnotami v sekci Azure monitor](platform/alerts-dynamic-thresholds.md) -added při interpretaci dynamických mezních grafů.
@@ -558,7 +558,6 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 - [Application Insights pro aplikace pracovní služby Worker (jiné aplikace než HTTP)](app/worker-service.md) – Přidali jsme výchozí úroveň protokolování do kódu jazyka C#. Referenční verze balíčku se aktualizovala.
 - [ Odkaz naApplicationInsights.config –](app/configuration-with-applicationinsights-config.md) ukázkový kód aktualizovaný službou Azure.
 - [Automatizace Application Insights Azure pomocí PowerShellu](app/powershell.md) – aktualizace šablony Správce prostředků
-- [Azure Monitor Application Insights balíčky NuGet](app/nuget.md) – aktualizované verze balíčků.
 - [Vytvoření nového prostředku Application Insights Azure](app/create-new-resource.md) – poznámka přidána k globálně jedinečnému názvu
 - [Diagnostika pomocí Live Metrics Stream – požadavek na](app/live-stream.md) verzi sady SDK ASP.NET Core Application Insights
 - [Čítače událostí v Application Insights](app/eventcounters.md) -aktualizovaná kategorie a tabulka do customMetrics.

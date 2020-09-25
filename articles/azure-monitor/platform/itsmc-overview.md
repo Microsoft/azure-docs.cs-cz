@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0940521873b8d6746381acbd8e6c4c6d3a273c49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325755"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru ITSM
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Propojení Azure s nástroji ITSM s využitím ITSM konektoru
 
 ![Symbol IT Service Management Connectoru](media/itsmc-overview/itsmc-symbol.png)
 
@@ -114,8 +114,8 @@ Skupiny akcí poskytují modulární a opakovaně použitelný způsob aktivace 
 
 Použijte následující postup:
 
-1. V Azure Portal klikněte na **monitorování**.
-2. V levém podokně klikněte na **skupiny akcí**. Zobrazí se okno **Přidat skupinu akcí** .
+1. V Azure Portal klikněte na  **monitorování**.
+2. V levém podokně klikněte na  **skupiny akcí**. Zobrazí se okno **Přidat skupinu akcí** .
 
     ![Skupiny akcí](media/itsmc-overview/action-groups.png)
 
@@ -137,6 +137,10 @@ Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu 
 > [!NOTE]
 >
 > Informace o cenách ITSM akce najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) pro skupiny akcí.
+
+> [!NOTE]
+>
+> Pole krátký popis v definici pravidla výstrahy je při odeslání pomocí akce ITSM omezeno na 40 znaků.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Vizualizujte a analyzujte data o incidentech a žádostech o změnu.
@@ -289,7 +293,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 
 2. Pokud se data z ServiceNow nesynchronizují Log Analytics, ujistěte se, že instance ServiceNow není v režimu spánku. Instance pro vývoj v ServiceNow se někdy po dlouhou dobu nečinným přechodem do režimu spánku. Jinak nahlaste problém.
 3. Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM nebo položky konfigurace nejsou vytvořené/propojené s pracovními položkami nebo pro jiné obecné informace, podívejte se do následujících umístění:
-   -  ITSMC: řešení zobrazuje souhrn připojení/pracovních položek/počítačů atd. Klikněte na dlaždici se **stavem konektoru**, který vám umožní **Protokolovat hledání** pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s LogType_S chybě.
+   -  ITSMC: řešení zobrazuje souhrn připojení/pracovních položek/počítačů atd. Klikněte na dlaždici se **stavem konektoru**, který vám umožní **Protokolovat hledání**  pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s LogType_S chybě.
    - Stránka **prohledávání protokolu** : zobrazení chyb/souvisejících informací přímo pomocí `*` ServiceDeskLog_CL dotazů `*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Řešení potíží s nasazením Service Manager Web App
