@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512330"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257448"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -111,6 +111,12 @@ Pokud jste přijali identifikátor URI ID aplikace navržený portálem pro regi
 
 Když se aplikace zavolá na akci kontroleru, která obsahuje atribut **[Authorization]** , ASP.NET a ASP.NET Core extrahuje přístupový token z tokenu Bearer autorizační hlavičky. Přístupový token se pak přesměruje do middlewaru JwtBearer, který volá rozšíření Microsoft IdentityModel pro .NET.
 
+#### <a name="microsoftidentityweb"></a>Microsoft. identity. Web
+
+Microsoft doporučuje při vývoji webového rozhraní API pomocí ASP.NET Core použít balíček NuGet [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) .
+
+_Microsoft. identity. Web_ nabízí připevnit mezi ASP.NET Core, middlewarem ověřování a [Microsoft Authentication Library (MSAL)](msal-overview.md) pro .NET. Umožňuje vyjasnější a robustnější vývojové prostředí a využívá sílu platformy a Azure AD B2C Microsoft identity.
+
 #### <a name="using-microsoftidentityweb-templates"></a>Používání šablon Microsoft. identity. Web
 
 Můžete vytvořit webové rozhraní API od nuly pomocí šablon Microsoft. identity. Web Project. Podrobnosti najdete v tématu [Šablona projektu Microsoft. identity. Web-Web API](https://aka.ms/ms-id-web/webapi-project-templates) .
@@ -134,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlásí uživatele v rámci vaší organizace nebo v jakékoli organizaci. Nepodepisují uživatele pomocí osobních účtů. Šablony ale můžete změnit tak, aby používaly koncový bod Microsoft Identity Platform pomocí [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web), který je k dispozici jako balíček NuGet, a nahradit kód v *Startup.cs*:
+ V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlásí uživatele v rámci vaší organizace nebo v jakékoli organizaci. Nepodepisují uživatele pomocí osobních účtů. Šablony ale můžete změnit tak, aby používaly koncový bod Microsoft Identity Platform pomocí [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) nahrazující kód v *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;

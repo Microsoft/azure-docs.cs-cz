@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ab9bc0159528446a9de95769f1e433f03acb56
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 03069bc37333cbd26dfe4f40ce4496f3afe768ed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266038"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování zásad ochrany aplikací a schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -51,7 +51,7 @@ Aby bylo možné vyžadovat použití schválené klientské aplikace na mobiln�
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 (Preview)**.
+1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365**.
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Zahrňte **Android** a **iOS**.
@@ -102,7 +102,7 @@ Aby bylo možné vyžadovat použití schválené klientské aplikace na mobiln�
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 (Preview)**.
+1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365**.
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Zahrňte **Android** a **iOS**.

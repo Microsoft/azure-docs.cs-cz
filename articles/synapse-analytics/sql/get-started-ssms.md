@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288779"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Připojení k synapse SQL pomocí SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -35,13 +35,13 @@ ms.locfileid: "87077715"
 > [!NOTE]
 > Pokud má přihlášení AAD otevřené připojení po dobu delší než 1 hodinu, dotaz, který se spoléhá na AAD, selže. To zahrnuje dotazování na úložiště pomocí předávacího a příkazového příkazu AAD, které komunikují s AAD (třeba vytvoření externího poskytovatele). To má vliv na všechny nástroje, které udržují připojení otevřené, jako v editoru dotazů v SSMS a REKLAMách. Nástroje, které otevřou nové připojení k provedení dotazu, nejsou ovlivněné, například synapse Studio.
 > Pokud chcete tento problém zmírnit, můžete restartovat SSMS nebo připojení a odpojení v REKLAMách. .
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující požadavky:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
 * Pro fond SQL potřebujete existující datový sklad. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření fondu SQL](../quickstart-create-sql-pool-portal.md). V případě SQL na vyžádání je ve vašem pracovním prostoru v době vytváření již jedna zřízená. 
-* Plně kvalifikovaný název SQL Server. Najdete je v tématu [připojení k synapse SQL](connect-overview.md).
+* Plně kvalifikovaný název SQL Server. Tento název najdete v tématu [připojení k synapse SQL](connect-overview.md).
 
 ## <a name="connect"></a>Připojit
 
@@ -52,7 +52,7 @@ Pokud se chcete připojit k synapse SQL pomocí fondu SQL, postupujte podle těc
 1. Otevřete SQL Server Management Studio (SSMS). 
 1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit**: 
   
-    ![Připojení k serveru](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
+    ![Připojit k serveru 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **Název serveru**: zadejte **název serveru** , který jste předtím identifikovali.
    * **Ověřování**: Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory**.
@@ -60,7 +60,7 @@ Pokud se chcete připojit k synapse SQL pomocí fondu SQL, postupujte podle těc
 
 1. Rozšiřte SQL Server Azure v **Průzkumník objektů**. Můžete zobrazit databáze přidružené k serveru, jako je například ukázková databáze AdventureWorksDW. Chcete-li zobrazit tabulky, můžete rozšířit databázi:
    
-    ![Prozkoumejte AdventureWorksDW.](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
+    ![Prozkoumat AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
 ### <a name="sql-on-demand-preview"></a>SQL na vyžádání (Preview)
@@ -70,16 +70,16 @@ Pokud se chcete připojit k synapse SQL pomocí SQL na vyžádání, postupujte 
 1. Otevřete SQL Server Management Studio (SSMS).
 1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit**: 
    
-    ![Připojení k serveru](./media/get-started-ssms/connect-object-explorer1.png)
+    ![Připojit k serveru 2](./media/get-started-ssms/connect-object-explorer1.png)
    
    * **Název serveru**: zadejte **název serveru** , který jste předtím identifikovali.
    * **Ověřování**: Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory**:
    * **Uživatelské jméno** a **heslo**: pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
-   * Klikněte na **Připojit**.
+   * Vyberte **Připojit**.
 
 4. Pokud chcete SQL server Azure prozkoumat, rozbalte ho. Můžete se podívat, které databáze jsou k tomuto serveru přidružené. Rozbalením *ukázky* zobrazíte obsah ve vzorové databázi.
    
-    ![Prozkoumejte AdventureWorksDW.](./media/get-started-ssms/explore-tables.png)
+    ![Prozkoumat AdventureWorksDW 2](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>Spuštění ukázkového dotazu
@@ -91,18 +91,18 @@ Teď, když je navázáno připojení k databázi, můžete zadávat dotazy na d
 1. Pravým tlačítkem myši klikněte na databázi v Průzkumníku objektů systému SQL Server.
 2. Vyberte **Nový dotaz**. Otevře se nové okno dotazu.
    
-    ![Nový dotaz](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
-3. Zkopírujte tento dotaz T-SQL do okna dotazu:
+    ![Nový dotaz 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
+3. Zkopírujte následující dotaz T-SQL do okna dotazu:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Spusťte dotaz. Pokud to chcete provést, klikněte `Execute` nebo použijte následující klávesovou zkratku: `F5` .
+4. Spusťte dotaz výběrem `Execute` nebo použitím následujícího zástupce: `F5` .
    
-    ![Spuštění dotazu](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
-5. Podívejte se na výsledky dotazu. V tomto příkladě má tabulka FactInternetSales 60 398 řádků.
+    ![Spustit dotaz 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
+5. Podívejte se na výsledky dotazu. V následujícím příkladu má tabulka FactInternetSales 60398 řádků.
    
-    ![Výsledky dotazu](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
+    ![Výsledky dotazu 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
 ### <a name="sql-on-demand"></a>SQL na vyžádání
 
@@ -111,18 +111,18 @@ Teď, když jste navázali připojení k databázi, můžete zadávat dotazy na 
 1. Pravým tlačítkem myši klikněte na databázi v Průzkumníku objektů systému SQL Server.
 2. Vyberte **Nový dotaz**. Otevře se nové okno dotazu.
    
-    ![Nový dotaz](./media/get-started-ssms/new-query.png)
+    ![Nový dotaz 2](./media/get-started-ssms/new-query.png)
 3. Zkopírujte následující dotaz T-SQL do okna dotazu:
    
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Spusťte dotaz. Pokud to chcete provést, klikněte `Execute` nebo použijte následující klávesovou zkratku: `F5` .
+4. Spusťte dotaz výběrem `Execute` nebo použitím následujícího zástupce: `F5` .
    
-    ![Spuštění dotazu](./media/get-started-ssms/execute-query.png)
+    ![Spustit dotaz 2](./media/get-started-ssms/execute-query.png)
 5. Podívejte se na výsledky dotazu. V tomto příkladu má zobrazení usPopulationView řádky 3664512.
    
-    ![Výsledky dotazu](./media/get-started-ssms/results.png)
+    ![Výsledky dotazu 2](./media/get-started-ssms/results.png)
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když se můžete připojit a dotazovat, zkuste [vizualizovat data pomocí Power BI](get-started-power-bi-professional.md).

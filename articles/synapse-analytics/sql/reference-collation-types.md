@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032856"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288065"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Podpora řazení databáze pro synapse SQL
 
@@ -24,7 +24,7 @@ Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nov
 Můžete určit výchozí kolaci databáze synapse SQL na vyžádání v době vytváření pomocí příkazu CREATE DATABASE.
 
 ## <a name="change-collation"></a>Změnit kolaci
-Pokud chcete změnit výchozí kolaci pro databázi fondu SQL, jednoduchá aktualizace na pole kolace v prostředí zřizování. Například pokud jste chtěli změnit výchozí kolaci na rozlišení velkých a malých písmen, můžete jednoduše přejmenovat kolaci z SQL_Latin1_General_CP1_CI_AS na SQL_Latin1_General_CP1_CS_AS. 
+Pokud chcete změnit výchozí kolaci pro databázi fondu SQL, aktualizujte na pole kolace v prostředí zřizování. Například pokud jste chtěli změnit výchozí kolaci na rozlišení velkých a malých písmen, přejmenujte kolaci z SQL_Latin1_General_CP1_CI_AS na SQL_Latin1_General_CP1_CS_AS. 
 
 Pokud chcete změnit výchozí kolaci pro databázi SQL na vyžádání, můžete použít příkaz ALTER DATABASE.
 

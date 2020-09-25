@@ -3,12 +3,12 @@ title: Dotazování protokolů z Azure Monitor pro kontejnery | Microsoft Docs
 description: Azure Monitor pro kontejnery shromažďuje metriky a data protokolů a tento článek popisuje záznamy a obsahuje vzorové dotazy.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f9b30f11ae6a2f64601b9595bfb1d45493209849
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 2f0e9848ffbf7584d75b5e994e49379186a69641
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254886"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
 
@@ -27,7 +27,7 @@ V následující tabulce jsou uvedeny podrobnosti o záznamech shromažďovanýc
 | Část inventáře uzlů v clusteru Kubernetes | Rozhraní API pro Kube | `KubeNodeInventory` | TimeGenerated, Computer, název_clusteru, ClusterId, LastTransitionTimeReady, Labels, status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
 | Události Kubernetes | Rozhraní API pro Kube | `KubeEvents` | TimeGenerated, počítač, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, zpráva, SourceSystem | 
 | Služby v clusteru Kubernetes | Rozhraní API pro Kube | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Metriky výkonu pro uzly součástí clusteru Kubernetes | Metriky využití se získávají z cAdvisor a omezení z rozhraní Kube API. | &#124; výkonu, kde ObjectName = = "K8SNode" | Počítač, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Metriky výkonu pro uzly součástí clusteru Kubernetes | Metriky využití se získávají z cAdvisor a omezení z rozhraní Kube API. | &#124; výkonu, kde ObjectName = = "K8SNode" | Počítač, ObjectName, CounterName &#40;cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
 | Metriky výkonu pro kontejnery část clusteru Kubernetes | Metriky využití se získávají z cAdvisor a omezení z rozhraní Kube API. | &#124; výkonu, kde ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
 | Vlastní metriky ||`InsightsMetrics` | Počítač, název, obor názvů, počátek, SourceSystem, značky<sup>1</sup>, TimeGenerated, Type, Va, _ResourceId | 
 

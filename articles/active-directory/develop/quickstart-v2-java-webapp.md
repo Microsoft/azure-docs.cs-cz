@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258094"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -70,7 +70,7 @@ K provedení této ukázky budete potřebovat:
 >
 > Ukázku kódu pro tento rychlý Start, který funguje, je třeba:
 >
-> 1. Přidejte adresy URL odpovědi jako `https://localhost:8443/msal4jsample/secure/aad` a`https://localhost:8443/msal4jsample/graph/me`
+> 1. Přidejte adresy URL odpovědi jako `https://localhost:8443/msal4jsample/secure/aad` a `https://localhost:8443/msal4jsample/graph/me`
 > 1. Vytvořte tajný klíč klienta.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
@@ -122,8 +122,8 @@ K provedení této ukázky budete potřebovat:
 > Kde:
 >
 > - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
-> - `Enter_the_Client_Secret_Here`– je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
-> - `Enter_the_Tenant_Info_Here`– je hodnota **ID adresáře** aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Client_Secret_Here` – je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
+> - `Enter_the_Tenant_Info_Here` – je hodnota **ID adresáře** aplikace, kterou jste zaregistrovali.
 > 1. Pokud chcete použít protokol HTTPS s localhost, vyplňte vlastnosti Server. SSL. Key. Chcete-li vygenerovat certifikát podepsaný svým držitelem, použijte nástroj pro nástroj (obsažený v JRE).
 >
 >  ```
@@ -149,7 +149,7 @@ Spusťte ji přímo z integrovaného vývojového prostředí pomocí integrovan
 
 ##### <a name="running-from-ide"></a>Spuštění z IDE
 
-Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak přejděte na domovskou stránku projektu. V této ukázce je adresa URL standardní domovské stránkyhttps://localhost:8443
+Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak přejděte na domovskou stránku projektu. V této ukázce je adresa URL standardní domovské stránky https://localhost:8443
 
 1. Na přední stránce vyberte tlačítko **přihlášení** , které chcete přesměrovat na Azure Active Directory a vyzvat uživatele k zadání přihlašovacích údajů.
 
@@ -162,7 +162,7 @@ Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak 
 Chcete-li nasadit webovou ukázku na Tomcat, bude nutné provést několik změn zdrojového kódu.
 
 1. Otevřete MS-identity-Java-WebApp/pom.xml
-    - V části `<name>msal-web-sample</name>` Přidat`<packaging>war</packaging>`
+    - V části `<name>msal-web-sample</name>` Přidat `<packaging>war</packaging>`
 
 2. Otevřete MS-identity-Java-WebApp/src/Main/Java/com. Microsoft. Azure. msalwebsample/MsalWebSampleApplication
 
@@ -193,18 +193,19 @@ Chcete-li nasadit webovou ukázku na Tomcat, bude nutné provést několik změn
 3.   Výchozí port HTTP Tomcat je 8080, i když je potřeba připojení HTTPS přes port 8443. Postup při konfiguraci:
         - Přejít na Tomcat/conf/server.xml
         - Vyhledejte `<connector>` značku a nahraďte existující konektor pomocí:
-        ```
+
+        ```xml
         <Connector
                    protocol="org.apache.coyote.http11.Http11NioProtocol"
                    port="8443" maxThreads="200"
                    scheme="https" secure="true" SSLEnabled="true"
                    keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
                    clientAuth="false" sslProtocol="TLS"/>
-        ``` 
-       
+        ```
+
 4. Otevřete příkazový řádek, klikněte na kořenovou složku této ukázky (kde se nachází soubor pom.xml) a spusťte příkaz `mvn package` pro sestavení projektu.
     - Tím se vygeneruje `msal-web-sample-0.1.0.war` soubor v adresáři/TARGETS.
-    - Přejmenovat tento soubor na`msal4jsample.war`
+    - Přejmenovat tento soubor na `msal4jsample.war`
     - Tento soubor War nasaďte pomocí Tomcat nebo jakéhokoli jiného řešení kontejneru J2EE.
         - Chcete-li nasadit, zkopírujte soubor msal4jsample. War do `/webapps/` adresáře v instalaci Tomcat a poté spusťte server Tomcat.
 
@@ -249,16 +250,11 @@ Přidejte odkaz na MSAL pro jazyk Java přidáním následujícího kódu do hor
 import com.microsoft.aad.msal4j.*;
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o oprávněních a souhlasu:
+Podrobnější diskuzi o sestavování webových aplikací, které se přihlásily uživatelům na platformě Microsoft identity, můžete přejít na naši řadu scénářů s více částmi:
 
 > [!div class="nextstepaction"]
-> [Oprávnění a souhlas](./v2-permissions-and-consent.md)
-
-Další informace o toku ověřování pro tento scénář najdete v tématu tok autorizačního kódu OAuth 2,0:
-
-> [!div class="nextstepaction"]
-> [Tok OAuth autorizačním kódem](./v2-oauth2-auth-code-flow.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+[Scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md?tabs=java)

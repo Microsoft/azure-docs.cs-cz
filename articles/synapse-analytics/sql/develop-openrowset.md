@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289017"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (Preview)
 
-`OPENROWSET(BULK...)`Funkce umožňuje přístup k souborům v Azure Storage. `OPENROWSET`funkce přečte obsah vzdáleného zdroje dat (například soubor) a vrátí obsah jako sadu řádků. V rámci prostředku SQL na vyžádání (Preview) je k dispozici zprostředkovatel hromadné sady řádků OPENROWSET voláním funkce OPENROWSET a určením hromadné možnosti.  
+`OPENROWSET(BULK...)`Funkce umožňuje přístup k souborům v Azure Storage. `OPENROWSET` funkce přečte obsah vzdáleného zdroje dat (například soubor) a vrátí obsah jako sadu řádků. V rámci prostředku SQL na vyžádání (Preview) je k dispozici zprostředkovatel hromadné sady řádků OPENROWSET voláním funkce OPENROWSET a určením hromadné možnosti.  
 
 Na `OPENROWSET` funkci lze odkazovat v `FROM` klauzuli dotazu, jako by šlo o název tabulky `OPENROWSET` . Podporuje hromadné operace prostřednictvím integrovaného HROMADNÉho poskytovatele, který umožňuje číst data ze souboru a vracet je jako sadu řádků.
 
@@ -26,7 +26,7 @@ Na `OPENROWSET` funkci lze odkazovat v `FROM` klauzuli dotazu, jako by šlo o n�
 
 Funkce OPENROWSET v synapse SQL čte obsah souborů ze zdroje dat. Zdroj dat je účet úložiště Azure, ve kterém se dá explicitně odkazovat nebo se dá `OPENROWSET` dynamicky odvodit z adresy URL souborů, které chcete číst.
 `OPENROWSET`Funkce může volitelně obsahovat `DATA_SOURCE` parametr pro určení zdroje dat, který obsahuje soubory.
-- `OPENROWSET`bez toho se `DATA_SOURCE` dá použít k přímému čtení obsahu souborů z umístění adresy URL zadaného jako `BULK` možnost:
+- `OPENROWSET` bez toho se `DATA_SOURCE` dá použít k přímému čtení obsahu souborů z umístění adresy URL zadaného jako `BULK` možnost:
 
     ```sql
     SELECT *
@@ -49,7 +49,7 @@ Toto je rychlý a snadný způsob, jak číst obsah souborů bez předchozí kon
     Tato možnost umožňuje nakonfigurovat umístění účtu úložiště ve zdroji dat a zadat metodu ověřování, která se má použít pro přístup k úložišti. 
     
     > [!IMPORTANT]
-    > `OPENROWSET`bez `DATA_SOURCE` poskytuje rychlý a snadný způsob, jak získat přístup k souborům úložiště, ale nabízí omezené možnosti ověřování. Například objekty zabezpečení Azure AD mají přístup k souborům jenom pomocí své [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity) nebo veřejně dostupných souborů. Pokud potřebujete výkonnější možnosti ověřování, použijte `DATA_SOURCE` možnost a definujte přihlašovací údaje, které chcete použít pro přístup k úložišti.
+    > `OPENROWSET` bez `DATA_SOURCE` poskytuje rychlý a snadný způsob, jak získat přístup k souborům úložiště, ale nabízí omezené možnosti ověřování. Například objekty zabezpečení Azure AD mají přístup k souborům jenom pomocí své [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity) nebo veřejně dostupných souborů. Pokud potřebujete výkonnější možnosti ověřování, použijte `DATA_SOURCE` možnost a definujte přihlašovací údaje, které chcete použít pro přístup k úložišti.
 
 
 ## <a name="security"></a>Zabezpečení
@@ -58,7 +58,7 @@ Uživatel databáze musí mít `ADMINISTER BULK OPERATIONS` oprávnění k použ
 
 Správce úložiště musí taky povolit uživateli přístup k souborům poskytnutím platného tokenu SAS nebo povolením objektu zabezpečení Azure AD pro přístup k souborům úložiště. Další informace o řízení přístupu k úložišti v [tomto článku](develop-storage-files-storage-access-control.md).
 
-`OPENROWSET`k určení, jak ověřit úložiště, použijte následující pravidla:
+`OPENROWSET` k určení, jak ověřit úložiště, použijte následující pravidla:
 - V nástroji `OPENROWSET` bez `DATA_SOURCE` mechanismu ověřování závisí na typu volajícího.
   - Všichni uživatelé můžou použít `OPENROWSET` bez `DATA_SOURCE` čtení veřejně dostupných souborů v Azure Storage.
   - Přihlášení Azure AD mají přístup k chráněným souborům pomocí vlastní [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) , pokud Azure Storage umožňuje uživatelům Azure AD přístup k základním souborům (například pokud má volající `Storage Reader` oprávnění k úložišti Azure).
@@ -119,7 +119,7 @@ Unstructured_data_path, která vytváří cestu k datům, může být absolutní
 | Azure Blob Storage         | wasb [s]  | \<container>@\<storage_account>. blob.core.windows.net/path/file |
 | Azure Data Lake Store Gen1 | http [s]  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | http [s]  | \<storage_account>dfs.core.windows.net/Path/File   |
-| Azure Data Lake Store Gen2 | ABFS [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Store Gen2 | aufs [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -184,7 +184,7 @@ Parametr ESCAPE_CHAR bude použit bez ohledu na to, zda je FIELDQUOTE nebo není
 
 FIRSTROW = ' first_row ' 
 
-Určuje číslo prvního řádku, který se má načíst. Výchozí hodnota je 1. Určuje první řádek v zadaném datovém souboru. Čísla řádků se určují podle počtu zakončení řádků. FIRSTROW je založen na 1.
+Určuje číslo prvního řádku, který se má načíst. Výchozí hodnota je 1 a určuje první řádek v zadaném datovém souboru. Čísla řádků se určují podle počtu zakončení řádků. FIRSTROW je založen na 1.
 
 FIELDQUOTE = ' field_quote ' 
 
@@ -203,7 +203,7 @@ Určuje verzi analyzátoru, která se má použít při čtení souborů. Aktuá
 - PARSER_VERSION = ' 1,0 '
 - PARSER_VERSION = ' 2,0 '
 
-Analyzátor CSV verze 1,0 je výchozí a funkce je bohatá, zatímco 2,0 je postavené na výkon a nepodporuje všechny možnosti a kódování. 
+Analyzátor CSV verze 1,0 je výchozí a funkce je bohatá. Verze 2,0 je postavená na výkon a nepodporuje všechny možnosti a kódování. 
 
 Specifické pro analyzátor CSV verze 2,0:
 
@@ -229,7 +229,7 @@ WITH (
 ) AS [r]
 ```
 
-Následující příklad vrátí všechny sloupce prvního řádku ze skupiny vydaných dat ve formátu Parquet bez zadání názvů sloupců a datových typů: 
+Následující příklad vrátí všechny sloupce prvního řádku ze sady sestavování dat ve formátu Parquet a bez zadání názvů sloupců a datových typů: 
 
 ```sql
 SELECT 

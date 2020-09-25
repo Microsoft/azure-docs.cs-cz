@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289476"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
 
@@ -50,7 +50,7 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data La
 1. Otevřete [Azure Portal](https://portal.azure.com).
 2. Přejít na účet Azure Data Lake Storage Gen2
 3. Přejít do kontejneru (FileSystem), který jste vybrali pro pracovní prostor Azure synapse
-4. Klikněte na **Access Control (IAM)** .
+4. Vybrat **Access Control (IAM)**
 5. Přiřaďte následující role:
    1. Role **čtecího modulu** :`Synapse_WORKSPACENAME_Users`
    2. Role **vlastníka dat objektu BLOB úložiště** :`Synapse_WORKSPACENAME_Admins`
@@ -64,17 +64,17 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data La
 
 1. Přejít do [ **webového uživatelského rozhraní Azure synapse**](https://web.azuresynapse.net)
 2. Přejít na **Správa**   >  **Security**  >  **řízení přístupu** zabezpečení
-3. Klikněte na **přidat správce**a vyberte `Synapse_WORKSPACENAME_Admins`
+3. Vyberte **přidat správce**a vyberte `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Krok 4: Konfigurace přístupu správce SQL pro pracovní prostor
 
 1. Přejít na [Azure Portal](https://portal.azure.com)
 2. Přejděte do pracovního prostoru.
 3. Přejít na **Nastavení**  >  **Správce služby Active Directory**
-4. Klikněte na **nastavit správce** .
+4. Vyberte **nastavit správce** .
 5. Vyberte `Synapse_WORKSPACENAME_Admins`
-6. klikněte na **Vybrat** .
-7. klikněte na **Uložit** .
+6. Zvolte **Vybrat**
+7. Vyberte **Uložit**.
 
 > [!NOTE]
 > PRACOVNÍ prostor – tuto část byste měli nahradit skutečným názvem vašeho pracovního prostoru.

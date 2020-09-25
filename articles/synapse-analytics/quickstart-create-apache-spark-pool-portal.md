@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0930b7cb7b98874e20f070763a7ec50a6b4f3ef0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: ea32126e19c4520a6d5a40f38f60ec44e9a119cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006071"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260865"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření nového fondu Apache Spark pomocí Azure Portal
 
@@ -27,14 +27,14 @@ V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit fond Apa
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor analýzy synapse](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Přejděte do pracovního prostoru synapse. 
 1. Přejděte do pracovního prostoru synapse, kde se vytvoří fond Apache Spark zadáním názvu služby (nebo názvu prostředku přímo) do panelu hledání.

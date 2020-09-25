@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 2012f590aa833bea1b49955958095917a6479665
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289799"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -76,7 +76,7 @@ Security Center obrany zahrnuje:
 - **Doporučení zabezpečení** – doporučení pro dodržování předpisů, která vám pomůžou dodržovat osvědčené postupy zabezpečení pro AKS. Tato doporučení jsou zahrnutá ve vašem zabezpečeném skóre, abyste se ujistili, že se zobrazují jako součást stav zabezpečení vaší organizace. Příklad doporučení týkající se AKS najdete v tématu řízení přístupu na základě role by mělo sloužit k omezení přístupu ke clusteru služby Kubernetes.
 - **Ochrana před hrozbami** – prostřednictvím průběžné analýzy nasazení AKS vás Security Center vás upozorní na hrozby a škodlivou aktivitu zjištěnou na úrovni clusteru host a AKS.
 
-Přečtěte si další informace o [integraci služeb Azure Kubernetes Services s Security Center](azure-kubernetes-service-integration.md).
+Přečtěte si další informace o [integraci služeb Azure Kubernetes Services s Security Center](defender-for-kubernetes-introduction.md).
 
 Přečtěte si další informace o [funkcích zabezpečení kontejnerů v Security Center](container-security.md).
 

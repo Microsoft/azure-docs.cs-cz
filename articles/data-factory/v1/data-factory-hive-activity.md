@@ -1,6 +1,6 @@
 ---
 title: Transformace dat pomocí aktivity podregistru – Azure
-description: Přečtěte si, jak můžete použít aktivitu podregistru v Azure Data Factory ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
+description: Zjistěte, jak můžete použít aktivitu podregistru v Azure Data Factory v1 ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41f570f93e95e9801b08c06cacc0423b1bf3b8e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252779"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity podregistru v Azure Data Factory 
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -72,10 +72,10 @@ Aktivita podregistru HDInsight v Data Factoryovém [kanálu](data-factory-create
 }
 ```
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| name |Název aktivity |Yes |
-| description |Text popisující, k čemu se aktivita používá |No |
+| jméno |Název aktivity |Yes |
+| Popis |Text popisující, k čemu se aktivita používá |No |
 | typ |HDinsightHive |Yes |
 | vztahují |Vstupy spotřebované aktivitou podregistru |No |
 | činnosti |Výstupy vytvářené aktivitou podregistru |Yes |

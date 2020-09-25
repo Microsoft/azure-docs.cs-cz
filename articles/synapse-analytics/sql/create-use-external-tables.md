@@ -1,6 +1,6 @@
 ---
 title: Vytváření a používání externích tabulek na vyžádání SQL (Preview)
-description: V této části se dozvíte, jak vytvořit a používat externí tabulky v SQL na vyžádání (Preview). Externí tabulky jsou užitečné, pokud chcete řídit přístup k externím datům v SQL na vyžádání a pokud chcete používat nástroje, jako je například Power BI, ve spojení s SQL na vyžádání.
+description: V této části se dozvíte, jak vytvořit a používat externí tabulky v SQL na vyžádání (Preview).
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289323"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Vytvoření a použití externích tabulek v SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak uložit výsledky dotazu do úložiště, najdete v tématu úložiště [výsledků dotazu úložiště](../sql/create-external-table-as-select.md).
+Informace o tom, jak uložit výsledky dotazu do úložiště, najdete v článku [uložení výsledků dotazu](../sql/create-external-table-as-select.md) do úložiště.

@@ -3,16 +3,16 @@ title: Nastavení Azure Backup Server pro řešení Azure VMware
 description: Nastavte prostředí pro řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 516f4a2fa92740897e186a782e276fc6d40fc925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255005"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Nastavení Azure Backup Server pro řešení Azure VMware
 
-Azure Backup Server je robustní podnikový systém pro zálohování a obnovení, který přispívá k strategii pro provozní kontinuitu a zotavení po havárii (BCDR). Během řešení Azure VMware Preview můžete pomocí Azure Backup Server nakonfigurovat jenom zálohování na úrovni virtuálního počítače. 
+Azure Backup Server je robustní podnikový systém pro zálohování a obnovení, který přispívá k strategii pro provozní kontinuitu a zotavení po havárii (BCDR). Během řešení Azure VMware můžete pomocí Azure Backup Server nakonfigurovat jenom zálohování na úrovni virtuálního počítače. 
 
 Azure Backup Server můžou ukládat data zálohy do:
 
@@ -34,7 +34,7 @@ V tomto článku vám pomůžeme připravit vaše prostředí pro řešení Azur
 - **Zálohování bez agentů:** Azure Backup Server nevyžaduje instalaci agenta na Server vCenter nebo ESXi pro zálohování virtuálního počítače. Místo toho stačí zadat IP adresu nebo plně kvalifikovaný název domény (FQDN) a přihlašovací údaje používané k ověření serveru VMware pomocí Azure Backup Server.
 - **Zálohování integrované v cloudu:** Azure Backup Server chrání úlohy na disk a Cloud. Pracovní postup zálohování a obnovení Azure Backup Server pomáhá spravovat dlouhodobé uchovávání a zálohování mimo pracoviště.
 - **Detekce a ochrana virtuálních počítačů spravovaných vCenter:** Azure Backup Server detekuje a chrání virtuální počítače nasazené na serveru vCenter nebo ESXi. Azure Backup Server taky detekuje virtuální počítače spravované serverem vCenter, abyste mohli chránit Velká nasazení.
-- **AutoProtection na úrovni složek:** vCenter umožňuje organizovat virtuální počítače ve složkách virtuálních počítačů. Azure Backup Server tyto složky detekuje a můžete ji použít k ochraně virtuálních počítačů na úrovni složky, která zahrnuje všechny podsložky. Když chráníte složky, Azure Backup Server nejen chrání jenom virtuální počítače v této složce, ale také chrání virtuální počítače přidané později. Azure Backup Server detekuje nové virtuální počítače denně a automaticky je chrání. Při uspořádávání virtuálních počítačů do rekurzivních složek Azure Backup Server automaticky detekuje a chrání nové virtuální počítače nasazené ve rekurzivních složkách.
+- **AutoProtection na úrovni složek:** vCenter umožňuje organizovat virtuální počítače ve složkách virtuálních počítačů. Azure Backup Server tyto složky detekuje. Můžete ji použít k ochraně virtuálních počítačů na úrovni složky, která zahrnuje všechny podsložky. Když chráníte složky, Azure Backup Server nejen chrání jenom virtuální počítače v této složce, ale také chrání virtuální počítače přidané později. Azure Backup Server detekuje nové virtuální počítače denně a automaticky je chrání. Při uspořádávání virtuálních počítačů do rekurzivních složek Azure Backup Server automaticky detekuje a chrání nové virtuální počítače nasazené ve rekurzivních složkách.
 - **Azure Backup Server nadále chránit virtuální počítače s vMotioned v rámci clusteru:** Protože virtuální počítače jsou vMotioned pro vyrovnávání zatížení v rámci clusteru, Azure Backup Server automaticky detekuje a pokračuje v ochraně virtuálního počítače.
 - **Obnovte potřebné soubory rychleji:** Azure Backup Server může obnovit soubory nebo složky z virtuálního počítače s Windows bez obnovení celého virtuálního počítače.
 
@@ -68,7 +68,7 @@ Ujistěte se, že jste [v Azure nakonfigurovali sítě pro privátní cloud VMwa
 
 ### <a name="determine-the-size-of-the-virtual-machine"></a>Určení velikosti virtuálního počítače
 
-Musíte vytvořit virtuální počítač s Windows ve virtuální síti, kterou jste vytvořili v předchozím kroku. Když zvolíte Server, na kterém běží Azure Backup Server, začněte s imagí Galerie Windows serveru 2019 Datacenter. Kurz [Vytvoření prvního virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md) vám pomůže začít s DOPORUČENým virtuálním počítačem v Azure, a to i v případě, že jste Azure nikdy nepoužívali.
+Vytvořte virtuální počítač s Windows ve virtuální síti, kterou jste vytvořili v předchozím kroku. Když zvolíte Server, na kterém běží Azure Backup Server, začněte s imagí Galerie Windows serveru 2019 Datacenter. Kurz [Vytvoření prvního virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md) vám pomůže začít s DOPORUČENým virtuálním počítačem v Azure, a to i v případě, že jste Azure nikdy nepoužívali.
 
 Následující tabulka shrnuje maximální počet chráněných úloh pro jednotlivé Azure Backup Server velikosti virtuálních počítačů. Informace jsou založeny na interním výkonu a testování škálování pomocí kanonických hodnot velikosti pracovního vytížení a klidového vytížení. Skutečná velikost pracovního vytížení může být větší, ale měla by být ovlivněna disky připojenými k Azure Backup Servermu virtuálnímu počítači.
 
@@ -136,38 +136,38 @@ I když se v době verze Preview nepodporuje Azure Backup Server nasazené na vi
 
 Recovery Services trezor je entita úložiště, která ukládá body obnovení vytvořené v průběhu času. Obsahuje také zásady zálohování, které jsou přidruženy k chráněným položkám.
 
-1. Přihlaste se k předplatnému v [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se ke svému předplatnému na webu [Azure Portal](https://portal.azure.com/).
 
-1. V nabídce vlevo vyberte **všechny služby**.
+1. V nabídce vlevo vyberte **Všechny služby**.
 
-   ![V nabídce vlevo vyberte všechny služby.](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![V nabídce vlevo vyberte Všechny služby.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. V dialogovém okně **všechny služby** zadejte **Recovery Services** a v seznamu vyberte **Recovery Services trezory** .
 
    ![Zadejte a vyberte trezory Recovery Services.](../backup/media/backup-create-rs-vault/all-services.png)
 
-   Zobrazí se seznam trezorů Recovery Services v předplatném.
+   Zobrazí se seznam trezorů služby Recovery Services v předplatném.
 
-1. Na řídicím panelu **trezorů Recovery Services** vyberte **Přidat**.
+1. Na řídicím panelu **Trezory služby Recovery Services** vyberte **Přidat**.
 
    ![Přidejte Recovery Services trezor.](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
-   Otevře se dialogové okno **Recovery Services trezor** .
+   Otevře se dialogové okno **Trezor služby Recovery Services**.
 
 1. Zadejte hodnoty pro **název**, **předplatné**, **skupinu prostředků**a **umístění**.
 
    ![Nakonfigurujte trezor Recovery Services.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Název**: zadejte popisný název pro identifikaci trezoru. Název musí být jedinečný pro předplatné Azure. Zadejte název, který má alespoň dva, ale ne více než 50 znaků. Název musí začínat písmenem a obsahovat jenom písmena, číslice a spojovníky.
-   - **Předplatné**: vyberte předplatné, které chcete použít. Pokud jste členem jenom jednoho předplatného, uvidíte tento název. Pokud si nejste jistí, které předplatné se má použít, použijte výchozí (navrhované) předplatné. K dispozici je více možností pouze v případě, že je váš pracovní nebo školní účet spojen s více než jedním předplatným Azure.
-   - **Skupina prostředků**: použijte existující skupinu prostředků nebo vytvořte novou. Pokud chcete zobrazit seznam dostupných skupin prostředků ve vašem předplatném, vyberte **použít existující**a pak v rozevíracím seznamu vyberte prostředek. Pokud chcete vytvořit novou skupinu prostředků, vyberte **vytvořit novou** a zadejte název.
-   - **Umístění**: vyberte zeměpisnou oblast trezoru. Pokud chcete vytvořit trezor pro ochranu virtuálních počítačů řešení VMware Azure, *musí* být trezor ve stejné oblasti jako privátní cloud řešení Azure VMware.
+   - **Name** (Název): Zadejte popisný název pro identifikaci trezoru. Název musí být v rámci předplatného Azure jedinečný. Zadejte název, který má alespoň dva, ale ne více než 50 znaků. Název musí začínat písmenem a může obsahovat pouze písmena, číslice a pomlčky.
+   - **Předplatné:** Vyberte předplatné, které chcete použít. Pokud jste členem jenom jednoho předplatného, název se zobrazí. Pokud si nejste jisti, které předplatné použít, použijte výchozí (navrhované) předplatné. Více možností je dostupných, jen pokud je váš pracovní nebo školní účet přidružený k více předplatným Azure.
+   - **Skupina prostředků:** Použijte existující skupinu prostředků, nebo vytvořte novou. Pokud chcete zobrazit seznam dostupných skupin prostředků ve vašem předplatném, vyberte **Použít existující** a pak v rozevíracím seznamu vyberte prostředek. Pokud chcete vytvořit novou skupinu prostředků, vyberte **Vytvořit novou** a zadejte název.
+   - **Location** (Umístění): Vyberte zeměpisnou oblast trezoru. Pokud chcete vytvořit trezor pro ochranu virtuálních počítačů řešení VMware Azure, *musí* být trezor ve stejné oblasti jako privátní cloud řešení Azure VMware.
 
-1. Až budete připraveni k vytvoření trezoru Recovery Services, vyberte **vytvořit**.
+1. Až budete připraveni vytvořit trezor služby Recovery Services, vyberte **Vytvořit**.
 
    ![Vytvořte Trezor Recovery Services.](../backup/media/backup-create-rs-vault/click-create-button.png)
 
-   Vytvoření trezoru Recovery Services může chvíli trvat. Sledujte oznámení o stavu v oblasti **oznámení** v pravém horním rohu portálu. Když je trezor vytvořený, zobrazí se v seznamu trezorů Recovery Services. Pokud váš trezor nevidíte, vyberte **aktualizovat**.
+   Vytvoření trezoru služby Recovery Services může chvíli trvat. Sledujte oznámení o stavu v oblasti **oznámení** v pravém horním rohu portálu. Po vytvoření se trezor zobrazí v seznamu trezorů služby Recovery Services. Pokud trezor nevidíte, vyberte **Aktualizovat**.
 
    ![Aktualizuje seznam trezorů služby Backup.](../backup/media/backup-create-rs-vault/refresh-button.png)
 
@@ -184,15 +184,13 @@ Možnost replikace úložiště vám umožní vybrat mezi geograficky redundantn
 
 1. Vyberte typ replikace úložiště a vyberte **Uložit**.
 
-   ![Nastavte konfiguraci úložiště pro nový trezor.](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
-
 ## <a name="download-and-install-the-software-package"></a>Stažení a instalace softwarového balíčku
 
 Postupujte podle kroků v této části ke stažení, extrakci a instalaci softwarového balíčku.
 
 ### <a name="download-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Pokud už máte otevřený trezor Recovery Services, pokračujte k dalšímu kroku. Pokud nemáte Recovery Services trezor otevřený, ale jste v Azure Portal, vyberte v hlavní nabídce možnost **Procházet**.
 
@@ -309,7 +307,7 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
    * **Databáze**: **DatabaseName** by měl být **ReportServer \<SQLInstanceName> $**.
    * **Adresa URL webového portálu**: **virtuální adresář** by měl být **Reports_ \<SQLInstanceName> **.
 
-   [Přečtěte si další informace](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
+   Přečtěte si další informace o [konfiguraci služby SSRS](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode).
 
    > [!NOTE]
    > [Podmínky poskytování služeb Microsoft Online Services](https://www.microsoft.com/licensing/product-licensing/products) (OST) řídí licencování pro SQL Server používané jako databáze pro Azure Backup Server. V závislosti na OST SQL Server sady s Azure Backup Server používat jenom jako databázi pro Azure Backup Server.

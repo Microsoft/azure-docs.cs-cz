@@ -3,13 +3,13 @@ title: Filtrování a předzpracování v sadě Application Insights SDK | Micro
 description: Zapište procesory telemetrie a Inicializátory telemetrie pro sadu SDK, aby bylo možné filtrovat nebo přidat vlastnosti dat před odesláním telemetrie na Application Insights portál.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: c42b3a79e1c816e92c71e41a738bbb116a39aee1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: d2a0c348eda569e95a3029b9dce76aa981989ddf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264027"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtrování a předzpracování telemetrie v sadě Application Insights SDK
 
@@ -327,24 +327,22 @@ Vložte inicializátor telemetrie hned po inicializačním kódu, který jste z�
     // This is called whenever a new telemetry item
     // is created.
 
-    appInsights.queue.push(function () {
-        appInsights.context.addTelemetryInitializer(function (envelope) {
-            var telemetryItem = envelope.data.baseData;
+    appInsights.addTelemetryInitializer(function (envelope) {
+        var telemetryItem = envelope.data.baseData;
 
-            // To check the telemetry items type - for example PageView:
-            if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
-                // this statement removes url from all page view documents
-                telemetryItem.url = "URL CENSORED";
-            }
+        // To check the telemetry items type - for example PageView:
+        if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
+            // this statement removes url from all page view documents
+            telemetryItem.url = "URL CENSORED";
+        }
 
-            // To set custom properties:
-            telemetryItem.properties = telemetryItem.properties || {};
-            telemetryItem.properties["globalProperty"] = "boo";
-
-            // To set custom metrics:
-            telemetryItem.measurements = telemetryItem.measurements || {};
-            telemetryItem.measurements["globalMetric"] = 100;
-        });
+        // To set custom properties:
+        telemetryItem.properties = telemetryItem.properties || {};
+        telemetryItem.properties["globalProperty"] = "boo";
+        
+        // To set cloud role name / instance
+        envelope.tags["ai.cloud.role"] = "your role name";
+        envelope.tags["ai.cloud.roleInstance"] = "your role instance";
     });
 
     // End of inserted code.

@@ -4,12 +4,12 @@ description: Monitorování volání závislostí z vaší místní nebo Microso
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263925"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
@@ -101,9 +101,10 @@ V případě aplikací ASP.NET je úplný text dotazu SQL shromážděn pomocí 
 | Platforma | Krok (y) potřebný k získání úplného dotazu SQL |
 | --- | --- |
 | Webová aplikace Azure |V ovládacím panelu webové aplikace otevřete okno [Application Insights](../../azure-monitor/app/azure-web-apps.md) a povolte příkazy SQL pod položkou .NET. |
-| Server IIS (virtuální počítač Azure, on-Prem atd.) | Pomocí balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) nebo pomocí modulu monitorování stavu PowerShellu [nainstalujte modul instrumentace](../../azure-monitor/app/status-monitor-v2-api-reference.md) a restartujte službu IIS. |
+| Server IIS (virtuální počítač Azure, on-Prem atd.) | Pomocí balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) nebo pomocí modulu monitorování stavu PowerShellu [nainstalujte modul instrumentace](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine) a restartujte službu IIS. |
 | Cloudová služba Azure | Přidat [úlohu po spuštění pro instalaci StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Vaše aplikace by se měla připojit k ApplicationInsights SDK v době sestavení instalací balíčků NuGet pro [ASP.NET](./asp-net.md) nebo [aplikace ASP.NET Core](./asp-net-core.md) . |
 | IIS Express | Použijte balíček NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) .
+| Webové úlohy Azure | Použijte balíček NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) .
 
 Kromě výše uvedených kroků specifických pro platformu je **také nutné explicitně vyjádřit výslovný souhlas s povolením shromažďování příkazů SQL** úpravou souboru applicationInsights.config následujícím způsobem:
 

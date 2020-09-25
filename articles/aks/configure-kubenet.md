@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462135"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264605"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -162,7 +162,7 @@ Nyní jste vytvořili virtuální síť a podsíť a vytvořili a přiřadili js
 
 V rámci procesu vytváření clusteru se definují taky tyto rozsahy IP adres:
 
-* *Služba--Service-CIDR* slouží k přiřazení IP adresy interním službám v clusteru AKS. Tento rozsah IP adres by měl být adresní prostor, který se ve vašem síťovém prostředí nepoužívá jinde. Tento rozsah zahrnuje všechny místní síťové rozsahy, pokud se připojujete nebo plánujete připojit virtuální sítě Azure pomocí Express Route nebo připojení VPN typu Site-to-site.
+* *Služba--Service-CIDR* slouží k přiřazení IP adresy interním službám v clusteru AKS. Tento rozsah IP adres by měl být adresní prostor, který se nepoužívá jinde v síťovém prostředí, včetně jakýchkoli místních síťových rozsahů, pokud se připojujete nebo plánujete připojit, k virtuálním sítím Azure pomocí expresního postupu nebo připojení VPN typu Site-to-site.
 
 * Adresa *--DNS-Service-IP* musí být *.10* adresou rozsahu IP adres služby.
 

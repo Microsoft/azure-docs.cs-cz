@@ -4,18 +4,18 @@ description: Jak spravovat uživatele v Azure blockchain Workbench.
 ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 541d5b2fa3d1a0cd5c4beba65cfe5ff3bdc3124a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538230"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263007"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Správa uživatelů v Azure blockchain Workbench
 
 Azure blockchain Workbench zahrnuje správu uživatelů pro lidi a organizace, které jsou součástí vaší konsorcia.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyžaduje se nasazení aplikace blockchain Workbench. Podrobnosti o nasazení najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) .
 
@@ -25,7 +25,7 @@ Azure blockchain Workbench používá pro ověřování, řízení přístupu a 
 
 Uživatelé blockchain Workbench musí existovat v tenantovi Azure AD, aby je bylo možné přiřadit k aplikacím a rolím. Pokud chcete přidat uživatele do služby Azure AD, použijte následující postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V pravém horním rohu vyberte svůj účet a přepněte se na tenanta Azure AD, který je přidružený k blockchain Workbench.
 1. Vyberte **Azure Active Directory > uživatelé**. Zobrazí se seznam uživatelů v adresáři.
 1. Pokud chcete do adresáře přidat uživatele, vyberte **Nový uživatel**. U externích uživatelů vyberte **Nový uživatel typu Host**.
@@ -39,7 +39,7 @@ Po přidání uživatelů do adresáře si v dalším kroku zvolíte, kteří u�
 
 Chcete-li přidat uživatele do skupiny **Administrators** v adresáři služby Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Ověřte, že jste v tenantovi Azure AD, který je přidružený k blockchain Workbench, výběrem účtu v pravém horním rohu.
 1. Vyberte **Azure Active Directory > podnikových aplikací**.
 1. Rozevírací filtr **typu aplikace** změňte na **všechny aplikace** a vyberte **použít**.
@@ -79,7 +79,7 @@ Pomocí aplikace blockchain Workbench můžete spravovat uživatele a organizace
 1. Vyberte dlaždici členů pro zobrazení seznamu aktuálních členů.
 1. Vyberte **přidat členy**.
 
-    ![Přidání členů](./media/manage-users/application-add-members.png)
+    ![Snímek obrazovky se zobrazí okno členství aplikace s zvýrazněným tlačítkem přidat člena.](./media/manage-users/application-add-members.png)
 
 1. Vyhledejte jméno uživatele.  V seznamu jsou uvedeni pouze uživatelé Azure AD, kteří existují v tenantovi blockchain Workbench. Pokud uživatel není nalezen, je nutné [Přidat uživatele Azure AD](#add-azure-ad-users).
 

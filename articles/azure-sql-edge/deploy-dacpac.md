@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887487"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293896"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Database DACPAC a BACPAC balíčky v SQL Edge
 
 Azure SQL Edge je optimalizovaný relační databázový stroj pro nasazování do IoT a na hraniční zařízení. Je postaven na nejnovějších verzích modulu Microsoft SQL Database Engine, který poskytuje špičkové možnosti pro výkon, zabezpečení a zpracování dotazů. Spolu s špičkovými možnostmi správy relačních databází SQL Server poskytuje Azure SQL Edge integrované možnosti streamování pro analýzy v reálném čase a složité zpracování událostí.
 
-Azure SQL Edge taky poskytuje nativní implementaci SqlPackage.exe, která vám umožní nasadit [SQL Database DACPAC a balíček BacPac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) během nasazování SQL Edge. 
+Azure SQL Edge poskytuje nativní mechanismus, který vám umožní nasadit balíček [SQL Database DACPAC a BacPac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) během nebo po nasazení Edge SQL.
 
 Balíčky SQL Database DACPAC a BacPac lze nasadit do SQL Edge pomocí `MSSQL_PACKAGE` proměnné prostředí. Proměnná prostředí se dá nakonfigurovat pomocí kterékoli z následujících možností.  
 - Umístění místní složky v rámci kontejneru SQL obsahujícího soubory DACPAC a BacPac. Tuto složku lze namapovat na svazek hostitele pomocí přípojných bodů nebo kontejnerů datových svazků. 
@@ -64,6 +64,10 @@ Pokud chcete nasadit (nebo importovat) SQL Database balíček DAC `(*.dacpac)` n
 5. Po aktualizaci modulu se soubory balíčku stáhnou, rozbalí a nasadí proti instanci SQL Edge.
 
 Při každém restartování kontejneru Azure SQL Edge se aplikace SQL Edge pokusí stáhnout balíček souborů zip a vyhodnotit změny. Pokud dojde k nové verzi souboru DACPAC, změny se nasadí do databáze v SQL Edge.
+
+## <a name="known-issue"></a>Známý problém
+
+Během některých nasazení DACPAC nebo BACPAC se můžou setkat s časovými limity příkazů, což vedlo k selhání operace nasazení DACPAC. Pokud se setkáte s tímto problémem, použijte prosím SQLPackage.exe (nebo klientské nástroje SQL), abyste použili maually nebo BACPAC. 
 
 ## <a name="next-steps"></a>Další kroky
 

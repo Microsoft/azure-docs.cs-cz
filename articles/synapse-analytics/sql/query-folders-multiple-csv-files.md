@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: jrasnick
+ms.openlocfilehash: 54ef116878dee2ed1c351fac3dacdf359abbe574
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207627"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288337"
 ---
 # <a name="query-folders-and-multiple-files"></a>Dotazování složek a několika souborů  
 
@@ -232,4 +232,4 @@ Vzhledem k tomu, že máte pouze jednu složku, která odpovídá kritériím, j
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v článku v tématu [dotaz na konkrétní soubory](query-specific-files.md) .
+Další informace najdete v článku dotaz na [konkrétní soubory](query-specific-files.md) .

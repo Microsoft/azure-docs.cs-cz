@@ -1,6 +1,6 @@
 ---
 title: Kurz konfigurace prostředí Azure-SSIS Integration runtime pro připojení k virtuální síti
-description: Naučte se připojit prostředí Azure-SSIS Integration runtime k virtuální síti Azure.
+description: Přečtěte si, jak připojit prostředí Azure-SSIS Integration runtime a připojit se k virtuální síti Azure.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2bd2fa9badc7c299099b647e1f67c50e997024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118149"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292298"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurace prostředí Azure-služba SSIS (SQL Server Integration Services) (SSIS) Integration runtime (IR) pro připojení k virtuální síti
 
@@ -38,7 +38,7 @@ Postup je následující:
     - Použijte integrovanou roli Přispěvatel sítě. Tato role se dodává s oprávněním _Microsoft. \* Network/_ , které má mnohem větší rozsah, než je nutné.
     - Vytvořte vlastní roli, která bude obsahovat jenom potřebná oprávnění _Microsoft. Network/virtualNetworks/ \* /Join/Action_ . Pokud chcete pro Azure-SSIS IR při připojení k virtuální síti Azure Resource Manager využít vlastní veřejné IP adresy, uveďte také v roli oprávnění _Microsoft. Network/publicIPAddresses/*/JOIN/Action_ .
 
-- **Virtuální síť**.
+- **Virtuální síť:**
 
     - Pokud nemáte virtuální síť, [vytvořte virtuální síť pomocí Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
 
@@ -72,7 +72,7 @@ Pomocí Azure Portal nakonfigurujte virtuální síť předtím, než se pokusí
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **Další služby**. Vyfiltrujte a vyberte **virtuální sítě**.
 
@@ -92,7 +92,7 @@ Pomocí Azure Portal nakonfigurujte virtuální síť předtím, než se pokusí
 
    1. V Azure Portal v nabídce vlevo vyberte **předplatná**.
 
-   1. Vyberte své předplatné.
+   1. Vyberte předplatné.
 
    1. Na levé straně vyberte **poskytovatelé prostředků**a potvrďte, že **Microsoft.Batch** je registrovaný poskytovatel.
 

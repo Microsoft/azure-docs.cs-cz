@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 9ccbd22a44f0dfb05e425bff45cdc18803391812
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f8f7c4ea051ff583b3e8f88e0331642cdf9f19a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291536"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Kurz: migrace PostgreSQL do Azure DB pro PostgreSQL online pomocí DMS prostřednictvím Azure Portal
 
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Pro optimální prostředí migrace doporučuje Microsoft vytvořit instanci Azure Database Migration Service ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

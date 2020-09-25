@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016261"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294814"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -37,6 +37,7 @@ Tento článek vám pomůže najít informace o řešení běžných problémů 
 - Pokud provádíte synchronizaci 30 nebo více doménových struktur služby Active Directory, nemůžete povolit bezproblémové přihlašování prostřednictvím Azure AD Connect. Jako alternativní řešení můžete funkci v tenantovi [Povolit ručně](#manual-reset-of-the-feature) .
 - Přidání adresy URL služby Azure AD ( `https://autologon.microsoftazuread-sso.com` ) do zóny důvěryhodných serverů namísto zóny místního intranetu *znemožní uživatelům přihlášení*.
 - Bezproblémové jednotné přihlašování podporuje AES256_HMAC_SHA1 typy šifrování AES128_HMAC_SHA1 a RC4_HMAC_MD5 pro protokol Kerberos. Doporučuje se, aby se typ šifrování pro účet AzureADSSOAcc $ nastavil na AES256_HMAC_SHA1, nebo jeden z typů AES vs. RC4 pro zvýšení zabezpečení. Typ šifrování je uložený v atributu msDS-SupportedEncryptionTypes účtu účtu ve službě Active Directory.  Pokud je typ šifrování účtu AzureADSSOAcc $ nastavený na RC4_HMAC_MD5 a chcete ho změnit na jeden z typů šifrování AES, ujistěte se, že jste nejdřív převzali dešifrovací klíč protokolu Kerberos účtu AzureADSSOAcc $, jak je vysvětleno v [dokumentu nejčastějších dotazů](how-to-connect-sso-faq.md) v příslušné otázce. v opačném případě bezproblémové jednotné přihlašování neproběhne.
+-  Pokud máte více než jednu doménovou strukturu s důvěryhodností doménové struktury, povolení jednotného přihlašování v jedné z doménových struktur povolí jednotné přihlašování ve všech důvěryhodných doménových strukturách. Pokud povolíte jednotné přihlašování v doménové struktuře, kde je jednotné přihlašování už povolené, zobrazí se chyba s informací o tom, že jednotné přihlašování je už v doménové struktuře povolené.
 
 ## <a name="check-status-of-feature"></a>Stav kontroly funkce
 

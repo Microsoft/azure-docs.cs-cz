@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1beb2065f1823135981545e42d499c5429b87c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7e4da2051ab84cebff5aae857c02907f7b58e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263619"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Kurz: konfigurace aktivní geografické replikace a převzetí služeb při selhání v Azure Portal (Azure SQL Database)
 
@@ -55,17 +55,17 @@ Po vytvoření a osazení sekundární databáze se data začnou replikovat z pr
     ![Konfigurace geografické replikace](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. Vyberte nebo nakonfigurujte server a cenovou úroveň pro sekundární databázi.
 
-    ![Konfigurovat sekundární](./media/active-geo-replication-configure-portal/create-secondary.png)
+    ![vytvořit sekundární formulář](./media/active-geo-replication-configure-portal/create-secondary.png)
 4. Volitelně můžete do elastického fondu přidat sekundární databázi. Chcete-li vytvořit sekundární databázi ve fondu, klikněte na možnost **elastický fond** a vyberte fond na cílovém serveru. Fond již musí existovat na cílovém serveru. Tento pracovní postup nevytváří fond.
 5. Kliknutím na **vytvořit** přidejte sekundárního.
 6. Sekundární databáze je vytvořena a proces osazení začíná.
 
-    ![Konfigurovat sekundární](./media/active-geo-replication-configure-portal/seeding0.png)
+    ![sekundární mapa](./media/active-geo-replication-configure-portal/seeding0.png)
 7. Po dokončení procesu osazení sekundární databáze zobrazí svůj stav.
 
     ![Osazení dokončeno](./media/active-geo-replication-configure-portal/seeding-complete.png)
 
-## <a name="initiate-a-failover"></a>Iniciovat převzetí služeb při selhání
+## <a name="initiate-a-failover"></a>Inicializace převzetí služeb při selhání
 
 Sekundární databázi lze přepnout tak, aby se stala primární.  
 
@@ -73,7 +73,7 @@ Sekundární databázi lze přepnout tak, aby se stala primární.
 2. V okně SQL Database vyberte **všechna nastavení**  >  **geografické replikace**.
 3. V seznamu **sekundárních** , vyberte databázi, která se má stát novou primární, a klikněte na **Vynucené převzetí služeb při selhání**.
 
-    ![převzetí služeb](./media/active-geo-replication-configure-portal/secondaries.png)
+    ![převzetí služeb při selhání](./media/active-geo-replication-configure-portal/secondaries.png)
 4. Kliknutím na **Ano** zahájíte převzetí služeb při selhání.
 
 Příkaz okamžitě přepne sekundární databázi do primární role. Tento proces normálně by měl být dokončen do 30 sec nebo méně.

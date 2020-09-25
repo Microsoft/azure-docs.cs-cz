@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Diagnostika problému s filtrem provozu sítě virtuálních počítačů – Azure PowerShell'
 titleSuffix: Azure Network Watcher
-description: V tomto rychlém startu zjistíte, jak diagnostikovat problém s filtrováním síťového provozu virtuálního počítače pomocí funkce ověření toku protokolů IP služby Azure Network Watcher.
+description: Naučte se používat Azure PowerShell k diagnostice potíží s filtrováním síťových přenosů virtuálních počítačů pomocí funkce ověření toku protokolu IP v Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -17,18 +17,18 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 6d1c41df638c092daf24938931c3526fb18ea3db
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b74987e225314112c84280e18af523bc5c3804a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074759"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296021"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure PowerShell
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

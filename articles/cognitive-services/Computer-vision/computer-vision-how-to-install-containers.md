@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: bc55ab2697d8278bd975f618d17804499ba0128d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 310a7578fe9d3af8c4600968178cb677658feaa6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254325"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Instalace a spuštění kontejnerů pro čtení (Preview)
 
@@ -26,7 +26,7 @@ Kontejnery umožňují spouštět rozhraní API Počítačového zpracování ob
 
 Kontejner *pro čtení* umožňuje detekovat a extrahovat *vytištěný text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kromě toho kontejner *pro čtení* detekuje *rukou psaný text* v obrázcích a poskytuje podporu PDF, TIFF a vícestránkového souboru. Další informace najdete v dokumentaci k rozhraní API [pro čtení](concept-recognizing-text.md#read-api) .
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Před použitím kontejnerů musíte splnit následující předpoklady:
 
 ## <a name="request-approval-to-run-the-container"></a>Požádat o schválení ke spuštění kontejneru
 
-Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) , který vyžádá schválení pro spuštění kontejneru. 
+Vyplňte a odešlete [formulář žádosti](https://aka.ms/csgate) , který vyžádá schválení pro spuštění kontejneru. 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -345,7 +345,7 @@ K synchronnímu čtení obrázku můžete použít následující operaci.
 
 # <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
-`POST /vision/v3.0/read/SyncAnalyze`
+`POST /vision/v3.0/read/syncAnalyze`
 
 ---
 

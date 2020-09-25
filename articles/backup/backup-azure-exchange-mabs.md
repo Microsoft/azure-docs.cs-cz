@@ -4,12 +4,12 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: eff702cb50317e6b685e19e7df1ffc99b5fc1736
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262990"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
 
@@ -23,8 +23,8 @@ Než budete pokračovat, ujistěte se, že jsou [nainstalované a připravené](
 
 Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte podle následujících kroků:
 
-1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Nainstalujte agenta na server Exchange, a to tak, že vyberete **> agenti pro správu > instalaci** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
+1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. Nainstalujte agenta na server Exchange, a to tak, že vyberete **> agenti pro správu > instalaci** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](/system-center/dpm/deploy-dpm-protection-agent) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
 
@@ -68,10 +68,10 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
 11. Zkontrolujte dostupné místo na disku a pak vyberte **Další**.
 12. Vyberte čas, kdy bude server MABS vytvořit počáteční replikaci, a pak vyberte **Další**.
 13. Vyberte možnosti kontroly konzistence a pak vyberte **Další**.
-14. Zvolte databázi, kterou chcete zálohovat do Azure, a pak vyberte **Další**. Například:
+14. Zvolte databázi, kterou chcete zálohovat do Azure, a pak vyberte **Další**. Příklad:
 
     ![Zadat data online ochrany](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definujte plán pro **Azure Backup**a pak vyberte **Další**. Například:
+15. Definujte plán pro **Azure Backup**a pak vyberte **Další**. Příklad:
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

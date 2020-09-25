@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: aac5c937ab2f80dcbe1567a3817b056a6285cf17
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 9812724b62717440160b9db8604a65ab787f3a9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252659"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -61,6 +61,8 @@ Použití rozhraní API roviny dat:
 * Můžete použít sadu **JavaScript** SDK. Použití sady JavaScript SDK...
    - Balíček můžete zobrazit a nainstalovat z npm: Služba [Azure Azure Digital nepracuje s klientem knihovny pro JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
    - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true).
+* Můžete použít sadu **JavaScript** SDK. Použití sady JavaScript SDK...
+   - Balíček můžete zobrazit a nainstalovat z Maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
 * Můžete vygenerovat sadu SDK pro jiný jazyk pomocí programu AutoRest. Postupujte podle pokynů v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 
 Rozhraní API roviny dat můžete také využít k interakci s digitálními podčinnostmi Azure prostřednictvím rozhraní příkazového [řádku](how-to-use-cli.md).
@@ -298,7 +300,7 @@ Tady můžete zobrazit metriky pro vaši instanci a vytvořit vlastní zobrazen�
 ## <a name="next-steps"></a>Další kroky
 
 Informace o použití rozhraní API k nastavení instance a ověřování digitálních vláken Azure:
-* [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md)
+* [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md)
 
 Nebo si Projděte kroky k vytvoření klientské aplikace, jako je ta, kterou jste použili v tomto postupu:
 * [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

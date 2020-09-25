@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: c578958616e4b4d2d7d3aef1de1650566e0bd40e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bc503213169f909850460edf5e50ed3f1b34fbe2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496402"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288592"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Použití vícefaktorového ověřování AAD s synapse SQL (podpora SSMS pro MFA)
 
@@ -22,9 +22,7 @@ Synapse připojení podpory SQL z SQL Server Management Studio (SSMS) pomocí *u
 
 Tento článek popisuje rozdíly mezi různými možnostmi ověřování a také omezeními souvisejícími s používáním univerzálního ověřování. 
 
-**Stáhněte si nejnovější SSMS** -v klientském počítači, Stáhněte si nejnovější verzi nástroje SSMS, od [Stažení SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). 
-
-**Stáhněte si nejnovější SSMS** -v klientském počítači, Stáhněte si nejnovější verzi nástroje SSMS, od [Stažení SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+**Stáhněte si nejnovější SSMS** -v klientském počítači, Stáhněte si nejnovější verzi nástroje SSMS, od [Stažení SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Pro všechny funkce popsané v tomto článku použijte minimálně červenec 2017, verze 17,2.  Dialogové okno nejaktuálnější připojení by mělo vypadat podobně jako na následujícím obrázku:
 
@@ -33,8 +31,8 @@ Pro všechny funkce popsané v tomto článku použijte minimálně červenec 20
 ## <a name="the-five-authentication-options"></a>Pět možností ověřování  
 
 Univerzální ověřování služby Active Directory podporuje dvě metody ověřování, které nejsou interaktivní:
-    - `Active Directory - Password`přihlašovací
-    - `Active Directory - Integrated`přihlašovací
+    - `Active Directory - Password` přihlašovací
+    - `Active Directory - Integrated` přihlašovací
 
 K dispozici jsou také dva modely neinteraktivního ověřování, které lze použít v mnoha různých aplikacích (ADO.NET, JDCB, ODC atd.). Tyto dvě metody nikdy nevedou k místním dialogovým oknům:
 
@@ -51,7 +49,7 @@ Popis Multi-Factor Authentication najdete v tématu [Multi-Factor Authentication
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Parametr názvu domény Azure AD nebo ID tenanta
 
-Počínaje [verzí SSMS 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)mohou uživatelé, kteří jsou importováni do aktuální služby Active Directory z jiných Azure Active Directory jako uživatelé typu Host, poskytovat název domény služby Azure AD nebo ID tenanta při připojení. 
+Počínaje [verzí SSMS 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)mohou uživatelé, kteří jsou importováni do aktuální služby Active Directory z jiných Azure Active Directory jako uživatelé typu Host, poskytovat název domény služby Azure AD nebo ID tenanta při připojení. 
 
 Uživatelé typu Host zahrnují uživatele pozvaní z jiných reklam Azure, účtů Microsoft, jako jsou outlook.com, hotmail.com, live.com nebo jiné účty, jako je gmail.com. Tyto informace umožňují, aby **Služba Active Directory Universal s ověřováním MFA** identifikovala správnou ověřovací autoritu. Tato možnost je také nutná k podpoře účtů Microsoft (MSA), jako jsou účty outlook.com, hotmail.com, live.com nebo jiné než MSA. 
 
@@ -61,13 +59,13 @@ Pokud je například Azure Server přidružený k doméně Azure AD `contosotest
 
 Když je uživatel nativním uživatelem služby Azure AD připojeným k serveru Azure a nejedná se o účet MSA, není nutné mít žádný název domény ani ID tenanta. 
 
-Chcete-li zadat parametr (počínaje verzí SSMS 17,2), v dialogovém okně **připojit k databázi** dokončete dialogové okno, vyberte možnost **Active Directory – univerzální s** ověřováním MFA, klikněte na **Možnosti**, dokončete pole **uživatelské jméno** a pak klikněte na kartu **Vlastnosti připojení** . 
+Chcete-li zadat parametr (počínaje SSMS verze 17,2), v dialogovém okně **připojit k databázi** dokončete dialogové okno, vyberte možnost **Active Directory – univerzální s** ověřováním MFA, vyberte **Možnosti**, dokončete pole **uživatelské jméno** a pak vyberte kartu **Vlastnosti připojení** . 
 
 Zaškrtněte pole **název domény služby AD nebo ID tenanta** a poskytněte ověřovací autoritu, jako je například název domény (**contosotest.onmicrosoft.com**) nebo identifikátor GUID ID tenanta.  
 
    ![MFA – tenant – SSMS](./media/mfa-authentication/mfa-tenant-ssms.png)
 
-Pokud používáte SSMS 18. x nebo novější, název domény služby AD nebo ID tenanta už není potřeba pro uživatele typu Host, protože 18. x nebo novější ho automaticky rozpoznává.
+Pokud používáte SSMS 18. x nebo novější, pak název domény služby AD nebo ID tenanta už není potřeba pro uživatele typu Host, protože 18. x nebo novější ho automaticky rozpoznává.
 
    ![MFA – tenant – SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
@@ -80,7 +78,7 @@ Po vytvoření uživatele databáze se uživatel `steve@gmail.com` může přihl
 
 Ve výchozím nastavení má uživatel ve výchozím nastavení pouze oprávnění připojit a jakýkoliv další přístup k datům, který bude potřeba udělit běžným způsobem. 
 
-Všimněte si, že uživatel `steve@gmail.com` jako uživatel typu Host musí zaškrtnout políčko a přidat název domény služby AD `contosotest.onmicrosoft.com` do dialogového okna **Vlastnosti připojení** SSMS. Možnost **název domény AD nebo ID tenanta** je podporovaná jenom pro možnosti připojení univerzální s MFA, jinak je šedá.
+Jako uživatel typu host `steve@gmail.com` musí zaškrtnout políčko a přidat název domény služby Active Directory `contosotest.onmicrosoft.com` do dialogového okna **Vlastnosti připojení** SSMS. Možnost **název domény AD nebo ID tenanta** je podporovaná jenom pro možnosti připojení univerzální s MFA, jinak je šedá.
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Omezení univerzálního ověřování pro synapse SQL
 

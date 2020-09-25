@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c753e9a18f9869e1bf11aa437fb60484f2553e17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259250"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci LexisNexis s využitím Azure Active Directory B2C
 
@@ -73,7 +73,7 @@ Po vytvoření účtu obdržíte informace, které potřebujete pro konfiguraci 
 
 ### <a name="part-1---deploy-the-api"></a>Část 1 – nasazení rozhraní API
 
-Nasaďte poskytnutý kód rozhraní API do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 >[!NOTE]
 >Abyste mohli Azure AD nakonfigurovat pomocí požadovaných nastavení, budete potřebovat adresu URL nasazené služby.
@@ -95,9 +95,9 @@ Nastavení aplikace je možné [nakonfigurovat ve službě App Service v Azure](
 
 Toto řešení používá vlastní šablony uživatelského rozhraní, které jsou načteny Azure AD B2C. Tyto šablony uživatelského rozhraní provádí profilování, které se odesílá přímo do služby ThreatMetrix.
 
-Informace o nasazení zahrnutých souborů uživatelského rozhraní do účtu služby Blob Storage najdete v těchto [pokynech](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) . Pokyny zahrnují nastavení účtu úložiště BLOB, konfigurace CORS a povolení veřejného přístupu.
+Informace o nasazení zahrnutých [souborů uživatelského rozhraní](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) do účtu služby Blob Storage najdete v těchto [pokynech](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) . Pokyny zahrnují nastavení účtu úložiště BLOB, konfigurace CORS a povolení veřejného přístupu.
 
-Uživatelské rozhraní je založené na šabloně oceánu na modré stránce. Všechny odkazy v uživatelském rozhraní by se měly aktualizovat tak, aby odkazovaly na nasazené umístění. Ve složce uživatelského rozhraní vyhledejte a nahraďte https://yourblobstorage/blobcontainer nasazeným umístěním.
+Uživatelské rozhraní je založeno na [modré šabloně oceánu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue). Všechny odkazy v uživatelském rozhraní by se měly aktualizovat tak, aby odkazovaly na nasazené umístění. Ve složce uživatelského rozhraní vyhledejte a nahraďte https://yourblobstorage/blobcontainer nasazeným umístěním.
 
 ### <a name="part-4---create-api-policy-keys"></a>Část 4 – vytvoření klíčů zásad rozhraní API
 
@@ -111,21 +111,21 @@ Vzorová zásada používá tyto názvy klíčů:
 
 ### <a name="part-5---update-the-api-url"></a>Část 5 – aktualizace adresy URL rozhraní API
 
-V zadaných zásadách TrustFrameworkExtensions Najděte technický profil s názvem `Rest-LexisNexus-SessionQuery` a aktualizujte `ServiceUrl` položku metadat pomocí umístění rozhraní API nasazeného výše.
+V zadaných [zásadách TrustFrameworkExtensions](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/ThreatMetrix/policy/TrustFrameworkExtensions.xml)Najděte technický profil s názvem `Rest-LexisNexus-SessionQuery` a aktualizujte `ServiceUrl` položku metadat pomocí umístění rozhraní API nasazeného výše.
 
 ### <a name="part-6---update-ui-url"></a>Část 6 – aktualizace adresy URL uživatelského rozhraní
 
-V poskytnutých zásadách TrustFrameworkExtensions proveďte hledání a nahrazení https://yourblobstorage/blobcontainer/ pomocí umístění, do kterého jsou soubory uživatelského rozhraní nasazeny.
-
-### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>Část 7 – konfigurace zásad Azure AD B2C
-
-V tomto [dokumentu](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) si stáhněte [úvodní Pack pro místní účty](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) a nakonfigurujte zásady pro klienta Azure AD B2C.
-
->[!NOTE]
->Aktualizujte zadané zásady tak, aby se vztahovaly k vašemu konkrétnímu tenantovi.
+V poskytnutých [zásadách TrustFrameworkExtensions](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/ThreatMetrix/policy/TrustFrameworkExtensions.xml)proveďte hledání a nahrazení https://yourblobstorage/blobcontainer/ pomocí umístění, do kterého jsou soubory uživatelského rozhraní nasazeny.
 
 >[!NOTE]
 > Jako osvědčený postup doporučujeme, aby zákazníci přidávají oznámení o souhlasu na stránce kolekce atributů. Upozorněte uživatele, že informace budou odeslány službám třetích stran pro ověření identity.
+
+### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>Část 7 – konfigurace zásad Azure AD B2C
+
+V tomto [dokumentu](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) si stáhněte [úvodní Pack pro místní účty](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) a nakonfigurujte [zásady](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) pro klienta Azure AD B2C.
+
+>[!NOTE]
+>Aktualizujte zadané zásady tak, aby se vztahovaly k vašemu konkrétnímu tenantovi.
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 

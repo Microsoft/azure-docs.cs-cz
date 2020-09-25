@@ -3,12 +3,12 @@ title: Použití Moderní úložiště zálohování s Azure Backup Server
 description: Seznamte se s novými funkcemi v Azure Backup Server. Tento článek popisuje, jak upgradovat instalaci záložního serveru.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378232"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292893"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
@@ -18,7 +18,7 @@ Azure Backup Server v2 a novější podporuje Moderní úložiště zálohován�
 > Chcete-li použít Moderní úložiště zálohování, je nutné spustit záložní server v2 nebo V3 v systému Windows Server 2016 nebo V3 v systému Windows Server 2019.
 > Pokud spustíte záložní server V2 v dřívější verzi Windows serveru, Azure Backup Server nemůže využít Moderní úložiště zálohování. Místo toho chrání úlohy stejně jako u záložního serveru v1. Další informace najdete v tématu [matice ochrany](backup-mabs-protection-matrix.md)verzí záložního serveru.
 >
-> Aby se dosáhlo lepších výkonů služby Backup, doporučujeme nasadit MABS V3 se vrstveným úložištěm v systému Windows Server 2019. Postup konfigurace vrstveného úložiště najdete v článku aplikace DPM "[Nastavení MB pomocí Tiered Storage](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)".
+> Aby se dosáhlo lepších výkonů služby Backup, doporučujeme nasadit MABS V3 se vrstveným úložištěm v systému Windows Server 2019. Postup konfigurace vrstveného úložiště najdete v článku aplikace DPM "[Nastavení MB pomocí Tiered Storage](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage)".
 
 ## <a name="volumes-in-backup-server"></a>Svazky na záložním serveru
 

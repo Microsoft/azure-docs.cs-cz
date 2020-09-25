@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881840"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287725"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Interakce s Azure Cosmos DB pomocí Apache Spark v propojení Azure synapse (Preview)
 
@@ -120,6 +120,8 @@ df.write.format("cosmos.oltp").
     save()
 ```
 
+## <a name="load-streaming-dataframe-from-container"></a>Načíst datový proud streamování z kontejneru
+V tomto gestu použijete schopnost streamování Spark k načtení dat z kontejneru do datového rámce. Data se uloží do primárního účtu Data Lake (a systému souborů), který jste připojili k pracovnímu prostoru. 
 > [!NOTE]
 > Pokud chcete odkazovat na externí knihovny v synapse Apache Spark, přečtěte si další informace [tady](#external-library-management). Pokud třeba chcete ingestovat Spark dataframe do kontejneru Cosmos DB API pro Mongo DB, můžete využít konektor Mongo DB pro Spark [zde](https://docs.mongodb.com/spark-connector/master/).
 

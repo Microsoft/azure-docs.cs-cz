@@ -2,19 +2,19 @@
 title: Nasazení více instancí prostředků
 description: K nasazení typu prostředku mnohokrát použijte operaci kopírování a pole v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/21/2020
+ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293964"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Iterace prostředků v šablonách ARM
 
 V tomto článku se dozvíte, jak vytvořit více než jednu instanci prostředku v šabloně Azure Resource Manager (ARM). Přidáním prvku **kopírování** do části Resources (prostředky) vaší šablony můžete dynamicky nastavit počet nasazených prostředků. Nemusíte se také vyhnout opakování syntaxe šablony.
 
-Můžete také použít příkaz Kopírovat s [vlastnostmi](copy-properties.md), [proměnnými](copy-variables.md) a [výstupy](copy-outputs.md).
+Můžete také použít kopírování s [vlastnostmi](copy-properties.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
 
 Pokud potřebujete určit, jestli je prostředek nasazený vůbec, viz [Podmínka elementu](conditional-resource-deployment.md).
 
@@ -155,6 +155,8 @@ Pokud chcete vrátit hodnoty z nasazených prostředků, můžete použít pří
 Ve výchozím nastavení Správce prostředků vytvoří paralelní prostředky. Neplatí pro počet paralelně nasazených prostředků, s výjimkou celkového limitu 800 prostředků v šabloně. Pořadí, ve kterém jsou vytvořeny, není zaručeno.
 
 Můžete ale chtít určit, že se prostředky nasazují v pořadí. Například při aktualizaci produkčního prostředí můžete aktualizace rozložit, aby se v jednom okamžiku aktualizovalo jenom určité číslo. Pro sériové nasazení více než jedné instance prostředku nastavte `mode` **sériové** a `batchSize` na počet instancí, které se mají nasadit v jednom okamžiku. V případě sériového režimu Správce prostředků ve smyčce vytvoří závislost na dřívějších instancích, takže nespustí jednu dávku, dokud se předchozí dávka nedokončí.
+
+Hodnota pro `batchSize` nemůže být větší než hodnota `count` elementu Copy.
 
 Pokud například chcete sériové nasazení účtů úložiště vytvořit dvakrát, použijte:
 

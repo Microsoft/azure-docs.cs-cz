@@ -3,15 +3,15 @@ title: Řešení potíží s upozorněními na metriky Azure
 description: Běžné problémy se Azure Monitor výstrahami metrik a možnými řešeními.
 author: harelbr
 ms.author: harelbr
-ms.topic: reference
+ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294221"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 

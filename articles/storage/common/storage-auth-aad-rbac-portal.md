@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 21120239c44dbdd812dfb3d3208990db4372ec29
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7c463beb7874e0b66e2a45a1675484f19c4fab34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828009"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249653"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Přiřazení role Azure pro přístup k datům BLOB a Queue pomocí Azure Portal
 
@@ -59,16 +59,16 @@ Procedura zobrazená tady přiřadí obor role na kontejner, ale stejný postup 
 1. Vyhledejte kontejner, pro který chcete přiřadit roli, a zobrazte nastavení kontejneru.
 1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro kontejner. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
 
-    ![Snímek obrazovky zobrazující nastavení řízení přístupu k kontejneru](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/portal-access-control-container.png" alt-text="Snímek obrazovky zobrazující nastavení řízení přístupu k kontejneru":::
 
 1. Kliknutím na tlačítko **Přidat přiřazení role** přidejte novou roli.
 1. V okně **Přidat přiřazení role** vyberte roli Azure Storage, kterou chcete přiřadit. Pak vyhledejte objekt zabezpečení, ke kterému chcete přiřadit tuto roli.
 
-    ![Snímek obrazovky, který ukazuje, jak přiřadit roli Azure](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Snímek obrazovky, který ukazuje, jak přiřadit roli Azure":::
 
 1. Klikněte na **Uložit**. Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například následující obrázek ukazuje, že uživatel přidaný teď má oprávnění číst pro data v kontejneru s názvem *Sample-Container*.
 
-    ![Snímek obrazovky zobrazující seznam uživatelů přiřazených k roli](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Snímek obrazovky zobrazující seznam uživatelů přiřazených k roli":::
 
 Podle podobných kroků můžete přiřadit obor role k účtu úložiště, skupině prostředků nebo předplatnému.
 

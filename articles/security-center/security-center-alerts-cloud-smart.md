@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60798ad1fab0ed66f3d4a39b2fd7faf79fd515e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73686490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268057"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Korelace cloudových inteligentních výstrah v Azure Security Center (incidenty)
 
@@ -38,5 +38,5 @@ V průběhu vyšetřování incidentu často potřebují analytikům přístup k
 
 ![Snímek obrazovky s zjištěnou událostí bezpečnostního incidentu](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-Chcete-li lépe porozumět incidentům zabezpečení, přečtěte si téma [jak řešit incidenty zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident).
+Chcete-li lépe porozumět incidentům zabezpečení, přečtěte si téma [jak řešit incidenty zabezpečení v Azure Security Center](security-center-incident.md).
 

@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: e630ccec744c4edf0dc80d374ecc93526f960d44
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 00d0808e83a888a39f9268328feb209167c9b644
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295985"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Sledovat činnost databáze pomocí protokolů auditu v Azure Database for MySQL flexibilním serveru
 
 > [!IMPORTANT] 
 > Azure Database for MySQL flexibilní Server je momentálně ve verzi Public Preview.
+
+> [!NOTE]
+> Integrace s Azure Monitor nastavení diagnostiky pro přístup k protokolům probíhá nasazování a kompletní funkce budou brzy k dispozici.
 
 Azure Database for MySQL flexibilní Server poskytuje uživatelům možnost konfigurovat protokoly auditu. Protokoly auditu lze použít ke sledování aktivity na úrovni databáze, včetně událostí připojení, správce, DDL a DML. Tyto typy protokolů se běžně používají pro účely dodržování předpisů.
 
@@ -49,6 +52,9 @@ Další parametry, které můžete upravit pro řízení chování protokolován
 | `TABLE_ACCESS` | – Dostupné jenom pro MySQL 5,7 <br> – Příkazy pro čtení z tabulky, jako je například SELECT nebo INSERT INTO... VYBRALI <br> – Příkazy DELETE v tabulce, jako je například DELETE nebo TRUNCATE TABLE <br> – Příkazy INSERT v tabulce, jako je INSERT nebo Replace <br> – Příkazy aktualizace tabulky, jako je například aktualizace |
 
 ## <a name="access-audit-logs"></a>Přístup k protokolům auditu
+
+> [!NOTE]
+> Integrace s Azure Monitor nastavení diagnostiky pro přístup k protokolům probíhá nasazování a kompletní funkce budou brzy k dispozici.
 
 Protokoly auditu jsou integrované s nastavením diagnostiky Azure Monitor. Po povolení protokolů auditu na flexibilním serveru MySQL je můžete vygenerovat k Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o nastavení diagnostiky najdete v [dokumentaci k diagnostickým protokolům](../../azure-monitor/platform/platform-logs-overview.md). Další informace o tom, jak povolit nastavení diagnostiky v Azure Portal, najdete v [článku na portálu protokolu auditu](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
 

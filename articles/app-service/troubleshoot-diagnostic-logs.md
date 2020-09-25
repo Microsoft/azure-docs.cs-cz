@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264367"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -108,9 +108,9 @@ Oba typy protokolů jsou uloženy v App Service systému souborů. Zachovají se
 
 ## <a name="add-log-messages-in-code"></a>Přidat protokolové zprávy v kódu
 
-V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Například:
+V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Příklad:
 
-- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Například:
+- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Příklad:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -138,12 +138,12 @@ Pokud chcete streamovat živé vysílání v [Cloud Shell](../cloud-shell/overvi
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Například:
+Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Příklad:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Například:
+Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Příklad:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -185,16 +185,16 @@ S novou [integrací Azure monitor](https://aka.ms/appsvcblog-azmon)můžete [vyt
 
 Následující tabulka uvádí podporované typy a popisy protokolů: 
 
-| Typ protokolu | Podpora Windows | Podpora pro Linux (Docker) | Popis |
-|-|-|-|
-| AppServiceConsoleLogs | TBA | Yes | Standardní výstup a standardní chyba |
-| AppServiceHTTPLogs | Yes | Yes | Protokoly webového serveru |
-| AppServiceEnvironmentPlatformLogs | Yes | Yes | App Service Environment: škálování, změny konfigurace a protokoly stavu|
-| AppServiceAuditLogs | Yes | Yes | Přihlašovací aktivita prostřednictvím FTP a Kudu |
-| AppServiceFileAuditLogs | Yes | Bude doplněno | Změny souborů provedené v obsahu webu; dostupné jenom pro úroveň Premium a vyšší |
-| AppServiceAppLogs | TBA | Java SE & Tomcat | Protokoly aplikací |
-| AppServiceIPSecAuditLogs  | Yes | Yes | Žádosti z pravidel IP adres |
-| AppServicePlatformLogs  | TBA | Yes | Protokoly kontejneru |
+| Typ protokolu | Windows | Kontejner Windows | Linux | Kontejner pro Linux | Popis |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | TBA | TBA | Yes | Yes | Standardní výstup a standardní chyba |
+| AppServiceHTTPLogs | Yes | TBA | Yes | Yes | Protokoly webového serveru |
+| AppServiceEnvironmentPlatformLogs | Yes | Není k dispozici | Yes | Yes | App Service Environment: škálování, změny konfigurace a protokoly stavu|
+| AppServiceAuditLogs | Yes | TBA | Yes | Yes | Přihlašovací aktivita prostřednictvím FTP a Kudu |
+| AppServiceFileAuditLogs | Yes | TBA | TBA | TBA | Změny souborů provedené v obsahu webu; dostupné jenom pro úroveň Premium a vyšší |
+| AppServiceAppLogs | ASP .NET | TBA | Java SE & Tomcat | Java SE & Tomcat | Protokoly aplikací |
+| AppServiceIPSecAuditLogs  | Yes | TBA | Yes | Yes | Žádosti z pravidel IP adres |
+| AppServicePlatformLogs  | TBA | TBA | Yes | Yes | Protokoly operací kontejneru |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Další kroky
 * [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

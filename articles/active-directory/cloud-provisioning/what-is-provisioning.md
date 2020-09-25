@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85430aea183cca977e3cb648cb43779f25c61a0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a5d5528865fc910751b8052dcc78a82131e17290
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657837"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266237"
 ---
 # <a name="what-is-identity-provisioning"></a>Co je zřizování identit?
 
@@ -24,7 +24,7 @@ V současné době se podniky a společnosti stávají více a více než v růz
 
 Zřizování je proces vytváření objektu na základě určitých podmínek, udržování objektu v aktuálním stavu a odstranění objektu, pokud podmínky již nejsou splněny. Když se například do vaší organizace připojí nový uživatel, tento uživatel se zadává do systému HR.  V tomto okamžiku zřizování může vytvořit odpovídající uživatelský účet v cloudu, ve službě Active Directory a v různých aplikacích, ke kterým uživatel potřebuje mít přístup.  Díky tomu může uživatel začít pracovat a mít přístup k aplikacím a systémům, které potřebují k jednomu dni. 
 
-![zřizování cloudu](media/what-is-provisioning/cloud1.png)
+![Diagram, který zobrazuje zřizování cloudu pomocí Azure Active Directory.](media/what-is-provisioning/cloud1.png)
 
 Pokud jde o Azure Active Directory, zřizování se dá rozdělit do následujících klíčových scénářů.  
 
@@ -34,7 +34,7 @@ Pokud jde o Azure Active Directory, zřizování se dá rozdělit do následují
 
 ## <a name="hr-driven-provisioning"></a>Zřizování na základě lidských zdrojů
 
-![zřizování cloudu](media/what-is-provisioning/cloud2.png)
+![Diagram znázorňující zřizování na základě lidských zdrojů s využitím cloudového HR, místního HR a Azure Active Directory.](media/what-is-provisioning/cloud2.png)
 
 Zřizování z HR do cloudu zahrnuje vytváření objektů (uživatelů, rolí, skupin atd.) na základě informací, které jsou v systému HR.  
 
@@ -48,7 +48,7 @@ Nejběžnějším scénářem je, že když se do vaší společnosti připojí 
 
 ## <a name="app-provisioning"></a>Zřizování aplikací
 
-![zřizování cloudu](media/what-is-provisioning/cloud3.png)
+![Diagram, který znázorňuje zřizování aplikací pomocí místních aplikací, cloudových aplikací od jiných společností než Microsoftu a Azure Active Directory.](media/what-is-provisioning/cloud3.png)
 
 V Azure Active Directory (Azure AD) pojem **[zřizování aplikací](../app-provisioning/user-provisioning.md)** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích, ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)a další.
 

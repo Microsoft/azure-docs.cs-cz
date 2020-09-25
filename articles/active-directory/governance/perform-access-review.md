@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265677"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Kontrola přístupu ke skupinám a aplikacím v prohlídekch Azure AD Access
 
@@ -37,7 +37,7 @@ Proces kontroly přístupu můžete spustit z oznamovacího e-mailu nebo přejí
 
 1. Vyhledejte e-mail od Microsoftu, který žádá o kontrolu přístupu. Tady je příklad e-mailu pro kontrolu přístupu pro skupinu.
 
-    ![Příklad e-mailu od Microsoftu ke kontrole přístupu ke skupině](./media/perform-access-review/access-review-email.png)
+    ![Snímek obrazovky, který ukazuje příklad e-mailu od Microsoftu za účelem kontroly přístupu ke skupině.](./media/perform-access-review/access-review-email.png)
 
 1. Kliknutím na odkaz **zahájit kontrolu** otevřete kontrolu přístupu.
 
@@ -54,7 +54,7 @@ Proces kontroly přístupu můžete spustit z oznamovacího e-mailu nebo přejí
         > [!NOTE]
         > Pokud dlaždice kontroly **přístupu** není viditelná, neexistují žádné kontroly přístupu, které by se daly v této organizaci provádět, a v tuto chvíli není potřeba žádná akce.
 
-        ![Seznam nevyřízených kontrol přístupu pro aplikace a skupiny](./media/perform-access-review/access-reviews-list.png)
+        ![Snímek obrazovky, který zobrazuje seznam nevyřízených recenzí přístupu pro aplikace a skupiny](./media/perform-access-review/access-reviews-list.png)
 
     1. Klikněte na odkaz **zahájit kontrolu** pro kontrolu přístupu, kterou chcete provést.
 
@@ -99,7 +99,7 @@ Abychom zajistili lepší a rychlejší kontroly přístupu, poskytujeme také d
 
 1. Na modrém panelu v dolní části stránky klikněte na **přijmout doporučení**.
 
-    ![Otevřete seznam kontroly přístupu se zobrazením tlačítka přijmout doporučení.](./media/perform-access-review/accept-recommendations.png)
+    ![Snímek obrazovky, který zobrazuje seznam otevřených kontrol přístupu s vybraným tlačítkem přijmout doporučení.](./media/perform-access-review/accept-recommendations.png)
 
     Zobrazí se souhrn doporučených akcí.
 

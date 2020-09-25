@@ -10,20 +10,34 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/03/2020
-ms.openlocfilehash: 83927c9df9a4f1a6ab32c15c481898ec68f53c4c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: 619960238125191e7bd4e702a49016c8fd58c847
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296650"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning (Preview)
 
 V tomto dokumentu se dozvíte, jak pomocí privátního propojení Azure s vaším pracovním prostorem Azure Machine Learning. Informace o nastavení virtuální sítě pro Azure Machine Learning najdete v tématu [Přehled izolace a ochrany osobních údajů ve virtuální síti](how-to-network-security-overview.md) .
 
 > [!IMPORTANT]
-> Používání privátního odkazu Azure s Azure Machine Learning pracovním prostorem je v současnosti ve verzi Public Preview. Tato funkce je k dispozici pouze v oblastech **USA – východ**, **USA (střed) – jih** a **USA – západ 2** . Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Používání privátního odkazu Azure s Azure Machine Learning pracovním prostorem je v současnosti ve verzi Public Preview. Tato funkce je k dispozici pouze v následujících oblastech:
+>
+> * **East US**
+> * **Středojižní USA**
+> * **USA – západ**
+> * **Západní USA 2**
+> * **Střední Kanada**
+> * **Southeast Asia**
+> * **Japan East**
+> * **Severní Evropa**
+> * **Východní Austrálie**
+> * **Spojené království – jih**
+>
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí privátního koncového bodu. Soukromý koncový bod je sada privátních IP adres v rámci vaší virtuální sítě. Přístup k pracovnímu prostoru pak můžete omezit tak, aby se nacházet jenom přes privátní IP adresy. Soukromý odkaz pomáhá snižovat riziko exfiltrace dat. Další informace o privátních koncových bodech najdete v článku věnovaném [privátním odkazům Azure](/azure/private-link/private-link-overview) .
 
@@ -34,6 +48,10 @@ Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí pr
 
 > [!TIP]
 > Instanci služby Azure Machine Learning COMPUTE lze použít s pracovním prostorem a soukromým koncovým bodem. Tato funkce je aktuálně ve verzi Public Preview v oblastech **USA – východ**, **USA (střed) – jih** a **USA – západ 2** .
+
+## <a name="prerequisites"></a>Požadavky
+
+Pokud plánujete použít pracovní prostor s povoleným privátním propojením s klíčem spravovaným zákazníkem, musíte požádat o tuto funkci pomocí lístku podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Vytvoření pracovního prostoru, který používá privátní koncový bod
 

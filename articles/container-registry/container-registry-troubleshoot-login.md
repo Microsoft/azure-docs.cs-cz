@@ -3,12 +3,12 @@ title: Řešení potíží s přihlášením k registru
 description: Příznaky, příčiny a řešení běžných potíží při přihlašování do služby Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8fbb96be8223001ac52db47788c31609e9b86e35
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227232"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253350"
 ---
 # <a name="troubleshoot-registry-login"></a>Řešení potíží s přihlášením k registru
 
@@ -105,9 +105,9 @@ Související odkazy:
 
 * [Role a oprávnění RBAC – Azure Container Registry](container-registry-roles.md)
 * [Přihlášení s tokenem s oborem úložiště](container-registry-repository-scoped-permissions.md)
-* [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](../role-based-access-control/role-assignments-portal.md)
 * [Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Vytvořit nový tajný klíč aplikace](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)
+* [Vytvoření nového tajného klíče aplikace](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)
 * [Ověřování a autorizační kódy Azure AD](../active-directory/develop/reference-aadsts-error-codes.md)
 
 ### <a name="check-that-credentials-arent-expired"></a>Ověřte platnost přihlašovacích údajů ještě nevypršela.

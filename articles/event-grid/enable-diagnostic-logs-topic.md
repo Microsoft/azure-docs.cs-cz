@@ -3,12 +3,12 @@ title: Azure Event Grid – povolení diagnostických protokolů pro témata neb
 description: Tento článek poskytuje podrobné pokyny k povolení diagnostických protokolů pro téma Azure Event Grid.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297517"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Povolení diagnostických protokolů pro témata nebo domény služby Azure Event Grid
 Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit protokoly **selhání publikování a doručení** v účtu úložiště, v centru událostí nebo v pracovním prostoru Log Analytics. Tento článek poskytuje podrobné pokyny, jak povolit tato nastavení v Event Grid tématu.
@@ -26,7 +26,7 @@ Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit pr
 > [!NOTE]
 > Následující postup poskytuje podrobné pokyny pro povolení diagnostických protokolů pro téma. Postup povolení diagnostických protokolů pro doménu je velmi podobný. V kroku 2 Přejděte do **domény** Event grid v Azure Portal.  
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do tématu Event gridu, pro které chcete povolit nastavení diagnostického protokolu. 
     1. Na panelu hledání v horní části vyhledejte **Event Grid témata**. 
     
@@ -37,25 +37,25 @@ Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit pr
     
     ![Tlačítko Přidat nastavení diagnostiky](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. Zadejte **název** pro nastavení diagnostiky. 
-7. V části **protokol** vyberte možnosti **DeliveryFailures** a **PublishFailures** . 
+6. V části **protokol** vyberte možnosti **DeliveryFailures** a **PublishFailures** . 
     ![Vybrat selhání](./media/enable-diagnostic-logs-topic/log-failures.png)
-6. Povolte jedno nebo více cílových umístění pro zaznamenávání protokolů a pak je nakonfigurujte výběrem předchozího vytvořeného prostředku zachycení. 
+7. Povolte jedno nebo více cílových umístění pro zaznamenávání protokolů a pak je nakonfigurujte výběrem předchozího vytvořeného prostředku zachycení. 
     - Pokud vyberete možnost **archivovat do účtu úložiště**, vyberte **účet úložiště – konfigurovat**a potom vyberte účet úložiště ve vašem předplatném Azure. 
 
-        ![Archivace na účet služby Azure Storage](./media/enable-diagnostic-logs-topic/archive-storage.png)
+        ![Snímek obrazovky zobrazující stránku nastavení diagnostiky, která má zaškrtnuté políčko Archivovat na účet úložiště Azure a vybraný účet úložiště.](./media/enable-diagnostic-logs-topic/archive-storage.png)
     - Pokud vyberete **datový proud do centra událostí**, vyberte **centrum událostí – konfigurovat**a pak vyberte obor názvů Event Hubs, centrum událostí a zásady přístupu. 
-        ![Streamování do centra událostí](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
+        ![Snímek obrazovky zobrazující, že stránka nastavení diagnostiky s datovým proudem do centra událostí je zaškrtnuté.](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - Pokud vyberete možnost **Odeslat do Log Analytics**, vyberte pracovní prostor Log Analytics.
-        ![Odeslání do Log Analytics](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
+        ![Snímek obrazovky zobrazující stránku nastavení diagnostiky, která má zaškrtnuté políčko Odeslat do Log Analytics.](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
 8. Vyberte **Uložit**. Pak v pravém horním rohu vyberte **X** , aby se stránka zavřela. 
 9. Teď se vraťte na stránku **nastavení diagnostiky** a ověřte, že se v tabulce **nastavení diagnostiky** zobrazila nová položka. 
-    ![Nastavení diagnostiky v seznamu](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+    ![Snímek obrazovky zobrazující stránku nastavení diagnostiky s novou položkou zvýrazněnou v tabulce nastavení diagnostiky](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      Můžete také povolit shromažďování všech metrik pro téma. 
 
 ## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Povolení diagnostických protokolů pro systémové téma
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do tématu Event gridu, pro které chcete povolit nastavení diagnostického protokolu. 
     1. Na panelu hledání v horní části vyhledejte **Event Grid systémová témata**. 
     

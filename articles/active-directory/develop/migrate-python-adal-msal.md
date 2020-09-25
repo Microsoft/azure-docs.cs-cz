@@ -1,8 +1,8 @@
 ---
 title: Příručka k migraci Python ADAL do MSAL | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se migrovat aplikaci v Pythonu Azure Active Directory Authentication Library (ADAL) do knihovny Microsoft Authentication Library (MSAL) pro Python.
 services: active-directory
-titleSuffix: Microsoft identity platform
 author: rayluo
 manager: CelesteDG
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: Python
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
-ms.reviewer: rayluo, nacanuma, twhitney
+ms.reviewer: rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 574615a6b6e4b399605ca1863c0f764f814b2bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119908"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258298"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Příručka k migraci ADAL do MSAL pro Python
 
@@ -50,7 +50,7 @@ Další podrobnosti o různých typech oborů najdete v článcích věnovaném 
 
 ### <a name="error-handling"></a>Zpracování chyb
 
-Knihovna Azure Active Directory Authentication Library (ADAL) pro Python používá výjimku `AdalError` k označení toho, že došlo k potížím. MSAL pro Python obvykle používá chybové kódy. Další informace najdete v tématu [MSAL pro zpracování chyb Pythonu](./msal-handling-exceptions.md?tabs=python).
+Knihovna Azure Active Directory Authentication Library (ADAL) pro Python používá výjimku `AdalError` k označení toho, že došlo k potížím. MSAL pro Python obvykle používá chybové kódy. Další informace najdete v tématu  [MSAL pro zpracování chyb Pythonu](./msal-handling-exceptions.md?tabs=python).
 
 ### <a name="api-changes"></a>Změny rozhraní API
 
@@ -59,17 +59,17 @@ Následující tabulka uvádí rozhraní API v ADAL pro Python a ten, který se 
 | ADAL pro Python API  | MSAL pro Python API |
 | ------------------- | ---------------------------------- |
 | [AuthenticationContext](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext)  | [PublicClientApplication nebo ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)  |
-| –  | [get_authorization_request_url ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
+| Není k dispozici  | [get_authorization_request_url ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
 | [acquire_token_with_authorization_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_authorization_code) | [acquire_token_by_authorization_code ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_by_authorization_code) |
 | [acquire_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token) | [acquire_token_silent ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_silent) |
-| [acquire_token_with_refresh_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | – |
+| [acquire_token_with_refresh_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | Není k dispozici |
 | [acquire_user_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_user_code) | [initiate_device_flow ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.initiate_device_flow) |
 | [acquire_token_with_device_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_device_code) a [cancel_request_to_get_token_with_device_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.cancel_request_to_get_token_with_device_code) | [acquire_token_by_device_flow ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow) |
 | [acquire_token_with_username_password ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_username_password) | [acquire_token_by_username_password ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_username_password) |
 | [acquire_token_with_client_credentials ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_credentials) a [acquire_token_with_client_certificate ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_certificate) | [acquire_token_for_client ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) |
-| – | [acquire_token_on_behalf_of ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
+| Není k dispozici | [acquire_token_on_behalf_of ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
 | [TokenCache ()](https://adal-python.readthedocs.io/en/latest/#adal.TokenCache) | [SerializableTokenCache()](https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache) |
-| – | Mezipaměť s persistencí, která je k dispozici z [rozšíření MSAL](https://github.com/marstr/original-microsoft-authentication-extensions-for-python) |
+| Není k dispozici | Mezipaměť s persistencí, která je k dispozici z [rozšíření MSAL](https://github.com/marstr/original-microsoft-authentication-extensions-for-python) |
 
 ## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>Migrace existujících obnovovacích tokenů pro MSAL Python
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258145"
 ---
 # <a name="publisher-verification"></a>Ověření vydavatele
 
@@ -33,9 +33,10 @@ Ověřování vydavatele nabízí následující výhody:
 
 - **Vylepšené branding**– "ověřené" označení se zobrazí na stránce s [výzvou k vyjádření souhlasu](application-consent-experience.md)služby Azure AD, na stránce podnikové aplikace a na dalších plochách uživatelského prostředí, které používají koncoví uživatelé a správci. 
 
-- Zajištění **plynulejšího podnikání**– správci můžou konfigurovat [zásady pro vyjádření souhlasu s uživatelem](../manage-apps/configure-user-consent.md), přičemž stav ověření vydavatele je jedno z primárních kritérií zásad. 
+- Zajištění **plynulejšího podnikání**– správci můžou konfigurovat [zásady pro vyjádření souhlasu s uživatelem](../manage-apps/configure-user-consent.md), přičemž stav ověření vydavatele je jedno z primárních kritérií zásad.
 
-- **Vylepšené hodnocení rizik**– pro žádosti o udělení souhlasu společnosti Microsoft budou zjištěny požadavky na udělení souhlasu od vydavatele jako signál. 
+> [!NOTE]
+> Od listopadu 2020 již koncoví uživatelé nebudou moci udělit souhlas s nově registrovanými aplikacemi pro více tenantů bez ověřených vydavatelů. Tato akce bude platit pro aplikace, které jsou zaregistrované po 8. listopadu 2020, pomocí OAuth 2.0 vyžádá oprávnění mimo základní přihlášení a čtení profilu uživatele a vyžádá si souhlas od uživatelů v různých tenantůch, než je ta, ve které je aplikace zaregistrovaná. Na obrazovce pro vyjádření souhlasu se zobrazí upozornění informující o uživatelích, že tyto aplikace jsou riskantní a že jsou od neověřených vydavatelů.    
 
 ## <a name="requirements"></a>Požadavky
 Je k dispozici několik požadavků na ověření vydavatele, některé z nich již byly dokončeny mnoha partnery společnosti Microsoft. Jsou to tyto: 
@@ -69,7 +70,7 @@ Níže najdete nejčastější dotazy týkající se ověřovacího programu vyd
 
   Vývojáři, kteří integrují taky Microsoft 365, můžou z těchto programů získat další výhody. Další informace najdete v tématu [Microsoft 365 ověřování vydavatele](/microsoft-365-app-certification/docs/attestation) a [Microsoft 365 certifikace aplikací](/microsoft-365-app-certification/docs/certification). 
 
-- **Je to totéž jako Galerie aplikací Azure AD?** Ověřování bez vydavatele je doplňkový, ale oddělený program v [galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md). Vývojáři, kteří vyhovují výše uvedeným kritériím, by měli dokončit proces ověření vydavatele nezávisle na účasti v tomto programu. 
+- **Je to totéž jako Galerie aplikací Azure AD?** Ověřování bez vydavatele je doplňkový, ale oddělený program v [galerii aplikací Azure Active Directory](v2-howto-app-gallery-listing.md). Vývojáři, kteří vyhovují výše uvedeným kritériím, by měli dokončit proces ověření vydavatele nezávisle na účasti v tomto programu. 
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se, jak [Označit aplikaci jako ověřenou vydavatelem](mark-app-as-publisher-verified.md).

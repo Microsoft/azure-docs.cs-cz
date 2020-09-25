@@ -10,21 +10,21 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495297"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289051"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>Použití smyček T-SQL v synapse SQL
 Tento článek vám poskytne základní tipy pro používání smyček T-SQL, nahrazení kurzorů a vývoj souvisejících řešení s fondem SQL ve synapse SQL.
 
 ## <a name="purpose-of-while-loops"></a>Účel smyčky WHILe
 
-Synapse SQL podporuje smyčku [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK. 
+Synapse SQL podporuje smyčku [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK. 
 
-Smyčky ve fondu SQL jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Takže smyčky [WHILe] jsou skvělou alternativou pro nahrazování kurzorů.
+Smyčky ve fondu SQL jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Takže zatímco smyčky jsou skvělou alternativou pro nahrazování kurzorů.
 
 ## <a name="replace-cursors-in-sql-pool"></a>Nahrazení kurzorů ve fondu SQL
 

@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 16a5793f9848a6e16856728877727dbefc3e0805
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261409"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu
 
@@ -66,7 +66,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
 
 Pokud přejdete do okna assety, uvidíte, že se do seznamu přidal nový Asset:
 
-![Nahrávání](./media/manage-assets-quickstart/upload.png)
+![Snímek obrazovky Azure Portal zobrazující okno assetů, které se otevřelo výběrem assets (New) a nového prostředku, který jste přidali výběrem tlačítka nahrát](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>Kódování
 
@@ -78,7 +78,7 @@ Pokud přejdete do okna assety, uvidíte, že se do seznamu přidal nový Asset:
 
 Pokud přejdete do okna assety, uvidíte, že se do seznamu přidal výstupní Asset:
 
-![Kódování](./media/manage-assets-quickstart/encode.png)
+![Snímek obrazovky okna assets v Azure Portal zobrazující standardní kódování assetu ignite.mp4 kódovaných do seznamu prostředků](./media/manage-assets-quickstart/encode.png)
 
 ## <a name="monitor-the-job-progress"></a>Sledování průběhu úlohy
 

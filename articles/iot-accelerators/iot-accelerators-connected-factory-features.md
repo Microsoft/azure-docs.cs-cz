@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820113"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261596"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>K čemu je připojená akcelerátor řešení IoT Factory?
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Propojená továrna je implementací referenční architektury Azure v průmyslu Azure, která je zabalená jako řešení open source. Můžete ho použít jako výchozí bod pro komerční produkt. Předem vytvořenou verzi řešení propojené továrny můžete nasadit do svého předplatného Azure z [akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/#solutions/types/CF).
 

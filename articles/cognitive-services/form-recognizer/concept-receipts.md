@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 00709ca5e842e51edbf5b26c53fe0a18e80bb896
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751963"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262344"
 ---
-# <a name="receipt-concepts"></a>Koncepce pro příjem
+# <a name="receipt-concepts"></a>Principy účtenek
 
 Nástroj pro rozpoznávání formulářů Azure dokáže analyzovat účtenky pomocí jednoho z předdefinovaných modelů. Rozhraní API pro příjem dat extrahuje klíčové informace z prodejních příjmů v angličtině, jako je například název obchodníka, datum transakce, součet transakcí, položky řádků a další. 
 
@@ -74,14 +74,11 @@ Rozhraní API pro příjem také vrátí následující informace:
   > Vstup jazyka 
   >
   > Předem sestavená příjem verze 2.1-Preview. 1 má volitelný parametr Request pro určení národního prostředí pro příjem z dalších anglických trhů. Pro prodejní příjeme v angličtině z Austrálie (EN-AU), Kanada (EN-CA), Velká Británie (EN-GB) a Indie (EN-IN), můžete určit národní prostředí a získat tak lepší výsledky. Pokud není zadané žádné národní prostředí v rámci verze 2.1-Preview. 1, model se nastaví jako výchozí pro model EN-US.
-  
- ### <a name="input-requirements"></a>Požadavky na vstup 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>Operace analyzovat příjem
 
-Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) jako vstup obrázek nebo PDF účtenky a získá hodnoty intrest a text. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
+Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) jako vstup obrázek nebo PDF účtenky a získá hodnoty zájmu a text. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
@@ -456,7 +453,10 @@ Rozhraní API pro příjemce taky zajišťuje [funkci pro zpracování příjmu 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Postupujte podle pokynů k rychlému startu pro [rychlý Start k rozhraní API](./quickstarts/python-receipts.md)pro rychlé zprovoznění.
-- Přečtěte si o [REST API pro rozpoznávání formulářů](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api).
-- Další informace o nástroji [pro rozpoznávání formulářů](overview.md)
+- Dokončete [rychlý Start klientské knihovny pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování příjmu pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
+- Můžete také použít kurz pro [příjem API v Pythonu](./quickstarts/python-receipts.md) k rozpoznávání účtenek pomocí REST API.
 
+## <a name="see-also"></a>Viz také
+
+* [Co je služba Rozpoznávání formulářů?](./overview.md)
+* [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)

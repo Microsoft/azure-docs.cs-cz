@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/28/2020
+ms.date: 09/24/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6a716aef65cc81c5558a214c1ee5f93180810977
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234733"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266679"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Stav zřizování aplikace v karanténě
 
@@ -45,6 +45,7 @@ Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
   - Ujistěte se, že jste v konfiguraci zřizování pro aplikaci zadali platný **e-mail s oznámením** .
   - Ujistěte se, že pro e-mailovou schránku oznámení není žádné filtrování spamu.
   - Ujistěte se, že jste odhlásili odběr e-mailů.
+  - Kontrolovat e-maily z azure-noreply@microsoft.com
 
 ## <a name="why-is-my-application-in-quarantine"></a>Proč je moje aplikace v karanténě?
 

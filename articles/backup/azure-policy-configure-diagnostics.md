@@ -3,12 +3,12 @@ title: Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 description: Nakonfigurujte nastavení diagnostiky Log Analytics pro všechny trezory v daném oboru pomocí Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378045"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293080"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 
@@ -34,7 +34,7 @@ Chcete-li přiřadit zásadu pro trezory v požadovaném oboru, postupujte podle
 
 1. Přihlaste se k Azure Portal a přejděte na řídicí panel **zásad** .
 2. V nabídce vlevo vyberte **definice** a získejte seznam všech předdefinovaných zásad napříč prostředky Azure.
-3. Vyfiltruje seznam pro **kategorii = monitorování**. Vyhledejte zásadu s názvem **[Preview]: nasazení nastavení diagnostiky pro Recovery Services trezor pro Log Analytics pracovní prostor pro kategorie specifické pro prostředky**.
+3. Vyfiltrujte seznam pro **kategorii = zálohování**. Vyhledejte zásadu s názvem **[Preview]: nasazení nastavení diagnostiky pro Recovery Services trezor pro Log Analytics pracovní prostor pro kategorie specifické pro prostředky**.
 
     ![Podokno definice zásad](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

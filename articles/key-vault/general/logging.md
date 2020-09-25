@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0364495d751465f644686824758992d47f0b8bdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485451"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290649"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -38,7 +38,7 @@ Tento kurz vám pomůže začít s protokolováním v Azure Key Vault. Vytvoří
 
 Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md)). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/). Informace o použití [Azure monitor pro Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -133,6 +133,7 @@ Co je protokolováno:
   * Vytváření, úpravy nebo odstraňování těchto klíčů nebo tajných kódů.
   * Podepisování, ověřování, šifrování, dešifrování, zabalení a rozbalení klíčů, získávání tajných klíčů a zobrazování klíčů a tajných kódů (a jejich verzí).
 * Neověřené požadavky, které skončí odpovědí 401 – Neoprávněno. Příklady jsou požadavky, které nemají nosný token, které jsou poškozené nebo jejichž platnost vypršela, nebo které mají neplatný token.  
+* Události oznámení Event Grid pro blížící se vypršení platnosti a zásady přístupu do trezoru se změnily (událost nové verze se neprotokoluje). Události jsou protokolovány bez ohledu na to, zda je v trezoru klíčů vytvořeno předplatné událostí. Další informace najdete v tématu [Event Grid schéma událostí pro Key Vault](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
 
 ## <a name="enable-logging-using-azure-cli"></a>Povolení protokolování pomocí rozhraní příkazového řádku Azure
 
@@ -267,7 +268,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 | Název pole | Popis |
 | --- | --- |
-| **interval** |Datum a čas ve standardu UTC. |
+| **time** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
 | **operationName** |Název operace, jak popisuje následující tabulka. |
 | **operationVersion** |Verze REST API požadovaná klientem |
@@ -288,6 +289,8 @@ Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
 * Všechny operace tajného kódu mají `Secret<action>` formát, například `SecretGet` a `SecretListVersions` .
 
 Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST API příkazy:
+
+### <a name="operation-names-table"></a>Tabulka názvů operací
 
 | operationName | REST API – příkaz |
 | --- | --- |
@@ -318,6 +321,13 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | **SecretDelete** |[Odstranění tajného kódu](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[Výpis tajných kódů v trezoru](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Výpis verzí tajného kódu](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultAccessPolicyChangedEventGridNotification** | Publikovaná událost změny zásad přístupu k trezoru |
+| **SecretNearExpiryEventGridNotification** |Publikovaná událost v blízkosti vypršení platnosti tajného kódu |
+| **SecretExpiredEventGridNotification** |Publikovaná událost vypršela v tajnosti |
+| **KeyNearExpiryEventGridNotification** |Vydaná událost v blízkosti vypršení platnosti klíče |
+| **KeyExpiredEventGridNotification** |Vydaná událost vypršení platnosti klíče |
+| **CertificateNearExpiryEventGridNotification** |Publikovaná událost poblíž vypršení platnosti certifikátu |
+| **CertificateExpiredEventGridNotification** |Událost vypršení platnosti certifikátu byla publikována. |
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Použití protokolů Azure Monitor
 

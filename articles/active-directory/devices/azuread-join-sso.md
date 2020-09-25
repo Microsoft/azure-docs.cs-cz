@@ -1,6 +1,6 @@
 ---
 title: Jak funguje jednotné přihlašování k místním prostředkům na zařízeních připojených k Azure AD | Microsoft Docs
-description: Zjistěte, jak nakonfigurovat hybridní zařízení připojená k Azure Active Directory.
+description: Naučte se, jak nastavovat možnosti jednotného přihlašování konfigurací zařízení připojených k hybridním Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256458"
 ---
-# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Jak funguje jednotné přihlašování k místním prostředkům na zařízeních připojených k Azure AD
+# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Jak jednotné přihlašování k místním prostředkům funguje v zařízeních připojených ke službě Azure AD
 
 Pravděpodobně se nejedná o neočekávaně, že zařízení připojené k Azure Active Directory (Azure AD) poskytuje prostředí s jednotným přihlašováním k cloudovým aplikacím vašeho tenanta. Pokud má vaše prostředí místní službu Active Directory (AD), můžete na těchto zařízeních rozmístit možnosti jednotného přihlašování (SSO) na prostředky a aplikace, které se spoléhají i na místní AD. 
 

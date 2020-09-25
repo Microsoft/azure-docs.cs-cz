@@ -6,19 +6,19 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60020667126fe76d33264795ddb2e17e1241a7b2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236280"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293352"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Místní změna edice SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,7 +77,7 @@ Po downgradu edice SQL Server upravte vlastnost edice SQL Server virtuálního p
 
 Pokud jste změnili edici SQL Server pomocí instalačního média a zaregistrovali jste SQL Server virtuální počítač s [poskytovatelem prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md), můžete pomocí Azure Portal změnit vlastnost edice SQL Server virtuálního počítače pro účely fakturace. Postup je následující: 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Přejít na prostředek SQL Server prostředku virtuálního počítače. 
 1. V části **Nastavení**vyberte **Konfigurovat**. Pak v rozevíracím seznamu v části **edice**vyberte požadovanou edici SQL Server. 
 

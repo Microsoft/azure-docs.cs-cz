@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: da0c3284b42be6d9054b7386839004b57d8ca274
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: d7b94da2f922e7dba8c165dcf9d1e906855f6dfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294236"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 

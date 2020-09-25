@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088319"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256887"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Řešení potíží s ověřením vydavatele
 Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele](publisher-verification-overview.md), měli byste začít následujícím způsobem, pokud obdržíte chyby nebo neočekávané chování: 
@@ -75,7 +75,7 @@ Tady jsou příklady některých užitečných požadavků:
 
 ### <a name="set-verified-publisher"></a>Nastavit ověřeného vydavatele 
 
-Žádost
+Požadavek
 
 ```
 POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/setVerifiedPublisher 
@@ -150,31 +150,45 @@ Následuje seznam možných chybových kódů, které můžete obdržet, při ř
 
 ### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
 
-Zadané ID MPN ( <MPNID> ) neexistuje nebo k němu nemáte přístup. Zadejte platné ID MPN a zkuste to znovu. 
+Zadané ID MPN ( <MPNID> ) neexistuje nebo k němu nemáte přístup. Zadejte platné ID MPN a zkuste to znovu.
+    
+Nejčastěji způsobené přihlášeným uživatelem není členem správné role pro účet MPN v partnerském centru – viz [požadavky](publisher-verification-overview.md#requirements) na seznam oprávněných rolí a další informace najdete v tématu [běžné problémy](#common-issues) . Může to být také způsobeno tím, že je aplikace zaregistrovaná v aplikaci, není přidávána do účtu MPN nebo je neplatné ID MPN.
 
 ### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
 
-Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu. 
+Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
+    
+Nejčastěji to způsobuje, že je k dispozici ID programu MPN, které odpovídá účtu umístění partnera (PLA). Podporují se jenom globální účty partnera. Další podrobnosti najdete v tématu [Struktura účtu partnerského centra](/partner-center/account-structure) .
 
 ### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
 
-Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu. 
+Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
+    
+Nejčastěji je zadáno chybné ID MPN.
 
 ### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
 
 ID MPN ( <MPNID> ), které jste zadali, nedokončilo proces dozvíte ČSFD. Tento proces dokončete v partnerském centru a zkuste to znovu. 
+    
+Nejčastěji je to způsobeno tím, že účet MPN nedokončil proces [ověření](/partner-center/verification-responses) .
 
 ### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
 
 Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu. 
+   
+Nejčastěji je zadáno chybné ID MPN.
 
 ### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
 
-Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu. 
+Zadané ID MPN ( <MPNID> ) je neplatné. Zadejte platné ID MPN a zkuste to znovu.
+    
+Nejčastěji je zadáno chybné ID MPN.
 
 ### <a name="applicationnotfound"></a>ApplicationNotFound  
 
-Cílovou aplikaci ( <AppId> ) nelze nalézt. Zadejte platné ID aplikace a zkuste to znovu. 
+Cílovou aplikaci ( <AppId> ) nelze nalézt. Zadejte platné ID aplikace a zkuste to znovu.
+    
+Nejčastěji to způsobuje, že se provádí ověření prostřednictvím Graph API a ID poskytnuté aplikace není správné. Poznámka: musí být zadáno ID aplikace, nikoli AppId/ClientId.
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
 
@@ -188,13 +202,19 @@ Tato funkce není podporována v tenantovi ověřeném e-mailem.
 
 Cílová aplikace ( \<AppId\> ) musí mít sadu domény vydavatele. Nastavte doménu vydavatele a zkuste to znovu.
 
+Vyvolá se v případě, že v aplikaci není nakonfigurovaná [doména vydavatele](howto-configure-publisher-domain.md) .
+
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 
 Doména vydavatele cílové aplikace () se <publisherDomain> neshoduje s doménou použitou k ověřování e-mailů v partnerském centru ( <pcDomain> ). Zajistěte, aby tyto domény odpovídaly, a zkuste to znovu. 
+    
+Vyvolá se v případě, že se [doména vydavatele](howto-configure-publisher-domain.md) aplikace ani jedna z [vlastních domén](../fundamentals/add-custom-domain.md) přidaných do tenanta služby Azure AD neshodují s doménou, která se používá k ověřování e-mailů v partnerském centru.
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
 Nemáte oprávnění k nastavení vlastnosti ověřený vydavatel v aplikaci ( <AppId> ). 
+  
+Nejčastěji způsobené přihlášeným uživatelem není členem správné role pro účet MPN v Azure AD – viz [požadavky](publisher-verification-overview.md#requirements) na seznam oprávněných rolí a další informace najdete v tématu [běžné problémy](#common-issues) .
 
 ### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
 
@@ -202,7 +222,11 @@ ID MPN nebylo v textu žádosti zadáno nebo typ obsahu požadavku nebyl "Applic
 
 ### <a name="msanotsupported"></a>MSANotSupported  
 
-Tato funkce není u zákaznických účtů Microsoftu podporována. Podporují se jenom aplikace zaregistrované ve službě Azure AD pro uživatele Azure AD. 
+Tato funkce není u zákaznických účtů Microsoftu podporována. Podporují se jenom aplikace zaregistrované ve službě Azure AD pro uživatele Azure AD.
+
+### <a name="interactionrequired"></a>InteractionRequired
+
+Nastane, pokud se Multi-Factor Authentication neuskutečnil před tím, než se pokusíte přidat ověřeného vydavatele do aplikace. Další informace najdete v tématu [běžné problémy](#common-issues) .
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -216,4 +240,4 @@ Pokud jste zkontrolovali všechny předchozí informace a stále dochází k chy
 - TenantId, kde je aplikace zaregistrovaná
 - ID MPN
 - Probíhají žádosti REST 
-- Kód chyby a zpráva vracené 
+- Kód chyby a zpráva vracené

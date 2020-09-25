@@ -1,5 +1,5 @@
 ---
-title: Přidat a odebrat jednotky pro správu (Preview) – Azure Active Directory | Microsoft Docs
+title: Přidat a odebrat jednotky pro správu – Azure Active Directory | Microsoft Docs
 description: Pomocí jednotek pro správu Omezte rozsah oprávnění role v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 977a90419c142e576fcf484562875d12c8dad451
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30b673994e20f01dde504adb438aa1b199c96d88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851770"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264687"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Správa jednotek pro správu v Azure Active Directory
 
@@ -45,7 +45,7 @@ Pro přesnější administrativní řízení v Azure Active Directory (Azure AD)
 
 1. V Azure Portal otevřete službu Azure AD a v levém podokně vyberte **jednotky pro správu**.
 
-    ![Snímek obrazovky s odkazem na jednotky pro správu (Preview) v Azure AD](./media/roles-admin-units-manage/nav-to-admin-units.png)
+    ![Snímek obrazovky správce unitslink ve službě Azure AD](./media/roles-admin-units-manage/nav-to-admin-units.png)
 
 1. Vyberte **Přidat** a potom zadejte název jednotky pro správu. Volitelně můžete přidat popis jednotky pro správu.
 

@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat v Blob Storage pomocí Azure Data Factory
-description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
+description: Vytvořte datovou továrnu Azure pomocí prostředí PowerShell ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ebcab92c40705bf108d5839a7e67aee345c1bbc7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292383"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý Start: vytvoření datové továrny Azure pomocí PowerShellu
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlé zprovoznění: Vytvoření datové továrny Azure pomocí PowerShellu
 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -166,7 +166,7 @@ V datové továrně vytvořte propojené služby, abyste svá úložiště dat 
 V tomto postupu vytvoříte dvě datové sady:**InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **Binary**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části.
 Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**input**) a soubor (**emp.txt**) obsahující zdrojová data.
 Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**output**) a soubor, do kterého se data kopírují. 
-1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **InputDataset. JSON** s následujícím obsahem:
+1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **InputDataset.js** s následujícím obsahem:
 
     ```json
     {
@@ -208,7 +208,7 @@ Výstupní datová sada představuje data kopírovaná do cíle. V definici výs
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. Pomocí stejného postupu vytvořte výstupní datovou sadu. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **OutputDataset. JSON** s následujícím obsahem:
+3. Pomocí stejného postupu vytvořte výstupní datovou sadu. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **OutputDataset.js** s následujícím obsahem:
 
     ```json
     {

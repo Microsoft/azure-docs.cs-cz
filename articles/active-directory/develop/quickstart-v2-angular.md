@@ -7,17 +7,17 @@ author: jasonnutter
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23b25340906ddb4501492b048740f590c13654c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115233"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258026"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
 
@@ -35,7 +35,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 > 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
 > 1. Otevřete nové podokno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) v Azure Portal.
 > 1. Zadejte název aplikace a pak vyberte **Registrovat**.
@@ -45,7 +45,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > #### <a name="step-1-register-the-application"></a>Krok 1: registrace aplikace
 >
-> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 > 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 > 1. Postupujte podle pokynů k [registraci jednostránkové aplikace](./scenario-spa-app-registration.md) v Azure Portal.
 > 1. Přidejte novou platformu do podokna **ověřování** registrace vaší aplikace a zaregistrujte identifikátor URI přesměrování: `http://localhost:4200/` .

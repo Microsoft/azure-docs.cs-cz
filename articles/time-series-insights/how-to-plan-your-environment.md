@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289899"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287406"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Plánování prostředí Azure Time Series Insights Gen2
 
@@ -69,10 +69,7 @@ Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Dal
 
 Vlastnost **časového razítka** je také důležitá. Tuto vlastnost můžete určit při přidávání zdrojů událostí. Každý zdroj události má volitelnou vlastnost časového razítka, která se používá ke sledování zdrojů událostí v průběhu času. Hodnoty časového razítka rozlišují velká a malá písmena a musí být formátovány na jednotlivé specifikace jednotlivých zdrojů událostí.
 
-> [!TIP]
-> Ověřte požadavky na formátování a analýzu pro zdroje událostí.
-
-Pokud je ponecháno prázdné, použije se čas zařazení do fronty události jako časové razítko události. Pokud odesíláte historická data nebo dávkové události, přizpůsobení vlastnosti časového razítka je vhodnější než výchozí doba zařazování událostí. Další informace najdete v tématu Postup [Přidání zdrojů událostí do Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Pokud je ponecháno prázdné, čas, kdy byla událost zařazena do fronty, do IoT Hub nebo centrum událostí slouží jako časové razítko události. Obecně by se uživatelé měli rozhodnout přizpůsobovat vlastnost časového razítka a použít čas, kdy senzor nebo značka vygenerovala čtení, nikoli čas centra ve frontě. Pokud chcete získat další informace a přečíst si o posunech časového pásma, přečtěte si [časové razítko zdroje událostí](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp).
 
 ## <a name="understand-the-time-series-model"></a>Pochopení modelu časové řady
 
@@ -91,7 +88,7 @@ Dobré pravidlo pro palec:
 * Uložte metadata v modelu časové řady.
 * Zajistěte, aby režim časové řady, pole instancí a události zahrnoval pouze potřebné informace, například ID časové řady nebo vlastnost časového razítka.
 
-Další informace najdete v tématu čtení [událostí obrazce](./time-series-insights-send-events.md#supported-json-shapes).
+Pokud potřebujete další informace a chcete pochopit, jak budou události shrnuty a uloženy, přečtěte si [pravidla pro sloučení a uvozovací znaky JSON](./concepts-json-flattening-escaping-rules.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

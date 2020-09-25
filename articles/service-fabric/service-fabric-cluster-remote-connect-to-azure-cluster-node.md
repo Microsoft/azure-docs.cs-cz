@@ -3,12 +3,12 @@ title: Vzdálené připojení k uzlu clusteru Azure Service Fabric
 description: Naučte se vzdáleně připojit k instanci sady škálování (Service Fabric uzel clusteru).
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268090"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení k instanci sady škálování virtuálního počítače nebo uzlu clusteru
 V clusteru Service Fabric spuštěném v Azure každý typ uzlu clusteru, který definujete, [Nastaví samostatné škálování virtuálního počítače](service-fabric-cluster-nodetypes.md).  Můžete se vzdáleně připojit ke konkrétním instancím sady škálování (uzly clusteru).  Na rozdíl od virtuálních počítačů s jednou instancí nemají instance sady škálování vlastní virtuální IP adresy. To může být náročné, pokud hledáte IP adresu a port, které můžete použít ke vzdálenému připojení k určité instanci.
@@ -21,11 +21,11 @@ Pokud chcete najít IP adresu a port, které můžete použít ke vzdálenému p
     
     Na stránce nástroje pro vyrovnávání zatížení v Azure Portal vyberte **Nastavení**  >  **pravidla příchozího překladu adres (NAT)**: 
 
-    ![Příchozí pravidla NAT pro vyrovnávání zatížení](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Snímek obrazovky se stránkou nástroje pro vyrovnávání zatížení v Azure Portal. V nabídce vlevo vyberte v části nastavení možnost pravidla příchozího překladu adres (NAT).](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
     Na následujícím snímku obrazovky vidíte příchozí pravidla překladu adres (NAT) pro typ uzlu s názvem front-end: 
 
-    ![Příchozí pravidla NAT pro vyrovnávání zatížení](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![Snímek obrazovky zobrazující pravidla příchozího překladu adres (NAT) pro nástroj pro vyrovnávání zatížení. Pro každé pravidlo je uveden název, verze protokolu IP, cíl, cíl a služba.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
     Pro každý uzel se IP adresa zobrazí ve sloupci **cíl** , **cílový** sloupec vytvoří instanci sady škálování a sloupec **služby** poskytne číslo portu. Pro vzdálené připojení se porty přiřazují každému uzlu ve vzestupném pořadí počínaje portem 3389.
 

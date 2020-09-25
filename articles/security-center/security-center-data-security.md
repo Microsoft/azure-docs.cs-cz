@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: d08984165f59f15e9feb739a719d80e7dc3902a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 97d3b5030ed0ddb29fc439f4a0f6bcc7ff98b6ce
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905455"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268022"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
 Aby zákazníci mohli zabránit, detekovat a reagovat na hrozby, Azure Security Center shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí a dalších. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
@@ -76,7 +76,7 @@ Pokud nepoužíváte Azure Defender, můžete taky zakázat shromažďování da
 
 Zákazníci můžou využívat data související se službou Security Center z různých datových proudů, jak je znázorněno níže:
 
-* **Aktivita Azure**: všechny výstrahy zabezpečení, schválené Security Center požadavky [za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
+* **Aktivita Azure**: všechny výstrahy zabezpečení, schválené Security Center požadavky [za běhu](security-center-just-in-time.md) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](security-center-adaptive-application.md).
 * **Protokoly Azure monitor**: všechny výstrahy zabezpečení.
 
 

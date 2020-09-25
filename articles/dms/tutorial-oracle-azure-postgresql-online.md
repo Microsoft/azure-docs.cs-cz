@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 37bf610d1ecc6a05e8dd142ff3d72dd9ed72e51f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5047e4e63f71c482cd1bcc98152ae35e10e94b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087760"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291635"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
 
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje, jak provést online migraci z Oracle do Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

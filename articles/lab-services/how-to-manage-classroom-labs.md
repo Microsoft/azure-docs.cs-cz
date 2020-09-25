@@ -3,12 +3,12 @@ title: Správa učebných cvičení v Azure Lab Services | Microsoft Docs
 description: Naučte se vytvářet a konfigurovat testovací prostředí pro učebnu, Zobrazit všechny vývojové laboratoře, sdílet odkaz na registraci s uživatelem testovacího prostředí nebo odstranit testovací prostředí.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445385"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251673"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa učebných cvičení v Azure Lab Services 
 Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny vývojové laboratoře v účtu testovacího prostředí. 
@@ -32,7 +32,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     1. Zkontrolujte **celkovou cenu za hodinu** zobrazenou na stránce. 
     1. Vyberte **Uložit**.
 
-        ![Nové okno testovacího prostředí](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![Snímek obrazovky, který zobrazuje okno nové testovací prostředí.](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > Pokud byl účet testovacího prostředí nastavený tak, aby [umožňoval výběr umístění testovacího](allow-lab-creator-pick-lab-location.md) prostředí, zobrazí se vám možnost vybrat umístění pro testovací prostředí. 
@@ -89,7 +89,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
 ### <a name="vm-sizes"></a>Velikost virtuálních počítačů  
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
 | Malá | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
 | Střední | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 

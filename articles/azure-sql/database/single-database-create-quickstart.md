@@ -4,19 +4,19 @@ description: Vytvořte v Azure SQL Database izolovanou databázi pomocí Azure P
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: sqldbrb=1
+ms.custom: contperfq1
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 8747e2f898b9810f50a08830728f1fab9a7f0548
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 6a0d81cc9954f934395bc275785bda34c55c35bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263398"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rychlý Start: vytvoření samostatné databáze Azure SQL Database
 
@@ -53,7 +53,7 @@ Pokud chcete v Azure Portal vytvořit izolovanou databázi, spustí se v tomto r
    Vyberte **OK**.
 
 1. Nechte **použít elastický fond SQL** nastavený na **ne**.
-1. V části **COMPUTE + úložiště**vyberte **Konfigurovat databázi**.
+1. V části **Výpočty + úložiště** vyberte **Konfigurovat databázi**.
 1. V tomto rychlém startu se používá databáze bez serveru, vyberte možnost bez **serveru**a pak vyberte **použít**. 
 
       ![Konfigurace databáze bez serveru](./media/single-database-create-quickstart/configure-database.png)

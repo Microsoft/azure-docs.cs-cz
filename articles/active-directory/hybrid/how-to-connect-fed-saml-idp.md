@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295033"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele identity (IdP) SAML 2.0 pro Jednotné přihlašování
 
@@ -306,7 +306,7 @@ Společnost Microsoft poskytuje nástroj, který můžete použít k otestován�
 2.  Kliknutím na Instalovat nyní začněte stahovat a instalovat nástroj.
 3.  Vyberte nemůžu nastavit federaci s Office 365, Azure nebo jinými službami, které používají Azure Active Directory.
 4.  Po stažení a spuštění nástroje se zobrazí okno Diagnostika připojení. Nástroj vás provede testováním federačního připojení.
-5.  Analyzátor připojení otevře IDP SAML 2,0, abyste se mohli přihlásit, zadejte přihlašovací údaje pro objekt zabezpečení uživatele, který testujete: ![ SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Analyzátor připojení otevře IDP SAML 2,0, abyste se mohli přihlásit, zadejte přihlašovací údaje pro objekt zabezpečení uživatele, který testujete: ![ snímek obrazovky, který zobrazuje přihlašovací okno pro váš IDP SAML 2,0.](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  V okně přihlášení k testu federace byste měli zadat název účtu a heslo pro tenanta Azure AD, které je nakonfigurované tak, aby byly federované s vaším poskytovatelem identity SAML 2,0. Nástroj se pokusí přihlásit pomocí těchto přihlašovacích údajů a podrobné výsledky testů provedených během pokusu o přihlášení budou poskytnuty jako výstup.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. V tomto okně se zobrazuje neúspěšný výsledek testování. Kliknutím na zkontrolovat podrobné výsledky zobrazíte informace o výsledcích pro každý provedený test. Výsledky můžete také uložit na disk, aby je bylo možné sdílet.

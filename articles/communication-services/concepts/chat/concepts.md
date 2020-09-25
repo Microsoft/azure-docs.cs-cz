@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: af07894fcbfae386849d32492be9d2718a3adcc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292468"
 ---
 # <a name="chat-concepts"></a>Koncepce chatu
 
@@ -28,7 +28,7 @@ Další informace o konkrétních jazycích a funkcích klientské knihovny najd
 
 Chatové konverzace se vyskytují v rámci konverzačních vláken. Vlákno konverzace může obsahovat mnoho zpráv a mnoho uživatelů. Každá zpráva patří do jednoho vlákna a uživatel může být součástí jednoho nebo více vláken. 
 
-Každý uživatel ve vlákně chat se nazývá člen. Ve vlákně chatu můžete mít až 250 členů. Pouze členové vlákna mohou odesílat a přijímat zprávy nebo přidávat nebo odebírat členy ve vlákně chatu. Maximální povolená velikost zprávy je přibližně 28KB. Komunikační služby ukládají historii chatu, dokud neprovedete operaci odstranění ve vlákně chatu. Pomocí operace můžete načíst všechny zprávy ve vlákně chatu `List/Get Messages` .
+Každý uživatel ve vlákně chat se nazývá člen. Ve vlákně chatu můžete mít až 250 členů. Pouze členové vlákna mohou odesílat a přijímat zprávy nebo přidávat nebo odebírat členy ve vlákně chatu. Maximální povolená velikost zprávy je přibližně 28KB. Pomocí operace můžete načíst všechny zprávy ve vlákně chatu `List/Get Messages` . Komunikační služby ukládají historii chatů, dokud neprovedete operaci odstranění ve vlákně nebo zprávě chatu nebo dokud žádné členy nezůstanou ve vlákně chatu, kdy je v tom případě nezůstane osamocená a zpracovaná pro odstranění.   
 
 Pro vlákna chatu s více než 20 členy je přečtení potvrzení a zadávání funkcí indikátoru zakázané. 
 

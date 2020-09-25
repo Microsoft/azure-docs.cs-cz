@@ -1,5 +1,5 @@
 ---
-title: Přiřazení a výpis rolí s rozsahem jednotky pro správu (Preview) – Azure Active Directory | Microsoft Docs
+title: Přiřazení a výpis rolí s rozsahem jednotky pro správu – Azure Active Directory | Microsoft Docs
 description: Omezení rozsahu přiřazování rolí v Azure Active Directory pomocí jednotek pro správu
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/10/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 00b5f39363e4c8b2fd3a0d74a8c013d315bff1fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264918"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Přiřazení vymezených rolí k jednotce pro správu
 
@@ -105,4 +105,4 @@ Request body
 ## <a name="next-steps"></a>Další kroky
 
 - [Použití skupin cloudů ke správě přiřazení rolí](roles-groups-concept.md)
-- [Řešení potíží s rolemi přiřazenými ke skupinám cloudu](roles-groups-faq-troubleshooting.md)
+- [Řešení potíží s rolemi přiřazenými ke cloudovým skupinám](roles-groups-faq-troubleshooting.md)

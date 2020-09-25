@@ -1,47 +1,40 @@
 ---
 title: Akce Webhooku pro výstrahy protokolu v upozorněních Azure
-description: Tento článek popisuje, jak vytvořit pravidlo upozornění protokolu pomocí Log Analytics pracovní prostor nebo Application Insights, jak výstraha nahraje data jako Webhook HTTP, a podrobnosti o různých přizpůsobeních, která jsou možná.
+description: Popisuje, jak nakonfigurovat nabízená oznámení protokolu pomocí akce Webhooku a dostupných úprav.
 author: yanivlavi
 ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 3311819f021533a28a41daf2c2f08193218fae96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294304"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce webhooku pro pravidla výstrah protokolu
-Když [se v Azure vytvoří výstraha protokolu](alerts-log.md), máte možnost [ji nakonfigurovat pomocí skupin akcí](action-groups.md) , aby se provedla jedna nebo více akcí. Tento článek popisuje různé akce Webhooku, které jsou k dispozici, a ukazuje, jak nakonfigurovat vlastní Webhook založený na formátu JSON.
+
+[Výstraha protokolu](alerts-log.md) podporuje [konfiguraci skupin akcí Webhooku](action-groups.md#webhook). V tomto článku popíšeme, které vlastnosti jsou k dispozici a jak nakonfigurovat vlastní Webhook JSON.
 
 > [!NOTE]
-> Můžete také použít [běžné schéma výstrah](https://aka.ms/commonAlertSchemaDocs) pro vaše integrace Webhooku. Běžné schéma výstrah poskytuje výhodu pro jednu rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure Monitor. Upozorňujeme, že běžné schéma výstrah nezpůsobuje vlastní možnost JSON pro výstrahy protokolu. Pokud je tato možnost zvolena bez ohledu na vlastní nastavení, které jste provedli na úrovni pravidla výstrahy, se odloží k běžné datové části schématu výstrah. [Přečtěte si o běžných definicích schémat výstrah.](https://aka.ms/commonAlertSchemaDefinitions)
-
-## <a name="webhook-actions"></a>Akce webhooků
-
-Pomocí akcí Webhooku můžete vyvolat externí proces prostřednictvím jedné žádosti HTTP POST. Služba, která má být volána, by měla podporovat Webhooky a určit, jak se má používat jakákoli datová část, kterou přijímá.
-
-Akce Webhooku vyžadují vlastnosti v následující tabulce.
-
-| Vlastnost | Popis |
-|:--- |:--- |
-| **Adresa URL Webhooku** |Adresa URL Webhooku |
-| **Vlastní datová část JSON** |Vlastní datová část, která se má poslat pomocí Webhooku, když se vybere tato možnost během vytváření výstrahy. Další informace najdete v tématu [Správa upozornění protokolu](alerts-log.md).|
+> Vlastní Webhook založený na JSON se v současnosti ve verzi rozhraní API nepodporuje. `2020-05-01-preview`
 
 > [!NOTE]
-> Tlačítko pro **zobrazení Webhooku** spolu s možností **zahrnout vlastní datovou část JSON pro Webhook** pro výstrahu protokolu zobrazuje ukázkovou datovou část Webhooku pro zadané přizpůsobení. Neobsahuje skutečná data, ale je reprezentativní pro schéma JSON, které se používá pro výstrahy protokolu. 
+> Pro integraci Webhooku se doporučuje použít [běžné schéma výstrah](alerts-common-schema.md) . Běžné schéma výstrah poskytuje výhodu pro jednu rozšiřitelnou a jednotnou datovou část pro všechny služby výstrah v Azure Monitor. Pro pravidla upozornění protokolů, která mají definovanou vlastní datovou část JSON, a povolením společného schématu se obnoví schéma datové části [na tu popsanou.](alerts-common-schema-definitions.md#log-alerts) Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu, vyšší výstraha nebude zahrnovat výsledky hledání. Pokud nejsou zahrnuty výsledky hledání, měli byste použít `LinkToFilteredSearchResultsAPI` nebo `LinkToSearchResultsAPI` pro přístup k výsledkům dotazu pomocí rozhraní Log Analytics API.
 
-Webhooky zahrnují adresu URL a datovou část formátovanou ve formátu JSON, kterou data odesílaná do externí služby. Ve výchozím nastavení datová část zahrnuje hodnoty v následující tabulce. Tuto datovou část si můžete nahradit vlastní vlastní. V takovém případě použijte proměnné v tabulce pro každý z parametrů k zahrnutí jejich hodnot do vlastní datové části.
+## <a name="webhook-payload-properties"></a>Vlastnosti datové části Webhooku
 
+Akce Webhooku umožňují vyvolat jednu žádost HTTP POST. Služba, která je volána, by měla podporovat Webhooky a zjistit, jak lze použít datovou část, kterou přijímá.
+
+Výchozí vlastnosti akce Webhooku a jejich vlastní názvy parametrů JSON:
 
 | Parametr | Proměnná | Popis |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |Název pravidla výstrahy. |
 | *Závažnost* |#severity |Závažnost nastavená pro výstrahu protokolu, která se vyvolala. |
-| *AlertThresholdOperator* |#thresholdoperator |Operátor prahové hodnoty pro pravidlo výstrahy, které používá hodnotu větší než nebo menší než. |
+| *AlertThresholdOperator* |#thresholdoperator |Prahová hodnota pro pravidlo výstrahy. |
 | *AlertThresholdValue* |#thresholdvalue |Prahová hodnota pro pravidlo výstrahy. |
 | *LinkToSearchResults* |#linktosearchresults |Připojte se k portálu Analytics, který vrací záznamy z dotazu, který výstrahu vytvořil. |
 | *LinkToSearchResultsAPI* |#linktosearchresultsapi |Odkaz na analytické rozhraní API, které vrátí záznamy z dotazu, který výstrahu vytvořil. |
@@ -54,15 +47,15 @@ Webhooky zahrnují adresu URL a datovou část formátovanou ve formátu JSON, k
 | *SearchQuery* |#searchquery |Dotaz na hledání protokolu používaný pravidlem výstrahy |
 | *SearchResults* |"IncludeSearchResults": true|Záznamy vrácené dotazem jako tabulka JSON omezené na prvních 1 000 záznamů. "IncludeSearchResults": hodnota true je přidána do vlastní definice Webhooku JSON jako vlastnost nejvyšší úrovně. |
 | *Dimenze* |"IncludeDimensions": true|Kombinace hodnot dimenzí, které aktivovaly výstrahu jako oddíl JSON. "IncludeDimensions": hodnota true je přidána do vlastní definice Webhooku JSON jako vlastnost nejvyšší úrovně. |
-| *Typ výstrahy*| #alerttype | Typ pravidla upozornění protokolu nakonfigurovaného jako [měření metriky](alerts-unified-log.md#metric-measurement-alert-rules) nebo [počet výsledků](alerts-unified-log.md#number-of-results-alert-rules).|
+| *Typ výstrahy*| #alerttype | Typ pravidla upozornění protokolu nakonfigurovaného jako [měření metriky nebo počet výsledků](alerts-unified-log.md#measure).|
 | *ID pracovního prostoru* |#workspaceid |ID vašeho pracovního prostoru Log Analytics |
 | *ID aplikace* |#applicationid |ID vaší aplikace Application Insights |
-| *ID předplatného* |#subscriptionid |ID vašeho předplatného Azure 
+| *ID předplatného* |#subscriptionid |ID vašeho předplatného Azure |
 
-> [!NOTE]
-> Zadané odkazy předává parametry, jako je *SearchQuery*, *čas_spuštění intervalu hledání*a *koncový čas intervalu hledání* v adrese URL pro Azure Portal nebo rozhraní API.
+## <a name="custom-webhook-payload-definition"></a>Vlastní definice datové části Webhooku
 
-Můžete například zadat následující vlastní datovou část, která obsahuje jeden parametr s názvem *text*. Služba, kterou toto volání Webhooku očekává tento parametr.
+K získání vlastní datové části JSON pomocí výše uvedených parametrů můžete použít **vlastní datovou část JSON pro Webhook** . Můžete také vygenerovat další vlastnosti.
+Můžete například zadat následující vlastní datovou část, která obsahuje jeden parametr s názvem *text*. Služba, kterou tato volání Webhooku očekává tento parametr:
 
 ```json
 
@@ -77,18 +70,21 @@ Tento příklad datové části se překládá na něco podobného jako při ode
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
-Vzhledem k tomu, že všechny proměnné ve vlastním Webhooku je nutné zadat v rámci skříně JSON, jako je například "#searchinterval", výsledný Webhook má také data proměnných uvnitř skříní, například "00:05:00".
+Ve skříni JSON musí být zadané proměnné ve vlastním Webhooku. Například odkazování "#searchresultcount" ve výše uvedeném příkladu Webhooku bude mít výstup na základě výsledků výstrah.
 
-Chcete-li zahrnout výsledky hledání do vlastní datové části, zajistěte, aby byla v datové části JSON nastavena vlastnost **IncludeSearchResults** jako vlastnost nejvyšší úrovně. 
+Chcete-li zahrnout výsledky hledání, přidejte **IncludeSearchResults** jako vlastnost nejvyšší úrovně ve vlastním formátu JSON. Výsledky hledání jsou zahrnuté jako struktura JSON, takže výsledky nejde odkazovat ve vlastních definovaných polích. 
+
+> [!NOTE]
+> Tlačítko pro **zobrazení Webhooku** vedle možnosti **zahrnout vlastní datovou část JSON pro Webhook** zobrazí náhled toho, co se vám poskytlo. Neobsahuje skutečná data, ale je reprezentativní pro schéma JSON, které se bude používat. 
 
 ## <a name="sample-payloads"></a>Ukázková datová část
 Tato část ukazuje ukázkovou datovou část pro Webhooky pro výstrahy protokolu. Ukázková datová část obsahuje příklady v případě, kdy je datová část standardní a kdy je vlastní.
 
-### <a name="standard-webhook-for-log-alerts"></a>Standardní Webhook pro výstrahy protokolu 
-Oba tyto příklady mají zástupnou datovou část, která má pouze dva sloupce a dva řádky.
+### <a name="log-alert-for-log-analytics"></a>Výstraha protokolu pro Log Analytics
+Následující ukázková datová část je určena pro akci standardního Webhooku, která se používá pro výstrahy na základě Log Analytics:
 
-#### <a name="log-alert-for-log-analytics"></a>Výstraha protokolu pro Log Analytics
-Následující ukázková datová část je určena pro akci standardního Webhooku *bez vlastní volby JSON* , která se používá pro výstrahy na základě Log Analytics:
+> [!NOTE]
+> Hodnota pole "závažnost" se změní, pokud jste [přešli na aktuální rozhraní scheduledQueryRules API](alerts-log-api-switch.md) z [rozhraní API pro upozornění na starší verzi Log Analytics](api-alerts.md).
 
 ```json
 {
@@ -152,14 +148,10 @@ Následující ukázková datová část je určena pro akci standardního Webho
     "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
     "AlertType": "Metric measurement"
 }
- ```
+```
 
-> [!NOTE]
-> Hodnota pole závažnost se může změnit, pokud jste [přepnuli předvolby rozhraní API](alerts-log-api-switch.md) pro výstrahy protokolu na Log Analytics.
-
-
-#### <a name="log-alert-for-application-insights"></a>Výstraha protokolu pro Application Insights
-Následující ukázková datová část je určena pro standardní Webhook *bez vlastní volby JSON* , pokud se používá pro výstrahy protokolu na základě Application Insights:
+### <a name="log-alert-for-application-insights"></a>Výstraha protokolu pro Application Insights
+Následující ukázková datová část je určena pro standardní Webhook, pokud se používá pro výstrahy protokolu na základě Application Insightsch prostředků:
     
 ```json
 {
@@ -225,8 +217,73 @@ Následující ukázková datová část je určena pro standardní Webhook *bez
 }
 ```
 
-#### <a name="log-alert-with-custom-json-payload"></a>Výstraha protokolu s vlastní datovou částí JSON
-Chcete-li například vytvořit vlastní datovou část, která bude obsahovat pouze název výstrahy a výsledky hledání, můžete použít následující: 
+### <a name="log-alert-for-other-resources-logs-from-api-version-2020-05-01-preview"></a>Výstraha protokolu pro další protokoly prostředků (z verze rozhraní API `2020-05-01-preview` )
+
+> [!NOTE]
+> Pro verzi rozhraní API `2020-05-01-preview` a výstrahy protokolu orientované na prostředky se momentálně neúčtují žádné další poplatky.  Ceny pro funkce, které jsou ve verzi Preview, budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete dál používat novou verzi rozhraní API a výstrahy protokolu orientované na prostředky po období oznámení, bude se vám účtovat příslušná sazba.
+
+Následující ukázková datová část je určena pro standardní Webhook, pokud se používá pro výstrahy protokolu na základě jiných protokolů prostředků (kromě pracovních prostorů a Application Insights):
+
+```json
+{
+    "schemaId": "azureMonitorCommonAlertSchema",
+    "data": {
+        "essentials": {
+            "alertId": "/subscriptions/12345a-1234b-123c-123d-12345678e/providers/Microsoft.AlertsManagement/alerts/12345a-1234b-123c-123d-12345678e",
+            "alertRule": "AcmeRule",
+            "severity": "Sev4",
+            "signalType": "Log",
+            "monitorCondition": "Fired",
+            "monitoringService": "Log Alerts V2",
+            "alertTargetIDs": [
+                "/subscriptions/12345a-1234b-123c-123d-12345678e/resourcegroups/ai-engineering/providers/microsoft.compute/virtualmachines/testvm"
+            ],
+            "originAlertId": "123c123d-1a23-1bf3-ba1d-dd1234ff5a67",
+            "firedDateTime": "2020-07-09T14:04:49.99645Z",
+            "description": "log alert rule V2",
+            "essentialsVersion": "1.0",
+            "alertContextVersion": "1.0"
+        },
+        "alertContext": {
+            "properties": null,
+            "conditionType": "LogQueryCriteria",
+            "condition": {
+                "windowSize": "PT10M",
+                "allOf": [
+                    {
+                        "searchQuery": "Heartbeat",
+                        "metricMeasure": null,
+                        "targetResourceTypes": "['Microsoft.Compute/virtualMachines']",
+                        "operator": "LowerThan",
+                        "threshold": "1",
+                        "timeAggregation": "Count",
+                        "dimensions": [
+                            {
+                                "name": "ResourceId",
+                                "value": "/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm"
+                            }
+                        ],
+                        "metricValue": 0.0,
+                        "failingPeriods": {
+                            "numberOfEvaluationPeriods": 1,
+                            "minFailingPeriodsToAlert": 1
+                        },
+                        "linkToSearchResultsUI": "https://portal.azure.com#@12f345bf-12f3-12af-12ab-1d2cd345db67/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%2F12345a-1234b-123c-123d-12345678e%2FresourceGroups%2FTEST%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Ftestvm%22%7D%5D%7D/q/eJzzSE0sKklKTSypUSjPSC1KVQjJzE11T81LLUosSU1RSEotKU9NzdNIAfJKgDIaRgZGBroG5roGliGGxlYmJlbGJnoGEKCpp4dDmSmKMk0A/prettify/1/timespan/2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToFilteredSearchResultsUI": "https://portal.azure.com#@12f345bf-12f3-12af-12ab-1d2cd345db67/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%2F12345a-1234b-123c-123d-12345678e%2FresourceGroups%2FTEST%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Ftestvm%22%7D%5D%7D/q/eJzzSE0sKklKTSypUSjPSC1KVQjJzE11T81LLUosSU1RSEotKU9NzdNIAfJKgDIaRgZGBroG5roGliGGxlYmJlbGJnoGEKCpp4dDmSmKMk0A/prettify/1/timespan/2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToSearchResultsAPI": "https://api.loganalytics.io/v1/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm/query?query=Heartbeat%7C%20where%20TimeGenerated%20between%28datetime%282020-07-09T13%3A44%3A34.0000000%29..datetime%282020-07-09T13%3A54%3A34.0000000%29%29&timespan=2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm/query?query=Heartbeat%7C%20where%20TimeGenerated%20between%28datetime%282020-07-09T13%3A44%3A34.0000000%29..datetime%282020-07-09T13%3A54%3A34.0000000%29%29&timespan=2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z"
+                    }
+                ],
+                "windowStartTime": "2020-07-07T13:54:34Z",
+                "windowEndTime": "2020-07-09T13:54:34Z"
+            }
+        }
+    }
+}
+```
+
+### <a name="log-alert-with-a-custom-json-payload"></a>Výstraha protokolu s vlastní datovou částí JSON
+Chcete-li například vytvořit vlastní datovou část, která bude obsahovat pouze název výstrahy a výsledky hledání, použijte tuto konfiguraci: 
 
 ```json
     {

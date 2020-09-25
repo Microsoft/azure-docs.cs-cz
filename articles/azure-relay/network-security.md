@@ -1,14 +1,14 @@
 ---
 title: Zabezpečení sítě pro Azure Relay
-description: Tento článek popisuje, jak nakonfigurovat přístup z privátních koncových bodů.
+description: Tento článek popisuje, jak pomocí Azure Relay používat pravidla brány firewall protokolu IP a soukromé koncové body.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: bf49eff29385b5b72639420416df87b9187845e8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3aa3ffd119f65ec5181b0c382472cc4ef3c8bac4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263721"
 ---
 # <a name="network-security-for-azure-relay"></a>Zabezpečení sítě pro Azure Relay 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Relay: 

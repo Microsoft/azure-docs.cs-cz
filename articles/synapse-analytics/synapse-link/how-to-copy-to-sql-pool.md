@@ -9,18 +9,18 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88962d63519cfeb78be694c4f702b05ed4e7d3df
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287846"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Kopírování dat z Azure Cosmos DB do fondu SQL pomocí Apache Spark
 
 Odkaz na Azure synapse pro Azure Cosmos DB umožňuje uživatelům spouštět analýzy v reálném čase nad provozními daty v Azure Cosmos DB. Existují však situace, kdy je potřeba agregovat a rozšířit některá data pro poskytování uživatelů datového skladu. Data odkazů synapse se dají dělat v poznámkovém bloku a exportovat je jenom v několika buňkách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * [Zřídit pracovní prostor synapse](../quickstart-create-workspace.md) s:
     * [Fond Spark](../quickstart-create-apache-spark-pool-studio.md)
     * [Fond SQL](../quickstart-create-sql-pool-studio.md)
@@ -29,12 +29,12 @@ Odkaz na Azure synapse pro Azure Cosmos DB umožňuje uživatelům spouštět an
 * [Správné nastavení pro import dat do fondu SQL ze Sparku](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>Postup
-V tomto kurzu se připojíte k analytickému úložišti, takže nebude mít žádný dopad na transakční úložiště (nespotřebovává žádné jednotky žádostí). Provedeme tyto kroky:
+V tomto kurzu se připojíte ke službě analytické úložiště, takže nebude mít žádný dopad na transakční úložiště (nespotřebovává žádné jednotky žádostí). Projděte si následující kroky:
 1. Načtení kontejneru Cosmos DB HTAP do datového rámce Spark
 2. Agregace výsledků v novém dataframe
 3. Ingestování dat do fondu SQL
 
-[![Kroky Sparku do SQL](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
+[![Kroky pro Spark na SQL 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>Data
 V tomto příkladu používáme kontejner HTAP s názvem **RetailSales**. Je součástí propojené služby s názvem **ConnectedData**a má následující schéma:
@@ -50,7 +50,7 @@ V tomto příkladu používáme kontejner HTAP s názvem **RetailSales**. Je sou
 * weekStarting: Long (Nullable = true)
 * _etag: řetězec (Nullable = true)
 
-Pro účely generování sestav budeme agregovat prodej (*množství*, *výnosy* (cena × množství) podle hodnoty *productCode* a *weekStarting* . Nakonec bude tato data exportována do tabulky fondu SQL s názvem **dbo. ProductSales**.
+Pro účely generování sestav agregujeme prodej (*množství*, *výnosy* (cena × množství) podle hodnoty *productCode* a *weekStarting* . Nakonec tato data exportujeme do tabulky fondu SQL s názvem **dbo. ProductSales**.
 
 ## <a name="configure-a-spark-notebook"></a>Konfigurace poznámkového bloku Spark
 Vytvořte notebook Spark s Scala jako Spark (Scala) jako hlavní jazyk. Pro relaci používáme výchozí nastavení poznámkového bloku.
@@ -97,7 +97,7 @@ SELECT  [productCode]
  FROM [dbo].[productsales]
 ```
 
-Dotaz bude v režimu grafu prezentovat následující výsledky: [ ![ kroky Spark to SQL](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
+Dotaz bude v režimu grafu prezentovat následující výsledky: [ ![ Spark to SQL Steps 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 * [Dotaz Azure Cosmos DB analytické úložiště s Apache Spark](./how-to-query-analytical-store-spark.md)

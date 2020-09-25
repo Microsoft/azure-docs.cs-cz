@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254070"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
 
@@ -103,7 +103,7 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ### <a name="system-health-events"></a>Události stavu systému
 
-| Název události | Description|
+| Název události | Popis|
 |------|---------|
 |archon_exit    |Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
 |archon_error   |Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.  |
@@ -237,7 +237,7 @@ Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v
 
 Následující tabulka obsahuje seznam parametrů, které můžete použít při dotazování protokolů.
 
-| Klíčové slovo | Description | Výchozí hodnota |
+| Klíčové slovo | Popis | Výchozí hodnota |
 |--|--|--|
 | StartTime | Čas spuštění požadovaných protokolů v milisekundách UTC | `-1`, začátek modulu runtime kontejneru. Když `[-1.-1]` se použije jako časový rozsah, rozhraní API vrátí protokoly za poslední hodinu.|
 | EndTime | Požadovaný čas ukončení protokolů v milisekundách UTC. | `-1`, aktuální čas. Když `[-1.-1]` se použije časový rozsah, rozhraní API vrátí protokoly za poslední hodinu. |
@@ -248,7 +248,7 @@ Následující tabulka obsahuje seznam parametrů, které můžete použít při
 
 V následující tabulce jsou uvedeny atributy v odpovědi na dotaz.
 
-| Klíčové slovo | Description|
+| Klíčové slovo | Popis|
 |--|--|
 |DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Neodesílat protokoly, vrátí rozhraní API informace ***synchronně***. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je požadavek platný, a spustí odesílání protokolů ***asynchronně***.|
 |TimeFilter| Filtr času aplikovaný na protokoly.|
@@ -313,8 +313,7 @@ Pokud se v protokolech modulů zobrazí následující zpráva, může to znamen
 
 Kontejner není v platném stavu. Ověření předplatného se nezdařilo se stavem neshoda. Klíč rozhraní API není určen pro daný typ kontejneru. "
 
-Další informace najdete v tématu [schválení žádosti o spuštění kontejneru](spatial-analysis-container.md#request-approval-to-run-the-container). 
-
+Další informace najdete v tématu [schválení žádosti o spuštění kontejneru](spatial-analysis-container.md#request-approval-to-run-the-container).
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Řešení potíží s Azure Stack hraničním zařízením
 

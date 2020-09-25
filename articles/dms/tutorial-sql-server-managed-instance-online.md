@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: ce63d86c3256646782775c84636c4d248e0a6735
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 745ea7dd8b3ee74c46d4c50a872dc4995d298142
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984325"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291159"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do spravované instance Azure SQL online pomocí DMS
 
@@ -72,7 +72,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     > * Vyberte, pokud chcete, aby přístup k účtu úložiště umožňovala všechna síť.
     > * Zapněte [delegování podsítě](https://docs.microsoft.com/azure/virtual-network/manage-subnet-delegation) v podsíti mi a aktualizujte pravidla brány firewall účtu úložiště tak, aby umožňovala tuto podsíť.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující odchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Nakonfigurujte bránu [Windows Firewall pro přístup ke zdrojovému databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall, čímž povolíte Azure Database Migration Service přístup ke zdrojovému SQL Server, který je ve výchozím nastavení port TCP 1433.
 * Pokud spouštíte více instancí s názvem SQL Server s použitím dynamických portů, možná budete chtít povolit službu SQL Browser a povolit přístup k portu UDP 1434 přes brány firewall, aby se Azure Database Migration Service mohl připojit k pojmenované instanci na zdrojovém serveru.

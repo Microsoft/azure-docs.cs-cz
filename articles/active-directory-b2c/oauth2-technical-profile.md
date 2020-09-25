@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b45f5ae64a7b8fd97d5242c82fb90ee6c57286ac
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 35b1f57a2361c5a4360e2ff1944b93e767168799
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433886"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259386"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OAuth2 v Azure Active Directory B2C vlastní zásady
 
@@ -110,23 +110,8 @@ Element **CryptographicKeys** obsahuje následující atribut:
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
-Když nakonfigurujete adresu URL pro přesměrování poskytovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp` . Ujistěte se, že jste **klienta** nahradili názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být malými písmeny.
-
-Pokud používáte doménu **b2clogin.com** místo **Login.microsoftonline.com** , nezapomeňte místo Login.microsoftonline.com použít b2clogin.com.
+Když nakonfigurujete identifikátor URI pro přesměrování poskytovatele identity, zadejte `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp` . Ujistěte `{tenant-name}` se, že jste nahradili názvem vašeho tenanta (například contosob2c). Identifikátor URI pro přesměrování musí být malými písmeny.
 
 Příklady:
 
 - [Přidání Google + jako poskytovatele identity OAuth2 pomocí vlastních zásad](identity-provider-google-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB rozhraní API pro tabulky & prostředků sady .NET SDK
-description: Seznamte se s Azure Cosmos DB rozhraní API pro tabulky včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi.
+description: Přečtěte si všechno o Azure Cosmos DB rozhraní API pro tabulky pro .NET, včetně dat o verzích, data odchodu a změn provedených mezi jednotlivými verzemi.
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 8c594ba01ea6fe9fb1c3cee2ed415496132d1abc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bc984e330085430db10298380dfdc9767f1aa770
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018429"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261936"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB rozhraní .NET API: stažení a poznámky k verzi
 
@@ -29,7 +29,7 @@ ms.locfileid: "89018429"
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
 |**Rychlý start**|[Azure Cosmos DB: sestavení aplikace s využitím .NET a rozhraní API pro tabulky](create-table-dotnet.md)|
-|**Tutoriál**|[Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API](tutorial-develop-table-dotnet.md)|
+|**Kurz**|[Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API](tutorial-develop-table-dotnet.md)|
 |**Aktuální podporovaná architektura**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
@@ -38,7 +38,7 @@ ms.locfileid: "89018429"
 > Pokud jste vytvořili účet Table API během období Preview, vytvořte [nový účet Table API](create-table-dotnet.md#create-a-database-account) pro práci s obecně dostupnými sadami Table API SDK.
 >
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="212"></a><a name="2.1.2"></a>2.1.2
 
@@ -116,7 +116,7 @@ Při pokusu o použití balíčku NuGet Microsoft. Azure. CosmosDB. Table máte 
     
 * Pomocí preferovaného nástroje pro správu balíčků NuGet před instalací Microsoft. Azure. CosmosDB. Table nainstalujte balíček NuGet Microsoft. Azure. Storage. Common.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

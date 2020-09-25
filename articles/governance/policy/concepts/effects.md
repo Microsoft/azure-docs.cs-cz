@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
-ms.date: 08/27/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252000"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -24,7 +24,7 @@ V definici zásad se v současné době podporují tyto efekty:
 - [Zakázáno](#disabled)
 - [Upravit](#modify)
 
-Následující efekty jsou _zastaralé_:
+Následující důsledky jsou _zastaralé_:
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
@@ -374,8 +374,8 @@ Když **enforcementMode** je enforcementMode _zakázaný_, prostředky se ješt�
 
 Tento efekt se používá v _režimu_ definice zásad `Microsoft.Kubernetes.Data` . Používá se k předávání pravidel řízení přístupu na serveru gatekeeper V3 definovaných pomocí [architektury omezení neprů](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) k [otevření agenta zásad](https://www.openpolicyagent.org/) (neprů) do clusterů Kubernetes v Azure.
 
-> [!NOTE]
-> [Azure Policy pro Kubernetes](./policy-for-kubernetes.md) je ve verzi Preview a podporuje jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s **EnforceOPAConstraint** efektem a související kategorií **služby Kubernetes** se _už_nepoužívají. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
+> [!IMPORTANT]
+> Definice zásad omezené verze Preview s **EnforceOPAConstraint** efektem a související kategorií **služby Kubernetes** jsou _zastaralé_. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint vyhodnocování
 
@@ -430,8 +430,8 @@ Příklad: pravidlo pro Admission Control pro gatekeeper v3, které nastaví ome
 
 Tento efekt se používá v _režimu_ definice zásad `Microsoft.ContainerService.Data` . Používá se k předávání pravidel řízení přístupu serveru gatekeeper v2 definovaných pomocí [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) k [otevření agenta zásad](https://www.openpolicyagent.org/) (Neprů) ve [službě Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
 
-> [!NOTE]
-> [Azure Policy pro Kubernetes](./policy-for-kubernetes.md) je ve verzi Preview a podporuje jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s **EnforceRegoPolicy** efektem a související kategorií **služby Kubernetes** se _už_nepoužívají. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
+> [!IMPORTANT]
+> Definice zásad omezené verze Preview s **EnforceRegoPolicy** efektem a související kategorií **služby Kubernetes** jsou _zastaralé_. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy vyhodnocování
 
@@ -646,7 +646,7 @@ Příklad 3: Ujistěte se, že účet úložiště nepovoluje veřejný přístu
 
 ## <a name="layering-policy-definitions"></a>Definice zásad vrstvení
 
-Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Například:
+Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Příklad:
 
 - Zásady 1
   - Omezí umístění prostředku na ' westus '.

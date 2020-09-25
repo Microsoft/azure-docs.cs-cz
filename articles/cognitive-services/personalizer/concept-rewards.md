@@ -1,14 +1,16 @@
 ---
 title: Skóre záměna – Přizpůsobte si
 description: Skóre odměňování indikuje, jak dobře vlastní individuální nastavení RewardActionID a způsobilo pro uživatele. Hodnota skóre odměňování je určena vaší obchodní logikou na základě pozorování chování uživatele. Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 58ce4d7593b23807f4b31e3e71cbfdcd873b1fcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253492"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Skóre odměňování indikuje úspěch přizpůsobení
 

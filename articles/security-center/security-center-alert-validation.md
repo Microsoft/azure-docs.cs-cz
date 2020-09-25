@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: ac76ce5d4fb788e6c2fb3dc9ec01c8d88bfb55cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268064"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Ověřování výstrah v Azure Security Center
 Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správně nakonfigurovaný pro výstrahy služby Azure Security Center.
@@ -62,16 +62,16 @@ Po instalaci agenta Security Center do počítače postupujte podle těchto krok
 
 ## <a name="validate-alerts-on-kubernetes"></a>Ověřit výstrahy na Kubernetes <a name="validate-kubernetes"></a>
 
-Pokud používáte funkci Security Center Preview pro integraci služby Azure Kubernetes, spusťte následující příkaz kubectl, abyste otestovali, že vaše výstrahy fungují:
+Pokud jste Kubernetes službu Azure s Security Center, můžete otestovat, zda vaše výstrahy pracují s následujícím příkazem kubectl:
 
 ```kubectl get pods --namespace=asc-alerttest-662jfi039n```
 
-Další informace o integraci služby Azure Kubernetes a Azure Security Center najdete v [tomto článku](azure-kubernetes-service-integration.md).
+Další informace o tom, jak chránit Kubernetes uzly a clustery, najdete v tématu [Úvod do Azure Defenderu pro Kubernetes](defender-for-kubernetes-introduction.md) .
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste se seznámili s procesem ověřování výstrah. Teď, když už jste obeznámeni s tímto ověřováním, zkuste následující články:
 
 * [Ověřování Azure Key Vault detekce hrozeb v Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
-* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) – Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení v Security Center.
+* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení v Security Center.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Principy výstrah zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) – Přečtěte si o různých typech výstrah zabezpečení.
+* [Principy výstrah zabezpečení v Azure Security Center](security-center-alerts-type.md) – Přečtěte si o různých typech výstrah zabezpečení.

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b8673dd98ab66714c54720ea1d909a90e117c18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266424"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Data o sídle a zákaznických datech pro Azure Multi-Factor Authentication
 
@@ -28,7 +28,7 @@ Služba Azure Multi-Factor Authentication obsahuje datová centra v USA, Evropě
 
 * Multi-Factor Authentication využívající telefonní hovory pocházející z Datacenter USA a jsou směrováni globálními poskytovateli.
 * Požadavky na ověřování uživatelů pro obecné účely z jiných oblastí, jako je Evropa nebo Austrálie, se aktuálně zpracovávají na základě umístění uživatele.
-* Nabízená oznámení, která používají aplikaci Microsoft Authenticator, pocházejí z regionálních datových center na základě umístění uživatele.
+* Nabízená oznámení používající Microsoft Authenticator aplikace se aktuálně zpracovávají v regionálních datacentrech na základě umístění uživatele.
     * Služby specifické pro dodavatele zařízení, jako je například nabízená oznámení Apple, můžou být mimo umístění uživatele.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Osobní údaje uložené v Azure Multi-Factor Authentication

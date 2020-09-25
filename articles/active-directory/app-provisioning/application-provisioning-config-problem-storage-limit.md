@@ -1,6 +1,6 @@
 ---
 title: Problém při ukládání přihlašovacích údajů správce konfigurace aplikace Galerie Azure AD
-description: Řešení běžných problémů při konfiguraci zřizování uživatelů pro aplikaci, která je už uvedená v galerii aplikací Azure AD
+description: Naučte se řešit problémy, které čelí při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Azure Active Directory Gallery.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 02/21/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 4f47954f3f4943846cab2dd9a38fd310abce3469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a3340e72499087dce7773264272601dfce8a50f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266778"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím. 
 

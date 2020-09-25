@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5e3cb07730aafed7d1c339f543e7fb09fe956cab
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: ca333115b8a0588f781b93e0d8a9279ab9c7928c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961903"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255158"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
@@ -196,7 +196,7 @@ Pokud provádíte integraci s Log Analytics, můžete protokoly zobrazit tak, ž
 
 **Vytvoření výstrahy**
 
-Pokud chcete vytvořit výstrahu proti svým protokolům, postupujte podle pokynů v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor][logalerts]. V krátkém případě:
+Pokud chcete vytvořit výstrahu proti svým protokolům, postupujte podle pokynů v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../../azure-monitor/platform/alerts-log.md). V krátkém případě:
 
 * Otevřete stránku výstrahy na portálu pro pomocné služby.
 * Vybrat **nové pravidlo výstrahy**

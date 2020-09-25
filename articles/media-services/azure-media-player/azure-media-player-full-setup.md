@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d7e6d3c1554f70ea14e097ff2fe6df47987b5927
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423044"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296242"
 ---
 # <a name="azure-media-player-full-setup"></a>Kompletní nastavení Azure Media Playeru #
 
@@ -56,11 +56,11 @@ Pomocí Azure Media Player můžete použít značku videa HTML5 pro vložení v
 1. `<data-setup>`Atribut na `<video>` Azure Media Player informuje o tom, že se video automaticky nastaví, když je stránka připravená, a z atributu si přečte všechny (ve formátu JSON).
 1. `id`Atribut: by měl být použit a jedinečný pro každé video na stejné stránce.
 1. `class`Atribut obsahuje dvě třídy:
-    - `azuremediaplayer`použije styly, které jsou vyžadovány pro Azure Media Player funkce uživatelského rozhraní.
-    - `amp-default-skin`použije výchozí vzhled pro ovládací prvky HTML5.
+    - `azuremediaplayer` použije styly, které jsou vyžadovány pro Azure Media Player funkce uživatelského rozhraní.
+    - `amp-default-skin` použije výchozí vzhled pro ovládací prvky HTML5.
 1. `<source>`Obsahuje dva povinné atributy.
-    - `src`atribut může obsahovat soubor **. ISM/manifest* z Azure Media Services je přidána Azure Media Player automaticky přidá adresy URL pro pomlčky, vyhlazení a HLS do přehrávače.
-    - `type`atribut je požadovaný typ MIME datového proudu. Typ MIME přidružený k *". ISM/manifest"* je *"application/vnd. MS-sstr + XML"*
+    - `src` atribut může obsahovat soubor **. ISM/manifest* z Azure Media Services je přidána Azure Media Player automaticky přidá adresy URL pro pomlčky, vyhlazení a HLS do přehrávače.
+    - `type` atribut je požadovaný typ MIME datového proudu. Typ MIME přidružený k *". ISM/manifest"* je *"application/vnd. MS-sstr + XML"*
 1. *Volitelný* `<data-setup>` atribut na stránce `<source>` oznamuje Azure Media Player, jestli existují jedinečné zásady doručování pro datový proud z Azure Media Services, včetně, ale ne omezení na typ šifrování (AES nebo PlayReady, Widevine nebo FairPlay) a token.
 
 Zahrňte nebo vylučte atributy, nastavení, zdroje a stopy přesně tak, jak byste chtěli pro video HTML5.

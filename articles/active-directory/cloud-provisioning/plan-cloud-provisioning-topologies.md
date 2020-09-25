@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 172e836a212f9ce097c2c4e392a7386a510c2c6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266288"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect podporované topologie a scénáře zřizování cloudu
 Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají zřizování cloudu Azure AD Connect. Tento článek obsahuje jenom podporované konfigurace a scénáře.
@@ -34,7 +34,7 @@ V následující části najdete seznam informací, které je potřeba vzít v �
 - Nemůžete změnit atribut, který se používá pro zdrojové ukotvení.
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Jedna doménová struktura, jeden tenant Azure AD
-![Topologie pro jednu doménovou strukturu a jednoho tenanta](media/plan-cloud-provisioning-topologies/single-forest.png)
+![Diagram, který zobrazuje topologii pro jednu doménovou strukturu a jednoho tenanta.](media/plan-cloud-provisioning-topologies/single-forest.png)
 
 Nejjednodušší topologie je jediná místní doménová struktura s jednou nebo více doménami a jedním tenanta Azure AD.  Příklad tohoto scénáře najdete v tématu [kurz: jediná doménová struktura s jedním klientem služby Azure AD.](tutorial-single-forest.md)
 
@@ -45,7 +45,7 @@ Nejjednodušší topologie je jediná místní doménová struktura s jednou neb
 Společná topologie je několik doménových struktur AD, s jednou nebo více doménami a s jedním tenanta Azure AD.  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Existující doménová struktura s Azure AD Connect, Nová doménová struktura s zřizováním cloudu
-![Topologie pro jednu doménovou strukturu a jednoho tenanta](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+![Diagram, který zobrazuje topologii pro existující doménovou strukturu a novou doménovou strukturu.](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
 Tento scénář je podobný scénáři s více doménovými strukturami, ale ta zahrnuje existující prostředí Azure AD Connect a pak se přinášejí do nové doménové struktury pomocí Azure AD Connect zřizování cloudu.  Příklad tohoto scénáře najdete v tématu [kurz: existující doménová struktura s jedním klientem služby Azure AD.](tutorial-existing-forest.md)
 

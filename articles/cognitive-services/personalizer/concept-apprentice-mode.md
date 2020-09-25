@@ -1,14 +1,16 @@
 ---
 title: Režim učni – Přizpůsobte si
 description: ''
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f793535f04b36d231cec384b7acd66e38a7eb039
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087193"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253526"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Použití režimu učně ke školení přizpůsobené aplikace bez ovlivnění vaší stávající aplikace
 
@@ -88,7 +90,7 @@ Je vhodné provést testy přizpůsobení a/B jenom po ověření a učení v on
 
 I v případě, že je _přidaný přidaný,_ je při ověřování dat pro přizpůsobení školení k dispozici stejná výzva. Místo toho se dá použít režim učni, s 100% provozu a všemi uživateli, kteří získají řízení (neovlivněné) prostředí.
 
-Jakmile budete mít případ použití pomocí přizpůsobeného a online učení, experimenty a/B vám umožní provádět řízené kohorty a vědecké porovnání výsledků, které mohou být složitější než signály využité k dispozici. Příkladem otázky, kterou může test A/B odpovídat:`In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
+Jakmile budete mít případ použití pomocí přizpůsobeného a online učení, experimenty a/B vám umožní provádět řízené kohorty a vědecké porovnání výsledků, které mohou být složitější než signály využité k dispozici. Příkladem otázky, kterou může test A/B odpovídat: `In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
 
 ## <a name="next-steps"></a>Další kroky
 

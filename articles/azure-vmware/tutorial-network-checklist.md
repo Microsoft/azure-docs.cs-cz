@@ -1,53 +1,57 @@
 ---
-title: 'Kurz: kontrolní seznam sítě'
-description: Požadavky na požadavky na síť a podrobnosti o připojení k síti a síťových portech
+title: Kurz – kontrolní seznam pro plánování sítě
+description: Seznamte se s požadavky na požadavky na síť a podrobnostmi o připojení k síti a síťových portech pro řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: aba5d7767e420b3ade6238621487884e44fbb6e2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254393"
 ---
-# <a name="networking-checklist-for-azure-vmware-solution"></a>Kontrolní seznam sítí pro řešení Azure VMware 
+# <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Kontrolní seznam pro plánování sítě pro řešení Azure VMware 
 
-Řešení Azure VMware nabízí prostředí privátního cloudu VMware, které je přístupné pro uživatele a aplikace z místních prostředí a prostředí a prostředků založených na platformě Azure. Připojení se doručuje prostřednictvím síťových služeb, jako je Azure ExpressRoute a připojení VPN, a pro povolení služeb bude vyžadovat určité rozsahy síťových adres a porty brány firewall. Tento článek poskytuje informace, které potřebujete ke správné konfiguraci sítě pro práci s řešením Azure VMware.
+Řešení Azure VMware nabízí prostředí privátního cloudu VMware, které je přístupné pro uživatele a aplikace z místních prostředí a prostředí a prostředků založených na platformě Azure. Připojení se doručuje prostřednictvím síťových služeb, jako je Azure ExpressRoute a připojení VPN, a vyžaduje pro povolení služeb určité konkrétní rozsahy síťových adres a porty brány firewall. Tento článek poskytuje informace, které potřebujete ke správné konfiguraci sítě pro práci s řešením Azure VMware.
 
-V tomto kurzu se dozvíte, jak:
+V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Požadavky na připojení k síti
-> * Protokol DHCP v řešení VMware Azure
+> * Požadavky na virtuální síť a okruh ExpressRoute
+> * Požadavky na směrování a podsíť
+> * Požadované síťové porty pro komunikaci se službami
+> * Hlediska DHCP a DNS v řešení Azure VMware
 
-## <a name="virtual--network-and-expressroute-circuit--considerations"></a>Požadavky na virtuální síť a okruh ExpressRoute
-Když ve svém předplatném vytvoříte připojení z virtuální sítě, okruh ExpressRoute se vytvoří prostřednictvím partnerského vztahu, použije autorizační klíč a ID partnerského vztahu, které požadujete v Azure Portal. Partnerský vztah je privátní a jedno připojení mezi Vaším privátním cloudem a virtuální sítí.
+
+
+## <a name="virtual-network-and-expressroute-circuit-considerations"></a>Požadavky na virtuální síť a okruh ExpressRoute
+Když ve svém předplatném vytvoříte připojení k virtuální síti, okruh ExpressRoute se naváže prostřednictvím partnerského vztahu, použije autorizační klíč a ID partnerského vztahu, které požadujete v Azure Portal. Partnerský vztah je privátní a jedno připojení mezi Vaším privátním cloudem a virtuální sítí.
 
 > [!NOTE] 
 > Okruh ExpressRoute není součástí nasazení privátního cloudu. Místní okruh ExpressRoute překračuje rozsah tohoto dokumentu. Pokud vyžadujete místní připojení k privátnímu cloudu, můžete použít některý ze stávajících okruhů ExpressRoute nebo si ho koupit v Azure Portal.
 
-Při nasazení privátního cloudu obdržíte IP adresy pro vCenter a správce NSX-T. Pro přístup k těmto rozhraním pro správu budete muset ve svém předplatném vytvořit další prostředky ve virtuální síti. Můžete najít postupy pro vytváření těchto prostředků a vytváření privátních partnerských vztahů ExpressRoute v kurzech.
+Při nasazení privátního cloudu obdržíte IP adresy pro vCenter a správce NSX-T. Pro přístup k těmto rozhraním pro správu budete muset ve virtuální síti vašeho předplatného vytvořit další prostředky. Můžete najít postupy pro vytváření těchto prostředků a vytváření [privátních partnerských vztahů ExpressRoute](tutorial-expressroute-global-reach-private-cloud.md) v kurzech.
 
 Logické sítě privátního cloudu jsou dodávány s předem zřízeným NSX-T. Pro vás předběžně zřídí bránu 0 a bránu 1. Můžete vytvořit segment a připojit ho k existující bráně 1-1 nebo ji připojit k nové bráně, kterou definujete. Logické síťové komponenty NSX-T poskytují konektivitu mezi úlohami v severozápadním a v západním rozsahu a umožňují připojení k Internetu a službám Azure v oblasti USA – jih.
 
 ## <a name="routing-and-subnet-considerations"></a>Posouzení směrování a podsítí
 Privátní cloud služby AVS je připojený k vaší službě Azure Virtual Network pomocí připojení Azure ExpressRoute. Tato velká šířka pásma, připojení s nízkou latencí umožňuje přístup ke službám běžícím v předplatném Azure z vašeho privátního cloudového prostředí. Směrování je založené na protokolu BGP (Routing) Border Gateway Protocol (BGP), automaticky zřízené a povolené ve výchozím nastavení pro každé nasazení privátního cloudu. 
 
-Privátní cloudy služby AVS vyžadují minimálně `/22` blok síťových adres CIDR pro podsítě, které jsou uvedené níže. Tato síť doplňuje vaše místní sítě. Blok adres by neměl překrývat bloky adres používané v jiných virtuálních sítích, které jsou ve vašem předplatném a v místních sítích. V rámci tohoto bloku adres se automaticky zřídí Správa, zřizování a vMotion sítě.
+Privátní cloudy služby AVS vyžadují minimálně `/22` blok síťových adres CIDR pro podsítě, které jsou uvedené níže. Tato síť doplňuje vaše místní sítě. Blok adres by se neměl překrývat s bloky adres používanými v jiných virtuálních sítích v rámci vašeho předplatného a místních sítí. V rámci tohoto bloku adres se automaticky zřídí Správa, zřizování a vMotion sítě.
 
 Příklad `/22` bloku síťových adres CIDR:  `10.10.0.0/22`
 
 Podsítě:
 
-| Využití sítě             | Podsíť | Příklad        |
-| ------------------------- | ------ | -------------- |
-| Správa privátního cloudu  | `/24`  | `10.10.0.0/24` |
-| vMotion síť           | `/24`  | `10.10.1.0/24` |
-| Úlohy virtuálních počítačů              | `/24`  | `10.10.2.0/24` |
-| Partnerský vztah ExpressRoute      | `/24`  | `10.10.3.8/30` |
+| Využití sítě             | Podsíť | Příklad          |
+| ------------------------- | ------ | ---------------- |
+| Správa privátního cloudu  | `/26`  | `10.10.0.0/26`   |
+| vMotion síť           | `/25`  | `10.10.1.128/25` |
+| Úlohy virtuálních počítačů              | `/24`  | `10.10.2.0/24`   |
+| Partnerský vztah ExpressRoute      | `/29`  | `10.10.3.8/29`   |
 
 
-### <a name="network-ports-required-to-communicate-with-the-service"></a>Síťové porty vyžadované ke komunikaci se službou
+## <a name="required-network-ports"></a>Požadované síťové porty
 
 | Zdroj | Cíl | Protokol | Port | Popis  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
@@ -67,20 +71,17 @@ Podsítě:
 | Místní síť vCenter | Síť pro správu privátního cloudu | TCP | 8000 |  vMotion virtuálních počítačů z místního serveru vCenter do privátního cloudu vCenter   |     
 
 ## <a name="dhcp-and-dns-resolution-considerations"></a>Hlediska překladu DHCP a DNS
-Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují překlad IP adres a služby DHCP pro vyhledání a přiřazení IP adresy. K poskytování těchto služeb se vyžaduje správná infrastruktura DHCP a DNS. Virtuální počítač můžete nakonfigurovat tak, aby poskytoval tyto služby v prostředí vašeho privátního cloudu.  
+Aplikace a úlohy, které běží v prostředí privátního cloudu, vyžadují překlad IP adres a služby DHCP pro vyhledávání a přiřazování IP adres. K poskytování těchto služeb se vyžaduje správná infrastruktura DHCP a DNS. Virtuální počítač můžete nakonfigurovat tak, aby poskytoval tyto služby v prostředí vašeho privátního cloudu.  
 
-Doporučuje se použít službu DHCP integrovanou do NSX nebo místní server DHCP v privátním cloudu místo směrování provozu DHCP přes síť WAN zpátky do místního prostředí.
+Použijte službu DHCP integrovanou do NSX nebo použijte místní server DHCP v privátním cloudu namísto směrování provozu DHCP přes síť WAN zpátky do místního prostředí.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli o:
+V tomto kurzu jste se seznámili s důležitými informacemi a požadavky pro nasazení privátního cloudu řešení Azure VMware. 
 
-> [!div class="checklist"]
-> * Požadavky na připojení k síti
-> * Protokol DHCP v řešení VMware Azure
 
 Jakmile budete mít správné sítě, přejděte k dalšímu kurzu, kde můžete vytvořit privátní cloud pro řešení Azure VMware.
 
 > [!div class="nextstepaction"]
-> [Kurz: Vytvoření privátního cloudu řešení Azure VMware](tutorial-create-private-cloud.md)
+> [Vytvoření privátního cloudu řešení Azure VMware](tutorial-create-private-cloud.md)

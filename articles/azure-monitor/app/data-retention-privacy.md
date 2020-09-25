@@ -3,13 +3,13 @@ title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft 
 description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: a2440379c001c0213145c1c5972cfed8799f4966
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562787"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263908"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -220,7 +220,7 @@ Nedoporučujeme explicitně nastavit aplikaci tak, aby používala protokol TLS 
 | Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](/windows-server/security/tls/tls-registry-settings) .  |
 | Windows Server 2008 SP2 | Podpora TLS 1,2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
-|Windows Vista | Nepodporuje se. | –
+|Windows Vista | Nepodporuje se. | Není k dispozici
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
 
@@ -256,7 +256,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | --- | --- |
 | [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Žádosti<br/>**Výjimky**<br/>Relace<br/>uživatelé |
 | [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
-| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
+| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Požadavek<br/>Relace<br/>uživatelé |
 | [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Ajax |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** všech standardních a vlastních událostí |
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |

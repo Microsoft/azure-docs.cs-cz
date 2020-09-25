@@ -1,6 +1,6 @@
 ---
 title: Instalace aktualizace 1,0 ve virtuálním poli StorSimple | Microsoft Docs
-description: Popisuje, jak použít webové uživatelské rozhraní StorSimple Virtual Array k instalaci aktualizací pomocí metody Azure Portal a opravy hotfix.
+description: Popisuje, jak použít webové uživatelské rozhraní StorSimple Virtual Array k použití aktualizace 1,0 s použitím metody Azure Portal a Hot Fix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295562"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Instalace aktualizace 1,0 ve virtuálním poli StorSimple
 
@@ -33,7 +33,7 @@ Aktualizace softwaru nebo opravy hotfix můžete použít, chcete-li, aby vaše 
 >
 > - Aktualizace 1,0 odpovídá verzi **10.0.10296.0** softwaru na vašem zařízení. Informace o tom, co je v této aktualizaci nové, najdete v [poznámkách k verzi pro aktualizaci 1,0](storsimple-virtual-array-update-1-release-notes.md).
 >
-> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix se zařízení restartuje. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
+> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
 >
 > - Aktualizace 1 je dostupná v Azure Portal jenom v případě, že je ve virtuálním poli spuštěná aktualizace 0,6. Pro virtuální pole, na kterých běží předběžná aktualizace 0,6 verze, musíte nejdřív nainstalovat Update 0,6 a pak nainstalovat Update 1.
 

@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 4e6f8a115e996ac6862f2fb04e5050b94f9f823b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 77c54d6ea463b5a8a4952d243886b80f38312d27
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291482"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migračních scénářů, které podporuje Azure Database Migration Service
 
@@ -48,20 +48,20 @@ Následující tabulka ukazuje podporu offline migrací Azure Database Migration
 | Cíl  | Zdroj | Podpora | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | SLUŽBA RDS SQL | × |  |
-|   | Oracle | × |  |
+|   | SLUŽBA RDS SQL | X |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | SLUŽBA RDS SQL | × |  |
-|   | Oracle | × |   |
+|   | SLUŽBA RDS SQL | X |  |
+|   | Oracle | X |   |
 | **Virtuální počítač Azure SQL** | SQL Server | ✔ | GA |
-|   | Oracle | × |   |
+|   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL | × |   |
-|   | Služba RDS MySQL | × |   |
-| **Azure DB pro PostgreSQL – jeden server** | PostgreSQL | × |
-|  | PostgreSQL RDS | × |   |
-| **Azure DB pro PostgreSQL – škálovatelné (Citus)** | PostgreSQL | × |
-|  | PostgreSQL RDS | × |   |
+| **Azure DB for MySQL** | MySQL | X |   |
+|   | Služba RDS MySQL | X |   |
+| **Azure DB pro PostgreSQL – jeden server** | PostgreSQL | X |
+|  | PostgreSQL RDS | X |   |
+| **Azure DB pro PostgreSQL – škálovatelné (Citus)** | PostgreSQL | X |
+|  | PostgreSQL RDS | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>Podpora migrace online (nepřetržitá synchronizace)
 
@@ -71,12 +71,12 @@ Následující tabulka uvádí Azure Database Migration Service podporu pro onli
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | SLUŽBA RDS SQL | ✔ | GA |
-|   | Oracle | × |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | SLUŽBA RDS SQL | ✔ | GA |
-|   | Oracle | × |  |
-| **Virtuální počítač Azure SQL** | SQL Server | × |   |
-|   | Oracle  | × |  |
+|   | Oracle | X |  |
+| **Virtuální počítač Azure SQL** | SQL Server | X |   |
+|   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | Služba RDS MySQL | ✔ | GA |

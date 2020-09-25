@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b19b8e928a220efa8a445ff033582e0f13c6de
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265268"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
@@ -47,14 +47,14 @@ V jeho [blogovém příspěvku v říjnu od 2018](https://techcommunity.microsof
 
 Identity Protection identifikuje rizika v následujících klasifikacích:
 
-| Typ detekce rizika | Description |
+| Typ detekce rizika | Popis |
 | --- | --- |
 | Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN). |
 | Neznámé vlastnosti přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. |
 | Propojená IP adresa pro malware | Přihlaste se přes propojenou IP adresu malwaru. |
-| Nevrácená pověření | Toto zjišťování rizik indikuje, že byly Nevráceny platné přihlašovací údaje uživatele. |
-| Sprej hesla | Označuje, že více uživatelských jmen se při útoku pomocí běžných hesel v rámci sjednoceného hrubou silou nepoužívá. |
+| Nevrácená pověření | Označuje, že byly Nevráceny platné přihlašovací údaje uživatele. |
+| Sprej hesla | Označuje, že více uživatelských jmen se provádí v jednotném a hrubou silou pomocí běžných hesel. |
 | Analýza hrozeb v Azure AD | Zdroje analýzy interních a externích hrozeb Microsoftu identifikovaly známý vzor útoku. |
 
 Další podrobnosti o těchto rizicích a o tom, jak se počítají, najdete v článku [co je to riziko](concept-identity-protection-risks.md).
@@ -96,7 +96,7 @@ Pro přístup k aplikaci Identity Protection je potřeba, aby uživatelé byli �
 
 V současné době role operátora zabezpečení nemá přístup k sestavě rizikových přihlášení.
 
-Správci podmíněného přístupu můžou taky vytvářet zásady, které přistupují k riziku přihlašování jako podmínka. Další informace najdete v článku [podmíněný přístup: podmínky](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
+Správci podmíněného přístupu můžou také vytvářet zásady, které přistupují k riziku přihlašování jako podmínka. Další informace najdete v článku [podmíněný přístup: podmínky](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
 
 ## <a name="license-requirements"></a>Licenční požadavky
 

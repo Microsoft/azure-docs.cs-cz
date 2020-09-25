@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 9a1745aa0e78dafca70ea90d4a5ac92f340312b3
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: b50f6c4b2ed86b950e68cf8c55b63af687ff9ead
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298045"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -140,42 +140,75 @@ Další informace o regionální dostupnosti najdete v tématu [oblasti](regions
 
 |Národní prostředí  | Jazyk            | Pohlaví | Název hlasu | Podpora stylů |
 |--|--|--|--|--|
-| `ar-EG` | Arabština (Egypt)                  | Female | `ar-EG-SalmaNeural`      | Obecné |
-| `ar-SA` | Arabština (Saúdská Arábie)           | Female | `ar-SA-ZariyahNeural`    | Obecné |
-| `ca-ES` | katalánština (Španělsko)                 | Female | `ca-ES-AlbaNeural`       | Obecné |
-| `da-DK` | dánština (Dánsko)                | Female | `da-DK-ChristelNeural`   | Obecné |
-| `de-DE` | němčina (Německo)                | Female | `de-DE-KatjaNeural`      | Obecné |
-| `en-AU` | Angličtina (Austrálie)             | Female | `en-AU-NatashaNeural`    | Obecné |
-| `en-CA` | Angličtina (Kanada)                | Female | `en-CA-ClaraNeural`      | Obecné |
-| `en-GB` | Angličtina (Spojené království)                    | Female | `en-GB-LibbyNeural`      | Obecné |
-|         |                                 | Female | `en-GB-MiaNeural`        | Obecné |
-| `en-IN` | Angličtina (Indie)                 | Female | `en-IN-NeerjaNeural`     | Obecné |
-| `en-US` | Angličtina (USA)                    | Female | `en-US-AriaNeural`       | Obecné, více dostupných stylů hlasu |
-|         |                                 | Male   | `en-US-GuyNeural`        | Obecné |
-| `es-ES` | Španělština (Španělsko)                 | Female | `es-ES-ElviraNeural`     | Obecné |
-| `es-MX` | Španělština (Mexiko)                | Female | `es-MX-DaliaNeural`      | Obecné |
-| `fi-FI` | finština (Finsko)               | Female | `fi-FI-NooraNeural`      | Obecné |
-| `fr-CA` | Francouzština (Kanada)                 | Female | `fr-CA-SylvieNeural`     | Obecné |
-| `fr-FR` | francouzština (Francie)                 | Female | `fr-FR-DeniseNeural`     | Obecné |
-| `hi-IN` | hindština (Indie)                   | Female | `hi-IN-SwaraNeural`      | Obecné |
-| `it-IT` | italština (Itálie)                 | Female | `it-IT-ElsaNeural`       | Obecné |
-| `ja-JP` | Japonština                        | Female | `ja-JP-NanamiNeural`     | Obecné |
-| `ko-KR` | Korejština                          | Female | `ko-KR-SunHiNeural`      | Obecné |
-| `nb-NO` | Norština                       | Female | `nb-NO-IselinNeural`     | Obecné |
-| `nl-NL` | Holandština (Netherland)              | Female | `nl-NL-ColetteNeural`    | Obecné |
-| `pl-PL` | polština (Polsko)                 | Female | `pl-PL-ZofiaNeural`      | Obecné |
-| `pt-BR` | Portugalština (Brazílie)             | Female | `pt-BR-FranciscaNeural`  | Obecné, více dostupných stylů hlasu |
-| `tr-TR` | Turečtina                         | Female | `tr-TR-EmelNeural`       | Obecné |
-| `pt-PT` | portugalština (Portugalsko)           | Female | `pt-PT-FernandaNeural`   | Obecné |
-| `ru-RU` | ruština (Rusko)                | Female | `ru-RU-DariyaNeural`     | Obecné |
-| `sv-SE` | švédština (Švédsko)                | Female | `sv-SE-HilleviNeural`    | Obecné |
-| `th-TH` | thajština (Thajsko)                 | Female | `th-TH-AcharaNeural`     | Obecné |
-| `zh-CN` | Čínština (Mandarin, zjednodušená)  | Female | `zh-CN-XiaoxiaoNeural`   | Obecné, více dostupných stylů hlasu |
-|         |                                 | Female | `zh-CN-XiaoyouNeural`    | Dětský hlas, optimalizovaný pro mluvený popis scénáře |
-|         |                                 | Male   | `zh-CN-YunyangNeural`    | Optimalizováno pro čtení zpráv, je k dispozici více stylů hlasu |
-|         |                                 | Male   | `zh-CN-YunyeNeural`      | Optimalizováno pro mluvený popis scénáře |
-| `zh-HK` | Čínština (kantonština, tradiční)   | Female | `zh-HK-HiuGaaiNeural`| Obecné |
-| `zh-TW` | Čínština (tchajwanský mandarinka)   | Female | `zh-TW-HsiaoYuNeural`    | Obecné |
+| `ar-EG` | Arabština (Egypt) | Female | `ar-EG-SalmaNeural` | Obecné |
+| `ar-SA` | Arabština (Saúdská Arábie) | Female | `ar-SA-ZariyahNeural` | Obecné |
+| `bg-BG` <sup>Nová</sup> | Bulharština (Bulgary) | Female | `bg-BG-KalinaNeural` | Obecné |
+| `ca-ES` | Katalánština (Španělsko) | Female | `ca-ES-AlbaNeural` | Obecné |
+| `cs-CZ` <sup>Nová</sup> | Čeština (Čeština)  | Female | `cs-CZ-VlastaNeural` | Obecné |
+| `da-DK` | Dánština (Dánsko) | Female | `da-DK-ChristelNeural` | Obecné |
+| `de-AT` <sup>Nová</sup> | Němčina (Rakousko) | Female | `de-AT-IngridNeural` | Obecné |
+| `de-CH` <sup>Nová</sup> | Němčina (Švýcarsko) | Female | `de-CH-LeniNeural` | Obecné |
+| `de-DE` | Němčina (Německo) | Female | `de-DE-KatjaNeural` | Obecné |
+| `de-DE` <sup>Nová</sup> | němčina (Německo) | Male | `de-DE-ConradNeural` | Obecné |
+| `el-GR` <sup>Nová</sup> | Řečtina (Řecko) | Female | `el-GR-AthinaNeural` | Obecné |
+| `en-AU` | Angličtina (Austrálie) | Female | `en-AU-NatashaNeural` | Obecné |
+| `en-AU` <sup>Nová</sup> | Austrálie (Austrálie) | Male | `en-AU-WilliamNeural` | Obecné |
+| `en-CA` | Angličtina (Kanada) | Female | `en-CA-ClaraNeural` | Obecné |
+| `en-GB` | Angličtina (Spojené království) | Female | `en-GB-LibbyNeural` | Obecné |
+| `en-GB` | Angličtina (Spojené království) | Female | `en-GB-MiaNeural` | Obecné |
+| `en-GB` <sup>Nová</sup> | Angličtina (Spojené království) | Male | `En-GB-RyanNeural` | Obecné |
+| `en-IE` <sup>Nová</sup> | Irská angličtina (Irsko) | Female | `en-IE-EmilyNeural` | Obecné |
+| `en-IN` | Angličtina (Indie) | Female | `en-IN-NeerjaNeural` | Obecné |
+| `en-US` | Angličtina (USA) | Female | `en-US-AriaNeural` | Obecné, více dostupných stylů hlasu |
+| `en-US` | Angličtina (USA) | Male | `en-US-GuyNeural` | Obecné |
+| `en-US` <sup>Nová</sup> | Angličtina (USA) | Female | `en-US-JennyNeural` | Obecné, více dostupných stylů hlasu |
+| `es-ES` | Španělština (Španělsko) | Female | `es-ES-ElviraNeural` | Obecné |
+| `es-ES` <sup>Nová</sup> | Španělština (Španělsko) | Male | `es-ES-AlvaroNeural` | Obecné |
+| `es-MX` | Španělština (Mexiko) | Female | `es-MX-DaliaNeural` | Obecné |
+| `es-MX` <sup>Nová</sup> | Španělština (Mexiko) | Male | `es-MX-JorgeNeural` | Obecné |
+| `fi-FI` | Finština (Finsko) | Female | `fi-FI-NooraNeural` | Obecné |
+| `fr-CA` | Francouzština (Kanada) | Female | `fr-CA-SylvieNeural` | Obecné |
+| `fr-CA` <sup>Nová</sup> | Francouzština (Kanada) | Male | `fr-CA-JeanNeural` | Obecné |
+| `fr-CH` <sup>Nová</sup> | Francouzština (Švýcarsko) | Female | `fr-CH-ArianeNeural` | Obecné |
+| `fr-FR` | Francouzština (Francie) | Female | `fr-FR-DeniseNeural` | Obecné |
+| `fr-FR` <sup>Nová</sup> | francouzština (Francie) | Male | `fr-FR-HenriNeural` | Obecné |
+| `he-IL` <sup>Nová</sup> | Hebrejština (plochá) | Female | `he-IL-HilaNeural` | Obecné |
+| `hi-IN` | Hindština (Indie) | Female | `hi-IN-SwaraNeural` | Obecné |
+| `hr-HR` <sup>Nová</sup> | chorvatština (Chorvatsko) | Female | `hr-HR-GabrijelaNeural` | Obecné |
+| `hu-HU` <sup>Nová</sup> | Maďarština (Maďarsko) | Female | `hu-HU-NoemiNeural` | Obecné |
+| `id-ID` <sup>Nová</sup> | Bahasa indonéský (Indonésie) | Male | `id-ID-ArdiNeural` | Obecné |
+| `it-IT` | Italština (Itálie) | Female | `it-IT-ElsaNeural` | Obecné |
+| `it-IT` <sup>Nová</sup> | italština (Itálie) | Female | `it-IT-IsabellaNeural` | Obecné |
+| `it-IT` <sup>Nová</sup> | italština (Itálie) | Male | `it-IT-DiegoNeural` | Obecné |
+| `ja-JP` | Japonština (Japonsko) | Female | `ja-JP-NanamiNeural` | Obecné |
+| `ja-JP` <sup>Nová</sup> | japonština (Japonsko) | Male | `ja-JP-KeitaNeural` | Obecné |
+| `ko-KR` | Korejština (Jižní Korea) | Female | `ko-KR-SunHiNeural` | Obecné |
+| `ko-KR` <sup>Nová</sup> | korejština (Jižní Korea) | Male | `ko-KR-InJoonNeural` | Obecné |
+| `ms-MY` <sup>Nová</sup> | malajština (Malajsie) | Female | `ms-MY-YasminNeural` | Obecné |
+| `nb-NO` | Norština, Bokmål (Norsko) | Female | `nb-NO-IselinNeural` | Obecné |
+| `nl-NL` | Holandština (Nizozemsko) | Female | `nl-NL-ColetteNeural` | Obecné |
+| `pl-PL` | Polština (Polsko) | Female | `pl-PL-ZofiaNeural` | Obecné |
+| `pt-BR` | Portugalština (Brazílie) | Female | `pt-BR-FranciscaNeural` | Obecné, více dostupných stylů hlasu |
+| `pt-BR` <sup>Nová</sup> | Brazilská portugalština (Brazílie) | Male | `pt-BR-AntonioNeural` | Obecné |
+| `pt-PT` | Portugalština (Portugalsko) | Female | `pt-PT-FernandaNeural` | Obecné |
+| `ro-RO` <sup>Nová</sup> | rumunština (Rumunsko) | Female | `ro-RO-AlinaNeural` | Obecné |
+| `ru-RU` | Ruština (Rusko) | Female | `ru-RU-DariyaNeural` | Obecné |
+| `sk-SK` <sup>Nová</sup> | slovenština (Slovensko) | Female | `sk-SK-ViktoriaNeural` | Obecné |
+| `sl-SI` <sup>Nová</sup> | slovinština (Slovinsko) | Female | `sl-SI-PetraNeural` | Obecné |
+| `sv-SE` | Švédština (Švédsko) | Female | `sv-SE-HilleviNeural` | Obecné |
+| `ta-IN` <sup>Nová</sup> | Tamilština (Indie) | Female | `ta-IN-PallaviNeural` | Obecné |
+| `te-IN` <sup>Nová</sup> | Telugština (Indie) | Female | `te-IN-ShrutiNeural` | Obecné |
+| `th-TH` | Thajština (Thajsko) | Female | `th-TH-AcharaNeural` | Obecné |
+| `th-TH` <sup>Nová</sup> | thajština (Thajsko) | Female | `th-TH-PremwadeeNeural` | Obecné |
+| `tr-TR` | Turečtina (Turecko) | Female | `tr-TR-EmelNeural` | Obecné |
+| `vi-VN` <sup>Nová</sup> | Vietnamština (Vietnam) | Female | `vi-VN-HoaiMyNeural` | Obecné |
+| `zh-CN` | Mandarinec (zjednodušená čínština, Čína) | Female | `zh-CN-XiaoxiaoNeural` | Obecné, více dostupných stylů hlasu |
+| `zh-CN` | Mandarinec (zjednodušená čínština, Čína) | Female | `zh-CN-XiaoyouNeural` | Dětský hlas, optimalizovaný pro mluvený popis scénáře |
+| `zh-CN` | Mandarinec (zjednodušená čínština, Čína) | Male | `zh-CN-YunyangNeural` | Optimalizováno pro čtení zpráv, je k dispozici více stylů hlasu |
+| `zh-CN` | Mandarinec (zjednodušená čínština, Čína) | Male | `zh-CN-YunyeNeural` | Optimalizováno pro mluvený popis scénáře |
+| `zh-HK` | Kantonština (tradiční čínština, Hongkong) | Female | `zh-HK-HiuGaaiNeural` | Obecné |
+| `zh-TW` | Mandarinec (tradiční čínština, Tchaj-wan) | Female | `zh-TW-HsiaoYuNeural` | Obecné |
+
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`Hlas se změnil na `en-US-AriaNeural` . Pokud jste předtím používali "Jessa", převeďte ho na standard ARIA.
@@ -191,88 +224,83 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 
 | Národní prostředí | Jazyk | Pohlaví | Název hlasu |
 |--|--|--|--|
-| <sup>první</sup>`ar-EG` | Arabština (Egypt) | Female | ar-EG-Hoda |
-| `ar-SA` | Arabština (Saúdská Arábie) | Male | ar-SA-Naayf " |
-| `bg-BG` | Bulharština | Male |  BG-BG-Ivan |
-| `ca-ES` | Katalánština | Female |  "Ca-ES-HerenaRUS" |
-| `cs-CZ` | Čeština | Male | cs-CZ-Jakub " |
-| `da-DK` | Dánština | Female |  "da-DK-HelleRUS" |
-| `de-AT` | Němčina (Rakousko) | Male | de-AT-Michael |
-| `de-CH` | Němčina (Švýcarsko) | Male |  de-CH-Karsten |
-| `de-DE` | němčina (Německo) | Female |  de-DE-Hedda " |
-|  |  | Female | de-DE-HeddaRUS " |
-|  |  | Male |  de-DE-Stefan-Apollo " |
-| `el-GR` | Řečtina | Male | "El-GR-Stefanos" |
-| `en-AU` | Angličtina (Austrálie) | Female |  "en-AU-Catherine" |
-|  |  | Female |  "en-AU-HayleyRUS" |
-| `en-CA` | Angličtina (Kanada) | Female |  "en-CA-Linda" |
-|  |  | Female |  "en-CA-HeatherRUS" |
-| `en-GB` | Angličtina (Spojené království) | Female |  "en-GB-Zuzana-Apollo" |
-|  |  | Female |  "en-GB-HazelRUS" |
-|  |  | Male |  "en-GB-Jiří-Apollo" |
-| `en-IE` | Angličtina (Irsko) | Male | "en-IE-Novák" |
-| `en-IN` | Angličtina (Indie) | Female | "en-IN-Heera-Apollo" |
-|  |  | Female |  "en-IN-PriyaRUS" |
-|  |  | Male |  "en-IN-Ravi-Apollo" |
-| `en-US` | Angličtina (USA) | Female |  "en-US-ZiraRUS" |
-|  |  | Female | "en-US-AriaRUS" |
-|  |  | Male | "en-US-BenjaminRUS" |
-|  |  | Male |  "en-US-Guy24kRUS" |
-| `es-ES` | Španělština (Španělsko) | Female |  ES-ES-Laura-Apollo " |
-|  |  | Female | ES-ES-HelenaRUS " |
-|  |  | Male | ES-ES-Pablo-Apollo |
-| `es-MX` | Španělština (Mexiko) | Female |  ES-MX-HildaRUS |
-|  |  | Male | ES-MX-Raul-Apollo |
-| `fi-FI` | Finština | Female | "Fi-FI-HeidiRUS" |
-| `fr-CA` | Francouzština (Kanada) | Female | "fr-CA-Caroline" |
-|  |  | Female | "fr-CA-HarmonieRUS" |
-| `fr-CH` | Francouzština (Švýcarsko) | Male | "fr-CH-Guillaume" |
-| `fr-FR` | francouzština (Francie) | Female |  "fr-FR-Julie-Apollo" |
-|  |  | Female |"fr-FR-HortenseRUS" |
-|  |  | Male |  "fr-FR-Paul-Apollo" |
-| `he-IL` | Hebrejština (Izrael) | Male |  "he-IL-Asaf" |
-| `hi-IN` | hindština (Indie) | Female | "Hi-IN-Kalpana-Apollo" |
-|  |  | Female |  "Dobrý den-Kalpana" |
-|  |  | Male |  "Dobrý den-Hemant" |
-| `hr-HR` | Chorvatština | Male | "HR-HR-Matej" |
-| `hu-HU` | Maďarština | Male |  "hu-HU-Szabolcs" |
-| `id-ID` | Indonéština | Male | ID-ID-Andika |
-| `it-IT` | Italština | Male |  "IT-IT-Cosimo-Apollo" |
-|  |  | Female |  "IT-IT-LuciaRUS" |
-| `ja-JP` | Japonština | Female |  "ja-JP-Ayumi-Apollo" |
-|  |  | Male | "ja-JP-Ichiro-Apollo" |
-|  |  | Female |  "ja-JP-HarukaRUS" |
-| `ko-KR` | Korejština | Female | "ko-KR-HeamiRUS" |
-| `ms-MY` | Malajština | Male |  "MS-MY-Rizwan" |
-| `nb-NO` | Norština | Female |  "NB-NO-HuldaRUS" |
-| `nl-NL` | Nizozemština | Female |  nl-NL-HannaRUS " |
-| `pl-PL` | Polština | Female |  pl-PL-PaulinaRUS " |
-| `pt-BR` | Portugalština (Brazílie) | Female | pt-BR-HeloisaRUS |
-|  |  | Male |  pt-BR-Daniel-Apollo |
-| `pt-PT` | portugalština (Portugalsko) | Female | pt-PT-HeliaRUS |
-| `ro-RO` | Rumunština | Male | "RO-RO-Andrei" |
-| `ru-RU` | Ruština | Female |  ru-RU-Irina-Apollo " |
-|  |  | Male | ru-RU-Pavel-Apollo " |
-|  |  | Female |  ru-RU – EkaterinaRUS |
-| `sk-SK` | Slovenština | Male | "SK-SK-Filip" |
-| `sl-SI` | Slovinština | Male |  "SL-SI-lado" |
-| `sv-SE` | Švédština | Female | "sv-SE-HedvigRUS" |
-| `ta-IN` | Tamilština (Indie) | Male |  "ta-IN-Valluvar" |
-| `te-IN` | Telugština (Indie) | Female |  "te-IN-Chitra" |
-| `th-TH` | Thajština | Male |  "th-TH-Pattara" |
-| `tr-TR` | turečtina (Turecko) | Female | "tr-TR-SedaRUS" |
-| `vi-VN` | Vietnamština | Male |  "VI-VN-a" |
-| `zh-CN` | Čínština (Mandarin, zjednodušená) | Female |  zh-CN-HuihuiRUS " |
-|  |  | Female | zh-CN-Yaoyao-Apollo " |
-|  |  | Male | zh-CN-Kangkang-Apollo " |
-| `zh-HK` | Čínština (kantonština, tradiční) | Female |  "zh-HK-Tracy-Apollo" |
-|  |  | Female | "zh-HK-TracyRUS" |
-|  |  | Male |  "zh-HK-Danny-Apollo" |
-| `zh-TW` | Čínština (tchajwanský mandarinka) | Female |  "zh-TW-Yating-Apollo" |
-|  |  | Female | "zh-TW-HanHanRUS" |
-|  |  | Male |  "zh-TW-Zhiwei-Apollo" |
-
-**1** *ar-eg podporuje moderní arabštinu Standard (MSA).*
+| `ar-EG` | Arabština (arabské písmo) | Female | `ar-EG-Hoda` |
+| `ar-SA` | Arabština (Saúdská Arábie) | Male | `ar-SA-Naayf` |
+| `bg-BG` | Bulharština (Bulharsko) | Male | `bg-BG-Ivan` |
+| `ca-ES` | katalánština (Španělsko) | Female | `ca-ES-HerenaRUS` |
+| `cs-CZ` | čeština (Česká republika) | Male | `cs-CZ-Jakub` |
+| `da-DK` | dánština (Dánsko) | Female | `da-DK-HelleRUS` |
+| `de-AT` | Němčina (Rakousko) | Male | `de-AT-Michael` |
+| `de-CH` | Němčina (Švýcarsko) | Male | `de-CH-Karsten` |
+| `de-DE` | němčina (Německo) | Female | `de-DE-HeddaRUS` |
+| `de-DE` | němčina (Německo) | Male | `de-DE-Stefan` |
+| `el-GR` | Řečtina (Řecko) | Male | `el-GR-Stefanos` |
+| `en-AU` | Angličtina (Austrálie) | Female | `en-AU-Catherine` |
+| `en-AU` | Angličtina (Austrálie) | Female | `en-AU-HayleyRUS` |
+| `en-CA` | Angličtina (Kanada) | Female | `en-CA-HeatherRUS` |
+| `en-CA` | Angličtina (Kanada) | Female | `en-CA-Linda` |
+| `en-GB` | Angličtina (Spojené království) | Male | `en-GB-George` |
+| `en-GB` | Angličtina (Spojené království) | Female | `en-GB-HazelRUS` |
+| `en-GB` | Angličtina (Spojené království) | Female | `en-GB-Susan` |
+| `en-IE` | Angličtina (Irsko) | Male | `en-IE-Sean` |
+| `en-IN` | Angličtina (Indie) | Female | `en-IN-Heera` |
+| `en-IN` | Angličtina (Indie) | Female | `en-IN-PriyaRUS` |
+| `en-IN` | Angličtina (Indie) | Male | `en-IN-Ravi` |
+| `en-US` | Angličtina (Spojené státy) | Male | `en-US-BenjaminRUS` |
+| `en-US` | Angličtina (Spojené státy) | Male | `en-US-GuyRUS` |
+| `en-US` | Angličtina (Spojené státy) | Female | `en-US-JessaRUS` |
+| `en-US` | Angličtina (Spojené státy) | Female | `en-US-ZiraRUS` |
+| `es-ES` | Španělština (Španělsko) | Female | `es-ES-HelenaRUS` |
+| `es-ES` | Španělština (Španělsko) | Female | `es-ES-Laura` |
+| `es-ES` | Španělština (Španělsko) | Male | `es-ES-Pablo` |
+| `es-MX` | Španělština (Mexiko) | Female | `es-MX-HildaRUS` |
+| `es-MX` | Španělština (Mexiko) | Male | `es-MX-Raul` |
+| `fi-FI` | finština (Finsko) | Female | `fi-FI-HeidiRUS` |
+| `fr-CA` | Francouzština (Kanada) | Female | `fr-CA-Caroline` |
+| `fr-CA` | Francouzština (Kanada) | Female | `fr-CA-HarmonieRUS` |
+| `fr-CH` | Francouzština (Švýcarsko) | Male | `fr-CH-Guillaume` |
+| `fr-FR` | francouzština (Francie) | Female | `fr-FR-HortenseRUS` |
+| `fr-FR` | francouzština (Francie) | Female | `fr-FR-Julie` |
+| `fr-FR` | francouzština (Francie) | Male | `fr-FR-Paul` |
+| `he-IL` | Hebrejština (Izrael) | Male | `he-IL-Asaf` |
+| `hi-IN` | hindština (Indie) | Male | `hi-IN-Hemant` |
+| `hi-IN` | hindština (Indie) | Female | `hi-IN-Kalpana` |
+| `hr-HR` | chorvatština (Chorvatsko) | Male | `hr-HR-Matej` |
+| `hu-HU` | Maďarština (Maďarsko) | Male | `hu-HU-Szabolcs` |
+| `id-ID` | Indonéština (Indonésie) | Male | `id-ID-Andika` |
+| `it-IT` | italština (Itálie) | Male | `it-IT-Cosimo` |
+| `it-IT` | italština (Itálie) | Female | `it-IT-LuciaRUS` |
+| `ja-JP` | japonština (Japonsko) | Female | `ja-JP-Ayumi` |
+| `ja-JP` | japonština (Japonsko) | Female | `ja-JP-HarukaRUS` |
+| `ja-JP` | japonština (Japonsko) | Male | `ja-JP-Ichiro` |
+| `ko-KR` | Korejština (Jižní Korea) | Female | `ko-KR-HeamiRUS` |
+| `ms-MY` | malajština (Malajsie) | Male | `ms-MY-Rizwan` |
+| `nb-NO` | Norština, Bokmål (Norsko) | Female | `nb-NO-HuldaRUS` |
+| `nl-NL` | nizozemština (Nizozemsko) | Female | `nl-NL-HannaRUS` |
+| `pl-PL` | polština (Polsko) | Female | `pl-PL-PaulinaRUS` |
+| `pt-BR` | Portugalština (Brazílie) | Male | `pt-BR-Daniel` |
+| `pt-BR` | Portugalština (Brazílie) | Female | `pt-BR-HeloisaRUS` |
+| `pt-PT` | portugalština (Portugalsko) | Female | `pt-PT-HeliaRUS` |
+| `ro-RO` | rumunština (Rumunsko) | Male | `ro-RO-Andrei` |
+| `ru-RU` | ruština (Rusko) | Female | `ru-RU-EkaterinaRUS` |
+| `ru-RU` | ruština (Rusko) | Female | `ru-RU-Irina` |
+| `ru-RU` | ruština (Rusko) | Male | `ru-RU-Pavel` |
+| `sk-SK` | slovenština (Slovensko) | Male | `sk-SK-Filip` |
+| `sl-SI` | slovinština (Slovinsko) | Male | `sl-SI-Lado` |
+| `sv-SE` | švédština (Švédsko) | Female | `sv-SE-HedvigRUS` |
+| `ta-IN` | Tamilština (Indie) | Male | `ta-IN-Valluvar` |
+| `te-IN` | Telugština (Indie) | Female | `te-IN-Chitra` |
+| `th-TH` | thajština (Thajsko) | Male | `th-TH-Pattara` |
+| `tr-TR` | turečtina (Turecko) | Female | `tr-TR-SedaRUS` |
+| `vi-VN` | Vietnamština (Vietnam) | Male | `vi-VN-An` |
+| `zh-CN` | Mandarinec (zjednodušená čínština, Čína) | Female | `zh-CN-HuihuiRUS` |
+| `zh-CN` | Mandarinec (zjednodušená čínština, Čína) | Male | `zh-CN-Kangkang` |
+| `zh-CN` | Mandarinec (zjednodušená čínština, Čína) | Female | `zh-CN-Yaoyao` |
+| `zh-HK` | Kantonština (tradiční čínština, Hongkong) | Male | `zh-HK-Danny` |
+| `zh-HK` | Kantonština (tradiční čínština, Hongkong) | Female | `zh-HK-TracyRUS` |
+| `zh-TW` | Mandarinec (tradiční čínština, Tchaj-wan) | Female | `zh-TW-HanHanRUS` |
+| `zh-TW` | Mandarinec (tradiční čínština, Tchaj-wan) | Female | `zh-TW-Yating` |
+| `zh-TW` | Mandarinec (tradiční čínština, Tchaj-wan) | Male | `zh-TW-Zhiwei` |
 
 > [!IMPORTANT]
 > `en-US-Jessa`Hlas se změnil na `en-US-Aria` . Pokud jste předtím používali "Jessa", převeďte ho na standard ARIA.

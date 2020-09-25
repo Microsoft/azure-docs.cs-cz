@@ -7,19 +7,22 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289867"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
 Statický obsah (HTML, CSS, JavaScript a soubory obrázků) můžete zpracovat přímo z kontejneru v účtu Azure Storage GPv2. Další informace najdete v tématu [statické hostování webů v Azure Storage](storage-blob-static-website.md).
 
 V tomto článku se dozvíte, jak povolit hostování statických webů pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu.
+
+> [!NOTE]
+> Ujistěte se, že jste vytvořili účet úložiště úrovně Standard pro obecné účely v2. Statické weby nejsou k dispozici v žádném jiném typu účtu úložiště.
 
 ## <a name="enable-static-website-hosting"></a>Povolit hostování statického webu
 

@@ -3,18 +3,24 @@ title: Azure Service Fabric – použití Service Fabricch odkazů na Trezor kl�
 description: Tento článek vysvětluje, jak používat podporu KeyVaultReference Service-Fabric pro tajné klíče pro aplikace.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246159"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261137"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
+# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
 
 Běžným problémem při sestavování cloudových aplikací je bezpečné ukládání tajných kódů vyžadovaných vaší aplikací. Můžete například chtít uložit přihlašovací údaje úložiště kontejnerů do trezoru klíčů a odkazovat na něj v manifestu aplikace. Service Fabric KeyVaultReference používá Service Fabric spravovanou identitu a usnadňuje referenční informace trezoru klíčů. Zbývající část tohoto článku podrobně popisuje, jak používat Service Fabric KeyVaultReference a obsahuje některé typické využití.
 
-## <a name="prerequisites"></a>Předpoklady
+> [!IMPORTANT]
+> Použití této funkce Preview se v produkčních prostředích nedoporučuje.
+
+> [!NOTE]
+> Funkce náhledu odkazu na Trezor klíčů podporuje jenom tajné klíče se [správou verzí](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) . Tajné kódy bez verzí nejsou podporovány.
+
+## <a name="prerequisites"></a>Požadavky
 
 - Spravovaná identita pro aplikaci (MIT)
     
@@ -90,14 +96,14 @@ Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určova
 
 - Přidání oddílu do settings.xml
 
-    Definovat `DBPassword` parametr s typem `KeyVaultReference` a hodnotou`<KeyVaultURL>`
+    Definovat `DBPassword` parametr s typem `KeyVaultReference` a hodnotou `<KeyVaultURL>`
 
     ```xml
     <Section Name="dbsecrets">
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- Odkázat na nový oddíl v ApplicationManifest.xml`<ConfigPackagePolicies>`
+- Odkázat na nový oddíl v ApplicationManifest.xml `<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
