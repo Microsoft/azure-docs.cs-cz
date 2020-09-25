@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288609"
 ---
 # <a name="use-transactions-in-sql-pool"></a>Použít transakce ve fondu SQL
 
@@ -29,10 +29,10 @@ Jak byste očekávali, fond SQL podporuje transakce jako součást úlohy datov�
 
 Fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku tím, že zapnete možnost READ_COMMITTED_SNAPSHOT Database pro uživatelskou databázi, když se připojíte k hlavní databázi.  
 
-Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) .
+Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) .
 
 ## <a name="transaction-size"></a>Velikost transakce
-Jedna transakce změny dat má omezené velikosti. Limit se aplikuje na distribuci. Z tohoto důvodu může být celkové přidělení vypočítáno vynásobením omezení počtem distribucí. 
+Jedna transakce změny dat má omezené velikosti. Limit se aplikuje na distribuci. V takovém případě lze celkové přidělení vypočítat vynásobením limitu distribucí. 
 
 K aproximaci maximálního počtu řádků v transakci rozdělte velikost distribučního čísla celkové velikosti každého řádku. U sloupců s proměnlivou délkou zvažte použití průměrné délky sloupce, a ne omezení velikosti.
 
@@ -81,7 +81,7 @@ V tabulce níže byly provedeny následující předpoklady:
 
 Limit velikosti transakce je použit na transakci nebo operaci. Není aplikováno napříč všemi souběžnými transakcemi. Proto každá transakce má povoleno zapsat toto množství dat do protokolu.
 
-Pokud chcete optimalizovat a minimalizovat množství dat zapsaných do protokolu, přečtěte si článek věnované [osvědčeným postupům pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+Chcete-li optimalizovat a minimalizovat množství dat zapsaných do protokolu, přečtěte si článek věnované [osvědčeným postupům pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
 > [!WARNING]
 > Maximální velikost transakce lze dosáhnout pouze pro hodnoty HASH nebo ROUND_ROBIN distribuované tabulky, kde je rozprostření dat sudé. Pokud transakce zapisuje data šikmým způsobem na rozdělení, je pravděpodobně dosaženo limitu před maximální velikostí transakce.
@@ -138,7 +138,7 @@ Msg 111233, úroveň 16, stav 1, řádek 1 111233; Aktuální transakce byla př
 
 Výstup funkcí ERROR_ * se nezobrazuje.
 
-V rámci fondu SQL musí být kód mírně pozměněn:
+V rámci fondu SQL je nutné kód mírně změnit:
 
 ```sql
 SET NOCOUNT ON;
@@ -181,21 +181,19 @@ Všechny, které se změnily, je, že vrácení transakce se musí nacházet př
 
 ## <a name="error_line-function"></a>Error_Line () – funkce
 
-Také je třeba poznamenat, že fond SQL neimplementuje ani nepodporuje funkci ERROR_LINE (). Pokud máte tento kód ve vašem kódu, musíte ho odebrat, aby byl kompatibilní s fondem SQL. Místo toho použijte pro implementaci ekvivalentních funkcí popisky dotazů ve svém kódu. Další podrobnosti najdete v článku s [popisem](develop-label.md) .
+Také je třeba poznamenat, že fond SQL neimplementuje ani nepodporuje funkci ERROR_LINE (). Pokud máte tuto funkci v kódu, je nutné ji odebrat, aby byla kompatibilní s fondem SQL. Místo toho použijte pro implementaci ekvivalentních funkcí popisky dotazů ve svém kódu. Další informace najdete v článku s [popisem](develop-label.md) .
 
 ## <a name="use-of-throw-and-raiserror"></a>Použití THROW a RAISERROR
 
 THROW je moderní implementace pro vyvolávání výjimek ve fondu SQL, ale je také podporována příkaz RAISERROR. Existuje několik rozdílů, které jsou pro vás za platební pozornost.
 
-* Uživatelem definované chybové zprávy nemohou být v rozsahu 100 000-150 000 pro THROW.
+* Uživatelem definované chybové zprávy nemohou být v rozsahu 100 000-150 000 pro THROW
 * Chybové zprávy RAISERROR jsou opraveny na 50 000
 * Použití sys. Messages se nepodporuje.
 
 ## <a name="limitations"></a>Omezení
 
-Fond SQL má několik dalších omezení týkajících se transakcí.
-
-Jsou to tyto:
+Fond SQL má několik dalších omezení týkajících se transakcí. Jsou to tyto:
 
 * Žádné distribuované transakce
 * Nejsou povolené žádné vnořené transakce.

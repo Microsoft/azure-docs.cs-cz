@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 06/09/2020
+ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: c8f431a609dafc1064b901cfdda8d170124cf0f9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 1506ab7210f8b98614f51e5168555068cce0afbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089118"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325670"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS 
 
@@ -26,7 +26,7 @@ V tomto rychlém startu vytvoříte následující položky:
 - Fond kapacit
 - Svazek NFS pro Azure NetApp Files
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete 
 
@@ -186,14 +186,15 @@ Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně A
 
 3. Klikněte na **+ Přidat fondy**. 
 
-    ![Klikněte na Přidat fondy.](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+    ![Klikněte na Přidat fondy.](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
 
 4. Zadejte informace pro fond kapacit: 
-    1. Jako název fondu zadejte **mypool1** .
-    2. Jako úroveň služby vyberte **Premium** . 
-    3. Jako velikost fondu zadejte **4 (TIB)** . 
+    * Jako název fondu zadejte **mypool1** .
+    * Jako úroveň služby vyberte **Premium** . 
+    * Jako velikost fondu zadejte **4 (TIB)** . 
+    * Použijte typ **auto** QoS.
 
-5. Klikněte na **OK**.
+5. Klikněte na **Vytvořit**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -416,7 +417,7 @@ Až budete hotovi, a pokud chcete, můžete odstranit skupinu prostředků. Akce
 
 3. Na stránce skupina prostředků klikněte na **Odstranit skupinu prostředků**.
 
-    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Snímek obrazovky, který zvýrazní tlačítko Odstranit skupinu prostředků.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Otevře se okno s upozorněním týkajícím se prostředků, které budou odstraněny s vybranou skupinou prostředků.
 

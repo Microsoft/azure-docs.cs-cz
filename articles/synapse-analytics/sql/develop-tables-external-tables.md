@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c0373e8a476e65a61ef4b3ea945b98e0763c0a22
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032924"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288847"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -29,7 +29,7 @@ Ve fondu SQL můžete použít externí tabulku k těmto akcím:
 - Dotazování Azure Blob Storage a Azure Data Lake Gen2 pomocí příkazů jazyka Transact-SQL.
 - Importuje a ukládá data z Azure Blob Storage a Azure Data Lake Storage do fondu SQL.
 
-Při použití ve spojení s příkazem [Create Table jako SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , výběr z externí tabulky importuje data do tabulky v rámci fondu SQL. Kromě [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)jsou externí tabulky užitečné pro načítání dat. 
+Při použití ve spojení s příkazem [Create Table jako SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , výběr z externí tabulky importuje data do tabulky v rámci fondu SQL. Kromě [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)jsou externí tabulky užitečné pro načítání dat. 
 
 Kurz načítání najdete v tématu [použití základny k načtení dat z Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
@@ -60,7 +60,7 @@ Externí tabulka přistupuje k základní službě Azure Storage pomocí oboru p
 
 ## <a name="create-external-data-source"></a>VYTVOŘIT EXTERNÍ ZDROJ DAT
 
-Externí zdroje dat slouží k připojení k účtům úložiště. [Tady](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)je popsaný kompletní dokumentace.
+Externí zdroje dat slouží k připojení k účtům úložiště. [Tady](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)je popsaný kompletní dokumentace.
 
 ### <a name="syntax-for-create-external-data-source"></a>Syntaxe pro vytvoření externího zdroje dat
 
@@ -159,7 +159,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Vytvoří objekt externího formátu souboru, který definuje externí data uložená v Azure Blob Storage nebo Azure Data Lake Storage. Vytvoření externího formátu souboru je předpokladem pro vytvoření externí tabulky. Kompletní dokumentaci [najdete tady](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Vytvoří objekt externího formátu souboru, který definuje externí data uložená v Azure Blob Storage nebo Azure Data Lake Storage. Vytvoření externího formátu souboru je předpokladem pro vytvoření externí tabulky. Kompletní dokumentaci [najdete tady](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Vytvořením formátu externího souboru zadáte skutečné rozložení dat, na která odkazuje externí tabulka.
 
@@ -349,7 +349,7 @@ Pomocí Data Lake možností průzkumu teď můžete vytvořit a zadat dotaz na 
 
 - Musíte mít přístup k pracovnímu prostoru, který má alespoň roli přístupu pro přispěvatele dat objektů BLOB úložiště k účtu ADLS Gen2.
 
-- Musíte mít aspoň [oprávnění k vytváření](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) a dotazování externích tabulek ve fondu SQL nebo v SQL z.
+- Musíte mít aspoň [oprávnění k vytváření](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) a dotazování externích tabulek ve fondu SQL nebo v SQL z.
 
 - Propojená služba přidružená k ADLS Gen2mu účtu **musí mít přístup k tomuto souboru**. Pokud má například mechanismus ověřování propojených služeb spravovanou identitu, musí mít spravovaná identita v pracovním prostoru aspoň oprávnění pro čtení objektů BLOB úložiště v účtu úložiště.
 
@@ -362,7 +362,7 @@ Otevře se dialogové okno. Vyberte možnost fond SQL nebo SQL na vyžádání, 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)
 
-Skript SQL se automaticky generuje odvozením schématu ze souboru:
+Skript SQL automaticky vygeneroval odvození schématu ze souboru:
 > [!div class="mx-imgBorder"]
 >![externaltable3](./media/develop-tables-external-tables/external-table-3.png)
 

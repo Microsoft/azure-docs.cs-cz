@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fd0826ad11a153d72ee47f35930d25f0df498418
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: dd7aed0d23dd657b655e473565611ef36c592562
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936775"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336322"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Logická replikace a logické dekódování v Azure Database for PostgreSQL-flexibilním serveru
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – flexibilní Server je ve verzi Preview.
 
-Logická replikace PostgreSQL a funkce logického dekódování jsou podporovány v Azure Database for PostgreSQL-flexibilním serveru.
+Logická replikace PostgreSQL a funkce logického dekódování jsou podporovány v Azure Database for PostgreSQL-flexibilním serveru pro Postgres verze 11.
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>Porovnání logické replikace a logického dekódování
 Logická replikace a logické dekódování mají několik podobností. Oba směry
@@ -43,7 +43,11 @@ Logické dekódování
 1. Nastavte parametr serveru `wal_level` na `logical` .
 2. Restartujte server, aby se změna projevila `wal_level` .
 3. Potvrďte, že vaše instance PostgreSQL umožňuje síťový provoz z vašeho připojujícího se prostředku.
-4. Při provádění příkazů replikace použijte uživatele s oprávněními správce.
+4. Udělte oprávnění k replikaci uživatele správce.
+   ```SQL
+   ALTER ROLE <adminname> WITH REPLICATION;
+   ```
+
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>Použití logické replikace a logického dekódování
 
@@ -54,7 +58,7 @@ Logická replikace používá výrazy Publisher a předplatitel.
 
 Tady je ukázkový kód, který můžete použít k vyzkoušení logické replikace.
 
-1. Připojte se k vydavateli. Vytvořte tabulku a přidejte nějaká data.
+1. Připojte se k databázi vydavatele. Vytvořte tabulku a přidejte nějaká data.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    INSERT INTO basic(name) VALUES ('apple');
@@ -66,14 +70,14 @@ Tady je ukázkový kód, který můžete použít k vyzkoušení logické replik
    CREATE PUBLICATION pub FOR TABLE basic;
    ```
 
-3. Připojte se k předplatiteli. Vytvořte tabulku se stejným schématem, jako má Vydavatel.
+3. Připojte se k databázi odběratele. Vytvořte tabulku se stejným schématem, jako má Vydavatel.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    ```
 
 4. Vytvořte předplatné, které se připojí k publikaci, kterou jste vytvořili dříve.
    ```SQL
-   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname>' PUBLICATION pub;
+   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname> password=<password>' PUBLICATION pub;
    ```
 
 5. Nyní můžete zadat dotaz na tabulku v odběrateli. Uvidíte, že od vydavatele obdrželi data.
@@ -170,8 +174,9 @@ SELECT * FROM pg_replication_slots;
 
 [Nastavte výstrahy](howto-alert-on-metrics.md) na základě **maximálního počtu použitých ID transakcí** a úložiště, které **používají** flexibilní metriky serveru, aby vás upozornily na to, že hodnoty zvyšují minulé normální prahové hodnoty 
 
-## <a name="read-replicas"></a>Čtení replik
-Azure Database for PostgreSQL replik pro čtení se v současnosti nepodporují pro flexibilní servery.
+## <a name="limitations"></a>Omezení
+* **Čtení replik** – Azure Database for PostgreSQL replik pro čtení se v současnosti nepodporují pro flexibilní servery.
+* **Sloty a ha převzetí služeb při selhání** – logické sloty replikace na primárním serveru nejsou v sekundárním AZ k dispozici na pohotovostním serveru. To platí pro vás, pokud server používá možnost vysoké dostupnosti zóny, která je redundantní. V případě převzetí služeb při selhání na pohotovostní server nebudou logické sloty replikace k dispozici v pohotovostním režimu.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [možnostech sítě](concepts-networking.md)

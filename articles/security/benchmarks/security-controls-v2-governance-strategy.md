@@ -4,21 +4,21 @@ description: Strategie řízení a testování Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e8a5196bf71712caae1218933ed13345f4cecd99
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 255e5533dc19036624042a0b82116c4dc107d762
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336220"
 ---
-# <a name="security-control-governance-and-strategy"></a>Řízení zabezpečení: zásady správného řízení a strategie
+# <a name="security-control-v2-governance-and-strategy"></a>Řízení zabezpečení v2: zásady správného řízení a strategie
 
-Zálohování a obnovení pokrývá ovládací prvky, aby se zajistilo, že se budou provádět, ověřovat a chránit data a konfigurace v různých úrovních služeb.
+Zásady správného řízení a strategie poskytují pokyny k zajištění soudržné strategie zabezpečení a dokumentovaného přístupu pro řízení a zajištění zabezpečení, včetně stanovení rolí a odpovědností pro různé funkce cloudového zabezpečení, jednotnou technickou strategii a podpůrné zásady a standardy.
 
-## <a name="gs-1-define-asset-management-and-protection-strategy"></a>GS-1: definování strategie správy prostředků a ochrany
+## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: definování správy prostředků a strategie ochrany dat
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
@@ -44,47 +44,70 @@ Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásad
 
 -   Příslušné kryptografické standardy
 
-Poznámka: váš přístup ke správě a ochraně prostředků pro Cloud a místní prostředí se může lišit v závislosti na několika faktorech, jako jsou Aplikační služba/model hostování, obchodní rizika a požadavky na dodržování předpisů. 
-
+Další informace najdete v následujících odkazech:
 - [Doporučení architektury zabezpečení Azure – úložiště, data a šifrování](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
 
 - [Základy zabezpečení Azure – zabezpečení, šifrování a úložiště dat Azure](../fundamentals/encryption-overview.md)
 
 - [Rozhraní pro přijetí do cloudu – osvědčené postupy zabezpečení a šifrování dat Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Test zabezpečení Azure – Správa prostředků](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Test zabezpečení Azure – Správa prostředků](/azure/security/benchmarks/security-benchmark-v2-asset-management)
 
-- [Azure Security test – ochrana dat](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure Security test – ochrana dat](/azure/security/benchmarks/security-benchmark-v2-data-protection)
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Všichni účastníci](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-2-define-security-posture-management-strategy"></a>GS-2: definování strategie správy stav zabezpečení
+## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2: definování strategie podnikové segmentace
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| GS – 2 | 20, 3, 5 | RA, CM, SC |
+| GS – 2 | 4, 9, 16 | AC, CA, SC |
+
+Vytvořte strategii pro celé podniky za účelem segmentace přístupu k assetům pomocí kombinace identity, sítě, aplikace, předplatného, skupiny pro správu a dalších ovládacích prvků.
+
+Pečlivě vyvážit nutnost oddělení zabezpečení s nutností povolit každodenní provoz systémů, které musí vzájemně komunikovat, a přistupovat k datům.
+
+Zajistěte, aby se strategie segmentace implementovala konzistentně napříč typy ovládacích prvků včetně zabezpečení sítě, modelů identit a přístupu a oprávnění aplikace/modelů přístupu a ovládacích prvků pro lidské procesy.
+
+- [Doprovodné materiály k strategii segmentace v Azure (video)](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+
+- [Doprovodné materiály k strategii segmentace v Azure (dokument)](/security/compass/governance#enterprise-segmentation-strategy)
+
+- [Sjednotit segmentaci sítě pomocí strategie segmentace v podniku](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
+
+**Zodpovědnost**: zákazník
+
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+
+- [Všichni účastníci](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
+
+## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3: definování strategie správy stav zabezpečení
+
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+|--|--|--|--|
+| GS – 3 | 20, 3, 5 | RA, CM, SC |
 
 Nepřetržitě změřte a zmírnit rizika pro jednotlivé prostředky a prostředí, ve kterém jsou hostovány. Určete prioritu prostředků s vysokou hodnotou a vysoce vydaných ploch útoků, jako jsou publikované aplikace, příchozí a výstupní body sítě, koncové body uživatele a správce atd.
 
-- [Azure Security test – stav a Správa ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure Security test – stav a Správa ohrožení zabezpečení](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Všichni účastníci](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-3-align-organization-roles-responsibilities-and-accountabilities"></a>GS-3: zarovnání rolí organizace, odpovědností a accountabilities
+## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4: zarovnání rolí organizace, odpovědností a accountabilities
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| GS – 3 | – | PL, PM |
+| GS – 4 | Není k dispozici | PL, PM |
 
-Ujistěte se, že máte dokument a komunikujete s jasnými strategiemi pro role a zodpovědnost ve vaší organizaci zabezpečení. Stanovte prioritu poskytování jasných zodpovědností při rozhodování o zabezpečení, vzdělávání na sdíleném modelu zodpovědnosti a technického vzdělávání pro cloudové zabezpečení. 
+Ujistěte se, že máte dokument a komunikujete s jasnými strategiemi pro role a zodpovědnost ve vaší organizaci zabezpečení. Stanovte prioritu poskytování jasných zodpovědností při rozhodování o zabezpečení, informování všech uživatelů na sdílené zodpovědnosti a vzdělávání technických týmů na technologii pro zabezpečení cloudu.
 
 - [Osvědčené postupy zabezpečení Azure 1 – lidé: vzdělávání týmů na cestě cloudového zabezpečení](https://aka.ms/AzSec1)
 
@@ -94,15 +117,15 @@ Ujistěte se, že máte dokument a komunikujete s jasnými strategiemi pro role 
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Všichni účastníci](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-4-define-network-security-strategy"></a>GS-4: definování strategie zabezpečení sítě
+## <a name="gs-5-define-network-security-strategy"></a>GS-5: definování strategie zabezpečení sítě
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| GS – 4 | 9 | CA, SC |
+| GS – 5 | 9 | CA, SC |
 
 Navažte přístup k zabezpečení sítě Azure v rámci celkové strategie řízení přístupu zabezpečení vaší organizace.  
 
@@ -120,11 +143,11 @@ Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásad
 
 -   Aktuální artefakty zabezpečení sítě (například síťové diagramy, referenční Síťová architektura)
 
-Poznámka: váš přístup k zabezpečení vaší sítě pro cloudové a místní prostředí se může lišit v závislosti na několika faktorech, například na modelu aplikační služby, expozici hrozeb a nastavení hybridní sítě.
+Další informace najdete v následujících odkazech:
 
 - [Osvědčené postupy zabezpečení Azure 11 – architektura. Jednotná strategie zabezpečení](https://aka.ms/AzSec11)
 
-- [Testování zabezpečení Azure – zabezpečení sítě](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Testování zabezpečení Azure – zabezpečení sítě](/azure/security/benchmarks/security-benchmark-v2-network-security)
 
 - [Přehled zabezpečení sítě Azure](../fundamentals/network-overview.md)
 
@@ -132,15 +155,15 @@ Poznámka: váš přístup k zabezpečení vaší sítě pro cloudové a místn�
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Všichni účastníci](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-5-define-identity-and-privileged-access-strategy"></a>GS-5: definování strategie identity a privilegovaného přístupu
+## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6: definování strategie identity a privilegovaného přístupu
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| GS – 5 | 16, 4 | AC, AU, SC |
+| GS – 6 | 16, 4 | AC, AU, SC |
 
 V rámci celkové strategie řízení přístupu k zabezpečení vaší organizace vytvořte přístup k identitě Azure a privilegovanému přístupu.  
 
@@ -156,11 +179,11 @@ Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásad
 
 -   Uživatelská identita a kontrola přístupu a proces odsouhlasení
 
-Poznámka: váš přístup k identitám a privilegovanému přístupu pro Cloud a místní prostředí se může lišit v závislosti na několika faktorech, jako je například cesta k datům nebo přístup k aplikacím, model služby a strategie přístupu pro zákazníky nebo partnery.
+Další informace najdete v následujících odkazech:
 
-- [Azure Security benchmark – Správa identit](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure Security benchmark – Správa identit](/azure/security/benchmarks/security-benchmark-v2-identity-management)
 
-- [Azure Security test – privilegovaný přístup](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure Security test – privilegovaný přístup](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
 
 - [Osvědčené postupy zabezpečení Azure 11 – architektura. Jednotná strategie zabezpečení](https://aka.ms/AzSec11)
 
@@ -168,15 +191,15 @@ Poznámka: váš přístup k identitám a privilegovanému přístupu pro Cloud 
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Všichni účastníci](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-6-define-logging-and-threat-response-strategy"></a>GS-6: definování strategie protokolování a reakce na hrozby
+## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: definování strategie protokolování a reakce na hrozby
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| GS – 6 | 19 | IR, AU, RA, SC |
+| GS – 7 | 19 | IR, AU, RA, SC |
 
 Navažte strategii odezvy a reakce na hrozby, která umožňuje rychle detekovat a opravovat hrozby při splnění požadavků na dodržování předpisů. Určete prioritu poskytování analytiků s vysoce kvalitními výstrahami a bezproblémové prostředí, aby se mohly soustředit na hrozby, nikoli na integraci a ruční kroky. 
 
@@ -196,11 +219,10 @@ Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásad
 
 -   Procesy pro zpracování incidentů a aktivit po incidentech, jako jsou zjištěné lekce a uchovávání důkazů
 
-Poznámka: váš přístup k detekci a zjišťování hrozeb pro Cloud a místní prostředí se může lišit v závislosti na několika faktorech, jako je třeba požadavek na dodržování předpisů, na šířku hrozeb a možnosti detekce a nápravy. 
+Další informace najdete v následujících odkazech:
+- [Azure Security test benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
 
-- [Azure Security test benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
-
-- [Srovnávací test zabezpečení Azure – odpověď na incident](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Srovnávací test zabezpečení Azure – odpověď na incident](/azure/security/benchmarks/security-benchmark-v2-incident-response)
 
 - [Doporučený postup zabezpečení Azure 4 – proces. Aktualizace procesů reakce na incidenty pro Cloud](https://aka.ms/AzSec11)
 
@@ -210,15 +232,15 @@ Poznámka: váš přístup k detekci a zjišťování hrozeb pro Cloud a místn�
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Všichni účastníci](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-7-define-backup-and-recovery-strategy"></a>GS-7: definování strategie zálohování a obnovení
+## <a name="gs-8-define-backup-and-recovery-strategy"></a>GS-8: definování strategie zálohování a obnovení
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| GS – 7 | 10 | CP |
+| GS – 8 | 10 | CP |
 
 Vytvořte si strategii zálohování a obnovení Azure pro vaši organizaci. 
 
@@ -230,9 +252,8 @@ Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásad
 
 -   Ochrana zálohování pomocí řízení přístupu a šifrování dat
 
-Poznámka: váš přístup k zálohování a obnovení pro Cloud a místní prostředí se může lišit v závislosti na různých faktorech, jako je třeba redundance infrastruktury, Aplikační služba/model hostování a požadavky na dodržování předpisů.
-
-- [Azure Security test – zálohování a obnovení](/azure/security/benchmarks/security-controls-v2-backup-recovery)
+Další informace najdete v následujících odkazech:
+- [Azure Security test – zálohování a obnovení](/azure/security/benchmarks/security-benchmark-v2-backup-recovery)
 
 - [Architektura prostředí Azure – architektura – zálohování a zotavení po havárii pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery)
 
@@ -240,7 +261,7 @@ Poznámka: váš přístup k zálohování a obnovení pro Cloud a místní pros
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Všichni účastníci](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 

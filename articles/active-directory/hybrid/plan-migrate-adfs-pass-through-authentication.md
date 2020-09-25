@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5a5b06bc95d022cfad66118db4b55e9369b5bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661892"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335965"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování pro Azure Active Directory
 
@@ -283,9 +283,9 @@ Další. Nasaďte další metody ověřování:
 
 4. Spusťte instalaci ověřovacího agenta. Během instalace musíte zadat přihlašovací údaje účtu globálního správce.
 
-   ![Snímek obrazovky, který zobrazuje tlačítko instalovat na stránce balíčku Microsoft Azure AD připojit ověřovacího agenta](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Snímek obrazovky, který zobrazuje tlačítko pro instalaci, které se používá ke spuštění balíčku Microsoft Azure AD Connect Authentication agent.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![Snímek obrazovky zobrazující přihlašovací stránku](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Snímek obrazovky zobrazující přihlašovací stránku Microsoftu](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. Po nainstalování ověřovacího agenta se můžete vrátit na stránku stav předávacího agenta pro ověřování a ověřit stav dalších agentů.
 
@@ -327,7 +327,7 @@ Nejdřív povolte předávací ověřování:
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Předávací ověřování** je nastavené na **povoleno**.
    
-   ![Snímek obrazovky, který zobrazuje nastavení v oddílu přihlášení uživatele](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+   ![Snímek obrazovky, který zobrazuje nastavení, které se má ověřit v oddílu přihlášení uživatele](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. Vyberte **předávací ověřování** a ověřte, jestli je stav **aktivní**.<br />
    
    Pokud není ověřovací agent aktivní, před pokračováním v dalším kroku dokončete některé [kroky pro řešení potíží](./tshoot-connect-pass-through-authentication.md) . Když převedete své domény, riskujete, že při jejich převádění dojde k výpadku při ověřování, kdy se úspěšně nainstalují agenti předávaných ověřování a že jejich stav je **aktivní** v Azure Portal.
@@ -368,7 +368,7 @@ Dokončete převod pomocí modulu Azure AD PowerShell:
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Předávací ověřování** je nastavené na **povoleno**.<br />
 
-   ![Snímek obrazovky, který zobrazuje nastavení v oddílu přihlášení uživatele](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![Snímek obrazovky, který zobrazuje nastavení v oddílu přihlášení uživatele na portálu Azure AD.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>Testování a další kroky
 

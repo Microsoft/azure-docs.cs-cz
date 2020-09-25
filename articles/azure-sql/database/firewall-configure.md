@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: ef46a0040ba767197028d170372a4a9edca9feee
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9b6b0ee6fa33ecd0d677d7d075236517d85d4ab7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335111"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ V tomto scénáři jsou osvědčené postupy určeny podle vašich potřeb a pro
 
 *Můžu používat kombinaci pravidel brány firewall na úrovni serveru i databáze?*
 
-Yes. Někteří uživatelé, třeba správci, můžou potřebovat pravidla brány firewall IP na úrovni serveru. Jiní uživatelé, například uživatelé databázové aplikace, můžou potřebovat pravidla brány firewall IP na úrovni databáze.
+Ano. Někteří uživatelé, třeba správci, můžou potřebovat pravidla brány firewall IP na úrovni serveru. Jiní uživatelé, například uživatelé databázové aplikace, můžou potřebovat pravidla brány firewall IP na úrovni databáze.
 
 ### <a name="connections-from-the-internet"></a>Připojení z Internetu
 
@@ -157,8 +157,8 @@ Otevře se stránka s přehledem pro váš server. Zobrazuje plně kvalifikovan�
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |
 | [sp_delete_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database) |Server |Odebere pravidla brány firewall protokolu IP na úrovni serveru. |
-| [sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database) |Database |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni databáze. |
-| [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |Database |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni databáze. |
+| [sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database) |Databáze |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni databáze. |
+| [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |Databáze |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni databáze. |
 | [sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database) |Databáze |Odebere pravidla brány firewall protokolu IP na úrovni databáze. |
 
 Následující příklad zkontroluje stávající pravidla, povolí rozsah IP adres na serveru *Contoso*a odstraní pravidlo brány firewall protokolu IP:

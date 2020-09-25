@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662449"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325568"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -132,6 +132,12 @@ Azure NetApp Files podporuje NFSv3 a NFSv 4.1. Svazek můžete [vytvořit](azure
 
 Můžete určit, jestli má kořenový účet ke svazku přístup, nebo ne pomocí zásad exportu svazku. Podrobnosti najdete v tématu [Konfigurace zásad exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md) .
 
+### <a name="can-i-use-the-same-file-path-volume-creation-token-for-multiple-volumes"></a>Můžu použít stejnou cestu k souboru (token pro vytvoření svazku) pro více svazků?
+
+Ano, můžete. Cesta k souboru se ale musí použít buď v jiném předplatném, nebo v jiné oblasti.   
+
+Například vytvoříte svazek s názvem `vol1` . A pak vytvoříte další svazek, který se také nazývá `vol1` v jiném fondu kapacity, ale ve stejném předplatném a oblasti. V takovém případě se při použití stejného názvu svazku `vol1` způsobí chyba. Chcete-li použít stejnou cestu k souboru, musí být název v jiné oblasti nebo předplatném.
+
 ## <a name="smb-faqs"></a>Nejčastější dotazy k protokolu SMB
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Které verze protokolu SMB podporuje Azure NetApp Files?
@@ -161,12 +167,6 @@ Azure NetApp Files podporuje verze Active Directory Domain Services Windows Serv
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Proč dostupné místo v klientovi SMB nezobrazuje zřízené velikosti?
 
 Velikost svazku hlášená klientem SMB je maximální velikost, na kterou může Azure NetApp Files svazek růst. Velikost Azure NetApp Filesho svazku, jak je znázorněno na klientovi SMB, se nereflektuje na kvótu nebo velikost svazku. Můžete získat velikost Azure NetApp Filesho svazku nebo kvótu prostřednictvím Azure Portal nebo rozhraní API.
-
-<!--
-### Does Azure NetApp Files support Kerberos encryption?
-
-Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
--->
 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 

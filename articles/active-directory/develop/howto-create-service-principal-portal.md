@@ -12,16 +12,16 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265897"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu
 
-V tomto článku se dozvíte, jak vytvořit novou aplikaci Azure Active Directory (Azure AD) a instančního objektu, který se dá použít s řízením přístupu na základě role. Pokud máte aplikace, hostované služby nebo automatizované nástroje, které potřebují přístup k prostředkům nebo jejich úpravu, můžete pro aplikaci vytvořit identitu. Tato identita se označuje jako instanční objekt. Přístup k prostředkům je omezen rolemi přiřazenými k instančnímu objektu a poskytuje vám kontrolu nad tím, k jakým prostředkům se dá získat přístup a na jaké úrovni. Z bezpečnostních důvodů se v automatizovaných nástrojích vždy doporučuje používat instanční objekty, a neumožňovat jim připojení pomocí identity uživatele. 
+V tomto článku se dozvíte, jak vytvořit novou aplikaci Azure Active Directory (Azure AD) a instančního objektu, který se dá použít s řízením přístupu na základě role. Pokud máte aplikace, hostované služby nebo automatizované nástroje, které potřebují přístup k prostředkům nebo jejich úpravu, můžete pro aplikaci vytvořit identitu. Tato identita se označuje jako instanční objekt. Přístup k prostředkům je omezen rolemi přiřazenými k instančnímu objektu a poskytuje vám kontrolu nad tím, k jakým prostředkům se dá získat přístup a na jaké úrovni. Z bezpečnostních důvodů se v automatizovaných nástrojích vždy doporučuje používat instanční objekty, a neumožňovat jim připojení pomocí identity uživatele.
 
 V tomto článku se dozvíte, jak pomocí portálu vytvořit instanční objekt v Azure Portal. Zaměřuje se na aplikaci s jedním tenantů, kde má aplikace běžet jenom v jedné organizaci. Pro obchodní aplikace, které běží v rámci vaší organizace, obvykle používáte aplikace pro jednoho tenanta.  [K vytvoření instančního objektu můžete použít taky Azure PowerShell](howto-authenticate-service-principal-powershell.md).
 
@@ -55,7 +55,7 @@ Ověření oprávnění k předplatnému:
 
 1. Vyhledejte a vyberte **předplatná**nebo vyberte **předplatná** na **domovské** stránce.
 
-   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Hledat](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.
 
@@ -129,12 +129,13 @@ Když se programově přihlašujete, musíte předat ID tenanta pomocí žádost
 
    ![Kopírovat ID aplikace (klienta)](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-## <a name="upload-a-certificate-or-create-a-secret-for-signing-in"></a>Nahrajte certifikát nebo vytvořte tajný klíč pro přihlášení.
-K dispozici jsou dva typy ověřování pro instanční objekty: ověřování založené na heslech (tajný klíč aplikace) a ověřování na základě certifikátů.  Doporučujeme použít certifikát, ale můžete také vytvořit nový tajný klíč aplikace.
+## <a name="authentication-two-options"></a>Ověřování: dvě možnosti
 
-### <a name="upload-a-certificate"></a>Odeslat certifikát
+K dispozici jsou dva typy ověřování pro instanční objekty: ověřování založené na heslech (tajný klíč aplikace) a ověřování na základě certifikátů. Doporučujeme *použít certifikát*, ale můžete také vytvořit tajný klíč aplikace.
 
-Pokud nějaký máte, můžete použít existující certifikát.  Volitelně můžete vytvořit certifikát podepsaný svým držitelem pro *účely testování*. Chcete-li vytvořit certifikát podepsaný svým držitelem, otevřete PowerShell a spusťte rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu v úložišti certifikátů uživatele v počítači: 
+### <a name="option-1-upload-a-certificate"></a>Možnost 1: nahrání certifikátu
+
+Pokud nějaký máte, můžete použít existující certifikát.  Volitelně můžete vytvořit certifikát podepsaný svým držitelem pro *účely testování*. Chcete-li vytvořit certifikát podepsaný svým držitelem, otevřete PowerShell a spusťte rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu v úložišti certifikátů uživatele v počítači:
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -163,7 +164,7 @@ Postup nahrání certifikátu:
 
 Po registraci certifikátu ve vaší aplikaci na portálu pro registraci aplikací je nutné povolit klientský kód aplikace pro použití certifikátu.
 
-### <a name="create-a-new-application-secret"></a>Vytvoření nového tajného klíče aplikace
+### <a name="option-2-create-a-new-application-secret"></a>Možnost 2: vytvoření nového tajného klíče aplikace
 
 Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný klíč aplikace.
 
@@ -178,14 +179,15 @@ Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný kl
    ![Zkopírujte tajnou hodnotu, protože ji nemůžete později načíst.](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Konfigurace zásad přístupu pro prostředky
-Mějte na paměti, že možná budete muset nakonfigurovat další oprávnění k prostředkům, které vaše aplikace potřebuje k přístupu. Například je třeba [aktualizovat zásady přístupu trezoru klíčů](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) , aby vaše aplikace měla přístup k klíčům, tajným klíčům nebo certifikátům.  
+Mějte na paměti, že možná budete muset nakonfigurovat další oprávnění k prostředkům, které vaše aplikace potřebuje k přístupu. Například je třeba [aktualizovat zásady přístupu trezoru klíčů](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) , aby vaše aplikace měla přístup k klíčům, tajným klíčům nebo certifikátům.
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do svého trezoru klíčů a vyberte **zásady přístupu**.  
+1. V [Azure Portal](https://portal.azure.com)přejděte do svého trezoru klíčů a vyberte **zásady přístupu**.
 1. Vyberte **Přidat zásady přístupu**a pak vyberte klíčová, tajná a oprávnění certifikátů, která chcete aplikaci udělit.  Vyberte objekt služby, který jste předtím vytvořili.
 1. Vyberte **Přidat** a přidejte zásadu přístupu a potom **uložte** změny, které chcete potvrdit.
     ![Přidat zásady přístupu](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [používat Azure PowerShell k vytvoření instančního objektu](howto-authenticate-service-principal-powershell.md).
-* Další informace o zadávání zásad zabezpečení najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).  
+* Další informace o zadávání zásad zabezpečení najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Seznam dostupných akcí, které mohou uživatelé udělit nebo odepřít, najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md).
+* Informace o práci s registracemi aplikací pomocí **Microsoft Graph**najdete v referenčních informacích k rozhraní API pro [aplikace](/graph/api/resources/application) .

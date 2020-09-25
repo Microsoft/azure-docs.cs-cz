@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496232"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288303"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (Prev
 
 ## <a name="quickstart-example"></a>Příklad rychlého startu
 
-`OPENROWSET`funkce umožňuje číst obsah souboru Parquet zadáním adresy URL souboru.
+`OPENROWSET` funkce umožňuje číst obsah souboru Parquet zadáním adresy URL souboru.
 
 ### <a name="read-parquet-file"></a>Přečíst soubor Parquet
 
@@ -57,7 +57,7 @@ Pokud je zdroj dat chráněný pomocí klíče SAS nebo vlastní identity, můž
 
 ### <a name="explicitly-specify-schema"></a>Explicitně zadat schéma
 
-`OPENROWSET`umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
+`OPENROWSET` umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
 
 ```sql
 select top 10 *
@@ -182,7 +182,7 @@ Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabul
 | UVEDENA |INT (8, false) |tinyint |
 | UVEDENA |INT (16, false) |int |
 | UVEDENA |INT (32, false) |bigint |
-| UVEDENA |DATE (Datum) |date |
+| UVEDENA |DATE (Datum) |datum |
 | UVEDENA |NOTACI |decimal |
 | UVEDENA |ČAS (LISOVNY)|time |
 | INT64 |INT (64; true) |bigint |

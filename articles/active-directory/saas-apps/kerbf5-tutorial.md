@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: integrace s jednotným přihlašováním v Azure AD s F5 | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a F5.
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování (SSO) mezi Azure Active Directory a F5.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: b48b8c1282f90788846b9dc3b64a5ea1ee018a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266033"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
@@ -174,7 +174,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -279,7 +279,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 1. Na hlavní kartě klikněte na **zásady přístupu > AAA servery > Active Directory**. Otevře se obrazovka seznam serverů služby Active Directory.
 
-2. Klikněte na možnost **Vytvořit**. Otevře se obrazovka nové vlastnosti serveru.
+2. Klikněte na **Vytvořit**. Otevře se obrazovka nové vlastnosti serveru.
 
 3. Do pole **název** zadejte jedinečný název pro Server ověřování.
 

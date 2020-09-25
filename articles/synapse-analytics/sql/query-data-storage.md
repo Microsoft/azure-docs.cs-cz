@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489737"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288371"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
 
@@ -52,7 +52,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 
 Příklady použití najdete v článku o [souborech dotazů Parquet](query-parquet-files.md) .
 
-## <a name="query-csv-files"></a>Dotazování na soubory CSV
+## <a name="query-csv-files"></a>Dotazování souborů CSV
 
 Dotaz na zdrojová data sdíleného svazku clusteru získáte pomocí FORMAT = CSV. Schéma souboru CSV můžete zadat jako součást `OPENROWSET` funkce při dotazování na soubory CSV:
 
@@ -248,7 +248,7 @@ Ukázková data obsahují následující sady dat:
 - Ukázkové soubory Parquet s vnořenými sloupci
 - Knihy ve formátu JSON
 
-| Cesta ke složce                                                  | Description                                                  |
+| Cesta ke složce                                                  | Popis                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Formát                                                        | Nadřazená složka pro data ve formátu CSV                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Složky s datovými soubory populace v různých formátech CSV. |
@@ -264,7 +264,7 @@ Ukázková data obsahují následující sady dat:
 
 Další informace o tom, jak zadávat dotazy na různé typy souborů a vytvářet a používat zobrazení, najdete v následujících článcích:
 
-- [Dotazování na soubory CSV](query-single-csv-file.md)
+- [Dotazování souborů CSV](query-single-csv-file.md)
 - [Dotazování souborů Parquet](query-parquet-files.md)
 - [Dotazování souborů JSON](query-json-files.md)
 - [Dotaz na vnořené hodnoty](query-parquet-nested-types.md)

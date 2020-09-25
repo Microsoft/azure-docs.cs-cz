@@ -1,17 +1,17 @@
 ---
 title: Vytvoření první trvalé funkce v Azure pomocí JavaScriptu
-description: Vytvořte a publikujte funkci trvalosti Azure pomocí Visual Studio Code.
+description: Vytvořte a publikujte funkci trvalosti Azure v JavaScriptu pomocí Visual Studio Code.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7614cec43fd9b2f294a04ed266cb0614f6cde872
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291834"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335445"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první odolné funkce v JavaScriptu
 
@@ -186,7 +186,7 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 ## <a name="test-your-function-in-azure"></a>Testování funkce v Azure
 
-1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Adresa URL, která volá funkci spuštěnou protokolem HTTP, by měla být v tomto formátu:`http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
+1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Adresa URL, která volá funkci spuštěnou protokolem HTTP, by měla být v tomto formátu: `http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
 
 2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Po použití publikované aplikace byste měli získat stejnou reakci na stav jako předtím.
 

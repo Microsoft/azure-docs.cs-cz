@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python) | Mapy Microsoft Azure'
-description: Elektrická vozidla trasy pomocí Microsoft Azure map směrování rozhraní API a Azure Notebooks.
+description: Kurz týkající se směrování elektrických vozidel pomocí rozhraní API pro směrování v Microsoft Azure Maps a Azure Notebooks
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639745"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335224"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -35,7 +35,7 @@ V tomto kurzu provedete následující:
 > * Najděte a vizualizujte trasu k nejbližší elektrické stanici zpoplatnění elektrického vozidla na základě času na disku.
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Abyste mohli tento kurz dokončit, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). 
 
@@ -387,8 +387,6 @@ display(Image(staticMapImage))
 
 ![Mapa ukazující trasu](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>Další kroky
-
 V tomto kurzu jste zjistili, jak volat Azure Maps rozhraní REST API přímo a vizualizovat Azure Maps data pomocí Pythonu.
 
 Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, přečtěte si téma:
@@ -399,7 +397,11 @@ Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, př
 * [Vykreslení – získat obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Vyjednaná matice směrování](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Získat směr směrování](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Rozhraní REST API pro Azure Maps](https://docs.microsoft.com/azure/azure-maps/consumption-model)
 
-Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model).
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Notebooks najdete v tématu [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).
+Další informace o Azure Notebooks najdete v tématu.
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

@@ -4,23 +4,23 @@ description: Naučte se, jak používat modul mapy Vnitřníchy Microsoft Azure 
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4bfb017bb085d22c187e8074ba4f2b026d17f442
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.custom: devx-track-js
+ms.openlocfilehash: d006ec692a2345f6b79c4be29446340cf4af6095
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335343"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Použití modulu Azure Mapsch vnitřních map
 
 Sada Azure Maps Web SDK obsahuje modul *Azure Maps interiéru* . Modul  *vnitřních Azure Maps* umožňuje vykreslit vnitřní mapy vytvořené v programu Azure Maps Creator.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Vytvoření prostředku autora](how-to-manage-creator.md)

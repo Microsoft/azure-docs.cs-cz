@@ -6,20 +6,29 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: f9dc54959979d00d57536e3a3fa2262d27e28f96
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 09/22/2020
+ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072192"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325534"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem 
 
 V případě potřeby můžete připojit nebo odpojit svazek pro virtuální počítače se systémem Windows nebo Linux.  Pokyny k připojení pro virtuální počítače se systémem Linux jsou k dispozici na Azure NetApp Files.  
 
-> [!IMPORTANT] 
-> Aby bylo možné získat přístup ke svazku systému souborů NFS, musíte mít aspoň jednu zásadu exportu.
+## <a name="requirements"></a>Požadavky 
+
+* Aby bylo možné získat přístup ke svazku systému souborů NFS, musíte mít aspoň jednu zásadu exportu.
+* Chcete-li úspěšně připojit svazek systému souborů NFS, zajistěte, aby byly mezi klientem a svazky systému souborů NFS otevřeny následující porty systému souborů NFS:
+    * 111 = `RPCBIND/Portmapper`
+    * 635 = `mountd`
+    * 2049 = `nfs`
+    * 4045 = `nlockmgr` (pouze NFSv3)
+    * 4046 = `status` (pouze NFSv3)
+
+## <a name="steps"></a>Postup
 
 1. Klikněte na okno **svazky** a potom vyberte svazek, ke kterému se chcete připojit. 
 2. Klikněte na **připojit pokyny** z vybraného svazku a pak podle pokynů připojte svazek. 

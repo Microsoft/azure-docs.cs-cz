@@ -1,17 +1,17 @@
 ---
 title: Vstupní vazba Azure Blob Storage pro Azure Functions
-description: Přečtěte si, jak poskytnout data služby Azure Blob Storage do funkce Azure Functions.
+description: Přečtěte si, jak poskytnout data vazby vstupu služby Azure Blob Storage do funkce Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: de590af49e39832a52bf733319b86300ecab2a34
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f5a01724bfefd50297182f998b46f99eacca5843
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213287"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325772"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Vstupní vazba Azure Blob Storage pro Azure Functions
 
@@ -307,7 +307,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `blob` . |
 |**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Výjimky jsou uvedeny v části [použití](#usage) . |
 |**Jméno** | Není k dispozici | Název proměnné, která představuje objekt BLOB v kódu funkce.|
-|**program** |**Blobpath cestou** | Cesta k objektu BLOB |
+|**dílčí** |**Blobpath cestou** | Cesta k objektu BLOB |
 |**vázán** |**Připojení**| Název nastavení aplikace, které obsahuje [připojovací řetězec úložiště](../storage/common/storage-configure-connection-string.md) , který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .<br><br>Připojovací řetězec musí být pro účet úložiště pro obecné účely, nikoli [účet úložiště jen pro objekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |Není k dispozici | **Přístup** | Určuje, zda budete číst nebo zapisovat. |
 

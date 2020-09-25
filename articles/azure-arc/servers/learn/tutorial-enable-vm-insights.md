@@ -2,17 +2,17 @@
 title: Kurz – monitorování hybridního počítače s Azure Monitor pro virtuální počítače
 description: Naučte se shromažďovat a analyzovat data z hybridního počítače v Azure Monitor.
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 76df7d403fdce6fc3ac77c0b24849aedffb57ce0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: 97ab390570f434295a5aa836ef994640f6dc14f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213159"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335411"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>Kurz: monitorování hybridního počítače pomocí Azure Monitor pro virtuální počítače
 
-[Azure monitor](../overview.md) může shromažďovat data přímo z hybridních virtuálních počítačů do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Obvykle by to mělo za následek instalaci [agenta Log Analytics](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) na počítači pomocí skriptu, ručně nebo automatizované metody podle standardů správy konfigurace. Servery s podporou ARC (Preview) nedávno zavedly podporu pro instalaci rozšíření Log Analytics a [virtuálních počítačů](../manage-vm-extensions.md) agenta závislostí pro Windows a Linux, což umožňuje Azure monitor shromažďovat data z virtuálních počítačů mimo Azure.
+[Azure monitor](../overview.md) může shromažďovat data přímo z hybridních virtuálních počítačů do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Obvykle by to mělo za následek instalaci [agenta Log Analytics](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) na počítači pomocí skriptu, ručně nebo automatizované metody podle standardů správy konfigurace. Servery s podporou ARC nedávno zavedly podporu pro instalaci rozšíření Log Analytics a [virtuálních počítačů](../manage-vm-extensions.md) agenta závislostí pro Windows a Linux, což umožňuje Azure monitor shromažďovat data z virtuálních počítačů mimo Azure.
 
 V tomto kurzu se dozvíte, jak nakonfigurovat a shromažďovat data z virtuálních počítačů se systémem Linux nebo Windows tím, že povolíte Azure Monitor pro virtuální počítače následující zjednodušené kroky, což zjednodušuje prostředí a trvá kratší dobu.  
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak nakonfigurovat a shromažďovat data z virtuáln�
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-azure-monitor-for-vms"></a>Povolit Azure Monitor pro virtuální počítače
 

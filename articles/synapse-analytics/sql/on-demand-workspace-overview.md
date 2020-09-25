@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496385"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288524"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL na vyžádání (Preview) ve službě Azure synapse Analytics 
 
@@ -25,9 +25,11 @@ SQL na vyžádání je dotazovací služba na základě dat ve službě Data Lak
 - Známá syntaxe T-SQL pro dotazování na data, aniž byste museli kopírovat nebo načítat data do specializovaného úložiště. 
 - Integrované připojení prostřednictvím rozhraní T-SQL, které nabízí rozsáhlou škálu business intelligence a nástrojů pro dotazování ad-hoc, včetně nejoblíbenějších ovladačů. 
 
-SQL na vyžádání je distribuovaný systém zpracování dat, který je založený na velkém rozsahu dat a výpočetních prostředků. SQL na vyžádání umožňuje analyzovat velké objemy dat v řádu sekund v závislosti na zatížení. Díky integrovanému zajištění odolnosti proti chybám při provádění dotazů poskytuje systém vysokou spolehlivost a úspěšnost i pro dlouhotrvající dotazy zahrnující velké datové sady.
+SQL na vyžádání je distribuovaný systém zpracování dat, který je sestavený pro velké objemy dat a výpočetní funkce. SQL na vyžádání umožňuje analyzovat velké objemy dat v řádu sekund v závislosti na zatížení. Díky integrovanému zajištění odolnosti proti chybám při provádění dotazů poskytuje systém vysokou spolehlivost a úspěšnost i pro dlouhotrvající dotazy zahrnující velké datové sady.
 
-SQL na vyžádání je bez serveru, proto není k dispozici žádná infrastruktura pro instalaci ani clustery. Výchozí koncový bod pro tuto službu je k dispozici v rámci každého pracovního prostoru Azure synapse, takže můžete začít zadávat dotazy na data hned po vytvoření pracovního prostoru. Za rezervované prostředky se neúčtují žádné poplatky, účtují se vám jenom data, která prohledáváte pomocí dotazů, které spustíte, takže tento model je skutečným modelem plateb za použití.  
+SQL na vyžádání je bez serveru, proto není k dispozici žádná infrastruktura pro instalaci ani clustery. Výchozí koncový bod pro tuto službu je k dispozici v rámci každého pracovního prostoru Azure synapse, takže můžete začít zadávat dotazy na data hned po vytvoření pracovního prostoru. 
+
+Za rezervované prostředky se neúčtují žádné poplatky, účtují se vám jenom data zpracovávaná dotazy, a to proto, že tento model představuje skutečný model plateb za použití.  
 
 Pokud používáte Apache Spark pro Azure synapse v datovém kanálu, pro přípravu, čištění nebo obohacení dat, můžete [zadávat dotazy na externí tabulky Spark](develop-storage-files-spark-tables.md) , které jste v procesu vytvořili, přímo z SQL na vyžádání. Pomocí [privátního odkazu](../security/how-to-connect-to-workspace-with-private-links.md) přeneste koncový bod SQL na vyžádání do vaší [virtuální sítě spravovaného pracovního prostoru](../security/synapse-workspace-managed-vnet.md).  
 
@@ -56,7 +58,7 @@ SQL na vyžádání umožňuje existujícím nástrojům pro dotazování ad-hoc
 
 ## <a name="t-sql-support"></a>Podpora T-SQL
 
-SQL na vyžádání nabízí oblast pro dotazování T-SQL, která je mírně rozšířená nebo rozšířená v některých aspektech, aby se zajistila možnost vyhledávání částečně strukturovaných a nestrukturovaných dat. Kromě toho některé aspekty jazyka T-SQL nejsou podporované v důsledku návrhu SQL na vyžádání, jako například funkce DML není aktuálně podporovaná.
+SQL na vyžádání nabízí oblast pro dotazování T-SQL, která je mírně rozšířená nebo rozšířená v některých aspektech, aby se zajistila možnost vyhledávání částečně strukturovaných a nestrukturovaných dat. Kromě toho některé aspekty jazyka T-SQL nejsou podporované z důvodu návrhu SQL na vyžádání, jako je například funkce DML není v současné době podporovaná.
 
 - Úlohy je možné organizovat pomocí známých konceptů:
 - Databáze – koncový bod SQL na vyžádání může mít více databází.
@@ -77,7 +79,7 @@ Podporované T-SQL:
 - CETAS – VYTVOŘIT EXTERNÍ TABULKU JAKO SELECT
 - Příkazy DDL související s pohledy a zabezpečením
 
-SQL na vyžádání nemá žádné místní úložiště, ukládají se do databází jenom objekty metadat. Proto není podporován T-SQL, který se týká následujících konceptů:
+SQL na vyžádání nemá žádné místní úložiště, ukládají se do databází jenom objekty metadat. Proto se T-SQL, který souvisí s následujícími koncepty, nepodporuje:
 
 - Tabulky
 - Aktivační události

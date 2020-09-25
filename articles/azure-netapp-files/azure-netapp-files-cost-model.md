@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c4eebae6909c9ef0969bc85bcb9a985db2a7c02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84142142"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325602"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Model nákladů pro Azure NetApp Files 
 
-Princip nákladového modelu pro Azure NetApp Files vám pomůže se správou vašich výdajů ze služby.
+Princip nákladového modelu pro Azure NetApp Files vám pomůže se správou vašich výdajů ze služby. 
+
+Nákladový model specifický pro replikaci mezi oblastmi najdete v tématu [cost model pro replikaci mezi jednotlivými oblastmi](cross-region-replication-introduction.md#cost-model-for-cross-region-replication).
 
 ## <a name="calculation-of-capacity-consumption"></a>Výpočet spotřeby kapacity
 
@@ -61,6 +63,7 @@ Velikost fondu můžete zvětšit nebo zmenšit ručně. Platí ale následujíc
 * TiB přírůstek po počátečním 4 TiB minimálním nákupu
 * Minimální přírůstek fakturace za hodinu
 * Velikost zřízeného fondu se nemusí snížit na míň než celková využitá kapacita fondu.
+* U fondů kapacit s ruční technologií QoS se dá velikost fondu snížit jenom v případě, že velikost a úroveň služby poskytují větší propustnost než skutečná přiřazená propustnost všech svazků.
 
 ## <a name="behavior-of-maximum-size-pool-overage"></a>Chování maximální velikosti nadlimitního fondu   
 
@@ -94,3 +97,4 @@ Spotřeba kapacity snímků v Azure NetApp Files se účtuje na základě kvóty
 * [Stránka s cenami Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Nákladový model pro replikaci mezi oblastmi](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)

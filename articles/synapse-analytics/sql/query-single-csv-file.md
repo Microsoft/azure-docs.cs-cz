@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288286"
 ---
-# <a name="query-csv-files"></a>Dotazování na soubory CSV
+# <a name="query-csv-files"></a>Dotazování souborů CSV
 
 V tomto článku se dozvíte, jak zadat dotaz na jeden soubor CSV pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics. Soubory CSV můžou mít různé formáty: 
 
@@ -29,7 +29,7 @@ Všechny výše uvedené variace budou uvedené níže.
 
 ## <a name="quickstart-example"></a>Příklad rychlého startu
 
-`OPENROWSET`funkce umožňuje číst obsah souboru CSV zadáním adresy URL souboru.
+`OPENROWSET` funkce umožňuje číst obsah souboru CSV zadáním adresy URL souboru.
 
 ### <a name="read-a-csv-file"></a>Čtení souboru CSV
 
@@ -72,7 +72,7 @@ Pokud je zdroj dat chráněný pomocí klíče SAS nebo vlastní identity, můž
 
 ### <a name="explicitly-specify-schema"></a>Explicitně zadat schéma
 
-`OPENROWSET`umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
+`OPENROWSET` umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
 
 ```sql
 select top 10 *

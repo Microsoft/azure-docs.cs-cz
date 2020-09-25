@@ -1,5 +1,5 @@
 ---
-title: Správa administrativních jednotek (Preview) – Azure AD | Microsoft Docs
+title: Jednotky pro správu v Azure Active Directory | Microsoft Docs
 description: Použití jednotek pro správu k podrobnějšímu delegování oprávnění v Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: a31c4a5c9d20b5b248f7d722ed3d9289bbb4dded
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376379"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335812"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Správa administrativních jednotek v Azure Active Directory (Preview)
+# <a name="administrative-units-in-azure-active-directory"></a>Jednotky pro správu v Azure Active Directory
 
-Tento článek popisuje jednotky pro správu v Azure Active Directory (Azure AD). Jednotka pro správu je prostředek služby Azure AD, který může být kontejnerem pro jiné prostředky Azure AD. V této verzi Preview může jednotka pro správu obsahovat jenom uživatele a skupiny.
+Tento článek popisuje jednotky pro správu v Azure Active Directory (Azure AD). Jednotka pro správu je prostředek služby Azure AD, který může být kontejnerem pro jiné prostředky Azure AD. Jednotka pro správu může obsahovat pouze uživatele a skupiny.
 
 Jednotky pro správu umožňují udělit oprávnění správce, která jsou omezená na oddělení, oblast nebo jiný segment vaší organizace, kterou definujete. Jednotky pro správu můžete použít k delegování oprávnění pro místní správce nebo k nastavení zásad na podrobné úrovni. Správce uživatelských účtů může například aktualizovat informace o profilu, resetovat hesla a přiřazovat licence uživatelům pouze ve své jednotce pro správu.
 
@@ -44,11 +44,11 @@ Použití jednotek pro správu vyžaduje licenci Azure Active Directory Premium 
 
 ## <a name="manage-administrative-units"></a>Spravovat jednotky pro správu
 
-V této verzi Preview můžete spravovat jednotky pro správu pomocí Azure Portal, rutin prostředí PowerShell a skriptů nebo Microsoft Graph. Podrobnosti najdete v naší dokumentaci:
+Jednotky pro správu můžete spravovat pomocí Azure Portal, rutin prostředí PowerShell a skriptů nebo Microsoft Graph. Podrobnosti najdete v naší dokumentaci:
 
 - [Vytváření, odebírání, naplnění a přidávání rolí do jednotek pro správu](roles-admin-units-manage.md): kompletní postupy postupů
-- [Práce s jednotkami](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)pro správu: jak pracovat s jednotkami pro správu pomocí PowerShellu
-- [Podpora grafu jednotek pro správu](/graph/api/resources/administrativeunit?view=graph-rest-beta): podrobná dokumentace k Microsoft Graph pro jednotky pro správu.
+- [Práce s jednotkami](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)pro správu: jak pracovat s jednotkami pro správu pomocí PowerShellu
+- [Podpora grafu jednotek pro správu](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true): podrobná dokumentace k Microsoft Graph pro jednotky pro správu.
 
 ### <a name="planning-your-administrative-units"></a>Plánování jednotek pro správu
 

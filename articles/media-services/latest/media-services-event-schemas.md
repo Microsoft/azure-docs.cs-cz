@@ -1,6 +1,6 @@
 ---
 title: Azure Event Grid schémat pro události Media Services
-description: Popisuje vlastnosti, které jsou k dispozici pro Media Services události s Azure Event Grid
+description: Přečtěte si o vlastnostech, které jsou k dispozici pro Media Services události s Azure Event Grid.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f7c9f3b000973868c003477e58de14634b139cae
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 47ba1af15101ae68cf5311ed73f7078bf9fc7f35
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267662"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336424"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémat pro události Media Services
 
@@ -446,7 +446,7 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | časové razítko | řetězec | Časové razítko přehozených bloků dat |
 | měřítk | řetězec | Časová osa časového razítka. |
 | resultCode | řetězec | Důvod přetažení datového bloku **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
@@ -486,7 +486,7 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |
 | encoderIp | řetězec  | IP adresa kodéru. |
 | encoderPort | řetězec | Port kodéru, ze kterého přichází tento datový proud. |
@@ -603,13 +603,13 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
-| incomingBitrate | celé číslo | Vypočtená přenosová rychlost založená na datových blocích přicházejících z kodéru. |
+| rychlostí | integer | Přenosová rychlost stopy |
+| incomingBitrate | integer | Vypočtená přenosová rychlost založená na datových blocích přicházejících z kodéru. |
 | lastTimestamp | řetězec | Poslední přijaté časové razítko pro stopu za posledních 20 sekund. |
 | měřítk | řetězec | Časové měřítko, ve kterém jsou vyjádřena časová razítka. |
-| overlapCount | celé číslo | Počet bloků dat má překrývající se časová razítka za posledních 20 sekund. |
-| discontinuityCount | celé číslo | Počet nekontinuity zjištěných za posledních 20 sekund. |
-| nonIncreasingCount | celé číslo | Počet datových bloků s časovými razítky v minulosti byl přijat za posledních 20 sekund. |
+| overlapCount | integer | Počet bloků dat má překrývající se časová razítka za posledních 20 sekund. |
+| discontinuityCount | integer | Počet nekontinuity zjištěných za posledních 20 sekund. |
+| nonIncreasingCount | integer | Počet datových bloků s časovými razítky v minulosti byl přijat za posledních 20 sekund. |
 | unexpectedBitrate | bool | Pokud se očekává a Skutečná přenosová rychlost se v posledních 20 sekundách liší od více než povoleného limitu. Je true pouze v případě, že incomingBitrate >= 2 * přenosová rychlost nebo incomingBitrate <= přenosová rychlost/2 nebo IncomingBitrate = 0. |
 | state | řetězec | Stav živé události. |
 | v pořádku | bool | Uvádí, zda je příjem dat v pořádku v závislosti na počtu a příznacích. V pořádku má hodnotu true, pokud overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false. |
@@ -647,7 +647,7 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | previousTimestamp | řetězec | Časové razítko předchozího fragmentu |
 | newTimestamp | řetězec | Časové razítko aktuálního fragmentu |
 | discontinuityGap | řetězec | Mezera mezi více než dvěma časovými razítky. |

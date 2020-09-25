@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: vytvoření geografického a sledovacího zařízení na Azure Maps'
-description: Přečtěte si, jak nastavit geografickou ochranu. Podívejte se, jak sledovat zařízení vzhledem k geografickým záznamům pomocí Azure Maps prostorové služby.
+title: 'Kurz: vytvoření geografického a sledovacího zařízení na mapě Microsoft Azure'
+description: Kurz jak nastavit geografickou ochranu Podívejte se, jak sledovat zařízení relativní vzhledem k geografickým záznamům pomocí Azure Maps prostorové služby.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 8/11/2020
+ms.date: 8/20/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335190"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: Nastavení monitorované geografické zóny pomocí Azure Maps
 
@@ -188,7 +188,7 @@ V tomto kurzu nahrajete data geografického geografického geografického monito
 
 V dalším kroku vytvoříte dva koncové body [Aplikace logiky](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , které aktivují e-mailové oznámení. Tady je postup, jak vytvořit první z těchto akcí:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**.
 
@@ -429,14 +429,14 @@ V předchozí odpovědi typu geografická odpověď byla zařízení v geografic
 
 V předchozí odpovědi na geografickou odpověď bylo zařízení v geografickém geografickém umístění, ale ukončilo geografickou lokalitu. Všimněte si však, že `userTime` hodnota je po `expiredTime` Definování definice v geograficky dat. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `false` a Operations Manager neobdrží e-mailové oznámení.
 
-### <a name="location-547637988-1221338344"></a>Umístění 5 (47.637988,-122,1338344)
+### <a name="location-5-4763799--122134505"></a>Umístění 5 (47,63799,-122,134505)
 
 1. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Nastavte *umístění na 5*. Vyberte kolekci, kterou jste vytvořili v [části nahrát data geografického monitorování geografických zón](#upload-geofencing-geojson-data), a pak vyberte **Uložit**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. Ujistěte `{Azure-Maps-Primary-Subscription-key}` se, že jste nahradili primární klíč předplatného a `{udid}` `udid` uložili jste ho v [části nahrání geografických dat pro ukládání geografických zón](#upload-geofencing-geojson-data).
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 3. Vyberte **Poslat**. V okně odpověď se zobrazí následující text v poli s odpovědí:
@@ -469,13 +469,10 @@ V předchozí odpovědi na geografickou odpověď bylo zařízení v geografick�
 
 V předchozí odpovědi typu geografická odpověď byla zařízení ukončena geografickou lokalitou. V důsledku toho `isEventPublished` je parametr nastaven na hodnotu `true` a Operations Manager dostane e-mailové oznámení oznamující, že se zařízení ukončilo geografickou ochranou.
 
+
+Můžete také [Odeslat e-mailová oznámení pomocí Event Grid a Logic Apps](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) a pomocí Azure Mapsu kontrolovat [podporované obslužné rutiny událostí v Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers) .
+
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Zpracování typů obsahu v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
-
-> [!div class="nextstepaction"]
-> [Odesílání e-mailových oznámení pomocí Event Grid a Logic Apps](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
-
-> [!div class="nextstepaction"]
-> [Podporované obslužné rutiny událostí v Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers)

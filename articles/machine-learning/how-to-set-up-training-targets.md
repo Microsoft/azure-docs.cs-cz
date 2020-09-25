@@ -1,5 +1,5 @@
 ---
-title: Odeslání školicího běhu do cíle výpočetní technologie
+title: Konfigurace spuštění školení
 titleSuffix: Azure Machine Learning
 description: Naučte svůj model strojového učení v různých školicích prostředích (cíle výpočtů). Mezi školicími prostředími můžete snadno přepínat. Spusťte školení místně. Pokud potřebujete horizontální navýšení kapacity, přepněte na cloudový cíl výpočtů.
 services: machine-learning
@@ -8,46 +8,43 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/28/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8b07d19ca88a2d680a4f9efbb85fcf60b895a2b3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f93b6ab43e1dbf9230c92d22f8fb22ca48eb720e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275757"
 ---
-# <a name="submit-a-training-run-to-a-compute-target"></a>Odeslání školicího běhu do cíle výpočetní technologie
+# <a name="configure-and-submit-training-runs"></a>Konfigurace a odeslání školicích běhů
 
-V tomto článku se dozvíte, jak pomocí různých školicích prostředí ([cílů výpočtů](concept-compute-target.md)) naučit svůj model Machine Learning.
+V tomto článku se dozvíte, jak nakonfigurovat a odeslat Azure Machine Learning běhy pro výuku vašich modelů.
 
-Po školení je běžné spustit na místním počítači a později spustit tento školicí skript na jiném cílovém výpočetním prostředí. Pomocí Azure Machine Learning můžete skript spustit na různých výpočetních cílech, aniž byste museli měnit školicí skript.
+Po školení je běžné začít na místním počítači a později škálovat na cloudový cluster. Pomocí Azure Machine Learning můžete skript spustit na různých výpočetních cílech, aniž byste museli měnit školicí skript.
 
 Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění skriptu**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
-* [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+* [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (>= 1.13.0)
 * [Azure Machine Learning pracovní prostor](how-to-manage-workspace.md),`ws`
 * Cíl výpočtů, `my_compute_target` .  Vytvořte cíl výpočtů pomocí:
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
   * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Co je konfigurace spuštění skriptu?
+[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) se používá ke konfiguraci informací nezbytných pro odeslání školicích běhů v rámci experimentu.
 
-Odešlete experiment školení s objektem [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) .  Tento objekt obsahuje:
+Odešlete experiment školení s objektem ScriptRunConfig.  Tento objekt obsahuje:
 
 * **source_directory**: zdrojový adresář, který obsahuje školicí skript.
-* **skript**: identifikace školicího skriptu
-* **run_config**: [Konfigurace spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true), která zase definuje, kde se bude probíhat školení. V rámci `run_config` zadáte cílový výpočetní výkon a prostředí, které se má použít při spuštění školicího skriptu.  
-
-## <a name="whats-an-environment"></a>Co je prostředí?
-
-Azure Machine Learning [prostředí](concept-environments.md) jsou zapouzdření prostředí, ve kterém se vaše školení ve službě Machine Learning stane. Určují balíčky Pythonu, proměnné prostředí a nastavení softwaru kolem vašich školicích a vyhodnocovacích skriptů. Určují také časy spuštění (Python, Spark nebo Docker).  
-
-Prostředí jsou specifikována v  `run_config` objektu uvnitř `ScriptRunConfig` .
+* **skript**: školicí skript, který se má spustit
+* **compute_target**: výpočetní cíl, na kterém se má spustit
+* **prostředí**: prostředí, které se má použít při spuštění skriptu.
+* a některé další konfigurovatelné možnosti (Další informace najdete v [referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) )
 
 ## <a name="train-your-model"></a><a id="submit"></a>Trénování modelu
 
@@ -55,13 +52,12 @@ Vzor kódu pro odeslání školicího běhu je stejný pro všechny typy výpoč
 
 1. Vytvoření experimentu ke spuštění
 1. Vytvořte prostředí, ve kterém se skript spustí.
-1. Vytvoření konfigurace spuštění skriptu, která odkazuje na cíl a prostředí výpočtů
+1. Vytvoření ScriptRunConfig, které určuje cíl a prostředí výpočtů
 1. Odeslat běh
 1. Počkat na dokončení běhu
 
 Nebo můžete:
 
-* Odešlete experiment s `Estimator` objektem, jak je znázorněno v [modelech vlak ml pomocí odhady](how-to-train-ml-models.md).
 * Odešlete HyperDrive spuštění pro [ladění pomocí parametrů](how-to-tune-hyperparameters.md).
 * Odešlete experiment prostřednictvím [rozšíření vs Code](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model).
 
@@ -73,19 +69,27 @@ Vytvořte experiment v pracovním prostoru.
 from azureml.core import Experiment
 
 experiment_name = 'my_experiment'
-
 experiment = Experiment(workspace=ws, name=experiment_name)
 ```
 
-## <a name="create-an-environment"></a>Vytvoření prostředí
+## <a name="select-a-compute-target"></a>Vybrat cíl výpočtů
 
-Podaná prostředí obsahují kolekce balíčků Pythonu, které jsou ve výchozím nastavení k dispozici ve vašem pracovním prostoru. Tato prostředí se zálohují pomocí imagí Docker uložených v mezipaměti, což snižuje náklady na přípravu na spuštění. Pro vzdálený cíl výpočetní služby můžete použít některé z těchto oblíbených prostředí, která zahájí:
+Vyberte výpočetní cíl, na kterém se má školicí skript spustit. Pokud se v ScriptRunConfig nezadá žádný cíl výpočtů, nebo pokud `compute_target='local'` Azure ml provede místní spuštění skriptu. 
+
+Vzorový kód v tomto článku předpokládá, že jste již vytvořili výpočetní cíl v `my_compute_target` části požadavky.
+
+## <a name="create-an-environment"></a>Vytvoření prostředí
+Azure Machine Learning [prostředí](concept-environments.md) jsou zapouzdření prostředí, ve kterém se vaše školení ve službě Machine Learning stane. Určují balíčky Pythonu, image Docker, proměnné prostředí a nastavení softwaru v rámci vašich školicích a vyhodnocovacích skriptů. Určují také moduly runtime (Python, Spark nebo Docker).
+
+Můžete buď definovat vlastní prostředí, nebo použít známé prostředí Azure ML. Sestupná [prostředí](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#use-a-curated-environment) jsou předdefinovaná prostředí, která jsou ve výchozím nastavení k dispozici ve vašem pracovním prostoru. Tato prostředí se zálohují pomocí imagí Docker uložených v mezipaměti, což snižuje náklady na přípravu na spuštění. Úplný seznam dostupných prostředí, která jsou k dispozici, najdete v tématu [Azure Machine Learning uspořádaná prostředí](https://docs.microsoft.com/azure/machine-learning/resource-curated-environments) .
+
+Pro vzdálený cíl výpočetní služby můžete použít některé z těchto oblíbených prostředí, která zahájí:
 
 ```python
 from azureml.core import Workspace, Environment
 
 ws = Workspace.from_config()
-my_environment = Environment.get(workspace=ws, name="AzureML-Minimal")
+myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
 Další informace a podrobnosti o prostředích najdete v tématu [vytvoření & použití softwarových prostředí v Azure Machine Learning](how-to-use-environments.md).
@@ -97,47 +101,45 @@ Pokud je váš cíl výpočetní služby vaším **místním počítačem**, zod
 ```python
 from azureml.core import Environment
 
-# Editing a run configuration property on-fly.
-my_environment = Environment("user-managed-env")
-
-my_environment.python.user_managed_dependencies = True
+myenv = Environment("user-managed-env")
+myenv.python.user_managed_dependencies = True
 
 # You can choose a specific Python environment by pointing to a Python path 
-#my_environment.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
+# myenv.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
 ```
 
-## <a name="create-script-run-configuration"></a>Vytvořit konfiguraci spuštění skriptu
+## <a name="create-the-script-run-configuration"></a>Vytvoření konfigurace spuštění skriptu
 
-Teď, když máte výpočetní cíl ( `compute_target` ) a prostředí ( `my_environment` ), vytvořte konfiguraci spuštění skriptu, která spustí školicí skript (), který `train.py` se nachází ve vašem `project_folder` adresáři:
+Teď, když máte výpočetní cíl ( `my_compute_target` ) a prostředí ( `myenv` ), vytvořte konfiguraci spuštění skriptu, která spustí školicí skript (), který `train.py` se nachází ve vašem `project_folder` adresáři:
 
 ```python
 from azureml.core import ScriptRunConfig
 
-script_run_config = ScriptRunConfig(source_directory=project_folder, script='train.py')
-
-# Set compute target
-script_run_config.run_config.target = my_compute_target
-
-# Set environment.   If you don't do this, a default environment will be created.
-script_run_config.run_config.environment = my_environment
+src = ScriptRunConfig(source_directory=project_folder,
+                      script='train.py',
+                      compute_target=my_compute_target,
+                      environment=myenv)
 ```
 
-Můžete také chtít nastavit rozhraní pro svůj běh.
+Pokud nezadáte prostředí, vytvoří se pro vás výchozí prostředí.
 
-* Pro cluster HDI:
-    ```python
-    src.run_config.framework = "pyspark"
-    ```
+Pokud máte argumenty příkazového řádku, které chcete předat skriptu pro školení, můžete je zadat prostřednictvím **`arguments`** parametru konstruktoru ScriptRunConfig, např. `arguments=['--arg1', arg1_val, '--arg2', arg2_val]` .
 
-* Pro vzdálený virtuální počítač:
-    ```python
-    src.run_config.framework = "python"
-    ```
+Pokud chcete přepsat výchozí maximální dobu povolenou pro spuštění, můžete to provést prostřednictvím **`max_run_duration_seconds`** parametru. Systém se pokusí spuštění automaticky zrušit, pokud trvá déle než tato hodnota.
+
+### <a name="specify-a-distributed-job-configuration"></a>Zadat konfiguraci distribuované úlohy
+Pokud chcete spustit úlohu distribuovaného školení, zadejte pro parametr konfiguraci specifickou pro distribuovanou úlohu **`distributed_job_config`** . Podporované typy konfigurace zahrnují [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true). 
+
+Další informace a příklady spouštění distribuovaných úloh Horovod, TensorFlow a PyTorch najdete v těchto tématech:
+
+* [Trénování modelů TensorFlow](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow#distributed-training)
+* [Trénování modelů PyTorch](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch#distributed-training)
 
 ## <a name="submit-the-experiment"></a>Odeslání experimentu
 
 ```python
-run = experiment.submit(config=script_run_config)
+run = experiment.submit(config=src)
+run.wait_for_completion(show_output=True)
 ```
 
 > [!IMPORTANT]
@@ -147,17 +149,24 @@ run = experiment.submit(config=script_run_config)
 > 
 > Další informace o snímcích najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshots).
 
+> [!IMPORTANT]
+> **Speciální složky** Dvě složky, *výstupy* a *protokoly*dostanou zvláštní zacházení Azure Machine Learning. Když při výuce zapisujete soubory do složek s názvem *výstupy* a *protokoly* , které jsou relativní vzhledem ke kořenovému adresáři ( `./outputs` a v `./logs` uvedeném pořadí), soubory se automaticky nahrají do historie spuštění, abyste k nim měli přístup, až se vaše spuštění dokončí.
+>
+> Chcete-li během školení vytvořit artefakty (například soubory modelů, kontrolní body, datové soubory nebo vykreslené bitové kopie), zapište je do `./outputs` složky.
+>
+> Podobně můžete do složky napsat jakékoli protokoly z školicích běhů `./logs` . Aby bylo možné využívat Azure Machine Learning [integrace TensorBoard](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) , nezapomeňte zapisovat do této složky protokoly TensorBoard. Během probíhajícího běhu budete moct spouštět TensorBoard a streamovat tyto protokoly.  Později také budete moci obnovit protokoly z libovolného z předchozích spuštění.
+>
+> Například pro stažení souboru zapsaného do složky *výstupy* do místního počítače po spuštění vzdáleného školení: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
-<a id="gitintegration"></a>
-
-## <a name="git-tracking-and-integration"></a>Sledování a integrace Git
+## <a name="git-tracking-and-integration"></a><a id="gitintegration"></a>Sledování a integrace Git
 
 Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 
-Příklady školení s různými cíli výpočtů najdete v těchto poznámkových blocích:
+Příklady konfigurace spuštění různých školicích scénářů najdete v těchto poznámkových blocích:
 * [postupy – použití – AzureML/školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [Postupy: použití-AzureML/ml – rozhraní](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 * [kurzy/img-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
@@ -165,7 +174,8 @@ Příklady školení s různými cíli výpočtů najdete v těchto poznámkový
 ## <a name="next-steps"></a>Další kroky
 
 * [Kurz: výuka modelu](tutorial-train-models-with-aml.md) používá ke školení modelu spravovaný výpočetní cíl.
-* Přečtěte si, jak [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.? zobrazení = Azure-ml-py&Preserve-View = true)
+* Podívejte se, jak naučit modely s konkrétními rozhraními ML, jako jsou [Scikit-učení](how-to-train-scikit-learn.md), [TensorFlow](how-to-train-tensorflow.md)a [PyTorch](how-to-train-pytorch.md).
+* Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.
 * Jakmile budete mít školený model, zjistěte, [jak a kde nasadit modely](how-to-deploy-and-where.md).
-* Zobrazit odkaz na sadu SDK [třídy RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true)
+* Zobrazit odkaz na sadu SDK [třídy ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)
 * [Použití Azure Machine Learning s Azure Virtual Networks](how-to-enable-virtual-network.md)

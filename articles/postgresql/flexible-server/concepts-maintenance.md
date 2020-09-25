@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 35e5e688f5589c23c7c583c7bcbca3fd0956eec7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ffee15776a48b6495f78b6becf81c620e1dc4d69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935032"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336305"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>Naplánovaná údržba v Azure Database for PostgreSQL – flexibilní Server
  
@@ -46,5 +46,5 @@ Pokud systém zruší událost údržby nebo se nepodaří úspěšně dokončit
 ## <a name="next-steps"></a>Další kroky
  
 * Informace o tom, jak [změnit plán údržby](how-to-maintenance-portal.md)
-* Naučte se [dostávat oznámení o nadcházející údržbě](/azure/service-health/service-notifications.md) pomocí Azure Service Health
-* Přečtěte si, jak [nastavit výstrahy o nadcházejících událostech plánované údržby](/azure/service-health/resource-health-alert-monitor-guide.md) .
+* Naučte se [dostávat oznámení o nadcházející údržbě](../../service-health/service-notifications.md) pomocí Azure Service Health
+* Přečtěte si, jak [nastavit výstrahy o nadcházejících událostech plánované údržby](../../service-health/resource-health-alert-monitor-guide.md) .

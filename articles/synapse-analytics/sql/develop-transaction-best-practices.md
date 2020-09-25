@@ -1,6 +1,6 @@
 ---
 title: Optimalizujte transakce pro fond SQL.
-description: Naučte se optimalizovat výkon transakčního kódu ve fondu SQL (datový sklad) a současně minimalizovat riziko pro dlouhé vrácení zpět.
+description: Naučte se optimalizovat výkon transakčního kódu ve fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288643"
 ---
 # <a name="optimize-transactions-in-sql-pool"></a>Optimalizace transakcí ve fondu SQL
 
@@ -23,7 +23,7 @@ Přečtěte si, jak optimalizovat výkon transakčního kódu ve fondu SQL a zá
 
 ## <a name="transactions-and-logging"></a>Transakce a protokolování
 
-Transakce jsou důležitou součástí databázového stroje relační databáze. Fond SQL používá během změny dat transakce. Tyto transakce můžou být explicitní nebo implicitní. Jednoduché příkazy INSERT, UPDATE a DELETE jsou všechny příklady implicitních transakcí. Explicitní transakce používají příkaz BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, pokud je potřeba spojit více příkazů úprav v jedné atomické jednotce.
+Transakce jsou důležitou součástí databázového stroje relační databáze. Fond SQL používá během změny dat transakce. Tyto transakce můžou být explicitní nebo implicitní. Jednoduché příkazy INSERT, UPDATE a DELETE jsou všechny příklady implicitních transakcí. Explicitní transakce používají příkaz BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, pokud je potřeba spojit více příkazů pro úpravu s jednou atomickou jednotkou.
 
 Fond SQL potvrdí změny v databázi pomocí protokolů transakcí. Každá distribuce má svůj vlastní transakční protokol. Zápisy do protokolu transakcí jsou automatické. Není nutná žádná konfigurace. Nicméně i když tento proces zaručuje, že při zápisu se v systému zavádí režie. Tento dopad můžete minimalizovat zapsáním transakčního efektivního kódu. Velmi účinný efektivní kód spadá do dvou kategorií.
 
@@ -68,7 +68,7 @@ CTAS a vložit... VYBRAT jsou operace hromadného načtení. Obě jsou však ovl
 
 | Primární index | Scénář načtení | Režim protokolování |
 | --- | --- | --- |
-| Halda |Libovolný |**Minimální** |
+| Halda |Všechny |**Minimální** |
 | Clusterovaný index |Prázdná cílová tabulka |**Minimální** |
 | Clusterovaný index |Načtené řádky se nepřesahují s existujícími stránkami v cíli. |**Minimální** |
 | Clusterovaný index |Načtené řádky se překrývají s existujícími stránkami v cíli. |Do bloku |
@@ -84,7 +84,7 @@ Načtení dat do neprázdné tabulky s clusterovaným indexem může často obsa
 
 ## <a name="optimize-deletes"></a>Optimalizovat odstranění
 
-ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že `SELECT` data, která chcete zachovat, je vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zahodíte starou tabulku s nově vytvořenou tabulkou.
+ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že `SELECT` data, která chcete zachovat, je vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zahodíte starou tabulku s nově vytvořenou tabulkou.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
