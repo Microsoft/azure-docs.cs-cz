@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306510"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
@@ -29,7 +29,7 @@ Správa přístupu ke všem zdrojům prostředků, jako jsou skupiny, aplikace a
 
 V tomto kurzu pracujete s Woodgrove bankou jako s správcem IT. Byli jste požádáni o vytvoření balíčku prostředků pro marketingovou kampaň, na které interní uživatelé můžou samoobslužné požadavky. Žádosti nevyžadují schválení a přístup uživatele vyprší po 30 dnech. Pro účely tohoto kurzu jsou prostředky marketingové kampaně pouze členstvím v jedné skupině, ale může se jednat o kolekci skupin, aplikací nebo webů SharePointu Online.
 
-![Přehled scénáře](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![Diagram, který zobrazuje přehled scénáře.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 V tomto kurzu se naučíte:
 
@@ -44,7 +44,7 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 Balíček pro přístup můžete také vytvořit programově pomocí Microsoft Graph. Kurz, ve kterém se dozvíte, jak vytvořit balíček pro přístup prostřednictvím kódu programu, najdete v tématu [rozhraní API pro správu oprávnění](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
@@ -110,7 +110,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
      Ve výchozím nastavení se zobrazují skupiny v katalogu Obecné. Když vyberete skupinu mimo katalog obecné, uvidíte, že zaškrtnutí políčka **Zobrazit vše** bude přidáno do katalogu Obecné.
 
-    ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Snímek obrazovky zobrazující kartu nové přístupové balíčky a role prostředků a okno vybrat skupiny](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. Kliknutím na **Vybrat** přidejte skupinu do seznamu.
 
@@ -266,4 +266,4 @@ V tomto kroku odeberete změny, které jste provedli, a odstraníte balíček p�
 
 V dalším článku se dozvíte víc o běžných krocích scénářů v tématu Správa nároků.
 > [!div class="nextstepaction"]
-> [Obvyklé scénáře](entitlement-management-scenarios.md)
+> [Typické scénáře](entitlement-management-scenarios.md)

@@ -9,31 +9,30 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 48080bb4d1e24f7f98d3dfe1fd63b65ba46df35e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7259e1981f873c8385a02fe4f353dcdda495f823
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289912"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287405"
 ---
 ### <a name="property-limits"></a>Omezení vlastností
 
 Azure Time Series Insights limity vlastností se zvýšily na 1 000 z maximálního limitu 800 v Gen1. Zadané vlastnosti událostí mají odpovídající sloupce JSON, CSV a grafu, které lze zobrazit v [Azure Time Series Insights Průzkumníku Gen2](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
-| Skladová položka | Maximální vlastnosti |
+| SKU | Maximální vlastnosti |
 | --- | --- |
 | Gen2 (L1) | 1 000 vlastnosti (sloupce) |
 | Gen1 (S1) | 600 vlastnosti (sloupce) |
 | Gen1 (S2) | 800 vlastnosti (sloupce) |
 
-### <a name="event-sources"></a>Zdroje událostí
+### <a name="streaming-ingestion"></a>Příjem streamování
 
-Podporuje se maximálně dva zdroje událostí na instanci.
+* Každé prostředí může mít maximálně dva [zdroje událostí](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md) .
 
-* Naučte se [Přidat zdroj centra událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
-* Nakonfigurujte [Zdroj služby IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
+* Doporučené postupy a obecné pokyny pro zdroje událostí najdete [tady](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) .
 
-Ve výchozím nastavení [prostředí Gen2 podporují](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingress-throughput-limits) příchozí přenosy až o **1 megabajt za sekundu (MB/s) na prostředí**. V případě potřeby můžou zákazníci škálovat jejich prostředí až o **16 MB/s** . K dispozici je také omezení počtu **0,5 MB/s**na oddíly.
+* Ve výchozím nastavení Azure Time Series Insights Gen2 může ingestovat příchozí data rychlostí **až 1 MB za sekundu (MB/s) na Azure Time Series Insights prostředí Gen2**. Existují další omezení [na oddíl centra](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits). Sazby až 8 MB/s můžete poskytnout odesláním lístku podpory prostřednictvím Azure Portal. Pokud se chcete dozvědět víc, přečtěte si [omezení propustnosti příjmu streamování](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md).
 
 ### <a name="api-limits"></a>Omezení rozhraní API
 

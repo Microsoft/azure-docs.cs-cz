@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825439"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287317"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak vytvořit sdílenou složku Azure ověřenou �
 
 Tento proces používá Active Directory Domain Services (služba AD DS), což je adresářová služba Prem. Pokud hledáte informace o tom, jak vytvořit kontejner profilu FSLogix pomocí Azure služba AD DS, přečtěte si téma [vytvoření kontejneru profilu FSLogix se soubory Azure](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že je váš řadič domény synchronizovaný do Azure a je možné ho přeložit ze služby Azure Virtual Network (VNET), ke které jsou hostitelé relace připojení.
 
@@ -29,7 +29,7 @@ Nejdřív budete muset nastavit účet úložiště Azure Files.
 
 Nastavení účtu úložiště:
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Na panelu hledání vyhledejte **účet úložiště** .
 
@@ -56,7 +56,7 @@ Vytvoření sdílené složky:
 
 1. Vyberte **Přejít k prostředku**.
 
-2. Na stránce Přehled vyberte **sdílení souborů**.
+2. Na stránce Přehled vyberte **Sdílené složky**.
 
 3. Vyberte **+ sdílené složky**, vytvořte novou sdílenou složku s názvem **Profiles**a pak zadejte vhodnou kvótu nebo nechte pole prázdné pro možnost žádná kvóta.
 
@@ -154,7 +154,7 @@ Konfigurace oprávnění systému souborů NTFS:
 2. Spusťte následující příkaz pro připojení sdílené složky Azure a přiřazení písmene jednotky:
 
      ```cmd
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
 3. Spuštěním následujícího příkazu zkontrolujte přístupová oprávnění ke sdílené složce Azure:

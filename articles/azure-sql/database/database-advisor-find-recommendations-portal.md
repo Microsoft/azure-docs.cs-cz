@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 0e13d69b8d821267a993cd2ca9a3b6d0d686ccf9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284530"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na ná
 
 Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do následujících kategorií:
 
-| Dopad | Description |
+| Dopad | Popis |
 |:--- |:--- |
 | Vysoké |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
 | Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
@@ -168,7 +168,7 @@ Sledujte vaše doporučení a pokračujte v jejich použití pro zlepšení výk
 * Přehled Azure SQL Databasech doporučení týkajících se výkonu najdete v tématu [doporučení pro výkon](database-advisor-implement-performance-recommendations.md) .
 * V tématu [Přehled výkonu dotazů](query-performance-insight-use.md) najdete informace o tom, jak zobrazit dopad vašich dotazů na výkon.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)

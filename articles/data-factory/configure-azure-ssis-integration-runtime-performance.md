@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523311"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276658"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace Azure-SSIS Integration Runtime pro vysoký výkon
 
@@ -122,8 +122,7 @@ Osa y je počet balíčků, které dokončily provádění během jedné hodiny.
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. V případě Standard_D1_v2ch uzlů je podporována paralelní spouštění 1-4 na uzel. Pro všechny ostatní typy uzlů je podporovaná hodnota 1 – Max (2 x počet jader, 8) paralelního spouštění na uzel. Pokud chcete **AzureSSISMaxParallelExecutionsPerNode** nad rámec maximální hodnoty, kterou podporujeme, můžete otevřít lístek podpory a můžeme prodloužit maximální hodnotu pro vás a potom, co potřebujete k aktualizaci **AzureSSISMaxParallelExecutionsPerNode**pomocí Azure PowerShellu.
-Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
+Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. Pokud chcete zvýšit maximální hodnotu, je potřeba použít Azure PowerShell k aktualizaci **AzureSSISMaxParallelExecutionsPerNode**. Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|

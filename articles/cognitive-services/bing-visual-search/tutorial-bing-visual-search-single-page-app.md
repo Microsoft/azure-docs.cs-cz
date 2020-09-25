@@ -10,13 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f1b32a72d81b42e7a349f92dcdc7a141a013312d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 28f7d279d1328ff750bf7095f32fbf3ff65e591b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324518"
 ---
 # <a name="tutorial-create-a-visual-search-single-page-web-app"></a>Kurz: Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak můžete na rozhraní API Bingu pro vyhledáván�
 
 Úplný zdrojový kód pro tuto aplikaci (po rozšíření IT na použití rozhraní API pro vizuální vyhledávání Bingu) je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 

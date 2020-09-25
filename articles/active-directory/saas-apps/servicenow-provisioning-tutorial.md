@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: b4ee17ba6587c38efb6da15117a5c55dc5abb873
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bddb33210f3b1d76a89ce18ddf6884898905f388
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286399"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -93,11 +93,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 3. Vyberte kartu **Zřizování**.
 
-    ![Karta Zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
 4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta Zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** zadejte svoje přihlašovací údaje správce ServiceNow a uživatelské jméno. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k ServiceNow. Pokud se připojení nepovede, ujistěte se, že má váš účet ServiceNow oprávnění správce, a zkuste to znovu.
 
@@ -154,7 +154,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
    1. Vybrat **System Security**  >  **nastavení vysokého zabezpečení**zabezpečení systému  >  **vyžaduje základní ověřování pro příchozí požadavky schématu**.
    2. Vybrat **Vlastnosti systému**  >  **webové služby**  >  **vyžadují základní autorizaci pro příchozí požadavky SOAP**.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

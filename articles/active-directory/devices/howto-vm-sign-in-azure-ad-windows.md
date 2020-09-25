@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259366"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287096"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -49,7 +49,7 @@ Během verze Preview této funkce se aktuálně podporují následující distri
 - Windows 10 1809 a novější
 
 > [!IMPORTANT]
-> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou připojené ke službě Azure AD nebo které je služba Azure AD připojená ke **stejnému** adresáři jako virtuální počítač. 
+> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou zaregistrované v Azure AD (od Windows 10 20H1), připojené k Azure AD nebo ke stejnému adresáři, který je připojený ke **stejnému** adresáři jako virtuální počítač. 
 
 Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 
@@ -58,7 +58,7 @@ Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 > [!IMPORTANT]
 > Chcete-li použít tuto funkci verze Preview, nasaďte pouze podporované distribuce oken a v podporované oblasti Azure. Tato funkce se v cloudech Azure Government nebo svrchovaného v tuto chvíli nepodporuje.
 
-### <a name="network-requirements"></a>Síťové požadavky
+### <a name="network-requirements"></a>Požadavky sítě
 
 Pokud chcete povolit ověřování Azure AD pro virtuální počítače s Windows v Azure, musíte zajistit, aby konfigurace sítě virtuálních počítačů povolovala odchozí přístup k následujícím koncovým bodům přes port TCP 443:
 
@@ -192,7 +192,7 @@ az role assignment create \
 Další informace o tom, jak pomocí Azure RBAC spravovat přístup k prostředkům předplatného Azure, najdete v následujících článcích:
 
 - [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 - [Přidejte nebo odeberte přiřazení rolí Azure pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Použití podmíněného přístupu

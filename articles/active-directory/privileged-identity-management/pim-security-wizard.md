@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/07/2020
+ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b826c6a1fd5a60247f8c69cb10cd24e7e001fe71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005904"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335880"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Zjišťování a přehledy (Preview) pro role Azure AD (dřív Průvodce zabezpečením)
 
@@ -29,13 +29,13 @@ Pokud začínáte s Privileged Identity Management (PIM) v organizaci Azure Acti
 
 Předtím, než začne vaše organizace používat Privileged Identity Management, jsou všechna přiřazení rolí trvalá. Uživatelé jsou vždy ve svých přiřazených rolích, i když nepotřebují jejich oprávnění. Zjišťování a přehledy (ve verzi Preview), která nahrazuje dřívějšího Průvodce zabezpečením, zobrazuje seznam privilegovaných rolí a počet uživatelů, kteří jsou v těchto rolích aktuálně. Můžete vypsat přiřazení pro roli a získat další informace o přiřazených uživatelích, pokud některý z nich není známý.
 
-: heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zachovali 2 rozlomené účty, které jsou trvale přiřazeny k roli globálního správce, které při přihlašování nevyžadují službu Multi-Factor Authentication. Můžete je použít v jakémkoli scénáři rozbití nebo v případě, že žádný z nich není schopný zvýšit svou globální roli správce.
+: heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zachovali dva účty pro oddělitelné sklo, které jsou trvale přiřazeny k roli globálního správce. Ujistěte se, že tyto účty nevyžadují stejný mechanismus Multi-Factor Authentication jako běžné účty pro správu, jak je popsáno v tématu [Správa účtů pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
 
-I když má uživatel účet Microsoft (jinými slovy, účet, který používá pro přihlášení ke službám Microsoftu, jako je Skype nebo Outlook.com), zachovat přiřazení rolí trvale. Pokud pro takovou roli požadujete, aby se aplikace Multi-Factor Authentication aktivovala, uživatel se zamkne.
+I když má uživatel účet Microsoft (jinými slovy, účet, který používá pro přihlášení ke službám Microsoftu, jako je Skype nebo Outlook.com), zachovat přiřazení rolí trvale. Pokud pro uživatele s účet Microsoft pro aktivaci přiřazení role požadujete vícefaktorové ověřování, bude uživatel uzamčen.
 
 ## <a name="open-discovery-and-insights-preview"></a>Otevřete zjišťování a přehledy (Preview)
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
@@ -49,7 +49,7 @@ I když má uživatel účet Microsoft (jinými slovy, účet, který používá
 
 1. Zkontrolujte seznam přiřazení rolí globálního správce.
 
-    ![Omezení globálních správců – podokno role zobrazující všechny členy](./media/pim-security-wizard/new-global-administrator-list.png)
+    ![Snížení globálních správců – podokno role se zobrazením všech globálních správců](./media/pim-security-wizard/new-global-administrator-list.png)
 
 1. Výběrem **Další** vyberte uživatele nebo skupiny, které chcete nastavit jako oprávněné, a pak vyberte **nastavit jako oprávněné** nebo **odebrat přiřazení**.
 

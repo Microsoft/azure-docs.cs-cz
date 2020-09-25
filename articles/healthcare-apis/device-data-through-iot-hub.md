@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308220"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Kurz: příjem dat ze zařízení prostřednictvím Azure IoT Hub
 
@@ -51,7 +51,7 @@ Tady je seznam parametrů, které se mají použít s příkazem pro vytvoření
 |Parametr PowerShellu|Parametr CLI|Popis|
 |---|---|---|
 |ResourceGroupName|resource-group|Název skupiny prostředků vašeho IoT Hub prostředku|
-|Název|název centra|Název prostředku IoT Hub.|
+|Name|název centra|Název prostředku IoT Hub.|
 |Koncový bod|název koncového bodu|Použijte název, který chcete přiřadit ke vytvářenému koncovému bodu.|
 |EndpointType|Typ koncového bodu|Typ koncového bodu, ke kterému IoT Hub potřebovat připojit Pro rozhraní příkazového řádku použijte hodnotu literálu "EventHub" pro PowerShell a "eventhub".|
 |EndpointResourceGroup|koncový bod-prostředek-skupina|Název skupiny prostředků pro Azure IoT Connector pro prostředek FHIR Azure API pro FHIR. Tuto hodnotu můžete získat ze stránky přehled rozhraní Azure API pro FHIR.|
@@ -61,12 +61,12 @@ Tady je seznam parametrů, které se mají použít s příkazem pro vytvoření
 ### <a name="add-a-message-route"></a>Přidat trasu zpráv
 Tento krok definuje trasu zpráv pomocí koncového bodu vytvořeného výše. Vytvořte trasu pomocí příkazu [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShellu nebo [AZ IoT Hub Route Create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI, a to na základě vaší předvolby.
 
-Tady je seznam parametrů, které se mají použít s příkazem pro vytvoření koncového bodu:
+Tady je seznam parametrů, které se mají použít s příkazem pro přidání trasy zprávy:
 
 |Parametr PowerShellu|Parametr CLI|Popis|
 |---|---|---|
 |ResourceGroupName|g|Název skupiny prostředků vašeho IoT Hub prostředku|
-|Název|název centra|Název prostředku IoT Hub.|
+|Name|název centra|Název prostředku IoT Hub.|
 |Koncový bod|název koncového bodu|Název koncového bodu, který jste vytvořili výše.|
 |RouteName|název trasy|Název, který se má přiřadit k vytvořenému směrování zpráv.|
 |Zdroj|typ zdroje|Typ dat, která se mají odeslat do koncového bodu. Pro rozhraní příkazového řádku použijte hodnotu literálu "DeviceMessages" pro PowerShell a "DeviceMessages".|

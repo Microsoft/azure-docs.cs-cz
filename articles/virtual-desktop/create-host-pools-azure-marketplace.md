@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084358"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287385"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -22,7 +22,7 @@ Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních poč
 
 Tento článek vás provede procesem instalace pro vytvoření fondu hostitelů pro prostředí virtuálních ploch Windows prostřednictvím Azure Portal. Tato metoda poskytuje uživatelské rozhraní založené na prohlížeči k vytvoření fondu hostitelů na virtuálním počítači s Windows, vytvoření skupiny prostředků s virtuálními počítači v rámci předplatného Azure, připojení těchto virtuálních počítačů k doméně Azure Active Directory (AD) a registraci virtuálních počítačů pomocí virtuálního počítače s Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro vytvoření fondu hostitelů musíte zadat následující parametry:
 
@@ -48,7 +48,8 @@ Chcete-li začít vytvářet nový fond hostitelů:
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com/).
    
-   >! ZNAČTE Pokud se přihlašujete k portálu US Gov, použijte [https://portal.azure.us/](https://portal.azure.us/) místo toho.
+   >[!NOTE]
+   > Pokud se přihlašujete k portálu US Gov, použijte [https://portal.azure.us/](https://portal.azure.us/) místo toho.
 
 2. Do panelu hledání zadejte **virtuální klient Windows** a potom v části služby vyhledejte a vyberte **Windows Virtual Desktop** .
 

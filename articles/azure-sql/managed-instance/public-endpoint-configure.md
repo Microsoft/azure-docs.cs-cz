@@ -8,14 +8,14 @@ ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 1c2dd3f93abf6418b99bf28d11f2df254b024971
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 498d00b4f6a0ca16d07663641a46f30109b39d5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325058"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -40,7 +40,7 @@ Vzhledem k citlivosti dat, která jsou ve spravované instanci, je konfigurace p
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Povolení veřejného koncového bodu pro spravovanou instanci v Azure Portal
 
-1. Spustit Azure Portal v<https://portal.azure.com/.>
+1. Spustit Azure Portal v <https://portal.azure.com/.>
 1. Otevřete skupinu prostředků se spravovanou instancí a vyberte **spravovanou instanci SQL** , na které chcete nakonfigurovat veřejný koncový bod.
 1. V nastavení **zabezpečení** vyberte kartu **virtuální síť** .
 1. Na stránce konfigurace virtuální sítě vyberte **Povolit** a potom kliknutím na ikonu **Uložit** aktualizujte konfiguraci.
@@ -82,7 +82,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Povolení provozu veřejného koncového bodu ve skupině zabezpečení sítě
 
-1. Pokud je stránka konfigurace spravované instance stále otevřená, přejděte na kartu **Přehled** . v opačném případě se vraťte k prostředku **spravované instance SQL** . Vyberte odkaz **virtuální síť/podsíť** , který vás přesměruje na stránku konfigurace virtuální sítě.
+1. Pokud je stránka konfigurace spravované instance stále otevřená, přejděte na kartu **Přehled** . V opačném případě se vraťte k prostředku **spravované instance SQL** . Vyberte odkaz **virtuální síť/podsíť** , který vás přesměruje na stránku konfigurace virtuální sítě.
 
     ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
 
@@ -100,7 +100,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Rozsahy zdrojových portů**     |* |Nechte to * (any), protože zdrojové porty se obvykle dynamicky přiřazují a jako nepředvídatelné. |
     |**Cíl**     |Všechny         |Ponechání cíle jako pro povolení provozu do podsítě spravované instance |
     |**Rozsahy cílových portů**     |3342         |Rozsah cílového portu na 3342, který je veřejným koncovým bodem spravované instance TDS |
-    |**Protocol (Protokol)**     |TCP         |Spravovaná instance SQL používá protokol TCP pro TDS. |
+    |**Protokol**     |TCP         |Spravovaná instance SQL používá protokol TCP pro TDS. |
     |**Akce**     |Povolit         |Povolit příchozí provoz do spravované instance prostřednictvím veřejného koncového bodu |
     |**Priorita**     |1300         |Ujistěte se, že toto pravidlo má vyšší prioritu než pravidlo **deny_all_inbound** . |
 

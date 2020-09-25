@@ -4,12 +4,12 @@ description: Zjistěte, jak na virtuálním počítači Azure provádět obnoven
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: c8adb114685379112aee20ab600d37bc25ce700e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6684e8717bad47248b539ecf70d135a46f459a4e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007617"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324976"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Obnovení souborů do virtuálního počítače v Azure
 
@@ -25,7 +25,7 @@ Azure Backup vytváří body obnovení, které se ukládají v geograficky redun
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.18 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz vyžaduje virtuální počítač s Linuxem chráněný službou Azure Backup. K simulaci náhodného odstranění souboru a procesu obnovení odstraníte stránku z webového serveru. Pokud potřebujete virtuální počítač s Linuxem a webovým serverem, který je chráněný pomocí služby Azure Backup, přečtěte si téma [Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku](quick-backup-vm-cli.md).
 
@@ -41,7 +41,7 @@ Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 
 Pokud omylem odstraníte nebo změníte soubor, můžete jednotlivé soubory obnovit z bodu obnovení. Tento proces umožňuje procházet zálohované soubory v bodu obnovení a obnovit pouze soubory, které potřebujete. V tomto příkladu odstraníme soubor z webového serveru, abychom předvedli proces obnovení na úrovni souborů.
 
-1. Abyste se mohli připojit ke svému virtuálnímu počítači, získejte jeho IP adresu pomocí příkazu [az vm show](/cli/azure/vm?view=azure-cli-latest#az-vm-show):
+1. Abyste se mohli připojit ke svému virtuálnímu počítači, získejte jeho IP adresu pomocí příkazu [az vm show](/cli/azure/vm#az-vm-show):
 
      ```azurecli-interactive
      az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
@@ -77,7 +77,7 @@ Pokud omylem odstraníte nebo změníte soubor, můžete jednotlivé soubory obn
 
 Pro obnovení souborů poskytuje Azure Backup skript, který můžete spustit na svém virtuálním počítači a který připojí bod obnovení jako místní jednotku. Tuto místní jednotku můžete procházet, obnovit soubory do virtuálního počítače a pak bod obnovení odpojit. Azure Backup pokračuje v zálohování vašich dat na základě přiřazené zásady určující plán a uchovávání.
 
-1. Pokud chcete vypsat body obnovení pro váš virtuální počítač, použijte příkaz [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). V tomto příkladu vybereme nejnovější bod obnovení pro virtuální počítač s názvem *myVM* , který je chráněný v *trezoru myrecoveryservicesvault*:
+1. Pokud chcete vypsat body obnovení pro váš virtuální počítač, použijte příkaz [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list). V tomto příkladu vybereme nejnovější bod obnovení pro virtuální počítač s názvem *myVM* , který je chráněný v *trezoru myrecoveryservicesvault*:
 
     ```azurecli-interactive
     az backup recoverypoint list \
@@ -89,7 +89,7 @@ Pro obnovení souborů poskytuje Azure Backup skript, který můžete spustit na
         --output tsv
     ```
 
-2. K získání skriptu, který připojí bod obnovení k virtuálnímu počítači, použijte příkaz [az backup restore files mount-rp](/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-mount-rp). Následující příklad získá skript pro virtuální počítač s názvem *myVM* , který je chráněn v *trezoru myrecoveryservicesvault*.
+2. K získání skriptu, který připojí bod obnovení k virtuálnímu počítači, použijte příkaz [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp). Následující příklad získá skript pro virtuální počítač s názvem *myVM* , který je chráněn v *trezoru myrecoveryservicesvault*.
 
     Nahraďte *myRecoveryPointName* názvem bodu obnovení, který jste získali předchozím příkazem:
 
@@ -139,7 +139,7 @@ Po zkopírování skriptu pro obnovení do svého virtuálního počítače teď
     ./myVM_we_1571974050985163527.sh
     ```
 
-    Při spuštění skriptu budete vyzváni k zadání hesla pro přístup k bodu obnovení. Zadejte heslo, které se zobrazilo ve výstupu z předchozího příkazu [az backup restore files mount-rp](/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-mount-rp), kterým se vygeneroval skript pro obnovení.
+    Při spuštění skriptu budete vyzváni k zadání hesla pro přístup k bodu obnovení. Zadejte heslo, které se zobrazilo ve výstupu z předchozího příkazu [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp), kterým se vygeneroval skript pro obnovení.
 
     Výstup skriptu obsahuje cestu k bodu obnovení. Následující příklad výstupu ukazuje, že je bod obnovení připojený v umístění */home/azureuser/myVM-20170919213536/Volume1*:
 
@@ -179,7 +179,7 @@ Po zkopírování skriptu pro obnovení do svého virtuálního počítače teď
     exit
     ```
 
-7. Odpojte bod obnovení ze svého virtuálního počítače pomocí příkazu [az backup restore files unmount-rp](/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-unmount-rp). Následující příklad odpojí bod obnovení z virtuálního počítače *myVM* v trezoru *myRecoveryServicesVault*.
+7. Odpojte bod obnovení ze svého virtuálního počítače pomocí příkazu [az backup restore files unmount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-unmount-rp). Následující příklad odpojí bod obnovení z virtuálního počítače *myVM* v trezoru *myRecoveryServicesVault*.
 
     Nahraďte *myRecoveryPointName* názvem vašeho bodu obnovení, který jste získali v předchozích příkazech:
 
