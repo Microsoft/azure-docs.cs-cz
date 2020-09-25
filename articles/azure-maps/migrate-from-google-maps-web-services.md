@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: Migrace webových služeb z Google Maps | Mapy Microsoft Azure'
-description: Migrace webových služeb z Map Google na Microsoft Azure Maps
+title: Migrace webových služeb z Google Maps | Mapy Microsoft Azure
+description: Migrace webových služeb z Map Google na mapy Microsoft Azure
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8cc16e611002748dad2716a1c8dc914f297da9f1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319567"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Migrace webové služby z Google Maps
 
@@ -94,7 +94,7 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 | `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *–*     |
+| `location_type`             | *Není k dispozici*     |
 | `result_type`               | `entityType`    |
 
 Projděte si [osvědčené postupy pro hledání](how-to-use-best-practices-for-search.md).
@@ -138,9 +138,9 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps pomocí srov
 
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API |
 |---------------------------|-------------------------------------|
-| `fields`                  | *–*                               |
+| `fields`                  | *Není k dispozici*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *–*                               |
+| `inputtype`               | *Není k dispozici*                               |
 | `key`                     | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `locationbias`            | `lat``lon`a`radius`<br/>`topLeft` a `btmRight`<br/>`countrySet`  |
@@ -157,13 +157,13 @@ V tabulce jsou uvedeny parametry rozhraní API služby Google Maps s podobnými 
 | `keyword`                   | `categorySet` a `brandSet`        |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `location`                  | `lat` a `lon`                     |
-| `maxprice`                  | *–*                               |
-| `minprice`                  | *–*                               |
+| `maxprice`                  | *Není k dispozici*                               |
+| `minprice`                  | *Není k dispozici*                               |
 | `name`                      | `categorySet` a `brandSet`        |
-| `opennow`                   | *–*                               |
+| `opennow`                   | *Není k dispozici*                               |
 | `pagetoken`                 | `ofs` a `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *–*                               |
+| `rankby`                    | *Není k dispozici*                               |
 | `type`                      | `categorySet –` Viz dokumentace k [kategoriím hledání podporované](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Vypočítat trasy a směry
@@ -243,10 +243,10 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | Není *k dispozici* – jedná se o funkci související s geografické kódování. Použijte `countrySet` parametr při použití Azure Maps rozhraní API pro geografické kódování.  |
-| `scale`                     | *–*                              |
+| `scale`                     | *Není k dispozici*                              |
 | `size`                      | `width` a `height` – může mít velikost až 8192x8192. |
-| `style`                     | *–*                              |
-| `visible`                   | *–*                              |
+| `style`                     | *Není k dispozici*                              |
+| `visible`                   | *Není k dispozici*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -293,9 +293,8 @@ Pro vlastní ikony v Google Maps použijte následující názvy možností styl
 &markers=color:red|size:mid|45,-110
 ```
 
-<center>
 
-![Značka Google Maps](media/migrate-google-maps-web-services/google-maps-marker.png)</center>
+![Značka Google Maps](media/migrate-google-maps-web-services/google-maps-marker.png)
 
 **Po: Azure Maps**
 
@@ -335,9 +334,8 @@ Pojďme přidat výchozí ikonu Red ( `FF0000` ) s popiskem "místo ručičky", 
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-<center>
 
-![Značka Azure Maps](media/migrate-google-maps-web-services/azure-maps-marker.png)</center>
+![Značka Azure Maps](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 Přidejte tři PIN kódy s hodnotami popisku "1", "2" a "3":
 
@@ -345,9 +343,9 @@ Přidejte tři PIN kódy s hodnotami popisku "1", "2" a "3":
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
 
-<center>
 
-![Azure Maps více značek](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)</center>
+
+![Azure Maps více značek](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
 ### <a name="path-url-parameter-format-comparison"></a>Porovnání formátu parametru adresy URL cesty
 
@@ -376,9 +374,7 @@ Přidejte neprůhlednost červené čáry a tloušťku pixelů na mapu mezi sou�
 &path=color:0xFF000088|weight:4|45,-110|50,-100
 ```
 
-<center>
-
-![Lomená čáry Google Maps](media/migrate-google-maps-web-services/google-maps-polyline.png)</center>
+![Lomená čáry Google Maps](media/migrate-google-maps-web-services/google-maps-polyline.png)
 
 **Po: Azure Maps**
 
@@ -405,9 +401,7 @@ V parametru URL přidejte neprůhlednost červené čáry a tloušťku pixelů m
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
 ```
 
-<center>
-
-![Azure Maps lomená čáry](media/migrate-google-maps-web-services/azure-maps-polyline.png)</center>
+![Azure Maps lomená čáry](media/migrate-google-maps-web-services/azure-maps-polyline.png)
 
 ## <a name="calculate-a-distance-matrix"></a>Vypočítat matici vzdálenosti
 
@@ -482,22 +476,5 @@ Níže najdete další dokumentaci a prostředky pro služby Azure Maps REST.
 - [Hledání adresy](how-to-search-for-address.md)
 - [Osvědčené postupy pro směrování](how-to-use-best-practices-for-routing.md)
 - [Referenční dokumentace k rozhraní API služby Azure Maps REST](https://docs.microsoft.com/rest/api/maps/)
-
-## <a name="next-steps"></a>Další kroky
-
-Přečtěte si další informace o službě Azure Maps REST.
-
-> [!div class="nextstepaction"]
-> [Osvědčené postupy pro používání vyhledávací služby](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Osvědčené postupy pro používání směrovací služby](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Jak používat modul služby (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Referenční dokumentace k rozhraní API služby Azure Maps REST](https://docs.microsoft.com/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+- [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+- [Jak používat modul služby (Web SDK)](how-to-use-best-practices-for-routing.md)

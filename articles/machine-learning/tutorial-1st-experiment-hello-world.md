@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 98f4c30d03763e070b1bdc32a5e6e099556916ab
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52a9932db4fc261b8f3d740a316af3e852559a32
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320485"
 ---
 # <a name="tutorial-run-hello-world-python-script-part-2-of-4"></a>Kurz: spuštění skriptu Pythonu "Hello World" (část 2 ze 4)
 
@@ -124,7 +124,7 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Odešle váš skript. Toto odeslání se nazývá [spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true).  Spuštění zapouzdřuje jedno spuštění kódu. Pomocí spuštění můžete monitorovat průběh skriptu, zachytit výstup, analyzovat výsledky, vizualizovat metriky a další.
+       Odešle váš skript. Toto odeslání se nazývá [spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true).  Spuštění zapouzdřuje jedno spuštění kódu. Pomocí spuštění můžete monitorovat průběh skriptu, zachytit výstup, analyzovat výsledky, vizualizovat metriky a další.
    :::column-end:::
 :::row-end:::
 :::row:::

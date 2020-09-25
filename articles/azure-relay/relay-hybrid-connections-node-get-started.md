@@ -3,13 +3,13 @@ title: Azure Relay Hybrid Connections – WebSockets v uzlu
 description: Napište konzolovou aplikaci v Node.js pro WebSockety Azure Relay Hybrid Connections.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: devx-track-js
+ms.openlocfilehash: b362caa6570d4a8e212ff7adf4310a0c63e8b755
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263704"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Začínáme se službou Relay Hybrid Connections WebSockets v Node.js
 

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5908083be4e6ed389b606754ffef41a4a371c3e3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935811"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319720"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
@@ -28,6 +28,14 @@ Datové služby s podporou ARC Azure jsou vydané pro verzi Public Preview. Dato
 - PostgreSQL škálování
 
 Pokyny najdete v tématu [co jsou datové služby s podporou ARC Azure](overview.md) .
+
+### <a name="known-issues"></a>Známé problémy
+
+V této verzi se vztahují tyto problémy:
+
+* **Odstraňuje se skupina serverů PostgreSQL se škálováním**na více instancí: Pokud jste změnili konfiguraci skupiny nebo instance serveru, počkejte, než se operace Edit dokončí, a teprve potom odstraňte skupinu serverů PostgreSQL s vlastním škálováním.
+
+* ** `azdata notebook run` může selhat: Pokud**chcete tento problém vyřešit, spusťte `azdata notebook run` ve virtuálním prostředí Python. Tento problém se také manifestuje při neúspěšném pokusu o vytvoření spravované instance SQL nebo PostgreSQL skupiny serverů s škálovatelným škálováním pomocí Průvodce nasazením Azure Data Studio. V takovém případě můžete otevřít poznámkový blok a kliknout na tlačítko **Spustit vše** v horní části poznámkového bloku.
 
 ## <a name="next-steps"></a>Další kroky
 

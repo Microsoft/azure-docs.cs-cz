@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319448"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Výběr mezi modely nákupu vCore a DTU – Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,10 +34,10 @@ Existují dva nákupní modely:
 
 Následující tabulka a graf se porovnávají a kontrastují s nákupními modely založenými na DTU vCore a na DTU:
 
-|**Model nákupu**|**Popis**|**Nejlepší pro**|
+|**Nákupní model**|**Popis**|**Nejvhodnější pro**|
 |---|---|---|
-|Založené na DTU|Tento model vychází ze sady prostředků COMPUTE, úložiště a vstupně-výstupních prostředků. Velikosti výpočetních hodnot se vyjadřují v DTU pro izolované databáze a v jednotkách eDTU (elastické databázové transakce) pro elastické fondy. Další informace o DTU a eDTU najdete v tématu [co jsou DTU a eDTU?](purchasing-models.md#dtu-based-purchasing-model).|Zákazníci, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředků|
-|založené na vCore|Tento model vám umožní nezávisle zvolit výpočetní prostředky a prostředky úložiště. Nákupní model založený na vCoreech vám také umožní používat [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) SQL Server k úspory nákladů.|Zákazníci, kteří flexibilitu hodnot, řízení a transparentnost|
+|Model založený na jednotkách DTU|Tento model vychází ze sady prostředků COMPUTE, úložiště a vstupně-výstupních prostředků. Velikosti výpočetních prostředků se vyjadřují v jednotkách DTU v případě jednoúčelových databází a v jednotkách eDTU (jednotky elastických databázových transakcí) v případě elastických fondů. Další informace o jednotkách DTU a eDTU najdete v části [Co jsou jednotky DTU a eDTU](purchasing-models.md#dtu-based-purchasing-model)?|Zákazníci, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředků|
+|založené na vCore|Tento model vám umožní nezávisle zvolit výpočetní prostředky a prostředky úložiště. Nákupní model založený na virtuálních jádrech umožňuje také šetřit náklady s využitím [Zvýhodněného hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) pro SQL Server.|Zákazníci, kteří flexibilitu hodnot, řízení a transparentnost|
 ||||  
 
 ![Porovnání cenového modelu](./media/purchasing-models/pricing-model.png)
@@ -60,7 +60,7 @@ Náklady na úložiště zálohování jsou stejné jako pro úroveň služby Pr
 
 Popis způsobu definování kapacity a výpočtu nákladů na výpočetní úrovni bez serveru najdete v tématu [SQL Database úrovně bez serveru](serverless-tier-overview.md).
 
-## <a name="storage-costs"></a>Cena za uložení
+## <a name="storage-costs"></a>Náklady na úložiště
 
 Různé typy úložiště se účtují jinak. Pro úložiště dat se vám budou účtovat zřízené úložiště založené na maximální velikosti databáze nebo fondu, který vyberete. Náklady se nezmění, pokud je maximální hodnota nesnížíte nebo nezvýšíte. Úložiště zálohování je přidruženo k automatizovaným zálohám vaší instance a dynamicky se přiřazuje. Zvýšení doby uchovávání záloh zvyšuje velikost úložiště zálohování spotřebovaného vaší instancí.
 
@@ -76,8 +76,8 @@ V rámci nákupního modelu založeného na vCore si můžete vybrat mezi [pro o
 
 Nákupní model založený na vCore vám umožňuje nezávisle vybrat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny. V rámci nákupního modelu založeného na vCore platíte za:
 
-- Výpočetní prostředky (úroveň služby + počet virtuální jádra a množství paměti a generace hardwaru).
-- Typ a množství dat a úložiště protokolu.
+- Výpočetní prostředky (úroveň služeb + počet virtuálních jader a množství paměti + generace hardwaru),
+- typ a množství úložišť pro data a protokoly,
 - Úložiště zálohování (RA-GRS).
 
 > [!IMPORTANT]
@@ -162,7 +162,7 @@ Zákazníci s pracovními postupy, které jsou citlivé na změny hardwaru nebo 
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Potřebuji aplikaci převést do režimu offline, aby se převedla z úrovně služby založené na DTU na úroveň služby založenou na vCore?
 
-Ne. Nemusíte přebírat aplikaci offline. Nové úrovně služeb nabízejí jednoduchou metodu online převodu, která je podobná stávajícímu procesu upgradu databází z úrovně Standard na úroveň služby Premium a dalším způsobem. Tento převod můžete spustit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa](single-database-scale.md) izolovaných databází a [Správa elastických fondů](elastic-pool-overview.md).
+No. Nemusíte přebírat aplikaci offline. Nové úrovně služeb nabízejí jednoduchou metodu online převodu, která je podobná stávajícímu procesu upgradu databází z úrovně Standard na úroveň služby Premium a dalším způsobem. Tento převod můžete spustit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa](single-database-scale.md) izolovaných databází a [Správa elastických fondů](elastic-pool-overview.md).
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Můžu převést databázi z vrstvy služeb v nákupním modelu založeném na vCore na úroveň služby v nákupním modelu založeném na DTU?
 

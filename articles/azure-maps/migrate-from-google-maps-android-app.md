@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: Migrace aplikace pro Android | Mapy Microsoft Azure'
-description: Postup migrace aplikace pro Android z webu Google Maps na Microsoft Azure Maps
+title: Migrace aplikace pro Android | Mapy Microsoft Azure
+description: Postup migrace aplikace pro Android z Google Maps na mapy Microsoft Azure
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fe67364ef51248d04cbc6095eb691ffe255fa02c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085858"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319635"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrace aplikace pro Android z Google Maps
 
@@ -30,35 +30,35 @@ Další informace o vývoji Android SDK pomocí Azure Maps naleznete v tématu [
 
 Načtení mapy v aplikaci pro Android pomocí Google nebo Azure Maps se skládá z podobných kroků. Při použití sady SDK musíte:
 
-- Získejte rozhraní API nebo klíč předplatného pro přístup k libovolné platformě.
-- Přidejte do aktivity nějaký kód XML k určení, kde má být mapa vykreslena a jak má být rozložena.
-- Přepište všechny metody životního cyklu z aktivity obsahující zobrazení mapy na odpovídající metody v mapě třídy. Konkrétně je nutné přepsat následující metody:
-    - `onCreate(Bundle)`
-    - `onStart()`
-    - `onResume()`
-    - `onPause()`
-    - `onStop()`
-    - `onDestroy()`
-    - `onSaveInstanceState(Bundle)`
-    - `onLowMemory()`
-- Než se pokusíte o přístup a Programujte, počkejte, než bude mapa připravena.
+* Získejte rozhraní API nebo klíč předplatného pro přístup k libovolné platformě.
+* Přidejte do aktivity nějaký kód XML k určení, kde má být mapa vykreslena a jak má být rozložena.
+* Přepište všechny metody životního cyklu z aktivity obsahující zobrazení mapy na odpovídající metody v mapě třídy. Konkrétně je nutné přepsat následující metody:
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
+    * `onLowMemory()`
+* Než se pokusíte o přístup a Programujte, počkejte, než bude mapa připravena.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Pokud chcete zobrazit mapu pomocí Google Maps SDK pro Android, provede se následující postup:
 
-1.  Ujistěte se, že jsou nainstalované služby Google Play.
-2.  Přidejte závislost pro službu Google Maps do souboru **Gradle. Build** modulu: 
+1. Ujistěte se, že jsou nainstalované služby Google Play.
+2. Přidejte závislost pro službu Google Maps do souboru  **Gradle. Build** modulu:
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-1.  Přidejte klíč rozhraní API pro Google Maps do oddílu aplikace v souboru  ** \_ \_api.xmlmapy Google ** :
-    
+3. Přidejte klíč rozhraní API pro Google Maps do oddílu aplikace v souboru  ** \_ \_api.xmlmapy Google ** :
+
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
     ```
 
-1.  Přidejte do hlavní aktivity fragment mapy:
+4. Přidejte do hlavní aktivity fragment mapy:
 
     ```xml
     <com.google.android.gms.maps.MapView
@@ -67,13 +67,13 @@ Pokud chcete zobrazit mapu pomocí Google Maps SDK pro Android, provede se násl
             android:layout_height="match_parent"/>
     ```
 
-1.  V souboru **MainActivity. Java** budete muset importovat sadu Google Maps SDK. Předejte všechny metody životního cyklu z aktivity, která obsahuje zobrazení mapy, do odpovídajících těch v rámci třídy map. Načtěte `MapView` instanci z fragmentu mapy pomocí `getMapAsync(OnMapReadyCallback)` metody. `MapView`Automaticky inicializuje systém map a zobrazení. Upravte soubor **MainActivity. Java** následujícím způsobem:
+5. V souboru **MainActivity. Java** budete muset importovat sadu Google Maps SDK. Předejte všechny metody životního cyklu z aktivity, která obsahuje zobrazení mapy, do odpovídajících těch v rámci třídy map. Načtěte `MapView` instanci z fragmentu mapy pomocí `getMapAsync(OnMapReadyCallback)` metody. `MapView`Automaticky inicializuje systém map a zobrazení. Upravte soubor **MainActivity. Java** následujícím způsobem:
 
     ```java
     import com.google.android.gms.maps.GoogleMap;
     import com.google.android.gms.maps.MapView;
     import com.google.android.gms.maps.OnMapReadyCallback;
-    
+ 
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
     
@@ -144,11 +144,9 @@ Pokud chcete zobrazit mapu pomocí Google Maps SDK pro Android, provede se násl
 
 Při spuštění aplikace se mapový ovládací prvek načte jako na následujícím obrázku.
 
-<center>
+![Jednoduchá mapování Google](media/migrate-google-maps-android-app/simple-google-maps.png)
 
-![Jednoduchá mapování Google](media/migrate-google-maps-android-app/simple-google-maps.png)</center>
-
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné provést následující kroky:
 
@@ -161,7 +159,7 @@ Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné prov�
     ```
 
 2. Aktualizujte svou **aplikaci/Build. Gradle** a přidejte do ní následující kód:
-    
+
     1. Ujistěte se, že je **hodnotu minsdkversion** projektu na rozhraní API 21 nebo vyšší.
 
     2. Do části Android přidejte následující kód:
@@ -172,6 +170,7 @@ Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné prov�
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
+
     3. Aktualizujte svůj blok závislostí. Přidat novou řadu implementačních závislostí pro nejnovější Azure Maps Android SDK:
 
         ```java
@@ -180,10 +179,11 @@ Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné prov�
 
         > [!Note]
         > Android SDK Azure Maps se pravidelně upgradují a zvyšují. Nejnovější verzi Azure Maps získáte pomocí [ovládacího prvku Začínáme s nástrojem pro správu Androidu](how-to-use-android-map-control-library.md) . Můžete také nastavit číslo verze z "0,2" na "0 +", aby váš kód vždy odkazoval na nejnovější verzi.
-    
+
     4. Přejděte na **soubor** na panelu nástrojů a pak klikněte na **synchronizovat projekt se soubory Gradle**.
-3. Přidejte fragment mapy do hlavní aktivity ( \>main.xml aktivity rozložení prostředků \> \_ ):
-    
+
+3. Přidání fragmentu mapy k hlavní aktivitě (prostředky \>main.xml aktivity rozložení pro zdroj \> \_ ):
+
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
@@ -202,7 +202,7 @@ Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné prov�
     ```
 
 4. V souboru **MainActivity. Java** budete potřebovat:
-    
+
     * Importuje sadu Azure Maps SDK.
     * Nastavení ověřovacích informací Azure Maps
     * Získání instance mapového ovládacího prvku v metodě **Create**
@@ -221,7 +221,7 @@ Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné prov�
     * `onLowMemory()`
 
     Upravte soubor **MainActivity. Java** následujícím způsobem:
-    
+
     ```java
     package com.example.myapplication;
 
@@ -234,7 +234,7 @@ Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné prov�
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
 
     public class MainActivity extends AppCompatActivity {
-        
+     
         static {
             AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
@@ -303,9 +303,8 @@ Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné prov�
 
 Pokud spustíte aplikaci, mapový ovládací prvek se načte jako na následujícím obrázku.
 
-<center>
 
-![Jednoduchá Azure Maps](media/migrate-google-maps-android-app/simple-azure-maps.png)</center>
+![Jednoduchá Azure Maps](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
 Všimněte si, že Azure Maps ovládací prvek podporuje další přiblížení a poskytuje více zobrazení světa.
 
@@ -316,7 +315,7 @@ Všimněte si, že Azure Maps ovládací prvek podporuje další přiblížení 
 
 Lokalizace je důležitá, pokud je vaše cílová skupina rozdělená do několika zemí nebo oblastí nebo hovoří s různými jazyky.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Přidejte následující kód do `onCreate` metody pro nastavení jazyka mapy. Kód musí být přidán před nastavením kontextu zobrazení mapy. Kód jazyka "fr" omezuje jazyk na francouzštinu.
 
@@ -332,11 +331,9 @@ getBaseContext().getResources().updateConfiguration(config,
 
 Tady je příklad Google Maps s jazykem nastaveným na "fr".
 
-<center>
+![Lokalizace Google Maps](media/migrate-google-maps-android-app/google-maps-localization.png)
 
-![Lokalizace Google Maps](media/migrate-google-maps-android-app/google-maps-localization.png)</center>
-
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 Azure Maps poskytuje tři různé způsoby, jak nastavit jazyk a místní zobrazení mapy. První možností je předat jazyk a regionální informace o zobrazení do `AzureMaps` třídy. Tato možnost používá globálně statické `setLanguage` `setView` metody a. To znamená, že výchozí jazyk a místní zobrazení jsou nastaveny v rámci všech Azure Mapsch ovládacích prvků načtených ve vaší aplikaci. Tento příklad nastaví francouzštinu pomocí kódu jazyka "fr-FR".
 
@@ -376,9 +373,7 @@ mapControl.onReady(map -> {
 
 Tady je příklad Azure Maps s jazykem nastaveným na "fr-FR".
 
-<center>
-
-![Azure Maps lokalizace](media/migrate-google-maps-android-app/azure-maps-localization.png)</center>
+![Azure Maps lokalizace](media/migrate-google-maps-android-app/azure-maps-localization.png)
 
 Projděte si úplný seznam [podporovaných jazyků](supported-languages.md).
 
@@ -386,7 +381,7 @@ Projděte si úplný seznam [podporovaných jazyků](supported-languages.md).
 
 Dynamická mapování v Azure Maps i Google Maps lze programově přesunout do nových geografických umístění voláním vhodných metod. Pojďme to udělat, aby se mapa zobrazovala v satelitním obrazovém programu, vycentrovat mapu do umístění s souřadnicemi a změnit úroveň přiblížení. V tomto příkladu použijeme zeměpisnou šířku: 35,0272, zeměpisná délka:-111,0225 a úroveň přiblížení 15.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Kameru ovládacího prvku mapy Google Maps se dá programově přesunout pomocí `moveCamera` metody. `moveCamera`Metoda umožňuje zadat střed mapy a úroveň přiblížení. `setMapType`Metoda změní typ mapy, která se má zobrazit.
 
@@ -400,14 +395,12 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
-
-![Zobrazení sady Map Google](media/migrate-google-maps-android-app/google-maps-set-view.png)</center>
+![Zobrazení sady Map Google](media/migrate-google-maps-android-app/google-maps-set-view.png)
 
 > [!NOTE]
-> Google Maps používá v dimenzích dlaždice, které jsou 256 pixelů, zatímco Azure Maps používá větší dlaždici 512 pixelů. Tím se sníží počet síťových požadavků, které Azure Maps k načtení stejné oblasti rozvržení jako Google Maps. Chcete-li dosáhnout stejné zobrazitelné oblasti jako mapy v Google Maps, je třeba při použití Azure Maps odečíst úroveň přiblížení v Google Maps. 
+> Google Maps používá v dimenzích dlaždice, které jsou 256 pixelů, zatímco Azure Maps používá větší dlaždici 512 pixelů. Tím se sníží počet síťových požadavků, které Azure Maps k načtení stejné oblasti rozvržení jako Google Maps. Chcete-li dosáhnout stejné zobrazitelné oblasti jako mapy v Google Maps, je třeba při použití Azure Maps odečíst úroveň přiblížení v Google Maps.
 
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 Jak bylo uvedeno dříve, aby se dosáhlo stejné zobrazitelné oblasti v Azure Maps odečte úroveň přiblížení, která se používá v Google Maps po jednom. V takovém případě použijte úroveň přiblížení 14.
 
@@ -437,19 +430,17 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Zobrazení sady Azure Maps](media/migrate-google-maps-android-app/azure-maps-set-view.png)</center>
+![Zobrazení sady Azure Maps](media/migrate-google-maps-android-app/azure-maps-set-view.png)
 
 **Další zdroje informací:**
 
-- [Podporované styly map](supported-map-styles.md)
+* [Podporované styly map](supported-map-styles.md)
 
 ## <a name="adding-a-marker"></a>Přidání značky
 
 Data bodu se často vykreslují pomocí obrázku na mapě. Tyto obrázky se označují jako značky, špendlíky, kolíky nebo symboly. Následující příklady vykreslí data bodu jako značky na mapě v šířce: 51,5, zeměpisná délka:-0,2.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Pomocí Map Google se značky přidávají pomocí metody map `addMarker` .
 
@@ -462,11 +453,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Značka Google Maps](media/migrate-google-maps-android-app/google-maps-marker.png)
 
-![Značka Google Maps](media/migrate-google-maps-android-app/google-maps-marker.png)</center>
-
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 V Azure Maps data bodu vykreslování na mapě nejprve přidejte data do zdroje dat. Pak propojíte tento zdroj dat se symbolovou vrstvou. Zdroj dat optimalizuje správu prostorových dat v mapovém ovládacím prvku. Vrstva symbolu určuje, jak se mají vykreslovat data bodů pomocí jako obrázek nebo text.
 
@@ -484,9 +473,7 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Značka Azure Maps](media/migrate-google-maps-android-app/azure-maps-marker.png)</center>
+![Značka Azure Maps](media/migrate-google-maps-android-app/azure-maps-marker.png)
 
 ## <a name="adding-a-custom-marker"></a>Přidání vlastní značky
 
@@ -499,7 +486,7 @@ yellow-pushpin.png</center>
 
 V obou příkladech se výše uvedený obrázek přidá do vykreslené složky prostředků aplikací.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Pomocí Map Google lze vlastní image použít pro značky. Načtěte vlastní image pomocí možnosti značky `icon` . Chcete-li zarovnat bod obrázku na souřadnici, použijte `anchor` možnost. Kotva je relativní vzhledem k rozměrům obrázku. V tomto případě je kotva 0,2 jednotek na šířku a 1 jednotka je vysoká.
 
@@ -514,11 +501,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Vlastní značka Google Maps](media/migrate-google-maps-android-app/google-maps-custom-marker.png)
 
-![Vlastní značka Google Maps](media/migrate-google-maps-android-app/google-maps-custom-marker.png)</center>
-
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 Vrstvy symbolů v Azure Maps podporují vlastní image, ale nejdřív je potřeba načíst image do prostředků mapy a přiřadit jim jedinečné ID. Pak musí vrstva symbolu odkazovat na toto ID. Posunete symbol tak, aby se zarovnal ke správnému bodu na obrázku pomocí `iconOffset` Možnosti. Posun ikony je v pixelech. Ve výchozím nastavení je posun relativní vzhledem k dolnímu středu obrázku, ale tato hodnota posunu se dá upravit pomocí `iconAnchor` Možnosti. Tento příklad nastaví `iconAnchor` možnost na `"center"` . Používá posun ikony k přesunutí obrázku o 5 pixelů vpravo a 15 pixelů až do zarovnání s bodem odšpendlíku.
 
@@ -542,15 +527,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps vlastní značka](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)</center>
+![Azure Maps vlastní značka](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)
 
 ## <a name="adding-a-polyline"></a>Přidání lomené čáry
 
 Lomené čáry slouží k reprezentaci čáry nebo cesty na mapě. Následující příklady ukazují, jak vytvořit přerušovanou lomenou čáru na mapě.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Pomocí mapy Google vykreslíte lomenou čáru pomocí `PolylineOptions` třídy. Přidejte lomenou čáru k mapě pomocí `addPolyline` metody. Nastavte barvu tahu pomocí `color` Možnosti. Šířku tahu nastavte pomocí `width` Možnosti. Pomocí možnosti přidejte pole pomlčky na tahy `pattern` .
 
@@ -574,11 +557,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Lomená čáry Google Maps](media/migrate-google-maps-android-app/google-maps-polyline.png)
 
-![Lomená čáry Google Maps](media/migrate-google-maps-android-app/google-maps-polyline.png)</center>
-
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 V Azure Maps se označují jako `LineString` `MultiLineString` objekty. Přidejte tyto objekty do zdroje dat a vykreslete je pomocí spojnicové vrstvy. Šířku tahu nastavte pomocí `strokeWidth` Možnosti. Pomocí možnosti přidejte pole pomlčky na tahy `strokeDashArray` .
 
@@ -607,15 +588,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps lomená čáry](media/migrate-google-maps-android-app/azure-maps-polyline.png)</center>
+![Azure Maps lomená čáry](media/migrate-google-maps-android-app/azure-maps-polyline.png)
 
 ## <a name="adding-a-polygon"></a>Přidání mnohoúhelníku
 
 Mnohoúhelníky slouží k reprezentaci oblasti na mapě. Následující příklady ukazují, jak vytvořit mnohoúhelník. Tento mnohoúhelník tvoří trojúhelník založený na souřadnici středu mapy.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Pomocí mapy Google vykreslí mnohoúhelník pomocí `PolygonOptions` třídy. Přidejte mnohoúhelník k mapě pomocí `addPolygon` metody. Nastavte barvy výplně a tahu pomocí `fillColor` možností a v `strokeColor` uvedeném pořadí. Šířku tahu nastavte pomocí `strokeWidth` Možnosti.
 
@@ -639,11 +618,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Mnohoúhelník mapy Google](media/migrate-google-maps-android-app/google-maps-polygon.png)
 
-![Mnohoúhelník mapy Google](media/migrate-google-maps-android-app/google-maps-polygon.png)</center>
-
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 V Azure Maps přidejte `Polygon` objekty a `MultiPolygon` objekty do zdroje dat a vykreslete je na mapě pomocí vrstev. Vykreslí oblast mnohoúhelníku ve vrstvě mnohoúhelníku. Vykreslí obrys mnohoúhelníku pomocí čárové vrstvy. Nastavte barvu a šířku tahu pomocí `strokeColor` `strokeWidth` možností a.
 
@@ -676,10 +653,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
-
-<center>
-
-![Azure Maps mnohoúhelník](media/migrate-google-maps-android-app/azure-maps-polygon.png)</center>
+![Azure Maps mnohoúhelník](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>Překrytí vrstvy dlaždice
 
@@ -687,7 +661,7 @@ mapControl.onReady(map -> {
 
 V následujících příkladech je překrytá vrstva s paprskovou dlaždicí počasí z Iowaho prostředí Mesonet of Iowa State University. Velikost dlaždic je 256 pixelů.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Pomocí služby Google Maps je možné překrytí vrstvy dlaždic nad mapu. Použijte `TileOverlayOptions` třídu. Přidejte vrstvu dlaždice na mapu pomocí `addTileLauer` metody. Chcete-li, aby dlaždice byly částečně transparentní, je `transparency` možnost nastavena na 0,2 nebo na 20% transparentní.
 
@@ -716,11 +690,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Vrstva dlaždic mapy Google](media/migrate-google-maps-android-app/google-maps-tile-layer.png)
 
-![Vrstva dlaždic mapy Google](media/migrate-google-maps-android-app/google-maps-tile-layer.png)</center>
-
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 Dlaždicovou vrstvu lze přidat k mapě podobným způsobem jako jakékoli jiné vrstvy. Naformátovaná adresa URL, která má zástupné symboly x, y a zoom; `{x}`, `{y}` , v `{z}` uvedeném pořadí, slouží k oznámení vrstvy, kde má být přístup k dlaždicím. Také vrstvy dlaždic v Azure Maps podporu `{quadkey}` , `{bbox-epsg-3857}` a `{subdomain}` zástupné symboly. Chcete-li nastavit, aby byla vrstva dlaždice částečně průhledná, je použita hodnota neprůhlednosti 0,8. Neprůhlednost a průhlednost, i když jsou podobné, používají obrácené hodnoty. Pro převod obou možností odečtěte jejich hodnotu od čísla 1.
 
@@ -738,15 +710,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Vrstva Azure Maps dlaždice](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)</center>
+![Vrstva Azure Maps dlaždice](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)
 
 ## <a name="show-traffic"></a>Zobrazení provozu
 
 Azure Maps i Google Maps mají možnosti pro překrytí dat přenosů.
 
-**Před: Google Maps**
+### <a name="before-google-maps"></a>Před: Google Maps
 
 Pomocí služby Google Maps lze data toku provozu překrývají k mapě tím, že předáte true do `setTrafficEnabled` metody mapy.
 
@@ -759,11 +729,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Přenosy Google Maps](media/migrate-google-maps-android-app/google-maps-traffic.png)
 
-![Přenosy Google Maps](media/migrate-google-maps-android-app/google-maps-traffic.png)</center>
-
-**Po: Azure Maps**
+### <a name="after-azure-maps"></a>Po: Azure Maps
 
 Azure Maps poskytuje několik různých možností pro zobrazení provozu. Incidenty přenosu, jako jsou například uzávěry a havárie provozu, lze zobrazit jako ikony na mapě. Tok přenosů a barevně kódované cesty lze na mapě překrývají. Barvy lze upravit tak, aby se zobrazily relativně k zadanému limitu rychlosti, relativně k normálnímu očekávanému zpoždění nebo absolutnímu zpoždění. Data incidentu v Azure Maps se aktualizují každou minutu a data toku se aktualizují každé dvě minuty.
 
@@ -775,13 +743,8 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps provoz](media/migrate-google-maps-android-app/azure-maps-traffic.png)</center>
-
-## <a name="next-steps"></a>Další kroky
+![Azure Maps provoz](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
 Přečtěte si další informace o Android SDK Azure Maps.
 
-> [!div class="nextstepaction"]
-> [Jak používat ovládací prvek mapy pro Android](how-to-use-android-map-control-library.md)
+[Jak používat ovládací prvek mapy pro Android](how-to-use-android-map-control-library.md)

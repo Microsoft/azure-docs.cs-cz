@@ -8,16 +8,19 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 30fc71e6f59766a759cdb8e4e503123623f48bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320468"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>Zabezpečený přístup k datům v účtech úložiště pomocí výjimky důvěryhodné služby
 
 Indexery, které přistupují k datům v účtech úložiště, můžou využít funkci [výjimky důvěryhodné služby](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) k zabezpečení přístupu k datům. Tento mechanismus nabízí zákazníkům, kteří nemůžou udělit [přístup k indexeru prostřednictvím pravidel brány firewall protokolu IP](search-indexer-howto-access-ip-restricted.md) , jednoduchou, zabezpečenou a bezplatnou alternativou pro přístup k datům v účtech úložiště.
+
+> [!NOTE]
+> Podpora přístupu k datům v účtech úložiště přes důvěryhodnou výjimku je omezená na úložiště objektů BLOB v Azure a Azure Data Lake Gen2 úložiště. Služba Azure Table Storage není podporována.
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>Krok 1: Konfigurace připojení k účtu úložiště prostřednictvím identity
 

@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 07b9e3e7529aa867a4baf51ffe5c4bbf23599d32
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320060"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených imagí 
 
@@ -22,7 +22,7 @@ K nakonfigurování image budeme používat šablonu. JSON. Soubor. JSON, který
 
 Pro distribuci image do galerie sdílených imagí šablona používá [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako hodnotu pro `distribute` oddíl šablony.
 
-Azure image Builder automaticky spustí nástroj Sysprep a provede generalizaci bitové kopie, jedná se o obecný příkaz nástroje Sysprep, který můžete v případě potřeby [přepsat](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
+Azure image Builder automaticky spustí nástroj Sysprep a provede generalizaci bitové kopie, jedná se o obecný příkaz nástroje Sysprep, který můžete v případě potřeby [přepsat](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) . 
 
 Počítejte s tím, kolikrát vlastní nastavení vrstev. Příkaz Sysprep můžete spustit až 8 krát na jedné imagi Windows. Po spuštění nástroje Sysprep 8 je nutné znovu vytvořit bitovou kopii systému Windows. Další informace najdete v tématu [omezení počtu, kolikrát můžete nástroj Sysprep spustit](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
 

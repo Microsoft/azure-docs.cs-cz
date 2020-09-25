@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030823"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263772"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -38,6 +38,14 @@ Metody pro definování shromažďování dat pro stávající agenty se liší 
 - Diagnostické rozšíření má konfiguraci pro každý virtuální počítač. Díky tomu je snadné definovat nezávislé definice pro různé virtuální počítače, ale obtížné centrálně spravovat. Data může posílat jenom Azure Monitor metriky, Azure Event Hubs nebo Azure Storage. Pro agenty Linux se k posílání dat Azure Monitorch metrik vyžaduje agent Open Source telegraf.
 
 Agent Azure Monitor používá [pravidla shromažďování dat (DCR)](data-collection-rule-overview.md) ke konfiguraci dat, která se mají shromažďovat od každého agenta. Pravidla shromažďování dat umožňují spravovatelnost nastavení kolekce ve velkém měřítku a zároveň přitom povolují jedinečné a vymezené konfigurace pro podmnožiny počítačů. Jsou nezávislé na pracovním prostoru a nezávisle na virtuálním počítači, což umožňuje jejich definování a jejich použití v různých počítačích a prostředích. Viz téma [Konfigurace shromažďování dat pro agenta Azure monitor (Preview)](data-collection-rule-azure-monitor-agent.md).
+
+## <a name="should-i-switch-to-azure-monitor-agent"></a>Mám přepnout na agenta Azure Monitor?
+Agent Azure Monitor spolupracuje s [všeobecně dostupnými agenty pro Azure monitor](agents-overview.md), ale můžete zvážit přechod virtuálních počítačů z aktuálních agentů během období verze preview agenta Azure monitor. Při provádění tohoto rozhodnutí Vezměte v úvahu následující faktory.
+
+- **Požadavky prostředí.** Agent Azure Monitor má více omezené sady podporovaných operačních systémů, prostředí a požadavků na síť než aktuální agenti. Budoucí podpora prostředí, jako jsou například nové verze operačního systému a typy požadavků na síť, budou pravděpodobně poskytovány pouze v agentovi Azure Monitor. Azure Monitor Agent byste měli vyhodnotit, jestli je vaše prostředí podporované. Pokud ne, budete muset zůstat s aktuálním agentem. Pokud agent Azure Monitor podporuje vaše současné prostředí, měli byste zvážit přechod na něj.
+- **Tolerance rizika veřejné verze Preview.** I když byl agent Azure Monitor důkladně testován pro aktuálně podporované scénáře, je agent stále ve verzi Public Preview. Aktualizace verzí a vylepšení funkcí se často projeví a můžou vést k chybám. Měli byste vyhodnotit riziko chyby v agentovi na virtuálních počítačích, které by mohly zastavit shromažďování dat. Pokud by mezera v kolekci dat nevýznamně ovlivnila vaše služby, pokračujte Azure Monitor agenta. Pokud máte nízkou toleranci pro jakoukoli nestabilitu, měli byste zůstat s obecně dostupnými agenty, dokud agent Azure Monitor nedosáhne tohoto stavu.
+- **Aktuální a nové požadavky na funkce.** Agent Azure Monitor přináší několik nových funkcí, jako je filtrování, rozsah a vícenásobné navýšení, ale u současných agentů ještě není paritou pro jiné funkce, jako je například vlastní shromažďování protokolů a integrace s řešeními. Většina nových funkcí v Azure Monitor bude k dispozici pouze u agenta Azure Monitor, takže v průběhu času budou více funkcí k dispozici pouze v novém agentovi. Měli byste zvážit, zda má Azure Monitor Agent funkce, které požadujete, a pokud jsou k dispozici některé funkce, které můžete dočasně provádět bez dalších důležitých funkcí v novém agentovi. Pokud Azure Monitor Agent má všechny základní možnosti, které požadujete, zvažte přechod na něj. Pokud jsou důležité funkce, které požadujete, pokračujte v aktuálním agentovi, dokud agent nedosáhne Azure Monitor.
+- **Tolerance pro repráci** Pokud vytváříte nové prostředí s prostředky, jako jsou skripty pro nasazení a šablony zprovoznění, měli byste zvážit, jestli budete moct tyto informace přepracovat, když se agent Azure Monitor stane všeobecně dostupným. Pokud bude úsilí pro tuto repráci minimální, zajistěte si aktuální agenty v současnosti. Pokud bude trvat hodně práce, zvažte nastavení nového prostředí pomocí nového agenta. Očekává se, že agent Azure Monitor je všeobecně dostupný a datum vyřazení je publikované pro agenty Log Analytics v 2021. Po zahájení vyřazení budou aktuální agenti podporováni po dobu několika let.
 
 
 
@@ -76,24 +84,8 @@ Agent Azure Monitor odesílá data do Azure Monitor metrik nebo Log Analytics pr
 
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
-Agent Azure Monitor aktuálně podporuje následující operační systémy.
+Seznam verzí operačních systémů Windows a Linux, které jsou aktuálně podporované agentem Log Analytics, najdete v části [podporované operační systémy](agents-overview.md#supported-operating-systems) .
 
-### <a name="windows"></a>Windows 
-  - Windows Server 2019
-  - Windows Server 2016
-  - Windows Server 2012
-  - Windows Server 2012 R2
-
-### <a name="linux"></a>Linux
-  - CentOS 6<sup>1</sup>, 7
-  - Debian 9, 10
-  - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>1</sup>, 7
-  - SLES 11, 12, 15
-  - Ubuntu 14,04 LTS, 16,04 LTS, 18,04 LTS
-
-> [!IMPORTANT]
-> <sup>1</sup> Pro tyto distribuce, aby odesílaly data syslog, je nutné službu rsyslog restartovat jednou po instalaci agenta.
 
 
 ## <a name="security"></a>Zabezpečení

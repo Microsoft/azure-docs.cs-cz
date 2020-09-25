@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 550f3367fe2e5283aff788b36203e988361590ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/23/2020
+ms.openlocfilehash: 4eb9ffceada245f7a7f4b2631a79330fb497a452
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331722"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Koncepce připojení a sítě pro Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -62,6 +62,8 @@ Tady je několik konceptů, se kterými se můžete seznámit při používání
 
    Flexibilní Server MySQL musí být v podsíti, která je **delegovaná** jenom pro použití jenom MySQL flexibilního serveru. Toto delegování znamená, že danou podsíť můžou využívat pouze flexibilní servery Azure Database for MySQL. V delegované podsíti nemůžou být žádné jiné typy prostředků Azure. Podsíť můžete delegovat přiřazením její vlastnosti delegování jako Microsoft. DBforMySQL/flexibleServers.
 
+* **Skupiny zabezpečení sítě (NSG)** Pravidla zabezpečení ve skupinách zabezpečení sítě umožňují filtrovat typ síťového provozu, který může přecházet do podsítí a síťových rozhraní virtuální sítě. Další informace najdete v článku [Přehled skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) .
+
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nepodporované scénáře virtuální sítě
 * Veřejný koncový bod (nebo veřejná IP adresa nebo DNS) – flexibilní Server nasazený do virtuální sítě nemůže mít veřejný koncový bod.
@@ -108,11 +110,9 @@ Pokud se přístup k serverové službě Microsoft Azure Database for MySQL nech
 ## <a name="hostname"></a>Název hostitele
 Bez ohledu na to, jakou možnost sítě zvolíte, doporučujeme při připojování k flexibilnímu serveru vždycky použít plně kvalifikovaný název domény (FQDN) jako název hostitele. IP adresa serveru nezaručuje, že zůstane statická. Použití plně kvalifikovaného názvu domény vám pomůže vyhnout se provádění změn v připojovacím řetězci. 
 
-V případě, že se změna IP adresy používá v případě redundantního HA zóny a dojde k převzetí služeb při selhání mezi primárním a sekundárním, můžete použít jeden Použití plně kvalifikovaného názvu domény znamená, že můžete bez problémů znovu připojit se stejným připojovacím řetězcem.
-
 Příklad
 * Doporučil `hostname = servername.mysql.database.azure.com`
-* Nepoužívejte `hostname = 10.0.0.4` (soukromá adresa) nebo `hostname = 40.2.45.67` (veřejná IP adresa)
+* Pokud je to možné, vyhněte se použití `hostname = 10.0.0.4` (privátní adresa) nebo `hostname = 40.2.45.67` (veřejná IP adresa).
 
 
 

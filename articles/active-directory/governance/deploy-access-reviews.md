@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461030"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306561"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -37,7 +37,7 @@ Kontroly [přístupu Azure Active Directory (Azure AD)](access-reviews-overview.
 
 * Automatizace výsledků kontroly, například odebrání přístupu uživatelů k prostředkům
 
-  ![Plánování plánů přístupu](./media/deploy-access-review/1-planning-review.png)
+  ![Diagram znázorňující tok kontrol přístupu](./media/deploy-access-review/1-planning-review.png)
 
 Kontroly přístupu jsou [Azure AD identity Governanceou](identity-governance-overview.md) funkcí. Další možnosti jsou [Správa nároků](entitlement-management-overview.md), [Privileged Identity Management](../privileged-identity-management/pim-configure.md) a [podmínek použití](../conditional-access/terms-of-use.md). Společně mohou organizace řešit tyto čtyři otázky:
 
@@ -300,7 +300,7 @@ Při [vytváření balíčku pro přístup](entitlement-management-access-packag
 
 Otevřete kartu životní cyklus a přejděte dolů k recenzím přístupu.
 
- ![Upravení zásady](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![Snímek obrazovky, který zobrazuje "Upravit zásadu" na kartě životní cyklus.](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>Plánování kontrol přístupu pro skupiny
 
@@ -446,7 +446,7 @@ Přístup k skupinám a aplikacím pro zaměstnance a hosty se nejspíš v průb
 
 Pokud chcete snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup k privilegovaným rolím Azure AD.
 
-![Kontrola rolí Azure AD](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Snímek obrazovky, který zobrazuje seznam "kontroly členství" rolí Azure A D.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 Postupujte podle pokynů v následujících odkazech:
 

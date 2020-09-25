@@ -1,6 +1,6 @@
 ---
 title: Vysoká dostupnost virtuálních počítačů Azure pro SAP NW v RHEL – příručka pro více SID | Microsoft Docs
-description: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
+description: Navažte vysokou dostupnost pro SAP NW na virtuálních počítačích Azure (virtuální počítače) RHEL s více SID.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 892c45db835457d5f0127d7377d722fc7f0df518
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 612bd019dc7a4bdf481fde4511084245fabd1620
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319958"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID
 
@@ -56,7 +56,7 @@ V ukázkových konfiguracích jsou instalační příkazy atd. tři systémy SAP
 * **NW2**: ASCS instance číslo **10** a virtuální název hostitele **msnw2ascs**; OLAJÍCÍCH instance číslo **12** a název virtuálního hostitele **msnw2ers**.  
 * **NW3**: ASCS instance číslo **20** a virtuální název hostitele **msnw3ascs**; OLAJÍCÍCH instance číslo **22** a název virtuálního hostitele **msnw3ers**.  
 
-Článek nepokrývá databázovou vrstvu a nasazení sdílených složek SAP NFS. V příkladech v tomto článku používáme [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) volume **sapMSID** pro sdílené složky NFS za předpokladu, že je svazek už nasazený. Předpokládáme, že Azure NetApp Files svazek je nasazený pomocí protokolu NFSv3 a že pro prostředky clusteru pro instance ASCS a OLAJÍCÍCH pro instance SAP Systems NW1, NW2 a NW3 existují následující cesty k tomuto souboru:  
+Článek nepokrývá databázovou vrstvu a nasazení sdílených složek SAP NFS. V příkladech v tomto článku používáme [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)  volume **sapMSID** pro sdílené složky NFS za předpokladu, že je svazek už nasazený. Předpokládáme, že Azure NetApp Files svazek je nasazený pomocí protokolu NFSv3 a že pro prostředky clusteru pro instance ASCS a OLAJÍCÍCH pro instance SAP Systems NW1, NW2 a NW3 existují následující cesty k tomuto souboru:  
 
 * Volume sapMSID (nfs://10.42.0.4/sapmnt<b>NW1</b>)
 * Volume sapMSID (nfs://10.42.0.4/usrsap<b>NW1</b>ASCS)
@@ -191,7 +191,7 @@ V tomto příkladu předpokládáme, že systém **NW1** už je v clusteru nasaz
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-### <a name="prerequisites"></a>Předpoklady 
+### <a name="prerequisites"></a>Požadavky 
 
 > [!IMPORTANT]
 > Než budete postupovat podle pokynů k nasazení dalších systémů SAP v clusteru, postupujte podle pokynů pro nasazení prvního systému SAP v clusteru, protože existují kroky, které jsou nezbytné pouze při prvním nasazení systému.  

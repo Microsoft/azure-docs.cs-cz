@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/17/2020
 ms.author: victorh
-ms.openlocfilehash: 92fc4252dd52236e2cc4e8fdfdd2afa32059a721
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320638"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Monitorování protokolů a metrik Azure Firewallu
 
@@ -35,14 +35,17 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 1. V Azure Portal otevřete skupinu prostředků brány firewall a vyberte bránu firewall.
 2. V části **Monitorování** vyberte **Nastavení diagnostiky**.
 
-   Pro bránu Azure Firewall jsou k dispozici dva protokoly pro konkrétní služby:
+   Pro Azure Firewall jsou k dispozici čtyři protokoly pro konkrétní služby:
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
+   * AzureFirewallThreatIntelLog
+   * AzureFirewallDnsProxy
+
 
 3. Vyberte **Přidat nastavení diagnostiky**. Stránka **Nastavení diagnostiky** obsahuje nastavení diagnostických protokolů.
 5. V tomto příkladu protokoly Azure Monitor ukládá do protokolů, takže jako název zadáte **Log Analytics pro firewall** .
-6. V části **protokol**vyberte **AzureFirewallApplicationRule** a **AzureFirewallNetworkRule** pro shromáždění protokolů pro pravidla aplikací a sítě.
+6. V části **protokol**vyberte **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog**a **AzureFirewallDnsProxy** , aby se protokoly shromáždily.
 7. Vyberte **Odeslat pro Log Analytics** ke konfiguraci pracovního prostoru.
 8. Vyberte předplatné.
 9. Vyberte **Uložit**.
@@ -91,7 +94,7 @@ Můžete se také připojit k účtu úložiště a načíst položky protokolu 
 > [!TIP]
 > Pokud znáte Visual Studio a máte představu, jak u konstant a proměnných v jazyce C# měnit hodnoty, můžete použít [nástroje pro převedení protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter), které jsou k dispozici na GitHubu.
 
-## <a name="view-metrics"></a>Zobrazení metrik
+## <a name="view-metrics"></a>Zobrazit metriky
 Přejděte k Azure Firewall v části **monitorování** vyberte **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
 
 ## <a name="next-steps"></a>Další kroky

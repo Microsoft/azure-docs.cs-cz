@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/07/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: c17cd17dfc3462d5a55753e6a4a364c14f9e2b62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320740"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Co je Azure Stack Edge Pro s GPU?
 
@@ -40,15 +40,14 @@ Tady jsou různé scénáře, kdy Azure Stack Edge pro je možné použít pro r
 
 Azure Stack Edge pro nabízí následující možnosti:
 
-|Schopnost |Description  |
+|Schopnost |Popis  |
 |---------|---------|
 |Akcelerované AI Inferencing| Povoleno integrovaným grafickým procesorem (jeden nebo dva v závislosti na modelu).|
 |Hraniční Computing      |Podporuje úlohy virtuálních počítačů a kontejnerů, aby bylo možné analyzovat, zpracovávat a filtrovat data. |
-|Vysoký výkon | Vysoce výkonné výpočetní a datové přenosy.|
 |Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
 |Spravované v cloudu     |Zařízení a služba se spravují prostřednictvím Azure Portal.  |
 |Nahrání offline     | Odpojený režim podporuje scénáře nahrání v režimu offline.|
-|Podporované protokoly úložiště     | Podpora pro protokoly Standard SMB, NFS a REST pro příjem dat. <br> Další informace o podporovaných verzích najdete v tématu [požadavky na systém Azure Stack Edge pro](azure-stack-edge-system-requirements.md).|
+|Podporované protokoly pro přenos souborů      | Podpora pro protokoly Standard SMB, NFS a REST pro příjem dat. <br> Další informace o podporovaných verzích najdete v tématu [požadavky na systém Azure Stack Edge pro](azure-stack-edge-system-requirements.md).|
 |Aktualizace dat     | Možnost aktualizovat místní soubory pomocí nejnovějších souborů z cloudu.|
 |Šifrování    | BitLocker podporuje místní šifrování dat a bezpečný přenos dat do cloudu přes protokol *https*.|
 |Omezení šířky pásma| Omezí omezení využití šířky pásma během špičky.|
@@ -73,6 +72,8 @@ Azure Stack Edge pro nabízí následující možnosti:
 Fyzické zařízení Azure Stack Edge pro, prostředek Azure a cílový účet úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
 
 - **Dostupnost prostředků** – pro tuto verzi Preview je prostředek k dispozici v oblastech východní USA, západní EU a Jižní východní Asie.
+
+- **Dostupnost zařízení** – seznam všech zemí, ve kterých je zařízení Azure Stack Edge pro dostupné, najdete v části **dostupnost** na kartě **Azure Stack Edge** pro [Azure Stack ceny pro Edge pro](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro).
     
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých se ukládají účty úložiště Azure Stack hraniční data pro, jsou umístěny blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
 

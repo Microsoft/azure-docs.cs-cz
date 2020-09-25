@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331807"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Kurz: nastavení fyzicky založených materiálů pro vykreslování v 3ds Max
 
@@ -22,6 +22,10 @@ V tomto kurzu se naučíte:
 > * Přiřaďte materiály s pokročilým osvětlením pro objekty ve scéně.
 > * Zpracování vytváření instancí objektů a materiálů
 > * Exportujte scénu do formátu FBX a vyberte důležité možnosti.
+
+> [!Note]
+> Postup popsaný v tomto kurzu funguje v 3ds Max 2019 a 3ds Max 2020.
+> Změna způsobu, jakým aplikace 3ds Max 2021 exportuje mapy hrbolů znamená, že služba převodu nebude při použití této verze najít normální mapy.
 
 Vytvoření [fyzicky založených materiálů pro vykreslování](../../overview/features/pbr-materials.md) v 3ds Max je jednoduchá úloha. Podobným způsobem je nastavení PBR v dalších aplikacích pro vytváření obsahu, jako je Maya. Tento kurz je průvodcem pro základní nastavení funkce PBR shader a export FBX pro projekty vzdáleného vykreslování Azure.
 

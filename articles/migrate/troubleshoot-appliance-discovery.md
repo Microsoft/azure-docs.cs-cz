@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331773"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -124,7 +124,7 @@ Chyba 50004: Nelze se připojit k hostiteli nebo clusteru, protože název serve
 - Zajistěte, aby ze zařízení bylo připojení k serveru.
 - Pokud se jedná o server Linux, zajistěte, aby ověřování na základě hesla bylo povoleno pomocí následujících kroků:
     1. Přihlaste se k počítači se systémem Linux a otevřete konfigurační soubor SSH pomocí příkazu "VI/etc/ssh/sshd_config".
-    2. Nastavte možnost PasswordAuthentication na Ano. Soubor uložte.
+    2. Nastavte možnost PasswordAuthentication na Ano. Uložte soubor.
     3. Restartujte službu SSH spuštěním příkazu Service sshd restart.
 - Pokud se jedná o Windows Server, zajistěte, aby byl port 5985 otevřený pro vzdálenou volání rozhraní WMI.
 - Pokud zjišťujete Server GCP Linux a použijete uživatele root, změňte výchozí nastavení pro kořenové přihlášení pomocí následujících příkazů.
@@ -136,7 +136,7 @@ Chyba 50004: Nelze se připojit k hostiteli nebo clusteru, protože název serve
 
 Zajistěte, aby na serveru se systémem Linux bylo povoleno ověřování na základě hesla, a to pomocí následujících kroků:
     1. Přihlaste se k počítači se systémem Linux a otevřete konfigurační soubor SSH pomocí příkazu "VI/etc/ssh/sshd_config".
-    2. Nastavte možnost PasswordAuthentication na Ano. Soubor uložte.
+    2. Nastavte možnost PasswordAuthentication na Ano. Uložte soubor.
     3. Restartujte službu SSH spuštěním příkazu Service sshd restart.
 
 
@@ -234,6 +234,7 @@ Typické chyby zjišťování aplikací jsou shrnuté v tabulce.
 9033: Nejde zjistit, protože uživatelské jméno virtuálního počítače obsahuje neplatné znaky.     |   V uživatelském jménu byly zjištěny neplatné znaky.   |   Zadejte znovu přihlašovací údaje k virtuálnímu počítači, aby nedocházelo k neplatným znakům.
 9034: zadané uživatelské jméno není ve formátu UPN.    |   Uživatelské jméno není ve formátu UPN.  |   Ujistěte se, že uživatelské jméno je ve formátu hlavního názvu uživatele (UPN).
 9035: nelze zjistit, protože režim jazyka PowerShell není nastaven na hodnotu Full Language.  |   Jazykový režim pro PowerShell v hostovaném virtuálním počítači není nastavený na úplný jazyk.   |   Ujistěte se, že je režim jazyka PowerShell nastavený na úplný jazyk.
+9037: shromažďování dat je dočasně pozastaveno, protože doba odezvy virtuálního počítače je příliš vysoká.    |   Zjištěný virtuální počítač trvá příliš dlouho, než odpoví     |   Nevyžaduje se žádná akce. V průběhu 24 hodin se bude opakovat pokus o zjištění aplikace a 3 hodiny pro analýzu závislostí (bez agentů).
 10000: typ operačního systému se nepodporuje.   |   Operační systém spuštěný na serveru není ani Windows ani Linux.    |   Podporované typy operačních systémů jsou pouze systémy Windows a Linux.
 10001: skript pro zjišťování serveru se v zařízení nenašel.    |   Zjišťování nefunguje podle očekávání.   |   Pro řešení kontaktujte podpora Microsoftu.
 10002: úloha zjišťování nebyla dokončena včas.     |   Agent zjišťování nepracuje podle očekávání.     |   Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu.

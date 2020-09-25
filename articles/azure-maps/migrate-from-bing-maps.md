@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 643e49bdba76051c873ed549d5f6c21487f34056
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108665"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319601"
 ---
 # <a name="migrate-from-bing-maps-to-azure-maps"></a>Migrace z map Bingu na Azure Maps
 
@@ -52,7 +52,7 @@ Následující tabulka obsahuje seznam funkcí mapy Bing na nejvyšší úrovni 
 | Prostorové Data Services (SDS)           | Částečné            |
 | Časové pásmo                             | ✓                  |
 | Incidenty provozu                     | ✓                  |
-| Mapy řízené konfigurací             | –                |
+| Mapy řízené konfigurací             | Není k dispozici                |
 
 Mapy Bing poskytují základní ověřování založené na klíčích. Azure Maps poskytuje základní ověřování založené na klíčích i vysoce zabezpečené ověřování Azure Active Directory.
 
@@ -81,6 +81,15 @@ Následuje plán migrace na vysoké úrovni.
 4.  Migrujte kód aplikace.
 5.  Otestujte migrovaná aplikace.
 6.  Nasaďte migrovaná aplikace do produkčního prostředí.
+
+## <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
+
+Pokud chcete vytvořit účet Azure Maps a získat přístup k platformě Azure Maps, postupujte podle těchto kroků:
+
+1. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+3. Vytvořte [účet Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
+4. [Získejte Azure Maps klíč předplatného](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) nebo nastavte Azure Active Directory ověřování pro rozšířené zabezpečení.
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps technické prostředky
 

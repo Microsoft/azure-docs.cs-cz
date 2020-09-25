@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 4d0800ff8a35c5c91b067a85dfcc089f2e343d1f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090913"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319074"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Sada Batch Processing Kit pro kontejnery řeči
 
@@ -23,9 +23,9 @@ Pomocí sady Batch Processing můžete doplňovat a škálovat úlohy na kontejn
 
 :::image type="content" source="media/containers/general-diagram.png" alt-text="Diagram znázorňující příklad pracovního postupu kontejneru Batch-Kit.":::
 
-Kontejner sady Batch Kit je zdarma dostupný na [GitHubu](https://github.com/microsoft/batch-processing-kit) a [Docker Hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags). Budou se vám [účtovat](speech-container-howto.md#billing) jenom vámi používané kontejnery řeči.
+Kontejner sady Batch Kit je zdarma dostupný na [GitHubu](https://github.com/microsoft/batch-processing-kit) a   [Docker Hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags). Budou se vám [účtovat](speech-container-howto.md#billing) jenom vámi používané kontejnery řeči.
 
-| Funkce  | Description  |
+| Funkce  | Popis  |
 |---------|---------|
 | Distribuce souboru Batch audio     | Automaticky odesílá velké počty souborů do místních nebo cloudových koncových bodů kontejneru řeči. Soubory mohou být na jakémkoli svazku kompatibilním se standardem POSIX, včetně síťových systémů souborů.       |
 | Integrace sady Speech SDK | Předat společné příznaky sadě Speech SDK, včetně: n-nejlepší hypotéza, diarization, jazyk, maskování vulgárních výrazů.  |
@@ -35,7 +35,7 @@ Kontejner sady Batch Kit je zdarma dostupný na [GitHubu](https://github.com/mic
 | Výměna koncového bodu za chodu | Přidání, odebrání nebo úprava koncových bodů kontejneru řeči za běhu bez přerušení průběhu dávky Aktualizace jsou okamžité. |
 | Protokolování v reálném čase | Protokolování pokusů o žádosti, časová razítka a důvody selhání v reálném čase se soubory protokolu sady Speech SDK pro každý zvukový soubor. |
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí `docker pull`
 
 Použijte příkaz [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) ke stažení nejnovějšího kontejneru sady Batch Kit.
 
@@ -76,6 +76,8 @@ Klient služby Batch může dynamicky zjistit, jestli koncový bod nebude k disp
 > * Tento příklad používá stejný adresář ( `/my_nfs` ) pro konfigurační soubor a vstupní, výstupní a protokoly adresáře. Pro tyto složky můžete použít hostované adresáře nebo adresáře připojené k systému souborů NFS.
 > * Po spuštění klienta se `–h` zobrazí seznam dostupných parametrů příkazového řádku a jejich výchozí hodnoty. 
 
+
+#### <a name="linux"></a>[Linux](#tab/linux)
 `run`Ke spuštění kontejneru použijte příkaz Docker. Tím se spustí interaktivní prostředí uvnitř kontejneru.
 
 ```Docker
@@ -94,6 +96,18 @@ Spuštění klienta Batch a kontejneru v jednom příkazu:
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
+#### <a name="windows"></a>[Windows](#tab/windows)
+
+Spuštění klienta Batch a kontejneru v jednom příkazu:
+
+```Docker
+docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
+
+```
+
+---
+
+
 Klient bude spuštěn. Pokud se už zvukový soubor přepisu v předchozím běhu, klient ho automaticky přeskočí. Když dojde k přechodným chybám, odesílají se soubory s automatickým opakováním a můžete odlišit, mezi kterými chybami se má klient pokusit znovu. Při chybě přepisu bude klient pokračovat v přepisu a může to zkusit znovu, aniž by došlo ke ztrátě průběhu.  
 
 ## <a name="run-modes"></a>Režimy spuštění 
@@ -102,7 +116,7 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 #### <a name="oneshot"></a>[Oneshot](#tab/oneshot)
 
-`ONESHOT`režim transcribes jednu dávku zvukových souborů (ze vstupního adresáře a volitelného seznamu souborů) do výstupní složky.
+`ONESHOT` režim transcribes jednu dávku zvukových souborů (ze vstupního adresáře a volitelného seznamu souborů) do výstupní složky.
 
 :::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Diagram znázorňující soubory zpracování kontejneru Batch-Kit v režimu OneShot":::
 
@@ -117,7 +131,7 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 > [!TIP]
 > Pokud se ke vstupnímu adresáři přidávají současně víc souborů, můžete místo toho zvýšit výkon přidáním v pravidelných intervalech.
 
-`DAEMON`režim transcribes stávající soubory v dané složce a průběžně transcribes nové zvukové soubory při jejich přidání.          
+`DAEMON` režim transcribes stávající soubory v dané složce a průběžně transcribes nové zvukové soubory při jejich přidání.          
 
 :::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Diagram znázorňující soubory zpracování kontejneru sady Batch-Kit v režimu démona.":::
 
@@ -130,14 +144,14 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 #### <a name="rest"></a>[REST](#tab/rest)
 
-`REST`režim je režim serveru rozhraní API, který poskytuje základní sadu koncových bodů HTTP pro odeslání dávky zvukového souboru, kontrolu stavu a dlouhé cyklické dotazování. Také umožňuje programovou spotřebu pomocí rozšíření modulu Pythonu nebo importu jako dílčí modul.
+`REST` režim je režim serveru rozhraní API, který poskytuje základní sadu koncových bodů HTTP pro odeslání dávky zvukového souboru, kontrolu stavu a dlouhé cyklické dotazování. Také umožňuje programovou spotřebu pomocí rozšíření modulu Pythonu nebo importu jako dílčí modul.
 
 :::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Diagram znázorňující soubory zpracování kontejneru sady Batch-Kit v režimu démona.":::
 
 1. Zadejte koncové body kontejneru řeči, které bude klient Batch používat v `config.yaml` souboru. 
 2. Odešle požadavek na požadavek HTTP na jeden z koncových bodů serveru API. 
         
-    |Koncový bod  |Description  |
+    |Koncový bod  |Popis  |
     |---------|---------|
     |`/submit`     | Koncový bod pro vytváření nových požadavků na dávky        |
     |`/status`     | Koncový bod pro kontrolu stavu dávkového požadavku. Připojení zůstane otevřené, dokud se dávka nedokončí.       |

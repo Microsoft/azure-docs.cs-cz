@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277200"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319856"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi
 Toto téma popisuje různé metody, které můžete použít k upgradu instalace služby Azure Active Directory (Azure AD) Connect na nejnovější verzi. Doporučujeme, abyste si zachovali aktuální verze Azure AD Connect. Při provádění podstatné změny konfigurace můžete také použít kroky v části kroková [migrace](#swing-migration) .
@@ -106,7 +106,7 @@ Mohou nastat situace, kdy nechcete, aby tato přepsání byla provedena ihned po
 
 1. Během upgradu **zrušte zaškrtnuté políčko** **po dokončení konfigurace spustit proces synchronizace**. Tím se zakáže Plánovač synchronizace a zabrání se automatickému zacyklení procesu synchronizace před odebráním přepsání.
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![Snímek obrazovky, který zvýrazní možnost spustit proces synchronizace po dokončení konfigurace, kterou je třeba vymazat.](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
 2. Po dokončení upgradu spusťte následující rutinu, abyste zjistili, jaké přepsání bylo přidáno: `Get-ADSyncSchedulerConnectorOverride | fl`
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442594"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319465"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -23,28 +23,6 @@ Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure pr
 
 > [!IMPORTANT]
 > Tento článek se týká Azure SQL Database a analýzy Azure synapse (dřív SQL Data Warehouse). Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics. Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure**.
-
-## <a name="data-exfiltration-prevention"></a>Prevence exfiltrace dat
-
-Exfiltrace dat v Azure SQL Database je v případě, že ověřený uživatel, jako je správce databáze, může extrahovat data z jednoho systému a přesunout ho do jiného umístění nebo systému mimo organizaci. Uživatel například přesune data do účtu úložiště, jehož vlastníkem je třetí strana.
-
-Vezměte v úvahu scénář s uživatelem běžícím SQL Server Management Studio (SSMS) ve virtuálním počítači Azure, který se připojuje k databázi v SQL Database. Tato databáze je v datovém centru Západní USA. Následující příklad ukazuje, jak omezit přístup k veřejným koncovým bodům na SQL Database pomocí řízení přístupu k síti.
-
-1. Nastavením povolit službám Azure na **off**zakažte veškerý provoz služeb azure pro SQL Database prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall na úrovni serveru a databáze povolená žádná IP adresa. Další informace najdete v tématu [Azure SQL Database a Azure synapse Analytics Network Access Controls](network-access-controls-overview.md).
-1. Povolí provoz do databáze v SQL Database jenom pomocí privátní IP adresy virtuálního počítače. Další informace najdete v článcích o [pravidlech brány firewall](firewall-configure.md)pro [službu Endpoint Service](vnet-service-endpoint-rule-overview.md) a virtuální sítě.
-1. Na virtuálním počítači Azure upřesněte rozsah odchozího připojení pomocí [skupin zabezpečení sítě (skupin zabezpečení sítě)](../../virtual-network/manage-network-security-group.md) a značek služeb následujícím způsobem.
-    - Zadejte pravidlo NSG, které povolí provoz pro tag Service = SQL. WestUs – umožňuje připojení k SQL Database jenom v Západní USA
-    - Zadejte pravidlo NSG (s **vyšší prioritou**) pro odepření provozu pro značku služby = SQL – odepření připojení k SQL Database ve všech oblastech.
-
-Na konci této instalace se virtuální počítač Azure může připojit pouze k databázi v SQL Database v oblasti Západní USA. Připojení ale není omezené na izolovanou databázi v SQL Database. Virtuální počítač se stále může připojit k libovolné databázi v Západní USA oblasti, včetně databází, které nejsou součástí předplatného. I když jsme snížili rozsah exfiltrace dat ve výše uvedeném scénáři na konkrétní oblast, neodstraníme ji úplně.
-
-Pomocí privátního propojení teď můžou zákazníci nastavit řízení přístupu k síti, jako je skupin zabezpečení sítě, aby se omezil přístup k privátnímu koncovému bodu. Jednotlivé prostředky Azure PaaS se pak namapují na konkrétní soukromé koncové body. Škodlivý program Insider má přístup jenom k mapovanému prostředku PaaS (například k databázi v SQL Database) a žádnému jinému prostředku. 
-
-## <a name="on-premises-connectivity-over-private-peering"></a>Místní připojení přes soukromý partnerský vztah
-
-Když se zákazníci připojí k veřejnému koncovému bodu z místních počítačů, musí se jejich IP adresa přidat do brány firewall založené na protokolu IP pomocí [pravidla brány firewall na úrovni serveru](firewall-create-server-level-portal-quickstart.md). I když tento model funguje dobře a umožňuje přístup k jednotlivým počítačům pro vývoj nebo testování, je obtížné ho spravovat v produkčním prostředí.
-
-Pomocí privátního propojení můžou zákazníci povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí tunelového propojení [ExpressRoute](../../expressroute/expressroute-introduction.md), privátního partnerského vztahu nebo VPN. Zákazníci pak můžou zakázat veškerý přístup přes Veřejný koncový bod a nepoužívat bránu firewall založenou na protokolu IP k povolení jakýchkoli IP adres.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Jak nastavit privátní odkaz pro Azure SQL Database 
 
@@ -71,6 +49,12 @@ Po vytvoření privátního koncového bodu (PE) správcem sítě může správc
 
 1. Po schválení nebo odmítnutí bude seznam odpovídat příslušnému stavu spolu s textem odpovědi.
 ![Snímek obrazovky všech PECs po schválení][5]
+
+## <a name="on-premises-connectivity-over-private-peering"></a>Místní připojení přes soukromý partnerský vztah
+
+Když se zákazníci připojí k veřejnému koncovému bodu z místních počítačů, musí se jejich IP adresa přidat do brány firewall založené na protokolu IP pomocí [pravidla brány firewall na úrovni serveru](firewall-create-server-level-portal-quickstart.md). I když tento model funguje dobře a umožňuje přístup k jednotlivým počítačům pro vývoj nebo testování, je obtížné ho spravovat v produkčním prostředí.
+
+Pomocí privátního propojení můžou zákazníci povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí tunelového propojení [ExpressRoute](../../expressroute/expressroute-introduction.md), privátního partnerského vztahu nebo VPN. Zákazníci pak můžou zakázat veškerý přístup přes Veřejný koncový bod a nepoužívat bránu firewall založenou na protokolu IP k povolení jakýchkoli IP adres.
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Případy použití privátního odkazu pro Azure SQL Database 
 
@@ -154,6 +138,22 @@ Pokud se [chcete k SQL Database připojit pomocí SSMS](connect-query-ssms.md), 
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
+
+## <a name="data-exfiltration-prevention"></a>Prevence exfiltrace dat
+
+Exfiltrace dat v Azure SQL Database je v případě, že ověřený uživatel, jako je správce databáze, může extrahovat data z jednoho systému a přesunout ho do jiného umístění nebo systému mimo organizaci. Uživatel například přesune data do účtu úložiště, jehož vlastníkem je třetí strana.
+
+Vezměte v úvahu scénář s uživatelem běžícím SQL Server Management Studio (SSMS) ve virtuálním počítači Azure, který se připojuje k databázi v SQL Database. Tato databáze je v datovém centru Západní USA. Následující příklad ukazuje, jak omezit přístup k veřejným koncovým bodům na SQL Database pomocí řízení přístupu k síti.
+
+1. Nastavením povolit službám Azure na **off**zakažte veškerý provoz služeb azure pro SQL Database prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall na úrovni serveru a databáze povolená žádná IP adresa. Další informace najdete v tématu [Azure SQL Database a Azure synapse Analytics Network Access Controls](network-access-controls-overview.md).
+1. Povolí provoz do databáze v SQL Database jenom pomocí privátní IP adresy virtuálního počítače. Další informace najdete v článcích o [pravidlech brány firewall](firewall-configure.md)pro [službu Endpoint Service](vnet-service-endpoint-rule-overview.md) a virtuální sítě.
+1. Na virtuálním počítači Azure upřesněte rozsah odchozího připojení pomocí [skupin zabezpečení sítě (skupin zabezpečení sítě)](../../virtual-network/manage-network-security-group.md) a značek služeb následujícím způsobem.
+    - Zadejte pravidlo NSG, které povolí provoz pro tag Service = SQL. WestUs – umožňuje připojení k SQL Database jenom v Západní USA
+    - Zadejte pravidlo NSG (s **vyšší prioritou**) pro odepření provozu pro značku služby = SQL – odepření připojení k SQL Database ve všech oblastech.
+
+Na konci této instalace se virtuální počítač Azure může připojit pouze k databázi v SQL Database v oblasti Západní USA. Připojení ale není omezené na izolovanou databázi v SQL Database. Virtuální počítač se stále může připojit k libovolné databázi v Západní USA oblasti, včetně databází, které nejsou součástí předplatného. I když jsme snížili rozsah exfiltrace dat ve výše uvedeném scénáři na konkrétní oblast, neodstraníme ji úplně.
+
+Pomocí privátního propojení teď můžou zákazníci nastavit řízení přístupu k síti, jako je skupin zabezpečení sítě, aby se omezil přístup k privátnímu koncovému bodu. Jednotlivé prostředky Azure PaaS se pak namapují na konkrétní soukromé koncové body. Škodlivý program Insider má přístup jenom k mapovanému prostředku PaaS (například k databázi v SQL Database) a žádnému jinému prostředku. 
 
 ## <a name="limitations"></a>Omezení 
 Připojení k privátnímu koncovému bodu podporují **proxy server** jenom jako [zásady připojení](connectivity-architecture.md#connection-policy) .

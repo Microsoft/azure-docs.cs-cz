@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 23b78acb226b0d4de637dc653e6edb3bb4177219
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496334"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263585"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Kurz: Přidání Azure SQL Database do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -80,7 +80,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní svou data
    - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny převzetí služeb při selhání, například `failovergrouptutorial` .
    - **Sekundární server**: vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot vyberte **Vybrat**.
       - **Název serveru**: Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary` .
-      - **Přihlašovací jméno správce serveru**: typ`azureuser`
+      - **Přihlašovací jméno správce serveru**: typ `azureuser`
       - **Heslo**: zadejte komplexní heslo, které splňuje požadavky na heslo.
       - **Umístění**: vyberte umístění z rozevíracího seznamu, například `East US` . Toto umístění nemůže být stejné jako primární server.
 
@@ -336,7 +336,7 @@ Vyčistěte prostředky odstraněním skupiny prostředků.
 Odstraňte skupinu prostředků pomocí Azure Portal.
 
 1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com).
-1. Vyberte **Odstranit skupinu prostředků** a odstraňte všechny prostředky ve skupině a také samotnou skupinu prostředků.
+1. Vyberte  **Odstranit skupinu prostředků** a odstraňte všechny prostředky ve skupině a také samotnou skupinu prostředků.
 1. Zadejte název skupiny prostředků, `myResourceGroup` v textovém poli a pak vyberte **Odstranit** a odstraňte skupinu prostředků.  
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

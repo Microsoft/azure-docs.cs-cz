@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 047915874dfd81fdf68dc97ac217274b2439d726
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331892"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití SQL Server
 V tomto kurzu se seznámíte s procesem sestavení a nasazení modelu Machine Learning pomocí SQL Server a veřejně dostupné datové sady ( [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) ). Postup následuje za standardním pracovním postupem pro datové vědy: ingestování a zkoumání dat, inženýr funkcí usnadňujících učení a následné sestavení a nasazení modelu.
@@ -83,14 +83,14 @@ V tomto kurzu provedeme paralelní hromadný import dat do SQL Server, zkoumán�
 Nastavení prostředí pro datové vědy v Azure:
 
 1. [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md)
-2. [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md)
+2. [Vytvoření pracovního prostoru Azure Machine Learning](../classic/create-workspace.md)
 3. [Zřídí Data Science Virtual Machine](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), který poskytuje SQL Server a server IPython notebook.
    
    > [!NOTE]
    > Ukázkové skripty a poznámkové bloky IPython se stáhnou do vašeho virtuálního počítače pro datové vědy během procesu instalace. Po dokončení skriptu po instalaci virtuálního počítače se ukázky zobrazí v knihovně dokumentů vašeho virtuálního počítače:  
    > 
-   > * Ukázkové skripty:`C:\Users\<user_name>\Documents\Data Science Scripts`  
-   > * Ukázkové poznámkové bloky IPython:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+   > * Ukázkové skripty: `C:\Users\<user_name>\Documents\Data Science Scripts`  
+   > * Ukázkové poznámkové bloky IPython: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
    >   kde `<user_name>` je přihlašovací jméno vašeho virtuálního počítače v systému Windows. Jako **ukázkové skripty** a **ukázkové poznámkové bloky IPython**budeme odkazovat na vzorové složky.
    > 
    > 
@@ -142,9 +142,9 @@ Výkon načítání a přenosu velkých objemů dat na SQL Database a následné
      Kliknutím na **Spustit** spusťte skript a vytvořte dělené tabulky.
 7. Ve složce **Sample Scripts** jsou k dispozici dva ukázkové skripty PowerShellu, které ukazují paralelní hromadné importy dat do SQL Server tabulek.
    
-   * ** \_ paralelní \_generic.ps1BCP** je obecný skript k paralelnímu hromadnému importu dat do tabulky. Úpravou tohoto skriptu nastavte vstupní a cílové proměnné, které jsou uvedené v řádcích komentářů ve skriptu.
-   * ** \_ paralelní \_nyctaxi.ps1BCP** je předem nakonfigurovaná verze obecného skriptu a dá se použít k načtení obou tabulek pro data o cestách NYC taxislužby.  
-8. Klikněte pravým tlačítkem myši na název ** \_ paralelního \_nyctaxi.ps1skriptu BCP** a kliknutím na **Upravit** ho otevřete v PowerShellu. Zkontrolujte přednastavené proměnné a upravte je podle zvoleného názvu databáze, složky vstupních dat, cílové složky protokolu a cest k souborům formátů vzorku **nyctaxi_trip.xml** a **nyctaxi \_fare.xml** (ve složce **Sample Scripts** ).
+   * ** \_ paralelní \_generic.ps1BCP ** je obecný skript k paralelnímu hromadnému importu dat do tabulky. Úpravou tohoto skriptu nastavte vstupní a cílové proměnné, které jsou uvedené v řádcích komentářů ve skriptu.
+   * ** \_ paralelní \_nyctaxi.ps1BCP ** je předem nakonfigurovaná verze obecného skriptu a dá se použít k načtení obou tabulek pro data o cestách NYC taxislužby.  
+8. Klikněte pravým tlačítkem myši na název ** \_ paralelního \_nyctaxi.ps1skriptu BCP ** a kliknutím na **Upravit** ho otevřete v PowerShellu. Zkontrolujte přednastavené proměnné a upravte je podle zvoleného názvu databáze, složky vstupních dat, cílové složky protokolu a cest k souborům formátů vzorku **nyctaxi_trip.xml** a **nyctaxi \_fare.xml** (ve složce **Sample Scripts** ).
    
     ![Hromadné importy dat][16]
    
@@ -175,8 +175,8 @@ V této části uložíme konečný dotaz pro extrakci a vzorkování dat. Druh�
 
 Rychlé ověření počtu řádků a sloupců v tabulkách vydaných dříve pomocí paralelního hromadného importu
 
-- Vykázat počet řádků v tabulce nyctaxi_trip bez prohledávání tabulky:`SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
-- Sestava počtu sloupců v tabulce nyctaxi_trip:`SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
+- Vykázat počet řádků v tabulce nyctaxi_trip bez prohledávání tabulky: `SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
+- Sestava počtu sloupců v tabulce nyctaxi_trip: `SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Průzkum: distribuce cest pomocí Medallion
 Tento příklad identifikuje Medallion (taxislužby čísla) o více než 100 cest během daného časového období. Dotaz by měl těžit z tabulkového přístupu s dělenou výhodou, protože je podmíněné schémam oddílu **pro \_ Datum vyzvednutí**. Dotazování na celou datovou sadu použije také prohledání děleného tabulky nebo indexu.
@@ -626,9 +626,9 @@ Nyní je připraven pokračovat na sestavení modelu a nasazení modelu v [Azure
 3. Regresní úloha: pro předpověď množství tipu placeného pro cestu.  
 
 ## <a name="building-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Vytváření modelů v Azure Machine Learning
-Pokud chcete začít modelování, přihlaste se ke svému pracovnímu prostoru Azure Machine Learning. Pokud jste ještě nevytvořili pracovní prostor machine learningu, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](../studio/create-workspace.md).
+Pokud chcete začít modelování, přihlaste se ke svému pracovnímu prostoru Azure Machine Learning. Pokud jste ještě nevytvořili pracovní prostor machine learningu, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](../classic/create-workspace.md).
 
-1. Pokud chcete začít s Azure Machine Learning, přečtěte si téma [co je Azure Machine Learning Studio?](../studio/what-is-ml-studio.md)
+1. Pokud chcete začít s Azure Machine Learning, přečtěte si téma [co je Azure Machine Learning Studio?](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 2. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net).
 3. Domovská stránka studia poskytuje spoustu informací, videí, kurzů, odkazů na reference k modulům a dalších prostředků. Další informace o Azure Machine Learning najdete v [centru dokumentace Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
@@ -651,7 +651,7 @@ V tomto cvičení jsme již prozkoumali a provedli analýzu dat v SQL Server a r
    
     ![Azure Machine Learning import dat][17]
 2. Na panelu **vlastnosti** vyberte možnost **Azure SQL Database** jako **zdroj dat** .
-3. Do pole **název databázového serveru** zadejte název DNS databáze. Formátovat`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Do pole **název databázového serveru** zadejte název DNS databáze. Formátovat `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Do příslušného pole zadejte **název databáze** .
 5. Zadejte **uživatelské jméno SQL** do pole **název uživatelského účtu serveru**a **heslo** v **hesle uživatelského účtu serveru**.
 7. V textové oblasti **dotaz do databáze** vložte dotaz, který extrahuje potřebná databázová pole (včetně všech vypočítaných polí, jako jsou popisky), a dolů vyvzorkuje data do požadované velikosti vzorku.
@@ -668,7 +668,7 @@ Příkladem binární klasifikace experimentu pro čtení dat přímo z SQL Serv
 > 
 
 ## <a name="deploying-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Nasazení modelů v Azure Machine Learning
-Když je model připravený, můžete ho snadno nasadit jako webovou službu přímo z experimentu. Další informace o nasazení Azure Machine Learning webové služby najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
+Když je model připravený, můžete ho snadno nasadit jako webovou službu přímo z experimentu. Další informace o nasazení Azure Machine Learning webové služby najdete v tématu [nasazení webové služby Azure Machine Learning](../classic/deploy-a-machine-learning-web-service.md).
 
 K nasazení nové webové služby potřebujete:
 
@@ -697,9 +697,9 @@ V tomto výukovém kurzu jste v tomto návodu vytvořili prostředí Azure Data 
 Tento ukázkový návod a příslušné doprovodné skripty a IPython Poznámkový blok sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v souboru LICENSE.txt v adresáři ukázkového kódu na GitHubu.
 
 ### <a name="references"></a>Reference
-• [Stránka pro stažení Andrés MONROY NYC taxislužby](https://www.andresmh.com/nyctaxitrips/)  
-• [Fólie NYC data taxislužby na cestách pomocí chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC taxislužby a Limousine výzkumu a statistiky Komise](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+•    [Stránka pro stažení Andrés MONROY NYC taxislužby](https://www.andresmh.com/nyctaxitrips/)  
+•    [Fólie NYC data taxislužby na cestách pomocí chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [NYC taxislužby a Limousine výzkumu a statistiky Komise](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sql-walkthrough/sql-walkthrough_28_1.png

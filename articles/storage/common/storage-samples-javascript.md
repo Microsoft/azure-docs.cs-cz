@@ -7,13 +7,13 @@ ms.date: 02/19/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 466a1318dbe0a9299eebb9259ef8e0fe9bbbc0e7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 208e06e9bd8fcf26674a11f79d2bd6878ca4f633
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433082"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331552"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven V12 JavaScript
 
@@ -209,7 +209,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="share"></a>Sdílet
+### <a name="share"></a>Sdílení
 
 :::row:::
    :::column span="":::
@@ -350,7 +350,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Entity Batch](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
-      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
+      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::

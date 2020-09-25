@@ -1,14 +1,14 @@
 ---
 title: Integrace Azure Relay se službou Azure Private Link
 description: Naučte se integrovat Azure Relay se službou Azure Private Link.
-ms.date: 06/23/2020
+ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719423"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263836"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrace Azure Relay s privátním odkazem Azure (Preview)
 **Služba privátního propojení** Azure umožňuje přístup ke službám Azure (například Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti. Další informace najdete v tématu [co je to Azure Private Link (Preview)?](../private-link/private-link-overview.md)
@@ -16,15 +16,9 @@ ms.locfileid: "88719423"
 **Privátní koncový bod** je síťové rozhraní, které umožňuje, aby vaše úlohy spuštěné ve virtuální síti připojovaly soukromě a bezpečně ke službě, která má **prostředek privátního propojení** (například obor názvů přenosu). Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Přenosy mezi vaší virtuální sítí a službou procházejí přes páteřní síť Microsoftu, která eliminuje expozici veřejného Internetu. Úroveň členitosti můžete v řízení přístupu poskytnout tím, že povolíte připojení ke konkrétním oborům názvů Azure Relay. 
 
 
-> [!IMPORTANT]
-> Tato funkce je aktuálně ve **verzi Preview**. 
->
-> V současné době podporujeme připojení privátních odkazů u klientů odesílatelů. 
-
-
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Pokud chcete integrovat obor názvů Azure Relay pomocí privátního propojení Azure (Preview), budete potřebovat následující entity nebo oprávnění:
 
 - Azure Relay obor názvů.
@@ -39,7 +33,7 @@ Váš privátní koncový bod používá privátní IP adresu ve vaší virtuál
 ### <a name="steps"></a>Postup
 Podrobné pokyny k vytvoření nového oboru názvů Azure Relay a entit v této části najdete v tématu [Vytvoření oboru názvů Azure Relay pomocí Azure Portal](relay-create-namespace-portal.md).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Do vyhledávacího panelu zadejte text **Relay**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení**vyberte kartu **síť** .
@@ -167,7 +161,7 @@ Existují čtyři stavy zřizování:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Schválení, zamítnutí nebo odebrání připojení privátního koncového bodu
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 1. Do panelu hledání zadejte text **Relay**.
 1. Vyberte **obor názvů** , který chcete spravovat.
 1. Vyberte kartu **síť** .
@@ -235,7 +229,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Omezení a faktory návrhu
 
-### <a name="design-considerations"></a>Co vzít v úvahu při návrhu
+### <a name="design-considerations"></a>Na co dát pozor při navrhování
 - Privátní koncový bod pro Azure Relay je ve **verzi Public Preview**. 
 - Informace o cenách najdete v tématu [ceny pro privátní propojení Azure (Preview)](https://azure.microsoft.com/pricing/details/private-link/).
 

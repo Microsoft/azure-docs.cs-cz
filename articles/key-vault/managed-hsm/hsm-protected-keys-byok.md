@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: b90d868042e9fb947afdfae9acf35262912eff94
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320621"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Import klíčů chráněných HSM do spravovaného HSM (BYOK)
 
- Azure Key Vault spravovaný HSM podporuje import klíčů vygenerovaných v místním modulu hardwarového zabezpečení (HSM). klíče nebudou nikdy opustit hranici ochrany HSM. Tento scénář se často označuje jako *Přineste si vlastní klíč* (BYOK). Spravovaný modul hardwarového zabezpečení (HSM) používá podpůrný software nCipher hardwarového nShield Family of HSM (FIPS 140-2 Level 3) k ochraně vašich klíčů.
+ Azure Key Vault spravovaný HSM podporuje import klíčů vygenerovaných v místním modulu hardwarového zabezpečení (HSM). klíče nebudou nikdy opustit hranici ochrany HSM. Tento scénář se často označuje jako *Přineste si vlastní klíč* (BYOK). Spravovaný modul HSM používá k ochraně klíčů adaptéry LiquidSecurity HSM (Standard FIPS 140-2 Level 3).
 
 Informace v tomto článku vám pomůžou při plánování, generování a přenosu vlastních klíčů chráněných HSM pro použití se spravovaným modulem HSM.
 
@@ -70,9 +70,9 @@ Další informace o možnostech přihlášení prostřednictvím rozhraní pří
 
 ## <a name="supported-key-types"></a>Podporované typy klíčů
 
-|Název klíče|Typ klíče|Velikost klíče|Zdroj|Description|
+|Název klíče|Typ klíče|Velikost klíče|Zdroj|Popis|
 |---|---|---|---|---|
-|Klíč pro výměnu klíčů (KEK)|RSA| 2 048 – bit<br />3 072 – bit<br />4 096 – bit|Spravovaný modul HSM|Pár klíčů RSA zálohovaný modulem HSM generovaný ve spravovaném modulu HSM|
+|Klíč pro výměnu klíčů (KEK)|RSA| 2 048 – bit<br />3 072 – bit<br />4 096 – bit|Managed HSM|Pár klíčů RSA zálohovaný modulem HSM generovaný ve spravovaném modulu HSM|
 |Cílový klíč|RSA|2 048 – bit<br />3 072 – bit<br />4 096 – bit|HSM dodavatele|Klíč, který se má přenést do spravovaného modulu HSM|
 
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>Generování a přenos klíče do spravovaného modulu HSM

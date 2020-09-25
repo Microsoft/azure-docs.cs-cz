@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320043"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Oprava změněných výchozích pravidel v Azure AD Connect
 
@@ -73,7 +73,7 @@ Pokud pro vás rozšíření nefungují, zkuste přidat dvě nová pravidla sync
 #### <a name="add-an-inbound-sync-rule"></a>Přidat pravidlo příchozí synchronizace
 Pravidlo příchozí synchronizace znamená, že zdrojem atributu je místo konektoru a cíl je Metaverse. Pokud třeba chcete pro Azure Active Directory vytvořit nový tok atributů z místní služby Active Directory, vytvořte nové pravidlo příchozí synchronizace. Spusťte **Editor pravidel synchronizace**, vyberte **příchozí** jako směr a vyberte **Přidat nové pravidlo**. 
 
- ![Editor pravidel synchronizace](media/how-to-connect-fix-default-rules/default3a.png)
+ ![Snímek obrazovky zobrazující, že editor pravidel synchronizace má vybranou možnost příchozí a přidat nové pravidlo](media/how-to-connect-fix-default-rules/default3a.png)
 
 Podle vlastního pravidla pojmenování pravidla pojmenujte. Zde používáme **vlastní ve službě AD-User**. To znamená, že pravidlo je vlastní pravidlo a jedná se o příchozí pravidlo z prostoru konektoru služby Active Directory do úložiště metaverse.   
 
@@ -176,11 +176,11 @@ Vybrat **Náhled...**
 
 V okně Náhled vyberte v levém podokně **vygenerovat náhled** a **Importovat tok atributů** .
 
-![Preview](media/how-to-connect-fix-default-rules/default14.png)
+![Snímek obrazovky, který zobrazuje okno Preview s vybranou možnost Importovat tok atributů a vygenerovat náhled](media/how-to-connect-fix-default-rules/default14.png)
  
 Zde si všimněte, že nově přidané pravidlo je spuštěno na objektu a má nastaven `cloudFiltered` atribut na hodnotu true.
 
-![Preview](media/how-to-connect-fix-default-rules/default15a.png)
+![Náhled](media/how-to-connect-fix-default-rules/default15a.png)
  
 Chcete-li porovnat upravené pravidlo s výchozím pravidlem, exportujte obě pravidla samostatně jako textové soubory. Tato pravidla se exportují jako soubor skriptu PowerShellu. Můžete je porovnat pomocí jakéhokoli nástroje pro porovnání souborů (například Windiff), aby se změny zobrazily. 
  

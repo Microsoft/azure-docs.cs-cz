@@ -3,12 +3,12 @@ title: Spravovat zásady pro automatické vypínání v Azure DevTest Labs | Mic
 description: Naučte se, jak nastavit zásady automatického vypnutí pro testovací prostředí, aby se virtuální počítače automaticky vypnuly, když se nepoužívají.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3532e4859bd63c81cb9b9cda973064e5ef8357ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320706"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurace automatické vypnutí testovacího prostředí a virtuálních počítačů COMPUTE v Azure DevTest Labs
 
@@ -31,7 +31,7 @@ Zásady pro automatické vypínání pomáhají minimalizovat odpadní laborato�
 
 Chcete-li zobrazit (a změnit) zásady pro testovací prostředí, postupujte podle následujících kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.   
 4. Vyberte **Konfigurace a zásady**.
@@ -162,7 +162,7 @@ Začněte tím, že ve svém předplatném Azure vytvoříte aplikaci logiky pom
     }
     ```
     
-    ![Schéma JSON pro tělo požadavku](./media/devtest-lab-auto-shutdown/request-json.png)
+    ![Snímek obrazovky zobrazující "schéma JSON textu žádosti".](./media/devtest-lab-auto-shutdown/request-json.png)
 7. V návrháři vyberte **+ Nový krok** a proveďte tyto kroky:
     1. Vyhledejte **Office 365 Outlook – odeslání e-mailu**. 
     2. Vyberte **Odeslat e-mail** z **akcí**. 

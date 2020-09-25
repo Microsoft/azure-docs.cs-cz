@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ce0e03407349505d54aeb22b164fa8593446967d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319788"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Konfigurace infrastruktury Application Gateway
 
@@ -20,10 +20,10 @@ Infrastruktura služby Application Gateway zahrnuje virtuální síť, podsítě
 
 ## <a name="virtual-network-and-dedicated-subnet"></a>Virtuální síť a vyhrazená podsíť
 
-Application Gateway je ve vaší virtuální síti vyhrazené nasazení. V rámci virtuální sítě se pro aplikační bránu vyžaduje vyhrazená podsíť. V podsíti můžete mít několik instancí daného nasazení aplikační brány. V podsíti můžete taky nasadit jiné aplikační brány. V podsíti aplikační brány ale nemůžete nasadit žádné další prostředky.
+Application Gateway je ve vaší virtuální síti vyhrazené nasazení. V rámci virtuální sítě se pro aplikační bránu vyžaduje vyhrazená podsíť. V podsíti můžete mít několik instancí daného nasazení aplikační brány. V podsíti můžete taky nasadit jiné aplikační brány. V podsíti aplikační brány ale nemůžete nasadit žádné další prostředky. Nemůžete kombinovat Standard_v2 a standardní Application Gateway Azure ve stejné podsíti.
 
 > [!NOTE]
-> Nemůžete kombinovat Standard_v2 a standardní Application Gateway Azure ve stejné podsíti.
+> [Zásady koncového bodu služby virtuální sítě](../virtual-network/virtual-network-service-endpoint-policies-overview.md) se v Application Gateway podsíti v tuto chvíli nepodporují.
 
 ### <a name="size-of-the-subnet"></a>Velikost podsítě
 

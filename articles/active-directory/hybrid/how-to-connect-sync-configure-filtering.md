@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084834"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319975"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete určit, které objekty se zobrazí v Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přebírá všechny objekty ve všech doménách v konfigurovaných doménových strukturách. Obecně platí, že se jedná o doporučenou konfiguraci. Uživatelé, kteří používají Microsoft 365 úlohy, jako jsou Exchange Online a Skype pro firmy, můžou využít kompletní globální seznam adres, aby mohli posílat e-maily a volat všechny. S výchozí konfigurací by měly stejné prostředí jako při místní implementaci Exchange nebo Lyncu.
@@ -113,7 +113,7 @@ Chcete-li nastavit filtr domény, proveďte následující kroky:
    ![Vlastnosti konektoru](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. Klikněte na **Konfigurovat oddíly adresáře**.
 5. V seznamu **Vybrat oddíly adresářů** vyberte a zrušte výběr domén podle potřeby. Ověřte, zda jsou vybrány pouze oddíly, které chcete synchronizovat.  
-   ![Oddíly](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
+   ![Snímek obrazovky, který zobrazuje oddíly adresáře v okně Vlastnosti.](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    Pokud jste změnili místní infrastrukturu služby Active Directory a přidali nebo odebrali domény z doménové struktury, klikněte na tlačítko **aktualizovat** a získejte aktualizovaný seznam. Po obnovení budete požádáni o zadání přihlašovacích údajů. Poskytněte jakékoli přihlašovací údaje s oprávněním ke čtení pro službu Windows Server Active Directory. Nemusí se jednat o uživatele, který je předem vyplněný v dialogovém okně.  
    ![Nutná aktualizace](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Až skončíte, zavřete dialogové okno **vlastnosti** kliknutím na **OK**. Pokud jste z doménové struktury odebrali domény, zobrazí se automaticky otevírané okno se zprávou, že se odebrala doména a tato konfigurace se vyčistí.

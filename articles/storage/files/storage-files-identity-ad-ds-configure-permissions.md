@@ -5,20 +5,42 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320332"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Třetí část: Konfigurace oprávnění adresářů a souborů přes SMB 
 
 Než začnete s tímto článkem, ujistěte se, že jste dokončili předchozí článek, [přiřaďte identitě oprávnění na úrovni sdílené složky](storage-files-identity-ad-ds-assign-permissions.md) a ujistěte se, že jsou nastavená vaše oprávnění na úrovni sdílené složky.
 
 Po přiřazení oprávnění na úrovni sdílení s funkcí RBAC musíte nakonfigurovat správné seznamy ACL pro systém Windows na úrovni kořenového adresáře, adresáře nebo souboru, aby bylo možné využít podrobné řízení přístupu. Oprávnění na úrovni sdílené složky RBAC si můžete představit jako gatekeeper na vysoké úrovni, který určuje, jestli uživatel může ke sdílené složce přistupovat. I když seznamy ACL systému Windows fungují na podrobnější úrovni, aby bylo možné určit, které operace může uživatel provádět na úrovni adresáře nebo souboru. Oprávnění na úrovni sdílené složky a souboru nebo adresáře se vynutily, když se uživatel pokusí o přístup k souboru nebo adresáři, takže pokud mezi nimi existuje rozdíl, použije se jenom ta, která je jenom nejpřísnější. Například pokud má uživatel přístup pro čtení a zápis na úrovni souboru, ale přečte se jenom na úrovni sdílení, pak ho můžou číst jenom. Totéž by platilo, pokud bylo obrácené a uživatel měl přístup pro čtení a zápis na úrovni sdílené složky, ale jenom číst na úrovni souboru, ale může ho jenom číst.
+
+## <a name="rbac-permissions"></a>Oprávnění RBAC
+
+Následující tabulka obsahuje oprávnění RBAC související s touto konfigurací:
+
+
+| Předdefinovaná role  | Oprávnění NTFS  | Výsledný přístup  |
+|---------|---------|---------|
+|Čtenář sdílené složky SMB dat souboru úložiště | Úplné řízení, úprava, čtení, zápis, provedení | Read & execute  |
+|     |   Čtení |     Čtení  |
+|Přispěvatel sdílené složky SMB dat souboru úložiště  |  Full control    |  Upravit, číst, zapsat, spustit |
+|     |  Modify         |  Modify    |
+|     |  Read & execute |  Read & execute |
+|     |  Čtení           |  Čtení    |
+|     |  Zápis          |  Zápis   |
+|Přispěvatel sdílené složky SMB dat souboru úložiště s vyššími oprávněními | Full control  |  Upravit, číst, zapsat, upravit, spustit |
+|     |  Modify          |  Modify |
+|     |  Read & execute  |  Read & execute |
+|     |  Čtení            |  Čtení   |
+|     |  Zápis           |  Zápis  |
+
+
 
 ## <a name="supported-permissions"></a>Podporovaná oprávnění
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 501681a17603fb21e073b04e48d23f1b566f8128
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4730f05adc2625ac576f5963f68d8e3ca8ede355
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89067684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331501"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Rozšíření Log Analytics pro virtuální počítače pro Windows
 
@@ -36,7 +36,7 @@ Následující tabulka poskytuje mapování verze rozšíření virtuálního po
 
 | Log Analytics verze sady Windows Agent | Log Analytics verze rozšíření virtuálního počítače s Windows | Datum vydání | Zpráva k vydání verze |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18038 | 1.0.18040.2 | Srpen 2020   | <ul><li>Vyřeší problém v Arc Azure</li></ul> |
+| 10.20.18040 | 1.0.18040.2 | Srpen 2020   | <ul><li>Vyřeší problém v Arc Azure</li></ul> |
 | 10.20.18038 | 1.0.18038 | Duben 2020   | <ul><li>Umožňuje připojení prostřednictvím privátního propojení pomocí Azure Monitor oborů privátních odkazů.</li><li>Přidá omezování příjmu, aby nedocházelo k náhlému a náhodnému výpadku v ingestování do pracovního prostoru.</li><li>Přidá podporu pro další Azure Government cloudy a oblasti.</li><li>Vyřeší chybu, ve které došlo k chybě HealthService.exe</li></ul> |
 | 10.20.18029 | 1.0.18029 | Březen 2020   | <ul><li>Přidání podpory podepisování kódu SHA-2</li><li>Vylepšuje instalaci a správu rozšíření virtuálních počítačů.</li><li>Vyřeší chybu v integraci služby Azure ARC pro servery</li><li>Přidá integrovaný nástroj pro řešení potíží pro zákaznickou podporu.</li><li>Přidá podporu pro další Azure Government oblasti.</li> |
 | 10.20.18018 | 1.0.18018 | Říjen 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li></ul> |
@@ -87,7 +87,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 ```
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |

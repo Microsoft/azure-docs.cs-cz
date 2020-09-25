@@ -3,12 +3,12 @@ title: 'Kurz: integrace s virtuálními agenty pro napájení – QnA Maker'
 description: V tomto kurzu Vylepšete kvalitu znalostní báze s aktivním učením. Přečtěte, přijměte nebo odmítněte nebo přidejte bez odebrání nebo změny existujících otázek.
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6d00833a1331ebca9b070d90f32ee30c56bd5f96
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84635331"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319210"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Kurz: Přidání znalostní báze do virtuálních agentů pro napájení
 Vytvořte a rozšíříte robota [Power Virtual Agents](https://powervirtualagents.microsoft.com/) , abyste získali odpovědi z vaší znalostní báze.
@@ -152,7 +152,7 @@ Následující postup vytvoří tok automatizovaného automatizace, který:
 1. Zaškrtněte políčko **generovat odpověď** a zadejte nastavení QnA maker z předchozí části s názvem [Vytvoření a publikování znalostní báze](#create-and-publish-a-knowledge-base). **Hostitel služby** v následujícím obrázku odkazuje **na hostitele hostitele znalostní báze a má** formát `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker` .
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Částečný snímek obrazovky QnA Makerho toku šablony s zvýrazněným tlačítkem pokračovat":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Částečný snímek obrazovky QnA Makerho toku šablon se zvýrazněnou možností generovat odpověď (Preview).":::
 
 1. Uložte tok výběrem možnosti **Uložit**.
 
@@ -199,10 +199,10 @@ Aby mohl agent vyhledat a připojit se ke toku, musí být tok součástí řeš
 
 1. Na panelu nástrojů kontextu vyberte **Uložit**a uložte podrobnosti plátna pro vytváření obsahu pro téma.
 
-Tady je popis plátna finálního agenta.
+Vypadá to, že na plátně finálního agenta se líbí.
 
 > [!div class="mx-imgBorder"]
-> ![Snímek obrazovky s finálním plátnem agenta](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+> ![Snímek obrazovky s koncovým plátnem pro agenty zobrazuje části s triggery, akce a zprávy.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
 
 ## <a name="test-the-agent"></a>Test agenta
 
@@ -214,9 +214,9 @@ Tady je popis plátna finálního agenta.
     |--|--|--|
     |1|Hello (Nazdar)|Spustit konverzaci|
     |2|Hodiny úložiště|Ukázkové téma. To je nakonfigurované pro vás bez jakékoli další práce na vaší straně.|
-    |3|Ano|V reakci na `Did that answer your question?`|
+    |3|Yes|V reakci na `Did that answer your question?`|
     |4|Vynikající|V reakci na `Please rate your experience.`|
-    |5|Ano|V reakci na `Can I help with anything else?`|
+    |5|Yes|V reakci na `Can I help with anything else?`|
     |6|Jak můžu zlepšit výkon propustnosti pro dotaz předpovědi?|Tato otázka spustí záložní akci, která odešle text do vaší znalostní báze na odpověď. Pak se zobrazí odpověď. zelené značky zaškrtnutí u jednotlivých akcí označují úspěch pro každou akci.|
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Snímek obrazovky s chatem s plátnem, který indikuje zelenou značku zaškrtnutí u úspěšných akcí":::

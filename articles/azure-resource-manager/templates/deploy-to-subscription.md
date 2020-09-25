@@ -2,13 +2,13 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: cd1d0a05fc1039d8e99b0af6fc8019face4516bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284784"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -62,7 +62,7 @@ Mezi další podporované typy patří:
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
 * [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
-### <a name="schema"></a>Schéma
+## <a name="schema"></a>Schéma
 
 Schéma, které používáte pro nasazení na úrovni předplatného, se liší od schématu pro nasazení skupin prostředků.
 
@@ -77,6 +77,20 @@ Schéma pro soubor parametrů je pro všechny obory nasazení stejné. Pro soubo
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>Obory nasazení
+
+Při nasazování do předplatného můžete cílit na jedno předplatné a všechny skupiny prostředků v rámci předplatného. Nemůžete nasadit do předplatného, které se liší od cílového předplatného. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
+
+Prostředky definované v části Resources v šabloně se aplikují na předplatné.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+Pokud chcete cílit na skupinu prostředků v rámci předplatného, přidejte vnořené nasazení a zahrňte `resourceGroup` vlastnost. V následujícím příkladu je vnořené nasazení cíleno na skupinu prostředků s názvem `rg2` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+V tomto článku můžete najít šablony, které ukazují, jak nasadit prostředky do různých oborů. Šablonu, která vytvoří skupinu prostředků a nasadí do ní účet úložiště, najdete v tématu [Vytvoření skupiny prostředků a prostředků](#create-resource-group-and-resources). Pro šablonu, která vytvoří skupinu prostředků, aplikuje na ni zámek a přiřadí roli pro skupinu prostředků, viz [řízení přístupu](#access-control).
 
 ## <a name="deployment-commands"></a>Příkazy nasazení
 
@@ -112,49 +126,6 @@ Pro nasazení na úrovni předplatného musíte zadat umístění pro nasazení.
 Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy.jsv** vytvoří výchozí název nasazení **azuredeploy**.
 
 Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí kód chyby `InvalidDeploymentLocation` , použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
-
-## <a name="deployment-scopes"></a>Obory nasazení
-
-Při nasazování do předplatného můžete cílit na jedno předplatné a všechny skupiny prostředků v rámci předplatného. Nemůžete nasadit do předplatného, které se liší od cílového předplatného. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
-
-Prostředky definované v části Resources v šabloně se aplikují na předplatné.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        subscription-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Pokud chcete cílit na skupinu prostředků v rámci předplatného, přidejte vnořené nasazení a zahrňte `resourceGroup` vlastnost. V následujícím příkladu je vnořené nasazení cíleno na skupinu prostředků s názvem `rg2` .
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedDeployment",
-            "resourceGroup": "rg2",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resource-group-resources
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-V tomto článku můžete najít šablony, které ukazují, jak nasadit prostředky do různých oborů. Šablonu, která vytvoří skupinu prostředků a nasadí do ní účet úložiště, najdete v tématu [Vytvoření skupiny prostředků a prostředků](#create-resource-group-and-resources). Pro šablonu, která vytvoří skupinu prostředků, aplikuje na ni zámek a přiřadí roli pro skupinu prostředků, viz [řízení přístupu](#access-control).
 
 ## <a name="use-template-functions"></a>Použití funkcí šablon
 

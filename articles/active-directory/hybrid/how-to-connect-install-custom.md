@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295341"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
@@ -46,7 +46,7 @@ Při instalaci služeb synchronizace můžete nechat volitelnou konfiguraci neza
 ### <a name="user-sign-in"></a>Přihlášení uživatele
 Po instalaci požadovaných součástí budete vyzváni, abyste vybrali metodu jednotného přihlašování uživatelů. Následující tabulka obsahuje stručný popis dostupných možností. Úplný popis metod přihlášení najdete v tématu [Přihlášení uživatele](plan-connect-user-signin.md).
 
-![Přihlášení uživatele](./media/how-to-connect-install-custom/usersignin4.png)
+![Snímek obrazovky zobrazující stránku přihlášení uživatele s vybranou hodnotou "synchronizace hodnoty hash hesla".](./media/how-to-connect-install-custom/usersignin4.png)
 
 | Možnost jednotného přihlašování | Popis |
 | --- | --- |
@@ -75,7 +75,7 @@ Pokud se zobrazí chyba a máte problémy s připojením, přečtěte si téma [
 ### <a name="connect-your-directories"></a>Připojení adresářů
 Azure AD Connect pro připojení ke službě Active Directory Domain Services potřebuje název doménové struktury a přihlašovací údaje účtu s dostatečnými oprávněními.
 
-![Připojení adresáře](./media/how-to-connect-install-custom/connectdir01.png)
+![Snímek obrazovky, na kterém se zobrazuje stránka "připojit adresáře"](./media/how-to-connect-install-custom/connectdir01.png)
 
 Po vytvoření názvu doménové struktury a kliknutí na **Přidat adresář** se otevře vyskakovací dialogové okno s výzvou k výběru následujících možností:
 
@@ -300,7 +300,7 @@ Pokud jste vybrali skupinový účet spravované služby a tato funkce se ve slu
 ### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>Výběr domény služby Azure AD, kterou chcete federovat
 Tato konfigurace slouží k nastavení federačního vztahu mezi službami AD FS a Azure AD. Službu AD FS nakonfiguruje tak, aby vydávala tokeny zabezpečení službě Azure AD, a službu Azure AD nakonfiguruje tak, aby důvěřovala tokenům od této konkrétní instance služby AD FS. Tato stránka při počáteční instalaci umožňuje nakonfigurovat jen jednu doménu. Později můžete znovu spustit Azure AD Connect a nakonfigurovat další domény.
 
-![Doména služby Azure AD](./media/how-to-connect-install-custom/adfs6.png)
+![Snímek obrazovky zobrazující stránku Azure AD Domain](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Výběr domény Azure AD vybrané k federaci
 Při výběru domény k federaci služba Azure AD Connect poskytuje informace nezbytné k ověření neověřené domény. Téma [Přidání a ověření domény](../fundamentals/add-custom-domain.md) vás seznámí s tím, jak tyto informace používat.
@@ -320,7 +320,7 @@ Konfigurace služby PingFederate se službou Azure AD Connect je jednoduchá a p
 ### <a name="verify-the-domain"></a>Ověření domény
 Po výběru federace s PingFederate se zobrazí výzva k ověření domény, kterou chcete federovat.  Vyberte doménu z rozevíracího seznamu.
 
-![Ověření domény](./media/how-to-connect-install-custom/ping1.png)
+![Snímek obrazovky, který zobrazuje "doménu Azure AD" s vybranou ukázkovou doménou "contoso.com".](./media/how-to-connect-install-custom/ping1.png)
 
 ### <a name="export-the-pingfederate-settings"></a>Export nastavení PingFederate
 
@@ -394,7 +394,7 @@ Následující část popisuje řešení potíží a obsahuje informace, které 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Databáze ADSync již obsahuje data a není možné ji přepsat.“
 Když vlastníte instalaci Azure AD Connect a na stránce **instalovat požadované součásti** vyberete možnost **použít existující systém SQL Server** , může dojít k chybě, která uvádí, že **databáze AdSync již obsahuje data a nelze ji přepsat. Odeberte prosím stávající databázi a zkuste to znovu.**
 
-![Chyba](./media/how-to-connect-install-custom/error1.png)
+![Snímek obrazovky zobrazující stránku nainstalovat požadované součásti](./media/how-to-connect-install-custom/error1.png)
 
 Důvodem je, že v instanci serveru SQL, kterou jste zadali ve výše uvedených textových polích, již existuje databáze **ADSync**.
 

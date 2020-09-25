@@ -1,6 +1,6 @@
 ---
 title: Řešení chyb při odstraňování prostředků úložiště u virtuálních počítačů se systémem Linux v Azure | Microsoft Docs
-description: Jak řešit problémy při odstraňování prostředků úložiště obsahujících připojené virtuální pevné disky.
+description: Naučte se řešit problémy s virtuálními počítači se systémem Linux při odstraňování prostředků úložiště, které obsahují připojené virtuální pevné disky.
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649733"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320077"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Řešení potíží s chybami odstraňování prostředků úložiště
 
@@ -76,7 +76,7 @@ Po dokončení těchto kroků zkuste znovu odstranit účet úložiště, kontej
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>Krok 2: odstranění virtuálního počítače pro odpojení disku s operačním systémem
 Pokud se jedná o disk s operačním systémem, musíte virtuální počítač odstranit, aby se mohl odstranit připojený virtuální pevný disk (VHD). Po dokončení těchto kroků nebude potřeba žádná další akce pro datové disky připojené ke stejnému virtuálnímu počítači:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce centra vyberte **Virtual Machines**.
 3. Vyberte virtuální počítač, ke kterému je připojený virtuální pevný disk.
 4. Ujistěte se, že virtuální počítač aktivně nepoužíváte a že ho už nepotřebujete.
@@ -86,7 +86,7 @@ Pokud se jedná o disk s operačním systémem, musíte virtuální počítač o
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>Krok 3: odpojení datového disku od virtuálního počítače
 Pokud je virtuální pevný disk datového disku, odpojte virtuální pevný disk od virtuálního počítače a odeberte zapůjčení:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce centra vyberte **Virtual Machines**.
 3. Vyberte virtuální počítač, ke kterému je připojený virtuální pevný disk.
 4. V podokně **podrobností virtuálního počítače** vyberte **disky** .

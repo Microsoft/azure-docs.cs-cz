@@ -3,12 +3,12 @@ title: Azure Service Bus metriky v Azure Monitor | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí Azure Monitor monitorovat Service Bus entit (fronty, témata a odběry).
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320434"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metriky v Azure Monitor
 
@@ -147,7 +147,7 @@ Azure Service Bus podporuje následující dimenze pro metriky v Azure Monitor. 
     2. Zadejte **Popis** výstrahy.
     3. Vyberte **závažnost** výstrahy. 
 
-        ![Podrobnosti výstrahy](./media/service-bus-metrics-azure-monitor/alert-details.png)
+        ![Snímek obrazovky se stránkou vytvořit pravidlo Definujte podrobnosti výstrahy a zvýrazní se pole název, popis a závažnost pravidla upozornění.](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. Na stránce **vytvořit pravidlo** rozbalte položku **definovat skupinu akcí**, vyberte možnost **Nová skupina akcí**a na **stránce Přidat skupinu akcí**proveďte následující akce. 
     1. Zadejte název skupiny akcí.
     2. Zadejte krátký název skupiny akcí. 
@@ -161,7 +161,7 @@ Azure Service Bus podporuje následující dimenze pro metriky v Azure Monitor. 
         2. Zadejte **e-mailovou adresu**. 
         3. Vyberte **OK**.
 
-            ![Podrobnosti výstrahy](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+            ![Snímek obrazovky se stránkou přidat skupinu akcí Do skupiny se přidávají akce s názvem odeslat e-mail s typem akce E-mail/SMS/Push/Voice.](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. Na stránce **Přidat skupinu akcí** vyberte **OK**. 
 1. Na stránce **vytvořit pravidlo** vyberte **vytvořit pravidlo výstrahy**. 
 

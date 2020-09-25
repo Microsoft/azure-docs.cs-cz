@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií a C #'
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat rozhraní API pro detekci anomálií ke zjištění anomálií v datové řadě buď jako dávku, nebo na streamovaná data.
+description: Naučte se používat dva režimy detekce anomálie Detection API k detekci anomálií v datech časových řad.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5a3757a33beebb6e688dbea13259723da9280cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c19f901f4419cca59a3b4e070191c8bb89ce7c34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319193"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií a C #
 

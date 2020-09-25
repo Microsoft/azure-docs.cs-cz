@@ -14,39 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 51e6c74a8b80b94ca552645cfbb76bd4e162a62b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320383"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
 
 Když připojujete externí řešení, které odesílá zprávy CEF, je třeba se připojit ke službě Azure Sentinel pomocí tří kroků:
 
-Krok 1: [připojení CEF nasazením agenta](connect-cef-agent.md) krok 2: [provedení kroků specifických pro řešení](connect-cef-solution-config.md) krok 3: [ověření připojení](connect-cef-verify.md)
+Krok 1: [připojení CEF nasazením protokolu syslog/CEF](connect-cef-agent.md) – Krok 2: [provedení kroků specifických pro řešení](connect-cef-solution-config.md) krok 3: [ověření připojení](connect-cef-verify.md)
 
-Tento článek popisuje, jak připojení funguje, nabízí požadavky a poskytuje kroky pro nasazení agenta v řešeních zabezpečení, která odesílají zprávy CEF (Common Event Format) do protokolu syslog. 
+Tento článek popisuje, jak připojení funguje, nabízí požadavky a poskytuje postup nasazení agenta v řešeních zabezpečení, která odesílají zprávy CEF (Common Event Format) do protokolu syslog. 
 
 > [!NOTE] 
 > Data se ukládají do geografického umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-Aby bylo možné vytvořit toto připojení, je nutné nasadit agenta na vyhrazeném počítači se systémem Linux (virtuální počítač nebo místní počítač), aby podporoval komunikaci mezi zařízením a službou Azure Sentinel. Následující diagram popisuje nastavení v případě virtuálního počítače se systémem Linux v Azure.
+Aby bylo možné vytvořit toto připojení, je nutné nasadit server předávání syslog pro podporu komunikace mezi zařízením a službou Azure Sentinel.  Server se skládá z vyhrazeného počítače se systémem Linux (virtuální počítač nebo místní) s nainstalovaným agentem Log Analytics pro Linux. 
+
+Následující diagram popisuje nastavení v případě virtuálního počítače se systémem Linux v Azure:
 
  ![CEF v Azure](./media/connect-cef/cef-syslog-azure.png)
 
-Případně bude tato instalace existovat, pokud použijete virtuální počítač v jiném cloudu nebo v místním počítači. 
+Případně bude tato instalace existovat, pokud používáte virtuální počítač v jiném cloudu nebo v místním počítači: 
 
  ![Místní CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. Pomocí následujících pokynů můžete zlepšit konfiguraci zabezpečení počítače:  [zabezpečený virtuální počítač v Azure](../virtual-machines/security-policy.md), [osvědčené postupy pro zabezpečení sítě](../security/fundamentals/network-best-practices.md).
 
-Pokud chcete používat komunikaci TLS mezi řešením zabezpečení a počítačem syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
+Pokud chcete používat komunikaci TLS mezi zdrojem syslog a službou pro předávání syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
 ## <a name="prerequisites"></a>Požadavky

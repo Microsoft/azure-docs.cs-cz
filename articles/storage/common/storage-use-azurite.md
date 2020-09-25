@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001905"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331569"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Použití emulátoru Azurite pro vývoj místních Azure Storage
 
@@ -555,6 +555,12 @@ Azurite je zarovnán s Azure Storage logikou zpracování chyb, ale existují ro
 Azurite podporuje geograficky redundantní replikaci s přístupem pro čtení (RA-GRS). Pro prostředky úložiště přejděte k sekundárnímu umístění připojením `-secondary` k názvu účtu. Například následující adresa může být použita pro přístup k objektu BLOB pomocí sekundárního souboru jen pro čtení v Azurite:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
+
+### <a name="table-support"></a>Podpora tabulek
+
+Podpora tabulek v Azurite je momentálně ve vývoji a je otevřená pro přispívání! V případě nejnovějšího postupu se podívejte na projekt [tabulky Azurite V3](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) .
+
+Podpora trvalých funkcí vyžaduje tabulky.
 
 ## <a name="azurite-is-open-source"></a>Azurite je open source
 

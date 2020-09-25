@@ -1,6 +1,6 @@
 ---
 title: Vytvoření sady škálování z generalizované image s Azure PowerShell
-description: Vytvořte sadu škálování pomocí generalizované image v galerii sdílených imagí.
+description: Vytvořte sadu škálování pomocí generalizované image v galerii sdílených imagí pomocí PowerShellu.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3b8c9d46a5bc5dde3e39bfa5673247ca752d2a89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22bd1ed88f61689eec9312392f7f58d137f703e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331518"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Vytvoření sady škálování z generalizované image
+# <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>Vytvoření sady škálování z generalizované Image pomocí PowerShellu 
 
 Vytvořte virtuální počítač z zobecněné verze Image uložené v [galerii sdílených imagí](shared-image-galleries.md). Pokud chcete vytvořit sadu škálování pomocí specializované image, přečtěte si téma [vytvoření instance sady škálování z specializované image](instance-specialized-image-version-powershell.md).
 
@@ -181,4 +181,4 @@ Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí.
 - [Vytvoření definici image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Vytvoření verze image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Další informace o galeriích sdílených imagí najdete v [přehledu](shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](troubleshooting-shared-images.md).
+Další informace o galeriích sdílených imagí najdete v [přehledu](shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](../virtual-machines/troubleshooting-shared-images.md).

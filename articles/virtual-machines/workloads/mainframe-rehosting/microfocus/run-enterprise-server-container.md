@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319992"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Provozování Micro Enterprise serveru 5,0 v kontejneru Docker v Azure
 
@@ -121,9 +121,9 @@ V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP.
 
 1.  Pokud chcete spustit podnikový server 5,0 a aplikaci acctdemo, zadejte na příkazovém řádku tento příkaz:
 
-    ~~~
+    ```
     **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
-    ~~~
+    ```
 
 1.  Nainstalujte emulátor terminálu 3270, například [x3270](http://x3270.bgp.nu/) , a použijte ho k připojení přes port 9040 k imagi, která je spuštěná.
 
@@ -133,15 +133,15 @@ V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP.
 
     2.  K získání IP adresy pro kontejner acctdemo použijte ID kontejneru z předchozího kroku následujícím způsobem:
 
-    ~~~
+    ```
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
     Příklad:
 
-    ~~~
+    ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
 4. Poznamenejte si IP adresu pro obrázek acctdemo. Například adresa v následujícím výstupu je 172.19.202.52.
 

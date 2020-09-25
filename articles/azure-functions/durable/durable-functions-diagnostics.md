@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: ae721d2a8df981ecf9ab8e8b04d0e0d287d523cd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f91cdaa81e18105eb39af442ab6152bfd2888ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319703"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostika v Durable Functions v Azure
 
@@ -435,7 +435,7 @@ GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 Klienti získají následující odpověď:
 
-```http
+```json
 {
   "runtimeStatus": "Running",
   "input": null,
@@ -461,7 +461,7 @@ Azure Functions podporuje přímo ladění kódu funkce a tato podpora přenáš
 > [!TIP]
 > Pokud při nastavování zarážek ve funkcích nástroje Orchestrator chcete provést pouze přerušení při neopakovaném spuštění, můžete nastavit podmíněný bod přerušení, který bude zalomen pouze v případě, že je hodnota "je přehrána" `false` .
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Ve výchozím nastavení Durable Functions ukládá stav do Azure Storage. Toto chování znamená, že můžete zkontrolovat stav orchestrace pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 

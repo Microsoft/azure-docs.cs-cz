@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 963c9c06409eca2b2f836388b94f8b80484a671a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: e4d3a594011cb57ce6dfd951215d0ae7471ae7c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331671"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Přehled sítí – Azure Database for PostgreSQL – flexibilní Server
 
@@ -62,7 +62,7 @@ Tady je několik konceptů, se kterými se můžete seznámit při používání
 
    Váš PostgreSQL flexibilní Server musí být v podsíti, která je **delegovaná** jenom pro PostgreSQL flexibilní použití serveru. Toto delegování znamená, že tuto podsíť můžou používat jenom Azure Database for PostgreSQL flexibilní servery. V delegované podsíti nemůžou být žádné jiné typy prostředků Azure. Podsíť můžete delegovat přiřazením její vlastnosti delegování jako Microsoft. DBforPostgreSQL/flexibleServers.
 
-Přečtěte si, jak vytvořit flexibilní Server s privátním přístupem (Integration VNet) v [Azure Portal](how-to-manage-virtual-network-portal.md) nebo [v rozhraní příkazového řádku Azure](how-to-manage-virtual-network-cli.md).
+* **Skupiny zabezpečení sítě (NSG)** Pravidla zabezpečení ve skupinách zabezpečení sítě umožňují filtrovat typ síťového provozu, který může přecházet do podsítí a síťových rozhraní virtuální sítě. Další informace najdete v článku [Přehled skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) .
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nepodporované scénáře virtuální sítě
@@ -71,6 +71,7 @@ Přečtěte si, jak vytvořit flexibilní Server s privátním přístupem (Inte
 * Velikost podsítě (adresní prostory) nejde zvýšit, pokud v podsíti existují prostředky.
 * Partnerský vztah virtuální sítě napříč oblastmi se nepodporuje.
 
+Přečtěte si, jak vytvořit flexibilní Server s privátním přístupem (Integration VNet) v [Azure Portal](how-to-manage-virtual-network-portal.md) nebo [v rozhraní příkazového řádku Azure](how-to-manage-virtual-network-cli.md).
 
 ## <a name="public-access-allowed-ip-addresses"></a>Veřejný přístup (povolené IP adresy)
 Mezi charakteristiky metody veřejného přístupu patří:
@@ -107,12 +108,9 @@ Vezměte v úvahu následující body, pokud se přístup k Microsoft Azure data
 ## <a name="hostname"></a>Název hostitele
 Bez ohledu na to, jakou možnost sítě zvolíte, doporučujeme při připojování k flexibilnímu serveru vždycky použít plně kvalifikovaný název domény (FQDN) jako název hostitele. IP adresa serveru nezaručuje, že zůstane statická. Použití plně kvalifikovaného názvu domény vám pomůže vyhnout se provádění změn v připojovacím řetězci. 
 
-V případě, že se změna IP adresy používá v případě redundantního HA zóny a dojde k převzetí služeb při selhání mezi primárním a sekundárním, můžete použít jeden Použití plně kvalifikovaného názvu domény znamená, že můžete bez problémů znovu připojit se stejným připojovacím řetězcem.
-
 Příklad
 * Doporučil `hostname = servername.postgres.database.azure.com`
-* Nepoužívejte `hostname = 10.0.0.4` (soukromá adresa) nebo `hostname = 40.2.45.67` (veřejná adresa)
-
+* Pokud je to možné, vyhněte se použití `hostname = 10.0.0.4` (privátní adresa) nebo `hostname = 40.2.45.67` (veřejná adresa).
 
 
 ## <a name="tls-and-ssl"></a>TLS a SSL
