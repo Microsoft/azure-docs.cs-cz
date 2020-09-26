@@ -1,14 +1,16 @@
 ---
 title: Dobrý příklad projevy-LUIS
 description: Výrok představuje zadání od uživatele, které má aplikace interpretovat. Shromážděte fráze, které budou uživatelé zadávat. Zahrňte projevy, který je stejný jako stejný objekt, ale je vytvořen jinak v délce slova a v umístění slova.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316388"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
@@ -103,7 +105,7 @@ Interpunkce je samostatný token v LUIS. Utterance, která obsahuje tečku na ko
 
 Pokud interpunkční znaménko není normalizováno, LUIS Neignoruje interpunkční znaménka ve výchozím nastavení, protože některé klientské aplikace mohou na tyto značky umístit význam. Ujistěte se, že váš příklad projevy použít interpunkční znaménka i bez interpunkce v případě, že oba styly vrátí stejné relativní skóre.
 
-Ujistěte se, že model zpracovává interpunkční znaménka buď v příkladu projevy (má a nemá interpunkci), nebo ve [vzorech](luis-concept-patterns.md) , kde je snazší ignorovat interpunkci se speciální syntaxí:`I am applying for the {Job} position[.]`
+Ujistěte se, že model zpracovává interpunkční znaménka buď v příkladu projevy (má a nemá interpunkci), nebo ve [vzorech](luis-concept-patterns.md) , kde je snazší ignorovat interpunkci se speciální syntaxí: `I am applying for the {Job} position[.]`
 
 Pokud interpunkční znaménko nemá v klientské aplikaci žádný zvláštní význam, zvažte [ignorování interpunkce](#utterance-normalization) normalizací interpunkce.
 

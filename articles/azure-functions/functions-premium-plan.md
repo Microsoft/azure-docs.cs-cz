@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372217"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -122,7 +122,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|SKU|Cores|Paměť|Storage|
+|SKU|Cores|Memory (Paměť)|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -139,15 +139,17 @@ Níže jsou uvedeny aktuálně podporované maximální hodnoty škálování pr
 
 Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Oblast| Windows | Linux |
+|Region| Windows | Linux |
 |--| -- | -- |
-|Austrálie – střed| 20 | Není k dispozici |
-|Austrálie – střed 2| 20 | Není k dispozici |
+|Austrálie – střed| 100 | Není k dispozici |
+|Austrálie – střed 2| 100 | Není k dispozici |
 |Austrálie – východ| 100 | 20 |
 |Australia Southeast | 100 | 20 |
-|Brazil South| 60 | 20 |
+|Brazil South| 100 | 20 |
 |Střední Kanada| 100 | 20 |
-|Střední USA| 100 | 20 |
+|USA – střed| 100 | 20 |
+|Čína – východ 2| 100 | 20 |
+|Čína – sever 2| 100 | 20 |
 |Východní Asie| 100 | 20 |
 |East US | 100 | 20 |
 |USA – východ 2| 100 | 20 |
@@ -156,17 +158,24 @@ Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azu
 |Japan East| 100 | 20 |
 |Japonsko – západ| 100 | 20 |
 |Jižní Korea – střed| 100 | 20 |
+|Jižní Korea – jih| Není k dispozici | 20 |
 |USA – středosever| 100 | 20 |
 |Severní Evropa| 100 | 20 |
-|Norsko – východ| 20 | 20 |
+|Norsko – východ| 100 | 20 |
 |Středojižní USA| 100 | 20 |
 |Indie – jih | 100 | Není k dispozici |
 |Southeast Asia| 100 | 20 |
+|Švýcarsko – sever| 100 | Není k dispozici |
+|Švýcarsko – západ| 100 | Není k dispozici |
 |Spojené království – jih| 100 | 20 |
 |Spojené království – západ| 100 | 20 |
+|USGov Arizona| 100 | 20 |
+|USGov Virginie| 100 | 20 |
+|USNat východ| 100 | Není k dispozici |
+|USNat – západ| 100 | Není k dispozici |
 |West Europe| 100 | 20 |
 |Západní Indie| 100 | 20 |
-|USA – středozápad| 20 | 20 |
+|USA – středozápad| 100 | 20 |
 |USA – západ| 100 | 20 |
 |Západní USA 2| 100 | 20 |
 

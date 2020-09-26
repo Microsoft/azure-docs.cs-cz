@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: a6925ef8f72615cc3868c8b5cd4ea030ed3c3c40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 63879350eba897cfe5a793309e5129323fe8bbde
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278055"
+ms.locfileid: "91372370"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Zavedení integrace stavu do Azure Deployment Manager (Public Preview)
 
@@ -41,7 +41,7 @@ Tok pro získání instalace pomocí kontrol stavu služby Azure Deployment Mana
     1. Informace o ověřování. V současné době je podporováno pouze ověřování stylu klíčů rozhraní API. U Azure Monitor by měl být typ ověřování nastaven jako – "RolloutIdentity", protože spravovaná identita přiřazená uživateli, která se používá pro Azure Deployment Manager zavedení, pro Azure Monitor.
     1. [Stavové kódy http](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) nebo regulární výrazy, které definují reakci v pořádku. Všimněte si, že můžete zadat regulární výrazy, které se musí shodovat, aby odpověď považovala za v pořádku, nebo můžete poskytnout výrazy, které musí splňovat, aby odpověď byla považována za v dobrém stavu. Obě metody jsou podporovány.
 
-    Následující JSON je příklad pro integraci Azure Monitor se službou Azure Deployment Manager, která využívá RolloutIdentity a vytváří kontrolu stavu, kde zavedení pokračuje, pokud nejsou k dispozici žádné výstrahy. Jediná podporovaná Azure Monitor rozhraní API: [Alerts – získat vše](/rest/api/monitor/alertsmanagement/alerts/getall.md).
+    Následující JSON je příklad pro integraci Azure Monitor se službou Azure Deployment Manager, která využívá RolloutIdentity a vytváří kontrolu stavu, kde zavedení pokračuje, pokud nejsou k dispozici žádné výstrahy. Jediná podporovaná Azure Monitor rozhraní API: [Alerts – získat vše](/rest/api/monitor/alertsmanagement/alerts/getall).
 
     ```json
     {

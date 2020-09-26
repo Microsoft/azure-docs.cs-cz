@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357008"
+ms.locfileid: "91371775"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Obnovení pomocí automatických záloh databáze – Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,7 +196,7 @@ Skript PowerShellu, který ukazuje, jak provést geografickou obnovu pro databá
 Obnovení k určitému bodu v čase nelze provést v geograficky sekundární databázi. To lze provést pouze v primární databázi. Podrobné informace o použití geografického obnovení k zotavení po výpadku najdete v tématu [obnovení při výpadku](../../key-vault/general/disaster-recovery-guidance.md).
 
 > [!IMPORTANT]
-> Geografické obnovení je nejzákladnější řešení zotavení po havárii dostupné v SQL Database a spravované instanci SQL. Spoléhá se na automaticky vytvořená geograficky replikovaná zálohování s cílem bodu obnovení (RPO), který se rovná 1 hodinu, a odhadované době obnovení až 12 hodin. Nezaručuje, že cílová oblast bude mít kapacitu pro obnovení vašich databází po oblastním výpadku, protože je pravděpodobný prudký nárůst poptávky. Pokud vaše aplikace používá relativně malé databáze a není důležitá pro firmu, geografické obnovení je vhodné řešení zotavení po havárii. 
+> Geografické obnovení je nejzákladnější řešení zotavení po havárii dostupné v SQL Database a spravované instanci SQL. Spoléhá se na automaticky vytvořená geograficky replikované zálohy s cílem bodu obnovení (RPO) až 1 hodinu a odhadovanou dobu obnovení až 12 hodin. Nezaručuje, že cílová oblast bude mít kapacitu pro obnovení vašich databází po oblastním výpadku, protože je pravděpodobný prudký nárůst poptávky. Pokud vaše aplikace používá relativně malé databáze a není důležitá pro firmu, geografické obnovení je vhodné řešení zotavení po havárii. 
 >
 > Pro důležité obchodní aplikace, které vyžadují velké databáze a které musí zajistit kontinuitu podnikových aplikací, použijte [skupiny automatického převzetí služeb při selhání](auto-failover-group-overview.md). Nabízí mnohem nižší cíl RPO a doby obnovení a kapacita je vždycky zaručená. 
 >

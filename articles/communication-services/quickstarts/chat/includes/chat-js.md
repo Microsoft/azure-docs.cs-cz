@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a50f09dd52ccf4d35fd3803967898a4a25e3299f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376754"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
@@ -90,6 +90,8 @@ Vytvořte soubor v kořenovém adresáři vašeho projektu s názvem **client.js
 ### <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 
 Pokud chcete ve webové aplikaci vytvořit chatovacího klienta, použijte koncový bod komunikační služby a přístupový token, který byl vygenerován jako součást požadavků. Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. Po vygenerování těchto tokenů na serveru je předejte zpátky do klientského zařízení. Je nutné použít `AzureCommunicationUserCredential` třídu z rozhraní `Common client library` k předání tokenu klientovi chatu.
+
+Vytvořte soubor **client.js** v kořenovém adresáři projektu. Tento soubor použijeme k přidání možnosti chatu pomocí klientské knihovny Azure Communications chat pro JavaScript.
 
 ```JavaScript
 

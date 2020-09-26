@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 80efd92560bc7fb5c8bf16b524752e7dbfcdc74b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db5a1a2994a6202f7bbe95716534bfd68e3e1a7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526659"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316048"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Kurz: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady Java Device and Service SDK a registrace skupin pro IoT Hub Device Provisioning Service
 
@@ -23,7 +23,7 @@ Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Wind
 Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení služby IoT Hub Device Provisioning pomocí webu Azure Portal](./quick-setup-auto-provision.md).
 
 
-## <a name="prepare-the-environment"></a>Příprava prostředí 
+## <a name="prerequisites"></a>Požadavky
 
 1. Ujistěte se, že na svém počítači máte nainstalované prostředí [Java SE Development Kit 8](https://aka.ms/azure-jdks).
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e48261c4c6aeb75556663e1bf77c675557bcd1b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315486"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Vědecké zpracování týmových dat v akci: používání Azure synapse Analytics
 V tomto kurzu Vás provedeme vytvořením a nasazením modelu strojového učení s využitím Azure synapse Analytics pro veřejně dostupnou datovou sadu, která je datovou sadou [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) . Model binární klasifikace vytváří předpověď bez ohledu na to, jestli je pro cestu placené nebo ne.  Mezi modely patří klasifikace s více třídami (bez ohledu na to, zda existuje Tip) a regrese (rozdělení pro placené částky Tip).
@@ -117,7 +117,7 @@ BEGIN CATCH
 END CATCH;
 ```
 
-**V rámci vašeho předplatného Azure vytvořte pracovní prostor Azure Machine Learning.** Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md).
+**V rámci vašeho předplatného Azure vytvořte pracovní prostor Azure Machine Learning.** Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](../classic/create-workspace.md).
 
 ## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>Načtení dat do služby Azure synapse Analytics
 Otevřete konzolu příkazového řádku prostředí Windows PowerShell. Spusťte následující příkazy PowerShellu ke stažení ukázkových souborů skriptu SQL, které s vámi sdílíme na GitHubu, do místního adresáře, který zadáte s parametrem *-DestDir*. Hodnotu parametru *-DestDir* můžete změnit na libovolný místní adresář. IF *-DestDir* neexistuje, vytvoří se skript PowerShellu.
@@ -941,9 +941,9 @@ Nyní je připraven pokračovat na sestavení modelu a nasazení modelu v [Azure
 2. **Třída klasifikace s více třídami**: pro předpověď rozsahu zaplaceného tipu podle dříve definovaných tříd.
 3. **Regresní úloha**: pro předpověď množství tipu placeného pro cestu.
 
-Pokud chcete začít modelování, přihlaste se k pracovnímu prostoru **Azure Machine Learning (Classic)** . Pokud jste ještě nevytvořili pracovní prostor machine learningu, přečtěte si téma [Vytvoření pracovního prostoru Azure Machine Learning Studio (Classic)](../studio/create-workspace.md).
+Pokud chcete začít modelování, přihlaste se k pracovnímu prostoru **Azure Machine Learning (Classic)** . Pokud jste ještě nevytvořili pracovní prostor machine learningu, přečtěte si téma [Vytvoření pracovního prostoru Azure Machine Learning Studio (Classic)](../classic/create-workspace.md).
 
-1. Pokud chcete začít s Azure Machine Learning, přečtěte si téma [co je Azure Machine Learning Studio (Classic)?](../studio/what-is-ml-studio.md)
+1. Pokud chcete začít s Azure Machine Learning, přečtěte si téma [co je Azure Machine Learning Studio (Classic)?](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 2. Přihlaste se k [Azure Machine Learning Studio (Classic)](https://studio.azureml.net).
 3. Domovská stránka Machine Learning Studio (Classic) poskytuje spoustu informací, videí, kurzů, odkazů na reference k modulům a dalších prostředků. Další informace o Azure Machine Learning najdete v [centru dokumentace Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
@@ -983,7 +983,7 @@ Příklad binární klasifikace experimentu, který čte data přímo z databáz
 >
 
 ## <a name="deploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Nasazení modelů v Azure Machine Learning
-Když je model připravený, můžete ho snadno nasadit jako webovou službu přímo z experimentu. Další informace o nasazení webových služeb Azure ML najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
+Když je model připravený, můžete ho snadno nasadit jako webovou službu přímo z experimentu. Další informace o nasazení webových služeb Azure ML najdete v tématu [nasazení webové služby Azure Machine Learning](../classic/deploy-a-machine-learning-web-service.md).
 
 K nasazení nové webové služby potřebujete:
 

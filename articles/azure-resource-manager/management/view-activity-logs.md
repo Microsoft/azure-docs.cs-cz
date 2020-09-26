@@ -3,12 +3,12 @@ title: Zobrazení protokolů aktivit Azure pro monitorování prostředků
 description: Protokoly aktivit můžete použít ke kontrole akcí a chyb uživatele. Zobrazuje Azure Portal PowerShell, rozhraní příkazového řádku Azure a REST.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827057"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371588"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Zobrazení protokolů aktivit pro monitorování akcí u prostředků
 
@@ -20,7 +20,7 @@ Na základě protokolů aktivit můžete zjistit:
 * stav operace
 * hodnoty dalších vlastností, které vám mohou při průzkumu operace.
 
-Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) pro vaše prostředky. Nezahrnuje operace čtení (GET). Seznam akcí prostředků najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md). Protokoly aktivit můžete použít k vyhledání chyby při řešení potíží nebo k monitorování, jak uživatel ve vaší organizaci změnil prostředek.
+Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) pro vaše prostředky. Nezahrnuje operace čtení (GET). Seznam akcí prostředků najdete v tématu [operace poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md). Protokoly aktivit můžete použít k vyhledání chyby při řešení potíží nebo k monitorování, jak uživatel ve vaší organizaci změnil prostředek.
 
 Protokoly aktivit se uchovávají po dobu 90 dnů. Můžete se dotazovat na libovolný rozsah kalendářních dat, pokud počáteční datum neleží více než 90 dnů v minulosti.
 
@@ -195,4 +195,4 @@ Operace REST pro práci s protokolem aktivit jsou součástí [rozhraní REST AP
 * Pokud chcete zobrazit další podrobnosti o změnách vašich aplikací z infrastruktury infrastruktury všech způsobů nasazení aplikace, přečtěte si téma [použití analýzy změn aplikace v Azure monitor](../../azure-monitor/app/change-analysis.md).
 * Další informace o příkazech pro zobrazení operací nasazení najdete v tématu [Zobrazení operací nasazení](../templates/deployment-history.md).
 * Informace o tom, jak zabránit odstranění prostředků pro všechny uživatele, najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](lock-resources.md).
-* Pokud chcete zobrazit seznam operací dostupných pro každého poskytovatele Microsoft Azure Správce prostředků, přečtěte si téma [Azure Resource Manager operace poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md) .
+* Pokud chcete zobrazit seznam operací dostupných pro každého poskytovatele Microsoft Azure Správce prostředků, přečtěte si téma [operace poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md) .

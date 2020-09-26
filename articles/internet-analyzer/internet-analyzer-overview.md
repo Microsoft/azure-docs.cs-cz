@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73501943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360884"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Co je Internet Analyzer? (Preview)
 
@@ -36,20 +36,20 @@ Můžete buď nakonfigurovat vlastní koncový bod, nebo vybrat z nejrůznějš�
 Během období Preview jsou k dispozici následující předem nakonfigurované koncové body: 
 
 * **Oblasti Azure**
-    * Brazílie – jih
+    * Brazil South
     * Indie – střed
     * USA – střed
     * Východní Asie
-    * USA – východ
+    * East US
     * Japonsko – západ
     * Severní Evropa
     * Jižní Afrika – sever
-    * Jihovýchodní Asie 
+    * Southeast Asia 
     * Spojené arabské emiráty sever
     * Spojené království – západ  
-    * Západní Evropa
+    * West Europe
     * USA – západ 
-    * USA – západ 2
+    * Západní USA 2
 * **Několik kombinací oblastí Azure** 
     * Východní USA, Brazílie – jih 
     * Východní USA Východní Asie 
@@ -90,7 +90,7 @@ Chcete-li použít nástroj Internet Analyzer, nastavte prostředek pro Internet
 
 Když uživatel navštíví webovou aplikaci, klient jazyka JavaScript vybere dva koncové body pro měření ve všech nakonfigurovaných testech. U každého koncového bodu klient provádí _studené_ a _teplé_ měření. Dopředné _měření způsobí_ další latenci při čisté latenci sítě mezi uživatelem a koncovým bodem, jako je třeba překlad DNS, handshake připojení TCP a vyjednávání SSL/TLS. Měření _teplého_ postupu následuje hned po dokončení _studeného_ měření a využívá trvalou správu připojení TCP v moderních prohlížečích k dosažení přesné míry celkové latence. V případě, že prohlížeč uživatele podporuje, používá se rozhraní API pro časování prostředků W3C k přesnému časování měření. V současné době se k analýze používají pouze měření latence v teplu.
 
-![Architektura](./media/ia-overview/architecture.png)
+![Diagram znázorňuje koncového uživatele, který se připojuje k aplikačnímu serveru s vloženým klientem a ke dvěma koncovým bodům na internetu z několika možností. Uživatel nahrává měření do nástroje Internet Analyzer.](./media/ia-overview/architecture.png)
 
 
 ## <a name="scorecards"></a>Metrik 

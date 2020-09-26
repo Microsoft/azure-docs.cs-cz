@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 41713554273ed5d6548a35d0ac956d8ff5c74191
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372472"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Kurz: Azure Active Directory integrace s odkazem na Springer
 
@@ -39,7 +39,7 @@ Ke konfiguraci integrace služby Azure AD s odkazem na Springer potřebujete ná
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD.
 
 * Link Springer podporuje **aktualizace SP** a **IDP** , které iniciovaly jednotné přihlašování.
 
@@ -68,7 +68,6 @@ Pokud chcete nakonfigurovat integraci Springer odkazu do služby Azure AD, musí
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s odkazem na Springer na základě testovacího uživatele s názvem **Britta Simon**.
-Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v odkazu Springer.
 
 Ke konfiguraci a testování jednotného přihlašování Azure AD s odkazem na Springer je potřeba dokončit následující stavební bloky:
 
@@ -76,8 +75,7 @@ Ke konfiguraci a testování jednotného přihlašování Azure AD s odkazem na 
 2. **[Nakonfigurujte jednotné přihlašování Springer Link](#configure-springer-link-single-sign-on)** -pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořit testovacího uživatele Springer Link](#create-springer-link-test-user)** -to znamená, že má protějšek Britta Simon v odkazu Springer, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+5. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
@@ -120,21 +118,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s odkazem na Spr
 
 6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na ikonu Kopírovat a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz na stažení certifikátu](common/metadataxml.png)
-
-7. V části **nastavit odkaz na Springer** zkopírujte příslušné adresy URL podle vašich požadavků.
-
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
-
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
+    ![Odkaz ke stažení metadat](common/copy_metadataurl.png)
 
 ### <a name="configure-springer-link-single-sign-on"></a>Konfigurace jednotného přihlašování Springer Link
 
-Ke konfiguraci jednotného přihlašování na straně **odkazů na Springer** je potřeba odeslat zkopírované **adresy URL federačních metadat aplikace** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Springer Link](mailto:identity@springernature.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **odkazu na Springer** , musíte poslat zkopírovanou **adresu URL federačních metadat aplikace** [týmu podpory Springer Link](mailto:onlineservice@springernature.com). Tým podpory propojení Springer používá tuto adresu URL k tomu, aby na obou stranách správně nastavil připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -159,7 +147,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -167,7 +155,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **odkaz Springer**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **odkaz Springer**.
 
@@ -186,10 +174,6 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
-
-### <a name="create-springer-link-test-user"></a>Vytvořit testovacího uživatele odkazu na Springer
-
-V této části vytvoříte uživatele s názvem Britta Simon v odkazu Springer. Pokud chcete přidat uživatele na platformě odkazů Springer, pracujte s [týmem podpory Springer Link](mailto:identity@springernature.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

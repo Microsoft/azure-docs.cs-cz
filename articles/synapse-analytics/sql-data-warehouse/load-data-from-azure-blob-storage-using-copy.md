@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442977"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371520"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Kurz: načtení datové sady New York taxislužby města
 
@@ -91,7 +91,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
 11. Na panelu nástrojů vyberte **Oznámení**, abyste mohli sledovat proces nasazení.
   
-     ![oznámení](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![Snímek obrazovky ukazuje Azure Portal podokna oznámení otevřeném s probíhajícím nasazením.](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
@@ -153,7 +153,7 @@ V této části se k navázání připojení k serveru používá [SQL Server Ma
 
     ![Připojení k serveru](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Vyberte **Connect** (Připojit). V aplikaci SSMS se otevře okno Průzkumníka objektů.
+3. Vyberte **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů.
 
 4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
 
@@ -204,7 +204,7 @@ Prvním krokem k načítání dat je přihlášení jako LoaderRC20.
 
 2. Zadejte plně kvalifikovaný název serveru a jako Účet zadejte **LoaderRC20**.  Zadejte své heslo k účtu LoaderRC20.
 
-3. Vyberte **Connect** (Připojit).
+3. Vyberte **Připojit**.
 
 4. Až bude vaše připojení připravené, v Průzkumníku objektů se zobrazí dvě připojení k serveru. Jedno připojení jako ServerAdmin a druhé jako MedRCLogin.
 

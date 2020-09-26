@@ -4,20 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3ca50a9bad36e0174dc4ee0059c9d01fcc18a5f1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d69cb782b3be7035b7571653dcb434e44d22da93
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376519"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
 > * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>Stažení a instalace klientské knihovny rozhraní API
@@ -89,7 +89,7 @@ Tady zobrazíme výsledek JSON a zobrazíme ho.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=95-98)]
 
 ## <a name="check-your-code"></a>Kontrolovat kód
-V tomto okamžiku by váš kód měl vypadat takto: (do této verze jsme přidali nějaké komentáře.)[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
+V tomto okamžiku by váš kód měl vypadat takto: (do této verze jsme přidali nějaké komentáře.) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 

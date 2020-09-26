@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 85a54ce7c8b3beea102fad7c3adb58f92c8574dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372591"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
@@ -56,7 +56,7 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
 1. Vyberte **zdroj dat**a vyberte typ zdroje dat. Může se jednat o protokol HTTP nebo úložiště dat.
 
-    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která jsou už zaregistrovaná v pracovním prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k datům, která chcete importovat do úložiště dat. Cestu můžete snadno procházet kliknutím na **Procházet cesta** ![ import-data-cesta.](media/module/import-data-path.png)
+    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která jsou už zaregistrovaná v pracovním prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k datům, která chcete importovat do úložiště dat. Cestu můžete snadno procházet kliknutím na Procházet obrázek **cesta** ![ snímek obrazovky. zobrazí se dialogové okno pro procházení cesty, které otevře dialog výběr cesty.](media/module/import-data-path.png)
 
 1. Vyberte schéma verze Preview pro filtrování sloupců, které chcete zahrnout. V možnostech analýzy můžete také definovat upřesňující nastavení, jako je oddělovač.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 726bc34a309ac6a29c189f13037e059f200732ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335914"
+ms.locfileid: "91371180"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled Azure DDoS Protection Standard
 
@@ -61,7 +61,7 @@ Mezi DDoS Protection standardní funkce patří:
 
 DDoS Protection Standard monitoruje skutečné využití provozu a trvale ho porovnává s mezními hodnotami definovanými v zásadách DDoS. Při překročení prahové hodnoty přenosu se DDoSé riziko iniciuje automaticky. Když se provoz vrátí pod prahovou hodnotu, zmírnění se odstraní.
 
-![Omezení rizik](./media/ddos-protection-overview/mitigation.png)
+![Diagram znázorňuje tok od zákazníka přes Azure Portal prostřednictvím standardu DDoS Protection, přes veřejné I P adresy prostřednictvím generování zásad, končící na dvou veřejných I P adresách.](./media/ddos-protection-overview/mitigation.png)
 
 Během zmírnění ochrany se provoz odeslaný do chráněného prostředku přesměruje pomocí služby DDoS Protection a provede se několik kontrol, například následující kontroly:
 

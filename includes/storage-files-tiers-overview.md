@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7d0286b63703c165dda6cd12bb625fc64272aac1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90606799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377369"
 ---
 Služba soubory Azure nabízí čtyři různé úrovně úložiště, Premium, transakce optimalizované, horké a studené, aby bylo možné přizpůsobit své sdílené složky na požadavky na výkon a cenu vašeho scénáře:
 
@@ -26,4 +26,5 @@ Sdílené složky Premium jsou dostupné jenom v modelu zřízené fakturace. Da
 
 Horké a studené sdílené složky jsou dostupné ve všech veřejných a Azure Government oblastech Azure. Transakce optimalizované pro transakce jsou k dispozici ve všech oblastech Azure, včetně oblastí Azure Čína a Azure Německo.
 
-Chcete-li nasadit horkou nebo studenou sdílenou složku, přečtěte si téma [Vytvoření horké nebo studené sdílené složky](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 
+> [!Important]  
+> Můžete přesouvat sdílené složky mezi vrstvami v rámci typů účtů úložiště GPv2 (transakce optimalizovaná, horká a studená). Sdílení se pohybuje mezi úrovněmi. transakce: přechod z Hotter úrovně na úroveň chladiče bude za každý soubor ve sdílené složce účtovat poplatek za transakci zápisu ve vrstvě chladicího objektu, zatímco přesun z úrovně chladicího počítače na Hotter vrstvu bude za každý soubor sdílené složky účtovat poplatek za transakce čtení ve studené vrstvě.

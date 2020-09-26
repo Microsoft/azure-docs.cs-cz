@@ -3,12 +3,12 @@ title: Úplné odstranění režimu
 description: Ukazuje, jak typy prostředků zpracovávají úplné odstraňování režimu v Azure Resource Manager šablonách.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: e288d3af080a96616026e94ac7be352a7684c181
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1e27960953aeb16486f893054c7653edb98bbdbc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327659"
+ms.locfileid: "91372457"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Odstranění prostředků Azure pro nasazení v úplném režimu
 
@@ -1502,11 +1502,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | pracovní prostory | Yes |
-> | pracovní prostory/codeJobs | No |
 > | pracovní prostory a výpočetní prostředky | No |
 > | pracovní prostory/eventGridFilters | No |
-> | pracovní prostory/inferenceEndpoints | Yes |
-> | pracovní prostory/inferenceEndpointsy/nasazení | Yes |
 > | pracovní prostory/linkedServices | No |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance

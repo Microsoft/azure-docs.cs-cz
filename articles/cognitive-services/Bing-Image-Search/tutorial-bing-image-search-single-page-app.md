@@ -10,13 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cc73dcf6376dc5a222b1b68d67e4f02090258807
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: fe4c40e2c5e2b8992598125c376dc0da516e9736
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316694"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -32,7 +32,7 @@ Ukázková aplikace předvádí, jak:
 
 Úplný zdrojový kód k tomuto kurzu je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/)
 * Architektura [Express.js](https://expressjs.com/) pro Node.js. Pokyny k instalaci zdrojového kódu jsou k dispozici v ukázkovém souboru Readme pro GitHub.
@@ -411,6 +411,6 @@ Při používání ukázkové aplikace nechte příkazové okno otevřené. Zav�
 > [!div class="nextstepaction"]
 > [Extrahování podrobností o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků](tutorial-image-post.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

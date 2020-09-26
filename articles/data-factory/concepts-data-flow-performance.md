@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434227"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370874"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -53,7 +53,7 @@ Po zjištění kritického bodu toku dat můžete zvýšit výkon pomocí níže
 
 Karta **optimalizace** obsahuje nastavení pro konfiguraci schématu dělení clusteru Spark. Tato karta existuje v každé transformaci toku dat a určuje, zda chcete znovu rozdělit data **po** dokončení transformace. Úpravy dělení poskytují kontrolu nad distribucí vašich dat mezi výpočetními uzly a optimalizací dat, které mohou mít jak pozitivní, tak negativní dopad na celkový výkon toku dat.
 
-![Optimalizace](media/data-flow/optimize.png "Optimalizace")
+![Snímek obrazovky zobrazuje kartu optimalizace, která zahrnuje možnost oddílu, typ oddílu a počet oddílů.](media/data-flow/optimize.png)
 
 Ve výchozím nastavení je vybrána *možnost použít aktuální rozdělení do oddílů* , která určuje, Azure Data Factory zachovat aktuální výstupní oddíl transformace. Při změně rozdělení dat do oddílů se ve většině scénářů doporučuje *použít aktuální dělení* . Scénáře, ve kterých můžete chtít znovu rozdělit data, patří po agregacích a spojeních, které významně zkosí vaše data nebo využívají zdrojové oddíly databáze SQL.
 

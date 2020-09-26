@@ -3,12 +3,12 @@ title: Nasazení prostředků pomocí Azure CLI a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 7e8ae7e8c568f5f0ebb85f434e33f142b5fe94e8
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 8d033bb9ad1c841614ee1e48aa7edc6b8fe18550
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566156"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372166"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
 
@@ -130,7 +130,7 @@ Předchozí příklad vyžaduje pro šablonu veřejně přístupný identifikát
 
 ## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
 
-Místo nasazení místní nebo vzdálené šablony můžete vytvořit [specifikaci šablony](template-specs.md). Specifikace šablony je prostředek ve vašem předplatném Azure, který obsahuje šablonu ARM. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. Řízení přístupu na základě role (RBAC) slouží k udělení přístupu ke specifikaci šablony. Tato funkce je aktuálně ve verzi Preview.
+Místo nasazení místní nebo vzdálené šablony můžete vytvořit [specifikaci šablony](template-specs.md). Specifikace šablony je prostředek ve vašem předplatném Azure, který obsahuje šablonu ARM. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. K udělení přístupu ke specifikaci šablony použijte řízení přístupu na základě role Azure (Azure RBAC). Tato funkce je aktuálně ve verzi Preview.
 
 Následující příklady ukazují, jak vytvořit a nasadit specifikace šablony. Tyto příkazy jsou k dispozici pouze v případě, že jste se [zaregistrovali ve verzi Preview](https://aka.ms/templateSpecOnboarding).
 
@@ -249,7 +249,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Zpracovat rozšířený formát JSON
 
-Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí rozhraní příkazového řádku Azure s verzí 2.3.0 nebo starší, musíte použít `--handle-extended-json-format` přepínač.  Například:
+Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí rozhraní příkazového řádku Azure s verzí 2.3.0 nebo starší, musíte použít `--handle-extended-json-format` přepínač.  Příklad:
 
 ```json
 {

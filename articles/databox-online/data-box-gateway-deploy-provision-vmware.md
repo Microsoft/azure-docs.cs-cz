@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 6488871067416b2cee533561bae47874413d9012
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371282"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: zřízení Azure Data Box Gateway ve VMware
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky na zřízení virtuálního zařízení v hostitelském systému, na kterém běží VMware ESXi 6,0, 6,5 nebo 6,7.
 
@@ -194,7 +194,7 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 
    ![Zadejte heslo virtuálního zařízení.](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky a přejděte ke kroku 8. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva: **Pomocí rutiny Set-HcsIPAddress nakonfigurujte síť**. 
+6. Kroky 6 až 8 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky a přejděte ke kroku 9. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva: **Pomocí rutiny Set-HcsIPAddress nakonfigurujte síť**. 
    
 7. Pokud chcete nakonfigurovat síť, na příkazovém řádku použijte příkaz `Get-HcsIpAddress`, který vypíše povolená síťová rozhraní na vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 

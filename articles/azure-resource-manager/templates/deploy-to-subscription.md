@@ -3,12 +3,12 @@ title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: cd1d0a05fc1039d8e99b0af6fc8019face4516bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 29a35715115816d742103bd7556ded19f22b316e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284784"
+ms.locfileid: "91372404"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -37,7 +37,7 @@ Pro zásady Azure použijte:
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [nápravy](/azure/templates/microsoft.policyinsights/remediations)
 
-Pro řízení přístupu na základě role použijte:
+Pro řízení přístupu na základě role Azure (Azure RBAC) použijte:
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: 47e1c509e8b7b60e889e1202b49b1a145c68162c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376878"
 ---
 ## <a name="local-settings-file"></a>Soubor místního nastavení
 
@@ -40,7 +40,7 @@ Tato nastavení jsou podporována při spuštění projektů místně:
 
 | Nastavení      | Popis                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Pokud je toto nastavení nastaveno na hodnotu `true` , všechny hodnoty budou šifrovány pomocí klíče místního počítače. Používá se s `func settings` příkazy. Výchozí hodnota je `false` . |
+| **`IsEncrypted`** | Pokud je toto nastavení nastaveno na hodnotu `true` , všechny hodnoty budou šifrovány pomocí klíče místního počítače. Používá se s `func settings` příkazy. Výchozí hodnota je `false` . Můžete chtít šifrovat local.settings.jsv souboru na místním počítači, když obsahuje tajné kódy, jako jsou například připojovací řetězce služby. Hostitel při spuštění automaticky dešifruje nastavení. `func settings decrypt`Před pokusem o čtení místně zašifrovaného nastavení použijte příkaz. |
 | **`Values`** | Pole nastavení aplikace a připojovacích řetězců, které se použijí, když je projekt spuštěn místně. Tyto páry klíč-hodnota (řetězcové řetězce) odpovídají nastavení aplikace ve vaší aplikaci Function App v Azure, jako je [`AzureWebJobsStorage`] . Mnoho triggerů a vazeb má vlastnost, která odkazuje na nastavení aplikace připojovacího řetězce, jako `Connection` je například [Trigger služby Blob Storage](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration). U těchto vlastností potřebujete nastavení aplikace definované v poli `Values` . Seznam běžně používaných nastavení najdete v následující tabulce. <br/>Hodnoty musí být řetězce, nikoli objekty nebo pole JSON. Názvy nastavení nemůžou obsahovat dvojtečku ( `:` ) nebo dvojitou vlnovku ( `__` ). Znaky dvojitého podtržení jsou rezervovány modulem runtime a dvojtečka je vyhrazena pro [vkládání závislostí](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings). |
 | **`Host`** | Nastavení v této části přizpůsobuje hostitelský proces Functions, když spouštíte projekty místně. Tato nastavení jsou oddělená od host.jsnastavení, která platí i při spuštění projektů v Azure. |
 | **`LocalHttpPort`** | Nastaví výchozí port, který se používá při spuštění místního hostitele funkcí ( `func host start` a `func run` ). `--port`Možnost příkazového řádku má přednost před tímto nastavením. |

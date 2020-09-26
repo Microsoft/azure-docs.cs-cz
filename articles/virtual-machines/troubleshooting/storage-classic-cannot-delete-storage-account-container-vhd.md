@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c74f2ef9eed25719e722970671406c850b6a59b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361853"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování klasických prostředků úložiště
 V tomto článku najdete pokyny k odstraňování potíží, když se při pokusu o odstranění účtu úložiště Azure Classic, kontejneru nebo souboru BLOB stránky virtuálního pevného disku zobrazí některá z následujících chyb. 
@@ -36,7 +36,7 @@ Prostředek "disk" se používá k připojení souboru objektu blob stránky *. 
 
 1. Odstraňte klasický virtuální počítač.
 2. Pokud je zaškrtnuto políčko "disky", **zapůjčení disku** (zobrazené v obrázku výše) přidružené k objektu blob stránky *. VHD je přerušeno. Skutečný objekt blob stránky *. VHD v účtu úložiště stále existuje.
-![Snímek obrazovky portálu s otevřeným podoknem chyby virtuálního počítače (Classic)](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
+![Snímek obrazovky se zobrazí dialogové okno pro potvrzení odstranění virtuálního počítače.](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
 
 3. Po přerušení zapůjčení disků je možné objekty blob stránky odstranit. Účet úložiště nebo kontejner je možné odstranit, jakmile se odstraní všechny prostředky "disk", které jsou v nich přítomné.
 
@@ -52,7 +52,7 @@ Uživatel přejde na klasický účet úložiště v [Azure Portal](https://port
 
 S disky připojenými k virtuálnímu počítači
 
-![Snímek obrazovky portálu s otevřeným podoknem chyby virtuálního počítače (Classic)](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
+![Snímek obrazovky se zobrazí zpráva s vysvětlením, proč nelze odstranit účet úložiště.](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
 
 
 Disky s nepřipojeným diskem (s) k virtuálnímu počítači
@@ -93,12 +93,12 @@ Po odstranění virtuálního počítače Azure se uživatel pokusí odstranit s
 Na portálu můžou být v závislosti na seznamu objektů BLOB vybraných k odstranění dvě prostředí.
 
 1. Pokud je vybráno pouze "pronajaté" objekty blob, tlačítko Odstranit se nezobrazí.
-![Snímek obrazovky portálu se spuštěným oknem seznam objektů BLOB kontejneru](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
+![Snímek obrazovky portálu s otevřeným oknem seznamu objektů BLOB kontejneru a vybranými pouze pronajatými objekty blob](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
 
 
 2. Pokud je vybraná kombinace "pronajatých" a "dostupných" objektů blob, zobrazí se tlačítko "odstranit". Operace "Delete" ale ponechá za objekty blob stránky, na kterých se zapůjčení disku zachová. 
-![Snímek obrazovky portálu s oknem seznam objektů BLOB kontejneru s otevřeným snímkem ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
- ![ obrazovky portálu s vybraným otevřeným oknem objektů blob "odstranit"](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+![Snímek obrazovky portálu s otevřeným oknem seznamu objektů BLOB kontejneru a vybranými možnostmi ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+ ![ zapůjčení a dostupných objektů BLOB Snímek obrazovky portálu s otevřeným otevřeným oknem objektů blob "odstranit"](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Pokud se uživatel rozhodne odstranit pomocí PowerShellu, bude výsledkem následující chyba. 
@@ -114,10 +114,10 @@ Pokud se uživatel rozhodne odstranit pomocí PowerShellu, bude výsledkem násl
 Postupujte podle těchto kroků na Azure Portal:
 1.  Přejděte na [Azure Portal](https://portal.azure.com).
 2.  Přejděte na disky (klasické). 
-3.  Klikněte na kartu disky. ![ Snímek obrazovky portálu se spuštěným oknem seznam objektů BLOB kontejneru](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  Klikněte na kartu disky. ![ Snímek obrazovky se zobrazí Azure Portal s vybranými disky (klasické) a názvem klasického disku a účtem úložiště.](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Vyberte datový disk a potom klikněte na Odstranit disk.
- ![Snímek obrazovky portálu se spuštěným oknem seznam objektů BLOB kontejneru](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
+ ![Snímek Azure Portal obrazovky se zvolenými vybranými disky (klasickými), s vybraným datovým diskem a možností odstranění.](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
  
 5.  Opakujte operaci odstranění, která se dřív nezdařila.
 6.  Účet úložiště nebo kontejner se nedají odstranit, pokud má jeden disk.

@@ -3,12 +3,12 @@ title: Vytvoření projektů skupiny prostředků sady Visual Studio pro & nasaz
 description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků Azure a nasaďte prostředky do Azure.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985253"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372642"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
@@ -41,7 +41,7 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
 
     Vzhledem k tomu, že jste vybrali šablonu webové aplikace, zobrazí se následující soubory:
 
-   | Název souboru | Description |
+   | Název souboru | Popis |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který spustí příkazy PowerShellu pro nasazení Azure Resource Manageru. Visual Studio pomocí tohoto skriptu PowerShellu nasadí vaši šablonu. |
    | WebSite.jsna |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
@@ -370,7 +370,7 @@ Nejste omezení jenom na prostředky dostupné prostřednictvím rozhraní sady 
 
    ![Vlastní řídicí panel](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-Přístup k řídicímu panelu můžete spravovat pomocí skupin RBAC. Vzhled řídicího panelu můžete také upravit po nasazení. Pokud ovšem provádíte opakované nasazení skupiny prostředků, uvede se řídicí panel do výchozího stavu ve vaší šabloně. Další informace o vytváření řídicích panelů najdete v tématu [Vytváření řídicích panelů Azure prostřednictvím kódu programu](../../azure-portal/azure-portal-dashboards-create-programmatically.md).
+Přístup k řídicímu panelu můžete spravovat pomocí řízení přístupu na základě role Azure (RBAC). Vzhled řídicího panelu můžete také upravit po nasazení. Pokud ovšem provádíte opakované nasazení skupiny prostředků, uvede se řídicí panel do výchozího stavu ve vaší šabloně. Další informace o vytváření řídicích panelů najdete v tématu [Vytváření řídicích panelů Azure prostřednictvím kódu programu](../../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 65f6c239f34775efff6a2ea2e399064a7702606a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 8882625d28871135223dd30e3fd96a385a13e8fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663875"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376628"
 ---
 ![Dokumentace k Dsv3](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -85,3 +85,9 @@ Metriky, které vám pomůžou diagnostikovat disk v/v capping:
 - **Procento využité šířky pásma datového disku** – procento vypočítané propustností datového disku dokončenou při propustnosti zřízeného datového disku. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma datového disku.
 - **Procento využití IOPS disku s operačním** systémem – procentuální hodnota, kterou vypočítala IOPS disku s operačním systémem, se dokončila v rámci zřízeného IOPS disku operačního systému. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu IOPS disku s operačním systémem.
 - **Procento využité šířky pásma disku** – procentuální hodnota vypočítaná propustností disku s operačním systémem, která se dokončila v rámci zřízené propustnosti disku s operačním systémem. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma disku s operačním systémem.
+
+Metriky, které vám pomůžou diagnostikovat virtuální počítač v/v capping:
+- **Procento využitých vstupně** -výstupních operací IOPS v mezipaměti – procentuální hodnota vypočtená celkovým IOPS dokončena přes maximální limit počtu IOPS virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu IOPs v mezipaměti virtuálního počítače.
+- **Procento spotřebované šířky pásma v mezipaměti pro virtuální počítače** – procento vypočítané celkovou propustností disku dokončenou v rámci maximální propustnosti virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma v mezipaměti virtuálního počítače.
+- **Procento využitých vstupně** -výstupních operací IOPS v mezipaměti – procentuální hodnota vypočítaná celkovým počtem IOPS na virtuálním počítači, která se dokončila v maximálním limitu počtu IOPS virtuálního počítače, který nemá mezipaměť Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu IOPs bez mezipaměti virtuálního počítače.
+- **Procento využité šířky pásma neuložené v mezipaměti** – procentuální hodnota vypočítaná z celkové propustnosti disku na virtuálním počítači, která se dokončila přes maximální propustnost zajištěných virtuálních počítačů. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma bez mezipaměti virtuálního počítače.

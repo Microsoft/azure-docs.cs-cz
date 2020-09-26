@@ -4,12 +4,12 @@ description: Popisuje řešení běžných chyb při nasazení prostředků do A
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372234"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných problémů s nasazením v Azure při použití Azure Resource Manageru
 
@@ -34,6 +34,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | DeploymentNameLengthLimitExceeded | Názvy nasazení jsou omezené na 64 znaků.  | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje podrobnosti potřebné k vyřešení chyby. Vyhledejte v podrobnostech o chybě kód chyby, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
 | DeploymentQuotaExceeded | Pokud dosáhnete limitu nasazení 800 na jednu skupinu prostředků, odstraňte nasazení z historie, která už nepotřebujete. | [Vyřešit chybu, pokud je počet nasazení vyšší než 800](deployment-quota-exceeded.md) |
+| DeploymentSizeExceeded | Zjednodušte svou šablonu, aby se snížila velikost. | [Vyřešit chyby velikosti šablony](error-job-size-exceeded.md) |
 | DnsRecordInUse | Název záznamu DNS musí být jedinečný. Zadejte jiný název. | |
 | ImageNotFound | Ověřte nastavení bitové kopie virtuálního počítače. |  |
 | InUseSubnetCannotBeDeleted | Tato chyba se může zobrazit při pokusu o aktualizaci prostředku a žádost se zpracovává odstraněním a vytvořením prostředku. Ujistěte se, že jste zadali všechny nezměněné hodnoty. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,6 +50,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | InvalidSubscriptionRegistrationState | Zaregistrujte své předplatné u poskytovatele prostředků. | [Vyřešit registraci](error-register-resource-provider.md) |
 | InvalidTemplate | Vyhledejte chyby v syntaxi šablony. | [Vyřešit neplatnou šablonu](error-invalid-template.md) |
 | InvalidTemplateCircularDependency | Odeberte zbytečné závislosti. | [Vyřešit cyklické závislosti](error-invalid-template.md#circular-dependency) |
+| JobSizeExceeded | Zjednodušte svou šablonu, aby se snížila velikost. | [Vyřešit chyby velikosti šablony](error-job-size-exceeded.md) |
 | LinkedAuthorizationFailed | Ověřte, jestli váš účet patří ke stejnému tenantovi jako skupina prostředků, do které nasazujete. | |
 | LinkedInvalidPropertyId | ID prostředku neřeší správně. Ověřte, že jste zadali všechny požadované hodnoty pro ID prostředku, včetně ID předplatného, názvu skupiny prostředků, typu prostředku, názvu nadřazeného prostředku (v případě potřeby) a názvu prostředku. | |
 | LocationRequired | Zadejte umístění prostředku. | [Nastavení umístění](resource-location.md) |

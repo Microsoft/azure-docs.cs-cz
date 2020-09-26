@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030075"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314926"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Zálohování a obnovení v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -35,7 +35,7 @@ Aktuální ceny za úložiště zálohování najdete na [stránce s cenami](htt
 V Azure Database for PostgreSQL vytvoří cluster Citus (s obnovením) nový cluster z původních záloh uzlů. 
 
 > [!IMPORTANT]
->Cluster s škálováním na úrovni Standard můžete obnovit jenom v rámci stejného předplatného a skupiny prostředků a s jiným názvem clusteru.
+>Cluster Citus () můžete obnovit pouze v rámci stejného předplatného a skupiny prostředků a s jiným názvem clusteru.
 
 
 > [!IMPORTANT]

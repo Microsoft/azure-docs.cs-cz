@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377271"
 ---
 ## <a name="use-custom-page-content"></a>Použít vlastní obsah stránky
 
@@ -46,7 +46,7 @@ Místo vytvoření vlastního obsahu stránky od začátku můžete přizpůsobi
 
 Následující tabulka uvádí výchozí obsah stránky, který poskytuje Azure AD B2C. Stáhněte si soubory a používejte je jako výchozí bod pro vytváření vlastních stránek.
 
-| Výchozí stránka | Description | ID definice obsahu<br/>(jenom vlastní zásady) |
+| Výchozí stránka | Popis | ID definice obsahu<br/>(jenom vlastní zásady) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka**. Tato stránka se zobrazí, pokud dojde k výjimce nebo chybě. | *rozhraní API. Chyba* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Stránka s vlastním kontrolním**výrazem. Tento soubor použijte jako obsah vlastní stránky pro přihlašovací stránku účtu sociální sítě, přihlašovací stránku místního účtu, přihlašovací stránku místního účtu, resetování hesla a další. Formulář může obsahovat různé vstupní ovládací prvky, jako je například textové pole pro zadání hesla, pole pro zadávání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. | *API. localaccountsignin*, *API. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
@@ -114,7 +114,7 @@ V tomto článku používáme pro hostování našeho obsahu službu Azure Blob 
 
 Chcete-li hostovat obsah HTML v úložišti objektů blob, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V nabídce **centra** vyberte **Nový**  >  **úložiště**  >  **účet**úložiště.
 1. Vyberte **předplatné** pro účet úložiště.
 1. Vytvořte **skupinu prostředků** nebo vyberte existující.
@@ -165,9 +165,9 @@ Pomocí následujících kroků nakonfigurujte úložiště objektů BLOB pro sd
 
 Ověřte, že jste připraveni, provedením následujících kroků:
 
-1. Opakujte krok konfigurace CORS. U **povolených zdrojů**zadejte`https://www.test-cors.org`
+1. Opakujte krok konfigurace CORS. U **povolených zdrojů**zadejte `https://www.test-cors.org`
 1. Přejít na [www.test-CORS.org](https://www.test-cors.org/) 
-1. Do pole **Vzdálená adresa URL** vložte adresu URL souboru HTML. Například `https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html`.
+1. Do pole **Vzdálená adresa URL** vložte adresu URL souboru HTML. Například `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`.
 1. Vyberte **Odeslat žádost**.
     Výsledek by měl být `XHR status: 200` . 
     Pokud se zobrazí chyba, ujistěte se, že je nastavení CORS správné. Je také možné, že budete muset vymazat mezipaměť prohlížeče nebo otevřít soukromou relaci procházení stisknutím kombinace kláves CTRL + SHIFT + P.

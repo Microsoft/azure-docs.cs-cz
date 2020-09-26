@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 658aaf018dd4c231b9bc9fc8c6dda78b2a6f05c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947022"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376667"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají klientskou knihovnu pro Android.
 
@@ -19,12 +19,10 @@ V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačníc
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio)pro vytváření aplikací pro Android.
-- [Přístupový token uživatele](../../access-tokens.md) pro komunikační službu Azure
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
-
+- [Přístupový token uživatele](../../access-tokens.md) pro komunikační službu Azure
 
 ## <a name="setting-up"></a>Nastavení
-
 
 ### <a name="create-an-android-app-with-an-empty-activity"></a>Vytvoření aplikace pro Android s prázdnou aktivitou
 
@@ -126,7 +124,7 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
     
 ```
 
-### <a name="setup-the-layout-for-the-app"></a>Nastavení rozložení aplikace
+### <a name="set-up-the-layout-for-the-app"></a>Nastavení rozložení aplikace
 
 Jsou vyžadovány dva vstupy: textový vstup pro ID volaného a tlačítko pro vložení volání. Ty lze přidat prostřednictvím návrháře nebo úpravou XML rozložení. Vytvoří tlačítko s ID `call_button` a textovým zadáním `callee_id` . Přejděte na ( `app/src/main/res/layout/activity_main.xml` ) a nahraďte obsah souboru následujícím:
 
@@ -269,7 +267,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce komun
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Vytvoření agenta z přístupového tokenu uživatele
 
-S tokenem uživatele může být vytvořena instance ověřeného agenta volání. Obecně se tento token vygeneruje ze služby s ověřováním specifickým pro aplikaci. Další informace o tokenech přístupu uživatele najdete v příručce [k uživatelským tokenům](../../access-tokens.md) . V případě rychlého startu nahraďte `<User_Access_Token>` uživatelským tokenem, který jste vygenerovali pro váš prostředek služby Azure Communication Service.
+S tokenem uživatele může být vytvořena instance ověřeného agenta volání. Obecně se tento token vygeneruje ze služby s ověřováním specifickým pro aplikaci. Další informace o tokenech přístupu uživatele najdete v příručce k [uživatelským tokenům](../../access-tokens.md) . V případě rychlého startu nahraďte `<User_Access_Token>` uživatelským tokenem, který jste vygenerovali pro váš prostředek služby Azure Communication Service.
 
 ```java
 
@@ -316,3 +314,7 @@ private void startCall() {
 Aplikaci teď můžete spustit pomocí tlačítka Spustit aplikaci na panelu nástrojů (Shift + F10). Ověřte, že je možné volat voláním `8:echo123` . Předem zaznamenaná zpráva se spustí a znovu se vrátí zpět na vaši zprávu.
 
 :::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Snímek obrazovky znázorňující dokončenou aplikaci":::
+
+## <a name="sample-code"></a>Příklad kódu
+
+Ukázkovou aplikaci si můžete stáhnout z [GitHubu](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) .
