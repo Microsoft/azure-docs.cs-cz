@@ -15,7 +15,7 @@
       items:
         - name: Vytvoření fronty služby Service Bus
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -90,6 +90,8 @@
       href: service-bus-throttling.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Ověřování a autorizace
           href: service-bus-authentication-and-authorization.md
           items:
