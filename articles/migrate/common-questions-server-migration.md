@@ -3,12 +3,12 @@ title: Běžné otázky týkající se migrace Azure Migrate serveru
 description: Získejte odpovědi na běžné otázky týkající se použití migrace serveru Azure Migrate k migraci počítačů.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b0ae28fc387125b198bed202d857c3b9ecdd44bb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050654"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275536"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
 
@@ -18,6 +18,28 @@ Tento článek obsahuje odpovědi na běžné dotazy k nástroji Azure Migrate: 
 - Dotazy týkající se [zařízení Azure Migrate](common-questions-appliance.md)
 - Dotazy týkající [se vizualizace zjišťování, hodnocení a závislostí](common-questions-discovery-assessment.md)
 - Získání otázek zodpovězených ve [fóru Azure Migrate](https://aka.ms/AzureMigrateForum)
+
+## <a name="does-azure-migrate-convert-uefi-based-machines-to-bios-based-machines-and-migrate-them-to-azure-as-azure-generation-1-vms"></a>Převádí Azure Migrate počítače založené na UEFI na počítače se systémem BIOS a migrovat je do Azure jako virtuální počítače Azure generace 1?
+Azure Migrate: Nástroj pro migraci serveru migruje všechny počítače založené na rozhraní UEFI do Azure jako virtuální počítače Azure generace 2. Už nepodporujeme převod virtuálních počítačů založených na rozhraní UEFI na virtuální počítače se systémem BIOS. Všimněte si, že všechny počítače se systémem BIOS se migrují do Azure jenom jako virtuální počítače Azure generace 1.
+
+## <a name="how-can-i-migrate-uefi-based-machines-to-azure-as-azure-generation-1-vms"></a>Jak můžu migrovat počítače založené na rozhraní UEFI do Azure jako virtuální počítače Azure generace 1?
+Azure Migrate: Nástroj pro migraci serveru migruje počítače založené na UEFI do Azure jako virtuální počítače Azure generace 2. Pokud je chcete migrovat na virtuální počítače Azure Generation 1, před spuštěním replikace převeďte typ spouštění na systém BIOS a pak pomocí nástroje Azure Migrate: Server pro migraci proveďte migraci do Azure.
+ 
+## <a name="which-operating-systems-are-supported-for-migration-of-uefi-based-machines-to-azure"></a>Které operační systémy se podporují pro migraci počítačů založených na rozhraní UEFI do Azure?
+
+| **Operační systémy podporované pro počítače založené na rozhraní UEFI** | **VMware do Azure bez agentů**                                                                                                             | **Hyper-V bez agentů do Azure** | **VMware, fyzické a další cloudy založené na agentech do Azure** |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
+| Windows Server 2019, 2016, 2012 R2, 201                 | Y                                                                                                                                         | Y                              | Y                                                          |
+| Windows 10 pro, Windows 10 Enterprise                   | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| Ubuntu Server 16,04, 18,04, 19,04, 19,10                | Y                                                                                                                                         | Y                              | Y                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _RHEL 8. x vyžaduje [ruční přípravu](https://go.microsoft.com/fwlink/?linkid=2143939) ._   | Y                              | Y                                                          |
+| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_Cent OS 8. x vyžaduje [ruční přípravu](https://go.microsoft.com/fwlink/?linkid=2143939) ._ | Y                              | Y                                                          |
+| Oracle Linux 7,7, 7,7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
+
+## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Můžu použít trezor služby Recovery Services vytvořený Azure Migrate pro scénáře zotavení po havárii?
+Pro scénáře zotavení po havárii nedoporučujeme používat trezor služby Recovery Services vytvořený Azure Migrate. V takovém případě může dojít k selhání spuštění replikace v Azure Migrate. 
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Kde mám nainstalovat zařízení replikace pro migrace založené na agentech?
 
@@ -200,11 +222,6 @@ Podpora možností migrace serveru Azure Migrate, jako je například migrace ja
 
 Replikace bez agentů vede k nějakým dopadům na výkon VMware vCenter Server a VMware ESXi hostitelů. Vzhledem k tomu, že replikace bez agenta používá snímky, spotřebovává v úložišti IOPS, takže se vyžaduje některá šířka pásma úložiště IOPS. Pokud máte ve svém prostředí omezení úložiště nebo IOPs, nedoporučujeme používat replikaci bez agentů.
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Můžu bez agenta migrovat virtuální počítače UEFI do Azure Gen 2?
-
-No. K migraci těchto virtuálních počítačů na virtuální počítače s technologií Hyper-V můžete použít [migraci založené na agentech VMware](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent), [migraci technologie Hyper-V](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)nebo [fyzické servery](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) .
-
-***Poznámka:*** Ujistěte se, že jste vybrali vhodnou velikost virtuálního počítače, která podporuje rozhraní UEFI 2 – generace v Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

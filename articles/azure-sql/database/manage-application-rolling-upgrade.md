@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334879"
+ms.locfileid: "91355614"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Správa postupného upgradu cloudových aplikací pomocí SQL Database aktivní geografická replikace
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Pokud vaše aplikace spoléhá na automatické zálohování databáze a použí
 > [!NOTE]
 > Tyto přípravné kroky nebudou mít vliv na produkční prostředí, které může fungovat v režimu úplného přístupu.
 
-![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](./media/manage-application-rolling-upgrade/option1-1.png)
+![Diagram zobrazuje SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](./media/manage-application-rolling-upgrade/option1-1.png)
 
 Po dokončení přípravných kroků je aplikace připravená na vlastní upgrade. Další diagram znázorňuje kroky, které jsou součástí procesu upgradu:
 
@@ -48,7 +48,7 @@ Po dokončení přípravných kroků je aplikace připravená na vlastní upgrad
 2. Odpojte sekundární databázi pomocí režimu plánovaného ukončení (4). Tato akce vytvoří plně synchronizovanou nezávislou kopii primární databáze. Tato databáze bude upgradována.
 3. Převeďte sekundární databázi do režimu pro čtení i zápis a spusťte skript upgradu (5).
 
-![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](./media/manage-application-rolling-upgrade/option1-2.png)
+![Diagram zobrazuje SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu, ve kterém je spuštěný skript pro upgrade.](./media/manage-application-rolling-upgrade/option1-2.png)
 
 Pokud se upgrade úspěšně dokončí, teď jste připraveni přepnout uživatele na upgradovanou kopii aplikace, která se stane provozním prostředím. Přepínání zahrnuje několik dalších kroků, jak je znázorněno v následujícím diagramu:
 
@@ -67,7 +67,7 @@ V tuto chvíli je aplikace plně funkční a můžete postup upgradu zopakovat.
 > [!NOTE]
 > Vrácení zpět nevyžaduje změny DNS, protože jste ještě neprováděli operaci prohození.
 
-![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](./media/manage-application-rolling-upgrade/option1-4.png)
+![Diagram zobrazuje SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu pomocí přípravného prostředí z provozu.](./media/manage-application-rolling-upgrade/option1-4.png)
 
 Klíčovou výhodou této možnosti je, že aplikaci v jedné oblasti můžete upgradovat pomocí sady jednoduchých kroků. Cena za dolar za upgrade je poměrně nízká. 
 
@@ -98,7 +98,7 @@ Aby bylo možné vrátit zpět upgrade, je nutné vytvořit přípravné prostř
 > [!NOTE]
 > Tyto přípravné kroky nebudou mít vliv na aplikaci v produkčním prostředí. Zůstane plně funkční v režimu pro čtení i zápis.
 
-![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](./media/manage-application-rolling-upgrade/option2-1.png)
+![Diagram zobrazuje SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu s plně synchronizovanou kopií aplikace.](./media/manage-application-rolling-upgrade/option2-1.png)
 
 Po dokončení přípravných kroků je pracovní prostředí připraveno k upgradu. Následující diagram znázorňuje tyto kroky upgradu:
 
@@ -120,14 +120,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 3. Spusťte skript upgradu proti `contoso-1-staging.azurewebsites.net` , `contoso-dr-staging.azurewebsites.net` a pracovní primární databázi (12). Změny databáze budou automaticky replikovány do pracovního sekundárního prostředí.
 
-![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](./media/manage-application-rolling-upgrade/option2-2.png)
+![Diagram zobrazuje SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu s replikovanými změnami databáze do přípravy.](./media/manage-application-rolling-upgrade/option2-2.png)
 
 Pokud se upgrade úspěšně dokončí, teď jste připraveni přepnout uživatele na verzi v2 aplikace. Následující diagram znázorňuje postup, který je součástí:
 
 1. Aktivujte operaci prohození mezi produkčním a přípravným prostředím webové aplikace v primární oblasti (13) a v oblasti zálohování (14). V2 aplikace se teď staly produkčním prostředím, s redundantní kopií v oblasti zálohování.
 2. Pokud už nepotřebujete aplikaci V1 (15 a 16), můžete pracovní prostředí vyřadit z provozu.
 
-![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](./media/manage-application-rolling-upgrade/option2-3.png)
+![Diagram zobrazuje SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu s volitelným vyřazením přípravného prostředí z provozu.](./media/manage-application-rolling-upgrade/option2-3.png)
 
 Pokud je proces upgradu neúspěšný (například kvůli chybě v skriptu pro upgrade), zvažte, jestli je pracovní prostředí v nekonzistentním stavu. Chcete-li vrátit aplikaci zpět do stavu před upgradem, vraťte se na použití v1 aplikace v provozním prostředí. Požadované kroky se zobrazí v dalším diagramu:
 
@@ -139,7 +139,7 @@ V tuto chvíli je aplikace plně funkční a můžete postup upgradu zopakovat.
 > [!NOTE]
 > Vrácení zpět nevyžaduje změny DNS, protože jste neprováděli operaci swap.
 
-![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](./media/manage-application-rolling-upgrade/option2-4.png)
+![Diagram zobrazuje SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu pomocí procesu upgradu vráceného zpět.](./media/manage-application-rolling-upgrade/option2-4.png)
 
 Klíčovou výhodou této možnosti je, že můžete upgradovat aplikaci i její geograficky redundantní kopii paralelně bez toho, aby během upgradu došlo k narušení vaší provozní kontinuity.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: implementace prostorových analýz IoT pomocí map Microsoft Azure'
-description: Integrujte IoT Hub s rozhraními API služby Azure Maps.
+title: 'Kurz: implementace prostorové analýzy IoT | Mapy Microsoft Azure'
+description: Kurz týkající se integrace IoT Hub s rozhraními API služby Microsoft Azure Maps
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 25665e75a361fbaa5479e2717d5e6aa9290c3d3a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321828"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -32,7 +32,7 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -153,7 +153,7 @@ Pomocí následujícího postupu nahrajte geografickou ochranou Azure Maps rozhr
       }
       ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 IoT Hub umožňuje zabezpečenou a spolehlivou obousměrnou komunikaci mezi aplikací IoT a zařízeními, která spravuje. Pro účely tohoto kurzu chcete získat informace ze zařízení v rámci vozidla, abyste zjistili umístění půjčovny. V této části vytvoříte centrum IoT v rámci skupiny prostředků *ContosoRental* . Tento rozbočovač bude zodpovědný za publikování událostí telemetrie zařízení.
 
@@ -253,6 +253,7 @@ Když je vaše funkce Azure spuštěná, můžete teď do služby IoT Hub odesí
     dotnet run
     ```
 
+
   Místní terminál by měl vypadat jako na následujícím obrázku.
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Snímek obrazovky s výstupem terminálu":::
@@ -276,8 +277,6 @@ Pokud chcete prozkoumat rozhraní API Azure Maps použitá v tomto kurzu, přeč
 
 * [Rozhraní REST API pro Azure Maps](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
 
-Další informace o službě IoT technologie Plug and Play najdete v těchto tématech:
-
 * [IoT Plug and Play](https://docs.microsoft.com/azure/iot-pnp)
 
 Seznam zařízení, která jsou v Azure Certified for IoT, získáte na webu:
@@ -287,6 +286,7 @@ Seznam zařízení, která jsou v Azure Certified for IoT, získáte na webu:
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak odeslat telemetrii ze zařízení do cloudu a druhý postup, najdete v těchto tématech:
+
 
 > [!div class="nextstepaction"]
 > [Odeslání telemetrie ze zařízení](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)

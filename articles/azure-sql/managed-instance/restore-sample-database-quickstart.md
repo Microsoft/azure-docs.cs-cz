@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: ed34f1ea4f4c6355b1cd55558afb322698569865
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283169"
+ms.locfileid: "91355529"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Rychlý Start: obnovení databáze do spravované instance Azure SQL pomocí SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,7 +76,7 @@ V SQL Server Management Studio postupujte podle těchto kroků a obnovte databá
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![Obnovení](./media/restore-sample-database-quickstart/restore.png)
+    ![Snímek obrazovky zobrazuje skript běžící v Průzkumník objektů se zprávou o úspěchu.](./media/restore-sample-database-quickstart/restore.png)
 
 6. Spuštěním následujícího skriptu Sledujte stav obnovení.
 

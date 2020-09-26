@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358912"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 Tento kurz použije Azure CLI k nasazení prostředků v Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -223,7 +223,7 @@ Po dokončení příkazu byste měli získat následující výsledky:
     - `<resourceGroupName>`
     - `<VM-basename>`
     - `<availabilitySetName>`
-    - `<VM-Size>`-Příkladem může být "Standard_D16_v3"
+    - `<VM-Size>` -Příkladem může být "Standard_D16_v3"
     - `<username>`
     - `<adminPassword>`
 
@@ -485,7 +485,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
 ### <a name="register-a-new-application-in-azure-active-directory"></a>Registrace nové aplikace v Azure Active Directory
  
  1. Přejděte na https://portal.azure.com.
- 2. Otevřete okno [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Přejděte na vlastnosti a zapište ID adresáře. Toto je`tenant ID`
+ 2. Otevřete okno [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Přejděte na vlastnosti a zapište ID adresáře. Toto je `tenant ID`
  3. Klikněte na [ **Registrace aplikací**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Klikněte na **Nová registrace** .
  5. Zadejte **název** , jako `<resourceGroupName>-app` je, vyberte **účty pouze v tomto adresáři organizace**
@@ -570,7 +570,7 @@ Přiřaďte vlastní roli `Linux Fence Agent Role-<username>` vytvořenou v posl
 4. Klikněte na **řízení přístupu (IAM)** .
 5. Klikněte na **Přidat přiřazení role** .
 6. Vyberte roli `Linux Fence Agent Role-<username>` ze seznamu **rolí** .
-7. V seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše.`<resourceGroupName>-app`
+7. V seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše. `<resourceGroupName>-app`
 8. Klikněte na **Uložit**.
 9. Opakujte výše uvedené kroky pro uzel všechny uzly clusteru.
 
@@ -908,7 +908,7 @@ V části všechny SQL Server instance uložte přihlašovací údaje používan
 
 1. Až budou sekundární repliky připojené, můžete je zobrazit v SSMS Průzkumník objektů rozbalením uzlu **vždy na vysokou dostupnost** :
 
-    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![Snímek obrazovky se zobrazí v primárních a sekundárních replikách dostupnosti.](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>Přidání databáze do skupiny dostupnosti
 

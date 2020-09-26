@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286543"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD do SAP SuccessFactors
 Cílem tohoto kurzu je Ukázat kroky pro atributy zpětného zápisu z Azure AD do SAP SuccessFactors Employee Central. 
@@ -125,68 +125,97 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 
 ## <a name="preparing-for-successfactors-writeback"></a>Příprava pro zpětný zápis SuccessFactors
 
-Aplikace pro zřizování zpětného zápisu SuccessFactors používá určité hodnoty *kódu* pro nastavení e-mailů a telefonních čísel v centru zaměstnanců. Tyto hodnoty *kódu* jsou nastaveny jako konstantní hodnoty v tabulce mapování atributů a jsou pro každou instanci SuccessFactors odlišné. V této části se používá [post](https://www.postman.com/downloads/) k načtení hodnot kódu. K posílání požadavků HTTP můžete použít [oblé](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) nebo jakýkoli jiný podobný nástroj. 
+Aplikace pro zřizování zpětného zápisu SuccessFactors používá určité hodnoty *kódu* pro nastavení e-mailů a telefonních čísel v centru zaměstnanců. Tyto hodnoty *kódu* jsou nastaveny jako konstantní hodnoty v tabulce mapování atributů a jsou pro každou instanci SuccessFactors odlišné. Tato část popisuje kroky pro zachycení těchto hodnot *kódu* .
 
-### <a name="download-and-configure-postman-with-your-successfactors-tenant"></a>Stažení a konfigurace příspěvku s vaším tenant SuccessFactors
+   > [!NOTE]
+   > Abyste mohli dokončit kroky v této části, uveďte prosím svého správce SuccessFactors. 
 
-1. Stáhnout [příspěvek](https://www.postman.com/downloads/)
-1. V aplikaci pro vystavení vytvořte novou kolekci. Zavolejte ho "SuccessFactors". 
+### <a name="identify-email-and-phone-number-picklist-names"></a>Identifikace názvů rozevíracích seznamů E-mail a telefonní číslo 
+
+V SAP SuccessFactors je *rozevírací seznam* konfigurovatelnou sadou možností, ze kterých může uživatel provést výběr. Různé typy e-mailu a telefonního čísla (např. obchodní, osobní, jiné) jsou zastoupeny pomocí rozevíracího seznamu. V tomto kroku určíme rozevírací seznamy nakonfigurované v tenantovi SuccessFactors, aby se ukládaly hodnoty e-mailu a telefonního čísla. 
+ 
+1. V centru pro správu SuccessFactors vyhledejte *spravovat konfiguraci firmy*. 
 
    > [!div class="mx-imgBorder"]
-   > ![Nová kolekce po](./media/sap-successfactors-inbound-provisioning/new-postman-collection.png)
+   > ![Správa firemní konfigurace](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. Na kartě autorizace zadejte přihlašovací údaje uživatele rozhraní API nakonfigurovaného v předchozí části. Nakonfigurujte typ jako "základní ověřování". 
+1. V části **HRIS elementy**vyberte **emailInfo** a klikněte na *Podrobnosti* pole **typ e-mailu** .
 
    > [!div class="mx-imgBorder"]
-   > ![Autorizace po autorizaci](./media/sap-successfactors-inbound-provisioning/postman-authorization.png)
+   > ![Získat informace o e-mailu](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. Konfiguraci uložte. 
+1. Na stránce Podrobnosti o **typu e-mailu** si poznamenejte název rozevíracího seznamu přidruženého k tomuto poli. Ve výchozím nastavení se jedná o **ecEmailType**. Ve vašem tenantovi se ale může lišit. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Identifikace rozevíracího seznamu e-mailů](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
+
+1. V části **HRIS elementy**vyberte **phoneInfo** a klikněte na *Podrobnosti* pro pole **typ telefonu** .
+
+   > [!div class="mx-imgBorder"]
+   > ![Získat informace o telefonu](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
+
+1. Na stránce Podrobnosti o **typu telefonu** si poznamenejte název rozevíracího seznamu přidruženého k tomuto poli. Ve výchozím nastavení se jedná o **ecPhoneType**. Ve vašem tenantovi se ale může lišit. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Identifikace rozevíracího seznamu telefonu](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>Načíst konstantní hodnotu pro emailType
 
-1. V poli pro odeslání klikněte na tlačítko se třemi tečkami (...) spojené s kolekcí SuccessFactors a přidejte "nový požadavek" nazvaný "získat e-mailové typy", jak je znázorněno níže. 
+1. V centru pro správu SuccessFactors vyhledejte a otevřete *centrum rozevíracího seznamu*. 
+1. Pomocí rozevíracího seznamu e-mailu zaznamenaného v předchozí části (např. ecEmailType) Najděte rozevírací seznam e-mailů. 
 
    > [!div class="mx-imgBorder"]
-   > ![Žádost o odeslání e-mailu ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![Najít typ e-mailu – rozevírací seznam](./media/sap-successfactors-inbound-provisioning/find-email-type-picklist.png)
 
-1. Otevřete panel žádosti "získat typ e-mailu". 
-1. Do pole získat adresu URL přidejte následující adresu URL, která nahrazuje `successFactorsAPITenantName` tenanta rozhraní API vaší instance SuccessFactors. 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecEmailType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. Otevřete rozevírací seznam aktivní e-mail. 
 
    > [!div class="mx-imgBorder"]
-   > ![Typ e-mailu po odeslání](./media/sap-successfactors-inbound-provisioning/postman-get-email-type.png)
+   > ![Otevřít rozevírací seznam pro typ aktivního e-mailu](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. Karta autorizace zdědí ověřování nakonfigurované pro kolekci. 
-1. Pro vyvolání volání rozhraní API klikněte na Odeslat. 
-1. V těle odpovědi si prohlédněte sadu výsledků JSON a vyhledejte ID odpovídající `externalCode = B` . 
+1. Na stránce rozevírací seznam typu e-mailu vyberte typ *firemního* e-mailu.
 
    > [!div class="mx-imgBorder"]
-   > ![Odpověď typu poštovního e-mailu](./media/sap-successfactors-inbound-provisioning/postman-email-type-response.png)
+   > ![Vybrat typ firemního e-mailu](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. Poznamenejte si tuto hodnotu jako konstantu pro použití s *emailType* v tabulce mapování atributů.
+1. Poznamenejte si **ID možnosti** přidružené k *obchodnímu* e-mailu. Toto je kód, který budeme používat s *emailType* v tabulce mapování atributů.
+
+   > [!div class="mx-imgBorder"]
+   > ![Získat kód typu e-mailu](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
+
+   > [!NOTE]
+   > Při kopírování na hodnotu vyřaďte znak čárky. Například pokud je hodnota **ID možnosti** *8 448*, nastavte *emailType* ve službě Azure AD na konstantní číslo *8448* (bez znaku čárky). 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>Načíst konstantní hodnotu pro phoneType
 
-1. V poli pro odeslání klikněte na tlačítko se třemi tečkami (...) spojené s kolekcí SuccessFactors a přidejte "nový požadavek" nazvaný "získat telefonní typy", jak je znázorněno níže. 
+1. V centru pro správu SuccessFactors vyhledejte a otevřete *centrum rozevíracího seznamu*. 
+1. Pro vyhledání rozevíracího seznamu telefonů použijte název telefonního seznamu zaznamenaného v předchozí části. 
 
    > [!div class="mx-imgBorder"]
-   > ![Žádost o telefon po telefonu](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
+   > ![Najít typ telefonu – rozevírací seznam](./media/sap-successfactors-inbound-provisioning/find-phone-type-picklist.png)
 
-1. Otevřete panel žádosti "získat typ telefonu". 
-1. Do pole získat adresu URL přidejte následující adresu URL, která nahrazuje `successFactorsAPITenantName` tenanta rozhraní API vaší instance SuccessFactors. 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecPhoneType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. Otevřete rozevírací seznam aktivní telefon. 
 
    > [!div class="mx-imgBorder"]
-   > ![Typ pro telefon Get](./media/sap-successfactors-inbound-provisioning/postman-get-phone-type.png)
+   > ![Otevřít rozevírací seznam pro typ aktivního telefonu](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. Karta autorizace zdědí ověřování nakonfigurované pro kolekci. 
-1. Pro vyvolání volání rozhraní API klikněte na Odeslat. 
-1. V těle odpovědi si prohlédněte sadu výsledků JSON a vyhledejte *ID* odpovídající `externalCode = B` a `externalCode = C` . 
+1. Na stránce rozevírací seznam typu telefon Zkontrolujte různé typy telefonů uvedené v části **hodnoty rozevíracího seznamu**.
 
    > [!div class="mx-imgBorder"]
-   > ![Po telefonu](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
+   > ![Kontrola typů telefonů](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. Poznamenejte si tyto hodnoty jako konstanty pro použití s *businessPhoneType* a *cellPhoneType* v tabulce mapování atributů.
+1. Poznamenejte si **ID možnosti** přidružené k *pracovnímu* telefonu. Toto je kód, který budeme používat s *businessPhoneType* v tabulce mapování atributů.
+
+   > [!div class="mx-imgBorder"]
+   > ![Získat kód pro telefon do zaměstnání](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
+
+1. Poznamenejte si **ID možnosti** přidružené k *mobilnímu* telefonu. Toto je kód, který budeme používat s *cellPhoneType* v tabulce mapování atributů.
+
+   > [!div class="mx-imgBorder"]
+   > ![Získat kód mobilního telefonu](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
+
+   > [!NOTE]
+   > Při kopírování na hodnotu vyřaďte znak čárky. Například pokud je hodnota **ID možnosti** *10 606*, nastavte *cellPhoneType* ve službě Azure AD na konstantní číslo *10606* (bez znaku čárky). 
+
 
 ## <a name="configuring-successfactors-writeback-app"></a>Konfigurace aplikace pro zpětný zápis SuccessFactors
 
@@ -313,7 +342,7 @@ Přečtěte si [část scénáře zpětného zápisu](../app-provisioning/sap-su
 ## <a name="next-steps"></a>Další kroky
 
 * [Referenční informace o integraci podrobně do Azure AD a SAP SuccessFactors](../app-provisioning/sap-successfactors-integration-reference.md)
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi SuccessFactors a Azure Active Directory](successfactors-tutorial.md)
 * [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Naučte se exportovat a importovat vaše konfigurace zřizování.](../app-provisioning/export-import-provisioning-configuration.md)

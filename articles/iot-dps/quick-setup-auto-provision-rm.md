@@ -1,5 +1,5 @@
 ---
-title: Nastavení IoT Hub Device Provisioning Azure pomocí šablony Azure Resource Manager
+title: Rychlý Start – Nastavení IoT Hub Device Provisioning Azure pomocí šablony Azure Resource Manager
 description: Rychlý Start Azure – nastavení služby Azure IoT Hub Device Provisioning Service (DPS) pomocí šablony
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74969577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297143"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service pomocí šablony Azure Resource Manager
 
@@ -272,7 +272,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
 
    ```
 
-4. Do části s parametry přidejte hodnotu **hubLocation** (umístění centra). Tato hodnota určuje umístění centra IoT i služby zřizování. Hodnota musí odpovídat jednomu z umístění zadaných v kolekci **allowedValues** (povolené hodnoty) v definici parametru v souboru šablony. Tato kolekce omezuje hodnoty na umístění Azure, které podporují centra IoT i služby zřizování. Seznam podporovaných umístění pro službu Device Provisioning můžete spustit příkazem `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table`nebo přejít na stránku [stavu Azure](https://azure.microsoft.com/status/) a vyhledat službu Device Provisioning.
+4. Do části s parametry přidejte hodnotu **hubLocation** (umístění centra). Tato hodnota určuje umístění centra IoT i služby zřizování. Hodnota musí odpovídat jednomu z umístění zadaných v kolekci **allowedValues** (povolené hodnoty) v definici parametru v souboru šablony. Tato kolekce omezuje hodnoty na umístění Azure, které podporují centra IoT i služby zřizování. Seznam podporovaných umístění pro službu Device Provisioning můžete spustit příkazem `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo přejít na stránku [stavu Azure](https://azure.microsoft.com/status/) a vyhledat službu Device Provisioning.
 
    ```json
     "parameters": {
@@ -300,7 +300,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
 
 Pomocí následujících příkazů Azure CLI nasaďte své šablony a ověřte nasazení.
 
-1. Chcete-li nasadit šablonu, přejděte do složky, která obsahuje soubory šablony a parametrů, a spuštěním následujícího [příkazu spusťte nasazení](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
+1. Chcete-li nasadit šablonu, přejděte do složky, která obsahuje soubory šablony a parametrů, a spuštěním následujícího [příkazu spusťte nasazení](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true):
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -311,7 +311,7 @@ Pomocí následujících příkazů Azure CLI nasaďte své šablony a ověřte 
    ![Výstup zřizování](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. Pokud chcete nasazení ověřit, spusťte následující [příkaz pro výpis prostředků](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) a ve výstupu vyhledejte novou službu zřizování a centrum IoT:
+2. Pokud chcete nasazení ověřit, spusťte následující [příkaz pro výpis prostředků](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true) a ve výstupu vyhledejte novou službu zřizování a centrum IoT:
 
     ```azurecli
      az resource list -g {your resource group name}
