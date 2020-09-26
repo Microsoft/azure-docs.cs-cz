@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316150"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Řešení potíží s mapováním toků dat v Azure Data Factory
 
@@ -116,7 +116,7 @@ Spouštíte-li tok dat při spuštění testu ladění z běhu ladicího kanálu
 
 - **Zpráva**: existuje velký počet hodnot null nebo chybějící hodnoty, které mohou být způsobeny příliš malým počtem řádků vzorků. Zkuste aktualizovat limit řádků ladění a aktualizovat data.
 - **Příčiny**: podmínka spojení se neshoduje s žádnými řádky nebo způsobila vysoký počet hodnot null během období náhledu dat.
-- **Doporučení**: Přejít na nastavení ladění a zvýšit počet řádků v limitu zdrojového řádku. Ujistěte se, že máte vybrat a Azure IR s velkým dostatečným clusterem toku dat pro zpracování více dat.
+- **Doporučení**: Přejít na nastavení ladění a zvýšit počet řádků v limitu zdrojového řádku. Ujistěte se, že jste vybrali Azure IR s velkým dostatečným clusterem toku dat pro zpracování více dat.
 
 
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží

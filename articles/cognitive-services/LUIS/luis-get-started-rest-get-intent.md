@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: použití kudrlinkou a REST k získání záměru – LUIS'
 titleSuffix: Azure Cognitive Services
-description: V tomto REST API rychlého startu pomocí dostupné veřejné aplikace LUIS určete záměr uživatele z konverzačního textu.
+description: V tomto rychlém startu REST API použijte oblé a REST k určení záměru uživatele z konverzačního textu.
 services: cognitive-services
 author: nitinme
 manager: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
 ms.author: nitinme
-ms.openlocfilehash: 8ab76bcdfc62ed0af52e6c99ef6c7b14ebeef25f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a8cbfa307f14a6660dcace3315384bc523ad888
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497858"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316252"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>Rychlý Start: použití oblé a REST k získání záměru
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak pomocí aplikace v LUIS určit záměr 
 
 [Referenční dokumentace](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Bezplatný účet [Luis](https://www.luis.ai) .
 * Textový editor, jako je například [Visual Studio Code](https://code.visualstudio.com/).
@@ -81,7 +81,7 @@ Použijte kudrlinkou k dotazování [koncového bodu předpovědi](https://aka.m
 
     |Informace|Účel|
     |--|--|
-    |`***YOUR-PREDICTION-ENDPOINT***`| Koncový bod adresy URL předpovědi Nachází se na portálu LUIS, stránce prostředků Azure pro vaši aplikaci.<br>Například `https://westus.api.cognitive.microsoft.com/`.|
+    |`***YOUR-PREDICTION-ENDPOINT***`| Koncový bod adresy URL předpovědi Nachází se na portálu LUIS, stránce prostředků Azure pro vaši aplikaci.<br>Například, `https://westus.api.cognitive.microsoft.com/`.|
     |`***YOUR-APP-ID***`|Vaše ID aplikace Nachází se na portálu LUIS, na stránce nastavení aplikace pro vaši aplikaci.
     |`***YOUR-PREDICTION-KEY***`|Klíč předpovědi znaků 32. Nachází se na portálu LUIS, stránce prostředků Azure pro vaši aplikaci.
 

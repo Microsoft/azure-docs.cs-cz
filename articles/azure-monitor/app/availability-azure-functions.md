@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7c7aba1c1f091efa0ddd4417ef0a03f3f4ca4d36
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361003"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 
@@ -32,7 +32,7 @@ Tento článek popisuje, jak vytvořit funkci Azure pomocí TrackAvailability ()
 
             ![Výběr existujícího prostředku Application Insights](media/availability-azure-functions/app-insights-resource.png)
 
-        - Vybrat **kontrolu + vytvořit**
+        - Vyberte **Zkontrolovat a vytvořit**.
 - Pokud ještě nemáte vytvořený prostředek Application Insights pro funkci aktivovanou časovačem:
     - Když vytváříte aplikaci Azure Functions, vytvoří se ve výchozím nastavení pro vás prostředek Application Insights.
     - Postupujte podle pokynů v tématu Jak [vytvořit prostředek Azure functions a funkci aktivovanou časovačem](../../azure-functions/functions-create-scheduled-function.md) (před čištěním zastavit).
@@ -183,7 +183,7 @@ Pomocí protokolů (Analytics) můžete zobrazit výsledky, závislosti a dalš�
 >![Výsledky dostupnosti](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
->![Závislosti](media/availability-azure-functions/dependencies.png)
+>![Snímek obrazovky se zobrazí nová karta dotaz se závislostmi omezenými na 50.](media/availability-azure-functions/dependencies.png)
 
 ## <a name="next-steps"></a>Další kroky
 

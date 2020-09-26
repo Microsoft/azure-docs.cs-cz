@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361572"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Kurz: Konfigurace zvýšení oprávnění LinkedInu pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat postup, který je potřeba provést v povýšení
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenanta Azure Active Directory.
 * Tenant zvýšení oprávnění LinkedInu
@@ -70,12 +70,12 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
     > [!NOTE]
     > Pokud není povoleno automatické přiřazování licencí, znamená to, že budou synchronizována pouze uživatelská data.
 
-    ![Zřizování zvýšení úrovně LinkedInu](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
+    ![Snímek obrazovky ukazuje globální nastavení centra účtů LinkedIn.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
     > [!NOTE]
     > Pokud je povoleno přiřazení autolicense, je nutné poznamenat instanci aplikace a typ licence. Licence se přiřazují k prvnímu, prvnímu a zajišťují, aby se všechny licence vycházely.
 
-    ![Zřizování zvýšení úrovně LinkedInu](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+    ![Snímek obrazovky se zobrazí stránka Instalace S C I M.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
 5. Klikněte na **vygenerovat token**. V poli **přístupový token** byste měli vidět zobrazení přístupového tokenu.
 
@@ -87,9 +87,9 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 9. Vyberte svou instanci zvýšení oprávnění LinkedInu a pak vyberte kartu **zřizování** .
 
-10. Nastavte **režim zřizování** na **automaticky**.
+10. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Zřizování zvýšení úrovně LinkedInu](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
+    ![Snímek obrazovky se stránkou zřizování pro stránku LinkedIn úrovně.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
 11. Do následujících polí zadejte v části **přihlašovací údaje správce** :
 
@@ -103,9 +103,9 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 13. Klikněte na **Uložit**.
 
-14. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se budou synchronizovat z Azure AD až po zvýšení úrovně LinkedInu. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů a skupin ve službě LinkedIn se zvýšením oprávnění pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+14. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se budou synchronizovat z Azure AD až po zvýšení úrovně LinkedInu. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů a skupin ve službě LinkedIn se zvýšením oprávnění pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
-    ![Zřizování zvýšení úrovně LinkedInu](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
+    ![Snímek obrazovky ukazuje mapování, včetně mapování atributů.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
 15. Pokud chcete povolit službu zřizování Azure AD pro zvýšení oprávnění LinkedInu, změňte **stav zřizování** na **zapnuto** v oddílu **Nastavení** .
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369905"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se přechodu z portál partnerů cloudu do partnerského centra
 
@@ -28,7 +28,7 @@ Můžete pokračovat v podnikání v partnerském centru:
 | Nabídka prostředí pro publikování a poskytování nabídek | Přesunuli jsme vaše data nabídky z portál partnerů cloudu do partnerského centra. Teď budete mít přístup k Vašim nabídkám v partnerském centru, které nabízí vylepšené uživatelské prostředí a intuitivní rozhraní. Přečtěte si, jak [aktualizovat existující nabídku na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md). |
 | Dostupnost nabídek na komerčním webu Marketplace | Žádné změny. Pokud je vaše nabídka živá na komerčním webu Marketplace, bude i nadále živá. |
 | Nové nákupy a nasazení | Žádné změny. Vaši zákazníci můžou dál kupovat a nasazovat vaše nabídky bez přerušení. |
-| Výplaty | Jakékoli nákupy a nasazení budou nadále platit jako normální. Přečtěte si další informace o tom, jak [se na komerčním webu Marketplace hradí](partner-center-portal/get-paid.md). |
+| Výplaty | Jakékoli nákupy a nasazení budou nadále platit jako normální. Přečtěte si další informace o tom, jak [se na komerčním webu Marketplace hradí](/partner-center/marketplace-get-paid?context=/azure/marketplace/context/context). |
 | Integrace rozhraní API se stávajícími [rozhraními api portál partnerů cloudu](cloud-partner-portal-api-overview.md) | Existující rozhraní API portál partnerů cloudu jsou stále podporována a stávající integrace stále fungují. Další informace najdete na stránce [portál partnerů cloudu rozhraní REST API se podporují?](#are-the-cloud-partner-portal-rest-apis-still-supported) |
 | Analýzy | Zobrazením analýz v partnerském centru můžete dál monitorovat prodej, hodnotit výkon a optimalizovat vaše nabídky na komerčním webu Marketplace. Existují rozdíly mezi způsoby zobrazení analytických sestav v CPP a partnerském centru. Například **prodávající Insights** v CPP obsahuje **objednávky & karta použití** , která zobrazuje data pro nabídky založené na využití a nabídky bez použití, zatímco v partnerském centru stránka **objednávky** obsahuje samostatnou kartu pro nabídky SaaS. Další informace najdete v [části přístup k analytickým sestavám pro komerční tržiště v partnerském centru](partner-center-portal/analytics.md). |
 |||
@@ -162,7 +162,9 @@ Informace, které jste dříve zadali pro SKU na jedné stránce portál partner
 - Stránka nastavení plánu
 - Stránka se seznamem plánů
 - Stránka dostupnosti plánu
-- Stránku naplánovat technickou konfiguraci, jak je znázorněno zde: ![ ! [ Snímek obrazovky se stránkou technické konfigurace partnerského centra.] (Media/cpp-PC-časté otázky/technical-configuration.png) zobrazuje stránku technická konfigurace partnerského centra.](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- Stránku naplánovat technickou konfiguraci, jak je znázorněno zde:
+
+![! [Snímek obrazovky se zobrazí stránka technická konfigurace partnerského centra.] (Media/cpp-PC-časté otázky/technical-configuration.png) zobrazuje stránku technická konfigurace partnerského centra.](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 ID vaší nabídky se teď zobrazuje na levém navigačním panelu nabídky:
 

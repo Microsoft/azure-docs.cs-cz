@@ -2,14 +2,14 @@
 title: Volba velikostí virtuálních počítačů pro fondy
 description: Jak vybrat z dostupných velikostí virtuálních počítačů pro výpočetní uzly ve fondech Azure Batch
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271303"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -37,11 +37,11 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | Dv3, Dsv3 | Všechny velikosti |
 | Dav4<sup>1</sup> | Všechny velikosti |
 | Dasv4<sup>1</sup> | Všechny velikosti |
-| Ddv4, Ddsv4 |  Žádný – zatím není k dispozici |
-| Ev3, Esv3 | Všechny velikosti kromě E64is_v3 a E64i_v3 |
+| Ddv4, Ddsv4 |  Všechny velikosti |
+| Ev3, Esv3 | Všechny velikosti kromě E64is_v3 |
 | Eav4<sup>1</sup> | Všechny velikosti |
 | Easv4<sup>1</sup> | Všechny velikosti |
-| Edv4, Edsv4 |  Žádný – zatím není k dispozici |
+| Edv4, Edsv4 |  Všechny velikosti |
 | F, FS | Všechny velikosti |
 | Fsv2 | Všechny velikosti |
 | G, GS | Všechny velikosti |
@@ -52,7 +52,7 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | Ls | Všechny velikosti |
 | Lsv2<sup>1</sup> | Všechny velikosti |
 | M<sup>1</sup> | Všechny velikosti |
-| Mv2 | Žádný – zatím není k dispozici |
+| Mv2<sup>1, 2</sup> | Všechny velikosti |
 | NC | Všechny velikosti |
 | NCv2<sup>1</sup> | Všechny velikosti |
 | NCv3<sup>1</sup> | Všechny velikosti |
@@ -60,10 +60,15 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | NDv2<sup>1</sup> | Žádný – zatím není k dispozici |
 | NV | Všechny velikosti |
 | NVv3<sup>1</sup> | Všechny velikosti |
-| NVv4 | Žádné |
+| NVv4 | Žádný – zatím není k dispozici |
 | SAP HANA | Žádné |
 
-<sup>1</sup> tyto velikosti virtuálních počítačů je možné přidělit ve fondech Batch v konfiguraci virtuálního počítače, musíte ale vytvořit nový účet Batch a požádat o konkrétní [zvýšení kvóty](batch-quota-limit.md#increase-a-quota). Toto omezení se odebere, až se vCPU kvóta pro každou řadu virtuálních počítačů plně podporuje pro účty Batch.
+<sup>1</sup> tyto řady virtuálních počítačů je možné přidělit ve fondech Batch v konfiguraci virtuálního počítače, musíte ale vytvořit nový účet Batch a požádat o konkrétní [zvýšení kvóty](batch-quota-limit.md#increase-a-quota). Toto omezení se odebere, až se vCPU kvóta pro každou řadu virtuálních počítačů plně podporuje pro účty Batch.
+
+<sup>2</sup> tyto řady virtuálních počítačů se dají používat jenom s IMAGEMI virtuálních počítačů 2. generace.
+
+### <a name="using-generation-2-vm-images"></a>Používání imagí virtuálních počítačů 2. generace
+Některé řady virtuálních počítačů, například [Mv2](../virtual-machines/mv2-series.md), se dají použít jenom s [imagemi virtuálního počítače 2. generace](../virtual-machines/generation-2.md). Image virtuálních počítačů 2. generace se zadává jako jakákoli image virtuálního počítače pomocí vlastnosti SKU konfigurace [element imagereference](/rest/api/batchservice/pool/add#imagereference) ; řetězce SKU mají příponu, jako je například "-G2" nebo "-Gen2". Pokud chcete získat seznam imagí virtuálních počítačů, které služba Batch podporuje, včetně imagí generace 2, použijte [možnost seznam podporovaných imagí](/rest/api/batchservice/account/listsupportedimages) API, [PowerShellu](/powershell/module/az.batch/get-azbatchsupportedimage)nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/batch/pool/supported-images).
 
 ### <a name="pools-in-cloud-service-configuration"></a>Fondy v konfiguraci cloudové služby
 

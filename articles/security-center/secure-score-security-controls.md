@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905568"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268260"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Bezpečné skóre v Azure Security Center
 
@@ -179,7 +179,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
     <td class="tg-lboi"; width=55%>- Auditování na SQL serveru by mělo být povolené.<br>- Měly by být povolené diagnostické protokoly v App Services.<br>- Měly by být povolené diagnostické protokoly v Azure Data Lake Store.<br>- Měly by být povolené diagnostické protokoly v Azure Stream Analytics.<br>- V účtech Batch by měly být povolené diagnostické protokoly.<br>- Měly by být povolené diagnostické protokoly v Data Lake Analytics.<br>- Měly by být povolené diagnostické protokoly v centru událostí.<br>- Měly by být povolené diagnostické protokoly v IoT Hub.<br>- Měly by být povolené diagnostické protokoly v Key Vault.<br>- Měly by být povolené diagnostické protokoly v Logic Apps.<br>- Diagnostické protokoly ve službě Search Service by se měly povolit.<br>- Měly by být povolené diagnostické protokoly v Service Bus.<br>- Měly by být povolené diagnostické protokoly v Virtual Machine Scale Sets.<br>- Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.<br>- Nastavení auditování SQL by mělo mít akce – skupiny konfigurované pro zachycení kritických aktivit.<br>- SQL servery by měly být nakonfigurované s uchováním dat po dobu delší než 90 dní.</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Povolit rozšířenou ochranu před internetovými útoky (max. skóre 0)</p></strong>Ochrana před hrozbami Azure Security Center poskytuje komplexní ochranu vašeho prostředí. Pokud Security Center zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci.<br>Každý svazek ochrany před hrozbami je samostatnou volitelnou nabídkou, kterou můžete povolit pomocí relevantního doporučení v tomto řízení zabezpečení.<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Přečtěte si další informace o ochraně před hrozbami v Security Center</a>.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Povolit rozšířenou ochranu před internetovými útoky (max. skóre 0)</p></strong>Azure Security Center volitelné plány ochrany před internetovými útoky v programu Azure Defender poskytují komplexní ochranu vašeho prostředí. Pokud Security Center zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci.<br>Každý plán Azure Defender je samostatnou volitelnou nabídkou, kterou můžete povolit pomocí relevantního doporučení v tomto řízení zabezpečení.<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Přečtěte si další informace o ochraně před hrozbami v Security Center</a>.</td>
     <td class="tg-lboi"; width=55%>- V Azure SQL Databasech serverech by mělo být povolené rozšířené zabezpečení dat.<br>- Rozšířené zabezpečení dat by mělo být povoleno na serverech SQL na počítačích<br>- V Virtual Machines by měla být povolena rozšířená ochrana před internetovými útoky.<br>- V plánech Azure App Service by měla být povolena rozšířená ochrana před internetovými útoky.<br>- Pro účty Azure Storage by měla být povolena rozšířená ochrana před internetovými útoky.<br>- V clusterech služby Azure Kubernetes by měla být povolena rozšířená ochrana před internetovými útoky.<br>- V Azure Container Registry Registry by měla být povolena rozšířená ochrana před internetovými útoky.<br>- V trezorech Azure Key Vault by měla být povolena rozšířená ochrana před internetovými útoky.</td>
   </tr>
   <tr>
@@ -197,14 +197,8 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
 
 ## <a name="secure-score-faq"></a>Nejčastější dotazy k zabezpečení skóre
 
-### <a name="why-has-my-secure-score-gone-down"></a>Proč je moje zabezpečené skóre pryč?
-Security Center přešly do zvýšeného zabezpečeného skóre, které zahrnuje změny ve způsobu výpočtu skóre. Nyní je třeba vyřešit všechna doporučení pro určitý prostředek, aby bylo možné body přijímat. Skóre se také změní na škálu 0-10.
-
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Pokud v ovládacím prvku zabezpečení řeším jenom tři doporučení ze čtyř, bude se můj bezpečnostní skóre měnit?
 No. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. Chcete-li získat maximální skóre pro ovládací prvek, je nutné opravit všechna doporučení pro všechny prostředky.
-
-### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>Je stále k dispozici předchozí prostředí zabezpečeného skóre? 
-No. V době, kdy se nacházely souběžně, aby se přechod usnadnil. Předchozí model je nyní zastaralý. 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Pokud doporučení neplatí pro mě a je v zásadách zakázané, bude řízení zabezpečení splněné a mé zabezpečené skóre se aktualizovalo?
 Ano. Doporučujeme zakázat doporučení, pokud jsou ve vašem prostředí nepoužitá. Pokyny, jak zakázat konkrétní doporučení, najdete v tématu [zakázání zásad zabezpečení](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies).

@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb558d967ad657d14158684fba92b13979ea5fe2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71200160"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281584"
 ---
 # <a name="opc-vault-architecture"></a>Architektura úložiště OPC
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Tento článek poskytuje přehled o mikroslužbě trezoru OPC a modulu OPC pro trezor IoT Edge.
 

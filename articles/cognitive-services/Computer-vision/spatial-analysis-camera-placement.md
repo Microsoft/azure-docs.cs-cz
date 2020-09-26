@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 00bca2d0c7e267bef8cd4a917463c5e7db159792
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935111"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304286"
 ---
 # <a name="camera-placement-guide"></a>Průvodce umístěním kamery
 
@@ -56,7 +56,7 @@ Obvykle by fotoaparáty měly být připojeny 12-14 metrů od země. Při pláno
 
 ## <a name="camera-to-focal-point-distance"></a>Vzdálenost mezi fotoaparátem a ohniskem
 
-_Vzdálenost mezi fotoaparátem a ohniskem_ je lineární vzdálenost od ohniskového bodu (nebo středového ohniska bodu zájmu) do kamery.
+_Vzdálenost mezi fotoaparátem a ohniskem_ je lineární vzdálenost od ohniska (nebo středu obrazu kamery) k fotoaparátu měřené na zemi.
 
 ![Kamera na ohnisko – vzdálenost](./media/spatial-analysis/camera-focal-point.png)
 

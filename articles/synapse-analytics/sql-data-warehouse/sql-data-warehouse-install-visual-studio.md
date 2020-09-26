@@ -12,12 +12,12 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e18a3628a2fbb9eee248851f2295000fd1f82532
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 073efd41c754b0d28e0bdab712f692f100d3316e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027286"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289510"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Začínáme se sadou Visual Studio 2019
 
@@ -40,7 +40,7 @@ V některých případech se může stát, že vydání funkcí pro synapse SQL 
 
 
 - [Správa úloh](sql-data-warehouse-workload-management.md) – skupiny úloh a třídění
-- [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (včetně funkcí s hodnotou tabulky)
   - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) .
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
    - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) .

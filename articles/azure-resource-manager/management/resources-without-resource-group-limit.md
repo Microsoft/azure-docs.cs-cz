@@ -2,13 +2,13 @@
 title: Prostředky bez omezení počtu 800
 description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 6f7b45ec3691bc3a48d9aa3dfa072c1c68189007
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/21/2020
+ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330753"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -16,12 +16,15 @@ Ve výchozím nastavení můžete do každé skupiny prostředků nasadit až 80
 
 U některých typů prostředků musíte kontaktovat podporu, aby byl limit instance 800 odebraný. Tyto typy prostředků jsou uvedeny v tomto článku.
 
+
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 * automationAccounts
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
+* edgeSubscriptions
+* linkedSubscriptions
 * rozpoznávání
 * registrace/customerSubscriptions
 * registrace/produkty
@@ -38,6 +41,7 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * Galerie/image/verze
 * images
 * snímky
+* virtualMachineScaleSets – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
@@ -55,24 +59,29 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * Registry/úlohy
 * Registry a Webhooky
 
+## <a name="microsoftd365customerinsights"></a>Microsoft. D365CustomerInsights
+
+* instance
+
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
 * servery
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
+* flexibleServers
 * servery
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
+* flexibleServers
 * serverGroups
 * servery
 * serversv2
-* singleServers
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
-* plány – ve výchozím nastavení omezeny na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
+* časových
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
@@ -104,6 +113,10 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * integrationAccounts
 * Zpracovávaný
+
+## <a name="microsoftmedia"></a>Microsoft. Media
+
+* MediaServices/liveEvents
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 

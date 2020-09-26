@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268223"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370173"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -184,7 +184,7 @@ Zařízení připojená k Azure AD nepodporují místní aplikace, které se spo
 
 Připojení ke vzdálené ploše k zařízením připojeným k Azure AD vyžaduje, aby byl hostitelský počítač buď připojený k Azure AD, nebo připojený k hybridní službě Azure AD. Vzdálená plocha z nepřipojeného zařízení nebo jiného zařízení než Windows není podporovaná. Další informace najdete v tématu [připojení ke vzdálenému počítači připojenému k Azure AD](/windows/client-management/connect-to-remote-aadj-pc) .
 
-Když se spouští aktualizace Windows 10 2004, uživatelé můžou ALO použít vzdálenou plochu ze zařízení s Windows 10 registrovaných v Azure AD na zařízení připojené k Azure AD. 
+Když se spouští aktualizace Windows 10 2004, můžou uživatelé použít taky vzdálenou plochu ze zařízení s Windows 10 registrovaných v Azure AD na zařízení připojené k Azure AD. 
 
 ## <a name="understand-your-provisioning-options"></a>Informace o možnostech zřizování
 
@@ -198,11 +198,11 @@ Toto je srovnání těchto tří přístupů.
  
 | Prvek | Instalace samoobslužných služeb | Windows Autopilot | Hromadná registrace |
 | --- | --- | --- | --- |
-| Vyžadovat nastavení interakce s uživatelem | Ano | Ano | Ne |
-| Vyžadovat úsilí IT | Ne | Ano | Ano |
+| Vyžadovat nastavení interakce s uživatelem | Yes | Yes | No |
+| Vyžadovat úsilí IT | No | Yes | Ano |
 | Použitelné postupy | Nastavení & OOBE | Jen prostředí prvního spuštění počítače | Jen prostředí prvního spuštění počítače |
 | Práva místního správce udělená primárnímu uživateli | Ano, ve výchozím nastavení | Konfigurovatelné | Ne |
-| Vyžadovat podporu OEM zařízení | Ne | Ano | Ne |
+| Vyžadovat podporu OEM zařízení | No | Yes | No |
 | Podporované verze | 1511 + | 1709 + | 1703 + |
  
 Vyberte si v tabulce výše svůj přístup k nasazení nebo přístupy a Projděte si následující skutečnosti, které vám pomají při přijímání obou přístupů:  

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74976736"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315996"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Kurz: zřízení zařízení napříč centrem IoT s vyrovnáváním zatížení
 
@@ -67,8 +67,6 @@ Propojte službu Device Provisioning a centrum IoT, aby služba Device Provision
 4. Na stránce **Přidat propojení s centrem IoT** pomocí přepínačů určete, jestli je propojené centrum IoT umístěné v aktuálním předplatném nebo v jiném předplatném. Pak v poli **Centrum IoT** zvolte název centra IoT.
 5. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
-
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
@@ -76,6 +74,8 @@ V tomto kurzu jste se naučili:
 > * Přidat položku seznamu registrací do druhého zařízení
 > * Nastavit zásady přidělování služby Device Provisioning na **rovnoměrnou distribuci**
 > * Propojit nové centrum IoT se službou Device Provisioning
+
+## <a name="next-steps"></a>Další kroky
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

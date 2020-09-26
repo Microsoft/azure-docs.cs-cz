@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361380"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
@@ -41,11 +41,11 @@ Vyvážení zátěže přesunutím virtuálních počítačů mezi dvěma proces
 2. Klikněte na konfigurační server, se kterým jsou zaregistrované procesní servery.
 3. Klikněte na procesový Server, pro který chcete vyrovnávat zatížení provozu.
 
-    ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![Snímek obrazovky ukazuje procesový Server, pro který můžete vyrovnávat zatížení provozu.](media/vmware-azure-manage-process-server/LoadBalance.png)
 
 4. Klikněte na **Vyrovnávání zatížení**, vyberte cílový procesový Server, na který chcete přesunout počítače. Pak klikněte na **OK** .
 
-    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+    ![Snímek obrazovky zobrazuje podokno vyrovnávání zatížení s vybraným cílovým procesovým serverem.](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. Klikněte na **Vybrat počítače**a vyberte počítače, které chcete přesunout z aktuálního na cílový procesový Server. Pro každý virtuální počítač se zobrazí podrobnosti o průměrné změně dat. Pak klikněte na **OK**. 
 3. V trezoru Sledujte průběh úlohy pod **sledováním**  >  **Site Recovery úloh**.
@@ -61,7 +61,7 @@ Přesuňte celé zatížení zpracovávané procesovým serverem na jiný proces
 3. Klikněte na procesový Server, ze kterého chcete úlohu přepnout.
 4. Klikněte na **přepínač**, vyberte cílový procesový Server, na který chcete přesunout úlohu. Pak klikněte na **OK** .
 
-    ![Přepínač](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![Snímek obrazovky se zobrazí v podokně vybrat cílový proces serveru.](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. V trezoru Sledujte průběh úlohy pod **sledováním**  >  **Site Recovery úloh**.
 

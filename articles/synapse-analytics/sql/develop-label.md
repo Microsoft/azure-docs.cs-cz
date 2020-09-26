@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 596b18332fc490f72ad185699fc59bf4521eca69
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289068"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Použití popisků dotazů v synapse SQL
 V tomto článku jsou uvedené základní tipy pro používání popisků dotazů v synapse SQL.
@@ -34,7 +34,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Poslední řádek Taguje řetězec "jmenovka dotazu" do dotazu. Tato značka je zvláště užitečná, protože popisek je schopný dotazovat se prostřednictvím zobrazení dynamické správy. Dotazování na popisky poskytuje mechanismus pro vyhledání problematických dotazů a pomůže vám identifikovat průběh prostřednictvím ELT spuštění.
+Poslední řádek Taguje řetězec "jmenovka dotazu" do dotazu. Tato značka je užitečná, protože popisek je schopný dotazovat se prostřednictvím zobrazení dynamické správy. Dotazování na popisky poskytuje mechanismus pro vyhledání problematických dotazů a pomůže vám identifikovat průběh prostřednictvím ELT spuštění.
 
 Dobrá konvence pojmenování je nejužitečnější. Například spuštění popisku pomocí projektu, procedury, příkazu nebo komentáře jednoznačně identifikuje dotaz ze všech kódů ve správě zdrojového kódu.
 

@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 08/12/2020
+ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317306"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -174,7 +174,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
-Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Například:
+Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Příklad:
 
 ```csharp
 IFeatureManager featureManager;
@@ -230,6 +230,12 @@ public IActionResult Index()
 Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, `IDisabledFeaturesHandler` zavolá se registrované rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
 
 ## <a name="mvc-views"></a>Zobrazení MVC
+
+Otevřete *_ViewImports. cshtml* v adresáři *zobrazení* a přidejte pomocníka značek správce funkcí:
+
+```html
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+```
 
 V zobrazeních MVC můžete použít `<feature>` značku k vykreslení obsahu na základě toho, zda je povolen příznak funkce:
 

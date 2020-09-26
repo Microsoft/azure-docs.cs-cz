@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 88e69ac4156bb2bdfb217a4fc83ac2d798d08211
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/24/2020
+ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987899"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330946"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor pro sítě (Preview)
 Azure Monitor pro síť poskytuje komplexní přehled o [stavu](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) a [metrikách](../platform/metrics-supported.md) pro všechny nasazené síťové prostředky bez jakékoli konfigurace.  Poskytuje taky přístup ke všem funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-preview.md), [protokolování toků pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), [Analýza provozu](../../network-watcher/traffic-analytics.md)a další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
@@ -47,7 +47,7 @@ Kliknutím na nedostupná připojení ER a VPN se spustí zobrazení metriky.
 
 V zobrazení mřížky můžete kliknout na jednotlivé prvky. Kliknutím na ikonu stav můžete přesměrovat na stav prostředků pro toto připojení. Klikněte na výstrahy a přesměrujte na stránku výstrahy a metriky pro toto připojení. 
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 Mřížka **výstrahy** na pravé straně poskytuje zobrazení všech výstrah vygenerovaných pro vybrané prostředky ve všech předplatných. Klikněte na tlačítko počty výstrah a přejděte na stránku podrobné výstrahy.
 
 ### <a name="dependency-view"></a>Zobrazení závislostí

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266645"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -53,12 +53,12 @@ Každá aplikace vyžaduje pro vytvoření uživatele nebo skupiny jiné atribut
 | Krok 1: určení atributů, které vaše aplikace vyžaduje| Krok 2: mapování požadavků aplikace na SCIM Standard| Krok 3: mapování atributů SCIM na atributy služby Azure AD|
 |--|--|--|
 |loginName|userName|userPrincipalName (Hlavní název uživatele)|
-|firstName|název. křestní jméno|givenName|
+|firstName|name.givenName|givenName|
 |lastName|Name. lastName|lastName|
 |workMail|E-maily [typ EQ "Work"]. Value|Poštovní|
 |manager|manager|manager|
 |značka|urn: IETF: params: SCIM: schémata: rozšíření: 2.0: CustomExtension: tag|extensionAttribute1|
-|status|aktivně|isSoftDeleted (vypočtená hodnota neuložená na uživateli)|
+|status|active|isSoftDeleted (vypočtená hodnota neuložená na uživateli)|
 
 Výše definované schéma by představovalo použití datové části JSON níže. Všimněte si, že kromě atributů vyžadovaných pro aplikaci, reprezentace JSON zahrnuje povinné `id` `externalId` atributy, a `meta` .
 
@@ -94,23 +94,23 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 
 | Azure Active Directory uživatel | "urn: IETF: param: SCIM: schemas: rozšíření: Enterprise: 2.0: User" |
 | --- | --- |
-| IsSoftDeleted |aktivně |
+| IsSoftDeleted |active |
 |Oddělení|urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|
 | displayName |displayName |
 |Zaměstnance|urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|
 | Faxu – TelephoneNumber |phoneNumbers [typ EQ "fax"]. hodnota |
-| givenName |název. křestní jméno |
+| givenName |name.givenName |
 | jobTitle |title |
-| pošta |e-maily [typ EQ "Work"]. Value |
+| pošta |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager |
-| mobil |phoneNumbers [Type EQ "mobilní"]. Value |
+| mobil |phoneNumbers[type eq "mobile"].value |
 | Ovládacím |adresy [typ EQ "Work"]. postalCode |
 | proxy – adresy |e-maily [Type EQ "other"]. Osa |
 | fyzické doručování – Office |adresy [Type EQ "other"]. Formátu |
 | streetAddress |adresy [Type EQ "]. streetAddress |
-| surname |název. rodina |
-| telefonní číslo |phoneNumbers [typ EQ "Work"]. Value |
+| surname |name.familyName |
+| telefonní číslo |phoneNumbers[type eq "work"].value |
 | uživatel – hlavní |userName |
 
 
@@ -119,7 +119,7 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | Skupina Azure Active Directory | urn: IETF: parametry: SCIM: schemas: Core: 2.0: Group |
 | --- | --- |
 | displayName |displayName |
-| pošta |e-maily [typ EQ "Work"]. Value |
+| pošta |emails[type eq "work"].value |
 | mailNickname |displayName |
 | členy |členy |
 | Objektu |externalId |
@@ -226,7 +226,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-user"></a>Vytvořit uživatele
 
-###### <a name="request"></a>Žádost
+###### <a name="request"></a>Požadavek
 
 *PO/Users*
 ```json
@@ -284,7 +284,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user"></a>Získání uživatele
 
-###### <a name="request"></a><a name="request-1"></a>Žádost
+###### <a name="request"></a><a name="request-1"></a>Požadavek
 *ZÍSKAT/Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response-user-found"></a><a name="response-1"></a>Odpověď (uživatel se našla)
@@ -314,7 +314,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-###### <a name="request"></a>Žádost
+###### <a name="request"></a>Požadavek
 *ZÍSKAT/Users/5171a35d82074e068ce2* 
 
 ###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>Odpověď (uživatel nebyl nalezen. Všimněte si, že podrobnosti nejsou požadovány, pouze stav.)
@@ -331,7 +331,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user-by-query"></a>Získat uživatele podle dotazu
 
-##### <a name="request"></a><a name="request-2"></a>Žádost
+##### <a name="request"></a><a name="request-2"></a>Požadavek
 
 *ZÍSKAT/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
@@ -372,7 +372,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user-by-query---zero-results"></a>Získat uživatele podle dotazů – žádné výsledky
 
-##### <a name="request"></a><a name="request-3"></a>Žádost
+##### <a name="request"></a><a name="request-3"></a>Požadavek
 
 *ZÍSKAT/Users? Filter = userName EQ "neexistující uživatel"*
 
@@ -392,7 +392,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-user-multi-valued-properties"></a>Aktualizace uživatele [vlastnosti s více hodnotami]
 
-##### <a name="request"></a><a name="request-4"></a>Žádost
+##### <a name="request"></a><a name="request-4"></a>Požadavek
 
 *Oprava/Users/6764549bef60420686bc HTTP/1.1*
 ```json
@@ -443,7 +443,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-user-single-valued-properties"></a>Aktualizace uživatele [vlastnosti s jednou hodnotou]
 
-##### <a name="request"></a><a name="request-5"></a>Žádost
+##### <a name="request"></a><a name="request-5"></a>Požadavek
 
 *Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -488,7 +488,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ### <a name="disable-user"></a>Zakázání uživatele
 
-##### <a name="request"></a><a name="request-14"></a>Žádost
+##### <a name="request"></a><a name="request-14"></a>Požadavek
 
 *Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -542,7 +542,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 ```
 #### <a name="delete-user"></a>Odstranění uživatele
 
-##### <a name="request"></a><a name="request-6"></a>Žádost
+##### <a name="request"></a><a name="request-6"></a>Požadavek
 
 *Odstranit/Users/5171a35d82074e068ce2 HTTP/1.1*
 
@@ -559,7 +559,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-group"></a>Vytvoření skupiny
 
-##### <a name="request"></a><a name="request-7"></a>Žádost
+##### <a name="request"></a><a name="request-7"></a>Požadavek
 
 *POST/Groups HTTP/1.1*
 ```json
@@ -594,7 +594,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-group"></a>Získání skupiny
 
-##### <a name="request"></a><a name="request-8"></a>Žádost
+##### <a name="request"></a><a name="request-8"></a>Požadavek
 
 *ZÍSKAT/Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1*
 
@@ -616,7 +616,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-group-by-displayname"></a>Získat Group by DisplayName
 
-##### <a name="request"></a><a name="request-9"></a>Žádost
+##### <a name="request"></a><a name="request-9"></a>Požadavek
 *GET/Groups? excludedAttributes = Members&Filter = DisplayName EQ "DisplayName" HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-9"></a>Základě
@@ -645,7 +645,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-group-non-member-attributes"></a>Aktualizovat skupinu [atributy nečlenské]
 
-##### <a name="request"></a><a name="request-10"></a>Žádost
+##### <a name="request"></a><a name="request-10"></a>Požadavek
 
 *Oprava/Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
@@ -665,7 +665,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ### <a name="update-group-add-members"></a>Aktualizace skupiny [přidat členy]
 
-##### <a name="request"></a><a name="request-11"></a>Žádost
+##### <a name="request"></a><a name="request-11"></a>Požadavek
 
 *Oprava/Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -688,7 +688,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-group-remove-members"></a>Skupina aktualizací [odebrat členy]
 
-##### <a name="request"></a><a name="request-12"></a>Žádost
+##### <a name="request"></a><a name="request-12"></a>Požadavek
 
 *Oprava/Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -711,7 +711,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="delete-group"></a>Odstranění skupiny
 
-##### <a name="request"></a><a name="request-13"></a>Žádost
+##### <a name="request"></a><a name="request-13"></a>Požadavek
 
 *Odstranit/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
@@ -1193,7 +1193,7 @@ Specifikace SCIM nedefinuje schéma specifické pro SCIM pro ověřování a aut
 |--|--|--|--|
 |Uživatelské jméno a heslo (nedoporučuje se ani nepodporuje služba Azure AD)|Snadná implementace|Nezabezpečené – [vaše PA $ $Word nezáleží](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Podporuje se pro aplikace v galerii případ od případu. Nepodporuje se pro aplikace mimo galerii.|
 |Dlouhý nosný token|Dlouhodobé tokeny nevyžadují, aby uživatel byl přítomen. Správci se můžou při nastavování zřizování snadno použít.|Dlouhotrvající tokeny může být obtížné sdílet se správcem bez použití nezabezpečených metod, jako je e-mailová adresa. |Podporováno pro galerie a aplikace mimo galerii. |
-|Udělení autorizačního kódu OAuth|Přístupové tokeny jsou mnohem kratší než hesla a mají mechanismus automatizovaného obnovení, který nemá dlouhodobé tokeny pro nosiče.  Skutečný uživatel musí být přítomen při počáteční autorizaci a přidává úroveň zodpovědnosti. |Vyžaduje, aby byl uživatel přítomen. Pokud uživatel odejde z organizace, token je neplatný a autorizaci bude nutné dokončit znovu.|Podporováno pro aplikace v galerii, ale ne aplikace bez galerie. Podpora pro jiné než Galerie je v našich nevyřízených položkách.|
+|Udělení autorizačního kódu OAuth|Přístupové tokeny jsou mnohem kratší než hesla a mají mechanismus automatizovaného obnovení, který nemá dlouhodobé tokeny pro nosiče.  Skutečný uživatel musí být přítomen při počáteční autorizaci a přidává úroveň zodpovědnosti. |Vyžaduje, aby byl uživatel přítomen. Pokud uživatel odejde z organizace, token je neplatný a autorizaci bude nutné dokončit znovu.|Podporováno pro aplikace v galerii, ale ne aplikace bez galerie. Pro účely krátkodobého testování ale můžete v uživatelském rozhraní zadat přístupový token jako tajný token. Podpora pro udělení kódu OAuth v jiné než galerii je v našich nevyřízených položkách.|
 |Udělení přihlašovacích údajů klienta OAuth|Přístupové tokeny jsou mnohem kratší než hesla a mají mechanismus automatizovaného obnovení, který nemá dlouhodobé tokeny pro nosiče. Udělení autorizačního kódu i udělení přihlašovacích údajů klienta vytvoří stejný typ přístupového tokenu, takže přesun mezi těmito metodami je pro rozhraní API transparentní.  Zřizování se dá kompletně automatizovat a nové tokeny se můžou bez zásahu uživatele považovat za tichou. ||Nepodporuje se pro galerie a aplikace mimo galerii. Podpora je v našich nevyřízených položkách.|
 
 > [!NOTE]
@@ -1210,6 +1210,17 @@ Upozorňujeme, že OAuth v1 není podporován kvůli expozici tajného klíče k
 Osvědčené postupy (doporučeno, ale není nutné):
 * Podporuje více adres URL pro přesměrování. Správci mohou nakonfigurovat zřizování z obou "portal.azure.com" i "aad.portal.azure.com". Podpora více adres URL pro přesměrování zajistí, že uživatelé budou moct autorizovat přístup z obou portálu.
 * Podpora více tajných kódů, aby bylo zajištěno hladké obnovení tajných kódů bez výpadků. 
+
+Postup v toku udělení kódu OAuth:
+1. Uživatel se přihlásí do Azure Portal > podnikové aplikace > vyberte > zřizování aplikace > klikněte na autorizovat.
+2. Azure Portal přesměruje uživatele na adresu URL autorizace (přihlašovací stránka pro aplikaci třetí strany).
+3. Správce poskytuje přihlašovací údaje k aplikaci třetí strany. 
+4. Aplikace třetí strany přesměruje uživatele zpět na Azure Portal a poskytuje kód pro udělení. 
+5. Služba zřizování Azure AD volá adresu URL tokenu a poskytuje kód pro udělení. Aplikace třetí strany reaguje na přístupový token, obnovovací token a datum vypršení platnosti.
+6. Po zahájení cyklu zřizování služba zkontroluje, jestli je aktuální přístupový token platný, a v případě potřeby ho vymění pro nový token. Přístupový token je k dispozici v každém požadavku na aplikaci a platnost žádosti je kontrolována před každou žádostí.
+
+> [!NOTE]
+> I když v současné době není možné nastavovat OAuth na aplikaci mimo galerii, můžete ručně vygenerovat přístupový token z autorizačního serveru a zadat ho do pole tajný token aplikace mimo galerii. To vám umožní ověřit kompatibilitu serveru SCIM s klientem Azure AD SCIM před zprovozněním do Galerie aplikací, která podporuje udělení kódu OAuth.  
 
 **Dlouhodobé tokeny Bearer OAuth:** Pokud vaše aplikace nepodporuje tok udělení autorizačního kódu OAuth, můžete také vygenerovat dlouhodobé tokeny Bearer OAuth, než může správce použít k nastavení integrace zřizování. Token by měl být trvalý nebo jinak bude úloha zřizování v [karanténě](application-provisioning-quarantine-status.md) , až vyprší platnost tokenu. Hodnota tohoto tokenu musí být nižší než 1 KB.  
 

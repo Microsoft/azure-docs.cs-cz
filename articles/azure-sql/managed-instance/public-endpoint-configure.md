@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 498d00b4f6a0ca16d07663641a46f30109b39d5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a9bf3fbf28d8ac525f2937812742e850a5427cc9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325058"
+ms.locfileid: "91360816"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Vzhledem k citlivosti dat, která jsou ve spravované instanci, je konfigurace p
 1. V nastavení **zabezpečení** vyberte kartu **virtuální síť** .
 1. Na stránce konfigurace virtuální sítě vyberte **Povolit** a potom kliknutím na ikonu **Uložit** aktualizujte konfiguraci.
 
-![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
+![Snímek obrazovky ukazuje stránku virtuální sítě spravované instance SQL s povoleným veřejným koncovým bodem.](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Povolení veřejného koncového bodu pro spravovanou instanci pomocí prostředí PowerShell
 
@@ -84,11 +84,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Pokud je stránka konfigurace spravované instance stále otevřená, přejděte na kartu **Přehled** . V opačném případě se vraťte k prostředku **spravované instance SQL** . Vyberte odkaz **virtuální síť/podsíť** , který vás přesměruje na stránku konfigurace virtuální sítě.
 
-    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
+    ![Snímek obrazovky se zobrazí stránka konfigurace virtuální sítě, kde můžete najít hodnotu virtuální síť nebo podsíť.](./media/public-endpoint-configure/mi-overview.png)
 
 1. Vyberte kartu **podsítě** v levém podokně Konfigurace vaší virtuální sítě a poznamenejte si **skupinu zabezpečení** pro spravovanou instanci.
 
-    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![Snímek obrazovky zobrazující kartu podsíť, kde můžete získat skupinu zabezpečení pro spravovanou instanci.](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Vraťte se do skupiny prostředků, která obsahuje vaši spravovanou instanci. Měl by se zobrazit název **skupiny zabezpečení sítě** , který jste si poznamenali výše. Vyberte název, který chcete přejít na stránku konfigurace skupiny zabezpečení sítě.
 
@@ -104,7 +104,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Akce**     |Povolit         |Povolit příchozí provoz do spravované instance prostřednictvím veřejného koncového bodu |
     |**Priorita**     |1300         |Ujistěte se, že toto pravidlo má vyšší prioritu než pravidlo **deny_all_inbound** . |
 
-    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![Snímek obrazovky zobrazuje pravidla zabezpečení příchozí s novým pravidlem public_endpoint_inbound nad pravidlo deny_all_inbound.](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > Port 3342 se používá pro připojení veřejného koncového bodu ke spravované instanci a v tomto okamžiku jej nelze změnit.
@@ -114,7 +114,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Přejděte na stránku konfigurace spravované instance, která je povolená pro veřejný koncový bod. V části konfigurace **Nastavení** vyberte kartu **připojovací řetězce** .
 1. Všimněte si, že název hostitele veřejného koncového bodu se nachází ve formátu <mi_name>. **Public**. <dns_zone>. Database.Windows.NET a port používaný pro připojení je 3342.
 
-    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![Snímek obrazovky zobrazuje připojovací řetězce pro veřejné a privátní koncové body.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Další kroky
 

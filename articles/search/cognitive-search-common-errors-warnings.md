@@ -7,13 +7,13 @@ author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/23/2020
+ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362810"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -35,7 +35,7 @@ Počínaje verzí rozhraní API `2019-05-06` jsou chyby a upozornění indexerů
 | Vlastnost | Popis | Příklad |
 | --- | --- | --- |
 | key | ID dokumentu dokumentu ovlivněného chybou nebo upozorněním. | https: \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| name | Název operace popisující, kde došlo k chybě nebo upozornění. Tato struktura je generována následující strukturou: [Category]. [Subcategory]. [ResourceType]. resourceName | DocumentExtraction. azureblobu. myBlobContainerName obohacení. WebApiSkill. mySkillName projekce. SearchIndex. OutputFieldMapping. myOutputFieldName projekce. SearchIndex. MergeOrUpload. myIndexName projekce. KnowledgeStore. Table. myTableName |
+| jméno | Název operace popisující, kde došlo k chybě nebo upozornění. Tato struktura je generována následující strukturou: [Category]. [Subcategory]. [ResourceType]. resourceName | DocumentExtraction. azureblobu. myBlobContainerName obohacení. WebApiSkill. mySkillName projekce. SearchIndex. OutputFieldMapping. myOutputFieldName projekce. SearchIndex. MergeOrUpload. myIndexName projekce. KnowledgeStore. Table. myTableName |
 | zpráva | Popis chyby nebo varování na nejvyšší úrovni. | Nelze provést dovednost, protože požadavek webového rozhraní API se nezdařil. |
 | zobrazí | Jakékoli další podrobnosti, které mohou být užitečné při diagnostice problému, jako je například odpověď WebApi při provádění vlastní dovednosti, se nezdařila. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 zdroj, Func `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... zbytek trasování zásobníku... |
 | documentationLink | Odkaz na příslušnou dokumentaci s podrobnými informacemi pro ladění a vyřešení problému. Tento odkaz často odkazuje na jednu z níže uvedených částí na této stránce. | https://go.microsoft.com/fwlink/?linkid=2106475 |
@@ -59,9 +59,9 @@ Indexer se zdrojem dat objektu BLOB nemohl extrahovat obsah nebo metadata z doku
 
 | Důvod | Podrobnosti/příklad | Řešení |
 | --- | --- | --- |
-| objekt BLOB překračuje limit velikosti. | Dokument je v `'150441598'` bajtech, což překračuje maximální velikost `'134217728'` bajtů pro extrakci dokumentů pro aktuální úroveň služby. | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| objekt BLOB má nepodporovaný typ obsahu. | Dokument má nepodporovaný typ obsahu. `'image/png'` | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| objekt BLOB je zašifrovaný. | Dokument se nepovedlo zpracovat – může být zašifrovaný nebo chráněný heslem. | Objekt blob můžete přeskočit s [nastavením objektu BLOB](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed). |
+| objekt BLOB překračuje limit velikosti. | Dokument je v `'150441598'` bajtech, což překračuje maximální velikost `'134217728'` bajtů pro extrakci dokumentů pro aktuální úroveň služby. | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| objekt BLOB má nepodporovaný typ obsahu. | Dokument má nepodporovaný typ obsahu. `'image/png'` | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| objekt BLOB je zašifrovaný. | Dokument se nepovedlo zpracovat – může být zašifrovaný nebo chráněný heslem. | Objekt blob můžete přeskočit s [nastavením objektu BLOB](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex). |
 | přechodné problémy | "Při zpracování objektu BLOB došlo k chybě: požadavek byl zrušen: požadavek byl zrušen." "Při zpracování vypršel časový limit dokumentu." | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
 
 <a name="could-not-parse-document"></a>
@@ -175,7 +175,7 @@ Ve všech těchto případech odkazujete na [podporované typy dat](/rest/api/se
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Chyba: zásady integrovaného sledování změn nelze použít, protože tabulka má složený primární klíč.
 
-To platí pro tabulky SQL a obvykle se stane, když je klíč buď definovaný jako složený klíč, nebo, když tabulka definuje jedinečný clusterovaný index (jako v indexu SQL, nikoli Azure Search index). Hlavním důvodem je, že klíč atributu je upraven jako složený primární klíč v případě [jedinečného clusterovaného indexu](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). V takovém případě se ujistěte, že tabulka SQL neobsahuje jedinečný clusterovaný index nebo že pole klíče namapujete na pole, u kterého je zaručeno, že neobsahují duplicitní hodnoty.
+To platí pro tabulky SQL a obvykle se stane, když je klíč buď definovaný jako složený klíč, nebo, když tabulka definuje jedinečný clusterovaný index (jako v indexu SQL, nikoli Azure Search index). Hlavním důvodem je, že klíč atributu je upraven jako složený primární klíč v případě [jedinečného clusterovaného indexu](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described). V takovém případě se ujistěte, že tabulka SQL neobsahuje jedinečný clusterovaný index nebo že pole klíče namapujete na pole, u kterého je zaručeno, že neobsahují duplicitní hodnoty.
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 
