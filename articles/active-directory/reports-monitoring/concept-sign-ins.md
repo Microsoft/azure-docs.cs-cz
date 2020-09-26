@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603590"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361292"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -142,12 +142,12 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 ![Filtr klientských aplikací](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Moderní ověřování|Description|
+|Name|Moderní ověřování|Popis|
 |---|:-:|---|
 |Ověřený protokol SMTP| |Používá se pro odesílání e-mailových zpráv klientem POP a IMAP.|
 |Automatického| |Používá se klienty Outlook a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.|
 |Exchange ActiveSync| |Tento filtr zobrazuje všechny pokusy o přihlášení, kde došlo k pokusu o provedení protokolu EAS.|
-|Prohlížeč|![Značka zaškrtnutí](./media/concept-sign-ins/check.png)|Zobrazí všechny pokusy uživatelů o přihlášení pomocí webových prohlížečů.|
+|Prohlížeč|![Modré zaškrtnutí](./media/concept-sign-ins/check.png)|Zobrazí všechny pokusy uživatelů o přihlášení pomocí webových prohlížečů.|
 |Exchange ActiveSync| | Zobrazuje všechny pokusy o přihlášení od uživatelů s klientskými aplikacemi, které používají Exchange ActiveSync pro připojení k Exchangi Online.|
 |Prostředí PowerShell pro Exchange Online| |Slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Webové služby Exchange| |Programovací rozhraní, které používá aplikace Outlook, Outlook pro Mac a aplikace třetích stran.|
@@ -263,7 +263,7 @@ Grafy využití aplikace týdenní agregovaná přihlášení k vašim horním t
 
 Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
-![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Vytváření sestav")
+![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Přehledy")
 
 Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 

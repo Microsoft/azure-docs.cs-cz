@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 3f2dcefa8ed2f4b80ec66851cdc67ee2283a6ac7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362040"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Postup vytvoření aplikace Java, která používá Azure Cosmos DB SQL API a změna procesoru kanálu
 
@@ -54,7 +54,7 @@ Otevřete terminál v adresáři úložiště. Sestavte aplikaci spuštěním
 mvn clean package
 ```
 
-## <a name="walkthrough"></a>Názorný postup
+## <a name="walkthrough"></a>Návod
 
 1. Při první kontrole byste měli mít účet Azure Cosmos DB. Otevřete **Azure Portal** v prohlížeči, přejděte na účet Azure Cosmos DB a v levém podokně přejděte na **Průzkumník dat**.
 
@@ -75,7 +75,7 @@ mvn clean package
     pak se vraťte do Průzkumník dat Azure Portal v prohlížeči. Uvidíte, že se do databáze **GroceryStoreDatabase** přidalo tři prázdné kontejnery: 
 
     * **InventoryContainer** – záznam inventáře pro náš příklad PRODEJNOSTI, rozdělený na položku, ```id``` která je identifikátorem UUID.
-    * **InventoryContainer-pktype** – materializované zobrazení záznamu inventáře optimalizovaného pro dotazy nad položkou```type```
+    * **InventoryContainer-pktype** – materializované zobrazení záznamu inventáře optimalizovaného pro dotazy nad položkou ```type```
     * **InventoryContainer – zapůjčení** – kontejner zapůjčení je vždycky potřebný pro kanál změn; zapůjčení sleduje pokrok aplikace při čtení kanálu změn.
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Prázdné kontejnery":::
@@ -92,7 +92,7 @@ mvn clean package
 
     [!code-java[](~/azure-cosmos-java-sql-app-example/src/main/java/com/azure/cosmos/workedappexample/SampleGroceryStore.java?name=InitializeCFP)]
 
-    ```"SampleHost_1"```je název pracovníka procesoru změny kanálu. ```changeFeedProcessorInstance.start()```je to, co se ve skutečnosti spustí procesor Change feed.
+    ```"SampleHost_1"``` je název pracovníka procesoru změny kanálu. ```changeFeedProcessorInstance.start()``` je to, co se ve skutečnosti spustí procesor Change feed.
 
     Vraťte se do Průzkumník dat Azure Portal v prohlížeči. V kontejneru **InventoryContainer-Leases** klikněte na **položky** , abyste viděli jeho obsah. Uvidíte, že v procesoru pro změnu kanálu se naplní kontejner zapůjčení, tj. procesor přiřadil ```SampleHost_1``` pracovnímu procesu zapůjčení na některých oddílech **InventoryContainer**.
 
@@ -110,11 +110,11 @@ mvn clean package
 
 1. Nyní v Průzkumník dat přejděte na **položku > položky InventoryContainer-pktype**. Toto je materializované zobrazení – položky v tomto kontejneru zrcadlení **InventoryContainer** , protože byly vloženy programově pomocí změny kanálu. Poznamenejte si klíč oddílu ( ```type``` ). Toto materializované zobrazení je optimalizováno pro filtrování dotazů ```type``` , které by bylo pro **InventoryContainer** neefektivní, protože je rozdělené na oddíly ```id``` .
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Materializované zobrazení":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Snímek obrazovky ukazuje stránku Průzkumník dat pro účet Azure Cosmos D B s vybranými položkami.":::
 
 1. K odstranění dokumentu z obou **InventoryContainer** a **InventoryContainer-pktype** se používá pouze jedno ```upsertItem()``` volání. Nejprve se podíváme na Azure Portal Průzkumník dat. Odstraníme dokument, pro který ```/type == "plums"``` se encircled červeně.
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Materializované zobrazení":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Snímek obrazovky ukazuje stránku Průzkumník dat pro účet Azure Cosmos D B s vybranou konkrétní položkou D.":::
 
     Stiskněte znovu Enter pro volání funkce ```deleteDocument()``` v ukázkovém kódu. Tato funkce, která je zobrazena níže, upsertuje novou verzi dokumentu s hodnotou ```/ttl == 5``` , která nastaví hodnotu TTL (Time to Live) do 5sec. 
     

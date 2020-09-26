@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/30/2020
-ms.openlocfilehash: d2a00be4d08a7a2dfa8e11a22593d017d184a368
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4c2faa6f015a8c1ce8f360155abdc14367d3057b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330736"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatické ladění v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,7 +65,7 @@ K dispozici jsou možnosti automatického ladění Azure SQL Database a Azure SQ
 | :----------------------------- | ----- | ----- |
 | **Vytvořit index** – identifikuje indexy, které mohou zlepšit výkon úloh, vytváří indexy a automaticky ověřuje, zda se zvýšil výkon dotazů. | Yes | No |
 | **Drop index** – identifikuje redundantní a duplicitní indexy denně, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Yes | No |
-| **Vynutit poslední dobrý dobrý plán** (automatický opravný plán) – identifikuje dotazy Azure SQL pomocí plánu spuštění, který je pomalejší než předchozí plán, a dotazuje se pomocí posledního známého funkčního plánu místo navýšení plánu. | Ano | Ano |
+| **Vynutit poslední dobrý dobrý plán** (automatický opravný plán) – identifikuje dotazy Azure SQL pomocí plánu spuštění, který je pomalejší než předchozí plán, a dotazuje se pomocí posledního známého funkčního plánu místo navýšení plánu. | Yes | Yes |
 
 ### <a name="automatic-tuning-for-sql-database"></a>Automatické ladění pro SQL Database
 

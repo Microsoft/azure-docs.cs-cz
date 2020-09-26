@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5825c7d751781181794900cecab1487ed44a997f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361445"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Kurz: Monitorování aplikací Service Fabric pomocí ELK
 
@@ -142,7 +142,7 @@ Pro účely tohoto kurzu můžete použít předkonfigurované prostředí ELK. 
 
 8. Přístup k řídicímu panelu Kibana v **http: \/ /Server-IP** a zadejte uživatelské jméno a heslo pro Kibana. Pokud jste použili image ELK v Azure, výchozí uživatelské jméno je user a heslo je to, které jste získali v části **Diagnostika spouštění**.
 
-    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
+    ![Snímek obrazovky ukazuje řídicí panel Kibana, který vizualizuje protokoly platforem a aplikací.](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>Další kroky
 

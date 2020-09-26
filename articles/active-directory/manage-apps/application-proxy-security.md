@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362142"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Otázky zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure Proxy aplikací služby AD
 
@@ -83,7 +83,7 @@ Abychom vylepšili zabezpečení aplikací publikovaných v Azure Proxy aplikac�
 
 #### <a name="azure-ddos-protection-service"></a>Služba Azure DDoS Protection
 
-Aplikace publikované prostřednictvím proxy aplikací jsou chráněné před distribuovanými útoky s cílem odepření služeb (DDoS). **Azure DDoS Protection** je služba poskytovaná na platformě Azure, která chrání vaše prostředky Azure před útoky DoS (Denial of Service). Úroveň služeb **Basic** je automaticky povolená a zajišťuje nepřetržité monitorování provozu a zmírnění běžných útoků na úrovni sítě v reálném čase. K dispozici je také úroveň **Standard** , která nabízí další funkce pro zmírnění rizik, které jsou vyladěny konkrétně pro prostředky Azure Virtual Network. Podrobnosti najdete v tématu [Přehled služby Azure DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Aplikace publikované prostřednictvím proxy aplikací jsou chráněné před distribuovanými útoky s cílem odepření služeb (DDoS). **Azure DDoS Protection** je služba poskytovaná na platformě Azure, která chrání vaše prostředky Azure před útoky DoS (Denial of Service). Úroveň služeb **Basic** je automaticky povolená a zajišťuje nepřetržité monitorování provozu a zmírnění běžných útoků na úrovni sítě v reálném čase. Podrobnosti najdete v tématu [Přehled služby Azure DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
 ## <a name="under-the-hood"></a>Pod pokličkou
 

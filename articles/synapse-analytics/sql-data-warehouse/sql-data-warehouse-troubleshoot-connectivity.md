@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362176"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Řešení potíží s připojením v synapse fondu SQL
 
@@ -34,13 +34,14 @@ Tady se zobrazí stav vašeho fondu SQL. Pokud služba není zobrazená jako **d
 
 Pokud váš stav prostředku ukazuje, že vaše instance fondu SQL je pozastavená nebo má velikost, postupujte podle pokynů a obnovte svou instanci.
 
-![Služba pozastavila ](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Další informace o Resource Health najdete tady.
+![Snímek obrazovky ukazuje instanci služby SQL Data Warehouse, která je pozastavená nebo škálovatelná.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+Další informace o Resource Health najdete tady.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Zkontrolujte pozastavené operace nebo operace škálování
 
 Podívejte se na portál a zjistěte, jestli je vaše instance fondu SQL pozastavená nebo škálovatelná.
 
-![Služba byla pozastavena](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![Snímek obrazovky ukazuje, jak ověřit, zda je datový sklad pozastaven.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
 Pokud vidíte, že vaše služba je pozastavená nebo je škálovatelná, zkontrolujte, že se během plánu údržby nezobrazuje. Na portálu *přehledu*vašeho fondu SQL uvidíte vybraný plán údržby.
 

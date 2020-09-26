@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d6aad3107acbeaa76f1cf7e5d9c631a2a5aa8b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7879590424fa921425dcd077503733affeb634
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327816"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361743"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB synchronizaci Java SDK v2
 
@@ -65,14 +65,14 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
       DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
       ```
 
-      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="Obrázek zásad Azure Cosmos DBho připojení" border="false":::
+      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="Diagram znázorňuje zásady připojení Azure Cosmos D B." border="false":::
 
    <a id="same-region"></a>
 2. **Společné umístění klientů ve stejné oblasti Azure pro výkon**
 
     Pokud je to možné, umístěte všechny aplikace, které volají Azure Cosmos DB ve stejné oblasti jako databáze Azure Cosmos. V případě přibližného porovnání se volání Azure Cosmos DB v rámci stejné oblasti dokončí v 1-2 MS, ale latence mezi západním a východním pobřežím USA je >50 ms. Tato latence se může lišit od požadavku na vyžádání v závislosti na trasách, kterou požadavek prochází z klienta na hranici datacentra Azure. Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající aplikace nachází ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
-    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Obrázek zásad Azure Cosmos DBho připojení" border="false":::
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Diagram zobrazuje žádosti a odpovědi ve dvou oblastech, kde se počítače připojují k účtu Cosmos D B prostřednictvím služeb střední vrstvy." border="false":::
    
 ## <a name="sdk-usage"></a>Využití sady SDK
 1. **Nainstalovat nejnovější sadu SDK**

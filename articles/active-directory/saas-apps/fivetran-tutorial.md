@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 9cf8a76f74e6dda6ade98ea348f5401eab15c53e
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 9d6951456593c57f9def80990e582a5ff54cc5d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500839"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312558"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Fivetran
 
@@ -26,12 +26,12 @@ V tomto kurzu se dozvíte, jak integrovat Fivetran s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Fivetran svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Fivetran odběr s povoleným jednotným přihlašováním (SSO).
+* Účet Fivetran.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Fivetran několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | -------------- | --------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V části **Nastavení Fivetran** zkopírujte na základě vašeho požadavku příslušné adresy URL.
+1. V části **Nastavení Fivetran** zkopírujte **adresu URL pro přihlášení** a hodnoty **identifikátoru služby Azure AD** .
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -110,7 +110,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -126,7 +126,22 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-fivetran-sso"></a>Konfigurace jednotného přihlašování Fivetran
 
-Ke konfiguraci jednotného přihlašování na straně **Fivetran** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Fivetran](mailto:support@fivetran.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+V této části nakonfigurujete jednotné přihlašování na straně **Fivetran** .
+
+1. V jiném okně webového prohlížeče se přihlaste ke svému účtu Fivetran jako vlastník účtu.
+1. Vyberte šipku v levém horním rohu okna a v rozevíracím seznamu vyberte **Spravovat účet** .
+
+   ![Snímek obrazovky, který zobrazuje vybranou možnost nabídky Spravovat účet](media/fivetran-tutorial/fivetran-1.png)
+
+1. Přejít do části **Konfigurace SAML** stránky **Nastavení** .
+
+   ![Snímek obrazovky, který zobrazuje podokno konfigurace SAML s zvýrazněnými možnostmi konfigurace](media/fivetran-tutorial/fivetran-2.png)
+
+   1. Pro možnost **Povolit ověřování SAML**vyberte **zapnuto**.
+   1. Do pole **přihlašovací adresa URL**vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+   1. Ve **vystaviteli**vložte hodnotu **identifikátoru Azure AD**, který jste zkopírovali z Azure Portal.
+   1. Otevřete stažený soubor certifikátu v textovém editoru, zkopírujte certifikát do schránky a vložte ho do textového pole **veřejný certifikát** .
+   1. Vyberte **Uložit konfiguraci**.
 
 ### <a name="create-fivetran-test-user"></a>Vytvořit testovacího uživatele Fivetran
 

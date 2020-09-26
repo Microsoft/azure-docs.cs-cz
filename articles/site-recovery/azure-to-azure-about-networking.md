@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db4c3be7c79448e4cf0df39688959ae09a671dbd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527373"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361411"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -82,11 +82,11 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
 1. Vytvořte pravidlo zabezpečení odchozího HTTPS (443) pro Storage. EastUS na NSG, jak je znázorněno na snímku obrazovky níže.
 
-      ![úložiště – značka](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![Snímek obrazovky s informacemi o přidání odchozího pravidla zabezpečení pro skupinu zabezpečení sítě pro Storage s tečkou U S.](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. Vytvořte pravidlo zabezpečení odchozího HTTPS (443) pro "Azureactivedirectory selhala" na NSG, jak je znázorněno na snímku obrazovky níže.
 
-      ![AAD – značka](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![Snímek obrazovky ukazuje přidat odchozí pravidlo zabezpečení pro skupinu zabezpečení sítě pro Azure A D.](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. CentralUS" v NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
 

@@ -16,23 +16,23 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361326"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdílené složky v Azure
 
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 
 Clustering s podporou převzetí služeb při selhání ve Windows serveru je základem instalace ASCS/SCS SAP s vysokou dostupností a DBMS ve Windows.
 
 Cluster s podporou převzetí služeb při selhání je skupina s 1 + n nezávislými servery (uzly), které vzájemně spolupracují za účelem zvýšení dostupnosti aplikací a služeb. Pokud dojde k selhání uzlu, clustering s podporou převzetí služeb při selhání ve Windows serveru vypočítá počet selhání, ke kterým může dojít, a udržujte cluster v pořádku, aby poskytoval aplikace a služby. Pro zajištění clusteringu s podporou převzetí služeb při selhání můžete vybrat z různých režimů kvora.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete s úkoly popsanými v tomto článku, přečtěte si tento článek:
 
 * [Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver][sap-high-availability-architecture-scenarios]
@@ -137,7 +137,7 @@ Chcete-li použít sdílenou složku se škálováním na více systémů, musí
 * Pro dobrý výkon sítě mezi virtuálními počítači, který je potřeba pro Prostory úložiště s přímým přístupem synchronizaci disku, použijte typ virtuálního počítače, který má alespoň vysokou šířku pásma sítě.
     Další informace najdete v tématu Specifikace [DSv2-Series][dv2-series] a [DS-Series][ds-series] .
 * Doporučujeme, abyste si vyhradi nějakou nepřidělenou kapacitu ve fondu úložiště. Když ponecháte nějakou nepřidělenou kapacitu ve fondu úložiště, zajistíte místo na disku možnost opravit, pokud dojde k chybě jednotky. Tím se zlepší zabezpečení a výkon dat.  Další informace najdete v tématu [Volba velikosti svazku][choosing-the-size-of-volumes-s2d].
-* Nemusíte konfigurovat interní nástroj pro vyrovnávání zatížení Azure pro síťový název sdílené složky se škálováním na více instancí, například pro \<SAP global host\> . To se provádí pro \<ASCS/SCS virtual host name\> instanci SAP ASCS/SCS nebo pro DBMS. Sdílená složka se škálováním na více instancí škáluje zatížení na všech uzlech clusteru. \<SAP global host\>používá místní IP adresu pro všechny uzly clusteru.
+* Nemusíte konfigurovat interní nástroj pro vyrovnávání zatížení Azure pro síťový název sdílené složky se škálováním na více instancí, například pro \<SAP global host\> . To se provádí pro \<ASCS/SCS virtual host name\> instanci SAP ASCS/SCS nebo pro DBMS. Sdílená složka se škálováním na více instancí škáluje zatížení na všech uzlech clusteru. \<SAP global host\> používá místní IP adresu pro všechny uzly clusteru.
 
 
 > [!IMPORTANT]

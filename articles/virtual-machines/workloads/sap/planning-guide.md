@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3050d0c61b6278b32b8e9272f228a863c9a0a244
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361921"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -514,11 +514,11 @@ Microsoft Azure Virtual Machines využívá jiné typy úložišť. Při impleme
 Virtuální počítače Azure po nasazení virtuálního počítače nabízejí netrvalé disky. V případě restartování virtuálního počítače se vymaže veškerý obsah na těchto jednotkách. Proto je vzhledem k tomu, že datové soubory a soubory protokolů a opětovného provedení databáze by měly být v žádném případě umístěny na těchto netrvalých jednotkách. Existují výjimky pro některé databáze, kde tyto netrvalé jednotky můžou být vhodné pro databáze tempdb a dočasné tabulkové prostory. Ale nepoužívejte tyto jednotky pro virtuální počítače řady A-Series, protože tyto jednotky, které nejsou trvalé, jsou v rámci této rodiny virtuálních počítačů omezené v propustnosti. Další podrobnosti najdete v článku [Principy dočasné jednotky na virtuálních počítačích s Windows v Azure](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines) .
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > D:\ jednotky na virtuálním počítači Azure je netrvalá jednotka, na které se zálohují některé místní disky na výpočetním uzlu Azure. Protože není trvale trvalé, znamená to, že všechny změny provedené v obsahu D:\ Při restartu virtuálního počítače dojde ke ztrátě jednotky. Podle "jakýchkoli změn", jako jsou uložené soubory, adresáře vytvořené, nainstalované aplikace atd.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > Virtuální počítače se systémem Linux automaticky připojují jednotku na/mnt/Resource, která je netrvalou jednotkou zajištěnou místními disky na výpočetním uzlu Azure. Protože není trvale trvalé, znamená to, že všechny změny provedené v obsahu v/mnt/Resource budou při restartování virtuálního počítače ztraceny. O jakékoli změny, jako jsou uložené soubory, adresáře, které se nainstalují, aplikace atd.
 >
@@ -774,12 +774,12 @@ Další možností, které v této příručce nebudeme podrobně pojednávat, j
 V důsledku specifických požadavků na opravu vaší verze operačního systému nebo systému DBMS nemusí zadané obrázky v Azure Marketplace odpovídat vašim potřebám. Proto je možné, že budete muset vytvořit virtuální počítač s použitím vlastní image virtuálního počítače s operačním systémem nebo DBMS, která se dá nasadit několikrát později. K přípravě privátní image pro duplikaci je potřeba vzít v úvahu tyto položky:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Další podrobnosti najdete tady: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> nastavení systému Windows (jako je Windows SID a hostname) se musí na místním virtuálním počítači pomocí příkazu Sysprep abstrakcovat a zobecnit.
 >
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > Pomocí kroků popsaných v těchto článcích pro [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd]nebo [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle]Připravte virtuální pevný disk, který se nahraje do Azure.
 >
@@ -809,13 +809,13 @@ Požadavky při přípravě vlastního disku virtuálního počítače Azure jso
 * Přidejte další místní účty, které by mohly být potřeba pro konkrétní scénář nasazení.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > V tomto scénáři není k nahrání a nasazení virtuálního počítače v Azure nutný žádný generalizace (Sysprep) virtuálního počítače.
 > Ujistěte se, že jednotka D:\ se nepoužívá.
 > Pro připojené disky nastavte automount disku, jak je popsáno v kapitole [Nastavení automatického připojení pro připojené disky][planning-guide-5.5.3] v tomto dokumentu.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > V tomto scénáři není k nahrání a nasazení virtuálního počítače v Azure potřeba žádné generalizace (waagent-disvisioning) virtuálního počítače.
 > Ujistěte se, že se/mnt/Resource nepoužívá a že jsou všechny disky připojené přes UUID. V případě disku s operačním systémem se ujistěte, že položka zaváděcího programu pro spouštění odráží taky připojení na bázi identifikátoru UUID.
@@ -836,11 +836,11 @@ Požadavky při přípravě vlastní image virtuálního počítače Azure:
 * Pokud bitová kopie obsahuje instalaci SAP NetWeaver a přejmenování názvu hostitele z původního názvu v místě nasazení Azure je nejspíš, doporučujeme zkopírovat do šablony nejnovější verze disku DVD správce zřizování softwaru SAP. To vám umožní snadno použít funkci přejmenovávání SAP k přizpůsobení změněného názvu hostitele nebo změně identifikátoru SID systému SAP v nasazené imagi virtuálního počítače, jakmile se spustí nová kopie.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Ujistěte se, že jednotka D:\ nepoužívá se pro připojené disky nastavení automatického připojení disku, jak je popsáno v kapitole [Nastavení automatického připojení pro připojené disky][planning-guide-5.5.3] v tomto dokumentu.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > Ujistěte se, že se/mnt/Resource nepoužívá a že jsou všechny disky připojené přes UUID. Pro disk s operačním systémem se ujistěte, že položka zaváděcího programu pro spouštění odráží i připojení na základě identifikátoru UUID.
 >
@@ -854,13 +854,13 @@ Pokud je virtuální počítač dostatečně připravený, aby byl obecný a nak
 
 ##### <a name="generalizing-a-vm"></a>Generalizace virtuálního počítače
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Posledním krokem je přihlášení k virtuálnímu počítači pomocí účtu správce. Otevřete okno příkazového řádku systému Windows jako *správce*. Přejít na%windir%\Windows\System32\Sysprep a provést sysprep.exe.
 > Zobrazí se malé okno. Je důležité zaškrtnout možnost **generalizace** (výchozí nastavení je nezaškrtnuto) a změnit možnost vypnutí z výchozí hodnoty ' restartovat ' na ' vypínání '. Tento postup předpokládá, že se proces Sysprep v hostovaném operačním systému virtuálního počítače spustil místně.
 > Pokud chcete provést postup s virtuálním počítačem, který už běží v Azure, postupujte podle kroků popsaných v [tomto článku](../../windows/capture-image-resource.md).
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > [Jak zachytit virtuální počítač s Linuxem a použít ho jako šablonu Resource Manageru][capture-image-linux-step-2-create-vm-image]
 >
@@ -1123,13 +1123,13 @@ V ideálním případě by mělo být zpracování struktury virtuálního poč�
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Díky mnoha zákazníkům jsme viděli konfigurace, kde se například v c:\ nenainstalovaly binární soubory SAP a DBMS. jednotka, ve které byl operační systém nainstalován. K tomu došlo z různých důvodů, ale když jsme se vrátili do kořenového adresáře, obvykle se jednalo o malé a minimální upgrady operačního systému, které jsou potřeba ještě před 10-15 lety. Obě podmínky se již nevztahují na tyto dny příliš často. Dnešní c:\ jednotku je možné namapovat na velké disky svazků nebo virtuální počítače. Aby bylo nasazení v rámci své struktury jednoduché, doporučujeme postupovat podle následujícího vzoru nasazení pro systémy SAP NetWeaver v Azure.
 >
 > Stránkovací soubor operačního systému Windows by měl být na jednotce D: (netrvalý disk).
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > Swapfile pro Linux umístěte do/mnt/mnt/Resource v systému Linux, jak je popsáno v [tomto článku][virtual-machines-linux-agent-user-guide]. Odkládací soubor se dá nakonfigurovat v konfiguračním souboru/etc/waagent.conf. agenta pro Linux. Přidejte nebo změňte následující nastavení:
 >
@@ -1156,11 +1156,11 @@ Zkušenosti s nasazením SAP za poslední dva roky nám pomohou s některými le
 * Provoz IOPS do různých datových souborů není vždycky stejný, protože stávající systémy zákazníků můžou mít jinak velikost datových souborů, které představují jejich databáze SAP. V důsledku toho je lepší používat konfiguraci RAID přes více disků k umístění datových souborů LUN Carved z těch. Existují situace, zejména ve službě Azure Storage úrovně Standard, kde frekvence IOPS dosáhla kvóty jednoho disku proti transakčnímu protokolu DBMS. V takových scénářích se doporučuje použít Premium Storage nebo můžete agregovat více standardních disků úložiště pomocí softwarového proužku.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > * [Osvědčené postupy z hlediska výkonu pro SQL Server na Azure Virtual Machines][virtual-machines-sql-server-performance-best-practices]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > * [Konfigurace softwarového pole RAID v systému Linux][virtual-machines-linux-configure-raid]
 > * [Konfigurace LVM na virtuálním počítači se systémem Linux v Azure][virtual-machines-linux-configure-lvm]
@@ -1189,13 +1189,13 @@ V dalším kroku se musíte rozhodnout, jestli chcete vytvořit nový a prázdn�
 **Důležité**: **nechcete používat** ukládání hostitelů do mezipaměti ve službě Azure Storage úrovně Standard. Měli byste ponechat předvolby mezipaměti hostitele ve výchozím nastavení NONE. V případě služby Azure Premium Storage je vhodné povolit ukládání do mezipaměti pro čtení, pokud jsou vstupně-výstupní charakteristiky většinou čteny jako typický vstupně-výstupní přenos dat pro databázové datové soubory. V případě souboru protokolu transakcí databáze není doporučeno ukládat do mezipaměti.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > [Postup připojení datového disku v Azure Portal][virtual-machines-linux-attach-disk-portal]
 >
 > Pokud jsou disky připojené, musíte se přihlásit k virtuálnímu počítači a otevřít Správce disků Windows. Pokud není v kapitole [Nastavení automatického připojení pro připojené disky][planning-guide-5.5.3]povolené automount jako doporučené, je potřeba, aby byl nově připojený svazek online a inicializovaný.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > Pokud jsou disky připojené, musíte se přihlásit k virtuálnímu počítači a inicializovat disky, jak je popsáno v [tomto článku][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux] .
 >
@@ -1212,7 +1212,7 @@ Geografická replikace Azure funguje lokálně na každém virtuálním pevném 
 
 #### <a name="setting-automount-for-attached-disks"></a><a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Nastavení automatického připojení pro připojené disky
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > U virtuálních počítačů, které se vytvářejí z vlastních imagí nebo disků, je nutné zaškrtnout a případně nastavit parametr automount. Nastavením tohoto parametru povolíte virtuálnímu počítači po restartování nebo opětovném nasazení v Azure a automaticky připojí připojené nebo připojené jednotky.
 > Parametr je nastaven pro bitové kopie poskytnuté společností Microsoft v Azure Marketplace.
@@ -1226,7 +1226,7 @@ Geografická replikace Azure funguje lokálně na každém virtuálním pevném 
 >
 > Pokud jsou disky připojené, musíte se přihlásit k virtuálnímu počítači a otevřít Správce disků Windows. Pokud není v kapitole [Nastavení automatického připojení pro připojené disky][planning-guide-5.5.3]povolené automount jako doporučené, musí být nově připojený svazek >online a inicializovaný.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > Je potřeba inicializovat nově připojený prázdný disk, jak je popsáno v [tomto článku][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux].
 > Také je potřeba přidat do adresáři/etc/fstab. nové disky.
@@ -1264,7 +1264,7 @@ V tomto článku najdete popis podrobností k tomuto tématu:
 Je možné, že bude nutné nakonfigurovat bránu firewall na virtuálních počítačích, aby umožňovala příchozí provoz do systému SAP.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Ve výchozím nastavení je brána Windows Firewall v rámci virtuálního počítače nasazeného v Azure zapnutá. Nyní je třeba umožnit otevření portu SAP, jinak se grafické uživatelské rozhraní SAP nebude moci připojit.
 > Použijte následující postup:
@@ -1281,7 +1281,7 @@ Je možné, že bude nutné nakonfigurovat bránu firewall na virtuálních poč
 >
 > ![Definice pravidla portu][planning-guide-figure-1600]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > Image Linux v Azure Marketplace ve výchozím nastavení nepovolí bránu firewall softwaru iptables a připojení k vašemu systému SAP by mělo fungovat. Pokud jste povolili softwaru iptables nebo jinou bránu firewall, přečtěte si dokumentaci k softwaru iptables nebo použitou bránu firewall, která povolí příchozí provoz TCP na portu 32xx (kde XX je systémové číslo vašeho systému SAP).
 >
@@ -1588,7 +1588,7 @@ Další bezpečnostní opatření při nasazení virtuálních počítačů v ta
 Nastavení místních tiskáren založených na protokolu TCP/IP na VIRTUÁLNÍm počítači Azure je stejné jako ve vaší podnikové síti, a to za předpokladu, že máte navázáno tunelování VPN typu Site-to-site nebo ExpressRoute připojení.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Použijte následující postup:
 >
@@ -1599,7 +1599,7 @@ Nastavení místních tiskáren založených na protokolu TCP/IP na VIRTUÁLNÍm
 > * Port tiskárny Standard 9100
 > * V případě potřeby nainstalujte vhodný ovladač tiskárny ručně.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > * Podobně jako u Windows stačí postupovat podle standardního postupu instalace síťové tiskárny.
 > * Stačí postupovat podle pokynů pro veřejné Linux pro [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) nebo [Red Hat a Oracle Linux](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration) o tom, jak přidat tiskárnu.
@@ -1623,13 +1623,13 @@ Sdílená složka tiskárny je v síti identifikována jedinečným názvem:
 Postup:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Sdílejte místní tiskárnu.
 > Na virtuálním počítači Azure otevřete Průzkumníka Windows a zadejte název sdílené složky tiskárny.
 > Průvodce instalací tiskárny vás provede procesem instalace.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > Tady jsou některé příklady dokumentace týkající se konfigurace síťových tiskáren v systému Linux nebo včetně kapitoly týkající se tisku v systému Linux. Bude fungovat stejným způsobem jako virtuální počítač Azure Linux, pokud je virtuální počítač součástí sítě VPN:
 >
@@ -1644,7 +1644,7 @@ Postup:
 V Azure schopnost vzdálené plochy poskytovat uživatelům přístup k místním zařízením tiskáren ve vzdálené relaci není k dispozici.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Další podrobnosti o tisku v systému Windows najdete tady: <https://technet.microsoft.com/library/jj590748.aspx> .
 >
@@ -1890,7 +1890,7 @@ Tady jsou dva příklady kompletní architektury SAP NetWeaver HA v Azure – je
 Jenom nespravované disky: Pokud nasazujete mnoho systémů SAP a počet nasazených virtuálních počítačů překračuje maximální limit účtů úložiště na předplatné, může být potřeba napadnout nějaký koncept, jak je vysvětleno níže. V takových případech je potřeba, aby se virtuální pevné disky virtuálních počítačů spojily v rámci jednoho účtu úložiště. Obvykle to provedete tak, že zkombinujete virtuální pevné disky virtuálních počítačů SAP aplikační vrstvy různých systémů SAP.  V jednom účtu Azure Storage jsme také spojili různé virtuální pevné disky různých virtuálních počítačů s DBMS různých systémů SAP. Omezení počtu IOPS Azure Storagech účtů tak, aby se zachovává ( <https://azure.microsoft.com/documentation/articles/storage-scalability-targets> )
 
 
-##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] HA ve Windows
+##### <a name="windows-logologo_windows-ha-on-windows"></a>![Logo Windows][Logo_Windows] HA ve Windows
 
 ![Architektura HA aplikace SAP NetWeaver s SQL Server v Azure IaaS][planning-guide-figure-3200]
 
@@ -1912,7 +1912,7 @@ Následující obrázek znázorňuje stejnou šířku pomocí Managed Disks.
 
 ![Architektura HA aplikace SAP NetWeaver s SQL Server v Azure IaaS][planning-guide-figure-3201]
 
-##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] HA v systému Linux
+##### <a name="linux-logologo_linux-ha-on-linux"></a>![Logo Linux.][Logo_Linux] HA v systému Linux
 
 Architektura pro SAP HA v systému Linux v Azure je v podstatě stejná jako pro Windows, jak je popsáno výše. Seznam podporovaných řešení s vysokou dostupností najdete v tématu SAP Note [1928533] .
 
@@ -1963,7 +1963,7 @@ Další virtuální počítače v rámci systému SAP se dají zálohovat pomoc�
 > [!NOTE]
 > Od prosince 2015 používá zálohování virtuálních počítačů jedinečné ID virtuálního počítače, které se používá pro licencování SAP. To znamená, že obnovení ze zálohy virtuálního počítače vyžaduje instalaci nového licenčního klíče SAP, protože obnovený virtuální počítač se považuje za nový virtuální počítač a nejedná se o náhradu za dříve uloženou kopii.
 >
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > Teoreticky, virtuální počítače, na kterých běží databáze, se dají zálohovat konzistentním způsobem, a to i v případě, že systém DBMS podporuje Windows VSS (služba Stínová kopie svazku <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx> ) jako například SQL Server.
 > Upozorňujeme ale, že na základě záloh virtuálních počítačů Azure není možné obnovit databáze v čase. Proto je doporučení provádět zálohování databází s využitím funkcí DBMS, nemusíte přitom spoléhat na zálohování virtuálních počítačů Azure.
@@ -1972,7 +1972,7 @@ Další virtuální počítače v rámci systému SAP se dají zálohovat pomoc�
 >
 > Další možností je použití kombinace Microsoft Data Protection Manager nainstalované na virtuálním počítači Azure a Azure Backup k zálohování a obnovení databází. Další informace najdete tady: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction> .
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > V systému Linux není k dispozici žádný ekvivalent služby Windows VSS. Proto jsou možné pouze zálohy konzistentní se soubory, ale nikoli zálohy konzistentní s aplikacemi. Zálohování SAP DBMS by se mělo provádět pomocí funkcí DBMS. Systém souborů, který obsahuje data týkající se SAP, lze uložit například pomocí funkce tar, jak je popsáno zde: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
@@ -1984,7 +1984,7 @@ Od Mid 2014 se rozšíření pro různé komponenty v rámci technologie Hyper-V
 
 Blog s podrobnostmi, jak nasadit toto řešení, je popsán zde: <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> .
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary-for-high-availability-for-sap-systems"></a>Shrnutí pro vysokou dostupnost pro systémy SAP
 
 Klíčové body vysoké dostupnosti pro systémy SAP v Azure jsou:
 

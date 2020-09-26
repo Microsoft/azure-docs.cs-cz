@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: ce4bbf81f5b74a06f06778c512995684fa1394c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1690d4b236fce53e033f08fa6825eefe6359d9e9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329799"
+ms.locfileid: "91362210"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -80,8 +80,19 @@ Podrobné pokyny k provedení tohoto postupu najdete v tématu [zabezpečení Az
 ### <a name="limitations"></a>Omezení
 
 Zabezpečení pracovního prostoru a přidružených prostředků v rámci virtuální sítě má následující omezení:
-- Privátní odkaz v pracovním prostoru je k dispozici pouze v následujících oblastech: eastus, westus2, southcentralus
-    - Toto omezení se nevztahuje na přidružené prostředky. Můžete například povolit síť VNet pro úložiště v libovolné Azure Machine Learning oblasti.
+- Privátní odkaz v pracovním prostoru je k dispozici pouze v následujících oblastech:
+    - **East US**
+    - **Středojižní USA**
+    - **USA – západ**
+    - **Západní USA 2**
+    - **Střední Kanada**
+    - **Southeast Asia**
+    - **Japan East**
+    - **Severní Evropa**
+    - **Východní Austrálie**
+    - **Spojené království – jih**
+    
+    Toto omezení se nevztahuje na přidružené prostředky. Můžete například povolit síť VNet pro úložiště v libovolné Azure Machine Learning oblasti.
 - Všechny prostředky musí být za stejnou virtuální sítí. Nicméně podsítě v rámci stejné virtuální sítě jsou povoleny.
 
 ## <a name="secure-the-training-environment"></a>Zabezpečení školicího prostředí

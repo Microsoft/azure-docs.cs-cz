@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: integrace služby Azure AD SSO s FortiGate SSL VPN'
-description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FortiGate SSL VPN.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s protokolem SSL VPN v FortiGate | Microsoft Docs'
+description: Seznamte se s kroky, které je třeba provést při integraci FortiGate SSL VPN s Azure Active Directory (Azure AD).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe92218d6bb20274e916089c15df8c1f44c4fd6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331110"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s protokolem SSL VPN FortiGate
 
@@ -94,16 +94,29 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty jsou jenom vzory. Musíte použít vlastní **přihlašovací adresu URL**, **identifikátor**, **adresu URL odpovědi**a **adresu URL pro odhlášení**. Pokud chcete získat skutečné hodnoty, obraťte se na [tým podpory FORTIGATE SSL VPN Client](mailto:tac_amer@fortinet.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. FortiGate SSL VPN očekává, že kontrolní výrazy SAML budou v určitém formátu. Proto je nutné přidat mapování vlastních atributů do konfigurace atributů tokenu SAML. Tento snímek obrazovky ukazuje výchozí atributy:
+1. Aplikace FortiGate SSL VPN očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![Snímek obrazovky, který zobrazuje výchozí atributy.](common/default-attributes.png)
 
-1. FortiGate SSL VPN taky očekává, že se v odpovědi SAML vrátí jenom několik atributů. Tyto atributy jsou uvedeny v následující tabulce. Jsou také předem vyplněné, ale můžete je zkontrolovat, abyste si vybrali své požadavky na účet.
-    
-    | Name |  Zdrojový atribut|
-    | ------------ | --------- |
-    | username | User. userPrincipalName |
-    | group | User. Groups |
+1. Další dvě deklarace identity FortiGate SSL VPN jsou uvedené v následující tabulce. Názvy těchto deklarací se musí shodovat s názvy použitými v **konfiguračním oddílu provést Fortigate** v tomto kurzu. 
+
+   | Name |  Zdrojový atribut|
+   | ------------ | --------- |
+   | username | User. userPrincipalName |
+   | group | User. Groups |
+   
+   Vytvoření těchto dalších deklarací identity:
+   
+   1. Vedle **atributů uživatele & deklarace identity**vyberte **Upravit**.
+   1. Vyberte **Přidat novou deklaraci identity**.
+   1. Jako **název**zadejte **uživatelské jméno**.
+   1. V případě **zdrojového atributu**vyberte **User. userPrincipalName**.
+   1. Vyberte **Uložit**.
+   1. Vyberte **přidat deklaraci skupiny**.
+   1. Vyberte **Všechny skupiny**.
+   1. Seect **upravte název pole deklarace skupiny** .
+   1. Jako **název**zadejte **Skupina**.
+   1. Vyberte **Uložit**.   
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** vedle **certifikátu (Base64)** a Stáhněte certifikát a uložte ho do počítače:
 
@@ -251,7 +264,7 @@ Když vyberete dlaždici FortiGate SSL VPN na přístupovém panelu, měli byste
 
 Microsoft a FortiGate doporučuje, abyste používali klienta VPN Fortinet FortiClient, abyste mohli co nejlépe využívat.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy k integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

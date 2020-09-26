@@ -1,18 +1,18 @@
 ---
 title: Přesměrování externího provozu pomocí CLI – Azure Application Gateway
-description: Naučte se, jak vytvořit Aplikační bránu, která přesměruje vnitřní webový provoz do příslušného fondu pomocí Azure CLI.
+description: Naučte se, jak vytvořit Aplikační bránu, která přesměruje externí webový provoz do příslušného fondu pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a8d7aff6a030b3adbb5370caa166bbd290e09bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331042"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s externím přesměrování pomocí Azure CLI
 
@@ -131,8 +131,4 @@ V prohlížeči by se měla zobrazit *Bing.com* .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-> * Nastavit síť
-> * Vytvoření naslouchacího procesu a pravidla přesměrování
-> * Vytvoření brány Application Gateway
+- [Vytvoření aplikační brány s interním přesměrování pomocí Azure CLI](redirect-internal-site-cli.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681996"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361530"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Upozornění a chyby převodu kreslení
 
@@ -35,9 +35,9 @@ Služba konverze nemůže vytvořit funkci mapy z neplatné entity a místo toho
 
 * Následující dva obrázky ukazují příklady mnohoúhelníků s sebou samým.
 
-     ![Příklad mnohoúhelníku protínající sebe](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![Příkladem křížového mnohoúhelníku, který je v sobě příkladem.](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![Příklad mnohoúhelníku protínající sebe](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![Příkladem křížového mnohoúhelníku, který je v sobě příkladem.](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * Níže je obrázek, který zobrazuje neuzavřenou lomenou čáru. Předpokládat, že vrstva podporuje pouze uzavřenou geometrii.
 
@@ -225,7 +225,7 @@ K **partiallyOverlappingUnit** upozornění dojde v případě, že výkres obsa
 
 #### <a name="example-scenarios-partiallyoverlappingunit"></a>*Příklady scénářů partiallyOverlappingUnit*
 
-Na následujícím obrázku je překrývající se jednotka zvýrazněna červeně. `UNIT110`a `HALLWAY` jsou zahozeny.
+Na následujícím obrázku je překrývající se jednotka zvýrazněna červeně. `UNIT110` a `HALLWAY` jsou zahozeny.
 
 ![Příklad překrývajících se jednotek](./media/drawing-conversion-error-codes/partially-overlapping-unit.png)
 
@@ -350,7 +350,7 @@ K **dwgError** dojde v případě, že balíček pro kreslení obsahuje soubor D
 Pokud chcete opravit **dwgError**, zkontrolujte _manifest.jsv_ souboru a ověřte, že:
 
 * Všechny soubory DWG v archivu ZIP jsou platné kresby formátu DWG AutoCADu, v AutoCADu je otevřete. Odeberte nebo opravte všechny neplatné výkresy.
-* Seznam souborů DWG v _manifest.js_ se shoduje se soubory DWG v archivu zip.
+* Seznam souborů DWG v _manifest.js_  se shoduje se soubory DWG v archivu zip.
 
 ## <a name="manifest-errors"></a>Chyby manifestu
 
