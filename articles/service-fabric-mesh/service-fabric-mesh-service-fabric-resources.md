@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354866"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Seznámení s modelem Service Fabric prostředků
 
@@ -66,7 +66,7 @@ Prostředky tajných kódů lze nasadit nezávisle na prostředku aplikace nebo 
 
 Kontejnery často zpřístupňují dočasné disky. Dočasné disky jsou ale dočasné, takže získáte nový dočasný disk a ztratíte informace, když dojde k selhání kontejneru. Je také obtížné sdílet informace o dočasných discích s jinými kontejnery. Svazky jsou adresáře, které se připevní do instancí kontejnerů, které můžete použít k trvalému stavu. Svazky poskytují úložiště souborů pro obecné účely a umožňují čtení a zápis souborů pomocí normálních rozhraní API v/v souborů na disku. Prostředek Volume je deklarativní způsob, jak popsat, jak je adresář připojený, a jeho záložní úložiště (buď svazek se soubory Azure nebo Service Fabric spolehlivý svazek).  Další informace najdete v tématu věnovaném [ukládání stavu](service-fabric-mesh-storing-state.md#volumes).
 
-![Svazky][Image3]
+![Diagram znázorňuje službu, která se přesměruje na diskový svazek, který se bude nacházet mezi Service Fabric spolehlivým svazkem, pak s replikovaným místním diskem a svazkem souborů Azure a pak do síťového úložiště.][Image3]
 
 ## <a name="programming-models"></a>Programovací modely
 Prostředek služby vyžaduje, aby se spustila image kontejneru, na kterou se odkazuje v balíčcích kódu přidružených k danému prostředku. Můžete spustit libovolný kód napsaný v jakémkoli jazyce pomocí libovolného rozhraní uvnitř kontejneru, aniž byste museli znát nebo používat Service Fabric rozhraní API specifická pro danou síť. 

@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/23/2020
+ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531215"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320968"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -212,13 +212,17 @@ Pokud má vaše továrna pro vývoj přidružené úložiště Git, můžete př
 * Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení Správce prostředků, ale vlastnosti nejsou ve výchozím nastavení parametrizované.
 * Vaše továrna je tak velká, že výchozí šablona Správce prostředků je neplatná, protože má více než maximální povolený počet parametrů (256).
 
-Pokud chcete přepsat výchozí šablonu Parametrizace, vytvořte v kořenové složce vaší větve Git soubor s názvem **arm-template-parameters-definition.js** . Je nutné použít tento přesný název souboru.
+Pokud chcete přepsat výchozí šablonu Parametrizace, klikněte na Centrum správy a v části Správa zdrojového kódu vyberte **šablonu Parametrizace** . Výběrem **Upravit šablonu** otevřete Editor kódu šablony Parametrizace. 
 
-   ![Soubor vlastních parametrů](media/continuous-integration-deployment/custom-parameters.png)
+![Správa vlastních parametrů](media/author-management-hub/management-hub-custom-parameters.png)
+
+Vytvořením vlastní šablony Parametrizace se vytvoří soubor s názvem **arm-template-parameters-definition.js** v kořenové složce vaší větve Git. Je nutné použít tento přesný název souboru.
+
+![Soubor vlastních parametrů](media/continuous-integration-deployment/custom-parameters.png)
 
 Při publikování z větve pro spolupráci Data Factory načte tento soubor a použije jeho konfiguraci k vygenerování parametrizovaných vlastností. Pokud se nenajde žádný soubor, použije se výchozí šablona.
 
-Při exportu šablony Správce prostředků Data Factory přečte tento soubor z jakékoli větve, na které právě pracujete, nikoli jenom z větve pro spolupráci. Můžete vytvořit nebo upravit soubor z privátní větve, kde můžete testovat své změny výběrem možnosti **Exportovat šablonu ARM** v uživatelském rozhraní. Pak můžete soubor sloučit do větve pro spolupráci.
+Při exportu šablony Správce prostředků Data Factory přečte tento soubor z jakékoli větve, na které aktuálně pracujete, nikoli z větve pro spolupráci. Můžete vytvořit nebo upravit soubor z privátní větve, kde můžete testovat své změny výběrem možnosti **Exportovat šablonu ARM** v uživatelském rozhraní. Pak můžete soubor sloučit do větve pro spolupráci.
 
 > [!NOTE]
 > Vlastní šablona Parametrizace nemění limit parametru šablony ARM 256. Umožňuje zvolit a snížit počet parametrizovaných vlastností.

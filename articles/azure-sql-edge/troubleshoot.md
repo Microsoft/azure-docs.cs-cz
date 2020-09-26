@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: d8da8bcf3d2bb6b2af2b5c69ce003289d83d3884
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333099"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Řešení potíží s nasazeními Azure SQL Edge 
 
@@ -138,32 +138,12 @@ docker exec -it <Container ID> /bin/bash
 
 Nyní můžete spouštět příkazy, jako byste je spouštěli v terminálu uvnitř kontejneru. Po dokončení zadejte `exit` . Tím se ukončí relace interaktivního příkazu, ale váš kontejner pokračuje v běhu.
 
-## <a name="troubleshooting-issues-with-data-streaming"></a>Řešení potíží s datovým proudem dat
-
-Ve výchozím nastavení se protokoly modulu streamování pro Azure SQL Edge zapisují do souboru s názvem `current` v adresáři **/var/opt/MSSQL/log/Services/00000001-0000-0000-0000-000000000000** . K souboru lze získat přímý odkaz přímo prostřednictvím namapovaného svazku nebo kontejneru datových svazků nebo spuštěním interaktivní relace příkazového řádku do kontejneru SQL Edge. 
-
-Pokud se navíc můžete připojit k instanci SQL Edge pomocí klientských nástrojů, můžete použít následující příkaz T-SQL pro přístup k aktuálnímu protokolu modulu streamování. 
-
-```sql
-
-select value as log, try_convert(DATETIME2, substring(value, 0, 26)) as timestamp 
-from 
-    STRING_SPLIT
-    (
-        (
-            select BulkColumn as logs
-            FROM OPENROWSET (BULK '/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000/current', SINGLE_CLOB) MyFile
-        ),
-        CHAR(10)
-    ) 
-where datalength(value) > 0
-
-```
-
 ### <a name="enabling-verbose-logging"></a>Povolení podrobného protokolování
 
 Pokud výchozí úroveň protokolování pro modul streamování neposkytuje dostatek informací, protokolování ladění pro modul streamování se dá v SQL Edge povolit. Chcete-li povolit protokolování ladění, přidejte `RuntimeLogLevel=debug` proměnnou prostředí do nasazení SQL Edge. Po povolení protokolování ladění se pokuste o reprodukování problému a zjištění všech relevantních zpráv nebo výjimek v protokolech. 
 
+> [!NOTE]
+> Možnost podrobné protokolování by se měla použít jenom pro řešení potíží a ne pro běžné provozní úlohy. 
 
 
 ## <a name="next-steps"></a>Další kroky

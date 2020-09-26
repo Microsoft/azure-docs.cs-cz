@@ -1,5 +1,5 @@
 ---
-title: Nastavení IoT Hub Device Provisioning Service v Azure Portal
+title: Rychlý Start – Nastavení IoT Hub Device Provisioning Service v Azure Portal
 description: Rychlý Start – Nastavení Azure IoT Hub Device Provisioning Service (DPS) v Azure Portal
 author: wesmc7777
 ms.author: wesmc
@@ -8,28 +8,28 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 765b7e5bb7341974a6a16d3f1ed0bcabf415f9f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76029175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297228"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service s využitím Azure Portal
 
 IoT Hub Device Provisioning Service můžete použít s IoT Hub a povolit tak nulové a nepotřebné zřizování za běhu do požadovaného centra IoT Hub bez nutnosti zásahu člověka, což zákazníkům umožňuje zajistit zabezpečený a škálovatelný přístup pro miliony zařízení IoT. Azure IoT Hub Device Provisioning Service podporuje zařízení IoT s ověřováním certifikátů TPM, symetrického klíče a X. 509. Další informace najdete v tématu [přehled IoT Hub Device Provisioning Service](./about-iot-dps.md) .
 
 V tomto rychlém startu se dozvíte, jak nastavit IoT Hub Device Provisioning Service na webu Azure Portal pro zřizování zařízení pomocí následujících kroků:
-> [!div class="checklist"]
-> * Vytvoření IoT Hub pomocí Azure Portal
-> * Vytvoření služby IoT Hub Device Provisioning a získání rozsahu ID pomocí webu Azure Portal
-> * Propojení centra IoT se službou Device Provisioning
+
+* Vytvoření IoT Hub pomocí Azure Portal
+* Vytvoření služby IoT Hub Device Provisioning a získání rozsahu ID pomocí webu Azure Portal
+* Propojení centra IoT se službou Device Provisioning
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

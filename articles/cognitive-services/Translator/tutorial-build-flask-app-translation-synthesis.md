@@ -10,13 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 6a81e52b833a59f51f6961a0bd41d52b040050b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-js
+ms.openlocfilehash: 41d7fe8e22b39d8755f86e5ee490aa6e7dff97fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330617"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
@@ -86,7 +86,7 @@ Před vytvořením webové aplikace v baňce budete muset vytvořit pracovní ad
    cd flask-cog-services
    ```
 
-### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Vytvoření a aktivace virtuálního prostředí pomocí`virtualenv`
+### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Vytvoření a aktivace virtuálního prostředí pomocí `virtualenv`
 
 Pojďme vytvořit virtuální prostředí pro naši aplikaci v baňce pomocí `virtualenv` . Pomocí virtuálního prostředí zajistíte, aby bylo k dispozici čisté prostředí, ze kterého můžete pracovat.
 
@@ -139,7 +139,7 @@ Dál musíme nainstalovat baňce. Baňka zpracovává směrování pro naši web
    ```
    pip install Flask
    ```
-   Pojďme se ujistit, že se nainstalovala baňka. Spuštěním příkazu
+   Pojďme se ujistit, že se nainstalovala baňka. Spusťte tento příkaz:
    ```
    flask --version
    ```
@@ -291,7 +291,7 @@ První věc, kterou potřebujete udělat, je napsat funkci pro volání překlad
    ```
 3. Přidejte klíč předplatného překladatele a uložte ho.
 
-### <a name="add-a-route-to-apppy"></a>Přidat trasu k`app.py`
+### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
 V dalším kroku budete muset vytvořit trasu v aplikaci v baňce, která volá `translate.py` . Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko přeložit ve vaší aplikaci.
 
@@ -411,7 +411,7 @@ Pojďme aktualizovat `index.html` .
 
 Dalším krokem je psaní JavaScriptu. Toto je most mezi cestou HTML a baňkou.
 
-### <a name="create-mainjs"></a>Vytvořeny`main.js`  
+### <a name="create-mainjs"></a>Vytvořeny `main.js`  
 
 `main.js`Soubor je most mezi cestou HTML a baňkou. Vaše aplikace bude používat kombinaci jQuery, AJAX a XMLHttpRequest pro vykreslování obsahu a provádění `POST` požadavků na vaše trasy v baňce.
 
@@ -533,7 +533,7 @@ Pojďme napsat funkci, která volá rozhraní API pro analýzu textu. Tato funkc
    ```
 3. Přidejte svůj klíč předplatného Analýza textu a uložte ho.
 
-### <a name="add-a-route-to-apppy"></a>Přidat trasu k`app.py`
+### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
 Pojďme v aplikaci v baňce vytvořit trasu, která volá `sentiment.py` . Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko pro analýzu spuštění mínění ve vaší aplikaci. Podobně jako u trasy k překladu Tato trasa přijímá `POST` požadavky, protože funkce očekává argumenty.
 
@@ -670,7 +670,7 @@ V této části se chystáte několik věcí:
 
 ### <a name="call-the-text-to-speech-api"></a>Volání rozhraní API pro převod textu na mluvené slovo
 
-Pojďme napsat funkci pro převod textu na řeč. Tato funkce provede dva argumenty: `input_text` a `voice_font` . Tato funkce se volá vždycky, když uživatel stiskne v aplikaci tlačítko převést text na řeč. `input_text`je výstup překladu vrácený voláním k překladu textu, `voice_font` je hodnota z selektor hlasového písma v HTML.
+Pojďme napsat funkci pro převod textu na řeč. Tato funkce provede dva argumenty: `input_text` a `voice_font` . Tato funkce se volá vždycky, když uživatel stiskne v aplikaci tlačítko převést text na řeč. `input_text` je výstup překladu vrácený voláním k překladu textu, `voice_font` je hodnota z selektor hlasového písma v HTML.
 
 1. Pojďme vytvořit soubor s názvem `synthesize.py` v kořenovém adresáři vašeho pracovního adresáře.
 
@@ -727,7 +727,7 @@ Pojďme napsat funkci pro převod textu na řeč. Tato funkce provede dva argume
    ```
 3. Přidejte klíč předplatného služby Speech Services a uložte ho.
 
-### <a name="add-a-route-to-apppy"></a>Přidat trasu k`app.py`
+### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
 Pojďme v aplikaci v baňce vytvořit trasu, která volá `synthesize.py` . Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko převést text na řeč v aplikaci. Podobně jako trasy pro překlad a analýzu mínění Tato trasa přijímá `POST` požadavky, protože funkce očekává dva argumenty: text, který se má syntetizovat, a písmo hlasu pro přehrávání.
 

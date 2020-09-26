@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355470"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Nasazení do Azure Functions s DevOps Starter
 
@@ -39,7 +39,7 @@ V tomto kurzu provedete následující:
 
 V současné době jsou podporované běhové moduly pro funkce **.NET** a **Node.js**. Používáme. .NET runtime pro tento kurz nasazení na Azure Functions. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Můžete si ji stáhnout [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/)
 
@@ -95,7 +95,7 @@ DevOps Starter automaticky nakonfiguruje kanál CI/CD ve vaší organizaci Azure
 
 1. Klikněte na hypertextový odkaz v části **sestavení**. Karta prohlížeč zobrazuje kanál sestavení pro váš nový projekt.
 
-    ![Sestavení](_img/azure-devops-project-functions/build.png)
+    ![Snímek obrazovky se zobrazí Azure Portal úvodní řídicí panel DevOps se šipkou ukazující na odkaz v části sestavení v kanálu C I/C D.](_img/azure-devops-project-functions/build.png)
 
 1. Vyberte **Upravit**. V tomto podokně můžete prozkoumávat různé úlohy pro svůj kanál sestavení. Sestavení provádí různé úkoly, jako je například načítání zdrojového kódu z úložiště Git, sestavování aplikace, spuštění testů jednotek a publikování výstupů, které se používají pro nasazení.
 

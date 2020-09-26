@@ -12,12 +12,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4bbcf73654d7f588c63a9bf81ab6a689360ec978
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118242"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355053"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Kurz: použití režimu sdíleného zařízení v aplikaci pro Android
 
@@ -241,7 +241,7 @@ Správce cloudového zařízení by měl zadat svůj e-mailovou adresu organizac
 
 ![obrazovka registrace – zařízení](media/tutorial-v2-shared-device-mode/register-device.png)
 
-![sign-in](media/tutorial-v2-shared-device-mode/sign-in.png)
+![Snímek obrazovky se zobrazí přihlašovací stránka.](media/tutorial-v2-shared-device-mode/sign-in.png)
 
 Zařízení je nyní ve sdíleném režimu.
 

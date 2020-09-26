@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a251d7a1ff4063178a6c03d71fedc5adfca423
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188248"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332861"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží s funkcí Synchronizace dat SQL
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Přehled Synchronizace dat SQL najdete v tématu [synchronizace dat napříč n�
 
 - [Jak zpracovává cyklické odkazy v synchronizaci dat? To znamená, že když jsou stejná data synchronizovaná ve více skupinách synchronizace a mění se v důsledku změny?](#sync-circ)
 
-### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a>Synchronizace v uživatelském rozhraní portálu pro místní databáze přidružené k agentovi klienta se nezdařila.
+### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a> Synchronizace v uživatelském rozhraní portálu pro místní databáze přidružené k agentovi klienta se nezdařila.
 
 Synchronizace se nezdařila v uživatelském rozhraní portálu Synchronizace dat SQL pro místní databáze, které jsou přidruženy k agentovi klienta. V místním počítači, na kterém je spuštěný agent, se v protokolu událostí zobrazí chyby System. IO. IOException. Chyby říká, že na disku není dostatek místa.
 
@@ -52,7 +52,7 @@ Synchronizace se nezdařila v uživatelském rozhraní portálu Synchronizace da
 
 - **Řešení**. Vytvořte více místa na jednotce, na které se nachází adresář% TEMP%.
 
-### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a>Moje skupina synchronizace je zablokovaná ve stavu zpracování.
+### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a> Moje skupina synchronizace je zablokovaná ve stavu zpracování.
 
 Skupina synchronizace v Synchronizace dat SQL byla po dlouhou dobu ve stavu zpracování. Nereaguje na příkaz **stop** a protokoly nezobrazí žádné nové položky.
 
@@ -81,7 +81,7 @@ Některá z následujících podmínek může způsobit zablokování skupiny sy
 > [!NOTE]
 > Pokud předchozí informace nepřesunou skupinu synchronizace ze stavu zpracování, podpora Microsoftu může obnovit stav skupiny synchronizace. Pokud chcete mít resetování stavu skupiny synchronizace, vytvořte na [stránce s dotazem Microsoft Q&na Azure SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html)vytvořit příspěvek. V příspěvku zadejte ID předplatného a ID skupiny synchronizace pro skupinu, kterou je nutné resetovat. Podpora Microsoftu inženýr odpoví na váš příspěvek a pošle vám informace o tom, kdy byl stav resetován.
 
-### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>Zobrazuje se v tabulkách chybná data
+### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a> Zobrazuje se v tabulkách chybná data
 
 Pokud jsou tabulky, které mají stejný název, ale které jsou z různých schémat databáze, zahrnuty v synchronizaci, zobrazí se po synchronizaci v tabulkách chybná data.
 
@@ -89,7 +89,7 @@ Pokud jsou tabulky, které mají stejný název, ale které jsou z různých sch
 
 - **Řešení**. Ujistěte se, že názvy tabulek, které jsou zapojeny do synchronizace, jsou odlišné, a to i v případě, že tabulky patří do různých schémat v databázi.
 
-### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>Po úspěšné synchronizaci se zobrazuje nekonzistentní data primárního klíče
+### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a> Po úspěšné synchronizaci se zobrazuje nekonzistentní data primárního klíče
 
 Synchronizace se nahlásí jako úspěšná a v protokolu se zobrazí žádné neúspěšné nebo vynechané řádky, ale zjistíte, že data primárního klíče jsou nekonzistentní mezi databázemi ve skupině synchronizace.
 
@@ -97,7 +97,7 @@ Synchronizace se nahlásí jako úspěšná a v protokolu se zobrazí žádné n
 
 - **Řešení**. Pokud se chcete tomuto problému vyhnout, zajistěte, aby se nezměnila žádná data ve sloupci primárního klíče. Chcete-li tento problém vyřešit po jeho výskytu, odstraňte řádek, který obsahuje nekonzistentní data ze všech koncových bodů ve skupině synchronizace. Pak řádek znovu vložte.
 
-### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a>Zobrazuje se významné snížení výkonu.
+### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a> Zobrazuje se významné snížení výkonu.
 
 Výkon se výrazně snižuje, což může být bod, ve kterém nemůžete ani otevřít uživatelské rozhraní pro synchronizaci dat.
 
@@ -105,12 +105,12 @@ Výkon se výrazně snižuje, což může být bod, ve kterém nemůžete ani ot
 
 - **Řešení**. Nejlepším řešením je prevence. Ujistěte se, že ve skupinách synchronizace nemáte cyklické odkazy. Každý řádek, který je synchronizovaný jednou skupinou synchronizace, nejde synchronizovat s jinou skupinou synchronizace.
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Zobrazuje se tato zpráva: "do sloupce nelze vložit hodnotu NULL \<column> . Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit? 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a> Zobrazuje se tato zpráva: "do sloupce nelze vložit hodnotu NULL \<column> . Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit? 
 Tato chybová zpráva znamená, že došlo k jedné ze dvou následujících problémů:
 -  Tabulka neobsahuje primární klíč. Chcete-li tento problém vyřešit, přidejte primární klíč ke všem tabulkám, které synchronizujete.
 -  V příkazu CREATE INDEX je klauzule WHERE. Synchronizace dat nezpracovává tuto podmínku. Chcete-li tento problém vyřešit, odeberte klauzuli WHERE nebo ručně proveďte změny ve všech databázích. 
  
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a>Jak zpracovává cyklické odkazy v synchronizaci dat? To znamená, že když jsou stejná data synchronizovaná ve více skupinách synchronizace a mění se v důsledku změny?
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a> Jak zpracovává cyklické odkazy v synchronizaci dat? To znamená, že když jsou stejná data synchronizovaná ve více skupinách synchronizace a mění se v důsledku změny?
 Synchronizace dat nezpracovává cyklické odkazy. Ujistěte se, že se jim vyhnete. 
 
 ## <a name="client-agent-issues"></a>Problémy agenta klienta
@@ -135,7 +135,7 @@ Informace o řešení problémů s agentem klienta najdete v tématu řešení p
 
 - [Co se stane, když obnovíte ztracenou nebo poškozenou databázi?](#setup-restore)
 
-### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>Zobrazuje se zpráva o nedostatku místa na disku
+### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a> Zobrazuje se zpráva o nedostatku místa na disku
 
 - **Příčina**: Pokud je potřeba odstranit soubory zbylé, může se zobrazit zpráva nedostatek místa na disku. To může být způsobeno antivirovým softwarem nebo soubory, které jsou otevřeny při pokusu o odstranění operací.
 
@@ -144,7 +144,7 @@ Informace o řešení problémů s agentem klienta najdete v tématu řešení p
 > [!IMPORTANT]
 > V průběhu synchronizace neodstraňujte žádné soubory.
 
-### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a>Nemůžu odstranit moji skupinu synchronizace
+### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a> Nemůžu odstranit moji skupinu synchronizace
 
 Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupiny synchronizace může dojít k selhání některého z následujících scénářů:
 
@@ -166,7 +166,7 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
 
 - **Řešení**. Počkejte na dokončení procesu zřizování nebo synchronizace a pak zkuste skupinu synchronizace znovu odstranit.
 
-### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a>Nemůžu zrušit registraci databáze SQL Server
+### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a> Nemůžu zrušit registraci databáze SQL Server
 
 - **Příčina**: Pravděpodobně se pokoušíte zrušit registraci databáze, která již byla odstraněna.
 
@@ -186,7 +186,7 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
   1. Vyberte **Upravit přihlašovací údaje**a potom zadejte přihlašovací údaje pro databázi.
   1. Pokračujte v zrušení registrace.
 
-### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>Nemám dostatečná oprávnění ke spouštění systémových služeb.
+### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a> Nemám dostatečná oprávnění ke spouštění systémových služeb.
 
 - **Příčina**: K této chybě dochází ve dvou situacích:
   -   Uživatelské jméno nebo heslo není správné.
@@ -200,7 +200,7 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
   1. Vyberte **Apply** (Použít) a pak vyberte **OK**.
   1. Zavřete všechna okna.
 
-### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>Databáze má stav "zastaralé".
+### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a> Databáze má stav "zastaralé".
 
 - **Příčina**: Synchronizace dat SQL odebere databáze, které byly od služby offline po dobu 45 dnů nebo více (počítány od doby, kdy byla databáze přepnuta do režimu offline). Pokud je databáze po dobu 45 dnů nebo déle v režimu offline a pak se vrátí zpět do režimu online **, je její stav neaktuální.**
 
@@ -214,7 +214,7 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
   > [!WARNING]
   > Ztratíte všechny změny provedené v této databázi v době, kdy byla offline.
 
-### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a>Skupina synchronizace má neaktuální stav
+### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a> Skupina synchronizace má neaktuální stav
 
 - **Příčina**: Pokud se některé změny nepodaří použít po celou dobu uchování 45 dní, může se stát, že se skupina synchronizace zastaralá.
 
@@ -222,7 +222,7 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
 
   Pokud je stav skupiny synchronizace **neaktuální**, odstraňte skupinu synchronizace a pak ji znovu vytvořte.
 
-### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a>Skupinu synchronizace nejde odstranit do tří minut od odinstalace nebo zastavení agenta.
+### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a> Skupinu synchronizace nejde odstranit do tří minut od odinstalace nebo zastavení agenta.
 
 Nemůžete odstranit skupinu synchronizace během tří minut od odinstalace nebo zastavení přidruženého klientského agenta Synchronizace dat SQL.
 
@@ -235,7 +235,7 @@ Nemůžete odstranit skupinu synchronizace během tří minut od odinstalace neb
     b.  Nainstalujte agenta na místní počítač (může se jednat o stejný nebo jiný počítač). Pak odešlete klíč agenta, který se vygeneruje na portálu, pro agenta, který se zobrazuje ve stavu offline.  
     c. Pokuste se odstranit skupinu synchronizace.
 
-### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a>Co se stane, když obnovíte ztracenou nebo poškozenou databázi?
+### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a> Co se stane, když obnovíte ztracenou nebo poškozenou databázi?
 
 Pokud ze zálohy obnovíte ztracenou nebo poškozenou databázi, může dojít k nekonvergenci dat v synchronizačních skupinách, do kterých databáze patří.
 

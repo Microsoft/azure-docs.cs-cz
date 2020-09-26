@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322151"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Vytváření automatických odpovědí na výstrahy a doporučení pomocí automatizace pracovních postupů
 
@@ -67,14 +67,12 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 
     V návrháři aplikace logiky jsou podporovány následující aktivační události z konektorů Security Center:
 
-    * **Když se vytvoří nebo spustí doporučení Azure Security Center**
-    * **Při vytvoření nebo spuštění výstrahy Azure Security Center** 
-    
-    > [!TIP]
-    > Trigger můžete přizpůsobit tak, aby se v něm zobrazovaly jenom výstrahy s úrovněmi závažnosti, které vás zajímají.
+    * **Když se vytvoří nebo aktivuje doporučení Azure Security Center** – Pokud aplikace logiky spoléhá na doporučení, které se přestává používat jako zastaralé nebo nahrazené, vaše automatizace přestane fungovat a bude nutné Trigger aktualizovat. Pokud chcete sledovat změny v doporučeních, přečtěte si téma [Azure Security Center poznámky k verzi](release-notes.md).
+
+    * **Když se vytvoří nebo aktivuje výstraha Azure Security Center** – Trigger můžete přizpůsobit tak, aby se v něm zobrazovaly jenom výstrahy se úrovněmi závažnosti, které vás zajímají.
     
     > [!NOTE]
-    > Pokud používáte starší verzi triggeru, když se aktivuje odpověď na Azure Security Center výstraha, Logic Apps se nespustí funkcí automatizace pracovního postupu. Místo toho použijte kteroukoli z výše uvedených triggerů. 
+    > Pokud používáte starší verzi triggeru, když se aktivuje odpověď na Azure Security Center výstraha, vaše aplikace logiky se nespustí pomocí funkce automatizace pracovního postupu. Místo toho použijte kteroukoli z výše uvedených triggerů. 
 
     [![Ukázková aplikace logiky](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 

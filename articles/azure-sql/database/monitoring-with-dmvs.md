@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: f0a9e36113226a40f4bd21a7b171ca7a65930f95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 7ee876b1d65e71657cb1af857cdad9f62a32100e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987230"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333048"
 ---
-# <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Monitorování Microsoft Azure SQL Database a výkonu spravované instance Azure SQL pomocí zobrazení dynamické správy
+# <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Monitorování výkonu služeb Microsoft Azure SQL Database a Azure SQL Managed Instance s využitím zobrazení dynamické správy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Microsoft Azure SQL Database a Azure SQL Managed instance umožňují podmnožinu zobrazení dynamické správy pro diagnostiku problémů s výkonem, což může být způsobeno blokovanými nebo dlouhotrvajícími dotazy, kritickými body prostředků, špatnými plány dotazů a tak dále. Toto téma poskytuje informace o tom, jak zjistit běžné problémy s výkonem pomocí zobrazení dynamické správy.
@@ -529,7 +529,7 @@ Můžete také monitorovat využití pomocí těchto zobrazení:
 - Spravovaná instance Azure SQL: [Sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
 - Azure SQL Database i Azure SQL Managed instance: [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys. dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 V každé databázi můžete použít zobrazení [Sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) . Zobrazení **Sys. dm_db_resource_stats** ukazuje poslední data použití prostředků vzhledem k úrovni služby. Průměrné procentuální hodnoty pro procesor, data v/v, zápisy protokolů a paměť se zaznamenávají každých 15 sekund a uchovávají se po dobu 1 hodiny.
 
@@ -550,7 +550,7 @@ FROM sys.dm_db_resource_stats;
 
 Další dotazy naleznete v příkladech v [tabulce sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysserver_resource_stats"></a>sys. server_resource_stats
+### <a name="sysserver_resource_stats"></a>sys.server_resource_stats
 
 Pomocí [Sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database) můžete vracet data o využití procesoru, vstupně-výstupních operacích a úložištích pro spravovanou instanci Azure SQL. Data se shromažďují a agregují v intervalu pěti minut. Pro vytváření sestav na 15 sekund je jeden řádek. Vrácená data zahrnují využití CPU, velikost úložiště, využití v/v a SKU spravované instance. Historická data se uchovávají přibližně po dobu 14 dnů.
 

@@ -4,12 +4,12 @@ description: Použijte službu DNS Service Fabric pro zjišťování mikrosluže
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021268"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268039"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete v clusteru povolit a zjišťovat tak další služby pomocí protokolu DNS. 
@@ -18,7 +18,7 @@ Mnohé služby, zejména služby s využitím kontejnerů, jsou adresovatelné p
 
 Služba DNS mapuje názvy DNS na názvy služeb, které jsou zase vyřešeny Naming Service pro vrácení koncového bodu služby. Název DNS pro službu je k dispozici v době vytváření. Následující diagram znázorňuje, jak služba DNS funguje pro bezstavové služby.
 
-![koncové body služby](./media/service-fabric-dnsservice/stateless-dns.png)
+![Diagram znázorňující, jak jsou názvy DNS mapovány na názvy služeb služby DNS pro bezstavové služby.](./media/service-fabric-dnsservice/stateless-dns.png)
 
 Od verze Service Fabric 6,3 byl rozšířen protokol DNS Service Fabric, aby obsahoval schéma pro adresování přístavových služeb s oddíly. Tato rozšíření umožňují vyřešit konkrétní IP adresy oddílu pomocí kombinace názvu DNS stavové služby a názvu oddílu. Všechna tři schémata dělení na oddíly jsou podporovaná:
 
@@ -28,7 +28,7 @@ Od verze Service Fabric 6,3 byl rozšířen protokol DNS Service Fabric, aby obs
 
 Následující diagram znázorňuje, jak služba DNS funguje pro rozdělené stavové služby.
 
-![koncové body stavové služby](./media/service-fabric-dnsservice/stateful-dns.png)
+![Diagram znázorňující, jak jsou názvy DNS mapovány na názvy služeb služby DNS pro bezstavové služby bez oddílů.](./media/service-fabric-dnsservice/stateful-dns.png)
 
 Služba DNS nepodporuje dynamické porty. Chcete-li vyřešit služby vystavené dynamickými porty, použijte [službu reverzního proxy serveru](./service-fabric-reverseproxy.md).
 

@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b0547ba25f6534593a0a016ebfa5cbe4d2be2e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936804"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331008"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Získání koncových bodů připojení a připojovacích řetězců formuláře pro PostgreSQL skupinu serverů s podporou ARC
 
@@ -77,7 +77,7 @@ postgres=#
 ```
 > [!NOTE]
 >
-> - Heslo uživatele _PostgreSQL_ uvedeného v koncovém bodu s názvem "_PostgreSQL instance_ " je heslo, které jste si zvolili při vytváření skupiny serverů.
+> - Heslo uživatele _Postgres_ , který je uveden v koncovém bodu s názvem "_PostgreSQL instance_", je heslo, které jste si zvolili při nasazování skupiny serverů.
 > - O azdata: zapůjčení, které je přidruženo k vašemu připojení, trvá přibližně 10 hodin. Až se budete muset znovu připojit. Pokud vaše zapůjčení vypršelo, zobrazí se při pokusu o spuštění příkazu s azdata (kromě přihlášení azdata) následující chybová zpráva: _Chyba: (401)_ 
 >  _Důvod: neautorizované_ 
 >  _hlavičky HTTP odpovědi: HTTPHeaderDict ({' date ': ' Sun, 06 2020 16:58:38 GMT ', ' Content-Length ': ' 0 ', ' WWW-Authenticate ': '_ 
