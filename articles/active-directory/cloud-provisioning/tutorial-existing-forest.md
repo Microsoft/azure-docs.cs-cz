@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25e70809becd59ceeb3c45867b9e35119df497a3
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4b247009669d6008644c9beb54fb687138b81716
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266407"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Integrace stávající doménové struktury a nové doménové struktury s jedním tenantem Azure AD
 
@@ -60,14 +60,14 @@ V tomto scénáři je existující doménová struktura synchronizovaná pomocí
 4. Klikněte na Stáhnout agenta.
 5. Spuštění agenta pro zřizování Azure AD Connect
 6. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
-![Obrazovka Vítejte](media/how-to-install/install1.png)</br>
+![Snímek obrazovky s úvodní obrazovkou balíčku pro zřízení agenta pro Microsoft Azure AD Connect](media/how-to-install/install1.png)</br>
 
 7. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.  Všimněte si, že pokud máte povolené rozšířené zabezpečení aplikace Internet Explorer, bude přihlášení zablokované.  Pokud se jedná o tento případ, zavřete instalaci, zakažte v Správce serveru rozšířené zabezpečení IE a restartujte instalaci kliknutím na **Průvodce agentem zřizování AAD Connect** .
 8. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce domény služby Active Directory.  Poznámka: účet správce domény by neměl mít požadavky na změnu hesla. V případě vypršení platnosti nebo změny hesla budete muset agenta znovu nakonfigurovat s novými přihlašovacími údaji. Tato operace přidá váš místní adresář.  Klikněte na **Next** (Další).</br>
-![Obrazovka Vítejte](media/how-to-install/install3.png)</br>
+![Snímek obrazovky, na kterém se zobrazuje obrazovka připojit ke službě Active Directory](media/how-to-install/install3.png)</br>
 
 9. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
-![Obrazovka Vítejte](media/how-to-install/install4.png)</br>
+![Snímek obrazovky zobrazující obrazovku "konfigurace dokončena".](media/how-to-install/install4.png)</br>
 
 10. Po dokončení této operace by se měla zobrazit Poznámka: **vaše konfigurace agenta byla úspěšně ověřena.**  Můžete kliknout na tlačítko **konec**.</br>
 ![Obrazovka Vítejte](media/how-to-install/install5.png)</br>
@@ -125,7 +125,7 @@ Nyní ověříte, že uživatelé, kteří byli v místním adresáři, byli syn
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
 
-1. Přejít na [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: ( user@domain.onmicrosoft.com ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.</br>
    ![Ověření](media/tutorial-single-forest/verify1.png)</br>
 

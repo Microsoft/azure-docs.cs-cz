@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292451"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps
 
@@ -104,11 +104,11 @@ Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový b
 
 Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací tyto informace:
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |----------|------|-------------|
 | `headers` | Objekt JSON | Hlavičky z požadavku |
 | `body` | Objekt JSON | Objekt s obsahem textu z požadavku |
-| `status code` | Integer | Stavový kód z požadavku |
+| `status code` | Celé číslo | Stavový kód z požadavku |
 |||
 
 | Stavový kód | Description |
@@ -247,7 +247,7 @@ Některé koncové body, služby, systémy nebo rozhraní API vrátí odpověď 
 
 Pokud aktivační událost nebo akce HTTP obsahují tyto hlavičky, Logic Apps odebere tato záhlaví z vygenerované zprávy požadavku bez zobrazení upozornění nebo chyby:
 
-* `Accept-*`
+* `Accept-*` hlavičky s výjimkou `Accept-version`
 * `Allow`
 * `Content-*` s těmito výjimkami: `Content-Disposition` , `Content-Encoding` a `Content-Type`
 * `Cookie`

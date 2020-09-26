@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330906"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Jak vynést výkon grafu pomocí Azure Monitor pro virtuální počítače
 
@@ -21,7 +21,7 @@ Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které c
 Níže jsou uvedena omezení pro shromažďování výkonu pomocí Azure Monitor pro virtuální počítače.
 
 - **Dostupná paměť** není dostupná pro virtuální počítače se systémem Red Hat Linux (RHEL) 6. Tato metrika se počítá z **MemAvailable** , která byla představena v [jádru verze 3,14](http://www.man7.org/linux/man-pages/man1/free.1.html).
-- Metriky jsou k dispozici pouze pro datové disky na virtuálních počítačích se systémem Linux pomocí rodiny systému souborů (EXT2, EXT3, EXT4).
+- Metriky jsou k dispozici pouze pro datové disky na virtuálních počítačích se systémem Linux pomocí systému souborů XFS nebo řady EXT systému souborů (EXT2, EXT3, EXT4).
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Perspektiva pro více virtuálních počítačů z Azure Monitor
 

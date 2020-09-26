@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a63bd6be9b21a506054ab5a02fa7f5d6751f303a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1b91763c275e4fd091b7c1554699e5d6f35a6f55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266322"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Kurz: integrace jedné doménové struktury s jedním tenant Azure AD
 
@@ -26,7 +26,7 @@ Tento kurz vás provede vytvořením hybridního prostředí identity pomocí sl
 
 Prostředí, které vytvoříte v tomto kurzu, můžete použít pro testování nebo pro více znalostí s zřizováním cloudu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 ### <a name="in-the-azure-active-directory-admin-center"></a>V centru pro správu Azure Active Directory
 
 1. Vytvořte v tenantovi Azure AD jenom cloudový účet globálního správce. Tímto způsobem můžete spravovat konfiguraci vašeho tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../fundamentals/add-users-azure-active-directory.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
@@ -55,22 +55,22 @@ Prostředí, které vytvoříte v tomto kurzu, můžete použít pro testování
 2. Přihlaste se k Azure Portal pomocí přihlašovacích údajů globálního správce jenom pro Cloud.
 3. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect**a ve středu vyberte **Spravovat zřizování (Preview)**.
 
-   ![Azure Portal](media/how-to-install/install6.png)
+   ![portál Azure](media/how-to-install/install6.png)
 
 4. Klikněte na **Stáhnout agenta**.
 5. Spusťte agenta zřizování Azure AD Connect.
 6. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.
 
-   ![Obrazovka Vítejte](media/how-to-install/install1.png)
+   ![Snímek obrazovky s úvodní obrazovkou balíčku pro zřizovacího agenta pro připojení Microsoft Azure](media/how-to-install/install1.png)
 
 7. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.  Všimněte si, že pokud máte povolené rozšířené zabezpečení aplikace Internet Explorer, bude přihlášení zablokované.  Pokud se jedná o tento případ, zavřete instalaci, zakažte v Správce serveru rozšířené zabezpečení IE a restartujte instalaci kliknutím na **Průvodce agentem zřizování AAD Connect** .
 8. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce domény služby Active Directory.  Poznámka: účet správce domény by neměl mít požadavky na změnu hesla. V případě vypršení platnosti nebo změny hesla budete muset agenta znovu nakonfigurovat s novými přihlašovacími údaji. Tato operace přidá váš místní adresář.  Klikněte na **Next** (Další).
 
-   ![Obrazovka Vítejte](media/how-to-install/install3.png)
+   ![Snímek obrazovky připojit ke službě Active Directory](media/how-to-install/install3.png)
 
 9. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.
 
-   ![Obrazovka Vítejte](media/how-to-install/install4.png)
+   ![Snímek obrazovky zobrazující obrazovku "konfigurace dokončena".](media/how-to-install/install4.png)
 
 10. Po dokončení této operace by se měla zobrazit Poznámka: **vaše konfigurace agenta byla úspěšně ověřena.**  Můžete kliknout na tlačítko **konec**.</br>
 ![Obrazovka Vítejte](media/how-to-install/install5.png)</br>
@@ -83,7 +83,7 @@ K ověření agenta dochází v Azure Portal a na místním serveru, na kterém 
 ### <a name="azure-portal-agent-verification"></a>Ověřování agenta Azure Portal
 Pokud chcete ověřit, že se agent zobrazuje v Azure, postupujte podle těchto kroků:
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 2. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **Spravovat zřizování (Preview)**.</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
 
@@ -128,9 +128,9 @@ Nyní ověříte, že uživatelé, kteří byli v místním adresáři, byli syn
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
 
-1. Přejít na [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: ( user@domain.onmicrosoft.com ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.</br>
-   ![Ověříte](media/tutorial-single-forest/verify1.png)</br>
+   ![Ověření](media/tutorial-single-forest/verify1.png)</br>
 
 Nyní jste úspěšně nastavili hybridní prostředí identity, které můžete použít k otestování a seznámení s tím, co Azure nabízí.
 

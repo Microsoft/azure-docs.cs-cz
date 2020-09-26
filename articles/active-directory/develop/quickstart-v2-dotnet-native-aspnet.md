@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: e3b666ca7418a11bba3091a5ae8191e9c7b33411
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e1b76c9b6a442e3be23ddd54c926b13601287d7f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705805"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354934"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Rychlý Start: volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform
 
@@ -24,7 +24,7 @@ V tomto rychlém startu vystavíte webové rozhraní API a ochráníte ho, aby k
 
 Článek také používá aplikaci Windows Presentation Foundation (WPF) k předvedení toho, jak můžete požádat o přístupový token pro přístup k webovému rozhraní API.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li spustit vzorový kód v tomto článku, budete potřebovat:
 
@@ -162,7 +162,7 @@ Jedním ze způsobů, jak uživatelům z jiných adresářů povolit přístup k
 1. V části **autorizované obory** vyberte rozsah `api://<Application ID>/access_as_user` webového rozhraní API.
 1. Vyberte **Přidat aplikaci**.
 
-## <a name="run-your-project"></a>Spusťte projekt
+### <a name="run-your-project"></a>Spusťte projekt
 
 1. Stisknutím klávesy F5 spusťte projekt. Vaše aplikace TodoListClient by se měla otevřít.
 1. V pravém horním rohu vyberte **Přihlásit**se a pak se přihlaste pomocí osobního účet Microsoft, jako je například live.com nebo Hotmail.com, nebo pracovní nebo školní účet.

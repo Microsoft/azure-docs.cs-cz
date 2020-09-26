@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 55b5b5419734999ebd50ca364251602112e29987
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5b2bb50fc2ad8084d79097fe7acb449821d0a4da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594284"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331056"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Vytvoření aplikační brány s externím přesměrování pomocí Azure PowerShell
 
@@ -156,9 +156,4 @@ V prohlížeči by se měla zobrazit *Bing.com* .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak:
-
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření naslouchacího procesu a pravidla přesměrování
-> * Vytvoření brány Application Gateway
+- [Vytvoření aplikační brány s interním přesměrování pomocí Azure PowerShell](redirect-internal-site-powershell.md)

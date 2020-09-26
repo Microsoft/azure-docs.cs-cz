@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278783"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak povolit spolupráci B2B v Azure Active Directory (A
 
 Ve výchozím nastavení mohou všichni uživatelé a hosté ve vašem adresáři pozvat hosty i v případě, že nejsou přiřazeni k roli správce. Nastavení externí spolupráce vám umožní zapnout nebo vypnout pozvánky hostů pro různé typy uživatelů ve vaší organizaci. Můžete také delegovat pozvánky na jednotlivé uživatele přiřazením rolí, které jim umožní pozvat hosty.
 
-Azure AD umožňuje omezit, co můžou externí uživatelé typu Host zobrazit v adresáři služby Azure AD. Ve výchozím nastavení jsou uživatelé typu Host nastaveni na úroveň omezené úrovně oprávnění, která je blokuje při vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře, ale umožňuje zobrazit členství neskrytých skupin. Nové nastavení ve verzi Preview umožňuje omezit přístup hostů ještě dál, aby mohli hosté zobrazit jenom svoje vlastní informace o profilu. 
+Azure AD umožňuje omezit, co můžou externí uživatelé typu Host zobrazit v adresáři služby Azure AD. Ve výchozím nastavení jsou uživatelé typu Host nastaveni na úroveň omezené úrovně oprávnění, která je blokuje při vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře, ale umožňuje zobrazit členství neskrytých skupin. Nové nastavení ve verzi Preview umožňuje omezit přístup hostů ještě dál, aby mohli hosté zobrazit jenom svoje vlastní informace o profilu. Podrobnosti najdete v tématu [omezení oprávnění přístupu hosta (Preview)](../users-groups-roles/users-restrict-guest-permissions.md).
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>Konfigurace nastavení externí spolupráce B2B
 
@@ -44,9 +44,6 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
 3. Vyberte externí **identity**externí  >  **nastavení spolupráce**.
 
 4. V části **omezení přístupu uživatele typu Host (Preview)** vyberte úroveň přístupu, kterou mají mít uživatelé typu Host:
-
-   > [!IMPORTANT]
-   > Po krátkou dobu tyto nové ovládací prvky portálu pro uživatelská oprávnění typu Host budou viditelné pouze pomocí adresy URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . Další informace najdete v tématu [omezení oprávnění přístupu hosta (Preview)](https://aka.ms/exid-users-restrict-guest-permissions).
 
    - **Uživatelé typu Host mají stejný přístup jako členové (nejvíc včetně)**: Tato možnost dává hostům stejný přístup k prostředkům a datům Azure AD jako členské uživatele.
 

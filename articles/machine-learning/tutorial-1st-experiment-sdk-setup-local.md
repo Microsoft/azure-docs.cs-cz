@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Začínáme se strojovým učením – Python'
+title: 'Kurz: Začínáme se službou Machine Learning – Python'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se naučíte používat sadu SDK Azure Machine Learning Python spuštěnou ve vašem osobním vývojovém prostředí.
+description: V tomto kurzu se naučíte používat sadu SDK Azure Machine Learning pro Python spuštěnou ve vašem osobním vývojovém prostředí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,75 +11,75 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 48edc138e7ab16e712339d6291db52a4a2b36b32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c0fe3c3808709de732bec8ce0599d380094405e8
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368477"
 ---
-# <a name="tutorial-get-started-with-azure-machine-learning-on-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
+# <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
-V této **čtyři sérii kurzů**se seznámíte se základy Azure Machine Learning a dokončení úloh Python ml na základě úloh v cloudu Azure, včetně těchto:
+V této *čtyři sérii kurzů*se naučíte základy Azure Machine Learning a dokončují úlohy strojového učení v Pythonu založené na úlohách na cloudové platformě Azure. Mezi tyto úlohy patří:
 
-1. Nastavte pracovní prostor a své místní vývojové prostředí Machine Learning.
-2. Spusťte kód v cloudu pomocí sady Python SDK pro Azure Machine Learning.
+1. Nastavte pracovní prostor a místní vývojové prostředí pro strojové učení.
+2. Spusťte kód v cloudu pomocí sady Azure Machine Learning SDK pro Python.
 3. Spravujte prostředí Pythonu, které používáte pro školení modelů.
 4. Nahrajte data do Azure a využijte tato data při školení.
 
-V **části 1 této série kurzů**budete:
+V části 1 této série kurzů budete:
 
 > [!div class="checklist"]
-> * Instalace sady Azure Machine Learning SDK
-> * Nastavení adresářové struktury pro kód
-> * Vytvoření pracovního prostoru Azure Machine Learning
-> * Konfigurace místního vývojového prostředí
-> * Nastavení výpočetního clusteru
+> * Nainstalujte sadu Azure Machine Learning SDK.
+> * Nastavte adresářovou strukturu pro kód.
+> * Vytvořte pracovní prostor Azure Machine Learning.
+> * Nakonfigurujte místní vývojové prostředí.
+> * Nastavte výpočetní cluster.
 
 >[!NOTE]
-> Tato série kurzů se zaměřuje na Azure Machine Learning koncepty __založené__ na úlohách strojového učení v Pythonu, které jsou náročné na výpočetní výkon a/nebo vyžadují reprodukovatelnost. Pokud se vaše úkoly strojového učení nevejdou do tohoto profilu, použijte [funkci Jupyter nebo RStudio na instanci služby Azure Machine Learning COMPUTE](tutorial-1st-experiment-sdk-setup.md) k připojení k Azure Machine Learning.
+> Tato série kurzů se zaměřuje na Azure Machine Learning koncepty *založené* na úlohách strojového učení v Pythonu, které jsou náročné na výpočetní výkon a/nebo vyžadují reprodukovatelnost. Pokud se vaše úkoly strojového učení nevejdou do tohoto profilu, použijte [funkci Jupyter nebo RStudio na instanci služby Azure Machine Learning COMPUTE](tutorial-1st-experiment-sdk-setup.md) pro přesun do Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušejte [Azure Machine Learning](https://aka.ms/AMLFree) dnes.
-- Seznamte se s koncepty Pythonu a [Machine Learning](concept-azure-machine-learning-architecture.md). Například prostředí, školení, bodování a tak dále.
-- Místní vývojové prostředí – notebook s nainstalovaným Pythonem a vaše oblíbené integrované vývojové prostředí (např.: VSCode, PyCharm, Jupyter atd.).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
+- Seznamte se s koncepty Pythonu a [Machine Learning](concept-azure-machine-learning-architecture.md). Mezi příklady patří prostředí, školení a bodování.
+- Místní vývojové prostředí: notebook s nainstalovaným Pythonem a vaše oblíbené integrované vývojové prostředí (například Visual Studio Code, PyCharm nebo Jupyter).
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Instalace sady Azure Machine Learning SDK
 
-V celém tomto kurzu používáme sadu Azure Machine Learning Python SDK.
+V celém tomto kurzu používáme sadu SDK Azure Machine Learning pro Python.
 
-Můžete použít nástroje, které jsou pro vás známé, například: Conda, PIP a tak dále, aby bylo možné nastavit prostředí pro použití v celém tomto kurzu. Do prostředí nainstalujte Azure Machine Learning Python SDK přes PIP:
+K nastavení prostředí pro použití v rámci tohoto kurzu můžete použít nástroje, které jsou pro vás známé (například conda a PIP). Nainstalujte do prostředí sadu SDK Azure Machine Learning SDK pro Python přes PIP:
 
 ```bash
 pip install azureml-sdk
 ```
 
-## <a name="create-directory-structure-for-code"></a>Vytvořit adresářovou strukturu pro kód
-Doporučujeme, abyste pro tento kurz nastavili následující jednoduchý adresář:
+## <a name="create-a-directory-structure-for-code"></a>Vytvoření adresářové struktury pro kód
+Pro tento kurz doporučujeme nastavit následující jednoduchou strukturu adresářů:
 
 ```markdown
 tutorial
 └──.azureml
 ```
 
-- **kurz** (adresář nejvyšší úrovně projektu)
-- **. AzureML** (skrytý podadresář kurzu): `.azureml` adresář se používá k ukládání Azure Machine Learning konfiguračních souborů.
+- `tutorial`: Adresář nejvyšší úrovně projektu.
+- `.azureml`: Skrytý podadresář pro ukládání Azure Machine Learning konfiguračních souborů.
 
-## <a name="create-an-azure-machine-learning-workspace"></a>Vytvoření pracovní prostor Azure Machine Learning
+## <a name="create-an-azure-machine-learning-workspace"></a>Vytvoření pracovního prostoru Azure Machine Learning
 
 Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning a je centralizované místo pro:
 
-- Správa prostředků, jako jsou výpočetní prostředky
-- Ukládání prostředků, jako jsou poznámkové bloky, prostředí, datové sady, kanály, modely, koncové body atd.
-- Spolupráce s ostatními členy týmu
+- Správa prostředků, jako jsou výpočetní prostředky.
+- Uložte prostředky, jako jsou poznámkové bloky, prostředí, datové sady, kanály, modely a koncové body.
+- Spolupracujte s ostatními členy týmu.
 
-V horním nadřazeném adresáři – `tutorial` přidejte nový soubor Pythonu s názvem `01-create-workspace.py` s následujícím kódem. Přizpůsobte parametry (název, ID předplatného, skupina prostředků a [umístění](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service) podle vašich požadavků).
+V adresáři nejvyšší úrovně `tutorial` přidejte nový soubor Pythonu s názvem `01-create-workspace.py` pomocí následujícího kódu. S vašimi preferencemi Přizpůsobte parametry (název, ID předplatného, skupina prostředků a [umístění](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)).
 
 Kód můžete spustit v interaktivní relaci nebo jako soubor Pythonu.
 
 >[!NOTE]
-> Při použití místního vývojového prostředí (např. přenosný počítač) budete požádáni o ověření v pracovním prostoru pomocí *kódu zařízení* při prvním spuštění kódu uvedeného níže. Postupujte podle pokynů na obrazovce.
+> Pokud používáte místní vývojové prostředí (například přenosný počítač), budete požádáni o ověření v pracovním prostoru pomocí *kódu zařízení* při prvním spuštění následujícího kódu. Postupujte podle pokynů na obrazovce.
 
 ```python
 # tutorial/01-create-workspace.py
@@ -102,7 +102,7 @@ cd <path/to/tutorial>
 python ./01-create-workspace.py
 ```
 
-Po spuštění výše uvedeného fragmentu kódu bude struktura složek vypadat takto:
+Po spuštění předchozího fragmentu kódu bude struktura složek vypadat takto:
 
 ```markdown
 tutorial
@@ -111,15 +111,16 @@ tutorial
 └──01-create-workspace.py
 ```
 
-Tento soubor `.azureml/config.json` obsahuje metadata nutná pro připojení k pracovnímu prostoru Azure Machine Learning – konkrétně ID předplatného, název skupiny prostředků a pracovní prostor. 
+Soubor `.azureml/config.json` obsahuje metadata nutná pro připojení k pracovnímu prostoru Azure Machine Learning. Konkrétně obsahuje ID vašeho předplatného, skupinu prostředků a název pracovního prostoru. 
 
 > [!NOTE]
-> Obsah `config.json` není tajných kódů – je zcela jemný, aby bylo možné tyto podrobnosti sdílet.
+> Obsah `config.json` není tajných kódů. Tyto podrobnosti je dobré sdílet.
+>
 > K interakci s pracovním prostorem Azure Machine Learning je ještě vyžadováno ověřování.
 
 ## <a name="create-an-azure-machine-learning-compute-cluster"></a>Vytvoření clusteru Azure Machine Learning COMPUTE
 
-Vytvořte skript v jazyce Python v `tutorial` adresáři nejvyšší úrovně s názvem `02-create-compute.py` a naplňte do něj následující kód, který vytvoří Azure Machine Learning výpočetní cluster, který se automaticky škáluje mezi 0 a čtyřmi uzly:
+Vytvořte skript Pythonu v `tutorial` adresáři nejvyšší úrovně s názvem `02-create-compute.py` . Naplňte ho pomocí následujícího kódu, abyste vytvořili Azure Machine Learning výpočetní cluster, který se automaticky škáluje mezi nulami a čtyřmi uzly:
 
 ```python
 # tutorial/02-create-compute.py
@@ -127,12 +128,12 @@ from azureml.core import Workspace
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 
-ws = Workspace.from_config() # this automatically looks for a directory .azureml
+ws = Workspace.from_config() # This automatically looks for a directory .azureml
 
 # Choose a name for your CPU cluster
 cpu_cluster_name = "cpu-cluster"
 
-# Verify that cluster does not exist already
+# Verify that the cluster does not exist already
 try:
     cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
     print('Found existing cluster, use it.')
@@ -153,7 +154,7 @@ python ./02-create-compute.py
 
 
 > [!NOTE]
-> Po vytvoření clusteru bude mít 0 uzlů zřízených. Proto cluster neúčtuje **does not** náklady, dokud neodešlete úlohu. Pokud bude tento cluster nečinný po 2400 sekund (40 minut), bude se škálovat dolů.
+> Po vytvoření clusteru bude mít 0 uzlů zřízených. *Cluster* neúčtuje náklady, dokud úlohu neodešlete. Pokud bude tento cluster nečinný po 2 400 sekund (40 minut), bude se škálovat dolů.
 
 Vaše struktura složek teď bude vypadat takto:
 
@@ -169,11 +170,11 @@ tutorial
 
 V tomto kurzu instalace máte následující:
 
-- Vytvořil se pracovní prostor Azure Machine Learning.
-- Nastavení místního vývojového prostředí
+- Byl vytvořen Azure Machine Learning pracovní prostor.
+- Nastavte své místní vývojové prostředí.
 - Vytvořili jste výpočetní cluster Azure Machine Learning.
 
 V dalším kurzu vás provedete odesláním skriptu do Azure Machine Learning výpočetnímu clusteru.
 
 > [!div class="nextstepaction"]
-> [Kurz: spuštění skriptu Pythonu "Hello World" v Azure](tutorial-1st-experiment-hello-world.md)
+> [Kurz: spuštění "Hello World!" Skript Pythonu v Azure](tutorial-1st-experiment-hello-world.md)

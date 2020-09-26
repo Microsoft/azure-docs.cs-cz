@@ -6,12 +6,12 @@ ms.service: data-lake-analytics
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: how-to
 ms.date: 10/13/2016
-ms.openlocfilehash: 2fdce38b19cd38439baa5d640707d159cd713657
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8688af24e2b67f0e21de8344188b9a946f3258b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331943"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Použití zobrazení spuštění vrcholu v Data Lakech nástrojích pro Visual Studio
 Naučte se používat zobrazení spuštění vrcholu pro zkoušku Data Lake Analytics úloh.
@@ -20,20 +20,20 @@ Naučte se používat zobrazení spuštění vrcholu pro zkoušku Data Lake Anal
 ## <a name="open-the-vertex-execution-view"></a>Otevření zobrazení spuštění vrcholu
 V Data Lakech nástrojích pro Visual Studio otevřete úlohu U-SQL. V levém dolním rohu klikněte na **zobrazení spouštění vrcholů** . Může se zobrazit výzva k načtení profilů a v závislosti na připojení k síti může trvat delší dobu.
 
-![Zobrazení spuštění vrcholu Data Lake Analytics nástrojů](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
+![Snímek obrazovky zobrazující zobrazení spuštění vrcholu Data Lake Analytics nástrojů](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
 
 ## <a name="understand-vertex-execution-view"></a>Principy zobrazení spouštění vrcholu
 Zobrazení spuštění vrcholu má tři části:
 
-![Zobrazení spuštění vrcholu Data Lake Analytics nástrojů](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
+![Snímek obrazovky, který zobrazuje zobrazení spuštění vrcholu pomocí zvýrazněných podoken vrcholů a Center-Top a Center-Bottom](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
 **Selektor vrcholů** na levé straně umožňuje vybrat vrcholy podle funkcí (například přečtených prvních 10 dat nebo zvolit podle fáze). Jedním z nejčastěji používaných filtrů je zobrazit **vrcholy v kritické cestě**. **Kritická cesta** je nejdelší řetěz vrcholů úlohy U-SQL. Porozumění důležité cestě je užitečné pro optimalizaci vašich úloh pomocí kontroly, který vrchol trvá nejdelší dobu.
   
-![Zobrazení spuštění vrcholu Data Lake Analytics nástrojů](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
+![Snímek obrazovky, který zobrazuje horní prostřední podokno zobrazení spuštění vrcholu, které zobrazuje stav spouštění všech vrcholů.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
 Horní prostřední podokno zobrazuje **stav spuštění všech vrcholů**.
   
-![Zobrazení spuštění vrcholu Data Lake Analytics nástrojů](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
+![Snímek obrazovky, který ukazuje dolní prostřední podokno zobrazení spuštění vrcholu, které zobrazuje informace o každém vrcholu.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 
 Dolní prostřední podokno zobrazuje informace o každém vrcholu:
 * Název procesu: název instance vrcholu. Skládá se z různých částí v části Stage | Vrchol | VertexRunInstance. Například vrchol SV7_Split [62]. v1 představuje druhou spuštěnou instanci (. v1, index začínající na 0) číslo vrcholu 62 ve fázi SV7_Split.

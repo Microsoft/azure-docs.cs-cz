@@ -1,6 +1,6 @@
 ---
 title: Referenční informace k atributu Workday
-description: Informace o tom, které atributy z SuccessFactors jsou podporované SuccessFactors zřizováním na základě lidských zdrojů
+description: Zjistěte, které atributy můžete načíst z Workday pomocí dotazů XPATH.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 4d6e5fb765125a4cf68c4939e7350feb84509bf2
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266560"
 ---
 # <a name="workday-attribute-reference"></a>Referenční informace k atributu Workday
 
@@ -226,7 +226,7 @@ Pokud chcete do tabulky XPATH přidat další atributy pro výhody pro zákazní
 ## <a name="supported-xpath-functions"></a>Podporované funkce XPATH
 Níže je uveden seznam funkcí XPATH podporovaných [knihovnou XPath Microsoft .NET](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , které můžete použít při vytváření výrazu rozhraní API XPath. 
 
-* name
+* jméno
 * poslední
 * position
 * řetězec

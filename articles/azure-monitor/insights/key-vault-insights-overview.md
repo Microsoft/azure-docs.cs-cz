@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278613"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault
 Azure Monitor pro Key Vault poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
@@ -25,21 +25,6 @@ Před přechodem na prostředí byste měli pochopit, jak prezentuje a vizualizu
 -    **Přizpůsobitelné** , kde můžete změnit metriky, které chcete zobrazit, upravit nebo nastavit prahové hodnoty, které odpovídají vašim limitům, a uložit vlastní sešit. Grafy v sešitě lze připnout na řídicí panely Azure.
 
 Azure Monitor pro Key Vault kombinuje protokoly a metriky, aby poskytovaly globální řešení monitorování. Všichni uživatelé mají přístup k datům monitorování založeným na metrikách, ale zahrnutí vizualizací založených na protokolech může vyžadovat, aby uživatelé [povolili protokolování jejich Azure Key Vault](../../key-vault/general/logging.md).
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>Konfigurace trezorů klíčů pro monitorování
-
-> [!NOTE]
-> Povolení protokolů je placená služba, která poskytuje další možnosti monitorování.
-
-1. Karta latence & v operaci vám pomůže určit, kolik trezorů klíčů je povolených. Chcete-li začít s shromažďováním, vyberte tlačítko **Povolit** , které vás přenese do samostatného sešitu, který obsahuje seznam trezorů klíčů, které vyžadují povolení diagnostických protokolů.
-
-    ![Snímek obrazovky s kartou operace a latence se zobrazeným tlačítkem Blue Enable](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. Chcete-li povolit protokoly diagnostiky, klikněte na odkaz **Povolit** pod sloupcem akce a vytvořte nové nastavení diagnostiky, které odesílá protokoly do Log Analytics pracovního prostoru. Doporučuje se odesílat všechny protokoly do stejného pracovního prostoru.
-
-3. Po uložení nastavení diagnostiky budete moct zobrazit všechny grafy založené na protokolech a vizualizace pod Key Vault Insights. Upozorňujeme, že k zahájení načítání protokolů může trvat několik minut.
-
-4. Další pomoc týkající se povolení protokolů diagnostiky pro vaši službu Key Vault najdete v [úplné příručce](../../key-vault/general/logging.md).
 
 ## <a name="view-from-azure-monitor"></a>Zobrazit z Azure Monitor
 
@@ -165,10 +150,6 @@ Je povolený limit 200 trezorů klíčů, které se dají vybrat a zobrazit. Bez
 Zobrazujeme jenom odběry, které obsahují trezory klíčů, zvolené z vybraného filtru předplatného, které jsou v hlavičce Azure Portal vybrané v adresáři a předplatném.
 
 ![Snímek obrazovky s filtrem předplatných](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>Zobrazuje se chybová zpráva oznamující, že "dotaz překračuje maximální povolený počet pracovních prostorů/oblastí", co dělat hned
-
-V současné době existuje omezení na 25 oblastí a 200 pracovních prostorů, aby bylo možné zobrazit vaše data, budete muset snížit počet předplatných nebo skupin prostředků.
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Chci udělat změny nebo přidat další vizualizace Key Vault Insights, jak to mám udělat
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 00771f950271cfbc86994c01b6d866c5983f1b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278664"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -29,6 +29,7 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 
 | Otázka | Odpověď |
 | -------- | ------ |
+| Proč mám problémy s Apple Watchem na watchOS 7? | Došlo k potížím s schvalováním oznámení na watchOS 7 a pracujeme na tom, abychom tento problém získali s Apple. Mezitím by měla být všechna oznámení, která vyžadují aplikaci Microsoft Authenticator watchOS, schválená v telefonu.  |
 | Registruje se zařízení, které souhlasíte s tím, že společnosti nebo službě poskytnete přístup k zařízení? | Registrace zařízení umožňuje vašemu zařízení přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu zařízení. |
 | Co je zámek aplikace a jak ho můžu použít k lepšímu zabezpečení? | Zámek aplikace pomáhá lépe zabezpečit vaše jednorázové heslo, informace o aplikaci a nastavení aplikace. Když je povolen zámek aplikace, budete požádáni o ověření pomocí PIN kódu zařízení nebo biometriky pokaždé, když otevřete ověřovací data. Zámek aplikace také pomáhá zajistit, že jste jediným z nich, kdo může schvalovat oznámení pomocí výzvy k zadání kódu PIN nebo biometriky, kdykoli schválíte oznámení o přihlášení. Můžete zapnout nebo vypnout zámek aplikace na stránce nastavení ověřovatele. Ve výchozím nastavení je zámek aplikace zapnutý při nastavení PIN nebo biometriky na vašem zařízení.<br><br>Bohužel není nijak zaručeno, že zámek aplikace zabrání někomu v přístupu k ověřovacím údajům. Důvodem je, že k registraci zařízení může docházet v jiných umístěních mimo ověřovatel, například v nastavení účtu Android nebo v aplikaci Portál společnosti. |
 | Mám mobilní zařízení se systémem Windows a Microsoft Authenticator ve Windows Mobile se už nepoužívá. Můžu pokračovat v ověřování pomocí aplikace? | Všechna ověřování pomocí Microsoft Authenticator ve Windows Mobile budou vycházet po 15. červenci 2020. Důrazně doporučujeme použít alternativní metodu ověřování, abyste se vyhnuli uzamčení účtů.<br>Mezi alternativní možnosti pro podnikové uživatele patří:<br><ul><li>Nastavuje se Microsoft Authenticator pro [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) nebo [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).</li><li>[Nastavení serveru SMS](multi-factor-authentication-setup-phone-number.md) pro příjem ověřovacích kódů.</li><li>Nastavení telefonního čísla pro příjem [telefonních hovorů pro ověření jejich identity](multi-factor-authentication-setup-office-phone.md).</li></ul><br>Mezi alternativní možnosti pro uživatele osobních účet Microsoft patří:<br><ul><li>Nastavuje se Microsoft Authenticator pro [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) nebo [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).</li><li>Nastavení alternativní metody přihlašování (SMS nebo e-mailu) prostřednictvím aktualizace bezpečnostních údajů ze [stránky zabezpečení účtu Microsoft](https://account.microsoft.com/security/).</li></ul> |

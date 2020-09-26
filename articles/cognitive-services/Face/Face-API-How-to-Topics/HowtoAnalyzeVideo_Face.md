@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9de803789b7ec11a971cf9a79a5c4665ac372cb4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f9d9fa461291b2fe72e9d69928163bb54e9e1be0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928135"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303807"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Příklad: Analýza videí v reálném čase
 
@@ -221,5 +221,4 @@ V této příručce jste zjistili, jak spustit analýzu v reálném čase v reá
 V [úložišti GitHubu](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) můžete poskytnout zpětnou vazbu a návrhy nebo pro širší názory na rozhraní API na [webu UserVoice](https://cognitive.uservoice.com/).
 
 ## <a name="related-topics"></a>Související témata
-- [Jak identifikovat tváře v obrázku](HowtoIdentifyFacesinImage.md)
 - [Postup rozpoznání tváří v obrázku](HowtoDetectFacesinImage.md)

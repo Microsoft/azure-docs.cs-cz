@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313307"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
 Odolnost duplicitních atributů je funkce v Azure Active Directory, která eliminuje tření způsobené ProxyAddress **a konflikty** protokolu **ProxyAddress** SMTP při spuštění některého z nástrojů pro synchronizaci od společnosti Microsoft.
@@ -124,7 +124,7 @@ K provedení širokého vyhledávání řetězců použijte příznak **-SearchS
 ## <a name="microsoft-365-admin-center"></a>Centrum pro správu služby Microsoft 365
 Chyby synchronizace adresářů můžete zobrazit v centru pro správu Microsoft 365. Sestava v centru pro správu Microsoft 365 zobrazuje pouze **uživatelské** objekty, které obsahují tyto chyby. Nezobrazuje informace o konfliktech mezi **skupinami** a **Kontakty**.
 
-![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktivní uživatelé")
+![Snímek obrazovky, který zobrazuje chyby synchronizace adresářů v centru pro správu Microsoft 365.](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktivní uživatelé")
 
 Pokyny k zobrazení chyb synchronizace adresářů v centru pro správu Microsoft 365 najdete v tématu [Identifikace chyb synchronizace adresářů v Microsoft 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
@@ -132,7 +132,7 @@ Pokyny k zobrazení chyb synchronizace adresářů v centru pro správu Microsof
 Když se při tomto novém chování zpracuje objekt s duplicitním atributem, do e-mailové zprávy o chybě synchronizace identity, který se pošle na kontaktní zprávu s technickým oznámením, se pošle oznámení. V tomto chování však existuje důležitá změna. V minulosti byly informace o konfliktu duplicitních atributů zahrnuty do každé následné zprávy o chybách, dokud konflikt nebude vyřešen. S tímto novým chováním se oznámení o chybách daného konfliktu zobrazí jenom jednou – v okamžiku, kdy je konfliktní atribut v karanténě.
 
 Tady je příklad, jak e-mailové oznámení vypadá jako u ProxyAddress konfliktu:  
-    ![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktivní uživatelé")  
+    ![Snímek obrazovky, který zobrazuje příklad e-mailového oznámení pro ProxyAddress konflikt.](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktivní uživatelé")  
 
 ## <a name="resolving-conflicts"></a>Řešení konfliktů
 Strategie řešení potíží a řešení taktiku pro tyto chyby by se neměly lišit od způsobu zpracování duplicitních chyb atributů v minulosti. Jediným rozdílem je, že úloha časovače se v rámci tenanta na straně služby po vyřešení konfliktu automaticky přidá k příslušnému objektu.
@@ -145,7 +145,7 @@ Následující článek popisuje různé strategie řešení potíží a řešen
 **Základní chování:**
 
 1. Objekty s konkrétními konfiguracemi atributů nadále obdrží chyby exportu, a to na rozdíl od duplicitních atributů, které jsou v karanténě.  
-   Například:
+   Příklad:
    
     a. Ve službě AD se vytvoří nový uživatel s hlavním názvem uživatele (UPN) **jana \@ contoso.com** a ProxyAddress **SMTP: Jan \@ contoso.com**
    
@@ -157,7 +157,7 @@ Následující článek popisuje různé strategie řešení potíží a řešen
 **Sestava portálu Office**:
 
 1. Podrobná chybová zpráva pro dva objekty v sadě konfliktů hlavního názvu uživatele (UPN) je stejná. To značí, že se změnil hlavní název uživatele (UPN) i v karanténě, pokud ve skutečnosti pouze jeden z nich změnil data.
-2. Podrobná chybová zpráva pro konflikt hlavního názvu uživatele (UPN) zobrazuje špatný parametr DisplayName pro uživatele, který měl své hlavní název uživatele změněn nebo v karanténě. Například:
+2. Podrobná chybová zpráva pro konflikt hlavního názvu uživatele (UPN) zobrazuje špatný parametr DisplayName pro uživatele, který měl své hlavní název uživatele změněn nebo v karanténě. Příklad:
    
     a. **Uživatel A** nejprve synchronizuje s hlavním názvem uživatele **(UPN) = User \@ contoso.com**.
    

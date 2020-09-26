@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314483"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti na Azure Security Center
 Tento dokument vám poskytne plány připravenosti, které vám pomůžou zahájit používání služby Azure Security Center.
@@ -29,8 +29,8 @@ Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou 
 V začátcích používání služby Security Center vám pomůžou následující zdroje.
 
 Články
-- [Úvod do Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- [Úvodní příručka ke službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Úvod do Azure Security Center](security-center-introduction.md)
+- [Úvodní příručka ke službě Azure Security Center](security-center-get-started.md)
 
 Videa
 - [Rychlé úvodní video](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
@@ -42,7 +42,7 @@ Pokud chcete využívat všech výhod služby Security Center, je důležité po
 
 Následující zdroje vám pomůžou při plánování i provozu.
 
-- [Průvodce plánováním a provozem služby Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Připojení počítačů ke službě Security Center
@@ -100,7 +100,7 @@ Videa
 * [Playbook doporučených postupů pro Firewall webových aplikací (WAF) ve službě Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
 * [Playbook Azure Security Center: Výstrahy zabezpečení](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 * [Stránky dokumentace služby Security Center](https://docs.microsoft.com/azure/security-center/)
 * [Stránky dokumentace rozhraní Security Center REST API](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Nejčastější dotazy ke službě Azure Security Center (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq)

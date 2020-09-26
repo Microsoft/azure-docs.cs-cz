@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/03/2019
+ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235220"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266696"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -276,8 +276,8 @@ Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. 
 ## <a name="provisioning-a-multi-value-attribute"></a>Zřizování atributu s více hodnotami
 Některé atributy jako phoneNumbers a e-maily jsou atributy s více hodnotami, kde možná budete muset zadat různé typy telefonních čísel nebo e-mailů. Použijte níže uvedený výraz pro vícehodnotové atributy. Umožňuje zadat typ atributu a mapovat ho na odpovídající atribut uživatele Azure AD pro tuto hodnotu. 
 
-* phoneNumbers [typ EQ "Work"]. Value
-* phoneNumbers [Type EQ "mobilní"]. Value
+* phoneNumbers[type eq "work"].value
+* phoneNumbers[type eq "mobile"].value
 * phoneNumbers [typ EQ "fax"]. hodnota
 
    ```json
@@ -316,6 +316,7 @@ Výběrem této možnosti efektivně vynutíte opětovnou synchronizaci všech u
 - Služba zřizování Azure AD nepodporuje zřizování hodnot null.
 - Primární klíč, obvykle "ID", by neměl být zahrnut jako cílový atribut v mapování atributů. 
 - Atribut role obvykle musí být namapován pomocí výrazu místo přímého mapování. Další podrobnosti o mapování rolí najdete v části výše. 
+- I když můžete zakázat skupiny z mapování, zákaz uživatelů není podporován. 
 
 ## <a name="next-steps"></a>Další kroky
 

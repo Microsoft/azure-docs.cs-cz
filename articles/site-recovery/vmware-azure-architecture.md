@@ -7,14 +7,14 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 217e3b9de7c9a46174c6ce6d1a3b151c904a7bf2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314109"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii z VMware do Azure
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii VMware do Azure
 
 Tento článek popisuje architekturu a procesy používané při nasazení replikace pro zotavení po havárii, převzetí služeb při selhání a obnovení virtuálních počítačů VMware mezi místní lokalitou VMware a Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) .
 
@@ -50,6 +50,8 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 | Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
 
+Úplný seznam adres URL, které mají být na seznamu povolených pro komunikaci mezi místní infrastrukturou Azure Site Recovery a službami Azure, najdete [v části požadavky na síť v článku](vmware-azure-deploy-configuration-server.md#prerequisites)požadavky.
+
 ## <a name="replication-process"></a>Proces replikace
 
 1. Když pro virtuální počítač povolíte replikaci, začne počáteční replikace do Azure Storage s použitím zadaných zásad replikace. Všimněte si, že:
@@ -82,6 +84,54 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 5. Ve výchozím nastavení je automatické spuštění resynchronizace naplánováno mimo kancelářskou dobu. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Provedete to tak, že přejdete na Azure Portal a > znovu **synchronizujete**virtuální počítač.
 6. Pokud se výchozí opětovná synchronizace nezdařila mimo kancelářskou dobu a vyžaduje se ruční zásah, vygeneruje se na konkrétním počítači v Azure Portal chyba. Tuto chybu můžete vyřešit a ručním spuštěním synchronizace.
 7. Po dokončení opětovné synchronizace bude obnovena replikace rozdílových změn.
+
+## <a name="replication-policy"></a>Zásady replikace 
+
+Když povolíte replikaci virtuálních počítačů Azure, Site Recovery ve výchozím nastavení vytvoří novou zásadu replikace s výchozími nastaveními shrnutými v tabulce.
+
+**Nastavení zásad** | **Podrobnosti** | **Výchozí**
+--- | --- | ---
+**Uchování bodu obnovení** | Určuje, jak dlouho Site Recovery udržuje body obnovení. | 24 hodin
+**Frekvence snímků konzistentní vzhledem k aplikacím** | Jak často Site Recovery přebírá snímek konzistentní vzhledem k aplikacím. | Každé čtyři hodiny
+
+### <a name="managing-replication-policies"></a>Správa zásad replikace
+
+Výchozí nastavení zásad replikace můžete spravovat a upravovat následujícím způsobem:
+- Nastavení můžete upravit při povolování replikace.
+- Zásadu replikace můžete vytvořit kdykoli a pak ji použít při povolování replikace.
+
+### <a name="multi-vm-consistency"></a>Konzistence s více virtuálními počítači
+
+Pokud chcete, aby se virtuální počítače replikoval společně a aby při převzetí služeb při selhání sdílely body obnovení konzistentní vzhledem k aplikacím a konzistentní vzhledem k aplikacím, můžete je shromáždit dohromady do replikační skupiny. Konzistence s více virtuálními počítači ovlivňuje výkon úloh a měla by se používat jenom pro virtuální počítače, na kterých běží úlohy, které vyžadují konzistenci napříč všemi počítači. 
+
+
+
+## <a name="snapshots-and-recovery-points"></a>Snímky a body obnovení
+
+Body obnovení jsou vytvářeny ze snímků disků virtuálních počítačů pořízených v určitém časovém okamžiku. Při převzetí služeb při selhání virtuálního počítače použijete bod obnovení k obnovení virtuálního počítače v cílovém umístění.
+
+Při převzetí služeb při selhání obecně chceme zajistit, aby se virtuální počítač spouštěl bez poškození nebo ztráty dat a aby se pro aplikace, které běží na virtuálním počítači, zajistila konzistence dat virtuálního počítače. To závisí na typu provedených snímků.
+
+Site Recovery pořizuje snímky následujícím způsobem:
+
+1. Když pro ně zadáte četnost, Site Recovery se ve výchozím nastavení přebírají snímky dat konzistentní vzhledem k chybám a snímky konzistentní vzhledem k aplikacím.
+2. Body obnovení se vytvářejí ze snímků a ukládají se v souladu s nastaveními uchovávání v zásadách replikace.
+
+### <a name="consistency"></a>Konzistence
+
+Následující tabulka vysvětluje různé typy konzistence.
+
+### <a name="crash-consistent"></a>Konzistentní vzhledem k selháním
+
+**Popis** | **Podrobnosti** | **Doporučení**
+--- | --- | ---
+Snímek konzistentní se selháním zachycuje data, která byla na disku při pořízení snímku. Neobsahuje žádné množství paměti.<br/><br/> Obsahuje ekvivalent dat na disku, která by byla k dispozici v případě, že došlo k chybě virtuálního počítače nebo napájecí kabel byl získán ze serveru v okamžiku, kdy se snímek povedl.<br/><br/> Konzistentní se selháním nezaručuje konzistenci dat pro operační systém nebo pro aplikace na virtuálním počítači. | Ve výchozím nastavení vytvoří Site Recovery body obnovení konzistentní vzhledem k chybě každých pět minut. Toto nastavení nelze změnit.<br/><br/>  | V současné době se většina aplikací může obnovovat i z bodů konzistentních vzhledem k selháním.<br/><br/> Body obnovení konzistentní vzhledem k havárii jsou obvykle dostačující pro replikaci operačních systémů a aplikace, jako jsou servery DHCP a tiskové servery.
+
+### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
+
+**Popis** | **Podrobnosti** | **Doporučení**
+--- | --- | ---
+Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím.<br/><br/> Snímek konzistentní vzhledem k aplikacím obsahuje všechny informace v snímku konzistentním s chybou a také všechna data v paměti a probíhajících transakcích. | Snímky konzistentní vzhledem k aplikacím používají služba Stínová kopie svazku (VSS):<br/><br/>   1) Azure Site Recovery používá metodu kopírování pouze pro zálohování (VSS_BT_COPY), která nemění čas zálohování protokolu transakce Microsoft SQL a číslo sekvence. </br></br> 2) když se spustí snímek, služba VSS provede na svazku operaci kopírování na zápis (KRÁVy).<br/><br/>   3) před provedením KRÁVy vytvoří služba Stínová kopie svazku každou aplikaci v počítači, kterou potřebuje k vyprázdnit data rezidentní paměti na disk.<br/><br/>   4) služba VSS pak umožní aplikaci pro zálohování nebo zotavení po havárii (v tomto případě Site Recovery) ke čtení dat snímku a pokračování. | Snímky konzistentní vzhledem k aplikacím jsou pořízeny podle četnosti, kterou zadáte. Tato frekvence by měla být vždy menší než nastavení pro zachování bodů obnovení. Pokud například zachováte body obnovení s použitím výchozího nastavení 24 hodin, měli byste nastavit četnost na méně než 24 hodin.<br/><br/>Jsou složitější a jejich dokončení trvá déle než snímky konzistentní se selháním.<br/><br/> Mají vliv na výkon aplikací spuštěných na virtuálním počítači, který je povolen pro replikaci. 
 
 ## <a name="failover-and-failback-process"></a>Proces převzetí služeb při selhání a navrácení služeb po obnovení
 
