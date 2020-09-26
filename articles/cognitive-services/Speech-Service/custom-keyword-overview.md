@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c19650a8f36181e3e003414ff15add071e9a8ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b2763372cc63637f73610e1936e3ea54a4524e7d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918889"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356600"
 ---
 # <a name="what-is-a-keyword"></a>Co je klíčové slovo?
 
@@ -61,6 +61,6 @@ Vytvoření efektivního klíčového slova je důležité pro zajištění, že
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Získat sadu Speech SDK](speech-sdk.md)
 * [Další informace o hlasových asistentech](voice-assistants.md)

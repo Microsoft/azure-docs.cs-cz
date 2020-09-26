@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309995"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics shromažďuje telemetrie z virtuálních počítačů s Windows a Linux v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](/system-center/scom/) a odesílá je do vašeho pracovního prostoru Log Analytics v Azure monitor. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)a [Azure Automation](../../automation/automation-intro.md). Tento článek poskytuje podrobný přehled požadavků na agenty, systém a síť a metody nasazení.
@@ -59,7 +59,7 @@ Podrobné informace o připojení agenta ke skupině pro správu Operations Mana
 
 * Agenti Windows se můžou připojit až ke čtyřem pracovním prostorům, a to i v případě, že jsou připojení ke skupině pro správu System Center Operations Manager.
 * Agent systému Linux nepodporuje více domovských skupin a může se připojit pouze k jednomu pracovnímu prostoru nebo skupině pro správu.
-  
+
 
 ## <a name="security-limitations"></a>Omezení zabezpečení
 
@@ -69,6 +69,8 @@ Podrobné informace o připojení agenta ke skupině pro správu Operations Mana
 ## <a name="installation-options"></a>Možnosti instalace
 
 Existuje několik metod, jak nainstalovat agenta Log Analytics a připojit počítač k Azure Monitor v závislosti na vašich požadavcích. V následujících částech jsou uvedeny možné metody pro různé typy virtuálních počítačů.
+> [!NOTE]
+> Není podporováno naklonování počítače s agentem Log Analytics již byl nakonfigurován. Pokud již byl Agent přidružen k pracovnímu prostoru, nebude fungovat u "zlatých imagí".
 
 ### <a name="azure-virtual-machine"></a>Virtuální počítač Azure
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357960"
 ---
 # <a name="import-soap-api"></a>Importování rozhraní API SOAP
 
@@ -45,7 +45,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 3. Do **Specifikace WSDL** zadejte adresu URL, kde se nachází rozhraní API SOAP.
 4. Ve výchozím nastavení je vybraný přepínač **Průchod SOAP**. S tímto výběrem bude rozhraní API prezentované jako SOAP. Příjemce musí používat pravidla SOAP. Pokud chcete rozhraní API převést na REST, postupujte podle kroků v tématu o [importování rozhraní API SOAP a jeho převedení na REST](restify-soap-api.md).
 
-    ![Průchod](./media/import-soap-api/pass-through.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně vytvořit z W S D L, kde můžete zadat specifikaci W S D L.](./media/import-soap-api/pass-through.png)
 5. Stiskněte klávesu Tab.
 
     Následující pole se vyplní informacemi z rozhraní API SOAP: Zobrazovaný název, Název, Popis.

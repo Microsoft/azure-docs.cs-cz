@@ -9,24 +9,24 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 677b54a09a446ef8af0b410faea9f94b71634712
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b445787c44efca4eb6bdee3e61eb39735e5c6b14
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259896"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Použití .NET pro Apache Spark s Azure synapse Analytics
 
 [.NET for Apache Spark](https://dot.net/spark) poskytuje bezplatnou, open-source a podporu rozhraní .NET pro více platforem pro Spark. 
 
-Poskytuje vazby rozhraní .NET pro Spark, které umožňují přístup k rozhraním API Spark přes jazyky C# a F #. Díky rozhraní .NET pro Apache Spark máte také možnost napsat a spustit uživatelsky definované funkce pro Spark napsané v rozhraní .NET. Rozhraní .NET API pro Spark vám umožní přístup ke všem aspektům Spark dataframes, které vám pomůžou analyzovat vaše data, včetně Spark SQL, rozdílových Lake a strukturovaného streamování.
+Poskytuje vazby rozhraní .NET pro Spark, které umožňují přístup k rozhraním API Spark prostřednictvím jazyků C# a F #. Pomocí rozhraní .NET pro Apache Spark můžete také napsat a spustit uživatelsky definované funkce pro Spark napsané v rozhraní .NET. Rozhraní .NET API pro Spark vám umožní přístup ke všem aspektům Spark dataframes, které vám pomůžou analyzovat vaše data, včetně Spark SQL, rozdílových Lake a strukturovaného streamování.
 
 Data můžete analyzovat pomocí technologie .NET pro Apache Spark prostřednictvím definic úloh Spark Batch nebo pomocí interaktivních poznámkových bloků služby Azure synapse Analytics. V tomto článku se dozvíte, jak používat rozhraní .NET pro Apache Spark s využitím obou postupů v rámci služby Azure synapse.
 
 ## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Odeslání dávkových úloh pomocí definice úlohy Spark
 
-V tomto kurzu se dozvíte, jak pomocí služby Azure synapse Analytics [vytvořit definice úloh Apache Spark pro fondy synapse Spark](apache-spark-job-definitions.md). Pokud jste aplikaci nebalíte k odeslání do Azure synapse, proveďte následující kroky.
+V tomto kurzu se dozvíte, jak pomocí služby Azure synapse Analytics [vytvořit definice úloh Apache Spark pro fondy synapse Spark](apache-spark-job-definitions.md). Pokud jste aplikaci nevložili k odeslání do Azure synapse, proveďte následující kroky.
 
 1. Spusťte následující příkazy pro publikování aplikace. Nezapomeňte nahradit *mySparkApp* cestou k vaší aplikaci.
 
@@ -45,11 +45,13 @@ V tomto kurzu se dozvíte, jak pomocí služby Azure synapse Analytics [vytvoři
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET pro Apache Spark ve službě Azure synapse Analytics – notebooky 
 
-Poznámkové bloky jsou skvělou možností pro vytváření prototypů rozhraní .NET pro Apache Spark kanálů a scénářů. Můžete začít pracovat s, porozumění, filtrováním, zobrazením a vizualizací dat rychle a efektivně. Specialisté na data, odborníci na data, obchodní analytiké a technici strojového učení můžou spolupracovat přes sdílený interaktivní dokument. Zobrazí se okamžité výsledky z průzkumu dat a mohou vizualizovat data ve stejném poznámkovém bloku.
+Poznámkové bloky jsou skvělou možností pro vytváření prototypů rozhraní .NET pro Apache Spark kanálů a scénářů. Můžete začít pracovat s, porozumění, filtrováním, zobrazením a vizualizací dat rychle a efektivně. 
+
+Specialisté na data, odborníci na data, obchodní analytiké a technici strojového učení můžou spolupracovat přes sdílený interaktivní dokument. Zobrazí se okamžité výsledky z průzkumu dat a mohou vizualizovat data ve stejném poznámkovém bloku.
 
 ### <a name="how-to-use-net-for-apache-spark-notebooks"></a>Jak používat rozhraní .NET pro Apache Spark poznámkové bloky
 
-Při vytváření nového poznámkového bloku si zvolíte jádro jazyka, u kterého chcete vyjádřit svoji obchodní logiku. Existuje podpora jádra pro několik jazyků, včetně C#.
+Při vytváření nového poznámkového bloku si zvolíte jádro jazyka, u kterého chcete vyjádřit svoji obchodní logiku. Podpora jádra je k dispozici pro několik jazyků, včetně C#.
 
 Pokud chcete použít .NET pro Apache Spark ve vašem notebooku Azure synapse Analytics, vyberte jako jádro **.NET Spark (C#)** a připojte notebook k existujícímu fondu Spark.
 

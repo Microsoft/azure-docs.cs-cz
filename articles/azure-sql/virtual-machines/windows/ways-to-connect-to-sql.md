@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26052441d19abb6a0c423a3b3d6f6c2d21478814
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272051"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojení k virtuálnímu počítači s SQL Server v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,7 @@ Pokud zřídíte SQL Server virtuální počítač v Azure Portal, máte možnos
 
 Mezi možnosti připojení patří:
 
-| Možnost | Description |
+| Možnost | Popis |
 |---|---|
 | **Republik** | Připojte se k SQL Server přes Internet. |
 | **Hlášen** | Připojte se k SQL Server ve stejné virtuální síti. |
@@ -91,7 +91,7 @@ Za předpokladu, že jste ve své virtuální síti nakonfigurovali DNS, můžet
 Server=mysqlvm;Integrated Security=true
 ```
 
-## <a name="change-sql-connectivity-settings"></a><a id="change"></a>Změnit nastavení připojení SQL
+## <a name="change-sql-connectivity-settings"></a><a id="change"></a> Změnit nastavení připojení SQL
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -111,7 +111,7 @@ Nastavení připojení pro virtuální počítač s SQL Server můžete změnit 
 
    ![Oznámení o aktualizaci virtuálního počítače SQL](./media/ways-to-connect-to-sql/sql-vm-updating-notification.png)
 
-## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a>Povolení protokolu TCP/IP pro edice Developer a Express
+## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a> Povolení protokolu TCP/IP pro edice Developer a Express
 
 Při změně nastavení připojení SQL Server Azure nepovoluje automaticky protokol TCP/IP pro edice SQL Server Developer a Express. Následující kroky popisují ruční povolení protokolu TCP/IP, abyste se mohli vzdáleně připojit pomocí IP adresy.
 
@@ -129,13 +129,13 @@ Následující kroky ukazují, jak vytvořit volitelný popisek DNS pro virtuál
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a>Ruční konfigurace a odstraňování potíží
+## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a> Ruční konfigurace a odstraňování potíží
 
 I když portál poskytuje možnosti pro automatické nakonfigurování připojení, je užitečné zjistit, jak ručně nakonfigurovat připojení. Porozumění požadavkům může také pomoci při řešení potíží.
 
 V následující tabulce jsou uvedeny požadavky pro připojení k SQL Server na virtuálním počítači Azure.
 
-| Požadavek | Description |
+| Požadavek | Popis |
 |---|---|
 | [Povolit režim ověřování SQL Server](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Pro vzdálené připojení k virtuálnímu počítači, pokud jste službu Active Directory ve virtuální síti nenakonfigurovali, je potřeba SQL Server ověřování. |
 | [Vytvoření přihlášení SQL](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Pokud používáte ověřování SQL, budete potřebovat přihlašovací jméno SQL s uživatelským jménem a heslem, které má také oprávnění k cílové databázi. |

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 09/24/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 359c2a27099ca298076edc255b8c30e226af0a18
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07f5fef0103e674af1c5f73b3f09bdf759e592cb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355971"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí Azure Machine Learning Inferencing s virtuálními sítěmi
 
@@ -108,11 +108,24 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Po dokončení procesu vytváření můžete spustit odvození nebo model bodování v clusteru AKS za virtuální sítí. Další informace najdete v tématu [Jak nasadit do AKS](how-to-deploy-and-where.md).
 
-## <a name="private-aks-cluster"></a>Privátní cluster AKS
+## <a name="secure-vnet-traffic"></a>Zabezpečený provoz virtuální sítě
+
+Existují dva přístupy k izolaci provozu do a z clusteru AKS do virtuální sítě:
+
+* __Privátní cluster AKS__: Tento přístup používá privátní odkaz Azure k vytvoření privátního koncového bodu pro cluster AKS v rámci virtuální sítě.
+* __Interní nástroj pro vyrovnávání zatížení AKS__: Tento přístup nakonfiguruje Nástroj pro vyrovnávání zatížení clusteru, aby používal interní IP adresu ve virtuální síti.
+
+> [!WARNING]
+> Obě konfigurace jsou různými způsoby, jak dosáhnout stejného cíle (zabezpečení provozu do clusteru AKS v rámci virtuální sítě). **Použijte jeden nebo druhý, ale ne obojí**.
+
+### <a name="private-aks-cluster"></a>Privátní cluster AKS
 
 Ve výchozím nastavení mají clustery AKS řídicí plochu nebo Server API s veřejnými IP adresami. AKS můžete nakonfigurovat tak, aby používala privátní rovinu ovládacího prvku vytvořením privátního clusteru AKS. Další informace najdete v tématu [Vytvoření privátního clusteru služby Azure Kubernetes](../aks/private-clusters.md).
 
 Po vytvoření privátního clusteru AKS [Připojte cluster k virtuální síti](how-to-create-attach-kubernetes.md) , která se má používat s Azure Machine Learning.
+
+> [!IMPORTANT]
+> Předtím, než použijete AKS cluster s podporou privátního propojení s Azure Machine Learning, je nutné pro povolení této funkce otevřít incident podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="internal-aks-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení AKS
 
@@ -120,7 +133,7 @@ Ve výchozím nastavení používají nasazení AKS [veřejný Nástroj pro vyro
 
 Privátní Nástroj pro vyrovnávání zatížení je povolen konfigurací AKS k použití _interního nástroje pro vyrovnávání zatížení_. 
 
-### <a name="network-contributor-role"></a>Role Přispěvatel sítě
+#### <a name="network-contributor-role"></a>Role Přispěvatel sítě
 
 > [!IMPORTANT]
 > Pokud vytvoříte nebo připojíte cluster AKS tím, že zadáte dříve vytvořenou virtuální síť, musíte instančnímu objektu (SP) nebo spravované identitě pro svůj cluster AKS udělit roli _Přispěvatel sítě_ do skupiny prostředků, která obsahuje virtuální síť. Tato operace se musí provést předtím, než se pokusíte změnit interní nástroj pro vyrovnávání zatížení na soukromou IP adresu.
@@ -152,16 +165,17 @@ Privátní Nástroj pro vyrovnávání zatížení je povolen konfigurací AKS k
     ```
 Další informace o používání interního nástroje pro vyrovnávání zatížení s AKS najdete v tématu [použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service](/azure/aks/internal-lb).
 
-### <a name="enable-private-load-balancer"></a>Povolit privátní Nástroj pro vyrovnávání zatížení
+#### <a name="enable-private-load-balancer"></a>Povolit privátní Nástroj pro vyrovnávání zatížení
 
 > [!IMPORTANT]
-> Při vytváření clusteru služby Azure Kubernetes není možné povolit privátní IP adresu. Musí být povolená jako Aktualizace existujícího clusteru.
+> Při vytváření clusteru služby Azure Kubernetes v nástroji Azure Machine Learning Studio nemůžete povolit privátní IP adresu. Můžete ho vytvořit pomocí interního nástroje pro vyrovnávání zatížení při použití sady Python SDK nebo rozšíření Azure CLI pro Machine Learning.
 
-Následující fragment kódu ukazuje, jak __vytvořit nový cluster AKS__a pak ho aktualizovat tak, aby používal privátní IP/interní nástroj pro vyrovnávání zatížení:
+Následující příklady ukazují, jak __vytvořit nový cluster AKS s privátní IP/interním nástrojem pro vyrovnávání zatížení__ pomocí sady SDK a rozhraní příkazového řádku:
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import azureml.core
-from azureml.core.compute.aks import AksUpdateConfiguration
 from azureml.core.compute import AksCompute, ComputeTarget
 
 # Verify that cluster does not exist already
@@ -175,7 +189,7 @@ except:
     # Subnet to use for AKS
     subnet_name = "default"
     # Create AKS configuration
-    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    prov_config=AksCompute.provisioning_configuration(load_balancer_type="InternalLoadBalancer")
     # Set info for existing virtual network to create the cluster in
     prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
     prov_config.vnet_name = "myvnetname"
@@ -188,44 +202,21 @@ except:
     aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
-    
-    # Update AKS configuration to use an internal load balancer
-    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
-    aks_target.update(update_config)
-    # Wait for the operation to complete
-    aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure CLI__
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
+```azurecli
+az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-Obsah souboru, na `body.json` který se odkazuje pomocí příkazu, je podobný následujícímu dokumentu JSON:
+Další informace najdete v tématu [AZ ml computetarget Create AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
 
-```json
-{ 
-    "location": "<region>", 
-    "properties": { 
-        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-name>", 
-        "computeType": "AKS", 
-        "provisioningState": "Succeeded", 
-        "properties": { 
-            "loadBalancerType": "InternalLoadBalancer", 
-            "agentCount": <agent-count>, 
-            "agentVmSize": "vm-size", 
-            "clusterFqdn": "<cluster-fqdn>" 
-        } 
-    } 
-} 
-```
+---
 
-Když k pracovnímu prostoru __připojíte existující cluster__ , musíte počkat, až po operaci připojit ke konfiguraci nástroje pro vyrovnávání zatížení.
+Když k pracovnímu prostoru __připojíte existující cluster__ , musíte počkat, až po operaci připojit ke konfiguraci nástroje pro vyrovnávání zatížení. Informace o připojení clusteru najdete v tématu [připojení existujícího clusteru AKS](how-to-create-attach-kubernetes.md).
 
-Informace o připojení clusteru najdete v tématu [připojení existujícího clusteru AKS](how-to-create-attach-kubernetes.md).
-
-Po připojení existujícího clusteru můžete cluster aktualizovat tak, aby používal privátní IP adresu.
+Po připojení existujícího clusteru můžete cluster aktualizovat tak, aby používal interní nástroj pro vyrovnávání zatížení nebo privátní IP adresu:
 
 ```python
 import azureml.core
@@ -260,7 +251,7 @@ Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, p
     > [!IMPORTANT]
     > Při povolování delegování použijte `Microsoft.ContainerInstance/containerGroups` jako hodnotu __pro podsíť delegáta na službu__ .
 
-2. Nasaďte model pomocí [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true), použijte `vnet_name` parametry a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
+2. Nasaďte model pomocí [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true), použijte `vnet_name` parametry a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
 
 
 ## <a name="next-steps"></a>Další kroky

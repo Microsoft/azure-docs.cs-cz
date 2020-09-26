@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297656"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -219,8 +219,8 @@ Můžete také ověřit vztahy pomocí kteréhokoli z následujících příkaz�
     ```
 * Pokud se chcete dotazovat na tyto relace jednotlivě, 
     ```cmd/sh
-    GetRelationship floor0 contains relationship0
-    GetRelationship floor1 contains relationship1
+    GetRelationship floor0 relationship0
+    GetRelationship floor1 relationship1
     ```
 
 Vlákna a vztahy, které jste nastavili v tomto kurzu, tvoří následující koncepční graf:
@@ -242,7 +242,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
     :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Částečné výsledky dvojitých dotazů, které zobrazují room0 a floor1":::
 
     >[!NOTE]
-    >Příkaz `Query` bez dalších argumentů je ekvivalentem `Query SELECT * FROM DIGITALTWINS` .
+    >V ukázkovém projektu `Query` je příkaz bez dalších argumentů ekvivalentem `Query SELECT * FROM DIGITALTWINS` . K dotazování všech vláken ve vaší instanci pomocí [rozhraní API dotazů](how-to-use-apis-sdks.md) nebo [příkazů CLI](how-to-use-cli.md)použijte dotaz delší (kompletní).
 
 * **Jaké jsou všechny místnosti v mém prostředí?** (dotaz podle modelu)
 

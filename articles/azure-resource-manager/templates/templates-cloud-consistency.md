@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509752"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356881"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
 
@@ -655,7 +655,7 @@ Při vytváření šablony se jedná o výzvu k udržení přehledu o všech sou
 
 Následující obrázek znázorňuje typický příklad procesu vývoje pro tým s použitím integrovaného vývojového prostředí (IDE). V různých fázích časové osy se spustí různé typy testů. Tady jsou na stejném řešení funkční dva vývojáři, ale tento scénář platí stejně pro jednoho vývojáře nebo velký tým. Každý vývojář obvykle vytváří místní kopii centrálního úložiště, takže každý z nich může pracovat na místní kopii, aniž by to mělo vliv na ostatní, kteří mohou pracovat se stejnými soubory.
 
-![Pracovní postup](./media/templates-cloud-consistency/workflow.png)
+![Diagram znázorňuje dvě sady jednotkových testů a integračních testů paralelně na místních I D E, které se sloučí do vývojového toku C I/C do testů jednotek, potom Integration Tests, test Deployment a pak nasazení.](./media/templates-cloud-consistency/workflow.png)
 
 Vezměte v úvahu následující tipy pro testování a automatizaci:
 

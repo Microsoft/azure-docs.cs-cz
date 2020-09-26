@@ -3,12 +3,12 @@ title: Vyloučení disků z replikace pomocí Azure Site Recovery
 description: Postup vyloučení disků z replikace do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333660"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Vyloučení disků z zotavení po havárii
 
@@ -26,7 +26,7 @@ Z replikace můžete vyloučit disky, které jsou shrnuté v tabulce.
 
 **Z Azure do Azure** | **Z VMware do Azure** | **Z Hyper-V do Azure** | **Fyzický server do Azure**
 --- | --- | --- | ---
-Ano | Ano | Ano | Ano
+Yes | Yes | Yes | Yes
 
 ## <a name="exclude-limitations"></a>Vyloučit omezení
 
@@ -36,7 +36,7 @@ Ano | Ano | Ano | Ano
 **Replikace disku** | Nemůžete vyloučit disk, který se replikuje.<br/><br/> Zakažte a znovu povolte replikaci pro virtuální počítač. |  Nemůžete vyloučit disk, který se replikuje. |  Nemůžete vyloučit disk, který se replikuje.
 **Služba mobility (VMware)** | Není relevantní | Disky můžete vyloučit jenom na virtuálních počítačích, na kterých je nainstalovaná služba mobility.<br/><br/> To znamená, že musíte ručně nainstalovat službu mobility na virtuální počítače, pro které chcete vyloučit disky. Nemůžete použít mechanismus nabízené instalace, protože nainstaluje službu mobility jenom po povolení replikace. | Není relevantní.
 **Přidat nebo odebrat** | Spravované disky můžete do virtuálních počítačů Azure s podporou replikace přidat pomocí spravovaných disků. Disky nejde odebrat na virtuálních počítačích Azure s podporou replikace. | Po povolení replikace nelze disky přidat ani odebrat. Zakažte a znovu povolte replikaci a přidejte disk. | Po povolení replikace nelze disky přidat ani odebrat. Zakažte a znovu povolte replikaci.
-**Převzetí služeb** | Pokud aplikace potřebuje disk, který jste vyloučili, po převzetí služeb při selhání budete muset disk vytvořit ručně, aby se mohla spustit replikovaná aplikace.<br/><br/> Případně můžete disk vytvořit během převzetí služeb při selhání virtuálního počítače integrací služby Azure Automation do plánu obnovení. | Pokud vyloučíte disk, který aplikace potřebuje, po převzetí služeb při selhání ho ručně vytvořte v Azure. | Pokud vyloučíte disk, který aplikace potřebuje, po převzetí služeb při selhání ho ručně vytvořte v Azure.
+**Převzetí služeb při selhání** | Pokud aplikace potřebuje disk, který jste vyloučili, po převzetí služeb při selhání budete muset disk vytvořit ručně, aby se mohla spustit replikovaná aplikace.<br/><br/> Případně můžete disk vytvořit během převzetí služeb při selhání virtuálního počítače integrací služby Azure Automation do plánu obnovení. | Pokud vyloučíte disk, který aplikace potřebuje, po převzetí služeb při selhání ho ručně vytvořte v Azure. | Pokud vyloučíte disk, který aplikace potřebuje, po převzetí služeb při selhání ho ručně vytvořte v Azure.
 **Místní navrácení služeb po obnovení – disky vytvořené ručně** | Není relevantní | **Virtuální počítače s Windows**: disky vytvořené ručně v Azure se nepovedlo vrátit zpátky. Pokud například při selhání převezmete tři disky a vytvoříte dva disky přímo na virtuálním počítači Azure, navrátí se po obnovení pouze tři disky, u kterých došlo k převzetí služeb při selhání.<br/><br/> **Virtuální počítače Linux**: disky vytvořené ručně v Azure se nepovedlo obnovit. Pokud například při selhání převezmete tři disky a na virtuálním počítači Azure vytvoříte dva disky, navrátí se všechna pět. Ručně vytvořené disky nemůžete vyloučit z navrácení služeb po obnovení. | Disky vytvořené ručně v Azure se nepovedlo vrátit zpátky. Pokud například při selhání převezmete tři disky a vytvoříte dva disky přímo na virtuálním počítači Azure, navrátí se zpět pouze tři disky, u kterých došlo k převzetí služeb při selhání.
 **Místní navrácení služeb po obnovení – vyloučené disky** | Není relevantní | Pokud navrátíte navrácení služeb po obnovení původnímu počítači, konfigurace disku pro navrácení služeb po obnovení neobsahuje vyloučené disky. Disky vyloučené z replikace z VMware do Azure nejsou k dispozici na virtuálním počítači pro navrácení služeb po obnovení. | Po navrácení služeb po obnovení do původního umístění technologie Hyper-V zůstane konfigurace disku pro navrácení služeb po obnovení stejná jako u původního zdrojového disku virtuálního počítače. Disky vyloučené z replikace z lokality Hyper-V do Azure jsou dostupné na virtuálním počítači pro navrácení služeb po obnovení.
 
@@ -207,7 +207,7 @@ DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
 Nastavení stránkovacího souboru na zdrojovém virtuálním počítači je následující:
 
-![Nastavení stránkovacího souboru na zdrojovém virtuálním počítači](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
+![Snímek obrazovky dialogového okna virtuální paměti se zvýrazněným řádkem D: Drive [Svazek svazku] ukazující velikost stránkovacího souboru (MB) 3000-7000.](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. Povolujeme replikaci pro virtuální počítač.
 2. Z replikace vyloučíme DB-Disk1.
@@ -260,12 +260,12 @@ DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
 Nastavení stránkovacího souboru na virtuálním počítači Azure je následující:
 
-![Nastavení stránkovacího souboru na virtuálním počítači Azure](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
+![Snímek obrazovky dialogového okna virtuální paměť se zvýrazněnou jednotkou C: jednotka ukazující nastavení velikosti stránkovacího souboru na spravované systémem.](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o pokynech pro dočasný disk úložiště:
     - [Další informace o](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) použití SSD ve virtuálních počítačích Azure k ukládání SQL serverch rozšíření tempdb a fondu vyrovnávací paměti
-    - [Projděte si](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) osvědčené postupy výkonu pro SQL Server ve virtuálních počítačích Azure.
+    - [Projděte si ](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) osvědčené postupy výkonu pro SQL Server ve virtuálních počítačích Azure.
 - Po nasazení a zprovoznění nasazení si můžete přečíst [další informace](failover-failback-overview.md) o různých typech převzetí služeb při selhání.

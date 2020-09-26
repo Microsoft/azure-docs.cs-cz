@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c23522911bd0c8dc9726a62cced839a1c4be37a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333830"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
@@ -42,10 +42,9 @@ Další informace o podporovaných technikách interpretace a modelech strojové
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Vygenerovat hodnotu důležitosti funkce na vašem osobním počítači 
 Následující příklad ukazuje, jak použít balíček pro interpretaci na osobním počítači bez kontaktování služeb Azure.
 
-1. Instalace `azureml-interpret` a `azureml-contrib-interpret` balíčky.
+1. Nainstalujte balíček `azureml-interpret`.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
 2. Výuku ukázkového modelu v místním poznámkovém bloku Jupyter
@@ -239,15 +238,14 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
 * Pomocí `ExplanationClient` ve vzdáleném spuštění nahrajte kontext interpretace.
 * Stáhněte kontext později v místním prostředí.
 
-1. Instalace `azureml-interpret` a `azureml-contrib-interpret` balíčky.
+1. Nainstalujte balíček `azureml-interpret`.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. Vytvořte školicí skript v místním Jupyter poznámkovém bloku. Například, `train_explain.py`.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -280,7 +278,7 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
 1. Stáhněte si vysvětlení do svého místního poznámkového bloku Jupyter.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -304,7 +302,7 @@ Po stažení vysvětlení v místním poznámkovém bloku Jupyter můžete model
 
 Následující vykreslení poskytují celkový přehled o škole modelu spolu s jeho předpovědi a vysvětleními.
 
-|Znázorněte|Description|
+|Znázorněte|Popis|
 |----|-----------|
 |Zkoumání dat| Zobrazí přehled datové sady spolu s hodnotami předpovědi.|
 |Globální důležitost|Agreguje hodnoty důležitosti funkcí jednotlivých datapoints k zobrazení celkových důležitých funkcí modelu (konfigurovatelné K). Pomáhá pochopit celkové chování základního modelu.|
@@ -318,7 +316,7 @@ Následující vykreslení poskytují celkový přehled o škole modelu spolu s 
 
 Můžete načíst zobrazení důležitosti jednotlivých funkcí pro libovolný datový bod tak, že kliknete na kterýkoli z jednotlivých datových bodů v některém z celkových vykreslení.
 
-|Znázorněte|Description|
+|Znázorněte|Popis|
 |----|-----------|
 |Místní důležitost|Zobrazuje horních K (konfigurovatelné K) důležité funkce pro jednotlivé předpovědi. Pomáhá ilustrovat místní chování základního modelu v konkrétním datovém bodě.|
 |Průzkum Perturbation (citlivostní analýza)|Umožňuje změnit hodnoty funkcí vybraného datového bodu a sledovat výsledné změny hodnoty předpovědi.|
@@ -332,29 +330,12 @@ Můžete načíst zobrazení důležitosti jednotlivých funkcí pro libovolný 
 
 [![Řídicí panel vizualizace ICE](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
-> [!NOTE]
-> Před spuštěním jádra Jupyter se ujistěte, že jste povolili rozšíření widgetů pro řídicí panel vizualizace.
-
-* Jupyter Notebooks
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* JupyterLab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
 Chcete-li načíst řídicí panel vizualizace, použijte následující kód.
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Vizualizace v Azure Machine Learning Studiu
@@ -370,7 +351,7 @@ Použijte jednu z těchto cest pro přístup k řídicímu panelu vizualizace v 
   1. Vyberte konkrétní experiment pro zobrazení všech běhů v tomto experimentu.
   1. Vyberte běh a pak kartu **vysvětlení** na řídicím panelu vizualizace.
 
-   [![Důležitost místní funkce řídicího panelu vizualizace](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Důležitost místní funkce řídicího panelu vizualizace v nástroji AzureML Studio v experimentech](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * Podokno **modely**
   1. Pokud jste svůj původní model zaregistrovali pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where), můžete v levém podokně vybrat **modely** a zobrazit je.

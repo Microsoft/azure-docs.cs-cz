@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356022"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odesílání zpráv na server MQTT
 
@@ -55,7 +55,7 @@ Rozbalte části **Příklady Arduino** na levé straně, přejděte k **příkl
 
 Typ `Ctrl+P` (MacOS: `Cmd+P` ), který se má spustit `task device-upload` . Až se nahrávání dokončí, DevKit se restartuje a spustí nákres.
 
-![zařízení – nahrání](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+![Snímek obrazovky se zobrazí okno příkazového řádku, které nahraje a spustí náčrt Arduino.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
 > Může se zobrazit chybová zpráva "Chyba: AZ3166: neznámý balíček". K této chybě dochází, pokud se index balíčku panelu není správně aktualizovat. Pokud chcete tuto chybu vyřešit, přečtěte si [část věnované vývoji v tématu Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
@@ -64,15 +64,15 @@ Typ `Ctrl+P` (MacOS: `Cmd+P` ), který se má spustit `task device-upload` . Až
 
 V VS Code postupujte podle následujícího postupu a otevřete a nastavte monitorování sériového portu:
 
-1. Kliknutím na `COM[X]` slovo na stavovém řádku nastavte správný port COM `STMicroelectronics` : ![ set-COM-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. Klikněte na `COM[X]` slovo na stavovém řádku a nastavte správný port COM pomocí `STMicroelectronics` : ![ snímek obrazovky Visual Studio Code s vybraným COM8 s T Micro Electronics.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Kliknutím na ikonu plug-in na stavovém řádku otevřete monitorování sériového portu: ![ sériové – monitorování](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Kliknutím na ikonu plug-in na stavovém řádku otevřete monitorování sériového portu: ![ snímek obrazovky se zobrazí souhrn vydaných verzí a ikona konektoru napájení ve stavovém řádku.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Na stavovém řádku klikněte na číslo, které představuje přenosovou rychlost, a nastavte ji na `115200` : ![ nastavení přenosové rychlosti.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Na stavovém řádku klikněte na číslo, které představuje přenosovou rychlost a nastavte na `115200` : ![ snímek obrazovky nastavení přenosové rychlosti v Visual Studio Code.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 Nástroj sériového zobrazení zobrazí všechny zprávy odesílané vzorovým nákresem. Náčrt připojuje DevKit k Wi-Fi. Po úspěšném připojení k síti Wi-Fi pošle skica zprávu zprostředkovateli MQTT. Poté ukázka opakovaně odesílá dvě zprávy "iot.eclipse.org" pomocí technologie QoS 0 a QoS 1 v uvedeném pořadí.
 
-![sériové – výstup](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![Snímek obrazovky ukazuje monitor sériového zobrazení zpráv odesílaných nákresem.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
@@ -81,7 +81,7 @@ Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy ke službě
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Připojení IoT DevKit AZ3166 k Azure IoT Hub v cloudu](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [Třepačka, Třesce](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)

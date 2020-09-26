@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357212"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
 
@@ -106,7 +106,7 @@ Můžete také použít Service Fabric Explorer k vytvoření instancí aplikace
 ## <a name="event-store"></a>Úložiště událostí
 Eventstoru je funkce nabízená platformou, která poskytuje Service Fabric události platformy dostupné v Service Fabric Explorer a REST API. Pro každou entitu, např. Node, službu, aplikace a dotaz na základě času události, se můžete podívat na to, co se ve vašem clusteru chystá. Další informace o Eventstoru najdete v tématu [Přehled eventstoru](service-fabric-diagnostics-eventstore.md).   
 
-![Eventstoru][sfx-eventstore]
+![Snímek obrazovky se zobrazí v podokně uzly s vybranými UDÁLOSTmi.][sfx-eventstore]
 
 >[!NOTE]
 >Od verze Service Fabric 6,4. Eventstoru není ve výchozím nastavení povolené a musí být povolená v šabloně Resource Manageru.

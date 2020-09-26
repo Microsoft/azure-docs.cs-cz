@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285328"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -231,10 +231,8 @@ Ověřte, jestli je umístění vaší aktuální IP adresy v podporované zemi 
 
 Vyzkoušejte si ukázkovou aplikaci, která prezentuje Azure Maps:
 
-> [!div class="nextstepaction"]
-> [Rychlý Start: Vytvoření webové aplikace](quick-demo-map-app.md)
+[Rychlý Start: Vytvoření webové aplikace](quick-demo-map-app.md)
 
 Udržujte si přehled o Azure Maps:
 
-> [!div class="nextstepaction"]
-> [Blog Azure Maps](https://azure.microsoft.com/blog/topics/azure-maps/)
+[Blog Azure Maps](https://azure.microsoft.com/blog/topics/azure-maps/)

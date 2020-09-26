@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
-ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425849"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357161"
 ---
 # <a name="agent-based-migration-architecture"></a>Architektura migrace založené na agentech
 
@@ -34,7 +34,7 @@ Migrace založená na agentech se používá k migraci místních virtuálních 
 
 Diagram znázorňuje komponenty, které jsou součástí migrace na základě agenta.
 
-![Architektura](./media/agent-based-replication-architecture/architecture.png)
+![Diagram zobrazuje komponenty pro migraci založené na agentech, které jsou vysvětleny v tabulce.](./media/agent-based-replication-architecture/architecture.png)
 
 Tabulka shrnuje součásti používané pro migraci na základě agenta.
 

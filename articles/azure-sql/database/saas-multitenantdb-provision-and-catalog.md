@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4413a987af7a4802366556fb86c0c55e7b401776
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356787"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a katalog nových tenantů v aplikaci SaaS s využitím víceklientské Azure SQL Database horizontálně dělené
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ Podobně jako u jakékoli aplikace se společnost Wingtip v průběhu času vyv�
 
 U SaaS aplikace musí být tyto změny nasazeny koordinovaně u potenciálně velkého počtu klientských databází. Aby se tyto změny projevily v budoucích databázích tenanta, musí být začleněny do procesu zřizování. Tato výzva se podrobněji prozkoumá v [kurzu správy schématu](saas-tenancy-schema-management.md).
 
-#### <a name="scripts"></a>Scripts
+#### <a name="scripts"></a>Skripty
 
 Skripty zřizování klientů v tomto kurzu podporují oba tyto scénáře:
 - Zřizování tenanta do existující databáze sdílené s ostatními klienty.
@@ -123,7 +123,7 @@ V tomto kurzu se naučíte:
 > * Zřízení dávky tenantů do databází s více klienty a s jedním tenantům
 > * Registrace databáze a mapování tenanta v katalogu
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
@@ -169,7 +169,7 @@ Chcete-li pochopit, jak aplikace Wingtip implementuje nové zřizování tenanta
 
 4. Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** pro krok do kódu.
 
-   ![ladit](./media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Snímek obrazovky zobrazuje Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell s otevřenou nabídkou ladění a krok do výběru.](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Sledujte provádění skriptu pomocí možností nabídky **ladění** , **F10** a **F11**, abyste mohli přenášet nebo nazývat na volané funkce.
 
@@ -237,7 +237,7 @@ Otevřete stránku centra událostí v prohlížeči (http: Events. Wingtip-Mt. 
 - Název tenanta je uložený v tabulce tenantů.
 - Název databáze je uložený v tabulkách pro správu horizontálních oddílů.
 
-1. V SQL Server Management Studio (SSMS) se připojte k serveru tenantů v **katalogu – Mt. \<USER\> . Database.Windows.NET**s přihlašovacími údaji = **Developer**a Password = **P \@ ssword1**
+1. V SQL Server Management Studio (SSMS) se připojte k serveru tenantů v **katalogu – Mt. \<USER\> .. database.windows.net**, s přihlašovacími údaji = **Developer**a Password = **P \@ ssword1**
 
     ![Dialogové okno připojení SSMS](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

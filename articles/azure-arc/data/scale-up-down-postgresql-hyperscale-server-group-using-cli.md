@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b96f38d04fe3e3cb59fa75424ae588fe0e38f510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935445"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285311"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Horizontální navýšení a snížení kapacity Azure Database for PostgreSQL skupiny serverů se škálováním na více systému pomocí rozhraní CLI (azdata nebo kubectl)
 
@@ -84,7 +84,7 @@ Ve výchozí konfiguraci je jenom minimální paměť nastavená na 256Mi, proto
 
 Nastavení, které se chystáte nastavit, je nutné vzít v úvahu v konfiguraci, kterou jste nastavili pro cluster Kubernetes. Ujistěte se, že nenastavujete hodnoty, které váš cluster Kubernetes nebude moci vyhovět. To může vést k chybám nebo nepředvídatelnému chování. Příklad: Pokud stav skupiny serverů zůstane v _aktualizaci_ stavu po dlouhou dobu po změně konfigurace, může se jednat o indikaci, že nastavíte níže uvedené parametry na hodnoty, které cluster Kubernetes nemůže splnit. Pokud se jedná o tento případ, vraťte změnu nebo Přečtěte _troubleshooting_section.
 
-Předpokládejme, že chcete škálovat definici skupiny serverů na:
+Předpokládejme například, že chcete škálovat definici skupiny serverů na:
 
 - Min vCore = 2
 - Maximální vCore = 4
@@ -94,6 +94,13 @@ Předpokládejme, že chcete škálovat definici skupiny serverů na:
 Použijte některý z následujících přístupů:
 
 ### <a name="cli-with-azdata"></a>Rozhraní příkazového řádku s azdata
+
+```console
+azdata arc postgres server edit -n <name of your server group> --cores-request <# core-request>  --cores-limit <# core-limit>  --memory-request <# memory-request>Mi  --memory-limit <# memory-limit>Mi
+```
+
+> [!CAUTION]
+> Níže je uveden příklad, který ilustruje, jak můžete použít příkaz. Před spuštěním příkazu pro úpravy nezapomeňte nastavit parametry na hodnoty, které může cluster Kubernetes akceptovat.
 
 ```console
 azdata arc postgres server edit -n <name of your server group> --cores-request 2  --cores-limit 4  --memory-request 512Mi  --memory-limit 1024Mi
@@ -116,6 +123,10 @@ kubectl edit postgresql-12/<server group name> [-n <namespace name>]
 
 Tím přejdete do editoru VI, kde můžete procházet a měnit konfiguraci. K namapování požadovaného nastavení na název pole ve specifikaci použijte následující:
 
+> [!CAUTION]
+> Níže je uveden příklad, který ilustruje, jak můžete upravit konfiguraci. Před aktualizací konfigurace se ujistěte, že jste nastavili parametry na hodnoty, které může cluster Kubernetes akceptovat.
+
+Příklad:
 - Min vCore = 2-> scheduling\default\resources\requests\cpu
 - Max vCore = 4 – > scheduling\default\resources\limits\cpu
 - Minimální paměť = 512 MB – > scheduling\default\resources\requests\cpu

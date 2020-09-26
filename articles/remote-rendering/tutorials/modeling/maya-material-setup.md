@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358028"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Kurz: nastavení fyzicky vycházejících materiálů pro vykreslování v Maya
 
@@ -33,7 +33,7 @@ Ukázková scéna v tomto kurzu obsahuje počet objektů mnohoúhelníkového po
 * **Normal (normální**), který přidává podrobnosti na povrch bez nutnosti přidávat další mnohoúhelníky Příkladem podrobností může být prodleva a odsazení na kovové ploše nebo zrnitosti ve dřevě.
 * **Ambientní překrytí**, který se používá k přidání jemných stínování a stínů kontaktu do modelu. Jedná se o mapu ve stupních šedi, která označuje, které oblasti modelu získají plné osvětlení (bílá) nebo úplné stínování (černá). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Autodesk Maya 2017 nebo novější
 
 ## <a name="set-up-materials-in-the-scene"></a>Nastavení materiálů na scéně
@@ -79,7 +79,7 @@ V Maya je proces vytváření instancí jednoduchý.
 1. V dialogovém okně **Duplikovat zvláštní možnosti** vyberte pro **typ geometrie** možnost **instance** . 
 1. Vyberte **duplikovat jinak**.
 
-   ![Vytváření instancí](media/instancing.jpg)
+   ![Snímek obrazovky zobrazuje okno Maya s otevřeným dialogovým oknem duplicitních zvláštních možností a duplicitní speciální volba.](media/instancing.jpg)
 
 Tato akce vytvoří instanci objektu. Můžete ho přesunout, otočit nebo škálovat nezávisle na jeho nadřazeném objektu a dalších instancích tohoto nadřazeného objektu. 
 

@@ -3,12 +3,12 @@ title: Replikace Azure Stackch virtuálních počítačů do Azure pomocí Azure
 description: Naučte se, jak nastavit zotavení po havárii do Azure pro Azure Stack virtuálních počítačů pomocí služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564305"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333711"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure Stack do Azure
 
@@ -164,13 +164,13 @@ Nastavte počítač konfiguračního serveru, zaregistrujte ho v trezoru a vyhle
 1. Klikněte na **připravit**  >  **zdroj**infrastruktury.
 2. Na stránce **Připravit zdroj** klikněte na **+ Konfigurační server**.
 
-    ![Nastavení zdroje](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![Snímek obrazovky s dialogovým oknem + konfigurační server se zprávou "kliknutím na + konfigurační server ve výše uvedeném panelu příkazů nastavíte jednu...".](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. V nástroji **Přidat server**ověřte, že se **konfigurační server** zobrazuje v **typu serveru**.
 5. Stáhněte instalační soubor sjednocené instalace Site Recovery.
 6. Stáhněte registrační klíč trezoru. Registrační klíč potřebujete při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
 
-    ![Nastavení zdroje](./media/azure-stack-site-recovery/set-source2.png)
+    ![Snímek obrazovky s dialogovým oknem přidat server s typem serveru nastaveným na konfigurační server a zvýrazněným tlačítkem Stáhnout registrační klíč trezoru.](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>Spustit Azure Site Recovery Unified Setup

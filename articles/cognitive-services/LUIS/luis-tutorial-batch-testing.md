@@ -1,14 +1,16 @@
 ---
 title: 'Kurz: dávkové testování pro vyhledání problémů – LUIS'
 description: Tento kurz ukazuje, jak pomocí dávkového testování ověřit kvalitu vaší aplikace Language Understanding (LUIS).
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7dd181f8cd398dd683296b446028b398a9800b53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83681631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298306"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Kurz: dávkové test sady dat
 

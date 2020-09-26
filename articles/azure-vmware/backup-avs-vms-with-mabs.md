@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s řešeními VMware Azure pomoc
 description: Nakonfigurujte prostředí řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 9b37f909fc8199975eb399fe5ca28ebb53ab2789
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cba224de3d8b223ebcc1ac4d2d8d569275b4e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272242"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů s řešeními VMware Azure pomocí Azure Backup Server
 
@@ -105,9 +105,9 @@ VMware 6,7 a vyšší má TLS povolený jako komunikační protokol.
 
 1. Klikněte pravým tlačítkem na protokol TLS. Soubor REG a výběrem možnosti **Sloučit** nebo **otevřít** přidejte nastavení do registru.
 
-## <a name="add-the-provisioning-ip-address-for-azure-vmware-solution-esxi-hosts-on-azure-backup-server"></a>Přidejte IP adresu zřízení pro hostitele Azure VMware řešení ESXi na Azure Backup Server
+## <a name="add-the-provisioning-ip-address"></a>Přidat IP adresu zřizování 
 
-V průběhu verze Preview řešení Azure VMware nevyřešilo hostitele ESX z virtuálního počítače nasazeného ve virtuální síti. Je nutné provést další kroky, chcete-li přidat položku hostitelského souboru do virtuálního počítače s Azure Backup Server.
+Řešení Azure VMware neřeší hostitele ESX z virtuálního počítače nasazeného ve virtuální síti. Pokud chcete přidat položku souboru hostitele na Azure Backup Server virtuálním počítači, musíte provést další kroky.
 
 ### <a name="identify-the-ip-address-for-esxi-hosts"></a>Identifikace IP adresy pro hostitele ESXi
 
@@ -144,7 +144,7 @@ V průběhu verze Preview řešení Azure VMware nevyřešilo hostitele ESX z vi
 
 1. V dialogovém okně **Správa přihlašovacích údajů** vyberte **Přidat**.
 
-   ![Dialogové okno Azure Backup Server Správa přihlašovacích údajů](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+   ![V dialogovém okně Správa přihlašovacích údajů vyberte Přidat.](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
 1. V dialogovém okně **Přidat pověření** zadejte název a popis nového přihlašovacího údaje. Zadejte uživatelské jméno a heslo, které jste definovali na serveru VMware.
 
@@ -155,7 +155,7 @@ V průběhu verze Preview řešení Azure VMware nevyřešilo hostitele ESX z vi
 
 1. Vyberte **Přidat** a přidejte nové přihlašovací údaje.
 
-   ![Dialogové okno Azure Backup Server Správa přihlašovacích údajů](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+   ![Snímek obrazovky se zobrazí dialogové okno Azure Backup Server Správa přihlašovacích údajů s novými přihlašovacími údaji.](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 ## <a name="add-the-vcenter-server-to-azure-backup-server"></a>Přidejte Server vCenter pro Azure Backup Server
 
@@ -192,7 +192,10 @@ V průběhu verze Preview řešení Azure VMware nevyřešilo hostitele ESX z vi
 
    ![Stránka dokončit](../backup/media/backup-azure-backup-server-vmware/summary-screen.png)
 
-   Měl by se zobrazit Server vCenter uvedený v části **provozní server** s typem jako **Server VMware** a **Stav agenta** jako **OK**. Pokud vidíte **Stav agenta** jako **Neznámý**, vyberte **aktualizovat**.
+   Měl by se zobrazit Server vCenter uvedený v části **provozní server** s typem jako **Server VMware** a **Stav agenta** jako **OK**. 
+
+   >[!TIP]
+   >Pokud vidíte **Stav agenta** jako **Neznámý**, vyberte **aktualizovat**.
 
 ## <a name="configure-a-protection-group"></a>Konfigurace skupiny ochrany
 
@@ -242,7 +245,7 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
 
 1. Na stránce **Vybrat způsob vytvoření repliky** určete, jak se má provést prvotní zálohování, a vyberte **Další**.
 
-   - Výchozí hodnota je **automaticky přes síť** a **nyní**. Pokud použijete výchozí hodnotu, zadejte čas mimo špičku. Pokud zvolíte možnost **pozdější**, zadejte den a čas.
+   - Výchozí hodnota je **automaticky přes síť** a **nyní**. Pokud použijete výchozí hodnotu, zadejte čas mimo špičku. Pokud vyberete možnost **později**, zadejte den a čas.
    - U velkých objemů dat nebo méně optimálních síťových stavů zvažte replikaci dat offline pomocí vyměnitelného média.
 
    ![Výběr metody vytvoření repliky](../backup/media/backup-azure-backup-server-vmware/replica-creation.png)
@@ -300,7 +303,7 @@ V konzole pro správu Azure Backup Server existují dva způsoby, jak najít obn
 
 1. V konzole správce Azure Backup Server vyberte zobrazení **obnovení** . 
 
-1. Pomocí podokna **procházení** vyhledejte nebo vyfiltrujte virtuální počítač, který chcete obnovit. Jakmile vyberete virtuální počítač nebo složku, zobrazí se v podokně **body obnovení** dostupné body obnovení.
+1. V podokně **Procházet** procházením nebo filtrem Najděte virtuální počítač, který chcete obnovit. Po výběru virtuálního počítače nebo složky se zobrazí dostupné body obnovení.
 
    ![Dostupné body obnovení](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
@@ -317,12 +320,13 @@ V konzole pro správu Azure Backup Server existují dva způsoby, jak najít obn
 
    ![Průvodce obnovením, kontrola stránky pro výběr obnovení](../backup/media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-1. Kliknutím na tlačítko **Další** přejdete na obrazovku **zadat možnosti obnovení** . Dalším kliknutím na tlačítko **Další** přejdete na obrazovku **Vybrat typ obnovení** . 
+1. Kliknutím na tlačítko **Další** přejdete na obrazovku **zadat možnosti obnovení** . 
+1. Dalším kliknutím na tlačítko **Další** přejdete na obrazovku **Vybrat typ obnovení** . 
 
    > [!NOTE]
    > Úlohy VMware nepodporují povolování omezení šířky pásma sítě.
 
-1. Na stránce **Vybrat typ obnovení** vyberte, zda chcete provést obnovení do původní instance nebo do nového umístění, a poté vyberte možnost **Další**.
+1. Na stránce **Vybrat typ obnovení** vyberte obnovit do původní instance nebo do nového umístění a pak vyberte **Další**.
 
    - Pokud zvolíte **obnovit do původní instance**, nemusíte v průvodci dělat žádné další volby. Použijí se data pro původní instanci.
    - Pokud zvolíte možnost **Obnovit jako virtuální počítač na jakémkoli hostiteli**, pak na obrazovce **zadat cíl** zadejte informace o **hostiteli ESXi**, **fondu zdrojů**, **složce**a **cestě**.
@@ -342,7 +346,7 @@ Jednotlivé soubory můžete obnovit z chráněného bodu obnovení virtuálníh
 
 1. V konzole správce Azure Backup Server vyberte zobrazení **obnovení** .
 
-1. Pomocí podokna **procházení** vyhledejte nebo vyfiltrujte virtuální počítač, který chcete obnovit. Jakmile vyberete virtuální počítač nebo složku, zobrazí se v podokně **body obnovení** dostupné body obnovení.
+1. V podokně **Procházet** procházením nebo filtrem Najděte virtuální počítač, který chcete obnovit. Po výběru virtuálního počítače nebo složky se zobrazí dostupné body obnovení.
 
    ![Dostupné body obnovení](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 

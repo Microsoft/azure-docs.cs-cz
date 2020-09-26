@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 04942c745548903a5f8092bc5b04ea2152029726
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 44616d5d90f9c5c3a4f3abf8b8cf2128dc4f0585
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333796"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Vyladění parametrů pro model pomocí Azure Machine Learning
 
@@ -167,7 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 Optimalizujte spuštění a maximalizujte "přesnost".  Nezapomeňte tuto hodnotu ve školicím skriptu zaprotokolovat.
 
-### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> Zadat primární metriku
+### <a name="log-metrics-for-hyperparameter-tuning"></a><a name="log-metrics-for-hyperparameter-tuning"></a>Metriky protokolu pro ladění parametrů
 
 Školicí skript pro váš model musí během školení modelu protokolovat relevantní metriky. Když nakonfigurujete ladění parametrů, zadáte primární metriku, která se má použít pro vyhodnocení výkonu spuštění. (Viz [Určení primární metriky k optimalizaci](#specify-primary-metric-to-optimize).)  Ve školicím skriptu je nutné tuto metriku zaprotokolovat, aby byla dostupná pro proces ladění parametrů.
 
@@ -194,7 +194,7 @@ Azure Machine Learning podporuje následující zásady prvotního ukončení.
 
 ### <a name="bandit-policy"></a>Zásady Bandit
 
-[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#&preserve-view=truedefinition) je zásada ukončení založená na rozsahu časové rezervy/rezervy a intervalu vyhodnocení. Zásada zpočátku ukončí všechna spuštění, kde primární metrika není v rámci zadané hodnoty faktoru rezervy nebo rezervy, s ohledem na to, co nejlépe provedete školicí běh. Má následující konfigurační parametry:
+[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py&preserve-view=true#&preserve-view=truedefinition) je zásada ukončení založená na rozsahu časové rezervy/rezervy a intervalu vyhodnocení. Zásada zpočátku ukončí všechna spuštění, kde primární metrika není v rámci zadané hodnoty faktoru rezervy nebo rezervy, s ohledem na to, co nejlépe provedete školicí běh. Má následující konfigurační parametry:
 
 * `slack_factor` nebo `slack_amount` : časová rezerva povolená s ohledem na nejlepší provádění školicích běhů. `slack_factor` Určuje povolenou časovou rezervu jako poměr. `slack_amount` Určuje povolenou časovou rezervu jako absolutní hodnotu namísto poměru.
 
@@ -285,29 +285,29 @@ Tento kód nakonfiguruje experiment vyladěním parametrů, aby používal maxim
 
 ## <a name="configure-experiment"></a>Konfigurovat experiment
 
-[Nakonfigurujte experiment s optimalizací parametrů](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true) pomocí definovaného prostoru pro hledání parametrů, zásad prvotního ukončení, primární metriky a přidělení prostředků z výše uvedených částí. Kromě toho zadejte `estimator` , který se bude volat pomocí ukázkových parametrů. `estimator`Popisuje skript školení, který spustíte, prostředky na úlohu (jeden nebo více GPU) a výpočetní cíl, který se má použít. Vzhledem k tomu, že je souběžnost pro experimenty s optimalizací parametrů na dostupných prostředcích ověřovaný, ujistěte se, že cílový výpočetní cíl zadaný v nástroji `estimator` má dostatek prostředků pro požadovanou souběžnost. (Další informace o odhady najdete v tématu [výuka modelů](how-to-train-ml-models.md).)
+[Nakonfigurujte experiment s optimalizací parametrů](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true) pomocí definovaného prostoru pro hledání parametrů, zásad prvotního ukončení, primární metriky a přidělení prostředků z výše uvedených částí. Kromě toho zadejte ScriptRunConfig `src` pro běh, který se bude volat pomocí ukázkových parametrů. ScriptRunConfig definuje školicí skript, který se má spustit, prostředky na úlohu (jeden nebo víc uzlů) a výpočetní cíl, který se má použít. Vzhledem k tomu, že je souběžnost pro experimenty s optimalizací parametrů na dostupných prostředcích ověřovaný, ujistěte se, že cíl výpočtů zadaný v nástroji `src` má dostatek prostředků pro požadovanou souběžnost. (Další informace o ScriptRunConfig najdete v tématu [Konfigurace školicích běhů](how-to-set-up-training-targets.md).)
 
 Konfigurace experimentu ladění vašich parametrů:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
-                          hyperparameter_sampling=param_sampling, 
-                          policy=early_termination_policy,
-                          primary_metric_name="accuracy", 
-                          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
-                          max_total_runs=100,
-                          max_concurrent_runs=4)
+hd_config = HyperDriveConfig(run_config=src,
+                             hyperparameter_sampling=param_sampling,
+                             policy=early_termination_policy,
+                             primary_metric_name="accuracy",
+                             primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                             max_total_runs=100,
+                             max_concurrent_runs=4)
 ```
 
 ## <a name="submit-experiment"></a>Odeslat experiment
 
-Po definování konfigurace ladění vašich parametrů [odešlete experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
+Po definování konfigurace ladění vašich parametrů [odešlete experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truesubmit-config--tags-none----kwargs-):
 
 ```Python
 from azureml.core.experiment import Experiment
 experiment = Experiment(workspace, experiment_name)
-hyperdrive_run = experiment.submit(hyperdrive_run_config)
+hyperdrive_run = experiment.submit(hd_config)
 ```
 
 `experiment_name` je název, který jste přiřadili experimentu ladění vašich parametrů, a `workspace` je pracovní prostor, ve kterém chcete vytvořit experiment (Další informace o experimentech najdete v tématu [jak Azure Machine Learning funguje?](concept-azure-machine-learning-architecture.md))
@@ -341,15 +341,15 @@ Experiment ladění vašich parametrů můžete nakonfigurovat tak, aby začal z
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
-                          hyperparameter_sampling=param_sampling, 
-                          policy=early_termination_policy,
-                          resume_from=warmstart_parents_to_resume_from, 
-                          resume_child_runs=child_runs_to_resume,
-                          primary_metric_name="accuracy", 
-                          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
-                          max_total_runs=100,
-                          max_concurrent_runs=4)
+hd_config = HyperDriveConfig(run_config=src,
+                             hyperparameter_sampling=param_sampling,
+                             policy=early_termination_policy,
+                             resume_from=warmstart_parents_to_resume_from,
+                             resume_child_runs=child_runs_to_resume,
+                             primary_metric_name="accuracy",
+                             primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                             max_total_runs=100,
+                             max_concurrent_runs=4)
 ```
 
 ## <a name="visualize-experiment"></a>Vizualizace experimentu
@@ -377,7 +377,7 @@ Všechny vaše optimalizační parametry můžete vizualizovat také na webu Azu
 
 ## <a name="find-the-best-model"></a>Najít nejlepší model
 
-Po dokončení všech spuštění ladění parametrů proveďte [identifikaci nejlepšího provedení konfigurace](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#&preserve-view=trueget-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-) a odpovídajících hodnot parametrů:
+Po dokončení všech spuštění ladění parametrů proveďte [identifikaci nejlepšího provedení konfigurace](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-) a odpovídajících hodnot parametrů:
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
@@ -393,7 +393,7 @@ print('\n batch size:',parameter_values[7])
 
 ## <a name="sample-notebook"></a>Ukázkový Poznámkový blok
 Další informace najdete v poznámkách k vlakovým parametrům-* v této složce:
-* [Postupy: použití-AzureML/školení – s využitím hloubkového učení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
+* [Postupy: použití-AzureML/ml – rozhraní](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 

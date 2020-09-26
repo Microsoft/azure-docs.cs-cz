@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: a67d61c5a7c8861b1e4462586e1e4dca9149ab4f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c4c040c6d5b8eb4041db3ffaaab58657a9f9c7da
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305439"
+ms.locfileid: "91358045"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace HootSuite pro Automatické zřizování uživatelů
 
@@ -88,7 +88,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte `https://platform.hootsuite.com/scim/v2` adresu URL tenanta. Zadejte hodnotu Long-Trvalá tajná hodnota tokenu, která byla dříve načtena v **kroku 2**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k HootSuite. Pokud se připojení nepovede, ujistěte se, že má váš účet HootSuite oprávnění správce, a zkuste to znovu.
 
-    ![zřizování](./media/hootsuite-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/hootsuite-provisioning-tutorial/provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 

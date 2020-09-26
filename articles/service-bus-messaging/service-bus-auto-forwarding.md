@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak zřetězit frontu Azure Service Bus ne
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af1c8a8e043ae964c4917a58ea67275e8379817f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021710"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333677"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Zřetězení Service Bus entit pomocí procesu autopřesměrovávání
 
@@ -29,11 +29,11 @@ Cílová entita musí existovat v okamžiku, kdy je zdrojová entita vytvořena.
 
 K horizontálnímu navýšení kapacity jednotlivých témat můžete použít automatické přeposílání. Service Bus omezuje [počet předplatných v daném tématu](service-bus-quotas.md) na 2 000. Další předplatná můžete přizpůsobit vytvořením témat druhé úrovně. I v případě, že nejste vázáni omezením Service Bus pro počet předplatných, může přidání druhé úrovně témat zlepšit celkovou propustnost vašeho tématu.
 
-![Scénář automatického předávání][0]
+![Diagram scénáře automatického přeposílání znázorňující zprávu zpracovaná prostřednictvím tématu Orders, které lze rozvětvit na některé tři témata druhé úrovně objednávky.][0]
 
 K oddálení odesílatelů zpráv z přijímačů můžete použít také autopřesměrovávání. Představte si třeba systém ERP, který se skládá ze tří modulů: zpracování objednávek, Správa inventáře a Správa vztahů se zákazníky. Každý z těchto modulů generuje zprávy, které jsou zařazeny do odpovídajícího tématu. Alice a Bob jsou obchodní zástupci, kteří mají zájem o všechny zprávy, které se vztahují ke svým zákazníkům. Chcete-li přijímat tyto zprávy, Alice a Bob vytvoří osobní frontu a předplatné pro každé téma ERP, které automaticky předají všechny zprávy do fronty.
 
-![Scénář automatického předávání][1]
+![Diagram scénáře pro autopřesměrovávání zobrazující tři moduly zpracování, které odesílají zprávy prostřednictvím tří odpovídajících témat do dvou samostatných front.][1]
 
 Pokud Alice přijde na dovolenou, jeho osobní fronta místo tématu ERP vyplní. V tomto scénáři vzhledem k tomu, že prodejní zástupce neobdržel žádné zprávy, není k dispozici žádná z témat pro ERP.
 

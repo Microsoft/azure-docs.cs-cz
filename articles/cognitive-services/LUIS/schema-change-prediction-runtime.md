@@ -1,14 +1,16 @@
 ---
 title: Rozšiřování aplikace za běhu – LUIS
 description: ''
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2608fb01ece81f555aae2f3d4a2e4a05cfc90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538575"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322797"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>Rozšiřování aplikace v prostředí předpovědi
 
@@ -66,7 +68,7 @@ Další uživatel, který se utterance do robota chatu, používá Vague termín
 
 `Send him a calendar reminder for the party.`
 
-V tomto případě se v rámci konverzace používá `him` utterance jako odkaz na. `Hazem` Robot konverzačního chatu v těle příspěvku může mapovat `him` na hodnotu entity extrahovanou z prvního utteranceu,. `Hazem`
+V tomto případě se v rámci konverzace používá utterance `him` jako odkaz na `Hazem` . Robot konverzačního chatu v těle příspěvku může mapovat `him` na hodnotu entity extrahovanou z prvního utteranceu, `Hazem` .
 
 ```json
     "externalEntities": [
@@ -86,9 +88,9 @@ Odpověď předpovědi zahrnuje tuto externí entitu se všemi ostatními předp
 
 ### <a name="override-existing-model-predictions"></a>Přepsat existující předpovědi modelů
 
-Vlastnost `preferExternalEntities` Options určuje, že pokud uživatel odešle externí entitu, která se překrývá s předpovězenou entitou se stejným názvem, Luis zvolí entitu předanou nebo entitu existující v modelu.
+`preferExternalEntities`Vlastnost Options určuje, že pokud uživatel odešle externí entitu, která se překrývá s předpovězenou entitou se stejným názvem, Luis zvolí entitu předanou nebo entitu existující v modelu.
 
-Zvažte například dotaz `today I'm free`. LUIS se `today` detekuje jako datetimeV2 s následující odpovědí:
+Zvažte například dotaz `today I'm free` . LUIS `today` se detekuje jako datetimeV2 s následující odpovědí:
 
 ```JSON
 "datetimeV2": [
@@ -117,7 +119,7 @@ Pokud uživatel odešle externí entitu:
 }
 ```
 
-Pokud `preferExternalEntities` je nastaven na `false`, vrátí Luis odpověď, jako kdyby nebyla odeslána Externí entita.
+Pokud `preferExternalEntities` je nastaven na `false` , vrátí Luis odpověď, jako kdyby nebyla odeslána Externí entita.
 
 ```JSON
 "datetimeV2": [
@@ -133,7 +135,7 @@ Pokud `preferExternalEntities` je nastaven na `false`, vrátí Luis odpověď, j
 ]
 ```
 
-Pokud `preferExternalEntities` je nastaven na `true`, vrátí Luis odpověď, včetně:
+Pokud `preferExternalEntities` je nastaven na `true` , vrátí Luis odpověď, včetně:
 
 ```JSON
 "datetimeV2": [
@@ -151,7 +153,7 @@ _Volitelná_ `resolution` vlastnost se vrátí v odpovědi předpovědi, což v�
 
 Hlavním účelem je rozšiřování předem sestavených entit, ale není omezen na tento typ entity.
 
-`resolution` Vlastnost může být číslo, řetězec, objekt nebo pole:
+`resolution`Vlastnost může být číslo, řetězec, objekt nebo pole:
 
 * Praha
 * {"text": "value"}
@@ -173,7 +175,7 @@ Entita seznamu může být v aplikaci LUIS prázdná, ale musí existovat. Entit
 
 ### <a name="dynamic-list-json-request-body"></a>Text požadavku JSON dynamického seznamu
 
-Odeslat následující tělo JSON pro přidání nového podseznamu se synonymy do seznamu a předpověď entity seznamu pro text `LUIS`s požadavkem na `POST` předpověď dotazu:
+Odeslat následující tělo JSON pro přidání nového podseznamu se synonymy do seznamu a předpověď entity seznamu pro text `LUIS` s `POST` požadavkem na předpověď dotazu:
 
 ```JSON
 {

@@ -8,18 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653239"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271898"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrovat disk protokolu na Ultra disk
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,7 +58,7 @@ Pokud chcete povolit kompatibilitu, postupujte podle těchto kroků:
 
 ### <a name="attach-disk"></a>Připojit disk
 
-Pomocí Azure Portal připojte k virtuálnímu počítači Ultra disk. Podrobnosti najdete v tématu [připojení Ultra disk](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal) .
+Pomocí Azure Portal připojte k virtuálnímu počítači Ultra disk. Podrobnosti najdete v tématu [připojení Ultra disk](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk).
 
 Po připojení disku spusťte virtuální počítač ještě jednou pomocí Azure Portal. 
 

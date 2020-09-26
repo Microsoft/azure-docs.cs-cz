@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356362"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnového kanálu k vizualizaci analýzy dat v reálném čase
 
@@ -157,7 +157,7 @@ Když se vytvoří nový dokument nebo se v kontejneru Cosmos upraví aktuální
    * Sem napište text **vaší kolekce** s názvem vaší kolekce. Pokud jste postupovali podle předchozích pokynů, název vaší kolekce je changefeedlabcollection.  
    * Text **vaší kolekce zapůjčení** nahraďte názvem vaší kolekce zapůjčení. Pokud jste postupovali podle předchozích pokynů, je název vaší kolekce zapůjčení **zapůjčení**.  
    * V horní části sady Visual Studio se ujistěte, že je v poli spouštěcí projekt nalevo od zelené šipky zobrazená zpráva **ChangeFeedFunction**.  
-   * Vyberte možnost **začít** v horní části stránky a spusťte program.  
+   * Vyberte možnost **začít**  v horní části stránky a spusťte program.  
    * Můžete potvrdit, že je funkce spuštěná, když aplikace konzoly říká "hostitel úlohy je spuštěný".
 
 ## <a name="insert-data-into-azure-cosmos-db"></a>Vložit data do Azure Cosmos DB 
@@ -315,7 +315,7 @@ Power BI je sada nástrojů pro obchodní analýzu, která umožňuje analyzovat
 
    Tímto způsobem vypadá vzorový řídicí panel s těmito grafy:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="vizualizace":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Snímek obrazovky ukazuje vzorový řídicí panel s grafy s názvem Průměrná cena položek podle akcí, jedinečných návštěvníků, výnosů a hlavních 5 položek koupených.":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Volitelné: vizualizace pomocí webu elektronického obchodování
 

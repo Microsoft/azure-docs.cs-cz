@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356345"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Vytvoření nastavení automatického škálování prostředků Azure na základě údajů o výkonu nebo časového plánu
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Aktivovat akci škálování na méně instancí a sledovat snižování počtu instancí
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -46,7 +46,7 @@ Během několika minut by mělo proběhnout zřízení vašich prostředků. Ve 
 1. V levém navigačním podokně vyberte možnost **Sledovat**. Po načtení stránky vyberte kartu **Automatické škálování** .
 2. Je tam uveden seznam prostředků v rámci vašeho předplatného, které podporují automatické škálování. Najděte plán služby App Service vytvořený dříve v tomto kurzu a klikněte na něj.
 
-    ![Přechod k nastavením automatického škálování](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![Snímek obrazovky zobrazuje Azure Portal s monitorováním a pak je vybraný automatické škálování.](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. V nastavení automatického škálování klikněte na tlačítko **Povolit automatické škálování** .
 
@@ -59,7 +59,7 @@ Následujících několik kroků vás provede vyplněním obrazovky automatické
 2. Ve výchozím profilu zkontrolujte, že je **Režim škálování** nastavený na možnost škálovat na konkrétní počet instancí.
 3. Nastavte počet instancí **1**. Toto nastavení zajistí, že když žádný jiný profil nebude aktivní nebo se nebude uplatňovat, výchozí profil obnoví počet instancí 1.
 
-   ![Přechod k nastavením automatického škálování](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![Snímek obrazovky se stránkou nastavení automatického škálování se zadaným názvem pro nastavení.](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>Vytvořit profil opakování
