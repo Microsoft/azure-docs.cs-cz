@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 2a06c182f1f37942ac0921db254bf63bf177fec2
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325959"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
-Virtuální počítače Azure H-Series jsou navržené tak, aby poskytovaly výkon výkonné třídy, škálovatelnost MPI a cenovou efektivitu pro celou řadu úloh HPC ve skutečném světě.
+Virtuální počítače Azure H-Series jsou navržené tak, aby poskytovaly výkon, škálovatelnost a cenovou efektivitu v nejrůznějších reálných úlohách HPC.
 
 [HBv2-Series](hbv2-series.md) Virtuální počítače jsou optimalizované pro aplikace, které jsou založené na šířce pásma, jako je například kapalinová dynamika, analýza omezeného prvku a simulace zásobníku. Virtuální počítače s HBv2 120 AMD EPYC 7742 procesory, 4 GB paměti RAM na jádro procesoru a žádné souběžné multithreadingy. Každý virtuální počítač HBv2 poskytuje šířku pásma až 340 GB/s a až 4 teraFLOPSy FP64 Compute.
 
@@ -31,22 +31,23 @@ Virtuální počítače s HBv2 200 GB/s Mellanox HDR InfiniBand, zatímco virtu�
 [Řada H-Series](h-series.md) Virtuální počítače jsou optimalizované pro aplikace řízené vysokými kmitočty procesoru nebo velkým množstvím paměti podle základních požadavků. Virtuální počítače řady H-Series funkce 8 nebo 16 Intel Xeon E5 2667 V3 procesory, 7 nebo 14 GB paměti RAM na jádro procesoru a žádné podprocesy. Funkce H-Series 56 GB/s Mellanox FDR InfiniBand v neblokované konfiguraci stromu FAT pro zajištění konzistentního výkonu RDMA. Virtuální počítače H-series podporují Intel MPI 5. x a MS-MPI.
 
 > [!NOTE]
-> Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> [Virtuální počítače A8 – A11](./sizes-previous-gen.md#a-series---compute-intensive-instances) jsou plánovány k vyřazení na 3/2021. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 ## <a name="rdma-capable-instances"></a>Instance s podporou RDMA
 
-Většina velikostí virtuálních počítačů HPC (HBv2, Get, HC, H16r, H16mr, A8 a c) funguje jako síťové rozhraní pro připojení vzdáleného přímého přístupu do paměti (RDMA). Vybrané velikosti [řady N-Series](./nc-series.md) určené pomocí r (ND40rs_v2, ND24rs, NC24rs_v3, NC24rs_v2 a NC24r) jsou taky podporující RDMA. Toto rozhraní je navíc ke standardním síťovým rozhraním Azure, které je dostupné v dalších velikostech virtuálních počítačů.
+Většina velikostí virtuálních počítačů HPC (HBv2, Get, HC, H16r, H16mr, A8 a c) funguje jako síťové rozhraní pro připojení vzdáleného přímého přístupu do paměti (RDMA). Vybrané velikosti [řady N-Series](./nc-series.md) určené pomocí r (ND40rs_v2, ND24rs, NC24rs_v3, NC24rs_v2 a NC24r) jsou taky podporující RDMA. Toto rozhraní je kromě standardního síťového rozhraní sítě Azure dostupné v dalších velikostech virtuálních počítačů.
 
 Toto rozhraní umožňuje, aby instance s podporou RDMA komunikovaly přes síť InfiniBand (IB), která pracuje s sazbami HDR pro HBv2, EDR sazbami pro NDv2, FDR sazby pro H16r, H16mr a další virtuální počítače řady N-Series s podporou RDMA a QDR sazby pro virtuální počítače A8 a c. Tyto možnosti RDMA můžou zvýšit škálovatelnost a výkon určitých aplikací MPI (Message Passing Interface).
 
 > [!NOTE]
 > V prostředí Azure HPC existují dvě třídy virtuálních počítačů v závislosti na tom, jestli mají rozhraní SR-IOV povolené pro InfiniBand. V současné době je rozhraní SR-IOV pro virtuální počítače s povolenou InfiniBand: HBv2,, HC, NCv3 a NDv2. Na ostatních virtuálních počítačích s povolenou InfiniBand nejsou aktuálně povoleny SR-IOV.
-> U všech virtuálních počítačů podporujících RDMA je podpora RDMA přes IB podporovaná.
+> RDMA se povoluje jenom přes síť InfiniBand (IB) a podporuje se u všech virtuálních počítačů podporujících RDMA.
 > IP přes IB se podporuje jenom na virtuálních počítačích s povolenou SR-IOV.
+> RDMA není povolený přes síť Ethernet.
 
 - **Operační systém** – Linux je velmi dobře podporovaný pro virtuální počítače HPC; distribuce, jako je CentOS, RHEL, Ubuntu, SUSE, se běžně používají. Týkající se podpory Windows je podpora Windows serveru 2016 a novějších verzí na všech virtuálních počítačích řady HPC. Windows Server 2012 R2, Windows Server 2012 se podporuje taky na virtuálních počítačích s povolenou instancí nevyužívajících SR-IOV (H16r, H16mr, A8 a c \ c). Upozorňujeme, že [systém Windows Server 2012 R2 není podporován na HBv2 a dalších virtuálních počítačích s více než 64 (virtuálními nebo fyzickými) jádry](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows). Seznam podporovaných imagí virtuálních počítačů na webu Marketplace najdete v tématu [image virtuálních počítačů](./workloads/hpc/configure.md) a jejich správné konfigurace.
 
-- **Ovladače InfiniBand a RDMA** – na virtuálních počítačích s povolenou InfiniBand jsou k povolení RDMA potřeba příslušné ovladače. V systému Linux jsou pro virtuální počítače s podporou SR-IOV i bez SR-IOV předem nakonfigurované image virtuálních počítačů CentOS-HPC na webu Marketplace s příslušnými ovladači. Image virtuálních počítačů s Ubuntu se dají nakonfigurovat pomocí správných ovladačů podle [pokynů uvedených tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Další podrobnosti najdete v tématu [Konfigurace a optimalizace virtuálních počítačů pro Linux OS](./workloads/hpc/configure.md) , kde najdete další podrobnosti o předpřipravených bitových KOPIÍCH operačního systému Linux.
+- **InfiniBand a ovladače** – na virtuálních počítačích s povolenou InfiniBand jsou k povolení RDMA potřeba příslušné ovladače. V systému Linux jsou pro virtuální počítače s podporou SR-IOV i bez SR-IOV předem nakonfigurované image virtuálních počítačů CentOS-HPC na webu Marketplace s příslušnými ovladači. Image virtuálních počítačů s Ubuntu se dají nakonfigurovat pomocí správných ovladačů podle [pokynů uvedených tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Další podrobnosti najdete v tématu [Konfigurace a optimalizace virtuálních počítačů pro Linux OS](./workloads/hpc/configure.md) , kde najdete další podrobnosti o předpřipravených bitových KOPIÍCH operačního systému Linux.
 
    V systému Linux lze pomocí [rozšíření INFINIBANDDRIVERLINUX VM](./extensions/hpc-compute-infiniband-linux.md) nainstalovat ovladače Mellanox OFED a povolit InfiniBand na virtuálních počítačích s podporou SR-IOV a N-Series. Přečtěte si další informace o povolení InfiniBand na virtuálních počítačích s podporou RDMA v [úlohách HPC](./workloads/hpc/enable-infiniband.md).
 

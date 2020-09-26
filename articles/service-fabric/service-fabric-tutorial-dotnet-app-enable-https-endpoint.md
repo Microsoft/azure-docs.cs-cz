@@ -4,12 +4,12 @@ description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET C
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326231"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
 
@@ -354,7 +354,7 @@ V Průzkumník řešení vyberte **hlasovací** aplikaci a nastavte vlastnost **
 
 Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se webový prohlížeč otevře v protokolu https: \/ /localhost: 443. Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
 
-![Hlasovací aplikace][image2]
+![Snímek obrazovky ukázkové aplikace Service Fabric hlasovacího programu běžící v okně prohlížeče https://localhost/ s adresou URL][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Instalace certifikátu na uzlech clusteru
 
@@ -371,7 +371,7 @@ V dalším kroku nainstalujte certifikát na vzdálený cluster pomocí [těchto
 > [!Warning]
 > Certifikát podepsaný svým držitelem je dostačující pro vývoj a testování aplikací. Pro produkční aplikace místo certifikátu podepsaného svým držitelem používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority).
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>Otevřete port 443 ve službě Azure Load Balancer a virtuální síť.
 
 Pokud ještě není otevřený, otevřete port 443 v nástroji pro vyrovnávání zatížení.
 
@@ -396,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
+Proveďte stejnou pro přidruženou virtuální síť.
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
 ## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace do Azure
 
 Uložte všechny soubory, přepněte z režimu Ladění do Vydání a stisknutím klávesy F6 znovu spusťte sestavení.  V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**. Vyberte koncový bod připojení clusteru vytvořeného v tématu [Nasazení aplikace do clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md) nebo vyberte jiný cluster.  Kliknutím na **Publikovat** publikujte aplikaci do vzdáleného clusteru.
 
 Po nasazení aplikace otevřete webový prohlížeč a přejděte na adresu `https://mycluster.region.cloudapp.azure.com:443` (v adrese URL aktualizujte koncový bod připojení pro váš cluster). Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
 
-![Hlasovací aplikace][image3]
+![Snímek obrazovky ukázkové aplikace Service Fabric hlasovacího programu běžící v okně prohlížeče https://mycluster.region.cloudapp.azure.com:443 s adresou URL][image3]
 
 ## <a name="next-steps"></a>Další kroky
 

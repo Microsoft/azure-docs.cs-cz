@@ -4,17 +4,17 @@ description: Naučte se používat Apache Spark MLlib k vytvoření aplikace pro
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259981"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -96,7 +96,7 @@ Vzhledem k tomu, že nezpracovaná data jsou ve formátu Parquet, můžete pomoc
     display(sampled_taxi_df)
     ```
 
-4. V závislosti na velikosti vygenerované velikosti datové sady a potřebě experimentu nebo spuštění poznámkového bloku může být vhodné datovou sadu ukládat místně v pracovním prostoru. Existují tři způsoby, jak provést explicitní ukládání do mezipaměti:
+4. V závislosti na velikosti generované datové sady a potřebě experimentu nebo spuštění poznámkového bloku může být vhodné datovou sadu ukládat do mezipaměti místně v pracovním prostoru. Existují tři způsoby, jak provést explicitní ukládání do mezipaměti:
 
    - Uložit datový rámec místně jako soubor
    - Uložit datový rámec jako dočasnou tabulku nebo zobrazení
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Vytvoření modelu logistické regrese
 
-Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstup do algoritmu logistické regrese musí být sada *vektorových dvojic popisků*, kde je *vektor funkce* vektor čísel reprezentujících vstupní bod. Proto musíme sloupce kategorií převést na čísla. `trafficTimeBins`Sloupce a je `weekdayString` nutné převést na celočíselné reprezentace. K převodu je k dispozici několik přístupů, ale přístup v tomto příkladu je *OneHotEncoding*, což je běžný přístup.
+Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstup do algoritmu logistické regrese musí být sada *vektorových dvojic popisků*, kde je *vektor funkce* vektor čísel reprezentujících vstupní bod. Proto musíme sloupce kategorií převést na čísla. `trafficTimeBins`Sloupce a se `weekdayString` musí převést na celočíselné reprezentace. K převodu je k dispozici několik přístupů, ale přístup v tomto příkladu je *OneHotEncoding*, což je běžný přístup.
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-Výsledkem je nový datový rámec se všemi sloupci ve správném formátu pro výuku modelu.
+Výsledkem této akce je nový datový rámec, ve kterém jsou všechny sloupce ve správném formátu pro výuku modelu.
 
 ## <a name="train-a-logistic-regression-model"></a>Školení modelu logistické regrese
 

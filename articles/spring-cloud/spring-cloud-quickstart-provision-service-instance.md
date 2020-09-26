@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 16d40c334d51a66df4a4d2d56e2fa2379dda3726
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f44ebc3885fe57d68756d908c4b392cd43b0366f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326197"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Rychlý Start: zřízení služby pro jarní cloudovou službu Azure
 
@@ -158,23 +158,9 @@ Následující postup používá rozšíření Azure CLI ke zřízení instance 
 ---
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud máte v úmyslu pokračovat k dalšímu rychlému startu v této sérii, tento krok přeskočte.
-
-V tomto rychlém startu jste vytvořili prostředky Azure, které budou nadále účtovat poplatky, pokud zůstanou ve vašem předplatném. Pokud nechcete pokračovat k dalšímu rychlému startu a neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků pomocí portálu nebo spuštěním následujícího příkazu v Cloud Shell:
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-V tomto rychlém startu jste také nastavili výchozí název skupiny prostředků. Pokud nechcete pokračovat dalším rychlým startem, vymažte tuto výchozí hodnotu spuštěním následujícího příkazu rozhraní příkazového řádku:
-
-```azurecli
-az configure --defaults group=
-```
-
 ## <a name="next-steps"></a>Další kroky
+
+V tomto rychlém startu jste vytvořili prostředky Azure, které budou nadále účtovat poplatky, pokud zůstanou ve vašem předplatném. Pokud nechcete pokračovat k dalšímu rychlému startu, přečtěte si téma [vyčištění prostředků](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources). V opačném případě přejděte k dalšímu rychlému startu:
 
 > [!div class="nextstepaction"]
 > [Nastavení konfiguračního serveru](spring-cloud-quickstart-setup-config-server.md)

@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336201"
 ---
-# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení potíží s replikací pro virtuální počítače VMware a fyzické servery
+# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení potíží s replikací fyzických serverů a virtuálních počítačů VMware
 
 Tento článek popisuje některé běžné problémy a konkrétní chyby, se kterými se můžete setkat při replikaci místních virtuálních počítačů VMware a fyzických serverů do Azure pomocí [Site Recovery](site-recovery-overview.md).
 
@@ -192,6 +192,24 @@ Ověřte, zda je typ spouštění služby VSS Provider nastaven na hodnotu **aut
         - Služba Stínová kopie svazku
         - Poskytovatel služby Stínová kopie svazku Azure Site Recovery
         - Služba VDS
+
+## <a name="error-id-95001---insufficient-permissions-found"></a>ID chyby 95001 – nalezena nedostatečná oprávnění
+
+K této chybě dochází při pokusu o povolení replikace a složky aplikace nemají dostatečná oprávnění.
+
+**Jak opravit**: Pokud chcete tento problém vyřešit, zajistěte, aby měl uživatel IUSR roli vlastníka pro všechny níže uvedené složky –
+
+- *C\ProgramData\Microsoft Azure Site Recovery\private*
+- Instalační adresář. Například pokud je instalační adresář jednotka F, zadejte správné oprávnění –
+    - *Soubory F:\Program (x86) \Microsoft Azure Site Recovery\home\svsystems*
+- Složka *\pushinstallsvc* v instalačním adresáři. Například pokud je instalační adresář jednotky F, poskytněte správná oprávnění –
+    - *Soubory F:\Program (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc*
+- Složka *\etc* v instalačním adresáři. Například pokud je instalační adresář jednotky F, poskytněte správná oprávnění –
+    - *Soubory F:\Program (x86) \Microsoft Azure Site Recovery\home\svsystems\etc*
+- *C:\Temp*
+- *C:\thirdparty\php5nts*
+- Všechny položky pod cestou níže –
+    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
 
 ## <a name="next-steps"></a>Další kroky
 

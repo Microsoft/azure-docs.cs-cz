@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 7e62e414182d95a445f37c1c97cdef8aff6a587a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272493"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Příprava virtuálních počítačů na FCI (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních 
 
 ## <a name="prerequisites"></a>Požadavky 
 
-- Microsoft Azure předplatné. Začněte [zdarma](https://azure.microsoft.com/free/). 
+- Předplatné Microsoft Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
 - Doména Windows na virtuálních počítačích Azure nebo v místním datacentru, které se rozšířily do Azure s párováním virtuálních sítí.
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure a ve službě Active Directory.
 - Virtuální síť Azure a podsíť s dostatkem adresního prostoru IP adres pro tyto součásti:

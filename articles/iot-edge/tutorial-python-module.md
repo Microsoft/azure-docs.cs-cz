@@ -2,20 +2,20 @@
 title: Vytvoření vlastního modulu Pythonu – Azure IoT Edge | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem v jazyce Python a jak ho nasadit na hraniční zařízení.
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
 ms.reviewer: kgremban
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 46e5a2119f05f3b4062044533352a6976a4ae4d8
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c05124a1f5e5920b94d1925490b6714ba3b33c83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336764"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Python IoT Edge pro zařízení se systémem Linux
 
@@ -45,7 +45,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | **Linux AMD64** | ![Použití VS Code pro moduly Pythonu v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro moduly Pythonu na platformě Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 

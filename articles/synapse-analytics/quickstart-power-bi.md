@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f9ae7b74c17bb330c2c7aa99903c62d4701f0a52
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.reviewer: jrasnick
+ms.openlocfilehash: 9b4b9da37b753418773141f832f253003ad40014
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260453"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Rychlý Start: propojení pracovního prostoru Power BI k pracovnímu prostoru synapse
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak připojit Power BI pracovní prostor k 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvoření pracovního prostoru Azure synapse a přidruženého účtu úložiště](quickstart-create-workspace.md)
 - [Pracovní prostor Power BI Professional nebo Premium](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)
@@ -49,7 +49,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
     ![Zobrazují se nastavení propojené služby Power BI.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. Klikněte na **Create** (Vytvořit).
+6. Klikněte na **Vytvořit**.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>Zobrazit Power BI pracovní prostor v synapse studiu
 

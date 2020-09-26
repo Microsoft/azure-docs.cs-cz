@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 96a97b9b141d434f201da4c7e36f6715186a652e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326248"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování
 
@@ -63,7 +63,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. Přejít ke **službě | **Na stránce Přehled a v části **monitorování** vyberte **protokoly** . Vyberte **Spustit** na jednom z ukázkových dotazů pro jarní cloud Azure.
+1. V Azure Portal přejdete do **služby | **Na stránce Přehled a v části **monitorování** vyberte **protokoly** . Vyberte **Spustit** na jednom z ukázkových dotazů pro jarní cloud Azure.
 
    [![Položka ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) Log Analytics](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -75,7 +75,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="metrics"></a>Metriky
 
-1. V Azure Portal přejdete do **služby | **Na stránce Přehled a v části **monitorování** vyberte **metriky** . Přidejte svoji první metriku výběrem `system.cpu.usage` možnosti **metrika** a `Avg` **agregace** , abyste viděli časovou osu celkového využití CPU.
+1. V Azure Portal přejdete do **služby | **Na stránce Přehled a v části **monitorování** vyberte **metriky** . První metriku přidejte tak, že v rozevíracím seznamu **metrika** vyberete jednu z metrik **.NET nebo v** rozevíracím seznamu **žádost (.NET)** , a `Avg` pro **agregaci** Zobrazte časovou osu této metriky.
 
    [![Vstup metrik – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
     

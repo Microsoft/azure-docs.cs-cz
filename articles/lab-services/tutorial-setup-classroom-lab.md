@@ -3,12 +3,12 @@ title: Nastavení testovacího prostředí v učebně v Azure Lab Services | Mic
 description: V tomto kurzu použijete Azure Lab Services k nastavení testovacího prostředí pro učebnu s virtuálními počítači, které používají studenti ve vaší třídě.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336730"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -21,7 +21,7 @@ V tomto kurzu provedete následující akce:
 > * Nastavit plán pro testovací prostředí
 > * Poslat e-mail pozvánky studentům
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto kurzu nastavíte testovací prostředí s virtuálními počítači pro vaši třídu. Pokud chcete nastavit prostředí učebny v účtu testovacího prostředí, musíte být členem jedné z těchto rolí v účtu testovacího prostředí: vlastník, autor testovacího prostředí nebo přispěvatele. Účet, který jste použili k vytvoření účtu testovacího prostředí, je automaticky přidán do role vlastníka. K vytvoření testovacího prostředí učebny můžete použít uživatelský účet, který jste použili k vytvoření účtu testovacího prostředí. 
 
 Toto je typický pracovní postup při použití Azure Lab Services:
@@ -37,7 +37,7 @@ V tomto kroku vytvoříte testovací prostředí pro třídu v Azure.
 2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft. 
 3. Vyberte **nové testovací prostředí**. 
     
-    ![Vytvoření testovacího prostředí v učebně](./media/tutorial-setup-classroom-lab/new-lab-button.png)
+    ![Snímek obrazovky, který zobrazuje "Azure Lab Services" s vybraným tlačítkem nové testovací prostředí.](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
     1. Zadejte **název** testovacího prostředí a vyberte **Další**.  
 
@@ -90,7 +90,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
 
 1. Přepněte na stránku **plány** a na panelu nástrojů vyberte **Přidat naplánovanou událost** . 
 
-    ![Tlačítko Přidat plán na stránce plány](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Snímek obrazovky zobrazující tlačítko "Přidat naplánované události" na stránce plány](./media/how-to-create-schedules/add-schedule-button.png)
 2. Na stránce **Přidat naplánovanou událost** proveďte následující kroky:
     1. Potvrďte, že **Standard** je vybraný jako **Typ události**.  
     2. Vyberte **počáteční datum** pro třídu. 

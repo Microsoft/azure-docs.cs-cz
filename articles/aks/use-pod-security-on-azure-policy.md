@@ -3,22 +3,23 @@ title: Zabezpečení lusků pomocí Azure Policy ve službě Azure Kubernetes (A
 description: Naučte se zabezpečit lusky pomocí Azure Policy ve službě Azure Kubernetes (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: e1c5f32e8e5df69a9c4b1eeeda46caf9d8b51f6e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299149"
 ---
-# <a name="secure-pods-with-azure-policy-preview"></a>Zabezpečení lusků pomocí Azure Policy (Preview)
+# <a name="secure-pods-with-azure-policy"></a>Zabezpečení lusků pomocí Azure Policy
 
 Pokud chcete zlepšit zabezpečení clusteru AKS, můžete určit, jaké funkce se mají přidělovat, a pokud cokoli běží na zásadách společnosti. Tento přístup je definovaný prostřednictvím předdefinovaných zásad, které poskytuje [doplněk Azure Policy pro AKS][kubernetes-policy-reference]. Díky lepší kontrole nad aspekty zabezpečení specifikace vašeho zařízení, jako jsou například oprávnění ke kořenu, umožňuje přísnější dodržování zabezpečení a přehled o tom, co je ve vašem clusteru nasazené. Pokud parametr pod nesplňuje podmínky zadané v zásadě, Azure Policy může zakázat ovládacímu poli pod, aby mohl spustit nebo označit porušení. V tomto článku se dozvíte, jak pomocí Azure Policy omezit nasazení lusků v AKS.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
 ## <a name="before-you-begin"></a>Než začnete
+
+> [!IMPORTANT]
+> Všeobecná dostupnost (GA) Azure Policy v AKS se aktivně uvolňuje napříč všemi oblastmi. Očekávané globální dokončení verze GA je 9/29/2020. Použití v oblastech bez verze GA vyžaduje postup registrace ve verzi Preview. Tato akce se ale automaticky aktualizuje na verzi GA, pokud je v oblasti dostupná.
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -26,14 +27,13 @@ V tomto článku se předpokládá, že máte existující cluster AKS. Pokud po
 
 Chcete-li zabezpečit AKS po Azure Policy, je nutné nainstalovat Azure Policy doplněk pro AKS do clusteru AKS. Pomocí těchto [kroků nainstalujte doplněk Azure Policy](../governance/policy/concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-aks).
 
-V tomto dokumentu se předpokládá, že máte následující ty, které jsou nasazené v předchozím odkazovaném procházení.
+V tomto dokumentu se předpokládá, že máte následující, které jsou nasazené v předchozím odkazu.
 
 * Zaregistrovali `Microsoft.ContainerService` jste `Microsoft.PolicyInsights` poskytovatele prostředků a pomocí `az provider register`
-* Zaregistrovali jste `AKS-AzurePolicyAutoApprove` příznak funkce Preview pomocí `az feature register`
-* Rozhraní příkazového řádku Azure, které je nainstalované s `aks-preview` rozšířením verze 0.4.53 nebo novější
-* Cluster AKS s podporovanou verzí 1,15 nebo vyšší instalovanou s doplňkem Azure Policy
+* Azure CLI 2,12 nebo vyšší
+* Cluster AKS ve verzi 1,15 nebo vyšší nainstalovaný s doplňkem Azure Policy
 
-## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>Přehled zabezpečení lusků pomocí Azure Policy pro AKS (Preview)
+## <a name="overview-of-securing-pods-with-azure-policy-for-aks"></a>Přehled zabezpečení lusků pomocí Azure Policy pro AKS
 
 >[!NOTE]
 > Tento dokument popisuje, jak použít Azure Policy k zabezpečení lusků, což je nástupce [funkce zásad zabezpečení Kubernetes pod ve verzi Preview](use-pod-security-policies.md).
@@ -45,33 +45,61 @@ V clusteru AKS se k zachycení požadavků na server rozhraní API používá ř
 
 Dříve byla tato funkce [(Preview)](use-pod-security-policies.md) povolena prostřednictvím projektu Kubernetes, aby se omezilo, které z nich je možné nasadit.
 
-Pomocí Azure Policyho doplňku může cluster AKS používat integrované zásady Azure, které v předchozích zásadách zabezpečení a dalších Kubernetes prostředků podobné zásadám zabezpečení. Doplněk Azure Policy pro AKS nainstaluje spravovanou instanci [serveru gatekeeper](https://github.com/open-policy-agent/gatekeeper)a ověří řadič přístupu. Azure Policy pro Kubernetes je postavená na Open Source otevřeném agentem zásad, který spoléhá na [Jazyk zásad Rego](../governance/policy/concepts/policy-for-kubernetes.md#policy-language).
+Pomocí Azure Policyho doplňku může cluster AKS používat integrované zásady Azure, které v předchozích zásadách zabezpečení a dalších prostředků Kubernetes mají stejné zabezpečení. Doplněk Azure Policy pro AKS nainstaluje spravovanou instanci [serveru gatekeeper](https://github.com/open-policy-agent/gatekeeper)a ověří řadič přístupu. Azure Policy pro Kubernetes je postavená na Open Source otevřeném agentem zásad, který spoléhá na [Jazyk zásad Rego](../governance/policy/concepts/policy-for-kubernetes.md#policy-language).
 
 Tento dokument popisuje, jak použít Azure Policy k zabezpečení lusků v clusteru AKS a pokyny k migraci ze zásad zabezpečení (Preview).
 
 ## <a name="limitations"></a>Omezení
 
-* Během období Preview se může v jednom clusteru spouštět omezení 200 až 20 Azure Policy pro zásady Kubernetes.
-* [Některé obory názvů systému](#namespace-exclusion) obsahující AKS spravované lusky jsou vyloučené z vyhodnocení zásad.
-* Windows lusky [nepodporují kontexty zabezpečení](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods), takže mnoho zásad Azure se vztahuje jenom na lusky Linux, jako je třeba zrušení povolení kořenových oprávnění, která se nedají předávat v oknech Windows.
-* Zásady zabezpečení a Azure Policy doplňku pro AKS nelze povolit současně. Pokud instalujete doplněk Azure Policy do clusteru se zapnutou zásadou zabezpečení pod, vypněte zásadu zabezpečení pod [následujícími pokyny](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster).
+Na Azure Policy doplňku pro clustery Kubernetes se vztahují následující obecná omezení:
+
+- Azure Policy doplněk pro Kubernetes je podporován na Kubernetes verze **1,14** nebo vyšší.
+- Azure Policy doplňku pro Kubernetes lze nasadit pouze do fondů uzlů systému Linux.
+- Podporují se jenom předdefinované definice zásad.
+- Maximální počet nevyhovujících záznamů na zásadu na cluster: **500**
+- Maximální počet nevyhovujících záznamů na předplatné: **1 000 000**
+- Instalace serveru gatekeeper mimo Azure Policy doplňky se nepodporují. Než povolíte doplněk Azure Policy, odinstalujte všechny součásti nainstalované předchozí instalací serveru gatekeeper.
+- [Důvody nedodržení předpisů](../governance/policy/how-to/determine-non-compliance.md#compliance-reasons) nejsou pro tento [režim poskytovatele prostředků](../governance/policy/concepts/definition-structure.md#resource-provider-modes) k dispozici.
+
+Následující omezení platí pouze pro Azure Policy doplněk pro AKS:
+
+- [Zásada zabezpečení AKS pod (Preview)](use-pod-security-policies.md) a doplněk Azure Policy pro AKS nelze povolit současně. 
+- Obory názvů automaticky vyloučené Azure Policy doplněk pro vyhodnocení: _Kube-System_, _gatekeeper-System_a _AKS-Periscope_.
+
+### <a name="recommendations"></a>Doporučení
+
+Níže jsou uvedená obecná doporučení pro používání doplňku Azure Policy:
+
+- Doplněk Azure Policy vyžaduje 3 součásti gatekeeper, které se mají spustit: 1 audit pod a 2 Webhook pod replikami. Tyto komponenty spotřebují více prostředků, protože počet prostředků Kubernetes a přiřazení zásad roste v clusteru, který vyžaduje operace auditu a vynucení.
+
+  - Pro méně než 500 lusků v jednom clusteru s maximálním počtem 20 omezení: 2 vCPU a 350 MB paměti na součást.
+  - Pro více než 500 lusků v jednom clusteru s maximálním počtem 40 omezení: 3 vCPU a 600 MB paměti na součást.
+
+Následující doporučení platí pouze pro AKS a doplněk Azure Policy:
+
+- Použijte fond uzlů systému s příchodem `CriticalAddonsOnly` k naplánování na serveru gatekeeper lusky. Další informace najdete v tématu [použití fondů systémových uzlů](use-system-pools.md#system-and-user-node-pools).
+- Zabezpečte odchozí přenosy z clusterů AKS. Další informace najdete v tématu [řízení provozu odchozích dat pro uzly clusteru](limit-egress-traffic.md).
+- Pokud je cluster `aad-pod-identity` povolený, lusky NMI (Node Managed identity) upraví uzly na softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato konfigurace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá `aad-pod-identity` . AzurePodIdentityException CRD je možné nakonfigurovat tak, aby informovala `aad-pod-identity` , že všechny požadavky na koncový bod metadat pocházející z objektu pod, který odpovídá popiskům definovaným v CRD, by měly být proxy bez jakéhokoli zpracování v NMI. Systém lusky s `kubernetes.azure.com/managedby: aks` návěštím v oboru názvů _Kube-System_ by měl být vyloučený v `aad-pod-identity` konfiguraci AzurePodIdentityException CRD. Další informace najdete v tématu [zakázání identity AAD-pod-identity pro konkrétního pod nebo aplikaci](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+  Chcete-li konfigurovat výjimku, nainstalujte [YAML s výjimkou mikrofonu](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
+
+Doplněk Azure Policy vyžaduje, aby fungovaly prostředky procesoru a paměti. Tyto požadavky se zvyšují, protože se zvyšuje velikost clusteru. Obecné pokyny k používání doplňku Azure Policy najdete v tématu [Azure Policy doporučení][policy-recommendations] .
 
 ## <a name="azure-policies-to-secure-kubernetes-pods"></a>Zásady Azure pro zabezpečení Kubernetes lusky
 
 Po instalaci doplňku Azure Policy se ve výchozím nastavení neuplatní žádné zásady.
 
-K dispozici jsou jedenácté (11) předdefinované individuální zásady Azure a dvě (2) integrovaná iniciativa, která v clusteru AKS konkrétně zabezpečuje lusky.
+K dispozici je 11 předdefinovaných individuálních zásad Azure a dvou integrovaných iniciativ, které konkrétně zabezpečují lusky v clusteru AKS.
 Jednotlivé zásady je možné přizpůsobit pomocí efektu. [Tady je uvedený úplný seznam zásad AKS a jejich podporovaných efektů][policy-samples]. Přečtěte si další informace o [Azure Policych efektech](../governance/policy/concepts/effects.md).
 
 Zásady Azure je možné použít na úrovni skupiny pro správu, předplatného nebo skupiny prostředků. Když přiřadíte zásadu na úrovni skupiny prostředků, ujistěte se, že je v oboru zásad vybraná skupina prostředků cílového clusteru AKS. Každý cluster v přiřazeném oboru s nainstalovaným doplňkem Azure Policy je v oboru pro zásady.
 
-Pokud používáte [zásadu zabezpečení pod (Preview)](use-pod-security-policies.md), zjistěte, jak [migrovat na Azure Policy a o dalších rozdílech v různých chováních](#migrate-from-kubernetes-pod-security-policy-to-azure-policy).
+Pokud používáte [zásadu zabezpečení pod (Preview) ](use-pod-security-policies.md), zjistěte, jak [migrovat na Azure Policy a o dalších rozdílech v různých chováních](#migrate-from-kubernetes-pod-security-policy-to-azure-policy).
 
 ### <a name="built-in-policy-initiatives"></a>Integrované iniciativy zásad
 
 Iniciativa v Azure Policy je kolekce definic zásad, které jsou přizpůsobené pro dosažení cíle přeplňování jednotného přihlašování. Použití iniciativ může zjednodušit správu a přiřazování zásad napříč AKS clustery. Iniciativa existuje jako jeden objekt, další informace o [Azure Policy iniciativách](../governance/policy/overview.md#initiative-definition).
 
-Azure Policy pro Kubernetes nabízí dvě integrované iniciativy, které zabezpečují standardní lusky, [základní](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) a [omezené](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00).
+Azure Policy pro Kubernetes nabízí dvě integrované iniciativy, které mají bezpečnostní lusky, [základní](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) a [omezené](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00).
 
 Obě předdefinované iniciativy jsou sestavené z definic používaných v [pod zásadami zabezpečení z Kubernetes](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml).
 
@@ -98,7 +126,7 @@ Existují další zásady Azure, které se dají jednotlivě použít mimo použ
 |---|---|---|---|
 |Definování profilu AppArmor používaného kontejnery|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | Volitelné | Volitelné |
 |Povoluje připojení, která nejsou jen pro čtení.|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | Volitelné | Volitelné |
-|Omezit na konkrétní ovladače FlexVolume|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | Volitelné – použijte, pokud chcete jenom ovladače FlexVolume omezit, ale ne jiné nastavit pomocí omezení využití definovaných typů svazků. | Netýká se – omezená iniciativa obsahuje "omezení využití definovaných typů svazků", které nepovoluje všechny ovladače FlexVolume |
+|Omezit na konkrétní ovladače FlexVolume|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | Volitelné – použijte, pokud chcete jenom ovladače FlexVolume omezit, ale ne jiné nastavit pomocí omezení využití definovaných typů svazků. | Netýká se – omezená iniciativa zahrnuje "omezení využití definovaných typů svazků", což zakáže všechny ovladače FlexVolume |
 
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>Nepodporované předdefinované zásady pro spravované clustery AKS
 
@@ -125,14 +153,14 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > Lusky v názvových prostorech správců, jako je Kube-System, musí běžet, aby cluster zůstal v pořádku. odebrání požadovaného oboru názvů ze seznamu výchozích vyloučených oborů názvů může vystavit porušení zásad z důvodu požadovaného systému pod.
 
-AKS vyžaduje, aby se systémové lusky spouštěly na clusteru a poskytovaly důležité služby, jako je například překlad DNS. Zásady, které omezují funkčnost, můžou ovlivnit stabilitu systému pod. V důsledku toho jsou tyto obory názvů **vyloučené z vyhodnocení zásad během žádosti o přijetí během vytváření, aktualizace a auditování zásad**. To vynutí, aby se nová nasazení do těchto oborů názvů vyloučila ze zásad Azure.
+AKS vyžaduje, aby se systémové lusky spouštěly na clusteru a poskytovaly důležité služby, jako je například překlad DNS. Zásady, které omezují funkčnost, můžou ovlivnit stabilitu systému pod. V důsledku toho jsou během **žádosti o přijetí při vytváření, aktualizaci a auditování zásad vyloučené z vyhodnocení zásad**tyto obory názvů. To vynutí, aby se nová nasazení do těchto oborů názvů vyloučila ze zásad Azure.
 
 1. Kube – systém
 1. Server Gatekeeper
 1. Azure – ARC
 1. AKS – Periscope
 
-Další vlastní obory názvů je možné z vyhodnocení vyloučit během vytváření, aktualizace a auditu. To by mělo být použito, pokud máte specializované lusky, které běží ve schváleném oboru názvů a chcete se vyhnout aktivaci auditu narušení.
+Další vlastní obory názvů je možné z vyhodnocení vyloučit během vytváření, aktualizace a auditu. Tato vyloučení by měla být použita, pokud máte specializované lusky, které jsou spuštěny ve schváleném oboru názvů a chcete se vyhnout aktivaci narušení auditu.
 
 ## <a name="apply-the-baseline-initiative"></a>Použití základní iniciativy
 
@@ -266,7 +294,7 @@ Naučte se, jak odebrat [doplněk Azure Policy z Azure Portal](../governance/pol
 
 ## <a name="migrate-from-kubernetes-pod-security-policy-to-azure-policy"></a>Migrace ze zásad zabezpečení Kubernetes pod na Azure Policy
 
-Chcete-li provést migraci ze zásad zabezpečení v systému, je třeba provést následující akce v clusteru.
+Chcete-li provést migraci ze zásad zabezpečení pod, je třeba provést následující akce v clusteru.
 
 1. [Zakázat zásadu zabezpečení pod](use-pod-security-policies.md#clean-up-resources) v clusteru
 1. Povolení [doplňku Azure Policy][kubernetes-policy-reference]
@@ -292,7 +320,7 @@ Níže je souhrn změn chování mezi zásadami zabezpečení a Azure Policy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek ukazuje, jak použít zásadu Azure, která omezuje nasazování privilegovaných lusků, aby nedocházelo k použití privilegovaného přístupu. Existuje mnoho zásad, které je možné použít, například ty, které omezují použití svazků. Další informace o dostupných možnostech najdete v článku [Azure Policy pro referenční dokumenty Kubernetes][kubernetes-policy-reference].
+Tento článek ukazuje, jak použít zásadu Azure, která omezuje nasazování privilegovaných lusků, aby nedocházelo k použití privilegovaného přístupu. Existuje mnoho zásad, které je možné použít, například zásady, které omezují použití svazků. Další informace o dostupných možnostech najdete v článku [Azure Policy pro referenční dokumenty Kubernetes][kubernetes-policy-reference].
 
 Další informace o omezování síťového provozu najdete v tématu [zabezpečení provozu mezi lusky pomocí zásad sítě v AKS][network-policies].
 
@@ -304,8 +332,12 @@ Další informace o omezování síťového provozu najdete v tématu [zabezpeč
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity
+[aad-pod-identity-exception]: https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md
 
 <!-- LINKS - internal -->
+[policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md
+[policy-limitations]: ../governance/policy/concepts/policy-for-kubernetes.md?#limitations
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
 [policy-samples]: policy-samples.md#microsoftcontainerservice
 [aks-quickstart-cli]: kubernetes-walkthrough.md

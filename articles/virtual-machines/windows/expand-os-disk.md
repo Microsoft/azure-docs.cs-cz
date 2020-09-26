@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3f1c7fb08c3dcaa078de8f1ee0b90409289cfb43
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469213"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335999"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Postup rozšíření jednotky operačního systému virtuálního počítače
 
@@ -30,7 +30,7 @@ Při vytváření nového virtuálního počítače ve skupině prostředků nas
 - Migrace fyzického počítače nebo virtuálního počítače z místního počítače na větší jednotku operačního systému.
 
 > [!IMPORTANT]
-> Změna velikosti disku operačního systému virtuálního počítače Azure vyžaduje, aby byl virtuální počítač navrácený.
+> Změna velikosti operačního systému nebo datového disku virtuálního počítače Azure vyžaduje, aby se virtuální počítač nadělil.
 >
 > Po rozbalení disků je potřeba [rozšířit svazek v operačním systému](#expand-the-volume-within-the-os) a využít tak větší disk.
 > 

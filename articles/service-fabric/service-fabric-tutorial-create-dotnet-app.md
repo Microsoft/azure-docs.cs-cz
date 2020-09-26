@@ -3,13 +3,13 @@ title: Vytvoření aplikace .NET v Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci s front-endem v ASP.NET Core a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru.
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.custom: mvc, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 847bd2e30977c5a14f8294f6709cbd6d376a8211
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: mvc, devx-track-js, devx-track-csharp
+ms.openlocfilehash: e9014f2f5e4d0149d1b0c37c9dbf007358242189
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016270"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326367"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -32,7 +32,7 @@ V této sérii kurzů se naučíte:
 > * [Nakonfigurovat CI/CD s využitím služby Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .

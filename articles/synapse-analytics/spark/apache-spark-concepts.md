@@ -1,6 +1,6 @@
 ---
 title: Apache Spark základní koncepty
-description: Tento článek poskytuje Úvod do Apache Spark ve službě Azure synapse Analytics a v různých konceptech.
+description: Seznámení s Apache Spark ve službě Azure synapse Analytics a v různých konceptech.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260134"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark v základních konceptech služby Azure synapse Analytics
 
@@ -24,9 +24,9 @@ Azure synapse usnadňuje vytváření a konfiguraci možností Sparku v Azure. A
 
 ## <a name="spark-pools-preview"></a>Fondy Sparku (Preview)
 
-Ve Azure Portal se vytvoří fond Spark (Preview). Je definice fondu Spark, který při vytvoření instance slouží k vytvoření instance Sparku, která zpracovává data. Když se vytvoří fond Sparku, existuje jenom jako metadata; žádné prostředky nespotřebováváte, nepoužíváte ani se neúčtují. Fond Spark má řadu vlastností, které řídí charakteristiky instance Spark; Tyto vlastnosti zahrnují, ale nejsou omezené na název, velikost, chování škálování, doba do živého.
+Ve Azure Portal se vytvoří fond Spark (Preview). Je to definice fondu Spark, který při vytvoření instance slouží k vytvoření instance Sparku, která zpracovává data. Když se vytvoří fond Sparku, existuje jenom jako metadata a žádné prostředky se nespotřebovává, neúčtují ani neúčtují. Fond Spark má řadu vlastností, které řídí charakteristiky instance Spark. Tyto vlastnosti zahrnují, ale nejsou omezené na název, velikost, chování škálování, doba do živého.
 
-Protože se k vytváření fondů Sparku nevztahují žádné dolary ani náklady na prostředky, je možné jakékoli číslo vytvořit s libovolným počtem různých konfigurací. Oprávnění lze také použít na fondy Spark, které uživatelům umožňují mít přístup pouze k některým a jiným uživatelům.
+Protože se k vytváření fondů Sparku nevztahují žádné dolary nebo náklady na prostředky, je možné jakékoli číslo vytvořit s libovolným počtem různých konfigurací. Oprávnění lze také použít na fondy Spark, které uživatelům umožňují mít přístup pouze k některým a jiným uživatelům.
 
 Osvědčeným postupem je vytvořit menší fondy Sparku, které se dají použít pro vývoj a ladění a pak větší pro spouštění produkčních úloh.
 
@@ -36,7 +36,7 @@ Můžete si přečíst, jak vytvořit fond Spark a zobrazit všechny jeho vlastn
 
 Instance Spark se vytvoří, když se připojíte ke fondu Spark, vytvoříte relaci a spustíte úlohu. Protože k jednomu fondu Spark může mít přístup více uživatelů, vytvoří se nová instance Spark pro každého uživatele, který se připojí. 
 
-Když odešlete druhou úlohu, pak existující instance Spark má také kapacitu, pak existující instance zpracuje úlohu. Pokud ne a na úrovni fondu existuje kapacita, vytvoří se nová instance Spark.
+Když odešlete druhou úlohu, pokud ve fondu existuje kapacita, má stávající instance Spark také kapacitu. Pak existující instance zpracuje úlohu. V opačném případě, pokud je kapacita dostupná na úrovni fondu, vytvoří se nová instance Spark.
 
 ## <a name="examples"></a>Příklady
 
@@ -58,7 +58,7 @@ Když odešlete druhou úlohu, pak existující instance Spark má také kapacit
 - Vytvoříte fond Spark s názvem SP1; má pevnou velikost clusteru 20 uzlů.
 - Odešlete úlohu poznámkového bloku J1, která používá 10 uzlů, vytvoří se instance Spark SI1 pro zpracování úlohy.
 - Jiný uživatel, U2, odešle úlohu, J3, která používá 10 uzlů, vytvoří se nová instance Spark SI2, která zpracuje úlohu.
-- Nyní odešlete další úlohu J2, která používá 10 uzlů, protože ve fondu stále existuje kapacita a instance J2 je zpracována SI1.
+- Nyní odešlete další úlohu J2, která používá 10 uzlů, protože stále existují kapacity ve fondu a instance J2 je zpracována SI1.
 
 ## <a name="next-steps"></a>Další kroky
 

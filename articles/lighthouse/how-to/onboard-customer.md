@@ -1,14 +1,14 @@
 ---
 title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
-ms.date: 08/20/2020
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 4de31a0ad2cdc3134cd61654a71ebe803982b52e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0b941c82c2ba0e98f524587f5ef4c4ecf86249eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483792"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336543"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak jako poskytovatel služeb můžete zákazníka
 
 Postup připojování můžete opakovat pro více zákazníků. Když se uživatel s příslušnými oprávněními přihlásí k vašemu spravovanému tenantovi, může být tento uživatel autorizovaný pro jednotlivé obory tenantů pro zákazníky, aby mohl provádět operace správy, aniž by se musel přihlašovat ke každému klientovi v rámci zákazníka.
 
-Pokud chcete sledovat svůj dopad napříč zapojením zákazníků a získávat rozpoznávání, přidružte své ID Microsoft Partner Network (MPN) k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich integrovaných předplatných. Toto přidružení bude nutné provést v tenantovi poskytovatele služeb. Ve vašem tenantovi doporučujeme vytvořit instanční účet služby, který je přidružený k vašemu ID MPN, a pak tento instanční objekt, který bude pokaždé, když se připojíte k zákazníkovi. Další informace najdete v tématu [propojení ID partnera, aby bylo možné na delegovaných zdrojích povolit kredit získaný pro partnery](partner-earned-credit.md).
+Pokud chcete sledovat svůj dopad napříč zapojením zákazníků a získávat rozpoznávání, přidružte své ID Microsoft Partner Network (MPN) k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich integrovaných předplatných. Toto přidružení bude nutné provést v tenantovi poskytovatele služeb. Ve vašem tenantovi doporučujeme vytvořit instanční účet služby, který je přidružený k vašemu ID MPN, a pak tento instanční objekt, který bude pokaždé, když se připojíte k zákazníkovi. Další informace najdete v tématu [Propojte své ID partnera, aby bylo možné na delegovaných materiálech povolit kredit získaný pro partnery.
 
 > [!NOTE]
 > Zákazníci se také mohou připojit k Azure Lighthouse při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou [publikujete do Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění, který je zde popsán spolu s nabídkami publikovanými do Azure Marketplace.
@@ -33,9 +33,6 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 - ID tenanta tenanta poskytovatele služeb (kde budete spravovat prostředky zákazníka)
 - ID tenanta tenanta zákazníka (který bude mít prostředky spravované poskytovatelem služeb)
 - ID předplatných pro každé konkrétní předplatné v tenantovi zákazníka, které bude spravovat poskytovatel služeb (nebo který obsahuje skupiny prostředků, které bude spravovat poskytovatel služeb).
-
-> [!NOTE]
-> I když chcete jen začlenit jednu nebo více skupin prostředků v rámci předplatného, je nutné nasazení provést na úrovni předplatného, takže budete potřebovat ID předplatného.
 
 Pokud tyto hodnoty ID již nemáte, můžete je načíst jedním z následujících způsobů. Ujistěte se, že používáte tyto přesné hodnoty v nasazení.
 
@@ -128,6 +125,11 @@ K připojení zákazníka budete muset vytvořit šablonu [Azure Resource Manage
 
 Proces zprovoznění vyžaduje šablonu Azure Resource Manager (poskytnutou v [úložišti ukázek](https://github.com/Azure/Azure-Lighthouse-samples/)) a odpovídající soubor parametrů, který upravíte tak, aby odpovídal vaší konfiguraci a definoval vaše autorizace.
 
+> [!IMPORTANT]
+> Tento proces, který je zde popsán, vyžaduje samostatné nasazení pro každé připojení k odběru, a to i v případě, že se odběry přihlásily do stejného tenanta zákazníka. Pokud se připojujete k několika skupinám prostředků v rámci různých předplatných ve stejném tenantovi zákazníka, vyžaduje se také samostatné nasazení. Připojování více skupin prostředků v rámci jednoho předplatného se ale dá udělat v jednom nasazení.
+>
+> Pro stejné předplatné (nebo skupiny prostředků v rámci předplatného se taky vyžadují samostatná nasazení). Každá použitá nabídka musí používat jiný **mspOfferName**.
+
 Šablona, kterou zvolíte, bude záviset na tom, jestli se chystáte registrovat celé předplatné, skupinu prostředků nebo víc skupin prostředků v rámci předplatného. Poskytujeme také šablonu, která se dá použít pro zákazníky, kteří si zakoupili nabídku spravované služby, kterou jste publikovali na Azure Marketplace, pokud upřednostňujete jejich odběry tímto způsobem.
 
 |K zaregistrování  |Použít tuto šablonu Azure Resource Manager  |A upravit tento soubor parametrů |
@@ -137,10 +139,8 @@ Proces zprovoznění vyžaduje šablonu Azure Resource Manager (poskytnutou v [�
 |Více skupin prostředků v předplatném   |[multipleRgDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
-> [!IMPORTANT]
-> Tento proces, který je zde popsán, vyžaduje samostatné nasazení pro každé připojení k odběru, a to i v případě, že se odběry přihlásily do stejného tenanta zákazníka. Pokud se připojujete k několika skupinám prostředků v rámci různých předplatných ve stejném tenantovi zákazníka, vyžaduje se také samostatné nasazení. Připojování více skupin prostředků v rámci jednoho předplatného se ale dá udělat v jednom nasazení.
->
-> Pro stejné předplatné (nebo skupiny prostředků v rámci předplatného se taky vyžadují samostatná nasazení). Každá použitá nabídka musí používat jiný **mspOfferName**.
+> [!TIP]
+> I když nemůžete připojit celou skupinu pro správu v jednom nasazení, můžete [zásadu nasadit na úrovni skupiny pro správu](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). Zásada zkontroluje, jestli je každé předplatné ve skupině pro správu delegované na zadaného spravovaného tenanta, a pokud ne, vytvoří přiřazení na základě zadaných hodnot.
 
 Následující příklad ukazuje upravený **delegatedResourceManagement.parameters.js** souboru, který se dá použít k zaregistrování předplatného. Soubory parametrů skupiny prostředků (nacházející se ve složce [RG-delegované pro správu prostředků](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) ) jsou podobné, ale také obsahují parametr **RgName** pro identifikaci konkrétních skupin prostředků, které se mají připojit.
 

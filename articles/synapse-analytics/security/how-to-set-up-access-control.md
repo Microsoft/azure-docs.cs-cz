@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501912"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260151"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
 
@@ -36,7 +36,7 @@ Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle v
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je libovolnými názvy.
 
-|Nastavení | Příklad hodnoty | Description |
+|Nastavení | Příklad hodnoty | Popis |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | WS1 |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | STG1 | Účet ADLS, který se má používat s vaším pracovním prostorem. |
@@ -97,8 +97,8 @@ Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouště
 
 - Otevřete Azure Portal.
 - Přejít na WS1
-- V části **Nastavení**klikněte na **Správce služby SQL Active Directory** .
-- Klikněte na **nastavit správce** a vyberte WS1 \_ SQLAdmins.
+- V části **Nastavení**vyberte **Správce služby SQL Active Directory** .
+- Vyberte **nastavit správce** a zvolte WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintain-access-control"></a>Krok 6: udržování řízení přístupu
 
@@ -123,8 +123,9 @@ Uživatelé v každé roli musí provést následující kroky:
 
 > [!NOTE]
 > [1] Chcete-li vytvořit fondy SQL nebo Spark, musí mít uživatel alespoň roli Přispěvatel v pracovním prostoru synapse.
-> [!TIP]
 >
+ 
+>[!TIP]
 > - Některé kroky se v závislosti na této roli nepovolují záměrně.
 > - Mějte na paměti, že některé úlohy můžou selhat, pokud zabezpečení nebylo úplně nakonfigurované. Tyto úlohy jsou uvedeny v tabulce.
 
@@ -140,7 +141,7 @@ Váš pracovní prostor je teď plně nakonfigurovaný a zabezpečený.
 
 Synapse Studio se bude chovat odlišně na základě rolí uživatelů. Některé položky mohou být skryté nebo zakázané, pokud uživatel není přiřazen k rolím, které poskytují odpovídající přístup. Následující tabulka shrnuje efekt v synapse studiu.
 
-| Úkol | Správci pracovního prostoru | Správci Spark | Správci SQL |
+| Úloha | Správci pracovního prostoru | Správci Spark | Správci SQL |
 | --- | --- | --- | --- |
 | Otevřít synapse Studio | ANO | ANO | ANO |
 | Zobrazit centrum domů | ANO | ANO | ANO |

@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: d14ed7e714eac175dc7a17bbccd2150f9bb01ef9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752719"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358249"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Kontrolovat Resource Health události, které mají vliv na váš cluster AKS (Preview)
 
@@ -33,7 +33,7 @@ Při spouštění vašich kontejnerových úloh na AKS chcete zajistit, aby bylo
 - V levém navigačním panelu vyberte **stav prostředku** .
 - Vyberte své předplatné a nastavte typ prostředku na službu Azure Kubernetes Service (AKS).
 
-![stav prostředku – kontrolu](./media/aks-resource-health/resource-health-check.png)
+![Snímek obrazovky ukazuje stav prostředků pro clustery A K S.](./media/aks-resource-health/resource-health-check.png)
 
 ## <a name="check-the-health-status"></a>Kontrolovat stav
 

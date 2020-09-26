@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 58c52649750ae03f19188a025fa4baa16a55ae05
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259913"
 ---
 # <a name="introduction"></a>Úvod
 
@@ -30,7 +30,7 @@ Azure synapse Apache Spark fond až synapse SQL Connector je implementace zdroje
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Ověřování ve službě Azure synapse Analytics
 
-Ověřování mezi systémy je v Azure synapse Analytics bezproblémové. Existuje služba tokenů, která se připojuje k Azure Active Directory, aby získala tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo k serveru datového skladu.
+Ověřování mezi systémy je v Azure synapse Analytics bezproblémové. Služba tokenů se připojuje k Azure Active Directory, aby získala tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo k serveru datového skladu.
 
 Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v rozhraní API konektoru, pokud je v účtu úložiště a na serveru datového skladu nakonfigurováno AAD-auth. V takovém případě může být zadáno ověřování SQL. Další podrobnosti najdete v části věnované [používání](#usage) .
 
@@ -91,14 +91,14 @@ Výše uvedené rozhraní API bude fungovat pro interní (spravované) i extern�
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-Rozhraní Write API vytvoří tabulku ve fondu SQL a potom vyvolá základ, aby data načetla.  Tabulka nesmí existovat ve fondu SQL nebo se bude vracet zpráva s oznámením, že již existuje objekt s názvem.
+Rozhraní Write API vytvoří tabulku ve fondu SQL a potom vyvolá základ, aby data načetla.  Tabulka nesmí existovat ve fondu SQL nebo může být vrácena chyba oznamující, že objekt s názvem již existuje...
 
 Hodnoty TableType
 
 - Konstanty. interní spravovaná tabulka ve fondu SQL
 - Konstanty. EXTERNAL – externí tabulka ve fondu SQL
 
-Spravovaná tabulka fondu SQL
+Tabulka spravovaná fondem SQL
 
 ```scala
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
@@ -106,7 +106,7 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 Externí tabulka fondu SQL
 
-Aby bylo možné zapisovat do externí tabulky fondu SQL, externí zdroj dat a externí formát souboru musí existovat ve fondu SQL.  Další informace najdete v [tématu Vytvoření externího zdroje dat](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [formátů externích souborů](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve fondu SQL.  Níže jsou uvedeny příklady pro vytvoření externího zdroje dat a formátů externích souborů ve fondu SQL.
+Aby bylo možné zapisovat do externí tabulky fondu SQL, externí zdroj dat a externí formát souboru musí existovat ve fondu SQL.  Další informace najdete v [tématu Vytvoření externího zdroje dat](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a [formátů externích souborů](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ve fondu SQL.  Níže jsou uvedeny příklady pro vytvoření externího zdroje dat a formátů externích souborů ve fondu SQL.
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:

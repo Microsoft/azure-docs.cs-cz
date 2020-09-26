@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží se spouštěním virtuálního počítače se systémem Linux kvůli chybám systému souborů | Microsoft Docs
-description: Vysvětluje, proč nelze spustit virtuální počítač se systémem Linux a jak tento problém vyřešit.
+description: Naučte se řešit potíže se spouštěním virtuálních počítačů se systémem Linux kvůli chybám systému souborů.
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f12b88a0ddbc6ae31f40ab31b0126e4fd66b1a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325942"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Řešení potíží se spouštěním virtuálních počítačů se systémem Linux kvůli chybám systému souborů
 

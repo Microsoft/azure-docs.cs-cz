@@ -7,18 +7,18 @@ author: MashaMSFT
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3f9c664623294311b8a5f8e32f572ad4841bb024
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a715538afba181a067e4cecd8c1941a76ae36d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298827"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurace jednoho nebo více naslouchacích skupin dostupnosti Always On – Správce prostředků
 
@@ -73,7 +73,7 @@ Příklady v tomto článku určují standardní nástroj pro vyrovnávání zat
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Pokud chcete vytvořit nástroj pro vyrovnávání zatížení Basic, odeberte `-sku Standard` z řádku, který vytváří nástroj pro vyrovnávání zatížení. Například:
+Pokud chcete vytvořit nástroj pro vyrovnávání zatížení Basic, odeberte `-sku Standard` z řádku, který vytváří nástroj pro vyrovnávání zatížení. Příklad:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
@@ -134,7 +134,7 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a>Ukázkový skript: Přidání IP adresy do existujícího nástroje pro vyrovnávání zatížení pomocí PowerShellu
+## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> Ukázkový skript: Přidání IP adresy do existujícího nástroje pro vyrovnávání zatížení pomocí PowerShellu
 
 Chcete-li použít více než jednu skupinu dostupnosti, přidejte do nástroje pro vyrovnávání zatížení další IP adresu. Každá IP adresa vyžaduje vlastní pravidlo vyrovnávání zatížení, port testu a front-port.
 

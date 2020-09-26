@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 11cb0c30a1a6ed70cca82e494fcec73936975f39
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 0e14bba7b2982dd12fcca0d7aedc864b2a65288f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259947"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Použití Azure Functions ke správě výpočetních prostředků ve fondu SQL Azure synapse Analytics
 
@@ -124,10 +124,10 @@ Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí tě
        "operationType": "PauseDw"
    }
 
-   // Scale the SQL pool instance to DW600
+   // Scale the SQL pool instance to DW600c
    var operation = {
        "operationType": "ScaleDw",
-       "ServiceLevelObjective": "DW600"
+       "ServiceLevelObjective": "DW600c"
    }
    ```
 
@@ -137,33 +137,33 @@ Tato část stručně popisuje, co je potřeba k tomu, aby bylo možné získat 
 
 ### <a name="example-1"></a>Příklad 1
 
-Každodenní vertikální navýšení kapacity v 8:00 na úroveň DW600 a vertikální snížení kapacity ve 20:00 na úroveň DW200.
+Denní horizontální navýšení kapacity 8:00 do DW600c a horizontální snížení kapacity na úrovni 8pm až DW200c.
 
 | Funkce  | Plán     | Operace                                |
 | :-------- | :----------- | :--------------------------------------- |
-| Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
-| Funkce2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600c"}` |
+| Funkce2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
 
 ### <a name="example-2"></a>Příklad 2
 
-Denní horizontální navýšení kapacity 8:00 na DW1000, horizontální snížení kapacity na 16:00 a horizontální snížení kapacity na 10pm.
+Denní horizontální navýšení kapacity 8:00 na DW1000c, horizontální snížení kapacity na 16:00 a horizontální snížení kapacity na 10pm.
 
 | Funkce  | Plán     | Operace                                |
 | :-------- | :----------- | :--------------------------------------- |
-| Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| Funkce2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
-| Funkce3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
+| Funkce2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
+| Funkce3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
 
 ### <a name="example-3"></a>Příklad 3
 
-Vertikální navýšení kapacity v 8:00 na úroveň DW1000 a jedno vertikální snížení kapacity na úroveň DW600 v 16:00 ve všední dny. Pozastavení v pátek ve 23:00 a obnovení v pondělí v 7:00 ráno.
+Horizontální navýšení kapacity 8:00 na DW1000c, horizontální navýšení kapacity DW600c v pracovních dnech v 16:00. Pozastavení v pátek ve 23:00 a obnovení v pondělí v 7:00 ráno.
 
 | Funkce  | Plán       | Operace                                |
 | :-------- | :------------- | :--------------------------------------- |
-| Funkce1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| Funkce2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
+| Funkce1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
+| Funkce2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
 | Funkce3 | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
-| Funkce4 | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
+| Funkce4 | 0 0 7 * * 1    | `var operation = {"operationType": "ResumeDw"}` |
 
 ## <a name="next-steps"></a>Další kroky
 

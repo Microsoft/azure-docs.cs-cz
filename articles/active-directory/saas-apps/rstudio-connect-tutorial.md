@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Kurz: Azure Active Directory integrace s RStudio Connect
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RStudio 
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>Konfigurace jednotného přihlašování RStudio Connect
 
-Pokud chcete nakonfigurovat jednotné přihlašování pro **RStudio Connect**, musíte použít **adresu URL federačních metadat aplikace** a **adresu serveru** použitou výše. To se provádí v konfiguračním souboru RStudio Connect na adrese `/etc/rstudio-connect.rstudio-connect.gcfg` .
+Pokud chcete nakonfigurovat jednotné přihlašování pro **RStudio Connect**, musíte použít **adresu URL federačních metadat aplikace** a **adresu serveru** použitou výše. To se provádí v konfiguračním souboru RStudio Connect na adrese `/etc/rstudio-connect/rstudio-connect.gcfg` .
 
 Toto je ukázkový konfigurační soubor:
 
@@ -179,7 +179,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -187,7 +187,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **RStudio připojit**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **RStudio připojit**.
 

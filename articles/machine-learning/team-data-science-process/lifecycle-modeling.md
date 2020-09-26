@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336441"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Fáze modelování životního cyklu procesu vědeckého zpracování dat týmu
 
@@ -45,7 +45,7 @@ V této fázi jsou řešeny tři hlavní úlohy:
   * **Školení modelů**: Najděte model, který přesně odpovídá otázce, porovnáním jejich metrik úspěšnosti.
   * Zjistěte, jestli je model **vhodný pro produkční prostředí.**
 
-### <a name="feature-engineering"></a>Návrh funkcí
+### <a name="feature-engineering"></a>Příprava atributů
 Konstrukce funkcí zahrnuje zahrnutí, agregaci a transformaci nezpracovaných proměnných pro vytvoření funkcí používaných při analýze. Pokud chcete získat přehled o tom, co řídí model, pak potřebujete pochopit, jak vzájemně souvisí tyto funkce a jak se tyto funkce používají v algoritmech strojového učení. 
 
 Tento krok vyžaduje tvůrčí kombinaci odbornosti domény a přehledy získané z kroku pro zkoumání dat. Inženýrské funkce je vyvážením zákonem o hledání a zahrnutí informativních proměnných, ale zároveň se snažíte se vyhnout příliš mnoha nesouvisejícím proměnným. Informativní proměnné zlepšují svůj výsledek; nesouvisející proměnné představují zbytečný šum v modelu. Tyto funkce je také potřeba vygenerovat pro všechna nová data získaná během bodování. V důsledku toho generování těchto funkcí může záviset jenom na datech, která jsou k dispozici v době hodnocení. 
@@ -53,7 +53,7 @@ Tento krok vyžaduje tvůrčí kombinaci odbornosti domény a přehledy získan�
 Technické pokyny pro strojírenství funkcí při využívání různých datových technologií Azure najdete v tématu Technické informace o [funkcích v procesu datové vědy](create-features.md). 
 
 ### <a name="model-training"></a>Trénování modelu
-V závislosti na typu otázky, na kterou se pokoušíte odpovědět, je k dispozici mnoho algoritmů modelování. Pokyny k výběru algoritmů najdete v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning](../studio/algorithm-choice.md). I když tento článek používá Azure Machine Learning, pokyny, které poskytuje, jsou užitečné pro všechny projekty strojového učení. 
+V závislosti na typu otázky, na kterou se pokoušíte odpovědět, je k dispozici mnoho algoritmů modelování. Pokyny k výběru algoritmů najdete v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning](../how-to-select-algorithms.md). I když tento článek používá Azure Machine Learning, pokyny, které poskytuje, jsou užitečné pro všechny projekty strojového učení. 
 
 Proces pro školení modelů zahrnuje následující kroky: 
 

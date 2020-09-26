@@ -4,20 +4,20 @@ titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak dynamicky vytvořit trvalý svazek s disky Azure ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/21/2020
+ms.openlocfilehash: fd2bc698a107599dccf8f142b0d318400b40aaf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683602"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299319"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
 Trvalý svazek představuje část úložiště, která byla zřízena pro použití s Kubernetes lusky. Trvalý svazek lze použít v jednom nebo mnoha luskech a lze jej dynamicky nebo staticky zřídit. V tomto článku se dozvíte, jak dynamicky vytvářet trvalé svazky s disky Azure, které používá jeden z nich v clusteru Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Disk Azure se dá připojit jenom k typu *režimu přístupu* *ReadWriteOnce*, který je dostupný jenom pro jedno pod pod AKS. Pokud potřebujete sdílet trvalý svazek mezi více lusky, použijte [soubory Azure][azure-files-pvc].
+> Disk Azure se dá připojit jenom k typu *režimu přístupu* *ReadWriteOnce*, který je dostupný pro jeden uzel v AKS. Pokud potřebujete sdílet trvalý svazek mezi více uzly, použijte [soubory Azure][azure-files-pvc].
 
 Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
