@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: vyhledání a zobrazení tras pro konkrétní cestovní režimy pomocí Microsoft Azure Maps'
-description: Naučte se používat Azure Maps k vyhledání a zobrazení tras pro konkrétní cestovní režimy.
+title: 'Kurz: vyhledání více tras podle režimu cestování | Mapy Microsoft Azure'
+description: Kurz týkající se použití Azure Maps k nalezení tras pro konkrétní cestovní režimy až po body zájmu. Podívejte se, jak zobrazit více tras na mapách.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085055"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321743"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Kurz: vyhledání a zobrazení tras pro různé režimy cestování pomocí Azure Maps
 
@@ -25,9 +25,9 @@ V tomto kurzu se dozvíte, jak pomocí [služby Azure Maps Route Service](https:
 > * Vykreslování dat o přenosech dat v reálném čase na mapě
 > * Vyžádat a zobrazit trasy privátních a komerčních vozidel na mapě
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -160,11 +160,13 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. První 
 
     ```
 
+
     V `ready` obslužné rutině události mapového ovládacího prvku je vytvořen zdroj dat pro uložení trasy od začátku do konce. [Výrazy](data-driven-style-expressions-web-sdk.md) se používají k načtení šířky čáry a barvy z vlastností funkce řádek trasy. Aby se zajistilo, že řádek trasy nepokrývá popisky cest, předali jsme druhý parametr s hodnotou `'labels'` .
 
     Dále je vytvořena vrstva symbolu a připojena ke zdroji dat. Tato vrstva určuje způsob vykreslování počátečních a koncových bodů. Přidaly se výrazy pro načtení obrázku ikony a informací o popisku textu z vlastností u každého objektu Point. Další informace o výrazech naleznete v tématu [výrazy stylu na základě dat](data-driven-style-expressions-web-sdk.md).
 
 2. Nastavte počáteční bod jako fiktivní společnost v Seattlu označované jako Fabrikam a koncový bod jako Microsoft Office.  V `ready` obslužné rutině události mapového ovládacího prvku přidejte následující kód.
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -279,7 +281,11 @@ V této části se dozvíte, jak používat službu Azure Maps Route k získán�
 
     Trasa za nákladní vůz se zobrazuje pomocí tlusté modré čáry. Trasa auta se zobrazí s použitím tenké fialové čáry. Trasa automobilu prochází přes Lake Washington prostřednictvím I-90 a prochází tunely pod místními oblastmi. Vzhledem k tomu, že tunely jsou blízko domácích oblastí, je zakázaný nebezpečný odpadní náklad. Směr nákladní lodě, který určuje `USHazmatClass2` typ nákladu, je směrován na použití jiné dálnice.
 
-    Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel).
+Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel).
+
+Můžete také [použít výrazy stylu řízené daty](data-driven-style-expressions-web-sdk.md) .
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

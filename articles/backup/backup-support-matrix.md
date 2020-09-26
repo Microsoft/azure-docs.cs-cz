@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985014"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332708"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -39,6 +39,7 @@ Následující tabulka popisuje funkce trezorů Recovery Services:
 **Přesunout trezory** | [Trezory můžete přesouvat](./backup-azure-move-recovery-services-vault.md) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném. Přesun trezorů mezi oblastmi se ale nepodporuje.
 **Přesun dat mezi trezory** | Přesouvání zálohovaných dat mezi trezory se nepodporuje.
 **Upravit typ úložiště trezoru** | Před uložením záloh můžete upravit typ replikace úložiště (geograficky redundantní úložiště nebo místně redundantní úložiště) pro trezor. Po zahájení zálohování v trezoru se typ replikace nedá upravit.
+**Zónově redundantní úložiště (ZRS)** | K dispozici v oblastech Velká Británie – jih (UKS) a Jižní Východní Asie (v moři).
 
 ## <a name="on-premises-backup-support"></a>Podpora místních záloh
 
@@ -150,9 +151,9 @@ Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure a cloudy svrchovan.  |
-| SQL/SAP HANA | Yes                                                          | Všechny veřejné oblasti Azure a cloudy svrchovan.             |
+| SQL/SAP HANA | Yes                                                          | Západní USA 2 (WUS2), Středozápadní USA (WCUS), Kanada – střed (CNC), Kanada – východ (CNE), Východní USA (EUS), Západní USA (WUS), Japonsko – východ (jpe), Japonsko – východ (JPE) |
 | Agent MARS/místní  | No                                                           | Není k dispozici               |
-| BUŇK                    | No                                                           | Není k dispozici               |
+| AFS (sdílené složky Azure)                 | No                                                           | Není k dispozici               |
 
 ## <a name="next-steps"></a>Další kroky
 

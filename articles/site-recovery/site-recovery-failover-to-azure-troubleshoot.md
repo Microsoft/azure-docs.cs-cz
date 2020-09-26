@@ -9,14 +9,14 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355036"
 ---
-# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při převzetí služeb při selhání virtuálního počítače VMware nebo fyzického počítače do Azure
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při přebírání služeb při selhání fyzického počítače nebo virtuálního počítače VMware do Azure
 
 Při převzetí služeb při selhání virtuálního počítače do Azure se může zobrazit jedna z následujících chyb. K řešení potíží použijte popsané kroky pro jednotlivé chybové podmínky.
 
@@ -84,8 +84,8 @@ Podrobné pokyny k odstraňování potíží s SSH najdete v [naší dokumentaci
 
 Pokud se tlačítko **připojit** na virtuálním počítači služby převzít služby při selhání v Azure zobrazuje šedě a nejste k Azure připojeni přes Express Route nebo připojení VPN typu Site-to-site,
 
-1. Přejděte na **síť virtuálních počítačů**  >  **Networking**, klikněte na název požadovaného síťového rozhraní.  ![síťové rozhraní](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Přejděte do části **Konfigurace protokolu IP**a potom klikněte na pole název požadované konfigurace protokolu IP. ![IPConfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. Přejděte na **síť virtuálních počítačů**  >  **Networking**, klikněte na název požadovaného síťového rozhraní.  ![Snímek obrazovky ukazuje stránku sítě pro virtuální počítač se zvoleným názvem síťového rozhraní.](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Přejděte do části **Konfigurace protokolu IP**a potom klikněte na pole název požadované konfigurace protokolu IP. ![Snímek obrazovky se zobrazí stránka Konfigurace I P pro síťové rozhraní s vybraným názvem konfigurace I P.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Pokud chcete povolit veřejnou IP adresu, klikněte na **Povolit**. ![Povolit IP adresu](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. Klikněte na **konfigurovat požadovaná nastavení**  >  **vytvořit nový**. ![Vytvořit nový](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. Zadejte název veřejné adresy, zvolte výchozí možnosti pro položku **SKU** a **přiřazení**a pak klikněte na **OK**.

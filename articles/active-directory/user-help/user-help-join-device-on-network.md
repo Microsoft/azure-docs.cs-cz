@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799481"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333405"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
 Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům.
@@ -54,7 +54,7 @@ Pokud je vaše zařízení zcela nové a ještě není nastavené, můžete k p�
 
     Vaše zařízení je teď připojené k síti vaší organizace.
 
-## <a name="to-make-sure-youre-joined"></a>Abyste se ujistili, že jste připojeni
+## <a name="to-make-sure-youre-joined-new-device"></a>Abyste se ujistili, že jste připojeni (nové zařízení)
 Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
 1. Otevřete **Nastavení**a pak vyberte **účty**.

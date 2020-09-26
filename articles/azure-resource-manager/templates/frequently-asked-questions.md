@@ -2,15 +2,15 @@
 title: Nejčastější dotazy k šabloně ARM
 description: Nejčastější dotazy týkající se Azure Resource Manager šablon.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327255"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333116"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Nejčastější dotazy týkající se šablon ARM
 
@@ -88,7 +88,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Slyšeli jsme, že pracujete na novém jazyku šablony. Kde můžu získat další informace?**
 
-  Pokud se chcete dozvědět o novém jazyce šablony, [Zaregistrujte si oznámení](https://aka.ms/armLangUpdates).
+  Pokud chcete zobrazit náhled nového jazyka, přečtěte si téma [úložiště bicep projektu](https://github.com/Azure/bicep). Pokud chcete mít přehled o novém jazyku, [Zaregistrujte si oznámení](https://aka.ms/armLangUpdates).
 
 * **Existuje plán na podporu vytváření šablon v YAML?**
 
@@ -100,7 +100,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Budete nabízet Nástroj pro převod šablon JSON na nový jazyk šablony?**
 
-  Yes.
+  Ano.
 
 ## <a name="template-specs"></a>Specifikace šablon
 
@@ -118,7 +118,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Můžou se specifikace šablon sdílet mezi předplatnými?**
 
-  Ano, je možné je používat v rámci předplatných, pokud má uživatel oprávnění ke čtení pro specifikaci šablony. specifikace šablony nelze používat napříč klienty.
+  Ano, je možné je používat v rámci předplatných, pokud má uživatel oprávnění ke čtení pro specifikaci šablony. V klientech nelze používat specifikace šablon.
 
 ## <a name="scripts-in-templates"></a>Skripty v šablonách
 
@@ -154,7 +154,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Když používám, co když se zobrazuje změny ve vlastnostech, které nejsou v mé šabloně Očekával se tento "hluk"?**
 
-  Co když je ve verzi Preview. Pracujeme na snížení hluku. Pomůžete nám vylepšit odesláním problémů v našem úložišti GitHub:https://aka.ms/WhatIfIssues
+  Co když je ve verzi Preview. Pracujeme na snížení hluku. Pomůžete nám vylepšit odesláním problémů v našem úložišti GitHub: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Vizualizér šablon
 
@@ -182,7 +182,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Můžu do Azure Pipelines integrovat šablony ARM?**
 
-  Yes. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
+  Ano. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
 
 * **Můžu k nasazení šablony použít akce GitHubu?**
 

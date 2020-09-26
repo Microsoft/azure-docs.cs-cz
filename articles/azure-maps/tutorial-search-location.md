@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: hledání blízkých míst na mapě | Mapy Microsoft Azure'
-description: Naučte se hledat body zájmu na mapě. Podívejte se, jak pomocí Azure Maps Web SDK přidat možnosti vyhledávání a interaktivní automaticky otevíraná okna do mapy.
+description: Kurz pro hledání bodů zájmu na mapě Podívejte se, jak pomocí Azure Maps Web SDK přidat možnosti vyhledávání a interaktivní automaticky otevíraná okna do mapy.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321692"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Kurz: hledání okolních bodů zájmu pomocí Azure Maps
 
@@ -26,44 +26,14 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 > * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
 > * Vyhledání okolního bodu zájmu pomocí vyhledávací služby Maps
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
-
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+## <a name="prerequisites"></a>Požadavky
 
 <a id="createaccount"></a>
-
-## <a name="create-an-account-with-azure-maps"></a>Vytvoření účtu s Azure Maps
-
-Pomocí následujících kroků vytvořte nový účet Maps:
-
-1. V levém horním rohu webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek**.
-2. Do pole *Hledat na Marketplace* zadejte **Maps**.
-3. Ve *výsledcích* vyberte **Maps**. Klikněte na tlačítko **Vytvořit**, které se zobrazí pod mapou.
-4. Na stránce **Vytvořit účet Maps** zadejte následující hodnoty:
-    * *Předplatné*, které chcete pro tento účet použít.
-    * Název *skupiny prostředků* pro tento účet. Můžete zvolit možnost *Vytvořit novou* nebo *Použít existující* skupinu prostředků.
-    * *Název* vašeho nového účtu.
-    * *Cenová úroveň* pro tento účet.
-    * Přečtěte si *Licenční podmínky* a *Prohlášení o zásadách ochrany osobních údajů* a zaškrtnutím příslušného políčka podmínky přijměte.
-    * Klikněte na tlačítko **Vytvořit**.
-
-![Vytvořit účet Azure Maps v Azure Portal](./media/tutorial-search-location/create-account.png)
-
 <a id="getkey"></a>
 
-## <a name="get-the-primary-key-for-your-account"></a>Získání primárního klíče pro váš účet
-
-Po úspěšném vytvoření účtu Maps načtěte klíč, který vám umožní dotazovat rozhraní Maps API. Při volání služeb Azure Maps doporučujeme použít primární klíč vašeho účtu jako klíč předplatného.
-
-1. Otevřete svůj účet Maps na portálu.
-2. V části nastavení vyberte **ověřování**.
-3. Zkopírujte do schránky **Primární klíč**. Místně ho uložte, abyste ho mohli použít později v tomto kurzu.
-
-![Získat primární klíč v Azure Portal](./media/tutorial-search-location/get-key.png)
-
-Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 
@@ -275,21 +245,9 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
 
     ![Ovládací prvek Mapa a Search Service v Azure](./media/tutorial-search-location/popup-map.png)
 
+Pokud chcete zobrazit úplný kód pro tento kurz, klikněte [sem](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html). Chcete-li zobrazit živý ukázku, klikněte [sem](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest) .
+
 ## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Vytvoření účtu s Azure Maps
-> * Získání primárního klíče pro váš účet
-> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
-> * Vyhledání okolního bodu zájmu pomocí služby Search Service
-
-> [!div class="nextstepaction"]
-> [Zobrazit úplný zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-> [!div class="nextstepaction"]
-> [Zobrazit ukázku živého vysílání](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 V dalším kurzu se dozvíte, jak zobrazit trasu mezi dvěma umístěními.
 

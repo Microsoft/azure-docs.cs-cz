@@ -3,12 +3,12 @@ title: Novinky v Microsoft Azure Backup Serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182135"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332759"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Novinky ve Microsoft Azure Backup serveru (MABS)
 
@@ -23,7 +23,7 @@ Microsoft Azure Backup Server (MABS) verze 3 UR1 je nejnovější aktualizace a 
 
 MABS v2 představil [moderní úložiště zálohování](backup-mabs-add-storage.md) (MBS), což zlepšuje využití a výkon úložiště. MB používá jako základní systém souborů ReFS a je navržená tak, aby používala hybridní úložiště, jako třeba vrstvené úložiště.
 
-Aby bylo možné dosáhnout škálování a výkonu pomocí aplikace MBS, doporučujeme, abyste v kombinaci s úložištěm HDD DPM používali malé procento (4% celkového úložiště) úložiště Flash (SSD) s MABS V3 UR1 jako vrstvený svazek. MABS V3 UR1 s vrstveném úložištěm přináší 50-70% rychlejší zálohy. Postup pro konfiguraci vrstveného úložiště najdete v článku o aplikaci DPM nakonfigurovaném [pomocí sady MBS s Tiered Storage](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) .
+Aby bylo možné dosáhnout škálování a výkonu pomocí aplikace MBS, doporučujeme, abyste v kombinaci s úložištěm HDD DPM používali malé procento (4% celkového úložiště) úložiště Flash (SSD) s MABS V3 UR1 jako vrstvený svazek. MABS V3 UR1 s vrstveném úložištěm přináší 50-70% rychlejší zálohy. Postup pro konfiguraci vrstveného úložiště najdete v článku o aplikaci DPM nakonfigurovaném [pomocí sady MBS s Tiered Storage](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage) .
 
 ### <a name="support-for-refs-volumes"></a>Podpora pro svazky ReFS
 

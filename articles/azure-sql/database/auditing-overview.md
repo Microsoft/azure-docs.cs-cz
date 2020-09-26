@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040580"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333184"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -82,7 +82,7 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
   > [!NOTE]
   > Povolení auditování u pozastaveného fondu SQL synapse není možné. Pokud chcete povolit auditování, zrušte pozastavení synapse fondu SQL. Přečtěte si další informace o [synapse fondu SQL](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool).
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. V záhlaví zabezpečení v podokně **SQL Database** nebo **SQL serveru** přejděte na **audit** .
 3. Pokud dáváte přednost nastavení zásad auditování serveru, můžete vybrat odkaz **Zobrazit nastavení serveru** na stránce auditování databáze. Pak můžete zobrazit nebo upravit nastavení auditování serveru. Zásady auditování serveru se vztahují na všechny existující a nově vytvořené databáze na tomto serveru.
 
@@ -119,7 +119,7 @@ Pokud chcete nakonfigurovat zápis protokolů auditu do pracovního prostoru Log
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-Další podrobnosti o Azure Monitorch protokolů v pracovních prostorech najdete v tématu [návrh nasazení Azure Monitorch protokolů](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
+Další informace o pracovním prostoru Azure Monitor Log Analytics najdete v tématu [návrh Azure Monitorch protokolů nasazení](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment) .
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Auditovat cíl centra událostí
 
@@ -150,7 +150,7 @@ Pokud se rozhodnete zapisovat protokoly auditu do protokolů Azure Monitor:
     ![Log Analytics přehledy zabezpečení](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
 - Případně můžete také získat přístup k protokolům auditu z okna Log Analytics. Otevřete pracovní prostor Log Analytics a v části **Obecné** klikněte na **protokoly**. Můžete začít jednoduchým dotazem, jako je: *Search "SQLSecurityAuditEvents"* , chcete-li zobrazit protokoly auditu.
-    Z tohoto místa můžete také použít [protokoly Azure monitor](../../azure-monitor/log-query/log-query-overview.md) a spustit tak rozšířené vyhledávání dat v protokolu auditu. Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](../../azure-monitor/log-query/log-query-overview.md).
+    Z tohoto místa můžete také použít [protokoly Azure monitor](../../azure-monitor/log-query/log-query-overview.md)  a spustit tak rozšířené vyhledávání dat v protokolu auditu. Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](../../azure-monitor/log-query/log-query-overview.md).
 
 Pokud se rozhodnete zapisovat protokoly auditu do centra událostí:
 
@@ -169,7 +169,7 @@ Pokud jste se rozhodli zapsat protokoly auditu do účtu služby Azure Storage, 
 
   - Konkrétní data můžete zobrazit kliknutím na **Filtr** v horní části stránky **audit Records** .
   - Můžete přepínat mezi záznamy auditu vytvořenými *zásadami auditu serveru* a *zásadami auditu databáze* přepnutím **zdroje auditu**.
-  - Zaškrtnutím políčka **Zobrazit pouze záznamy auditu pro INJEKTÁŽE SQL** můžete zobrazit pouze záznamy auditu související s injektáže SQL.
+  - Zaškrtnutím políčka  **Zobrazit pouze záznamy auditu pro INJEKTÁŽE SQL** můžete zobrazit pouze záznamy auditu související s injektáže SQL.
 
        ![Navigační podokno]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 

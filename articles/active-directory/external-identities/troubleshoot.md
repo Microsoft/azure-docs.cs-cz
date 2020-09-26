@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354968"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
@@ -106,6 +106,20 @@ Od 18. listopadu 2019 se zablokují uživatelům typu Host v adresáři (definov
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>V tenantovi Azure pro státní správu USA nemůžu pozvat uživatele typu Host pro spolupráci B2B.
 
 V cloudu pro státní správu Azure USA je spolupráce B2B v současnosti podporovaná jenom mezi klienty, kteří jsou v cloudu Azure USA a kteří podporují spolupráci B2B. Pokud uživatele v tenantovi, který není součástí cloudu pro státní správu Azure USA nebo který ještě nepodporuje spolupráci B2B, se zobrazí chyba. Podrobnosti a omezení najdete v tématu [variace Azure Active Directory Premium P1 a P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>Zobrazuje se chyba, že služba Azure AD nemůže v mém tenantovi najít aplikaci AAD-Extensions-App
+
+Při používání samoobslužných funkcí pro registraci, jako jsou vlastní uživatelské atributy nebo uživatelské toky, `aad-extensions-app. Do not modify. Used by AAD for storing user data.` je automaticky vytvořena aplikace s názvem. Používá je externí identity Azure AD k ukládání informací o uživatelích, kteří si zaregistrují a vlastní atributy shromažďují.
+
+Pokud jste to omylem odstranili `aad-extensions-app` , budete mít 30 dní na jeho obnovení. Aplikaci můžete obnovit pomocí modulu Azure AD PowerShell.
+
+1. Spusťte modul Azure AD PowerShell a spusťte ho `Connect-AzureAD` .
+1. Přihlaste se jako globální správce pro tenanta Azure AD, pro který chcete obnovit odstraněnou aplikaci.
+1. Spusťte příkaz prostředí PowerShell `Get-AzureADDeletedApplication` .
+1. Vyhledejte aplikaci v seznamu, kde je zobrazený název `aad-extensions-app` , a zkopírujte její `ObjectId` hodnotu vlastnosti.
+1. Spusťte příkaz prostředí PowerShell `Restore-AzureADDeletedApplication -ObjectId {id}` . Nahraďte `{id}` část příkazu parametrem `ObjectId` z předchozího kroku.
+
+V Azure Portal by se teď měla zobrazit obnovená aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

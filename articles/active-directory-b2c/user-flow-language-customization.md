@@ -11,12 +11,12 @@ ms.date: 08/13/2019
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d378e1526d5b253853fd306c8a1b7a8982436b8d
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 6b3bb3648fff6bc893ea07204fad79d2830a1b47
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355089"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -105,7 +105,7 @@ Nahraďte `<ExtensionAttributeValue>` novým řetězcem, který se má zobrazit.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Zadání seznamu hodnot pomocí LocalizedCollections
 
-Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections` atribut. `LocalizedCollections`je pole `Name` a `Value` páry. Pořadí položek bude zobrazeno v pořadí. Chcete-li přidat `LocalizedCollections` , použijte následující formát:
+Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections` atribut. `LocalizedCollections` je pole `Name` a `Value` páry. Pořadí položek bude zobrazeno v pořadí. Chcete-li přidat `LocalizedCollections` , použijte následující formát:
 
 ```json
 {
@@ -129,9 +129,9 @@ Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `Lo
 }
 ```
 
-* `ElementId`je atributem uživatele, `LocalizedCollections` na který je tento atribut odpovědí.
-* `Name`je hodnota, která se zobrazí uživateli.
-* `Value`je to, co se v deklaraci identity vrátí, když je tato možnost vybraná.
+* `ElementId` je atributem uživatele, `LocalizedCollections` na který je tento atribut odpovědí.
+* `Name` je hodnota, která se zobrazí uživateli.
+* `Value` je to, co se v deklaraci identity vrátí, když je tato možnost vybraná.
 
 ### <a name="upload-your-changes"></a>Nahrání změn
 
@@ -204,56 +204,56 @@ Azure AD B2C zahrnuje podporu pro následující jazyky. Jazyky toku uživatelů
 
 | Jazyk              | Kód jazyka | Toky uživatele         | Oznámení MFA  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| Arabština                | snížen            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Bulharština             | BG            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Bengálština                | bn            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Katalánština               | určen            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Čeština                 | cs            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Dánština                | &            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Němčina                | &            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Řečtina                 | El            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Angličtina               | en            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Španělština               | Ano            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Estonština              | et            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Baskičtina                | Balijšitna            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Finština               | WiFi            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Francouzština                | FR            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Galicijština              | GL            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Gudžarátština              | Gu            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Hebrejština                | uvede            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Hindština                 | Ahoj            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Chorvatština              | hod            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Maďarština             | hu            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Indonéština            | id            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Italština               | její            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Japonština              | dža            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Kazaština                | kk            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Kannadština               | KN            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Korejština                | Ko            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Litevština            | lt            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Lotyština               | Lotyšsko            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Malajalámština             | ml            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Maráthština               | Vážený            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Malajština                 | Arial            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Norština – Bokmal      | NB            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Nizozemština                 | belgick            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Norština             | ne            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Paňdžábština               | PA            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Polština                | pl            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Portugalština – Brazílie   | pt-br         | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Portugalština – Portugalsko | pt-pt         | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Rumunština              | loď            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Ruština               | ru            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Slovenština                | SM            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Slovinština             | SSL            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Srbština – cyrilice    | SR-cryl-cs    | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Srbština – latinka       | SR-Latn-cs    | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Švédština               | činí            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Tamilština                 | Ta            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Telugština                | te            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Thajština                  | Kolik            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Turečtina               | recenzent            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Ukrajinština             | Velká Británie            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Vietnamština            | InterDev            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Čínština – zjednodušená  | zh – Hans       | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Čínština – tradiční | zh – Hant       | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Arabština                | snížen            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Bulharština             | BG            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Bengálština                | bn            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Katalánština               | určen            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Čeština                 | cs            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Dánština                | &            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Němčina                | &            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Řečtina                 | El            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| angličtina               | en            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| španělština               | es            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Estonština              | et            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Baskičtina                | Balijšitna            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Finština               | WiFi            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Francouzština                | FR            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Galicijština              | GL            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Gudžarátština              | Gu            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Hebrejština                | uvede            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Hindština                 | Ahoj            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Chorvatština              | hod            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Maďarština             | hu            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Indonéština            | id            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Italština               | její            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Japonština              | dža            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Kazaština                | kk            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Kannadština               | KN            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Korejština                | Ko            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Litevština            | lt            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Lotyština               | Lotyšsko            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Malajalámština             | ml            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Maráthština               | Vážený            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Malajština                 | Arial            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Norština – Bokmal      | NB            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Nizozemština                 | belgick            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Norština             | ne            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Paňdžábština               | PA            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Polština                | pl            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Portugalština – Brazílie   | pt-br         | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Portugalština – Portugalsko | pt-pt         | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Rumunština              | loď            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Ruština               | ru            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Slovenština                | SM            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Slovinština             | SSL            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Srbština – cyrilice    | SR-cryl-cs    | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Srbština – latinka       | SR-Latn-cs    | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Švédština               | činí            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Tamilština                 | Ta            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Telugština                | te            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![X značí ne.](./media/user-flow-language-customization/no.png) |
+| Thajština                  | Kolik            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Turečtina               | recenzent            | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Ukrajinština             | Velká Británie            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Vietnamština            | InterDev            | ![X značí ne.](./media/user-flow-language-customization/no.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Čínština – zjednodušená  | zh – Hans       | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |
+| Čínština – tradiční | zh – Hant       | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) | ![Zelená značka zaškrtnutí.](./media/user-flow-language-customization/yes.png) |

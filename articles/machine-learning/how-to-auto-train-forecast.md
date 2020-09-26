@@ -10,27 +10,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 982c7a41f1e05c34ddf0fbae9f944df4a4d08fa5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893361"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296769"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
 
 V tomto článku se dozvíte, jak pomocí automatizovaného strojového učení a AutoML [Azure Machine Learning v sadě SDK Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)nakonfigurovat a naučit regresní model předpovědi časových řad. 
 
+Uděláte to takto: 
+
+> [!div class="checklist"]
+> * Příprava dat pro modelování časových řad.
+> * Nakonfigurujte konkrétní parametry časové řady v [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektu.
+> * Spusťte předpovědi s daty časových řad.
+
 Pro používání s nízkým kódem si přečtěte [kurz: Předpověď poptávky pomocí automatizovaného strojového učení s](tutorial-automated-ml-forecast.md) využitím automatizovaného strojového učení v [Azure Machine Learning Studiu](https://ml.azure.com/).
 
 Na rozdíl od metod klasických časových řad jsou v automatizovaných ML hodnotách časových řad "pivoted", aby se do regresory staly další dimenze společně s jinými koproměnnými. Tento přístup zahrnuje během školení více kontextových proměnných a jejich vztah mezi sebou. Vzhledem k tomu, že předpověď může ovlivnit několik faktorů, tato metoda se dobře zarovnává s scénáři reálného vývoje. Například při prognózování prodeje, interakcí s historickými trendy, směnného kurzu a ceny budou všechny společně řídit výsledek prodeje. 
-
-Následující příklady vám ukážou, jak:
-
-* Příprava dat pro modelování časových řad
-* Konfigurace určitých parametrů časových řad v [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektu
-* Spuštění předpovědi s daty časových řad
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -118,52 +119,20 @@ automl_config = AutoMLConfig(task='forecasting',
 Přečtěte si další informace o tom, jak AutoML používá křížové ověřování, aby se [předešlo navýšení modelů](concept-manage-ml-pitfalls.md#prevent-over-fitting)
 
 ## <a name="configure-experiment"></a>Konfigurovat experiment
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)Objekt definuje nastavení a data potřebná pro úkol automatizovaného strojového učení. Konfigurace pro model prognózy je podobná nastavení standardního regresního modelu, ale některé kroky featurization a možnosti konfigurace existují konkrétně pro data časových řad. 
 
-### <a name="featurization-steps"></a>Featurization kroky
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)Objekt definuje nastavení a data potřebná pro úkol automatizovaného strojového učení. Konfigurace pro model prognózy je podobná nastavení standardního regresního modelu, ale některé modely, možnosti konfigurace a featurization kroky existují konkrétně pro data časových řad. 
 
-V každém automatizovaném experimentu machine learningu se pro vaše data ve výchozím nastavení aplikují automatické škálování a normalizační techniky. Tyto techniky jsou typy **featurization** , které usnadňují *určité* algoritmy, které jsou citlivé na funkce v různých měřítkech. Další informace o výchozích krocích featurization v [featurization v AutoML](how-to-configure-auto-features.md#automatic-featurization)
+### <a name="supported-models"></a>Podporované modely
+Automatizované strojové učení automaticky zkouší různé modely a algoritmy jako součást procesu vytváření a ladění modelu. Jako uživatel není nutné zadávat algoritmus. Pro předvídání experimentů jsou nativní modely časových řad i obsáhlého učení součástí systému doporučení. Následující tabulka shrnuje tuto podmnožinu modelů. 
 
-Následující kroky jsou však provedeny pouze pro `forecasting` typy úloh:
+>[!Tip]
+> Tradiční regresní modely jsou testovány také jako součást systému doporučení pro předpovědi experimentů. Úplný seznam modelů najdete v [tabulce podporovaných modelů](how-to-configure-auto-train.md#supported-models) . 
 
-* Detekuje četnost vzorkování časové řady (například každou hodinu, denně, týdně) a vytvoří nové záznamy pro nepřítomné časové body, aby se řada souvislá.
-* Imputace chybějící hodnoty v cíli (prostřednictvím předávaného sloupce) a sloupců funkcí (pomocí hodnot sloupců mediánu)
-* Vytváření funkcí založených na identifikátorech časových řad, které umožňují pevné efekty v různých řadách
-* Vytváření funkcí založených na čase, které vám pomůžou při učení se sezónními vzory
-* Kódovat proměnné kategorií na číselné množství
-
-Informace o tom, jaké funkce jsou vytvořeny v důsledku těchto kroků, najdete v tématu [Featurization transparentnost](how-to-configure-auto-features.md#featurization-transparency) .
-
-> [!NOTE]
-> Automatické kroky featurization strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky featurization, jaké jste použili během školení.
-
-#### <a name="customize-featurization"></a>Přizpůsobení featurization
-
-Máte také možnost přizpůsobit si nastavení featurization, abyste zajistili, že data a funkce, které se použijí k tomu, aby využívaly svůj model ML, budou relevantní předpovědi. 
-
-Mezi podporovaná přizpůsobení pro `forecasting` úlohy patří:
-
-|Přizpůsobení|Definice|
-|--|--|
-|**Aktualizace pro účely sloupce**|Přepíše automaticky zjištěný typ funkce pro zadaný sloupec.|
-|**Aktualizace parametrů transformátoru** |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje *imputac* (fill_value a medián).|
-|**Odkládací sloupce** |Určuje sloupce, které se mají odpustit z natrénuje.|
-
-Chcete-li přizpůsobit featurizations pomocí sady SDK, zadejte `"featurization": FeaturizationConfig` do `AutoMLConfig` objektu. Přečtěte si další informace o [vlastních featurizations](how-to-configure-auto-features.md#customize-featurization).
-
-```python
-featurization_config = FeaturizationConfig()
-# `logQuantity` is a leaky feature, so we remove it.
-featurization_config.drop_columns = ['logQuantitity']
-# Force the CPWVOL5 feature to be of numeric type.
-featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
-# Fill missing values in the target column, Quantity, with zeroes.
-featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
-# Fill mising values in the `INCOME` column with median value.
-featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
-```
-
-Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtěte si téma [Postup přizpůsobení featurization v studiu](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+Modely| Popis | Výhody
+----|----|---
+Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
+Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Pokud například překlopete mince, pravděpodobnost, že se vám povede, je 50%, bez ohledu na překlopení dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.
+ForecastTCN (Preview)| ForecastTCN je neuronové síťový model navržený tak, aby se vypořádat s nejnáročnějšími úkoly prognózování, zachytávání nelineárních místních a globálních trendů ve vašich datech a také vztahů mezi časovými řadami.|Umožňuje využití složitých trendů ve vašich datech a umožňuje se snadno škálovat na největší z datových sad.
 
 ### <a name="configuration-settings"></a>Nastavení konfigurace
 
@@ -221,6 +190,51 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
+### <a name="featurization-steps"></a>Featurization kroky
+
+V každém automatizovaném experimentu machine learningu se pro vaše data ve výchozím nastavení aplikují automatické škálování a normalizační techniky. Tyto techniky jsou typy **featurization** , které usnadňují *určité* algoritmy, které jsou citlivé na funkce v různých měřítkech. Další informace o výchozích krocích featurization v [featurization v AutoML](how-to-configure-auto-features.md#automatic-featurization)
+
+Následující kroky jsou však provedeny pouze pro `forecasting` typy úloh:
+
+* Detekuje četnost vzorkování časové řady (například každou hodinu, denně, týdně) a vytvoří nové záznamy pro nepřítomné časové body, aby se řada souvislá.
+* Imputace chybějící hodnoty v cíli (prostřednictvím předávaného sloupce) a sloupců funkcí (pomocí hodnot sloupců mediánu)
+* Vytváření funkcí založených na identifikátorech časových řad, které umožňují pevné efekty v různých řadách
+* Vytváření funkcí založených na čase, které vám pomůžou při učení se sezónními vzory
+* Kódovat proměnné kategorií na číselné množství
+
+Informace o tom, jaké funkce jsou vytvořeny v důsledku těchto kroků, najdete v tématu [Featurization transparentnost](how-to-configure-auto-features.md#featurization-transparency) .
+
+> [!NOTE]
+> Automatické kroky featurization strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky featurization, jaké jste použili během školení.
+
+#### <a name="customize-featurization"></a>Přizpůsobení featurization
+
+Máte také možnost přizpůsobit si nastavení featurization, abyste zajistili, že data a funkce, které se použijí k tomu, aby využívaly svůj model ML, budou relevantní předpovědi. 
+
+Mezi podporovaná přizpůsobení pro `forecasting` úlohy patří:
+
+|Přizpůsobení|Definice|
+|--|--|
+|**Aktualizace pro účely sloupce**|Přepíše automaticky zjištěný typ funkce pro zadaný sloupec.|
+|**Aktualizace parametrů transformátoru** |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje *imputac* (fill_value a medián).|
+|**Odkládací sloupce** |Určuje sloupce, které se mají odpustit z natrénuje.|
+
+Chcete-li přizpůsobit featurizations pomocí sady SDK, zadejte `"featurization": FeaturizationConfig` do `AutoMLConfig` objektu. Přečtěte si další informace o [vlastních featurizations](how-to-configure-auto-features.md#customize-featurization).
+
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
+Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtěte si téma [Postup přizpůsobení featurization v studiu](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+
 ## <a name="optional-configurations"></a>Volitelné Konfigurace
 
 Další volitelné konfigurace jsou k dispozici pro úlohy předpovědi, jako je například umožnění hloubkového učení a určení cílové agregované kumulativní okna. 
@@ -250,17 +264,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Pokud chcete povolit DNN pro experiment AutoML vytvořený v Azure Machine Learning studiu, přečtěte si téma [Nastavení typu úlohy v tématu Postup](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-
-Automatizované ML poskytuje uživatelům v rámci systému doporučení jak nativní modely časových řad, tak i obsáhlé učení. 
-
-Modely| Description | Výhody
-----|----|---
-Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
-Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Pokud například překlopete mince, pravděpodobnost, že se vám povede, je 50%, bez ohledu na překlopení dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.
-ForecastTCN (Preview)| ForecastTCN je neuronové síťový model navržený tak, aby se vypořádat s nejnáročnějšími úkoly prognózování, zachytávání nelineárních místních a globálních trendů ve vašich datech a také vztahů mezi časovými řadami.|Umožňuje využití složitých trendů ve vašich datech a umožňuje se snadno škálovat na největší z datových sad.
-
 Podrobný příklad kódu, který využívá hluboké, najdete v [poznámkovém bloku pro vytváření předpovědí pro produkci nápojů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) .
-
 
 ### <a name="target-rolling-window-aggregation"></a>Cílová agregace návratového okna
 Nejlepší informace, které může vytvořit předpověď, jsou často poslední hodnotou cíle.  Cílová agregace kumulovaných oken vám umožní přidat do funkcí hromadnou agregaci hodnot dat. Vytváření a používání těchto dalších funkcí jako dodatečných kontextových dat pomáhá s přesností modelu vlaku.
@@ -283,7 +287,7 @@ experiment = Experiment(ws, "forecasting_example")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
-
+ 
 ## <a name="forecasting-with-best-model"></a>Prognózování s nejlepším modelem
 
 Použijte nejlepší modelovou iteraci pro předpověď hodnot sady dat testu.

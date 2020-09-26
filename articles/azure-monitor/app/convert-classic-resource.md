@@ -4,19 +4,19 @@ description: Seznamte se s kroky potřebnými k upgradu Azure Monitorch klasick�
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: caaf5469eace891f2996a565af183b411ad1d740
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333337"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrace na prostředky Application Insights na základě pracovního prostoru
 
 Tato příručka vás provede procesem migrace klasického Application Insights prostředku do prostředku založeného na pracovním prostoru. Prostředky založené na pracovním prostoru podporují úplnou integraci mezi Application Insights a Log Analytics. Prostředky založené na pracovních prostorech odesílají Application Insights telemetrie do společného pracovního prostoru Log Analytics, který umožňuje přístup k [nejnovějším funkcím Azure monitor](#new-capabilities) a udržování protokolů aplikací, infrastruktury a platforem v jednom konsolidovaném umístění.
 
-Prostředky založené na pracovních prostorech umožňují v rámci svých prostředků běžné Access Control na základě rolí (RBAC) a eliminují nutnost dotazů mezi aplikacemi a pracovními prostory.
+Prostředky založené na pracovním prostoru umožňují v rámci svých prostředků běžné Access Control na základě rolí (RBAC) a eliminují nutnost dotazů mezi aplikacemi a pracovními prostory.
 
 **Prostředky založené na pracovním prostoru jsou aktuálně k dispozici ve všech komerčních oblastech a v Azure USA – státní správa.**
 
@@ -34,12 +34,11 @@ Application Insights na základě pracovního prostoru vám umožní využít v�
 
 Když migrujete do prostředku založeného na pracovním prostoru, nepřesunou se žádná data z úložiště klasických prostředků do nového úložiště založeného na pracovních prostorech. Pokud se rozhodnete migrovat, místo toho se změní umístění, do kterého se zapisují nová data do Log Analyticsho pracovního prostoru, přičemž se zachovává přístup k datům vašich klasických prostředků. 
 
-Vaše Klasická data prostředků budou trvalá a budou se řídit nastaveními uchovávání v době, kdy byla ingestovaná. Všechna nová data ingestovaná po migraci budou podléhat nastavení uchování přidruženého pracovního prostoru Log Analytics. 
-
+Vaše Klasická data prostředků budou trvalá a budou se řídit nastaveními uchovávání v klasickém Application Insights prostředku. Všechna nová data ingestovaná po migraci budou podléhat [Nastavení uchování](../platform/manage-cost-storage.md#change-the-data-retention-period) přidruženého pracovního prostoru Log Analytics, který také podporuje [různá nastavení uchovávání informací podle datového typu](../platform/manage-cost-storage.md#retention-by-data-type).
 Proces migrace je **trvalý a nemůže být obrácený**. Jakmile provedete migraci prostředku do Application Insights založeného na pracovních prostorech, bude to vždycky prostředek založený na pracovním prostoru. Jakmile však migrujete, budete moci cílový pracovní prostor kdykoli změnit podle potřeby. 
 
 > [!NOTE]
-> Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se účtují prostřednictvím pracovního prostoru Log Analytics, kde se data nacházejí. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech. (Klasická Application Insights data prostředků, která se ingestují před migrací, se nadále nacházejí v rámci Application Insights uchovávání/cen za dobu, po kterou se data uchovávají.) 
+> Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se [účtují prostřednictvím pracovního prostoru Log Analytics](../platform/manage-cost-storage.md) , kde se data nacházejí. Pokud jste pro data ingestovaná do klasického Application Insights prostředku od migrace vybrali uchovávání dat větší než 90 dní, uchovávání dat se bude dál účtovat prostřednictvím tohoto prostředku Application Insights. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.
 
 Pokud nepotřebujete migrovat existující prostředek a místo toho chcete vytvořit nový prostředek Application Insights založený na pracovním prostoru, použijte [Průvodce vytvářením prostředků založených na pracovních prostorech](create-workspace-resource.md).
 

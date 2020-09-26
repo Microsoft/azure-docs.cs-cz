@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5e6afef70ee3d4f4d84cb6b867a916ae57da5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854931273ffebd653615a44dbfa9ce1b846655c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333422"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Ověřovací agent předávacího ověřování Azure AD: Historie verzí 
  
@@ -55,21 +55,16 @@ Tady jsou Příbuzná témata:
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Stav verze 
 1/31/2018: vydáno ke stažení  
-### <a name="fixed-issues"></a>Oprava potíží 
-
+### <a name="fixed-issues"></a>Opravené problémy 
 - Opravili jsme chybu, která způsobila nevracení paměti v agentovi. 
 - Aktualizace verze Azure Service Bus, která zahrnuje opravu chyby pro problémy s časovým limitem konektoru. 
- 
-## <a name="154050"></a>1.5.405.0 
-### <a name="release-status"></a>Stav verze 
-11/26/2017: vydáno ke stažení  
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
-- Přidání podpory pro připojení založená na protokolu WebSocket mezi agentem a službami Azure AD za účelem zvýšení odolnosti připojení 
+- Přidání podpory pro připojení založená na protokolu WebSocket mezi agentem a službami Azure AD za účelem zvýšení odolnosti připojení
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>Stav verze 
 11/25/2017: vydáno ke stažení  
-### <a name="fixed-issues"></a>Oprava potíží 
+### <a name="fixed-issues"></a>Opravené problémy 
 - Opravené chyby související s mezipamětí DNS pro výchozí scénáře proxy 
  
 ## <a name="153890"></a>1.5.389.0 

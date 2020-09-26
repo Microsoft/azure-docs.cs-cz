@@ -12,19 +12,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
-ms.openlocfilehash: f3ae5e1ef4dc2968724daeafb32f26cf445b0d2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321420"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Tento článek popisuje základy zabezpečení datové vrstvy aplikace pomocí [Azure SQL Database](sql-database-paas-overview.md) a [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md). Strategie zabezpečení popsaná níže v rámci podrobného přístupu s více vrstvami, jak je znázorněno na obrázku níže, a přesouvá se z vnější části:
 
-![layer.png zabezpečení SQL](./media/security-overview/sql-security-layer.png)
+![Diagram vícevrstvé obrany s hloubkou. Zákaznická data jsou encaseda v úrovních zabezpečení sítě, správy přístupu a ochrany informací.](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
@@ -77,7 +77,7 @@ Osvědčeným postupem je v případě potřeby vytvořit vlastní role. Přidej
 
 Zabezpečení na úrovni řádků umožňuje zákazníkům řídit přístup k řádkům v databázové tabulce na základě charakteristik uživatele, který spouští dotaz (například členství ve skupině nebo kontext spuštění). Zabezpečení na úrovni řádků lze také použít k implementaci vlastních konceptů zabezpečení na základě popisků. Další informace najdete v tématu [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security).
 
-![rls.png služby Azure Database](./media/security-overview/azure-database-rls.png)
+![Diagram znázorňující, že zabezpečení na úrovni řádků chrání jednotlivé řádky databáze SQL pomocí přístupu uživatelů prostřednictvím klientské aplikace.](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Ochrana před hrozbami
 
@@ -91,7 +91,7 @@ SQL Database a auditování spravované instance SQL sleduje aktivity databáze 
 
 Rozšířená ochrana před internetovými útoky analyzuje protokoly a detekuje neobvyklé chování a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Výstrahy se vytvářejí pro podezřelé aktivity, jako je například injektáže SQL, potenciální defiltrace dat a útoky hrubou silou nebo pro anomálie ve vzorech přístupu, aby bylo možné zachytit eskalace oprávnění a porušení přihlašovacích údajů. Výstrahy se zobrazují z  [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření, která jsou k dispozici, a s akcemi pro zmírnění hrozby. Rozšířená ochrana před internetovými útoky se dá pro jednotlivé servery povolit za další poplatek. Další informace najdete v tématu [Začínáme s SQL Database rozšířené ochrany před internetovými útoky](threat-detection-configure.md).
 
-![td.jpg služby Azure Database](./media/security-overview/azure-database-td.jpg)
+![Diagram znázorňující přístup pro monitorování detekce hrozeb SQL k databázi SQL pro webovou aplikaci od externího útočníka a škodlivého programu Insider](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>Ochrana informací a šifrování
 
@@ -122,13 +122,13 @@ Podpora [Bring Your Own Key](transparent-data-encryption-byok-overview.md) (BYOK
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (šifrování při použití)
 
-![ae.png služby Azure Database](./media/security-overview/azure-database-ae.png)
+![Diagram znázorňující základy funkce Always Encrypted. Databáze SQL s zámkem je k dispozici pouze v aplikaci obsahující klíč.](./media/security-overview/azure-database-ae.png)
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) je funkce navržená tak, aby chránila citlivá data uložená v konkrétních databázových sloupcích z Accessu (například čísla kreditních karet, národní identifikační čísla nebo data podle _potřeby_ ). Patří sem správci databáze nebo jiní privilegovaní uživatelé, kteří mají oprávnění k přístupu k databázi, aby mohli provádět úlohy správy, ale nemají přístup k určitým datům v zašifrovaných sloupcích bez obchodních potřeb. Data jsou vždy šifrována, což znamená, že šifrovaná data jsou dešifrována pouze pro zpracování klientskými aplikacemi s přístupem k šifrovacímu klíči. Šifrovací klíč se nikdy nezveřejňuje SQL Database nebo spravované instance SQL a může být uložený buď v [úložišti certifikátů Windows](always-encrypted-certificate-store-configure.md) , nebo v [Azure Key Vault](always-encrypted-azure-key-vault-configure.md).
 
 ### <a name="dynamic-data-masking"></a>Dynamické maskování dat
 
-![ddm.png služby Azure Database](./media/security-overview/azure-database-ddm.png)
+![Diagram znázorňující dynamické maskování dat Obchodní aplikace odesílá data do databáze SQL, která před odesláním zpět do obchodní aplikace data maskuje.](./media/security-overview/azure-database-ddm.png)
 
 Dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním na uživatele bez oprávnění. Dynamické maskování dat automaticky zjišťuje potenciálně citlivá data v Azure SQL Database a spravované instanci SQL a poskytuje užitečná doporučení pro maskování těchto polí s minimálním dopadem na aplikační vrstvu. Funguje tak, že maskuje citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění. Další informace najdete v tématu [Začínáme s SQL Database a dynamické maskování dat spravované instance SQL](dynamic-data-masking-overview.md).
 

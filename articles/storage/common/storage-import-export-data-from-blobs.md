@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275200"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
 
@@ -83,7 +83,7 @@ Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující krok
 
 6. V **informace o expedici zpět**:
 
-    - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým `adbops@microsoft.com` s informacemi, které se týkají přepravce, kterého plánujete použít.
+    - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým `adbops@microsoft.com`  s informacemi, které se týkají přepravce, kterého plánujete použít.
     - Zadejte platné číslo účtu dopravce, který jste vytvořili pomocí tohoto dopravce. Společnost Microsoft používá tento účet k dodávání jednotek zpátky po dokončení úlohy exportu.
     - Zadejte celé a platné kontaktní jméno, telefonní číslo, e-mail, ulici, město, PSČ, kraj a zemi/oblast.
 
@@ -119,7 +119,7 @@ Když se řídicí panel dokončí, dokončí se vám disky a na portálu jsou k
 1. Jakmile obdržíte jednotky s exportovanými daty, je třeba získat klíče nástroje BitLocker k odemknutí jednotek. Přejít na úlohu exportu v Azure Portal. Klikněte na kartu **Import/export** .
 2. V seznamu vyberte a klikněte na úlohu exportu. Přejít na **šifrování** a zkopírujte klíče.
 
-   ![Zobrazit klíče nástroje BitLocker pro úlohu exportu](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![Zobrazit klíče nástroje BitLocker pro úlohu exportu](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
 
 3. K odemknutí disků použijte klíče nástroje BitLocker.
 
@@ -127,15 +127,13 @@ Export byl dokončen.
 
 ## <a name="step-5-unlock-the-disks"></a>Krok 5: odemknutí disků
 
-Pokud používáte 1.4.0.300 verze nástroje WAImportExport, odemkněte jednotku pomocí následujícího příkazu:
+K odemknutí jednotky použijte následující příkaz:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
 
 Tady je příklad ukázkového vstupu.
 
    `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
-
-Pokud používáte starší verze nástroje, odemkněte jednotku pomocí dialogového okna BitLocker.
 
 V tuto chvíli můžete úlohu odstranit nebo ji nechat opustit. Úlohy se automaticky odstraní po 90 dnech.
 
@@ -155,7 +153,7 @@ Tento *volitelný* krok vám pomůže určit počet jednotek vyžadovaných pro 
 
     Parametry jsou popsány v následující tabulce:
 
-    |Parametr příkazového řádku|Description|  
+    |Parametr příkazového řádku|Popis|  
     |--------------------------|-----------------|  
     |**/logdir:**|Nepovinný parametr. Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud tento parametr nezadáte, použije se jako adresář protokolu aktuální adresář.|  
     |**SN**|Povinná hodnota. Název účtu úložiště pro úlohu exportu|  
@@ -209,7 +207,7 @@ Number of drives needed:        3
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Description |
+   | Volič | Cesta objektu BLOB | Popis |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

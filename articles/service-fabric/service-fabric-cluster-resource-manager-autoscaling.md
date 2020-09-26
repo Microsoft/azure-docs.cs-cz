@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354798"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod do automatického škálování
 Automatické škálování je další možností Service Fabric dynamicky škálovat vaše služby na základě zatížení, které služby hlásí, nebo na základě využití prostředků. Automatické škálování dává velkou flexibilitu a umožňuje zřídit další instance nebo oddíly vaší služby na vyžádání. Celý proces automatického škálování je automatizovaný a transparentní a po nastavení zásad na službě není potřeba provádět operace ručního škálování na úrovni služby. Automatické škálování je možné zapnout buď při vytvoření služby, nebo kdykoli pomocí aktualizace služby.
@@ -51,7 +51,7 @@ Jediným mechanismem, který lze použít s touto triggerem, je PartitionInstanc
 * Hodnota _maximální počet instancí_ definuje horní limit pro škálování. Pokud počet instancí oddílu dosáhne tohoto limitu, nebude služba škálovat bez ohledu na zatížení. Tento limit je možné vynechat zadáním hodnoty-1. v takovém případě se služba bude škálovat co nejvíc (limit je počet uzlů, které jsou v clusteru k dispozici).
 * _Minimální počet instancí_ definuje dolní limit pro škálování. Pokud počet instancí oddílu dosáhne tohoto limitu, služba nebude škálovat bez ohledu na zatížení.
 
-## <a name="setting-auto-scaling-policy"></a>Nastavují se zásady automatického škálování.
+## <a name="setting-auto-scaling-policy-for-instance-based-scaling"></a>Nastavení zásad automatického škálování pro škálování na základě instancí
 
 ### <a name="using-application-manifest"></a>Použití manifestu aplikace
 ``` xml
@@ -133,7 +133,7 @@ Stejné jako u mechanismu, který používá škálování přidáváním nebo o
 > [!WARNING] 
 > Pokud se pro stavové služby používá AddRemoveIncrementalNamedPartitionScalingMechanism, Service Fabric bude přidávat nebo odebírat oddíly **bez oznámení nebo upozornění**. Při aktivaci mechanismu škálování se neprovede změna rozdělení dat do oddílů. V případě operace horizontálního navýšení kapacity budou nové oddíly prázdné a v případě škálování v provozu **bude oddíl odstraněn společně se všemi daty, která obsahuje**.
 
-## <a name="setting-auto-scaling-policy"></a>Nastavují se zásady automatického škálování.
+## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>Nastavení zásad automatického škálování pro škálování na základě oddílů
 
 ### <a name="using-application-manifest"></a>Použití manifestu aplikace
 ``` xml

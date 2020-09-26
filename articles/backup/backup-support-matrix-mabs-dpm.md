@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332691"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -24,7 +24,7 @@ MABS je založený na aplikaci System Center DPM a poskytuje podobné funkce s n
 
 - Ke spuštění MABS není nutná žádná licence System Center.
 - Pro MABS i DPM poskytuje Azure dlouhodobé úložiště záloh. Kromě toho aplikace DPM umožňuje zálohovat data pro dlouhodobé ukládání na pásku. MABS tuto funkci neposkytuje.
-- [Primární server DPM můžete zálohovat pomocí sekundárního serveru DPM](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). Sekundární server ochrání databázi primárního serveru a repliky zdrojů dat uložených na primárním serveru. Pokud primární server selže, může sekundární server pokračovat v ochraně úloh, které jsou chráněné primárním serverem, dokud nebude primární server opět k dispozici.  MABS tuto funkci neposkytuje.
+- [Primární server DPM můžete zálohovat pomocí sekundárního serveru DPM](/system-center/dpm/back-up-the-dpm-server). Sekundární server ochrání databázi primárního serveru a repliky zdrojů dat uložených na primárním serveru. Pokud primární server selže, může sekundární server pokračovat v ochraně úloh, které jsou chráněné primárním serverem, dokud nebude primární server opět k dispozici.  MABS tuto funkci neposkytuje.
 
 MABS si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57520). Dá se spustit místně nebo na virtuálním počítači Azure.
 
@@ -158,7 +158,7 @@ Připojeno | Vypršela/bylo zrušeno zřízení | Žádná záloha na disk nebo 
 |Požadavek |Podrobnosti |
 |---------|---------|
 |Doména    | Server DPM/MABS by měl být v systému Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 Domain.        |
-|Důvěryhodnost domény   |  DPM/MABS podporuje ochranu dat napříč doménovými strukturami, pokud mezi různými doménovými strukturami vytvoříte obousměrný vztah důvěryhodnosti na úrovni doménové struktury.   <BR><BR>   DPM/MABS může chránit servery a pracovní stanice napříč doménami v rámci doménové struktury, která má oboustranný vztah důvěryhodnosti s doménou serveru DPM/MABS. Informace o ochraně počítačů v pracovních skupinách nebo nedůvěryhodných doménách najdete v tématu [zálohování a obnovení úloh v pracovních skupinách a nedůvěryhodných doménách.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+|Důvěryhodnost domény   |  DPM/MABS podporuje ochranu dat napříč doménovými strukturami, pokud mezi různými doménovými strukturami vytvoříte obousměrný vztah důvěryhodnosti na úrovni doménové struktury.   <BR><BR>   DPM/MABS může chránit servery a pracovní stanice napříč doménami v rámci doménové struktury, která má oboustranný vztah důvěryhodnosti s doménou serveru DPM/MABS. Informace o ochraně počítačů v pracovních skupinách nebo nedůvěryhodných doménách najdete v tématu [zálohování a obnovení úloh v pracovních skupinách a nedůvěryhodných doménách.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)  |
 
 ## <a name="dpmmabs-storage-support"></a>Podpora úložiště DPM/MABS
 
@@ -185,7 +185,7 @@ Informace o různých serverech a úlohách, které můžete chránit pomocí Az
 
 ## <a name="supported-backups-to-dpm"></a>Podporované zálohy do DPM
 
-Informace o různých serverech a úlohách, které můžete chránit pomocí Data Protection Manager, najdete v článku [co může aplikace DPM zálohovat?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019).
+Informace o různých serverech a úlohách, které můžete chránit pomocí Data Protection Manager, najdete v článku [co může aplikace DPM zálohovat?](/system-center/dpm/dpm-protection-matrix).
 
 - Clusterované úlohy zálohované aplikací DPM/MABS by měly být ve stejné doméně jako DPM/MABS nebo v podřízené/důvěryhodné doméně.
 - Ověřování pomocí protokolu NTLM/certifikátu můžete použít k zálohování dat v nedůvěryhodných doménách nebo pracovních skupinách.

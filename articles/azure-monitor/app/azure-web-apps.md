@@ -3,13 +3,13 @@ title: Monitorování výkonu Azure App Services | Microsoft Docs
 description: Sledování výkonu aplikací pro Azure App Services. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-js, devx-track-dotnet
+ms.openlocfilehash: 2ac5466e280bb7dd835314561f565ca72be2743c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979428"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321811"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -355,7 +355,7 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 1. Ověřte, že je aplikace monitorována prostřednictvím `ApplicationInsightsAgent` .
     * Ověřte, že `ApplicationInsightsAgent_EXTENSION_VERSION` nastavení aplikace je nastavené na hodnotu ~ 2.
 2. Ujistěte se, že aplikace splňuje požadavky, které se mají monitorovat.
-    * Přejít na `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+    * Přejděte na `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`.
 
     ![Snímek https://yoursitename.scm.azurewebsites/applicationinsights stránky výsledků](./media/azure-web-apps/app-insights-sdk-status.png)
 
