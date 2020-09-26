@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440894"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368885"
 ---
 # <a name="using-openfaas-on-aks"></a>Používání OpenFaaS v AKS
 
@@ -134,7 +134,7 @@ Teď, když je OpenFaaS funkční, vytvořte funkci pomocí portálu OpenFaas.
 
 Klikněte na **nasadit novou funkci** a vyhledejte **FIGlet**. Vyberte funkci FIGlet a klikněte na **nasadit**.
 
-![Figlet](media/container-service-serverless/figlet.png)
+![Snímek obrazovky se zobrazí dialogové okno nasadit novou funkci s textem FIGlet na řádku pro hledání.](media/container-service-serverless/figlet.png)
 
 K vyvolání funkce použijte oblé. V následujícím příkladu nahraďte IP adresu bránou OpenFaas.
 

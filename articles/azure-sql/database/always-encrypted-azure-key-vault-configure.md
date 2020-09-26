@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa60d6127a42f0118df152e5b3081751c595dbcf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362627"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Konfigurace Always Encrypted pomocí Azure Key Vault 
 
@@ -37,7 +37,7 @@ Postupujte podle kroků v tomto článku a Naučte se, jak nastavit Always Encry
 - Vytvořte databázovou tabulku a Zašifrujte sloupce.
 - Vytvořte aplikaci, která vloží, vybere a zobrazí data ze zašifrovaných sloupců.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 
 - Účet a předplatné Azure. Pokud ho ještě nemáte, zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -183,7 +183,7 @@ Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro 
 
 Ověřte správnost nastavení a kliknutím na **Dokončit** dokončete instalaci pro Always Encrypted.
 
-![Shrnutí](./media/always-encrypted-azure-key-vault-configure/summary.png)
+![Snímek obrazovky zobrazující stránku výsledků s úkoly označenými jako prošlé.](./media/always-encrypted-azure-key-vault-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Ověření akcí Průvodce
 

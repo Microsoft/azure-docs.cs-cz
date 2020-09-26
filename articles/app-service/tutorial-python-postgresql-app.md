@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 255f4e28cf4f3ed3f6e99afa0333989a2afffd95
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a630387a41b6def67141a423249c3347ff034e2e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311712"
+ms.locfileid: "91369616"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -188,15 +188,13 @@ Tento příkaz provede následující akce, což může trvat několik minut:
 - Pokud neexistuje, vytvořte aplikaci App Service.
 - Povolí výchozí protokolování pro aplikaci, pokud ještě není povolené.
 - Nahrajte úložiště pomocí nasazení ZIP s povoleným automatizací buildu.
+- Společné parametry mezipaměti, jako je název skupiny prostředků a plán App Service, do souboru *. Azure/config*. V důsledku toho nemusíte zadávat stejný parametr s pozdějšími příkazy. Například pro opětovné nasazení aplikace po provedení změn můžete spustit `az webapp up` znovu bez parametrů. Příkazy, které pocházejí z rozšíření CLI, jako je `az postgres up` ale v současné době nepoužívají mezipaměť, což je důvod, proč jste v tomto případě museli zadat skupinu prostředků a umístění s počátečním použitím `az webapp up` .
 
 Po úspěšném nasazení příkaz vygeneruje výstup JSON podobný následujícímu příkladu:
 
 ![Příklad AZ WebApp up Command Output](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
-
-> [!TIP]
-> Mnoho příkazů rozhraní příkazového řádku Azure v mezipaměti běžně ukládá společné parametry, jako je název skupiny prostředků a plán App Service, do souboru *. Azure/config*. V důsledku toho nemusíte zadávat stejný parametr s pozdějšími příkazy. Například pro opětovné nasazení aplikace po provedení změn můžete spustit `az webapp up` znovu bez parametrů. Příkazy, které pocházejí z rozšíření CLI, `az postgres up` ale v současné době nepoužívají mezipaměť. to je důvod, proč jste si v tomto případě museli zadat skupinu prostředků a umístění `az webapp up` .
 
 > [!NOTE]
 > Pokud se v tomto okamžiku pokusíte navštívit adresu URL aplikace, narazíte na chybu "DisallowedHost on/". K této chybě dochází, protože jste ještě nenakonfigurovali aplikaci tak, aby používala nastavení produkčního prostředí popsané dříve, které jste provedli v následující části.
@@ -253,6 +251,8 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
     ```
     
 1. `createsuperuser`Příkaz vás vyzve k zadání přihlašovacích údajů pro uživatele. Pro účely tohoto kurzu použijte výchozí uživatelské jméno `root` , stiskněte klávesu **ENTER** pro e-mailovou adresu, aby byla ponechána prázdná, a zadejte `Pollsdb1` heslo.
+
+1. Pokud se zobrazí chyba, že je databáze uzamčena, ujistěte se, že jste spustili `az webapp settings` příkaz v předchozí části. Bez těchto nastavení nemůže příkaz migrace komunikovat s databází, což by způsobilo chybu.
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
     

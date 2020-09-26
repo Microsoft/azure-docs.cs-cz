@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369089"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Kurz: načtení dat do fondu SQL ve službě Azure synapse Analytics
 
@@ -34,7 +34,7 @@ V tomto kurzu se používá základ k načtení datového skladu WideWorldImport
 > * Vygenerování ročního objemu dat v tabulce dimenzí Date a tabulce faktů Sales
 > * Vytvoření statistik pro nově načtená data
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -42,7 +42,7 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Vytvoření prázdného datového skladu ve fondu SQL
 
@@ -58,7 +58,7 @@ Pomocí těchto kroků vytvořte prázdný fond SQL.
 
 1. Vyplňte část **Podrobnosti projektu** s následujícími informacemi:
 
-   | Nastavení | Příklad | Description |
+   | Nastavení | Příklad | Popis |
    | ------- | --------------- | ----------- |
    | **Předplatné** | Vaše předplatné  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
    | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
@@ -83,7 +83,7 @@ Pomocí těchto kroků vytvořte prázdný fond SQL.
 
 1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení a pak vyberte **vytvořit** a vytvořte datový sklad. Průběh můžete sledovat otevřením stránky **probíhá nasazení v** nabídce **oznámení** .
 
-     ![oznámení](./media/load-data-wideworldimportersdw/notification.png)
+     ![Snímek obrazovky s probíhajícím nasazením zobrazuje oznámení.](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
@@ -100,7 +100,7 @@ Služba Azure synapse Analytics vytvoří bránu firewall na úrovni serveru, kt
 1. Vyberte název serveru.
     ![název serveru](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. Vyberte možnost **Zobrazit nastavení brány firewall**. Otevře se stránka **nastavení brány firewall** pro server.
+1. Vyberte **Zobrazit nastavení brány firewall**. Otevře se stránka **nastavení brány firewall** pro server.
 
     ![nastavení serveru](./media/load-data-wideworldimportersdw/server-settings.png)
 
@@ -125,7 +125,7 @@ Plně kvalifikovaný název serveru slouží k připojení k serveru. V Azure Po
 
 V této části se k navázání připojení k serveru používá [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
-1. Otevřete SQL Server Management Studio.
+1. Otevřete sadu SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -133,7 +133,7 @@ V této části se k navázání připojení k serveru používá [SQL Server Ma
     | ------------ | --------------- | ----------- |
     | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
     | Název serveru | Plně kvalifikovaný název serveru | Například **sqlpoolservername.Database.Windows.NET** je plně kvalifikovaný název serveru. |
-    | Authentication | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+    | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
     | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 
