@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a na pracovišti pomocí Facebooku.
+description: Seznamte se s kroky, které je třeba provést na pracovišti na Facebooku a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321894"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
@@ -81,11 +81,11 @@ Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se
 
 3. Vyberte kartu **Zřizování**.
 
-    ![Karta Zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
 4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta Zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. Na stránce pro autorizaci budete přesměrováni na pracovní plochu. Zadejte své pracoviště pomocí uživatelského jména na Facebooku a klikněte na tlačítko **pokračovat** . Klikněte na **Test připojení** a ujistěte se, že se Azure AD může připojit k pracovišti pomocí Facebooku. Pokud se připojení nepovede, ujistěte se, že na pracovišti má účet Facebook oprávnění správce, a zkuste to znovu.
 
@@ -166,7 +166,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 * 09/10/2020 – Přidali jsme podporu pro podnikové atributy "region", "Organization", "costCenter" a "employeeNumber". Přidání podpory pro vlastní atributy "startDate", "auth_method" a "prvotní"
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
