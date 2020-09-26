@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 8917343175dd5ed8f82c1929683de98034323163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8548e6c4c3e2b31d9fb16273bcc441ca38127831
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321913"
+ms.locfileid: "91361819"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Kurz: Konfigurace PureCloud podle Genesys pro Automatické zřizování uživatelů
 
@@ -88,7 +88,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte adresu URL PureCloud podle Genesys API a tokenu OAuth v poli **Adresa URL tenanta** a **tajného tokenu** (v uvedeném pořadí). Adresa URL rozhraní API bude strukturována jako `{{API Url}}/api/v2/scim/v2` , pomocí adresy URL rozhraní API vaší oblasti PureCloud z [centra pro vývojáře PureCloud](https://developer.mypurecloud.com/api/rest/index.html). Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k PureCloud pomocí Genesys. Pokud se připojení nepovede, zajistěte, aby měl účet PureCloud podle Genesys oprávnění správce, a zkuste to znovu.
 
-    ![zřizování](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 

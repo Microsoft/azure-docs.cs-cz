@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362667"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Začínáme s Azure Maps Power BI vizuál
 
-<Token>**platí pro:** ![ Ano ](media/power-bi-visual/yes.png) služba Power BI pro ***zákazníky*** ![ ano ](media/power-bi-visual/yes.png) služba Power BI pro návrháře & vývojáři ![ Ano ](media/power-bi-visual/yes.png) Power BI Desktop ![ ne ](media/power-bi-visual/no.png) licence pro nebo Premium</Token>
+<Token>**platí pro:** ![ Zelená značka zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro ***uživatele*** ![ zelený symbol zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro návrháře & vývojářům ![ zelený symbol zaškrtnutí. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X značí ne. ](media/power-bi-visual/no.png) Vyžaduje licenci pro nebo Premium. </Token>
 
 Tento článek ukazuje, jak použít vizuál Microsoft Azure Maps pro Power BI.
 
@@ -133,9 +133,9 @@ Azure Maps vizuál je k dispozici v následujících službách a aplikacích:
 | Power BI Desktop                         | Ano          |
 | Služba Power BI (app.powerbi.com)       | Ano          |
 | Mobilní aplikace Power BI             | Ano          |
-| Publikování na web z Power BI                  | Ne           |
+| Publikování na web z Power BI                  | No           |
 | Power BI Embedded                        | No           |
-| Vkládání ve službě Power BI (PowerBI.com) | Ano          |
+| Vkládání ve službě Power BI (PowerBI.com) | Yes          |
 
 Podpora dalších Power BI služeb nebo aplikací se přidá v budoucích aktualizacích.
 

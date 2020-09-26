@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e811d921d28ce33d7dbc9f2bb7996557838178ad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cff4704b388594511809d92957cbbce97e948f2f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341772"
+ms.locfileid: "91362414"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 V tomto článku najdete informace o metrikách, které můžete použít k monitorování výkonu modelu v Azure Machine Learning Studio (Classic).  Vyhodnocení výkonu modelu je jedním z hlavních fází procesu zpracování dat. Označuje, jak úspěšné je hodnocení (předpovědi) datové sady vyškolený model. Azure Machine Learning Studio (Classic) podporuje hodnocení modelu prostřednictvím dvou z hlavních modulů strojového učení: 

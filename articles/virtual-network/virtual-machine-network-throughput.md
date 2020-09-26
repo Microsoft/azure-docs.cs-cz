@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 4fed883c8fa92df77af432e1e4a4b3acca72a0d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f0bad935c7c3d44f57dd171f714f31856bc2089c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265110"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361309"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Šířka pásma sítě virtuálního počítače
 
@@ -64,7 +64,7 @@ V současné době sada Azure Networking Stack podporuje 250 tisíc celkové sí
 
 Metriky jsou k dispozici v [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) ke sledování počtu toků sítě a rychlosti vytváření toku na INSTANCÍCH virtuálních počítačů nebo VMSS.
 
-![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![Snímek obrazovky se stránkou metrik Azure Monitor se spojnicovým grafem a součty pro příchozí a výstupní toky.](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
 Zatížení sítě a sazby za ukončení můžou mít vliv na výkon sítě, protože vytváření připojení a ukončení sdílí procesor s rutinami zpracování paketů. Doporučujeme, abyste provedli úlohy srovnávacích testů oproti očekávaným tokům provozu a mohli škálovat úlohy správně, aby odpovídaly vašim požadavkům na výkon. 
 

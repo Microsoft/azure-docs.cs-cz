@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dc3e128ac1c611a8527c3044bfac566edc24c74
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe89b58f71b14b211863fd46ba523e8c866764f1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342563"
+ms.locfileid: "91361785"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Správa dostupnosti virtuálních počítačů s Linuxem
 
@@ -36,7 +36,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 
 * Použití zón Availabiilty k ochraně před selháními datových center
 * Konfigurace více virtuálních počítačů ve skupině dostupnosti pro zajištění redundance
-* Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti]
+* Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti
 * Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače
 * Konfigurace jednotlivých vrstev aplikace v samostatných skupinách dostupnosti
 * Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti
