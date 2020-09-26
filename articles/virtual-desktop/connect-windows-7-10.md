@@ -3,33 +3,24 @@ title: Připojení k virtuálnímu počítači s Windows 10 nebo 7 – Azure
 description: Jak se připojit k virtuálnímu počítači s Windows pomocí desktopového klienta Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287334"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
 
-> Platí pro: Windows 7, Windows 10 a Windows 10 IoT Enterprise
+> Platí pro: Windows 10, Windows 10 IoT Enterprise a Windows 7.
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na virtuální plochu Windows s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows (Classic) bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
 
-K prostředkům virtuálních klientů Windows na zařízeních s Windows 7, Windows 10 a Windows 10 IoT Enterprise můžete přistupovat pomocí desktopového klienta Windows. Klient nepodporuje Window 8 ani Windows 8.1.
-
->[!NOTE]
->Klient Windows se automaticky nastaví jako výchozí pro virtuální plochu Windows (Classic). Pokud však klient zjistí, že uživatel má také prostředky Azure Resource Manager, automaticky přidá prostředky nebo upozorní uživatele, že jsou k dispozici.
-
-> [!IMPORTANT]
-> Virtuální počítač s Windows nepodporuje klienta připojení k aplikacím RemoteApp a vzdálené ploše (RADC) ani klienta Připojení ke vzdálené ploše (MSTSC).
-
-> [!IMPORTANT]
-> Virtuální počítač s Windows v současné době nepodporuje klienta vzdálené plochy z Windows Storu.
+K prostředkům virtuálních klientů Windows se můžete dostat na zařízeních s Windows 10, Windows 10 IoT Enterprise a Windows 7 pomocí desktopového klienta Windows. Klient nepodporuje Window 8 ani Windows 8.1.
 
 ## <a name="install-the-windows-desktop-client"></a>Instalace klienta pro stolní počítače se systémem Windows
 
@@ -43,6 +34,9 @@ Klienta můžete nainstalovat pro aktuálního uživatele, který nevyžaduje op
 
 Po instalaci je možné klienta spustit z nabídky Start, a to tak, že vyhledáte **vzdálenou plochu**.
 
+> [!IMPORTANT]
+> Virtuální počítač s Windows nepodporuje klienta připojení k aplikacím RemoteApp a vzdálené ploše (RADC) ani klienta Připojení ke vzdálené ploše (MSTSC).
+
 ## <a name="subscribe-to-a-workspace"></a>Přihlášení k odběru pracovního prostoru
 
 Existují dva způsoby, jak se můžete přihlásit k odběru pracovního prostoru. Klient se může pokusit zjistit prostředky, které vám k dispozici z pracovního nebo školního účtu, nebo můžete přímo zadat adresu URL, kde se vaše prostředky nacházejí v případech, kdy je klient nemůže najít. Jakmile se přihlásíte k odběru pracovního prostoru, můžete spustit prostředky jedním z následujících způsobů:
@@ -55,6 +49,9 @@ Existují dva způsoby, jak se můžete přihlásit k odběru pracovního prosto
 1. Na hlavní stránce klienta vyberte možnost **přihlásit k odběru**.
 2. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.
 3. Prostředky se zobrazí v centru připojení a jsou seskupeny podle pracovního prostoru.
+
+>[!NOTE]
+>Klient Windows se automaticky nastaví jako výchozí pro virtuální plochu Windows (Classic). Pokud však klient zjistí, že uživatel má také prostředky Azure Resource Manager, automaticky přidá prostředky nebo upozorní uživatele, že jsou k dispozici.
 
 ### <a name="subscribe-with-a-url"></a>Přihlášení k odběru pomocí adresy URL
 

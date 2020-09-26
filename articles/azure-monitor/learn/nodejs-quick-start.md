@@ -6,13 +6,13 @@ ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 17e01894ac3d26720b1e74be9d0fd7fc193c463f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: 76cc09ab5283e10e8f25af3aba4278ec6cca4838
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333269"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: zahájení monitorování webové aplikace v Node.js s využitím Azure Application Insights
 
@@ -29,7 +29,7 @@ Služba Azure Application Insights umožňuje monitorovat webové aplikace z hle
 
 Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, ať už běží místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 
@@ -60,7 +60,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
    npm install applicationinsights --save
    ```
 
-3. Upravte první soubor *. js* aplikace a přidejte dva řádky níže do nejvyšší části skriptu. Pokud používáte [aplikaciNode.js pro rychlý Start](../../app-service/quickstart-nodejs.md), upravili byste soubor *index.js* . Nahraďte `<instrumentation_key>` klíčem instrumentace vaší aplikace. 
+3. Upravte první soubor *. js* aplikace a přidejte dva řádky níže do nejvyšší části skriptu. Pokud používáte [ aplikaciNode.js pro rychlý Start](../../app-service/quickstart-nodejs.md), upravili byste soubor *index.js* . Nahraďte `<instrumentation_key>` klíčem instrumentace vaší aplikace. 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
