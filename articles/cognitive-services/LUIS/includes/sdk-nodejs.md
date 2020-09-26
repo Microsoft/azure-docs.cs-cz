@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript, cog-serv-seo-aug-2020
+ms.custom: include file, devx-track-js, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: b961bb0598a1f6e9cdc7b4df27af50e7af1d9d81
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: d3e4a95845f499e74c9e10fb5a6ff72c9f2f80a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323229"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327261"
 ---
 K Node.js můžete použít klientské knihovny Language Understanding (LUIS):
 
@@ -26,7 +26,7 @@ K Node.js můžete použít klientské knihovny Language Understanding (LUIS):
 
 [Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |   Zdrojový kód knihovny pro [vytváření](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) a [předpovědi](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [Vytváření](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring) a [prediktivní](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) npm | [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/sdk-3x/index.js)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
@@ -188,7 +188,7 @@ Metody vytváření entit jsou součástí třídy [modelu](https://docs.microso
 
 Kód pro vytvoření entity vytvoří entitu strojového učení s podentitami a funkcemi použitými u `Quantity` subentit.
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Částečná obrazovka z portálu znázorňující vytvořenou entitu, entitu strojového učení s podentitami a funkcemi použitou pro subentity množství.":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Částečná obrazovka z portálu znázorňující vytvořenou entitu, entitu strojového učení s podentitami a funkcemi použitou pro subentity "množství".":::
 
 [!code-javascript[Create entities for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddEntities)]
 

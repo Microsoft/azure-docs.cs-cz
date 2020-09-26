@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82608809"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327934"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Kurz: vytvoření zásady WAF na Azure CDN pomocí Azure Portal
 
@@ -72,17 +72,22 @@ Pokud chcete vytvořit vlastní pravidlo, v části **vlastní pravidla** vybert
 
 Následující snímek obrazovky ukazuje vlastní pravidlo shody k blokování požadavku, pokud řetězec dotazu obsahuje hodnotu **blockme**.
 
-![Změnit režim zásad WAF](../media/waf-cdn-create-portal/custommatch.png)
+![Přidat vlastní pravidlo shody](../media/waf-cdn-create-portal/custommatch.png)
 
 Pravidla omezení přenosové rychlosti vyžadují dvě další pole: **Trvání omezení četnosti** a mezní **hodnota omezení četnosti (požadavky)** , jak je znázorněno v následujícím příkladu:
 
-![Změnit režim zásad WAF](../media/waf-cdn-create-portal/customrate.png)
+![Přidat pravidlo omezení četnosti](../media/waf-cdn-create-portal/customrate.png)
 
 ### <a name="default-rule-set-drs"></a>Výchozí sada pravidel (DRS)
 
 Ve výchozím nastavení je povolená výchozí sada pravidel spravované v Azure. Pokud chcete v rámci skupiny pravidel zakázat jednotlivá pravidla, rozbalte pravidla v této skupině pravidel, zaškrtněte políčko před číslem pravidla a na kartě výše vyberte **Zakázat** . Chcete-li změnit typy akcí pro jednotlivá pravidla v rámci sady pravidel, zaškrtněte políčko před číslem pravidla a potom vyberte kartu **Akce změny** výše.
 
  ![Změnit sadu pravidel WAF](../media/waf-cdn-create-portal/managed2.png)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odeberte skupinu prostředků a všechny související prostředky.
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: 'Kurz: použití Azure Event Grid k automatizaci změny velikosti nahran�
 description: 'Kurz: Azure Event Grid se můžou aktivovat při nahrávání objektů BLOB v Azure Storage. Díky tomu můžete odesílat soubory obrázků nahrané do Azure Storage do jiných služeb, třeba Azure Functions, ke změně velikosti a dalším vylepšením.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86105791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326554"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: automatizace změny velikosti nahraných imagí pomocí Event Grid
 
@@ -20,11 +20,11 @@ Funkce změny velikosti se do existující aplikace pro nahrávání obrázků p
 
 # <a name="net-v12-sdk"></a>[\.Sada SDK pro .NET V12](#tab/dotnet)
 
-![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Snímek obrazovky, který zobrazuje publikovanou webovou aplikaci v prohlížeči pro \. sadu NET V12 SDK.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[ SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
-![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+![Snímek obrazovky, který zobrazuje publikovanou webovou aplikaci v prohlížeči pro \. sadu NET v10 za účelem SDK.](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Nasadit kód bez serveru pomocí služby Azure Functions
 > * Vytvořit odběr události služby Blob Storage ve službě Event Grid
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -301,7 +301,7 @@ Klikněte na oblast **Nahrát fotografie** a vyberte a nahrajte soubor. Do této
 
 Všimněte si, že po ukončení nahraného obrázku se v karuselu **vygenerované miniatury** zobrazí kopie nahraného obrázku. Funkce změnila velikost tohoto obrázku, přidala miniaturu do kontejneru *thumbnails* a webový klient ji stáhl.
 
-![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Snímek obrazovky, který zobrazuje publikovanou webovou aplikaci s názvem "ImageResizer" v prohlížeči pro \. sadu NET V12 SDK.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[ SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 

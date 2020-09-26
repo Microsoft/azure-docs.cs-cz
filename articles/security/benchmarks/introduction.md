@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058610"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328254"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Úvod do Azure Security srovnávacích testů
 
@@ -23,8 +23,8 @@ Microsoft zjistil, že používání *srovnávacích testů zabezpečení* vám 
 
 Srovnávací test zabezpečení Azure zahrnuje kolekci vysoce ovlivňujících doporučení zabezpečení, která můžete použít k zajištění služeb, které používáte v Azure:
 
-- Kontrolní mechanismy zabezpečení: Tato doporučení se obecně vztahují na vaše klienty Azure a služby Azure. Každé doporučení identifikuje seznam zúčastněných stran, které jsou obvykle součástí plánování, schválení nebo implementace srovnávacího testu. 
-- Směrné plány služeb: tyto ovládací prvky se vztahují na jednotlivé služby Azure a poskytují doporučení k této konfiguraci zabezpečení této služby.
+- **Kontrolní mechanismy zabezpečení**: Tato doporučení se obecně vztahují na vaše klienty Azure a služby Azure. Každé doporučení identifikuje seznam zúčastněných stran, které jsou obvykle součástí plánování, schválení nebo implementace srovnávacího testu. 
+- **Směrné plány služeb**: tyto ovládací prvky se vztahují na jednotlivé služby Azure a poskytují doporučení k této konfiguraci zabezpečení této služby.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Implementace srovnávacího testu zabezpečení Azure
 - **Plánování** implementace srovnávacích testů zabezpečení Azure najdete v [dokumentaci](overview.md) pro podnikové ovládací prvky a směrné plány specifické pro danou službu k naplánování řídicí architektury a způsobu, jakým se MAPUJE na pokyny jako CIS (Controls v 7.1) a NIST (SP800-53) Framework.

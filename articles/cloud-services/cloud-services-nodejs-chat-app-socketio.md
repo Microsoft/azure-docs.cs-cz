@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.custom: devx-track-js
+ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327523"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření aplikace Node.js chatu pomocí Socket.IO v cloudové službě Azure
 
@@ -25,7 +25,7 @@ Snímek obrazovky dokončené aplikace je níže:
 
 ![Okno prohlížeče zobrazující službu hostovanou v Azure][completed-app]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou nainstalovány následující produkty a verze, aby bylo možné úspěšně dokončit příklad v tomto článku:
 
 * Nainstalovat [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
@@ -139,7 +139,7 @@ Po uložení změn do **server.js**pomocí následujících kroků nainstalujte 
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Pokud chcete nasadit aplikaci do Azure, použijte rutinu **Publish-AzureServiceProject** . Například:
+5. Pokud chcete nasadit aplikaci do Azure, použijte rutinu **Publish-AzureServiceProject** . Příklad:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
@@ -169,7 +169,7 @@ Vaše aplikace je teď spuštěná v Azure a může přenášet zprávy konverza
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak vytvořit základní chatovací aplikaci hostovanou v cloudové službě Azure. Informace o tom, jak hostovat tuto aplikaci na webu Azure, najdete v tématu [Vytvoření aplikace Node.js chatu pomocí Socket.IO na webu Azure][chatwebsite].
 
-Další informace najdete také v centru pro [vývojářeNode.js](https://docs.microsoft.com/azure/developer/javascript/).
+Další informace najdete také v centru pro [ vývojářeNode.js](https://docs.microsoft.com/azure/developer/javascript/).
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 

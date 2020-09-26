@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327914"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
@@ -30,7 +30,7 @@ Identity Protection poskytuje organizacím přístup k výkonným prostředkům,
 
 Existují dva typy rizikového **uživatele** a **přihlášení** a dva typy detekce nebo výpočtu v **reálném čase** a v **režimu offline**.
 
-Zjišťování v reálném čase se nemusí zobrazit v hlášení po dobu pěti až deseti minut. Offline detekce se nemusí zobrazit v hlášení po dobu dvou až čtyř hodin.
+Zjišťování v reálném čase se nemusí zobrazit v hlášení po dobu pěti až deseti minut. Offline detekce se nemusí zobrazit v hlášení po dobu dvou až dvaceti čtyř hodin.
 
 ### <a name="user-risk"></a>Riziko uživatele
 

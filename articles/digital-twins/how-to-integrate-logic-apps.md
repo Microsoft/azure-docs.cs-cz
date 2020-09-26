@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326568"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
@@ -28,7 +28,7 @@ V tomto článku použijete [Azure Portal](https://portal.azure.com) k **Vytvoř
 Pokud ještě nemáte předplatné Azure, vytvořte si ** [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** před tím, než začnete.
 Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu. 
 
-Zbytek této části vás provede následujícími kroky:
+V rámci požadované instalace je také nutné provést následující položky. Zbývající část této části vás provede následujícími kroky:
 - Nastavení instance digitálních vláken Azure
 - Získat tajný klíč klienta registrace aplikace
 - Přidání digitálního vlákna
@@ -37,9 +37,9 @@ Zbytek této části vás provede následujícími kroky:
 
 Pokud chcete připojit instanci digitálních vláken Azure k Logic Apps v tomto článku, musíte mít už nanastavenou **instanci digitálních vláken Azure** . 
 
-Pokud teď potřebujete nastavit novou instanci, nejjednodušší způsob, jak to udělat, je spustit ukázku skriptu pro automatizované nasazení. Postupujte podle pokynů v tématu [*Postupy: nastavení instance a ověřování (pomocí skriptů)*](how-to-set-up-instance-scripted.md) k nastavení nové instance a požadované registrace aplikace služby Azure AD. Pokyny také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
+Nejdřív nastavte instanci digitálních vláken Azure a požadované ověřování, abyste s ním mohli pracovat. Provedete to podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). V závislosti na preferovaných zkušenostech je k dispozici článek o instalaci pro [ukázkový skript nasazení](how-to-set-up-instance-scripted.md) [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)nebo automatizované Cloud Shell. Všechny verze pokynů také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
 
-V tomto kurzu budete při nastavování instance potřebovat následující hodnoty. Pokud tyto hodnoty potřebujete znovu shromáždit, použijte odkazy níže na příslušné části v článku o nastavení, abyste je našli v [Azure Portal](https://portal.azure.com).
+V tomto kurzu budete při nastavování instance potřebovat několik hodnot. Pokud tyto hodnoty potřebujete znovu shromáždit, použijte odkazy níže na příslušné části v článku o nastavení, abyste je našli v [Azure Portal](https://portal.azure.com).
 * **_Název hostitele_** instance digitálních vláken Azure ([najít v portálu](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * ID aplikace registrace aplikace Azure AD **_(ID klienta)_** ([najít v portálu](how-to-set-up-instance-portal.md#collect-important-values))
 * **_ID adresáře_** pro registraci aplikace Azure AD ([najít v portálu](how-to-set-up-instance-portal.md#collect-important-values))
@@ -160,13 +160,13 @@ Nyní jste dokončili vytváření vlastního konektoru, který má přístup k 
 
 V dalším kroku vytvoříte aplikaci logiky, která bude používat váš nový konektor k automatizaci aktualizací digitálních vláken Azure.
 
-Přejděte na stránku [Logic Apps (spotřeba)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) v Azure Portal (můžete použít tento odkaz nebo ho vyhledat na portálu pro hledání). Stisknutím tlačítka *Přidat* vytvoříte aplikaci logiky.
+V [Azure Portal](https://portal.azure.com)na panelu hledání na portálu vyhledejte *Logic Apps* . Výběr by měl přebírat stránku *Logic Apps* . Stiskněte tlačítko *vytvořit aplikaci logiky* a vytvořte novou aplikaci logiky.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Stránka Logic Apps (spotřeba) v Azure Portal. Stiskněte tlačítko Přidat.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Stránka Logic Apps v Azure Portal Stiskněte tlačítko Přidat.":::
 
-Na stránce *Logic Apps (spotřeba)* , která následuje, zadejte své předplatné a skupinu prostředků. Také zvolte název aplikace logiky a vyberte umístění.
+Na stránce *Aplikace logiky* , které následují, zadejte své předplatné a skupinu prostředků. Také zvolte název aplikace logiky a vyberte umístění nasazení.
 
-Vyberte tlačítko _zkontrolovat + vytvořit_ .
+Stiskněte tlačítko _Revize + vytvořit_ .
 
 Tím přejdete na kartu *Revize + vytvořit* , kde můžete zkontrolovat podrobnosti a *vytvořit v dolní* části svůj prostředek.
 

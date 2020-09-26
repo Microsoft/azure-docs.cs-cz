@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177739"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327710"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -98,18 +98,34 @@ Například následující dotazy vytvářejí přesně stejný výsledek, ale d
 
 ```Kusto
 //less efficient
-Heartbeat 
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| where IPRegion == "WestCoast"
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| extend Msg = strcat("Syslog: ",SyslogMessage)
+| where  Msg  has "Error"
+| count 
 ```
 ```Kusto
 //more efficient
-Heartbeat 
-| where RemoteIPLongitude  < -94
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| where  SyslogMessage  has "Error"
+| count 
 ```
+
+V některých případech je vyhodnocený sloupec implicitně vytvořen enine zpracováním dotazů, protože filtrování je provedeno nejen v poli:
+```Kusto
+//less efficient
+SecurityEvent
+| where tolower(Process) == "conhost.exe"
+| count 
+```
+```Kusto
+//more efficient
+SecurityEvent
+| where Process =~ "conhost.exe"
+| count 
+```
+
+
+
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Použití efektivních příkazů agregace a dimenzí v souhrnu a spojování
 
@@ -279,7 +295,7 @@ SecurityEvent
 | distinct FilePath, CallerProcessName1
 ```
 
-Pokud výše uvedené nedovoluje vyhnout se použití poddotazů, je další technika Nápověda k dotazovacímu stroji, že v každém z nich je v každém z nich použita jedna zdrojová data pomocí [funkce vyhodnotit ()](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor). To je užitečné, když zdrojová data přicházejí z funkce, která se v dotazu používá několikrát.
+Pokud výše uvedené nedovoluje vyhnout se použití poddotazů, je další technika Nápověda k dotazovacímu stroji, že v každém z nich je v každém z nich použita jedna zdrojová data pomocí [funkce vyhodnotit ()](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor). To je užitečné, když zdrojová data přicházejí z funkce, která se v dotazu používá několikrát. Vyhodnotit je efektivní, pokud je výstup dílčího dotazu mnohem menší než vstup. Dotazovací modul bude ukládat do mezipaměti a znovu použít výstup ve všech výskytech.
 
 
 

@@ -9,19 +9,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344692"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327608"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Urychlené obnovení databáze v Azure SQL 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**Accelerated Database Recovery (ADR)** je funkce databázového stroje SQL Server, která významně vylepšuje dostupnost databáze, zejména v případě existence dlouhotrvajících transakcí, a to tak, že přenavrhování SQL Serverho procesu obnovení databázového stroje. Pravidlo automatického nasazení je aktuálně dostupné pro Azure SQL Database, Azure SQL Managed instance, SQL Server na virtuálním počítači Azure a databází ve službě Azure synapse Analytics (aktuálně ve verzi Preview). Hlavní výhody ADR jsou:
+**Accelerated Database Recovery (ADR)** je funkce databázového stroje SQL Server, která významně vylepšuje dostupnost databáze, zejména v případě existence dlouhotrvajících transakcí, a to tak, že přenavrhování SQL Serverho procesu obnovení databázového stroje. 
+
+Pravidlo automatického nasazení je aktuálně dostupné pro Azure SQL Database, Azure SQL Managed instance, databáze ve službě Azure synapse Analytics (aktuálně ve verzi Preview) a SQL Server na virtuálních počítačích Azure počínaje SQL Server 2019. 
+
+> [!NOTE] 
+> V Azure SQL Database a Azure SQL Managed instance je ve výchozím nastavení povolená možnost ADR a zakázání pravidla automatického nasazení pro některý z těchto produktů se nepodporuje. 
+
+## <a name="overview"></a>Přehled
+
+Hlavní výhody ADR jsou:
 
 - **Rychlá a konzistentní obnova databáze**
 

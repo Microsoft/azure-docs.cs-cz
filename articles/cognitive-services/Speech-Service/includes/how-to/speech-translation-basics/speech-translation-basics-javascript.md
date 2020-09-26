@@ -4,14 +4,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6fe89e36685a2db0bf7b570ab6e7150bacf34857
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 9e1e81c70e21022364e52698f96213c01b452da4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405823"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326892"
 ---
+Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči. Tento rychlý Start popisuje témata, včetně:
+
+* Převod řeči na text
+* Překlad řeči na více cílových jazyků
+* Přímá překlady řeči na řeč
+
+## <a name="skip-to-samples-on-github"></a>Přeskočit na ukázky na GitHubu
+
+Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky rychlý Start JavaScriptu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) na GitHubu.
+
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
@@ -19,9 +29,9 @@ V tomto článku se předpokládá, že máte účet Azure a předplatné služb
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
 Předtím, než můžete cokoli udělat, musíte nainstalovat <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">sadu Speech SDK pro JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. V závislosti na vaší platformě postupujte podle následujících pokynů:
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js<span 
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webový prohlížeč<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webový prohlížeč <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 V závislosti na cílovém prostředí navíc použijte jednu z následujících možností:
 

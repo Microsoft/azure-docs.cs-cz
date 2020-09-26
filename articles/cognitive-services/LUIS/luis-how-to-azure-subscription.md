@@ -2,15 +2,17 @@
 title: Jak používat klíč pro vytváření a modul runtime – LUIS
 description: Při prvním použití Language Understanding (LUIS) není nutné vytvářet klíč pro vytváření obsahu. Pokud máte v úmyslu publikovat aplikaci, pak použijte koncový bod za běhu, musíte pro aplikaci vytvořit a přiřadit klíč modulu runtime.
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565901"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327217"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -27,9 +29,9 @@ LUIS umožňuje tři typy prostředků Azure a jeden jiný prostředek než Azur
 
 |Prostředek|Účel|Služba rozpoznávání `kind`|Služba rozpoznávání `type`|
 |--|--|--|--|
-|Vytváření prostředku|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Pokud máte v úmyslu vytvářet aplikace LUIS programtically nebo na portálu LUIS, [vytvořte prostředek pro vytváření Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal) . Aby bylo možné propojit prostředky Azure authroring s vaší aplikací, je třeba nejprve [migrovat účet Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) . Oprávnění k vytváření prostředků můžete řídit přiřazením osob k [roli Přispěvatel](#contributions-from-other-authors). <br><br> Pro prostředek pro vytváření LUIS je k dispozici jedna vrstva avialable:<br> * **F0 vytváření prostředků** , který vám poskytne až 1 milion bezplatných požadavků na vytváření koncových bodů a měsíčně 1000. |`LUIS.Authoring`|`Cognitive Services`|
-|Prostředek předpovědi| Po publikování aplikace LUIS použijte k vyřízení požadavků na koncový bod předpovědi pro dotazování prostředku nebo klíče předpovědi. Vytvořte LUIS předpověď prostředku předtím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytuje vytváření nebo spouštěcí prostředek. <br><br> Pro prostředek předpovědi jsou avialble dvě úrovně:<br> * **Prostředek předpovědi F0** , který vám dává 10 000 bezplatné požadavky na koncový bod předpovědi měsíčně<br> * **S0 předpověď prostředků** , což je placená úroveň. [Další informace o cenách najdete v podrobnostech.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|Zdroj počáteční/zkušební verze|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Tato funkce se vytvoří pomocí výchozí, pokud při prvním přihlášení k LUIS TP zvolíte možnost prostředek Starter. Spouštěcí klíč bude ale nakonec zastaralý a všichni LUIS uživatelé budou muset [migrovat své účty](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) a propojit své Luis aplikace s prostředky pro vytváření obsahu. Tento prostředek vám neuděluje oprávnění k řízení přístupu na základě role, jako je prostředek pro vytváření. <br><br> Stejně jako u zdrojového prostředku vám počáteční zdroj poskytuje nemilion transakcí vytváření a 1000 požadavků koncových bodů předpovědi pro volné místo.|-|Nejedná se o prostředek Azure.|
+|Vytváření prostředku|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Pokud máte v úmyslu vytvářet aplikace LUIS programtically nebo na portálu LUIS, [vytvořte prostředek pro vytváření Luis](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Aby bylo možné propojit prostředky Azure authroring s vaší aplikací, je třeba nejprve [migrovat účet Luis](luis-migration-authoring.md#what-is-migration) . Oprávnění k vytváření prostředků můžete řídit přiřazením osob k [roli Přispěvatel](#contributions-from-other-authors). <br><br> Pro prostředek pro vytváření LUIS je k dispozici jedna vrstva avialable:<br> * **Bezplatný F0 vytváření prostředků** , který vám poskytne nemilion transakcí vytváření a 1000 bezplatné požadavky koncového bodu předpovědi testování měsíčně. |`LUIS.Authoring`|`Cognitive Services`|
+|Prostředek předpovědi| Po publikování aplikace LUIS použijte k vyřízení požadavků na koncový bod předpovědi pro dotazování prostředku nebo klíče předpovědi. Vytvořte LUIS předpověď prostředku předtím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytuje vytváření nebo spouštěcí prostředek. <br><br> Pro prostředek předpovědi jsou avialble dvě úrovně:<br> * **F0 předpověď Free** , který vám dává 10 000 bezplatné požadavky na koncový bod předpovědi měsíčně<br> * **Prostředek předpovědi úrovně Standard S0** , což je placená úroveň. [Další informace o cenách najdete v podrobnostech.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Zdroj počáteční/zkušební verze|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Tato funkce se vytvoří pomocí výchozí, pokud při prvním přihlášení k LUIS TP zvolíte možnost prostředek Starter. Spouštěcí klíč bude ale nakonec zastaralý a všichni LUIS uživatelé budou muset [migrovat své účty](luis-migration-authoring.md#what-is-migration) a propojit své Luis aplikace s prostředky pro vytváření obsahu. Tento prostředek vám neuděluje oprávnění k řízení přístupu na základě role, jako je prostředek pro vytváření. <br><br> Stejně jako u zdrojového prostředku vám počáteční zdroj poskytuje nemilion transakcí vytváření a 1000 požadavků na koncový bod předpovědi bezplatného testování.|-|Nejedná se o prostředek Azure.|
 |[Klíč prostředku více služeb pro službu rozpoznávání](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Požadavky koncového bodu předpovědi dotazu sdílené s LUIS a dalšími podporovanými Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
 
 
@@ -115,7 +117,7 @@ Vlastník a všichni přispěvatelé mají přístup k vytváření aplikací.
 |Import verze||
 |Nastavit aplikaci jako veřejnou|Když je aplikace veřejná, může se uživatel dotazovat na aplikaci s vytvářením nebo klíčovým bodem.|
 |Upravit model|
-|Publikování|
+|Publikovat|
 |Kontrola služby Endpoint projevy pro [aktivní učení](luis-how-to-review-endpoint-utterances.md)|
 |Trénování|
 

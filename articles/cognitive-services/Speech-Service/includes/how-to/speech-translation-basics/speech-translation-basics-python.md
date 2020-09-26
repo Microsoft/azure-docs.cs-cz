@@ -4,13 +4,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: e83536042df1cebb1bb22d6c18d99ae4c3d87873
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: cb7bb9ef70451cece9dde88a7325fe652026b230
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326895"
 ---
+Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči. Tento rychlý Start popisuje témata, včetně:
+
+* Převod řeči na text
+* Překlad řeči na více cílových jazyků
+* Přímá překlady řeči na řeč
+
+## <a name="skip-to-samples-on-github"></a>Přeskočit na ukázky na GitHubu
+
+Pokud chcete přeskočit přímo na vzorový kód, přečtěte si [ukázky rychlý Start pro Python](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) na GitHubu.
+
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).

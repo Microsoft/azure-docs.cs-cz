@@ -5,13 +5,23 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: d04a13dae78057dfca52ed82bed278a8b132ded1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df9ef2610b0a51489c5f752e67fa146cd181fad8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375433"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326897"
 ---
+Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči. Tento rychlý Start popisuje témata, včetně:
+
+* Převod řeči na text
+* Překlad řeči na více cílových jazyků
+* Přímá překlady řeči na řeč
+
+## <a name="skip-to-samples-on-github"></a>Přeskočit na ukázky na GitHubu
+
+Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky pro rychlý Start Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre/translate-speech-to-text) na GitHubu.
+
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
@@ -22,7 +32,7 @@ Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V
 
 ## <a name="import-dependencies"></a>Importovat závislosti
 
-Chcete-li spustit příklady v tomto článku, zahrňte do `import` horní části stránky * následující příkazy *. *Soubor kódu Java.
+Chcete-li spustit příklady v tomto článku, zahrňte do `import` horní části stránky * následující příkazy *. * Soubor kódu Java.
 
 ```java
 package speech;

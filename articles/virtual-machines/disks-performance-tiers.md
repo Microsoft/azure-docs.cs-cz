@@ -4,16 +4,16 @@ description: Přečtěte si o úrovních výkonu pro spravované disky a také o
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: aa188babf56d4a825059fe6103e2e07745eb134f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3d6b243ab517f3663f779d01569acf3d46ad8411
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974131"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328118"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Úrovně výkonu pro Managed Disks (Preview)
 
@@ -21,7 +21,9 @@ Azure Disk Storage v současné době nabízí integrované možnosti shlukován
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Při prvním nasazení nebo zřízení disku je základní úroveň výkonu pro tento disk nastavena na základě zřízené velikosti disku. Je možné vybrat vyšší úroveň výkonu pro splnění vyšších požadavků a v případě, že tento výkon již nepotřebujete, můžete se vrátit do počáteční základní úrovně výkonu. Pokud například zřídíte disk P10 (128 GiB), úroveň výkonu základní úrovně se nastaví jako P10 (500 IOPS a 100 MB/s). Vrstvu můžete aktualizovat tak, aby odpovídala výkonu P50 (7500 IOPS a 250 MB/s), aniž by se zvýšila velikost disku, a vrátit se na P10, pokud už vyšší výkon není potřeba.
+Při prvním nasazení nebo zřízení disku je základní úroveň výkonu pro tento disk nastavena na základě zřízené velikosti disku. Je možné vybrat vyšší úroveň výkonu pro splnění vyšších požadavků a v případě, že tento výkon již nepotřebujete, můžete se vrátit do počáteční základní úrovně výkonu.
+
+Vaše fakturace se mění v průběhu změny vaší úrovně. Pokud například zřídíte disk P10 (128 GiB), vaše základní úroveň výkonu se nastaví jako P10 (500 IOPS a 100 MB/s) a bude se vám účtovat sazba P10. Vrstvu můžete aktualizovat tak, aby odpovídala výkonu P50 (7500 IOPS a 250 MB/s) bez zvýšení velikosti disku. během této doby se vám bude účtovat sazba za P50. Pokud už vyšší výkon nepotřebujete, můžete se vrátit na úroveň P10 a disk se znovu bude účtovat za P10 sazbu.
 
 | Velikost disku | Základní úroveň výkonu | Dá se upgradovat na |
 |----------------|-----|-------------------------------------|
@@ -40,70 +42,63 @@ Při prvním nasazení nebo zřízení disku je základní úroveň výkonu pro 
 | 16 TiB | P70 | P80 |
 | 32 TB | P80 | Žádné |
 
+Informace o fakturaci najdete v tématu [ceny za spravované disky](https://azure.microsoft.com/pricing/details/managed-disks/).
+
 ## <a name="restrictions"></a>Omezení
 
 - V současné době se podporuje jenom pro prémiové SSD.
 - Před změnou úrovní je potřeba disky odpojit od spuštěného virtuálního počítače.
 - Použití úrovní výkonu P60, P70 a P80 je omezené na disky 4096 GiB nebo vyšší.
+- Úroveň výkonu disků se dá změnit jenom jednou za 24 hodin.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
 Úprava úrovně výkonu spravovaného disku je aktuálně dostupná jenom pro Premium SSD v následujících oblastech:
 
 - USA – středozápad 
-- Východní 2 USA 
-- Evropa – západ
-- Východní Austrálie 
-- Austrálie – jihovýchod 
-- Indie – jih
 
-## <a name="createupdate-a-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Vytvoří nebo aktualizuje datový disk s úrovní vyšší než základní úrovně.
+## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Vytvoření prázdného datového disku s úrovní vyšší než základní úroveň
 
-1. Vytvořte prázdný datový disk s úrovní vyšší než základní úroveň nebo aktualizujte vrstvu disku vyšší než základní úroveň pomocí ukázkové šablony [CreateUpdateDataDiskWithTier.jsv](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json) .
+```azurecli
+subscriptionId=<yourSubscriptionIDHere>
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+diskSize=<yourDiskSizeHere>
+performanceTier=<yourDesiredPerformanceTier>
+region=westcentralus
 
-     ```cli
-     subscriptionId=<yourSubscriptionIDHere>
-     resourceGroupName=<yourResourceGroupNameHere>
-     diskName=<yourDiskNameHere>
-     diskSize=<yourDiskSizeHere>
-     performanceTier=<yourDesiredPerformanceTier>
-     region=<yourRegionHere>
-    
-     az login
-    
-     az account set --subscription $subscriptionId
-    
-     az group deployment create -g $resourceGroupName \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
-     --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
-     ```
+az login
 
-1. Potvrďte úroveň disku.
+az account set --subscription $subscriptionId
 
-    ```cli
-    az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-06-30 --query [properties.tier] -o tsv
-     ```
+az disk create -n $diskName -g $resourceGroupName -l $region --sku Premium_LRS --size-gb $diskSize --tier $performanceTier
+```
+## <a name="create-an-os-disk-with-a-tier-higher-than-the-baseline-tier-from-an-azure-marketplace-image"></a>Vytvoření disku s operačním systémem s úrovní vyšší než základní úroveň z image Azure Marketplace
 
-## <a name="createupdate-an-os-disk-with-a-tier-higher-than-the-baseline-tier"></a>Vytvoří nebo aktualizuje disk s operačním systémem s úrovní vyšší než základní úroveň.
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+region=westcentralus
+image=Canonical:UbuntuServer:18.04-LTS:18.04.202002180
 
-1. Vytvořte disk s operačním systémem z image Marketplace nebo aktualizujte vrstvu disku s operačním systémem vyšší než základní úroveň pomocí ukázkové šablony [CreateUpdateOSDiskWithTier.jsv](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateOSDiskWithTier.json) .
+az disk create -n $diskName -g $resourceGroupName -l $region --image-reference $image --sku Premium_LRS --tier $performanceTier
+```
+     
+## <a name="update-the-tier-of-a-disk"></a>Aktualizace úrovně disku
 
-     ```cli
-     resourceGroupName=<yourResourceGroupNameHere>
-     diskName=<yourDiskNameHere>
-     performanceTier=<yourDesiredPerformanceTier>
-     region=<yourRegionHere>
-    
-     az group deployment create -g $resourceGroupName \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateOSDiskWithTier.json" \
-     --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier"
-     ```
- 
- 1. Potvrďte úroveň disku.
- 
-     ```cli
-     az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-06-30 --query [properties.tier] -o tsv
-     ```
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+
+az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
+```
+## <a name="show-the-tier-of-a-disk"></a>Zobrazit úroveň disku
+
+```azurecli
+az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
+```
 
 ## <a name="next-steps"></a>Další kroky
 

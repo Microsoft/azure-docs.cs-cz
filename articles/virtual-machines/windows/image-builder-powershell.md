@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a221ba8fe14db37729183774197bfc2db8bf2baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328101"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder pomocí PowerShellu
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak můžete vytvořit přizpůsobenou image Windows pom
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -271,7 +271,7 @@ Na pozadí tvůrce imagí také vytvoří pracovní skupinu prostředků ve vaš
 
 Pokud služba ohlásí chybu během odesílání šablony konfigurace obrázku:
 
-- Přečtěte si téma [řešení potíží se sestavením imagí virtuálních počítačů Azure (AIB)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting).
+- Přečtěte si téma [řešení potíží se sestavením imagí virtuálních počítačů Azure (AIB)](../linux/image-builder-troubleshoot.md).
 - Před opakováním odstraňte šablonu pomocí následujícího příkladu.
 
 ```azurepowershell-interactive
@@ -288,7 +288,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 Počkejte, než se proces sestavení image dokončí. Tento krok může trvat až hodinu.
 
-Pokud narazíte na chyby, přečtěte si téma [řešení potíží se sestavením imagí virtuálních počítačů Azure (AIB)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting).
+Pokud narazíte na chyby, přečtěte si téma [řešení potíží se sestavením imagí virtuálních počítačů Azure (AIB)](../linux/image-builder-troubleshoot.md).
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 

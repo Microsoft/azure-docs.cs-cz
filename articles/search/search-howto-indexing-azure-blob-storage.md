@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9caa377ebcdff5b0ae379f1b0b8269dac5b8f499
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328288"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Postup indexování dokumentů v Azure Blob Storage s využitím Azure Kognitivní hledání
 
@@ -73,6 +73,7 @@ Další informace o rozhraní API Create DataSource najdete v tématu [Create Da
 
 Přihlašovací údaje pro kontejner objektů blob můžete zadat jedním z těchto způsobů:
 
+- **Připojovací řetězec spravované identity**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` Tento připojovací řetězec nevyžaduje klíč účtu, ale musíte postupovat podle pokynů pro [nastavení připojení k účtu Azure Storage pomocí spravované identity](search-howto-managed-identities-storage.md).
 - **Řetězec pro připojení k účtu úložiště s úplným přístupem**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` připojovací řetězec můžete z Azure Portal získat tak, že přejdete do okna účtu úložiště > nastavení > klíče (pro účty klasického úložiště), nebo nastavení > přístupových klíčů (pro Azure Resource Manager účty úložiště).
 - Připojovací řetězec **sdíleného přístupového podpisu** (SAS) účtu úložiště: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS by měl mít v kontejnerech a objektech (v tomto případě objekty BLOB) oprávnění list a čtení.
 -  **Sdílený přístupový podpis kontejneru**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS by měl mít v kontejneru oprávnění list a Read.

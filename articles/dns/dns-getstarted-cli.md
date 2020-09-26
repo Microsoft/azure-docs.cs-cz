@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a15209351f95e44c7cf10993513e03ba35b53d27
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a08a3bb8e01d827b806dae269b65569cb415404d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358573"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Rychlý start: Vytvoření zóny Azure DNS a záznam pomocí Azure CLI
 
@@ -92,7 +92,7 @@ Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete ote
 
    Mělo by se zobrazit něco podobného jako na následující obrazovce:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Snímek obrazovky zobrazuje okno příkazového řádku s vyhledávacím příkazem n s a hodnotami pro server, adresu, název a adresu.](media/dns-getstarted-portal/nslookup.PNG)
 
 Název hostitele **www \. contoso. xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
 

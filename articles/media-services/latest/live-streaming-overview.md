@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 23898969f254063ee9e5385fee577661871ccf45
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0eb814ea0d941ca01d3a21db1cb507ef273a1a18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328339"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -60,7 +60,7 @@ Dynamické filtrování se používá k řízení počtu běhů, formátů, pře
 
 ### <a name="pass-through"></a>Průchod
 
-![Průchozí](./media/live-streaming/pass-through.svg)
+![Diagram znázorňující, jak se ingestují a zpracovávají informační kanály videa a zvuku z předávací živé události.](./media/live-streaming/pass-through.svg)
 
 Při použití předávací **živé události**se spoléháte na váš místní živý kodér a vygenerujete datový proud s více přenosovými rychlostmi a pošlete ho jako kanál příspěvků do živé události (pomocí RTMP nebo fragmentování vstupního protokolu-MP4). Živá událost pak provede přes příchozí streamy videa do dynamického balíčku (koncového bodu streamování) bez dalšího překódování. Taková předávací živá událost je optimalizovaná pro dlouhotrvající živé události nebo 24x365 lineární živé streamování. 
 

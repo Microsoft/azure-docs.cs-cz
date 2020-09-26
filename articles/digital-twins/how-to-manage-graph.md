@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125528"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326537"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
 Srdcem digitálních vláken Azure je [dvojitě graf](concepts-twins-graph.md) , který představuje celé prostředí. Dvojitý graf se skládá z jednotlivých digitálních vláken propojených prostřednictvím **vztahů**.
 
-Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance-scripted.md) a nastavili jste [ověřovací](how-to-authenticate-client.md) kód v klientské aplikaci, můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
+Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance-portal.md) a nastavili jste [ověřovací](how-to-authenticate-client.md) kód v klientské aplikaci, můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
 Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pracovat s jednotlivými digitálními podseznamy, přečtěte si téma [*Postup: Správa digitálních vláken*](how-to-manage-twin.md).
 
@@ -63,6 +63,14 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 ```
 
 Další informace o pomocné třídě `BasicRelationship` naleznete v tématu [*How to: use the Azure Digital revlákens API and SDK*](how-to-use-apis-sdks.md).
+
+### <a name="create-multiple-relationships-between-twins"></a>Vytvoření více vztahů mezi dvojitými hodnotami
+
+Neexistuje žádné omezení počtu vztahů, které můžete mít mezi dvěma dvojitými vláknami – můžete mít tolik vztahů mezi dvojitými možnostmi, jak budete chtít. 
+
+To znamená, že můžete vyjádřit několik různých typů vztahů mezi dvěma dvojitými vlákna najednou. Například *Dvojitá* a může mít jak *uloženou* *relaci, tak* i vytvářený vztah s *dvojitým B*.
+
+V případě potřeby můžete dokonce vytvořit několik instancí stejného typu relace mezi dvěma dvěma typy vláken. V tomto příkladu to znamená, že *zdvojená A* může mít dvě jedinečné *uložené* relace s *dvojitým B*.
 
 ## <a name="list-relationships"></a>Výpis relací
 

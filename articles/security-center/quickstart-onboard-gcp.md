@@ -3,16 +3,16 @@ title: Připojte svůj účet GCP k Azure Security Center
 description: Monitorování prostředků GCP z Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f478c279eb4c07332d047935f7c5dab89fd4b7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4020bc5e96ff35fa2d04a872216e43abbba5323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328305"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Připojení účtů GCP k Azure Security Center
 
@@ -36,7 +36,7 @@ Na snímku obrazovky níže vidíte projekty GCP zobrazené na řídicím panelu
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Náhled|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|**Vlastník** nebo **Přispěvatel** v příslušném předplatném Azure|
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|

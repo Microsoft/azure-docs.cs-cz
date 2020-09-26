@@ -12,19 +12,19 @@ author: David-Engel
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: 5248f43e2b0b1e347c6968678b7f05ba7efa9cf6
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b4a22c734d2afb90d5ea7bc1bda17d3f8fcf585a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299588"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327540"
 ---
 # <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití golang k dotazování databáze v Azure SQL Database nebo spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto rychlém startu použijete programovací jazyk [golang](https://godoc.org/github.com/denisenkom/go-mssqldb) pro připojení k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance. Potom spustíte příkazy jazyka Transact-SQL k dotazování a úpravě dat. [Golang](https://golang.org/) je open source programovací jazyk, který usnadňuje sestavování jednoduchého, spolehlivého a efektivního softwaru.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -54,7 +54,7 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
@@ -200,8 +200,10 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
            return -1, err
        }
 
-       tsql := "INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name, @Location); "
-       tsql += select isNull(SCOPE_IDENTITY(), -1);"
+       tsql := `
+         INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name, @Location);
+         select isNull(SCOPE_IDENTITY(), -1);
+       `
 
        stmt, err := db.Prepare(tsql)
        if err != nil {

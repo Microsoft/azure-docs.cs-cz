@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358657"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Migrace pravidel vašich klasických výstrah pomocí nástroje k dobrovolné migraci
 
@@ -49,7 +49,7 @@ Pokud chcete aktivovat migraci pravidel vašich klasických výstrah v Azure Por
 
 1. Vyberte **migrovat na nová pravidla** a přejdete na úvodní stránku migrace. Tato stránka zobrazuje seznam všech předplatných a jejich stav migrace:
 
-    ![migrace – odpočívadlo](media/alerts-migration/migration-landing.png "Migrace pravidel")
+    ![Snímek obrazovky zobrazující stránku pravidla upozornění migrace](media/alerts-migration/migration-landing.png "Migrace pravidel")
 
     Všechna předplatná, která je možné migrovat pomocí nástroje, jsou označená jako **připravená k migraci**.
 
@@ -60,7 +60,7 @@ Pokud chcete aktivovat migraci pravidel vašich klasických výstrah v Azure Por
 
     Výsledná stránka obsahuje podrobné informace o pravidlech výstrah, která se budou migrovat pro jedno předplatné najednou. Můžete také vybrat možnost **Stáhnout podrobnosti o migraci pro toto předplatné** a získat podrobnosti ve formátu CSV.
 
-    ![migrace – Preview](media/alerts-migration/migration-preview.png "Náhled migrace")
+    ![Snímek obrazovky zobrazující stránku pravidla upozornění migrace s odkazem ke stažení podrobností o migraci pro toto předplatné a pro oznámení o migraci můžete zadat e-mail.](media/alerts-migration/migration-preview.png "Náhled migrace")
 
 1. Zadejte jednu nebo více e-mailových adres, které budou upozorňovány na stav migrace. Po dokončení migrace obdržíte e-mail nebo budete potřebovat nějakou akci.
 
@@ -69,7 +69,7 @@ Pokud chcete aktivovat migraci pravidel vašich klasických výstrah v Azure Por
     > [!IMPORTANT]
     > Po zahájení migrace pro předplatné nebudete moct upravit ani vytvořit pravidla pro klasické výstrahy pro toto předplatné. Toto omezení zajistí, že během migrace na nová pravidla nebudou ztraceny žádné změny pravidel pro vaše Klasická upozornění. I když nebudete moct měnit pravidla vašich klasických výstrah, pořád se budou spouštět a zajišťují upozornění, dokud nebudou migrovány. Po dokončení migrace vašeho předplatného už nebudete moct používat pravidla pro klasických výstrah.
 
-    ![migrace – potvrzení](media/alerts-migration/migration-confirm.png "Potvrdit spuštění migrace")
+    ![Snímek obrazovky s výzvou k migraci zobrazí výzvu k potvrzení, včetně důležitých informací s odkazy, které vám pomají Další informace, než budete pokračovat.](media/alerts-migration/migration-confirm.png "Potvrdit spuštění migrace")
 
 1. Po dokončení migrace nebo v případě, že se od vás vyžaduje akce, obdržíte e-mail na adrese, které jste zadali dříve. Na portálu můžete také pravidelně kontrolovat stav na cílové stránce migrace.
 

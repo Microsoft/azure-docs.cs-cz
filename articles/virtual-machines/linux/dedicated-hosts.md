@@ -1,17 +1,17 @@
 ---
 title: Přehled vyhrazených hostitelů Azure pro virtuální počítače
-description: Přečtěte si další informace o tom, jak se můžou používat vyhrazené hostitele Azure pro nasazení virtuálních počítačů.
+description: Přečtěte si další informace o tom, jak se vyhrazené hostitele Azure dají použít k nasazení virtuálních počítačů se systémem Linux.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: cynthn
-ms.openlocfilehash: 97e65528a7f049c213ec077c83da1b7672469d90
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: acf79448c0dcb81bbe644be822414a7e51b0ee36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388165"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328152"
 ---
 # <a name="azure-dedicated-hosts-for-virtual-machines"></a>Vyhrazení hostitelé Azure pro virtuální počítače
 

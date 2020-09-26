@@ -5,14 +5,24 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1042383e285780f5ee9297b1c87615bbdd2fe1b6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f3f84a13100fc14c6c75fbfcc3e14ada75dc5b52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925249"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326894"
 ---
-## <a name="prerequisites"></a>Předpoklady
+Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči. Tento rychlý Start popisuje témata, včetně:
+
+* Převod řeči na text
+* Překlad řeči na více cílových jazyků
+* Přímá překlady řeči na řeč
+
+## <a name="skip-to-samples-on-github"></a>Přeskočit na ukázky na GitHubu
+
+Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky pro rychlý Start v C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text) na GitHubu.
+
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
 

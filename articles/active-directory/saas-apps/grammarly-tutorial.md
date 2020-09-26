@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 29778d872541ea251a46affcccd0e2befbd9003d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327948"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s gramaticky
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte, jak gramaticky integrovat s Azure Active Directory (
 * Umožněte uživatelům, aby se automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -81,16 +81,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
 
 
-1. Gramatická aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
-
-    ![image](common/default-attributes.png)
-
-1. V důsledku gramatiky aplikace se kromě toho očekává, že se v odpovědi SAML zpátky vrátí několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+1. Gramatická aplikace očekává kontrolní výrazy SAML v určitém formátu. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
     
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | -------------- | --------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
+    | EmailAddress | User. Principal|
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -110,7 +107,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -126,7 +123,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-grammarly-sso"></a>Konfigurace gramatického jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **gramatické** straně je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal pro [gramatickou podporu týmu](mailto:support@grammarly.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete jednotné přihlašování nakonfigurovat na **gramaticky**, musíte zkopírovat **adresu URL pro přihlášení**, **identifikátor Azure AD**a stažený **certifikát (Base64)** na panel pro správu s gramatickým načtením. [Přečtěte si, jak](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
 
 ### <a name="create-grammarly-test-user"></a>Vytvořit gramaticky testovacího uživatele
 

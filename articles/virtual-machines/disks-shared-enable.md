@@ -4,16 +4,16 @@ description: Nakonfigurujte Azure Managed disk se sdílenými disky, abyste ho m
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 447380c7aed7e765695ea5389f0b3f2973a16b0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328135"
 ---
 # <a name="enable-shared-disk"></a>Povolení sdíleného disku
 
@@ -147,7 +147,7 @@ Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]
 Po nasazení sdíleného disku pomocí nástroje `maxShares>1` můžete disk připojit k jednomu nebo více virtuálním počítačům.
 
 > [!NOTE]
-> Pokud nasazujete Ultra disk, ujistěte se, že splňuje požadavky nezbytné pro. Podrobnosti najdete v části věnované [PowerShellu](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) nebo [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) v článku o disku Ultra.
+> Pokud nasazujete Ultra disk, ujistěte se, že splňuje požadavky nezbytné pro. Podrobnosti najdete v tématu [použití disků Azure Ultra](disks-enable-ultra-ssd.md) .
 
 ```azurepowershell-interactive
 

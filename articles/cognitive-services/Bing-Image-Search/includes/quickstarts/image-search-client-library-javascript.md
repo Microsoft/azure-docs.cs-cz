@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 953648f5cf83d5ffd22683ba0ce02335a637f18a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 4312864d692d8f9027accfa2dff2b94df41d8bd3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327407"
 ---
 Pomocí tohoto rychlého startu můžete udělat své první hledání obrázků pomocí klientské knihovny Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace JavaScript posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 
@@ -97,5 +97,5 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Ukázky Node.js pro sadu Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
