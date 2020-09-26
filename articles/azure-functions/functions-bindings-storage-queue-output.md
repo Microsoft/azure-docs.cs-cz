@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1d86009d593ef7e594ec2981132bcfb856569c31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317221"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Výstupní vazby Azure Queue Storage pro Azure Functions
 
@@ -365,7 +365,7 @@ Položka výstupní fronta je k dispozici prostřednictvím `context.bindings.<N
 
 # <a name="python"></a>[Python](#tab/python)
 
-K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce:
+K dispozici jsou dvě možnosti pro výstup zprávy fronty z funkce:
 
 - **Návratová hodnota**: nastavte `name` vlastnost v *function.jsna* `$return` . V této konfiguraci je návratová hodnota funkce trvalá jako zpráva úložiště fronty.
 
@@ -373,11 +373,11 @@ K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce:
 
 # <a name="java"></a>[Java](#tab/java)
 
-K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce pomocí anotace [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) :
+K dispozici jsou dvě možnosti pro výstup zprávy fronty z funkce pomocí anotace [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) :
 
-- **Návratová hodnota**: použitím poznámky k samotné funkci je vrácená hodnota funkce trvalá jako zpráva centra událostí.
+- **Návratová hodnota**: když použijete poznámku k samotné funkci, návratová hodnota funkce je trvalá jako zpráva fronty.
 
-- **Imperativní**: Chcete-li explicitně nastavit hodnotu zprávy, použijte poznámku na konkrétní parametr typu [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , kde `T` je Pojo nebo jakýkoli nativní typ Java. Při této konfiguraci předává hodnota metodě předávání hodnoty `setValue` jako zprávy centra událostí.
+- **Imperativní**: Chcete-li explicitně nastavit hodnotu zprávy, použijte poznámku na konkrétní parametr typu [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , kde `T` je Pojo nebo jakýkoli nativní typ Java. Při této konfiguraci předává hodnota metodě předávání hodnoty `setValue` jako zprávy ve frontě.
 
 ---
 

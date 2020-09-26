@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s rolemi přiřazenými ke cloudové skupině Nejčastější dotazy – Azure Active Directory | Microsoft Docs
-description: Přiřaďte roli Azure AD ke skupině přiřazení role v Azure Portal, PowerShellu nebo Graph API.
+description: Seznamte se s některými běžnými dotazy a tipy pro řešení potíží při přiřazování rolí do skupin v Azure Active Directory.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7acbb9aa443cde8df7016d3f2a38d58002b98dcd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798291"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317391"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Řešení potíží s rolemi přiřazenými ke cloudovým skupinám
 

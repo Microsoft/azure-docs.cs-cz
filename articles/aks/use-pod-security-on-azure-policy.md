@@ -5,21 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299149"
+ms.locfileid: "91368851"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Zabezpečení lusků pomocí Azure Policy
 
 Pokud chcete zlepšit zabezpečení clusteru AKS, můžete určit, jaké funkce se mají přidělovat, a pokud cokoli běží na zásadách společnosti. Tento přístup je definovaný prostřednictvím předdefinovaných zásad, které poskytuje [doplněk Azure Policy pro AKS][kubernetes-policy-reference]. Díky lepší kontrole nad aspekty zabezpečení specifikace vašeho zařízení, jako jsou například oprávnění ke kořenu, umožňuje přísnější dodržování zabezpečení a přehled o tom, co je ve vašem clusteru nasazené. Pokud parametr pod nesplňuje podmínky zadané v zásadě, Azure Policy může zakázat ovládacímu poli pod, aby mohl spustit nebo označit porušení. V tomto článku se dozvíte, jak pomocí Azure Policy omezit nasazení lusků v AKS.
 
 ## <a name="before-you-begin"></a>Než začnete
-
-> [!IMPORTANT]
-> Všeobecná dostupnost (GA) Azure Policy v AKS se aktivně uvolňuje napříč všemi oblastmi. Očekávané globální dokončení verze GA je 9/29/2020. Použití v oblastech bez verze GA vyžaduje postup registrace ve verzi Preview. Tato akce se ale automaticky aktualizuje na verzi GA, pokud je v oblasti dostupná.
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
