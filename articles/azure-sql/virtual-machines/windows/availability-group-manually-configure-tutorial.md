@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360918"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Kurz: Konfigurace skupiny dostupnosti SQL Server v Azure Virtual Machines ručně
 
@@ -41,13 +41,13 @@ V následující tabulce jsou uvedeny předpoklady, které je třeba provést p�
 
 | Požadavek |Popis |
 |----- |----- |----- |
-|![Čtvercové ](./media/availability-group-manually-configure-tutorial/square.png) **dvě instance SQL Server**    | – V sadě dostupnosti Azure <br/> – V jedné doméně <br/> – Je nainstalovaná funkce clusteringu s podporou převzetí služeb při selhání |
-|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server**    | Sdílená složka pro disk s kopií clusteru |  
-|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server účet služby**    | Účet domény |
-|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server účet služby Agent**    | Účet domény |  
-|![Čtvercové ](./media/availability-group-manually-configure-tutorial/square.png) **porty brány firewall otevřené**    | -SQL Server: **1433** pro výchozí instanci <br/> -Koncový bod zrcadlení databáze: **5022** nebo libovolný dostupný port <br/> – Sonda stavu IP adres služby Vyrovnávání zatížení skupiny dostupnosti: **59999** nebo jakýkoli dostupný port <br/> – Sonda stavu IP jádra pro vyrovnávání zatížení clusteru: **58888** nebo jakýkoli dostupný port |
-|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **Přidat funkci clusteringu s podporou převzetí služeb při selhání**    | Tato funkce vyžaduje tyto instance SQL Server. |
-|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **instalační účet domény**    | – Místní správce na každé SQL Server <br/> – Člen pevné role serveru sysadmin SQL Server pro každou instanci SQL Server  |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Dvě instance SQL Server** | – V sadě dostupnosti Azure <br/> – V jedné doméně <br/> – Je nainstalovaná funkce clusteringu s podporou převzetí služeb při selhání |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Windows Server** | Sdílená složka pro disk s kopií clusteru |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Účet služby SQL Server** | Účet domény |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Účet služby agenta SQL Server** | Účet domény |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Otevřené porty brány firewall** | -SQL Server: **1433** pro výchozí instanci <br/> -Koncový bod zrcadlení databáze: **5022** nebo libovolný dostupný port <br/> – Sonda stavu IP adres služby Vyrovnávání zatížení skupiny dostupnosti: **59999** nebo jakýkoli dostupný port <br/> – Sonda stavu IP jádra pro vyrovnávání zatížení clusteru: **58888** nebo jakýkoli dostupný port |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Přidat funkci clusteringu s podporou převzetí služeb při selhání** | Tato funkce vyžaduje tyto instance SQL Server. |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Instalační účet domény** | – Místní správce na každé SQL Server <br/> – Člen pevné role serveru sysadmin SQL Server pro každou instanci SQL Server  |
 
 
 Než začnete tento kurz, musíte [Dokončit požadavky na vytváření skupin dostupnosti Always On v Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md). Pokud jsou tyto požadavky již dokončeny, můžete přejít na příkaz [vytvořit cluster](#CreateCluster).
@@ -76,7 +76,7 @@ Po dokončení požadovaných součástí je prvním krokem vytvoření clusteru
 
 4. V Průvodci vytvořením clusteru vytvořte cluster s jedním uzlem procházením stránek s nastavením v následující tabulce:
 
-   | stránka | Nastavení |
+   | Stránka | Nastavení |
    | --- | --- |
    | Než začnete |Použít výchozí |
    | Vybrat servery |Zadejte první SQL Server název do pole **Zadejte název serveru** a vyberte **Přidat**. |
@@ -234,7 +234,7 @@ Repeat these steps on the second SQL Server.
 7. V **Průzkumník objektů**klikněte pravým tlačítkem na **databáze** a vyberte **Nová databáze**.
 8. Do **název databáze**zadejte **MyDB1**a pak vyberte **OK**.
 
-### <a name="create-a-backup-share"></a><a name="backupshare"></a>Vytvoření sdílené složky zálohy
+### <a name="create-a-backup-share"></a><a name="backupshare"></a> Vytvoření sdílené složky zálohy
 
 1. V prvním SQL Server v **Správce serveru**vyberte **nástroje**. Otevřete **správu počítače**.
 
@@ -376,7 +376,7 @@ Nástroj pro vyrovnávání zatížení v Azure může být buď Standard Load B
    | **Typ** |Interní |
    | **Virtuální síť** |Použijte název virtuální sítě Azure. |
    | **Podsíť** |Použijte název podsítě, ve které se nachází virtuální počítač.  |
-   | **Přiřazení IP adresy** |Statická |
+   | **Přiřazení IP adresy** |Static |
    | **IP adresa** |Použijte dostupnou adresu z podsítě. Tuto adresu použijte pro naslouchací proces skupiny dostupnosti. Všimněte si, že se liší od IP adresy vašeho clusteru.  |
    | **Předplatné** |Použijte stejné předplatné jako virtuální počítač. |
    | **Umístění** |Použijte stejné umístění jako virtuální počítač. |
@@ -490,7 +490,7 @@ IP adresa služby WSFC také musí být v nástroji pro vyrovnávání zatížen
 
 1. Vyberte **OK** a nastavte pravidla vyrovnávání zatížení.
 
-## <a name="configure-the-listener"></a><a name="configure-listener"></a>Konfigurace naslouchacího procesu
+## <a name="configure-the-listener"></a><a name="configure-listener"></a> Konfigurace naslouchacího procesu
 
 Dalším krokem je konfigurace naslouchacího procesu skupiny dostupnosti v clusteru s podporou převzetí služeb při selhání.
 

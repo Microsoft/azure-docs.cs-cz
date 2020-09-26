@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313158"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Kurz: integrace jedné doménové struktury služby AD pomocí synchronizace hodnot hash hesel (KOSMETICE)
 
@@ -27,7 +27,7 @@ ms.locfileid: "89279019"
 
 Následující kurz vás provede vytvořením hybridního prostředí identity pomocí synchronizace hodnot hash hesel.  Toto prostředí se pak dá použít k testování nebo pro získání více znalostí, jak hybridní identita funguje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Externí síťový adaptér](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
@@ -183,8 +183,8 @@ Nyní musíme vytvořit tenanta Azure AD, abychom mohli synchronizovat naše už
 1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu, který má předplatné Azure.
 2. Vyberte **ikonu plus (+)** a vyhledejte **Azure Active Directory**.
 3. Vyberte ve výsledcích hledání **Azure Active Directory**.
-4. Vyberte **Create** (Vytvořit).</br>
-![Vytvoření](media/tutorial-password-hash-sync/create1.png)</br>
+4. Vyberte **Vytvořit**.</br>
+![Snímek obrazovky, který ukazuje, jak vytvořit tenanta Azure AD.](media/tutorial-password-hash-sync/create1.png)</br>
 5. Zadejte **název organizace** společně s **počátečním názvem domény**. Potom vyberte **Vytvořit**. Vytvoří se váš adresář.
 6. Po dokončení této možnosti klikněte na odkaz **tady** a adresář spravujte.
 
@@ -192,10 +192,10 @@ Nyní musíme vytvořit tenanta Azure AD, abychom mohli synchronizovat naše už
 Teď, když máme tenanta Azure AD, vytvoříme účet globálního správce.  Tento účet se používá k vytvoření účtu konektoru Azure AD během Azure AD Connect instalace.  Účet konektoru Azure AD se používá k zápisu informací do služby Azure AD.   Účet globálního správce vytvoříte takto.
 
 1.  V části **Spravovat** vyberte **Uživatelé**.</br>
-![Vytvoření](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Snímek obrazovky, který zobrazuje možnost uživatele vybranou v části Správa, kde vytvoříte globálního správce v Azure AD.](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Vyberte **Všichni uživatelé** a pak vyberte **+ Nový uživatel**.
 3.  Zadejte jméno a uživatelské jméno uživatele. To bude globální správce pro tenanta. Také budete chtít změnit **roli adresáře** na **globální správce.** A můžete i zobrazit dočasné heslo. Po dokončení vyberte **Vytvořit**.</br>
-![Vytvoření](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Snímek obrazovky, který zobrazuje tlačítko pro vytvoření, když vytváříte globálního správce v Azure AD.](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Až to dokončíte, otevřete nový webový prohlížeč a přihlaste se k myapps.microsoft.com pomocí nového účtu globálního správce a dočasného hesla.
 5. Změňte heslo pro globálního správce na něco, co si pamatujete.
 
@@ -206,7 +206,7 @@ Teď je čas stáhnout a nainstalovat Azure AD Connect.  Po instalaci se spustí
 2. Přejděte k souboru **AzureADConnect.msi** a dvakrát na něj klikněte.
 3. Na uvítací obrazovce zaškrtněte políčko, kterým odsouhlasíte licenční podmínky, a klikněte na **Pokračovat**.  
 4. Na obrazovce expresního nastavení klikněte na **Použít expresní nastavení**.</br>  
-![Vytvoření](media/tutorial-password-hash-sync/express1.png)</br>
+![Snímek obrazovky, který zobrazuje obrazovku expresních nastavení a tlačítko použít expresní nastavení.](media/tutorial-password-hash-sync/express1.png)</br>
 5. Na obrazovce připojit k Azure AD zadejte uživatelské jméno a heslo pro globálního správce služby Azure AD. Klikněte na **Next** (Další).  
 6. Na obrazovce Připojení ke službě AD DS zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Klikněte na **Next** (Další).  
 7. Na obrazovce Připraveno ke konfiguraci klikněte na **Nainstalovat**.
@@ -226,9 +226,9 @@ Nyní bude ověřeno, že uživatelé, kteří byli v místním adresáři, byli
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
 
-1. Přejít na [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: ( user@domain.onmicrosoft.com ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.</br>
-   ![Ověříte](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Ověření](media/tutorial-password-hash-sync/verify1.png)</br>
 
 Nyní jste úspěšně nastavili hybridní prostředí identity, které můžete použít k otestování a seznámení s tím, co Azure nabízí.
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: ad7c7fb5111ce700a5725336b7c9db788e178c4c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313769"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuální síťové zařízení ve službě Azure Virtual WAN hub (Preview)
 
@@ -24,7 +24,7 @@ Barracuda Networks je první partner, který poskytuje síťové virtuální za�
 > [!NOTE]
 > Do virtuálního centra WAN se můžou nasadit jenom síťové virtuální zařízení nabídky, které se dají nasadit do virtuálního centra WAN. Nejde je nasadit do libovolné virtuální sítě v Azure.
 
-## <a name="how-does-it-work"></a><a name="how"></a>Jak funguje?
+## <a name="how-does-it-work"></a><a name="how"></a>Jak to funguje?
 
 Síťová virtuální zařízení, které jsou k dispozici pro nasazení přímo do služby Azure Virtual WAN, jsou navržené speciálně pro použití ve virtuálním centru. Nabídka síťové virtuální zařízení je publikována v Azure Marketplace jako spravovaná aplikace a zákazníci mohou tuto nabídku nasadit přímo z Azure Marketplace nebo mohou nasadit tuto nabídku z virtuálního rozbočovače prostřednictvím Azure Portal.
 
@@ -93,7 +93,7 @@ V tuto chvíli bohužel nemusíme mít na zadarmo žádné nové nabídky partne
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Můžu nasazovat jakékoli síťové virtuální zařízení z Azure Marketplace do virtuálního centra sítě WAN?
 
-Ne. V tuto chvíli je k nasazení do virtuálního centra WAN dostupná jenom [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) .
+No. V tuto chvíli je k nasazení do virtuálního centra WAN dostupná jenom [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) .
 
 ### <a name="what-is-the-cost-of-the-nva"></a>Jaké jsou náklady na síťové virtuální zařízení?
 
@@ -101,15 +101,15 @@ Musíte si koupit licenci pro Barracuda CloudGen WAN síťové virtuální zař�
 
 ### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>Můžu nasazovat síťové virtuální zařízení do základního rozbočovače?
 
-Ne. Pokud chcete nasadit síťové virtuální zařízení, musíte použít standardní centrum.
+No. Pokud chcete nasadit síťové virtuální zařízení, musíte použít standardní centrum.
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>Můžu síťové virtuální zařízení nasadit do zabezpečeného centra?
 
-Yes. Barracuda CloudGen WAN se dá nasadit do centra s Azure Firewall.
+Ano. Barracuda CloudGen WAN se dá nasadit do centra s Azure Firewall.
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Můžu na svém firemním pobočce připojit libovolné zařízení CPE, aby se Barracuda CloudGen WAN síťové virtuální zařízení v centru?
 
-Ne. Barracuda CloudGen WAN je kompatibilní jenom se zařízeními Barracuda CPE. Další informace o požadavcích na CloudGen WAN najdete na [stránce CLOUDGEN WAN pro Barracuda](https://www.barracuda.com/products/cloudgenwan).
+No. Barracuda CloudGen WAN je kompatibilní jenom se zařízeními Barracuda CPE. Další informace o požadavcích na CloudGen WAN najdete na [stránce CLOUDGEN WAN pro Barracuda](https://www.barracuda.com/products/cloudgenwan).
 
 ### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>Jaké scénáře směrování podporuje síťové virtuální zařízení v centru?
 

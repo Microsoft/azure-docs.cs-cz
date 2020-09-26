@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c3e4b1c97c5fcc86a863313c2d6f54d93f26390e
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360867"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Znovunastavení ochrany virtuálních počítačů Azure, u kterých proběhlo převzetí služeb při selhání, v primární oblasti
 
@@ -22,7 +22,7 @@ Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálníc
 1. Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, aby se začaly replikovat do primární oblasti.
 1. Po dokončení ochrany a replikaci virtuálních počítačů můžete převzít služby při selhání ze sekundární do primární oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Převzetí služeb virtuálního počítače při selhání z primární do sekundární oblasti musí být potvrzené.
 - Primární cílový webový server by měl být dostupný a měl by být přístupný nebo vytvářet prostředky v této oblasti.
@@ -31,7 +31,7 @@ Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálníc
 
 1. V **trezoru**  >  **replikované položky**klikněte pravým tlačítkem na virtuální počítač převzetí služeb při selhání a vyberte **znovu zapnout ochranu**. Směr další ochrany by se měl zobrazit ze sekundárního na primární.
 
-   ![Znovunastavení ochrany](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Snímek obrazovky zobrazuje virtuální počítač s místní nabídkou, která má vybranou možnost znovu nastavit ochranu.](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 1. Zkontrolujte skupinu prostředků, síť, úložiště a skupiny dostupnosti. Pak klikněte na **OK**. Pokud jsou nějaké prostředky označené jako nové, vytvoří se jako součást procesu nové ochrany.
 1. V rámci úlohy ochrany se v cílové lokalitě dokončí nejnovější data. Po dokončení úlohy bude provedena rozdílová replikace. Pak můžete převzít služby při selhání zpět do primární lokality. Pomocí možnosti přizpůsobit můžete vybrat účet úložiště nebo síť, kterou chcete použít při opětovném zapnutí ochrany.

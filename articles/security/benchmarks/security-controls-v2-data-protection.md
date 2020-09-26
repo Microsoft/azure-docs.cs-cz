@@ -4,17 +4,17 @@ description: Ochrana dat benchmark v2 pro Azure Security
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e377c6669b1db96f549958173aded4f29bae6713
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314313"
 ---
-# <a name="security-control-data-protection"></a>Řízení zabezpečení: Ochrana dat
+# <a name="security-control-v2-data-protection"></a>Řízení zabezpečení v2: Ochrana dat
 
 Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a prostřednictvím autorizovaných mechanismů přístupu. To zahrnuje zjišťování, klasifikaci, ochranu a monitorování citlivých datových prostředků pomocí řízení přístupu, šifrování a protokolování v Azure.
 
@@ -22,7 +22,7 @@ Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a 
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| DP-1 | 14,5, 14,7 | SI-4, SC-28 |
+| DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
 Zjišťování, klasifikace a označování citlivých dat, abyste mohli navrhovat příslušné ovládací prvky pro zajištění, že se citlivé informace ukládají, zpracovávají a bezpečně odesílají technologické systémy organizace. 
 
@@ -36,7 +36,7 @@ Pomocí Azure SQL Information Protection můžete pomoct při klasifikaci a ozna
 
 **Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -62,7 +62,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -90,9 +90,9 @@ Pokud je to vyžadováno pro zajištění kompatibility ochrany před únikem in
 
 **Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Středisko zabezpečení cloudu (SOC)](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security) 
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -118,7 +118,7 @@ Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi dat
 
 **Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -148,7 +148,7 @@ Azure ve výchozím nastavení poskytuje šifrování pro neaktivní data. U vys
 
 **Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 4f594f663267de7ed746082e77ae603e5592e721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84047563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362610"
 ---
 # <a name="elastic-database-tools-glossary"></a>Glosář nástrojů pro Elastic Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ Tady je reprezentace **horizontálně dělené** jedné a víceklientské datab�
 
 **Správce map horizontálních oddílů**: objekt správy a úložiště dat, které obsahuje mapy horizontálních oddílů, umístění horizontálních oddílů a mapování pro jednu nebo více horizontálních oddílů sad.
 
-![Mapování][2]
+![Diagram znázorňuje správce mapy horizontálních oddílů spojený s shardmaps_global, shards_global a shard_mappings_global.][2]
 
 ## <a name="verbs"></a>Příkazy
 **Horizontální škálování**: Změna velikosti (nebo v) kolekce horizontálních oddílů přidáním nebo odebráním horizontálních oddílů na mapu horizontálních oddílů, jak je znázorněno níže.

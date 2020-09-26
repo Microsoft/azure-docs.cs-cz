@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292961"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -268,7 +268,7 @@ V následující tabulce je uvedena kompatibilita mezi operačním systémem ser
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Pro Linux OS
 
@@ -302,17 +302,17 @@ Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečn
 Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že máte přístup k těmto akcím:
 
 - `download.microsoft.com`
-- Adresy URL služby obnovení (GEO-Name) odkazují na oblast, ve které se nachází trezor Recovery Services.)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Pro veřejné oblasti Azure)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Pro Azure Čína 21Vianet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Pro státní správu USA Azure)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Pro Azure Německo)
+- Adresy URL služby obnovení (GEO-NAME) odkazují na oblast, ve které se nachází trezor Recovery Services.)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Pro veřejné oblasti Azure)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Pro Azure Čína 21Vianet)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Pro státní správu USA Azure)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Pro Azure Německo)
 - Odchozí porty 53 (DNS), 443, 3260
 
 > [!NOTE]
 >
-> - Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Příklad: název staženého skriptu začíná řetězcem \' VMname \' \_ \' name \' _ \' GUID, například \' *ContosoVM_wcus_12345678*
-> - Adresa URL bude <https://pod01-rec2.wcus.backup.windowsazure.com> "
+> Soubor skriptu, který jste stáhli v kroku 5 [výše](#mount-the-volume-and-copy-files) , bude mít v názvu souboru **geografickou příponu** . Tuto adresu URL můžete vyplnit pomocí tohoto **geografického názvu** . Název staženého skriptu bude začínat řetězcem: \' VMname name \' \_ \' \' _ \' GUID \' .<br><br>
+> Pokud je například název souboru skriptu *ContosoVM_wcus_12345678*, **geografická přípona** je *wcus* a adresa URL bude:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 Pro Linux skript vyžaduje pro připojení k bodu obnovení komponenty "Open-iSCSI" a "lshw". Pokud komponenty v počítači, na kterém je spuštěn skript, neexistují, skript si vyžádá oprávnění k instalaci součástí. Poskytněte souhlas pro instalaci nezbytných součástí.

@@ -5,20 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bde4c11e9dc34be13efb25864fe75054d22bddb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363099"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace Azure Firewallu s využitím služby Azure Standard Load Balancer
 
 Azure Firewall můžete integrovat do virtuální sítě s využitím Azure Standard Load Balancer (veřejné nebo interní). 
 
-Upřednostňovaným návrhem je integrace interního nástroje pro vyrovnávání zatížení s bránou firewall Azure, protože to je mnohem jednodušší návrh. Veřejný Nástroj pro vyrovnávání zatížení můžete použít, pokud už máte nasazený a chcete ho ponechat na svém místě. Je však třeba mít na paměti, že se jedná o problém s asymetrickým směrováním, který může přerušit funkčnost ve scénáři veřejného nástroje pro vyrovnávání zatížení.
+Při návrhu se dává přednost integraci interního nástroje pro vyrovnávání zatížení se službou Azure Firewall, protože tento návrh je mnohem jednodušší. Pokud už máte nasazený veřejný nástroj pro vyrovnávání zatížení, který chcete zachovat, můžete použít i ten. Musíte však vědět o problému s asymetrickým směrováním, který může narušit fungování ve scénáři s veřejným nástrojem pro vyrovnávání zatížení.
 
 Další informace o Azure Load Balancer najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
 
@@ -64,6 +64,10 @@ S interním nástrojem pro vyrovnávání zatížení je nasazený nástroj pro 
 V tomto scénáři neexistuje žádný problém s asymetrickým směrováním. Příchozí pakety přicházejí do veřejné IP adresy brány firewall, přeloží se na privátní IP adresu nástroje pro vyrovnávání zatížení a potom se vrátí k privátní IP adrese brány firewall pomocí stejné návratové cesty.
 
 Proto můžete tento scénář nasadit podobně jako veřejný scénář nástroje pro vyrovnávání zatížení, ale bez nutnosti trasy hostitele veřejné IP adresy brány firewall.
+
+>[!NOTE]
+>Virtuální počítače ve fondu back-end nebudou mít odchozí připojení k Internetu s touto konfigurací. </br> Další informace o poskytování odchozího připojení najdete v těchto tématech: </br> **[Odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md)**</br> Možnosti pro poskytování připojení: </br> **[Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí](../load-balancer/egress-only.md)** </br> [**Co je Virtual Network NAT?**](../virtual-network/nat-overview.md)
+
 
 ## <a name="additional-security"></a>Dodatečné zabezpečení
 
