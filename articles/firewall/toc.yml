@@ -88,6 +88,8 @@
       href: firewall-diagnostics.md
     - name: Protokoly služby Azure Monitor
       href: log-analytics-samples.md
+    - name: Sešit služby Azure Firewall
+      href: firewall-workbook.md
 - name: Referenční informace
   items:
     - name: Azure CLI

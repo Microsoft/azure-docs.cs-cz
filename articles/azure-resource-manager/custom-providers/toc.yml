@@ -9,6 +9,8 @@
   items:
     - name: Vytvoření vlastního poskytovatele prostředků
       href: create-custom-provider.md
+    - name: Vytvoření vlastního poskytovatele prostředků – Azure PowerShell
+      href: create-custom-provider-quickstart-powershell.md
 - name: Kurzy
   items:
     - name: Začínáme s vlastními poskytovateli
@@ -45,6 +47,8 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Azure PowerShell
+      href: /powershell/module/Az.CustomProviders/
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

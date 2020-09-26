@@ -70,10 +70,14 @@
           href: cache-how-to-premium-clustering.md
         - name: Zachování mezipaměti pomocí trvalosti dat Redis
           href: cache-how-to-premium-persistence.md
+        - name: Přidání dalších replik
+          href: cache-how-to-multi-replicas.md
         - name: Zabezpečení mezipaměti pomocí virtuální sítě
           href: cache-how-to-premium-vnet.md
         - name: Privátní připojení k mezipaměti
           href: cache-private-link.md
+        - name: Povolení zónové redundance
+          href: cache-how-to-zone-redundancy.md
         - name: Nastavení geografické replikace
           href: cache-how-to-geo-replication.md
         - name: Uložení s využitím rezervované kapacity

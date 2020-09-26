@@ -312,6 +312,8 @@
               href: storage-blob-properties-metadata.md
             - name: Kopírování objektu blob (SDK)
               href: storage-blob-copy.md
+            - name: Využití indexu objektů blob
+              href: storage-blob-index-how-to.md
         - name: Autorizace přístupu k datům objektu blob
           items:
             - name: Možnosti autorizace pro uživatele
@@ -460,8 +462,6 @@
           href: storage-custom-domain-name.md
         - name: Směrování událostí na vlastní koncový bod
           href: storage-blob-event-quickstart.md
-        - name: Využití indexu objektů blob
-          href: storage-blob-index-how-to.md
         - name: Přenos dat
           items:
             - name: AzCopy

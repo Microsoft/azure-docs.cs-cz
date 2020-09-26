@@ -81,12 +81,16 @@
       items:
         - name: Nastavení šablony zařízení
           href: howto-set-up-template.md
+        - name: Jak používat vlastnosti
+          href: howto-use-properties.md
         - name: Příprava a připojení sady Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: Příprava a připojení zařízení RuuviTag
           href: howto-connect-ruuvi.md
         - name: Příprava a připojení Rigado Cascade 500
           href: howto-connect-rigado-cascade-500.md
+        - name: Připojení zařízení s využitím X.509
+          href: how-to-connect-devices-x509.md
         - name: Připojení dalších cloudů IoT
           href: howto-build-iotc-device-bridge.md
     - name: Stálé připojení

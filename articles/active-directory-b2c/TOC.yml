@@ -474,7 +474,7 @@
       href: error-codes.md
     - name: Aplikace rozšíření
       href: extensions-app.md
-    - name: Poznámky k verzi IEF
+    - name: Poznámky k verzi pro vlastní zásady (IEF)
       href: custom-policy-developer-notes.md
     - name: Operace Microsoft Graph API
       href: microsoft-graph-operations.md

@@ -362,6 +362,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Stavy a životní cyklus
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Volání PUT pro operace vytváření nebo aktualizace
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: Monitorování
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Diagnostika spouštění
@@ -534,7 +537,7 @@
                 - name: Vytvoření virtuálního počítače z verze image
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Řešení potíží se sdílenými imagemi
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: Použití klíčů spravovaných zákazníkem
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -556,8 +559,8 @@
                   href: image-builder-permissions-powershell.md
             - name: Úloha DevOps
               href: image-builder-devops-task.md
-            - name: Referenční informace k šablonám ARM
-              displayName: 'ARM,Resource Manager'
+            - name: Referenční informace k šabloně Image Builderu
+              displayName: json
               href: image-builder-json.md
             - name: Sestavení pro galerie imagí
               href: image-builder-gallery.md
@@ -617,6 +620,8 @@
               href: how-to-verify-encryption-status.md
             - name: Jak nakonfigurovat LVM RAID pro šifrování
               href: how-to-configure-lvm-raid-on-crypt.md
+            - name: Jak změnit velikost zašifrovaných svazků lvm
+              href: how-to-resize-encrypted-lvm.md
             - name: Řešení potíží s šifrováním disků
               href: disk-encryption-troubleshooting.md
             - name: Šifrování disků – nejčastější dotazy
@@ -849,7 +854,7 @@
         - name: Automatické škálování
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: Vysoká dostupnost
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: Změna skupiny dostupnosti
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Vytvoření skupiny umístění bezkontaktní komunikace

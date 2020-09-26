@@ -18,8 +18,10 @@
       href: add-application-portal-configure.md
     - name: Přiřazení uživatelů k aplikaci
       href: add-application-portal-assign-users.md
-    - name: Nastavení jednotného přihlašování
+    - name: Nastavení jednotného přihlašování pomocí SAML
       href: add-application-portal-setup-sso.md
+    - name: Nastavení jednotného přihlašování pomocí OIDC
+      href: add-application-portal-setup-oidc-sso.md
     - name: Odstranění aplikace
       href: delete-application-portal.md
 - name: Kurzy

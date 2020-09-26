@@ -11,16 +11,16 @@
         - name: Úvod
           href: get-started.md
           displayName: 'get, started'
-        - name: 1. Vytvoření pracovního prostoru Synapse
+        - name: 1. Vytvoření pracovního prostoru
           href: get-started-create-workspace.md
           displayName: 'get, started'
-        - name: 2. Analýza s využitím fondu SQL
+        - name: 2. Použití fondů SQL
           href: get-started-analyze-sql-pool.md
           displayName: 'get, started'
-        - name: 3. Analýza s využitím Sparku
+        - name: 3. Použití Sparku
           href: get-started-analyze-spark.md
           displayName: 'get, started'
-        - name: 4. Analýza s využitím SQL na vyžádání
+        - name: 4. Použití SQL na vyžádání
           href: get-started-analyze-sql-on-demand.md
           displayName: 'get, started'
         - name: 5. Analýza dat v účtu úložiště
@@ -84,6 +84,8 @@
   items:
     - name: Spouštění aplikací Apache Sparku
       href: ./spark/intellij-tool-synapse.md
+    - name: Spouštění aplikací PySparku pro fondy úloh Sparku
+      href: ./spark/vscode-tool-synapse.md
     - name: Definice úloh Sparku
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
@@ -210,6 +212,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Jazyk výrazů
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Rozdíly oproti Azure Data Factory
+              href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: Přehled

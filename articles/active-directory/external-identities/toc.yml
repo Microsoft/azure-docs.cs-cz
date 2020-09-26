@@ -2,11 +2,14 @@
   href: index.yml
   items:
     - name: Přehled
+      expanded: true
       items:
         - name: Porovnání řešení pro externí identity
           href: compare-with-b2c.md
         - name: Co je přístup uživatele typu host B2B?
           href: what-is-b2b.md
+        - name: Co je Azure AD B2C?
+          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
     - name: Rychlé starty
       items:
         - name: Přidání uživatelů typu host na portálu
@@ -15,15 +18,15 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Kurzy
       items:
-        - name: Hromadné pozvání prostřednictvím PowerShellu
+        - name: Hromadné pozvání uživatelů typu host pomocí PowerShellu
           href: bulk-invite-powershell.md
-        - name: Hromadné pozvání prostřednictvím portálu
+        - name: Hromadné pozvání uživatelů typu host pomocí portálu
           href: tutorial-bulk-invite.md
-        - name: Vynucení vícefaktorového ověřování
+        - name: Vynucení vícefaktorového ověřování pro uživatele typu host
           href: b2b-tutorial-require-mfa.md
-    - name: ukázky
+    - name: Ukázky
       items:
-        - name: Ukázky pro samoobslužnou registraci
+        - name: Ukázky pro samoobslužnou registraci uživatelů typu host
           href: code-samples-self-service-sign-up.md
         - name: Ukázky kódu a Azure PowerShellu
           href: code-samples.md
@@ -63,9 +66,9 @@
     - name: Návody
       expanded: true
       items:
-        - name: Konfigurace externího sdílení
+        - name: Konfigurace nastavení externí spolupráce
           href: delegate-invitations.md
-        - name: Pozvání uživatelů B2B
+        - name: Pozvání uživatelů typu host
           items:
             - name: Správci přidávají uživatele B2B
               href: add-users-administrator.md
@@ -91,7 +94,7 @@
               href: direct-federation-adfs.md
         - name: Ověřování jednorázovým heslem
           href: one-time-passcode.md
-        - name: Samoobslužná registrace (Preview)
+        - name: Samoobslužná registrace pro uživatele typu host (Preview)
           items:
             - name: Přidání toku uživatelů se samoobslužnou registrací
               href: self-service-sign-up-user-flow.md
@@ -103,7 +106,7 @@
               href: self-service-sign-up-add-api-connector.md
             - name: Přidání vlastního systému schvalování
               href: self-service-sign-up-add-approvals.md
-        - name: Správa účtů hostů
+        - name: Správa uživatelských účtů hostů
           items:
             - name: Přidání uživatele B2B do role
               href: add-guest-to-role.md
@@ -113,7 +116,7 @@
               href: user-properties.md
             - name: B2B pro integrované aplikace Azure AD
               href: configure-saas-apps.md
-        - name: Správa přístupu v hybridní organizaci
+        - name: Správa přístupu hosta v hybridní organizaci
           items:
             - name: Udělení přístupu místním uživatelům ke cloudovým aplikacím
               href: hybrid-on-premises-to-cloud.md

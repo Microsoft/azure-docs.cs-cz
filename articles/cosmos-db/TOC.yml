@@ -21,6 +21,8 @@
           href: create-sql-api-dotnet.md
         - name: Aplikace v Javě
           href: create-sql-api-java.md
+        - name: Aplikace Spring Data
+          href: create-sql-api-spring-data.md
         - name: Aplikace v Node.js
           href: create-sql-api-nodejs.md
         - name: Aplikace v Pythonu
@@ -73,6 +75,8 @@
       href: sql-api-dotnet-v3sdk-samples.md
     - name: Ukázky Java SDK v4
       href: sql-api-java-sdk-samples.md
+    - name: Ukázky Spring Data v3
+      href: sql-api-spring-data-sdk-samples.md
     - name: Ukázky Node.js
       href: sql-api-nodejs-samples.md
     - name: Ukázky Pythonu
@@ -1074,7 +1078,7 @@
               href: troubleshoot-not-found.md
             - name: Řešení potíží s neautorizací
               href: troubleshoot-unauthorized.md
-            - name: Dostupnost sad SDK v prostředích s více oblastmi
+            - name: Potíže s dostupností v prostředích s více oblastmi
               href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
@@ -1118,6 +1122,8 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Dotazování pomocí Azure Synapse Sparku
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Dotazování s využití bezserverové architektury Synapse SQL
+          href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Použití Power BI s využitím Synapse Linku
           href: synapse-link-power-bi.md
     - name: Integrované analýzy s využitím Apache Sparku
