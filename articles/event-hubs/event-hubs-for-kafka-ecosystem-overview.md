@@ -2,13 +2,13 @@
 title: Použití centra událostí z aplikace Apache Kafka – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o podpoře Apache Kafka službou Azure Event Hubs.
 ms.topic: article
-ms.date: 07/20/2020
-ms.openlocfilehash: 29850e89d1cccf7708e5cca8eaf58afee8157890
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.date: 09/25/2020
+ms.openlocfilehash: 2c552c9f901fdb886a7ddc3e71505e8e46717c03
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371486"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití Azure Event Hubs z Apache Kafkach aplikací
 Event Hubs poskytuje koncový bod kompatibilní s rozhraními API Apache Kafka® výrobce a spotřebitele, která můžou používat většina stávajících klientských aplikací Apache Kafka jako alternativu ke spuštění vlastního Apache Kafka clusteru. Event Hubs podporuje klienty rozhraní API Apache Kafka výrobce a příjemce ve verzi 1,0 a vyšší.
@@ -83,7 +83,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 > [!NOTE]
 > Při použití ověřování pomocí SAS u klientů Kafka nejsou vytvořená připojení po opětovném vygenerování klíče SAS odpojena. 
 
-#### <a name="samples"></a>ukázky 
+#### <a name="samples"></a>Ukázky 
 **Kurz** s podrobnými pokyny k vytvoření centra událostí a přístup k němu pomocí SAS nebo OAuth najdete v tématu [rychlý Start: streamování dat pomocí Event Hubs pomocí protokolu Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
 Další **ukázky** , které ukazují, jak používat OAuth s Event Hubs pro Kafka, najdete v tématu [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
@@ -128,7 +128,7 @@ Kafka datové proudy a bez ksqlDB mají méně možností než mnoho alternativn
 
 - [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md)
 - [Azure synapse Analytics (prostřednictvím zachycení Event Hubs)](../event-grid/event-grid-event-hubs-integration.md)
-- [Azure Databricks](/azure/databricks/scenarios/databricks-stream-from-eventhubs.md)
+- [Azure Databricks](/databricks/scenarios/databricks-stream-from-eventhubs)
 - [Apache Samza](https://samza.apache.org/learn/documentation/latest/connectors/eventhubs)
 - [Apache Storm](event-hubs-storm-getstarted-receive.md)
 - [Apache Spark](event-hubs-kafka-spark-tutorial.md)

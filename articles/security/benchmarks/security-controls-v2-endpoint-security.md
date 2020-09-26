@@ -4,17 +4,17 @@ description: Zabezpečení koncového bodu Azure Security test v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c04e4233ded34ceaeec9cd9afb240d3d1ac864e0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 3eab0080f80b26fc7074d8a64885148c0568d8b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280614"
 ---
-# <a name="security-control-endpoint-security"></a>Řízení zabezpečení: zabezpečení koncového bodu
+# <a name="security-control-v2-endpoint-security"></a>Řízení zabezpečení v2: zabezpečení koncového bodu
 
 Služba Endpoint Security pokrývá ovládací prvky pro detekci a odezvu koncového bodu. To zahrnuje použití zjišťování koncových bodů a odezvy (EDR) a antimalwarové služby pro koncové body v prostředích Azure.
 
@@ -36,7 +36,7 @@ Rozšířená ochrana před internetovými útoky v programu Microsoft Defender 
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -64,7 +64,7 @@ Microsoft Antimalware pro Azure Cloud Services je výchozí Antimalwarový progr
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -88,7 +88,7 @@ Použijte doporučení v Azure Security Center: "COMPUTE &amp; Apps", abyste zaj
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security)
 

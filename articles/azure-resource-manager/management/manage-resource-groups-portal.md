@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827227"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371248"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure Portal
 
@@ -32,7 +32,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Výběr **skupin prostředků**
 
     ![Přidat skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -52,7 +52,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Pokud chcete zobrazit seznam skupin prostředků, vyberte **skupiny prostředků** .
 
     ![Procházet skupiny prostředků](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -61,7 +61,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="open-resource-groups"></a>Otevření skupin prostředků
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **skupiny prostředků**.
 3. Vyberte skupinu prostředků, kterou chcete otevřít.
 
@@ -105,7 +105,7 @@ Informace o exportu šablon najdete v tématu [Export jednoho a více prostředk
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 
-[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 

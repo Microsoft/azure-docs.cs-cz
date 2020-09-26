@@ -3,12 +3,12 @@ title: Nasazení prostředků do tenanta
 description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: af75e4f0e51ac685986e57b3b92a23dd37174460
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284755"
+ms.locfileid: "91372387"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Vytváření prostředků na úrovni tenanta
 
@@ -24,7 +24,7 @@ Pro zásady Azure použijte:
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
-Pro řízení přístupu na základě role použijte:
+Pro řízení přístupu na základě role Azure (Azure RBAC) použijte:
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 

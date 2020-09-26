@@ -3,12 +3,12 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014638"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371503"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -105,6 +105,13 @@ Tyto běžné scénáře mohou ovlivnit celkovou dobu zálohování:
 - **Fragmentované disky:** Operace zálohování jsou rychlejší, když jsou změny disků souvislé. Pokud jsou změny rozloženy a rozděleny na disk, bude zálohování pomalejší.
 - Změny **disku:** Pokud chráněné disky s přírůstkovým zálohováním docházejí z provozu s více než 200 GB, zálohování může trvat dlouhou dobu (více než osm hodin), než se dokončí.
 - **Verze zálohy:** Nejnovější verze služby Backup (známá jako verze okamžitého obnovení) využívá více optimalizovaného procesu než porovnání kontrolního součtu k identifikaci změn. Pokud ale používáte rychlé obnovení a odstranili jste snímek zálohy, zálohování se přepne na porovnání kontrolního součtu. V tomto případě bude operace zálohování delší než 24 hodin (nebo selhání).
+
+### <a name="restore-performance"></a>Obnovit výkon
+
+Tyto běžné scénáře mohou ovlivnit celkovou dobu obnovení:
+
+- Celková doba obnovení závisí na vstupně-výstupních operacích za sekundu (IOPS) a propustnosti účtu úložiště.
+- Celková doba obnovení může být ovlivněna v případě, že je cílový účet úložiště načten s jinými operacemi čtení a zápisu aplikace. Pokud chcete zlepšit operaci obnovení, vyberte účet úložiště, který není načtený s ostatními aplikačními daty.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

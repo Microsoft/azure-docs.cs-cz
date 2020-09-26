@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 0e437cfb984acb71b27bc60a06929b6755e8a3ea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90b3135174d06b6e896d50e0db13fa7747e882c0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295443"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
 
@@ -31,11 +31,11 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření účtu úložiště
+> * vytvořit účet úložiště
 > * Nastavit připojovací řetězec
 > * Spustit konzolovou aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -58,9 +58,9 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Účet úložiště poskytuje jedinečný obor názvů pro ukládání a přístup k datovým objektům Azure Storage.
 
@@ -74,7 +74,7 @@ Pomocí těchto kroků vytvořte účet úložiště s přístupem Geo-Zone-redu
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Předplatné** | *Moje předplatné* | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
    | **ResourceGroup** | *myResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   | **Name** | *mystorageaccount* | Jedinečný název vašeho účtu úložiště. |
+   | **Název** | *mystorageaccount* | Jedinečný název vašeho účtu úložiště. |
    | **Umístění** | *East US* | Zvolte umístění. |
    | **Výkon** | *Standard* | Standardní výkon je dobrou možností pro ukázkový scénář. |
    | **Druh účtu** | *StorageV2* | Doporučuje se použít účet úložiště pro obecné účely v2. Další informace o typech účtů úložiště Azure najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md). |

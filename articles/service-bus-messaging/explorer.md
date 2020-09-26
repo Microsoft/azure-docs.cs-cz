@@ -3,12 +3,12 @@ title: Použití Průzkumníka Azure Service Bus k provádění operací s daty 
 description: Tento článek poskytuje informace o tom, jak používat Azure Service Bus Průzkumník na portálu pro přístup k datům Azure Service Bus.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295596"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Použití Průzkumníka Service Bus k provádění operací s daty v Service Bus (Preview)
 
@@ -104,7 +104,7 @@ Příjem zprávy z fronty (nebo z podfronty nedoručených zpráv)
 
 Po úspěšném dokončení operace Receive se v mřížce zobrazí podrobnosti zprávy, jak je uvedeno níže. Můžete vybrat zprávu z mřížky a zobrazit její podrobnosti.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Snímek obrazovky okna fronty v Průzkumníkovi Azure Service Bus s podrobnostmi o zprávě zobrazené v aktivní zprávě, která je vybrána ve frontě.":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Prohlížení zprávy z fronty
@@ -156,7 +156,7 @@ Stejně jako u fronty se operace Receive dá provést na základě předplatnéh
 
 Po úspěšném dokončení operace Receive se v mřížce zobrazí přijatá zpráva, jak je uvedeno níže. Chcete-li zobrazit podrobnosti zprávy, klikněte na zprávu.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Snímek obrazovky s kartou Receive v Průzkumníkovi Azure Service Bus s podrobnostmi o zprávě zobrazenými v aktivní přijaté zprávě":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Prohlížení zprávy z předplatného
 

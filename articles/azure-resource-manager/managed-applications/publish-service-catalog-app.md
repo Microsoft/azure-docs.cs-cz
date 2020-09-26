@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af5efd7c9b3c486e608c39c230700b52dd17a260
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497850"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371622"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rychlé zprovoznění: Vytvoření a publikování definice spravované aplikace
 
@@ -215,7 +215,7 @@ groupid=$(az ad group show --group mygroup --query objectId --output tsv)
 
 ### <a name="get-the-role-definition-id"></a>Získání ID definici role
 
-Dál potřebujete ID definice role pro předdefinovanou roli řízení přístupu na základě role (RBAC), pro které chcete uživateli, skupině uživatelů nebo aplikaci udělit přístup. Obvykle se používá role vlastníka, přispěvatele nebo čtenáře. Následující příkaz ukazuje, jak získat ID definice role pro roli vlastníka:
+Dále potřebujete ID definice role předdefinované role Azure, které chcete udělit přístup uživateli, skupině uživatelů nebo aplikaci. Obvykle se používá role vlastníka, přispěvatele nebo čtenáře. Následující příkaz ukazuje, jak získat ID definice role pro roli vlastníka:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -401,7 +401,7 @@ Můžete ověřit, zda jsou soubory definic aplikace uloženy v zadaném účtu 
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Je potřeba zajistit, že budou uživatelé vidět vaši definici.
 
-Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Informace o tom, kdo má přístup k definici, a o přidání uživatelů nebo skupin najdete v tématu [Použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
+Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Pokud chcete zjistit, kdo má přístup k definici a přidat uživatele nebo skupiny, přečtěte si téma [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 

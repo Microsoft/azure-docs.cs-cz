@@ -1,5 +1,5 @@
 ---
-title: Azure Defender pro SQL
+title: Azure Defender for SQL
 description: Přečtěte si o funkcích pro správu chyb zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly znamenat hrozbu pro vaši databázi v Azure SQL Database, spravované instanci Azure SQL nebo Azure synapse.
 services: sql-database
 ms.service: sql-db-mi
@@ -12,14 +12,14 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: b789cd423d2260ce709a02ffb3ac5ea500997609
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d567876e0210c025fa34c5b82791eafe4cdff561
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372149"
 ---
-# <a name="azure-defender-for-sql"></a>Azure Defender pro SQL
+# <a name="azure-defender-for-sql"></a>Azure Defender for SQL
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 
@@ -39,7 +39,7 @@ Další informace o cenách Azure Defenderu pro SQL najdete na [stránce s cenam
 
 Následující kroky vám pomohou začít s Azure Defenderem.
 
-## <a name="1-enable-azure-defender"></a>1. povolit Azure Defender
+## <a name="enable-azure-defender"></a>Povolit Azure Defender
 
 K Azure Defenderu se dá dostat prostřednictvím [Azure Portal](https://portal.azure.com). Povolte Azure Defender tak, že přejdete na **Security Center** pod záhlavím **zabezpečení** vašeho serveru nebo spravované instance.
 
@@ -48,15 +48,15 @@ K Azure Defenderu se dá dostat prostřednictvím [Azure Portal](https://portal.
 >
 > Náklady na Azure Defender se zarovnají s Azure Security Centermi cenami na úrovni Standard na uzel, kde uzel je celý server nebo spravovaná instance. Platíte jenom jednou za ochranu všech databází na serveru nebo spravované instanci pomocí Azure Defenderu. Azure Defender můžete vyzkoušet na začátku pomocí bezplatné zkušební verze.
 
-## <a name="2-start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Začněte sledovat ohrožení zabezpečení a prozkoumat výstrahy hrozeb.
+## <a name="start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>Zahájení sledování ohrožení zabezpečení a vyšetřování výstrah hrozeb
 
 Pokud chcete zobrazit a spravovat kontroly a sestavy ohrožení zabezpečení a sledovat stature zabezpečení, klikněte na kartu **posouzení ohrožení zabezpečení** . Pokud se přijaly výstrahy zabezpečení, klikněte na kartu **Rozšířená ochrana před internetovými útoky** , abyste si zobrazili podrobnosti o výstrahách a zobrazili jste konsolidovanou sestavu se všemi výstrahami ve vašem předplatném Azure prostřednictvím stránky Azure Security Center výstrahy zabezpečení.
 
-## <a name="3-manage-azure-defender-settings"></a>3. Správa nastavení v Azure Defenderu
+## <a name="manage-azure-defender-settings"></a>Správa nastavení v Azure Defenderu
 
 Pokud chcete zobrazit a spravovat nastavení v Azure Defenderu, přejděte ke službě **Security Center** pod záhlavím **zabezpečení** vašeho serveru nebo spravované instance. Na této stránce můžete povolit nebo zakázat Azure Defender a upravit nastavení posouzení ohrožení zabezpečení a rozšířené ochrany před internetovými útoky pro celý server nebo spravovanou instanci.
 
-## <a name="4-manage-azure-defender-settings-for-a-database"></a>4. Správa nastavení v Azure Defenderu pro databázi
+## <a name="manage-azure-defender-settings-for-a-database"></a>Správa nastavení v Azure Defenderu pro databázi
 
 Pokud chcete přepsat nastavení Azure Defenderu pro určitou databázi, zaškrtněte políčko **Povolit Azure Defender pro SQL v úrovni databáze** . Tuto možnost použijte jenom v případě, že máte konkrétní požadavek na získání samostatných výstrah rozšířené ochrany před hrozbami nebo výsledků posouzení ohrožení zabezpečení pro jednotlivé databáze, a to v místě nebo kromě výstrah a výsledků přijatých pro všechny databáze na serveru nebo ve spravované instanci.
 

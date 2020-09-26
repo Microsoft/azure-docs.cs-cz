@@ -10,12 +10,13 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718548"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271354"
 ---
 # <a name="how-to-improve-your-classifier"></a>Jak vylepšit třídění
 
@@ -65,7 +66,7 @@ Chcete-li tento problém vyřešit, zahrňte celou řadu imagí, abyste měli ji
 
     ![Obrázek s ukázkami velikosti](./media/getting-started-improving-your-classifier/size.png)
 
-* __Úhel kamery:__ Poskytněte obrázky, které se vyberou v různých úhlech kamery. Případně, pokud se všechny vaše fotky musí pokládat s pevnými fotoaparáty (jako jsou například kamery pro sledování), nezapomeňte přiřadit jiný popisek každému často vyskytujícímu objektu, abyste se vyhnuli&mdash;přeložení nesouvisejících objektů (například lampposts) jako klíčové funkce.
+* __Úhel kamery:__ Poskytněte obrázky, které se vyberou v různých úhlech kamery. Případně, pokud se všechny vaše fotky musí pokládat s pevnými fotoaparáty (jako jsou například kamery pro sledování), nezapomeňte přiřadit jiný popisek každému často vyskytujícímu objektu, abyste se vyhnuli přeložení &mdash; nesouvisejících objektů (například lampposts) jako klíčové funkce.
 
     ![Obrázek ukázek úhlů](./media/getting-started-improving-your-classifier/angle.png)
 

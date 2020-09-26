@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: eb25fc0d7831bc06b708431ce3d47c73b36fe5c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281246"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -236,7 +236,7 @@ Funkce nahrávání souborů IoT Hub umožňuje zařízením nahrávat soubory d
 
 4. Na stránce prostředku IoT Hub přejděte na kartu **nahrávání souborů** .
 
-5. Na stránce, která se zobrazí, vyberte kontejner, který chcete použít ve svém úložišti objektů blob, nakonfigurujte **Nastavení oznamování souborů**, **TTL SAS**, **výchozí hodnotu TTL**a **maximální počet doručení** podle potřeby. Jako **typ ověřování** vyberte na **základě identity** na koncový bod úložiště. Klikněte na tlačítko **Vytvořit**.
+5. Na stránce, která se zobrazí, vyberte kontejner, který chcete použít ve svém úložišti objektů blob, nakonfigurujte **Nastavení oznamování souborů**, **TTL SAS**, **výchozí hodnotu TTL**a **maximální počet doručení** podle potřeby. Jako **typ ověřování** vyberte na **základě identity** na koncový bod úložiště. Klikněte na tlačítko **Vytvořit**. Pokud se v tomto kroku zobrazí chyba, dočasně nastavte účet úložiště tak, aby povoloval přístup ze **všech sítí**, a pak to zkuste znovu. Po dokončení konfigurace nahrávání souboru můžete na účtu úložiště nakonfigurovat bránu firewall.
 
 Teď je koncový bod úložiště pro nahrání souborů nastavený tak, aby používal identitu přiřazenou systémem vašeho rozbočovače a měl oprávnění pro přístup k vašemu prostředku úložiště Navzdory omezením brány firewall.
 

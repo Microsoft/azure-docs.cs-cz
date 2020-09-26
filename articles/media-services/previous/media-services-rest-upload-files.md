@@ -1,6 +1,6 @@
 ---
 title: Nahrání souborů do účtu Azure Media Services pomocí REST | Microsoft Docs
-description: Naučte se, jak získat mediální obsah do Media Services vytvořením a nahráním prostředků.
+description: Naučte se, jak získat mediální obsah do Media Services vytvořením a nahráním prostředků pomocí REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 68968cdbc512df527b70d0a314c90ce45ebaf7e2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bc0369e99552859393da206e791477040681ccc4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281061"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Odeslání souborů do účtu Azure Media Services pomocí REST
 

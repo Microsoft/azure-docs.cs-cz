@@ -3,12 +3,12 @@ title: Offline zálohování s Azure Data Box pro DPM a MABS
 description: Azure Data Box můžete použít k počátečnímu počátečnímu zálohování dat v režimu offline z aplikace DPM a MABS.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271490"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline osazení pomocí Azure Data Box pro DPM a MABS (Preview)
 
@@ -110,7 +110,7 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Přenos počátečních zálohovaných dat do zařízení Azure Data Box
 
-1. Na serveru DPM nebo MABS postupujte podle pokynů pro [Vytvoření nové skupiny ochrany](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Pokud přidáváte online ochranu do existující skupiny ochrany, klikněte pravým tlačítkem na existující skupinu ochrany a vyberte **Přidat online ochranu** a začněte od **kroku 8**.
+1. Na serveru DPM nebo MABS postupujte podle pokynů pro [Vytvoření nové skupiny ochrany](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups). Pokud přidáváte online ochranu do existující skupiny ochrany, klikněte pravým tlačítkem na existující skupinu ochrany a vyberte **Přidat online ochranu** a začněte od **kroku 8**.
 2. Na stránce **Vybrat členy skupiny** zadejte počítače a zdroje, které chcete zálohovat.
 3. Na stránce **Vybrat způsob ochrany dat** určete způsob zpracování krátkodobého a dlouhodobého zálohování. Ujistěte se, že jste vybrali možnost **Chci online ochranu.**
 

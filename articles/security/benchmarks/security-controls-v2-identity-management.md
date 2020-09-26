@@ -4,17 +4,17 @@ description: Správa identit Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bcd88f9f21c68f7f6cdda7299ac97d67e97dc009
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: a007b8e85440faab6f3d9f35c49ee207ee1597ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059213"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295494"
 ---
-# <a name="security-control-identity-management"></a>Řízení zabezpečení: Správa identit
+# <a name="security-control-v2-identity-management"></a>Řízení zabezpečení v2: Správa identit
 
 Správa identit pokrývá ovládací prvky pro vytvoření zabezpečené identity a řízení přístupu pomocí Azure Active Directory. To zahrnuje použití jednotného přihlašování, silného ověřování, spravovaných identit (a principů služeb) pro aplikace, podmíněný přístup a monitorování anomálií.
 
@@ -45,9 +45,9 @@ Poznámka: Azure AD podporuje externí poskytovatele identity, který umožňuje
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Identita a klíče](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
+- [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -59,7 +59,7 @@ Poznámka: Azure AD podporuje externí poskytovatele identity, který umožňuje
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| ID – 2 | – | AC-2, AC-3, IA-2, IA-4, IA-9 |
+| ID – 2 | Není k dispozici | AC-2, AC-3, IA-2, IA-4, IA-9 |
 
 Pro jiné než lidské účty, jako jsou služby nebo automatizace, použijte spravované identity Azure, místo abyste vytvořili výkonnější účet pro přístup k prostředkům nebo spustit kód. Spravované identity Azure se můžou ověřit u služeb a prostředků Azure, které podporují ověřování Azure AD. Ověřování je povoleno prostřednictvím předdefinovaných pravidel udělení přístupu, což vyloučí pevně zakódované přihlašovací údaje ve zdrojovém kódu nebo konfiguračních souborech. 
 
@@ -77,9 +77,9 @@ Použití Azure Key Vault k registraci objektu zabezpečení: ověřování # au
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Identita a klíče](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -97,11 +97,11 @@ Pomocí jednotného přihlašování (SSO) Azure AD můžete spravovat a zabezpe
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Identita a klíče](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -132,11 +132,11 @@ Poznámka: ověřování založené jenom na přihlašovacích údajích hesla j
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Identita a klíče](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -179,7 +179,7 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -189,7 +189,7 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| ID – 6 | – | AC-2, AC-3 |
+| ID – 6 | Není k dispozici | AC-2, AC-3 |
 
 Podmíněný přístup Azure AD můžete použít pro přesnější řízení přístupu na základě uživatelem definovaných podmínek, jako je třeba vyžadování přihlášení uživatelů z určitých rozsahů IP adres pro použití MFA. Pomocí zásad podmíněného přístupu Azure AD pro různé případy použití lze také použít podrobnou správu relace ověřování. 
 
@@ -201,9 +201,9 @@ Podmíněný přístup Azure AD můžete použít pro přesnější řízení p�
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Identita a klíče](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -217,13 +217,17 @@ Podmíněný přístup Azure AD můžete použít pro přesnější řízení p�
 |--|--|--|--|
 | ID – 7 | 18,1, 18,7 | IA-5 |
 
-Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Kontrola přihlašovacích údajů také podporuje přesun zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je například Azure Key Vault.
+Implementujte ke službě Azure DevOps Credential Scanner k identifikaci přihlašovacích údajů v rámci kódu. Kontrola přihlašovacích údajů také podporuje přesun zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je například Azure Key Vault.
+
+V případě GitHubu můžete k identifikaci přihlašovacích údajů nebo jiné formy tajných kódů v kódu použít funkci nativního prohledávání tajného klíče.
 
 - [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
+- [Kontrola tajného kódu GitHubu](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
+
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -247,7 +251,7 @@ Alternativně Microsoft Cloud App Security je služba CASB (Cloud Access Securit
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

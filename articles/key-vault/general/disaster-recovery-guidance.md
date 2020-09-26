@@ -1,6 +1,6 @@
 ---
-title: Co dělat v případě, že přerušení služby Azure ovlivňuje Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Přečtěte si, co je potřeba při přerušení služby Azure ovlivnit Azure Key Vault.
+title: Azure Key Vault dostupnost a redundance – Azure Key Vault | Microsoft Docs
+description: Přečtěte si o dostupnosti Azure Key Vault a redundanci.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 27d8d4de308fe7cf6e6f36dd33f33bb73c495073
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6ccd127a35ea0d6a135a4b345297988cfdd8015b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315809"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Dostupnost a redundance služby Azure Key Vault
 

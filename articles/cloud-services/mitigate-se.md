@@ -1,7 +1,7 @@
 ---
 title: Pokyny ke zmírnění spekulativního spuštění v Azure
 titleSuffix: Azure Cloud Services
-description: Pokyny pro zmírnění spekulativních ohrožení zabezpečení na straně stran v Azure.
+description: V tomto článku se dozvíte, jak zmírnit spekulativní zranitelnosti na straně služby v Azure.
 services: cloud-services
 documentationcenter: ''
 author: cynthn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 8328dbf0085930940cf7a7b4740f7e15fc457e5f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e785e9176ced671d87a2e9008adb09601b3e1b6e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512992"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316711"
 ---
 # <a name="guidance-to-mitigate-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Pokyny pro zmírnění spekulativních ohrožení zabezpečení na straně stran v Azure
 

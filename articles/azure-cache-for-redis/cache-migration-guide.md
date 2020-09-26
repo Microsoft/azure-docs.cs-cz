@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4b196818ade1e703e24ed1ced6ebac1b44d0b083
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009575"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372064"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrace na Azure Cache for Redis
 Tento článek popisuje několik přístupů k migraci stávající mezipaměti Redis spuštěné v místním prostředí nebo v jiné cloudové službě do mezipaměti Azure pro Redis.
@@ -34,7 +34,7 @@ Existují různé způsoby, jak můžete přepínat z jedné mezipaměti do druh
    | ------------ | ---------- | ------------- |
    | Vytvořit novou mezipaměť | Nejjednodušší pro implementaci. | Je nutné znovu naplnit data do nové mezipaměti, což nemusí fungovat s mnoha aplikacemi. |
    | Export a import dat pomocí souboru RDB | Obecně kompatibilní s jakoukoliv mezipamětí Redis Cache. | Některá data mohou být ztracena, pokud jsou zapsána do existující mezipaměti po vygenerování souboru RDB. | 
-   | Duální zápis dat do dvou mezipamětí | Žádná ztráta dat ani centru. Nepřerušené operace stávající mezipaměti. Jednodušší testování nové mezipaměti. | Potřebuje dvě mezipaměti po delší dobu. | 
+   | Duální zápis dat do dvou mezipamětí | Nedochází ke ztrátě dat ani výpadkům. Nepřerušené operace stávající mezipaměti. Jednodušší testování nové mezipaměti. | Potřebuje dvě mezipaměti po delší dobu. | 
    | Programové migrace dat | Úplná kontrola nad tím, jak se data přesunou | Vyžaduje vlastní kód. | 
 
 ### <a name="create-a-new-azure-cache-for-redis"></a>Vytvoření nové mezipaměti Azure pro Redis
@@ -115,4 +115,4 @@ K implementaci této možnosti slouží obecné kroky:
 Přečtěte si další informace o funkcích Azure cache pro Redis.
 
 * [Mezipaměť Azure pro úrovně služeb Redis](cache-overview.md#service-tiers)
-* [Importovat data](cache-how-to-import-export-data.md#import)
+* [Import dat](cache-how-to-import-export-data.md#import)

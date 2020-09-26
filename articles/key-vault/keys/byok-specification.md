@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84198997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315775"
 ---
 # <a name="bring-your-own-key-specification"></a>Specifikace používání vlastního klíče
 
@@ -31,7 +31,7 @@ Požadavky jsou následující:
 
 ## <a name="terminology"></a>Terminologie
 
-|Název klíče|Typ klíče|Zdroj|Description|
+|Název klíče|Typ klíče|Zdroj|Popis|
 |---|---|---|---|
 |Klíč pro výměnu klíčů (KEK)|RSA|Modul HSM Azure Key Vault|V Azure Key Vault byl vygenerován pár klíčů RSA zálohovaný modulem HSM.
 Klíč pro zabalení|AES|HSM dodavatele|[Dočasný] klíč AES generovaný modulem HSM v-Prem
@@ -119,7 +119,7 @@ Pokud se používá CKM_RSA_AES_KEY_WRAP_PAD, serializace objektu BLOB přenosu 
 
 ```
 
-* Kid = identifikátor klíče KEK. U Key Vault klíčů vypadá nějak takto:https://ContosoKeyVaultHSM.vault.azure.net/keys/mykek/eba63d27e4e34e028839b53fac905621
+* Kid = identifikátor klíče KEK. U Key Vault klíčů vypadá nějak takto: https://ContosoKeyVaultHSM.vault.azure.net/keys/mykek/eba63d27e4e34e028839b53fac905621
 * ALG = algoritmus. 
 * DIR = přímý režim, tj. odkazovaný dětský odkaz se používá k přímé ochraně šifrovaného textu, který je přesná reprezentace CKM_RSA_AES_KEY_WRAP
 * Generator = informativní pole, které označuje název a verzi nástroje BYOK a zdrojový výrobce a model HSM. Tyto informace jsou určené pro použití při řešení potíží a podpoře.
@@ -159,19 +159,7 @@ Text požadavku:
 hodnota "key_hsm" je celý obsah KeyTransferPackage-ContosoFirstHSMkey. BYOK kódovaný ve formátu base64.
 
 ## <a name="references"></a>Reference
-
-### <a name="azure-key-vault-rest-api"></a>Azure Key Vault REST API
-
-* [Vytvořit klíč](https://docs.microsoft.com/rest/api/keyvault/createkey/createkey)
-* [Získat klíč (jenom klíčové atributy a veřejný klíč)](https://docs.microsoft.com/rest/api/keyvault/getkey/getkey)
-* [Importovat klíč](https://docs.microsoft.com/rest/api/keyvault/importkey/importkey)
-
-
-### <a name="azure-cli-commands"></a>Příkazy Azure CLI
-* [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)
-* [AZ Key trezor Key Download](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download)
-* [AZ Key trezor Key import](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
-
+- [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)
 
 ## <a name="next-steps"></a>Další kroky
 * Podrobné pokyny BYOK: [Import klíčů chráněných HSM do Key Vault (BYOK)](hsm-protected-keys-byok.md)

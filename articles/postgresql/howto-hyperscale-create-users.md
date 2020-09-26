@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295732"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Vytváření uživatelů v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -28,7 +28,7 @@ Modul PostgreSQL používá [role](https://www.postgresql.org/docs/current/sql-c
 * `postgres`
 * `citus`
 
-Vzhledem k tomu, že škálovatelná služba PaaS je spravovaná, jenom společnost Microsoft se může přihlásit pomocí `postgres` role superuživatele. V případě omezeného přístupu pro správu poskytuje `citus` role měřítko.
+Vzhledem k tomu, že Citus () je spravovaná služba PaaS, může se přihlásit pouze společnost Microsoft s `postgres` rolí uživatele super. V případě omezeného přístupu pro správu poskytuje role Citus (škálovatelný přístup) `citus` roli.
 
 Oprávnění pro `citus` roli:
 
@@ -46,7 +46,7 @@ Oprávnění pro `citus` roli:
 
 Jak už bylo zmíněno, `citus` účet správce nemá oprávnění k vytváření dalších uživatelů. Chcete-li přidat uživatele, použijte rozhraní Azure Portal.
 
-1. Přejděte na stránku **role** pro skupinu serverů s vlastním škálováním a klikněte na **+ Přidat**:
+1. Přejděte na stránku **role** pro skupinu serverů Citus (vlastní měřítko) a klikněte na **+ Přidat**:
 
    :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="Stránka role":::
 
@@ -75,7 +75,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Jak odstranit uživatelskou roli nebo změnit heslo
 
-Chcete-li aktualizovat uživatele, přejděte na stránku **role** pro skupinu serverů s vlastním škálováním a klikněte na tlačítko se třemi tečkami. **..** vedle uživatele. Tři tečky otevřou nabídku pro odstranění uživatele nebo resetování hesla.
+Chcete-li aktualizovat uživatele, přejděte na stránku **role** pro skupinu serverů Citus (vlastní měřítko) a klikněte na tlačítko se třemi tečkami. **..** vedle uživatele. Tři tečky otevřou nabídku pro odstranění uživatele nebo resetování hesla.
 
    :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Upravit roli":::
 

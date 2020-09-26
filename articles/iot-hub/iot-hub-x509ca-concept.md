@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019899"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308108"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Konceptuální porozumění certifikátům CA X. 509 v oboru IoT
 
@@ -87,7 +87,7 @@ Proces nahrání certifikátu certifikační autority X. 509 je právě ten, nah
 
 ### <a name="proof-of-possession-of-the-certificate"></a>Ověření vlastnictví certifikátu
 
-Certifikát CA X. 509, stejně jako jakýkoliv digitální certifikát, je veřejné informace, které jsou náchylné k odposlouchávání. V takovém případě může odposlouchávání zachytit certifikát a pokusit se ho nahrát jako svůj vlastní. V našem příkladu IoT Hub chtít, aby se zajistilo, že společnost-x odesílá certifikát certifikační autority, která ve skutečnosti patří do společnosti-X. Udělá to tak náročné, že společnost-X k ověření, že ve skutečnosti disponuje certifikátem, prostřednictvím [toku podržení (pop)](https://tools.ietf.org/html/rfc5280#section-3.1). Tok ověření příchodu má za následek IoT Hub vygenerování náhodného čísla podepsaného společností-X pomocí jeho privátního klíče. Pokud společnost-X sledovala osvědčené postupy infrastruktury veřejných klíčů a chránila jejich soukromý klíč, pak budou mít jenom na pozici, aby správně reagovala na výzvu k ověření. IoT Hub pokračuje v registraci certifikátu CA X. 509 po úspěšné odezvě na výzvu k ověření příznaku.
+Certifikát CA X. 509, stejně jako jakýkoliv digitální certifikát, je veřejné informace, které jsou náchylné k odposlouchávání. V takovém případě může odposlouchávání zachytit certifikát a pokusit se ho nahrát jako svůj vlastní. V našem příkladu IoT Hub chtít, aby se zajistilo, že společnost-x odesílá certifikát certifikační autority, která ve skutečnosti patří do společnosti-X. Udělá to tak náročné, že společnost-X by prokázala, že by ve skutečnosti měla certifikát prostřednictvím [toku kontrolního programu (pop)](https://tools.ietf.org/html/rfc5280#section-3.1). Tok ověření příchodu má za následek IoT Hub vygenerování náhodného čísla podepsaného společností-X pomocí jeho privátního klíče. Pokud společnost-X sledovala osvědčené postupy infrastruktury veřejných klíčů a chránila jejich soukromý klíč, pak budou mít jenom na pozici, aby správně reagovala na výzvu k ověření. IoT Hub pokračuje v registraci certifikátu CA X. 509 po úspěšné odezvě na výzvu k ověření příznaku.
 
 Úspěšná odpověď na výzvu k ověření příchodu z IoT Hub dokončila registraci CA X. 509.
 

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 85804e0f9293ec2e63aa319854e9559da11c8be1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a20708c5564075c24eb031a39292b020a2ecc00
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286270"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371316"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak pomocí filtru paketů FreeBSD vytvořit zabezpečenou bránu firewall v Azure
 Tento článek popisuje, jak nasadit firewall překladu adres (NAT) pomocí filtru FreeBSD Pack Azure Resource Manager prostřednictvím šablony pro běžný scénář webového serveru.
@@ -25,7 +25,7 @@ PF (filtr paketů, také napsaný PF) je filtr licencovaných stavových paketů
 Pokud vás zajímá nastavení zabezpečené brány firewall v cloudu pro vaše webové servery, můžeme začít. Můžete také použít skripty používané v této šabloně Azure Resource Manager k nastavení síťové topologie.
 Šablona Azure Resource Manager nastavila virtuální počítač s FreeBSD, který provádí překlad adres/Redirection pomocí PF a dva FreeBSD virtuální počítače s nainstalovaným a nakonfigurovaným webovým serverem Nginx. Kromě provádění překladu adres (NAT) pro dva webové servery s odchozí přenos dat zachycuje virtuální počítač NAT/přesměrování požadavky HTTP a přesměruje je na dva webové servery v rámci kruhové dotazování. Virtuální síť používá privátní adresní prostor IP adres 10.0.0.2/24 a parametry šablony můžete upravit. Šablona Azure Resource Manager také definuje směrovací tabulku pro celou virtuální síť, což je kolekce jednotlivých tras používaných k přepsání výchozích tras Azure na základě cílové IP adresy. 
 
-![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
+![Diagram znázorňuje veřejnou I P adresu v instanci překladu adres (NAT), která přesměrovává metodou kruhového dotazování na dva virtuální počítače back-end, které hostují Nginx webové servery.](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Nasazení prostřednictvím rozhraní příkazového řádku Azure
 Potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index). Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří název skupiny prostředků `myResourceGroup` v `West US` umístění.

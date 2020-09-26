@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9825e5e85c8da27b0f3fc2b9d78fcc9ca3513389
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281690"
 ---
 # <a name="what-is-opc-twin"></a>Co je OPC s dvojitým obsahem?
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 OPC se skládá z mikroslužeb, které používají Azure IoT Edge a IoT Hub k propojení cloudu a sítě továrny. OPC vlákna poskytuje zjišťování, registraci a vzdálené řízení průmyslových zařízení prostřednictvím rozhraní REST API. OPC vláken nevyžaduje sadu SDK OPC UA (OPC Unified Architecture), je programovací jazyk nezávislá a může být součástí pracovního postupu bez serveru. Tento článek popisuje několik OPC vlákenných případů použití.
 
@@ -41,5 +44,4 @@ OPC je možné použít s aplikacemi napsanými v libovolném programovacím jaz
 
 Teď, když jste se naučili o neOPCi a o jejích použitích, je tady doporučený další krok:
 
-> [!div class="nextstepaction"]
-> [Co je OPC Vault](overview-opc-vault.md)
+[Co je OPC Vault](overview-opc-vault.md)

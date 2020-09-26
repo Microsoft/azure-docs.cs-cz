@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 6a1f8cc9526d1f8393f8e7aa434587d8e4c0e979
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: be4b7f6a0f8afae9188b1f969956424041e77d9e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334666"
+ms.locfileid: "91371673"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech 
 
@@ -44,7 +44,7 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 | Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.7.0 |
 | Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.7.0 |
 | Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1,0 |
-| Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.1.0 |
+| Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.2.0 |
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -245,7 +245,7 @@ Všechny značky s výjimkou `latest` jsou v následujícím formátu a rozlišu
 Následující značka je příkladem formátu:
 
 ```
-1.1.0-amd64-en-us-arianeural-preview
+1.2.0-amd64-en-us-arianeural-preview
 ```
 
 Pro všechna podporovaná národní prostředí a odpovídající hlasy kontejneru **text-řeč neuronové** se podívejte na [značky obrázků neuronové pro převod textu na](../containers/container-image-tags.md#neural-text-to-speech)řeč.

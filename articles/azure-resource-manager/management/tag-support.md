@@ -3,12 +3,12 @@ title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: dd991167e703ad9faa7803bcecbbb6dc7eff94e7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27e25b1048bb759a3b38859788c27c03f1cf0447
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284954"
+ms.locfileid: "91371537"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/group-filter.md) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -1537,11 +1537,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | pracovní prostory | Yes | Yes |
-> | pracovní prostory/codeJobs | No | No |
 > | pracovní prostory a výpočetní prostředky | No | No |
 > | pracovní prostory/eventGridFilters | No | No |
-> | pracovní prostory/inferenceEndpoints | Yes | Yes |
-> | pracovní prostory/inferenceEndpointsy/nasazení | Yes | Yes |
 > | pracovní prostory/linkedServices | No | No |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
