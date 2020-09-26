@@ -1,5 +1,5 @@
 ---
-title: 'Registrace zařízení X. 509 do služby Azure Device Provisioning pomocí jazyka C #'
+title: 'Rychlý Start – registrace zařízení X. 509 do služby Azure Device Provisioning pomocí jazyka C #'
 description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service (DPS) pomocí jazyka C#.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 89d98cdf6f635cab3b85462adf5c6695f7c4482e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d8d6c9e2276b2368e09cdb0697a37e34dcf487b5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330260"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí C#
 
@@ -28,7 +28,7 @@ I když postup v tomto článku funguje na počítačích se systémem Windows i
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte sadu [Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).

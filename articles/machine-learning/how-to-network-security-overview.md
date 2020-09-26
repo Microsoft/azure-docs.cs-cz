@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ce4bbf81f5b74a06f06778c512995684fa1394c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893179"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329799"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -83,7 +83,6 @@ Zabezpečení pracovního prostoru a přidružených prostředků v rámci virtu
 - Privátní odkaz v pracovním prostoru je k dispozici pouze v následujících oblastech: eastus, westus2, southcentralus
     - Toto omezení se nevztahuje na přidružené prostředky. Můžete například povolit síť VNet pro úložiště v libovolné Azure Machine Learning oblasti.
 - Všechny prostředky musí být za stejnou virtuální sítí. Nicméně podsítě v rámci stejné virtuální sítě jsou povoleny.
-- Některé funkce studia, jako je Návrhář, AutoML, označování a profilování dat, se nedají použít s účty úložiště nakonfigurovanými na používání privátního koncového bodu. Pokud potřebujete tyto funkce sady Studio použít, místo toho použijte koncové body služby.
 
 ## <a name="secure-the-training-environment"></a>Zabezpečení školicího prostředí
 
@@ -150,7 +149,7 @@ I když Studio má přístup k datům v účtu úložiště nakonfigurovaném po
 * Odešlete experiment AutoML.
 * Spusťte Popis projektu.
 
-Pokud chcete povolit plnou funkčnost při používání koncového bodu služby úložiště, přečtěte si téma [použití Azure Machine Learning studia ve virtuální síti](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). V současné době Studio nepodporuje privátní koncové body úložiště.
+Pokud chcete povolit plnou funkčnost při používání koncového bodu služby úložiště, přečtěte si téma [použití Azure Machine Learning studia ve virtuální síti](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Studio podporuje koncové body služeb i privátní koncové body pro účty úložiště.
 
 ### <a name="limitations"></a>Omezení
 - Studio nemůže získat přístup k datům v účtech úložiště nakonfigurovaným pro použití privátních koncových bodů. Pro plnou funkčnost musíte použít koncové body služby pro úložiště a použít spravovanou identitu.

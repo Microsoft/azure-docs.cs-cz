@@ -1,6 +1,6 @@
 ---
 title: Použití služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Java
-description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
+description: Ukládat strukturovaná data v cloudu pomocí služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Java.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: e28770bae9f845ae8f5edd3b67bc55175392052a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d50f3015be4ce12d5980fde7d039d87ef06da164
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056665"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330464"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Javy
 
@@ -286,7 +286,7 @@ O dávkových operacích byste měli vědět několik věcí:
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Načtení všech entit v oddílu
 
-Chcete-li zadat dotaz na tabulku pro entity v oddílu, můžete použít `TableQuery` . Volá `TableQuery.from` se, aby se vytvořil dotaz na konkrétní tabulce, která vrací zadaný typ výsledku. Následující kód určuje filtr pro entity, kde Smith je klíč oddílu. `TableQuery.generateFilterCondition`je pomocná metoda pro vytváření filtrů pro dotazy. Zavolejte `where` na odkaz vrácený `TableQuery.from` metodou pro použití filtru pro dotaz. Když se dotaz spustí s voláním `execute` na `CloudTable` objekt, vrátí `Iterator` se s `CustomerEntity` zadaným typem výsledku. Pak můžete použít `Iterator` vrácenou smyčku foreach k využití výsledků. Tento kód v konzole zobrazí pole každé entity z výsledků dotazu.
+Chcete-li zadat dotaz na tabulku pro entity v oddílu, můžete použít `TableQuery` . Volá `TableQuery.from` se, aby se vytvořil dotaz na konkrétní tabulce, která vrací zadaný typ výsledku. Následující kód určuje filtr pro entity, kde Smith je klíč oddílu. `TableQuery.generateFilterCondition` je pomocná metoda pro vytváření filtrů pro dotazy. Zavolejte `where` na odkaz vrácený `TableQuery.from` metodou pro použití filtru pro dotaz. Když se dotaz spustí s voláním `execute` na `CloudTable` objekt, vrátí `Iterator` se s `CustomerEntity` zadaným typem výsledku. Pak můžete použít `Iterator` vrácenou smyčku foreach k využití výsledků. Tento kód v konzole zobrazí pole každé entity z výsledků dotazu.
 
 ```java
 try

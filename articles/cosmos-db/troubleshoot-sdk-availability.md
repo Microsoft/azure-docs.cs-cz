@@ -3,17 +3,17 @@ title: Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v p
 description: Seznamte se s chováním dostupnosti sady SDK Azure Cosmos při provozu ve více regionálních prostředích.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/16/2020
+ms.date: 09/24/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 0c717aca88095df05fc7927f3c3d6e2d481925d2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330430"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v prostředí s více oblastmi
 
@@ -24,15 +24,35 @@ Všechny sady SDK pro Azure Cosmos poskytují možnost přizpůsobit místní pr
 * Vlastnost [ConnectionPolicy. PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) v sadě .NET v2 SDK.
 * Vlastnosti [CosmosClientOptions. ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) nebo [CosmosClientOptions. ApplicationPreferredRegions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) v sadě .NET V3 SDK.
 * Metoda [CosmosClientBuilder. preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) v sadě Java v4 SDK.
-* Parametr [CosmosClient. preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) v sadě Python SDK.
+* Parametr [CosmosClient. preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) v sadě SDK pro Node.
+* Parametr [CosmosClientOptions. ConnectionPolicy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations) v sadě js SDK.
 
-U účtů oblastí s jedním zápisem budou všechny operace zápisu vždycky přejít do oblasti zápisu, takže seznam upřednostňovaných oblastí se vztahuje pouze na operace čtení. V případě více účtů pro zápis oblastí má seznam předvoleb vliv na operace čtení a zápisu.
+Když nastavíte místní předvolbu, klient se připojí k oblasti, jak je uvedeno v následující tabulce:
 
-Pokud nenastavíte upřednostňovanou oblast, pořadí místních předvoleb bude definováno [pořadím seznamu Azure Cosmos DB oblasti](distribute-data-globally.md).
+|Typ účtu |Čtení |Zápisy |
+|------------------------|--|--|
+| Jedna oblast zápisu | Upřednostňovaná oblast | Primární oblast  |
+| Více oblastí zápisu | Upřednostňovaná oblast | Upřednostňovaná oblast  |
 
-Když se vyskytne kterýkoli z následujících scénářů, klient nástroje, který používá sadu Azure Cosmos SDK, zveřejňuje protokoly a obsahuje informace o opakování jako součást **diagnostických informací o operaci**.
+Pokud nenastavíte upřednostňovanou oblast:
 
-## <a name="removing-a-region-from-the-account"></a><a id="remove region"></a>Odebrání oblasti z účtu
+|Typ účtu |Čtení |Zápisy |
+|------------------------|--|--|
+| Jedna oblast zápisu | Primární oblast | Primární oblast |
+| Více oblastí zápisu | Primární oblast  | Primární oblast  |
+
+> [!NOTE]
+> Primární oblast odkazuje na první oblast v [seznamu oblastí účtu Azure Cosmos](distribute-data-globally.md) .
+
+Když nastane kterýkoli z následujících scénářů, klient nástroje, který používá sadu Azure Cosmos SDK, zveřejňuje protokoly a obsahuje informace o opakování v rámci **diagnostických informací o operaci**:
+
+* Vlastnost *RequestDiagnosticsString* na odpovědích v sadě .NET v2 SDK.
+* Vlastnost *Diagnostic* na odpovědích a výjimkách v sadě .NET V3 SDK.
+* Metoda *Getdiagnostics ()* na odpovědích a výjimkách v sadě Java v4 SDK.
+
+Podrobné informace o zárukách SLA v těchto událostech najdete v [SLA dostupnosti](high-availability.md#slas-for-availability).
+
+## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>Odebrání oblasti z účtu
 
 Když odeberete oblast z účtu Azure Cosmos, vyhledá kterýkoli klient sady SDK, který aktivně používá účet, odebrání oblasti prostřednictvím kódu odpovědi back-endu. Klient pak označí místní koncový bod jako nedostupný. Klient opakuje aktuální operaci a všechny budoucí operace budou trvale směrovány do další oblasti v pořadí podle priority.
 
@@ -40,7 +60,7 @@ Když odeberete oblast z účtu Azure Cosmos, vyhledá kterýkoli klient sady SD
 
 Každých 5 minut klient služby Azure Cosmos SDK přečte konfiguraci účtu a aktualizuje oblasti, o kterých je vědom.
 
-Pokud odstraníte oblast a později ji přidáte zpátky k účtu, pokud přidaná oblast má vyšší prioritu, sada SDK se vrátí k trvalému použití této oblasti. Po zjištění přidané oblasti se na ni budou směrovat všechny budoucí požadavky.
+Pokud odeberete oblast a později ji přidáte zpátky k účtu, pokud přidaná oblast má v konfiguraci sady SDK vyšší pořadí priorit, než je aktuální připojená oblast, sada SDK se vrátí k trvalému použití této oblasti. Po zjištění přidané oblasti se na ni budou směrovat všechny budoucí požadavky.
 
 Pokud nakonfigurujete klienta nástroje tak, aby se k oblasti, kterou účet Azure Cosmos nemá, připojovat, bude preferovaná oblast ignorována. Pokud přidáte tuto oblast později, klient ji detekuje a bude trvale přepnuta do této oblasti.
 
@@ -50,7 +70,7 @@ Pokud zahájíte převzetí služeb při selhání aktuální oblasti pro zápis
 
 ## <a name="regional-outage"></a>Oblastní výpadek
 
-Pokud je účet jediný zápis a v průběhu operace zápisu dojde k oblasti výpadku, chování je podobné [ručnímu převzetí služeb při selhání](#manual-failover-single-region). U žádostí o čtení nebo u více účtů oblastí zápisu je chování podobné jako při [odebrání oblasti](#remove region).
+Pokud je účet jediný zápis a v průběhu operace zápisu dojde k oblasti výpadku, chování je podobné [ručnímu převzetí služeb při selhání](#manual-failover-single-region). U žádostí o čtení nebo u více účtů oblastí zápisu je chování podobné jako při [odebrání oblasti](#remove-region).
 
 ## <a name="session-consistency-guarantees"></a>Záruky konzistence relace
 
@@ -64,6 +84,7 @@ Pokud uživatel nakonfiguroval seznam upřednostňovaných oblastí s více než
 
 ## <a name="next-steps"></a>Další kroky
 
+* Zkontrolujte [SLA dostupnosti](high-availability.md#slas-for-availability).
 * Použití nejnovější [sady .NET SDK](sql-api-sdk-dotnet-standard.md)
 * Použít nejnovější [sadu Java SDK](sql-api-sdk-java-v4.md)
 * Použití nejnovější [sady Python SDK](sql-api-sdk-python.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 3e1832d656ea2bad772a686e52a357c1daf0ded5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f75853a66c43c69ec191f28951f8f6ffc4353f93
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330158"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -51,7 +51,7 @@ Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure 
 Můžete vytvořit Azure Machine Learning výpočetní instance nebo výpočetní clustery z:
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * portál Azure
-* Třídy Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true) a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true)
+* Třídy Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance%28class%29?view=azure-ml-py&preserve-view=true) a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Preview)
 * Šablona Správce prostředků. Příklad šablony naleznete v tématu [create Azure Machine Learning COMPUTE Template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
 * Rozšíření Machine Learning [pro rozhraní příkazového řádku Azure](reference-azure-machine-learning-cli.md#resource-management)  
@@ -84,7 +84,9 @@ Další informace o podporovaných řadách a omezeních najdete v následujíc�
 |------------|------------|
 | D | Žádné |
 | Dv2 | Žádné |  
-| DSv2 | Žádné |  
+| Dv3 | Žádné|
+| DSv2 | Žádné | 
+| DSv3 | Žádné|
 | FSv2 | Žádné | 
 | HBv2 | Vyžaduje schválení |  
 | KLIENTOVI HCS | Vyžaduje schválení |  

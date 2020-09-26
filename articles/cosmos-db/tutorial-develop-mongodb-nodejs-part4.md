@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: e4127024404489d0aa8478a9cbd073773f8b512a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c3026ac25d8da0e21c72ffa2d36f90e44a691aea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423911"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330498"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – vytvoření účtu Cosmos
 
@@ -31,7 +31,7 @@ V tomto výukovém kurzu se dozvíte, jak vytvořit novou aplikaci napsanou v No
 
 > [!VIDEO https://www.youtube.com/embed/hfUM-AbOh94]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v [části 3](tutorial-develop-mongodb-nodejs-part3.md) tohoto kurzu. 
 
@@ -60,7 +60,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 Dokončení příkazu může pár minut trvat. Po dokončení se v okně terminálu zobrazí informace o nové databázi. 
 
 Po vytvoření účtu služby Azure Cosmos DB:
-1. Otevřete nové okno prohlížeče a přejít na[https://portal.azure.com](https://portal.azure.com)
+1. Otevřete nové okno prohlížeče a přejít na [https://portal.azure.com](https://portal.azure.com)
 1. Na levém panelu klikněte na logo Azure Cosmos DB :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png"::: a zobrazí se vám všechny databáze v Azure Cosmos.
 1. Klikněte na účet služby Azure Cosmos DB, který jste právě vytvořili, vyberte kartu **Přehled** a přejděte dolů k zobrazení mapy s umístěním databáze. 
 

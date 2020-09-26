@@ -1,24 +1,27 @@
 ---
 title: Obsáhlý Learning a strojové učení
-titleSuffix: Azure
-description: Seznamte se s tím, jak obsáhlý Learning souvisí se strojovým učením a umělou logikou. Obsáhlý Learning se používá ve scénářích, jako je odhalování podvodů, rozpoznávání hlasových &, rozpoznávání obličeje, analýza mínění a prognózování časových řad.
+titleSuffix: Azure Machine Learning
+description: Přečtěte si, jak se obsáhlý Learning týká strojového učení a AI. V Azure Machine Learning Používejte modely hloubkového učení pro detekci podvodů, rozpoznávání objektů a další.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 03/05/2020
-ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/22/2020
+ms.custom: contperfq1
+ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330124"
 ---
-# <a name="deep-learning-vs-machine-learning"></a>Obsáhlý Learning a strojové učení
+# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Obsáhlý Learning a strojové učení v Azure Machine Learning
 
-Tento článek vám pomůže porovnat hloubkové učení a strojové učení. Dozvíte se, jak tyto dvě koncepce porovnávají a jak se vejdou do širší kategorie umělých inteligentních funkcí. Tento článek také popisuje, jak se dá využít obsáhlý Learning v reálných scénářích, jako je odhalování podvodů, rozpoznávání hlasu a obličeje, mínění Analytics a prognózy časových řad.
+V tomto článku se dozvíte o hloubkovém učení vs. strojové učení a o tom, jak se vejdou do širší kategorie umělé logiky. Přečtěte si o řešeních pro hloubkové učení, která můžete vytvářet Azure Machine Learning, jako je odhalování podvodů, rozpoznávání hlasu a obličeje, analýza mínění a prognózování časových řad.
+
+Pokyny k výběru algoritmů pro vaše řešení najdete v [tahákm listu s algoritmem Machine Learning](algorithm-cheat-sheet.md).
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Obsáhlý Learning, strojové učení a AI
 
@@ -37,7 +40,7 @@ Zvažte následující definice pro pochopení hloubkového učení vs. strojov�
 
 - **Umělá inteligentní funkce (AI)** je technika, která umožňuje počítačům napodobovat lidské inteligentní funkce. Zahrnuje Machine Learning. 
  
-Je důležité pochopit vztah mezi AI, Machine Learningem a hlubokou výukou. Machine Learning je způsob, jak dosáhnout umělých inteligentních funkcí. Pomocí technik strojového učení a hloubkového učení můžete sestavovat počítačové systémy a aplikace, které budou často přidruženy k lidským inteligentním funkcím. Mezi tyto úlohy patří rozpoznávání obrázků, rozpoznávání řeči a překlad jazyka.
+Pomocí technik strojového učení a hloubkového učení můžete sestavovat počítačové systémy a aplikace, které budou často přidruženy k lidským inteligentním funkcím. Mezi tyto úlohy patří rozpoznávání obrázků, rozpoznávání řeči a překlad jazyka.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Techniky hloubkového učení vs. Machine Learning 
 
@@ -58,7 +61,7 @@ Následující tabulka porovnává tyto dvě metody podrobněji:
 
 Z důvodu umělé struktury Neuronové sítě je obsáhlý Learning v Excelu v identifikaci vzorů nestrukturovaných dat, jako jsou obrázky, zvuk, video a text. Z tohoto důvodu obsáhlé učení rychle transformuje spoustu odvětví, včetně zdravotní péče, energie, financí a dopravy. Tyto obory nyní přemýšlení o tradičních obchodních procesech. 
 
-Některé z nejběžnějších aplikací pro obsáhlý Learning jsou popsané v následujících odstavcích.
+Některé z nejběžnějších aplikací pro obsáhlý Learning jsou popsané v následujících odstavcích. V Azure Machine Learning můžete použít model ze svého sestavení z open-source architektury nebo sestavit model pomocí poskytovaných nástrojů.
 
 ### <a name="named-entity-recognition"></a>Rozpoznávání pojmenovaných entit
 
@@ -69,6 +72,8 @@ Rozpoznávání pojmenovaných entit je metoda hloubkového učení, která pře
 Obsáhlý Learning se použil v mnoha případech použití detekce objektů. Detekce objektu se skládá ze dvou částí: klasifikace obrázku a pak lokalizace imagí. _Klasifikace_ obrázku identifikuje objekty obrázku, například auta nebo lidi. _Lokalizace_ obrázků poskytuje konkrétní umístění těchto objektů. 
 
 Detekce objektů se už používá v oborech, jako jsou hry, maloobchodní prodej, cestovní ruch a osobní automobily.
+
+Naučte se používat model klasifikace obrázků z open-source architektury v Azure Machine Learning: [klasifikaci imagí pomocí modelu Pytorch](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri) .
 
 ### <a name="image-caption-generation"></a>Generování titulku obrázku
 
@@ -88,6 +93,8 @@ Analýza textu založená na metodách hloubkového učení zahrnuje analýzu ve
 
 Společnosti využívají k analýze textu v rámci hloubkového učení k detekci obchodování zasvěcených osob a dodržování předpisů pro státní správu. Dalším běžným příkladem je pojišťovací podvod: Text Analytics se často používá k analýze velkých objemů dokumentů, aby se zjistilo, že se poškodí pojistka pojistného pojištění. 
 
+Naučte se používat TensorFlow model v Azure Machine Learning: [klasifikace rukou psaných číslic pomocí modelu TensorFlow](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+
 ## <a name="artificial-neural-networks"></a>Umělé sítě neuronové
 
 Umělé sítě neuronové se vytváří pomocí vrstev připojených uzlů. Modely hloubkového učení používají neuronové sítě, které mají velký počet vrstev. 
@@ -106,18 +113,12 @@ Opakující se neuronové sítě jsou široce využívanou umělou neuronovéou 
 
 Síť neuronové konvoluční je zvláště efektivní umělá síť neuronové a představuje jedinečnou architekturu. Vrstvy jsou uspořádány do tří rozměrů: šířka, Výška a hloubka. Neurons v jedné vrstvě se připojí k neurons v následující vrstvě, ale pouze do malých oblastí neurons vrstvy. Konečný výstup je snížen na jeden vektor skóre pravděpodobnosti uspořádané podél rozměru hloubky. 
 
-Sítě konvoluční neuronové se používají v oblastech, jako je rozpoznávání videa, rozpoznávání obrázků a systémy doporučení.
+Sítě konvoluční neuronové se používaly v oblastech, jako je rozpoznávání videa, rozpoznávání obrázků a systémy doporučení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující články ukazují, jak používat technologii pro hloubkové učení v [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
-
-- [Klasifikace rukou psaných číslic pomocí modelu TensorFlow](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+V následujících článcích se dozvíte víc možností, jak používat Open Source modely hloubkového učení v [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
 
 - [Klasifikace rukou psaných číslic pomocí TensorFlow Estimator a Keras](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [Klasifikace imagí pomocí modelu Pytorch](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-
 - [Klasifikace rukou psaných číslic pomocí modelu zřetězení](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
-
-K výběru algoritmů pro model použijte taky [tahákový list s algoritmem Machine Learning](algorithm-cheat-sheet.md) .

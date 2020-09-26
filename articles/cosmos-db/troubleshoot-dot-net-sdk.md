@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d7ed48354b3666a3ec544ffb66724bc605041c90
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3093996156a31d4a06f0d91dbca1bd00d58eacdb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086983"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330447"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
@@ -109,6 +109,8 @@ Tato latence může mít několik příčin:
 
     > [!NOTE]
     > Pro lepší výkon doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní ServiceInterop.dll k analýze a optimalizaci dotazů v místním prostředí. ServiceInterop.dll se podporuje jenom na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispozici, se k získání optimalizovaného dotazu provede další síťové volání brány.
+
+Pokud narazíte na následující chybu: `Unable to load DLL 'Microsoft.Azure.Cosmos.ServiceInterop.dll' or one of its dependencies:` a používáte Windows, měli byste upgradovat na nejnovější verzi Windows.
 
 ## <a name="next-steps"></a>Další kroky
 
