@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c77dff4a4f89a78dc0a0d723fbb45fe691246112
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 49ca12ed4f408e2a3fce1c8e59f541778f35311e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81681921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281775"
 ---
 # <a name="what-is-opc-publisher"></a>Co je OPC Publisher?
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Vydavatel OPC je referenční implementace, která ukazuje, jak:
 
@@ -42,8 +45,10 @@ U každého jedinečného intervalu publikování na server OPC UA vytvoří apl
 
 Vydavatel OPC podporuje dávkování dat odesílaných do IoT Hub, aby se snížilo zatížení sítě. Tato dávkování odešle paket, který se IoT Hub jenom v případě dosažení nakonfigurované velikosti paketu.
 
-Tato aplikace používá referenční zásobník OPC Foundation OPC UA jako balíčky NuGet. Licenční [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) podmínky najdete v tématu.
+Tato aplikace používá referenční zásobník OPC Foundation OPC UA jako balíčky NuGet. Licenční podmínky najdete v tématu [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) .
 
-### <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, co je Vydavatel OPC, což je doporučený další krok, kde se dozvíte, jak [nakonfigurovat OPC Publisher](howto-opc-publisher-configure.md).
+Nyní jste se seznámili s tím, co je Vydavatel OPC, což je doporučený další krok, kde se dozvíte, jak:
+
+[Konfigurace vydavatele OPC](howto-opc-publisher-configure.md)

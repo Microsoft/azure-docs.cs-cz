@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 24e631b3ddb25cc8bed20b432ff2ba31fd331f37
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314699"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Zabezpečení v Azure Kognitivní hledání – přehled
 
@@ -35,6 +35,8 @@ Podívejte se na toto video s rychlým tempem, kde se dozvíte přehled architek
 ## <a name="encrypted-transmissions-and-storage"></a>Šifrované přenosy a úložiště
 
 V Azure Kognitivní hledání začíná šifrování připojení a přenosů a rozšiřuje se na obsah uložený na disku. Pro vyhledávací služby na veřejném Internetu Azure Kognitivní hledání naslouchá na portu HTTPS 443. Všechna připojení klient-služba používají šifrování TLS 1,2. Starší verze (1,0 nebo 1,1) nejsou podporovány.
+
+:::image type="content" source="media/search-security-overview/encryption-at-rest-cmk.png" alt-text="Diagram znázorňující různé typy zabezpečení na jednotlivých úrovních zapojení služby":::
 
 V následující tabulce jsou popsány datové [modely](../security/fundamentals/encryption-models.md)pro data, která jsou interně zpracovávána pomocí vyhledávací služby. Některé funkce, jako je znalostní báze, přírůstkové obohacení a indexování založené na indexerech, čtou nebo zapisují do datových struktur v jiných službách Azure. Tyto služby mají svou vlastní úroveň podpory šifrování, která je oddělená od Azure Kognitivní hledání.
 
@@ -92,6 +94,8 @@ Pro každý požadavek se vyžaduje ověřování, kde každý požadavek se skl
 
 Pro další řízení přístupu ke službě vyhledávání můžete vytvořit pravidla brány firewall, která umožňují přístup ke konkrétní IP adrese nebo rozsahu IP adres. Všechna připojení klientů musí být provedena prostřednictvím povolené IP adresy, jinak se připojení zamítlo.
 
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="Diagram ukázkové architektury pro omezený přístup IP":::
+
 K [nakonfigurování příchozího přístupu](service-configure-firewall.md)můžete použít portál.
 
 Alternativně můžete použít rozhraní REST API pro správu. Počínaje rozhraním API verze 2020-03-13 s parametrem [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) můžete omezit přístup ke službě tím, že identifikujete IP adresy, jednotlivě nebo v rozsahu, který chcete udělit přístup k vaší vyhledávací službě.
@@ -101,6 +105,8 @@ Alternativně můžete použít rozhraní REST API pro správu. Počínaje rozhr
 [Privátní koncový bod](../private-link/private-endpoint-overview.md) pro Azure kognitivní hledání umožňuje klientovi ve [virtuální síti](../virtual-network/virtual-networks-overview.md) zabezpečený přístup k datům v indexu vyhledávání prostřednictvím [privátního propojení](../private-link/private-link-overview.md).
 
 Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro připojení k vaší vyhledávací službě. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. VIRTUÁLNÍ síť umožňuje zabezpečenou komunikaci mezi prostředky, s vaší místní sítí i s internetem.
+
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="Diagram ukázkové architektury pro přístup k privátnímu koncovému bodu":::
 
 I když toto řešení je nejbezpečnější, je za použití dalších služeb k dispozici náklady, abyste měli jistotu, že budete mít jasné znalosti výhod před začneteí. Další informace o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/private-link/). Další informace o tom, jak tyto komponenty spolupracují, najdete v videu v horní části tohoto článku. Pokrytí možnosti privátní koncový bod začíná na videu na 5:48. Pokyny k nastavení koncového bodu najdete v tématu [Vytvoření privátního koncového bodu pro Azure kognitivní hledání](service-create-private-endpoint.md).
 
@@ -120,7 +126,7 @@ Způsob, jakým uživatel přistupuje k indexu a dalším objektům, je určen t
 
 Pokud pro výsledky hledání potřebujete podrobný ovládací prvek pro jednotlivé uživatele, můžete pro své dotazy vytvořit filtry zabezpečení a vracet dokumenty přidružené k dané identitě zabezpečení. Místo předdefinovaných rolí a přiřazení rolí se řízení přístupu na základě identity implementuje jako *Filtr* , který ořízne výsledky hledání dokumentů a obsahu na základě identit. Následující tabulka popisuje dva přístupy k oříznutí výsledků hledání neoprávněného obsahu.
 
-| Přístup | Description |
+| Přístup | Popis |
 |----------|-------------|
 |[Oříznutí zabezpečení na základě filtrů identity](search-security-trimming-for-azure-search.md)  | Dokumentuje základní pracovní postup pro implementaci řízení přístupu identity uživatele. Zahrnuje přidávání identifikátorů zabezpečení do indexu a pak vysvětluje filtrování na základě tohoto pole za účelem oříznutí výsledků zakázaného obsahu. |
 |[Oříznutí zabezpečení na základě Azure Active Directory identit](search-security-trimming-for-azure-search-with-aad.md)  | Tento článek se rozbalí v předchozím článku, který poskytuje kroky pro načtení identit z Azure Active Directory (Azure AD), jedné z [bezplatných služeb](https://azure.microsoft.com/free/) na cloudové platformě Azure. |

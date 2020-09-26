@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 6c3ad5fff6958bce72f876e3ff4701cf081abe60
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c8251eb2a89a7481ebc981f2b89668c363651b39
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936648"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315010"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-mysql--flexible-server"></a>Spravovat nastavení naplánované údržby pro Azure Database for MySQL – flexibilní Server
  
@@ -31,9 +31,9 @@ K dokončení tohoto průvodce budete potřebovat:
  
 ## <a name="notifications-about-scheduled-maintenance-events"></a>Oznámení o plánovaných událostech údržby
  
-Pomocí Azure Service Health můžete [Zobrazit oznámení](/azure/service-health/service-notifications.md) o nadcházející a prováděné plánované údržbě na flexibilním serveru. Můžete také [nastavit](/azure/service-health/resource-health-alert-monitor-guide.md) výstrahy v Azure Service Health, abyste získali oznámení o událostech údržby.
+Pomocí Azure Service Health můžete [Zobrazit oznámení](../../service-health/service-notifications.md) o nadcházející a prováděné plánované údržbě na flexibilním serveru. Můžete také [nastavit](../../service-health/resource-health-alert-monitor-guide.md) výstrahy v Azure Service Health, abyste získali oznámení o událostech údržby.
  
 ## <a name="next-steps"></a>Další kroky  
  
 * Další informace o [plánované údržbě v Azure Database for MySQL – flexibilní Server](concepts-maintenance.md)
-* Lean o [Azure Service Health](/azure/service-health/overview.md)
+* Lean o [Azure Service Health](../../service-health/overview.md)

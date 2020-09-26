@@ -10,13 +10,13 @@ ms.custom: troubleshooting
 ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/16/2020
-ms.openlocfilehash: 010843f4249909e23ffac3b41fb3acaf9c91eb17
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315571"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Ladění třídy ParallelRunStep a řešení souvisejících potíží
 
@@ -35,13 +35,17 @@ Například soubor protokolu `70_driver_log.txt` obsahuje informace z kontroleru
 
 Z důvodu distribuované povahy úloh ParallelRunStep existují protokoly z několika různých zdrojů. Vytvoří se ale dva konsolidované soubory, které poskytují informace vysoké úrovně:
 
-- `~/logs/overview.txt`: Tento soubor poskytuje informace vysoké úrovně o počtu Mini-dávek (označovaných také jako úlohy), které byly doposud vytvořeny a počtu mininích dávek zpracovaných zatím. Na tomto konci se zobrazuje výsledek úlohy. Pokud se úloha nezdařila, zobrazí se chybová zpráva a kde začít odstraňování potíží.
+- `~/logs/job_progress_overview.txt`: Tento soubor poskytuje informace vysoké úrovně o počtu Mini-dávek (označovaných také jako úlohy), které byly doposud vytvořeny a počtu mininích dávek zpracovaných zatím. Na tomto konci se zobrazuje výsledek úlohy. Pokud se úloha nezdařila, zobrazí se chybová zpráva a kde začít odstraňování potíží.
 
-- `~/logs/sys/master.txt`: Tento soubor poskytuje hlavní uzel (také označovaný jako Orchestrator) zobrazení spuštěné úlohy. Zahrnuje vytvoření úlohy, monitorování průběhu, výsledek spuštění.
+- `~/logs/sys/master_role.txt`: Tento soubor poskytuje hlavní uzel (také označovaný jako Orchestrator) zobrazení spuštěné úlohy. Zahrnuje vytvoření úlohy, monitorování průběhu, výsledek spuštění.
 
 Protokoly vygenerované ze vstupního skriptu pomocí pomocníka EntryScript a příkazů Print budou nalezeny v následujících souborech:
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`: Tyto soubory jsou protokoly napsané z entry_script pomocí pomocné rutiny EntryScript. Obsahuje také příkaz Print (stdout) z entry_script.
+- `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`: Tyto soubory jsou protokoly napsané z entry_script pomocí pomocné rutiny EntryScript.
+
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: Tyto soubory jsou protokoly z stdout (například příkaz Print) entry_script.
+
+- `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`: Tyto soubory jsou protokoly z stderr entry_script.
 
 Stručné porozumění chybám ve skriptu:
 
@@ -49,17 +53,17 @@ Stručné porozumění chybám ve skriptu:
 
 Další informace o chybách ve skriptu najdete v těchto případech:
 
-- `~/logs/user/error/`: Obsahuje všechny chyby vyvolané a úplné trasování zásobníku uspořádané podle uzlu.
+- `~/logs/user/error/`: Obsahuje úplné trasování zásobníku výjimek vyvolaných při načítání a spouštění vstupního skriptu.
 
 Pokud potřebujete úplný přehled o tom, jak každý uzel spustil skript skóre, podívejte se na jednotlivé protokoly procesu pro každý uzel. Protokoly procesu lze nalézt ve `sys/node` složce seskupené podle uzlů pracovních procesů:
 
-- `~/logs/sys/node/<node_name>.txt`: Tento soubor poskytuje podrobné informace o každé Mini dávce, jak je vyzvednuta nebo dokončena pracovním procesem. Pro každou miniskou dávku tento soubor obsahuje:
+- `~/logs/sys/node/<ip_address>/<process_name>.txt`: Tento soubor poskytuje podrobné informace o každé Mini dávce, jak je vyzvednuta nebo dokončena pracovním procesem. Pro každou miniskou dávku tento soubor obsahuje:
 
     - IP adresa a PID pracovního procesu. 
     - Celkový počet položek, počet úspěšně zpracovaných položek a počet neúspěšných položek.
     - Čas spuštění, doba trvání, doba zpracování a metoda spuštění.
 
-Můžete také vyhledat informace o využití prostředků pro jednotlivé pracovní procesy. Tyto informace jsou ve formátu CSV a jsou umístěné na adrese `~/logs/sys/perf/overview.csv` . Informace o každém procesu jsou k dispozici v části `~logs/sys/processes.csv` .
+Můžete také vyhledat informace o využití prostředků pro jednotlivé pracovní procesy. Tyto informace jsou ve formátu CSV a jsou umístěné na adrese `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Informace o každém procesu jsou k dispozici v části `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Návody se protokolovat z uživatelského skriptu ze vzdáleného kontextu?
 ParallelRunStep může na jednom uzlu na základě process_count_per_node spustit více procesů. K uspořádání protokolů z každého procesu na uzlu a kombinování tiskových a log příkazů doporučujeme použít protokolovací nástroj ParallelRunStep, jak je znázorněno níže. Získáte protokolovací nástroj z EntryScript a zpřístupníte protokoly ve složce **logs/uživatel** na portálu.
@@ -112,6 +116,28 @@ parser.add_argument('--labels_dir', dest="labels_dir", required=True)
 args, _ = parser.parse_known_args()
 
 labels_path = args.labels_dir
+```
+
+### <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>Jak používat vstupní datové sady s ověřováním instančního objektu?
+
+Uživatel může předat vstupní datové sady s ověřováním instančního objektu použitým v pracovním prostoru. Použití této datové sady v ParallelRunStep vyžaduje, aby se tato datová sada zaregistrovala pro vytvoření konfigurace ParallelRunStep.
+
+```python
+service_principal = ServicePrincipalAuthentication(
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
+ 
+ws = Workspace(
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
+    auth=service_principal
+    )
+ 
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Další kroky

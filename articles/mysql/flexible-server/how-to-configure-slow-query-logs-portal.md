@@ -1,17 +1,17 @@
 ---
 title: Konfigurace pomalých protokolů dotazů – Azure Portal-Azure Database for MySQL-flexibilní Server
-description: Tento článek popisuje, jak nakonfigurovat a přistupovat k pomalým protokolům v Azure Database for MySQL flexibilním serveru z Azure Portal.
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům pomalých dotazů v Azure Database for MySQL flexibilní Server z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1416efaa325ced623b5c7514f2f9953dc0bd2781
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1a829f4e5f45394d9c5bbed0db9289727b816917
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936654"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315027"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům pro Azure Database for MySQL-flexibilní Server pomocí Azure Portal
 
@@ -45,6 +45,9 @@ Na stránce **parametry serveru** se můžete vrátit do seznamu protokolů tím
 
 ## <a name="set-up-diagnostics"></a>Nastavení diagnostiky
 
+> [!NOTE]
+> Integrace s Azure Monitor nastavení diagnostiky pro přístup k protokolům probíhá nasazování a kompletní funkce budou brzy k dispozici.
+
 Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnostiky, které vám umožní přesměrovat protokoly do Azure Monitor protokolů, Event Hubs nebo Azure Storage.
 
 1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
@@ -63,7 +66,7 @@ Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnosti
 
 1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 
-Pokud jste nahlásili protokoly auditu do Azure Monitor protokolů (Log Analytics), přečtěte si několik [ukázkových dotazů](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) , které můžete použít k analýze. 
+Pokud jste do kanálu Azure Monitor protokoly (Log Analytics), podívejte se na některé [Ukázkové dotazy](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) , které můžete použít k analýze. 
 
 ## <a name="next-steps"></a>Další kroky
 <!-- - See [Access slow query Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download slow query logs programmatically.-->

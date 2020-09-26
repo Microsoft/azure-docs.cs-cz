@@ -1,6 +1,6 @@
 ---
 title: SAP HANA horizontálního navýšení kapacity s Azure NetApp Files na SLES | Microsoft Docs
-description: Průvodce vysokou dostupností pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
+description: Naučte se, jak nasadit systém SAP HANA se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files na SUSE Linux Enterprise Server.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: adc57b213a177e227fe446a4dd24e53dea1cd2fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314058"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v SUSE Linux Enterprise Server 
 
@@ -106,10 +106,10 @@ Svazky NetApp Azure jsou v samostatné podsíti, [delegované na Azure NetApp Fi
 
 V tomto příkladu konfigurace jsou podsítě:  
 
-  - `client`10.23.0.0/24  
-  - `storage`10.23.2.0/24  
-  - `hana`10.23.3.0/24  
-  - `anf`10.23.1.0/26  
+  - `client` 10.23.0.0/24  
+  - `storage` 10.23.2.0/24  
+  - `hana` 10.23.3.0/24  
+  - `anf` 10.23.1.0/26  
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Nastavení infrastruktury Azure NetApp Files 
 
@@ -236,7 +236,7 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
 3. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `storage` podsíť virtuální sítě (v tomto příkladu **hanadb1-Storage**, **hanadb2-Storage**a **hanadb3-Storage**).  
 
-4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana` podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana**a **hanadb3-Hana**).  
+4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana`  podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana**a **hanadb3-Hana**).  
 
 5. Připojte nově vytvořená virtuální síťová rozhraní k odpovídajícím virtuálním počítačům pomocí následujících kroků:  
 
@@ -250,7 +250,7 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
     
     e. Vyberte **Uložit**. 
  
-    f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu **hanadb2** a **hanadb3**).
+    f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu  **hanadb2** a **hanadb3**).
  
     například Virtuální počítače teď ponechte v zastaveném stavu. V dalším kroku povolíte [urychlené síťové služby](../../../virtual-network/create-vm-accelerated-networking-cli.md) pro všechna nově připojená síťová rozhraní.  
 
@@ -561,7 +561,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
      * Pro **názvy hostitelů oddělených čárkami, které se mají přidat**: zadejte **hanadb2, hanadb3**
      * Pro **kořenové uživatelské jméno** [root]: stisknutím klávesy Enter přijměte výchozí nastavení.
      * Pro **heslo uživatele root**: zadejte heslo uživatele root.
-     * Pro role pro hostitele hanadb2: zadejte **1** (pro pracovního procesu).
+     * Pro role pro hostitele hanadb2: zadejte **1**  (pro pracovního procesu).
      * Pro **skupinu převzetí služeb při selhání hostitele** pro hostitele hanadb2 [výchozí]: stisknutím klávesy Enter přijměte výchozí nastavení.
      * Pro **číslo oddílu úložiště** pro hostitele hanadb2 [<<assign automatically>>]: stisknutím klávesy Enter přijměte výchozí nastavení.
      * Pro **skupinu Worker** pro hanadb2 hostitele [výchozí]: stisknutím klávesy Enter přijměte výchozí nastavení.

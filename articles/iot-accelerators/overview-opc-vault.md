@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 715ed204e28d6260c28fa099b40fc78aa12de44d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73826202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281537"
 ---
 # <a name="what-is-opc-vault"></a>Co je trezor OPC?
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 OPC trezor je mikroslužba, která umožňuje konfigurovat, registrovat a spravovat životní cyklus certifikátů pro server OPC UA a klientské aplikace v cloudu. Tento článek popisuje jednoduché případy použití trezoru OPC.
 
@@ -35,5 +38,4 @@ Následující diagram znázorňuje kompletní architekturu trezoru OPC.
 
 Teď, když jste se naučili o trezoru OPC a jeho použití, je tady doporučený další krok:
 
-> [!div class="nextstepaction"]
-> [Architektura úložiště OPC](overview-opc-vault-architecture.md)
+[Architektura úložiště OPC](overview-opc-vault-architecture.md)

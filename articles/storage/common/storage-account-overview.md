@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4fe353467a11e9581db76ec495194878414f4dfb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280143"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -108,7 +108,7 @@ Dostupné úrovně přístupu jsou:
 
 - Vrstva **Hot** Access. Tato úroveň je optimalizovaná pro častější přístup k objektům v účtu úložiště. Přístup k datům v Hot úrovně je největší nákladově efektivní, zatímco náklady na úložiště jsou vyšší. Ve výchozím nastavení se v aktivní úrovni vytvoří nové účty úložiště.
 - **Studená** úroveň přístupu. Tato úroveň je optimalizovaná pro ukládání velkých objemů dat, která se nepoužívají zřídka a ukládají se nejméně na 30 dní. Ukládání dat ve studené vrstvě je cenově výhodnější, ale přístup k nim může být dražší než přístup k datům v horké vrstvě.
-- **Archivní** úroveň. Tato úroveň je k dispozici pouze pro jednotlivé objekty blob bloku. Archivní úroveň je optimalizovaná pro data, která můžou tolerovat několik hodin latence načítání a které zůstanou v archivní úrovni aspoň 180 dní. Úroveň archivace je nejefektivnější možností pro ukládání dat. Přístup k těmto datům je ale dražší než přístup k datům na horké nebo studené úrovni.
+- **Archivní** úroveň: Tato úroveň je k dispozici pouze pro jednotlivé objekty blob bloku. Archivní úroveň je optimalizovaná pro data, která můžou tolerovat několik hodin latence načítání a které zůstanou v archivní úrovni aspoň 180 dní. Úroveň archivace je nejefektivnější možností pro ukládání dat. Přístup k těmto datům je ale dražší než přístup k datům na horké nebo studené úrovni.
 
 Pokud dojde ke změně ve vzoru používání vašich dat, můžete kdykoli přepínat mezi těmito úrovněmi přístupu. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 
@@ -133,6 +133,7 @@ Pokud má například účet úložiště pro obecné účely název *mystoragea
 - Úložiště tabulek: `https://*mystorageaccount*.table.core.windows.net`
 - Úložiště fronty: `https://*mystorageaccount*.queue.core.windows.net`
 - Soubory Azure: `https://*mystorageaccount*.file.core.windows.net`
+- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (používá [ovladač ABFS optimalizovaný speciálně pro velké](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)objemy dat.)
 
 > [!NOTE]
 > Objekty blob bloku a účty BLOB Storage zpřístupňují jenom Blob service koncový bod.

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí F5 | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a F5.
+description: V tomto článku se dozvíte o krocích, které je třeba provést při integraci F5 s Azure Active Directory (Azure AD).
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542974"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306153"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure Active Directory (AD) s F5
 
@@ -39,8 +39,9 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* F5 podporuje **SP a IDP** iniciované jednotné přihlašování.
-* Jednotné přihlašování (SSO) F5 se dá nakonfigurovat třemi různými způsoby.
+F5 podporuje **SP a IDP** iniciované jednotné přihlašování.
+
+Jednotné přihlašování (SSO) F5 se dá nakonfigurovat třemi různými způsoby:
 
 - [Konfigurace jednotného přihlašování F5 pro pokročilou aplikaci Kerberos](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 
@@ -113,7 +114,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -302,7 +303,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 | eb46b6b6. Session. SAML. Last. responseIssueInstant | `<ID>` |
 | eb46b6b6. Session. SAML. Last. responseIssuer | `https://sts.windows.net/<TENANT ID>/` |
 | eb46b6b6. Session. SAML. Last. Result | 1 |
-| eb46b6b6. Session. SAML. Last. samlVersion | 2.0 |
+| eb46b6b6. Session. SAML. Last. samlVersion | 2,0 |
 | eb46b6b6. Session. SAML. Last. sessionIndex | `<TENANT ID>` |
 | eb46b6b6. Session. SAML. Last. statusValue | urn: Oasis: names: TC: SAML: 2.0: stav: úspěch |
 | eb46b6b6. Session. SAML. Last. subjectConfirmDataNotOnOrAfter | `<ID>` |

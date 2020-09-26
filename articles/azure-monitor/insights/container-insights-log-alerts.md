@@ -3,12 +3,12 @@ title: Protokolování výstrah z Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak vytvořit vlastní výstrahy protokolu pro paměť a využití procesoru z Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294542"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Jak vytvořit výstrahy protokolu z Azure Monitor pro kontejnery
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Vytvoření pravidla upozornění
 
-Tato část vás provede vytvořením pravidla výstrahy měření metriky pomocí údajů o výkonu z Azure Monitor pro kontejnery. Tento základní postup můžete použít u nejrůznějších dotazů protokolu pro upozornění na různé čítače výkonu. Použijte jeden z vyhledávacích dotazů protokolu, které jsou k dispozici dříve, a začněte s. Pokud chcete vytvořit pomocí šablony ARM, přečtěte si téma [Vytvoření ukázkového upozornění protokolu pomocí šablony prostředků Azure](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
+Tato část vás provede vytvořením pravidla výstrahy měření metriky pomocí údajů o výkonu z Azure Monitor pro kontejnery. Tento základní postup můžete použít u nejrůznějších dotazů protokolu pro upozornění na různé čítače výkonu. Použijte jeden z vyhledávacích dotazů protokolu, které jsou k dispozici dříve, a začněte s. Informace o vytvoření pomocí šablony ARM najdete v tématu [ukázky vytvoření upozornění protokolu pomocí šablony prostředků Azure](../platform/alerts-log-create-templates.md).
 
 >[!NOTE]
 >Následující postup vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přešli na nové rozhraní API upozornění protokolu, jak je popsáno v tématu [předvoleb rozhraní API pro protokolování výstrah](../platform/alerts-log-api-switch.md).

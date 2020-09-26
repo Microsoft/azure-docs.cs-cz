@@ -1,6 +1,6 @@
 ---
 title: Posílání nabízených oznámení na konkrétní aplikace pro Android pomocí Azure Notification Hubs
-description: Zjistěte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům.
+description: Přečtěte si, jak odesílat nabízená oznámení do konkrétních aplikací pro Android pomocí Azure Notification Hubs.
 documentationcenter: android
 services: notification-hubs
 author: sethmanheim
@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: fae8e4d57f8b0fc1b89309d68bf7e21dce86f3fa
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 870842074bb4a0012a48115586a8ad571275d470
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281027"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do konkrétních aplikací pro Android pomocí Azure Notification Hubs
 

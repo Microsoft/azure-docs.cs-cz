@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9295b1d8a54d9c3c1a138a54f4b3706bd39227fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280092"
 ---
 # <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
 
@@ -59,7 +59,7 @@ V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu nu
 
 ### <a name="filter-results-with-a-prefix"></a>Filtrovat výsledky s předponou
 
-Chcete-li filtrovat seznam kontejnerů, zadejte řetězec pro `prefix` parametr. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze objekty blob, jejichž názvy začínají touto předponou.
+Chcete-li filtrovat seznam objektů blob, zadejte řetězec pro `prefix` parametr. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze objekty blob, jejichž názvy začínají touto předponou.
 
 ### <a name="return-metadata"></a>Návratová metadata
 

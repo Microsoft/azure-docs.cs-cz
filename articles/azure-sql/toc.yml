@@ -1210,6 +1210,8 @@
           href: database/database-import-export-hang.md
     - name: Aktualizace služeb
       items:
+        - name: Platnost kořenového certifikátu SSL brzy vyprší
+          href: updates/ssl-root-certificate-expiring.md
         - name: Aktualizace IP adresy brány
           href: database/gateway-migration.md
         - name: Události pravidelné údržby

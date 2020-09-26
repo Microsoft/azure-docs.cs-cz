@@ -1,6 +1,6 @@
 ---
 title: Posílání nabízených oznámení do systému Android pomocí Azure Notification Hubs a sady Firebase SDK verze 1.0.0-preview1
-description: V tomto kurzu se naučíte používat Azure Notification Hubs a službu Google Firebase Cloud Messaging k odesílání nabízených oznámení do zařízení se systémem Android.
+description: V tomto kurzu se naučíte používat Azure Notification Hubs a službu Google Firebase Cloud Messaging k odesílání nabízených oznámení do zařízení se systémem Android (verze 1.0.0-preview1).
 author: sethmanheim
 ms.author: sethm
 ms.date: 5/28/2020
@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d2dfaf7d83d3b2323812f637bddd91b9a2ea2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018225"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315180"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí sady Firebase SDK verze 1.0.0-preview1
 
@@ -30,7 +30,7 @@ Tento kurz se zabývá následujícími kroky:
 - Připojte aplikaci k centru.
 - Otestujete aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 

@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c474b57533cb6165ce7fe77defccd4cb7042b06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3df10c9d7630e9db76994e8e508f30adb986e0d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82189918"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281809"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Co je průmyslový IoT (IIoT)
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 IIoT je průmyslový Internet věcí. IIoT vylepšuje průmyslové efektivity prostřednictvím aplikace IoT v výrobním odvětví. 
 
@@ -49,5 +52,4 @@ OPC trezor je implementací serveru OPC UA Global Discovery Server (GDS), který
 
 Teď, když máte Úvod do průmyslového IoT a jeho součástí, je tady doporučený další krok:
 
-> [!div class="nextstepaction"]
-> [Co je OPC Twin](overview-opc-twin.md)
+[Co je OPC Twin](overview-opc-twin.md)
