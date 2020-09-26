@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308380"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -70,7 +70,7 @@ Další informace o přidávání účtů úložiště do clusterů HDInsight na
 
 Ve výchozím nastavení musí být spravované tabulky v HDInsight 4,0 standardně kompatibilní s KYSELINou. Po dokončení migrace metastore spusťte nástroj po upgradu a zpřístupněte dříve nekompatibilní tabulky, které nejsou v KYSELINě kompatibilní s clusterem HDInsight 4,0. Tento nástroj bude platit následující převod:
 
-|3,6 |4.0 |
+|3,6 |4,0 |
 |---|---|
 |Externí tabulky|Externí tabulky|
 |Spravované tabulky bez KYSELosti|Externí tabulky s vlastností external. Table. vyprázdnění = true|
@@ -79,7 +79,7 @@ Ve výchozím nastavení musí být spravované tabulky v HDInsight 4,0 standard
 Spusťte nástroj po upgradu podregistru z clusteru HDInsight 4,0 pomocí prostředí SSH:
 
 1. Připojte se ke clusteru hlavnímu uzlu pomocí SSH. Pokyny najdete v tématu [připojení ke službě HDInsight pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) .
-1. Spusťte prostředí přihlášení jako uživatel podregistru spuštěním`sudo su - hive`
+1. Spusťte prostředí přihlášení jako uživatel podregistru spuštěním `sudo su - hive`
 1. Z prostředí spusťte následující příkaz.
 
     ```bash
@@ -103,7 +103,7 @@ Clustery HDInsight 3,6 a 4,0 musí používat stejný účet úložiště.
 >
 > * Po dokončení tohoto skriptu se předpokládá, že původní cluster se už nebude používat pro přístup ke kterékoli z tabulek nebo databází, na které se odkazuje ve skriptu.
 >
-> * Všechny spravované tabulky se stanou transakčními v HDInsight 4,0. Volitelně můžete zachovat netransakční tabulku tak, že data exportujete do externí tabulky pomocí vlastnosti external. Table. vyprázdnění = true. Třeba
+> * Všechny spravované tabulky se stanou transakčními v HDInsight 4,0. Volitelně můžete zachovat netransakční tabulku tak, že data exportujete do externí tabulky pomocí vlastnosti external. Table. vyprázdnění = true. Příklad:
 >
 >    ```SQL
 >    create table tablename_backup like tablename;
@@ -208,30 +208,9 @@ Jakmile ověříte, že je vydání hotové a plně funkční, můžete odebrat 
 
 ## <a name="query-execution-across-hdinsight-versions"></a>Provádění dotazů v rámci verzí HDInsight
 
-Existují dva způsoby, jak spustit a ladit dotazy na podregistry/LLAP v clusteru HDInsight 3,6. HiveCLI poskytuje prostředí příkazového řádku a zobrazení tez/zobrazení podregistru nabízí pracovní postup založený na grafickém uživatelském rozhraní.
+Existují dva způsoby, jak spustit a ladit dotazy na podregistry/LLAP v clusteru HDInsight 3,6. HiveCLI poskytuje prostředí příkazového řádku a zobrazení [tez/zobrazení podregistru](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) nabízí pracovní postup založený na grafickém uživatelském rozhraní.
 
-V HDInsight 4,0 byl HiveCLI nahrazen Beeline. HiveCLI je klient Thrift pro Hiveserver 1 a Beeline je JDBC klient, který poskytuje přístup k Hiveserver 2. Beeline je možné použít také pro připojení k jakémukoli jinému koncovému bodu databáze kompatibilního s JDBC. Beeline je k dispozici předem v HDInsight 4,0 bez nutnosti instalace.
-
-V HDInsight 3,6 je klient grafického uživatelského rozhraní pro interakci se serverem podregistru Ambari zobrazením podregistru. HDInsight 4,0 se nedodává s Ambari zobrazením. Zákazníkům jsme poskytli způsob, jak používat data Analytics Studio (DAS), což není základní služba HDInsight. DAS se nedodává s clustery HDInsight předem a není oficiálně podporovaný balíček. DAS se ale na cluster dá nainstalovat pomocí [akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md) takto:
-
-|Vlastnost | Hodnota |
-|---|---|
-|Typ skriptu|– Vlastní|
-|Name|DAS|
-|Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Typ (typy) uzlů|Head|
-
-Počkejte 10 až 15 minut a pak spusťte data Analytics Studio pomocí této adresy URL: `https://CLUSTERNAME.azurehdinsight.net/das/` .
-
-Před přístupem DAS může být potřeba aktualizovat uživatelské rozhraní Ambari nebo restartovat všechny součásti Ambari.
-
-Pokud se po instalaci DAS nezobrazí dotazy, které jste spustili v prohlížeči dotazů, proveďte následující kroky:
-
-1. Nastavte konfigurace pro podregistr, tez a DAS, jak je popsáno v [této příručce pro řešení potíží s instalací Das](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html).
-2. Ujistěte se, že následující konfigurace adresáře úložiště Azure jsou objekty blob stránky a že jsou uvedené v části `fs.azure.page.blob.dirs` :
-    * `hive.hook.proto.base-directory`
-    * `tez.history.logging.proto-base-dir`
-3. V obou hlavních restartujte HDFS, podregistr, tez a DAS.
+V HDInsight 4,0 byl HiveCLI nahrazen Beeline. Zobrazení tez/podregistr poskytuje pracovní postup založený na grafickém uživatelském rozhraní. HiveCLI je klient Thrift pro Hiveserver 1 a Beeline je JDBC klient, který poskytuje přístup k Hiveserver 2. Beeline lze také použít pro připojení k jakémukoli jinému koncovému bodu databáze kompatibilního s JDBC. Beeline je k dispozici předem v HDInsight 4,0 bez nutnosti instalace.
 
 ## <a name="next-steps"></a>Další kroky
 

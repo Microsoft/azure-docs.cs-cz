@@ -1,6 +1,6 @@
 ---
 title: Posílání nabízených oznámení do systému Android pomocí Azure Notification Hubs a sady Firebase SDK verze 0,6 | Microsoft Docs
-description: V tomto kurzu se naučíte používat Azure Notification Hubs a službu Google Firebase Cloud Messaging k odesílání nabízených oznámení do zařízení se systémem Android.
+description: V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs a služby Google Firebase Cloud Messaging odesílat nabízená oznámení na zařízení s Androidem (verze 0,6).
 services: notification-hubs
 documentationcenter: android
 keywords: nabízená oznámení, nabízené oznámení, nabízené oznámení android, fcm, firebase cloud messaging
@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268821"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí sady Firebase SDK verze 0,6
 

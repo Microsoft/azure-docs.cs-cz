@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 5d2ff25762f28c19b6d389a779fb455de3c84f3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253764"
+ms.locfileid: "91369480"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Značky image kontejneru Azure Cognitive Services
 
@@ -1131,22 +1131,22 @@ Tato image kontejneru má k dispozici následující značky:
 | Značky obrázku                                  | Poznámky                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
-| `1.1.0-amd64-de-de-katjaneural-preview`     | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-KatjaNeural` hlasem     |
-| `1.1.0-amd64-en-au-natashaneural-preview`   | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-NatashaNeural` hlasem   |
-| `1.1.0-amd64-en-ca-claraneural-preview`     | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-ClaraNeural` hlasem     |
-| `1.1.0-amd64-en-gb-libbyneural-preview`     | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-LibbyNeural` hlasem     |
-| `1.1.0-amd64-en-gb-mianeural-preview`       | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-MiaNeural` hlasem       |
-| `1.1.0-amd64-en-us-arianeural-preview`      | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
-| `1.1.0-amd64-en-us-guyneural-preview`       | Obrázek kontejneru s `en-US` národním prostředím a `en-US-GuyNeural` hlasem       |
-| `1.1.0-amd64-es-es-elviraneural-preview`    | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-ElviraNeural` hlasem    |
-| `1.1.0-amd64-es-mx-dalianeural-preview`     | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-DaliaNeural` hlasem     |
-| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-SylvieNeural` hlasem    |
-| `1.1.0-amd64-fr-fr-deniseneural-preview`    | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-DeniseNeural` hlasem    |
-| `1.1.0-amd64-it-it-elsaneural-preview`      | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-ElsaNeural` hlasem      |
-| `1.1.0-amd64-ja-jp-nanamineural-preview`    | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-NanamiNeural` hlasem    |
-| `1.1.0-amd64-ko-kr-sunhineural-preview`     | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-SunHiNeural` hlasem     |
-| `1.1.0-amd64-pt-br-franciscaneural-preview` | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-FranciscaNeural` hlasem |
-| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-XiaoxiaoNeural` hlasem  |
+| `1.2.0-amd64-de-de-katjaneural-preview`     | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-KatjaNeural` hlasem     |
+| `1.2.0-amd64-en-au-natashaneural-preview`   | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-NatashaNeural` hlasem   |
+| `1.2.0-amd64-en-ca-claraneural-preview`     | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-ClaraNeural` hlasem     |
+| `1.2.0-amd64-en-gb-libbyneural-preview`     | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-LibbyNeural` hlasem     |
+| `1.2.0-amd64-en-gb-mianeural-preview`       | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-MiaNeural` hlasem       |
+| `1.2.0-amd64-en-us-arianeural-preview`      | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
+| `1.2.0-amd64-en-us-guyneural-preview`       | Obrázek kontejneru s `en-US` národním prostředím a `en-US-GuyNeural` hlasem       |
+| `1.2.0-amd64-es-es-elviraneural-preview`    | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-ElviraNeural` hlasem    |
+| `1.2.0-amd64-es-mx-dalianeural-preview`     | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-DaliaNeural` hlasem     |
+| `1.2.0-amd64-fr-ca-sylvieneural-preview`    | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-SylvieNeural` hlasem    |
+| `1.2.0-amd64-fr-fr-deniseneural-preview`    | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-DeniseNeural` hlasem    |
+| `1.2.0-amd64-it-it-elsaneural-preview`      | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-ElsaNeural` hlasem      |
+| `1.2.0-amd64-ja-jp-nanamineural-preview`    | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-NanamiNeural` hlasem    |
+| `1.2.0-amd64-ko-kr-sunhineural-preview`     | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-SunHiNeural` hlasem     |
+| `1.2.0-amd64-pt-br-franciscaneural-preview` | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-FranciscaNeural` hlasem |
+| `1.2.0-amd64-zh-cn-xiaoxiaoneural-preview`  | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-XiaoxiaoNeural` hlasem  |
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 

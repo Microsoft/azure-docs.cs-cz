@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432661"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315078"
 ---
-# <a name="changelog"></a>Protokol změn #
+# <a name="changelog"></a>Protokol změn
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (oficiální aktualizace září 21 2020)
+
+### <a name="features-236"></a>Funkce 2.3.6
+
+Přidání podpory jenom pro zvuk pro azureHtml5JS Tech (POMLČKa) podpora v reálném čase se změnou jazyka pro podporu v reálném čase
+
+### <a name="bug-fixes-236"></a>Opravy chyb 2.3.6
+
+Při použití příkazu "playsinline" v přehrávání HLS na zařízeních Apple se kliknutím na tlačítko "živé" způsobí, že video restartuje obrázek AMP. v některých případech dojde k chybě, při přehrávání HLS FairPlay [usnadnění], které nejsou definovány pro tlačítka, když se klávesnice používá [usnadnění], je poměr světelnosti menší než 1.3:1 pro indikátor průběhu [přístupnost] fokus klávesnice se někdy nevrátí na tlačítko Kvalita videa [usnadnění]. na videu se nezobrazuje ovládací prvky. obrazovky zabraňující programu Narrator v jejich hledání
+
+### <a name="changes-236"></a>2.3.6 změny
+
+Při volání aplikací vracet smysluplné chyby doručení
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (oficiální aktualizace Červen 1 2020)
 

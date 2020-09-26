@@ -4,16 +4,16 @@ description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure
 author: danielsollondon
 ms.author: danis
 ms.date: 08/13/2020
-ms.topic: conceptual
-ms.service: virtual-machines-linux
+ms.topic: reference
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307275"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -96,7 +96,7 @@ Ve výchozím nastavení nemění tvůrce imagí velikost obrázku, ale bude pou
 ```
 
 ## <a name="vnetconfig"></a>vnetConfig
-Pokud neurčíte žádné vlastnosti virtuální sítě, vytvoří Tvůrce imagí svou vlastní virtuální síť, veřejnou IP adresu a NSG. Veřejná IP adresa se používá ke komunikaci s virtuálním počítačem sestavení, ale pokud nechcete, aby měl tvůrce imagí přístup k existujícím prostředkům virtuální sítě, jako jsou konfigurační servery (DSC, saďte, Puppet, Ansible), sdílené složky atd., můžete zadat virtuální síť. Další informace najdete v [dokumentaci k síti](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder), která je volitelná.
+Pokud neurčíte žádné vlastnosti virtuální sítě, vytvoří Tvůrce imagí svou vlastní virtuální síť, veřejnou IP adresu a NSG. Veřejná IP adresa se používá ke komunikaci s virtuálním počítačem sestavení, ale pokud nechcete, aby měl tvůrce imagí přístup k existujícím prostředkům virtuální sítě, jako jsou konfigurační servery (DSC, saďte, Puppet, Ansible), sdílené složky atd., můžete zadat virtuální síť. Další informace najdete v [dokumentaci k síti](image-builder-networking.md), která je volitelná.
 
 ```json
     "vnetConfig": {
@@ -120,7 +120,7 @@ Další informace najdete v tématu [Definování závislostí prostředků](../
 
 ## <a name="identity"></a>Identita
 
-Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obrázků, přečtěte si téma z Azure Storage musíte vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění k jednotlivým prostředkům. Podrobnosti o tom, jak nástroj image Builder funguje, a relevantní postup najdete v [dokumentaci](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements).
+Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obrázků, přečtěte si téma z Azure Storage musíte vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění k jednotlivým prostředkům. Podrobnosti o tom, jak nástroj image Builder funguje, a relevantní postup najdete v [dokumentaci](image-builder-user-assigned-identity.md).
 
 
 ```json
@@ -233,7 +233,7 @@ Ve výchozím nastavení se spustí Tvůrce imagí po dobu 240 minut. Po této i
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-Pokud nezadáte hodnotu buildTimeoutInMinutes, nebo ji nastavte na 0, použije se výchozí hodnota. Můžete zvýšit nebo snížit hodnotu až do maximálního počtu 960mins (16hrs). V systému Windows nedoporučujeme toto nastavit níže 60 minut. Pokud zjistíte, že se vám časový limit nelíbí, zkontrolujte [protokoly](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)a podívejte se, jestli krok přizpůsobení čeká na něco jako uživatelský vstup. 
+Pokud nezadáte hodnotu buildTimeoutInMinutes, nebo ji nastavte na 0, použije se výchozí hodnota. Můžete zvýšit nebo snížit hodnotu až do maximálního počtu 960mins (16hrs). V systému Windows nedoporučujeme toto nastavit níže 60 minut. Pokud zjistíte, že se vám časový limit nelíbí, zkontrolujte [protokoly](image-builder-troubleshoot.md#customization-log)a podívejte se, jestli krok přizpůsobení čeká na něco jako uživatelský vstup. 
 
 Pokud zjistíte, že k dokončení úprav potřebujete víc času, nastavte to podle toho, co si myslíte, že potřebujete, a s malým režijním časem. Ale nenastavuje se příliš vysoká, protože možná budete muset počkat na vypršení časového limitu před zobrazením chyby. 
 
@@ -481,7 +481,7 @@ Pokud chcete příkazy přepsat, použijte modul pro vytváření skriptů Power
 * Windows: c:\DeprovisioningScript.ps1
 * Linux:/tmp/DeprovisioningScript.sh
 
-Nástroj image Builder tyto příkazy přečte a zapíše se do protokolů AIB, "Customize. log". Podívejte se na téma [Poradce při potížích](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) s postupem shromažďování protokolů.
+Nástroj image Builder tyto příkazy přečte a zapíše se do protokolů AIB, "Customize. log". Podívejte se na téma [Poradce při potížích](image-builder-troubleshoot.md#customization-log) s postupem shromažďování protokolů.
  
 ## <a name="properties-distribute"></a>Vlastnosti: distribuce
 
@@ -658,7 +658,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>Rušení sestavení obrázku
 Pokud používáte sestavení bitové kopie, které se domníváte, že je nesprávné, čeká se na vstup uživatele, nebo jste se už neúspěšně dokončí, můžete sestavení zrušit.
 
-Sestavení může být kdykoli zrušeno. Pokud byla fáze distribuce zahájena, můžete stále zrušit, ale budete muset vyčistit všechny bitové kopie, které nemusí být dokončeny. Příkaz Cancel nečeká na dokončení akce zrušit, monitorujte prosím `lastrunstatus.runstate` , abyste zrušili průběh pomocí těchto [příkazů](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)stavu.
+Sestavení může být kdykoli zrušeno. Pokud byla fáze distribuce zahájena, můžete stále zrušit, ale budete muset vyčistit všechny bitové kopie, které nemusí být dokončeny. Příkaz Cancel nečeká na dokončení akce zrušit, monitorujte prosím `lastrunstatus.runstate` , abyste zrušili průběh pomocí těchto [příkazů](image-builder-troubleshoot.md#customization-log)stavu.
 
 
 Příklady `cancel` příkazů:

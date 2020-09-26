@@ -1,217 +1,218 @@
 ---
-title: Protokolovat dotazy výstrah v Azure Monitor | Microsoft Docs
-description: Poskytuje doporučení pro psaní efektivních dotazů na výstrahy protokolu v Azure Monitor aktualizace a procesu pro převod existujících dotazů.
-author: yossi-y
-ms.author: yossiy
+title: Optimalizace dotazů na výstrahy protokolu | Microsoft Docs
+description: Doporučení pro psaní efektivních dotazů na výstrahy
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: be2d49a824066b8926ae455978facb34c0b44310
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f03858b2427b2a2069ebe2c9d06425e7a741e2b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294355"
 ---
-# <a name="log-alert-queries-in-azure-monitor"></a>Protokolovat dotazy výstrah v Azure Monitor
-[Pravidla výstrah na základě protokolů Azure monitor](alerts-unified-log.md) běží v pravidelných intervalech, takže byste měli zajistit, aby byly zapsány pro minimalizaci režie a latence. Tento článek poskytuje doporučení k psaní efektivních dotazů na výstrahy protokolu a procesu pro převod existujících dotazů. 
+# <a name="optimizing-log-alert-queries"></a>Optimalizace dotazů na výstrahy protokolu
+Tento článek popisuje, jak zapsat a převést dotazy na [výstrahy protokolu](alerts-unified-log.md) , abyste dosáhli optimálního výkonu. Optimalizované dotazy omezují latenci a zatížení výstrah, které se často spouštějí.
 
-## <a name="types-of-log-queries"></a>Typy dotazů protokolu
-[Dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) začínají buď s tabulkou, nebo s operátorem [hledání](/azure/kusto/query/searchoperator) nebo [sjednocení](/azure/kusto/query/unionoperator) .
+## <a name="how-to-start-writing-an-alert-log-query"></a>Jak začít psát dotaz protokolu výstrah
 
-Například následující dotaz je vymezen na tabulku _SecurityEvent_ a hledá konkrétní ID události. Toto je jediná tabulka, kterou musí dotaz zpracovat.
+Dotazy na výstrahy začínají [dotazem na data protokolu v Log Analytics](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) , která tento problém signalizují. V [tématu Příklady dotazů na výstrahy](../log-query/saved-queries.md) můžete pochopit, co můžete zjistit. Můžete také začít [psát vlastní dotaz](../log-query/get-started-portal.md). 
+
+### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>Dotazy, které indikují problém, a ne upozornění
+
+Tok výstrah byl vytvořen pro transformaci výsledků, které upozorňují na problém výstrahy. Například v případě dotazu jako:
 
 ``` Kusto
-SecurityEvent | where EventID == 4624 
+SecurityEvent
+| where EventID == 4624
 ```
 
-Dotazy, které začínají `search` `union` na nebo umožňují prohledávat více sloupců v tabulce nebo dokonce i v několika tabulkách. Následující příklady znázorňují několik metod hledání termínu _paměti_:
+Pokud je záměrem uživatele výstraha, když dojde k tomuto typu události, logika výstrahy se připojí `count` k dotazu. Dotaz, který se spustí, bude:
 
-```Kusto
-search "Memory"
-search * | where == "Memory"
-search ObjectName: "Memory"
-search ObjectName == "Memory"
-union * | where ObjectName == "Memory"
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+| count
 ```
 
-Přestože `search` a `union` jsou užitečné při zkoumání dat, vyhledávání podmínek nad celým datovým modelem, je méně efektivní než použití tabulky, protože musí kontrolovat napříč více tabulkami. Vzhledem k tomu, že dotazy v pravidlech výstrah jsou spouštěny v pravidelných intervalech, může to mít za následek nadměrné režie přidání latence do výstrahy. Z důvodu této režie by dotazy na pravidla výstrah protokolů v Azure měly vždycky začít s tabulkou, která má definovat jasný rozsah, což zvyšuje výkon dotazů a relevanci výsledků.
+Není nutné přidávat do dotazu logiku pro upozorňování a provádět v nich dokonce problémy. Pokud v příkladu výše zahrnete `count` do dotazu, bude vždy výsledkem hodnota 1, protože služba Výstrahy bude provádět `count` `count` .
 
-## <a name="unsupported-queries"></a>Nepodporované dotazy
-Od 11. ledna 2019, vytváření nebo úpravy pravidel upozornění protokolů, které používají `search` , nebo `union` operátory nebudou podporovány v Azure Portal. Při použití těchto operátorů v pravidle výstrahy dojde k vrácení chybové zprávy. Tato změna nemá vliv na existující pravidla a pravidla upozornění vytvořená a upravená pomocí rozhraní Log Analytics API. Stále byste měli zvážit změnu všech pravidel upozornění, která používají tyto typy dotazů, a tím i zlepšit jejich efektivitu.  
+### <a name="avoid-limit-and-take-operators"></a>Vyhnout `limit` se `take` operátorům a
 
-Tato změna neovlivní pravidla upozornění protokolu pomocí [dotazů na více zdrojů](../log-query/cross-workspace-query.md) `union` , což omezuje rozsah dotazu na konkrétní prostředky. Nejedná se o ekvivalent, `union *` který nelze použít.  Následující příklad bude platný v pravidle výstrahy protokolu:
+Použití `limit` a `take` v dotazech může zvýšit latenci a zatížení výstrah, protože výsledky nejsou v průběhu času konzistentní. Doporučuje se používat ho pouze v případě potřeby.
+
+## <a name="log-query-constraints"></a>Omezení dotazů na protokol
+[Dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) začínají buď s tabulkou, [`search`](/azure/kusto/query/searchoperator) nebo [`union`](/azure/kusto/query/unionoperator) operátorem.
+
+Dotazy na pravidla upozornění protokolu by měly vždy začínat tabulkou, která má definovat jasný rozsah, což zvyšuje výkon dotazů a relevanci výsledků. Dotazy v pravidlech výstrah běží často, takže pomocí `search` a `union` můžou mít za následek nadměrné nároky na přidání latence k výstraze, protože to vyžaduje skenování napříč více tabulkami. Tyto operátory také omezují schopnost služby upozorňování na optimalizaci dotazu.
+
+Nepodporujeme vytváření a úpravu pravidel upozornění protokolů, které `search` používají `union` operátory nebo, a očekávat pro ně dotazy mezi prostředky.
+
+Například následující dotaz pro upozorňování je vymezen na tabulku _SecurityEvent_ a hledá konkrétní ID události. Je to jediná tabulka, kterou musí dotaz zpracovat.
+
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+```
+
+Tato změna neovlivní pravidla upozornění protokolu pomocí [dotazů na více prostředků](../log-query/cross-workspace-query.md) , protože dotazy na více zdrojů používají typ `union` , který omezuje obor dotazu na konkrétní prostředky. Následující příklad bude platný dotaz na výstrahu protokolu:
 
 ```Kusto
-union 
-app('Contoso-app1').requests, 
-app('Contoso-app2').requests, 
+union
+app('Contoso-app1').requests,
+app('Contoso-app2').requests,
 workspace('Contoso-workspace1').Perf 
 ```
 
 >[!NOTE]
->[Dotaz na více prostředků](../log-query/cross-workspace-query.md) v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pravidla upozornění protokolu [dotazu pro více prostředků](../log-query/cross-workspace-query.md) můžete vytvořit bez toho, aby byl přepínač použit pomocí [šablony ARM pro rozhraní scheduledQueryRules API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale toto pravidlo upozornění lze spravovat i v případě, že [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
+> [Dotazy na více prostředků](../log-query/cross-workspace-query.md) jsou podporovány v novém [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Pokud pořád používáte [starší rozhraní API Log Analytics výstrah](api-alerts.md) pro vytváření upozornění protokolů, můžete se přepínat [tady](alerts-log-api-switch.md).
 
 ## <a name="examples"></a>Příklady
-Následující příklady zahrnují dotazy protokolů, které používají, a `search` `union` poskytují kroky, pomocí kterých můžete tyto dotazy upravovat pro použití s pravidly výstrah.
+Následující příklady zahrnují dotazy protokolů, které používají, a `search` `union` poskytují kroky, pomocí kterých můžete tyto dotazy upravovat pro použití v pravidlech výstrah.
 
 ### <a name="example-1"></a>Příklad 1
 Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte informace o výkonu pomocí `search` : 
 
 ``` Kusto
-search * | where Type == 'Perf' and CounterName == '% Free Space' 
-| where CounterValue < 30 
-| summarize count()
+search *
+| where Type == 'Perf' and CounterName == '% Free Space'
+| where CounterValue < 30
 ```
-  
 
 Chcete-li upravit tento dotaz, začněte pomocí následujícího dotazu Identifikujte tabulku, do které vlastnosti patří:
 
 ``` Kusto
-search * | where CounterName == '% Free Space'
+search *
+| where CounterName == '% Free Space'
 | summarize by $table
 ```
- 
 
-Výsledek tohoto dotazu by ukázal, že vlastnost _CounterName_ byla předána z tabulky _perf_ . 
+Výsledek tohoto dotazu by ukázal, že vlastnost _CounterName_ byla předána z tabulky _perf_ .
 
-Tento výsledek můžete použít k vytvoření následujícího dotazu, který byste použili pro pravidlo upozornění:
+Pomocí tohoto výsledku můžete vytvořit následující dotaz, který byste použili pro pravidlo upozornění:
 
 ``` Kusto
-Perf 
-| where CounterName == '% Free Space' 
-| where CounterValue < 30 
-| summarize count()
+Perf
+| where CounterName == '% Free Space'
+| where CounterValue < 30
 ```
-
 
 ### <a name="example-2"></a>Příklad 2
 Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte informace o výkonu pomocí `search` : 
 
 ``` Kusto
-search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
-| summarize Avg_Memory_Usage =avg(CounterValue) by Computer 
+search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize Avg_Memory_Usage =avg(CounterValue) by Computer
 | where Avg_Memory_Usage between(90 .. 95)  
-| count 
 ```
-  
 
 Chcete-li upravit tento dotaz, začněte pomocí následujícího dotazu Identifikujte tabulku, do které vlastnosti patří:
 
 ``` Kusto
-search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use" 
-| summarize by $table 
+search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize by $table
 ```
- 
 
-Výsledek tohoto dotazu by ukázal, že vlastnost _ObjectName_ a _CounterName_ pochází z tabulky _perf_ . 
+Výsledek tohoto dotazu by ukázal, že vlastnost _ObjectName_ a _CounterName_ pochází z tabulky _perf_ .
 
-Tento výsledek můžete použít k vytvoření následujícího dotazu, který byste použili pro pravidlo upozornění:
+Pomocí tohoto výsledku můžete vytvořit následující dotaz, který byste použili pro pravidlo upozornění:
 
 ``` Kusto
-Perf 
-| where ObjectName =="Memory" and CounterName=="% Committed Bytes In Use" 
-| summarize Avg_Memory_Usage=avg(CounterValue) by Computer 
-| where Avg_Memory_Usage between(90 .. 95)  
-| count 
+Perf
+| where ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize Avg_Memory_Usage=avg(CounterValue) by Computer
+| where Avg_Memory_Usage between(90 .. 95)
 ```
- 
 
 ### <a name="example-3"></a>Příklad 3
 
 Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který používá obojí `search` a `union` k získání informací o výkonu: 
 
 ``` Kusto
-search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
-| where Computer !in ((union * | where CounterName == "% Processor Utility" | summarize by Computer))
-| summarize Avg_Idle_Time = avg(CounterValue) by Computer|  count  
+search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")
+| where Computer !in (
+    union *
+    | where CounterName == "% Processor Utility"
+    | summarize by Computer)
+| summarize Avg_Idle_Time = avg(CounterValue) by Computer
 ```
- 
 
 Chcete-li upravit tento dotaz, začněte pomocí následujícího dotazu Identifikujte tabulku, do které vlastnosti v první části dotazu patří: 
 
 ``` Kusto
-search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
-| summarize by $table 
+search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")
+| summarize by $table
 ```
 
-Výsledek tohoto dotazu by ukázal, že všechny tyto vlastnosti byly získány z tabulky _perf_ . 
+Výsledek tohoto dotazu by ukázal, že všechny tyto vlastnosti byly získány z tabulky _perf_ .
 
 Nyní použijte `union` `withsource` příkaz with k určení, která zdrojová tabulka přispěla k jednotlivým řádkům.
 
 ``` Kusto
-union withsource=table * | where CounterName == "% Processor Utility" 
-| summarize by table 
+union withsource=table *
+| where CounterName == "% Processor Utility"
+| summarize by table
 ```
- 
 
-Výsledek tohoto dotazu by ukázal, že tyto vlastnosti také pocházejí z tabulky _perf_ . 
+Výsledek tohoto dotazu by ukázal, že tyto vlastnosti také pocházejí z tabulky _perf_ .
 
 Pomocí těchto výsledků můžete vytvořit následující dotaz, který byste použili pro pravidlo upozornění: 
 
 ``` Kusto
-Perf 
-| where ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total" 
-| where Computer !in ( 
-    (Perf 
-    | where CounterName == "% Processor Utility" 
-    | summarize by Computer)) 
-| summarize Avg_Idle_Time = avg(CounterValue) by Computer 
-| count 
+Perf
+| where ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total"
+| where Computer !in (
+    (Perf
+    | where CounterName == "% Processor Utility"
+    | summarize by Computer))
+| summarize Avg_Idle_Time = avg(CounterValue) by Computer
 ``` 
 
 ### <a name="example-4"></a>Příklad 4
 Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který spojuje výsledky dvou `search` dotazů:
 
 ```Kusto
-search Type == 'SecurityEvent' and EventID == '4625' 
-| summarize by Computer, Hour = bin(TimeGenerated, 1h) 
-| join kind = leftouter ( 
-    search in (Heartbeat) OSType == 'Windows' 
-    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h) 
-    | project Hour , Computer  
-)  
-on Hour 
-| count 
+search Type == 'SecurityEvent' and EventID == '4625'
+| summarize by Computer, Hour = bin(TimeGenerated, 1h)
+| join kind = leftouter (
+    search in (Heartbeat) OSType == 'Windows'
+    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h)
+    | project Hour , Computer
+) on Hour
 ```
- 
 
 Chcete-li upravit dotaz, začněte použitím následujícího dotazu k identifikaci tabulky, která obsahuje vlastnosti v levé straně spojení: 
 
 ``` Kusto
-search Type == 'SecurityEvent' and EventID == '4625' 
-| summarize by $table 
+search Type == 'SecurityEvent' and EventID == '4625'
+| summarize by $table
 ```
- 
 
 Výsledek značí, že vlastnosti na levé straně spojení patří do tabulky _SecurityEvent_ . 
 
 Nyní použijte následující dotaz k identifikaci tabulky, která obsahuje vlastnosti na pravé straně spojení: 
-
  
 ``` Kusto
-search in (Heartbeat) OSType == 'Windows' 
-| summarize by $table 
+search in (Heartbeat) OSType == 'Windows'
+| summarize by $table
 ```
-
  
-Výsledek značí, že vlastnosti na pravé straně spojení patří do tabulky prezenčního signálu. 
+Výsledek značí, že vlastnosti na pravé straně spojení patří do tabulky _prezenčního signálu_ .
 
 Pomocí těchto výsledků můžete vytvořit následující dotaz, který byste použili pro pravidlo upozornění: 
-
 
 ``` Kusto
 SecurityEvent
 | where EventID == '4625'
 | summarize by Computer, Hour = bin(TimeGenerated, 1h)
 | join kind = leftouter (
-    Heartbeat  
-    | where OSType == 'Windows' 
-    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h) 
-    | project Hour , Computer  
-)  
-on Hour 
-| count 
+    Heartbeat
+    | where OSType == 'Windows'
+    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h)
+    | project Hour , Computer
+) on Hour
 ```
 
 ## <a name="next-steps"></a>Další kroky

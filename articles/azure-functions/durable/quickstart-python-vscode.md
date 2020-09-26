@@ -1,16 +1,16 @@
 ---
 title: Vytvoření první trvalé funkce v Azure pomocí Pythonu
-description: Vytvořte a publikujte funkci trvalosti Azure pomocí Visual Studio Code.
+description: Vytvořte a publikujte funkci trvalosti Azure v Pythonu pomocí Visual Studio Code.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: c9ca6d52bd71683344115004ec17a981b03f0a24
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85199185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294840"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Vytvoření první trvalé funkce v Pythonu
 
@@ -48,12 +48,12 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
 1. Podle pokynů zadejte následující informace:
 
-    | Výzva | Hodnota | Description |
+    | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
     | Vyberte jazyk pro projekt Function App. | Python | Vytvořte projekt místních funkcí Pythonu. |
     | Vybrat verzi | Azure Functions v3 | Tato možnost se zobrazí jenom v případě, že už nejsou nainstalované základní nástroje. V takovém případě se při prvním spuštění aplikace nainstalují základní nástroje. |
     | Verze Pythonu | Python 3,6, 3,7 nebo 3,8 | VS Code vytvoří virtuální prostředí s vybranou verzí. |
-    | Vyberte šablonu pro funkci prvního projektu. | Přeskočit hned | |
+    | Vyberte šablonu pro funkci prvního projektu. | Prozatím přeskočte | |
     | Vyberte, jak se má projekt otevřít. | Otevřít v aktuálním okně | Znovu otevře VS Code ve vybrané složce. |
 
 V případě potřeby Visual Studio Code nainstaluje Azure Functions Core Tools. Zároveň vytvoří projekt Function App ve složce. Tento projekt obsahuje [host.js](../functions-host-json.md) a [local.settings.jsv](../functions-run-local.md#local-settings-file) konfiguračních souborech.
@@ -111,7 +111,7 @@ Použijete šablonu k vytvoření trvalého kódu funkce v projektu.
 
 1. Podle pokynů zadejte následující informace:
 
-    | Výzva | Hodnota | Description |
+    | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
     | Vyberte šablonu pro funkci | Durable Functions Orchestrator | Vytvoření orchestrace Durable Functions |
     | Zadejte název funkce. | HelloOrchestrator | Název trvalé funkce |
@@ -126,10 +126,10 @@ Dále přidáte `Hello` funkci odkazované aktivity.
 
 1. Podle pokynů zadejte následující informace:
 
-    | Výzva | Hodnota | Description |
+    | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
     | Vyberte šablonu pro funkci | Aktivita Durable Functions | Vytvoření funkce aktivity |
-    | Zadejte název funkce. | Dobrý den | Název funkce aktivity |
+    | Zadejte název funkce. | Hello (Nazdar) | Název funkce aktivity |
 
 Přidali jste `Hello` funkci aktivity, která je vyvolána nástrojem Orchestrator. Otevřete *Hello/ \_ \_ init__. py* , abyste viděli, že jako vstup pořizuje název a vrátí pozdrav. Funkce Activity je místo, kde provedete akce, jako je například vytvoření databázového volání nebo provedení výpočtu.
 
@@ -141,7 +141,7 @@ Nakonec přidáte funkci aktivovanou protokolem HTTP, která spouští orchestra
 
 1. Podle pokynů zadejte následující informace:
 
-    | Výzva | Hodnota | Description |
+    | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
     | Vyberte šablonu pro funkci | Durable Functions HTTP Starter | Vytvoření funkce HTTP Starter |
     | Zadejte název funkce. | DurableFunctionsHttpStart | Název funkce aktivity |
@@ -166,7 +166,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
 1. Podle pokynů zadejte následující informace, které vám pomůžou vytvořit nový účet úložiště v Azure.
 
-    | Výzva | Hodnota | Description |
+    | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
     | Výběr předplatného | *název vašeho předplatného* | Vyberte své předplatné Azure. |
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště |  |
@@ -213,7 +213,7 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 ## <a name="test-your-function-in-azure"></a>Testování funkce v Azure
 
-1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Adresa URL, která volá funkci spuštěnou protokolem HTTP, by měla být v tomto formátu:`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Adresa URL, která volá funkci spuštěnou protokolem HTTP, by měla být v tomto formátu: `http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Po použití publikované aplikace byste měli získat stejnou reakci na stav jako předtím.
 

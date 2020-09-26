@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 99f3c2c05117fb537527f2a2bcb52f0f9843385a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 41dddd677b2060c6d5d605867adde3eb27a9a5eb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329631"
+ms.locfileid: "91369854"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
@@ -54,7 +54,7 @@ Pokud chcete nastavit první tok, budete muset zadat Video Indexer klíč rozhra
 ![Název připojení a klíč rozhraní API](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
 > [!TIP]
-> Pokud jste dříve připojili Video Indexer nebo účet úložiště v Logic Apps jsou uloženy podrobnosti o připojení a automaticky se připojíte. Připojení můžete upravit kliknutím na **změnit připojení** v dolní části každé akce.
+> Pokud jste dříve připojili účet Azure Storage nebo účet Video Indexer k aplikaci logiky, budou se vám podrobnosti o připojení ukládat a automaticky se připojí. <br/>Připojení můžete upravit kliknutím na **změnit připojení** v dolní části Azure Storage (okno úložiště) nebo v akci video indexer (okno přehrávače).
 
 Jakmile se můžete připojit ke svým účtům Azure Storage a Video Indexer, najděte a vyberte v **návrháři Logic Apps**Trigger "při přidání nebo úpravě objektu BLOB".
 
@@ -80,7 +80,7 @@ Adresu URL zpětného volání teď vynecháte prázdné. Přidáte ho až po do
 
 Můžete použít výchozí hodnotu pro ostatní parametry nebo je nastavit podle vašich potřeb. 
 
-Klikněte na Save (Uložit) a pojďme se na nakonfigurovat druhý tok, aby se přehledy po nahrání a indexování dokončily. 
+Klikněte na **Uložit**a pojďme přejít na, aby se nakonfigurovali druhý tok, aby se přehledy po nahrání a indexování dokončily. 
 
 ## <a name="set-up-the-second-flow---json-extraction"></a>Nastavení druhého toku – extrakce JSON  
 

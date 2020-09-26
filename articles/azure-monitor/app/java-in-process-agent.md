@@ -3,12 +3,12 @@ title: Monitorování aplikací Java v jakémkoli prostředí – Azure Monitor 
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí bez instrumentace aplikace Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370030"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Monitorování aplikací nezaložených na kódu Java Azure Monitor Application Insights – Public Preview
 
@@ -20,15 +20,17 @@ Přidání sady Application Insights Java SDK do vaší aplikace už není potř
 
 Z aplikace můžete stále odesílat vlastní telemetrie. Agent 3,0 bude sledovat a koreluje spolu se všemi všemi shromažďovanými telemetriemi.
 
-## <a name="quickstart"></a>Rychlý start
+Agent 3,0 podporuje jazyk Java 8 a vyšší.
+
+## <a name="quickstart"></a>Rychlé zprovoznění
 
 **1. Stáhněte agenta.**
 
-Stáhnout [ApplicationInsights-agent-3.0.0-Preview. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
+Stáhnout [ApplicationInsights-agent-3.0.0-Preview. 7. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar)
 
 **2. Nasměrujte JVM na agenta.**
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` do ARGUMENTŮ JVM vaší aplikace
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar` do ARGUMENTŮ JVM vaší aplikace
 
 Typické argumenty JVM zahrnují `-Xmx512m` a `-XX:+UseG1GC` . Takže pokud víte, kam je přidat, pak už víte, kam je přidat.
 
@@ -44,7 +46,7 @@ Najeďte agentem na prostředek Application Insights, a to nastavením proměnn�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Nebo vytvořením konfiguračního souboru s názvem `ApplicationInsights.json` a jeho umístěním do stejného adresáře jako `applicationinsights-agent-3.0.0-PREVIEW.5.jar` s následujícím obsahem:
+Nebo vytvořením konfiguračního souboru s názvem `ApplicationInsights.json` a jeho umístěním do stejného adresáře jako `applicationinsights-agent-3.0.0-PREVIEW.7.jar` s následujícím obsahem:
 
 ```json
 {
@@ -132,13 +134,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Ano    |
-| **Vlastní metriky**  |  Ano       |                     |  Ano    |
-| **Závislosti**    |            |                     |  Ano    |
-| **Výjimky**      |            |  Ano                |  Ano    |
-| **Page Views**      |            |                     |  Ano    |
-| **Žádosti**        |            |                     |  Ano    |
-| **Trasování**          |            |  Ano                |  Ano    |
+| **Vlastní události**   |            |                     |  Yes    |
+| **Vlastní metriky**  |  Yes       |                     |  Yes    |
+| **Závislosti**    |            |                     |  Yes    |
+| **Výjimky**      |            |  Yes                |  Yes    |
+| **Page Views**      |            |                     |  Yes    |
+| **Žádosti**        |            |                     |  Yes    |
+| **Trasování**          |            |  Yes                |  Yes    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
@@ -225,6 +227,8 @@ Můžete také použít Application Insights Java SDK 2. x:
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Upgrade z Application Insights Java SDK 2. x
 
 Pokud v aplikaci již používáte Application Insights Java SDK 2. x, není nutné ji odebrat. Agent Java 3,0 ho detekuje a zachytí a koreluje se všemi vlastními telemetriemi, které posíláte prostřednictvím sady Java SDK 2. x, a zároveň potlačí všechny kolekce, které provádí Java SDK 2. x, aby se zabránilo duplicitnímu zachycení.
+
+Pokud jste používali agenta Application Insights 2. x, je nutné odebrat `-javaagent:` JVM arg, která odkazovala na agenta 2. x.
 
 > [!NOTE]
 > Poznámka: Java SDK 2. x TelemetryInitializers a TelemetryProcessors se při použití agenta 3,0 nespustí.

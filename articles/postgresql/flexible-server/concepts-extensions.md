@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 1126c218f8e80b7d89183746890a3fae1357d29d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307581"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – flexibilní Server
 
@@ -33,6 +33,8 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > [!div class="mx-tableFixed"]
 > | **Linka**| **Verze rozšíření** | **Popis** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | Slouží k analýze adresy na prvky prvku. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Příklad adresy pro normalizační sadu US|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1,2             | funkce pro ověření integrity vztahu|
 > |[bloom](https://www.postgresql.org/docs/12/bloom.html)                    | 1,0             | Metoda přístupu k Bloom – index založený na souboru signatury|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | Podpora indexování běžných typů DataTypes v GIN|
@@ -61,7 +63,11 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1,2             | Zobrazit informace o uzamykání na úrovni řádků|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | Zobrazit statistiky na úrovni řazené kolekce členů|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1,0             | Procedurální jazyk PL/pgSQL|
-> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometrii, geografické a rastrové typy a funkce|
+> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometrie, geografie |
+> |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | PostGIS a funkce rastrového typu| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | PostGIS SFCGAL – funkce|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS tygr, a reverzní INCODE|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | Prostorové typy a funkce topologie PostGIS|
 > |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1,0             | obálka s cizími daty pro vzdálené servery PostgreSQL|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1,2             | informace o certifikátech SSL|
 > |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1,0             |  TABLESAMPLE – metoda, která přijímá počet řádků jako limit|
@@ -76,6 +82,8 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > [!div class="mx-tableFixed"]
 > | **Linka**| **Verze rozšíření** | **Popis** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Slouží k analýze adresy na prvky prvku. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Příklad adresy pro normalizační sadu US|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1,1             | funkce pro ověření integrity vztahu|
 > |[bloom](https://www.postgresql.org/docs/11/bloom.html)                    | 1,0             | Metoda přístupu k Bloom – index založený na souboru signatury|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | Podpora indexování běžných typů DataTypes v GIN|
@@ -105,6 +113,9 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | Zobrazit statistiky na úrovni řazené kolekce členů|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1,0             | Procedurální jazyk PL/pgSQL|
 > |[postgis](https://www.postgis.net/)                      | 2.5.1           | PostGIS geometrii, geografické a rastrové typy a funkce|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL – funkce|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS tygr, a reverzní INCODE|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | Prostorové typy a funkce topologie PostGIS|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1,0             | obálka s cizími daty pro vzdálené servery PostgreSQL|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1,2             | informace o certifikátech SSL|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1,0             | funkce, které pracují s celými tabulkami včetně křížového|
@@ -114,9 +125,21 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > |[UUID – OSSP](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1,1             | generování univerzálně jedinečných identifikátorů (UUID)|
 
 
+## <a name="dblink-and-postgres_fdw"></a>dblink a postgres_fdw
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) vám umožní připojit se z jednoho serveru PostgreSQL k druhému nebo do jiné databáze na stejném serveru. Odesílající server musí umožňovat odchozí připojení k přijímacímu serveru. Přijímající server musí umožňovat připojení z odesílajícího serveru.
+
+Pokud plánujete použít tato dvě rozšíření, doporučujeme servery nasadit pomocí [Integrace virtuální](concepts-networking.md) sítě. Ve výchozím nastavení Integration VNet umožňuje připojení mezi servery ve virtuální síti. Můžete také použít [skupiny zabezpečení sítě VNet](../../virtual-network/manage-network-security-group.md) k přizpůsobení přístupu.
+
+
 ## <a name="pg_prewarm"></a>pg_prewarm
 
 Rozšíření pg_prewarm načte relační data do mezipaměti. Předzpracováním vašich mezipamětí znamená, že vaše dotazy mají po restartování lepší dobu odezvy při jejich prvním spuštění. Funkce Automatické předběžné zahřívání není v současnosti k dispozici v Azure Database for PostgreSQL-flexibilním serveru.
+
+## <a name="pg_stat_statements"></a>pg_stat_statements
+[Rozšíření pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) je předem načteno na každý Azure Database for PostgreSQL flexibilní Server, který poskytuje prostředky pro sledování statistik provádění příkazů SQL.
+Nastavení `pg_stat_statements.track` , které řídí, které příkazy jsou počítány rozšířením, výchozí hodnota `top` , což znamená, že jsou sledovány všechny příkazy vydané přímo klienty. Tyto dvě úrovně sledování jsou `none` a `all` . Toto nastavení se dá nakonfigurovat jako parametr serveru.
+
+Mezi informacemi o spuštění dotazu pg_stat_statements poskytuje kompromis a dopad na výkon serveru při zaznamenání jednotlivých příkazů SQL. Pokud nepoužíváte rozšíření pg_stat_statements, doporučujeme, abyste nastavili `pg_stat_statements.track` na `none` . Všimněte si, že některé služby monitorování třetích stran můžou spoléhat na pg_stat_statements k poskytování přehledů o výkonu dotazů, takže ověřte, jestli se jedná o případ nebo ne.
 
 
 ## <a name="next-steps"></a>Další kroky

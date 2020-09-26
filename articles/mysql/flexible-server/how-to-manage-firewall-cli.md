@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4279da10de92bc8bf9cd564eaae02db2fef76a64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307802"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MySQL – flexibilní pravidla brány firewall serveru pomocí rozhraní příkazového řádku Azure
 
@@ -33,17 +33,17 @@ V tomto článku se zaměříme na vytvoření serveru MySQL s **veřejným př�
 
 Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to tak, že kliknete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a vyberte **ENTER** pro spuštění.
 
-Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 
 ```azurecli-interactive
 az login
 ```
 
-Pomocí příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list).
+Pomocí příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](https://docs.microsoft.com/cli/azure/account#az-account-list).
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -53,7 +53,7 @@ az account set --subscription <subscription id>
 
 Příkaz můžete použít `az mysql flexible-server --public access` k vytvoření flexibilního serveru s *veřejným přístupem (s povolenými IP adresami)* a ke konfiguraci pravidel brány firewall během vytváření flexibilního serveru. K poskytnutí povolených IP adres, které se budou moct připojit k serveru, můžete použít přepínač **--Public-Access** . Můžete zadat jednu nebo rozsah IP adres, které se mají zahrnout do seznamu povolených IP adres. Rozsah IP adres musí být oddělen pomlčkou a nesmí obsahovat žádné mezery. K dispozici jsou různé možnosti vytvoření flexibilního serveru pomocí rozhraní příkazového řádku, jak je znázorněno v následujícím příkladu.
 
-Informace najdete v referenční dokumentaci k Azure CLI. <!--FIXME --> Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku. V následujících příkazech můžete například volitelně zadat skupinu prostředků.
+Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku najdete v [referenční dokumentaci](/cli/azure/mysql/flexible-server) k rozhraní příkazového řádku Azure CLI. V následujících příkazech můžete například volitelně zadat skupinu prostředků.
 
 - Vytvořte flexibilní Server s veřejným přístupem a přidejte IP adresu klienta, abyste měli přístup k serveru.
     ```azurecli-interactive
@@ -95,7 +95,7 @@ Příkaz
 - **Zobrazit**: zobrazí podrobnosti pravidla brány firewall flexibilního serveru.
 - **Odstranit**: odstranění flexibilního pravidla brány firewall serveru.
 
-Informace najdete v referenční dokumentaci k Azure CLI. <!--FIXME --> Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku. V následujících příkazech můžete například volitelně zadat skupinu prostředků.
+Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku najdete v [referenční dokumentaci](/cli/azure/mysql/flexible-server) k rozhraní příkazového řádku Azure CLI. V následujících příkazech můžete například volitelně zadat skupinu prostředků.
 
 ### <a name="create-a-firewall-rule"></a>Vytvoření pravidla brány firewall
 Pomocí `az mysql flexible-server firewall-rule create` příkazu vytvořte nové pravidlo brány firewall na serveru.

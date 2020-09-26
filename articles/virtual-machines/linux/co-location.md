@@ -1,18 +1,18 @@
 ---
 title: Společné umístění virtuálních počítačů se systémem Linux
-description: Přečtěte si, jak se ve společném umístění prostředků virtuálních počítačů Azure dá vylepšit latence.
+description: Seznamte se s tím, jak se souběžně vyhledávají prostředky virtuálních počítačů Azure pro Linux můžou zvýšit latence.
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 000c8c8955314060ae9bdedb96b086a509fb3e96
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368638"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279719"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>Společné umístění prostředků pro lepší latenci
+# <a name="co-locate-resources-for-improved-latency"></a>Snížení latence umisťováním prostředků do společného umístění
 
 Při nasazování aplikace v Azure vytvoří rozšíření instancí napříč oblastmi nebo zónami dostupnosti latenci sítě, což může mít vliv na celkový výkon vaší aplikace. 
 

@@ -3,12 +3,12 @@ title: Zabezpečení Azure Functions
 description: Přečtěte si, jak zajistit, aby byl kód vaší funkce běžící v Azure lépe zabezpečený před běžnými útoky.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294746"
 ---
 # <a name="securing-azure-functions"></a>Zabezpečení Azure Functions
 
@@ -58,7 +58,7 @@ Rozsah systémových klíčů závisí na rozšíření, ale obecně platí pro 
 
 Následující tabulka porovnává použití různých druhů přístupových klíčů:
 
-| Akce                                        | Rozsah                    | Platné klíče         |
+| Akce                                        | Obor                    | Platné klíče         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Spustit funkci                            | Konkrétní funkce        | Funkce           |
 | Spustit funkci                            | Libovolná funkce             | Funkce nebo hostitel   |
@@ -80,7 +80,7 @@ Ve výchozím nastavení se klíče ukládají do kontejneru úložiště objekt
 |---------|---------|---------|---------|
 |Jiný účet úložiště     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Ukládá klíče v úložišti objektů BLOB druhého účtu úložiště na základě zadané adresy URL SAS. Klíče se šifrují předtím, než se uloží pomocí tajného klíče jedinečného pro vaši aplikaci Function App. |
 |Systém souborů   | `AzureWebJobsSecretStorageType`   |  `files`       | Klíče se v systému souborů uchovávají, šifrované před úložištěm s použitím tajného klíče jedinečného pro vaši aplikaci Function App. |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | V trezoru musí být zásady přístupu, které odpovídají spravované identitě prostředku hostování. Zásada přístupu by měla identitě udělit následující skrytá oprávnění: `Get` , `Set` , `List` a `Delete` . <br/>Při místním spuštění se používá identita vývojáře a nastavení se musí nacházet vlocal.settings.jsv [souboru](functions-run-local.md#local-settings-file). | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | V trezoru musí být zásady přístupu, které odpovídají spravované identitě prostředku hostování. Zásada přístupu by měla identitě udělit následující skrytá oprávnění: `Get` , `Set` , `List` a `Delete` . <br/>Při místním spuštění se používá identita vývojáře a nastavení se musí nacházet vlocal.settings.jsv [ souboru](functions-run-local.md#local-settings-file). | 
 |Tajné klíče Kubernetes  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (volitelné) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Podporováno pouze při spuštění modulu runtime Functions v Kubernetes. Pokud `AzureWebJobsKubernetesSecretName` není nastaveno, úložiště je považováno za jen pro čtení. V takovém případě musí být hodnoty generovány před nasazením. Azure Functions Core Tools generuje hodnoty automaticky při nasazení do Kubernetes.|
 
 ### <a name="authenticationauthorization"></a>Ověřování/autorizace
@@ -128,6 +128,8 @@ Ve výchozím nastavení ukládáte připojovací řetězce a tajné klíče, kt
 Například každá aplikace Function App vyžaduje přidružený účet úložiště, který je používán modulem runtime. Ve výchozím nastavení je připojení k tomuto účtu úložiště uložené v nastavení aplikace s názvem `AzureWebJobsStorage` .
 
 Nastavení aplikace a připojovací řetězce se ukládají v Azure jako šifrované. Dešifrují se jenom předtím, než se vloží do paměti procesu aplikace při spuštění aplikace. Šifrovací klíče se pravidelně otáčí. Pokud raději spravujete zabezpečené úložiště vašich tajných kódů, nastavení aplikace by mělo být místo odkazů na Azure Key Vault. 
+
+Při vývoji funkcí v místním počítači můžete také ve výchozím nastavení šifrovat nastavení v local.settings.jssouboru. Další informace najdete `IsEncrypted` v tématu vlastnost v [souboru místních nastavení](functions-run-local.md#local-settings-file).  
 
 #### <a name="key-vault-references"></a>Odkazy na Key Vault
 
