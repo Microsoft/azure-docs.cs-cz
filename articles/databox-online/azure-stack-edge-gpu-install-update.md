@@ -6,21 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8b733d1e5eae9cae01233fda4be078bd188e07c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334357"
 ---
-# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>Aktualizace Azure Stack Edge pro pomocí GPU 
+# <a name="update-your-azure-stack-edge-pro-gpu"></a>Aktualizace GPU Azure Stack Edge pro 
 
-Tento článek popisuje kroky potřebné k instalaci aktualizace na Azure Stack Edge pro pomocí GPU prostřednictvím místního webového uživatelského rozhraní a přes Azure Portal. Aktualizace softwaru nebo opravy hotfix nainstalujete, pokud chcete zachovat zařízení Azure Stack Edge pro a přidružené cluastery Kubernetes na zařízení v aktuálním stavu. 
+Tento článek popisuje kroky potřebné k instalaci aktualizace na Azure Stack Edge pro pomocí GPU prostřednictvím místního webového uživatelského rozhraní a přes Azure Portal. Aktualizace softwaru a opravy hotfix můžete použít, chcete-li udržovat zařízení Azure Stack Edge pro a přidružený cluster Kubernetes na zařízení v aktuálním stavu. 
+
+Postup popsaný v tomto článku byl proveden s použitím jiné verze softwaru, ale proces zůstane stejný jako aktuální verze softwaru.
 
 > [!IMPORTANT]
-> - Aktualizace **2008** odpovídá verzi **2.1.1328.1904** softwaru na vašem zařízení. Další informace o této aktualizaci najdete v [poznámkách k verzi](azure-stack-edge-gpu-2008-release-notes.md).
+> - Aktualizace **2009** odpovídá verzi **2.1.1358.2075** softwaru na vašem zařízení. Další informace o této aktualizaci najdete v [poznámkách k verzi](azure-stack-edge-gpu-2009-release-notes.md).
 >
 > - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Tato aktualizace vyžaduje, abyste postupně použili dvě aktualizace. Nejdřív použijte aktualizace softwaru zařízení a pak Kubernetes aktualizace. Vzhledem k tom, že Azure Stack Edge pro je zařízení s jedním uzlem, dojde k přerušení všech vstupně-výstupních operací a v zařízení dojde k výpadku až 30 minut od aktualizace softwaru zařízení.
 
@@ -82,7 +84,7 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
     ![Verze softwaru po aktualizaci](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Nainstalovat**.
+    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Install** (Nainstalovat).
   
     ![Verze softwaru po aktualizaci](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 

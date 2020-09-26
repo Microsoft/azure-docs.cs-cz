@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273596"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -102,7 +102,7 @@ Následuje souhrn stránek průvodce expresní instalací, shromažďovaných p�
 
 | Stránka průvodce | Shromážděné přihlašovací údaje | Požadovaná oprávnění | Používá se pro |
 | --- | --- | --- | --- |
-| – |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet služby ADSync, který se používá jako ke spuštění synchronizační služby. |
+| Není k dispozici |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet služby ADSync, který se používá jako ke spuštění synchronizační služby. |
 | Připojení k Azure AD |Přihlašovací údaje k adresáři Azure AD |Role globálního správce v Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu konektoru služby Azure AD, který se používá pro probíhající operace synchronizace ve službě Azure AD.</li> |
 | Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří účet konektoru služba AD DS ve službě Active Directory a udělí mu oprávnění. Tento vytvořený účet se používá ke čtení a zápisu informací o adresáři během synchronizace.</li> |
 
@@ -115,11 +115,11 @@ Díky instalaci vlastních nastavení vám průvodce nabídne více možností a
 
 Následuje souhrn stránek průvodce vlastní instalace, shromážděných pověření a jejich použití.
 
-![Expresní instalace](./media/reference-connect-accounts-permissions/customize.png)
+![Snímek obrazovky zobrazující stránky Průvodce vlastní instalací](./media/reference-connect-accounts-permissions/customize.png)
 
 | Stránka průvodce | Shromážděné přihlašovací údaje | Požadovaná oprávnění | Používá se pro |
 | --- | --- | --- | --- |
-| – |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte úplný SQL Server, musí být uživatel správcem systému (SA) v SQL.</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet služby synchronizačního modulu. Účet je vytvořen pouze v případě, že správce nezadá konkrétní účet. |
+| Není k dispozici |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte úplný SQL Server, musí být uživatel správcem systému (SA) v SQL.</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet služby synchronizačního modulu. Účet je vytvořen pouze v případě, že správce nezadá konkrétní účet. |
 | Instalace synchronizačních služeb, možnost účet služby |Přihlašovací údaje účtu služby AD nebo místního uživatele |Uživatel, oprávnění jsou udělována Průvodcem instalací |Pokud správce zadá účet, použije se tento účet jako účet služby pro synchronizační službu. |
 | Připojení k Azure AD |Přihlašovací údaje k adresáři Azure AD |Role globálního správce v Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu konektoru služby Azure AD, který se používá pro probíhající operace synchronizace ve službě Azure AD.</li> |
 | Připojení adresářů |Místní přihlašovací údaje služby Active Directory pro každou doménovou strukturu, která je připojená k Azure AD |Oprávnění závisí na tom, které funkce povolíte a najdete v části Vytvoření účtu služba AD DS Connectoru. |Tento účet slouží ke čtení a zápisu informací o adresáři během synchronizace. |
@@ -208,7 +208,7 @@ Legenda:
 #### <a name="virtual-service-account"></a>Účet virtuální služby
 Účet virtuální služby je speciální typ účtu, který nemá heslo a spravuje ho Windows.
 
-![ATRIBUT](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![Snímek obrazovky, který zobrazuje účet virtuální služby (VSA).](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 Atributy VSA mají být použity ve scénářích, kde je synchronizační modul a SQL na stejném serveru. Pokud používáte vzdálený SQL Server, doporučujeme místo toho použít skupinový účet spravované služby.
 
@@ -241,7 +241,7 @@ Pokud používáte úplný SQL Server, účet služby je DBO databáze vytvořen
 ### <a name="azure-ad-connector-account"></a>Účet konektoru služby Azure AD
 Pro použití synchronizační služby se vytvoří účet ve službě Azure AD. Tento účet může identifikovat jeho zobrazované jméno.
 
-![Účet AD](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
+![Snímek obrazovky, který zobrazuje účet služby Azure AD.](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
 Název serveru, na kterém se účet používá, se dá identifikovat v druhé části uživatelského jména. Na obrázku je název serveru DC1. Pokud máte pracovní servery, každý server má svůj vlastní účet.
 

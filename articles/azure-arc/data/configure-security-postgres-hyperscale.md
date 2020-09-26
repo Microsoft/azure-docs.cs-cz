@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b166348031e9f72e8005e866a198855db9c01a9c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936102"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273196"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konfigurace zabezpečení pro skupinu serverů PostgreSQL s podporou rozšíření Azure ARC
 
@@ -156,14 +156,66 @@ K vytvoření uživatelů nebo rolí můžete použít standardní Postgres způ
 PostgreSQL s povoleným rozšířením Azure ARC přináší standardní Postgres administrativního uživatele _Postgres_ , pro který nastavíte heslo při vytváření skupiny serverů.
 Obecný formát příkazu pro změnu hesla:
 ```console
-azdata arc postgres server edit --name <server group name> --admin-password <new password>
+azdata arc postgres server edit --name <server group name> --admin-password
 ```
-Heslo bude nastaveno na hodnotu proměnné prostředí AZDATA_PASSWORD **relace**, pokud existuje. V takovém případě se uživateli zobrazí výzva k zadání hodnoty.
-Chcete-li ověřit, zda existuje proměnná prostředí AZDATA_PASSWORD relace a/nebo zda je nastavená hodnota, spusťte příkaz:
-```console
-printenv AZDATA_PASSWORD
-```
-Pokud budete chtít zadat nové heslo, možná budete chtít odstranit jeho hodnotu.
+
+Kde--Admin-Password je logická hodnota, která se vztahuje k přítomnosti hodnoty v proměnné prostředí AZDATA_PASSWORD **relace**.
+Pokud proměnná prostředí AZDATA_PASSWORD **relace**existuje a má hodnotu, při spuštění výše uvedeného příkazu se nastaví heslo uživatele Postgres na hodnotu této proměnné prostředí.
+
+Pokud proměnná prostředí AZDATA_PASSWORD **relace**existuje, ale nemá hodnotu nebo proměnná prostředí AZDATA_PASSWORD **relace**neexistuje, vyzve uživatele k zadání hesla interaktivně.
+
+#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Interaktivní postup změny hesla Postgres administrativního uživatele:
+1. Odstraňte proměnnou prostředí AZDATA_PASSWORD **relace**nebo odstraňte její hodnotu.
+2. Spusťte příkaz:
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   Například
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   Zobrazí se výzva k zadání hesla a jeho potvrzení:
+   ```console
+   Postgres Server password:
+   Confirm Postgres Server password:
+   ```
+   Při aktualizaci hesla výstup příkazu zobrazuje:
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+   
+#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>Změna hesla uživatele s právy pro správu Postgres pomocí proměnné prostředí AZDATA_PASSWORD **relace**:
+1. Nastavte hodnotu proměnné prostředí AZDATA_PASSWORD **relace**na to, co chcete mít k heslu.
+2. Spusťte příkaz:
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   Například
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   
+   Při aktualizaci hesla výstup příkazu zobrazuje:
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+
+> [!NOTE]
+> Chcete-li ověřit, zda existuje proměnná prostředí relace AZDATA_PASSWORD a jaká hodnota má, spusťte příkaz:
+> - V klientovi se systémem Linux:
+> ```console
+> printenv AZDATA_PASSWORD
+> ```
+>
+> - Na klientovi s Windows pomocí PowerShellu:
+> ```console
+> echo $env:AZDATA_PASSWORD
+> ```
+
 
 
 ## <a name="next-steps"></a>Další kroky

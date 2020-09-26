@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0f3e517e60037de6456bc3a549e072e58e2fa67
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89244734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285414"
 ---
 # <a name="claim-and-claim-rules"></a>Deklarace identity a pravidla deklarace identity
 
@@ -60,7 +60,7 @@ Podmínka je strukturována takto:
 Identifier:[ClaimPropertyCondition, ClaimPropertyCondition,…]
 ```
 
-Podmínka se skládá z jednotlivých podmínek u různých vlastností deklarace identity. Podmínka může mít volitelný identifikátor, který se dá použít k odkazování na deklaraci identity/s, která splní podmínku. Tento odkaz se dá použít v ostatních podmínkách nebo v akci stejného pravidla.
+Seznam podmínky se skládá z jednotlivých podmínek u různých vlastností deklarace identity. Podmínka může mít volitelný identifikátor, který se dá použít k odkazování na deklaraci identity/s, která splní podmínku. Tento odkaz se dá použít v ostatních podmínkách nebo v akci stejného pravidla.
 
 Například
 
@@ -78,7 +78,7 @@ Níže jsou uvedené operátory, které lze použít ke kontrole podmínek:
 
 | Typy | Podporované operace |
 |--|--|
-| Integer | = = (Equals), \! = (není rovno), <= (menší než nebo rovno), < (menší než), >= (větší než nebo rovno), > (je větší než). |
+| Celé číslo | = = (Equals), \! = (není rovno), <= (menší než nebo rovno), < (menší než), >= (větší než nebo rovno), > (je větší než). |
 | Řetězec | = = (je rovno), \! = (není rovno) |
 | Logická hodnota | = = (je rovno), \! = (není rovno) |
 

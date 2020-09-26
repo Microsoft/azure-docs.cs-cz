@@ -4,15 +4,15 @@ description: Naučte se vytvářet App Service prostředí s interním nástroje
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f2124dd77e3e5d9828ea457a6bccdf7d1bc05405
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961767"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273258"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Vytvoření a použití interní Load Balancer App Service Environment 
 
@@ -100,15 +100,26 @@ Služba ASE s interním nástrojem pro vyrovnávání zatížení podporuje slu�
 
 ## <a name="dns-configuration"></a>Konfigurace DNS 
 
-Pokud používáte externí virtuální IP adresu, službu DNS spravuje Azure. Všechny aplikace vytvořené ve vaší službě ASE se automaticky přidají do Azure DNS, což je veřejná služba DNS. Ve službě ASE s interním nástrojem pro vyrovnávání zatížení musíte spravovat vlastní službu DNS. Přípona domény používaná s interního nástroje pomocným mechanismem řízení závisí na názvu pomocného mechanismu služby. Přípona domény je * &lt; pomocného názvu &gt; . appserviceenvironment.NET*. IP adresa pro váš interního nástroje je na portálu v části **IP adresy**. 
+Když použijete externí pomocného Správce služby, aplikace vytvořené ve vašem pomocném mechanismu se zaregistrují s Azure DNS. V externím pomocném mechanismu pro vaše aplikace neexistují žádné další kroky, které by měly být veřejně dostupné. Pomocí pomocného mechanismu interního nástroje musíte spravovat vlastní DNS. Můžete to udělat na svém vlastním serveru DNS nebo Azure DNS privátních zónách.
 
-Konfigurace DNS:
+Postup konfigurace DNS na vlastním serveru DNS pomocí pomocného mechanismu pro interního nástroje:
 
-- Vytvořte zónu pro * &lt; název pomocného mechanismu &gt; . appserviceenvironment.NET*
-- Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
-- Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
-- vytvoření zóny v * &lt; názvu pomocného mechanismu &gt; . appserviceenvironment.NET* s názvem SCM
-- Vytvořte v zóně SCM záznam A, který odkazuje na IP adresu interního nástroje.
+1. vytvořit zónu pro <ASE name> . appserviceenvironment.NET
+2. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+3. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+4. vytvoření zóny v <ASE name> . appserviceenvironment.NET s názvem SCM
+5. Vytvořte v zóně SCM záznam A, který odkazuje na IP adresu interního nástroje.
+
+Postup při konfiguraci DNS v privátních zónách Azure DNS:
+
+1. vytvořit privátní zónu Azure DNS s názvem <ASE name> . appserviceenvironment.NET
+2. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+3. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+4. Vytvořte v této zóně záznam A, který odkazuje *. SCM na IP adresu interního nástroje.
+
+Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem contoso.net, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze v <appname> . SCM. <asename> . appserviceenvironment.net.
+
+Zóna s názvem. <asename> .. appserviceenvironment.net je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít. contoso.com pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
 
 ## <a name="publish-with-an-ilb-ase"></a>Publikování pomocí služby ASE s interním nástrojem pro vyrovnávání zatížení
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 96da89fa8d7e4783afa11807534bbaeba52b79fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334255"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -69,15 +69,22 @@ Rozhraní API koncového bodu, která jsou k dispozici v řídicí rovině, jsou
 
 ## <a name="create-an-event-route"></a>Vytvoření trasy události
  
-V klientské aplikaci se vytvoří trasy událostí s následujícím voláním [rozhraní .NET (C#) SDK](how-to-use-apis-sdks.md) : 
+V klientské aplikaci jsou vytvořeny trasy událostí. Jedním ze způsobů, jak to provést, je `CreateEventRoute` volání [sady SDK .NET (C#)](how-to-use-apis-sdks.md) : 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
-* `endpoint-name`Identifikuje koncový bod, jako je například centrum událostí, Event Grid nebo Service Bus. Tyto koncové body je potřeba vytvořit v předplatném a připojit se k digitálním plochám Azure pomocí rozhraní API řídicích rovin před provedením tohoto volání registrace.
+1. Nejprve `EventRoute` je vytvořen objekt a konstruktor převezme název koncového bodu. Toto `endpointName` pole označuje koncový bod, jako je například centrum událostí, Event Grid nebo Service Bus. Tyto koncové body je potřeba vytvořit v předplatném a připojit se k digitálním plochám Azure pomocí rozhraní API řídicích rovin před provedením tohoto volání registrace.
 
-Objekt trasy události předaný objektu `EventRoutes.Add` také převezme [parametr **filtru** ](./how-to-manage-routes-apis-cli.md#filter-events), který lze použít k omezení typů událostí, které následují po této trase.
+2. Objekt směrování událostí má také pole [**filtru**](./how-to-manage-routes-apis-cli.md#filter-events) , pomocí kterého lze omezit typy událostí, které následují po této trase. Filtr `true` umožňuje trasu bez dalšího filtrování (filtr `false` zakáže trasu). 
+
+3. Tento objekt směrování události je pak předán `CreateEventRoute` spolu s názvem trasy.
+
+> [!TIP]
+> Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.
 
 Trasy je také možné vytvořit pomocí rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md).
 

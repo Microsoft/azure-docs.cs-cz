@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 44c1c1860cbea20a7a00da5a396e4d82d79efd8b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4364ed916e2b2783ab09f9d61ae63197d001ad42
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273177"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Režimy připojení a požadavky
 
@@ -52,7 +52,7 @@ V současné době je ve verzi Preview podporována pouze nepřímo připojený 
 |**Řízení zásob**|Podporováno<br/>Data inventáře se pravidelně exportují a odesílají do Azure.|Podporováno<br/>Data inventáře se automaticky a neustále odesílají do Azure a projeví se téměř v reálném čase. **Nedokončená dostupnost přímo připojeného režimu**|
 |**Automatické upgrady a opravy**|Podporováno<br/>Řadič dat musí mít buď přímý přístup k Microsoft Container Registry (MCR), nebo musí být image kontejneru z MCR a vloženy do místního privátního registru kontejneru, ke kterému má řadič dat přístup.|Podporováno<br/>**Nedokončená dostupnost přímo připojeného režimu**|
 |**Automatické zálohování a obnovování**|Podporováno<br/>Automatické místní zálohování a obnovení.|Podporováno<br/>Kromě automatizovaného místního zálohování a obnovení můžete _volitelně_ odesílat zálohy do Azure Backup pro dlouhodobé uchovávání mimo pracoviště. **Nedokončená dostupnost přímo připojeného režimu**|
-|**Sledovaný**|Podporováno<br/>Místní monitorování pomocí řídicích panelů Grafana a Kibana.|Podporováno<br/>Kromě řídicích panelů pro místní monitorování můžete _volitelně_ odesílat data monitorování a protokoly Azure monitor pro monitorování různých lokalit na jednom místě na škále. **Nedokončená dostupnost přímo připojeného režimu**|
+|**Monitorování**|Podporováno<br/>Místní monitorování pomocí řídicích panelů Grafana a Kibana.|Podporováno<br/>Kromě řídicích panelů pro místní monitorování můžete _volitelně_ odesílat data monitorování a protokoly Azure monitor pro monitorování různých lokalit na jednom místě na škále. **Nedokončená dostupnost přímo připojeného režimu**|
 |**Authentication**|Použijte místní uživatelské jméno/heslo pro ověření řadiče dat a řídicího panelu. K připojení k instancím databáze použijte přihlašovací údaje SQL a Postgres nebo službu Active Directory.  Použijte zprostředkovatele ověřování K8s k ověřování do rozhraní Kubernetes API.|Kromě metod ověřování pro nepřímo připojený režim můžete místo toho použít _taky_ Azure Active Directory. **Nedokončená dostupnost přímo připojeného režimu**|
 |**Access Control na základě rolí (RBAC)**|Použijte Kubernetes RBAC na Kubernetes API. Pro instance databáze použijte SQL a Postgres RBAC.|Volitelně můžete integrovat s Azure Active Directory pro RBAC. **Nedokončená dostupnost přímo připojeného režimu**|
 |**Azure Defender**|Nepodporováno|Plánováno pro budoucnost|
@@ -86,6 +86,7 @@ V současné době je ve fázi Preview podporována pouze nepřímo připojený 
 |**Rozhraní API pro Azure Resource Manager**|Počítač se systémem Azure Data Studio, Azure Data CLI nebo rozhraní příkazového řádku Azure CLI, který se připojuje k Azure.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|Yes|Azure Active Directory|Azure Data Studio, Azure Data CLI a Azure CLI se připojují k rozhraním API Azure Resource Manager, aby bylo možné odesílat a načítat data do a z Azure pro některé funkce.|
 |**Rozhraní API pro Azure Monitor**|Počítač se systémem Azure Data CLI nebo rozhraním příkazového řádku Azure, který odesílá metriky monitorování nebo protokoly do Azure Monitor.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`*.ods.opinsights.azure.com`<br/>`*.oms.opinsights.azure.com`<br/>`*.monitoring.azure.com`|HTTPS|443|Yes|Azure Active Directory|Azure Data Studio, Azure Data CLI a Azure CLI se připojují k rozhraním API Azure Resource Manager, aby bylo možné odesílat a načítat data do a z Azure pro některé funkce.|
 
-> **Poznámka:** V současné době se všechna připojení prohlížeče HTTPS/443 k řídicím panelům Grafana a Kibana a z Azure Data CLI do rozhraní API řadiče dat šifrují pomocí certifikátů podepsaných svým držitelem.  V budoucnu bude k dispozici funkce, která vám umožní zadat vlastní certifikáty pro šifrování těchto připojení SSL.
+> [!NOTE]
+> V současné době se všechna připojení prohlížeče HTTPS/443 k řídicím panelům Grafana a Kibana a z Azure Data CLI do rozhraní API řadiče dat šifrují pomocí certifikátů podepsaných svým držitelem.  V budoucnu bude k dispozici funkce, která vám umožní zadat vlastní certifikáty pro šifrování těchto připojení SSL.
 
 Připojení z Azure Data Studio a Azure Data CLI k serveru rozhraní Kubernetes API používá ověřování Kubernetes a šifrování, které jste nastavili.  Každý uživatel, který používá Azure Data Studio a Azure Data CLI, musí mít ověřené připojení k rozhraní Kubernetes API, aby mohl provádět mnoho akcí souvisejících s datovými službami s podporou ARC Azure.

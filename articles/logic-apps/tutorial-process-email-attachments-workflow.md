@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adec4579cf1a413aeac54782b4f9a833d557ad9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334085"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage
 
@@ -259,7 +259,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 1. Do návrháře v poli hledání zadejte `when new email arrives` jako filtr. Vyberte pro svého poskytovatele e-mailu tento trigger: **Při přijetí nového e-mailu – <*váš_poskytovatel_e-mailu*>**.
 
-   Například:
+   Příklad:
 
    ![Výběr triggeru pro konkrétního poskytovatele e-mailu: „Při přijetí nového e-mailu“](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -323,7 +323,7 @@ Teď přidejte podmínku, která vybere jenom e-maily s přílohami.
 
    1. Na prvním řádku pod **A** klikněte do levého pole. Zobrazí se seznam dynamického obsahu. Vyberte v něm vlastnost **Má přílohu**.
 
-      ![Vytvoření podmínky](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      ![Snímek obrazovky, který zobrazuje vlastnost "a" pro podmínku a výběr vlastnosti "má přílohy".](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. V prostředním poli ponechte operátor **rovná se**.
 
@@ -389,7 +389,7 @@ Tento krok přidá do aplikace logiky funkci Azure, kterou jste předtím vytvo�
 
    ![Přidání akce ve větvi „Pokud je true“](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-1. V poli hledání vyhledejte „azure functions“ a vyberte tuto akci: **Zvolte funkci Azure – Azure Functions**.
+1. Ve vyhledávacím poli Najděte Azure functions a vyberte tuto akci: **Zvolte funkci Azure Functions-Azure Functions**
 
    ![Výběr akce v části „Zvolte funkci Azure“](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -458,7 +458,7 @@ V dalším kroku přidejte akci, která vytvoří v kontejneru úložiště obje
 
    Po dokončení bude akce vypadat jako v tomto příkladu:
 
-   ![Dokončená akce „Vytvořit objekt blob“](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![Snímek obrazovky, který ukazuje příklad dokončené akce vytvořit objekt BLOB.](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. Uložte aplikaci logiky.
 

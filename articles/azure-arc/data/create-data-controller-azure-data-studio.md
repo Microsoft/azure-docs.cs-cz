@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71678977f899b910a97dbb552233f36ca5a51f26
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936451"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273139"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Vytvořit řadič dat v Azure Data Studio
 
@@ -42,7 +42,7 @@ Pomocí těchto kroků vytvoříte řadič dat ARC Azure pomocí Průvodce nasaz
 9. Zadejte název pro řadič dat a pro obor názvů, ve kterém bude vytvořen řadič dat.  
 
 > [!NOTE]
-> Pokud obor názvů již existuje, bude použit, pokud obor názvů již neobsahuje jiné objekty Kubernetes – lusky atd.  Pokud obor názvů neexistuje, bude proveden pokus o vytvoření oboru názvů.  Vytvoření oboru názvů v clusteru Kubernetes vyžaduje oprávnění správce clusteru Kubernetes.  Pokud nemáte oprávnění správce clusteru Kubernetes, požádejte správce clusteru Kubernetes o provedení prvních několika kroků v článku [Vytvoření kontroleru dat pomocí Kubernetes-Native nástrojů](./create-data-controller-using-k8s-native-tools.md) , které musí před dokončením tohoto průvodce provést správce Kubernetes.
+> Pokud obor názvů již existuje, bude použit, pokud obor názvů již neobsahuje jiné objekty Kubernetes – lusky atd.  Pokud obor názvů neexistuje, bude proveden pokus o vytvoření oboru názvů.  Vytvoření oboru názvů v clusteru Kubernetes vyžaduje oprávnění správce clusteru Kubernetes.  Pokud nemáte oprávnění správce clusteru Kubernetes, požádejte správce clusteru Kubernetes o provedení prvních několika kroků v článku [Vytvoření kontroleru dat pomocí Kubernetes-Native nástrojů](./create-data-controller-using-kubernetes-native-tools.md) , které musí před dokončením tohoto průvodce provést správce Kubernetes.
 
 > [!NOTE]
 > Poznámka: název řadiče dat a oboru názvů se použije k vytvoření vlastního prostředku v clusteru Kubernetes, aby musel odpovídat [konvencím pojmenování Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).
