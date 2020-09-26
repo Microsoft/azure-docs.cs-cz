@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926582"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363218"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Postup ochrany privátních zón a záznamů DNS
 
@@ -102,9 +102,9 @@ Oprávnění se aplikují na úrovni sady záznamů.  Uživateli je uděleno ř�
 
 Oprávnění RBAC na úrovni záznamů můžete nakonfigurovat prostřednictvím Azure Portal pomocí tlačítka **Access Control (IAM)** na stránce sada záznamů:
 
-![Zaznamenání RBAC na úrovni nastavení pomocí Azure Portal](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![Snímek obrazovky zobrazuje tlačítko Access Control (I I M).](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![Zaznamenání RBAC na úrovni nastavení pomocí Azure Portal](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![Snímek obrazovky zobrazuje Access Control s vybraným přiřazením přidat roli.](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
 [Pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)lze také udělit oprávnění RBAC na úrovni záznamů a nastavení:
 
@@ -164,8 +164,8 @@ Následující příklad ukazuje definici vlastní role pro správu pouze zázna
 
 Vlastnost Actions definuje následující oprávnění specifická pro službu DNS:
 
-* `Microsoft.Network/privateDnsZones/CNAME/*`udělí plnou kontrolu nad záznamy CNAME.
-* `Microsoft.Network/privateDNSZones/read`uděluje oprávnění ke čtení privátních zón DNS, ale nemění je, takže vám umožní zobrazit zónu, ve které se vytváří záznam CNAME.
+* `Microsoft.Network/privateDnsZones/CNAME/*` udělí plnou kontrolu nad záznamy CNAME.
+* `Microsoft.Network/privateDNSZones/read` uděluje oprávnění ke čtení privátních zón DNS, ale nemění je, takže vám umožní zobrazit zónu, ve které se vytváří záznam CNAME.
 
 > [!NOTE]
 > Pomocí vlastní role Azure zabráníte odstranění sad záznamů, ale pořád jejich aktualizace není efektivním ovládacím prvkem. Zabraňuje odstranění sad záznamů, ale nebrání jejich úpravám.  Mezi povolené úpravy patří přidávání a odebírání záznamů ze sady záznamů, včetně odebrání všech záznamů, které ponechávají prázdnou sadu záznamů. To má stejný účinek jako odstranění sady záznamů z pohledu na překlad DNS.

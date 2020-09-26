@@ -10,13 +10,13 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 71dca130fa20fd1887d9c80582997bf274dd475e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: b87a2cd3e6edc6a47de77f475c40d30ce1606e01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405105"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316609"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
 
@@ -28,7 +28,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - vytvoření jednoduchého dotazu na rozhraní API Bingu pro kontrolu pravopisu,
 > - zobrazení výsledků dotazu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho nemáte, budete potřebovat:
@@ -284,7 +284,7 @@ Přidejte značku HTML **div**, kterou používáme pro zobrazení výsledků. K
 </html>
 ```
 
-Soubor uložte.
+Uložte soubor.
 
 ## <a name="display-results"></a>Zobrazení výsledků
 

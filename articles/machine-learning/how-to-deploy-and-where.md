@@ -8,28 +8,28 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 07/08/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b77d48fa8af8be05123ee17f218ddb4ae5e8af98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a9b8a2c2454c135c72d39a587e84220e8916e54b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886224"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315422"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
-
 
 Naučte se, jak nasadit model strojového učení jako webovou službu v cloudu Azure nebo Azure IoT Edge zařízení.
 
 Pracovní postup je podobný bez ohledu na to, kam model nasadíte:
 
-1. Zaregistrujte model.
-1. Příprava odvození konfigurace
-1. Příprava vstupního skriptu (Pokud nepoužíváte [nasazení bez kódu](how-to-deploy-no-code-deployment.md))
+1. Zaregistrujte model (volitelné, viz níže).
+1. Připravte konfiguraci odvození (Pokud nepoužíváte [nasazení bez kódu](./how-to-deploy-no-code-deployment.md)).
+1. Připravte skript vstupu (Pokud nepoužíváte [nasazení bez kódu](./how-to-deploy-no-code-deployment.md)).
+1. Vyberte cíl výpočtů.
 1. Nasaďte model do cílového výpočetního objektu.
-1. Otestujte nasazený model, označovaný také jako webová služba.
+1. Otestujte výslednou webovou službu.
 
 Další informace o konceptech, které jsou součástí pracovního postupu nasazení, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
 
@@ -70,24 +70,25 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-Další informace o použití sady SDK pro připojení k pracovnímu prostoru naleznete v dokumentaci [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#&preserve-view=trueworkspace) .
+Další informace o použití sady SDK pro připojení k pracovnímu prostoru naleznete v dokumentaci [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) .
 
 
 ---
 
 
-## <a name="register-your-model"></a><a id="registermodel"></a> Registrace modelu
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+## <a name="register-your-model-optional"></a><a id="registermodel"></a> Registrace modelu (volitelné)
 
 Registrovaný model je logický kontejner pro jeden nebo více souborů, které tvoří model. Například pokud máte model uložený ve více souborech, můžete je zaregistrovat jako jeden model v pracovním prostoru. Po registraci souborů si pak můžete stáhnout nebo nasadit registrovaný model a získat všechny soubory, které jste zaregistrovali.
 
-> [!TIP]
-> Při registraci modelu zadáte cestu buď umístění v cloudu (z školicího běhu), nebo místního adresáře. Tato cesta je určena pouze k vyhledání souborů pro nahrání v rámci procesu registrace. Nemusí odpovídat cestě použité ve skriptu pro zadávání. Další informace najdete v tématu [vyhledání souborů modelu ve vstupním skriptu](how-to-deploy-advanced-entry-script.md#load-registered-models).
+> [!TIP] 
+> Registrace modelu pro sledování verze je doporučena, ale není vyžadována. Pokud místo toho chcete pokračovat bez registrace modelu, budete muset zadat zdrojový adresář ve vašem [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) nebo [inferenceconfig.jsna](./reference-azure-machine-learning-cli.md#inference-configuration-schema) a zajistit, aby se model nacházel v rámci tohoto zdrojového adresáře.
 
-Modely strojového učení jsou zaregistrované ve vašem pracovním prostoru Azure Machine Learning. Model může pocházet z Azure Machine Learning nebo z někde jinde. Při registraci modelu můžete volitelně zadat metadata o modelu. `tags` `properties` Slovníky a, které použijete pro registraci modelu, lze použít k filtrování modelů.
+> [!TIP]
+> Při registraci modelu zadáte cestu buď umístění v cloudu (z školicího běhu), nebo místního adresáře. Tato cesta je určena pouze k vyhledání souborů pro nahrání v rámci procesu registrace. Nemusí odpovídat cestě použité ve skriptu pro zadávání. Další informace najdete v tématu [vyhledání souborů modelu ve vstupním skriptu](./how-to-deploy-advanced-entry-script.md#load-registered-models).
 
 Následující příklady ukazují, jak registrovat model.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>Registrace modelu z školicího běhu Azure ML
 
@@ -111,16 +112,6 @@ Další informace o nástroji `az ml model register` najdete v [referenční dok
 
 # <a name="python"></a>[Python](#tab/python)
 
-
-Registrovaný model je logický kontejner pro jeden nebo více souborů, které tvoří model. Například pokud máte model uložený ve více souborech, můžete je zaregistrovat jako jeden model v pracovním prostoru. Po registraci souborů si pak můžete stáhnout nebo nasadit registrovaný model a získat všechny soubory, které jste zaregistrovali.
-
-> [!TIP]
-> Při registraci modelu zadáte cestu buď umístění v cloudu (z školicího běhu), nebo místního adresáře. Tato cesta je určena pouze k vyhledání souborů pro nahrání v rámci procesu registrace. Nemusí odpovídat cestě použité ve skriptu pro zadávání. Další informace najdete v tématu [vyhledání souborů modelu ve vstupním skriptu](how-to-deploy-advanced-entry-script.md#load-registered-models).
-
-Modely strojového učení jsou zaregistrované ve vašem pracovním prostoru Azure Machine Learning. Model může pocházet z Azure Machine Learning nebo z někde jinde. Při registraci modelu můžete volitelně zadat metadata o modelu. `tags` `properties` Slovníky a, které použijete pro registraci modelu, lze použít k filtrování modelů.
-
-Následující příklady ukazují, jak registrovat model.
-
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>Registrace modelu z školicího běhu Azure ML
 
   Když použijete sadu SDK k vytvoření výukového modelu, můžete získat buď objekt [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true) , nebo objekt [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) v závislosti na tom, jak jste model využívali. Každý objekt lze použít k registraci modelu vytvořeného spuštěním experimentu.
@@ -134,7 +125,7 @@ Následující příklady ukazují, jak registrovat model.
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path`Parametr odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na cestu ke složce, která obsahuje soubory. Další informace najdete v dokumentaci ke [spuštění. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) .
+    `model_path`Parametr odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na cestu ke složce, která obsahuje soubory. Další informace najdete v dokumentaci ke [spuštění. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) .
 
   + Registrace modelu z `azureml.train.automl.run.AutoMLRun` objektu:
 
@@ -149,7 +140,6 @@ Následující příklady ukazují, jak registrovat model.
     V tomto příkladu `metric` `iteration` nejsou zadány parametry a, takže iterace s nejlepší primární metrikou bude zaregistrována. `model_id`Hodnota vrácená z běhu se používá místo názvu modelu.
 
     Další informace najdete v dokumentaci k [AutoMLRun. register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) .
-
 
 ### <a name="register-a-model-from-a-local-file"></a>Registrace modelu z místního souboru
 
@@ -190,73 +180,45 @@ Další informace o práci s modely poučenými mimo Azure Machine Learning najd
 
 ## <a name="define-an-inference-configuration"></a>Definovat odvozenou konfiguraci
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-[!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
-
-Následující příkaz ukazuje, jak nasadit model pomocí rozhraní příkazového řádku:
-
-```azurecli-interactive
-az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
-```
-
-V tomto příkladu konfigurace určuje následující nastavení:
-
-* Model vyžaduje Python.
-* [Skript vstupu](#define-an-entry-script), který se používá ke zpracování webových požadavků odeslaných do nasazené služby
-* Soubor Conda, který popisuje balíčky Pythonu potřebné pro odvození
-
-Informace o použití vlastní image Docker s odvozenou konfigurací najdete v tématu [nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md).
-
-# <a name="python"></a>[Python](#tab/python)
 
 Konfigurace odvození popisuje, jak nastavit webovou službu, která obsahuje váš model. Používá se později při nasazení modelu.
 
-Odvozená konfigurace používá Azure Machine Learning prostředí k definování závislostí softwaru potřebných pro vaše nasazení. Prostředí umožňují vytvářet, spravovat a opakovaně používat závislosti softwaru vyžadované pro školení a nasazení. Můžete vytvořit prostředí z vlastních souborů závislosti nebo použít jedno z Azure Machine Learning prostředí. Následující YAML je příkladem souboru závislostí conda pro odvození. Všimněte si, že je třeba určit, že se ve službě AzureML-Defaults verze >= 1.0.45 jako závislost PIP, protože obsahuje funkce potřebné k hostování modelu jako webové služby. Pokud chcete použít automatické generování schématu, váš vstupní skript musí také naimportovat `inference-schema` balíčky.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-```YAML
+Minimální odvozená konfigurace může být zapsaná jako:
 
-name: project_environment
-dependencies:
-- python=3.6.2
-- scikit-learn=0.22.1
-- pip:
- # You must list azureml-defaults as a pip dependency
- - azureml-defaults>=1.0.45
- - inference-schema[numpy-support]
+```json
+{
+    "entryScript": "score.py",
+    "sourceDirectory": "./working_dir"
+}
 ```
 
-> [!IMPORTANT]
-> Pokud je vaše závislost k dispozici prostřednictvím conda i PIP (z PyPi), společnost Microsoft doporučuje používat verzi Conda, protože balíčky conda obvykle obsahují předem připravené binární soubory, které zajistí spolehlivější instalaci.
->
-> Další informace najdete v tématu [Principy conda a PIP](https://www.anaconda.com/understanding-conda-and-pip/).
->
-> Pokud chcete zjistit, jestli je vaše závislost k dispozici prostřednictvím Conda, použijte `conda search <package-name>` příkaz nebo použijte indexy balíčku v [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) a [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) .
+To určuje, že nasazení bude používat soubor `score.py` v `./working_dir` adresáři ke zpracování příchozích požadavků.
 
-Pomocí souboru závislostí můžete vytvořit objekt prostředí a uložit ho do svého pracovního prostoru pro budoucí použití:
+Podrobné informace o odvozených konfiguracích [najdete v tomto článku](./reference-azure-machine-learning-cli.md#inference-configuration-schema) . 
 
-```python
-from azureml.core.environment import Environment
-myenv = Environment.from_conda_specification(name = 'myenv',
-                                                file_path = 'path-to-conda-specification-file'
-myenv.register(workspace=ws)
-```
+# <a name="python"></a>[Python](#tab/python)
 
-Důkladnou diskuzi o používání a přizpůsobení prostředí Pythonu s Azure Machine Learning najdete v tématu [vytvoření & použití softwarových prostředí v Azure Machine Learning](how-to-use-environments.md).
+Následující příklad ukazuje:
 
-Informace o použití vlastní image Docker s odvozenou konfigurací najdete v tématu [nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md).
-
-
-Následující příklad ukazuje načtení prostředí z pracovního prostoru a jeho následné použití s konfigurací odvození:
+1. načítají se spravované [prostředí](resource-curated-environments.md) z vašeho pracovního prostoru.
+1. Klonování prostředí
+1. Zadání `scikit-learn` jako závislost.
+1. Vytvoření InferenceConfig pomocí prostředí
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
 
-myenv = Environment.get(workspace=ws, name='myenv', version='1')
+env = Environment.get(workspace, "AzureML-Minimal").clone(env_name)
+
+for pip_package in ["scikit-learn"]:
+    env.python.conda_dependencies.add_pip_package(pip_package)
+
 inference_config = InferenceConfig(entry_script='path-to-score.py',
-                                    environment=myenv)
+                                    environment=env)
 ```
 
 Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
@@ -264,6 +226,9 @@ Další informace o prostředích najdete v tématu [vytváření a Správa pros
 Další informace o konfiguraci odvození naleznete v dokumentaci třídy [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) .
 
 ---
+
+> [!TIP] 
+> Informace o použití vlastní image Docker s odvozenou konfigurací najdete v tématu [nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md).
 
 ## <a name="choose-a-compute-target"></a>Zvolit cíl výpočetní technologie
 
@@ -277,7 +242,7 @@ Možnosti, které jsou k dispozici pro konfiguraci nasazení, se liší v závis
 
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
-Další informace najdete v dokumentaci [AZ ml model Deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
+Další informace najdete v [tomto odkazu](./reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -300,8 +265,6 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 ```
 
 ---
-
-
 
 ## <a name="deploy-your-model"></a>Nasazení modelu
 
@@ -338,7 +301,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Další informace najdete v dokumentaci pro [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true), [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)a [WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py&preserve-view=true).
+Další informace najdete v dokumentaci pro [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true), [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)a [WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py&preserve-view=true).
 
 ---
 
@@ -348,7 +311,7 @@ Během nasazování modelu se může zobrazit Změna stavu služby během plnéh
 
 Následující tabulka popisuje různé stavy služby:
 
-| Stav WebService | Description | Konečný stav?
+| Stav WebService | Popis | Konečný stav?
 | ----- | ----- | ----- |
 | Přechod | Služba je v procesu nasazení. | No |
 | Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
@@ -380,7 +343,7 @@ Přečtěte si další informace o [odstranění webové](/cli/azure/ext/azure-c
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()` .
 Pokud chcete odstranit registrovaný model, použijte `model.delete()` .
 
-Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#&preserve-view=truedelete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedelete--).
+Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--).
 
 ---
 

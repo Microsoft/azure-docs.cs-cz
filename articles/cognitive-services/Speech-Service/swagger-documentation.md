@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e42d9713d1d61bb681c0ee51e46cc52eb0bcc807
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77430801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363184"
 ---
 # <a name="swagger-documentation"></a>Dokumentace ke Swaggeru
 
@@ -32,7 +32,7 @@ Musíte nastavit Swagger na stejnou oblast jako vaše předplatné služby Speec
 
 1. Přejděte na https://editor.swagger.io.
 2. Klikněte na **soubor**a pak na **importovat** .
-3. Zadejte adresu URL Swagger, včetně oblasti pro předplatné služby Speech.`https://<your-region>.cris.ai/docs/v2.0/swagger`
+3. Zadejte adresu URL Swagger, včetně oblasti pro předplatné služby Speech. `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. Klikněte na **vygenerovat klienta** a vyberte Python.
 5. Uložení klientské knihovny
 
@@ -47,4 +47,4 @@ Můžete použít knihovnu Python, kterou jste vygenerovali pomocí [ukázek slu
 ## <a name="next-steps"></a>Další kroky
 
 * [Ukázky služby Speech na GitHubu](https://aka.ms/csspeech/samples).
-* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)

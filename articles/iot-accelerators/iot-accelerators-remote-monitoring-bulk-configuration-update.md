@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77565574"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363150"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Kurz: Hromadná Správa připojených zařízení
 
@@ -147,7 +147,7 @@ Použijte svůj účet služby Azure Storage k hostování nového souboru firmw
 
 1. Až se nahrávání dokončí, zařízení IoT DevKit se restartuje. Po dokončení restartování zobrazí obrazovka služby IoT DevKit verzi firmwaru **: 1.0.0**a kontroluje nový firmware:
 
-    ![Ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![Fotografie zobrazuje zařízení I o T DevKit s obrazovkou, která zobrazuje verzi firmwaru a hledá nový firmware.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Vytvoření konfigurace zařízení
 
@@ -248,23 +248,23 @@ V této části vytvoříte a spustíte nasazení, které aplikuje konfiguraci z
 
 Po několika minutách DevKit IoT načte nové informace o firmwaru a začne je stahovat do zařízení:
 
-![Ota – 2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![Fotografie zobrazuje zařízení I o T DevKit s obrazovkou, která zobrazuje novou verzi firmwaru.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 V závislosti na rychlosti sítě může stahování trvat až několik minut. Po stažení firmwaru zařízení ověří velikost souboru a hodnotu CRC. Pokud je ověření úspěšné, zobrazí se na obrazovce MXChip obrazovka **předaná** .
 
-![Ota-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![Fotografie zobrazuje zařízení I o T DevKit s obrazovkou, která zobrazuje verzi firmwaru a byla úspěšná pro úspěšné ověření.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 Pokud je ověření úspěšné, zařízení se restartuje. V případě, že dojde k restartování, zobrazí se odpočítávání od **5** do **0** .
 
-![Ota-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![Fotografie zobrazuje zařízení I o T DevKit, které připravuje restart.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 Po restartování aplikace IoT DevKit zaváděcí program upgraduje firmware na novou verzi. Upgrade může trvat několik sekund. V průběhu této fáze je indikátor RGB v zařízení červený a obrazovka je prázdná.
 
-![Ota-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![Fotografie zobrazuje zařízení I o T DevKit, které provádí upgrade. K dispozici není žádný displej, ale je k dispozici záře R G B L E D.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 Po dokončení restartování se v zařízení IoT DevKit nyní spouští verze 1.0.1 firmwaru.
 
-![Ota – 6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![Fotografie zobrazuje zařízení I o T DevKit s jeho obrazovkou, která zobrazuje novou verzi firmwaru.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
 Na stránce **nasazení** kliknutím na nasazení zobrazte stav svých zařízení při jejich aktualizaci. Můžete zobrazit stav jednotlivých zařízení ve skupině zařízení a vlastní metriky, které jste definovali.
 
